@@ -30,7 +30,8 @@ void main() async {
   final vaultDataManagerServiceFactory = VaultDataManagerService.create;
   final vaultDataManagerService = await vaultDataManagerServiceFactory(
     didSigner: didSigner,
-    encryptionKey: Uint8List(2),
+    keyPair: keyPair,
+    encryptedDekek: await keyPair.encrypt(Uint8List(2)),
   );
 
   // once you have the service you need to:

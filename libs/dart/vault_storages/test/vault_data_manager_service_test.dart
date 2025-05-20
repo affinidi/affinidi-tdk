@@ -38,7 +38,7 @@ void main() {
   late VaultDelegatedDataManagerServiceFactory
       vaultDelegatedDataManagerServiceFactory;
 
-  setUp(() {
+  setUp(() async {
     mockVaultDataManagerApiService = MockVaultDataManagerApiService();
     mockVaultDataManagerEncryptionService =
         MockVaultDataManagerEncryptionService();
@@ -48,9 +48,12 @@ void main() {
     );
     vaultDataManagerApiServiceMocks =
         VaultDataManagerApiServiceMocks(mockVaultDataManagerApiService);
+    final keyPair = await getKeyPair();
     vaultDataManagerService = VaultDataManagerService(
       mockVaultDataManagerEncryptionService,
       mockVaultDataManagerApiService,
+      keyPair: await getKeyPair(),
+      encryptedKey: await keyPair.encrypt(Uint8List(2)),
     );
     vaultDataManagerServiceFactory = VaultDataManagerService.create;
     vaultDelegatedDataManagerServiceFactory =
@@ -65,10 +68,12 @@ void main() {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
         final didSigner = await getDidSigner();
+        final keyPair = await getKeyPair();
 
         final vaultDataManagerService = await vaultDataManagerServiceFactory(
           didSigner: didSigner,
-          encryptionKey: Uint8List(2),
+          encryptedDekek: Uint8List(2),
+          keyPair: keyPair,
         );
 
         await expectLater(
@@ -80,13 +85,15 @@ void main() {
   group('When creating vault data manager instance using delegated token', () {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
+        final keyPair = await getKeyPair();
         final didSigner = await getDidSigner();
 
         final vaultDataManagerService =
             await vaultDelegatedDataManagerServiceFactory(
           didSigner: didSigner,
           profileDid: 'profile_did',
-          encryptionKey: Uint8List(2),
+          encryptedDekek: Uint8List(2),
+          keyPair: keyPair,
         );
 
         await expectLater(

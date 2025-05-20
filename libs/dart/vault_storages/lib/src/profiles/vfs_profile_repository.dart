@@ -32,14 +32,16 @@ typedef IamApiServiceFactory = IamApiServiceInterface Function(
 typedef VaultDataManagerServiceFactory
     = Future<VaultDataManagerServiceInterface> Function({
   required DidSigner didSigner,
-  required Uint8List encryptionKey,
+  required KeyPair keyPair,
+  required Uint8List encryptedDekek,
 });
 
 /// Type definition for creating delegated [VaultDataManagerService] instances
 typedef VaultDelegatedDataManagerServiceFactory
     = Future<VaultDataManagerServiceInterface> Function({
   required DidSigner didSigner,
-  required Uint8List encryptionKey,
+  required KeyPair keyPair,
+  required Uint8List encryptedDekek,
   required String profileDid,
 });
 
@@ -164,12 +166,12 @@ class VfsProfileRepository implements ProfileRepository {
     final kekBuffer =
         Uint8List.fromList(_cryptographyService.getRandomBytes(_nonceSize));
     final profileKeyPair =
-        await _getProfileKeyPair(accountIndex: '$nextAccountIndex');
-    final encryptedKek = await profileKeyPair.encrypt(kekBuffer);
+        await _memoizedKeyPair(accountIndex: '$nextAccountIndex');
+    final encryptedDekek = await profileKeyPair.encrypt(kekBuffer);
 
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: nextAccountIndex.toString(),
-      kek: kekBuffer,
+      encryptedDekek: encryptedDekek,
     );
     await profileDataManager.getProfiles();
 
@@ -180,7 +182,7 @@ class VfsProfileRepository implements ProfileRepository {
 
     final accountMetadata = AccountMetadata(
       dekekInfo: DekekInfo(
-        encryptedDekek: base64.encode(encryptedKek),
+        encryptedDekek: base64.encode(encryptedDekek),
       ),
       sharedStorageData: [],
     );
@@ -213,13 +215,13 @@ class VfsProfileRepository implements ProfileRepository {
   Future<Profile?> _getAccountPerProfile(Account account) async {
     final accountIndex = account.accountIndex;
     final profileKeyPair =
-        await _getProfileKeyPair(accountIndex: '$accountIndex');
+        await _memoizedKeyPair(accountIndex: '$accountIndex');
 
-    final kek = await profileKeyPair.decrypt(
-      base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
-    );
     final profileDataManager = await _memoizedDataManagerService(
-        walletKeyId: accountIndex.toString(), kek: kek);
+      walletKeyId: accountIndex.toString(),
+      encryptedDekek:
+          base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
+    );
 
     final vfsProfiles = await profileDataManager.getProfiles();
     final profile = vfsProfiles.firstOrNull;
@@ -232,15 +234,14 @@ class VfsProfileRepository implements ProfileRepository {
     if (account.hasSharedStorageData) {
       final didSigner = await _memoizedDidSigner('$accountIndex');
       for (var sharedStorage in account.accountMetadata!.sharedStorageData) {
-        final kek = await profileKeyPair
-            .decrypt(base64.decode(sharedStorage.encryptedDekek));
         sharedStorages[sharedStorage.nodePath] = VfsSharedStorage(
           id: sharedStorage.nodePath,
           sharedProfileId: sharedStorage.nodePath,
           dataManagerService: await _vaultDelegatedDataManagerServiceFactory(
             didSigner: didSigner,
-            encryptionKey: kek,
             profileDid: sharedStorage.profileDid,
+            keyPair: profileKeyPair,
+            encryptedDekek: base64.decode(sharedStorage.encryptedDekek),
           ),
         );
       }
@@ -318,35 +319,42 @@ class VfsProfileRepository implements ProfileRepository {
     );
   }
 
+  final _didSigners = <String, DidSigner>{};
   final _dataManagers = <String, VaultDataManagerServiceInterface>{};
+  final _keyPairs = <String, KeyPair>{};
 
   /// Deletes any memoized data associated to the accountIndex when a profile is deleted
   void _clearMemoizedProfileData(int accountIndex) {
     _didSigners.remove('$accountIndex');
     _dataManagers.remove('$accountIndex');
+    _keyPairs.remove('$accountIndex');
+  }
+
+  Future<KeyPair> _memoizedKeyPair({required String accountIndex}) async {
+    _keyPairs[accountIndex] ??=
+        await _getProfileKeyPair(accountIndex: accountIndex);
+    return _keyPairs[accountIndex]!;
   }
 
   /// Memoize dataManagerService based on the walletKeyId
   Future<VaultDataManagerServiceInterface> _memoizedDataManagerService({
     required String walletKeyId,
-    Uint8List? kek,
+    Uint8List? encryptedDekek,
   }) async {
     _dataManagers[walletKeyId] ??= await _vaultDataManagerServiceFactory(
       didSigner: await _memoizedDidSigner(walletKeyId),
-      encryptionKey: kek ??
-          Uint8List.fromList(_cryptographyService.getRandomBytes(_nonceSize)),
+      encryptedDekek: encryptedDekek ?? Uint8List(0),
+      keyPair: await _memoizedKeyPair(accountIndex: walletKeyId),
     );
     return _dataManagers[walletKeyId]!;
   }
-
-  final _didSigners = <String, DidSigner>{};
 
   /// Memoize didSigner based on the walletKeyId
   Future<DidSigner> _memoizedDidSigner(
     String accountIndex,
   ) async {
     _didSigners[accountIndex] ??= await _makeDidSigner(
-      await _getProfileKeyPair(accountIndex: accountIndex),
+      await _memoizedKeyPair(accountIndex: accountIndex),
     );
     return _didSigners[accountIndex]!;
   }
@@ -393,7 +401,7 @@ class VfsProfileRepository implements ProfileRepository {
     }
 
     final profileKeyPair =
-        await _getProfileKeyPair(accountIndex: '$accountIndex');
+        await _memoizedKeyPair(accountIndex: '$accountIndex');
     final kek = await profileKeyPair.decrypt(
       base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
     );
@@ -427,7 +435,7 @@ class VfsProfileRepository implements ProfileRepository {
     required String grantedProfileDid,
   }) async {
     final profileKeyPair =
-        await _getProfileKeyPair(accountIndex: '$accountIndex');
+        await _memoizedKeyPair(accountIndex: '$accountIndex');
     final sharedStorageData = SharedStorageData(
       encryptedDekek: base64.encode(await profileKeyPair.encrypt(kek)),
       nodePath: profileId,

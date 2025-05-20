@@ -36,7 +36,6 @@ class VaultDataManagerEncryptionService
   final Map<String, dynamic> _jwk;
 
   /// Base encryption key used for wallet-based operations.
-  final Uint8List _encryptionKey;
 
   /// Cryptography service instance used for encryption operations.
   final CryptographyServiceInterface _cryptographyService;
@@ -45,35 +44,44 @@ class VaultDataManagerEncryptionService
   ///
   /// [cryptographyService] - Service providing cryptographic operations
   /// [jwk] - JSON Web Key for API-based encryption
-  /// [kek] - Base key for wallet-based encryption
   VaultDataManagerEncryptionService({
     required CryptographyServiceInterface cryptographyService,
     required Map<String, dynamic> jwk,
-    required Uint8List kek,
   })  : _jwk = jwk,
-        _encryptionKey = kek,
         _cryptographyService = cryptographyService;
 
-  /// Encrypts the provided DEK using wallet-based encryption key.
+  /// Method to encrypt a data encryption key [dek] using the wallet crypto material.
+  ///
+  /// [encryptionKey] - The encryptionKey to use to encrypt the DEK
+  /// [dek] - The raw DEK to be encrypted
+  ///
+  /// Returns the encrypted DEK as an array of bytes.
   @override
   Future<List<int>> encryptDekByWalletCryptoMaterial({
+    required Uint8List encryptionKey,
     required List<int> dek,
   }) async {
     final encrypted = _cryptographyService.encryptToBytes(
-      Uint8List.fromList(_encryptionKey),
+      Uint8List.fromList(encryptionKey),
       Uint8List.fromList(dek),
     );
 
     return encrypted;
   }
 
-  /// Decrypts the provided encrypted DEK using wallet-based encryption key.
+  /// Method to decrypt a data encryption key [encryptedDek] using the wallet crypto material.
+  ///
+  /// [encryptionKey] - The encryptionKey to use to decrypt the DEK
+  /// [encryptedDek] - The encrypted DEK to be decrypted
+  ///
+  /// Returns the decrypted DEK as an array of bytes.
   @override
   Future<List<int>> decryptDek({
+    required Uint8List encryptionKey,
     required List<int> encryptedDek,
   }) async {
     final decrypted = _cryptographyService.decryptFromBytes(
-      Uint8List.fromList(_encryptionKey),
+      Uint8List.fromList(encryptionKey),
       Uint8List.fromList(encryptedDek),
     );
 
@@ -90,7 +98,11 @@ class VaultDataManagerEncryptionService
     return decrypted;
   }
 
-  /// Encrypts the provided DEK using API public key.
+  /// Method to encrypt a data encryption key [dek] using the VFS public key.
+  ///
+  /// [dek] - The raw DEK to be encrypted
+  ///
+  /// Returns the encrypted DEK as an array of bytes.
   @override
   Future<List<int>> encryptDekByApiPublicKey({
     required List<int> dek,
@@ -103,20 +115,33 @@ class VaultDataManagerEncryptionService
     return encrypted;
   }
 
-  /// Returns the SHA-256 hash of the wallet encryption key.
+  /// Method to get SHA256 hash of the wallet crypto material key.
+  ///
+  /// [encryptionKey] - The encryptionKey to use for the hash
+  ///
+  /// Returns the hash as a hexadecimal string.
   @override
-  Future<String> getWalletCryptoMaterialKeyHash() async {
-    final hash = _cryptographyService.createSha256Hex(bytes: _encryptionKey);
+  Future<String> getWalletCryptoMaterialKeyHash({
+    required Uint8List encryptionKey,
+  }) async {
+    final hash = _cryptographyService.createSha256Hex(bytes: encryptionKey);
 
     return hash;
   }
 
-  /// Converts DEK from wallet encryption to API encryption.
+  /// Method to get a data encryption key [encryptedDekBase64] encrypted by the API public key.
+  ///
+  /// [encryptedDekBase64] - The encrypted DEK to be decrypted
+  /// [encryptionKey] - The encryptionKey to use to decrypt the DEK
+  ///
+  /// Returns the decrypted DEK as an array of bytes.
   @override
   Future<List<int>> getDekEncryptedByApiPublicKey({
     required String encryptedDekBase64,
+    required Uint8List encryptionKey,
   }) async {
     final dek = await decryptDek(
+      encryptionKey: encryptionKey,
       encryptedDek: base64.decode(encryptedDekBase64),
     );
 
@@ -126,8 +151,19 @@ class VaultDataManagerEncryptionService
     return encryptedDek;
   }
 
+  /// Method to generate a new data encryption material.
+  ///
+  /// [encryptionKey] - The encryption key used to generate the wallet crypto material
+  ///
+  /// Returns a [DataEncryptionMaterial] object containing:
+  /// - A newly generated DEK
+  /// - The DEK encrypted with API public key
+  /// - The DEK encrypted with wallet crypto material
+  /// - A hash of the wallet crypto material
   @override
-  Future<DataEncryptionMaterial> generateDataEncryptionMaterial() async {
+  Future<DataEncryptionMaterial> generateDataEncryptionMaterial({
+    required Uint8List encryptionKey,
+  }) async {
     final dek = _cryptographyService.getRandomBytes(nonceSize);
 
     final dekEncryptedByVfsPublicKey = await encryptDekByApiPublicKey(
@@ -136,10 +172,12 @@ class VaultDataManagerEncryptionService
 
     final dekEncryptedByWalletCryptoMaterial =
         await encryptDekByWalletCryptoMaterial(
+      encryptionKey: encryptionKey,
       dek: dek,
     );
 
-    final walletCryptoMaterialHash = await getWalletCryptoMaterialKeyHash();
+    final walletCryptoMaterialHash =
+        await getWalletCryptoMaterialKeyHash(encryptionKey: encryptionKey);
 
     return DataEncryptionMaterial(
       dek: dek,

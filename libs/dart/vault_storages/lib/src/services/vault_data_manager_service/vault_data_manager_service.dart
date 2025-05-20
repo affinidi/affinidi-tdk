@@ -37,11 +37,18 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   /// Logger instance for error handling
   final Logger _logger;
 
+  final Uint8List _encryptedKey;
+  final KeyPair _keyPair;
+
   VaultDataManagerService._(
     this._vaultDataManagerEncryptionService,
     this._vaultDataManagerApiService, {
     Logger? logger,
-  }) : _logger = logger ?? Logger.instance;
+    required Uint8List encryptedDekek,
+    required KeyPair keyPair,
+  })  : _logger = logger ?? Logger.instance,
+        _encryptedKey = encryptedDekek,
+        _keyPair = keyPair;
 
   /// Creates a new instance of [VaultDataManagerService] for testing purposes.
   @visibleForTesting
@@ -50,14 +57,23 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
         vaultDataManagerEncryptionService,
     VaultDataManagerApiServiceInterface vaultDataManagerApiService, {
     Logger? logger,
-  }) : this._(vaultDataManagerEncryptionService, vaultDataManagerApiService);
+    required Uint8List encryptedKey,
+    required KeyPair keyPair,
+  }) : this._(
+          vaultDataManagerEncryptionService,
+          vaultDataManagerApiService,
+          encryptedDekek: encryptedKey,
+          keyPair: keyPair,
+        );
 
   /// Creates a new vault file system service instance with encryption.
   ///
   /// - [didSigner] - A signer that uses a key pair associated with a DID document to sign data.
+  /// - [encryptedDekek] - encrypted kek of delegated profile
   static Future<VaultDataManagerService> create({
     required DidSigner didSigner,
-    required Uint8List encryptionKey,
+    required Uint8List encryptedDekek,
+    required KeyPair keyPair,
   }) async {
     final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
     final elementsVaultApiUrl =
@@ -74,12 +90,13 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
       cryptographyService: CryptographyService(),
       jwk: vfsPublicKey,
-      kek: encryptionKey,
     );
 
     final instance = VaultDataManagerService._(
       vaultDataManagerEncryptionService,
       vaultDataManagerApiService,
+      encryptedDekek: encryptedDekek,
+      keyPair: keyPair,
     );
 
     return instance;
@@ -89,11 +106,12 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   ///
   /// - [didSigner] - A signer that uses a key pair associated with a DID document to sign data.
   /// - [profileDid] - did of profile that grantee is accessing
-  /// - [encryptionKey] - dekek of delegated profile
+  /// - [encryptedDekek] - encrypted kek of delegated profile
   static Future<VaultDataManagerService> createDelegated({
     required DidSigner didSigner,
     required String profileDid,
-    required Uint8List encryptionKey,
+    required Uint8List encryptedDekek,
+    required KeyPair keyPair,
   }) async {
     final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
     final vaultDataManagerApiService = VaultDataManagerApiService(
@@ -108,12 +126,13 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
       cryptographyService: CryptographyService(),
       jwk: vfsPublicKey,
-      kek: encryptionKey,
     );
 
     final instance = VaultDataManagerService._(
       vaultDataManagerEncryptionService,
       vaultDataManagerApiService,
+      encryptedDekek: encryptedDekek,
+      keyPair: keyPair,
     );
 
     return instance;
@@ -126,8 +145,10 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   }) async {
     final verifiableCredentialBlob =
         utf8.encode(jsonEncode(verifiableCredential));
-    final dekGenerateModel = await _vaultDataManagerEncryptionService
-        .generateDataEncryptionMaterial();
+    final dekGenerateModel =
+        await _vaultDataManagerEncryptionService.generateDataEncryptionMaterial(
+      encryptionKey: await _keyPair.decrypt(_encryptedKey),
+    );
     final verifiableCredentialName =
         _getVerifiableCredentialName(verifiableCredential);
 
@@ -147,8 +168,10 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       {required String fileName,
       required String parentFolderNodeId,
       required Uint8List data}) async {
-    final dekGenerateModel = await _vaultDataManagerEncryptionService
-        .generateDataEncryptionMaterial();
+    final dekGenerateModel =
+        await _vaultDataManagerEncryptionService.generateDataEncryptionMaterial(
+      encryptionKey: await _keyPair.decrypt(_encryptedKey),
+    );
 
     await _vaultDataManagerApiService.createFile(
       parentFolderId: parentFolderNodeId,
@@ -179,8 +202,10 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     // List all profiles before creating new one so the root node has been created
     await _vaultDataManagerApiService.getListOfProfiles();
 
-    final dekGenerateModel = await _vaultDataManagerEncryptionService
-        .generateDataEncryptionMaterial();
+    final dekGenerateModel =
+        await _vaultDataManagerEncryptionService.generateDataEncryptionMaterial(
+      encryptionKey: await _keyPair.decrypt(_encryptedKey),
+    );
 
     return await _vaultDataManagerApiService.createProfile(
       profileName: name,
@@ -289,8 +314,10 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
 
     final encryptedDekBase64 = nodeInfoResponse.data?.edekInfo?.edek;
 
-    final dekEncryptedByVfsPublicKey = await _vaultDataManagerEncryptionService
-        .getDekEncryptedByApiPublicKey(encryptedDekBase64: encryptedDekBase64!);
+    final dekEncryptedByVfsPublicKey =
+        await _vaultDataManagerEncryptionService.getDekEncryptedByApiPublicKey(
+            encryptedDekBase64: encryptedDekBase64!,
+            encryptionKey: await _keyPair.decrypt(_encryptedKey));
     final profileDataResponse =
         await _vaultDataManagerApiService.getProfileData(
       profileNodeId: profileId,
@@ -407,8 +434,10 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
         await _vaultDataManagerApiService.getNodeInfo(nodeId: nodeId);
 
     final encryptedDekBase64 = nodeInfo.data?.edekInfo?.edek;
-    final dekEncryptedByVfsPublicKey = await _vaultDataManagerEncryptionService
-        .getDekEncryptedByApiPublicKey(encryptedDekBase64: encryptedDekBase64!);
+    final dekEncryptedByVfsPublicKey =
+        await _vaultDataManagerEncryptionService.getDekEncryptedByApiPublicKey(
+            encryptedDekBase64: encryptedDekBase64!,
+            encryptionKey: await _keyPair.decrypt(_encryptedKey));
 
     await _vaultDataManagerApiService.startFileScan(
       nodeId: nodeId,
@@ -421,8 +450,10 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     required String profileId,
     required ProfileData profileData,
   }) async {
-    final dekGenerateModel = await _vaultDataManagerEncryptionService
-        .generateDataEncryptionMaterial();
+    final dekGenerateModel =
+        await _vaultDataManagerEncryptionService.generateDataEncryptionMaterial(
+      encryptionKey: await _keyPair.decrypt(_encryptedKey),
+    );
 
     await _vaultDataManagerApiService.updateProfileData(
       profileNodeId: profileId,
@@ -451,8 +482,11 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     final commonNodeInfoResponse =
         await _vaultDataManagerApiService.getNodeInfo(nodeId: nodeId);
     final commonNodeEdek = commonNodeInfoResponse.data?.edekInfo?.edek;
-    final dekEncryptedByVfsPublicKey = await _vaultDataManagerEncryptionService
-        .getDekEncryptedByApiPublicKey(encryptedDekBase64: commonNodeEdek!);
+    final dekEncryptedByVfsPublicKey =
+        await _vaultDataManagerEncryptionService.getDekEncryptedByApiPublicKey(
+      encryptedDekBase64: commonNodeEdek!,
+      encryptionKey: await _keyPair.decrypt(_encryptedKey),
+    );
 
     final nodeInfoResponse = await _vaultDataManagerApiService.getNodeInfo(
       nodeId: nodeId,
@@ -495,6 +529,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
 
     final dek = await _vaultDataManagerEncryptionService.decryptDek(
       encryptedDek: base64.decode(encryptedDekBase64),
+      encryptionKey: await _keyPair.decrypt(_encryptedKey),
     );
 
     final fileResponse = await _vaultDataManagerApiService.downloadNodeContents(
