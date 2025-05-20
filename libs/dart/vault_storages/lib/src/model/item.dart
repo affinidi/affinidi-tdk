@@ -73,8 +73,8 @@ class Item {
     return {
       'name': name,
       'description': description,
-      'createdAt': createdAt,
-      'modifiedAt': modifiedAt,
+      'createdAt': createdAt.toIso8601String(),
+      'modifiedAt': modifiedAt.toIso8601String(),
       'createdBy': createdBy,
       'modifiedBy': modifiedBy,
       'fileCount': fileCount,
