@@ -10,7 +10,7 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.3.0
-  ssi: 1.0.0-dev.22
+  ssi: ^1.0.0
 
 dev_dependencies:
   dart_flutter_team_lints: ^3.2.1

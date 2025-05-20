@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 
 void main() async {
@@ -32,7 +31,7 @@ void main() async {
 
   // from wallet
   final keyStoreAlice = InMemoryKeyStore();
-  final walletAlice = await Bip32Wallet.fromSeed(seedAlice, keyStoreAlice);
+  final walletAlice = Bip32Wallet.fromSeed(seedAlice);
   final vaultAlice = Vault(
     wallet: walletAlice,
     vaultStore: keyStorageAlice,
@@ -42,7 +41,7 @@ void main() async {
 
   //2nd vault
   final keyStoreBob = InMemoryKeyStore();
-  final walletBob = await Bip32Wallet.fromSeed(seedBob, keyStoreBob);
+  final walletBob = Bip32Wallet.fromSeed(seedBob);
   final vaultBob = Vault(
     wallet: walletBob,
     vaultStore: keyStorageBob,

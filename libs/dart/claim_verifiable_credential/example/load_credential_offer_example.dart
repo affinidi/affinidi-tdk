@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_claim_verifiable_credential/oid4vci_claim_verifiable_credential.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
+import 'package:ssi/src/wallet/stores/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 
 /// This example demonstrates how to load and inspect a credential offer from a URL.

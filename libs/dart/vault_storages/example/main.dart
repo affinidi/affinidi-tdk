@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
+import 'package:ssi/src/wallet/stores/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 
 // To start work with the storage make sure you have updated those values:
