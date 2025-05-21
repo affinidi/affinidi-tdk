@@ -1,6 +1,9 @@
 // ignore_for_file: inference_failure_on_collection_literal
 
 class FileResponseFixtures {
+  static const String testFileName = 'test.txt';
+  static const String testVcName = 'test.vc';
+
   static const scannedFilesList = {
     'scannedFiles': [
       {

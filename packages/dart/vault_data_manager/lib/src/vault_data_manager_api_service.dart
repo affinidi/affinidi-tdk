@@ -6,6 +6,7 @@ import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:built_value/json_object.dart';
 import 'package:dio/dio.dart';
+import 'package:meta/meta.dart';
 
 import 'dto/error_response.dart';
 import 'exceptions/tdk_exception_type.dart';
@@ -35,7 +36,7 @@ class VaultDataManagerApiService
   late AccountsApi _accountsApi;
 
   final CryptographyService _cryptographyService = CryptographyService();
-  final Dio _dio = Dio();
+  Dio _dio = Dio();
 
   /// Creates an instance of [VaultDataManagerApiService].
   VaultDataManagerApiService({
@@ -46,6 +47,12 @@ class VaultDataManagerApiService
     _configApi = apiClient.getConfigApi();
     _profileDataApi = apiClient.getProfileDataApi();
     _accountsApi = apiClient.getAccountsApi();
+  }
+
+  /// Sets the Dio instance used for file uploads. This is primarily used for testing.
+  @visibleForTesting
+  void setDio(Dio dio) {
+    _dio = dio;
   }
 
   @override
@@ -228,7 +235,7 @@ class VaultDataManagerApiService
     try {
       final response = await _dio.fetch<dynamic>(RequestOptions(
         method: 'POST',
-        baseUrl: uploadUrl,
+        path: uploadUrl,
         data: data,
         headers: {'Content-Type': 'application/octet-stream'},
       ));
@@ -272,7 +279,7 @@ class VaultDataManagerApiService
     List<int>? dekEncryptedByVfsPublicKey,
   }) async {
     try {
-      return _nodesApi.getDetailedNodeInfo(
+      return await _nodesApi.getDetailedNodeInfo(
         nodeId: nodeId,
         dek: dekEncryptedByVfsPublicKey != null
             ? base64.encode(dekEncryptedByVfsPublicKey)
@@ -453,13 +460,15 @@ class VaultDataManagerApiService
     required String nodeId,
   }) async {
     try {
-      return RetryHelper.retry(
+      return await RetryHelper.retry(
         () => _nodesApi.deleteNode(
           nodeId: nodeId,
         ),
         retryIf: (error) {
           return error is DioException && error.isPendingUploadError;
         },
+        maxAttempts: 2,
+        initialDelay: const Duration(milliseconds: 100),
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(

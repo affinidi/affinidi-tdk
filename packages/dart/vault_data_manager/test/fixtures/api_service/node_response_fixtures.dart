@@ -1,81 +1,108 @@
 // ignore_for_file: inference_failure_on_collection_literal
 
+import 'dart:convert';
+
 class NodeResponseFixtures {
-  static const profile = {
-    'name': 'New cloud one',
-    'description': '4 test',
-    'status': 'CREATED',
-    'createdAt': '2024-12-03T15:59:02.646Z',
-    'modifiedAt': '2024-12-03T15:59:02.646Z',
-    'createdBy': 'did:key:zQ3shoJMELyuS5AMUYrUTKBwZWRVCPKNp7rhUUAw4GWPkTwoV',
-    'modifiedBy': 'did:key:zQ3shoJMELyuS5AMUYrUTKBwZWRVCPKNp7rhUUAw4GWPkTwoV',
-    'consumerId': 'did:key:zQ3shoJMELyuS5AMUYrUTKBwZWRVCPKNp7rhUUAw4GWPkTwoV',
-    'fileCount': 0,
-    'profileCount': 0,
-    'folderCount': 0,
-    'vcCount': 0,
-    'schema': 'primary.schema',
-    'parentNodeId': 'NzY3ZjY=',
-    'profileId': 'NzY3ZjYjV2dFR2U=',
-    'type': 'PROFILE',
-    'nodeId': 'NzY3ZjYjV2dFR2U=',
-    'edekInfo': {
-      'dekekId':
-          '784c56d02c07485b17e294a251abe9477c01f3df07a3a4fdf87cc813341eab7e',
-      'edek':
-          'ydDNrwc7IUO5i8CeUHGNd5dUJDKZLSoAKxuwc5MfAknf0Bmmx8TNYyoumPSoUjXg6A0dqULRaUpg5ocQKWNHkg=='
-    },
-    'metadata': '{"pictureURI":""}'
-  };
+  static const String profileNodeId = 'NzY3ZjYjV2dFR2U=';
+  static const String rootNodeId = 'NzY3ZjY=';
+  static const String testNodeId = 'test-node-id';
+  static const String testFolderId = 'test-folder-id';
+  static const String childNodeId1 = 'NzY3ZjYjY2hpbGQx';
+  static const String childNodeId2 = 'NzY3ZjYjY2hpbGQy';
 
-  static const unableToHardDelete = {
-    'name': 'OperationNotAllowedError',
-    'traceId': '1-67d33bf3-352100223ebf0e3a19448a3a',
-    'message': 'OperationNotAllowedError',
-    'details': [
-      {
-        'issue': 'Node with children cannot be operated for HARD_DELETE',
-        'field': 'fileCount',
-        'value': '1'
-      }
-    ]
-  };
-
-  static const profileList = {
+  static final profileList = {
     'nodes': [
       {
         'name': 'My profile',
-        'description': 'a profile with personal data',
+        'description': 'Test profile',
         'status': 'CREATED',
         'createdAt': '2025-03-03T13:59:40.752Z',
         'modifiedAt': '2025-03-03T13:59:40.752Z',
-        'createdBy':
-            'did:key:zQ3shoazRuJj9YPg2e87Aa5E7QvURishMSchgwt5gNJ6ogcbG',
-        'modifiedBy':
-            'did:key:zQ3shoazRuJj9YPg2e87Aa5E7QvURishMSchgwt5gNJ6ogcbG',
-        'consumerId':
-            'did:key:zQ3shoazRuJj9YPg2e87Aa5E7QvURishMSchgwt5gNJ6ogcbG',
+        'createdBy': 'did:key:test',
+        'modifiedBy': 'did:key:test',
+        'consumerId': 'did:key:test',
         'fileCount': 0,
         'profileCount': 0,
         'folderCount': 0,
         'vcCount': 0,
         'schema': 'primary.schema',
-        'parentNodeId': 'NzY3ZjY=',
-        'profileId': 'NzY3ZjYjamJKb2s=',
+        'parentNodeId': rootNodeId,
+        'profileId': profileNodeId,
         'type': 'PROFILE',
-        'nodeId': 'NzY3ZjYjamJKb2s=',
-        'edekInfo': {
-          'dekekId':
-              '78074741dbb0dfd22bf767e53f78c2a4144223c45d303d1da49dc98ccdfb65e0',
-          'edek':
-              'gslUIJZNIT4wS3HJhRELPtj1oemXzKk0XW/p1C5idaYZKS6Chj3GtTDwItdVnD/x3q2b0jrkoEN5TLrTVQGibw=='
-        },
-        'metadata': '{"pictureURI":""}'
+        'nodeId': profileNodeId,
+        'edekInfo': {'dekekId': 'test-dekek-id', 'edek': 'test-edek'},
+        'metadata': jsonEncode({'pictureURI': ''})
       }
     ]
   };
 
-  static const emptyList = {
-    'nodes': [],
+  static final emptyList = {'nodes': []};
+
+  static final profile = {
+    'name': 'My profile',
+    'description': 'Test profile',
+    'status': 'CREATED',
+    'createdAt': '2025-03-03T13:59:40.752Z',
+    'modifiedAt': '2025-03-03T13:59:40.752Z',
+    'createdBy': 'did:key:test',
+    'modifiedBy': 'did:key:test',
+    'consumerId': 'did:key:test',
+    'fileCount': 0,
+    'profileCount': 0,
+    'folderCount': 0,
+    'vcCount': 0,
+    'schema': 'primary.schema',
+    'parentNodeId': rootNodeId,
+    'profileId': profileNodeId,
+    'type': 'PROFILE',
+    'nodeId': profileNodeId,
+    'edekInfo': {'dekekId': 'test-dekek-id', 'edek': 'test-edek'},
+    'metadata': jsonEncode({'pictureURI': ''})
+  };
+
+  static final unableToHardDelete = {
+    'code': 'unable_to_hard_delete',
+    'message': 'Unable to hard delete node',
+  };
+
+  static const children = {
+    'nodes': [
+      {
+        'name': 'Child Node 1',
+        'description': 'First child node',
+        'status': 'CREATED',
+        'createdAt': '2025-03-03T13:59:40.752Z',
+        'modifiedAt': '2025-03-03T13:59:40.752Z',
+        'createdBy': 'did:key:test',
+        'modifiedBy': 'did:key:test',
+        'consumerId': 'did:key:test',
+        'fileCount': 0,
+        'profileCount': 0,
+        'folderCount': 0,
+        'vcCount': 0,
+        'schema': 'primary.schema',
+        'parentNodeId': rootNodeId,
+        'type': 'FOLDER',
+        'nodeId': childNodeId1,
+      },
+      {
+        'name': 'Child Node 2',
+        'description': 'Second child node',
+        'status': 'CREATED',
+        'createdAt': '2025-03-03T13:59:40.752Z',
+        'modifiedAt': '2025-03-03T13:59:40.752Z',
+        'createdBy': 'did:key:test',
+        'modifiedBy': 'did:key:test',
+        'consumerId': 'did:key:test',
+        'fileCount': 0,
+        'profileCount': 0,
+        'folderCount': 0,
+        'vcCount': 0,
+        'schema': 'primary.schema',
+        'parentNodeId': rootNodeId,
+        'type': 'FOLDER',
+        'nodeId': childNodeId2,
+      }
+    ]
   };
 }
