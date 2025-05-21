@@ -1,4 +1,5 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:ssi/ssi.dart';
 
 import '../exceptions/tdk_exception_type.dart';
@@ -27,31 +28,48 @@ class VFSCredentialStorage implements CredentialStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<List<DigitalCredential>> listCredentials() async {
-    return await _vaultDataManagerService.getDigitalCredentials(_profileId);
+  Future<List<DigitalCredential>> listCredentials({
+    AffinidiApiCancelToken? cancelToken,
+  }) async {
+    return await _vaultDataManagerService.getDigitalCredentials(
+      _profileId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<void> saveCredential(
-      {required VerifiableCredential verifiableCredential}) async {
+  Future<void> saveCredential({
+    required VerifiableCredential verifiableCredential,
+    AffinidiApiCancelToken? cancelToken,
+  }) async {
     await _vaultDataManagerService.addVerifiableCredentialToProfile(
       verifiableCredential: verifiableCredential,
       profileId: _profileId,
+      cancelToken: cancelToken,
     );
   }
 
   @override
-  Future<void> deleteCredential({required String digitalCredentialId}) async {
+  Future<void> deleteCredential({
+    required String digitalCredentialId,
+    AffinidiApiCancelToken? cancelToken,
+  }) async {
     await _vaultDataManagerService.deleteClaimedCredential(
       nodeId: digitalCredentialId,
+      cancelToken: cancelToken,
     );
   }
 
   @override
-  Future<DigitalCredential> getCredential(
-      {required String digitalCredentialId}) async {
+  Future<DigitalCredential> getCredential({
+    required String digitalCredentialId,
+    AffinidiApiCancelToken? cancelToken,
+  }) async {
     final digitalCredentials =
-        await _vaultDataManagerService.getDigitalCredentials(_profileId);
+        await _vaultDataManagerService.getDigitalCredentials(
+      _profileId,
+      cancelToken: cancelToken,
+    );
     final existingCredential = digitalCredentials
         .where(
           (digitalCredential) => digitalCredential.id == digitalCredentialId,
