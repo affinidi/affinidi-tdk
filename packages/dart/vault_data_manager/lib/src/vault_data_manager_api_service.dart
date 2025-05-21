@@ -744,9 +744,6 @@ class VaultDataManagerApiService
   }) async {
     try {
       final updateAccountInput = UpdateAccountInputBuilder()
-        ..name = 'Hello'
-        ..description = 'Description'
-        ..alias = 'Alias'
         ..accountDid = accountDid
         ..didProof = didProof
         ..metadata = metadata != null ? JsonObject(metadata) : null;
