@@ -16,7 +16,8 @@ void main() {
 
         await store.set(VaultStoreFixtures.testKeyId, key);
         final retrieved = await store.get(VaultStoreFixtures.testKeyId);
-        expect(retrieved?.toJson(), equals(key.toJson()));
+        expect(retrieved?.keyType, equals(key.keyType));
+        expect(retrieved?.privateKeyBytes, equals(key.privateKeyBytes));
       });
 
       test('it should check if key exists', () async {
@@ -37,14 +38,6 @@ void main() {
       });
     });
 
-    group('When managing seed', () {
-      test('it should store and retrieve seed', () async {
-        await store.setSeed(VaultStoreFixtures.testSeed);
-        final retrieved = await store.getSeed();
-        expect(retrieved, equals(VaultStoreFixtures.testSeed));
-      });
-    });
-
     group('When managing account index', () {
       test('it should store and retrieve account index', () async {
         await store.writeAccountIndex(VaultStoreFixtures.testAccountIndex);
@@ -58,7 +51,6 @@ void main() {
         // Setup test data
         await store.set(
             VaultStoreFixtures.testKeyId, VaultStoreFixtures.testStoredKey);
-        await store.setSeed(VaultStoreFixtures.testSeed);
         await store.writeAccountIndex(VaultStoreFixtures.testAccountIndex);
 
         // Clear all data
@@ -66,7 +58,6 @@ void main() {
 
         // Verify all data is cleared
         expect(await store.get(VaultStoreFixtures.testKeyId), isNull);
-        expect(await store.getSeed(), isNull);
         expect(await store.readAccountIndex(), equals(0));
       });
     });

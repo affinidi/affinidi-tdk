@@ -3,7 +3,7 @@ import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:ssi/ssi.dart';
 
-class MockDeterministicWallet extends Mock implements DeterministicWallet {}
+class MockDeterministicWallet extends Mock implements Wallet {}
 
 class MockVaultStore extends Mock implements VaultStore {}
 
