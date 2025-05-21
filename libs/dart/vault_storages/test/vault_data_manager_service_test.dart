@@ -71,7 +71,7 @@ void main() {
     });
   });
 
-  group('When creating vault data manager instance using delegeated token', () {
+  group('When creating vault data manager instance using delegated token', () {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
         final didSigner = await getDidSigner();
