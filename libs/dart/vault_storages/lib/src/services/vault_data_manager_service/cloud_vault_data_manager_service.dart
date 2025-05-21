@@ -26,7 +26,7 @@ import 'vault_data_manager_service_interface.dart';
 
 /// Implementation of [VaultDataManagerServiceInterface] that handles encrypted storage
 /// operations using vault data manager services.
-class VaultDataManagerService implements VaultDataManagerServiceInterface {
+class CloudVaultDataManagerService implements VaultDataManagerServiceInterface {
   /// Service for handling encryption operations
   late final VaultDataManagerEncryptionServiceInterface
       _vaultDataManagerEncryptionService;
@@ -37,15 +37,15 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   /// Logger instance for error handling
   final Logger _logger;
 
-  VaultDataManagerService._(
+  CloudVaultDataManagerService._(
     this._vaultDataManagerEncryptionService,
     this._vaultDataManagerApiService, {
     Logger? logger,
   }) : _logger = logger ?? Logger.instance;
 
-  /// Creates a new instance of [VaultDataManagerService] for testing purposes.
+  /// Creates a new instance of [CloudVaultDataManagerService] for testing purposes.
   @visibleForTesting
-  VaultDataManagerService(
+  CloudVaultDataManagerService(
     VaultDataManagerEncryptionServiceInterface
         vaultDataManagerEncryptionService,
     VaultDataManagerApiServiceInterface vaultDataManagerApiService, {
@@ -55,7 +55,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   /// Creates a new vault file system service instance with encryption.
   ///
   /// - [didSigner] - A signer that uses a key pair associated with a DID document to sign data.
-  static Future<VaultDataManagerService> create({
+  static Future<CloudVaultDataManagerService> create({
     required DidSigner didSigner,
     required Uint8List encryptionKey,
   }) async {
@@ -77,7 +77,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       kek: encryptionKey,
     );
 
-    final instance = VaultDataManagerService._(
+    final instance = CloudVaultDataManagerService._(
       vaultDataManagerEncryptionService,
       vaultDataManagerApiService,
     );
@@ -90,7 +90,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   /// - [didSigner] - A signer that uses a key pair associated with a DID document to sign data.
   /// - [profileDid] - did of profile that grantee is accessing
   /// - [encryptionKey] - dekek of delegated profile
-  static Future<VaultDataManagerService> createDelegated({
+  static Future<CloudVaultDataManagerService> createDelegated({
     required DidSigner didSigner,
     required String profileDid,
     required Uint8List encryptionKey,
@@ -111,7 +111,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       kek: encryptionKey,
     );
 
-    final instance = VaultDataManagerService._(
+    final instance = CloudVaultDataManagerService._(
       vaultDataManagerEncryptionService,
       vaultDataManagerApiService,
     );

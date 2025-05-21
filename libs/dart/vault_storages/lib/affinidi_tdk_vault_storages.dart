@@ -27,6 +27,7 @@ export 'src/services/credentials_service/credentials_service.dart';
 export 'src/services/credentials_service/credentials_service_interface.dart';
 export 'src/services/storage_service/storage_service.dart';
 export 'src/services/storage_service/storage_service_interface.dart';
-export 'src/services/vault_data_manager_service/vault_data_manager_service.dart';
+export 'src/services/vault_data_manager_service/cloud_vault_data_manager_service.dart';
+export 'src/services/vault_data_manager_service/edge_vault_data_manager_service.dart';
 export 'src/services/vault_data_manager_service/vault_data_manager_service_interface.dart';
 export 'src/vault/in_memory_vault_store.dart';

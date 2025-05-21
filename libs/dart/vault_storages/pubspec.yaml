@@ -16,6 +16,7 @@ dependencies:
   affinidi_tdk_vault: 1.0.0-dev.2
   affinidi_tdk_vault_data_manager: 1.0.0-dev.2
   affinidi_tdk_vault_data_manager_client: ^1.8.0
+  affinidi_tdk_vault_flutter_utils: 1.0.0-dev.2
   built_collection: ^5.1.1
   convert: ^3.1.2
   dio: ^5.8.0+1
