@@ -2,7 +2,6 @@ import 'package:affinidi_tdk_claim_verifiable_credential/oid4vci_claim_verifiabl
 import 'package:affinidi_tdk_claim_verifiable_credential/src/exceptions/tdk_exception_type.dart';
 import 'package:affinidi_tdk_test_utilities/affinidi_tdk_test_utilities.dart';
 import 'package:dio/dio.dart';
-import 'package:ssi/src/wallet/bip32_wallet.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
@@ -37,13 +36,9 @@ void main() async {
   final seed = EnvironmentFixtures.testEnvironment.seed;
 
   // WARNING: Don't use this seed in production! Generate a secure one instead.
-  final keyStore = InMemoryKeyStore();
-  final wallet = await Bip32Wallet.fromSeed(seed, keyStore);
-  final keyId = 'key-1';
-  final keyPair = await wallet.deriveKey(
-    keyId: keyId,
-    derivationPath: "m/44'/0'/0'/0/0",
-  );
+  final wallet = Bip32Wallet.fromSeed(seed);
+  final keyId = "m/44'/0'/0'/0/0";
+  final keyPair = await wallet.generateKey(keyId: keyId);
 
   final didDocument = DidKey.generateDocument(keyPair.publicKey);
   final signer = DidSigner(

@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_claim_verifiable_credential/oid4vci_claim_verifiable_credential.dart';
-import 'package:ssi/src/wallet/stores/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 
 /// This example demonstrates how to load and inspect a credential offer from a URL.
@@ -9,13 +8,10 @@ Future<void> main() async {
   try {
     // WARNING: Don't use this seed in production! Generate a secure one instead.
     final seed = Uint8List.fromList(List<int>.generate(32, (index) => index));
-    final keyStore = InMemoryKeyStore();
-    final wallet = await Bip32Wallet.fromSeed(seed, keyStore);
+    final wallet = Bip32Wallet.fromSeed(seed);
 
-    final keyDerivationPath = "m/44'/60'/0'/0/0";
-    final keyPair = await wallet.deriveKey(
-      derivationPath: keyDerivationPath,
-    );
+    final keyId = "m/44'/60'/0'/0/0";
+    final keyPair = await wallet.generateKey(keyId: keyId);
 
     final didDocument = DidKey.generateDocument(keyPair.publicKey);
     final signer = DidSigner(
