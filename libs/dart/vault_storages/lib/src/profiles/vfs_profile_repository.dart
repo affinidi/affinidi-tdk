@@ -6,6 +6,7 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 
 import '../credential/vfs_credential_storage.dart';
@@ -18,6 +19,29 @@ import '../services/vault_data_manager_service/vault_data_manager_service.dart';
 import '../services/vault_data_manager_service/vault_data_manager_service_interface.dart';
 import '../shared_storage/vfs_shared_storage.dart';
 import 'jwt_helper.dart';
+
+/// Type definition for creating [ConsumerAuthProvider] instances
+typedef ConsumerAuthProviderFactory = ConsumerAuthProvider
+    Function(DidSigner didSigner, {Dio? client});
+
+/// Factory function type for creating [IamApiService] instances.
+typedef IamApiServiceFactory = IamApiServiceInterface Function(
+    ConsumerAuthProvider provider);
+
+/// Type definition for creating regular [VaultDataManagerService] instances
+typedef VaultDataManagerServiceFactory
+    = Future<VaultDataManagerServiceInterface> Function({
+  required DidSigner didSigner,
+  required Uint8List encryptionKey,
+});
+
+/// Type definition for creating delegated [VaultDataManagerService] instances
+typedef VaultDelegatedDataManagerServiceFactory
+    = Future<VaultDataManagerServiceInterface> Function({
+  required DidSigner didSigner,
+  required Uint8List encryptionKey,
+  required String profileDid,
+});
 
 /// A VFS implementation of [ProfileRepository] for managing user profiles.
 class VfsProfileRepository implements ProfileRepository {
@@ -39,26 +63,40 @@ class VfsProfileRepository implements ProfileRepository {
   bool _configured = false;
 
   // Internal services that can be overridden for testing
-  final VaultDataManagerServiceInterface? _dataManagerService;
-  final ConsumerAuthProvider? _consumerAuthProvider;
-  final IamApiServiceInterface? _iamApiService;
+  final ConsumerAuthProviderFactory _consumerAuthProviderFactory;
+  final IamApiServiceFactory _iamApiServiceFactory;
+  final VaultDataManagerServiceFactory _vaultDataManagerServiceFactory;
+  final VaultDelegatedDataManagerServiceFactory
+      _vaultDelegatedDataManagerServiceFactory;
 
   /// Creates a new instance of [VfsProfileRepository].
   ///
   /// The [id] parameter is used to identify this repository instance.
   ///
   /// For testing purposes, you can provide mock implementations of:
-  /// - [dataManagerService]: A mock [VaultDataManagerServiceInterface]
-  /// - [consumerAuthProvider]: A mock [ConsumerAuthProvider]
-  /// - [iamApiService]: A mock [IamApiServiceInterface]
+  /// - [consumerAuthProviderFactory]: A factory function for creating [ConsumerAuthProvider] instances
+  /// - [iamApiServiceFactory]: A factory function for creating [IamApiService] instances
+  /// - [vaultDataManagerServiceFactory]: A factory function for creating regular [VaultDataManagerService] instances
+  /// - [vaultDelegatedDataManagerServiceFactory]: A factory function for creating delegated [VaultDataManagerService] instances
   VfsProfileRepository(
     this._id, {
-    VaultDataManagerServiceInterface? dataManagerService,
-    ConsumerAuthProvider? consumerAuthProvider,
-    IamApiServiceInterface? iamApiService,
-  })  : _dataManagerService = dataManagerService,
-        _consumerAuthProvider = consumerAuthProvider,
-        _iamApiService = iamApiService;
+    ConsumerAuthProviderFactory? consumerAuthProviderFactory,
+    IamApiServiceFactory? iamApiServiceFactory,
+    VaultDataManagerServiceFactory? vaultDataManagerServiceFactory,
+    VaultDelegatedDataManagerServiceFactory?
+        vaultDelegatedDataManagerServiceFactory,
+  })  : _consumerAuthProviderFactory = consumerAuthProviderFactory ??
+            ((DidSigner didSigner, {Dio? client}) =>
+                ConsumerAuthProvider(signer: didSigner, client: client)),
+        _iamApiServiceFactory = iamApiServiceFactory ??
+            ((ConsumerAuthProvider provider) => IamApiService(
+                affinidiTdkIamClient: AffinidiTdkIamClient(
+                    authTokenHook: provider.fetchConsumerToken))),
+        _vaultDataManagerServiceFactory =
+            vaultDataManagerServiceFactory ?? VaultDataManagerService.create,
+        _vaultDelegatedDataManagerServiceFactory =
+            vaultDelegatedDataManagerServiceFactory ??
+                VaultDataManagerService.createDelegated;
 
   @override
   String get id => _id;
@@ -130,7 +168,7 @@ class VfsProfileRepository implements ProfileRepository {
 
     await profileDataManager.createProfile(
       name: name,
-      description: description!,
+      description: description,
     );
 
     final accountMetadata = AccountMetadata(
@@ -186,16 +224,16 @@ class VfsProfileRepository implements ProfileRepository {
 
     if (account.hasSharedStorageData) {
       final didSigner = await _memoizedDidSigner('$accountIndex');
-
       for (var sharedStorage in account.accountMetadata!.sharedStorageData) {
+        final kek = await profileKeyPair
+            .decrypt(base64.decode(sharedStorage.encryptedDekek));
         sharedStorages[sharedStorage.nodePath] = VfsSharedStorage(
           id: sharedStorage.nodePath,
           sharedProfileId: sharedStorage.nodePath,
-          dataManagerService: await VaultDataManagerService.createDelegated(
-            profileDid: sharedStorage.profileDid,
-            encryptionKey: await profileKeyPair
-                .decrypt(base64.decode(sharedStorage.encryptedDekek)),
+          dataManagerService: await _vaultDelegatedDataManagerServiceFactory(
             didSigner: didSigner,
+            encryptionKey: kek,
+            profileDid: sharedStorage.profileDid,
           ),
         );
       }
@@ -286,10 +324,8 @@ class VfsProfileRepository implements ProfileRepository {
     required String walletKeyId,
     Uint8List? kek,
   }) async {
-    if (_dataManagerService != null) return _dataManagerService;
-
     kek ??= Uint8List.fromList(CryptographyService().getRandomBytes(32));
-    _dataManagers[walletKeyId] ??= await VaultDataManagerService.create(
+    _dataManagers[walletKeyId] ??= await _vaultDataManagerServiceFactory(
       didSigner: await _memoizedDidSigner(walletKeyId),
       encryptionKey: kek,
     );
@@ -325,14 +361,8 @@ class VfsProfileRepository implements ProfileRepository {
     required Permissions permissions,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
-    final consumerAuthProvider =
-        _consumerAuthProvider ?? ConsumerAuthProvider(signer: didSigner);
-    final iamApiService = _iamApiService ??
-        IamApiService(
-          affinidiTdkIamClient: AffinidiTdkIamClient(
-            authTokenHook: consumerAuthProvider.fetchConsumerToken,
-          ),
-        );
+    final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
+    final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
 
     await iamApiService.grantAccessVfs(
       granteeDid: granteeDid,
@@ -370,14 +400,8 @@ class VfsProfileRepository implements ProfileRepository {
     required String granteeDid,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
-    final consumerAuthProvider =
-        _consumerAuthProvider ?? ConsumerAuthProvider(signer: didSigner);
-    final iamApiService = _iamApiService ??
-        IamApiService(
-          affinidiTdkIamClient: AffinidiTdkIamClient(
-            authTokenHook: consumerAuthProvider.fetchConsumerToken,
-          ),
-        );
+    final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
+    final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
     await iamApiService.revokeAccessVfs(
       granteeDid: granteeDid,
     );

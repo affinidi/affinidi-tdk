@@ -18,8 +18,8 @@ class TestVfsProfileRepository extends VfsProfileRepository {
   TestVfsProfileRepository(
     super.id, {
     required this.mockDidSigner,
-    super.dataManagerService,
-    super.consumerAuthProvider,
-    super.iamApiService,
+    super.consumerAuthProviderFactory,
+    super.iamApiServiceFactory,
+    super.vaultDataManagerServiceFactory,
   });
 }

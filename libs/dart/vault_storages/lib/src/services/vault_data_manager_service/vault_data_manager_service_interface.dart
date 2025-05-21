@@ -53,7 +53,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// ```
   Future<Response<CreateNodeOK>> createProfile({
     required String name,
-    required String description,
+    String? description,
     String? profilePictureURI,
   });
 

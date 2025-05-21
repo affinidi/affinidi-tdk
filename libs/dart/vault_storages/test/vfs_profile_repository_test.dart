@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
@@ -36,9 +37,9 @@ class PublicKeyFake extends Fake implements PublicKey {
 class TestVfsProfileRepository extends VfsProfileRepository {
   TestVfsProfileRepository(
     super.id, {
-    super.dataManagerService,
-    super.consumerAuthProvider,
-    super.iamApiService,
+    super.consumerAuthProviderFactory,
+    super.iamApiServiceFactory,
+    super.vaultDataManagerServiceFactory,
   });
 }
 
@@ -70,8 +71,15 @@ void main() {
 
     repository = TestVfsProfileRepository(
       ProfileFixtures.repositoryId,
-      dataManagerService: mockDataManagerService,
-      iamApiService: mockIamApiService,
+      consumerAuthProviderFactory: (didSigner, {client}) =>
+          ConsumerAuthProvider(signer: didSigner, client: client),
+      iamApiServiceFactory: (provider) => mockIamApiService,
+      vaultDataManagerServiceFactory: ({
+        required DidSigner didSigner,
+        required Uint8List encryptionKey,
+        String? profileDid,
+      }) async =>
+          mockDataManagerService,
     );
 
     // Setup common mock behaviors

@@ -27,8 +27,8 @@ void main() async {
     signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
   );
 
-  // Initialize the VaultDataManagerService
-  final vaultDataManagerService = await VaultDataManagerService.create(
+  final vaultDataManagerServiceFactory = VaultDataManagerService.create;
+  final vaultDataManagerService = await vaultDataManagerServiceFactory(
     didSigner: didSigner,
     encryptionKey: Uint8List(2),
   );
