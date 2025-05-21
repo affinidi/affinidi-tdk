@@ -48,11 +48,11 @@ void main() {
     );
     vaultDataManagerApiServiceMocks =
         VaultDataManagerApiServiceMocks(mockVaultDataManagerApiService);
-    final keyPair = await getKeyPair();
+    final keyPair = await getRootKeyPair();
     vaultDataManagerService = VaultDataManagerService(
       mockVaultDataManagerEncryptionService,
       mockVaultDataManagerApiService,
-      keyPair: await getKeyPair(),
+      keyPair: await getRootKeyPair(),
       encryptedKey: await keyPair.encrypt(Uint8List(2)),
     );
     vaultDataManagerServiceFactory = VaultDataManagerService.create;
@@ -67,7 +67,7 @@ void main() {
       () {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
-        final keyPair = await getKeyPair();
+        final keyPair = await getRootKeyPair();
 
         final vaultDataManagerService = await vaultDataManagerServiceFactory(
           encryptedDekek: Uint8List(2),
@@ -83,7 +83,7 @@ void main() {
   group('When creating vault data manager instance using delegated token', () {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
-        final keyPair = await getKeyPair();
+        final keyPair = await getRootKeyPair();
         final vaultDataManagerService =
             await vaultDelegatedDataManagerServiceFactory(
           profileDid: 'profile_did',
