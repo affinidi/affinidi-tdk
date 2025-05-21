@@ -1,32 +1,125 @@
 import { expect } from 'chai'
-import { WalletApi, Configuration as WalletConfiguration } from '@affinidi-tdk/wallets-client'
-import { apiKey, walletId, unsignedCredential, unsignedCredentialParams } from './helpers'
+import { WalletApi, RevocationApi, Configuration } from '@affinidi-tdk/wallets-client'
+import {
+  projectId,
+  apiKey,
+  isCredentialValid,
+  unsignedCredentialParams,
+  extractRevocationStatusId,
+} from './helpers'
 
 describe('wallets-client', function () {
-  it('returns listWallets', async () => {
-    const walletConfiguration = new WalletConfiguration({ apiKey })
+  let api
+  let revocationApi
+  let walletId
+  let walletIdDidWeb
+  let walletDid
+  let signedCredential
 
-    const api = new WalletApi(walletConfiguration)
+  before(async function () {
+    const configuration = new Configuration({ apiKey })
+    api = new WalletApi(configuration)
+    revocationApi = new RevocationApi(configuration)
+  })
+
+  it('Create wallet: DID Key', async () => {
+    const { data, status } = await api.createWallet()
+
+    expect(status).to.equal(201)
+    expect(data).to.have.a.property('wallet')
+    walletId = data.wallet.id
+    walletDid = data.wallet.did
+  })
+
+  it('Create wallet: DID Web', async () => {
+    const wallet = {
+      didMethod: 'web',
+      didWebUrl: 'didweb.com'
+    }
+
+    const { data, status } = await api.createWallet(wallet)
+
+    expect(status).to.equal(201)
+    expect(data).to.have.a.property('wallet')
+    walletIdDidWeb = data.wallet.id
+  })
+
+  it('Sign Credential', async () => {
+    const date = new Date()
+    date.setMinutes(date.getMinutes() + 10)
+
+    const params = { ...JSON.parse(unsignedCredentialParams), holderDid: walletDid, expiresAt: date }
+    const revocable = true
+
+    const { data } = await api.signCredential(walletId, { unsignedCredentialParams: params, revocable })
+    expect(data).to.have.a.property('signedCredential')
+
+    signedCredential = data.signedCredential
+
+    const isValid = await isCredentialValid(signedCredential)
+    expect(isValid).to.be.true
+  })
+
+  it('gets revocation status list as RevocationListCredential', async () => {
+      const { revocationListCredential } = signedCredential.credentialStatus
+      const statusId = extractRevocationStatusId(revocationListCredential)
+      const { data } = await revocationApi.getRevocationCredentialStatus(projectId, walletId, statusId)
+
+      expect(data).to.have.a.property('revocationListCredential')
+      expect(data.revocationListCredential).to.have.a.property('id')
+      expect(data.revocationListCredential).to.have.a.property('type')
+      expect(data.revocationListCredential).to.have.a.property('credentialSubject')
+      expect(data.revocationListCredential).to.have.a.property('proof')
+      expect(data.revocationListCredential.type).to.eql([ 'VerifiableCredential', 'RevocationList2020Credential' ])
+  })
+
+  it('revokes verifiable credential', async () => {
+    await revocationApi.revokeCredential(walletId, { revocationReason: 'test', credentialId: signedCredential.id })
+
+    const isValid = await isCredentialValid(signedCredential)
+    expect(isValid).to.be.false
+  })
+
+  it('Sign JWT', async () => {
+    const header = { 'alg': 'HS256', 'typ': 'JWT' }
+    const payload = {
+      sub: crypto.randomUUID(),
+      iat: Math.floor(Date.now() / 1000),
+      exp: Math.floor((Date.now() + 5 * 60 * 1000) / 1000) // 5 minutes later
+    }
+
+    const { data } = await api.signJwtToken(walletId, { header, payload })
+    expect(data).to.have.a.property('signedJwt')
+  })
+
+  it('Get wallet', async () => {
+    const { data } = await api.getWallet(walletId)
+    expect(data).to.have.a.property('id')
+  })
+
+  it('List wallets', async () => {
     const { data } = await api.listWallets()
-
     expect(data.wallets).to.have.lengthOf.at.least(1)
   })
 
-  it('tests signCredential for unsignedCredentialParams', async () => {
-    const walletConfiguration = new WalletConfiguration({ apiKey })
-    const api = new WalletApi(walletConfiguration)
+  it('Update wallet', async () => {
+    const updatedName = 'Updated Wallet'
+    const { data } = await api.updateWallet(walletId, { name: updatedName })
 
-    const { data } = await api.signCredential(walletId, { unsignedCredentialParams: JSON.parse(unsignedCredentialParams) })
-
-    expect(data).to.have.a.property('signedCredential')
+    expect(data).to.have.a.property('id')
+    expect(data).to.have.a.property('name')
+    expect(data.name).to.eql(updatedName)
   })
 
-  it('tests signCredential for unsignedCredential', async () => {
-    const walletConfiguration = new WalletConfiguration({ apiKey })
-    const api = new WalletApi(walletConfiguration)
+  it('Delete wallet', async () => {
+    {
+      const { status } = await api.deleteWallet(walletId)
+      expect(status).to.equal(204)
+    }
 
-    const { data } = await api.signCredential(walletId, { unsignedCredential: JSON.parse(unsignedCredential) })
-
-    expect(data).to.have.a.property('signedCredential')
+    {
+      const { status } = await api.deleteWallet(walletIdDidWeb)
+      expect(status).to.equal(204)
+    }
   })
 })
