@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:mocktail/mocktail.dart';
 
 import '../fixtures/node_fixtures.dart';
@@ -10,7 +11,7 @@ void stubFileService(MockVaultDataManagerService service,
   when(() => service.createFolder(
         parentNodeId: any(named: 'parentNodeId'),
         folderName: any(named: 'folderName'),
-      )).thenAnswer((_) async => {});
+      )).thenAnswer((_) async => Future<void>.value());
 
   when(() => service.getChildNodes(nodeId: any(named: 'nodeId')))
       .thenAnswer((_) async => []);
@@ -19,26 +20,28 @@ void stubFileService(MockVaultDataManagerService service,
         parentFolderNodeId: any(named: 'parentFolderNodeId'),
         fileName: any(named: 'fileName'),
         data: any(named: 'data'),
-      )).thenAnswer((_) async => {});
+      )).thenAnswer((_) async => Future<void>.value());
 
-  when(() => service.deleteFolder(any())).thenAnswer((_) async => {});
-  when(() => service.deleteFile(any())).thenAnswer((_) async => {});
+  when(() => service.deleteFolder(any()))
+      .thenAnswer((_) async => Future<void>.value());
+  when(() => service.deleteFile(any()))
+      .thenAnswer((_) async => Future<void>.value());
 
   when(() => service.renameFolder(
         nodeId: any(named: 'nodeId'),
         newName: any(named: 'newName'),
-      )).thenAnswer((_) async => {});
+      )).thenAnswer((_) async => Future<void>.value());
 
   when(() => service.renameFile(
         nodeId: any(named: 'nodeId'),
         newName: any(named: 'newName'),
-      )).thenAnswer((_) async => {});
+      )).thenAnswer((_) async => Future<void>.value());
 
   when(() => service.getNodeInfo(any()))
       .thenAnswer((_) async => NodeFixtures.mockFileNode(profileId));
 
   when(() => service.downloadFile(nodeId: any(named: 'nodeId')))
-      .thenAnswer((_) async => [1, 2, 3]);
+      .thenAnswer((_) async => Uint8List.fromList([1, 2, 3]));
 }
 
 void stubCredentialService(
@@ -52,9 +55,9 @@ void stubCredentialService(
   when(() => service.addVerifiableCredentialToProfile(
         profileId: any(named: 'profileId'),
         verifiableCredential: any(named: 'verifiableCredential'),
-      )).thenAnswer((_) async => {});
+      )).thenAnswer((_) async => Future<void>.value());
 
   when(() => service.deleteClaimedCredential(
         nodeId: any(named: 'nodeId'),
-      )).thenAnswer((_) async => {});
+      )).thenAnswer((_) async => Future<void>.value());
 }

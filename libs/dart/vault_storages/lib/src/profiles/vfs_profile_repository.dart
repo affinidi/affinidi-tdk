@@ -6,16 +6,42 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 
 import '../credential/vfs_credential_storage.dart';
 import '../exceptions/tdk_exception_type.dart';
 import '../file/vfs_file_storage.dart';
 import '../iam_api_service.dart';
+import '../iam_api_service_interface.dart';
 import '../model/account.dart';
 import '../services/vault_data_manager_service/vault_data_manager_service.dart';
+import '../services/vault_data_manager_service/vault_data_manager_service_interface.dart';
 import '../shared_storage/vfs_shared_storage.dart';
 import 'jwt_helper.dart';
+
+/// Type definition for creating [ConsumerAuthProvider] instances
+typedef ConsumerAuthProviderFactory = ConsumerAuthProvider
+    Function(DidSigner didSigner, {Dio? client});
+
+/// Factory function type for creating [IamApiService] instances.
+typedef IamApiServiceFactory = IamApiServiceInterface Function(
+    ConsumerAuthProvider provider);
+
+/// Type definition for creating regular [VaultDataManagerService] instances
+typedef VaultDataManagerServiceFactory
+    = Future<VaultDataManagerServiceInterface> Function({
+  required DidSigner didSigner,
+  required Uint8List encryptionKey,
+});
+
+/// Type definition for creating delegated [VaultDataManagerService] instances
+typedef VaultDelegatedDataManagerServiceFactory
+    = Future<VaultDataManagerServiceInterface> Function({
+  required DidSigner didSigner,
+  required Uint8List encryptionKey,
+  required String profileDid,
+});
 
 /// A VFS implementation of [ProfileRepository] for managing user profiles.
 class VfsProfileRepository implements ProfileRepository {
@@ -33,14 +59,44 @@ class VfsProfileRepository implements ProfileRepository {
 
   final String _id;
   late final DeterministicWallet _wallet;
-
   late VaultStore _keyStorage;
   bool _configured = false;
+
+  // Internal services that can be overridden for testing
+  final ConsumerAuthProviderFactory _consumerAuthProviderFactory;
+  final IamApiServiceFactory _iamApiServiceFactory;
+  final VaultDataManagerServiceFactory _vaultDataManagerServiceFactory;
+  final VaultDelegatedDataManagerServiceFactory
+      _vaultDelegatedDataManagerServiceFactory;
 
   /// Creates a new instance of [VfsProfileRepository].
   ///
   /// The [id] parameter is used to identify this repository instance.
-  VfsProfileRepository(this._id);
+  ///
+  /// For testing purposes, you can provide mock implementations of:
+  /// - [consumerAuthProviderFactory]: A factory function for creating [ConsumerAuthProvider] instances
+  /// - [iamApiServiceFactory]: A factory function for creating [IamApiService] instances
+  /// - [vaultDataManagerServiceFactory]: A factory function for creating regular [VaultDataManagerService] instances
+  /// - [vaultDelegatedDataManagerServiceFactory]: A factory function for creating delegated [VaultDataManagerService] instances
+  VfsProfileRepository(
+    this._id, {
+    ConsumerAuthProviderFactory? consumerAuthProviderFactory,
+    IamApiServiceFactory? iamApiServiceFactory,
+    VaultDataManagerServiceFactory? vaultDataManagerServiceFactory,
+    VaultDelegatedDataManagerServiceFactory?
+        vaultDelegatedDataManagerServiceFactory,
+  })  : _consumerAuthProviderFactory = consumerAuthProviderFactory ??
+            ((DidSigner didSigner, {Dio? client}) =>
+                ConsumerAuthProvider(signer: didSigner, client: client)),
+        _iamApiServiceFactory = iamApiServiceFactory ??
+            ((ConsumerAuthProvider provider) => IamApiService(
+                affinidiTdkIamClient: AffinidiTdkIamClient(
+                    authTokenHook: provider.fetchConsumerToken))),
+        _vaultDataManagerServiceFactory =
+            vaultDataManagerServiceFactory ?? VaultDataManagerService.create,
+        _vaultDelegatedDataManagerServiceFactory =
+            vaultDelegatedDataManagerServiceFactory ??
+                VaultDataManagerService.createDelegated;
 
   @override
   String get id => _id;
@@ -122,7 +178,6 @@ class VfsProfileRepository implements ProfileRepository {
       sharedStorageData: [],
     );
 
-    // TODO(MA): anything between create account, getProfiles and createProfile could fail. Cleanup account in that case
     final accountVaultDataManagerService =
         await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
     await accountVaultDataManagerService.createAccount(
@@ -160,7 +215,6 @@ class VfsProfileRepository implements ProfileRepository {
         walletKeyId: accountIndex.toString(), kek: kek);
 
     final vfsProfiles = await profileDataManager.getProfiles();
-    // Note: accounts should always have no more than one profile associated.
     final profile = vfsProfiles.firstOrNull;
 
     if (profile == null) {
@@ -170,16 +224,16 @@ class VfsProfileRepository implements ProfileRepository {
 
     if (account.hasSharedStorageData) {
       final didSigner = await _memoizedDidSigner('$accountIndex');
-
       for (var sharedStorage in account.accountMetadata!.sharedStorageData) {
+        final kek = await profileKeyPair
+            .decrypt(base64.decode(sharedStorage.encryptedDekek));
         sharedStorages[sharedStorage.nodePath] = VfsSharedStorage(
           id: sharedStorage.nodePath,
           sharedProfileId: sharedStorage.nodePath,
-          dataManagerService: await VaultDataManagerService.createDelegated(
-            profileDid: sharedStorage.profileDid,
-            encryptionKey: await profileKeyPair
-                .decrypt(base64.decode(sharedStorage.encryptedDekek)),
+          dataManagerService: await _vaultDelegatedDataManagerServiceFactory(
             didSigner: didSigner,
+            encryptionKey: kek,
+            profileDid: sharedStorage.profileDid,
           ),
         );
       }
@@ -257,7 +311,7 @@ class VfsProfileRepository implements ProfileRepository {
     );
   }
 
-  final _dataManagers = <String, VaultDataManagerService>{};
+  final _dataManagers = <String, VaultDataManagerServiceInterface>{};
 
   /// Deletes any memoized data associated to the accountIndex when a profile is deleted
   void _clearMemoizedProfileData(int accountIndex) {
@@ -266,12 +320,12 @@ class VfsProfileRepository implements ProfileRepository {
   }
 
   /// Memoize dataManagerService based on the walletKeyId
-  Future<VaultDataManagerService> _memoizedDataManagerService({
+  Future<VaultDataManagerServiceInterface> _memoizedDataManagerService({
     required String walletKeyId,
     Uint8List? kek,
   }) async {
     kek ??= Uint8List.fromList(CryptographyService().getRandomBytes(32));
-    _dataManagers[walletKeyId] ??= await VaultDataManagerService.create(
+    _dataManagers[walletKeyId] ??= await _vaultDataManagerServiceFactory(
       didSigner: await _memoizedDidSigner(walletKeyId),
       encryptionKey: kek,
     );
@@ -306,13 +360,9 @@ class VfsProfileRepository implements ProfileRepository {
     required String granteeDid,
     required Permissions permissions,
   }) async {
-    final didSigner = await _memoizedDidSigner('$accountIndex'); // Profile
-    final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
-    final iamApiService = IamApiService(
-      affinidiTdkIamClient: AffinidiTdkIamClient(
-        authTokenHook: consumerAuthProvider.fetchConsumerToken,
-      ),
-    );
+    final didSigner = await _memoizedDidSigner('$accountIndex');
+    final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
+    final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
 
     await iamApiService.grantAccessVfs(
       granteeDid: granteeDid,
@@ -335,7 +385,6 @@ class VfsProfileRepository implements ProfileRepository {
       );
     }
 
-    // TODO(MA): refactor logic to get account dekek and memoize it.
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$accountIndex');
     final kek = await profileKeyPair.decrypt(
@@ -351,12 +400,8 @@ class VfsProfileRepository implements ProfileRepository {
     required String granteeDid,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
-    final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
-    final iamApiService = IamApiService(
-      affinidiTdkIamClient: AffinidiTdkIamClient(
-        authTokenHook: consumerAuthProvider.fetchConsumerToken,
-      ),
-    );
+    final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
+    final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
     await iamApiService.revokeAccessVfs(
       granteeDid: granteeDid,
     );
@@ -374,8 +419,6 @@ class VfsProfileRepository implements ProfileRepository {
     required Uint8List kek,
     required String grantedProfileDid,
   }) async {
-    // TODO: ask nucleus to add PATCH to update the only required portion of data
-    // TODO: have a GET account by {accountIndex}
     final profileKeyPair =
         await _getProfileKeyPair(accountIndex: '$accountIndex');
     final sharedStorageData = SharedStorageData(

@@ -34,6 +34,9 @@ void main() {
       vaultDataManagerEncryptionServiceMocks;
   late VaultDataManagerApiServiceMocks vaultDataManagerApiServiceMocks;
   late VaultDataManagerService vaultDataManagerService;
+  late VaultDataManagerServiceFactory vaultDataManagerServiceFactory;
+  late VaultDelegatedDataManagerServiceFactory
+      vaultDelegatedDataManagerServiceFactory;
 
   setUp(() {
     mockVaultDataManagerApiService = MockVaultDataManagerApiService();
@@ -49,6 +52,9 @@ void main() {
       mockVaultDataManagerEncryptionService,
       mockVaultDataManagerApiService,
     );
+    vaultDataManagerServiceFactory = VaultDataManagerService.create;
+    vaultDelegatedDataManagerServiceFactory =
+        VaultDataManagerService.createDelegated;
 
     registerFallbackValue(Uint8List(0));
   });
@@ -60,7 +66,7 @@ void main() {
       test('it pass without exception thrown', () async {
         final didSigner = await getDidSigner();
 
-        final vaultDataManagerService = await VaultDataManagerService.create(
+        final vaultDataManagerService = await vaultDataManagerServiceFactory(
           didSigner: didSigner,
           encryptionKey: Uint8List(2),
         );
@@ -77,7 +83,7 @@ void main() {
         final didSigner = await getDidSigner();
 
         final vaultDataManagerService =
-            await VaultDataManagerService.createDelegated(
+            await vaultDelegatedDataManagerServiceFactory(
           didSigner: didSigner,
           profileDid: 'profile_did',
           encryptionKey: Uint8List(2),
