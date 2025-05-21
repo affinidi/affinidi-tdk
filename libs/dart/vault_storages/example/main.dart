@@ -29,15 +29,21 @@ void main() async {
 
   // Initialize the VaultDataManagerService
   final vaultDataManagerService = await VaultDataManagerService.create(
-      didSigner: didSigner, encryptionKey: Uint8List(2));
+    didSigner: didSigner,
+    encryptionKey: Uint8List(2),
+  );
 
   // once you have the service you need to:
   // 1. create your first profile using [profiles/create_profile.dart] example
   // 2. create StorageService with [profileId] created on the first step
-  final storageService = StorageService(
-      vaultDataManagerService: vaultDataManagerService,
-      profileId: 'your_profile_id');
+  final storageService = VFSFileStorage(
+    id: 'vfs',
+    dataManagerService: vaultDataManagerService,
+  );
 
   // once you have storage service you can create folder under you profile using:
-  await storageService.createFolder(folderName: 'your_folder_name');
+  await storageService.createFolder(
+    folderName: 'your_folder_name',
+    parentFolderId: 'your_profile_id',
+  );
 }
