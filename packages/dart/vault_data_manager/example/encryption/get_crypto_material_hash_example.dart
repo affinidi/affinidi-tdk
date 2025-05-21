@@ -8,12 +8,11 @@ import '../../test/fixtures/encryption/jwk.dart';
 /// wallet-derived encryption key, useful for verification or matching.
 Future<void> main() async {
   final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
-    kek: encryptionKey,
     cryptographyService: CryptographyService(),
     jwk: jwk,
   );
 
-  final dekDecryptedByApiPrivateKey =
-      await vaultDataManagerEncryptionService.getWalletCryptoMaterialKeyHash();
+  final dekDecryptedByApiPrivateKey = await vaultDataManagerEncryptionService
+      .getWalletCryptoMaterialKeyHash(encryptionKey: encryptionKey);
   print('Wallet Crypto Material Key Hash: $dekDecryptedByApiPrivateKey');
 }

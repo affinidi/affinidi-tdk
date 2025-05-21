@@ -9,12 +9,14 @@ import '../../test/fixtures/encryption/jwk.dart';
 /// wallet material and convert it to be encrypted with the API public key.
 Future<void> main() async {
   final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
-    kek: encryptionKey,
     cryptographyService: CryptographyService(),
     jwk: jwk,
   );
 
-  final dekEncryptedByApiPublicKey = await vaultDataManagerEncryptionService
-      .getDekEncryptedByApiPublicKey(encryptedDekBase64: encryptedDekBase64);
+  final dekEncryptedByApiPublicKey =
+      await vaultDataManagerEncryptionService.getDekEncryptedByApiPublicKey(
+    encryptedDekBase64: encryptedDekBase64,
+    encryptionKey: encryptionKey,
+  );
   print('API encrypted DEK: $dekEncryptedByApiPublicKey');
 }
