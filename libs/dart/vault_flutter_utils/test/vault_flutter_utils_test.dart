@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_flutter_utils/storages/flutter_secure_vault_store.dart';
@@ -22,44 +21,23 @@ void main() {
     vault = FlutterSecureVaultStore(vaultId, mockStorage);
   });
 
-  group('When storing a seed', () {
-    /// Verifies that the [setSeed] method encodes and stores the seed correctly.
-    test('should store the base64-encoded seed correctly', () async {
-      final seed = Uint8List.fromList([1, 2, 3]);
-
-      // stub the write method
-      when(() => mockStorage.write(
-            key: any(named: 'key'),
-            value: any(named: 'value'),
-          )).thenAnswer((_) async {});
-
-      await vault.setSeed(seed);
-
-      verify(() => mockStorage.write(
-            key: '${vaultId}_seed',
-            value: base64Encode(seed),
-          )).called(1);
-    });
-  });
-
-  group('When reading a seed', () {
-    group('and the seed exists', () {
-      test('it returns the decoded value', () async {
-        final base64Seed = base64Encode([4, 5, 6]);
-        when(() => mockStorage.read(key: '${vaultId}_seed'))
-            .thenAnswer((_) async => base64Seed);
-        final result = await vault.getSeed();
-        expect(result, Uint8List.fromList([4, 5, 6]));
-      });
+  group('When generating a random seed', () {
+    test('should generate a 32-byte seed', () {
+      final seed = vault.getRandomSeed();
+      expect(seed.length, 32);
     });
 
-    group('and the seed does not exist', () {
-      test('it returns null', () async {
-        when(() => mockStorage.read(key: '${vaultId}_seed'))
-            .thenAnswer((_) async => null);
-        final result = await vault.getSeed();
-        expect(result, isNull);
-      });
+    test('should generate different seeds on each call', () {
+      final seed1 = vault.getRandomSeed();
+      final seed2 = vault.getRandomSeed();
+      expect(seed1, isNot(equals(seed2)));
+    });
+
+    test('should generate cryptographically secure random bytes', () {
+      final seed = vault.getRandomSeed();
+      // Check that the bytes are not all the same value
+      final firstByte = seed[0];
+      expect(seed.any((byte) => byte != firstByte), isTrue);
     });
   });
 
@@ -98,6 +76,7 @@ void main() {
       });
     });
   });
+
   group('When managing a stored key', () {
     const keyName = 'customKey';
 
@@ -167,26 +146,23 @@ void main() {
 
     group('and the key is reserved', () {
       test('set throws ArgumentError', () {
-        expect(() => vault.set('${vaultId}_seed', storedKey),
+        expect(() => vault.set('${vaultId}_accountIndex', storedKey),
             throwsA(isA<ArgumentError>()));
       });
 
       test('remove throws ArgumentError', () {
-        expect(() => vault.remove('${vaultId}_seed'),
+        expect(() => vault.remove('${vaultId}_accountIndex'),
             throwsA(isA<ArgumentError>()));
       });
     });
   });
 
   group('When clearing vault data', () {
-    test('it removes seed and accountIndex', () async {
-      when(() => mockStorage.delete(key: '${vaultId}_seed'))
-          .thenAnswer((_) async {});
+    test('it removes accountIndex', () async {
       when(() => mockStorage.delete(key: '${vaultId}_accountIndex'))
           .thenAnswer((_) async {});
 
       await vault.clear();
-      verify(() => mockStorage.delete(key: '${vaultId}_seed')).called(1);
       verify(() => mockStorage.delete(key: '${vaultId}_accountIndex'))
           .called(1);
     });

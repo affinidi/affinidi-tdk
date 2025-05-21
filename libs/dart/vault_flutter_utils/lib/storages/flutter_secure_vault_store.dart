@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
@@ -29,30 +30,16 @@ class FlutterSecureVaultStore extends VaultStore {
             );
 
   final String _vaultId;
-
   final FlutterSecureStorage _secureStorage;
+  final _random = Random.secure();
 
-  /// Returns any pre-saved seed or null
   @override
-  Future<Uint8List?> getSeed() async {
-    final data = await _secureStorage.read(
-      key: _Key.seed.key(_vaultId),
-    );
-
-    if (data == null) {
-      return null;
+  Uint8List getRandomSeed() {
+    final seed = Uint8List(32);
+    for (var i = 0; i < 32; i++) {
+      seed[i] = _random.nextInt(256);
     }
-
-    return base64Decode(data);
-  }
-
-  /// Persists a seed for next time usage
-  @override
-  Future<void> setSeed(Uint8List value) async {
-    await _secureStorage.write(
-      key: _Key.seed.key(_vaultId),
-      value: base64Encode(value),
-    );
+    return seed;
   }
 
   @override
@@ -112,11 +99,9 @@ class FlutterSecureVaultStore extends VaultStore {
     );
   }
 
-  /// Removes any stored seed preventing it's re-use.
   /// Removes any stored accountIndex
   @override
   Future<void> clear() async {
-    await _secureStorage.delete(key: _Key.seed.key(_vaultId));
     await _secureStorage.delete(key: _Key.accountIndex.key(_vaultId));
   }
 }

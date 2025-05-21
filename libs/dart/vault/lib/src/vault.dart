@@ -11,7 +11,7 @@ import 'storage_interfaces/vault_store.dart';
 
 /// Manages vault operations and profile repositories.
 class Vault {
-  late final DeterministicWallet _wallet;
+  late final Wallet _wallet;
   final VaultStore _vaultStore;
   bool _initialized = false;
   Future<void>? _initializing;
@@ -67,7 +67,7 @@ class Vault {
   /// - No profile repositories are provided
   /// - The default profile repository ID is invalid
   Vault({
-    required DeterministicWallet wallet,
+    required Wallet wallet,
     required VaultStore vaultStore,
     required Map<String, ProfileRepository> profileRepositories,
     String? defaultProfileRepositoryId,
@@ -123,7 +123,22 @@ class Vault {
     required Map<String, ProfileRepository> profileRepositories,
     String? defaultProfileRepositoryId,
   }) async {
-    final wallet = await Bip32Wallet.fromKeyStore(vaultStore);
+    // Create a new Bip32Wallet instance
+    final wallet = Bip32Wallet.fromSeed(vaultStore.getRandomSeed());
+
+    //  final seedKey = await vaultStore.get('seed');
+    // final seed = seedKey?.privateKeyBytes ?? vaultStore.getRandomSeed();
+    // if (seedKey == null) {
+    //   await vaultStore.set(
+    //       'seed',
+    //       StoredKey(
+    //         keyType: KeyType.secp256k1,
+    //         privateKeyBytes: seed,
+    //       ));
+    // }
+
+    // // Create the wallet
+    // final wallet = Bip32Wallet.fromSeed(seed);
 
     return Vault(
       wallet: wallet,

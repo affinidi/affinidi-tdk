@@ -30,7 +30,6 @@ void main() async {
   };
 
   // from wallet
-  final keyStoreAlice = InMemoryKeyStore();
   final walletAlice = Bip32Wallet.fromSeed(seedAlice);
   final vaultAlice = Vault(
     wallet: walletAlice,
@@ -40,7 +39,6 @@ void main() async {
   );
 
   //2nd vault
-  final keyStoreBob = InMemoryKeyStore();
   final walletBob = Bip32Wallet.fromSeed(seedBob);
   final vaultBob = Vault(
     wallet: walletBob,

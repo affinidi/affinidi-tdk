@@ -6,7 +6,7 @@ import 'vault_store.dart';
 class RepositoryConfiguration {
   /// Creates a new instance of [RepositoryConfiguration].
   ///
-  /// [wallet] - The deterministic wallet to use for cryptographic operations.
+  /// [wallet] - The wallet to use for cryptographic operations.
   /// [keyStorage] - Optional storage for cryptographic keys.
   RepositoryConfiguration({
     required this.wallet,
@@ -16,6 +16,6 @@ class RepositoryConfiguration {
   /// Storage for cryptographic keys.
   final VaultStore? keyStorage;
 
-  /// Deterministic wallet for cryptographic operations.
-  final DeterministicWallet wallet;
+  /// Wallet for cryptographic operations.
+  final Wallet wallet;
 }
