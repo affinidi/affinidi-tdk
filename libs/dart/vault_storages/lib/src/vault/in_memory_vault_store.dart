@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 
 /// An in memory implementation of [VaultStore] for storing keys and seed data.
@@ -10,7 +8,6 @@ class InMemoryVaultStore extends VaultStore {
   InMemoryVaultStore();
 
   final Map<String, StoredKey> _keyPairStore = {};
-  Uint8List? _seed;
   int _accountIndex = 0;
 
   @override
@@ -21,16 +18,6 @@ class InMemoryVaultStore extends VaultStore {
   @override
   Future<StoredKey?> get(String key) async {
     return _keyPairStore[key];
-  }
-
-  @override
-  Future<void> setSeed(Uint8List seed) async {
-    _seed = seed;
-  }
-
-  @override
-  Future<Uint8List?> getSeed() async {
-    return _seed;
   }
 
   @override
@@ -46,7 +33,6 @@ class InMemoryVaultStore extends VaultStore {
   @override
   Future<void> clear() async {
     _keyPairStore.clear();
-    _seed = null;
     _accountIndex = 0;
   }
 
