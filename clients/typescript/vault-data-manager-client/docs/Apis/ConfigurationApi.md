@@ -1,16 +1,16 @@
-# ConfigApi
+# ConfigurationApi
 
 All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
-| Method                                  | HTTP request       | Description |
-| --------------------------------------- | ------------------ | ----------- |
-| [**getConfig**](ConfigApi.md#getConfig) | **GET** /v1/config |             |
+| Method                                                       | HTTP request       | Description |
+| ------------------------------------------------------------ | ------------------ | ----------- |
+| [**getConfiguration**](ConfigurationApi.md#getConfiguration) | **GET** /v1/config |             |
 
-<a name="getConfig"></a>
+<a name="getConfiguration"></a>
 
-# **getConfig**
+# **getConfiguration**
 
-> GetConfigOK getConfig()
+> GetConfigOK getConfiguration()
 
     Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39; and 1, respectively.
 
