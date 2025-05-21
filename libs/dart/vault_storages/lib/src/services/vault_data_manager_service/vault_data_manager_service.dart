@@ -13,7 +13,6 @@ import 'package:meta/meta.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../exceptions/tdk_exception_type.dart';
-import '../../extensions/key_pair_extensions.dart';
 import '../../model/account.dart';
 import '../../model/node.dart';
 import '../../model/node_status.dart';
@@ -76,7 +75,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     required KeyPair keyPair,
   }) async {
     final consumerAuthProvider =
-        ConsumerAuthProvider(signer: keyPair.didSigner);
+        ConsumerAuthProvider(signer: keyPair.didSigner());
     return _create(
       encryptedDekek: encryptedDekek,
       keyPair: keyPair,
@@ -95,7 +94,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     required KeyPair keyPair,
   }) async {
     final consumerAuthProvider =
-        ConsumerAuthProvider(signer: keyPair.didSigner);
+        ConsumerAuthProvider(signer: keyPair.didSigner());
     return _create(
       encryptedDekek: encryptedDekek,
       keyPair: keyPair,
@@ -724,6 +723,25 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       accountDid: accountDid,
       didProof: didProof,
       metadata: metadata.toJson(),
+    );
+  }
+}
+
+/// Extension methods for helping generating a DidSigner from a KeyPair.
+extension _KeyPairDidSigner on KeyPair {
+  /// Returns a DidSigner constructed using the KeyPair
+  ///
+  /// [signatureScheme] defaults to [SignatureScheme.ecdsa_secp256k1_sha256]
+  ///
+  DidSigner didSigner({
+    SignatureScheme signatureScheme = SignatureScheme.ecdsa_secp256k1_sha256,
+  }) {
+    final didDocument = DidKey.generateDocument(publicKey);
+    return DidSigner(
+      didDocument: didDocument,
+      didKeyId: didDocument.verificationMethod.first.id,
+      keyPair: this,
+      signatureScheme: signatureScheme,
     );
   }
 }
