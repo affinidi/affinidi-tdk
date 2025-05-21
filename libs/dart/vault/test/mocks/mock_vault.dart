@@ -4,13 +4,13 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:ssi/ssi.dart';
 
-class MockDeterministicWallet extends Mock implements DeterministicWallet {}
+class MockWallet extends Mock implements Wallet {}
 
 class MockBip32Wallet extends Mock implements Bip32Wallet {}
 
 class MockVaultStore extends Mock implements VaultStore {
   @override
-  Future<Uint8List?> getSeed() async => Uint8List.fromList([1, 2, 3]);
+  Uint8List getRandomSeed() => Uint8List.fromList([1, 2, 3]);
 }
 
 class MockProfileRepository extends Mock implements ProfileRepository {}
@@ -23,25 +23,19 @@ class MockSharedStorage extends Mock implements SharedStorage {}
 
 class FakeKeyStore extends Fake implements KeyStore {
   @override
-  Future<Uint8List> getSeed() async => Uint8List.fromList([1, 2, 3]);
-
-  @override
-  Future<void> setSeed(Uint8List seed) async {}
-
-  @override
-  Future<void> clear() async {}
-
-  @override
-  Future<bool> contains(String key) async => false;
-
-  @override
   Future<StoredKey?> get(String key) async => null;
+
+  @override
+  Future<void> set(String key, StoredKey value) async {}
 
   @override
   Future<void> remove(String key) async {}
 
   @override
-  Future<void> set(String key, StoredKey value) async {}
+  Future<bool> contains(String key) async => false;
+
+  @override
+  Future<void> clear() async {}
 }
 
 class TestVault extends Vault {

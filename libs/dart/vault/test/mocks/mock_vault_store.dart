@@ -1,13 +1,16 @@
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:ssi/ssi.dart';
 
 class MockVaultStore extends Mock implements VaultStore {}
 
 class TestVaultStore extends VaultStore {
   int? _accountIndex;
   final Map<String, StoredKey> _store = {};
+  final _random = Random.secure();
 
   @override
   Future<void> writeAccountIndex(int accountIndex) async {
@@ -35,8 +38,12 @@ class TestVaultStore extends VaultStore {
   }
 
   @override
-  Future<Uint8List> getSeed() async {
-    return Uint8List.fromList([1, 2, 3]);
+  Uint8List getRandomSeed() {
+    final seed = Uint8List(32);
+    for (var i = 0; i < 32; i++) {
+      seed[i] = _random.nextInt(256);
+    }
+    return seed;
   }
 
   @override
@@ -48,7 +55,4 @@ class TestVaultStore extends VaultStore {
   Future<void> set(String key, StoredKey value) async {
     _store[key] = value;
   }
-
-  @override
-  Future<void> setSeed(Uint8List seed) async {}
 }
