@@ -67,11 +67,9 @@ void main() {
       () {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
-        final didSigner = await getDidSigner();
         final keyPair = await getKeyPair();
 
         final vaultDataManagerService = await vaultDataManagerServiceFactory(
-          didSigner: didSigner,
           encryptedDekek: Uint8List(2),
           keyPair: keyPair,
         );
@@ -86,11 +84,8 @@ void main() {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
         final keyPair = await getKeyPair();
-        final didSigner = await getDidSigner();
-
         final vaultDataManagerService =
             await vaultDelegatedDataManagerServiceFactory(
-          didSigner: didSigner,
           profileDid: 'profile_did',
           encryptedDekek: Uint8List(2),
           keyPair: keyPair,

@@ -75,9 +75,8 @@ void main() {
           ConsumerAuthProvider(signer: didSigner, client: client),
       iamApiServiceFactory: (provider) => mockIamApiService,
       vaultDataManagerServiceFactory: ({
-        required DidSigner didSigner,
-        required Uint8List encryptionKey,
-        String? profileDid,
+        required Uint8List encryptedDekek,
+        required KeyPair keyPair,
       }) async =>
           mockDataManagerService,
     );

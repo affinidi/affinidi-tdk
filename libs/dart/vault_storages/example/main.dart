@@ -15,21 +15,10 @@ void main() async {
   // Construct a keyId containing the accountIndex and then use the Wallet to retrieve a KeyPair.
   final keyStore = InMemoryKeyStore();
   final wallet = await Bip32Wallet.fromSeed(seed, keyStore);
-
-  // Create a DidSigner
   final keyPair = await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0'/0'");
-  final didDoc = DidKey.generateDocument(keyPair.publicKey);
-
-  final didSigner = DidSigner(
-    didDocument: didDoc,
-    didKeyId: didDoc.verificationMethod.first.id,
-    keyPair: keyPair,
-    signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
-  );
 
   final vaultDataManagerServiceFactory = VaultDataManagerService.create;
   final vaultDataManagerService = await vaultDataManagerServiceFactory(
-    didSigner: didSigner,
     keyPair: keyPair,
     encryptedDekek: await keyPair.encrypt(Uint8List(2)),
   );

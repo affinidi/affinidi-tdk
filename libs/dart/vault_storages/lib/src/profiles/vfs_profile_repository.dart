@@ -31,7 +31,6 @@ typedef IamApiServiceFactory = IamApiServiceInterface Function(
 /// Type definition for creating regular [VaultDataManagerService] instances
 typedef VaultDataManagerServiceFactory
     = Future<VaultDataManagerServiceInterface> Function({
-  required DidSigner didSigner,
   required KeyPair keyPair,
   required Uint8List encryptedDekek,
 });
@@ -39,7 +38,6 @@ typedef VaultDataManagerServiceFactory
 /// Type definition for creating delegated [VaultDataManagerService] instances
 typedef VaultDelegatedDataManagerServiceFactory
     = Future<VaultDataManagerServiceInterface> Function({
-  required DidSigner didSigner,
   required KeyPair keyPair,
   required Uint8List encryptedDekek,
   required String profileDid,
@@ -232,13 +230,11 @@ class VfsProfileRepository implements ProfileRepository {
     var sharedStorages = <String, SharedStorage>{};
 
     if (account.hasSharedStorageData) {
-      final didSigner = await _memoizedDidSigner('$accountIndex');
       for (var sharedStorage in account.accountMetadata!.sharedStorageData) {
         sharedStorages[sharedStorage.nodePath] = VfsSharedStorage(
           id: sharedStorage.nodePath,
           sharedProfileId: sharedStorage.nodePath,
           dataManagerService: await _vaultDelegatedDataManagerServiceFactory(
-            didSigner: didSigner,
             profileDid: sharedStorage.profileDid,
             keyPair: profileKeyPair,
             encryptedDekek: base64.decode(sharedStorage.encryptedDekek),
@@ -342,7 +338,6 @@ class VfsProfileRepository implements ProfileRepository {
     Uint8List? encryptedDekek,
   }) async {
     _dataManagers[walletKeyId] ??= await _vaultDataManagerServiceFactory(
-      didSigner: await _memoizedDidSigner(walletKeyId),
       encryptedDekek: encryptedDekek ?? Uint8List(0),
       keyPair: await _memoizedKeyPair(accountIndex: walletKeyId),
     );

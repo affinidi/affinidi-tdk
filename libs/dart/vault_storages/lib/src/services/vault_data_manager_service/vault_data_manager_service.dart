@@ -13,6 +13,7 @@ import 'package:meta/meta.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../exceptions/tdk_exception_type.dart';
+import '../../extensions/key_pair_extensions.dart';
 import '../../model/account.dart';
 import '../../model/node.dart';
 import '../../model/node_status.dart';
@@ -68,56 +69,52 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
 
   /// Creates a new vault file system service instance with encryption.
   ///
-  /// - [didSigner] - A signer that uses a key pair associated with a DID document to sign data.
   /// - [encryptedDekek] - encrypted kek of delegated profile
+  /// - [keyPair] - keyPair of delegated profile
   static Future<VaultDataManagerService> create({
-    required DidSigner didSigner,
     required Uint8List encryptedDekek,
     required KeyPair keyPair,
   }) async {
-    final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
-    final elementsVaultApiUrl =
-        Environment.fetchEnvironment().elementsVaultApiUrl;
-    final vaultDataManagerApiService = VaultDataManagerApiService(
-        apiClient: AffinidiTdkVaultDataManagerClient(
-      authTokenHook: consumerAuthProvider.fetchConsumerToken,
-      basePathOverride: '$elementsVaultApiUrl/vfs',
-    ));
-
-    final vfsPublicKey =
-        await vaultDataManagerApiService.getVaultDataManagerPublicKey();
-
-    final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
-      cryptographyService: CryptographyService(),
-      jwk: vfsPublicKey,
-    );
-
-    final instance = VaultDataManagerService._(
-      vaultDataManagerEncryptionService,
-      vaultDataManagerApiService,
+    final consumerAuthProvider =
+        ConsumerAuthProvider(signer: keyPair.didSigner);
+    return _create(
       encryptedDekek: encryptedDekek,
       keyPair: keyPair,
+      authTokenHook: consumerAuthProvider.fetchConsumerToken,
     );
-
-    return instance;
   }
 
   /// Creates a new vault file system service instance to access deletegated profile
   ///
-  /// - [didSigner] - A signer that uses a key pair associated with a DID document to sign data.
   /// - [profileDid] - did of profile that grantee is accessing
   /// - [encryptedDekek] - encrypted kek of delegated profile
+  /// - [keyPair] - keyPair of delegated profile
   static Future<VaultDataManagerService> createDelegated({
-    required DidSigner didSigner,
     required String profileDid,
     required Uint8List encryptedDekek,
     required KeyPair keyPair,
   }) async {
-    final consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
-    final vaultDataManagerApiService = VaultDataManagerApiService(
-        apiClient: AffinidiTdkVaultDataManagerClient(
+    final consumerAuthProvider =
+        ConsumerAuthProvider(signer: keyPair.didSigner);
+    return _create(
+      encryptedDekek: encryptedDekek,
+      keyPair: keyPair,
       authTokenHook: () =>
           consumerAuthProvider.fetchDelegatedToken(profileDid: profileDid),
+    );
+  }
+
+  static Future<VaultDataManagerService> _create({
+    required Uint8List encryptedDekek,
+    required KeyPair keyPair,
+    required Future<String?> Function() authTokenHook,
+  }) async {
+    final elementsVaultApiUrl =
+        Environment.fetchEnvironment().elementsVaultApiUrl;
+    final vaultDataManagerApiService = VaultDataManagerApiService(
+        apiClient: AffinidiTdkVaultDataManagerClient(
+      authTokenHook: authTokenHook,
+      basePathOverride: '$elementsVaultApiUrl/vfs',
     ));
 
     final vfsPublicKey =
