@@ -459,7 +459,6 @@ class VaultDataManagerApiService
         retryIf: (error) {
           return error is DioException && error.isPendingUploadError;
         },
-        maxAttempts: 2,
         initialDelay: const Duration(milliseconds: 100),
       );
     } catch (e, stackTrace) {
