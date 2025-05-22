@@ -2,22 +2,23 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
-import 'package:ssi/ssi.dart';
 
 void main() async {
   print('[Demo] Initializing Vault ...');
   // KeyStorage
-  var accountIndexAlice = 0;
   final keyStorageAlice = InMemoryVaultStore();
+  var accountIndexAlice = 0;
   await keyStorageAlice.writeAccountIndex(accountIndexAlice);
 
-  var accountIndexBob = 0;
   final keyStorageBob = InMemoryVaultStore();
+  var accountIndexBob = 0;
   await keyStorageBob.writeAccountIndex(accountIndexBob);
 
   // seed storage
   final seedAlice = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
   final seedBob = Uint8List.fromList(List.generate(32, (idx) => idx + 2));
+  await keyStorageAlice.setSeed(seedAlice);
+  await keyStorageBob.setSeed(seedBob);
 
   // initialization
   const vfsRepositoryId = 'vfs';
@@ -29,20 +30,15 @@ void main() async {
     vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
   };
 
-  // from wallet
-  final walletAlice = Bip32Wallet.fromSeed(seedAlice);
-  final vaultAlice = Vault(
-    wallet: walletAlice,
-    vaultStore: keyStorageAlice,
+  // Create vaults from vault stores
+  final vaultAlice = await Vault.fromVaultStore(
+    keyStorageAlice,
     profileRepositories: profileRepositoriesAlice,
     defaultProfileRepositoryId: vfsRepositoryId,
   );
 
-  //2nd vault
-  final walletBob = Bip32Wallet.fromSeed(seedBob);
-  final vaultBob = Vault(
-    wallet: walletBob,
-    vaultStore: keyStorageBob,
+  final vaultBob = await Vault.fromVaultStore(
+    keyStorageBob,
     profileRepositories: profileRepositoriesBob,
     defaultProfileRepositoryId: vfsRepositoryId,
   );

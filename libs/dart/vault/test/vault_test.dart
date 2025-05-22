@@ -18,7 +18,6 @@ void main() {
 
   setUpAll(() {
     registerFallbackValue(Permissions.read);
-    registerFallbackValue(FakeKeyStore());
     registerFallbackValue(Uint8List.fromList([1, 2, 3]));
   });
 

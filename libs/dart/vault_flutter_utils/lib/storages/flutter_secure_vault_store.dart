@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
@@ -31,50 +30,25 @@ class FlutterSecureVaultStore extends VaultStore {
 
   final String _vaultId;
   final FlutterSecureStorage _secureStorage;
-  final _random = Random.secure();
 
   @override
-  Uint8List getRandomSeed() {
-    final seed = Uint8List(32);
-    for (var i = 0; i < 32; i++) {
-      seed[i] = _random.nextInt(256);
-    }
-    return seed;
-  }
-
-  @override
-  Future<void> set(String key, StoredKey value) async {
-    if (_Key.values.any((k) => k.key(_vaultId) == key)) {
-      throw ArgumentError('Cannot use reserved key: $key');
-    }
+  Future<void> setSeed(Uint8List seed) async {
     await _secureStorage.write(
-      key: key,
-      value: jsonEncode(value.toJson()),
+      key: _Key.seed.key(_vaultId),
+      value: base64Encode(seed),
     );
   }
 
   @override
-  Future<StoredKey?> get(String key) async {
+  Future<Uint8List?> getSeed() async {
     final data = await _secureStorage.read(
-      key: key,
+      key: _Key.seed.key(_vaultId),
     );
     if (data == null) {
       return null;
     }
-    return StoredKey.fromJson(jsonDecode(data) as Map<String, dynamic>);
+    return base64Decode(data);
   }
-
-  @override
-  Future<void> remove(String key) async {
-    if (_Key.values.any((k) => k.key(_vaultId) == key)) {
-      throw ArgumentError('Cannot remove reserved key: $key');
-    }
-    await _secureStorage.delete(key: key);
-  }
-
-  @override
-  Future<bool> contains(String key) async =>
-      _secureStorage.containsKey(key: key);
 
   /// Returns a pre-saved account index or 0 if none was found
   @override
@@ -99,9 +73,10 @@ class FlutterSecureVaultStore extends VaultStore {
     );
   }
 
-  /// Removes any stored accountIndex
+  /// Removes all stored data including account index and seed
   @override
   Future<void> clear() async {
     await _secureStorage.delete(key: _Key.accountIndex.key(_vaultId));
+    await _secureStorage.delete(key: _Key.seed.key(_vaultId));
   }
 }

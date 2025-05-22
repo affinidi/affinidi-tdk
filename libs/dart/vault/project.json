@@ -9,7 +9,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart pub get"
+        "command": "flutter pub get"
       }
     },
     "lint": {
