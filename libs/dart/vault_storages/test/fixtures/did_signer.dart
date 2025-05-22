@@ -40,10 +40,13 @@ final seed = Uint8List.fromList([
 const _rootAccountDerivationPath = "m/44'/60'/0'/0'/0'";
 final keyStore = InMemoryKeyStore();
 
-Future<DidSigner> getDidSigner() async {
+Future<KeyPair> getRootKeyPair() async {
   final wallet = await Bip32Wallet.fromSeed(seed, keyStore);
-  final keyPair =
-      await wallet.deriveKey(derivationPath: _rootAccountDerivationPath);
+  return await wallet.deriveKey(derivationPath: _rootAccountDerivationPath);
+}
+
+Future<DidSigner> getDidSigner() async {
+  final keyPair = await getRootKeyPair();
   final accountDidDocument = DidKey.generateDocument(keyPair.publicKey);
 
   return DidSigner(
