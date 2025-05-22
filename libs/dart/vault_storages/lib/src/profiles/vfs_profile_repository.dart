@@ -159,6 +159,7 @@ class VfsProfileRepository implements ProfileRepository {
           cancelToken: cancelToken,
         ),
       ),
+      eagerError: cancelToken != null,
     );
     return profiles.nonNulls.toList();
   }
