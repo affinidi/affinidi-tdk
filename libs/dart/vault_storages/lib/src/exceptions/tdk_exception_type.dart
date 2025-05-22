@@ -48,6 +48,15 @@ enum TdkExceptionType {
   /// Exception thrown for unknown errors.
   other('unknown_error'),
 
+  /// Exception thrown when can not delete the file.
+  unableToDeleteFile('unable_to_delete_file'),
+
+  /// Exception thrown when can not delete the folder.
+  unableToDeleteFolder('unable_to_delete_folder'),
+
+  /// Exception thrown when can not delete the profile.
+  unableToDeleteProfile('unable_to_delete_profile'),
+
   /// Exception thrown when access cannot be granted.
   unableToGrantAccess('unable_to_grant_access'),
 
@@ -64,17 +73,7 @@ enum TdkExceptionType {
   unsupportedNodeType('unsupported_node_type'),
 
   /// Exception thrown when the profile repository is incorrect.
-  wrongProfileRepository('wrong_profile_repository'),
-
-  /// Exception thrown when can not delete the profile.
-  unableToDeleteProfile('unable_to_delete_profile'),
-
-  /// Exception thrown when can not delete the folder.
-  unableToDeleteFolder('unable_to_delete_folder'),
-
-  /// Exception thrown when can not delete the file.
-  unableToDeleteFile('unable_to_delete_file'),
-  ;
+  wrongProfileRepository('wrong_profile_repository');
 
   /// Creates a new instance of [TdkExceptionType].
   ///
