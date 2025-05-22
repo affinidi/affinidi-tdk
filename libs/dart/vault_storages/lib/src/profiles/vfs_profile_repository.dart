@@ -197,11 +197,6 @@ class VfsProfileRepository implements ProfileRepository {
   }
 
   @override
-  Future<Profile> getProfile(String id) async {
-    throw UnimplementedError();
-  }
-
-  @override
   Future<List<Profile>> listProfiles() async {
     final accountVaultDataManagerService =
         await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);

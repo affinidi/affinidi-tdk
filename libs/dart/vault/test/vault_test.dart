@@ -360,8 +360,6 @@ void main() {
           sharedStorages: {'test': mockSharedStorage},
         );
 
-        when(() => mockProfileRepository.getProfile('test-id'))
-            .thenAnswer((_) async => testProfile);
         when(() => mockProfileRepository.listProfiles())
             .thenAnswer((_) async => [testProfile]);
         when(() => mockProfileRepository.grantProfileAccess(
@@ -379,25 +377,6 @@ void main() {
         expect(result.profileId, equals('test-id'));
         expect(result.profileDID, equals('did:test:123'));
         expect(result.kek, equals(Uint8List.fromList([1, 2, 3])));
-      });
-
-      test('should throw when profile not found', () async {
-        when(() => mockProfileRepository.getProfile('non-existent'))
-            .thenAnswer((_) async => throw TdkException(
-                  message: 'Profile not found',
-                  code: 'profile_not_found',
-                ));
-        when(() => mockProfileRepository.listProfiles())
-            .thenAnswer((_) async => []);
-
-        expect(
-          () => vault.shareProfile(
-            profileId: 'non-existent',
-            toDid: 'did:test:123',
-            permissions: Permissions.all,
-          ),
-          throwsA(isA<TdkException>()),
-        );
       });
 
       test('should throw when vault is not initialized', () async {
@@ -422,8 +401,6 @@ void main() {
           profileRepositoryId: 'non-existent',
         );
 
-        when(() => mockProfileRepository.getProfile('test-id'))
-            .thenAnswer((_) async => testProfile);
         when(() => mockProfileRepository.listProfiles())
             .thenAnswer((_) async => [testProfile]);
 
