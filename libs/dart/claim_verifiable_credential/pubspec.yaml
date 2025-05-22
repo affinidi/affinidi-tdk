@@ -4,7 +4,7 @@ version: 1.0.0-dev.2
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.6.0
 
 resolution: workspace
 
