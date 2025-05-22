@@ -1,14 +1,14 @@
-# ConfigApi
+# ConfigurationApi
 
 All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
-| Method                                  | HTTP request       | Description |
-| --------------------------------------- | ------------------ | ----------- |
-| [**getConfig**](ConfigApi.md#getConfig) | **GET** /v1/config |             |
+| Method                                                       | HTTP request       | Description |
+| ------------------------------------------------------------ | ------------------ | ----------- |
+| [**getConfiguration**](ConfigurationApi.md#getConfiguration) | **GET** /v1/config |             |
 
-## getConfig
+## getConfiguration
 
-> GetConfigOK getConfig()
+> GetConfigOK getConfiguration()
 
 Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39; and 1, respectively.
 
@@ -21,7 +21,7 @@ import com.affinidi.tdk.vault.data.manager.client.ApiException;
 import com.affinidi.tdk.vault.data.manager.client.Configuration;
 import com.affinidi.tdk.vault.data.manager.client.auth.*;
 import com.affinidi.tdk.vault.data.manager.client.models.*;
-import com.affinidi.tdk.vault.data.manager.client.apis.ConfigApi;
+import com.affinidi.tdk.vault.data.manager.client.apis.ConfigurationApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -34,12 +34,12 @@ public class Example {
         // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
         //AwsSigV4.setApiKeyPrefix("Token");
 
-        ConfigApi apiInstance = new ConfigApi(defaultClient);
+        ConfigurationApi apiInstance = new ConfigurationApi(defaultClient);
         try {
-            GetConfigOK result = apiInstance.getConfig();
+            GetConfigOK result = apiInstance.getConfiguration();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ConfigApi#getConfig");
+            System.err.println("Exception when calling ConfigurationApi#getConfiguration");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

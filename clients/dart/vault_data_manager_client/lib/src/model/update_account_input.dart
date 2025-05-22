@@ -22,11 +22,11 @@ part 'update_account_input.g.dart';
 abstract class UpdateAccountInput implements Built<UpdateAccountInput, UpdateAccountInputBuilder> {
   /// Name of the account
   @BuiltValueField(wireName: r'name')
-  String get name;
+  String? get name;
 
   /// Description of the account
   @BuiltValueField(wireName: r'description')
-  String get description;
+  String? get description;
 
   /// Alias of the account
   @BuiltValueField(wireName: r'alias')
@@ -67,16 +67,20 @@ class _$UpdateAccountInputSerializer implements PrimitiveSerializer<UpdateAccoun
     UpdateAccountInput object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'name';
-    yield serializers.serialize(
-      object.name,
-      specifiedType: const FullType(String),
-    );
-    yield r'description';
-    yield serializers.serialize(
-      object.description,
-      specifiedType: const FullType(String),
-    );
+    if (object.name != null) {
+      yield r'name';
+      yield serializers.serialize(
+        object.name,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.description != null) {
+      yield r'description';
+      yield serializers.serialize(
+        object.description,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.alias != null) {
       yield r'alias';
       yield serializers.serialize(
