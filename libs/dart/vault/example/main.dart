@@ -2,17 +2,17 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
-import 'package:ssi/ssi.dart';
 
 void main() async {
   print('[Demo] Initializing Vault ...');
   // KeyStorage
-  final accountIndex = 42;
   final vaultStore = InMemoryVaultStore();
+  var accountIndex = 42;
   await vaultStore.writeAccountIndex(accountIndex);
 
   // seed storage
   final seed = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
+  await vaultStore.setSeed(seed);
 
   // initialization
   const vfsRepositoryId = 'vfs';
@@ -20,18 +20,9 @@ void main() async {
     vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
   };
 
-  // from keyStorage
-  // await vaultStore.setSeed(seed);
-  // final vault = await Vault.fromVaultStore(
-  //   vaultStore,
-  //   profileRepositories: profileRepositories,
-  // );
-
-  // from wallet
-  final wallet = Bip32Wallet.fromSeed(seed);
-  final vault = Vault(
-    wallet: wallet,
-    vaultStore: vaultStore,
+  // Create vault from vault store
+  final vault = await Vault.fromVaultStore(
+    vaultStore,
     profileRepositories: profileRepositories,
     defaultProfileRepositoryId: vfsRepositoryId,
   );

@@ -66,7 +66,7 @@ class Vault {
   /// Throws [TdkException] if:
   /// - No profile repositories are provided
   /// - The default profile repository ID is invalid
-  Vault({
+  Vault._({
     required Wallet wallet,
     required VaultStore vaultStore,
     required Map<String, ProfileRepository> profileRepositories,
@@ -123,24 +123,20 @@ class Vault {
     required Map<String, ProfileRepository> profileRepositories,
     String? defaultProfileRepositoryId,
   }) async {
+    final seed = await vaultStore.getSeed();
+    if (seed == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'No seed found in vault store',
+            code: TdkExceptionType.vaultNotInitialized.code),
+        StackTrace.current,
+      );
+    }
+
     // Create a new Bip32Wallet instance
-    final wallet = Bip32Wallet.fromSeed(vaultStore.getRandomSeed());
+    final wallet = Bip32Wallet.fromSeed(seed);
 
-    //  final seedKey = await vaultStore.get('seed');
-    // final seed = seedKey?.privateKeyBytes ?? vaultStore.getRandomSeed();
-    // if (seedKey == null) {
-    //   await vaultStore.set(
-    //       'seed',
-    //       StoredKey(
-    //         keyType: KeyType.secp256k1,
-    //         privateKeyBytes: seed,
-    //       ));
-    // }
-
-    // // Create the wallet
-    // final wallet = Bip32Wallet.fromSeed(seed);
-
-    return Vault(
+    return Vault._(
       wallet: wallet,
       vaultStore: vaultStore,
       profileRepositories: profileRepositories,

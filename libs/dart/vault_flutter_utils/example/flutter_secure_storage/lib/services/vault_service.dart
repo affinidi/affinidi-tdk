@@ -27,15 +27,25 @@ class VaultService extends _$VaultService {
         vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
       };
       final keyStorage = ref.read(_keyStorageProvider);
+      await _makeSeedIfNeeded(keyStorage);
       final vault = await Vault.fromVaultStore(
         keyStorage,
         profileRepositories: profileRepositories,
       );
+      await vault.ensureInitialized();
       state = state.copyWith(vault: vault);
     } on TdkException catch (error) {
       state = state.copyWith(error: error.code);
     } catch (error) {
       state = state.copyWith(error: error.toString());
+    }
+  }
+
+  Future<void> _makeSeedIfNeeded(FlutterSecureVaultStore vaultStore) async {
+    final existingSeed = await vaultStore.getSeed();
+    if (existingSeed == null) {
+      final seed = vaultStore.getRandomSeed();
+      await vaultStore.setSeed(seed);
     }
   }
 }

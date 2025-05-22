@@ -3,8 +3,8 @@ on:
   #we need to keep on push as target because of this issue  https://github.com/orgs/community/discussions/65321
   push:
     branches:
-      - "**"
-      - "!main"
+      - '**'
+      - '!main'
 
 permissions:
   actions: read
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: "npm"
+          cache: 'npm'
       - run: npm ci
       - uses: nrwl/nx-set-shas@v4
       - run: |
@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: "3.x"
+          python-version: '3.x'
 
       - name: install python tools
         run: |
@@ -39,14 +39,14 @@ jobs:
       - name: Set up specific jdk
         uses: actions/setup-java@v4
         with:
-          distribution: "corretto"
+          distribution: 'corretto'
           java-version: 21
 
       - name: Setup Flutter SDK
         uses: flutter-actions/setup-flutter@v4
         with:
           channel: stable
-          version: "3.29.0"
+          version: '3.27.0'
           cache: true
           cache-sdk: true
 
