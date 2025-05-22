@@ -240,6 +240,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
           stackTrace,
         );
       }
+      rethrow;
     }
   }
 
@@ -259,6 +260,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
           stackTrace,
         );
       }
+      rethrow;
     }
   }
 
@@ -278,6 +280,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
           stackTrace,
         );
       }
+      rethrow;
     }
   }
 
