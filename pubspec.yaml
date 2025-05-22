@@ -12,7 +12,6 @@ workspace:
   - packages/dart/test_utilities
   - packages/dart/vault_data_manager
   - libs/dart/claim_verifiable_credential
-  - libs/dart/seed_cryptography
   - libs/dart/iota_core
   - libs/dart/vault
   - libs/dart/vault/example
