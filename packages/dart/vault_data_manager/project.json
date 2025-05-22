@@ -41,8 +41,8 @@
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "options": {
-        "changelog": true,
-        "git": true,
+        "changelog": false,
+        "git": false,
         "github": true,
         "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
@@ -53,8 +53,7 @@
             "channel": "prerelease",
             "prerelease": "dev"
           }
-        ],
-        "preset": "angular"
+        ]
       }
     },
     "publish": {
@@ -74,7 +73,6 @@
   },
   "tags": [
     "lang:dart",
-    "kind:package",
-    "scope:vault_data_manager"
+    "kind:package"
   ]
 }

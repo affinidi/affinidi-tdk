@@ -17,6 +17,7 @@ import 'package:test/test.dart';
 import 'fixtures/api_service/file_response_fixtures.dart';
 import 'fixtures/api_service/node_response_fixtures.dart';
 import 'fixtures/api_service/test_data_fixtures.dart';
+import 'mocks/mock_dio.dart';
 
 void main() {
   late VaultDataManagerApiServiceInterface vaultDataManagerApiService;
@@ -26,21 +27,21 @@ void main() {
   late DioAdapter uploadDioAdapter;
 
   setUpAll(() {
+    uploadDio = MockDio();
+    uploadDio.options.baseUrl = '';
     vaultDataManagerApiService = VaultDataManagerApiService(
       apiClient: AffinidiTdkVaultDataManagerClient(
         dio: client,
       ),
+      dio: uploadDio,
     );
   });
 
   setUp(() {
     dioAdapter = DioAdapterFixtures.adapter(client);
-    uploadDio = Dio();
     uploadDioAdapter = DioAdapterFixtures.adapter(uploadDio);
-    (vaultDataManagerApiService as VaultDataManagerApiService)
-        .setDio(uploadDio);
-
     client.options.baseUrl = '';
+    (uploadDio as MockDio).setShouldThrowError(false);
   });
 
   tearDown(() {
@@ -227,7 +228,6 @@ void main() {
           statusCode: 200,
           data: {
             'nodeId': NodeResponseFixtures.testNodeId,
-            // Missing url and fields
           },
           httpMethod: HttpMethod.post,
         );
@@ -263,16 +263,7 @@ void main() {
           httpMethod: HttpMethod.post,
         );
 
-        uploadDioAdapter.onPost(
-          TestDataFixtures.uploadUrl,
-          (server) => server.throws(
-              500,
-              DioException(
-                requestOptions: RequestOptions(path: ''),
-                error: TestDataFixtures.uploadFailed,
-              )),
-          data: Matchers.any,
-        );
+        (uploadDio as MockDio).setShouldThrowError(true);
 
         expect(
           () => vaultDataManagerApiService.createFile(

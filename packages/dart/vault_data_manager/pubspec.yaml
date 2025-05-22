@@ -15,7 +15,6 @@ dependencies:
   built_value: ^8.9.5
   dio: ^5.7.0
   http_mock_adapter: ^0.6.1
-  meta: ^1.15.0
   path: ^1.8.0
 
 dev_dependencies:

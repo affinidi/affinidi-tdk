@@ -6,7 +6,6 @@ import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:built_value/json_object.dart';
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
 
 import 'dto/error_response.dart';
 import 'exceptions/tdk_exception_type.dart';
@@ -29,31 +28,24 @@ class VaultDataManagerApiService
   static const profileTemplateUrl =
       'https://schema.affinidi.io/profile-template/template.json';
 
-  late FilesApi _filesApi;
-  late NodesApi _nodesApi;
-  late ConfigApi _configApi;
-  late ProfileDataApi _profileDataApi;
-  late AccountsApi _accountsApi;
-
+  final Dio _dio;
+  final FilesApi _filesApi;
+  final NodesApi _nodesApi;
+  final ConfigApi _configApi;
+  final ProfileDataApi _profileDataApi;
+  final AccountsApi _accountsApi;
   final CryptographyService _cryptographyService = CryptographyService();
-  Dio _dio = Dio();
 
   /// Creates an instance of [VaultDataManagerApiService].
   VaultDataManagerApiService({
     required AffinidiTdkVaultDataManagerClient apiClient,
-  }) {
-    _filesApi = apiClient.getFilesApi();
-    _nodesApi = apiClient.getNodesApi();
-    _configApi = apiClient.getConfigApi();
-    _profileDataApi = apiClient.getProfileDataApi();
-    _accountsApi = apiClient.getAccountsApi();
-  }
-
-  /// Sets the Dio instance used for file uploads. This is primarily used for testing.
-  @visibleForTesting
-  void setDio(Dio dio) {
-    _dio = dio;
-  }
+    Dio? dio,
+  })  : _dio = dio ?? Dio(),
+        _filesApi = apiClient.getFilesApi(),
+        _nodesApi = apiClient.getNodesApi(),
+        _configApi = apiClient.getConfigApi(),
+        _profileDataApi = apiClient.getProfileDataApi(),
+        _accountsApi = apiClient.getAccountsApi();
 
   @override
   Future<Response<CreateNodeOK>> createFile({
