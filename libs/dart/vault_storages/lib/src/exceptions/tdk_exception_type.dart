@@ -65,6 +65,15 @@ enum TdkExceptionType {
 
   /// Exception thrown when the profile repository is incorrect.
   wrongProfileRepository('wrong_profile_repository'),
+
+  /// Exception thrown when can not delete the profile.
+  unableToDeleteProfile('unable_to_delete_profile'),
+
+  /// Exception thrown when can not delete the folder.
+  unableToDeleteFolder('unable_to_delete_folder'),
+
+  /// Exception thrown when can not delete the file.
+  unableToDeleteFile('unable_to_delete_file'),
   ;
 
   /// Creates a new instance of [TdkExceptionType].
