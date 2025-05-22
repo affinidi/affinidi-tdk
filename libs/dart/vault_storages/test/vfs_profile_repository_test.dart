@@ -249,14 +249,6 @@ void main() {
           );
         });
       });
-
-      test('should throw UnimplementedError when getting profile by id',
-          () async {
-        expect(
-          () => repository.getProfile(ProfileFixtures.testProfileId),
-          throwsA(isA<UnimplementedError>()),
-        );
-      });
     });
   });
 }
