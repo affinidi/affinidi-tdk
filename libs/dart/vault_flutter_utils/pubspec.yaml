@@ -6,7 +6,7 @@ homepage: https://github.com/affinidi/affinidi-tdk
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.7.0
   flutter: ">=1.17.0"
 
 resolution: workspace
