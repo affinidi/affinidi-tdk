@@ -6,7 +6,6 @@ import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_test_utilities/affinidi_tdk_test_utilities.dart';
 import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:affinidi_tdk_vault_data_manager/src/dto/error_response.dart';
-import 'package:affinidi_tdk_vault_data_manager/src/exceptions/tdk_exception_type.dart';
 import 'package:affinidi_tdk_vault_data_manager/src/extensions/tdk_exception_extension.dart';
 import 'package:affinidi_tdk_vault_data_manager/src/helpers/retry_helper.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';

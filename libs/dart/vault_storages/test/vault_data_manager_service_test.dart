@@ -1,5 +1,7 @@
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart'
+    as vdm;
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 import 'package:dio/dio.dart';
@@ -246,6 +248,31 @@ void main() {
         verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
       });
     });
+
+    group('and it fails,', () {
+      test('it throws exception', () async {
+        when(
+          vaultDataManagerApiServiceMocks.deleteNodeById,
+        ).thenThrow(
+          TdkException(
+            message: 'something went wrong',
+            code: vdm.TdkExceptionType.unableToDeleteNode.code,
+          ),
+        );
+
+        await expectLater(
+            vaultDataManagerService.deleteFile(nodeId),
+            throwsA(
+              isA<TdkException>().having(
+                (e) => e.code,
+                'code',
+                TdkExceptionType.unableToDeleteFile.code,
+              ),
+            ));
+
+        verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
+      });
+    });
   });
 
   group('When deleting folder', () {
@@ -261,6 +288,32 @@ void main() {
         verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
       });
     });
+
+    group('and it fails,', () {
+      test('it throws exception', () async {
+        when(
+          vaultDataManagerApiServiceMocks.deleteNodeById,
+        ).thenThrow(
+          TdkException(
+            message: 'something went wrong',
+            code: vdm.TdkExceptionType.unableToDeleteNode.code,
+          ),
+        );
+
+        await expectLater(
+          vaultDataManagerService.deleteFolder(nodeId),
+          throwsA(
+            isA<TdkException>().having(
+              (e) => e.code,
+              'code',
+              TdkExceptionType.unableToDeleteFolder.code,
+            ),
+          ),
+        );
+
+        verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
+      });
+    });
   });
 
   group('When deleting profile', () {
@@ -272,6 +325,32 @@ void main() {
             Response<DeleteNodeDto>(requestOptions: RequestOptions(path: '')));
 
         await vaultDataManagerService.deleteProfile(profileId);
+
+        verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
+      });
+    });
+
+    group('and it fails,', () {
+      test('it throws exception', () async {
+        when(
+          vaultDataManagerApiServiceMocks.deleteNodeById,
+        ).thenThrow(
+          TdkException(
+            message: 'something went wrong',
+            code: vdm.TdkExceptionType.unableToDeleteNode.code,
+          ),
+        );
+
+        await expectLater(
+          vaultDataManagerService.deleteProfile(profileId),
+          throwsA(
+            isA<TdkException>().having(
+              (e) => e.code,
+              'code',
+              TdkExceptionType.unableToDeleteProfile.code,
+            ),
+          ),
+        );
 
         verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
       });
