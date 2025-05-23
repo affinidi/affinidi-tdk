@@ -136,7 +136,7 @@ class JWTHelper {
     final base64Key = encryptedKeyPem
         .replaceAll('-----BEGIN ENCRYPTED PRIVATE KEY-----', '')
         .replaceAll('-----END ENCRYPTED PRIVATE KEY-----', '')
-        .replaceAll('\n', '');
+        .replaceAll(RegExp(r'(\\n|\s+)'), '');
 
     final encryptedPrivateKey = base64.decode(base64Key);
 
