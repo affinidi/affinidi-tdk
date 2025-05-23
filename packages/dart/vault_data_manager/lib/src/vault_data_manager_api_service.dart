@@ -28,25 +28,24 @@ class VaultDataManagerApiService
   static const profileTemplateUrl =
       'https://schema.affinidi.io/profile-template/template.json';
 
-  late FilesApi _filesApi;
-  late NodesApi _nodesApi;
-  late ConfigApi _configApi;
-  late ProfileDataApi _profileDataApi;
-  late AccountsApi _accountsApi;
-
+  final Dio _dio;
+  final FilesApi _filesApi;
+  final NodesApi _nodesApi;
+  final ConfigApi _configApi;
+  final ProfileDataApi _profileDataApi;
+  final AccountsApi _accountsApi;
   final CryptographyService _cryptographyService = CryptographyService();
-  final Dio _dio = Dio();
 
   /// Creates an instance of [VaultDataManagerApiService].
   VaultDataManagerApiService({
     required AffinidiTdkVaultDataManagerClient apiClient,
-  }) {
-    _filesApi = apiClient.getFilesApi();
-    _nodesApi = apiClient.getNodesApi();
-    _configApi = apiClient.getConfigApi();
-    _profileDataApi = apiClient.getProfileDataApi();
-    _accountsApi = apiClient.getAccountsApi();
-  }
+    Dio? dio,
+  })  : _dio = dio ?? Dio(),
+        _filesApi = apiClient.getFilesApi(),
+        _nodesApi = apiClient.getNodesApi(),
+        _configApi = apiClient.getConfigApi(),
+        _profileDataApi = apiClient.getProfileDataApi(),
+        _accountsApi = apiClient.getAccountsApi();
 
   @override
   Future<Response<CreateNodeOK>> createFile({
@@ -228,7 +227,7 @@ class VaultDataManagerApiService
     try {
       final response = await _dio.fetch<dynamic>(RequestOptions(
         method: 'POST',
-        baseUrl: uploadUrl,
+        path: uploadUrl,
         data: data,
         headers: {'Content-Type': 'application/octet-stream'},
       ));
@@ -272,7 +271,7 @@ class VaultDataManagerApiService
     List<int>? dekEncryptedByVfsPublicKey,
   }) async {
     try {
-      return _nodesApi.getDetailedNodeInfo(
+      return await _nodesApi.getDetailedNodeInfo(
         nodeId: nodeId,
         dek: dekEncryptedByVfsPublicKey != null
             ? base64.encode(dekEncryptedByVfsPublicKey)
@@ -453,7 +452,7 @@ class VaultDataManagerApiService
     required String nodeId,
   }) async {
     try {
-      return RetryHelper.retry(
+      return await RetryHelper.retry(
         () => _nodesApi.deleteNode(
           nodeId: nodeId,
         ),
