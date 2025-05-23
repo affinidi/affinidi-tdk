@@ -5,7 +5,8 @@ import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart'
+    as vdm;
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart'
     hide NodeStatus, NodeType;
 import 'package:dio/dio.dart';
@@ -28,11 +29,12 @@ import 'vault_data_manager_service_interface.dart';
 /// operations using vault data manager services.
 class VaultDataManagerService implements VaultDataManagerServiceInterface {
   /// Service for handling encryption operations
-  late final VaultDataManagerEncryptionServiceInterface
+  late final vdm.VaultDataManagerEncryptionServiceInterface
       _vaultDataManagerEncryptionService;
 
   /// Service for API operations with the vault
-  late final VaultDataManagerApiServiceInterface _vaultDataManagerApiService;
+  late final vdm.VaultDataManagerApiServiceInterface
+      _vaultDataManagerApiService;
 
   /// Logger instance for error handling
   final Logger _logger;
@@ -53,9 +55,9 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   /// Creates a new instance of [VaultDataManagerService] for testing purposes.
   @visibleForTesting
   VaultDataManagerService(
-    VaultDataManagerEncryptionServiceInterface
+    vdm.VaultDataManagerEncryptionServiceInterface
         vaultDataManagerEncryptionService,
-    VaultDataManagerApiServiceInterface vaultDataManagerApiService, {
+    vdm.VaultDataManagerApiServiceInterface vaultDataManagerApiService, {
     Logger? logger,
     required Uint8List encryptedKey,
     required KeyPair keyPair,
@@ -110,7 +112,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   }) async {
     final elementsVaultApiUrl =
         Environment.fetchEnvironment().elementsVaultApiUrl;
-    final vaultDataManagerApiService = VaultDataManagerApiService(
+    final vaultDataManagerApiService = vdm.VaultDataManagerApiService(
         apiClient: AffinidiTdkVaultDataManagerClient(
       authTokenHook: authTokenHook,
       basePathOverride: '$elementsVaultApiUrl/vfs',
@@ -119,7 +121,8 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     final vfsPublicKey =
         await vaultDataManagerApiService.getVaultDataManagerPublicKey();
 
-    final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
+    final vaultDataManagerEncryptionService =
+        vdm.VaultDataManagerEncryptionService(
       cryptographyService: CryptographyService(),
       jwk: vfsPublicKey,
     );
@@ -223,23 +226,62 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
 
   @override
   Future<void> deleteFile(String nodeId) async {
-    await _vaultDataManagerApiService.deleteNodeById(
-      nodeId: nodeId,
-    );
+    try {
+      await _vaultDataManagerApiService.deleteNodeById(
+        nodeId: nodeId,
+      );
+    } on TdkException catch (e, stackTrace) {
+      if (e.code == vdm.TdkExceptionType.unableToDeleteNode.code) {
+        Error.throwWithStackTrace(
+          TdkException(
+            message: 'Failed to delete $nodeId file',
+            code: TdkExceptionType.unableToDeleteFile.code,
+          ),
+          stackTrace,
+        );
+      }
+      rethrow;
+    }
   }
 
   @override
   Future<void> deleteFolder(String nodeId) async {
-    await _vaultDataManagerApiService.deleteNodeById(
-      nodeId: nodeId,
-    );
+    try {
+      await _vaultDataManagerApiService.deleteNodeById(
+        nodeId: nodeId,
+      );
+    } on TdkException catch (e, stackTrace) {
+      if (e.code == vdm.TdkExceptionType.unableToDeleteNode.code) {
+        Error.throwWithStackTrace(
+          TdkException(
+            message: 'Failed to delete $nodeId folder',
+            code: TdkExceptionType.unableToDeleteFolder.code,
+          ),
+          stackTrace,
+        );
+      }
+      rethrow;
+    }
   }
 
   @override
   Future<void> deleteProfile(String profileId) async {
-    await _vaultDataManagerApiService.deleteNodeById(
-      nodeId: profileId,
-    );
+    try {
+      await _vaultDataManagerApiService.deleteNodeById(
+        nodeId: profileId,
+      );
+    } on TdkException catch (e, stackTrace) {
+      if (e.code == vdm.TdkExceptionType.unableToDeleteNode.code) {
+        Error.throwWithStackTrace(
+          TdkException(
+            message: 'Failed to delete $profileId profile',
+            code: TdkExceptionType.unableToDeleteProfile.code,
+          ),
+          stackTrace,
+        );
+      }
+      rethrow;
+    }
   }
 
   @override
