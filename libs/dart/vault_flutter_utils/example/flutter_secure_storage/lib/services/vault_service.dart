@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_flutter_utils/vault_flutter_utils.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
@@ -27,24 +29,28 @@ class VaultService extends _$VaultService {
         vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
       };
       final keyStorage = ref.read(_keyStorageProvider);
-      await _makeSeedIfNeeded(keyStorage);
+
+      // Initialize account index
+      await keyStorage.writeAccountIndex(0);
+
+      // Set seed if not already set
+      final existingSeed = await keyStorage.getSeed();
+      if (existingSeed == null) {
+        final seed = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
+        await keyStorage.setSeed(seed);
+      }
+
       final vault = await Vault.fromVaultStore(
         keyStorage,
         profileRepositories: profileRepositories,
+        defaultProfileRepositoryId: vfsRepositoryId,
       );
+      await vault.ensureInitialized();
       state = state.copyWith(vault: vault);
     } on TdkException catch (error) {
       state = state.copyWith(error: error.code);
     } catch (error) {
       state = state.copyWith(error: error.toString());
-    }
-  }
-
-  Future<void> _makeSeedIfNeeded(FlutterSecureVaultStore vaultStore) async {
-    final existingSeed = await vaultStore.getSeed();
-    if (existingSeed == null) {
-      final seed = vaultStore.getRandomSeed();
-      await vaultStore.setSeed(seed);
     }
   }
 }

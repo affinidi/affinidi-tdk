@@ -8,7 +8,7 @@ import 'fixtures/vault_fixtures.dart';
 import 'mocks/mock_vault.dart';
 
 void main() {
-  late MockDeterministicWallet mockWallet;
+  late MockWallet mockWallet;
   late MockVaultStore mockVaultStore;
   late MockProfileRepository mockProfileRepository;
   late MockFileStorage mockFileStorage;
@@ -18,12 +18,11 @@ void main() {
 
   setUpAll(() {
     registerFallbackValue(Permissions.read);
-    registerFallbackValue(FakeKeyStore());
     registerFallbackValue(Uint8List.fromList([1, 2, 3]));
   });
 
   setUp(() {
-    mockWallet = MockDeterministicWallet();
+    mockWallet = MockWallet();
     mockVaultStore = MockVaultStore();
     mockProfileRepository = MockProfileRepository();
     mockFileStorage = MockFileStorage();

@@ -9,11 +9,13 @@ void main() {
   late MockVaultStore mockVaultStore;
   late TestVaultStore testVaultStore;
 
+  setUpAll(() {
+    registerFallbackValue(Uint8List(0));
+  });
+
   setUp(() {
     mockVaultStore = MockVaultStore();
     testVaultStore = TestVaultStore();
-    when(() => mockVaultStore.getRandomSeed())
-        .thenReturn(Uint8List.fromList([1, 2, 3]));
   });
 
   group('VaultStore', () {
@@ -30,39 +32,37 @@ void main() {
       verify(() => mockVaultStore.readAccountIndex()).called(1);
     });
 
-    group('getRandomSeed', () {
-      test('should generate random seed with correct length', () {
-        final seed = testVaultStore.getRandomSeed();
-        expect(seed, isA<Uint8List>());
-        expect(seed.length, equals(32));
+    group('seed management', () {
+      final testSeed = Uint8List.fromList([1, 2, 3, 4]);
+
+      test('should store and retrieve seed', () async {
+        when(() => mockVaultStore.setSeed(any())).thenAnswer((_) async {});
+        when(() => mockVaultStore.getSeed()).thenAnswer((_) async => testSeed);
+
+        await mockVaultStore.setSeed(testSeed);
+        final retrievedSeed = await mockVaultStore.getSeed();
+
+        expect(retrievedSeed, equals(testSeed));
+        verify(() => mockVaultStore.setSeed(testSeed)).called(1);
+        verify(() => mockVaultStore.getSeed()).called(1);
       });
 
-      test('should generate different seeds on each call', () {
-        final seed1 = testVaultStore.getRandomSeed();
-        final seed2 = testVaultStore.getRandomSeed();
-        expect(seed1, isNot(equals(seed2)));
+      test('should return null when no seed is stored', () async {
+        when(() => mockVaultStore.getSeed()).thenAnswer((_) async => null);
+
+        final retrievedSeed = await mockVaultStore.getSeed();
+        expect(retrievedSeed, isNull);
+        verify(() => mockVaultStore.getSeed()).called(1);
       });
 
-      test('should generate valid byte values', () {
-        final seed = testVaultStore.getRandomSeed();
-        for (final byte in seed) {
-          expect(byte, inInclusiveRange(0, 255));
-        }
-      });
+      test('should clear seed on clear()', () async {
+        when(() => mockVaultStore.clear()).thenAnswer((_) async {});
 
-      test('should handle multiple consecutive calls', () {
-        final seeds = List.generate(3, (_) => testVaultStore.getRandomSeed());
+        await testVaultStore.setSeed(testSeed);
+        expect(await testVaultStore.getSeed(), equals(testSeed));
 
-        expect(seeds[0], isNot(equals(seeds[1])));
-        expect(seeds[1], isNot(equals(seeds[2])));
-        expect(seeds[0], isNot(equals(seeds[2])));
-
-        for (final seed in seeds) {
-          expect(seed.length, equals(32));
-          for (final byte in seed) {
-            expect(byte, inInclusiveRange(0, 255));
-          }
-        }
+        await testVaultStore.clear();
+        expect(await testVaultStore.getSeed(), isNull);
       });
     });
   });

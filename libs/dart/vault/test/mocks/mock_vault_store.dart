@@ -8,6 +8,7 @@ class MockVaultStore extends Mock implements VaultStore {}
 class TestVaultStore extends VaultStore {
   int? _accountIndex;
   final Map<String, StoredKey> _store = {};
+  Uint8List? _seed;
 
   @override
   Future<void> writeAccountIndex(int accountIndex) async {
@@ -22,33 +23,17 @@ class TestVaultStore extends VaultStore {
   @override
   Future<void> clear() async {
     _store.clear();
+    _accountIndex = null;
+    _seed = null;
   }
 
   @override
-  Future<bool> contains(String key) async {
-    return _store.containsKey(key);
+  Future<void> setSeed(Uint8List seed) async {
+    _seed = seed;
   }
 
   @override
-  Future<StoredKey?> get(String key) async {
-    return _store[key];
+  Future<Uint8List?> getSeed() async {
+    return _seed;
   }
-
-  @override
-  Future<Uint8List> getSeed() async {
-    return Uint8List.fromList([1, 2, 3]);
-  }
-
-  @override
-  Future<void> remove(String key) async {
-    _store.remove(key);
-  }
-
-  @override
-  Future<void> set(String key, StoredKey value) async {
-    _store[key] = value;
-  }
-
-  @override
-  Future<void> setSeed(Uint8List seed) async {}
 }

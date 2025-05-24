@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:ssi/ssi.dart';
 
 class VaultStoreFixtures {
   static const String testKeyId = 'test_key';
@@ -8,15 +8,13 @@ class VaultStoreFixtures {
   static final Uint8List testSeed = Uint8List.fromList([1, 2, 3, 4, 5]);
   static final Uint8List testPrivateKeyBytes = Uint8List.fromList([1, 2, 3, 4]);
 
-  static StoredKey get testStoredKey => StoredKey.fromJson({
-        'representation': 'privateKeyBytes',
-        'keyType': 'ed25519',
-        'privateKeyBytes': testPrivateKeyBytes,
-      });
+  static StoredKey get testStoredKey => StoredKey(
+        keyType: KeyType.secp256k1,
+        privateKeyBytes: testPrivateKeyBytes,
+      );
 
   static Map<String, dynamic> get testStoredKeyJson => {
-        'representation': 'privateKeyBytes',
-        'keyType': 'ed25519',
+        'keyType': 'secp256k1',
         'privateKeyBytes': testPrivateKeyBytes,
       };
 }
