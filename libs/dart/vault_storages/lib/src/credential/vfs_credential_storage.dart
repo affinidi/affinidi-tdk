@@ -1,5 +1,6 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart'
+    as vdm;
 import 'package:ssi/ssi.dart';
 
 import '../exceptions/tdk_exception_type.dart';
@@ -29,7 +30,7 @@ class VFSCredentialStorage implements CredentialStorage {
 
   @override
   Future<List<DigitalCredential>> listCredentials({
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     return await _vaultDataManagerService.getDigitalCredentials(
       _profileId,
@@ -40,7 +41,7 @@ class VFSCredentialStorage implements CredentialStorage {
   @override
   Future<void> saveCredential({
     required VerifiableCredential verifiableCredential,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.addVerifiableCredentialToProfile(
       verifiableCredential: verifiableCredential,
@@ -52,7 +53,7 @@ class VFSCredentialStorage implements CredentialStorage {
   @override
   Future<void> deleteCredential({
     required String digitalCredentialId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.deleteClaimedCredential(
       nodeId: digitalCredentialId,
@@ -63,7 +64,7 @@ class VFSCredentialStorage implements CredentialStorage {
   @override
   Future<DigitalCredential> getCredential({
     required String digitalCredentialId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final digitalCredentials =
         await _vaultDataManagerService.getDigitalCredentials(

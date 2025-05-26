@@ -1,4 +1,5 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:affinidi_tdk_vault_storages/src/credential/vfs_credential_storage.dart';
 import 'package:affinidi_tdk_vault_storages/src/services/vault_data_manager_service/vault_data_manager_service_interface.dart';
 import 'package:mocktail/mocktail.dart';
@@ -14,6 +15,7 @@ class MockVaultDataManagerService extends Mock
   Future<void> addVerifiableCredentialToProfile({
     required VerifiableCredential verifiableCredential,
     required String profileId,
+    AffinidiApiCancelToken? cancelToken,
   }) {
     return super.noSuchMethod(
       Invocation.method(#addVerifiableCredentialToProfile, [], {
@@ -24,7 +26,10 @@ class MockVaultDataManagerService extends Mock
   }
 
   @override
-  Future<void> deleteClaimedCredential({required String nodeId}) {
+  Future<void> deleteClaimedCredential({
+    required String nodeId,
+    AffinidiApiCancelToken? cancelToken,
+  }) {
     return super.noSuchMethod(
       Invocation.method(#deleteClaimedCredential, [], {
         #nodeId: nodeId,
@@ -33,7 +38,10 @@ class MockVaultDataManagerService extends Mock
   }
 
   @override
-  Future<List<DigitalCredential>> getDigitalCredentials(String profileId) {
+  Future<List<DigitalCredential>> getDigitalCredentials(
+    String profileId, {
+    AffinidiApiCancelToken? cancelToken,
+  }) {
     return super.noSuchMethod(
       Invocation.method(#getDigitalCredentials, [profileId]),
     ) as Future<List<DigitalCredential>>;

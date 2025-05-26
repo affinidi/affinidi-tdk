@@ -6,8 +6,9 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart'
+    as vdm;
 import 'package:dio/dio.dart';
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:ssi/ssi.dart';
 
 import '../credential/vfs_credential_storage.dart';
@@ -155,7 +156,7 @@ class VfsProfileRepository implements ProfileRepository {
   Future<void> createProfile({
     required String name,
     String? description,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final nextAccountIndex = (await _keyStorage.readAccountIndex()) + 1;
 
@@ -202,7 +203,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles({
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final accountVaultDataManagerService =
         await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
@@ -223,7 +224,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   Future<Profile?> _getAccountPerProfile(
     Account account, {
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final accountIndex = account.accountIndex;
     final profileKeyPair =
@@ -286,7 +287,7 @@ class VfsProfileRepository implements ProfileRepository {
   @override
   Future<void> deleteProfile(
     Profile profile, {
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     if (profile.profileRepositoryId != id) {
       Error.throwWithStackTrace(
@@ -319,7 +320,7 @@ class VfsProfileRepository implements ProfileRepository {
   @override
   Future<void> updateProfile(
     Profile profile, {
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     if (profile.profileRepositoryId != id) {
       Error.throwWithStackTrace(
@@ -397,7 +398,7 @@ class VfsProfileRepository implements ProfileRepository {
     required int accountIndex,
     required String granteeDid,
     required Permissions permissions,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
     final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
@@ -438,7 +439,7 @@ class VfsProfileRepository implements ProfileRepository {
   Future<void> revokeProfileAccess({
     required int accountIndex,
     required String granteeDid,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
     final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
@@ -459,7 +460,7 @@ class VfsProfileRepository implements ProfileRepository {
     required String profileId,
     required Uint8List kek,
     required String grantedProfileDid,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final profileKeyPair =
         await _memoizedKeyPair(accountIndex: '$accountIndex');

@@ -1,7 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart'
+    as vdm;
 
 import '../exceptions/tdk_exception_type.dart';
 import '../model/node_status.dart';
@@ -30,7 +31,7 @@ class VFSFileStorage implements FileStorage {
   @override
   Future<List<Item>> getFolder({
     String? folderId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     if (folderId == null) {
       Error.throwWithStackTrace(
@@ -81,7 +82,7 @@ class VFSFileStorage implements FileStorage {
   Future<Folder> createFolder({
     required String folderName,
     required String parentFolderId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.createFolder(
       folderName: folderName,
@@ -115,7 +116,7 @@ class VFSFileStorage implements FileStorage {
   @override
   Future<void> deleteFolder({
     required String folderId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.deleteFolder(
       folderId,
@@ -127,7 +128,7 @@ class VFSFileStorage implements FileStorage {
   Future<void> renameFolder({
     required String folderId,
     required String newName,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.renameFolder(
       nodeId: folderId,
@@ -139,7 +140,7 @@ class VFSFileStorage implements FileStorage {
   @override
   Future<File> getFile({
     required String fileId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final node = await _vaultDataManagerService.getNodeInfo(
       fileId,
@@ -166,7 +167,7 @@ class VFSFileStorage implements FileStorage {
   @override
   Future<Uint8List> getFileContent({
     required String fileId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final content = await _vaultDataManagerService.downloadFile(
       nodeId: fileId,
@@ -180,7 +181,7 @@ class VFSFileStorage implements FileStorage {
     required String fileName,
     required Uint8List data,
     String? parentFolderId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.createFile(
       fileName: fileName,
@@ -193,7 +194,7 @@ class VFSFileStorage implements FileStorage {
   @override
   Future<void> deleteFile({
     required String fileId,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.deleteFile(
       fileId,
@@ -205,7 +206,7 @@ class VFSFileStorage implements FileStorage {
   Future<void> renameFile({
     required String fileId,
     required String newName,
-    AffinidiApiCancelToken? cancelToken,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.renameFile(
       nodeId: fileId,
