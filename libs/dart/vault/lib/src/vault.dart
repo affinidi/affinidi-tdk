@@ -1,4 +1,6 @@
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart'
+    as vdm;
 import 'package:ssi/ssi.dart';
 
 import 'dto/shared_profile_dto.dart';
@@ -179,7 +181,11 @@ class Vault {
   /// Retrieves a list of all profiles from all repositories.
   ///
   /// Throws [TdkException] if the vault is not initialized.
-  Future<List<Profile>> listProfiles() async {
+  ///
+  /// [cancelToken] - Optional cancel token for the operation.
+  Future<List<Profile>> listProfiles({
+    vdm.AffinidiApiCancelToken? cancelToken,
+  }) async {
     if (!_initialized) {
       Error.throwWithStackTrace(
         TdkException(
@@ -199,6 +205,7 @@ class Vault {
   /// [profileId] - ID of the profile to share.
   /// [toDid] - DID of the user to share with.
   /// [permissions] - Permissions to grant.
+  /// [cancelToken] - Optional cancel token for the operation.
   ///
   /// Throws [TdkException] if:
   /// - The profile is not found
@@ -207,6 +214,7 @@ class Vault {
     required String profileId,
     required String toDid,
     required Permissions permissions,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final profile = await _getProfileById(profileId);
 
@@ -246,9 +254,11 @@ class Vault {
 
   /// [profileId] - Identifier of the profile to which add a shared storage
   /// [sharedProfile] - Shared profile info including kek and id
+  /// [cancelToken] - Optional cancel token for the operation.
   Future<void> addSharedProfile({
     required String profileId,
     required SharedProfileDto sharedProfile,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final profiles = await listProfiles();
     final profile =
@@ -287,6 +297,7 @@ class Vault {
   ///
   /// [profileId] - ID of the profile to revoke access from.
   /// [granteeDid] - DID of the user to revoke access from.
+  /// [cancelToken] - Optional cancel token for the operation.
   ///
   /// Throws [TdkException] if:
   /// - The profile is not found
@@ -294,6 +305,7 @@ class Vault {
   Future<void> revokeProfileAccess({
     required String profileId,
     required String granteeDid,
+    vdm.AffinidiApiCancelToken? cancelToken,
   }) async {
     final profile = await _getProfileById(profileId);
 
