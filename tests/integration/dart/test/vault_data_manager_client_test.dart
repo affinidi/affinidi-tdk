@@ -5,7 +5,7 @@ import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_m
 
 import 'package:ssi/ssi.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 const rootNodeIdBase64Encoded = 'NzY3ZjY=';
 const vfsSalt =
@@ -25,7 +25,7 @@ void main() {
     late NodesApi nodesApi;
     late ConsumerAuthProvider consumerAuthProvider;
 
-    setUp(() async {
+    setUpAll(() async {
       final env = getVaultEnvironment();
       final wallet = Bip32Wallet.fromSeed(env.seed);
       final keyPair = await wallet.generateKey(keyId: "m/44'/60'/0'/0'/0'");

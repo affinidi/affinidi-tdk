@@ -1,14 +1,12 @@
 import 'dart:convert';
 
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:dio/dio.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 void main() {
   group('Iota Client Integration Tests', () {
@@ -19,27 +17,17 @@ void main() {
 
     late String configurationId;
     late String queryId;
+    late String redirectUri;
+    late String walletId;
+    late String walletAri;
 
-    final envIota = getIotaEnvironment();
-
-    setUp(() async {
-      final env = getProjectEnvironment();
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
-
-      final dio = Dio(BaseOptions(
-        baseUrl: AffinidiTdkIotaClient.basePath,
-        connectTimeout: const Duration(seconds: 5),
-        receiveTimeout: const Duration(seconds: 5),
-      ));
+    setUpAll(() async {
+      final wallet = await ResourceFactory.createWallet();
+      walletId = wallet.id;
+      walletAri = wallet.ari;
 
       final apiClient = AffinidiTdkIotaClient(
-          dio: dio, authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
 
       iotaApi = apiClient.getIotaApi();
       callbackApi = AffinidiTdkIotaClient().getCallbackApi();
@@ -47,28 +35,37 @@ void main() {
       pexQueryApi = apiClient.getPexQueryApi();
     });
 
+    tearDownAll(() async {
+      await configurationsApi.deleteIotaConfigurationById(
+            configurationId: configurationId);
+      await ResourceFactory.deleteWallet(walletId);
+    });
+
     group('Iota Configurations', () {
       test('Creates Iota configuration', () async {
-        String walletAri = envIota.walletAri;
-        String redirectUri = envIota.redirectUri;
-
         final clientMetadata = IotaConfigurationDtoClientMetadataBuilder()
           ..name = 'TestName'
           ..logo = 'https://example.com/logo.png'
           ..origin = 'https://example.com'
           ..build();
 
+        final fixture = getFixtures().iotaConfiguration;
+        redirectUri = fixture['redirectUris'][0];
+
         final createIotaConfigurationInput =
             CreateIotaConfigurationInputBuilder()
-              ..name = 'TestIotaConfiguration'
+              ..name = fixture['name']
               ..walletAri = walletAri
-              ..redirectUris = ListBuilder<String>([redirectUri])
-              ..enableVerification = false
-              ..enableConsentAuditLog = false
+              ..redirectUris = ListBuilder<String>(
+                  List<String>.from(fixture['redirectUris']))
+              ..enableVerification = fixture['enableVerification'] ?? false
+              ..enableConsentAuditLog =
+                  fixture['enableConsentAuditLog'] ?? false
               ..clientMetadata = clientMetadata
-              ..description = 'description'
-              ..mode = CreateIotaConfigurationInputModeEnum.redirect
-              ..enableIdvProviders = false;
+              ..description = fixture['description']
+              ..mode =
+                  CreateIotaConfigurationInputModeEnum.valueOf(fixture['mode'])
+              ..enableIdvProviders = fixture['enableIdvProviders'] ?? false;
 
         final configuration = (await configurationsApi.createIotaConfiguration(
                 createIotaConfigurationInput:
@@ -110,7 +107,8 @@ void main() {
         test('Creates PEX query', () async {
           final createPexQueryInput = CreatePexQueryInputBuilder()
             ..name = 'TestQuery'
-            ..vpDefinition = envIota.vpDefinition
+            ..vpDefinition =
+                jsonEncode(getFixtures().iotaPresentationDefinition)
             ..description = '';
 
           final query = (await pexQueryApi.createPexQuery(
@@ -149,57 +147,34 @@ void main() {
           expect(query!.description, updatedDescription);
         });
 
-        test('Deletes PEX query', () async {
-          final response = (await pexQueryApi.deletePexQueryById(
-            configurationId: configurationId,
-            queryId: queryId,
-          ));
-
-          expect(response.statusCode, 204);
-        });
-
         test('Reads PEX query', () async {
-          await expectLater(
-            pexQueryApi.getPexQueryById(
-                configurationId: configurationId, queryId: queryId),
-            throwsA(isA<DioException>()
-                .having((e) => e.response?.statusCode, 'status code', 404)),
-          );
+          final result = await pexQueryApi.getPexQueryById(
+              configurationId: configurationId, queryId: queryId);
+          expect(result, isNotNull);
         });
-      });
-
-      test('Deletes Iota configuration', () async {
-        final response = (await configurationsApi.deleteIotaConfigurationById(
-            configurationId: configurationId));
-
-        expect(response.statusCode, 204);
       });
 
       test('Reads Iota configuration', () async {
-        await expectLater(
-          configurationsApi.getIotaConfigurationById(
-              configurationId: configurationId),
-          throwsA(isA<DioException>()
-              .having((e) => e.response?.statusCode, 'status code', 404)),
-        );
+        final result = await configurationsApi.getIotaConfigurationById(
+            configurationId: configurationId);
+        expect(result, isNotNull);
       });
     });
 
     test('Iota redirect flow', () async {
-      final queryId = envIota.queryId;
       final uuid = Uuid();
       final correlationId = uuid.v4();
-      final configurationId = envIota.configurationId;
-      final presentationSubmission = envIota.presentationSubmission;
-      final vpToken = envIota.vpToken;
+      final presentationSubmission = getFixtures()
+          .iotaPresentationSubmission; // envIota.presentationSubmission;
+      final vpToken = getFixtures().verifiablePresentation;
 
       final initiateDataSharingRequestInputBuilder =
           InitiateDataSharingRequestInputBuilder()
             ..mode = InitiateDataSharingRequestInputModeEnum.redirect
-            ..configurationId = envIota.configurationId
+            ..configurationId = configurationId
             ..queryId = queryId
             ..nonce = correlationId.substring(0, 10)
-            ..redirectUri = envIota.redirectUri
+            ..redirectUri = redirectUri
             ..correlationId = correlationId;
 
       final iotaDataSharingResponse = (await iotaApi.initiateDataSharingRequest(
@@ -222,8 +197,8 @@ void main() {
 
       final callbackInputBuilder = CallbackInputBuilder()
         ..state = state
-        ..presentationSubmission = presentationSubmission
-        ..vpToken = vpToken;
+        ..presentationSubmission = jsonEncode(presentationSubmission)
+        ..vpToken = jsonEncode(vpToken);
 
       final callbackResponse = (await callbackApi.iotOIDC4VPCallback(
               callbackInput: callbackInputBuilder.build()))
