@@ -15,7 +15,7 @@ import 'mocks/mock_iam_api_service.dart';
 import 'mocks/mock_key_pair.dart';
 import 'mocks/mock_vault_data_manager_service.dart';
 
-class MockDeterministicWallet extends Mock implements DeterministicWallet {}
+class MockWallet extends Mock implements Wallet {}
 
 class MockVaultStore extends Mock implements VaultStore {}
 
@@ -46,7 +46,7 @@ class TestVfsProfileRepository extends VfsProfileRepository {
 void main() {
   late TestVfsProfileRepository repository;
   late MockVaultDataManagerService mockDataManagerService;
-  late MockDeterministicWallet mockWallet;
+  late MockWallet mockWallet;
   late MockVaultStore mockVaultStore;
   late MockDidSigner mockDidSigner;
   late MockIamApiService mockIamApiService;
@@ -63,7 +63,7 @@ void main() {
 
   setUp(() {
     mockDataManagerService = MockVaultDataManagerService();
-    mockWallet = MockDeterministicWallet();
+    mockWallet = MockWallet();
     mockVaultStore = MockVaultStore();
     mockDidSigner = MockDidSigner();
     mockIamApiService = MockIamApiService();
@@ -82,10 +82,8 @@ void main() {
     );
 
     // Setup common mock behaviors
-    when(() => mockWallet.deriveKey(
-          derivationPath: any(named: 'derivationPath'),
-          keyId: any(named: 'keyId'),
-        )).thenAnswer((_) async => mockKeyPair);
+    when(() => mockWallet.generateKey(keyId: any(named: 'keyId')))
+        .thenAnswer((_) async => mockKeyPair);
 
     when(() => mockKeyPair.publicKey).thenReturn(PublicKeyFake());
     when(() => mockKeyPair.encrypt(any()))
