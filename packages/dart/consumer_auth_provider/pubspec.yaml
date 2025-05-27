@@ -9,7 +9,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_common: ^1.3.0
+  affinidi_tdk_common: ^1.5.1
   base_codecs: ^1.0.1
   bip32_plus: ^1.0.0
   crypto: ^3.0.6
