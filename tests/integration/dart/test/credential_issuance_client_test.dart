@@ -1,7 +1,6 @@
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:built_value/json_object.dart' as built_value;
 import 'package:ssi/ssi.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 import 'package:test/test.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
@@ -35,10 +34,8 @@ void main() {
         passphrase: env.passphrase,
       );
 
-      final keyStore = InMemoryKeyStore();
-      final wallet = await Bip32Wallet.fromSeed(envVault.seed, keyStore);
-      final keyPair =
-          await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0/0");
+      final wallet = Bip32Wallet.fromSeed(envVault.seed);
+      final keyPair = await wallet.generateKey(keyId: "m/44'/60'/0'/0/0");
       final didDoc = DidKey.generateDocument(keyPair.publicKey);
       final didSigner = DidSigner(
         didDocument: didDoc,

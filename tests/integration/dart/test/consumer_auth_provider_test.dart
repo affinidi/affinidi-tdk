@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:ssi/ssi.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 
 import 'helpers/helpers.dart';
 
@@ -13,11 +12,8 @@ void main() {
   setUpAll(() async {
     final VaultEnvironment env = getVaultEnvironment();
 
-    // Create DidSigner from seed
-    final keyStore = InMemoryKeyStore();
-    final wallet = await Bip32Wallet.fromSeed(env.seed, keyStore);
-    final keyPair =
-        await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0'/0'");
+    final wallet = Bip32Wallet.fromSeed(env.seed);
+    final keyPair = await wallet.generateKey(keyId: "m/44'/60'/0'/0'/0'");
     final didDoc = DidKey.generateDocument(keyPair.publicKey);
     final didSigner = DidSigner(
       didDocument: didDoc,

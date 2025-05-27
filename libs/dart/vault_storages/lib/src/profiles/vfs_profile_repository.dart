@@ -59,7 +59,7 @@ class VfsProfileRepository implements ProfileRepository {
           .toString();
 
   final String _id;
-  late final DeterministicWallet _wallet;
+  late final Wallet _wallet;
   late VaultStore _keyStorage;
   bool _configured = false;
 
@@ -413,8 +413,7 @@ class VfsProfileRepository implements ProfileRepository {
   }
 
   Future<KeyPair> _getProfileKeyPair({required String accountIndex}) async {
-    return await _wallet.deriveKey(
-        derivationPath: _getDerivationPath(accountIndex), keyId: accountIndex);
+    return await _wallet.generateKey(keyId: _getDerivationPath(accountIndex));
   }
 
   @override

@@ -32,6 +32,7 @@ class VaultService extends _$VaultService {
         keyStorage,
         profileRepositories: profileRepositories,
       );
+      await vault.ensureInitialized();
       state = state.copyWith(vault: vault);
     } on TdkException catch (error) {
       state = state.copyWith(error: error.code);
