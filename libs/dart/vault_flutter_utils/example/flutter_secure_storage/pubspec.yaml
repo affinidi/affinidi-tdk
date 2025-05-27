@@ -31,7 +31,7 @@ resolution: workspace
 # versions available, run `flutter pub outdated`.
 dependencies:
   affinidi_tdk_vault: 1.1.0-dev.4
-  affinidi_tdk_vault_storages: 1.0.0-dev.8
+  affinidi_tdk_vault_storages: 1.1.0-dev.9
   affinidi_tdk_vault_flutter_utils: 1.0.0-dev.2
   flutter:
     sdk: flutter
