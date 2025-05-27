@@ -1,6 +1,5 @@
 import 'package:uuid/uuid.dart';
 import 'package:test/test.dart';
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
 import 'helpers/helpers.dart';
@@ -16,16 +15,8 @@ void main() {
       final env = getProjectEnvironment();
       tokenId = env.tokenId;
 
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
-
       final iamClient = AffinidiTdkIamClient(
-          authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
 
       policiesApi = iamClient.getPoliciesApi();
       projectsApi = iamClient.getProjectsApi();

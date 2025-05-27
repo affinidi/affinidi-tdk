@@ -3,7 +3,6 @@ import 'package:built_value/json_object.dart' as built_value;
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
 import 'helpers/helpers.dart';
@@ -26,14 +25,6 @@ void main() {
       final tempWallet = await ResourceFactory.createWallet();
       walletId = tempWallet.id;
 
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
-
       final wallet = Bip32Wallet.fromSeed(envVault.seed);
       final keyPair = await wallet.generateKey(keyId: "m/44'/60'/0'/0/0");
       final didDoc = DidKey.generateDocument(keyPair.publicKey);
@@ -46,7 +37,7 @@ void main() {
       consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
 
       final issuanceClient = AffinidiTdkCredentialIssuanceClient(
-          authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
       configurationApi = issuanceClient.getConfigurationApi();
       issuanceApi = issuanceClient.getIssuanceApi();
       offerApi = issuanceClient.getOfferApi();

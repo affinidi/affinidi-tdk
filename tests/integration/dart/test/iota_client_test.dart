@@ -27,17 +27,8 @@ void main() {
       walletId = wallet.id;
       walletAri = wallet.ari;
 
-      final env = getProjectEnvironment();
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
-
       final apiClient = AffinidiTdkIotaClient(
-          authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
 
       iotaApi = apiClient.getIotaApi();
       callbackApi = AffinidiTdkIotaClient().getCallbackApi();

@@ -1,7 +1,6 @@
 import 'package:one_of/one_of.dart';
 import 'package:built_value/json_object.dart';
 import 'package:test/test.dart';
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 
 import 'helpers/helpers.dart';
@@ -14,16 +13,8 @@ void main() {
     late String holderDid;
 
     setUpAll(() async {
-      final env = getProjectEnvironment();
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
       final apiClient = AffinidiTdkWalletsClient(
-          authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
       walletApi = apiClient.getWalletApi();
 
       final wallet = await ResourceFactory.createWallet();

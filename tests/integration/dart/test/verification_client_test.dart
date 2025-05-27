@@ -1,4 +1,3 @@
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
@@ -11,16 +10,8 @@ void main() {
     late DefaultApi verificationApi;
 
     setUpAll(() async {
-      final env = getProjectEnvironment();
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
       final apiClient = AffinidiTdkCredentialVerificationClient(
-          authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
       verificationApi = apiClient.getDefaultApi();
     });
 
