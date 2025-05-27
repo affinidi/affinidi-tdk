@@ -41,7 +41,7 @@ ProjectEnvironment getProjectEnvironment() {
 
   if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
     throw Exception(
-      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY', //, DID, WALLET_ID',
+      'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY',
     );
   }
 

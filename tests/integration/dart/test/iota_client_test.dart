@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:dio/dio.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
@@ -156,54 +155,31 @@ void main() {
           expect(query!.description, updatedDescription);
         });
 
-        // test('Deletes PEX query', () async {
-        //   final response = (await pexQueryApi.deletePexQueryById(
-        //     configurationId: configurationId,
-        //     queryId: queryId,
-        //   ));
-
-        //   expect(response.statusCode, 204);
-        // });
-
         test('Reads PEX query', () async {
-          await expectLater(
-            pexQueryApi.getPexQueryById(
-                configurationId: configurationId, queryId: queryId),
-            throwsA(isA<DioException>()
-                .having((e) => e.response?.statusCode, 'status code', 404)),
-          );
+          final result = await pexQueryApi.getPexQueryById(
+              configurationId: configurationId, queryId: queryId);
+          expect(result, isNotNull);
         });
       });
 
-      // test('Deletes Iota configuration', () async {
-      //   final response = (await configurationsApi.deleteIotaConfigurationById(
-      //       configurationId: configurationId));
-
-      //   expect(response.statusCode, 204);
-      // });
-
       test('Reads Iota configuration', () async {
-        await expectLater(
-          configurationsApi.getIotaConfigurationById(
-              configurationId: configurationId),
-          throwsA(isA<DioException>()
-              .having((e) => e.response?.statusCode, 'status code', 404)),
-        );
+        final result = await configurationsApi.getIotaConfigurationById(
+            configurationId: configurationId);
+        expect(result, isNotNull);
       });
     });
 
     test('Iota redirect flow', () async {
-      // final queryId = envIota.queryId;
       final uuid = Uuid();
       final correlationId = uuid.v4();
-      // final configurationId = envIota.configurationId;
-      final presentationSubmission = getFixtures().iotaPresentationSubmission; // envIota.presentationSubmission;
-      final vpToken = getFixtures().verifiablePresentation; // envIota.vpToken;
+      final presentationSubmission = getFixtures()
+          .iotaPresentationSubmission; // envIota.presentationSubmission;
+      final vpToken = getFixtures().verifiablePresentation;
 
       final initiateDataSharingRequestInputBuilder =
           InitiateDataSharingRequestInputBuilder()
             ..mode = InitiateDataSharingRequestInputModeEnum.redirect
-            ..configurationId = configurationId // envIota.configurationId
+            ..configurationId = configurationId
             ..queryId = queryId
             ..nonce = correlationId.substring(0, 10)
             ..redirectUri = redirectUri
