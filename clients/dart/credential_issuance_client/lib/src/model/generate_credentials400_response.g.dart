@@ -16,12 +16,12 @@ GenerateCredentials400ResponseNameEnum
     case 'invalidProofError':
       return _$generateCredentials400ResponseNameEnum_invalidProofError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GenerateCredentials400ResponseNameEnum>
-    _$generateCredentials400ResponseNameEnumValues = new BuiltSet<
+    _$generateCredentials400ResponseNameEnumValues = BuiltSet<
         GenerateCredentials400ResponseNameEnum>(const <GenerateCredentials400ResponseNameEnum>[
   _$generateCredentials400ResponseNameEnum_invalidProofError,
 ]);
@@ -37,12 +37,12 @@ GenerateCredentials400ResponseMessageEnum
     case 'theProofInTheCredentialRequestIsInvalid':
       return _$generateCredentials400ResponseMessageEnum_theProofInTheCredentialRequestIsInvalid;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GenerateCredentials400ResponseMessageEnum>
-    _$generateCredentials400ResponseMessageEnumValues = new BuiltSet<
+    _$generateCredentials400ResponseMessageEnumValues = BuiltSet<
         GenerateCredentials400ResponseMessageEnum>(const <GenerateCredentials400ResponseMessageEnum>[
   _$generateCredentials400ResponseMessageEnum_theProofInTheCredentialRequestIsInvalid,
 ]);
@@ -57,25 +57,25 @@ GenerateCredentials400ResponseHttpStatusCodeEnum
     case 'number400':
       return _$generateCredentials400ResponseHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GenerateCredentials400ResponseHttpStatusCodeEnum>
-    _$generateCredentials400ResponseHttpStatusCodeEnumValues = new BuiltSet<
+    _$generateCredentials400ResponseHttpStatusCodeEnumValues = BuiltSet<
         GenerateCredentials400ResponseHttpStatusCodeEnum>(const <GenerateCredentials400ResponseHttpStatusCodeEnum>[
   _$generateCredentials400ResponseHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<GenerateCredentials400ResponseNameEnum>
     _$generateCredentials400ResponseNameEnumSerializer =
-    new _$GenerateCredentials400ResponseNameEnumSerializer();
+    _$GenerateCredentials400ResponseNameEnumSerializer();
 Serializer<GenerateCredentials400ResponseMessageEnum>
     _$generateCredentials400ResponseMessageEnumSerializer =
-    new _$GenerateCredentials400ResponseMessageEnumSerializer();
+    _$GenerateCredentials400ResponseMessageEnumSerializer();
 Serializer<GenerateCredentials400ResponseHttpStatusCodeEnum>
     _$generateCredentials400ResponseHttpStatusCodeEnumSerializer =
-    new _$GenerateCredentials400ResponseHttpStatusCodeEnumSerializer();
+    _$GenerateCredentials400ResponseHttpStatusCodeEnumSerializer();
 
 class _$GenerateCredentials400ResponseNameEnumSerializer
     implements PrimitiveSerializer<GenerateCredentials400ResponseNameEnum> {
@@ -176,13 +176,9 @@ class _$GenerateCredentials400Response extends GenerateCredentials400Response {
 
   factory _$GenerateCredentials400Response(
           [void Function(GenerateCredentials400ResponseBuilder)? updates]) =>
-      (new GenerateCredentials400ResponseBuilder()..update(updates))._build();
+      (GenerateCredentials400ResponseBuilder()..update(updates))._build();
 
-  _$GenerateCredentials400Response._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'GenerateCredentials400Response', 'oneOf');
-  }
-
+  _$GenerateCredentials400Response._({required this.oneOf}) : super._();
   @override
   GenerateCredentials400Response rebuild(
           void Function(GenerateCredentials400ResponseBuilder) updates) =>
@@ -190,7 +186,7 @@ class _$GenerateCredentials400Response extends GenerateCredentials400Response {
 
   @override
   GenerateCredentials400ResponseBuilder toBuilder() =>
-      new GenerateCredentials400ResponseBuilder()..replace(this);
+      GenerateCredentials400ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -239,7 +235,6 @@ class GenerateCredentials400ResponseBuilder
 
   @override
   void replace(GenerateCredentials400Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GenerateCredentials400Response;
   }
 
@@ -253,7 +248,7 @@ class GenerateCredentials400ResponseBuilder
 
   _$GenerateCredentials400Response _build() {
     final _$result = _$v ??
-        new _$GenerateCredentials400Response._(
+        _$GenerateCredentials400Response._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'GenerateCredentials400Response', 'oneOf'),
         );

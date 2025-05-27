@@ -13,11 +13,10 @@ class _$CorsConsumerAuthTokenEndpointOK
 
   factory _$CorsConsumerAuthTokenEndpointOK(
           [void Function(CorsConsumerAuthTokenEndpointOKBuilder)? updates]) =>
-      (new CorsConsumerAuthTokenEndpointOKBuilder()..update(updates))._build();
+      (CorsConsumerAuthTokenEndpointOKBuilder()..update(updates))._build();
 
   _$CorsConsumerAuthTokenEndpointOK._({this.corsConsumerAuthTokenEndpointOk})
       : super._();
-
   @override
   CorsConsumerAuthTokenEndpointOK rebuild(
           void Function(CorsConsumerAuthTokenEndpointOKBuilder) updates) =>
@@ -25,7 +24,7 @@ class _$CorsConsumerAuthTokenEndpointOK
 
   @override
   CorsConsumerAuthTokenEndpointOKBuilder toBuilder() =>
-      new CorsConsumerAuthTokenEndpointOKBuilder()..replace(this);
+      CorsConsumerAuthTokenEndpointOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -80,7 +79,6 @@ class CorsConsumerAuthTokenEndpointOKBuilder
 
   @override
   void replace(CorsConsumerAuthTokenEndpointOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsConsumerAuthTokenEndpointOK;
   }
 
@@ -94,7 +92,7 @@ class CorsConsumerAuthTokenEndpointOKBuilder
 
   _$CorsConsumerAuthTokenEndpointOK _build() {
     final _$result = _$v ??
-        new _$CorsConsumerAuthTokenEndpointOK._(
+        _$CorsConsumerAuthTokenEndpointOK._(
           corsConsumerAuthTokenEndpointOk: corsConsumerAuthTokenEndpointOk,
         );
     replace(_$result);

@@ -19,15 +19,11 @@ class _$ServiceErrorResponseDetailsInner
 
   factory _$ServiceErrorResponseDetailsInner(
           [void Function(ServiceErrorResponseDetailsInnerBuilder)? updates]) =>
-      (new ServiceErrorResponseDetailsInnerBuilder()..update(updates))._build();
+      (ServiceErrorResponseDetailsInnerBuilder()..update(updates))._build();
 
   _$ServiceErrorResponseDetailsInner._(
       {required this.issue, this.field, this.value, this.location})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issue, r'ServiceErrorResponseDetailsInner', 'issue');
-  }
-
+      : super._();
   @override
   ServiceErrorResponseDetailsInner rebuild(
           void Function(ServiceErrorResponseDetailsInnerBuilder) updates) =>
@@ -35,7 +31,7 @@ class _$ServiceErrorResponseDetailsInner
 
   @override
   ServiceErrorResponseDetailsInnerBuilder toBuilder() =>
-      new ServiceErrorResponseDetailsInnerBuilder()..replace(this);
+      ServiceErrorResponseDetailsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -109,7 +105,6 @@ class ServiceErrorResponseDetailsInnerBuilder
 
   @override
   void replace(ServiceErrorResponseDetailsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ServiceErrorResponseDetailsInner;
   }
 
@@ -123,7 +118,7 @@ class ServiceErrorResponseDetailsInnerBuilder
 
   _$ServiceErrorResponseDetailsInner _build() {
     final _$result = _$v ??
-        new _$ServiceErrorResponseDetailsInner._(
+        _$ServiceErrorResponseDetailsInner._(
           issue: BuiltValueNullFieldError.checkNotNull(
               issue, r'ServiceErrorResponseDetailsInner', 'issue'),
           field: field,

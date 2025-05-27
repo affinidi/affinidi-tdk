@@ -12,10 +12,9 @@ class _$CorsListNodeChildrenOK extends CorsListNodeChildrenOK {
 
   factory _$CorsListNodeChildrenOK(
           [void Function(CorsListNodeChildrenOKBuilder)? updates]) =>
-      (new CorsListNodeChildrenOKBuilder()..update(updates))._build();
+      (CorsListNodeChildrenOKBuilder()..update(updates))._build();
 
   _$CorsListNodeChildrenOK._({this.corsListNodeChildrenOk}) : super._();
-
   @override
   CorsListNodeChildrenOK rebuild(
           void Function(CorsListNodeChildrenOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsListNodeChildrenOK extends CorsListNodeChildrenOK {
 
   @override
   CorsListNodeChildrenOKBuilder toBuilder() =>
-      new CorsListNodeChildrenOKBuilder()..replace(this);
+      CorsListNodeChildrenOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,6 @@ class CorsListNodeChildrenOKBuilder
 
   @override
   void replace(CorsListNodeChildrenOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsListNodeChildrenOK;
   }
 
@@ -86,7 +84,7 @@ class CorsListNodeChildrenOKBuilder
 
   _$CorsListNodeChildrenOK _build() {
     final _$result = _$v ??
-        new _$CorsListNodeChildrenOK._(
+        _$CorsListNodeChildrenOK._(
           corsListNodeChildrenOk: corsListNodeChildrenOk,
         );
     replace(_$result);

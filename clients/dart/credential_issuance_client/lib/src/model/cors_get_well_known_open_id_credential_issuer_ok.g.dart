@@ -14,13 +14,12 @@ class _$CorsGetWellKnownOpenIdCredentialIssuerOK
   factory _$CorsGetWellKnownOpenIdCredentialIssuerOK(
           [void Function(CorsGetWellKnownOpenIdCredentialIssuerOKBuilder)?
               updates]) =>
-      (new CorsGetWellKnownOpenIdCredentialIssuerOKBuilder()..update(updates))
+      (CorsGetWellKnownOpenIdCredentialIssuerOKBuilder()..update(updates))
           ._build();
 
   _$CorsGetWellKnownOpenIdCredentialIssuerOK._(
       {this.corsGetWellKnownOpenIdCredentialIssuerOk})
       : super._();
-
   @override
   CorsGetWellKnownOpenIdCredentialIssuerOK rebuild(
           void Function(CorsGetWellKnownOpenIdCredentialIssuerOKBuilder)
@@ -29,7 +28,7 @@ class _$CorsGetWellKnownOpenIdCredentialIssuerOK
 
   @override
   CorsGetWellKnownOpenIdCredentialIssuerOKBuilder toBuilder() =>
-      new CorsGetWellKnownOpenIdCredentialIssuerOKBuilder()..replace(this);
+      CorsGetWellKnownOpenIdCredentialIssuerOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -87,7 +86,6 @@ class CorsGetWellKnownOpenIdCredentialIssuerOKBuilder
 
   @override
   void replace(CorsGetWellKnownOpenIdCredentialIssuerOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsGetWellKnownOpenIdCredentialIssuerOK;
   }
 
@@ -102,7 +100,7 @@ class CorsGetWellKnownOpenIdCredentialIssuerOKBuilder
 
   _$CorsGetWellKnownOpenIdCredentialIssuerOK _build() {
     final _$result = _$v ??
-        new _$CorsGetWellKnownOpenIdCredentialIssuerOK._(
+        _$CorsGetWellKnownOpenIdCredentialIssuerOK._(
           corsGetWellKnownOpenIdCredentialIssuerOk:
               corsGetWellKnownOpenIdCredentialIssuerOk,
         );

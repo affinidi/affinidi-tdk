@@ -16,11 +16,10 @@ class _$ConstraintsStatuses extends ConstraintsStatuses {
 
   factory _$ConstraintsStatuses(
           [void Function(ConstraintsStatusesBuilder)? updates]) =>
-      (new ConstraintsStatusesBuilder()..update(updates))._build();
+      (ConstraintsStatusesBuilder()..update(updates))._build();
 
   _$ConstraintsStatuses._({this.active, this.suspended, this.revoked})
       : super._();
-
   @override
   ConstraintsStatuses rebuild(
           void Function(ConstraintsStatusesBuilder) updates) =>
@@ -28,7 +27,7 @@ class _$ConstraintsStatuses extends ConstraintsStatuses {
 
   @override
   ConstraintsStatusesBuilder toBuilder() =>
-      new ConstraintsStatusesBuilder()..replace(this);
+      ConstraintsStatusesBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -64,15 +63,15 @@ class ConstraintsStatusesBuilder
   _$ConstraintsStatuses? _$v;
 
   PdStatusBuilder? _active;
-  PdStatusBuilder get active => _$this._active ??= new PdStatusBuilder();
+  PdStatusBuilder get active => _$this._active ??= PdStatusBuilder();
   set active(PdStatusBuilder? active) => _$this._active = active;
 
   PdStatusBuilder? _suspended;
-  PdStatusBuilder get suspended => _$this._suspended ??= new PdStatusBuilder();
+  PdStatusBuilder get suspended => _$this._suspended ??= PdStatusBuilder();
   set suspended(PdStatusBuilder? suspended) => _$this._suspended = suspended;
 
   PdStatusBuilder? _revoked;
-  PdStatusBuilder get revoked => _$this._revoked ??= new PdStatusBuilder();
+  PdStatusBuilder get revoked => _$this._revoked ??= PdStatusBuilder();
   set revoked(PdStatusBuilder? revoked) => _$this._revoked = revoked;
 
   ConstraintsStatusesBuilder() {
@@ -92,7 +91,6 @@ class ConstraintsStatusesBuilder
 
   @override
   void replace(ConstraintsStatuses other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ConstraintsStatuses;
   }
 
@@ -108,7 +106,7 @@ class ConstraintsStatusesBuilder
     _$ConstraintsStatuses _$result;
     try {
       _$result = _$v ??
-          new _$ConstraintsStatuses._(
+          _$ConstraintsStatuses._(
             active: _active?.build(),
             suspended: _suspended?.build(),
             revoked: _revoked?.build(),
@@ -123,7 +121,7 @@ class ConstraintsStatusesBuilder
         _$failedField = 'revoked';
         _revoked?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ConstraintsStatuses', _$failedField, e.toString());
       }
       rethrow;

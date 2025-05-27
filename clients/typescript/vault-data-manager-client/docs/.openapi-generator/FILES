@@ -1,6 +1,6 @@
 .openapi-generator-ignore
 Apis/AccountsApi.md
-Apis/ConfigApi.md
+Apis/ConfigurationApi.md
 Apis/FilesApi.md
 Apis/NodesApi.md
 Apis/ProfileDataApi.md
@@ -12,6 +12,7 @@ Models/CorsAwsCredentialExchangeOK.md
 Models/CorsDeleteAccountOK.md
 Models/CorsDeleteNodeOK.md
 Models/CorsGetConfigOK.md
+Models/CorsGetConfigurationOK.md
 Models/CorsGetScannedFileInfoOK.md
 Models/CorsGetWellKnownJwksOK.md
 Models/CorsInitNodesOK.md

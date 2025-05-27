@@ -16,15 +16,10 @@ class _$SupportedCredentialMetadataItemLogo
   factory _$SupportedCredentialMetadataItemLogo(
           [void Function(SupportedCredentialMetadataItemLogoBuilder)?
               updates]) =>
-      (new SupportedCredentialMetadataItemLogoBuilder()..update(updates))
-          ._build();
+      (SupportedCredentialMetadataItemLogoBuilder()..update(updates))._build();
 
   _$SupportedCredentialMetadataItemLogo._({required this.url, this.altText})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        url, r'SupportedCredentialMetadataItemLogo', 'url');
-  }
-
+      : super._();
   @override
   SupportedCredentialMetadataItemLogo rebuild(
           void Function(SupportedCredentialMetadataItemLogoBuilder) updates) =>
@@ -32,7 +27,7 @@ class _$SupportedCredentialMetadataItemLogo
 
   @override
   SupportedCredentialMetadataItemLogoBuilder toBuilder() =>
-      new SupportedCredentialMetadataItemLogoBuilder()..replace(this);
+      SupportedCredentialMetadataItemLogoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -90,7 +85,6 @@ class SupportedCredentialMetadataItemLogoBuilder
 
   @override
   void replace(SupportedCredentialMetadataItemLogo other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SupportedCredentialMetadataItemLogo;
   }
 
@@ -105,7 +99,7 @@ class SupportedCredentialMetadataItemLogoBuilder
 
   _$SupportedCredentialMetadataItemLogo _build() {
     final _$result = _$v ??
-        new _$SupportedCredentialMetadataItemLogo._(
+        _$SupportedCredentialMetadataItemLogo._(
           url: BuiltValueNullFieldError.checkNotNull(
               url, r'SupportedCredentialMetadataItemLogo', 'url'),
           altText: altText,

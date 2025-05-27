@@ -11,17 +11,15 @@ class _$CorsInitNodesOK extends CorsInitNodesOK {
   final String? corsInitNodesOk;
 
   factory _$CorsInitNodesOK([void Function(CorsInitNodesOKBuilder)? updates]) =>
-      (new CorsInitNodesOKBuilder()..update(updates))._build();
+      (CorsInitNodesOKBuilder()..update(updates))._build();
 
   _$CorsInitNodesOK._({this.corsInitNodesOk}) : super._();
-
   @override
   CorsInitNodesOK rebuild(void Function(CorsInitNodesOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CorsInitNodesOKBuilder toBuilder() =>
-      new CorsInitNodesOKBuilder()..replace(this);
+  CorsInitNodesOKBuilder toBuilder() => CorsInitNodesOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -69,7 +67,6 @@ class CorsInitNodesOKBuilder
 
   @override
   void replace(CorsInitNodesOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsInitNodesOK;
   }
 
@@ -83,7 +80,7 @@ class CorsInitNodesOKBuilder
 
   _$CorsInitNodesOK _build() {
     final _$result = _$v ??
-        new _$CorsInitNodesOK._(
+        _$CorsInitNodesOK._(
           corsInitNodesOk: corsInitNodesOk,
         );
     replace(_$result);

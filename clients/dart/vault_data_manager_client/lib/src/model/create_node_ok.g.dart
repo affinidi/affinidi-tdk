@@ -17,19 +17,16 @@ class _$CreateNodeOK extends CreateNodeOK {
   final BuiltMap<String, JsonObject?>? fields;
 
   factory _$CreateNodeOK([void Function(CreateNodeOKBuilder)? updates]) =>
-      (new CreateNodeOKBuilder()..update(updates))._build();
+      (CreateNodeOKBuilder()..update(updates))._build();
 
   _$CreateNodeOK._({required this.nodeId, this.url, this.link, this.fields})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(nodeId, r'CreateNodeOK', 'nodeId');
-  }
-
+      : super._();
   @override
   CreateNodeOK rebuild(void Function(CreateNodeOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CreateNodeOKBuilder toBuilder() => new CreateNodeOKBuilder()..replace(this);
+  CreateNodeOKBuilder toBuilder() => CreateNodeOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +78,7 @@ class CreateNodeOKBuilder
 
   MapBuilder<String, JsonObject?>? _fields;
   MapBuilder<String, JsonObject?> get fields =>
-      _$this._fields ??= new MapBuilder<String, JsonObject?>();
+      _$this._fields ??= MapBuilder<String, JsonObject?>();
   set fields(MapBuilder<String, JsonObject?>? fields) =>
       _$this._fields = fields;
 
@@ -103,7 +100,6 @@ class CreateNodeOKBuilder
 
   @override
   void replace(CreateNodeOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateNodeOK;
   }
 
@@ -119,7 +115,7 @@ class CreateNodeOKBuilder
     _$CreateNodeOK _$result;
     try {
       _$result = _$v ??
-          new _$CreateNodeOK._(
+          _$CreateNodeOK._(
             nodeId: BuiltValueNullFieldError.checkNotNull(
                 nodeId, r'CreateNodeOK', 'nodeId'),
             url: url,
@@ -132,7 +128,7 @@ class CreateNodeOKBuilder
         _$failedField = 'fields';
         _fields?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateNodeOK', _$failedField, e.toString());
       }
       rethrow;

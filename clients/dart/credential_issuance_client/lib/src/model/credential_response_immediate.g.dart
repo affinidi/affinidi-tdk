@@ -16,21 +16,13 @@ class _$CredentialResponseImmediate extends CredentialResponseImmediate {
 
   factory _$CredentialResponseImmediate(
           [void Function(CredentialResponseImmediateBuilder)? updates]) =>
-      (new CredentialResponseImmediateBuilder()..update(updates))._build();
+      (CredentialResponseImmediateBuilder()..update(updates))._build();
 
   _$CredentialResponseImmediate._(
       {required this.credential,
       required this.cNonce,
       required this.cNonceExpiresIn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        credential, r'CredentialResponseImmediate', 'credential');
-    BuiltValueNullFieldError.checkNotNull(
-        cNonce, r'CredentialResponseImmediate', 'cNonce');
-    BuiltValueNullFieldError.checkNotNull(
-        cNonceExpiresIn, r'CredentialResponseImmediate', 'cNonceExpiresIn');
-  }
-
+      : super._();
   @override
   CredentialResponseImmediate rebuild(
           void Function(CredentialResponseImmediateBuilder) updates) =>
@@ -38,7 +30,7 @@ class _$CredentialResponseImmediate extends CredentialResponseImmediate {
 
   @override
   CredentialResponseImmediateBuilder toBuilder() =>
-      new CredentialResponseImmediateBuilder()..replace(this);
+      CredentialResponseImmediateBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,7 +69,7 @@ class CredentialResponseImmediateBuilder
 
   CredentialResponseImmediateCredentialBuilder? _credential;
   CredentialResponseImmediateCredentialBuilder get credential =>
-      _$this._credential ??= new CredentialResponseImmediateCredentialBuilder();
+      _$this._credential ??= CredentialResponseImmediateCredentialBuilder();
   set credential(CredentialResponseImmediateCredentialBuilder? credential) =>
       _$this._credential = credential;
 
@@ -88,7 +80,7 @@ class CredentialResponseImmediateBuilder
   CredentialResponseImmediateCNonceExpiresInBuilder? _cNonceExpiresIn;
   CredentialResponseImmediateCNonceExpiresInBuilder get cNonceExpiresIn =>
       _$this._cNonceExpiresIn ??=
-          new CredentialResponseImmediateCNonceExpiresInBuilder();
+          CredentialResponseImmediateCNonceExpiresInBuilder();
   set cNonceExpiresIn(
           CredentialResponseImmediateCNonceExpiresInBuilder? cNonceExpiresIn) =>
       _$this._cNonceExpiresIn = cNonceExpiresIn;
@@ -110,7 +102,6 @@ class CredentialResponseImmediateBuilder
 
   @override
   void replace(CredentialResponseImmediate other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialResponseImmediate;
   }
 
@@ -126,7 +117,7 @@ class CredentialResponseImmediateBuilder
     _$CredentialResponseImmediate _$result;
     try {
       _$result = _$v ??
-          new _$CredentialResponseImmediate._(
+          _$CredentialResponseImmediate._(
             credential: credential.build(),
             cNonce: BuiltValueNullFieldError.checkNotNull(
                 cNonce, r'CredentialResponseImmediate', 'cNonce'),
@@ -141,7 +132,7 @@ class CredentialResponseImmediateBuilder
         _$failedField = 'cNonceExpiresIn';
         cNonceExpiresIn.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CredentialResponseImmediate', _$failedField, e.toString());
       }
       rethrow;

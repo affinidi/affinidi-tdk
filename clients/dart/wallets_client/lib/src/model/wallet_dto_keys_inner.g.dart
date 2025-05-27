@@ -14,10 +14,9 @@ class _$WalletDtoKeysInner extends WalletDtoKeysInner {
 
   factory _$WalletDtoKeysInner(
           [void Function(WalletDtoKeysInnerBuilder)? updates]) =>
-      (new WalletDtoKeysInnerBuilder()..update(updates))._build();
+      (WalletDtoKeysInnerBuilder()..update(updates))._build();
 
   _$WalletDtoKeysInner._({this.id, this.ari}) : super._();
-
   @override
   WalletDtoKeysInner rebuild(
           void Function(WalletDtoKeysInnerBuilder) updates) =>
@@ -25,7 +24,7 @@ class _$WalletDtoKeysInner extends WalletDtoKeysInner {
 
   @override
   WalletDtoKeysInnerBuilder toBuilder() =>
-      new WalletDtoKeysInnerBuilder()..replace(this);
+      WalletDtoKeysInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -79,7 +78,6 @@ class WalletDtoKeysInnerBuilder
 
   @override
   void replace(WalletDtoKeysInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WalletDtoKeysInner;
   }
 
@@ -93,7 +91,7 @@ class WalletDtoKeysInnerBuilder
 
   _$WalletDtoKeysInner _build() {
     final _$result = _$v ??
-        new _$WalletDtoKeysInner._(
+        _$WalletDtoKeysInner._(
           id: id,
           ari: ari,
         );

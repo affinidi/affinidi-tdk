@@ -14,10 +14,9 @@ class _$UpdatePexQueryInput extends UpdatePexQueryInput {
 
   factory _$UpdatePexQueryInput(
           [void Function(UpdatePexQueryInputBuilder)? updates]) =>
-      (new UpdatePexQueryInputBuilder()..update(updates))._build();
+      (UpdatePexQueryInputBuilder()..update(updates))._build();
 
   _$UpdatePexQueryInput._({this.vpDefinition, this.description}) : super._();
-
   @override
   UpdatePexQueryInput rebuild(
           void Function(UpdatePexQueryInputBuilder) updates) =>
@@ -25,7 +24,7 @@ class _$UpdatePexQueryInput extends UpdatePexQueryInput {
 
   @override
   UpdatePexQueryInputBuilder toBuilder() =>
-      new UpdatePexQueryInputBuilder()..replace(this);
+      UpdatePexQueryInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +80,6 @@ class UpdatePexQueryInputBuilder
 
   @override
   void replace(UpdatePexQueryInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdatePexQueryInput;
   }
 
@@ -95,7 +93,7 @@ class UpdatePexQueryInputBuilder
 
   _$UpdatePexQueryInput _build() {
     final _$result = _$v ??
-        new _$UpdatePexQueryInput._(
+        _$UpdatePexQueryInput._(
           vpDefinition: vpDefinition,
           description: description,
         );

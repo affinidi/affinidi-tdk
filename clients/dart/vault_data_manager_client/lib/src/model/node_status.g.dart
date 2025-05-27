@@ -25,12 +25,11 @@ NodeStatus _$valueOf(String name) {
     case 'CREATED':
       return _$CREATED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
-final BuiltSet<NodeStatus> _$values =
-    new BuiltSet<NodeStatus>(const <NodeStatus>[
+final BuiltSet<NodeStatus> _$values = BuiltSet<NodeStatus>(const <NodeStatus>[
   _$NOT_SET,
   _$HIDDEN,
   _$DELETED,
@@ -54,7 +53,7 @@ abstract class _$NodeStatusMixin {
   _$NodeStatusMeta get NodeStatus => const _$NodeStatusMeta();
 }
 
-Serializer<NodeStatus> _$nodeStatusSerializer = new _$NodeStatusSerializer();
+Serializer<NodeStatus> _$nodeStatusSerializer = _$NodeStatusSerializer();
 
 class _$NodeStatusSerializer implements PrimitiveSerializer<NodeStatus> {
   static const Map<String, Object> _toWire = const <String, Object>{

@@ -18,23 +18,18 @@ class _$NestedDescriptor extends NestedDescriptor {
 
   factory _$NestedDescriptor(
           [void Function(NestedDescriptorBuilder)? updates]) =>
-      (new NestedDescriptorBuilder()..update(updates))._build();
+      (NestedDescriptorBuilder()..update(updates))._build();
 
   _$NestedDescriptor._(
       {this.id, required this.path, this.pathNested, required this.format})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(path, r'NestedDescriptor', 'path');
-    BuiltValueNullFieldError.checkNotNull(
-        format, r'NestedDescriptor', 'format');
-  }
-
+      : super._();
   @override
   NestedDescriptor rebuild(void Function(NestedDescriptorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   NestedDescriptorBuilder toBuilder() =>
-      new NestedDescriptorBuilder()..replace(this);
+      NestedDescriptorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +77,7 @@ class NestedDescriptorBuilder
 
   NestedDescriptorBuilder? _pathNested;
   NestedDescriptorBuilder get pathNested =>
-      _$this._pathNested ??= new NestedDescriptorBuilder();
+      _$this._pathNested ??= NestedDescriptorBuilder();
   set pathNested(NestedDescriptorBuilder? pathNested) =>
       _$this._pathNested = pathNested;
 
@@ -108,7 +103,6 @@ class NestedDescriptorBuilder
 
   @override
   void replace(NestedDescriptor other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$NestedDescriptor;
   }
 
@@ -124,7 +118,7 @@ class NestedDescriptorBuilder
     _$NestedDescriptor _$result;
     try {
       _$result = _$v ??
-          new _$NestedDescriptor._(
+          _$NestedDescriptor._(
             id: id,
             path: BuiltValueNullFieldError.checkNotNull(
                 path, r'NestedDescriptor', 'path'),
@@ -138,7 +132,7 @@ class NestedDescriptorBuilder
         _$failedField = 'pathNested';
         _pathNested?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'NestedDescriptor', _$failedField, e.toString());
       }
       rethrow;

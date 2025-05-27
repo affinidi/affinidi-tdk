@@ -14,17 +14,17 @@ ConsentDtoStatusEnum _$consentDtoStatusEnumValueOf(String name) {
     case 'GIVEN':
       return _$consentDtoStatusEnum_GIVEN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ConsentDtoStatusEnum> _$consentDtoStatusEnumValues =
-    new BuiltSet<ConsentDtoStatusEnum>(const <ConsentDtoStatusEnum>[
+    BuiltSet<ConsentDtoStatusEnum>(const <ConsentDtoStatusEnum>[
   _$consentDtoStatusEnum_GIVEN,
 ]);
 
 Serializer<ConsentDtoStatusEnum> _$consentDtoStatusEnumSerializer =
-    new _$ConsentDtoStatusEnumSerializer();
+    _$ConsentDtoStatusEnumSerializer();
 
 class _$ConsentDtoStatusEnumSerializer
     implements PrimitiveSerializer<ConsentDtoStatusEnum> {
@@ -73,7 +73,7 @@ class _$ConsentDto extends ConsentDto {
   final String createdBy;
 
   factory _$ConsentDto([void Function(ConsentDtoBuilder)? updates]) =>
-      (new ConsentDtoBuilder()..update(updates))._build();
+      (ConsentDtoBuilder()..update(updates))._build();
 
   _$ConsentDto._(
       {required this.projectId,
@@ -85,29 +85,13 @@ class _$ConsentDto extends ConsentDto {
       required this.modifiedBy,
       required this.createdAt,
       required this.createdBy})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'ConsentDto', 'projectId');
-    BuiltValueNullFieldError.checkNotNull(id, r'ConsentDto', 'id');
-    BuiltValueNullFieldError.checkNotNull(userId, r'ConsentDto', 'userId');
-    BuiltValueNullFieldError.checkNotNull(vcType, r'ConsentDto', 'vcType');
-    BuiltValueNullFieldError.checkNotNull(status, r'ConsentDto', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedAt, r'ConsentDto', 'modifiedAt');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedBy, r'ConsentDto', 'modifiedBy');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'ConsentDto', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        createdBy, r'ConsentDto', 'createdBy');
-  }
-
+      : super._();
   @override
   ConsentDto rebuild(void Function(ConsentDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ConsentDtoBuilder toBuilder() => new ConsentDtoBuilder()..replace(this);
+  ConsentDtoBuilder toBuilder() => ConsentDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -218,7 +202,6 @@ class ConsentDtoBuilder implements Builder<ConsentDto, ConsentDtoBuilder> {
 
   @override
   void replace(ConsentDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ConsentDto;
   }
 
@@ -232,7 +215,7 @@ class ConsentDtoBuilder implements Builder<ConsentDto, ConsentDtoBuilder> {
 
   _$ConsentDto _build() {
     final _$result = _$v ??
-        new _$ConsentDto._(
+        _$ConsentDto._(
           projectId: BuiltValueNullFieldError.checkNotNull(
               projectId, r'ConsentDto', 'projectId'),
           id: BuiltValueNullFieldError.checkNotNull(id, r'ConsentDto', 'id'),

@@ -15,17 +15,13 @@ class _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
           [void Function(
                   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder)?
               updates]) =>
-      (new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder()
+      (TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder()
             ..update(updates))
           ._build();
 
   _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf._(
       {required this.jwks})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(jwks,
-        r'TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf', 'jwks');
-  }
-
+      : super._();
   @override
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf rebuild(
           void Function(
@@ -35,7 +31,7 @@ class _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
 
   @override
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder toBuilder() =>
-      new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder()
+      TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder()
         ..replace(this);
 
   @override
@@ -70,7 +66,7 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder
 
   JsonWebKeySetDtoBuilder? _jwks;
   JsonWebKeySetDtoBuilder get jwks =>
-      _$this._jwks ??= new JsonWebKeySetDtoBuilder();
+      _$this._jwks ??= JsonWebKeySetDtoBuilder();
   set jwks(JsonWebKeySetDtoBuilder? jwks) => _$this._jwks = jwks;
 
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder() {
@@ -88,7 +84,6 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder
 
   @override
   void replace(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf;
   }
 
@@ -107,7 +102,7 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder
     _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf _$result;
     try {
       _$result = _$v ??
-          new _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf._(
+          _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf._(
             jwks: jwks.build(),
           );
     } catch (_) {
@@ -116,7 +111,7 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOfBuilder
         _$failedField = 'jwks';
         jwks.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf',
             _$failedField,
             e.toString());

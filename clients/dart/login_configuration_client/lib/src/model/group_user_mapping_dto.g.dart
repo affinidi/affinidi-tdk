@@ -14,16 +14,10 @@ class _$GroupUserMappingDto extends GroupUserMappingDto {
 
   factory _$GroupUserMappingDto(
           [void Function(GroupUserMappingDtoBuilder)? updates]) =>
-      (new GroupUserMappingDtoBuilder()..update(updates))._build();
+      (GroupUserMappingDtoBuilder()..update(updates))._build();
 
   _$GroupUserMappingDto._({required this.userId, required this.addedAt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        userId, r'GroupUserMappingDto', 'userId');
-    BuiltValueNullFieldError.checkNotNull(
-        addedAt, r'GroupUserMappingDto', 'addedAt');
-  }
-
+      : super._();
   @override
   GroupUserMappingDto rebuild(
           void Function(GroupUserMappingDtoBuilder) updates) =>
@@ -31,7 +25,7 @@ class _$GroupUserMappingDto extends GroupUserMappingDto {
 
   @override
   GroupUserMappingDtoBuilder toBuilder() =>
-      new GroupUserMappingDtoBuilder()..replace(this);
+      GroupUserMappingDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -87,7 +81,6 @@ class GroupUserMappingDtoBuilder
 
   @override
   void replace(GroupUserMappingDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GroupUserMappingDto;
   }
 
@@ -101,7 +94,7 @@ class GroupUserMappingDtoBuilder
 
   _$GroupUserMappingDto _build() {
     final _$result = _$v ??
-        new _$GroupUserMappingDto._(
+        _$GroupUserMappingDto._(
           userId: BuiltValueNullFieldError.checkNotNull(
               userId, r'GroupUserMappingDto', 'userId'),
           addedAt: BuiltValueNullFieldError.checkNotNull(

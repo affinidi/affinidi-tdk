@@ -242,6 +242,19 @@ export interface CorsGetConfigOK {
 /**
  *
  * @export
+ * @interface CorsGetConfigurationOK
+ */
+export interface CorsGetConfigurationOK {
+  /**
+   *
+   * @type {string}
+   * @memberof CorsGetConfigurationOK
+   */
+  corsGetConfigurationOk?: string
+}
+/**
+ *
+ * @export
  * @interface CorsGetScannedFileInfoOK
  */
 export interface CorsGetScannedFileInfoOK {
@@ -1509,13 +1522,13 @@ export interface UpdateAccountInput {
    * @type {string}
    * @memberof UpdateAccountInput
    */
-  name: string
+  name?: string
   /**
    * Description of the account
    * @type {string}
    * @memberof UpdateAccountInput
    */
-  description: string
+  description?: string
   /**
    * Alias of the account
    * @type {string}
@@ -2138,10 +2151,10 @@ export class AccountsApi extends BaseAPI {
 }
 
 /**
- * ConfigApi - axios parameter creator
+ * ConfigurationApi - axios parameter creator
  * @export
  */
-export const ConfigApiAxiosParamCreator = function (
+export const ConfigurationApiAxiosParamCreator = function (
   configuration?: Configuration,
 ) {
   return {
@@ -2150,7 +2163,7 @@ export const ConfigApiAxiosParamCreator = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getConfig: async (
+    getConfiguration: async (
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/config`
@@ -2194,27 +2207,28 @@ export const ConfigApiAxiosParamCreator = function (
 }
 
 /**
- * ConfigApi - functional programming interface
+ * ConfigurationApi - functional programming interface
  * @export
  */
-export const ConfigApiFp = function (configuration?: Configuration) {
-  const localVarAxiosParamCreator = ConfigApiAxiosParamCreator(configuration)
+export const ConfigurationApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator =
+    ConfigurationApiAxiosParamCreator(configuration)
   return {
     /**
      * Retrieves the user profile name and the maximum number of profiles, with default values set to \'default\' and 1, respectively.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getConfig(
+    async getConfiguration(
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetConfigOK>
     > {
       const localVarAxiosArgs =
-        await localVarAxiosParamCreator.getConfig(options)
+        await localVarAxiosParamCreator.getConfiguration(options)
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
-        operationServerMap['ConfigApi.getConfig']?.[
+        operationServerMap['ConfigurationApi.getConfiguration']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -2229,45 +2243,47 @@ export const ConfigApiFp = function (configuration?: Configuration) {
 }
 
 /**
- * ConfigApi - factory interface
+ * ConfigurationApi - factory interface
  * @export
  */
-export const ConfigApiFactory = function (
+export const ConfigurationApiFactory = function (
   configuration?: Configuration,
   basePath?: string,
   axios?: AxiosInstance,
 ) {
-  const localVarFp = ConfigApiFp(configuration)
+  const localVarFp = ConfigurationApiFp(configuration)
   return {
     /**
      * Retrieves the user profile name and the maximum number of profiles, with default values set to \'default\' and 1, respectively.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getConfig(options?: RawAxiosRequestConfig): AxiosPromise<GetConfigOK> {
+    getConfiguration(
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<GetConfigOK> {
       return localVarFp
-        .getConfig(options)
+        .getConfiguration(options)
         .then((request) => request(axios, basePath))
     },
   }
 }
 
 /**
- * ConfigApi - object-oriented interface
+ * ConfigurationApi - object-oriented interface
  * @export
- * @class ConfigApi
+ * @class ConfigurationApi
  * @extends {BaseAPI}
  */
-export class ConfigApi extends BaseAPI {
+export class ConfigurationApi extends BaseAPI {
   /**
    * Retrieves the user profile name and the maximum number of profiles, with default values set to \'default\' and 1, respectively.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigApi
+   * @memberof ConfigurationApi
    */
-  public getConfig(options?: RawAxiosRequestConfig) {
-    return ConfigApiFp(this.configuration)
-      .getConfig(options)
+  public getConfiguration(options?: RawAxiosRequestConfig) {
+    return ConfigurationApiFp(this.configuration)
+      .getConfiguration(options)
       .then((request) => request(this.axios, this.basePath))
   }
 }

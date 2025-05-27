@@ -16,12 +16,12 @@ CreateIssuanceConfig400ResponseNameEnum
     case 'invalidIssuerWalletError':
       return _$createIssuanceConfig400ResponseNameEnum_invalidIssuerWalletError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateIssuanceConfig400ResponseNameEnum>
-    _$createIssuanceConfig400ResponseNameEnumValues = new BuiltSet<
+    _$createIssuanceConfig400ResponseNameEnumValues = BuiltSet<
         CreateIssuanceConfig400ResponseNameEnum>(const <CreateIssuanceConfig400ResponseNameEnum>[
   _$createIssuanceConfig400ResponseNameEnum_invalidIssuerWalletError,
 ]);
@@ -37,12 +37,12 @@ CreateIssuanceConfig400ResponseMessageEnum
     case 'issuerWalletIdIsInvalid':
       return _$createIssuanceConfig400ResponseMessageEnum_issuerWalletIdIsInvalid;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateIssuanceConfig400ResponseMessageEnum>
-    _$createIssuanceConfig400ResponseMessageEnumValues = new BuiltSet<
+    _$createIssuanceConfig400ResponseMessageEnumValues = BuiltSet<
         CreateIssuanceConfig400ResponseMessageEnum>(const <CreateIssuanceConfig400ResponseMessageEnum>[
   _$createIssuanceConfig400ResponseMessageEnum_issuerWalletIdIsInvalid,
 ]);
@@ -57,25 +57,25 @@ CreateIssuanceConfig400ResponseHttpStatusCodeEnum
     case 'number400':
       return _$createIssuanceConfig400ResponseHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateIssuanceConfig400ResponseHttpStatusCodeEnum>
-    _$createIssuanceConfig400ResponseHttpStatusCodeEnumValues = new BuiltSet<
+    _$createIssuanceConfig400ResponseHttpStatusCodeEnumValues = BuiltSet<
         CreateIssuanceConfig400ResponseHttpStatusCodeEnum>(const <CreateIssuanceConfig400ResponseHttpStatusCodeEnum>[
   _$createIssuanceConfig400ResponseHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<CreateIssuanceConfig400ResponseNameEnum>
     _$createIssuanceConfig400ResponseNameEnumSerializer =
-    new _$CreateIssuanceConfig400ResponseNameEnumSerializer();
+    _$CreateIssuanceConfig400ResponseNameEnumSerializer();
 Serializer<CreateIssuanceConfig400ResponseMessageEnum>
     _$createIssuanceConfig400ResponseMessageEnumSerializer =
-    new _$CreateIssuanceConfig400ResponseMessageEnumSerializer();
+    _$CreateIssuanceConfig400ResponseMessageEnumSerializer();
 Serializer<CreateIssuanceConfig400ResponseHttpStatusCodeEnum>
     _$createIssuanceConfig400ResponseHttpStatusCodeEnumSerializer =
-    new _$CreateIssuanceConfig400ResponseHttpStatusCodeEnumSerializer();
+    _$CreateIssuanceConfig400ResponseHttpStatusCodeEnumSerializer();
 
 class _$CreateIssuanceConfig400ResponseNameEnumSerializer
     implements PrimitiveSerializer<CreateIssuanceConfig400ResponseNameEnum> {
@@ -175,13 +175,9 @@ class _$CreateIssuanceConfig400Response
 
   factory _$CreateIssuanceConfig400Response(
           [void Function(CreateIssuanceConfig400ResponseBuilder)? updates]) =>
-      (new CreateIssuanceConfig400ResponseBuilder()..update(updates))._build();
+      (CreateIssuanceConfig400ResponseBuilder()..update(updates))._build();
 
-  _$CreateIssuanceConfig400Response._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'CreateIssuanceConfig400Response', 'oneOf');
-  }
-
+  _$CreateIssuanceConfig400Response._({required this.oneOf}) : super._();
   @override
   CreateIssuanceConfig400Response rebuild(
           void Function(CreateIssuanceConfig400ResponseBuilder) updates) =>
@@ -189,7 +185,7 @@ class _$CreateIssuanceConfig400Response
 
   @override
   CreateIssuanceConfig400ResponseBuilder toBuilder() =>
-      new CreateIssuanceConfig400ResponseBuilder()..replace(this);
+      CreateIssuanceConfig400ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -238,7 +234,6 @@ class CreateIssuanceConfig400ResponseBuilder
 
   @override
   void replace(CreateIssuanceConfig400Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateIssuanceConfig400Response;
   }
 
@@ -252,7 +247,7 @@ class CreateIssuanceConfig400ResponseBuilder
 
   _$CreateIssuanceConfig400Response _build() {
     final _$result = _$v ??
-        new _$CreateIssuanceConfig400Response._(
+        _$CreateIssuanceConfig400Response._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'CreateIssuanceConfig400Response', 'oneOf'),
         );

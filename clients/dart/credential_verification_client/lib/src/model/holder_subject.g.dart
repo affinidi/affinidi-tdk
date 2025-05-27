@@ -18,18 +18,18 @@ HolderSubjectDirectiveEnum _$holderSubjectDirectiveEnumValueOf(String name) {
     case 'preferred':
       return _$holderSubjectDirectiveEnum_preferred;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<HolderSubjectDirectiveEnum> _$holderSubjectDirectiveEnumValues =
-    new BuiltSet<HolderSubjectDirectiveEnum>(const <HolderSubjectDirectiveEnum>[
+    BuiltSet<HolderSubjectDirectiveEnum>(const <HolderSubjectDirectiveEnum>[
   _$holderSubjectDirectiveEnum_required_,
   _$holderSubjectDirectiveEnum_preferred,
 ]);
 
 Serializer<HolderSubjectDirectiveEnum> _$holderSubjectDirectiveEnumSerializer =
-    new _$HolderSubjectDirectiveEnumSerializer();
+    _$HolderSubjectDirectiveEnumSerializer();
 
 class _$HolderSubjectDirectiveEnumSerializer
     implements PrimitiveSerializer<HolderSubjectDirectiveEnum> {
@@ -67,21 +67,16 @@ class _$HolderSubject extends HolderSubject {
   final HolderSubjectDirectiveEnum directive;
 
   factory _$HolderSubject([void Function(HolderSubjectBuilder)? updates]) =>
-      (new HolderSubjectBuilder()..update(updates))._build();
+      (HolderSubjectBuilder()..update(updates))._build();
 
   _$HolderSubject._({required this.fieldId, required this.directive})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(fieldId, r'HolderSubject', 'fieldId');
-    BuiltValueNullFieldError.checkNotNull(
-        directive, r'HolderSubject', 'directive');
-  }
-
+      : super._();
   @override
   HolderSubject rebuild(void Function(HolderSubjectBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  HolderSubjectBuilder toBuilder() => new HolderSubjectBuilder()..replace(this);
+  HolderSubjectBuilder toBuilder() => HolderSubjectBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -114,8 +109,7 @@ class HolderSubjectBuilder
   _$HolderSubject? _$v;
 
   ListBuilder<String>? _fieldId;
-  ListBuilder<String> get fieldId =>
-      _$this._fieldId ??= new ListBuilder<String>();
+  ListBuilder<String> get fieldId => _$this._fieldId ??= ListBuilder<String>();
   set fieldId(ListBuilder<String>? fieldId) => _$this._fieldId = fieldId;
 
   HolderSubjectDirectiveEnum? _directive;
@@ -139,7 +133,6 @@ class HolderSubjectBuilder
 
   @override
   void replace(HolderSubject other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$HolderSubject;
   }
 
@@ -155,7 +148,7 @@ class HolderSubjectBuilder
     _$HolderSubject _$result;
     try {
       _$result = _$v ??
-          new _$HolderSubject._(
+          _$HolderSubject._(
             fieldId: fieldId.build(),
             directive: BuiltValueNullFieldError.checkNotNull(
                 directive, r'HolderSubject', 'directive'),
@@ -166,7 +159,7 @@ class HolderSubjectBuilder
         _$failedField = 'fieldId';
         fieldId.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'HolderSubject', _$failedField, e.toString());
       }
       rethrow;

@@ -17,19 +17,13 @@ class _$AwsExchangeCredentialsProjectTokenOKCredentials
           [void Function(
                   AwsExchangeCredentialsProjectTokenOKCredentialsBuilder)?
               updates]) =>
-      (new AwsExchangeCredentialsProjectTokenOKCredentialsBuilder()
+      (AwsExchangeCredentialsProjectTokenOKCredentialsBuilder()
             ..update(updates))
           ._build();
 
   _$AwsExchangeCredentialsProjectTokenOKCredentials._(
       {required this.identityId, required this.token})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(identityId,
-        r'AwsExchangeCredentialsProjectTokenOKCredentials', 'identityId');
-    BuiltValueNullFieldError.checkNotNull(
-        token, r'AwsExchangeCredentialsProjectTokenOKCredentials', 'token');
-  }
-
+      : super._();
   @override
   AwsExchangeCredentialsProjectTokenOKCredentials rebuild(
           void Function(AwsExchangeCredentialsProjectTokenOKCredentialsBuilder)
@@ -38,8 +32,7 @@ class _$AwsExchangeCredentialsProjectTokenOKCredentials
 
   @override
   AwsExchangeCredentialsProjectTokenOKCredentialsBuilder toBuilder() =>
-      new AwsExchangeCredentialsProjectTokenOKCredentialsBuilder()
-        ..replace(this);
+      AwsExchangeCredentialsProjectTokenOKCredentialsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -98,7 +91,6 @@ class AwsExchangeCredentialsProjectTokenOKCredentialsBuilder
 
   @override
   void replace(AwsExchangeCredentialsProjectTokenOKCredentials other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AwsExchangeCredentialsProjectTokenOKCredentials;
   }
 
@@ -114,7 +106,7 @@ class AwsExchangeCredentialsProjectTokenOKCredentialsBuilder
 
   _$AwsExchangeCredentialsProjectTokenOKCredentials _build() {
     final _$result = _$v ??
-        new _$AwsExchangeCredentialsProjectTokenOKCredentials._(
+        _$AwsExchangeCredentialsProjectTokenOKCredentials._(
           identityId: BuiltValueNullFieldError.checkNotNull(identityId,
               r'AwsExchangeCredentialsProjectTokenOKCredentials', 'identityId'),
           token: BuiltValueNullFieldError.checkNotNull(token,

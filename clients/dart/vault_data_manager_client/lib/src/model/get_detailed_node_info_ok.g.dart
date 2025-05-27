@@ -54,7 +54,7 @@ class _$GetDetailedNodeInfoOK extends GetDetailedNodeInfoOK {
 
   factory _$GetDetailedNodeInfoOK(
           [void Function(GetDetailedNodeInfoOKBuilder)? updates]) =>
-      (new GetDetailedNodeInfoOKBuilder()..update(updates))._build();
+      (GetDetailedNodeInfoOKBuilder()..update(updates))._build();
 
   _$GetDetailedNodeInfoOK._(
       {this.getUrl,
@@ -79,31 +79,7 @@ class _$GetDetailedNodeInfoOK extends GetDetailedNodeInfoOK {
       this.consumedFileStorage,
       this.edekInfo,
       this.metadata})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        nodeId, r'GetDetailedNodeInfoOK', 'nodeId');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetDetailedNodeInfoOK', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GetDetailedNodeInfoOK', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        consumerId, r'GetDetailedNodeInfoOK', 'consumerId');
-    BuiltValueNullFieldError.checkNotNull(
-        parentNodeId, r'GetDetailedNodeInfoOK', 'parentNodeId');
-    BuiltValueNullFieldError.checkNotNull(
-        profileId, r'GetDetailedNodeInfoOK', 'profileId');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'GetDetailedNodeInfoOK', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedAt, r'GetDetailedNodeInfoOK', 'modifiedAt');
-    BuiltValueNullFieldError.checkNotNull(
-        createdBy, r'GetDetailedNodeInfoOK', 'createdBy');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedBy, r'GetDetailedNodeInfoOK', 'modifiedBy');
-    BuiltValueNullFieldError.checkNotNull(
-        type, r'GetDetailedNodeInfoOK', 'type');
-  }
-
+      : super._();
   @override
   GetDetailedNodeInfoOK rebuild(
           void Function(GetDetailedNodeInfoOKBuilder) updates) =>
@@ -111,7 +87,7 @@ class _$GetDetailedNodeInfoOK extends GetDetailedNodeInfoOK {
 
   @override
   GetDetailedNodeInfoOKBuilder toBuilder() =>
-      new GetDetailedNodeInfoOKBuilder()..replace(this);
+      GetDetailedNodeInfoOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -294,7 +270,7 @@ class GetDetailedNodeInfoOKBuilder
       _$this._consumedFileStorage = consumedFileStorage;
 
   EdekInfoBuilder? _edekInfo;
-  EdekInfoBuilder get edekInfo => _$this._edekInfo ??= new EdekInfoBuilder();
+  EdekInfoBuilder get edekInfo => _$this._edekInfo ??= EdekInfoBuilder();
   set edekInfo(covariant EdekInfoBuilder? edekInfo) =>
       _$this._edekInfo = edekInfo;
 
@@ -338,7 +314,6 @@ class GetDetailedNodeInfoOKBuilder
 
   @override
   void replace(covariant GetDetailedNodeInfoOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetDetailedNodeInfoOK;
   }
 
@@ -354,7 +329,7 @@ class GetDetailedNodeInfoOKBuilder
     _$GetDetailedNodeInfoOK _$result;
     try {
       _$result = _$v ??
-          new _$GetDetailedNodeInfoOK._(
+          _$GetDetailedNodeInfoOK._(
             getUrl: getUrl,
             nodeId: BuiltValueNullFieldError.checkNotNull(
                 nodeId, r'GetDetailedNodeInfoOK', 'nodeId'),
@@ -395,7 +370,7 @@ class GetDetailedNodeInfoOKBuilder
         _$failedField = 'edekInfo';
         _edekInfo?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GetDetailedNodeInfoOK', _$failedField, e.toString());
       }
       rethrow;

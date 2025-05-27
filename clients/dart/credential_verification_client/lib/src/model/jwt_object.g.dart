@@ -11,18 +11,15 @@ class _$JwtObject extends JwtObject {
   final BuiltList<String> alg;
 
   factory _$JwtObject([void Function(JwtObjectBuilder)? updates]) =>
-      (new JwtObjectBuilder()..update(updates))._build();
+      (JwtObjectBuilder()..update(updates))._build();
 
-  _$JwtObject._({required this.alg}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(alg, r'JwtObject', 'alg');
-  }
-
+  _$JwtObject._({required this.alg}) : super._();
   @override
   JwtObject rebuild(void Function(JwtObjectBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  JwtObjectBuilder toBuilder() => new JwtObjectBuilder()..replace(this);
+  JwtObjectBuilder toBuilder() => JwtObjectBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -49,7 +46,7 @@ class JwtObjectBuilder implements Builder<JwtObject, JwtObjectBuilder> {
   _$JwtObject? _$v;
 
   ListBuilder<String>? _alg;
-  ListBuilder<String> get alg => _$this._alg ??= new ListBuilder<String>();
+  ListBuilder<String> get alg => _$this._alg ??= ListBuilder<String>();
   set alg(ListBuilder<String>? alg) => _$this._alg = alg;
 
   JwtObjectBuilder() {
@@ -67,7 +64,6 @@ class JwtObjectBuilder implements Builder<JwtObject, JwtObjectBuilder> {
 
   @override
   void replace(JwtObject other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$JwtObject;
   }
 
@@ -83,7 +79,7 @@ class JwtObjectBuilder implements Builder<JwtObject, JwtObjectBuilder> {
     _$JwtObject _$result;
     try {
       _$result = _$v ??
-          new _$JwtObject._(
+          _$JwtObject._(
             alg: alg.build(),
           );
     } catch (_) {
@@ -92,7 +88,7 @@ class JwtObjectBuilder implements Builder<JwtObject, JwtObjectBuilder> {
         _$failedField = 'alg';
         alg.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'JwtObject', _$failedField, e.toString());
       }
       rethrow;

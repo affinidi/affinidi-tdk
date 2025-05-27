@@ -12,10 +12,9 @@ class _$CorsDeleteAccountOK extends CorsDeleteAccountOK {
 
   factory _$CorsDeleteAccountOK(
           [void Function(CorsDeleteAccountOKBuilder)? updates]) =>
-      (new CorsDeleteAccountOKBuilder()..update(updates))._build();
+      (CorsDeleteAccountOKBuilder()..update(updates))._build();
 
   _$CorsDeleteAccountOK._({this.corsDeleteAccountOk}) : super._();
-
   @override
   CorsDeleteAccountOK rebuild(
           void Function(CorsDeleteAccountOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsDeleteAccountOK extends CorsDeleteAccountOK {
 
   @override
   CorsDeleteAccountOKBuilder toBuilder() =>
-      new CorsDeleteAccountOKBuilder()..replace(this);
+      CorsDeleteAccountOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,6 @@ class CorsDeleteAccountOKBuilder
 
   @override
   void replace(CorsDeleteAccountOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsDeleteAccountOK;
   }
 
@@ -86,7 +84,7 @@ class CorsDeleteAccountOKBuilder
 
   _$CorsDeleteAccountOK _build() {
     final _$result = _$v ??
-        new _$CorsDeleteAccountOK._(
+        _$CorsDeleteAccountOK._(
           corsDeleteAccountOk: corsDeleteAccountOk,
         );
     replace(_$result);

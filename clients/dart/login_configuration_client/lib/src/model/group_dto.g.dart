@@ -17,27 +17,20 @@ class _$GroupDto extends GroupDto {
   final String creationDate;
 
   factory _$GroupDto([void Function(GroupDtoBuilder)? updates]) =>
-      (new GroupDtoBuilder()..update(updates))._build();
+      (GroupDtoBuilder()..update(updates))._build();
 
   _$GroupDto._(
       {required this.ari,
       required this.projectId,
       required this.groupName,
       required this.creationDate})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(ari, r'GroupDto', 'ari');
-    BuiltValueNullFieldError.checkNotNull(projectId, r'GroupDto', 'projectId');
-    BuiltValueNullFieldError.checkNotNull(groupName, r'GroupDto', 'groupName');
-    BuiltValueNullFieldError.checkNotNull(
-        creationDate, r'GroupDto', 'creationDate');
-  }
-
+      : super._();
   @override
   GroupDto rebuild(void Function(GroupDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GroupDtoBuilder toBuilder() => new GroupDtoBuilder()..replace(this);
+  GroupDtoBuilder toBuilder() => GroupDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -108,7 +101,6 @@ class GroupDtoBuilder implements Builder<GroupDto, GroupDtoBuilder> {
 
   @override
   void replace(GroupDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GroupDto;
   }
 
@@ -122,7 +114,7 @@ class GroupDtoBuilder implements Builder<GroupDto, GroupDtoBuilder> {
 
   _$GroupDto _build() {
     final _$result = _$v ??
-        new _$GroupDto._(
+        _$GroupDto._(
           ari: BuiltValueNullFieldError.checkNotNull(ari, r'GroupDto', 'ari'),
           projectId: BuiltValueNullFieldError.checkNotNull(
               projectId, r'GroupDto', 'projectId'),

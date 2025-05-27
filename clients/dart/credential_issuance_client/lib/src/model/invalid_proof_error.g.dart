@@ -14,12 +14,12 @@ InvalidProofErrorNameEnum _$invalidProofErrorNameEnumValueOf(String name) {
     case 'invalidProofError':
       return _$invalidProofErrorNameEnum_invalidProofError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidProofErrorNameEnum> _$invalidProofErrorNameEnumValues =
-    new BuiltSet<InvalidProofErrorNameEnum>(const <InvalidProofErrorNameEnum>[
+    BuiltSet<InvalidProofErrorNameEnum>(const <InvalidProofErrorNameEnum>[
   _$invalidProofErrorNameEnum_invalidProofError,
 ]);
 
@@ -34,13 +34,13 @@ InvalidProofErrorMessageEnum _$invalidProofErrorMessageEnumValueOf(
     case 'theProofInTheCredentialRequestIsInvalid':
       return _$invalidProofErrorMessageEnum_theProofInTheCredentialRequestIsInvalid;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidProofErrorMessageEnum>
-    _$invalidProofErrorMessageEnumValues = new BuiltSet<
-        InvalidProofErrorMessageEnum>(const <InvalidProofErrorMessageEnum>[
+    _$invalidProofErrorMessageEnumValues =
+    BuiltSet<InvalidProofErrorMessageEnum>(const <InvalidProofErrorMessageEnum>[
   _$invalidProofErrorMessageEnum_theProofInTheCredentialRequestIsInvalid,
 ]);
 
@@ -54,24 +54,24 @@ InvalidProofErrorHttpStatusCodeEnum
     case 'number400':
       return _$invalidProofErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidProofErrorHttpStatusCodeEnum>
-    _$invalidProofErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$invalidProofErrorHttpStatusCodeEnumValues = BuiltSet<
         InvalidProofErrorHttpStatusCodeEnum>(const <InvalidProofErrorHttpStatusCodeEnum>[
   _$invalidProofErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidProofErrorNameEnum> _$invalidProofErrorNameEnumSerializer =
-    new _$InvalidProofErrorNameEnumSerializer();
+    _$InvalidProofErrorNameEnumSerializer();
 Serializer<InvalidProofErrorMessageEnum>
     _$invalidProofErrorMessageEnumSerializer =
-    new _$InvalidProofErrorMessageEnumSerializer();
+    _$InvalidProofErrorMessageEnumSerializer();
 Serializer<InvalidProofErrorHttpStatusCodeEnum>
     _$invalidProofErrorHttpStatusCodeEnumSerializer =
-    new _$InvalidProofErrorHttpStatusCodeEnumSerializer();
+    _$InvalidProofErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidProofErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidProofErrorNameEnum> {
@@ -173,7 +173,7 @@ class _$InvalidProofError extends InvalidProofError {
 
   factory _$InvalidProofError(
           [void Function(InvalidProofErrorBuilder)? updates]) =>
-      (new InvalidProofErrorBuilder()..update(updates))._build();
+      (InvalidProofErrorBuilder()..update(updates))._build();
 
   _$InvalidProofError._(
       {required this.name,
@@ -181,23 +181,14 @@ class _$InvalidProofError extends InvalidProofError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'InvalidProofError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'InvalidProofError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'InvalidProofError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'InvalidProofError', 'traceId');
-  }
-
+      : super._();
   @override
   InvalidProofError rebuild(void Function(InvalidProofErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   InvalidProofErrorBuilder toBuilder() =>
-      new InvalidProofErrorBuilder()..replace(this);
+      InvalidProofErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -259,7 +250,7 @@ class InvalidProofErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -282,7 +273,6 @@ class InvalidProofErrorBuilder
 
   @override
   void replace(InvalidProofError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidProofError;
   }
 
@@ -298,7 +288,7 @@ class InvalidProofErrorBuilder
     _$InvalidProofError _$result;
     try {
       _$result = _$v ??
-          new _$InvalidProofError._(
+          _$InvalidProofError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidProofError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -315,7 +305,7 @@ class InvalidProofErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InvalidProofError', _$failedField, e.toString());
       }
       rethrow;

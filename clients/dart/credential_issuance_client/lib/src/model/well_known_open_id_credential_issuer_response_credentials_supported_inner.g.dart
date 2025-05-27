@@ -19,7 +19,7 @@ class _$WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
           [void Function(
                   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder)?
               updates]) =>
-      (new WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder()
+      (WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder()
             ..update(updates))
           ._build();
 
@@ -27,21 +27,7 @@ class _$WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
       {required this.credentialTypeId,
       required this.jsonSchemaUrl,
       required this.jsonLdContextUrl})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        credentialTypeId,
-        r'WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner',
-        'credentialTypeId');
-    BuiltValueNullFieldError.checkNotNull(
-        jsonSchemaUrl,
-        r'WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner',
-        'jsonSchemaUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        jsonLdContextUrl,
-        r'WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner',
-        'jsonLdContextUrl');
-  }
-
+      : super._();
   @override
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner rebuild(
           void Function(
@@ -52,7 +38,7 @@ class _$WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
   @override
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder
       toBuilder() =>
-          new WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder()
+          WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder()
             ..replace(this);
 
   @override
@@ -128,7 +114,6 @@ class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder
   @override
   void replace(
       WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner;
   }
@@ -147,8 +132,7 @@ class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerBuilder
 
   _$WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner _build() {
     final _$result = _$v ??
-        new _$WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
-            ._(
+        _$WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner._(
           credentialTypeId: BuiltValueNullFieldError.checkNotNull(
               credentialTypeId,
               r'WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner',

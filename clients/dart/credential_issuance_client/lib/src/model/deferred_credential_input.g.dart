@@ -12,13 +12,9 @@ class _$DeferredCredentialInput extends DeferredCredentialInput {
 
   factory _$DeferredCredentialInput(
           [void Function(DeferredCredentialInputBuilder)? updates]) =>
-      (new DeferredCredentialInputBuilder()..update(updates))._build();
+      (DeferredCredentialInputBuilder()..update(updates))._build();
 
-  _$DeferredCredentialInput._({required this.transactionId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        transactionId, r'DeferredCredentialInput', 'transactionId');
-  }
-
+  _$DeferredCredentialInput._({required this.transactionId}) : super._();
   @override
   DeferredCredentialInput rebuild(
           void Function(DeferredCredentialInputBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$DeferredCredentialInput extends DeferredCredentialInput {
 
   @override
   DeferredCredentialInputBuilder toBuilder() =>
-      new DeferredCredentialInputBuilder()..replace(this);
+      DeferredCredentialInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +72,6 @@ class DeferredCredentialInputBuilder
 
   @override
   void replace(DeferredCredentialInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeferredCredentialInput;
   }
 
@@ -90,7 +85,7 @@ class DeferredCredentialInputBuilder
 
   _$DeferredCredentialInput _build() {
     final _$result = _$v ??
-        new _$DeferredCredentialInput._(
+        _$DeferredCredentialInput._(
           transactionId: BuiltValueNullFieldError.checkNotNull(
               transactionId, r'DeferredCredentialInput', 'transactionId'),
         );

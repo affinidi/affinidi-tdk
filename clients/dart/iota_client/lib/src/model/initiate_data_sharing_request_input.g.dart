@@ -21,12 +21,12 @@ InitiateDataSharingRequestInputModeEnum
     case 'websocket':
       return _$initiateDataSharingRequestInputModeEnum_websocket;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InitiateDataSharingRequestInputModeEnum>
-    _$initiateDataSharingRequestInputModeEnumValues = new BuiltSet<
+    _$initiateDataSharingRequestInputModeEnumValues = BuiltSet<
         InitiateDataSharingRequestInputModeEnum>(const <InitiateDataSharingRequestInputModeEnum>[
   _$initiateDataSharingRequestInputModeEnum_redirect,
   _$initiateDataSharingRequestInputModeEnum_websocket,
@@ -34,7 +34,7 @@ final BuiltSet<InitiateDataSharingRequestInputModeEnum>
 
 Serializer<InitiateDataSharingRequestInputModeEnum>
     _$initiateDataSharingRequestInputModeEnumSerializer =
-    new _$InitiateDataSharingRequestInputModeEnumSerializer();
+    _$InitiateDataSharingRequestInputModeEnumSerializer();
 
 class _$InitiateDataSharingRequestInputModeEnumSerializer
     implements PrimitiveSerializer<InitiateDataSharingRequestInputModeEnum> {
@@ -87,7 +87,7 @@ class _$InitiateDataSharingRequestInput
 
   factory _$InitiateDataSharingRequestInput(
           [void Function(InitiateDataSharingRequestInputBuilder)? updates]) =>
-      (new InitiateDataSharingRequestInputBuilder()..update(updates))._build();
+      (InitiateDataSharingRequestInputBuilder()..update(updates))._build();
 
   _$InitiateDataSharingRequestInput._(
       {required this.queryId,
@@ -97,21 +97,7 @@ class _$InitiateDataSharingRequestInput
       required this.redirectUri,
       required this.configurationId,
       required this.mode})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        queryId, r'InitiateDataSharingRequestInput', 'queryId');
-    BuiltValueNullFieldError.checkNotNull(
-        correlationId, r'InitiateDataSharingRequestInput', 'correlationId');
-    BuiltValueNullFieldError.checkNotNull(
-        nonce, r'InitiateDataSharingRequestInput', 'nonce');
-    BuiltValueNullFieldError.checkNotNull(
-        redirectUri, r'InitiateDataSharingRequestInput', 'redirectUri');
-    BuiltValueNullFieldError.checkNotNull(
-        configurationId, r'InitiateDataSharingRequestInput', 'configurationId');
-    BuiltValueNullFieldError.checkNotNull(
-        mode, r'InitiateDataSharingRequestInput', 'mode');
-  }
-
+      : super._();
   @override
   InitiateDataSharingRequestInput rebuild(
           void Function(InitiateDataSharingRequestInputBuilder) updates) =>
@@ -119,7 +105,7 @@ class _$InitiateDataSharingRequestInput
 
   @override
   InitiateDataSharingRequestInputBuilder toBuilder() =>
-      new InitiateDataSharingRequestInputBuilder()..replace(this);
+      InitiateDataSharingRequestInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -220,7 +206,6 @@ class InitiateDataSharingRequestInputBuilder
 
   @override
   void replace(InitiateDataSharingRequestInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InitiateDataSharingRequestInput;
   }
 
@@ -234,7 +219,7 @@ class InitiateDataSharingRequestInputBuilder
 
   _$InitiateDataSharingRequestInput _build() {
     final _$result = _$v ??
-        new _$InitiateDataSharingRequestInput._(
+        _$InitiateDataSharingRequestInput._(
           queryId: BuiltValueNullFieldError.checkNotNull(
               queryId, r'InitiateDataSharingRequestInput', 'queryId'),
           correlationId: BuiltValueNullFieldError.checkNotNull(correlationId,

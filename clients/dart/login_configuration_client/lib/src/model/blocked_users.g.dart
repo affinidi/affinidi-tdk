@@ -13,18 +13,15 @@ class _$BlockedUsers extends BlockedUsers {
   final JsonObject? pageToken;
 
   factory _$BlockedUsers([void Function(BlockedUsersBuilder)? updates]) =>
-      (new BlockedUsersBuilder()..update(updates))._build();
+      (BlockedUsersBuilder()..update(updates))._build();
 
-  _$BlockedUsers._({required this.userIds, this.pageToken}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(userIds, r'BlockedUsers', 'userIds');
-  }
-
+  _$BlockedUsers._({required this.userIds, this.pageToken}) : super._();
   @override
   BlockedUsers rebuild(void Function(BlockedUsersBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  BlockedUsersBuilder toBuilder() => new BlockedUsersBuilder()..replace(this);
+  BlockedUsersBuilder toBuilder() => BlockedUsersBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -57,8 +54,7 @@ class BlockedUsersBuilder
   _$BlockedUsers? _$v;
 
   ListBuilder<String>? _userIds;
-  ListBuilder<String> get userIds =>
-      _$this._userIds ??= new ListBuilder<String>();
+  ListBuilder<String> get userIds => _$this._userIds ??= ListBuilder<String>();
   set userIds(ListBuilder<String>? userIds) => _$this._userIds = userIds;
 
   JsonObject? _pageToken;
@@ -81,7 +77,6 @@ class BlockedUsersBuilder
 
   @override
   void replace(BlockedUsers other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BlockedUsers;
   }
 
@@ -97,7 +92,7 @@ class BlockedUsersBuilder
     _$BlockedUsers _$result;
     try {
       _$result = _$v ??
-          new _$BlockedUsers._(
+          _$BlockedUsers._(
             userIds: userIds.build(),
             pageToken: pageToken,
           );
@@ -107,7 +102,7 @@ class BlockedUsersBuilder
         _$failedField = 'userIds';
         userIds.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'BlockedUsers', _$failedField, e.toString());
       }
       rethrow;

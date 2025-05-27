@@ -6,7 +6,7 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(Constraints.serializer)
       ..add(ConstraintsLimitDisclosureEnum.serializer)
       ..add(ConstraintsStatuses.serializer)
@@ -55,80 +55,80 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(W3cProof.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Descriptor)]),
-          () => new ListBuilder<Descriptor>())
+          () => ListBuilder<Descriptor>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ErrorDetail)]),
-          () => new ListBuilder<ErrorDetail>())
+          () => ListBuilder<ErrorDetail>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Field)]),
-          () => new ListBuilder<Field>())
+          () => ListBuilder<Field>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(HolderSubject)]),
-          () => new ListBuilder<HolderSubject>())
+          () => ListBuilder<HolderSubject>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(HolderSubject)]),
-          () => new ListBuilder<HolderSubject>())
+          () => ListBuilder<HolderSubject>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(FilterConst)]),
-          () => new ListBuilder<FilterConst>())
+          () => ListBuilder<FilterConst>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JsonObject)]),
-          () => new ListBuilder<JsonObject>())
+          () => ListBuilder<JsonObject>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
-          () => new ListBuilder<NotFoundErrorDetailsInner>())
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
-          () => new ListBuilder<NotFoundErrorDetailsInner>())
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SubmissionRequirement)]),
-          () => new ListBuilder<SubmissionRequirement>())
+          () => ListBuilder<SubmissionRequirement>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SubmissionRequirement)]),
-          () => new ListBuilder<SubmissionRequirement>())
+          () => ListBuilder<SubmissionRequirement>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(InputDescriptor)]),
-          () => new ListBuilder<InputDescriptor>())
+          () => ListBuilder<InputDescriptor>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>()))
+          () => MapBuilder<String, JsonObject?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

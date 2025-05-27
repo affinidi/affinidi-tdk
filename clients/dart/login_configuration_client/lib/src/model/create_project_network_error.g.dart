@@ -16,12 +16,12 @@ CreateProjectNetworkErrorNameEnum _$createProjectNetworkErrorNameEnumValueOf(
     case 'createProjectNetworkError':
       return _$createProjectNetworkErrorNameEnum_createProjectNetworkError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateProjectNetworkErrorNameEnum>
-    _$createProjectNetworkErrorNameEnumValues = new BuiltSet<
+    _$createProjectNetworkErrorNameEnumValues = BuiltSet<
         CreateProjectNetworkErrorNameEnum>(const <CreateProjectNetworkErrorNameEnum>[
   _$createProjectNetworkErrorNameEnum_createProjectNetworkError,
 ]);
@@ -36,12 +36,12 @@ CreateProjectNetworkErrorMessageEnum
     case 'createProjectNetworkError':
       return _$createProjectNetworkErrorMessageEnum_createProjectNetworkError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateProjectNetworkErrorMessageEnum>
-    _$createProjectNetworkErrorMessageEnumValues = new BuiltSet<
+    _$createProjectNetworkErrorMessageEnumValues = BuiltSet<
         CreateProjectNetworkErrorMessageEnum>(const <CreateProjectNetworkErrorMessageEnum>[
   _$createProjectNetworkErrorMessageEnum_createProjectNetworkError,
 ]);
@@ -56,25 +56,25 @@ CreateProjectNetworkErrorHttpStatusCodeEnum
     case 'number400':
       return _$createProjectNetworkErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateProjectNetworkErrorHttpStatusCodeEnum>
-    _$createProjectNetworkErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$createProjectNetworkErrorHttpStatusCodeEnumValues = BuiltSet<
         CreateProjectNetworkErrorHttpStatusCodeEnum>(const <CreateProjectNetworkErrorHttpStatusCodeEnum>[
   _$createProjectNetworkErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<CreateProjectNetworkErrorNameEnum>
     _$createProjectNetworkErrorNameEnumSerializer =
-    new _$CreateProjectNetworkErrorNameEnumSerializer();
+    _$CreateProjectNetworkErrorNameEnumSerializer();
 Serializer<CreateProjectNetworkErrorMessageEnum>
     _$createProjectNetworkErrorMessageEnumSerializer =
-    new _$CreateProjectNetworkErrorMessageEnumSerializer();
+    _$CreateProjectNetworkErrorMessageEnumSerializer();
 Serializer<CreateProjectNetworkErrorHttpStatusCodeEnum>
     _$createProjectNetworkErrorHttpStatusCodeEnumSerializer =
-    new _$CreateProjectNetworkErrorHttpStatusCodeEnumSerializer();
+    _$CreateProjectNetworkErrorHttpStatusCodeEnumSerializer();
 
 class _$CreateProjectNetworkErrorNameEnumSerializer
     implements PrimitiveSerializer<CreateProjectNetworkErrorNameEnum> {
@@ -179,7 +179,7 @@ class _$CreateProjectNetworkError extends CreateProjectNetworkError {
 
   factory _$CreateProjectNetworkError(
           [void Function(CreateProjectNetworkErrorBuilder)? updates]) =>
-      (new CreateProjectNetworkErrorBuilder()..update(updates))._build();
+      (CreateProjectNetworkErrorBuilder()..update(updates))._build();
 
   _$CreateProjectNetworkError._(
       {required this.name,
@@ -187,17 +187,7 @@ class _$CreateProjectNetworkError extends CreateProjectNetworkError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'CreateProjectNetworkError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CreateProjectNetworkError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'CreateProjectNetworkError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'CreateProjectNetworkError', 'traceId');
-  }
-
+      : super._();
   @override
   CreateProjectNetworkError rebuild(
           void Function(CreateProjectNetworkErrorBuilder) updates) =>
@@ -205,7 +195,7 @@ class _$CreateProjectNetworkError extends CreateProjectNetworkError {
 
   @override
   CreateProjectNetworkErrorBuilder toBuilder() =>
-      new CreateProjectNetworkErrorBuilder()..replace(this);
+      CreateProjectNetworkErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -269,7 +259,7 @@ class CreateProjectNetworkErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -292,7 +282,6 @@ class CreateProjectNetworkErrorBuilder
 
   @override
   void replace(CreateProjectNetworkError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateProjectNetworkError;
   }
 
@@ -308,7 +297,7 @@ class CreateProjectNetworkErrorBuilder
     _$CreateProjectNetworkError _$result;
     try {
       _$result = _$v ??
-          new _$CreateProjectNetworkError._(
+          _$CreateProjectNetworkError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'CreateProjectNetworkError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -325,7 +314,7 @@ class CreateProjectNetworkErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateProjectNetworkError', _$failedField, e.toString());
       }
       rethrow;

@@ -19,15 +19,11 @@ class _$ActionForbiddenErrorDetailsInner
 
   factory _$ActionForbiddenErrorDetailsInner(
           [void Function(ActionForbiddenErrorDetailsInnerBuilder)? updates]) =>
-      (new ActionForbiddenErrorDetailsInnerBuilder()..update(updates))._build();
+      (ActionForbiddenErrorDetailsInnerBuilder()..update(updates))._build();
 
   _$ActionForbiddenErrorDetailsInner._(
       {required this.issue, this.field, this.value, this.location})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issue, r'ActionForbiddenErrorDetailsInner', 'issue');
-  }
-
+      : super._();
   @override
   ActionForbiddenErrorDetailsInner rebuild(
           void Function(ActionForbiddenErrorDetailsInnerBuilder) updates) =>
@@ -35,7 +31,7 @@ class _$ActionForbiddenErrorDetailsInner
 
   @override
   ActionForbiddenErrorDetailsInnerBuilder toBuilder() =>
-      new ActionForbiddenErrorDetailsInnerBuilder()..replace(this);
+      ActionForbiddenErrorDetailsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -109,7 +105,6 @@ class ActionForbiddenErrorDetailsInnerBuilder
 
   @override
   void replace(ActionForbiddenErrorDetailsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ActionForbiddenErrorDetailsInner;
   }
 
@@ -123,7 +118,7 @@ class ActionForbiddenErrorDetailsInnerBuilder
 
   _$ActionForbiddenErrorDetailsInner _build() {
     final _$result = _$v ??
-        new _$ActionForbiddenErrorDetailsInner._(
+        _$ActionForbiddenErrorDetailsInner._(
           issue: BuiltValueNullFieldError.checkNotNull(
               issue, r'ActionForbiddenErrorDetailsInner', 'issue'),
           field: field,

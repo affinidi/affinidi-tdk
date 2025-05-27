@@ -14,14 +14,9 @@ class _$ListIssuanceResponseIssuancesInner
   factory _$ListIssuanceResponseIssuancesInner(
           [void Function(ListIssuanceResponseIssuancesInnerBuilder)?
               updates]) =>
-      (new ListIssuanceResponseIssuancesInnerBuilder()..update(updates))
-          ._build();
+      (ListIssuanceResponseIssuancesInnerBuilder()..update(updates))._build();
 
-  _$ListIssuanceResponseIssuancesInner._({required this.id}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        id, r'ListIssuanceResponseIssuancesInner', 'id');
-  }
-
+  _$ListIssuanceResponseIssuancesInner._({required this.id}) : super._();
   @override
   ListIssuanceResponseIssuancesInner rebuild(
           void Function(ListIssuanceResponseIssuancesInnerBuilder) updates) =>
@@ -29,7 +24,7 @@ class _$ListIssuanceResponseIssuancesInner
 
   @override
   ListIssuanceResponseIssuancesInnerBuilder toBuilder() =>
-      new ListIssuanceResponseIssuancesInnerBuilder()..replace(this);
+      ListIssuanceResponseIssuancesInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -78,7 +73,6 @@ class ListIssuanceResponseIssuancesInnerBuilder
 
   @override
   void replace(ListIssuanceResponseIssuancesInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListIssuanceResponseIssuancesInner;
   }
 
@@ -93,7 +87,7 @@ class ListIssuanceResponseIssuancesInnerBuilder
 
   _$ListIssuanceResponseIssuancesInner _build() {
     final _$result = _$v ??
-        new _$ListIssuanceResponseIssuancesInner._(
+        _$ListIssuanceResponseIssuancesInner._(
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'ListIssuanceResponseIssuancesInner', 'id'),
         );

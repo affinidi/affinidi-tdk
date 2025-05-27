@@ -15,19 +15,19 @@ CredentialProofProofTypeEnum _$credentialProofProofTypeEnumValueOf(
     case 'jwt':
       return _$credentialProofProofTypeEnum_jwt;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CredentialProofProofTypeEnum>
-    _$credentialProofProofTypeEnumValues = new BuiltSet<
-        CredentialProofProofTypeEnum>(const <CredentialProofProofTypeEnum>[
+    _$credentialProofProofTypeEnumValues =
+    BuiltSet<CredentialProofProofTypeEnum>(const <CredentialProofProofTypeEnum>[
   _$credentialProofProofTypeEnum_jwt,
 ]);
 
 Serializer<CredentialProofProofTypeEnum>
     _$credentialProofProofTypeEnumSerializer =
-    new _$CredentialProofProofTypeEnumSerializer();
+    _$CredentialProofProofTypeEnumSerializer();
 
 class _$CredentialProofProofTypeEnumSerializer
     implements PrimitiveSerializer<CredentialProofProofTypeEnum> {
@@ -63,22 +63,15 @@ class _$CredentialProof extends CredentialProof {
   final String jwt;
 
   factory _$CredentialProof([void Function(CredentialProofBuilder)? updates]) =>
-      (new CredentialProofBuilder()..update(updates))._build();
+      (CredentialProofBuilder()..update(updates))._build();
 
-  _$CredentialProof._({required this.proofType, required this.jwt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        proofType, r'CredentialProof', 'proofType');
-    BuiltValueNullFieldError.checkNotNull(jwt, r'CredentialProof', 'jwt');
-  }
-
+  _$CredentialProof._({required this.proofType, required this.jwt}) : super._();
   @override
   CredentialProof rebuild(void Function(CredentialProofBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CredentialProofBuilder toBuilder() =>
-      new CredentialProofBuilder()..replace(this);
+  CredentialProofBuilder toBuilder() => CredentialProofBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -135,7 +128,6 @@ class CredentialProofBuilder
 
   @override
   void replace(CredentialProof other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialProof;
   }
 
@@ -149,7 +141,7 @@ class CredentialProofBuilder
 
   _$CredentialProof _build() {
     final _$result = _$v ??
-        new _$CredentialProof._(
+        _$CredentialProof._(
           proofType: BuiltValueNullFieldError.checkNotNull(
               proofType, r'CredentialProof', 'proofType'),
           jwt: BuiltValueNullFieldError.checkNotNull(

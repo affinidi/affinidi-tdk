@@ -12,13 +12,9 @@ class _$ListScannedFilesOK extends ListScannedFilesOK {
 
   factory _$ListScannedFilesOK(
           [void Function(ListScannedFilesOKBuilder)? updates]) =>
-      (new ListScannedFilesOKBuilder()..update(updates))._build();
+      (ListScannedFilesOKBuilder()..update(updates))._build();
 
-  _$ListScannedFilesOK._({required this.scannedFiles}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        scannedFiles, r'ListScannedFilesOK', 'scannedFiles');
-  }
-
+  _$ListScannedFilesOK._({required this.scannedFiles}) : super._();
   @override
   ListScannedFilesOK rebuild(
           void Function(ListScannedFilesOKBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$ListScannedFilesOK extends ListScannedFilesOK {
 
   @override
   ListScannedFilesOKBuilder toBuilder() =>
-      new ListScannedFilesOKBuilder()..replace(this);
+      ListScannedFilesOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -57,7 +53,7 @@ class ListScannedFilesOKBuilder
   ListBuilder<ListScannedFilesOKScannedFilesInner>? _scannedFiles;
   ListBuilder<ListScannedFilesOKScannedFilesInner> get scannedFiles =>
       _$this._scannedFiles ??=
-          new ListBuilder<ListScannedFilesOKScannedFilesInner>();
+          ListBuilder<ListScannedFilesOKScannedFilesInner>();
   set scannedFiles(
           ListBuilder<ListScannedFilesOKScannedFilesInner>? scannedFiles) =>
       _$this._scannedFiles = scannedFiles;
@@ -77,7 +73,6 @@ class ListScannedFilesOKBuilder
 
   @override
   void replace(ListScannedFilesOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListScannedFilesOK;
   }
 
@@ -93,7 +88,7 @@ class ListScannedFilesOKBuilder
     _$ListScannedFilesOK _$result;
     try {
       _$result = _$v ??
-          new _$ListScannedFilesOK._(
+          _$ListScannedFilesOK._(
             scannedFiles: scannedFiles.build(),
           );
     } catch (_) {
@@ -102,7 +97,7 @@ class ListScannedFilesOKBuilder
         _$failedField = 'scannedFiles';
         scannedFiles.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListScannedFilesOK', _$failedField, e.toString());
       }
       rethrow;

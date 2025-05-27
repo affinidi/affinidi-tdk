@@ -12,10 +12,9 @@ class _$CorsUpdateProfileDataOK extends CorsUpdateProfileDataOK {
 
   factory _$CorsUpdateProfileDataOK(
           [void Function(CorsUpdateProfileDataOKBuilder)? updates]) =>
-      (new CorsUpdateProfileDataOKBuilder()..update(updates))._build();
+      (CorsUpdateProfileDataOKBuilder()..update(updates))._build();
 
   _$CorsUpdateProfileDataOK._({this.corsUpdateProfileDataOk}) : super._();
-
   @override
   CorsUpdateProfileDataOK rebuild(
           void Function(CorsUpdateProfileDataOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsUpdateProfileDataOK extends CorsUpdateProfileDataOK {
 
   @override
   CorsUpdateProfileDataOKBuilder toBuilder() =>
-      new CorsUpdateProfileDataOKBuilder()..replace(this);
+      CorsUpdateProfileDataOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class CorsUpdateProfileDataOKBuilder
 
   @override
   void replace(CorsUpdateProfileDataOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsUpdateProfileDataOK;
   }
 
@@ -87,7 +85,7 @@ class CorsUpdateProfileDataOKBuilder
 
   _$CorsUpdateProfileDataOK _build() {
     final _$result = _$v ??
-        new _$CorsUpdateProfileDataOK._(
+        _$CorsUpdateProfileDataOK._(
           corsUpdateProfileDataOk: corsUpdateProfileDataOk,
         );
     replace(_$result);

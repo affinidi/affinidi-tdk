@@ -14,11 +14,10 @@ class _$RevokeCredentialInput extends RevokeCredentialInput {
 
   factory _$RevokeCredentialInput(
           [void Function(RevokeCredentialInputBuilder)? updates]) =>
-      (new RevokeCredentialInputBuilder()..update(updates))._build();
+      (RevokeCredentialInputBuilder()..update(updates))._build();
 
   _$RevokeCredentialInput._({this.revocationReason, this.credentialId})
       : super._();
-
   @override
   RevokeCredentialInput rebuild(
           void Function(RevokeCredentialInputBuilder) updates) =>
@@ -26,7 +25,7 @@ class _$RevokeCredentialInput extends RevokeCredentialInput {
 
   @override
   RevokeCredentialInputBuilder toBuilder() =>
-      new RevokeCredentialInputBuilder()..replace(this);
+      RevokeCredentialInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -83,7 +82,6 @@ class RevokeCredentialInputBuilder
 
   @override
   void replace(RevokeCredentialInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RevokeCredentialInput;
   }
 
@@ -97,7 +95,7 @@ class RevokeCredentialInputBuilder
 
   _$RevokeCredentialInput _build() {
     final _$result = _$v ??
-        new _$RevokeCredentialInput._(
+        _$RevokeCredentialInput._(
           revocationReason: revocationReason,
           credentialId: credentialId,
         );

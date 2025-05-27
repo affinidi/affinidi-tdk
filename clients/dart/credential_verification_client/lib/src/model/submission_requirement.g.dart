@@ -19,12 +19,12 @@ SubmissionRequirementRuleEnum _$submissionRequirementRuleEnumValueOf(
     case 'pick':
       return _$submissionRequirementRuleEnum_pick;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SubmissionRequirementRuleEnum>
-    _$submissionRequirementRuleEnumValues = new BuiltSet<
+    _$submissionRequirementRuleEnumValues = BuiltSet<
         SubmissionRequirementRuleEnum>(const <SubmissionRequirementRuleEnum>[
   _$submissionRequirementRuleEnum_all,
   _$submissionRequirementRuleEnum_pick,
@@ -32,7 +32,7 @@ final BuiltSet<SubmissionRequirementRuleEnum>
 
 Serializer<SubmissionRequirementRuleEnum>
     _$submissionRequirementRuleEnumSerializer =
-    new _$SubmissionRequirementRuleEnumSerializer();
+    _$SubmissionRequirementRuleEnumSerializer();
 
 class _$SubmissionRequirementRuleEnumSerializer
     implements PrimitiveSerializer<SubmissionRequirementRuleEnum> {
@@ -84,7 +84,7 @@ class _$SubmissionRequirement extends SubmissionRequirement {
 
   factory _$SubmissionRequirement(
           [void Function(SubmissionRequirementBuilder)? updates]) =>
-      (new SubmissionRequirementBuilder()..update(updates))._build();
+      (SubmissionRequirementBuilder()..update(updates))._build();
 
   _$SubmissionRequirement._(
       {this.name,
@@ -95,11 +95,7 @@ class _$SubmissionRequirement extends SubmissionRequirement {
       this.max,
       this.from,
       this.fromNested})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        rule, r'SubmissionRequirement', 'rule');
-  }
-
+      : super._();
   @override
   SubmissionRequirement rebuild(
           void Function(SubmissionRequirementBuilder) updates) =>
@@ -107,7 +103,7 @@ class _$SubmissionRequirement extends SubmissionRequirement {
 
   @override
   SubmissionRequirementBuilder toBuilder() =>
-      new SubmissionRequirementBuilder()..replace(this);
+      SubmissionRequirementBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -187,7 +183,7 @@ class SubmissionRequirementBuilder
 
   ListBuilder<SubmissionRequirement>? _fromNested;
   ListBuilder<SubmissionRequirement> get fromNested =>
-      _$this._fromNested ??= new ListBuilder<SubmissionRequirement>();
+      _$this._fromNested ??= ListBuilder<SubmissionRequirement>();
   set fromNested(ListBuilder<SubmissionRequirement>? fromNested) =>
       _$this._fromNested = fromNested;
 
@@ -213,7 +209,6 @@ class SubmissionRequirementBuilder
 
   @override
   void replace(SubmissionRequirement other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SubmissionRequirement;
   }
 
@@ -229,7 +224,7 @@ class SubmissionRequirementBuilder
     _$SubmissionRequirement _$result;
     try {
       _$result = _$v ??
-          new _$SubmissionRequirement._(
+          _$SubmissionRequirement._(
             name: name,
             purpose: purpose,
             rule: BuiltValueNullFieldError.checkNotNull(
@@ -246,7 +241,7 @@ class SubmissionRequirementBuilder
         _$failedField = 'fromNested';
         _fromNested?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SubmissionRequirement', _$failedField, e.toString());
       }
       rethrow;
