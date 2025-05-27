@@ -9,11 +9,9 @@ import 'package:dio/dio.dart';
 
 import '../affinidi_tdk_vault_data_manager.dart';
 import 'dto/error_response.dart';
-import 'exceptions/tdk_exception_type.dart';
 import 'extensions/dio_extension.dart';
 import 'extensions/tdk_exception_extension.dart';
 import 'helpers/retry_helper.dart';
-import 'vault_data_manager_api_service_interface.dart';
 
 /// A service class that implements the [VaultDataManagerApiServiceInterface].
 /// This class provides the API service layer for managing vault data operations.
@@ -801,6 +799,9 @@ class VaultDataManagerApiService
   }) async {
     try {
       final updateAccountInput = UpdateAccountInputBuilder()
+        ..name = 'Hello'
+        ..description = 'Description'
+        ..alias = 'Alias'
         ..accountDid = accountDid
         ..didProof = didProof
         ..metadata = metadata != null ? JsonObject(metadata) : null;
