@@ -18,22 +18,13 @@ class _$AwsExchangeCredentialsProjectToken
   factory _$AwsExchangeCredentialsProjectToken(
           [void Function(AwsExchangeCredentialsProjectTokenBuilder)?
               updates]) =>
-      (new AwsExchangeCredentialsProjectTokenBuilder()..update(updates))
-          ._build();
+      (AwsExchangeCredentialsProjectTokenBuilder()..update(updates))._build();
 
   _$AwsExchangeCredentialsProjectToken._(
       {required this.sessionId,
       required this.configurationId,
       required this.did})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        sessionId, r'AwsExchangeCredentialsProjectToken', 'sessionId');
-    BuiltValueNullFieldError.checkNotNull(configurationId,
-        r'AwsExchangeCredentialsProjectToken', 'configurationId');
-    BuiltValueNullFieldError.checkNotNull(
-        did, r'AwsExchangeCredentialsProjectToken', 'did');
-  }
-
+      : super._();
   @override
   AwsExchangeCredentialsProjectToken rebuild(
           void Function(AwsExchangeCredentialsProjectTokenBuilder) updates) =>
@@ -41,7 +32,7 @@ class _$AwsExchangeCredentialsProjectToken
 
   @override
   AwsExchangeCredentialsProjectTokenBuilder toBuilder() =>
-      new AwsExchangeCredentialsProjectTokenBuilder()..replace(this);
+      AwsExchangeCredentialsProjectTokenBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -108,7 +99,6 @@ class AwsExchangeCredentialsProjectTokenBuilder
 
   @override
   void replace(AwsExchangeCredentialsProjectToken other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AwsExchangeCredentialsProjectToken;
   }
 
@@ -123,7 +113,7 @@ class AwsExchangeCredentialsProjectTokenBuilder
 
   _$AwsExchangeCredentialsProjectToken _build() {
     final _$result = _$v ??
-        new _$AwsExchangeCredentialsProjectToken._(
+        _$AwsExchangeCredentialsProjectToken._(
           sessionId: BuiltValueNullFieldError.checkNotNull(
               sessionId, r'AwsExchangeCredentialsProjectToken', 'sessionId'),
           configurationId: BuiltValueNullFieldError.checkNotNull(

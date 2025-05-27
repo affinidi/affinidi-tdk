@@ -25,12 +25,12 @@ IssuanceConfigMiniDtoFormatEnum _$issuanceConfigMiniDtoFormatEnumValueOf(
     case 'sdJwtVcJsonLd':
       return _$issuanceConfigMiniDtoFormatEnum_sdJwtVcJsonLd;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<IssuanceConfigMiniDtoFormatEnum>
-    _$issuanceConfigMiniDtoFormatEnumValues = new BuiltSet<
+    _$issuanceConfigMiniDtoFormatEnumValues = BuiltSet<
         IssuanceConfigMiniDtoFormatEnum>(const <IssuanceConfigMiniDtoFormatEnum>[
   _$issuanceConfigMiniDtoFormatEnum_ldpVc,
   _$issuanceConfigMiniDtoFormatEnum_jwtVcJsonLd,
@@ -39,7 +39,7 @@ final BuiltSet<IssuanceConfigMiniDtoFormatEnum>
 
 Serializer<IssuanceConfigMiniDtoFormatEnum>
     _$issuanceConfigMiniDtoFormatEnumSerializer =
-    new _$IssuanceConfigMiniDtoFormatEnumSerializer();
+    _$IssuanceConfigMiniDtoFormatEnumSerializer();
 
 class _$IssuanceConfigMiniDtoFormatEnumSerializer
     implements PrimitiveSerializer<IssuanceConfigMiniDtoFormatEnum> {
@@ -97,7 +97,7 @@ class _$IssuanceConfigMiniDto extends IssuanceConfigMiniDto {
 
   factory _$IssuanceConfigMiniDto(
           [void Function(IssuanceConfigMiniDtoBuilder)? updates]) =>
-      (new IssuanceConfigMiniDtoBuilder()..update(updates))._build();
+      (IssuanceConfigMiniDtoBuilder()..update(updates))._build();
 
   _$IssuanceConfigMiniDto._(
       {required this.id,
@@ -110,10 +110,7 @@ class _$IssuanceConfigMiniDto extends IssuanceConfigMiniDto {
       this.issuerUri,
       this.issuerMetadata,
       this.version})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'IssuanceConfigMiniDto', 'id');
-  }
-
+      : super._();
   @override
   IssuanceConfigMiniDto rebuild(
           void Function(IssuanceConfigMiniDtoBuilder) updates) =>
@@ -121,7 +118,7 @@ class _$IssuanceConfigMiniDto extends IssuanceConfigMiniDto {
 
   @override
   IssuanceConfigMiniDtoBuilder toBuilder() =>
-      new IssuanceConfigMiniDtoBuilder()..replace(this);
+      IssuanceConfigMiniDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -215,7 +212,7 @@ class IssuanceConfigMiniDtoBuilder
 
   MapBuilder<String, JsonObject?>? _issuerMetadata;
   MapBuilder<String, JsonObject?> get issuerMetadata =>
-      _$this._issuerMetadata ??= new MapBuilder<String, JsonObject?>();
+      _$this._issuerMetadata ??= MapBuilder<String, JsonObject?>();
   set issuerMetadata(MapBuilder<String, JsonObject?>? issuerMetadata) =>
       _$this._issuerMetadata = issuerMetadata;
 
@@ -247,7 +244,6 @@ class IssuanceConfigMiniDtoBuilder
 
   @override
   void replace(IssuanceConfigMiniDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IssuanceConfigMiniDto;
   }
 
@@ -263,7 +259,7 @@ class IssuanceConfigMiniDtoBuilder
     _$IssuanceConfigMiniDto _$result;
     try {
       _$result = _$v ??
-          new _$IssuanceConfigMiniDto._(
+          _$IssuanceConfigMiniDto._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'IssuanceConfigMiniDto', 'id'),
             name: name,
@@ -282,7 +278,7 @@ class IssuanceConfigMiniDtoBuilder
         _$failedField = 'issuerMetadata';
         _issuerMetadata?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'IssuanceConfigMiniDto', _$failedField, e.toString());
       }
       rethrow;

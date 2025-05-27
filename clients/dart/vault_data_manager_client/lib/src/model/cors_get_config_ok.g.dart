@@ -11,17 +11,15 @@ class _$CorsGetConfigOK extends CorsGetConfigOK {
   final String? corsGetConfigOk;
 
   factory _$CorsGetConfigOK([void Function(CorsGetConfigOKBuilder)? updates]) =>
-      (new CorsGetConfigOKBuilder()..update(updates))._build();
+      (CorsGetConfigOKBuilder()..update(updates))._build();
 
   _$CorsGetConfigOK._({this.corsGetConfigOk}) : super._();
-
   @override
   CorsGetConfigOK rebuild(void Function(CorsGetConfigOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CorsGetConfigOKBuilder toBuilder() =>
-      new CorsGetConfigOKBuilder()..replace(this);
+  CorsGetConfigOKBuilder toBuilder() => CorsGetConfigOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -69,7 +67,6 @@ class CorsGetConfigOKBuilder
 
   @override
   void replace(CorsGetConfigOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsGetConfigOK;
   }
 
@@ -83,7 +80,7 @@ class CorsGetConfigOKBuilder
 
   _$CorsGetConfigOK _build() {
     final _$result = _$v ??
-        new _$CorsGetConfigOK._(
+        _$CorsGetConfigOK._(
           corsGetConfigOk: corsGetConfigOk,
         );
     replace(_$result);

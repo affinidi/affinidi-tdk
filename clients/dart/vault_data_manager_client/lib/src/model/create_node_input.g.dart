@@ -23,7 +23,7 @@ class _$CreateNodeInput extends CreateNodeInput {
   final String? metadata;
 
   factory _$CreateNodeInput([void Function(CreateNodeInputBuilder)? updates]) =>
-      (new CreateNodeInputBuilder()..update(updates))._build();
+      (CreateNodeInputBuilder()..update(updates))._build();
 
   _$CreateNodeInput._(
       {required this.name,
@@ -33,18 +33,13 @@ class _$CreateNodeInput extends CreateNodeInput {
       this.edekInfo,
       this.dek,
       this.metadata})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'CreateNodeInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(type, r'CreateNodeInput', 'type');
-  }
-
+      : super._();
   @override
   CreateNodeInput rebuild(void Function(CreateNodeInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CreateNodeInputBuilder toBuilder() =>
-      new CreateNodeInputBuilder()..replace(this);
+  CreateNodeInputBuilder toBuilder() => CreateNodeInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -108,7 +103,7 @@ class CreateNodeInputBuilder
   set parentNodeId(String? parentNodeId) => _$this._parentNodeId = parentNodeId;
 
   EdekInfoBuilder? _edekInfo;
-  EdekInfoBuilder get edekInfo => _$this._edekInfo ??= new EdekInfoBuilder();
+  EdekInfoBuilder get edekInfo => _$this._edekInfo ??= EdekInfoBuilder();
   set edekInfo(EdekInfoBuilder? edekInfo) => _$this._edekInfo = edekInfo;
 
   String? _dek;
@@ -140,7 +135,6 @@ class CreateNodeInputBuilder
 
   @override
   void replace(CreateNodeInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateNodeInput;
   }
 
@@ -156,7 +150,7 @@ class CreateNodeInputBuilder
     _$CreateNodeInput _$result;
     try {
       _$result = _$v ??
-          new _$CreateNodeInput._(
+          _$CreateNodeInput._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'CreateNodeInput', 'name'),
             type: BuiltValueNullFieldError.checkNotNull(
@@ -173,7 +167,7 @@ class CreateNodeInputBuilder
         _$failedField = 'edekInfo';
         _edekInfo?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateNodeInput', _$failedField, e.toString());
       }
       rethrow;

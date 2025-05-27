@@ -22,19 +22,19 @@ StartFileScanOKStatusEnum _$startFileScanOKStatusEnumValueOf(String name) {
     case 'COMPLETED':
       return _$startFileScanOKStatusEnum_COMPLETED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<StartFileScanOKStatusEnum> _$startFileScanOKStatusEnumValues =
-    new BuiltSet<StartFileScanOKStatusEnum>(const <StartFileScanOKStatusEnum>[
+    BuiltSet<StartFileScanOKStatusEnum>(const <StartFileScanOKStatusEnum>[
   _$startFileScanOKStatusEnum_STARTED,
   _$startFileScanOKStatusEnum_FAILED,
   _$startFileScanOKStatusEnum_COMPLETED,
 ]);
 
 Serializer<StartFileScanOKStatusEnum> _$startFileScanOKStatusEnumSerializer =
-    new _$StartFileScanOKStatusEnumSerializer();
+    _$StartFileScanOKStatusEnumSerializer();
 
 class _$StartFileScanOKStatusEnumSerializer
     implements PrimitiveSerializer<StartFileScanOKStatusEnum> {
@@ -74,20 +74,15 @@ class _$StartFileScanOK extends StartFileScanOK {
   final StartFileScanOKStatusEnum status;
 
   factory _$StartFileScanOK([void Function(StartFileScanOKBuilder)? updates]) =>
-      (new StartFileScanOKBuilder()..update(updates))._build();
+      (StartFileScanOKBuilder()..update(updates))._build();
 
-  _$StartFileScanOK._({required this.jobId, required this.status}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(jobId, r'StartFileScanOK', 'jobId');
-    BuiltValueNullFieldError.checkNotNull(status, r'StartFileScanOK', 'status');
-  }
-
+  _$StartFileScanOK._({required this.jobId, required this.status}) : super._();
   @override
   StartFileScanOK rebuild(void Function(StartFileScanOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  StartFileScanOKBuilder toBuilder() =>
-      new StartFileScanOKBuilder()..replace(this);
+  StartFileScanOKBuilder toBuilder() => StartFileScanOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -143,7 +138,6 @@ class StartFileScanOKBuilder
 
   @override
   void replace(StartFileScanOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StartFileScanOK;
   }
 
@@ -157,7 +151,7 @@ class StartFileScanOKBuilder
 
   _$StartFileScanOK _build() {
     final _$result = _$v ??
-        new _$StartFileScanOK._(
+        _$StartFileScanOK._(
           jobId: BuiltValueNullFieldError.checkNotNull(
               jobId, r'StartFileScanOK', 'jobId'),
           status: BuiltValueNullFieldError.checkNotNull(

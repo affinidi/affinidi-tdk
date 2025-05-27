@@ -12,11 +12,10 @@ class _$CorsAwsCredentialExchangeOK extends CorsAwsCredentialExchangeOK {
 
   factory _$CorsAwsCredentialExchangeOK(
           [void Function(CorsAwsCredentialExchangeOKBuilder)? updates]) =>
-      (new CorsAwsCredentialExchangeOKBuilder()..update(updates))._build();
+      (CorsAwsCredentialExchangeOKBuilder()..update(updates))._build();
 
   _$CorsAwsCredentialExchangeOK._({this.corsAwsCredentialExchangeOk})
       : super._();
-
   @override
   CorsAwsCredentialExchangeOK rebuild(
           void Function(CorsAwsCredentialExchangeOKBuilder) updates) =>
@@ -24,7 +23,7 @@ class _$CorsAwsCredentialExchangeOK extends CorsAwsCredentialExchangeOK {
 
   @override
   CorsAwsCredentialExchangeOKBuilder toBuilder() =>
-      new CorsAwsCredentialExchangeOKBuilder()..replace(this);
+      CorsAwsCredentialExchangeOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +75,6 @@ class CorsAwsCredentialExchangeOKBuilder
 
   @override
   void replace(CorsAwsCredentialExchangeOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsAwsCredentialExchangeOK;
   }
 
@@ -90,7 +88,7 @@ class CorsAwsCredentialExchangeOKBuilder
 
   _$CorsAwsCredentialExchangeOK _build() {
     final _$result = _$v ??
-        new _$CorsAwsCredentialExchangeOK._(
+        _$CorsAwsCredentialExchangeOK._(
           corsAwsCredentialExchangeOk: corsAwsCredentialExchangeOk,
         );
     replace(_$result);

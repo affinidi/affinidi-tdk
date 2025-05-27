@@ -13,22 +13,16 @@ class _$WhoamiDto extends WhoamiDto {
   final String principalType;
 
   factory _$WhoamiDto([void Function(WhoamiDtoBuilder)? updates]) =>
-      (new WhoamiDtoBuilder()..update(updates))._build();
+      (WhoamiDtoBuilder()..update(updates))._build();
 
   _$WhoamiDto._({required this.principalId, required this.principalType})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        principalId, r'WhoamiDto', 'principalId');
-    BuiltValueNullFieldError.checkNotNull(
-        principalType, r'WhoamiDto', 'principalType');
-  }
-
+      : super._();
   @override
   WhoamiDto rebuild(void Function(WhoamiDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WhoamiDtoBuilder toBuilder() => new WhoamiDtoBuilder()..replace(this);
+  WhoamiDtoBuilder toBuilder() => WhoamiDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -84,7 +78,6 @@ class WhoamiDtoBuilder implements Builder<WhoamiDto, WhoamiDtoBuilder> {
 
   @override
   void replace(WhoamiDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WhoamiDto;
   }
 
@@ -98,7 +91,7 @@ class WhoamiDtoBuilder implements Builder<WhoamiDto, WhoamiDtoBuilder> {
 
   _$WhoamiDto _build() {
     final _$result = _$v ??
-        new _$WhoamiDto._(
+        _$WhoamiDto._(
           principalId: BuiltValueNullFieldError.checkNotNull(
               principalId, r'WhoamiDto', 'principalId'),
           principalType: BuiltValueNullFieldError.checkNotNull(

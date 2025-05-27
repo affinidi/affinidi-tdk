@@ -18,24 +18,14 @@ class _$FetchIOTAVPResponseInput extends FetchIOTAVPResponseInput {
 
   factory _$FetchIOTAVPResponseInput(
           [void Function(FetchIOTAVPResponseInputBuilder)? updates]) =>
-      (new FetchIOTAVPResponseInputBuilder()..update(updates))._build();
+      (FetchIOTAVPResponseInputBuilder()..update(updates))._build();
 
   _$FetchIOTAVPResponseInput._(
       {required this.correlationId,
       required this.transactionId,
       required this.responseCode,
       required this.configurationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        correlationId, r'FetchIOTAVPResponseInput', 'correlationId');
-    BuiltValueNullFieldError.checkNotNull(
-        transactionId, r'FetchIOTAVPResponseInput', 'transactionId');
-    BuiltValueNullFieldError.checkNotNull(
-        responseCode, r'FetchIOTAVPResponseInput', 'responseCode');
-    BuiltValueNullFieldError.checkNotNull(
-        configurationId, r'FetchIOTAVPResponseInput', 'configurationId');
-  }
-
+      : super._();
   @override
   FetchIOTAVPResponseInput rebuild(
           void Function(FetchIOTAVPResponseInputBuilder) updates) =>
@@ -43,7 +33,7 @@ class _$FetchIOTAVPResponseInput extends FetchIOTAVPResponseInput {
 
   @override
   FetchIOTAVPResponseInputBuilder toBuilder() =>
-      new FetchIOTAVPResponseInputBuilder()..replace(this);
+      FetchIOTAVPResponseInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -119,7 +109,6 @@ class FetchIOTAVPResponseInputBuilder
 
   @override
   void replace(FetchIOTAVPResponseInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$FetchIOTAVPResponseInput;
   }
 
@@ -133,7 +122,7 @@ class FetchIOTAVPResponseInputBuilder
 
   _$FetchIOTAVPResponseInput _build() {
     final _$result = _$v ??
-        new _$FetchIOTAVPResponseInput._(
+        _$FetchIOTAVPResponseInput._(
           correlationId: BuiltValueNullFieldError.checkNotNull(
               correlationId, r'FetchIOTAVPResponseInput', 'correlationId'),
           transactionId: BuiltValueNullFieldError.checkNotNull(

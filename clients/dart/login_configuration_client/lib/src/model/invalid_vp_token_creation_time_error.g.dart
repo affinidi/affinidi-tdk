@@ -17,12 +17,12 @@ InvalidVPTokenCreationTimeErrorNameEnum
     case 'invalidVPTokenCreationTimeError':
       return _$invalidVPTokenCreationTimeErrorNameEnum_invalidVPTokenCreationTimeError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidVPTokenCreationTimeErrorNameEnum>
-    _$invalidVPTokenCreationTimeErrorNameEnumValues = new BuiltSet<
+    _$invalidVPTokenCreationTimeErrorNameEnumValues = BuiltSet<
         InvalidVPTokenCreationTimeErrorNameEnum>(const <InvalidVPTokenCreationTimeErrorNameEnum>[
   _$invalidVPTokenCreationTimeErrorNameEnum_invalidVPTokenCreationTimeError,
 ]);
@@ -37,12 +37,12 @@ InvalidVPTokenCreationTimeErrorMessageEnum
     case 'vPTokenHasExpired':
       return _$invalidVPTokenCreationTimeErrorMessageEnum_vPTokenHasExpired;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidVPTokenCreationTimeErrorMessageEnum>
-    _$invalidVPTokenCreationTimeErrorMessageEnumValues = new BuiltSet<
+    _$invalidVPTokenCreationTimeErrorMessageEnumValues = BuiltSet<
         InvalidVPTokenCreationTimeErrorMessageEnum>(const <InvalidVPTokenCreationTimeErrorMessageEnum>[
   _$invalidVPTokenCreationTimeErrorMessageEnum_vPTokenHasExpired,
 ]);
@@ -57,25 +57,25 @@ InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum
     case 'number400':
       return _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum>
-    _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumValues = BuiltSet<
         InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum>(const <InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum>[
   _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidVPTokenCreationTimeErrorNameEnum>
     _$invalidVPTokenCreationTimeErrorNameEnumSerializer =
-    new _$InvalidVPTokenCreationTimeErrorNameEnumSerializer();
+    _$InvalidVPTokenCreationTimeErrorNameEnumSerializer();
 Serializer<InvalidVPTokenCreationTimeErrorMessageEnum>
     _$invalidVPTokenCreationTimeErrorMessageEnumSerializer =
-    new _$InvalidVPTokenCreationTimeErrorMessageEnumSerializer();
+    _$InvalidVPTokenCreationTimeErrorMessageEnumSerializer();
 Serializer<InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum>
     _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumSerializer =
-    new _$InvalidVPTokenCreationTimeErrorHttpStatusCodeEnumSerializer();
+    _$InvalidVPTokenCreationTimeErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidVPTokenCreationTimeErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidVPTokenCreationTimeErrorNameEnum> {
@@ -183,7 +183,7 @@ class _$InvalidVPTokenCreationTimeError
 
   factory _$InvalidVPTokenCreationTimeError(
           [void Function(InvalidVPTokenCreationTimeErrorBuilder)? updates]) =>
-      (new InvalidVPTokenCreationTimeErrorBuilder()..update(updates))._build();
+      (InvalidVPTokenCreationTimeErrorBuilder()..update(updates))._build();
 
   _$InvalidVPTokenCreationTimeError._(
       {required this.name,
@@ -191,17 +191,7 @@ class _$InvalidVPTokenCreationTimeError
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'InvalidVPTokenCreationTimeError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'InvalidVPTokenCreationTimeError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'InvalidVPTokenCreationTimeError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'InvalidVPTokenCreationTimeError', 'traceId');
-  }
-
+      : super._();
   @override
   InvalidVPTokenCreationTimeError rebuild(
           void Function(InvalidVPTokenCreationTimeErrorBuilder) updates) =>
@@ -209,7 +199,7 @@ class _$InvalidVPTokenCreationTimeError
 
   @override
   InvalidVPTokenCreationTimeErrorBuilder toBuilder() =>
-      new InvalidVPTokenCreationTimeErrorBuilder()..replace(this);
+      InvalidVPTokenCreationTimeErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -275,7 +265,7 @@ class InvalidVPTokenCreationTimeErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -298,7 +288,6 @@ class InvalidVPTokenCreationTimeErrorBuilder
 
   @override
   void replace(InvalidVPTokenCreationTimeError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidVPTokenCreationTimeError;
   }
 
@@ -314,7 +303,7 @@ class InvalidVPTokenCreationTimeErrorBuilder
     _$InvalidVPTokenCreationTimeError _$result;
     try {
       _$result = _$v ??
-          new _$InvalidVPTokenCreationTimeError._(
+          _$InvalidVPTokenCreationTimeError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidVPTokenCreationTimeError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -333,7 +322,7 @@ class InvalidVPTokenCreationTimeErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InvalidVPTokenCreationTimeError', _$failedField, e.toString());
       }
       rethrow;

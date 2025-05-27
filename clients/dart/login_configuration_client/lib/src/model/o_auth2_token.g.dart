@@ -23,7 +23,7 @@ class _$OAuth2Token extends OAuth2Token {
   final BuiltList<OAuth2TokenAuthorizationDetailsInner>? authorizationDetails;
 
   factory _$OAuth2Token([void Function(OAuth2TokenBuilder)? updates]) =>
-      (new OAuth2TokenBuilder()..update(updates))._build();
+      (OAuth2TokenBuilder()..update(updates))._build();
 
   _$OAuth2Token._(
       {this.accessToken,
@@ -34,13 +34,12 @@ class _$OAuth2Token extends OAuth2Token {
       this.tokenType,
       this.authorizationDetails})
       : super._();
-
   @override
   OAuth2Token rebuild(void Function(OAuth2TokenBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  OAuth2TokenBuilder toBuilder() => new OAuth2TokenBuilder()..replace(this);
+  OAuth2TokenBuilder toBuilder() => OAuth2TokenBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -113,7 +112,7 @@ class OAuth2TokenBuilder implements Builder<OAuth2Token, OAuth2TokenBuilder> {
   ListBuilder<OAuth2TokenAuthorizationDetailsInner>? _authorizationDetails;
   ListBuilder<OAuth2TokenAuthorizationDetailsInner> get authorizationDetails =>
       _$this._authorizationDetails ??=
-          new ListBuilder<OAuth2TokenAuthorizationDetailsInner>();
+          ListBuilder<OAuth2TokenAuthorizationDetailsInner>();
   set authorizationDetails(
           ListBuilder<OAuth2TokenAuthorizationDetailsInner>?
               authorizationDetails) =>
@@ -140,7 +139,6 @@ class OAuth2TokenBuilder implements Builder<OAuth2Token, OAuth2TokenBuilder> {
 
   @override
   void replace(OAuth2Token other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OAuth2Token;
   }
 
@@ -156,7 +154,7 @@ class OAuth2TokenBuilder implements Builder<OAuth2Token, OAuth2TokenBuilder> {
     _$OAuth2Token _$result;
     try {
       _$result = _$v ??
-          new _$OAuth2Token._(
+          _$OAuth2Token._(
             accessToken: accessToken,
             expiresIn: expiresIn,
             idToken: idToken,
@@ -171,7 +169,7 @@ class OAuth2TokenBuilder implements Builder<OAuth2Token, OAuth2TokenBuilder> {
         _$failedField = 'authorizationDetails';
         _authorizationDetails?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'OAuth2Token', _$failedField, e.toString());
       }
       rethrow;

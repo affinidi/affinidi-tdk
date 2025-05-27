@@ -12,13 +12,9 @@ class _$DeletePexQueriesInput extends DeletePexQueriesInput {
 
   factory _$DeletePexQueriesInput(
           [void Function(DeletePexQueriesInputBuilder)? updates]) =>
-      (new DeletePexQueriesInputBuilder()..update(updates))._build();
+      (DeletePexQueriesInputBuilder()..update(updates))._build();
 
-  _$DeletePexQueriesInput._({required this.queryIds}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        queryIds, r'DeletePexQueriesInput', 'queryIds');
-  }
-
+  _$DeletePexQueriesInput._({required this.queryIds}) : super._();
   @override
   DeletePexQueriesInput rebuild(
           void Function(DeletePexQueriesInputBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$DeletePexQueriesInput extends DeletePexQueriesInput {
 
   @override
   DeletePexQueriesInputBuilder toBuilder() =>
-      new DeletePexQueriesInputBuilder()..replace(this);
+      DeletePexQueriesInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -56,7 +52,7 @@ class DeletePexQueriesInputBuilder
 
   ListBuilder<String>? _queryIds;
   ListBuilder<String> get queryIds =>
-      _$this._queryIds ??= new ListBuilder<String>();
+      _$this._queryIds ??= ListBuilder<String>();
   set queryIds(ListBuilder<String>? queryIds) => _$this._queryIds = queryIds;
 
   DeletePexQueriesInputBuilder() {
@@ -74,7 +70,6 @@ class DeletePexQueriesInputBuilder
 
   @override
   void replace(DeletePexQueriesInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeletePexQueriesInput;
   }
 
@@ -90,7 +85,7 @@ class DeletePexQueriesInputBuilder
     _$DeletePexQueriesInput _$result;
     try {
       _$result = _$v ??
-          new _$DeletePexQueriesInput._(
+          _$DeletePexQueriesInput._(
             queryIds: queryIds.build(),
           );
     } catch (_) {
@@ -99,7 +94,7 @@ class DeletePexQueriesInputBuilder
         _$failedField = 'queryIds';
         queryIds.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'DeletePexQueriesInput', _$failedField, e.toString());
       }
       rethrow;

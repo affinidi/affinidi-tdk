@@ -13,19 +13,15 @@ class _$EdekInfo extends EdekInfo {
   final String dekekId;
 
   factory _$EdekInfo([void Function(EdekInfoBuilder)? updates]) =>
-      (new EdekInfoBuilder()..update(updates))._build();
+      (EdekInfoBuilder()..update(updates))._build();
 
-  _$EdekInfo._({required this.edek, required this.dekekId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(edek, r'EdekInfo', 'edek');
-    BuiltValueNullFieldError.checkNotNull(dekekId, r'EdekInfo', 'dekekId');
-  }
-
+  _$EdekInfo._({required this.edek, required this.dekekId}) : super._();
   @override
   EdekInfo rebuild(void Function(EdekInfoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  EdekInfoBuilder toBuilder() => new EdekInfoBuilder()..replace(this);
+  EdekInfoBuilder toBuilder() => EdekInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -78,7 +74,6 @@ class EdekInfoBuilder implements Builder<EdekInfo, EdekInfoBuilder> {
 
   @override
   void replace(EdekInfo other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EdekInfo;
   }
 
@@ -92,7 +87,7 @@ class EdekInfoBuilder implements Builder<EdekInfo, EdekInfoBuilder> {
 
   _$EdekInfo _build() {
     final _$result = _$v ??
-        new _$EdekInfo._(
+        _$EdekInfo._(
           edek:
               BuiltValueNullFieldError.checkNotNull(edek, r'EdekInfo', 'edek'),
           dekekId: BuiltValueNullFieldError.checkNotNull(

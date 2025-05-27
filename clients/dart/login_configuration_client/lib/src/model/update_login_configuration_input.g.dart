@@ -30,7 +30,7 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
 
   factory _$UpdateLoginConfigurationInput(
           [void Function(UpdateLoginConfigurationInputBuilder)? updates]) =>
-      (new UpdateLoginConfigurationInputBuilder()..update(updates))._build();
+      (UpdateLoginConfigurationInputBuilder()..update(updates))._build();
 
   _$UpdateLoginConfigurationInput._(
       {this.name,
@@ -44,7 +44,6 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
       this.tokenEndpointAuthMethod,
       this.failOnMappingConflict})
       : super._();
-
   @override
   UpdateLoginConfigurationInput rebuild(
           void Function(UpdateLoginConfigurationInputBuilder) updates) =>
@@ -52,7 +51,7 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
 
   @override
   UpdateLoginConfigurationInputBuilder toBuilder() =>
-      new UpdateLoginConfigurationInputBuilder()..replace(this);
+      UpdateLoginConfigurationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -116,13 +115,13 @@ class UpdateLoginConfigurationInputBuilder
 
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
-      _$this._redirectUris ??= new ListBuilder<String>();
+      _$this._redirectUris ??= ListBuilder<String>();
   set redirectUris(ListBuilder<String>? redirectUris) =>
       _$this._redirectUris = redirectUris;
 
   ListBuilder<String>? _postLogoutRedirectUris;
   ListBuilder<String> get postLogoutRedirectUris =>
-      _$this._postLogoutRedirectUris ??= new ListBuilder<String>();
+      _$this._postLogoutRedirectUris ??= ListBuilder<String>();
   set postLogoutRedirectUris(ListBuilder<String>? postLogoutRedirectUris) =>
       _$this._postLogoutRedirectUris = postLogoutRedirectUris;
 
@@ -141,14 +140,13 @@ class UpdateLoginConfigurationInputBuilder
 
   ListBuilder<IdTokenMappingItem>? _idTokenMapping;
   ListBuilder<IdTokenMappingItem> get idTokenMapping =>
-      _$this._idTokenMapping ??= new ListBuilder<IdTokenMappingItem>();
+      _$this._idTokenMapping ??= ListBuilder<IdTokenMappingItem>();
   set idTokenMapping(ListBuilder<IdTokenMappingItem>? idTokenMapping) =>
       _$this._idTokenMapping = idTokenMapping;
 
   LoginConfigurationClientMetadataInputBuilder? _clientMetadata;
   LoginConfigurationClientMetadataInputBuilder get clientMetadata =>
-      _$this._clientMetadata ??=
-          new LoginConfigurationClientMetadataInputBuilder();
+      _$this._clientMetadata ??= LoginConfigurationClientMetadataInputBuilder();
   set clientMetadata(
           LoginConfigurationClientMetadataInputBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
@@ -189,7 +187,6 @@ class UpdateLoginConfigurationInputBuilder
 
   @override
   void replace(UpdateLoginConfigurationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateLoginConfigurationInput;
   }
 
@@ -205,7 +202,7 @@ class UpdateLoginConfigurationInputBuilder
     _$UpdateLoginConfigurationInput _$result;
     try {
       _$result = _$v ??
-          new _$UpdateLoginConfigurationInput._(
+          _$UpdateLoginConfigurationInput._(
             name: name,
             redirectUris: _redirectUris?.build(),
             postLogoutRedirectUris: _postLogoutRedirectUris?.build(),
@@ -230,7 +227,7 @@ class UpdateLoginConfigurationInputBuilder
         _$failedField = 'clientMetadata';
         _clientMetadata?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UpdateLoginConfigurationInput', _$failedField, e.toString());
       }
       rethrow;

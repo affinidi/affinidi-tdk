@@ -38,7 +38,7 @@ class _$ConsumerMetadataDto extends ConsumerMetadataDto {
 
   factory _$ConsumerMetadataDto(
           [void Function(ConsumerMetadataDtoBuilder)? updates]) =>
-      (new ConsumerMetadataDtoBuilder()..update(updates))._build();
+      (ConsumerMetadataDtoBuilder()..update(updates))._build();
 
   _$ConsumerMetadataDto._(
       {required this.nodeId,
@@ -55,27 +55,7 @@ class _$ConsumerMetadataDto extends ConsumerMetadataDto {
       this.description,
       required this.type,
       required this.consumedFileStorage})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        nodeId, r'ConsumerMetadataDto', 'nodeId');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ConsumerMetadataDto', 'status');
-    BuiltValueNullFieldError.checkNotNull(name, r'ConsumerMetadataDto', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        consumerId, r'ConsumerMetadataDto', 'consumerId');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'ConsumerMetadataDto', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedAt, r'ConsumerMetadataDto', 'modifiedAt');
-    BuiltValueNullFieldError.checkNotNull(
-        createdBy, r'ConsumerMetadataDto', 'createdBy');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedBy, r'ConsumerMetadataDto', 'modifiedBy');
-    BuiltValueNullFieldError.checkNotNull(type, r'ConsumerMetadataDto', 'type');
-    BuiltValueNullFieldError.checkNotNull(
-        consumedFileStorage, r'ConsumerMetadataDto', 'consumedFileStorage');
-  }
-
+      : super._();
   @override
   ConsumerMetadataDto rebuild(
           void Function(ConsumerMetadataDtoBuilder) updates) =>
@@ -83,7 +63,7 @@ class _$ConsumerMetadataDto extends ConsumerMetadataDto {
 
   @override
   ConsumerMetadataDtoBuilder toBuilder() =>
-      new ConsumerMetadataDtoBuilder()..replace(this);
+      ConsumerMetadataDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -236,7 +216,6 @@ class ConsumerMetadataDtoBuilder
 
   @override
   void replace(ConsumerMetadataDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ConsumerMetadataDto;
   }
 
@@ -250,7 +229,7 @@ class ConsumerMetadataDtoBuilder
 
   _$ConsumerMetadataDto _build() {
     final _$result = _$v ??
-        new _$ConsumerMetadataDto._(
+        _$ConsumerMetadataDto._(
           nodeId: BuiltValueNullFieldError.checkNotNull(
               nodeId, r'ConsumerMetadataDto', 'nodeId'),
           status: BuiltValueNullFieldError.checkNotNull(

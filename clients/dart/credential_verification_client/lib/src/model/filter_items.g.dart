@@ -11,18 +11,15 @@ class _$FilterItems extends FilterItems {
   final OneOf oneOf;
 
   factory _$FilterItems([void Function(FilterItemsBuilder)? updates]) =>
-      (new FilterItemsBuilder()..update(updates))._build();
+      (FilterItemsBuilder()..update(updates))._build();
 
-  _$FilterItems._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(oneOf, r'FilterItems', 'oneOf');
-  }
-
+  _$FilterItems._({required this.oneOf}) : super._();
   @override
   FilterItems rebuild(void Function(FilterItemsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FilterItemsBuilder toBuilder() => new FilterItemsBuilder()..replace(this);
+  FilterItemsBuilder toBuilder() => FilterItemsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,7 +64,6 @@ class FilterItemsBuilder implements Builder<FilterItems, FilterItemsBuilder> {
 
   @override
   void replace(FilterItems other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$FilterItems;
   }
 
@@ -81,7 +77,7 @@ class FilterItemsBuilder implements Builder<FilterItems, FilterItemsBuilder> {
 
   _$FilterItems _build() {
     final _$result = _$v ??
-        new _$FilterItems._(
+        _$FilterItems._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'FilterItems', 'oneOf'),
         );

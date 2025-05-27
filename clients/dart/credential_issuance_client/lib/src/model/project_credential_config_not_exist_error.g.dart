@@ -17,12 +17,12 @@ ProjectCredentialConfigNotExistErrorNameEnum
     case 'projectCredentialConfigNotExistError':
       return _$projectCredentialConfigNotExistErrorNameEnum_projectCredentialConfigNotExistError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ProjectCredentialConfigNotExistErrorNameEnum>
-    _$projectCredentialConfigNotExistErrorNameEnumValues = new BuiltSet<
+    _$projectCredentialConfigNotExistErrorNameEnumValues = BuiltSet<
         ProjectCredentialConfigNotExistErrorNameEnum>(const <ProjectCredentialConfigNotExistErrorNameEnum>[
   _$projectCredentialConfigNotExistErrorNameEnum_projectCredentialConfigNotExistError,
 ]);
@@ -38,12 +38,12 @@ ProjectCredentialConfigNotExistErrorMessageEnum
     case 'credentialConfigIsNotAvailableForTheProject':
       return _$projectCredentialConfigNotExistErrorMessageEnum_credentialConfigIsNotAvailableForTheProject;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ProjectCredentialConfigNotExistErrorMessageEnum>
-    _$projectCredentialConfigNotExistErrorMessageEnumValues = new BuiltSet<
+    _$projectCredentialConfigNotExistErrorMessageEnumValues = BuiltSet<
         ProjectCredentialConfigNotExistErrorMessageEnum>(const <ProjectCredentialConfigNotExistErrorMessageEnum>[
   _$projectCredentialConfigNotExistErrorMessageEnum_credentialConfigIsNotAvailableForTheProject,
 ]);
@@ -59,26 +59,25 @@ ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum
     case 'number400':
       return _$projectCredentialConfigNotExistErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum>
-    _$projectCredentialConfigNotExistErrorHttpStatusCodeEnumValues =
-    new BuiltSet<
+    _$projectCredentialConfigNotExistErrorHttpStatusCodeEnumValues = BuiltSet<
         ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum>(const <ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum>[
   _$projectCredentialConfigNotExistErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<ProjectCredentialConfigNotExistErrorNameEnum>
     _$projectCredentialConfigNotExistErrorNameEnumSerializer =
-    new _$ProjectCredentialConfigNotExistErrorNameEnumSerializer();
+    _$ProjectCredentialConfigNotExistErrorNameEnumSerializer();
 Serializer<ProjectCredentialConfigNotExistErrorMessageEnum>
     _$projectCredentialConfigNotExistErrorMessageEnumSerializer =
-    new _$ProjectCredentialConfigNotExistErrorMessageEnumSerializer();
+    _$ProjectCredentialConfigNotExistErrorMessageEnumSerializer();
 Serializer<ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum>
     _$projectCredentialConfigNotExistErrorHttpStatusCodeEnumSerializer =
-    new _$ProjectCredentialConfigNotExistErrorHttpStatusCodeEnumSerializer();
+    _$ProjectCredentialConfigNotExistErrorHttpStatusCodeEnumSerializer();
 
 class _$ProjectCredentialConfigNotExistErrorNameEnumSerializer
     implements
@@ -195,8 +194,7 @@ class _$ProjectCredentialConfigNotExistError
   factory _$ProjectCredentialConfigNotExistError(
           [void Function(ProjectCredentialConfigNotExistErrorBuilder)?
               updates]) =>
-      (new ProjectCredentialConfigNotExistErrorBuilder()..update(updates))
-          ._build();
+      (ProjectCredentialConfigNotExistErrorBuilder()..update(updates))._build();
 
   _$ProjectCredentialConfigNotExistError._(
       {required this.name,
@@ -204,17 +202,7 @@ class _$ProjectCredentialConfigNotExistError
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ProjectCredentialConfigNotExistError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ProjectCredentialConfigNotExistError', 'message');
-    BuiltValueNullFieldError.checkNotNull(httpStatusCode,
-        r'ProjectCredentialConfigNotExistError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'ProjectCredentialConfigNotExistError', 'traceId');
-  }
-
+      : super._();
   @override
   ProjectCredentialConfigNotExistError rebuild(
           void Function(ProjectCredentialConfigNotExistErrorBuilder) updates) =>
@@ -222,7 +210,7 @@ class _$ProjectCredentialConfigNotExistError
 
   @override
   ProjectCredentialConfigNotExistErrorBuilder toBuilder() =>
-      new ProjectCredentialConfigNotExistErrorBuilder()..replace(this);
+      ProjectCredentialConfigNotExistErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -290,7 +278,7 @@ class ProjectCredentialConfigNotExistErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -313,7 +301,6 @@ class ProjectCredentialConfigNotExistErrorBuilder
 
   @override
   void replace(ProjectCredentialConfigNotExistError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProjectCredentialConfigNotExistError;
   }
 
@@ -330,7 +317,7 @@ class ProjectCredentialConfigNotExistErrorBuilder
     _$ProjectCredentialConfigNotExistError _$result;
     try {
       _$result = _$v ??
-          new _$ProjectCredentialConfigNotExistError._(
+          _$ProjectCredentialConfigNotExistError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'ProjectCredentialConfigNotExistError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -349,7 +336,7 @@ class ProjectCredentialConfigNotExistErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ProjectCredentialConfigNotExistError',
             _$failedField,
             e.toString());

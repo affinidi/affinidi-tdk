@@ -12,10 +12,9 @@ class _$UpdateConfigurationByIdOK extends UpdateConfigurationByIdOK {
 
   factory _$UpdateConfigurationByIdOK(
           [void Function(UpdateConfigurationByIdOKBuilder)? updates]) =>
-      (new UpdateConfigurationByIdOKBuilder()..update(updates))._build();
+      (UpdateConfigurationByIdOKBuilder()..update(updates))._build();
 
   _$UpdateConfigurationByIdOK._({this.updateConfigurationByIdOk}) : super._();
-
   @override
   UpdateConfigurationByIdOK rebuild(
           void Function(UpdateConfigurationByIdOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$UpdateConfigurationByIdOK extends UpdateConfigurationByIdOK {
 
   @override
   UpdateConfigurationByIdOKBuilder toBuilder() =>
-      new UpdateConfigurationByIdOKBuilder()..replace(this);
+      UpdateConfigurationByIdOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class UpdateConfigurationByIdOKBuilder
 
   @override
   void replace(UpdateConfigurationByIdOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateConfigurationByIdOK;
   }
 
@@ -87,7 +85,7 @@ class UpdateConfigurationByIdOKBuilder
 
   _$UpdateConfigurationByIdOK _build() {
     final _$result = _$v ??
-        new _$UpdateConfigurationByIdOK._(
+        _$UpdateConfigurationByIdOK._(
           updateConfigurationByIdOk: updateConfigurationByIdOk,
         );
     replace(_$result);

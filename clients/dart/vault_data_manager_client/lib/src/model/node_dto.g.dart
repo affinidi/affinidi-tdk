@@ -118,7 +118,7 @@ class _$$NodeDto extends $NodeDto {
   final String? metadata;
 
   factory _$$NodeDto([void Function($NodeDtoBuilder)? updates]) =>
-      (new $NodeDtoBuilder()..update(updates))._build();
+      ($NodeDtoBuilder()..update(updates))._build();
 
   _$$NodeDto._(
       {required this.nodeId,
@@ -142,30 +142,13 @@ class _$$NodeDto extends $NodeDto {
       this.consumedFileStorage,
       this.edekInfo,
       this.metadata})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(nodeId, r'$NodeDto', 'nodeId');
-    BuiltValueNullFieldError.checkNotNull(status, r'$NodeDto', 'status');
-    BuiltValueNullFieldError.checkNotNull(name, r'$NodeDto', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        consumerId, r'$NodeDto', 'consumerId');
-    BuiltValueNullFieldError.checkNotNull(
-        parentNodeId, r'$NodeDto', 'parentNodeId');
-    BuiltValueNullFieldError.checkNotNull(profileId, r'$NodeDto', 'profileId');
-    BuiltValueNullFieldError.checkNotNull(createdAt, r'$NodeDto', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedAt, r'$NodeDto', 'modifiedAt');
-    BuiltValueNullFieldError.checkNotNull(createdBy, r'$NodeDto', 'createdBy');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedBy, r'$NodeDto', 'modifiedBy');
-    BuiltValueNullFieldError.checkNotNull(type, r'$NodeDto', 'type');
-  }
-
+      : super._();
   @override
   $NodeDto rebuild(void Function($NodeDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  $NodeDtoBuilder toBuilder() => new $NodeDtoBuilder()..replace(this);
+  $NodeDtoBuilder toBuilder() => $NodeDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -339,7 +322,7 @@ class $NodeDtoBuilder
       _$this._consumedFileStorage = consumedFileStorage;
 
   EdekInfoBuilder? _edekInfo;
-  EdekInfoBuilder get edekInfo => _$this._edekInfo ??= new EdekInfoBuilder();
+  EdekInfoBuilder get edekInfo => _$this._edekInfo ??= EdekInfoBuilder();
   set edekInfo(covariant EdekInfoBuilder? edekInfo) =>
       _$this._edekInfo = edekInfo;
 
@@ -382,7 +365,6 @@ class $NodeDtoBuilder
 
   @override
   void replace(covariant $NodeDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$$NodeDto;
   }
 
@@ -398,7 +380,7 @@ class $NodeDtoBuilder
     _$$NodeDto _$result;
     try {
       _$result = _$v ??
-          new _$$NodeDto._(
+          _$$NodeDto._(
             nodeId: BuiltValueNullFieldError.checkNotNull(
                 nodeId, r'$NodeDto', 'nodeId'),
             status: BuiltValueNullFieldError.checkNotNull(
@@ -438,7 +420,7 @@ class $NodeDtoBuilder
         _$failedField = 'edekInfo';
         _edekInfo?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'$NodeDto', _$failedField, e.toString());
       }
       rethrow;

@@ -6,7 +6,7 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(ActionForbiddenError.serializer)
       ..add(ActionForbiddenErrorHttpStatusCodeEnum.serializer)
       ..add(ActionForbiddenErrorMessageEnum.serializer)
@@ -97,85 +97,85 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(WhoamiDto.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JsonWebKeyDto)]),
-          () => new ListBuilder<JsonWebKeyDto>())
+          () => ListBuilder<JsonWebKeyDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PolicyStatementDto)]),
-          () => new ListBuilder<PolicyStatementDto>())
+          () => ListBuilder<PolicyStatementDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ProjectDto)]),
-          () => new ListBuilder<ProjectDto>())
+          () => ListBuilder<ProjectDto>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(ProjectWithPolicyDto)]),
-          () => new ListBuilder<ProjectWithPolicyDto>())
+          () => ListBuilder<ProjectWithPolicyDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(RightsEnum)]),
-          () => new ListBuilder<RightsEnum>())
+          () => ListBuilder<RightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(RightsEnum)]),
-          () => new ListBuilder<RightsEnum>())
+          () => ListBuilder<RightsEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TokenDto)]),
-          () => new ListBuilder<TokenDto>())
+          () => ListBuilder<TokenDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(UserDto)]),
-          () => new ListBuilder<UserDto>()))
+          () => ListBuilder<UserDto>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -18,22 +18,14 @@ class _$StartIssuanceResponse extends StartIssuanceResponse {
 
   factory _$StartIssuanceResponse(
           [void Function(StartIssuanceResponseBuilder)? updates]) =>
-      (new StartIssuanceResponseBuilder()..update(updates))._build();
+      (StartIssuanceResponseBuilder()..update(updates))._build();
 
   _$StartIssuanceResponse._(
       {required this.credentialOfferUri,
       this.txCode,
       required this.issuanceId,
       required this.expiresIn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        credentialOfferUri, r'StartIssuanceResponse', 'credentialOfferUri');
-    BuiltValueNullFieldError.checkNotNull(
-        issuanceId, r'StartIssuanceResponse', 'issuanceId');
-    BuiltValueNullFieldError.checkNotNull(
-        expiresIn, r'StartIssuanceResponse', 'expiresIn');
-  }
-
+      : super._();
   @override
   StartIssuanceResponse rebuild(
           void Function(StartIssuanceResponseBuilder) updates) =>
@@ -41,7 +33,7 @@ class _$StartIssuanceResponse extends StartIssuanceResponse {
 
   @override
   StartIssuanceResponseBuilder toBuilder() =>
-      new StartIssuanceResponseBuilder()..replace(this);
+      StartIssuanceResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -114,7 +106,6 @@ class StartIssuanceResponseBuilder
 
   @override
   void replace(StartIssuanceResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StartIssuanceResponse;
   }
 
@@ -128,7 +119,7 @@ class StartIssuanceResponseBuilder
 
   _$StartIssuanceResponse _build() {
     final _$result = _$v ??
-        new _$StartIssuanceResponse._(
+        _$StartIssuanceResponse._(
           credentialOfferUri: BuiltValueNullFieldError.checkNotNull(
               credentialOfferUri,
               r'StartIssuanceResponse',

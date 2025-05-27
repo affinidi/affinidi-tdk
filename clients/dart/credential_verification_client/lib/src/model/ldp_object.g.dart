@@ -11,18 +11,15 @@ class _$LdpObject extends LdpObject {
   final BuiltList<String> proofType;
 
   factory _$LdpObject([void Function(LdpObjectBuilder)? updates]) =>
-      (new LdpObjectBuilder()..update(updates))._build();
+      (LdpObjectBuilder()..update(updates))._build();
 
-  _$LdpObject._({required this.proofType}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(proofType, r'LdpObject', 'proofType');
-  }
-
+  _$LdpObject._({required this.proofType}) : super._();
   @override
   LdpObject rebuild(void Function(LdpObjectBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LdpObjectBuilder toBuilder() => new LdpObjectBuilder()..replace(this);
+  LdpObjectBuilder toBuilder() => LdpObjectBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -51,7 +48,7 @@ class LdpObjectBuilder implements Builder<LdpObject, LdpObjectBuilder> {
 
   ListBuilder<String>? _proofType;
   ListBuilder<String> get proofType =>
-      _$this._proofType ??= new ListBuilder<String>();
+      _$this._proofType ??= ListBuilder<String>();
   set proofType(ListBuilder<String>? proofType) =>
       _$this._proofType = proofType;
 
@@ -70,7 +67,6 @@ class LdpObjectBuilder implements Builder<LdpObject, LdpObjectBuilder> {
 
   @override
   void replace(LdpObject other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LdpObject;
   }
 
@@ -86,7 +82,7 @@ class LdpObjectBuilder implements Builder<LdpObject, LdpObjectBuilder> {
     _$LdpObject _$result;
     try {
       _$result = _$v ??
-          new _$LdpObject._(
+          _$LdpObject._(
             proofType: proofType.build(),
           );
     } catch (_) {
@@ -95,7 +91,7 @@ class LdpObjectBuilder implements Builder<LdpObject, LdpObjectBuilder> {
         _$failedField = 'proofType';
         proofType.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'LdpObject', _$failedField, e.toString());
       }
       rethrow;

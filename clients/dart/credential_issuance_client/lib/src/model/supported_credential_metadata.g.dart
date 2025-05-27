@@ -12,10 +12,9 @@ class _$SupportedCredentialMetadata extends SupportedCredentialMetadata {
 
   factory _$SupportedCredentialMetadata(
           [void Function(SupportedCredentialMetadataBuilder)? updates]) =>
-      (new SupportedCredentialMetadataBuilder()..update(updates))._build();
+      (SupportedCredentialMetadataBuilder()..update(updates))._build();
 
   _$SupportedCredentialMetadata._({this.display}) : super._();
-
   @override
   SupportedCredentialMetadata rebuild(
           void Function(SupportedCredentialMetadataBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$SupportedCredentialMetadata extends SupportedCredentialMetadata {
 
   @override
   SupportedCredentialMetadataBuilder toBuilder() =>
-      new SupportedCredentialMetadataBuilder()..replace(this);
+      SupportedCredentialMetadataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -56,7 +55,7 @@ class SupportedCredentialMetadataBuilder
   ListBuilder<SupportedCredentialMetadataDisplayInner>? _display;
   ListBuilder<SupportedCredentialMetadataDisplayInner> get display =>
       _$this._display ??=
-          new ListBuilder<SupportedCredentialMetadataDisplayInner>();
+          ListBuilder<SupportedCredentialMetadataDisplayInner>();
   set display(ListBuilder<SupportedCredentialMetadataDisplayInner>? display) =>
       _$this._display = display;
 
@@ -75,7 +74,6 @@ class SupportedCredentialMetadataBuilder
 
   @override
   void replace(SupportedCredentialMetadata other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SupportedCredentialMetadata;
   }
 
@@ -91,7 +89,7 @@ class SupportedCredentialMetadataBuilder
     _$SupportedCredentialMetadata _$result;
     try {
       _$result = _$v ??
-          new _$SupportedCredentialMetadata._(
+          _$SupportedCredentialMetadata._(
             display: _display?.build(),
           );
     } catch (_) {
@@ -100,7 +98,7 @@ class SupportedCredentialMetadataBuilder
         _$failedField = 'display';
         _display?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SupportedCredentialMetadata', _$failedField, e.toString());
       }
       rethrow;

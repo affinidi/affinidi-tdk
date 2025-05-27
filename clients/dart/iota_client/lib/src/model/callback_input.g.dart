@@ -21,7 +21,7 @@ class _$CallbackInput extends CallbackInput {
   final bool? onboarded;
 
   factory _$CallbackInput([void Function(CallbackInputBuilder)? updates]) =>
-      (new CallbackInputBuilder()..update(updates))._build();
+      (CallbackInputBuilder()..update(updates))._build();
 
   _$CallbackInput._(
       {required this.state,
@@ -30,16 +30,13 @@ class _$CallbackInput extends CallbackInput {
       this.error,
       this.errorDescription,
       this.onboarded})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(state, r'CallbackInput', 'state');
-  }
-
+      : super._();
   @override
   CallbackInput rebuild(void Function(CallbackInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CallbackInputBuilder toBuilder() => new CallbackInputBuilder()..replace(this);
+  CallbackInputBuilder toBuilder() => CallbackInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -129,7 +126,6 @@ class CallbackInputBuilder
 
   @override
   void replace(CallbackInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CallbackInput;
   }
 
@@ -143,7 +139,7 @@ class CallbackInputBuilder
 
   _$CallbackInput _build() {
     final _$result = _$v ??
-        new _$CallbackInput._(
+        _$CallbackInput._(
           state: BuiltValueNullFieldError.checkNotNull(
               state, r'CallbackInput', 'state'),
           presentationSubmission: presentationSubmission,

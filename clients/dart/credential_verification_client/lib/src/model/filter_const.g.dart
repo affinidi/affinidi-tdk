@@ -11,18 +11,15 @@ class _$FilterConst extends FilterConst {
   final OneOf oneOf;
 
   factory _$FilterConst([void Function(FilterConstBuilder)? updates]) =>
-      (new FilterConstBuilder()..update(updates))._build();
+      (FilterConstBuilder()..update(updates))._build();
 
-  _$FilterConst._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(oneOf, r'FilterConst', 'oneOf');
-  }
-
+  _$FilterConst._({required this.oneOf}) : super._();
   @override
   FilterConst rebuild(void Function(FilterConstBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FilterConstBuilder toBuilder() => new FilterConstBuilder()..replace(this);
+  FilterConstBuilder toBuilder() => FilterConstBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,7 +64,6 @@ class FilterConstBuilder implements Builder<FilterConst, FilterConstBuilder> {
 
   @override
   void replace(FilterConst other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$FilterConst;
   }
 
@@ -81,7 +77,7 @@ class FilterConstBuilder implements Builder<FilterConst, FilterConstBuilder> {
 
   _$FilterConst _build() {
     final _$result = _$v ??
-        new _$FilterConst._(
+        _$FilterConst._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'FilterConst', 'oneOf'),
         );

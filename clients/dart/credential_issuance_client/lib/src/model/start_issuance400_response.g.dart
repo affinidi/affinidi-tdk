@@ -16,12 +16,12 @@ StartIssuance400ResponseNameEnum _$startIssuance400ResponseNameEnumValueOf(
     case 'missingHolderDidError':
       return _$startIssuance400ResponseNameEnum_missingHolderDidError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<StartIssuance400ResponseNameEnum>
-    _$startIssuance400ResponseNameEnumValues = new BuiltSet<
+    _$startIssuance400ResponseNameEnumValues = BuiltSet<
         StartIssuance400ResponseNameEnum>(const <StartIssuance400ResponseNameEnum>[
   _$startIssuance400ResponseNameEnum_missingHolderDidError,
 ]);
@@ -37,12 +37,12 @@ StartIssuance400ResponseMessageEnum
     case 'holderDIDIsRequiredInThisClaimMode':
       return _$startIssuance400ResponseMessageEnum_holderDIDIsRequiredInThisClaimMode;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<StartIssuance400ResponseMessageEnum>
-    _$startIssuance400ResponseMessageEnumValues = new BuiltSet<
+    _$startIssuance400ResponseMessageEnumValues = BuiltSet<
         StartIssuance400ResponseMessageEnum>(const <StartIssuance400ResponseMessageEnum>[
   _$startIssuance400ResponseMessageEnum_holderDIDIsRequiredInThisClaimMode,
 ]);
@@ -57,25 +57,25 @@ StartIssuance400ResponseHttpStatusCodeEnum
     case 'number400':
       return _$startIssuance400ResponseHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<StartIssuance400ResponseHttpStatusCodeEnum>
-    _$startIssuance400ResponseHttpStatusCodeEnumValues = new BuiltSet<
+    _$startIssuance400ResponseHttpStatusCodeEnumValues = BuiltSet<
         StartIssuance400ResponseHttpStatusCodeEnum>(const <StartIssuance400ResponseHttpStatusCodeEnum>[
   _$startIssuance400ResponseHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<StartIssuance400ResponseNameEnum>
     _$startIssuance400ResponseNameEnumSerializer =
-    new _$StartIssuance400ResponseNameEnumSerializer();
+    _$StartIssuance400ResponseNameEnumSerializer();
 Serializer<StartIssuance400ResponseMessageEnum>
     _$startIssuance400ResponseMessageEnumSerializer =
-    new _$StartIssuance400ResponseMessageEnumSerializer();
+    _$StartIssuance400ResponseMessageEnumSerializer();
 Serializer<StartIssuance400ResponseHttpStatusCodeEnum>
     _$startIssuance400ResponseHttpStatusCodeEnumSerializer =
-    new _$StartIssuance400ResponseHttpStatusCodeEnumSerializer();
+    _$StartIssuance400ResponseHttpStatusCodeEnumSerializer();
 
 class _$StartIssuance400ResponseNameEnumSerializer
     implements PrimitiveSerializer<StartIssuance400ResponseNameEnum> {
@@ -173,13 +173,9 @@ class _$StartIssuance400Response extends StartIssuance400Response {
 
   factory _$StartIssuance400Response(
           [void Function(StartIssuance400ResponseBuilder)? updates]) =>
-      (new StartIssuance400ResponseBuilder()..update(updates))._build();
+      (StartIssuance400ResponseBuilder()..update(updates))._build();
 
-  _$StartIssuance400Response._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'StartIssuance400Response', 'oneOf');
-  }
-
+  _$StartIssuance400Response._({required this.oneOf}) : super._();
   @override
   StartIssuance400Response rebuild(
           void Function(StartIssuance400ResponseBuilder) updates) =>
@@ -187,7 +183,7 @@ class _$StartIssuance400Response extends StartIssuance400Response {
 
   @override
   StartIssuance400ResponseBuilder toBuilder() =>
-      new StartIssuance400ResponseBuilder()..replace(this);
+      StartIssuance400ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -235,7 +231,6 @@ class StartIssuance400ResponseBuilder
 
   @override
   void replace(StartIssuance400Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StartIssuance400Response;
   }
 
@@ -249,7 +244,7 @@ class StartIssuance400ResponseBuilder
 
   _$StartIssuance400Response _build() {
     final _$result = _$v ??
-        new _$StartIssuance400Response._(
+        _$StartIssuance400Response._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'StartIssuance400Response', 'oneOf'),
         );

@@ -16,12 +16,12 @@ ResourceLimitExceededErrorNameEnum _$resourceLimitExceededErrorNameEnumValueOf(
     case 'resourceLimitExceededError':
       return _$resourceLimitExceededErrorNameEnum_resourceLimitExceededError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ResourceLimitExceededErrorNameEnum>
-    _$resourceLimitExceededErrorNameEnumValues = new BuiltSet<
+    _$resourceLimitExceededErrorNameEnumValues = BuiltSet<
         ResourceLimitExceededErrorNameEnum>(const <ResourceLimitExceededErrorNameEnum>[
   _$resourceLimitExceededErrorNameEnum_resourceLimitExceededError,
 ]);
@@ -37,12 +37,12 @@ ResourceLimitExceededErrorMessageEnum
     case 'resourceLimitExceededColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod':
       return _$resourceLimitExceededErrorMessageEnum_resourceLimitExceededColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ResourceLimitExceededErrorMessageEnum>
-    _$resourceLimitExceededErrorMessageEnumValues = new BuiltSet<
+    _$resourceLimitExceededErrorMessageEnumValues = BuiltSet<
         ResourceLimitExceededErrorMessageEnum>(const <ResourceLimitExceededErrorMessageEnum>[
   _$resourceLimitExceededErrorMessageEnum_resourceLimitExceededColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod,
 ]);
@@ -57,25 +57,25 @@ ResourceLimitExceededErrorHttpStatusCodeEnum
     case 'number422':
       return _$resourceLimitExceededErrorHttpStatusCodeEnum_number422;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ResourceLimitExceededErrorHttpStatusCodeEnum>
-    _$resourceLimitExceededErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$resourceLimitExceededErrorHttpStatusCodeEnumValues = BuiltSet<
         ResourceLimitExceededErrorHttpStatusCodeEnum>(const <ResourceLimitExceededErrorHttpStatusCodeEnum>[
   _$resourceLimitExceededErrorHttpStatusCodeEnum_number422,
 ]);
 
 Serializer<ResourceLimitExceededErrorNameEnum>
     _$resourceLimitExceededErrorNameEnumSerializer =
-    new _$ResourceLimitExceededErrorNameEnumSerializer();
+    _$ResourceLimitExceededErrorNameEnumSerializer();
 Serializer<ResourceLimitExceededErrorMessageEnum>
     _$resourceLimitExceededErrorMessageEnumSerializer =
-    new _$ResourceLimitExceededErrorMessageEnumSerializer();
+    _$ResourceLimitExceededErrorMessageEnumSerializer();
 Serializer<ResourceLimitExceededErrorHttpStatusCodeEnum>
     _$resourceLimitExceededErrorHttpStatusCodeEnumSerializer =
-    new _$ResourceLimitExceededErrorHttpStatusCodeEnumSerializer();
+    _$ResourceLimitExceededErrorHttpStatusCodeEnumSerializer();
 
 class _$ResourceLimitExceededErrorNameEnumSerializer
     implements PrimitiveSerializer<ResourceLimitExceededErrorNameEnum> {
@@ -182,7 +182,7 @@ class _$ResourceLimitExceededError extends ResourceLimitExceededError {
 
   factory _$ResourceLimitExceededError(
           [void Function(ResourceLimitExceededErrorBuilder)? updates]) =>
-      (new ResourceLimitExceededErrorBuilder()..update(updates))._build();
+      (ResourceLimitExceededErrorBuilder()..update(updates))._build();
 
   _$ResourceLimitExceededError._(
       {required this.name,
@@ -190,17 +190,7 @@ class _$ResourceLimitExceededError extends ResourceLimitExceededError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ResourceLimitExceededError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ResourceLimitExceededError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'ResourceLimitExceededError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'ResourceLimitExceededError', 'traceId');
-  }
-
+      : super._();
   @override
   ResourceLimitExceededError rebuild(
           void Function(ResourceLimitExceededErrorBuilder) updates) =>
@@ -208,7 +198,7 @@ class _$ResourceLimitExceededError extends ResourceLimitExceededError {
 
   @override
   ResourceLimitExceededErrorBuilder toBuilder() =>
-      new ResourceLimitExceededErrorBuilder()..replace(this);
+      ResourceLimitExceededErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -272,7 +262,7 @@ class ResourceLimitExceededErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -295,7 +285,6 @@ class ResourceLimitExceededErrorBuilder
 
   @override
   void replace(ResourceLimitExceededError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ResourceLimitExceededError;
   }
 
@@ -311,7 +300,7 @@ class ResourceLimitExceededErrorBuilder
     _$ResourceLimitExceededError _$result;
     try {
       _$result = _$v ??
-          new _$ResourceLimitExceededError._(
+          _$ResourceLimitExceededError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'ResourceLimitExceededError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -330,7 +319,7 @@ class ResourceLimitExceededErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ResourceLimitExceededError', _$failedField, e.toString());
       }
       rethrow;

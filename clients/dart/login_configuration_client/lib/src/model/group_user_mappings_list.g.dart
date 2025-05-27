@@ -16,12 +16,11 @@ class _$GroupUserMappingsList extends GroupUserMappingsList {
 
   factory _$GroupUserMappingsList(
           [void Function(GroupUserMappingsListBuilder)? updates]) =>
-      (new GroupUserMappingsListBuilder()..update(updates))._build();
+      (GroupUserMappingsListBuilder()..update(updates))._build();
 
   _$GroupUserMappingsList._(
       {this.users, this.lastEvaluatedKey, this.totalUserCount})
       : super._();
-
   @override
   GroupUserMappingsList rebuild(
           void Function(GroupUserMappingsListBuilder) updates) =>
@@ -29,7 +28,7 @@ class _$GroupUserMappingsList extends GroupUserMappingsList {
 
   @override
   GroupUserMappingsListBuilder toBuilder() =>
-      new GroupUserMappingsListBuilder()..replace(this);
+      GroupUserMappingsListBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -66,7 +65,7 @@ class GroupUserMappingsListBuilder
 
   ListBuilder<GroupUserMappingDto>? _users;
   ListBuilder<GroupUserMappingDto> get users =>
-      _$this._users ??= new ListBuilder<GroupUserMappingDto>();
+      _$this._users ??= ListBuilder<GroupUserMappingDto>();
   set users(ListBuilder<GroupUserMappingDto>? users) => _$this._users = users;
 
   String? _lastEvaluatedKey;
@@ -96,7 +95,6 @@ class GroupUserMappingsListBuilder
 
   @override
   void replace(GroupUserMappingsList other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GroupUserMappingsList;
   }
 
@@ -112,7 +110,7 @@ class GroupUserMappingsListBuilder
     _$GroupUserMappingsList _$result;
     try {
       _$result = _$v ??
-          new _$GroupUserMappingsList._(
+          _$GroupUserMappingsList._(
             users: _users?.build(),
             lastEvaluatedKey: lastEvaluatedKey,
             totalUserCount: totalUserCount,
@@ -123,7 +121,7 @@ class GroupUserMappingsListBuilder
         _$failedField = 'users';
         _users?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GroupUserMappingsList', _$failedField, e.toString());
       }
       rethrow;

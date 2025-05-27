@@ -15,17 +15,15 @@ class _$UpdateNodeInput extends UpdateNodeInput {
   final String? metadata;
 
   factory _$UpdateNodeInput([void Function(UpdateNodeInputBuilder)? updates]) =>
-      (new UpdateNodeInputBuilder()..update(updates))._build();
+      (UpdateNodeInputBuilder()..update(updates))._build();
 
   _$UpdateNodeInput._({this.name, this.description, this.metadata}) : super._();
-
   @override
   UpdateNodeInput rebuild(void Function(UpdateNodeInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UpdateNodeInputBuilder toBuilder() =>
-      new UpdateNodeInputBuilder()..replace(this);
+  UpdateNodeInputBuilder toBuilder() => UpdateNodeInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -89,7 +87,6 @@ class UpdateNodeInputBuilder
 
   @override
   void replace(UpdateNodeInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateNodeInput;
   }
 
@@ -103,7 +100,7 @@ class UpdateNodeInputBuilder
 
   _$UpdateNodeInput _build() {
     final _$result = _$v ??
-        new _$UpdateNodeInput._(
+        _$UpdateNodeInput._(
           name: name,
           description: description,
           metadata: metadata,

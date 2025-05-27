@@ -11,17 +11,15 @@ class _$CorsMoveNodeOK extends CorsMoveNodeOK {
   final String? corsMoveNodeOk;
 
   factory _$CorsMoveNodeOK([void Function(CorsMoveNodeOKBuilder)? updates]) =>
-      (new CorsMoveNodeOKBuilder()..update(updates))._build();
+      (CorsMoveNodeOKBuilder()..update(updates))._build();
 
   _$CorsMoveNodeOK._({this.corsMoveNodeOk}) : super._();
-
   @override
   CorsMoveNodeOK rebuild(void Function(CorsMoveNodeOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CorsMoveNodeOKBuilder toBuilder() =>
-      new CorsMoveNodeOKBuilder()..replace(this);
+  CorsMoveNodeOKBuilder toBuilder() => CorsMoveNodeOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -69,7 +67,6 @@ class CorsMoveNodeOKBuilder
 
   @override
   void replace(CorsMoveNodeOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsMoveNodeOK;
   }
 
@@ -83,7 +80,7 @@ class CorsMoveNodeOKBuilder
 
   _$CorsMoveNodeOK _build() {
     final _$result = _$v ??
-        new _$CorsMoveNodeOK._(
+        _$CorsMoveNodeOK._(
           corsMoveNodeOk: corsMoveNodeOk,
         );
     replace(_$result);

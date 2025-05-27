@@ -12,13 +12,9 @@ class _$CreateProjectScopedTokenInput extends CreateProjectScopedTokenInput {
 
   factory _$CreateProjectScopedTokenInput(
           [void Function(CreateProjectScopedTokenInputBuilder)? updates]) =>
-      (new CreateProjectScopedTokenInputBuilder()..update(updates))._build();
+      (CreateProjectScopedTokenInputBuilder()..update(updates))._build();
 
-  _$CreateProjectScopedTokenInput._({required this.projectId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'CreateProjectScopedTokenInput', 'projectId');
-  }
-
+  _$CreateProjectScopedTokenInput._({required this.projectId}) : super._();
   @override
   CreateProjectScopedTokenInput rebuild(
           void Function(CreateProjectScopedTokenInputBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$CreateProjectScopedTokenInput extends CreateProjectScopedTokenInput {
 
   @override
   CreateProjectScopedTokenInputBuilder toBuilder() =>
-      new CreateProjectScopedTokenInputBuilder()..replace(this);
+      CreateProjectScopedTokenInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +72,6 @@ class CreateProjectScopedTokenInputBuilder
 
   @override
   void replace(CreateProjectScopedTokenInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateProjectScopedTokenInput;
   }
 
@@ -90,7 +85,7 @@ class CreateProjectScopedTokenInputBuilder
 
   _$CreateProjectScopedTokenInput _build() {
     final _$result = _$v ??
-        new _$CreateProjectScopedTokenInput._(
+        _$CreateProjectScopedTokenInput._(
           projectId: BuiltValueNullFieldError.checkNotNull(
               projectId, r'CreateProjectScopedTokenInput', 'projectId'),
         );

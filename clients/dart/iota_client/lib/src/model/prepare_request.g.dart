@@ -19,7 +19,7 @@ class _$PrepareRequest extends PrepareRequest {
   final String? audience;
 
   factory _$PrepareRequest([void Function(PrepareRequestBuilder)? updates]) =>
-      (new PrepareRequestBuilder()..update(updates))._build();
+      (PrepareRequestBuilder()..update(updates))._build();
 
   _$PrepareRequest._(
       {required this.connectionClientId,
@@ -27,22 +27,13 @@ class _$PrepareRequest extends PrepareRequest {
       required this.correlationId,
       this.tokenMaxAge,
       this.audience})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        connectionClientId, r'PrepareRequest', 'connectionClientId');
-    BuiltValueNullFieldError.checkNotNull(
-        queryId, r'PrepareRequest', 'queryId');
-    BuiltValueNullFieldError.checkNotNull(
-        correlationId, r'PrepareRequest', 'correlationId');
-  }
-
+      : super._();
   @override
   PrepareRequest rebuild(void Function(PrepareRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PrepareRequestBuilder toBuilder() =>
-      new PrepareRequestBuilder()..replace(this);
+  PrepareRequestBuilder toBuilder() => PrepareRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -124,7 +115,6 @@ class PrepareRequestBuilder
 
   @override
   void replace(PrepareRequest other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PrepareRequest;
   }
 
@@ -138,7 +128,7 @@ class PrepareRequestBuilder
 
   _$PrepareRequest _build() {
     final _$result = _$v ??
-        new _$PrepareRequest._(
+        _$PrepareRequest._(
           connectionClientId: BuiltValueNullFieldError.checkNotNull(
               connectionClientId, r'PrepareRequest', 'connectionClientId'),
           queryId: BuiltValueNullFieldError.checkNotNull(

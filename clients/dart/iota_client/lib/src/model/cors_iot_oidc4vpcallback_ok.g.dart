@@ -12,10 +12,9 @@ class _$CorsIotOidc4vpcallbackOK extends CorsIotOidc4vpcallbackOK {
 
   factory _$CorsIotOidc4vpcallbackOK(
           [void Function(CorsIotOidc4vpcallbackOKBuilder)? updates]) =>
-      (new CorsIotOidc4vpcallbackOKBuilder()..update(updates))._build();
+      (CorsIotOidc4vpcallbackOKBuilder()..update(updates))._build();
 
   _$CorsIotOidc4vpcallbackOK._({this.corsIotOidc4vpcallbackOk}) : super._();
-
   @override
   CorsIotOidc4vpcallbackOK rebuild(
           void Function(CorsIotOidc4vpcallbackOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsIotOidc4vpcallbackOK extends CorsIotOidc4vpcallbackOK {
 
   @override
   CorsIotOidc4vpcallbackOKBuilder toBuilder() =>
-      new CorsIotOidc4vpcallbackOKBuilder()..replace(this);
+      CorsIotOidc4vpcallbackOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class CorsIotOidc4vpcallbackOKBuilder
 
   @override
   void replace(CorsIotOidc4vpcallbackOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsIotOidc4vpcallbackOK;
   }
 
@@ -87,7 +85,7 @@ class CorsIotOidc4vpcallbackOKBuilder
 
   _$CorsIotOidc4vpcallbackOK _build() {
     final _$result = _$v ??
-        new _$CorsIotOidc4vpcallbackOK._(
+        _$CorsIotOidc4vpcallbackOK._(
           corsIotOidc4vpcallbackOk: corsIotOidc4vpcallbackOk,
         );
     replace(_$result);

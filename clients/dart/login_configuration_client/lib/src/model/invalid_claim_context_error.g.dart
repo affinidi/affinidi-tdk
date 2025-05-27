@@ -16,12 +16,12 @@ InvalidClaimContextErrorNameEnum _$invalidClaimContextErrorNameEnumValueOf(
     case 'invalidClaimContextError':
       return _$invalidClaimContextErrorNameEnum_invalidClaimContextError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidClaimContextErrorNameEnum>
-    _$invalidClaimContextErrorNameEnumValues = new BuiltSet<
+    _$invalidClaimContextErrorNameEnumValues = BuiltSet<
         InvalidClaimContextErrorNameEnum>(const <InvalidClaimContextErrorNameEnum>[
   _$invalidClaimContextErrorNameEnum_invalidClaimContextError,
 ]);
@@ -36,12 +36,12 @@ InvalidClaimContextErrorMessageEnum
     case 'invalidClaimContext':
       return _$invalidClaimContextErrorMessageEnum_invalidClaimContext;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidClaimContextErrorMessageEnum>
-    _$invalidClaimContextErrorMessageEnumValues = new BuiltSet<
+    _$invalidClaimContextErrorMessageEnumValues = BuiltSet<
         InvalidClaimContextErrorMessageEnum>(const <InvalidClaimContextErrorMessageEnum>[
   _$invalidClaimContextErrorMessageEnum_invalidClaimContext,
 ]);
@@ -56,25 +56,25 @@ InvalidClaimContextErrorHttpStatusCodeEnum
     case 'number400':
       return _$invalidClaimContextErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidClaimContextErrorHttpStatusCodeEnum>
-    _$invalidClaimContextErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$invalidClaimContextErrorHttpStatusCodeEnumValues = BuiltSet<
         InvalidClaimContextErrorHttpStatusCodeEnum>(const <InvalidClaimContextErrorHttpStatusCodeEnum>[
   _$invalidClaimContextErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidClaimContextErrorNameEnum>
     _$invalidClaimContextErrorNameEnumSerializer =
-    new _$InvalidClaimContextErrorNameEnumSerializer();
+    _$InvalidClaimContextErrorNameEnumSerializer();
 Serializer<InvalidClaimContextErrorMessageEnum>
     _$invalidClaimContextErrorMessageEnumSerializer =
-    new _$InvalidClaimContextErrorMessageEnumSerializer();
+    _$InvalidClaimContextErrorMessageEnumSerializer();
 Serializer<InvalidClaimContextErrorHttpStatusCodeEnum>
     _$invalidClaimContextErrorHttpStatusCodeEnumSerializer =
-    new _$InvalidClaimContextErrorHttpStatusCodeEnumSerializer();
+    _$InvalidClaimContextErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidClaimContextErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidClaimContextErrorNameEnum> {
@@ -178,7 +178,7 @@ class _$InvalidClaimContextError extends InvalidClaimContextError {
 
   factory _$InvalidClaimContextError(
           [void Function(InvalidClaimContextErrorBuilder)? updates]) =>
-      (new InvalidClaimContextErrorBuilder()..update(updates))._build();
+      (InvalidClaimContextErrorBuilder()..update(updates))._build();
 
   _$InvalidClaimContextError._(
       {required this.name,
@@ -186,17 +186,7 @@ class _$InvalidClaimContextError extends InvalidClaimContextError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'InvalidClaimContextError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'InvalidClaimContextError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'InvalidClaimContextError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'InvalidClaimContextError', 'traceId');
-  }
-
+      : super._();
   @override
   InvalidClaimContextError rebuild(
           void Function(InvalidClaimContextErrorBuilder) updates) =>
@@ -204,7 +194,7 @@ class _$InvalidClaimContextError extends InvalidClaimContextError {
 
   @override
   InvalidClaimContextErrorBuilder toBuilder() =>
-      new InvalidClaimContextErrorBuilder()..replace(this);
+      InvalidClaimContextErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -268,7 +258,7 @@ class InvalidClaimContextErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -291,7 +281,6 @@ class InvalidClaimContextErrorBuilder
 
   @override
   void replace(InvalidClaimContextError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidClaimContextError;
   }
 
@@ -307,7 +296,7 @@ class InvalidClaimContextErrorBuilder
     _$InvalidClaimContextError _$result;
     try {
       _$result = _$v ??
-          new _$InvalidClaimContextError._(
+          _$InvalidClaimContextError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidClaimContextError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -324,7 +313,7 @@ class InvalidClaimContextErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InvalidClaimContextError', _$failedField, e.toString());
       }
       rethrow;

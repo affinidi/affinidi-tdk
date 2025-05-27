@@ -16,21 +16,17 @@ class _$BlockedUsersInput extends BlockedUsersInput {
 
   factory _$BlockedUsersInput(
           [void Function(BlockedUsersInputBuilder)? updates]) =>
-      (new BlockedUsersInputBuilder()..update(updates))._build();
+      (BlockedUsersInputBuilder()..update(updates))._build();
 
   _$BlockedUsersInput._({this.name, this.description, required this.userIds})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        userIds, r'BlockedUsersInput', 'userIds');
-  }
-
+      : super._();
   @override
   BlockedUsersInput rebuild(void Function(BlockedUsersInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   BlockedUsersInputBuilder toBuilder() =>
-      new BlockedUsersInputBuilder()..replace(this);
+      BlockedUsersInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,8 +70,7 @@ class BlockedUsersInputBuilder
   set description(String? description) => _$this._description = description;
 
   ListBuilder<String>? _userIds;
-  ListBuilder<String> get userIds =>
-      _$this._userIds ??= new ListBuilder<String>();
+  ListBuilder<String> get userIds => _$this._userIds ??= ListBuilder<String>();
   set userIds(ListBuilder<String>? userIds) => _$this._userIds = userIds;
 
   BlockedUsersInputBuilder() {
@@ -95,7 +90,6 @@ class BlockedUsersInputBuilder
 
   @override
   void replace(BlockedUsersInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BlockedUsersInput;
   }
 
@@ -111,7 +105,7 @@ class BlockedUsersInputBuilder
     _$BlockedUsersInput _$result;
     try {
       _$result = _$v ??
-          new _$BlockedUsersInput._(
+          _$BlockedUsersInput._(
             name: name,
             description: description,
             userIds: userIds.build(),
@@ -122,7 +116,7 @@ class BlockedUsersInputBuilder
         _$failedField = 'userIds';
         userIds.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'BlockedUsersInput', _$failedField, e.toString());
       }
       rethrow;

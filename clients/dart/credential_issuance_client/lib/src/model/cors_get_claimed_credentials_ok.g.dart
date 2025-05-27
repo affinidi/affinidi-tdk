@@ -12,11 +12,10 @@ class _$CorsGetClaimedCredentialsOK extends CorsGetClaimedCredentialsOK {
 
   factory _$CorsGetClaimedCredentialsOK(
           [void Function(CorsGetClaimedCredentialsOKBuilder)? updates]) =>
-      (new CorsGetClaimedCredentialsOKBuilder()..update(updates))._build();
+      (CorsGetClaimedCredentialsOKBuilder()..update(updates))._build();
 
   _$CorsGetClaimedCredentialsOK._({this.corsGetClaimedCredentialsOk})
       : super._();
-
   @override
   CorsGetClaimedCredentialsOK rebuild(
           void Function(CorsGetClaimedCredentialsOKBuilder) updates) =>
@@ -24,7 +23,7 @@ class _$CorsGetClaimedCredentialsOK extends CorsGetClaimedCredentialsOK {
 
   @override
   CorsGetClaimedCredentialsOKBuilder toBuilder() =>
-      new CorsGetClaimedCredentialsOKBuilder()..replace(this);
+      CorsGetClaimedCredentialsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +75,6 @@ class CorsGetClaimedCredentialsOKBuilder
 
   @override
   void replace(CorsGetClaimedCredentialsOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsGetClaimedCredentialsOK;
   }
 
@@ -90,7 +88,7 @@ class CorsGetClaimedCredentialsOKBuilder
 
   _$CorsGetClaimedCredentialsOK _build() {
     final _$result = _$v ??
-        new _$CorsGetClaimedCredentialsOK._(
+        _$CorsGetClaimedCredentialsOK._(
           corsGetClaimedCredentialsOk: corsGetClaimedCredentialsOk,
         );
     replace(_$result);

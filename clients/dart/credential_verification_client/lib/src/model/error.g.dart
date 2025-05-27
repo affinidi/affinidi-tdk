@@ -21,7 +21,7 @@ class _$Error extends Error {
   final BuiltList<ErrorDetail>? details;
 
   factory _$Error([void Function(ErrorBuilder)? updates]) =>
-      (new ErrorBuilder()..update(updates))._build();
+      (ErrorBuilder()..update(updates))._build();
 
   _$Error._(
       {this.errorCode,
@@ -31,13 +31,12 @@ class _$Error extends Error {
       this.debugId,
       this.details})
       : super._();
-
   @override
   Error rebuild(void Function(ErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ErrorBuilder toBuilder() => new ErrorBuilder()..replace(this);
+  ErrorBuilder toBuilder() => ErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -102,7 +101,7 @@ class ErrorBuilder implements Builder<Error, ErrorBuilder> {
 
   ListBuilder<ErrorDetail>? _details;
   ListBuilder<ErrorDetail> get details =>
-      _$this._details ??= new ListBuilder<ErrorDetail>();
+      _$this._details ??= ListBuilder<ErrorDetail>();
   set details(ListBuilder<ErrorDetail>? details) => _$this._details = details;
 
   ErrorBuilder() {
@@ -125,7 +124,6 @@ class ErrorBuilder implements Builder<Error, ErrorBuilder> {
 
   @override
   void replace(Error other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Error;
   }
 
@@ -141,7 +139,7 @@ class ErrorBuilder implements Builder<Error, ErrorBuilder> {
     _$Error _$result;
     try {
       _$result = _$v ??
-          new _$Error._(
+          _$Error._(
             errorCode: errorCode,
             errorMessage: errorMessage,
             message: message,
@@ -155,8 +153,7 @@ class ErrorBuilder implements Builder<Error, ErrorBuilder> {
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Error', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Error', _$failedField, e.toString());
       }
       rethrow;
     }

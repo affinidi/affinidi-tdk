@@ -16,14 +16,10 @@ class _$AddUserToGroupInput extends AddUserToGroupInput {
 
   factory _$AddUserToGroupInput(
           [void Function(AddUserToGroupInputBuilder)? updates]) =>
-      (new AddUserToGroupInputBuilder()..update(updates))._build();
+      (AddUserToGroupInputBuilder()..update(updates))._build();
 
   _$AddUserToGroupInput._({this.name, this.description, required this.userId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        userId, r'AddUserToGroupInput', 'userId');
-  }
-
+      : super._();
   @override
   AddUserToGroupInput rebuild(
           void Function(AddUserToGroupInputBuilder) updates) =>
@@ -31,7 +27,7 @@ class _$AddUserToGroupInput extends AddUserToGroupInput {
 
   @override
   AddUserToGroupInputBuilder toBuilder() =>
-      new AddUserToGroupInputBuilder()..replace(this);
+      AddUserToGroupInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -95,7 +91,6 @@ class AddUserToGroupInputBuilder
 
   @override
   void replace(AddUserToGroupInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AddUserToGroupInput;
   }
 
@@ -109,7 +104,7 @@ class AddUserToGroupInputBuilder
 
   _$AddUserToGroupInput _build() {
     final _$result = _$v ??
-        new _$AddUserToGroupInput._(
+        _$AddUserToGroupInput._(
           name: name,
           description: description,
           userId: BuiltValueNullFieldError.checkNotNull(

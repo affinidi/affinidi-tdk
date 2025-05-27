@@ -12,10 +12,9 @@ class _$CorsBatchCredentialOK extends CorsBatchCredentialOK {
 
   factory _$CorsBatchCredentialOK(
           [void Function(CorsBatchCredentialOKBuilder)? updates]) =>
-      (new CorsBatchCredentialOKBuilder()..update(updates))._build();
+      (CorsBatchCredentialOKBuilder()..update(updates))._build();
 
   _$CorsBatchCredentialOK._({this.corsBatchCredentialOk}) : super._();
-
   @override
   CorsBatchCredentialOK rebuild(
           void Function(CorsBatchCredentialOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsBatchCredentialOK extends CorsBatchCredentialOK {
 
   @override
   CorsBatchCredentialOKBuilder toBuilder() =>
-      new CorsBatchCredentialOKBuilder()..replace(this);
+      CorsBatchCredentialOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,6 @@ class CorsBatchCredentialOKBuilder
 
   @override
   void replace(CorsBatchCredentialOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsBatchCredentialOK;
   }
 
@@ -86,7 +84,7 @@ class CorsBatchCredentialOKBuilder
 
   _$CorsBatchCredentialOK _build() {
     final _$result = _$v ??
-        new _$CorsBatchCredentialOK._(
+        _$CorsBatchCredentialOK._(
           corsBatchCredentialOk: corsBatchCredentialOk,
         );
     replace(_$result);

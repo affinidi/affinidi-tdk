@@ -17,15 +17,11 @@ class _$BatchCredentialResponse extends BatchCredentialResponse {
 
   factory _$BatchCredentialResponse(
           [void Function(BatchCredentialResponseBuilder)? updates]) =>
-      (new BatchCredentialResponseBuilder()..update(updates))._build();
+      (BatchCredentialResponseBuilder()..update(updates))._build();
 
   _$BatchCredentialResponse._(
       {required this.credentialResponses, this.cNonce, this.cNonceExpiresIn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        credentialResponses, r'BatchCredentialResponse', 'credentialResponses');
-  }
-
+      : super._();
   @override
   BatchCredentialResponse rebuild(
           void Function(BatchCredentialResponseBuilder) updates) =>
@@ -33,7 +29,7 @@ class _$BatchCredentialResponse extends BatchCredentialResponse {
 
   @override
   BatchCredentialResponseBuilder toBuilder() =>
-      new BatchCredentialResponseBuilder()..replace(this);
+      BatchCredentialResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +69,7 @@ class BatchCredentialResponseBuilder
       _credentialResponses;
   ListBuilder<BatchCredentialResponseCredentialResponsesInner>
       get credentialResponses => _$this._credentialResponses ??=
-          new ListBuilder<BatchCredentialResponseCredentialResponsesInner>();
+          ListBuilder<BatchCredentialResponseCredentialResponsesInner>();
   set credentialResponses(
           ListBuilder<BatchCredentialResponseCredentialResponsesInner>?
               credentialResponses) =>
@@ -105,7 +101,6 @@ class BatchCredentialResponseBuilder
 
   @override
   void replace(BatchCredentialResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BatchCredentialResponse;
   }
 
@@ -121,7 +116,7 @@ class BatchCredentialResponseBuilder
     _$BatchCredentialResponse _$result;
     try {
       _$result = _$v ??
-          new _$BatchCredentialResponse._(
+          _$BatchCredentialResponse._(
             credentialResponses: credentialResponses.build(),
             cNonce: cNonce,
             cNonceExpiresIn: cNonceExpiresIn,
@@ -132,7 +127,7 @@ class BatchCredentialResponseBuilder
         _$failedField = 'credentialResponses';
         credentialResponses.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'BatchCredentialResponse', _$failedField, e.toString());
       }
       rethrow;

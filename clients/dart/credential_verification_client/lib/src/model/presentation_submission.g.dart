@@ -16,20 +16,13 @@ class _$PresentationSubmission extends PresentationSubmission {
 
   factory _$PresentationSubmission(
           [void Function(PresentationSubmissionBuilder)? updates]) =>
-      (new PresentationSubmissionBuilder()..update(updates))._build();
+      (PresentationSubmissionBuilder()..update(updates))._build();
 
   _$PresentationSubmission._(
       {required this.id,
       required this.definitionId,
       required this.descriptorMap})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'PresentationSubmission', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        definitionId, r'PresentationSubmission', 'definitionId');
-    BuiltValueNullFieldError.checkNotNull(
-        descriptorMap, r'PresentationSubmission', 'descriptorMap');
-  }
-
+      : super._();
   @override
   PresentationSubmission rebuild(
           void Function(PresentationSubmissionBuilder) updates) =>
@@ -37,7 +30,7 @@ class _$PresentationSubmission extends PresentationSubmission {
 
   @override
   PresentationSubmissionBuilder toBuilder() =>
-      new PresentationSubmissionBuilder()..replace(this);
+      PresentationSubmissionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +75,7 @@ class PresentationSubmissionBuilder
 
   ListBuilder<Descriptor>? _descriptorMap;
   ListBuilder<Descriptor> get descriptorMap =>
-      _$this._descriptorMap ??= new ListBuilder<Descriptor>();
+      _$this._descriptorMap ??= ListBuilder<Descriptor>();
   set descriptorMap(ListBuilder<Descriptor>? descriptorMap) =>
       _$this._descriptorMap = descriptorMap;
 
@@ -103,7 +96,6 @@ class PresentationSubmissionBuilder
 
   @override
   void replace(PresentationSubmission other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PresentationSubmission;
   }
 
@@ -119,7 +111,7 @@ class PresentationSubmissionBuilder
     _$PresentationSubmission _$result;
     try {
       _$result = _$v ??
-          new _$PresentationSubmission._(
+          _$PresentationSubmission._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'PresentationSubmission', 'id'),
             definitionId: BuiltValueNullFieldError.checkNotNull(
@@ -132,7 +124,7 @@ class PresentationSubmissionBuilder
         _$failedField = 'descriptorMap';
         descriptorMap.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PresentationSubmission', _$failedField, e.toString());
       }
       rethrow;

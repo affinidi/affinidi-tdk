@@ -12,13 +12,9 @@ class _$AwsExchangeCredentials extends AwsExchangeCredentials {
 
   factory _$AwsExchangeCredentials(
           [void Function(AwsExchangeCredentialsBuilder)? updates]) =>
-      (new AwsExchangeCredentialsBuilder()..update(updates))._build();
+      (AwsExchangeCredentialsBuilder()..update(updates))._build();
 
-  _$AwsExchangeCredentials._({required this.assertion}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        assertion, r'AwsExchangeCredentials', 'assertion');
-  }
-
+  _$AwsExchangeCredentials._({required this.assertion}) : super._();
   @override
   AwsExchangeCredentials rebuild(
           void Function(AwsExchangeCredentialsBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$AwsExchangeCredentials extends AwsExchangeCredentials {
 
   @override
   AwsExchangeCredentialsBuilder toBuilder() =>
-      new AwsExchangeCredentialsBuilder()..replace(this);
+      AwsExchangeCredentialsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +69,6 @@ class AwsExchangeCredentialsBuilder
 
   @override
   void replace(AwsExchangeCredentials other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AwsExchangeCredentials;
   }
 
@@ -87,7 +82,7 @@ class AwsExchangeCredentialsBuilder
 
   _$AwsExchangeCredentials _build() {
     final _$result = _$v ??
-        new _$AwsExchangeCredentials._(
+        _$AwsExchangeCredentials._(
           assertion: BuiltValueNullFieldError.checkNotNull(
               assertion, r'AwsExchangeCredentials', 'assertion'),
         );
