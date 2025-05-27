@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:ssi/ssi.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 void main() {
   late final ConsumerAuthProvider providerWithClient;

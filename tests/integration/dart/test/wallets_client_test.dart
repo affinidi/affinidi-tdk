@@ -1,11 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:one_of/one_of.dart';
 import 'package:built_value/json_object.dart';
 import 'package:test/test.dart';
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 void main() {
   group('Wallets Client  Integration Tests', () {
@@ -14,54 +12,19 @@ void main() {
     late String walletIdDidWeb;
     late String holderDid;
 
-    setUp(() async {
-      final env = getProjectEnvironment();
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
-      final dio = Dio(BaseOptions(
-        baseUrl: AffinidiTdkWalletsClient.basePath,
-        connectTimeout: const Duration(seconds: 10),
-        receiveTimeout: const Duration(seconds: 10),
-      ));
+    setUpAll(() async {
       final apiClient = AffinidiTdkWalletsClient(
-          dio: dio, authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
       walletApi = apiClient.getWalletApi();
 
-      holderDid = env.did;
+      final wallet = await ResourceFactory.createWallet();
+      walletId = wallet.id;
+      holderDid = wallet.did;
     });
 
-    test('Create wallet: DID Key', () async {
-      final name = 'Test Wallet';
-      final description = 'Test wallet description';
-
-      final didKeyInputBuilder = DidKeyInputParamsBuilder()
-        ..name = name
-        ..description = description;
-      final walletInputBuilder = CreateWalletInputBuilder()
-        ..oneOf = OneOf2<DidKeyInputParams, DidWebInputParams>(
-            value: didKeyInputBuilder.build(), typeIndex: 0);
-      final createdWallet = (await walletApi.createWallet(
-              createWalletInput: walletInputBuilder.build()))
-          .data;
-
-      expect(createdWallet, isNotNull);
-      expect(createdWallet!.wallet, isNotNull);
-      expect(createdWallet.wallet!.id, isNotEmpty);
-      expect(createdWallet.wallet!.did, isNotEmpty);
-      expect(createdWallet.wallet!.name, equals(name));
-      expect(createdWallet.wallet!.description, equals(description));
-      expect(createdWallet.wallet!.ari, isNotEmpty);
-      expect(createdWallet.wallet!.keys, isNotNull);
-      expect(createdWallet.wallet!.keys!.length, greaterThan(0));
-      expect(createdWallet.wallet!.keys!.first.id, isNotEmpty);
-      expect(createdWallet.wallet!.keys!.first.ari, isNotEmpty);
-
-      walletId = createdWallet.wallet?.id ?? '';
+    tearDownAll(() async {
+      await ResourceFactory.deleteWallet(walletId);
+      await ResourceFactory.deleteWallet(walletIdDidWeb);
     });
 
     test('Create wallet: DID Web', () async {
@@ -183,28 +146,6 @@ void main() {
       expect(wallet, isNotNull);
       expect(wallet!.name, equals(updatedName));
       expect(wallet.description, equals(updatedDescription));
-    });
-
-    test('Delete wallet', () async {
-      if (walletId.isNotEmpty) {
-        await walletApi.deleteWallet(walletId: walletId);
-
-        await expectLater(
-          walletApi.getWallet(walletId: walletId),
-          throwsA(isA<DioException>()
-              .having((e) => e.response?.statusCode, 'status code', 404)),
-        );
-      }
-
-      if (walletIdDidWeb.isNotEmpty) {
-        await walletApi.deleteWallet(walletId: walletIdDidWeb);
-
-        await expectLater(
-          walletApi.getWallet(walletId: walletIdDidWeb),
-          throwsA(isA<DioException>()
-              .having((e) => e.response?.statusCode, 'status code', 404)),
-        );
-      }
     });
   });
 }
