@@ -16,12 +16,11 @@ class _$FetchIOTAVPResponseOK extends FetchIOTAVPResponseOK {
 
   factory _$FetchIOTAVPResponseOK(
           [void Function(FetchIOTAVPResponseOKBuilder)? updates]) =>
-      (new FetchIOTAVPResponseOKBuilder()..update(updates))._build();
+      (FetchIOTAVPResponseOKBuilder()..update(updates))._build();
 
   _$FetchIOTAVPResponseOK._(
       {this.correlationId, this.presentationSubmission, this.vpToken})
       : super._();
-
   @override
   FetchIOTAVPResponseOK rebuild(
           void Function(FetchIOTAVPResponseOKBuilder) updates) =>
@@ -29,7 +28,7 @@ class _$FetchIOTAVPResponseOK extends FetchIOTAVPResponseOK {
 
   @override
   FetchIOTAVPResponseOKBuilder toBuilder() =>
-      new FetchIOTAVPResponseOKBuilder()..replace(this);
+      FetchIOTAVPResponseOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -95,7 +94,6 @@ class FetchIOTAVPResponseOKBuilder
 
   @override
   void replace(FetchIOTAVPResponseOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$FetchIOTAVPResponseOK;
   }
 
@@ -109,7 +107,7 @@ class FetchIOTAVPResponseOKBuilder
 
   _$FetchIOTAVPResponseOK _build() {
     final _$result = _$v ??
-        new _$FetchIOTAVPResponseOK._(
+        _$FetchIOTAVPResponseOK._(
           correlationId: correlationId,
           presentationSubmission: presentationSubmission,
           vpToken: vpToken,

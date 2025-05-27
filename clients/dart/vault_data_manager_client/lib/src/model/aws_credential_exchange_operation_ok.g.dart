@@ -15,17 +15,11 @@ class _$AwsCredentialExchangeOperationOK
 
   factory _$AwsCredentialExchangeOperationOK(
           [void Function(AwsCredentialExchangeOperationOKBuilder)? updates]) =>
-      (new AwsCredentialExchangeOperationOKBuilder()..update(updates))._build();
+      (AwsCredentialExchangeOperationOKBuilder()..update(updates))._build();
 
   _$AwsCredentialExchangeOperationOK._(
       {required this.token, required this.identityId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        token, r'AwsCredentialExchangeOperationOK', 'token');
-    BuiltValueNullFieldError.checkNotNull(
-        identityId, r'AwsCredentialExchangeOperationOK', 'identityId');
-  }
-
+      : super._();
   @override
   AwsCredentialExchangeOperationOK rebuild(
           void Function(AwsCredentialExchangeOperationOKBuilder) updates) =>
@@ -33,7 +27,7 @@ class _$AwsCredentialExchangeOperationOK
 
   @override
   AwsCredentialExchangeOperationOKBuilder toBuilder() =>
-      new AwsCredentialExchangeOperationOKBuilder()..replace(this);
+      AwsCredentialExchangeOperationOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -91,7 +85,6 @@ class AwsCredentialExchangeOperationOKBuilder
 
   @override
   void replace(AwsCredentialExchangeOperationOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AwsCredentialExchangeOperationOK;
   }
 
@@ -105,7 +98,7 @@ class AwsCredentialExchangeOperationOKBuilder
 
   _$AwsCredentialExchangeOperationOK _build() {
     final _$result = _$v ??
-        new _$AwsCredentialExchangeOperationOK._(
+        _$AwsCredentialExchangeOperationOK._(
           token: BuiltValueNullFieldError.checkNotNull(
               token, r'AwsCredentialExchangeOperationOK', 'token'),
           identityId: BuiltValueNullFieldError.checkNotNull(

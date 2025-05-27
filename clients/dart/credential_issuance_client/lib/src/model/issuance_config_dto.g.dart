@@ -22,13 +22,13 @@ IssuanceConfigDtoFormatEnum _$issuanceConfigDtoFormatEnumValueOf(String name) {
     case 'sdJwtVcJsonLd':
       return _$issuanceConfigDtoFormatEnum_sdJwtVcJsonLd;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<IssuanceConfigDtoFormatEnum>
-    _$issuanceConfigDtoFormatEnumValues = new BuiltSet<
-        IssuanceConfigDtoFormatEnum>(const <IssuanceConfigDtoFormatEnum>[
+    _$issuanceConfigDtoFormatEnumValues =
+    BuiltSet<IssuanceConfigDtoFormatEnum>(const <IssuanceConfigDtoFormatEnum>[
   _$issuanceConfigDtoFormatEnum_ldpVc,
   _$issuanceConfigDtoFormatEnum_jwtVcJsonLd,
   _$issuanceConfigDtoFormatEnum_sdJwtVcJsonLd,
@@ -36,7 +36,7 @@ final BuiltSet<IssuanceConfigDtoFormatEnum>
 
 Serializer<IssuanceConfigDtoFormatEnum>
     _$issuanceConfigDtoFormatEnumSerializer =
-    new _$IssuanceConfigDtoFormatEnumSerializer();
+    _$IssuanceConfigDtoFormatEnumSerializer();
 
 class _$IssuanceConfigDtoFormatEnumSerializer
     implements PrimitiveSerializer<IssuanceConfigDtoFormatEnum> {
@@ -101,7 +101,7 @@ class _$IssuanceConfigDto extends IssuanceConfigDto {
 
   factory _$IssuanceConfigDto(
           [void Function(IssuanceConfigDtoBuilder)? updates]) =>
-      (new IssuanceConfigDtoBuilder()..update(updates))._build();
+      (IssuanceConfigDtoBuilder()..update(updates))._build();
 
   _$IssuanceConfigDto._(
       {this.id,
@@ -119,14 +119,13 @@ class _$IssuanceConfigDto extends IssuanceConfigDto {
       this.returnUris,
       this.webhook})
       : super._();
-
   @override
   IssuanceConfigDto rebuild(void Function(IssuanceConfigDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   IssuanceConfigDtoBuilder toBuilder() =>
-      new IssuanceConfigDtoBuilder()..replace(this);
+      IssuanceConfigDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -235,15 +234,14 @@ class IssuanceConfigDtoBuilder
 
   ListBuilder<CredentialSupportedObject>? _credentialSupported;
   ListBuilder<CredentialSupportedObject> get credentialSupported =>
-      _$this._credentialSupported ??=
-          new ListBuilder<CredentialSupportedObject>();
+      _$this._credentialSupported ??= ListBuilder<CredentialSupportedObject>();
   set credentialSupported(
           ListBuilder<CredentialSupportedObject>? credentialSupported) =>
       _$this._credentialSupported = credentialSupported;
 
   MapBuilder<String, JsonObject?>? _issuerMetadata;
   MapBuilder<String, JsonObject?> get issuerMetadata =>
-      _$this._issuerMetadata ??= new MapBuilder<String, JsonObject?>();
+      _$this._issuerMetadata ??= MapBuilder<String, JsonObject?>();
   set issuerMetadata(MapBuilder<String, JsonObject?>? issuerMetadata) =>
       _$this._issuerMetadata = issuerMetadata;
 
@@ -253,13 +251,13 @@ class IssuanceConfigDtoBuilder
 
   ListBuilder<String>? _returnUris;
   ListBuilder<String> get returnUris =>
-      _$this._returnUris ??= new ListBuilder<String>();
+      _$this._returnUris ??= ListBuilder<String>();
   set returnUris(ListBuilder<String>? returnUris) =>
       _$this._returnUris = returnUris;
 
   CisConfigurationWebhookSettingBuilder? _webhook;
   CisConfigurationWebhookSettingBuilder get webhook =>
-      _$this._webhook ??= new CisConfigurationWebhookSettingBuilder();
+      _$this._webhook ??= CisConfigurationWebhookSettingBuilder();
   set webhook(CisConfigurationWebhookSettingBuilder? webhook) =>
       _$this._webhook = webhook;
 
@@ -291,7 +289,6 @@ class IssuanceConfigDtoBuilder
 
   @override
   void replace(IssuanceConfigDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IssuanceConfigDto;
   }
 
@@ -307,7 +304,7 @@ class IssuanceConfigDtoBuilder
     _$IssuanceConfigDto _$result;
     try {
       _$result = _$v ??
-          new _$IssuanceConfigDto._(
+          _$IssuanceConfigDto._(
             id: id,
             name: name,
             description: description,
@@ -336,7 +333,7 @@ class IssuanceConfigDtoBuilder
         _$failedField = 'webhook';
         _webhook?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'IssuanceConfigDto', _$failedField, e.toString());
       }
       rethrow;

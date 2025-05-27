@@ -12,17 +12,16 @@ class _$DeleteAccountDto extends DeleteAccountDto {
 
   factory _$DeleteAccountDto(
           [void Function(DeleteAccountDtoBuilder)? updates]) =>
-      (new DeleteAccountDtoBuilder()..update(updates))._build();
+      (DeleteAccountDtoBuilder()..update(updates))._build();
 
   _$DeleteAccountDto._({this.accountIndex}) : super._();
-
   @override
   DeleteAccountDto rebuild(void Function(DeleteAccountDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   DeleteAccountDtoBuilder toBuilder() =>
-      new DeleteAccountDtoBuilder()..replace(this);
+      DeleteAccountDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -69,7 +68,6 @@ class DeleteAccountDtoBuilder
 
   @override
   void replace(DeleteAccountDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeleteAccountDto;
   }
 
@@ -83,7 +81,7 @@ class DeleteAccountDtoBuilder
 
   _$DeleteAccountDto _build() {
     final _$result = _$v ??
-        new _$DeleteAccountDto._(
+        _$DeleteAccountDto._(
           accountIndex: accountIndex,
         );
     replace(_$result);

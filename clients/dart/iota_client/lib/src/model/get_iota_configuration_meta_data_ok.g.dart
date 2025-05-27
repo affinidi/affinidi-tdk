@@ -16,19 +16,11 @@ class _$GetIotaConfigurationMetaDataOK extends GetIotaConfigurationMetaDataOK {
 
   factory _$GetIotaConfigurationMetaDataOK(
           [void Function(GetIotaConfigurationMetaDataOKBuilder)? updates]) =>
-      (new GetIotaConfigurationMetaDataOKBuilder()..update(updates))._build();
+      (GetIotaConfigurationMetaDataOKBuilder()..update(updates))._build();
 
   _$GetIotaConfigurationMetaDataOK._(
       {required this.name, required this.origin, required this.logo})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GetIotaConfigurationMetaDataOK', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        origin, r'GetIotaConfigurationMetaDataOK', 'origin');
-    BuiltValueNullFieldError.checkNotNull(
-        logo, r'GetIotaConfigurationMetaDataOK', 'logo');
-  }
-
+      : super._();
   @override
   GetIotaConfigurationMetaDataOK rebuild(
           void Function(GetIotaConfigurationMetaDataOKBuilder) updates) =>
@@ -36,7 +28,7 @@ class _$GetIotaConfigurationMetaDataOK extends GetIotaConfigurationMetaDataOK {
 
   @override
   GetIotaConfigurationMetaDataOKBuilder toBuilder() =>
-      new GetIotaConfigurationMetaDataOKBuilder()..replace(this);
+      GetIotaConfigurationMetaDataOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -102,7 +94,6 @@ class GetIotaConfigurationMetaDataOKBuilder
 
   @override
   void replace(GetIotaConfigurationMetaDataOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetIotaConfigurationMetaDataOK;
   }
 
@@ -116,7 +107,7 @@ class GetIotaConfigurationMetaDataOKBuilder
 
   _$GetIotaConfigurationMetaDataOK _build() {
     final _$result = _$v ??
-        new _$GetIotaConfigurationMetaDataOK._(
+        _$GetIotaConfigurationMetaDataOK._(
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'GetIotaConfigurationMetaDataOK', 'name'),
           origin: BuiltValueNullFieldError.checkNotNull(

@@ -5,7 +5,7 @@ README.md
 affinidi_tdk_vault_data_manager_client/__init__.py
 affinidi_tdk_vault_data_manager_client/api/__init__.py
 affinidi_tdk_vault_data_manager_client/api/accounts_api.py
-affinidi_tdk_vault_data_manager_client/api/config_api.py
+affinidi_tdk_vault_data_manager_client/api/configuration_api.py
 affinidi_tdk_vault_data_manager_client/api/files_api.py
 affinidi_tdk_vault_data_manager_client/api/nodes_api.py
 affinidi_tdk_vault_data_manager_client/api/profile_data_api.py
@@ -22,6 +22,7 @@ affinidi_tdk_vault_data_manager_client/models/cors_aws_credential_exchange_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_delete_account_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_delete_node_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_get_config_ok.py
+affinidi_tdk_vault_data_manager_client/models/cors_get_configuration_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_get_scanned_file_info_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_get_well_known_jwks_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_init_nodes_ok.py
@@ -75,12 +76,13 @@ affinidi_tdk_vault_data_manager_client/rest.py
 docs/AccountDto.md
 docs/AccountsApi.md
 docs/AwsCredentialExchangeOperationOK.md
-docs/ConfigApi.md
+docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CorsAwsCredentialExchangeOK.md
 docs/CorsDeleteAccountOK.md
 docs/CorsDeleteNodeOK.md
 docs/CorsGetConfigOK.md
+docs/CorsGetConfigurationOK.md
 docs/CorsGetScannedFileInfoOK.md
 docs/CorsGetWellKnownJwksOK.md
 docs/CorsInitNodesOK.md
@@ -143,12 +145,13 @@ test/__init__.py
 test/test_account_dto.py
 test/test_accounts_api.py
 test/test_aws_credential_exchange_operation_ok.py
-test/test_config_api.py
+test/test_configuration_api.py
 test/test_consumer_metadata_dto.py
 test/test_cors_aws_credential_exchange_ok.py
 test/test_cors_delete_account_ok.py
 test/test_cors_delete_node_ok.py
 test/test_cors_get_config_ok.py
+test/test_cors_get_configuration_ok.py
 test/test_cors_get_scanned_file_info_ok.py
 test/test_cors_get_well_known_jwks_ok.py
 test/test_cors_init_nodes_ok.py

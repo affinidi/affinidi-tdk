@@ -18,18 +18,18 @@ FieldPredicateEnum _$fieldPredicateEnumValueOf(String name) {
     case 'preferred':
       return _$fieldPredicateEnum_preferred;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<FieldPredicateEnum> _$fieldPredicateEnumValues =
-    new BuiltSet<FieldPredicateEnum>(const <FieldPredicateEnum>[
+    BuiltSet<FieldPredicateEnum>(const <FieldPredicateEnum>[
   _$fieldPredicateEnum_required_,
   _$fieldPredicateEnum_preferred,
 ]);
 
 Serializer<FieldPredicateEnum> _$fieldPredicateEnumSerializer =
-    new _$FieldPredicateEnumSerializer();
+    _$FieldPredicateEnumSerializer();
 
 class _$FieldPredicateEnumSerializer
     implements PrimitiveSerializer<FieldPredicateEnum> {
@@ -72,17 +72,16 @@ class _$Field extends Field {
   final FieldPredicateEnum? predicate;
 
   factory _$Field([void Function(FieldBuilder)? updates]) =>
-      (new FieldBuilder()..update(updates))._build();
+      (FieldBuilder()..update(updates))._build();
 
   _$Field._({this.id, this.path, this.purpose, this.filter, this.predicate})
       : super._();
-
   @override
   Field rebuild(void Function(FieldBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FieldBuilder toBuilder() => new FieldBuilder()..replace(this);
+  FieldBuilder toBuilder() => FieldBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -127,7 +126,7 @@ class FieldBuilder implements Builder<Field, FieldBuilder> {
   set id(String? id) => _$this._id = id;
 
   ListBuilder<String>? _path;
-  ListBuilder<String> get path => _$this._path ??= new ListBuilder<String>();
+  ListBuilder<String> get path => _$this._path ??= ListBuilder<String>();
   set path(ListBuilder<String>? path) => _$this._path = path;
 
   String? _purpose;
@@ -135,7 +134,7 @@ class FieldBuilder implements Builder<Field, FieldBuilder> {
   set purpose(String? purpose) => _$this._purpose = purpose;
 
   FilterBuilder? _filter;
-  FilterBuilder get filter => _$this._filter ??= new FilterBuilder();
+  FilterBuilder get filter => _$this._filter ??= FilterBuilder();
   set filter(FilterBuilder? filter) => _$this._filter = filter;
 
   FieldPredicateEnum? _predicate;
@@ -161,7 +160,6 @@ class FieldBuilder implements Builder<Field, FieldBuilder> {
 
   @override
   void replace(Field other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Field;
   }
 
@@ -177,7 +175,7 @@ class FieldBuilder implements Builder<Field, FieldBuilder> {
     _$Field _$result;
     try {
       _$result = _$v ??
-          new _$Field._(
+          _$Field._(
             id: id,
             path: _path?.build(),
             purpose: purpose,
@@ -193,8 +191,7 @@ class FieldBuilder implements Builder<Field, FieldBuilder> {
         _$failedField = 'filter';
         _filter?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Field', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(r'Field', _$failedField, e.toString());
       }
       rethrow;
     }

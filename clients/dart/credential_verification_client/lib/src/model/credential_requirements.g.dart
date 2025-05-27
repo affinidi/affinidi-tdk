@@ -14,14 +14,10 @@ class _$CredentialRequirements extends CredentialRequirements {
 
   factory _$CredentialRequirements(
           [void Function(CredentialRequirementsBuilder)? updates]) =>
-      (new CredentialRequirementsBuilder()..update(updates))._build();
+      (CredentialRequirementsBuilder()..update(updates))._build();
 
   _$CredentialRequirements._({required this.type, this.constraints})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        type, r'CredentialRequirements', 'type');
-  }
-
+      : super._();
   @override
   CredentialRequirements rebuild(
           void Function(CredentialRequirementsBuilder) updates) =>
@@ -29,7 +25,7 @@ class _$CredentialRequirements extends CredentialRequirements {
 
   @override
   CredentialRequirementsBuilder toBuilder() =>
-      new CredentialRequirementsBuilder()..replace(this);
+      CredentialRequirementsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -62,12 +58,12 @@ class CredentialRequirementsBuilder
   _$CredentialRequirements? _$v;
 
   ListBuilder<String>? _type;
-  ListBuilder<String> get type => _$this._type ??= new ListBuilder<String>();
+  ListBuilder<String> get type => _$this._type ??= ListBuilder<String>();
   set type(ListBuilder<String>? type) => _$this._type = type;
 
   CredentialRequirementsConstraintsBuilder? _constraints;
   CredentialRequirementsConstraintsBuilder get constraints =>
-      _$this._constraints ??= new CredentialRequirementsConstraintsBuilder();
+      _$this._constraints ??= CredentialRequirementsConstraintsBuilder();
   set constraints(CredentialRequirementsConstraintsBuilder? constraints) =>
       _$this._constraints = constraints;
 
@@ -87,7 +83,6 @@ class CredentialRequirementsBuilder
 
   @override
   void replace(CredentialRequirements other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialRequirements;
   }
 
@@ -103,7 +98,7 @@ class CredentialRequirementsBuilder
     _$CredentialRequirements _$result;
     try {
       _$result = _$v ??
-          new _$CredentialRequirements._(
+          _$CredentialRequirements._(
             type: type.build(),
             constraints: _constraints?.build(),
           );
@@ -115,7 +110,7 @@ class CredentialRequirementsBuilder
         _$failedField = 'constraints';
         _constraints?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CredentialRequirements', _$failedField, e.toString());
       }
       rethrow;

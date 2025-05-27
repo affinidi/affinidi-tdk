@@ -12,10 +12,9 @@ class _$UpdateProfileDataOK extends UpdateProfileDataOK {
 
   factory _$UpdateProfileDataOK(
           [void Function(UpdateProfileDataOKBuilder)? updates]) =>
-      (new UpdateProfileDataOKBuilder()..update(updates))._build();
+      (UpdateProfileDataOKBuilder()..update(updates))._build();
 
   _$UpdateProfileDataOK._({this.data}) : super._();
-
   @override
   UpdateProfileDataOK rebuild(
           void Function(UpdateProfileDataOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$UpdateProfileDataOK extends UpdateProfileDataOK {
 
   @override
   UpdateProfileDataOKBuilder toBuilder() =>
-      new UpdateProfileDataOKBuilder()..replace(this);
+      UpdateProfileDataOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -70,7 +69,6 @@ class UpdateProfileDataOKBuilder
 
   @override
   void replace(UpdateProfileDataOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateProfileDataOK;
   }
 
@@ -84,7 +82,7 @@ class UpdateProfileDataOKBuilder
 
   _$UpdateProfileDataOK _build() {
     final _$result = _$v ??
-        new _$UpdateProfileDataOK._(
+        _$UpdateProfileDataOK._(
           data: data,
         );
     replace(_$result);

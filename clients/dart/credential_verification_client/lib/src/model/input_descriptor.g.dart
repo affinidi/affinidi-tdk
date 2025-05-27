@@ -21,7 +21,7 @@ class _$InputDescriptor extends InputDescriptor {
   final BuiltList<String>? group;
 
   factory _$InputDescriptor([void Function(InputDescriptorBuilder)? updates]) =>
-      (new InputDescriptorBuilder()..update(updates))._build();
+      (InputDescriptorBuilder()..update(updates))._build();
 
   _$InputDescriptor._(
       {required this.id,
@@ -30,19 +30,13 @@ class _$InputDescriptor extends InputDescriptor {
       this.purpose,
       this.format,
       this.group})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'InputDescriptor', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        constraints, r'InputDescriptor', 'constraints');
-  }
-
+      : super._();
   @override
   InputDescriptor rebuild(void Function(InputDescriptorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  InputDescriptorBuilder toBuilder() =>
-      new InputDescriptorBuilder()..replace(this);
+  InputDescriptorBuilder toBuilder() => InputDescriptorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -92,7 +86,7 @@ class InputDescriptorBuilder
 
   ConstraintsBuilder? _constraints;
   ConstraintsBuilder get constraints =>
-      _$this._constraints ??= new ConstraintsBuilder();
+      _$this._constraints ??= ConstraintsBuilder();
   set constraints(ConstraintsBuilder? constraints) =>
       _$this._constraints = constraints;
 
@@ -105,11 +99,11 @@ class InputDescriptorBuilder
   set purpose(String? purpose) => _$this._purpose = purpose;
 
   FormatBuilder? _format;
-  FormatBuilder get format => _$this._format ??= new FormatBuilder();
+  FormatBuilder get format => _$this._format ??= FormatBuilder();
   set format(FormatBuilder? format) => _$this._format = format;
 
   ListBuilder<String>? _group;
-  ListBuilder<String> get group => _$this._group ??= new ListBuilder<String>();
+  ListBuilder<String> get group => _$this._group ??= ListBuilder<String>();
   set group(ListBuilder<String>? group) => _$this._group = group;
 
   InputDescriptorBuilder() {
@@ -132,7 +126,6 @@ class InputDescriptorBuilder
 
   @override
   void replace(InputDescriptor other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InputDescriptor;
   }
 
@@ -148,7 +141,7 @@ class InputDescriptorBuilder
     _$InputDescriptor _$result;
     try {
       _$result = _$v ??
-          new _$InputDescriptor._(
+          _$InputDescriptor._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'InputDescriptor', 'id'),
             constraints: constraints.build(),
@@ -168,7 +161,7 @@ class InputDescriptorBuilder
         _$failedField = 'group';
         _group?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InputDescriptor', _$failedField, e.toString());
       }
       rethrow;

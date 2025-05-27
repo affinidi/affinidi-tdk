@@ -16,12 +16,12 @@ SignCredential400ResponseNameEnum _$signCredential400ResponseNameEnumValueOf(
     case 'signingFailedError':
       return _$signCredential400ResponseNameEnum_signingFailedError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SignCredential400ResponseNameEnum>
-    _$signCredential400ResponseNameEnumValues = new BuiltSet<
+    _$signCredential400ResponseNameEnumValues = BuiltSet<
         SignCredential400ResponseNameEnum>(const <SignCredential400ResponseNameEnum>[
   _$signCredential400ResponseNameEnum_signingFailedError,
 ]);
@@ -36,12 +36,12 @@ SignCredential400ResponseMessageEnum
     case 'signingFailedPeriod':
       return _$signCredential400ResponseMessageEnum_signingFailedPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SignCredential400ResponseMessageEnum>
-    _$signCredential400ResponseMessageEnumValues = new BuiltSet<
+    _$signCredential400ResponseMessageEnumValues = BuiltSet<
         SignCredential400ResponseMessageEnum>(const <SignCredential400ResponseMessageEnum>[
   _$signCredential400ResponseMessageEnum_signingFailedPeriod,
 ]);
@@ -56,25 +56,25 @@ SignCredential400ResponseHttpStatusCodeEnum
     case 'number400':
       return _$signCredential400ResponseHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SignCredential400ResponseHttpStatusCodeEnum>
-    _$signCredential400ResponseHttpStatusCodeEnumValues = new BuiltSet<
+    _$signCredential400ResponseHttpStatusCodeEnumValues = BuiltSet<
         SignCredential400ResponseHttpStatusCodeEnum>(const <SignCredential400ResponseHttpStatusCodeEnum>[
   _$signCredential400ResponseHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<SignCredential400ResponseNameEnum>
     _$signCredential400ResponseNameEnumSerializer =
-    new _$SignCredential400ResponseNameEnumSerializer();
+    _$SignCredential400ResponseNameEnumSerializer();
 Serializer<SignCredential400ResponseMessageEnum>
     _$signCredential400ResponseMessageEnumSerializer =
-    new _$SignCredential400ResponseMessageEnumSerializer();
+    _$SignCredential400ResponseMessageEnumSerializer();
 Serializer<SignCredential400ResponseHttpStatusCodeEnum>
     _$signCredential400ResponseHttpStatusCodeEnumSerializer =
-    new _$SignCredential400ResponseHttpStatusCodeEnumSerializer();
+    _$SignCredential400ResponseHttpStatusCodeEnumSerializer();
 
 class _$SignCredential400ResponseNameEnumSerializer
     implements PrimitiveSerializer<SignCredential400ResponseNameEnum> {
@@ -171,13 +171,9 @@ class _$SignCredential400Response extends SignCredential400Response {
 
   factory _$SignCredential400Response(
           [void Function(SignCredential400ResponseBuilder)? updates]) =>
-      (new SignCredential400ResponseBuilder()..update(updates))._build();
+      (SignCredential400ResponseBuilder()..update(updates))._build();
 
-  _$SignCredential400Response._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'SignCredential400Response', 'oneOf');
-  }
-
+  _$SignCredential400Response._({required this.oneOf}) : super._();
   @override
   SignCredential400Response rebuild(
           void Function(SignCredential400ResponseBuilder) updates) =>
@@ -185,7 +181,7 @@ class _$SignCredential400Response extends SignCredential400Response {
 
   @override
   SignCredential400ResponseBuilder toBuilder() =>
-      new SignCredential400ResponseBuilder()..replace(this);
+      SignCredential400ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -233,7 +229,6 @@ class SignCredential400ResponseBuilder
 
   @override
   void replace(SignCredential400Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignCredential400Response;
   }
 
@@ -247,7 +242,7 @@ class SignCredential400ResponseBuilder
 
   _$SignCredential400Response _build() {
     final _$result = _$v ??
-        new _$SignCredential400Response._(
+        _$SignCredential400Response._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'SignCredential400Response', 'oneOf'),
         );

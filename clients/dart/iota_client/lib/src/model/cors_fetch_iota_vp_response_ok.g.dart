@@ -12,10 +12,9 @@ class _$CorsFetchIotaVpResponseOK extends CorsFetchIotaVpResponseOK {
 
   factory _$CorsFetchIotaVpResponseOK(
           [void Function(CorsFetchIotaVpResponseOKBuilder)? updates]) =>
-      (new CorsFetchIotaVpResponseOKBuilder()..update(updates))._build();
+      (CorsFetchIotaVpResponseOKBuilder()..update(updates))._build();
 
   _$CorsFetchIotaVpResponseOK._({this.corsFetchIotaVpResponseOk}) : super._();
-
   @override
   CorsFetchIotaVpResponseOK rebuild(
           void Function(CorsFetchIotaVpResponseOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsFetchIotaVpResponseOK extends CorsFetchIotaVpResponseOK {
 
   @override
   CorsFetchIotaVpResponseOKBuilder toBuilder() =>
-      new CorsFetchIotaVpResponseOKBuilder()..replace(this);
+      CorsFetchIotaVpResponseOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class CorsFetchIotaVpResponseOKBuilder
 
   @override
   void replace(CorsFetchIotaVpResponseOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsFetchIotaVpResponseOK;
   }
 
@@ -87,7 +85,7 @@ class CorsFetchIotaVpResponseOKBuilder
 
   _$CorsFetchIotaVpResponseOK _build() {
     final _$result = _$v ??
-        new _$CorsFetchIotaVpResponseOK._(
+        _$CorsFetchIotaVpResponseOK._(
           corsFetchIotaVpResponseOk: corsFetchIotaVpResponseOk,
         );
     replace(_$result);

@@ -12,10 +12,9 @@ class _$CorsStartFileScanOK extends CorsStartFileScanOK {
 
   factory _$CorsStartFileScanOK(
           [void Function(CorsStartFileScanOKBuilder)? updates]) =>
-      (new CorsStartFileScanOKBuilder()..update(updates))._build();
+      (CorsStartFileScanOKBuilder()..update(updates))._build();
 
   _$CorsStartFileScanOK._({this.corsStartFileScanOk}) : super._();
-
   @override
   CorsStartFileScanOK rebuild(
           void Function(CorsStartFileScanOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsStartFileScanOK extends CorsStartFileScanOK {
 
   @override
   CorsStartFileScanOKBuilder toBuilder() =>
-      new CorsStartFileScanOKBuilder()..replace(this);
+      CorsStartFileScanOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,6 @@ class CorsStartFileScanOKBuilder
 
   @override
   void replace(CorsStartFileScanOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsStartFileScanOK;
   }
 
@@ -86,7 +84,7 @@ class CorsStartFileScanOKBuilder
 
   _$CorsStartFileScanOK _build() {
     final _$result = _$v ??
-        new _$CorsStartFileScanOK._(
+        _$CorsStartFileScanOK._(
           corsStartFileScanOk: corsStartFileScanOk,
         );
     replace(_$result);

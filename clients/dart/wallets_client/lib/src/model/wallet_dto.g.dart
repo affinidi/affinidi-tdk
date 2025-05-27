@@ -27,7 +27,7 @@ class _$WalletDto extends WalletDto {
   final String? modifiedAt;
 
   factory _$WalletDto([void Function(WalletDtoBuilder)? updates]) =>
-      (new WalletDtoBuilder()..update(updates))._build();
+      (WalletDtoBuilder()..update(updates))._build();
 
   _$WalletDto._(
       {this.id,
@@ -40,13 +40,12 @@ class _$WalletDto extends WalletDto {
       this.createdAt,
       this.modifiedAt})
       : super._();
-
   @override
   WalletDto rebuild(void Function(WalletDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WalletDtoBuilder toBuilder() => new WalletDtoBuilder()..replace(this);
+  WalletDtoBuilder toBuilder() => WalletDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -124,7 +123,7 @@ class WalletDtoBuilder implements Builder<WalletDto, WalletDtoBuilder> {
 
   ListBuilder<WalletDtoKeysInner>? _keys;
   ListBuilder<WalletDtoKeysInner> get keys =>
-      _$this._keys ??= new ListBuilder<WalletDtoKeysInner>();
+      _$this._keys ??= ListBuilder<WalletDtoKeysInner>();
   set keys(ListBuilder<WalletDtoKeysInner>? keys) => _$this._keys = keys;
 
   String? _createdAt;
@@ -158,7 +157,6 @@ class WalletDtoBuilder implements Builder<WalletDto, WalletDtoBuilder> {
 
   @override
   void replace(WalletDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WalletDto;
   }
 
@@ -174,7 +172,7 @@ class WalletDtoBuilder implements Builder<WalletDto, WalletDtoBuilder> {
     _$WalletDto _$result;
     try {
       _$result = _$v ??
-          new _$WalletDto._(
+          _$WalletDto._(
             id: id,
             did: did,
             name: name,
@@ -191,7 +189,7 @@ class WalletDtoBuilder implements Builder<WalletDto, WalletDtoBuilder> {
         _$failedField = 'keys';
         _keys?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'WalletDto', _$failedField, e.toString());
       }
       rethrow;

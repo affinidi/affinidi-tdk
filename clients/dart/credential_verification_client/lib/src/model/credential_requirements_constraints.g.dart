@@ -13,14 +13,9 @@ class _$CredentialRequirementsConstraints
 
   factory _$CredentialRequirementsConstraints(
           [void Function(CredentialRequirementsConstraintsBuilder)? updates]) =>
-      (new CredentialRequirementsConstraintsBuilder()..update(updates))
-          ._build();
+      (CredentialRequirementsConstraintsBuilder()..update(updates))._build();
 
-  _$CredentialRequirementsConstraints._({required this.anyOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        anyOf, r'CredentialRequirementsConstraints', 'anyOf');
-  }
-
+  _$CredentialRequirementsConstraints._({required this.anyOf}) : super._();
   @override
   CredentialRequirementsConstraints rebuild(
           void Function(CredentialRequirementsConstraintsBuilder) updates) =>
@@ -28,7 +23,7 @@ class _$CredentialRequirementsConstraints
 
   @override
   CredentialRequirementsConstraintsBuilder toBuilder() =>
-      new CredentialRequirementsConstraintsBuilder()..replace(this);
+      CredentialRequirementsConstraintsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,7 +72,6 @@ class CredentialRequirementsConstraintsBuilder
 
   @override
   void replace(CredentialRequirementsConstraints other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialRequirementsConstraints;
   }
 
@@ -92,7 +86,7 @@ class CredentialRequirementsConstraintsBuilder
 
   _$CredentialRequirementsConstraints _build() {
     final _$result = _$v ??
-        new _$CredentialRequirementsConstraints._(
+        _$CredentialRequirementsConstraints._(
           anyOf: BuiltValueNullFieldError.checkNotNull(
               anyOf, r'CredentialRequirementsConstraints', 'anyOf'),
         );

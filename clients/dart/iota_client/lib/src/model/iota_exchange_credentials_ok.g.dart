@@ -14,17 +14,11 @@ class _$IotaExchangeCredentialsOK extends IotaExchangeCredentialsOK {
 
   factory _$IotaExchangeCredentialsOK(
           [void Function(IotaExchangeCredentialsOKBuilder)? updates]) =>
-      (new IotaExchangeCredentialsOKBuilder()..update(updates))._build();
+      (IotaExchangeCredentialsOKBuilder()..update(updates))._build();
 
   _$IotaExchangeCredentialsOK._(
       {required this.connectionClientId, required this.credentials})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        connectionClientId, r'IotaExchangeCredentialsOK', 'connectionClientId');
-    BuiltValueNullFieldError.checkNotNull(
-        credentials, r'IotaExchangeCredentialsOK', 'credentials');
-  }
-
+      : super._();
   @override
   IotaExchangeCredentialsOK rebuild(
           void Function(IotaExchangeCredentialsOKBuilder) updates) =>
@@ -32,7 +26,7 @@ class _$IotaExchangeCredentialsOK extends IotaExchangeCredentialsOK {
 
   @override
   IotaExchangeCredentialsOKBuilder toBuilder() =>
-      new IotaExchangeCredentialsOKBuilder()..replace(this);
+      IotaExchangeCredentialsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +66,7 @@ class IotaExchangeCredentialsOKBuilder
 
   IotaExchangeCredentialsOKCredentialsBuilder? _credentials;
   IotaExchangeCredentialsOKCredentialsBuilder get credentials =>
-      _$this._credentials ??= new IotaExchangeCredentialsOKCredentialsBuilder();
+      _$this._credentials ??= IotaExchangeCredentialsOKCredentialsBuilder();
   set credentials(IotaExchangeCredentialsOKCredentialsBuilder? credentials) =>
       _$this._credentials = credentials;
 
@@ -92,7 +86,6 @@ class IotaExchangeCredentialsOKBuilder
 
   @override
   void replace(IotaExchangeCredentialsOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IotaExchangeCredentialsOK;
   }
 
@@ -108,7 +101,7 @@ class IotaExchangeCredentialsOKBuilder
     _$IotaExchangeCredentialsOK _$result;
     try {
       _$result = _$v ??
-          new _$IotaExchangeCredentialsOK._(
+          _$IotaExchangeCredentialsOK._(
             connectionClientId: BuiltValueNullFieldError.checkNotNull(
                 connectionClientId,
                 r'IotaExchangeCredentialsOK',
@@ -121,7 +114,7 @@ class IotaExchangeCredentialsOKBuilder
         _$failedField = 'credentials';
         credentials.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'IotaExchangeCredentialsOK', _$failedField, e.toString());
       }
       rethrow;

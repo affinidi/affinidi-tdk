@@ -12,10 +12,9 @@ class _$SavePexQueriesUpdateInput extends SavePexQueriesUpdateInput {
 
   factory _$SavePexQueriesUpdateInput(
           [void Function(SavePexQueriesUpdateInputBuilder)? updates]) =>
-      (new SavePexQueriesUpdateInputBuilder()..update(updates))._build();
+      (SavePexQueriesUpdateInputBuilder()..update(updates))._build();
 
   _$SavePexQueriesUpdateInput._({this.queries}) : super._();
-
   @override
   SavePexQueriesUpdateInput rebuild(
           void Function(SavePexQueriesUpdateInputBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$SavePexQueriesUpdateInput extends SavePexQueriesUpdateInput {
 
   @override
   SavePexQueriesUpdateInputBuilder toBuilder() =>
-      new SavePexQueriesUpdateInputBuilder()..replace(this);
+      SavePexQueriesUpdateInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -54,8 +53,7 @@ class SavePexQueriesUpdateInputBuilder
 
   ListBuilder<SavePexQueriesUpdateInputQueriesInner>? _queries;
   ListBuilder<SavePexQueriesUpdateInputQueriesInner> get queries =>
-      _$this._queries ??=
-          new ListBuilder<SavePexQueriesUpdateInputQueriesInner>();
+      _$this._queries ??= ListBuilder<SavePexQueriesUpdateInputQueriesInner>();
   set queries(ListBuilder<SavePexQueriesUpdateInputQueriesInner>? queries) =>
       _$this._queries = queries;
 
@@ -74,7 +72,6 @@ class SavePexQueriesUpdateInputBuilder
 
   @override
   void replace(SavePexQueriesUpdateInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SavePexQueriesUpdateInput;
   }
 
@@ -90,7 +87,7 @@ class SavePexQueriesUpdateInputBuilder
     _$SavePexQueriesUpdateInput _$result;
     try {
       _$result = _$v ??
-          new _$SavePexQueriesUpdateInput._(
+          _$SavePexQueriesUpdateInput._(
             queries: _queries?.build(),
           );
     } catch (_) {
@@ -99,7 +96,7 @@ class SavePexQueriesUpdateInputBuilder
         _$failedField = 'queries';
         _queries?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SavePexQueriesUpdateInput', _$failedField, e.toString());
       }
       rethrow;

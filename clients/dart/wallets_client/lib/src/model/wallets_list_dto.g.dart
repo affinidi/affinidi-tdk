@@ -11,17 +11,15 @@ class _$WalletsListDto extends WalletsListDto {
   final BuiltList<WalletDto>? wallets;
 
   factory _$WalletsListDto([void Function(WalletsListDtoBuilder)? updates]) =>
-      (new WalletsListDtoBuilder()..update(updates))._build();
+      (WalletsListDtoBuilder()..update(updates))._build();
 
   _$WalletsListDto._({this.wallets}) : super._();
-
   @override
   WalletsListDto rebuild(void Function(WalletsListDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  WalletsListDtoBuilder toBuilder() =>
-      new WalletsListDtoBuilder()..replace(this);
+  WalletsListDtoBuilder toBuilder() => WalletsListDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -51,7 +49,7 @@ class WalletsListDtoBuilder
 
   ListBuilder<WalletDto>? _wallets;
   ListBuilder<WalletDto> get wallets =>
-      _$this._wallets ??= new ListBuilder<WalletDto>();
+      _$this._wallets ??= ListBuilder<WalletDto>();
   set wallets(ListBuilder<WalletDto>? wallets) => _$this._wallets = wallets;
 
   WalletsListDtoBuilder() {
@@ -69,7 +67,6 @@ class WalletsListDtoBuilder
 
   @override
   void replace(WalletsListDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WalletsListDto;
   }
 
@@ -85,7 +82,7 @@ class WalletsListDtoBuilder
     _$WalletsListDto _$result;
     try {
       _$result = _$v ??
-          new _$WalletsListDto._(
+          _$WalletsListDto._(
             wallets: _wallets?.build(),
           );
     } catch (_) {
@@ -94,7 +91,7 @@ class WalletsListDtoBuilder
         _$failedField = 'wallets';
         _wallets?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'WalletsListDto', _$failedField, e.toString());
       }
       rethrow;

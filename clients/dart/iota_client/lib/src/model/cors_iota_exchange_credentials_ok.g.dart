@@ -12,11 +12,10 @@ class _$CorsIotaExchangeCredentialsOK extends CorsIotaExchangeCredentialsOK {
 
   factory _$CorsIotaExchangeCredentialsOK(
           [void Function(CorsIotaExchangeCredentialsOKBuilder)? updates]) =>
-      (new CorsIotaExchangeCredentialsOKBuilder()..update(updates))._build();
+      (CorsIotaExchangeCredentialsOKBuilder()..update(updates))._build();
 
   _$CorsIotaExchangeCredentialsOK._({this.corsIotaExchangeCredentialsOk})
       : super._();
-
   @override
   CorsIotaExchangeCredentialsOK rebuild(
           void Function(CorsIotaExchangeCredentialsOKBuilder) updates) =>
@@ -24,7 +23,7 @@ class _$CorsIotaExchangeCredentialsOK extends CorsIotaExchangeCredentialsOK {
 
   @override
   CorsIotaExchangeCredentialsOKBuilder toBuilder() =>
-      new CorsIotaExchangeCredentialsOKBuilder()..replace(this);
+      CorsIotaExchangeCredentialsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +75,6 @@ class CorsIotaExchangeCredentialsOKBuilder
 
   @override
   void replace(CorsIotaExchangeCredentialsOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsIotaExchangeCredentialsOK;
   }
 
@@ -90,7 +88,7 @@ class CorsIotaExchangeCredentialsOKBuilder
 
   _$CorsIotaExchangeCredentialsOK _build() {
     final _$result = _$v ??
-        new _$CorsIotaExchangeCredentialsOK._(
+        _$CorsIotaExchangeCredentialsOK._(
           corsIotaExchangeCredentialsOk: corsIotaExchangeCredentialsOk,
         );
     replace(_$result);

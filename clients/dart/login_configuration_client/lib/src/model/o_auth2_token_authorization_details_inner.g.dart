@@ -16,19 +16,19 @@ OAuth2TokenAuthorizationDetailsInnerTypeEnum
     case 'openidCredential':
       return _$oAuth2TokenAuthorizationDetailsInnerTypeEnum_openidCredential;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<OAuth2TokenAuthorizationDetailsInnerTypeEnum>
-    _$oAuth2TokenAuthorizationDetailsInnerTypeEnumValues = new BuiltSet<
+    _$oAuth2TokenAuthorizationDetailsInnerTypeEnumValues = BuiltSet<
         OAuth2TokenAuthorizationDetailsInnerTypeEnum>(const <OAuth2TokenAuthorizationDetailsInnerTypeEnum>[
   _$oAuth2TokenAuthorizationDetailsInnerTypeEnum_openidCredential,
 ]);
 
 Serializer<OAuth2TokenAuthorizationDetailsInnerTypeEnum>
     _$oAuth2TokenAuthorizationDetailsInnerTypeEnumSerializer =
-    new _$OAuth2TokenAuthorizationDetailsInnerTypeEnumSerializer();
+    _$OAuth2TokenAuthorizationDetailsInnerTypeEnumSerializer();
 
 class _$OAuth2TokenAuthorizationDetailsInnerTypeEnumSerializer
     implements
@@ -73,20 +73,13 @@ class _$OAuth2TokenAuthorizationDetailsInner
   factory _$OAuth2TokenAuthorizationDetailsInner(
           [void Function(OAuth2TokenAuthorizationDetailsInnerBuilder)?
               updates]) =>
-      (new OAuth2TokenAuthorizationDetailsInnerBuilder()..update(updates))
-          ._build();
+      (OAuth2TokenAuthorizationDetailsInnerBuilder()..update(updates))._build();
 
   _$OAuth2TokenAuthorizationDetailsInner._(
       {required this.type,
       required this.credentialConfigurationId,
       this.credentialIdentifiers})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        type, r'OAuth2TokenAuthorizationDetailsInner', 'type');
-    BuiltValueNullFieldError.checkNotNull(credentialConfigurationId,
-        r'OAuth2TokenAuthorizationDetailsInner', 'credentialConfigurationId');
-  }
-
+      : super._();
   @override
   OAuth2TokenAuthorizationDetailsInner rebuild(
           void Function(OAuth2TokenAuthorizationDetailsInnerBuilder) updates) =>
@@ -94,7 +87,7 @@ class _$OAuth2TokenAuthorizationDetailsInner
 
   @override
   OAuth2TokenAuthorizationDetailsInnerBuilder toBuilder() =>
-      new OAuth2TokenAuthorizationDetailsInnerBuilder()..replace(this);
+      OAuth2TokenAuthorizationDetailsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -143,7 +136,7 @@ class OAuth2TokenAuthorizationDetailsInnerBuilder
 
   ListBuilder<String>? _credentialIdentifiers;
   ListBuilder<String> get credentialIdentifiers =>
-      _$this._credentialIdentifiers ??= new ListBuilder<String>();
+      _$this._credentialIdentifiers ??= ListBuilder<String>();
   set credentialIdentifiers(ListBuilder<String>? credentialIdentifiers) =>
       _$this._credentialIdentifiers = credentialIdentifiers;
 
@@ -164,7 +157,6 @@ class OAuth2TokenAuthorizationDetailsInnerBuilder
 
   @override
   void replace(OAuth2TokenAuthorizationDetailsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OAuth2TokenAuthorizationDetailsInner;
   }
 
@@ -181,7 +173,7 @@ class OAuth2TokenAuthorizationDetailsInnerBuilder
     _$OAuth2TokenAuthorizationDetailsInner _$result;
     try {
       _$result = _$v ??
-          new _$OAuth2TokenAuthorizationDetailsInner._(
+          _$OAuth2TokenAuthorizationDetailsInner._(
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'OAuth2TokenAuthorizationDetailsInner', 'type'),
             credentialConfigurationId: BuiltValueNullFieldError.checkNotNull(
@@ -196,7 +188,7 @@ class OAuth2TokenAuthorizationDetailsInnerBuilder
         _$failedField = 'credentialIdentifiers';
         _credentialIdentifiers?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'OAuth2TokenAuthorizationDetailsInner',
             _$failedField,
             e.toString());

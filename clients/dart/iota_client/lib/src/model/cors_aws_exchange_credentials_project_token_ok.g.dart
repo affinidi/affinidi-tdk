@@ -14,13 +14,12 @@ class _$CorsAwsExchangeCredentialsProjectTokenOK
   factory _$CorsAwsExchangeCredentialsProjectTokenOK(
           [void Function(CorsAwsExchangeCredentialsProjectTokenOKBuilder)?
               updates]) =>
-      (new CorsAwsExchangeCredentialsProjectTokenOKBuilder()..update(updates))
+      (CorsAwsExchangeCredentialsProjectTokenOKBuilder()..update(updates))
           ._build();
 
   _$CorsAwsExchangeCredentialsProjectTokenOK._(
       {this.corsAwsExchangeCredentialsProjectTokenOk})
       : super._();
-
   @override
   CorsAwsExchangeCredentialsProjectTokenOK rebuild(
           void Function(CorsAwsExchangeCredentialsProjectTokenOKBuilder)
@@ -29,7 +28,7 @@ class _$CorsAwsExchangeCredentialsProjectTokenOK
 
   @override
   CorsAwsExchangeCredentialsProjectTokenOKBuilder toBuilder() =>
-      new CorsAwsExchangeCredentialsProjectTokenOKBuilder()..replace(this);
+      CorsAwsExchangeCredentialsProjectTokenOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -87,7 +86,6 @@ class CorsAwsExchangeCredentialsProjectTokenOKBuilder
 
   @override
   void replace(CorsAwsExchangeCredentialsProjectTokenOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsAwsExchangeCredentialsProjectTokenOK;
   }
 
@@ -102,7 +100,7 @@ class CorsAwsExchangeCredentialsProjectTokenOKBuilder
 
   _$CorsAwsExchangeCredentialsProjectTokenOK _build() {
     final _$result = _$v ??
-        new _$CorsAwsExchangeCredentialsProjectTokenOK._(
+        _$CorsAwsExchangeCredentialsProjectTokenOK._(
           corsAwsExchangeCredentialsProjectTokenOk:
               corsAwsExchangeCredentialsProjectTokenOk,
         );

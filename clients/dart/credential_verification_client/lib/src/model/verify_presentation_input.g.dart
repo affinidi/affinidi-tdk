@@ -20,7 +20,7 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
 
   factory _$VerifyPresentationInput(
           [void Function(VerifyPresentationInputBuilder)? updates]) =>
-      (new VerifyPresentationInputBuilder()..update(updates))._build();
+      (VerifyPresentationInputBuilder()..update(updates))._build();
 
   _$VerifyPresentationInput._(
       {this.verifiablePresentation,
@@ -29,7 +29,6 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
       this.presentationSubmission,
       this.challenge})
       : super._();
-
   @override
   VerifyPresentationInput rebuild(
           void Function(VerifyPresentationInputBuilder) updates) =>
@@ -37,7 +36,7 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
 
   @override
   VerifyPresentationInputBuilder toBuilder() =>
-      new VerifyPresentationInputBuilder()..replace(this);
+      VerifyPresentationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -122,7 +121,6 @@ class VerifyPresentationInputBuilder
 
   @override
   void replace(VerifyPresentationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VerifyPresentationInput;
   }
 
@@ -136,7 +134,7 @@ class VerifyPresentationInputBuilder
 
   _$VerifyPresentationInput _build() {
     final _$result = _$v ??
-        new _$VerifyPresentationInput._(
+        _$VerifyPresentationInput._(
           verifiablePresentation: verifiablePresentation,
           signedPresentation: signedPresentation,
           presentationDefinition: presentationDefinition,

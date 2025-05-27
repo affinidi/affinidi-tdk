@@ -21,7 +21,7 @@ class _$PexQueryDto extends PexQueryDto {
   final String vpDefinition;
 
   factory _$PexQueryDto([void Function(PexQueryDtoBuilder)? updates]) =>
-      (new PexQueryDtoBuilder()..update(updates))._build();
+      (PexQueryDtoBuilder()..update(updates))._build();
 
   _$PexQueryDto._(
       {required this.ari,
@@ -30,24 +30,13 @@ class _$PexQueryDto extends PexQueryDto {
       required this.description,
       required this.configurationAri,
       required this.vpDefinition})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(ari, r'PexQueryDto', 'ari');
-    BuiltValueNullFieldError.checkNotNull(queryId, r'PexQueryDto', 'queryId');
-    BuiltValueNullFieldError.checkNotNull(name, r'PexQueryDto', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'PexQueryDto', 'description');
-    BuiltValueNullFieldError.checkNotNull(
-        configurationAri, r'PexQueryDto', 'configurationAri');
-    BuiltValueNullFieldError.checkNotNull(
-        vpDefinition, r'PexQueryDto', 'vpDefinition');
-  }
-
+      : super._();
   @override
   PexQueryDto rebuild(void Function(PexQueryDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PexQueryDtoBuilder toBuilder() => new PexQueryDtoBuilder()..replace(this);
+  PexQueryDtoBuilder toBuilder() => PexQueryDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -135,7 +124,6 @@ class PexQueryDtoBuilder implements Builder<PexQueryDto, PexQueryDtoBuilder> {
 
   @override
   void replace(PexQueryDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PexQueryDto;
   }
 
@@ -149,7 +137,7 @@ class PexQueryDtoBuilder implements Builder<PexQueryDto, PexQueryDtoBuilder> {
 
   _$PexQueryDto _build() {
     final _$result = _$v ??
-        new _$PexQueryDto._(
+        _$PexQueryDto._(
           ari:
               BuiltValueNullFieldError.checkNotNull(ari, r'PexQueryDto', 'ari'),
           queryId: BuiltValueNullFieldError.checkNotNull(

@@ -6,7 +6,7 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(ActionForbiddenError.serializer)
       ..add(ActionForbiddenErrorHttpStatusCodeEnum.serializer)
       ..add(ActionForbiddenErrorMessageEnum.serializer)
@@ -105,183 +105,183 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VPTokenValidationErrorNameEnum.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(GroupDto)]),
-          () => new ListBuilder<GroupDto>())
+          () => ListBuilder<GroupDto>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(GroupUserMappingDto)]),
-          () => new ListBuilder<GroupUserMappingDto>())
+          () => ListBuilder<GroupUserMappingDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(JsonWebKeyKeysInner)]),
-          () => new ListBuilder<JsonWebKeyKeysInner>())
+          () => ListBuilder<JsonWebKeyKeysInner>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(LoginConfigurationObject)]),
-          () => new ListBuilder<LoginConfigurationObject>())
+          () => ListBuilder<LoginConfigurationObject>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(OAuth2TokenAuthorizationDetailsInner)]),
-          () => new ListBuilder<OAuth2TokenAuthorizationDetailsInner>())
+          () => ListBuilder<OAuth2TokenAuthorizationDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(IdTokenMappingItem)]),
-          () => new ListBuilder<IdTokenMappingItem>())
+          () => ListBuilder<IdTokenMappingItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(IdTokenMappingItem)]),
-          () => new ListBuilder<IdTokenMappingItem>())
+          () => ListBuilder<IdTokenMappingItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(IdTokenMappingItem)]),
-          () => new ListBuilder<IdTokenMappingItem>())
+          () => ListBuilder<IdTokenMappingItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(OIDCConfigCredentialsSupportedDraft00Inner)
           ]),
-          () => new ListBuilder<OIDCConfigCredentialsSupportedDraft00Inner>())
+          () => ListBuilder<OIDCConfigCredentialsSupportedDraft00Inner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>()))
+          () => ListBuilder<String>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

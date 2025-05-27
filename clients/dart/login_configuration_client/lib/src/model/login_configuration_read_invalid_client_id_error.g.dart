@@ -17,12 +17,12 @@ LoginConfigurationReadInvalidClientIdErrorNameEnum
     case 'loginConfigurationReadInvalidClientIdError':
       return _$loginConfigurationReadInvalidClientIdErrorNameEnum_loginConfigurationReadInvalidClientIdError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<LoginConfigurationReadInvalidClientIdErrorNameEnum>
-    _$loginConfigurationReadInvalidClientIdErrorNameEnumValues = new BuiltSet<
+    _$loginConfigurationReadInvalidClientIdErrorNameEnumValues = BuiltSet<
         LoginConfigurationReadInvalidClientIdErrorNameEnum>(const <LoginConfigurationReadInvalidClientIdErrorNameEnum>[
   _$loginConfigurationReadInvalidClientIdErrorNameEnum_loginConfigurationReadInvalidClientIdError,
 ]);
@@ -39,13 +39,12 @@ LoginConfigurationReadInvalidClientIdErrorMessageEnum
     case 'loginConfigurationReadInvalidClientIdError':
       return _$loginConfigurationReadInvalidClientIdErrorMessageEnum_loginConfigurationReadInvalidClientIdError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<LoginConfigurationReadInvalidClientIdErrorMessageEnum>
-    _$loginConfigurationReadInvalidClientIdErrorMessageEnumValues =
-    new BuiltSet<
+    _$loginConfigurationReadInvalidClientIdErrorMessageEnumValues = BuiltSet<
         LoginConfigurationReadInvalidClientIdErrorMessageEnum>(const <LoginConfigurationReadInvalidClientIdErrorMessageEnum>[
   _$loginConfigurationReadInvalidClientIdErrorMessageEnum_loginConfigurationReadInvalidClientIdError,
 ]);
@@ -62,26 +61,26 @@ LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum
     case 'number400':
       return _$loginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum>
     _$loginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnumValues =
-    new BuiltSet<
+    BuiltSet<
         LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum>(const <LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum>[
   _$loginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<LoginConfigurationReadInvalidClientIdErrorNameEnum>
     _$loginConfigurationReadInvalidClientIdErrorNameEnumSerializer =
-    new _$LoginConfigurationReadInvalidClientIdErrorNameEnumSerializer();
+    _$LoginConfigurationReadInvalidClientIdErrorNameEnumSerializer();
 Serializer<LoginConfigurationReadInvalidClientIdErrorMessageEnum>
     _$loginConfigurationReadInvalidClientIdErrorMessageEnumSerializer =
-    new _$LoginConfigurationReadInvalidClientIdErrorMessageEnumSerializer();
+    _$LoginConfigurationReadInvalidClientIdErrorMessageEnumSerializer();
 Serializer<LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnum>
     _$loginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnumSerializer =
-    new _$LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnumSerializer();
+    _$LoginConfigurationReadInvalidClientIdErrorHttpStatusCodeEnumSerializer();
 
 class _$LoginConfigurationReadInvalidClientIdErrorNameEnumSerializer
     implements
@@ -202,7 +201,7 @@ class _$LoginConfigurationReadInvalidClientIdError
   factory _$LoginConfigurationReadInvalidClientIdError(
           [void Function(LoginConfigurationReadInvalidClientIdErrorBuilder)?
               updates]) =>
-      (new LoginConfigurationReadInvalidClientIdErrorBuilder()..update(updates))
+      (LoginConfigurationReadInvalidClientIdErrorBuilder()..update(updates))
           ._build();
 
   _$LoginConfigurationReadInvalidClientIdError._(
@@ -211,17 +210,7 @@ class _$LoginConfigurationReadInvalidClientIdError
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'LoginConfigurationReadInvalidClientIdError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'LoginConfigurationReadInvalidClientIdError', 'message');
-    BuiltValueNullFieldError.checkNotNull(httpStatusCode,
-        r'LoginConfigurationReadInvalidClientIdError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'LoginConfigurationReadInvalidClientIdError', 'traceId');
-  }
-
+      : super._();
   @override
   LoginConfigurationReadInvalidClientIdError rebuild(
           void Function(LoginConfigurationReadInvalidClientIdErrorBuilder)
@@ -230,7 +219,7 @@ class _$LoginConfigurationReadInvalidClientIdError
 
   @override
   LoginConfigurationReadInvalidClientIdErrorBuilder toBuilder() =>
-      new LoginConfigurationReadInvalidClientIdErrorBuilder()..replace(this);
+      LoginConfigurationReadInvalidClientIdErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -299,7 +288,7 @@ class LoginConfigurationReadInvalidClientIdErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -322,7 +311,6 @@ class LoginConfigurationReadInvalidClientIdErrorBuilder
 
   @override
   void replace(LoginConfigurationReadInvalidClientIdError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginConfigurationReadInvalidClientIdError;
   }
 
@@ -340,7 +328,7 @@ class LoginConfigurationReadInvalidClientIdErrorBuilder
     _$LoginConfigurationReadInvalidClientIdError _$result;
     try {
       _$result = _$v ??
-          new _$LoginConfigurationReadInvalidClientIdError._(
+          _$LoginConfigurationReadInvalidClientIdError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'LoginConfigurationReadInvalidClientIdError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(message,
@@ -359,7 +347,7 @@ class LoginConfigurationReadInvalidClientIdErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'LoginConfigurationReadInvalidClientIdError',
             _$failedField,
             e.toString());

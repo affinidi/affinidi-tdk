@@ -21,12 +21,12 @@ CreateLoginConfigurationInputClaimFormatEnum
     case 'map':
       return _$createLoginConfigurationInputClaimFormatEnum_map;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateLoginConfigurationInputClaimFormatEnum>
-    _$createLoginConfigurationInputClaimFormatEnumValues = new BuiltSet<
+    _$createLoginConfigurationInputClaimFormatEnumValues = BuiltSet<
         CreateLoginConfigurationInputClaimFormatEnum>(const <CreateLoginConfigurationInputClaimFormatEnum>[
   _$createLoginConfigurationInputClaimFormatEnum_array,
   _$createLoginConfigurationInputClaimFormatEnum_map,
@@ -34,7 +34,7 @@ final BuiltSet<CreateLoginConfigurationInputClaimFormatEnum>
 
 Serializer<CreateLoginConfigurationInputClaimFormatEnum>
     _$createLoginConfigurationInputClaimFormatEnumSerializer =
-    new _$CreateLoginConfigurationInputClaimFormatEnumSerializer();
+    _$CreateLoginConfigurationInputClaimFormatEnumSerializer();
 
 class _$CreateLoginConfigurationInputClaimFormatEnumSerializer
     implements
@@ -97,7 +97,7 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
 
   factory _$CreateLoginConfigurationInput(
           [void Function(CreateLoginConfigurationInputBuilder)? updates]) =>
-      (new CreateLoginConfigurationInputBuilder()..update(updates))._build();
+      (CreateLoginConfigurationInputBuilder()..update(updates))._build();
 
   _$CreateLoginConfigurationInput._(
       {required this.name,
@@ -112,13 +112,7 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
       this.failOnMappingConflict,
       this.scope,
       this.tokenEndpointAuthMethod})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'CreateLoginConfigurationInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        redirectUris, r'CreateLoginConfigurationInput', 'redirectUris');
-  }
-
+      : super._();
   @override
   CreateLoginConfigurationInput rebuild(
           void Function(CreateLoginConfigurationInputBuilder) updates) =>
@@ -126,7 +120,7 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
 
   @override
   CreateLoginConfigurationInputBuilder toBuilder() =>
-      new CreateLoginConfigurationInputBuilder()..replace(this);
+      CreateLoginConfigurationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -200,13 +194,13 @@ class CreateLoginConfigurationInputBuilder
 
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
-      _$this._redirectUris ??= new ListBuilder<String>();
+      _$this._redirectUris ??= ListBuilder<String>();
   set redirectUris(ListBuilder<String>? redirectUris) =>
       _$this._redirectUris = redirectUris;
 
   ListBuilder<String>? _postLogoutRedirectUris;
   ListBuilder<String> get postLogoutRedirectUris =>
-      _$this._postLogoutRedirectUris ??= new ListBuilder<String>();
+      _$this._postLogoutRedirectUris ??= ListBuilder<String>();
   set postLogoutRedirectUris(ListBuilder<String>? postLogoutRedirectUris) =>
       _$this._postLogoutRedirectUris = postLogoutRedirectUris;
 
@@ -221,14 +215,13 @@ class CreateLoginConfigurationInputBuilder
 
   ListBuilder<IdTokenMappingItem>? _idTokenMapping;
   ListBuilder<IdTokenMappingItem> get idTokenMapping =>
-      _$this._idTokenMapping ??= new ListBuilder<IdTokenMappingItem>();
+      _$this._idTokenMapping ??= ListBuilder<IdTokenMappingItem>();
   set idTokenMapping(ListBuilder<IdTokenMappingItem>? idTokenMapping) =>
       _$this._idTokenMapping = idTokenMapping;
 
   LoginConfigurationClientMetadataInputBuilder? _clientMetadata;
   LoginConfigurationClientMetadataInputBuilder get clientMetadata =>
-      _$this._clientMetadata ??=
-          new LoginConfigurationClientMetadataInputBuilder();
+      _$this._clientMetadata ??= LoginConfigurationClientMetadataInputBuilder();
   set clientMetadata(
           LoginConfigurationClientMetadataInputBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
@@ -281,7 +274,6 @@ class CreateLoginConfigurationInputBuilder
 
   @override
   void replace(CreateLoginConfigurationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateLoginConfigurationInput;
   }
 
@@ -297,7 +289,7 @@ class CreateLoginConfigurationInputBuilder
     _$CreateLoginConfigurationInput _$result;
     try {
       _$result = _$v ??
-          new _$CreateLoginConfigurationInput._(
+          _$CreateLoginConfigurationInput._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'CreateLoginConfigurationInput', 'name'),
             description: description,
@@ -325,7 +317,7 @@ class CreateLoginConfigurationInputBuilder
         _$failedField = 'clientMetadata';
         _clientMetadata?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateLoginConfigurationInput', _$failedField, e.toString());
       }
       rethrow;

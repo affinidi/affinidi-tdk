@@ -16,12 +16,12 @@ ChangeStatusForbiddenErrorNameEnum _$changeStatusForbiddenErrorNameEnumValueOf(
     case 'changeStatusForbiddenError':
       return _$changeStatusForbiddenErrorNameEnum_changeStatusForbiddenError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ChangeStatusForbiddenErrorNameEnum>
-    _$changeStatusForbiddenErrorNameEnumValues = new BuiltSet<
+    _$changeStatusForbiddenErrorNameEnumValues = BuiltSet<
         ChangeStatusForbiddenErrorNameEnum>(const <ChangeStatusForbiddenErrorNameEnum>[
   _$changeStatusForbiddenErrorNameEnum_changeStatusForbiddenError,
 ]);
@@ -37,12 +37,12 @@ ChangeStatusForbiddenErrorMessageEnum
     case 'relatedVCStatusCannotBeChanged':
       return _$changeStatusForbiddenErrorMessageEnum_relatedVCStatusCannotBeChanged;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ChangeStatusForbiddenErrorMessageEnum>
-    _$changeStatusForbiddenErrorMessageEnumValues = new BuiltSet<
+    _$changeStatusForbiddenErrorMessageEnumValues = BuiltSet<
         ChangeStatusForbiddenErrorMessageEnum>(const <ChangeStatusForbiddenErrorMessageEnum>[
   _$changeStatusForbiddenErrorMessageEnum_relatedVCStatusCannotBeChanged,
 ]);
@@ -57,25 +57,25 @@ ChangeStatusForbiddenErrorHttpStatusCodeEnum
     case 'number400':
       return _$changeStatusForbiddenErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ChangeStatusForbiddenErrorHttpStatusCodeEnum>
-    _$changeStatusForbiddenErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$changeStatusForbiddenErrorHttpStatusCodeEnumValues = BuiltSet<
         ChangeStatusForbiddenErrorHttpStatusCodeEnum>(const <ChangeStatusForbiddenErrorHttpStatusCodeEnum>[
   _$changeStatusForbiddenErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<ChangeStatusForbiddenErrorNameEnum>
     _$changeStatusForbiddenErrorNameEnumSerializer =
-    new _$ChangeStatusForbiddenErrorNameEnumSerializer();
+    _$ChangeStatusForbiddenErrorNameEnumSerializer();
 Serializer<ChangeStatusForbiddenErrorMessageEnum>
     _$changeStatusForbiddenErrorMessageEnumSerializer =
-    new _$ChangeStatusForbiddenErrorMessageEnumSerializer();
+    _$ChangeStatusForbiddenErrorMessageEnumSerializer();
 Serializer<ChangeStatusForbiddenErrorHttpStatusCodeEnum>
     _$changeStatusForbiddenErrorHttpStatusCodeEnumSerializer =
-    new _$ChangeStatusForbiddenErrorHttpStatusCodeEnumSerializer();
+    _$ChangeStatusForbiddenErrorHttpStatusCodeEnumSerializer();
 
 class _$ChangeStatusForbiddenErrorNameEnumSerializer
     implements PrimitiveSerializer<ChangeStatusForbiddenErrorNameEnum> {
@@ -180,7 +180,7 @@ class _$ChangeStatusForbiddenError extends ChangeStatusForbiddenError {
 
   factory _$ChangeStatusForbiddenError(
           [void Function(ChangeStatusForbiddenErrorBuilder)? updates]) =>
-      (new ChangeStatusForbiddenErrorBuilder()..update(updates))._build();
+      (ChangeStatusForbiddenErrorBuilder()..update(updates))._build();
 
   _$ChangeStatusForbiddenError._(
       {required this.name,
@@ -188,17 +188,7 @@ class _$ChangeStatusForbiddenError extends ChangeStatusForbiddenError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ChangeStatusForbiddenError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ChangeStatusForbiddenError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'ChangeStatusForbiddenError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'ChangeStatusForbiddenError', 'traceId');
-  }
-
+      : super._();
   @override
   ChangeStatusForbiddenError rebuild(
           void Function(ChangeStatusForbiddenErrorBuilder) updates) =>
@@ -206,7 +196,7 @@ class _$ChangeStatusForbiddenError extends ChangeStatusForbiddenError {
 
   @override
   ChangeStatusForbiddenErrorBuilder toBuilder() =>
-      new ChangeStatusForbiddenErrorBuilder()..replace(this);
+      ChangeStatusForbiddenErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -270,7 +260,7 @@ class ChangeStatusForbiddenErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -293,7 +283,6 @@ class ChangeStatusForbiddenErrorBuilder
 
   @override
   void replace(ChangeStatusForbiddenError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChangeStatusForbiddenError;
   }
 
@@ -309,7 +298,7 @@ class ChangeStatusForbiddenErrorBuilder
     _$ChangeStatusForbiddenError _$result;
     try {
       _$result = _$v ??
-          new _$ChangeStatusForbiddenError._(
+          _$ChangeStatusForbiddenError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'ChangeStatusForbiddenError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -328,7 +317,7 @@ class ChangeStatusForbiddenErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ChangeStatusForbiddenError', _$failedField, e.toString());
       }
       rethrow;

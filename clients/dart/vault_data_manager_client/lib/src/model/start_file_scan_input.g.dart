@@ -12,12 +12,9 @@ class _$StartFileScanInput extends StartFileScanInput {
 
   factory _$StartFileScanInput(
           [void Function(StartFileScanInputBuilder)? updates]) =>
-      (new StartFileScanInputBuilder()..update(updates))._build();
+      (StartFileScanInputBuilder()..update(updates))._build();
 
-  _$StartFileScanInput._({required this.dek}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(dek, r'StartFileScanInput', 'dek');
-  }
-
+  _$StartFileScanInput._({required this.dek}) : super._();
   @override
   StartFileScanInput rebuild(
           void Function(StartFileScanInputBuilder) updates) =>
@@ -25,7 +22,7 @@ class _$StartFileScanInput extends StartFileScanInput {
 
   @override
   StartFileScanInputBuilder toBuilder() =>
-      new StartFileScanInputBuilder()..replace(this);
+      StartFileScanInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -71,7 +68,6 @@ class StartFileScanInputBuilder
 
   @override
   void replace(StartFileScanInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StartFileScanInput;
   }
 
@@ -85,7 +81,7 @@ class StartFileScanInputBuilder
 
   _$StartFileScanInput _build() {
     final _$result = _$v ??
-        new _$StartFileScanInput._(
+        _$StartFileScanInput._(
           dek: BuiltValueNullFieldError.checkNotNull(
               dek, r'StartFileScanInput', 'dek'),
         );

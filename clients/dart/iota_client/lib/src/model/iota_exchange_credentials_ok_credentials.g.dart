@@ -20,25 +20,14 @@ class _$IotaExchangeCredentialsOKCredentials
   factory _$IotaExchangeCredentialsOKCredentials(
           [void Function(IotaExchangeCredentialsOKCredentialsBuilder)?
               updates]) =>
-      (new IotaExchangeCredentialsOKCredentialsBuilder()..update(updates))
-          ._build();
+      (IotaExchangeCredentialsOKCredentialsBuilder()..update(updates))._build();
 
   _$IotaExchangeCredentialsOKCredentials._(
       {required this.accessKeyId,
       required this.secretKey,
       required this.sessionToken,
       required this.expiration})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        accessKeyId, r'IotaExchangeCredentialsOKCredentials', 'accessKeyId');
-    BuiltValueNullFieldError.checkNotNull(
-        secretKey, r'IotaExchangeCredentialsOKCredentials', 'secretKey');
-    BuiltValueNullFieldError.checkNotNull(
-        sessionToken, r'IotaExchangeCredentialsOKCredentials', 'sessionToken');
-    BuiltValueNullFieldError.checkNotNull(
-        expiration, r'IotaExchangeCredentialsOKCredentials', 'expiration');
-  }
-
+      : super._();
   @override
   IotaExchangeCredentialsOKCredentials rebuild(
           void Function(IotaExchangeCredentialsOKCredentialsBuilder) updates) =>
@@ -46,7 +35,7 @@ class _$IotaExchangeCredentialsOKCredentials
 
   @override
   IotaExchangeCredentialsOKCredentialsBuilder toBuilder() =>
-      new IotaExchangeCredentialsOKCredentialsBuilder()..replace(this);
+      IotaExchangeCredentialsOKCredentialsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -120,7 +109,6 @@ class IotaExchangeCredentialsOKCredentialsBuilder
 
   @override
   void replace(IotaExchangeCredentialsOKCredentials other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IotaExchangeCredentialsOKCredentials;
   }
 
@@ -135,7 +123,7 @@ class IotaExchangeCredentialsOKCredentialsBuilder
 
   _$IotaExchangeCredentialsOKCredentials _build() {
     final _$result = _$v ??
-        new _$IotaExchangeCredentialsOKCredentials._(
+        _$IotaExchangeCredentialsOKCredentials._(
           accessKeyId: BuiltValueNullFieldError.checkNotNull(accessKeyId,
               r'IotaExchangeCredentialsOKCredentials', 'accessKeyId'),
           secretKey: BuiltValueNullFieldError.checkNotNull(

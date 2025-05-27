@@ -11,16 +11,15 @@ class _$GroupsList extends GroupsList {
   final BuiltList<GroupDto>? groups;
 
   factory _$GroupsList([void Function(GroupsListBuilder)? updates]) =>
-      (new GroupsListBuilder()..update(updates))._build();
+      (GroupsListBuilder()..update(updates))._build();
 
   _$GroupsList._({this.groups}) : super._();
-
   @override
   GroupsList rebuild(void Function(GroupsListBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GroupsListBuilder toBuilder() => new GroupsListBuilder()..replace(this);
+  GroupsListBuilder toBuilder() => GroupsListBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -48,7 +47,7 @@ class GroupsListBuilder implements Builder<GroupsList, GroupsListBuilder> {
 
   ListBuilder<GroupDto>? _groups;
   ListBuilder<GroupDto> get groups =>
-      _$this._groups ??= new ListBuilder<GroupDto>();
+      _$this._groups ??= ListBuilder<GroupDto>();
   set groups(ListBuilder<GroupDto>? groups) => _$this._groups = groups;
 
   GroupsListBuilder() {
@@ -66,7 +65,6 @@ class GroupsListBuilder implements Builder<GroupsList, GroupsListBuilder> {
 
   @override
   void replace(GroupsList other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GroupsList;
   }
 
@@ -82,7 +80,7 @@ class GroupsListBuilder implements Builder<GroupsList, GroupsListBuilder> {
     _$GroupsList _$result;
     try {
       _$result = _$v ??
-          new _$GroupsList._(
+          _$GroupsList._(
             groups: _groups?.build(),
           );
     } catch (_) {
@@ -91,7 +89,7 @@ class GroupsListBuilder implements Builder<GroupsList, GroupsListBuilder> {
         _$failedField = 'groups';
         _groups?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GroupsList', _$failedField, e.toString());
       }
       rethrow;

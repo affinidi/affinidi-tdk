@@ -11,17 +11,15 @@ class _$SignJwtTokenOK extends SignJwtTokenOK {
   final String? signedJwt;
 
   factory _$SignJwtTokenOK([void Function(SignJwtTokenOKBuilder)? updates]) =>
-      (new SignJwtTokenOKBuilder()..update(updates))._build();
+      (SignJwtTokenOKBuilder()..update(updates))._build();
 
   _$SignJwtTokenOK._({this.signedJwt}) : super._();
-
   @override
   SignJwtTokenOK rebuild(void Function(SignJwtTokenOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SignJwtTokenOKBuilder toBuilder() =>
-      new SignJwtTokenOKBuilder()..replace(this);
+  SignJwtTokenOKBuilder toBuilder() => SignJwtTokenOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -68,7 +66,6 @@ class SignJwtTokenOKBuilder
 
   @override
   void replace(SignJwtTokenOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignJwtTokenOK;
   }
 
@@ -82,7 +79,7 @@ class SignJwtTokenOKBuilder
 
   _$SignJwtTokenOK _build() {
     final _$result = _$v ??
-        new _$SignJwtTokenOK._(
+        _$SignJwtTokenOK._(
           signedJwt: signedJwt,
         );
     replace(_$result);

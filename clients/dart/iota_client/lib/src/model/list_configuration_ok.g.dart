@@ -12,13 +12,9 @@ class _$ListConfigurationOK extends ListConfigurationOK {
 
   factory _$ListConfigurationOK(
           [void Function(ListConfigurationOKBuilder)? updates]) =>
-      (new ListConfigurationOKBuilder()..update(updates))._build();
+      (ListConfigurationOKBuilder()..update(updates))._build();
 
-  _$ListConfigurationOK._({required this.configurations}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        configurations, r'ListConfigurationOK', 'configurations');
-  }
-
+  _$ListConfigurationOK._({required this.configurations}) : super._();
   @override
   ListConfigurationOK rebuild(
           void Function(ListConfigurationOKBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$ListConfigurationOK extends ListConfigurationOK {
 
   @override
   ListConfigurationOKBuilder toBuilder() =>
-      new ListConfigurationOKBuilder()..replace(this);
+      ListConfigurationOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -57,7 +53,7 @@ class ListConfigurationOKBuilder
 
   ListBuilder<IotaConfigurationDto>? _configurations;
   ListBuilder<IotaConfigurationDto> get configurations =>
-      _$this._configurations ??= new ListBuilder<IotaConfigurationDto>();
+      _$this._configurations ??= ListBuilder<IotaConfigurationDto>();
   set configurations(ListBuilder<IotaConfigurationDto>? configurations) =>
       _$this._configurations = configurations;
 
@@ -76,7 +72,6 @@ class ListConfigurationOKBuilder
 
   @override
   void replace(ListConfigurationOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListConfigurationOK;
   }
 
@@ -92,7 +87,7 @@ class ListConfigurationOKBuilder
     _$ListConfigurationOK _$result;
     try {
       _$result = _$v ??
-          new _$ListConfigurationOK._(
+          _$ListConfigurationOK._(
             configurations: configurations.build(),
           );
     } catch (_) {
@@ -101,7 +96,7 @@ class ListConfigurationOKBuilder
         _$failedField = 'configurations';
         configurations.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListConfigurationOK', _$failedField, e.toString());
       }
       rethrow;

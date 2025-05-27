@@ -26,12 +26,12 @@ UpdateIssuanceConfigInputFormatEnum
     case 'sdJwtVcJsonLd':
       return _$updateIssuanceConfigInputFormatEnum_sdJwtVcJsonLd;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UpdateIssuanceConfigInputFormatEnum>
-    _$updateIssuanceConfigInputFormatEnumValues = new BuiltSet<
+    _$updateIssuanceConfigInputFormatEnumValues = BuiltSet<
         UpdateIssuanceConfigInputFormatEnum>(const <UpdateIssuanceConfigInputFormatEnum>[
   _$updateIssuanceConfigInputFormatEnum_ldpVc,
   _$updateIssuanceConfigInputFormatEnum_jwtVcJsonLd,
@@ -40,7 +40,7 @@ final BuiltSet<UpdateIssuanceConfigInputFormatEnum>
 
 Serializer<UpdateIssuanceConfigInputFormatEnum>
     _$updateIssuanceConfigInputFormatEnumSerializer =
-    new _$UpdateIssuanceConfigInputFormatEnumSerializer();
+    _$UpdateIssuanceConfigInputFormatEnumSerializer();
 
 class _$UpdateIssuanceConfigInputFormatEnumSerializer
     implements PrimitiveSerializer<UpdateIssuanceConfigInputFormatEnum> {
@@ -100,7 +100,7 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
 
   factory _$UpdateIssuanceConfigInput(
           [void Function(UpdateIssuanceConfigInputBuilder)? updates]) =>
-      (new UpdateIssuanceConfigInputBuilder()..update(updates))._build();
+      (UpdateIssuanceConfigInputBuilder()..update(updates))._build();
 
   _$UpdateIssuanceConfigInput._(
       {this.name,
@@ -114,7 +114,6 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
       this.returnUris,
       this.webhook})
       : super._();
-
   @override
   UpdateIssuanceConfigInput rebuild(
           void Function(UpdateIssuanceConfigInputBuilder) updates) =>
@@ -122,7 +121,7 @@ class _$UpdateIssuanceConfigInput extends UpdateIssuanceConfigInput {
 
   @override
   UpdateIssuanceConfigInputBuilder toBuilder() =>
-      new UpdateIssuanceConfigInputBuilder()..replace(this);
+      UpdateIssuanceConfigInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -208,27 +207,26 @@ class UpdateIssuanceConfigInputBuilder
 
   ListBuilder<CredentialSupportedObject>? _credentialSupported;
   ListBuilder<CredentialSupportedObject> get credentialSupported =>
-      _$this._credentialSupported ??=
-          new ListBuilder<CredentialSupportedObject>();
+      _$this._credentialSupported ??= ListBuilder<CredentialSupportedObject>();
   set credentialSupported(
           ListBuilder<CredentialSupportedObject>? credentialSupported) =>
       _$this._credentialSupported = credentialSupported;
 
   MapBuilder<String, JsonObject?>? _issuerMetadata;
   MapBuilder<String, JsonObject?> get issuerMetadata =>
-      _$this._issuerMetadata ??= new MapBuilder<String, JsonObject?>();
+      _$this._issuerMetadata ??= MapBuilder<String, JsonObject?>();
   set issuerMetadata(MapBuilder<String, JsonObject?>? issuerMetadata) =>
       _$this._issuerMetadata = issuerMetadata;
 
   ListBuilder<String>? _returnUris;
   ListBuilder<String> get returnUris =>
-      _$this._returnUris ??= new ListBuilder<String>();
+      _$this._returnUris ??= ListBuilder<String>();
   set returnUris(ListBuilder<String>? returnUris) =>
       _$this._returnUris = returnUris;
 
   CisConfigurationWebhookSettingBuilder? _webhook;
   CisConfigurationWebhookSettingBuilder get webhook =>
-      _$this._webhook ??= new CisConfigurationWebhookSettingBuilder();
+      _$this._webhook ??= CisConfigurationWebhookSettingBuilder();
   set webhook(CisConfigurationWebhookSettingBuilder? webhook) =>
       _$this._webhook = webhook;
 
@@ -256,7 +254,6 @@ class UpdateIssuanceConfigInputBuilder
 
   @override
   void replace(UpdateIssuanceConfigInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateIssuanceConfigInput;
   }
 
@@ -272,7 +269,7 @@ class UpdateIssuanceConfigInputBuilder
     _$UpdateIssuanceConfigInput _$result;
     try {
       _$result = _$v ??
-          new _$UpdateIssuanceConfigInput._(
+          _$UpdateIssuanceConfigInput._(
             name: name,
             description: description,
             issuerWalletId: issuerWalletId,
@@ -296,7 +293,7 @@ class UpdateIssuanceConfigInputBuilder
         _$failedField = 'webhook';
         _webhook?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UpdateIssuanceConfigInput', _$failedField, e.toString());
       }
       rethrow;

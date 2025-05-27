@@ -13,11 +13,10 @@ class _$CorsInitiateDataSharingRequestOK
 
   factory _$CorsInitiateDataSharingRequestOK(
           [void Function(CorsInitiateDataSharingRequestOKBuilder)? updates]) =>
-      (new CorsInitiateDataSharingRequestOKBuilder()..update(updates))._build();
+      (CorsInitiateDataSharingRequestOKBuilder()..update(updates))._build();
 
   _$CorsInitiateDataSharingRequestOK._({this.corsInitiateDataSharingRequestOk})
       : super._();
-
   @override
   CorsInitiateDataSharingRequestOK rebuild(
           void Function(CorsInitiateDataSharingRequestOKBuilder) updates) =>
@@ -25,7 +24,7 @@ class _$CorsInitiateDataSharingRequestOK
 
   @override
   CorsInitiateDataSharingRequestOKBuilder toBuilder() =>
-      new CorsInitiateDataSharingRequestOKBuilder()..replace(this);
+      CorsInitiateDataSharingRequestOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +80,6 @@ class CorsInitiateDataSharingRequestOKBuilder
 
   @override
   void replace(CorsInitiateDataSharingRequestOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsInitiateDataSharingRequestOK;
   }
 
@@ -95,7 +93,7 @@ class CorsInitiateDataSharingRequestOKBuilder
 
   _$CorsInitiateDataSharingRequestOK _build() {
     final _$result = _$v ??
-        new _$CorsInitiateDataSharingRequestOK._(
+        _$CorsInitiateDataSharingRequestOK._(
           corsInitiateDataSharingRequestOk: corsInitiateDataSharingRequestOk,
         );
     replace(_$result);

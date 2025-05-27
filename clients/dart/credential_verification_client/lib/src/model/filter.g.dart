@@ -45,7 +45,7 @@ class _$Filter extends Filter {
   final String? type;
 
   factory _$Filter([void Function(FilterBuilder)? updates]) =>
-      (new FilterBuilder()..update(updates))._build();
+      (FilterBuilder()..update(updates))._build();
 
   _$Filter._(
       {this.const_,
@@ -67,13 +67,12 @@ class _$Filter extends Filter {
       this.items,
       this.type})
       : super._();
-
   @override
   Filter rebuild(void Function(FilterBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FilterBuilder toBuilder() => new FilterBuilder()..replace(this);
+  FilterBuilder toBuilder() => FilterBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -153,23 +152,23 @@ class FilterBuilder implements Builder<Filter, FilterBuilder> {
   _$Filter? _$v;
 
   FilterConstBuilder? _const_;
-  FilterConstBuilder get const_ => _$this._const_ ??= new FilterConstBuilder();
+  FilterConstBuilder get const_ => _$this._const_ ??= FilterConstBuilder();
   set const_(FilterConstBuilder? const_) => _$this._const_ = const_;
 
   ListBuilder<FilterConst>? _enum_;
   ListBuilder<FilterConst> get enum_ =>
-      _$this._enum_ ??= new ListBuilder<FilterConst>();
+      _$this._enum_ ??= ListBuilder<FilterConst>();
   set enum_(ListBuilder<FilterConst>? enum_) => _$this._enum_ = enum_;
 
   FilterConstBuilder? _exclusiveMinimum;
   FilterConstBuilder get exclusiveMinimum =>
-      _$this._exclusiveMinimum ??= new FilterConstBuilder();
+      _$this._exclusiveMinimum ??= FilterConstBuilder();
   set exclusiveMinimum(FilterConstBuilder? exclusiveMinimum) =>
       _$this._exclusiveMinimum = exclusiveMinimum;
 
   FilterConstBuilder? _exclusiveMaximum;
   FilterConstBuilder get exclusiveMaximum =>
-      _$this._exclusiveMaximum ??= new FilterConstBuilder();
+      _$this._exclusiveMaximum ??= FilterConstBuilder();
   set exclusiveMaximum(FilterConstBuilder? exclusiveMaximum) =>
       _$this._exclusiveMaximum = exclusiveMaximum;
 
@@ -206,13 +205,11 @@ class FilterBuilder implements Builder<Filter, FilterBuilder> {
   set maxLength(int? maxLength) => _$this._maxLength = maxLength;
 
   FilterConstBuilder? _minimum;
-  FilterConstBuilder get minimum =>
-      _$this._minimum ??= new FilterConstBuilder();
+  FilterConstBuilder get minimum => _$this._minimum ??= FilterConstBuilder();
   set minimum(FilterConstBuilder? minimum) => _$this._minimum = minimum;
 
   FilterConstBuilder? _maximum;
-  FilterConstBuilder get maximum =>
-      _$this._maximum ??= new FilterConstBuilder();
+  FilterConstBuilder get maximum => _$this._maximum ??= FilterConstBuilder();
   set maximum(FilterConstBuilder? maximum) => _$this._maximum = maximum;
 
   JsonObject? _not;
@@ -224,11 +221,11 @@ class FilterBuilder implements Builder<Filter, FilterBuilder> {
   set pattern(String? pattern) => _$this._pattern = pattern;
 
   FilterBuilder? _contains;
-  FilterBuilder get contains => _$this._contains ??= new FilterBuilder();
+  FilterBuilder get contains => _$this._contains ??= FilterBuilder();
   set contains(FilterBuilder? contains) => _$this._contains = contains;
 
   FilterItemsBuilder? _items;
-  FilterItemsBuilder get items => _$this._items ??= new FilterItemsBuilder();
+  FilterItemsBuilder get items => _$this._items ??= FilterItemsBuilder();
   set items(FilterItemsBuilder? items) => _$this._items = items;
 
   String? _type;
@@ -267,7 +264,6 @@ class FilterBuilder implements Builder<Filter, FilterBuilder> {
 
   @override
   void replace(Filter other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Filter;
   }
 
@@ -283,7 +279,7 @@ class FilterBuilder implements Builder<Filter, FilterBuilder> {
     _$Filter _$result;
     try {
       _$result = _$v ??
-          new _$Filter._(
+          _$Filter._(
             const_: _const_?.build(),
             enum_: _enum_?.build(),
             exclusiveMinimum: _exclusiveMinimum?.build(),
@@ -325,7 +321,7 @@ class FilterBuilder implements Builder<Filter, FilterBuilder> {
         _$failedField = 'items';
         _items?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Filter', _$failedField, e.toString());
       }
       rethrow;

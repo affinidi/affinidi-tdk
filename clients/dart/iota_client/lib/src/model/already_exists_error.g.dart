@@ -15,12 +15,12 @@ AlreadyExistsErrorNameEnum _$alreadyExistsErrorNameEnumValueOf(String name) {
     case 'alreadyExistsError':
       return _$alreadyExistsErrorNameEnum_alreadyExistsError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<AlreadyExistsErrorNameEnum> _$alreadyExistsErrorNameEnumValues =
-    new BuiltSet<AlreadyExistsErrorNameEnum>(const <AlreadyExistsErrorNameEnum>[
+    BuiltSet<AlreadyExistsErrorNameEnum>(const <AlreadyExistsErrorNameEnum>[
   _$alreadyExistsErrorNameEnum_alreadyExistsError,
 ]);
 
@@ -35,12 +35,12 @@ AlreadyExistsErrorMessageEnum _$alreadyExistsErrorMessageEnumValueOf(
     case 'alreadyExistsColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod':
       return _$alreadyExistsErrorMessageEnum_alreadyExistsColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<AlreadyExistsErrorMessageEnum>
-    _$alreadyExistsErrorMessageEnumValues = new BuiltSet<
+    _$alreadyExistsErrorMessageEnumValues = BuiltSet<
         AlreadyExistsErrorMessageEnum>(const <AlreadyExistsErrorMessageEnum>[
   _$alreadyExistsErrorMessageEnum_alreadyExistsColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod,
 ]);
@@ -55,24 +55,24 @@ AlreadyExistsErrorHttpStatusCodeEnum
     case 'number409':
       return _$alreadyExistsErrorHttpStatusCodeEnum_number409;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<AlreadyExistsErrorHttpStatusCodeEnum>
-    _$alreadyExistsErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$alreadyExistsErrorHttpStatusCodeEnumValues = BuiltSet<
         AlreadyExistsErrorHttpStatusCodeEnum>(const <AlreadyExistsErrorHttpStatusCodeEnum>[
   _$alreadyExistsErrorHttpStatusCodeEnum_number409,
 ]);
 
 Serializer<AlreadyExistsErrorNameEnum> _$alreadyExistsErrorNameEnumSerializer =
-    new _$AlreadyExistsErrorNameEnumSerializer();
+    _$AlreadyExistsErrorNameEnumSerializer();
 Serializer<AlreadyExistsErrorMessageEnum>
     _$alreadyExistsErrorMessageEnumSerializer =
-    new _$AlreadyExistsErrorMessageEnumSerializer();
+    _$AlreadyExistsErrorMessageEnumSerializer();
 Serializer<AlreadyExistsErrorHttpStatusCodeEnum>
     _$alreadyExistsErrorHttpStatusCodeEnumSerializer =
-    new _$AlreadyExistsErrorHttpStatusCodeEnumSerializer();
+    _$AlreadyExistsErrorHttpStatusCodeEnumSerializer();
 
 class _$AlreadyExistsErrorNameEnumSerializer
     implements PrimitiveSerializer<AlreadyExistsErrorNameEnum> {
@@ -175,7 +175,7 @@ class _$AlreadyExistsError extends AlreadyExistsError {
 
   factory _$AlreadyExistsError(
           [void Function(AlreadyExistsErrorBuilder)? updates]) =>
-      (new AlreadyExistsErrorBuilder()..update(updates))._build();
+      (AlreadyExistsErrorBuilder()..update(updates))._build();
 
   _$AlreadyExistsError._(
       {required this.name,
@@ -183,16 +183,7 @@ class _$AlreadyExistsError extends AlreadyExistsError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'AlreadyExistsError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'AlreadyExistsError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'AlreadyExistsError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'AlreadyExistsError', 'traceId');
-  }
-
+      : super._();
   @override
   AlreadyExistsError rebuild(
           void Function(AlreadyExistsErrorBuilder) updates) =>
@@ -200,7 +191,7 @@ class _$AlreadyExistsError extends AlreadyExistsError {
 
   @override
   AlreadyExistsErrorBuilder toBuilder() =>
-      new AlreadyExistsErrorBuilder()..replace(this);
+      AlreadyExistsErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -262,7 +253,7 @@ class AlreadyExistsErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -285,7 +276,6 @@ class AlreadyExistsErrorBuilder
 
   @override
   void replace(AlreadyExistsError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AlreadyExistsError;
   }
 
@@ -301,7 +291,7 @@ class AlreadyExistsErrorBuilder
     _$AlreadyExistsError _$result;
     try {
       _$result = _$v ??
-          new _$AlreadyExistsError._(
+          _$AlreadyExistsError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'AlreadyExistsError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -318,7 +308,7 @@ class AlreadyExistsErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'AlreadyExistsError', _$failedField, e.toString());
       }
       rethrow;

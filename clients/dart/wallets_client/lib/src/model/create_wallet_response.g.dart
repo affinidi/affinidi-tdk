@@ -12,10 +12,9 @@ class _$CreateWalletResponse extends CreateWalletResponse {
 
   factory _$CreateWalletResponse(
           [void Function(CreateWalletResponseBuilder)? updates]) =>
-      (new CreateWalletResponseBuilder()..update(updates))._build();
+      (CreateWalletResponseBuilder()..update(updates))._build();
 
   _$CreateWalletResponse._({this.wallet}) : super._();
-
   @override
   CreateWalletResponse rebuild(
           void Function(CreateWalletResponseBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CreateWalletResponse extends CreateWalletResponse {
 
   @override
   CreateWalletResponseBuilder toBuilder() =>
-      new CreateWalletResponseBuilder()..replace(this);
+      CreateWalletResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -52,7 +51,7 @@ class CreateWalletResponseBuilder
   _$CreateWalletResponse? _$v;
 
   WalletDtoBuilder? _wallet;
-  WalletDtoBuilder get wallet => _$this._wallet ??= new WalletDtoBuilder();
+  WalletDtoBuilder get wallet => _$this._wallet ??= WalletDtoBuilder();
   set wallet(WalletDtoBuilder? wallet) => _$this._wallet = wallet;
 
   CreateWalletResponseBuilder() {
@@ -70,7 +69,6 @@ class CreateWalletResponseBuilder
 
   @override
   void replace(CreateWalletResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateWalletResponse;
   }
 
@@ -86,7 +84,7 @@ class CreateWalletResponseBuilder
     _$CreateWalletResponse _$result;
     try {
       _$result = _$v ??
-          new _$CreateWalletResponse._(
+          _$CreateWalletResponse._(
             wallet: _wallet?.build(),
           );
     } catch (_) {
@@ -95,7 +93,7 @@ class CreateWalletResponseBuilder
         _$failedField = 'wallet';
         _wallet?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateWalletResponse', _$failedField, e.toString());
       }
       rethrow;
