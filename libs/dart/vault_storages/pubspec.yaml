@@ -14,7 +14,7 @@ dependencies:
   affinidi_tdk_cryptography: ^2.3.2
   affinidi_tdk_iam_client: ^1.9.0
   affinidi_tdk_vault: 1.1.0-dev.4
-  affinidi_tdk_vault_data_manager: 1.0.0-dev.2
+  affinidi_tdk_vault_data_manager: 1.1.0-dev.6
   affinidi_tdk_vault_data_manager_client: ^1.11.0
   built_collection: ^5.1.1
   convert: ^3.1.2
