@@ -11,7 +11,7 @@ resolution: workspace
 dependencies:
   affinidi_tdk_common: ^1.5.1
   affinidi_tdk_vault_data_manager: 1.0.0-dev.2
-  ssi: 1.0.0-dev.22
+  ssi: ^1.0.0
 
 dev_dependencies:
   dart_flutter_team_lints: ^3.2.1
