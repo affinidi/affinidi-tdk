@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iota_client/affinidi_tdk_iota_client.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:jwt_decode/jwt_decode.dart';
@@ -37,6 +36,8 @@ void main() {
     });
 
     tearDownAll(() async {
+      await configurationsApi.deleteIotaConfigurationById(
+            configurationId: configurationId);
       await ResourceFactory.deleteWallet(walletId);
     });
 
