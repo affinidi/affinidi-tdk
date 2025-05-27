@@ -4,14 +4,14 @@ import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 void main() {
   group('Login Configuration Client Integration Tests', () {
     late ConfigurationApi configurationApi;
     late String configurationId;
 
-    setUp(() async {
+    setUpAll(() async {
       final env = getProjectEnvironment();
       final authProvider = AuthProvider(
         projectId: env.projectId,
@@ -22,11 +22,6 @@ void main() {
       );
 
       final loginConfigurationClient = AffinidiTdkLoginConfigurationClient(
-          dio: Dio(BaseOptions(
-            baseUrl: AffinidiTdkLoginConfigurationClient.basePath,
-            connectTimeout: const Duration(seconds: 5),
-            receiveTimeout: const Duration(seconds: 5),
-          )),
           authTokenHook: authProvider.fetchProjectScopedToken);
 
       configurationApi = loginConfigurationClient.getConfigurationApi();

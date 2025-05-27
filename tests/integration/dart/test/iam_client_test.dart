@@ -1,10 +1,9 @@
-import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 // NOTE: Project and Token APIs are not tested since UserTokenAuth is required
 void main() {
@@ -13,7 +12,7 @@ void main() {
     late PoliciesApi policiesApi;
     late ProjectsApi projectsApi;
 
-    setUp(() async {
+    setUpAll(() async {
       final env = getProjectEnvironment();
       tokenId = env.tokenId;
 
@@ -26,11 +25,6 @@ void main() {
       );
 
       final iamClient = AffinidiTdkIamClient(
-          dio: Dio(BaseOptions(
-            baseUrl: AffinidiTdkIamClient.basePath,
-            connectTimeout: const Duration(seconds: 5),
-            receiveTimeout: const Duration(seconds: 5),
-          )),
           authTokenHook: authProvider.fetchProjectScopedToken);
 
       policiesApi = iamClient.getPoliciesApi();

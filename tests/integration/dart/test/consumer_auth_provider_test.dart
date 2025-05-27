@@ -4,7 +4,7 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:ssi/ssi.dart';
 import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 void main() {
   late final ConsumerAuthProvider providerWithClient;
