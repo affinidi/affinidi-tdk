@@ -1,8 +1,12 @@
 import 'package:dio/dio.dart';
 
+/// A wrapper around [CancelToken] to provide a custom implementation for Affinidi API.
+/// This class allows for cancellation of requests and provides access to the
+/// request options and cancellation error.
 class AffinidiApiCancelToken implements CancelToken {
   final CancelToken _innerToken = CancelToken();
 
+  /// Creates a new instance of [AffinidiApiCancelToken].
   AffinidiApiCancelToken();
 
   @override
