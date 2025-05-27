@@ -19,7 +19,7 @@ class HiveCredentialStorage implements CredentialStorage {
   /// Retrieves a list of all stored verifiable credentials.
   @override
   Future<List<DigitalCredential>> listCredentials({
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -28,7 +28,7 @@ class HiveCredentialStorage implements CredentialStorage {
   @override
   Future<void> saveCredential({
     required VerifiableCredential verifiableCredential,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -37,7 +37,7 @@ class HiveCredentialStorage implements CredentialStorage {
   @override
   Future<void> deleteCredential({
     required String digitalCredentialId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -46,7 +46,7 @@ class HiveCredentialStorage implements CredentialStorage {
   @override
   Future<DigitalCredential> getCredential({
     required String digitalCredentialId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }

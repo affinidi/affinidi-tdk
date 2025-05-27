@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
-
+import '../helpers/cancel_token_interface.dart';
 import 'item.dart';
 
 /// Interface for managing file and folder storage operations.
@@ -17,7 +16,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<List<Item>> getFolder({
     String? folderId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows creating a folder
@@ -28,7 +27,7 @@ abstract class FileStorage {
   Future<Folder> createFolder({
     required String folderName,
     required String parentFolderId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows deleting a folder
@@ -38,7 +37,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<void> deleteFolder({
     required String folderId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows renaming a folder
@@ -49,7 +48,7 @@ abstract class FileStorage {
   Future<void> renameFolder({
     required String folderId,
     required String newName,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows retrieving a single file
@@ -61,7 +60,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<File> getFile({
     required String fileId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows retrieving file content
@@ -70,7 +69,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<Uint8List> getFileContent({
     required String fileId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows adding a new file
@@ -82,7 +81,7 @@ abstract class FileStorage {
     required String fileName,
     required Uint8List data,
     String? parentFolderId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows deleting a file
@@ -91,7 +90,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<void> deleteFile({
     required String fileId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows renaming a file
@@ -101,6 +100,6 @@ abstract class FileStorage {
   Future<void> renameFile({
     required String fileId,
     required String newName,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 }

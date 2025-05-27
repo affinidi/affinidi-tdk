@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
@@ -32,13 +31,13 @@ abstract interface class VaultDataManagerServiceInterface {
   /// final profiles = await vaultDataManagerService.getProfiles();
   /// ```
   Future<List<VaultDataManagerProfile>> getProfiles({
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Gets child nodes for the specified node
   Future<List<Node>?> getChildNodes({
     required String nodeId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Creates a new profile
@@ -59,7 +58,7 @@ abstract interface class VaultDataManagerServiceInterface {
     required String name,
     String? description,
     String? profilePictureURI,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Updates profile metadata
@@ -83,7 +82,7 @@ abstract interface class VaultDataManagerServiceInterface {
     String? name,
     String? description,
     String? profilePictureURI,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Deletes a profile and all its contents
@@ -96,7 +95,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// ```
   Future<void> deleteProfile(
     String profileId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Retrieves structured data associated with a profile
@@ -111,7 +110,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// ```
   Future<ProfileData> getProfileData(
     String profileId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Updates structured data for a profile
@@ -129,7 +128,7 @@ abstract interface class VaultDataManagerServiceInterface {
   Future<void> updateProfileData({
     required String profileId,
     required ProfileData profileData,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Initiates document scanning for a file
@@ -142,7 +141,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// ```
   Future<void> scanFile(
     String nodeId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Retrieves list of scanned files
@@ -154,7 +153,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// final scannedFiles = await vaultDataManagerService.getScannedFiles();
   /// ```
   Future<List<ScannedFile>> getScannedFiles({
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Gets recognized data from a scanned file
@@ -170,14 +169,14 @@ abstract interface class VaultDataManagerServiceInterface {
   /// ```
   Future<RecognizedProfileData> getScannedFileInfo(
     String fileToken, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Creates a new folder
   Future<void> createFolder({
     required String folderName,
     required String parentNodeId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Creates a new file with encrypted content
@@ -185,7 +184,7 @@ abstract interface class VaultDataManagerServiceInterface {
     required String fileName,
     required String parentFolderNodeId,
     required Uint8List data,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Downloads and decrypts file content
@@ -196,45 +195,45 @@ abstract interface class VaultDataManagerServiceInterface {
   /// Throws [TdkException] if cannot get data encryption key
   Future<List<int>> downloadFile({
     required String nodeId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Renames a file
   Future<void> renameFile({
     required String nodeId,
     required String newName,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Renames a folder
   Future<void> renameFolder({
     required String nodeId,
     required String newName,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Deletes a folder and its contents
   Future<void> deleteFolder(
     String nodeId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Deletes a file
   Future<void> deleteFile(
     String nodeId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Retrieves node information
   Future<Node> getNodeInfo(
     String nodeId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Gets all verifiable credentials for a profile
   Future<List<DigitalCredential>> getClaimedCredentialsByProfile(
     String profileId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Gets all digital credentials with their nodes for a profile
@@ -246,20 +245,20 @@ abstract interface class VaultDataManagerServiceInterface {
   /// Throws [TdkException] when cannot get verifiable credentials
   Future<List<DigitalCredential>> getDigitalCredentials(
     String profileId, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Adds a verifiable credential to a profile
   Future<void> addVerifiableCredentialToProfile({
     required String profileId,
     required VerifiableCredential verifiableCredential,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Deletes a claimed credential
   Future<void> deleteClaimedCredential({
     required String nodeId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Gets storage consumption information
@@ -273,7 +272,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// final fileConsumption = await vaultDataManagerService.getVaultDataFileConsumption();
   /// ```
   Future<VaultFileConsumption> getVaultDataFileConsumption({
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Gets accounts of associated profiles. Optionally provide [limit] and [exclusiveStartKey].
@@ -282,7 +281,7 @@ abstract interface class VaultDataManagerServiceInterface {
   Future<List<Account>> getAccounts({
     int? limit,
     String? exclusiveStartKey,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Creates account. With given [accountIndex], [accountDid], [didProof].
@@ -294,13 +293,13 @@ abstract interface class VaultDataManagerServiceInterface {
     required String accountDid,
     required String didProof,
     required AccountMetadata metadata,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Deletes an account for a given [accountIndex].
   Future<void> deleteAccount({
     required int accountIndex,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Updates an account for a given [accountIndex].
@@ -309,6 +308,6 @@ abstract interface class VaultDataManagerServiceInterface {
     required String accountDid,
     required String didProof,
     required AccountMetadata metadata,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 }

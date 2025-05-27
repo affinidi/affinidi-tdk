@@ -14,6 +14,7 @@ import 'package:ssi/ssi.dart';
 import '../credential/vfs_credential_storage.dart';
 import '../exceptions/tdk_exception_type.dart';
 import '../file/vfs_file_storage.dart';
+import '../helpers/cancel_token_adapter.dart';
 import '../iam_api_service.dart';
 import '../iam_api_service_interface.dart';
 import '../model/account.dart';
@@ -156,7 +157,7 @@ class VfsProfileRepository implements ProfileRepository {
   Future<void> createProfile({
     required String name,
     String? description,
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final nextAccountIndex = (await _keyStorage.readAccountIndex()) + 1;
 
@@ -203,7 +204,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   @override
   Future<List<Profile>> listProfiles({
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final accountVaultDataManagerService =
         await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
@@ -224,7 +225,7 @@ class VfsProfileRepository implements ProfileRepository {
 
   Future<Profile?> _getAccountPerProfile(
     Account account, {
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final accountIndex = account.accountIndex;
     final profileKeyPair =
@@ -287,7 +288,7 @@ class VfsProfileRepository implements ProfileRepository {
   @override
   Future<void> deleteProfile(
     Profile profile, {
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     if (profile.profileRepositoryId != id) {
       Error.throwWithStackTrace(
@@ -320,7 +321,7 @@ class VfsProfileRepository implements ProfileRepository {
   @override
   Future<void> updateProfile(
     Profile profile, {
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     if (profile.profileRepositoryId != id) {
       Error.throwWithStackTrace(
@@ -398,7 +399,7 @@ class VfsProfileRepository implements ProfileRepository {
     required int accountIndex,
     required String granteeDid,
     required Permissions permissions,
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
     final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
@@ -407,7 +408,8 @@ class VfsProfileRepository implements ProfileRepository {
     await iamApiService.grantAccessVfs(
       granteeDid: granteeDid,
       permissions: permissions,
-      cancelToken: cancelToken,
+      cancelToken:
+          cancelToken != null ? CancelTokenAdapter.from(cancelToken) : null,
     );
 
     final accountVaultDataManagerService =
@@ -439,14 +441,15 @@ class VfsProfileRepository implements ProfileRepository {
   Future<void> revokeProfileAccess({
     required int accountIndex,
     required String granteeDid,
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
     final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
     final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
     await iamApiService.revokeAccessVfs(
       granteeDid: granteeDid,
-      cancelToken: cancelToken,
+      cancelToken:
+          cancelToken != null ? CancelTokenAdapter.from(cancelToken) : null,
     );
   }
 
@@ -460,7 +463,7 @@ class VfsProfileRepository implements ProfileRepository {
     required String profileId,
     required Uint8List kek,
     required String grantedProfileDid,
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final profileKeyPair =
         await _memoizedKeyPair(accountIndex: '$accountIndex');

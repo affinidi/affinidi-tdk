@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
-
+import '../helpers/cancel_token_interface.dart';
 import '../permissions.dart';
 import '../profile.dart';
 
@@ -12,7 +11,7 @@ abstract class ProfileRepository {
 
   /// Retrieves a list of all available profiles.
   Future<List<Profile>> listProfiles({
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Creates a new profile.
@@ -23,7 +22,7 @@ abstract class ProfileRepository {
   Future<void> createProfile({
     required String name,
     String? description,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Updates an existing profile.
@@ -32,7 +31,7 @@ abstract class ProfileRepository {
   /// [cancelToken] - Optional cancel token for API requests.
   Future<void> updateProfile(
     Profile profile, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Deletes a profile.
@@ -41,7 +40,7 @@ abstract class ProfileRepository {
   /// [cancelToken] - Optional cancel token for API requests.
   Future<void> deleteProfile(
     Profile profile, {
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Configures the profile repository with the provided settings.
@@ -65,7 +64,7 @@ abstract class ProfileRepository {
     required int accountIndex,
     required String granteeDid,
     required Permissions permissions,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Revokes access to a profile for a specific user.
@@ -76,7 +75,7 @@ abstract class ProfileRepository {
   Future<void> revokeProfileAccess({
     required int accountIndex,
     required String granteeDid,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Receives access to a profile that was granted by another user.
@@ -91,6 +90,6 @@ abstract class ProfileRepository {
     required String profileId,
     required Uint8List kek,
     required String grantedProfileDid,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 }

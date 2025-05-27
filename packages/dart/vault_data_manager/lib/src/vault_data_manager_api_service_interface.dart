@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:dio/dio.dart';
-import 'helpers/affinidi_api_cancel_token.dart';
 
 /// Interface for service that interacts with the Vault Data Manager API
 abstract interface class VaultDataManagerApiServiceInterface {
@@ -10,7 +9,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   Future<Response> downloadNodeContents({
     required String downloadUrl,
     required List<int> dek,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Upload a given [file] data in format of [Uint8List] to a given [parentFolderId] with given [fileName]
@@ -22,7 +21,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Upload a given [verifiableCredentialBlob] data in format of [Uint8List] to a given [profileId] with given [verifiableCredentialName]
@@ -34,49 +33,49 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Retrieves all the nodes that hold verifiable credentials for a given [profileId]
   Future<Response<ListNodeChildrenOK>> getVerifiableCredentialsNodes({
     required String profileId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Creates a folder with given [name] within a given [parentNodeId]
   Future<Response<CreateNodeOK>> createFolder({
     required String name,
     required String parentNodeId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets all the children nodes for a given [nodeId]
   Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(String nodeId,
-      [AffinidiApiCancelToken? cancelToken]);
+      [CancelToken? cancelToken]);
 
   /// Gets detailed information for a given [nodeId]
   Future<Response<GetDetailedNodeInfoOK>> getNodeInfo({
     required String nodeId,
     List<int>? dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets scanned file details for a given [scannedFileJobId]
   Future<Response<GetScannedFileInfoOK>> getScannedFileInfo({
     required String scannedFileJobId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets all the scanned files
   Future<Response<ListScannedFilesOK>> getAllScannedFiles({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Enrolls a new file for scanning for given [nodeId] and encrypted with given data encryption key
   Future<Response<StartFileScanOK>> startFileScan({
     required String nodeId,
     required List<int> dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Updates profile data for a given [profileNodeId] with given [profileData] and encrypted with given data encryption key
@@ -84,19 +83,19 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required String profileNodeId,
     required Map profileData,
     required List<int> dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets the list of all profiles
   Future<Response<ListRootNodeChildrenOK>> getListOfProfiles({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets the profile data for a given [profileNodeId] and decrypt it with given data encryption key [dekEncryptedByVfsPublicKey]
   Future<Response<QueryProfileDataOK>> getProfileData({
     required String profileNodeId,
     required List<int> dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Creates a new profile with given [profileName]
@@ -119,7 +118,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required String walletCryptoMaterialHash,
     String? profileDescription,
     String? profilePictureURI,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Updates the given node [nodeId] with given [newName], [newDescription] and [newPictureURI]
@@ -128,23 +127,23 @@ abstract interface class VaultDataManagerApiServiceInterface {
     String? newName,
     String? newDescription,
     String? newPictureURI,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Deletes a node by a given [nodeId]
   Future<Response<DeleteNodeDto>> deleteNodeById({
     required String nodeId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets the profile template. Default to https://schema.affinidi.io/profile-template/template.json.
   Future<Response> getProfileTemplate({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Initializes the Vault Data Manager system by creating the root node
   Future<Response<InitNodesOK>> initVaultDataManagerSystem({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets the public key of the Vault File System API that is used to encrypt the data encryption key
@@ -152,12 +151,12 @@ abstract interface class VaultDataManagerApiServiceInterface {
 
   /// Gets root node info which can be used to determine the consumed space
   Future<Response<GetDetailedNodeInfoOK>> getRootNodeInfo({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets the configuration of the Vault Data Manager API
   Future<Response<GetConfigOK>> getConfig({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   });
 
   /// Gets accounts of associated profiles. Optionally provide [limit] and [exclusiveStartKey].
@@ -165,7 +164,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// [exclusiveStartKey] - is primary key of the first item that this operation will evaluate.
   /// Use the value that was returned for lastEvaluatedKey in the previous operation.
   /// [exclusiveStartKey] - The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-  /// [cancelToken] - An [AffinidiApiCancelToken] that can be used to cancel the operation
+  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
@@ -174,7 +173,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   Future<Response<ListAccountsDto>> getAccounts({
     int? limit,
     String? exclusiveStartKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
@@ -186,7 +185,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// [accountIndex] - positive integer used to identify account.
   /// [accountDid] - Decentralized identifier (DID) is type of identifier that enables verifiable, decentralized digital identity.
   /// [didProof] - // TODO: come up with simple explanation according to https://www.w3.org/TR/did-1.0/#verification-material;
-  /// [cancelToken] - An [AffinidiApiCancelToken] that can be used to cancel the operation
+  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
@@ -197,7 +196,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required String accountDid,
     required String didProof,
     Map<String, Object>? metadata,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
@@ -206,7 +205,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   });
 
   /// Deletes an account for a given [accountIndex].
-  /// [cancelToken] - An [AffinidiApiCancelToken] that can be used to cancel the operation
+  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
@@ -214,7 +213,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   Future<Response<DeleteAccountDto>> deleteAccount({
     required int accountIndex,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
@@ -223,7 +222,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   });
 
   /// Updates an account for a given [accountIndex].
-  /// [cancelToken] - An [AffinidiApiCancelToken] that can be used to cancel the operation
+  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
@@ -234,7 +233,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required String accountDid,
     required String didProof,
     Map<String, Object>? metadata,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,

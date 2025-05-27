@@ -1,7 +1,7 @@
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
+import '../helpers/cancel_token_interface.dart';
 
 /// Interface for managing verifiable credentials storage.
 abstract class CredentialStorage {
@@ -12,14 +12,14 @@ abstract class CredentialStorage {
   /// DigitalCredential contains an id which is needed for deleting a credential.
   /// Throws for network connectivity
   Future<List<DigitalCredential>> listCredentials({
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows saving verifiable credential data to claimed credentials
   /// Throws for network connectivity
   Future<void> saveCredential({
     required VerifiableCredential verifiableCredential,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows deleting a verifiableCredential
@@ -27,7 +27,7 @@ abstract class CredentialStorage {
   /// Throws for network connectivity
   Future<void> deleteCredential({
     required String digitalCredentialId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Retrieves a DigitalCredential credential content from its id
@@ -35,7 +35,7 @@ abstract class CredentialStorage {
   /// Throws for network connectivity
   Future<DigitalCredential> getCredential({
     required String digitalCredentialId,
-    AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   });
 
   /// Queries credentials using a PEX query.

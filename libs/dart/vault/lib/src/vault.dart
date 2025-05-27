@@ -3,6 +3,7 @@ import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.
     as vdm;
 import 'package:ssi/ssi.dart';
 
+import '../affinidi_tdk_vault.dart';
 import 'dto/shared_profile_dto.dart';
 import 'exceptions/tdk_exception_type.dart';
 import 'permissions.dart';
@@ -184,7 +185,7 @@ class Vault {
   ///
   /// [cancelToken] - Optional cancel token for the operation.
   Future<List<Profile>> listProfiles({
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     if (!_initialized) {
       Error.throwWithStackTrace(
@@ -214,7 +215,7 @@ class Vault {
     required String profileId,
     required String toDid,
     required Permissions permissions,
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final profile = await _getProfileById(profileId);
 
@@ -258,7 +259,7 @@ class Vault {
   Future<void> addSharedProfile({
     required String profileId,
     required SharedProfileDto sharedProfile,
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final profiles = await listProfiles();
     final profile =
@@ -305,7 +306,7 @@ class Vault {
   Future<void> revokeProfileAccess({
     required String profileId,
     required String granteeDid,
-    vdm.AffinidiApiCancelToken? cancelToken,
+    VaultCancelToken? cancelToken,
   }) async {
     final profile = await _getProfileById(profileId);
 

@@ -54,7 +54,7 @@ class VaultDataManagerApiService
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     final edekInfo = EdekInfoBuilder()
       ..edek = base64.encode(dekEncryptedByWalletCryptoMaterial)
@@ -119,7 +119,7 @@ class VaultDataManagerApiService
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     final edekInfo = EdekInfoBuilder()
       ..edek = base64.encode(dekEncryptedByWalletCryptoMaterial)
@@ -183,7 +183,7 @@ class VaultDataManagerApiService
   @override
   Future<Response<ListNodeChildrenOK>> getVerifiableCredentialsNodes({
     required String profileId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     return getChildrenByNodeId(
       _getVcRootIdByProfileId(
@@ -197,7 +197,7 @@ class VaultDataManagerApiService
   Future<Response<CreateNodeOK>> createFolder({
     required String name,
     required String parentNodeId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     final createFolderInput = CreateNodeInputBuilder()
       ..name = name
@@ -212,7 +212,7 @@ class VaultDataManagerApiService
 
   Future<Response<CreateNodeOK>> _createNode({
     required CreateNodeInput createNodeInput,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return await _nodesApi.createNode(
@@ -258,7 +258,7 @@ class VaultDataManagerApiService
 
   @override
   Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(String nodeId,
-      [AffinidiApiCancelToken? cancelToken]) async {
+      [CancelToken? cancelToken]) async {
     try {
       return await _nodesApi.listNodeChildren(
         nodeId: nodeId,
@@ -279,7 +279,7 @@ class VaultDataManagerApiService
   Future<Response<GetDetailedNodeInfoOK>> getNodeInfo({
     required String nodeId,
     List<int>? dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return await _nodesApi.getDetailedNodeInfo(
@@ -304,7 +304,7 @@ class VaultDataManagerApiService
   @override
   Future<Response<GetScannedFileInfoOK>> getScannedFileInfo({
     required String scannedFileJobId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _filesApi.getScannedFileInfo(
@@ -325,7 +325,7 @@ class VaultDataManagerApiService
 
   @override
   Future<Response<ListScannedFilesOK>> getAllScannedFiles({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _filesApi.listScannedFiles(
@@ -347,7 +347,7 @@ class VaultDataManagerApiService
   Future<Response<StartFileScanOK>> startFileScan({
     required String nodeId,
     required List<int> dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       final scanFileInput = StartFileScanInputBuilder()
@@ -375,7 +375,7 @@ class VaultDataManagerApiService
     required String profileNodeId,
     required Map profileData,
     required List<int> dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       final updateProfileDataInput = UpdateProfileDataInputBuilder()
@@ -401,7 +401,7 @@ class VaultDataManagerApiService
 
   @override
   Future<Response<ListRootNodeChildrenOK>> getListOfProfiles({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _nodesApi.listRootNodeChildren(
@@ -427,7 +427,7 @@ class VaultDataManagerApiService
     required String walletCryptoMaterialHash,
     String? profileDescription,
     String? profilePictureURI,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     final edekInfo = EdekInfoBuilder()
       ..edek = base64.encode(dekEncryptedByWalletCryptoMaterial)
@@ -486,7 +486,7 @@ class VaultDataManagerApiService
   @override
   Future<Response<DeleteNodeDto>> deleteNodeById({
     required String nodeId,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return await RetryHelper.retry(
@@ -512,7 +512,7 @@ class VaultDataManagerApiService
 
   @override
   Future<Response> getProfileTemplate({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _dio.get(
@@ -533,7 +533,7 @@ class VaultDataManagerApiService
 
   @override
   Future<Response<InitNodesOK>> initVaultDataManagerSystem({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       // ignore: deprecated_member_use
@@ -579,7 +579,7 @@ class VaultDataManagerApiService
 
   @override
   Future<Response<GetDetailedNodeInfoOK>> getRootNodeInfo({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) {
     return getNodeInfo(
       nodeId: rootNodeIdBase64Encoded,
@@ -591,7 +591,7 @@ class VaultDataManagerApiService
   Future<Response<QueryProfileDataOK>> getProfileData({
     required String profileNodeId,
     required List<int> dekEncryptedByVfsPublicKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _profileDataApi.queryProfileData(
@@ -619,7 +619,7 @@ class VaultDataManagerApiService
   Future<Response> downloadNodeContents({
     required String downloadUrl,
     required List<int> dek,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _dio.fetch(
@@ -650,7 +650,7 @@ class VaultDataManagerApiService
 
   @override
   Future<Response<GetConfigOK>> getConfig({
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) {
     try {
       return _configApi.getConfig();
@@ -677,7 +677,7 @@ class VaultDataManagerApiService
     ValidateStatus? validateStatus,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
   }) async {
     try {
       final createAccountInput = CreateAccountInputBuilder()
@@ -722,7 +722,7 @@ class VaultDataManagerApiService
   Future<Response<ListAccountsDto>> getAccounts({
     int? limit,
     String? exclusiveStartKey,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
@@ -756,7 +756,7 @@ class VaultDataManagerApiService
   @override
   Future<Response<DeleteAccountDto>> deleteAccount({
     required int accountIndex,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
@@ -790,7 +790,7 @@ class VaultDataManagerApiService
     required String accountDid,
     required String didProof,
     Map<String, Object>? metadata,
-    AffinidiApiCancelToken? cancelToken,
+    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,

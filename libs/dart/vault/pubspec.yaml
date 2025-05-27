@@ -10,7 +10,6 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.5.1
-  affinidi_tdk_vault_data_manager: 1.1.0-dev.6
   ssi: ^1.0.0
 
 dev_dependencies:
