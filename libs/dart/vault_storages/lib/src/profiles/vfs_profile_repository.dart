@@ -12,6 +12,7 @@ import 'package:ssi/ssi.dart';
 import '../credential/vfs_credential_storage.dart';
 import '../exceptions/tdk_exception_type.dart';
 import '../file/vfs_file_storage.dart';
+import '../helpers/dio_cancel_token_adapter.dart';
 import '../iam_api_service.dart';
 import '../iam_api_service_interface.dart';
 import '../model/account.dart';
@@ -154,6 +155,7 @@ class VfsProfileRepository implements ProfileRepository {
   Future<void> createProfile({
     required String name,
     String? description,
+    VaultCancelToken? cancelToken,
   }) async {
     final nextAccountIndex = (await _keyStorage.readAccountIndex()) + 1;
 
@@ -176,6 +178,7 @@ class VfsProfileRepository implements ProfileRepository {
     await profileDataManager.createProfile(
       name: name,
       description: description,
+      cancelToken: cancelToken,
     );
 
     final accountMetadata = AccountMetadata(
@@ -192,20 +195,36 @@ class VfsProfileRepository implements ProfileRepository {
       accountDid: profileDid,
       didProof: profileDidProof,
       metadata: accountMetadata,
+      cancelToken: cancelToken,
     );
     await _keyStorage.writeAccountIndex(nextAccountIndex);
   }
 
   @override
-  Future<List<Profile>> listProfiles() async {
+  Future<List<Profile>> listProfiles({
+    VaultCancelToken? cancelToken,
+  }) async {
     final accountVaultDataManagerService =
         await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
-    final accounts = await accountVaultDataManagerService.getAccounts();
-    final profiles = await Future.wait(accounts.map(_getAccountPerProfile));
+    final accounts = await accountVaultDataManagerService.getAccounts(
+      cancelToken: cancelToken,
+    );
+    final profiles = await Future.wait(
+      accounts.map(
+        (account) => _getAccountPerProfile(
+          account,
+          cancelToken: cancelToken,
+        ),
+      ),
+      eagerError: cancelToken != null,
+    );
     return profiles.nonNulls.toList();
   }
 
-  Future<Profile?> _getAccountPerProfile(Account account) async {
+  Future<Profile?> _getAccountPerProfile(
+    Account account, {
+    VaultCancelToken? cancelToken,
+  }) async {
     final accountIndex = account.accountIndex;
     final profileKeyPair =
         await _memoizedKeyPair(accountIndex: '$accountIndex');
@@ -216,7 +235,9 @@ class VfsProfileRepository implements ProfileRepository {
           base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
     );
 
-    final vfsProfiles = await profileDataManager.getProfiles();
+    final vfsProfiles =
+        await profileDataManager.getProfiles(cancelToken: cancelToken);
+    // Note: accounts should always have no more than one profile associated.
     final profile = vfsProfiles.firstOrNull;
 
     if (profile == null) {
@@ -263,7 +284,10 @@ class VfsProfileRepository implements ProfileRepository {
   }
 
   @override
-  Future<void> deleteProfile(Profile profile) async {
+  Future<void> deleteProfile(
+    Profile profile, {
+    VaultCancelToken? cancelToken,
+  }) async {
     if (profile.profileRepositoryId != id) {
       Error.throwWithStackTrace(
         TdkException(
@@ -277,18 +301,26 @@ class VfsProfileRepository implements ProfileRepository {
     final profileDataManager = await _memoizedDataManagerService(
       walletKeyId: profile.accountIndex.toString(),
     );
-    await profileDataManager.deleteProfile(profile.id);
+    await profileDataManager.deleteProfile(
+      profile.id,
+      cancelToken: cancelToken,
+    );
 
     final accountVaultDataManagerService =
         await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
     await accountVaultDataManagerService.deleteAccount(
-        accountIndex: profile.accountIndex);
+      accountIndex: profile.accountIndex,
+      cancelToken: cancelToken,
+    );
 
     _clearMemoizedProfileData(profile.accountIndex);
   }
 
   @override
-  Future<void> updateProfile(Profile profile) async {
+  Future<void> updateProfile(
+    Profile profile, {
+    VaultCancelToken? cancelToken,
+  }) async {
     if (profile.profileRepositoryId != id) {
       Error.throwWithStackTrace(
         TdkException(
@@ -307,6 +339,7 @@ class VfsProfileRepository implements ProfileRepository {
       name: profile.name,
       description: profile.description,
       profilePictureURI: profile.profilePictureURI,
+      cancelToken: cancelToken,
     );
   }
 
@@ -364,6 +397,7 @@ class VfsProfileRepository implements ProfileRepository {
     required int accountIndex,
     required String granteeDid,
     required Permissions permissions,
+    VaultCancelToken? cancelToken,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
     final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
@@ -372,6 +406,8 @@ class VfsProfileRepository implements ProfileRepository {
     await iamApiService.grantAccessVfs(
       granteeDid: granteeDid,
       permissions: permissions,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );
 
     final accountVaultDataManagerService =
@@ -403,12 +439,15 @@ class VfsProfileRepository implements ProfileRepository {
   Future<void> revokeProfileAccess({
     required int accountIndex,
     required String granteeDid,
+    VaultCancelToken? cancelToken,
   }) async {
     final didSigner = await _memoizedDidSigner('$accountIndex');
     final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
     final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
     await iamApiService.revokeAccessVfs(
       granteeDid: granteeDid,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );
   }
 
@@ -422,6 +461,7 @@ class VfsProfileRepository implements ProfileRepository {
     required String profileId,
     required Uint8List kek,
     required String grantedProfileDid,
+    VaultCancelToken? cancelToken,
   }) async {
     final profileKeyPair =
         await _memoizedKeyPair(accountIndex: '$accountIndex');
@@ -455,6 +495,7 @@ class VfsProfileRepository implements ProfileRepository {
       accountDid: profileDidSigner.did,
       didProof: profileDidProof,
       metadata: accountMetadata,
+      cancelToken: cancelToken,
     );
   }
 

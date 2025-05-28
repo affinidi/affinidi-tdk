@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart' as vault;
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../affinidi_tdk_vault_storages.dart' as storages;
@@ -46,87 +47,154 @@ class VfsSharedStorage implements vault.SharedStorage {
   /// FileStorage operations
 
   @override
-  Future<List<vault.Item>> getFolder({String? folderId}) async {
+  Future<List<vault.Item>> getFolder({
+    String? folderId,
+    VaultCancelToken? cancelToken,
+  }) async {
     final id = folderId ?? _sharedProfileId;
-    return _fileStorage.getFolder(folderId: id);
+    return _fileStorage.getFolder(
+      folderId: id,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
   Future<void> createFile(
       {required String fileName,
       required Uint8List data,
-      String? parentFolderId}) async {
+      String? parentFolderId,
+      VaultCancelToken? cancelToken}) async {
     await _fileStorage.createFile(
       fileName: fileName,
       data: data,
       parentFolderId: parentFolderId,
+      cancelToken: cancelToken,
     );
   }
 
   @override
-  Future<vault.Folder> createFolder(
-      {required String folderName, required String parentFolderId}) async {
+  Future<vault.Folder> createFolder({
+    required String folderName,
+    required String parentFolderId,
+    VaultCancelToken? cancelToken,
+  }) async {
     return _fileStorage.createFolder(
-        folderName: folderName, parentFolderId: parentFolderId);
+      folderName: folderName,
+      parentFolderId: parentFolderId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<void> deleteFile({required String fileId}) async {
-    await _fileStorage.deleteFile(fileId: fileId);
+  Future<void> deleteFile({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    await _fileStorage.deleteFile(
+      fileId: fileId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<void> deleteFolder({required String folderId}) async {
-    await _fileStorage.deleteFolder(folderId: folderId);
+  Future<void> deleteFolder({
+    required String folderId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    await _fileStorage.deleteFolder(
+      folderId: folderId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<vault.File> getFile({required String fileId}) async {
-    return await _fileStorage.getFile(fileId: fileId);
+  Future<vault.File> getFile({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    return await _fileStorage.getFile(
+      fileId: fileId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<Uint8List> getFileContent({required String fileId}) async {
-    return await _fileStorage.getFileContent(fileId: fileId);
+  Future<Uint8List> getFileContent({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    return await _fileStorage.getFileContent(
+      fileId: fileId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<void> renameFile(
-      {required String fileId, required String newName}) async {
-    await _fileStorage.renameFile(fileId: fileId, newName: newName);
+  Future<void> renameFile({
+    required String fileId,
+    required String newName,
+    VaultCancelToken? cancelToken,
+  }) async {
+    await _fileStorage.renameFile(
+      fileId: fileId,
+      newName: newName,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<void> renameFolder(
-      {required String folderId, required String newName}) async {
-    await _fileStorage.renameFolder(folderId: folderId, newName: newName);
+  Future<void> renameFolder({
+    required String folderId,
+    required String newName,
+    VaultCancelToken? cancelToken,
+  }) async {
+    await _fileStorage.renameFolder(
+      folderId: folderId,
+      newName: newName,
+      cancelToken: cancelToken,
+    );
   }
 
   /// CredentialStorages operations
 
   @override
-  Future<void> deleteCredential({required String digitalCredentialId}) async {
+  Future<void> deleteCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  }) async {
     await _credentialStorage.deleteCredential(
-        digitalCredentialId: digitalCredentialId);
+      digitalCredentialId: digitalCredentialId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<vault.DigitalCredential> getCredential(
-      {required String digitalCredentialId}) async {
+  Future<vault.DigitalCredential> getCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  }) async {
     return await _credentialStorage.getCredential(
-        digitalCredentialId: digitalCredentialId);
+      digitalCredentialId: digitalCredentialId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<List<vault.DigitalCredential>> listCredentials() async {
-    return await _credentialStorage.listCredentials();
+  Future<List<vault.DigitalCredential>> listCredentials({
+    VaultCancelToken? cancelToken,
+  }) async {
+    return await _credentialStorage.listCredentials(cancelToken: cancelToken);
   }
 
   @override
-  Future<void> saveCredential(
-      {required VerifiableCredential verifiableCredential}) async {
+  Future<void> saveCredential({
+    required VerifiableCredential verifiableCredential,
+    VaultCancelToken? cancelToken,
+  }) async {
     await _credentialStorage.saveCredential(
-        verifiableCredential: verifiableCredential);
+      verifiableCredential: verifiableCredential,
+      cancelToken: cancelToken,
+    );
   }
 
   @override

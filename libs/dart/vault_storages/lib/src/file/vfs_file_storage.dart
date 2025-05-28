@@ -27,7 +27,10 @@ class VFSFileStorage implements FileStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<List<Item>> getFolder({String? folderId}) async {
+  Future<List<Item>> getFolder({
+    String? folderId,
+    VaultCancelToken? cancelToken,
+  }) async {
     if (folderId == null) {
       Error.throwWithStackTrace(
           TdkException(
@@ -35,8 +38,10 @@ class VFSFileStorage implements FileStorage {
               code: TdkExceptionType.folderNotFound.code),
           StackTrace.current);
     }
-    final items =
-        await _vaultDataManagerService.getChildNodes(nodeId: folderId);
+    final items = await _vaultDataManagerService.getChildNodes(
+      nodeId: folderId,
+      cancelToken: cancelToken,
+    );
 
     if (items == null) {
       return [];
@@ -75,14 +80,18 @@ class VFSFileStorage implements FileStorage {
   Future<Folder> createFolder({
     required String folderName,
     required String parentFolderId,
+    VaultCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.createFolder(
       folderName: folderName,
       parentNodeId: parentFolderId,
+      cancelToken: cancelToken,
     );
 
-    final items =
-        await _vaultDataManagerService.getChildNodes(nodeId: parentFolderId);
+    final items = await _vaultDataManagerService.getChildNodes(
+      nodeId: parentFolderId,
+      cancelToken: cancelToken,
+    );
     final folder = items?.firstWhere(
       (node) => node.name == folderName && node.type == NodeType.FOLDER,
       orElse: () => Error.throwWithStackTrace(
@@ -103,24 +112,38 @@ class VFSFileStorage implements FileStorage {
   }
 
   @override
-  Future<void> deleteFolder({required String folderId}) async {
-    await _vaultDataManagerService.deleteFolder(folderId);
+  Future<void> deleteFolder({
+    required String folderId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    await _vaultDataManagerService.deleteFolder(
+      folderId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
   Future<void> renameFolder({
     required String folderId,
     required String newName,
+    VaultCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.renameFolder(
       nodeId: folderId,
       newName: newName,
+      cancelToken: cancelToken,
     );
   }
 
   @override
-  Future<File> getFile({required String fileId}) async {
-    final node = await _vaultDataManagerService.getNodeInfo(fileId);
+  Future<File> getFile({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    final node = await _vaultDataManagerService.getNodeInfo(
+      fileId,
+      cancelToken: cancelToken,
+    );
     if (node.type != NodeType.FILE) {
       Error.throwWithStackTrace(
         TdkException(
@@ -140,8 +163,14 @@ class VFSFileStorage implements FileStorage {
   }
 
   @override
-  Future<Uint8List> getFileContent({required String fileId}) async {
-    final content = await _vaultDataManagerService.downloadFile(nodeId: fileId);
+  Future<Uint8List> getFileContent({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    final content = await _vaultDataManagerService.downloadFile(
+      nodeId: fileId,
+      cancelToken: cancelToken,
+    );
     return Uint8List.fromList(content);
   }
 
@@ -150,27 +179,37 @@ class VFSFileStorage implements FileStorage {
     required String fileName,
     required Uint8List data,
     String? parentFolderId,
+    VaultCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.createFile(
       fileName: fileName,
       parentFolderNodeId: parentFolderId ?? '',
       data: data,
+      cancelToken: cancelToken,
     );
   }
 
   @override
-  Future<void> deleteFile({required String fileId}) async {
-    await _vaultDataManagerService.deleteFile(fileId);
+  Future<void> deleteFile({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    await _vaultDataManagerService.deleteFile(
+      fileId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
   Future<void> renameFile({
     required String fileId,
     required String newName,
+    VaultCancelToken? cancelToken,
   }) async {
     await _vaultDataManagerService.renameFile(
       nodeId: fileId,
       newName: newName,
+      cancelToken: cancelToken,
     );
   }
 }

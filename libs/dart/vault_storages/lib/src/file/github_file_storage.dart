@@ -20,6 +20,7 @@ class GithubFileStorage implements FileStorage {
   @override
   Future<List<Item>> getFolder({
     String? folderId,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -28,6 +29,7 @@ class GithubFileStorage implements FileStorage {
   Future<Folder> createFolder({
     required String folderName,
     required String parentFolderId,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -35,6 +37,7 @@ class GithubFileStorage implements FileStorage {
   @override
   Future<void> deleteFolder({
     required String folderId,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -43,6 +46,7 @@ class GithubFileStorage implements FileStorage {
   Future<void> renameFolder({
     required String folderId,
     required String newName,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -50,12 +54,16 @@ class GithubFileStorage implements FileStorage {
   @override
   Future<File> getFile({
     required String fileId,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
 
   @override
-  Future<Uint8List> getFileContent({required String fileId}) {
+  Future<Uint8List> getFileContent({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  }) {
     throw UnimplementedError();
   }
 
@@ -64,6 +72,7 @@ class GithubFileStorage implements FileStorage {
     required String fileName,
     required Uint8List data,
     String? parentFolderId,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -71,6 +80,7 @@ class GithubFileStorage implements FileStorage {
   @override
   Future<void> deleteFile({
     required String fileId,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }
@@ -79,6 +89,7 @@ class GithubFileStorage implements FileStorage {
   Future<void> renameFile({
     required String fileId,
     required String newName,
+    VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();
   }

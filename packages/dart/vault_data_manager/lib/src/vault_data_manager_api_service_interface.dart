@@ -9,6 +9,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   Future<Response> downloadNodeContents({
     required String downloadUrl,
     required List<int> dek,
+    CancelToken? cancelToken,
   });
 
   /// Upload a given [file] data in format of [Uint8List] to a given [parentFolderId] with given [fileName]
@@ -20,6 +21,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
+    CancelToken? cancelToken,
   });
 
   /// Upload a given [verifiableCredentialBlob] data in format of [Uint8List] to a given [profileId] with given [verifiableCredentialName]
@@ -31,42 +33,49 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
+    CancelToken? cancelToken,
   });
 
   /// Retrieves all the nodes that hold verifiable credentials for a given [profileId]
   Future<Response<ListNodeChildrenOK>> getVerifiableCredentialsNodes({
     required String profileId,
+    CancelToken? cancelToken,
   });
 
   /// Creates a folder with given [name] within a given [parentNodeId]
   Future<Response<CreateNodeOK>> createFolder({
     required String name,
     required String parentNodeId,
+    CancelToken? cancelToken,
   });
 
   /// Gets all the children nodes for a given [nodeId]
-  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(
-    String nodeId,
-  );
+  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(String nodeId,
+      [CancelToken? cancelToken]);
 
   /// Gets detailed information for a given [nodeId]
   Future<Response<GetDetailedNodeInfoOK>> getNodeInfo({
     required String nodeId,
     List<int>? dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   });
 
   /// Gets scanned file details for a given [scannedFileJobId]
   Future<Response<GetScannedFileInfoOK>> getScannedFileInfo({
     required String scannedFileJobId,
+    CancelToken? cancelToken,
   });
 
   /// Gets all the scanned files
-  Future<Response<ListScannedFilesOK>> getAllScannedFiles();
+  Future<Response<ListScannedFilesOK>> getAllScannedFiles({
+    CancelToken? cancelToken,
+  });
 
   /// Enrolls a new file for scanning for given [nodeId] and encrypted with given data encryption key
   Future<Response<StartFileScanOK>> startFileScan({
     required String nodeId,
     required List<int> dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   });
 
   /// Updates profile data for a given [profileNodeId] with given [profileData] and encrypted with given data encryption key
@@ -74,15 +83,19 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required String profileNodeId,
     required Map profileData,
     required List<int> dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   });
 
   /// Gets the list of all profiles
-  Future<Response<ListRootNodeChildrenOK>> getListOfProfiles();
+  Future<Response<ListRootNodeChildrenOK>> getListOfProfiles({
+    CancelToken? cancelToken,
+  });
 
   /// Gets the profile data for a given [profileNodeId] and decrypt it with given data encryption key [dekEncryptedByVfsPublicKey]
   Future<Response<QueryProfileDataOK>> getProfileData({
     required String profileNodeId,
     required List<int> dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   });
 
   /// Creates a new profile with given [profileName]
@@ -105,6 +118,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required String walletCryptoMaterialHash,
     String? profileDescription,
     String? profilePictureURI,
+    CancelToken? cancelToken,
   });
 
   /// Updates the given node [nodeId] with given [newName], [newDescription] and [newPictureURI]
@@ -113,27 +127,37 @@ abstract interface class VaultDataManagerApiServiceInterface {
     String? newName,
     String? newDescription,
     String? newPictureURI,
+    CancelToken? cancelToken,
   });
 
   /// Deletes a node by a given [nodeId]
   Future<Response<DeleteNodeDto>> deleteNodeById({
     required String nodeId,
+    CancelToken? cancelToken,
   });
 
   /// Gets the profile template. Default to https://schema.affinidi.io/profile-template/template.json.
-  Future<Response> getProfileTemplate();
+  Future<Response> getProfileTemplate({
+    CancelToken? cancelToken,
+  });
 
   /// Initializes the Vault Data Manager system by creating the root node
-  Future<Response<InitNodesOK>> initVaultDataManagerSystem();
+  Future<Response<InitNodesOK>> initVaultDataManagerSystem({
+    CancelToken? cancelToken,
+  });
 
   /// Gets the public key of the Vault File System API that is used to encrypt the data encryption key
   Future<Map<String, dynamic>> getVaultDataManagerPublicKey();
 
   /// Gets root node info which can be used to determine the consumed space
-  Future<Response<GetDetailedNodeInfoOK>> getRootNodeInfo();
+  Future<Response<GetDetailedNodeInfoOK>> getRootNodeInfo({
+    CancelToken? cancelToken,
+  });
 
   /// Gets the configuration of the Vault Data Manager API
-  Future<Response<GetConfigOK>> getConfig();
+  Future<Response<GetConfigOK>> getConfig({
+    CancelToken? cancelToken,
+  });
 
   /// Gets accounts of associated profiles. Optionally provide [limit] and [exclusiveStartKey].
   /// [limit] - Maximum number of accounts to fetch in a list

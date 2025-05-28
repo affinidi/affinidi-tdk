@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
+import '../helpers/vault_cancel_token.dart';
 import 'item.dart';
 
 /// Interface for managing shared storage operations, including files, folders, and credentials.
@@ -15,7 +16,10 @@ abstract interface class SharedStorage {
   /// Throws if the folder does not exist
   /// Throws if the folderId does not match a folder
   /// Throws for network connectivity
-  Future<List<Item>> getFolder({String? folderId});
+  Future<List<Item>> getFolder({
+    String? folderId,
+    VaultCancelToken? cancelToken,
+  });
 
   /// Allows creating a folder
   /// Throws if parentFolderId does not exist
@@ -25,6 +29,7 @@ abstract interface class SharedStorage {
   Future<Folder> createFolder({
     required String folderName,
     required String parentFolderId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows deleting a folder
@@ -34,6 +39,7 @@ abstract interface class SharedStorage {
   /// Throws for network connectivity
   Future<void> deleteFolder({
     required String folderId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows renaming a folder
@@ -44,6 +50,7 @@ abstract interface class SharedStorage {
   Future<void> renameFolder({
     required String folderId,
     required String newName,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows retrieving a single file
@@ -55,13 +62,17 @@ abstract interface class SharedStorage {
   /// Throws for network connectivity
   Future<File> getFile({
     required String fileId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows retrieving file content
   /// Throws if the file does not exist
   /// Throws if the fileId is not related to a file
   /// Throws for network connectivity
-  Future<Uint8List> getFileContent({required String fileId});
+  Future<Uint8List> getFileContent({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  });
 
   /// Allows adding a new file
   /// Throws if there is another file with the same name in the folder
@@ -72,6 +83,7 @@ abstract interface class SharedStorage {
     required String fileName,
     required Uint8List data,
     String? parentFolderId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows deleting a file
@@ -80,6 +92,7 @@ abstract interface class SharedStorage {
   /// Throws for network connectivity
   Future<void> deleteFile({
     required String fileId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows renaming a file
@@ -89,27 +102,36 @@ abstract interface class SharedStorage {
   Future<void> renameFile({
     required String fileId,
     required String newName,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows retrieving a list of claimed credentials
   /// Throws for network connectivity
-  Future<List<DigitalCredential>> listCredentials();
+  Future<List<DigitalCredential>> listCredentials({
+    VaultCancelToken? cancelToken,
+  });
 
   /// Allows saving verifiable credential data to claimed credentials
   /// Throws for network connectivity
   Future<void> saveCredential(
-      {required VerifiableCredential verifiableCredential});
+      {required VerifiableCredential verifiableCredential,
+      VaultCancelToken? cancelToken});
 
   /// Allows deleting a verifiableCredential
   /// Throws if the id does not match any credentials
   /// Throws for network connectivity
-  Future<void> deleteCredential({required String digitalCredentialId});
+  Future<void> deleteCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  });
 
   /// Retrieves a DigitalCredential content based on the id
   /// Throws if the id does not match any credentials
   /// Throws for network connectivity
-  Future<DigitalCredential> getCredential(
-      {required String digitalCredentialId});
+  Future<DigitalCredential> getCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  });
 
   /// Queries credentials using a PEX query.
   ///

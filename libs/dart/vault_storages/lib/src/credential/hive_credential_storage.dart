@@ -17,27 +17,36 @@ class HiveCredentialStorage implements CredentialStorage {
 
   /// Retrieves a list of all stored verifiable credentials.
   @override
-  Future<List<DigitalCredential>> listCredentials() {
+  Future<List<DigitalCredential>> listCredentials({
+    VaultCancelToken? cancelToken,
+  }) {
     throw UnimplementedError();
   }
 
   /// Saves a verifiable credential to storage.
   @override
-  Future<void> saveCredential(
-      {required VerifiableCredential verifiableCredential}) {
+  Future<void> saveCredential({
+    required VerifiableCredential verifiableCredential,
+    VaultCancelToken? cancelToken,
+  }) {
     throw UnimplementedError();
   }
 
   /// Deletes a verifiable credential from storage.
   @override
-  Future<void> deleteCredential({required String digitalCredentialId}) {
+  Future<void> deleteCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  }) {
     throw UnimplementedError();
   }
 
   /// Retrieves a specific verifiable credential by its ID.
   @override
-  Future<DigitalCredential> getCredential(
-      {required String digitalCredentialId}) {
+  Future<DigitalCredential> getCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  }) {
     throw UnimplementedError();
   }
 

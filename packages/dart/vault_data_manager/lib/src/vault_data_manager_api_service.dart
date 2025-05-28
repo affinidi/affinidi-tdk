@@ -31,7 +31,7 @@ class VaultDataManagerApiService
   final Dio _dio;
   final FilesApi _filesApi;
   final NodesApi _nodesApi;
-  final ConfigApi _configApi;
+  final ConfigurationApi _configApi;
   final ProfileDataApi _profileDataApi;
   final AccountsApi _accountsApi;
   final CryptographyService _cryptographyService = CryptographyService();
@@ -43,7 +43,7 @@ class VaultDataManagerApiService
   })  : _dio = dio ?? Dio(),
         _filesApi = apiClient.getFilesApi(),
         _nodesApi = apiClient.getNodesApi(),
-        _configApi = apiClient.getConfigApi(),
+        _configApi = apiClient.getConfigurationApi(),
         _profileDataApi = apiClient.getProfileDataApi(),
         _accountsApi = apiClient.getAccountsApi();
 
@@ -55,6 +55,7 @@ class VaultDataManagerApiService
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
+    CancelToken? cancelToken,
   }) async {
     final edekInfo = EdekInfoBuilder()
       ..edek = base64.encode(dekEncryptedByWalletCryptoMaterial)
@@ -119,6 +120,7 @@ class VaultDataManagerApiService
     required List<int> dekEncryptedByVfsPublicKey,
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
+    CancelToken? cancelToken,
   }) async {
     final edekInfo = EdekInfoBuilder()
       ..edek = base64.encode(dekEncryptedByWalletCryptoMaterial)
@@ -131,8 +133,10 @@ class VaultDataManagerApiService
       ..dek = base64.encode(dekEncryptedByVfsPublicKey)
       ..edekInfo = edekInfo;
 
-    final createNodeResponse =
-        await _createNode(createNodeInput: createNodeInput.build());
+    final createNodeResponse = await _createNode(
+      createNodeInput: createNodeInput.build(),
+      cancelToken: cancelToken,
+    );
 
     final isNodeCreated = createNodeResponse.data is CreateNodeOK;
 
@@ -180,11 +184,13 @@ class VaultDataManagerApiService
   @override
   Future<Response<ListNodeChildrenOK>> getVerifiableCredentialsNodes({
     required String profileId,
+    CancelToken? cancelToken,
   }) async {
     return getChildrenByNodeId(
       _getVcRootIdByProfileId(
         profileId,
       ),
+      cancelToken,
     );
   }
 
@@ -192,21 +198,27 @@ class VaultDataManagerApiService
   Future<Response<CreateNodeOK>> createFolder({
     required String name,
     required String parentNodeId,
+    CancelToken? cancelToken,
   }) async {
     final createFolderInput = CreateNodeInputBuilder()
       ..name = name
       ..type = NodeType.FOLDER
       ..parentNodeId = parentNodeId;
 
-    return _createNode(createNodeInput: createFolderInput.build());
+    return _createNode(
+      createNodeInput: createFolderInput.build(),
+      cancelToken: cancelToken,
+    );
   }
 
   Future<Response<CreateNodeOK>> _createNode({
     required CreateNodeInput createNodeInput,
+    CancelToken? cancelToken,
   }) async {
     try {
       return await _nodesApi.createNode(
         createNodeInput: createNodeInput,
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -246,9 +258,8 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(
-    String nodeId,
-  ) async {
+  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(String nodeId,
+      [CancelToken? cancelToken]) async {
     try {
       return await _nodesApi.listNodeChildren(
         nodeId: nodeId,
@@ -269,6 +280,7 @@ class VaultDataManagerApiService
   Future<Response<GetDetailedNodeInfoOK>> getNodeInfo({
     required String nodeId,
     List<int>? dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   }) async {
     try {
       return await _nodesApi.getDetailedNodeInfo(
@@ -276,6 +288,7 @@ class VaultDataManagerApiService
         dek: dekEncryptedByVfsPublicKey != null
             ? base64.encode(dekEncryptedByVfsPublicKey)
             : null,
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -292,9 +305,13 @@ class VaultDataManagerApiService
   @override
   Future<Response<GetScannedFileInfoOK>> getScannedFileInfo({
     required String scannedFileJobId,
+    CancelToken? cancelToken,
   }) async {
     try {
-      return _filesApi.getScannedFileInfo(scannedFileJobId: scannedFileJobId);
+      return _filesApi.getScannedFileInfo(
+        scannedFileJobId: scannedFileJobId,
+        cancelToken: cancelToken,
+      );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -308,9 +325,13 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<ListScannedFilesOK>> getAllScannedFiles() async {
+  Future<Response<ListScannedFilesOK>> getAllScannedFiles({
+    CancelToken? cancelToken,
+  }) async {
     try {
-      return _filesApi.listScannedFiles();
+      return _filesApi.listScannedFiles(
+        cancelToken: cancelToken,
+      );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -327,13 +348,17 @@ class VaultDataManagerApiService
   Future<Response<StartFileScanOK>> startFileScan({
     required String nodeId,
     required List<int> dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   }) async {
     try {
       final scanFileInput = StartFileScanInputBuilder()
         ..dek = base64.encode(dekEncryptedByVfsPublicKey);
 
       return _filesApi.startFileScan(
-          nodeId: nodeId, startFileScanInput: scanFileInput.build());
+        nodeId: nodeId,
+        startFileScanInput: scanFileInput.build(),
+        cancelToken: cancelToken,
+      );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -351,6 +376,7 @@ class VaultDataManagerApiService
     required String profileNodeId,
     required Map profileData,
     required List<int> dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   }) async {
     try {
       final updateProfileDataInput = UpdateProfileDataInputBuilder()
@@ -360,6 +386,7 @@ class VaultDataManagerApiService
       return _profileDataApi.updateProfileData(
         nodeId: profileNodeId,
         updateProfileDataInput: updateProfileDataInput.build(),
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -374,9 +401,13 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<ListRootNodeChildrenOK>> getListOfProfiles() async {
+  Future<Response<ListRootNodeChildrenOK>> getListOfProfiles({
+    CancelToken? cancelToken,
+  }) async {
     try {
-      return _nodesApi.listRootNodeChildren();
+      return _nodesApi.listRootNodeChildren(
+        cancelToken: cancelToken,
+      );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -397,6 +428,7 @@ class VaultDataManagerApiService
     required String walletCryptoMaterialHash,
     String? profileDescription,
     String? profilePictureURI,
+    CancelToken? cancelToken,
   }) async {
     final edekInfo = EdekInfoBuilder()
       ..edek = base64.encode(dekEncryptedByWalletCryptoMaterial)
@@ -413,7 +445,10 @@ class VaultDataManagerApiService
       })
       ..edekInfo = edekInfo;
 
-    return _createNode(createNodeInput: createNodeInput.build());
+    return _createNode(
+      createNodeInput: createNodeInput.build(),
+      cancelToken: cancelToken,
+    );
   }
 
   @override
@@ -422,6 +457,7 @@ class VaultDataManagerApiService
     String? newName,
     String? newDescription,
     String? newPictureURI,
+    CancelToken? cancelToken,
   }) async {
     try {
       final updateNodeInput = UpdateNodeInputBuilder()
@@ -434,6 +470,7 @@ class VaultDataManagerApiService
       return _nodesApi.updateNode(
         nodeId: nodeId,
         updateNodeInput: updateNodeInput.build(),
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -450,11 +487,13 @@ class VaultDataManagerApiService
   @override
   Future<Response<DeleteNodeDto>> deleteNodeById({
     required String nodeId,
+    CancelToken? cancelToken,
   }) async {
     try {
       return await RetryHelper.retry(
         () => _nodesApi.deleteNode(
           nodeId: nodeId,
+          cancelToken: cancelToken,
         ),
         retryIf: (error) {
           return error is DioException && error.isPendingUploadError;
@@ -473,10 +512,13 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response> getProfileTemplate() async {
+  Future<Response> getProfileTemplate({
+    CancelToken? cancelToken,
+  }) async {
     try {
       return _dio.get(
         profileTemplateUrl,
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -491,10 +533,14 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<InitNodesOK>> initVaultDataManagerSystem() async {
+  Future<Response<InitNodesOK>> initVaultDataManagerSystem({
+    CancelToken? cancelToken,
+  }) async {
     try {
       // ignore: deprecated_member_use
-      return _nodesApi.initNodes();
+      return _nodesApi.initNodes(
+        cancelToken: cancelToken,
+      );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -533,19 +579,26 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<GetDetailedNodeInfoOK>> getRootNodeInfo() {
-    return getNodeInfo(nodeId: rootNodeIdBase64Encoded);
+  Future<Response<GetDetailedNodeInfoOK>> getRootNodeInfo({
+    CancelToken? cancelToken,
+  }) {
+    return getNodeInfo(
+      nodeId: rootNodeIdBase64Encoded,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
   Future<Response<QueryProfileDataOK>> getProfileData({
     required String profileNodeId,
     required List<int> dekEncryptedByVfsPublicKey,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _profileDataApi.queryProfileData(
         nodeId: profileNodeId,
         dek: base64.encode(dekEncryptedByVfsPublicKey),
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -567,6 +620,7 @@ class VaultDataManagerApiService
   Future<Response> downloadNodeContents({
     required String downloadUrl,
     required List<int> dek,
+    CancelToken? cancelToken,
   }) async {
     try {
       return _dio.fetch(
@@ -574,6 +628,7 @@ class VaultDataManagerApiService
           method: 'GET',
           baseUrl: downloadUrl,
           responseType: ResponseType.bytes,
+          cancelToken: cancelToken,
           headers: {
             'x-amz-server-side-encryption-customer-algorithm': 'AES256',
             'x-amz-server-side-encryption-customer-key': base64.encode(dek),
@@ -595,9 +650,11 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<GetConfigOK>> getConfig() {
+  Future<Response<GetConfigOK>> getConfig({
+    CancelToken? cancelToken,
+  }) {
     try {
-      return _configApi.getConfig();
+      return _configApi.getConfiguration();
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -616,12 +673,12 @@ class VaultDataManagerApiService
     required String accountDid,
     required String didProof,
     Map<String, Object>? metadata,
-    CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
+    CancelToken? cancelToken,
   }) async {
     try {
       final createAccountInput = CreateAccountInputBuilder()

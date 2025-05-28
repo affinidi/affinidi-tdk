@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import '../helpers/vault_cancel_token.dart';
 import 'item.dart';
 
 /// Interface for managing file and folder storage operations.
@@ -15,6 +16,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<List<Item>> getFolder({
     String? folderId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows creating a folder
@@ -25,6 +27,7 @@ abstract class FileStorage {
   Future<Folder> createFolder({
     required String folderName,
     required String parentFolderId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows deleting a folder
@@ -34,6 +37,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<void> deleteFolder({
     required String folderId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows renaming a folder
@@ -44,6 +48,7 @@ abstract class FileStorage {
   Future<void> renameFolder({
     required String folderId,
     required String newName,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows retrieving a single file
@@ -55,13 +60,17 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<File> getFile({
     required String fileId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows retrieving file content
   /// Throws if the file does not exist
   /// Throws if the fileId is not related to a file
   /// Throws for network connectivity
-  Future<Uint8List> getFileContent({required String fileId});
+  Future<Uint8List> getFileContent({
+    required String fileId,
+    VaultCancelToken? cancelToken,
+  });
 
   /// Allows adding a new file
   /// Throws if there is another file with the same name in the folder
@@ -72,6 +81,7 @@ abstract class FileStorage {
     required String fileName,
     required Uint8List data,
     String? parentFolderId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows deleting a file
@@ -80,6 +90,7 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<void> deleteFile({
     required String fileId,
+    VaultCancelToken? cancelToken,
   });
 
   /// Allows renaming a file
@@ -89,5 +100,6 @@ abstract class FileStorage {
   Future<void> renameFile({
     required String fileId,
     required String newName,
+    VaultCancelToken? cancelToken,
   });
 }

@@ -14,6 +14,7 @@ class MockVaultDataManagerService extends Mock
   Future<void> addVerifiableCredentialToProfile({
     required VerifiableCredential verifiableCredential,
     required String profileId,
+    VaultCancelToken? cancelToken,
   }) {
     return super.noSuchMethod(
       Invocation.method(#addVerifiableCredentialToProfile, [], {
@@ -24,7 +25,10 @@ class MockVaultDataManagerService extends Mock
   }
 
   @override
-  Future<void> deleteClaimedCredential({required String nodeId}) {
+  Future<void> deleteClaimedCredential({
+    required String nodeId,
+    VaultCancelToken? cancelToken,
+  }) {
     return super.noSuchMethod(
       Invocation.method(#deleteClaimedCredential, [], {
         #nodeId: nodeId,
@@ -33,7 +37,10 @@ class MockVaultDataManagerService extends Mock
   }
 
   @override
-  Future<List<DigitalCredential>> getDigitalCredentials(String profileId) {
+  Future<List<DigitalCredential>> getDigitalCredentials(
+    String profileId, {
+    VaultCancelToken? cancelToken,
+  }) {
     return super.noSuchMethod(
       Invocation.method(#getDigitalCredentials, [profileId]),
     ) as Future<List<DigitalCredential>>;

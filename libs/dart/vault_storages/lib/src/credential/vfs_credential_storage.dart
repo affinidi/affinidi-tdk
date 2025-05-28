@@ -27,31 +27,48 @@ class VFSCredentialStorage implements CredentialStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<List<DigitalCredential>> listCredentials() async {
-    return await _vaultDataManagerService.getDigitalCredentials(_profileId);
+  Future<List<DigitalCredential>> listCredentials({
+    VaultCancelToken? cancelToken,
+  }) async {
+    return await _vaultDataManagerService.getDigitalCredentials(
+      _profileId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override
-  Future<void> saveCredential(
-      {required VerifiableCredential verifiableCredential}) async {
+  Future<void> saveCredential({
+    required VerifiableCredential verifiableCredential,
+    VaultCancelToken? cancelToken,
+  }) async {
     await _vaultDataManagerService.addVerifiableCredentialToProfile(
       verifiableCredential: verifiableCredential,
       profileId: _profileId,
+      cancelToken: cancelToken,
     );
   }
 
   @override
-  Future<void> deleteCredential({required String digitalCredentialId}) async {
+  Future<void> deleteCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  }) async {
     await _vaultDataManagerService.deleteClaimedCredential(
       nodeId: digitalCredentialId,
+      cancelToken: cancelToken,
     );
   }
 
   @override
-  Future<DigitalCredential> getCredential(
-      {required String digitalCredentialId}) async {
+  Future<DigitalCredential> getCredential({
+    required String digitalCredentialId,
+    VaultCancelToken? cancelToken,
+  }) async {
     final digitalCredentials =
-        await _vaultDataManagerService.getDigitalCredentials(_profileId);
+        await _vaultDataManagerService.getDigitalCredentials(
+      _profileId,
+      cancelToken: cancelToken,
+    );
     final existingCredential = digitalCredentials
         .where(
           (digitalCredential) => digitalCredential.id == digitalCredentialId,
