@@ -5,6 +5,7 @@ import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import '../exceptions/tdk_exception_type.dart';
 import 'cancel_token_interface.dart' as cancel_token_interface;
 
+/// A cancel token implementation for Vault operations.
 class VaultCancelToken implements cancel_token_interface.VaultCancelToken {
   final Completer<TdkException> _completer = Completer<TdkException>();
   TdkException? _cancelError;

@@ -1,5 +1,4 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:ssi/ssi.dart';
 
 /// A Hive-based implementation of [CredentialStorage] for storing and managing
