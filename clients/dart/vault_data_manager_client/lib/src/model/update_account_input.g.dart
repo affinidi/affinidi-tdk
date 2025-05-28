@@ -8,9 +8,9 @@ part of 'update_account_input.dart';
 
 class _$UpdateAccountInput extends UpdateAccountInput {
   @override
-  final String name;
+  final String? name;
   @override
-  final String description;
+  final String? description;
   @override
   final String? alias;
   @override
@@ -25,16 +25,13 @@ class _$UpdateAccountInput extends UpdateAccountInput {
       (new UpdateAccountInputBuilder()..update(updates))._build();
 
   _$UpdateAccountInput._(
-      {required this.name,
-      required this.description,
+      {this.name,
+      this.description,
       this.alias,
       required this.didProof,
       this.metadata,
       required this.accountDid})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'UpdateAccountInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'UpdateAccountInput', 'description');
     BuiltValueNullFieldError.checkNotNull(
         didProof, r'UpdateAccountInput', 'didProof');
     BuiltValueNullFieldError.checkNotNull(
@@ -151,10 +148,8 @@ class UpdateAccountInputBuilder
   _$UpdateAccountInput _build() {
     final _$result = _$v ??
         new _$UpdateAccountInput._(
-          name: BuiltValueNullFieldError.checkNotNull(
-              name, r'UpdateAccountInput', 'name'),
-          description: BuiltValueNullFieldError.checkNotNull(
-              description, r'UpdateAccountInput', 'description'),
+          name: name,
+          description: description,
           alias: alias,
           didProof: BuiltValueNullFieldError.checkNotNull(
               didProof, r'UpdateAccountInput', 'didProof'),

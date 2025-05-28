@@ -1,14 +1,14 @@
-# affinidi_tdk_vault_data_manager_client.ConfigApi
+# affinidi_tdk_vault_data_manager_client.ConfigurationApi
 
 All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
-| Method                                    | HTTP request       | Description |
-| ----------------------------------------- | ------------------ | ----------- |
-| [**get_config**](ConfigApi.md#get_config) | **GET** /v1/config |
+| Method                                                         | HTTP request       | Description |
+| -------------------------------------------------------------- | ------------------ | ----------- |
+| [**get_configuration**](ConfigurationApi.md#get_configuration) | **GET** /v1/config |
 
-# **get_config**
+# **get_configuration**
 
-> GetConfigOK get_config()
+> GetConfigOK get_configuration()
 
 Retrieves the user profile name and the maximum number of profiles, with default values set to 'default' and 1, respectively.
 
@@ -59,14 +59,14 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 # Enter a context with an instance of the API client
 with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = affinidi_tdk_vault_data_manager_client.ConfigApi(api_client)
+    api_instance = affinidi_tdk_vault_data_manager_client.ConfigurationApi(api_client)
 
     try:
-        api_response = api_instance.get_config()
-        print("The response of ConfigApi->get_config:\n")
+        api_response = api_instance.get_configuration()
+        print("The response of ConfigurationApi->get_configuration:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling ConfigApi->get_config: %s\n" % e)
+        print("Exception when calling ConfigurationApi->get_configuration: %s\n" % e)
 ```
 
 ### Parameters

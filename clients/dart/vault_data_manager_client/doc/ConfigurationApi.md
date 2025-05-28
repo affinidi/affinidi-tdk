@@ -1,4 +1,4 @@
-# affinidi_tdk_vault_data_manager_client.api.ConfigApi
+# affinidi_tdk_vault_data_manager_client.api.ConfigurationApi
 
 ## Load the API package
 
@@ -8,13 +8,13 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 
 All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
-| Method                                  | HTTP request       | Description |
-| --------------------------------------- | ------------------ | ----------- |
-| [**getConfig**](ConfigApi.md#getconfig) | **GET** /v1/config |
+| Method                                                       | HTTP request       | Description |
+| ------------------------------------------------------------ | ------------------ | ----------- |
+| [**getConfiguration**](ConfigurationApi.md#getconfiguration) | **GET** /v1/config |
 
-# **getConfig**
+# **getConfiguration**
 
-> GetConfigOK getConfig()
+> GetConfigOK getConfiguration()
 
 Retrieves the user profile name and the maximum number of profiles, with default values set to 'default' and 1, respectively.
 
@@ -27,13 +27,13 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('AwsSigV4').apiKeyPrefix = 'Bearer';
 
-final api = AffinidiTdkVaultDataManagerClient().getConfigApi();
+final api = AffinidiTdkVaultDataManagerClient().getConfigurationApi();
 
 try {
-    final response = api.getConfig();
+    final response = api.getConfiguration();
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling ConfigApi->getConfig: $e\n');
+    print('Exception when calling ConfigurationApi->getConfiguration: $e\n');
 }
 ```
 

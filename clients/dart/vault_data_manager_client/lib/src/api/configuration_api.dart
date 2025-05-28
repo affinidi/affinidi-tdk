@@ -11,15 +11,15 @@ import 'package:dio/dio.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/get_config_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/invalid_parameter_error.dart';
 
-class ConfigApi {
+class ConfigurationApi {
 
   final Dio _dio;
 
   final Serializers _serializers;
 
-  const ConfigApi(this._dio, this._serializers);
+  const ConfigurationApi(this._dio, this._serializers);
 
-  /// getConfig
+  /// getConfiguration
   /// Retrieves the user profile name and the maximum number of profiles, with default values set to &#39;default&#39; and 1, respectively.
   ///
   /// Parameters:
@@ -32,7 +32,7 @@ class ConfigApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GetConfigOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetConfigOK>> getConfig({ 
+  Future<Response<GetConfigOK>> getConfiguration({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

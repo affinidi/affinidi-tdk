@@ -16,10 +16,10 @@
 import unittest
 import datetime
 
-from affinidi_tdk_vault_data_manager_client.models.update_account_input import UpdateAccountInput  # noqa: E501
+from affinidi_tdk_vault_data_manager_client.models.cors_get_configuration_ok import CorsGetConfigurationOK  # noqa: E501
 
-class TestUpdateAccountInput(unittest.TestCase):
-    """UpdateAccountInput unit test stubs"""
+class TestCorsGetConfigurationOK(unittest.TestCase):
+    """CorsGetConfigurationOK unit test stubs"""
 
     def setUp(self):
         pass
@@ -27,32 +27,25 @@ class TestUpdateAccountInput(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def make_instance(self, include_optional) -> UpdateAccountInput:
-        """Test UpdateAccountInput
+    def make_instance(self, include_optional) -> CorsGetConfigurationOK:
+        """Test CorsGetConfigurationOK
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # uncomment below to create an instance of `UpdateAccountInput`
+        # uncomment below to create an instance of `CorsGetConfigurationOK`
         """
-        model = UpdateAccountInput()  # noqa: E501
+        model = CorsGetConfigurationOK()  # noqa: E501
         if include_optional:
-            return UpdateAccountInput(
-                name = '',
-                description = '',
-                alias = '',
-                did_proof = '',
-                metadata = None,
-                account_did = ''
+            return CorsGetConfigurationOK(
+                cors_get_configuration_ok = ''
             )
         else:
-            return UpdateAccountInput(
-                did_proof = '',
-                account_did = '',
+            return CorsGetConfigurationOK(
         )
         """
 
-    def testUpdateAccountInput(self):
-        """Test UpdateAccountInput"""
+    def testCorsGetConfigurationOK(self):
+        """Test CorsGetConfigurationOK"""
         # inst_req_only = self.make_instance(include_optional=False)
         # inst_req_and_optional = self.make_instance(include_optional=True)
 
