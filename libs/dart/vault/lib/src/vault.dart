@@ -1,7 +1,14 @@
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:ssi/ssi.dart';
 
-import '../affinidi_tdk_vault.dart';
+import 'dto/shared_profile_dto.dart';
 import 'exceptions/tdk_exception_type.dart';
+import 'helpers/vault_cancel_token.dart';
+import 'permissions.dart';
+import 'profile.dart';
+import 'storage_interfaces/profile_repository.dart';
+import 'storage_interfaces/repository_configuration.dart';
+import 'storage_interfaces/vault_store.dart';
 
 /// Manages vault operations and profile repositories.
 class Vault {
