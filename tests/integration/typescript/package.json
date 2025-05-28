@@ -19,6 +19,7 @@
     "@affinidi-tdk/iota-core": "../../../clients/typescript/iota-core",
     "@affinidi-tdk/login-configuration-client": "../../../clients/typescript/login-configuration-client",
     "@affinidi-tdk/wallets-client": "../../../clients/typescript/wallets-client",
+    "@affinidi/common": "^3.3.1",
     "@types/node": "18.11.18",
     "base64url": "^3.0.1",
     "chai": "^5.2.0",
