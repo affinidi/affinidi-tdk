@@ -15,12 +15,12 @@ SigningFailedErrorNameEnum _$signingFailedErrorNameEnumValueOf(String name) {
     case 'signingFailedError':
       return _$signingFailedErrorNameEnum_signingFailedError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SigningFailedErrorNameEnum> _$signingFailedErrorNameEnumValues =
-    new BuiltSet<SigningFailedErrorNameEnum>(const <SigningFailedErrorNameEnum>[
+    BuiltSet<SigningFailedErrorNameEnum>(const <SigningFailedErrorNameEnum>[
   _$signingFailedErrorNameEnum_signingFailedError,
 ]);
 
@@ -34,12 +34,12 @@ SigningFailedErrorMessageEnum _$signingFailedErrorMessageEnumValueOf(
     case 'signingFailedPeriod':
       return _$signingFailedErrorMessageEnum_signingFailedPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SigningFailedErrorMessageEnum>
-    _$signingFailedErrorMessageEnumValues = new BuiltSet<
+    _$signingFailedErrorMessageEnumValues = BuiltSet<
         SigningFailedErrorMessageEnum>(const <SigningFailedErrorMessageEnum>[
   _$signingFailedErrorMessageEnum_signingFailedPeriod,
 ]);
@@ -54,24 +54,24 @@ SigningFailedErrorHttpStatusCodeEnum
     case 'number400':
       return _$signingFailedErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SigningFailedErrorHttpStatusCodeEnum>
-    _$signingFailedErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$signingFailedErrorHttpStatusCodeEnumValues = BuiltSet<
         SigningFailedErrorHttpStatusCodeEnum>(const <SigningFailedErrorHttpStatusCodeEnum>[
   _$signingFailedErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<SigningFailedErrorNameEnum> _$signingFailedErrorNameEnumSerializer =
-    new _$SigningFailedErrorNameEnumSerializer();
+    _$SigningFailedErrorNameEnumSerializer();
 Serializer<SigningFailedErrorMessageEnum>
     _$signingFailedErrorMessageEnumSerializer =
-    new _$SigningFailedErrorMessageEnumSerializer();
+    _$SigningFailedErrorMessageEnumSerializer();
 Serializer<SigningFailedErrorHttpStatusCodeEnum>
     _$signingFailedErrorHttpStatusCodeEnumSerializer =
-    new _$SigningFailedErrorHttpStatusCodeEnumSerializer();
+    _$SigningFailedErrorHttpStatusCodeEnumSerializer();
 
 class _$SigningFailedErrorNameEnumSerializer
     implements PrimitiveSerializer<SigningFailedErrorNameEnum> {
@@ -172,7 +172,7 @@ class _$SigningFailedError extends SigningFailedError {
 
   factory _$SigningFailedError(
           [void Function(SigningFailedErrorBuilder)? updates]) =>
-      (new SigningFailedErrorBuilder()..update(updates))._build();
+      (SigningFailedErrorBuilder()..update(updates))._build();
 
   _$SigningFailedError._(
       {required this.name,
@@ -180,16 +180,7 @@ class _$SigningFailedError extends SigningFailedError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'SigningFailedError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'SigningFailedError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'SigningFailedError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'SigningFailedError', 'traceId');
-  }
-
+      : super._();
   @override
   SigningFailedError rebuild(
           void Function(SigningFailedErrorBuilder) updates) =>
@@ -197,7 +188,7 @@ class _$SigningFailedError extends SigningFailedError {
 
   @override
   SigningFailedErrorBuilder toBuilder() =>
-      new SigningFailedErrorBuilder()..replace(this);
+      SigningFailedErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -259,7 +250,7 @@ class SigningFailedErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -282,7 +273,6 @@ class SigningFailedErrorBuilder
 
   @override
   void replace(SigningFailedError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SigningFailedError;
   }
 
@@ -298,7 +288,7 @@ class SigningFailedErrorBuilder
     _$SigningFailedError _$result;
     try {
       _$result = _$v ??
-          new _$SigningFailedError._(
+          _$SigningFailedError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'SigningFailedError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -315,7 +305,7 @@ class SigningFailedErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SigningFailedError', _$failedField, e.toString());
       }
       rethrow;

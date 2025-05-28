@@ -16,12 +16,12 @@ VPTokenValidationErrorNameEnum _$vPTokenValidationErrorNameEnumValueOf(
     case 'vPTokenValidationError':
       return _$vPTokenValidationErrorNameEnum_vPTokenValidationError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<VPTokenValidationErrorNameEnum>
-    _$vPTokenValidationErrorNameEnumValues = new BuiltSet<
+    _$vPTokenValidationErrorNameEnumValues = BuiltSet<
         VPTokenValidationErrorNameEnum>(const <VPTokenValidationErrorNameEnum>[
   _$vPTokenValidationErrorNameEnum_vPTokenValidationError,
 ]);
@@ -37,12 +37,12 @@ VPTokenValidationErrorMessageEnum _$vPTokenValidationErrorMessageEnumValueOf(
     case 'vPTokenValidationEndedWithAnError':
       return _$vPTokenValidationErrorMessageEnum_vPTokenValidationEndedWithAnError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<VPTokenValidationErrorMessageEnum>
-    _$vPTokenValidationErrorMessageEnumValues = new BuiltSet<
+    _$vPTokenValidationErrorMessageEnumValues = BuiltSet<
         VPTokenValidationErrorMessageEnum>(const <VPTokenValidationErrorMessageEnum>[
   _$vPTokenValidationErrorMessageEnum_vPTokenValidationEndedWithAnError,
 ]);
@@ -57,25 +57,25 @@ VPTokenValidationErrorHttpStatusCodeEnum
     case 'number400':
       return _$vPTokenValidationErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<VPTokenValidationErrorHttpStatusCodeEnum>
-    _$vPTokenValidationErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$vPTokenValidationErrorHttpStatusCodeEnumValues = BuiltSet<
         VPTokenValidationErrorHttpStatusCodeEnum>(const <VPTokenValidationErrorHttpStatusCodeEnum>[
   _$vPTokenValidationErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<VPTokenValidationErrorNameEnum>
     _$vPTokenValidationErrorNameEnumSerializer =
-    new _$VPTokenValidationErrorNameEnumSerializer();
+    _$VPTokenValidationErrorNameEnumSerializer();
 Serializer<VPTokenValidationErrorMessageEnum>
     _$vPTokenValidationErrorMessageEnumSerializer =
-    new _$VPTokenValidationErrorMessageEnumSerializer();
+    _$VPTokenValidationErrorMessageEnumSerializer();
 Serializer<VPTokenValidationErrorHttpStatusCodeEnum>
     _$vPTokenValidationErrorHttpStatusCodeEnumSerializer =
-    new _$VPTokenValidationErrorHttpStatusCodeEnumSerializer();
+    _$VPTokenValidationErrorHttpStatusCodeEnumSerializer();
 
 class _$VPTokenValidationErrorNameEnumSerializer
     implements PrimitiveSerializer<VPTokenValidationErrorNameEnum> {
@@ -179,7 +179,7 @@ class _$VPTokenValidationError extends VPTokenValidationError {
 
   factory _$VPTokenValidationError(
           [void Function(VPTokenValidationErrorBuilder)? updates]) =>
-      (new VPTokenValidationErrorBuilder()..update(updates))._build();
+      (VPTokenValidationErrorBuilder()..update(updates))._build();
 
   _$VPTokenValidationError._(
       {required this.name,
@@ -187,17 +187,7 @@ class _$VPTokenValidationError extends VPTokenValidationError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'VPTokenValidationError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'VPTokenValidationError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'VPTokenValidationError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'VPTokenValidationError', 'traceId');
-  }
-
+      : super._();
   @override
   VPTokenValidationError rebuild(
           void Function(VPTokenValidationErrorBuilder) updates) =>
@@ -205,7 +195,7 @@ class _$VPTokenValidationError extends VPTokenValidationError {
 
   @override
   VPTokenValidationErrorBuilder toBuilder() =>
-      new VPTokenValidationErrorBuilder()..replace(this);
+      VPTokenValidationErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -268,7 +258,7 @@ class VPTokenValidationErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -291,7 +281,6 @@ class VPTokenValidationErrorBuilder
 
   @override
   void replace(VPTokenValidationError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VPTokenValidationError;
   }
 
@@ -307,7 +296,7 @@ class VPTokenValidationErrorBuilder
     _$VPTokenValidationError _$result;
     try {
       _$result = _$v ??
-          new _$VPTokenValidationError._(
+          _$VPTokenValidationError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'VPTokenValidationError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -324,7 +313,7 @@ class VPTokenValidationErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'VPTokenValidationError', _$failedField, e.toString());
       }
       rethrow;

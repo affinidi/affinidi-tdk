@@ -21,7 +21,7 @@ class _$PolicyDto extends PolicyDto {
   final BuiltList<PolicyStatementDto> statement;
 
   factory _$PolicyDto([void Function(PolicyDtoBuilder)? updates]) =>
-      (new PolicyDtoBuilder()..update(updates))._build();
+      (PolicyDtoBuilder()..update(updates))._build();
 
   _$PolicyDto._(
       {this.name,
@@ -30,17 +30,13 @@ class _$PolicyDto extends PolicyDto {
       this.projectId,
       required this.version,
       required this.statement})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(version, r'PolicyDto', 'version');
-    BuiltValueNullFieldError.checkNotNull(statement, r'PolicyDto', 'statement');
-  }
-
+      : super._();
   @override
   PolicyDto rebuild(void Function(PolicyDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PolicyDtoBuilder toBuilder() => new PolicyDtoBuilder()..replace(this);
+  PolicyDtoBuilder toBuilder() => PolicyDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -105,7 +101,7 @@ class PolicyDtoBuilder implements Builder<PolicyDto, PolicyDtoBuilder> {
 
   ListBuilder<PolicyStatementDto>? _statement;
   ListBuilder<PolicyStatementDto> get statement =>
-      _$this._statement ??= new ListBuilder<PolicyStatementDto>();
+      _$this._statement ??= ListBuilder<PolicyStatementDto>();
   set statement(ListBuilder<PolicyStatementDto>? statement) =>
       _$this._statement = statement;
 
@@ -129,7 +125,6 @@ class PolicyDtoBuilder implements Builder<PolicyDto, PolicyDtoBuilder> {
 
   @override
   void replace(PolicyDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PolicyDto;
   }
 
@@ -145,7 +140,7 @@ class PolicyDtoBuilder implements Builder<PolicyDto, PolicyDtoBuilder> {
     _$PolicyDto _$result;
     try {
       _$result = _$v ??
-          new _$PolicyDto._(
+          _$PolicyDto._(
             name: name,
             description: description,
             principalId: principalId,
@@ -160,7 +155,7 @@ class PolicyDtoBuilder implements Builder<PolicyDto, PolicyDtoBuilder> {
         _$failedField = 'statement';
         statement.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PolicyDto', _$failedField, e.toString());
       }
       rethrow;

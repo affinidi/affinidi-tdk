@@ -12,20 +12,16 @@ class _$TypedPrincipalId extends TypedPrincipalId {
 
   factory _$TypedPrincipalId(
           [void Function(TypedPrincipalIdBuilder)? updates]) =>
-      (new TypedPrincipalIdBuilder()..update(updates))._build();
+      (TypedPrincipalIdBuilder()..update(updates))._build();
 
-  _$TypedPrincipalId._({required this.principalId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        principalId, r'TypedPrincipalId', 'principalId');
-  }
-
+  _$TypedPrincipalId._({required this.principalId}) : super._();
   @override
   TypedPrincipalId rebuild(void Function(TypedPrincipalIdBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   TypedPrincipalIdBuilder toBuilder() =>
-      new TypedPrincipalIdBuilder()..replace(this);
+      TypedPrincipalIdBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +68,6 @@ class TypedPrincipalIdBuilder
 
   @override
   void replace(TypedPrincipalId other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TypedPrincipalId;
   }
 
@@ -86,7 +81,7 @@ class TypedPrincipalIdBuilder
 
   _$TypedPrincipalId _build() {
     final _$result = _$v ??
-        new _$TypedPrincipalId._(
+        _$TypedPrincipalId._(
           principalId: BuiltValueNullFieldError.checkNotNull(
               principalId, r'TypedPrincipalId', 'principalId'),
         );

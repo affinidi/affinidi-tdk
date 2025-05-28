@@ -14,16 +14,11 @@ class _$GetRevocationListCredentialResultDto
   factory _$GetRevocationListCredentialResultDto(
           [void Function(GetRevocationListCredentialResultDtoBuilder)?
               updates]) =>
-      (new GetRevocationListCredentialResultDtoBuilder()..update(updates))
-          ._build();
+      (GetRevocationListCredentialResultDtoBuilder()..update(updates))._build();
 
   _$GetRevocationListCredentialResultDto._(
       {required this.revocationListCredential})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(revocationListCredential,
-        r'GetRevocationListCredentialResultDto', 'revocationListCredential');
-  }
-
+      : super._();
   @override
   GetRevocationListCredentialResultDto rebuild(
           void Function(GetRevocationListCredentialResultDtoBuilder) updates) =>
@@ -31,7 +26,7 @@ class _$GetRevocationListCredentialResultDto
 
   @override
   GetRevocationListCredentialResultDtoBuilder toBuilder() =>
-      new GetRevocationListCredentialResultDtoBuilder()..replace(this);
+      GetRevocationListCredentialResultDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +77,6 @@ class GetRevocationListCredentialResultDtoBuilder
 
   @override
   void replace(GetRevocationListCredentialResultDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetRevocationListCredentialResultDto;
   }
 
@@ -97,7 +91,7 @@ class GetRevocationListCredentialResultDtoBuilder
 
   _$GetRevocationListCredentialResultDto _build() {
     final _$result = _$v ??
-        new _$GetRevocationListCredentialResultDto._(
+        _$GetRevocationListCredentialResultDto._(
           revocationListCredential: BuiltValueNullFieldError.checkNotNull(
               revocationListCredential,
               r'GetRevocationListCredentialResultDto',

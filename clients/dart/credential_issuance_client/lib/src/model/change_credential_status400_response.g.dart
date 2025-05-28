@@ -17,12 +17,12 @@ ChangeCredentialStatus400ResponseNameEnum
     case 'changeStatusForbiddenError':
       return _$changeCredentialStatus400ResponseNameEnum_changeStatusForbiddenError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ChangeCredentialStatus400ResponseNameEnum>
-    _$changeCredentialStatus400ResponseNameEnumValues = new BuiltSet<
+    _$changeCredentialStatus400ResponseNameEnumValues = BuiltSet<
         ChangeCredentialStatus400ResponseNameEnum>(const <ChangeCredentialStatus400ResponseNameEnum>[
   _$changeCredentialStatus400ResponseNameEnum_changeStatusForbiddenError,
 ]);
@@ -38,12 +38,12 @@ ChangeCredentialStatus400ResponseMessageEnum
     case 'relatedVCStatusCannotBeChanged':
       return _$changeCredentialStatus400ResponseMessageEnum_relatedVCStatusCannotBeChanged;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ChangeCredentialStatus400ResponseMessageEnum>
-    _$changeCredentialStatus400ResponseMessageEnumValues = new BuiltSet<
+    _$changeCredentialStatus400ResponseMessageEnumValues = BuiltSet<
         ChangeCredentialStatus400ResponseMessageEnum>(const <ChangeCredentialStatus400ResponseMessageEnum>[
   _$changeCredentialStatus400ResponseMessageEnum_relatedVCStatusCannotBeChanged,
 ]);
@@ -58,25 +58,25 @@ ChangeCredentialStatus400ResponseHttpStatusCodeEnum
     case 'number400':
       return _$changeCredentialStatus400ResponseHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ChangeCredentialStatus400ResponseHttpStatusCodeEnum>
-    _$changeCredentialStatus400ResponseHttpStatusCodeEnumValues = new BuiltSet<
+    _$changeCredentialStatus400ResponseHttpStatusCodeEnumValues = BuiltSet<
         ChangeCredentialStatus400ResponseHttpStatusCodeEnum>(const <ChangeCredentialStatus400ResponseHttpStatusCodeEnum>[
   _$changeCredentialStatus400ResponseHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<ChangeCredentialStatus400ResponseNameEnum>
     _$changeCredentialStatus400ResponseNameEnumSerializer =
-    new _$ChangeCredentialStatus400ResponseNameEnumSerializer();
+    _$ChangeCredentialStatus400ResponseNameEnumSerializer();
 Serializer<ChangeCredentialStatus400ResponseMessageEnum>
     _$changeCredentialStatus400ResponseMessageEnumSerializer =
-    new _$ChangeCredentialStatus400ResponseMessageEnumSerializer();
+    _$ChangeCredentialStatus400ResponseMessageEnumSerializer();
 Serializer<ChangeCredentialStatus400ResponseHttpStatusCodeEnum>
     _$changeCredentialStatus400ResponseHttpStatusCodeEnumSerializer =
-    new _$ChangeCredentialStatus400ResponseHttpStatusCodeEnumSerializer();
+    _$ChangeCredentialStatus400ResponseHttpStatusCodeEnumSerializer();
 
 class _$ChangeCredentialStatus400ResponseNameEnumSerializer
     implements PrimitiveSerializer<ChangeCredentialStatus400ResponseNameEnum> {
@@ -178,14 +178,9 @@ class _$ChangeCredentialStatus400Response
 
   factory _$ChangeCredentialStatus400Response(
           [void Function(ChangeCredentialStatus400ResponseBuilder)? updates]) =>
-      (new ChangeCredentialStatus400ResponseBuilder()..update(updates))
-          ._build();
+      (ChangeCredentialStatus400ResponseBuilder()..update(updates))._build();
 
-  _$ChangeCredentialStatus400Response._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'ChangeCredentialStatus400Response', 'oneOf');
-  }
-
+  _$ChangeCredentialStatus400Response._({required this.oneOf}) : super._();
   @override
   ChangeCredentialStatus400Response rebuild(
           void Function(ChangeCredentialStatus400ResponseBuilder) updates) =>
@@ -193,7 +188,7 @@ class _$ChangeCredentialStatus400Response
 
   @override
   ChangeCredentialStatus400ResponseBuilder toBuilder() =>
-      new ChangeCredentialStatus400ResponseBuilder()..replace(this);
+      ChangeCredentialStatus400ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -242,7 +237,6 @@ class ChangeCredentialStatus400ResponseBuilder
 
   @override
   void replace(ChangeCredentialStatus400Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChangeCredentialStatus400Response;
   }
 
@@ -257,7 +251,7 @@ class ChangeCredentialStatus400ResponseBuilder
 
   _$ChangeCredentialStatus400Response _build() {
     final _$result = _$v ??
-        new _$ChangeCredentialStatus400Response._(
+        _$ChangeCredentialStatus400Response._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'ChangeCredentialStatus400Response', 'oneOf'),
         );

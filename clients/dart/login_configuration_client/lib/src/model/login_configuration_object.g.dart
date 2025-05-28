@@ -38,7 +38,7 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
 
   factory _$LoginConfigurationObject(
           [void Function(LoginConfigurationObjectBuilder)? updates]) =>
-      (new LoginConfigurationObjectBuilder()..update(updates))._build();
+      (LoginConfigurationObjectBuilder()..update(updates))._build();
 
   _$LoginConfigurationObject._(
       {required this.ari,
@@ -55,27 +55,7 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
       required this.idTokenMapping,
       required this.clientMetadata,
       required this.tokenEndpointAuthMethod})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        ari, r'LoginConfigurationObject', 'ari');
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'LoginConfigurationObject', 'projectId');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'LoginConfigurationObject', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        clientId, r'LoginConfigurationObject', 'clientId');
-    BuiltValueNullFieldError.checkNotNull(
-        creationDate, r'LoginConfigurationObject', 'creationDate');
-    BuiltValueNullFieldError.checkNotNull(
-        vpDefinition, r'LoginConfigurationObject', 'vpDefinition');
-    BuiltValueNullFieldError.checkNotNull(
-        idTokenMapping, r'LoginConfigurationObject', 'idTokenMapping');
-    BuiltValueNullFieldError.checkNotNull(
-        clientMetadata, r'LoginConfigurationObject', 'clientMetadata');
-    BuiltValueNullFieldError.checkNotNull(tokenEndpointAuthMethod,
-        r'LoginConfigurationObject', 'tokenEndpointAuthMethod');
-  }
-
+      : super._();
   @override
   LoginConfigurationObject rebuild(
           void Function(LoginConfigurationObjectBuilder) updates) =>
@@ -83,7 +63,7 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
 
   @override
   LoginConfigurationObjectBuilder toBuilder() =>
-      new LoginConfigurationObjectBuilder()..replace(this);
+      LoginConfigurationObjectBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -171,13 +151,13 @@ class LoginConfigurationObjectBuilder
 
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
-      _$this._redirectUris ??= new ListBuilder<String>();
+      _$this._redirectUris ??= ListBuilder<String>();
   set redirectUris(ListBuilder<String>? redirectUris) =>
       _$this._redirectUris = redirectUris;
 
   ListBuilder<String>? _postLogoutRedirectUris;
   ListBuilder<String> get postLogoutRedirectUris =>
-      _$this._postLogoutRedirectUris ??= new ListBuilder<String>();
+      _$this._postLogoutRedirectUris ??= ListBuilder<String>();
   set postLogoutRedirectUris(ListBuilder<String>? postLogoutRedirectUris) =>
       _$this._postLogoutRedirectUris = postLogoutRedirectUris;
 
@@ -204,14 +184,14 @@ class LoginConfigurationObjectBuilder
 
   ListBuilder<IdTokenMappingItem>? _idTokenMapping;
   ListBuilder<IdTokenMappingItem> get idTokenMapping =>
-      _$this._idTokenMapping ??= new ListBuilder<IdTokenMappingItem>();
+      _$this._idTokenMapping ??= ListBuilder<IdTokenMappingItem>();
   set idTokenMapping(ListBuilder<IdTokenMappingItem>? idTokenMapping) =>
       _$this._idTokenMapping = idTokenMapping;
 
   LoginConfigurationClientMetadataOutputBuilder? _clientMetadata;
   LoginConfigurationClientMetadataOutputBuilder get clientMetadata =>
       _$this._clientMetadata ??=
-          new LoginConfigurationClientMetadataOutputBuilder();
+          LoginConfigurationClientMetadataOutputBuilder();
   set clientMetadata(
           LoginConfigurationClientMetadataOutputBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
@@ -251,7 +231,6 @@ class LoginConfigurationObjectBuilder
 
   @override
   void replace(LoginConfigurationObject other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginConfigurationObject;
   }
 
@@ -267,7 +246,7 @@ class LoginConfigurationObjectBuilder
     _$LoginConfigurationObject _$result;
     try {
       _$result = _$v ??
-          new _$LoginConfigurationObject._(
+          _$LoginConfigurationObject._(
             ari: BuiltValueNullFieldError.checkNotNull(
                 ari, r'LoginConfigurationObject', 'ari'),
             configurationId: configurationId,
@@ -305,7 +284,7 @@ class LoginConfigurationObjectBuilder
         _$failedField = 'clientMetadata';
         clientMetadata.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'LoginConfigurationObject', _$failedField, e.toString());
       }
       rethrow;

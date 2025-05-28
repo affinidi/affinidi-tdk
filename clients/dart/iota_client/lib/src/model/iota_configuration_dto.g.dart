@@ -19,20 +19,20 @@ IotaConfigurationDtoModeEnum _$iotaConfigurationDtoModeEnumValueOf(
     case 'websocket':
       return _$iotaConfigurationDtoModeEnum_websocket;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<IotaConfigurationDtoModeEnum>
-    _$iotaConfigurationDtoModeEnumValues = new BuiltSet<
-        IotaConfigurationDtoModeEnum>(const <IotaConfigurationDtoModeEnum>[
+    _$iotaConfigurationDtoModeEnumValues =
+    BuiltSet<IotaConfigurationDtoModeEnum>(const <IotaConfigurationDtoModeEnum>[
   _$iotaConfigurationDtoModeEnum_redirect,
   _$iotaConfigurationDtoModeEnum_websocket,
 ]);
 
 Serializer<IotaConfigurationDtoModeEnum>
     _$iotaConfigurationDtoModeEnumSerializer =
-    new _$IotaConfigurationDtoModeEnumSerializer();
+    _$IotaConfigurationDtoModeEnumSerializer();
 
 class _$IotaConfigurationDtoModeEnumSerializer
     implements PrimitiveSerializer<IotaConfigurationDtoModeEnum> {
@@ -93,7 +93,7 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
 
   factory _$IotaConfigurationDto(
           [void Function(IotaConfigurationDtoBuilder)? updates]) =>
-      (new IotaConfigurationDtoBuilder()..update(updates))._build();
+      (IotaConfigurationDtoBuilder()..update(updates))._build();
 
   _$IotaConfigurationDto._(
       {required this.ari,
@@ -109,26 +109,7 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
       this.mode,
       this.redirectUris,
       this.enableIdvProviders})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(ari, r'IotaConfigurationDto', 'ari');
-    BuiltValueNullFieldError.checkNotNull(
-        configurationId, r'IotaConfigurationDto', 'configurationId');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'IotaConfigurationDto', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'IotaConfigurationDto', 'projectId');
-    BuiltValueNullFieldError.checkNotNull(
-        walletAri, r'IotaConfigurationDto', 'walletAri');
-    BuiltValueNullFieldError.checkNotNull(
-        tokenMaxAge, r'IotaConfigurationDto', 'tokenMaxAge');
-    BuiltValueNullFieldError.checkNotNull(
-        enableVerification, r'IotaConfigurationDto', 'enableVerification');
-    BuiltValueNullFieldError.checkNotNull(enableConsentAuditLog,
-        r'IotaConfigurationDto', 'enableConsentAuditLog');
-    BuiltValueNullFieldError.checkNotNull(
-        clientMetadata, r'IotaConfigurationDto', 'clientMetadata');
-  }
-
+      : super._();
   @override
   IotaConfigurationDto rebuild(
           void Function(IotaConfigurationDtoBuilder) updates) =>
@@ -136,7 +117,7 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
 
   @override
   IotaConfigurationDtoBuilder toBuilder() =>
-      new IotaConfigurationDtoBuilder()..replace(this);
+      IotaConfigurationDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -243,8 +224,7 @@ class IotaConfigurationDtoBuilder
 
   IotaConfigurationDtoClientMetadataBuilder? _clientMetadata;
   IotaConfigurationDtoClientMetadataBuilder get clientMetadata =>
-      _$this._clientMetadata ??=
-          new IotaConfigurationDtoClientMetadataBuilder();
+      _$this._clientMetadata ??= IotaConfigurationDtoClientMetadataBuilder();
   set clientMetadata(
           IotaConfigurationDtoClientMetadataBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
@@ -255,7 +235,7 @@ class IotaConfigurationDtoBuilder
 
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
-      _$this._redirectUris ??= new ListBuilder<String>();
+      _$this._redirectUris ??= ListBuilder<String>();
   set redirectUris(ListBuilder<String>? redirectUris) =>
       _$this._redirectUris = redirectUris;
 
@@ -291,7 +271,6 @@ class IotaConfigurationDtoBuilder
 
   @override
   void replace(IotaConfigurationDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IotaConfigurationDto;
   }
 
@@ -307,7 +286,7 @@ class IotaConfigurationDtoBuilder
     _$IotaConfigurationDto _$result;
     try {
       _$result = _$v ??
-          new _$IotaConfigurationDto._(
+          _$IotaConfigurationDto._(
             ari: BuiltValueNullFieldError.checkNotNull(
                 ari, r'IotaConfigurationDto', 'ari'),
             configurationId: BuiltValueNullFieldError.checkNotNull(
@@ -343,7 +322,7 @@ class IotaConfigurationDtoBuilder
         _$failedField = 'redirectUris';
         _redirectUris?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'IotaConfigurationDto', _$failedField, e.toString());
       }
       rethrow;

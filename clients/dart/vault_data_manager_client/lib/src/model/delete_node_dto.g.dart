@@ -11,16 +11,15 @@ class _$DeleteNodeDto extends DeleteNodeDto {
   final String? newNodeId;
 
   factory _$DeleteNodeDto([void Function(DeleteNodeDtoBuilder)? updates]) =>
-      (new DeleteNodeDtoBuilder()..update(updates))._build();
+      (DeleteNodeDtoBuilder()..update(updates))._build();
 
   _$DeleteNodeDto._({this.newNodeId}) : super._();
-
   @override
   DeleteNodeDto rebuild(void Function(DeleteNodeDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DeleteNodeDtoBuilder toBuilder() => new DeleteNodeDtoBuilder()..replace(this);
+  DeleteNodeDtoBuilder toBuilder() => DeleteNodeDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,7 +66,6 @@ class DeleteNodeDtoBuilder
 
   @override
   void replace(DeleteNodeDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeleteNodeDto;
   }
 
@@ -81,7 +79,7 @@ class DeleteNodeDtoBuilder
 
   _$DeleteNodeDto _build() {
     final _$result = _$v ??
-        new _$DeleteNodeDto._(
+        _$DeleteNodeDto._(
           newNodeId: newNodeId,
         );
     replace(_$result);

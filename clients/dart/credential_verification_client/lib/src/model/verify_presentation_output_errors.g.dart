@@ -12,13 +12,9 @@ class _$VerifyPresentationOutputErrors extends VerifyPresentationOutputErrors {
 
   factory _$VerifyPresentationOutputErrors(
           [void Function(VerifyPresentationOutputErrorsBuilder)? updates]) =>
-      (new VerifyPresentationOutputErrorsBuilder()..update(updates))._build();
+      (VerifyPresentationOutputErrorsBuilder()..update(updates))._build();
 
-  _$VerifyPresentationOutputErrors._({required this.anyOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        anyOf, r'VerifyPresentationOutputErrors', 'anyOf');
-  }
-
+  _$VerifyPresentationOutputErrors._({required this.anyOf}) : super._();
   @override
   VerifyPresentationOutputErrors rebuild(
           void Function(VerifyPresentationOutputErrorsBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$VerifyPresentationOutputErrors extends VerifyPresentationOutputErrors {
 
   @override
   VerifyPresentationOutputErrorsBuilder toBuilder() =>
-      new VerifyPresentationOutputErrorsBuilder()..replace(this);
+      VerifyPresentationOutputErrorsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -75,7 +71,6 @@ class VerifyPresentationOutputErrorsBuilder
 
   @override
   void replace(VerifyPresentationOutputErrors other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VerifyPresentationOutputErrors;
   }
 
@@ -89,7 +84,7 @@ class VerifyPresentationOutputErrorsBuilder
 
   _$VerifyPresentationOutputErrors _build() {
     final _$result = _$v ??
-        new _$VerifyPresentationOutputErrors._(
+        _$VerifyPresentationOutputErrors._(
           anyOf: BuiltValueNullFieldError.checkNotNull(
               anyOf, r'VerifyPresentationOutputErrors', 'anyOf'),
         );

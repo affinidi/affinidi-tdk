@@ -17,25 +17,20 @@ class _$Descriptor extends Descriptor {
   final String format;
 
   factory _$Descriptor([void Function(DescriptorBuilder)? updates]) =>
-      (new DescriptorBuilder()..update(updates))._build();
+      (DescriptorBuilder()..update(updates))._build();
 
   _$Descriptor._(
       {required this.id,
       required this.path,
       this.pathNested,
       required this.format})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'Descriptor', 'id');
-    BuiltValueNullFieldError.checkNotNull(path, r'Descriptor', 'path');
-    BuiltValueNullFieldError.checkNotNull(format, r'Descriptor', 'format');
-  }
-
+      : super._();
   @override
   Descriptor rebuild(void Function(DescriptorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  DescriptorBuilder toBuilder() => new DescriptorBuilder()..replace(this);
+  DescriptorBuilder toBuilder() => DescriptorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +77,7 @@ class DescriptorBuilder implements Builder<Descriptor, DescriptorBuilder> {
 
   NestedDescriptorBuilder? _pathNested;
   NestedDescriptorBuilder get pathNested =>
-      _$this._pathNested ??= new NestedDescriptorBuilder();
+      _$this._pathNested ??= NestedDescriptorBuilder();
   set pathNested(NestedDescriptorBuilder? pathNested) =>
       _$this._pathNested = pathNested;
 
@@ -108,7 +103,6 @@ class DescriptorBuilder implements Builder<Descriptor, DescriptorBuilder> {
 
   @override
   void replace(Descriptor other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Descriptor;
   }
 
@@ -124,7 +118,7 @@ class DescriptorBuilder implements Builder<Descriptor, DescriptorBuilder> {
     _$Descriptor _$result;
     try {
       _$result = _$v ??
-          new _$Descriptor._(
+          _$Descriptor._(
             id: BuiltValueNullFieldError.checkNotNull(id, r'Descriptor', 'id'),
             path: BuiltValueNullFieldError.checkNotNull(
                 path, r'Descriptor', 'path'),
@@ -138,7 +132,7 @@ class DescriptorBuilder implements Builder<Descriptor, DescriptorBuilder> {
         _$failedField = 'pathNested';
         _pathNested?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Descriptor', _$failedField, e.toString());
       }
       rethrow;

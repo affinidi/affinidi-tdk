@@ -24,8 +24,7 @@ class _$ListScannedFilesOKScannedFilesInner
   factory _$ListScannedFilesOKScannedFilesInner(
           [void Function(ListScannedFilesOKScannedFilesInnerBuilder)?
               updates]) =>
-      (new ListScannedFilesOKScannedFilesInnerBuilder()..update(updates))
-          ._build();
+      (ListScannedFilesOKScannedFilesInnerBuilder()..update(updates))._build();
 
   _$ListScannedFilesOKScannedFilesInner._(
       {required this.jobId,
@@ -34,21 +33,7 @@ class _$ListScannedFilesOKScannedFilesInner
       required this.nodeId,
       required this.createdAt,
       required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        jobId, r'ListScannedFilesOKScannedFilesInner', 'jobId');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'ListScannedFilesOKScannedFilesInner', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        profileId, r'ListScannedFilesOKScannedFilesInner', 'profileId');
-    BuiltValueNullFieldError.checkNotNull(
-        nodeId, r'ListScannedFilesOKScannedFilesInner', 'nodeId');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'ListScannedFilesOKScannedFilesInner', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ListScannedFilesOKScannedFilesInner', 'name');
-  }
-
+      : super._();
   @override
   ListScannedFilesOKScannedFilesInner rebuild(
           void Function(ListScannedFilesOKScannedFilesInnerBuilder) updates) =>
@@ -56,7 +41,7 @@ class _$ListScannedFilesOKScannedFilesInner
 
   @override
   ListScannedFilesOKScannedFilesInnerBuilder toBuilder() =>
-      new ListScannedFilesOKScannedFilesInnerBuilder()..replace(this);
+      ListScannedFilesOKScannedFilesInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -146,7 +131,6 @@ class ListScannedFilesOKScannedFilesInnerBuilder
 
   @override
   void replace(ListScannedFilesOKScannedFilesInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListScannedFilesOKScannedFilesInner;
   }
 
@@ -161,7 +145,7 @@ class ListScannedFilesOKScannedFilesInnerBuilder
 
   _$ListScannedFilesOKScannedFilesInner _build() {
     final _$result = _$v ??
-        new _$ListScannedFilesOKScannedFilesInner._(
+        _$ListScannedFilesOKScannedFilesInner._(
           jobId: BuiltValueNullFieldError.checkNotNull(
               jobId, r'ListScannedFilesOKScannedFilesInner', 'jobId'),
           status: BuiltValueNullFieldError.checkNotNull(

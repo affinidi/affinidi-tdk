@@ -18,16 +18,12 @@ class _$SavePexQueriesUpdateInputQueriesInner
   factory _$SavePexQueriesUpdateInputQueriesInner(
           [void Function(SavePexQueriesUpdateInputQueriesInnerBuilder)?
               updates]) =>
-      (new SavePexQueriesUpdateInputQueriesInnerBuilder()..update(updates))
+      (SavePexQueriesUpdateInputQueriesInnerBuilder()..update(updates))
           ._build();
 
   _$SavePexQueriesUpdateInputQueriesInner._(
       {required this.queryId, this.vpDefinition, this.description})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        queryId, r'SavePexQueriesUpdateInputQueriesInner', 'queryId');
-  }
-
+      : super._();
   @override
   SavePexQueriesUpdateInputQueriesInner rebuild(
           void Function(SavePexQueriesUpdateInputQueriesInnerBuilder)
@@ -36,7 +32,7 @@ class _$SavePexQueriesUpdateInputQueriesInner
 
   @override
   SavePexQueriesUpdateInputQueriesInnerBuilder toBuilder() =>
-      new SavePexQueriesUpdateInputQueriesInnerBuilder()..replace(this);
+      SavePexQueriesUpdateInputQueriesInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -103,7 +99,6 @@ class SavePexQueriesUpdateInputQueriesInnerBuilder
 
   @override
   void replace(SavePexQueriesUpdateInputQueriesInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SavePexQueriesUpdateInputQueriesInner;
   }
 
@@ -118,7 +113,7 @@ class SavePexQueriesUpdateInputQueriesInnerBuilder
 
   _$SavePexQueriesUpdateInputQueriesInner _build() {
     final _$result = _$v ??
-        new _$SavePexQueriesUpdateInputQueriesInner._(
+        _$SavePexQueriesUpdateInputQueriesInner._(
           queryId: BuiltValueNullFieldError.checkNotNull(
               queryId, r'SavePexQueriesUpdateInputQueriesInner', 'queryId'),
           vpDefinition: vpDefinition,

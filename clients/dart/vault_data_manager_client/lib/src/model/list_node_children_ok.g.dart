@@ -14,10 +14,9 @@ class _$ListNodeChildrenOK extends ListNodeChildrenOK {
 
   factory _$ListNodeChildrenOK(
           [void Function(ListNodeChildrenOKBuilder)? updates]) =>
-      (new ListNodeChildrenOKBuilder()..update(updates))._build();
+      (ListNodeChildrenOKBuilder()..update(updates))._build();
 
   _$ListNodeChildrenOK._({this.nodes, this.lastEvaluatedKey}) : super._();
-
   @override
   ListNodeChildrenOK rebuild(
           void Function(ListNodeChildrenOKBuilder) updates) =>
@@ -25,7 +24,7 @@ class _$ListNodeChildrenOK extends ListNodeChildrenOK {
 
   @override
   ListNodeChildrenOKBuilder toBuilder() =>
-      new ListNodeChildrenOKBuilder()..replace(this);
+      ListNodeChildrenOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -58,8 +57,7 @@ class ListNodeChildrenOKBuilder
   _$ListNodeChildrenOK? _$v;
 
   ListBuilder<NodeDto>? _nodes;
-  ListBuilder<NodeDto> get nodes =>
-      _$this._nodes ??= new ListBuilder<NodeDto>();
+  ListBuilder<NodeDto> get nodes => _$this._nodes ??= ListBuilder<NodeDto>();
   set nodes(ListBuilder<NodeDto>? nodes) => _$this._nodes = nodes;
 
   String? _lastEvaluatedKey;
@@ -83,7 +81,6 @@ class ListNodeChildrenOKBuilder
 
   @override
   void replace(ListNodeChildrenOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListNodeChildrenOK;
   }
 
@@ -99,7 +96,7 @@ class ListNodeChildrenOKBuilder
     _$ListNodeChildrenOK _$result;
     try {
       _$result = _$v ??
-          new _$ListNodeChildrenOK._(
+          _$ListNodeChildrenOK._(
             nodes: _nodes?.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -109,7 +106,7 @@ class ListNodeChildrenOKBuilder
         _$failedField = 'nodes';
         _nodes?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListNodeChildrenOK', _$failedField, e.toString());
       }
       rethrow;

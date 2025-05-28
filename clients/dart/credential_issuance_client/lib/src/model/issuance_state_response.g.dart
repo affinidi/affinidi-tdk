@@ -30,12 +30,12 @@ IssuanceStateResponseStatusEnum _$issuanceStateResponseStatusEnumValueOf(
     case 'TIMEOUT':
       return _$issuanceStateResponseStatusEnum_TIMEOUT;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<IssuanceStateResponseStatusEnum>
-    _$issuanceStateResponseStatusEnumValues = new BuiltSet<
+    _$issuanceStateResponseStatusEnumValues = BuiltSet<
         IssuanceStateResponseStatusEnum>(const <IssuanceStateResponseStatusEnum>[
   _$issuanceStateResponseStatusEnum_INIT,
   _$issuanceStateResponseStatusEnum_OFFER_DELIVERED,
@@ -45,7 +45,7 @@ final BuiltSet<IssuanceStateResponseStatusEnum>
 
 Serializer<IssuanceStateResponseStatusEnum>
     _$issuanceStateResponseStatusEnumSerializer =
-    new _$IssuanceStateResponseStatusEnumSerializer();
+    _$IssuanceStateResponseStatusEnumSerializer();
 
 class _$IssuanceStateResponseStatusEnumSerializer
     implements PrimitiveSerializer<IssuanceStateResponseStatusEnum> {
@@ -89,16 +89,10 @@ class _$IssuanceStateResponse extends IssuanceStateResponse {
 
   factory _$IssuanceStateResponse(
           [void Function(IssuanceStateResponseBuilder)? updates]) =>
-      (new IssuanceStateResponseBuilder()..update(updates))._build();
+      (IssuanceStateResponseBuilder()..update(updates))._build();
 
   _$IssuanceStateResponse._({required this.issuanceId, required this.status})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issuanceId, r'IssuanceStateResponse', 'issuanceId');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'IssuanceStateResponse', 'status');
-  }
-
+      : super._();
   @override
   IssuanceStateResponse rebuild(
           void Function(IssuanceStateResponseBuilder) updates) =>
@@ -106,7 +100,7 @@ class _$IssuanceStateResponse extends IssuanceStateResponse {
 
   @override
   IssuanceStateResponseBuilder toBuilder() =>
-      new IssuanceStateResponseBuilder()..replace(this);
+      IssuanceStateResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -163,7 +157,6 @@ class IssuanceStateResponseBuilder
 
   @override
   void replace(IssuanceStateResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IssuanceStateResponse;
   }
 
@@ -177,7 +170,7 @@ class IssuanceStateResponseBuilder
 
   _$IssuanceStateResponse _build() {
     final _$result = _$v ??
-        new _$IssuanceStateResponse._(
+        _$IssuanceStateResponse._(
           issuanceId: BuiltValueNullFieldError.checkNotNull(
               issuanceId, r'IssuanceStateResponse', 'issuanceId'),
           status: BuiltValueNullFieldError.checkNotNull(

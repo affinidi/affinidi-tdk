@@ -12,13 +12,9 @@ class _$CredentialResponse extends CredentialResponse {
 
   factory _$CredentialResponse(
           [void Function(CredentialResponseBuilder)? updates]) =>
-      (new CredentialResponseBuilder()..update(updates))._build();
+      (CredentialResponseBuilder()..update(updates))._build();
 
-  _$CredentialResponse._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'CredentialResponse', 'oneOf');
-  }
-
+  _$CredentialResponse._({required this.oneOf}) : super._();
   @override
   CredentialResponse rebuild(
           void Function(CredentialResponseBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$CredentialResponse extends CredentialResponse {
 
   @override
   CredentialResponseBuilder toBuilder() =>
-      new CredentialResponseBuilder()..replace(this);
+      CredentialResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +69,6 @@ class CredentialResponseBuilder
 
   @override
   void replace(CredentialResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialResponse;
   }
 
@@ -87,7 +82,7 @@ class CredentialResponseBuilder
 
   _$CredentialResponse _build() {
     final _$result = _$v ??
-        new _$CredentialResponse._(
+        _$CredentialResponse._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'CredentialResponse', 'oneOf'),
         );

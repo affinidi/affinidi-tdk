@@ -47,7 +47,7 @@ class _$GetUserInfo extends GetUserInfo {
   final String? zoneinfo;
 
   factory _$GetUserInfo([void Function(GetUserInfoBuilder)? updates]) =>
-      (new GetUserInfoBuilder()..update(updates))._build();
+      (GetUserInfoBuilder()..update(updates))._build();
 
   _$GetUserInfo._(
       {this.birthdate,
@@ -70,13 +70,12 @@ class _$GetUserInfo extends GetUserInfo {
       this.website,
       this.zoneinfo})
       : super._();
-
   @override
   GetUserInfo rebuild(void Function(GetUserInfoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GetUserInfoBuilder toBuilder() => new GetUserInfoBuilder()..replace(this);
+  GetUserInfoBuilder toBuilder() => GetUserInfoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -270,7 +269,6 @@ class GetUserInfoBuilder implements Builder<GetUserInfo, GetUserInfoBuilder> {
 
   @override
   void replace(GetUserInfo other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetUserInfo;
   }
 
@@ -284,7 +282,7 @@ class GetUserInfoBuilder implements Builder<GetUserInfo, GetUserInfoBuilder> {
 
   _$GetUserInfo _build() {
     final _$result = _$v ??
-        new _$GetUserInfo._(
+        _$GetUserInfo._(
           birthdate: birthdate,
           email: email,
           emailVerified: emailVerified,

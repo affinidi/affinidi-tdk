@@ -14,12 +14,9 @@ class _$CreateProjectInput extends CreateProjectInput {
 
   factory _$CreateProjectInput(
           [void Function(CreateProjectInputBuilder)? updates]) =>
-      (new CreateProjectInputBuilder()..update(updates))._build();
+      (CreateProjectInputBuilder()..update(updates))._build();
 
-  _$CreateProjectInput._({required this.name, this.description}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'CreateProjectInput', 'name');
-  }
-
+  _$CreateProjectInput._({required this.name, this.description}) : super._();
   @override
   CreateProjectInput rebuild(
           void Function(CreateProjectInputBuilder) updates) =>
@@ -27,7 +24,7 @@ class _$CreateProjectInput extends CreateProjectInput {
 
   @override
   CreateProjectInputBuilder toBuilder() =>
-      new CreateProjectInputBuilder()..replace(this);
+      CreateProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -83,7 +80,6 @@ class CreateProjectInputBuilder
 
   @override
   void replace(CreateProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateProjectInput;
   }
 
@@ -97,7 +93,7 @@ class CreateProjectInputBuilder
 
   _$CreateProjectInput _build() {
     final _$result = _$v ??
-        new _$CreateProjectInput._(
+        _$CreateProjectInput._(
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'CreateProjectInput', 'name'),
           description: description,

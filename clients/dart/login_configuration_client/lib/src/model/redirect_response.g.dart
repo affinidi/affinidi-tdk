@@ -14,17 +14,17 @@ RedirectResponseTypeEnum _$redirectResponseTypeEnumValueOf(String name) {
     case 'REDIRECT_RESPONSE':
       return _$redirectResponseTypeEnum_REDIRECT_RESPONSE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<RedirectResponseTypeEnum> _$redirectResponseTypeEnumValues =
-    new BuiltSet<RedirectResponseTypeEnum>(const <RedirectResponseTypeEnum>[
+    BuiltSet<RedirectResponseTypeEnum>(const <RedirectResponseTypeEnum>[
   _$redirectResponseTypeEnum_REDIRECT_RESPONSE,
 ]);
 
 Serializer<RedirectResponseTypeEnum> _$redirectResponseTypeEnumSerializer =
-    new _$RedirectResponseTypeEnumSerializer();
+    _$RedirectResponseTypeEnumSerializer();
 
 class _$RedirectResponseTypeEnumSerializer
     implements PrimitiveSerializer<RedirectResponseTypeEnum> {
@@ -61,20 +61,16 @@ class _$RedirectResponse extends RedirectResponse {
 
   factory _$RedirectResponse(
           [void Function(RedirectResponseBuilder)? updates]) =>
-      (new RedirectResponseBuilder()..update(updates))._build();
+      (RedirectResponseBuilder()..update(updates))._build();
 
-  _$RedirectResponse._({required this.type, required this.to}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(type, r'RedirectResponse', 'type');
-    BuiltValueNullFieldError.checkNotNull(to, r'RedirectResponse', 'to');
-  }
-
+  _$RedirectResponse._({required this.type, required this.to}) : super._();
   @override
   RedirectResponse rebuild(void Function(RedirectResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   RedirectResponseBuilder toBuilder() =>
-      new RedirectResponseBuilder()..replace(this);
+      RedirectResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -128,7 +124,6 @@ class RedirectResponseBuilder
 
   @override
   void replace(RedirectResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RedirectResponse;
   }
 
@@ -142,7 +137,7 @@ class RedirectResponseBuilder
 
   _$RedirectResponse _build() {
     final _$result = _$v ??
-        new _$RedirectResponse._(
+        _$RedirectResponse._(
           type: BuiltValueNullFieldError.checkNotNull(
               type, r'RedirectResponse', 'type'),
           to: BuiltValueNullFieldError.checkNotNull(

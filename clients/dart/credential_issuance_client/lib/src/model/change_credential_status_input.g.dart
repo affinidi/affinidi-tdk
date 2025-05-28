@@ -21,12 +21,12 @@ ChangeCredentialStatusInputChangeReasonEnum
     case 'COMPROMISED_ISSUER':
       return _$changeCredentialStatusInputChangeReasonEnum_COMPROMISED_ISSUER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ChangeCredentialStatusInputChangeReasonEnum>
-    _$changeCredentialStatusInputChangeReasonEnumValues = new BuiltSet<
+    _$changeCredentialStatusInputChangeReasonEnumValues = BuiltSet<
         ChangeCredentialStatusInputChangeReasonEnum>(const <ChangeCredentialStatusInputChangeReasonEnum>[
   _$changeCredentialStatusInputChangeReasonEnum_INVALID_CREDENTIAL,
   _$changeCredentialStatusInputChangeReasonEnum_COMPROMISED_ISSUER,
@@ -34,7 +34,7 @@ final BuiltSet<ChangeCredentialStatusInputChangeReasonEnum>
 
 Serializer<ChangeCredentialStatusInputChangeReasonEnum>
     _$changeCredentialStatusInputChangeReasonEnumSerializer =
-    new _$ChangeCredentialStatusInputChangeReasonEnumSerializer();
+    _$ChangeCredentialStatusInputChangeReasonEnumSerializer();
 
 class _$ChangeCredentialStatusInputChangeReasonEnumSerializer
     implements
@@ -77,11 +77,10 @@ class _$ChangeCredentialStatusInput extends ChangeCredentialStatusInput {
 
   factory _$ChangeCredentialStatusInput(
           [void Function(ChangeCredentialStatusInputBuilder)? updates]) =>
-      (new ChangeCredentialStatusInputBuilder()..update(updates))._build();
+      (ChangeCredentialStatusInputBuilder()..update(updates))._build();
 
   _$ChangeCredentialStatusInput._({this.changeReason, this.issuanceRecordId})
       : super._();
-
   @override
   ChangeCredentialStatusInput rebuild(
           void Function(ChangeCredentialStatusInputBuilder) updates) =>
@@ -89,7 +88,7 @@ class _$ChangeCredentialStatusInput extends ChangeCredentialStatusInput {
 
   @override
   ChangeCredentialStatusInputBuilder toBuilder() =>
-      new ChangeCredentialStatusInputBuilder()..replace(this);
+      ChangeCredentialStatusInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -150,7 +149,6 @@ class ChangeCredentialStatusInputBuilder
 
   @override
   void replace(ChangeCredentialStatusInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChangeCredentialStatusInput;
   }
 
@@ -164,7 +162,7 @@ class ChangeCredentialStatusInputBuilder
 
   _$ChangeCredentialStatusInput _build() {
     final _$result = _$v ??
-        new _$ChangeCredentialStatusInput._(
+        _$ChangeCredentialStatusInput._(
           changeReason: changeReason,
           issuanceRecordId: issuanceRecordId,
         );

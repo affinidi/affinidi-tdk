@@ -16,12 +16,12 @@ MissingHolderDidErrorNameEnum _$missingHolderDidErrorNameEnumValueOf(
     case 'missingHolderDidError':
       return _$missingHolderDidErrorNameEnum_missingHolderDidError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MissingHolderDidErrorNameEnum>
-    _$missingHolderDidErrorNameEnumValues = new BuiltSet<
+    _$missingHolderDidErrorNameEnumValues = BuiltSet<
         MissingHolderDidErrorNameEnum>(const <MissingHolderDidErrorNameEnum>[
   _$missingHolderDidErrorNameEnum_missingHolderDidError,
 ]);
@@ -37,12 +37,12 @@ MissingHolderDidErrorMessageEnum _$missingHolderDidErrorMessageEnumValueOf(
     case 'holderDIDIsRequiredInThisClaimMode':
       return _$missingHolderDidErrorMessageEnum_holderDIDIsRequiredInThisClaimMode;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MissingHolderDidErrorMessageEnum>
-    _$missingHolderDidErrorMessageEnumValues = new BuiltSet<
+    _$missingHolderDidErrorMessageEnumValues = BuiltSet<
         MissingHolderDidErrorMessageEnum>(const <MissingHolderDidErrorMessageEnum>[
   _$missingHolderDidErrorMessageEnum_holderDIDIsRequiredInThisClaimMode,
 ]);
@@ -57,25 +57,25 @@ MissingHolderDidErrorHttpStatusCodeEnum
     case 'number400':
       return _$missingHolderDidErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MissingHolderDidErrorHttpStatusCodeEnum>
-    _$missingHolderDidErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$missingHolderDidErrorHttpStatusCodeEnumValues = BuiltSet<
         MissingHolderDidErrorHttpStatusCodeEnum>(const <MissingHolderDidErrorHttpStatusCodeEnum>[
   _$missingHolderDidErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<MissingHolderDidErrorNameEnum>
     _$missingHolderDidErrorNameEnumSerializer =
-    new _$MissingHolderDidErrorNameEnumSerializer();
+    _$MissingHolderDidErrorNameEnumSerializer();
 Serializer<MissingHolderDidErrorMessageEnum>
     _$missingHolderDidErrorMessageEnumSerializer =
-    new _$MissingHolderDidErrorMessageEnumSerializer();
+    _$MissingHolderDidErrorMessageEnumSerializer();
 Serializer<MissingHolderDidErrorHttpStatusCodeEnum>
     _$missingHolderDidErrorHttpStatusCodeEnumSerializer =
-    new _$MissingHolderDidErrorHttpStatusCodeEnumSerializer();
+    _$MissingHolderDidErrorHttpStatusCodeEnumSerializer();
 
 class _$MissingHolderDidErrorNameEnumSerializer
     implements PrimitiveSerializer<MissingHolderDidErrorNameEnum> {
@@ -179,7 +179,7 @@ class _$MissingHolderDidError extends MissingHolderDidError {
 
   factory _$MissingHolderDidError(
           [void Function(MissingHolderDidErrorBuilder)? updates]) =>
-      (new MissingHolderDidErrorBuilder()..update(updates))._build();
+      (MissingHolderDidErrorBuilder()..update(updates))._build();
 
   _$MissingHolderDidError._(
       {required this.name,
@@ -187,17 +187,7 @@ class _$MissingHolderDidError extends MissingHolderDidError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'MissingHolderDidError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'MissingHolderDidError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'MissingHolderDidError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'MissingHolderDidError', 'traceId');
-  }
-
+      : super._();
   @override
   MissingHolderDidError rebuild(
           void Function(MissingHolderDidErrorBuilder) updates) =>
@@ -205,7 +195,7 @@ class _$MissingHolderDidError extends MissingHolderDidError {
 
   @override
   MissingHolderDidErrorBuilder toBuilder() =>
-      new MissingHolderDidErrorBuilder()..replace(this);
+      MissingHolderDidErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -267,7 +257,7 @@ class MissingHolderDidErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -290,7 +280,6 @@ class MissingHolderDidErrorBuilder
 
   @override
   void replace(MissingHolderDidError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MissingHolderDidError;
   }
 
@@ -306,7 +295,7 @@ class MissingHolderDidErrorBuilder
     _$MissingHolderDidError _$result;
     try {
       _$result = _$v ??
-          new _$MissingHolderDidError._(
+          _$MissingHolderDidError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'MissingHolderDidError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -323,7 +312,7 @@ class MissingHolderDidErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'MissingHolderDidError', _$failedField, e.toString());
       }
       rethrow;

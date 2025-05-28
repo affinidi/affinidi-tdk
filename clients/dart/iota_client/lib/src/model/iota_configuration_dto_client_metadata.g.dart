@@ -18,20 +18,11 @@ class _$IotaConfigurationDtoClientMetadata
   factory _$IotaConfigurationDtoClientMetadata(
           [void Function(IotaConfigurationDtoClientMetadataBuilder)?
               updates]) =>
-      (new IotaConfigurationDtoClientMetadataBuilder()..update(updates))
-          ._build();
+      (IotaConfigurationDtoClientMetadataBuilder()..update(updates))._build();
 
   _$IotaConfigurationDtoClientMetadata._(
       {required this.name, required this.origin, required this.logo})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'IotaConfigurationDtoClientMetadata', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        origin, r'IotaConfigurationDtoClientMetadata', 'origin');
-    BuiltValueNullFieldError.checkNotNull(
-        logo, r'IotaConfigurationDtoClientMetadata', 'logo');
-  }
-
+      : super._();
   @override
   IotaConfigurationDtoClientMetadata rebuild(
           void Function(IotaConfigurationDtoClientMetadataBuilder) updates) =>
@@ -39,7 +30,7 @@ class _$IotaConfigurationDtoClientMetadata
 
   @override
   IotaConfigurationDtoClientMetadataBuilder toBuilder() =>
-      new IotaConfigurationDtoClientMetadataBuilder()..replace(this);
+      IotaConfigurationDtoClientMetadataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -105,7 +96,6 @@ class IotaConfigurationDtoClientMetadataBuilder
 
   @override
   void replace(IotaConfigurationDtoClientMetadata other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IotaConfigurationDtoClientMetadata;
   }
 
@@ -120,7 +110,7 @@ class IotaConfigurationDtoClientMetadataBuilder
 
   _$IotaConfigurationDtoClientMetadata _build() {
     final _$result = _$v ??
-        new _$IotaConfigurationDtoClientMetadata._(
+        _$IotaConfigurationDtoClientMetadata._(
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'IotaConfigurationDtoClientMetadata', 'name'),
           origin: BuiltValueNullFieldError.checkNotNull(

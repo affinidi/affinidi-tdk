@@ -14,14 +14,10 @@ class _$ListLoggedConsentsOK extends ListLoggedConsentsOK {
 
   factory _$ListLoggedConsentsOK(
           [void Function(ListLoggedConsentsOKBuilder)? updates]) =>
-      (new ListLoggedConsentsOKBuilder()..update(updates))._build();
+      (ListLoggedConsentsOKBuilder()..update(updates))._build();
 
   _$ListLoggedConsentsOK._({required this.consents, this.lastEvaluatedKey})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        consents, r'ListLoggedConsentsOK', 'consents');
-  }
-
+      : super._();
   @override
   ListLoggedConsentsOK rebuild(
           void Function(ListLoggedConsentsOKBuilder) updates) =>
@@ -29,7 +25,7 @@ class _$ListLoggedConsentsOK extends ListLoggedConsentsOK {
 
   @override
   ListLoggedConsentsOKBuilder toBuilder() =>
-      new ListLoggedConsentsOKBuilder()..replace(this);
+      ListLoggedConsentsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -63,7 +59,7 @@ class ListLoggedConsentsOKBuilder
 
   ListBuilder<ConsentDto>? _consents;
   ListBuilder<ConsentDto> get consents =>
-      _$this._consents ??= new ListBuilder<ConsentDto>();
+      _$this._consents ??= ListBuilder<ConsentDto>();
   set consents(ListBuilder<ConsentDto>? consents) =>
       _$this._consents = consents;
 
@@ -88,7 +84,6 @@ class ListLoggedConsentsOKBuilder
 
   @override
   void replace(ListLoggedConsentsOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListLoggedConsentsOK;
   }
 
@@ -104,7 +99,7 @@ class ListLoggedConsentsOKBuilder
     _$ListLoggedConsentsOK _$result;
     try {
       _$result = _$v ??
-          new _$ListLoggedConsentsOK._(
+          _$ListLoggedConsentsOK._(
             consents: consents.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -114,7 +109,7 @@ class ListLoggedConsentsOKBuilder
         _$failedField = 'consents';
         consents.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListLoggedConsentsOK', _$failedField, e.toString());
       }
       rethrow;

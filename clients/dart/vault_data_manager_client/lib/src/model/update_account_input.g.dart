@@ -8,9 +8,9 @@ part of 'update_account_input.dart';
 
 class _$UpdateAccountInput extends UpdateAccountInput {
   @override
-  final String name;
+  final String? name;
   @override
-  final String description;
+  final String? description;
   @override
   final String? alias;
   @override
@@ -22,25 +22,16 @@ class _$UpdateAccountInput extends UpdateAccountInput {
 
   factory _$UpdateAccountInput(
           [void Function(UpdateAccountInputBuilder)? updates]) =>
-      (new UpdateAccountInputBuilder()..update(updates))._build();
+      (UpdateAccountInputBuilder()..update(updates))._build();
 
   _$UpdateAccountInput._(
-      {required this.name,
-      required this.description,
+      {this.name,
+      this.description,
       this.alias,
       required this.didProof,
       this.metadata,
       required this.accountDid})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'UpdateAccountInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        description, r'UpdateAccountInput', 'description');
-    BuiltValueNullFieldError.checkNotNull(
-        didProof, r'UpdateAccountInput', 'didProof');
-    BuiltValueNullFieldError.checkNotNull(
-        accountDid, r'UpdateAccountInput', 'accountDid');
-  }
-
+      : super._();
   @override
   UpdateAccountInput rebuild(
           void Function(UpdateAccountInputBuilder) updates) =>
@@ -48,7 +39,7 @@ class _$UpdateAccountInput extends UpdateAccountInput {
 
   @override
   UpdateAccountInputBuilder toBuilder() =>
-      new UpdateAccountInputBuilder()..replace(this);
+      UpdateAccountInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -136,7 +127,6 @@ class UpdateAccountInputBuilder
 
   @override
   void replace(UpdateAccountInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateAccountInput;
   }
 
@@ -150,11 +140,9 @@ class UpdateAccountInputBuilder
 
   _$UpdateAccountInput _build() {
     final _$result = _$v ??
-        new _$UpdateAccountInput._(
-          name: BuiltValueNullFieldError.checkNotNull(
-              name, r'UpdateAccountInput', 'name'),
-          description: BuiltValueNullFieldError.checkNotNull(
-              description, r'UpdateAccountInput', 'description'),
+        _$UpdateAccountInput._(
+          name: name,
+          description: description,
           alias: alias,
           didProof: BuiltValueNullFieldError.checkNotNull(
               didProof, r'UpdateAccountInput', 'didProof'),

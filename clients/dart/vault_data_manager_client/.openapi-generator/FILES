@@ -6,12 +6,13 @@ analysis_options.yaml
 doc/AccountDto.md
 doc/AccountsApi.md
 doc/AwsCredentialExchangeOperationOK.md
-doc/ConfigApi.md
+doc/ConfigurationApi.md
 doc/ConsumerMetadataDto.md
 doc/CorsAwsCredentialExchangeOK.md
 doc/CorsDeleteAccountOK.md
 doc/CorsDeleteNodeOK.md
 doc/CorsGetConfigOK.md
+doc/CorsGetConfigurationOK.md
 doc/CorsGetScannedFileInfoOK.md
 doc/CorsGetWellKnownJwksOK.md
 doc/CorsInitNodesOK.md
@@ -67,7 +68,7 @@ doc/WellKnownApi.md
 lib/affinidi_tdk_vault_data_manager_client.dart
 lib/src/api.dart
 lib/src/api/accounts_api.dart
-lib/src/api/config_api.dart
+lib/src/api/configuration_api.dart
 lib/src/api/files_api.dart
 lib/src/api/nodes_api.dart
 lib/src/api/profile_data_api.dart
@@ -86,6 +87,7 @@ lib/src/model/cors_aws_credential_exchange_ok.dart
 lib/src/model/cors_delete_account_ok.dart
 lib/src/model/cors_delete_node_ok.dart
 lib/src/model/cors_get_config_ok.dart
+lib/src/model/cors_get_configuration_ok.dart
 lib/src/model/cors_get_scanned_file_info_ok.dart
 lib/src/model/cors_get_well_known_jwks_ok.dart
 lib/src/model/cors_init_nodes_ok.dart
@@ -141,12 +143,13 @@ pubspec.yaml
 test/account_dto_test.dart
 test/accounts_api_test.dart
 test/aws_credential_exchange_operation_ok_test.dart
-test/config_api_test.dart
+test/configuration_api_test.dart
 test/consumer_metadata_dto_test.dart
 test/cors_aws_credential_exchange_ok_test.dart
 test/cors_delete_account_ok_test.dart
 test/cors_delete_node_ok_test.dart
 test/cors_get_config_ok_test.dart
+test/cors_get_configuration_ok_test.dart
 test/cors_get_scanned_file_info_ok_test.dart
 test/cors_get_well_known_jwks_ok_test.dart
 test/cors_init_nodes_ok_test.dart

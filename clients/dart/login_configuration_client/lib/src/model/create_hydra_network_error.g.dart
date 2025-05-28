@@ -16,12 +16,12 @@ CreateHydraNetworkErrorNameEnum _$createHydraNetworkErrorNameEnumValueOf(
     case 'createHydraNetworkError':
       return _$createHydraNetworkErrorNameEnum_createHydraNetworkError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateHydraNetworkErrorNameEnum>
-    _$createHydraNetworkErrorNameEnumValues = new BuiltSet<
+    _$createHydraNetworkErrorNameEnumValues = BuiltSet<
         CreateHydraNetworkErrorNameEnum>(const <CreateHydraNetworkErrorNameEnum>[
   _$createHydraNetworkErrorNameEnum_createHydraNetworkError,
 ]);
@@ -36,12 +36,12 @@ CreateHydraNetworkErrorMessageEnum _$createHydraNetworkErrorMessageEnumValueOf(
     case 'createHydraNetworkError':
       return _$createHydraNetworkErrorMessageEnum_createHydraNetworkError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateHydraNetworkErrorMessageEnum>
-    _$createHydraNetworkErrorMessageEnumValues = new BuiltSet<
+    _$createHydraNetworkErrorMessageEnumValues = BuiltSet<
         CreateHydraNetworkErrorMessageEnum>(const <CreateHydraNetworkErrorMessageEnum>[
   _$createHydraNetworkErrorMessageEnum_createHydraNetworkError,
 ]);
@@ -56,25 +56,25 @@ CreateHydraNetworkErrorHttpStatusCodeEnum
     case 'number400':
       return _$createHydraNetworkErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateHydraNetworkErrorHttpStatusCodeEnum>
-    _$createHydraNetworkErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$createHydraNetworkErrorHttpStatusCodeEnumValues = BuiltSet<
         CreateHydraNetworkErrorHttpStatusCodeEnum>(const <CreateHydraNetworkErrorHttpStatusCodeEnum>[
   _$createHydraNetworkErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<CreateHydraNetworkErrorNameEnum>
     _$createHydraNetworkErrorNameEnumSerializer =
-    new _$CreateHydraNetworkErrorNameEnumSerializer();
+    _$CreateHydraNetworkErrorNameEnumSerializer();
 Serializer<CreateHydraNetworkErrorMessageEnum>
     _$createHydraNetworkErrorMessageEnumSerializer =
-    new _$CreateHydraNetworkErrorMessageEnumSerializer();
+    _$CreateHydraNetworkErrorMessageEnumSerializer();
 Serializer<CreateHydraNetworkErrorHttpStatusCodeEnum>
     _$createHydraNetworkErrorHttpStatusCodeEnumSerializer =
-    new _$CreateHydraNetworkErrorHttpStatusCodeEnumSerializer();
+    _$CreateHydraNetworkErrorHttpStatusCodeEnumSerializer();
 
 class _$CreateHydraNetworkErrorNameEnumSerializer
     implements PrimitiveSerializer<CreateHydraNetworkErrorNameEnum> {
@@ -176,7 +176,7 @@ class _$CreateHydraNetworkError extends CreateHydraNetworkError {
 
   factory _$CreateHydraNetworkError(
           [void Function(CreateHydraNetworkErrorBuilder)? updates]) =>
-      (new CreateHydraNetworkErrorBuilder()..update(updates))._build();
+      (CreateHydraNetworkErrorBuilder()..update(updates))._build();
 
   _$CreateHydraNetworkError._(
       {required this.name,
@@ -184,17 +184,7 @@ class _$CreateHydraNetworkError extends CreateHydraNetworkError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'CreateHydraNetworkError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CreateHydraNetworkError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'CreateHydraNetworkError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'CreateHydraNetworkError', 'traceId');
-  }
-
+      : super._();
   @override
   CreateHydraNetworkError rebuild(
           void Function(CreateHydraNetworkErrorBuilder) updates) =>
@@ -202,7 +192,7 @@ class _$CreateHydraNetworkError extends CreateHydraNetworkError {
 
   @override
   CreateHydraNetworkErrorBuilder toBuilder() =>
-      new CreateHydraNetworkErrorBuilder()..replace(this);
+      CreateHydraNetworkErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -266,7 +256,7 @@ class CreateHydraNetworkErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -289,7 +279,6 @@ class CreateHydraNetworkErrorBuilder
 
   @override
   void replace(CreateHydraNetworkError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateHydraNetworkError;
   }
 
@@ -305,7 +294,7 @@ class CreateHydraNetworkErrorBuilder
     _$CreateHydraNetworkError _$result;
     try {
       _$result = _$v ??
-          new _$CreateHydraNetworkError._(
+          _$CreateHydraNetworkError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'CreateHydraNetworkError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -322,7 +311,7 @@ class CreateHydraNetworkErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateHydraNetworkError', _$failedField, e.toString());
       }
       rethrow;

@@ -21,12 +21,12 @@ UpdateConfigurationByIdInputModeEnum
     case 'websocket':
       return _$updateConfigurationByIdInputModeEnum_websocket;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UpdateConfigurationByIdInputModeEnum>
-    _$updateConfigurationByIdInputModeEnumValues = new BuiltSet<
+    _$updateConfigurationByIdInputModeEnumValues = BuiltSet<
         UpdateConfigurationByIdInputModeEnum>(const <UpdateConfigurationByIdInputModeEnum>[
   _$updateConfigurationByIdInputModeEnum_redirect,
   _$updateConfigurationByIdInputModeEnum_websocket,
@@ -34,7 +34,7 @@ final BuiltSet<UpdateConfigurationByIdInputModeEnum>
 
 Serializer<UpdateConfigurationByIdInputModeEnum>
     _$updateConfigurationByIdInputModeEnumSerializer =
-    new _$UpdateConfigurationByIdInputModeEnumSerializer();
+    _$UpdateConfigurationByIdInputModeEnumSerializer();
 
 class _$UpdateConfigurationByIdInputModeEnumSerializer
     implements PrimitiveSerializer<UpdateConfigurationByIdInputModeEnum> {
@@ -94,7 +94,7 @@ class _$UpdateConfigurationByIdInput extends UpdateConfigurationByIdInput {
 
   factory _$UpdateConfigurationByIdInput(
           [void Function(UpdateConfigurationByIdInputBuilder)? updates]) =>
-      (new UpdateConfigurationByIdInputBuilder()..update(updates))._build();
+      (UpdateConfigurationByIdInputBuilder()..update(updates))._build();
 
   _$UpdateConfigurationByIdInput._(
       {this.name,
@@ -109,7 +109,6 @@ class _$UpdateConfigurationByIdInput extends UpdateConfigurationByIdInput {
       this.redirectUris,
       this.enableIdvProviders})
       : super._();
-
   @override
   UpdateConfigurationByIdInput rebuild(
           void Function(UpdateConfigurationByIdInputBuilder) updates) =>
@@ -117,7 +116,7 @@ class _$UpdateConfigurationByIdInput extends UpdateConfigurationByIdInput {
 
   @override
   UpdateConfigurationByIdInputBuilder toBuilder() =>
-      new UpdateConfigurationByIdInputBuilder()..replace(this);
+      UpdateConfigurationByIdInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -211,8 +210,7 @@ class UpdateConfigurationByIdInputBuilder
 
   IotaConfigurationDtoClientMetadataBuilder? _clientMetadata;
   IotaConfigurationDtoClientMetadataBuilder get clientMetadata =>
-      _$this._clientMetadata ??=
-          new IotaConfigurationDtoClientMetadataBuilder();
+      _$this._clientMetadata ??= IotaConfigurationDtoClientMetadataBuilder();
   set clientMetadata(
           IotaConfigurationDtoClientMetadataBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
@@ -223,7 +221,7 @@ class UpdateConfigurationByIdInputBuilder
 
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
-      _$this._redirectUris ??= new ListBuilder<String>();
+      _$this._redirectUris ??= ListBuilder<String>();
   set redirectUris(ListBuilder<String>? redirectUris) =>
       _$this._redirectUris = redirectUris;
 
@@ -257,7 +255,6 @@ class UpdateConfigurationByIdInputBuilder
 
   @override
   void replace(UpdateConfigurationByIdInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateConfigurationByIdInput;
   }
 
@@ -273,7 +270,7 @@ class UpdateConfigurationByIdInputBuilder
     _$UpdateConfigurationByIdInput _$result;
     try {
       _$result = _$v ??
-          new _$UpdateConfigurationByIdInput._(
+          _$UpdateConfigurationByIdInput._(
             name: name,
             walletAri: walletAri,
             iotaResponseWebhookURL: iotaResponseWebhookURL,
@@ -295,7 +292,7 @@ class UpdateConfigurationByIdInputBuilder
         _$failedField = 'redirectUris';
         _redirectUris?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UpdateConfigurationByIdInput', _$failedField, e.toString());
       }
       rethrow;

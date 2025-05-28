@@ -21,12 +21,12 @@ CreateIotaConfigurationInputModeEnum
     case 'websocket':
       return _$createIotaConfigurationInputModeEnum_websocket;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateIotaConfigurationInputModeEnum>
-    _$createIotaConfigurationInputModeEnumValues = new BuiltSet<
+    _$createIotaConfigurationInputModeEnumValues = BuiltSet<
         CreateIotaConfigurationInputModeEnum>(const <CreateIotaConfigurationInputModeEnum>[
   _$createIotaConfigurationInputModeEnum_redirect,
   _$createIotaConfigurationInputModeEnum_websocket,
@@ -34,7 +34,7 @@ final BuiltSet<CreateIotaConfigurationInputModeEnum>
 
 Serializer<CreateIotaConfigurationInputModeEnum>
     _$createIotaConfigurationInputModeEnumSerializer =
-    new _$CreateIotaConfigurationInputModeEnumSerializer();
+    _$CreateIotaConfigurationInputModeEnumSerializer();
 
 class _$CreateIotaConfigurationInputModeEnumSerializer
     implements PrimitiveSerializer<CreateIotaConfigurationInputModeEnum> {
@@ -94,7 +94,7 @@ class _$CreateIotaConfigurationInput extends CreateIotaConfigurationInput {
 
   factory _$CreateIotaConfigurationInput(
           [void Function(CreateIotaConfigurationInputBuilder)? updates]) =>
-      (new CreateIotaConfigurationInputBuilder()..update(updates))._build();
+      (CreateIotaConfigurationInputBuilder()..update(updates))._build();
 
   _$CreateIotaConfigurationInput._(
       {required this.name,
@@ -108,19 +108,7 @@ class _$CreateIotaConfigurationInput extends CreateIotaConfigurationInput {
       this.mode,
       this.redirectUris,
       this.enableIdvProviders})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'CreateIotaConfigurationInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        walletAri, r'CreateIotaConfigurationInput', 'walletAri');
-    BuiltValueNullFieldError.checkNotNull(enableVerification,
-        r'CreateIotaConfigurationInput', 'enableVerification');
-    BuiltValueNullFieldError.checkNotNull(enableConsentAuditLog,
-        r'CreateIotaConfigurationInput', 'enableConsentAuditLog');
-    BuiltValueNullFieldError.checkNotNull(
-        clientMetadata, r'CreateIotaConfigurationInput', 'clientMetadata');
-  }
-
+      : super._();
   @override
   CreateIotaConfigurationInput rebuild(
           void Function(CreateIotaConfigurationInputBuilder) updates) =>
@@ -128,7 +116,7 @@ class _$CreateIotaConfigurationInput extends CreateIotaConfigurationInput {
 
   @override
   CreateIotaConfigurationInputBuilder toBuilder() =>
-      new CreateIotaConfigurationInputBuilder()..replace(this);
+      CreateIotaConfigurationInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -222,8 +210,7 @@ class CreateIotaConfigurationInputBuilder
 
   IotaConfigurationDtoClientMetadataBuilder? _clientMetadata;
   IotaConfigurationDtoClientMetadataBuilder get clientMetadata =>
-      _$this._clientMetadata ??=
-          new IotaConfigurationDtoClientMetadataBuilder();
+      _$this._clientMetadata ??= IotaConfigurationDtoClientMetadataBuilder();
   set clientMetadata(
           IotaConfigurationDtoClientMetadataBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
@@ -234,7 +221,7 @@ class CreateIotaConfigurationInputBuilder
 
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
-      _$this._redirectUris ??= new ListBuilder<String>();
+      _$this._redirectUris ??= ListBuilder<String>();
   set redirectUris(ListBuilder<String>? redirectUris) =>
       _$this._redirectUris = redirectUris;
 
@@ -268,7 +255,6 @@ class CreateIotaConfigurationInputBuilder
 
   @override
   void replace(CreateIotaConfigurationInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateIotaConfigurationInput;
   }
 
@@ -284,7 +270,7 @@ class CreateIotaConfigurationInputBuilder
     _$CreateIotaConfigurationInput _$result;
     try {
       _$result = _$v ??
-          new _$CreateIotaConfigurationInput._(
+          _$CreateIotaConfigurationInput._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'CreateIotaConfigurationInput', 'name'),
             description: description,
@@ -314,7 +300,7 @@ class CreateIotaConfigurationInputBuilder
         _$failedField = 'redirectUris';
         _redirectUris?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateIotaConfigurationInput', _$failedField, e.toString());
       }
       rethrow;

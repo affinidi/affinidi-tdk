@@ -12,10 +12,9 @@ class _$QueryProfileDataOK extends QueryProfileDataOK {
 
   factory _$QueryProfileDataOK(
           [void Function(QueryProfileDataOKBuilder)? updates]) =>
-      (new QueryProfileDataOKBuilder()..update(updates))._build();
+      (QueryProfileDataOKBuilder()..update(updates))._build();
 
   _$QueryProfileDataOK._({this.data}) : super._();
-
   @override
   QueryProfileDataOK rebuild(
           void Function(QueryProfileDataOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$QueryProfileDataOK extends QueryProfileDataOK {
 
   @override
   QueryProfileDataOKBuilder toBuilder() =>
-      new QueryProfileDataOKBuilder()..replace(this);
+      QueryProfileDataOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -70,7 +69,6 @@ class QueryProfileDataOKBuilder
 
   @override
   void replace(QueryProfileDataOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$QueryProfileDataOK;
   }
 
@@ -84,7 +82,7 @@ class QueryProfileDataOKBuilder
 
   _$QueryProfileDataOK _build() {
     final _$result = _$v ??
-        new _$QueryProfileDataOK._(
+        _$QueryProfileDataOK._(
           data: data,
         );
     replace(_$result);

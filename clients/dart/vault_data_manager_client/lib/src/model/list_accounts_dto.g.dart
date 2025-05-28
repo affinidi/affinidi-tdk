@@ -13,21 +13,16 @@ class _$ListAccountsDto extends ListAccountsDto {
   final String? lastEvaluatedKey;
 
   factory _$ListAccountsDto([void Function(ListAccountsDtoBuilder)? updates]) =>
-      (new ListAccountsDtoBuilder()..update(updates))._build();
+      (ListAccountsDtoBuilder()..update(updates))._build();
 
   _$ListAccountsDto._({required this.records, this.lastEvaluatedKey})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        records, r'ListAccountsDto', 'records');
-  }
-
+      : super._();
   @override
   ListAccountsDto rebuild(void Function(ListAccountsDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ListAccountsDtoBuilder toBuilder() =>
-      new ListAccountsDtoBuilder()..replace(this);
+  ListAccountsDtoBuilder toBuilder() => ListAccountsDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -61,7 +56,7 @@ class ListAccountsDtoBuilder
 
   ListBuilder<AccountDto>? _records;
   ListBuilder<AccountDto> get records =>
-      _$this._records ??= new ListBuilder<AccountDto>();
+      _$this._records ??= ListBuilder<AccountDto>();
   set records(ListBuilder<AccountDto>? records) => _$this._records = records;
 
   String? _lastEvaluatedKey;
@@ -85,7 +80,6 @@ class ListAccountsDtoBuilder
 
   @override
   void replace(ListAccountsDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListAccountsDto;
   }
 
@@ -101,7 +95,7 @@ class ListAccountsDtoBuilder
     _$ListAccountsDto _$result;
     try {
       _$result = _$v ??
-          new _$ListAccountsDto._(
+          _$ListAccountsDto._(
             records: records.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -111,7 +105,7 @@ class ListAccountsDtoBuilder
         _$failedField = 'records';
         records.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListAccountsDto', _$failedField, e.toString());
       }
       rethrow;

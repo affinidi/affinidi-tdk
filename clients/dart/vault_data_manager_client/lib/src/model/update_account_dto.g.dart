@@ -16,24 +16,18 @@ class _$UpdateAccountDto extends UpdateAccountDto {
 
   factory _$UpdateAccountDto(
           [void Function(UpdateAccountDtoBuilder)? updates]) =>
-      (new UpdateAccountDtoBuilder()..update(updates))._build();
+      (UpdateAccountDtoBuilder()..update(updates))._build();
 
   _$UpdateAccountDto._(
       {required this.accountIndex, required this.accountDid, this.metadata})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        accountIndex, r'UpdateAccountDto', 'accountIndex');
-    BuiltValueNullFieldError.checkNotNull(
-        accountDid, r'UpdateAccountDto', 'accountDid');
-  }
-
+      : super._();
   @override
   UpdateAccountDto rebuild(void Function(UpdateAccountDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   UpdateAccountDtoBuilder toBuilder() =>
-      new UpdateAccountDtoBuilder()..replace(this);
+      UpdateAccountDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -97,7 +91,6 @@ class UpdateAccountDtoBuilder
 
   @override
   void replace(UpdateAccountDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateAccountDto;
   }
 
@@ -111,7 +104,7 @@ class UpdateAccountDtoBuilder
 
   _$UpdateAccountDto _build() {
     final _$result = _$v ??
-        new _$UpdateAccountDto._(
+        _$UpdateAccountDto._(
           accountIndex: BuiltValueNullFieldError.checkNotNull(
               accountIndex, r'UpdateAccountDto', 'accountIndex'),
           accountDid: BuiltValueNullFieldError.checkNotNull(

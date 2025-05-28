@@ -23,7 +23,7 @@ class _$W3cProof extends W3cProof {
   final String? nonce;
 
   factory _$W3cProof([void Function(W3cProofBuilder)? updates]) =>
-      (new W3cProofBuilder()..update(updates))._build();
+      (W3cProofBuilder()..update(updates))._build();
 
   _$W3cProof._(
       {this.type,
@@ -33,19 +33,13 @@ class _$W3cProof extends W3cProof {
       this.jws,
       this.proofValue,
       this.nonce})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        verificationMethod, r'W3cProof', 'verificationMethod');
-    BuiltValueNullFieldError.checkNotNull(
-        proofPurpose, r'W3cProof', 'proofPurpose');
-  }
-
+      : super._();
   @override
   W3cProof rebuild(void Function(W3cProofBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  W3cProofBuilder toBuilder() => new W3cProofBuilder()..replace(this);
+  W3cProofBuilder toBuilder() => W3cProofBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -141,7 +135,6 @@ class W3cProofBuilder implements Builder<W3cProof, W3cProofBuilder> {
 
   @override
   void replace(W3cProof other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$W3cProof;
   }
 
@@ -155,7 +148,7 @@ class W3cProofBuilder implements Builder<W3cProof, W3cProofBuilder> {
 
   _$W3cProof _build() {
     final _$result = _$v ??
-        new _$W3cProof._(
+        _$W3cProof._(
           type: type,
           created: created,
           verificationMethod: BuiltValueNullFieldError.checkNotNull(

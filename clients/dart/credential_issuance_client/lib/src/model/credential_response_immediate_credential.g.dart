@@ -14,14 +14,10 @@ class _$CredentialResponseImmediateCredential
   factory _$CredentialResponseImmediateCredential(
           [void Function(CredentialResponseImmediateCredentialBuilder)?
               updates]) =>
-      (new CredentialResponseImmediateCredentialBuilder()..update(updates))
+      (CredentialResponseImmediateCredentialBuilder()..update(updates))
           ._build();
 
-  _$CredentialResponseImmediateCredential._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'CredentialResponseImmediateCredential', 'oneOf');
-  }
-
+  _$CredentialResponseImmediateCredential._({required this.oneOf}) : super._();
   @override
   CredentialResponseImmediateCredential rebuild(
           void Function(CredentialResponseImmediateCredentialBuilder)
@@ -30,7 +26,7 @@ class _$CredentialResponseImmediateCredential
 
   @override
   CredentialResponseImmediateCredentialBuilder toBuilder() =>
-      new CredentialResponseImmediateCredentialBuilder()..replace(this);
+      CredentialResponseImmediateCredentialBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +77,6 @@ class CredentialResponseImmediateCredentialBuilder
 
   @override
   void replace(CredentialResponseImmediateCredential other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialResponseImmediateCredential;
   }
 
@@ -96,7 +91,7 @@ class CredentialResponseImmediateCredentialBuilder
 
   _$CredentialResponseImmediateCredential _build() {
     final _$result = _$v ??
-        new _$CredentialResponseImmediateCredential._(
+        _$CredentialResponseImmediateCredential._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'CredentialResponseImmediateCredential', 'oneOf'),
         );
