@@ -18,13 +18,13 @@ StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum
     case 'REVOCABLE':
       return _$startIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum_REVOCABLE;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum>
     _$startIssuanceInputDataInnerStatusListDetailsInnerPurposeEnumValues =
-    new BuiltSet<
+    BuiltSet<
         StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum>(const <StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum>[
   _$startIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum_REVOCABLE,
 ]);
@@ -47,13 +47,13 @@ StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
     case 'bitstringStatusListV1':
       return _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_bitstringStatusListV1;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>
     _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnumValues =
-    new BuiltSet<
+    BuiltSet<
         StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>(const <StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>[
   _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_revocationList2020,
   _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_bitstringStatusListV1,
@@ -61,10 +61,10 @@ final BuiltSet<StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>
 
 Serializer<StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum>
     _$startIssuanceInputDataInnerStatusListDetailsInnerPurposeEnumSerializer =
-    new _$StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnumSerializer();
+    _$StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnumSerializer();
 Serializer<StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>
     _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnumSerializer =
-    new _$StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnumSerializer();
+    _$StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnumSerializer();
 
 class _$StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnumSerializer
     implements
@@ -145,19 +145,13 @@ class _$StartIssuanceInputDataInnerStatusListDetailsInner
           [void Function(
                   StartIssuanceInputDataInnerStatusListDetailsInnerBuilder)?
               updates]) =>
-      (new StartIssuanceInputDataInnerStatusListDetailsInnerBuilder()
+      (StartIssuanceInputDataInnerStatusListDetailsInnerBuilder()
             ..update(updates))
           ._build();
 
   _$StartIssuanceInputDataInnerStatusListDetailsInner._(
       {required this.purpose, required this.standard})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(purpose,
-        r'StartIssuanceInputDataInnerStatusListDetailsInner', 'purpose');
-    BuiltValueNullFieldError.checkNotNull(standard,
-        r'StartIssuanceInputDataInnerStatusListDetailsInner', 'standard');
-  }
-
+      : super._();
   @override
   StartIssuanceInputDataInnerStatusListDetailsInner rebuild(
           void Function(
@@ -167,8 +161,7 @@ class _$StartIssuanceInputDataInnerStatusListDetailsInner
 
   @override
   StartIssuanceInputDataInnerStatusListDetailsInnerBuilder toBuilder() =>
-      new StartIssuanceInputDataInnerStatusListDetailsInnerBuilder()
-        ..replace(this);
+      StartIssuanceInputDataInnerStatusListDetailsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -235,7 +228,6 @@ class StartIssuanceInputDataInnerStatusListDetailsInnerBuilder
 
   @override
   void replace(StartIssuanceInputDataInnerStatusListDetailsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StartIssuanceInputDataInnerStatusListDetailsInner;
   }
 
@@ -251,7 +243,7 @@ class StartIssuanceInputDataInnerStatusListDetailsInnerBuilder
 
   _$StartIssuanceInputDataInnerStatusListDetailsInner _build() {
     final _$result = _$v ??
-        new _$StartIssuanceInputDataInnerStatusListDetailsInner._(
+        _$StartIssuanceInputDataInnerStatusListDetailsInner._(
           purpose: BuiltValueNullFieldError.checkNotNull(purpose,
               r'StartIssuanceInputDataInnerStatusListDetailsInner', 'purpose'),
           standard: BuiltValueNullFieldError.checkNotNull(standard,

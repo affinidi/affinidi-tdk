@@ -18,22 +18,14 @@ class _$CredentialSupportedObject extends CredentialSupportedObject {
 
   factory _$CredentialSupportedObject(
           [void Function(CredentialSupportedObjectBuilder)? updates]) =>
-      (new CredentialSupportedObjectBuilder()..update(updates))._build();
+      (CredentialSupportedObjectBuilder()..update(updates))._build();
 
   _$CredentialSupportedObject._(
       {required this.credentialTypeId,
       required this.jsonSchemaUrl,
       required this.jsonLdContextUrl,
       this.metadata})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        credentialTypeId, r'CredentialSupportedObject', 'credentialTypeId');
-    BuiltValueNullFieldError.checkNotNull(
-        jsonSchemaUrl, r'CredentialSupportedObject', 'jsonSchemaUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        jsonLdContextUrl, r'CredentialSupportedObject', 'jsonLdContextUrl');
-  }
-
+      : super._();
   @override
   CredentialSupportedObject rebuild(
           void Function(CredentialSupportedObjectBuilder) updates) =>
@@ -41,7 +33,7 @@ class _$CredentialSupportedObject extends CredentialSupportedObject {
 
   @override
   CredentialSupportedObjectBuilder toBuilder() =>
-      new CredentialSupportedObjectBuilder()..replace(this);
+      CredentialSupportedObjectBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -97,7 +89,7 @@ class CredentialSupportedObjectBuilder
 
   SupportedCredentialMetadataBuilder? _metadata;
   SupportedCredentialMetadataBuilder get metadata =>
-      _$this._metadata ??= new SupportedCredentialMetadataBuilder();
+      _$this._metadata ??= SupportedCredentialMetadataBuilder();
   set metadata(SupportedCredentialMetadataBuilder? metadata) =>
       _$this._metadata = metadata;
 
@@ -119,7 +111,6 @@ class CredentialSupportedObjectBuilder
 
   @override
   void replace(CredentialSupportedObject other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialSupportedObject;
   }
 
@@ -135,7 +126,7 @@ class CredentialSupportedObjectBuilder
     _$CredentialSupportedObject _$result;
     try {
       _$result = _$v ??
-          new _$CredentialSupportedObject._(
+          _$CredentialSupportedObject._(
             credentialTypeId: BuiltValueNullFieldError.checkNotNull(
                 credentialTypeId,
                 r'CredentialSupportedObject',
@@ -154,7 +145,7 @@ class CredentialSupportedObjectBuilder
         _$failedField = 'metadata';
         _metadata?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CredentialSupportedObject', _$failedField, e.toString());
       }
       rethrow;

@@ -26,12 +26,12 @@ SignCredentialInputDtoCredentialFormatEnum
     case 'sdJwtVcJsonLd':
       return _$signCredentialInputDtoCredentialFormatEnum_sdJwtVcJsonLd;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<SignCredentialInputDtoCredentialFormatEnum>
-    _$signCredentialInputDtoCredentialFormatEnumValues = new BuiltSet<
+    _$signCredentialInputDtoCredentialFormatEnumValues = BuiltSet<
         SignCredentialInputDtoCredentialFormatEnum>(const <SignCredentialInputDtoCredentialFormatEnum>[
   _$signCredentialInputDtoCredentialFormatEnum_ldpVc,
   _$signCredentialInputDtoCredentialFormatEnum_jwtVcJsonLd,
@@ -40,7 +40,7 @@ final BuiltSet<SignCredentialInputDtoCredentialFormatEnum>
 
 Serializer<SignCredentialInputDtoCredentialFormatEnum>
     _$signCredentialInputDtoCredentialFormatEnumSerializer =
-    new _$SignCredentialInputDtoCredentialFormatEnumSerializer();
+    _$SignCredentialInputDtoCredentialFormatEnumSerializer();
 
 class _$SignCredentialInputDtoCredentialFormatEnumSerializer
     implements PrimitiveSerializer<SignCredentialInputDtoCredentialFormatEnum> {
@@ -89,7 +89,7 @@ class _$SignCredentialInputDto extends SignCredentialInputDto {
 
   factory _$SignCredentialInputDto(
           [void Function(SignCredentialInputDtoBuilder)? updates]) =>
-      (new SignCredentialInputDtoBuilder()..update(updates))._build();
+      (SignCredentialInputDtoBuilder()..update(updates))._build();
 
   _$SignCredentialInputDto._(
       {this.unsignedCredential,
@@ -97,7 +97,6 @@ class _$SignCredentialInputDto extends SignCredentialInputDto {
       this.credentialFormat,
       this.unsignedCredentialParams})
       : super._();
-
   @override
   SignCredentialInputDto rebuild(
           void Function(SignCredentialInputDtoBuilder) updates) =>
@@ -105,7 +104,7 @@ class _$SignCredentialInputDto extends SignCredentialInputDto {
 
   @override
   SignCredentialInputDtoBuilder toBuilder() =>
-      new SignCredentialInputDtoBuilder()..replace(this);
+      SignCredentialInputDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -163,7 +162,7 @@ class SignCredentialInputDtoBuilder
       _unsignedCredentialParams;
   SignCredentialInputDtoUnsignedCredentialParamsBuilder
       get unsignedCredentialParams => _$this._unsignedCredentialParams ??=
-          new SignCredentialInputDtoUnsignedCredentialParamsBuilder();
+          SignCredentialInputDtoUnsignedCredentialParamsBuilder();
   set unsignedCredentialParams(
           SignCredentialInputDtoUnsignedCredentialParamsBuilder?
               unsignedCredentialParams) =>
@@ -187,7 +186,6 @@ class SignCredentialInputDtoBuilder
 
   @override
   void replace(SignCredentialInputDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignCredentialInputDto;
   }
 
@@ -203,7 +201,7 @@ class SignCredentialInputDtoBuilder
     _$SignCredentialInputDto _$result;
     try {
       _$result = _$v ??
-          new _$SignCredentialInputDto._(
+          _$SignCredentialInputDto._(
             unsignedCredential: unsignedCredential,
             revocable: revocable,
             credentialFormat: credentialFormat,
@@ -215,7 +213,7 @@ class SignCredentialInputDtoBuilder
         _$failedField = 'unsignedCredentialParams';
         _unsignedCredentialParams?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SignCredentialInputDto', _$failedField, e.toString());
       }
       rethrow;

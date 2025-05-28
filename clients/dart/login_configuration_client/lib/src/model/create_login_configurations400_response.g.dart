@@ -17,12 +17,12 @@ CreateLoginConfigurations400ResponseNameEnum
     case 'createProjectNetworkError':
       return _$createLoginConfigurations400ResponseNameEnum_createProjectNetworkError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateLoginConfigurations400ResponseNameEnum>
-    _$createLoginConfigurations400ResponseNameEnumValues = new BuiltSet<
+    _$createLoginConfigurations400ResponseNameEnumValues = BuiltSet<
         CreateLoginConfigurations400ResponseNameEnum>(const <CreateLoginConfigurations400ResponseNameEnum>[
   _$createLoginConfigurations400ResponseNameEnum_createProjectNetworkError,
 ]);
@@ -38,12 +38,12 @@ CreateLoginConfigurations400ResponseMessageEnum
     case 'createProjectNetworkError':
       return _$createLoginConfigurations400ResponseMessageEnum_createProjectNetworkError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateLoginConfigurations400ResponseMessageEnum>
-    _$createLoginConfigurations400ResponseMessageEnumValues = new BuiltSet<
+    _$createLoginConfigurations400ResponseMessageEnumValues = BuiltSet<
         CreateLoginConfigurations400ResponseMessageEnum>(const <CreateLoginConfigurations400ResponseMessageEnum>[
   _$createLoginConfigurations400ResponseMessageEnum_createProjectNetworkError,
 ]);
@@ -59,26 +59,25 @@ CreateLoginConfigurations400ResponseHttpStatusCodeEnum
     case 'number400':
       return _$createLoginConfigurations400ResponseHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateLoginConfigurations400ResponseHttpStatusCodeEnum>
-    _$createLoginConfigurations400ResponseHttpStatusCodeEnumValues =
-    new BuiltSet<
+    _$createLoginConfigurations400ResponseHttpStatusCodeEnumValues = BuiltSet<
         CreateLoginConfigurations400ResponseHttpStatusCodeEnum>(const <CreateLoginConfigurations400ResponseHttpStatusCodeEnum>[
   _$createLoginConfigurations400ResponseHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<CreateLoginConfigurations400ResponseNameEnum>
     _$createLoginConfigurations400ResponseNameEnumSerializer =
-    new _$CreateLoginConfigurations400ResponseNameEnumSerializer();
+    _$CreateLoginConfigurations400ResponseNameEnumSerializer();
 Serializer<CreateLoginConfigurations400ResponseMessageEnum>
     _$createLoginConfigurations400ResponseMessageEnumSerializer =
-    new _$CreateLoginConfigurations400ResponseMessageEnumSerializer();
+    _$CreateLoginConfigurations400ResponseMessageEnumSerializer();
 Serializer<CreateLoginConfigurations400ResponseHttpStatusCodeEnum>
     _$createLoginConfigurations400ResponseHttpStatusCodeEnumSerializer =
-    new _$CreateLoginConfigurations400ResponseHttpStatusCodeEnumSerializer();
+    _$CreateLoginConfigurations400ResponseHttpStatusCodeEnumSerializer();
 
 class _$CreateLoginConfigurations400ResponseNameEnumSerializer
     implements
@@ -183,14 +182,9 @@ class _$CreateLoginConfigurations400Response
   factory _$CreateLoginConfigurations400Response(
           [void Function(CreateLoginConfigurations400ResponseBuilder)?
               updates]) =>
-      (new CreateLoginConfigurations400ResponseBuilder()..update(updates))
-          ._build();
+      (CreateLoginConfigurations400ResponseBuilder()..update(updates))._build();
 
-  _$CreateLoginConfigurations400Response._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'CreateLoginConfigurations400Response', 'oneOf');
-  }
-
+  _$CreateLoginConfigurations400Response._({required this.oneOf}) : super._();
   @override
   CreateLoginConfigurations400Response rebuild(
           void Function(CreateLoginConfigurations400ResponseBuilder) updates) =>
@@ -198,7 +192,7 @@ class _$CreateLoginConfigurations400Response
 
   @override
   CreateLoginConfigurations400ResponseBuilder toBuilder() =>
-      new CreateLoginConfigurations400ResponseBuilder()..replace(this);
+      CreateLoginConfigurations400ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -248,7 +242,6 @@ class CreateLoginConfigurations400ResponseBuilder
 
   @override
   void replace(CreateLoginConfigurations400Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateLoginConfigurations400Response;
   }
 
@@ -263,7 +256,7 @@ class CreateLoginConfigurations400ResponseBuilder
 
   _$CreateLoginConfigurations400Response _build() {
     final _$result = _$v ??
-        new _$CreateLoginConfigurations400Response._(
+        _$CreateLoginConfigurations400Response._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'CreateLoginConfigurations400Response', 'oneOf'),
         );

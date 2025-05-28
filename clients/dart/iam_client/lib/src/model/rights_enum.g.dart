@@ -16,12 +16,11 @@ RightsEnum _$valueOf(String name) {
     case 'write':
       return _$write;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
-final BuiltSet<RightsEnum> _$values =
-    new BuiltSet<RightsEnum>(const <RightsEnum>[
+final BuiltSet<RightsEnum> _$values = BuiltSet<RightsEnum>(const <RightsEnum>[
   _$read,
   _$write,
 ]);
@@ -39,7 +38,7 @@ abstract class _$RightsEnumMixin {
   _$RightsEnumMeta get RightsEnum => const _$RightsEnumMeta();
 }
 
-Serializer<RightsEnum> _$rightsEnumSerializer = new _$RightsEnumSerializer();
+Serializer<RightsEnum> _$rightsEnumSerializer = _$RightsEnumSerializer();
 
 class _$RightsEnumSerializer implements PrimitiveSerializer<RightsEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{

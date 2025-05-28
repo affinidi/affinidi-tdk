@@ -18,24 +18,14 @@ class _$PolicyStatementDto extends PolicyStatementDto {
 
   factory _$PolicyStatementDto(
           [void Function(PolicyStatementDtoBuilder)? updates]) =>
-      (new PolicyStatementDtoBuilder()..update(updates))._build();
+      (PolicyStatementDtoBuilder()..update(updates))._build();
 
   _$PolicyStatementDto._(
       {required this.action,
       required this.effect,
       required this.principal,
       required this.resource})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        action, r'PolicyStatementDto', 'action');
-    BuiltValueNullFieldError.checkNotNull(
-        effect, r'PolicyStatementDto', 'effect');
-    BuiltValueNullFieldError.checkNotNull(
-        principal, r'PolicyStatementDto', 'principal');
-    BuiltValueNullFieldError.checkNotNull(
-        resource, r'PolicyStatementDto', 'resource');
-  }
-
+      : super._();
   @override
   PolicyStatementDto rebuild(
           void Function(PolicyStatementDtoBuilder) updates) =>
@@ -43,7 +33,7 @@ class _$PolicyStatementDto extends PolicyStatementDto {
 
   @override
   PolicyStatementDtoBuilder toBuilder() =>
-      new PolicyStatementDtoBuilder()..replace(this);
+      PolicyStatementDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,8 +72,7 @@ class PolicyStatementDtoBuilder
   _$PolicyStatementDto? _$v;
 
   ListBuilder<String>? _action;
-  ListBuilder<String> get action =>
-      _$this._action ??= new ListBuilder<String>();
+  ListBuilder<String> get action => _$this._action ??= ListBuilder<String>();
   set action(ListBuilder<String>? action) => _$this._action = action;
 
   String? _effect;
@@ -92,13 +81,13 @@ class PolicyStatementDtoBuilder
 
   ListBuilder<String>? _principal;
   ListBuilder<String> get principal =>
-      _$this._principal ??= new ListBuilder<String>();
+      _$this._principal ??= ListBuilder<String>();
   set principal(ListBuilder<String>? principal) =>
       _$this._principal = principal;
 
   ListBuilder<String>? _resource;
   ListBuilder<String> get resource =>
-      _$this._resource ??= new ListBuilder<String>();
+      _$this._resource ??= ListBuilder<String>();
   set resource(ListBuilder<String>? resource) => _$this._resource = resource;
 
   PolicyStatementDtoBuilder() {
@@ -119,7 +108,6 @@ class PolicyStatementDtoBuilder
 
   @override
   void replace(PolicyStatementDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PolicyStatementDto;
   }
 
@@ -135,7 +123,7 @@ class PolicyStatementDtoBuilder
     _$PolicyStatementDto _$result;
     try {
       _$result = _$v ??
-          new _$PolicyStatementDto._(
+          _$PolicyStatementDto._(
             action: action.build(),
             effect: BuiltValueNullFieldError.checkNotNull(
                 effect, r'PolicyStatementDto', 'effect'),
@@ -153,7 +141,7 @@ class PolicyStatementDtoBuilder
         _$failedField = 'resource';
         resource.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PolicyStatementDto', _$failedField, e.toString());
       }
       rethrow;

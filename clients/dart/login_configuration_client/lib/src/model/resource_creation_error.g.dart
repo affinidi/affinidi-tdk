@@ -16,12 +16,12 @@ ResourceCreationErrorNameEnum _$resourceCreationErrorNameEnumValueOf(
     case 'resourceCreationError':
       return _$resourceCreationErrorNameEnum_resourceCreationError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ResourceCreationErrorNameEnum>
-    _$resourceCreationErrorNameEnumValues = new BuiltSet<
+    _$resourceCreationErrorNameEnumValues = BuiltSet<
         ResourceCreationErrorNameEnum>(const <ResourceCreationErrorNameEnum>[
   _$resourceCreationErrorNameEnum_resourceCreationError,
 ]);
@@ -36,12 +36,12 @@ ResourceCreationErrorMessageEnum _$resourceCreationErrorMessageEnumValueOf(
     case 'failedToCreateResourcesPeriod':
       return _$resourceCreationErrorMessageEnum_failedToCreateResourcesPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ResourceCreationErrorMessageEnum>
-    _$resourceCreationErrorMessageEnumValues = new BuiltSet<
+    _$resourceCreationErrorMessageEnumValues = BuiltSet<
         ResourceCreationErrorMessageEnum>(const <ResourceCreationErrorMessageEnum>[
   _$resourceCreationErrorMessageEnum_failedToCreateResourcesPeriod,
 ]);
@@ -56,25 +56,25 @@ ResourceCreationErrorHttpStatusCodeEnum
     case 'number424':
       return _$resourceCreationErrorHttpStatusCodeEnum_number424;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ResourceCreationErrorHttpStatusCodeEnum>
-    _$resourceCreationErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$resourceCreationErrorHttpStatusCodeEnumValues = BuiltSet<
         ResourceCreationErrorHttpStatusCodeEnum>(const <ResourceCreationErrorHttpStatusCodeEnum>[
   _$resourceCreationErrorHttpStatusCodeEnum_number424,
 ]);
 
 Serializer<ResourceCreationErrorNameEnum>
     _$resourceCreationErrorNameEnumSerializer =
-    new _$ResourceCreationErrorNameEnumSerializer();
+    _$ResourceCreationErrorNameEnumSerializer();
 Serializer<ResourceCreationErrorMessageEnum>
     _$resourceCreationErrorMessageEnumSerializer =
-    new _$ResourceCreationErrorMessageEnumSerializer();
+    _$ResourceCreationErrorMessageEnumSerializer();
 Serializer<ResourceCreationErrorHttpStatusCodeEnum>
     _$resourceCreationErrorHttpStatusCodeEnumSerializer =
-    new _$ResourceCreationErrorHttpStatusCodeEnumSerializer();
+    _$ResourceCreationErrorHttpStatusCodeEnumSerializer();
 
 class _$ResourceCreationErrorNameEnumSerializer
     implements PrimitiveSerializer<ResourceCreationErrorNameEnum> {
@@ -176,7 +176,7 @@ class _$ResourceCreationError extends ResourceCreationError {
 
   factory _$ResourceCreationError(
           [void Function(ResourceCreationErrorBuilder)? updates]) =>
-      (new ResourceCreationErrorBuilder()..update(updates))._build();
+      (ResourceCreationErrorBuilder()..update(updates))._build();
 
   _$ResourceCreationError._(
       {required this.name,
@@ -184,17 +184,7 @@ class _$ResourceCreationError extends ResourceCreationError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ResourceCreationError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ResourceCreationError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'ResourceCreationError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'ResourceCreationError', 'traceId');
-  }
-
+      : super._();
   @override
   ResourceCreationError rebuild(
           void Function(ResourceCreationErrorBuilder) updates) =>
@@ -202,7 +192,7 @@ class _$ResourceCreationError extends ResourceCreationError {
 
   @override
   ResourceCreationErrorBuilder toBuilder() =>
-      new ResourceCreationErrorBuilder()..replace(this);
+      ResourceCreationErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -264,7 +254,7 @@ class ResourceCreationErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -287,7 +277,6 @@ class ResourceCreationErrorBuilder
 
   @override
   void replace(ResourceCreationError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ResourceCreationError;
   }
 
@@ -303,7 +292,7 @@ class ResourceCreationErrorBuilder
     _$ResourceCreationError _$result;
     try {
       _$result = _$v ??
-          new _$ResourceCreationError._(
+          _$ResourceCreationError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'ResourceCreationError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -320,7 +309,7 @@ class ResourceCreationErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ResourceCreationError', _$failedField, e.toString());
       }
       rethrow;

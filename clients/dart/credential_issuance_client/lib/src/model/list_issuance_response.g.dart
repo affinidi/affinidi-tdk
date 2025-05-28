@@ -12,13 +12,9 @@ class _$ListIssuanceResponse extends ListIssuanceResponse {
 
   factory _$ListIssuanceResponse(
           [void Function(ListIssuanceResponseBuilder)? updates]) =>
-      (new ListIssuanceResponseBuilder()..update(updates))._build();
+      (ListIssuanceResponseBuilder()..update(updates))._build();
 
-  _$ListIssuanceResponse._({required this.issuances}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issuances, r'ListIssuanceResponse', 'issuances');
-  }
-
+  _$ListIssuanceResponse._({required this.issuances}) : super._();
   @override
   ListIssuanceResponse rebuild(
           void Function(ListIssuanceResponseBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$ListIssuanceResponse extends ListIssuanceResponse {
 
   @override
   ListIssuanceResponseBuilder toBuilder() =>
-      new ListIssuanceResponseBuilder()..replace(this);
+      ListIssuanceResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -56,8 +52,7 @@ class ListIssuanceResponseBuilder
 
   ListBuilder<ListIssuanceResponseIssuancesInner>? _issuances;
   ListBuilder<ListIssuanceResponseIssuancesInner> get issuances =>
-      _$this._issuances ??=
-          new ListBuilder<ListIssuanceResponseIssuancesInner>();
+      _$this._issuances ??= ListBuilder<ListIssuanceResponseIssuancesInner>();
   set issuances(ListBuilder<ListIssuanceResponseIssuancesInner>? issuances) =>
       _$this._issuances = issuances;
 
@@ -76,7 +71,6 @@ class ListIssuanceResponseBuilder
 
   @override
   void replace(ListIssuanceResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListIssuanceResponse;
   }
 
@@ -92,7 +86,7 @@ class ListIssuanceResponseBuilder
     _$ListIssuanceResponse _$result;
     try {
       _$result = _$v ??
-          new _$ListIssuanceResponse._(
+          _$ListIssuanceResponse._(
             issuances: issuances.build(),
           );
     } catch (_) {
@@ -101,7 +95,7 @@ class ListIssuanceResponseBuilder
         _$failedField = 'issuances';
         issuances.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListIssuanceResponse', _$failedField, e.toString());
       }
       rethrow;

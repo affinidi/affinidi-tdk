@@ -12,10 +12,9 @@ class _$CorsUpdateAccessVfsOK extends CorsUpdateAccessVfsOK {
 
   factory _$CorsUpdateAccessVfsOK(
           [void Function(CorsUpdateAccessVfsOKBuilder)? updates]) =>
-      (new CorsUpdateAccessVfsOKBuilder()..update(updates))._build();
+      (CorsUpdateAccessVfsOKBuilder()..update(updates))._build();
 
   _$CorsUpdateAccessVfsOK._({this.corsUpdateAccessVfsOk}) : super._();
-
   @override
   CorsUpdateAccessVfsOK rebuild(
           void Function(CorsUpdateAccessVfsOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsUpdateAccessVfsOK extends CorsUpdateAccessVfsOK {
 
   @override
   CorsUpdateAccessVfsOKBuilder toBuilder() =>
-      new CorsUpdateAccessVfsOKBuilder()..replace(this);
+      CorsUpdateAccessVfsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,6 @@ class CorsUpdateAccessVfsOKBuilder
 
   @override
   void replace(CorsUpdateAccessVfsOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsUpdateAccessVfsOK;
   }
 
@@ -86,7 +84,7 @@ class CorsUpdateAccessVfsOKBuilder
 
   _$CorsUpdateAccessVfsOK _build() {
     final _$result = _$v ??
-        new _$CorsUpdateAccessVfsOK._(
+        _$CorsUpdateAccessVfsOK._(
           corsUpdateAccessVfsOk: corsUpdateAccessVfsOk,
         );
     replace(_$result);

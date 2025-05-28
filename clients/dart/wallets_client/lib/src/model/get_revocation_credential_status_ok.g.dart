@@ -13,14 +13,10 @@ class _$GetRevocationCredentialStatusOK
 
   factory _$GetRevocationCredentialStatusOK(
           [void Function(GetRevocationCredentialStatusOKBuilder)? updates]) =>
-      (new GetRevocationCredentialStatusOKBuilder()..update(updates))._build();
+      (GetRevocationCredentialStatusOKBuilder()..update(updates))._build();
 
   _$GetRevocationCredentialStatusOK._({required this.revocationListCredential})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(revocationListCredential,
-        r'GetRevocationCredentialStatusOK', 'revocationListCredential');
-  }
-
+      : super._();
   @override
   GetRevocationCredentialStatusOK rebuild(
           void Function(GetRevocationCredentialStatusOKBuilder) updates) =>
@@ -28,7 +24,7 @@ class _$GetRevocationCredentialStatusOK
 
   @override
   GetRevocationCredentialStatusOKBuilder toBuilder() =>
-      new GetRevocationCredentialStatusOKBuilder()..replace(this);
+      GetRevocationCredentialStatusOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -79,7 +75,6 @@ class GetRevocationCredentialStatusOKBuilder
 
   @override
   void replace(GetRevocationCredentialStatusOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetRevocationCredentialStatusOK;
   }
 
@@ -93,7 +88,7 @@ class GetRevocationCredentialStatusOKBuilder
 
   _$GetRevocationCredentialStatusOK _build() {
     final _$result = _$v ??
-        new _$GetRevocationCredentialStatusOK._(
+        _$GetRevocationCredentialStatusOK._(
           revocationListCredential: BuiltValueNullFieldError.checkNotNull(
               revocationListCredential,
               r'GetRevocationCredentialStatusOK',

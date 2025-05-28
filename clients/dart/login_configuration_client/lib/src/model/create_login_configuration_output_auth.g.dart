@@ -20,16 +20,11 @@ class _$CreateLoginConfigurationOutputAuth
   factory _$CreateLoginConfigurationOutputAuth(
           [void Function(CreateLoginConfigurationOutputAuthBuilder)?
               updates]) =>
-      (new CreateLoginConfigurationOutputAuthBuilder()..update(updates))
-          ._build();
+      (CreateLoginConfigurationOutputAuthBuilder()..update(updates))._build();
 
   _$CreateLoginConfigurationOutputAuth._(
       {required this.clientId, this.clientSecret, this.scope, this.issuer})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        clientId, r'CreateLoginConfigurationOutputAuth', 'clientId');
-  }
-
+      : super._();
   @override
   CreateLoginConfigurationOutputAuth rebuild(
           void Function(CreateLoginConfigurationOutputAuthBuilder) updates) =>
@@ -37,7 +32,7 @@ class _$CreateLoginConfigurationOutputAuth
 
   @override
   CreateLoginConfigurationOutputAuthBuilder toBuilder() =>
-      new CreateLoginConfigurationOutputAuthBuilder()..replace(this);
+      CreateLoginConfigurationOutputAuthBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -111,7 +106,6 @@ class CreateLoginConfigurationOutputAuthBuilder
 
   @override
   void replace(CreateLoginConfigurationOutputAuth other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateLoginConfigurationOutputAuth;
   }
 
@@ -126,7 +120,7 @@ class CreateLoginConfigurationOutputAuthBuilder
 
   _$CreateLoginConfigurationOutputAuth _build() {
     final _$result = _$v ??
-        new _$CreateLoginConfigurationOutputAuth._(
+        _$CreateLoginConfigurationOutputAuth._(
           clientId: BuiltValueNullFieldError.checkNotNull(
               clientId, r'CreateLoginConfigurationOutputAuth', 'clientId'),
           clientSecret: clientSecret,

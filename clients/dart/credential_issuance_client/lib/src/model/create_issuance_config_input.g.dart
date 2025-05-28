@@ -26,12 +26,12 @@ CreateIssuanceConfigInputFormatEnum
     case 'sdJwtVcJsonLd':
       return _$createIssuanceConfigInputFormatEnum_sdJwtVcJsonLd;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateIssuanceConfigInputFormatEnum>
-    _$createIssuanceConfigInputFormatEnumValues = new BuiltSet<
+    _$createIssuanceConfigInputFormatEnumValues = BuiltSet<
         CreateIssuanceConfigInputFormatEnum>(const <CreateIssuanceConfigInputFormatEnum>[
   _$createIssuanceConfigInputFormatEnum_ldpVc,
   _$createIssuanceConfigInputFormatEnum_jwtVcJsonLd,
@@ -40,7 +40,7 @@ final BuiltSet<CreateIssuanceConfigInputFormatEnum>
 
 Serializer<CreateIssuanceConfigInputFormatEnum>
     _$createIssuanceConfigInputFormatEnumSerializer =
-    new _$CreateIssuanceConfigInputFormatEnumSerializer();
+    _$CreateIssuanceConfigInputFormatEnumSerializer();
 
 class _$CreateIssuanceConfigInputFormatEnumSerializer
     implements PrimitiveSerializer<CreateIssuanceConfigInputFormatEnum> {
@@ -98,7 +98,7 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
 
   factory _$CreateIssuanceConfigInput(
           [void Function(CreateIssuanceConfigInputBuilder)? updates]) =>
-      (new CreateIssuanceConfigInputBuilder()..update(updates))._build();
+      (CreateIssuanceConfigInputBuilder()..update(updates))._build();
 
   _$CreateIssuanceConfigInput._(
       {this.name,
@@ -110,13 +110,7 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
       this.issuerMetadata,
       this.returnUris,
       this.webhook})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issuerWalletId, r'CreateIssuanceConfigInput', 'issuerWalletId');
-    BuiltValueNullFieldError.checkNotNull(credentialSupported,
-        r'CreateIssuanceConfigInput', 'credentialSupported');
-  }
-
+      : super._();
   @override
   CreateIssuanceConfigInput rebuild(
           void Function(CreateIssuanceConfigInputBuilder) updates) =>
@@ -124,7 +118,7 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
 
   @override
   CreateIssuanceConfigInputBuilder toBuilder() =>
-      new CreateIssuanceConfigInputBuilder()..replace(this);
+      CreateIssuanceConfigInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -203,27 +197,26 @@ class CreateIssuanceConfigInputBuilder
 
   ListBuilder<CredentialSupportedObject>? _credentialSupported;
   ListBuilder<CredentialSupportedObject> get credentialSupported =>
-      _$this._credentialSupported ??=
-          new ListBuilder<CredentialSupportedObject>();
+      _$this._credentialSupported ??= ListBuilder<CredentialSupportedObject>();
   set credentialSupported(
           ListBuilder<CredentialSupportedObject>? credentialSupported) =>
       _$this._credentialSupported = credentialSupported;
 
   MapBuilder<String, JsonObject?>? _issuerMetadata;
   MapBuilder<String, JsonObject?> get issuerMetadata =>
-      _$this._issuerMetadata ??= new MapBuilder<String, JsonObject?>();
+      _$this._issuerMetadata ??= MapBuilder<String, JsonObject?>();
   set issuerMetadata(MapBuilder<String, JsonObject?>? issuerMetadata) =>
       _$this._issuerMetadata = issuerMetadata;
 
   ListBuilder<String>? _returnUris;
   ListBuilder<String> get returnUris =>
-      _$this._returnUris ??= new ListBuilder<String>();
+      _$this._returnUris ??= ListBuilder<String>();
   set returnUris(ListBuilder<String>? returnUris) =>
       _$this._returnUris = returnUris;
 
   CisConfigurationWebhookSettingBuilder? _webhook;
   CisConfigurationWebhookSettingBuilder get webhook =>
-      _$this._webhook ??= new CisConfigurationWebhookSettingBuilder();
+      _$this._webhook ??= CisConfigurationWebhookSettingBuilder();
   set webhook(CisConfigurationWebhookSettingBuilder? webhook) =>
       _$this._webhook = webhook;
 
@@ -250,7 +243,6 @@ class CreateIssuanceConfigInputBuilder
 
   @override
   void replace(CreateIssuanceConfigInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateIssuanceConfigInput;
   }
 
@@ -266,7 +258,7 @@ class CreateIssuanceConfigInputBuilder
     _$CreateIssuanceConfigInput _$result;
     try {
       _$result = _$v ??
-          new _$CreateIssuanceConfigInput._(
+          _$CreateIssuanceConfigInput._(
             name: name,
             description: description,
             issuerWalletId: BuiltValueNullFieldError.checkNotNull(
@@ -290,7 +282,7 @@ class CreateIssuanceConfigInputBuilder
         _$failedField = 'webhook';
         _webhook?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateIssuanceConfigInput', _$failedField, e.toString());
       }
       rethrow;

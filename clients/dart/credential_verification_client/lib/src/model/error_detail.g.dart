@@ -11,16 +11,15 @@ class _$ErrorDetail extends ErrorDetail {
   final String? message;
 
   factory _$ErrorDetail([void Function(ErrorDetailBuilder)? updates]) =>
-      (new ErrorDetailBuilder()..update(updates))._build();
+      (ErrorDetailBuilder()..update(updates))._build();
 
   _$ErrorDetail._({this.message}) : super._();
-
   @override
   ErrorDetail rebuild(void Function(ErrorDetailBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ErrorDetailBuilder toBuilder() => new ErrorDetailBuilder()..replace(this);
+  ErrorDetailBuilder toBuilder() => ErrorDetailBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -66,7 +65,6 @@ class ErrorDetailBuilder implements Builder<ErrorDetail, ErrorDetailBuilder> {
 
   @override
   void replace(ErrorDetail other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ErrorDetail;
   }
 
@@ -80,7 +78,7 @@ class ErrorDetailBuilder implements Builder<ErrorDetail, ErrorDetailBuilder> {
 
   _$ErrorDetail _build() {
     final _$result = _$v ??
-        new _$ErrorDetail._(
+        _$ErrorDetail._(
           message: message,
         );
     replace(_$result);

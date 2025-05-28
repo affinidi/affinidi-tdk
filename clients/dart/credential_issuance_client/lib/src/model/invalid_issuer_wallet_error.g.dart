@@ -16,12 +16,12 @@ InvalidIssuerWalletErrorNameEnum _$invalidIssuerWalletErrorNameEnumValueOf(
     case 'invalidIssuerWalletError':
       return _$invalidIssuerWalletErrorNameEnum_invalidIssuerWalletError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidIssuerWalletErrorNameEnum>
-    _$invalidIssuerWalletErrorNameEnumValues = new BuiltSet<
+    _$invalidIssuerWalletErrorNameEnumValues = BuiltSet<
         InvalidIssuerWalletErrorNameEnum>(const <InvalidIssuerWalletErrorNameEnum>[
   _$invalidIssuerWalletErrorNameEnum_invalidIssuerWalletError,
 ]);
@@ -36,12 +36,12 @@ InvalidIssuerWalletErrorMessageEnum
     case 'issuerWalletIdIsInvalid':
       return _$invalidIssuerWalletErrorMessageEnum_issuerWalletIdIsInvalid;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidIssuerWalletErrorMessageEnum>
-    _$invalidIssuerWalletErrorMessageEnumValues = new BuiltSet<
+    _$invalidIssuerWalletErrorMessageEnumValues = BuiltSet<
         InvalidIssuerWalletErrorMessageEnum>(const <InvalidIssuerWalletErrorMessageEnum>[
   _$invalidIssuerWalletErrorMessageEnum_issuerWalletIdIsInvalid,
 ]);
@@ -56,25 +56,25 @@ InvalidIssuerWalletErrorHttpStatusCodeEnum
     case 'number400':
       return _$invalidIssuerWalletErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidIssuerWalletErrorHttpStatusCodeEnum>
-    _$invalidIssuerWalletErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$invalidIssuerWalletErrorHttpStatusCodeEnumValues = BuiltSet<
         InvalidIssuerWalletErrorHttpStatusCodeEnum>(const <InvalidIssuerWalletErrorHttpStatusCodeEnum>[
   _$invalidIssuerWalletErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidIssuerWalletErrorNameEnum>
     _$invalidIssuerWalletErrorNameEnumSerializer =
-    new _$InvalidIssuerWalletErrorNameEnumSerializer();
+    _$InvalidIssuerWalletErrorNameEnumSerializer();
 Serializer<InvalidIssuerWalletErrorMessageEnum>
     _$invalidIssuerWalletErrorMessageEnumSerializer =
-    new _$InvalidIssuerWalletErrorMessageEnumSerializer();
+    _$InvalidIssuerWalletErrorMessageEnumSerializer();
 Serializer<InvalidIssuerWalletErrorHttpStatusCodeEnum>
     _$invalidIssuerWalletErrorHttpStatusCodeEnumSerializer =
-    new _$InvalidIssuerWalletErrorHttpStatusCodeEnumSerializer();
+    _$InvalidIssuerWalletErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidIssuerWalletErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidIssuerWalletErrorNameEnum> {
@@ -178,7 +178,7 @@ class _$InvalidIssuerWalletError extends InvalidIssuerWalletError {
 
   factory _$InvalidIssuerWalletError(
           [void Function(InvalidIssuerWalletErrorBuilder)? updates]) =>
-      (new InvalidIssuerWalletErrorBuilder()..update(updates))._build();
+      (InvalidIssuerWalletErrorBuilder()..update(updates))._build();
 
   _$InvalidIssuerWalletError._(
       {required this.name,
@@ -186,17 +186,7 @@ class _$InvalidIssuerWalletError extends InvalidIssuerWalletError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'InvalidIssuerWalletError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'InvalidIssuerWalletError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'InvalidIssuerWalletError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'InvalidIssuerWalletError', 'traceId');
-  }
-
+      : super._();
   @override
   InvalidIssuerWalletError rebuild(
           void Function(InvalidIssuerWalletErrorBuilder) updates) =>
@@ -204,7 +194,7 @@ class _$InvalidIssuerWalletError extends InvalidIssuerWalletError {
 
   @override
   InvalidIssuerWalletErrorBuilder toBuilder() =>
-      new InvalidIssuerWalletErrorBuilder()..replace(this);
+      InvalidIssuerWalletErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -268,7 +258,7 @@ class InvalidIssuerWalletErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -291,7 +281,6 @@ class InvalidIssuerWalletErrorBuilder
 
   @override
   void replace(InvalidIssuerWalletError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidIssuerWalletError;
   }
 
@@ -307,7 +296,7 @@ class InvalidIssuerWalletErrorBuilder
     _$InvalidIssuerWalletError _$result;
     try {
       _$result = _$v ??
-          new _$InvalidIssuerWalletError._(
+          _$InvalidIssuerWalletError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidIssuerWalletError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -324,7 +313,7 @@ class InvalidIssuerWalletErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InvalidIssuerWalletError', _$failedField, e.toString());
       }
       rethrow;

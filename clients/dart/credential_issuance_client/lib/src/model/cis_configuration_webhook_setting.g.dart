@@ -14,14 +14,10 @@ class _$CisConfigurationWebhookSetting extends CisConfigurationWebhookSetting {
 
   factory _$CisConfigurationWebhookSetting(
           [void Function(CisConfigurationWebhookSettingBuilder)? updates]) =>
-      (new CisConfigurationWebhookSettingBuilder()..update(updates))._build();
+      (CisConfigurationWebhookSettingBuilder()..update(updates))._build();
 
   _$CisConfigurationWebhookSetting._({required this.enabled, this.endpoint})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        enabled, r'CisConfigurationWebhookSetting', 'enabled');
-  }
-
+      : super._();
   @override
   CisConfigurationWebhookSetting rebuild(
           void Function(CisConfigurationWebhookSettingBuilder) updates) =>
@@ -29,7 +25,7 @@ class _$CisConfigurationWebhookSetting extends CisConfigurationWebhookSetting {
 
   @override
   CisConfigurationWebhookSettingBuilder toBuilder() =>
-      new CisConfigurationWebhookSettingBuilder()..replace(this);
+      CisConfigurationWebhookSettingBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -69,7 +65,7 @@ class CisConfigurationWebhookSettingBuilder
 
   CisConfigurationWebhookSettingEndpointBuilder? _endpoint;
   CisConfigurationWebhookSettingEndpointBuilder get endpoint =>
-      _$this._endpoint ??= new CisConfigurationWebhookSettingEndpointBuilder();
+      _$this._endpoint ??= CisConfigurationWebhookSettingEndpointBuilder();
   set endpoint(CisConfigurationWebhookSettingEndpointBuilder? endpoint) =>
       _$this._endpoint = endpoint;
 
@@ -89,7 +85,6 @@ class CisConfigurationWebhookSettingBuilder
 
   @override
   void replace(CisConfigurationWebhookSetting other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CisConfigurationWebhookSetting;
   }
 
@@ -105,7 +100,7 @@ class CisConfigurationWebhookSettingBuilder
     _$CisConfigurationWebhookSetting _$result;
     try {
       _$result = _$v ??
-          new _$CisConfigurationWebhookSetting._(
+          _$CisConfigurationWebhookSetting._(
             enabled: BuiltValueNullFieldError.checkNotNull(
                 enabled, r'CisConfigurationWebhookSetting', 'enabled'),
             endpoint: _endpoint?.build(),
@@ -116,7 +111,7 @@ class CisConfigurationWebhookSettingBuilder
         _$failedField = 'endpoint';
         _endpoint?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CisConfigurationWebhookSetting', _$failedField, e.toString());
       }
       rethrow;

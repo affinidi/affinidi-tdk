@@ -21,12 +21,12 @@ ConstraintsLimitDisclosureEnum _$constraintsLimitDisclosureEnumValueOf(
     case 'preferred':
       return _$constraintsLimitDisclosureEnum_preferred;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ConstraintsLimitDisclosureEnum>
-    _$constraintsLimitDisclosureEnumValues = new BuiltSet<
+    _$constraintsLimitDisclosureEnumValues = BuiltSet<
         ConstraintsLimitDisclosureEnum>(const <ConstraintsLimitDisclosureEnum>[
   _$constraintsLimitDisclosureEnum_required_,
   _$constraintsLimitDisclosureEnum_preferred,
@@ -47,12 +47,12 @@ ConstraintsSubjectIsIssuerEnum _$constraintsSubjectIsIssuerEnumValueOf(
     case 'preferred':
       return _$constraintsSubjectIsIssuerEnum_preferred;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ConstraintsSubjectIsIssuerEnum>
-    _$constraintsSubjectIsIssuerEnumValues = new BuiltSet<
+    _$constraintsSubjectIsIssuerEnumValues = BuiltSet<
         ConstraintsSubjectIsIssuerEnum>(const <ConstraintsSubjectIsIssuerEnum>[
   _$constraintsSubjectIsIssuerEnum_required_,
   _$constraintsSubjectIsIssuerEnum_preferred,
@@ -60,10 +60,10 @@ final BuiltSet<ConstraintsSubjectIsIssuerEnum>
 
 Serializer<ConstraintsLimitDisclosureEnum>
     _$constraintsLimitDisclosureEnumSerializer =
-    new _$ConstraintsLimitDisclosureEnumSerializer();
+    _$ConstraintsLimitDisclosureEnumSerializer();
 Serializer<ConstraintsSubjectIsIssuerEnum>
     _$constraintsSubjectIsIssuerEnumSerializer =
-    new _$ConstraintsSubjectIsIssuerEnumSerializer();
+    _$ConstraintsSubjectIsIssuerEnumSerializer();
 
 class _$ConstraintsLimitDisclosureEnumSerializer
     implements PrimitiveSerializer<ConstraintsLimitDisclosureEnum> {
@@ -140,7 +140,7 @@ class _$Constraints extends Constraints {
   final BuiltList<HolderSubject>? sameSubject;
 
   factory _$Constraints([void Function(ConstraintsBuilder)? updates]) =>
-      (new ConstraintsBuilder()..update(updates))._build();
+      (ConstraintsBuilder()..update(updates))._build();
 
   _$Constraints._(
       {this.limitDisclosure,
@@ -150,13 +150,12 @@ class _$Constraints extends Constraints {
       this.isHolder,
       this.sameSubject})
       : super._();
-
   @override
   Constraints rebuild(void Function(ConstraintsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ConstraintsBuilder toBuilder() => new ConstraintsBuilder()..replace(this);
+  ConstraintsBuilder toBuilder() => ConstraintsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -207,12 +206,12 @@ class ConstraintsBuilder implements Builder<Constraints, ConstraintsBuilder> {
 
   ConstraintsStatusesBuilder? _statuses;
   ConstraintsStatusesBuilder get statuses =>
-      _$this._statuses ??= new ConstraintsStatusesBuilder();
+      _$this._statuses ??= ConstraintsStatusesBuilder();
   set statuses(ConstraintsStatusesBuilder? statuses) =>
       _$this._statuses = statuses;
 
   ListBuilder<Field>? _fields;
-  ListBuilder<Field> get fields => _$this._fields ??= new ListBuilder<Field>();
+  ListBuilder<Field> get fields => _$this._fields ??= ListBuilder<Field>();
   set fields(ListBuilder<Field>? fields) => _$this._fields = fields;
 
   ConstraintsSubjectIsIssuerEnum? _subjectIsIssuer;
@@ -223,13 +222,13 @@ class ConstraintsBuilder implements Builder<Constraints, ConstraintsBuilder> {
 
   ListBuilder<HolderSubject>? _isHolder;
   ListBuilder<HolderSubject> get isHolder =>
-      _$this._isHolder ??= new ListBuilder<HolderSubject>();
+      _$this._isHolder ??= ListBuilder<HolderSubject>();
   set isHolder(ListBuilder<HolderSubject>? isHolder) =>
       _$this._isHolder = isHolder;
 
   ListBuilder<HolderSubject>? _sameSubject;
   ListBuilder<HolderSubject> get sameSubject =>
-      _$this._sameSubject ??= new ListBuilder<HolderSubject>();
+      _$this._sameSubject ??= ListBuilder<HolderSubject>();
   set sameSubject(ListBuilder<HolderSubject>? sameSubject) =>
       _$this._sameSubject = sameSubject;
 
@@ -253,7 +252,6 @@ class ConstraintsBuilder implements Builder<Constraints, ConstraintsBuilder> {
 
   @override
   void replace(Constraints other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Constraints;
   }
 
@@ -269,7 +267,7 @@ class ConstraintsBuilder implements Builder<Constraints, ConstraintsBuilder> {
     _$Constraints _$result;
     try {
       _$result = _$v ??
-          new _$Constraints._(
+          _$Constraints._(
             limitDisclosure: limitDisclosure,
             statuses: _statuses?.build(),
             fields: _fields?.build(),
@@ -290,7 +288,7 @@ class ConstraintsBuilder implements Builder<Constraints, ConstraintsBuilder> {
         _$failedField = 'sameSubject';
         _sameSubject?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Constraints', _$failedField, e.toString());
       }
       rethrow;

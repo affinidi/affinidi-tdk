@@ -12,10 +12,9 @@ class _$RestoreNodeFromTrashbin extends RestoreNodeFromTrashbin {
 
   factory _$RestoreNodeFromTrashbin(
           [void Function(RestoreNodeFromTrashbinBuilder)? updates]) =>
-      (new RestoreNodeFromTrashbinBuilder()..update(updates))._build();
+      (RestoreNodeFromTrashbinBuilder()..update(updates))._build();
 
   _$RestoreNodeFromTrashbin._({this.restoreToProfileId}) : super._();
-
   @override
   RestoreNodeFromTrashbin rebuild(
           void Function(RestoreNodeFromTrashbinBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$RestoreNodeFromTrashbin extends RestoreNodeFromTrashbin {
 
   @override
   RestoreNodeFromTrashbinBuilder toBuilder() =>
-      new RestoreNodeFromTrashbinBuilder()..replace(this);
+      RestoreNodeFromTrashbinBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class RestoreNodeFromTrashbinBuilder
 
   @override
   void replace(RestoreNodeFromTrashbin other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RestoreNodeFromTrashbin;
   }
 
@@ -87,7 +85,7 @@ class RestoreNodeFromTrashbinBuilder
 
   _$RestoreNodeFromTrashbin _build() {
     final _$result = _$v ??
-        new _$RestoreNodeFromTrashbin._(
+        _$RestoreNodeFromTrashbin._(
           restoreToProfileId: restoreToProfileId,
         );
     replace(_$result);

@@ -18,22 +18,14 @@ class _$W3cCredentialStatus extends W3cCredentialStatus {
 
   factory _$W3cCredentialStatus(
           [void Function(W3cCredentialStatusBuilder)? updates]) =>
-      (new W3cCredentialStatusBuilder()..update(updates))._build();
+      (W3cCredentialStatusBuilder()..update(updates))._build();
 
   _$W3cCredentialStatus._(
       {required this.id,
       required this.type,
       required this.revocationListIndex,
       required this.revocationListCredential})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'W3cCredentialStatus', 'id');
-    BuiltValueNullFieldError.checkNotNull(type, r'W3cCredentialStatus', 'type');
-    BuiltValueNullFieldError.checkNotNull(
-        revocationListIndex, r'W3cCredentialStatus', 'revocationListIndex');
-    BuiltValueNullFieldError.checkNotNull(revocationListCredential,
-        r'W3cCredentialStatus', 'revocationListCredential');
-  }
-
+      : super._();
   @override
   W3cCredentialStatus rebuild(
           void Function(W3cCredentialStatusBuilder) updates) =>
@@ -41,7 +33,7 @@ class _$W3cCredentialStatus extends W3cCredentialStatus {
 
   @override
   W3cCredentialStatusBuilder toBuilder() =>
-      new W3cCredentialStatusBuilder()..replace(this);
+      W3cCredentialStatusBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -115,7 +107,6 @@ class W3cCredentialStatusBuilder
 
   @override
   void replace(W3cCredentialStatus other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$W3cCredentialStatus;
   }
 
@@ -129,7 +120,7 @@ class W3cCredentialStatusBuilder
 
   _$W3cCredentialStatus _build() {
     final _$result = _$v ??
-        new _$W3cCredentialStatus._(
+        _$W3cCredentialStatus._(
           id: BuiltValueNullFieldError.checkNotNull(
               id, r'W3cCredentialStatus', 'id'),
           type: BuiltValueNullFieldError.checkNotNull(

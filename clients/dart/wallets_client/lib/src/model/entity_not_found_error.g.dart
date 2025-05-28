@@ -15,13 +15,13 @@ EntityNotFoundErrorNameEnum _$entityNotFoundErrorNameEnumValueOf(String name) {
     case 'entityNotFoundError':
       return _$entityNotFoundErrorNameEnum_entityNotFoundError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<EntityNotFoundErrorNameEnum>
-    _$entityNotFoundErrorNameEnumValues = new BuiltSet<
-        EntityNotFoundErrorNameEnum>(const <EntityNotFoundErrorNameEnum>[
+    _$entityNotFoundErrorNameEnumValues =
+    BuiltSet<EntityNotFoundErrorNameEnum>(const <EntityNotFoundErrorNameEnum>[
   _$entityNotFoundErrorNameEnum_entityNotFoundError,
 ]);
 
@@ -35,12 +35,12 @@ EntityNotFoundErrorMessageEnum _$entityNotFoundErrorMessageEnumValueOf(
     case 'entityNotFound':
       return _$entityNotFoundErrorMessageEnum_entityNotFound;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<EntityNotFoundErrorMessageEnum>
-    _$entityNotFoundErrorMessageEnumValues = new BuiltSet<
+    _$entityNotFoundErrorMessageEnumValues = BuiltSet<
         EntityNotFoundErrorMessageEnum>(const <EntityNotFoundErrorMessageEnum>[
   _$entityNotFoundErrorMessageEnum_entityNotFound,
 ]);
@@ -55,25 +55,25 @@ EntityNotFoundErrorHttpStatusCodeEnum
     case 'number404':
       return _$entityNotFoundErrorHttpStatusCodeEnum_number404;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<EntityNotFoundErrorHttpStatusCodeEnum>
-    _$entityNotFoundErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$entityNotFoundErrorHttpStatusCodeEnumValues = BuiltSet<
         EntityNotFoundErrorHttpStatusCodeEnum>(const <EntityNotFoundErrorHttpStatusCodeEnum>[
   _$entityNotFoundErrorHttpStatusCodeEnum_number404,
 ]);
 
 Serializer<EntityNotFoundErrorNameEnum>
     _$entityNotFoundErrorNameEnumSerializer =
-    new _$EntityNotFoundErrorNameEnumSerializer();
+    _$EntityNotFoundErrorNameEnumSerializer();
 Serializer<EntityNotFoundErrorMessageEnum>
     _$entityNotFoundErrorMessageEnumSerializer =
-    new _$EntityNotFoundErrorMessageEnumSerializer();
+    _$EntityNotFoundErrorMessageEnumSerializer();
 Serializer<EntityNotFoundErrorHttpStatusCodeEnum>
     _$entityNotFoundErrorHttpStatusCodeEnumSerializer =
-    new _$EntityNotFoundErrorHttpStatusCodeEnumSerializer();
+    _$EntityNotFoundErrorHttpStatusCodeEnumSerializer();
 
 class _$EntityNotFoundErrorNameEnumSerializer
     implements PrimitiveSerializer<EntityNotFoundErrorNameEnum> {
@@ -174,7 +174,7 @@ class _$EntityNotFoundError extends EntityNotFoundError {
 
   factory _$EntityNotFoundError(
           [void Function(EntityNotFoundErrorBuilder)? updates]) =>
-      (new EntityNotFoundErrorBuilder()..update(updates))._build();
+      (EntityNotFoundErrorBuilder()..update(updates))._build();
 
   _$EntityNotFoundError._(
       {required this.name,
@@ -182,16 +182,7 @@ class _$EntityNotFoundError extends EntityNotFoundError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'EntityNotFoundError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'EntityNotFoundError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'EntityNotFoundError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'EntityNotFoundError', 'traceId');
-  }
-
+      : super._();
   @override
   EntityNotFoundError rebuild(
           void Function(EntityNotFoundErrorBuilder) updates) =>
@@ -199,7 +190,7 @@ class _$EntityNotFoundError extends EntityNotFoundError {
 
   @override
   EntityNotFoundErrorBuilder toBuilder() =>
-      new EntityNotFoundErrorBuilder()..replace(this);
+      EntityNotFoundErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -261,7 +252,7 @@ class EntityNotFoundErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -284,7 +275,6 @@ class EntityNotFoundErrorBuilder
 
   @override
   void replace(EntityNotFoundError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EntityNotFoundError;
   }
 
@@ -300,7 +290,7 @@ class EntityNotFoundErrorBuilder
     _$EntityNotFoundError _$result;
     try {
       _$result = _$v ??
-          new _$EntityNotFoundError._(
+          _$EntityNotFoundError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'EntityNotFoundError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -317,7 +307,7 @@ class EntityNotFoundErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EntityNotFoundError', _$failedField, e.toString());
       }
       rethrow;

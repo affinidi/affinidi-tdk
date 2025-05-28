@@ -11,16 +11,15 @@ class _$JsonWebKey extends JsonWebKey {
   final BuiltList<JsonWebKeyKeysInner>? keys;
 
   factory _$JsonWebKey([void Function(JsonWebKeyBuilder)? updates]) =>
-      (new JsonWebKeyBuilder()..update(updates))._build();
+      (JsonWebKeyBuilder()..update(updates))._build();
 
   _$JsonWebKey._({this.keys}) : super._();
-
   @override
   JsonWebKey rebuild(void Function(JsonWebKeyBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  JsonWebKeyBuilder toBuilder() => new JsonWebKeyBuilder()..replace(this);
+  JsonWebKeyBuilder toBuilder() => JsonWebKeyBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -48,7 +47,7 @@ class JsonWebKeyBuilder implements Builder<JsonWebKey, JsonWebKeyBuilder> {
 
   ListBuilder<JsonWebKeyKeysInner>? _keys;
   ListBuilder<JsonWebKeyKeysInner> get keys =>
-      _$this._keys ??= new ListBuilder<JsonWebKeyKeysInner>();
+      _$this._keys ??= ListBuilder<JsonWebKeyKeysInner>();
   set keys(ListBuilder<JsonWebKeyKeysInner>? keys) => _$this._keys = keys;
 
   JsonWebKeyBuilder() {
@@ -66,7 +65,6 @@ class JsonWebKeyBuilder implements Builder<JsonWebKey, JsonWebKeyBuilder> {
 
   @override
   void replace(JsonWebKey other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$JsonWebKey;
   }
 
@@ -82,7 +80,7 @@ class JsonWebKeyBuilder implements Builder<JsonWebKey, JsonWebKeyBuilder> {
     _$JsonWebKey _$result;
     try {
       _$result = _$v ??
-          new _$JsonWebKey._(
+          _$JsonWebKey._(
             keys: _keys?.build(),
           );
     } catch (_) {
@@ -91,7 +89,7 @@ class JsonWebKeyBuilder implements Builder<JsonWebKey, JsonWebKeyBuilder> {
         _$failedField = 'keys';
         _keys?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'JsonWebKey', _$failedField, e.toString());
       }
       rethrow;

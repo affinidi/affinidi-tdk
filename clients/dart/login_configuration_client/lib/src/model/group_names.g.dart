@@ -13,19 +13,15 @@ class _$GroupNames extends GroupNames {
   final JsonObject? pageToken;
 
   factory _$GroupNames([void Function(GroupNamesBuilder)? updates]) =>
-      (new GroupNamesBuilder()..update(updates))._build();
+      (GroupNamesBuilder()..update(updates))._build();
 
-  _$GroupNames._({required this.groupNames, this.pageToken}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        groupNames, r'GroupNames', 'groupNames');
-  }
-
+  _$GroupNames._({required this.groupNames, this.pageToken}) : super._();
   @override
   GroupNames rebuild(void Function(GroupNamesBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GroupNamesBuilder toBuilder() => new GroupNamesBuilder()..replace(this);
+  GroupNamesBuilder toBuilder() => GroupNamesBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -58,7 +54,7 @@ class GroupNamesBuilder implements Builder<GroupNames, GroupNamesBuilder> {
 
   ListBuilder<String>? _groupNames;
   ListBuilder<String> get groupNames =>
-      _$this._groupNames ??= new ListBuilder<String>();
+      _$this._groupNames ??= ListBuilder<String>();
   set groupNames(ListBuilder<String>? groupNames) =>
       _$this._groupNames = groupNames;
 
@@ -82,7 +78,6 @@ class GroupNamesBuilder implements Builder<GroupNames, GroupNamesBuilder> {
 
   @override
   void replace(GroupNames other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GroupNames;
   }
 
@@ -98,7 +93,7 @@ class GroupNamesBuilder implements Builder<GroupNames, GroupNamesBuilder> {
     _$GroupNames _$result;
     try {
       _$result = _$v ??
-          new _$GroupNames._(
+          _$GroupNames._(
             groupNames: groupNames.build(),
             pageToken: pageToken,
           );
@@ -108,7 +103,7 @@ class GroupNamesBuilder implements Builder<GroupNames, GroupNamesBuilder> {
         _$failedField = 'groupNames';
         groupNames.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GroupNames', _$failedField, e.toString());
       }
       rethrow;

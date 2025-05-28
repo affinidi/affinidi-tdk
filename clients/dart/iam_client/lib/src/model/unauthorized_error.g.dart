@@ -14,12 +14,12 @@ UnauthorizedErrorNameEnum _$unauthorizedErrorNameEnumValueOf(String name) {
     case 'unauthorizedError':
       return _$unauthorizedErrorNameEnum_unauthorizedError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UnauthorizedErrorNameEnum> _$unauthorizedErrorNameEnumValues =
-    new BuiltSet<UnauthorizedErrorNameEnum>(const <UnauthorizedErrorNameEnum>[
+    BuiltSet<UnauthorizedErrorNameEnum>(const <UnauthorizedErrorNameEnum>[
   _$unauthorizedErrorNameEnum_unauthorizedError,
 ]);
 
@@ -32,13 +32,13 @@ UnauthorizedErrorMessageEnum _$unauthorizedErrorMessageEnumValueOf(
     case 'unauthorized':
       return _$unauthorizedErrorMessageEnum_unauthorized;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UnauthorizedErrorMessageEnum>
-    _$unauthorizedErrorMessageEnumValues = new BuiltSet<
-        UnauthorizedErrorMessageEnum>(const <UnauthorizedErrorMessageEnum>[
+    _$unauthorizedErrorMessageEnumValues =
+    BuiltSet<UnauthorizedErrorMessageEnum>(const <UnauthorizedErrorMessageEnum>[
   _$unauthorizedErrorMessageEnum_unauthorized,
 ]);
 
@@ -52,24 +52,24 @@ UnauthorizedErrorHttpStatusCodeEnum
     case 'number403':
       return _$unauthorizedErrorHttpStatusCodeEnum_number403;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UnauthorizedErrorHttpStatusCodeEnum>
-    _$unauthorizedErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$unauthorizedErrorHttpStatusCodeEnumValues = BuiltSet<
         UnauthorizedErrorHttpStatusCodeEnum>(const <UnauthorizedErrorHttpStatusCodeEnum>[
   _$unauthorizedErrorHttpStatusCodeEnum_number403,
 ]);
 
 Serializer<UnauthorizedErrorNameEnum> _$unauthorizedErrorNameEnumSerializer =
-    new _$UnauthorizedErrorNameEnumSerializer();
+    _$UnauthorizedErrorNameEnumSerializer();
 Serializer<UnauthorizedErrorMessageEnum>
     _$unauthorizedErrorMessageEnumSerializer =
-    new _$UnauthorizedErrorMessageEnumSerializer();
+    _$UnauthorizedErrorMessageEnumSerializer();
 Serializer<UnauthorizedErrorHttpStatusCodeEnum>
     _$unauthorizedErrorHttpStatusCodeEnumSerializer =
-    new _$UnauthorizedErrorHttpStatusCodeEnumSerializer();
+    _$UnauthorizedErrorHttpStatusCodeEnumSerializer();
 
 class _$UnauthorizedErrorNameEnumSerializer
     implements PrimitiveSerializer<UnauthorizedErrorNameEnum> {
@@ -169,7 +169,7 @@ class _$UnauthorizedError extends UnauthorizedError {
 
   factory _$UnauthorizedError(
           [void Function(UnauthorizedErrorBuilder)? updates]) =>
-      (new UnauthorizedErrorBuilder()..update(updates))._build();
+      (UnauthorizedErrorBuilder()..update(updates))._build();
 
   _$UnauthorizedError._(
       {required this.name,
@@ -177,23 +177,14 @@ class _$UnauthorizedError extends UnauthorizedError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'UnauthorizedError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'UnauthorizedError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'UnauthorizedError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'UnauthorizedError', 'traceId');
-  }
-
+      : super._();
   @override
   UnauthorizedError rebuild(void Function(UnauthorizedErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   UnauthorizedErrorBuilder toBuilder() =>
-      new UnauthorizedErrorBuilder()..replace(this);
+      UnauthorizedErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -255,7 +246,7 @@ class UnauthorizedErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -278,7 +269,6 @@ class UnauthorizedErrorBuilder
 
   @override
   void replace(UnauthorizedError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UnauthorizedError;
   }
 
@@ -294,7 +284,7 @@ class UnauthorizedErrorBuilder
     _$UnauthorizedError _$result;
     try {
       _$result = _$v ??
-          new _$UnauthorizedError._(
+          _$UnauthorizedError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'UnauthorizedError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -311,7 +301,7 @@ class UnauthorizedErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UnauthorizedError', _$failedField, e.toString());
       }
       rethrow;

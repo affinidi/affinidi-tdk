@@ -18,19 +18,13 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
           [void Function(
                   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder)?
               updates]) =>
-      (new CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder()
+      (CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder()
             ..update(updates))
           ._build();
 
   _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode._(
       {required this.preAuthorizedCode, this.txCode})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        preAuthorizedCode,
-        r'CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode',
-        'preAuthorizedCode');
-  }
-
+      : super._();
   @override
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode rebuild(
           void Function(
@@ -41,7 +35,7 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
   @override
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder
       toBuilder() =>
-          new CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder()
+          CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder()
             ..replace(this);
 
   @override
@@ -89,7 +83,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeB
       _txCode;
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCodeBuilder
       get txCode => _$this._txCode ??=
-          new CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCodeBuilder();
+          CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCodeBuilder();
   set txCode(
           CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCodeBuilder?
               txCode) =>
@@ -115,7 +109,6 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeB
   void replace(
       CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
           other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other
         as _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode;
   }
@@ -138,7 +131,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeB
         _$result;
     try {
       _$result = _$v ??
-          new _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
+          _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
               ._(
             preAuthorizedCode: BuiltValueNullFieldError.checkNotNull(
                 preAuthorizedCode,
@@ -152,7 +145,7 @@ class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeB
         _$failedField = 'txCode';
         _txCode?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode',
             _$failedField,
             e.toString());

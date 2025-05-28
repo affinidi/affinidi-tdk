@@ -14,16 +14,10 @@ class _$VerifyCredentialOutput extends VerifyCredentialOutput {
 
   factory _$VerifyCredentialOutput(
           [void Function(VerifyCredentialOutputBuilder)? updates]) =>
-      (new VerifyCredentialOutputBuilder()..update(updates))._build();
+      (VerifyCredentialOutputBuilder()..update(updates))._build();
 
   _$VerifyCredentialOutput._({required this.errors, required this.isValid})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        errors, r'VerifyCredentialOutput', 'errors');
-    BuiltValueNullFieldError.checkNotNull(
-        isValid, r'VerifyCredentialOutput', 'isValid');
-  }
-
+      : super._();
   @override
   VerifyCredentialOutput rebuild(
           void Function(VerifyCredentialOutputBuilder) updates) =>
@@ -31,7 +25,7 @@ class _$VerifyCredentialOutput extends VerifyCredentialOutput {
 
   @override
   VerifyCredentialOutputBuilder toBuilder() =>
-      new VerifyCredentialOutputBuilder()..replace(this);
+      VerifyCredentialOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -64,8 +58,7 @@ class VerifyCredentialOutputBuilder
   _$VerifyCredentialOutput? _$v;
 
   ListBuilder<String>? _errors;
-  ListBuilder<String> get errors =>
-      _$this._errors ??= new ListBuilder<String>();
+  ListBuilder<String> get errors => _$this._errors ??= ListBuilder<String>();
   set errors(ListBuilder<String>? errors) => _$this._errors = errors;
 
   bool? _isValid;
@@ -88,7 +81,6 @@ class VerifyCredentialOutputBuilder
 
   @override
   void replace(VerifyCredentialOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VerifyCredentialOutput;
   }
 
@@ -104,7 +96,7 @@ class VerifyCredentialOutputBuilder
     _$VerifyCredentialOutput _$result;
     try {
       _$result = _$v ??
-          new _$VerifyCredentialOutput._(
+          _$VerifyCredentialOutput._(
             errors: errors.build(),
             isValid: BuiltValueNullFieldError.checkNotNull(
                 isValid, r'VerifyCredentialOutput', 'isValid'),
@@ -115,7 +107,7 @@ class VerifyCredentialOutputBuilder
         _$failedField = 'errors';
         errors.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'VerifyCredentialOutput', _$failedField, e.toString());
       }
       rethrow;

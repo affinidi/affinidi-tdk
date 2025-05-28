@@ -12,10 +12,9 @@ class _$CorsListScannedFilesOK extends CorsListScannedFilesOK {
 
   factory _$CorsListScannedFilesOK(
           [void Function(CorsListScannedFilesOKBuilder)? updates]) =>
-      (new CorsListScannedFilesOKBuilder()..update(updates))._build();
+      (CorsListScannedFilesOKBuilder()..update(updates))._build();
 
   _$CorsListScannedFilesOK._({this.corsListScannedFilesOk}) : super._();
-
   @override
   CorsListScannedFilesOK rebuild(
           void Function(CorsListScannedFilesOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsListScannedFilesOK extends CorsListScannedFilesOK {
 
   @override
   CorsListScannedFilesOKBuilder toBuilder() =>
-      new CorsListScannedFilesOKBuilder()..replace(this);
+      CorsListScannedFilesOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,6 @@ class CorsListScannedFilesOKBuilder
 
   @override
   void replace(CorsListScannedFilesOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsListScannedFilesOK;
   }
 
@@ -86,7 +84,7 @@ class CorsListScannedFilesOKBuilder
 
   _$CorsListScannedFilesOK _build() {
     final _$result = _$v ??
-        new _$CorsListScannedFilesOK._(
+        _$CorsListScannedFilesOK._(
           corsListScannedFilesOk: corsListScannedFilesOk,
         );
     replace(_$result);

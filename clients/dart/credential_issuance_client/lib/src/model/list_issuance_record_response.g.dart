@@ -14,11 +14,10 @@ class _$ListIssuanceRecordResponse extends ListIssuanceRecordResponse {
 
   factory _$ListIssuanceRecordResponse(
           [void Function(ListIssuanceRecordResponseBuilder)? updates]) =>
-      (new ListIssuanceRecordResponseBuilder()..update(updates))._build();
+      (ListIssuanceRecordResponseBuilder()..update(updates))._build();
 
   _$ListIssuanceRecordResponse._({this.flowData, this.lastEvaluatedKey})
       : super._();
-
   @override
   ListIssuanceRecordResponse rebuild(
           void Function(ListIssuanceRecordResponseBuilder) updates) =>
@@ -26,7 +25,7 @@ class _$ListIssuanceRecordResponse extends ListIssuanceRecordResponse {
 
   @override
   ListIssuanceRecordResponseBuilder toBuilder() =>
-      new ListIssuanceRecordResponseBuilder()..replace(this);
+      ListIssuanceRecordResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -61,7 +60,7 @@ class ListIssuanceRecordResponseBuilder
 
   ListBuilder<FlowData>? _flowData;
   ListBuilder<FlowData> get flowData =>
-      _$this._flowData ??= new ListBuilder<FlowData>();
+      _$this._flowData ??= ListBuilder<FlowData>();
   set flowData(ListBuilder<FlowData>? flowData) => _$this._flowData = flowData;
 
   String? _lastEvaluatedKey;
@@ -85,7 +84,6 @@ class ListIssuanceRecordResponseBuilder
 
   @override
   void replace(ListIssuanceRecordResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListIssuanceRecordResponse;
   }
 
@@ -101,7 +99,7 @@ class ListIssuanceRecordResponseBuilder
     _$ListIssuanceRecordResponse _$result;
     try {
       _$result = _$v ??
-          new _$ListIssuanceRecordResponse._(
+          _$ListIssuanceRecordResponse._(
             flowData: _flowData?.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -111,7 +109,7 @@ class ListIssuanceRecordResponseBuilder
         _$failedField = 'flowData';
         _flowData?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListIssuanceRecordResponse', _$failedField, e.toString());
       }
       rethrow;

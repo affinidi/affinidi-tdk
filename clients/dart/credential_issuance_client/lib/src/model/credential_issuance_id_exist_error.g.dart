@@ -17,12 +17,12 @@ CredentialIssuanceIdExistErrorNameEnum
     case 'credentialIssuanceIdExistError':
       return _$credentialIssuanceIdExistErrorNameEnum_credentialIssuanceIdExistError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CredentialIssuanceIdExistErrorNameEnum>
-    _$credentialIssuanceIdExistErrorNameEnumValues = new BuiltSet<
+    _$credentialIssuanceIdExistErrorNameEnumValues = BuiltSet<
         CredentialIssuanceIdExistErrorNameEnum>(const <CredentialIssuanceIdExistErrorNameEnum>[
   _$credentialIssuanceIdExistErrorNameEnum_credentialIssuanceIdExistError,
 ]);
@@ -38,12 +38,12 @@ CredentialIssuanceIdExistErrorMessageEnum
     case 'issuanceIdExistForTheProjectCommaPleaseUseDifferentIssuanceId':
       return _$credentialIssuanceIdExistErrorMessageEnum_issuanceIdExistForTheProjectCommaPleaseUseDifferentIssuanceId;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CredentialIssuanceIdExistErrorMessageEnum>
-    _$credentialIssuanceIdExistErrorMessageEnumValues = new BuiltSet<
+    _$credentialIssuanceIdExistErrorMessageEnumValues = BuiltSet<
         CredentialIssuanceIdExistErrorMessageEnum>(const <CredentialIssuanceIdExistErrorMessageEnum>[
   _$credentialIssuanceIdExistErrorMessageEnum_issuanceIdExistForTheProjectCommaPleaseUseDifferentIssuanceId,
 ]);
@@ -58,25 +58,25 @@ CredentialIssuanceIdExistErrorHttpStatusCodeEnum
     case 'number400':
       return _$credentialIssuanceIdExistErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CredentialIssuanceIdExistErrorHttpStatusCodeEnum>
-    _$credentialIssuanceIdExistErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$credentialIssuanceIdExistErrorHttpStatusCodeEnumValues = BuiltSet<
         CredentialIssuanceIdExistErrorHttpStatusCodeEnum>(const <CredentialIssuanceIdExistErrorHttpStatusCodeEnum>[
   _$credentialIssuanceIdExistErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<CredentialIssuanceIdExistErrorNameEnum>
     _$credentialIssuanceIdExistErrorNameEnumSerializer =
-    new _$CredentialIssuanceIdExistErrorNameEnumSerializer();
+    _$CredentialIssuanceIdExistErrorNameEnumSerializer();
 Serializer<CredentialIssuanceIdExistErrorMessageEnum>
     _$credentialIssuanceIdExistErrorMessageEnumSerializer =
-    new _$CredentialIssuanceIdExistErrorMessageEnumSerializer();
+    _$CredentialIssuanceIdExistErrorMessageEnumSerializer();
 Serializer<CredentialIssuanceIdExistErrorHttpStatusCodeEnum>
     _$credentialIssuanceIdExistErrorHttpStatusCodeEnumSerializer =
-    new _$CredentialIssuanceIdExistErrorHttpStatusCodeEnumSerializer();
+    _$CredentialIssuanceIdExistErrorHttpStatusCodeEnumSerializer();
 
 class _$CredentialIssuanceIdExistErrorNameEnumSerializer
     implements PrimitiveSerializer<CredentialIssuanceIdExistErrorNameEnum> {
@@ -185,7 +185,7 @@ class _$CredentialIssuanceIdExistError extends CredentialIssuanceIdExistError {
 
   factory _$CredentialIssuanceIdExistError(
           [void Function(CredentialIssuanceIdExistErrorBuilder)? updates]) =>
-      (new CredentialIssuanceIdExistErrorBuilder()..update(updates))._build();
+      (CredentialIssuanceIdExistErrorBuilder()..update(updates))._build();
 
   _$CredentialIssuanceIdExistError._(
       {required this.name,
@@ -193,17 +193,7 @@ class _$CredentialIssuanceIdExistError extends CredentialIssuanceIdExistError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'CredentialIssuanceIdExistError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CredentialIssuanceIdExistError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'CredentialIssuanceIdExistError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'CredentialIssuanceIdExistError', 'traceId');
-  }
-
+      : super._();
   @override
   CredentialIssuanceIdExistError rebuild(
           void Function(CredentialIssuanceIdExistErrorBuilder) updates) =>
@@ -211,7 +201,7 @@ class _$CredentialIssuanceIdExistError extends CredentialIssuanceIdExistError {
 
   @override
   CredentialIssuanceIdExistErrorBuilder toBuilder() =>
-      new CredentialIssuanceIdExistErrorBuilder()..replace(this);
+      CredentialIssuanceIdExistErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -276,7 +266,7 @@ class CredentialIssuanceIdExistErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -299,7 +289,6 @@ class CredentialIssuanceIdExistErrorBuilder
 
   @override
   void replace(CredentialIssuanceIdExistError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialIssuanceIdExistError;
   }
 
@@ -315,7 +304,7 @@ class CredentialIssuanceIdExistErrorBuilder
     _$CredentialIssuanceIdExistError _$result;
     try {
       _$result = _$v ??
-          new _$CredentialIssuanceIdExistError._(
+          _$CredentialIssuanceIdExistError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'CredentialIssuanceIdExistError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -334,7 +323,7 @@ class CredentialIssuanceIdExistErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CredentialIssuanceIdExistError', _$failedField, e.toString());
       }
       rethrow;

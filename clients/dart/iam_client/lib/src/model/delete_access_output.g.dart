@@ -12,13 +12,9 @@ class _$DeleteAccessOutput extends DeleteAccessOutput {
 
   factory _$DeleteAccessOutput(
           [void Function(DeleteAccessOutputBuilder)? updates]) =>
-      (new DeleteAccessOutputBuilder()..update(updates))._build();
+      (DeleteAccessOutputBuilder()..update(updates))._build();
 
-  _$DeleteAccessOutput._({required this.success}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        success, r'DeleteAccessOutput', 'success');
-  }
-
+  _$DeleteAccessOutput._({required this.success}) : super._();
   @override
   DeleteAccessOutput rebuild(
           void Function(DeleteAccessOutputBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$DeleteAccessOutput extends DeleteAccessOutput {
 
   @override
   DeleteAccessOutputBuilder toBuilder() =>
-      new DeleteAccessOutputBuilder()..replace(this);
+      DeleteAccessOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +69,6 @@ class DeleteAccessOutputBuilder
 
   @override
   void replace(DeleteAccessOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DeleteAccessOutput;
   }
 
@@ -87,7 +82,7 @@ class DeleteAccessOutputBuilder
 
   _$DeleteAccessOutput _build() {
     final _$result = _$v ??
-        new _$DeleteAccessOutput._(
+        _$DeleteAccessOutput._(
           success: BuiltValueNullFieldError.checkNotNull(
               success, r'DeleteAccessOutput', 'success'),
         );

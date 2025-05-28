@@ -17,12 +17,12 @@ GroupsPerUserLimitExceededErrorNameEnum
     case 'groupsPerUserLimitExceededError':
       return _$groupsPerUserLimitExceededErrorNameEnum_groupsPerUserLimitExceededError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GroupsPerUserLimitExceededErrorNameEnum>
-    _$groupsPerUserLimitExceededErrorNameEnumValues = new BuiltSet<
+    _$groupsPerUserLimitExceededErrorNameEnumValues = BuiltSet<
         GroupsPerUserLimitExceededErrorNameEnum>(const <GroupsPerUserLimitExceededErrorNameEnum>[
   _$groupsPerUserLimitExceededErrorNameEnum_groupsPerUserLimitExceededError,
 ]);
@@ -38,12 +38,12 @@ GroupsPerUserLimitExceededErrorMessageEnum
     case 'amountOfGroupsPerUserIsLimitedPeriod':
       return _$groupsPerUserLimitExceededErrorMessageEnum_amountOfGroupsPerUserIsLimitedPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GroupsPerUserLimitExceededErrorMessageEnum>
-    _$groupsPerUserLimitExceededErrorMessageEnumValues = new BuiltSet<
+    _$groupsPerUserLimitExceededErrorMessageEnumValues = BuiltSet<
         GroupsPerUserLimitExceededErrorMessageEnum>(const <GroupsPerUserLimitExceededErrorMessageEnum>[
   _$groupsPerUserLimitExceededErrorMessageEnum_amountOfGroupsPerUserIsLimitedPeriod,
 ]);
@@ -58,25 +58,25 @@ GroupsPerUserLimitExceededErrorHttpStatusCodeEnum
     case 'number409':
       return _$groupsPerUserLimitExceededErrorHttpStatusCodeEnum_number409;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GroupsPerUserLimitExceededErrorHttpStatusCodeEnum>
-    _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumValues = BuiltSet<
         GroupsPerUserLimitExceededErrorHttpStatusCodeEnum>(const <GroupsPerUserLimitExceededErrorHttpStatusCodeEnum>[
   _$groupsPerUserLimitExceededErrorHttpStatusCodeEnum_number409,
 ]);
 
 Serializer<GroupsPerUserLimitExceededErrorNameEnum>
     _$groupsPerUserLimitExceededErrorNameEnumSerializer =
-    new _$GroupsPerUserLimitExceededErrorNameEnumSerializer();
+    _$GroupsPerUserLimitExceededErrorNameEnumSerializer();
 Serializer<GroupsPerUserLimitExceededErrorMessageEnum>
     _$groupsPerUserLimitExceededErrorMessageEnumSerializer =
-    new _$GroupsPerUserLimitExceededErrorMessageEnumSerializer();
+    _$GroupsPerUserLimitExceededErrorMessageEnumSerializer();
 Serializer<GroupsPerUserLimitExceededErrorHttpStatusCodeEnum>
     _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumSerializer =
-    new _$GroupsPerUserLimitExceededErrorHttpStatusCodeEnumSerializer();
+    _$GroupsPerUserLimitExceededErrorHttpStatusCodeEnumSerializer();
 
 class _$GroupsPerUserLimitExceededErrorNameEnumSerializer
     implements PrimitiveSerializer<GroupsPerUserLimitExceededErrorNameEnum> {
@@ -186,7 +186,7 @@ class _$GroupsPerUserLimitExceededError
 
   factory _$GroupsPerUserLimitExceededError(
           [void Function(GroupsPerUserLimitExceededErrorBuilder)? updates]) =>
-      (new GroupsPerUserLimitExceededErrorBuilder()..update(updates))._build();
+      (GroupsPerUserLimitExceededErrorBuilder()..update(updates))._build();
 
   _$GroupsPerUserLimitExceededError._(
       {required this.name,
@@ -194,17 +194,7 @@ class _$GroupsPerUserLimitExceededError
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GroupsPerUserLimitExceededError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'GroupsPerUserLimitExceededError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'GroupsPerUserLimitExceededError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'GroupsPerUserLimitExceededError', 'traceId');
-  }
-
+      : super._();
   @override
   GroupsPerUserLimitExceededError rebuild(
           void Function(GroupsPerUserLimitExceededErrorBuilder) updates) =>
@@ -212,7 +202,7 @@ class _$GroupsPerUserLimitExceededError
 
   @override
   GroupsPerUserLimitExceededErrorBuilder toBuilder() =>
-      new GroupsPerUserLimitExceededErrorBuilder()..replace(this);
+      GroupsPerUserLimitExceededErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -278,7 +268,7 @@ class GroupsPerUserLimitExceededErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -301,7 +291,6 @@ class GroupsPerUserLimitExceededErrorBuilder
 
   @override
   void replace(GroupsPerUserLimitExceededError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GroupsPerUserLimitExceededError;
   }
 
@@ -317,7 +306,7 @@ class GroupsPerUserLimitExceededErrorBuilder
     _$GroupsPerUserLimitExceededError _$result;
     try {
       _$result = _$v ??
-          new _$GroupsPerUserLimitExceededError._(
+          _$GroupsPerUserLimitExceededError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'GroupsPerUserLimitExceededError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -336,7 +325,7 @@ class GroupsPerUserLimitExceededErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GroupsPerUserLimitExceededError', _$failedField, e.toString());
       }
       rethrow;

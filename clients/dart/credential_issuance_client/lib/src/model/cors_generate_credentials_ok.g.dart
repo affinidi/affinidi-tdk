@@ -12,10 +12,9 @@ class _$CorsGenerateCredentialsOK extends CorsGenerateCredentialsOK {
 
   factory _$CorsGenerateCredentialsOK(
           [void Function(CorsGenerateCredentialsOKBuilder)? updates]) =>
-      (new CorsGenerateCredentialsOKBuilder()..update(updates))._build();
+      (CorsGenerateCredentialsOKBuilder()..update(updates))._build();
 
   _$CorsGenerateCredentialsOK._({this.corsGenerateCredentialsOk}) : super._();
-
   @override
   CorsGenerateCredentialsOK rebuild(
           void Function(CorsGenerateCredentialsOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsGenerateCredentialsOK extends CorsGenerateCredentialsOK {
 
   @override
   CorsGenerateCredentialsOKBuilder toBuilder() =>
-      new CorsGenerateCredentialsOKBuilder()..replace(this);
+      CorsGenerateCredentialsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class CorsGenerateCredentialsOKBuilder
 
   @override
   void replace(CorsGenerateCredentialsOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsGenerateCredentialsOK;
   }
 
@@ -87,7 +85,7 @@ class CorsGenerateCredentialsOKBuilder
 
   _$CorsGenerateCredentialsOK _build() {
     final _$result = _$v ??
-        new _$CorsGenerateCredentialsOK._(
+        _$CorsGenerateCredentialsOK._(
           corsGenerateCredentialsOk: corsGenerateCredentialsOk,
         );
     replace(_$result);

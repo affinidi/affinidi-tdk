@@ -17,21 +17,13 @@ class _$InitiateDataSharingRequestOKData
 
   factory _$InitiateDataSharingRequestOKData(
           [void Function(InitiateDataSharingRequestOKDataBuilder)? updates]) =>
-      (new InitiateDataSharingRequestOKDataBuilder()..update(updates))._build();
+      (InitiateDataSharingRequestOKDataBuilder()..update(updates))._build();
 
   _$InitiateDataSharingRequestOKData._(
       {required this.jwt,
       required this.correlationId,
       required this.transactionId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        jwt, r'InitiateDataSharingRequestOKData', 'jwt');
-    BuiltValueNullFieldError.checkNotNull(
-        correlationId, r'InitiateDataSharingRequestOKData', 'correlationId');
-    BuiltValueNullFieldError.checkNotNull(
-        transactionId, r'InitiateDataSharingRequestOKData', 'transactionId');
-  }
-
+      : super._();
   @override
   InitiateDataSharingRequestOKData rebuild(
           void Function(InitiateDataSharingRequestOKDataBuilder) updates) =>
@@ -39,7 +31,7 @@ class _$InitiateDataSharingRequestOKData
 
   @override
   InitiateDataSharingRequestOKDataBuilder toBuilder() =>
-      new InitiateDataSharingRequestOKDataBuilder()..replace(this);
+      InitiateDataSharingRequestOKDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,7 +99,6 @@ class InitiateDataSharingRequestOKDataBuilder
 
   @override
   void replace(InitiateDataSharingRequestOKData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InitiateDataSharingRequestOKData;
   }
 
@@ -121,7 +112,7 @@ class InitiateDataSharingRequestOKDataBuilder
 
   _$InitiateDataSharingRequestOKData _build() {
     final _$result = _$v ??
-        new _$InitiateDataSharingRequestOKData._(
+        _$InitiateDataSharingRequestOKData._(
           jwt: BuiltValueNullFieldError.checkNotNull(
               jwt, r'InitiateDataSharingRequestOKData', 'jwt'),
           correlationId: BuiltValueNullFieldError.checkNotNull(correlationId,

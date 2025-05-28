@@ -12,13 +12,9 @@ class _$RemoveUserFromGroupInput extends RemoveUserFromGroupInput {
 
   factory _$RemoveUserFromGroupInput(
           [void Function(RemoveUserFromGroupInputBuilder)? updates]) =>
-      (new RemoveUserFromGroupInputBuilder()..update(updates))._build();
+      (RemoveUserFromGroupInputBuilder()..update(updates))._build();
 
-  _$RemoveUserFromGroupInput._({required this.userId}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        userId, r'RemoveUserFromGroupInput', 'userId');
-  }
-
+  _$RemoveUserFromGroupInput._({required this.userId}) : super._();
   @override
   RemoveUserFromGroupInput rebuild(
           void Function(RemoveUserFromGroupInputBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$RemoveUserFromGroupInput extends RemoveUserFromGroupInput {
 
   @override
   RemoveUserFromGroupInputBuilder toBuilder() =>
-      new RemoveUserFromGroupInputBuilder()..replace(this);
+      RemoveUserFromGroupInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +70,6 @@ class RemoveUserFromGroupInputBuilder
 
   @override
   void replace(RemoveUserFromGroupInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RemoveUserFromGroupInput;
   }
 
@@ -88,7 +83,7 @@ class RemoveUserFromGroupInputBuilder
 
   _$RemoveUserFromGroupInput _build() {
     final _$result = _$v ??
-        new _$RemoveUserFromGroupInput._(
+        _$RemoveUserFromGroupInput._(
           userId: BuiltValueNullFieldError.checkNotNull(
               userId, r'RemoveUserFromGroupInput', 'userId'),
         );

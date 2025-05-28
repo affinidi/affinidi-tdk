@@ -14,17 +14,11 @@ class _$PrepareRequestCreatedData extends PrepareRequestCreatedData {
 
   factory _$PrepareRequestCreatedData(
           [void Function(PrepareRequestCreatedDataBuilder)? updates]) =>
-      (new PrepareRequestCreatedDataBuilder()..update(updates))._build();
+      (PrepareRequestCreatedDataBuilder()..update(updates))._build();
 
   _$PrepareRequestCreatedData._(
       {required this.jwt, required this.correlationId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        jwt, r'PrepareRequestCreatedData', 'jwt');
-    BuiltValueNullFieldError.checkNotNull(
-        correlationId, r'PrepareRequestCreatedData', 'correlationId');
-  }
-
+      : super._();
   @override
   PrepareRequestCreatedData rebuild(
           void Function(PrepareRequestCreatedDataBuilder) updates) =>
@@ -32,7 +26,7 @@ class _$PrepareRequestCreatedData extends PrepareRequestCreatedData {
 
   @override
   PrepareRequestCreatedDataBuilder toBuilder() =>
-      new PrepareRequestCreatedDataBuilder()..replace(this);
+      PrepareRequestCreatedDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -90,7 +84,6 @@ class PrepareRequestCreatedDataBuilder
 
   @override
   void replace(PrepareRequestCreatedData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PrepareRequestCreatedData;
   }
 
@@ -104,7 +97,7 @@ class PrepareRequestCreatedDataBuilder
 
   _$PrepareRequestCreatedData _build() {
     final _$result = _$v ??
-        new _$PrepareRequestCreatedData._(
+        _$PrepareRequestCreatedData._(
           jwt: BuiltValueNullFieldError.checkNotNull(
               jwt, r'PrepareRequestCreatedData', 'jwt'),
           correlationId: BuiltValueNullFieldError.checkNotNull(

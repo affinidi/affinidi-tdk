@@ -16,16 +16,11 @@ class _$CreatePexQueryInput extends CreatePexQueryInput {
 
   factory _$CreatePexQueryInput(
           [void Function(CreatePexQueryInputBuilder)? updates]) =>
-      (new CreatePexQueryInputBuilder()..update(updates))._build();
+      (CreatePexQueryInputBuilder()..update(updates))._build();
 
   _$CreatePexQueryInput._(
       {required this.name, required this.vpDefinition, this.description})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'CreatePexQueryInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        vpDefinition, r'CreatePexQueryInput', 'vpDefinition');
-  }
-
+      : super._();
   @override
   CreatePexQueryInput rebuild(
           void Function(CreatePexQueryInputBuilder) updates) =>
@@ -33,7 +28,7 @@ class _$CreatePexQueryInput extends CreatePexQueryInput {
 
   @override
   CreatePexQueryInputBuilder toBuilder() =>
-      new CreatePexQueryInputBuilder()..replace(this);
+      CreatePexQueryInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -97,7 +92,6 @@ class CreatePexQueryInputBuilder
 
   @override
   void replace(CreatePexQueryInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreatePexQueryInput;
   }
 
@@ -111,7 +105,7 @@ class CreatePexQueryInputBuilder
 
   _$CreatePexQueryInput _build() {
     final _$result = _$v ??
-        new _$CreatePexQueryInput._(
+        _$CreatePexQueryInput._(
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'CreatePexQueryInput', 'name'),
           vpDefinition: BuiltValueNullFieldError.checkNotNull(

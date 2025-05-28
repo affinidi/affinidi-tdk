@@ -21,12 +21,12 @@ TokenEndpointAuthMethod _$valueOf(String name) {
     case 'none':
       return _$none;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<TokenEndpointAuthMethod> _$values =
-    new BuiltSet<TokenEndpointAuthMethod>(const <TokenEndpointAuthMethod>[
+    BuiltSet<TokenEndpointAuthMethod>(const <TokenEndpointAuthMethod>[
   _$clientSecretBasic,
   _$clientSecretPost,
   _$none,
@@ -48,7 +48,7 @@ abstract class _$TokenEndpointAuthMethodMixin {
 }
 
 Serializer<TokenEndpointAuthMethod> _$tokenEndpointAuthMethodSerializer =
-    new _$TokenEndpointAuthMethodSerializer();
+    _$TokenEndpointAuthMethodSerializer();
 
 class _$TokenEndpointAuthMethodSerializer
     implements PrimitiveSerializer<TokenEndpointAuthMethod> {

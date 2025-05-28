@@ -16,12 +16,12 @@ FlowDataStatusListsDetailsInnerStatusListPurposeEnum
     case 'REVOKED':
       return _$flowDataStatusListsDetailsInnerStatusListPurposeEnum_REVOKED;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<FlowDataStatusListsDetailsInnerStatusListPurposeEnum>
-    _$flowDataStatusListsDetailsInnerStatusListPurposeEnumValues = new BuiltSet<
+    _$flowDataStatusListsDetailsInnerStatusListPurposeEnumValues = BuiltSet<
         FlowDataStatusListsDetailsInnerStatusListPurposeEnum>(const <FlowDataStatusListsDetailsInnerStatusListPurposeEnum>[
   _$flowDataStatusListsDetailsInnerStatusListPurposeEnum_REVOKED,
 ]);
@@ -42,12 +42,12 @@ FlowDataStatusListsDetailsInnerStandardEnum
     case 'bitstringStatusListV1':
       return _$flowDataStatusListsDetailsInnerStandardEnum_bitstringStatusListV1;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<FlowDataStatusListsDetailsInnerStandardEnum>
-    _$flowDataStatusListsDetailsInnerStandardEnumValues = new BuiltSet<
+    _$flowDataStatusListsDetailsInnerStandardEnumValues = BuiltSet<
         FlowDataStatusListsDetailsInnerStandardEnum>(const <FlowDataStatusListsDetailsInnerStandardEnum>[
   _$flowDataStatusListsDetailsInnerStandardEnum_revocationList2020,
   _$flowDataStatusListsDetailsInnerStandardEnum_bitstringStatusListV1,
@@ -55,10 +55,10 @@ final BuiltSet<FlowDataStatusListsDetailsInnerStandardEnum>
 
 Serializer<FlowDataStatusListsDetailsInnerStatusListPurposeEnum>
     _$flowDataStatusListsDetailsInnerStatusListPurposeEnumSerializer =
-    new _$FlowDataStatusListsDetailsInnerStatusListPurposeEnumSerializer();
+    _$FlowDataStatusListsDetailsInnerStatusListPurposeEnumSerializer();
 Serializer<FlowDataStatusListsDetailsInnerStandardEnum>
     _$flowDataStatusListsDetailsInnerStandardEnumSerializer =
-    new _$FlowDataStatusListsDetailsInnerStandardEnumSerializer();
+    _$FlowDataStatusListsDetailsInnerStandardEnumSerializer();
 
 class _$FlowDataStatusListsDetailsInnerStatusListPurposeEnumSerializer
     implements
@@ -145,7 +145,7 @@ class _$FlowDataStatusListsDetailsInner
 
   factory _$FlowDataStatusListsDetailsInner(
           [void Function(FlowDataStatusListsDetailsInnerBuilder)? updates]) =>
-      (new FlowDataStatusListsDetailsInnerBuilder()..update(updates))._build();
+      (FlowDataStatusListsDetailsInnerBuilder()..update(updates))._build();
 
   _$FlowDataStatusListsDetailsInner._(
       {required this.statusListPurpose,
@@ -155,19 +155,7 @@ class _$FlowDataStatusListsDetailsInner
       required this.isActive,
       this.statusActivationReason,
       this.statusActivatedAt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(statusListPurpose,
-        r'FlowDataStatusListsDetailsInner', 'statusListPurpose');
-    BuiltValueNullFieldError.checkNotNull(
-        statusListId, r'FlowDataStatusListsDetailsInner', 'statusListId');
-    BuiltValueNullFieldError.checkNotNull(
-        statusListIndex, r'FlowDataStatusListsDetailsInner', 'statusListIndex');
-    BuiltValueNullFieldError.checkNotNull(
-        standard, r'FlowDataStatusListsDetailsInner', 'standard');
-    BuiltValueNullFieldError.checkNotNull(
-        isActive, r'FlowDataStatusListsDetailsInner', 'isActive');
-  }
-
+      : super._();
   @override
   FlowDataStatusListsDetailsInner rebuild(
           void Function(FlowDataStatusListsDetailsInnerBuilder) updates) =>
@@ -175,7 +163,7 @@ class _$FlowDataStatusListsDetailsInner
 
   @override
   FlowDataStatusListsDetailsInnerBuilder toBuilder() =>
-      new FlowDataStatusListsDetailsInnerBuilder()..replace(this);
+      FlowDataStatusListsDetailsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -281,7 +269,6 @@ class FlowDataStatusListsDetailsInnerBuilder
 
   @override
   void replace(FlowDataStatusListsDetailsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$FlowDataStatusListsDetailsInner;
   }
 
@@ -295,7 +282,7 @@ class FlowDataStatusListsDetailsInnerBuilder
 
   _$FlowDataStatusListsDetailsInner _build() {
     final _$result = _$v ??
-        new _$FlowDataStatusListsDetailsInner._(
+        _$FlowDataStatusListsDetailsInner._(
           statusListPurpose: BuiltValueNullFieldError.checkNotNull(
               statusListPurpose,
               r'FlowDataStatusListsDetailsInner',

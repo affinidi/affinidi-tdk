@@ -15,19 +15,19 @@ DidWebInputParamsDidMethodEnum _$didWebInputParamsDidMethodEnumValueOf(
     case 'web':
       return _$didWebInputParamsDidMethodEnum_web;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<DidWebInputParamsDidMethodEnum>
-    _$didWebInputParamsDidMethodEnumValues = new BuiltSet<
+    _$didWebInputParamsDidMethodEnumValues = BuiltSet<
         DidWebInputParamsDidMethodEnum>(const <DidWebInputParamsDidMethodEnum>[
   _$didWebInputParamsDidMethodEnum_web,
 ]);
 
 Serializer<DidWebInputParamsDidMethodEnum>
     _$didWebInputParamsDidMethodEnumSerializer =
-    new _$DidWebInputParamsDidMethodEnumSerializer();
+    _$DidWebInputParamsDidMethodEnumSerializer();
 
 class _$DidWebInputParamsDidMethodEnumSerializer
     implements PrimitiveSerializer<DidWebInputParamsDidMethodEnum> {
@@ -69,27 +69,21 @@ class _$DidWebInputParams extends DidWebInputParams {
 
   factory _$DidWebInputParams(
           [void Function(DidWebInputParamsBuilder)? updates]) =>
-      (new DidWebInputParamsBuilder()..update(updates))._build();
+      (DidWebInputParamsBuilder()..update(updates))._build();
 
   _$DidWebInputParams._(
       {this.name,
       this.description,
       required this.didMethod,
       required this.didWebUrl})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        didMethod, r'DidWebInputParams', 'didMethod');
-    BuiltValueNullFieldError.checkNotNull(
-        didWebUrl, r'DidWebInputParams', 'didWebUrl');
-  }
-
+      : super._();
   @override
   DidWebInputParams rebuild(void Function(DidWebInputParamsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   DidWebInputParamsBuilder toBuilder() =>
-      new DidWebInputParamsBuilder()..replace(this);
+      DidWebInputParamsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -162,7 +156,6 @@ class DidWebInputParamsBuilder
 
   @override
   void replace(DidWebInputParams other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DidWebInputParams;
   }
 
@@ -176,7 +169,7 @@ class DidWebInputParamsBuilder
 
   _$DidWebInputParams _build() {
     final _$result = _$v ??
-        new _$DidWebInputParams._(
+        _$DidWebInputParams._(
           name: name,
           description: description,
           didMethod: BuiltValueNullFieldError.checkNotNull(

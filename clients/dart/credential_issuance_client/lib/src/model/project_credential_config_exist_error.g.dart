@@ -17,12 +17,12 @@ ProjectCredentialConfigExistErrorNameEnum
     case 'projectCredentialConfigExistError':
       return _$projectCredentialConfigExistErrorNameEnum_projectCredentialConfigExistError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ProjectCredentialConfigExistErrorNameEnum>
-    _$projectCredentialConfigExistErrorNameEnumValues = new BuiltSet<
+    _$projectCredentialConfigExistErrorNameEnumValues = BuiltSet<
         ProjectCredentialConfigExistErrorNameEnum>(const <ProjectCredentialConfigExistErrorNameEnum>[
   _$projectCredentialConfigExistErrorNameEnum_projectCredentialConfigExistError,
 ]);
@@ -38,12 +38,12 @@ ProjectCredentialConfigExistErrorMessageEnum
     case 'credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject':
       return _$projectCredentialConfigExistErrorMessageEnum_credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ProjectCredentialConfigExistErrorMessageEnum>
-    _$projectCredentialConfigExistErrorMessageEnumValues = new BuiltSet<
+    _$projectCredentialConfigExistErrorMessageEnumValues = BuiltSet<
         ProjectCredentialConfigExistErrorMessageEnum>(const <ProjectCredentialConfigExistErrorMessageEnum>[
   _$projectCredentialConfigExistErrorMessageEnum_credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject,
 ]);
@@ -58,25 +58,25 @@ ProjectCredentialConfigExistErrorHttpStatusCodeEnum
     case 'number400':
       return _$projectCredentialConfigExistErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<ProjectCredentialConfigExistErrorHttpStatusCodeEnum>
-    _$projectCredentialConfigExistErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$projectCredentialConfigExistErrorHttpStatusCodeEnumValues = BuiltSet<
         ProjectCredentialConfigExistErrorHttpStatusCodeEnum>(const <ProjectCredentialConfigExistErrorHttpStatusCodeEnum>[
   _$projectCredentialConfigExistErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<ProjectCredentialConfigExistErrorNameEnum>
     _$projectCredentialConfigExistErrorNameEnumSerializer =
-    new _$ProjectCredentialConfigExistErrorNameEnumSerializer();
+    _$ProjectCredentialConfigExistErrorNameEnumSerializer();
 Serializer<ProjectCredentialConfigExistErrorMessageEnum>
     _$projectCredentialConfigExistErrorMessageEnumSerializer =
-    new _$ProjectCredentialConfigExistErrorMessageEnumSerializer();
+    _$ProjectCredentialConfigExistErrorMessageEnumSerializer();
 Serializer<ProjectCredentialConfigExistErrorHttpStatusCodeEnum>
     _$projectCredentialConfigExistErrorHttpStatusCodeEnumSerializer =
-    new _$ProjectCredentialConfigExistErrorHttpStatusCodeEnumSerializer();
+    _$ProjectCredentialConfigExistErrorHttpStatusCodeEnumSerializer();
 
 class _$ProjectCredentialConfigExistErrorNameEnumSerializer
     implements PrimitiveSerializer<ProjectCredentialConfigExistErrorNameEnum> {
@@ -188,8 +188,7 @@ class _$ProjectCredentialConfigExistError
 
   factory _$ProjectCredentialConfigExistError(
           [void Function(ProjectCredentialConfigExistErrorBuilder)? updates]) =>
-      (new ProjectCredentialConfigExistErrorBuilder()..update(updates))
-          ._build();
+      (ProjectCredentialConfigExistErrorBuilder()..update(updates))._build();
 
   _$ProjectCredentialConfigExistError._(
       {required this.name,
@@ -197,17 +196,7 @@ class _$ProjectCredentialConfigExistError
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'ProjectCredentialConfigExistError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'ProjectCredentialConfigExistError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'ProjectCredentialConfigExistError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'ProjectCredentialConfigExistError', 'traceId');
-  }
-
+      : super._();
   @override
   ProjectCredentialConfigExistError rebuild(
           void Function(ProjectCredentialConfigExistErrorBuilder) updates) =>
@@ -215,7 +204,7 @@ class _$ProjectCredentialConfigExistError
 
   @override
   ProjectCredentialConfigExistErrorBuilder toBuilder() =>
-      new ProjectCredentialConfigExistErrorBuilder()..replace(this);
+      ProjectCredentialConfigExistErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -282,7 +271,7 @@ class ProjectCredentialConfigExistErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -305,7 +294,6 @@ class ProjectCredentialConfigExistErrorBuilder
 
   @override
   void replace(ProjectCredentialConfigExistError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProjectCredentialConfigExistError;
   }
 
@@ -322,7 +310,7 @@ class ProjectCredentialConfigExistErrorBuilder
     _$ProjectCredentialConfigExistError _$result;
     try {
       _$result = _$v ??
-          new _$ProjectCredentialConfigExistError._(
+          _$ProjectCredentialConfigExistError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'ProjectCredentialConfigExistError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -341,7 +329,7 @@ class ProjectCredentialConfigExistErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ProjectCredentialConfigExistError', _$failedField, e.toString());
       }
       rethrow;

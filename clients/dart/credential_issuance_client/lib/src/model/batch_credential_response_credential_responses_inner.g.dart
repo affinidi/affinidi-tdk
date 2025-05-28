@@ -15,13 +15,12 @@ class _$BatchCredentialResponseCredentialResponsesInner
           [void Function(
                   BatchCredentialResponseCredentialResponsesInnerBuilder)?
               updates]) =>
-      (new BatchCredentialResponseCredentialResponsesInnerBuilder()
+      (BatchCredentialResponseCredentialResponsesInnerBuilder()
             ..update(updates))
           ._build();
 
   _$BatchCredentialResponseCredentialResponsesInner._({this.credential})
       : super._();
-
   @override
   BatchCredentialResponseCredentialResponsesInner rebuild(
           void Function(BatchCredentialResponseCredentialResponsesInnerBuilder)
@@ -30,8 +29,7 @@ class _$BatchCredentialResponseCredentialResponsesInner
 
   @override
   BatchCredentialResponseCredentialResponsesInnerBuilder toBuilder() =>
-      new BatchCredentialResponseCredentialResponsesInnerBuilder()
-        ..replace(this);
+      BatchCredentialResponseCredentialResponsesInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +80,6 @@ class BatchCredentialResponseCredentialResponsesInnerBuilder
 
   @override
   void replace(BatchCredentialResponseCredentialResponsesInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BatchCredentialResponseCredentialResponsesInner;
   }
 
@@ -98,7 +95,7 @@ class BatchCredentialResponseCredentialResponsesInnerBuilder
 
   _$BatchCredentialResponseCredentialResponsesInner _build() {
     final _$result = _$v ??
-        new _$BatchCredentialResponseCredentialResponsesInner._(
+        _$BatchCredentialResponseCredentialResponsesInner._(
           credential: credential,
         );
     replace(_$result);

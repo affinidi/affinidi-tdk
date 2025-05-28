@@ -19,16 +19,11 @@ class _$InvalidParameterErrorDetailsInner
 
   factory _$InvalidParameterErrorDetailsInner(
           [void Function(InvalidParameterErrorDetailsInnerBuilder)? updates]) =>
-      (new InvalidParameterErrorDetailsInnerBuilder()..update(updates))
-          ._build();
+      (InvalidParameterErrorDetailsInnerBuilder()..update(updates))._build();
 
   _$InvalidParameterErrorDetailsInner._(
       {required this.issue, this.field, this.value, this.location})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issue, r'InvalidParameterErrorDetailsInner', 'issue');
-  }
-
+      : super._();
   @override
   InvalidParameterErrorDetailsInner rebuild(
           void Function(InvalidParameterErrorDetailsInnerBuilder) updates) =>
@@ -36,7 +31,7 @@ class _$InvalidParameterErrorDetailsInner
 
   @override
   InvalidParameterErrorDetailsInnerBuilder toBuilder() =>
-      new InvalidParameterErrorDetailsInnerBuilder()..replace(this);
+      InvalidParameterErrorDetailsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -110,7 +105,6 @@ class InvalidParameterErrorDetailsInnerBuilder
 
   @override
   void replace(InvalidParameterErrorDetailsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidParameterErrorDetailsInner;
   }
 
@@ -125,7 +119,7 @@ class InvalidParameterErrorDetailsInnerBuilder
 
   _$InvalidParameterErrorDetailsInner _build() {
     final _$result = _$v ??
-        new _$InvalidParameterErrorDetailsInner._(
+        _$InvalidParameterErrorDetailsInner._(
           issue: BuiltValueNullFieldError.checkNotNull(
               issue, r'InvalidParameterErrorDetailsInner', 'issue'),
           field: field,

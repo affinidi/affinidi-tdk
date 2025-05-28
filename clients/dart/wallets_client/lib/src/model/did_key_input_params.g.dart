@@ -15,19 +15,19 @@ DidKeyInputParamsDidMethodEnum _$didKeyInputParamsDidMethodEnumValueOf(
     case 'key':
       return _$didKeyInputParamsDidMethodEnum_key;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<DidKeyInputParamsDidMethodEnum>
-    _$didKeyInputParamsDidMethodEnumValues = new BuiltSet<
+    _$didKeyInputParamsDidMethodEnumValues = BuiltSet<
         DidKeyInputParamsDidMethodEnum>(const <DidKeyInputParamsDidMethodEnum>[
   _$didKeyInputParamsDidMethodEnum_key,
 ]);
 
 Serializer<DidKeyInputParamsDidMethodEnum>
     _$didKeyInputParamsDidMethodEnumSerializer =
-    new _$DidKeyInputParamsDidMethodEnumSerializer();
+    _$DidKeyInputParamsDidMethodEnumSerializer();
 
 class _$DidKeyInputParamsDidMethodEnumSerializer
     implements PrimitiveSerializer<DidKeyInputParamsDidMethodEnum> {
@@ -67,18 +67,17 @@ class _$DidKeyInputParams extends DidKeyInputParams {
 
   factory _$DidKeyInputParams(
           [void Function(DidKeyInputParamsBuilder)? updates]) =>
-      (new DidKeyInputParamsBuilder()..update(updates))._build();
+      (DidKeyInputParamsBuilder()..update(updates))._build();
 
   _$DidKeyInputParams._({this.name, this.description, this.didMethod})
       : super._();
-
   @override
   DidKeyInputParams rebuild(void Function(DidKeyInputParamsBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   DidKeyInputParamsBuilder toBuilder() =>
-      new DidKeyInputParamsBuilder()..replace(this);
+      DidKeyInputParamsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -143,7 +142,6 @@ class DidKeyInputParamsBuilder
 
   @override
   void replace(DidKeyInputParams other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$DidKeyInputParams;
   }
 
@@ -157,7 +155,7 @@ class DidKeyInputParamsBuilder
 
   _$DidKeyInputParams _build() {
     final _$result = _$v ??
-        new _$DidKeyInputParams._(
+        _$DidKeyInputParams._(
           name: name,
           description: description,
           didMethod: didMethod,

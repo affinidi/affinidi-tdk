@@ -12,10 +12,9 @@ class _$CorsGetWellKnownJwksOK extends CorsGetWellKnownJwksOK {
 
   factory _$CorsGetWellKnownJwksOK(
           [void Function(CorsGetWellKnownJwksOKBuilder)? updates]) =>
-      (new CorsGetWellKnownJwksOKBuilder()..update(updates))._build();
+      (CorsGetWellKnownJwksOKBuilder()..update(updates))._build();
 
   _$CorsGetWellKnownJwksOK._({this.corsGetWellKnownJwksOk}) : super._();
-
   @override
   CorsGetWellKnownJwksOK rebuild(
           void Function(CorsGetWellKnownJwksOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsGetWellKnownJwksOK extends CorsGetWellKnownJwksOK {
 
   @override
   CorsGetWellKnownJwksOKBuilder toBuilder() =>
-      new CorsGetWellKnownJwksOKBuilder()..replace(this);
+      CorsGetWellKnownJwksOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +71,6 @@ class CorsGetWellKnownJwksOKBuilder
 
   @override
   void replace(CorsGetWellKnownJwksOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsGetWellKnownJwksOK;
   }
 
@@ -86,7 +84,7 @@ class CorsGetWellKnownJwksOKBuilder
 
   _$CorsGetWellKnownJwksOK _build() {
     final _$result = _$v ??
-        new _$CorsGetWellKnownJwksOK._(
+        _$CorsGetWellKnownJwksOK._(
           corsGetWellKnownJwksOk: corsGetWellKnownJwksOk,
         );
     replace(_$result);

@@ -12,10 +12,9 @@ class _$CorsGetCredentialOfferOK extends CorsGetCredentialOfferOK {
 
   factory _$CorsGetCredentialOfferOK(
           [void Function(CorsGetCredentialOfferOKBuilder)? updates]) =>
-      (new CorsGetCredentialOfferOKBuilder()..update(updates))._build();
+      (CorsGetCredentialOfferOKBuilder()..update(updates))._build();
 
   _$CorsGetCredentialOfferOK._({this.corsGetCredentialOfferOk}) : super._();
-
   @override
   CorsGetCredentialOfferOK rebuild(
           void Function(CorsGetCredentialOfferOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsGetCredentialOfferOK extends CorsGetCredentialOfferOK {
 
   @override
   CorsGetCredentialOfferOKBuilder toBuilder() =>
-      new CorsGetCredentialOfferOKBuilder()..replace(this);
+      CorsGetCredentialOfferOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class CorsGetCredentialOfferOKBuilder
 
   @override
   void replace(CorsGetCredentialOfferOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsGetCredentialOfferOK;
   }
 
@@ -87,7 +85,7 @@ class CorsGetCredentialOfferOKBuilder
 
   _$CorsGetCredentialOfferOK _build() {
     final _$result = _$v ??
-        new _$CorsGetCredentialOfferOK._(
+        _$CorsGetCredentialOfferOK._(
           corsGetCredentialOfferOk: corsGetCredentialOfferOk,
         );
     replace(_$result);

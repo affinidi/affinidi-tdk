@@ -13,19 +13,15 @@ class _$SignJwtToken extends SignJwtToken {
   final JsonObject payload;
 
   factory _$SignJwtToken([void Function(SignJwtTokenBuilder)? updates]) =>
-      (new SignJwtTokenBuilder()..update(updates))._build();
+      (SignJwtTokenBuilder()..update(updates))._build();
 
-  _$SignJwtToken._({required this.header, required this.payload}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(header, r'SignJwtToken', 'header');
-    BuiltValueNullFieldError.checkNotNull(payload, r'SignJwtToken', 'payload');
-  }
-
+  _$SignJwtToken._({required this.header, required this.payload}) : super._();
   @override
   SignJwtToken rebuild(void Function(SignJwtTokenBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  SignJwtTokenBuilder toBuilder() => new SignJwtTokenBuilder()..replace(this);
+  SignJwtTokenBuilder toBuilder() => SignJwtTokenBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +77,6 @@ class SignJwtTokenBuilder
 
   @override
   void replace(SignJwtToken other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignJwtToken;
   }
 
@@ -95,7 +90,7 @@ class SignJwtTokenBuilder
 
   _$SignJwtToken _build() {
     final _$result = _$v ??
-        new _$SignJwtToken._(
+        _$SignJwtToken._(
           header: BuiltValueNullFieldError.checkNotNull(
               header, r'SignJwtToken', 'header'),
           payload: BuiltValueNullFieldError.checkNotNull(

@@ -18,15 +18,11 @@ class _$NotFoundErrorDetailsInner extends NotFoundErrorDetailsInner {
 
   factory _$NotFoundErrorDetailsInner(
           [void Function(NotFoundErrorDetailsInnerBuilder)? updates]) =>
-      (new NotFoundErrorDetailsInnerBuilder()..update(updates))._build();
+      (NotFoundErrorDetailsInnerBuilder()..update(updates))._build();
 
   _$NotFoundErrorDetailsInner._(
       {required this.issue, this.field, this.value, this.location})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        issue, r'NotFoundErrorDetailsInner', 'issue');
-  }
-
+      : super._();
   @override
   NotFoundErrorDetailsInner rebuild(
           void Function(NotFoundErrorDetailsInnerBuilder) updates) =>
@@ -34,7 +30,7 @@ class _$NotFoundErrorDetailsInner extends NotFoundErrorDetailsInner {
 
   @override
   NotFoundErrorDetailsInnerBuilder toBuilder() =>
-      new NotFoundErrorDetailsInnerBuilder()..replace(this);
+      NotFoundErrorDetailsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,7 +103,6 @@ class NotFoundErrorDetailsInnerBuilder
 
   @override
   void replace(NotFoundErrorDetailsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$NotFoundErrorDetailsInner;
   }
 
@@ -121,7 +116,7 @@ class NotFoundErrorDetailsInnerBuilder
 
   _$NotFoundErrorDetailsInner _build() {
     final _$result = _$v ??
-        new _$NotFoundErrorDetailsInner._(
+        _$NotFoundErrorDetailsInner._(
           issue: BuiltValueNullFieldError.checkNotNull(
               issue, r'NotFoundErrorDetailsInner', 'issue'),
           field: field,

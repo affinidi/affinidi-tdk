@@ -14,17 +14,16 @@ class _$UpdateTokenInput extends UpdateTokenInput {
 
   factory _$UpdateTokenInput(
           [void Function(UpdateTokenInputBuilder)? updates]) =>
-      (new UpdateTokenInputBuilder()..update(updates))._build();
+      (UpdateTokenInputBuilder()..update(updates))._build();
 
   _$UpdateTokenInput._({this.name, this.authenticationMethod}) : super._();
-
   @override
   UpdateTokenInput rebuild(void Function(UpdateTokenInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   UpdateTokenInputBuilder toBuilder() =>
-      new UpdateTokenInputBuilder()..replace(this);
+      UpdateTokenInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -63,7 +62,7 @@ class UpdateTokenInputBuilder
   UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder? _authenticationMethod;
   UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder
       get authenticationMethod => _$this._authenticationMethod ??=
-          new UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder();
+          UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder();
   set authenticationMethod(
           UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder?
               authenticationMethod) =>
@@ -85,7 +84,6 @@ class UpdateTokenInputBuilder
 
   @override
   void replace(UpdateTokenInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateTokenInput;
   }
 
@@ -101,7 +99,7 @@ class UpdateTokenInputBuilder
     _$UpdateTokenInput _$result;
     try {
       _$result = _$v ??
-          new _$UpdateTokenInput._(
+          _$UpdateTokenInput._(
             name: name,
             authenticationMethod: _authenticationMethod?.build(),
           );
@@ -111,7 +109,7 @@ class UpdateTokenInputBuilder
         _$failedField = 'authenticationMethod';
         _authenticationMethod?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UpdateTokenInput', _$failedField, e.toString());
       }
       rethrow;

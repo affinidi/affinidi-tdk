@@ -14,17 +14,11 @@ class _$AddUserToProjectInput extends AddUserToProjectInput {
 
   factory _$AddUserToProjectInput(
           [void Function(AddUserToProjectInputBuilder)? updates]) =>
-      (new AddUserToProjectInputBuilder()..update(updates))._build();
+      (AddUserToProjectInputBuilder()..update(updates))._build();
 
   _$AddUserToProjectInput._(
       {required this.principalId, required this.principalType})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        principalId, r'AddUserToProjectInput', 'principalId');
-    BuiltValueNullFieldError.checkNotNull(
-        principalType, r'AddUserToProjectInput', 'principalType');
-  }
-
+      : super._();
   @override
   AddUserToProjectInput rebuild(
           void Function(AddUserToProjectInputBuilder) updates) =>
@@ -32,7 +26,7 @@ class _$AddUserToProjectInput extends AddUserToProjectInput {
 
   @override
   AddUserToProjectInputBuilder toBuilder() =>
-      new AddUserToProjectInputBuilder()..replace(this);
+      AddUserToProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -89,7 +83,6 @@ class AddUserToProjectInputBuilder
 
   @override
   void replace(AddUserToProjectInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AddUserToProjectInput;
   }
 
@@ -103,7 +96,7 @@ class AddUserToProjectInputBuilder
 
   _$AddUserToProjectInput _build() {
     final _$result = _$v ??
-        new _$AddUserToProjectInput._(
+        _$AddUserToProjectInput._(
           principalId: BuiltValueNullFieldError.checkNotNull(
               principalId, r'AddUserToProjectInput', 'principalId'),
           principalType: BuiltValueNullFieldError.checkNotNull(

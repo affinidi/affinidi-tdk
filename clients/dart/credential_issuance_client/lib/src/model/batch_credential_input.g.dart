@@ -13,13 +13,9 @@ class _$BatchCredentialInput extends BatchCredentialInput {
 
   factory _$BatchCredentialInput(
           [void Function(BatchCredentialInputBuilder)? updates]) =>
-      (new BatchCredentialInputBuilder()..update(updates))._build();
+      (BatchCredentialInputBuilder()..update(updates))._build();
 
-  _$BatchCredentialInput._({required this.credentialRequests}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        credentialRequests, r'BatchCredentialInput', 'credentialRequests');
-  }
-
+  _$BatchCredentialInput._({required this.credentialRequests}) : super._();
   @override
   BatchCredentialInput rebuild(
           void Function(BatchCredentialInputBuilder) updates) =>
@@ -27,7 +23,7 @@ class _$BatchCredentialInput extends BatchCredentialInput {
 
   @override
   BatchCredentialInputBuilder toBuilder() =>
-      new BatchCredentialInputBuilder()..replace(this);
+      BatchCredentialInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -59,7 +55,7 @@ class BatchCredentialInputBuilder
   ListBuilder<BatchCredentialInputCredentialRequestsInner>? _credentialRequests;
   ListBuilder<BatchCredentialInputCredentialRequestsInner>
       get credentialRequests => _$this._credentialRequests ??=
-          new ListBuilder<BatchCredentialInputCredentialRequestsInner>();
+          ListBuilder<BatchCredentialInputCredentialRequestsInner>();
   set credentialRequests(
           ListBuilder<BatchCredentialInputCredentialRequestsInner>?
               credentialRequests) =>
@@ -80,7 +76,6 @@ class BatchCredentialInputBuilder
 
   @override
   void replace(BatchCredentialInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BatchCredentialInput;
   }
 
@@ -96,7 +91,7 @@ class BatchCredentialInputBuilder
     _$BatchCredentialInput _$result;
     try {
       _$result = _$v ??
-          new _$BatchCredentialInput._(
+          _$BatchCredentialInput._(
             credentialRequests: credentialRequests.build(),
           );
     } catch (_) {
@@ -105,7 +100,7 @@ class BatchCredentialInputBuilder
         _$failedField = 'credentialRequests';
         credentialRequests.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'BatchCredentialInput', _$failedField, e.toString());
       }
       rethrow;

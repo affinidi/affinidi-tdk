@@ -17,12 +17,12 @@ InvalidCredentialRequestErrorNameEnum
     case 'invalidCredentialRequestError':
       return _$invalidCredentialRequestErrorNameEnum_invalidCredentialRequestError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidCredentialRequestErrorNameEnum>
-    _$invalidCredentialRequestErrorNameEnumValues = new BuiltSet<
+    _$invalidCredentialRequestErrorNameEnumValues = BuiltSet<
         InvalidCredentialRequestErrorNameEnum>(const <InvalidCredentialRequestErrorNameEnum>[
   _$invalidCredentialRequestErrorNameEnum_invalidCredentialRequestError,
 ]);
@@ -38,12 +38,12 @@ InvalidCredentialRequestErrorMessageEnum
     case 'credentialRequestIsInvalid':
       return _$invalidCredentialRequestErrorMessageEnum_credentialRequestIsInvalid;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidCredentialRequestErrorMessageEnum>
-    _$invalidCredentialRequestErrorMessageEnumValues = new BuiltSet<
+    _$invalidCredentialRequestErrorMessageEnumValues = BuiltSet<
         InvalidCredentialRequestErrorMessageEnum>(const <InvalidCredentialRequestErrorMessageEnum>[
   _$invalidCredentialRequestErrorMessageEnum_credentialRequestIsInvalid,
 ]);
@@ -58,25 +58,25 @@ InvalidCredentialRequestErrorHttpStatusCodeEnum
     case 'number400':
       return _$invalidCredentialRequestErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidCredentialRequestErrorHttpStatusCodeEnum>
-    _$invalidCredentialRequestErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$invalidCredentialRequestErrorHttpStatusCodeEnumValues = BuiltSet<
         InvalidCredentialRequestErrorHttpStatusCodeEnum>(const <InvalidCredentialRequestErrorHttpStatusCodeEnum>[
   _$invalidCredentialRequestErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidCredentialRequestErrorNameEnum>
     _$invalidCredentialRequestErrorNameEnumSerializer =
-    new _$InvalidCredentialRequestErrorNameEnumSerializer();
+    _$InvalidCredentialRequestErrorNameEnumSerializer();
 Serializer<InvalidCredentialRequestErrorMessageEnum>
     _$invalidCredentialRequestErrorMessageEnumSerializer =
-    new _$InvalidCredentialRequestErrorMessageEnumSerializer();
+    _$InvalidCredentialRequestErrorMessageEnumSerializer();
 Serializer<InvalidCredentialRequestErrorHttpStatusCodeEnum>
     _$invalidCredentialRequestErrorHttpStatusCodeEnumSerializer =
-    new _$InvalidCredentialRequestErrorHttpStatusCodeEnumSerializer();
+    _$InvalidCredentialRequestErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidCredentialRequestErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidCredentialRequestErrorNameEnum> {
@@ -183,7 +183,7 @@ class _$InvalidCredentialRequestError extends InvalidCredentialRequestError {
 
   factory _$InvalidCredentialRequestError(
           [void Function(InvalidCredentialRequestErrorBuilder)? updates]) =>
-      (new InvalidCredentialRequestErrorBuilder()..update(updates))._build();
+      (InvalidCredentialRequestErrorBuilder()..update(updates))._build();
 
   _$InvalidCredentialRequestError._(
       {required this.name,
@@ -191,17 +191,7 @@ class _$InvalidCredentialRequestError extends InvalidCredentialRequestError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'InvalidCredentialRequestError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'InvalidCredentialRequestError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'InvalidCredentialRequestError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'InvalidCredentialRequestError', 'traceId');
-  }
-
+      : super._();
   @override
   InvalidCredentialRequestError rebuild(
           void Function(InvalidCredentialRequestErrorBuilder) updates) =>
@@ -209,7 +199,7 @@ class _$InvalidCredentialRequestError extends InvalidCredentialRequestError {
 
   @override
   InvalidCredentialRequestErrorBuilder toBuilder() =>
-      new InvalidCredentialRequestErrorBuilder()..replace(this);
+      InvalidCredentialRequestErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -274,7 +264,7 @@ class InvalidCredentialRequestErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -297,7 +287,6 @@ class InvalidCredentialRequestErrorBuilder
 
   @override
   void replace(InvalidCredentialRequestError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidCredentialRequestError;
   }
 
@@ -313,7 +302,7 @@ class InvalidCredentialRequestErrorBuilder
     _$InvalidCredentialRequestError _$result;
     try {
       _$result = _$v ??
-          new _$InvalidCredentialRequestError._(
+          _$InvalidCredentialRequestError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidCredentialRequestError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -332,7 +321,7 @@ class InvalidCredentialRequestErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InvalidCredentialRequestError', _$failedField, e.toString());
       }
       rethrow;
