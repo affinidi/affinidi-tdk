@@ -16,19 +16,13 @@ class _$IdTokenMappingItem extends IdTokenMappingItem {
 
   factory _$IdTokenMappingItem(
           [void Function(IdTokenMappingItemBuilder)? updates]) =>
-      (new IdTokenMappingItemBuilder()..update(updates))._build();
+      (IdTokenMappingItemBuilder()..update(updates))._build();
 
   _$IdTokenMappingItem._(
       {required this.sourceField,
       required this.idTokenClaim,
       this.inputDescriptorId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        sourceField, r'IdTokenMappingItem', 'sourceField');
-    BuiltValueNullFieldError.checkNotNull(
-        idTokenClaim, r'IdTokenMappingItem', 'idTokenClaim');
-  }
-
+      : super._();
   @override
   IdTokenMappingItem rebuild(
           void Function(IdTokenMappingItemBuilder) updates) =>
@@ -36,7 +30,7 @@ class _$IdTokenMappingItem extends IdTokenMappingItem {
 
   @override
   IdTokenMappingItemBuilder toBuilder() =>
-      new IdTokenMappingItemBuilder()..replace(this);
+      IdTokenMappingItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -101,7 +95,6 @@ class IdTokenMappingItemBuilder
 
   @override
   void replace(IdTokenMappingItem other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IdTokenMappingItem;
   }
 
@@ -115,7 +108,7 @@ class IdTokenMappingItemBuilder
 
   _$IdTokenMappingItem _build() {
     final _$result = _$v ??
-        new _$IdTokenMappingItem._(
+        _$IdTokenMappingItem._(
           sourceField: BuiltValueNullFieldError.checkNotNull(
               sourceField, r'IdTokenMappingItem', 'sourceField'),
           idTokenClaim: BuiltValueNullFieldError.checkNotNull(

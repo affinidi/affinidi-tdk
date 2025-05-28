@@ -12,10 +12,9 @@ class _$CorsLoginSessionForIdpOK extends CorsLoginSessionForIdpOK {
 
   factory _$CorsLoginSessionForIdpOK(
           [void Function(CorsLoginSessionForIdpOKBuilder)? updates]) =>
-      (new CorsLoginSessionForIdpOKBuilder()..update(updates))._build();
+      (CorsLoginSessionForIdpOKBuilder()..update(updates))._build();
 
   _$CorsLoginSessionForIdpOK._({this.corsLoginSessionForIdpOk}) : super._();
-
   @override
   CorsLoginSessionForIdpOK rebuild(
           void Function(CorsLoginSessionForIdpOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$CorsLoginSessionForIdpOK extends CorsLoginSessionForIdpOK {
 
   @override
   CorsLoginSessionForIdpOKBuilder toBuilder() =>
-      new CorsLoginSessionForIdpOKBuilder()..replace(this);
+      CorsLoginSessionForIdpOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +72,6 @@ class CorsLoginSessionForIdpOKBuilder
 
   @override
   void replace(CorsLoginSessionForIdpOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsLoginSessionForIdpOK;
   }
 
@@ -87,7 +85,7 @@ class CorsLoginSessionForIdpOKBuilder
 
   _$CorsLoginSessionForIdpOK _build() {
     final _$result = _$v ??
-        new _$CorsLoginSessionForIdpOK._(
+        _$CorsLoginSessionForIdpOK._(
           corsLoginSessionForIdpOk: corsLoginSessionForIdpOk,
         );
     replace(_$result);

@@ -14,16 +14,10 @@ class _$UpdateProfileDataInput extends UpdateProfileDataInput {
 
   factory _$UpdateProfileDataInput(
           [void Function(UpdateProfileDataInputBuilder)? updates]) =>
-      (new UpdateProfileDataInputBuilder()..update(updates))._build();
+      (UpdateProfileDataInputBuilder()..update(updates))._build();
 
   _$UpdateProfileDataInput._({required this.dek, required this.data})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        dek, r'UpdateProfileDataInput', 'dek');
-    BuiltValueNullFieldError.checkNotNull(
-        data, r'UpdateProfileDataInput', 'data');
-  }
-
+      : super._();
   @override
   UpdateProfileDataInput rebuild(
           void Function(UpdateProfileDataInputBuilder) updates) =>
@@ -31,7 +25,7 @@ class _$UpdateProfileDataInput extends UpdateProfileDataInput {
 
   @override
   UpdateProfileDataInputBuilder toBuilder() =>
-      new UpdateProfileDataInputBuilder()..replace(this);
+      UpdateProfileDataInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -87,7 +81,6 @@ class UpdateProfileDataInputBuilder
 
   @override
   void replace(UpdateProfileDataInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateProfileDataInput;
   }
 
@@ -101,7 +94,7 @@ class UpdateProfileDataInputBuilder
 
   _$UpdateProfileDataInput _build() {
     final _$result = _$v ??
-        new _$UpdateProfileDataInput._(
+        _$UpdateProfileDataInput._(
           dek: BuiltValueNullFieldError.checkNotNull(
               dek, r'UpdateProfileDataInput', 'dek'),
           data: BuiltValueNullFieldError.checkNotNull(

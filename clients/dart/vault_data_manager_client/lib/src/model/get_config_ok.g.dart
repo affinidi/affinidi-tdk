@@ -13,22 +13,16 @@ class _$GetConfigOK extends GetConfigOK {
   final int maximumProfiles;
 
   factory _$GetConfigOK([void Function(GetConfigOKBuilder)? updates]) =>
-      (new GetConfigOKBuilder()..update(updates))._build();
+      (GetConfigOKBuilder()..update(updates))._build();
 
   _$GetConfigOK._({required this.profileName, required this.maximumProfiles})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        profileName, r'GetConfigOK', 'profileName');
-    BuiltValueNullFieldError.checkNotNull(
-        maximumProfiles, r'GetConfigOK', 'maximumProfiles');
-  }
-
+      : super._();
   @override
   GetConfigOK rebuild(void Function(GetConfigOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GetConfigOKBuilder toBuilder() => new GetConfigOKBuilder()..replace(this);
+  GetConfigOKBuilder toBuilder() => GetConfigOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -84,7 +78,6 @@ class GetConfigOKBuilder implements Builder<GetConfigOK, GetConfigOKBuilder> {
 
   @override
   void replace(GetConfigOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetConfigOK;
   }
 
@@ -98,7 +91,7 @@ class GetConfigOKBuilder implements Builder<GetConfigOK, GetConfigOKBuilder> {
 
   _$GetConfigOK _build() {
     final _$result = _$v ??
-        new _$GetConfigOK._(
+        _$GetConfigOK._(
           profileName: BuiltValueNullFieldError.checkNotNull(
               profileName, r'GetConfigOK', 'profileName'),
           maximumProfiles: BuiltValueNullFieldError.checkNotNull(

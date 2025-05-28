@@ -24,13 +24,13 @@ WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum
     case 'urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode':
       return _$wellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum_urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>
     _$wellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnumValues =
-    new BuiltSet<
+    BuiltSet<
         WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>(const <WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>[
   _$wellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum_authorizationCode,
   _$wellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum_urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode,
@@ -48,13 +48,13 @@ WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum
     case 'openid':
       return _$wellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum_openid;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>
     _$wellKnownOpenIdCredentialIssuerResponseScopesSupportedEnumValues =
-    new BuiltSet<
+    BuiltSet<
         WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>(const <WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>[
   _$wellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum_openid,
 ]);
@@ -83,14 +83,14 @@ WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum
     case 'none':
       return _$wellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum_none;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<
         WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>
     _$wellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnumValues =
-    new BuiltSet<
+    BuiltSet<
         WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>(const <WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>[
   _$wellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum_clientSecretPost,
   _$wellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum_clientSecretBasic,
@@ -99,14 +99,14 @@ final BuiltSet<
 
 Serializer<WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>
     _$wellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnumSerializer =
-    new _$WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnumSerializer();
+    _$WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnumSerializer();
 Serializer<WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>
     _$wellKnownOpenIdCredentialIssuerResponseScopesSupportedEnumSerializer =
-    new _$WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnumSerializer();
+    _$WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnumSerializer();
 Serializer<
         WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>
     _$wellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnumSerializer =
-    new _$WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnumSerializer();
+    _$WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnumSerializer();
 
 class _$WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnumSerializer
     implements
@@ -253,7 +253,7 @@ class _$WellKnownOpenIdCredentialIssuerResponse
   factory _$WellKnownOpenIdCredentialIssuerResponse(
           [void Function(WellKnownOpenIdCredentialIssuerResponseBuilder)?
               updates]) =>
-      (new WellKnownOpenIdCredentialIssuerResponseBuilder()..update(updates))
+      (WellKnownOpenIdCredentialIssuerResponseBuilder()..update(updates))
           ._build();
 
   _$WellKnownOpenIdCredentialIssuerResponse._(
@@ -269,7 +269,6 @@ class _$WellKnownOpenIdCredentialIssuerResponse
       this.tokenEndpoint,
       this.tokenEndpointAuthMethodsSupported})
       : super._();
-
   @override
   WellKnownOpenIdCredentialIssuerResponse rebuild(
           void Function(WellKnownOpenIdCredentialIssuerResponseBuilder)
@@ -278,7 +277,7 @@ class _$WellKnownOpenIdCredentialIssuerResponse
 
   @override
   WellKnownOpenIdCredentialIssuerResponseBuilder toBuilder() =>
-      new WellKnownOpenIdCredentialIssuerResponseBuilder()..replace(this);
+      WellKnownOpenIdCredentialIssuerResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -365,9 +364,8 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>?
       _credentialsSupported;
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>
-      get credentialsSupported =>
-          _$this._credentialsSupported ??= new ListBuilder<
-              WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>();
+      get credentialsSupported => _$this._credentialsSupported ??= ListBuilder<
+          WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>();
   set credentialsSupported(
           ListBuilder<
                   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>?
@@ -382,9 +380,8 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>?
       _grantTypesSupported;
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>
-      get grantTypesSupported =>
-          _$this._grantTypesSupported ??= new ListBuilder<
-              WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>();
+      get grantTypesSupported => _$this._grantTypesSupported ??= ListBuilder<
+          WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>();
   set grantTypesSupported(
           ListBuilder<
                   WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>?
@@ -398,7 +395,7 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>?
       _scopesSupported;
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>
-      get scopesSupported => _$this._scopesSupported ??= new ListBuilder<
+      get scopesSupported => _$this._scopesSupported ??= ListBuilder<
           WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>();
   set scopesSupported(
           ListBuilder<
@@ -417,7 +414,7 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
   ListBuilder<
           WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>
       get tokenEndpointAuthMethodsSupported =>
-          _$this._tokenEndpointAuthMethodsSupported ??= new ListBuilder<
+          _$this._tokenEndpointAuthMethodsSupported ??= ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>();
   set tokenEndpointAuthMethodsSupported(
           ListBuilder<
@@ -452,7 +449,6 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
 
   @override
   void replace(WellKnownOpenIdCredentialIssuerResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$WellKnownOpenIdCredentialIssuerResponse;
   }
 
@@ -469,7 +465,7 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
     _$WellKnownOpenIdCredentialIssuerResponse _$result;
     try {
       _$result = _$v ??
-          new _$WellKnownOpenIdCredentialIssuerResponse._(
+          _$WellKnownOpenIdCredentialIssuerResponse._(
             authorizationEndpoint: authorizationEndpoint,
             credentialEndpoint: credentialEndpoint,
             credentialIssuer: credentialIssuer,
@@ -498,7 +494,7 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
         _$failedField = 'tokenEndpointAuthMethodsSupported';
         _tokenEndpointAuthMethodsSupported?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'WellKnownOpenIdCredentialIssuerResponse',
             _$failedField,
             e.toString());

@@ -12,11 +12,10 @@ class _$CorsRestoreNodeFromTrashbinOK extends CorsRestoreNodeFromTrashbinOK {
 
   factory _$CorsRestoreNodeFromTrashbinOK(
           [void Function(CorsRestoreNodeFromTrashbinOKBuilder)? updates]) =>
-      (new CorsRestoreNodeFromTrashbinOKBuilder()..update(updates))._build();
+      (CorsRestoreNodeFromTrashbinOKBuilder()..update(updates))._build();
 
   _$CorsRestoreNodeFromTrashbinOK._({this.corsRestoreNodeFromTrashbinOk})
       : super._();
-
   @override
   CorsRestoreNodeFromTrashbinOK rebuild(
           void Function(CorsRestoreNodeFromTrashbinOKBuilder) updates) =>
@@ -24,7 +23,7 @@ class _$CorsRestoreNodeFromTrashbinOK extends CorsRestoreNodeFromTrashbinOK {
 
   @override
   CorsRestoreNodeFromTrashbinOKBuilder toBuilder() =>
-      new CorsRestoreNodeFromTrashbinOKBuilder()..replace(this);
+      CorsRestoreNodeFromTrashbinOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,7 +75,6 @@ class CorsRestoreNodeFromTrashbinOKBuilder
 
   @override
   void replace(CorsRestoreNodeFromTrashbinOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsRestoreNodeFromTrashbinOK;
   }
 
@@ -90,7 +88,7 @@ class CorsRestoreNodeFromTrashbinOKBuilder
 
   _$CorsRestoreNodeFromTrashbinOK _build() {
     final _$result = _$v ??
-        new _$CorsRestoreNodeFromTrashbinOK._(
+        _$CorsRestoreNodeFromTrashbinOK._(
           corsRestoreNodeFromTrashbinOk: corsRestoreNodeFromTrashbinOk,
         );
     replace(_$result);

@@ -22,7 +22,7 @@ class _$CreateAccountInput extends CreateAccountInput {
 
   factory _$CreateAccountInput(
           [void Function(CreateAccountInputBuilder)? updates]) =>
-      (new CreateAccountInputBuilder()..update(updates))._build();
+      (CreateAccountInputBuilder()..update(updates))._build();
 
   _$CreateAccountInput._(
       {required this.accountIndex,
@@ -31,15 +31,7 @@ class _$CreateAccountInput extends CreateAccountInput {
       this.alias,
       this.metadata,
       this.description})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        accountIndex, r'CreateAccountInput', 'accountIndex');
-    BuiltValueNullFieldError.checkNotNull(
-        accountDid, r'CreateAccountInput', 'accountDid');
-    BuiltValueNullFieldError.checkNotNull(
-        didProof, r'CreateAccountInput', 'didProof');
-  }
-
+      : super._();
   @override
   CreateAccountInput rebuild(
           void Function(CreateAccountInputBuilder) updates) =>
@@ -47,7 +39,7 @@ class _$CreateAccountInput extends CreateAccountInput {
 
   @override
   CreateAccountInputBuilder toBuilder() =>
-      new CreateAccountInputBuilder()..replace(this);
+      CreateAccountInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -135,7 +127,6 @@ class CreateAccountInputBuilder
 
   @override
   void replace(CreateAccountInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateAccountInput;
   }
 
@@ -149,7 +140,7 @@ class CreateAccountInputBuilder
 
   _$CreateAccountInput _build() {
     final _$result = _$v ??
-        new _$CreateAccountInput._(
+        _$CreateAccountInput._(
           accountIndex: BuiltValueNullFieldError.checkNotNull(
               accountIndex, r'CreateAccountInput', 'accountIndex'),
           accountDid: BuiltValueNullFieldError.checkNotNull(

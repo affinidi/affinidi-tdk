@@ -16,12 +16,12 @@ CredentialOfferClaimedErrorNameEnum
     case 'credentialOfferClaimedError':
       return _$credentialOfferClaimedErrorNameEnum_credentialOfferClaimedError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CredentialOfferClaimedErrorNameEnum>
-    _$credentialOfferClaimedErrorNameEnumValues = new BuiltSet<
+    _$credentialOfferClaimedErrorNameEnumValues = BuiltSet<
         CredentialOfferClaimedErrorNameEnum>(const <CredentialOfferClaimedErrorNameEnum>[
   _$credentialOfferClaimedErrorNameEnum_credentialOfferClaimedError,
 ]);
@@ -37,12 +37,12 @@ CredentialOfferClaimedErrorMessageEnum
     case 'credentialOfferIsAlreadyClaimed':
       return _$credentialOfferClaimedErrorMessageEnum_credentialOfferIsAlreadyClaimed;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CredentialOfferClaimedErrorMessageEnum>
-    _$credentialOfferClaimedErrorMessageEnumValues = new BuiltSet<
+    _$credentialOfferClaimedErrorMessageEnumValues = BuiltSet<
         CredentialOfferClaimedErrorMessageEnum>(const <CredentialOfferClaimedErrorMessageEnum>[
   _$credentialOfferClaimedErrorMessageEnum_credentialOfferIsAlreadyClaimed,
 ]);
@@ -57,25 +57,25 @@ CredentialOfferClaimedErrorHttpStatusCodeEnum
     case 'number400':
       return _$credentialOfferClaimedErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CredentialOfferClaimedErrorHttpStatusCodeEnum>
-    _$credentialOfferClaimedErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$credentialOfferClaimedErrorHttpStatusCodeEnumValues = BuiltSet<
         CredentialOfferClaimedErrorHttpStatusCodeEnum>(const <CredentialOfferClaimedErrorHttpStatusCodeEnum>[
   _$credentialOfferClaimedErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<CredentialOfferClaimedErrorNameEnum>
     _$credentialOfferClaimedErrorNameEnumSerializer =
-    new _$CredentialOfferClaimedErrorNameEnumSerializer();
+    _$CredentialOfferClaimedErrorNameEnumSerializer();
 Serializer<CredentialOfferClaimedErrorMessageEnum>
     _$credentialOfferClaimedErrorMessageEnumSerializer =
-    new _$CredentialOfferClaimedErrorMessageEnumSerializer();
+    _$CredentialOfferClaimedErrorMessageEnumSerializer();
 Serializer<CredentialOfferClaimedErrorHttpStatusCodeEnum>
     _$credentialOfferClaimedErrorHttpStatusCodeEnumSerializer =
-    new _$CredentialOfferClaimedErrorHttpStatusCodeEnumSerializer();
+    _$CredentialOfferClaimedErrorHttpStatusCodeEnumSerializer();
 
 class _$CredentialOfferClaimedErrorNameEnumSerializer
     implements PrimitiveSerializer<CredentialOfferClaimedErrorNameEnum> {
@@ -182,7 +182,7 @@ class _$CredentialOfferClaimedError extends CredentialOfferClaimedError {
 
   factory _$CredentialOfferClaimedError(
           [void Function(CredentialOfferClaimedErrorBuilder)? updates]) =>
-      (new CredentialOfferClaimedErrorBuilder()..update(updates))._build();
+      (CredentialOfferClaimedErrorBuilder()..update(updates))._build();
 
   _$CredentialOfferClaimedError._(
       {required this.name,
@@ -190,17 +190,7 @@ class _$CredentialOfferClaimedError extends CredentialOfferClaimedError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'CredentialOfferClaimedError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CredentialOfferClaimedError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'CredentialOfferClaimedError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'CredentialOfferClaimedError', 'traceId');
-  }
-
+      : super._();
   @override
   CredentialOfferClaimedError rebuild(
           void Function(CredentialOfferClaimedErrorBuilder) updates) =>
@@ -208,7 +198,7 @@ class _$CredentialOfferClaimedError extends CredentialOfferClaimedError {
 
   @override
   CredentialOfferClaimedErrorBuilder toBuilder() =>
-      new CredentialOfferClaimedErrorBuilder()..replace(this);
+      CredentialOfferClaimedErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -273,7 +263,7 @@ class CredentialOfferClaimedErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -296,7 +286,6 @@ class CredentialOfferClaimedErrorBuilder
 
   @override
   void replace(CredentialOfferClaimedError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialOfferClaimedError;
   }
 
@@ -312,7 +301,7 @@ class CredentialOfferClaimedErrorBuilder
     _$CredentialOfferClaimedError _$result;
     try {
       _$result = _$v ??
-          new _$CredentialOfferClaimedError._(
+          _$CredentialOfferClaimedError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'CredentialOfferClaimedError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -331,7 +320,7 @@ class CredentialOfferClaimedErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CredentialOfferClaimedError', _$failedField, e.toString());
       }
       rethrow;

@@ -19,7 +19,7 @@ class _$AccountDto extends AccountDto {
   final String? description;
 
   factory _$AccountDto([void Function(AccountDtoBuilder)? updates]) =>
-      (new AccountDtoBuilder()..update(updates))._build();
+      (AccountDtoBuilder()..update(updates))._build();
 
   _$AccountDto._(
       {required this.accountIndex,
@@ -27,19 +27,13 @@ class _$AccountDto extends AccountDto {
       this.alias,
       this.metadata,
       this.description})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        accountIndex, r'AccountDto', 'accountIndex');
-    BuiltValueNullFieldError.checkNotNull(
-        accountDid, r'AccountDto', 'accountDid');
-  }
-
+      : super._();
   @override
   AccountDto rebuild(void Function(AccountDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  AccountDtoBuilder toBuilder() => new AccountDtoBuilder()..replace(this);
+  AccountDtoBuilder toBuilder() => AccountDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -118,7 +112,6 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
 
   @override
   void replace(AccountDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AccountDto;
   }
 
@@ -132,7 +125,7 @@ class AccountDtoBuilder implements Builder<AccountDto, AccountDtoBuilder> {
 
   _$AccountDto _build() {
     final _$result = _$v ??
-        new _$AccountDto._(
+        _$AccountDto._(
           accountIndex: BuiltValueNullFieldError.checkNotNull(
               accountIndex, r'AccountDto', 'accountIndex'),
           accountDid: BuiltValueNullFieldError.checkNotNull(

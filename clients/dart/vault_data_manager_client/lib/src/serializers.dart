@@ -21,6 +21,7 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_aws_creden
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_delete_account_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_delete_node_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_config_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_configuration_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_scanned_file_info_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_well_known_jwks_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_init_nodes_ok.dart';
@@ -80,6 +81,7 @@ part 'serializers.g.dart';
   CorsDeleteAccountOK,
   CorsDeleteNodeOK,
   CorsGetConfigOK,
+  CorsGetConfigurationOK,
   CorsGetScannedFileInfoOK,
   CorsGetWellKnownJwksOK,
   CorsInitNodesOK,

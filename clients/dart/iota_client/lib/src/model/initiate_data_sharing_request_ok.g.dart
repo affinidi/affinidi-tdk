@@ -12,10 +12,9 @@ class _$InitiateDataSharingRequestOK extends InitiateDataSharingRequestOK {
 
   factory _$InitiateDataSharingRequestOK(
           [void Function(InitiateDataSharingRequestOKBuilder)? updates]) =>
-      (new InitiateDataSharingRequestOKBuilder()..update(updates))._build();
+      (InitiateDataSharingRequestOKBuilder()..update(updates))._build();
 
   _$InitiateDataSharingRequestOK._({this.data}) : super._();
-
   @override
   InitiateDataSharingRequestOK rebuild(
           void Function(InitiateDataSharingRequestOKBuilder) updates) =>
@@ -23,7 +22,7 @@ class _$InitiateDataSharingRequestOK extends InitiateDataSharingRequestOK {
 
   @override
   InitiateDataSharingRequestOKBuilder toBuilder() =>
-      new InitiateDataSharingRequestOKBuilder()..replace(this);
+      InitiateDataSharingRequestOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -55,7 +54,7 @@ class InitiateDataSharingRequestOKBuilder
 
   InitiateDataSharingRequestOKDataBuilder? _data;
   InitiateDataSharingRequestOKDataBuilder get data =>
-      _$this._data ??= new InitiateDataSharingRequestOKDataBuilder();
+      _$this._data ??= InitiateDataSharingRequestOKDataBuilder();
   set data(InitiateDataSharingRequestOKDataBuilder? data) =>
       _$this._data = data;
 
@@ -74,7 +73,6 @@ class InitiateDataSharingRequestOKBuilder
 
   @override
   void replace(InitiateDataSharingRequestOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InitiateDataSharingRequestOK;
   }
 
@@ -90,7 +88,7 @@ class InitiateDataSharingRequestOKBuilder
     _$InitiateDataSharingRequestOK _$result;
     try {
       _$result = _$v ??
-          new _$InitiateDataSharingRequestOK._(
+          _$InitiateDataSharingRequestOK._(
             data: _data?.build(),
           );
     } catch (_) {
@@ -99,7 +97,7 @@ class InitiateDataSharingRequestOKBuilder
         _$failedField = 'data';
         _data?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InitiateDataSharingRequestOK', _$failedField, e.toString());
       }
       rethrow;

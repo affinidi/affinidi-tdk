@@ -11,20 +11,15 @@ class _$GroupNamesInput extends GroupNamesInput {
   final BuiltList<String> groupNames;
 
   factory _$GroupNamesInput([void Function(GroupNamesInputBuilder)? updates]) =>
-      (new GroupNamesInputBuilder()..update(updates))._build();
+      (GroupNamesInputBuilder()..update(updates))._build();
 
-  _$GroupNamesInput._({required this.groupNames}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        groupNames, r'GroupNamesInput', 'groupNames');
-  }
-
+  _$GroupNamesInput._({required this.groupNames}) : super._();
   @override
   GroupNamesInput rebuild(void Function(GroupNamesInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GroupNamesInputBuilder toBuilder() =>
-      new GroupNamesInputBuilder()..replace(this);
+  GroupNamesInputBuilder toBuilder() => GroupNamesInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -54,7 +49,7 @@ class GroupNamesInputBuilder
 
   ListBuilder<String>? _groupNames;
   ListBuilder<String> get groupNames =>
-      _$this._groupNames ??= new ListBuilder<String>();
+      _$this._groupNames ??= ListBuilder<String>();
   set groupNames(ListBuilder<String>? groupNames) =>
       _$this._groupNames = groupNames;
 
@@ -73,7 +68,6 @@ class GroupNamesInputBuilder
 
   @override
   void replace(GroupNamesInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GroupNamesInput;
   }
 
@@ -89,7 +83,7 @@ class GroupNamesInputBuilder
     _$GroupNamesInput _$result;
     try {
       _$result = _$v ??
-          new _$GroupNamesInput._(
+          _$GroupNamesInput._(
             groupNames: groupNames.build(),
           );
     } catch (_) {
@@ -98,7 +92,7 @@ class GroupNamesInputBuilder
         _$failedField = 'groupNames';
         groupNames.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'GroupNamesInput', _$failedField, e.toString());
       }
       rethrow;

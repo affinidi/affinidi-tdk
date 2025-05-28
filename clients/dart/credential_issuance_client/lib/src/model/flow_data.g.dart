@@ -39,7 +39,7 @@ class _$FlowData extends FlowData {
   final BuiltList<FlowDataStatusListsDetailsInner>? statusListsDetails;
 
   factory _$FlowData([void Function(FlowDataBuilder)? updates]) =>
-      (new FlowDataBuilder()..update(updates))._build();
+      (FlowDataBuilder()..update(updates))._build();
 
   _$FlowData._(
       {required this.createdAt,
@@ -57,26 +57,13 @@ class _$FlowData extends FlowData {
       this.projectIdConfigurationIdWalletId,
       this.projectIdConfigurationIdCredentialType,
       this.statusListsDetails})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(createdAt, r'FlowData', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        modifiedAt, r'FlowData', 'modifiedAt');
-    BuiltValueNullFieldError.checkNotNull(id, r'FlowData', 'id');
-    BuiltValueNullFieldError.checkNotNull(flowId, r'FlowData', 'flowId');
-    BuiltValueNullFieldError.checkNotNull(
-        credentialTypeId, r'FlowData', 'credentialTypeId');
-    BuiltValueNullFieldError.checkNotNull(
-        jsonLdContextUrl, r'FlowData', 'jsonLdContextUrl');
-    BuiltValueNullFieldError.checkNotNull(
-        jsonSchemaUrl, r'FlowData', 'jsonSchemaUrl');
-  }
-
+      : super._();
   @override
   FlowData rebuild(void Function(FlowDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FlowDataBuilder toBuilder() => new FlowDataBuilder()..replace(this);
+  FlowDataBuilder toBuilder() => FlowDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -222,7 +209,7 @@ class FlowDataBuilder implements Builder<FlowData, FlowDataBuilder> {
   ListBuilder<FlowDataStatusListsDetailsInner>? _statusListsDetails;
   ListBuilder<FlowDataStatusListsDetailsInner> get statusListsDetails =>
       _$this._statusListsDetails ??=
-          new ListBuilder<FlowDataStatusListsDetailsInner>();
+          ListBuilder<FlowDataStatusListsDetailsInner>();
   set statusListsDetails(
           ListBuilder<FlowDataStatusListsDetailsInner>? statusListsDetails) =>
       _$this._statusListsDetails = statusListsDetails;
@@ -257,7 +244,6 @@ class FlowDataBuilder implements Builder<FlowData, FlowDataBuilder> {
 
   @override
   void replace(FlowData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$FlowData;
   }
 
@@ -273,7 +259,7 @@ class FlowDataBuilder implements Builder<FlowData, FlowDataBuilder> {
     _$FlowData _$result;
     try {
       _$result = _$v ??
-          new _$FlowData._(
+          _$FlowData._(
             createdAt: BuiltValueNullFieldError.checkNotNull(
                 createdAt, r'FlowData', 'createdAt'),
             modifiedAt: BuiltValueNullFieldError.checkNotNull(
@@ -303,7 +289,7 @@ class FlowDataBuilder implements Builder<FlowData, FlowDataBuilder> {
         _$failedField = 'statusListsDetails';
         _statusListsDetails?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'FlowData', _$failedField, e.toString());
       }
       rethrow;

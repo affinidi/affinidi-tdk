@@ -6,7 +6,7 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add($NodeDto.serializer)
       ..add(AccountDto.serializer)
       ..add(AwsCredentialExchangeOperationOK.serializer)
@@ -15,6 +15,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(CorsDeleteAccountOK.serializer)
       ..add(CorsDeleteNodeOK.serializer)
       ..add(CorsGetConfigOK.serializer)
+      ..add(CorsGetConfigurationOK.serializer)
       ..add(CorsGetScannedFileInfoOK.serializer)
       ..add(CorsGetWellKnownJwksOK.serializer)
       ..add(CorsInitNodesOK.serializer)
@@ -74,38 +75,38 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(UpdateProfileDataOK.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AccountDto)]),
-          () => new ListBuilder<AccountDto>())
+          () => ListBuilder<AccountDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JsonWebKeyDto)]),
-          () => new ListBuilder<JsonWebKeyDto>())
+          () => ListBuilder<JsonWebKeyDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ListScannedFilesOKScannedFilesInner)]),
-          () => new ListBuilder<ListScannedFilesOKScannedFilesInner>())
+          () => ListBuilder<ListScannedFilesOKScannedFilesInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NodeDto)]),
-          () => new ListBuilder<NodeDto>())
+          () => ListBuilder<NodeDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(NodeDto)]),
-          () => new ListBuilder<NodeDto>())
+          () => ListBuilder<NodeDto>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>()))
+          () => MapBuilder<String, JsonObject?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

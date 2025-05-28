@@ -14,15 +14,11 @@ class _$CredentialResponseImmediateCNonceExpiresIn
   factory _$CredentialResponseImmediateCNonceExpiresIn(
           [void Function(CredentialResponseImmediateCNonceExpiresInBuilder)?
               updates]) =>
-      (new CredentialResponseImmediateCNonceExpiresInBuilder()..update(updates))
+      (CredentialResponseImmediateCNonceExpiresInBuilder()..update(updates))
           ._build();
 
   _$CredentialResponseImmediateCNonceExpiresIn._({required this.oneOf})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'CredentialResponseImmediateCNonceExpiresIn', 'oneOf');
-  }
-
+      : super._();
   @override
   CredentialResponseImmediateCNonceExpiresIn rebuild(
           void Function(CredentialResponseImmediateCNonceExpiresInBuilder)
@@ -31,7 +27,7 @@ class _$CredentialResponseImmediateCNonceExpiresIn
 
   @override
   CredentialResponseImmediateCNonceExpiresInBuilder toBuilder() =>
-      new CredentialResponseImmediateCNonceExpiresInBuilder()..replace(this);
+      CredentialResponseImmediateCNonceExpiresInBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -82,7 +78,6 @@ class CredentialResponseImmediateCNonceExpiresInBuilder
 
   @override
   void replace(CredentialResponseImmediateCNonceExpiresIn other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialResponseImmediateCNonceExpiresIn;
   }
 
@@ -98,7 +93,7 @@ class CredentialResponseImmediateCNonceExpiresInBuilder
 
   _$CredentialResponseImmediateCNonceExpiresIn _build() {
     final _$result = _$v ??
-        new _$CredentialResponseImmediateCNonceExpiresIn._(
+        _$CredentialResponseImmediateCNonceExpiresIn._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'CredentialResponseImmediateCNonceExpiresIn', 'oneOf'),
         );

@@ -14,12 +14,12 @@ KeyNotFoundErrorNameEnum _$keyNotFoundErrorNameEnumValueOf(String name) {
     case 'keyNotFoundError':
       return _$keyNotFoundErrorNameEnum_keyNotFoundError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<KeyNotFoundErrorNameEnum> _$keyNotFoundErrorNameEnumValues =
-    new BuiltSet<KeyNotFoundErrorNameEnum>(const <KeyNotFoundErrorNameEnum>[
+    BuiltSet<KeyNotFoundErrorNameEnum>(const <KeyNotFoundErrorNameEnum>[
   _$keyNotFoundErrorNameEnum_keyNotFoundError,
 ]);
 
@@ -31,13 +31,13 @@ KeyNotFoundErrorMessageEnum _$keyNotFoundErrorMessageEnumValueOf(String name) {
     case 'keyNotFound':
       return _$keyNotFoundErrorMessageEnum_keyNotFound;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<KeyNotFoundErrorMessageEnum>
-    _$keyNotFoundErrorMessageEnumValues = new BuiltSet<
-        KeyNotFoundErrorMessageEnum>(const <KeyNotFoundErrorMessageEnum>[
+    _$keyNotFoundErrorMessageEnumValues =
+    BuiltSet<KeyNotFoundErrorMessageEnum>(const <KeyNotFoundErrorMessageEnum>[
   _$keyNotFoundErrorMessageEnum_keyNotFound,
 ]);
 
@@ -51,24 +51,24 @@ KeyNotFoundErrorHttpStatusCodeEnum _$keyNotFoundErrorHttpStatusCodeEnumValueOf(
     case 'number500':
       return _$keyNotFoundErrorHttpStatusCodeEnum_number500;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<KeyNotFoundErrorHttpStatusCodeEnum>
-    _$keyNotFoundErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$keyNotFoundErrorHttpStatusCodeEnumValues = BuiltSet<
         KeyNotFoundErrorHttpStatusCodeEnum>(const <KeyNotFoundErrorHttpStatusCodeEnum>[
   _$keyNotFoundErrorHttpStatusCodeEnum_number500,
 ]);
 
 Serializer<KeyNotFoundErrorNameEnum> _$keyNotFoundErrorNameEnumSerializer =
-    new _$KeyNotFoundErrorNameEnumSerializer();
+    _$KeyNotFoundErrorNameEnumSerializer();
 Serializer<KeyNotFoundErrorMessageEnum>
     _$keyNotFoundErrorMessageEnumSerializer =
-    new _$KeyNotFoundErrorMessageEnumSerializer();
+    _$KeyNotFoundErrorMessageEnumSerializer();
 Serializer<KeyNotFoundErrorHttpStatusCodeEnum>
     _$keyNotFoundErrorHttpStatusCodeEnumSerializer =
-    new _$KeyNotFoundErrorHttpStatusCodeEnumSerializer();
+    _$KeyNotFoundErrorHttpStatusCodeEnumSerializer();
 
 class _$KeyNotFoundErrorNameEnumSerializer
     implements PrimitiveSerializer<KeyNotFoundErrorNameEnum> {
@@ -166,7 +166,7 @@ class _$KeyNotFoundError extends KeyNotFoundError {
 
   factory _$KeyNotFoundError(
           [void Function(KeyNotFoundErrorBuilder)? updates]) =>
-      (new KeyNotFoundErrorBuilder()..update(updates))._build();
+      (KeyNotFoundErrorBuilder()..update(updates))._build();
 
   _$KeyNotFoundError._(
       {required this.name,
@@ -174,23 +174,14 @@ class _$KeyNotFoundError extends KeyNotFoundError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'KeyNotFoundError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'KeyNotFoundError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'KeyNotFoundError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'KeyNotFoundError', 'traceId');
-  }
-
+      : super._();
   @override
   KeyNotFoundError rebuild(void Function(KeyNotFoundErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   KeyNotFoundErrorBuilder toBuilder() =>
-      new KeyNotFoundErrorBuilder()..replace(this);
+      KeyNotFoundErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -252,7 +243,7 @@ class KeyNotFoundErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -275,7 +266,6 @@ class KeyNotFoundErrorBuilder
 
   @override
   void replace(KeyNotFoundError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$KeyNotFoundError;
   }
 
@@ -291,7 +281,7 @@ class KeyNotFoundErrorBuilder
     _$KeyNotFoundError _$result;
     try {
       _$result = _$v ??
-          new _$KeyNotFoundError._(
+          _$KeyNotFoundError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'KeyNotFoundError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -308,7 +298,7 @@ class KeyNotFoundErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'KeyNotFoundError', _$failedField, e.toString());
       }
       rethrow;

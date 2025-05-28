@@ -24,8 +24,7 @@ class _$SignCredentialInputDtoUnsignedCredentialParams
   factory _$SignCredentialInputDtoUnsignedCredentialParams(
           [void Function(SignCredentialInputDtoUnsignedCredentialParamsBuilder)?
               updates]) =>
-      (new SignCredentialInputDtoUnsignedCredentialParamsBuilder()
-            ..update(updates))
+      (SignCredentialInputDtoUnsignedCredentialParamsBuilder()..update(updates))
           ._build();
 
   _$SignCredentialInputDtoUnsignedCredentialParams._(
@@ -35,21 +34,7 @@ class _$SignCredentialInputDtoUnsignedCredentialParams
       required this.credentialSubject,
       required this.holderDid,
       required this.expiresAt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(jsonLdContextUrl,
-        r'SignCredentialInputDtoUnsignedCredentialParams', 'jsonLdContextUrl');
-    BuiltValueNullFieldError.checkNotNull(jsonSchemaUrl,
-        r'SignCredentialInputDtoUnsignedCredentialParams', 'jsonSchemaUrl');
-    BuiltValueNullFieldError.checkNotNull(typeName,
-        r'SignCredentialInputDtoUnsignedCredentialParams', 'typeName');
-    BuiltValueNullFieldError.checkNotNull(credentialSubject,
-        r'SignCredentialInputDtoUnsignedCredentialParams', 'credentialSubject');
-    BuiltValueNullFieldError.checkNotNull(holderDid,
-        r'SignCredentialInputDtoUnsignedCredentialParams', 'holderDid');
-    BuiltValueNullFieldError.checkNotNull(expiresAt,
-        r'SignCredentialInputDtoUnsignedCredentialParams', 'expiresAt');
-  }
-
+      : super._();
   @override
   SignCredentialInputDtoUnsignedCredentialParams rebuild(
           void Function(SignCredentialInputDtoUnsignedCredentialParamsBuilder)
@@ -58,8 +43,7 @@ class _$SignCredentialInputDtoUnsignedCredentialParams
 
   @override
   SignCredentialInputDtoUnsignedCredentialParamsBuilder toBuilder() =>
-      new SignCredentialInputDtoUnsignedCredentialParamsBuilder()
-        ..replace(this);
+      SignCredentialInputDtoUnsignedCredentialParamsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -122,7 +106,7 @@ class SignCredentialInputDtoUnsignedCredentialParamsBuilder
 
   MapBuilder<String, JsonObject?>? _credentialSubject;
   MapBuilder<String, JsonObject?> get credentialSubject =>
-      _$this._credentialSubject ??= new MapBuilder<String, JsonObject?>();
+      _$this._credentialSubject ??= MapBuilder<String, JsonObject?>();
   set credentialSubject(MapBuilder<String, JsonObject?>? credentialSubject) =>
       _$this._credentialSubject = credentialSubject;
 
@@ -154,7 +138,6 @@ class SignCredentialInputDtoUnsignedCredentialParamsBuilder
 
   @override
   void replace(SignCredentialInputDtoUnsignedCredentialParams other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignCredentialInputDtoUnsignedCredentialParams;
   }
 
@@ -172,7 +155,7 @@ class SignCredentialInputDtoUnsignedCredentialParamsBuilder
     _$SignCredentialInputDtoUnsignedCredentialParams _$result;
     try {
       _$result = _$v ??
-          new _$SignCredentialInputDtoUnsignedCredentialParams._(
+          _$SignCredentialInputDtoUnsignedCredentialParams._(
             jsonLdContextUrl: BuiltValueNullFieldError.checkNotNull(
                 jsonLdContextUrl,
                 r'SignCredentialInputDtoUnsignedCredentialParams',
@@ -195,7 +178,7 @@ class SignCredentialInputDtoUnsignedCredentialParamsBuilder
         _$failedField = 'credentialSubject';
         credentialSubject.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SignCredentialInputDtoUnsignedCredentialParams',
             _$failedField,
             e.toString());

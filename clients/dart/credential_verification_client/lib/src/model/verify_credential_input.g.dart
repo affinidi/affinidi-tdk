@@ -14,15 +14,11 @@ class _$VerifyCredentialInput extends VerifyCredentialInput {
 
   factory _$VerifyCredentialInput(
           [void Function(VerifyCredentialInputBuilder)? updates]) =>
-      (new VerifyCredentialInputBuilder()..update(updates))._build();
+      (VerifyCredentialInputBuilder()..update(updates))._build();
 
   _$VerifyCredentialInput._(
       {required this.verifiableCredentials, this.issuerDidDocument})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(verifiableCredentials,
-        r'VerifyCredentialInput', 'verifiableCredentials');
-  }
-
+      : super._();
   @override
   VerifyCredentialInput rebuild(
           void Function(VerifyCredentialInputBuilder) updates) =>
@@ -30,7 +26,7 @@ class _$VerifyCredentialInput extends VerifyCredentialInput {
 
   @override
   VerifyCredentialInputBuilder toBuilder() =>
-      new VerifyCredentialInputBuilder()..replace(this);
+      VerifyCredentialInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -64,13 +60,13 @@ class VerifyCredentialInputBuilder
 
   ListBuilder<JsonObject>? _verifiableCredentials;
   ListBuilder<JsonObject> get verifiableCredentials =>
-      _$this._verifiableCredentials ??= new ListBuilder<JsonObject>();
+      _$this._verifiableCredentials ??= ListBuilder<JsonObject>();
   set verifiableCredentials(ListBuilder<JsonObject>? verifiableCredentials) =>
       _$this._verifiableCredentials = verifiableCredentials;
 
   MapBuilder<String, JsonObject?>? _issuerDidDocument;
   MapBuilder<String, JsonObject?> get issuerDidDocument =>
-      _$this._issuerDidDocument ??= new MapBuilder<String, JsonObject?>();
+      _$this._issuerDidDocument ??= MapBuilder<String, JsonObject?>();
   set issuerDidDocument(MapBuilder<String, JsonObject?>? issuerDidDocument) =>
       _$this._issuerDidDocument = issuerDidDocument;
 
@@ -90,7 +86,6 @@ class VerifyCredentialInputBuilder
 
   @override
   void replace(VerifyCredentialInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VerifyCredentialInput;
   }
 
@@ -106,7 +101,7 @@ class VerifyCredentialInputBuilder
     _$VerifyCredentialInput _$result;
     try {
       _$result = _$v ??
-          new _$VerifyCredentialInput._(
+          _$VerifyCredentialInput._(
             verifiableCredentials: verifiableCredentials.build(),
             issuerDidDocument: _issuerDidDocument?.build(),
           );
@@ -118,7 +113,7 @@ class VerifyCredentialInputBuilder
         _$failedField = 'issuerDidDocument';
         _issuerDidDocument?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'VerifyCredentialInput', _$failedField, e.toString());
       }
       rethrow;

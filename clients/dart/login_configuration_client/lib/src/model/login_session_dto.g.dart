@@ -13,22 +13,16 @@ class _$LoginSessionDto extends LoginSessionDto {
   final LoginSessionDtoAuthorizationRequest authorizationRequest;
 
   factory _$LoginSessionDto([void Function(LoginSessionDtoBuilder)? updates]) =>
-      (new LoginSessionDtoBuilder()..update(updates))._build();
+      (LoginSessionDtoBuilder()..update(updates))._build();
 
   _$LoginSessionDto._({required this.id, required this.authorizationRequest})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'LoginSessionDto', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        authorizationRequest, r'LoginSessionDto', 'authorizationRequest');
-  }
-
+      : super._();
   @override
   LoginSessionDto rebuild(void Function(LoginSessionDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  LoginSessionDtoBuilder toBuilder() =>
-      new LoginSessionDtoBuilder()..replace(this);
+  LoginSessionDtoBuilder toBuilder() => LoginSessionDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,7 +61,7 @@ class LoginSessionDtoBuilder
   LoginSessionDtoAuthorizationRequestBuilder? _authorizationRequest;
   LoginSessionDtoAuthorizationRequestBuilder get authorizationRequest =>
       _$this._authorizationRequest ??=
-          new LoginSessionDtoAuthorizationRequestBuilder();
+          LoginSessionDtoAuthorizationRequestBuilder();
   set authorizationRequest(
           LoginSessionDtoAuthorizationRequestBuilder? authorizationRequest) =>
       _$this._authorizationRequest = authorizationRequest;
@@ -88,7 +82,6 @@ class LoginSessionDtoBuilder
 
   @override
   void replace(LoginSessionDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginSessionDto;
   }
 
@@ -104,7 +97,7 @@ class LoginSessionDtoBuilder
     _$LoginSessionDto _$result;
     try {
       _$result = _$v ??
-          new _$LoginSessionDto._(
+          _$LoginSessionDto._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'LoginSessionDto', 'id'),
             authorizationRequest: authorizationRequest.build(),
@@ -115,7 +108,7 @@ class LoginSessionDtoBuilder
         _$failedField = 'authorizationRequest';
         authorizationRequest.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'LoginSessionDto', _$failedField, e.toString());
       }
       rethrow;

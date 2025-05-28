@@ -14,17 +14,11 @@ class _$AwsExchangeCredentialsOK extends AwsExchangeCredentialsOK {
 
   factory _$AwsExchangeCredentialsOK(
           [void Function(AwsExchangeCredentialsOKBuilder)? updates]) =>
-      (new AwsExchangeCredentialsOKBuilder()..update(updates))._build();
+      (AwsExchangeCredentialsOKBuilder()..update(updates))._build();
 
   _$AwsExchangeCredentialsOK._(
       {required this.connectionClientId, required this.credentials})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        connectionClientId, r'AwsExchangeCredentialsOK', 'connectionClientId');
-    BuiltValueNullFieldError.checkNotNull(
-        credentials, r'AwsExchangeCredentialsOK', 'credentials');
-  }
-
+      : super._();
   @override
   AwsExchangeCredentialsOK rebuild(
           void Function(AwsExchangeCredentialsOKBuilder) updates) =>
@@ -32,7 +26,7 @@ class _$AwsExchangeCredentialsOK extends AwsExchangeCredentialsOK {
 
   @override
   AwsExchangeCredentialsOKBuilder toBuilder() =>
-      new AwsExchangeCredentialsOKBuilder()..replace(this);
+      AwsExchangeCredentialsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -73,7 +67,7 @@ class AwsExchangeCredentialsOKBuilder
   AwsExchangeCredentialsProjectTokenOKCredentialsBuilder? _credentials;
   AwsExchangeCredentialsProjectTokenOKCredentialsBuilder get credentials =>
       _$this._credentials ??=
-          new AwsExchangeCredentialsProjectTokenOKCredentialsBuilder();
+          AwsExchangeCredentialsProjectTokenOKCredentialsBuilder();
   set credentials(
           AwsExchangeCredentialsProjectTokenOKCredentialsBuilder?
               credentials) =>
@@ -95,7 +89,6 @@ class AwsExchangeCredentialsOKBuilder
 
   @override
   void replace(AwsExchangeCredentialsOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$AwsExchangeCredentialsOK;
   }
 
@@ -111,7 +104,7 @@ class AwsExchangeCredentialsOKBuilder
     _$AwsExchangeCredentialsOK _$result;
     try {
       _$result = _$v ??
-          new _$AwsExchangeCredentialsOK._(
+          _$AwsExchangeCredentialsOK._(
             connectionClientId: BuiltValueNullFieldError.checkNotNull(
                 connectionClientId,
                 r'AwsExchangeCredentialsOK',
@@ -124,7 +117,7 @@ class AwsExchangeCredentialsOKBuilder
         _$failedField = 'credentials';
         credentials.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'AwsExchangeCredentialsOK', _$failedField, e.toString());
       }
       rethrow;

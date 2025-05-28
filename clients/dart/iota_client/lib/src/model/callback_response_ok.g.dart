@@ -16,15 +16,11 @@ class _$CallbackResponseOK extends CallbackResponseOK {
 
   factory _$CallbackResponseOK(
           [void Function(CallbackResponseOKBuilder)? updates]) =>
-      (new CallbackResponseOKBuilder()..update(updates))._build();
+      (CallbackResponseOKBuilder()..update(updates))._build();
 
   _$CallbackResponseOK._(
       {this.redirectUri, this.responseCode, required this.message})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'CallbackResponseOK', 'message');
-  }
-
+      : super._();
   @override
   CallbackResponseOK rebuild(
           void Function(CallbackResponseOKBuilder) updates) =>
@@ -32,7 +28,7 @@ class _$CallbackResponseOK extends CallbackResponseOK {
 
   @override
   CallbackResponseOKBuilder toBuilder() =>
-      new CallbackResponseOKBuilder()..replace(this);
+      CallbackResponseOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -96,7 +92,6 @@ class CallbackResponseOKBuilder
 
   @override
   void replace(CallbackResponseOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CallbackResponseOK;
   }
 
@@ -110,7 +105,7 @@ class CallbackResponseOKBuilder
 
   _$CallbackResponseOK _build() {
     final _$result = _$v ??
-        new _$CallbackResponseOK._(
+        _$CallbackResponseOK._(
           redirectUri: redirectUri,
           responseCode: responseCode,
           message: BuiltValueNullFieldError.checkNotNull(

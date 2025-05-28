@@ -13,11 +13,10 @@ class _$CorsLoginSessionAcceptResponseOK
 
   factory _$CorsLoginSessionAcceptResponseOK(
           [void Function(CorsLoginSessionAcceptResponseOKBuilder)? updates]) =>
-      (new CorsLoginSessionAcceptResponseOKBuilder()..update(updates))._build();
+      (CorsLoginSessionAcceptResponseOKBuilder()..update(updates))._build();
 
   _$CorsLoginSessionAcceptResponseOK._({this.corsLoginSessionAcceptResponseOk})
       : super._();
-
   @override
   CorsLoginSessionAcceptResponseOK rebuild(
           void Function(CorsLoginSessionAcceptResponseOKBuilder) updates) =>
@@ -25,7 +24,7 @@ class _$CorsLoginSessionAcceptResponseOK
 
   @override
   CorsLoginSessionAcceptResponseOKBuilder toBuilder() =>
-      new CorsLoginSessionAcceptResponseOKBuilder()..replace(this);
+      CorsLoginSessionAcceptResponseOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +80,6 @@ class CorsLoginSessionAcceptResponseOKBuilder
 
   @override
   void replace(CorsLoginSessionAcceptResponseOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsLoginSessionAcceptResponseOK;
   }
 
@@ -95,7 +93,7 @@ class CorsLoginSessionAcceptResponseOKBuilder
 
   _$CorsLoginSessionAcceptResponseOK _build() {
     final _$result = _$v ??
-        new _$CorsLoginSessionAcceptResponseOK._(
+        _$CorsLoginSessionAcceptResponseOK._(
           corsLoginSessionAcceptResponseOk: corsLoginSessionAcceptResponseOk,
         );
     replace(_$result);

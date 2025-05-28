@@ -72,7 +72,7 @@ class _$OIDCConfig extends OIDCConfig {
   final BuiltList<String>? userinfoSigningAlgValuesSupported;
 
   factory _$OIDCConfig([void Function(OIDCConfigBuilder)? updates]) =>
-      (new OIDCConfigBuilder()..update(updates))._build();
+      (OIDCConfigBuilder()..update(updates))._build();
 
   _$OIDCConfig._(
       {required this.authorizationEndpoint,
@@ -106,31 +106,13 @@ class _$OIDCConfig extends OIDCConfig {
       this.userinfoEndpoint,
       required this.userinfoSignedResponseAlg,
       this.userinfoSigningAlgValuesSupported})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        authorizationEndpoint, r'OIDCConfig', 'authorizationEndpoint');
-    BuiltValueNullFieldError.checkNotNull(
-        idTokenSignedResponseAlg, r'OIDCConfig', 'idTokenSignedResponseAlg');
-    BuiltValueNullFieldError.checkNotNull(idTokenSigningAlgValuesSupported,
-        r'OIDCConfig', 'idTokenSigningAlgValuesSupported');
-    BuiltValueNullFieldError.checkNotNull(issuer, r'OIDCConfig', 'issuer');
-    BuiltValueNullFieldError.checkNotNull(jwksUri, r'OIDCConfig', 'jwksUri');
-    BuiltValueNullFieldError.checkNotNull(
-        responseTypesSupported, r'OIDCConfig', 'responseTypesSupported');
-    BuiltValueNullFieldError.checkNotNull(
-        subjectTypesSupported, r'OIDCConfig', 'subjectTypesSupported');
-    BuiltValueNullFieldError.checkNotNull(
-        tokenEndpoint, r'OIDCConfig', 'tokenEndpoint');
-    BuiltValueNullFieldError.checkNotNull(
-        userinfoSignedResponseAlg, r'OIDCConfig', 'userinfoSignedResponseAlg');
-  }
-
+      : super._();
   @override
   OIDCConfig rebuild(void Function(OIDCConfigBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  OIDCConfigBuilder toBuilder() => new OIDCConfigBuilder()..replace(this);
+  OIDCConfigBuilder toBuilder() => OIDCConfigBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -285,13 +267,13 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   ListBuilder<String>? _claimsSupported;
   ListBuilder<String> get claimsSupported =>
-      _$this._claimsSupported ??= new ListBuilder<String>();
+      _$this._claimsSupported ??= ListBuilder<String>();
   set claimsSupported(ListBuilder<String>? claimsSupported) =>
       _$this._claimsSupported = claimsSupported;
 
   ListBuilder<String>? _codeChallengeMethodsSupported;
   ListBuilder<String> get codeChallengeMethodsSupported =>
-      _$this._codeChallengeMethodsSupported ??= new ListBuilder<String>();
+      _$this._codeChallengeMethodsSupported ??= ListBuilder<String>();
   set codeChallengeMethodsSupported(
           ListBuilder<String>? codeChallengeMethodsSupported) =>
       _$this._codeChallengeMethodsSupported = codeChallengeMethodsSupported;
@@ -305,7 +287,7 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
       _credentialsSupportedDraft00;
   ListBuilder<OIDCConfigCredentialsSupportedDraft00Inner>
       get credentialsSupportedDraft00 => _$this._credentialsSupportedDraft00 ??=
-          new ListBuilder<OIDCConfigCredentialsSupportedDraft00Inner>();
+          ListBuilder<OIDCConfigCredentialsSupportedDraft00Inner>();
   set credentialsSupportedDraft00(
           ListBuilder<OIDCConfigCredentialsSupportedDraft00Inner>?
               credentialsSupportedDraft00) =>
@@ -331,19 +313,19 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   ListBuilder<String>? _grantTypesSupported;
   ListBuilder<String> get grantTypesSupported =>
-      _$this._grantTypesSupported ??= new ListBuilder<String>();
+      _$this._grantTypesSupported ??= ListBuilder<String>();
   set grantTypesSupported(ListBuilder<String>? grantTypesSupported) =>
       _$this._grantTypesSupported = grantTypesSupported;
 
   ListBuilder<String>? _idTokenSignedResponseAlg;
   ListBuilder<String> get idTokenSignedResponseAlg =>
-      _$this._idTokenSignedResponseAlg ??= new ListBuilder<String>();
+      _$this._idTokenSignedResponseAlg ??= ListBuilder<String>();
   set idTokenSignedResponseAlg(ListBuilder<String>? idTokenSignedResponseAlg) =>
       _$this._idTokenSignedResponseAlg = idTokenSignedResponseAlg;
 
   ListBuilder<String>? _idTokenSigningAlgValuesSupported;
   ListBuilder<String> get idTokenSigningAlgValuesSupported =>
-      _$this._idTokenSigningAlgValuesSupported ??= new ListBuilder<String>();
+      _$this._idTokenSigningAlgValuesSupported ??= ListBuilder<String>();
   set idTokenSigningAlgValuesSupported(
           ListBuilder<String>? idTokenSigningAlgValuesSupported) =>
       _$this._idTokenSigningAlgValuesSupported =
@@ -364,8 +346,7 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   ListBuilder<String>? _requestObjectSigningAlgValuesSupported;
   ListBuilder<String> get requestObjectSigningAlgValuesSupported =>
-      _$this._requestObjectSigningAlgValuesSupported ??=
-          new ListBuilder<String>();
+      _$this._requestObjectSigningAlgValuesSupported ??= ListBuilder<String>();
   set requestObjectSigningAlgValuesSupported(
           ListBuilder<String>? requestObjectSigningAlgValuesSupported) =>
       _$this._requestObjectSigningAlgValuesSupported =
@@ -390,13 +371,13 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   ListBuilder<String>? _responseModesSupported;
   ListBuilder<String> get responseModesSupported =>
-      _$this._responseModesSupported ??= new ListBuilder<String>();
+      _$this._responseModesSupported ??= ListBuilder<String>();
   set responseModesSupported(ListBuilder<String>? responseModesSupported) =>
       _$this._responseModesSupported = responseModesSupported;
 
   ListBuilder<String>? _responseTypesSupported;
   ListBuilder<String> get responseTypesSupported =>
-      _$this._responseTypesSupported ??= new ListBuilder<String>();
+      _$this._responseTypesSupported ??= ListBuilder<String>();
   set responseTypesSupported(ListBuilder<String>? responseTypesSupported) =>
       _$this._responseTypesSupported = responseTypesSupported;
 
@@ -407,13 +388,13 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   ListBuilder<String>? _scopesSupported;
   ListBuilder<String> get scopesSupported =>
-      _$this._scopesSupported ??= new ListBuilder<String>();
+      _$this._scopesSupported ??= ListBuilder<String>();
   set scopesSupported(ListBuilder<String>? scopesSupported) =>
       _$this._scopesSupported = scopesSupported;
 
   ListBuilder<String>? _subjectTypesSupported;
   ListBuilder<String> get subjectTypesSupported =>
-      _$this._subjectTypesSupported ??= new ListBuilder<String>();
+      _$this._subjectTypesSupported ??= ListBuilder<String>();
   set subjectTypesSupported(ListBuilder<String>? subjectTypesSupported) =>
       _$this._subjectTypesSupported = subjectTypesSupported;
 
@@ -424,7 +405,7 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   ListBuilder<String>? _tokenEndpointAuthMethodsSupported;
   ListBuilder<String> get tokenEndpointAuthMethodsSupported =>
-      _$this._tokenEndpointAuthMethodsSupported ??= new ListBuilder<String>();
+      _$this._tokenEndpointAuthMethodsSupported ??= ListBuilder<String>();
   set tokenEndpointAuthMethodsSupported(
           ListBuilder<String>? tokenEndpointAuthMethodsSupported) =>
       _$this._tokenEndpointAuthMethodsSupported =
@@ -437,14 +418,14 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   ListBuilder<String>? _userinfoSignedResponseAlg;
   ListBuilder<String> get userinfoSignedResponseAlg =>
-      _$this._userinfoSignedResponseAlg ??= new ListBuilder<String>();
+      _$this._userinfoSignedResponseAlg ??= ListBuilder<String>();
   set userinfoSignedResponseAlg(
           ListBuilder<String>? userinfoSignedResponseAlg) =>
       _$this._userinfoSignedResponseAlg = userinfoSignedResponseAlg;
 
   ListBuilder<String>? _userinfoSigningAlgValuesSupported;
   ListBuilder<String> get userinfoSigningAlgValuesSupported =>
-      _$this._userinfoSigningAlgValuesSupported ??= new ListBuilder<String>();
+      _$this._userinfoSigningAlgValuesSupported ??= ListBuilder<String>();
   set userinfoSigningAlgValuesSupported(
           ListBuilder<String>? userinfoSigningAlgValuesSupported) =>
       _$this._userinfoSigningAlgValuesSupported =
@@ -502,7 +483,6 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
 
   @override
   void replace(OIDCConfig other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OIDCConfig;
   }
 
@@ -518,7 +498,7 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
     _$OIDCConfig _$result;
     try {
       _$result = _$v ??
-          new _$OIDCConfig._(
+          _$OIDCConfig._(
             authorizationEndpoint: BuiltValueNullFieldError.checkNotNull(
                 authorizationEndpoint, r'OIDCConfig', 'authorizationEndpoint'),
             backchannelLogoutSessionSupported:
@@ -601,7 +581,7 @@ class OIDCConfigBuilder implements Builder<OIDCConfig, OIDCConfigBuilder> {
         _$failedField = 'userinfoSigningAlgValuesSupported';
         _userinfoSigningAlgValuesSupported?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'OIDCConfig', _$failedField, e.toString());
       }
       rethrow;

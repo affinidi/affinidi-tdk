@@ -24,7 +24,7 @@ class _$PresentationDefinition extends PresentationDefinition {
 
   factory _$PresentationDefinition(
           [void Function(PresentationDefinitionBuilder)? updates]) =>
-      (new PresentationDefinitionBuilder()..update(updates))._build();
+      (PresentationDefinitionBuilder()..update(updates))._build();
 
   _$PresentationDefinition._(
       {required this.id,
@@ -34,12 +34,7 @@ class _$PresentationDefinition extends PresentationDefinition {
       this.submissionRequirements,
       required this.inputDescriptors,
       this.frame})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'PresentationDefinition', 'id');
-    BuiltValueNullFieldError.checkNotNull(
-        inputDescriptors, r'PresentationDefinition', 'inputDescriptors');
-  }
-
+      : super._();
   @override
   PresentationDefinition rebuild(
           void Function(PresentationDefinitionBuilder) updates) =>
@@ -47,7 +42,7 @@ class _$PresentationDefinition extends PresentationDefinition {
 
   @override
   PresentationDefinitionBuilder toBuilder() =>
-      new PresentationDefinitionBuilder()..replace(this);
+      PresentationDefinitionBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,26 +102,25 @@ class PresentationDefinitionBuilder
   set purpose(String? purpose) => _$this._purpose = purpose;
 
   FormatBuilder? _format;
-  FormatBuilder get format => _$this._format ??= new FormatBuilder();
+  FormatBuilder get format => _$this._format ??= FormatBuilder();
   set format(FormatBuilder? format) => _$this._format = format;
 
   ListBuilder<SubmissionRequirement>? _submissionRequirements;
   ListBuilder<SubmissionRequirement> get submissionRequirements =>
-      _$this._submissionRequirements ??=
-          new ListBuilder<SubmissionRequirement>();
+      _$this._submissionRequirements ??= ListBuilder<SubmissionRequirement>();
   set submissionRequirements(
           ListBuilder<SubmissionRequirement>? submissionRequirements) =>
       _$this._submissionRequirements = submissionRequirements;
 
   ListBuilder<InputDescriptor>? _inputDescriptors;
   ListBuilder<InputDescriptor> get inputDescriptors =>
-      _$this._inputDescriptors ??= new ListBuilder<InputDescriptor>();
+      _$this._inputDescriptors ??= ListBuilder<InputDescriptor>();
   set inputDescriptors(ListBuilder<InputDescriptor>? inputDescriptors) =>
       _$this._inputDescriptors = inputDescriptors;
 
   MapBuilder<String, JsonObject?>? _frame;
   MapBuilder<String, JsonObject?> get frame =>
-      _$this._frame ??= new MapBuilder<String, JsonObject?>();
+      _$this._frame ??= MapBuilder<String, JsonObject?>();
   set frame(MapBuilder<String, JsonObject?>? frame) => _$this._frame = frame;
 
   PresentationDefinitionBuilder() {
@@ -150,7 +144,6 @@ class PresentationDefinitionBuilder
 
   @override
   void replace(PresentationDefinition other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PresentationDefinition;
   }
 
@@ -166,7 +159,7 @@ class PresentationDefinitionBuilder
     _$PresentationDefinition _$result;
     try {
       _$result = _$v ??
-          new _$PresentationDefinition._(
+          _$PresentationDefinition._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'PresentationDefinition', 'id'),
             name: name,
@@ -188,7 +181,7 @@ class PresentationDefinitionBuilder
         _$failedField = 'frame';
         _frame?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PresentationDefinition', _$failedField, e.toString());
       }
       rethrow;

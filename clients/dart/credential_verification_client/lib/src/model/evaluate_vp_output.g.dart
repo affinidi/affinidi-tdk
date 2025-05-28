@@ -14,23 +14,17 @@ class _$EvaluateVpOutput extends EvaluateVpOutput {
 
   factory _$EvaluateVpOutput(
           [void Function(EvaluateVpOutputBuilder)? updates]) =>
-      (new EvaluateVpOutputBuilder()..update(updates))._build();
+      (EvaluateVpOutputBuilder()..update(updates))._build();
 
   _$EvaluateVpOutput._({required this.result, required this.errors})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        result, r'EvaluateVpOutput', 'result');
-    BuiltValueNullFieldError.checkNotNull(
-        errors, r'EvaluateVpOutput', 'errors');
-  }
-
+      : super._();
   @override
   EvaluateVpOutput rebuild(void Function(EvaluateVpOutputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   EvaluateVpOutputBuilder toBuilder() =>
-      new EvaluateVpOutputBuilder()..replace(this);
+      EvaluateVpOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -67,8 +61,7 @@ class EvaluateVpOutputBuilder
   set result(bool? result) => _$this._result = result;
 
   ListBuilder<String>? _errors;
-  ListBuilder<String> get errors =>
-      _$this._errors ??= new ListBuilder<String>();
+  ListBuilder<String> get errors => _$this._errors ??= ListBuilder<String>();
   set errors(ListBuilder<String>? errors) => _$this._errors = errors;
 
   EvaluateVpOutputBuilder() {
@@ -87,7 +80,6 @@ class EvaluateVpOutputBuilder
 
   @override
   void replace(EvaluateVpOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$EvaluateVpOutput;
   }
 
@@ -103,7 +95,7 @@ class EvaluateVpOutputBuilder
     _$EvaluateVpOutput _$result;
     try {
       _$result = _$v ??
-          new _$EvaluateVpOutput._(
+          _$EvaluateVpOutput._(
             result: BuiltValueNullFieldError.checkNotNull(
                 result, r'EvaluateVpOutput', 'result'),
             errors: errors.build(),
@@ -114,7 +106,7 @@ class EvaluateVpOutputBuilder
         _$failedField = 'errors';
         errors.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'EvaluateVpOutput', _$failedField, e.toString());
       }
       rethrow;

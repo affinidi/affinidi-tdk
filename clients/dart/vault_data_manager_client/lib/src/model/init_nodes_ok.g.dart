@@ -13,16 +13,15 @@ class _$InitNodesOK extends InitNodesOK {
   final NodeDto? defaultProfile;
 
   factory _$InitNodesOK([void Function(InitNodesOKBuilder)? updates]) =>
-      (new InitNodesOKBuilder()..update(updates))._build();
+      (InitNodesOKBuilder()..update(updates))._build();
 
   _$InitNodesOK._({this.consumerMetadata, this.defaultProfile}) : super._();
-
   @override
   InitNodesOK rebuild(void Function(InitNodesOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  InitNodesOKBuilder toBuilder() => new InitNodesOKBuilder()..replace(this);
+  InitNodesOKBuilder toBuilder() => InitNodesOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -55,7 +54,7 @@ class InitNodesOKBuilder implements Builder<InitNodesOK, InitNodesOKBuilder> {
 
   ConsumerMetadataDtoBuilder? _consumerMetadata;
   ConsumerMetadataDtoBuilder get consumerMetadata =>
-      _$this._consumerMetadata ??= new ConsumerMetadataDtoBuilder();
+      _$this._consumerMetadata ??= ConsumerMetadataDtoBuilder();
   set consumerMetadata(ConsumerMetadataDtoBuilder? consumerMetadata) =>
       _$this._consumerMetadata = consumerMetadata;
 
@@ -80,7 +79,6 @@ class InitNodesOKBuilder implements Builder<InitNodesOK, InitNodesOKBuilder> {
 
   @override
   void replace(InitNodesOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InitNodesOK;
   }
 
@@ -96,7 +94,7 @@ class InitNodesOKBuilder implements Builder<InitNodesOK, InitNodesOKBuilder> {
     _$InitNodesOK _$result;
     try {
       _$result = _$v ??
-          new _$InitNodesOK._(
+          _$InitNodesOK._(
             consumerMetadata: _consumerMetadata?.build(),
             defaultProfile: defaultProfile,
           );
@@ -106,7 +104,7 @@ class InitNodesOKBuilder implements Builder<InitNodesOK, InitNodesOKBuilder> {
         _$failedField = 'consumerMetadata';
         _consumerMetadata?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InitNodesOK', _$failedField, e.toString());
       }
       rethrow;

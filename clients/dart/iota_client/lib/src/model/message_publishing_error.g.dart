@@ -16,12 +16,12 @@ MessagePublishingErrorNameEnum _$messagePublishingErrorNameEnumValueOf(
     case 'messagePublishingError':
       return _$messagePublishingErrorNameEnum_messagePublishingError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MessagePublishingErrorNameEnum>
-    _$messagePublishingErrorNameEnumValues = new BuiltSet<
+    _$messagePublishingErrorNameEnumValues = BuiltSet<
         MessagePublishingErrorNameEnum>(const <MessagePublishingErrorNameEnum>[
   _$messagePublishingErrorNameEnum_messagePublishingError,
 ]);
@@ -37,12 +37,12 @@ MessagePublishingErrorMessageEnum _$messagePublishingErrorMessageEnumValueOf(
     case 'notAbleToPublishMessagesToTopic':
       return _$messagePublishingErrorMessageEnum_notAbleToPublishMessagesToTopic;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MessagePublishingErrorMessageEnum>
-    _$messagePublishingErrorMessageEnumValues = new BuiltSet<
+    _$messagePublishingErrorMessageEnumValues = BuiltSet<
         MessagePublishingErrorMessageEnum>(const <MessagePublishingErrorMessageEnum>[
   _$messagePublishingErrorMessageEnum_notAbleToPublishMessagesToTopic,
 ]);
@@ -57,25 +57,25 @@ MessagePublishingErrorHttpStatusCodeEnum
     case 'number500':
       return _$messagePublishingErrorHttpStatusCodeEnum_number500;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<MessagePublishingErrorHttpStatusCodeEnum>
-    _$messagePublishingErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$messagePublishingErrorHttpStatusCodeEnumValues = BuiltSet<
         MessagePublishingErrorHttpStatusCodeEnum>(const <MessagePublishingErrorHttpStatusCodeEnum>[
   _$messagePublishingErrorHttpStatusCodeEnum_number500,
 ]);
 
 Serializer<MessagePublishingErrorNameEnum>
     _$messagePublishingErrorNameEnumSerializer =
-    new _$MessagePublishingErrorNameEnumSerializer();
+    _$MessagePublishingErrorNameEnumSerializer();
 Serializer<MessagePublishingErrorMessageEnum>
     _$messagePublishingErrorMessageEnumSerializer =
-    new _$MessagePublishingErrorMessageEnumSerializer();
+    _$MessagePublishingErrorMessageEnumSerializer();
 Serializer<MessagePublishingErrorHttpStatusCodeEnum>
     _$messagePublishingErrorHttpStatusCodeEnumSerializer =
-    new _$MessagePublishingErrorHttpStatusCodeEnumSerializer();
+    _$MessagePublishingErrorHttpStatusCodeEnumSerializer();
 
 class _$MessagePublishingErrorNameEnumSerializer
     implements PrimitiveSerializer<MessagePublishingErrorNameEnum> {
@@ -177,7 +177,7 @@ class _$MessagePublishingError extends MessagePublishingError {
 
   factory _$MessagePublishingError(
           [void Function(MessagePublishingErrorBuilder)? updates]) =>
-      (new MessagePublishingErrorBuilder()..update(updates))._build();
+      (MessagePublishingErrorBuilder()..update(updates))._build();
 
   _$MessagePublishingError._(
       {required this.name,
@@ -185,17 +185,7 @@ class _$MessagePublishingError extends MessagePublishingError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'MessagePublishingError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'MessagePublishingError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'MessagePublishingError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'MessagePublishingError', 'traceId');
-  }
-
+      : super._();
   @override
   MessagePublishingError rebuild(
           void Function(MessagePublishingErrorBuilder) updates) =>
@@ -203,7 +193,7 @@ class _$MessagePublishingError extends MessagePublishingError {
 
   @override
   MessagePublishingErrorBuilder toBuilder() =>
-      new MessagePublishingErrorBuilder()..replace(this);
+      MessagePublishingErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -266,7 +256,7 @@ class MessagePublishingErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -289,7 +279,6 @@ class MessagePublishingErrorBuilder
 
   @override
   void replace(MessagePublishingError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MessagePublishingError;
   }
 
@@ -305,7 +294,7 @@ class MessagePublishingErrorBuilder
     _$MessagePublishingError _$result;
     try {
       _$result = _$v ??
-          new _$MessagePublishingError._(
+          _$MessagePublishingError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'MessagePublishingError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -322,7 +311,7 @@ class MessagePublishingErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'MessagePublishingError', _$failedField, e.toString());
       }
       rethrow;

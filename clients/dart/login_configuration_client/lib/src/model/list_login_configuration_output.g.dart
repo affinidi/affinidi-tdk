@@ -14,15 +14,11 @@ class _$ListLoginConfigurationOutput extends ListLoginConfigurationOutput {
 
   factory _$ListLoginConfigurationOutput(
           [void Function(ListLoginConfigurationOutputBuilder)? updates]) =>
-      (new ListLoginConfigurationOutputBuilder()..update(updates))._build();
+      (ListLoginConfigurationOutputBuilder()..update(updates))._build();
 
   _$ListLoginConfigurationOutput._(
       {required this.configurations, this.lastEvaluatedKey})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        configurations, r'ListLoginConfigurationOutput', 'configurations');
-  }
-
+      : super._();
   @override
   ListLoginConfigurationOutput rebuild(
           void Function(ListLoginConfigurationOutputBuilder) updates) =>
@@ -30,7 +26,7 @@ class _$ListLoginConfigurationOutput extends ListLoginConfigurationOutput {
 
   @override
   ListLoginConfigurationOutputBuilder toBuilder() =>
-      new ListLoginConfigurationOutputBuilder()..replace(this);
+      ListLoginConfigurationOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -66,7 +62,7 @@ class ListLoginConfigurationOutputBuilder
 
   ListBuilder<LoginConfigurationObject>? _configurations;
   ListBuilder<LoginConfigurationObject> get configurations =>
-      _$this._configurations ??= new ListBuilder<LoginConfigurationObject>();
+      _$this._configurations ??= ListBuilder<LoginConfigurationObject>();
   set configurations(ListBuilder<LoginConfigurationObject>? configurations) =>
       _$this._configurations = configurations;
 
@@ -91,7 +87,6 @@ class ListLoginConfigurationOutputBuilder
 
   @override
   void replace(ListLoginConfigurationOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListLoginConfigurationOutput;
   }
 
@@ -107,7 +102,7 @@ class ListLoginConfigurationOutputBuilder
     _$ListLoginConfigurationOutput _$result;
     try {
       _$result = _$v ??
-          new _$ListLoginConfigurationOutput._(
+          _$ListLoginConfigurationOutput._(
             configurations: configurations.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -117,7 +112,7 @@ class ListLoginConfigurationOutputBuilder
         _$failedField = 'configurations';
         configurations.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListLoginConfigurationOutput', _$failedField, e.toString());
       }
       rethrow;

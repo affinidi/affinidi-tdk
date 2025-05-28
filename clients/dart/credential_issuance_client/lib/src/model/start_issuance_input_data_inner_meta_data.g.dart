@@ -14,15 +14,10 @@ class _$StartIssuanceInputDataInnerMetaData
   factory _$StartIssuanceInputDataInnerMetaData(
           [void Function(StartIssuanceInputDataInnerMetaDataBuilder)?
               updates]) =>
-      (new StartIssuanceInputDataInnerMetaDataBuilder()..update(updates))
-          ._build();
+      (StartIssuanceInputDataInnerMetaDataBuilder()..update(updates))._build();
 
   _$StartIssuanceInputDataInnerMetaData._({required this.expirationDate})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(expirationDate,
-        r'StartIssuanceInputDataInnerMetaData', 'expirationDate');
-  }
-
+      : super._();
   @override
   StartIssuanceInputDataInnerMetaData rebuild(
           void Function(StartIssuanceInputDataInnerMetaDataBuilder) updates) =>
@@ -30,7 +25,7 @@ class _$StartIssuanceInputDataInnerMetaData
 
   @override
   StartIssuanceInputDataInnerMetaDataBuilder toBuilder() =>
-      new StartIssuanceInputDataInnerMetaDataBuilder()..replace(this);
+      StartIssuanceInputDataInnerMetaDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -81,7 +76,6 @@ class StartIssuanceInputDataInnerMetaDataBuilder
 
   @override
   void replace(StartIssuanceInputDataInnerMetaData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StartIssuanceInputDataInnerMetaData;
   }
 
@@ -96,7 +90,7 @@ class StartIssuanceInputDataInnerMetaDataBuilder
 
   _$StartIssuanceInputDataInnerMetaData _build() {
     final _$result = _$v ??
-        new _$StartIssuanceInputDataInnerMetaData._(
+        _$StartIssuanceInputDataInnerMetaData._(
           expirationDate: BuiltValueNullFieldError.checkNotNull(expirationDate,
               r'StartIssuanceInputDataInnerMetaData', 'expirationDate'),
         );

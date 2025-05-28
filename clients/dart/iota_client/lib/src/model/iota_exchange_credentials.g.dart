@@ -12,13 +12,9 @@ class _$IotaExchangeCredentials extends IotaExchangeCredentials {
 
   factory _$IotaExchangeCredentials(
           [void Function(IotaExchangeCredentialsBuilder)? updates]) =>
-      (new IotaExchangeCredentialsBuilder()..update(updates))._build();
+      (IotaExchangeCredentialsBuilder()..update(updates))._build();
 
-  _$IotaExchangeCredentials._({required this.assertion}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        assertion, r'IotaExchangeCredentials', 'assertion');
-  }
-
+  _$IotaExchangeCredentials._({required this.assertion}) : super._();
   @override
   IotaExchangeCredentials rebuild(
           void Function(IotaExchangeCredentialsBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$IotaExchangeCredentials extends IotaExchangeCredentials {
 
   @override
   IotaExchangeCredentialsBuilder toBuilder() =>
-      new IotaExchangeCredentialsBuilder()..replace(this);
+      IotaExchangeCredentialsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +70,6 @@ class IotaExchangeCredentialsBuilder
 
   @override
   void replace(IotaExchangeCredentials other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IotaExchangeCredentials;
   }
 
@@ -88,7 +83,7 @@ class IotaExchangeCredentialsBuilder
 
   _$IotaExchangeCredentials _build() {
     final _$result = _$v ??
-        new _$IotaExchangeCredentials._(
+        _$IotaExchangeCredentials._(
           assertion: BuiltValueNullFieldError.checkNotNull(
               assertion, r'IotaExchangeCredentials', 'assertion'),
         );

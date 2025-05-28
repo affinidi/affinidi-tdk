@@ -16,17 +16,12 @@ class _$BatchCredentialInputCredentialRequestsInner
   factory _$BatchCredentialInputCredentialRequestsInner(
           [void Function(BatchCredentialInputCredentialRequestsInnerBuilder)?
               updates]) =>
-      (new BatchCredentialInputCredentialRequestsInnerBuilder()
-            ..update(updates))
+      (BatchCredentialInputCredentialRequestsInnerBuilder()..update(updates))
           ._build();
 
   _$BatchCredentialInputCredentialRequestsInner._(
       {this.credentialIdentifier, required this.proof})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        proof, r'BatchCredentialInputCredentialRequestsInner', 'proof');
-  }
-
+      : super._();
   @override
   BatchCredentialInputCredentialRequestsInner rebuild(
           void Function(BatchCredentialInputCredentialRequestsInnerBuilder)
@@ -35,7 +30,7 @@ class _$BatchCredentialInputCredentialRequestsInner
 
   @override
   BatchCredentialInputCredentialRequestsInnerBuilder toBuilder() =>
-      new BatchCredentialInputCredentialRequestsInnerBuilder()..replace(this);
+      BatchCredentialInputCredentialRequestsInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,7 +72,7 @@ class BatchCredentialInputCredentialRequestsInnerBuilder
 
   CredentialProofBuilder? _proof;
   CredentialProofBuilder get proof =>
-      _$this._proof ??= new CredentialProofBuilder();
+      _$this._proof ??= CredentialProofBuilder();
   set proof(CredentialProofBuilder? proof) => _$this._proof = proof;
 
   BatchCredentialInputCredentialRequestsInnerBuilder() {
@@ -96,7 +91,6 @@ class BatchCredentialInputCredentialRequestsInnerBuilder
 
   @override
   void replace(BatchCredentialInputCredentialRequestsInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$BatchCredentialInputCredentialRequestsInner;
   }
 
@@ -114,7 +108,7 @@ class BatchCredentialInputCredentialRequestsInnerBuilder
     _$BatchCredentialInputCredentialRequestsInner _$result;
     try {
       _$result = _$v ??
-          new _$BatchCredentialInputCredentialRequestsInner._(
+          _$BatchCredentialInputCredentialRequestsInner._(
             credentialIdentifier: credentialIdentifier,
             proof: proof.build(),
           );
@@ -124,7 +118,7 @@ class BatchCredentialInputCredentialRequestsInnerBuilder
         _$failedField = 'proof';
         proof.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'BatchCredentialInputCredentialRequestsInner',
             _$failedField,
             e.toString());

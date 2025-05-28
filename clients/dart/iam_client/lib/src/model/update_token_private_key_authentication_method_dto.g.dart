@@ -16,12 +16,12 @@ UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnum
     case 'PRIVATE_KEY':
       return _$updateTokenPrivateKeyAuthenticationMethodDtoTypeEnum_PRIVATE_KEY;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnum>
-    _$updateTokenPrivateKeyAuthenticationMethodDtoTypeEnumValues = new BuiltSet<
+    _$updateTokenPrivateKeyAuthenticationMethodDtoTypeEnumValues = BuiltSet<
         UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnum>(const <UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnum>[
   _$updateTokenPrivateKeyAuthenticationMethodDtoTypeEnum_PRIVATE_KEY,
 ]);
@@ -56,13 +56,13 @@ UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum
     case 'eS512':
       return _$updateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum_eS512;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>
     _$updateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumValues =
-    new BuiltSet<
+    BuiltSet<
         UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>(const <UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>[
   _$updateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum_rS256,
   _$updateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum_rS512,
@@ -72,10 +72,10 @@ final BuiltSet<UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>
 
 Serializer<UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnum>
     _$updateTokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer =
-    new _$UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer();
+    _$UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer();
 Serializer<UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>
     _$updateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumSerializer =
-    new _$UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumSerializer();
+    _$UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumSerializer();
 
 class _$UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer
     implements
@@ -164,14 +164,12 @@ class _$UpdateTokenPrivateKeyAuthenticationMethodDto
   factory _$UpdateTokenPrivateKeyAuthenticationMethodDto(
           [void Function(UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder)?
               updates]) =>
-      (new UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder()
-            ..update(updates))
+      (UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder()..update(updates))
           ._build();
 
   _$UpdateTokenPrivateKeyAuthenticationMethodDto._(
       {this.type, this.signingAlgorithm, this.publicKeyInfo})
       : super._();
-
   @override
   UpdateTokenPrivateKeyAuthenticationMethodDto rebuild(
           void Function(UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder)
@@ -180,7 +178,7 @@ class _$UpdateTokenPrivateKeyAuthenticationMethodDto
 
   @override
   UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder toBuilder() =>
-      new UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder()..replace(this);
+      UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -236,7 +234,7 @@ class UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder? _publicKeyInfo;
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder
       get publicKeyInfo => _$this._publicKeyInfo ??=
-          new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder();
+          TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder();
   set publicKeyInfo(
           TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder?
               publicKeyInfo) =>
@@ -259,7 +257,6 @@ class UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder
 
   @override
   void replace(UpdateTokenPrivateKeyAuthenticationMethodDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateTokenPrivateKeyAuthenticationMethodDto;
   }
 
@@ -277,7 +274,7 @@ class UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder
     _$UpdateTokenPrivateKeyAuthenticationMethodDto _$result;
     try {
       _$result = _$v ??
-          new _$UpdateTokenPrivateKeyAuthenticationMethodDto._(
+          _$UpdateTokenPrivateKeyAuthenticationMethodDto._(
             type: type,
             signingAlgorithm: signingAlgorithm,
             publicKeyInfo: _publicKeyInfo?.build(),
@@ -288,7 +285,7 @@ class UpdateTokenPrivateKeyAuthenticationMethodDtoBuilder
         _$failedField = 'publicKeyInfo';
         _publicKeyInfo?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UpdateTokenPrivateKeyAuthenticationMethodDto',
             _$failedField,
             e.toString());

@@ -14,17 +14,16 @@ class _$UpdateWalletInput extends UpdateWalletInput {
 
   factory _$UpdateWalletInput(
           [void Function(UpdateWalletInputBuilder)? updates]) =>
-      (new UpdateWalletInputBuilder()..update(updates))._build();
+      (UpdateWalletInputBuilder()..update(updates))._build();
 
   _$UpdateWalletInput._({this.name, this.description}) : super._();
-
   @override
   UpdateWalletInput rebuild(void Function(UpdateWalletInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   UpdateWalletInputBuilder toBuilder() =>
-      new UpdateWalletInputBuilder()..replace(this);
+      UpdateWalletInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -80,7 +79,6 @@ class UpdateWalletInputBuilder
 
   @override
   void replace(UpdateWalletInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateWalletInput;
   }
 
@@ -94,7 +92,7 @@ class UpdateWalletInputBuilder
 
   _$UpdateWalletInput _build() {
     final _$result = _$v ??
-        new _$UpdateWalletInput._(
+        _$UpdateWalletInput._(
           name: name,
           description: description,
         );

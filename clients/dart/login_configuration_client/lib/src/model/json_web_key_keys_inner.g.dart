@@ -44,7 +44,7 @@ class _$JsonWebKeyKeysInner extends JsonWebKeyKeysInner {
 
   factory _$JsonWebKeyKeysInner(
           [void Function(JsonWebKeyKeysInnerBuilder)? updates]) =>
-      (new JsonWebKeyKeysInnerBuilder()..update(updates))._build();
+      (JsonWebKeyKeysInnerBuilder()..update(updates))._build();
 
   _$JsonWebKeyKeysInner._(
       {required this.alg,
@@ -64,14 +64,7 @@ class _$JsonWebKeyKeysInner extends JsonWebKeyKeysInner {
       this.x,
       required this.x5c,
       this.y})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(alg, r'JsonWebKeyKeysInner', 'alg');
-    BuiltValueNullFieldError.checkNotNull(kid, r'JsonWebKeyKeysInner', 'kid');
-    BuiltValueNullFieldError.checkNotNull(kty, r'JsonWebKeyKeysInner', 'kty');
-    BuiltValueNullFieldError.checkNotNull(use, r'JsonWebKeyKeysInner', 'use');
-    BuiltValueNullFieldError.checkNotNull(x5c, r'JsonWebKeyKeysInner', 'x5c');
-  }
-
+      : super._();
   @override
   JsonWebKeyKeysInner rebuild(
           void Function(JsonWebKeyKeysInnerBuilder) updates) =>
@@ -79,7 +72,7 @@ class _$JsonWebKeyKeysInner extends JsonWebKeyKeysInner {
 
   @override
   JsonWebKeyKeysInnerBuilder toBuilder() =>
-      new JsonWebKeyKeysInnerBuilder()..replace(this);
+      JsonWebKeyKeysInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -217,7 +210,7 @@ class JsonWebKeyKeysInnerBuilder
   set x(String? x) => _$this._x = x;
 
   ListBuilder<String>? _x5c;
-  ListBuilder<String> get x5c => _$this._x5c ??= new ListBuilder<String>();
+  ListBuilder<String> get x5c => _$this._x5c ??= ListBuilder<String>();
   set x5c(ListBuilder<String>? x5c) => _$this._x5c = x5c;
 
   String? _y;
@@ -255,7 +248,6 @@ class JsonWebKeyKeysInnerBuilder
 
   @override
   void replace(JsonWebKeyKeysInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$JsonWebKeyKeysInner;
   }
 
@@ -271,7 +263,7 @@ class JsonWebKeyKeysInnerBuilder
     _$JsonWebKeyKeysInner _$result;
     try {
       _$result = _$v ??
-          new _$JsonWebKeyKeysInner._(
+          _$JsonWebKeyKeysInner._(
             alg: BuiltValueNullFieldError.checkNotNull(
                 alg, r'JsonWebKeyKeysInner', 'alg'),
             crv: crv,
@@ -300,7 +292,7 @@ class JsonWebKeyKeysInnerBuilder
         _$failedField = 'x5c';
         x5c.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'JsonWebKeyKeysInner', _$failedField, e.toString());
       }
       rethrow;

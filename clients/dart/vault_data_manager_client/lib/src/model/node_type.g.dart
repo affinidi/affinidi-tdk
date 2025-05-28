@@ -31,11 +31,11 @@ NodeType _$valueOf(String name) {
     case 'TRASH_BIN':
       return _$TRASH_BIN;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
-final BuiltSet<NodeType> _$values = new BuiltSet<NodeType>(const <NodeType>[
+final BuiltSet<NodeType> _$values = BuiltSet<NodeType>(const <NodeType>[
   _$VC_ROOT,
   _$VC,
   _$FILE,
@@ -63,7 +63,7 @@ abstract class _$NodeTypeMixin {
   _$NodeTypeMeta get NodeType => const _$NodeTypeMeta();
 }
 
-Serializer<NodeType> _$nodeTypeSerializer = new _$NodeTypeSerializer();
+Serializer<NodeType> _$nodeTypeSerializer = _$NodeTypeSerializer();
 
 class _$NodeTypeSerializer implements PrimitiveSerializer<NodeType> {
   static const Map<String, Object> _toWire = const <String, Object>{

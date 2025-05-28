@@ -12,13 +12,9 @@ class _$IssuanceConfigListResponse extends IssuanceConfigListResponse {
 
   factory _$IssuanceConfigListResponse(
           [void Function(IssuanceConfigListResponseBuilder)? updates]) =>
-      (new IssuanceConfigListResponseBuilder()..update(updates))._build();
+      (IssuanceConfigListResponseBuilder()..update(updates))._build();
 
-  _$IssuanceConfigListResponse._({required this.configurations}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        configurations, r'IssuanceConfigListResponse', 'configurations');
-  }
-
+  _$IssuanceConfigListResponse._({required this.configurations}) : super._();
   @override
   IssuanceConfigListResponse rebuild(
           void Function(IssuanceConfigListResponseBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$IssuanceConfigListResponse extends IssuanceConfigListResponse {
 
   @override
   IssuanceConfigListResponseBuilder toBuilder() =>
-      new IssuanceConfigListResponseBuilder()..replace(this);
+      IssuanceConfigListResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -58,7 +54,7 @@ class IssuanceConfigListResponseBuilder
 
   ListBuilder<IssuanceConfigMiniDto>? _configurations;
   ListBuilder<IssuanceConfigMiniDto> get configurations =>
-      _$this._configurations ??= new ListBuilder<IssuanceConfigMiniDto>();
+      _$this._configurations ??= ListBuilder<IssuanceConfigMiniDto>();
   set configurations(ListBuilder<IssuanceConfigMiniDto>? configurations) =>
       _$this._configurations = configurations;
 
@@ -77,7 +73,6 @@ class IssuanceConfigListResponseBuilder
 
   @override
   void replace(IssuanceConfigListResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$IssuanceConfigListResponse;
   }
 
@@ -93,7 +88,7 @@ class IssuanceConfigListResponseBuilder
     _$IssuanceConfigListResponse _$result;
     try {
       _$result = _$v ??
-          new _$IssuanceConfigListResponse._(
+          _$IssuanceConfigListResponse._(
             configurations: configurations.build(),
           );
     } catch (_) {
@@ -102,7 +97,7 @@ class IssuanceConfigListResponseBuilder
         _$failedField = 'configurations';
         configurations.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'IssuanceConfigListResponse', _$failedField, e.toString());
       }
       rethrow;

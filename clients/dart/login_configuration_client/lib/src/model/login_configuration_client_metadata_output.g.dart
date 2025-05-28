@@ -20,7 +20,7 @@ class _$LoginConfigurationClientMetadataOutput
   factory _$LoginConfigurationClientMetadataOutput(
           [void Function(LoginConfigurationClientMetadataOutputBuilder)?
               updates]) =>
-      (new LoginConfigurationClientMetadataOutputBuilder()..update(updates))
+      (LoginConfigurationClientMetadataOutputBuilder()..update(updates))
           ._build();
 
   _$LoginConfigurationClientMetadataOutput._(
@@ -28,15 +28,7 @@ class _$LoginConfigurationClientMetadataOutput
       required this.origin,
       required this.logo,
       this.domainVerified})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'LoginConfigurationClientMetadataOutput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        origin, r'LoginConfigurationClientMetadataOutput', 'origin');
-    BuiltValueNullFieldError.checkNotNull(
-        logo, r'LoginConfigurationClientMetadataOutput', 'logo');
-  }
-
+      : super._();
   @override
   LoginConfigurationClientMetadataOutput rebuild(
           void Function(LoginConfigurationClientMetadataOutputBuilder)
@@ -45,7 +37,7 @@ class _$LoginConfigurationClientMetadataOutput
 
   @override
   LoginConfigurationClientMetadataOutputBuilder toBuilder() =>
-      new LoginConfigurationClientMetadataOutputBuilder()..replace(this);
+      LoginConfigurationClientMetadataOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -121,7 +113,6 @@ class LoginConfigurationClientMetadataOutputBuilder
 
   @override
   void replace(LoginConfigurationClientMetadataOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginConfigurationClientMetadataOutput;
   }
 
@@ -136,7 +127,7 @@ class LoginConfigurationClientMetadataOutputBuilder
 
   _$LoginConfigurationClientMetadataOutput _build() {
     final _$result = _$v ??
-        new _$LoginConfigurationClientMetadataOutput._(
+        _$LoginConfigurationClientMetadataOutput._(
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'LoginConfigurationClientMetadataOutput', 'name'),
           origin: BuiltValueNullFieldError.checkNotNull(

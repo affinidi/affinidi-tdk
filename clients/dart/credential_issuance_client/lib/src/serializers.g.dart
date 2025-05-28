@@ -6,7 +6,7 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(ActionForbiddenError.serializer)
       ..add(ActionForbiddenErrorDetailsInner.serializer)
       ..add(ActionForbiddenErrorHttpStatusCodeEnum.serializer)
@@ -163,86 +163,85 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => new ListBuilder<ActionForbiddenErrorDetailsInner>())
+          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(BatchCredentialInputCredentialRequestsInner)
           ]),
-          () => new ListBuilder<BatchCredentialInputCredentialRequestsInner>())
+          () => ListBuilder<BatchCredentialInputCredentialRequestsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(BatchCredentialResponseCredentialResponsesInner)
           ]),
-          () => new ListBuilder<
-              BatchCredentialResponseCredentialResponsesInner>())
+          () => ListBuilder<BatchCredentialResponseCredentialResponsesInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(BuiltMap, const [
@@ -250,112 +249,112 @@ Serializers _$serializers = (new Serializers().toBuilder()
               const FullType.nullable(JsonObject)
             ])
           ]),
-          () => new ListBuilder<BuiltMap<String, JsonObject?>>())
+          () => ListBuilder<BuiltMap<String, JsonObject?>>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(CredentialSupportedObject)]),
-          () => new ListBuilder<CredentialSupportedObject>())
+          () => ListBuilder<CredentialSupportedObject>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(CredentialSupportedObject)]),
-          () => new ListBuilder<CredentialSupportedObject>())
+          () => ListBuilder<CredentialSupportedObject>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(CredentialSupportedObject)]),
-          () => new ListBuilder<CredentialSupportedObject>())
+          () => ListBuilder<CredentialSupportedObject>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(FlowData)]),
-          () => new ListBuilder<FlowData>())
+          () => ListBuilder<FlowData>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(FlowDataStatusListsDetailsInner)]),
-          () => new ListBuilder<FlowDataStatusListsDetailsInner>())
+          () => ListBuilder<FlowDataStatusListsDetailsInner>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(IssuanceConfigMiniDto)]),
-          () => new ListBuilder<IssuanceConfigMiniDto>())
+          () => ListBuilder<IssuanceConfigMiniDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ListIssuanceResponseIssuancesInner)]),
-          () => new ListBuilder<ListIssuanceResponseIssuancesInner>())
+          () => ListBuilder<ListIssuanceResponseIssuancesInner>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(StartIssuanceInputDataInner)]),
-          () => new ListBuilder<StartIssuanceInputDataInner>())
+          () => ListBuilder<StartIssuanceInputDataInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(SupportedCredentialMetadataDisplayInner)]),
-          () => new ListBuilder<SupportedCredentialMetadataDisplayInner>())
+          () => ListBuilder<SupportedCredentialMetadataDisplayInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(
                 WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(
                 WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(
                 WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(
                 WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum)
           ]),
-          () => new ListBuilder<
+          () => ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(BuiltMap, const [
@@ -363,19 +362,19 @@ Serializers _$serializers = (new Serializers().toBuilder()
               const FullType.nullable(JsonObject)
             ])
           ]),
-          () => new ListBuilder<BuiltMap<String, JsonObject?>>())
+          () => ListBuilder<BuiltMap<String, JsonObject?>>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(StartIssuanceInputDataInnerStatusListDetailsInner)
           ]),
-          () => new ListBuilder<
-              StartIssuanceInputDataInnerStatusListDetailsInner>()))
+          () =>
+              ListBuilder<StartIssuanceInputDataInnerStatusListDetailsInner>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

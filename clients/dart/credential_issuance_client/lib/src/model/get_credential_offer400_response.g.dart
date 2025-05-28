@@ -16,12 +16,12 @@ GetCredentialOffer400ResponseNameEnum
     case 'vcClaimedError':
       return _$getCredentialOffer400ResponseNameEnum_vcClaimedError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GetCredentialOffer400ResponseNameEnum>
-    _$getCredentialOffer400ResponseNameEnumValues = new BuiltSet<
+    _$getCredentialOffer400ResponseNameEnumValues = BuiltSet<
         GetCredentialOffer400ResponseNameEnum>(const <GetCredentialOffer400ResponseNameEnum>[
   _$getCredentialOffer400ResponseNameEnum_vcClaimedError,
 ]);
@@ -37,12 +37,12 @@ GetCredentialOffer400ResponseMessageEnum
     case 'theRequestedVCHasAlreadyBeenClaimedByTheUser':
       return _$getCredentialOffer400ResponseMessageEnum_theRequestedVCHasAlreadyBeenClaimedByTheUser;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GetCredentialOffer400ResponseMessageEnum>
-    _$getCredentialOffer400ResponseMessageEnumValues = new BuiltSet<
+    _$getCredentialOffer400ResponseMessageEnumValues = BuiltSet<
         GetCredentialOffer400ResponseMessageEnum>(const <GetCredentialOffer400ResponseMessageEnum>[
   _$getCredentialOffer400ResponseMessageEnum_theRequestedVCHasAlreadyBeenClaimedByTheUser,
 ]);
@@ -57,25 +57,25 @@ GetCredentialOffer400ResponseHttpStatusCodeEnum
     case 'number400':
       return _$getCredentialOffer400ResponseHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<GetCredentialOffer400ResponseHttpStatusCodeEnum>
-    _$getCredentialOffer400ResponseHttpStatusCodeEnumValues = new BuiltSet<
+    _$getCredentialOffer400ResponseHttpStatusCodeEnumValues = BuiltSet<
         GetCredentialOffer400ResponseHttpStatusCodeEnum>(const <GetCredentialOffer400ResponseHttpStatusCodeEnum>[
   _$getCredentialOffer400ResponseHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<GetCredentialOffer400ResponseNameEnum>
     _$getCredentialOffer400ResponseNameEnumSerializer =
-    new _$GetCredentialOffer400ResponseNameEnumSerializer();
+    _$GetCredentialOffer400ResponseNameEnumSerializer();
 Serializer<GetCredentialOffer400ResponseMessageEnum>
     _$getCredentialOffer400ResponseMessageEnumSerializer =
-    new _$GetCredentialOffer400ResponseMessageEnumSerializer();
+    _$GetCredentialOffer400ResponseMessageEnumSerializer();
 Serializer<GetCredentialOffer400ResponseHttpStatusCodeEnum>
     _$getCredentialOffer400ResponseHttpStatusCodeEnumSerializer =
-    new _$GetCredentialOffer400ResponseHttpStatusCodeEnumSerializer();
+    _$GetCredentialOffer400ResponseHttpStatusCodeEnumSerializer();
 
 class _$GetCredentialOffer400ResponseNameEnumSerializer
     implements PrimitiveSerializer<GetCredentialOffer400ResponseNameEnum> {
@@ -176,13 +176,9 @@ class _$GetCredentialOffer400Response extends GetCredentialOffer400Response {
 
   factory _$GetCredentialOffer400Response(
           [void Function(GetCredentialOffer400ResponseBuilder)? updates]) =>
-      (new GetCredentialOffer400ResponseBuilder()..update(updates))._build();
+      (GetCredentialOffer400ResponseBuilder()..update(updates))._build();
 
-  _$GetCredentialOffer400Response._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'GetCredentialOffer400Response', 'oneOf');
-  }
-
+  _$GetCredentialOffer400Response._({required this.oneOf}) : super._();
   @override
   GetCredentialOffer400Response rebuild(
           void Function(GetCredentialOffer400ResponseBuilder) updates) =>
@@ -190,7 +186,7 @@ class _$GetCredentialOffer400Response extends GetCredentialOffer400Response {
 
   @override
   GetCredentialOffer400ResponseBuilder toBuilder() =>
-      new GetCredentialOffer400ResponseBuilder()..replace(this);
+      GetCredentialOffer400ResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -239,7 +235,6 @@ class GetCredentialOffer400ResponseBuilder
 
   @override
   void replace(GetCredentialOffer400Response other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetCredentialOffer400Response;
   }
 
@@ -253,7 +248,7 @@ class GetCredentialOffer400ResponseBuilder
 
   _$GetCredentialOffer400Response _build() {
     final _$result = _$v ??
-        new _$GetCredentialOffer400Response._(
+        _$GetCredentialOffer400Response._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'GetCredentialOffer400Response', 'oneOf'),
         );

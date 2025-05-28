@@ -14,11 +14,10 @@ class _$ClaimedCredentialListResponse extends ClaimedCredentialListResponse {
 
   factory _$ClaimedCredentialListResponse(
           [void Function(ClaimedCredentialListResponseBuilder)? updates]) =>
-      (new ClaimedCredentialListResponseBuilder()..update(updates))._build();
+      (ClaimedCredentialListResponseBuilder()..update(updates))._build();
 
   _$ClaimedCredentialListResponse._({this.credentials, this.lastEvaluatedKey})
       : super._();
-
   @override
   ClaimedCredentialListResponse rebuild(
           void Function(ClaimedCredentialListResponseBuilder) updates) =>
@@ -26,7 +25,7 @@ class _$ClaimedCredentialListResponse extends ClaimedCredentialListResponse {
 
   @override
   ClaimedCredentialListResponseBuilder toBuilder() =>
-      new ClaimedCredentialListResponseBuilder()..replace(this);
+      ClaimedCredentialListResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -62,7 +61,7 @@ class ClaimedCredentialListResponseBuilder
 
   ListBuilder<BuiltMap<String, JsonObject?>>? _credentials;
   ListBuilder<BuiltMap<String, JsonObject?>> get credentials =>
-      _$this._credentials ??= new ListBuilder<BuiltMap<String, JsonObject?>>();
+      _$this._credentials ??= ListBuilder<BuiltMap<String, JsonObject?>>();
   set credentials(ListBuilder<BuiltMap<String, JsonObject?>>? credentials) =>
       _$this._credentials = credentials;
 
@@ -87,7 +86,6 @@ class ClaimedCredentialListResponseBuilder
 
   @override
   void replace(ClaimedCredentialListResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ClaimedCredentialListResponse;
   }
 
@@ -103,7 +101,7 @@ class ClaimedCredentialListResponseBuilder
     _$ClaimedCredentialListResponse _$result;
     try {
       _$result = _$v ??
-          new _$ClaimedCredentialListResponse._(
+          _$ClaimedCredentialListResponse._(
             credentials: _credentials?.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -113,7 +111,7 @@ class ClaimedCredentialListResponseBuilder
         _$failedField = 'credentials';
         _credentials?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ClaimedCredentialListResponse', _$failedField, e.toString());
       }
       rethrow;

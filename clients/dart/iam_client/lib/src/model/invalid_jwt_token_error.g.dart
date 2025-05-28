@@ -16,13 +16,13 @@ InvalidJwtTokenErrorNameEnum _$invalidJwtTokenErrorNameEnumValueOf(
     case 'invalidJwtTokenError':
       return _$invalidJwtTokenErrorNameEnum_invalidJwtTokenError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidJwtTokenErrorNameEnum>
-    _$invalidJwtTokenErrorNameEnumValues = new BuiltSet<
-        InvalidJwtTokenErrorNameEnum>(const <InvalidJwtTokenErrorNameEnum>[
+    _$invalidJwtTokenErrorNameEnumValues =
+    BuiltSet<InvalidJwtTokenErrorNameEnum>(const <InvalidJwtTokenErrorNameEnum>[
   _$invalidJwtTokenErrorNameEnum_invalidJwtTokenError,
 ]);
 
@@ -36,12 +36,12 @@ InvalidJwtTokenErrorMessageEnum _$invalidJwtTokenErrorMessageEnumValueOf(
     case 'jWTTokenIsInvalid':
       return _$invalidJwtTokenErrorMessageEnum_jWTTokenIsInvalid;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidJwtTokenErrorMessageEnum>
-    _$invalidJwtTokenErrorMessageEnumValues = new BuiltSet<
+    _$invalidJwtTokenErrorMessageEnumValues = BuiltSet<
         InvalidJwtTokenErrorMessageEnum>(const <InvalidJwtTokenErrorMessageEnum>[
   _$invalidJwtTokenErrorMessageEnum_jWTTokenIsInvalid,
 ]);
@@ -56,25 +56,25 @@ InvalidJwtTokenErrorHttpStatusCodeEnum
     case 'number401':
       return _$invalidJwtTokenErrorHttpStatusCodeEnum_number401;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidJwtTokenErrorHttpStatusCodeEnum>
-    _$invalidJwtTokenErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$invalidJwtTokenErrorHttpStatusCodeEnumValues = BuiltSet<
         InvalidJwtTokenErrorHttpStatusCodeEnum>(const <InvalidJwtTokenErrorHttpStatusCodeEnum>[
   _$invalidJwtTokenErrorHttpStatusCodeEnum_number401,
 ]);
 
 Serializer<InvalidJwtTokenErrorNameEnum>
     _$invalidJwtTokenErrorNameEnumSerializer =
-    new _$InvalidJwtTokenErrorNameEnumSerializer();
+    _$InvalidJwtTokenErrorNameEnumSerializer();
 Serializer<InvalidJwtTokenErrorMessageEnum>
     _$invalidJwtTokenErrorMessageEnumSerializer =
-    new _$InvalidJwtTokenErrorMessageEnumSerializer();
+    _$InvalidJwtTokenErrorMessageEnumSerializer();
 Serializer<InvalidJwtTokenErrorHttpStatusCodeEnum>
     _$invalidJwtTokenErrorHttpStatusCodeEnumSerializer =
-    new _$InvalidJwtTokenErrorHttpStatusCodeEnumSerializer();
+    _$InvalidJwtTokenErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidJwtTokenErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidJwtTokenErrorNameEnum> {
@@ -175,7 +175,7 @@ class _$InvalidJwtTokenError extends InvalidJwtTokenError {
 
   factory _$InvalidJwtTokenError(
           [void Function(InvalidJwtTokenErrorBuilder)? updates]) =>
-      (new InvalidJwtTokenErrorBuilder()..update(updates))._build();
+      (InvalidJwtTokenErrorBuilder()..update(updates))._build();
 
   _$InvalidJwtTokenError._(
       {required this.name,
@@ -183,17 +183,7 @@ class _$InvalidJwtTokenError extends InvalidJwtTokenError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'InvalidJwtTokenError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'InvalidJwtTokenError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'InvalidJwtTokenError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'InvalidJwtTokenError', 'traceId');
-  }
-
+      : super._();
   @override
   InvalidJwtTokenError rebuild(
           void Function(InvalidJwtTokenErrorBuilder) updates) =>
@@ -201,7 +191,7 @@ class _$InvalidJwtTokenError extends InvalidJwtTokenError {
 
   @override
   InvalidJwtTokenErrorBuilder toBuilder() =>
-      new InvalidJwtTokenErrorBuilder()..replace(this);
+      InvalidJwtTokenErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -263,7 +253,7 @@ class InvalidJwtTokenErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -286,7 +276,6 @@ class InvalidJwtTokenErrorBuilder
 
   @override
   void replace(InvalidJwtTokenError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidJwtTokenError;
   }
 
@@ -302,7 +291,7 @@ class InvalidJwtTokenErrorBuilder
     _$InvalidJwtTokenError _$result;
     try {
       _$result = _$v ??
-          new _$InvalidJwtTokenError._(
+          _$InvalidJwtTokenError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidJwtTokenError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -319,7 +308,7 @@ class InvalidJwtTokenErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InvalidJwtTokenError', _$failedField, e.toString());
       }
       rethrow;
