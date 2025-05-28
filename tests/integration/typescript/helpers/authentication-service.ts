@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import { DidDocumentService, KeysService } from '@affinidi/common'
 
 type AnyObject = Record<string, any>
+
 class AuthenticationService {
   constructor() {}
 
@@ -40,6 +41,7 @@ class AuthenticationService {
       signature,
     })
   }
+
   signAssertion(
     encryptionSeed: string,
     seedPassword: string,

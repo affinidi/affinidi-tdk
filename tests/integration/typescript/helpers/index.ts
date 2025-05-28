@@ -1,32 +1,42 @@
 require('dotenv').config({ path: '../../.env' })
 
+import { expect } from 'chai'
 import { AuthProvider } from '@affinidi-tdk/auth-provider'
-import { AuthenticationService } from './authenticationService'
+import { WalletApi, Configuration as WalletConfiguration } from '@affinidi-tdk/wallets-client'
+import { DefaultApi, Configuration as VerificationConfiguration } from '@affinidi-tdk/credential-verification-client'
+import { AuthenticationService } from './authentication-service'
+
+const missingVariables = new Set()
+const required = (name: string) => {
+  missingVariables.add(name)
+  return ''
+}
 
 const {
+  API_GATEWAY_URL: apiGatewayUrl = required('API_GATEWAY_URL'),
   KEY_ID: keyId = '',
-  TOKEN_ID: tokenId = '',
   PASSPHRASE: passphrase = '',
-  PRIVATE_KEY: privateKey = '',
-  PROJECT_ID: projectId = '',
-  VERIFIABLE_CREDENTIAL: verifiableCredential = '',
-  CREDENTIAL_ISSUANCE_DATA: credentialIssuanceData = '',
-  IOTA_CONFIG_ID: configurationId = '',
-  QUERY_ID: queryId = '',
-  DID: did = '',
-  REDIRECT_URI: redirectUri = '',
-  PRESENTATION_SUBMISSION: presentation_submission = '',
-  VP_TOKEN: vp_token = '',
-  UNSIGNED_CREDENTIAL: unsignedCredential = '',
-  UNSIGNED_CREDENTIAL_PARAMS: unsignedCredentialParams = '',
-  WALLET_ID: walletId = '',
-  BATCH_CREDENTIAL_REQUEST: batchCredentialRequest = '',
-  // wallet
-  ENCRYPTION_SEED: encryptionSeed = '',
-  SEED_PASSWORD: seedPassword = '',
+  TOKEN_ID: tokenId = required('TOKEN_ID'),
+  PRIVATE_KEY: privateKey = required('PRIVATE_KEY'),
+  PROJECT_ID: projectId = required('PROJECT_ID'),
+  // fixtures
+  VERIFIABLE_CREDENTIAL: verifiableCredential = required('VERIFIABLE_CREDENTIAL'),
+  VERIFIABLE_PRESENTATION: verifiablePresentation = required('VERIFIABLE_PRESENTATION'),
+  CREDENTIAL_ISSUANCE_DATA: credentialIssuanceData = required('CREDENTIAL_ISSUANCE_DATA'),
+  UNSIGNED_CREDENTIAL_PARAMS: unsignedCredentialParams = required('UNSIGNED_CREDENTIAL_PARAMS'),
+
+  IOTA_CONFIGURATION: iotaConfiguration = required('IOTA_CONFIGURATION'),
+  IOTA_PRESENTATION_SUBMISSION: iotaPresentationSubmission = required('IOTA_PRESENTATION_SUBMISSION'),
+  IOTA_PRESENTATION_DEFINITION: iotaPresentationDefinition = required('IOTA_PRESENTATION_DEFINITION'),
+  // secrets for internal testing
+  ENCRYPTION_SEED: encryptionSeed = process.env.INTERNAL ? required('ENCRYPTION_SEED') : '',
+  SEED_PASSWORD: seedPassword = process.env.INTERNAL ? required('SEED_PASSWORD') : '',
 } = process.env
 
-// 🍌 init AuthProvider
+if (missingVariables.size > 0) {
+  throw new Error(`.env has missingVariables: ${Array.from(missingVariables).join(', ')}`)
+}
+
 const authProvider = new AuthProvider({
   keyId,
   tokenId,
@@ -40,21 +50,16 @@ export {
   apiKey,
   tokenId,
   verifiableCredential,
+  verifiablePresentation,
   credentialIssuanceData,
   projectId,
-  configurationId,
-  queryId,
-  did,
-  redirectUri,
-  presentation_submission,
-  vp_token,
-  unsignedCredential,
+  iotaConfiguration,
+  iotaPresentationSubmission,
+  iotaPresentationDefinition,
   unsignedCredentialParams,
-  walletId,
-  batchCredentialRequest,
 }
 
-export const getCisToken = (aud?: string) => {
+export const getCisToken = (aud: string = `${apiGatewayUrl}/cis`) => {
   const authenticationService = new AuthenticationService()
   const cisToken = authenticationService.signAssertion(
     encryptionSeed,
@@ -62,4 +67,43 @@ export const getCisToken = (aud?: string) => {
     aud,
   )
   return cisToken
+}
+
+export const createWallet = async () => {
+  const configuration = new WalletConfiguration({ apiKey })
+  const api = new WalletApi(configuration)
+
+  const { data } = await api.createWallet()
+  expect(data).to.have.a.property('wallet')
+
+  return data.wallet
+}
+
+export const deleteWallet = async (walletId: string) => {
+  const configuration = new WalletConfiguration({ apiKey })
+  const api = new WalletApi(configuration)
+
+  const { status } = await api.deleteWallet(walletId)
+  expect(status).to.eql(204)
+}
+
+export const isCredentialValid = async (credential) => {
+  const configuration = new VerificationConfiguration({ apiKey })
+  const api = new DefaultApi(configuration)
+
+  const credentials = { verifiableCredentials: [ credential ] }
+  const { data } = await api.verifyCredentials(credentials)
+
+  return data.isValid
+}
+
+export const extractRevocationStatusId = (url: string) => {
+  try {
+    const urlObj = new URL(url)
+    const segments = urlObj.pathname.split('/')
+
+    return segments[segments.length - 1] || null
+  } catch {
+    return null // In case the input is not a valid URL
+  }
 }
