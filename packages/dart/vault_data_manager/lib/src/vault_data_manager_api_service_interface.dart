@@ -164,7 +164,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// [exclusiveStartKey] - is primary key of the first item that this operation will evaluate.
   /// Use the value that was returned for lastEvaluatedKey in the previous operation.
   /// [exclusiveStartKey] - The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
+  /// [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
@@ -185,7 +185,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// [accountIndex] - positive integer used to identify account.
   /// [accountDid] - Decentralized identifier (DID) is type of identifier that enables verifiable, decentralized digital identity.
   /// [didProof] - // TODO: come up with simple explanation according to https://www.w3.org/TR/did-1.0/#verification-material;
-  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
+  /// [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
@@ -205,7 +205,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   });
 
   /// Deletes an account for a given [accountIndex].
-  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
+  /// [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
@@ -222,7 +222,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   });
 
   /// Updates an account for a given [accountIndex].
-  /// [cancelToken] - An [CancelToken] that can be used to cancel the operation
+  /// [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
   /// [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
