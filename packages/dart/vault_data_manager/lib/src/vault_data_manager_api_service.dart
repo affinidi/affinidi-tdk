@@ -31,7 +31,7 @@ class VaultDataManagerApiService
   final Dio _dio;
   final FilesApi _filesApi;
   final NodesApi _nodesApi;
-  final ConfigApi _configApi;
+  final ConfigurationApi _configApi;
   final ProfileDataApi _profileDataApi;
   final AccountsApi _accountsApi;
   final CryptographyService _cryptographyService = CryptographyService();
@@ -43,7 +43,7 @@ class VaultDataManagerApiService
   })  : _dio = dio ?? Dio(),
         _filesApi = apiClient.getFilesApi(),
         _nodesApi = apiClient.getNodesApi(),
-        _configApi = apiClient.getConfigApi(),
+        _configApi = apiClient.getConfigurationApi(),
         _profileDataApi = apiClient.getProfileDataApi(),
         _accountsApi = apiClient.getAccountsApi();
 
@@ -654,7 +654,7 @@ class VaultDataManagerApiService
     CancelToken? cancelToken,
   }) {
     try {
-      return _configApi.getConfig();
+      return _configApi.getConfiguration();
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
