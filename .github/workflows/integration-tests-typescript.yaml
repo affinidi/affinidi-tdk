@@ -11,6 +11,10 @@ on:
       - 'packages/jsii/**' # run only if any typescript packages are updated
       - 'tests/integration/typescript/**' # run only if any typescript tests are updated
 
+permissions:
+  actions: read
+  contents: read
+
 jobs:
   integration_tests:
     runs-on: ubuntu-latest
