@@ -11,7 +11,7 @@ resolution: workspace
 dependencies:
   affinidi_tdk_common: ^1.5.1
   affinidi_tdk_cryptography: ^2.3.2
-  affinidi_tdk_vault_data_manager_client: ^1.11.0
+  affinidi_tdk_vault_data_manager_client: ^1.11.1
   built_value: ^8.9.5
   dio: ^5.7.0
   http_mock_adapter: ^0.6.1
