@@ -2,20 +2,20 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:dio/dio.dart';
 
 /// An adapter that converts a [VaultCancelToken] to a [CancelToken].
-class CancelTokenAdapter implements CancelToken {
+class DioCancelTokenAdapter implements CancelToken {
   final CancelToken _cancelToken;
   final VaultCancelToken _vaultCancelToken;
 
-  CancelTokenAdapter._(this._cancelToken, this._vaultCancelToken) {
+  DioCancelTokenAdapter._(this._cancelToken, this._vaultCancelToken) {
     _vaultCancelToken.whenCancel.then((_) {
       cancel(_vaultCancelToken.cancelError);
     });
   }
 
-  /// Creates a [CancelTokenAdapter] from a [VaultCancelToken].
-  factory CancelTokenAdapter.from(VaultCancelToken vaultCancelToken) {
+  /// Creates a [DioCancelTokenAdapter] from a [VaultCancelToken].
+  factory DioCancelTokenAdapter.from(VaultCancelToken vaultCancelToken) {
     final cancelToken = CancelToken();
-    return CancelTokenAdapter._(cancelToken, vaultCancelToken);
+    return DioCancelTokenAdapter._(cancelToken, vaultCancelToken);
   }
 
   /// Cancels the request associated with this token.

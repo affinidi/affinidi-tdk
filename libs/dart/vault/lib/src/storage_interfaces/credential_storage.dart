@@ -1,7 +1,7 @@
 import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
-import '../helpers/cancel_token_interface.dart';
+import '../helpers/vault_cancel_token.dart';
 
 /// Interface for managing verifiable credentials storage.
 abstract class CredentialStorage {

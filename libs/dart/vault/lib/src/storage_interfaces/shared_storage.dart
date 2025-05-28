@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
-import '../helpers/cancel_token_interface.dart';
+import '../helpers/vault_cancel_token.dart';
 import 'item.dart';
 
 /// Interface for managing shared storage operations, including files, folders, and credentials.

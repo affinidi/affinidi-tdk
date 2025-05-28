@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import '../helpers/cancel_token_interface.dart';
+import '../helpers/vault_cancel_token.dart';
 import '../permissions.dart';
 import '../profile.dart';
 

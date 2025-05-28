@@ -3,15 +3,14 @@ import 'dart:async';
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 import '../exceptions/tdk_exception_type.dart';
-import 'cancel_token_interface.dart' as cancel_token_interface;
 
 /// A cancel token implementation for Vault operations.
-class VaultCancelToken implements cancel_token_interface.VaultCancelToken {
+class VaultCancelToken {
   final Completer<TdkException> _completer = Completer<TdkException>();
   TdkException? _cancelError;
   final String _defaultCancelMessage = 'Request has been cancelled';
 
-  @override
+  /// Cancels the request with an optional reason.
   void cancel({String? reason}) {
     if (!_completer.isCompleted) {
       _cancelError = TdkException(
@@ -22,12 +21,12 @@ class VaultCancelToken implements cancel_token_interface.VaultCancelToken {
     }
   }
 
-  @override
+  /// The error that occurred during cancellation, if any.
   TdkException? get cancelError => _cancelError;
 
-  @override
+  /// Indicates whether the request has been cancelled.
   bool get isCancelled => _completer.isCompleted;
 
-  @override
+  /// A future that completes when the cancellation occurs.
   Future<TdkException> get whenCancel => _completer.future;
 }

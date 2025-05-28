@@ -12,7 +12,7 @@ import 'package:ssi/ssi.dart';
 import '../credential/vfs_credential_storage.dart';
 import '../exceptions/tdk_exception_type.dart';
 import '../file/vfs_file_storage.dart';
-import '../helpers/cancel_token_adapter.dart';
+import '../helpers/dio_cancel_token_adapter.dart';
 import '../iam_api_service.dart';
 import '../iam_api_service_interface.dart';
 import '../model/account.dart';
@@ -407,7 +407,7 @@ class VfsProfileRepository implements ProfileRepository {
       granteeDid: granteeDid,
       permissions: permissions,
       cancelToken:
-          cancelToken != null ? CancelTokenAdapter.from(cancelToken) : null,
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );
 
     final accountVaultDataManagerService =
@@ -447,7 +447,7 @@ class VfsProfileRepository implements ProfileRepository {
     await iamApiService.revokeAccessVfs(
       granteeDid: granteeDid,
       cancelToken:
-          cancelToken != null ? CancelTokenAdapter.from(cancelToken) : null,
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );
   }
 

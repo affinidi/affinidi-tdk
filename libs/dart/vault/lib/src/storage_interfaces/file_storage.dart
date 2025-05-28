@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-import '../helpers/cancel_token_interface.dart';
+import '../helpers/vault_cancel_token.dart';
 import 'item.dart';
 
 /// Interface for managing file and folder storage operations.
