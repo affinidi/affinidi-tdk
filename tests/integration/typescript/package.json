@@ -10,7 +10,6 @@
   "author": "Affinidi",
   "license": "ISC",
   "devDependencies": {
-    "@affinidi/common": "^4.9.1",
     "@affinidi-tdk/auth-provider": "^1.31.0",
     "@affinidi-tdk/common": "^1.23.2",
     "@affinidi-tdk/credential-issuance-client": "../../../clients/typescript/credential-issuance-client",
@@ -20,6 +19,8 @@
     "@affinidi-tdk/iota-core": "../../../clients/typescript/iota-core",
     "@affinidi-tdk/login-configuration-client": "../../../clients/typescript/login-configuration-client",
     "@affinidi-tdk/wallets-client": "../../../clients/typescript/wallets-client",
+    "@affinidi/common": "^4.9.1",
+    "@affinidi/vc-common": "^2.1.2",
     "@types/node": "18.11.18",
     "base64url": "^3.0.1",
     "chai": "^5.2.0",
