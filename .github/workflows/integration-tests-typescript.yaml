@@ -1,0 +1,50 @@
+name: Integration tests for Typescript
+
+on:
+  # we need to keep on push as target because of this issue https://github.com/orgs/community/discussions/65321
+  push:
+    branches:
+     - '**'
+     - '!main'
+    paths:
+      - 'clients/typescript/**' # run only if any typescript clients are updated
+      - 'packages/jsii/**' # run only if any typescript packages are updated
+      - 'tests/integration/typescript/**' # run only if any typescript tests are updated
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  integration_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: tests/integration/typescript
+
+      - name: Cache testing env file
+        uses: actions/cache@v4
+        id: testing-env-cache
+        with:
+          path: tests/.env
+          key: ${{ runner.os }}-testing-env-${{ hashFiles('tests/.env') }}
+
+      - if: ${{ steps.testing-env-cache.outputs.cache-hit != 'true' }}
+        name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name: Run integration tests
+        run: npm run test:internal
+        working-directory: tests/integration/typescript
