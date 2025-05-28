@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 
 final seed = Uint8List.fromList([
@@ -38,12 +37,14 @@ final seed = Uint8List.fromList([
   205
 ]);
 const _rootAccountDerivationPath = "m/44'/60'/0'/0'/0'";
-final keyStore = InMemoryKeyStore();
+
+Future<KeyPair> getRootKeyPair() async {
+  final wallet = Bip32Wallet.fromSeed(seed);
+  return await wallet.generateKey(keyId: _rootAccountDerivationPath);
+}
 
 Future<DidSigner> getDidSigner() async {
-  final wallet = await Bip32Wallet.fromSeed(seed, keyStore);
-  final keyPair =
-      await wallet.deriveKey(derivationPath: _rootAccountDerivationPath);
+  final keyPair = await getRootKeyPair();
   final accountDidDocument = DidKey.generateDocument(keyPair.publicKey);
 
   return DidSigner(

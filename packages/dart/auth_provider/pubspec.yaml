@@ -9,9 +9,9 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_common: ^1.0.0
-  dart_jsonwebtoken: ^2.12.0
-  pointycastle: ^3.9.1
+  affinidi_tdk_common: ^1.5.1
+  dart_jsonwebtoken: ^3.2.0
+  pointycastle: ^4.0.0
   asn1lib: ^1.4.0
   http: ^1.1.0
   uuid: ^4.5.1

@@ -1,10 +1,9 @@
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 void main() {
   group('Login Configuration Client Integration Tests', () {
@@ -12,23 +11,9 @@ void main() {
     late AllowListApi allowListApi;
     late DenyListApi denyListApi;
 
-    setUp(() async {
-      final env = getProjectEnvironment();
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
-
+    setUpAll(() async {
       final loginConfigurationClient = AffinidiTdkLoginConfigurationClient(
-          dio: Dio(BaseOptions(
-            baseUrl: AffinidiTdkLoginConfigurationClient.basePath,
-            connectTimeout: const Duration(seconds: 5),
-            receiveTimeout: const Duration(seconds: 5),
-          )),
-          authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
 
       groupApi = loginConfigurationClient.getGroupApi();
       allowListApi = loginConfigurationClient.getAllowListApi();

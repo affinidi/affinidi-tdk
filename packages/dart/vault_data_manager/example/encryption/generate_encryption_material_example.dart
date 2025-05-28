@@ -9,13 +9,12 @@ import '../../test/fixtures/encryption/jwk.dart';
 /// of the wallet crypto material.
 Future<void> main() async {
   final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
-    kek: encryptionKey,
     cryptographyService: CryptographyService(),
     jwk: jwk,
   );
 
-  final dataEncryptionMaterial =
-      await vaultDataManagerEncryptionService.generateDataEncryptionMaterial();
+  final dataEncryptionMaterial = await vaultDataManagerEncryptionService
+      .generateDataEncryptionMaterial(encryptionKey: encryptionKey);
 
   print('Raw DEK: ${dataEncryptionMaterial.dek}');
   print(

@@ -9,10 +9,10 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_vault: 1.0.0-dev.2
-  affinidi_tdk_vault_storages: 1.0.0-dev.2
+  affinidi_tdk_vault: 1.1.0-dev.4
+  affinidi_tdk_vault_storages: 1.1.0-dev.9
   base_codecs: ^1.0.1
-  ssi: 1.0.0-dev.22
+  ssi: ^1.0.0
 
 dev_dependencies:
   dart_flutter_team_lints: ^3.2.1

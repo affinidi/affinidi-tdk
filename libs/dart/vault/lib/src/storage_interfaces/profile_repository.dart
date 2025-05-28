@@ -11,11 +11,6 @@ abstract class ProfileRepository {
   /// Retrieves a list of all available profiles.
   Future<List<Profile>> listProfiles();
 
-  /// Retrieves a specific profile by its ID.
-  ///
-  /// [id] - The unique identifier of the profile to retrieve.
-  Future<Profile> getProfile(String id);
-
   /// Creates a new profile.
   ///
   /// [name] - The name of the new profile.

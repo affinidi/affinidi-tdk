@@ -1,5 +1,7 @@
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart'
+    as vdm;
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 import 'package:dio/dio.dart';
@@ -34,8 +36,11 @@ void main() {
       vaultDataManagerEncryptionServiceMocks;
   late VaultDataManagerApiServiceMocks vaultDataManagerApiServiceMocks;
   late VaultDataManagerService vaultDataManagerService;
+  late VaultDataManagerServiceFactory vaultDataManagerServiceFactory;
+  late VaultDelegatedDataManagerServiceFactory
+      vaultDelegatedDataManagerServiceFactory;
 
-  setUp(() {
+  setUp(() async {
     mockVaultDataManagerApiService = MockVaultDataManagerApiService();
     mockVaultDataManagerEncryptionService =
         MockVaultDataManagerEncryptionService();
@@ -45,10 +50,16 @@ void main() {
     );
     vaultDataManagerApiServiceMocks =
         VaultDataManagerApiServiceMocks(mockVaultDataManagerApiService);
+    final keyPair = await getRootKeyPair();
     vaultDataManagerService = VaultDataManagerService(
       mockVaultDataManagerEncryptionService,
       mockVaultDataManagerApiService,
+      keyPair: await getRootKeyPair(),
+      encryptedKey: await keyPair.encrypt(Uint8List(2)),
     );
+    vaultDataManagerServiceFactory = VaultDataManagerService.create;
+    vaultDelegatedDataManagerServiceFactory =
+        VaultDataManagerService.createDelegated;
 
     registerFallbackValue(Uint8List(0));
   });
@@ -58,11 +69,11 @@ void main() {
       () {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
-        final didSigner = await getDidSigner();
+        final keyPair = await getRootKeyPair();
 
-        final vaultDataManagerService = await VaultDataManagerService.create(
-          didSigner: didSigner,
-          encryptionKey: Uint8List(2),
+        final vaultDataManagerService = await vaultDataManagerServiceFactory(
+          encryptedDekek: Uint8List(2),
+          keyPair: keyPair,
         );
 
         await expectLater(
@@ -71,16 +82,15 @@ void main() {
     });
   });
 
-  group('When creating vault data manager instance using delegeated token', () {
+  group('When creating vault data manager instance using delegated token', () {
     group('and it was created successfully,', () {
       test('it pass without exception thrown', () async {
-        final didSigner = await getDidSigner();
-
+        final keyPair = await getRootKeyPair();
         final vaultDataManagerService =
-            await VaultDataManagerService.createDelegated(
-          didSigner: didSigner,
+            await vaultDelegatedDataManagerServiceFactory(
           profileDid: 'profile_did',
-          encryptionKey: Uint8List(2),
+          encryptedDekek: Uint8List(2),
+          keyPair: keyPair,
         );
 
         await expectLater(
@@ -238,6 +248,31 @@ void main() {
         verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
       });
     });
+
+    group('and it fails,', () {
+      test('it throws exception', () async {
+        when(
+          vaultDataManagerApiServiceMocks.deleteNodeById,
+        ).thenThrow(
+          TdkException(
+            message: 'something went wrong',
+            code: vdm.TdkExceptionType.unableToDeleteNode.code,
+          ),
+        );
+
+        await expectLater(
+            vaultDataManagerService.deleteFile(nodeId),
+            throwsA(
+              isA<TdkException>().having(
+                (e) => e.code,
+                'code',
+                TdkExceptionType.unableToDeleteFile.code,
+              ),
+            ));
+
+        verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
+      });
+    });
   });
 
   group('When deleting folder', () {
@@ -253,6 +288,32 @@ void main() {
         verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
       });
     });
+
+    group('and it fails,', () {
+      test('it throws exception', () async {
+        when(
+          vaultDataManagerApiServiceMocks.deleteNodeById,
+        ).thenThrow(
+          TdkException(
+            message: 'something went wrong',
+            code: vdm.TdkExceptionType.unableToDeleteNode.code,
+          ),
+        );
+
+        await expectLater(
+          vaultDataManagerService.deleteFolder(nodeId),
+          throwsA(
+            isA<TdkException>().having(
+              (e) => e.code,
+              'code',
+              TdkExceptionType.unableToDeleteFolder.code,
+            ),
+          ),
+        );
+
+        verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
+      });
+    });
   });
 
   group('When deleting profile', () {
@@ -264,6 +325,32 @@ void main() {
             Response<DeleteNodeDto>(requestOptions: RequestOptions(path: '')));
 
         await vaultDataManagerService.deleteProfile(profileId);
+
+        verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
+      });
+    });
+
+    group('and it fails,', () {
+      test('it throws exception', () async {
+        when(
+          vaultDataManagerApiServiceMocks.deleteNodeById,
+        ).thenThrow(
+          TdkException(
+            message: 'something went wrong',
+            code: vdm.TdkExceptionType.unableToDeleteNode.code,
+          ),
+        );
+
+        await expectLater(
+          vaultDataManagerService.deleteProfile(profileId),
+          throwsA(
+            isA<TdkException>().having(
+              (e) => e.code,
+              'code',
+              TdkExceptionType.unableToDeleteProfile.code,
+            ),
+          ),
+        );
 
         verify(vaultDataManagerApiServiceMocks.deleteNodeById).called(1);
       });

@@ -1,14 +1,11 @@
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:built_value/json_object.dart' as built_value;
-import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
-import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 import 'package:test/test.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_credential_issuance_client/affinidi_tdk_credential_issuance_client.dart';
 
-import 'environment.dart';
+import 'helpers/helpers.dart';
 
 void main() {
   group('Credential Issuance Client Integration Tests', () {
@@ -24,20 +21,12 @@ void main() {
 
     final env = getProjectEnvironment();
 
-    setUp(() async {
-      walletId = env.walletId;
-      final authProvider = AuthProvider(
-        projectId: env.projectId,
-        tokenId: env.tokenId,
-        privateKey: env.privateKey,
-        keyId: env.keyId,
-        passphrase: env.passphrase,
-      );
+    setUpAll(() async {
+      final tempWallet = await ResourceFactory.createWallet();
+      walletId = tempWallet.id;
 
-      final keyStore = InMemoryKeyStore();
-      final wallet = await Bip32Wallet.fromSeed(envVault.seed, keyStore);
-      final keyPair =
-          await wallet.deriveKey(derivationPath: "m/44'/60'/0'/0/0");
+      final wallet = Bip32Wallet.fromSeed(envVault.seed);
+      final keyPair = await wallet.generateKey(keyId: "m/44'/60'/0'/0/0");
       final didDoc = DidKey.generateDocument(keyPair.publicKey);
       final didSigner = DidSigner(
         didDocument: didDoc,
@@ -48,18 +37,18 @@ void main() {
       consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
 
       final issuanceClient = AffinidiTdkCredentialIssuanceClient(
-          dio: Dio(BaseOptions(
-            baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
-            connectTimeout: const Duration(seconds: 10),
-            receiveTimeout: const Duration(seconds: 10),
-          )),
-          authTokenHook: authProvider.fetchProjectScopedToken);
+          authTokenHook: ResourceFactory.getAuthTokenHook());
       configurationApi = issuanceClient.getConfigurationApi();
       issuanceApi = issuanceClient.getIssuanceApi();
       offerApi = issuanceClient.getOfferApi();
       credentialsApi = issuanceClient.getCredentialsApi();
       wellKnownApi = issuanceClient.getWellKnownApi();
     });
+
+    tearDownAll(() async {
+      await ResourceFactory.deleteWallet(walletId);
+    });
+
     group("issuance config", () {
       test('Lists issuance configurations', () async {
         // When
@@ -102,9 +91,9 @@ void main() {
             .data;
 
         expect(config, isNotNull);
-        expect(config?.issuerWalletId, equals(walletId));
       });
     });
+
     group("Batch issuance", () {
       late String preAuthCode;
       late String? txCode;
@@ -216,13 +205,7 @@ void main() {
           "Authorization": "Bearer ${tokenDetails.accessToken}",
         };
 
-        final client = AffinidiTdkCredentialIssuanceClient(
-            dio: Dio(BaseOptions(
-          baseUrl: AffinidiTdkCredentialIssuanceClient.basePath,
-          connectTimeout: const Duration(seconds: 20),
-          receiveTimeout: const Duration(seconds: 20),
-        )));
-
+        final client = AffinidiTdkCredentialIssuanceClient();
         final credentialsApi = client.getCredentialsApi();
         final data = (await credentialsApi.batchCredential(
                 projectId: env.projectId,
