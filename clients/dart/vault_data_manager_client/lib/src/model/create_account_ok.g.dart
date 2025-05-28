@@ -15,24 +15,17 @@ class _$CreateAccountOK extends CreateAccountOK {
   final JsonObject? metadata;
 
   factory _$CreateAccountOK([void Function(CreateAccountOKBuilder)? updates]) =>
-      (new CreateAccountOKBuilder()..update(updates))._build();
+      (CreateAccountOKBuilder()..update(updates))._build();
 
   _$CreateAccountOK._(
       {required this.accountIndex, required this.accountDid, this.metadata})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        accountIndex, r'CreateAccountOK', 'accountIndex');
-    BuiltValueNullFieldError.checkNotNull(
-        accountDid, r'CreateAccountOK', 'accountDid');
-  }
-
+      : super._();
   @override
   CreateAccountOK rebuild(void Function(CreateAccountOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  CreateAccountOKBuilder toBuilder() =>
-      new CreateAccountOKBuilder()..replace(this);
+  CreateAccountOKBuilder toBuilder() => CreateAccountOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -96,7 +89,6 @@ class CreateAccountOKBuilder
 
   @override
   void replace(CreateAccountOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateAccountOK;
   }
 
@@ -110,7 +102,7 @@ class CreateAccountOKBuilder
 
   _$CreateAccountOK _build() {
     final _$result = _$v ??
-        new _$CreateAccountOK._(
+        _$CreateAccountOK._(
           accountIndex: BuiltValueNullFieldError.checkNotNull(
               accountIndex, r'CreateAccountOK', 'accountIndex'),
           accountDid: BuiltValueNullFieldError.checkNotNull(

@@ -16,12 +16,12 @@ TokenAuthenticationMethodDtoTypeEnum
     case 'PRIVATE_KEY':
       return _$tokenAuthenticationMethodDtoTypeEnum_PRIVATE_KEY;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<TokenAuthenticationMethodDtoTypeEnum>
-    _$tokenAuthenticationMethodDtoTypeEnumValues = new BuiltSet<
+    _$tokenAuthenticationMethodDtoTypeEnumValues = BuiltSet<
         TokenAuthenticationMethodDtoTypeEnum>(const <TokenAuthenticationMethodDtoTypeEnum>[
   _$tokenAuthenticationMethodDtoTypeEnum_PRIVATE_KEY,
 ]);
@@ -51,12 +51,12 @@ TokenAuthenticationMethodDtoSigningAlgorithmEnum
     case 'eS512':
       return _$tokenAuthenticationMethodDtoSigningAlgorithmEnum_eS512;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<TokenAuthenticationMethodDtoSigningAlgorithmEnum>
-    _$tokenAuthenticationMethodDtoSigningAlgorithmEnumValues = new BuiltSet<
+    _$tokenAuthenticationMethodDtoSigningAlgorithmEnumValues = BuiltSet<
         TokenAuthenticationMethodDtoSigningAlgorithmEnum>(const <TokenAuthenticationMethodDtoSigningAlgorithmEnum>[
   _$tokenAuthenticationMethodDtoSigningAlgorithmEnum_rS256,
   _$tokenAuthenticationMethodDtoSigningAlgorithmEnum_rS512,
@@ -66,10 +66,10 @@ final BuiltSet<TokenAuthenticationMethodDtoSigningAlgorithmEnum>
 
 Serializer<TokenAuthenticationMethodDtoTypeEnum>
     _$tokenAuthenticationMethodDtoTypeEnumSerializer =
-    new _$TokenAuthenticationMethodDtoTypeEnumSerializer();
+    _$TokenAuthenticationMethodDtoTypeEnumSerializer();
 Serializer<TokenAuthenticationMethodDtoSigningAlgorithmEnum>
     _$tokenAuthenticationMethodDtoSigningAlgorithmEnumSerializer =
-    new _$TokenAuthenticationMethodDtoSigningAlgorithmEnumSerializer();
+    _$TokenAuthenticationMethodDtoSigningAlgorithmEnumSerializer();
 
 class _$TokenAuthenticationMethodDtoTypeEnumSerializer
     implements PrimitiveSerializer<TokenAuthenticationMethodDtoTypeEnum> {
@@ -144,13 +144,9 @@ class _$TokenAuthenticationMethodDto extends TokenAuthenticationMethodDto {
 
   factory _$TokenAuthenticationMethodDto(
           [void Function(TokenAuthenticationMethodDtoBuilder)? updates]) =>
-      (new TokenAuthenticationMethodDtoBuilder()..update(updates))._build();
+      (TokenAuthenticationMethodDtoBuilder()..update(updates))._build();
 
-  _$TokenAuthenticationMethodDto._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        oneOf, r'TokenAuthenticationMethodDto', 'oneOf');
-  }
-
+  _$TokenAuthenticationMethodDto._({required this.oneOf}) : super._();
   @override
   TokenAuthenticationMethodDto rebuild(
           void Function(TokenAuthenticationMethodDtoBuilder) updates) =>
@@ -158,7 +154,7 @@ class _$TokenAuthenticationMethodDto extends TokenAuthenticationMethodDto {
 
   @override
   TokenAuthenticationMethodDtoBuilder toBuilder() =>
-      new TokenAuthenticationMethodDtoBuilder()..replace(this);
+      TokenAuthenticationMethodDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -207,7 +203,6 @@ class TokenAuthenticationMethodDtoBuilder
 
   @override
   void replace(TokenAuthenticationMethodDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TokenAuthenticationMethodDto;
   }
 
@@ -221,7 +216,7 @@ class TokenAuthenticationMethodDtoBuilder
 
   _$TokenAuthenticationMethodDto _build() {
     final _$result = _$v ??
-        new _$TokenAuthenticationMethodDto._(
+        _$TokenAuthenticationMethodDto._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'TokenAuthenticationMethodDto', 'oneOf'),
         );

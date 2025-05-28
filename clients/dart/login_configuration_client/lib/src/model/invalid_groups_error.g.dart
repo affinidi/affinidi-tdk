@@ -15,12 +15,12 @@ InvalidGroupsErrorNameEnum _$invalidGroupsErrorNameEnumValueOf(String name) {
     case 'invalidGroupsError':
       return _$invalidGroupsErrorNameEnum_invalidGroupsError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidGroupsErrorNameEnum> _$invalidGroupsErrorNameEnumValues =
-    new BuiltSet<InvalidGroupsErrorNameEnum>(const <InvalidGroupsErrorNameEnum>[
+    BuiltSet<InvalidGroupsErrorNameEnum>(const <InvalidGroupsErrorNameEnum>[
   _$invalidGroupsErrorNameEnum_invalidGroupsError,
 ]);
 
@@ -34,12 +34,12 @@ InvalidGroupsErrorMessageEnum _$invalidGroupsErrorMessageEnumValueOf(
     case 'invalidGroupsNames':
       return _$invalidGroupsErrorMessageEnum_invalidGroupsNames;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidGroupsErrorMessageEnum>
-    _$invalidGroupsErrorMessageEnumValues = new BuiltSet<
+    _$invalidGroupsErrorMessageEnumValues = BuiltSet<
         InvalidGroupsErrorMessageEnum>(const <InvalidGroupsErrorMessageEnum>[
   _$invalidGroupsErrorMessageEnum_invalidGroupsNames,
 ]);
@@ -54,24 +54,24 @@ InvalidGroupsErrorHttpStatusCodeEnum
     case 'number400':
       return _$invalidGroupsErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidGroupsErrorHttpStatusCodeEnum>
-    _$invalidGroupsErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$invalidGroupsErrorHttpStatusCodeEnumValues = BuiltSet<
         InvalidGroupsErrorHttpStatusCodeEnum>(const <InvalidGroupsErrorHttpStatusCodeEnum>[
   _$invalidGroupsErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidGroupsErrorNameEnum> _$invalidGroupsErrorNameEnumSerializer =
-    new _$InvalidGroupsErrorNameEnumSerializer();
+    _$InvalidGroupsErrorNameEnumSerializer();
 Serializer<InvalidGroupsErrorMessageEnum>
     _$invalidGroupsErrorMessageEnumSerializer =
-    new _$InvalidGroupsErrorMessageEnumSerializer();
+    _$InvalidGroupsErrorMessageEnumSerializer();
 Serializer<InvalidGroupsErrorHttpStatusCodeEnum>
     _$invalidGroupsErrorHttpStatusCodeEnumSerializer =
-    new _$InvalidGroupsErrorHttpStatusCodeEnumSerializer();
+    _$InvalidGroupsErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidGroupsErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidGroupsErrorNameEnum> {
@@ -172,7 +172,7 @@ class _$InvalidGroupsError extends InvalidGroupsError {
 
   factory _$InvalidGroupsError(
           [void Function(InvalidGroupsErrorBuilder)? updates]) =>
-      (new InvalidGroupsErrorBuilder()..update(updates))._build();
+      (InvalidGroupsErrorBuilder()..update(updates))._build();
 
   _$InvalidGroupsError._(
       {required this.name,
@@ -180,16 +180,7 @@ class _$InvalidGroupsError extends InvalidGroupsError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'InvalidGroupsError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'InvalidGroupsError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'InvalidGroupsError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'InvalidGroupsError', 'traceId');
-  }
-
+      : super._();
   @override
   InvalidGroupsError rebuild(
           void Function(InvalidGroupsErrorBuilder) updates) =>
@@ -197,7 +188,7 @@ class _$InvalidGroupsError extends InvalidGroupsError {
 
   @override
   InvalidGroupsErrorBuilder toBuilder() =>
-      new InvalidGroupsErrorBuilder()..replace(this);
+      InvalidGroupsErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -259,7 +250,7 @@ class InvalidGroupsErrorBuilder
 
   ListBuilder<InvalidParameterErrorDetailsInner>? _details;
   ListBuilder<InvalidParameterErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<InvalidParameterErrorDetailsInner>();
+      _$this._details ??= ListBuilder<InvalidParameterErrorDetailsInner>();
   set details(ListBuilder<InvalidParameterErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -282,7 +273,6 @@ class InvalidGroupsErrorBuilder
 
   @override
   void replace(InvalidGroupsError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidGroupsError;
   }
 
@@ -298,7 +288,7 @@ class InvalidGroupsErrorBuilder
     _$InvalidGroupsError _$result;
     try {
       _$result = _$v ??
-          new _$InvalidGroupsError._(
+          _$InvalidGroupsError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidGroupsError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -315,7 +305,7 @@ class InvalidGroupsErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'InvalidGroupsError', _$failedField, e.toString());
       }
       rethrow;

@@ -16,12 +16,12 @@ OperationForbiddenErrorNameEnum _$operationForbiddenErrorNameEnumValueOf(
     case 'operationForbiddenError':
       return _$operationForbiddenErrorNameEnum_operationForbiddenError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<OperationForbiddenErrorNameEnum>
-    _$operationForbiddenErrorNameEnumValues = new BuiltSet<
+    _$operationForbiddenErrorNameEnumValues = BuiltSet<
         OperationForbiddenErrorNameEnum>(const <OperationForbiddenErrorNameEnum>[
   _$operationForbiddenErrorNameEnum_operationForbiddenError,
 ]);
@@ -37,12 +37,12 @@ OperationForbiddenErrorMessageEnum _$operationForbiddenErrorMessageEnumValueOf(
     case 'operationForbiddenColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod':
       return _$operationForbiddenErrorMessageEnum_operationForbiddenColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<OperationForbiddenErrorMessageEnum>
-    _$operationForbiddenErrorMessageEnumValues = new BuiltSet<
+    _$operationForbiddenErrorMessageEnumValues = BuiltSet<
         OperationForbiddenErrorMessageEnum>(const <OperationForbiddenErrorMessageEnum>[
   _$operationForbiddenErrorMessageEnum_operationForbiddenColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod,
 ]);
@@ -57,25 +57,25 @@ OperationForbiddenErrorHttpStatusCodeEnum
     case 'number403':
       return _$operationForbiddenErrorHttpStatusCodeEnum_number403;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<OperationForbiddenErrorHttpStatusCodeEnum>
-    _$operationForbiddenErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$operationForbiddenErrorHttpStatusCodeEnumValues = BuiltSet<
         OperationForbiddenErrorHttpStatusCodeEnum>(const <OperationForbiddenErrorHttpStatusCodeEnum>[
   _$operationForbiddenErrorHttpStatusCodeEnum_number403,
 ]);
 
 Serializer<OperationForbiddenErrorNameEnum>
     _$operationForbiddenErrorNameEnumSerializer =
-    new _$OperationForbiddenErrorNameEnumSerializer();
+    _$OperationForbiddenErrorNameEnumSerializer();
 Serializer<OperationForbiddenErrorMessageEnum>
     _$operationForbiddenErrorMessageEnumSerializer =
-    new _$OperationForbiddenErrorMessageEnumSerializer();
+    _$OperationForbiddenErrorMessageEnumSerializer();
 Serializer<OperationForbiddenErrorHttpStatusCodeEnum>
     _$operationForbiddenErrorHttpStatusCodeEnumSerializer =
-    new _$OperationForbiddenErrorHttpStatusCodeEnumSerializer();
+    _$OperationForbiddenErrorHttpStatusCodeEnumSerializer();
 
 class _$OperationForbiddenErrorNameEnumSerializer
     implements PrimitiveSerializer<OperationForbiddenErrorNameEnum> {
@@ -179,7 +179,7 @@ class _$OperationForbiddenError extends OperationForbiddenError {
 
   factory _$OperationForbiddenError(
           [void Function(OperationForbiddenErrorBuilder)? updates]) =>
-      (new OperationForbiddenErrorBuilder()..update(updates))._build();
+      (OperationForbiddenErrorBuilder()..update(updates))._build();
 
   _$OperationForbiddenError._(
       {required this.name,
@@ -187,17 +187,7 @@ class _$OperationForbiddenError extends OperationForbiddenError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'OperationForbiddenError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'OperationForbiddenError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'OperationForbiddenError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'OperationForbiddenError', 'traceId');
-  }
-
+      : super._();
   @override
   OperationForbiddenError rebuild(
           void Function(OperationForbiddenErrorBuilder) updates) =>
@@ -205,7 +195,7 @@ class _$OperationForbiddenError extends OperationForbiddenError {
 
   @override
   OperationForbiddenErrorBuilder toBuilder() =>
-      new OperationForbiddenErrorBuilder()..replace(this);
+      OperationForbiddenErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -269,7 +259,7 @@ class OperationForbiddenErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -292,7 +282,6 @@ class OperationForbiddenErrorBuilder
 
   @override
   void replace(OperationForbiddenError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$OperationForbiddenError;
   }
 
@@ -308,7 +297,7 @@ class OperationForbiddenErrorBuilder
     _$OperationForbiddenError _$result;
     try {
       _$result = _$v ??
-          new _$OperationForbiddenError._(
+          _$OperationForbiddenError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'OperationForbiddenError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -325,7 +314,7 @@ class OperationForbiddenErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'OperationForbiddenError', _$failedField, e.toString());
       }
       rethrow;

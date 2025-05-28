@@ -22,19 +22,19 @@ PdStatusDirectiveEnum _$pdStatusDirectiveEnumValueOf(String name) {
     case 'disallowed':
       return _$pdStatusDirectiveEnum_disallowed;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<PdStatusDirectiveEnum> _$pdStatusDirectiveEnumValues =
-    new BuiltSet<PdStatusDirectiveEnum>(const <PdStatusDirectiveEnum>[
+    BuiltSet<PdStatusDirectiveEnum>(const <PdStatusDirectiveEnum>[
   _$pdStatusDirectiveEnum_required_,
   _$pdStatusDirectiveEnum_allowed,
   _$pdStatusDirectiveEnum_disallowed,
 ]);
 
 Serializer<PdStatusDirectiveEnum> _$pdStatusDirectiveEnumSerializer =
-    new _$PdStatusDirectiveEnumSerializer();
+    _$PdStatusDirectiveEnumSerializer();
 
 class _$PdStatusDirectiveEnumSerializer
     implements PrimitiveSerializer<PdStatusDirectiveEnum> {
@@ -71,16 +71,15 @@ class _$PdStatus extends PdStatus {
   final PdStatusDirectiveEnum? directive;
 
   factory _$PdStatus([void Function(PdStatusBuilder)? updates]) =>
-      (new PdStatusBuilder()..update(updates))._build();
+      (PdStatusBuilder()..update(updates))._build();
 
   _$PdStatus._({this.directive}) : super._();
-
   @override
   PdStatus rebuild(void Function(PdStatusBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  PdStatusBuilder toBuilder() => new PdStatusBuilder()..replace(this);
+  PdStatusBuilder toBuilder() => PdStatusBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -127,7 +126,6 @@ class PdStatusBuilder implements Builder<PdStatus, PdStatusBuilder> {
 
   @override
   void replace(PdStatus other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PdStatus;
   }
 
@@ -141,7 +139,7 @@ class PdStatusBuilder implements Builder<PdStatus, PdStatusBuilder> {
 
   _$PdStatus _build() {
     final _$result = _$v ??
-        new _$PdStatus._(
+        _$PdStatus._(
           directive: directive,
         );
     replace(_$result);

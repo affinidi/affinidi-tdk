@@ -18,20 +18,12 @@ class _$LoginConfigurationClientMetadataInput
   factory _$LoginConfigurationClientMetadataInput(
           [void Function(LoginConfigurationClientMetadataInputBuilder)?
               updates]) =>
-      (new LoginConfigurationClientMetadataInputBuilder()..update(updates))
+      (LoginConfigurationClientMetadataInputBuilder()..update(updates))
           ._build();
 
   _$LoginConfigurationClientMetadataInput._(
       {required this.name, required this.origin, required this.logo})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'LoginConfigurationClientMetadataInput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        origin, r'LoginConfigurationClientMetadataInput', 'origin');
-    BuiltValueNullFieldError.checkNotNull(
-        logo, r'LoginConfigurationClientMetadataInput', 'logo');
-  }
-
+      : super._();
   @override
   LoginConfigurationClientMetadataInput rebuild(
           void Function(LoginConfigurationClientMetadataInputBuilder)
@@ -40,7 +32,7 @@ class _$LoginConfigurationClientMetadataInput
 
   @override
   LoginConfigurationClientMetadataInputBuilder toBuilder() =>
-      new LoginConfigurationClientMetadataInputBuilder()..replace(this);
+      LoginConfigurationClientMetadataInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -107,7 +99,6 @@ class LoginConfigurationClientMetadataInputBuilder
 
   @override
   void replace(LoginConfigurationClientMetadataInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginConfigurationClientMetadataInput;
   }
 
@@ -122,7 +113,7 @@ class LoginConfigurationClientMetadataInputBuilder
 
   _$LoginConfigurationClientMetadataInput _build() {
     final _$result = _$v ??
-        new _$LoginConfigurationClientMetadataInput._(
+        _$LoginConfigurationClientMetadataInput._(
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'LoginConfigurationClientMetadataInput', 'name'),
           origin: BuiltValueNullFieldError.checkNotNull(

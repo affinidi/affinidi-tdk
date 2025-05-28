@@ -14,14 +14,10 @@ class _$CreateCredentialInput extends CreateCredentialInput {
 
   factory _$CreateCredentialInput(
           [void Function(CreateCredentialInputBuilder)? updates]) =>
-      (new CreateCredentialInputBuilder()..update(updates))._build();
+      (CreateCredentialInputBuilder()..update(updates))._build();
 
   _$CreateCredentialInput._({this.credentialIdentifier, required this.proof})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        proof, r'CreateCredentialInput', 'proof');
-  }
-
+      : super._();
   @override
   CreateCredentialInput rebuild(
           void Function(CreateCredentialInputBuilder) updates) =>
@@ -29,7 +25,7 @@ class _$CreateCredentialInput extends CreateCredentialInput {
 
   @override
   CreateCredentialInputBuilder toBuilder() =>
-      new CreateCredentialInputBuilder()..replace(this);
+      CreateCredentialInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -68,7 +64,7 @@ class CreateCredentialInputBuilder
 
   CredentialProofBuilder? _proof;
   CredentialProofBuilder get proof =>
-      _$this._proof ??= new CredentialProofBuilder();
+      _$this._proof ??= CredentialProofBuilder();
   set proof(CredentialProofBuilder? proof) => _$this._proof = proof;
 
   CreateCredentialInputBuilder() {
@@ -87,7 +83,6 @@ class CreateCredentialInputBuilder
 
   @override
   void replace(CreateCredentialInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateCredentialInput;
   }
 
@@ -103,7 +98,7 @@ class CreateCredentialInputBuilder
     _$CreateCredentialInput _$result;
     try {
       _$result = _$v ??
-          new _$CreateCredentialInput._(
+          _$CreateCredentialInput._(
             credentialIdentifier: credentialIdentifier,
             proof: proof.build(),
           );
@@ -113,7 +108,7 @@ class CreateCredentialInputBuilder
         _$failedField = 'proof';
         proof.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateCredentialInput', _$failedField, e.toString());
       }
       rethrow;

@@ -14,11 +14,10 @@ class _$CisConfigurationWebhookSettingEndpoint
   factory _$CisConfigurationWebhookSettingEndpoint(
           [void Function(CisConfigurationWebhookSettingEndpointBuilder)?
               updates]) =>
-      (new CisConfigurationWebhookSettingEndpointBuilder()..update(updates))
+      (CisConfigurationWebhookSettingEndpointBuilder()..update(updates))
           ._build();
 
   _$CisConfigurationWebhookSettingEndpoint._({this.url}) : super._();
-
   @override
   CisConfigurationWebhookSettingEndpoint rebuild(
           void Function(CisConfigurationWebhookSettingEndpointBuilder)
@@ -27,7 +26,7 @@ class _$CisConfigurationWebhookSettingEndpoint
 
   @override
   CisConfigurationWebhookSettingEndpointBuilder toBuilder() =>
-      new CisConfigurationWebhookSettingEndpointBuilder()..replace(this);
+      CisConfigurationWebhookSettingEndpointBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -77,7 +76,6 @@ class CisConfigurationWebhookSettingEndpointBuilder
 
   @override
   void replace(CisConfigurationWebhookSettingEndpoint other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CisConfigurationWebhookSettingEndpoint;
   }
 
@@ -92,7 +90,7 @@ class CisConfigurationWebhookSettingEndpointBuilder
 
   _$CisConfigurationWebhookSettingEndpoint _build() {
     final _$result = _$v ??
-        new _$CisConfigurationWebhookSettingEndpoint._(
+        _$CisConfigurationWebhookSettingEndpoint._(
           url: url,
         );
     replace(_$result);

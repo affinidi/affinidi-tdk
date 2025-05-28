@@ -26,7 +26,7 @@ class _$GetScannedFileInfoOK extends GetScannedFileInfoOK {
 
   factory _$GetScannedFileInfoOK(
           [void Function(GetScannedFileInfoOKBuilder)? updates]) =>
-      (new GetScannedFileInfoOKBuilder()..update(updates))._build();
+      (GetScannedFileInfoOKBuilder()..update(updates))._build();
 
   _$GetScannedFileInfoOK._(
       {required this.data,
@@ -37,23 +37,7 @@ class _$GetScannedFileInfoOK extends GetScannedFileInfoOK {
       required this.nodeId,
       required this.createdAt,
       required this.name})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        data, r'GetScannedFileInfoOK', 'data');
-    BuiltValueNullFieldError.checkNotNull(
-        jobId, r'GetScannedFileInfoOK', 'jobId');
-    BuiltValueNullFieldError.checkNotNull(
-        status, r'GetScannedFileInfoOK', 'status');
-    BuiltValueNullFieldError.checkNotNull(
-        profileId, r'GetScannedFileInfoOK', 'profileId');
-    BuiltValueNullFieldError.checkNotNull(
-        nodeId, r'GetScannedFileInfoOK', 'nodeId');
-    BuiltValueNullFieldError.checkNotNull(
-        createdAt, r'GetScannedFileInfoOK', 'createdAt');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'GetScannedFileInfoOK', 'name');
-  }
-
+      : super._();
   @override
   GetScannedFileInfoOK rebuild(
           void Function(GetScannedFileInfoOKBuilder) updates) =>
@@ -61,7 +45,7 @@ class _$GetScannedFileInfoOK extends GetScannedFileInfoOK {
 
   @override
   GetScannedFileInfoOKBuilder toBuilder() =>
-      new GetScannedFileInfoOKBuilder()..replace(this);
+      GetScannedFileInfoOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -166,7 +150,6 @@ class GetScannedFileInfoOKBuilder
 
   @override
   void replace(GetScannedFileInfoOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GetScannedFileInfoOK;
   }
 
@@ -180,7 +163,7 @@ class GetScannedFileInfoOKBuilder
 
   _$GetScannedFileInfoOK _build() {
     final _$result = _$v ??
-        new _$GetScannedFileInfoOK._(
+        _$GetScannedFileInfoOK._(
           data: BuiltValueNullFieldError.checkNotNull(
               data, r'GetScannedFileInfoOK', 'data'),
           jobId: BuiltValueNullFieldError.checkNotNull(

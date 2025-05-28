@@ -6,7 +6,7 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(AlreadyExistsError.serializer)
       ..add(AlreadyExistsErrorHttpStatusCodeEnum.serializer)
       ..add(AlreadyExistsErrorMessageEnum.serializer)
@@ -83,58 +83,58 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VPTokenValidationErrorNameEnum.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ConsentDto)]),
-          () => new ListBuilder<ConsentDto>())
+          () => ListBuilder<ConsentDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => new ListBuilder<InvalidParameterErrorDetailsInner>())
+          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(IotaConfigurationDto)]),
-          () => new ListBuilder<IotaConfigurationDto>())
+          () => ListBuilder<IotaConfigurationDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PexQueryDto)]),
-          () => new ListBuilder<PexQueryDto>())
+          () => ListBuilder<PexQueryDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(SavePexQueriesUpdateInputQueriesInner)]),
-          () => new ListBuilder<SavePexQueriesUpdateInputQueriesInner>())
+          () => ListBuilder<SavePexQueriesUpdateInputQueriesInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>())
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
-          () => new ListBuilder<String>()))
+          () => ListBuilder<String>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

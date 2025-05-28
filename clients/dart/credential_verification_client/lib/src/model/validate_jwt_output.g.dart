@@ -14,23 +14,17 @@ class _$ValidateJwtOutput extends ValidateJwtOutput {
 
   factory _$ValidateJwtOutput(
           [void Function(ValidateJwtOutputBuilder)? updates]) =>
-      (new ValidateJwtOutputBuilder()..update(updates))._build();
+      (ValidateJwtOutputBuilder()..update(updates))._build();
 
   _$ValidateJwtOutput._({required this.isValid, required this.payload})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        isValid, r'ValidateJwtOutput', 'isValid');
-    BuiltValueNullFieldError.checkNotNull(
-        payload, r'ValidateJwtOutput', 'payload');
-  }
-
+      : super._();
   @override
   ValidateJwtOutput rebuild(void Function(ValidateJwtOutputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ValidateJwtOutputBuilder toBuilder() =>
-      new ValidateJwtOutputBuilder()..replace(this);
+      ValidateJwtOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -86,7 +80,6 @@ class ValidateJwtOutputBuilder
 
   @override
   void replace(ValidateJwtOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ValidateJwtOutput;
   }
 
@@ -100,7 +93,7 @@ class ValidateJwtOutputBuilder
 
   _$ValidateJwtOutput _build() {
     final _$result = _$v ??
-        new _$ValidateJwtOutput._(
+        _$ValidateJwtOutput._(
           isValid: BuiltValueNullFieldError.checkNotNull(
               isValid, r'ValidateJwtOutput', 'isValid'),
           payload: BuiltValueNullFieldError.checkNotNull(

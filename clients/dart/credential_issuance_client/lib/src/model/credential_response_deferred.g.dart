@@ -16,21 +16,13 @@ class _$CredentialResponseDeferred extends CredentialResponseDeferred {
 
   factory _$CredentialResponseDeferred(
           [void Function(CredentialResponseDeferredBuilder)? updates]) =>
-      (new CredentialResponseDeferredBuilder()..update(updates))._build();
+      (CredentialResponseDeferredBuilder()..update(updates))._build();
 
   _$CredentialResponseDeferred._(
       {required this.transactionId,
       required this.cNonce,
       required this.cNonceExpiresIn})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        transactionId, r'CredentialResponseDeferred', 'transactionId');
-    BuiltValueNullFieldError.checkNotNull(
-        cNonce, r'CredentialResponseDeferred', 'cNonce');
-    BuiltValueNullFieldError.checkNotNull(
-        cNonceExpiresIn, r'CredentialResponseDeferred', 'cNonceExpiresIn');
-  }
-
+      : super._();
   @override
   CredentialResponseDeferred rebuild(
           void Function(CredentialResponseDeferredBuilder) updates) =>
@@ -38,7 +30,7 @@ class _$CredentialResponseDeferred extends CredentialResponseDeferred {
 
   @override
   CredentialResponseDeferredBuilder toBuilder() =>
-      new CredentialResponseDeferredBuilder()..replace(this);
+      CredentialResponseDeferredBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -105,7 +97,6 @@ class CredentialResponseDeferredBuilder
 
   @override
   void replace(CredentialResponseDeferred other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialResponseDeferred;
   }
 
@@ -119,7 +110,7 @@ class CredentialResponseDeferredBuilder
 
   _$CredentialResponseDeferred _build() {
     final _$result = _$v ??
-        new _$CredentialResponseDeferred._(
+        _$CredentialResponseDeferred._(
           transactionId: BuiltValueNullFieldError.checkNotNull(
               transactionId, r'CredentialResponseDeferred', 'transactionId'),
           cNonce: BuiltValueNullFieldError.checkNotNull(

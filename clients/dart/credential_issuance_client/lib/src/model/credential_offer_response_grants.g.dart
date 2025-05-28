@@ -13,17 +13,11 @@ class _$CredentialOfferResponseGrants extends CredentialOfferResponseGrants {
 
   factory _$CredentialOfferResponseGrants(
           [void Function(CredentialOfferResponseGrantsBuilder)? updates]) =>
-      (new CredentialOfferResponseGrantsBuilder()..update(updates))._build();
+      (CredentialOfferResponseGrantsBuilder()..update(updates))._build();
 
   _$CredentialOfferResponseGrants._(
       {required this.urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode,
-        r'CredentialOfferResponseGrants',
-        'urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode');
-  }
-
+      : super._();
   @override
   CredentialOfferResponseGrants rebuild(
           void Function(CredentialOfferResponseGrantsBuilder) updates) =>
@@ -31,7 +25,7 @@ class _$CredentialOfferResponseGrants extends CredentialOfferResponseGrants {
 
   @override
   CredentialOfferResponseGrantsBuilder toBuilder() =>
-      new CredentialOfferResponseGrantsBuilder()..replace(this);
+      CredentialOfferResponseGrantsBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -74,7 +68,7 @@ class CredentialOfferResponseGrantsBuilder
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder
       get urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode =>
           _$this._urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode ??=
-              new CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder();
+              CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder();
   set urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode(
           CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder?
               urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode) =>
@@ -98,7 +92,6 @@ class CredentialOfferResponseGrantsBuilder
 
   @override
   void replace(CredentialOfferResponseGrants other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CredentialOfferResponseGrants;
   }
 
@@ -114,7 +107,7 @@ class CredentialOfferResponseGrantsBuilder
     _$CredentialOfferResponseGrants _$result;
     try {
       _$result = _$v ??
-          new _$CredentialOfferResponseGrants._(
+          _$CredentialOfferResponseGrants._(
             urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode:
                 urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
                     .build(),
@@ -127,7 +120,7 @@ class CredentialOfferResponseGrantsBuilder
         urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
             .build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CredentialOfferResponseGrants', _$failedField, e.toString());
       }
       rethrow;

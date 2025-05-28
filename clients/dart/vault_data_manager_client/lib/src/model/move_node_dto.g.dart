@@ -11,16 +11,15 @@ class _$MoveNodeDto extends MoveNodeDto {
   final String? newNodeId;
 
   factory _$MoveNodeDto([void Function(MoveNodeDtoBuilder)? updates]) =>
-      (new MoveNodeDtoBuilder()..update(updates))._build();
+      (MoveNodeDtoBuilder()..update(updates))._build();
 
   _$MoveNodeDto._({this.newNodeId}) : super._();
-
   @override
   MoveNodeDto rebuild(void Function(MoveNodeDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveNodeDtoBuilder toBuilder() => new MoveNodeDtoBuilder()..replace(this);
+  MoveNodeDtoBuilder toBuilder() => MoveNodeDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -66,7 +65,6 @@ class MoveNodeDtoBuilder implements Builder<MoveNodeDto, MoveNodeDtoBuilder> {
 
   @override
   void replace(MoveNodeDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MoveNodeDto;
   }
 
@@ -80,7 +78,7 @@ class MoveNodeDtoBuilder implements Builder<MoveNodeDto, MoveNodeDtoBuilder> {
 
   _$MoveNodeDto _build() {
     final _$result = _$v ??
-        new _$MoveNodeDto._(
+        _$MoveNodeDto._(
           newNodeId: newNodeId,
         );
     replace(_$result);

@@ -22,7 +22,7 @@ class _$SupportedCredentialMetadataDisplayInner
   factory _$SupportedCredentialMetadataDisplayInner(
           [void Function(SupportedCredentialMetadataDisplayInnerBuilder)?
               updates]) =>
-      (new SupportedCredentialMetadataDisplayInnerBuilder()..update(updates))
+      (SupportedCredentialMetadataDisplayInnerBuilder()..update(updates))
           ._build();
 
   _$SupportedCredentialMetadataDisplayInner._(
@@ -31,11 +31,7 @@ class _$SupportedCredentialMetadataDisplayInner
       this.logo,
       this.backgroundColor,
       this.textColor})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'SupportedCredentialMetadataDisplayInner', 'name');
-  }
-
+      : super._();
   @override
   SupportedCredentialMetadataDisplayInner rebuild(
           void Function(SupportedCredentialMetadataDisplayInnerBuilder)
@@ -44,7 +40,7 @@ class _$SupportedCredentialMetadataDisplayInner
 
   @override
   SupportedCredentialMetadataDisplayInnerBuilder toBuilder() =>
-      new SupportedCredentialMetadataDisplayInnerBuilder()..replace(this);
+      SupportedCredentialMetadataDisplayInnerBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -98,7 +94,7 @@ class SupportedCredentialMetadataDisplayInnerBuilder
 
   SupportedCredentialMetadataItemLogoBuilder? _logo;
   SupportedCredentialMetadataItemLogoBuilder get logo =>
-      _$this._logo ??= new SupportedCredentialMetadataItemLogoBuilder();
+      _$this._logo ??= SupportedCredentialMetadataItemLogoBuilder();
   set logo(SupportedCredentialMetadataItemLogoBuilder? logo) =>
       _$this._logo = logo;
 
@@ -130,7 +126,6 @@ class SupportedCredentialMetadataDisplayInnerBuilder
 
   @override
   void replace(SupportedCredentialMetadataDisplayInner other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SupportedCredentialMetadataDisplayInner;
   }
 
@@ -147,7 +142,7 @@ class SupportedCredentialMetadataDisplayInnerBuilder
     _$SupportedCredentialMetadataDisplayInner _$result;
     try {
       _$result = _$v ??
-          new _$SupportedCredentialMetadataDisplayInner._(
+          _$SupportedCredentialMetadataDisplayInner._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'SupportedCredentialMetadataDisplayInner', 'name'),
             locale: locale,
@@ -161,7 +156,7 @@ class SupportedCredentialMetadataDisplayInnerBuilder
         _$failedField = 'logo';
         _logo?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SupportedCredentialMetadataDisplayInner',
             _$failedField,
             e.toString());

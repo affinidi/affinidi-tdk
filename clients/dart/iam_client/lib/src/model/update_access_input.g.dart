@@ -12,20 +12,16 @@ class _$UpdateAccessInput extends UpdateAccessInput {
 
   factory _$UpdateAccessInput(
           [void Function(UpdateAccessInputBuilder)? updates]) =>
-      (new UpdateAccessInputBuilder()..update(updates))._build();
+      (UpdateAccessInputBuilder()..update(updates))._build();
 
-  _$UpdateAccessInput._({required this.rights}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        rights, r'UpdateAccessInput', 'rights');
-  }
-
+  _$UpdateAccessInput._({required this.rights}) : super._();
   @override
   UpdateAccessInput rebuild(void Function(UpdateAccessInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   UpdateAccessInputBuilder toBuilder() =>
-      new UpdateAccessInputBuilder()..replace(this);
+      UpdateAccessInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -55,7 +51,7 @@ class UpdateAccessInputBuilder
 
   ListBuilder<RightsEnum>? _rights;
   ListBuilder<RightsEnum> get rights =>
-      _$this._rights ??= new ListBuilder<RightsEnum>();
+      _$this._rights ??= ListBuilder<RightsEnum>();
   set rights(ListBuilder<RightsEnum>? rights) => _$this._rights = rights;
 
   UpdateAccessInputBuilder() {
@@ -73,7 +69,6 @@ class UpdateAccessInputBuilder
 
   @override
   void replace(UpdateAccessInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateAccessInput;
   }
 
@@ -89,7 +84,7 @@ class UpdateAccessInputBuilder
     _$UpdateAccessInput _$result;
     try {
       _$result = _$v ??
-          new _$UpdateAccessInput._(
+          _$UpdateAccessInput._(
             rights: rights.build(),
           );
     } catch (_) {
@@ -98,7 +93,7 @@ class UpdateAccessInputBuilder
         _$failedField = 'rights';
         rights.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UpdateAccessInput', _$failedField, e.toString());
       }
       rethrow;

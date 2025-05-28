@@ -16,12 +16,12 @@ RevocationForbiddenErrorNameEnum _$revocationForbiddenErrorNameEnumValueOf(
     case 'revocationForbiddenError':
       return _$revocationForbiddenErrorNameEnum_revocationForbiddenError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<RevocationForbiddenErrorNameEnum>
-    _$revocationForbiddenErrorNameEnumValues = new BuiltSet<
+    _$revocationForbiddenErrorNameEnumValues = BuiltSet<
         RevocationForbiddenErrorNameEnum>(const <RevocationForbiddenErrorNameEnum>[
   _$revocationForbiddenErrorNameEnum_revocationForbiddenError,
 ]);
@@ -37,12 +37,12 @@ RevocationForbiddenErrorMessageEnum
     case 'relatedVCHasNotBeenClaimedYet':
       return _$revocationForbiddenErrorMessageEnum_relatedVCHasNotBeenClaimedYet;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<RevocationForbiddenErrorMessageEnum>
-    _$revocationForbiddenErrorMessageEnumValues = new BuiltSet<
+    _$revocationForbiddenErrorMessageEnumValues = BuiltSet<
         RevocationForbiddenErrorMessageEnum>(const <RevocationForbiddenErrorMessageEnum>[
   _$revocationForbiddenErrorMessageEnum_relatedVCHasNotBeenClaimedYet,
 ]);
@@ -57,25 +57,25 @@ RevocationForbiddenErrorHttpStatusCodeEnum
     case 'number400':
       return _$revocationForbiddenErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<RevocationForbiddenErrorHttpStatusCodeEnum>
-    _$revocationForbiddenErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$revocationForbiddenErrorHttpStatusCodeEnumValues = BuiltSet<
         RevocationForbiddenErrorHttpStatusCodeEnum>(const <RevocationForbiddenErrorHttpStatusCodeEnum>[
   _$revocationForbiddenErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<RevocationForbiddenErrorNameEnum>
     _$revocationForbiddenErrorNameEnumSerializer =
-    new _$RevocationForbiddenErrorNameEnumSerializer();
+    _$RevocationForbiddenErrorNameEnumSerializer();
 Serializer<RevocationForbiddenErrorMessageEnum>
     _$revocationForbiddenErrorMessageEnumSerializer =
-    new _$RevocationForbiddenErrorMessageEnumSerializer();
+    _$RevocationForbiddenErrorMessageEnumSerializer();
 Serializer<RevocationForbiddenErrorHttpStatusCodeEnum>
     _$revocationForbiddenErrorHttpStatusCodeEnumSerializer =
-    new _$RevocationForbiddenErrorHttpStatusCodeEnumSerializer();
+    _$RevocationForbiddenErrorHttpStatusCodeEnumSerializer();
 
 class _$RevocationForbiddenErrorNameEnumSerializer
     implements PrimitiveSerializer<RevocationForbiddenErrorNameEnum> {
@@ -179,7 +179,7 @@ class _$RevocationForbiddenError extends RevocationForbiddenError {
 
   factory _$RevocationForbiddenError(
           [void Function(RevocationForbiddenErrorBuilder)? updates]) =>
-      (new RevocationForbiddenErrorBuilder()..update(updates))._build();
+      (RevocationForbiddenErrorBuilder()..update(updates))._build();
 
   _$RevocationForbiddenError._(
       {required this.name,
@@ -187,17 +187,7 @@ class _$RevocationForbiddenError extends RevocationForbiddenError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'RevocationForbiddenError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'RevocationForbiddenError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'RevocationForbiddenError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'RevocationForbiddenError', 'traceId');
-  }
-
+      : super._();
   @override
   RevocationForbiddenError rebuild(
           void Function(RevocationForbiddenErrorBuilder) updates) =>
@@ -205,7 +195,7 @@ class _$RevocationForbiddenError extends RevocationForbiddenError {
 
   @override
   RevocationForbiddenErrorBuilder toBuilder() =>
-      new RevocationForbiddenErrorBuilder()..replace(this);
+      RevocationForbiddenErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -269,7 +259,7 @@ class RevocationForbiddenErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -292,7 +282,6 @@ class RevocationForbiddenErrorBuilder
 
   @override
   void replace(RevocationForbiddenError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RevocationForbiddenError;
   }
 
@@ -308,7 +297,7 @@ class RevocationForbiddenErrorBuilder
     _$RevocationForbiddenError _$result;
     try {
       _$result = _$v ??
-          new _$RevocationForbiddenError._(
+          _$RevocationForbiddenError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'RevocationForbiddenError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -325,7 +314,7 @@ class RevocationForbiddenErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'RevocationForbiddenError', _$failedField, e.toString());
       }
       rethrow;

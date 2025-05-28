@@ -12,13 +12,9 @@ class _$SignCredentialResultDto extends SignCredentialResultDto {
 
   factory _$SignCredentialResultDto(
           [void Function(SignCredentialResultDtoBuilder)? updates]) =>
-      (new SignCredentialResultDtoBuilder()..update(updates))._build();
+      (SignCredentialResultDtoBuilder()..update(updates))._build();
 
-  _$SignCredentialResultDto._({required this.signedCredential}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        signedCredential, r'SignCredentialResultDto', 'signedCredential');
-  }
-
+  _$SignCredentialResultDto._({required this.signedCredential}) : super._();
   @override
   SignCredentialResultDto rebuild(
           void Function(SignCredentialResultDtoBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$SignCredentialResultDto extends SignCredentialResultDto {
 
   @override
   SignCredentialResultDtoBuilder toBuilder() =>
-      new SignCredentialResultDtoBuilder()..replace(this);
+      SignCredentialResultDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -58,7 +54,7 @@ class SignCredentialResultDtoBuilder
 
   MapBuilder<String, JsonObject?>? _signedCredential;
   MapBuilder<String, JsonObject?> get signedCredential =>
-      _$this._signedCredential ??= new MapBuilder<String, JsonObject?>();
+      _$this._signedCredential ??= MapBuilder<String, JsonObject?>();
   set signedCredential(MapBuilder<String, JsonObject?>? signedCredential) =>
       _$this._signedCredential = signedCredential;
 
@@ -77,7 +73,6 @@ class SignCredentialResultDtoBuilder
 
   @override
   void replace(SignCredentialResultDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$SignCredentialResultDto;
   }
 
@@ -93,7 +88,7 @@ class SignCredentialResultDtoBuilder
     _$SignCredentialResultDto _$result;
     try {
       _$result = _$v ??
-          new _$SignCredentialResultDto._(
+          _$SignCredentialResultDto._(
             signedCredential: signedCredential.build(),
           );
     } catch (_) {
@@ -102,7 +97,7 @@ class SignCredentialResultDtoBuilder
         _$failedField = 'signedCredential';
         signedCredential.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'SignCredentialResultDto', _$failedField, e.toString());
       }
       rethrow;

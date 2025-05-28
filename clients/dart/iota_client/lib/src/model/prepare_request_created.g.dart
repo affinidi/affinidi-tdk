@@ -12,13 +12,9 @@ class _$PrepareRequestCreated extends PrepareRequestCreated {
 
   factory _$PrepareRequestCreated(
           [void Function(PrepareRequestCreatedBuilder)? updates]) =>
-      (new PrepareRequestCreatedBuilder()..update(updates))._build();
+      (PrepareRequestCreatedBuilder()..update(updates))._build();
 
-  _$PrepareRequestCreated._({required this.data}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        data, r'PrepareRequestCreated', 'data');
-  }
-
+  _$PrepareRequestCreated._({required this.data}) : super._();
   @override
   PrepareRequestCreated rebuild(
           void Function(PrepareRequestCreatedBuilder) updates) =>
@@ -26,7 +22,7 @@ class _$PrepareRequestCreated extends PrepareRequestCreated {
 
   @override
   PrepareRequestCreatedBuilder toBuilder() =>
-      new PrepareRequestCreatedBuilder()..replace(this);
+      PrepareRequestCreatedBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -56,7 +52,7 @@ class PrepareRequestCreatedBuilder
 
   PrepareRequestCreatedDataBuilder? _data;
   PrepareRequestCreatedDataBuilder get data =>
-      _$this._data ??= new PrepareRequestCreatedDataBuilder();
+      _$this._data ??= PrepareRequestCreatedDataBuilder();
   set data(PrepareRequestCreatedDataBuilder? data) => _$this._data = data;
 
   PrepareRequestCreatedBuilder() {
@@ -74,7 +70,6 @@ class PrepareRequestCreatedBuilder
 
   @override
   void replace(PrepareRequestCreated other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PrepareRequestCreated;
   }
 
@@ -90,7 +85,7 @@ class PrepareRequestCreatedBuilder
     _$PrepareRequestCreated _$result;
     try {
       _$result = _$v ??
-          new _$PrepareRequestCreated._(
+          _$PrepareRequestCreated._(
             data: data.build(),
           );
     } catch (_) {
@@ -99,7 +94,7 @@ class PrepareRequestCreatedBuilder
         _$failedField = 'data';
         data.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PrepareRequestCreated', _$failedField, e.toString());
       }
       rethrow;

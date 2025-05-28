@@ -14,16 +14,10 @@ class _$VerifyPresentationOutput extends VerifyPresentationOutput {
 
   factory _$VerifyPresentationOutput(
           [void Function(VerifyPresentationOutputBuilder)? updates]) =>
-      (new VerifyPresentationOutputBuilder()..update(updates))._build();
+      (VerifyPresentationOutputBuilder()..update(updates))._build();
 
   _$VerifyPresentationOutput._({required this.errors, required this.isValid})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        errors, r'VerifyPresentationOutput', 'errors');
-    BuiltValueNullFieldError.checkNotNull(
-        isValid, r'VerifyPresentationOutput', 'isValid');
-  }
-
+      : super._();
   @override
   VerifyPresentationOutput rebuild(
           void Function(VerifyPresentationOutputBuilder) updates) =>
@@ -31,7 +25,7 @@ class _$VerifyPresentationOutput extends VerifyPresentationOutput {
 
   @override
   VerifyPresentationOutputBuilder toBuilder() =>
-      new VerifyPresentationOutputBuilder()..replace(this);
+      VerifyPresentationOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -66,7 +60,7 @@ class VerifyPresentationOutputBuilder
 
   VerifyPresentationOutputErrorsBuilder? _errors;
   VerifyPresentationOutputErrorsBuilder get errors =>
-      _$this._errors ??= new VerifyPresentationOutputErrorsBuilder();
+      _$this._errors ??= VerifyPresentationOutputErrorsBuilder();
   set errors(VerifyPresentationOutputErrorsBuilder? errors) =>
       _$this._errors = errors;
 
@@ -90,7 +84,6 @@ class VerifyPresentationOutputBuilder
 
   @override
   void replace(VerifyPresentationOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VerifyPresentationOutput;
   }
 
@@ -106,7 +99,7 @@ class VerifyPresentationOutputBuilder
     _$VerifyPresentationOutput _$result;
     try {
       _$result = _$v ??
-          new _$VerifyPresentationOutput._(
+          _$VerifyPresentationOutput._(
             errors: errors.build(),
             isValid: BuiltValueNullFieldError.checkNotNull(
                 isValid, r'VerifyPresentationOutput', 'isValid'),
@@ -117,7 +110,7 @@ class VerifyPresentationOutputBuilder
         _$failedField = 'errors';
         errors.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'VerifyPresentationOutput', _$failedField, e.toString());
       }
       rethrow;

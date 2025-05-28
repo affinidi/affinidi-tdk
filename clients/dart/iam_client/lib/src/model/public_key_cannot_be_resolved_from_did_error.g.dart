@@ -17,12 +17,12 @@ PublicKeyCannotBeResolvedFromDidErrorNameEnum
     case 'publicKeyCannotBeResolvedFromDidError':
       return _$publicKeyCannotBeResolvedFromDidErrorNameEnum_publicKeyCannotBeResolvedFromDidError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<PublicKeyCannotBeResolvedFromDidErrorNameEnum>
-    _$publicKeyCannotBeResolvedFromDidErrorNameEnumValues = new BuiltSet<
+    _$publicKeyCannotBeResolvedFromDidErrorNameEnumValues = BuiltSet<
         PublicKeyCannotBeResolvedFromDidErrorNameEnum>(const <PublicKeyCannotBeResolvedFromDidErrorNameEnum>[
   _$publicKeyCannotBeResolvedFromDidErrorNameEnum_publicKeyCannotBeResolvedFromDidError,
 ]);
@@ -38,12 +38,12 @@ PublicKeyCannotBeResolvedFromDidErrorMessageEnum
     case 'unableToResolveDIDMethodPeriodInvalidPublicKey':
       return _$publicKeyCannotBeResolvedFromDidErrorMessageEnum_unableToResolveDIDMethodPeriodInvalidPublicKey;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<PublicKeyCannotBeResolvedFromDidErrorMessageEnum>
-    _$publicKeyCannotBeResolvedFromDidErrorMessageEnumValues = new BuiltSet<
+    _$publicKeyCannotBeResolvedFromDidErrorMessageEnumValues = BuiltSet<
         PublicKeyCannotBeResolvedFromDidErrorMessageEnum>(const <PublicKeyCannotBeResolvedFromDidErrorMessageEnum>[
   _$publicKeyCannotBeResolvedFromDidErrorMessageEnum_unableToResolveDIDMethodPeriodInvalidPublicKey,
 ]);
@@ -60,26 +60,25 @@ PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum
     case 'number400':
       return _$publicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum>
-    _$publicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnumValues =
-    new BuiltSet<
+    _$publicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnumValues = BuiltSet<
         PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum>(const <PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum>[
   _$publicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<PublicKeyCannotBeResolvedFromDidErrorNameEnum>
     _$publicKeyCannotBeResolvedFromDidErrorNameEnumSerializer =
-    new _$PublicKeyCannotBeResolvedFromDidErrorNameEnumSerializer();
+    _$PublicKeyCannotBeResolvedFromDidErrorNameEnumSerializer();
 Serializer<PublicKeyCannotBeResolvedFromDidErrorMessageEnum>
     _$publicKeyCannotBeResolvedFromDidErrorMessageEnumSerializer =
-    new _$PublicKeyCannotBeResolvedFromDidErrorMessageEnumSerializer();
+    _$PublicKeyCannotBeResolvedFromDidErrorMessageEnumSerializer();
 Serializer<PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum>
     _$publicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnumSerializer =
-    new _$PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnumSerializer();
+    _$PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnumSerializer();
 
 class _$PublicKeyCannotBeResolvedFromDidErrorNameEnumSerializer
     implements
@@ -196,7 +195,7 @@ class _$PublicKeyCannotBeResolvedFromDidError
   factory _$PublicKeyCannotBeResolvedFromDidError(
           [void Function(PublicKeyCannotBeResolvedFromDidErrorBuilder)?
               updates]) =>
-      (new PublicKeyCannotBeResolvedFromDidErrorBuilder()..update(updates))
+      (PublicKeyCannotBeResolvedFromDidErrorBuilder()..update(updates))
           ._build();
 
   _$PublicKeyCannotBeResolvedFromDidError._(
@@ -205,17 +204,7 @@ class _$PublicKeyCannotBeResolvedFromDidError
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'PublicKeyCannotBeResolvedFromDidError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'PublicKeyCannotBeResolvedFromDidError', 'message');
-    BuiltValueNullFieldError.checkNotNull(httpStatusCode,
-        r'PublicKeyCannotBeResolvedFromDidError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'PublicKeyCannotBeResolvedFromDidError', 'traceId');
-  }
-
+      : super._();
   @override
   PublicKeyCannotBeResolvedFromDidError rebuild(
           void Function(PublicKeyCannotBeResolvedFromDidErrorBuilder)
@@ -224,7 +213,7 @@ class _$PublicKeyCannotBeResolvedFromDidError
 
   @override
   PublicKeyCannotBeResolvedFromDidErrorBuilder toBuilder() =>
-      new PublicKeyCannotBeResolvedFromDidErrorBuilder()..replace(this);
+      PublicKeyCannotBeResolvedFromDidErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -293,7 +282,7 @@ class PublicKeyCannotBeResolvedFromDidErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -316,7 +305,6 @@ class PublicKeyCannotBeResolvedFromDidErrorBuilder
 
   @override
   void replace(PublicKeyCannotBeResolvedFromDidError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PublicKeyCannotBeResolvedFromDidError;
   }
 
@@ -333,7 +321,7 @@ class PublicKeyCannotBeResolvedFromDidErrorBuilder
     _$PublicKeyCannotBeResolvedFromDidError _$result;
     try {
       _$result = _$v ??
-          new _$PublicKeyCannotBeResolvedFromDidError._(
+          _$PublicKeyCannotBeResolvedFromDidError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'PublicKeyCannotBeResolvedFromDidError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -352,7 +340,7 @@ class PublicKeyCannotBeResolvedFromDidErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'PublicKeyCannotBeResolvedFromDidError',
             _$failedField,
             e.toString());

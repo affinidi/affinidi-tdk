@@ -14,17 +14,11 @@ class _$LoginSessionForIDPInput extends LoginSessionForIDPInput {
 
   factory _$LoginSessionForIDPInput(
           [void Function(LoginSessionForIDPInputBuilder)? updates]) =>
-      (new LoginSessionForIDPInputBuilder()..update(updates))._build();
+      (LoginSessionForIDPInputBuilder()..update(updates))._build();
 
   _$LoginSessionForIDPInput._(
       {required this.loginChallenge, required this.clientId})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        loginChallenge, r'LoginSessionForIDPInput', 'loginChallenge');
-    BuiltValueNullFieldError.checkNotNull(
-        clientId, r'LoginSessionForIDPInput', 'clientId');
-  }
-
+      : super._();
   @override
   LoginSessionForIDPInput rebuild(
           void Function(LoginSessionForIDPInputBuilder) updates) =>
@@ -32,7 +26,7 @@ class _$LoginSessionForIDPInput extends LoginSessionForIDPInput {
 
   @override
   LoginSessionForIDPInputBuilder toBuilder() =>
-      new LoginSessionForIDPInputBuilder()..replace(this);
+      LoginSessionForIDPInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -90,7 +84,6 @@ class LoginSessionForIDPInputBuilder
 
   @override
   void replace(LoginSessionForIDPInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginSessionForIDPInput;
   }
 
@@ -104,7 +97,7 @@ class LoginSessionForIDPInputBuilder
 
   _$LoginSessionForIDPInput _build() {
     final _$result = _$v ??
-        new _$LoginSessionForIDPInput._(
+        _$LoginSessionForIDPInput._(
           loginChallenge: BuiltValueNullFieldError.checkNotNull(
               loginChallenge, r'LoginSessionForIDPInput', 'loginChallenge'),
           clientId: BuiltValueNullFieldError.checkNotNull(

@@ -14,12 +14,12 @@ UnexpectedErrorNameEnum _$unexpectedErrorNameEnumValueOf(String name) {
     case 'unexpectedError':
       return _$unexpectedErrorNameEnum_unexpectedError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UnexpectedErrorNameEnum> _$unexpectedErrorNameEnumValues =
-    new BuiltSet<UnexpectedErrorNameEnum>(const <UnexpectedErrorNameEnum>[
+    BuiltSet<UnexpectedErrorNameEnum>(const <UnexpectedErrorNameEnum>[
   _$unexpectedErrorNameEnum_unexpectedError,
 ]);
 
@@ -32,12 +32,12 @@ UnexpectedErrorMessageEnum _$unexpectedErrorMessageEnumValueOf(String name) {
     case 'unexpectedErrorOccurredPeriod':
       return _$unexpectedErrorMessageEnum_unexpectedErrorOccurredPeriod;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UnexpectedErrorMessageEnum> _$unexpectedErrorMessageEnumValues =
-    new BuiltSet<UnexpectedErrorMessageEnum>(const <UnexpectedErrorMessageEnum>[
+    BuiltSet<UnexpectedErrorMessageEnum>(const <UnexpectedErrorMessageEnum>[
   _$unexpectedErrorMessageEnum_unexpectedErrorOccurredPeriod,
 ]);
 
@@ -51,23 +51,23 @@ UnexpectedErrorHttpStatusCodeEnum _$unexpectedErrorHttpStatusCodeEnumValueOf(
     case 'number500':
       return _$unexpectedErrorHttpStatusCodeEnum_number500;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<UnexpectedErrorHttpStatusCodeEnum>
-    _$unexpectedErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$unexpectedErrorHttpStatusCodeEnumValues = BuiltSet<
         UnexpectedErrorHttpStatusCodeEnum>(const <UnexpectedErrorHttpStatusCodeEnum>[
   _$unexpectedErrorHttpStatusCodeEnum_number500,
 ]);
 
 Serializer<UnexpectedErrorNameEnum> _$unexpectedErrorNameEnumSerializer =
-    new _$UnexpectedErrorNameEnumSerializer();
+    _$UnexpectedErrorNameEnumSerializer();
 Serializer<UnexpectedErrorMessageEnum> _$unexpectedErrorMessageEnumSerializer =
-    new _$UnexpectedErrorMessageEnumSerializer();
+    _$UnexpectedErrorMessageEnumSerializer();
 Serializer<UnexpectedErrorHttpStatusCodeEnum>
     _$unexpectedErrorHttpStatusCodeEnumSerializer =
-    new _$UnexpectedErrorHttpStatusCodeEnumSerializer();
+    _$UnexpectedErrorHttpStatusCodeEnumSerializer();
 
 class _$UnexpectedErrorNameEnumSerializer
     implements PrimitiveSerializer<UnexpectedErrorNameEnum> {
@@ -164,7 +164,7 @@ class _$UnexpectedError extends UnexpectedError {
   final BuiltList<ServiceErrorResponseDetailsInner>? details;
 
   factory _$UnexpectedError([void Function(UnexpectedErrorBuilder)? updates]) =>
-      (new UnexpectedErrorBuilder()..update(updates))._build();
+      (UnexpectedErrorBuilder()..update(updates))._build();
 
   _$UnexpectedError._(
       {required this.name,
@@ -172,23 +172,13 @@ class _$UnexpectedError extends UnexpectedError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'UnexpectedError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'UnexpectedError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'UnexpectedError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'UnexpectedError', 'traceId');
-  }
-
+      : super._();
   @override
   UnexpectedError rebuild(void Function(UnexpectedErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UnexpectedErrorBuilder toBuilder() =>
-      new UnexpectedErrorBuilder()..replace(this);
+  UnexpectedErrorBuilder toBuilder() => UnexpectedErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -249,7 +239,7 @@ class UnexpectedErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -272,7 +262,6 @@ class UnexpectedErrorBuilder
 
   @override
   void replace(UnexpectedError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UnexpectedError;
   }
 
@@ -288,7 +277,7 @@ class UnexpectedErrorBuilder
     _$UnexpectedError _$result;
     try {
       _$result = _$v ??
-          new _$UnexpectedError._(
+          _$UnexpectedError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'UnexpectedError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -305,7 +294,7 @@ class UnexpectedErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'UnexpectedError', _$failedField, e.toString());
       }
       rethrow;

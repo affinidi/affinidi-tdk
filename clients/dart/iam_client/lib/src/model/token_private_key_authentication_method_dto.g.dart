@@ -16,12 +16,12 @@ TokenPrivateKeyAuthenticationMethodDtoTypeEnum
     case 'PRIVATE_KEY':
       return _$tokenPrivateKeyAuthenticationMethodDtoTypeEnum_PRIVATE_KEY;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<TokenPrivateKeyAuthenticationMethodDtoTypeEnum>
-    _$tokenPrivateKeyAuthenticationMethodDtoTypeEnumValues = new BuiltSet<
+    _$tokenPrivateKeyAuthenticationMethodDtoTypeEnumValues = BuiltSet<
         TokenPrivateKeyAuthenticationMethodDtoTypeEnum>(const <TokenPrivateKeyAuthenticationMethodDtoTypeEnum>[
   _$tokenPrivateKeyAuthenticationMethodDtoTypeEnum_PRIVATE_KEY,
 ]);
@@ -52,13 +52,13 @@ TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum
     case 'eS512':
       return _$tokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum_eS512;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>
     _$tokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumValues =
-    new BuiltSet<
+    BuiltSet<
         TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>(const <TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>[
   _$tokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum_rS256,
   _$tokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum_rS512,
@@ -68,10 +68,10 @@ final BuiltSet<TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>
 
 Serializer<TokenPrivateKeyAuthenticationMethodDtoTypeEnum>
     _$tokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer =
-    new _$TokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer();
+    _$TokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer();
 Serializer<TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum>
     _$tokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumSerializer =
-    new _$TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumSerializer();
+    _$TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnumSerializer();
 
 class _$TokenPrivateKeyAuthenticationMethodDtoTypeEnumSerializer
     implements
@@ -156,22 +156,14 @@ class _$TokenPrivateKeyAuthenticationMethodDto
   factory _$TokenPrivateKeyAuthenticationMethodDto(
           [void Function(TokenPrivateKeyAuthenticationMethodDtoBuilder)?
               updates]) =>
-      (new TokenPrivateKeyAuthenticationMethodDtoBuilder()..update(updates))
+      (TokenPrivateKeyAuthenticationMethodDtoBuilder()..update(updates))
           ._build();
 
   _$TokenPrivateKeyAuthenticationMethodDto._(
       {required this.type,
       required this.signingAlgorithm,
       required this.publicKeyInfo})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        type, r'TokenPrivateKeyAuthenticationMethodDto', 'type');
-    BuiltValueNullFieldError.checkNotNull(signingAlgorithm,
-        r'TokenPrivateKeyAuthenticationMethodDto', 'signingAlgorithm');
-    BuiltValueNullFieldError.checkNotNull(publicKeyInfo,
-        r'TokenPrivateKeyAuthenticationMethodDto', 'publicKeyInfo');
-  }
-
+      : super._();
   @override
   TokenPrivateKeyAuthenticationMethodDto rebuild(
           void Function(TokenPrivateKeyAuthenticationMethodDtoBuilder)
@@ -180,7 +172,7 @@ class _$TokenPrivateKeyAuthenticationMethodDto
 
   @override
   TokenPrivateKeyAuthenticationMethodDtoBuilder toBuilder() =>
-      new TokenPrivateKeyAuthenticationMethodDtoBuilder()..replace(this);
+      TokenPrivateKeyAuthenticationMethodDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -234,7 +226,7 @@ class TokenPrivateKeyAuthenticationMethodDtoBuilder
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder? _publicKeyInfo;
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder
       get publicKeyInfo => _$this._publicKeyInfo ??=
-          new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder();
+          TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder();
   set publicKeyInfo(
           TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder?
               publicKeyInfo) =>
@@ -257,7 +249,6 @@ class TokenPrivateKeyAuthenticationMethodDtoBuilder
 
   @override
   void replace(TokenPrivateKeyAuthenticationMethodDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TokenPrivateKeyAuthenticationMethodDto;
   }
 
@@ -274,7 +265,7 @@ class TokenPrivateKeyAuthenticationMethodDtoBuilder
     _$TokenPrivateKeyAuthenticationMethodDto _$result;
     try {
       _$result = _$v ??
-          new _$TokenPrivateKeyAuthenticationMethodDto._(
+          _$TokenPrivateKeyAuthenticationMethodDto._(
             type: BuiltValueNullFieldError.checkNotNull(
                 type, r'TokenPrivateKeyAuthenticationMethodDto', 'type'),
             signingAlgorithm: BuiltValueNullFieldError.checkNotNull(
@@ -289,7 +280,7 @@ class TokenPrivateKeyAuthenticationMethodDtoBuilder
         _$failedField = 'publicKeyInfo';
         publicKeyInfo.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'TokenPrivateKeyAuthenticationMethodDto',
             _$failedField,
             e.toString());

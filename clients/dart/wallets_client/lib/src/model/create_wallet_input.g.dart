@@ -15,19 +15,19 @@ CreateWalletInputDidMethodEnum _$createWalletInputDidMethodEnumValueOf(
     case 'key':
       return _$createWalletInputDidMethodEnum_key;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<CreateWalletInputDidMethodEnum>
-    _$createWalletInputDidMethodEnumValues = new BuiltSet<
+    _$createWalletInputDidMethodEnumValues = BuiltSet<
         CreateWalletInputDidMethodEnum>(const <CreateWalletInputDidMethodEnum>[
   _$createWalletInputDidMethodEnum_key,
 ]);
 
 Serializer<CreateWalletInputDidMethodEnum>
     _$createWalletInputDidMethodEnumSerializer =
-    new _$CreateWalletInputDidMethodEnumSerializer();
+    _$CreateWalletInputDidMethodEnumSerializer();
 
 class _$CreateWalletInputDidMethodEnumSerializer
     implements PrimitiveSerializer<CreateWalletInputDidMethodEnum> {
@@ -63,19 +63,16 @@ class _$CreateWalletInput extends CreateWalletInput {
 
   factory _$CreateWalletInput(
           [void Function(CreateWalletInputBuilder)? updates]) =>
-      (new CreateWalletInputBuilder()..update(updates))._build();
+      (CreateWalletInputBuilder()..update(updates))._build();
 
-  _$CreateWalletInput._({required this.oneOf}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(oneOf, r'CreateWalletInput', 'oneOf');
-  }
-
+  _$CreateWalletInput._({required this.oneOf}) : super._();
   @override
   CreateWalletInput rebuild(void Function(CreateWalletInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   CreateWalletInputBuilder toBuilder() =>
-      new CreateWalletInputBuilder()..replace(this);
+      CreateWalletInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -122,7 +119,6 @@ class CreateWalletInputBuilder
 
   @override
   void replace(CreateWalletInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateWalletInput;
   }
 
@@ -136,7 +132,7 @@ class CreateWalletInputBuilder
 
   _$CreateWalletInput _build() {
     final _$result = _$v ??
-        new _$CreateWalletInput._(
+        _$CreateWalletInput._(
           oneOf: BuiltValueNullFieldError.checkNotNull(
               oneOf, r'CreateWalletInput', 'oneOf'),
         );

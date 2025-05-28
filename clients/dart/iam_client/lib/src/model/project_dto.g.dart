@@ -21,7 +21,7 @@ class _$ProjectDto extends ProjectDto {
   final String? updatedAt;
 
   factory _$ProjectDto([void Function(ProjectDtoBuilder)? updates]) =>
-      (new ProjectDtoBuilder()..update(updates))._build();
+      (ProjectDtoBuilder()..update(updates))._build();
 
   _$ProjectDto._(
       {required this.id,
@@ -30,17 +30,13 @@ class _$ProjectDto extends ProjectDto {
       this.description,
       this.createdAt,
       this.updatedAt})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, r'ProjectDto', 'id');
-    BuiltValueNullFieldError.checkNotNull(name, r'ProjectDto', 'name');
-  }
-
+      : super._();
   @override
   ProjectDto rebuild(void Function(ProjectDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProjectDtoBuilder toBuilder() => new ProjectDtoBuilder()..replace(this);
+  ProjectDtoBuilder toBuilder() => ProjectDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -127,7 +123,6 @@ class ProjectDtoBuilder implements Builder<ProjectDto, ProjectDtoBuilder> {
 
   @override
   void replace(ProjectDto other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProjectDto;
   }
 
@@ -141,7 +136,7 @@ class ProjectDtoBuilder implements Builder<ProjectDto, ProjectDtoBuilder> {
 
   _$ProjectDto _build() {
     final _$result = _$v ??
-        new _$ProjectDto._(
+        _$ProjectDto._(
           id: BuiltValueNullFieldError.checkNotNull(id, r'ProjectDto', 'id'),
           name: BuiltValueNullFieldError.checkNotNull(
               name, r'ProjectDto', 'name'),

@@ -6,7 +6,7 @@ part of 'serializers.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(CreateWalletInput.serializer)
       ..add(CreateWalletResponse.serializer)
       ..add(DidKeyInputParams.serializer)
@@ -60,53 +60,53 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => new ListBuilder<ServiceErrorResponseDetailsInner>())
+          () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WalletDto)]),
-          () => new ListBuilder<WalletDto>())
+          () => ListBuilder<WalletDto>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WalletDtoKeysInner)]),
-          () => new ListBuilder<WalletDtoKeysInner>())
+          () => ListBuilder<WalletDtoKeysInner>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>())
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
-          () => new MapBuilder<String, JsonObject?>()))
+          () => MapBuilder<String, JsonObject?>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -12,19 +12,16 @@ class _$ValidateJwtInput extends ValidateJwtInput {
 
   factory _$ValidateJwtInput(
           [void Function(ValidateJwtInputBuilder)? updates]) =>
-      (new ValidateJwtInputBuilder()..update(updates))._build();
+      (ValidateJwtInputBuilder()..update(updates))._build();
 
-  _$ValidateJwtInput._({required this.token}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(token, r'ValidateJwtInput', 'token');
-  }
-
+  _$ValidateJwtInput._({required this.token}) : super._();
   @override
   ValidateJwtInput rebuild(void Function(ValidateJwtInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ValidateJwtInputBuilder toBuilder() =>
-      new ValidateJwtInputBuilder()..replace(this);
+      ValidateJwtInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -71,7 +68,6 @@ class ValidateJwtInputBuilder
 
   @override
   void replace(ValidateJwtInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ValidateJwtInput;
   }
 
@@ -85,7 +81,7 @@ class ValidateJwtInputBuilder
 
   _$ValidateJwtInput _build() {
     final _$result = _$v ??
-        new _$ValidateJwtInput._(
+        _$ValidateJwtInput._(
           token: BuiltValueNullFieldError.checkNotNull(
               token, r'ValidateJwtInput', 'token'),
         );

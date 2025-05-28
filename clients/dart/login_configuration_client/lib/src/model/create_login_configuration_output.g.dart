@@ -28,7 +28,7 @@ class _$CreateLoginConfigurationOutput extends CreateLoginConfigurationOutput {
 
   factory _$CreateLoginConfigurationOutput(
           [void Function(CreateLoginConfigurationOutputBuilder)? updates]) =>
-      (new CreateLoginConfigurationOutputBuilder()..update(updates))._build();
+      (CreateLoginConfigurationOutputBuilder()..update(updates))._build();
 
   _$CreateLoginConfigurationOutput._(
       {required this.ari,
@@ -40,23 +40,7 @@ class _$CreateLoginConfigurationOutput extends CreateLoginConfigurationOutput {
       required this.clientMetadata,
       required this.creationDate,
       this.postLogoutRedirectUris})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        ari, r'CreateLoginConfigurationOutput', 'ari');
-    BuiltValueNullFieldError.checkNotNull(
-        projectId, r'CreateLoginConfigurationOutput', 'projectId');
-    BuiltValueNullFieldError.checkNotNull(
-        name, r'CreateLoginConfigurationOutput', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        auth, r'CreateLoginConfigurationOutput', 'auth');
-    BuiltValueNullFieldError.checkNotNull(
-        redirectUris, r'CreateLoginConfigurationOutput', 'redirectUris');
-    BuiltValueNullFieldError.checkNotNull(
-        clientMetadata, r'CreateLoginConfigurationOutput', 'clientMetadata');
-    BuiltValueNullFieldError.checkNotNull(
-        creationDate, r'CreateLoginConfigurationOutput', 'creationDate');
-  }
-
+      : super._();
   @override
   CreateLoginConfigurationOutput rebuild(
           void Function(CreateLoginConfigurationOutputBuilder) updates) =>
@@ -64,7 +48,7 @@ class _$CreateLoginConfigurationOutput extends CreateLoginConfigurationOutput {
 
   @override
   CreateLoginConfigurationOutputBuilder toBuilder() =>
-      new CreateLoginConfigurationOutputBuilder()..replace(this);
+      CreateLoginConfigurationOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -138,20 +122,20 @@ class CreateLoginConfigurationOutputBuilder
 
   CreateLoginConfigurationOutputAuthBuilder? _auth;
   CreateLoginConfigurationOutputAuthBuilder get auth =>
-      _$this._auth ??= new CreateLoginConfigurationOutputAuthBuilder();
+      _$this._auth ??= CreateLoginConfigurationOutputAuthBuilder();
   set auth(CreateLoginConfigurationOutputAuthBuilder? auth) =>
       _$this._auth = auth;
 
   ListBuilder<String>? _redirectUris;
   ListBuilder<String> get redirectUris =>
-      _$this._redirectUris ??= new ListBuilder<String>();
+      _$this._redirectUris ??= ListBuilder<String>();
   set redirectUris(ListBuilder<String>? redirectUris) =>
       _$this._redirectUris = redirectUris;
 
   LoginConfigurationClientMetadataOutputBuilder? _clientMetadata;
   LoginConfigurationClientMetadataOutputBuilder get clientMetadata =>
       _$this._clientMetadata ??=
-          new LoginConfigurationClientMetadataOutputBuilder();
+          LoginConfigurationClientMetadataOutputBuilder();
   set clientMetadata(
           LoginConfigurationClientMetadataOutputBuilder? clientMetadata) =>
       _$this._clientMetadata = clientMetadata;
@@ -162,7 +146,7 @@ class CreateLoginConfigurationOutputBuilder
 
   ListBuilder<String>? _postLogoutRedirectUris;
   ListBuilder<String> get postLogoutRedirectUris =>
-      _$this._postLogoutRedirectUris ??= new ListBuilder<String>();
+      _$this._postLogoutRedirectUris ??= ListBuilder<String>();
   set postLogoutRedirectUris(ListBuilder<String>? postLogoutRedirectUris) =>
       _$this._postLogoutRedirectUris = postLogoutRedirectUris;
 
@@ -189,7 +173,6 @@ class CreateLoginConfigurationOutputBuilder
 
   @override
   void replace(CreateLoginConfigurationOutput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateLoginConfigurationOutput;
   }
 
@@ -205,7 +188,7 @@ class CreateLoginConfigurationOutputBuilder
     _$CreateLoginConfigurationOutput _$result;
     try {
       _$result = _$v ??
-          new _$CreateLoginConfigurationOutput._(
+          _$CreateLoginConfigurationOutput._(
             ari: BuiltValueNullFieldError.checkNotNull(
                 ari, r'CreateLoginConfigurationOutput', 'ari'),
             projectId: BuiltValueNullFieldError.checkNotNull(
@@ -233,7 +216,7 @@ class CreateLoginConfigurationOutputBuilder
         _$failedField = 'postLogoutRedirectUris';
         _postLogoutRedirectUris?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'CreateLoginConfigurationOutput', _$failedField, e.toString());
       }
       rethrow;

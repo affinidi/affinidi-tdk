@@ -21,18 +21,17 @@ class _$Format extends Format {
   final LdpObject? ldpVp;
 
   factory _$Format([void Function(FormatBuilder)? updates]) =>
-      (new FormatBuilder()..update(updates))._build();
+      (FormatBuilder()..update(updates))._build();
 
   _$Format._(
       {this.jwt, this.jwtVc, this.jwtVp, this.ldp, this.ldpVc, this.ldpVp})
       : super._();
-
   @override
   Format rebuild(void Function(FormatBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  FormatBuilder toBuilder() => new FormatBuilder()..replace(this);
+  FormatBuilder toBuilder() => FormatBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -76,27 +75,27 @@ class FormatBuilder implements Builder<Format, FormatBuilder> {
   _$Format? _$v;
 
   JwtObjectBuilder? _jwt;
-  JwtObjectBuilder get jwt => _$this._jwt ??= new JwtObjectBuilder();
+  JwtObjectBuilder get jwt => _$this._jwt ??= JwtObjectBuilder();
   set jwt(JwtObjectBuilder? jwt) => _$this._jwt = jwt;
 
   JwtObjectBuilder? _jwtVc;
-  JwtObjectBuilder get jwtVc => _$this._jwtVc ??= new JwtObjectBuilder();
+  JwtObjectBuilder get jwtVc => _$this._jwtVc ??= JwtObjectBuilder();
   set jwtVc(JwtObjectBuilder? jwtVc) => _$this._jwtVc = jwtVc;
 
   JwtObjectBuilder? _jwtVp;
-  JwtObjectBuilder get jwtVp => _$this._jwtVp ??= new JwtObjectBuilder();
+  JwtObjectBuilder get jwtVp => _$this._jwtVp ??= JwtObjectBuilder();
   set jwtVp(JwtObjectBuilder? jwtVp) => _$this._jwtVp = jwtVp;
 
   LdpObjectBuilder? _ldp;
-  LdpObjectBuilder get ldp => _$this._ldp ??= new LdpObjectBuilder();
+  LdpObjectBuilder get ldp => _$this._ldp ??= LdpObjectBuilder();
   set ldp(LdpObjectBuilder? ldp) => _$this._ldp = ldp;
 
   LdpObjectBuilder? _ldpVc;
-  LdpObjectBuilder get ldpVc => _$this._ldpVc ??= new LdpObjectBuilder();
+  LdpObjectBuilder get ldpVc => _$this._ldpVc ??= LdpObjectBuilder();
   set ldpVc(LdpObjectBuilder? ldpVc) => _$this._ldpVc = ldpVc;
 
   LdpObjectBuilder? _ldpVp;
-  LdpObjectBuilder get ldpVp => _$this._ldpVp ??= new LdpObjectBuilder();
+  LdpObjectBuilder get ldpVp => _$this._ldpVp ??= LdpObjectBuilder();
   set ldpVp(LdpObjectBuilder? ldpVp) => _$this._ldpVp = ldpVp;
 
   FormatBuilder() {
@@ -119,7 +118,6 @@ class FormatBuilder implements Builder<Format, FormatBuilder> {
 
   @override
   void replace(Format other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Format;
   }
 
@@ -135,7 +133,7 @@ class FormatBuilder implements Builder<Format, FormatBuilder> {
     _$Format _$result;
     try {
       _$result = _$v ??
-          new _$Format._(
+          _$Format._(
             jwt: _jwt?.build(),
             jwtVc: _jwtVc?.build(),
             jwtVp: _jwtVp?.build(),
@@ -159,7 +157,7 @@ class FormatBuilder implements Builder<Format, FormatBuilder> {
         _$failedField = 'ldpVp';
         _ldpVp?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'Format', _$failedField, e.toString());
       }
       rethrow;

@@ -14,21 +14,17 @@ class _$ListPexQueriesOK extends ListPexQueriesOK {
 
   factory _$ListPexQueriesOK(
           [void Function(ListPexQueriesOKBuilder)? updates]) =>
-      (new ListPexQueriesOKBuilder()..update(updates))._build();
+      (ListPexQueriesOKBuilder()..update(updates))._build();
 
   _$ListPexQueriesOK._({required this.pexQueries, this.lastEvaluatedKey})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        pexQueries, r'ListPexQueriesOK', 'pexQueries');
-  }
-
+      : super._();
   @override
   ListPexQueriesOK rebuild(void Function(ListPexQueriesOKBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   ListPexQueriesOKBuilder toBuilder() =>
-      new ListPexQueriesOKBuilder()..replace(this);
+      ListPexQueriesOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -62,7 +58,7 @@ class ListPexQueriesOKBuilder
 
   ListBuilder<PexQueryDto>? _pexQueries;
   ListBuilder<PexQueryDto> get pexQueries =>
-      _$this._pexQueries ??= new ListBuilder<PexQueryDto>();
+      _$this._pexQueries ??= ListBuilder<PexQueryDto>();
   set pexQueries(ListBuilder<PexQueryDto>? pexQueries) =>
       _$this._pexQueries = pexQueries;
 
@@ -87,7 +83,6 @@ class ListPexQueriesOKBuilder
 
   @override
   void replace(ListPexQueriesOK other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ListPexQueriesOK;
   }
 
@@ -103,7 +98,7 @@ class ListPexQueriesOKBuilder
     _$ListPexQueriesOK _$result;
     try {
       _$result = _$v ??
-          new _$ListPexQueriesOK._(
+          _$ListPexQueriesOK._(
             pexQueries: pexQueries.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -113,7 +108,7 @@ class ListPexQueriesOKBuilder
         _$failedField = 'pexQueries';
         pexQueries.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ListPexQueriesOK', _$failedField, e.toString());
       }
       rethrow;

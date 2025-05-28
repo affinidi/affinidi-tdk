@@ -13,21 +13,17 @@ class _$MoveNodeInput extends MoveNodeInput {
   final bool? resolveNameConflictsAutomatically;
 
   factory _$MoveNodeInput([void Function(MoveNodeInputBuilder)? updates]) =>
-      (new MoveNodeInputBuilder()..update(updates))._build();
+      (MoveNodeInputBuilder()..update(updates))._build();
 
   _$MoveNodeInput._(
       {required this.destinationNodeId, this.resolveNameConflictsAutomatically})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        destinationNodeId, r'MoveNodeInput', 'destinationNodeId');
-  }
-
+      : super._();
   @override
   MoveNodeInput rebuild(void Function(MoveNodeInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  MoveNodeInputBuilder toBuilder() => new MoveNodeInputBuilder()..replace(this);
+  MoveNodeInputBuilder toBuilder() => MoveNodeInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -90,7 +86,6 @@ class MoveNodeInputBuilder
 
   @override
   void replace(MoveNodeInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$MoveNodeInput;
   }
 
@@ -104,7 +99,7 @@ class MoveNodeInputBuilder
 
   _$MoveNodeInput _build() {
     final _$result = _$v ??
-        new _$MoveNodeInput._(
+        _$MoveNodeInput._(
           destinationNodeId: BuiltValueNullFieldError.checkNotNull(
               destinationNodeId, r'MoveNodeInput', 'destinationNodeId'),
           resolveNameConflictsAutomatically: resolveNameConflictsAutomatically,

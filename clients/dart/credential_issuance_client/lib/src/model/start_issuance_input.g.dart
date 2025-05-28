@@ -25,12 +25,12 @@ StartIssuanceInputClaimModeEnum _$startIssuanceInputClaimModeEnumValueOf(
     case 'FIXED_HOLDER':
       return _$startIssuanceInputClaimModeEnum_FIXED_HOLDER;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<StartIssuanceInputClaimModeEnum>
-    _$startIssuanceInputClaimModeEnumValues = new BuiltSet<
+    _$startIssuanceInputClaimModeEnumValues = BuiltSet<
         StartIssuanceInputClaimModeEnum>(const <StartIssuanceInputClaimModeEnum>[
   _$startIssuanceInputClaimModeEnum_NORMAL,
   _$startIssuanceInputClaimModeEnum_TX_CODE,
@@ -39,7 +39,7 @@ final BuiltSet<StartIssuanceInputClaimModeEnum>
 
 Serializer<StartIssuanceInputClaimModeEnum>
     _$startIssuanceInputClaimModeEnumSerializer =
-    new _$StartIssuanceInputClaimModeEnumSerializer();
+    _$StartIssuanceInputClaimModeEnumSerializer();
 
 class _$StartIssuanceInputClaimModeEnumSerializer
     implements PrimitiveSerializer<StartIssuanceInputClaimModeEnum> {
@@ -85,14 +85,11 @@ class _$StartIssuanceInput extends StartIssuanceInput {
 
   factory _$StartIssuanceInput(
           [void Function(StartIssuanceInputBuilder)? updates]) =>
-      (new StartIssuanceInputBuilder()..update(updates))._build();
+      (StartIssuanceInputBuilder()..update(updates))._build();
 
   _$StartIssuanceInput._(
       {this.claimMode, this.holderDid, this.issuanceId, required this.data})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(data, r'StartIssuanceInput', 'data');
-  }
-
+      : super._();
   @override
   StartIssuanceInput rebuild(
           void Function(StartIssuanceInputBuilder) updates) =>
@@ -100,7 +97,7 @@ class _$StartIssuanceInput extends StartIssuanceInput {
 
   @override
   StartIssuanceInputBuilder toBuilder() =>
-      new StartIssuanceInputBuilder()..replace(this);
+      StartIssuanceInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -153,7 +150,7 @@ class StartIssuanceInputBuilder
 
   ListBuilder<StartIssuanceInputDataInner>? _data;
   ListBuilder<StartIssuanceInputDataInner> get data =>
-      _$this._data ??= new ListBuilder<StartIssuanceInputDataInner>();
+      _$this._data ??= ListBuilder<StartIssuanceInputDataInner>();
   set data(ListBuilder<StartIssuanceInputDataInner>? data) =>
       _$this._data = data;
 
@@ -175,7 +172,6 @@ class StartIssuanceInputBuilder
 
   @override
   void replace(StartIssuanceInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$StartIssuanceInput;
   }
 
@@ -191,7 +187,7 @@ class StartIssuanceInputBuilder
     _$StartIssuanceInput _$result;
     try {
       _$result = _$v ??
-          new _$StartIssuanceInput._(
+          _$StartIssuanceInput._(
             claimMode: claimMode,
             holderDid: holderDid,
             issuanceId: issuanceId,
@@ -203,7 +199,7 @@ class StartIssuanceInputBuilder
         _$failedField = 'data';
         data.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'StartIssuanceInput', _$failedField, e.toString());
       }
       rethrow;

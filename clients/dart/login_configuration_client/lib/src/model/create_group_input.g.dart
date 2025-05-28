@@ -16,21 +16,17 @@ class _$CreateGroupInput extends CreateGroupInput {
 
   factory _$CreateGroupInput(
           [void Function(CreateGroupInputBuilder)? updates]) =>
-      (new CreateGroupInputBuilder()..update(updates))._build();
+      (CreateGroupInputBuilder()..update(updates))._build();
 
   _$CreateGroupInput._({required this.groupName, this.name, this.description})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        groupName, r'CreateGroupInput', 'groupName');
-  }
-
+      : super._();
   @override
   CreateGroupInput rebuild(void Function(CreateGroupInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   CreateGroupInputBuilder toBuilder() =>
-      new CreateGroupInputBuilder()..replace(this);
+      CreateGroupInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -94,7 +90,6 @@ class CreateGroupInputBuilder
 
   @override
   void replace(CreateGroupInput other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateGroupInput;
   }
 
@@ -108,7 +103,7 @@ class CreateGroupInputBuilder
 
   _$CreateGroupInput _build() {
     final _$result = _$v ??
-        new _$CreateGroupInput._(
+        _$CreateGroupInput._(
           groupName: BuiltValueNullFieldError.checkNotNull(
               groupName, r'CreateGroupInput', 'groupName'),
           name: name,

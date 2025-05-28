@@ -14,11 +14,10 @@ class _$ClaimedCredentialResponse extends ClaimedCredentialResponse {
 
   factory _$ClaimedCredentialResponse(
           [void Function(ClaimedCredentialResponseBuilder)? updates]) =>
-      (new ClaimedCredentialResponseBuilder()..update(updates))._build();
+      (ClaimedCredentialResponseBuilder()..update(updates))._build();
 
   _$ClaimedCredentialResponse._({this.credential, this.credentials})
       : super._();
-
   @override
   ClaimedCredentialResponse rebuild(
           void Function(ClaimedCredentialResponseBuilder) updates) =>
@@ -26,7 +25,7 @@ class _$ClaimedCredentialResponse extends ClaimedCredentialResponse {
 
   @override
   ClaimedCredentialResponseBuilder toBuilder() =>
-      new ClaimedCredentialResponseBuilder()..replace(this);
+      ClaimedCredentialResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -61,13 +60,13 @@ class ClaimedCredentialResponseBuilder
 
   MapBuilder<String, JsonObject?>? _credential;
   MapBuilder<String, JsonObject?> get credential =>
-      _$this._credential ??= new MapBuilder<String, JsonObject?>();
+      _$this._credential ??= MapBuilder<String, JsonObject?>();
   set credential(MapBuilder<String, JsonObject?>? credential) =>
       _$this._credential = credential;
 
   ListBuilder<BuiltMap<String, JsonObject?>>? _credentials;
   ListBuilder<BuiltMap<String, JsonObject?>> get credentials =>
-      _$this._credentials ??= new ListBuilder<BuiltMap<String, JsonObject?>>();
+      _$this._credentials ??= ListBuilder<BuiltMap<String, JsonObject?>>();
   set credentials(ListBuilder<BuiltMap<String, JsonObject?>>? credentials) =>
       _$this._credentials = credentials;
 
@@ -87,7 +86,6 @@ class ClaimedCredentialResponseBuilder
 
   @override
   void replace(ClaimedCredentialResponse other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ClaimedCredentialResponse;
   }
 
@@ -103,7 +101,7 @@ class ClaimedCredentialResponseBuilder
     _$ClaimedCredentialResponse _$result;
     try {
       _$result = _$v ??
-          new _$ClaimedCredentialResponse._(
+          _$ClaimedCredentialResponse._(
             credential: _credential?.build(),
             credentials: _credentials?.build(),
           );
@@ -115,7 +113,7 @@ class ClaimedCredentialResponseBuilder
         _$failedField = 'credentials';
         _credentials?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'ClaimedCredentialResponse', _$failedField, e.toString());
       }
       rethrow;

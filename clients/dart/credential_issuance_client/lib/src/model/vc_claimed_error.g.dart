@@ -14,12 +14,12 @@ VcClaimedErrorNameEnum _$vcClaimedErrorNameEnumValueOf(String name) {
     case 'vcClaimedError':
       return _$vcClaimedErrorNameEnum_vcClaimedError;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<VcClaimedErrorNameEnum> _$vcClaimedErrorNameEnumValues =
-    new BuiltSet<VcClaimedErrorNameEnum>(const <VcClaimedErrorNameEnum>[
+    BuiltSet<VcClaimedErrorNameEnum>(const <VcClaimedErrorNameEnum>[
   _$vcClaimedErrorNameEnum_vcClaimedError,
 ]);
 
@@ -33,12 +33,12 @@ VcClaimedErrorMessageEnum _$vcClaimedErrorMessageEnumValueOf(String name) {
     case 'theRequestedVCHasAlreadyBeenClaimedByTheUser':
       return _$vcClaimedErrorMessageEnum_theRequestedVCHasAlreadyBeenClaimedByTheUser;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<VcClaimedErrorMessageEnum> _$vcClaimedErrorMessageEnumValues =
-    new BuiltSet<VcClaimedErrorMessageEnum>(const <VcClaimedErrorMessageEnum>[
+    BuiltSet<VcClaimedErrorMessageEnum>(const <VcClaimedErrorMessageEnum>[
   _$vcClaimedErrorMessageEnum_theRequestedVCHasAlreadyBeenClaimedByTheUser,
 ]);
 
@@ -52,23 +52,23 @@ VcClaimedErrorHttpStatusCodeEnum _$vcClaimedErrorHttpStatusCodeEnumValueOf(
     case 'number400':
       return _$vcClaimedErrorHttpStatusCodeEnum_number400;
     default:
-      throw new ArgumentError(name);
+      throw ArgumentError(name);
   }
 }
 
 final BuiltSet<VcClaimedErrorHttpStatusCodeEnum>
-    _$vcClaimedErrorHttpStatusCodeEnumValues = new BuiltSet<
+    _$vcClaimedErrorHttpStatusCodeEnumValues = BuiltSet<
         VcClaimedErrorHttpStatusCodeEnum>(const <VcClaimedErrorHttpStatusCodeEnum>[
   _$vcClaimedErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<VcClaimedErrorNameEnum> _$vcClaimedErrorNameEnumSerializer =
-    new _$VcClaimedErrorNameEnumSerializer();
+    _$VcClaimedErrorNameEnumSerializer();
 Serializer<VcClaimedErrorMessageEnum> _$vcClaimedErrorMessageEnumSerializer =
-    new _$VcClaimedErrorMessageEnumSerializer();
+    _$VcClaimedErrorMessageEnumSerializer();
 Serializer<VcClaimedErrorHttpStatusCodeEnum>
     _$vcClaimedErrorHttpStatusCodeEnumSerializer =
-    new _$VcClaimedErrorHttpStatusCodeEnumSerializer();
+    _$VcClaimedErrorHttpStatusCodeEnumSerializer();
 
 class _$VcClaimedErrorNameEnumSerializer
     implements PrimitiveSerializer<VcClaimedErrorNameEnum> {
@@ -166,7 +166,7 @@ class _$VcClaimedError extends VcClaimedError {
   final BuiltList<ActionForbiddenErrorDetailsInner>? details;
 
   factory _$VcClaimedError([void Function(VcClaimedErrorBuilder)? updates]) =>
-      (new VcClaimedErrorBuilder()..update(updates))._build();
+      (VcClaimedErrorBuilder()..update(updates))._build();
 
   _$VcClaimedError._(
       {required this.name,
@@ -174,23 +174,13 @@ class _$VcClaimedError extends VcClaimedError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(name, r'VcClaimedError', 'name');
-    BuiltValueNullFieldError.checkNotNull(
-        message, r'VcClaimedError', 'message');
-    BuiltValueNullFieldError.checkNotNull(
-        httpStatusCode, r'VcClaimedError', 'httpStatusCode');
-    BuiltValueNullFieldError.checkNotNull(
-        traceId, r'VcClaimedError', 'traceId');
-  }
-
+      : super._();
   @override
   VcClaimedError rebuild(void Function(VcClaimedErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  VcClaimedErrorBuilder toBuilder() =>
-      new VcClaimedErrorBuilder()..replace(this);
+  VcClaimedErrorBuilder toBuilder() => VcClaimedErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -251,7 +241,7 @@ class VcClaimedErrorBuilder
 
   ListBuilder<ActionForbiddenErrorDetailsInner>? _details;
   ListBuilder<ActionForbiddenErrorDetailsInner> get details =>
-      _$this._details ??= new ListBuilder<ActionForbiddenErrorDetailsInner>();
+      _$this._details ??= ListBuilder<ActionForbiddenErrorDetailsInner>();
   set details(ListBuilder<ActionForbiddenErrorDetailsInner>? details) =>
       _$this._details = details;
 
@@ -274,7 +264,6 @@ class VcClaimedErrorBuilder
 
   @override
   void replace(VcClaimedError other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VcClaimedError;
   }
 
@@ -290,7 +279,7 @@ class VcClaimedErrorBuilder
     _$VcClaimedError _$result;
     try {
       _$result = _$v ??
-          new _$VcClaimedError._(
+          _$VcClaimedError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'VcClaimedError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -307,7 +296,7 @@ class VcClaimedErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
+        throw BuiltValueNestedFieldError(
             r'VcClaimedError', _$failedField, e.toString());
       }
       rethrow;

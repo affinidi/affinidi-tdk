@@ -22,8 +22,7 @@ class _$LoginSessionDtoAuthorizationRequest
   factory _$LoginSessionDtoAuthorizationRequest(
           [void Function(LoginSessionDtoAuthorizationRequestBuilder)?
               updates]) =>
-      (new LoginSessionDtoAuthorizationRequestBuilder()..update(updates))
-          ._build();
+      (LoginSessionDtoAuthorizationRequestBuilder()..update(updates))._build();
 
   _$LoginSessionDtoAuthorizationRequest._(
       {required this.state,
@@ -31,13 +30,7 @@ class _$LoginSessionDtoAuthorizationRequest
       this.ari,
       this.clientId,
       this.nonce})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(
-        state, r'LoginSessionDtoAuthorizationRequest', 'state');
-    BuiltValueNullFieldError.checkNotNull(presentationDefinition,
-        r'LoginSessionDtoAuthorizationRequest', 'presentationDefinition');
-  }
-
+      : super._();
   @override
   LoginSessionDtoAuthorizationRequest rebuild(
           void Function(LoginSessionDtoAuthorizationRequestBuilder) updates) =>
@@ -45,7 +38,7 @@ class _$LoginSessionDtoAuthorizationRequest
 
   @override
   LoginSessionDtoAuthorizationRequestBuilder toBuilder() =>
-      new LoginSessionDtoAuthorizationRequestBuilder()..replace(this);
+      LoginSessionDtoAuthorizationRequestBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -128,7 +121,6 @@ class LoginSessionDtoAuthorizationRequestBuilder
 
   @override
   void replace(LoginSessionDtoAuthorizationRequest other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$LoginSessionDtoAuthorizationRequest;
   }
 
@@ -143,7 +135,7 @@ class LoginSessionDtoAuthorizationRequestBuilder
 
   _$LoginSessionDtoAuthorizationRequest _build() {
     final _$result = _$v ??
-        new _$LoginSessionDtoAuthorizationRequest._(
+        _$LoginSessionDtoAuthorizationRequest._(
           state: BuiltValueNullFieldError.checkNotNull(
               state, r'LoginSessionDtoAuthorizationRequest', 'state'),
           presentationDefinition: BuiltValueNullFieldError.checkNotNull(
