@@ -10,7 +10,7 @@ describe('credential-verification-client', function () {
     api = new DefaultApi(configuration)
   })
 
-  it('verifies credentials', async () => {
+  it('Verifies credentials', async () => {
     const credentials = { verifiableCredentials: [ JSON.parse(verifiableCredential) ] }
     const { data } = await api.verifyCredentials(credentials)
 
@@ -18,7 +18,7 @@ describe('credential-verification-client', function () {
     expect(data.isValid).to.be.true
   })
 
-  it('verifies presentation', async () => {
+  it('Verifies presentation', async () => {
     const body = { verifiablePresentation: JSON.parse(verifiablePresentation) }
     const { data } = await api.verifyPresentation(body)
 

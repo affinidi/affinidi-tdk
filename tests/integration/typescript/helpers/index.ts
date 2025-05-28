@@ -4,10 +4,9 @@ import { expect } from 'chai'
 import { AuthProvider } from '@affinidi-tdk/auth-provider'
 import { WalletApi, Configuration as WalletConfiguration } from '@affinidi-tdk/wallets-client'
 import { DefaultApi, Configuration as VerificationConfiguration } from '@affinidi-tdk/credential-verification-client'
-import { AuthenticationService } from './authenticationService'
+import { AuthenticationService } from './authentication-service'
 
 const missingVariables = new Set()
-/** @type {{(name: string): string}} */
 const required = (name: string) => {
   missingVariables.add(name)
   return ''
@@ -20,7 +19,6 @@ const {
   TOKEN_ID: tokenId = required('TOKEN_ID'),
   PRIVATE_KEY: privateKey = required('PRIVATE_KEY'),
   PROJECT_ID: projectId = required('PROJECT_ID'),
-
   // fixtures
   VERIFIABLE_CREDENTIAL: verifiableCredential = required('VERIFIABLE_CREDENTIAL'),
   VERIFIABLE_PRESENTATION: verifiablePresentation = required('VERIFIABLE_PRESENTATION'),
@@ -30,11 +28,9 @@ const {
   IOTA_CONFIGURATION: iotaConfiguration = required('IOTA_CONFIGURATION'),
   IOTA_PRESENTATION_SUBMISSION: iotaPresentationSubmission = required('IOTA_PRESENTATION_SUBMISSION'),
   IOTA_PRESENTATION_DEFINITION: iotaPresentationDefinition = required('IOTA_PRESENTATION_DEFINITION'),
-
   // secrets for internal testing
-  // TODO: make not required for external usage (skip CIS issuance)
-  ENCRYPTION_SEED: encryptionSeed = required('ENCRYPTION_SEED'),
-  SEED_PASSWORD: seedPassword = required('SEED_PASSWORD'),
+  ENCRYPTION_SEED: encryptionSeed = process.env.INTERNAL ? required('ENCRYPTION_SEED') : '',
+  SEED_PASSWORD: seedPassword = process.env.INTERNAL ? required('SEED_PASSWORD') : '',
 } = process.env
 
 if (missingVariables.size > 0) {

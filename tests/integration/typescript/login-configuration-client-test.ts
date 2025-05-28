@@ -85,46 +85,46 @@ describe('login-configuration-client', function () {
         expect(status).to.equal(200)
       })
 
-      it('List allowed groups', async () => {
+      it('Lists allowed groups', async () => {
         const { data } = await allowListApi.listAllowedGroups()
         expect(data.groupNames).to.include(groupName)
       })
 
-      it('Disallow groups', async () => {
+      it('Disallows groups', async () => {
         const { status } = await allowListApi.disallowGroups({ groupNames: [groupName] })
         expect(status).to.equal(200)
       })
     })
 
-    describe('Deny Lists', function () {
+    describe('Denies Lists', function () {
       const blockUserId = 'test'
 
-      it('Block groups', async () => {
+      it('Blocks groups', async () => {
         const { status } = await denyListApi.blockGroups({ groupNames: [groupName] })
         expect(status).to.equal(200)
       })
 
-      it('List blocked groups', async () => {
+      it('Lists blocked groups', async () => {
         const { data } = await denyListApi.listBlockedGroups()
         expect(data.groupNames).to.include(groupName)
       })
 
-      it('Unblock groups', async () => {
+      it('Unblocks groups', async () => {
         const { status } = await denyListApi.unblockGroups({ groupNames: [groupName] })
         expect(status).to.equal(200)
       })
 
-      it('Block users', async () => {
+      it('Blocks users', async () => {
         const { status } = await denyListApi.blockUsers({ userIds: [blockUserId] })
         expect(status).to.equal(200)
       })
 
-      it('List blocked users', async () => {
+      it('Lists blocked users', async () => {
         const { data } = await denyListApi.listBlockedUsers({ userIds: [blockUserId] })
         expect(data.userIds).to.include(blockUserId)
       })
 
-      it('Unblock users', async () => {
+      it('Unblocks users', async () => {
         const { status } = await denyListApi.unblockUsers({ userIds: [blockUserId] })
         expect(status).to.equal(200)
       })

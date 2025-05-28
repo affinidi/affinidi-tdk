@@ -77,7 +77,7 @@ describe('iota-client', function () {
       iotaRedirectUri = data.redirectUris[0]
     })
 
-    it('List Iota configurations', async () => {
+    it('Lists Iota configurations', async () => {
       const { data } = await configurationsApi.listIotaConfigurations()
       expect(data.configurations).to.have.lengthOf.at.least(1)
     })
@@ -109,7 +109,7 @@ describe('iota-client', function () {
         queryId = data.queryId
       })
 
-      it('List PEX queries', async () => {
+      it('Lists PEX queries', async () => {
         const { data } = await pexQueryApi.listPexQueries(configurationId)
         expect(data.pexQueries).to.have.lengthOf.at.least(1)
       })
@@ -131,7 +131,7 @@ describe('iota-client', function () {
   })
 
   describe('Iota redirect flow', function () {
-    it('tests Iota redirect flow', async () => {
+    it('Shares data with Iota redirect flow', async () => {
       let response
       const { data: dataSharingRequestResponse } = await iotaApi.initiateDataSharingRequest({
         queryId,

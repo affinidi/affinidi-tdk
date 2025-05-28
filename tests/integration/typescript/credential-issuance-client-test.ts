@@ -9,15 +9,7 @@ import {
   BatchCredentialInput,
   BatchCredentialInputCredentialRequestsInner,
 } from '@affinidi-tdk/credential-issuance-client'
-import {
-  apiKey,
-  projectId,
-  credentialIssuanceData,
-  getCisToken,
-
-  createWallet,
-  deleteWallet,
-} from './helpers'
+import { apiKey, projectId, credentialIssuanceData, getCisToken } from './helpers'
 
 describe('credential-issuance-client', function () {
   let offerApi
@@ -66,7 +58,7 @@ describe('credential-issuance-client', function () {
   })
 
   describe('Issuance flow', function () {
-    it('Initiates credential issuance', async () => {
+    it('Initiates credential issuance @internal', async () => {
       const request: StartIssuanceInput = JSON.parse(credentialIssuanceData)
 
       const { data } = await issuanceApi.startIssuance(projectId, request)
@@ -77,7 +69,7 @@ describe('credential-issuance-client', function () {
       expect(data).to.have.a.property('issuanceId')
     })
 
-    it('Retrieves credential offer URI', async () => {
+    it('Retrieves credential offer URI @internal', async () => {
       const { data } = await offerApi.getCredentialOffer(projectId, issuanceId)
 
       expect(data).to.have.a.property('grants')
@@ -97,7 +89,7 @@ describe('credential-issuance-client', function () {
       credentialIssuer = data.credential_issuer
     })
 
-    it('Obtains credential token using pre-authorized code', async () => {
+    it('Obtains credential token using pre-authorized code @internal', async () => {
       const response = await fetch(`${credentialIssuer}/oauth2/token`, {
         method: 'POST',
         headers: {
@@ -117,7 +109,7 @@ describe('credential-issuance-client', function () {
       authorizationDetails = data.authorization_details
     })
 
-    it('Processes batch credential requests', async () => {
+    it('Processes batch credential requests @internal', async () => {
       const cisConfiguration = new Configuration({ accessToken })
       const api = new CredentialsApi(cisConfiguration)
 
@@ -144,7 +136,7 @@ describe('credential-issuance-client', function () {
       expect(data.credential_responses[0]).to.have.a.property('credential')
     })
 
-    it('Retrieves issued credentials', async () => {
+    it('Retrieves issued credentials @internal', async () => {
       const { data } = await credentialsApi.getIssuanceIdClaimedCredential(
         projectId,
         configurationId,

@@ -20,18 +20,18 @@ describe('iam-client', function () {
       expect(status).to.equal(204)
     })
 
-    it('List principals for project', async () => {
+    it('Lists principals for project', async () => {
       const { data } = await projectsApi.listPrincipalsOfProject()
       expect(data.records).to.have.lengthOf.at.least(1)
     })
 
-    it('Remove principal from project', async () => {
+    it('Removes principal from project', async () => {
       const { status } = (await projectsApi.deletePrincipalFromProject(principalId, principalType))
       expect(status).to.equal(204)
     })
   })
 
-  it('returns PAT policies', async () => {
+  it('Reads PAT policies', async () => {
     const { data } = await policiesApi.getPolicies(tokenId, principalType)
     expect(data).to.have.a.property('version')
     expect(data).to.have.a.property('statement')
