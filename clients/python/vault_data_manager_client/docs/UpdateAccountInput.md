@@ -4,8 +4,8 @@
 
 | Name            | Type       | Description                                           | Notes      |
 | --------------- | ---------- | ----------------------------------------------------- | ---------- |
-| **name**        | **str**    | Name of the account                                   |
-| **description** | **str**    | Description of the account                            |
+| **name**        | **str**    | Name of the account                                   | [optional] |
+| **description** | **str**    | Description of the account                            | [optional] |
 | **alias**       | **str**    | Alias of the account                                  | [optional] |
 | **did_proof**   | **str**    | JWT that proves ownership of profile DID by requester |
 | **metadata**    | **object** | Description of metadata                               | [optional] |
