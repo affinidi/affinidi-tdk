@@ -3,13 +3,16 @@ import 'package:ssi/ssi.dart';
 
 /// A Hive-based implementation of [CredentialStorage] for storing and managing
 /// verifiable credentials.
-class HiveCredentialStorage implements CredentialStorage {
-  /// Creates a new instance of [HiveCredentialStorage].
+class DriftCredentialStorage implements CredentialStorage {
+  /// Creates a new instance of [DriftCredentialStorage].
   ///
   /// The [id] parameter is used to identify this storage instance.
-  HiveCredentialStorage({required String id}) : _id = id;
+  DriftCredentialStorage({required String id, required String profileId})
+      : _id = id,
+        _profileId = profileId;
 
   final String _id;
+  final String _profileId;
 
   /// The unique identifier for this credential storage instance.
   @override

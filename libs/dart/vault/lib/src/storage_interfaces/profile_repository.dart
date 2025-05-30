@@ -5,6 +5,9 @@ import '../profile.dart';
 
 /// Interface for managing user profiles and their access permissions.
 abstract class ProfileRepository {
+  /// Contains a session data
+  Object get session;
+
   /// Unique identifier for profile repository.
   String get id;
 
@@ -44,7 +47,9 @@ abstract class ProfileRepository {
   ///
   /// Returns true if the repository is configured, false otherwise.
   Future<bool> isConfigured();
+}
 
+abstract interface class VfsCapabilities {
   /// Grants access to a profile for a specific user.
   ///
   /// [accountIndex] - The index of the account.

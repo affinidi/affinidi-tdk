@@ -6,7 +6,7 @@ library;
 export 'package:affinidi_tdk_common/affinidi_tdk_common.dart' show TdkException;
 export 'package:ssi/ssi.dart' show VerifiableCredential;
 
-export 'src/credential/hive_credential_storage.dart';
+export 'src/credential/drift_credential_storage.dart';
 export 'src/credential/vfs_credential_storage.dart';
 export 'src/exceptions/tdk_exception_type.dart';
 export 'src/file/github_file_storage.dart';
@@ -27,7 +27,7 @@ export 'src/services/credentials_service/credentials_service.dart';
 export 'src/services/credentials_service/credentials_service_interface.dart';
 export 'src/services/storage_service/storage_service.dart';
 export 'src/services/storage_service/storage_service_interface.dart';
-export 'src/services/vault_data_manager_service/cloud_vault_data_manager_service.dart';
+export 'src/services/vault_data_manager_service/vfs_vault_data_manager_service.dart';
 export 'src/services/vault_data_manager_service/edge_vault_data_manager_service.dart';
 export 'src/services/vault_data_manager_service/vault_data_manager_service_interface.dart';
 export 'src/vault/in_memory_vault_store.dart';

@@ -33,7 +33,7 @@ void main() {
   late VaultDataManagerEncryptionServiceMocks
       vaultDataManagerEncryptionServiceMocks;
   late VaultDataManagerApiServiceMocks vaultDataManagerApiServiceMocks;
-  late CloudVaultDataManagerService vaultDataManagerService;
+  late VfsVaultDataManagerService vaultDataManagerService;
 
   setUp(() {
     mockVaultDataManagerApiService = MockVaultDataManagerApiService();
@@ -45,7 +45,7 @@ void main() {
     );
     vaultDataManagerApiServiceMocks =
         VaultDataManagerApiServiceMocks(mockVaultDataManagerApiService);
-    vaultDataManagerService = CloudVaultDataManagerService(
+    vaultDataManagerService = VfsVaultDataManagerService(
       mockVaultDataManagerEncryptionService,
       mockVaultDataManagerApiService,
     );
@@ -60,14 +60,13 @@ void main() {
       test('it pass without exception thrown', () async {
         final didSigner = await getDidSigner();
 
-        final vaultDataManagerService =
-            await CloudVaultDataManagerService.create(
+        final vaultDataManagerService = await VfsVaultDataManagerService.create(
           didSigner: didSigner,
           encryptionKey: Uint8List(2),
         );
 
         await expectLater(
-            vaultDataManagerService, isA<CloudVaultDataManagerService>());
+            vaultDataManagerService, isA<VfsVaultDataManagerService>());
       });
     });
   });
@@ -78,14 +77,14 @@ void main() {
         final didSigner = await getDidSigner();
 
         final vaultDataManagerService =
-            await CloudVaultDataManagerService.createDelegated(
+            await VfsVaultDataManagerService.createDelegated(
           didSigner: didSigner,
           profileDid: 'profile_did',
           encryptionKey: Uint8List(2),
         );
 
         await expectLater(
-            vaultDataManagerService, isA<CloudVaultDataManagerService>());
+            vaultDataManagerService, isA<VfsVaultDataManagerService>());
       });
     });
   });

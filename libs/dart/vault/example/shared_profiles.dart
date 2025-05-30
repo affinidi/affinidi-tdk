@@ -5,6 +5,16 @@ import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 import 'package:ssi/src/wallet/key_store/in_memory_key_store.dart';
 import 'package:ssi/ssi.dart';
 
+/// Creating with edge 1st:
+
+final seed = [];
+
+final vault = Vault.fromVaultStore(InMemoryVaultStore(), profileRepositories: {
+  'edgeRepositoryId': DriftProfileRepository('edgeRepositoryId', path: ''),
+});
+
+/// Re-open:
+
 void main() async {
   print('[Demo] Initializing Vault ...');
   // KeyStorage

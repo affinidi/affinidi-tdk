@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 
-class EdgeProfileRepository implements ProfileRepository {
+class DriftProfileRepository implements ProfileRepository {
   @override
   Future<void> configure(Object config) {
     // TODO: implement configure
@@ -28,15 +28,6 @@ class EdgeProfileRepository implements ProfileRepository {
   }
 
   @override
-  Future<Uint8List> grantProfileAccess(
-      {required int accountIndex,
-      required String granteeDid,
-      required Permissions permissions}) {
-    // TODO: implement grantProfileAccess
-    throw UnimplementedError();
-  }
-
-  @override
   // TODO: implement id
   String get id => throw UnimplementedError();
 
@@ -49,23 +40,6 @@ class EdgeProfileRepository implements ProfileRepository {
   @override
   Future<List<Profile>> listProfiles() {
     // TODO: implement listProfiles
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> receiveProfileAccess(
-      {required int accountIndex,
-      required String profileId,
-      required Uint8List kek,
-      required String grantedProfileDid}) {
-    // TODO: implement receiveProfileAccess
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<void> revokeProfileAccess(
-      {required int accountIndex, required String granteeDid}) {
-    // TODO: implement revokeProfileAccess
     throw UnimplementedError();
   }
 

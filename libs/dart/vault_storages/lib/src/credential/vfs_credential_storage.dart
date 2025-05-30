@@ -2,19 +2,19 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:ssi/ssi.dart';
 
 import '../exceptions/tdk_exception_type.dart';
-import '../services/vault_data_manager_service/cloud_vault_data_manager_service.dart'
+import '../services/vault_data_manager_service/vfs_vault_data_manager_service.dart'
     as vfs_storage;
 
 /// A VFS-based implementation of [CredentialStorage] for storing and managing
 /// verifiable credentials using the Vault Data Manager Service.
 ///
-/// This implementation uses [vfs_storage.CloudVaultDataManagerService] to persist and retrieve
+/// This implementation uses [vfs_storage.VfsVaultDataManagerService] to persist and retrieve
 /// credentials associated with a specific profile.
 class VFSCredentialStorage implements CredentialStorage {
   /// Creates a new instance of [VFSCredentialStorage].
   VFSCredentialStorage({
     required String id,
-    required vfs_storage.CloudVaultDataManagerService dataManagerService,
+    required vfs_storage.VfsVaultDataManagerService dataManagerService,
     required String profileId,
   })  : _id = id,
         _vaultDataManagerService = dataManagerService,
@@ -25,7 +25,7 @@ class VFSCredentialStorage implements CredentialStorage {
   String get id => _id;
 
   final String _profileId;
-  final vfs_storage.CloudVaultDataManagerService _vaultDataManagerService;
+  final vfs_storage.VfsVaultDataManagerService _vaultDataManagerService;
 
   @override
   Future<List<DigitalCredential>> listCredentials() async {
