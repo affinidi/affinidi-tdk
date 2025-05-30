@@ -6,7 +6,7 @@ environment:
 dev_dependencies:
   affinidi_tdk_auth_provider:
     path: ../../../packages/dart/auth_provider
-  affinidi_tdk_common: ^1.4.0
+  affinidi_tdk_common: ^1.6.0
   affinidi_tdk_consumer_auth_provider:
     path: ../../../packages/dart/consumer_auth_provider
   affinidi_tdk_cryptography:

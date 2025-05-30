@@ -1,3 +1,4 @@
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:dio/dio.dart';
 import '../models/oid4vci_credential_offer.dart';
 
@@ -46,6 +47,9 @@ abstract class OID4VCIClaimVerifiableCredentialApiServiceInterface {
 /// verifiable credential API calls.
 class OID4VCIClaimVerifiableCredentialApiService
     implements OID4VCIClaimVerifiableCredentialApiServiceInterface {
+  static final int? _apiTimeOutInMilliseconds =
+      Environment.apiTimeOutInMilliseconds;
+
   /// Constructor to create an instance of [OID4VCIClaimVerifiableCredentialApiService].
   OID4VCIClaimVerifiableCredentialApiService({
     Dio? client,
@@ -54,10 +58,13 @@ class OID4VCIClaimVerifiableCredentialApiService
   final Dio _client;
 
   static Dio _createDioClient() {
+    final timeoutDuration = _apiTimeOutInMilliseconds != null
+        ? const Duration(milliseconds: 15000)
+        : Duration(milliseconds: _apiTimeOutInMilliseconds!);
     return Dio(
       BaseOptions(
-        connectTimeout: const Duration(seconds: 30),
-        receiveTimeout: const Duration(seconds: 30),
+        connectTimeout: timeoutDuration,
+        receiveTimeout: timeoutDuration,
         headers: {'Accept': 'application/json'},
       ),
     );

@@ -8,15 +8,26 @@ import 'token_provider.dart';
 class CisTokenProvider extends TokenProvider {
   static final String _tokenEndpoint = Environment.fetchConsumerCisUrl();
   static final int _cisTokenExpiration = 5 * 60; // 5 minutes
-
-  final DidSigner _signer;
+  static final int? _apiTimeOutInMilliseconds =
+      Environment.apiTimeOutInMilliseconds;
 
   /// Constructor for [CisTokenProvider] using the [signer] and optional [Dio] http client.
-
   CisTokenProvider({
     required DidSigner signer,
     Dio? client,
-  }) : _signer = signer;
+  })  : _signer = signer,
+        _client = client ??
+            ((_apiTimeOutInMilliseconds != null)
+                ? Dio(BaseOptions(
+                    connectTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                    receiveTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                  ))
+                : Dio());
+
+  final DidSigner _signer;
+  final Dio _client;
 
   /// Method to retrieve CIS token
   ///
@@ -44,8 +55,6 @@ class CisTokenProvider extends TokenProvider {
           {required String tokenEndpoint,
           required String preAuthCode,
           String? txCode}) async {
-    final dio = Dio();
-
     final formData = {
       'grant_type': 'urn:ietf:params:oauth:grant-type:pre-authorized_code',
       'pre-authorized_code': preAuthCode,
@@ -53,7 +62,7 @@ class CisTokenProvider extends TokenProvider {
     };
 
     try {
-      final response = await dio.post<Map<String, dynamic>>(
+      final response = await _client.post<Map<String, dynamic>>(
         tokenEndpoint,
         data: formData,
         options: Options(
