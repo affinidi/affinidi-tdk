@@ -102,6 +102,11 @@ class Environment {
     'OFF': LogLevel.off,
   };
 
+  /// Gets the amount of milliseconds to use for API connection timeouts 'AFFINIDI_API_TIMEOUT_MS'.
+  static int? get apiTimeOutInMilliseconds =>
+      int.tryParse(const String.fromEnvironment('AFFINIDI_API_TIMEOUT_MS',
+          defaultValue: ''));
+
   /// Gets the current log level from the environment variable 'AFFINIDI_TDK_LOG_LEVEL'.
   LogLevel get logLevel =>
       _levels[const String.fromEnvironment('AFFINIDI_TDK_LOG_LEVEL')] ??
@@ -110,50 +115,50 @@ class Environment {
   /// The list of available environments with their respective configurations.
   static Environment getEnvironmentConfig(EnvironmentType envType,
       [ElementsRegion region = _defaultRegion]) {
-    final _region = region.regionCode;
+    final regionCode = region.regionCode;
 
     switch (envType) {
       case EnvironmentType.local:
         return Environment._(
           environmentName: envType.value,
-          apiGwUrl: 'https://$_region.dev.api.affinidi.io',
+          apiGwUrl: 'https://$regionCode.dev.api.affinidi.io',
           elementsAuthTokenUrl:
-              'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
+              'https://$regionCode.dev.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
           elementsVaultApiUrl: 'http://localhost:3000',
           webVaultUrl: 'http://localhost:3001',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
-              'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
+              'https://$regionCode.dev.api.affinidi.io/vfs/v1/accounts',
         );
       case EnvironmentType.dev:
         return Environment._(
           environmentName: envType.value,
-          apiGwUrl: 'https://$_region.dev.api.affinidi.io',
+          apiGwUrl: 'https://$regionCode.dev.api.affinidi.io',
           elementsAuthTokenUrl:
-              'https://$_region.dev.auth.developer.affinidi.io/auth/oauth2/token',
+              'https://$regionCode.dev.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
           elementsVaultApiUrl: 'https://dev.api.vault.affinidi.com',
           webVaultUrl: 'https://vault.dev.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
-              'https://$_region.dev.api.affinidi.io/vfs/v1/accounts',
+              'https://$regionCode.dev.api.affinidi.io/vfs/v1/accounts',
         );
       case EnvironmentType.prod:
         return Environment._(
           environmentName: envType.value,
-          apiGwUrl: 'https://$_region.api.affinidi.io',
+          apiGwUrl: 'https://$regionCode.api.affinidi.io',
           elementsAuthTokenUrl:
-              'https://$_region.auth.developer.affinidi.io/auth/oauth2/token',
+              'https://$regionCode.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a13pfgsvt8xhx-ats.iot.ap-southeast-1.amazonaws.com',
           elementsVaultApiUrl: 'https://api.vault.affinidi.com',
           webVaultUrl: 'https://vault.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
-              'https://$_region.api.affinidi.io/vfs/v1/accounts',
+              'https://$regionCode.api.affinidi.io/vfs/v1/accounts',
         );
     }
   }
