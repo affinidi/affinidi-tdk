@@ -14,13 +14,23 @@ class DelegatedTokenProvider extends TokenProvider with JwtTokenDidChecker {
 
   static final String _tokenEndpoint = Environment.fetchConsumerAudienceUrl();
   static final int _delegatedTokenExpiration = 5 * 60; // 5 minutes
+  static final int? _apiTimeOutInMilliseconds =
+      Environment.apiTimeOutInMilliseconds;
 
   /// Constructor for [DelegatedTokenProvider] using the [signer] and optional [Dio] http client.
   DelegatedTokenProvider({
     required DidSigner signer,
     Dio? client,
   })  : _signer = signer,
-        _dioInstance = client ?? Dio();
+        _dioInstance = client ??
+            ((_apiTimeOutInMilliseconds != null)
+                ? Dio(BaseOptions(
+                    connectTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                    receiveTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                  ))
+                : Dio());
 
   /// Retrieves a token for the specified profile DID.
   ///

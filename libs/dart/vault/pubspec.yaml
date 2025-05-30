@@ -1,6 +1,6 @@
 name: affinidi_tdk_vault
 description: The Affinidi TDK Vault package provides libraries and tools for embedding Affinidi Vault into your existing Dart applications.
-version: 1.1.0-dev.9
+version: 1.1.0-dev.10
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
@@ -9,7 +9,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_common: ^1.5.1
+  affinidi_tdk_common: ^1.6.0
   ssi: ^1.0.0
 
 dev_dependencies:

@@ -33,6 +33,9 @@ enum TdkExceptionType {
   /// Exception thrown when the vault store is missing.
   missingVaultStore('vfs_profile_repository_needs_a_vault_store'),
 
+  /// Exception thrown when the file info is not providing an edek
+  missingFileEdek('missing_file_edek'),
+
   /// Exception thrown when the system is not configured.
   notConfigured('not_configured'),
 
