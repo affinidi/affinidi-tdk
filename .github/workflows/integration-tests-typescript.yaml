@@ -1,14 +1,17 @@
-name: Integration tests for Dart
+name: Integration tests for Typescript
 
 on:
   push:
     branches-ignore:
       - main
     paths: # run if any of below was changed
-      - 'clients/dart/**'
-      - 'packages/dart/**'
-      - 'libs/dart/**'
-      - 'tests/integration/dart/**'
+      - 'clients/typescript/**'
+      - 'packages/jsii/**'
+      - 'tests/integration/typescript/**'
+
+permissions:
+  actions: read
+  contents: read
 
 jobs:
   integration_tests:
@@ -17,14 +20,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Dart
-        uses: dart-lang/setup-dart@v1
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          sdk: 3.6.0
+          node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
-        run: dart pub get
-        working-directory: tests/integration/dart
+        run: npm ci
+
+      - name: Install test deps (due to relative paths)
+        run: npm ci
+        working-directory: tests/integration/typescript
 
       - name: Cache testing env file
         uses: actions/cache@v4
@@ -40,5 +47,5 @@ jobs:
         run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
 
       - name: Run integration tests
-        run: dart test
-        working-directory: tests/integration/dart
+        run: npm run test:internal
+        working-directory: tests/integration/typescript
