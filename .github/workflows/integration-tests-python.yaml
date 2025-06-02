@@ -1,0 +1,55 @@
+name: Integration tests for Python
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - 'clients/python/**'
+      - 'packages/jsii/**'
+      - 'tests/integration/python/**'
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  integration_tests_python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r tests/integration/python/test-requirements.txt
+
+      - name: Set up SDK clients
+        run: |
+          chmod +x tests/integration/python/setup_clients.sh
+          ./tests/integration/python/setup_clients.sh
+
+      - name: Cache testing env file
+        uses: actions/cache@v4
+        id: testing-env-cache
+        with:
+          path: tests/.env
+          key: ${{ runner.os }}-testing-env-${{ hashFiles('tests/.env') }}
+
+      - if: ${{ steps.testing-env-cache.outputs.cache-hit != 'true' }}
+        name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name: Run integration tests
+        run: |
+          chmod +x tests/integration/python/run_tests.sh
+          ./tests/integration/python/run_tests.sh
