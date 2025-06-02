@@ -22,11 +22,11 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
   @override
   final String? scope;
   @override
-  final String clientId;
+  final String? clientId;
   @override
   final String creationDate;
   @override
-  final String vpDefinition;
+  final String? vpDefinition;
   @override
   final JsonObject? presentationDefinition;
   @override
@@ -48,9 +48,9 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
       this.redirectUris,
       this.postLogoutRedirectUris,
       this.scope,
-      required this.clientId,
+      this.clientId,
       required this.creationDate,
-      required this.vpDefinition,
+      this.vpDefinition,
       this.presentationDefinition,
       required this.idTokenMapping,
       required this.clientMetadata,
@@ -257,12 +257,10 @@ class LoginConfigurationObjectBuilder
             redirectUris: _redirectUris?.build(),
             postLogoutRedirectUris: _postLogoutRedirectUris?.build(),
             scope: scope,
-            clientId: BuiltValueNullFieldError.checkNotNull(
-                clientId, r'LoginConfigurationObject', 'clientId'),
+            clientId: clientId,
             creationDate: BuiltValueNullFieldError.checkNotNull(
                 creationDate, r'LoginConfigurationObject', 'creationDate'),
-            vpDefinition: BuiltValueNullFieldError.checkNotNull(
-                vpDefinition, r'LoginConfigurationObject', 'vpDefinition'),
+            vpDefinition: vpDefinition,
             presentationDefinition: presentationDefinition,
             idTokenMapping: idTokenMapping.build(),
             clientMetadata: clientMetadata.build(),
