@@ -61,16 +61,3 @@ This will invoke pytest and run all available test cases.
 
 > ❗️ **Note:**
 > The `chmod +x` commands only need to be run once to make the scripts executable. After that, you can run the scripts directly without `chmod`.
-
-
-#### Running Individual Tests
-
-You can run a specific test file or test function manually using pytest:
-
-```bash
-# Run a specific file
-pytest login_configuration_client_test.py
-
-# Run a specific test function
-pytest login_configuration_client_test.py::test_block_users
-```
