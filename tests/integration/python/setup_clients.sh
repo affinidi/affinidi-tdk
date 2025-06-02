@@ -1,7 +1,18 @@
-#!/bin/bash
-python -m pip install -e ../../../clients/python/credential_issuance_client
-python -m pip install -e ../../../clients/python/credential_verification_client
-python -m pip install -e ../../../clients/python/iam_client
-python -m pip install -e ../../../clients/python/iota_client
-python -m pip install -e ../../../clients/python/login_configuration_client
-python -m pip install -e ../../../clients/python/wallets_client
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Resolve the directory of this script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Set SDK root to be 3 levels up from this script location
+TDK_ROOT="$(cd "$SCRIPT_DIR/../../../" && pwd)"
+
+# Activate virtualenv if applicable (optional)
+# source "$TDK_ROOT/venv/bin/activate"
+
+# Install Python clients in editable mode
+pip install -e "$TDK_ROOT/clients/python/credential_issuance_client"
+pip install -e "$TDK_ROOT/clients/python/credential_verification_client"
+pip install -e "$TDK_ROOT/clients/python/iam_client"
+pip install -e "$TDK_ROOT/clients/python/login_configuration_client"
+pip install -e "$TDK_ROOT/clients/python/wallets_client"
