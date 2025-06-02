@@ -5,8 +5,8 @@
 Ensure you have the following installed:
 
 - **Python 3.9+**
-- **pip** (Python package manager)
-- **virtualenv** (recommended)
+- **[uv](https://github.com/astral-sh/uv)** (dependency manager, replaces pip)
+  - Install via: `curl -Ls https://astral.sh/uv/install.sh | bash`
 
 ## Setup Instructions
 
@@ -27,27 +27,17 @@ Update only your PROJECT_ID ([link to docs how to create a project](https://docs
 Leave all other fields unchanged.
 
 
-### 1. Create and Activate Virtual Environment
+### 1. Install Dependencies
 
-Isolating dependencies using a virtual environment:
-
-```bash
-python -m venv ~/.venv
-source ~/.venv/bin/activate
-```
-
-Note: On Windows, use `~\.venv\Scripts\activate`.
-
-### 2. Install Required Dependencies
-
-Install Python dependencies defined in test-requirements.txt:
+Install Python dependencies defined in test-requirements.in:
 
 ```bash
-python -m pip install --upgrade pip
-python -m pip install -r test-requirements.txt
+uv pip compile requirements.in -o requirements.lock
+
+uv pip install -r requirements.lock --no-deps
 ```
 
-### 3. Set Up TDK Clients
+### 2. Set Up TDK Clients
 
 Run the setup script to configure required TDK clients:
 
@@ -57,7 +47,7 @@ chmod +x setup_clients.sh
 ./setup_clients.sh
 ```
 
-### 4. Run Tests
+### 3. Run Tests
 
 Use the provided script to execute all integration tests:
 
