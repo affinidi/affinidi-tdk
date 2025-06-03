@@ -26,8 +26,8 @@ class UpdateAccountInput(BaseModel):
     """
     UpdateAccountInput
     """
-    name: StrictStr = Field(default=..., description="Name of the account")
-    description: StrictStr = Field(default=..., description="Description of the account")
+    name: Optional[StrictStr] = Field(default=None, description="Name of the account")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the account")
     alias: Optional[StrictStr] = Field(default=None, description="Alias of the account")
     did_proof: StrictStr = Field(default=..., alias="didProof", description="JWT that proves ownership of profile DID by requester")
     metadata: Optional[Dict[str, Any]] = Field(default=None, description="Description of metadata")

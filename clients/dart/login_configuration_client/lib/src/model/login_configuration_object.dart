@@ -62,7 +62,7 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
 
   /// OAuth 2.0 Client ID
   @BuiltValueField(wireName: r'clientId')
-  String get clientId;
+  String? get clientId;
 
   /// OAuth 2.0 Client Creation Date
   @BuiltValueField(wireName: r'creationDate')
@@ -70,7 +70,7 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
 
   /// VP definition in JSON stringify format
   @BuiltValueField(wireName: r'vpDefinition')
-  String get vpDefinition;
+  String? get vpDefinition;
 
   /// Presentation Definition
   @BuiltValueField(wireName: r'presentationDefinition')
@@ -153,21 +153,25 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
         specifiedType: const FullType(String),
       );
     }
-    yield r'clientId';
-    yield serializers.serialize(
-      object.clientId,
-      specifiedType: const FullType(String),
-    );
+    if (object.clientId != null) {
+      yield r'clientId';
+      yield serializers.serialize(
+        object.clientId,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'creationDate';
     yield serializers.serialize(
       object.creationDate,
       specifiedType: const FullType(String),
     );
-    yield r'vpDefinition';
-    yield serializers.serialize(
-      object.vpDefinition,
-      specifiedType: const FullType(String),
-    );
+    if (object.vpDefinition != null) {
+      yield r'vpDefinition';
+      yield serializers.serialize(
+        object.vpDefinition,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.presentationDefinition != null) {
       yield r'presentationDefinition';
       yield serializers.serialize(

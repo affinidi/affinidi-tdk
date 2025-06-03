@@ -32,13 +32,13 @@ import java.util.Map;
 import java.util.StringJoiner;
 
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class ConfigApi extends BaseApi {
+public class ConfigurationApi extends BaseApi {
 
-  public ConfigApi() {
+  public ConfigurationApi() {
     super(Configuration.getDefaultApiClient());
   }
 
-  public ConfigApi(ApiClient apiClient) {
+  public ConfigurationApi(ApiClient apiClient) {
     super(apiClient);
   }
 
@@ -48,8 +48,8 @@ public class ConfigApi extends BaseApi {
    * @return GetConfigOK
    * @throws ApiException if fails to make API call
    */
-  public GetConfigOK getConfig() throws ApiException {
-    return this.getConfig(Collections.emptyMap());
+  public GetConfigOK getConfiguration() throws ApiException {
+    return this.getConfiguration(Collections.emptyMap());
   }
 
 
@@ -60,7 +60,7 @@ public class ConfigApi extends BaseApi {
    * @return GetConfigOK
    * @throws ApiException if fails to make API call
    */
-  public GetConfigOK getConfig(Map<String, String> additionalHeaders) throws ApiException {
+  public GetConfigOK getConfiguration(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
