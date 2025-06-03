@@ -4,9 +4,6 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../../" && pwd)"
 
-echo "SCRIPT_DIR ", $SCRIPT_DIR
-echo "REPO_ROOT ", $REPO_ROOT
-
 echo "Installing all TDK clients..."
 
 for client_dir in "$REPO_ROOT/clients/java"/*; do
