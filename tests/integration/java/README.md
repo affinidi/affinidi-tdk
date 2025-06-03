@@ -4,7 +4,7 @@
 
 Ensure you have the following installed:
 
-- **Java 23+**
+- **Java 21+**
 - **mvn 3.9.9+** (Maven package manager)
 
 ## Setup Instructions
