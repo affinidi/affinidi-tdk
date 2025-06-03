@@ -12,7 +12,7 @@ echo "Installing all TDK clients..."
 for client_dir in "$REPO_ROOT/clients/java"/*; do
   if [ -d "$client_dir" ]; then
     echo "Installing client in $client_dir"
-    (cd "$client_dir" && mvn clean install -DskipTests)
+    (cd "$client_dir" && mvn clean install -Dgpg.skip=true -DskipTests)
   fi
 done
 
@@ -21,7 +21,7 @@ echo "Installing shared packages..."
 for package_dir in "$REPO_ROOT/packages/java"/*; do
   if [ -d "$package_dir" ]; then
     echo "Installing package in $package_dir"
-    (cd "$package_dir" && mvn clean install -DskipTests)
+    (cd "$package_dir" && mvn clean install -Dgpg.skip=true -DskipTests)
   fi
 done
 
