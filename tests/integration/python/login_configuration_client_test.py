@@ -67,7 +67,6 @@ def user_group_resource(group_api_instance):
 
 # --- Login Configuration Tests ---
 
-@pytest.mark.skip(reason="Skipping, until API spec is fixed for LoginConfigurationObject -> null for non-nullable field `clientId`")
 def test_read_login_configuration(configuration_api_instance, login_configuration_resource):
     config_id = login_configuration_resource["configuration_id"]
     response = configuration_api_instance.get_login_configurations_by_id(config_id)
@@ -75,7 +74,6 @@ def test_read_login_configuration(configuration_api_instance, login_configuratio
 
     assert data.get("configuration_id"), "Login configuration ID is missing"
 
-@pytest.mark.skip(reason="Skipping, until API spec is fixed for LoginConfigurationObject -> null for non-nullable field `clientId`")
 def test_list_login_configurations(configuration_api_instance):
     response = configuration_api_instance.list_login_configurations()
     data = json.loads(response.json())
@@ -83,7 +81,6 @@ def test_list_login_configurations(configuration_api_instance):
     assert isinstance(data.get("configurations", []), list), "Configurations should be a list"
     assert data["configurations"], "No login configurations returned"
 
-@pytest.mark.skip(reason="Skipping, until API spec is fixed for LoginConfigurationObject -> null for non-nullable field `clientId`")
 def test_update_login_configuration(configuration_api_instance, login_configuration_resource):
     config_id = login_configuration_resource["configuration_id"]
     updated_name = "UpdatedLoginConfig"
