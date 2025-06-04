@@ -15,13 +15,23 @@ class ConsumerTokenProvider extends TokenProvider with JwtTokenDidChecker {
 
   static final String _tokenEndpoint = Environment.fetchConsumerAudienceUrl();
   static final int _consumerTokenExpiration = 5 * 60; // 5 minutes
+  static final int? _apiTimeOutInMilliseconds =
+      Environment.apiTimeOutInMilliseconds;
 
   /// Constructor for [ConsumerTokenProvider] using the [signer] and optional [Dio] http client.
   ConsumerTokenProvider({
     required DidSigner signer,
     Dio? client,
   })  : _signer = signer,
-        _dioInstance = client ?? Dio();
+        _dioInstance = client ??
+            ((_apiTimeOutInMilliseconds != null)
+                ? Dio(BaseOptions(
+                    connectTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                    receiveTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                  ))
+                : Dio());
 
   /// Method to retrieve a consumer token.
   ///

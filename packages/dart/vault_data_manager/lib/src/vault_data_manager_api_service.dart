@@ -28,6 +28,9 @@ class VaultDataManagerApiService
   static const profileTemplateUrl =
       'https://schema.affinidi.io/profile-template/template.json';
 
+  static final int? _apiTimeOutInMilliseconds =
+      Environment.apiTimeOutInMilliseconds;
+
   final Dio _dio;
   final FilesApi _filesApi;
   final NodesApi _nodesApi;
@@ -40,7 +43,15 @@ class VaultDataManagerApiService
   VaultDataManagerApiService({
     required AffinidiTdkVaultDataManagerClient apiClient,
     Dio? dio,
-  })  : _dio = dio ?? Dio(),
+  })  : _dio = dio ??
+            ((_apiTimeOutInMilliseconds != null)
+                ? Dio(BaseOptions(
+                    connectTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                    receiveTimeout:
+                        Duration(milliseconds: _apiTimeOutInMilliseconds!),
+                  ))
+                : Dio()),
         _filesApi = apiClient.getFilesApi(),
         _nodesApi = apiClient.getNodesApi(),
         _configApi = apiClient.getConfigurationApi(),

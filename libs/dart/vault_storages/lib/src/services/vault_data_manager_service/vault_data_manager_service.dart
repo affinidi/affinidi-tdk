@@ -625,9 +625,19 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
                 ? DioCancelTokenAdapter.from(cancelToken)
                 : null);
     final commonNodeEdek = commonNodeInfoResponse.data?.edekInfo?.edek;
+    if (commonNodeEdek == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'Failed to get file Edek',
+          code: TdkExceptionType.missingFileEdek.code,
+        ),
+        StackTrace.current,
+      );
+    }
+
     final dekEncryptedByVfsPublicKey =
         await _vaultDataManagerEncryptionService.getDekEncryptedByApiPublicKey(
-      encryptedDekBase64: commonNodeEdek!,
+      encryptedDekBase64: commonNodeEdek,
       encryptionKey: await _keyPair.decrypt(_encryptedKey),
     );
 
