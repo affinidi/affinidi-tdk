@@ -1,14 +1,14 @@
 name: Integration tests for Dart
 
 on:
-  # we need to keep on push as target because of this issue https://github.com/orgs/community/discussions/65321
   push:
-    branches:
-     - '**'
-     - '!main'
-    paths:
-      - 'packages/dart/**' # run only if any packages are updated
-      - 'tests/integration/**' # run only if any packages are updated
+    branches-ignore:
+      - main
+    paths: # run if any of below was changed
+      - 'clients/dart/**'
+      - 'packages/dart/**'
+      - 'libs/dart/**'
+      - 'tests/integration/dart/**'
 
 jobs:
   integration_tests:

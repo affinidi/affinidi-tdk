@@ -1,3 +1,11 @@
+# [1.32.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.31.2...@affinidi-tdk/auth-provider-v1.32.0) (2025-06-02)
+
+
+### Features
+
+* create empty dart test utilities packages ([#718](https://github.com/affinidi/affinidi-tdk/issues/718)) ([2670249](https://github.com/affinidi/affinidi-tdk/commit/267024956d754d9f74f8e501f5b2c97dab37c46d))
+* test utilities ([#723](https://github.com/affinidi/affinidi-tdk/issues/723)) ([d11a1b7](https://github.com/affinidi/affinidi-tdk/commit/d11a1b7f6b3487f5137fce1cb84c9044144c2d2e))
+
 ## [1.31.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.31.1...@affinidi-tdk/auth-provider-v1.31.2) (2025-01-30)
 
 

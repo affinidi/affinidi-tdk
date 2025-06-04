@@ -7,12 +7,13 @@ build.sbt
 docs/AccountDto.md
 docs/AccountsApi.md
 docs/AwsCredentialExchangeOperationOK.md
-docs/ConfigApi.md
+docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CorsAwsCredentialExchangeOK.md
 docs/CorsDeleteAccountOK.md
 docs/CorsDeleteNodeOK.md
 docs/CorsGetConfigOK.md
+docs/CorsGetConfigurationOK.md
 docs/CorsGetScannedFileInfoOK.md
 docs/CorsGetWellKnownJwksOK.md
 docs/CorsInitNodesOK.md
@@ -85,7 +86,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/ServerConfiguration.jav
 src/main/java/com/affinidi/tdk/vault/data/manager/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/StringUtil.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/AccountsApi.java
-src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/ConfigApi.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/ConfigurationApi.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/FilesApi.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/NodesApi.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/apis/ProfileDataApi.java
@@ -101,6 +102,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsAwsCredentia
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsDeleteAccountOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsDeleteNodeOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetConfigOK.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetConfigurationOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetScannedFileInfoOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetWellKnownJwksOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsInitNodesOK.java
@@ -150,7 +152,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateNodeInput.
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/UpdateProfileDataOK.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/AccountsApiTest.java
-src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/ConfigApiTest.java
+src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/ConfigurationApiTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/FilesApiTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/NodesApiTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/apis/ProfileDataApiTest.java
@@ -162,6 +164,7 @@ src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsAwsCredentia
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsDeleteAccountOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsDeleteNodeOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetConfigOKTest.java
+src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetConfigurationOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetScannedFileInfoOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsGetWellKnownJwksOKTest.java
 src/test/java/com/affinidi/tdk/vault/data/manager/client/models/CorsInitNodesOKTest.java

@@ -2312,7 +2312,6 @@ components:
           $ref: '#/components/schemas/TokenEndpointAuthMethod'
       required:
         - ari
-        - clientId
         - clientMetadata
         - creationDate
         - id
@@ -2320,7 +2319,6 @@ components:
         - name
         - projectId
         - tokenEndpointAuthMethod
-        - vpDefinition
       type: object
     IdTokenMappingItem:
       additionalProperties: false

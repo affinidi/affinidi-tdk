@@ -1,0 +1,5 @@
+requests
+pytest
+python-dotenv
+affinidi_tdk_auth_provider
+python-jose

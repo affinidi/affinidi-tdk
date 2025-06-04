@@ -1,0 +1,58 @@
+name: Integration tests for Python
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - 'clients/python/**'
+      - 'packages/jsii/**'
+      - 'tests/integration/python/**'
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  integration_tests_python:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install uv
+        run: |
+          curl -Ls https://astral.sh/uv/install.sh | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Create Python virtual environment
+        run: uv venv
+
+      - name: Compile dependency lockfile
+        run: |
+          uv pip compile tests/integration/python/requirements.in -o tests/integration/python/requirements.lock
+
+      - name: Install dependencies from lockfile
+        run: |
+          uv pip install -r tests/integration/python/requirements.lock --no-deps
+
+      - name: Set up TDK clients
+        run: |
+          chmod +x tests/integration/python/setup_clients.sh
+          ./tests/integration/python/setup_clients.sh
+
+      - name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name: Run integration tests
+        run: |
+          chmod +x tests/integration/python/run_tests.sh
+          ./tests/integration/python/run_tests.sh

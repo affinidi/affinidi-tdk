@@ -49,9 +49,7 @@ void main() {
         expect(configurations, isNotNull);
 
         expect(configurations?.length, greaterThan(0));
-      },
-          skip:
-              'TODO: Fix API spec for LoginConfigurationObject -> null for non-nullable field `clientId`');
+      });
 
       test('Updates login configuration', () async {
         final String updatedName = 'UpdatedName';
@@ -67,20 +65,15 @@ void main() {
 
         expect(config, isNotNull);
         expect(config?.name, equals(updatedName));
-      },
-          skip:
-              'TODO: Fix API spec for LoginConfigurationObject -> null for non-nullable field `clientId`');
+      });
 
-      // NOTE: Deserializing 'LoginConfigurationObject' failed due to: Tried to construct class "LoginConfigurationObject" with null for non-nullable field "clientId"
       test('Reads login configuration', () async {
         final config = (await configurationApi.getLoginConfigurationsById(
                 configurationId: configurationId))
             .data;
 
         expect(config, isNotNull);
-      },
-          skip:
-              'TODO: Fix API spec for LoginConfigurationObject -> null for non-nullable field `clientId`');
+      });
     });
   });
 }
