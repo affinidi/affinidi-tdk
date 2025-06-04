@@ -1406,7 +1406,7 @@ export interface LoginConfigurationObject {
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  clientId: string
+  clientId?: string
   /**
    * OAuth 2.0 Client Creation Date
    * @type {string}
@@ -1418,7 +1418,7 @@ export interface LoginConfigurationObject {
    * @type {string}
    * @memberof LoginConfigurationObject
    */
-  vpDefinition: string
+  vpDefinition?: string
   /**
    * Presentation Definition
    * @type {object}

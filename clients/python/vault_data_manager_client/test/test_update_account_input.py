@@ -46,8 +46,6 @@ class TestUpdateAccountInput(unittest.TestCase):
             )
         else:
             return UpdateAccountInput(
-                name = '',
-                description = '',
                 did_proof = '',
                 account_did = '',
         )

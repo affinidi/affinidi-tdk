@@ -302,9 +302,9 @@ public class LoginConfigurationObject extends HashMap<String, Object> {
    * OAuth 2.0 Client ID
    * @return clientId
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_CLIENT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getClientId() {
     return clientId;
@@ -312,7 +312,7 @@ public class LoginConfigurationObject extends HashMap<String, Object> {
 
 
   @JsonProperty(JSON_PROPERTY_CLIENT_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientId(String clientId) {
     this.clientId = clientId;
   }
@@ -352,9 +352,9 @@ public class LoginConfigurationObject extends HashMap<String, Object> {
    * VP definition in JSON stringify format
    * @return vpDefinition
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVpDefinition() {
     return vpDefinition;
@@ -362,7 +362,7 @@ public class LoginConfigurationObject extends HashMap<String, Object> {
 
 
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpDefinition(String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }

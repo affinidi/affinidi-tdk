@@ -85,9 +85,7 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
   /**
    * A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
    * @return presentationSubmission
-   * @deprecated
    */
-  @Deprecated
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -112,9 +110,7 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
   /**
    * A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
    * @return vpToken
-   * @deprecated
    */
-  @Deprecated
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_VP_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)

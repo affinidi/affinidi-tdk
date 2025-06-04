@@ -66,9 +66,7 @@ class TestLoginConfigurationObject(unittest.TestCase):
                 ari = '',
                 project_id = '',
                 name = '',
-                client_id = '',
                 creation_date = '',
-                vp_definition = '',
                 id_token_mapping = [
                     affinidi_tdk_login_configuration_client.models.id_token_mapping_item.IdTokenMappingItem(
                         source_field = '', 
