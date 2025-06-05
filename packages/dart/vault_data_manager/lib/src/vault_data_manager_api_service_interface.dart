@@ -184,7 +184,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// Creates account. With given [accountIndex], [accountDid], [didProof].
   /// [accountIndex] - positive integer used to identify account.
   /// [accountDid] - Decentralized identifier (DID) is type of identifier that enables verifiable, decentralized digital identity.
-  /// [didProof] - // TODO: come up with simple explanation according to https://www.w3.org/TR/did-1.0/#verification-material;
+  /// [didProof] - JWT that proves ownership of profile DID
   /// [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
