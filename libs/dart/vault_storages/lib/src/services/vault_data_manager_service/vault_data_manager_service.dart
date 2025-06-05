@@ -713,14 +713,25 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   @override
   Future<List<Node>?> getChildNodes({
     required String nodeId,
+    int? limit,
+    String? exclusiveStartKey,
     VaultCancelToken? cancelToken,
   }) async {
     final nodesResponse = await _vaultDataManagerApiService.getChildrenByNodeId(
-        nodeId,
-        cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null);
+      nodeId,
+      limit: limit,
+      exclusiveStartKey: exclusiveStartKey,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+    );
     final nodesDto = nodesResponse.data?.nodes?.toList();
+    final lastEvaluatedKey = nodesResponse.data?.lastEvaluatedKey;
 
-    final childNodes = nodesDto?.map((nodesDto) {
+    if (nodesDto == null) {
+      return null;
+    }
+
+    final childNodes = nodesDto.map((nodesDto) {
       return Node(
         name: nodesDto.name,
         description: nodesDto.description,
@@ -736,6 +747,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
         profileId: nodesDto.profileId,
         type: NodeType.values.byName(nodesDto.type.name),
         nodeId: nodesDto.nodeId,
+        lastEvaluatedKey: lastEvaluatedKey,
       );
     }).toList();
 
