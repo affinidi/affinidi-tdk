@@ -29,6 +29,8 @@ class VFSFileStorage implements FileStorage {
   @override
   Future<List<Item>> getFolder({
     String? folderId,
+    int? limit,
+    String? exclusiveStartKey,
     VaultCancelToken? cancelToken,
   }) async {
     if (folderId == null) {
@@ -40,6 +42,8 @@ class VFSFileStorage implements FileStorage {
     }
     final items = await _vaultDataManagerService.getChildNodes(
       nodeId: folderId,
+      limit: limit,
+      exclusiveStartKey: exclusiveStartKey,
       cancelToken: cancelToken,
     );
 
@@ -139,6 +143,8 @@ class VFSFileStorage implements FileStorage {
   Future<File> getFile({
     required String fileId,
     VaultCancelToken? cancelToken,
+    int? limit,
+    String? exclusiveStartKey,
   }) async {
     final node = await _vaultDataManagerService.getNodeInfo(
       fileId,

@@ -18,6 +18,8 @@ abstract interface class SharedStorage {
   /// Throws for network connectivity
   Future<List<Item>> getFolder({
     String? folderId,
+    int? limit,
+    String? exclusiveStartKey,
     VaultCancelToken? cancelToken,
   });
 
@@ -63,6 +65,8 @@ abstract interface class SharedStorage {
   Future<File> getFile({
     required String fileId,
     VaultCancelToken? cancelToken,
+    int? limit,
+    String? exclusiveStartKey,
   });
 
   /// Allows retrieving file content

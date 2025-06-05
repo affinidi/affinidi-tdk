@@ -50,8 +50,12 @@ abstract interface class VaultDataManagerApiServiceInterface {
   });
 
   /// Gets all the children nodes for a given [nodeId]
-  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(String nodeId,
-      [CancelToken? cancelToken]);
+  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(
+    String nodeId, {
+    int? limit,
+    String? exclusiveStartKey,
+    CancelToken? cancelToken,
+  });
 
   /// Gets detailed information for a given [nodeId]
   Future<Response<GetDetailedNodeInfoOK>> getNodeInfo({

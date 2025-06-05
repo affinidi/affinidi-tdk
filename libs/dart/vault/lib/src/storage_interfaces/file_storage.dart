@@ -16,6 +16,8 @@ abstract class FileStorage {
   /// Throws for network connectivity
   Future<List<Item>> getFolder({
     String? folderId,
+    int? limit,
+    String? exclusiveStartKey,
     VaultCancelToken? cancelToken,
   });
 
@@ -61,6 +63,8 @@ abstract class FileStorage {
   Future<File> getFile({
     required String fileId,
     VaultCancelToken? cancelToken,
+    int? limit,
+    String? exclusiveStartKey,
   });
 
   /// Allows retrieving file content

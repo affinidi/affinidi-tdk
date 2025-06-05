@@ -37,6 +37,8 @@ abstract interface class VaultDataManagerServiceInterface {
   /// Gets child nodes for the specified node
   Future<List<Node>?> getChildNodes({
     required String nodeId,
+    int? limit,
+    String? exclusiveStartKey,
     VaultCancelToken? cancelToken,
   });
 

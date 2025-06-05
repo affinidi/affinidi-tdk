@@ -21,6 +21,8 @@ class GithubFileStorage implements FileStorage {
   Future<List<Item>> getFolder({
     String? folderId,
     VaultCancelToken? cancelToken,
+    int? limit,
+    String? exclusiveStartKey,
   }) {
     throw UnimplementedError();
   }
@@ -55,6 +57,8 @@ class GithubFileStorage implements FileStorage {
   Future<File> getFile({
     required String fileId,
     VaultCancelToken? cancelToken,
+    int? limit,
+    String? exclusiveStartKey,
   }) {
     throw UnimplementedError();
   }
