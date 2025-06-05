@@ -201,7 +201,7 @@ class VaultDataManagerApiService
       _getVcRootIdByProfileId(
         profileId,
       ),
-      cancelToken,
+      cancelToken: cancelToken,
     );
   }
 
@@ -269,11 +269,18 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(String nodeId,
-      [CancelToken? cancelToken]) async {
+  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(
+    String nodeId, {
+    int? limit,
+    String? exclusiveStartKey,
+    CancelToken? cancelToken,
+  }) async {
     try {
       return await _nodesApi.listNodeChildren(
         nodeId: nodeId,
+        limit: limit,
+        exclusiveStartKey: exclusiveStartKey,
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
