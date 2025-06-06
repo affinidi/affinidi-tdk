@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 
 void main() async {
   print('[Demo] Initializing Vault ...');
