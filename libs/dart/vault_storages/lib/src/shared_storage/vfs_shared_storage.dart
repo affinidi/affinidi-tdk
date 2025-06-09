@@ -47,7 +47,7 @@ class VfsSharedStorage implements vault.SharedStorage {
   /// FileStorage operations
 
   @override
-  Future<List<vault.Item>> getFolder({
+  Future<Page<vault.Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartKey,

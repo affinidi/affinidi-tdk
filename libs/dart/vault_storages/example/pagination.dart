@@ -3,23 +3,6 @@ import 'dart:typed_data';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 
-Future<void> _addFileToProfile(
-    Profile profile, String folderId, String fileName) async {
-  final fileContent = Uint8List.fromList([1, 2, 3]);
-  try {
-    await profile.defaultFileStorage!.createFile(
-      fileName: fileName,
-      data: fileContent,
-      parentFolderId: folderId,
-    );
-  } on TdkException catch (error) {
-    print([error.code, error.message, error.originalMessage].join('\n'));
-  }
-
-  final files = await profile.defaultFileStorage?.getFolder(folderId: folderId);
-  print('[Demo] Files available on folder $folderId: ${files?.length ?? 0}');
-}
-
 void _listProfileNames(
   List<Profile> profiles, {
   required String label,
@@ -41,62 +24,128 @@ Future<void> _deleteFolder({
   required Profile profile,
   required String folderId,
 }) async {
-  print('Deleting folderId: $folderId');
+  print('[Demo] Deleting folderId: $folderId');
   String? exclusiveStartKey;
+  var hasErrors = false;
 
   try {
     do {
-      final items = await profile.defaultFileStorage!.getFolder(
+      final page = await profile.defaultFileStorage!.getFolder(
         folderId: folderId,
         limit: 20,
         exclusiveStartKey: exclusiveStartKey,
       );
 
-      for (final item in items) {
-        try {
-          if (item is Folder) {
-            await _deleteFolder(
-                vault: vault, profile: profile, folderId: item.id);
-          } else if (item is File) {
+      print('[Demo] Found ${page.items.length} items in folder $folderId');
+
+      for (final item in page.items) {
+        if (item is File) {
+          try {
+            print('[Demo] Deleting file: ${item.name}');
             await profile.defaultFileStorage!.deleteFile(fileId: item.id);
+            print('[Demo] Successfully deleted file: ${item.name}');
+          } catch (e) {
+            print('[Demo] Error deleting file ${item.name}: $e');
+            hasErrors = true;
           }
-        } catch (e) {
-          print('[Demo] Error deleting item ${item.name}: $e');
         }
       }
 
-      exclusiveStartKey = items.isNotEmpty ? items.last.id : null;
+      for (final item in page.items) {
+        if (item is Folder) {
+          try {
+            print('[Demo] Processing subfolder: ${item.name}');
+            await _deleteFolder(
+              vault: vault,
+              profile: profile,
+              folderId: item.id,
+            );
+          } catch (e) {
+            print('[Demo] Error processing subfolder ${item.name}: $e');
+            hasErrors = true;
+          }
+        }
+      }
+
+      exclusiveStartKey = page.nextPageKey;
     } while (exclusiveStartKey != null);
+
+    if (folderId != profile.id) {
+      try {
+        final verifyPage = await profile.defaultFileStorage!.getFolder(
+          folderId: folderId,
+          limit: 1,
+        );
+
+        if (verifyPage.items.isNotEmpty) {
+          print(
+              '[Demo] Warning: Folder $folderId is not empty, contains ${verifyPage.items.length} items');
+          hasErrors = true;
+        } else {
+          print('[Demo] Folder $folderId is empty, proceeding with deletion');
+          await profile.defaultFileStorage!.deleteFolder(folderId: folderId);
+          print('[Demo] Successfully deleted folder: $folderId');
+        }
+      } catch (e) {
+        print('[Demo] Error verifying/deleting folder $folderId: $e');
+        hasErrors = true;
+      }
+    } else {
+      final verifyPage = await profile.defaultFileStorage!.getFolder(
+        folderId: folderId,
+        limit: 1,
+      );
+      if (verifyPage.items.isNotEmpty) {
+        print(
+            '[Demo] Warning: Root folder still contains ${verifyPage.items.length} items');
+        hasErrors = true;
+      } else {
+        print('[Demo] Root folder is empty');
+      }
+    }
   } catch (e) {
     print('[Demo] Error getting folder contents for $folderId: $e');
+    hasErrors = true;
   }
 
-  if (folderId != profile.id) {
-    try {
-      await profile.defaultFileStorage!.deleteFolder(folderId: folderId);
-    } catch (e) {
-      print('[Demo] Error deleting folder $folderId: $e');
-    }
+  if (hasErrors) {
+    throw Exception('Failed to completely empty folder $folderId');
   }
 }
 
 Future<void> _deleteProfile(Vault vault, Profile profile) async {
+  print('[Demo] Starting profile deletion for: ${profile.name}');
   try {
     await _deleteFolder(vault: vault, profile: profile, folderId: profile.id);
-    try {
-      final credentials =
-          await profile.defaultCredentialStorage!.listCredentials();
 
-      await Future.wait(credentials.map((item) => profile
-          .defaultCredentialStorage!
-          .deleteCredential(digitalCredentialId: item.id)));
-    } catch (e) {
-      print('[Demo] Error deleting credentials: $e');
+    final verifyPage = await profile.defaultFileStorage!.getFolder(
+      folderId: profile.id,
+      limit: 1,
+    );
+    if (verifyPage.items.isNotEmpty) {
+      throw Exception('Profile still contains items, cannot delete');
     }
 
+    final credentials =
+        await profile.defaultCredentialStorage!.listCredentials();
+    print('[Demo] Found ${credentials.length} credentials to delete');
+
+    for (final credential in credentials) {
+      try {
+        await profile.defaultCredentialStorage!
+            .deleteCredential(digitalCredentialId: credential.id);
+        print('[Demo] Successfully deleted credential: ${credential.id}');
+      } catch (e) {
+        print('[Demo] Error deleting credential ${credential.id}: $e');
+        throw Exception('Failed to delete all credentials');
+      }
+    }
+
+    print('[Demo] Deleting profile: ${profile.name}');
     await vault.defaultProfileRepository.deleteProfile(profile);
+    print('[Demo] Successfully deleted profile: ${profile.name}');
   } catch (e) {
-    print('[Demo] Error deleting profile: $e');
+    print('[Demo] Error during profile deletion: $e');
     rethrow;
   }
 }
@@ -125,222 +174,212 @@ Future<int> _createProfile(Vault vault, String name, int accountIndex) async {
   return newAccountIndex;
 }
 
-void main() async {
-  print('[Demo] Initializing Vault ...');
-
-  final keyStorageAlice = InMemoryVaultStore();
-  var accountIndexAlice = 0;
-  await keyStorageAlice.writeAccountIndex(accountIndexAlice);
-
-  final seedAlice = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
-  await keyStorageAlice.setSeed(seedAlice);
-
-  const vfsRepositoryId = 'vfs';
-  final profileRepositoriesAlice = <String, ProfileRepository>{
-    vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
-  };
-
-  final vaultAlice = await Vault.fromVaultStore(
-    keyStorageAlice,
-    profileRepositories: profileRepositoriesAlice,
-    defaultProfileRepositoryId: vfsRepositoryId,
-  );
-
-  await vaultAlice.ensureInitialized();
-
-  print('[Demo] Retrieving Profiles ...');
-
-  var profilesAlice = await vaultAlice.listProfiles();
-  print(
-      '[Demo] ${profilesAlice.isEmpty ? 'No profiles found' : 'Available profiles: ${profilesAlice.length}'}');
-  _listProfileNames(profilesAlice, label: 'Initial profile names');
-
-  await Future.wait(
-      profilesAlice.map((profile) => _deleteProfile(vaultAlice, profile)));
-
-  profilesAlice = await vaultAlice.listProfiles();
-  _listProfileNames(profilesAlice, label: 'Cleared profiles');
-
-  print('[Demo] Adding new profiles ...');
-
-  accountIndexAlice =
-      await _createProfile(vaultAlice, 'Ricardo', accountIndexAlice);
-  final aliceAccountIndex = accountIndexAlice;
-
-  var profilesAfterAccountsAlice = await vaultAlice.listProfiles();
-  final aliceProfile = profilesAfterAccountsAlice
-      .where((profile) => profile.accountIndex == aliceAccountIndex)
-      .firstOrNull;
-
-  if (aliceProfile == null) {
-    throw UnsupportedError('Profile should exist');
-  }
-
-  print('[Demo] Alice is adding multiple files ...');
-
-  final subfolders = <Folder>[];
-  for (var i = 0; i < 6; i++) {
-    final folder = await aliceProfile.defaultFileStorage!.createFolder(
-      folderName: 'subfolder_$i',
-      parentFolderId: aliceProfile.id,
-    );
-    subfolders.add(folder);
-    print('[Demo] Created subfolder: ${folder.name}');
-  }
-
-  print('[Demo] Creating 100 files across subfolders...');
-  for (var i = 0; i < 100; i++) {
-    final subfolderIndex = i % subfolders.length;
-    final subfolder = subfolders[subfolderIndex];
-    await _addFileToProfile(aliceProfile, subfolder.id, 'file_$i');
-    if (i % 10 == 0) {
-      print('[Demo] Created $i files so far...');
-    }
-  }
-
-  print('[Demo] Waiting for files to be fully processed...');
-  await Future<void>.delayed(const Duration(seconds: 5));
-
-  print('\n[Demo] ===== STARTING PAGINATION TEST =====');
-  String? exclusiveStartKey;
-  var totalFiles = 0;
-  var batchCount = 0;
-
+Future<void> main() async {
   try {
-    do {
-      batchCount++;
-      print('\n[Demo] === Batch #$batchCount ===');
-      print('[Demo] Using exclusiveStartKey: $exclusiveStartKey');
+    print('[Demo] Initializing Vault ...');
+
+    final vaultStore = InMemoryVaultStore();
+    var accountIndex = 0;
+    await vaultStore.writeAccountIndex(accountIndex);
+
+    final seed = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
+    await vaultStore.setSeed(seed);
+
+    const vfsRepositoryId = 'vfs';
+    final profileRepositories = <String, ProfileRepository>{
+      vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
+    };
+
+    final vault = await Vault.fromVaultStore(
+      vaultStore,
+      profileRepositories: profileRepositories,
+      defaultProfileRepositoryId: vfsRepositoryId,
+    );
+
+    await vault.ensureInitialized();
+
+    print('[Demo] Retrieving Profiles ...');
+
+    var profiles = await vault.listProfiles();
+    print(
+        '[Demo] ${profiles.isEmpty ? 'No profiles found' : 'Available profiles: ${profiles.length}'}');
+    _listProfileNames(profiles, label: 'Initial profile names');
+
+    print('[Demo] Deleting all existing profiles...');
+    for (final profile in profiles) {
+      try {
+        await _deleteProfile(vault, profile);
+        print('[Demo] Successfully deleted profile: ${profile.name}');
+      } catch (e) {
+        print('[Demo] Error deleting profile ${profile.name}: $e');
+      }
+    }
+
+    profiles = await vault.listProfiles();
+    _listProfileNames(profiles, label: 'After deleting all profiles');
+    if (profiles.isNotEmpty) {
+      print('[Demo] Warning: Some profiles could not be deleted');
+    }
+
+    print('[Demo] Adding new profile ...');
+
+    accountIndex = await _createProfile(vault, 'Musk', accountIndex);
+    final testAccountIndex = accountIndex;
+
+    var profilesAfterAccount = await vault.listProfiles();
+    _listProfileNames(profilesAfterAccount, label: 'After creating profile');
+
+    final testProfile = profilesAfterAccount
+        .where((profile) => profile.accountIndex == testAccountIndex)
+        .firstOrNull;
+
+    if (testProfile == null) {
+      throw UnsupportedError('Profile should exist');
+    }
+
+    print(
+        '[Demo] Profile created successfully: ${testProfile.name} (${testProfile.id})');
+
+    await Future<void>.delayed(const Duration(seconds: 2));
+
+    try {
+      final initialFolder = await testProfile.defaultFileStorage!.getFolder(
+        folderId: testProfile.id,
+      );
+      print(
+          '[Demo] Initial folder contents: ${initialFolder.items.length} items');
+    } catch (e) {
+      print('[Demo] Error accessing profile folder: $e');
+      rethrow;
+    }
+
+    print('[Demo] Creating test files ...');
+
+    // Create subfolders and distribute files
+    final filesPerFolder = 5;
+    final totalFiles = 20;
+    final numFolders = (totalFiles / filesPerFolder).ceil();
+
+    for (var folderIndex = 0; folderIndex < numFolders; folderIndex++) {
+      final folderName = 'folder_$folderIndex';
+      print('[Demo] Creating folder: $folderName');
 
       try {
-        final items = await aliceProfile.defaultFileStorage!.getFolder(
-          folderId: aliceProfile.id,
-          limit: 20,
+        final folder = await testProfile.defaultFileStorage!.createFolder(
+          folderName: folderName,
+          parentFolderId: testProfile.id,
+        );
+        print('[Demo] Successfully created folder: $folderName (${folder.id})');
+
+        final startFileIndex = folderIndex * filesPerFolder;
+        final endFileIndex = (folderIndex + 1) * filesPerFolder;
+
+        for (var i = startFileIndex; i < endFileIndex && i < totalFiles; i++) {
+          try {
+            await Future<void>.delayed(const Duration(milliseconds: 500));
+
+            final fileName = 'test_file_$i.txt';
+            print('[Demo] Creating file: $fileName in folder $folderName');
+
+            await testProfile.defaultFileStorage!.createFile(
+              fileName: fileName,
+              data: Uint8List.fromList([1, 2, 3, 4, 5]),
+              parentFolderId: folder.id,
+            );
+            print('[Demo] Successfully created file $i in folder $folderName');
+          } on TdkException catch (error) {
+            print('[Demo] Error creating file $i:');
+            print('  Code: ${error.code}');
+            print('  Message: ${error.message}');
+            print('  Original: ${error.originalMessage}');
+            continue;
+          }
+        }
+      } on TdkException catch (error) {
+        print('[Demo] Error creating folder $folderName:');
+        print('  Code: ${error.code}');
+        print('  Message: ${error.message}');
+        print('  Original: ${error.originalMessage}');
+        continue;
+      }
+    }
+
+    await Future<void>.delayed(const Duration(seconds: 3));
+
+    try {
+      final rootFolder = await testProfile.defaultFileStorage!.getFolder(
+        folderId: testProfile.id,
+      );
+      print('[Demo] Root folder contents: ${rootFolder.items.length} items');
+      for (final item in rootFolder.items) {
+        if (item is Folder) {
+          final subFolder = await testProfile.defaultFileStorage!.getFolder(
+            folderId: item.id,
+          );
+          print(
+              '[Demo] Folder ${item.name} contains ${subFolder.items.length} items');
+        }
+      }
+    } catch (e) {
+      print('[Demo] Error verifying files: $e');
+    }
+
+    print('[Demo] Finished creating test files');
+
+    print('[Demo] Testing pagination...');
+    String? exclusiveStartKey;
+    var totalItems = 0;
+    var pageCount = 0;
+
+    do {
+      print('[Demo] Fetching page ${pageCount + 1}...');
+      if (exclusiveStartKey != null) {
+        print('[Demo] Using exclusiveStartKey: $exclusiveStartKey');
+      }
+
+      try {
+        final page = await testProfile.defaultFileStorage!.getFolder(
+          folderId: testProfile.id,
           exclusiveStartKey: exclusiveStartKey,
+          limit: 2,
         );
 
-        if (items.isEmpty) {
-          print('[Demo] No more items to fetch');
+        if (page.items.isEmpty) {
+          print('[Demo] No more items found');
           break;
         }
 
-        print('[Demo] Retrieved ${items.length} items in this batch');
+        totalItems += page.items.length;
+        print('[Demo] Retrieved ${page.items.length} items');
         print(
-            '[Demo] Item types: ${items.map((f) => f.runtimeType.toString()).join(', ')}');
-        print('[Demo] Item names: ${items.map((f) => f.name).join(', ')}');
+            '[Demo] Items: ${page.items.map((item) => item.name).join(', ')}');
 
-        totalFiles += items.length;
-
-        if (items.isNotEmpty && items.last is Node) {
-          final lastNode = items.last as Node;
-          exclusiveStartKey = lastNode.lastEvaluatedKey;
-          print('[Demo] Next exclusiveStartKey will be: $exclusiveStartKey');
-        } else {
-          exclusiveStartKey = null;
-          print('[Demo] No more items to fetch (no lastEvaluatedKey)');
-        }
-
-        await Future<void>.delayed(const Duration(milliseconds: 500));
-      } catch (e, stackTrace) {
-        print('[Demo] Error fetching batch #$batchCount: $e');
-        print('[Demo] Stack trace: $stackTrace');
-
+        exclusiveStartKey = page.nextPageKey;
         if (exclusiveStartKey != null) {
-          print('[Demo] Retrying batch #$batchCount...');
-          await Future<void>.delayed(const Duration(seconds: 1));
-          continue;
+          print('[Demo] Next page key: $exclusiveStartKey');
         }
-        rethrow;
+
+        pageCount++;
+
+        if (!page.hasMore) {
+          print('[Demo] No more pages available');
+          break;
+        }
+      } catch (e) {
+        print('[Demo] Error fetching page: $e');
+        break;
       }
     } while (exclusiveStartKey != null);
 
-    print('\n[Demo] ===== PAGINATION TEST COMPLETE =====');
-    print('[Demo] Total items retrieved: $totalFiles');
-    print('[Demo] Total batches processed: $batchCount');
-  } catch (e, stackTrace) {
-    print('\n[Demo] ===== PAGINATION TEST FAILED =====');
-    print('[Demo] Error during pagination: $e');
-    print('[Demo] Stack trace: $stackTrace');
-  }
+    print('[Demo] Pagination test completed');
+    print('[Demo] Total items retrieved: $totalItems');
+    print('[Demo] Total pages: $pageCount');
 
-  print('\n[Demo] Waiting before cleanup...');
-  await Future<void>.delayed(const Duration(seconds: 2));
-
-  print('\n[Demo] ===== STARTING CLEANUP =====');
-  try {
-    for (final subfolder in subfolders) {
-      print('\n[Demo] Cleaning up subfolder: ${subfolder.name}');
-      String? cleanupStartKey;
-      var filesDeleted = 0;
-      var retryCount = 0;
-
-      do {
-        try {
-          final items = await aliceProfile.defaultFileStorage!.getFolder(
-            folderId: subfolder.id,
-            limit: 20,
-            exclusiveStartKey: cleanupStartKey,
-          );
-
-          for (final item in items) {
-            if (item is File) {
-              try {
-                await aliceProfile.defaultFileStorage!
-                    .deleteFile(fileId: item.id);
-                filesDeleted++;
-                print('[Demo] Deleted file: ${item.name}');
-                await Future<void>.delayed(const Duration(milliseconds: 100));
-              } catch (e) {
-                print('[Demo] Error deleting file ${item.name}: $e');
-              }
-            }
-          }
-
-          if (items.length == 20) {
-            cleanupStartKey = items.last.id;
-          } else {
-            cleanupStartKey = null;
-          }
-
-          retryCount = 0;
-
-          await Future<void>.delayed(const Duration(milliseconds: 500));
-        } catch (e) {
-          print('[Demo] Error getting folder contents for cleanup: $e');
-          retryCount++;
-
-          if (retryCount < 3) {
-            print('[Demo] Retrying cleanup batch (attempt $retryCount)...');
-            await Future<void>.delayed(const Duration(seconds: 1));
-            continue;
-          }
-          break;
-        }
-      } while (cleanupStartKey != null);
-
-      print('[Demo] Deleted $filesDeleted files from ${subfolder.name}');
-
-      try {
-        await aliceProfile.defaultFileStorage!
-            .deleteFolder(folderId: subfolder.id);
-        print('[Demo] Deleted subfolder: ${subfolder.name}');
-        await Future<void>.delayed(const Duration(milliseconds: 500));
-      } catch (e) {
-        print('[Demo] Error deleting subfolder ${subfolder.name}: $e');
-      }
-    }
+    print('[Demo] Starting cleanup...');
+    await _deleteProfile(vault, testProfile);
+    print('[Demo] Cleanup completed successfully');
   } catch (e) {
-    print('[Demo] Error during cleanup: $e');
-  }
-
-  print('\n[Demo] Waiting before profile deletion...');
-  await Future<void>.delayed(const Duration(seconds: 2));
-
-  print('\n[Demo] ===== DELETING PROFILE =====');
-  try {
-    await vaultAlice.defaultProfileRepository.deleteProfile(aliceProfile);
-    print('[Demo] Profile deleted successfully');
-  } catch (e) {
-    print('[Demo] Error deleting profile: $e');
+    print('[Demo] Error in main: $e');
+    rethrow;
   }
 }

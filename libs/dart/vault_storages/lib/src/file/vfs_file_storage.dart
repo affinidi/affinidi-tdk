@@ -27,7 +27,7 @@ class VFSFileStorage implements FileStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<List<Item>> getFolder({
+  Future<Page<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartKey,
@@ -40,18 +40,19 @@ class VFSFileStorage implements FileStorage {
               code: TdkExceptionType.folderNotFound.code),
           StackTrace.current);
     }
-    final items = await _vaultDataManagerService.getChildNodes(
+    final response = await _vaultDataManagerService.getChildNodes(
       nodeId: folderId,
       limit: limit,
       exclusiveStartKey: exclusiveStartKey,
       cancelToken: cancelToken,
     );
 
-    if (items == null) {
-      return [];
+    if (response == null) {
+      return Page(items: []);
     }
 
-    return items.where((node) => node.status != NodeStatus.HIDDEN).map((node) {
+    final items =
+        response.where((node) => node.status != NodeStatus.HIDDEN).map((node) {
       if (node.type == NodeType.FILE) {
         return File(
           id: node.nodeId,
@@ -78,6 +79,11 @@ class VFSFileStorage implements FileStorage {
         );
       }
     }).toList();
+
+    return Page(
+      items: items,
+      nextPageKey: response.isNotEmpty ? response.last.lastEvaluatedKey : null,
+    );
   }
 
   @override

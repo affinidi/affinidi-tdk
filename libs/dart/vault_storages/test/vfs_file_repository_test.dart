@@ -102,9 +102,9 @@ void main() {
           final items = await vfsFileStorage.getFolder(
               folderId: FileFixtures.testFolderId);
 
-          expect(items, hasLength(2));
-          expect(items.whereType<File>(), hasLength(1));
-          expect(items.whereType<Folder>(), hasLength(1));
+          expect(items.items, hasLength(2));
+          expect(items.items.whereType<File>(), hasLength(1));
+          expect(items.items.whereType<Folder>(), hasLength(1));
         });
 
         test('it should throw if folderId is null', () async {
@@ -132,7 +132,7 @@ void main() {
 
           final items = await vfsFileStorage.getFolder(
               folderId: FileFixtures.testFolderId);
-          expect(items, isEmpty);
+          expect(items.items, isEmpty);
         });
       });
 

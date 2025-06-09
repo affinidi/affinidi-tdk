@@ -81,9 +81,9 @@ void main() {
             .thenAnswer((_) async => expectedItems);
 
         final result = await storage.getFolder();
-        expect(result.length, equals(1));
-        expect(result[0].id, equals('1'));
-        expect(result[0].name, equals(NodeFixtures.testNodeName));
+        expect(result.items.length, equals(1));
+        expect(result.items[0].id, equals('1'));
+        expect(result.items[0].name, equals(NodeFixtures.testNodeName));
         verify(() => mockDataManagerService.getChildNodes(
             nodeId: VfsSharedStorageFixtures.testSharedProfileId)).called(1);
       });

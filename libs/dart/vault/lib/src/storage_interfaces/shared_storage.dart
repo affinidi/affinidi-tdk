@@ -4,6 +4,7 @@ import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
 import '../helpers/vault_cancel_token.dart';
+import 'file_storage.dart';
 import 'item.dart';
 
 /// Interface for managing shared storage operations, including files, folders, and credentials.
@@ -16,7 +17,7 @@ abstract interface class SharedStorage {
   /// Throws if the folder does not exist
   /// Throws if the folderId does not match a folder
   /// Throws for network connectivity
-  Future<List<Item>> getFolder({
+  Future<Page<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartKey,
