@@ -83,9 +83,6 @@ class Node {
   /// Metadata associated with this node
   final Metadata? metadata;
 
-  /// Key for pagination, used to get the next batch of items.
-  final String? lastEvaluatedKey;
-
   /// Creates a new node instance.
   Node({
     required this.name,
@@ -106,7 +103,6 @@ class Node {
     required this.nodeId,
     this.edekInfo,
     this.metadata,
-    this.lastEvaluatedKey,
   });
 
   /// Creates a [Node] from a JSON map.
@@ -132,7 +128,6 @@ class Node {
       metadata: json['metadata'] != null
           ? Metadata.fromJson(json['metadata'] as Map<String, dynamic>)
           : null,
-      lastEvaluatedKey: json['lastEvaluatedKey'] as String?,
     );
   }
 
@@ -157,7 +152,6 @@ class Node {
       'nodeId': nodeId,
       'edekInfo': edekInfo,
       'metadata': metadata?.toJson(),
-      'lastEvaluatedKey': lastEvaluatedKey,
     };
   }
 }

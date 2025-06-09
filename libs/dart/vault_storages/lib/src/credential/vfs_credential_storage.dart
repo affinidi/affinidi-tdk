@@ -27,11 +27,15 @@ class VFSCredentialStorage implements CredentialStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<List<DigitalCredential>> listCredentials({
+  Future<Page<DigitalCredential>> listCredentials({
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
     return await _vaultDataManagerService.getDigitalCredentials(
       _profileId,
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
       cancelToken: cancelToken,
     );
   }
@@ -64,12 +68,11 @@ class VFSCredentialStorage implements CredentialStorage {
     required String digitalCredentialId,
     VaultCancelToken? cancelToken,
   }) async {
-    final digitalCredentials =
-        await _vaultDataManagerService.getDigitalCredentials(
+    final page = await _vaultDataManagerService.getDigitalCredentials(
       _profileId,
       cancelToken: cancelToken,
     );
-    final existingCredential = digitalCredentials
+    final existingCredential = page.items
         .where(
           (digitalCredential) => digitalCredential.id == digitalCredentialId,
         )

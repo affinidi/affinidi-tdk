@@ -17,7 +17,9 @@ class HiveCredentialStorage implements CredentialStorage {
 
   /// Retrieves a list of all stored verifiable credentials.
   @override
-  Future<List<DigitalCredential>> listCredentials({
+  Future<Page<DigitalCredential>> listCredentials({
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) {
     throw UnimplementedError();

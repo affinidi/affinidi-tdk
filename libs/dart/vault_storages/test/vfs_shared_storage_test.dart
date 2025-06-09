@@ -1,7 +1,9 @@
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart'
     as storages;
+import 'package:affinidi_tdk_vault_storages/src/model/node.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -25,7 +27,8 @@ void main() {
 
     when(() =>
             mockDataManagerService.getChildNodes(nodeId: any(named: 'nodeId')))
-        .thenAnswer((_) async => []);
+        .thenAnswer(
+            (_) async => Page<Node>(items: [], lastEvaluatedItemId: null));
     when(() => mockDataManagerService.createFile(
           fileName: any(named: 'fileName'),
           parentFolderNodeId: any(named: 'parentFolderNodeId'),
@@ -55,7 +58,10 @@ void main() {
     when(() => mockDataManagerService.deleteClaimedCredential(
         nodeId: any(named: 'nodeId'))).thenAnswer((_) async {});
     when(() => mockDataManagerService.getDigitalCredentials(any()))
-        .thenAnswer((_) async => []);
+        .thenAnswer((_) async => Page<DigitalCredential>(
+              items: <DigitalCredential>[],
+              lastEvaluatedItemId: null,
+            ));
     when(() => mockDataManagerService.addVerifiableCredentialToProfile(
           profileId: any(named: 'profileId'),
           verifiableCredential: any(named: 'verifiableCredential'),
@@ -76,9 +82,12 @@ void main() {
     group('File operations', () {
       test('getFolder returns items from file storage', () async {
         final expectedItems = [NodeFixtures.testFileNode];
-        when(() => mockDataManagerService.getChildNodes(
-                nodeId: any(named: 'nodeId')))
-            .thenAnswer((_) async => expectedItems);
+        when(() => mockDataManagerService
+                .getChildNodes(nodeId: any(named: 'nodeId')))
+            .thenAnswer((_) async => Page<Node>(
+                  items: expectedItems,
+                  lastEvaluatedItemId: null,
+                ));
 
         final result = await storage.getFolder();
         expect(result.items.length, equals(1));
@@ -134,7 +143,10 @@ void main() {
 
         when(() => mockDataManagerService.getChildNodes(
                 nodeId: NodeFixtures.testParentId))
-            .thenAnswer((_) async => [folderNode]);
+            .thenAnswer((_) async => Page<Node>(
+                  items: [folderNode],
+                  lastEvaluatedItemId: null,
+                ));
 
         await storage.createFolder(
           folderName: FileFixtures.testFolderName,
@@ -261,7 +273,10 @@ void main() {
       test('getCredential delegates to credential storage', () async {
         final expectedCredential = CredentialFixtures.testDigitalCredential;
         when(() => mockDataManagerService.getDigitalCredentials(any()))
-            .thenAnswer((_) async => [expectedCredential]);
+            .thenAnswer((_) async => Page<DigitalCredential>(
+                  items: [expectedCredential],
+                  lastEvaluatedItemId: null,
+                ));
 
         final result = await storage.getCredential(
             digitalCredentialId: CredentialFixtures.testCredentialId);
@@ -274,12 +289,15 @@ void main() {
       test('listCredentials delegates to credential storage', () async {
         final expectedCredential = CredentialFixtures.testDigitalCredential;
         when(() => mockDataManagerService.getDigitalCredentials(any()))
-            .thenAnswer((_) async => [expectedCredential]);
+            .thenAnswer((_) async => Page<DigitalCredential>(
+                  items: [expectedCredential],
+                  lastEvaluatedItemId: null,
+                ));
 
         final result = await storage.listCredentials();
 
-        expect(result.length, equals(1));
-        expect(result[0], equals(expectedCredential));
+        expect(result.items.length, equals(1));
+        expect(result.items[0], equals(expectedCredential));
         verify(() => mockDataManagerService.getDigitalCredentials(
             VfsSharedStorageFixtures.testSharedProfileId)).called(1);
       });

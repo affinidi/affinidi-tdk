@@ -25,7 +25,7 @@ Future<void> _deleteFolder({
   required String folderId,
 }) async {
   print('[Demo] Deleting folderId: $folderId');
-  String? exclusiveStartKey;
+  String? exclusiveStartItemId;
   var hasErrors = false;
 
   try {
@@ -33,7 +33,7 @@ Future<void> _deleteFolder({
       final page = await profile.defaultFileStorage!.getFolder(
         folderId: folderId,
         limit: 20,
-        exclusiveStartKey: exclusiveStartKey,
+        exclusiveStartItemId: exclusiveStartItemId,
       );
 
       print('[Demo] Found ${page.items.length} items in folder $folderId');
@@ -67,8 +67,8 @@ Future<void> _deleteFolder({
         }
       }
 
-      exclusiveStartKey = page.nextPageKey;
-    } while (exclusiveStartKey != null);
+      exclusiveStartItemId = page.lastEvaluatedItemId;
+    } while (exclusiveStartItemId != null);
 
     if (folderId != profile.id) {
       try {
@@ -128,9 +128,9 @@ Future<void> _deleteProfile(Vault vault, Profile profile) async {
 
     final credentials =
         await profile.defaultCredentialStorage!.listCredentials();
-    print('[Demo] Found ${credentials.length} credentials to delete');
+    print('[Demo] Found ${credentials.items.length} credentials to delete');
 
-    for (final credential in credentials) {
+    for (final credential in credentials.items) {
       try {
         await profile.defaultCredentialStorage!
             .deleteCredential(digitalCredentialId: credential.id);
@@ -223,7 +223,7 @@ Future<void> main() async {
 
     print('[Demo] Adding new profile ...');
 
-    accountIndex = await _createProfile(vault, 'Musk', accountIndex);
+    accountIndex = await _createProfile(vault, 'Alice1', accountIndex);
     final testAccountIndex = accountIndex;
 
     var profilesAfterAccount = await vault.listProfiles();
@@ -327,20 +327,20 @@ Future<void> main() async {
     print('[Demo] Finished creating test files');
 
     print('[Demo] Testing pagination...');
-    String? exclusiveStartKey;
+    String? exclusiveStartItemId;
     var totalItems = 0;
     var pageCount = 0;
 
     do {
       print('[Demo] Fetching page ${pageCount + 1}...');
-      if (exclusiveStartKey != null) {
-        print('[Demo] Using exclusiveStartKey: $exclusiveStartKey');
+      if (exclusiveStartItemId != null) {
+        print('[Demo] Using exclusiveStartItemId: $exclusiveStartItemId');
       }
 
       try {
         final page = await testProfile.defaultFileStorage!.getFolder(
           folderId: testProfile.id,
-          exclusiveStartKey: exclusiveStartKey,
+          exclusiveStartItemId: exclusiveStartItemId,
           limit: 2,
         );
 
@@ -354,9 +354,9 @@ Future<void> main() async {
         print(
             '[Demo] Items: ${page.items.map((item) => item.name).join(', ')}');
 
-        exclusiveStartKey = page.nextPageKey;
-        if (exclusiveStartKey != null) {
-          print('[Demo] Next page key: $exclusiveStartKey');
+        exclusiveStartItemId = page.lastEvaluatedItemId;
+        if (exclusiveStartItemId != null) {
+          print('[Demo] Next page key: $exclusiveStartItemId');
         }
 
         pageCount++;
@@ -369,7 +369,7 @@ Future<void> main() async {
         print('[Demo] Error fetching page: $e');
         break;
       }
-    } while (exclusiveStartKey != null);
+    } while (exclusiveStartItemId != null);
 
     print('[Demo] Pagination test completed');
     print('[Demo] Total items retrieved: $totalItems');

@@ -824,7 +824,7 @@ void main() {
             await vaultDataManagerService.getChildNodes(nodeId: nodeId);
 
         expect(result, isNotNull);
-        expect(result?.length, 1);
+        expect(result.items.length, 1);
         verify(() => mockVaultDataManagerApiService.getChildrenByNodeId(any()))
             .called(1);
       });
@@ -876,8 +876,8 @@ void main() {
         final result =
             await vaultDataManagerService.getDigitalCredentials(profileId);
 
-        expect(result, isNotEmpty);
-        expect(result.length, 2);
+        expect(result.items, isNotEmpty);
+        expect(result.items.length, 2);
         verify(vaultDataManagerApiServiceMocks.getVerifiableCredentialsNodes)
             .called(1);
         verify(vaultDataManagerApiServiceMocks.getNodeInfoWithoutDek).called(2);

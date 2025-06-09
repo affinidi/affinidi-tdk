@@ -50,14 +50,14 @@ class VfsSharedStorage implements vault.SharedStorage {
   Future<Page<vault.Item>> getFolder({
     String? folderId,
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
     final id = folderId ?? _sharedProfileId;
     return _fileStorage.getFolder(
       folderId: id,
       limit: limit,
-      exclusiveStartKey: exclusiveStartKey,
+      exclusiveStartItemId: exclusiveStartItemId,
       cancelToken: cancelToken,
     );
   }
@@ -115,14 +115,10 @@ class VfsSharedStorage implements vault.SharedStorage {
   Future<vault.File> getFile({
     required String fileId,
     VaultCancelToken? cancelToken,
-    int? limit,
-    String? exclusiveStartKey,
   }) async {
     return await _fileStorage.getFile(
       fileId: fileId,
       cancelToken: cancelToken,
-      limit: limit,
-      exclusiveStartKey: exclusiveStartKey,
     );
   }
 
@@ -188,10 +184,16 @@ class VfsSharedStorage implements vault.SharedStorage {
   }
 
   @override
-  Future<List<vault.DigitalCredential>> listCredentials({
+  Future<Page<vault.DigitalCredential>> listCredentials({
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
-    return await _credentialStorage.listCredentials(cancelToken: cancelToken);
+    return await _credentialStorage.listCredentials(
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
+      cancelToken: cancelToken,
+    );
   }
 
   @override

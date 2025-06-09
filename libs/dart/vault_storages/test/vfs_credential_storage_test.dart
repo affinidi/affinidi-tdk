@@ -1,51 +1,11 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_storages/src/credential/vfs_credential_storage.dart';
-import 'package:affinidi_tdk_vault_storages/src/services/vault_data_manager_service/vault_data_manager_service_interface.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
 import 'fixtures/credential_fixtures.dart';
+import 'mocks/mock_vault_data_manager_service.dart';
 import 'mocks/mock_verifiable_credential.dart';
-
-class MockVaultDataManagerService extends Mock
-    implements VaultDataManagerServiceInterface {
-  @override
-  Future<void> addVerifiableCredentialToProfile({
-    required VerifiableCredential verifiableCredential,
-    required String profileId,
-    VaultCancelToken? cancelToken,
-  }) {
-    return super.noSuchMethod(
-      Invocation.method(#addVerifiableCredentialToProfile, [], {
-        #verifiableCredential: verifiableCredential,
-        #profileId: profileId,
-      }),
-    ) as Future<void>;
-  }
-
-  @override
-  Future<void> deleteClaimedCredential({
-    required String nodeId,
-    VaultCancelToken? cancelToken,
-  }) {
-    return super.noSuchMethod(
-      Invocation.method(#deleteClaimedCredential, [], {
-        #nodeId: nodeId,
-      }),
-    ) as Future<void>;
-  }
-
-  @override
-  Future<List<DigitalCredential>> getDigitalCredentials(
-    String profileId, {
-    VaultCancelToken? cancelToken,
-  }) {
-    return super.noSuchMethod(
-      Invocation.method(#getDigitalCredentials, [profileId]),
-    ) as Future<List<DigitalCredential>>;
-  }
-}
 
 void main() {
   late VFSCredentialStorage storage;
@@ -74,34 +34,64 @@ void main() {
     group('When listing credentials', () {
       test('it should return all credentials', () async {
         final mockCreds = CredentialFixtures.mockCredentials;
-        when(() => mockService.getDigitalCredentials(profileId))
-            .thenAnswer((_) async => mockCreds);
+        when(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).thenAnswer((_) async => Page<DigitalCredential>(
+              items: mockCreds,
+              lastEvaluatedItemId: null,
+            ));
 
         final result = await storage.listCredentials();
-        expect(result.length, equals(mockCreds.length));
-        expect(result[0].id, equals(mockCreds[0].id));
-        verify(() => mockService.getDigitalCredentials(profileId)).called(1);
+        expect(result.items.length, equals(mockCreds.length));
+        expect(result.items[0].id, equals(mockCreds[0].id));
+        verify(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).called(1);
       });
 
       test('it should handle empty credential list', () async {
-        when(() => mockService.getDigitalCredentials(profileId))
-            .thenAnswer((_) async => []);
+        when(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).thenAnswer((_) async => Page<DigitalCredential>(
+              items: <DigitalCredential>[],
+              lastEvaluatedItemId: null,
+            ));
 
         final result = await storage.listCredentials();
-        expect(result, isEmpty);
-        verify(() => mockService.getDigitalCredentials(profileId)).called(1);
+        expect(result.items, isEmpty);
+        verify(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).called(1);
       });
 
       test('it should handle multiple credentials', () async {
         final credentials = CredentialFixtures.mockMultipleCredentials;
-        when(() => mockService.getDigitalCredentials(profileId))
-            .thenAnswer((_) async => credentials);
+        when(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).thenAnswer((_) async => Page<DigitalCredential>(
+              items: credentials,
+              lastEvaluatedItemId: null,
+            ));
 
         final result = await storage.listCredentials();
-        expect(result.length, equals(2));
-        expect(result[0].id, equals('cred1'));
-        expect(result[1].id, equals('cred2'));
-        verify(() => mockService.getDigitalCredentials(profileId)).called(1);
+        expect(result.items.length, equals(2));
+        expect(result.items[0].id, equals('cred1'));
+        expect(result.items[1].id, equals('cred2'));
+        verify(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).called(1);
       });
     });
 
@@ -136,19 +126,35 @@ void main() {
     group('When getting a credential by id', () {
       test('it should return the credential when found', () async {
         const credentialId = 'cred1';
-        when(() => mockService.getDigitalCredentials(profileId))
-            .thenAnswer((_) async => CredentialFixtures.mockCredentials);
+        when(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).thenAnswer((_) async => Page<DigitalCredential>(
+              items: CredentialFixtures.mockCredentials,
+              lastEvaluatedItemId: null,
+            ));
 
         final result =
             await storage.getCredential(digitalCredentialId: credentialId);
         expect(result.id, equals(credentialId));
-        verify(() => mockService.getDigitalCredentials(profileId)).called(1);
+        verify(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).called(1);
       });
 
       test('it should throw when credential not found', () async {
         const credentialId = 'non_existent';
-        when(() => mockService.getDigitalCredentials(profileId))
-            .thenAnswer((_) async => []);
+        when(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+            )).thenAnswer((_) async => Page<DigitalCredential>(
+              items: <DigitalCredential>[],
+              lastEvaluatedItemId: null,
+            ));
 
         expect(
           () => storage.getCredential(digitalCredentialId: credentialId),
@@ -163,6 +169,62 @@ void main() {
           () => storage.query('test query'),
           throwsA(isA<TdkException>()),
         );
+      });
+    });
+
+    group('When listing credentials with pagination', () {
+      test('it should handle paginated results correctly', () async {
+        final mockCreds = [
+          DigitalCredential(
+              id: 'cred1', verifiableCredential: MockVerifiableCredential()),
+          DigitalCredential(
+              id: 'cred2', verifiableCredential: MockVerifiableCredential()),
+        ];
+
+        when(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: 2,
+              exclusiveStartItemId: null,
+              cancelToken: any(named: 'cancelToken'),
+            )).thenAnswer((_) => Future.value(Page(
+              items: mockCreds,
+              lastEvaluatedItemId: 'next_page_key',
+            )));
+
+        final result = await storage.listCredentials(limit: 2);
+
+        expect(result.items, equals(mockCreds));
+        expect(result.lastEvaluatedItemId, equals('next_page_key'));
+
+        verify(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: 2,
+              exclusiveStartItemId: null,
+              cancelToken: any(named: 'cancelToken'),
+            )).called(1);
+      });
+
+      test('it should handle empty results from backend', () async {
+        when(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+              cancelToken: any(named: 'cancelToken'),
+            )).thenAnswer((_) => Future.value(Page(
+              items: [],
+              lastEvaluatedItemId: null,
+            )));
+
+        final result = await storage.listCredentials(limit: 2);
+        expect(result.items, isEmpty);
+        expect(result.lastEvaluatedItemId, isNull);
+
+        verify(() => mockService.getDigitalCredentials(
+              profileId,
+              limit: 2,
+              exclusiveStartItemId: null,
+              cancelToken: any(named: 'cancelToken'),
+            )).called(1);
       });
     });
   });

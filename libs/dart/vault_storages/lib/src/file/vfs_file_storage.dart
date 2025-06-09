@@ -30,7 +30,7 @@ class VFSFileStorage implements FileStorage {
   Future<Page<Item>> getFolder({
     String? folderId,
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
     if (folderId == null) {
@@ -43,16 +43,13 @@ class VFSFileStorage implements FileStorage {
     final response = await _vaultDataManagerService.getChildNodes(
       nodeId: folderId,
       limit: limit,
-      exclusiveStartKey: exclusiveStartKey,
+      exclusiveStartItemId: exclusiveStartItemId,
       cancelToken: cancelToken,
     );
 
-    if (response == null) {
-      return Page(items: []);
-    }
-
-    final items =
-        response.where((node) => node.status != NodeStatus.HIDDEN).map((node) {
+    final items = response.items
+        .where((node) => node.status != NodeStatus.HIDDEN)
+        .map((node) {
       if (node.type == NodeType.FILE) {
         return File(
           id: node.nodeId,
@@ -82,7 +79,7 @@ class VFSFileStorage implements FileStorage {
 
     return Page(
       items: items,
-      nextPageKey: response.isNotEmpty ? response.last.lastEvaluatedKey : null,
+      lastEvaluatedItemId: response.lastEvaluatedItemId,
     );
   }
 
@@ -98,11 +95,11 @@ class VFSFileStorage implements FileStorage {
       cancelToken: cancelToken,
     );
 
-    final items = await _vaultDataManagerService.getChildNodes(
+    final response = await _vaultDataManagerService.getChildNodes(
       nodeId: parentFolderId,
       cancelToken: cancelToken,
     );
-    final folder = items?.firstWhere(
+    final folder = response.items.firstWhere(
       (node) => node.name == folderName && node.type == NodeType.FOLDER,
       orElse: () => Error.throwWithStackTrace(
         TdkException(
@@ -114,7 +111,7 @@ class VFSFileStorage implements FileStorage {
     );
 
     return Folder(
-      id: folder!.nodeId,
+      id: folder.nodeId,
       name: folder.name,
       createdAt: DateTime.parse(folder.createdAt),
       modifiedAt: DateTime.parse(folder.modifiedAt),
@@ -149,8 +146,6 @@ class VFSFileStorage implements FileStorage {
   Future<File> getFile({
     required String fileId,
     VaultCancelToken? cancelToken,
-    int? limit,
-    String? exclusiveStartKey,
   }) async {
     final node = await _vaultDataManagerService.getNodeInfo(
       fileId,

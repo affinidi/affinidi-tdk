@@ -39,6 +39,8 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// Retrieves all the nodes that hold verifiable credentials for a given [profileId]
   Future<Response<ListNodeChildrenOK>> getVerifiableCredentialsNodes({
     required String profileId,
+    int? limit,
+    String? exclusiveStartItemId,
     CancelToken? cancelToken,
   });
 
@@ -53,7 +55,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(
     String nodeId, {
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
     CancelToken? cancelToken,
   });
 
@@ -72,6 +74,8 @@ abstract interface class VaultDataManagerApiServiceInterface {
 
   /// Gets all the scanned files
   Future<Response<ListScannedFilesOK>> getAllScannedFiles({
+    int? limit,
+    String? exclusiveStartItemId,
     CancelToken? cancelToken,
   });
 
@@ -163,11 +167,11 @@ abstract interface class VaultDataManagerApiServiceInterface {
     CancelToken? cancelToken,
   });
 
-  /// Gets accounts of associated profiles. Optionally provide [limit] and [exclusiveStartKey].
+  /// Gets accounts of associated profiles. Optionally provide [limit] and [exclusiveStartItemId].
   /// [limit] - Maximum number of accounts to fetch in a list
-  /// [exclusiveStartKey] - is primary key of the first item that this operation will evaluate.
+  /// [exclusiveStartItemId] - is primary key of the first item that this operation will evaluate.
   /// Use the value that was returned for lastEvaluatedKey in the previous operation.
-  /// [exclusiveStartKey] - The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+  /// [exclusiveStartItemId] - The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
   /// [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// [headers] - Can be used to add additional headers to the request
   /// [extra] - Can be used to add flags to the request
@@ -176,7 +180,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
   /// [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   Future<Response<ListAccountsDto>> getAccounts({
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

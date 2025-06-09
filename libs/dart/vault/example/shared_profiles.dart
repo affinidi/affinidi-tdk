@@ -177,7 +177,8 @@ Future<void> _deleteProfile(Vault vault, Profile profile) async {
   // Check if profile has credentials...
   final credentials = await profile.defaultCredentialStorage!.listCredentials();
   // and delete them
-  await Future.wait(credentials.map((item) => profile.defaultCredentialStorage!
+  await Future.wait(credentials.items.map((item) => profile
+      .defaultCredentialStorage!
       .deleteCredential(digitalCredentialId: item.id)));
 
   await vault.defaultProfileRepository.deleteProfile(profile);
@@ -189,14 +190,14 @@ Future<void> _deleteFolder({
   required String folderId,
 }) async {
   print('Deleting folderId: $folderId');
-  String? exclusiveStartKey;
+  String? exclusiveStartItemId;
 
   try {
     do {
       final page = await profile.defaultFileStorage!.getFolder(
         folderId: folderId,
         limit: 20,
-        exclusiveStartKey: exclusiveStartKey,
+        exclusiveStartItemId: exclusiveStartItemId,
       );
 
       for (final item in page.items) {
@@ -208,8 +209,8 @@ Future<void> _deleteFolder({
         }
       }
 
-      exclusiveStartKey = page.nextPageKey;
-    } while (exclusiveStartKey != null);
+      exclusiveStartItemId = page.lastEvaluatedItemId;
+    } while (exclusiveStartItemId != null);
   } catch (e) {
     print('[Demo] Error getting folder contents for $folderId: $e');
   }

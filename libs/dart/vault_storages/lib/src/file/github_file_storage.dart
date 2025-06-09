@@ -22,7 +22,7 @@ class GithubFileStorage implements FileStorage {
     String? folderId,
     VaultCancelToken? cancelToken,
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
   }) {
     throw UnimplementedError();
   }
@@ -58,7 +58,7 @@ class GithubFileStorage implements FileStorage {
     required String fileId,
     VaultCancelToken? cancelToken,
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
   }) {
     throw UnimplementedError();
   }
