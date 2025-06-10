@@ -3,19 +3,22 @@ import 'dart:typed_data';
 
 import '../helpers/vault_cancel_token.dart';
 import 'item.dart';
+import 'page.dart';
 
 /// Interface for managing file and folder storage operations.
 abstract class FileStorage {
   /// Unique identifier for file storage.
   String get id;
 
-  /// Allows retrieving all items within a folder
-  /// Returned list can be empty
+  /// Allows retrieving items within a folder with pagination support
+  /// Returns a [Page] containing the items and pagination information
   /// Throws if the folder does not exist
   /// Throws if the folderId does not match a folder
   /// Throws for network connectivity
-  Future<List<Item>> getFolder({
+  Future<Page<Item>> getFolder({
     String? folderId,
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 
@@ -95,7 +98,7 @@ abstract class FileStorage {
 
   /// Allows renaming a file
   /// Throws if there is another file with same name
-  /// Throws if the nodeId does not match a file, IE is a folder.
+  /// Throws if the nodeId does not match a file, i.e. is a folder.
   /// Throws for network connectivity
   Future<void> renameFile({
     required String fileId,

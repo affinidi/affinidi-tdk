@@ -101,7 +101,7 @@ void main() async {
   await _addFileToProfile(aliceProfile, aliceProfile.id, 'alice file');
   final aliceFileId = await aliceProfile.defaultFileStorage!
       .getFolder(folderId: aliceProfile.id)
-      .then((files) => files.first.id);
+      .then((page) => page.items.first.id);
 
   // Wait a bit as file might be pending
   await Future.delayed(const Duration(seconds: 3), () {});
@@ -141,12 +141,12 @@ void main() async {
   final bobSharedStorageWAliceProfile = bobSharedStorages
       .where((storage) => storage.id == aliceProfile.id)
       .firstOrNull;
-  final folderContent = await bobSharedStorageWAliceProfile!.getFolder();
+  final folderPage = await bobSharedStorageWAliceProfile!.getFolder();
   final fileContent = await bobSharedStorageWAliceProfile.getFileContent(
-      fileId: folderContent.first.id);
+      fileId: folderPage.items.first.id);
   print('[Demo] Bob file content: $fileContent');
   print(
-      '[Demo] Bob available shared files from Alice ${folderContent.map((item) => item.name).join('\n')}');
+      '[Demo] Bob available shared files from Alice ${folderPage.items.map((item) => item.name).join('\n')}');
 
   // Alice revokes Bob access to her profile
   await vaultAlice.revokeProfileAccess(
@@ -154,19 +154,19 @@ void main() async {
 
   // Bob to Access Alice files after revokal
   try {
-    final folderContentAfterRevokal =
+    final folderPageAfterRevokal =
         await bobSharedStorageWAliceProfile.getFolder();
     print(
-        '[Demo] Bob available shared files from Alice after revokal: ${folderContentAfterRevokal.map((item) => item.name).join('\n')}');
+        '[Demo] Bob available shared files from Alice after revokal: ${folderPageAfterRevokal.items.map((item) => item.name).join('\n')}');
   } catch (error) {
     print('[Demo] Correctly Fails to access folder as it is not longer shared');
   }
 
   // Alice deletes all files
   print('[Demo] Alice is deleting all files...');
-  final aliceFiles = await aliceProfile.defaultFileStorage!
+  final aliceFilesPage = await aliceProfile.defaultFileStorage!
       .getFolder(folderId: aliceProfile.id);
-  await Future.wait(aliceFiles.map(
+  await Future.wait(aliceFilesPage.items.map(
       (item) => aliceProfile.defaultFileStorage!.deleteFile(fileId: item.id)));
 }
 
@@ -177,7 +177,8 @@ Future<void> _deleteProfile(Vault vault, Profile profile) async {
   // Check if profile has credentials...
   final credentials = await profile.defaultCredentialStorage!.listCredentials();
   // and delete them
-  await Future.wait(credentials.map((item) => profile.defaultCredentialStorage!
+  await Future.wait(credentials.items.map((item) => profile
+      .defaultCredentialStorage!
       .deleteCredential(digitalCredentialId: item.id)));
 
   await vault.defaultProfileRepository.deleteProfile(profile);
@@ -189,13 +190,29 @@ Future<void> _deleteFolder({
   required String folderId,
 }) async {
   print('Deleting folderId: $folderId');
-  final items = await profile.defaultFileStorage!.getFolder(folderId: folderId);
-  for (final item in items) {
-    if (item is Folder) {
-      await _deleteFolder(vault: vault, profile: profile, folderId: item.id);
-    } else if (item is File) {
-      await profile.defaultFileStorage!.deleteFile(fileId: item.id);
-    }
+  String? exclusiveStartItemId;
+
+  try {
+    do {
+      final page = await profile.defaultFileStorage!.getFolder(
+        folderId: folderId,
+        limit: 20,
+        exclusiveStartItemId: exclusiveStartItemId,
+      );
+
+      for (final item in page.items) {
+        if (item is Folder) {
+          await _deleteFolder(
+              vault: vault, profile: profile, folderId: item.id);
+        } else if (item is File) {
+          await profile.defaultFileStorage!.deleteFile(fileId: item.id);
+        }
+      }
+
+      exclusiveStartItemId = page.lastEvaluatedItemId;
+    } while (exclusiveStartItemId != null);
+  } catch (e) {
+    print('[Demo] Error getting folder contents for $folderId: $e');
   }
 
   // skip root folder
@@ -241,8 +258,9 @@ Future<void> _addFileToProfile(
     print([error.code, error.message, error.originalMessage].join('\n'));
   }
 
-  final files = await profile.defaultFileStorage?.getFolder(folderId: folderId);
-  print('[Demo] Files available on folder $folderId: ${files?.length ?? 0}');
+  final page = await profile.defaultFileStorage?.getFolder(folderId: folderId);
+  print(
+      '[Demo] Files available on folder $folderId: ${page?.items.length ?? 0}');
 }
 
 void _listProfileNames(

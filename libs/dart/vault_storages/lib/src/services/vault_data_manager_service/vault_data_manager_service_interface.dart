@@ -34,9 +34,17 @@ abstract interface class VaultDataManagerServiceInterface {
     VaultCancelToken? cancelToken,
   });
 
-  /// Gets child nodes for the specified node
-  Future<List<Node>?> getChildNodes({
+  /// Gets a list of child nodes for a given node
+  ///
+  /// [nodeId] - The ID of the node to get children for
+  /// [limit] - Optional limit on the number of nodes to return
+  /// [exclusiveStartItemId] - Optional ID to start pagination from. The item with this ID
+  /// will be excluded from the results.
+  /// [cancelToken] - Optional token to cancel the operation
+  Future<Page<Node>> getChildNodes({
     required String nodeId,
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 
@@ -236,15 +244,17 @@ abstract interface class VaultDataManagerServiceInterface {
     VaultCancelToken? cancelToken,
   });
 
-  /// Gets all digital credentials with their nodes for a profile
+  /// Gets digital credentials for a profile
   ///
-  /// - [profileId] - id of the profile
-  ///
-  /// Return list of [DigitalCredential]
-  ///
-  /// Throws [TdkException] when cannot get verifiable credentials
-  Future<List<DigitalCredential>> getDigitalCredentials(
+  /// [profileId] - The ID of the profile to get credentials for
+  /// [limit] - Optional limit on the number of credentials to return
+  /// [exclusiveStartItemId] - Optional ID to start pagination from. The item with this ID
+  /// will be excluded from the results.
+  /// [cancelToken] - Optional token to cancel the operation
+  Future<Page<DigitalCredential>> getDigitalCredentials(
     String profileId, {
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 
@@ -275,12 +285,12 @@ abstract interface class VaultDataManagerServiceInterface {
     VaultCancelToken? cancelToken,
   });
 
-  /// Gets accounts of associated profiles. Optionally provide [limit] and [exclusiveStartKey].
-  /// [exclusiveStartKey] - is primary key of the first item that this operation will evaluate.
-  /// Use the value that was returned for lastEvaluatedKey in the previous operation.
+  /// Gets accounts of associated profiles. Optionally provide [limit] and [exclusiveStartItemId].
+  /// [exclusiveStartItemId] - is primary key of the first item that this operation will evaluate.
+  /// Use the value that was returned for lastEvaluatedItemId in the previous operation.
   Future<List<Account>> getAccounts({
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 

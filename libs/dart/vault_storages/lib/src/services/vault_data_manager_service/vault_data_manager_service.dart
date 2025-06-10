@@ -384,14 +384,19 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     required String nodeId,
     VaultCancelToken? cancelToken,
   }) async {
-    final verifiableCredentialRawData = await downloadFile(
-      nodeId: nodeId,
-      cancelToken: cancelToken,
-    );
-    final verifiableCredential = UniversalParser.parse(
-        utf8.decode(verifiableCredentialRawData) as Object);
-
-    return verifiableCredential;
+    try {
+      final verifiableCredentialRawData = await downloadFile(
+        nodeId: nodeId,
+        cancelToken: cancelToken,
+      );
+      return UniversalParser.parse(
+          utf8.decode(verifiableCredentialRawData) as Object);
+    } catch (e) {
+      throw TdkException(
+        message: 'Failed to get verifiable credential: ${e.toString()}',
+        code: TdkExceptionType.failedToGetVerifiableCredentials.code,
+      );
+    }
   }
 
   @override
@@ -711,16 +716,27 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   }
 
   @override
-  Future<List<Node>?> getChildNodes({
+  Future<Page<Node>> getChildNodes({
     required String nodeId,
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
     final nodesResponse = await _vaultDataManagerApiService.getChildrenByNodeId(
-        nodeId,
-        cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null);
+      nodeId,
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+    );
     final nodesDto = nodesResponse.data?.nodes?.toList();
+    final lastEvaluatedItemId = nodesResponse.data?.lastEvaluatedKey;
 
-    final childNodes = nodesDto?.map((nodesDto) {
+    if (nodesDto == null) {
+      return Page(items: [], lastEvaluatedItemId: null);
+    }
+
+    final childNodes = nodesDto.map((nodesDto) {
       return Node(
         name: nodesDto.name,
         description: nodesDto.description,
@@ -739,25 +755,38 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       );
     }).toList();
 
-    return childNodes;
+    return Page(
+      items: childNodes,
+      lastEvaluatedItemId: lastEvaluatedItemId,
+    );
   }
 
   @override
-  Future<List<DigitalCredential>> getDigitalCredentials(
+  Future<Page<DigitalCredential>> getDigitalCredentials(
     String profileId, {
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
     final verifiableCredentialNodesResponse =
         await _vaultDataManagerApiService.getVerifiableCredentialsNodes(
       profileId: profileId,
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );
 
     final nodesResponse =
         verifiableCredentialNodesResponse.data?.nodes?.toList();
+    final lastEvaluatedItemId =
+        verifiableCredentialNodesResponse.data?.lastEvaluatedKey;
 
-    final nodes = nodesResponse!
+    if (nodesResponse == null) {
+      return Page(items: [], lastEvaluatedItemId: null);
+    }
+
+    final nodes = nodesResponse
         .map<Node>((nodeResponse) => Node(
               name: nodeResponse.name,
               nodeId: nodeResponse.nodeId,
@@ -789,21 +818,17 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
           id: node.nodeId,
           verifiableCredential: await _getVerifiableCredentialByNodeIdFromCloud(
             nodeId: node.nodeId,
+            cancelToken: cancelToken,
           ),
         );
       }),
       eagerError: cancelToken != null,
-    ).catchError((error) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'Failed to get verifiable credentials',
-          code: TdkExceptionType.failedToGetVerifiableCredentials.code,
-        ),
-        StackTrace.current,
-      );
-    });
+    );
 
-    return verifiableCredentials;
+    return Page(
+      items: verifiableCredentials,
+      lastEvaluatedItemId: lastEvaluatedItemId,
+    );
   }
 
   @override
@@ -876,12 +901,12 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   @override
   Future<List<Account>> getAccounts({
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
     final accountsResponse = await _vaultDataManagerApiService.getAccounts(
       limit: limit,
-      exclusiveStartKey: exclusiveStartKey,
+      exclusiveStartItemId: exclusiveStartItemId,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );

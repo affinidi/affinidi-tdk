@@ -195,13 +195,15 @@ class VaultDataManagerApiService
   @override
   Future<Response<ListNodeChildrenOK>> getVerifiableCredentialsNodes({
     required String profileId,
+    int? limit,
+    String? exclusiveStartItemId,
     CancelToken? cancelToken,
   }) async {
     return getChildrenByNodeId(
       _getVcRootIdByProfileId(
         profileId,
       ),
-      cancelToken,
+      cancelToken: cancelToken,
     );
   }
 
@@ -269,11 +271,18 @@ class VaultDataManagerApiService
   }
 
   @override
-  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(String nodeId,
-      [CancelToken? cancelToken]) async {
+  Future<Response<ListNodeChildrenOK>> getChildrenByNodeId(
+    String nodeId, {
+    int? limit,
+    String? exclusiveStartItemId,
+    CancelToken? cancelToken,
+  }) async {
     try {
       return await _nodesApi.listNodeChildren(
         nodeId: nodeId,
+        limit: limit,
+        exclusiveStartKey: exclusiveStartItemId,
+        cancelToken: cancelToken,
       );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
@@ -337,6 +346,8 @@ class VaultDataManagerApiService
 
   @override
   Future<Response<ListScannedFilesOK>> getAllScannedFiles({
+    int? limit,
+    String? exclusiveStartItemId,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -733,7 +744,7 @@ class VaultDataManagerApiService
   @override
   Future<Response<ListAccountsDto>> getAccounts({
     int? limit,
-    String? exclusiveStartKey,
+    String? exclusiveStartItemId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -744,7 +755,7 @@ class VaultDataManagerApiService
     try {
       final response = await _accountsApi.listAccounts(
         limit: limit,
-        exclusiveStartKey: exclusiveStartKey,
+        exclusiveStartKey: exclusiveStartItemId,
         cancelToken: cancelToken,
         headers: headers,
         extra: extra,

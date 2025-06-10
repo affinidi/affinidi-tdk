@@ -4,7 +4,9 @@ import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
 import '../helpers/vault_cancel_token.dart';
+
 import 'item.dart';
+import 'page.dart';
 
 /// Interface for managing shared storage operations, including files, folders, and credentials.
 abstract interface class SharedStorage {
@@ -16,8 +18,10 @@ abstract interface class SharedStorage {
   /// Throws if the folder does not exist
   /// Throws if the folderId does not match a folder
   /// Throws for network connectivity
-  Future<List<Item>> getFolder({
+  Future<Page<Item>> getFolder({
     String? folderId,
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 
@@ -105,9 +109,12 @@ abstract interface class SharedStorage {
     VaultCancelToken? cancelToken,
   });
 
-  /// Allows retrieving a list of claimed credentials
+  /// Allows retrieving a list of claimed credentials with pagination support
+  /// Returns a [Page] containing the credentials and pagination information
   /// Throws for network connectivity
-  Future<List<DigitalCredential>> listCredentials({
+  Future<Page<DigitalCredential>> listCredentials({
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 

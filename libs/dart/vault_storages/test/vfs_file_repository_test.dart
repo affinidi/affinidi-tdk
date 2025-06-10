@@ -33,7 +33,10 @@ void main() {
       group('and creating a folder', () {
         test('it should create a folder successfully', () async {
           when(() => mockService.getChildNodes(nodeId: any(named: 'nodeId')))
-              .thenAnswer((_) async => [FileFixtures.mockFolderNode]);
+              .thenAnswer((_) async => Page<Node>(
+                    items: [FileFixtures.mockFolderNode],
+                    lastEvaluatedItemId: null,
+                  ));
 
           await vfsFileStorage.createFolder(
             folderName: FileFixtures.testFolderName,
@@ -48,7 +51,8 @@ void main() {
 
         test('it should throw if folder not found after creation', () async {
           when(() => mockService.getChildNodes(nodeId: any(named: 'nodeId')))
-              .thenAnswer((_) async => []);
+              .thenAnswer((_) async =>
+                  Page<Node>(items: [], lastEvaluatedItemId: null));
 
           expect(
             () => vfsFileStorage.createFolder(
@@ -96,15 +100,20 @@ void main() {
         test('it should get folder contents successfully', () async {
           when(() =>
                   mockService.getChildNodes(nodeId: FileFixtures.testFolderId))
-              .thenAnswer((_) async =>
-                  [FileFixtures.mockFileNode, FileFixtures.mockFolderNode]);
+              .thenAnswer((_) async => Page<Node>(
+                    items: [
+                      FileFixtures.mockFileNode,
+                      FileFixtures.mockFolderNode
+                    ],
+                    lastEvaluatedItemId: null,
+                  ));
 
           final items = await vfsFileStorage.getFolder(
               folderId: FileFixtures.testFolderId);
 
-          expect(items, hasLength(2));
-          expect(items.whereType<File>(), hasLength(1));
-          expect(items.whereType<Folder>(), hasLength(1));
+          expect(items.items, hasLength(2));
+          expect(items.items.whereType<File>(), hasLength(1));
+          expect(items.items.whereType<Folder>(), hasLength(1));
         });
 
         test('it should throw if folderId is null', () async {
@@ -117,7 +126,10 @@ void main() {
         test('it should throw for unsupported node type', () async {
           when(() =>
                   mockService.getChildNodes(nodeId: FileFixtures.testFolderId))
-              .thenAnswer((_) async => [FileFixtures.unsupportedNode]);
+              .thenAnswer((_) async => Page<Node>(
+                    items: [FileFixtures.unsupportedNode],
+                    lastEvaluatedItemId: null,
+                  ));
 
           expect(
             () => vfsFileStorage.getFolder(folderId: FileFixtures.testFolderId),
@@ -128,11 +140,12 @@ void main() {
         test('it should return empty list if no children', () async {
           when(() =>
                   mockService.getChildNodes(nodeId: FileFixtures.testFolderId))
-              .thenAnswer((_) async => []);
+              .thenAnswer((_) async =>
+                  Page<Node>(items: [], lastEvaluatedItemId: null));
 
           final items = await vfsFileStorage.getFolder(
               folderId: FileFixtures.testFolderId);
-          expect(items, isEmpty);
+          expect(items.items, isEmpty);
         });
       });
 

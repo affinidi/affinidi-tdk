@@ -18,9 +18,11 @@ class GithubFileStorage implements FileStorage {
   String get id => _id;
 
   @override
-  Future<List<Item>> getFolder({
+  Future<Page<Item>> getFolder({
     String? folderId,
     VaultCancelToken? cancelToken,
+    int? limit,
+    String? exclusiveStartItemId,
   }) {
     throw UnimplementedError();
   }
@@ -55,6 +57,8 @@ class GithubFileStorage implements FileStorage {
   Future<File> getFile({
     required String fileId,
     VaultCancelToken? cancelToken,
+    int? limit,
+    String? exclusiveStartItemId,
   }) {
     throw UnimplementedError();
   }

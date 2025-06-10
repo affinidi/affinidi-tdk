@@ -27,8 +27,10 @@ class VFSFileStorage implements FileStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<List<Item>> getFolder({
+  Future<Page<Item>> getFolder({
     String? folderId,
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
     if (folderId == null) {
@@ -38,16 +40,16 @@ class VFSFileStorage implements FileStorage {
               code: TdkExceptionType.folderNotFound.code),
           StackTrace.current);
     }
-    final items = await _vaultDataManagerService.getChildNodes(
+    final response = await _vaultDataManagerService.getChildNodes(
       nodeId: folderId,
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
       cancelToken: cancelToken,
     );
 
-    if (items == null) {
-      return [];
-    }
-
-    return items.where((node) => node.status != NodeStatus.HIDDEN).map((node) {
+    final items = response.items
+        .where((node) => node.status != NodeStatus.HIDDEN)
+        .map((node) {
       if (node.type == NodeType.FILE) {
         return File(
           id: node.nodeId,
@@ -74,6 +76,11 @@ class VFSFileStorage implements FileStorage {
         );
       }
     }).toList();
+
+    return Page(
+      items: items,
+      lastEvaluatedItemId: response.lastEvaluatedItemId,
+    );
   }
 
   @override
@@ -88,11 +95,11 @@ class VFSFileStorage implements FileStorage {
       cancelToken: cancelToken,
     );
 
-    final items = await _vaultDataManagerService.getChildNodes(
+    final response = await _vaultDataManagerService.getChildNodes(
       nodeId: parentFolderId,
       cancelToken: cancelToken,
     );
-    final folder = items?.firstWhere(
+    final folder = response.items.firstWhere(
       (node) => node.name == folderName && node.type == NodeType.FOLDER,
       orElse: () => Error.throwWithStackTrace(
         TdkException(
@@ -104,7 +111,7 @@ class VFSFileStorage implements FileStorage {
     );
 
     return Folder(
-      id: folder!.nodeId,
+      id: folder.nodeId,
       name: folder.name,
       createdAt: DateTime.parse(folder.createdAt),
       modifiedAt: DateTime.parse(folder.modifiedAt),

@@ -2,16 +2,19 @@ import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
 import '../helpers/vault_cancel_token.dart';
+import 'page.dart';
 
 /// Interface for managing verifiable credentials storage.
 abstract class CredentialStorage {
   /// Unique identifier for credential storage.
   String get id;
 
-  /// Allows retrieving a list of claimed credentials
-  /// DigitalCredential contains an id which is needed for deleting a credential.
+  /// Allows retrieving a list of claimed credentials with pagination support
+  /// Returns a [Page] containing the credentials and pagination information
   /// Throws for network connectivity
-  Future<List<DigitalCredential>> listCredentials({
+  Future<Page<DigitalCredential>> listCredentials({
+    int? limit,
+    String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 

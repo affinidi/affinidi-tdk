@@ -1,4 +1,6 @@
 import 'dart:typed_data';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_storages/affinidi_tdk_vault_storages.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../fixtures/node_fixtures.dart';
@@ -13,8 +15,8 @@ void stubFileService(MockVaultDataManagerService service,
         folderName: any(named: 'folderName'),
       )).thenAnswer((_) async => Future<void>.value());
 
-  when(() => service.getChildNodes(nodeId: any(named: 'nodeId')))
-      .thenAnswer((_) async => []);
+  when(() => service.getChildNodes(nodeId: any(named: 'nodeId'))).thenAnswer(
+      (_) async => Page<Node>(items: [], lastEvaluatedItemId: null));
 
   when(() => service.createFile(
         parentFolderNodeId: any(named: 'parentFolderNodeId'),
@@ -49,8 +51,15 @@ void stubCredentialService(
   MockVerifiableCredential mockVC, {
   String profileId = 'test-profile-id',
 }) {
-  when(() => service.getDigitalCredentials(any())).thenAnswer(
-      (_) async => [MockDigitalCredential(mockVC, id: 'test-node-id')]);
+  when(() => service.getDigitalCredentials(
+        any(),
+        limit: any(named: 'limit'),
+        exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+        cancelToken: any(named: 'cancelToken'),
+      )).thenAnswer((_) async => Page<DigitalCredential>(
+        items: [MockDigitalCredential(mockVC, id: 'test-node-id')],
+        lastEvaluatedItemId: null,
+      ));
 
   when(() => service.addVerifiableCredentialToProfile(
         profileId: any(named: 'profileId'),
