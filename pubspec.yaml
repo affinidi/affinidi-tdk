@@ -11,6 +11,7 @@ workspace:
   - packages/dart/consumer_auth_provider/example
   - packages/dart/test_utilities
   - packages/dart/vault_data_manager
+  - packages/dart/vault_edge_drift_provider
   - packages/dart/vault_edge_provider
   - libs/dart/claim_verifiable_credential
   - libs/dart/iota_core

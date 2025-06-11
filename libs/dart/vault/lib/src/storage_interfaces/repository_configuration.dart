@@ -10,7 +10,7 @@ class RepositoryConfiguration {
   /// [keyStorage] - Optional storage for cryptographic keys.
   RepositoryConfiguration({
     required this.wallet,
-    required this.keyStorage,
+    this.keyStorage,
   });
 
   /// Storage for cryptographic keys.
