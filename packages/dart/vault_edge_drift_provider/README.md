@@ -1,4 +1,4 @@
-A Vault implementation of ProfileRepository for locally managing user profiles.
+A package to persist and retrieve Profiles, Credentials Info and File Info with a Drift database
 
 ## Features
 
@@ -10,8 +10,8 @@ A Vault implementation of ProfileRepository for locally managing user profiles.
 
 ## Additional information
 
-The package uses code generation.
-To regenerate classes run:
+The package uses drift code generation.
+To regenerate database classes run:
 
 ```bash
 dart run build_runner build --delete-conflicting-outputs
