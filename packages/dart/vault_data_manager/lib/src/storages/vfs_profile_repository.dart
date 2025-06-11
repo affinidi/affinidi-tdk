@@ -45,7 +45,7 @@ typedef VaultDelegatedDataManagerServiceFactory
 });
 
 /// A VFS implementation of [ProfileRepository] for managing user profiles.
-class VfsProfileRepository implements ProfileRepository {
+class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   /// The key ID for the root account.
   static const _rootAccountKeyId = '0';
   static const _nonceSize = 32;
