@@ -1,0 +1,20 @@
+name: affinidi_tdk_vault_edge_drift_provider
+description: A library to manage Vault CRUD operations on a Drift database
+version: 1.0.0-dev.1
+repository: https://github.com/affinidi/affinidi-tdk
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  affinidi_tdk_vault_edge_provider: 1.0.0-dev.1
+  drift: ^2.23.1 # note using this version because it's compatible with analyzer version lower than 7.0.0 required by flutter_test included with flutter 3.27.0
+  sqlite3: ^2.7.5
+
+dev_dependencies:
+  build_runner: ^2.4.15
+  dart_flutter_team_lints: ^3.2.1
+  drift_dev: ^2.23.1 # note using this version because it's compatible with analyzer version lower than 7.0.0 required by flutter_test included with flutter 3.27.0
+  test: ^1.24.0
