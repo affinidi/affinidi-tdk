@@ -18,6 +18,9 @@ enum TdkExceptionType {
   /// Exception thrown when the profile repository is missing.
   missingProfileRepository('missing_profile_repository'),
 
+  /// Exception thrown when trying to share profiles via a repository that does not support it.
+  unsupportedProfileAccessSharing('unsupported_profile_access_sharing'),
+
   /// Exception thrown when the vault has not been initialized.
   vaultNotInitialized('vault_not_initialized'),
 
