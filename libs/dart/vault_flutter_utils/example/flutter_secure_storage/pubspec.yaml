@@ -30,9 +30,9 @@ resolution: workspace
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  affinidi_tdk_vault: 1.1.0-dev.11
-  affinidi_tdk_vault_storages: 1.1.0-dev.14
-  affinidi_tdk_vault_flutter_utils: 1.1.0-dev.10
+  affinidi_tdk_vault: 1.1.0-dev.12
+  affinidi_tdk_vault_data_manager: 1.1.0-dev.11
+  affinidi_tdk_vault_flutter_utils: 1.1.0-dev.11
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
@@ -45,7 +45,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
-  build_runner: ^2.4.4
+  build_runner: ^2.4.15
   flutter_test:
     sdk: flutter
   riverpod_generator: ^2.3.5
