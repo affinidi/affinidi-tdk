@@ -173,10 +173,12 @@ class VFSFileStorage implements FileStorage {
   Future<Uint8List> getFileContent({
     required String fileId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     final content = await _vaultDataManagerService.downloadFile(
       nodeId: fileId,
       cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress?.toProgressCallback(),
     );
     return Uint8List.fromList(content);
   }
@@ -187,12 +189,14 @@ class VFSFileStorage implements FileStorage {
     required Uint8List data,
     String? parentFolderId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onSendProgress,
   }) async {
     await _vaultDataManagerService.createFile(
       fileName: fileName,
       parentFolderNodeId: parentFolderId ?? '',
       data: data,
       cancelToken: cancelToken,
+      onSendProgress: onSendProgress?.toProgressCallback(),
     );
   }
 

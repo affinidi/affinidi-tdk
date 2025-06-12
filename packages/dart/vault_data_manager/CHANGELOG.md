@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.3.0
+
+### Changes
+
+---
+
+Feat: implement progress callback
+
+
 ## 1.2.0
 
 ### Changes

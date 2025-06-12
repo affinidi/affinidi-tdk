@@ -30,9 +30,9 @@ resolution: workspace
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  affinidi_tdk_vault: ^1.1.0
-  affinidi_tdk_vault_data_manager: ^1.2.0
-  affinidi_tdk_vault_flutter_utils: ^1.1.0
+  affinidi_tdk_vault: ^1.3.0
+  affinidi_tdk_vault_data_manager: ^1.3.0
+  affinidi_tdk_vault_flutter_utils: ^1.3.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1

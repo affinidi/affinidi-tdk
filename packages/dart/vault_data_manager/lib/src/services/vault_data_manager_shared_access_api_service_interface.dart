@@ -23,8 +23,8 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
       Map<String, dynamic>? headers,
       Map<String, dynamic>? extra,
       ValidateStatus? validateStatus,
-      ProgressCallback? onSendProgress,
-      ProgressCallback? onReceiveProgress});
+      VaultProgressCallback? onSendProgress,
+      VaultProgressCallback? onReceiveProgress});
 
   /// Update access to the virtual file system
   /// Updates access rights to a subject for the virtual file system
@@ -45,8 +45,8 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Revoke access to the virtual file system
@@ -66,7 +66,7 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   });
 }
