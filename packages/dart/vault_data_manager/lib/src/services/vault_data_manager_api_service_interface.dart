@@ -1,4 +1,6 @@
 import 'dart:typed_data';
+
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:dio/dio.dart';
 
@@ -10,6 +12,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required String downloadUrl,
     required List<int> dek,
     CancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Upload a given [file] data in format of [Uint8List] to a given [parentFolderId] with given [fileName]
@@ -22,6 +25,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
     CancelToken? cancelToken,
+    VaultProgressCallback? onSendProgress,
   });
 
   /// Upload a given [verifiableCredentialBlob] data in format of [Uint8List] to a given [profileId] with given [verifiableCredentialName]
@@ -185,8 +189,8 @@ abstract interface class VaultDataManagerApiServiceInterface {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Creates account. With given [accountIndex], [accountDid], [didProof].
@@ -208,8 +212,8 @@ abstract interface class VaultDataManagerApiServiceInterface {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Deletes an account for a given [accountIndex].
@@ -225,8 +229,8 @@ abstract interface class VaultDataManagerApiServiceInterface {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Updates an account for a given [accountIndex].
@@ -245,7 +249,7 @@ abstract interface class VaultDataManagerApiServiceInterface {
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   });
 }

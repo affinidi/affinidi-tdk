@@ -49,10 +49,7 @@ void main() async {
 
   print('[Demo] Retrieving Profiles ...');
 
-  //
   // Retrieve profiles
-  //
-
   var profilesAlice = await vaultAlice.listProfiles();
   var profilesBob = await vaultBob.listProfiles();
   print(
@@ -60,15 +57,39 @@ void main() async {
   _listProfileNames(profilesAlice, label: 'Initial profile names');
   _listProfileNames(profilesBob, label: 'Initial profile names');
 
-  // Delete all existing profiles
-  await Future.wait(
-      profilesAlice.map((profile) => _deleteProfile(vaultAlice, profile)));
-  await Future.wait(
-      profilesBob.map((profile) => _deleteProfile(vaultBob, profile)));
+  // Delete all existing profiles sequentially
+  print('[Demo] Starting profile cleanup...');
 
+  // Clean up Alice's profiles
+  for (var profile in profilesAlice) {
+    print('[Demo] Deleting Alice profile: ${profile.name}');
+    await _deleteProfile(vaultAlice, profile);
+    // Verify deletion
+    var remainingProfiles = await vaultAlice.listProfiles();
+    if (remainingProfiles.any((p) => p.id == profile.id)) {
+      throw Exception('Failed to delete profile: ${profile.name}');
+    }
+  }
+
+  // Clean up Bob's profiles
+  for (var profile in profilesBob) {
+    print('[Demo] Deleting Bob profile: ${profile.name}');
+    await _deleteProfile(vaultBob, profile);
+    // Verify deletion
+    var remainingProfiles = await vaultBob.listProfiles();
+    if (remainingProfiles.any((p) => p.id == profile.id)) {
+      throw Exception('Failed to delete profile: ${profile.name}');
+    }
+  }
+
+  // Final verification
   profilesAlice = await vaultAlice.listProfiles();
-  _listProfileNames(profilesAlice, label: 'Cleared profiles');
   profilesBob = await vaultBob.listProfiles();
+  if (profilesAlice.isNotEmpty || profilesBob.isNotEmpty) {
+    throw Exception('Cleanup failed: Found remaining profiles');
+  }
+  print('[Demo] All profiles successfully deleted');
+  _listProfileNames(profilesAlice, label: 'Cleared profiles');
   _listProfileNames(profilesBob, label: 'Cleared profiles');
 
   print('[Demo] Adding new profiles ...');
@@ -98,7 +119,17 @@ void main() async {
 
   // Alice creates a file
   print('[Demo] Alice is adding a file ...');
-  await _addFileToProfile(aliceProfile, aliceProfile.id, 'alice file');
+  await _addFileToProfile(
+    aliceProfile,
+    aliceProfile.id,
+    'alice file',
+    onSendProgress: (sent, total) {
+      if (total != -1) {
+        final progress = (sent / total * 100).toStringAsFixed(2);
+        print('[Demo] Upload progress: $progress%');
+      }
+    },
+  );
   final aliceFileId = await aliceProfile.defaultFileStorage!
       .getFolder(folderId: aliceProfile.id)
       .then((page) => page.items.first.id);
@@ -106,9 +137,34 @@ void main() async {
   // Wait a bit as file might be pending
   await Future.delayed(const Duration(seconds: 3), () {});
 
-  final aliceFileContent = await aliceProfile.defaultFileStorage!
-      .getFileContent(fileId: aliceFileId);
+  // Test download with progress tracking
+  print('[Demo] Alice is downloading her own file with progress tracking...');
+
+  // Verify file exists before download
+  print('[Demo] Verifying file exists before download...');
+  final filePage = await aliceProfile.defaultFileStorage!
+      .getFolder(folderId: aliceProfile.id);
+  final fileToDownload =
+      filePage.items.firstWhere((item) => item.id == aliceFileId);
+  print(
+      '[Demo] Found file to download: name=${fileToDownload.name}, id=${fileToDownload.id}');
+
+  // Add a small delay before download
+  print('[Demo] Waiting before download attempt...');
+  await Future<void>.delayed(const Duration(seconds: 5));
+
+  final aliceFileContent =
+      await aliceProfile.defaultFileStorage!.getFileContent(
+    fileId: aliceFileId,
+    onReceiveProgress: (received, total) {
+      if (total != -1) {
+        final progress = (received / total * 100).toStringAsFixed(2);
+        print('[Demo] Alice download progress: $progress%');
+      }
+    },
+  );
   print('[Demo] Alice file content: $aliceFileContent');
+
   // Try revoking
   try {
     await vaultAlice.revokeProfileAccess(
@@ -143,7 +199,14 @@ void main() async {
       .firstOrNull;
   final folderPage = await bobSharedStorageWAliceProfile!.getFolder();
   final fileContent = await bobSharedStorageWAliceProfile.getFileContent(
-      fileId: folderPage.items.first.id);
+    fileId: folderPage.items.first.id,
+    onReceiveProgress: (received, total) {
+      if (total != -1) {
+        final progress = (received / total * 100).toStringAsFixed(2);
+        print('[Demo] Download progress: $progress%');
+      }
+    },
+  );
   print('[Demo] Bob file content: $fileContent');
   print(
       '[Demo] Bob available shared files from Alice ${folderPage.items.map((item) => item.name).join('\n')}');
@@ -168,6 +231,21 @@ void main() async {
       .getFolder(folderId: aliceProfile.id);
   await Future.wait(aliceFilesPage.items.map(
       (item) => aliceProfile.defaultFileStorage!.deleteFile(fileId: item.id)));
+
+  // Clean up profiles
+  print('[Demo] Cleaning up profiles...');
+  profilesAlice = await vaultAlice.listProfiles();
+  profilesBob = await vaultBob.listProfiles();
+  await Future.wait(
+      profilesAlice.map((profile) => _deleteProfile(vaultAlice, profile)));
+  await Future.wait(
+      profilesBob.map((profile) => _deleteProfile(vaultBob, profile)));
+
+  // Verify cleanup
+  profilesAlice = await vaultAlice.listProfiles();
+  profilesBob = await vaultBob.listProfiles();
+  print(
+      '[Demo] Final profile count - Alice: ${profilesAlice.length}, Bob: ${profilesBob.length}');
 }
 
 Future<void> _deleteProfile(Vault vault, Profile profile) async {
@@ -246,21 +324,44 @@ Future<int> _createProfile(Vault vault, String name, int accountIndex) async {
 }
 
 Future<void> _addFileToProfile(
-    Profile profile, String folderId, String fileName) async {
+  Profile profile,
+  String folderId,
+  String fileName, {
+  VaultProgressCallback? onSendProgress,
+}) async {
   final fileContent = Uint8List.fromList([1, 2, 3]);
   try {
+    print('[Demo] Creating file: $fileName in folder: $folderId');
     await profile.defaultFileStorage!.createFile(
       fileName: fileName,
       data: fileContent,
       parentFolderId: folderId,
+      onSendProgress: onSendProgress,
     );
-  } on TdkException catch (error) {
-    print([error.code, error.message, error.originalMessage].join('\n'));
-  }
+    print('[Demo] File created successfully');
 
-  final page = await profile.defaultFileStorage?.getFolder(folderId: folderId);
-  print(
-      '[Demo] Files available on folder $folderId: ${page?.items.length ?? 0}');
+    // Verify file exists and is ready
+    final page =
+        await profile.defaultFileStorage?.getFolder(folderId: folderId);
+    print(
+        '[Demo] Files available on folder $folderId: ${page?.items.length ?? 0}');
+    if (page?.items.isNotEmpty ?? false) {
+      final item = page!.items.first;
+      print(
+          '[Demo] File details: name=${item.name}, id=${item.id}, type=${item.runtimeType}');
+
+      // wait to ensure file is fully processed
+      print('[Demo] Waiting additional time for file to be fully processed...');
+      await Future<void>.delayed(const Duration(seconds: 5));
+    }
+  } on TdkException catch (error) {
+    print('[Demo] Error creating file:');
+    print([error.code, error.message, error.originalMessage].join('\n'));
+    rethrow;
+  } catch (e) {
+    print('[Demo] Unexpected error creating file: $e');
+    rethrow;
+  }
 }
 
 void _listProfileNames(

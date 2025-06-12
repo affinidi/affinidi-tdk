@@ -7,6 +7,7 @@ import 'package:ssi/ssi.dart';
 
 import '../model/account.dart';
 import '../model/node.dart';
+
 import '../model/profile_data.dart';
 import '../model/recognized_profile_data.dart';
 import '../model/scanned_file.dart';
@@ -193,6 +194,7 @@ abstract interface class VaultDataManagerServiceInterface {
     required String parentFolderNodeId,
     required Uint8List data,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onSendProgress,
   });
 
   /// Downloads and decrypts file content
@@ -204,6 +206,7 @@ abstract interface class VaultDataManagerServiceInterface {
   Future<List<int>> downloadFile({
     required String nodeId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Renames a file

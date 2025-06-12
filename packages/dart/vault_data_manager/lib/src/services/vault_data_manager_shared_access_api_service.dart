@@ -30,8 +30,8 @@ class VaultDataManagerSharedAccessApiService
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     try {
       final grantAccessInputBuilder = GrantAccessInputBuilder()
@@ -92,8 +92,8 @@ class VaultDataManagerSharedAccessApiService
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     try {
       await _authzApi.deleteAccessVfs(granteeDid: granteeDid);
@@ -116,8 +116,8 @@ class VaultDataManagerSharedAccessApiService
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     try {
       final updateAccessInputBuilder = UpdateAccessInputBuilder()

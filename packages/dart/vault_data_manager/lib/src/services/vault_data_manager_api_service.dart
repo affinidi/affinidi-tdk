@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:built_value/json_object.dart';
 import 'package:dio/dio.dart';
@@ -67,6 +68,7 @@ class VaultDataManagerApiService
     required List<int> dekEncryptedByWalletCryptoMaterial,
     required String walletCryptoMaterialHash,
     CancelToken? cancelToken,
+    VaultProgressCallback? onSendProgress,
   }) async {
     final edekInfo = EdekInfoBuilder()
       ..edek = base64.encode(dekEncryptedByWalletCryptoMaterial)
@@ -118,6 +120,7 @@ class VaultDataManagerApiService
     await _uploadFile(
       uploadUrl: uploadUrl,
       data: fileData,
+      onSendProgress: onSendProgress,
     );
 
     return createNodeResponse;
@@ -248,16 +251,14 @@ class VaultDataManagerApiService
   Future<Response> _uploadFile({
     required String uploadUrl,
     required dynamic data,
+    VaultProgressCallback? onSendProgress,
   }) async {
     try {
-      final response = await _dio.fetch<dynamic>(RequestOptions(
-        method: 'POST',
-        path: uploadUrl,
+      return await _dio.post(
+        uploadUrl,
         data: data,
-        headers: {'Content-Type': 'application/octet-stream'},
-      ));
-
-      return response;
+        onSendProgress: onSendProgress?.toProgressCallback(),
+      );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
@@ -643,6 +644,7 @@ class VaultDataManagerApiService
     required String downloadUrl,
     required List<int> dek,
     CancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     try {
       return _dio.fetch(
@@ -651,6 +653,7 @@ class VaultDataManagerApiService
           baseUrl: downloadUrl,
           responseType: ResponseType.bytes,
           cancelToken: cancelToken,
+          onReceiveProgress: onReceiveProgress?.toProgressCallback(),
           headers: {
             'x-amz-server-side-encryption-customer-algorithm': 'AES256',
             'x-amz-server-side-encryption-customer-key': base64.encode(dek),
@@ -698,8 +701,8 @@ class VaultDataManagerApiService
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
     CancelToken? cancelToken,
   }) async {
     try {
@@ -715,8 +718,8 @@ class VaultDataManagerApiService
         headers: headers,
         extra: extra,
         validateStatus: validateStatus,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
+        onSendProgress: onSendProgress?.toProgressCallback(),
+        onReceiveProgress: onReceiveProgress?.toProgressCallback(),
       );
 
       return response;
@@ -749,8 +752,8 @@ class VaultDataManagerApiService
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     try {
       final response = await _accountsApi.listAccounts(
@@ -760,8 +763,8 @@ class VaultDataManagerApiService
         headers: headers,
         extra: extra,
         validateStatus: validateStatus,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
+        onSendProgress: onSendProgress?.toProgressCallback(),
+        onReceiveProgress: onReceiveProgress?.toProgressCallback(),
       );
 
       return response;
@@ -783,8 +786,8 @@ class VaultDataManagerApiService
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     try {
       final response = await _accountsApi.deleteAccount(
@@ -793,7 +796,7 @@ class VaultDataManagerApiService
         headers: headers,
         extra: extra,
         validateStatus: validateStatus,
-        onSendProgress: onSendProgress,
+        onSendProgress: onSendProgress?.toProgressCallback(),
       );
 
       return response;
@@ -817,8 +820,8 @@ class VaultDataManagerApiService
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
     ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     try {
       final updateAccountInput = UpdateAccountInputBuilder()
@@ -836,8 +839,8 @@ class VaultDataManagerApiService
         headers: headers,
         extra: extra,
         validateStatus: validateStatus,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
+        onSendProgress: onSendProgress?.toProgressCallback(),
+        onReceiveProgress: onReceiveProgress?.toProgressCallback(),
       );
 
       return response;

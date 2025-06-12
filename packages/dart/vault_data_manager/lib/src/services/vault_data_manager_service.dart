@@ -172,6 +172,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     required String parentFolderNodeId,
     required Uint8List data,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onSendProgress,
   }) async {
     final dekGenerateModel =
         await _vaultDataManagerEncryptionService.generateDataEncryptionMaterial(
@@ -188,6 +189,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       walletCryptoMaterialHash: dekGenerateModel.walletCryptoMaterialHash,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+      onSendProgress: onSendProgress?.toProgressCallback(),
     );
   }
 
@@ -622,6 +624,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   Future<List<int>> downloadFile({
     required String nodeId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   }) async {
     final commonNodeInfoResponse =
         await _vaultDataManagerApiService.getNodeInfo(
@@ -692,16 +695,15 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       encryptionKey: await _keyPair.decrypt(_encryptedKey),
     );
 
-    final fileResponse = await _vaultDataManagerApiService.downloadNodeContents(
+    final response = await _vaultDataManagerApiService.downloadNodeContents(
       downloadUrl: downloadUrl,
       dek: dek,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+      onReceiveProgress: onReceiveProgress?.toProgressCallback(),
     );
 
-    final file = fileResponse.data as List<int>;
-
-    return file;
+    return response.data as List<int>;
   }
 
   @Deprecated('Initialization of Vault File System is not obligatory')
