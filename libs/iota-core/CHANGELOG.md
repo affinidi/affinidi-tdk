@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.23.0...@affinidi-tdk/iota-core-v1.24.0) (2025-06-12)
+
+
+### Features
+
+* removed vault_storages package ([#811](https://github.com/affinidi/affinidi-tdk/issues/811)) ([c5208c9](https://github.com/affinidi/affinidi-tdk/commit/c5208c96e5bc65b21b237525e92dcf3fc0868e25))
+
 # [1.23.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.22.2...@affinidi-tdk/iota-core-v1.23.0) (2025-06-02)
 
 
