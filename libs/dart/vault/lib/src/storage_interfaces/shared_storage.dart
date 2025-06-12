@@ -72,6 +72,7 @@ abstract interface class SharedStorage {
   Future<Uint8List> getFileContent({
     required String fileId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Allows adding a new file

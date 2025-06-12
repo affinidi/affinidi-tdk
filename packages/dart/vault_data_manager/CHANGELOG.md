@@ -1,6 +1,15 @@
 # Change Log
 
-## 1.3.1
+## 1.4.0
+
+### Changes
+
+---
+
+Feat: Implement progress callback
+
+
+## 1.3.0
 
 ### Changes
 
@@ -13,14 +22,6 @@ Fix: RightsEnum enum value references
 * Resolved linter errors where `RightsEnum.read` and `RightsEnum.write` were incorrectly referenced
 
 ---
-
-## 1.3.0
-
-### Changes
-
----
-
-Fix: Dependencies Update
 
 
 ## 1.2.0
