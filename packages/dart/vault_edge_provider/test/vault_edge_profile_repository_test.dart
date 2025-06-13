@@ -1,6 +1,5 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:test/test.dart';
 
 import 'fixtures/profile_fixtures.dart';
