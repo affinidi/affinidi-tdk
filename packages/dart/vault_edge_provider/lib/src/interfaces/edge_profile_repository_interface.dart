@@ -13,12 +13,13 @@ abstract interface class EdgeProfileRepositoryInterface {
   Future<void> createProfile({
     required String name,
     String? description,
+    required int accountIndex,
     VaultCancelToken? cancelToken,
   });
 
   /// Removes an existing local profile
   Future<void> deleteProfile({
-    required int profileId,
+    required String profileId,
     VaultCancelToken? cancelToken,
   });
 

@@ -2,8 +2,10 @@
 library;
 
 export 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart'
-    show VaultCancelToken;
+    show Item, VaultCancelToken;
 
+export 'src/interfaces/edge_credentials_repository_interface.dart';
+export 'src/interfaces/edge_file_repository_interface.dart';
 export 'src/interfaces/edge_profile_repository_interface.dart';
 export 'src/models/edge_profile.dart';
 export 'src/storages/vault_edge_profile_repository.dart';
