@@ -58,6 +58,7 @@ void main() {
     setUp(() async {
       await sut.configure(RepositoryConfiguration(
         wallet: WalletFixtures.wallet,
+        keyStorage: InMemoryVaultStore(),
       ));
     });
 
@@ -70,6 +71,7 @@ void main() {
         expect(mockRepository.lastCalledCreateProfileName, equals(name));
         expect(mockRepository.lastCalledCreateProfileDescription,
             equals(description));
+        expect(mockRepository.lastCalledCreateProfileAccountIndex, isNotNull);
       });
     });
 
@@ -78,8 +80,7 @@ void main() {
         final profile = ProfileFixtures.profile;
         await sut.deleteProfile(profile);
 
-        expect(mockRepository.lastCalledDeletedProfileId,
-            equals(int.parse(profile.id)));
+        expect(mockRepository.lastCalledDeletedProfileId, equals(profile.id));
       });
     });
 
