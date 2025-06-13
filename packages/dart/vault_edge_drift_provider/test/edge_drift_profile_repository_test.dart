@@ -3,11 +3,11 @@ import 'package:test/test.dart';
 
 void main() {
   late Database database;
-  late EdgeProfileRepository sut;
+  late EdgeDriftProfileRepository sut;
 
   setUp(() {
     database = Database(NativeDatabase.memory());
-    sut = EdgeProfileRepository(database: database);
+    sut = EdgeDriftProfileRepository(database: database);
   });
 
   tearDown(() {
@@ -16,12 +16,17 @@ void main() {
 
   group('When creating a profile', () {
     final name = 'Test Name';
+    final accountIndex = 1;
 
     group('and description is not null', () {
       final description = 'Test Description';
 
       test('it correctly adds an entry to the database', () async {
-        await sut.createProfile(name: name, description: description);
+        await sut.createProfile(
+          name: name,
+          description: description,
+          accountIndex: accountIndex,
+        );
 
         final profiles = await sut.listProfiles();
         final newProfile = profiles.firstOrNull;
@@ -29,12 +34,16 @@ void main() {
         expect(newProfile, isNotNull);
         expect(newProfile!.name, equals(name));
         expect(newProfile.description, equals(description));
+        expect(newProfile.accountIndex, equals(accountIndex));
       });
     });
 
     group('and description is null', () {
       test('it correctly adds an entry to the database', () async {
-        await sut.createProfile(name: name);
+        await sut.createProfile(
+          name: name,
+          accountIndex: accountIndex,
+        );
 
         final profiles = await sut.listProfiles();
         final newProfile = profiles.firstOrNull;
@@ -42,14 +51,15 @@ void main() {
         expect(newProfile, isNotNull);
         expect(newProfile!.name, equals(name));
         expect(newProfile.description, isNull);
+        expect(newProfile.accountIndex, equals(accountIndex));
       });
     });
   });
 
   group('When listing profiles', () {
     setUp(() async {
-      await sut.createProfile(name: 'Profile 1');
-      await sut.createProfile(name: 'Profile 2');
+      await sut.createProfile(name: 'Profile 1', accountIndex: 1);
+      await sut.createProfile(name: 'Profile 2', accountIndex: 2);
     });
 
     test('it correctly retrieves the profiles', () async {
@@ -57,7 +67,9 @@ void main() {
 
       expect(profiles.length, equals(2));
       expect(profiles.first.name, equals('Profile 1'));
+      expect(profiles.first.accountIndex, equals(1));
       expect(profiles.last.name, equals('Profile 2'));
+      expect(profiles.last.accountIndex, equals(2));
     });
   });
 
@@ -67,7 +79,11 @@ void main() {
     final description = 'Test Name';
 
     setUp(() async {
-      await sut.createProfile(name: name, description: description);
+      await sut.createProfile(
+        name: name,
+        description: description,
+        accountIndex: 1,
+      );
 
       final profiles = await sut.listProfiles();
       profile = profiles.firstOrNull!;
@@ -87,7 +103,11 @@ void main() {
     final description = 'Test Name';
 
     setUp(() async {
-      await sut.createProfile(name: name, description: description);
+      await sut.createProfile(
+        name: name,
+        description: description,
+        accountIndex: 1,
+      );
 
       final profiles = await sut.listProfiles();
       profile = profiles.firstOrNull!;
