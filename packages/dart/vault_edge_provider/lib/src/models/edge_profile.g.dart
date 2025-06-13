@@ -50,6 +50,7 @@ class _$EdgeProfileCWProxyImpl implements _$EdgeProfileCWProxy {
   }) {
     return EdgeProfile(
       id: _value.id,
+      accountIndex: _value.accountIndex,
       name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
@@ -78,6 +79,7 @@ extension $EdgeProfileCopyWith on EdgeProfile {
   }) {
     return EdgeProfile(
       id: id,
+      accountIndex: accountIndex,
       name: name,
       description: description == true ? null : this.description,
     );
