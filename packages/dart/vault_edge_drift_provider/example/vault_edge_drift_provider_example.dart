@@ -7,11 +7,11 @@ void main() async {
   final database = Database(NativeDatabase.memory());
 
   // Create a profile repository
-  final repository = EdgeProfileRepository(database: database);
+  final repository = EdgeDriftProfileRepository(database: database);
 
   // Add a new profile
   print('Adding a new profile');
-  await repository.createProfile(name: 'Profile Name');
+  await repository.createProfile(name: 'Profile Name', accountIndex: 1);
   var profiles = await repository.listProfiles();
   _printProfiles(profiles);
 

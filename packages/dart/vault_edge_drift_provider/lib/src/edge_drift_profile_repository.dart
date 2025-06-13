@@ -4,22 +4,25 @@ import 'package:drift/drift.dart';
 import 'database/database.dart' hide Profile;
 
 /// Repository class to manage profiles on a local Drift database
-class EdgeProfileRepository implements EdgeProfileRepositoryInterface {
-  final Database _database;
-
+class EdgeDriftProfileRepository implements EdgeProfileRepositoryInterface {
   /// Constructor
-  EdgeProfileRepository({
+  EdgeDriftProfileRepository({
     required Database database,
   }) : _database = database;
 
+  final Database _database;
+
   @override
-  Future<void> createProfile(
-      {required String name,
-      String? description,
-      VaultCancelToken? cancelToken}) async {
+  Future<void> createProfile({
+    required String name,
+    String? description,
+    required int accountIndex,
+    VaultCancelToken? cancelToken,
+  }) async {
     final entry = ProfilesCompanion.insert(
       name: name,
       description: Value(description),
+      accountIndex: accountIndex,
     );
 
     await _database.into(_database.profiles).insert(entry);
@@ -27,7 +30,7 @@ class EdgeProfileRepository implements EdgeProfileRepositoryInterface {
 
   @override
   Future<void> deleteProfile({
-    required int profileId,
+    required String profileId,
     VaultCancelToken? cancelToken,
   }) async {
     await (_database.delete(_database.profiles)
@@ -44,6 +47,7 @@ class EdgeProfileRepository implements EdgeProfileRepositoryInterface {
     return profiles
         .map((item) => EdgeProfile(
               id: item.id,
+              accountIndex: item.accountIndex,
               name: item.name,
               description: item.description,
             ))
@@ -56,9 +60,11 @@ class EdgeProfileRepository implements EdgeProfileRepositoryInterface {
     VaultCancelToken? cancelToken,
   }) async {
     final entry = ProfilesCompanion(
-        id: Value(profile.id),
-        name: Value(profile.name),
-        description: Value(profile.description));
+      id: Value(profile.id),
+      accountIndex: Value(profile.accountIndex),
+      name: Value(profile.name),
+      description: Value(profile.description),
+    );
     await _database.update(_database.profiles).replace(entry);
   }
 }

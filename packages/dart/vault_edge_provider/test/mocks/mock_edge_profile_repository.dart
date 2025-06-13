@@ -3,22 +3,28 @@ import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provide
 class MockEdgeProfileRepository implements EdgeProfileRepositoryInterface {
   String? lastCalledCreateProfileName;
   String? lastCalledCreateProfileDescription;
-  int? lastCalledDeletedProfileId;
+  int? lastCalledCreateProfileAccountIndex;
+  String? lastCalledDeletedProfileId;
   EdgeProfile? lastCalledUpdateProfile;
   bool? lastCalledListProfiles;
 
   @override
-  Future<void> createProfile(
-      {required String name,
-      String? description,
-      VaultCancelToken? cancelToken}) async {
+  Future<void> createProfile({
+    required String name,
+    String? description,
+    required int accountIndex,
+    VaultCancelToken? cancelToken,
+  }) async {
     lastCalledCreateProfileName = name;
     lastCalledCreateProfileDescription = description;
+    lastCalledCreateProfileAccountIndex = accountIndex;
   }
 
   @override
-  Future<void> deleteProfile(
-      {required int profileId, VaultCancelToken? cancelToken}) async {
+  Future<void> deleteProfile({
+    required String profileId,
+    VaultCancelToken? cancelToken,
+  }) async {
     lastCalledDeletedProfileId = profileId;
   }
 
@@ -30,8 +36,10 @@ class MockEdgeProfileRepository implements EdgeProfileRepositoryInterface {
   }
 
   @override
-  Future<void> updateProfile(
-      {required EdgeProfile profile, VaultCancelToken? cancelToken}) async {
+  Future<void> updateProfile({
+    required EdgeProfile profile,
+    VaultCancelToken? cancelToken,
+  }) async {
     lastCalledUpdateProfile = profile;
   }
 }
