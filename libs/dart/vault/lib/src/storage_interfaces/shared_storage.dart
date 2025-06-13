@@ -4,6 +4,7 @@ import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
 import '../helpers/vault_cancel_token.dart';
+import '../helpers/vault_progress_callback.dart';
 
 import 'item.dart';
 import 'page.dart';
@@ -76,6 +77,7 @@ abstract interface class SharedStorage {
   Future<Uint8List> getFileContent({
     required String fileId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Allows adding a new file

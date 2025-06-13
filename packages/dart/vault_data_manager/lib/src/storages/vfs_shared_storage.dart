@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart' as vault;
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 
 import '../services/vault_data_manager_service.dart';
@@ -126,10 +127,12 @@ class VfsSharedStorage implements vault.SharedStorage {
   Future<Uint8List> getFileContent({
     required String fileId,
     VaultCancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
   }) async {
     return await _fileStorage.getFileContent(
       fileId: fileId,
       cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress,
     );
   }
 
