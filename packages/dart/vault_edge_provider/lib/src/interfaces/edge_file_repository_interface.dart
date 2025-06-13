@@ -6,15 +6,17 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 abstract interface class EdgeFileRepositoryInterface {
   /// Add a file to a specific folder
   Future<void> createFile({
+    required String profileId,
     required String fileName,
     required Uint8List data,
     String? parentFolderId,
   });
 
   /// Add a new folder to the specified parent
-  Future<Item> createFolder({
+  Future<Folder> createFolder({
+    required String profileId,
     required String folderName,
-    required String parentFolderId,
+    String? parentFolderId,
   });
 
   /// Delete a file entry
@@ -23,12 +25,12 @@ abstract interface class EdgeFileRepositoryInterface {
   Future<void> deleteFile({required String fileId});
 
   /// Delete a folder entry
-  Future<void> deleteFolder({required String folderId});
+  Future<bool> deleteFolder({required String folderId});
 
   /// Retrieves the file data
   ///
   /// [fileId] - the file unique identifier
-  Future<Item> getFile({required String fileId});
+  Future<File> getFile({required String fileId});
 
   /// Retrieves the content of the file
   Future<Uint8List> getFileContent({
@@ -60,7 +62,7 @@ abstract interface class EdgeFileRepositoryInterface {
   ///
   /// [folderId] - the folder unique identifier
   /// [newName] - the new name
-  Future<void> renameFolder({
+  Future<bool> renameFolder({
     required String folderId,
     required String newName,
   });

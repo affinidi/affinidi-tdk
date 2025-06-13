@@ -11,12 +11,15 @@ class VaultEdgeFileStorage implements FileStorage {
   VaultEdgeFileStorage({
     required EdgeFileRepositoryInterface repository,
     required String id,
+    required String profileId,
   })  : _repository = repository,
-        _id = id;
+        _id = id,
+        _profileId = profileId;
 
   final EdgeFileRepositoryInterface _repository;
 
   final String _id;
+  final String _profileId;
 
   @override
   String get id => _id;
@@ -37,7 +40,11 @@ class VaultEdgeFileStorage implements FileStorage {
     // TODO: add a file item entry to database
 
     await _repository.createFile(
-        fileName: fileName, data: data, parentFolderId: parentFolderId);
+      profileId: _profileId,
+      fileName: fileName,
+      data: data,
+      parentFolderId: parentFolderId,
+    );
   }
 
   @override
@@ -46,18 +53,10 @@ class VaultEdgeFileStorage implements FileStorage {
     required String parentFolderId,
     VaultCancelToken? cancelToken,
   }) async {
-    final item = await _repository.createFolder(
+    return await _repository.createFolder(
+      profileId: _profileId,
       folderName: folderName,
       parentFolderId: parentFolderId,
-    );
-
-    // TODO: check parentFolderId exists and it's a folder
-
-    return Folder(
-      id: item.id,
-      name: item.name,
-      createdAt: item.createdAt,
-      modifiedAt: item.modifiedAt,
     );
   }
 
@@ -79,11 +78,6 @@ class VaultEdgeFileStorage implements FileStorage {
     required String folderId,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: check folderId exists and it's a Folder
-
-    // TODO: check the folder is not empty, otherwise return an error
-
-    // TODO: remove folder item entry from database
     await _repository.deleteFolder(folderId: folderId);
   }
 
@@ -160,9 +154,6 @@ class VaultEdgeFileStorage implements FileStorage {
     required String newName,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: rename folder item entry in DB.
-
-    // TODO: check folderId exists and it's a folder
     await _repository.renameFolder(
       folderId: folderId,
       newName: newName,
