@@ -26,6 +26,7 @@ class VaultEdgeProfileRepository implements ProfileRepository {
 
   bool _configured = false;
   late final Wallet _wallet;
+  late final VaultStore _vaultStore;
 
   @override
   Future<void> configure(Object configuration) async {
@@ -39,6 +40,11 @@ class VaultEdgeProfileRepository implements ProfileRepository {
     }
 
     _wallet = configuration.wallet;
+
+    // TODO: Check that configuration.keyStorage is not null
+    // otherwise throw an exception
+
+    _vaultStore = configuration.keyStorage!;
 
     _configured = true;
   }
@@ -70,8 +76,16 @@ Profile repository must be configured using a RepositoryConfiguration''',
       );
     }
 
-    return await _repository.createProfile(
-        name: name, description: description, cancelToken: cancelToken);
+    final nextAccountIndex = (await _vaultStore.readAccountIndex()) + 1;
+
+    await _repository.createProfile(
+      name: name,
+      description: description,
+      cancelToken: cancelToken,
+      accountIndex: nextAccountIndex,
+    );
+
+    await _vaultStore.writeAccountIndex(nextAccountIndex);
   }
 
   /// Deleted an existing local profile
@@ -125,13 +139,13 @@ Profile repository must be configured using a RepositoryConfiguration''',
     final profiles = <Profile>[];
 
     for (final item in items) {
-      final profileKeyPair = await _memoizedKeyPair(accountIndex: '${item.id}');
+      final profileKeyPair = await _memoizedKeyPair(accountIndex: item.id);
       final did = DidKey.getDid(profileKeyPair.publicKey);
 
       profiles.add(
         Profile(
           id: item.id.toString(),
-          accountIndex: item.id,
+          accountIndex: item.accountIndex,
           name: item.name,
           did: did,
           profileRepositoryId: _id,
