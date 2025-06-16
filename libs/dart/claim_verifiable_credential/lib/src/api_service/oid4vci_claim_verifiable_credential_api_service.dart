@@ -58,7 +58,7 @@ class OID4VCIClaimVerifiableCredentialApiService
   final Dio _client;
 
   static Dio _createDioClient() {
-    final timeoutDuration = _apiTimeOutInMilliseconds != null
+    final timeoutDuration = _apiTimeOutInMilliseconds == null
         ? const Duration(milliseconds: 15000)
         : Duration(milliseconds: _apiTimeOutInMilliseconds!);
     return Dio(
