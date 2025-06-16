@@ -32,6 +32,14 @@ export 'package:affinidi_tdk_wallets_client/src/model/sign_credential400_respons
 export 'package:affinidi_tdk_wallets_client/src/model/sign_credential_input_dto.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_credential_input_dto_unsigned_credential_params.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_credential_result_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_jwt_input_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_jwt_result_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_ld_input_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_ld_result_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_ld_input_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_ld_result_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jwt_input_dto.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jwt_result_dto.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token_ok.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/signing_failed_error.dart';
