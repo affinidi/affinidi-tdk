@@ -33,9 +33,43 @@ class EdgeDriftProfileRepository implements EdgeProfileRepositoryInterface {
     required String profileId,
     VaultCancelToken? cancelToken,
   }) async {
-    await (_database.delete(_database.profiles)
-          ..where((filter) => filter.id.equals(profileId)))
-        .go();
+    await _database.transaction(() async {
+      // First check if profile exists
+      final profile = await (_database.select(_database.profiles)
+            ..where((filter) => filter.id.equals(profileId)))
+          .getSingleOrNull();
+
+      if (profile == null) {
+        throw TdkException(
+          message: 'Profile not found',
+          code: TdkExceptionType.missingProfileId.code,
+        );
+      }
+
+      // Check if profile has any contents
+      final items = await (_database.select(_database.items)
+            ..where((filter) => filter.profileId.equals(profileId)))
+          .get();
+
+      if (items.isNotEmpty) {
+        throw TdkException(
+          message: 'Cannot delete profile with contents',
+          code: TdkExceptionType.unableToDeleteFolderWithContent.code,
+        );
+      }
+
+      // Delete the profile
+      final deleted = await (_database.delete(_database.profiles)
+            ..where((filter) => filter.id.equals(profileId)))
+          .go();
+
+      if (deleted == 0) {
+        throw TdkException(
+          message: 'Failed to delete profile',
+          code: TdkExceptionType.missingProfileId.code,
+        );
+      }
+    });
   }
 
   @override

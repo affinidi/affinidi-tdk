@@ -177,7 +177,7 @@ class VaultEdgeFileStorage implements FileStorage {
   }
 
   @override
-  Future<Page<Item>> getFolder({
+  Future<PaginatedList<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
@@ -190,7 +190,8 @@ class VaultEdgeFileStorage implements FileStorage {
     );
     final lastEvaluatedItemId = items.lastOrNull?.id;
 
-    return Page(items: items, lastEvaluatedItemId: lastEvaluatedItemId);
+    return PaginatedList(
+        items: items, lastEvaluatedItemId: lastEvaluatedItemId);
   }
 
   @override
