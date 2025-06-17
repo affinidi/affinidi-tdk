@@ -8,6 +8,7 @@ part 'database.g.dart';
   tables: [
     Profiles,
     Items,
+    FileContents,
   ],
 )
 
@@ -94,6 +95,19 @@ class Profiles extends Table {
 
   /// Account index
   IntColumn get accountIndex => integer()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// Table definition to hold file content data
+@DataClassName('FileContent')
+class FileContents extends Table {
+  /// A file content identifier - same as the file item id
+  TextColumn get id => text().references(Items, #id)();
+
+  /// The actual file content as a blob
+  BlobColumn get content => blob()();
 
   @override
   Set<Column> get primaryKey => {id};

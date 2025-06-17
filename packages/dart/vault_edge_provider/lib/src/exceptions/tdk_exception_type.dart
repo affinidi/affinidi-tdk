@@ -22,6 +22,15 @@ enum TdkExceptionType {
 
   /// [unableToDeleteFolderWithContent] - Indicates the folder has content and cannot be deleted
   unableToDeleteFolderWithContent('unable_to_delete_folder_with_content'),
+
+  /// [invalidFileId] - Indicates the fileId does not exist
+  invalidFileId('invalid_file_id'),
+
+  /// [invalidFileSize] - Indicates the file size exceeds the maximum allowed size
+  invalidFileSize('invalid_file_size'),
+
+  /// [invalidFileType] - Indicates the file type is not allowed
+  invalidFileType('invalid_file_type'),
   ;
 
   /// Creates a new instance of [TdkExceptionType].
