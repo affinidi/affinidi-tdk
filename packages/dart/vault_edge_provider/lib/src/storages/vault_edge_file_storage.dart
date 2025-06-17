@@ -31,7 +31,6 @@ class VaultEdgeFileStorage implements FileStorage {
     String? parentFolderId,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: check file size
     const maxFileSize = 10 * 1024 * 1024;
     if (data.length > maxFileSize) {
       Error.throwWithStackTrace(
@@ -43,7 +42,6 @@ class VaultEdgeFileStorage implements FileStorage {
       );
     }
 
-    // TODO: check file extension
     final extension = fileName.split('.').last.toLowerCase();
     final allowedExtensions = ['txt', 'pdf', 'jpg', 'jpeg', 'png', 'json'];
     if (!allowedExtensions.contains(extension)) {
@@ -125,11 +123,8 @@ class VaultEdgeFileStorage implements FileStorage {
     required String fileId,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: delete the file content entry from database
-    // TODO: remove file item entry from database
-
-    // TODO: check fileId exists and it's a File
-
+    // Check if file exists
+    await _repository.getFile(fileId: fileId);
     await _repository.deleteFile(fileId: fileId);
   }
 
@@ -158,8 +153,6 @@ class VaultEdgeFileStorage implements FileStorage {
     required String fileId,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: return file item entry from db
-
     final item = await _repository.getFile(fileId: fileId);
 
     return File(
@@ -176,9 +169,6 @@ class VaultEdgeFileStorage implements FileStorage {
     required String fileId,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: retrieve the file content entry based on file item entry
-    // TODO: decrypt file content and return it
-
     final content = await _repository.getFileContent(fileId: fileId);
 
     // TODO: handle encryption?
@@ -193,7 +183,6 @@ class VaultEdgeFileStorage implements FileStorage {
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: finding from db all item entries in the folder
     final items = await _repository.getFolder(
       folderId: folderId,
       limit: limit,
@@ -210,10 +199,6 @@ class VaultEdgeFileStorage implements FileStorage {
     required String newName,
     VaultCancelToken? cancelToken,
   }) async {
-    // TODO: rename file item entry in DB.
-    // ignore: lines_longer_than_80_chars
-    // TODO: file content entry remains untouched
-
     // Check if new name has valid extension
     final extension = newName.split('.').last.toLowerCase();
     final allowedExtensions = ['txt', 'pdf', 'jpg', 'jpeg', 'png', 'json'];
@@ -227,7 +212,6 @@ class VaultEdgeFileStorage implements FileStorage {
       );
     }
 
-    // TODO: check fileId exists and it's a file
     await _repository.renameFile(
       fileId: fileId,
       newName: newName,
