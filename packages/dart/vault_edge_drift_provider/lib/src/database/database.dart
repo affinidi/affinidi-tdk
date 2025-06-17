@@ -29,7 +29,7 @@ class Items extends Table {
   TextColumn get id => text().clientDefault(const Uuid().v4)();
 
   /// Profile id to which the item belongs
-  TextColumn get profileId => text()();
+  TextColumn get profileId => text().references(Profiles, #id)();
 
   /// An item friendly name
   TextColumn get name => text()();

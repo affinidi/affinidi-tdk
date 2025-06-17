@@ -35,7 +35,7 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
   }
 
   @override
-  Future<Page<DigitalCredential>> listCredentials(
+  Future<PaginatedList<DigitalCredential>> listCredentials(
       {int? limit,
       String? exclusiveStartItemId,
       VaultCancelToken? cancelToken}) {
