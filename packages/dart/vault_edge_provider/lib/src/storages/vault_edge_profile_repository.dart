@@ -7,8 +7,8 @@ import '../interfaces/edge_profile_repository_interface.dart';
 import '../models/edge_profile.dart';
 import '../storages/vault_edge_file_storage.dart';
 
-// ignore: lines_longer_than_80_chars
-/// A Vault implementation of [ProfileRepository] for locally managing user profiles.
+/// A Vault implementation of [ProfileRepository] for locally managing
+///  user profiles.
 class VaultEdgeProfileRepository implements ProfileRepository {
   /// Creates a new instance of [VaultEdgeProfileRepository].
   ///
@@ -45,8 +45,16 @@ class VaultEdgeProfileRepository implements ProfileRepository {
 
     _wallet = configuration.wallet;
 
-    // TODO: Check that configuration.keyStorage is not null
-    // otherwise throw an exception
+    if (configuration.keyStorage == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'Key storage is required to '
+              'maintain account indexes and avoid duplicate accounts',
+          code: TdkExceptionType.missingVaultStore.code,
+        ),
+        StackTrace.current,
+      );
+    }
 
     _vaultStore = configuration.keyStorage!;
 
