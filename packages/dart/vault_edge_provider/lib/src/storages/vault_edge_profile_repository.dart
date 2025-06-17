@@ -2,8 +2,10 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:ssi/ssi.dart';
 
 import '../exceptions/tdk_exception_type.dart';
+import '../interfaces/edge_file_repository_interface.dart';
 import '../interfaces/edge_profile_repository_interface.dart';
 import '../models/edge_profile.dart';
+import '../storages/vault_edge_file_storage.dart';
 
 // ignore: lines_longer_than_80_chars
 /// A Vault implementation of [ProfileRepository] for locally managing user profiles.
@@ -15,10 +17,12 @@ class VaultEdgeProfileRepository implements ProfileRepository {
   VaultEdgeProfileRepository(
     this._id,
     this._repository,
+    this._fileRepository,
   );
 
   final String _id;
   final EdgeProfileRepositoryInterface _repository;
+  final EdgeFileRepositoryInterface _fileRepository;
   final _keyPairs = <String, KeyPair>{};
 
   @override
@@ -149,7 +153,13 @@ Profile repository must be configured using a RepositoryConfiguration''',
           name: item.name,
           did: did,
           profileRepositoryId: _id,
-          fileStorages: {}, // TODO(MA): Append file storages
+          fileStorages: {
+            _id: VaultEdgeFileStorage(
+              repository: _fileRepository,
+              id: _id,
+              profileId: item.id.toString(),
+            ),
+          },
           credentialStorages: {}, // TODO(MA): Append credential storages
           sharedStorages: {},
         ),
