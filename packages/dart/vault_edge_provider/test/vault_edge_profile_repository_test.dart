@@ -57,6 +57,22 @@ void main() {
                 TdkExceptionType.profleNotConfigured.code)));
       });
     });
+
+    group('and configuring with invalid configuration', () {
+      test('it throws error when keyStorage is null', () async {
+        expect(
+          () async => await sut.configure(RepositoryConfiguration(
+            wallet: WalletFixtures.wallet,
+            keyStorage: null,
+          )),
+          throwsA(isA<TdkException>().having(
+            (error) => error.code,
+            'code',
+            TdkExceptionType.missingVaultStore.code,
+          )),
+        );
+      });
+    });
   });
 
   group('When edge profile repository is configured', () {
@@ -65,6 +81,11 @@ void main() {
         wallet: WalletFixtures.wallet,
         keyStorage: InMemoryVaultStore(),
       ));
+    });
+
+    test('it is configured with keyStorage', () async {
+      final isConfigured = await sut.isConfigured();
+      expect(isConfigured, isTrue);
     });
 
     group('and creates a profile', () {
@@ -171,7 +192,8 @@ void main() {
           data: Uint8List.fromList([1, 2, 3]),
         );
 
-        // Verify the file repository was called with the correct profile ID and no parent
+        // Verify the file repository was called with the correct profile ID
+        // and no parent
         expect(mockFileRepository.profileId, equals(mockProfile.id));
         expect(mockFileRepository.fileName, equals('root.txt'));
         expect(mockFileRepository.parentId, isNull);
@@ -183,7 +205,8 @@ void main() {
           parentFolderId: 'parent',
         );
 
-        // Verify the file repository was called with the correct profile ID and parent
+        // Verify the file repository was called with the correct profile ID
+        // and parent
         expect(mockFileRepository.profileId, equals(mockProfile.id));
         expect(mockFileRepository.fileName, equals('nested.txt'));
         expect(mockFileRepository.parentId, equals('parent'));
