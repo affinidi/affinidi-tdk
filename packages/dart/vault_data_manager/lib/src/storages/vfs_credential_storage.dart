@@ -27,7 +27,7 @@ class VFSCredentialStorage implements CredentialStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<Page<DigitalCredential>> listCredentials({
+  Future<PaginatedList<DigitalCredential>> listCredentials({
     int? limit,
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,

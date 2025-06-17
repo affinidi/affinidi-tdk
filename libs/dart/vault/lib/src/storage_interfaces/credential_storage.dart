@@ -2,7 +2,7 @@ import 'package:ssi/ssi.dart';
 
 import '../digital_credential.dart';
 import '../helpers/vault_cancel_token.dart';
-import 'page.dart';
+import 'paginated_list.dart';
 
 /// Interface for managing verifiable credentials storage.
 abstract class CredentialStorage {
@@ -10,9 +10,9 @@ abstract class CredentialStorage {
   String get id;
 
   /// Allows retrieving a list of claimed credentials with pagination support
-  /// Returns a [Page] containing the credentials and pagination information
+  /// Returns a [PaginatedList] containing the credentials and pagination information
   /// Throws for network connectivity
-  Future<Page<DigitalCredential>> listCredentials({
+  Future<PaginatedList<DigitalCredential>> listCredentials({
     int? limit,
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,

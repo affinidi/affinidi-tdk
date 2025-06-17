@@ -2,11 +2,7 @@ import 'dart:typed_data';
 
 import 'package:ssi/ssi.dart';
 
-import '../digital_credential.dart';
-import '../helpers/vault_cancel_token.dart';
-
-import 'item.dart';
-import 'page.dart';
+import '../../affinidi_tdk_vault.dart';
 
 /// Interface for managing shared storage operations, including files, folders, and credentials.
 abstract interface class SharedStorage {
@@ -18,7 +14,7 @@ abstract interface class SharedStorage {
   /// Throws if the folder does not exist
   /// Throws if the folderId does not match a folder
   /// Throws for network connectivity
-  Future<Page<Item>> getFolder({
+  Future<PaginatedList<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
@@ -110,9 +106,9 @@ abstract interface class SharedStorage {
   });
 
   /// Allows retrieving a list of claimed credentials with pagination support
-  /// Returns a [Page] containing the credentials and pagination information
+  /// Returns a [PaginatedList] containing the credentials and pagination information
   /// Throws for network connectivity
-  Future<Page<DigitalCredential>> listCredentials({
+  Future<PaginatedList<DigitalCredential>> listCredentials({
     int? limit,
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,

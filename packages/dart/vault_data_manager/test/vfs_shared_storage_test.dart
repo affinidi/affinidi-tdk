@@ -28,8 +28,8 @@ void main() {
 
     when(() =>
             mockDataManagerService.getChildNodes(nodeId: any(named: 'nodeId')))
-        .thenAnswer(
-            (_) async => Page<Node>(items: [], lastEvaluatedItemId: null));
+        .thenAnswer((_) async =>
+            PaginatedList<Node>(items: [], lastEvaluatedItemId: null));
     when(() => mockDataManagerService.createFile(
           fileName: any(named: 'fileName'),
           parentFolderNodeId: any(named: 'parentFolderNodeId'),
@@ -59,7 +59,7 @@ void main() {
     when(() => mockDataManagerService.deleteClaimedCredential(
         nodeId: any(named: 'nodeId'))).thenAnswer((_) async {});
     when(() => mockDataManagerService.getDigitalCredentials(any()))
-        .thenAnswer((_) async => Page<DigitalCredential>(
+        .thenAnswer((_) async => PaginatedList<DigitalCredential>(
               items: <DigitalCredential>[],
               lastEvaluatedItemId: null,
             ));
@@ -83,9 +83,9 @@ void main() {
     group('File operations', () {
       test('getFolder returns items from file storage', () async {
         final expectedItems = [NodeFixtures.testFileNode];
-        when(() => mockDataManagerService
-                .getChildNodes(nodeId: any(named: 'nodeId')))
-            .thenAnswer((_) async => Page<Node>(
+        when(() => mockDataManagerService.getChildNodes(
+                nodeId: any(named: 'nodeId')))
+            .thenAnswer((_) async => PaginatedList<Node>(
                   items: expectedItems,
                   lastEvaluatedItemId: null,
                 ));
@@ -144,7 +144,7 @@ void main() {
 
         when(() => mockDataManagerService.getChildNodes(
                 nodeId: NodeFixtures.testParentId))
-            .thenAnswer((_) async => Page<Node>(
+            .thenAnswer((_) async => PaginatedList<Node>(
                   items: [folderNode],
                   lastEvaluatedItemId: null,
                 ));
@@ -274,7 +274,7 @@ void main() {
       test('getCredential delegates to credential storage', () async {
         final expectedCredential = CredentialFixtures.testDigitalCredential;
         when(() => mockDataManagerService.getDigitalCredentials(any()))
-            .thenAnswer((_) async => Page<DigitalCredential>(
+            .thenAnswer((_) async => PaginatedList<DigitalCredential>(
                   items: [expectedCredential],
                   lastEvaluatedItemId: null,
                 ));
@@ -290,7 +290,7 @@ void main() {
       test('listCredentials delegates to credential storage', () async {
         final expectedCredential = CredentialFixtures.testDigitalCredential;
         when(() => mockDataManagerService.getDigitalCredentials(any()))
-            .thenAnswer((_) async => Page<DigitalCredential>(
+            .thenAnswer((_) async => PaginatedList<DigitalCredential>(
                   items: [expectedCredential],
                   lastEvaluatedItemId: null,
                 ));

@@ -38,7 +38,7 @@ void main() {
               profileId,
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-            )).thenAnswer((_) async => Page<DigitalCredential>(
+            )).thenAnswer((_) async => PaginatedList<DigitalCredential>(
               items: mockCreds,
               lastEvaluatedItemId: null,
             ));
@@ -58,7 +58,7 @@ void main() {
               profileId,
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-            )).thenAnswer((_) async => Page<DigitalCredential>(
+            )).thenAnswer((_) async => PaginatedList<DigitalCredential>(
               items: <DigitalCredential>[],
               lastEvaluatedItemId: null,
             ));
@@ -78,7 +78,7 @@ void main() {
               profileId,
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-            )).thenAnswer((_) async => Page<DigitalCredential>(
+            )).thenAnswer((_) async => PaginatedList<DigitalCredential>(
               items: credentials,
               lastEvaluatedItemId: null,
             ));
@@ -130,7 +130,7 @@ void main() {
               profileId,
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-            )).thenAnswer((_) async => Page<DigitalCredential>(
+            )).thenAnswer((_) async => PaginatedList<DigitalCredential>(
               items: CredentialFixtures.mockCredentials,
               lastEvaluatedItemId: null,
             ));
@@ -151,7 +151,7 @@ void main() {
               profileId,
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-            )).thenAnswer((_) async => Page<DigitalCredential>(
+            )).thenAnswer((_) async => PaginatedList<DigitalCredential>(
               items: <DigitalCredential>[],
               lastEvaluatedItemId: null,
             ));
@@ -186,7 +186,7 @@ void main() {
               limit: 2,
               exclusiveStartItemId: null,
               cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) => Future.value(Page(
+            )).thenAnswer((_) => Future.value(PaginatedList(
               items: mockCreds,
               lastEvaluatedItemId: 'next_page_key',
             )));
@@ -210,7 +210,7 @@ void main() {
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
               cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) => Future.value(Page(
+            )).thenAnswer((_) => Future.value(PaginatedList(
               items: [],
               lastEvaluatedItemId: null,
             )));

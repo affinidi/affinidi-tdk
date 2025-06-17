@@ -47,7 +47,7 @@ class VfsSharedStorage implements vault.SharedStorage {
   /// FileStorage operations
 
   @override
-  Future<Page<vault.Item>> getFolder({
+  Future<PaginatedList<vault.Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
@@ -184,7 +184,7 @@ class VfsSharedStorage implements vault.SharedStorage {
   }
 
   @override
-  Future<Page<vault.DigitalCredential>> listCredentials({
+  Future<PaginatedList<vault.DigitalCredential>> listCredentials({
     int? limit,
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,

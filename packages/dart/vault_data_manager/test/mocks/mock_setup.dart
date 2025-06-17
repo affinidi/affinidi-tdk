@@ -16,7 +16,7 @@ void stubFileService(MockVaultDataManagerService service,
       )).thenAnswer((_) async => Future<void>.value());
 
   when(() => service.getChildNodes(nodeId: any(named: 'nodeId'))).thenAnswer(
-      (_) async => Page<Node>(items: [], lastEvaluatedItemId: null));
+      (_) async => PaginatedList<Node>(items: [], lastEvaluatedItemId: null));
 
   when(() => service.createFile(
         parentFolderNodeId: any(named: 'parentFolderNodeId'),
@@ -56,7 +56,7 @@ void stubCredentialService(
         limit: any(named: 'limit'),
         exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
         cancelToken: any(named: 'cancelToken'),
-      )).thenAnswer((_) async => Page<DigitalCredential>(
+      )).thenAnswer((_) async => PaginatedList<DigitalCredential>(
         items: [MockDigitalCredential(mockVC, id: 'test-node-id')],
         lastEvaluatedItemId: null,
       ));
