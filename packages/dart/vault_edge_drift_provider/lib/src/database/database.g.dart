@@ -683,16 +683,214 @@ class ItemsCompanion extends UpdateCompanion<Item> {
   }
 }
 
+class $FileContentsTable extends FileContents
+    with TableInfo<$FileContentsTable, FileContent> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $FileContentsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+      'id', aliasedName, false,
+      type: DriftSqlType.string,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES items (id)'));
+  static const VerificationMeta _contentMeta =
+      const VerificationMeta('content');
+  @override
+  late final GeneratedColumn<Uint8List> content = GeneratedColumn<Uint8List>(
+      'content', aliasedName, false,
+      type: DriftSqlType.blob, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [id, content];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'file_contents';
+  @override
+  VerificationContext validateIntegrity(Insertable<FileContent> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('content')) {
+      context.handle(_contentMeta,
+          content.isAcceptableOrUnknown(data['content']!, _contentMeta));
+    } else if (isInserting) {
+      context.missing(_contentMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  FileContent map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return FileContent(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
+      content: attachedDatabase.typeMapping
+          .read(DriftSqlType.blob, data['${effectivePrefix}content'])!,
+    );
+  }
+
+  @override
+  $FileContentsTable createAlias(String alias) {
+    return $FileContentsTable(attachedDatabase, alias);
+  }
+}
+
+class FileContent extends DataClass implements Insertable<FileContent> {
+  /// A file content identifier - same as the file item id
+  final String id;
+
+  /// The actual file content as a blob
+  final Uint8List content;
+  const FileContent({required this.id, required this.content});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['content'] = Variable<Uint8List>(content);
+    return map;
+  }
+
+  FileContentsCompanion toCompanion(bool nullToAbsent) {
+    return FileContentsCompanion(
+      id: Value(id),
+      content: Value(content),
+    );
+  }
+
+  factory FileContent.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return FileContent(
+      id: serializer.fromJson<String>(json['id']),
+      content: serializer.fromJson<Uint8List>(json['content']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'content': serializer.toJson<Uint8List>(content),
+    };
+  }
+
+  FileContent copyWith({String? id, Uint8List? content}) => FileContent(
+        id: id ?? this.id,
+        content: content ?? this.content,
+      );
+  FileContent copyWithCompanion(FileContentsCompanion data) {
+    return FileContent(
+      id: data.id.present ? data.id.value : this.id,
+      content: data.content.present ? data.content.value : this.content,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FileContent(')
+          ..write('id: $id, ')
+          ..write('content: $content')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, $driftBlobEquality.hash(content));
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is FileContent &&
+          other.id == this.id &&
+          $driftBlobEquality.equals(other.content, this.content));
+}
+
+class FileContentsCompanion extends UpdateCompanion<FileContent> {
+  final Value<String> id;
+  final Value<Uint8List> content;
+  final Value<int> rowid;
+  const FileContentsCompanion({
+    this.id = const Value.absent(),
+    this.content = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  FileContentsCompanion.insert({
+    required String id,
+    required Uint8List content,
+    this.rowid = const Value.absent(),
+  })  : id = Value(id),
+        content = Value(content);
+  static Insertable<FileContent> custom({
+    Expression<String>? id,
+    Expression<Uint8List>? content,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (content != null) 'content': content,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  FileContentsCompanion copyWith(
+      {Value<String>? id, Value<Uint8List>? content, Value<int>? rowid}) {
+    return FileContentsCompanion(
+      id: id ?? this.id,
+      content: content ?? this.content,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (content.present) {
+      map['content'] = Variable<Uint8List>(content.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('FileContentsCompanion(')
+          ..write('id: $id, ')
+          ..write('content: $content, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$Database extends GeneratedDatabase {
   _$Database(QueryExecutor e) : super(e);
   $DatabaseManager get managers => $DatabaseManager(this);
   late final $ProfilesTable profiles = $ProfilesTable(this);
   late final $ItemsTable items = $ItemsTable(this);
+  late final $FileContentsTable fileContents = $FileContentsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [profiles, items];
+  List<DatabaseSchemaEntity> get allSchemaEntities =>
+      [profiles, items, fileContents];
 }
 
 typedef $$ProfilesTableCreateCompanionBuilder = ProfilesCompanion Function({
@@ -867,6 +1065,25 @@ typedef $$ItemsTableUpdateCompanionBuilder = ItemsCompanion Function({
   Value<int> rowid,
 });
 
+final class $$ItemsTableReferences
+    extends BaseReferences<_$Database, $ItemsTable, Item> {
+  $$ItemsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static MultiTypedResultKey<$FileContentsTable, List<FileContent>>
+      _fileContentsRefsTable(_$Database db) =>
+          MultiTypedResultKey.fromTable(db.fileContents,
+              aliasName: $_aliasNameGenerator(db.items.id, db.fileContents.id));
+
+  $$FileContentsTableProcessedTableManager get fileContentsRefs {
+    final manager = $$FileContentsTableTableManager($_db, $_db.fileContents)
+        .filter((f) => f.id.id.sqlEquals($_itemColumn<String>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_fileContentsRefsTable($_db));
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: cache));
+  }
+}
+
 class $$ItemsTableFilterComposer extends Composer<_$Database, $ItemsTable> {
   $$ItemsTableFilterComposer({
     required super.$db,
@@ -897,6 +1114,27 @@ class $$ItemsTableFilterComposer extends Composer<_$Database, $ItemsTable> {
 
   ColumnFilters<DateTime> get modifiedAt => $composableBuilder(
       column: $table.modifiedAt, builder: (column) => ColumnFilters(column));
+
+  Expression<bool> fileContentsRefs(
+      Expression<bool> Function($$FileContentsTableFilterComposer f) f) {
+    final $$FileContentsTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.fileContents,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$FileContentsTableFilterComposer(
+              $db: $db,
+              $table: $db.fileContents,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
 }
 
 class $$ItemsTableOrderingComposer extends Composer<_$Database, $ItemsTable> {
@@ -957,6 +1195,27 @@ class $$ItemsTableAnnotationComposer extends Composer<_$Database, $ItemsTable> {
 
   GeneratedColumn<DateTime> get modifiedAt => $composableBuilder(
       column: $table.modifiedAt, builder: (column) => column);
+
+  Expression<T> fileContentsRefs<T extends Object>(
+      Expression<T> Function($$FileContentsTableAnnotationComposer a) f) {
+    final $$FileContentsTableAnnotationComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.fileContents,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$FileContentsTableAnnotationComposer(
+              $db: $db,
+              $table: $db.fileContents,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return f(composer);
+  }
 }
 
 class $$ItemsTableTableManager extends RootTableManager<
@@ -968,9 +1227,9 @@ class $$ItemsTableTableManager extends RootTableManager<
     $$ItemsTableAnnotationComposer,
     $$ItemsTableCreateCompanionBuilder,
     $$ItemsTableUpdateCompanionBuilder,
-    (Item, BaseReferences<_$Database, $ItemsTable, Item>),
+    (Item, $$ItemsTableReferences),
     Item,
-    PrefetchHooks Function()> {
+    PrefetchHooks Function({bool fileContentsRefs})> {
   $$ItemsTableTableManager(_$Database db, $ItemsTable table)
       : super(TableManagerState(
           db: db,
@@ -1022,9 +1281,32 @@ class $$ItemsTableTableManager extends RootTableManager<
             rowid: rowid,
           ),
           withReferenceMapper: (p0) => p0
-              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .map((e) =>
+                  (e.readTable(table), $$ItemsTableReferences(db, table, e)))
               .toList(),
-          prefetchHooksCallback: null,
+          prefetchHooksCallback: ({fileContentsRefs = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [if (fileContentsRefs) db.fileContents],
+              addJoins: null,
+              getPrefetchedDataCallback: (items) async {
+                return [
+                  if (fileContentsRefs)
+                    await $_getPrefetchedData<Item, $ItemsTable, FileContent>(
+                        currentTable: table,
+                        referencedTable:
+                            $$ItemsTableReferences._fileContentsRefsTable(db),
+                        managerFromTypedResult: (p0) =>
+                            $$ItemsTableReferences(db, table, p0)
+                                .fileContentsRefs,
+                        referencedItemsForCurrentItem:
+                            (item, referencedItems) =>
+                                referencedItems.where((e) => e.id == item.id),
+                        typedResults: items)
+                ];
+              },
+            );
+          },
         ));
 }
 
@@ -1037,9 +1319,237 @@ typedef $$ItemsTableProcessedTableManager = ProcessedTableManager<
     $$ItemsTableAnnotationComposer,
     $$ItemsTableCreateCompanionBuilder,
     $$ItemsTableUpdateCompanionBuilder,
-    (Item, BaseReferences<_$Database, $ItemsTable, Item>),
+    (Item, $$ItemsTableReferences),
     Item,
-    PrefetchHooks Function()>;
+    PrefetchHooks Function({bool fileContentsRefs})>;
+typedef $$FileContentsTableCreateCompanionBuilder = FileContentsCompanion
+    Function({
+  required String id,
+  required Uint8List content,
+  Value<int> rowid,
+});
+typedef $$FileContentsTableUpdateCompanionBuilder = FileContentsCompanion
+    Function({
+  Value<String> id,
+  Value<Uint8List> content,
+  Value<int> rowid,
+});
+
+final class $$FileContentsTableReferences
+    extends BaseReferences<_$Database, $FileContentsTable, FileContent> {
+  $$FileContentsTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $ItemsTable _idTable(_$Database db) => db.items
+      .createAlias($_aliasNameGenerator(db.fileContents.id, db.items.id));
+
+  $$ItemsTableProcessedTableManager get id {
+    final $_column = $_itemColumn<String>('id')!;
+
+    final manager = $$ItemsTableTableManager($_db, $_db.items)
+        .filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_idTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+        manager.$state.copyWith(prefetchedData: [item]));
+  }
+}
+
+class $$FileContentsTableFilterComposer
+    extends Composer<_$Database, $FileContentsTable> {
+  $$FileContentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<Uint8List> get content => $composableBuilder(
+      column: $table.content, builder: (column) => ColumnFilters(column));
+
+  $$ItemsTableFilterComposer get id {
+    final $$ItemsTableFilterComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.items,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ItemsTableFilterComposer(
+              $db: $db,
+              $table: $db.items,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$FileContentsTableOrderingComposer
+    extends Composer<_$Database, $FileContentsTable> {
+  $$FileContentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<Uint8List> get content => $composableBuilder(
+      column: $table.content, builder: (column) => ColumnOrderings(column));
+
+  $$ItemsTableOrderingComposer get id {
+    final $$ItemsTableOrderingComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.items,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ItemsTableOrderingComposer(
+              $db: $db,
+              $table: $db.items,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$FileContentsTableAnnotationComposer
+    extends Composer<_$Database, $FileContentsTable> {
+  $$FileContentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<Uint8List> get content =>
+      $composableBuilder(column: $table.content, builder: (column) => column);
+
+  $$ItemsTableAnnotationComposer get id {
+    final $$ItemsTableAnnotationComposer composer = $composerBuilder(
+        composer: this,
+        getCurrentColumn: (t) => t.id,
+        referencedTable: $db.items,
+        getReferencedColumn: (t) => t.id,
+        builder: (joinBuilder,
+                {$addJoinBuilderToRootComposer,
+                $removeJoinBuilderFromRootComposer}) =>
+            $$ItemsTableAnnotationComposer(
+              $db: $db,
+              $table: $db.items,
+              $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+              joinBuilder: joinBuilder,
+              $removeJoinBuilderFromRootComposer:
+                  $removeJoinBuilderFromRootComposer,
+            ));
+    return composer;
+  }
+}
+
+class $$FileContentsTableTableManager extends RootTableManager<
+    _$Database,
+    $FileContentsTable,
+    FileContent,
+    $$FileContentsTableFilterComposer,
+    $$FileContentsTableOrderingComposer,
+    $$FileContentsTableAnnotationComposer,
+    $$FileContentsTableCreateCompanionBuilder,
+    $$FileContentsTableUpdateCompanionBuilder,
+    (FileContent, $$FileContentsTableReferences),
+    FileContent,
+    PrefetchHooks Function({bool id})> {
+  $$FileContentsTableTableManager(_$Database db, $FileContentsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$FileContentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$FileContentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$FileContentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> id = const Value.absent(),
+            Value<Uint8List> content = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FileContentsCompanion(
+            id: id,
+            content: content,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String id,
+            required Uint8List content,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              FileContentsCompanion.insert(
+            id: id,
+            content: content,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable(table),
+                    $$FileContentsTableReferences(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: ({id = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins: <
+                  T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic>>(state) {
+                if (id) {
+                  state = state.withJoin(
+                    currentTable: table,
+                    currentColumn: table.id,
+                    referencedTable: $$FileContentsTableReferences._idTable(db),
+                    referencedColumn:
+                        $$FileContentsTableReferences._idTable(db).id,
+                  ) as T;
+                }
+
+                return state;
+              },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ));
+}
+
+typedef $$FileContentsTableProcessedTableManager = ProcessedTableManager<
+    _$Database,
+    $FileContentsTable,
+    FileContent,
+    $$FileContentsTableFilterComposer,
+    $$FileContentsTableOrderingComposer,
+    $$FileContentsTableAnnotationComposer,
+    $$FileContentsTableCreateCompanionBuilder,
+    $$FileContentsTableUpdateCompanionBuilder,
+    (FileContent, $$FileContentsTableReferences),
+    FileContent,
+    PrefetchHooks Function({bool id})>;
 
 class $DatabaseManager {
   final _$Database _db;
@@ -1048,4 +1558,6 @@ class $DatabaseManager {
       $$ProfilesTableTableManager(_db, _db.profiles);
   $$ItemsTableTableManager get items =>
       $$ItemsTableTableManager(_db, _db.items);
+  $$FileContentsTableTableManager get fileContents =>
+      $$FileContentsTableTableManager(_db, _db.fileContents);
 }
