@@ -444,6 +444,34 @@ components:
             $ref: '#/components/schemas/SignCredentialInputDto'
       description: SignCredential
       required: true
+    signCredentialsDm1Ld:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1LdInputDto'
+      description: signCredentialsDm1Ld
+      required: true
+    signCredentialsDm2Ld:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2LdInputDto'
+      description: signCredentialsDm2Ld
+      required: true
+    SignCredentialsDm2SdJwt:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2SdJwtInputDto'
+      description: SignCredentialsDm1SdJwt
+      required: true
+    signCredentialsDm1jwt:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1JwtInputDto'
+      description: signCredentialsDm1jwt
+      required: true
     RevokeCredential:
       content:
         application/json:
@@ -476,6 +504,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/SignCredentialResultDto'
+      description: Ok
+    SignCredentialsDm2SdJwtOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2SdJwtResultDto'
+      description: Ok
+    SignCredentialsDm1JwtOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1JwtResultDto'
+      description: Ok
+    SignCredentialsDm2LdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2LdResultDto'
+      description: Ok
+    SignCredentialsDm1LdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1LdResultDto'
       description: Ok
     GetWalletOK:
       content:
@@ -823,6 +875,57 @@ components:
         unsignedCredentialParams:
           $ref: '#/components/schemas/SignCredentialInputDto_unsignedCredentialParams'
       type: object
+    SignCredentialsDm1LdInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: Unsigned Credential in Dm1 format
+          type: object
+        revocable:
+          type: boolean
+      required:
+        - unsignedCredential
+      type: object
+    SignCredentialsDm2LdInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: 'Unsigned Credential in Dm2 format '
+          type: object
+        revocable:
+          type: boolean
+      required:
+        - unsignedCredential
+      type: object
+    SignCredentialsDm2SdJwtInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: Unsigned Credential in Dm2 format
+          type: object
+        revocable:
+          type: boolean
+        disclosureFrame:
+          type: object
+      required:
+        - disclosureFrame
+        - unsignedCredential
+      type: object
+    SignCredentialsDm1JwtInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: Unsigned Credential in Dm1 format
+          type: object
+        revocable:
+          type: boolean
+      required:
+        - unsignedCredential
+      type: object
     GetRevocationListCredentialResultDto:
       description: DTO contains revocation list credential
       example:
@@ -844,6 +947,46 @@ components:
           type: object
       required:
         - signedCredential
+      type: object
+    SignCredentialsDm2SdJwtResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Issued selective disclosure SD in jwt format
+          type: string
+      required:
+        - credential
+      type: object
+    SignCredentialsDm1JwtResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Signed credential in DM2 jwt format
+          type: string
+      required:
+        - credential
+      type: object
+    SignCredentialsDm2LdResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Signed credential can be in Dm2Ld format
+          type: object
+      required:
+        - credential
+      type: object
+    SignCredentialsDm1LdResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Signed credential can be in Dm1Ld format
+          type: object
+      required:
+        - credential
       type: object
     ServiceErrorResponse:
       additionalProperties: false
