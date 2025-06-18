@@ -34,7 +34,7 @@ class MockVaultDataManagerService extends Mock
   }
 
   @override
-  Future<Page<DigitalCredential>> getDigitalCredentials(
+  Future<PaginatedList<DigitalCredential>> getDigitalCredentials(
     String profileId, {
     VaultCancelToken? cancelToken,
     int? limit,
@@ -48,6 +48,6 @@ class MockVaultDataManagerService extends Mock
         #limit: limit,
         #exclusiveStartItemId: exclusiveStartItemId,
       }),
-    ) as Future<Page<DigitalCredential>>;
+    ) as Future<PaginatedList<DigitalCredential>>;
   }
 }

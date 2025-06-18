@@ -1,5 +1,5 @@
-/// A page of items with pagination information
-class Page<T> {
+/// A paginated list of items with pagination information
+class PaginatedList<T> {
   /// The items in this page
   final List<T> items;
 
@@ -18,7 +18,7 @@ class Page<T> {
   bool get hasMore => lastEvaluatedItemId != null;
 
   /// Creates a new page with the given items and optional last evaluated item ID
-  Page({
+  PaginatedList({
     required this.items,
     this.lastEvaluatedItemId,
   });

@@ -34,7 +34,7 @@ void main() {
       group('and creating a folder', () {
         test('it should create a folder successfully', () async {
           when(() => mockService.getChildNodes(nodeId: any(named: 'nodeId')))
-              .thenAnswer((_) async => Page<Node>(
+              .thenAnswer((_) async => PaginatedList<Node>(
                     items: [FileFixtures.mockFolderNode],
                     lastEvaluatedItemId: null,
                   ));
@@ -53,7 +53,7 @@ void main() {
         test('it should throw if folder not found after creation', () async {
           when(() => mockService.getChildNodes(nodeId: any(named: 'nodeId')))
               .thenAnswer((_) async =>
-                  Page<Node>(items: [], lastEvaluatedItemId: null));
+                  PaginatedList<Node>(items: [], lastEvaluatedItemId: null));
 
           expect(
             () => vfsFileStorage.createFolder(
@@ -101,7 +101,7 @@ void main() {
         test('it should get folder contents successfully', () async {
           when(() =>
                   mockService.getChildNodes(nodeId: FileFixtures.testFolderId))
-              .thenAnswer((_) async => Page<Node>(
+              .thenAnswer((_) async => PaginatedList<Node>(
                     items: [
                       FileFixtures.mockFileNode,
                       FileFixtures.mockFolderNode
@@ -127,7 +127,7 @@ void main() {
         test('it should throw for unsupported node type', () async {
           when(() =>
                   mockService.getChildNodes(nodeId: FileFixtures.testFolderId))
-              .thenAnswer((_) async => Page<Node>(
+              .thenAnswer((_) async => PaginatedList<Node>(
                     items: [FileFixtures.unsupportedNode],
                     lastEvaluatedItemId: null,
                   ));
@@ -142,7 +142,7 @@ void main() {
           when(() =>
                   mockService.getChildNodes(nodeId: FileFixtures.testFolderId))
               .thenAnswer((_) async =>
-                  Page<Node>(items: [], lastEvaluatedItemId: null));
+                  PaginatedList<Node>(items: [], lastEvaluatedItemId: null));
 
           final items = await vfsFileStorage.getFolder(
               folderId: FileFixtures.testFolderId);

@@ -13,7 +13,7 @@ export 'src/profile.dart';
 export 'src/storage_interfaces/credential_storage.dart';
 export 'src/storage_interfaces/file_storage.dart';
 export 'src/storage_interfaces/item.dart';
-export 'src/storage_interfaces/page.dart';
+export 'src/storage_interfaces/paginated_list.dart';
 export 'src/storage_interfaces/profile_repository.dart';
 export 'src/storage_interfaces/repository_configuration.dart';
 export 'src/storage_interfaces/shared_storage.dart';

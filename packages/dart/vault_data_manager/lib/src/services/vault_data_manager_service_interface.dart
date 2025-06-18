@@ -41,7 +41,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// [exclusiveStartItemId] - Optional ID to start pagination from. The item with this ID
   /// will be excluded from the results.
   /// [cancelToken] - Optional token to cancel the operation
-  Future<Page<Node>> getChildNodes({
+  Future<PaginatedList<Node>> getChildNodes({
     required String nodeId,
     int? limit,
     String? exclusiveStartItemId,
@@ -251,7 +251,7 @@ abstract interface class VaultDataManagerServiceInterface {
   /// [exclusiveStartItemId] - Optional ID to start pagination from. The item with this ID
   /// will be excluded from the results.
   /// [cancelToken] - Optional token to cancel the operation
-  Future<Page<DigitalCredential>> getDigitalCredentials(
+  Future<PaginatedList<DigitalCredential>> getDigitalCredentials(
     String profileId, {
     int? limit,
     String? exclusiveStartItemId,

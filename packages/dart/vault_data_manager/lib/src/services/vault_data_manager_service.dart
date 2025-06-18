@@ -716,7 +716,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
   }
 
   @override
-  Future<Page<Node>> getChildNodes({
+  Future<PaginatedList<Node>> getChildNodes({
     required String nodeId,
     int? limit,
     String? exclusiveStartItemId,
@@ -733,7 +733,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     final lastEvaluatedItemId = nodesResponse.data?.lastEvaluatedKey;
 
     if (nodesDto == null) {
-      return Page(items: [], lastEvaluatedItemId: null);
+      return PaginatedList(items: [], lastEvaluatedItemId: null);
     }
 
     final childNodes = nodesDto.map((nodesDto) {
@@ -755,14 +755,14 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       );
     }).toList();
 
-    return Page(
+    return PaginatedList(
       items: childNodes,
       lastEvaluatedItemId: lastEvaluatedItemId,
     );
   }
 
   @override
-  Future<Page<DigitalCredential>> getDigitalCredentials(
+  Future<PaginatedList<DigitalCredential>> getDigitalCredentials(
     String profileId, {
     int? limit,
     String? exclusiveStartItemId,
@@ -783,7 +783,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
         verifiableCredentialNodesResponse.data?.lastEvaluatedKey;
 
     if (nodesResponse == null) {
-      return Page(items: [], lastEvaluatedItemId: null);
+      return PaginatedList(items: [], lastEvaluatedItemId: null);
     }
 
     final nodes = nodesResponse
@@ -825,7 +825,7 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
       eagerError: cancelToken != null,
     );
 
-    return Page(
+    return PaginatedList(
       items: verifiableCredentials,
       lastEvaluatedItemId: lastEvaluatedItemId,
     );

@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import '../helpers/vault_cancel_token.dart';
 import 'item.dart';
-import 'page.dart';
+import 'paginated_list.dart';
 
 /// Interface for managing file and folder storage operations.
 abstract class FileStorage {
@@ -11,11 +11,11 @@ abstract class FileStorage {
   String get id;
 
   /// Allows retrieving items within a folder with pagination support
-  /// Returns a [Page] containing the items and pagination information
+  /// Returns a [PaginatedList] containing the items and pagination information
   /// Throws if the folder does not exist
   /// Throws if the folderId does not match a folder
   /// Throws for network connectivity
-  Future<Page<Item>> getFolder({
+  Future<PaginatedList<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,

@@ -27,7 +27,7 @@ class VFSFileStorage implements FileStorage {
   final VaultDataManagerServiceInterface _vaultDataManagerService;
 
   @override
-  Future<Page<Item>> getFolder({
+  Future<PaginatedList<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
@@ -77,7 +77,7 @@ class VFSFileStorage implements FileStorage {
       }
     }).toList();
 
-    return Page(
+    return PaginatedList(
       items: items,
       lastEvaluatedItemId: response.lastEvaluatedItemId,
     );
