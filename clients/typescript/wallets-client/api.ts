@@ -686,6 +686,140 @@ export interface SignCredentialResultDto {
   signedCredential: { [key: string]: any }
 }
 /**
+ * DTO contains params to sign credential
+ * @export
+ * @interface SignCredentialsDm1JwtInputDto
+ */
+export interface SignCredentialsDm1JwtInputDto {
+  /**
+   * Unsigned Credential in Dm1 format
+   * @type {object}
+   * @memberof SignCredentialsDm1JwtInputDto
+   */
+  unsignedCredential: object
+  /**
+   *
+   * @type {boolean}
+   * @memberof SignCredentialsDm1JwtInputDto
+   */
+  revocable?: boolean
+}
+/**
+ * DTO contains signed credential
+ * @export
+ * @interface SignCredentialsDm1JwtResultDto
+ */
+export interface SignCredentialsDm1JwtResultDto {
+  /**
+   * Signed credential in DM2 jwt format
+   * @type {string}
+   * @memberof SignCredentialsDm1JwtResultDto
+   */
+  credential: string
+}
+/**
+ * DTO contains params to sign credential
+ * @export
+ * @interface SignCredentialsDm1LdInputDto
+ */
+export interface SignCredentialsDm1LdInputDto {
+  /**
+   * Unsigned Credential in Dm1 format
+   * @type {object}
+   * @memberof SignCredentialsDm1LdInputDto
+   */
+  unsignedCredential: object
+  /**
+   *
+   * @type {boolean}
+   * @memberof SignCredentialsDm1LdInputDto
+   */
+  revocable?: boolean
+}
+/**
+ * DTO contains signed credential
+ * @export
+ * @interface SignCredentialsDm1LdResultDto
+ */
+export interface SignCredentialsDm1LdResultDto {
+  /**
+   * Signed credential can be in Dm1Ld format
+   * @type {object}
+   * @memberof SignCredentialsDm1LdResultDto
+   */
+  credential: object
+}
+/**
+ * DTO contains params to sign credential
+ * @export
+ * @interface SignCredentialsDm2LdInputDto
+ */
+export interface SignCredentialsDm2LdInputDto {
+  /**
+   * Unsigned Credential in Dm2 format
+   * @type {object}
+   * @memberof SignCredentialsDm2LdInputDto
+   */
+  unsignedCredential: object
+  /**
+   *
+   * @type {boolean}
+   * @memberof SignCredentialsDm2LdInputDto
+   */
+  revocable?: boolean
+}
+/**
+ * DTO contains signed credential
+ * @export
+ * @interface SignCredentialsDm2LdResultDto
+ */
+export interface SignCredentialsDm2LdResultDto {
+  /**
+   * Signed credential can be in Dm2Ld format
+   * @type {object}
+   * @memberof SignCredentialsDm2LdResultDto
+   */
+  credential: object
+}
+/**
+ * DTO contains params to sign credential
+ * @export
+ * @interface SignCredentialsDm2SdJwtInputDto
+ */
+export interface SignCredentialsDm2SdJwtInputDto {
+  /**
+   * Unsigned Credential in Dm2 format
+   * @type {object}
+   * @memberof SignCredentialsDm2SdJwtInputDto
+   */
+  unsignedCredential: object
+  /**
+   *
+   * @type {boolean}
+   * @memberof SignCredentialsDm2SdJwtInputDto
+   */
+  revocable?: boolean
+  /**
+   *
+   * @type {object}
+   * @memberof SignCredentialsDm2SdJwtInputDto
+   */
+  disclosureFrame: object
+}
+/**
+ * DTO contains signed credential
+ * @export
+ * @interface SignCredentialsDm2SdJwtResultDto
+ */
+export interface SignCredentialsDm2SdJwtResultDto {
+  /**
+   * Issued selective disclosure SD in jwt format
+   * @type {string}
+   * @memberof SignCredentialsDm2SdJwtResultDto
+   */
+  credential: string
+}
+/**
  * DTO contains parts of JWT to be signed
  * @export
  * @interface SignJwtToken
