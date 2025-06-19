@@ -1,6 +1,6 @@
 name: vault_example
 description: Vault Example
-version: 1.0.0
+version: 1.1.0
 publish_to: none
 
 environment:
@@ -10,7 +10,7 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_vault: ^1.1.0
-  affinidi_tdk_vault_data_manager: ^1.1.0
+  affinidi_tdk_vault_data_manager: ^1.2.0
   base_codecs: ^1.0.1
   ssi: ^1.0.0
 

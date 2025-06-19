@@ -1,3 +1,16 @@
+# Change Log
+
+## 4.8.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update
+
+---
+
+
 # [3.1.0](https://github.com/affinidi/affinidi-tdk/compare/affinidi_tdk_consumer_auth_provider_dart-v3.0.0...affinidi_tdk_consumer_auth_provider_dart-v3.1.0) (2025-03-17)
 
 

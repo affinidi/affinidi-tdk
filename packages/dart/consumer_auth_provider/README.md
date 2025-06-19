@@ -2,8 +2,6 @@
 
 The Affinidi TDK - Consumer Auth Provider package provides the libraries to authenticate consumers and generate the required consumer token to access vault services securely. It exchanges an encrypted seed and encryption key for a consumer token to authenticate API requests like the Affinidi TDK - Vault Data Manager client.
 
-*This package is still in **EXPERIMENTAL** status.* 
-
 ## Requirements
 
 - Dart SDK version ^3.6.0

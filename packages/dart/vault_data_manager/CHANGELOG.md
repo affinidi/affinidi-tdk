@@ -1,6 +1,16 @@
 # Change Log
 
-## 1.0.0
+## 1.2.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update
+
+---
+
+## 1.1.0
 
 ### Changes
 
