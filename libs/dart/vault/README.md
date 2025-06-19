@@ -10,8 +10,6 @@ It allows you to manage multiple profiles representing your digital identity bas
 
 ## Installation
 
-### Core Vault Package
-
 Run:
 
 ```bash
@@ -25,33 +23,10 @@ dependencies:
   affinidi_tdk_vault: ^<version_number>
 ```
 
-### For Cloud Storage (VFS)
+### Usage
 
-To utilize cloud storage capabilities, you'll also need the Vault Data Manager package:
-
-```bash
-dart pub add affinidi_tdk_vault_data_manager
-```
-
-or add to your `pubspec.yaml`:
-
-```yaml
-dependencies:
-  affinidi_tdk_vault: ^<version_number>
-  affinidi_tdk_vault_data_manager: ^<version_number>
-```
-
-Then run:
-
-```bash
-dart pub get
-```
-
-For more information, visit the pub.dev install page of the Affinidi TDK - Vault package.
-
-## Usage
-
-After successfully installing the package, import it into your code.
+After successfully installing the package, import it into your code.   
+(Note: the sample code below requires the installation of [affinidi_tdk_vault_data_manager](https://pub.dev/packages/affinidi_tdk_vault_data_manager) as a dependency.)
 
 ```dart
 import 'dart:typed_data';
@@ -60,16 +35,16 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 
 void main() async {
-  // KeyStorage
-  final keyStorage = InMemoryVaultStore();
-  var accountIndex = 0;
-  await keyStorage.writeAccountIndex(accountIndex);
+  // Initialise InMemory storage
+  final accountIndex = 0;
+  final vaultStore = InMemoryVaultStore();
+  await vaultStore.writeAccountIndex(accountIndex);
 
-  // seed storage
-  final seed = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
+  // Generate seed from the storage layer
+  final seed = vaultStore.getRandomSeed();
   await keyStorage.setSeed(seed);
 
-  // initialization
+  // Initialise profile interface
   const vfsRepositoryId = 'vfs';
   final profileRepositories = <String, ProfileRepository>{
     vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
