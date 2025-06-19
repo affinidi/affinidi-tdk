@@ -1,5 +1,5 @@
 name: consumer_auth_provider_example
-version: 1.0.0
+version: 1.1.0
 publish_to: none
 
 environment:
@@ -8,7 +8,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_consumer_auth_provider: ^4.4.0
+  affinidi_tdk_consumer_auth_provider: ^4.8.0
   base_codecs: ^1.0.1
   ssi: ^1.0.0
 
