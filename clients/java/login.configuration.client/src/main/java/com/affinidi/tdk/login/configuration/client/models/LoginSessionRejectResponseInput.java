@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -37,7 +35,7 @@ import java.util.StringJoiner;
   LoginSessionRejectResponseInput.JSON_PROPERTY_STATE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
+public class LoginSessionRejectResponseInput {
   public static final String JSON_PROPERTY_ERROR = "error";
   private String error;
 
@@ -48,7 +46,6 @@ public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
   private String state;
 
   public LoginSessionRejectResponseInput() {
-
   }
 
   public LoginSessionRejectResponseInput error(String error) {
@@ -137,20 +134,18 @@ public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
     LoginSessionRejectResponseInput loginSessionRejectResponseInput = (LoginSessionRejectResponseInput) o;
     return Objects.equals(this.error, loginSessionRejectResponseInput.error) &&
         Objects.equals(this.errorDescription, loginSessionRejectResponseInput.errorDescription) &&
-        Objects.equals(this.state, loginSessionRejectResponseInput.state) &&
-        super.equals(o);
+        Objects.equals(this.state, loginSessionRejectResponseInput.state);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, errorDescription, state, super.hashCode());
+    return Objects.hash(error, errorDescription, state);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginSessionRejectResponseInput {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    errorDescription: ").append(toIndentedString(errorDescription)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");

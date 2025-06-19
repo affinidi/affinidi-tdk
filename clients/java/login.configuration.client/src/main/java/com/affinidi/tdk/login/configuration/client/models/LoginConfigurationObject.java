@@ -25,9 +25,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -54,7 +52,7 @@ import java.util.StringJoiner;
   LoginConfigurationObject.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class LoginConfigurationObject extends HashMap<String, Object> {
+public class LoginConfigurationObject {
   public static final String JSON_PROPERTY_ARI = "ari";
   private String ari;
 
@@ -98,7 +96,6 @@ public class LoginConfigurationObject extends HashMap<String, Object> {
   private TokenEndpointAuthMethod tokenEndpointAuthMethod;
 
   public LoginConfigurationObject() {
-
   }
 
   public LoginConfigurationObject ari(String ari) {
@@ -497,20 +494,18 @@ public class LoginConfigurationObject extends HashMap<String, Object> {
         Objects.equals(this.presentationDefinition, loginConfigurationObject.presentationDefinition) &&
         Objects.equals(this.idTokenMapping, loginConfigurationObject.idTokenMapping) &&
         Objects.equals(this.clientMetadata, loginConfigurationObject.clientMetadata) &&
-        Objects.equals(this.tokenEndpointAuthMethod, loginConfigurationObject.tokenEndpointAuthMethod) &&
-        super.equals(o);
+        Objects.equals(this.tokenEndpointAuthMethod, loginConfigurationObject.tokenEndpointAuthMethod);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ari, configurationId, projectId, name, redirectUris, postLogoutRedirectUris, scope, clientId, creationDate, vpDefinition, presentationDefinition, idTokenMapping, clientMetadata, tokenEndpointAuthMethod, super.hashCode());
+    return Objects.hash(ari, configurationId, projectId, name, redirectUris, postLogoutRedirectUris, scope, clientId, creationDate, vpDefinition, presentationDefinition, idTokenMapping, clientMetadata, tokenEndpointAuthMethod);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginConfigurationObject {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
     sb.append("    configurationId: ").append(toIndentedString(configurationId)).append("\n");
     sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
@@ -702,12 +697,7 @@ public class LoginConfigurationObject extends HashMap<String, Object> {
 
     // add `clientMetadata` to the URL query string
     if (getClientMetadata() != null) {
-      try {
-        joiner.add(String.format("%sclientMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientMetadata()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+      joiner.add(getClientMetadata().toUrlQueryString(prefix + "clientMetadata" + suffix));
     }
 
     // add `tokenEndpointAuthMethod` to the URL query string

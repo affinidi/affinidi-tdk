@@ -238,7 +238,7 @@ class _$CreateIotaConfigurationInputSerializer implements PrimitiveSerializer<Cr
             value,
             specifiedType: const FullType(IotaConfigurationDtoClientMetadata),
           ) as IotaConfigurationDtoClientMetadata;
-          result.clientMetadata = valueDes.toBuilder();
+          result.clientMetadata.replace(valueDes);
           break;
         case r'mode':
           final valueDes = serializers.deserialize(
