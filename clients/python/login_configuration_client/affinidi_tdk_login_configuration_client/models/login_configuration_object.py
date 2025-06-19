@@ -43,7 +43,6 @@ class LoginConfigurationObject(BaseModel):
     id_token_mapping: conlist(IdTokenMappingItem, min_items=1) = Field(default=..., alias="idTokenMapping", description="Fields name/path mapping between the vp_token and the id_token")
     client_metadata: LoginConfigurationClientMetadataOutput = Field(default=..., alias="clientMetadata")
     token_endpoint_auth_method: TokenEndpointAuthMethod = Field(default=..., alias="tokenEndpointAuthMethod")
-    additional_properties: Dict[str, Any] = {}
     __properties = ["ari", "configurationId", "projectId", "name", "redirectUris", "postLogoutRedirectUris", "scope", "clientId", "creationDate", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod"]
 
     class Config:
@@ -68,7 +67,6 @@ class LoginConfigurationObject(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "additional_properties"
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in id_token_mapping (list)
@@ -81,11 +79,6 @@ class LoginConfigurationObject(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of client_metadata
         if self.client_metadata:
             _dict['clientMetadata'] = self.client_metadata.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -113,11 +106,6 @@ class LoginConfigurationObject(BaseModel):
             "client_metadata": LoginConfigurationClientMetadataOutput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "token_endpoint_auth_method": obj.get("tokenEndpointAuthMethod")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

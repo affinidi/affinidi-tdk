@@ -1324,8 +1324,6 @@ export interface LoginConfigurationClientMetadataInput {
  * @interface LoginConfigurationClientMetadataOutput
  */
 export interface LoginConfigurationClientMetadataOutput {
-  [key: string]: any
-
   /**
    * application name that will be displayed in consent page
    * @type {string}
@@ -1357,8 +1355,6 @@ export interface LoginConfigurationClientMetadataOutput {
  * @interface LoginConfigurationObject
  */
 export interface LoginConfigurationObject {
-  [key: string]: any
-
   /**
    * Configuration ari
    * @type {string}
@@ -1601,8 +1597,6 @@ export interface LoginSessionForIDPInput {
  * @interface LoginSessionRejectResponseInput
  */
 export interface LoginSessionRejectResponseInput {
-  [key: string]: any
-
   /**
    * The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to request_denied
    * @type {string}

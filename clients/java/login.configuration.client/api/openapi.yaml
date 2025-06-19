@@ -2204,7 +2204,7 @@ components:
       description: Direct Post Response URI endpoint result
       type: object
     LoginSessionRejectResponseInput:
-      additionalProperties: true
+      additionalProperties: false
       description:
         Authorization Response per OpenID for Verifiable Presentations
         Specification
@@ -2228,7 +2228,7 @@ components:
       description: Direct Post Response URI endpoint result
       type: object
     LoginConfigurationObject:
-      additionalProperties: true
+      additionalProperties: false
       example:
         presentationDefinition: '{}'
         clientMetadata:
@@ -2488,7 +2488,7 @@ components:
         - origin
       type: object
     LoginConfigurationClientMetadataOutput:
-      additionalProperties: true
+      additionalProperties: false
       description: login configuration client metadata
       example:
         domainVerified: true

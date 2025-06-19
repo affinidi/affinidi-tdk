@@ -464,12 +464,7 @@ public class CreateLoginConfigurationOutput {
 
     // add `clientMetadata` to the URL query string
     if (getClientMetadata() != null) {
-      try {
-        joiner.add(String.format("%sclientMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientMetadata()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+      joiner.add(getClientMetadata().toUrlQueryString(prefix + "clientMetadata" + suffix));
     }
 
     // add `creationDate` to the URL query string

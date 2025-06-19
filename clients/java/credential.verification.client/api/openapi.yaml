@@ -267,11 +267,14 @@ components:
       example:
         isValid: true
         errors:
-          - VerifyPresentationOutput_errors
-          - VerifyPresentationOutput_errors
+          - errors
+          - errors
       properties:
         errors:
-          $ref: '#/components/schemas/VerifyPresentationOutput_errors'
+          description: Error of the verification
+          items:
+            type: string
+          type: array
         isValid:
           description: Verification result
           type: boolean
@@ -780,19 +783,6 @@ components:
         - name
         - traceId
       type: object
-    VerifyPresentationOutput_errors:
-      anyOf:
-        - items:
-            type: string
-          type: array
-        - items:
-            additionalProperties:
-              items: {}
-              type: array
-            properties: {}
-            type: object
-          type: array
-      description: Error of the verification
     CredentialRequirements_constraints:
       anyOf:
         - items:
