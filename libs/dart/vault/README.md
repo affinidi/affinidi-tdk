@@ -4,13 +4,13 @@ The Affinidi TDK Vault package provides libraries and tools for embedding Affini
 
 It allows you to manage multiple profiles representing your digital identity based on different contexts, including the data related to the profile stored in secure cloud storage; for example, you can have an identity for shopping, banking, or work.
 
-*This package is still in **EXPERIMENTAL** status.* 
-
 ## Requirements
 
 - Dart SDK version ^3.6.0
 
 ## Installation
+
+### Core Vault Package
 
 Run:
 
@@ -25,7 +25,23 @@ dependencies:
   affinidi_tdk_vault: ^<version_number>
 ```
 
-and then run the command below to install the package:
+### For Cloud Storage (VFS)
+
+To utilize cloud storage capabilities, you'll also need the Vault Data Manager package:
+
+```bash
+dart pub add affinidi_tdk_vault_data_manager
+```
+
+or add to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  affinidi_tdk_vault: ^<version_number>
+  affinidi_tdk_vault_data_manager: ^<version_number>
+```
+
+Then run:
 
 ```bash
 dart pub get
@@ -40,21 +56,18 @@ After successfully installing the package, import it into your code.
 ```dart
 import 'dart:typed_data';
 
-import 'package:base_codecs/base_codecs.dart';
-import 'package:iam_api_service/iam_api_service.dart';
-import 'package:ssi/src/wallet/stores/in_memory_key_store.dart';
-import 'package:ssi/ssi.dart';
-import 'package:storages_interface/storages.dart';
-import 'package:vault_interface/vault.dart';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 
 void main() async {
   // KeyStorage
-  final accountIndex = 23;
   final keyStorage = InMemoryVaultStore();
+  var accountIndex = 0;
   await keyStorage.writeAccountIndex(accountIndex);
 
   // seed storage
   final seed = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
+  await keyStorage.setSeed(seed);
 
   // initialization
   const vfsRepositoryId = 'vfs';
@@ -62,12 +75,9 @@ void main() async {
     vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
   };
 
-  // from wallet
-  final keyStore = InMemoryKeyStore();
-  final wallet = await Bip32Wallet.fromSeed(seed, keyStore);
-  final vault = Vault(
-    wallet: wallet,
-    vaultStore: keyStorage,
+  // Create vault from vault store
+  final vault = await Vault.fromVaultStore(
+    keyStorage,
     profileRepositories: profileRepositories,
     defaultProfileRepositoryId: vfsRepositoryId,
   );
@@ -77,6 +87,8 @@ void main() async {
 }
 
 ```
+
+**Note**: The example above uses `VfsProfileRepository` from the `affinidi_tdk_vault_data_manager` package to enable cloud storage functionality. If you only need local storage or custom implementations, you can use just the core vault package.
 
 For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example).
 

@@ -12,7 +12,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_vault: 1.1.0-dev.14
+  affinidi_tdk_vault: 1.1.0-dev.15
   flutter:
     sdk: flutter
   flutter_secure_storage: ^9.2.4
