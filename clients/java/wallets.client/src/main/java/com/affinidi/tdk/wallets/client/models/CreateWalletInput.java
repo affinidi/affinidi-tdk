@@ -15,8 +15,6 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.wallets.client.models.DidKeyInputParams;
-import com.affinidi.tdk.wallets.client.models.DidWebInputParams;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -46,10 +44,12 @@ public class CreateWalletInput {
   private String description;
 
   /**
-   * Gets or Sets didMethod
+   * Define how DID of your wallet is created and resolved
    */
   public enum DidMethodEnum {
-    KEY("key");
+    KEY("key"),
+    
+    WEB("web");
 
     private String value;
 
@@ -144,7 +144,7 @@ public class CreateWalletInput {
   }
 
   /**
-   * Get didMethod
+   * Define how DID of your wallet is created and resolved
    * @return didMethod
    */
   @javax.annotation.Nonnull
@@ -169,12 +169,12 @@ public class CreateWalletInput {
   }
 
   /**
-   * If the did method is web, this is the URL of the did
+   * URL of the DID. Required if the did method is web
    * @return didWebUrl
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DID_WEB_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDidWebUrl() {
     return didWebUrl;
@@ -182,7 +182,7 @@ public class CreateWalletInput {
 
 
   @JsonProperty(JSON_PROPERTY_DID_WEB_URL)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDidWebUrl(String didWebUrl) {
     this.didWebUrl = didWebUrl;
   }
