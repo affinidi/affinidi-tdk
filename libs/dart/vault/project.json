@@ -14,18 +14,14 @@
     },
     "lint": {
       "executor": "nx:run-commands",
-      "dependsOn": [
-        "prepare"
-      ],
+      "dependsOn": ["prepare"],
       "options": {
         "cwd": "{projectRoot}",
         "command": "dart format --set-exit-if-changed . && dart analyze --fatal-infos"
       }
     },
     "test": {
-      "dependsOn": [
-        "prepare"
-      ],
+      "dependsOn": ["prepare"],
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
@@ -33,10 +29,7 @@
       }
     },
     "build": {
-      "dependsOn": [
-        "lint",
-        "test"
-      ]
+      "dependsOn": ["lint", "test"]
     },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
@@ -51,9 +44,7 @@
     },
     "publish": {
       "executor": "nx:run-commands",
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "options": {
         "cwd": "{projectRoot}",
         "commands": [
@@ -64,8 +55,5 @@
       }
     }
   },
-  "tags": [
-    "lang:dart",
-    "kind:package"
-  ]
+  "tags": ["lang:dart", "kind:package"]
 }
