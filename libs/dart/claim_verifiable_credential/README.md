@@ -2,8 +2,6 @@
 
 The Affinidi TDK - Claim Verifiable Credential package provides the libraries with the ability to find and claim Verifiable Credentials issued to users from the Credential Issuer Service.
 
-*This package is still in **EXPERIMENTAL** status.* 
-
 ## Key Features
 
 - Load credential offers from URIs.

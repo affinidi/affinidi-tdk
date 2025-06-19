@@ -2,14 +2,14 @@
 
 The Affinidi TDK - Vault Data Manager package provides the interface to interact with Afinidi's Vault Data Manager service. This package enables you to manage profiles, folders, and files stored in secure cloud storage.
 
-*This package is still in **EXPERIMENTAL** status.* 
-
 ## Key Features
 
 - Secure encryption & decryption of Data Encryption Keys (DEKs).
 - Wallet-based encryption and decryption of DEKs.
 - API public key-based encryption of DEKs.
 - Secure key derivation using PBKDF2.
+- VFS (Virtual File System) profile repository implementation.
+- File and credential storage management.
 
 ## Requirements
 
@@ -42,12 +42,14 @@ For more information, visit the pub.dev install page of the Affinidi TDK - Vault
 
 After successfully installing the package, import it into your code.
 
+### Encryption Service Example
+
+This example shows how to encrypt a DEK that was encrypted with wallet material and convert it to be encrypted with the API public key.
+
 ```dart
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 
-/// This example shows how to encrypt a DEK that was encrypted with
-/// wallet material and convert it to be encrypted with the API public key.
 Future<void> main() async {
   final vaultDataManagerEncryptionService = VaultDataManagerEncryptionService(
     kek: encryptionKey,
@@ -59,11 +61,43 @@ Future<void> main() async {
       await vaultDataManagerEncryptionService.getDekEncryptedByApiPublicKey(encryptedDekBase64: encryptedDekBase64);
   print('API encrypted DEK: $dekEncryptedByApiPublicKey');
 }
+```
 
+### Real Application Usage
+
+In real applications, the Vault Data Manager is typically used through the Vault package. Here's an example of how it's commonly integrated:
+
+```dart
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
+import 'package:affinidi_tdk_vault_flutter_utils/vault_flutter_utils.dart';
+
+final _openVaultProvider = FutureProvider.family<Vault, String>((ref, password) async {
+  try {
+    final seedAlice = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
+    final keyStore = FlutterSecureVaultStore('alice_vault_secure_storage');
+    await keyStore.clear();
+    await keyStore.setSeed(seedAlice);
+    
+    final vfsRepositoryId = 'alice_vfs_repository';
+    final profileRepositoriesAlice = <String, ProfileRepository>{
+      vfsRepositoryId: VfsProfileRepository(vfsRepositoryId),
+    };
+    
+    return Vault.fromVaultStore(
+      keyStore,
+      profileRepositories: profileRepositoriesAlice,
+      defaultProfileRepositoryId: vfsRepositoryId,
+    );
+  } catch (e, stackTrace) {
+    log('Error creating Alice\'s vault: $e', name: 'VaultService');
+    log('Stack trace: $stackTrace', name: 'VaultService');
+    rethrow;
+  }
+}, name: 'openVaultProvider');
 ```
 
 For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/packages/dart/vault_data_manager/example).
-
 
 ## Support & feedback
 
