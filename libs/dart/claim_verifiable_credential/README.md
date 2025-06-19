@@ -46,8 +46,36 @@ import 'package:affinidi_tdk_claim_verifiable_credential/oid4vci_claim_verifiabl
 
 void main() async {
 
+  // Create an instance of CredentialClaimService
   final credentialService = CredentialClaimService(
-    seed: yourSeedBytes, // Uint8List containing your seed
+    seed: <yourSeedBytes>, // Uint8List containing your seed
+  );
+
+  // Generate the did document using publicKey
+  final didDocument = DidKey.generateDocument(keyPair.publicKey);
+  
+  // Create an instance of DidSigner
+  final signer = DidSigner(
+    didDocument: didDocument,
+    didKeyId: didDocument.verificationMethod.first.id,
+    keyPair: keyPair,
+    signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
+  );
+
+  // Create a new instance of ClaimVerifiableCredentialService with the created didSigner
+  final claimVerifiableCredentialService = OID4VCIClaimVerifiableCredentialService(didSigner: signer,);
+
+  // Parse the credential offer url
+  final uri = Uri.parse(
+    'https://example.com/callback?credential_offer_uri=https://issuer.example.com/offer/123',
+  );
+
+  // Load creantialOffer
+  final context = await claimVerifiableCredentialService.loadCredentialOffer(uri);
+
+  // claim the credential
+  final credential = await claimVerifiableCredentialService.claimCredential(
+    claimContext: context,
   );
 }
 ```
