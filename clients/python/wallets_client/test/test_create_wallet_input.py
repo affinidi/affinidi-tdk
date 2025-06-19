@@ -45,7 +45,6 @@ class TestCreateWalletInput(unittest.TestCase):
         else:
             return CreateWalletInput(
                 did_method = 'key',
-                did_web_url = '/jULCSLv1C1ylmgd0.Y2TA5TkIRHRRA401iz1CiIykN3HUO6XMsJPGh8AsaLONiNuo2ZPKNpkA:860148202650912727550417577019298162864882916633/AbcfRIWWYFRBE6dB-lRX-6YlPIKV0ZFMchJk4DAKCz0ctzsHX3oHgcl01UtuaRfjvm',
         )
         """
 

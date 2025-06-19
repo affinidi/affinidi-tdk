@@ -426,6 +426,20 @@ components:
     CreateWallet:
       content:
         application/json:
+          examples:
+            exampleWithKey:
+              summary: DID using `key` method
+              value:
+                name: AliceWallet
+                description: Personal wallet using did:key
+                didMethod: key
+            exampleWithWeb:
+              summary: DID using `web` method
+              value:
+                name: CorpWallet
+                description: Wallet for corporate identity
+                didMethod: web
+                didWebUrl: example.com
           schema:
             $ref: '#/components/schemas/CreateWalletInput'
       description: CreateWallet
@@ -443,6 +457,34 @@ components:
           schema:
             $ref: '#/components/schemas/SignCredentialInputDto'
       description: SignCredential
+      required: true
+    signCredentialsDm1Ld:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1LdInputDto'
+      description: signCredentialsDm1Ld
+      required: true
+    signCredentialsDm2Ld:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2LdInputDto'
+      description: signCredentialsDm2Ld
+      required: true
+    SignCredentialsDm2SdJwt:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2SdJwtInputDto'
+      description: SignCredentialsDm1SdJwt
+      required: true
+    signCredentialsDm1jwt:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1JwtInputDto'
+      description: signCredentialsDm1jwt
       required: true
     RevokeCredential:
       content:
@@ -476,6 +518,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/SignCredentialResultDto'
+      description: Ok
+    SignCredentialsDm2SdJwtOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2SdJwtResultDto'
+      description: Ok
+    SignCredentialsDm1JwtOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1JwtResultDto'
+      description: Ok
+    SignCredentialsDm2LdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm2LdResultDto'
+      description: Ok
+    SignCredentialsDm1LdOK:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SignCredentialsDm1LdResultDto'
       description: Ok
     GetWalletOK:
       content:
@@ -623,9 +689,35 @@ components:
       description: NotFoundError
   schemas:
     CreateWalletInput:
-      oneOf:
-        - $ref: '#/components/schemas/DidWebInputParams'
-        - $ref: '#/components/schemas/DidKeyInputParams'
+      additionalProperties: false
+      example:
+        didMethod: key
+        didWebUrl: didWebUrl
+        name: name
+        description: description
+      properties:
+        name:
+          description: The name of the wallet
+          type: string
+        description:
+          description: The description of the wallet
+          type: string
+        didMethod:
+          description: Define how DID of your wallet is created and resolved
+          enum:
+            - key
+            - web
+          type: string
+        didWebUrl:
+          description: URL of the DID. Required if the did method is web
+          maxLength: 300
+          pattern:
+            "^(?!:\\/\\/)([a-zA-Z0-9\\-\\.]+)(:[0-9]+)?(\\/[a-zA-Z0-9\\-\\\
+            /]*)?$"
+          type: string
+      required:
+        - didMethod
+      type: object
     UpdateWalletInput:
       additionalProperties: false
       description: Update wallet input params
@@ -638,51 +730,6 @@ components:
           type: string
         description:
           description: The description of the wallet
-          type: string
-      type: object
-    DidWebInputParams:
-      additionalProperties: false
-      description: Additional params for did method web
-      example:
-        didMethod: web
-        didWebUrl: didWebUrl
-        name: name
-        description: description
-      properties:
-        name:
-          description: The name of the wallet
-          type: string
-        description:
-          description: The description of the wallet
-          type: string
-        didMethod:
-          enum:
-            - web
-          type: string
-        didWebUrl:
-          description: 'If the did method is web, this is the URL of the did'
-          maxLength: 300
-          pattern:
-            "^(?!:\\/\\/)([a-zA-Z0-9\\-\\.]+)(:[0-9]+)?(\\/[a-zA-Z0-9\\-\\\
-            /]*)?$"
-          type: string
-      required:
-        - didMethod
-        - didWebUrl
-      type: object
-    DidKeyInputParams:
-      additionalProperties: false
-      description: Did key input params
-      properties:
-        name:
-          description: The name of the wallet
-          type: string
-        description:
-          description: The description of the wallet
-          type: string
-        didMethod:
-          enum:
-            - key
           type: string
       type: object
     EmptyInput:
@@ -823,6 +870,57 @@ components:
         unsignedCredentialParams:
           $ref: '#/components/schemas/SignCredentialInputDto_unsignedCredentialParams'
       type: object
+    SignCredentialsDm1LdInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: Unsigned Credential in Dm1 format
+          type: object
+        revocable:
+          type: boolean
+      required:
+        - unsignedCredential
+      type: object
+    SignCredentialsDm2LdInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: 'Unsigned Credential in Dm2 format '
+          type: object
+        revocable:
+          type: boolean
+      required:
+        - unsignedCredential
+      type: object
+    SignCredentialsDm2SdJwtInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: Unsigned Credential in Dm2 format
+          type: object
+        revocable:
+          type: boolean
+        disclosureFrame:
+          type: object
+      required:
+        - disclosureFrame
+        - unsignedCredential
+      type: object
+    SignCredentialsDm1JwtInputDto:
+      additionalProperties: false
+      description: DTO contains params to sign credential
+      properties:
+        unsignedCredential:
+          description: Unsigned Credential in Dm1 format
+          type: object
+        revocable:
+          type: boolean
+      required:
+        - unsignedCredential
+      type: object
     GetRevocationListCredentialResultDto:
       description: DTO contains revocation list credential
       example:
@@ -844,6 +942,46 @@ components:
           type: object
       required:
         - signedCredential
+      type: object
+    SignCredentialsDm2SdJwtResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Issued selective disclosure SD in jwt format
+          type: string
+      required:
+        - credential
+      type: object
+    SignCredentialsDm1JwtResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Signed credential in DM2 jwt format
+          type: string
+      required:
+        - credential
+      type: object
+    SignCredentialsDm2LdResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Signed credential can be in Dm2Ld format
+          type: object
+      required:
+        - credential
+      type: object
+    SignCredentialsDm1LdResultDto:
+      additionalProperties: false
+      description: DTO contains signed credential
+      properties:
+        credential:
+          description: Signed credential can be in Dm1Ld format
+          type: object
+      required:
+        - credential
       type: object
     ServiceErrorResponse:
       additionalProperties: false

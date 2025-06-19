@@ -4,10 +4,10 @@ Response model of /verify-vp
 
 ## Properties
 
-| Name         | Type                                                                    | Description         | Notes |
-| ------------ | ----------------------------------------------------------------------- | ------------------- | ----- |
-| **errors**   | [**VerifyPresentationOutputErrors**](VerifyPresentationOutputErrors.md) |                     |
-| **is_valid** | **bool**                                                                | Verification result |
+| Name         | Type          | Description               | Notes |
+| ------------ | ------------- | ------------------------- | ----- |
+| **errors**   | **List[str]** | Error of the verification |
+| **is_valid** | **bool**      | Verification result       |
 
 ## Example
 

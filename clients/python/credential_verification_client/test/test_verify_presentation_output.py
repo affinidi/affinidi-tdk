@@ -37,12 +37,16 @@ class TestVerifyPresentationOutput(unittest.TestCase):
         model = VerifyPresentationOutput()  # noqa: E501
         if include_optional:
             return VerifyPresentationOutput(
-                errors = None,
+                errors = [
+                    ''
+                    ],
                 is_valid = True
             )
         else:
             return VerifyPresentationOutput(
-                errors = None,
+                errors = [
+                    ''
+                    ],
                 is_valid = True,
         )
         """
