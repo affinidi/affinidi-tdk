@@ -1,6 +1,6 @@
 name: affinidi_tdk_test_utilities
 description: The Affinidi TDK - Utilities package provides the libraries to mock requests for testing.
-version: 1.0.0-dev.3
+version: 1.0.0
 
 environment:
   sdk: ^3.6.0

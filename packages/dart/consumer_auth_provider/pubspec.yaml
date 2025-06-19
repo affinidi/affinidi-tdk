@@ -20,6 +20,6 @@ dependencies:
   web3dart: ^3.0.0
 
 dev_dependencies:
-  affinidi_tdk_test_utilities: 1.0.0-dev.3
+  affinidi_tdk_test_utilities: ^1.0.0
   dart_flutter_team_lints: ^3.2.1
   test: ^1.24.0

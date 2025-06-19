@@ -39,10 +39,7 @@
         "github": true,
         "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
-        "branches": [
-          "temp",
-          { "name": "main", "channel": "prerelease", "prerelease": "dev" }
-        ]
+        "branches": ["main"]
       }
     },
     "publish": {
