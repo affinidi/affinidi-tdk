@@ -1,3 +1,22 @@
+# Change Log
+
+## 1.1.0
+
+### Changes
+
+---
+
+Promote package for the stable release, which encapsulates these feature(s):
+
+* Enables Vault creation using the Wallet implementation from the [SSI package](https://pub.dev/packages/ssi).
+
+* Supports creating, managing, and deleting cloud profiles via Affinidi’s services using the [Affinidi Vault Data Manager package](https://pub.dev/packages/affinidi_tdk_vault_data_manager).
+
+* Provides the ability to share cloud profiles and retrieve shared profiles.
+
+
+---
+
 ## 1.0.0-dev.2
 
 - Initial version.
