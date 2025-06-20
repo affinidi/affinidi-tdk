@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -37,7 +35,7 @@ import java.util.StringJoiner;
   IotaConfigurationDtoClientMetadata.JSON_PROPERTY_LOGO
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> {
+public class IotaConfigurationDtoClientMetadata {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
@@ -48,7 +46,6 @@ public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> 
   private String logo;
 
   public IotaConfigurationDtoClientMetadata() {
-
   }
 
   public IotaConfigurationDtoClientMetadata name(String name) {
@@ -137,20 +134,18 @@ public class IotaConfigurationDtoClientMetadata extends HashMap<String, Object> 
     IotaConfigurationDtoClientMetadata iotaConfigurationDtoClientMetadata = (IotaConfigurationDtoClientMetadata) o;
     return Objects.equals(this.name, iotaConfigurationDtoClientMetadata.name) &&
         Objects.equals(this.origin, iotaConfigurationDtoClientMetadata.origin) &&
-        Objects.equals(this.logo, iotaConfigurationDtoClientMetadata.logo) &&
-        super.equals(o);
+        Objects.equals(this.logo, iotaConfigurationDtoClientMetadata.logo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, origin, logo, super.hashCode());
+    return Objects.hash(name, origin, logo);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class IotaConfigurationDtoClientMetadata {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    logo: ").append(toIndentedString(logo)).append("\n");

@@ -14,129 +14,82 @@
 
 
 from __future__ import annotations
-from inspect import getfullargspec
-import json
 import pprint
 import re  # noqa: F401
+import json
 
-from typing import Any, List, Optional
-from pydantic import BaseModel, Field, StrictStr, ValidationError, validator
-from affinidi_tdk_wallets_client.models.did_key_input_params import DidKeyInputParams
-from affinidi_tdk_wallets_client.models.did_web_input_params import DidWebInputParams
-from typing import Union, Any, List, TYPE_CHECKING
-from pydantic import StrictStr, Field
 
-CREATEWALLETINPUT_ONE_OF_SCHEMAS = ["DidKeyInputParams", "DidWebInputParams"]
+from typing import Optional
+from pydantic import BaseModel, Field, StrictStr, constr, validator
 
 class CreateWalletInput(BaseModel):
     """
     CreateWalletInput
     """
-    # data type: DidWebInputParams
-    oneof_schema_1_validator: Optional[DidWebInputParams] = None
-    # data type: DidKeyInputParams
-    oneof_schema_2_validator: Optional[DidKeyInputParams] = None
-    if TYPE_CHECKING:
-        actual_instance: Union[DidKeyInputParams, DidWebInputParams]
-    else:
-        actual_instance: Any
-    one_of_schemas: List[str] = Field(CREATEWALLETINPUT_ONE_OF_SCHEMAS, const=True)
+    name: Optional[StrictStr] = Field(default=None, description="The name of the wallet")
+    description: Optional[StrictStr] = Field(default=None, description="The description of the wallet")
+    did_method: StrictStr = Field(default=..., alias="didMethod", description="Define how DID of your wallet is created and resolved")
+    did_web_url: Optional[constr(strict=True, max_length=300)] = Field(default=None, alias="didWebUrl", description="URL of the DID. Required if the did method is web")
+    __properties = ["name", "description", "didMethod", "didWebUrl"]
+
+    @validator('did_method')
+    def did_method_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in ('key', 'web'):
+            raise ValueError("must be one of enum values ('key', 'web')")
+        return value
+
+    @validator('did_web_url')
+    def did_web_url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$", value):
+            raise ValueError(r"must validate the regular expression /^(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$/")
+        return value
 
     class Config:
+        """Pydantic configuration"""
+        allow_population_by_field_name = True
         validate_assignment = True
 
-    def __init__(self, *args, **kwargs) -> None:
-        if args:
-            if len(args) > 1:
-                raise ValueError("If a position argument is used, only 1 is allowed to set `actual_instance`")
-            if kwargs:
-                raise ValueError("If a position argument is used, keyword arguments cannot be used.")
-            super().__init__(actual_instance=args[0])
-        else:
-            super().__init__(**kwargs)
+    def to_str(self) -> str:
+        """Returns the string representation of the model using alias"""
+        return pprint.pformat(self.dict(by_alias=True))
 
-    @validator('actual_instance')
-    def actual_instance_must_validate_oneof(cls, v):
-        instance = CreateWalletInput.construct()
-        error_messages = []
-        match = 0
-        # validate data type: DidWebInputParams
-        if not isinstance(v, DidWebInputParams):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `DidWebInputParams`")
-        else:
-            match += 1
-        # validate data type: DidKeyInputParams
-        if not isinstance(v, DidKeyInputParams):
-            error_messages.append(f"Error! Input type `{type(v)}` is not `DidKeyInputParams`")
-        else:
-            match += 1
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when setting `actual_instance` in CreateWalletInput with oneOf schemas: DidKeyInputParams, DidWebInputParams. Details: " + ", ".join(error_messages))
-        elif match == 0:
-            # no match
-            raise ValueError("No match found when setting `actual_instance` in CreateWalletInput with oneOf schemas: DidKeyInputParams, DidWebInputParams. Details: " + ", ".join(error_messages))
-        else:
-            return v
-
-    @classmethod
-    def from_dict(cls, obj: dict) -> CreateWalletInput:
-        return cls.from_json(json.dumps(obj))
+    def to_json(self) -> str:
+        """Returns the JSON representation of the model using alias"""
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> CreateWalletInput:
-        """Returns the object represented by the json string"""
-        instance = CreateWalletInput.construct()
-        error_messages = []
-        match = 0
+        """Create an instance of CreateWalletInput from a JSON string"""
+        return cls.from_dict(json.loads(json_str))
 
-        # deserialize data into DidWebInputParams
-        try:
-            instance.actual_instance = DidWebInputParams.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
-        # deserialize data into DidKeyInputParams
-        try:
-            instance.actual_instance = DidKeyInputParams.from_json(json_str)
-            match += 1
-        except (ValidationError, ValueError) as e:
-            error_messages.append(str(e))
+    def to_dict(self):
+        """Returns the dictionary representation of the model using alias"""
+        _dict = self.dict(by_alias=True,
+                          exclude={
+                          },
+                          exclude_none=True)
+        return _dict
 
-        if match > 1:
-            # more than 1 match
-            raise ValueError("Multiple matches found when deserializing the JSON string into CreateWalletInput with oneOf schemas: DidKeyInputParams, DidWebInputParams. Details: " + ", ".join(error_messages))
-        elif match == 0:
-            # no match
-            raise ValueError("No match found when deserializing the JSON string into CreateWalletInput with oneOf schemas: DidKeyInputParams, DidWebInputParams. Details: " + ", ".join(error_messages))
-        else:
-            return instance
-
-    def to_json(self) -> str:
-        """Returns the JSON representation of the actual instance"""
-        if self.actual_instance is None:
-            return "null"
-
-        to_json = getattr(self.actual_instance, "to_json", None)
-        if callable(to_json):
-            return self.actual_instance.to_json()
-        else:
-            return json.dumps(self.actual_instance)
-
-    def to_dict(self) -> dict:
-        """Returns the dict representation of the actual instance"""
-        if self.actual_instance is None:
+    @classmethod
+    def from_dict(cls, obj: dict) -> CreateWalletInput:
+        """Create an instance of CreateWalletInput from a dict"""
+        if obj is None:
             return None
 
-        to_dict = getattr(self.actual_instance, "to_dict", None)
-        if callable(to_dict):
-            return self.actual_instance.to_dict()
-        else:
-            # primitive type
-            return self.actual_instance
+        if not isinstance(obj, dict):
+            return CreateWalletInput.parse_obj(obj)
 
-    def to_str(self) -> str:
-        """Returns the string representation of the actual instance"""
-        return pprint.pformat(self.dict())
+        _obj = CreateWalletInput.parse_obj({
+            "name": obj.get("name"),
+            "description": obj.get("description"),
+            "did_method": obj.get("didMethod"),
+            "did_web_url": obj.get("didWebUrl")
+        })
+        return _obj
 
 

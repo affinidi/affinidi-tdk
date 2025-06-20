@@ -41,7 +41,6 @@ affinidi_tdk_credential_verification_client/models/verify_credential_input.py
 affinidi_tdk_credential_verification_client/models/verify_credential_output.py
 affinidi_tdk_credential_verification_client/models/verify_presentation_input.py
 affinidi_tdk_credential_verification_client/models/verify_presentation_output.py
-affinidi_tdk_credential_verification_client/models/verify_presentation_output_errors.py
 affinidi_tdk_credential_verification_client/models/w3c_credential_status.py
 affinidi_tdk_credential_verification_client/models/w3c_proof.py
 affinidi_tdk_credential_verification_client/py.typed
@@ -78,7 +77,6 @@ docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
-docs/VerifyPresentationOutputErrors.md
 docs/W3cCredentialStatus.md
 docs/W3cProof.md
 project.json
@@ -120,7 +118,6 @@ test/test_verify_credential_input.py
 test/test_verify_credential_output.py
 test/test_verify_presentation_input.py
 test/test_verify_presentation_output.py
-test/test_verify_presentation_output_errors.py
 test/test_w3c_credential_status.py
 test/test_w3c_proof.py
 tox.ini

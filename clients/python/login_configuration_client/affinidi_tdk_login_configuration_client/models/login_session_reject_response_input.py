@@ -29,7 +29,6 @@ class LoginSessionRejectResponseInput(BaseModel):
     error: Optional[StrictStr] = Field(default=None, description="The error should follow the OAuth2 error format (e.g. invalid_request, login_required). Defaults to request_denied")
     error_description: Optional[StrictStr] = Field(default=None, alias="errorDescription", description="Description of the error in a human readable format")
     state: StrictStr = Field(default=..., description="Random state associated to the Session")
-    additional_properties: Dict[str, Any] = {}
     __properties = ["error", "errorDescription", "state"]
 
     class Config:
@@ -54,14 +53,8 @@ class LoginSessionRejectResponseInput(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "additional_properties"
                           },
                           exclude_none=True)
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -78,11 +71,6 @@ class LoginSessionRejectResponseInput(BaseModel):
             "error_description": obj.get("errorDescription"),
             "state": obj.get("state")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 
