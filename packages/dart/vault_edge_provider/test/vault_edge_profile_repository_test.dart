@@ -76,6 +76,17 @@ void main() {
           )),
         );
       });
+
+      test('it throws error when configuration is wrong type', () async {
+        expect(
+          () async => await sut.configure('invalid configuration'),
+          throwsA(isA<TdkException>().having(
+            (error) => error.code,
+            'code',
+            TdkExceptionType.invalidRepositoryConfigurationType.code,
+          )),
+        );
+      });
     });
   });
 
