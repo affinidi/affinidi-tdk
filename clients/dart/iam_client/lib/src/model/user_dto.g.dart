@@ -11,15 +11,19 @@ class _$UserDto extends UserDto {
   final String principalId;
 
   factory _$UserDto([void Function(UserDtoBuilder)? updates]) =>
-      (UserDtoBuilder()..update(updates))._build();
+      (new UserDtoBuilder()..update(updates))._build();
 
-  _$UserDto._({required this.principalId}) : super._();
+  _$UserDto._({required this.principalId}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        principalId, r'UserDto', 'principalId');
+  }
+
   @override
   UserDto rebuild(void Function(UserDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserDtoBuilder toBuilder() => UserDtoBuilder()..replace(this);
+  UserDtoBuilder toBuilder() => new UserDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -65,6 +69,7 @@ class UserDtoBuilder implements Builder<UserDto, UserDtoBuilder> {
 
   @override
   void replace(UserDto other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UserDto;
   }
 
@@ -78,7 +83,7 @@ class UserDtoBuilder implements Builder<UserDto, UserDtoBuilder> {
 
   _$UserDto _build() {
     final _$result = _$v ??
-        _$UserDto._(
+        new _$UserDto._(
           principalId: BuiltValueNullFieldError.checkNotNull(
               principalId, r'UserDto', 'principalId'),
         );

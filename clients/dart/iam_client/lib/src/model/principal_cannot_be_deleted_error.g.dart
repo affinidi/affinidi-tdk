@@ -17,12 +17,12 @@ PrincipalCannotBeDeletedErrorNameEnum
     case 'principalCannotBeDeletedError':
       return _$principalCannotBeDeletedErrorNameEnum_principalCannotBeDeletedError;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<PrincipalCannotBeDeletedErrorNameEnum>
-    _$principalCannotBeDeletedErrorNameEnumValues = BuiltSet<
+    _$principalCannotBeDeletedErrorNameEnumValues = new BuiltSet<
         PrincipalCannotBeDeletedErrorNameEnum>(const <PrincipalCannotBeDeletedErrorNameEnum>[
   _$principalCannotBeDeletedErrorNameEnum_principalCannotBeDeletedError,
 ]);
@@ -38,12 +38,12 @@ PrincipalCannotBeDeletedErrorMessageEnum
     case 'cannotDeleteOwnRecordFromTheProjectWithTheSamePrincipalId':
       return _$principalCannotBeDeletedErrorMessageEnum_cannotDeleteOwnRecordFromTheProjectWithTheSamePrincipalId;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<PrincipalCannotBeDeletedErrorMessageEnum>
-    _$principalCannotBeDeletedErrorMessageEnumValues = BuiltSet<
+    _$principalCannotBeDeletedErrorMessageEnumValues = new BuiltSet<
         PrincipalCannotBeDeletedErrorMessageEnum>(const <PrincipalCannotBeDeletedErrorMessageEnum>[
   _$principalCannotBeDeletedErrorMessageEnum_cannotDeleteOwnRecordFromTheProjectWithTheSamePrincipalId,
 ]);
@@ -58,25 +58,25 @@ PrincipalCannotBeDeletedErrorHttpStatusCodeEnum
     case 'number409':
       return _$principalCannotBeDeletedErrorHttpStatusCodeEnum_number409;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<PrincipalCannotBeDeletedErrorHttpStatusCodeEnum>
-    _$principalCannotBeDeletedErrorHttpStatusCodeEnumValues = BuiltSet<
+    _$principalCannotBeDeletedErrorHttpStatusCodeEnumValues = new BuiltSet<
         PrincipalCannotBeDeletedErrorHttpStatusCodeEnum>(const <PrincipalCannotBeDeletedErrorHttpStatusCodeEnum>[
   _$principalCannotBeDeletedErrorHttpStatusCodeEnum_number409,
 ]);
 
 Serializer<PrincipalCannotBeDeletedErrorNameEnum>
     _$principalCannotBeDeletedErrorNameEnumSerializer =
-    _$PrincipalCannotBeDeletedErrorNameEnumSerializer();
+    new _$PrincipalCannotBeDeletedErrorNameEnumSerializer();
 Serializer<PrincipalCannotBeDeletedErrorMessageEnum>
     _$principalCannotBeDeletedErrorMessageEnumSerializer =
-    _$PrincipalCannotBeDeletedErrorMessageEnumSerializer();
+    new _$PrincipalCannotBeDeletedErrorMessageEnumSerializer();
 Serializer<PrincipalCannotBeDeletedErrorHttpStatusCodeEnum>
     _$principalCannotBeDeletedErrorHttpStatusCodeEnumSerializer =
-    _$PrincipalCannotBeDeletedErrorHttpStatusCodeEnumSerializer();
+    new _$PrincipalCannotBeDeletedErrorHttpStatusCodeEnumSerializer();
 
 class _$PrincipalCannotBeDeletedErrorNameEnumSerializer
     implements PrimitiveSerializer<PrincipalCannotBeDeletedErrorNameEnum> {
@@ -185,7 +185,7 @@ class _$PrincipalCannotBeDeletedError extends PrincipalCannotBeDeletedError {
 
   factory _$PrincipalCannotBeDeletedError(
           [void Function(PrincipalCannotBeDeletedErrorBuilder)? updates]) =>
-      (PrincipalCannotBeDeletedErrorBuilder()..update(updates))._build();
+      (new PrincipalCannotBeDeletedErrorBuilder()..update(updates))._build();
 
   _$PrincipalCannotBeDeletedError._(
       {required this.name,
@@ -193,7 +193,17 @@ class _$PrincipalCannotBeDeletedError extends PrincipalCannotBeDeletedError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'PrincipalCannotBeDeletedError', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        message, r'PrincipalCannotBeDeletedError', 'message');
+    BuiltValueNullFieldError.checkNotNull(
+        httpStatusCode, r'PrincipalCannotBeDeletedError', 'httpStatusCode');
+    BuiltValueNullFieldError.checkNotNull(
+        traceId, r'PrincipalCannotBeDeletedError', 'traceId');
+  }
+
   @override
   PrincipalCannotBeDeletedError rebuild(
           void Function(PrincipalCannotBeDeletedErrorBuilder) updates) =>
@@ -201,7 +211,7 @@ class _$PrincipalCannotBeDeletedError extends PrincipalCannotBeDeletedError {
 
   @override
   PrincipalCannotBeDeletedErrorBuilder toBuilder() =>
-      PrincipalCannotBeDeletedErrorBuilder()..replace(this);
+      new PrincipalCannotBeDeletedErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -266,7 +276,7 @@ class PrincipalCannotBeDeletedErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -289,6 +299,7 @@ class PrincipalCannotBeDeletedErrorBuilder
 
   @override
   void replace(PrincipalCannotBeDeletedError other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PrincipalCannotBeDeletedError;
   }
 
@@ -304,7 +315,7 @@ class PrincipalCannotBeDeletedErrorBuilder
     _$PrincipalCannotBeDeletedError _$result;
     try {
       _$result = _$v ??
-          _$PrincipalCannotBeDeletedError._(
+          new _$PrincipalCannotBeDeletedError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'PrincipalCannotBeDeletedError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -323,7 +334,7 @@ class PrincipalCannotBeDeletedErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'PrincipalCannotBeDeletedError', _$failedField, e.toString());
       }
       rethrow;

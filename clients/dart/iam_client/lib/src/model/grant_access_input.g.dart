@@ -14,17 +14,23 @@ class _$GrantAccessInput extends GrantAccessInput {
 
   factory _$GrantAccessInput(
           [void Function(GrantAccessInputBuilder)? updates]) =>
-      (GrantAccessInputBuilder()..update(updates))._build();
+      (new GrantAccessInputBuilder()..update(updates))._build();
 
   _$GrantAccessInput._({required this.granteeDid, required this.rights})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        granteeDid, r'GrantAccessInput', 'granteeDid');
+    BuiltValueNullFieldError.checkNotNull(
+        rights, r'GrantAccessInput', 'rights');
+  }
+
   @override
   GrantAccessInput rebuild(void Function(GrantAccessInputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GrantAccessInputBuilder toBuilder() =>
-      GrantAccessInputBuilder()..replace(this);
+      new GrantAccessInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -62,7 +68,7 @@ class GrantAccessInputBuilder
 
   ListBuilder<RightsEnum>? _rights;
   ListBuilder<RightsEnum> get rights =>
-      _$this._rights ??= ListBuilder<RightsEnum>();
+      _$this._rights ??= new ListBuilder<RightsEnum>();
   set rights(ListBuilder<RightsEnum>? rights) => _$this._rights = rights;
 
   GrantAccessInputBuilder() {
@@ -81,6 +87,7 @@ class GrantAccessInputBuilder
 
   @override
   void replace(GrantAccessInput other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GrantAccessInput;
   }
 
@@ -96,7 +103,7 @@ class GrantAccessInputBuilder
     _$GrantAccessInput _$result;
     try {
       _$result = _$v ??
-          _$GrantAccessInput._(
+          new _$GrantAccessInput._(
             granteeDid: BuiltValueNullFieldError.checkNotNull(
                 granteeDid, r'GrantAccessInput', 'granteeDid'),
             rights: rights.build(),
@@ -107,7 +114,7 @@ class GrantAccessInputBuilder
         _$failedField = 'rights';
         rights.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'GrantAccessInput', _$failedField, e.toString());
       }
       rethrow;

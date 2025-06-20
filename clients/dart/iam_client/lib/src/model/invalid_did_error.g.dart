@@ -14,12 +14,12 @@ InvalidDIDErrorNameEnum _$invalidDIDErrorNameEnumValueOf(String name) {
     case 'invalidDIDError':
       return _$invalidDIDErrorNameEnum_invalidDIDError;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidDIDErrorNameEnum> _$invalidDIDErrorNameEnumValues =
-    BuiltSet<InvalidDIDErrorNameEnum>(const <InvalidDIDErrorNameEnum>[
+    new BuiltSet<InvalidDIDErrorNameEnum>(const <InvalidDIDErrorNameEnum>[
   _$invalidDIDErrorNameEnum_invalidDIDError,
 ]);
 
@@ -33,12 +33,12 @@ InvalidDIDErrorMessageEnum _$invalidDIDErrorMessageEnumValueOf(String name) {
     case 'unableToResolveDIDMethodPeriodInvalidPublicKey':
       return _$invalidDIDErrorMessageEnum_unableToResolveDIDMethodPeriodInvalidPublicKey;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidDIDErrorMessageEnum> _$invalidDIDErrorMessageEnumValues =
-    BuiltSet<InvalidDIDErrorMessageEnum>(const <InvalidDIDErrorMessageEnum>[
+    new BuiltSet<InvalidDIDErrorMessageEnum>(const <InvalidDIDErrorMessageEnum>[
   _$invalidDIDErrorMessageEnum_unableToResolveDIDMethodPeriodInvalidPublicKey,
 ]);
 
@@ -52,23 +52,23 @@ InvalidDIDErrorHttpStatusCodeEnum _$invalidDIDErrorHttpStatusCodeEnumValueOf(
     case 'number400':
       return _$invalidDIDErrorHttpStatusCodeEnum_number400;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidDIDErrorHttpStatusCodeEnum>
-    _$invalidDIDErrorHttpStatusCodeEnumValues = BuiltSet<
+    _$invalidDIDErrorHttpStatusCodeEnumValues = new BuiltSet<
         InvalidDIDErrorHttpStatusCodeEnum>(const <InvalidDIDErrorHttpStatusCodeEnum>[
   _$invalidDIDErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidDIDErrorNameEnum> _$invalidDIDErrorNameEnumSerializer =
-    _$InvalidDIDErrorNameEnumSerializer();
+    new _$InvalidDIDErrorNameEnumSerializer();
 Serializer<InvalidDIDErrorMessageEnum> _$invalidDIDErrorMessageEnumSerializer =
-    _$InvalidDIDErrorMessageEnumSerializer();
+    new _$InvalidDIDErrorMessageEnumSerializer();
 Serializer<InvalidDIDErrorHttpStatusCodeEnum>
     _$invalidDIDErrorHttpStatusCodeEnumSerializer =
-    _$InvalidDIDErrorHttpStatusCodeEnumSerializer();
+    new _$InvalidDIDErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidDIDErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidDIDErrorNameEnum> {
@@ -167,7 +167,7 @@ class _$InvalidDIDError extends InvalidDIDError {
   final BuiltList<ServiceErrorResponseDetailsInner>? details;
 
   factory _$InvalidDIDError([void Function(InvalidDIDErrorBuilder)? updates]) =>
-      (InvalidDIDErrorBuilder()..update(updates))._build();
+      (new InvalidDIDErrorBuilder()..update(updates))._build();
 
   _$InvalidDIDError._(
       {required this.name,
@@ -175,13 +175,23 @@ class _$InvalidDIDError extends InvalidDIDError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'InvalidDIDError', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        message, r'InvalidDIDError', 'message');
+    BuiltValueNullFieldError.checkNotNull(
+        httpStatusCode, r'InvalidDIDError', 'httpStatusCode');
+    BuiltValueNullFieldError.checkNotNull(
+        traceId, r'InvalidDIDError', 'traceId');
+  }
+
   @override
   InvalidDIDError rebuild(void Function(InvalidDIDErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  InvalidDIDErrorBuilder toBuilder() => InvalidDIDErrorBuilder()..replace(this);
+  InvalidDIDErrorBuilder toBuilder() =>
+      new InvalidDIDErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -242,7 +252,7 @@ class InvalidDIDErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -265,6 +275,7 @@ class InvalidDIDErrorBuilder
 
   @override
   void replace(InvalidDIDError other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidDIDError;
   }
 
@@ -280,7 +291,7 @@ class InvalidDIDErrorBuilder
     _$InvalidDIDError _$result;
     try {
       _$result = _$v ??
-          _$InvalidDIDError._(
+          new _$InvalidDIDError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidDIDError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -297,7 +308,7 @@ class InvalidDIDErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'InvalidDIDError', _$failedField, e.toString());
       }
       rethrow;

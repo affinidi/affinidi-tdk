@@ -20,7 +20,7 @@ class _$ConsumerAuthTokenEndpointInput extends ConsumerAuthTokenEndpointInput {
 
   factory _$ConsumerAuthTokenEndpointInput(
           [void Function(ConsumerAuthTokenEndpointInputBuilder)? updates]) =>
-      (ConsumerAuthTokenEndpointInputBuilder()..update(updates))._build();
+      (new ConsumerAuthTokenEndpointInputBuilder()..update(updates))._build();
 
   _$ConsumerAuthTokenEndpointInput._(
       {required this.grantType,
@@ -28,7 +28,11 @@ class _$ConsumerAuthTokenEndpointInput extends ConsumerAuthTokenEndpointInput {
       this.refreshToken,
       this.redirectUri,
       this.clientId})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        grantType, r'ConsumerAuthTokenEndpointInput', 'grantType');
+  }
+
   @override
   ConsumerAuthTokenEndpointInput rebuild(
           void Function(ConsumerAuthTokenEndpointInputBuilder) updates) =>
@@ -36,7 +40,7 @@ class _$ConsumerAuthTokenEndpointInput extends ConsumerAuthTokenEndpointInput {
 
   @override
   ConsumerAuthTokenEndpointInputBuilder toBuilder() =>
-      ConsumerAuthTokenEndpointInputBuilder()..replace(this);
+      new ConsumerAuthTokenEndpointInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -118,6 +122,7 @@ class ConsumerAuthTokenEndpointInputBuilder
 
   @override
   void replace(ConsumerAuthTokenEndpointInput other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ConsumerAuthTokenEndpointInput;
   }
 
@@ -131,7 +136,7 @@ class ConsumerAuthTokenEndpointInputBuilder
 
   _$ConsumerAuthTokenEndpointInput _build() {
     final _$result = _$v ??
-        _$ConsumerAuthTokenEndpointInput._(
+        new _$ConsumerAuthTokenEndpointInput._(
           grantType: BuiltValueNullFieldError.checkNotNull(
               grantType, r'ConsumerAuthTokenEndpointInput', 'grantType'),
           code: code,

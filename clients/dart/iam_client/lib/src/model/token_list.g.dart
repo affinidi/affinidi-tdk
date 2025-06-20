@@ -13,15 +13,18 @@ class _$TokenList extends TokenList {
   final String? lastEvaluatedKey;
 
   factory _$TokenList([void Function(TokenListBuilder)? updates]) =>
-      (TokenListBuilder()..update(updates))._build();
+      (new TokenListBuilder()..update(updates))._build();
 
-  _$TokenList._({required this.tokens, this.lastEvaluatedKey}) : super._();
+  _$TokenList._({required this.tokens, this.lastEvaluatedKey}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(tokens, r'TokenList', 'tokens');
+  }
+
   @override
   TokenList rebuild(void Function(TokenListBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TokenListBuilder toBuilder() => TokenListBuilder()..replace(this);
+  TokenListBuilder toBuilder() => new TokenListBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -54,7 +57,7 @@ class TokenListBuilder implements Builder<TokenList, TokenListBuilder> {
 
   ListBuilder<TokenDto>? _tokens;
   ListBuilder<TokenDto> get tokens =>
-      _$this._tokens ??= ListBuilder<TokenDto>();
+      _$this._tokens ??= new ListBuilder<TokenDto>();
   set tokens(ListBuilder<TokenDto>? tokens) => _$this._tokens = tokens;
 
   String? _lastEvaluatedKey;
@@ -78,6 +81,7 @@ class TokenListBuilder implements Builder<TokenList, TokenListBuilder> {
 
   @override
   void replace(TokenList other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TokenList;
   }
 
@@ -93,7 +97,7 @@ class TokenListBuilder implements Builder<TokenList, TokenListBuilder> {
     _$TokenList _$result;
     try {
       _$result = _$v ??
-          _$TokenList._(
+          new _$TokenList._(
             tokens: tokens.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -103,7 +107,7 @@ class TokenListBuilder implements Builder<TokenList, TokenListBuilder> {
         _$failedField = 'tokens';
         tokens.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'TokenList', _$failedField, e.toString());
       }
       rethrow;

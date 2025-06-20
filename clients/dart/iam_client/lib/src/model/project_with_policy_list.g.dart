@@ -14,10 +14,14 @@ class _$ProjectWithPolicyList extends ProjectWithPolicyList {
 
   factory _$ProjectWithPolicyList(
           [void Function(ProjectWithPolicyListBuilder)? updates]) =>
-      (ProjectWithPolicyListBuilder()..update(updates))._build();
+      (new ProjectWithPolicyListBuilder()..update(updates))._build();
 
   _$ProjectWithPolicyList._({required this.projects, this.lastEvaluatedKey})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        projects, r'ProjectWithPolicyList', 'projects');
+  }
+
   @override
   ProjectWithPolicyList rebuild(
           void Function(ProjectWithPolicyListBuilder) updates) =>
@@ -25,7 +29,7 @@ class _$ProjectWithPolicyList extends ProjectWithPolicyList {
 
   @override
   ProjectWithPolicyListBuilder toBuilder() =>
-      ProjectWithPolicyListBuilder()..replace(this);
+      new ProjectWithPolicyListBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -59,7 +63,7 @@ class ProjectWithPolicyListBuilder
 
   ListBuilder<ProjectWithPolicyDto>? _projects;
   ListBuilder<ProjectWithPolicyDto> get projects =>
-      _$this._projects ??= ListBuilder<ProjectWithPolicyDto>();
+      _$this._projects ??= new ListBuilder<ProjectWithPolicyDto>();
   set projects(ListBuilder<ProjectWithPolicyDto>? projects) =>
       _$this._projects = projects;
 
@@ -84,6 +88,7 @@ class ProjectWithPolicyListBuilder
 
   @override
   void replace(ProjectWithPolicyList other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProjectWithPolicyList;
   }
 
@@ -99,7 +104,7 @@ class ProjectWithPolicyListBuilder
     _$ProjectWithPolicyList _$result;
     try {
       _$result = _$v ??
-          _$ProjectWithPolicyList._(
+          new _$ProjectWithPolicyList._(
             projects: projects.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -109,7 +114,7 @@ class ProjectWithPolicyListBuilder
         _$failedField = 'projects';
         projects.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'ProjectWithPolicyList', _$failedField, e.toString());
       }
       rethrow;

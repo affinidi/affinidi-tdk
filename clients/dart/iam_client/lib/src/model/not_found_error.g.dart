@@ -14,12 +14,12 @@ NotFoundErrorNameEnum _$notFoundErrorNameEnumValueOf(String name) {
     case 'notFoundError':
       return _$notFoundErrorNameEnum_notFoundError;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<NotFoundErrorNameEnum> _$notFoundErrorNameEnumValues =
-    BuiltSet<NotFoundErrorNameEnum>(const <NotFoundErrorNameEnum>[
+    new BuiltSet<NotFoundErrorNameEnum>(const <NotFoundErrorNameEnum>[
   _$notFoundErrorNameEnum_notFoundError,
 ]);
 
@@ -33,12 +33,12 @@ NotFoundErrorMessageEnum _$notFoundErrorMessageEnumValueOf(String name) {
     case 'notFoundColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod':
       return _$notFoundErrorMessageEnum_notFoundColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<NotFoundErrorMessageEnum> _$notFoundErrorMessageEnumValues =
-    BuiltSet<NotFoundErrorMessageEnum>(const <NotFoundErrorMessageEnum>[
+    new BuiltSet<NotFoundErrorMessageEnum>(const <NotFoundErrorMessageEnum>[
   _$notFoundErrorMessageEnum_notFoundColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod,
 ]);
 
@@ -52,23 +52,23 @@ NotFoundErrorHttpStatusCodeEnum _$notFoundErrorHttpStatusCodeEnumValueOf(
     case 'number404':
       return _$notFoundErrorHttpStatusCodeEnum_number404;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<NotFoundErrorHttpStatusCodeEnum>
-    _$notFoundErrorHttpStatusCodeEnumValues = BuiltSet<
+    _$notFoundErrorHttpStatusCodeEnumValues = new BuiltSet<
         NotFoundErrorHttpStatusCodeEnum>(const <NotFoundErrorHttpStatusCodeEnum>[
   _$notFoundErrorHttpStatusCodeEnum_number404,
 ]);
 
 Serializer<NotFoundErrorNameEnum> _$notFoundErrorNameEnumSerializer =
-    _$NotFoundErrorNameEnumSerializer();
+    new _$NotFoundErrorNameEnumSerializer();
 Serializer<NotFoundErrorMessageEnum> _$notFoundErrorMessageEnumSerializer =
-    _$NotFoundErrorMessageEnumSerializer();
+    new _$NotFoundErrorMessageEnumSerializer();
 Serializer<NotFoundErrorHttpStatusCodeEnum>
     _$notFoundErrorHttpStatusCodeEnumSerializer =
-    _$NotFoundErrorHttpStatusCodeEnumSerializer();
+    new _$NotFoundErrorHttpStatusCodeEnumSerializer();
 
 class _$NotFoundErrorNameEnumSerializer
     implements PrimitiveSerializer<NotFoundErrorNameEnum> {
@@ -166,7 +166,7 @@ class _$NotFoundError extends NotFoundError {
   final BuiltList<ServiceErrorResponseDetailsInner>? details;
 
   factory _$NotFoundError([void Function(NotFoundErrorBuilder)? updates]) =>
-      (NotFoundErrorBuilder()..update(updates))._build();
+      (new NotFoundErrorBuilder()..update(updates))._build();
 
   _$NotFoundError._(
       {required this.name,
@@ -174,13 +174,20 @@ class _$NotFoundError extends NotFoundError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(name, r'NotFoundError', 'name');
+    BuiltValueNullFieldError.checkNotNull(message, r'NotFoundError', 'message');
+    BuiltValueNullFieldError.checkNotNull(
+        httpStatusCode, r'NotFoundError', 'httpStatusCode');
+    BuiltValueNullFieldError.checkNotNull(traceId, r'NotFoundError', 'traceId');
+  }
+
   @override
   NotFoundError rebuild(void Function(NotFoundErrorBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  NotFoundErrorBuilder toBuilder() => NotFoundErrorBuilder()..replace(this);
+  NotFoundErrorBuilder toBuilder() => new NotFoundErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -240,7 +247,7 @@ class NotFoundErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -263,6 +270,7 @@ class NotFoundErrorBuilder
 
   @override
   void replace(NotFoundError other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$NotFoundError;
   }
 
@@ -278,7 +286,7 @@ class NotFoundErrorBuilder
     _$NotFoundError _$result;
     try {
       _$result = _$v ??
-          _$NotFoundError._(
+          new _$NotFoundError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'NotFoundError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -295,7 +303,7 @@ class NotFoundErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'NotFoundError', _$failedField, e.toString());
       }
       rethrow;

@@ -15,12 +15,16 @@ class _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
           [void Function(
                   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder)?
               updates]) =>
-      (TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder()
+      (new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder()
             ..update(updates))
           ._build();
 
   _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo._({required this.oneOf})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        oneOf, r'TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo', 'oneOf');
+  }
+
   @override
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo rebuild(
           void Function(
@@ -30,7 +34,7 @@ class _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
 
   @override
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder toBuilder() =>
-      TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder()
+      new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder()
         ..replace(this);
 
   @override
@@ -82,6 +86,7 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder
 
   @override
   void replace(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo;
   }
 
@@ -97,7 +102,7 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoBuilder
 
   _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo _build() {
     final _$result = _$v ??
-        _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo._(
+        new _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo._(
           oneOf: BuiltValueNullFieldError.checkNotNull(oneOf,
               r'TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo', 'oneOf'),
         );

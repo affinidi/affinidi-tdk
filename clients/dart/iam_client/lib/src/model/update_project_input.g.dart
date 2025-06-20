@@ -14,9 +14,10 @@ class _$UpdateProjectInput extends UpdateProjectInput {
 
   factory _$UpdateProjectInput(
           [void Function(UpdateProjectInputBuilder)? updates]) =>
-      (UpdateProjectInputBuilder()..update(updates))._build();
+      (new UpdateProjectInputBuilder()..update(updates))._build();
 
   _$UpdateProjectInput._({this.name, this.description}) : super._();
+
   @override
   UpdateProjectInput rebuild(
           void Function(UpdateProjectInputBuilder) updates) =>
@@ -24,7 +25,7 @@ class _$UpdateProjectInput extends UpdateProjectInput {
 
   @override
   UpdateProjectInputBuilder toBuilder() =>
-      UpdateProjectInputBuilder()..replace(this);
+      new UpdateProjectInputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -80,6 +81,7 @@ class UpdateProjectInputBuilder
 
   @override
   void replace(UpdateProjectInput other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateProjectInput;
   }
 
@@ -93,7 +95,7 @@ class UpdateProjectInputBuilder
 
   _$UpdateProjectInput _build() {
     final _$result = _$v ??
-        _$UpdateProjectInput._(
+        new _$UpdateProjectInput._(
           name: name,
           description: description,
         );

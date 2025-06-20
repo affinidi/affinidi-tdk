@@ -15,13 +15,19 @@ class _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
           [void Function(
                   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder)?
               updates]) =>
-      (TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder()
+      (new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder()
             ..update(updates))
           ._build();
 
   _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1._(
       {required this.jwksUri})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        jwksUri,
+        r'TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1',
+        'jwksUri');
+  }
+
   @override
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 rebuild(
           void Function(
@@ -32,7 +38,7 @@ class _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
   @override
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder
       toBuilder() =>
-          TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder()
+          new TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder()
             ..replace(this);
 
   @override
@@ -85,6 +91,7 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder
   @override
   void replace(
       TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1;
   }
 
@@ -101,7 +108,7 @@ class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Builder
 
   _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 _build() {
     final _$result = _$v ??
-        _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1._(
+        new _$TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1._(
           jwksUri: BuiltValueNullFieldError.checkNotNull(
               jwksUri,
               r'TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1',

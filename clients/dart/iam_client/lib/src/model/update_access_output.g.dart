@@ -12,9 +12,13 @@ class _$UpdateAccessOutput extends UpdateAccessOutput {
 
   factory _$UpdateAccessOutput(
           [void Function(UpdateAccessOutputBuilder)? updates]) =>
-      (UpdateAccessOutputBuilder()..update(updates))._build();
+      (new UpdateAccessOutputBuilder()..update(updates))._build();
 
-  _$UpdateAccessOutput._({required this.success}) : super._();
+  _$UpdateAccessOutput._({required this.success}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        success, r'UpdateAccessOutput', 'success');
+  }
+
   @override
   UpdateAccessOutput rebuild(
           void Function(UpdateAccessOutputBuilder) updates) =>
@@ -22,7 +26,7 @@ class _$UpdateAccessOutput extends UpdateAccessOutput {
 
   @override
   UpdateAccessOutputBuilder toBuilder() =>
-      UpdateAccessOutputBuilder()..replace(this);
+      new UpdateAccessOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -69,6 +73,7 @@ class UpdateAccessOutputBuilder
 
   @override
   void replace(UpdateAccessOutput other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UpdateAccessOutput;
   }
 
@@ -82,7 +87,7 @@ class UpdateAccessOutputBuilder
 
   _$UpdateAccessOutput _build() {
     final _$result = _$v ??
-        _$UpdateAccessOutput._(
+        new _$UpdateAccessOutput._(
           success: BuiltValueNullFieldError.checkNotNull(
               success, r'UpdateAccessOutput', 'success'),
         );

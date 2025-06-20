@@ -1,7 +1,6 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager/src/services/vault_data_manager_service_interface.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:ssi/ssi.dart';
 
 class MockVaultDataManagerService extends Mock
     implements VaultDataManagerServiceInterface {

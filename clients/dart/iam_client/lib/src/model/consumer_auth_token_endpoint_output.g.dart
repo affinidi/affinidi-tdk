@@ -23,7 +23,7 @@ class _$ConsumerAuthTokenEndpointOutput
 
   factory _$ConsumerAuthTokenEndpointOutput(
           [void Function(ConsumerAuthTokenEndpointOutputBuilder)? updates]) =>
-      (ConsumerAuthTokenEndpointOutputBuilder()..update(updates))._build();
+      (new ConsumerAuthTokenEndpointOutputBuilder()..update(updates))._build();
 
   _$ConsumerAuthTokenEndpointOutput._(
       {this.accessToken,
@@ -33,6 +33,7 @@ class _$ConsumerAuthTokenEndpointOutput
       this.scope,
       this.tokenType})
       : super._();
+
   @override
   ConsumerAuthTokenEndpointOutput rebuild(
           void Function(ConsumerAuthTokenEndpointOutputBuilder) updates) =>
@@ -40,7 +41,7 @@ class _$ConsumerAuthTokenEndpointOutput
 
   @override
   ConsumerAuthTokenEndpointOutputBuilder toBuilder() =>
-      ConsumerAuthTokenEndpointOutputBuilder()..replace(this);
+      new ConsumerAuthTokenEndpointOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -130,6 +131,7 @@ class ConsumerAuthTokenEndpointOutputBuilder
 
   @override
   void replace(ConsumerAuthTokenEndpointOutput other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ConsumerAuthTokenEndpointOutput;
   }
 
@@ -143,7 +145,7 @@ class ConsumerAuthTokenEndpointOutputBuilder
 
   _$ConsumerAuthTokenEndpointOutput _build() {
     final _$result = _$v ??
-        _$ConsumerAuthTokenEndpointOutput._(
+        new _$ConsumerAuthTokenEndpointOutput._(
           accessToken: accessToken,
           expiresIn: expiresIn,
           idToken: idToken,
