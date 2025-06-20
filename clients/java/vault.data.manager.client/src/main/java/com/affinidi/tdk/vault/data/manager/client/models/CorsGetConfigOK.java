@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetConfigOK.JSON_PROPERTY_CORS_GET_CONFIG_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGetConfigOK {
   public static final String JSON_PROPERTY_CORS_GET_CONFIG_OK = "corsGetConfigOk";
+  @javax.annotation.Nullable
   private String corsGetConfigOk;
 
   public CorsGetConfigOK() {
   }
 
-  public CorsGetConfigOK corsGetConfigOk(String corsGetConfigOk) {
+  public CorsGetConfigOK corsGetConfigOk(@javax.annotation.Nullable String corsGetConfigOk) {
     
     this.corsGetConfigOk = corsGetConfigOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGetConfigOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GET_CONFIG_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGetConfigOk(String corsGetConfigOk) {
+  public void setCorsGetConfigOk(@javax.annotation.Nullable String corsGetConfigOk) {
     this.corsGetConfigOk = corsGetConfigOk;
   }
 

@@ -38,16 +38,17 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SupportedCredentialMetadata.JSON_PROPERTY_DISPLAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SupportedCredentialMetadata extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_DISPLAY = "display";
+  @javax.annotation.Nullable
   private List<SupportedCredentialMetadataDisplayInner> display = new ArrayList<>();
 
   public SupportedCredentialMetadata() {
 
   }
 
-  public SupportedCredentialMetadata display(List<SupportedCredentialMetadataDisplayInner> display) {
+  public SupportedCredentialMetadata display(@javax.annotation.Nullable List<SupportedCredentialMetadataDisplayInner> display) {
     
     this.display = display;
     return this;
@@ -76,7 +77,7 @@ public class SupportedCredentialMetadata extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_DISPLAY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDisplay(List<SupportedCredentialMetadataDisplayInner> display) {
+  public void setDisplay(@javax.annotation.Nullable List<SupportedCredentialMetadataDisplayInner> display) {
     this.display = display;
   }
 

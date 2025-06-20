@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   TypedPrincipalId.JSON_PROPERTY_PRINCIPAL_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class TypedPrincipalId {
   public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
+  @javax.annotation.Nonnull
   private String principalId;
 
   public TypedPrincipalId() {
   }
 
-  public TypedPrincipalId principalId(String principalId) {
+  public TypedPrincipalId principalId(@javax.annotation.Nonnull String principalId) {
     
     this.principalId = principalId;
     return this;
@@ -61,7 +62,7 @@ public class TypedPrincipalId {
 
   @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipalId(String principalId) {
+  public void setPrincipalId(@javax.annotation.Nonnull String principalId) {
     this.principalId = principalId;
   }
 

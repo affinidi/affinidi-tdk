@@ -77,7 +77,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [RightsEnum](./Models/RightsEnum.md)
 - [ServiceErrorResponse](./Models/ServiceErrorResponse.md)
 - [ServiceErrorResponse_details_inner](./Models/ServiceErrorResponse_details_inner.md)
-- [TokenAuthenticationMethodDto](./Models/TokenAuthenticationMethodDto.md)
 - [TokenDto](./Models/TokenDto.md)
 - [TokenList](./Models/TokenList.md)
 - [TokenPrivateKeyAuthenticationMethodDto](./Models/TokenPrivateKeyAuthenticationMethodDto.md)

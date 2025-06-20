@@ -38,21 +38,24 @@ import java.util.StringJoiner;
   PresentationSubmission.JSON_PROPERTY_DEFINITION_ID,
   PresentationSubmission.JSON_PROPERTY_DESCRIPTOR_MAP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PresentationSubmission {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_DEFINITION_ID = "definition_id";
+  @javax.annotation.Nonnull
   private String definitionId;
 
   public static final String JSON_PROPERTY_DESCRIPTOR_MAP = "descriptor_map";
+  @javax.annotation.Nonnull
   private List<Descriptor> descriptorMap = new ArrayList<>();
 
   public PresentationSubmission() {
   }
 
-  public PresentationSubmission id(String id) {
+  public PresentationSubmission id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -73,11 +76,11 @@ public class PresentationSubmission {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public PresentationSubmission definitionId(String definitionId) {
+  public PresentationSubmission definitionId(@javax.annotation.Nonnull String definitionId) {
     
     this.definitionId = definitionId;
     return this;
@@ -98,11 +101,11 @@ public class PresentationSubmission {
 
   @JsonProperty(JSON_PROPERTY_DEFINITION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDefinitionId(String definitionId) {
+  public void setDefinitionId(@javax.annotation.Nonnull String definitionId) {
     this.definitionId = definitionId;
   }
 
-  public PresentationSubmission descriptorMap(List<Descriptor> descriptorMap) {
+  public PresentationSubmission descriptorMap(@javax.annotation.Nonnull List<Descriptor> descriptorMap) {
     
     this.descriptorMap = descriptorMap;
     return this;
@@ -131,7 +134,7 @@ public class PresentationSubmission {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTOR_MAP)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescriptorMap(List<Descriptor> descriptorMap) {
+  public void setDescriptorMap(@javax.annotation.Nonnull List<Descriptor> descriptorMap) {
     this.descriptorMap = descriptorMap;
   }
 

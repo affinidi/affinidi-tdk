@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   MoveNodeDto.JSON_PROPERTY_NEW_NODE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class MoveNodeDto {
   public static final String JSON_PROPERTY_NEW_NODE_ID = "newNodeId";
+  @javax.annotation.Nullable
   private String newNodeId;
 
   public MoveNodeDto() {
   }
 
-  public MoveNodeDto newNodeId(String newNodeId) {
+  public MoveNodeDto newNodeId(@javax.annotation.Nullable String newNodeId) {
     
     this.newNodeId = newNodeId;
     return this;
@@ -61,7 +62,7 @@ public class MoveNodeDto {
 
   @JsonProperty(JSON_PROPERTY_NEW_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNewNodeId(String newNodeId) {
+  public void setNewNodeId(@javax.annotation.Nullable String newNodeId) {
     this.newNodeId = newNodeId;
   }
 

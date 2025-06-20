@@ -37,27 +37,32 @@ import java.util.StringJoiner;
   AccountDto.JSON_PROPERTY_METADATA,
   AccountDto.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AccountDto {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
+  @javax.annotation.Nonnull
   private BigDecimal accountIndex;
 
   public static final String JSON_PROPERTY_ACCOUNT_DID = "accountDid";
+  @javax.annotation.Nonnull
   private String accountDid;
 
   public static final String JSON_PROPERTY_ALIAS = "alias";
+  @javax.annotation.Nullable
   private String alias;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
+  @javax.annotation.Nullable
   private Object metadata;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public AccountDto() {
   }
 
-  public AccountDto accountIndex(BigDecimal accountIndex) {
+  public AccountDto accountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     
     this.accountIndex = accountIndex;
     return this;
@@ -78,11 +83,11 @@ public class AccountDto {
 
   @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccountIndex(BigDecimal accountIndex) {
+  public void setAccountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     this.accountIndex = accountIndex;
   }
 
-  public AccountDto accountDid(String accountDid) {
+  public AccountDto accountDid(@javax.annotation.Nonnull String accountDid) {
     
     this.accountDid = accountDid;
     return this;
@@ -103,11 +108,11 @@ public class AccountDto {
 
   @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccountDid(String accountDid) {
+  public void setAccountDid(@javax.annotation.Nonnull String accountDid) {
     this.accountDid = accountDid;
   }
 
-  public AccountDto alias(String alias) {
+  public AccountDto alias(@javax.annotation.Nullable String alias) {
     
     this.alias = alias;
     return this;
@@ -128,11 +133,11 @@ public class AccountDto {
 
   @JsonProperty(JSON_PROPERTY_ALIAS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlias(String alias) {
+  public void setAlias(@javax.annotation.Nullable String alias) {
     this.alias = alias;
   }
 
-  public AccountDto metadata(Object metadata) {
+  public AccountDto metadata(@javax.annotation.Nullable Object metadata) {
     
     this.metadata = metadata;
     return this;
@@ -153,11 +158,11 @@ public class AccountDto {
 
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetadata(Object metadata) {
+  public void setMetadata(@javax.annotation.Nullable Object metadata) {
     this.metadata = metadata;
   }
 
-  public AccountDto description(String description) {
+  public AccountDto description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -178,7 +183,7 @@ public class AccountDto {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

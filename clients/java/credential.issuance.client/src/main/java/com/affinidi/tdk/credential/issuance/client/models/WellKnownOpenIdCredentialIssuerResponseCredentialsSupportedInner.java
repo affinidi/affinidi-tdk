@@ -35,21 +35,24 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_LD_CONTEXT_URL
 })
 @JsonTypeName("WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
+  @javax.annotation.Nonnull
   private String credentialTypeId;
 
   public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
+  @javax.annotation.Nonnull
   private String jsonSchemaUrl;
 
   public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
+  @javax.annotation.Nonnull
   private String jsonLdContextUrl;
 
   public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner() {
   }
 
-  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner credentialTypeId(String credentialTypeId) {
+  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner credentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     
     this.credentialTypeId = credentialTypeId;
     return this;
@@ -70,11 +73,11 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialTypeId(String credentialTypeId) {
+  public void setCredentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonSchemaUrl(String jsonSchemaUrl) {
+  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     
     this.jsonSchemaUrl = jsonSchemaUrl;
     return this;
@@ -95,11 +98,11 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
 
   @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonSchemaUrl(String jsonSchemaUrl) {
+  public void setJsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonLdContextUrl(String jsonLdContextUrl) {
+  public WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner jsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     
     this.jsonLdContextUrl = jsonLdContextUrl;
     return this;
@@ -120,7 +123,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
 
   @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonLdContextUrl(String jsonLdContextUrl) {
+  public void setJsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
 

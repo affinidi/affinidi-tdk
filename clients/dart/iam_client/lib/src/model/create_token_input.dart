@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_iam_client/src/model/token_authentication_method_dto.dart';
+import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authentication_method_dto.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -21,7 +21,7 @@ abstract class CreateTokenInput implements Built<CreateTokenInput, CreateTokenIn
   String get name;
 
   @BuiltValueField(wireName: r'authenticationMethod')
-  TokenAuthenticationMethodDto get authenticationMethod;
+  TokenPrivateKeyAuthenticationMethodDto get authenticationMethod;
 
   @BuiltValueField(wireName: r'description')
   String? get description;
@@ -57,7 +57,7 @@ class _$CreateTokenInputSerializer implements PrimitiveSerializer<CreateTokenInp
     yield r'authenticationMethod';
     yield serializers.serialize(
       object.authenticationMethod,
-      specifiedType: const FullType(TokenAuthenticationMethodDto),
+      specifiedType: const FullType(TokenPrivateKeyAuthenticationMethodDto),
     );
     if (object.description != null) {
       yield r'description';
@@ -99,8 +99,8 @@ class _$CreateTokenInputSerializer implements PrimitiveSerializer<CreateTokenInp
         case r'authenticationMethod':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TokenAuthenticationMethodDto),
-          ) as TokenAuthenticationMethodDto;
+            specifiedType: const FullType(TokenPrivateKeyAuthenticationMethodDto),
+          ) as TokenPrivateKeyAuthenticationMethodDto;
           result.authenticationMethod.replace(valueDes);
           break;
         case r'description':

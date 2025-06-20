@@ -21,14 +21,14 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, Field, StrictStr, constr, validator
-from affinidi_tdk_iam_client.models.token_authentication_method_dto import TokenAuthenticationMethodDto
+from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto import TokenPrivateKeyAuthenticationMethodDto
 
 class CreateTokenInput(BaseModel):
     """
     CreateTokenInput
     """
     name: constr(strict=True) = Field(...)
-    authentication_method: TokenAuthenticationMethodDto = Field(default=..., alias="authenticationMethod")
+    authentication_method: TokenPrivateKeyAuthenticationMethodDto = Field(default=..., alias="authenticationMethod")
     description: Optional[StrictStr] = None
     __properties = ["name", "authenticationMethod", "description"]
 
@@ -79,7 +79,7 @@ class CreateTokenInput(BaseModel):
 
         _obj = CreateTokenInput.parse_obj({
             "name": obj.get("name"),
-            "authentication_method": TokenAuthenticationMethodDto.from_dict(obj.get("authenticationMethod")) if obj.get("authenticationMethod") is not None else None,
+            "authentication_method": TokenPrivateKeyAuthenticationMethodDto.from_dict(obj.get("authenticationMethod")) if obj.get("authenticationMethod") is not None else None,
             "description": obj.get("description")
         })
         return _obj

@@ -37,21 +37,21 @@ class InvalidJwtTokenError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidJwtTokenError'):
+        if value not in ('InvalidJwtTokenError',):
             raise ValueError("must be one of enum values ('InvalidJwtTokenError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('JWT token is invalid'):
+        if value not in ('JWT token is invalid',):
             raise ValueError("must be one of enum values ('JWT token is invalid')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (401):
+        if value not in (401,):
             raise ValueError("must be one of enum values (401)")
         return value
 

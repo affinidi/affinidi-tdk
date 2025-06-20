@@ -96,6 +96,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [UpdateLoginConfigurationInput](./Models/UpdateLoginConfigurationInput.md)
 - [VPTokenValidationError](./Models/VPTokenValidationError.md)
 - [createLoginConfigurations_400_response](./Models/createLoginConfigurations_400_response.md)
+- [inline_object](./Models/inline_object.md)
 
 <a name="documentation-for-authorization"></a>
 

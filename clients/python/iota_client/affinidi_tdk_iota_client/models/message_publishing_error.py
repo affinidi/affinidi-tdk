@@ -37,21 +37,21 @@ class MessagePublishingError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('MessagePublishingError'):
+        if value not in ('MessagePublishingError',):
             raise ValueError("must be one of enum values ('MessagePublishingError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Not able to publish messages to topic'):
+        if value not in ('Not able to publish messages to topic',):
             raise ValueError("must be one of enum values ('Not able to publish messages to topic')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (500):
+        if value not in (500,):
             raise ValueError("must be one of enum values (500)")
         return value
 

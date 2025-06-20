@@ -16,12 +16,12 @@ InvalidParameterErrorNameEnum _$invalidParameterErrorNameEnumValueOf(
     case 'invalidParameterError':
       return _$invalidParameterErrorNameEnum_invalidParameterError;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidParameterErrorNameEnum>
-    _$invalidParameterErrorNameEnumValues = BuiltSet<
+    _$invalidParameterErrorNameEnumValues = new BuiltSet<
         InvalidParameterErrorNameEnum>(const <InvalidParameterErrorNameEnum>[
   _$invalidParameterErrorNameEnum_invalidParameterError,
 ]);
@@ -37,12 +37,12 @@ InvalidParameterErrorMessageEnum _$invalidParameterErrorMessageEnumValueOf(
     case 'invalidParameterColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod':
       return _$invalidParameterErrorMessageEnum_invalidParameterColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidParameterErrorMessageEnum>
-    _$invalidParameterErrorMessageEnumValues = BuiltSet<
+    _$invalidParameterErrorMessageEnumValues = new BuiltSet<
         InvalidParameterErrorMessageEnum>(const <InvalidParameterErrorMessageEnum>[
   _$invalidParameterErrorMessageEnum_invalidParameterColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod,
 ]);
@@ -57,25 +57,25 @@ InvalidParameterErrorHttpStatusCodeEnum
     case 'number400':
       return _$invalidParameterErrorHttpStatusCodeEnum_number400;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<InvalidParameterErrorHttpStatusCodeEnum>
-    _$invalidParameterErrorHttpStatusCodeEnumValues = BuiltSet<
+    _$invalidParameterErrorHttpStatusCodeEnumValues = new BuiltSet<
         InvalidParameterErrorHttpStatusCodeEnum>(const <InvalidParameterErrorHttpStatusCodeEnum>[
   _$invalidParameterErrorHttpStatusCodeEnum_number400,
 ]);
 
 Serializer<InvalidParameterErrorNameEnum>
     _$invalidParameterErrorNameEnumSerializer =
-    _$InvalidParameterErrorNameEnumSerializer();
+    new _$InvalidParameterErrorNameEnumSerializer();
 Serializer<InvalidParameterErrorMessageEnum>
     _$invalidParameterErrorMessageEnumSerializer =
-    _$InvalidParameterErrorMessageEnumSerializer();
+    new _$InvalidParameterErrorMessageEnumSerializer();
 Serializer<InvalidParameterErrorHttpStatusCodeEnum>
     _$invalidParameterErrorHttpStatusCodeEnumSerializer =
-    _$InvalidParameterErrorHttpStatusCodeEnumSerializer();
+    new _$InvalidParameterErrorHttpStatusCodeEnumSerializer();
 
 class _$InvalidParameterErrorNameEnumSerializer
     implements PrimitiveSerializer<InvalidParameterErrorNameEnum> {
@@ -179,7 +179,7 @@ class _$InvalidParameterError extends InvalidParameterError {
 
   factory _$InvalidParameterError(
           [void Function(InvalidParameterErrorBuilder)? updates]) =>
-      (InvalidParameterErrorBuilder()..update(updates))._build();
+      (new InvalidParameterErrorBuilder()..update(updates))._build();
 
   _$InvalidParameterError._(
       {required this.name,
@@ -187,7 +187,17 @@ class _$InvalidParameterError extends InvalidParameterError {
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'InvalidParameterError', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        message, r'InvalidParameterError', 'message');
+    BuiltValueNullFieldError.checkNotNull(
+        httpStatusCode, r'InvalidParameterError', 'httpStatusCode');
+    BuiltValueNullFieldError.checkNotNull(
+        traceId, r'InvalidParameterError', 'traceId');
+  }
+
   @override
   InvalidParameterError rebuild(
           void Function(InvalidParameterErrorBuilder) updates) =>
@@ -195,7 +205,7 @@ class _$InvalidParameterError extends InvalidParameterError {
 
   @override
   InvalidParameterErrorBuilder toBuilder() =>
-      InvalidParameterErrorBuilder()..replace(this);
+      new InvalidParameterErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -257,7 +267,7 @@ class InvalidParameterErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -280,6 +290,7 @@ class InvalidParameterErrorBuilder
 
   @override
   void replace(InvalidParameterError other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$InvalidParameterError;
   }
 
@@ -295,7 +306,7 @@ class InvalidParameterErrorBuilder
     _$InvalidParameterError _$result;
     try {
       _$result = _$v ??
-          _$InvalidParameterError._(
+          new _$InvalidParameterError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'InvalidParameterError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -312,7 +323,7 @@ class InvalidParameterErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'InvalidParameterError', _$failedField, e.toString());
       }
       rethrow;

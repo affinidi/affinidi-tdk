@@ -34,15 +34,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignCredentialResultDto.JSON_PROPERTY_SIGNED_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialResultDto {
   public static final String JSON_PROPERTY_SIGNED_CREDENTIAL = "signedCredential";
+  @javax.annotation.Nonnull
   private Map<String, Object> signedCredential = new HashMap<>();
 
   public SignCredentialResultDto() {
   }
 
-  public SignCredentialResultDto signedCredential(Map<String, Object> signedCredential) {
+  public SignCredentialResultDto signedCredential(@javax.annotation.Nonnull Map<String, Object> signedCredential) {
     
     this.signedCredential = signedCredential;
     return this;
@@ -68,7 +69,7 @@ public class SignCredentialResultDto {
 
   @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
-  public void setSignedCredential(Map<String, Object> signedCredential) {
+  public void setSignedCredential(@javax.annotation.Nonnull Map<String, Object> signedCredential) {
     this.signedCredential = signedCredential;
   }
 

@@ -306,7 +306,7 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
             value,
             specifiedType: const FullType(LoginConfigurationClientMetadataOutput),
           ) as LoginConfigurationClientMetadataOutput;
-          result.clientMetadata = valueDes.toBuilder();
+          result.clientMetadata.replace(valueDes);
           break;
         case r'tokenEndpointAuthMethod':
           final valueDes = serializers.deserialize(

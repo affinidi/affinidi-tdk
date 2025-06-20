@@ -67,7 +67,7 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_wallets_client.WalletApi(api_client)
-    create_wallet_input = affinidi_tdk_wallets_client.CreateWalletInput() # CreateWalletInput | CreateWallet (optional)
+    create_wallet_input = {"name":"AliceWallet","description":"Personal wallet using did:key","didMethod":"key"} # CreateWalletInput | CreateWallet (optional)
 
     try:
         api_response = api_instance.create_wallet(create_wallet_input=create_wallet_input)

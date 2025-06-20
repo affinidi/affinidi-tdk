@@ -12,7 +12,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 The Consumer OAuth 2.0 Token Endpoint
 
-Use open source libraries to perform OAuth 2.0 and OpenID Connect available for any programming language. You can find a list of libraries here https://oauth.net/code/ The Ory SDK is not yet able to this endpoint properly.
+Use open source libraries to perform OAuth 2.0 and OpenID Connect
+available for any programming language. You can find a list of libraries here https://oauth.net/code/
+
+The Ory SDK is not yet able to this endpoint properly.
 
 ### Example
 

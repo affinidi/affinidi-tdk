@@ -33,15 +33,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   PrepareRequestCreated.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PrepareRequestCreated {
   public static final String JSON_PROPERTY_DATA = "data";
+  @javax.annotation.Nonnull
   private PrepareRequestCreatedData data;
 
   public PrepareRequestCreated() {
   }
 
-  public PrepareRequestCreated data(PrepareRequestCreatedData data) {
+  public PrepareRequestCreated data(@javax.annotation.Nonnull PrepareRequestCreatedData data) {
     
     this.data = data;
     return this;
@@ -62,7 +63,7 @@ public class PrepareRequestCreated {
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setData(PrepareRequestCreatedData data) {
+  public void setData(@javax.annotation.Nonnull PrepareRequestCreatedData data) {
     this.data = data;
   }
 

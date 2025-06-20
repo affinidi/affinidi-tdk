@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,22 +34,24 @@ import java.util.StringJoiner;
   LoginSessionRejectResponseInput.JSON_PROPERTY_ERROR_DESCRIPTION,
   LoginSessionRejectResponseInput.JSON_PROPERTY_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+public class LoginSessionRejectResponseInput {
   public static final String JSON_PROPERTY_ERROR = "error";
+  @javax.annotation.Nullable
   private String error;
 
   public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "errorDescription";
+  @javax.annotation.Nullable
   private String errorDescription;
 
   public static final String JSON_PROPERTY_STATE = "state";
+  @javax.annotation.Nonnull
   private String state;
 
   public LoginSessionRejectResponseInput() {
-
   }
 
-  public LoginSessionRejectResponseInput error(String error) {
+  public LoginSessionRejectResponseInput error(@javax.annotation.Nullable String error) {
     
     this.error = error;
     return this;
@@ -72,11 +72,11 @@ public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(String error) {
+  public void setError(@javax.annotation.Nullable String error) {
     this.error = error;
   }
 
-  public LoginSessionRejectResponseInput errorDescription(String errorDescription) {
+  public LoginSessionRejectResponseInput errorDescription(@javax.annotation.Nullable String errorDescription) {
     
     this.errorDescription = errorDescription;
     return this;
@@ -97,11 +97,11 @@ public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorDescription(String errorDescription) {
+  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
     this.errorDescription = errorDescription;
   }
 
-  public LoginSessionRejectResponseInput state(String state) {
+  public LoginSessionRejectResponseInput state(@javax.annotation.Nonnull String state) {
     
     this.state = state;
     return this;
@@ -122,7 +122,7 @@ public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(String state) {
+  public void setState(@javax.annotation.Nonnull String state) {
     this.state = state;
   }
 
@@ -137,20 +137,18 @@ public class LoginSessionRejectResponseInput extends HashMap<String, Object> {
     LoginSessionRejectResponseInput loginSessionRejectResponseInput = (LoginSessionRejectResponseInput) o;
     return Objects.equals(this.error, loginSessionRejectResponseInput.error) &&
         Objects.equals(this.errorDescription, loginSessionRejectResponseInput.errorDescription) &&
-        Objects.equals(this.state, loginSessionRejectResponseInput.state) &&
-        super.equals(o);
+        Objects.equals(this.state, loginSessionRejectResponseInput.state);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, errorDescription, state, super.hashCode());
+    return Objects.hash(error, errorDescription, state);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginSessionRejectResponseInput {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    errorDescription: ").append(toIndentedString(errorDescription)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");

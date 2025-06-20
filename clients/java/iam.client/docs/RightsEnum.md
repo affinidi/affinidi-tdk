@@ -2,6 +2,6 @@
 
 ## Enum
 
-- `READ` (value: `"vfs-read"`)
+- `VFS_READ` (value: `"vfs-read"`)
 
-- `WRITE` (value: `"vfs-write"`)
+- `VFS_WRITE` (value: `"vfs-write"`)

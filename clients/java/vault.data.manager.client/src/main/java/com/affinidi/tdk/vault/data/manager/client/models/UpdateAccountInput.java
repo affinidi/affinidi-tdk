@@ -37,30 +37,36 @@ import java.util.StringJoiner;
   UpdateAccountInput.JSON_PROPERTY_METADATA,
   UpdateAccountInput.JSON_PROPERTY_ACCOUNT_DID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateAccountInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_ALIAS = "alias";
+  @javax.annotation.Nullable
   private String alias;
 
   public static final String JSON_PROPERTY_DID_PROOF = "didProof";
+  @javax.annotation.Nonnull
   private String didProof;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
+  @javax.annotation.Nullable
   private Object metadata;
 
   public static final String JSON_PROPERTY_ACCOUNT_DID = "accountDid";
+  @javax.annotation.Nonnull
   private String accountDid;
 
   public UpdateAccountInput() {
   }
 
-  public UpdateAccountInput name(String name) {
+  public UpdateAccountInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -81,11 +87,11 @@ public class UpdateAccountInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public UpdateAccountInput description(String description) {
+  public UpdateAccountInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -106,11 +112,11 @@ public class UpdateAccountInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public UpdateAccountInput alias(String alias) {
+  public UpdateAccountInput alias(@javax.annotation.Nullable String alias) {
     
     this.alias = alias;
     return this;
@@ -131,11 +137,11 @@ public class UpdateAccountInput {
 
   @JsonProperty(JSON_PROPERTY_ALIAS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlias(String alias) {
+  public void setAlias(@javax.annotation.Nullable String alias) {
     this.alias = alias;
   }
 
-  public UpdateAccountInput didProof(String didProof) {
+  public UpdateAccountInput didProof(@javax.annotation.Nonnull String didProof) {
     
     this.didProof = didProof;
     return this;
@@ -156,11 +162,11 @@ public class UpdateAccountInput {
 
   @JsonProperty(JSON_PROPERTY_DID_PROOF)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDidProof(String didProof) {
+  public void setDidProof(@javax.annotation.Nonnull String didProof) {
     this.didProof = didProof;
   }
 
-  public UpdateAccountInput metadata(Object metadata) {
+  public UpdateAccountInput metadata(@javax.annotation.Nullable Object metadata) {
     
     this.metadata = metadata;
     return this;
@@ -181,11 +187,11 @@ public class UpdateAccountInput {
 
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetadata(Object metadata) {
+  public void setMetadata(@javax.annotation.Nullable Object metadata) {
     this.metadata = metadata;
   }
 
-  public UpdateAccountInput accountDid(String accountDid) {
+  public UpdateAccountInput accountDid(@javax.annotation.Nonnull String accountDid) {
     
     this.accountDid = accountDid;
     return this;
@@ -206,7 +212,7 @@ public class UpdateAccountInput {
 
   @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccountDid(String accountDid) {
+  public void setAccountDid(@javax.annotation.Nonnull String accountDid) {
     this.accountDid = accountDid;
   }
 

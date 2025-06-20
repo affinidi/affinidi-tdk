@@ -6,29 +6,30 @@ part of 'rights_enum.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-const RightsEnum _$read = const RightsEnum._('read');
-const RightsEnum _$write = const RightsEnum._('write');
+const RightsEnum _$vfsRead = const RightsEnum._('vfsRead');
+const RightsEnum _$vfsWrite = const RightsEnum._('vfsWrite');
 
 RightsEnum _$valueOf(String name) {
   switch (name) {
-    case 'read':
-      return _$read;
-    case 'write':
-      return _$write;
+    case 'vfsRead':
+      return _$vfsRead;
+    case 'vfsWrite':
+      return _$vfsWrite;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
-final BuiltSet<RightsEnum> _$values = BuiltSet<RightsEnum>(const <RightsEnum>[
-  _$read,
-  _$write,
+final BuiltSet<RightsEnum> _$values =
+    new BuiltSet<RightsEnum>(const <RightsEnum>[
+  _$vfsRead,
+  _$vfsWrite,
 ]);
 
 class _$RightsEnumMeta {
   const _$RightsEnumMeta();
-  RightsEnum get read => _$read;
-  RightsEnum get write => _$write;
+  RightsEnum get vfsRead => _$vfsRead;
+  RightsEnum get vfsWrite => _$vfsWrite;
   RightsEnum valueOf(String name) => _$valueOf(name);
   BuiltSet<RightsEnum> get values => _$values;
 }
@@ -38,16 +39,16 @@ abstract class _$RightsEnumMixin {
   _$RightsEnumMeta get RightsEnum => const _$RightsEnumMeta();
 }
 
-Serializer<RightsEnum> _$rightsEnumSerializer = _$RightsEnumSerializer();
+Serializer<RightsEnum> _$rightsEnumSerializer = new _$RightsEnumSerializer();
 
 class _$RightsEnumSerializer implements PrimitiveSerializer<RightsEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
-    'read': 'vfs-read',
-    'write': 'vfs-write',
+    'vfsRead': 'vfs-read',
+    'vfsWrite': 'vfs-write',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
-    'vfs-read': 'read',
-    'vfs-write': 'write',
+    'vfs-read': 'vfsRead',
+    'vfs-write': 'vfsWrite',
   };
 
   @override

@@ -36,18 +36,20 @@ import java.util.StringJoiner;
   GroupNames.JSON_PROPERTY_GROUP_NAMES,
   GroupNames.JSON_PROPERTY_PAGE_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupNames {
   public static final String JSON_PROPERTY_GROUP_NAMES = "groupNames";
+  @javax.annotation.Nonnull
   private List<String> groupNames = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PAGE_TOKEN = "pageToken";
+  @javax.annotation.Nullable
   private Object pageToken;
 
   public GroupNames() {
   }
 
-  public GroupNames groupNames(List<String> groupNames) {
+  public GroupNames groupNames(@javax.annotation.Nonnull List<String> groupNames) {
     
     this.groupNames = groupNames;
     return this;
@@ -76,11 +78,11 @@ public class GroupNames {
 
   @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGroupNames(List<String> groupNames) {
+  public void setGroupNames(@javax.annotation.Nonnull List<String> groupNames) {
     this.groupNames = groupNames;
   }
 
-  public GroupNames pageToken(Object pageToken) {
+  public GroupNames pageToken(@javax.annotation.Nullable Object pageToken) {
     
     this.pageToken = pageToken;
     return this;
@@ -101,7 +103,7 @@ public class GroupNames {
 
   @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageToken(Object pageToken) {
+  public void setPageToken(@javax.annotation.Nullable Object pageToken) {
     this.pageToken = pageToken;
   }
 

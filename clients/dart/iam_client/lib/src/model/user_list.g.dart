@@ -13,15 +13,18 @@ class _$UserList extends UserList {
   final String? lastEvaluatedKey;
 
   factory _$UserList([void Function(UserListBuilder)? updates]) =>
-      (UserListBuilder()..update(updates))._build();
+      (new UserListBuilder()..update(updates))._build();
 
-  _$UserList._({required this.records, this.lastEvaluatedKey}) : super._();
+  _$UserList._({required this.records, this.lastEvaluatedKey}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(records, r'UserList', 'records');
+  }
+
   @override
   UserList rebuild(void Function(UserListBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserListBuilder toBuilder() => UserListBuilder()..replace(this);
+  UserListBuilder toBuilder() => new UserListBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -54,7 +57,7 @@ class UserListBuilder implements Builder<UserList, UserListBuilder> {
 
   ListBuilder<UserDto>? _records;
   ListBuilder<UserDto> get records =>
-      _$this._records ??= ListBuilder<UserDto>();
+      _$this._records ??= new ListBuilder<UserDto>();
   set records(ListBuilder<UserDto>? records) => _$this._records = records;
 
   String? _lastEvaluatedKey;
@@ -78,6 +81,7 @@ class UserListBuilder implements Builder<UserList, UserListBuilder> {
 
   @override
   void replace(UserList other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$UserList;
   }
 
@@ -93,7 +97,7 @@ class UserListBuilder implements Builder<UserList, UserListBuilder> {
     _$UserList _$result;
     try {
       _$result = _$v ??
-          _$UserList._(
+          new _$UserList._(
             records: records.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -103,7 +107,7 @@ class UserListBuilder implements Builder<UserList, UserListBuilder> {
         _$failedField = 'records';
         records.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'UserList', _$failedField, e.toString());
       }
       rethrow;

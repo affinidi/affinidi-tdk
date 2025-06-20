@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,13 +40,13 @@ import java.util.StringJoiner;
   InvalidCredentialTypeError.JSON_PROPERTY_TRACE_ID,
   InvalidCredentialTypeError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class InvalidCredentialTypeError {
   /**
    * Gets or Sets name
    */
   public enum NameEnum {
-    INVALID_CREDENTIAL_TYPE_ERROR("InvalidCredentialTypeError");
+    INVALID_CREDENTIAL_TYPE_ERROR(String.valueOf("InvalidCredentialTypeError"));
 
     private String value;
 
@@ -77,13 +76,14 @@ public class InvalidCredentialTypeError {
   }
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private NameEnum name;
 
   /**
    * Gets or Sets message
    */
   public enum MessageEnum {
-    THE_REQUESTED_CREDENTIAL_TYPE_IS_NOT_SUPPORTED("The requested credential type is not supported");
+    THE_REQUESTED_CREDENTIAL_TYPE_IS_NOT_SUPPORTED(String.valueOf("The requested credential type is not supported"));
 
     private String value;
 
@@ -113,22 +113,23 @@ public class InvalidCredentialTypeError {
   }
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nonnull
   private MessageEnum message;
 
   /**
    * Gets or Sets httpStatusCode
    */
   public enum HttpStatusCodeEnum {
-    NUMBER_400(new BigDecimal("400"));
+    NUMBER_400(Integer.valueOf(400));
 
-    private BigDecimal value;
+    private Integer value;
 
-    HttpStatusCodeEnum(BigDecimal value) {
+    HttpStatusCodeEnum(Integer value) {
       this.value = value;
     }
 
     @JsonValue
-    public BigDecimal getValue() {
+    public Integer getValue() {
       return value;
     }
 
@@ -138,7 +139,7 @@ public class InvalidCredentialTypeError {
     }
 
     @JsonCreator
-    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+    public static HttpStatusCodeEnum fromValue(Integer value) {
       for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
@@ -149,18 +150,21 @@ public class InvalidCredentialTypeError {
   }
 
   public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  @javax.annotation.Nonnull
   private HttpStatusCodeEnum httpStatusCode;
 
   public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  @javax.annotation.Nonnull
   private String traceId;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
   private List<ActionForbiddenErrorDetailsInner> details = new ArrayList<>();
 
   public InvalidCredentialTypeError() {
   }
 
-  public InvalidCredentialTypeError name(NameEnum name) {
+  public InvalidCredentialTypeError name(@javax.annotation.Nonnull NameEnum name) {
     
     this.name = name;
     return this;
@@ -181,11 +185,11 @@ public class InvalidCredentialTypeError {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(NameEnum name) {
+  public void setName(@javax.annotation.Nonnull NameEnum name) {
     this.name = name;
   }
 
-  public InvalidCredentialTypeError message(MessageEnum message) {
+  public InvalidCredentialTypeError message(@javax.annotation.Nonnull MessageEnum message) {
     
     this.message = message;
     return this;
@@ -206,11 +210,11 @@ public class InvalidCredentialTypeError {
 
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMessage(MessageEnum message) {
+  public void setMessage(@javax.annotation.Nonnull MessageEnum message) {
     this.message = message;
   }
 
-  public InvalidCredentialTypeError httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public InvalidCredentialTypeError httpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     
     this.httpStatusCode = httpStatusCode;
     return this;
@@ -231,11 +235,11 @@ public class InvalidCredentialTypeError {
 
   @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public void setHttpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
   }
 
-  public InvalidCredentialTypeError traceId(String traceId) {
+  public InvalidCredentialTypeError traceId(@javax.annotation.Nonnull String traceId) {
     
     this.traceId = traceId;
     return this;
@@ -256,11 +260,11 @@ public class InvalidCredentialTypeError {
 
   @JsonProperty(JSON_PROPERTY_TRACE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTraceId(String traceId) {
+  public void setTraceId(@javax.annotation.Nonnull String traceId) {
     this.traceId = traceId;
   }
 
-  public InvalidCredentialTypeError details(List<ActionForbiddenErrorDetailsInner> details) {
+  public InvalidCredentialTypeError details(@javax.annotation.Nullable List<ActionForbiddenErrorDetailsInner> details) {
     
     this.details = details;
     return this;
@@ -289,7 +293,7 @@ public class InvalidCredentialTypeError {
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(List<ActionForbiddenErrorDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<ActionForbiddenErrorDetailsInner> details) {
     this.details = details;
   }
 

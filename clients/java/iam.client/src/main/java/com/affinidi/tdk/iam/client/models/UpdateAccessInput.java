@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UpdateAccessInput.JSON_PROPERTY_RIGHTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateAccessInput {
   public static final String JSON_PROPERTY_RIGHTS = "rights";
+  @javax.annotation.Nonnull
   private List<RightsEnum> rights = new ArrayList<>();
 
   public UpdateAccessInput() {
   }
 
-  public UpdateAccessInput rights(List<RightsEnum> rights) {
+  public UpdateAccessInput rights(@javax.annotation.Nonnull List<RightsEnum> rights) {
     
     this.rights = rights;
     return this;
@@ -73,7 +74,7 @@ public class UpdateAccessInput {
 
   @JsonProperty(JSON_PROPERTY_RIGHTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRights(List<RightsEnum> rights) {
+  public void setRights(@javax.annotation.Nonnull List<RightsEnum> rights) {
     this.rights = rights;
   }
 

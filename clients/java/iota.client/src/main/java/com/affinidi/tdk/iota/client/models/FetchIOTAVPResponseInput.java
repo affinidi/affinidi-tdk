@@ -35,24 +35,28 @@ import java.util.StringJoiner;
   FetchIOTAVPResponseInput.JSON_PROPERTY_RESPONSE_CODE,
   FetchIOTAVPResponseInput.JSON_PROPERTY_CONFIGURATION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FetchIOTAVPResponseInput {
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+  @javax.annotation.Nonnull
   private String correlationId;
 
   public static final String JSON_PROPERTY_TRANSACTION_ID = "transactionId";
+  @javax.annotation.Nonnull
   private String transactionId;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "responseCode";
+  @javax.annotation.Nonnull
   private String responseCode;
 
   public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
+  @javax.annotation.Nonnull
   private String configurationId;
 
   public FetchIOTAVPResponseInput() {
   }
 
-  public FetchIOTAVPResponseInput correlationId(String correlationId) {
+  public FetchIOTAVPResponseInput correlationId(@javax.annotation.Nonnull String correlationId) {
     
     this.correlationId = correlationId;
     return this;
@@ -73,11 +77,11 @@ public class FetchIOTAVPResponseInput {
 
   @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCorrelationId(String correlationId) {
+  public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
   }
 
-  public FetchIOTAVPResponseInput transactionId(String transactionId) {
+  public FetchIOTAVPResponseInput transactionId(@javax.annotation.Nonnull String transactionId) {
     
     this.transactionId = transactionId;
     return this;
@@ -98,11 +102,11 @@ public class FetchIOTAVPResponseInput {
 
   @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransactionId(String transactionId) {
+  public void setTransactionId(@javax.annotation.Nonnull String transactionId) {
     this.transactionId = transactionId;
   }
 
-  public FetchIOTAVPResponseInput responseCode(String responseCode) {
+  public FetchIOTAVPResponseInput responseCode(@javax.annotation.Nonnull String responseCode) {
     
     this.responseCode = responseCode;
     return this;
@@ -123,11 +127,11 @@ public class FetchIOTAVPResponseInput {
 
   @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResponseCode(String responseCode) {
+  public void setResponseCode(@javax.annotation.Nonnull String responseCode) {
     this.responseCode = responseCode;
   }
 
-  public FetchIOTAVPResponseInput configurationId(String configurationId) {
+  public FetchIOTAVPResponseInput configurationId(@javax.annotation.Nonnull String configurationId) {
     
     this.configurationId = configurationId;
     return this;
@@ -148,7 +152,7 @@ public class FetchIOTAVPResponseInput {
 
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfigurationId(String configurationId) {
+  public void setConfigurationId(@javax.annotation.Nonnull String configurationId) {
     this.configurationId = configurationId;
   }
 

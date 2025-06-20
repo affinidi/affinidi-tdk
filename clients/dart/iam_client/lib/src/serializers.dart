@@ -47,7 +47,6 @@ import 'package:affinidi_tdk_iam_client/src/model/public_key_cannot_be_resolved_
 import 'package:affinidi_tdk_iam_client/src/model/rights_enum.dart';
 import 'package:affinidi_tdk_iam_client/src/model/service_error_response.dart';
 import 'package:affinidi_tdk_iam_client/src/model/service_error_response_details_inner.dart';
-import 'package:affinidi_tdk_iam_client/src/model/token_authentication_method_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_list.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authentication_method_dto.dart';
@@ -102,7 +101,6 @@ part 'serializers.g.dart';
   RightsEnum,
   ServiceErrorResponse,
   ServiceErrorResponseDetailsInner,
-  TokenAuthenticationMethodDto,
   TokenDto,
   TokenList,
   TokenPrivateKeyAuthenticationMethodDto,
@@ -125,8 +123,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer()))
-    .build();
+      ..add(Iso8601DateTimeSerializer())
+    ).build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

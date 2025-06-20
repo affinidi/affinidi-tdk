@@ -33,20 +33,21 @@ import java.util.StringJoiner;
   StartFileScanOK.JSON_PROPERTY_JOB_ID,
   StartFileScanOK.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StartFileScanOK {
   public static final String JSON_PROPERTY_JOB_ID = "jobId";
+  @javax.annotation.Nonnull
   private String jobId;
 
   /**
    * Gets or Sets status
    */
   public enum StatusEnum {
-    STARTED("STARTED"),
+    STARTED(String.valueOf("STARTED")),
     
-    FAILED("FAILED"),
+    FAILED(String.valueOf("FAILED")),
     
-    COMPLETED("COMPLETED");
+    COMPLETED(String.valueOf("COMPLETED"));
 
     private String value;
 
@@ -76,12 +77,13 @@ public class StartFileScanOK {
   }
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private StatusEnum status;
 
   public StartFileScanOK() {
   }
 
-  public StartFileScanOK jobId(String jobId) {
+  public StartFileScanOK jobId(@javax.annotation.Nonnull String jobId) {
     
     this.jobId = jobId;
     return this;
@@ -102,11 +104,11 @@ public class StartFileScanOK {
 
   @JsonProperty(JSON_PROPERTY_JOB_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJobId(String jobId) {
+  public void setJobId(@javax.annotation.Nonnull String jobId) {
     this.jobId = jobId;
   }
 
-  public StartFileScanOK status(StatusEnum status) {
+  public StartFileScanOK status(@javax.annotation.Nonnull StatusEnum status) {
     
     this.status = status;
     return this;
@@ -127,7 +129,7 @@ public class StartFileScanOK {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
   }
 

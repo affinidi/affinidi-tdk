@@ -40,39 +40,48 @@ import java.util.StringJoiner;
   JsonWebKeyDto.JSON_PROPERTY_ALG,
   JsonWebKeyDto.JSON_PROPERTY_USE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class JsonWebKeyDto {
   public static final String JSON_PROPERTY_KID = "kid";
+  @javax.annotation.Nonnull
   private String kid;
 
   public static final String JSON_PROPERTY_KTY = "kty";
+  @javax.annotation.Nonnull
   private String kty;
 
   public static final String JSON_PROPERTY_N = "n";
+  @javax.annotation.Nullable
   private String n;
 
   public static final String JSON_PROPERTY_E = "e";
+  @javax.annotation.Nullable
   private String e;
 
   public static final String JSON_PROPERTY_X = "x";
+  @javax.annotation.Nullable
   private String x;
 
   public static final String JSON_PROPERTY_Y = "y";
+  @javax.annotation.Nullable
   private String y;
 
   public static final String JSON_PROPERTY_CRV = "crv";
+  @javax.annotation.Nullable
   private String crv;
 
   public static final String JSON_PROPERTY_ALG = "alg";
+  @javax.annotation.Nonnull
   private String alg;
 
   public static final String JSON_PROPERTY_USE = "use";
+  @javax.annotation.Nonnull
   private String use;
 
   public JsonWebKeyDto() {
   }
 
-  public JsonWebKeyDto kid(String kid) {
+  public JsonWebKeyDto kid(@javax.annotation.Nonnull String kid) {
     
     this.kid = kid;
     return this;
@@ -93,11 +102,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_KID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKid(String kid) {
+  public void setKid(@javax.annotation.Nonnull String kid) {
     this.kid = kid;
   }
 
-  public JsonWebKeyDto kty(String kty) {
+  public JsonWebKeyDto kty(@javax.annotation.Nonnull String kty) {
     
     this.kty = kty;
     return this;
@@ -118,11 +127,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_KTY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKty(String kty) {
+  public void setKty(@javax.annotation.Nonnull String kty) {
     this.kty = kty;
   }
 
-  public JsonWebKeyDto n(String n) {
+  public JsonWebKeyDto n(@javax.annotation.Nullable String n) {
     
     this.n = n;
     return this;
@@ -143,11 +152,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setN(String n) {
+  public void setN(@javax.annotation.Nullable String n) {
     this.n = n;
   }
 
-  public JsonWebKeyDto e(String e) {
+  public JsonWebKeyDto e(@javax.annotation.Nullable String e) {
     
     this.e = e;
     return this;
@@ -168,11 +177,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_E)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setE(String e) {
+  public void setE(@javax.annotation.Nullable String e) {
     this.e = e;
   }
 
-  public JsonWebKeyDto x(String x) {
+  public JsonWebKeyDto x(@javax.annotation.Nullable String x) {
     
     this.x = x;
     return this;
@@ -193,11 +202,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_X)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setX(String x) {
+  public void setX(@javax.annotation.Nullable String x) {
     this.x = x;
   }
 
-  public JsonWebKeyDto y(String y) {
+  public JsonWebKeyDto y(@javax.annotation.Nullable String y) {
     
     this.y = y;
     return this;
@@ -218,11 +227,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_Y)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setY(String y) {
+  public void setY(@javax.annotation.Nullable String y) {
     this.y = y;
   }
 
-  public JsonWebKeyDto crv(String crv) {
+  public JsonWebKeyDto crv(@javax.annotation.Nullable String crv) {
     
     this.crv = crv;
     return this;
@@ -243,11 +252,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_CRV)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCrv(String crv) {
+  public void setCrv(@javax.annotation.Nullable String crv) {
     this.crv = crv;
   }
 
-  public JsonWebKeyDto alg(String alg) {
+  public JsonWebKeyDto alg(@javax.annotation.Nonnull String alg) {
     
     this.alg = alg;
     return this;
@@ -268,11 +277,11 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_ALG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAlg(String alg) {
+  public void setAlg(@javax.annotation.Nonnull String alg) {
     this.alg = alg;
   }
 
-  public JsonWebKeyDto use(String use) {
+  public JsonWebKeyDto use(@javax.annotation.Nonnull String use) {
     
     this.use = use;
     return this;
@@ -293,7 +302,7 @@ public class JsonWebKeyDto {
 
   @JsonProperty(JSON_PROPERTY_USE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUse(String use) {
+  public void setUse(@javax.annotation.Nonnull String use) {
     this.use = use;
   }
 

@@ -39,24 +39,28 @@ import java.util.StringJoiner;
   OIDCConfigCredentialsSupportedDraft00Inner.JSON_PROPERTY_TYPES
 })
 @JsonTypeName("OIDCConfig_credentials_supported_draft_00_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OIDCConfigCredentialsSupportedDraft00Inner {
   public static final String JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED = "cryptographic_binding_methods_supported";
+  @javax.annotation.Nullable
   private List<String> cryptographicBindingMethodsSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED = "cryptographic_suites_supported";
+  @javax.annotation.Nullable
   private List<String> cryptographicSuitesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nullable
   private String format;
 
   public static final String JSON_PROPERTY_TYPES = "types";
+  @javax.annotation.Nullable
   private List<String> types = new ArrayList<>();
 
   public OIDCConfigCredentialsSupportedDraft00Inner() {
   }
 
-  public OIDCConfigCredentialsSupportedDraft00Inner cryptographicBindingMethodsSupported(List<String> cryptographicBindingMethodsSupported) {
+  public OIDCConfigCredentialsSupportedDraft00Inner cryptographicBindingMethodsSupported(@javax.annotation.Nullable List<String> cryptographicBindingMethodsSupported) {
     
     this.cryptographicBindingMethodsSupported = cryptographicBindingMethodsSupported;
     return this;
@@ -85,11 +89,11 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
 
   @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCryptographicBindingMethodsSupported(List<String> cryptographicBindingMethodsSupported) {
+  public void setCryptographicBindingMethodsSupported(@javax.annotation.Nullable List<String> cryptographicBindingMethodsSupported) {
     this.cryptographicBindingMethodsSupported = cryptographicBindingMethodsSupported;
   }
 
-  public OIDCConfigCredentialsSupportedDraft00Inner cryptographicSuitesSupported(List<String> cryptographicSuitesSupported) {
+  public OIDCConfigCredentialsSupportedDraft00Inner cryptographicSuitesSupported(@javax.annotation.Nullable List<String> cryptographicSuitesSupported) {
     
     this.cryptographicSuitesSupported = cryptographicSuitesSupported;
     return this;
@@ -118,11 +122,11 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
 
   @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCryptographicSuitesSupported(List<String> cryptographicSuitesSupported) {
+  public void setCryptographicSuitesSupported(@javax.annotation.Nullable List<String> cryptographicSuitesSupported) {
     this.cryptographicSuitesSupported = cryptographicSuitesSupported;
   }
 
-  public OIDCConfigCredentialsSupportedDraft00Inner format(String format) {
+  public OIDCConfigCredentialsSupportedDraft00Inner format(@javax.annotation.Nullable String format) {
     
     this.format = format;
     return this;
@@ -143,11 +147,11 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
 
   @JsonProperty(JSON_PROPERTY_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(String format) {
+  public void setFormat(@javax.annotation.Nullable String format) {
     this.format = format;
   }
 
-  public OIDCConfigCredentialsSupportedDraft00Inner types(List<String> types) {
+  public OIDCConfigCredentialsSupportedDraft00Inner types(@javax.annotation.Nullable List<String> types) {
     
     this.types = types;
     return this;
@@ -176,7 +180,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
 
   @JsonProperty(JSON_PROPERTY_TYPES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTypes(List<String> types) {
+  public void setTypes(@javax.annotation.Nullable List<String> types) {
     this.types = types;
   }
 

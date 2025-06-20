@@ -14,9 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  integration_tests_python:
+  integration_tests:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

@@ -29,7 +29,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
 })
 @JsonTypeName("CredentialResponseImmediate_c_nonce_expires_in")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialResponseImmediateCNonceExpiresIn {
   public CredentialResponseImmediateCNonceExpiresIn() {
   }

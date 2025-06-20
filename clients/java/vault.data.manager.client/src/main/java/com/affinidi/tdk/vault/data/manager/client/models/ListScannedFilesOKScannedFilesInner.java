@@ -38,30 +38,36 @@ import java.util.StringJoiner;
   ListScannedFilesOKScannedFilesInner.JSON_PROPERTY_NAME
 })
 @JsonTypeName("ListScannedFilesOK_scannedFiles_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListScannedFilesOKScannedFilesInner {
   public static final String JSON_PROPERTY_JOB_ID = "jobId";
+  @javax.annotation.Nonnull
   private String jobId;
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private String status;
 
   public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
+  @javax.annotation.Nonnull
   private String profileId;
 
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
+  @javax.annotation.Nonnull
   private String nodeId;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nonnull
   private String createdAt;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public ListScannedFilesOKScannedFilesInner() {
   }
 
-  public ListScannedFilesOKScannedFilesInner jobId(String jobId) {
+  public ListScannedFilesOKScannedFilesInner jobId(@javax.annotation.Nonnull String jobId) {
     
     this.jobId = jobId;
     return this;
@@ -82,11 +88,11 @@ public class ListScannedFilesOKScannedFilesInner {
 
   @JsonProperty(JSON_PROPERTY_JOB_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJobId(String jobId) {
+  public void setJobId(@javax.annotation.Nonnull String jobId) {
     this.jobId = jobId;
   }
 
-  public ListScannedFilesOKScannedFilesInner status(String status) {
+  public ListScannedFilesOKScannedFilesInner status(@javax.annotation.Nonnull String status) {
     
     this.status = status;
     return this;
@@ -107,11 +113,11 @@ public class ListScannedFilesOKScannedFilesInner {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nonnull String status) {
     this.status = status;
   }
 
-  public ListScannedFilesOKScannedFilesInner profileId(String profileId) {
+  public ListScannedFilesOKScannedFilesInner profileId(@javax.annotation.Nonnull String profileId) {
     
     this.profileId = profileId;
     return this;
@@ -132,11 +138,11 @@ public class ListScannedFilesOKScannedFilesInner {
 
   @JsonProperty(JSON_PROPERTY_PROFILE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfileId(String profileId) {
+  public void setProfileId(@javax.annotation.Nonnull String profileId) {
     this.profileId = profileId;
   }
 
-  public ListScannedFilesOKScannedFilesInner nodeId(String nodeId) {
+  public ListScannedFilesOKScannedFilesInner nodeId(@javax.annotation.Nonnull String nodeId) {
     
     this.nodeId = nodeId;
     return this;
@@ -157,11 +163,11 @@ public class ListScannedFilesOKScannedFilesInner {
 
   @JsonProperty(JSON_PROPERTY_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNodeId(String nodeId) {
+  public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
   }
 
-  public ListScannedFilesOKScannedFilesInner createdAt(String createdAt) {
+  public ListScannedFilesOKScannedFilesInner createdAt(@javax.annotation.Nonnull String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -182,11 +188,11 @@ public class ListScannedFilesOKScannedFilesInner {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public ListScannedFilesOKScannedFilesInner name(String name) {
+  public ListScannedFilesOKScannedFilesInner name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -207,7 +213,7 @@ public class ListScannedFilesOKScannedFilesInner {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 

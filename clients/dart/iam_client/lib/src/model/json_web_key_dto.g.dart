@@ -27,7 +27,7 @@ class _$JsonWebKeyDto extends JsonWebKeyDto {
   final String use;
 
   factory _$JsonWebKeyDto([void Function(JsonWebKeyDtoBuilder)? updates]) =>
-      (JsonWebKeyDtoBuilder()..update(updates))._build();
+      (new JsonWebKeyDtoBuilder()..update(updates))._build();
 
   _$JsonWebKeyDto._(
       {required this.kid,
@@ -39,13 +39,19 @@ class _$JsonWebKeyDto extends JsonWebKeyDto {
       this.crv,
       required this.alg,
       required this.use})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(kid, r'JsonWebKeyDto', 'kid');
+    BuiltValueNullFieldError.checkNotNull(kty, r'JsonWebKeyDto', 'kty');
+    BuiltValueNullFieldError.checkNotNull(alg, r'JsonWebKeyDto', 'alg');
+    BuiltValueNullFieldError.checkNotNull(use, r'JsonWebKeyDto', 'use');
+  }
+
   @override
   JsonWebKeyDto rebuild(void Function(JsonWebKeyDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  JsonWebKeyDtoBuilder toBuilder() => JsonWebKeyDtoBuilder()..replace(this);
+  JsonWebKeyDtoBuilder toBuilder() => new JsonWebKeyDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -157,6 +163,7 @@ class JsonWebKeyDtoBuilder
 
   @override
   void replace(JsonWebKeyDto other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$JsonWebKeyDto;
   }
 
@@ -170,7 +177,7 @@ class JsonWebKeyDtoBuilder
 
   _$JsonWebKeyDto _build() {
     final _$result = _$v ??
-        _$JsonWebKeyDto._(
+        new _$JsonWebKeyDto._(
           kid: BuiltValueNullFieldError.checkNotNull(
               kid, r'JsonWebKeyDto', 'kid'),
           kty: BuiltValueNullFieldError.checkNotNull(

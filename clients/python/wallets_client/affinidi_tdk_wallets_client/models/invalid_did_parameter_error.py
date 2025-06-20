@@ -37,21 +37,21 @@ class InvalidDidParameterError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidDidParameterError'):
+        if value not in ('InvalidDidParameterError',):
             raise ValueError("must be one of enum values ('InvalidDidParameterError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Given did in field toDid is invalid. Use only resolvable form of did.'):
+        if value not in ('Given did in field toDid is invalid. Use only resolvable form of did.',):
             raise ValueError("must be one of enum values ('Given did in field toDid is invalid. Use only resolvable form of did.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialsApi extends BaseApi {
 
   public CredentialsApi() {
@@ -58,7 +58,7 @@ public class CredentialsApi extends BaseApi {
    * @return BatchCredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public BatchCredentialResponse batchCredential(String projectId, BatchCredentialInput batchCredentialInput) throws ApiException {
+  public BatchCredentialResponse batchCredential(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull BatchCredentialInput batchCredentialInput) throws ApiException {
     return this.batchCredential(projectId, batchCredentialInput, Collections.emptyMap());
   }
 
@@ -72,7 +72,7 @@ public class CredentialsApi extends BaseApi {
    * @return BatchCredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public BatchCredentialResponse batchCredential(String projectId, BatchCredentialInput batchCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
+  public BatchCredentialResponse batchCredential(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull BatchCredentialInput batchCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = batchCredentialInput;
     
     // verify the required parameter 'projectId' is set
@@ -140,7 +140,7 @@ public class CredentialsApi extends BaseApi {
    * @return CredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public CredentialResponse generateCredentials(String projectId, CreateCredentialInput createCredentialInput) throws ApiException {
+  public CredentialResponse generateCredentials(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull CreateCredentialInput createCredentialInput) throws ApiException {
     return this.generateCredentials(projectId, createCredentialInput, Collections.emptyMap());
   }
 
@@ -154,7 +154,7 @@ public class CredentialsApi extends BaseApi {
    * @return CredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public CredentialResponse generateCredentials(String projectId, CreateCredentialInput createCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CredentialResponse generateCredentials(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull CreateCredentialInput createCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createCredentialInput;
     
     // verify the required parameter 'projectId' is set
@@ -226,7 +226,7 @@ public class CredentialsApi extends BaseApi {
    * @return ClaimedCredentialListResponse
    * @throws ApiException if fails to make API call
    */
-  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String exclusiveStartKey, Integer limit) throws ApiException {
+  public ClaimedCredentialListResponse getClaimedCredentials(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String rangeStartTime, @javax.annotation.Nullable String rangeEndTime, @javax.annotation.Nullable String exclusiveStartKey, @javax.annotation.Nullable Integer limit) throws ApiException {
     return this.getClaimedCredentials(projectId, configurationId, rangeStartTime, rangeEndTime, exclusiveStartKey, limit, Collections.emptyMap());
   }
 
@@ -244,7 +244,7 @@ public class CredentialsApi extends BaseApi {
    * @return ClaimedCredentialListResponse
    * @throws ApiException if fails to make API call
    */
-  public ClaimedCredentialListResponse getClaimedCredentials(String projectId, String configurationId, String rangeStartTime, String rangeEndTime, String exclusiveStartKey, Integer limit, Map<String, String> additionalHeaders) throws ApiException {
+  public ClaimedCredentialListResponse getClaimedCredentials(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String rangeStartTime, @javax.annotation.Nullable String rangeEndTime, @javax.annotation.Nullable String exclusiveStartKey, @javax.annotation.Nullable Integer limit, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -323,7 +323,7 @@ public class CredentialsApi extends BaseApi {
    * @return ClaimedCredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public ClaimedCredentialResponse getIssuanceIdClaimedCredential(String projectId, String configurationId, String issuanceId) throws ApiException {
+  public ClaimedCredentialResponse getIssuanceIdClaimedCredential(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String issuanceId) throws ApiException {
     return this.getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId, Collections.emptyMap());
   }
 
@@ -338,7 +338,7 @@ public class CredentialsApi extends BaseApi {
    * @return ClaimedCredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public ClaimedCredentialResponse getIssuanceIdClaimedCredential(String projectId, String configurationId, String issuanceId, Map<String, String> additionalHeaders) throws ApiException {
+  public ClaimedCredentialResponse getIssuanceIdClaimedCredential(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String issuanceId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set

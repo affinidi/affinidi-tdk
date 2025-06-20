@@ -25,7 +25,7 @@ class TestProfileDataApi(unittest.TestCase):
         self.api = ProfileDataApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_query_profile_data(self) -> None:
         """Test case for query_profile_data

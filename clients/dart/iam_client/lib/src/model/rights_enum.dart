@@ -12,9 +12,9 @@ part 'rights_enum.g.dart';
 class RightsEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'vfs-read')
-  static const RightsEnum read = _$read;
+  static const RightsEnum vfsRead = _$vfsRead;
   @BuiltValueEnumConst(wireName: r'vfs-write')
-  static const RightsEnum write = _$write;
+  static const RightsEnum vfsWrite = _$vfsWrite;
 
   static Serializer<RightsEnum> get serializer => _$rightsEnumSerializer;
 

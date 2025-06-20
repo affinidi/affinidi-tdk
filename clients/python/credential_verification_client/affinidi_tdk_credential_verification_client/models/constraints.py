@@ -43,7 +43,7 @@ class Constraints(BaseModel):
         if value is None:
             return value
 
-        if value not in ('required', 'preferred'):
+        if value not in ('required', 'preferred',):
             raise ValueError("must be one of enum values ('required', 'preferred')")
         return value
 
@@ -53,7 +53,7 @@ class Constraints(BaseModel):
         if value is None:
             return value
 
-        if value not in ('required', 'preferred'):
+        if value not in ('required', 'preferred',):
             raise ValueError("must be one of enum values ('required', 'preferred')")
         return value
 

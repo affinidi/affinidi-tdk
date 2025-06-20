@@ -36,24 +36,28 @@ import java.util.StringJoiner;
   ServiceErrorResponseDetailsInner.JSON_PROPERTY_LOCATION
 })
 @JsonTypeName("ServiceErrorResponse_details_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ServiceErrorResponseDetailsInner {
   public static final String JSON_PROPERTY_ISSUE = "issue";
+  @javax.annotation.Nonnull
   private String issue;
 
   public static final String JSON_PROPERTY_FIELD = "field";
+  @javax.annotation.Nullable
   private String field;
 
   public static final String JSON_PROPERTY_VALUE = "value";
+  @javax.annotation.Nullable
   private String value;
 
   public static final String JSON_PROPERTY_LOCATION = "location";
+  @javax.annotation.Nullable
   private String location;
 
   public ServiceErrorResponseDetailsInner() {
   }
 
-  public ServiceErrorResponseDetailsInner issue(String issue) {
+  public ServiceErrorResponseDetailsInner issue(@javax.annotation.Nonnull String issue) {
     
     this.issue = issue;
     return this;
@@ -74,11 +78,11 @@ public class ServiceErrorResponseDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_ISSUE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssue(String issue) {
+  public void setIssue(@javax.annotation.Nonnull String issue) {
     this.issue = issue;
   }
 
-  public ServiceErrorResponseDetailsInner field(String field) {
+  public ServiceErrorResponseDetailsInner field(@javax.annotation.Nullable String field) {
     
     this.field = field;
     return this;
@@ -99,11 +103,11 @@ public class ServiceErrorResponseDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_FIELD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setField(String field) {
+  public void setField(@javax.annotation.Nullable String field) {
     this.field = field;
   }
 
-  public ServiceErrorResponseDetailsInner value(String value) {
+  public ServiceErrorResponseDetailsInner value(@javax.annotation.Nullable String value) {
     
     this.value = value;
     return this;
@@ -124,11 +128,11 @@ public class ServiceErrorResponseDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nullable String value) {
     this.value = value;
   }
 
-  public ServiceErrorResponseDetailsInner location(String location) {
+  public ServiceErrorResponseDetailsInner location(@javax.annotation.Nullable String location) {
     
     this.location = location;
     return this;
@@ -149,7 +153,7 @@ public class ServiceErrorResponseDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_LOCATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocation(String location) {
+  public void setLocation(@javax.annotation.Nullable String location) {
     this.location = location;
   }
 

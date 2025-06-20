@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGrantAccessVfsOK.JSON_PROPERTY_CORS_GRANT_ACCESS_VFS_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGrantAccessVfsOK {
   public static final String JSON_PROPERTY_CORS_GRANT_ACCESS_VFS_OK = "corsGrantAccessVfsOk";
+  @javax.annotation.Nullable
   private String corsGrantAccessVfsOk;
 
   public CorsGrantAccessVfsOK() {
   }
 
-  public CorsGrantAccessVfsOK corsGrantAccessVfsOk(String corsGrantAccessVfsOk) {
+  public CorsGrantAccessVfsOK corsGrantAccessVfsOk(@javax.annotation.Nullable String corsGrantAccessVfsOk) {
     
     this.corsGrantAccessVfsOk = corsGrantAccessVfsOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGrantAccessVfsOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GRANT_ACCESS_VFS_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGrantAccessVfsOk(String corsGrantAccessVfsOk) {
+  public void setCorsGrantAccessVfsOk(@javax.annotation.Nullable String corsGrantAccessVfsOk) {
     this.corsGrantAccessVfsOk = corsGrantAccessVfsOk;
   }
 

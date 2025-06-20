@@ -37,21 +37,21 @@ class SigningFailedError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('SigningFailedError'):
+        if value not in ('SigningFailedError',):
             raise ValueError("must be one of enum values ('SigningFailedError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Signing failed.'):
+        if value not in ('Signing failed.',):
             raise ValueError("must be one of enum values ('Signing failed.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

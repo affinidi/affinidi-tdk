@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetWellKnownOpenIdCredentialIssuerOK.JSON_PROPERTY_CORS_GET_WELL_KNOWN_OPEN_ID_CREDENTIAL_ISSUER_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGetWellKnownOpenIdCredentialIssuerOK {
   public static final String JSON_PROPERTY_CORS_GET_WELL_KNOWN_OPEN_ID_CREDENTIAL_ISSUER_OK = "corsGetWellKnownOpenIdCredentialIssuerOk";
+  @javax.annotation.Nullable
   private String corsGetWellKnownOpenIdCredentialIssuerOk;
 
   public CorsGetWellKnownOpenIdCredentialIssuerOK() {
   }
 
-  public CorsGetWellKnownOpenIdCredentialIssuerOK corsGetWellKnownOpenIdCredentialIssuerOk(String corsGetWellKnownOpenIdCredentialIssuerOk) {
+  public CorsGetWellKnownOpenIdCredentialIssuerOK corsGetWellKnownOpenIdCredentialIssuerOk(@javax.annotation.Nullable String corsGetWellKnownOpenIdCredentialIssuerOk) {
     
     this.corsGetWellKnownOpenIdCredentialIssuerOk = corsGetWellKnownOpenIdCredentialIssuerOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGetWellKnownOpenIdCredentialIssuerOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GET_WELL_KNOWN_OPEN_ID_CREDENTIAL_ISSUER_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGetWellKnownOpenIdCredentialIssuerOk(String corsGetWellKnownOpenIdCredentialIssuerOk) {
+  public void setCorsGetWellKnownOpenIdCredentialIssuerOk(@javax.annotation.Nullable String corsGetWellKnownOpenIdCredentialIssuerOk) {
     this.corsGetWellKnownOpenIdCredentialIssuerOk = corsGetWellKnownOpenIdCredentialIssuerOk;
   }
 

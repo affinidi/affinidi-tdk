@@ -25,7 +25,7 @@ class TestIssuanceApi(unittest.TestCase):
         self.api = IssuanceApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_issuance_state(self) -> None:
         """Test case for issuance_state

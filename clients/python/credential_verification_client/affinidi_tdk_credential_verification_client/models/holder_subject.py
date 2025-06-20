@@ -33,7 +33,7 @@ class HolderSubject(BaseModel):
     @validator('directive')
     def directive_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('required', 'preferred'):
+        if value not in ('required', 'preferred',):
             raise ValueError("must be one of enum values ('required', 'preferred')")
         return value
 

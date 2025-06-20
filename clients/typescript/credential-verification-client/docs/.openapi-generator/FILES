@@ -31,7 +31,6 @@ Models/VerifyCredentialInput.md
 Models/VerifyCredentialOutput.md
 Models/VerifyPresentationInput.md
 Models/VerifyPresentationOutput.md
-Models/VerifyPresentationOutput_errors.md
 Models/W3cCredentialStatus.md
 Models/W3cProof.md
 README.md

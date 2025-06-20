@@ -37,24 +37,28 @@ import java.util.StringJoiner;
   CreateNodeOK.JSON_PROPERTY_LINK,
   CreateNodeOK.JSON_PROPERTY_FIELDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateNodeOK {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
+  @javax.annotation.Nonnull
   private String nodeId;
 
   public static final String JSON_PROPERTY_URL = "url";
+  @javax.annotation.Nullable
   private String url;
 
   public static final String JSON_PROPERTY_LINK = "link";
+  @javax.annotation.Nullable
   private String link;
 
   public static final String JSON_PROPERTY_FIELDS = "fields";
+  @javax.annotation.Nullable
   private Map<String, Object> fields = new HashMap<>();
 
   public CreateNodeOK() {
   }
 
-  public CreateNodeOK nodeId(String nodeId) {
+  public CreateNodeOK nodeId(@javax.annotation.Nonnull String nodeId) {
     
     this.nodeId = nodeId;
     return this;
@@ -75,11 +79,11 @@ public class CreateNodeOK {
 
   @JsonProperty(JSON_PROPERTY_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNodeId(String nodeId) {
+  public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
   }
 
-  public CreateNodeOK url(String url) {
+  public CreateNodeOK url(@javax.annotation.Nullable String url) {
     
     this.url = url;
     return this;
@@ -100,11 +104,11 @@ public class CreateNodeOK {
 
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nullable String url) {
     this.url = url;
   }
 
-  public CreateNodeOK link(String link) {
+  public CreateNodeOK link(@javax.annotation.Nullable String link) {
     
     this.link = link;
     return this;
@@ -125,11 +129,11 @@ public class CreateNodeOK {
 
   @JsonProperty(JSON_PROPERTY_LINK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
-  public CreateNodeOK fields(Map<String, Object> fields) {
+  public CreateNodeOK fields(@javax.annotation.Nullable Map<String, Object> fields) {
     
     this.fields = fields;
     return this;
@@ -158,7 +162,7 @@ public class CreateNodeOK {
 
   @JsonProperty(JSON_PROPERTY_FIELDS)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFields(Map<String, Object> fields) {
+  public void setFields(@javax.annotation.Nullable Map<String, Object> fields) {
     this.fields = fields;
   }
 

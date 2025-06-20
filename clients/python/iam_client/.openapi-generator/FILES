@@ -50,7 +50,6 @@ affinidi_tdk_iam_client/models/public_key_cannot_be_resolved_from_did_error.py
 affinidi_tdk_iam_client/models/rights_enum.py
 affinidi_tdk_iam_client/models/service_error_response.py
 affinidi_tdk_iam_client/models/service_error_response_details_inner.py
-affinidi_tdk_iam_client/models/token_authentication_method_dto.py
 affinidi_tdk_iam_client/models/token_dto.py
 affinidi_tdk_iam_client/models/token_list.py
 affinidi_tdk_iam_client/models/token_private_key_authentication_method_dto.py
@@ -109,7 +108,6 @@ docs/RightsEnum.md
 docs/ServiceErrorResponse.md
 docs/ServiceErrorResponseDetailsInner.md
 docs/StsApi.md
-docs/TokenAuthenticationMethodDto.md
 docs/TokenDto.md
 docs/TokenList.md
 docs/TokenPrivateKeyAuthenticationMethodDto.md
@@ -175,7 +173,6 @@ test/test_rights_enum.py
 test/test_service_error_response.py
 test/test_service_error_response_details_inner.py
 test/test_sts_api.py
-test/test_token_authentication_method_dto.py
 test/test_token_dto.py
 test/test_token_list.py
 test/test_token_private_key_authentication_method_dto.py

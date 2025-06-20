@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConfigurationApi extends BaseApi {
 
   public ConfigurationApi() {
@@ -54,7 +54,7 @@ public class ConfigurationApi extends BaseApi {
    * @return IssuanceConfigDto
    * @throws ApiException if fails to make API call
    */
-  public IssuanceConfigDto createIssuanceConfig(CreateIssuanceConfigInput createIssuanceConfigInput) throws ApiException {
+  public IssuanceConfigDto createIssuanceConfig(@javax.annotation.Nonnull CreateIssuanceConfigInput createIssuanceConfigInput) throws ApiException {
     return this.createIssuanceConfig(createIssuanceConfigInput, Collections.emptyMap());
   }
 
@@ -67,7 +67,7 @@ public class ConfigurationApi extends BaseApi {
    * @return IssuanceConfigDto
    * @throws ApiException if fails to make API call
    */
-  public IssuanceConfigDto createIssuanceConfig(CreateIssuanceConfigInput createIssuanceConfigInput, Map<String, String> additionalHeaders) throws ApiException {
+  public IssuanceConfigDto createIssuanceConfig(@javax.annotation.Nonnull CreateIssuanceConfigInput createIssuanceConfigInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createIssuanceConfigInput;
     
     // verify the required parameter 'createIssuanceConfigInput' is set
@@ -127,7 +127,7 @@ public class ConfigurationApi extends BaseApi {
    * @param configurationId The id of the issuance configuration (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteIssuanceConfigById(String configurationId) throws ApiException {
+  public void deleteIssuanceConfigById(@javax.annotation.Nonnull String configurationId) throws ApiException {
     this.deleteIssuanceConfigById(configurationId, Collections.emptyMap());
   }
 
@@ -139,7 +139,7 @@ public class ConfigurationApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deleteIssuanceConfigById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+  public void deleteIssuanceConfigById(@javax.annotation.Nonnull String configurationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -200,7 +200,7 @@ public class ConfigurationApi extends BaseApi {
    * @return IssuanceConfigDto
    * @throws ApiException if fails to make API call
    */
-  public IssuanceConfigDto getIssuanceConfigById(String configurationId) throws ApiException {
+  public IssuanceConfigDto getIssuanceConfigById(@javax.annotation.Nonnull String configurationId) throws ApiException {
     return this.getIssuanceConfigById(configurationId, Collections.emptyMap());
   }
 
@@ -213,7 +213,7 @@ public class ConfigurationApi extends BaseApi {
    * @return IssuanceConfigDto
    * @throws ApiException if fails to make API call
    */
-  public IssuanceConfigDto getIssuanceConfigById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+  public IssuanceConfigDto getIssuanceConfigById(@javax.annotation.Nonnull String configurationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -343,7 +343,7 @@ public class ConfigurationApi extends BaseApi {
    * @return IssuanceConfigDto
    * @throws ApiException if fails to make API call
    */
-  public IssuanceConfigDto updateIssuanceConfigById(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput) throws ApiException {
+  public IssuanceConfigDto updateIssuanceConfigById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull UpdateIssuanceConfigInput updateIssuanceConfigInput) throws ApiException {
     return this.updateIssuanceConfigById(configurationId, updateIssuanceConfigInput, Collections.emptyMap());
   }
 
@@ -357,7 +357,7 @@ public class ConfigurationApi extends BaseApi {
    * @return IssuanceConfigDto
    * @throws ApiException if fails to make API call
    */
-  public IssuanceConfigDto updateIssuanceConfigById(String configurationId, UpdateIssuanceConfigInput updateIssuanceConfigInput, Map<String, String> additionalHeaders) throws ApiException {
+  public IssuanceConfigDto updateIssuanceConfigById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull UpdateIssuanceConfigInput updateIssuanceConfigInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateIssuanceConfigInput;
     
     // verify the required parameter 'configurationId' is set

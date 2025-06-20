@@ -38,13 +38,13 @@ class TestCreateTokenInput(unittest.TestCase):
         if include_optional:
             return CreateTokenInput(
                 name = 'AIV/Concierge API - affinidi-elements-iam-dev',
-                authentication_method = None,
+                authentication_method = {"type": "PRIVATE_KEY", "signingAlgorithm": "RS256", "publicKeyInfo": { "jwks": {"keys":[{"use":"sig","kty":"RSA","kid":"some-kid","alg":"RS256","n":"some-n-value","e":"some-e-value"}]} }},
                 description = ''
             )
         else:
             return CreateTokenInput(
                 name = 'AIV/Concierge API - affinidi-elements-iam-dev',
-                authentication_method = None,
+                authentication_method = {"type": "PRIVATE_KEY", "signingAlgorithm": "RS256", "publicKeyInfo": { "jwks": {"keys":[{"use":"sig","kty":"RSA","kid":"some-kid","alg":"RS256","n":"some-n-value","e":"some-e-value"}]} }},
         )
         """
 

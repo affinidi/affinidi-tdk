@@ -33,7 +33,7 @@ class RedirectResponse(BaseModel):
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('REDIRECT_RESPONSE'):
+        if value not in ('REDIRECT_RESPONSE',):
             raise ValueError("must be one of enum values ('REDIRECT_RESPONSE')")
         return value
 

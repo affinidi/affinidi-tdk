@@ -49,39 +49,47 @@ import java.util.StringJoiner;
   CreateLoginConfigurationInput.JSON_PROPERTY_SCOPE,
   CreateLoginConfigurationInput.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateLoginConfigurationInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
+  @javax.annotation.Nonnull
   private List<String> redirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
+  @javax.annotation.Nullable
   private List<String> postLogoutRedirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+  @javax.annotation.Nullable
   private String vpDefinition;
 
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+  @javax.annotation.Nullable
   private Object presentationDefinition;
 
   public static final String JSON_PROPERTY_ID_TOKEN_MAPPING = "idTokenMapping";
+  @javax.annotation.Nullable
   private List<IdTokenMappingItem> idTokenMapping = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
+  @javax.annotation.Nullable
   private LoginConfigurationClientMetadataInput clientMetadata;
 
   /**
    * ID token claims output format. Default is array.
    */
   public enum ClaimFormatEnum {
-    ARRAY("array"),
+    ARRAY(String.valueOf("array")),
     
-    MAP("map");
+    MAP(String.valueOf("map"));
 
     private String value;
 
@@ -111,21 +119,25 @@ public class CreateLoginConfigurationInput {
   }
 
   public static final String JSON_PROPERTY_CLAIM_FORMAT = "claimFormat";
+  @javax.annotation.Nullable
   private ClaimFormatEnum claimFormat;
 
   public static final String JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT = "failOnMappingConflict";
+  @javax.annotation.Nullable
   private Boolean failOnMappingConflict = true;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD = "tokenEndpointAuthMethod";
+  @javax.annotation.Nullable
   private TokenEndpointAuthMethod tokenEndpointAuthMethod;
 
   public CreateLoginConfigurationInput() {
   }
 
-  public CreateLoginConfigurationInput name(String name) {
+  public CreateLoginConfigurationInput name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -146,11 +158,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public CreateLoginConfigurationInput description(String description) {
+  public CreateLoginConfigurationInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -171,11 +183,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public CreateLoginConfigurationInput redirectUris(List<String> redirectUris) {
+  public CreateLoginConfigurationInput redirectUris(@javax.annotation.Nonnull List<String> redirectUris) {
     
     this.redirectUris = redirectUris;
     return this;
@@ -204,11 +216,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRedirectUris(List<String> redirectUris) {
+  public void setRedirectUris(@javax.annotation.Nonnull List<String> redirectUris) {
     this.redirectUris = redirectUris;
   }
 
-  public CreateLoginConfigurationInput postLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public CreateLoginConfigurationInput postLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     
     this.postLogoutRedirectUris = postLogoutRedirectUris;
     return this;
@@ -237,11 +249,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public void setPostLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
   }
 
-  public CreateLoginConfigurationInput vpDefinition(String vpDefinition) {
+  public CreateLoginConfigurationInput vpDefinition(@javax.annotation.Nullable String vpDefinition) {
     
     this.vpDefinition = vpDefinition;
     return this;
@@ -262,11 +274,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpDefinition(String vpDefinition) {
+  public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }
 
-  public CreateLoginConfigurationInput presentationDefinition(Object presentationDefinition) {
+  public CreateLoginConfigurationInput presentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     
     this.presentationDefinition = presentationDefinition;
     return this;
@@ -287,11 +299,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationDefinition(Object presentationDefinition) {
+  public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-  public CreateLoginConfigurationInput idTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
+  public CreateLoginConfigurationInput idTokenMapping(@javax.annotation.Nullable List<IdTokenMappingItem> idTokenMapping) {
     
     this.idTokenMapping = idTokenMapping;
     return this;
@@ -320,11 +332,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
+  public void setIdTokenMapping(@javax.annotation.Nullable List<IdTokenMappingItem> idTokenMapping) {
     this.idTokenMapping = idTokenMapping;
   }
 
-  public CreateLoginConfigurationInput clientMetadata(LoginConfigurationClientMetadataInput clientMetadata) {
+  public CreateLoginConfigurationInput clientMetadata(@javax.annotation.Nullable LoginConfigurationClientMetadataInput clientMetadata) {
     
     this.clientMetadata = clientMetadata;
     return this;
@@ -345,11 +357,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientMetadata(LoginConfigurationClientMetadataInput clientMetadata) {
+  public void setClientMetadata(@javax.annotation.Nullable LoginConfigurationClientMetadataInput clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 
-  public CreateLoginConfigurationInput claimFormat(ClaimFormatEnum claimFormat) {
+  public CreateLoginConfigurationInput claimFormat(@javax.annotation.Nullable ClaimFormatEnum claimFormat) {
     
     this.claimFormat = claimFormat;
     return this;
@@ -370,11 +382,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_CLAIM_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClaimFormat(ClaimFormatEnum claimFormat) {
+  public void setClaimFormat(@javax.annotation.Nullable ClaimFormatEnum claimFormat) {
     this.claimFormat = claimFormat;
   }
 
-  public CreateLoginConfigurationInput failOnMappingConflict(Boolean failOnMappingConflict) {
+  public CreateLoginConfigurationInput failOnMappingConflict(@javax.annotation.Nullable Boolean failOnMappingConflict) {
     
     this.failOnMappingConflict = failOnMappingConflict;
     return this;
@@ -395,11 +407,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFailOnMappingConflict(Boolean failOnMappingConflict) {
+  public void setFailOnMappingConflict(@javax.annotation.Nullable Boolean failOnMappingConflict) {
     this.failOnMappingConflict = failOnMappingConflict;
   }
 
-  public CreateLoginConfigurationInput scope(String scope) {
+  public CreateLoginConfigurationInput scope(@javax.annotation.Nullable String scope) {
     
     this.scope = scope;
     return this;
@@ -420,11 +432,11 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_SCOPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
-  public CreateLoginConfigurationInput tokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
+  public CreateLoginConfigurationInput tokenEndpointAuthMethod(@javax.annotation.Nullable TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
     return this;
@@ -445,7 +457,7 @@ public class CreateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
+  public void setTokenEndpointAuthMethod(@javax.annotation.Nullable TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
   }
 

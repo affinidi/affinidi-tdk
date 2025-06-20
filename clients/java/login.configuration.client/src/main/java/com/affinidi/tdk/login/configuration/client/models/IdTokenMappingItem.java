@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   IdTokenMappingItem.JSON_PROPERTY_ID_TOKEN_CLAIM,
   IdTokenMappingItem.JSON_PROPERTY_INPUT_DESCRIPTOR_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdTokenMappingItem {
   public static final String JSON_PROPERTY_SOURCE_FIELD = "sourceField";
+  @javax.annotation.Nonnull
   private String sourceField;
 
   public static final String JSON_PROPERTY_ID_TOKEN_CLAIM = "idTokenClaim";
+  @javax.annotation.Nonnull
   private String idTokenClaim;
 
   public static final String JSON_PROPERTY_INPUT_DESCRIPTOR_ID = "inputDescriptorId";
+  @javax.annotation.Nullable
   private String inputDescriptorId;
 
   public IdTokenMappingItem() {
   }
 
-  public IdTokenMappingItem sourceField(String sourceField) {
+  public IdTokenMappingItem sourceField(@javax.annotation.Nonnull String sourceField) {
     
     this.sourceField = sourceField;
     return this;
@@ -69,11 +72,11 @@ public class IdTokenMappingItem {
 
   @JsonProperty(JSON_PROPERTY_SOURCE_FIELD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSourceField(String sourceField) {
+  public void setSourceField(@javax.annotation.Nonnull String sourceField) {
     this.sourceField = sourceField;
   }
 
-  public IdTokenMappingItem idTokenClaim(String idTokenClaim) {
+  public IdTokenMappingItem idTokenClaim(@javax.annotation.Nonnull String idTokenClaim) {
     
     this.idTokenClaim = idTokenClaim;
     return this;
@@ -94,11 +97,11 @@ public class IdTokenMappingItem {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_CLAIM)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIdTokenClaim(String idTokenClaim) {
+  public void setIdTokenClaim(@javax.annotation.Nonnull String idTokenClaim) {
     this.idTokenClaim = idTokenClaim;
   }
 
-  public IdTokenMappingItem inputDescriptorId(String inputDescriptorId) {
+  public IdTokenMappingItem inputDescriptorId(@javax.annotation.Nullable String inputDescriptorId) {
     
     this.inputDescriptorId = inputDescriptorId;
     return this;
@@ -119,7 +122,7 @@ public class IdTokenMappingItem {
 
   @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTOR_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInputDescriptorId(String inputDescriptorId) {
+  public void setInputDescriptorId(@javax.annotation.Nullable String inputDescriptorId) {
     this.inputDescriptorId = inputDescriptorId;
   }
 

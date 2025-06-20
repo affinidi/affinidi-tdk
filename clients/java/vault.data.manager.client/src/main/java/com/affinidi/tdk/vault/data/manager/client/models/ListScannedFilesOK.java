@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListScannedFilesOK.JSON_PROPERTY_SCANNED_FILES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListScannedFilesOK {
   public static final String JSON_PROPERTY_SCANNED_FILES = "scannedFiles";
+  @javax.annotation.Nonnull
   private List<ListScannedFilesOKScannedFilesInner> scannedFiles = new ArrayList<>();
 
   public ListScannedFilesOK() {
   }
 
-  public ListScannedFilesOK scannedFiles(List<ListScannedFilesOKScannedFilesInner> scannedFiles) {
+  public ListScannedFilesOK scannedFiles(@javax.annotation.Nonnull List<ListScannedFilesOKScannedFilesInner> scannedFiles) {
     
     this.scannedFiles = scannedFiles;
     return this;
@@ -73,7 +74,7 @@ public class ListScannedFilesOK {
 
   @JsonProperty(JSON_PROPERTY_SCANNED_FILES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setScannedFiles(List<ListScannedFilesOKScannedFilesInner> scannedFiles) {
+  public void setScannedFiles(@javax.annotation.Nonnull List<ListScannedFilesOKScannedFilesInner> scannedFiles) {
     this.scannedFiles = scannedFiles;
   }
 

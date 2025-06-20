@@ -37,21 +37,21 @@ class CredentialOfferExpiredError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('CredentialOfferExpiredError'):
+        if value not in ('CredentialOfferExpiredError',):
             raise ValueError("must be one of enum values ('CredentialOfferExpiredError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Credential offer is expired'):
+        if value not in ('Credential offer is expired',):
             raise ValueError("must be one of enum values ('Credential offer is expired')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

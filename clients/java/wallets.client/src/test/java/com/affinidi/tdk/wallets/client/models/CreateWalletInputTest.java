@@ -13,8 +13,6 @@
 
 package com.affinidi.tdk.wallets.client.models;
 
-import com.affinidi.tdk.wallets.client.models.DidKeyInputParams;
-import com.affinidi.tdk.wallets.client.models.DidWebInputParams;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;

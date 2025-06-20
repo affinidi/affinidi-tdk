@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CreateProjectScopedTokenInput.JSON_PROPERTY_PROJECT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateProjectScopedTokenInput {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  @javax.annotation.Nonnull
   private String projectId;
 
   public CreateProjectScopedTokenInput() {
   }
 
-  public CreateProjectScopedTokenInput projectId(String projectId) {
+  public CreateProjectScopedTokenInput projectId(@javax.annotation.Nonnull String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -61,7 +62,7 @@ public class CreateProjectScopedTokenInput {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
+  public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
   }
 

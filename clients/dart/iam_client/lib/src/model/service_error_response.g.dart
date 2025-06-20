@@ -18,14 +18,22 @@ class _$ServiceErrorResponse extends ServiceErrorResponse {
 
   factory _$ServiceErrorResponse(
           [void Function(ServiceErrorResponseBuilder)? updates]) =>
-      (ServiceErrorResponseBuilder()..update(updates))._build();
+      (new ServiceErrorResponseBuilder()..update(updates))._build();
 
   _$ServiceErrorResponse._(
       {required this.debugId,
       required this.name,
       required this.code,
       this.details})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        debugId, r'ServiceErrorResponse', 'debugId');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'ServiceErrorResponse', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        code, r'ServiceErrorResponse', 'code');
+  }
+
   @override
   ServiceErrorResponse rebuild(
           void Function(ServiceErrorResponseBuilder) updates) =>
@@ -33,7 +41,7 @@ class _$ServiceErrorResponse extends ServiceErrorResponse {
 
   @override
   ServiceErrorResponseBuilder toBuilder() =>
-      ServiceErrorResponseBuilder()..replace(this);
+      new ServiceErrorResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -85,7 +93,7 @@ class ServiceErrorResponseBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -107,6 +115,7 @@ class ServiceErrorResponseBuilder
 
   @override
   void replace(ServiceErrorResponse other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ServiceErrorResponse;
   }
 
@@ -122,7 +131,7 @@ class ServiceErrorResponseBuilder
     _$ServiceErrorResponse _$result;
     try {
       _$result = _$v ??
-          _$ServiceErrorResponse._(
+          new _$ServiceErrorResponse._(
             debugId: BuiltValueNullFieldError.checkNotNull(
                 debugId, r'ServiceErrorResponse', 'debugId'),
             name: BuiltValueNullFieldError.checkNotNull(
@@ -137,7 +146,7 @@ class ServiceErrorResponseBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'ServiceErrorResponse', _$failedField, e.toString());
       }
       rethrow;

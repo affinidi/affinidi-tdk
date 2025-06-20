@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RevocationApi extends BaseApi {
 
   public RevocationApi() {
@@ -55,7 +55,7 @@ public class RevocationApi extends BaseApi {
    * @return GetRevocationListCredentialResultDto
    * @throws ApiException if fails to make API call
    */
-  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId, String statusId) throws ApiException {
+  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull String statusId) throws ApiException {
     return this.getRevocationCredentialStatus(projectId, walletId, statusId, Collections.emptyMap());
   }
 
@@ -70,7 +70,7 @@ public class RevocationApi extends BaseApi {
    * @return GetRevocationListCredentialResultDto
    * @throws ApiException if fails to make API call
    */
-  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(String projectId, String walletId, String statusId, Map<String, String> additionalHeaders) throws ApiException {
+  public GetRevocationListCredentialResultDto getRevocationCredentialStatus(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull String statusId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -147,7 +147,7 @@ public class RevocationApi extends BaseApi {
    * @deprecated
    */
   @Deprecated
-  public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId) throws ApiException {
+  public GetRevocationListCredentialResultDto getRevocationListCredential(@javax.annotation.Nonnull String listId, @javax.annotation.Nonnull String walletId) throws ApiException {
     return this.getRevocationListCredential(listId, walletId, Collections.emptyMap());
   }
 
@@ -163,7 +163,7 @@ public class RevocationApi extends BaseApi {
    * @deprecated
    */
   @Deprecated
-  public GetRevocationListCredentialResultDto getRevocationListCredential(String listId, String walletId, Map<String, String> additionalHeaders) throws ApiException {
+  public GetRevocationListCredentialResultDto getRevocationListCredential(@javax.annotation.Nonnull String listId, @javax.annotation.Nonnull String walletId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'listId' is set
@@ -231,7 +231,7 @@ public class RevocationApi extends BaseApi {
    * @param revokeCredentialInput RevokeCredential (required)
    * @throws ApiException if fails to make API call
    */
-  public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput) throws ApiException {
+  public void revokeCredential(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull RevokeCredentialInput revokeCredentialInput) throws ApiException {
     this.revokeCredential(walletId, revokeCredentialInput, Collections.emptyMap());
   }
 
@@ -244,7 +244,7 @@ public class RevocationApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void revokeCredential(String walletId, RevokeCredentialInput revokeCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void revokeCredential(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull RevokeCredentialInput revokeCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = revokeCredentialInput;
     
     // verify the required parameter 'walletId' is set

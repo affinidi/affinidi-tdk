@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ValidateJwtInput.JSON_PROPERTY_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ValidateJwtInput {
   public static final String JSON_PROPERTY_TOKEN = "token";
+  @javax.annotation.Nonnull
   private String token;
 
   public ValidateJwtInput() {
   }
 
-  public ValidateJwtInput token(String token) {
+  public ValidateJwtInput token(@javax.annotation.Nonnull String token) {
     
     this.token = token;
     return this;
@@ -61,7 +62,7 @@ public class ValidateJwtInput {
 
   @JsonProperty(JSON_PROPERTY_TOKEN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setToken(String token) {
+  public void setToken(@javax.annotation.Nonnull String token) {
     this.token = token;
   }
 

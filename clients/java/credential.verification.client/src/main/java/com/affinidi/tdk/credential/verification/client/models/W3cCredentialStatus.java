@@ -35,24 +35,28 @@ import java.util.StringJoiner;
   W3cCredentialStatus.JSON_PROPERTY_REVOCATION_LIST_INDEX,
   W3cCredentialStatus.JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class W3cCredentialStatus {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private String type;
 
   public static final String JSON_PROPERTY_REVOCATION_LIST_INDEX = "revocationListIndex";
+  @javax.annotation.Nonnull
   private String revocationListIndex;
 
   public static final String JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
+  @javax.annotation.Nonnull
   private String revocationListCredential;
 
   public W3cCredentialStatus() {
   }
 
-  public W3cCredentialStatus id(String id) {
+  public W3cCredentialStatus id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -73,11 +77,11 @@ public class W3cCredentialStatus {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public W3cCredentialStatus type(String type) {
+  public W3cCredentialStatus type(@javax.annotation.Nonnull String type) {
     
     this.type = type;
     return this;
@@ -98,11 +102,11 @@ public class W3cCredentialStatus {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
   }
 
-  public W3cCredentialStatus revocationListIndex(String revocationListIndex) {
+  public W3cCredentialStatus revocationListIndex(@javax.annotation.Nonnull String revocationListIndex) {
     
     this.revocationListIndex = revocationListIndex;
     return this;
@@ -123,11 +127,11 @@ public class W3cCredentialStatus {
 
   @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_INDEX)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRevocationListIndex(String revocationListIndex) {
+  public void setRevocationListIndex(@javax.annotation.Nonnull String revocationListIndex) {
     this.revocationListIndex = revocationListIndex;
   }
 
-  public W3cCredentialStatus revocationListCredential(String revocationListCredential) {
+  public W3cCredentialStatus revocationListCredential(@javax.annotation.Nonnull String revocationListCredential) {
     
     this.revocationListCredential = revocationListCredential;
     return this;
@@ -148,7 +152,7 @@ public class W3cCredentialStatus {
 
   @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRevocationListCredential(String revocationListCredential) {
+  public void setRevocationListCredential(@javax.annotation.Nonnull String revocationListCredential) {
     this.revocationListCredential = revocationListCredential;
   }
 

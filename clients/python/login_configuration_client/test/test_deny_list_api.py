@@ -25,7 +25,7 @@ class TestDenyListApi(unittest.TestCase):
         self.api = DenyListApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_block_groups(self) -> None:
         """Test case for block_groups

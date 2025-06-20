@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsIotOidc4vpcallbackOK.JSON_PROPERTY_CORS_IOT_OIDC4VPCALLBACK_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsIotOidc4vpcallbackOK {
   public static final String JSON_PROPERTY_CORS_IOT_OIDC4VPCALLBACK_OK = "corsIotOidc4vpcallbackOk";
+  @javax.annotation.Nullable
   private String corsIotOidc4vpcallbackOk;
 
   public CorsIotOidc4vpcallbackOK() {
   }
 
-  public CorsIotOidc4vpcallbackOK corsIotOidc4vpcallbackOk(String corsIotOidc4vpcallbackOk) {
+  public CorsIotOidc4vpcallbackOK corsIotOidc4vpcallbackOk(@javax.annotation.Nullable String corsIotOidc4vpcallbackOk) {
     
     this.corsIotOidc4vpcallbackOk = corsIotOidc4vpcallbackOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsIotOidc4vpcallbackOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_IOT_OIDC4VPCALLBACK_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsIotOidc4vpcallbackOk(String corsIotOidc4vpcallbackOk) {
+  public void setCorsIotOidc4vpcallbackOk(@javax.annotation.Nullable String corsIotOidc4vpcallbackOk) {
     this.corsIotOidc4vpcallbackOk = corsIotOidc4vpcallbackOk;
   }
 

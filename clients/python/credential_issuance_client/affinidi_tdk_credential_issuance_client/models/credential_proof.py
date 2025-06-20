@@ -33,7 +33,7 @@ class CredentialProof(BaseModel):
     @validator('proof_type')
     def proof_type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('jwt'):
+        if value not in ('jwt',):
             raise ValueError("must be one of enum values ('jwt')")
         return value
 

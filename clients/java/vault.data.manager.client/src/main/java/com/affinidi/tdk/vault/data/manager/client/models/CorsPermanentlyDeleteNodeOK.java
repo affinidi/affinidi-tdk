@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsPermanentlyDeleteNodeOK.JSON_PROPERTY_CORS_PERMANENTLY_DELETE_NODE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsPermanentlyDeleteNodeOK {
   public static final String JSON_PROPERTY_CORS_PERMANENTLY_DELETE_NODE_OK = "corsPermanentlyDeleteNodeOk";
+  @javax.annotation.Nullable
   private String corsPermanentlyDeleteNodeOk;
 
   public CorsPermanentlyDeleteNodeOK() {
   }
 
-  public CorsPermanentlyDeleteNodeOK corsPermanentlyDeleteNodeOk(String corsPermanentlyDeleteNodeOk) {
+  public CorsPermanentlyDeleteNodeOK corsPermanentlyDeleteNodeOk(@javax.annotation.Nullable String corsPermanentlyDeleteNodeOk) {
     
     this.corsPermanentlyDeleteNodeOk = corsPermanentlyDeleteNodeOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsPermanentlyDeleteNodeOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_PERMANENTLY_DELETE_NODE_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsPermanentlyDeleteNodeOk(String corsPermanentlyDeleteNodeOk) {
+  public void setCorsPermanentlyDeleteNodeOk(@javax.annotation.Nullable String corsPermanentlyDeleteNodeOk) {
     this.corsPermanentlyDeleteNodeOk = corsPermanentlyDeleteNodeOk;
   }
 

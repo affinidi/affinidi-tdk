@@ -36,27 +36,32 @@ import java.util.StringJoiner;
   VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   VerifyPresentationInput.JSON_PROPERTY_CHALLENGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class VerifyPresentationInput {
   public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
+  @javax.annotation.Nullable
   private Object verifiablePresentation;
 
   public static final String JSON_PROPERTY_SIGNED_PRESENTATION = "signedPresentation";
+  @javax.annotation.Nullable
   private Object signedPresentation;
 
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+  @javax.annotation.Nullable
   private Object presentationDefinition;
 
   public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
+  @javax.annotation.Nullable
   private Object presentationSubmission;
 
   public static final String JSON_PROPERTY_CHALLENGE = "challenge";
+  @javax.annotation.Nullable
   private String challenge;
 
   public VerifyPresentationInput() {
   }
 
-  public VerifyPresentationInput verifiablePresentation(Object verifiablePresentation) {
+  public VerifyPresentationInput verifiablePresentation(@javax.annotation.Nullable Object verifiablePresentation) {
     
     this.verifiablePresentation = verifiablePresentation;
     return this;
@@ -77,11 +82,11 @@ public class VerifyPresentationInput {
 
   @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVerifiablePresentation(Object verifiablePresentation) {
+  public void setVerifiablePresentation(@javax.annotation.Nullable Object verifiablePresentation) {
     this.verifiablePresentation = verifiablePresentation;
   }
 
-  public VerifyPresentationInput signedPresentation(Object signedPresentation) {
+  public VerifyPresentationInput signedPresentation(@javax.annotation.Nullable Object signedPresentation) {
     
     this.signedPresentation = signedPresentation;
     return this;
@@ -102,11 +107,11 @@ public class VerifyPresentationInput {
 
   @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSignedPresentation(Object signedPresentation) {
+  public void setSignedPresentation(@javax.annotation.Nullable Object signedPresentation) {
     this.signedPresentation = signedPresentation;
   }
 
-  public VerifyPresentationInput presentationDefinition(Object presentationDefinition) {
+  public VerifyPresentationInput presentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     
     this.presentationDefinition = presentationDefinition;
     return this;
@@ -127,11 +132,11 @@ public class VerifyPresentationInput {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationDefinition(Object presentationDefinition) {
+  public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-  public VerifyPresentationInput presentationSubmission(Object presentationSubmission) {
+  public VerifyPresentationInput presentationSubmission(@javax.annotation.Nullable Object presentationSubmission) {
     
     this.presentationSubmission = presentationSubmission;
     return this;
@@ -152,11 +157,11 @@ public class VerifyPresentationInput {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationSubmission(Object presentationSubmission) {
+  public void setPresentationSubmission(@javax.annotation.Nullable Object presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-  public VerifyPresentationInput challenge(String challenge) {
+  public VerifyPresentationInput challenge(@javax.annotation.Nullable String challenge) {
     
     this.challenge = challenge;
     return this;
@@ -177,7 +182,7 @@ public class VerifyPresentationInput {
 
   @JsonProperty(JSON_PROPERTY_CHALLENGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChallenge(String challenge) {
+  public void setChallenge(@javax.annotation.Nullable String challenge) {
     this.challenge = challenge;
   }
 

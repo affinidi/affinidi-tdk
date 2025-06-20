@@ -82,6 +82,8 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/Configuration.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/Pair.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/RFC3339DateFormat.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/RFC3339InstantDeserializer.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/StringUtil.java

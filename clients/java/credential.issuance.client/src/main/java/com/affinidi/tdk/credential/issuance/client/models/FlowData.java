@@ -50,57 +50,72 @@ import java.util.StringJoiner;
   FlowData.JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE,
   FlowData.JSON_PROPERTY_STATUS_LISTS_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FlowData {
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nonnull
   private String createdAt;
 
   public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
+  @javax.annotation.Nonnull
   private String modifiedAt;
 
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  @javax.annotation.Nullable
   private String projectId;
 
   public static final String JSON_PROPERTY_FLOW_ID = "flowId";
+  @javax.annotation.Nonnull
   private String flowId;
 
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
+  @javax.annotation.Nonnull
   private String credentialTypeId;
 
   public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
+  @javax.annotation.Nonnull
   private String jsonLdContextUrl;
 
   public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
+  @javax.annotation.Nonnull
   private String jsonSchemaUrl;
 
   public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
+  @javax.annotation.Nullable
   private String configurationId;
 
   public static final String JSON_PROPERTY_ISSUED_AT = "issuedAt";
+  @javax.annotation.Nullable
   private String issuedAt;
 
   public static final String JSON_PROPERTY_WALLET_ID = "walletId";
+  @javax.annotation.Nullable
   private String walletId;
 
   public static final String JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID = "projectIdConfigurationId";
+  @javax.annotation.Nullable
   private String projectIdConfigurationId;
 
   public static final String JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID = "projectIdConfigurationIdWalletId";
+  @javax.annotation.Nullable
   private String projectIdConfigurationIdWalletId;
 
   public static final String JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE = "projectIdConfigurationIdCredentialType";
+  @javax.annotation.Nullable
   private String projectIdConfigurationIdCredentialType;
 
   public static final String JSON_PROPERTY_STATUS_LISTS_DETAILS = "statusListsDetails";
+  @javax.annotation.Nullable
   private List<FlowDataStatusListsDetailsInner> statusListsDetails = new ArrayList<>();
 
   public FlowData() {
   }
 
-  public FlowData createdAt(String createdAt) {
+  public FlowData createdAt(@javax.annotation.Nonnull String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -121,11 +136,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public FlowData modifiedAt(String modifiedAt) {
+  public FlowData modifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     
     this.modifiedAt = modifiedAt;
     return this;
@@ -146,11 +161,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedAt(String modifiedAt) {
+  public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
 
-  public FlowData id(String id) {
+  public FlowData id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -171,11 +186,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public FlowData projectId(String projectId) {
+  public FlowData projectId(@javax.annotation.Nullable String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -196,11 +211,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProjectId(String projectId) {
+  public void setProjectId(@javax.annotation.Nullable String projectId) {
     this.projectId = projectId;
   }
 
-  public FlowData flowId(String flowId) {
+  public FlowData flowId(@javax.annotation.Nonnull String flowId) {
     
     this.flowId = flowId;
     return this;
@@ -221,11 +236,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_FLOW_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFlowId(String flowId) {
+  public void setFlowId(@javax.annotation.Nonnull String flowId) {
     this.flowId = flowId;
   }
 
-  public FlowData credentialTypeId(String credentialTypeId) {
+  public FlowData credentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     
     this.credentialTypeId = credentialTypeId;
     return this;
@@ -246,11 +261,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialTypeId(String credentialTypeId) {
+  public void setCredentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
   }
 
-  public FlowData jsonLdContextUrl(String jsonLdContextUrl) {
+  public FlowData jsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     
     this.jsonLdContextUrl = jsonLdContextUrl;
     return this;
@@ -271,11 +286,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonLdContextUrl(String jsonLdContextUrl) {
+  public void setJsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
 
-  public FlowData jsonSchemaUrl(String jsonSchemaUrl) {
+  public FlowData jsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     
     this.jsonSchemaUrl = jsonSchemaUrl;
     return this;
@@ -296,11 +311,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonSchemaUrl(String jsonSchemaUrl) {
+  public void setJsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
   }
 
-  public FlowData configurationId(String configurationId) {
+  public FlowData configurationId(@javax.annotation.Nullable String configurationId) {
     
     this.configurationId = configurationId;
     return this;
@@ -321,11 +336,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigurationId(String configurationId) {
+  public void setConfigurationId(@javax.annotation.Nullable String configurationId) {
     this.configurationId = configurationId;
   }
 
-  public FlowData issuedAt(String issuedAt) {
+  public FlowData issuedAt(@javax.annotation.Nullable String issuedAt) {
     
     this.issuedAt = issuedAt;
     return this;
@@ -346,11 +361,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_ISSUED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuedAt(String issuedAt) {
+  public void setIssuedAt(@javax.annotation.Nullable String issuedAt) {
     this.issuedAt = issuedAt;
   }
 
-  public FlowData walletId(String walletId) {
+  public FlowData walletId(@javax.annotation.Nullable String walletId) {
     
     this.walletId = walletId;
     return this;
@@ -371,11 +386,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_WALLET_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWalletId(String walletId) {
+  public void setWalletId(@javax.annotation.Nullable String walletId) {
     this.walletId = walletId;
   }
 
-  public FlowData projectIdConfigurationId(String projectIdConfigurationId) {
+  public FlowData projectIdConfigurationId(@javax.annotation.Nullable String projectIdConfigurationId) {
     
     this.projectIdConfigurationId = projectIdConfigurationId;
     return this;
@@ -396,11 +411,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProjectIdConfigurationId(String projectIdConfigurationId) {
+  public void setProjectIdConfigurationId(@javax.annotation.Nullable String projectIdConfigurationId) {
     this.projectIdConfigurationId = projectIdConfigurationId;
   }
 
-  public FlowData projectIdConfigurationIdWalletId(String projectIdConfigurationIdWalletId) {
+  public FlowData projectIdConfigurationIdWalletId(@javax.annotation.Nullable String projectIdConfigurationIdWalletId) {
     
     this.projectIdConfigurationIdWalletId = projectIdConfigurationIdWalletId;
     return this;
@@ -421,11 +436,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProjectIdConfigurationIdWalletId(String projectIdConfigurationIdWalletId) {
+  public void setProjectIdConfigurationIdWalletId(@javax.annotation.Nullable String projectIdConfigurationIdWalletId) {
     this.projectIdConfigurationIdWalletId = projectIdConfigurationIdWalletId;
   }
 
-  public FlowData projectIdConfigurationIdCredentialType(String projectIdConfigurationIdCredentialType) {
+  public FlowData projectIdConfigurationIdCredentialType(@javax.annotation.Nullable String projectIdConfigurationIdCredentialType) {
     
     this.projectIdConfigurationIdCredentialType = projectIdConfigurationIdCredentialType;
     return this;
@@ -446,11 +461,11 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProjectIdConfigurationIdCredentialType(String projectIdConfigurationIdCredentialType) {
+  public void setProjectIdConfigurationIdCredentialType(@javax.annotation.Nullable String projectIdConfigurationIdCredentialType) {
     this.projectIdConfigurationIdCredentialType = projectIdConfigurationIdCredentialType;
   }
 
-  public FlowData statusListsDetails(List<FlowDataStatusListsDetailsInner> statusListsDetails) {
+  public FlowData statusListsDetails(@javax.annotation.Nullable List<FlowDataStatusListsDetailsInner> statusListsDetails) {
     
     this.statusListsDetails = statusListsDetails;
     return this;
@@ -479,7 +494,7 @@ public class FlowData {
 
   @JsonProperty(JSON_PROPERTY_STATUS_LISTS_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatusListsDetails(List<FlowDataStatusListsDetailsInner> statusListsDetails) {
+  public void setStatusListsDetails(@javax.annotation.Nullable List<FlowDataStatusListsDetailsInner> statusListsDetails) {
     this.statusListsDetails = statusListsDetails;
   }
 

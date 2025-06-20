@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   ProjectList.JSON_PROPERTY_PROJECTS,
   ProjectList.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ProjectList {
   public static final String JSON_PROPERTY_PROJECTS = "projects";
+  @javax.annotation.Nonnull
   private List<ProjectDto> projects = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public ProjectList() {
   }
 
-  public ProjectList projects(List<ProjectDto> projects) {
+  public ProjectList projects(@javax.annotation.Nonnull List<ProjectDto> projects) {
     
     this.projects = projects;
     return this;
@@ -77,11 +79,11 @@ public class ProjectList {
 
   @JsonProperty(JSON_PROPERTY_PROJECTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjects(List<ProjectDto> projects) {
+  public void setProjects(@javax.annotation.Nonnull List<ProjectDto> projects) {
     this.projects = projects;
   }
 
-  public ProjectList lastEvaluatedKey(String lastEvaluatedKey) {
+  public ProjectList lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -102,7 +104,7 @@ public class ProjectList {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 

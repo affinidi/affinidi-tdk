@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   AwsExchangeCredentialsProjectTokenOK.JSON_PROPERTY_CONNECTION_CLIENT_ID,
   AwsExchangeCredentialsProjectTokenOK.JSON_PROPERTY_CREDENTIALS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AwsExchangeCredentialsProjectTokenOK {
   public static final String JSON_PROPERTY_CONNECTION_CLIENT_ID = "connectionClientId";
+  @javax.annotation.Nonnull
   private String connectionClientId;
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  @javax.annotation.Nonnull
   private AwsExchangeCredentialsProjectTokenOKCredentials credentials;
 
   public AwsExchangeCredentialsProjectTokenOK() {
   }
 
-  public AwsExchangeCredentialsProjectTokenOK connectionClientId(String connectionClientId) {
+  public AwsExchangeCredentialsProjectTokenOK connectionClientId(@javax.annotation.Nonnull String connectionClientId) {
     
     this.connectionClientId = connectionClientId;
     return this;
@@ -66,11 +68,11 @@ public class AwsExchangeCredentialsProjectTokenOK {
 
   @JsonProperty(JSON_PROPERTY_CONNECTION_CLIENT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConnectionClientId(String connectionClientId) {
+  public void setConnectionClientId(@javax.annotation.Nonnull String connectionClientId) {
     this.connectionClientId = connectionClientId;
   }
 
-  public AwsExchangeCredentialsProjectTokenOK credentials(AwsExchangeCredentialsProjectTokenOKCredentials credentials) {
+  public AwsExchangeCredentialsProjectTokenOK credentials(@javax.annotation.Nonnull AwsExchangeCredentialsProjectTokenOKCredentials credentials) {
     
     this.credentials = credentials;
     return this;
@@ -91,7 +93,7 @@ public class AwsExchangeCredentialsProjectTokenOK {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentials(AwsExchangeCredentialsProjectTokenOKCredentials credentials) {
+  public void setCredentials(@javax.annotation.Nonnull AwsExchangeCredentialsProjectTokenOKCredentials credentials) {
     this.credentials = credentials;
   }
 

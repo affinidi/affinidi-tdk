@@ -34,7 +34,7 @@ class OAuth2TokenAuthorizationDetailsInner(BaseModel):
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('openid_credential'):
+        if value not in ('openid_credential',):
             raise ValueError("must be one of enum values ('openid_credential')")
         return value
 

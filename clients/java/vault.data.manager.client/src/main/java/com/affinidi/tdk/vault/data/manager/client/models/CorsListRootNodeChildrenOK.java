@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsListRootNodeChildrenOK.JSON_PROPERTY_CORS_LIST_ROOT_NODE_CHILDREN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsListRootNodeChildrenOK {
   public static final String JSON_PROPERTY_CORS_LIST_ROOT_NODE_CHILDREN_OK = "corsListRootNodeChildrenOk";
+  @javax.annotation.Nullable
   private String corsListRootNodeChildrenOk;
 
   public CorsListRootNodeChildrenOK() {
   }
 
-  public CorsListRootNodeChildrenOK corsListRootNodeChildrenOk(String corsListRootNodeChildrenOk) {
+  public CorsListRootNodeChildrenOK corsListRootNodeChildrenOk(@javax.annotation.Nullable String corsListRootNodeChildrenOk) {
     
     this.corsListRootNodeChildrenOk = corsListRootNodeChildrenOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsListRootNodeChildrenOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_LIST_ROOT_NODE_CHILDREN_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsListRootNodeChildrenOk(String corsListRootNodeChildrenOk) {
+  public void setCorsListRootNodeChildrenOk(@javax.annotation.Nullable String corsListRootNodeChildrenOk) {
     this.corsListRootNodeChildrenOk = corsListRootNodeChildrenOk;
   }
 

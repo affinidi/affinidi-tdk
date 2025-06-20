@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   AwsExchangeCredentials.JSON_PROPERTY_ASSERTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AwsExchangeCredentials {
   public static final String JSON_PROPERTY_ASSERTION = "assertion";
+  @javax.annotation.Nonnull
   private String assertion;
 
   public AwsExchangeCredentials() {
   }
 
-  public AwsExchangeCredentials assertion(String assertion) {
+  public AwsExchangeCredentials assertion(@javax.annotation.Nonnull String assertion) {
     
     this.assertion = assertion;
     return this;
@@ -61,7 +62,7 @@ public class AwsExchangeCredentials {
 
   @JsonProperty(JSON_PROPERTY_ASSERTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAssertion(String assertion) {
+  public void setAssertion(@javax.annotation.Nonnull String assertion) {
     this.assertion = assertion;
   }
 

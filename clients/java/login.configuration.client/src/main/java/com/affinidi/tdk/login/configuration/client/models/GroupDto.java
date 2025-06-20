@@ -35,24 +35,28 @@ import java.util.StringJoiner;
   GroupDto.JSON_PROPERTY_GROUP_NAME,
   GroupDto.JSON_PROPERTY_CREATION_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupDto {
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nonnull
   private String ari;
 
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  @javax.annotation.Nonnull
   private String projectId;
 
   public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
+  @javax.annotation.Nonnull
   private String groupName;
 
   public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+  @javax.annotation.Nonnull
   private String creationDate;
 
   public GroupDto() {
   }
 
-  public GroupDto ari(String ari) {
+  public GroupDto ari(@javax.annotation.Nonnull String ari) {
     
     this.ari = ari;
     return this;
@@ -73,11 +77,11 @@ public class GroupDto {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
   }
 
-  public GroupDto projectId(String projectId) {
+  public GroupDto projectId(@javax.annotation.Nonnull String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -98,11 +102,11 @@ public class GroupDto {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
+  public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
   }
 
-  public GroupDto groupName(String groupName) {
+  public GroupDto groupName(@javax.annotation.Nonnull String groupName) {
     
     this.groupName = groupName;
     return this;
@@ -123,11 +127,11 @@ public class GroupDto {
 
   @JsonProperty(JSON_PROPERTY_GROUP_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGroupName(String groupName) {
+  public void setGroupName(@javax.annotation.Nonnull String groupName) {
     this.groupName = groupName;
   }
 
-  public GroupDto creationDate(String creationDate) {
+  public GroupDto creationDate(@javax.annotation.Nonnull String creationDate) {
     
     this.creationDate = creationDate;
     return this;
@@ -148,7 +152,7 @@ public class GroupDto {
 
   @JsonProperty(JSON_PROPERTY_CREATION_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreationDate(String creationDate) {
+  public void setCreationDate(@javax.annotation.Nonnull String creationDate) {
     this.creationDate = creationDate;
   }
 

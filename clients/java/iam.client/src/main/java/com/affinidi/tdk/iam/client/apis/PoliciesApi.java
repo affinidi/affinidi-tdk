@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PoliciesApi extends BaseApi {
 
   public PoliciesApi() {
@@ -52,7 +52,7 @@ public class PoliciesApi extends BaseApi {
    * @return PolicyDto
    * @throws ApiException if fails to make API call
    */
-  public PolicyDto getPolicies(String principalId, String principalType) throws ApiException {
+  public PolicyDto getPolicies(@javax.annotation.Nonnull String principalId, @javax.annotation.Nonnull String principalType) throws ApiException {
     return this.getPolicies(principalId, principalType, Collections.emptyMap());
   }
 
@@ -66,7 +66,7 @@ public class PoliciesApi extends BaseApi {
    * @return PolicyDto
    * @throws ApiException if fails to make API call
    */
-  public PolicyDto getPolicies(String principalId, String principalType, Map<String, String> additionalHeaders) throws ApiException {
+  public PolicyDto getPolicies(@javax.annotation.Nonnull String principalId, @javax.annotation.Nonnull String principalType, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'principalId' is set
@@ -136,7 +136,7 @@ public class PoliciesApi extends BaseApi {
    * @return PolicyDto
    * @throws ApiException if fails to make API call
    */
-  public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto) throws ApiException {
+  public PolicyDto updatePolicies(@javax.annotation.Nonnull String principalId, @javax.annotation.Nonnull String principalType, @javax.annotation.Nonnull PolicyDto policyDto) throws ApiException {
     return this.updatePolicies(principalId, principalType, policyDto, Collections.emptyMap());
   }
 
@@ -151,7 +151,7 @@ public class PoliciesApi extends BaseApi {
    * @return PolicyDto
    * @throws ApiException if fails to make API call
    */
-  public PolicyDto updatePolicies(String principalId, String principalType, PolicyDto policyDto, Map<String, String> additionalHeaders) throws ApiException {
+  public PolicyDto updatePolicies(@javax.annotation.Nonnull String principalId, @javax.annotation.Nonnull String principalType, @javax.annotation.Nonnull PolicyDto policyDto, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = policyDto;
     
     // verify the required parameter 'principalId' is set

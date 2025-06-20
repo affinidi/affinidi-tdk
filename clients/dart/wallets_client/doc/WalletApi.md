@@ -34,7 +34,7 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api = AffinidiTdkWalletsClient().getWalletApi();
-final CreateWalletInput createWalletInput = ; // CreateWalletInput | CreateWallet
+final CreateWalletInput createWalletInput = {"name":"AliceWallet","description":"Personal wallet using did:key","didMethod":"key"}; // CreateWalletInput | CreateWallet
 
 try {
     final response = api.createWallet(createWalletInput);

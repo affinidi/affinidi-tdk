@@ -35,21 +35,24 @@ import java.util.StringJoiner;
   SavePexQueriesUpdateInputQueriesInner.JSON_PROPERTY_DESCRIPTION
 })
 @JsonTypeName("SavePexQueriesUpdateInput_queries_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SavePexQueriesUpdateInputQueriesInner {
   public static final String JSON_PROPERTY_QUERY_ID = "queryId";
+  @javax.annotation.Nonnull
   private String queryId;
 
   public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+  @javax.annotation.Nullable
   private String vpDefinition;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public SavePexQueriesUpdateInputQueriesInner() {
   }
 
-  public SavePexQueriesUpdateInputQueriesInner queryId(String queryId) {
+  public SavePexQueriesUpdateInputQueriesInner queryId(@javax.annotation.Nonnull String queryId) {
     
     this.queryId = queryId;
     return this;
@@ -70,11 +73,11 @@ public class SavePexQueriesUpdateInputQueriesInner {
 
   @JsonProperty(JSON_PROPERTY_QUERY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setQueryId(String queryId) {
+  public void setQueryId(@javax.annotation.Nonnull String queryId) {
     this.queryId = queryId;
   }
 
-  public SavePexQueriesUpdateInputQueriesInner vpDefinition(String vpDefinition) {
+  public SavePexQueriesUpdateInputQueriesInner vpDefinition(@javax.annotation.Nullable String vpDefinition) {
     
     this.vpDefinition = vpDefinition;
     return this;
@@ -95,11 +98,11 @@ public class SavePexQueriesUpdateInputQueriesInner {
 
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpDefinition(String vpDefinition) {
+  public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }
 
-  public SavePexQueriesUpdateInputQueriesInner description(String description) {
+  public SavePexQueriesUpdateInputQueriesInner description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -120,7 +123,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

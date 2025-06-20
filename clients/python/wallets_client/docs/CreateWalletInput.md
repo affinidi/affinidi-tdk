@@ -2,12 +2,12 @@
 
 ## Properties
 
-| Name            | Type    | Description                                          | Notes      |
-| --------------- | ------- | ---------------------------------------------------- | ---------- |
-| **name**        | **str** | The name of the wallet                               | [optional] |
-| **description** | **str** | The description of the wallet                        | [optional] |
-| **did_method**  | **str** |                                                      |
-| **did_web_url** | **str** | If the did method is web, this is the URL of the did |
+| Name            | Type    | Description                                           | Notes      |
+| --------------- | ------- | ----------------------------------------------------- | ---------- |
+| **name**        | **str** | The name of the wallet                                | [optional] |
+| **description** | **str** | The description of the wallet                         | [optional] |
+| **did_method**  | **str** | Define how DID of your wallet is created and resolved |
+| **did_web_url** | **str** | URL of the DID. Required if the did method is web     | [optional] |
 
 ## Example
 

@@ -43,7 +43,6 @@ docs/RightsEnum.md
 docs/ServiceErrorResponse.md
 docs/ServiceErrorResponseDetailsInner.md
 docs/StsApi.md
-docs/TokenAuthenticationMethodDto.md
 docs/TokenDto.md
 docs/TokenList.md
 docs/TokenPrivateKeyAuthenticationMethodDto.md
@@ -79,6 +78,8 @@ src/main/java/com/affinidi/tdk/iam/client/Configuration.java
 src/main/java/com/affinidi/tdk/iam/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/iam/client/Pair.java
 src/main/java/com/affinidi/tdk/iam/client/RFC3339DateFormat.java
+src/main/java/com/affinidi/tdk/iam/client/RFC3339InstantDeserializer.java
+src/main/java/com/affinidi/tdk/iam/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/iam/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/iam/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/iam/client/StringUtil.java
@@ -127,7 +128,6 @@ src/main/java/com/affinidi/tdk/iam/client/models/PublicKeyCannotBeResolvedFromDi
 src/main/java/com/affinidi/tdk/iam/client/models/RightsEnum.java
 src/main/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponse.java
 src/main/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponseDetailsInner.java
-src/main/java/com/affinidi/tdk/iam/client/models/TokenAuthenticationMethodDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/TokenDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/TokenList.java
 src/main/java/com/affinidi/tdk/iam/client/models/TokenPrivateKeyAuthenticationMethodDto.java
@@ -186,7 +186,6 @@ src/test/java/com/affinidi/tdk/iam/client/models/PublicKeyCannotBeResolvedFromDi
 src/test/java/com/affinidi/tdk/iam/client/models/RightsEnumTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponseDetailsInnerTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/ServiceErrorResponseTest.java
-src/test/java/com/affinidi/tdk/iam/client/models/TokenAuthenticationMethodDtoTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/TokenDtoTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/TokenListTest.java
 src/test/java/com/affinidi/tdk/iam/client/models/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1Test.java

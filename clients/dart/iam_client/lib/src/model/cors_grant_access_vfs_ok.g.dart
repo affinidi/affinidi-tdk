@@ -12,9 +12,10 @@ class _$CorsGrantAccessVfsOK extends CorsGrantAccessVfsOK {
 
   factory _$CorsGrantAccessVfsOK(
           [void Function(CorsGrantAccessVfsOKBuilder)? updates]) =>
-      (CorsGrantAccessVfsOKBuilder()..update(updates))._build();
+      (new CorsGrantAccessVfsOKBuilder()..update(updates))._build();
 
   _$CorsGrantAccessVfsOK._({this.corsGrantAccessVfsOk}) : super._();
+
   @override
   CorsGrantAccessVfsOK rebuild(
           void Function(CorsGrantAccessVfsOKBuilder) updates) =>
@@ -22,7 +23,7 @@ class _$CorsGrantAccessVfsOK extends CorsGrantAccessVfsOK {
 
   @override
   CorsGrantAccessVfsOKBuilder toBuilder() =>
-      CorsGrantAccessVfsOKBuilder()..replace(this);
+      new CorsGrantAccessVfsOKBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -71,6 +72,7 @@ class CorsGrantAccessVfsOKBuilder
 
   @override
   void replace(CorsGrantAccessVfsOK other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CorsGrantAccessVfsOK;
   }
 
@@ -84,7 +86,7 @@ class CorsGrantAccessVfsOKBuilder
 
   _$CorsGrantAccessVfsOK _build() {
     final _$result = _$v ??
-        _$CorsGrantAccessVfsOK._(
+        new _$CorsGrantAccessVfsOK._(
           corsGrantAccessVfsOk: corsGrantAccessVfsOk,
         );
     replace(_$result);

@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   CreateProjectScopedTokenOutput.JSON_PROPERTY_EXPIRES_IN,
   CreateProjectScopedTokenOutput.JSON_PROPERTY_SCOPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateProjectScopedTokenOutput {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "accessToken";
+  @javax.annotation.Nonnull
   private String accessToken;
 
   public static final String JSON_PROPERTY_EXPIRES_IN = "expiresIn";
+  @javax.annotation.Nonnull
   private Integer expiresIn;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
+  @javax.annotation.Nonnull
   private String scope;
 
   public CreateProjectScopedTokenOutput() {
   }
 
-  public CreateProjectScopedTokenOutput accessToken(String accessToken) {
+  public CreateProjectScopedTokenOutput accessToken(@javax.annotation.Nonnull String accessToken) {
     
     this.accessToken = accessToken;
     return this;
@@ -69,11 +72,11 @@ public class CreateProjectScopedTokenOutput {
 
   @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccessToken(String accessToken) {
+  public void setAccessToken(@javax.annotation.Nonnull String accessToken) {
     this.accessToken = accessToken;
   }
 
-  public CreateProjectScopedTokenOutput expiresIn(Integer expiresIn) {
+  public CreateProjectScopedTokenOutput expiresIn(@javax.annotation.Nonnull Integer expiresIn) {
     
     this.expiresIn = expiresIn;
     return this;
@@ -94,11 +97,11 @@ public class CreateProjectScopedTokenOutput {
 
   @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpiresIn(Integer expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nonnull Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
 
-  public CreateProjectScopedTokenOutput scope(String scope) {
+  public CreateProjectScopedTokenOutput scope(@javax.annotation.Nonnull String scope) {
     
     this.scope = scope;
     return this;
@@ -119,7 +122,7 @@ public class CreateProjectScopedTokenOutput {
 
   @JsonProperty(JSON_PROPERTY_SCOPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
   }
 

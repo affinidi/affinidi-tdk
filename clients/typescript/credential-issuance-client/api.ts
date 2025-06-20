@@ -2523,7 +2523,7 @@ export interface WellKnownOpenIdCredentialIssuerResponse {
 
 export const WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum = {
   AuthorizationCode: 'authorization_code',
-  UrnietfparamsoauthgrantTypepreAuthorizedCode:
+  UrnIetfParamsOauthGrantTypePreAuthorizedCode:
     'urn:ietf:params:oauth:grant-type:pre-authorized_code',
 } as const
 

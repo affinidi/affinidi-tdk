@@ -25,7 +25,7 @@ class TestRevocationApi(unittest.TestCase):
         self.api = RevocationApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_get_revocation_credential_status(self) -> None:
         """Test case for get_revocation_credential_status

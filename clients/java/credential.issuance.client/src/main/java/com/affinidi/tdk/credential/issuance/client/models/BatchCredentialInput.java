@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BatchCredentialInput.JSON_PROPERTY_CREDENTIAL_REQUESTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BatchCredentialInput {
   public static final String JSON_PROPERTY_CREDENTIAL_REQUESTS = "credential_requests";
+  @javax.annotation.Nonnull
   private List<BatchCredentialInputCredentialRequestsInner> credentialRequests = new ArrayList<>();
 
   public BatchCredentialInput() {
   }
 
-  public BatchCredentialInput credentialRequests(List<BatchCredentialInputCredentialRequestsInner> credentialRequests) {
+  public BatchCredentialInput credentialRequests(@javax.annotation.Nonnull List<BatchCredentialInputCredentialRequestsInner> credentialRequests) {
     
     this.credentialRequests = credentialRequests;
     return this;
@@ -73,7 +74,7 @@ public class BatchCredentialInput {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_REQUESTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialRequests(List<BatchCredentialInputCredentialRequestsInner> credentialRequests) {
+  public void setCredentialRequests(@javax.annotation.Nonnull List<BatchCredentialInputCredentialRequestsInner> credentialRequests) {
     this.credentialRequests = credentialRequests;
   }
 

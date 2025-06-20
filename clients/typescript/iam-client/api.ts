@@ -308,10 +308,10 @@ export interface CreateTokenInput {
   name: string
   /**
    *
-   * @type {TokenAuthenticationMethodDto}
+   * @type {TokenPrivateKeyAuthenticationMethodDto}
    * @memberof CreateTokenInput
    */
-  authenticationMethod: TokenAuthenticationMethodDto
+  authenticationMethod: TokenPrivateKeyAuthenticationMethodDto
   /**
    *
    * @type {string}
@@ -1043,8 +1043,8 @@ export type PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum =
  */
 
 export const RightsEnum = {
-  Read: 'vfs-read',
-  Write: 'vfs-write',
+  VfsRead: 'vfs-read',
+  VfsWrite: 'vfs-write',
 } as const
 
 export type RightsEnum = (typeof RightsEnum)[keyof typeof RightsEnum]
@@ -1112,14 +1112,6 @@ export interface ServiceErrorResponseDetailsInner {
   location?: string
 }
 /**
- * @type TokenAuthenticationMethodDto
- * How the Token will be authenticate against our Authorization Server
- * @export
- */
-export type TokenAuthenticationMethodDto =
-  TokenPrivateKeyAuthenticationMethodDto
-
-/**
  *
  * @export
  * @interface TokenDto
@@ -1151,10 +1143,10 @@ export interface TokenDto {
   name: string
   /**
    *
-   * @type {TokenAuthenticationMethodDto}
+   * @type {TokenPrivateKeyAuthenticationMethodDto}
    * @memberof TokenDto
    */
-  authenticationMethod: TokenAuthenticationMethodDto
+  authenticationMethod: TokenPrivateKeyAuthenticationMethodDto
   /**
    * Scopes that will be assigned to the Token on authentication
    * @type {Array<string>}

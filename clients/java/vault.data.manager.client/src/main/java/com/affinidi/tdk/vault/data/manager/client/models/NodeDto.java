@@ -56,75 +56,96 @@ import java.util.StringJoiner;
   NodeDto.JSON_PROPERTY_EDEK_INFO,
   NodeDto.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class NodeDto {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
+  @javax.annotation.Nonnull
   private String nodeId;
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private NodeStatus status;
 
   public static final String JSON_PROPERTY_FILE_COUNT = "fileCount";
+  @javax.annotation.Nullable
   private BigDecimal fileCount;
 
   public static final String JSON_PROPERTY_PROFILE_COUNT = "profileCount";
+  @javax.annotation.Nullable
   private BigDecimal profileCount;
 
   public static final String JSON_PROPERTY_FOLDER_COUNT = "folderCount";
+  @javax.annotation.Nullable
   private BigDecimal folderCount;
 
   public static final String JSON_PROPERTY_VC_COUNT = "vcCount";
+  @javax.annotation.Nullable
   private BigDecimal vcCount;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_CONSUMER_ID = "consumerId";
+  @javax.annotation.Nonnull
   private String consumerId;
 
   public static final String JSON_PROPERTY_PARENT_NODE_ID = "parentNodeId";
+  @javax.annotation.Nonnull
   private String parentNodeId;
 
   public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
+  @javax.annotation.Nonnull
   private String profileId;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nonnull
   private String createdAt;
 
   public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
+  @javax.annotation.Nonnull
   private String modifiedAt;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @javax.annotation.Nonnull
   private String createdBy;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @javax.annotation.Nonnull
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private NodeType type;
 
   public static final String JSON_PROPERTY_LINK = "link";
+  @javax.annotation.Nullable
   private String link;
 
   public static final String JSON_PROPERTY_SCHEMA = "schema";
+  @javax.annotation.Nullable
   private String schema;
 
   public static final String JSON_PROPERTY_CONSUMED_FILE_STORAGE = "consumedFileStorage";
+  @javax.annotation.Nullable
   private BigDecimal consumedFileStorage;
 
   public static final String JSON_PROPERTY_EDEK_INFO = "edekInfo";
+  @javax.annotation.Nullable
   private EdekInfo edekInfo;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
+  @javax.annotation.Nullable
   private String metadata;
 
   public NodeDto() {
   }
 
-  public NodeDto nodeId(String nodeId) {
+  public NodeDto nodeId(@javax.annotation.Nonnull String nodeId) {
     
     this.nodeId = nodeId;
     return this;
@@ -145,11 +166,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNodeId(String nodeId) {
+  public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
   }
 
-  public NodeDto status(NodeStatus status) {
+  public NodeDto status(@javax.annotation.Nonnull NodeStatus status) {
     
     this.status = status;
     return this;
@@ -170,11 +191,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(NodeStatus status) {
+  public void setStatus(@javax.annotation.Nonnull NodeStatus status) {
     this.status = status;
   }
 
-  public NodeDto fileCount(BigDecimal fileCount) {
+  public NodeDto fileCount(@javax.annotation.Nullable BigDecimal fileCount) {
     
     this.fileCount = fileCount;
     return this;
@@ -195,11 +216,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_FILE_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFileCount(BigDecimal fileCount) {
+  public void setFileCount(@javax.annotation.Nullable BigDecimal fileCount) {
     this.fileCount = fileCount;
   }
 
-  public NodeDto profileCount(BigDecimal profileCount) {
+  public NodeDto profileCount(@javax.annotation.Nullable BigDecimal profileCount) {
     
     this.profileCount = profileCount;
     return this;
@@ -220,11 +241,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_PROFILE_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfileCount(BigDecimal profileCount) {
+  public void setProfileCount(@javax.annotation.Nullable BigDecimal profileCount) {
     this.profileCount = profileCount;
   }
 
-  public NodeDto folderCount(BigDecimal folderCount) {
+  public NodeDto folderCount(@javax.annotation.Nullable BigDecimal folderCount) {
     
     this.folderCount = folderCount;
     return this;
@@ -245,11 +266,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_FOLDER_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFolderCount(BigDecimal folderCount) {
+  public void setFolderCount(@javax.annotation.Nullable BigDecimal folderCount) {
     this.folderCount = folderCount;
   }
 
-  public NodeDto vcCount(BigDecimal vcCount) {
+  public NodeDto vcCount(@javax.annotation.Nullable BigDecimal vcCount) {
     
     this.vcCount = vcCount;
     return this;
@@ -270,11 +291,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_VC_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVcCount(BigDecimal vcCount) {
+  public void setVcCount(@javax.annotation.Nullable BigDecimal vcCount) {
     this.vcCount = vcCount;
   }
 
-  public NodeDto name(String name) {
+  public NodeDto name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -295,11 +316,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public NodeDto consumerId(String consumerId) {
+  public NodeDto consumerId(@javax.annotation.Nonnull String consumerId) {
     
     this.consumerId = consumerId;
     return this;
@@ -320,11 +341,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_CONSUMER_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConsumerId(String consumerId) {
+  public void setConsumerId(@javax.annotation.Nonnull String consumerId) {
     this.consumerId = consumerId;
   }
 
-  public NodeDto parentNodeId(String parentNodeId) {
+  public NodeDto parentNodeId(@javax.annotation.Nonnull String parentNodeId) {
     
     this.parentNodeId = parentNodeId;
     return this;
@@ -345,11 +366,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_PARENT_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setParentNodeId(String parentNodeId) {
+  public void setParentNodeId(@javax.annotation.Nonnull String parentNodeId) {
     this.parentNodeId = parentNodeId;
   }
 
-  public NodeDto profileId(String profileId) {
+  public NodeDto profileId(@javax.annotation.Nonnull String profileId) {
     
     this.profileId = profileId;
     return this;
@@ -370,11 +391,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_PROFILE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfileId(String profileId) {
+  public void setProfileId(@javax.annotation.Nonnull String profileId) {
     this.profileId = profileId;
   }
 
-  public NodeDto createdAt(String createdAt) {
+  public NodeDto createdAt(@javax.annotation.Nonnull String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -395,11 +416,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public NodeDto modifiedAt(String modifiedAt) {
+  public NodeDto modifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     
     this.modifiedAt = modifiedAt;
     return this;
@@ -420,11 +441,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedAt(String modifiedAt) {
+  public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
 
-  public NodeDto createdBy(String createdBy) {
+  public NodeDto createdBy(@javax.annotation.Nonnull String createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -445,11 +466,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_BY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedBy(String createdBy) {
+  public void setCreatedBy(@javax.annotation.Nonnull String createdBy) {
     this.createdBy = createdBy;
   }
 
-  public NodeDto modifiedBy(String modifiedBy) {
+  public NodeDto modifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -470,11 +491,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedBy(String modifiedBy) {
+  public void setModifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
-  public NodeDto description(String description) {
+  public NodeDto description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -495,11 +516,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public NodeDto type(NodeType type) {
+  public NodeDto type(@javax.annotation.Nonnull NodeType type) {
     
     this.type = type;
     return this;
@@ -520,11 +541,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(NodeType type) {
+  public void setType(@javax.annotation.Nonnull NodeType type) {
     this.type = type;
   }
 
-  public NodeDto link(String link) {
+  public NodeDto link(@javax.annotation.Nullable String link) {
     
     this.link = link;
     return this;
@@ -545,11 +566,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_LINK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
-  public NodeDto schema(String schema) {
+  public NodeDto schema(@javax.annotation.Nullable String schema) {
     
     this.schema = schema;
     return this;
@@ -570,11 +591,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_SCHEMA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSchema(String schema) {
+  public void setSchema(@javax.annotation.Nullable String schema) {
     this.schema = schema;
   }
 
-  public NodeDto consumedFileStorage(BigDecimal consumedFileStorage) {
+  public NodeDto consumedFileStorage(@javax.annotation.Nullable BigDecimal consumedFileStorage) {
     
     this.consumedFileStorage = consumedFileStorage;
     return this;
@@ -595,11 +616,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_CONSUMED_FILE_STORAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConsumedFileStorage(BigDecimal consumedFileStorage) {
+  public void setConsumedFileStorage(@javax.annotation.Nullable BigDecimal consumedFileStorage) {
     this.consumedFileStorage = consumedFileStorage;
   }
 
-  public NodeDto edekInfo(EdekInfo edekInfo) {
+  public NodeDto edekInfo(@javax.annotation.Nullable EdekInfo edekInfo) {
     
     this.edekInfo = edekInfo;
     return this;
@@ -620,11 +641,11 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_EDEK_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdekInfo(EdekInfo edekInfo) {
+  public void setEdekInfo(@javax.annotation.Nullable EdekInfo edekInfo) {
     this.edekInfo = edekInfo;
   }
 
-  public NodeDto metadata(String metadata) {
+  public NodeDto metadata(@javax.annotation.Nullable String metadata) {
     
     this.metadata = metadata;
     return this;
@@ -645,7 +666,7 @@ public class NodeDto {
 
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetadata(String metadata) {
+  public void setMetadata(@javax.annotation.Nullable String metadata) {
     this.metadata = metadata;
   }
 

@@ -23,7 +23,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,13 +43,13 @@ import java.util.StringJoiner;
   GenerateCredentials400Response.JSON_PROPERTY_DETAILS
 })
 @JsonTypeName("generateCredentials_400_response")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GenerateCredentials400Response {
   /**
    * Gets or Sets name
    */
   public enum NameEnum {
-    INVALID_PROOF_ERROR("InvalidProofError");
+    INVALID_PROOF_ERROR(String.valueOf("InvalidProofError"));
 
     private String value;
 
@@ -80,13 +79,14 @@ public class GenerateCredentials400Response {
   }
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private NameEnum name;
 
   /**
    * Gets or Sets message
    */
   public enum MessageEnum {
-    THE_PROOF_IN_THE_CREDENTIAL_REQUEST_IS_INVALID("The proof in the Credential Request is invalid");
+    THE_PROOF_IN_THE_CREDENTIAL_REQUEST_IS_INVALID(String.valueOf("The proof in the Credential Request is invalid"));
 
     private String value;
 
@@ -116,22 +116,23 @@ public class GenerateCredentials400Response {
   }
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nonnull
   private MessageEnum message;
 
   /**
    * Gets or Sets httpStatusCode
    */
   public enum HttpStatusCodeEnum {
-    NUMBER_400(new BigDecimal("400"));
+    NUMBER_400(Integer.valueOf(400));
 
-    private BigDecimal value;
+    private Integer value;
 
-    HttpStatusCodeEnum(BigDecimal value) {
+    HttpStatusCodeEnum(Integer value) {
       this.value = value;
     }
 
     @JsonValue
-    public BigDecimal getValue() {
+    public Integer getValue() {
       return value;
     }
 
@@ -141,7 +142,7 @@ public class GenerateCredentials400Response {
     }
 
     @JsonCreator
-    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+    public static HttpStatusCodeEnum fromValue(Integer value) {
       for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
@@ -152,18 +153,21 @@ public class GenerateCredentials400Response {
   }
 
   public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  @javax.annotation.Nonnull
   private HttpStatusCodeEnum httpStatusCode;
 
   public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  @javax.annotation.Nonnull
   private String traceId;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
   private List<ActionForbiddenErrorDetailsInner> details = new ArrayList<>();
 
   public GenerateCredentials400Response() {
   }
 
-  public GenerateCredentials400Response name(NameEnum name) {
+  public GenerateCredentials400Response name(@javax.annotation.Nonnull NameEnum name) {
     
     this.name = name;
     return this;
@@ -184,11 +188,11 @@ public class GenerateCredentials400Response {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(NameEnum name) {
+  public void setName(@javax.annotation.Nonnull NameEnum name) {
     this.name = name;
   }
 
-  public GenerateCredentials400Response message(MessageEnum message) {
+  public GenerateCredentials400Response message(@javax.annotation.Nonnull MessageEnum message) {
     
     this.message = message;
     return this;
@@ -209,11 +213,11 @@ public class GenerateCredentials400Response {
 
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMessage(MessageEnum message) {
+  public void setMessage(@javax.annotation.Nonnull MessageEnum message) {
     this.message = message;
   }
 
-  public GenerateCredentials400Response httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public GenerateCredentials400Response httpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     
     this.httpStatusCode = httpStatusCode;
     return this;
@@ -234,11 +238,11 @@ public class GenerateCredentials400Response {
 
   @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public void setHttpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
   }
 
-  public GenerateCredentials400Response traceId(String traceId) {
+  public GenerateCredentials400Response traceId(@javax.annotation.Nonnull String traceId) {
     
     this.traceId = traceId;
     return this;
@@ -259,11 +263,11 @@ public class GenerateCredentials400Response {
 
   @JsonProperty(JSON_PROPERTY_TRACE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTraceId(String traceId) {
+  public void setTraceId(@javax.annotation.Nonnull String traceId) {
     this.traceId = traceId;
   }
 
-  public GenerateCredentials400Response details(List<ActionForbiddenErrorDetailsInner> details) {
+  public GenerateCredentials400Response details(@javax.annotation.Nullable List<ActionForbiddenErrorDetailsInner> details) {
     
     this.details = details;
     return this;
@@ -292,7 +296,7 @@ public class GenerateCredentials400Response {
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(List<ActionForbiddenErrorDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<ActionForbiddenErrorDetailsInner> details) {
     this.details = details;
   }
 

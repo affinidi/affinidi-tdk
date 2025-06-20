@@ -37,27 +37,32 @@ import java.util.StringJoiner;
   LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_NONCE
 })
 @JsonTypeName("LoginSessionDto_authorizationRequest")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LoginSessionDtoAuthorizationRequest {
   public static final String JSON_PROPERTY_STATE = "state";
+  @javax.annotation.Nonnull
   private String state;
 
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+  @javax.annotation.Nonnull
   private String presentationDefinition;
 
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nullable
   private String ari;
 
   public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
+  @javax.annotation.Nullable
   private String clientId;
 
   public static final String JSON_PROPERTY_NONCE = "nonce";
+  @javax.annotation.Nullable
   private String nonce;
 
   public LoginSessionDtoAuthorizationRequest() {
   }
 
-  public LoginSessionDtoAuthorizationRequest state(String state) {
+  public LoginSessionDtoAuthorizationRequest state(@javax.annotation.Nonnull String state) {
     
     this.state = state;
     return this;
@@ -78,11 +83,11 @@ public class LoginSessionDtoAuthorizationRequest {
 
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(String state) {
+  public void setState(@javax.annotation.Nonnull String state) {
     this.state = state;
   }
 
-  public LoginSessionDtoAuthorizationRequest presentationDefinition(String presentationDefinition) {
+  public LoginSessionDtoAuthorizationRequest presentationDefinition(@javax.annotation.Nonnull String presentationDefinition) {
     
     this.presentationDefinition = presentationDefinition;
     return this;
@@ -103,11 +108,11 @@ public class LoginSessionDtoAuthorizationRequest {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPresentationDefinition(String presentationDefinition) {
+  public void setPresentationDefinition(@javax.annotation.Nonnull String presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-  public LoginSessionDtoAuthorizationRequest ari(String ari) {
+  public LoginSessionDtoAuthorizationRequest ari(@javax.annotation.Nullable String ari) {
     
     this.ari = ari;
     return this;
@@ -128,11 +133,11 @@ public class LoginSessionDtoAuthorizationRequest {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nullable String ari) {
     this.ari = ari;
   }
 
-  public LoginSessionDtoAuthorizationRequest clientId(String clientId) {
+  public LoginSessionDtoAuthorizationRequest clientId(@javax.annotation.Nullable String clientId) {
     
     this.clientId = clientId;
     return this;
@@ -153,11 +158,11 @@ public class LoginSessionDtoAuthorizationRequest {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientId(String clientId) {
+  public void setClientId(@javax.annotation.Nullable String clientId) {
     this.clientId = clientId;
   }
 
-  public LoginSessionDtoAuthorizationRequest nonce(String nonce) {
+  public LoginSessionDtoAuthorizationRequest nonce(@javax.annotation.Nullable String nonce) {
     
     this.nonce = nonce;
     return this;
@@ -178,7 +183,7 @@ public class LoginSessionDtoAuthorizationRequest {
 
   @JsonProperty(JSON_PROPERTY_NONCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNonce(String nonce) {
+  public void setNonce(@javax.annotation.Nullable String nonce) {
     this.nonce = nonce;
   }
 

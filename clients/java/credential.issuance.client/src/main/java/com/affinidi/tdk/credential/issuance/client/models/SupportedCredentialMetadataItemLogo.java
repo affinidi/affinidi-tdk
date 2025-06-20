@@ -35,19 +35,21 @@ import java.util.StringJoiner;
   SupportedCredentialMetadataItemLogo.JSON_PROPERTY_URL,
   SupportedCredentialMetadataItemLogo.JSON_PROPERTY_ALT_TEXT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SupportedCredentialMetadataItemLogo extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_URL = "url";
+  @javax.annotation.Nonnull
   private String url;
 
   public static final String JSON_PROPERTY_ALT_TEXT = "altText";
+  @javax.annotation.Nullable
   private String altText;
 
   public SupportedCredentialMetadataItemLogo() {
 
   }
 
-  public SupportedCredentialMetadataItemLogo url(String url) {
+  public SupportedCredentialMetadataItemLogo url(@javax.annotation.Nonnull String url) {
     
     this.url = url;
     return this;
@@ -68,11 +70,11 @@ public class SupportedCredentialMetadataItemLogo extends HashMap<String, Object>
 
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nonnull String url) {
     this.url = url;
   }
 
-  public SupportedCredentialMetadataItemLogo altText(String altText) {
+  public SupportedCredentialMetadataItemLogo altText(@javax.annotation.Nullable String altText) {
     
     this.altText = altText;
     return this;
@@ -93,7 +95,7 @@ public class SupportedCredentialMetadataItemLogo extends HashMap<String, Object>
 
   @JsonProperty(JSON_PROPERTY_ALT_TEXT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAltText(String altText) {
+  public void setAltText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
   }
 

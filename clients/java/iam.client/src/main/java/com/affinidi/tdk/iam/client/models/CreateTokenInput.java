@@ -15,7 +15,7 @@ package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
+import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -35,21 +35,24 @@ import java.util.StringJoiner;
   CreateTokenInput.JSON_PROPERTY_AUTHENTICATION_METHOD,
   CreateTokenInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateTokenInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_AUTHENTICATION_METHOD = "authenticationMethod";
-  private TokenAuthenticationMethodDto authenticationMethod;
+  @javax.annotation.Nonnull
+  private TokenPrivateKeyAuthenticationMethodDto authenticationMethod;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public CreateTokenInput() {
   }
 
-  public CreateTokenInput name(String name) {
+  public CreateTokenInput name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -70,11 +73,11 @@ public class CreateTokenInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public CreateTokenInput authenticationMethod(TokenAuthenticationMethodDto authenticationMethod) {
+  public CreateTokenInput authenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     
     this.authenticationMethod = authenticationMethod;
     return this;
@@ -88,18 +91,18 @@ public class CreateTokenInput {
   @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public TokenAuthenticationMethodDto getAuthenticationMethod() {
+  public TokenPrivateKeyAuthenticationMethodDto getAuthenticationMethod() {
     return authenticationMethod;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthenticationMethod(TokenAuthenticationMethodDto authenticationMethod) {
+  public void setAuthenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
 
-  public CreateTokenInput description(String description) {
+  public CreateTokenInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -120,7 +123,7 @@ public class CreateTokenInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

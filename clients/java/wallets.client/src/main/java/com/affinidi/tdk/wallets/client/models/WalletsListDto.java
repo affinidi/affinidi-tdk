@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   WalletsListDto.JSON_PROPERTY_WALLETS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WalletsListDto {
   public static final String JSON_PROPERTY_WALLETS = "wallets";
+  @javax.annotation.Nullable
   private List<WalletDto> wallets = new ArrayList<>();
 
   public WalletsListDto() {
   }
 
-  public WalletsListDto wallets(List<WalletDto> wallets) {
+  public WalletsListDto wallets(@javax.annotation.Nullable List<WalletDto> wallets) {
     
     this.wallets = wallets;
     return this;
@@ -73,7 +74,7 @@ public class WalletsListDto {
 
   @JsonProperty(JSON_PROPERTY_WALLETS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWallets(List<WalletDto> wallets) {
+  public void setWallets(@javax.annotation.Nullable List<WalletDto> wallets) {
     this.wallets = wallets;
   }
 

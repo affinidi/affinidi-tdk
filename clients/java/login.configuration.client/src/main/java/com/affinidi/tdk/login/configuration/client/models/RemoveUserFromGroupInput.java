@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   RemoveUserFromGroupInput.JSON_PROPERTY_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RemoveUserFromGroupInput {
   public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
   private String userId;
 
   public RemoveUserFromGroupInput() {
   }
 
-  public RemoveUserFromGroupInput userId(String userId) {
+  public RemoveUserFromGroupInput userId(@javax.annotation.Nonnull String userId) {
     
     this.userId = userId;
     return this;
@@ -61,7 +62,7 @@ public class RemoveUserFromGroupInput {
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(String userId) {
+  public void setUserId(@javax.annotation.Nonnull String userId) {
     this.userId = userId;
   }
 

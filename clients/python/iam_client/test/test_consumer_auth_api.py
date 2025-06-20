@@ -25,7 +25,7 @@ class TestConsumerAuthApi(unittest.TestCase):
         self.api = ConsumerAuthApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_consumer_auth_token_endpoint(self) -> None:
         """Test case for consumer_auth_token_endpoint

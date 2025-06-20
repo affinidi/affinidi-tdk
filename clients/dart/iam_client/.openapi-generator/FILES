@@ -42,7 +42,6 @@ doc/RightsEnum.md
 doc/ServiceErrorResponse.md
 doc/ServiceErrorResponseDetailsInner.md
 doc/StsApi.md
-doc/TokenAuthenticationMethodDto.md
 doc/TokenDto.md
 doc/TokenList.md
 doc/TokenPrivateKeyAuthenticationMethodDto.md
@@ -113,7 +112,6 @@ lib/src/model/public_key_cannot_be_resolved_from_did_error.dart
 lib/src/model/rights_enum.dart
 lib/src/model/service_error_response.dart
 lib/src/model/service_error_response_details_inner.dart
-lib/src/model/token_authentication_method_dto.dart
 lib/src/model/token_dto.dart
 lib/src/model/token_list.dart
 lib/src/model/token_private_key_authentication_method_dto.dart
@@ -173,7 +171,6 @@ test/rights_enum_test.dart
 test/service_error_response_details_inner_test.dart
 test/service_error_response_test.dart
 test/sts_api_test.dart
-test/token_authentication_method_dto_test.dart
 test/token_dto_test.dart
 test/token_list_test.dart
 test/token_private_key_authentication_method_dto_public_key_info_one_of1_test.dart

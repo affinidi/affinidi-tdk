@@ -37,21 +37,21 @@ class CredentialOfferClaimedError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('CredentialOfferClaimedError'):
+        if value not in ('CredentialOfferClaimedError',):
             raise ValueError("must be one of enum values ('CredentialOfferClaimedError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Credential offer is already claimed'):
+        if value not in ('Credential offer is already claimed',):
             raise ValueError("must be one of enum values ('Credential offer is already claimed')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

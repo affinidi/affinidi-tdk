@@ -1018,11 +1018,11 @@ export interface VerifyPresentationInput {
  */
 export interface VerifyPresentationOutput {
   /**
-   *
-   * @type {VerifyPresentationOutputErrors}
+   * Error of the verification
+   * @type {Array<string>}
    * @memberof VerifyPresentationOutput
    */
-  errors: VerifyPresentationOutputErrors
+  errors: Array<string>
   /**
    * Verification result
    * @type {boolean}
@@ -1030,12 +1030,6 @@ export interface VerifyPresentationOutput {
    */
   isValid: boolean
 }
-/**
- * Error of the verification
- * @export
- * @interface VerifyPresentationOutputErrors
- */
-export interface VerifyPresentationOutputErrors {}
 /**
  *
  * @export

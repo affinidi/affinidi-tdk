@@ -4,6 +4,7 @@ import 'package:test/test.dart';
 import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 
 import 'helpers/helpers.dart';
+import 'helpers/resource_factory.dart';
 
 void main() {
   group('Wallets Client  Integration Tests', () {
@@ -32,14 +33,11 @@ void main() {
       final description = 'Test wallet description';
       final didWebUrl = 'didweb.com';
 
-      final didWebInputBuilder = DidWebInputParamsBuilder()
+      final walletInputBuilder = CreateWalletInputBuilder()
         ..name = name
         ..description = description
-        ..didMethod = DidWebInputParamsDidMethodEnum.web
+        ..didMethod = CreateWalletInputDidMethodEnum.web
         ..didWebUrl = didWebUrl;
-      final walletInputBuilder = CreateWalletInputBuilder()
-        ..oneOf = OneOf2<DidKeyInputParams, DidWebInputParams>(
-            value: didWebInputBuilder.build(), typeIndex: 1);
 
       final createdWallet = (await walletApi.createWallet(
               createWalletInput: walletInputBuilder.build()))

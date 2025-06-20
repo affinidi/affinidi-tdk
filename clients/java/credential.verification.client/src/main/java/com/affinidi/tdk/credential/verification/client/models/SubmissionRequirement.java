@@ -42,21 +42,23 @@ import java.util.StringJoiner;
   SubmissionRequirement.JSON_PROPERTY_FROM,
   SubmissionRequirement.JSON_PROPERTY_FROM_NESTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SubmissionRequirement {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_PURPOSE = "purpose";
+  @javax.annotation.Nullable
   private String purpose;
 
   /**
    * Gets or Sets rule
    */
   public enum RuleEnum {
-    ALL("all"),
+    ALL(String.valueOf("all")),
     
-    PICK("pick");
+    PICK(String.valueOf("pick"));
 
     private String value;
 
@@ -86,27 +88,33 @@ public class SubmissionRequirement {
   }
 
   public static final String JSON_PROPERTY_RULE = "rule";
+  @javax.annotation.Nonnull
   private RuleEnum rule;
 
   public static final String JSON_PROPERTY_COUNT = "count";
+  @javax.annotation.Nullable
   private Integer count;
 
   public static final String JSON_PROPERTY_MIN = "min";
+  @javax.annotation.Nullable
   private Integer min;
 
   public static final String JSON_PROPERTY_MAX = "max";
+  @javax.annotation.Nullable
   private Integer max;
 
   public static final String JSON_PROPERTY_FROM = "from";
+  @javax.annotation.Nullable
   private String from;
 
   public static final String JSON_PROPERTY_FROM_NESTED = "from_nested";
+  @javax.annotation.Nullable
   private List<SubmissionRequirement> fromNested = new ArrayList<>();
 
   public SubmissionRequirement() {
   }
 
-  public SubmissionRequirement name(String name) {
+  public SubmissionRequirement name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -127,11 +135,11 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public SubmissionRequirement purpose(String purpose) {
+  public SubmissionRequirement purpose(@javax.annotation.Nullable String purpose) {
     
     this.purpose = purpose;
     return this;
@@ -152,11 +160,11 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_PURPOSE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPurpose(String purpose) {
+  public void setPurpose(@javax.annotation.Nullable String purpose) {
     this.purpose = purpose;
   }
 
-  public SubmissionRequirement rule(RuleEnum rule) {
+  public SubmissionRequirement rule(@javax.annotation.Nonnull RuleEnum rule) {
     
     this.rule = rule;
     return this;
@@ -177,11 +185,11 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_RULE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRule(RuleEnum rule) {
+  public void setRule(@javax.annotation.Nonnull RuleEnum rule) {
     this.rule = rule;
   }
 
-  public SubmissionRequirement count(Integer count) {
+  public SubmissionRequirement count(@javax.annotation.Nullable Integer count) {
     
     this.count = count;
     return this;
@@ -202,11 +210,11 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCount(Integer count) {
+  public void setCount(@javax.annotation.Nullable Integer count) {
     this.count = count;
   }
 
-  public SubmissionRequirement min(Integer min) {
+  public SubmissionRequirement min(@javax.annotation.Nullable Integer min) {
     
     this.min = min;
     return this;
@@ -227,11 +235,11 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_MIN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMin(Integer min) {
+  public void setMin(@javax.annotation.Nullable Integer min) {
     this.min = min;
   }
 
-  public SubmissionRequirement max(Integer max) {
+  public SubmissionRequirement max(@javax.annotation.Nullable Integer max) {
     
     this.max = max;
     return this;
@@ -252,11 +260,11 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_MAX)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMax(Integer max) {
+  public void setMax(@javax.annotation.Nullable Integer max) {
     this.max = max;
   }
 
-  public SubmissionRequirement from(String from) {
+  public SubmissionRequirement from(@javax.annotation.Nullable String from) {
     
     this.from = from;
     return this;
@@ -277,11 +285,11 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_FROM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrom(String from) {
+  public void setFrom(@javax.annotation.Nullable String from) {
     this.from = from;
   }
 
-  public SubmissionRequirement fromNested(List<SubmissionRequirement> fromNested) {
+  public SubmissionRequirement fromNested(@javax.annotation.Nullable List<SubmissionRequirement> fromNested) {
     
     this.fromNested = fromNested;
     return this;
@@ -310,7 +318,7 @@ public class SubmissionRequirement {
 
   @JsonProperty(JSON_PROPERTY_FROM_NESTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFromNested(List<SubmissionRequirement> fromNested) {
+  public void setFromNested(@javax.annotation.Nullable List<SubmissionRequirement> fromNested) {
     this.fromNested = fromNested;
   }
 

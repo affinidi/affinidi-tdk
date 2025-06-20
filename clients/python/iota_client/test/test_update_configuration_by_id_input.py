@@ -44,7 +44,10 @@ class TestUpdateConfigurationByIdInput(unittest.TestCase):
                 enable_consent_audit_log = True,
                 token_max_age = 1.337,
                 description = '',
-                client_metadata = { },
+                client_metadata = affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata.IotaConfigurationDtoClientMetadata(
+                    name = '', 
+                    origin = '', 
+                    logo = '', ),
                 mode = 'redirect',
                 redirect_uris = [
                     ''

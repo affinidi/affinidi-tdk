@@ -37,21 +37,21 @@ class CredentialIssuanceIdExistError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('CredentialIssuanceIdExistError'):
+        if value not in ('CredentialIssuanceIdExistError',):
             raise ValueError("must be one of enum values ('CredentialIssuanceIdExistError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('issuanceId exist for the project, please use different issuanceId'):
+        if value not in ('issuanceId exist for the project, please use different issuanceId',):
             raise ValueError("must be one of enum values ('issuanceId exist for the project, please use different issuanceId')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

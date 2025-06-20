@@ -25,7 +25,7 @@ class TestAllowListApi(unittest.TestCase):
         self.api = AllowListApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_allow_groups(self) -> None:
         """Test case for allow_groups

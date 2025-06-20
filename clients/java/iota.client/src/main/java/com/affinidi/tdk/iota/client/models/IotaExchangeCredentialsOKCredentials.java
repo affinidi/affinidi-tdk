@@ -36,24 +36,28 @@ import java.util.StringJoiner;
   IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_EXPIRATION
 })
 @JsonTypeName("IotaExchangeCredentialsOK_credentials")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IotaExchangeCredentialsOKCredentials {
   public static final String JSON_PROPERTY_ACCESS_KEY_ID = "accessKeyId";
+  @javax.annotation.Nonnull
   private String accessKeyId;
 
   public static final String JSON_PROPERTY_SECRET_KEY = "secretKey";
+  @javax.annotation.Nonnull
   private String secretKey;
 
   public static final String JSON_PROPERTY_SESSION_TOKEN = "sessionToken";
+  @javax.annotation.Nonnull
   private String sessionToken;
 
   public static final String JSON_PROPERTY_EXPIRATION = "expiration";
+  @javax.annotation.Nonnull
   private String expiration;
 
   public IotaExchangeCredentialsOKCredentials() {
   }
 
-  public IotaExchangeCredentialsOKCredentials accessKeyId(String accessKeyId) {
+  public IotaExchangeCredentialsOKCredentials accessKeyId(@javax.annotation.Nonnull String accessKeyId) {
     
     this.accessKeyId = accessKeyId;
     return this;
@@ -74,11 +78,11 @@ public class IotaExchangeCredentialsOKCredentials {
 
   @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccessKeyId(String accessKeyId) {
+  public void setAccessKeyId(@javax.annotation.Nonnull String accessKeyId) {
     this.accessKeyId = accessKeyId;
   }
 
-  public IotaExchangeCredentialsOKCredentials secretKey(String secretKey) {
+  public IotaExchangeCredentialsOKCredentials secretKey(@javax.annotation.Nonnull String secretKey) {
     
     this.secretKey = secretKey;
     return this;
@@ -99,11 +103,11 @@ public class IotaExchangeCredentialsOKCredentials {
 
   @JsonProperty(JSON_PROPERTY_SECRET_KEY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSecretKey(String secretKey) {
+  public void setSecretKey(@javax.annotation.Nonnull String secretKey) {
     this.secretKey = secretKey;
   }
 
-  public IotaExchangeCredentialsOKCredentials sessionToken(String sessionToken) {
+  public IotaExchangeCredentialsOKCredentials sessionToken(@javax.annotation.Nonnull String sessionToken) {
     
     this.sessionToken = sessionToken;
     return this;
@@ -124,11 +128,11 @@ public class IotaExchangeCredentialsOKCredentials {
 
   @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSessionToken(String sessionToken) {
+  public void setSessionToken(@javax.annotation.Nonnull String sessionToken) {
     this.sessionToken = sessionToken;
   }
 
-  public IotaExchangeCredentialsOKCredentials expiration(String expiration) {
+  public IotaExchangeCredentialsOKCredentials expiration(@javax.annotation.Nonnull String expiration) {
     
     this.expiration = expiration;
     return this;
@@ -149,7 +153,7 @@ public class IotaExchangeCredentialsOKCredentials {
 
   @JsonProperty(JSON_PROPERTY_EXPIRATION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpiration(String expiration) {
+  public void setExpiration(@javax.annotation.Nonnull String expiration) {
     this.expiration = expiration;
   }
 

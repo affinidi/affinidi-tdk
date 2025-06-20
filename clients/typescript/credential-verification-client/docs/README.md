@@ -46,7 +46,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [VerifyCredentialOutput](./Models/VerifyCredentialOutput.md)
 - [VerifyPresentationInput](./Models/VerifyPresentationInput.md)
 - [VerifyPresentationOutput](./Models/VerifyPresentationOutput.md)
-- [VerifyPresentationOutput_errors](./Models/VerifyPresentationOutput_errors.md)
 - [W3cCredentialStatus](./Models/W3cCredentialStatus.md)
 - [W3cProof](./Models/W3cProof.md)
 

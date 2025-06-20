@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SavePexQueriesUpdateInput.JSON_PROPERTY_QUERIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SavePexQueriesUpdateInput {
   public static final String JSON_PROPERTY_QUERIES = "queries";
+  @javax.annotation.Nullable
   private List<SavePexQueriesUpdateInputQueriesInner> queries = new ArrayList<>();
 
   public SavePexQueriesUpdateInput() {
   }
 
-  public SavePexQueriesUpdateInput queries(List<SavePexQueriesUpdateInputQueriesInner> queries) {
+  public SavePexQueriesUpdateInput queries(@javax.annotation.Nullable List<SavePexQueriesUpdateInputQueriesInner> queries) {
     
     this.queries = queries;
     return this;
@@ -73,7 +74,7 @@ public class SavePexQueriesUpdateInput {
 
   @JsonProperty(JSON_PROPERTY_QUERIES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQueries(List<SavePexQueriesUpdateInputQueriesInner> queries) {
+  public void setQueries(@javax.annotation.Nullable List<SavePexQueriesUpdateInputQueriesInner> queries) {
     this.queries = queries;
   }
 

@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DenyListApi extends BaseApi {
 
   public DenyListApi() {
@@ -51,7 +51,7 @@ public class DenyListApi extends BaseApi {
    * @param groupNamesInput List of group names as input (optional)
    * @throws ApiException if fails to make API call
    */
-  public void blockGroups(GroupNamesInput groupNamesInput) throws ApiException {
+  public void blockGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput) throws ApiException {
     this.blockGroups(groupNamesInput, Collections.emptyMap());
   }
 
@@ -63,7 +63,7 @@ public class DenyListApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void blockGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void blockGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = groupNamesInput;
     
     // create path and map variables
@@ -117,7 +117,7 @@ public class DenyListApi extends BaseApi {
    * @param blockedUsersInput List of blocked users as input (optional)
    * @throws ApiException if fails to make API call
    */
-  public void blockUsers(BlockedUsersInput blockedUsersInput) throws ApiException {
+  public void blockUsers(@javax.annotation.Nullable BlockedUsersInput blockedUsersInput) throws ApiException {
     this.blockUsers(blockedUsersInput, Collections.emptyMap());
   }
 
@@ -129,7 +129,7 @@ public class DenyListApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void blockUsers(BlockedUsersInput blockedUsersInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void blockUsers(@javax.annotation.Nullable BlockedUsersInput blockedUsersInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = blockedUsersInput;
     
     // create path and map variables
@@ -184,7 +184,7 @@ public class DenyListApi extends BaseApi {
    * @return GroupNames
    * @throws ApiException if fails to make API call
    */
-  public GroupNames listBlockedGroups(String pageToken) throws ApiException {
+  public GroupNames listBlockedGroups(@javax.annotation.Nullable String pageToken) throws ApiException {
     return this.listBlockedGroups(pageToken, Collections.emptyMap());
   }
 
@@ -197,7 +197,7 @@ public class DenyListApi extends BaseApi {
    * @return GroupNames
    * @throws ApiException if fails to make API call
    */
-  public GroupNames listBlockedGroups(String pageToken, Map<String, String> additionalHeaders) throws ApiException {
+  public GroupNames listBlockedGroups(@javax.annotation.Nullable String pageToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -254,7 +254,7 @@ public class DenyListApi extends BaseApi {
    * @return BlockedUsers
    * @throws ApiException if fails to make API call
    */
-  public BlockedUsers listBlockedUsers(String pageToken) throws ApiException {
+  public BlockedUsers listBlockedUsers(@javax.annotation.Nullable String pageToken) throws ApiException {
     return this.listBlockedUsers(pageToken, Collections.emptyMap());
   }
 
@@ -267,7 +267,7 @@ public class DenyListApi extends BaseApi {
    * @return BlockedUsers
    * @throws ApiException if fails to make API call
    */
-  public BlockedUsers listBlockedUsers(String pageToken, Map<String, String> additionalHeaders) throws ApiException {
+  public BlockedUsers listBlockedUsers(@javax.annotation.Nullable String pageToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -323,7 +323,7 @@ public class DenyListApi extends BaseApi {
    * @param groupNamesInput List of group names as input (optional)
    * @throws ApiException if fails to make API call
    */
-  public void unblockGroups(GroupNamesInput groupNamesInput) throws ApiException {
+  public void unblockGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput) throws ApiException {
     this.unblockGroups(groupNamesInput, Collections.emptyMap());
   }
 
@@ -335,7 +335,7 @@ public class DenyListApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void unblockGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void unblockGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = groupNamesInput;
     
     // create path and map variables
@@ -389,7 +389,7 @@ public class DenyListApi extends BaseApi {
    * @param blockedUsersInput List of blocked users as input (optional)
    * @throws ApiException if fails to make API call
    */
-  public void unblockUsers(BlockedUsersInput blockedUsersInput) throws ApiException {
+  public void unblockUsers(@javax.annotation.Nullable BlockedUsersInput blockedUsersInput) throws ApiException {
     this.unblockUsers(blockedUsersInput, Collections.emptyMap());
   }
 
@@ -401,7 +401,7 @@ public class DenyListApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void unblockUsers(BlockedUsersInput blockedUsersInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void unblockUsers(@javax.annotation.Nullable BlockedUsersInput blockedUsersInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = blockedUsersInput;
     
     // create path and map variables

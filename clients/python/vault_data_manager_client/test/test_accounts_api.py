@@ -25,7 +25,7 @@ class TestAccountsApi(unittest.TestCase):
         self.api = AccountsApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_create_account(self) -> None:
         """Test case for create_account

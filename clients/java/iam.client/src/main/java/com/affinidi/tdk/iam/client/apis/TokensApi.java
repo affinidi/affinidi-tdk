@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class TokensApi extends BaseApi {
 
   public TokensApi() {
@@ -57,7 +57,7 @@ public class TokensApi extends BaseApi {
    * @return TokenDto
    * @throws ApiException if fails to make API call
    */
-  public TokenDto createToken(CreateTokenInput createTokenInput) throws ApiException {
+  public TokenDto createToken(@javax.annotation.Nonnull CreateTokenInput createTokenInput) throws ApiException {
     return this.createToken(createTokenInput, Collections.emptyMap());
   }
 
@@ -70,7 +70,7 @@ public class TokensApi extends BaseApi {
    * @return TokenDto
    * @throws ApiException if fails to make API call
    */
-  public TokenDto createToken(CreateTokenInput createTokenInput, Map<String, String> additionalHeaders) throws ApiException {
+  public TokenDto createToken(@javax.annotation.Nonnull CreateTokenInput createTokenInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createTokenInput;
     
     // verify the required parameter 'createTokenInput' is set
@@ -130,7 +130,7 @@ public class TokensApi extends BaseApi {
    * @param tokenId  (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteToken(UUID tokenId) throws ApiException {
+  public void deleteToken(@javax.annotation.Nonnull UUID tokenId) throws ApiException {
     this.deleteToken(tokenId, Collections.emptyMap());
   }
 
@@ -142,7 +142,7 @@ public class TokensApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deleteToken(UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
+  public void deleteToken(@javax.annotation.Nonnull UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'tokenId' is set
@@ -203,7 +203,7 @@ public class TokensApi extends BaseApi {
    * @return TokenDto
    * @throws ApiException if fails to make API call
    */
-  public TokenDto getToken(UUID tokenId) throws ApiException {
+  public TokenDto getToken(@javax.annotation.Nonnull UUID tokenId) throws ApiException {
     return this.getToken(tokenId, Collections.emptyMap());
   }
 
@@ -216,7 +216,7 @@ public class TokensApi extends BaseApi {
    * @return TokenDto
    * @throws ApiException if fails to make API call
    */
-  public TokenDto getToken(UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
+  public TokenDto getToken(@javax.annotation.Nonnull UUID tokenId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'tokenId' is set
@@ -280,7 +280,7 @@ public class TokensApi extends BaseApi {
    * @return ProjectWithPolicyList
    * @throws ApiException if fails to make API call
    */
-  public ProjectWithPolicyList listProjectsOfToken(UUID tokenId, Integer limit, String exclusiveStartKey) throws ApiException {
+  public ProjectWithPolicyList listProjectsOfToken(@javax.annotation.Nonnull UUID tokenId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listProjectsOfToken(tokenId, limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -295,7 +295,7 @@ public class TokensApi extends BaseApi {
    * @return ProjectWithPolicyList
    * @throws ApiException if fails to make API call
    */
-  public ProjectWithPolicyList listProjectsOfToken(UUID tokenId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ProjectWithPolicyList listProjectsOfToken(@javax.annotation.Nonnull UUID tokenId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'tokenId' is set
@@ -360,7 +360,7 @@ public class TokensApi extends BaseApi {
    * @return TokenList
    * @throws ApiException if fails to make API call
    */
-  public TokenList listToken(Integer limit, String exclusiveStartKey) throws ApiException {
+  public TokenList listToken(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listToken(limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -374,7 +374,7 @@ public class TokensApi extends BaseApi {
    * @return TokenList
    * @throws ApiException if fails to make API call
    */
-  public TokenList listToken(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public TokenList listToken(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -433,7 +433,7 @@ public class TokensApi extends BaseApi {
    * @return TokenDto
    * @throws ApiException if fails to make API call
    */
-  public TokenDto updateToken(UUID tokenId, UpdateTokenInput updateTokenInput) throws ApiException {
+  public TokenDto updateToken(@javax.annotation.Nonnull UUID tokenId, @javax.annotation.Nonnull UpdateTokenInput updateTokenInput) throws ApiException {
     return this.updateToken(tokenId, updateTokenInput, Collections.emptyMap());
   }
 
@@ -447,7 +447,7 @@ public class TokensApi extends BaseApi {
    * @return TokenDto
    * @throws ApiException if fails to make API call
    */
-  public TokenDto updateToken(UUID tokenId, UpdateTokenInput updateTokenInput, Map<String, String> additionalHeaders) throws ApiException {
+  public TokenDto updateToken(@javax.annotation.Nonnull UUID tokenId, @javax.annotation.Nonnull UpdateTokenInput updateTokenInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateTokenInput;
     
     // verify the required parameter 'tokenId' is set

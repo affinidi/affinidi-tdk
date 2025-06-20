@@ -37,21 +37,21 @@ class ProjectCredentialConfigNotExistError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('ProjectCredentialConfigNotExistError'):
+        if value not in ('ProjectCredentialConfigNotExistError',):
             raise ValueError("must be one of enum values ('ProjectCredentialConfigNotExistError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Credential config is not available for the project'):
+        if value not in ('Credential config is not available for the project',):
             raise ValueError("must be one of enum values ('Credential config is not available for the project')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

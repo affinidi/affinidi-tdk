@@ -37,21 +37,21 @@ class InvalidIssuerWalletError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidIssuerWalletError'):
+        if value not in ('InvalidIssuerWalletError',):
             raise ValueError("must be one of enum values ('InvalidIssuerWalletError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('issuer wallet id is invalid'):
+        if value not in ('issuer wallet id is invalid',):
             raise ValueError("must be one of enum values ('issuer wallet id is invalid')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

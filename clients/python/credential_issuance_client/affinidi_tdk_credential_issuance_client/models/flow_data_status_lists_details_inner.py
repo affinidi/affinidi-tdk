@@ -38,14 +38,14 @@ class FlowDataStatusListsDetailsInner(BaseModel):
     @validator('status_list_purpose')
     def status_list_purpose_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('REVOKED'):
+        if value not in ('REVOKED',):
             raise ValueError("must be one of enum values ('REVOKED')")
         return value
 
     @validator('standard')
     def standard_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('RevocationList2020', 'BitstringStatusListV1'):
+        if value not in ('RevocationList2020', 'BitstringStatusListV1',):
             raise ValueError("must be one of enum values ('RevocationList2020', 'BitstringStatusListV1')")
         return value
 

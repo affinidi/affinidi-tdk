@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsInitiateDataSharingRequestOK.JSON_PROPERTY_CORS_INITIATE_DATA_SHARING_REQUEST_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsInitiateDataSharingRequestOK {
   public static final String JSON_PROPERTY_CORS_INITIATE_DATA_SHARING_REQUEST_OK = "corsInitiateDataSharingRequestOk";
+  @javax.annotation.Nullable
   private String corsInitiateDataSharingRequestOk;
 
   public CorsInitiateDataSharingRequestOK() {
   }
 
-  public CorsInitiateDataSharingRequestOK corsInitiateDataSharingRequestOk(String corsInitiateDataSharingRequestOk) {
+  public CorsInitiateDataSharingRequestOK corsInitiateDataSharingRequestOk(@javax.annotation.Nullable String corsInitiateDataSharingRequestOk) {
     
     this.corsInitiateDataSharingRequestOk = corsInitiateDataSharingRequestOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsInitiateDataSharingRequestOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_INITIATE_DATA_SHARING_REQUEST_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsInitiateDataSharingRequestOk(String corsInitiateDataSharingRequestOk) {
+  public void setCorsInitiateDataSharingRequestOk(@javax.annotation.Nullable String corsInitiateDataSharingRequestOk) {
     this.corsInitiateDataSharingRequestOk = corsInitiateDataSharingRequestOk;
   }
 

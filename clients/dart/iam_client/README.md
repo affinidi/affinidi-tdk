@@ -140,7 +140,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [RightsEnum](doc/RightsEnum.md)
 - [ServiceErrorResponse](doc/ServiceErrorResponse.md)
 - [ServiceErrorResponseDetailsInner](doc/ServiceErrorResponseDetailsInner.md)
-- [TokenAuthenticationMethodDto](doc/TokenAuthenticationMethodDto.md)
 - [TokenDto](doc/TokenDto.md)
 - [TokenList](doc/TokenList.md)
 - [TokenPrivateKeyAuthenticationMethodDto](doc/TokenPrivateKeyAuthenticationMethodDto.md)

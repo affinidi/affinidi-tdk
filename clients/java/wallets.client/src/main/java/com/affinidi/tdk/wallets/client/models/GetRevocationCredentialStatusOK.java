@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   GetRevocationCredentialStatusOK.JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GetRevocationCredentialStatusOK {
   public static final String JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
+  @javax.annotation.Nonnull
   private Object revocationListCredential;
 
   public GetRevocationCredentialStatusOK() {
   }
 
-  public GetRevocationCredentialStatusOK revocationListCredential(Object revocationListCredential) {
+  public GetRevocationCredentialStatusOK revocationListCredential(@javax.annotation.Nonnull Object revocationListCredential) {
     
     this.revocationListCredential = revocationListCredential;
     return this;
@@ -61,7 +62,7 @@ public class GetRevocationCredentialStatusOK {
 
   @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRevocationListCredential(Object revocationListCredential) {
+  public void setRevocationListCredential(@javax.annotation.Nonnull Object revocationListCredential) {
     this.revocationListCredential = revocationListCredential;
   }
 

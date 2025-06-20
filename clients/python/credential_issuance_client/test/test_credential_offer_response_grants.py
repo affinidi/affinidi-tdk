@@ -37,7 +37,7 @@ class TestCredentialOfferResponseGrants(unittest.TestCase):
         model = CredentialOfferResponseGrants()  # noqa: E501
         if include_optional:
             return CredentialOfferResponseGrants(
-                urnietfparamsoauthgrant_typepre_authorized_code = affinidi_tdk_credential_issuance_client.models.credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code.CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code(
+                urn_ietf_params_oauth_grant_type_pre_authorized_code = affinidi_tdk_credential_issuance_client.models.credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code.CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code(
                     pre_authorized_code = '', 
                     tx_code = affinidi_tdk_credential_issuance_client.models.credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code.CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code(
                         length = 1.337, 
@@ -46,7 +46,7 @@ class TestCredentialOfferResponseGrants(unittest.TestCase):
             )
         else:
             return CredentialOfferResponseGrants(
-                urnietfparamsoauthgrant_typepre_authorized_code = affinidi_tdk_credential_issuance_client.models.credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code.CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code(
+                urn_ietf_params_oauth_grant_type_pre_authorized_code = affinidi_tdk_credential_issuance_client.models.credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code.CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code(
                     pre_authorized_code = '', 
                     tx_code = affinidi_tdk_credential_issuance_client.models.credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code.CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code(
                         length = 1.337, 

@@ -38,28 +38,33 @@ import java.util.StringJoiner;
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_REDIRECT_URI,
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_CLIENT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_GRANT_TYPE = "grant_type";
+  @javax.annotation.Nonnull
   private String grantType;
 
   public static final String JSON_PROPERTY_CODE = "code";
+  @javax.annotation.Nullable
   private String code;
 
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refresh_token";
+  @javax.annotation.Nullable
   private String refreshToken;
 
   public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
+  @javax.annotation.Nullable
   private String redirectUri;
 
   public static final String JSON_PROPERTY_CLIENT_ID = "client_id";
+  @javax.annotation.Nullable
   private String clientId;
 
   public ConsumerAuthTokenEndpointInput() {
 
   }
 
-  public ConsumerAuthTokenEndpointInput grantType(String grantType) {
+  public ConsumerAuthTokenEndpointInput grantType(@javax.annotation.Nonnull String grantType) {
     
     this.grantType = grantType;
     return this;
@@ -80,11 +85,11 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGrantType(String grantType) {
+  public void setGrantType(@javax.annotation.Nonnull String grantType) {
     this.grantType = grantType;
   }
 
-  public ConsumerAuthTokenEndpointInput code(String code) {
+  public ConsumerAuthTokenEndpointInput code(@javax.annotation.Nullable String code) {
     
     this.code = code;
     return this;
@@ -105,11 +110,11 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCode(String code) {
+  public void setCode(@javax.annotation.Nullable String code) {
     this.code = code;
   }
 
-  public ConsumerAuthTokenEndpointInput refreshToken(String refreshToken) {
+  public ConsumerAuthTokenEndpointInput refreshToken(@javax.annotation.Nullable String refreshToken) {
     
     this.refreshToken = refreshToken;
     return this;
@@ -130,11 +135,11 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefreshToken(String refreshToken) {
+  public void setRefreshToken(@javax.annotation.Nullable String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
-  public ConsumerAuthTokenEndpointInput redirectUri(String redirectUri) {
+  public ConsumerAuthTokenEndpointInput redirectUri(@javax.annotation.Nullable String redirectUri) {
     
     this.redirectUri = redirectUri;
     return this;
@@ -155,11 +160,11 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRedirectUri(String redirectUri) {
+  public void setRedirectUri(@javax.annotation.Nullable String redirectUri) {
     this.redirectUri = redirectUri;
   }
 
-  public ConsumerAuthTokenEndpointInput clientId(String clientId) {
+  public ConsumerAuthTokenEndpointInput clientId(@javax.annotation.Nullable String clientId) {
     
     this.clientId = clientId;
     return this;
@@ -180,7 +185,7 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientId(String clientId) {
+  public void setClientId(@javax.annotation.Nullable String clientId) {
     this.clientId = clientId;
   }
 

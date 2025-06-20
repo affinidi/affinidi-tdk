@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AllowListApi extends BaseApi {
 
   public AllowListApi() {
@@ -49,7 +49,7 @@ public class AllowListApi extends BaseApi {
    * @param groupNamesInput List of group names as input (optional)
    * @throws ApiException if fails to make API call
    */
-  public void allowGroups(GroupNamesInput groupNamesInput) throws ApiException {
+  public void allowGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput) throws ApiException {
     this.allowGroups(groupNamesInput, Collections.emptyMap());
   }
 
@@ -61,7 +61,7 @@ public class AllowListApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void allowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void allowGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = groupNamesInput;
     
     // create path and map variables
@@ -115,7 +115,7 @@ public class AllowListApi extends BaseApi {
    * @param groupNamesInput List of group names as input (optional)
    * @throws ApiException if fails to make API call
    */
-  public void disallowGroups(GroupNamesInput groupNamesInput) throws ApiException {
+  public void disallowGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput) throws ApiException {
     this.disallowGroups(groupNamesInput, Collections.emptyMap());
   }
 
@@ -127,7 +127,7 @@ public class AllowListApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void disallowGroups(GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void disallowGroups(@javax.annotation.Nullable GroupNamesInput groupNamesInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = groupNamesInput;
     
     // create path and map variables
@@ -182,7 +182,7 @@ public class AllowListApi extends BaseApi {
    * @return GroupNames
    * @throws ApiException if fails to make API call
    */
-  public GroupNames listAllowedGroups(String pageToken) throws ApiException {
+  public GroupNames listAllowedGroups(@javax.annotation.Nullable String pageToken) throws ApiException {
     return this.listAllowedGroups(pageToken, Collections.emptyMap());
   }
 
@@ -195,7 +195,7 @@ public class AllowListApi extends BaseApi {
    * @return GroupNames
    * @throws ApiException if fails to make API call
    */
-  public GroupNames listAllowedGroups(String pageToken, Map<String, String> additionalHeaders) throws ApiException {
+  public GroupNames listAllowedGroups(@javax.annotation.Nullable String pageToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables

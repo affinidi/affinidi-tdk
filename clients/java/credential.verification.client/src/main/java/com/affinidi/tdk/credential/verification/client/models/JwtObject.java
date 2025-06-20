@@ -35,15 +35,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   JwtObject.JSON_PROPERTY_ALG
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class JwtObject {
   public static final String JSON_PROPERTY_ALG = "alg";
+  @javax.annotation.Nonnull
   private List<String> alg = new ArrayList<>();
 
   public JwtObject() {
   }
 
-  public JwtObject alg(List<String> alg) {
+  public JwtObject alg(@javax.annotation.Nonnull List<String> alg) {
     
     this.alg = alg;
     return this;
@@ -72,7 +73,7 @@ public class JwtObject {
 
   @JsonProperty(JSON_PROPERTY_ALG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAlg(List<String> alg) {
+  public void setAlg(@javax.annotation.Nonnull List<String> alg) {
     this.alg = alg;
   }
 

@@ -37,27 +37,32 @@ import java.util.StringJoiner;
   PrepareRequest.JSON_PROPERTY_TOKEN_MAX_AGE,
   PrepareRequest.JSON_PROPERTY_AUDIENCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PrepareRequest {
   public static final String JSON_PROPERTY_CONNECTION_CLIENT_ID = "connectionClientId";
+  @javax.annotation.Nonnull
   private String connectionClientId;
 
   public static final String JSON_PROPERTY_QUERY_ID = "queryId";
+  @javax.annotation.Nonnull
   private String queryId;
 
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+  @javax.annotation.Nonnull
   private String correlationId;
 
   public static final String JSON_PROPERTY_TOKEN_MAX_AGE = "tokenMaxAge";
+  @javax.annotation.Nullable
   private BigDecimal tokenMaxAge;
 
   public static final String JSON_PROPERTY_AUDIENCE = "audience";
+  @javax.annotation.Nullable
   private String audience;
 
   public PrepareRequest() {
   }
 
-  public PrepareRequest connectionClientId(String connectionClientId) {
+  public PrepareRequest connectionClientId(@javax.annotation.Nonnull String connectionClientId) {
     
     this.connectionClientId = connectionClientId;
     return this;
@@ -78,11 +83,11 @@ public class PrepareRequest {
 
   @JsonProperty(JSON_PROPERTY_CONNECTION_CLIENT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConnectionClientId(String connectionClientId) {
+  public void setConnectionClientId(@javax.annotation.Nonnull String connectionClientId) {
     this.connectionClientId = connectionClientId;
   }
 
-  public PrepareRequest queryId(String queryId) {
+  public PrepareRequest queryId(@javax.annotation.Nonnull String queryId) {
     
     this.queryId = queryId;
     return this;
@@ -103,11 +108,11 @@ public class PrepareRequest {
 
   @JsonProperty(JSON_PROPERTY_QUERY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setQueryId(String queryId) {
+  public void setQueryId(@javax.annotation.Nonnull String queryId) {
     this.queryId = queryId;
   }
 
-  public PrepareRequest correlationId(String correlationId) {
+  public PrepareRequest correlationId(@javax.annotation.Nonnull String correlationId) {
     
     this.correlationId = correlationId;
     return this;
@@ -128,11 +133,11 @@ public class PrepareRequest {
 
   @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCorrelationId(String correlationId) {
+  public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
   }
 
-  public PrepareRequest tokenMaxAge(BigDecimal tokenMaxAge) {
+  public PrepareRequest tokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     
     this.tokenMaxAge = tokenMaxAge;
     return this;
@@ -153,11 +158,11 @@ public class PrepareRequest {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenMaxAge(BigDecimal tokenMaxAge) {
+  public void setTokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
   }
 
-  public PrepareRequest audience(String audience) {
+  public PrepareRequest audience(@javax.annotation.Nullable String audience) {
     
     this.audience = audience;
     return this;
@@ -178,7 +183,7 @@ public class PrepareRequest {
 
   @JsonProperty(JSON_PROPERTY_AUDIENCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAudience(String audience) {
+  public void setAudience(@javax.annotation.Nullable String audience) {
     this.audience = audience;
   }
 

@@ -25,7 +25,7 @@ class TestDefaultApi(unittest.TestCase):
         self.api = DefaultApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_list_logged_consents(self) -> None:
         """Test case for list_logged_consents

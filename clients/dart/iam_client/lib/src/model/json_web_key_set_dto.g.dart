@@ -12,16 +12,19 @@ class _$JsonWebKeySetDto extends JsonWebKeySetDto {
 
   factory _$JsonWebKeySetDto(
           [void Function(JsonWebKeySetDtoBuilder)? updates]) =>
-      (JsonWebKeySetDtoBuilder()..update(updates))._build();
+      (new JsonWebKeySetDtoBuilder()..update(updates))._build();
 
-  _$JsonWebKeySetDto._({required this.keys}) : super._();
+  _$JsonWebKeySetDto._({required this.keys}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(keys, r'JsonWebKeySetDto', 'keys');
+  }
+
   @override
   JsonWebKeySetDto rebuild(void Function(JsonWebKeySetDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   JsonWebKeySetDtoBuilder toBuilder() =>
-      JsonWebKeySetDtoBuilder()..replace(this);
+      new JsonWebKeySetDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -50,7 +53,7 @@ class JsonWebKeySetDtoBuilder
 
   ListBuilder<JsonWebKeyDto>? _keys;
   ListBuilder<JsonWebKeyDto> get keys =>
-      _$this._keys ??= ListBuilder<JsonWebKeyDto>();
+      _$this._keys ??= new ListBuilder<JsonWebKeyDto>();
   set keys(ListBuilder<JsonWebKeyDto>? keys) => _$this._keys = keys;
 
   JsonWebKeySetDtoBuilder() {
@@ -68,6 +71,7 @@ class JsonWebKeySetDtoBuilder
 
   @override
   void replace(JsonWebKeySetDto other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$JsonWebKeySetDto;
   }
 
@@ -83,7 +87,7 @@ class JsonWebKeySetDtoBuilder
     _$JsonWebKeySetDto _$result;
     try {
       _$result = _$v ??
-          _$JsonWebKeySetDto._(
+          new _$JsonWebKeySetDto._(
             keys: keys.build(),
           );
     } catch (_) {
@@ -92,7 +96,7 @@ class JsonWebKeySetDtoBuilder
         _$failedField = 'keys';
         keys.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'JsonWebKeySetDto', _$failedField, e.toString());
       }
       rethrow;

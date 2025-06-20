@@ -41,30 +41,36 @@ import java.util.StringJoiner;
   Error.JSON_PROPERTY_DEBUG_ID,
   Error.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Error {
   public static final String JSON_PROPERTY_ERROR_CODE = "errorCode";
+  @javax.annotation.Nullable
   private String errorCode;
 
   public static final String JSON_PROPERTY_ERROR_MESSAGE = "errorMessage";
+  @javax.annotation.Nullable
   private String errorMessage;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nullable
   private String message;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DEBUG_ID = "debugId";
+  @javax.annotation.Nullable
   private String debugId;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
   private List<ErrorDetail> details = new ArrayList<>();
 
   public Error() {
   }
 
-  public Error errorCode(String errorCode) {
+  public Error errorCode(@javax.annotation.Nullable String errorCode) {
     
     this.errorCode = errorCode;
     return this;
@@ -85,11 +91,11 @@ public class Error {
 
   @JsonProperty(JSON_PROPERTY_ERROR_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorCode(String errorCode) {
+  public void setErrorCode(@javax.annotation.Nullable String errorCode) {
     this.errorCode = errorCode;
   }
 
-  public Error errorMessage(String errorMessage) {
+  public Error errorMessage(@javax.annotation.Nullable String errorMessage) {
     
     this.errorMessage = errorMessage;
     return this;
@@ -110,11 +116,11 @@ public class Error {
 
   @JsonProperty(JSON_PROPERTY_ERROR_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorMessage(String errorMessage) {
+  public void setErrorMessage(@javax.annotation.Nullable String errorMessage) {
     this.errorMessage = errorMessage;
   }
 
-  public Error message(String message) {
+  public Error message(@javax.annotation.Nullable String message) {
     
     this.message = message;
     return this;
@@ -135,11 +141,11 @@ public class Error {
 
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nullable String message) {
     this.message = message;
   }
 
-  public Error name(String name) {
+  public Error name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -160,11 +166,11 @@ public class Error {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public Error debugId(String debugId) {
+  public Error debugId(@javax.annotation.Nullable String debugId) {
     
     this.debugId = debugId;
     return this;
@@ -185,11 +191,11 @@ public class Error {
 
   @JsonProperty(JSON_PROPERTY_DEBUG_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDebugId(String debugId) {
+  public void setDebugId(@javax.annotation.Nullable String debugId) {
     this.debugId = debugId;
   }
 
-  public Error details(List<ErrorDetail> details) {
+  public Error details(@javax.annotation.Nullable List<ErrorDetail> details) {
     
     this.details = details;
     return this;
@@ -218,7 +224,7 @@ public class Error {
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(List<ErrorDetail> details) {
+  public void setDetails(@javax.annotation.Nullable List<ErrorDetail> details) {
     this.details = details;
   }
 

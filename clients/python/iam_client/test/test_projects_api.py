@@ -25,7 +25,7 @@ class TestProjectsApi(unittest.TestCase):
         self.api = ProjectsApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_add_principal_to_project(self) -> None:
         """Test case for add_principal_to_project

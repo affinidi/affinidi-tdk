@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   LoginSessionForIDPInput.JSON_PROPERTY_LOGIN_CHALLENGE,
   LoginSessionForIDPInput.JSON_PROPERTY_CLIENT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LoginSessionForIDPInput {
   public static final String JSON_PROPERTY_LOGIN_CHALLENGE = "loginChallenge";
+  @javax.annotation.Nonnull
   private String loginChallenge;
 
   public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
+  @javax.annotation.Nonnull
   private String clientId;
 
   public LoginSessionForIDPInput() {
   }
 
-  public LoginSessionForIDPInput loginChallenge(String loginChallenge) {
+  public LoginSessionForIDPInput loginChallenge(@javax.annotation.Nonnull String loginChallenge) {
     
     this.loginChallenge = loginChallenge;
     return this;
@@ -65,11 +67,11 @@ public class LoginSessionForIDPInput {
 
   @JsonProperty(JSON_PROPERTY_LOGIN_CHALLENGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLoginChallenge(String loginChallenge) {
+  public void setLoginChallenge(@javax.annotation.Nonnull String loginChallenge) {
     this.loginChallenge = loginChallenge;
   }
 
-  public LoginSessionForIDPInput clientId(String clientId) {
+  public LoginSessionForIDPInput clientId(@javax.annotation.Nonnull String clientId) {
     
     this.clientId = clientId;
     return this;
@@ -90,7 +92,7 @@ public class LoginSessionForIDPInput {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setClientId(String clientId) {
+  public void setClientId(@javax.annotation.Nonnull String clientId) {
     this.clientId = clientId;
   }
 

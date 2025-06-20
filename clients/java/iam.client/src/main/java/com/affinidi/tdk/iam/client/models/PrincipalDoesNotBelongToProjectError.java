@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,13 +40,13 @@ import java.util.StringJoiner;
   PrincipalDoesNotBelongToProjectError.JSON_PROPERTY_TRACE_ID,
   PrincipalDoesNotBelongToProjectError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PrincipalDoesNotBelongToProjectError {
   /**
    * Gets or Sets name
    */
   public enum NameEnum {
-    PRINCIPAL_DOES_NOT_BELONG_TO_PROJECT_ERROR("PrincipalDoesNotBelongToProjectError");
+    PRINCIPAL_DOES_NOT_BELONG_TO_PROJECT_ERROR(String.valueOf("PrincipalDoesNotBelongToProjectError"));
 
     private String value;
 
@@ -77,13 +76,14 @@ public class PrincipalDoesNotBelongToProjectError {
   }
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private NameEnum name;
 
   /**
    * Gets or Sets message
    */
   public enum MessageEnum {
-    PRINCIPAL_DOES_NOT_BELONG_TO_THE_GIVEN_PROJECT("Principal does not belong to the given project");
+    PRINCIPAL_DOES_NOT_BELONG_TO_THE_GIVEN_PROJECT(String.valueOf("Principal does not belong to the given project"));
 
     private String value;
 
@@ -113,22 +113,23 @@ public class PrincipalDoesNotBelongToProjectError {
   }
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nonnull
   private MessageEnum message;
 
   /**
    * Gets or Sets httpStatusCode
    */
   public enum HttpStatusCodeEnum {
-    NUMBER_403(new BigDecimal("403"));
+    NUMBER_403(Integer.valueOf(403));
 
-    private BigDecimal value;
+    private Integer value;
 
-    HttpStatusCodeEnum(BigDecimal value) {
+    HttpStatusCodeEnum(Integer value) {
       this.value = value;
     }
 
     @JsonValue
-    public BigDecimal getValue() {
+    public Integer getValue() {
       return value;
     }
 
@@ -138,7 +139,7 @@ public class PrincipalDoesNotBelongToProjectError {
     }
 
     @JsonCreator
-    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+    public static HttpStatusCodeEnum fromValue(Integer value) {
       for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
@@ -149,18 +150,21 @@ public class PrincipalDoesNotBelongToProjectError {
   }
 
   public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  @javax.annotation.Nonnull
   private HttpStatusCodeEnum httpStatusCode;
 
   public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  @javax.annotation.Nonnull
   private String traceId;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
   private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
 
   public PrincipalDoesNotBelongToProjectError() {
   }
 
-  public PrincipalDoesNotBelongToProjectError name(NameEnum name) {
+  public PrincipalDoesNotBelongToProjectError name(@javax.annotation.Nonnull NameEnum name) {
     
     this.name = name;
     return this;
@@ -181,11 +185,11 @@ public class PrincipalDoesNotBelongToProjectError {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(NameEnum name) {
+  public void setName(@javax.annotation.Nonnull NameEnum name) {
     this.name = name;
   }
 
-  public PrincipalDoesNotBelongToProjectError message(MessageEnum message) {
+  public PrincipalDoesNotBelongToProjectError message(@javax.annotation.Nonnull MessageEnum message) {
     
     this.message = message;
     return this;
@@ -206,11 +210,11 @@ public class PrincipalDoesNotBelongToProjectError {
 
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMessage(MessageEnum message) {
+  public void setMessage(@javax.annotation.Nonnull MessageEnum message) {
     this.message = message;
   }
 
-  public PrincipalDoesNotBelongToProjectError httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public PrincipalDoesNotBelongToProjectError httpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     
     this.httpStatusCode = httpStatusCode;
     return this;
@@ -231,11 +235,11 @@ public class PrincipalDoesNotBelongToProjectError {
 
   @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public void setHttpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
   }
 
-  public PrincipalDoesNotBelongToProjectError traceId(String traceId) {
+  public PrincipalDoesNotBelongToProjectError traceId(@javax.annotation.Nonnull String traceId) {
     
     this.traceId = traceId;
     return this;
@@ -256,11 +260,11 @@ public class PrincipalDoesNotBelongToProjectError {
 
   @JsonProperty(JSON_PROPERTY_TRACE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTraceId(String traceId) {
+  public void setTraceId(@javax.annotation.Nonnull String traceId) {
     this.traceId = traceId;
   }
 
-  public PrincipalDoesNotBelongToProjectError details(List<ServiceErrorResponseDetailsInner> details) {
+  public PrincipalDoesNotBelongToProjectError details(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
     
     this.details = details;
     return this;
@@ -289,7 +293,7 @@ public class PrincipalDoesNotBelongToProjectError {
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(List<ServiceErrorResponseDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
     this.details = details;
   }
 

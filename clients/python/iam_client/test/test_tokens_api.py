@@ -25,7 +25,7 @@ class TestTokensApi(unittest.TestCase):
         self.api = TokensApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_create_token(self) -> None:
         """Test case for create_token

@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WellKnownApi extends BaseApi {
 
   public WellKnownApi() {
@@ -48,7 +48,7 @@ public class WellKnownApi extends BaseApi {
    * @return WellKnownOpenIdCredentialIssuerResponse
    * @throws ApiException if fails to make API call
    */
-  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId) throws ApiException {
+  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(@javax.annotation.Nonnull String projectId) throws ApiException {
     return this.getWellKnownOpenIdCredentialIssuer(projectId, Collections.emptyMap());
   }
 
@@ -61,7 +61,7 @@ public class WellKnownApi extends BaseApi {
    * @return WellKnownOpenIdCredentialIssuerResponse
    * @throws ApiException if fails to make API call
    */
-  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public WellKnownOpenIdCredentialIssuerResponse getWellKnownOpenIdCredentialIssuer(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set

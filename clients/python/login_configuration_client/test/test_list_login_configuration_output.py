@@ -38,14 +38,68 @@ class TestListLoginConfigurationOutput(unittest.TestCase):
         if include_optional:
             return ListLoginConfigurationOutput(
                 configurations = [
-                    { }
+                    affinidi_tdk_login_configuration_client.models.login_configuration_object.LoginConfigurationObject(
+                        ari = '', 
+                        configuration_id = '', 
+                        project_id = '', 
+                        name = '', 
+                        redirect_uris = [
+                            ''
+                            ], 
+                        post_logout_redirect_uris = [
+                            ''
+                            ], 
+                        scope = '', 
+                        client_id = '', 
+                        creation_date = '', 
+                        vp_definition = '', 
+                        presentation_definition = affinidi_tdk_login_configuration_client.models.presentation_definition.presentationDefinition(), 
+                        id_token_mapping = [
+                            affinidi_tdk_login_configuration_client.models.id_token_mapping_item.IdTokenMappingItem(
+                                source_field = '', 
+                                id_token_claim = '', 
+                                input_descriptor_id = '', )
+                            ], 
+                        client_metadata = affinidi_tdk_login_configuration_client.models.login_configuration_client_metadata_output.LoginConfigurationClientMetadataOutput(
+                            name = '', 
+                            origin = '', 
+                            logo = '', 
+                            domain_verified = True, ), 
+                        token_endpoint_auth_method = 'client_secret_basic', )
                     ],
                 last_evaluated_key = ''
             )
         else:
             return ListLoginConfigurationOutput(
                 configurations = [
-                    { }
+                    affinidi_tdk_login_configuration_client.models.login_configuration_object.LoginConfigurationObject(
+                        ari = '', 
+                        configuration_id = '', 
+                        project_id = '', 
+                        name = '', 
+                        redirect_uris = [
+                            ''
+                            ], 
+                        post_logout_redirect_uris = [
+                            ''
+                            ], 
+                        scope = '', 
+                        client_id = '', 
+                        creation_date = '', 
+                        vp_definition = '', 
+                        presentation_definition = affinidi_tdk_login_configuration_client.models.presentation_definition.presentationDefinition(), 
+                        id_token_mapping = [
+                            affinidi_tdk_login_configuration_client.models.id_token_mapping_item.IdTokenMappingItem(
+                                source_field = '', 
+                                id_token_claim = '', 
+                                input_descriptor_id = '', )
+                            ], 
+                        client_metadata = affinidi_tdk_login_configuration_client.models.login_configuration_client_metadata_output.LoginConfigurationClientMetadataOutput(
+                            name = '', 
+                            origin = '', 
+                            logo = '', 
+                            domain_verified = True, ), 
+                        token_endpoint_auth_method = 'client_secret_basic', )
                     ],
         )
         """

@@ -39,21 +39,24 @@ import java.util.StringJoiner;
   GroupUserMappingsList.JSON_PROPERTY_LAST_EVALUATED_KEY,
   GroupUserMappingsList.JSON_PROPERTY_TOTAL_USER_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupUserMappingsList {
   public static final String JSON_PROPERTY_USERS = "users";
+  @javax.annotation.Nullable
   private List<GroupUserMappingDto> users = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public static final String JSON_PROPERTY_TOTAL_USER_COUNT = "totalUserCount";
+  @javax.annotation.Nullable
   private BigDecimal totalUserCount;
 
   public GroupUserMappingsList() {
   }
 
-  public GroupUserMappingsList users(List<GroupUserMappingDto> users) {
+  public GroupUserMappingsList users(@javax.annotation.Nullable List<GroupUserMappingDto> users) {
     
     this.users = users;
     return this;
@@ -82,11 +85,11 @@ public class GroupUserMappingsList {
 
   @JsonProperty(JSON_PROPERTY_USERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUsers(List<GroupUserMappingDto> users) {
+  public void setUsers(@javax.annotation.Nullable List<GroupUserMappingDto> users) {
     this.users = users;
   }
 
-  public GroupUserMappingsList lastEvaluatedKey(String lastEvaluatedKey) {
+  public GroupUserMappingsList lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -107,11 +110,11 @@ public class GroupUserMappingsList {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 
-  public GroupUserMappingsList totalUserCount(BigDecimal totalUserCount) {
+  public GroupUserMappingsList totalUserCount(@javax.annotation.Nullable BigDecimal totalUserCount) {
     
     this.totalUserCount = totalUserCount;
     return this;
@@ -132,7 +135,7 @@ public class GroupUserMappingsList {
 
   @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTotalUserCount(BigDecimal totalUserCount) {
+  public void setTotalUserCount(@javax.annotation.Nullable BigDecimal totalUserCount) {
     this.totalUserCount = totalUserCount;
   }
 

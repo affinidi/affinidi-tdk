@@ -37,21 +37,21 @@ class PublicKeyCannotBeResolvedFromDidError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('PublicKeyCannotBeResolvedFromDidError'):
+        if value not in ('PublicKeyCannotBeResolvedFromDidError',):
             raise ValueError("must be one of enum values ('PublicKeyCannotBeResolvedFromDidError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Unable to resolve DID method. Invalid public key'):
+        if value not in ('Unable to resolve DID method. Invalid public key',):
             raise ValueError("must be one of enum values ('Unable to resolve DID method. Invalid public key')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsAwsExchangeCredentialsProjectTokenOK.JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_PROJECT_TOKEN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsAwsExchangeCredentialsProjectTokenOK {
   public static final String JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_PROJECT_TOKEN_OK = "corsAwsExchangeCredentialsProjectTokenOk";
+  @javax.annotation.Nullable
   private String corsAwsExchangeCredentialsProjectTokenOk;
 
   public CorsAwsExchangeCredentialsProjectTokenOK() {
   }
 
-  public CorsAwsExchangeCredentialsProjectTokenOK corsAwsExchangeCredentialsProjectTokenOk(String corsAwsExchangeCredentialsProjectTokenOk) {
+  public CorsAwsExchangeCredentialsProjectTokenOK corsAwsExchangeCredentialsProjectTokenOk(@javax.annotation.Nullable String corsAwsExchangeCredentialsProjectTokenOk) {
     
     this.corsAwsExchangeCredentialsProjectTokenOk = corsAwsExchangeCredentialsProjectTokenOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsAwsExchangeCredentialsProjectTokenOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_AWS_EXCHANGE_CREDENTIALS_PROJECT_TOKEN_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsAwsExchangeCredentialsProjectTokenOk(String corsAwsExchangeCredentialsProjectTokenOk) {
+  public void setCorsAwsExchangeCredentialsProjectTokenOk(@javax.annotation.Nullable String corsAwsExchangeCredentialsProjectTokenOk) {
     this.corsAwsExchangeCredentialsProjectTokenOk = corsAwsExchangeCredentialsProjectTokenOk;
   }
 

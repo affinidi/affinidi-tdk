@@ -25,7 +25,7 @@ class TestGroupApi(unittest.TestCase):
         self.api = GroupApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_add_user_to_group(self) -> None:
         """Test case for add_user_to_group

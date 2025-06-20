@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   CredentialRequirements.JSON_PROPERTY_TYPE,
   CredentialRequirements.JSON_PROPERTY_CONSTRAINTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialRequirements {
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private List<String> type = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
+  @javax.annotation.Nullable
   private CredentialRequirementsConstraints constraints;
 
   public CredentialRequirements() {
   }
 
-  public CredentialRequirements type(List<String> type) {
+  public CredentialRequirements type(@javax.annotation.Nonnull List<String> type) {
     
     this.type = type;
     return this;
@@ -77,11 +79,11 @@ public class CredentialRequirements {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(List<String> type) {
+  public void setType(@javax.annotation.Nonnull List<String> type) {
     this.type = type;
   }
 
-  public CredentialRequirements constraints(CredentialRequirementsConstraints constraints) {
+  public CredentialRequirements constraints(@javax.annotation.Nullable CredentialRequirementsConstraints constraints) {
     
     this.constraints = constraints;
     return this;
@@ -102,7 +104,7 @@ public class CredentialRequirements {
 
   @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConstraints(CredentialRequirementsConstraints constraints) {
+  public void setConstraints(@javax.annotation.Nullable CredentialRequirementsConstraints constraints) {
     this.constraints = constraints;
   }
 

@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   CreateGroupInput.JSON_PROPERTY_NAME,
   CreateGroupInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateGroupInput {
   public static final String JSON_PROPERTY_GROUP_NAME = "groupName";
+  @javax.annotation.Nonnull
   private String groupName;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public CreateGroupInput() {
   }
 
-  public CreateGroupInput groupName(String groupName) {
+  public CreateGroupInput groupName(@javax.annotation.Nonnull String groupName) {
     
     this.groupName = groupName;
     return this;
@@ -69,11 +72,11 @@ public class CreateGroupInput {
 
   @JsonProperty(JSON_PROPERTY_GROUP_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGroupName(String groupName) {
+  public void setGroupName(@javax.annotation.Nonnull String groupName) {
     this.groupName = groupName;
   }
 
-  public CreateGroupInput name(String name) {
+  public CreateGroupInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -94,11 +97,11 @@ public class CreateGroupInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public CreateGroupInput description(String description) {
+  public CreateGroupInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -119,7 +122,7 @@ public class CreateGroupInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

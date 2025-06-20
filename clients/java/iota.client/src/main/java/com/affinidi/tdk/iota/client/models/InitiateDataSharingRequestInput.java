@@ -39,33 +39,39 @@ import java.util.StringJoiner;
   InitiateDataSharingRequestInput.JSON_PROPERTY_CONFIGURATION_ID,
   InitiateDataSharingRequestInput.JSON_PROPERTY_MODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class InitiateDataSharingRequestInput {
   public static final String JSON_PROPERTY_QUERY_ID = "queryId";
+  @javax.annotation.Nonnull
   private String queryId;
 
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+  @javax.annotation.Nonnull
   private String correlationId;
 
   public static final String JSON_PROPERTY_TOKEN_MAX_AGE = "tokenMaxAge";
+  @javax.annotation.Nullable
   private BigDecimal tokenMaxAge;
 
   public static final String JSON_PROPERTY_NONCE = "nonce";
+  @javax.annotation.Nonnull
   private String nonce;
 
   public static final String JSON_PROPERTY_REDIRECT_URI = "redirectUri";
+  @javax.annotation.Nonnull
   private String redirectUri;
 
   public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
+  @javax.annotation.Nonnull
   private String configurationId;
 
   /**
    * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
    */
   public enum ModeEnum {
-    REDIRECT("redirect"),
+    REDIRECT(String.valueOf("redirect")),
     
-    WEBSOCKET("websocket");
+    WEBSOCKET(String.valueOf("websocket"));
 
     private String value;
 
@@ -95,12 +101,13 @@ public class InitiateDataSharingRequestInput {
   }
 
   public static final String JSON_PROPERTY_MODE = "mode";
+  @javax.annotation.Nonnull
   private ModeEnum mode;
 
   public InitiateDataSharingRequestInput() {
   }
 
-  public InitiateDataSharingRequestInput queryId(String queryId) {
+  public InitiateDataSharingRequestInput queryId(@javax.annotation.Nonnull String queryId) {
     
     this.queryId = queryId;
     return this;
@@ -121,11 +128,11 @@ public class InitiateDataSharingRequestInput {
 
   @JsonProperty(JSON_PROPERTY_QUERY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setQueryId(String queryId) {
+  public void setQueryId(@javax.annotation.Nonnull String queryId) {
     this.queryId = queryId;
   }
 
-  public InitiateDataSharingRequestInput correlationId(String correlationId) {
+  public InitiateDataSharingRequestInput correlationId(@javax.annotation.Nonnull String correlationId) {
     
     this.correlationId = correlationId;
     return this;
@@ -146,11 +153,11 @@ public class InitiateDataSharingRequestInput {
 
   @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCorrelationId(String correlationId) {
+  public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
   }
 
-  public InitiateDataSharingRequestInput tokenMaxAge(BigDecimal tokenMaxAge) {
+  public InitiateDataSharingRequestInput tokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     
     this.tokenMaxAge = tokenMaxAge;
     return this;
@@ -171,11 +178,11 @@ public class InitiateDataSharingRequestInput {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenMaxAge(BigDecimal tokenMaxAge) {
+  public void setTokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
   }
 
-  public InitiateDataSharingRequestInput nonce(String nonce) {
+  public InitiateDataSharingRequestInput nonce(@javax.annotation.Nonnull String nonce) {
     
     this.nonce = nonce;
     return this;
@@ -196,11 +203,11 @@ public class InitiateDataSharingRequestInput {
 
   @JsonProperty(JSON_PROPERTY_NONCE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNonce(String nonce) {
+  public void setNonce(@javax.annotation.Nonnull String nonce) {
     this.nonce = nonce;
   }
 
-  public InitiateDataSharingRequestInput redirectUri(String redirectUri) {
+  public InitiateDataSharingRequestInput redirectUri(@javax.annotation.Nonnull String redirectUri) {
     
     this.redirectUri = redirectUri;
     return this;
@@ -221,11 +228,11 @@ public class InitiateDataSharingRequestInput {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRedirectUri(String redirectUri) {
+  public void setRedirectUri(@javax.annotation.Nonnull String redirectUri) {
     this.redirectUri = redirectUri;
   }
 
-  public InitiateDataSharingRequestInput configurationId(String configurationId) {
+  public InitiateDataSharingRequestInput configurationId(@javax.annotation.Nonnull String configurationId) {
     
     this.configurationId = configurationId;
     return this;
@@ -246,11 +253,11 @@ public class InitiateDataSharingRequestInput {
 
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfigurationId(String configurationId) {
+  public void setConfigurationId(@javax.annotation.Nonnull String configurationId) {
     this.configurationId = configurationId;
   }
 
-  public InitiateDataSharingRequestInput mode(ModeEnum mode) {
+  public InitiateDataSharingRequestInput mode(@javax.annotation.Nonnull ModeEnum mode) {
     
     this.mode = mode;
     return this;
@@ -271,7 +278,7 @@ public class InitiateDataSharingRequestInput {
 
   @JsonProperty(JSON_PROPERTY_MODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMode(ModeEnum mode) {
+  public void setMode(@javax.annotation.Nonnull ModeEnum mode) {
     this.mode = mode;
   }
 

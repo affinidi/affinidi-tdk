@@ -48,54 +48,68 @@ import java.util.StringJoiner;
   ConsumerMetadataDto.JSON_PROPERTY_TYPE,
   ConsumerMetadataDto.JSON_PROPERTY_CONSUMED_FILE_STORAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConsumerMetadataDto {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
+  @javax.annotation.Nonnull
   private String nodeId;
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private NodeStatus status;
 
   public static final String JSON_PROPERTY_FILE_COUNT = "fileCount";
+  @javax.annotation.Nullable
   private BigDecimal fileCount;
 
   public static final String JSON_PROPERTY_FOLDER_COUNT = "folderCount";
+  @javax.annotation.Nullable
   private BigDecimal folderCount;
 
   public static final String JSON_PROPERTY_PROFILE_COUNT = "profileCount";
+  @javax.annotation.Nullable
   private BigDecimal profileCount;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_CONSUMER_ID = "consumerId";
+  @javax.annotation.Nonnull
   private String consumerId;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nonnull
   private String createdAt;
 
   public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
+  @javax.annotation.Nonnull
   private String modifiedAt;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @javax.annotation.Nonnull
   private String createdBy;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @javax.annotation.Nonnull
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private NodeType type;
 
   public static final String JSON_PROPERTY_CONSUMED_FILE_STORAGE = "consumedFileStorage";
+  @javax.annotation.Nonnull
   private BigDecimal consumedFileStorage;
 
   public ConsumerMetadataDto() {
   }
 
-  public ConsumerMetadataDto nodeId(String nodeId) {
+  public ConsumerMetadataDto nodeId(@javax.annotation.Nonnull String nodeId) {
     
     this.nodeId = nodeId;
     return this;
@@ -116,11 +130,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNodeId(String nodeId) {
+  public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
   }
 
-  public ConsumerMetadataDto status(NodeStatus status) {
+  public ConsumerMetadataDto status(@javax.annotation.Nonnull NodeStatus status) {
     
     this.status = status;
     return this;
@@ -141,11 +155,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(NodeStatus status) {
+  public void setStatus(@javax.annotation.Nonnull NodeStatus status) {
     this.status = status;
   }
 
-  public ConsumerMetadataDto fileCount(BigDecimal fileCount) {
+  public ConsumerMetadataDto fileCount(@javax.annotation.Nullable BigDecimal fileCount) {
     
     this.fileCount = fileCount;
     return this;
@@ -166,11 +180,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_FILE_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFileCount(BigDecimal fileCount) {
+  public void setFileCount(@javax.annotation.Nullable BigDecimal fileCount) {
     this.fileCount = fileCount;
   }
 
-  public ConsumerMetadataDto folderCount(BigDecimal folderCount) {
+  public ConsumerMetadataDto folderCount(@javax.annotation.Nullable BigDecimal folderCount) {
     
     this.folderCount = folderCount;
     return this;
@@ -191,11 +205,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_FOLDER_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFolderCount(BigDecimal folderCount) {
+  public void setFolderCount(@javax.annotation.Nullable BigDecimal folderCount) {
     this.folderCount = folderCount;
   }
 
-  public ConsumerMetadataDto profileCount(BigDecimal profileCount) {
+  public ConsumerMetadataDto profileCount(@javax.annotation.Nullable BigDecimal profileCount) {
     
     this.profileCount = profileCount;
     return this;
@@ -216,11 +230,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_PROFILE_COUNT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfileCount(BigDecimal profileCount) {
+  public void setProfileCount(@javax.annotation.Nullable BigDecimal profileCount) {
     this.profileCount = profileCount;
   }
 
-  public ConsumerMetadataDto name(String name) {
+  public ConsumerMetadataDto name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -241,11 +255,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public ConsumerMetadataDto consumerId(String consumerId) {
+  public ConsumerMetadataDto consumerId(@javax.annotation.Nonnull String consumerId) {
     
     this.consumerId = consumerId;
     return this;
@@ -266,11 +280,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_CONSUMER_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConsumerId(String consumerId) {
+  public void setConsumerId(@javax.annotation.Nonnull String consumerId) {
     this.consumerId = consumerId;
   }
 
-  public ConsumerMetadataDto createdAt(String createdAt) {
+  public ConsumerMetadataDto createdAt(@javax.annotation.Nonnull String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -291,11 +305,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public ConsumerMetadataDto modifiedAt(String modifiedAt) {
+  public ConsumerMetadataDto modifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     
     this.modifiedAt = modifiedAt;
     return this;
@@ -316,11 +330,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedAt(String modifiedAt) {
+  public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
 
-  public ConsumerMetadataDto createdBy(String createdBy) {
+  public ConsumerMetadataDto createdBy(@javax.annotation.Nonnull String createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -341,11 +355,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_BY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedBy(String createdBy) {
+  public void setCreatedBy(@javax.annotation.Nonnull String createdBy) {
     this.createdBy = createdBy;
   }
 
-  public ConsumerMetadataDto modifiedBy(String modifiedBy) {
+  public ConsumerMetadataDto modifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -366,11 +380,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedBy(String modifiedBy) {
+  public void setModifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
-  public ConsumerMetadataDto description(String description) {
+  public ConsumerMetadataDto description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -391,11 +405,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public ConsumerMetadataDto type(NodeType type) {
+  public ConsumerMetadataDto type(@javax.annotation.Nonnull NodeType type) {
     
     this.type = type;
     return this;
@@ -416,11 +430,11 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(NodeType type) {
+  public void setType(@javax.annotation.Nonnull NodeType type) {
     this.type = type;
   }
 
-  public ConsumerMetadataDto consumedFileStorage(BigDecimal consumedFileStorage) {
+  public ConsumerMetadataDto consumedFileStorage(@javax.annotation.Nonnull BigDecimal consumedFileStorage) {
     
     this.consumedFileStorage = consumedFileStorage;
     return this;
@@ -441,7 +455,7 @@ public class ConsumerMetadataDto {
 
   @JsonProperty(JSON_PROPERTY_CONSUMED_FILE_STORAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConsumedFileStorage(BigDecimal consumedFileStorage) {
+  public void setConsumedFileStorage(@javax.annotation.Nonnull BigDecimal consumedFileStorage) {
     this.consumedFileStorage = consumedFileStorage;
   }
 

@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListIssuanceResponse.JSON_PROPERTY_ISSUANCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListIssuanceResponse {
   public static final String JSON_PROPERTY_ISSUANCES = "issuances";
+  @javax.annotation.Nonnull
   private List<ListIssuanceResponseIssuancesInner> issuances = new ArrayList<>();
 
   public ListIssuanceResponse() {
   }
 
-  public ListIssuanceResponse issuances(List<ListIssuanceResponseIssuancesInner> issuances) {
+  public ListIssuanceResponse issuances(@javax.annotation.Nonnull List<ListIssuanceResponseIssuancesInner> issuances) {
     
     this.issuances = issuances;
     return this;
@@ -73,7 +74,7 @@ public class ListIssuanceResponse {
 
   @JsonProperty(JSON_PROPERTY_ISSUANCES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssuances(List<ListIssuanceResponseIssuancesInner> issuances) {
+  public void setIssuances(@javax.annotation.Nonnull List<ListIssuanceResponseIssuancesInner> issuances) {
     this.issuances = issuances;
   }
 

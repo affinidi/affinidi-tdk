@@ -25,7 +25,7 @@ class TestIotaApi(unittest.TestCase):
         self.api = IotaApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_aws_exchange_credentials(self) -> None:
         """Test case for aws_exchange_credentials

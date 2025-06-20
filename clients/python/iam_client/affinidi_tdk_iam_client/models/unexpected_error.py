@@ -37,21 +37,21 @@ class UnexpectedError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('UnexpectedError'):
+        if value not in ('UnexpectedError',):
             raise ValueError("must be one of enum values ('UnexpectedError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Unexpected Error Occurred.'):
+        if value not in ('Unexpected Error Occurred.',):
             raise ValueError("must be one of enum values ('Unexpected Error Occurred.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (500):
+        if value not in (500,):
             raise ValueError("must be one of enum values (500)")
         return value
 

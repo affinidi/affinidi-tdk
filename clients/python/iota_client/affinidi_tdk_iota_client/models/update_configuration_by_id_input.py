@@ -46,7 +46,7 @@ class UpdateConfigurationByIdInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('redirect', 'websocket'):
+        if value not in ('redirect', 'websocket',):
             raise ValueError("must be one of enum values ('redirect', 'websocket')")
         return value
 

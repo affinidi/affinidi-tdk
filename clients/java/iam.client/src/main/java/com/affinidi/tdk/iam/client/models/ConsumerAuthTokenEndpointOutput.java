@@ -37,30 +37,36 @@ import java.util.StringJoiner;
   ConsumerAuthTokenEndpointOutput.JSON_PROPERTY_SCOPE,
   ConsumerAuthTokenEndpointOutput.JSON_PROPERTY_TOKEN_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConsumerAuthTokenEndpointOutput {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "access_token";
+  @javax.annotation.Nullable
   private String accessToken;
 
   public static final String JSON_PROPERTY_EXPIRES_IN = "expires_in";
+  @javax.annotation.Nullable
   private Long expiresIn;
 
   public static final String JSON_PROPERTY_ID_TOKEN = "id_token";
+  @javax.annotation.Nullable
   private Long idToken;
 
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refresh_token";
+  @javax.annotation.Nullable
   private String refreshToken;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String JSON_PROPERTY_TOKEN_TYPE = "token_type";
+  @javax.annotation.Nullable
   private String tokenType;
 
   public ConsumerAuthTokenEndpointOutput() {
   }
 
-  public ConsumerAuthTokenEndpointOutput accessToken(String accessToken) {
+  public ConsumerAuthTokenEndpointOutput accessToken(@javax.annotation.Nullable String accessToken) {
     
     this.accessToken = accessToken;
     return this;
@@ -81,11 +87,11 @@ public class ConsumerAuthTokenEndpointOutput {
 
   @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAccessToken(String accessToken) {
+  public void setAccessToken(@javax.annotation.Nullable String accessToken) {
     this.accessToken = accessToken;
   }
 
-  public ConsumerAuthTokenEndpointOutput expiresIn(Long expiresIn) {
+  public ConsumerAuthTokenEndpointOutput expiresIn(@javax.annotation.Nullable Long expiresIn) {
     
     this.expiresIn = expiresIn;
     return this;
@@ -106,11 +112,11 @@ public class ConsumerAuthTokenEndpointOutput {
 
   @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExpiresIn(Long expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
   }
 
-  public ConsumerAuthTokenEndpointOutput idToken(Long idToken) {
+  public ConsumerAuthTokenEndpointOutput idToken(@javax.annotation.Nullable Long idToken) {
     
     this.idToken = idToken;
     return this;
@@ -131,11 +137,11 @@ public class ConsumerAuthTokenEndpointOutput {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdToken(Long idToken) {
+  public void setIdToken(@javax.annotation.Nullable Long idToken) {
     this.idToken = idToken;
   }
 
-  public ConsumerAuthTokenEndpointOutput refreshToken(String refreshToken) {
+  public ConsumerAuthTokenEndpointOutput refreshToken(@javax.annotation.Nullable String refreshToken) {
     
     this.refreshToken = refreshToken;
     return this;
@@ -156,11 +162,11 @@ public class ConsumerAuthTokenEndpointOutput {
 
   @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefreshToken(String refreshToken) {
+  public void setRefreshToken(@javax.annotation.Nullable String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
-  public ConsumerAuthTokenEndpointOutput scope(String scope) {
+  public ConsumerAuthTokenEndpointOutput scope(@javax.annotation.Nullable String scope) {
     
     this.scope = scope;
     return this;
@@ -181,11 +187,11 @@ public class ConsumerAuthTokenEndpointOutput {
 
   @JsonProperty(JSON_PROPERTY_SCOPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
-  public ConsumerAuthTokenEndpointOutput tokenType(String tokenType) {
+  public ConsumerAuthTokenEndpointOutput tokenType(@javax.annotation.Nullable String tokenType) {
     
     this.tokenType = tokenType;
     return this;
@@ -206,7 +212,7 @@ public class ConsumerAuthTokenEndpointOutput {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenType(String tokenType) {
+  public void setTokenType(@javax.annotation.Nullable String tokenType) {
     this.tokenType = tokenType;
   }
 

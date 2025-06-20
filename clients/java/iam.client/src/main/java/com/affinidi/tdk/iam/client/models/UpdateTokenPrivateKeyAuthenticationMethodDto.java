@@ -35,13 +35,13 @@ import java.util.StringJoiner;
   UpdateTokenPrivateKeyAuthenticationMethodDto.JSON_PROPERTY_SIGNING_ALGORITHM,
   UpdateTokenPrivateKeyAuthenticationMethodDto.JSON_PROPERTY_PUBLIC_KEY_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateTokenPrivateKeyAuthenticationMethodDto {
   /**
    * Gets or Sets type
    */
   public enum TypeEnum {
-    PRIVATE_KEY("PRIVATE_KEY");
+    PRIVATE_KEY(String.valueOf("PRIVATE_KEY"));
 
     private String value;
 
@@ -71,19 +71,20 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDto {
   }
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nullable
   private TypeEnum type;
 
   /**
    * Gets or Sets signingAlgorithm
    */
   public enum SigningAlgorithmEnum {
-    RS256("RS256"),
+    RS256(String.valueOf("RS256")),
     
-    RS512("RS512"),
+    RS512(String.valueOf("RS512")),
     
-    ES256("ES256"),
+    ES256(String.valueOf("ES256")),
     
-    ES512("ES512");
+    ES512(String.valueOf("ES512"));
 
     private String value;
 
@@ -113,15 +114,17 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDto {
   }
 
   public static final String JSON_PROPERTY_SIGNING_ALGORITHM = "signingAlgorithm";
+  @javax.annotation.Nullable
   private SigningAlgorithmEnum signingAlgorithm;
 
   public static final String JSON_PROPERTY_PUBLIC_KEY_INFO = "publicKeyInfo";
+  @javax.annotation.Nullable
   private TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo;
 
   public UpdateTokenPrivateKeyAuthenticationMethodDto() {
   }
 
-  public UpdateTokenPrivateKeyAuthenticationMethodDto type(TypeEnum type) {
+  public UpdateTokenPrivateKeyAuthenticationMethodDto type(@javax.annotation.Nullable TypeEnum type) {
     
     this.type = type;
     return this;
@@ -142,11 +145,11 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDto {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(TypeEnum type) {
+  public void setType(@javax.annotation.Nullable TypeEnum type) {
     this.type = type;
   }
 
-  public UpdateTokenPrivateKeyAuthenticationMethodDto signingAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
+  public UpdateTokenPrivateKeyAuthenticationMethodDto signingAlgorithm(@javax.annotation.Nullable SigningAlgorithmEnum signingAlgorithm) {
     
     this.signingAlgorithm = signingAlgorithm;
     return this;
@@ -167,11 +170,11 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDto {
 
   @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSigningAlgorithm(SigningAlgorithmEnum signingAlgorithm) {
+  public void setSigningAlgorithm(@javax.annotation.Nullable SigningAlgorithmEnum signingAlgorithm) {
     this.signingAlgorithm = signingAlgorithm;
   }
 
-  public UpdateTokenPrivateKeyAuthenticationMethodDto publicKeyInfo(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
+  public UpdateTokenPrivateKeyAuthenticationMethodDto publicKeyInfo(@javax.annotation.Nullable TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
     
     this.publicKeyInfo = publicKeyInfo;
     return this;
@@ -192,7 +195,7 @@ public class UpdateTokenPrivateKeyAuthenticationMethodDto {
 
   @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPublicKeyInfo(TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
+  public void setPublicKeyInfo(@javax.annotation.Nullable TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
     this.publicKeyInfo = publicKeyInfo;
   }
 

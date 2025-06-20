@@ -14,16 +14,20 @@ class _$GrantAccessOutput extends GrantAccessOutput {
 
   factory _$GrantAccessOutput(
           [void Function(GrantAccessOutputBuilder)? updates]) =>
-      (GrantAccessOutputBuilder()..update(updates))._build();
+      (new GrantAccessOutputBuilder()..update(updates))._build();
 
-  _$GrantAccessOutput._({required this.success, this.grantId}) : super._();
+  _$GrantAccessOutput._({required this.success, this.grantId}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        success, r'GrantAccessOutput', 'success');
+  }
+
   @override
   GrantAccessOutput rebuild(void Function(GrantAccessOutputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
   GrantAccessOutputBuilder toBuilder() =>
-      GrantAccessOutputBuilder()..replace(this);
+      new GrantAccessOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -79,6 +83,7 @@ class GrantAccessOutputBuilder
 
   @override
   void replace(GrantAccessOutput other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$GrantAccessOutput;
   }
 
@@ -92,7 +97,7 @@ class GrantAccessOutputBuilder
 
   _$GrantAccessOutput _build() {
     final _$result = _$v ??
-        _$GrantAccessOutput._(
+        new _$GrantAccessOutput._(
           success: BuiltValueNullFieldError.checkNotNull(
               success, r'GrantAccessOutput', 'success'),
           grantId: grantId,

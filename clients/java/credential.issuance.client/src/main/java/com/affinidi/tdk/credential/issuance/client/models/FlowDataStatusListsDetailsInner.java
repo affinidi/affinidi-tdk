@@ -39,13 +39,13 @@ import java.util.StringJoiner;
   FlowDataStatusListsDetailsInner.JSON_PROPERTY_STATUS_ACTIVATED_AT
 })
 @JsonTypeName("FlowData_statusListsDetails_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FlowDataStatusListsDetailsInner {
   /**
    * Purpose of status list to which credential is added
    */
   public enum StatusListPurposeEnum {
-    REVOKED("REVOKED");
+    REVOKED(String.valueOf("REVOKED"));
 
     private String value;
 
@@ -75,21 +75,24 @@ public class FlowDataStatusListsDetailsInner {
   }
 
   public static final String JSON_PROPERTY_STATUS_LIST_PURPOSE = "statusListPurpose";
+  @javax.annotation.Nonnull
   private StatusListPurposeEnum statusListPurpose;
 
   public static final String JSON_PROPERTY_STATUS_LIST_ID = "statusListId";
+  @javax.annotation.Nonnull
   private String statusListId;
 
   public static final String JSON_PROPERTY_STATUS_LIST_INDEX = "statusListIndex";
+  @javax.annotation.Nonnull
   private String statusListIndex;
 
   /**
    * Gets or Sets standard
    */
   public enum StandardEnum {
-    REVOCATION_LIST2020("RevocationList2020"),
+    REVOCATION_LIST2020(String.valueOf("RevocationList2020")),
     
-    BITSTRING_STATUS_LIST_V1("BitstringStatusListV1");
+    BITSTRING_STATUS_LIST_V1(String.valueOf("BitstringStatusListV1"));
 
     private String value;
 
@@ -119,21 +122,25 @@ public class FlowDataStatusListsDetailsInner {
   }
 
   public static final String JSON_PROPERTY_STANDARD = "standard";
+  @javax.annotation.Nonnull
   private StandardEnum standard;
 
   public static final String JSON_PROPERTY_IS_ACTIVE = "isActive";
+  @javax.annotation.Nonnull
   private Boolean isActive;
 
   public static final String JSON_PROPERTY_STATUS_ACTIVATION_REASON = "statusActivationReason";
+  @javax.annotation.Nullable
   private String statusActivationReason;
 
   public static final String JSON_PROPERTY_STATUS_ACTIVATED_AT = "statusActivatedAt";
+  @javax.annotation.Nullable
   private String statusActivatedAt;
 
   public FlowDataStatusListsDetailsInner() {
   }
 
-  public FlowDataStatusListsDetailsInner statusListPurpose(StatusListPurposeEnum statusListPurpose) {
+  public FlowDataStatusListsDetailsInner statusListPurpose(@javax.annotation.Nonnull StatusListPurposeEnum statusListPurpose) {
     
     this.statusListPurpose = statusListPurpose;
     return this;
@@ -154,11 +161,11 @@ public class FlowDataStatusListsDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_STATUS_LIST_PURPOSE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatusListPurpose(StatusListPurposeEnum statusListPurpose) {
+  public void setStatusListPurpose(@javax.annotation.Nonnull StatusListPurposeEnum statusListPurpose) {
     this.statusListPurpose = statusListPurpose;
   }
 
-  public FlowDataStatusListsDetailsInner statusListId(String statusListId) {
+  public FlowDataStatusListsDetailsInner statusListId(@javax.annotation.Nonnull String statusListId) {
     
     this.statusListId = statusListId;
     return this;
@@ -179,11 +186,11 @@ public class FlowDataStatusListsDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_STATUS_LIST_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatusListId(String statusListId) {
+  public void setStatusListId(@javax.annotation.Nonnull String statusListId) {
     this.statusListId = statusListId;
   }
 
-  public FlowDataStatusListsDetailsInner statusListIndex(String statusListIndex) {
+  public FlowDataStatusListsDetailsInner statusListIndex(@javax.annotation.Nonnull String statusListIndex) {
     
     this.statusListIndex = statusListIndex;
     return this;
@@ -204,11 +211,11 @@ public class FlowDataStatusListsDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_STATUS_LIST_INDEX)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatusListIndex(String statusListIndex) {
+  public void setStatusListIndex(@javax.annotation.Nonnull String statusListIndex) {
     this.statusListIndex = statusListIndex;
   }
 
-  public FlowDataStatusListsDetailsInner standard(StandardEnum standard) {
+  public FlowDataStatusListsDetailsInner standard(@javax.annotation.Nonnull StandardEnum standard) {
     
     this.standard = standard;
     return this;
@@ -229,11 +236,11 @@ public class FlowDataStatusListsDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_STANDARD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStandard(StandardEnum standard) {
+  public void setStandard(@javax.annotation.Nonnull StandardEnum standard) {
     this.standard = standard;
   }
 
-  public FlowDataStatusListsDetailsInner isActive(Boolean isActive) {
+  public FlowDataStatusListsDetailsInner isActive(@javax.annotation.Nonnull Boolean isActive) {
     
     this.isActive = isActive;
     return this;
@@ -254,11 +261,11 @@ public class FlowDataStatusListsDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_IS_ACTIVE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIsActive(Boolean isActive) {
+  public void setIsActive(@javax.annotation.Nonnull Boolean isActive) {
     this.isActive = isActive;
   }
 
-  public FlowDataStatusListsDetailsInner statusActivationReason(String statusActivationReason) {
+  public FlowDataStatusListsDetailsInner statusActivationReason(@javax.annotation.Nullable String statusActivationReason) {
     
     this.statusActivationReason = statusActivationReason;
     return this;
@@ -279,11 +286,11 @@ public class FlowDataStatusListsDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATION_REASON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatusActivationReason(String statusActivationReason) {
+  public void setStatusActivationReason(@javax.annotation.Nullable String statusActivationReason) {
     this.statusActivationReason = statusActivationReason;
   }
 
-  public FlowDataStatusListsDetailsInner statusActivatedAt(String statusActivatedAt) {
+  public FlowDataStatusListsDetailsInner statusActivatedAt(@javax.annotation.Nullable String statusActivatedAt) {
     
     this.statusActivatedAt = statusActivatedAt;
     return this;
@@ -304,7 +311,7 @@ public class FlowDataStatusListsDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatusActivatedAt(String statusActivatedAt) {
+  public void setStatusActivatedAt(@javax.annotation.Nullable String statusActivatedAt) {
     this.statusActivatedAt = statusActivatedAt;
   }
 

@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   JsonWebKeySetDto.JSON_PROPERTY_KEYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class JsonWebKeySetDto {
   public static final String JSON_PROPERTY_KEYS = "keys";
+  @javax.annotation.Nonnull
   private List<JsonWebKeyDto> keys = new ArrayList<>();
 
   public JsonWebKeySetDto() {
   }
 
-  public JsonWebKeySetDto keys(List<JsonWebKeyDto> keys) {
+  public JsonWebKeySetDto keys(@javax.annotation.Nonnull List<JsonWebKeyDto> keys) {
     
     this.keys = keys;
     return this;
@@ -73,7 +74,7 @@ public class JsonWebKeySetDto {
 
   @JsonProperty(JSON_PROPERTY_KEYS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKeys(List<JsonWebKeyDto> keys) {
+  public void setKeys(@javax.annotation.Nonnull List<JsonWebKeyDto> keys) {
     this.keys = keys;
   }
 

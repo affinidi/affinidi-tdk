@@ -34,15 +34,16 @@ import java.util.StringJoiner;
   StartIssuanceInputDataInnerMetaData.JSON_PROPERTY_EXPIRATION_DATE
 })
 @JsonTypeName("StartIssuanceInput_data_inner_metaData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StartIssuanceInputDataInnerMetaData {
   public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
+  @javax.annotation.Nonnull
   private OffsetDateTime expirationDate;
 
   public StartIssuanceInputDataInnerMetaData() {
   }
 
-  public StartIssuanceInputDataInnerMetaData expirationDate(OffsetDateTime expirationDate) {
+  public StartIssuanceInputDataInnerMetaData expirationDate(@javax.annotation.Nonnull OffsetDateTime expirationDate) {
     
     this.expirationDate = expirationDate;
     return this;
@@ -63,7 +64,7 @@ public class StartIssuanceInputDataInnerMetaData {
 
   @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpirationDate(OffsetDateTime expirationDate) {
+  public void setExpirationDate(@javax.annotation.Nonnull OffsetDateTime expirationDate) {
     this.expirationDate = expirationDate;
   }
 

@@ -25,7 +25,7 @@ class TestPexQueryApi(unittest.TestCase):
         self.api = PexQueryApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_create_pex_query(self) -> None:
         """Test case for create_pex_query

@@ -38,11 +38,11 @@ class CredentialOfferResponseGrantsTest {
     }
 
     /**
-     * Test the property 'urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode'
+     * Test the property 'urnIetfParamsOauthGrantTypePreAuthorizedCode'
      */
     @Test
-    void urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCodeTest() {
-        // TODO: test urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
+    void urnIetfParamsOauthGrantTypePreAuthorizedCodeTest() {
+        // TODO: test urnIetfParamsOauthGrantTypePreAuthorizedCode
     }
 
 }

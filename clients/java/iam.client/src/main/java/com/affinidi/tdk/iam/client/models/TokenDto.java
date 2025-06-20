@@ -15,7 +15,7 @@ package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
+import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,30 +42,36 @@ import java.util.StringJoiner;
   TokenDto.JSON_PROPERTY_AUTHENTICATION_METHOD,
   TokenDto.JSON_PROPERTY_SCOPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class TokenDto {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private UUID id;
 
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nonnull
   private String ari;
 
   public static final String JSON_PROPERTY_OWNER_ARI = "ownerAri";
+  @javax.annotation.Nonnull
   private String ownerAri;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_AUTHENTICATION_METHOD = "authenticationMethod";
-  private TokenAuthenticationMethodDto authenticationMethod;
+  @javax.annotation.Nonnull
+  private TokenPrivateKeyAuthenticationMethodDto authenticationMethod;
 
   public static final String JSON_PROPERTY_SCOPES = "scopes";
+  @javax.annotation.Nonnull
   private List<String> scopes = new ArrayList<>();
 
   public TokenDto() {
   }
 
-  public TokenDto id(UUID id) {
+  public TokenDto id(@javax.annotation.Nonnull UUID id) {
     
     this.id = id;
     return this;
@@ -86,11 +92,11 @@ public class TokenDto {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(UUID id) {
+  public void setId(@javax.annotation.Nonnull UUID id) {
     this.id = id;
   }
 
-  public TokenDto ari(String ari) {
+  public TokenDto ari(@javax.annotation.Nonnull String ari) {
     
     this.ari = ari;
     return this;
@@ -111,11 +117,11 @@ public class TokenDto {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
   }
 
-  public TokenDto ownerAri(String ownerAri) {
+  public TokenDto ownerAri(@javax.annotation.Nonnull String ownerAri) {
     
     this.ownerAri = ownerAri;
     return this;
@@ -136,11 +142,11 @@ public class TokenDto {
 
   @JsonProperty(JSON_PROPERTY_OWNER_ARI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOwnerAri(String ownerAri) {
+  public void setOwnerAri(@javax.annotation.Nonnull String ownerAri) {
     this.ownerAri = ownerAri;
   }
 
-  public TokenDto name(String name) {
+  public TokenDto name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -161,11 +167,11 @@ public class TokenDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public TokenDto authenticationMethod(TokenAuthenticationMethodDto authenticationMethod) {
+  public TokenDto authenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     
     this.authenticationMethod = authenticationMethod;
     return this;
@@ -179,18 +185,18 @@ public class TokenDto {
   @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public TokenAuthenticationMethodDto getAuthenticationMethod() {
+  public TokenPrivateKeyAuthenticationMethodDto getAuthenticationMethod() {
     return authenticationMethod;
   }
 
 
   @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthenticationMethod(TokenAuthenticationMethodDto authenticationMethod) {
+  public void setAuthenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
 
-  public TokenDto scopes(List<String> scopes) {
+  public TokenDto scopes(@javax.annotation.Nonnull List<String> scopes) {
     
     this.scopes = scopes;
     return this;
@@ -219,7 +225,7 @@ public class TokenDto {
 
   @JsonProperty(JSON_PROPERTY_SCOPES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setScopes(List<String> scopes) {
+  public void setScopes(@javax.annotation.Nonnull List<String> scopes) {
     this.scopes = scopes;
   }
 

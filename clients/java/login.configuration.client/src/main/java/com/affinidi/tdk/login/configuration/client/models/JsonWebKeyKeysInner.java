@@ -52,63 +52,80 @@ import java.util.StringJoiner;
   JsonWebKeyKeysInner.JSON_PROPERTY_Y
 })
 @JsonTypeName("JsonWebKey_keys_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class JsonWebKeyKeysInner {
   public static final String JSON_PROPERTY_ALG = "alg";
+  @javax.annotation.Nonnull
   private String alg;
 
   public static final String JSON_PROPERTY_CRV = "crv";
+  @javax.annotation.Nullable
   private String crv;
 
   public static final String JSON_PROPERTY_D = "d";
+  @javax.annotation.Nullable
   private String d;
 
   public static final String JSON_PROPERTY_DP = "dp";
+  @javax.annotation.Nullable
   private String dp;
 
   public static final String JSON_PROPERTY_DQ = "dq";
+  @javax.annotation.Nullable
   private String dq;
 
   public static final String JSON_PROPERTY_E = "e";
+  @javax.annotation.Nullable
   private String e;
 
   public static final String JSON_PROPERTY_K = "k";
+  @javax.annotation.Nullable
   private String k;
 
   public static final String JSON_PROPERTY_KID = "kid";
+  @javax.annotation.Nonnull
   private String kid;
 
   public static final String JSON_PROPERTY_KTY = "kty";
+  @javax.annotation.Nonnull
   private String kty;
 
   public static final String JSON_PROPERTY_N = "n";
+  @javax.annotation.Nullable
   private String n;
 
   public static final String JSON_PROPERTY_P = "p";
+  @javax.annotation.Nullable
   private String p;
 
   public static final String JSON_PROPERTY_Q = "q";
+  @javax.annotation.Nullable
   private String q;
 
   public static final String JSON_PROPERTY_QI = "qi";
+  @javax.annotation.Nullable
   private String qi;
 
   public static final String JSON_PROPERTY_USE = "use";
+  @javax.annotation.Nonnull
   private String use;
 
   public static final String JSON_PROPERTY_X = "x";
+  @javax.annotation.Nullable
   private String x;
 
   public static final String JSON_PROPERTY_X5C = "x5c";
+  @javax.annotation.Nonnull
   private List<String> x5c = new ArrayList<>();
 
   public static final String JSON_PROPERTY_Y = "y";
+  @javax.annotation.Nullable
   private String y;
 
   public JsonWebKeyKeysInner() {
   }
 
-  public JsonWebKeyKeysInner alg(String alg) {
+  public JsonWebKeyKeysInner alg(@javax.annotation.Nonnull String alg) {
     
     this.alg = alg;
     return this;
@@ -129,11 +146,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_ALG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAlg(String alg) {
+  public void setAlg(@javax.annotation.Nonnull String alg) {
     this.alg = alg;
   }
 
-  public JsonWebKeyKeysInner crv(String crv) {
+  public JsonWebKeyKeysInner crv(@javax.annotation.Nullable String crv) {
     
     this.crv = crv;
     return this;
@@ -154,11 +171,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_CRV)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCrv(String crv) {
+  public void setCrv(@javax.annotation.Nullable String crv) {
     this.crv = crv;
   }
 
-  public JsonWebKeyKeysInner d(String d) {
+  public JsonWebKeyKeysInner d(@javax.annotation.Nullable String d) {
     
     this.d = d;
     return this;
@@ -179,11 +196,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_D)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setD(String d) {
+  public void setD(@javax.annotation.Nullable String d) {
     this.d = d;
   }
 
-  public JsonWebKeyKeysInner dp(String dp) {
+  public JsonWebKeyKeysInner dp(@javax.annotation.Nullable String dp) {
     
     this.dp = dp;
     return this;
@@ -204,11 +221,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_DP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDp(String dp) {
+  public void setDp(@javax.annotation.Nullable String dp) {
     this.dp = dp;
   }
 
-  public JsonWebKeyKeysInner dq(String dq) {
+  public JsonWebKeyKeysInner dq(@javax.annotation.Nullable String dq) {
     
     this.dq = dq;
     return this;
@@ -229,11 +246,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_DQ)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDq(String dq) {
+  public void setDq(@javax.annotation.Nullable String dq) {
     this.dq = dq;
   }
 
-  public JsonWebKeyKeysInner e(String e) {
+  public JsonWebKeyKeysInner e(@javax.annotation.Nullable String e) {
     
     this.e = e;
     return this;
@@ -254,11 +271,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_E)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setE(String e) {
+  public void setE(@javax.annotation.Nullable String e) {
     this.e = e;
   }
 
-  public JsonWebKeyKeysInner k(String k) {
+  public JsonWebKeyKeysInner k(@javax.annotation.Nullable String k) {
     
     this.k = k;
     return this;
@@ -279,11 +296,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_K)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setK(String k) {
+  public void setK(@javax.annotation.Nullable String k) {
     this.k = k;
   }
 
-  public JsonWebKeyKeysInner kid(String kid) {
+  public JsonWebKeyKeysInner kid(@javax.annotation.Nonnull String kid) {
     
     this.kid = kid;
     return this;
@@ -304,11 +321,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_KID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKid(String kid) {
+  public void setKid(@javax.annotation.Nonnull String kid) {
     this.kid = kid;
   }
 
-  public JsonWebKeyKeysInner kty(String kty) {
+  public JsonWebKeyKeysInner kty(@javax.annotation.Nonnull String kty) {
     
     this.kty = kty;
     return this;
@@ -329,11 +346,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_KTY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKty(String kty) {
+  public void setKty(@javax.annotation.Nonnull String kty) {
     this.kty = kty;
   }
 
-  public JsonWebKeyKeysInner n(String n) {
+  public JsonWebKeyKeysInner n(@javax.annotation.Nullable String n) {
     
     this.n = n;
     return this;
@@ -354,11 +371,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_N)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setN(String n) {
+  public void setN(@javax.annotation.Nullable String n) {
     this.n = n;
   }
 
-  public JsonWebKeyKeysInner p(String p) {
+  public JsonWebKeyKeysInner p(@javax.annotation.Nullable String p) {
     
     this.p = p;
     return this;
@@ -379,11 +396,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_P)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setP(String p) {
+  public void setP(@javax.annotation.Nullable String p) {
     this.p = p;
   }
 
-  public JsonWebKeyKeysInner q(String q) {
+  public JsonWebKeyKeysInner q(@javax.annotation.Nullable String q) {
     
     this.q = q;
     return this;
@@ -404,11 +421,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_Q)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQ(String q) {
+  public void setQ(@javax.annotation.Nullable String q) {
     this.q = q;
   }
 
-  public JsonWebKeyKeysInner qi(String qi) {
+  public JsonWebKeyKeysInner qi(@javax.annotation.Nullable String qi) {
     
     this.qi = qi;
     return this;
@@ -429,11 +446,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_QI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setQi(String qi) {
+  public void setQi(@javax.annotation.Nullable String qi) {
     this.qi = qi;
   }
 
-  public JsonWebKeyKeysInner use(String use) {
+  public JsonWebKeyKeysInner use(@javax.annotation.Nonnull String use) {
     
     this.use = use;
     return this;
@@ -454,11 +471,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_USE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUse(String use) {
+  public void setUse(@javax.annotation.Nonnull String use) {
     this.use = use;
   }
 
-  public JsonWebKeyKeysInner x(String x) {
+  public JsonWebKeyKeysInner x(@javax.annotation.Nullable String x) {
     
     this.x = x;
     return this;
@@ -479,11 +496,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_X)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setX(String x) {
+  public void setX(@javax.annotation.Nullable String x) {
     this.x = x;
   }
 
-  public JsonWebKeyKeysInner x5c(List<String> x5c) {
+  public JsonWebKeyKeysInner x5c(@javax.annotation.Nonnull List<String> x5c) {
     
     this.x5c = x5c;
     return this;
@@ -512,11 +529,11 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_X5C)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setX5c(List<String> x5c) {
+  public void setX5c(@javax.annotation.Nonnull List<String> x5c) {
     this.x5c = x5c;
   }
 
-  public JsonWebKeyKeysInner y(String y) {
+  public JsonWebKeyKeysInner y(@javax.annotation.Nullable String y) {
     
     this.y = y;
     return this;
@@ -537,7 +554,7 @@ public class JsonWebKeyKeysInner {
 
   @JsonProperty(JSON_PROPERTY_Y)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setY(String y) {
+  public void setY(@javax.annotation.Nullable String y) {
     this.y = y;
   }
 

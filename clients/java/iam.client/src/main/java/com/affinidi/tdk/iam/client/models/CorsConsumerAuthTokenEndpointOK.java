@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsConsumerAuthTokenEndpointOK.JSON_PROPERTY_CORS_CONSUMER_AUTH_TOKEN_ENDPOINT_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsConsumerAuthTokenEndpointOK {
   public static final String JSON_PROPERTY_CORS_CONSUMER_AUTH_TOKEN_ENDPOINT_OK = "corsConsumerAuthTokenEndpointOk";
+  @javax.annotation.Nullable
   private String corsConsumerAuthTokenEndpointOk;
 
   public CorsConsumerAuthTokenEndpointOK() {
   }
 
-  public CorsConsumerAuthTokenEndpointOK corsConsumerAuthTokenEndpointOk(String corsConsumerAuthTokenEndpointOk) {
+  public CorsConsumerAuthTokenEndpointOK corsConsumerAuthTokenEndpointOk(@javax.annotation.Nullable String corsConsumerAuthTokenEndpointOk) {
     
     this.corsConsumerAuthTokenEndpointOk = corsConsumerAuthTokenEndpointOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsConsumerAuthTokenEndpointOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_CONSUMER_AUTH_TOKEN_ENDPOINT_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsConsumerAuthTokenEndpointOk(String corsConsumerAuthTokenEndpointOk) {
+  public void setCorsConsumerAuthTokenEndpointOk(@javax.annotation.Nullable String corsConsumerAuthTokenEndpointOk) {
     this.corsConsumerAuthTokenEndpointOk = corsConsumerAuthTokenEndpointOk;
   }
 

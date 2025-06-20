@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   CallbackResponseOK.JSON_PROPERTY_RESPONSE_CODE,
   CallbackResponseOK.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CallbackResponseOK {
   public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
+  @javax.annotation.Nullable
   private String redirectUri;
 
   public static final String JSON_PROPERTY_RESPONSE_CODE = "response_code";
+  @javax.annotation.Nullable
   private String responseCode;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nonnull
   private String message;
 
   public CallbackResponseOK() {
   }
 
-  public CallbackResponseOK redirectUri(String redirectUri) {
+  public CallbackResponseOK redirectUri(@javax.annotation.Nullable String redirectUri) {
     
     this.redirectUri = redirectUri;
     return this;
@@ -69,11 +72,11 @@ public class CallbackResponseOK {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRedirectUri(String redirectUri) {
+  public void setRedirectUri(@javax.annotation.Nullable String redirectUri) {
     this.redirectUri = redirectUri;
   }
 
-  public CallbackResponseOK responseCode(String responseCode) {
+  public CallbackResponseOK responseCode(@javax.annotation.Nullable String responseCode) {
     
     this.responseCode = responseCode;
     return this;
@@ -94,11 +97,11 @@ public class CallbackResponseOK {
 
   @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResponseCode(String responseCode) {
+  public void setResponseCode(@javax.annotation.Nullable String responseCode) {
     this.responseCode = responseCode;
   }
 
-  public CallbackResponseOK message(String message) {
+  public CallbackResponseOK message(@javax.annotation.Nonnull String message) {
     
     this.message = message;
     return this;
@@ -119,7 +122,7 @@ public class CallbackResponseOK {
 
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nonnull String message) {
     this.message = message;
   }
 

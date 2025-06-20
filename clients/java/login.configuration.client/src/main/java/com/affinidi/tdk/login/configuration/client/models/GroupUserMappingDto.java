@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   GroupUserMappingDto.JSON_PROPERTY_USER_ID,
   GroupUserMappingDto.JSON_PROPERTY_ADDED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupUserMappingDto {
   public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
   private String userId;
 
   public static final String JSON_PROPERTY_ADDED_AT = "addedAt";
+  @javax.annotation.Nonnull
   private String addedAt;
 
   public GroupUserMappingDto() {
   }
 
-  public GroupUserMappingDto userId(String userId) {
+  public GroupUserMappingDto userId(@javax.annotation.Nonnull String userId) {
     
     this.userId = userId;
     return this;
@@ -65,11 +67,11 @@ public class GroupUserMappingDto {
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(String userId) {
+  public void setUserId(@javax.annotation.Nonnull String userId) {
     this.userId = userId;
   }
 
-  public GroupUserMappingDto addedAt(String addedAt) {
+  public GroupUserMappingDto addedAt(@javax.annotation.Nonnull String addedAt) {
     
     this.addedAt = addedAt;
     return this;
@@ -90,7 +92,7 @@ public class GroupUserMappingDto {
 
   @JsonProperty(JSON_PROPERTY_ADDED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAddedAt(String addedAt) {
+  public void setAddedAt(@javax.annotation.Nonnull String addedAt) {
     this.addedAt = addedAt;
   }
 

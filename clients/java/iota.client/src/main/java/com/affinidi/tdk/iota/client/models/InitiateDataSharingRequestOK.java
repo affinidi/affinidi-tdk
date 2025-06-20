@@ -33,15 +33,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   InitiateDataSharingRequestOK.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class InitiateDataSharingRequestOK {
   public static final String JSON_PROPERTY_DATA = "data";
+  @javax.annotation.Nullable
   private InitiateDataSharingRequestOKData data;
 
   public InitiateDataSharingRequestOK() {
   }
 
-  public InitiateDataSharingRequestOK data(InitiateDataSharingRequestOKData data) {
+  public InitiateDataSharingRequestOK data(@javax.annotation.Nullable InitiateDataSharingRequestOKData data) {
     
     this.data = data;
     return this;
@@ -62,7 +63,7 @@ public class InitiateDataSharingRequestOK {
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(InitiateDataSharingRequestOKData data) {
+  public void setData(@javax.annotation.Nullable InitiateDataSharingRequestOKData data) {
     this.data = data;
   }
 

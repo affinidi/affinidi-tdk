@@ -52,7 +52,6 @@ export 'package:affinidi_tdk_iam_client/src/model/public_key_cannot_be_resolved_
 export 'package:affinidi_tdk_iam_client/src/model/rights_enum.dart';
 export 'package:affinidi_tdk_iam_client/src/model/service_error_response.dart';
 export 'package:affinidi_tdk_iam_client/src/model/service_error_response_details_inner.dart';
-export 'package:affinidi_tdk_iam_client/src/model/token_authentication_method_dto.dart';
 export 'package:affinidi_tdk_iam_client/src/model/token_dto.dart';
 export 'package:affinidi_tdk_iam_client/src/model/token_list.dart';
 export 'package:affinidi_tdk_iam_client/src/model/token_private_key_authentication_method_dto.dart';

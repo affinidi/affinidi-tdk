@@ -36,21 +36,24 @@ import java.util.StringJoiner;
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_DESCRIPTION
 })
 @JsonTypeName("CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode {
   public static final String JSON_PROPERTY_LENGTH = "length";
+  @javax.annotation.Nullable
   private BigDecimal length;
 
   public static final String JSON_PROPERTY_INPUT_MODE = "input_mode";
+  @javax.annotation.Nullable
   private String inputMode;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode() {
   }
 
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode length(BigDecimal length) {
+  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode length(@javax.annotation.Nullable BigDecimal length) {
     
     this.length = length;
     return this;
@@ -71,11 +74,11 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
 
   @JsonProperty(JSON_PROPERTY_LENGTH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLength(BigDecimal length) {
+  public void setLength(@javax.annotation.Nullable BigDecimal length) {
     this.length = length;
   }
 
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode inputMode(String inputMode) {
+  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode inputMode(@javax.annotation.Nullable String inputMode) {
     
     this.inputMode = inputMode;
     return this;
@@ -96,11 +99,11 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
 
   @JsonProperty(JSON_PROPERTY_INPUT_MODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setInputMode(String inputMode) {
+  public void setInputMode(@javax.annotation.Nullable String inputMode) {
     this.inputMode = inputMode;
   }
 
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode description(String description) {
+  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -121,7 +124,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

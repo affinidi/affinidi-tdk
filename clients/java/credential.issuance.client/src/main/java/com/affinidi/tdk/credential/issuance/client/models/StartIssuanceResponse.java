@@ -36,24 +36,28 @@ import java.util.StringJoiner;
   StartIssuanceResponse.JSON_PROPERTY_ISSUANCE_ID,
   StartIssuanceResponse.JSON_PROPERTY_EXPIRES_IN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StartIssuanceResponse {
   public static final String JSON_PROPERTY_CREDENTIAL_OFFER_URI = "credentialOfferUri";
+  @javax.annotation.Nonnull
   private String credentialOfferUri;
 
   public static final String JSON_PROPERTY_TX_CODE = "txCode";
+  @javax.annotation.Nullable
   private String txCode;
 
   public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
+  @javax.annotation.Nonnull
   private String issuanceId;
 
   public static final String JSON_PROPERTY_EXPIRES_IN = "expiresIn";
+  @javax.annotation.Nonnull
   private BigDecimal expiresIn;
 
   public StartIssuanceResponse() {
   }
 
-  public StartIssuanceResponse credentialOfferUri(String credentialOfferUri) {
+  public StartIssuanceResponse credentialOfferUri(@javax.annotation.Nonnull String credentialOfferUri) {
     
     this.credentialOfferUri = credentialOfferUri;
     return this;
@@ -74,11 +78,11 @@ public class StartIssuanceResponse {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialOfferUri(String credentialOfferUri) {
+  public void setCredentialOfferUri(@javax.annotation.Nonnull String credentialOfferUri) {
     this.credentialOfferUri = credentialOfferUri;
   }
 
-  public StartIssuanceResponse txCode(String txCode) {
+  public StartIssuanceResponse txCode(@javax.annotation.Nullable String txCode) {
     
     this.txCode = txCode;
     return this;
@@ -99,11 +103,11 @@ public class StartIssuanceResponse {
 
   @JsonProperty(JSON_PROPERTY_TX_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTxCode(String txCode) {
+  public void setTxCode(@javax.annotation.Nullable String txCode) {
     this.txCode = txCode;
   }
 
-  public StartIssuanceResponse issuanceId(String issuanceId) {
+  public StartIssuanceResponse issuanceId(@javax.annotation.Nonnull String issuanceId) {
     
     this.issuanceId = issuanceId;
     return this;
@@ -124,11 +128,11 @@ public class StartIssuanceResponse {
 
   @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssuanceId(String issuanceId) {
+  public void setIssuanceId(@javax.annotation.Nonnull String issuanceId) {
     this.issuanceId = issuanceId;
   }
 
-  public StartIssuanceResponse expiresIn(BigDecimal expiresIn) {
+  public StartIssuanceResponse expiresIn(@javax.annotation.Nonnull BigDecimal expiresIn) {
     
     this.expiresIn = expiresIn;
     return this;
@@ -149,7 +153,7 @@ public class StartIssuanceResponse {
 
   @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpiresIn(BigDecimal expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nonnull BigDecimal expiresIn) {
     this.expiresIn = expiresIn;
   }
 

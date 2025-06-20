@@ -49,7 +49,7 @@ class CreateLoginConfigurationInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('array', 'map'):
+        if value not in ('array', 'map',):
             raise ValueError("must be one of enum values ('array', 'map')")
         return value
 

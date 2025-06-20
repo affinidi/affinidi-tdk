@@ -16,11 +16,18 @@ class _$ProjectWithPolicyDto extends ProjectWithPolicyDto {
 
   factory _$ProjectWithPolicyDto(
           [void Function(ProjectWithPolicyDtoBuilder)? updates]) =>
-      (ProjectWithPolicyDtoBuilder()..update(updates))._build();
+      (new ProjectWithPolicyDtoBuilder()..update(updates))._build();
 
   _$ProjectWithPolicyDto._(
       {required this.id, required this.name, required this.policy})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'ProjectWithPolicyDto', 'id');
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'ProjectWithPolicyDto', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        policy, r'ProjectWithPolicyDto', 'policy');
+  }
+
   @override
   ProjectWithPolicyDto rebuild(
           void Function(ProjectWithPolicyDtoBuilder) updates) =>
@@ -28,7 +35,7 @@ class _$ProjectWithPolicyDto extends ProjectWithPolicyDto {
 
   @override
   ProjectWithPolicyDtoBuilder toBuilder() =>
-      ProjectWithPolicyDtoBuilder()..replace(this);
+      new ProjectWithPolicyDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -72,7 +79,7 @@ class ProjectWithPolicyDtoBuilder
   set name(String? name) => _$this._name = name;
 
   PolicyDtoBuilder? _policy;
-  PolicyDtoBuilder get policy => _$this._policy ??= PolicyDtoBuilder();
+  PolicyDtoBuilder get policy => _$this._policy ??= new PolicyDtoBuilder();
   set policy(PolicyDtoBuilder? policy) => _$this._policy = policy;
 
   ProjectWithPolicyDtoBuilder() {
@@ -92,6 +99,7 @@ class ProjectWithPolicyDtoBuilder
 
   @override
   void replace(ProjectWithPolicyDto other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProjectWithPolicyDto;
   }
 
@@ -107,7 +115,7 @@ class ProjectWithPolicyDtoBuilder
     _$ProjectWithPolicyDto _$result;
     try {
       _$result = _$v ??
-          _$ProjectWithPolicyDto._(
+          new _$ProjectWithPolicyDto._(
             id: BuiltValueNullFieldError.checkNotNull(
                 id, r'ProjectWithPolicyDto', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(
@@ -120,7 +128,7 @@ class ProjectWithPolicyDtoBuilder
         _$failedField = 'policy';
         policy.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'ProjectWithPolicyDto', _$failedField, e.toString());
       }
       rethrow;

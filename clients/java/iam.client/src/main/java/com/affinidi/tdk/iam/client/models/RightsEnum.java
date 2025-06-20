@@ -29,9 +29,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum RightsEnum {
   
-  READ("vfs-read"),
+  VFS_READ("vfs-read"),
   
-  WRITE("vfs-write");
+  VFS_WRITE("vfs-write");
 
   private String value;
 

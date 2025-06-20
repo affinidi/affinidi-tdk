@@ -27,7 +27,7 @@ class CredentialOfferResponseGrants(BaseModel):
     """
     Object indicating to the Wallet the Grant Types the Credential Issuer's Authorization Server is prepared to process for this Credential Offer.  # noqa: E501
     """
-    urnietfparamsoauthgrant_typepre_authorized_code: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode = Field(default=..., alias="urn:ietf:params:oauth:grant-type:pre-authorized_code")
+    urn_ietf_params_oauth_grant_type_pre_authorized_code: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode = Field(default=..., alias="urn:ietf:params:oauth:grant-type:pre-authorized_code")
     __properties = ["urn:ietf:params:oauth:grant-type:pre-authorized_code"]
 
     class Config:
@@ -54,9 +54,9 @@ class CredentialOfferResponseGrants(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of urnietfparamsoauthgrant_typepre_authorized_code
-        if self.urnietfparamsoauthgrant_typepre_authorized_code:
-            _dict['urn:ietf:params:oauth:grant-type:pre-authorized_code'] = self.urnietfparamsoauthgrant_typepre_authorized_code.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of urn_ietf_params_oauth_grant_type_pre_authorized_code
+        if self.urn_ietf_params_oauth_grant_type_pre_authorized_code:
+            _dict['urn:ietf:params:oauth:grant-type:pre-authorized_code'] = self.urn_ietf_params_oauth_grant_type_pre_authorized_code.to_dict()
         return _dict
 
     @classmethod
@@ -69,7 +69,7 @@ class CredentialOfferResponseGrants(BaseModel):
             return CredentialOfferResponseGrants.parse_obj(obj)
 
         _obj = CredentialOfferResponseGrants.parse_obj({
-            "urnietfparamsoauthgrant_typepre_authorized_code": CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.from_dict(obj.get("urn:ietf:params:oauth:grant-type:pre-authorized_code")) if obj.get("urn:ietf:params:oauth:grant-type:pre-authorized_code") is not None else None
+            "urn_ietf_params_oauth_grant_type_pre_authorized_code": CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.from_dict(obj.get("urn:ietf:params:oauth:grant-type:pre-authorized_code")) if obj.get("urn:ietf:params:oauth:grant-type:pre-authorized_code") is not None else None
         })
         return _obj
 

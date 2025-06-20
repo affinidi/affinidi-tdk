@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGenerateCredentialsOK.JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGenerateCredentialsOK {
   public static final String JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK = "corsGenerateCredentialsOk";
+  @javax.annotation.Nullable
   private String corsGenerateCredentialsOk;
 
   public CorsGenerateCredentialsOK() {
   }
 
-  public CorsGenerateCredentialsOK corsGenerateCredentialsOk(String corsGenerateCredentialsOk) {
+  public CorsGenerateCredentialsOK corsGenerateCredentialsOk(@javax.annotation.Nullable String corsGenerateCredentialsOk) {
     
     this.corsGenerateCredentialsOk = corsGenerateCredentialsOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGenerateCredentialsOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GENERATE_CREDENTIALS_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGenerateCredentialsOk(String corsGenerateCredentialsOk) {
+  public void setCorsGenerateCredentialsOk(@javax.annotation.Nullable String corsGenerateCredentialsOk) {
     this.corsGenerateCredentialsOk = corsGenerateCredentialsOk;
   }
 

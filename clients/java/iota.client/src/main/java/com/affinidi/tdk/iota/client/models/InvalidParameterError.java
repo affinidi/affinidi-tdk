@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,13 +40,13 @@ import java.util.StringJoiner;
   InvalidParameterError.JSON_PROPERTY_TRACE_ID,
   InvalidParameterError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class InvalidParameterError {
   /**
    * Gets or Sets name
    */
   public enum NameEnum {
-    INVALID_PARAMETER_ERROR("InvalidParameterError");
+    INVALID_PARAMETER_ERROR(String.valueOf("InvalidParameterError"));
 
     private String value;
 
@@ -77,13 +76,14 @@ public class InvalidParameterError {
   }
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private NameEnum name;
 
   /**
    * Gets or Sets message
    */
   public enum MessageEnum {
-    INVALID_PARAMETER_PARAM_("Invalid parameter: ${param}.");
+    INVALID_PARAMETER_PARAM_(String.valueOf("Invalid parameter: ${param}."));
 
     private String value;
 
@@ -113,22 +113,23 @@ public class InvalidParameterError {
   }
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nonnull
   private MessageEnum message;
 
   /**
    * Gets or Sets httpStatusCode
    */
   public enum HttpStatusCodeEnum {
-    NUMBER_400(new BigDecimal("400"));
+    NUMBER_400(Integer.valueOf(400));
 
-    private BigDecimal value;
+    private Integer value;
 
-    HttpStatusCodeEnum(BigDecimal value) {
+    HttpStatusCodeEnum(Integer value) {
       this.value = value;
     }
 
     @JsonValue
-    public BigDecimal getValue() {
+    public Integer getValue() {
       return value;
     }
 
@@ -138,7 +139,7 @@ public class InvalidParameterError {
     }
 
     @JsonCreator
-    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+    public static HttpStatusCodeEnum fromValue(Integer value) {
       for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
@@ -149,18 +150,21 @@ public class InvalidParameterError {
   }
 
   public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  @javax.annotation.Nonnull
   private HttpStatusCodeEnum httpStatusCode;
 
   public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  @javax.annotation.Nonnull
   private String traceId;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
   private List<InvalidParameterErrorDetailsInner> details = new ArrayList<>();
 
   public InvalidParameterError() {
   }
 
-  public InvalidParameterError name(NameEnum name) {
+  public InvalidParameterError name(@javax.annotation.Nonnull NameEnum name) {
     
     this.name = name;
     return this;
@@ -181,11 +185,11 @@ public class InvalidParameterError {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(NameEnum name) {
+  public void setName(@javax.annotation.Nonnull NameEnum name) {
     this.name = name;
   }
 
-  public InvalidParameterError message(MessageEnum message) {
+  public InvalidParameterError message(@javax.annotation.Nonnull MessageEnum message) {
     
     this.message = message;
     return this;
@@ -206,11 +210,11 @@ public class InvalidParameterError {
 
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMessage(MessageEnum message) {
+  public void setMessage(@javax.annotation.Nonnull MessageEnum message) {
     this.message = message;
   }
 
-  public InvalidParameterError httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public InvalidParameterError httpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     
     this.httpStatusCode = httpStatusCode;
     return this;
@@ -231,11 +235,11 @@ public class InvalidParameterError {
 
   @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public void setHttpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
   }
 
-  public InvalidParameterError traceId(String traceId) {
+  public InvalidParameterError traceId(@javax.annotation.Nonnull String traceId) {
     
     this.traceId = traceId;
     return this;
@@ -256,11 +260,11 @@ public class InvalidParameterError {
 
   @JsonProperty(JSON_PROPERTY_TRACE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTraceId(String traceId) {
+  public void setTraceId(@javax.annotation.Nonnull String traceId) {
     this.traceId = traceId;
   }
 
-  public InvalidParameterError details(List<InvalidParameterErrorDetailsInner> details) {
+  public InvalidParameterError details(@javax.annotation.Nullable List<InvalidParameterErrorDetailsInner> details) {
     
     this.details = details;
     return this;
@@ -289,7 +293,7 @@ public class InvalidParameterError {
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(List<InvalidParameterErrorDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<InvalidParameterErrorDetailsInner> details) {
     this.details = details;
   }
 

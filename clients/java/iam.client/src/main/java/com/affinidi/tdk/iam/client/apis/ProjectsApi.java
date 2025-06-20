@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ProjectsApi extends BaseApi {
 
   public ProjectsApi() {
@@ -57,7 +57,7 @@ public class ProjectsApi extends BaseApi {
    * @param addUserToProjectInput AddPrincipalToProject (required)
    * @throws ApiException if fails to make API call
    */
-  public void addPrincipalToProject(AddUserToProjectInput addUserToProjectInput) throws ApiException {
+  public void addPrincipalToProject(@javax.annotation.Nonnull AddUserToProjectInput addUserToProjectInput) throws ApiException {
     this.addPrincipalToProject(addUserToProjectInput, Collections.emptyMap());
   }
 
@@ -69,7 +69,7 @@ public class ProjectsApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void addPrincipalToProject(AddUserToProjectInput addUserToProjectInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void addPrincipalToProject(@javax.annotation.Nonnull AddUserToProjectInput addUserToProjectInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = addUserToProjectInput;
     
     // verify the required parameter 'addUserToProjectInput' is set
@@ -129,7 +129,7 @@ public class ProjectsApi extends BaseApi {
    * @return ProjectDto
    * @throws ApiException if fails to make API call
    */
-  public ProjectDto createProject(CreateProjectInput createProjectInput) throws ApiException {
+  public ProjectDto createProject(@javax.annotation.Nonnull CreateProjectInput createProjectInput) throws ApiException {
     return this.createProject(createProjectInput, Collections.emptyMap());
   }
 
@@ -142,7 +142,7 @@ public class ProjectsApi extends BaseApi {
    * @return ProjectDto
    * @throws ApiException if fails to make API call
    */
-  public ProjectDto createProject(CreateProjectInput createProjectInput, Map<String, String> additionalHeaders) throws ApiException {
+  public ProjectDto createProject(@javax.annotation.Nonnull CreateProjectInput createProjectInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createProjectInput;
     
     // verify the required parameter 'createProjectInput' is set
@@ -203,7 +203,7 @@ public class ProjectsApi extends BaseApi {
    * @param principalType type of principal (required)
    * @throws ApiException if fails to make API call
    */
-  public void deletePrincipalFromProject(String principalId, String principalType) throws ApiException {
+  public void deletePrincipalFromProject(@javax.annotation.Nonnull String principalId, @javax.annotation.Nonnull String principalType) throws ApiException {
     this.deletePrincipalFromProject(principalId, principalType, Collections.emptyMap());
   }
 
@@ -216,7 +216,7 @@ public class ProjectsApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deletePrincipalFromProject(String principalId, String principalType, Map<String, String> additionalHeaders) throws ApiException {
+  public void deletePrincipalFromProject(@javax.annotation.Nonnull String principalId, @javax.annotation.Nonnull String principalType, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'principalId' is set
@@ -284,7 +284,7 @@ public class ProjectsApi extends BaseApi {
    * @return UserList
    * @throws ApiException if fails to make API call
    */
-  public UserList listPrincipalsOfProject(Integer limit, String exclusiveStartKey) throws ApiException {
+  public UserList listPrincipalsOfProject(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listPrincipalsOfProject(limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -298,7 +298,7 @@ public class ProjectsApi extends BaseApi {
    * @return UserList
    * @throws ApiException if fails to make API call
    */
-  public UserList listPrincipalsOfProject(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public UserList listPrincipalsOfProject(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -357,7 +357,7 @@ public class ProjectsApi extends BaseApi {
    * @return ProjectList
    * @throws ApiException if fails to make API call
    */
-  public ProjectList listProject(Integer limit, String exclusiveStartKey) throws ApiException {
+  public ProjectList listProject(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listProject(limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -371,7 +371,7 @@ public class ProjectsApi extends BaseApi {
    * @return ProjectList
    * @throws ApiException if fails to make API call
    */
-  public ProjectList listProject(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ProjectList listProject(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -430,7 +430,7 @@ public class ProjectsApi extends BaseApi {
    * @return ProjectDto
    * @throws ApiException if fails to make API call
    */
-  public ProjectDto updateProject(String projectId, UpdateProjectInput updateProjectInput) throws ApiException {
+  public ProjectDto updateProject(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull UpdateProjectInput updateProjectInput) throws ApiException {
     return this.updateProject(projectId, updateProjectInput, Collections.emptyMap());
   }
 
@@ -444,7 +444,7 @@ public class ProjectsApi extends BaseApi {
    * @return ProjectDto
    * @throws ApiException if fails to make API call
    */
-  public ProjectDto updateProject(String projectId, UpdateProjectInput updateProjectInput, Map<String, String> additionalHeaders) throws ApiException {
+  public ProjectDto updateProject(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull UpdateProjectInput updateProjectInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateProjectInput;
     
     // verify the required parameter 'projectId' is set

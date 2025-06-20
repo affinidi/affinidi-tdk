@@ -44,35 +44,41 @@ import java.util.StringJoiner;
   IssuanceConfigMiniDto.JSON_PROPERTY_ISSUER_METADATA,
   IssuanceConfigMiniDto.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IssuanceConfigMiniDto {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_ISSUER_DID = "issuerDid";
+  @javax.annotation.Nullable
   private String issuerDid;
 
   public static final String JSON_PROPERTY_ISSUER_WALLET_ID = "issuerWalletId";
+  @javax.annotation.Nullable
   private String issuerWalletId;
 
   public static final String JSON_PROPERTY_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
+  @javax.annotation.Nullable
   private BigDecimal credentialOfferDuration;
 
   public static final String JSON_PROPERTY_C_NONCE_DURATION = "cNonceDuration";
+  @javax.annotation.Nullable
   private BigDecimal cNonceDuration;
 
   /**
    * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
    */
   public enum FormatEnum {
-    LDP_VC("ldp_vc"),
+    LDP_VC(String.valueOf("ldp_vc")),
     
-    JWT_VC_JSON_LD("jwt_vc_json-ld"),
+    JWT_VC_JSON_LD(String.valueOf("jwt_vc_json-ld")),
     
-    SD_JWT_VC_JSON_LD("sd_jwt_vc_json-ld");
+    SD_JWT_VC_JSON_LD(String.valueOf("sd_jwt_vc_json-ld"));
 
     private String value;
 
@@ -102,21 +108,25 @@ public class IssuanceConfigMiniDto {
   }
 
   public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nullable
   private FormatEnum format;
 
   public static final String JSON_PROPERTY_ISSUER_URI = "issuerUri";
+  @javax.annotation.Nullable
   private String issuerUri;
 
   public static final String JSON_PROPERTY_ISSUER_METADATA = "issuerMetadata";
+  @javax.annotation.Nullable
   private Map<String, Object> issuerMetadata = new HashMap<>();
 
   public static final String JSON_PROPERTY_VERSION = "version";
+  @javax.annotation.Nullable
   private BigDecimal version;
 
   public IssuanceConfigMiniDto() {
   }
 
-  public IssuanceConfigMiniDto id(String id) {
+  public IssuanceConfigMiniDto id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -137,11 +147,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public IssuanceConfigMiniDto name(String name) {
+  public IssuanceConfigMiniDto name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -162,11 +172,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public IssuanceConfigMiniDto issuerDid(String issuerDid) {
+  public IssuanceConfigMiniDto issuerDid(@javax.annotation.Nullable String issuerDid) {
     
     this.issuerDid = issuerDid;
     return this;
@@ -187,11 +197,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_DID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerDid(String issuerDid) {
+  public void setIssuerDid(@javax.annotation.Nullable String issuerDid) {
     this.issuerDid = issuerDid;
   }
 
-  public IssuanceConfigMiniDto issuerWalletId(String issuerWalletId) {
+  public IssuanceConfigMiniDto issuerWalletId(@javax.annotation.Nullable String issuerWalletId) {
     
     this.issuerWalletId = issuerWalletId;
     return this;
@@ -212,11 +222,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerWalletId(String issuerWalletId) {
+  public void setIssuerWalletId(@javax.annotation.Nullable String issuerWalletId) {
     this.issuerWalletId = issuerWalletId;
   }
 
-  public IssuanceConfigMiniDto credentialOfferDuration(BigDecimal credentialOfferDuration) {
+  public IssuanceConfigMiniDto credentialOfferDuration(@javax.annotation.Nullable BigDecimal credentialOfferDuration) {
     
     this.credentialOfferDuration = credentialOfferDuration;
     return this;
@@ -237,11 +247,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialOfferDuration(BigDecimal credentialOfferDuration) {
+  public void setCredentialOfferDuration(@javax.annotation.Nullable BigDecimal credentialOfferDuration) {
     this.credentialOfferDuration = credentialOfferDuration;
   }
 
-  public IssuanceConfigMiniDto cNonceDuration(BigDecimal cNonceDuration) {
+  public IssuanceConfigMiniDto cNonceDuration(@javax.annotation.Nullable BigDecimal cNonceDuration) {
     
     this.cNonceDuration = cNonceDuration;
     return this;
@@ -262,11 +272,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_C_NONCE_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setcNonceDuration(BigDecimal cNonceDuration) {
+  public void setcNonceDuration(@javax.annotation.Nullable BigDecimal cNonceDuration) {
     this.cNonceDuration = cNonceDuration;
   }
 
-  public IssuanceConfigMiniDto format(FormatEnum format) {
+  public IssuanceConfigMiniDto format(@javax.annotation.Nullable FormatEnum format) {
     
     this.format = format;
     return this;
@@ -287,11 +297,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(FormatEnum format) {
+  public void setFormat(@javax.annotation.Nullable FormatEnum format) {
     this.format = format;
   }
 
-  public IssuanceConfigMiniDto issuerUri(String issuerUri) {
+  public IssuanceConfigMiniDto issuerUri(@javax.annotation.Nullable String issuerUri) {
     
     this.issuerUri = issuerUri;
     return this;
@@ -312,11 +322,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerUri(String issuerUri) {
+  public void setIssuerUri(@javax.annotation.Nullable String issuerUri) {
     this.issuerUri = issuerUri;
   }
 
-  public IssuanceConfigMiniDto issuerMetadata(Map<String, Object> issuerMetadata) {
+  public IssuanceConfigMiniDto issuerMetadata(@javax.annotation.Nullable Map<String, Object> issuerMetadata) {
     
     this.issuerMetadata = issuerMetadata;
     return this;
@@ -345,11 +355,11 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerMetadata(Map<String, Object> issuerMetadata) {
+  public void setIssuerMetadata(@javax.annotation.Nullable Map<String, Object> issuerMetadata) {
     this.issuerMetadata = issuerMetadata;
   }
 
-  public IssuanceConfigMiniDto version(BigDecimal version) {
+  public IssuanceConfigMiniDto version(@javax.annotation.Nullable BigDecimal version) {
     
     this.version = version;
     return this;
@@ -370,7 +380,7 @@ public class IssuanceConfigMiniDto {
 
   @JsonProperty(JSON_PROPERTY_VERSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVersion(BigDecimal version) {
+  public void setVersion(@javax.annotation.Nullable BigDecimal version) {
     this.version = version;
   }
 

@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WalletApi extends BaseApi {
 
   public WalletApi() {
@@ -60,7 +60,7 @@ public class WalletApi extends BaseApi {
    * @return CreateWalletResponse
    * @throws ApiException if fails to make API call
    */
-  public CreateWalletResponse createWallet(CreateWalletInput createWalletInput) throws ApiException {
+  public CreateWalletResponse createWallet(@javax.annotation.Nullable CreateWalletInput createWalletInput) throws ApiException {
     return this.createWallet(createWalletInput, Collections.emptyMap());
   }
 
@@ -73,7 +73,7 @@ public class WalletApi extends BaseApi {
    * @return CreateWalletResponse
    * @throws ApiException if fails to make API call
    */
-  public CreateWalletResponse createWallet(CreateWalletInput createWalletInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateWalletResponse createWallet(@javax.annotation.Nullable CreateWalletInput createWalletInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createWalletInput;
     
     // create path and map variables
@@ -128,7 +128,7 @@ public class WalletApi extends BaseApi {
    * @param walletId id of the wallet (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteWallet(String walletId) throws ApiException {
+  public void deleteWallet(@javax.annotation.Nonnull String walletId) throws ApiException {
     this.deleteWallet(walletId, Collections.emptyMap());
   }
 
@@ -140,7 +140,7 @@ public class WalletApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deleteWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
+  public void deleteWallet(@javax.annotation.Nonnull String walletId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'walletId' is set
@@ -201,7 +201,7 @@ public class WalletApi extends BaseApi {
    * @return WalletDto
    * @throws ApiException if fails to make API call
    */
-  public WalletDto getWallet(String walletId) throws ApiException {
+  public WalletDto getWallet(@javax.annotation.Nonnull String walletId) throws ApiException {
     return this.getWallet(walletId, Collections.emptyMap());
   }
 
@@ -214,7 +214,7 @@ public class WalletApi extends BaseApi {
    * @return WalletDto
    * @throws ApiException if fails to make API call
    */
-  public WalletDto getWallet(String walletId, Map<String, String> additionalHeaders) throws ApiException {
+  public WalletDto getWallet(@javax.annotation.Nonnull String walletId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'walletId' is set
@@ -276,7 +276,7 @@ public class WalletApi extends BaseApi {
    * @return WalletsListDto
    * @throws ApiException if fails to make API call
    */
-  public WalletsListDto listWallets(String didType) throws ApiException {
+  public WalletsListDto listWallets(@javax.annotation.Nullable String didType) throws ApiException {
     return this.listWallets(didType, Collections.emptyMap());
   }
 
@@ -289,7 +289,7 @@ public class WalletApi extends BaseApi {
    * @return WalletsListDto
    * @throws ApiException if fails to make API call
    */
-  public WalletsListDto listWallets(String didType, Map<String, String> additionalHeaders) throws ApiException {
+  public WalletsListDto listWallets(@javax.annotation.Nullable String didType, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -347,7 +347,7 @@ public class WalletApi extends BaseApi {
    * @return SignCredentialResultDto
    * @throws ApiException if fails to make API call
    */
-  public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto) throws ApiException {
+  public SignCredentialResultDto signCredential(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignCredentialInputDto signCredentialInputDto) throws ApiException {
     return this.signCredential(walletId, signCredentialInputDto, Collections.emptyMap());
   }
 
@@ -361,7 +361,7 @@ public class WalletApi extends BaseApi {
    * @return SignCredentialResultDto
    * @throws ApiException if fails to make API call
    */
-  public SignCredentialResultDto signCredential(String walletId, SignCredentialInputDto signCredentialInputDto, Map<String, String> additionalHeaders) throws ApiException {
+  public SignCredentialResultDto signCredential(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignCredentialInputDto signCredentialInputDto, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signCredentialInputDto;
     
     // verify the required parameter 'walletId' is set
@@ -429,7 +429,7 @@ public class WalletApi extends BaseApi {
    * @return SignJwtTokenOK
    * @throws ApiException if fails to make API call
    */
-  public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken) throws ApiException {
+  public SignJwtTokenOK signJwtToken(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignJwtToken signJwtToken) throws ApiException {
     return this.signJwtToken(walletId, signJwtToken, Collections.emptyMap());
   }
 
@@ -443,7 +443,7 @@ public class WalletApi extends BaseApi {
    * @return SignJwtTokenOK
    * @throws ApiException if fails to make API call
    */
-  public SignJwtTokenOK signJwtToken(String walletId, SignJwtToken signJwtToken, Map<String, String> additionalHeaders) throws ApiException {
+  public SignJwtTokenOK signJwtToken(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignJwtToken signJwtToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signJwtToken;
     
     // verify the required parameter 'walletId' is set
@@ -511,7 +511,7 @@ public class WalletApi extends BaseApi {
    * @return WalletDto
    * @throws ApiException if fails to make API call
    */
-  public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput) throws ApiException {
+  public WalletDto updateWallet(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull UpdateWalletInput updateWalletInput) throws ApiException {
     return this.updateWallet(walletId, updateWalletInput, Collections.emptyMap());
   }
 
@@ -525,7 +525,7 @@ public class WalletApi extends BaseApi {
    * @return WalletDto
    * @throws ApiException if fails to make API call
    */
-  public WalletDto updateWallet(String walletId, UpdateWalletInput updateWalletInput, Map<String, String> additionalHeaders) throws ApiException {
+  public WalletDto updateWallet(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull UpdateWalletInput updateWalletInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateWalletInput;
     
     // verify the required parameter 'walletId' is set

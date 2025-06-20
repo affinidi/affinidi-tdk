@@ -40,7 +40,7 @@ class ConsentDto(BaseModel):
     @validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('GIVEN'):
+        if value not in ('GIVEN',):
             raise ValueError("must be one of enum values ('GIVEN')")
         return value
 

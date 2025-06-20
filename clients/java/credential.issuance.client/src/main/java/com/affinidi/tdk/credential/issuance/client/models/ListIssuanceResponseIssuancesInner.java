@@ -33,15 +33,16 @@ import java.util.StringJoiner;
   ListIssuanceResponseIssuancesInner.JSON_PROPERTY_ID
 })
 @JsonTypeName("ListIssuanceResponse_issuances_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListIssuanceResponseIssuancesInner {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public ListIssuanceResponseIssuancesInner() {
   }
 
-  public ListIssuanceResponseIssuancesInner id(String id) {
+  public ListIssuanceResponseIssuancesInner id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -62,7 +63,7 @@ public class ListIssuanceResponseIssuancesInner {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 

@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   MoveNodeInput.JSON_PROPERTY_DESTINATION_NODE_ID,
   MoveNodeInput.JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class MoveNodeInput {
   public static final String JSON_PROPERTY_DESTINATION_NODE_ID = "destinationNodeId";
+  @javax.annotation.Nonnull
   private String destinationNodeId;
 
   public static final String JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY = "resolveNameConflictsAutomatically";
+  @javax.annotation.Nullable
   private Boolean resolveNameConflictsAutomatically = false;
 
   public MoveNodeInput() {
   }
 
-  public MoveNodeInput destinationNodeId(String destinationNodeId) {
+  public MoveNodeInput destinationNodeId(@javax.annotation.Nonnull String destinationNodeId) {
     
     this.destinationNodeId = destinationNodeId;
     return this;
@@ -65,11 +67,11 @@ public class MoveNodeInput {
 
   @JsonProperty(JSON_PROPERTY_DESTINATION_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDestinationNodeId(String destinationNodeId) {
+  public void setDestinationNodeId(@javax.annotation.Nonnull String destinationNodeId) {
     this.destinationNodeId = destinationNodeId;
   }
 
-  public MoveNodeInput resolveNameConflictsAutomatically(Boolean resolveNameConflictsAutomatically) {
+  public MoveNodeInput resolveNameConflictsAutomatically(@javax.annotation.Nullable Boolean resolveNameConflictsAutomatically) {
     
     this.resolveNameConflictsAutomatically = resolveNameConflictsAutomatically;
     return this;
@@ -90,7 +92,7 @@ public class MoveNodeInput {
 
   @JsonProperty(JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResolveNameConflictsAutomatically(Boolean resolveNameConflictsAutomatically) {
+  public void setResolveNameConflictsAutomatically(@javax.annotation.Nullable Boolean resolveNameConflictsAutomatically) {
     this.resolveNameConflictsAutomatically = resolveNameConflictsAutomatically;
   }
 

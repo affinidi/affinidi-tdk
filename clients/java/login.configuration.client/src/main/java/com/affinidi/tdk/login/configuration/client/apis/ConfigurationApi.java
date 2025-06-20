@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConfigurationApi extends BaseApi {
 
   public ConfigurationApi() {
@@ -58,7 +58,7 @@ public class ConfigurationApi extends BaseApi {
    * @return CreateLoginConfigurationOutput
    * @throws ApiException if fails to make API call
    */
-  public CreateLoginConfigurationOutput createLoginConfigurations(CreateLoginConfigurationInput createLoginConfigurationInput) throws ApiException {
+  public CreateLoginConfigurationOutput createLoginConfigurations(@javax.annotation.Nullable CreateLoginConfigurationInput createLoginConfigurationInput) throws ApiException {
     return this.createLoginConfigurations(createLoginConfigurationInput, Collections.emptyMap());
   }
 
@@ -71,7 +71,7 @@ public class ConfigurationApi extends BaseApi {
    * @return CreateLoginConfigurationOutput
    * @throws ApiException if fails to make API call
    */
-  public CreateLoginConfigurationOutput createLoginConfigurations(CreateLoginConfigurationInput createLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateLoginConfigurationOutput createLoginConfigurations(@javax.annotation.Nullable CreateLoginConfigurationInput createLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createLoginConfigurationInput;
     
     // create path and map variables
@@ -126,7 +126,7 @@ public class ConfigurationApi extends BaseApi {
    * @param configurationId The id of the login configuration (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteLoginConfigurationsById(String configurationId) throws ApiException {
+  public void deleteLoginConfigurationsById(@javax.annotation.Nonnull String configurationId) throws ApiException {
     this.deleteLoginConfigurationsById(configurationId, Collections.emptyMap());
   }
 
@@ -138,7 +138,7 @@ public class ConfigurationApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deleteLoginConfigurationsById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+  public void deleteLoginConfigurationsById(@javax.annotation.Nonnull String configurationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -199,7 +199,7 @@ public class ConfigurationApi extends BaseApi {
    * @return LoginConfigurationClientMetadataOutput
    * @throws ApiException if fails to make API call
    */
-  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId) throws ApiException {
+  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(@javax.annotation.Nonnull String clientId) throws ApiException {
     return this.getClientMetadataByClientId(clientId, Collections.emptyMap());
   }
 
@@ -212,7 +212,7 @@ public class ConfigurationApi extends BaseApi {
    * @return LoginConfigurationClientMetadataOutput
    * @throws ApiException if fails to make API call
    */
-  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(String clientId, Map<String, String> additionalHeaders) throws ApiException {
+  public LoginConfigurationClientMetadataOutput getClientMetadataByClientId(@javax.annotation.Nonnull String clientId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'clientId' is set
@@ -274,7 +274,7 @@ public class ConfigurationApi extends BaseApi {
    * @return LoginConfigurationObject
    * @throws ApiException if fails to make API call
    */
-  public LoginConfigurationObject getLoginConfigurationsById(String configurationId) throws ApiException {
+  public LoginConfigurationObject getLoginConfigurationsById(@javax.annotation.Nonnull String configurationId) throws ApiException {
     return this.getLoginConfigurationsById(configurationId, Collections.emptyMap());
   }
 
@@ -287,7 +287,7 @@ public class ConfigurationApi extends BaseApi {
    * @return LoginConfigurationObject
    * @throws ApiException if fails to make API call
    */
-  public LoginConfigurationObject getLoginConfigurationsById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+  public LoginConfigurationObject getLoginConfigurationsById(@javax.annotation.Nonnull String configurationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -350,7 +350,7 @@ public class ConfigurationApi extends BaseApi {
    * @return ListLoginConfigurationOutput
    * @throws ApiException if fails to make API call
    */
-  public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey) throws ApiException {
+  public ListLoginConfigurationOutput listLoginConfigurations(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listLoginConfigurations(limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -364,7 +364,7 @@ public class ConfigurationApi extends BaseApi {
    * @return ListLoginConfigurationOutput
    * @throws ApiException if fails to make API call
    */
-  public ListLoginConfigurationOutput listLoginConfigurations(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListLoginConfigurationOutput listLoginConfigurations(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -423,7 +423,7 @@ public class ConfigurationApi extends BaseApi {
    * @return LoginConfigurationObject
    * @throws ApiException if fails to make API call
    */
-  public LoginConfigurationObject updateLoginConfigurationsById(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput) throws ApiException {
+  public LoginConfigurationObject updateLoginConfigurationsById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable UpdateLoginConfigurationInput updateLoginConfigurationInput) throws ApiException {
     return this.updateLoginConfigurationsById(configurationId, updateLoginConfigurationInput, Collections.emptyMap());
   }
 
@@ -437,7 +437,7 @@ public class ConfigurationApi extends BaseApi {
    * @return LoginConfigurationObject
    * @throws ApiException if fails to make API call
    */
-  public LoginConfigurationObject updateLoginConfigurationsById(String configurationId, UpdateLoginConfigurationInput updateLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
+  public LoginConfigurationObject updateLoginConfigurationsById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable UpdateLoginConfigurationInput updateLoginConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateLoginConfigurationInput;
     
     // verify the required parameter 'configurationId' is set

@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IssuanceApi extends BaseApi {
 
   public IssuanceApi() {
@@ -58,7 +58,7 @@ public class IssuanceApi extends BaseApi {
    * @return IssuanceStateResponse
    * @throws ApiException if fails to make API call
    */
-  public IssuanceStateResponse issuanceState(String issuanceId, String projectId) throws ApiException {
+  public IssuanceStateResponse issuanceState(@javax.annotation.Nonnull String issuanceId, @javax.annotation.Nonnull String projectId) throws ApiException {
     return this.issuanceState(issuanceId, projectId, Collections.emptyMap());
   }
 
@@ -72,7 +72,7 @@ public class IssuanceApi extends BaseApi {
    * @return IssuanceStateResponse
    * @throws ApiException if fails to make API call
    */
-  public IssuanceStateResponse issuanceState(String issuanceId, String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public IssuanceStateResponse issuanceState(@javax.annotation.Nonnull String issuanceId, @javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'issuanceId' is set
@@ -141,7 +141,7 @@ public class IssuanceApi extends BaseApi {
    * @return CredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public CredentialResponse issueCredentials(String projectId, StartIssuanceInput startIssuanceInput) throws ApiException {
+  public CredentialResponse issueCredentials(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull StartIssuanceInput startIssuanceInput) throws ApiException {
     return this.issueCredentials(projectId, startIssuanceInput, Collections.emptyMap());
   }
 
@@ -155,7 +155,7 @@ public class IssuanceApi extends BaseApi {
    * @return CredentialResponse
    * @throws ApiException if fails to make API call
    */
-  public CredentialResponse issueCredentials(String projectId, StartIssuanceInput startIssuanceInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CredentialResponse issueCredentials(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull StartIssuanceInput startIssuanceInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = startIssuanceInput;
     
     // verify the required parameter 'projectId' is set
@@ -222,7 +222,7 @@ public class IssuanceApi extends BaseApi {
    * @return ListIssuanceResponse
    * @throws ApiException if fails to make API call
    */
-  public ListIssuanceResponse listIssuance(String projectId) throws ApiException {
+  public ListIssuanceResponse listIssuance(@javax.annotation.Nonnull String projectId) throws ApiException {
     return this.listIssuance(projectId, Collections.emptyMap());
   }
 
@@ -235,7 +235,7 @@ public class IssuanceApi extends BaseApi {
    * @return ListIssuanceResponse
    * @throws ApiException if fails to make API call
    */
-  public ListIssuanceResponse listIssuance(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public ListIssuanceResponse listIssuance(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -298,7 +298,7 @@ public class IssuanceApi extends BaseApi {
    * @return StartIssuanceResponse
    * @throws ApiException if fails to make API call
    */
-  public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput) throws ApiException {
+  public StartIssuanceResponse startIssuance(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull StartIssuanceInput startIssuanceInput) throws ApiException {
     return this.startIssuance(projectId, startIssuanceInput, Collections.emptyMap());
   }
 
@@ -312,7 +312,7 @@ public class IssuanceApi extends BaseApi {
    * @return StartIssuanceResponse
    * @throws ApiException if fails to make API call
    */
-  public StartIssuanceResponse startIssuance(String projectId, StartIssuanceInput startIssuanceInput, Map<String, String> additionalHeaders) throws ApiException {
+  public StartIssuanceResponse startIssuance(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull StartIssuanceInput startIssuanceInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = startIssuanceInput;
     
     // verify the required parameter 'projectId' is set

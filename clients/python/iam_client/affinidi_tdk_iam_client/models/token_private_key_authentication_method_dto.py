@@ -35,14 +35,14 @@ class TokenPrivateKeyAuthenticationMethodDto(BaseModel):
     @validator('type')
     def type_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('PRIVATE_KEY'):
+        if value not in ('PRIVATE_KEY',):
             raise ValueError("must be one of enum values ('PRIVATE_KEY')")
         return value
 
     @validator('signing_algorithm')
     def signing_algorithm_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('RS256', 'RS512', 'ES256', 'ES512'):
+        if value not in ('RS256', 'RS512', 'ES256', 'ES512',):
             raise ValueError("must be one of enum values ('RS256', 'RS512', 'ES256', 'ES512')")
         return value
 

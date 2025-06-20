@@ -40,24 +40,28 @@ import java.util.StringJoiner;
   ServiceErrorResponse.JSON_PROPERTY_CODE,
   ServiceErrorResponse.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ServiceErrorResponse {
   public static final String JSON_PROPERTY_DEBUG_ID = "debugId";
+  @javax.annotation.Nonnull
   private UUID debugId;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_CODE = "code";
+  @javax.annotation.Nonnull
   private String code;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
   private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
 
   public ServiceErrorResponse() {
   }
 
-  public ServiceErrorResponse debugId(UUID debugId) {
+  public ServiceErrorResponse debugId(@javax.annotation.Nonnull UUID debugId) {
     
     this.debugId = debugId;
     return this;
@@ -78,11 +82,11 @@ public class ServiceErrorResponse {
 
   @JsonProperty(JSON_PROPERTY_DEBUG_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDebugId(UUID debugId) {
+  public void setDebugId(@javax.annotation.Nonnull UUID debugId) {
     this.debugId = debugId;
   }
 
-  public ServiceErrorResponse name(String name) {
+  public ServiceErrorResponse name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -103,11 +107,11 @@ public class ServiceErrorResponse {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public ServiceErrorResponse code(String code) {
+  public ServiceErrorResponse code(@javax.annotation.Nonnull String code) {
     
     this.code = code;
     return this;
@@ -128,11 +132,11 @@ public class ServiceErrorResponse {
 
   @JsonProperty(JSON_PROPERTY_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCode(String code) {
+  public void setCode(@javax.annotation.Nonnull String code) {
     this.code = code;
   }
 
-  public ServiceErrorResponse details(List<ServiceErrorResponseDetailsInner> details) {
+  public ServiceErrorResponse details(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
     
     this.details = details;
     return this;
@@ -161,7 +165,7 @@ public class ServiceErrorResponse {
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(List<ServiceErrorResponseDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
     this.details = details;
   }
 

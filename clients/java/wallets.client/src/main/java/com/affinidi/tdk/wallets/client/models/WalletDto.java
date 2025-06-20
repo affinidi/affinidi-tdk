@@ -44,39 +44,48 @@ import java.util.StringJoiner;
   WalletDto.JSON_PROPERTY_CREATED_AT,
   WalletDto.JSON_PROPERTY_MODIFIED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WalletDto {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_DID = "did";
+  @javax.annotation.Nullable
   private String did;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_DID_DOCUMENT = "didDocument";
+  @javax.annotation.Nullable
   private Object didDocument;
 
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nullable
   private String ari;
 
   public static final String JSON_PROPERTY_KEYS = "keys";
+  @javax.annotation.Nullable
   private List<WalletDtoKeysInner> keys = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nullable
   private String createdAt;
 
   public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
+  @javax.annotation.Nullable
   private String modifiedAt;
 
   public WalletDto() {
   }
 
-  public WalletDto id(String id) {
+  public WalletDto id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -97,11 +106,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
-  public WalletDto did(String did) {
+  public WalletDto did(@javax.annotation.Nullable String did) {
     
     this.did = did;
     return this;
@@ -122,11 +131,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_DID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDid(String did) {
+  public void setDid(@javax.annotation.Nullable String did) {
     this.did = did;
   }
 
-  public WalletDto name(String name) {
+  public WalletDto name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -147,11 +156,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public WalletDto description(String description) {
+  public WalletDto description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -172,11 +181,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public WalletDto didDocument(Object didDocument) {
+  public WalletDto didDocument(@javax.annotation.Nullable Object didDocument) {
     
     this.didDocument = didDocument;
     return this;
@@ -197,11 +206,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_DID_DOCUMENT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDidDocument(Object didDocument) {
+  public void setDidDocument(@javax.annotation.Nullable Object didDocument) {
     this.didDocument = didDocument;
   }
 
-  public WalletDto ari(String ari) {
+  public WalletDto ari(@javax.annotation.Nullable String ari) {
     
     this.ari = ari;
     return this;
@@ -222,11 +231,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nullable String ari) {
     this.ari = ari;
   }
 
-  public WalletDto keys(List<WalletDtoKeysInner> keys) {
+  public WalletDto keys(@javax.annotation.Nullable List<WalletDtoKeysInner> keys) {
     
     this.keys = keys;
     return this;
@@ -255,11 +264,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_KEYS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeys(List<WalletDtoKeysInner> keys) {
+  public void setKeys(@javax.annotation.Nullable List<WalletDtoKeysInner> keys) {
     this.keys = keys;
   }
 
-  public WalletDto createdAt(String createdAt) {
+  public WalletDto createdAt(@javax.annotation.Nullable String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -280,11 +289,11 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public WalletDto modifiedAt(String modifiedAt) {
+  public WalletDto modifiedAt(@javax.annotation.Nullable String modifiedAt) {
     
     this.modifiedAt = modifiedAt;
     return this;
@@ -305,7 +314,7 @@ public class WalletDto {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setModifiedAt(String modifiedAt) {
+  public void setModifiedAt(@javax.annotation.Nullable String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
 

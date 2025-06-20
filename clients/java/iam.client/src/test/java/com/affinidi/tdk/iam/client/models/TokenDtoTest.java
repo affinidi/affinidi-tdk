@@ -13,7 +13,7 @@
 
 package com.affinidi.tdk.iam.client.models;
 
-import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
+import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;

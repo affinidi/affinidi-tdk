@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   CreatePexQueryInput.JSON_PROPERTY_VP_DEFINITION,
   CreatePexQueryInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreatePexQueryInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+  @javax.annotation.Nonnull
   private String vpDefinition;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public CreatePexQueryInput() {
   }
 
-  public CreatePexQueryInput name(String name) {
+  public CreatePexQueryInput name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -69,11 +72,11 @@ public class CreatePexQueryInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public CreatePexQueryInput vpDefinition(String vpDefinition) {
+  public CreatePexQueryInput vpDefinition(@javax.annotation.Nonnull String vpDefinition) {
     
     this.vpDefinition = vpDefinition;
     return this;
@@ -94,11 +97,11 @@ public class CreatePexQueryInput {
 
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVpDefinition(String vpDefinition) {
+  public void setVpDefinition(@javax.annotation.Nonnull String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }
 
-  public CreatePexQueryInput description(String description) {
+  public CreatePexQueryInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -119,7 +122,7 @@ public class CreatePexQueryInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

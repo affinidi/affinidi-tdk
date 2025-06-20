@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -37,25 +35,28 @@ import java.util.StringJoiner;
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_LOGO,
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_DOMAIN_VERIFIED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class LoginConfigurationClientMetadataOutput extends HashMap<String, Object> {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+public class LoginConfigurationClientMetadataOutput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_ORIGIN = "origin";
+  @javax.annotation.Nonnull
   private String origin;
 
   public static final String JSON_PROPERTY_LOGO = "logo";
+  @javax.annotation.Nonnull
   private String logo;
 
   public static final String JSON_PROPERTY_DOMAIN_VERIFIED = "domainVerified";
+  @javax.annotation.Nullable
   private Boolean domainVerified;
 
   public LoginConfigurationClientMetadataOutput() {
-
   }
 
-  public LoginConfigurationClientMetadataOutput name(String name) {
+  public LoginConfigurationClientMetadataOutput name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -76,11 +77,11 @@ public class LoginConfigurationClientMetadataOutput extends HashMap<String, Obje
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public LoginConfigurationClientMetadataOutput origin(String origin) {
+  public LoginConfigurationClientMetadataOutput origin(@javax.annotation.Nonnull String origin) {
     
     this.origin = origin;
     return this;
@@ -101,11 +102,11 @@ public class LoginConfigurationClientMetadataOutput extends HashMap<String, Obje
 
   @JsonProperty(JSON_PROPERTY_ORIGIN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrigin(String origin) {
+  public void setOrigin(@javax.annotation.Nonnull String origin) {
     this.origin = origin;
   }
 
-  public LoginConfigurationClientMetadataOutput logo(String logo) {
+  public LoginConfigurationClientMetadataOutput logo(@javax.annotation.Nonnull String logo) {
     
     this.logo = logo;
     return this;
@@ -126,11 +127,11 @@ public class LoginConfigurationClientMetadataOutput extends HashMap<String, Obje
 
   @JsonProperty(JSON_PROPERTY_LOGO)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLogo(String logo) {
+  public void setLogo(@javax.annotation.Nonnull String logo) {
     this.logo = logo;
   }
 
-  public LoginConfigurationClientMetadataOutput domainVerified(Boolean domainVerified) {
+  public LoginConfigurationClientMetadataOutput domainVerified(@javax.annotation.Nullable Boolean domainVerified) {
     
     this.domainVerified = domainVerified;
     return this;
@@ -151,7 +152,7 @@ public class LoginConfigurationClientMetadataOutput extends HashMap<String, Obje
 
   @JsonProperty(JSON_PROPERTY_DOMAIN_VERIFIED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDomainVerified(Boolean domainVerified) {
+  public void setDomainVerified(@javax.annotation.Nullable Boolean domainVerified) {
     this.domainVerified = domainVerified;
   }
 
@@ -167,20 +168,18 @@ public class LoginConfigurationClientMetadataOutput extends HashMap<String, Obje
     return Objects.equals(this.name, loginConfigurationClientMetadataOutput.name) &&
         Objects.equals(this.origin, loginConfigurationClientMetadataOutput.origin) &&
         Objects.equals(this.logo, loginConfigurationClientMetadataOutput.logo) &&
-        Objects.equals(this.domainVerified, loginConfigurationClientMetadataOutput.domainVerified) &&
-        super.equals(o);
+        Objects.equals(this.domainVerified, loginConfigurationClientMetadataOutput.domainVerified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, origin, logo, domainVerified, super.hashCode());
+    return Objects.hash(name, origin, logo, domainVerified);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginConfigurationClientMetadataOutput {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    logo: ").append(toIndentedString(logo)).append("\n");

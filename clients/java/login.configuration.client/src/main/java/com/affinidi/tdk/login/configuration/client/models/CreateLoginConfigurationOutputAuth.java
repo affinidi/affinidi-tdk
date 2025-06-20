@@ -36,24 +36,28 @@ import java.util.StringJoiner;
   CreateLoginConfigurationOutputAuth.JSON_PROPERTY_ISSUER
 })
 @JsonTypeName("CreateLoginConfigurationOutput_auth")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateLoginConfigurationOutputAuth {
   public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
+  @javax.annotation.Nonnull
   private String clientId;
 
   public static final String JSON_PROPERTY_CLIENT_SECRET = "clientSecret";
+  @javax.annotation.Nullable
   private String clientSecret;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String JSON_PROPERTY_ISSUER = "issuer";
+  @javax.annotation.Nullable
   private String issuer;
 
   public CreateLoginConfigurationOutputAuth() {
   }
 
-  public CreateLoginConfigurationOutputAuth clientId(String clientId) {
+  public CreateLoginConfigurationOutputAuth clientId(@javax.annotation.Nonnull String clientId) {
     
     this.clientId = clientId;
     return this;
@@ -74,11 +78,11 @@ public class CreateLoginConfigurationOutputAuth {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setClientId(String clientId) {
+  public void setClientId(@javax.annotation.Nonnull String clientId) {
     this.clientId = clientId;
   }
 
-  public CreateLoginConfigurationOutputAuth clientSecret(String clientSecret) {
+  public CreateLoginConfigurationOutputAuth clientSecret(@javax.annotation.Nullable String clientSecret) {
     
     this.clientSecret = clientSecret;
     return this;
@@ -99,11 +103,11 @@ public class CreateLoginConfigurationOutputAuth {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientSecret(String clientSecret) {
+  public void setClientSecret(@javax.annotation.Nullable String clientSecret) {
     this.clientSecret = clientSecret;
   }
 
-  public CreateLoginConfigurationOutputAuth scope(String scope) {
+  public CreateLoginConfigurationOutputAuth scope(@javax.annotation.Nullable String scope) {
     
     this.scope = scope;
     return this;
@@ -124,11 +128,11 @@ public class CreateLoginConfigurationOutputAuth {
 
   @JsonProperty(JSON_PROPERTY_SCOPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
-  public CreateLoginConfigurationOutputAuth issuer(String issuer) {
+  public CreateLoginConfigurationOutputAuth issuer(@javax.annotation.Nullable String issuer) {
     
     this.issuer = issuer;
     return this;
@@ -149,7 +153,7 @@ public class CreateLoginConfigurationOutputAuth {
 
   @JsonProperty(JSON_PROPERTY_ISSUER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuer(String issuer) {
+  public void setIssuer(@javax.annotation.Nullable String issuer) {
     this.issuer = issuer;
   }
 

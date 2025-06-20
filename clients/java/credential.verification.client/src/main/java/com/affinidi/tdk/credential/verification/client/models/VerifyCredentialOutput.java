@@ -36,18 +36,20 @@ import java.util.StringJoiner;
   VerifyCredentialOutput.JSON_PROPERTY_ERRORS,
   VerifyCredentialOutput.JSON_PROPERTY_IS_VALID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class VerifyCredentialOutput {
   public static final String JSON_PROPERTY_ERRORS = "errors";
+  @javax.annotation.Nonnull
   private List<String> errors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IS_VALID = "isValid";
+  @javax.annotation.Nonnull
   private Boolean isValid;
 
   public VerifyCredentialOutput() {
   }
 
-  public VerifyCredentialOutput errors(List<String> errors) {
+  public VerifyCredentialOutput errors(@javax.annotation.Nonnull List<String> errors) {
     
     this.errors = errors;
     return this;
@@ -76,11 +78,11 @@ public class VerifyCredentialOutput {
 
   @JsonProperty(JSON_PROPERTY_ERRORS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrors(List<String> errors) {
+  public void setErrors(@javax.annotation.Nonnull List<String> errors) {
     this.errors = errors;
   }
 
-  public VerifyCredentialOutput isValid(Boolean isValid) {
+  public VerifyCredentialOutput isValid(@javax.annotation.Nonnull Boolean isValid) {
     
     this.isValid = isValid;
     return this;
@@ -101,7 +103,7 @@ public class VerifyCredentialOutput {
 
   @JsonProperty(JSON_PROPERTY_IS_VALID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIsValid(Boolean isValid) {
+  public void setIsValid(@javax.annotation.Nonnull Boolean isValid) {
     this.isValid = isValid;
   }
 

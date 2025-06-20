@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsMoveNodeOK.JSON_PROPERTY_CORS_MOVE_NODE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsMoveNodeOK {
   public static final String JSON_PROPERTY_CORS_MOVE_NODE_OK = "corsMoveNodeOk";
+  @javax.annotation.Nullable
   private String corsMoveNodeOk;
 
   public CorsMoveNodeOK() {
   }
 
-  public CorsMoveNodeOK corsMoveNodeOk(String corsMoveNodeOk) {
+  public CorsMoveNodeOK corsMoveNodeOk(@javax.annotation.Nullable String corsMoveNodeOk) {
     
     this.corsMoveNodeOk = corsMoveNodeOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsMoveNodeOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_MOVE_NODE_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsMoveNodeOk(String corsMoveNodeOk) {
+  public void setCorsMoveNodeOk(@javax.annotation.Nullable String corsMoveNodeOk) {
     this.corsMoveNodeOk = corsMoveNodeOk;
   }
 

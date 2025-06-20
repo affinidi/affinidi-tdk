@@ -35,15 +35,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   DeletePexQueriesInput.JSON_PROPERTY_QUERY_IDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DeletePexQueriesInput {
   public static final String JSON_PROPERTY_QUERY_IDS = "queryIds";
+  @javax.annotation.Nonnull
   private List<String> queryIds = new ArrayList<>();
 
   public DeletePexQueriesInput() {
   }
 
-  public DeletePexQueriesInput queryIds(List<String> queryIds) {
+  public DeletePexQueriesInput queryIds(@javax.annotation.Nonnull List<String> queryIds) {
     
     this.queryIds = queryIds;
     return this;
@@ -72,7 +73,7 @@ public class DeletePexQueriesInput {
 
   @JsonProperty(JSON_PROPERTY_QUERY_IDS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setQueryIds(List<String> queryIds) {
+  public void setQueryIds(@javax.annotation.Nonnull List<String> queryIds) {
     this.queryIds = queryIds;
   }
 

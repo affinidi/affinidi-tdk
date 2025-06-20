@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UpdateProfileDataOK.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateProfileDataOK {
   public static final String JSON_PROPERTY_DATA = "data";
+  @javax.annotation.Nullable
   private Object data;
 
   public UpdateProfileDataOK() {
   }
 
-  public UpdateProfileDataOK data(Object data) {
+  public UpdateProfileDataOK data(@javax.annotation.Nullable Object data) {
     
     this.data = data;
     return this;
@@ -61,7 +62,7 @@ public class UpdateProfileDataOK {
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setData(Object data) {
+  public void setData(@javax.annotation.Nullable Object data) {
     this.data = data;
   }
 

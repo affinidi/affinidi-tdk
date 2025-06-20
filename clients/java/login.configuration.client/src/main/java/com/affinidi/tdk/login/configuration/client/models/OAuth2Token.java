@@ -42,33 +42,40 @@ import java.util.StringJoiner;
   OAuth2Token.JSON_PROPERTY_TOKEN_TYPE,
   OAuth2Token.JSON_PROPERTY_AUTHORIZATION_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OAuth2Token {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "access_token";
+  @javax.annotation.Nullable
   private String accessToken;
 
   public static final String JSON_PROPERTY_EXPIRES_IN = "expires_in";
+  @javax.annotation.Nullable
   private Integer expiresIn;
 
   public static final String JSON_PROPERTY_ID_TOKEN = "id_token";
+  @javax.annotation.Nullable
   private Integer idToken;
 
   public static final String JSON_PROPERTY_REFRESH_TOKEN = "refresh_token";
+  @javax.annotation.Nullable
   private String refreshToken;
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String JSON_PROPERTY_TOKEN_TYPE = "token_type";
+  @javax.annotation.Nullable
   private String tokenType;
 
   public static final String JSON_PROPERTY_AUTHORIZATION_DETAILS = "authorization_details";
+  @javax.annotation.Nullable
   private List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails = new ArrayList<>();
 
   public OAuth2Token() {
   }
 
-  public OAuth2Token accessToken(String accessToken) {
+  public OAuth2Token accessToken(@javax.annotation.Nullable String accessToken) {
     
     this.accessToken = accessToken;
     return this;
@@ -89,11 +96,11 @@ public class OAuth2Token {
 
   @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAccessToken(String accessToken) {
+  public void setAccessToken(@javax.annotation.Nullable String accessToken) {
     this.accessToken = accessToken;
   }
 
-  public OAuth2Token expiresIn(Integer expiresIn) {
+  public OAuth2Token expiresIn(@javax.annotation.Nullable Integer expiresIn) {
     
     this.expiresIn = expiresIn;
     return this;
@@ -114,11 +121,11 @@ public class OAuth2Token {
 
   @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExpiresIn(Integer expiresIn) {
+  public void setExpiresIn(@javax.annotation.Nullable Integer expiresIn) {
     this.expiresIn = expiresIn;
   }
 
-  public OAuth2Token idToken(Integer idToken) {
+  public OAuth2Token idToken(@javax.annotation.Nullable Integer idToken) {
     
     this.idToken = idToken;
     return this;
@@ -139,11 +146,11 @@ public class OAuth2Token {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdToken(Integer idToken) {
+  public void setIdToken(@javax.annotation.Nullable Integer idToken) {
     this.idToken = idToken;
   }
 
-  public OAuth2Token refreshToken(String refreshToken) {
+  public OAuth2Token refreshToken(@javax.annotation.Nullable String refreshToken) {
     
     this.refreshToken = refreshToken;
     return this;
@@ -164,11 +171,11 @@ public class OAuth2Token {
 
   @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRefreshToken(String refreshToken) {
+  public void setRefreshToken(@javax.annotation.Nullable String refreshToken) {
     this.refreshToken = refreshToken;
   }
 
-  public OAuth2Token scope(String scope) {
+  public OAuth2Token scope(@javax.annotation.Nullable String scope) {
     
     this.scope = scope;
     return this;
@@ -189,11 +196,11 @@ public class OAuth2Token {
 
   @JsonProperty(JSON_PROPERTY_SCOPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
-  public OAuth2Token tokenType(String tokenType) {
+  public OAuth2Token tokenType(@javax.annotation.Nullable String tokenType) {
     
     this.tokenType = tokenType;
     return this;
@@ -214,11 +221,11 @@ public class OAuth2Token {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenType(String tokenType) {
+  public void setTokenType(@javax.annotation.Nullable String tokenType) {
     this.tokenType = tokenType;
   }
 
-  public OAuth2Token authorizationDetails(List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails) {
+  public OAuth2Token authorizationDetails(@javax.annotation.Nullable List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails) {
     
     this.authorizationDetails = authorizationDetails;
     return this;
@@ -247,7 +254,7 @@ public class OAuth2Token {
 
   @JsonProperty(JSON_PROPERTY_AUTHORIZATION_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthorizationDetails(List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails) {
+  public void setAuthorizationDetails(@javax.annotation.Nullable List<OAuth2TokenAuthorizationDetailsInner> authorizationDetails) {
     this.authorizationDetails = authorizationDetails;
   }
 

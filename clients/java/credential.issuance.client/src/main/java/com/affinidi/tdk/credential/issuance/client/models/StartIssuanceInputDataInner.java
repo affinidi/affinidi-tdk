@@ -43,24 +43,28 @@ import java.util.StringJoiner;
   StartIssuanceInputDataInner.JSON_PROPERTY_META_DATA
 })
 @JsonTypeName("StartIssuanceInput_data_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StartIssuanceInputDataInner {
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
+  @javax.annotation.Nonnull
   private String credentialTypeId;
 
   public static final String JSON_PROPERTY_CREDENTIAL_DATA = "credentialData";
+  @javax.annotation.Nonnull
   private Map<String, Object> credentialData = new HashMap<>();
 
   public static final String JSON_PROPERTY_STATUS_LIST_DETAILS = "statusListDetails";
+  @javax.annotation.Nullable
   private List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails = new ArrayList<>();
 
   public static final String JSON_PROPERTY_META_DATA = "metaData";
+  @javax.annotation.Nullable
   private StartIssuanceInputDataInnerMetaData metaData;
 
   public StartIssuanceInputDataInner() {
   }
 
-  public StartIssuanceInputDataInner credentialTypeId(String credentialTypeId) {
+  public StartIssuanceInputDataInner credentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     
     this.credentialTypeId = credentialTypeId;
     return this;
@@ -81,11 +85,11 @@ public class StartIssuanceInputDataInner {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialTypeId(String credentialTypeId) {
+  public void setCredentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
   }
 
-  public StartIssuanceInputDataInner credentialData(Map<String, Object> credentialData) {
+  public StartIssuanceInputDataInner credentialData(@javax.annotation.Nonnull Map<String, Object> credentialData) {
     
     this.credentialData = credentialData;
     return this;
@@ -111,11 +115,11 @@ public class StartIssuanceInputDataInner {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_DATA)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
-  public void setCredentialData(Map<String, Object> credentialData) {
+  public void setCredentialData(@javax.annotation.Nonnull Map<String, Object> credentialData) {
     this.credentialData = credentialData;
   }
 
-  public StartIssuanceInputDataInner statusListDetails(List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails) {
+  public StartIssuanceInputDataInner statusListDetails(@javax.annotation.Nullable List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails) {
     
     this.statusListDetails = statusListDetails;
     return this;
@@ -144,11 +148,11 @@ public class StartIssuanceInputDataInner {
 
   @JsonProperty(JSON_PROPERTY_STATUS_LIST_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatusListDetails(List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails) {
+  public void setStatusListDetails(@javax.annotation.Nullable List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails) {
     this.statusListDetails = statusListDetails;
   }
 
-  public StartIssuanceInputDataInner metaData(StartIssuanceInputDataInnerMetaData metaData) {
+  public StartIssuanceInputDataInner metaData(@javax.annotation.Nullable StartIssuanceInputDataInnerMetaData metaData) {
     
     this.metaData = metaData;
     return this;
@@ -169,7 +173,7 @@ public class StartIssuanceInputDataInner {
 
   @JsonProperty(JSON_PROPERTY_META_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetaData(StartIssuanceInputDataInnerMetaData metaData) {
+  public void setMetaData(@javax.annotation.Nullable StartIssuanceInputDataInnerMetaData metaData) {
     this.metaData = metaData;
   }
 

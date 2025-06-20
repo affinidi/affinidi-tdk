@@ -30,7 +30,6 @@ class LoginConfigurationClientMetadataOutput(BaseModel):
     origin: StrictStr = Field(default=..., description="origin url that will be displayed in consent page")
     logo: StrictStr = Field(default=..., description="logo url that will be displayed in consent page")
     domain_verified: Optional[StrictBool] = Field(default=None, alias="domainVerified", description="indicates if the developer's ownership of the domain has been verified")
-    additional_properties: Dict[str, Any] = {}
     __properties = ["name", "origin", "logo", "domainVerified"]
 
     class Config:
@@ -55,14 +54,8 @@ class LoginConfigurationClientMetadataOutput(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "additional_properties"
                           },
                           exclude_none=True)
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -80,11 +73,6 @@ class LoginConfigurationClientMetadataOutput(BaseModel):
             "logo": obj.get("logo"),
             "domain_verified": obj.get("domainVerified")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

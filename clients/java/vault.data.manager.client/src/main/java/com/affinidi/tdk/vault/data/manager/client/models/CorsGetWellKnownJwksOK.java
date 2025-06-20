@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetWellKnownJwksOK.JSON_PROPERTY_CORS_GET_WELL_KNOWN_JWKS_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGetWellKnownJwksOK {
   public static final String JSON_PROPERTY_CORS_GET_WELL_KNOWN_JWKS_OK = "corsGetWellKnownJwksOk";
+  @javax.annotation.Nullable
   private String corsGetWellKnownJwksOk;
 
   public CorsGetWellKnownJwksOK() {
   }
 
-  public CorsGetWellKnownJwksOK corsGetWellKnownJwksOk(String corsGetWellKnownJwksOk) {
+  public CorsGetWellKnownJwksOK corsGetWellKnownJwksOk(@javax.annotation.Nullable String corsGetWellKnownJwksOk) {
     
     this.corsGetWellKnownJwksOk = corsGetWellKnownJwksOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGetWellKnownJwksOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GET_WELL_KNOWN_JWKS_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGetWellKnownJwksOk(String corsGetWellKnownJwksOk) {
+  public void setCorsGetWellKnownJwksOk(@javax.annotation.Nullable String corsGetWellKnownJwksOk) {
     this.corsGetWellKnownJwksOk = corsGetWellKnownJwksOk;
   }
 

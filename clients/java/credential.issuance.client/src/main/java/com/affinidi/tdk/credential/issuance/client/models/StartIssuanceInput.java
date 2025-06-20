@@ -39,17 +39,17 @@ import java.util.StringJoiner;
   StartIssuanceInput.JSON_PROPERTY_ISSUANCE_ID,
   StartIssuanceInput.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StartIssuanceInput {
   /**
    * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
    */
   public enum ClaimModeEnum {
-    NORMAL("NORMAL"),
+    NORMAL(String.valueOf("NORMAL")),
     
-    TX_CODE("TX_CODE"),
+    TX_CODE(String.valueOf("TX_CODE")),
     
-    FIXED_HOLDER("FIXED_HOLDER");
+    FIXED_HOLDER(String.valueOf("FIXED_HOLDER"));
 
     private String value;
 
@@ -79,21 +79,25 @@ public class StartIssuanceInput {
   }
 
   public static final String JSON_PROPERTY_CLAIM_MODE = "claimMode";
+  @javax.annotation.Nullable
   private ClaimModeEnum claimMode;
 
   public static final String JSON_PROPERTY_HOLDER_DID = "holderDid";
+  @javax.annotation.Nullable
   private String holderDid;
 
   public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
+  @javax.annotation.Nullable
   private String issuanceId;
 
   public static final String JSON_PROPERTY_DATA = "data";
+  @javax.annotation.Nonnull
   private List<StartIssuanceInputDataInner> data = new ArrayList<>();
 
   public StartIssuanceInput() {
   }
 
-  public StartIssuanceInput claimMode(ClaimModeEnum claimMode) {
+  public StartIssuanceInput claimMode(@javax.annotation.Nullable ClaimModeEnum claimMode) {
     
     this.claimMode = claimMode;
     return this;
@@ -114,11 +118,11 @@ public class StartIssuanceInput {
 
   @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClaimMode(ClaimModeEnum claimMode) {
+  public void setClaimMode(@javax.annotation.Nullable ClaimModeEnum claimMode) {
     this.claimMode = claimMode;
   }
 
-  public StartIssuanceInput holderDid(String holderDid) {
+  public StartIssuanceInput holderDid(@javax.annotation.Nullable String holderDid) {
     
     this.holderDid = holderDid;
     return this;
@@ -139,11 +143,11 @@ public class StartIssuanceInput {
 
   @JsonProperty(JSON_PROPERTY_HOLDER_DID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setHolderDid(String holderDid) {
+  public void setHolderDid(@javax.annotation.Nullable String holderDid) {
     this.holderDid = holderDid;
   }
 
-  public StartIssuanceInput issuanceId(String issuanceId) {
+  public StartIssuanceInput issuanceId(@javax.annotation.Nullable String issuanceId) {
     
     this.issuanceId = issuanceId;
     return this;
@@ -164,11 +168,11 @@ public class StartIssuanceInput {
 
   @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuanceId(String issuanceId) {
+  public void setIssuanceId(@javax.annotation.Nullable String issuanceId) {
     this.issuanceId = issuanceId;
   }
 
-  public StartIssuanceInput data(List<StartIssuanceInputDataInner> data) {
+  public StartIssuanceInput data(@javax.annotation.Nonnull List<StartIssuanceInputDataInner> data) {
     
     this.data = data;
     return this;
@@ -197,7 +201,7 @@ public class StartIssuanceInput {
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setData(List<StartIssuanceInputDataInner> data) {
+  public void setData(@javax.annotation.Nonnull List<StartIssuanceInputDataInner> data) {
     this.data = data;
   }
 

@@ -37,30 +37,36 @@ import java.util.StringJoiner;
   PexQueryDto.JSON_PROPERTY_CONFIGURATION_ARI,
   PexQueryDto.JSON_PROPERTY_VP_DEFINITION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PexQueryDto {
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nonnull
   private String ari;
 
   public static final String JSON_PROPERTY_QUERY_ID = "queryId";
+  @javax.annotation.Nonnull
   private String queryId;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nonnull
   private String description;
 
   public static final String JSON_PROPERTY_CONFIGURATION_ARI = "configurationAri";
+  @javax.annotation.Nonnull
   private String configurationAri;
 
   public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+  @javax.annotation.Nonnull
   private String vpDefinition;
 
   public PexQueryDto() {
   }
 
-  public PexQueryDto ari(String ari) {
+  public PexQueryDto ari(@javax.annotation.Nonnull String ari) {
     
     this.ari = ari;
     return this;
@@ -81,11 +87,11 @@ public class PexQueryDto {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
   }
 
-  public PexQueryDto queryId(String queryId) {
+  public PexQueryDto queryId(@javax.annotation.Nonnull String queryId) {
     
     this.queryId = queryId;
     return this;
@@ -106,11 +112,11 @@ public class PexQueryDto {
 
   @JsonProperty(JSON_PROPERTY_QUERY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setQueryId(String queryId) {
+  public void setQueryId(@javax.annotation.Nonnull String queryId) {
     this.queryId = queryId;
   }
 
-  public PexQueryDto name(String name) {
+  public PexQueryDto name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -131,11 +137,11 @@ public class PexQueryDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public PexQueryDto description(String description) {
+  public PexQueryDto description(@javax.annotation.Nonnull String description) {
     
     this.description = description;
     return this;
@@ -156,11 +162,11 @@ public class PexQueryDto {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nonnull String description) {
     this.description = description;
   }
 
-  public PexQueryDto configurationAri(String configurationAri) {
+  public PexQueryDto configurationAri(@javax.annotation.Nonnull String configurationAri) {
     
     this.configurationAri = configurationAri;
     return this;
@@ -181,11 +187,11 @@ public class PexQueryDto {
 
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_ARI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfigurationAri(String configurationAri) {
+  public void setConfigurationAri(@javax.annotation.Nonnull String configurationAri) {
     this.configurationAri = configurationAri;
   }
 
-  public PexQueryDto vpDefinition(String vpDefinition) {
+  public PexQueryDto vpDefinition(@javax.annotation.Nonnull String vpDefinition) {
     
     this.vpDefinition = vpDefinition;
     return this;
@@ -206,7 +212,7 @@ public class PexQueryDto {
 
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVpDefinition(String vpDefinition) {
+  public void setVpDefinition(@javax.annotation.Nonnull String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }
 

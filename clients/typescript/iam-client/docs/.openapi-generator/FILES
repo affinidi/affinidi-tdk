@@ -39,7 +39,6 @@ Models/PublicKeyCannotBeResolvedFromDidError.md
 Models/RightsEnum.md
 Models/ServiceErrorResponse.md
 Models/ServiceErrorResponse_details_inner.md
-Models/TokenAuthenticationMethodDto.md
 Models/TokenDto.md
 Models/TokenList.md
 Models/TokenPrivateKeyAuthenticationMethodDto.md

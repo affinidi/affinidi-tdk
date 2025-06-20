@@ -25,7 +25,7 @@ class TestAuthzApi(unittest.TestCase):
         self.api = AuthzApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_delete_access_vfs(self) -> None:
         """Test case for delete_access_vfs

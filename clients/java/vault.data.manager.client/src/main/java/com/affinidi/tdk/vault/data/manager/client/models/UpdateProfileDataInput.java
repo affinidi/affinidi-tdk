@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   UpdateProfileDataInput.JSON_PROPERTY_DEK,
   UpdateProfileDataInput.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateProfileDataInput {
   public static final String JSON_PROPERTY_DEK = "dek";
+  @javax.annotation.Nonnull
   private String dek;
 
   public static final String JSON_PROPERTY_DATA = "data";
+  @javax.annotation.Nonnull
   private Object data;
 
   public UpdateProfileDataInput() {
   }
 
-  public UpdateProfileDataInput dek(String dek) {
+  public UpdateProfileDataInput dek(@javax.annotation.Nonnull String dek) {
     
     this.dek = dek;
     return this;
@@ -65,11 +67,11 @@ public class UpdateProfileDataInput {
 
   @JsonProperty(JSON_PROPERTY_DEK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDek(String dek) {
+  public void setDek(@javax.annotation.Nonnull String dek) {
     this.dek = dek;
   }
 
-  public UpdateProfileDataInput data(Object data) {
+  public UpdateProfileDataInput data(@javax.annotation.Nonnull Object data) {
     
     this.data = data;
     return this;
@@ -90,7 +92,7 @@ public class UpdateProfileDataInput {
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setData(Object data) {
+  public void setData(@javax.annotation.Nonnull Object data) {
     this.data = data;
   }
 

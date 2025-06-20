@@ -16,12 +16,12 @@ class _$TokenDto extends TokenDto {
   @override
   final String name;
   @override
-  final TokenAuthenticationMethodDto authenticationMethod;
+  final TokenPrivateKeyAuthenticationMethodDto authenticationMethod;
   @override
   final BuiltList<String> scopes;
 
   factory _$TokenDto([void Function(TokenDtoBuilder)? updates]) =>
-      (TokenDtoBuilder()..update(updates))._build();
+      (new TokenDtoBuilder()..update(updates))._build();
 
   _$TokenDto._(
       {required this.id,
@@ -30,13 +30,22 @@ class _$TokenDto extends TokenDto {
       required this.name,
       required this.authenticationMethod,
       required this.scopes})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'TokenDto', 'id');
+    BuiltValueNullFieldError.checkNotNull(ari, r'TokenDto', 'ari');
+    BuiltValueNullFieldError.checkNotNull(ownerAri, r'TokenDto', 'ownerAri');
+    BuiltValueNullFieldError.checkNotNull(name, r'TokenDto', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        authenticationMethod, r'TokenDto', 'authenticationMethod');
+    BuiltValueNullFieldError.checkNotNull(scopes, r'TokenDto', 'scopes');
+  }
+
   @override
   TokenDto rebuild(void Function(TokenDtoBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TokenDtoBuilder toBuilder() => TokenDtoBuilder()..replace(this);
+  TokenDtoBuilder toBuilder() => new TokenDtoBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -95,15 +104,18 @@ class TokenDtoBuilder implements Builder<TokenDto, TokenDtoBuilder> {
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  TokenAuthenticationMethodDtoBuilder? _authenticationMethod;
-  TokenAuthenticationMethodDtoBuilder get authenticationMethod =>
-      _$this._authenticationMethod ??= TokenAuthenticationMethodDtoBuilder();
+  TokenPrivateKeyAuthenticationMethodDtoBuilder? _authenticationMethod;
+  TokenPrivateKeyAuthenticationMethodDtoBuilder get authenticationMethod =>
+      _$this._authenticationMethod ??=
+          new TokenPrivateKeyAuthenticationMethodDtoBuilder();
   set authenticationMethod(
-          TokenAuthenticationMethodDtoBuilder? authenticationMethod) =>
+          TokenPrivateKeyAuthenticationMethodDtoBuilder?
+              authenticationMethod) =>
       _$this._authenticationMethod = authenticationMethod;
 
   ListBuilder<String>? _scopes;
-  ListBuilder<String> get scopes => _$this._scopes ??= ListBuilder<String>();
+  ListBuilder<String> get scopes =>
+      _$this._scopes ??= new ListBuilder<String>();
   set scopes(ListBuilder<String>? scopes) => _$this._scopes = scopes;
 
   TokenDtoBuilder() {
@@ -126,6 +138,7 @@ class TokenDtoBuilder implements Builder<TokenDto, TokenDtoBuilder> {
 
   @override
   void replace(TokenDto other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TokenDto;
   }
 
@@ -141,7 +154,7 @@ class TokenDtoBuilder implements Builder<TokenDto, TokenDtoBuilder> {
     _$TokenDto _$result;
     try {
       _$result = _$v ??
-          _$TokenDto._(
+          new _$TokenDto._(
             id: BuiltValueNullFieldError.checkNotNull(id, r'TokenDto', 'id'),
             ari: BuiltValueNullFieldError.checkNotNull(ari, r'TokenDto', 'ari'),
             ownerAri: BuiltValueNullFieldError.checkNotNull(
@@ -159,7 +172,7 @@ class TokenDtoBuilder implements Builder<TokenDto, TokenDtoBuilder> {
         _$failedField = 'scopes';
         scopes.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'TokenDto', _$failedField, e.toString());
       }
       rethrow;

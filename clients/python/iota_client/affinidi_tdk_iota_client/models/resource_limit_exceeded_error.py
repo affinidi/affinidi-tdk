@@ -37,21 +37,21 @@ class ResourceLimitExceededError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('ResourceLimitExceededError'):
+        if value not in ('ResourceLimitExceededError',):
             raise ValueError("must be one of enum values ('ResourceLimitExceededError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Resource limit exceeded: ${param}.'):
+        if value not in ('Resource limit exceeded: ${param}.',):
             raise ValueError("must be one of enum values ('Resource limit exceeded: ${param}.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (422):
+        if value not in (422,):
             raise ValueError("must be one of enum values (422)")
         return value
 

@@ -16,11 +16,19 @@ class _$CreateProjectScopedTokenOutput extends CreateProjectScopedTokenOutput {
 
   factory _$CreateProjectScopedTokenOutput(
           [void Function(CreateProjectScopedTokenOutputBuilder)? updates]) =>
-      (CreateProjectScopedTokenOutputBuilder()..update(updates))._build();
+      (new CreateProjectScopedTokenOutputBuilder()..update(updates))._build();
 
   _$CreateProjectScopedTokenOutput._(
       {required this.accessToken, required this.expiresIn, required this.scope})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        accessToken, r'CreateProjectScopedTokenOutput', 'accessToken');
+    BuiltValueNullFieldError.checkNotNull(
+        expiresIn, r'CreateProjectScopedTokenOutput', 'expiresIn');
+    BuiltValueNullFieldError.checkNotNull(
+        scope, r'CreateProjectScopedTokenOutput', 'scope');
+  }
+
   @override
   CreateProjectScopedTokenOutput rebuild(
           void Function(CreateProjectScopedTokenOutputBuilder) updates) =>
@@ -28,7 +36,7 @@ class _$CreateProjectScopedTokenOutput extends CreateProjectScopedTokenOutput {
 
   @override
   CreateProjectScopedTokenOutputBuilder toBuilder() =>
-      CreateProjectScopedTokenOutputBuilder()..replace(this);
+      new CreateProjectScopedTokenOutputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -94,6 +102,7 @@ class CreateProjectScopedTokenOutputBuilder
 
   @override
   void replace(CreateProjectScopedTokenOutput other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$CreateProjectScopedTokenOutput;
   }
 
@@ -107,7 +116,7 @@ class CreateProjectScopedTokenOutputBuilder
 
   _$CreateProjectScopedTokenOutput _build() {
     final _$result = _$v ??
-        _$CreateProjectScopedTokenOutput._(
+        new _$CreateProjectScopedTokenOutput._(
           accessToken: BuiltValueNullFieldError.checkNotNull(
               accessToken, r'CreateProjectScopedTokenOutput', 'accessToken'),
           expiresIn: BuiltValueNullFieldError.checkNotNull(

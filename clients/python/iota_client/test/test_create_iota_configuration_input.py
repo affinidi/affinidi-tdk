@@ -44,7 +44,10 @@ class TestCreateIotaConfigurationInput(unittest.TestCase):
                 enable_verification = True,
                 enable_consent_audit_log = True,
                 token_max_age = 1,
-                client_metadata = { },
+                client_metadata = affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata.IotaConfigurationDtoClientMetadata(
+                    name = '', 
+                    origin = '', 
+                    logo = '', ),
                 mode = 'websocket',
                 redirect_uris = [
                     ''
@@ -57,7 +60,10 @@ class TestCreateIotaConfigurationInput(unittest.TestCase):
                 wallet_ari = '',
                 enable_verification = True,
                 enable_consent_audit_log = True,
-                client_metadata = { },
+                client_metadata = affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata.IotaConfigurationDtoClientMetadata(
+                    name = '', 
+                    origin = '', 
+                    logo = '', ),
         )
         """
 

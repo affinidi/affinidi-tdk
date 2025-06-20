@@ -39,7 +39,7 @@ class SubmissionRequirement(BaseModel):
     @validator('rule')
     def rule_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('all', 'pick'):
+        if value not in ('all', 'pick',):
             raise ValueError("must be one of enum values ('all', 'pick')")
         return value
 

@@ -40,28 +40,33 @@ import java.util.StringJoiner;
   SupportedCredentialMetadataDisplayInner.JSON_PROPERTY_TEXT_COLOR
 })
 @JsonTypeName("SupportedCredentialMetadata_display_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_LOCALE = "locale";
+  @javax.annotation.Nullable
   private String locale;
 
   public static final String JSON_PROPERTY_LOGO = "logo";
+  @javax.annotation.Nullable
   private SupportedCredentialMetadataItemLogo logo;
 
   public static final String JSON_PROPERTY_BACKGROUND_COLOR = "backgroundColor";
+  @javax.annotation.Nullable
   private String backgroundColor;
 
   public static final String JSON_PROPERTY_TEXT_COLOR = "textColor";
+  @javax.annotation.Nullable
   private String textColor;
 
   public SupportedCredentialMetadataDisplayInner() {
 
   }
 
-  public SupportedCredentialMetadataDisplayInner name(String name) {
+  public SupportedCredentialMetadataDisplayInner name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -82,11 +87,11 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public SupportedCredentialMetadataDisplayInner locale(String locale) {
+  public SupportedCredentialMetadataDisplayInner locale(@javax.annotation.Nullable String locale) {
     
     this.locale = locale;
     return this;
@@ -107,11 +112,11 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_LOCALE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocale(String locale) {
+  public void setLocale(@javax.annotation.Nullable String locale) {
     this.locale = locale;
   }
 
-  public SupportedCredentialMetadataDisplayInner logo(SupportedCredentialMetadataItemLogo logo) {
+  public SupportedCredentialMetadataDisplayInner logo(@javax.annotation.Nullable SupportedCredentialMetadataItemLogo logo) {
     
     this.logo = logo;
     return this;
@@ -132,11 +137,11 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_LOGO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLogo(SupportedCredentialMetadataItemLogo logo) {
+  public void setLogo(@javax.annotation.Nullable SupportedCredentialMetadataItemLogo logo) {
     this.logo = logo;
   }
 
-  public SupportedCredentialMetadataDisplayInner backgroundColor(String backgroundColor) {
+  public SupportedCredentialMetadataDisplayInner backgroundColor(@javax.annotation.Nullable String backgroundColor) {
     
     this.backgroundColor = backgroundColor;
     return this;
@@ -157,11 +162,11 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_BACKGROUND_COLOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackgroundColor(String backgroundColor) {
+  public void setBackgroundColor(@javax.annotation.Nullable String backgroundColor) {
     this.backgroundColor = backgroundColor;
   }
 
-  public SupportedCredentialMetadataDisplayInner textColor(String textColor) {
+  public SupportedCredentialMetadataDisplayInner textColor(@javax.annotation.Nullable String textColor) {
     
     this.textColor = textColor;
     return this;
@@ -182,7 +187,7 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_TEXT_COLOR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTextColor(String textColor) {
+  public void setTextColor(@javax.annotation.Nullable String textColor) {
     this.textColor = textColor;
   }
 

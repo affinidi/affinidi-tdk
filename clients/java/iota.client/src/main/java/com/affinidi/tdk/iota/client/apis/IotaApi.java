@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IotaApi extends BaseApi {
 
   public IotaApi() {
@@ -59,7 +59,7 @@ public class IotaApi extends BaseApi {
    * @return AwsExchangeCredentialsOK
    * @throws ApiException if fails to make API call
    */
-  public AwsExchangeCredentialsOK awsExchangeCredentials(AwsExchangeCredentials awsExchangeCredentials) throws ApiException {
+  public AwsExchangeCredentialsOK awsExchangeCredentials(@javax.annotation.Nonnull AwsExchangeCredentials awsExchangeCredentials) throws ApiException {
     return this.awsExchangeCredentials(awsExchangeCredentials, Collections.emptyMap());
   }
 
@@ -72,7 +72,7 @@ public class IotaApi extends BaseApi {
    * @return AwsExchangeCredentialsOK
    * @throws ApiException if fails to make API call
    */
-  public AwsExchangeCredentialsOK awsExchangeCredentials(AwsExchangeCredentials awsExchangeCredentials, Map<String, String> additionalHeaders) throws ApiException {
+  public AwsExchangeCredentialsOK awsExchangeCredentials(@javax.annotation.Nonnull AwsExchangeCredentials awsExchangeCredentials, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = awsExchangeCredentials;
     
     // verify the required parameter 'awsExchangeCredentials' is set
@@ -133,7 +133,7 @@ public class IotaApi extends BaseApi {
    * @return IotaExchangeCredentialsOK
    * @throws ApiException if fails to make API call
    */
-  public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken) throws ApiException {
+  public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(@javax.annotation.Nonnull AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken) throws ApiException {
     return this.awsExchangeCredentialsProjectToken(awsExchangeCredentialsProjectToken, Collections.emptyMap());
   }
 
@@ -146,7 +146,7 @@ public class IotaApi extends BaseApi {
    * @return IotaExchangeCredentialsOK
    * @throws ApiException if fails to make API call
    */
-  public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken, Map<String, String> additionalHeaders) throws ApiException {
+  public IotaExchangeCredentialsOK awsExchangeCredentialsProjectToken(@javax.annotation.Nonnull AwsExchangeCredentialsProjectToken awsExchangeCredentialsProjectToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = awsExchangeCredentialsProjectToken;
     
     // verify the required parameter 'awsExchangeCredentialsProjectToken' is set
@@ -207,7 +207,7 @@ public class IotaApi extends BaseApi {
    * @return FetchIOTAVPResponseOK
    * @throws ApiException if fails to make API call
    */
-  public FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput fetchIOTAVPResponseInput) throws ApiException {
+  public FetchIOTAVPResponseOK fetchIotaVpResponse(@javax.annotation.Nonnull FetchIOTAVPResponseInput fetchIOTAVPResponseInput) throws ApiException {
     return this.fetchIotaVpResponse(fetchIOTAVPResponseInput, Collections.emptyMap());
   }
 
@@ -220,7 +220,7 @@ public class IotaApi extends BaseApi {
    * @return FetchIOTAVPResponseOK
    * @throws ApiException if fails to make API call
    */
-  public FetchIOTAVPResponseOK fetchIotaVpResponse(FetchIOTAVPResponseInput fetchIOTAVPResponseInput, Map<String, String> additionalHeaders) throws ApiException {
+  public FetchIOTAVPResponseOK fetchIotaVpResponse(@javax.annotation.Nonnull FetchIOTAVPResponseInput fetchIOTAVPResponseInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = fetchIOTAVPResponseInput;
     
     // verify the required parameter 'fetchIOTAVPResponseInput' is set
@@ -281,7 +281,7 @@ public class IotaApi extends BaseApi {
    * @return InitiateDataSharingRequestOK
    * @throws ApiException if fails to make API call
    */
-  public InitiateDataSharingRequestOK initiateDataSharingRequest(InitiateDataSharingRequestInput initiateDataSharingRequestInput) throws ApiException {
+  public InitiateDataSharingRequestOK initiateDataSharingRequest(@javax.annotation.Nonnull InitiateDataSharingRequestInput initiateDataSharingRequestInput) throws ApiException {
     return this.initiateDataSharingRequest(initiateDataSharingRequestInput, Collections.emptyMap());
   }
 
@@ -294,7 +294,7 @@ public class IotaApi extends BaseApi {
    * @return InitiateDataSharingRequestOK
    * @throws ApiException if fails to make API call
    */
-  public InitiateDataSharingRequestOK initiateDataSharingRequest(InitiateDataSharingRequestInput initiateDataSharingRequestInput, Map<String, String> additionalHeaders) throws ApiException {
+  public InitiateDataSharingRequestOK initiateDataSharingRequest(@javax.annotation.Nonnull InitiateDataSharingRequestInput initiateDataSharingRequestInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = initiateDataSharingRequestInput;
     
     // verify the required parameter 'initiateDataSharingRequestInput' is set
@@ -355,7 +355,7 @@ public class IotaApi extends BaseApi {
    * @return IotaExchangeCredentialsOK
    * @throws ApiException if fails to make API call
    */
-  public IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials iotaExchangeCredentials) throws ApiException {
+  public IotaExchangeCredentialsOK iotaExchangeCredentials(@javax.annotation.Nonnull IotaExchangeCredentials iotaExchangeCredentials) throws ApiException {
     return this.iotaExchangeCredentials(iotaExchangeCredentials, Collections.emptyMap());
   }
 
@@ -368,7 +368,7 @@ public class IotaApi extends BaseApi {
    * @return IotaExchangeCredentialsOK
    * @throws ApiException if fails to make API call
    */
-  public IotaExchangeCredentialsOK iotaExchangeCredentials(IotaExchangeCredentials iotaExchangeCredentials, Map<String, String> additionalHeaders) throws ApiException {
+  public IotaExchangeCredentialsOK iotaExchangeCredentials(@javax.annotation.Nonnull IotaExchangeCredentials iotaExchangeCredentials, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = iotaExchangeCredentials;
     
     // verify the required parameter 'iotaExchangeCredentials' is set

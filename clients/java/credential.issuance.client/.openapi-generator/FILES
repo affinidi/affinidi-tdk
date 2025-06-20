@@ -99,6 +99,8 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/Configuration.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/Pair.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/RFC3339DateFormat.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/RFC3339InstantDeserializer.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/StringUtil.java

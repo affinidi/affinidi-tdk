@@ -50,69 +50,88 @@ import java.util.StringJoiner;
   GetUserInfo.JSON_PROPERTY_WEBSITE,
   GetUserInfo.JSON_PROPERTY_ZONEINFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GetUserInfo {
   public static final String JSON_PROPERTY_BIRTHDATE = "birthdate";
+  @javax.annotation.Nullable
   private String birthdate;
 
   public static final String JSON_PROPERTY_EMAIL = "email";
+  @javax.annotation.Nullable
   private String email;
 
   public static final String JSON_PROPERTY_EMAIL_VERIFIED = "email_verified";
+  @javax.annotation.Nullable
   private Boolean emailVerified;
 
   public static final String JSON_PROPERTY_FAMILY_NAME = "family_name";
+  @javax.annotation.Nullable
   private String familyName;
 
   public static final String JSON_PROPERTY_GENDER = "gender";
+  @javax.annotation.Nullable
   private String gender;
 
   public static final String JSON_PROPERTY_GIVEN_NAME = "given_name";
+  @javax.annotation.Nullable
   private String givenName;
 
   public static final String JSON_PROPERTY_LOCALE = "locale";
+  @javax.annotation.Nullable
   private String locale;
 
   public static final String JSON_PROPERTY_MIDDLE_NAME = "middle_name";
+  @javax.annotation.Nullable
   private String middleName;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_NICKNAME = "nickname";
+  @javax.annotation.Nullable
   private String nickname;
 
   public static final String JSON_PROPERTY_PHONE_NUMBER = "phone_number";
+  @javax.annotation.Nullable
   private String phoneNumber;
 
   public static final String JSON_PROPERTY_PHONE_NUMBER_VERIFIED = "phone_number_verified";
+  @javax.annotation.Nullable
   private Boolean phoneNumberVerified;
 
   public static final String JSON_PROPERTY_PICTURE = "picture";
+  @javax.annotation.Nullable
   private String picture;
 
   public static final String JSON_PROPERTY_PREFERRED_USERNAME = "preferred_username";
+  @javax.annotation.Nullable
   private String preferredUsername;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
+  @javax.annotation.Nullable
   private String profile;
 
   public static final String JSON_PROPERTY_SUB = "sub";
+  @javax.annotation.Nullable
   private String sub;
 
   public static final String JSON_PROPERTY_UPDATED_AT = "updated_at";
+  @javax.annotation.Nullable
   private Integer updatedAt;
 
   public static final String JSON_PROPERTY_WEBSITE = "website";
+  @javax.annotation.Nullable
   private String website;
 
   public static final String JSON_PROPERTY_ZONEINFO = "zoneinfo";
+  @javax.annotation.Nullable
   private String zoneinfo;
 
   public GetUserInfo() {
   }
 
-  public GetUserInfo birthdate(String birthdate) {
+  public GetUserInfo birthdate(@javax.annotation.Nullable String birthdate) {
     
     this.birthdate = birthdate;
     return this;
@@ -133,11 +152,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_BIRTHDATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBirthdate(String birthdate) {
+  public void setBirthdate(@javax.annotation.Nullable String birthdate) {
     this.birthdate = birthdate;
   }
 
-  public GetUserInfo email(String email) {
+  public GetUserInfo email(@javax.annotation.Nullable String email) {
     
     this.email = email;
     return this;
@@ -158,11 +177,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_EMAIL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmail(String email) {
+  public void setEmail(@javax.annotation.Nullable String email) {
     this.email = email;
   }
 
-  public GetUserInfo emailVerified(Boolean emailVerified) {
+  public GetUserInfo emailVerified(@javax.annotation.Nullable Boolean emailVerified) {
     
     this.emailVerified = emailVerified;
     return this;
@@ -183,11 +202,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_EMAIL_VERIFIED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEmailVerified(Boolean emailVerified) {
+  public void setEmailVerified(@javax.annotation.Nullable Boolean emailVerified) {
     this.emailVerified = emailVerified;
   }
 
-  public GetUserInfo familyName(String familyName) {
+  public GetUserInfo familyName(@javax.annotation.Nullable String familyName) {
     
     this.familyName = familyName;
     return this;
@@ -208,11 +227,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFamilyName(String familyName) {
+  public void setFamilyName(@javax.annotation.Nullable String familyName) {
     this.familyName = familyName;
   }
 
-  public GetUserInfo gender(String gender) {
+  public GetUserInfo gender(@javax.annotation.Nullable String gender) {
     
     this.gender = gender;
     return this;
@@ -233,11 +252,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_GENDER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGender(String gender) {
+  public void setGender(@javax.annotation.Nullable String gender) {
     this.gender = gender;
   }
 
-  public GetUserInfo givenName(String givenName) {
+  public GetUserInfo givenName(@javax.annotation.Nullable String givenName) {
     
     this.givenName = givenName;
     return this;
@@ -258,11 +277,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGivenName(String givenName) {
+  public void setGivenName(@javax.annotation.Nullable String givenName) {
     this.givenName = givenName;
   }
 
-  public GetUserInfo locale(String locale) {
+  public GetUserInfo locale(@javax.annotation.Nullable String locale) {
     
     this.locale = locale;
     return this;
@@ -283,11 +302,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_LOCALE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLocale(String locale) {
+  public void setLocale(@javax.annotation.Nullable String locale) {
     this.locale = locale;
   }
 
-  public GetUserInfo middleName(String middleName) {
+  public GetUserInfo middleName(@javax.annotation.Nullable String middleName) {
     
     this.middleName = middleName;
     return this;
@@ -308,11 +327,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMiddleName(String middleName) {
+  public void setMiddleName(@javax.annotation.Nullable String middleName) {
     this.middleName = middleName;
   }
 
-  public GetUserInfo name(String name) {
+  public GetUserInfo name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -333,11 +352,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public GetUserInfo nickname(String nickname) {
+  public GetUserInfo nickname(@javax.annotation.Nullable String nickname) {
     
     this.nickname = nickname;
     return this;
@@ -358,11 +377,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_NICKNAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNickname(String nickname) {
+  public void setNickname(@javax.annotation.Nullable String nickname) {
     this.nickname = nickname;
   }
 
-  public GetUserInfo phoneNumber(String phoneNumber) {
+  public GetUserInfo phoneNumber(@javax.annotation.Nullable String phoneNumber) {
     
     this.phoneNumber = phoneNumber;
     return this;
@@ -383,11 +402,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhoneNumber(String phoneNumber) {
+  public void setPhoneNumber(@javax.annotation.Nullable String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
-  public GetUserInfo phoneNumberVerified(Boolean phoneNumberVerified) {
+  public GetUserInfo phoneNumberVerified(@javax.annotation.Nullable Boolean phoneNumberVerified) {
     
     this.phoneNumberVerified = phoneNumberVerified;
     return this;
@@ -408,11 +427,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_PHONE_NUMBER_VERIFIED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPhoneNumberVerified(Boolean phoneNumberVerified) {
+  public void setPhoneNumberVerified(@javax.annotation.Nullable Boolean phoneNumberVerified) {
     this.phoneNumberVerified = phoneNumberVerified;
   }
 
-  public GetUserInfo picture(String picture) {
+  public GetUserInfo picture(@javax.annotation.Nullable String picture) {
     
     this.picture = picture;
     return this;
@@ -433,11 +452,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_PICTURE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPicture(String picture) {
+  public void setPicture(@javax.annotation.Nullable String picture) {
     this.picture = picture;
   }
 
-  public GetUserInfo preferredUsername(String preferredUsername) {
+  public GetUserInfo preferredUsername(@javax.annotation.Nullable String preferredUsername) {
     
     this.preferredUsername = preferredUsername;
     return this;
@@ -458,11 +477,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_PREFERRED_USERNAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPreferredUsername(String preferredUsername) {
+  public void setPreferredUsername(@javax.annotation.Nullable String preferredUsername) {
     this.preferredUsername = preferredUsername;
   }
 
-  public GetUserInfo profile(String profile) {
+  public GetUserInfo profile(@javax.annotation.Nullable String profile) {
     
     this.profile = profile;
     return this;
@@ -483,11 +502,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_PROFILE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProfile(String profile) {
+  public void setProfile(@javax.annotation.Nullable String profile) {
     this.profile = profile;
   }
 
-  public GetUserInfo sub(String sub) {
+  public GetUserInfo sub(@javax.annotation.Nullable String sub) {
     
     this.sub = sub;
     return this;
@@ -508,11 +527,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_SUB)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSub(String sub) {
+  public void setSub(@javax.annotation.Nullable String sub) {
     this.sub = sub;
   }
 
-  public GetUserInfo updatedAt(Integer updatedAt) {
+  public GetUserInfo updatedAt(@javax.annotation.Nullable Integer updatedAt) {
     
     this.updatedAt = updatedAt;
     return this;
@@ -533,11 +552,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_UPDATED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdatedAt(Integer updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
   }
 
-  public GetUserInfo website(String website) {
+  public GetUserInfo website(@javax.annotation.Nullable String website) {
     
     this.website = website;
     return this;
@@ -558,11 +577,11 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_WEBSITE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWebsite(String website) {
+  public void setWebsite(@javax.annotation.Nullable String website) {
     this.website = website;
   }
 
-  public GetUserInfo zoneinfo(String zoneinfo) {
+  public GetUserInfo zoneinfo(@javax.annotation.Nullable String zoneinfo) {
     
     this.zoneinfo = zoneinfo;
     return this;
@@ -583,7 +602,7 @@ public class GetUserInfo {
 
   @JsonProperty(JSON_PROPERTY_ZONEINFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setZoneinfo(String zoneinfo) {
+  public void setZoneinfo(@javax.annotation.Nullable String zoneinfo) {
     this.zoneinfo = zoneinfo;
   }
 

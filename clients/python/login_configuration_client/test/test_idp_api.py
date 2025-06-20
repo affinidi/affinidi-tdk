@@ -25,7 +25,7 @@ class TestIdpApi(unittest.TestCase):
         self.api = IdpApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_v1_login_project_project_id_oauth2_auth_get(self) -> None:
         """Test case for v1_login_project_project_id_oauth2_auth_get

@@ -38,21 +38,24 @@ import java.util.StringJoiner;
   BatchCredentialResponse.JSON_PROPERTY_C_NONCE,
   BatchCredentialResponse.JSON_PROPERTY_C_NONCE_EXPIRES_IN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BatchCredentialResponse {
   public static final String JSON_PROPERTY_CREDENTIAL_RESPONSES = "credential_responses";
+  @javax.annotation.Nonnull
   private List<BatchCredentialResponseCredentialResponsesInner> credentialResponses = new ArrayList<>();
 
   public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
+  @javax.annotation.Nullable
   private String cNonce;
 
   public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
+  @javax.annotation.Nullable
   private Integer cNonceExpiresIn;
 
   public BatchCredentialResponse() {
   }
 
-  public BatchCredentialResponse credentialResponses(List<BatchCredentialResponseCredentialResponsesInner> credentialResponses) {
+  public BatchCredentialResponse credentialResponses(@javax.annotation.Nonnull List<BatchCredentialResponseCredentialResponsesInner> credentialResponses) {
     
     this.credentialResponses = credentialResponses;
     return this;
@@ -81,11 +84,11 @@ public class BatchCredentialResponse {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_RESPONSES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialResponses(List<BatchCredentialResponseCredentialResponsesInner> credentialResponses) {
+  public void setCredentialResponses(@javax.annotation.Nonnull List<BatchCredentialResponseCredentialResponsesInner> credentialResponses) {
     this.credentialResponses = credentialResponses;
   }
 
-  public BatchCredentialResponse cNonce(String cNonce) {
+  public BatchCredentialResponse cNonce(@javax.annotation.Nullable String cNonce) {
     
     this.cNonce = cNonce;
     return this;
@@ -106,11 +109,11 @@ public class BatchCredentialResponse {
 
   @JsonProperty(JSON_PROPERTY_C_NONCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setcNonce(String cNonce) {
+  public void setcNonce(@javax.annotation.Nullable String cNonce) {
     this.cNonce = cNonce;
   }
 
-  public BatchCredentialResponse cNonceExpiresIn(Integer cNonceExpiresIn) {
+  public BatchCredentialResponse cNonceExpiresIn(@javax.annotation.Nullable Integer cNonceExpiresIn) {
     
     this.cNonceExpiresIn = cNonceExpiresIn;
     return this;
@@ -131,7 +134,7 @@ public class BatchCredentialResponse {
 
   @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setcNonceExpiresIn(Integer cNonceExpiresIn) {
+  public void setcNonceExpiresIn(@javax.annotation.Nullable Integer cNonceExpiresIn) {
     this.cNonceExpiresIn = cNonceExpiresIn;
   }
 

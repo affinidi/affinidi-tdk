@@ -46,7 +46,10 @@ class TestIotaConfigurationDto(unittest.TestCase):
                 iota_response_webhook_url = '',
                 enable_verification = True,
                 enable_consent_audit_log = True,
-                client_metadata = { },
+                client_metadata = affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata.IotaConfigurationDtoClientMetadata(
+                    name = '', 
+                    origin = '', 
+                    logo = '', ),
                 mode = 'websocket',
                 redirect_uris = [
                     ''
@@ -63,7 +66,10 @@ class TestIotaConfigurationDto(unittest.TestCase):
                 token_max_age = 1.337,
                 enable_verification = True,
                 enable_consent_audit_log = True,
-                client_metadata = { },
+                client_metadata = affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata.IotaConfigurationDtoClientMetadata(
+                    name = '', 
+                    origin = '', 
+                    logo = '', ),
         )
         """
 

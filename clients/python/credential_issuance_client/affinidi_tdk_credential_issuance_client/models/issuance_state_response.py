@@ -33,7 +33,7 @@ class IssuanceStateResponse(BaseModel):
     @validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('INIT', 'OFFER_DELIVERED', 'VC_CLAIMED', 'TIMEOUT'):
+        if value not in ('INIT', 'OFFER_DELIVERED', 'VC_CLAIMED', 'TIMEOUT',):
             raise ValueError("must be one of enum values ('INIT', 'OFFER_DELIVERED', 'VC_CLAIMED', 'TIMEOUT')")
         return value
 

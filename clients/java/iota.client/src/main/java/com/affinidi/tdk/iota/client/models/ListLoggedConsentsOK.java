@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   ListLoggedConsentsOK.JSON_PROPERTY_CONSENTS,
   ListLoggedConsentsOK.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListLoggedConsentsOK {
   public static final String JSON_PROPERTY_CONSENTS = "consents";
+  @javax.annotation.Nonnull
   private List<ConsentDto> consents = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public ListLoggedConsentsOK() {
   }
 
-  public ListLoggedConsentsOK consents(List<ConsentDto> consents) {
+  public ListLoggedConsentsOK consents(@javax.annotation.Nonnull List<ConsentDto> consents) {
     
     this.consents = consents;
     return this;
@@ -77,11 +79,11 @@ public class ListLoggedConsentsOK {
 
   @JsonProperty(JSON_PROPERTY_CONSENTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConsents(List<ConsentDto> consents) {
+  public void setConsents(@javax.annotation.Nonnull List<ConsentDto> consents) {
     this.consents = consents;
   }
 
-  public ListLoggedConsentsOK lastEvaluatedKey(String lastEvaluatedKey) {
+  public ListLoggedConsentsOK lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -102,7 +104,7 @@ public class ListLoggedConsentsOK {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 

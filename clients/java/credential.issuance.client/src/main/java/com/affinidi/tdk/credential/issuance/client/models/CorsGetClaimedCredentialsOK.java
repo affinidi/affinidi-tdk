@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetClaimedCredentialsOK.JSON_PROPERTY_CORS_GET_CLAIMED_CREDENTIALS_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGetClaimedCredentialsOK {
   public static final String JSON_PROPERTY_CORS_GET_CLAIMED_CREDENTIALS_OK = "corsGetClaimedCredentialsOk";
+  @javax.annotation.Nullable
   private String corsGetClaimedCredentialsOk;
 
   public CorsGetClaimedCredentialsOK() {
   }
 
-  public CorsGetClaimedCredentialsOK corsGetClaimedCredentialsOk(String corsGetClaimedCredentialsOk) {
+  public CorsGetClaimedCredentialsOK corsGetClaimedCredentialsOk(@javax.annotation.Nullable String corsGetClaimedCredentialsOk) {
     
     this.corsGetClaimedCredentialsOk = corsGetClaimedCredentialsOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGetClaimedCredentialsOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GET_CLAIMED_CREDENTIALS_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGetClaimedCredentialsOk(String corsGetClaimedCredentialsOk) {
+  public void setCorsGetClaimedCredentialsOk(@javax.annotation.Nullable String corsGetClaimedCredentialsOk) {
     this.corsGetClaimedCredentialsOk = corsGetClaimedCredentialsOk;
   }
 

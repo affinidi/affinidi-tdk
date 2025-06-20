@@ -17,12 +17,12 @@ PrincipalDoesNotBelongToProjectErrorNameEnum
     case 'principalDoesNotBelongToProjectError':
       return _$principalDoesNotBelongToProjectErrorNameEnum_principalDoesNotBelongToProjectError;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<PrincipalDoesNotBelongToProjectErrorNameEnum>
-    _$principalDoesNotBelongToProjectErrorNameEnumValues = BuiltSet<
+    _$principalDoesNotBelongToProjectErrorNameEnumValues = new BuiltSet<
         PrincipalDoesNotBelongToProjectErrorNameEnum>(const <PrincipalDoesNotBelongToProjectErrorNameEnum>[
   _$principalDoesNotBelongToProjectErrorNameEnum_principalDoesNotBelongToProjectError,
 ]);
@@ -38,12 +38,12 @@ PrincipalDoesNotBelongToProjectErrorMessageEnum
     case 'principalDoesNotBelongToTheGivenProject':
       return _$principalDoesNotBelongToProjectErrorMessageEnum_principalDoesNotBelongToTheGivenProject;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<PrincipalDoesNotBelongToProjectErrorMessageEnum>
-    _$principalDoesNotBelongToProjectErrorMessageEnumValues = BuiltSet<
+    _$principalDoesNotBelongToProjectErrorMessageEnumValues = new BuiltSet<
         PrincipalDoesNotBelongToProjectErrorMessageEnum>(const <PrincipalDoesNotBelongToProjectErrorMessageEnum>[
   _$principalDoesNotBelongToProjectErrorMessageEnum_principalDoesNotBelongToTheGivenProject,
 ]);
@@ -59,25 +59,26 @@ PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum
     case 'number403':
       return _$principalDoesNotBelongToProjectErrorHttpStatusCodeEnum_number403;
     default:
-      throw ArgumentError(name);
+      throw new ArgumentError(name);
   }
 }
 
 final BuiltSet<PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum>
-    _$principalDoesNotBelongToProjectErrorHttpStatusCodeEnumValues = BuiltSet<
+    _$principalDoesNotBelongToProjectErrorHttpStatusCodeEnumValues =
+    new BuiltSet<
         PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum>(const <PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum>[
   _$principalDoesNotBelongToProjectErrorHttpStatusCodeEnum_number403,
 ]);
 
 Serializer<PrincipalDoesNotBelongToProjectErrorNameEnum>
     _$principalDoesNotBelongToProjectErrorNameEnumSerializer =
-    _$PrincipalDoesNotBelongToProjectErrorNameEnumSerializer();
+    new _$PrincipalDoesNotBelongToProjectErrorNameEnumSerializer();
 Serializer<PrincipalDoesNotBelongToProjectErrorMessageEnum>
     _$principalDoesNotBelongToProjectErrorMessageEnumSerializer =
-    _$PrincipalDoesNotBelongToProjectErrorMessageEnumSerializer();
+    new _$PrincipalDoesNotBelongToProjectErrorMessageEnumSerializer();
 Serializer<PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum>
     _$principalDoesNotBelongToProjectErrorHttpStatusCodeEnumSerializer =
-    _$PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnumSerializer();
+    new _$PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnumSerializer();
 
 class _$PrincipalDoesNotBelongToProjectErrorNameEnumSerializer
     implements
@@ -194,7 +195,8 @@ class _$PrincipalDoesNotBelongToProjectError
   factory _$PrincipalDoesNotBelongToProjectError(
           [void Function(PrincipalDoesNotBelongToProjectErrorBuilder)?
               updates]) =>
-      (PrincipalDoesNotBelongToProjectErrorBuilder()..update(updates))._build();
+      (new PrincipalDoesNotBelongToProjectErrorBuilder()..update(updates))
+          ._build();
 
   _$PrincipalDoesNotBelongToProjectError._(
       {required this.name,
@@ -202,7 +204,17 @@ class _$PrincipalDoesNotBelongToProjectError
       required this.httpStatusCode,
       required this.traceId,
       this.details})
-      : super._();
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(
+        name, r'PrincipalDoesNotBelongToProjectError', 'name');
+    BuiltValueNullFieldError.checkNotNull(
+        message, r'PrincipalDoesNotBelongToProjectError', 'message');
+    BuiltValueNullFieldError.checkNotNull(httpStatusCode,
+        r'PrincipalDoesNotBelongToProjectError', 'httpStatusCode');
+    BuiltValueNullFieldError.checkNotNull(
+        traceId, r'PrincipalDoesNotBelongToProjectError', 'traceId');
+  }
+
   @override
   PrincipalDoesNotBelongToProjectError rebuild(
           void Function(PrincipalDoesNotBelongToProjectErrorBuilder) updates) =>
@@ -210,7 +222,7 @@ class _$PrincipalDoesNotBelongToProjectError
 
   @override
   PrincipalDoesNotBelongToProjectErrorBuilder toBuilder() =>
-      PrincipalDoesNotBelongToProjectErrorBuilder()..replace(this);
+      new PrincipalDoesNotBelongToProjectErrorBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -278,7 +290,7 @@ class PrincipalDoesNotBelongToProjectErrorBuilder
 
   ListBuilder<ServiceErrorResponseDetailsInner>? _details;
   ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
+      _$this._details ??= new ListBuilder<ServiceErrorResponseDetailsInner>();
   set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
       _$this._details = details;
 
@@ -301,6 +313,7 @@ class PrincipalDoesNotBelongToProjectErrorBuilder
 
   @override
   void replace(PrincipalDoesNotBelongToProjectError other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$PrincipalDoesNotBelongToProjectError;
   }
 
@@ -317,7 +330,7 @@ class PrincipalDoesNotBelongToProjectErrorBuilder
     _$PrincipalDoesNotBelongToProjectError _$result;
     try {
       _$result = _$v ??
-          _$PrincipalDoesNotBelongToProjectError._(
+          new _$PrincipalDoesNotBelongToProjectError._(
             name: BuiltValueNullFieldError.checkNotNull(
                 name, r'PrincipalDoesNotBelongToProjectError', 'name'),
             message: BuiltValueNullFieldError.checkNotNull(
@@ -336,7 +349,7 @@ class PrincipalDoesNotBelongToProjectErrorBuilder
         _$failedField = 'details';
         _details?.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'PrincipalDoesNotBelongToProjectError',
             _$failedField,
             e.toString());

@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   TokenList.JSON_PROPERTY_TOKENS,
   TokenList.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class TokenList {
   public static final String JSON_PROPERTY_TOKENS = "tokens";
+  @javax.annotation.Nonnull
   private List<TokenDto> tokens = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public TokenList() {
   }
 
-  public TokenList tokens(List<TokenDto> tokens) {
+  public TokenList tokens(@javax.annotation.Nonnull List<TokenDto> tokens) {
     
     this.tokens = tokens;
     return this;
@@ -77,11 +79,11 @@ public class TokenList {
 
   @JsonProperty(JSON_PROPERTY_TOKENS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTokens(List<TokenDto> tokens) {
+  public void setTokens(@javax.annotation.Nonnull List<TokenDto> tokens) {
     this.tokens = tokens;
   }
 
-  public TokenList lastEvaluatedKey(String lastEvaluatedKey) {
+  public TokenList lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -102,7 +104,7 @@ public class TokenList {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 

@@ -39,36 +39,44 @@ import java.util.StringJoiner;
   GetScannedFileInfoOK.JSON_PROPERTY_CREATED_AT,
   GetScannedFileInfoOK.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GetScannedFileInfoOK {
   public static final String JSON_PROPERTY_DATA = "data";
+  @javax.annotation.Nonnull
   private Object data;
 
   public static final String JSON_PROPERTY_JOB_ID = "jobId";
+  @javax.annotation.Nonnull
   private String jobId;
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private String status;
 
   public static final String JSON_PROPERTY_PROFILE_ID = "profileId";
+  @javax.annotation.Nonnull
   private String profileId;
 
   public static final String JSON_PROPERTY_EXCLUSIVE_START_KEY = "exclusiveStartKey";
+  @javax.annotation.Nullable
   private String exclusiveStartKey;
 
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
+  @javax.annotation.Nonnull
   private String nodeId;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nonnull
   private String createdAt;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public GetScannedFileInfoOK() {
   }
 
-  public GetScannedFileInfoOK data(Object data) {
+  public GetScannedFileInfoOK data(@javax.annotation.Nonnull Object data) {
     
     this.data = data;
     return this;
@@ -89,11 +97,11 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setData(Object data) {
+  public void setData(@javax.annotation.Nonnull Object data) {
     this.data = data;
   }
 
-  public GetScannedFileInfoOK jobId(String jobId) {
+  public GetScannedFileInfoOK jobId(@javax.annotation.Nonnull String jobId) {
     
     this.jobId = jobId;
     return this;
@@ -114,11 +122,11 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_JOB_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJobId(String jobId) {
+  public void setJobId(@javax.annotation.Nonnull String jobId) {
     this.jobId = jobId;
   }
 
-  public GetScannedFileInfoOK status(String status) {
+  public GetScannedFileInfoOK status(@javax.annotation.Nonnull String status) {
     
     this.status = status;
     return this;
@@ -139,11 +147,11 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(String status) {
+  public void setStatus(@javax.annotation.Nonnull String status) {
     this.status = status;
   }
 
-  public GetScannedFileInfoOK profileId(String profileId) {
+  public GetScannedFileInfoOK profileId(@javax.annotation.Nonnull String profileId) {
     
     this.profileId = profileId;
     return this;
@@ -164,11 +172,11 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_PROFILE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfileId(String profileId) {
+  public void setProfileId(@javax.annotation.Nonnull String profileId) {
     this.profileId = profileId;
   }
 
-  public GetScannedFileInfoOK exclusiveStartKey(String exclusiveStartKey) {
+  public GetScannedFileInfoOK exclusiveStartKey(@javax.annotation.Nullable String exclusiveStartKey) {
     
     this.exclusiveStartKey = exclusiveStartKey;
     return this;
@@ -189,11 +197,11 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_EXCLUSIVE_START_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExclusiveStartKey(String exclusiveStartKey) {
+  public void setExclusiveStartKey(@javax.annotation.Nullable String exclusiveStartKey) {
     this.exclusiveStartKey = exclusiveStartKey;
   }
 
-  public GetScannedFileInfoOK nodeId(String nodeId) {
+  public GetScannedFileInfoOK nodeId(@javax.annotation.Nonnull String nodeId) {
     
     this.nodeId = nodeId;
     return this;
@@ -214,11 +222,11 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setNodeId(String nodeId) {
+  public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
   }
 
-  public GetScannedFileInfoOK createdAt(String createdAt) {
+  public GetScannedFileInfoOK createdAt(@javax.annotation.Nonnull String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -239,11 +247,11 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public GetScannedFileInfoOK name(String name) {
+  public GetScannedFileInfoOK name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -264,7 +272,7 @@ public class GetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 

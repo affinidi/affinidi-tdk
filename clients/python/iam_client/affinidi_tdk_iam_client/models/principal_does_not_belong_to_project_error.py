@@ -37,21 +37,21 @@ class PrincipalDoesNotBelongToProjectError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('PrincipalDoesNotBelongToProjectError'):
+        if value not in ('PrincipalDoesNotBelongToProjectError',):
             raise ValueError("must be one of enum values ('PrincipalDoesNotBelongToProjectError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Principal does not belong to the given project'):
+        if value not in ('Principal does not belong to the given project',):
             raise ValueError("must be one of enum values ('Principal does not belong to the given project')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (403):
+        if value not in (403,):
             raise ValueError("must be one of enum values (403)")
         return value
 

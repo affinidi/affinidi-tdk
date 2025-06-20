@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OfferApi extends BaseApi {
 
   public OfferApi() {
@@ -50,7 +50,7 @@ public class OfferApi extends BaseApi {
    * @return CredentialOfferResponse
    * @throws ApiException if fails to make API call
    */
-  public CredentialOfferResponse getCredentialOffer(String projectId, String issuanceId) throws ApiException {
+  public CredentialOfferResponse getCredentialOffer(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String issuanceId) throws ApiException {
     return this.getCredentialOffer(projectId, issuanceId, Collections.emptyMap());
   }
 
@@ -64,7 +64,7 @@ public class OfferApi extends BaseApi {
    * @return CredentialOfferResponse
    * @throws ApiException if fails to make API call
    */
-  public CredentialOfferResponse getCredentialOffer(String projectId, String issuanceId, Map<String, String> additionalHeaders) throws ApiException {
+  public CredentialOfferResponse getCredentialOffer(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String issuanceId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set

@@ -893,8 +893,6 @@ export type IotaConfigurationDtoModeEnum =
  * @interface IotaConfigurationDtoClientMetadata
  */
 export interface IotaConfigurationDtoClientMetadata {
-  [key: string]: any
-
   /**
    * The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website\'s name.
    * @type {string}

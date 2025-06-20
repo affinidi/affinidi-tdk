@@ -40,33 +40,40 @@ import java.util.StringJoiner;
   CreateNodeInput.JSON_PROPERTY_DEK,
   CreateNodeInput.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateNodeInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private NodeType type;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_PARENT_NODE_ID = "parentNodeId";
+  @javax.annotation.Nullable
   private String parentNodeId;
 
   public static final String JSON_PROPERTY_EDEK_INFO = "edekInfo";
+  @javax.annotation.Nullable
   private EdekInfo edekInfo;
 
   public static final String JSON_PROPERTY_DEK = "dek";
+  @javax.annotation.Nullable
   private String dek;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
+  @javax.annotation.Nullable
   private String metadata;
 
   public CreateNodeInput() {
   }
 
-  public CreateNodeInput name(String name) {
+  public CreateNodeInput name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -87,11 +94,11 @@ public class CreateNodeInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public CreateNodeInput type(NodeType type) {
+  public CreateNodeInput type(@javax.annotation.Nonnull NodeType type) {
     
     this.type = type;
     return this;
@@ -112,11 +119,11 @@ public class CreateNodeInput {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(NodeType type) {
+  public void setType(@javax.annotation.Nonnull NodeType type) {
     this.type = type;
   }
 
-  public CreateNodeInput description(String description) {
+  public CreateNodeInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -137,11 +144,11 @@ public class CreateNodeInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public CreateNodeInput parentNodeId(String parentNodeId) {
+  public CreateNodeInput parentNodeId(@javax.annotation.Nullable String parentNodeId) {
     
     this.parentNodeId = parentNodeId;
     return this;
@@ -162,11 +169,11 @@ public class CreateNodeInput {
 
   @JsonProperty(JSON_PROPERTY_PARENT_NODE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setParentNodeId(String parentNodeId) {
+  public void setParentNodeId(@javax.annotation.Nullable String parentNodeId) {
     this.parentNodeId = parentNodeId;
   }
 
-  public CreateNodeInput edekInfo(EdekInfo edekInfo) {
+  public CreateNodeInput edekInfo(@javax.annotation.Nullable EdekInfo edekInfo) {
     
     this.edekInfo = edekInfo;
     return this;
@@ -187,11 +194,11 @@ public class CreateNodeInput {
 
   @JsonProperty(JSON_PROPERTY_EDEK_INFO)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEdekInfo(EdekInfo edekInfo) {
+  public void setEdekInfo(@javax.annotation.Nullable EdekInfo edekInfo) {
     this.edekInfo = edekInfo;
   }
 
-  public CreateNodeInput dek(String dek) {
+  public CreateNodeInput dek(@javax.annotation.Nullable String dek) {
     
     this.dek = dek;
     return this;
@@ -212,11 +219,11 @@ public class CreateNodeInput {
 
   @JsonProperty(JSON_PROPERTY_DEK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDek(String dek) {
+  public void setDek(@javax.annotation.Nullable String dek) {
     this.dek = dek;
   }
 
-  public CreateNodeInput metadata(String metadata) {
+  public CreateNodeInput metadata(@javax.annotation.Nullable String metadata) {
     
     this.metadata = metadata;
     return this;
@@ -237,7 +244,7 @@ public class CreateNodeInput {
 
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetadata(String metadata) {
+  public void setMetadata(@javax.annotation.Nullable String metadata) {
     this.metadata = metadata;
   }
 

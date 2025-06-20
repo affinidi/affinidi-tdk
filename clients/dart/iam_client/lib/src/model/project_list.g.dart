@@ -13,15 +13,18 @@ class _$ProjectList extends ProjectList {
   final String? lastEvaluatedKey;
 
   factory _$ProjectList([void Function(ProjectListBuilder)? updates]) =>
-      (ProjectListBuilder()..update(updates))._build();
+      (new ProjectListBuilder()..update(updates))._build();
 
-  _$ProjectList._({required this.projects, this.lastEvaluatedKey}) : super._();
+  _$ProjectList._({required this.projects, this.lastEvaluatedKey}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(projects, r'ProjectList', 'projects');
+  }
+
   @override
   ProjectList rebuild(void Function(ProjectListBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ProjectListBuilder toBuilder() => ProjectListBuilder()..replace(this);
+  ProjectListBuilder toBuilder() => new ProjectListBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -54,7 +57,7 @@ class ProjectListBuilder implements Builder<ProjectList, ProjectListBuilder> {
 
   ListBuilder<ProjectDto>? _projects;
   ListBuilder<ProjectDto> get projects =>
-      _$this._projects ??= ListBuilder<ProjectDto>();
+      _$this._projects ??= new ListBuilder<ProjectDto>();
   set projects(ListBuilder<ProjectDto>? projects) =>
       _$this._projects = projects;
 
@@ -79,6 +82,7 @@ class ProjectListBuilder implements Builder<ProjectList, ProjectListBuilder> {
 
   @override
   void replace(ProjectList other) {
+    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ProjectList;
   }
 
@@ -94,7 +98,7 @@ class ProjectListBuilder implements Builder<ProjectList, ProjectListBuilder> {
     _$ProjectList _$result;
     try {
       _$result = _$v ??
-          _$ProjectList._(
+          new _$ProjectList._(
             projects: projects.build(),
             lastEvaluatedKey: lastEvaluatedKey,
           );
@@ -104,7 +108,7 @@ class ProjectListBuilder implements Builder<ProjectList, ProjectListBuilder> {
         _$failedField = 'projects';
         projects.build();
       } catch (e) {
-        throw BuiltValueNestedFieldError(
+        throw new BuiltValueNestedFieldError(
             r'ProjectList', _$failedField, e.toString());
       }
       rethrow;

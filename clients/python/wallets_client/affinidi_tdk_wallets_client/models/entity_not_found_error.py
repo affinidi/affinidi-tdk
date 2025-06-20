@@ -37,21 +37,21 @@ class EntityNotFoundError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('EntityNotFoundError'):
+        if value not in ('EntityNotFoundError',):
             raise ValueError("must be one of enum values ('EntityNotFoundError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Entity not found'):
+        if value not in ('Entity not found',):
             raise ValueError("must be one of enum values ('Entity not found')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (404):
+        if value not in (404,):
             raise ValueError("must be one of enum values (404)")
         return value
 

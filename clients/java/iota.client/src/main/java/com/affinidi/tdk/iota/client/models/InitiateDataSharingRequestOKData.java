@@ -35,21 +35,24 @@ import java.util.StringJoiner;
   InitiateDataSharingRequestOKData.JSON_PROPERTY_TRANSACTION_ID
 })
 @JsonTypeName("InitiateDataSharingRequestOK_data")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class InitiateDataSharingRequestOKData {
   public static final String JSON_PROPERTY_JWT = "jwt";
+  @javax.annotation.Nonnull
   private String jwt;
 
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+  @javax.annotation.Nonnull
   private String correlationId;
 
   public static final String JSON_PROPERTY_TRANSACTION_ID = "transactionId";
+  @javax.annotation.Nonnull
   private String transactionId;
 
   public InitiateDataSharingRequestOKData() {
   }
 
-  public InitiateDataSharingRequestOKData jwt(String jwt) {
+  public InitiateDataSharingRequestOKData jwt(@javax.annotation.Nonnull String jwt) {
     
     this.jwt = jwt;
     return this;
@@ -70,11 +73,11 @@ public class InitiateDataSharingRequestOKData {
 
   @JsonProperty(JSON_PROPERTY_JWT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwt(String jwt) {
+  public void setJwt(@javax.annotation.Nonnull String jwt) {
     this.jwt = jwt;
   }
 
-  public InitiateDataSharingRequestOKData correlationId(String correlationId) {
+  public InitiateDataSharingRequestOKData correlationId(@javax.annotation.Nonnull String correlationId) {
     
     this.correlationId = correlationId;
     return this;
@@ -95,11 +98,11 @@ public class InitiateDataSharingRequestOKData {
 
   @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCorrelationId(String correlationId) {
+  public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
   }
 
-  public InitiateDataSharingRequestOKData transactionId(String transactionId) {
+  public InitiateDataSharingRequestOKData transactionId(@javax.annotation.Nonnull String transactionId) {
     
     this.transactionId = transactionId;
     return this;
@@ -120,7 +123,7 @@ public class InitiateDataSharingRequestOKData {
 
   @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransactionId(String transactionId) {
+  public void setTransactionId(@javax.annotation.Nonnull String transactionId) {
     this.transactionId = transactionId;
   }
 

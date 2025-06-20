@@ -43,15 +43,15 @@ import java.util.StringJoiner;
   Constraints.JSON_PROPERTY_IS_HOLDER,
   Constraints.JSON_PROPERTY_SAME_SUBJECT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Constraints {
   /**
    * Gets or Sets limitDisclosure
    */
   public enum LimitDisclosureEnum {
-    REQUIRED("required"),
+    REQUIRED(String.valueOf("required")),
     
-    PREFERRED("preferred");
+    PREFERRED(String.valueOf("preferred"));
 
     private String value;
 
@@ -81,21 +81,24 @@ public class Constraints {
   }
 
   public static final String JSON_PROPERTY_LIMIT_DISCLOSURE = "limit_disclosure";
+  @javax.annotation.Nullable
   private LimitDisclosureEnum limitDisclosure;
 
   public static final String JSON_PROPERTY_STATUSES = "statuses";
+  @javax.annotation.Nullable
   private ConstraintsStatuses statuses;
 
   public static final String JSON_PROPERTY_FIELDS = "fields";
+  @javax.annotation.Nullable
   private List<Field> fields = new ArrayList<>();
 
   /**
    * Gets or Sets subjectIsIssuer
    */
   public enum SubjectIsIssuerEnum {
-    REQUIRED("required"),
+    REQUIRED(String.valueOf("required")),
     
-    PREFERRED("preferred");
+    PREFERRED(String.valueOf("preferred"));
 
     private String value;
 
@@ -125,18 +128,21 @@ public class Constraints {
   }
 
   public static final String JSON_PROPERTY_SUBJECT_IS_ISSUER = "subject_is_issuer";
+  @javax.annotation.Nullable
   private SubjectIsIssuerEnum subjectIsIssuer;
 
   public static final String JSON_PROPERTY_IS_HOLDER = "is_holder";
+  @javax.annotation.Nullable
   private List<HolderSubject> isHolder = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SAME_SUBJECT = "same_subject";
+  @javax.annotation.Nullable
   private List<HolderSubject> sameSubject = new ArrayList<>();
 
   public Constraints() {
   }
 
-  public Constraints limitDisclosure(LimitDisclosureEnum limitDisclosure) {
+  public Constraints limitDisclosure(@javax.annotation.Nullable LimitDisclosureEnum limitDisclosure) {
     
     this.limitDisclosure = limitDisclosure;
     return this;
@@ -157,11 +163,11 @@ public class Constraints {
 
   @JsonProperty(JSON_PROPERTY_LIMIT_DISCLOSURE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLimitDisclosure(LimitDisclosureEnum limitDisclosure) {
+  public void setLimitDisclosure(@javax.annotation.Nullable LimitDisclosureEnum limitDisclosure) {
     this.limitDisclosure = limitDisclosure;
   }
 
-  public Constraints statuses(ConstraintsStatuses statuses) {
+  public Constraints statuses(@javax.annotation.Nullable ConstraintsStatuses statuses) {
     
     this.statuses = statuses;
     return this;
@@ -182,11 +188,11 @@ public class Constraints {
 
   @JsonProperty(JSON_PROPERTY_STATUSES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setStatuses(ConstraintsStatuses statuses) {
+  public void setStatuses(@javax.annotation.Nullable ConstraintsStatuses statuses) {
     this.statuses = statuses;
   }
 
-  public Constraints fields(List<Field> fields) {
+  public Constraints fields(@javax.annotation.Nullable List<Field> fields) {
     
     this.fields = fields;
     return this;
@@ -215,11 +221,11 @@ public class Constraints {
 
   @JsonProperty(JSON_PROPERTY_FIELDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFields(List<Field> fields) {
+  public void setFields(@javax.annotation.Nullable List<Field> fields) {
     this.fields = fields;
   }
 
-  public Constraints subjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
+  public Constraints subjectIsIssuer(@javax.annotation.Nullable SubjectIsIssuerEnum subjectIsIssuer) {
     
     this.subjectIsIssuer = subjectIsIssuer;
     return this;
@@ -240,11 +246,11 @@ public class Constraints {
 
   @JsonProperty(JSON_PROPERTY_SUBJECT_IS_ISSUER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubjectIsIssuer(SubjectIsIssuerEnum subjectIsIssuer) {
+  public void setSubjectIsIssuer(@javax.annotation.Nullable SubjectIsIssuerEnum subjectIsIssuer) {
     this.subjectIsIssuer = subjectIsIssuer;
   }
 
-  public Constraints isHolder(List<HolderSubject> isHolder) {
+  public Constraints isHolder(@javax.annotation.Nullable List<HolderSubject> isHolder) {
     
     this.isHolder = isHolder;
     return this;
@@ -273,11 +279,11 @@ public class Constraints {
 
   @JsonProperty(JSON_PROPERTY_IS_HOLDER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIsHolder(List<HolderSubject> isHolder) {
+  public void setIsHolder(@javax.annotation.Nullable List<HolderSubject> isHolder) {
     this.isHolder = isHolder;
   }
 
-  public Constraints sameSubject(List<HolderSubject> sameSubject) {
+  public Constraints sameSubject(@javax.annotation.Nullable List<HolderSubject> sameSubject) {
     
     this.sameSubject = sameSubject;
     return this;
@@ -306,7 +312,7 @@ public class Constraints {
 
   @JsonProperty(JSON_PROPERTY_SAME_SUBJECT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSameSubject(List<HolderSubject> sameSubject) {
+  public void setSameSubject(@javax.annotation.Nullable List<HolderSubject> sameSubject) {
     this.sameSubject = sameSubject;
   }
 

@@ -35,21 +35,24 @@ import java.util.StringJoiner;
   UpdateAccountDto.JSON_PROPERTY_ACCOUNT_DID,
   UpdateAccountDto.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateAccountDto {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
+  @javax.annotation.Nonnull
   private BigDecimal accountIndex;
 
   public static final String JSON_PROPERTY_ACCOUNT_DID = "accountDid";
+  @javax.annotation.Nonnull
   private String accountDid;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
+  @javax.annotation.Nullable
   private Object metadata;
 
   public UpdateAccountDto() {
   }
 
-  public UpdateAccountDto accountIndex(BigDecimal accountIndex) {
+  public UpdateAccountDto accountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     
     this.accountIndex = accountIndex;
     return this;
@@ -70,11 +73,11 @@ public class UpdateAccountDto {
 
   @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccountIndex(BigDecimal accountIndex) {
+  public void setAccountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     this.accountIndex = accountIndex;
   }
 
-  public UpdateAccountDto accountDid(String accountDid) {
+  public UpdateAccountDto accountDid(@javax.annotation.Nonnull String accountDid) {
     
     this.accountDid = accountDid;
     return this;
@@ -95,11 +98,11 @@ public class UpdateAccountDto {
 
   @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAccountDid(String accountDid) {
+  public void setAccountDid(@javax.annotation.Nonnull String accountDid) {
     this.accountDid = accountDid;
   }
 
-  public UpdateAccountDto metadata(Object metadata) {
+  public UpdateAccountDto metadata(@javax.annotation.Nullable Object metadata) {
     
     this.metadata = metadata;
     return this;
@@ -120,7 +123,7 @@ public class UpdateAccountDto {
 
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetadata(Object metadata) {
+  public void setMetadata(@javax.annotation.Nullable Object metadata) {
     this.metadata = metadata;
   }
 

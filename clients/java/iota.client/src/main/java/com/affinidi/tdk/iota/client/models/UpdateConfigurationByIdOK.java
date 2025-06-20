@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UpdateConfigurationByIdOK.JSON_PROPERTY_UPDATE_CONFIGURATION_BY_ID_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateConfigurationByIdOK {
   public static final String JSON_PROPERTY_UPDATE_CONFIGURATION_BY_ID_OK = "updateConfigurationByIdOk";
+  @javax.annotation.Nullable
   private String updateConfigurationByIdOk;
 
   public UpdateConfigurationByIdOK() {
   }
 
-  public UpdateConfigurationByIdOK updateConfigurationByIdOk(String updateConfigurationByIdOk) {
+  public UpdateConfigurationByIdOK updateConfigurationByIdOk(@javax.annotation.Nullable String updateConfigurationByIdOk) {
     
     this.updateConfigurationByIdOk = updateConfigurationByIdOk;
     return this;
@@ -61,7 +62,7 @@ public class UpdateConfigurationByIdOK {
 
   @JsonProperty(JSON_PROPERTY_UPDATE_CONFIGURATION_BY_ID_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdateConfigurationByIdOk(String updateConfigurationByIdOk) {
+  public void setUpdateConfigurationByIdOk(@javax.annotation.Nullable String updateConfigurationByIdOk) {
     this.updateConfigurationByIdOk = updateConfigurationByIdOk;
   }
 
