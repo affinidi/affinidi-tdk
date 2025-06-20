@@ -3145,7 +3145,7 @@ components:
           type: string
       type: object
     IotaConfigurationDtoClientMetadata:
-      additionalProperties: true
+      additionalProperties: false
       description: It contains information about the requester or verifier.
       example:
         origin: origin

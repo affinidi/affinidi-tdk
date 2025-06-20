@@ -15,12 +15,14 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.credential.verification.client.models.VerifyPresentationOutputErrors;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -37,7 +39,7 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
 public class VerifyPresentationOutput {
   public static final String JSON_PROPERTY_ERRORS = "errors";
-  private VerifyPresentationOutputErrors errors;
+  private List<String> errors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_IS_VALID = "isValid";
   private Boolean isValid;
@@ -45,28 +47,36 @@ public class VerifyPresentationOutput {
   public VerifyPresentationOutput() {
   }
 
-  public VerifyPresentationOutput errors(VerifyPresentationOutputErrors errors) {
+  public VerifyPresentationOutput errors(List<String> errors) {
     
     this.errors = errors;
     return this;
   }
 
+  public VerifyPresentationOutput addErrorsItem(String errorsItem) {
+    if (this.errors == null) {
+      this.errors = new ArrayList<>();
+    }
+    this.errors.add(errorsItem);
+    return this;
+  }
+
   /**
-   * Get errors
+   * Error of the verification
    * @return errors
    */
   @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_ERRORS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public VerifyPresentationOutputErrors getErrors() {
+  public List<String> getErrors() {
     return errors;
   }
 
 
   @JsonProperty(JSON_PROPERTY_ERRORS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrors(VerifyPresentationOutputErrors errors) {
+  public void setErrors(List<String> errors) {
     this.errors = errors;
   }
 
@@ -168,7 +178,16 @@ public class VerifyPresentationOutput {
 
     // add `errors` to the URL query string
     if (getErrors() != null) {
-      joiner.add(getErrors().toUrlQueryString(prefix + "errors" + suffix));
+      for (int i = 0; i < getErrors().size(); i++) {
+        try {
+          joiner.add(String.format("%serrors%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getErrors().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
     }
 
     // add `isValid` to the URL query string

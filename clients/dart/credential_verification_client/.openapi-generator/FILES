@@ -35,7 +35,6 @@ doc/VerifyCredentialInput.md
 doc/VerifyCredentialOutput.md
 doc/VerifyPresentationInput.md
 doc/VerifyPresentationOutput.md
-doc/VerifyPresentationOutputErrors.md
 doc/W3cCredentialStatus.md
 doc/W3cProof.md
 lib/affinidi_tdk_credential_verification_client.dart
@@ -80,7 +79,6 @@ lib/src/model/verify_credential_input.dart
 lib/src/model/verify_credential_output.dart
 lib/src/model/verify_presentation_input.dart
 lib/src/model/verify_presentation_output.dart
-lib/src/model/verify_presentation_output_errors.dart
 lib/src/model/w3c_credential_status.dart
 lib/src/model/w3c_proof.dart
 lib/src/serializers.dart
@@ -117,7 +115,6 @@ test/validate_jwt_output_test.dart
 test/verify_credential_input_test.dart
 test/verify_credential_output_test.dart
 test/verify_presentation_input_test.dart
-test/verify_presentation_output_errors_test.dart
 test/verify_presentation_output_test.dart
 test/w3c_credential_status_test.dart
 test/w3c_proof_test.dart

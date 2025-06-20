@@ -19,15 +19,14 @@ import re  # noqa: F401
 import json
 
 
-
-from pydantic import BaseModel, Field, StrictBool
-from affinidi_tdk_credential_verification_client.models.verify_presentation_output_errors import VerifyPresentationOutputErrors
+from typing import List
+from pydantic import BaseModel, Field, StrictBool, StrictStr, conlist
 
 class VerifyPresentationOutput(BaseModel):
     """
     Response model of /verify-vp  # noqa: E501
     """
-    errors: VerifyPresentationOutputErrors = Field(...)
+    errors: conlist(StrictStr) = Field(default=..., description="Error of the verification")
     is_valid: StrictBool = Field(default=..., alias="isValid", description="Verification result")
     __properties = ["errors", "isValid"]
 
@@ -55,9 +54,6 @@ class VerifyPresentationOutput(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
-        # override the default output from pydantic by calling `to_dict()` of errors
-        if self.errors:
-            _dict['errors'] = self.errors.to_dict()
         return _dict
 
     @classmethod
@@ -70,7 +66,7 @@ class VerifyPresentationOutput(BaseModel):
             return VerifyPresentationOutput.parse_obj(obj)
 
         _obj = VerifyPresentationOutput.parse_obj({
-            "errors": VerifyPresentationOutputErrors.from_dict(obj.get("errors")) if obj.get("errors") is not None else None,
+            "errors": obj.get("errors"),
             "is_valid": obj.get("isValid")
         })
         return _obj

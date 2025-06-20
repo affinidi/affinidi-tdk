@@ -181,14 +181,8 @@ public class ListLoginConfigurationOutput {
     if (getConfigurations() != null) {
       for (int i = 0; i < getConfigurations().size(); i++) {
         if (getConfigurations().get(i) != null) {
-          try {
-            joiner.add(String.format("%sconfigurations%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-                URLEncoder.encode(String.valueOf(getConfigurations().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-          } catch (UnsupportedEncodingException e) {
-            // Should never happen, UTF-8 is always supported
-            throw new RuntimeException(e);
-          }
+          joiner.add(getConfigurations().get(i).toUrlQueryString(String.format("%sconfigurations%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

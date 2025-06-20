@@ -49,7 +49,11 @@ class TestCreateLoginConfigurationOutput(unittest.TestCase):
                 redirect_uris = [
                     ''
                     ],
-                client_metadata = { },
+                client_metadata = affinidi_tdk_login_configuration_client.models.login_configuration_client_metadata_output.LoginConfigurationClientMetadataOutput(
+                    name = '', 
+                    origin = '', 
+                    logo = '', 
+                    domain_verified = True, ),
                 creation_date = '',
                 post_logout_redirect_uris = [
                     ''
@@ -68,7 +72,11 @@ class TestCreateLoginConfigurationOutput(unittest.TestCase):
                 redirect_uris = [
                     ''
                     ],
-                client_metadata = { },
+                client_metadata = affinidi_tdk_login_configuration_client.models.login_configuration_client_metadata_output.LoginConfigurationClientMetadataOutput(
+                    name = '', 
+                    origin = '', 
+                    logo = '', 
+                    domain_verified = True, ),
                 creation_date = '',
         )
         """

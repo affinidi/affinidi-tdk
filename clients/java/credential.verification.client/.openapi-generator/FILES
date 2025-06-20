@@ -36,7 +36,6 @@ docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
-docs/VerifyPresentationOutputErrors.md
 docs/W3cCredentialStatus.md
 docs/W3cProof.md
 gradle.properties
@@ -94,7 +93,6 @@ src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyCrede
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyCredentialOutput.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationInput.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationOutput.java
-src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationOutputErrors.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/W3cCredentialStatus.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/W3cProof.java
 src/test/java/com/affinidi/tdk/credential/verification/client/apis/DefaultApiTest.java
@@ -128,7 +126,6 @@ src/test/java/com/affinidi/tdk/credential/verification/client/models/ValidateJwt
 src/test/java/com/affinidi/tdk/credential/verification/client/models/VerifyCredentialInputTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/VerifyCredentialOutputTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationInputTest.java
-src/test/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationOutputErrorsTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationOutputTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/W3cCredentialStatusTest.java
 src/test/java/com/affinidi/tdk/credential/verification/client/models/W3cProofTest.java
