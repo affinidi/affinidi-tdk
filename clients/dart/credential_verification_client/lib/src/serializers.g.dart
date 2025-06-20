@@ -50,7 +50,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(VerifyCredentialOutput.serializer)
       ..add(VerifyPresentationInput.serializer)
       ..add(VerifyPresentationOutput.serializer)
-      ..add(VerifyPresentationOutputErrors.serializer)
       ..add(W3cCredentialStatus.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(
@@ -88,6 +87,9 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
           () => ListBuilder<NotFoundErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())

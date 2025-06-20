@@ -7,7 +7,8 @@ void main() {
   // TODO add properties to the builder and call build()
 
   group(VerifyPresentationOutput, () {
-    // VerifyPresentationOutputErrors errors
+    // Error of the verification
+    // BuiltList<String> errors
     test('to test the property `errors`', () async {
       // TODO
     });

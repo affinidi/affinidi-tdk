@@ -19,12 +19,13 @@ void main() {
       // TODO
     });
 
+    // Define how DID of your wallet is created and resolved
     // String didMethod
     test('to test the property `didMethod`', () async {
       // TODO
     });
 
-    // If the did method is web, this is the URL of the did
+    // URL of the DID. Required if the did method is web
     // String didWebUrl
     test('to test the property `didWebUrl`', () async {
       // TODO

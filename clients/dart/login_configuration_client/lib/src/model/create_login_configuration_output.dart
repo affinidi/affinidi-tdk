@@ -201,7 +201,7 @@ class _$CreateLoginConfigurationOutputSerializer implements PrimitiveSerializer<
             value,
             specifiedType: const FullType(LoginConfigurationClientMetadataOutput),
           ) as LoginConfigurationClientMetadataOutput;
-          result.clientMetadata = valueDes.toBuilder();
+          result.clientMetadata.replace(valueDes);
           break;
         case r'creationDate':
           final valueDes = serializers.deserialize(

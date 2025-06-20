@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -38,7 +36,7 @@ import java.util.StringJoiner;
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_DOMAIN_VERIFIED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
-public class LoginConfigurationClientMetadataOutput extends HashMap<String, Object> {
+public class LoginConfigurationClientMetadataOutput {
   public static final String JSON_PROPERTY_NAME = "name";
   private String name;
 
@@ -52,7 +50,6 @@ public class LoginConfigurationClientMetadataOutput extends HashMap<String, Obje
   private Boolean domainVerified;
 
   public LoginConfigurationClientMetadataOutput() {
-
   }
 
   public LoginConfigurationClientMetadataOutput name(String name) {
@@ -167,20 +164,18 @@ public class LoginConfigurationClientMetadataOutput extends HashMap<String, Obje
     return Objects.equals(this.name, loginConfigurationClientMetadataOutput.name) &&
         Objects.equals(this.origin, loginConfigurationClientMetadataOutput.origin) &&
         Objects.equals(this.logo, loginConfigurationClientMetadataOutput.logo) &&
-        Objects.equals(this.domainVerified, loginConfigurationClientMetadataOutput.domainVerified) &&
-        super.equals(o);
+        Objects.equals(this.domainVerified, loginConfigurationClientMetadataOutput.domainVerified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, origin, logo, domainVerified, super.hashCode());
+    return Objects.hash(name, origin, logo, domainVerified);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoginConfigurationClientMetadataOutput {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    origin: ").append(toIndentedString(origin)).append("\n");
     sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
