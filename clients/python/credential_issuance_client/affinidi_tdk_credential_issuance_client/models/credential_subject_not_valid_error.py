@@ -37,21 +37,21 @@ class CredentialSubjectNotValidError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('CredentialSubjectNotValidError'):
+        if value not in ('CredentialSubjectNotValidError',):
             raise ValueError("must be one of enum values ('CredentialSubjectNotValidError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Credential subject is not according to the vc schema'):
+        if value not in ('Credential subject is not according to the vc schema',):
             raise ValueError("must be one of enum values ('Credential subject is not according to the vc schema')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

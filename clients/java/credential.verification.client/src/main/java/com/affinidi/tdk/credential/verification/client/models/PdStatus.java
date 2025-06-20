@@ -32,17 +32,17 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   PdStatus.JSON_PROPERTY_DIRECTIVE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PdStatus {
   /**
    * Gets or Sets directive
    */
   public enum DirectiveEnum {
-    REQUIRED("required"),
+    REQUIRED(String.valueOf("required")),
     
-    ALLOWED("allowed"),
+    ALLOWED(String.valueOf("allowed")),
     
-    DISALLOWED("disallowed");
+    DISALLOWED(String.valueOf("disallowed"));
 
     private String value;
 
@@ -72,12 +72,13 @@ public class PdStatus {
   }
 
   public static final String JSON_PROPERTY_DIRECTIVE = "directive";
+  @javax.annotation.Nullable
   private DirectiveEnum directive;
 
   public PdStatus() {
   }
 
-  public PdStatus directive(DirectiveEnum directive) {
+  public PdStatus directive(@javax.annotation.Nullable DirectiveEnum directive) {
     
     this.directive = directive;
     return this;
@@ -98,7 +99,7 @@ public class PdStatus {
 
   @JsonProperty(JSON_PROPERTY_DIRECTIVE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDirective(DirectiveEnum directive) {
+  public void setDirective(@javax.annotation.Nullable DirectiveEnum directive) {
     this.directive = directive;
   }
 

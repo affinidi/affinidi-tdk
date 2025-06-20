@@ -54,6 +54,8 @@ src/main/java/com/affinidi/tdk/wallets/client/Configuration.java
 src/main/java/com/affinidi/tdk/wallets/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/wallets/client/Pair.java
 src/main/java/com/affinidi/tdk/wallets/client/RFC3339DateFormat.java
+src/main/java/com/affinidi/tdk/wallets/client/RFC3339InstantDeserializer.java
+src/main/java/com/affinidi/tdk/wallets/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/wallets/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/wallets/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/wallets/client/StringUtil.java

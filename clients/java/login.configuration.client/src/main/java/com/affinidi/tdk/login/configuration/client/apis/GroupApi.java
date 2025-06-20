@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupApi extends BaseApi {
 
   public GroupApi() {
@@ -59,7 +59,7 @@ public class GroupApi extends BaseApi {
    * @return GroupUserMappingDto
    * @throws ApiException if fails to make API call
    */
-  public GroupUserMappingDto addUserToGroup(String groupName, AddUserToGroupInput addUserToGroupInput) throws ApiException {
+  public GroupUserMappingDto addUserToGroup(@javax.annotation.Nonnull String groupName, @javax.annotation.Nonnull AddUserToGroupInput addUserToGroupInput) throws ApiException {
     return this.addUserToGroup(groupName, addUserToGroupInput, Collections.emptyMap());
   }
 
@@ -73,7 +73,7 @@ public class GroupApi extends BaseApi {
    * @return GroupUserMappingDto
    * @throws ApiException if fails to make API call
    */
-  public GroupUserMappingDto addUserToGroup(String groupName, AddUserToGroupInput addUserToGroupInput, Map<String, String> additionalHeaders) throws ApiException {
+  public GroupUserMappingDto addUserToGroup(@javax.annotation.Nonnull String groupName, @javax.annotation.Nonnull AddUserToGroupInput addUserToGroupInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = addUserToGroupInput;
     
     // verify the required parameter 'groupName' is set
@@ -140,7 +140,7 @@ public class GroupApi extends BaseApi {
    * @return GroupDto
    * @throws ApiException if fails to make API call
    */
-  public GroupDto createGroup(CreateGroupInput createGroupInput) throws ApiException {
+  public GroupDto createGroup(@javax.annotation.Nonnull CreateGroupInput createGroupInput) throws ApiException {
     return this.createGroup(createGroupInput, Collections.emptyMap());
   }
 
@@ -153,7 +153,7 @@ public class GroupApi extends BaseApi {
    * @return GroupDto
    * @throws ApiException if fails to make API call
    */
-  public GroupDto createGroup(CreateGroupInput createGroupInput, Map<String, String> additionalHeaders) throws ApiException {
+  public GroupDto createGroup(@javax.annotation.Nonnull CreateGroupInput createGroupInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createGroupInput;
     
     // verify the required parameter 'createGroupInput' is set
@@ -213,7 +213,7 @@ public class GroupApi extends BaseApi {
    * @param groupName  (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteGroup(String groupName) throws ApiException {
+  public void deleteGroup(@javax.annotation.Nonnull String groupName) throws ApiException {
     this.deleteGroup(groupName, Collections.emptyMap());
   }
 
@@ -225,7 +225,7 @@ public class GroupApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deleteGroup(String groupName, Map<String, String> additionalHeaders) throws ApiException {
+  public void deleteGroup(@javax.annotation.Nonnull String groupName, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'groupName' is set
@@ -286,7 +286,7 @@ public class GroupApi extends BaseApi {
    * @return GroupDto
    * @throws ApiException if fails to make API call
    */
-  public GroupDto getGroupById(String groupName) throws ApiException {
+  public GroupDto getGroupById(@javax.annotation.Nonnull String groupName) throws ApiException {
     return this.getGroupById(groupName, Collections.emptyMap());
   }
 
@@ -299,7 +299,7 @@ public class GroupApi extends BaseApi {
    * @return GroupDto
    * @throws ApiException if fails to make API call
    */
-  public GroupDto getGroupById(String groupName, Map<String, String> additionalHeaders) throws ApiException {
+  public GroupDto getGroupById(@javax.annotation.Nonnull String groupName, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'groupName' is set
@@ -364,7 +364,7 @@ public class GroupApi extends BaseApi {
    * @return GroupUserMappingsList
    * @throws ApiException if fails to make API call
    */
-  public GroupUserMappingsList listGroupUserMappings(String groupName, Integer limit, String exclusiveStartKey, String sortOrder) throws ApiException {
+  public GroupUserMappingsList listGroupUserMappings(@javax.annotation.Nonnull String groupName, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, @javax.annotation.Nullable String sortOrder) throws ApiException {
     return this.listGroupUserMappings(groupName, limit, exclusiveStartKey, sortOrder, Collections.emptyMap());
   }
 
@@ -380,7 +380,7 @@ public class GroupApi extends BaseApi {
    * @return GroupUserMappingsList
    * @throws ApiException if fails to make API call
    */
-  public GroupUserMappingsList listGroupUserMappings(String groupName, Integer limit, String exclusiveStartKey, String sortOrder, Map<String, String> additionalHeaders) throws ApiException {
+  public GroupUserMappingsList listGroupUserMappings(@javax.annotation.Nonnull String groupName, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, @javax.annotation.Nullable String sortOrder, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'groupName' is set
@@ -512,7 +512,7 @@ public class GroupApi extends BaseApi {
    * @param removeUserFromGroupInput Remove user from group (required)
    * @throws ApiException if fails to make API call
    */
-  public void removeUserFromGroup(String groupName, RemoveUserFromGroupInput removeUserFromGroupInput) throws ApiException {
+  public void removeUserFromGroup(@javax.annotation.Nonnull String groupName, @javax.annotation.Nonnull RemoveUserFromGroupInput removeUserFromGroupInput) throws ApiException {
     this.removeUserFromGroup(groupName, removeUserFromGroupInput, Collections.emptyMap());
   }
 
@@ -525,7 +525,7 @@ public class GroupApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void removeUserFromGroup(String groupName, RemoveUserFromGroupInput removeUserFromGroupInput, Map<String, String> additionalHeaders) throws ApiException {
+  public void removeUserFromGroup(@javax.annotation.Nonnull String groupName, @javax.annotation.Nonnull RemoveUserFromGroupInput removeUserFromGroupInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = removeUserFromGroupInput;
     
     // verify the required parameter 'groupName' is set

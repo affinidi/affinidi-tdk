@@ -2385,7 +2385,7 @@ components:
             location: location
             value: value
         message: Principal can not execute action on given resource
-        httpStatusCode: 6.027456183070403
+        httpStatusCode: 6
       properties:
         name:
           enum:
@@ -2398,7 +2398,7 @@ components:
         httpStatusCode:
           enum:
             - 403
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2426,7 +2426,7 @@ components:
             location: location
             value: value
         message: 'Not found: ${param}.'
-        httpStatusCode: 0.8008281904610115
+        httpStatusCode: 0
       properties:
         name:
           enum:
@@ -2439,7 +2439,7 @@ components:
         httpStatusCode:
           enum:
             - 404
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2467,7 +2467,7 @@ components:
             location: location
             value: value
         message: 'Invalid parameter: ${param}.'
-        httpStatusCode: 6.027456183070403
+        httpStatusCode: 6
       properties:
         name:
           enum:
@@ -2480,7 +2480,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2575,7 +2575,7 @@ components:
             location: location
             value: value
         message: JWT token is invalid
-        httpStatusCode: 1.4658129805029452
+        httpStatusCode: 1
       properties:
         name:
           enum:
@@ -2588,7 +2588,7 @@ components:
         httpStatusCode:
           enum:
             - 401
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2616,7 +2616,7 @@ components:
             location: location
             value: value
         message: Credential Request is invalid
-        httpStatusCode: 6.027456183070403
+        httpStatusCode: 6
       properties:
         name:
           enum:
@@ -2629,7 +2629,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2656,7 +2656,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2683,7 +2683,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2711,7 +2711,7 @@ components:
             location: location
             value: value
         message: Credential config is not available for the project
-        httpStatusCode: 5.962133916683182
+        httpStatusCode: 5
       properties:
         name:
           enum:
@@ -2724,7 +2724,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2752,7 +2752,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2779,7 +2779,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2806,7 +2806,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2833,7 +2833,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2860,7 +2860,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2887,7 +2887,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2932,7 +2932,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2959,7 +2959,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2986,7 +2986,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3013,7 +3013,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:

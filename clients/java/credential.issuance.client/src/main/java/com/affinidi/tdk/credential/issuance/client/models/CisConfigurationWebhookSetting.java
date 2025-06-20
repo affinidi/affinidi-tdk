@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   CisConfigurationWebhookSetting.JSON_PROPERTY_ENABLED,
   CisConfigurationWebhookSetting.JSON_PROPERTY_ENDPOINT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CisConfigurationWebhookSetting {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
+  @javax.annotation.Nonnull
   private Boolean enabled = false;
 
   public static final String JSON_PROPERTY_ENDPOINT = "endpoint";
+  @javax.annotation.Nullable
   private CisConfigurationWebhookSettingEndpoint endpoint;
 
   public CisConfigurationWebhookSetting() {
   }
 
-  public CisConfigurationWebhookSetting enabled(Boolean enabled) {
+  public CisConfigurationWebhookSetting enabled(@javax.annotation.Nonnull Boolean enabled) {
     
     this.enabled = enabled;
     return this;
@@ -66,11 +68,11 @@ public class CisConfigurationWebhookSetting {
 
   @JsonProperty(JSON_PROPERTY_ENABLED)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEnabled(Boolean enabled) {
+  public void setEnabled(@javax.annotation.Nonnull Boolean enabled) {
     this.enabled = enabled;
   }
 
-  public CisConfigurationWebhookSetting endpoint(CisConfigurationWebhookSettingEndpoint endpoint) {
+  public CisConfigurationWebhookSetting endpoint(@javax.annotation.Nullable CisConfigurationWebhookSettingEndpoint endpoint) {
     
     this.endpoint = endpoint;
     return this;
@@ -91,7 +93,7 @@ public class CisConfigurationWebhookSetting {
 
   @JsonProperty(JSON_PROPERTY_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndpoint(CisConfigurationWebhookSettingEndpoint endpoint) {
+  public void setEndpoint(@javax.annotation.Nullable CisConfigurationWebhookSettingEndpoint endpoint) {
     this.endpoint = endpoint;
   }
 

@@ -37,21 +37,21 @@ class InvalidVPTokenCreationTimeError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidVPTokenCreationTimeError'):
+        if value not in ('InvalidVPTokenCreationTimeError',):
             raise ValueError("must be one of enum values ('InvalidVPTokenCreationTimeError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('VP token has expired'):
+        if value not in ('VP token has expired',):
             raise ValueError("must be one of enum values ('VP token has expired')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

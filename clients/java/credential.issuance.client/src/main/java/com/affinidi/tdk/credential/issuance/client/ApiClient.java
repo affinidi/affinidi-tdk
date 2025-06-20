@@ -81,7 +81,7 @@ import com.affinidi.tdk.credential.issuance.client.auth.Authentication;
 import com.affinidi.tdk.credential.issuance.client.auth.HttpBearerAuth;
 import com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ApiClient extends JavaTimeFormatter {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   private Map<String, String> defaultCookieMap = new HashMap<String, String>();

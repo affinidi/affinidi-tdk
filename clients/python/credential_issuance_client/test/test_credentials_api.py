@@ -25,7 +25,7 @@ class TestCredentialsApi(unittest.TestCase):
         self.api = CredentialsApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_batch_credential(self) -> None:
         """Test case for batch_credential

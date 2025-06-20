@@ -33,15 +33,16 @@ import java.util.StringJoiner;
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.JSON_PROPERTY_JWKS_URI
 })
 @JsonTypeName("TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf_1")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
   public static final String JSON_PROPERTY_JWKS_URI = "jwksUri";
+  @javax.annotation.Nonnull
   private String jwksUri;
 
   public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1() {
   }
 
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 jwksUri(String jwksUri) {
+  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 jwksUri(@javax.annotation.Nonnull String jwksUri) {
     
     this.jwksUri = jwksUri;
     return this;
@@ -62,7 +63,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
 
   @JsonProperty(JSON_PROPERTY_JWKS_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwksUri(String jwksUri) {
+  public void setJwksUri(@javax.annotation.Nonnull String jwksUri) {
     this.jwksUri = jwksUri;
   }
 

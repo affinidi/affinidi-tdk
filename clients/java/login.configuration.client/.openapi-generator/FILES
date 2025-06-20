@@ -33,6 +33,7 @@ docs/GroupsList.md
 docs/GroupsPerUserLimitExceededError.md
 docs/IdTokenMappingItem.md
 docs/IdpApi.md
+docs/InlineObject.md
 docs/InvalidClaimContextError.md
 docs/InvalidGroupsError.md
 docs/InvalidParameterError.md
@@ -82,6 +83,8 @@ src/main/java/com/affinidi/tdk/login/configuration/client/Configuration.java
 src/main/java/com/affinidi/tdk/login/configuration/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/login/configuration/client/Pair.java
 src/main/java/com/affinidi/tdk/login/configuration/client/RFC3339DateFormat.java
+src/main/java/com/affinidi/tdk/login/configuration/client/RFC3339InstantDeserializer.java
+src/main/java/com/affinidi/tdk/login/configuration/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/login/configuration/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/login/configuration/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/login/configuration/client/StringUtil.java
@@ -118,6 +121,7 @@ src/main/java/com/affinidi/tdk/login/configuration/client/models/GroupUserMappin
 src/main/java/com/affinidi/tdk/login/configuration/client/models/GroupsList.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/GroupsPerUserLimitExceededError.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/IdTokenMappingItem.java
+src/main/java/com/affinidi/tdk/login/configuration/client/models/InlineObject.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/InvalidClaimContextError.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/InvalidGroupsError.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/InvalidParameterError.java
@@ -180,6 +184,7 @@ src/test/java/com/affinidi/tdk/login/configuration/client/models/GroupUserMappin
 src/test/java/com/affinidi/tdk/login/configuration/client/models/GroupsListTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/GroupsPerUserLimitExceededErrorTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/IdTokenMappingItemTest.java
+src/test/java/com/affinidi/tdk/login/configuration/client/models/InlineObjectTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/InvalidClaimContextErrorTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/InvalidGroupsErrorTest.java
 src/test/java/com/affinidi/tdk/login/configuration/client/models/InvalidParameterErrorDetailsInnerTest.java

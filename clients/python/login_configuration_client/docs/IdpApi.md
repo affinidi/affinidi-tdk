@@ -140,7 +140,9 @@ No authorization required
 
 OpenID Connect Front- and Back-channel Enabled Logout
 
-This endpoint initiates and completes user logout at the IdP OAuth2 & OpenID provider and initiates OpenID Connect Front- / Back-channel logout: https://openid.net/specs/openid-connect-frontchannel-1_0.html https://openid.net/specs/openid-connect-backchannel-1_0.html Back-channel logout is performed asynchronously and does not affect logout flow.
+This endpoint initiates and completes user logout at the IdP OAuth2 & OpenID provider and initiates OpenID Connect Front- / Back-channel logout:
+https://openid.net/specs/openid-connect-frontchannel-1_0.html https://openid.net/specs/openid-connect-backchannel-1_0.html
+Back-channel logout is performed asynchronously and does not affect logout flow.
 
 ### Example
 
@@ -271,7 +273,8 @@ No authorization required
 
 OpenID Connect Userinfo
 
-This endpoint returns the payload of the ID Token, including session.id_token values, of the provided OAuth 2.0 Access Token's consent request. In the case of authentication error, a WWW-Authenticate header might be set in the response with more information about the error. See the spec for more details about header format.
+This endpoint returns the payload of the ID Token, including session.id_token values, of the provided OAuth 2.0 Access Token's consent request.
+In the case of authentication error, a WWW-Authenticate header might be set in the response with more information about the error. See the spec for more details about header format.
 
 ### Example
 

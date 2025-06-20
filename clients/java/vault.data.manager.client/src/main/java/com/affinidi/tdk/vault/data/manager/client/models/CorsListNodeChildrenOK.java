@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsListNodeChildrenOK.JSON_PROPERTY_CORS_LIST_NODE_CHILDREN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsListNodeChildrenOK {
   public static final String JSON_PROPERTY_CORS_LIST_NODE_CHILDREN_OK = "corsListNodeChildrenOk";
+  @javax.annotation.Nullable
   private String corsListNodeChildrenOk;
 
   public CorsListNodeChildrenOK() {
   }
 
-  public CorsListNodeChildrenOK corsListNodeChildrenOk(String corsListNodeChildrenOk) {
+  public CorsListNodeChildrenOK corsListNodeChildrenOk(@javax.annotation.Nullable String corsListNodeChildrenOk) {
     
     this.corsListNodeChildrenOk = corsListNodeChildrenOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsListNodeChildrenOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_LIST_NODE_CHILDREN_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsListNodeChildrenOk(String corsListNodeChildrenOk) {
+  public void setCorsListNodeChildrenOk(@javax.annotation.Nullable String corsListNodeChildrenOk) {
     this.corsListNodeChildrenOk = corsListNodeChildrenOk;
   }
 

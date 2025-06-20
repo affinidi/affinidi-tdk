@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   UpdateTokenInput.JSON_PROPERTY_NAME,
   UpdateTokenInput.JSON_PROPERTY_AUTHENTICATION_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateTokenInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_AUTHENTICATION_METHOD = "authenticationMethod";
+  @javax.annotation.Nullable
   private UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod;
 
   public UpdateTokenInput() {
   }
 
-  public UpdateTokenInput name(String name) {
+  public UpdateTokenInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -66,11 +68,11 @@ public class UpdateTokenInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public UpdateTokenInput authenticationMethod(UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
+  public UpdateTokenInput authenticationMethod(@javax.annotation.Nullable UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     
     this.authenticationMethod = authenticationMethod;
     return this;
@@ -91,7 +93,7 @@ public class UpdateTokenInput {
 
   @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthenticationMethod(UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
+  public void setAuthenticationMethod(@javax.annotation.Nullable UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
 

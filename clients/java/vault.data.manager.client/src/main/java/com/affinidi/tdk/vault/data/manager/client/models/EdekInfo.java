@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   EdekInfo.JSON_PROPERTY_EDEK,
   EdekInfo.JSON_PROPERTY_DEKEK_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class EdekInfo {
   public static final String JSON_PROPERTY_EDEK = "edek";
+  @javax.annotation.Nonnull
   private String edek;
 
   public static final String JSON_PROPERTY_DEKEK_ID = "dekekId";
+  @javax.annotation.Nonnull
   private String dekekId;
 
   public EdekInfo() {
   }
 
-  public EdekInfo edek(String edek) {
+  public EdekInfo edek(@javax.annotation.Nonnull String edek) {
     
     this.edek = edek;
     return this;
@@ -65,11 +67,11 @@ public class EdekInfo {
 
   @JsonProperty(JSON_PROPERTY_EDEK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEdek(String edek) {
+  public void setEdek(@javax.annotation.Nonnull String edek) {
     this.edek = edek;
   }
 
-  public EdekInfo dekekId(String dekekId) {
+  public EdekInfo dekekId(@javax.annotation.Nonnull String dekekId) {
     
     this.dekekId = dekekId;
     return this;
@@ -90,7 +92,7 @@ public class EdekInfo {
 
   @JsonProperty(JSON_PROPERTY_DEKEK_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDekekId(String dekekId) {
+  public void setDekekId(@javax.annotation.Nonnull String dekekId) {
     this.dekekId = dekekId;
   }
 

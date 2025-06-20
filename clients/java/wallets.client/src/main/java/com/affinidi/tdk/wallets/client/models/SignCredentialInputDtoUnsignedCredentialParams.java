@@ -40,30 +40,36 @@ import java.util.StringJoiner;
   SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_EXPIRES_AT
 })
 @JsonTypeName("SignCredentialInputDto_unsignedCredentialParams")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialInputDtoUnsignedCredentialParams {
   public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
+  @javax.annotation.Nonnull
   private String jsonLdContextUrl;
 
   public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
+  @javax.annotation.Nonnull
   private String jsonSchemaUrl;
 
   public static final String JSON_PROPERTY_TYPE_NAME = "typeName";
+  @javax.annotation.Nonnull
   private String typeName;
 
   public static final String JSON_PROPERTY_CREDENTIAL_SUBJECT = "credentialSubject";
+  @javax.annotation.Nonnull
   private Map<String, Object> credentialSubject = new HashMap<>();
 
   public static final String JSON_PROPERTY_HOLDER_DID = "holderDid";
+  @javax.annotation.Nonnull
   private String holderDid;
 
   public static final String JSON_PROPERTY_EXPIRES_AT = "expiresAt";
+  @javax.annotation.Nonnull
   private String expiresAt;
 
   public SignCredentialInputDtoUnsignedCredentialParams() {
   }
 
-  public SignCredentialInputDtoUnsignedCredentialParams jsonLdContextUrl(String jsonLdContextUrl) {
+  public SignCredentialInputDtoUnsignedCredentialParams jsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     
     this.jsonLdContextUrl = jsonLdContextUrl;
     return this;
@@ -84,11 +90,11 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
 
   @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonLdContextUrl(String jsonLdContextUrl) {
+  public void setJsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
 
-  public SignCredentialInputDtoUnsignedCredentialParams jsonSchemaUrl(String jsonSchemaUrl) {
+  public SignCredentialInputDtoUnsignedCredentialParams jsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     
     this.jsonSchemaUrl = jsonSchemaUrl;
     return this;
@@ -109,11 +115,11 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
 
   @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonSchemaUrl(String jsonSchemaUrl) {
+  public void setJsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
   }
 
-  public SignCredentialInputDtoUnsignedCredentialParams typeName(String typeName) {
+  public SignCredentialInputDtoUnsignedCredentialParams typeName(@javax.annotation.Nonnull String typeName) {
     
     this.typeName = typeName;
     return this;
@@ -134,11 +140,11 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
 
   @JsonProperty(JSON_PROPERTY_TYPE_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTypeName(String typeName) {
+  public void setTypeName(@javax.annotation.Nonnull String typeName) {
     this.typeName = typeName;
   }
 
-  public SignCredentialInputDtoUnsignedCredentialParams credentialSubject(Map<String, Object> credentialSubject) {
+  public SignCredentialInputDtoUnsignedCredentialParams credentialSubject(@javax.annotation.Nonnull Map<String, Object> credentialSubject) {
     
     this.credentialSubject = credentialSubject;
     return this;
@@ -164,11 +170,11 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
-  public void setCredentialSubject(Map<String, Object> credentialSubject) {
+  public void setCredentialSubject(@javax.annotation.Nonnull Map<String, Object> credentialSubject) {
     this.credentialSubject = credentialSubject;
   }
 
-  public SignCredentialInputDtoUnsignedCredentialParams holderDid(String holderDid) {
+  public SignCredentialInputDtoUnsignedCredentialParams holderDid(@javax.annotation.Nonnull String holderDid) {
     
     this.holderDid = holderDid;
     return this;
@@ -189,11 +195,11 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
 
   @JsonProperty(JSON_PROPERTY_HOLDER_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHolderDid(String holderDid) {
+  public void setHolderDid(@javax.annotation.Nonnull String holderDid) {
     this.holderDid = holderDid;
   }
 
-  public SignCredentialInputDtoUnsignedCredentialParams expiresAt(String expiresAt) {
+  public SignCredentialInputDtoUnsignedCredentialParams expiresAt(@javax.annotation.Nonnull String expiresAt) {
     
     this.expiresAt = expiresAt;
     return this;
@@ -214,7 +220,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
 
   @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setExpiresAt(String expiresAt) {
+  public void setExpiresAt(@javax.annotation.Nonnull String expiresAt) {
     this.expiresAt = expiresAt;
   }
 

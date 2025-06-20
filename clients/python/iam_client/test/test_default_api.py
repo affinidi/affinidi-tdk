@@ -25,7 +25,7 @@ class TestDefaultApi(unittest.TestCase):
         self.api = DefaultApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_v1_auth_proxy_delete(self) -> None:
         """Test case for v1_auth_proxy_delete

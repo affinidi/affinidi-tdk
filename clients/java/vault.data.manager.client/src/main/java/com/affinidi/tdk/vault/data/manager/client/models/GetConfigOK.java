@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   GetConfigOK.JSON_PROPERTY_PROFILE_NAME,
   GetConfigOK.JSON_PROPERTY_MAXIMUM_PROFILES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GetConfigOK {
   public static final String JSON_PROPERTY_PROFILE_NAME = "profileName";
+  @javax.annotation.Nonnull
   private String profileName;
 
   public static final String JSON_PROPERTY_MAXIMUM_PROFILES = "maximumProfiles";
+  @javax.annotation.Nonnull
   private BigDecimal maximumProfiles;
 
   public GetConfigOK() {
   }
 
-  public GetConfigOK profileName(String profileName) {
+  public GetConfigOK profileName(@javax.annotation.Nonnull String profileName) {
     
     this.profileName = profileName;
     return this;
@@ -66,11 +68,11 @@ public class GetConfigOK {
 
   @JsonProperty(JSON_PROPERTY_PROFILE_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProfileName(String profileName) {
+  public void setProfileName(@javax.annotation.Nonnull String profileName) {
     this.profileName = profileName;
   }
 
-  public GetConfigOK maximumProfiles(BigDecimal maximumProfiles) {
+  public GetConfigOK maximumProfiles(@javax.annotation.Nonnull BigDecimal maximumProfiles) {
     
     this.maximumProfiles = maximumProfiles;
     return this;
@@ -91,7 +93,7 @@ public class GetConfigOK {
 
   @JsonProperty(JSON_PROPERTY_MAXIMUM_PROFILES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMaximumProfiles(BigDecimal maximumProfiles) {
+  public void setMaximumProfiles(@javax.annotation.Nonnull BigDecimal maximumProfiles) {
     this.maximumProfiles = maximumProfiles;
   }
 

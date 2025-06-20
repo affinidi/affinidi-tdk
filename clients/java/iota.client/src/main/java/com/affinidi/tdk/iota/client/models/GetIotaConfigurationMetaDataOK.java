@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   GetIotaConfigurationMetaDataOK.JSON_PROPERTY_ORIGIN,
   GetIotaConfigurationMetaDataOK.JSON_PROPERTY_LOGO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GetIotaConfigurationMetaDataOK {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_ORIGIN = "origin";
+  @javax.annotation.Nonnull
   private String origin;
 
   public static final String JSON_PROPERTY_LOGO = "logo";
+  @javax.annotation.Nonnull
   private String logo;
 
   public GetIotaConfigurationMetaDataOK() {
   }
 
-  public GetIotaConfigurationMetaDataOK name(String name) {
+  public GetIotaConfigurationMetaDataOK name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -69,11 +72,11 @@ public class GetIotaConfigurationMetaDataOK {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public GetIotaConfigurationMetaDataOK origin(String origin) {
+  public GetIotaConfigurationMetaDataOK origin(@javax.annotation.Nonnull String origin) {
     
     this.origin = origin;
     return this;
@@ -94,11 +97,11 @@ public class GetIotaConfigurationMetaDataOK {
 
   @JsonProperty(JSON_PROPERTY_ORIGIN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrigin(String origin) {
+  public void setOrigin(@javax.annotation.Nonnull String origin) {
     this.origin = origin;
   }
 
-  public GetIotaConfigurationMetaDataOK logo(String logo) {
+  public GetIotaConfigurationMetaDataOK logo(@javax.annotation.Nonnull String logo) {
     
     this.logo = logo;
     return this;
@@ -119,7 +122,7 @@ public class GetIotaConfigurationMetaDataOK {
 
   @JsonProperty(JSON_PROPERTY_LOGO)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLogo(String logo) {
+  public void setLogo(@javax.annotation.Nonnull String logo) {
     this.logo = logo;
   }
 

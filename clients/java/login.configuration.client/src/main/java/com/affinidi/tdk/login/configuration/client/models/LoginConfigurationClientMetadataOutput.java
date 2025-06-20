@@ -35,24 +35,28 @@ import java.util.StringJoiner;
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_LOGO,
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_DOMAIN_VERIFIED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LoginConfigurationClientMetadataOutput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_ORIGIN = "origin";
+  @javax.annotation.Nonnull
   private String origin;
 
   public static final String JSON_PROPERTY_LOGO = "logo";
+  @javax.annotation.Nonnull
   private String logo;
 
   public static final String JSON_PROPERTY_DOMAIN_VERIFIED = "domainVerified";
+  @javax.annotation.Nullable
   private Boolean domainVerified;
 
   public LoginConfigurationClientMetadataOutput() {
   }
 
-  public LoginConfigurationClientMetadataOutput name(String name) {
+  public LoginConfigurationClientMetadataOutput name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -73,11 +77,11 @@ public class LoginConfigurationClientMetadataOutput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public LoginConfigurationClientMetadataOutput origin(String origin) {
+  public LoginConfigurationClientMetadataOutput origin(@javax.annotation.Nonnull String origin) {
     
     this.origin = origin;
     return this;
@@ -98,11 +102,11 @@ public class LoginConfigurationClientMetadataOutput {
 
   @JsonProperty(JSON_PROPERTY_ORIGIN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setOrigin(String origin) {
+  public void setOrigin(@javax.annotation.Nonnull String origin) {
     this.origin = origin;
   }
 
-  public LoginConfigurationClientMetadataOutput logo(String logo) {
+  public LoginConfigurationClientMetadataOutput logo(@javax.annotation.Nonnull String logo) {
     
     this.logo = logo;
     return this;
@@ -123,11 +127,11 @@ public class LoginConfigurationClientMetadataOutput {
 
   @JsonProperty(JSON_PROPERTY_LOGO)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setLogo(String logo) {
+  public void setLogo(@javax.annotation.Nonnull String logo) {
     this.logo = logo;
   }
 
-  public LoginConfigurationClientMetadataOutput domainVerified(Boolean domainVerified) {
+  public LoginConfigurationClientMetadataOutput domainVerified(@javax.annotation.Nullable Boolean domainVerified) {
     
     this.domainVerified = domainVerified;
     return this;
@@ -148,7 +152,7 @@ public class LoginConfigurationClientMetadataOutput {
 
   @JsonProperty(JSON_PROPERTY_DOMAIN_VERIFIED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDomainVerified(Boolean domainVerified) {
+  public void setDomainVerified(@javax.annotation.Nullable Boolean domainVerified) {
     this.domainVerified = domainVerified;
   }
 

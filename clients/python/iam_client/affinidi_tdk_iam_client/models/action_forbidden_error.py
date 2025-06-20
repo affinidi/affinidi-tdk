@@ -37,21 +37,21 @@ class ActionForbiddenError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('ActionForbiddenError'):
+        if value not in ('ActionForbiddenError',):
             raise ValueError("must be one of enum values ('ActionForbiddenError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Principal can not execute action on given resource'):
+        if value not in ('Principal can not execute action on given resource',):
             raise ValueError("must be one of enum values ('Principal can not execute action on given resource')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (403):
+        if value not in (403,):
             raise ValueError("must be one of enum values (403)")
         return value
 

@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   ClaimedCredentialListResponse.JSON_PROPERTY_CREDENTIALS,
   ClaimedCredentialListResponse.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ClaimedCredentialListResponse {
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  @javax.annotation.Nullable
   private List<Map<String, Object>> credentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public ClaimedCredentialListResponse() {
   }
 
-  public ClaimedCredentialListResponse credentials(List<Map<String, Object>> credentials) {
+  public ClaimedCredentialListResponse credentials(@javax.annotation.Nullable List<Map<String, Object>> credentials) {
     
     this.credentials = credentials;
     return this;
@@ -77,11 +79,11 @@ public class ClaimedCredentialListResponse {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<Map<String, Object>> credentials) {
+  public void setCredentials(@javax.annotation.Nullable List<Map<String, Object>> credentials) {
     this.credentials = credentials;
   }
 
-  public ClaimedCredentialListResponse lastEvaluatedKey(String lastEvaluatedKey) {
+  public ClaimedCredentialListResponse lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -102,7 +104,7 @@ public class ClaimedCredentialListResponse {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 

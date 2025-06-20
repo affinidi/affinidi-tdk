@@ -37,21 +37,21 @@ class PrincipalCannotBeDeletedError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('PrincipalCannotBeDeletedError'):
+        if value not in ('PrincipalCannotBeDeletedError',):
             raise ValueError("must be one of enum values ('PrincipalCannotBeDeletedError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Cannot delete own record from the project with the same principalId'):
+        if value not in ('Cannot delete own record from the project with the same principalId',):
             raise ValueError("must be one of enum values ('Cannot delete own record from the project with the same principalId')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (409):
+        if value not in (409,):
             raise ValueError("must be one of enum values (409)")
         return value
 

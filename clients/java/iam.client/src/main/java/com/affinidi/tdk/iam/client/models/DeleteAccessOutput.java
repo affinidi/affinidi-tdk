@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   DeleteAccessOutput.JSON_PROPERTY_SUCCESS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DeleteAccessOutput {
   public static final String JSON_PROPERTY_SUCCESS = "success";
+  @javax.annotation.Nonnull
   private Boolean success;
 
   public DeleteAccessOutput() {
   }
 
-  public DeleteAccessOutput success(Boolean success) {
+  public DeleteAccessOutput success(@javax.annotation.Nonnull Boolean success) {
     
     this.success = success;
     return this;
@@ -61,7 +62,7 @@ public class DeleteAccessOutput {
 
   @JsonProperty(JSON_PROPERTY_SUCCESS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSuccess(Boolean success) {
+  public void setSuccess(@javax.annotation.Nonnull Boolean success) {
     this.success = success;
   }
 

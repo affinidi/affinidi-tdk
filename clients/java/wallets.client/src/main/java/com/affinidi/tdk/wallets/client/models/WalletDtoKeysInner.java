@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   WalletDtoKeysInner.JSON_PROPERTY_ARI
 })
 @JsonTypeName("WalletDto_keys_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WalletDtoKeysInner {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nullable
   private String ari;
 
   public WalletDtoKeysInner() {
   }
 
-  public WalletDtoKeysInner id(String id) {
+  public WalletDtoKeysInner id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -66,11 +68,11 @@ public class WalletDtoKeysInner {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
-  public WalletDtoKeysInner ari(String ari) {
+  public WalletDtoKeysInner ari(@javax.annotation.Nullable String ari) {
     
     this.ari = ari;
     return this;
@@ -91,7 +93,7 @@ public class WalletDtoKeysInner {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nullable String ari) {
     this.ari = ari;
   }
 

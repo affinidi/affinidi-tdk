@@ -37,21 +37,21 @@ class AlreadyExistsError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('AlreadyExistsError'):
+        if value not in ('AlreadyExistsError',):
             raise ValueError("must be one of enum values ('AlreadyExistsError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Already exists: ${param}.'):
+        if value not in ('Already exists: ${param}.',):
             raise ValueError("must be one of enum values ('Already exists: ${param}.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (409):
+        if value not in (409,):
             raise ValueError("must be one of enum values (409)")
         return value
 

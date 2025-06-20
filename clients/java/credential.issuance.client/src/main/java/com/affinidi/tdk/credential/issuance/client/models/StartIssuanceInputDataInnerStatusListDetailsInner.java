@@ -34,13 +34,13 @@ import java.util.StringJoiner;
   StartIssuanceInputDataInnerStatusListDetailsInner.JSON_PROPERTY_STANDARD
 })
 @JsonTypeName("StartIssuanceInput_data_inner_statusListDetails_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StartIssuanceInputDataInnerStatusListDetailsInner {
   /**
    * Gets or Sets purpose
    */
   public enum PurposeEnum {
-    REVOCABLE("REVOCABLE");
+    REVOCABLE(String.valueOf("REVOCABLE"));
 
     private String value;
 
@@ -70,15 +70,16 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
   }
 
   public static final String JSON_PROPERTY_PURPOSE = "purpose";
+  @javax.annotation.Nonnull
   private PurposeEnum purpose;
 
   /**
    * Gets or Sets standard
    */
   public enum StandardEnum {
-    REVOCATION_LIST2020("RevocationList2020"),
+    REVOCATION_LIST2020(String.valueOf("RevocationList2020")),
     
-    BITSTRING_STATUS_LIST_V1("BitstringStatusListV1");
+    BITSTRING_STATUS_LIST_V1(String.valueOf("BitstringStatusListV1"));
 
     private String value;
 
@@ -108,12 +109,13 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
   }
 
   public static final String JSON_PROPERTY_STANDARD = "standard";
+  @javax.annotation.Nonnull
   private StandardEnum standard;
 
   public StartIssuanceInputDataInnerStatusListDetailsInner() {
   }
 
-  public StartIssuanceInputDataInnerStatusListDetailsInner purpose(PurposeEnum purpose) {
+  public StartIssuanceInputDataInnerStatusListDetailsInner purpose(@javax.annotation.Nonnull PurposeEnum purpose) {
     
     this.purpose = purpose;
     return this;
@@ -134,11 +136,11 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_PURPOSE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPurpose(PurposeEnum purpose) {
+  public void setPurpose(@javax.annotation.Nonnull PurposeEnum purpose) {
     this.purpose = purpose;
   }
 
-  public StartIssuanceInputDataInnerStatusListDetailsInner standard(StandardEnum standard) {
+  public StartIssuanceInputDataInnerStatusListDetailsInner standard(@javax.annotation.Nonnull StandardEnum standard) {
     
     this.standard = standard;
     return this;
@@ -159,7 +161,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_STANDARD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStandard(StandardEnum standard) {
+  public void setStandard(@javax.annotation.Nonnull StandardEnum standard) {
     this.standard = standard;
   }
 

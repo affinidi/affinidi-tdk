@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PexQueryApi extends BaseApi {
 
   public PexQueryApi() {
@@ -59,7 +59,7 @@ public class PexQueryApi extends BaseApi {
    * @return PexQueryDto
    * @throws ApiException if fails to make API call
    */
-  public PexQueryDto createPexQuery(String configurationId, CreatePexQueryInput createPexQueryInput) throws ApiException {
+  public PexQueryDto createPexQuery(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull CreatePexQueryInput createPexQueryInput) throws ApiException {
     return this.createPexQuery(configurationId, createPexQueryInput, Collections.emptyMap());
   }
 
@@ -73,7 +73,7 @@ public class PexQueryApi extends BaseApi {
    * @return PexQueryDto
    * @throws ApiException if fails to make API call
    */
-  public PexQueryDto createPexQuery(String configurationId, CreatePexQueryInput createPexQueryInput, Map<String, String> additionalHeaders) throws ApiException {
+  public PexQueryDto createPexQuery(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull CreatePexQueryInput createPexQueryInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createPexQueryInput;
     
     // verify the required parameter 'configurationId' is set
@@ -141,7 +141,7 @@ public class PexQueryApi extends BaseApi {
    * @return Object
    * @throws ApiException if fails to make API call
    */
-  public Object deletePexQueries(String configurationId, DeletePexQueriesInput deletePexQueriesInput) throws ApiException {
+  public Object deletePexQueries(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull DeletePexQueriesInput deletePexQueriesInput) throws ApiException {
     return this.deletePexQueries(configurationId, deletePexQueriesInput, Collections.emptyMap());
   }
 
@@ -155,7 +155,7 @@ public class PexQueryApi extends BaseApi {
    * @return Object
    * @throws ApiException if fails to make API call
    */
-  public Object deletePexQueries(String configurationId, DeletePexQueriesInput deletePexQueriesInput, Map<String, String> additionalHeaders) throws ApiException {
+  public Object deletePexQueries(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull DeletePexQueriesInput deletePexQueriesInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = deletePexQueriesInput;
     
     // verify the required parameter 'configurationId' is set
@@ -222,7 +222,7 @@ public class PexQueryApi extends BaseApi {
    * @param queryId The ID of the query. (required)
    * @throws ApiException if fails to make API call
    */
-  public void deletePexQueryById(String configurationId, String queryId) throws ApiException {
+  public void deletePexQueryById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String queryId) throws ApiException {
     this.deletePexQueryById(configurationId, queryId, Collections.emptyMap());
   }
 
@@ -235,7 +235,7 @@ public class PexQueryApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deletePexQueryById(String configurationId, String queryId, Map<String, String> additionalHeaders) throws ApiException {
+  public void deletePexQueryById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String queryId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -303,7 +303,7 @@ public class PexQueryApi extends BaseApi {
    * @return PexQueryDto
    * @throws ApiException if fails to make API call
    */
-  public PexQueryDto getPexQueryById(String configurationId, String queryId) throws ApiException {
+  public PexQueryDto getPexQueryById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String queryId) throws ApiException {
     return this.getPexQueryById(configurationId, queryId, Collections.emptyMap());
   }
 
@@ -317,7 +317,7 @@ public class PexQueryApi extends BaseApi {
    * @return PexQueryDto
    * @throws ApiException if fails to make API call
    */
-  public PexQueryDto getPexQueryById(String configurationId, String queryId, Map<String, String> additionalHeaders) throws ApiException {
+  public PexQueryDto getPexQueryById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String queryId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -387,7 +387,7 @@ public class PexQueryApi extends BaseApi {
    * @return ListPexQueriesOK
    * @throws ApiException if fails to make API call
    */
-  public ListPexQueriesOK listPexQueries(String configurationId, Integer limit, String exclusiveStartKey) throws ApiException {
+  public ListPexQueriesOK listPexQueries(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listPexQueries(configurationId, limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -402,7 +402,7 @@ public class PexQueryApi extends BaseApi {
    * @return ListPexQueriesOK
    * @throws ApiException if fails to make API call
    */
-  public ListPexQueriesOK listPexQueries(String configurationId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListPexQueriesOK listPexQueries(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -467,7 +467,7 @@ public class PexQueryApi extends BaseApi {
    * @return Object
    * @throws ApiException if fails to make API call
    */
-  public Object savePexQueries(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput) throws ApiException {
+  public Object savePexQueries(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull SavePexQueriesUpdateInput savePexQueriesUpdateInput) throws ApiException {
     return this.savePexQueries(configurationId, savePexQueriesUpdateInput, Collections.emptyMap());
   }
 
@@ -481,7 +481,7 @@ public class PexQueryApi extends BaseApi {
    * @return Object
    * @throws ApiException if fails to make API call
    */
-  public Object savePexQueries(String configurationId, SavePexQueriesUpdateInput savePexQueriesUpdateInput, Map<String, String> additionalHeaders) throws ApiException {
+  public Object savePexQueries(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull SavePexQueriesUpdateInput savePexQueriesUpdateInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = savePexQueriesUpdateInput;
     
     // verify the required parameter 'configurationId' is set
@@ -550,7 +550,7 @@ public class PexQueryApi extends BaseApi {
    * @return PexQueryDto
    * @throws ApiException if fails to make API call
    */
-  public PexQueryDto updatePexQueryById(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput) throws ApiException {
+  public PexQueryDto updatePexQueryById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String queryId, @javax.annotation.Nonnull UpdatePexQueryInput updatePexQueryInput) throws ApiException {
     return this.updatePexQueryById(configurationId, queryId, updatePexQueryInput, Collections.emptyMap());
   }
 
@@ -565,7 +565,7 @@ public class PexQueryApi extends BaseApi {
    * @return PexQueryDto
    * @throws ApiException if fails to make API call
    */
-  public PexQueryDto updatePexQueryById(String configurationId, String queryId, UpdatePexQueryInput updatePexQueryInput, Map<String, String> additionalHeaders) throws ApiException {
+  public PexQueryDto updatePexQueryById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull String queryId, @javax.annotation.Nonnull UpdatePexQueryInput updatePexQueryInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updatePexQueryInput;
     
     // verify the required parameter 'configurationId' is set

@@ -35,21 +35,24 @@ import java.util.StringJoiner;
   CredentialResponseDeferred.JSON_PROPERTY_C_NONCE,
   CredentialResponseDeferred.JSON_PROPERTY_C_NONCE_EXPIRES_IN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialResponseDeferred {
   public static final String JSON_PROPERTY_TRANSACTION_ID = "transaction_id";
+  @javax.annotation.Nonnull
   private String transactionId;
 
   public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
+  @javax.annotation.Nonnull
   private String cNonce;
 
   public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
+  @javax.annotation.Nonnull
   private BigDecimal cNonceExpiresIn;
 
   public CredentialResponseDeferred() {
   }
 
-  public CredentialResponseDeferred transactionId(String transactionId) {
+  public CredentialResponseDeferred transactionId(@javax.annotation.Nonnull String transactionId) {
     
     this.transactionId = transactionId;
     return this;
@@ -70,11 +73,11 @@ public class CredentialResponseDeferred {
 
   @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransactionId(String transactionId) {
+  public void setTransactionId(@javax.annotation.Nonnull String transactionId) {
     this.transactionId = transactionId;
   }
 
-  public CredentialResponseDeferred cNonce(String cNonce) {
+  public CredentialResponseDeferred cNonce(@javax.annotation.Nonnull String cNonce) {
     
     this.cNonce = cNonce;
     return this;
@@ -95,11 +98,11 @@ public class CredentialResponseDeferred {
 
   @JsonProperty(JSON_PROPERTY_C_NONCE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setcNonce(String cNonce) {
+  public void setcNonce(@javax.annotation.Nonnull String cNonce) {
     this.cNonce = cNonce;
   }
 
-  public CredentialResponseDeferred cNonceExpiresIn(BigDecimal cNonceExpiresIn) {
+  public CredentialResponseDeferred cNonceExpiresIn(@javax.annotation.Nonnull BigDecimal cNonceExpiresIn) {
     
     this.cNonceExpiresIn = cNonceExpiresIn;
     return this;
@@ -120,7 +123,7 @@ public class CredentialResponseDeferred {
 
   @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setcNonceExpiresIn(BigDecimal cNonceExpiresIn) {
+  public void setcNonceExpiresIn(@javax.annotation.Nonnull BigDecimal cNonceExpiresIn) {
     this.cNonceExpiresIn = cNonceExpiresIn;
   }
 

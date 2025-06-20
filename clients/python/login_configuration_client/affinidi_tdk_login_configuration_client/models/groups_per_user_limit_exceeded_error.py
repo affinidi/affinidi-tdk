@@ -37,21 +37,21 @@ class GroupsPerUserLimitExceededError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('GroupsPerUserLimitExceededError'):
+        if value not in ('GroupsPerUserLimitExceededError',):
             raise ValueError("must be one of enum values ('GroupsPerUserLimitExceededError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Amount of groups per user is limited.'):
+        if value not in ('Amount of groups per user is limited.',):
             raise ValueError("must be one of enum values ('Amount of groups per user is limited.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (409):
+        if value not in (409,):
             raise ValueError("must be one of enum values (409)")
         return value
 

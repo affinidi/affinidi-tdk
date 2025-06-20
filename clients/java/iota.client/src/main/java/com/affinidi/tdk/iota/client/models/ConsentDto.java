@@ -40,25 +40,29 @@ import java.util.StringJoiner;
   ConsentDto.JSON_PROPERTY_CREATED_AT,
   ConsentDto.JSON_PROPERTY_CREATED_BY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConsentDto {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  @javax.annotation.Nonnull
   private String projectId;
 
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
   private String userId;
 
   public static final String JSON_PROPERTY_VC_TYPE = "vcType";
+  @javax.annotation.Nonnull
   private String vcType;
 
   /**
    * Status of the consent.
    */
   public enum StatusEnum {
-    GIVEN("GIVEN");
+    GIVEN(String.valueOf("GIVEN"));
 
     private String value;
 
@@ -88,24 +92,29 @@ public class ConsentDto {
   }
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private StatusEnum status;
 
   public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
+  @javax.annotation.Nonnull
   private String modifiedAt;
 
   public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @javax.annotation.Nonnull
   private String modifiedBy;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nonnull
   private String createdAt;
 
   public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @javax.annotation.Nonnull
   private String createdBy;
 
   public ConsentDto() {
   }
 
-  public ConsentDto projectId(String projectId) {
+  public ConsentDto projectId(@javax.annotation.Nonnull String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -126,11 +135,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
+  public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
   }
 
-  public ConsentDto id(String id) {
+  public ConsentDto id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -151,11 +160,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public ConsentDto userId(String userId) {
+  public ConsentDto userId(@javax.annotation.Nonnull String userId) {
     
     this.userId = userId;
     return this;
@@ -176,11 +185,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(String userId) {
+  public void setUserId(@javax.annotation.Nonnull String userId) {
     this.userId = userId;
   }
 
-  public ConsentDto vcType(String vcType) {
+  public ConsentDto vcType(@javax.annotation.Nonnull String vcType) {
     
     this.vcType = vcType;
     return this;
@@ -201,11 +210,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_VC_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVcType(String vcType) {
+  public void setVcType(@javax.annotation.Nonnull String vcType) {
     this.vcType = vcType;
   }
 
-  public ConsentDto status(StatusEnum status) {
+  public ConsentDto status(@javax.annotation.Nonnull StatusEnum status) {
     
     this.status = status;
     return this;
@@ -226,11 +235,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
   }
 
-  public ConsentDto modifiedAt(String modifiedAt) {
+  public ConsentDto modifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     
     this.modifiedAt = modifiedAt;
     return this;
@@ -251,11 +260,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedAt(String modifiedAt) {
+  public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
 
-  public ConsentDto modifiedBy(String modifiedBy) {
+  public ConsentDto modifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     
     this.modifiedBy = modifiedBy;
     return this;
@@ -276,11 +285,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setModifiedBy(String modifiedBy) {
+  public void setModifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     this.modifiedBy = modifiedBy;
   }
 
-  public ConsentDto createdAt(String createdAt) {
+  public ConsentDto createdAt(@javax.annotation.Nonnull String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -301,11 +310,11 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public ConsentDto createdBy(String createdBy) {
+  public ConsentDto createdBy(@javax.annotation.Nonnull String createdBy) {
     
     this.createdBy = createdBy;
     return this;
@@ -326,7 +335,7 @@ public class ConsentDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_BY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreatedBy(String createdBy) {
+  public void setCreatedBy(@javax.annotation.Nonnull String createdBy) {
     this.createdBy = createdBy;
   }
 

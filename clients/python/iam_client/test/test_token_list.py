@@ -43,7 +43,7 @@ class TestTokenList(unittest.TestCase):
                         ari = 'token/c5817ea6-8367-4458-9131-54cd2c5b9b48', 
                         owner_ari = 'ari:iam:::user/2f4b3468-516f-4af3-87db-8816b0d320cc', 
                         name = 'AIV/Concierge API - affinidi-elements-iam-dev', 
-                        authentication_method = null, 
+                        authentication_method = {"type": "PRIVATE_KEY", "signingAlgorithm": "RS256", "publicKeyInfo": { "jwks": {"keys":[{"use":"sig","kty":"RSA","kid":"some-kid","alg":"RS256","n":"some-n-value","e":"some-e-value"}]} }}, 
                         scopes = [
                             ''
                             ], )
@@ -58,7 +58,7 @@ class TestTokenList(unittest.TestCase):
                         ari = 'token/c5817ea6-8367-4458-9131-54cd2c5b9b48', 
                         owner_ari = 'ari:iam:::user/2f4b3468-516f-4af3-87db-8816b0d320cc', 
                         name = 'AIV/Concierge API - affinidi-elements-iam-dev', 
-                        authentication_method = null, 
+                        authentication_method = {"type": "PRIVATE_KEY", "signingAlgorithm": "RS256", "publicKeyInfo": { "jwks": {"keys":[{"use":"sig","kty":"RSA","kid":"some-kid","alg":"RS256","n":"some-n-value","e":"some-e-value"}]} }}, 
                         scopes = [
                             ''
                             ], )

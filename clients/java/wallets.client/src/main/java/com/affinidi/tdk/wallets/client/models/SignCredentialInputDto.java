@@ -36,23 +36,25 @@ import java.util.StringJoiner;
   SignCredentialInputDto.JSON_PROPERTY_CREDENTIAL_FORMAT,
   SignCredentialInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialInputDto {
   public static final String JSON_PROPERTY_UNSIGNED_CREDENTIAL = "unsignedCredential";
+  @javax.annotation.Nullable
   private Object unsignedCredential;
 
   public static final String JSON_PROPERTY_REVOCABLE = "revocable";
+  @javax.annotation.Nullable
   private Boolean revocable;
 
   /**
    * Gets or Sets credentialFormat
    */
   public enum CredentialFormatEnum {
-    LDP_VC("ldp_vc"),
+    LDP_VC(String.valueOf("ldp_vc")),
     
-    JWT_VC_JSON_LD("jwt_vc_json-ld"),
+    JWT_VC_JSON_LD(String.valueOf("jwt_vc_json-ld")),
     
-    SD_JWT_VC_JSON_LD("sd_jwt_vc_json-ld");
+    SD_JWT_VC_JSON_LD(String.valueOf("sd_jwt_vc_json-ld"));
 
     private String value;
 
@@ -82,15 +84,17 @@ public class SignCredentialInputDto {
   }
 
   public static final String JSON_PROPERTY_CREDENTIAL_FORMAT = "credentialFormat";
+  @javax.annotation.Nullable
   private CredentialFormatEnum credentialFormat;
 
   public static final String JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS = "unsignedCredentialParams";
+  @javax.annotation.Nullable
   private SignCredentialInputDtoUnsignedCredentialParams unsignedCredentialParams;
 
   public SignCredentialInputDto() {
   }
 
-  public SignCredentialInputDto unsignedCredential(Object unsignedCredential) {
+  public SignCredentialInputDto unsignedCredential(@javax.annotation.Nullable Object unsignedCredential) {
     
     this.unsignedCredential = unsignedCredential;
     return this;
@@ -111,11 +115,11 @@ public class SignCredentialInputDto {
 
   @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUnsignedCredential(Object unsignedCredential) {
+  public void setUnsignedCredential(@javax.annotation.Nullable Object unsignedCredential) {
     this.unsignedCredential = unsignedCredential;
   }
 
-  public SignCredentialInputDto revocable(Boolean revocable) {
+  public SignCredentialInputDto revocable(@javax.annotation.Nullable Boolean revocable) {
     
     this.revocable = revocable;
     return this;
@@ -136,11 +140,11 @@ public class SignCredentialInputDto {
 
   @JsonProperty(JSON_PROPERTY_REVOCABLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRevocable(Boolean revocable) {
+  public void setRevocable(@javax.annotation.Nullable Boolean revocable) {
     this.revocable = revocable;
   }
 
-  public SignCredentialInputDto credentialFormat(CredentialFormatEnum credentialFormat) {
+  public SignCredentialInputDto credentialFormat(@javax.annotation.Nullable CredentialFormatEnum credentialFormat) {
     
     this.credentialFormat = credentialFormat;
     return this;
@@ -161,11 +165,11 @@ public class SignCredentialInputDto {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialFormat(CredentialFormatEnum credentialFormat) {
+  public void setCredentialFormat(@javax.annotation.Nullable CredentialFormatEnum credentialFormat) {
     this.credentialFormat = credentialFormat;
   }
 
-  public SignCredentialInputDto unsignedCredentialParams(SignCredentialInputDtoUnsignedCredentialParams unsignedCredentialParams) {
+  public SignCredentialInputDto unsignedCredentialParams(@javax.annotation.Nullable SignCredentialInputDtoUnsignedCredentialParams unsignedCredentialParams) {
     
     this.unsignedCredentialParams = unsignedCredentialParams;
     return this;
@@ -186,7 +190,7 @@ public class SignCredentialInputDto {
 
   @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUnsignedCredentialParams(SignCredentialInputDtoUnsignedCredentialParams unsignedCredentialParams) {
+  public void setUnsignedCredentialParams(@javax.annotation.Nullable SignCredentialInputDtoUnsignedCredentialParams unsignedCredentialParams) {
     this.unsignedCredentialParams = unsignedCredentialParams;
   }
 

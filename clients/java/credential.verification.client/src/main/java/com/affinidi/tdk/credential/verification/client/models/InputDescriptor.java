@@ -42,30 +42,36 @@ import java.util.StringJoiner;
   InputDescriptor.JSON_PROPERTY_FORMAT,
   InputDescriptor.JSON_PROPERTY_GROUP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class InputDescriptor {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_CONSTRAINTS = "constraints";
+  @javax.annotation.Nonnull
   private Constraints constraints;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_PURPOSE = "purpose";
+  @javax.annotation.Nullable
   private String purpose;
 
   public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nullable
   private Format format;
 
   public static final String JSON_PROPERTY_GROUP = "group";
+  @javax.annotation.Nullable
   private List<String> group = new ArrayList<>();
 
   public InputDescriptor() {
   }
 
-  public InputDescriptor id(String id) {
+  public InputDescriptor id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -86,11 +92,11 @@ public class InputDescriptor {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public InputDescriptor constraints(Constraints constraints) {
+  public InputDescriptor constraints(@javax.annotation.Nonnull Constraints constraints) {
     
     this.constraints = constraints;
     return this;
@@ -111,11 +117,11 @@ public class InputDescriptor {
 
   @JsonProperty(JSON_PROPERTY_CONSTRAINTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConstraints(Constraints constraints) {
+  public void setConstraints(@javax.annotation.Nonnull Constraints constraints) {
     this.constraints = constraints;
   }
 
-  public InputDescriptor name(String name) {
+  public InputDescriptor name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -136,11 +142,11 @@ public class InputDescriptor {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public InputDescriptor purpose(String purpose) {
+  public InputDescriptor purpose(@javax.annotation.Nullable String purpose) {
     
     this.purpose = purpose;
     return this;
@@ -161,11 +167,11 @@ public class InputDescriptor {
 
   @JsonProperty(JSON_PROPERTY_PURPOSE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPurpose(String purpose) {
+  public void setPurpose(@javax.annotation.Nullable String purpose) {
     this.purpose = purpose;
   }
 
-  public InputDescriptor format(Format format) {
+  public InputDescriptor format(@javax.annotation.Nullable Format format) {
     
     this.format = format;
     return this;
@@ -186,11 +192,11 @@ public class InputDescriptor {
 
   @JsonProperty(JSON_PROPERTY_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(Format format) {
+  public void setFormat(@javax.annotation.Nullable Format format) {
     this.format = format;
   }
 
-  public InputDescriptor group(List<String> group) {
+  public InputDescriptor group(@javax.annotation.Nullable List<String> group) {
     
     this.group = group;
     return this;
@@ -219,7 +225,7 @@ public class InputDescriptor {
 
   @JsonProperty(JSON_PROPERTY_GROUP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroup(List<String> group) {
+  public void setGroup(@javax.annotation.Nullable List<String> group) {
     this.group = group;
   }
 

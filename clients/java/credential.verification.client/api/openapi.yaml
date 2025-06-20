@@ -716,7 +716,7 @@ components:
             location: location
             value: value
         message: 'Not found: ${param}.'
-        httpStatusCode: 6.027456183070403
+        httpStatusCode: 6
       properties:
         name:
           enum:
@@ -729,7 +729,7 @@ components:
         httpStatusCode:
           enum:
             - 404
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -757,7 +757,7 @@ components:
             location: location
             value: value
         message: 'Invalid parameter: ${param}.'
-        httpStatusCode: 0.8008281904610115
+        httpStatusCode: 0
       properties:
         name:
           enum:
@@ -770,7 +770,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:

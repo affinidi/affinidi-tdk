@@ -25,7 +25,7 @@ class TestStsApi(unittest.TestCase):
         self.api = StsApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_create_project_scoped_token(self) -> None:
         """Test case for create_project_scoped_token

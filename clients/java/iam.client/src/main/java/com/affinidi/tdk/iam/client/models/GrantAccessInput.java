@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   GrantAccessInput.JSON_PROPERTY_GRANTEE_DID,
   GrantAccessInput.JSON_PROPERTY_RIGHTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GrantAccessInput {
   public static final String JSON_PROPERTY_GRANTEE_DID = "granteeDid";
+  @javax.annotation.Nonnull
   private String granteeDid;
 
   public static final String JSON_PROPERTY_RIGHTS = "rights";
+  @javax.annotation.Nonnull
   private List<RightsEnum> rights = new ArrayList<>();
 
   public GrantAccessInput() {
   }
 
-  public GrantAccessInput granteeDid(String granteeDid) {
+  public GrantAccessInput granteeDid(@javax.annotation.Nonnull String granteeDid) {
     
     this.granteeDid = granteeDid;
     return this;
@@ -69,11 +71,11 @@ public class GrantAccessInput {
 
   @JsonProperty(JSON_PROPERTY_GRANTEE_DID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGranteeDid(String granteeDid) {
+  public void setGranteeDid(@javax.annotation.Nonnull String granteeDid) {
     this.granteeDid = granteeDid;
   }
 
-  public GrantAccessInput rights(List<RightsEnum> rights) {
+  public GrantAccessInput rights(@javax.annotation.Nonnull List<RightsEnum> rights) {
     
     this.rights = rights;
     return this;
@@ -102,7 +104,7 @@ public class GrantAccessInput {
 
   @JsonProperty(JSON_PROPERTY_RIGHTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRights(List<RightsEnum> rights) {
+  public void setRights(@javax.annotation.Nonnull List<RightsEnum> rights) {
     this.rights = rights;
   }
 

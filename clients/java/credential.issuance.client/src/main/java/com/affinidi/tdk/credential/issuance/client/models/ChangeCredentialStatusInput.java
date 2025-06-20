@@ -33,15 +33,15 @@ import java.util.StringJoiner;
   ChangeCredentialStatusInput.JSON_PROPERTY_CHANGE_REASON,
   ChangeCredentialStatusInput.JSON_PROPERTY_ISSUANCE_RECORD_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ChangeCredentialStatusInput {
   /**
    * reason for revocation
    */
   public enum ChangeReasonEnum {
-    INVALID_CREDENTIAL("INVALID_CREDENTIAL"),
+    INVALID_CREDENTIAL(String.valueOf("INVALID_CREDENTIAL")),
     
-    COMPROMISED_ISSUER("COMPROMISED_ISSUER");
+    COMPROMISED_ISSUER(String.valueOf("COMPROMISED_ISSUER"));
 
     private String value;
 
@@ -71,15 +71,17 @@ public class ChangeCredentialStatusInput {
   }
 
   public static final String JSON_PROPERTY_CHANGE_REASON = "changeReason";
+  @javax.annotation.Nullable
   private ChangeReasonEnum changeReason;
 
   public static final String JSON_PROPERTY_ISSUANCE_RECORD_ID = "issuanceRecordId";
+  @javax.annotation.Nullable
   private String issuanceRecordId;
 
   public ChangeCredentialStatusInput() {
   }
 
-  public ChangeCredentialStatusInput changeReason(ChangeReasonEnum changeReason) {
+  public ChangeCredentialStatusInput changeReason(@javax.annotation.Nullable ChangeReasonEnum changeReason) {
     
     this.changeReason = changeReason;
     return this;
@@ -100,11 +102,11 @@ public class ChangeCredentialStatusInput {
 
   @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setChangeReason(ChangeReasonEnum changeReason) {
+  public void setChangeReason(@javax.annotation.Nullable ChangeReasonEnum changeReason) {
     this.changeReason = changeReason;
   }
 
-  public ChangeCredentialStatusInput issuanceRecordId(String issuanceRecordId) {
+  public ChangeCredentialStatusInput issuanceRecordId(@javax.annotation.Nullable String issuanceRecordId) {
     
     this.issuanceRecordId = issuanceRecordId;
     return this;
@@ -125,7 +127,7 @@ public class ChangeCredentialStatusInput {
 
   @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuanceRecordId(String issuanceRecordId) {
+  public void setIssuanceRecordId(@javax.annotation.Nullable String issuanceRecordId) {
     this.issuanceRecordId = issuanceRecordId;
   }
 

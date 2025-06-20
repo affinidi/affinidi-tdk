@@ -33,22 +33,23 @@ import java.util.StringJoiner;
   IssuanceStateResponse.JSON_PROPERTY_ISSUANCE_ID,
   IssuanceStateResponse.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IssuanceStateResponse {
   public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
+  @javax.annotation.Nonnull
   private String issuanceId;
 
   /**
    * String describing the status of the issuance
    */
   public enum StatusEnum {
-    INIT("INIT"),
+    INIT(String.valueOf("INIT")),
     
-    OFFER_DELIVERED("OFFER_DELIVERED"),
+    OFFER_DELIVERED(String.valueOf("OFFER_DELIVERED")),
     
-    VC_CLAIMED("VC_CLAIMED"),
+    VC_CLAIMED(String.valueOf("VC_CLAIMED")),
     
-    TIMEOUT("TIMEOUT");
+    TIMEOUT(String.valueOf("TIMEOUT"));
 
     private String value;
 
@@ -78,12 +79,13 @@ public class IssuanceStateResponse {
   }
 
   public static final String JSON_PROPERTY_STATUS = "status";
+  @javax.annotation.Nonnull
   private StatusEnum status;
 
   public IssuanceStateResponse() {
   }
 
-  public IssuanceStateResponse issuanceId(String issuanceId) {
+  public IssuanceStateResponse issuanceId(@javax.annotation.Nonnull String issuanceId) {
     
     this.issuanceId = issuanceId;
     return this;
@@ -104,11 +106,11 @@ public class IssuanceStateResponse {
 
   @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssuanceId(String issuanceId) {
+  public void setIssuanceId(@javax.annotation.Nonnull String issuanceId) {
     this.issuanceId = issuanceId;
   }
 
-  public IssuanceStateResponse status(StatusEnum status) {
+  public IssuanceStateResponse status(@javax.annotation.Nonnull StatusEnum status) {
     
     this.status = status;
     return this;
@@ -129,7 +131,7 @@ public class IssuanceStateResponse {
 
   @JsonProperty(JSON_PROPERTY_STATUS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
   }
 

@@ -894,6 +894,16 @@ export interface IdTokenMappingItem {
   inputDescriptorId?: string
 }
 /**
+ * @type InlineObject
+ * @export
+ */
+export type InlineObject =
+  | InvalidClaimContextError
+  | InvalidParameterError
+  | InvalidVPTokenCreationTimeError
+  | VPTokenValidationError
+
+/**
  *
  * @export
  * @interface InvalidClaimContextError

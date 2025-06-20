@@ -49,29 +49,33 @@ import java.util.StringJoiner;
   UpdateIssuanceConfigInput.JSON_PROPERTY_RETURN_URIS,
   UpdateIssuanceConfigInput.JSON_PROPERTY_WEBHOOK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateIssuanceConfigInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_ISSUER_WALLET_ID = "issuerWalletId";
+  @javax.annotation.Nullable
   private String issuerWalletId;
 
   public static final String JSON_PROPERTY_CREDENTIAL_OFFER_DURATION = "credentialOfferDuration";
+  @javax.annotation.Nullable
   private BigDecimal credentialOfferDuration;
 
   /**
    * String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
    */
   public enum FormatEnum {
-    LDP_VC("ldp_vc"),
+    LDP_VC(String.valueOf("ldp_vc")),
     
-    JWT_VC_JSON_LD("jwt_vc_json-ld"),
+    JWT_VC_JSON_LD(String.valueOf("jwt_vc_json-ld")),
     
-    SD_JWT_VC_JSON_LD("sd_jwt_vc_json-ld");
+    SD_JWT_VC_JSON_LD(String.valueOf("sd_jwt_vc_json-ld"));
 
     private String value;
 
@@ -101,27 +105,33 @@ public class UpdateIssuanceConfigInput {
   }
 
   public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nullable
   private FormatEnum format;
 
   public static final String JSON_PROPERTY_ISSUER_URI = "issuerUri";
+  @javax.annotation.Nullable
   private String issuerUri;
 
   public static final String JSON_PROPERTY_CREDENTIAL_SUPPORTED = "credentialSupported";
+  @javax.annotation.Nullable
   private List<CredentialSupportedObject> credentialSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ISSUER_METADATA = "issuerMetadata";
+  @javax.annotation.Nullable
   private Map<String, Object> issuerMetadata = new HashMap<>();
 
   public static final String JSON_PROPERTY_RETURN_URIS = "returnUris";
+  @javax.annotation.Nullable
   private List<String> returnUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_WEBHOOK = "webhook";
+  @javax.annotation.Nullable
   private CisConfigurationWebhookSetting webhook;
 
   public UpdateIssuanceConfigInput() {
   }
 
-  public UpdateIssuanceConfigInput name(String name) {
+  public UpdateIssuanceConfigInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -142,11 +152,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public UpdateIssuanceConfigInput description(String description) {
+  public UpdateIssuanceConfigInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -167,11 +177,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public UpdateIssuanceConfigInput issuerWalletId(String issuerWalletId) {
+  public UpdateIssuanceConfigInput issuerWalletId(@javax.annotation.Nullable String issuerWalletId) {
     
     this.issuerWalletId = issuerWalletId;
     return this;
@@ -192,11 +202,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerWalletId(String issuerWalletId) {
+  public void setIssuerWalletId(@javax.annotation.Nullable String issuerWalletId) {
     this.issuerWalletId = issuerWalletId;
   }
 
-  public UpdateIssuanceConfigInput credentialOfferDuration(BigDecimal credentialOfferDuration) {
+  public UpdateIssuanceConfigInput credentialOfferDuration(@javax.annotation.Nullable BigDecimal credentialOfferDuration) {
     
     this.credentialOfferDuration = credentialOfferDuration;
     return this;
@@ -219,11 +229,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialOfferDuration(BigDecimal credentialOfferDuration) {
+  public void setCredentialOfferDuration(@javax.annotation.Nullable BigDecimal credentialOfferDuration) {
     this.credentialOfferDuration = credentialOfferDuration;
   }
 
-  public UpdateIssuanceConfigInput format(FormatEnum format) {
+  public UpdateIssuanceConfigInput format(@javax.annotation.Nullable FormatEnum format) {
     
     this.format = format;
     return this;
@@ -244,11 +254,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(FormatEnum format) {
+  public void setFormat(@javax.annotation.Nullable FormatEnum format) {
     this.format = format;
   }
 
-  public UpdateIssuanceConfigInput issuerUri(String issuerUri) {
+  public UpdateIssuanceConfigInput issuerUri(@javax.annotation.Nullable String issuerUri) {
     
     this.issuerUri = issuerUri;
     return this;
@@ -269,11 +279,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerUri(String issuerUri) {
+  public void setIssuerUri(@javax.annotation.Nullable String issuerUri) {
     this.issuerUri = issuerUri;
   }
 
-  public UpdateIssuanceConfigInput credentialSupported(List<CredentialSupportedObject> credentialSupported) {
+  public UpdateIssuanceConfigInput credentialSupported(@javax.annotation.Nullable List<CredentialSupportedObject> credentialSupported) {
     
     this.credentialSupported = credentialSupported;
     return this;
@@ -302,11 +312,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialSupported(List<CredentialSupportedObject> credentialSupported) {
+  public void setCredentialSupported(@javax.annotation.Nullable List<CredentialSupportedObject> credentialSupported) {
     this.credentialSupported = credentialSupported;
   }
 
-  public UpdateIssuanceConfigInput issuerMetadata(Map<String, Object> issuerMetadata) {
+  public UpdateIssuanceConfigInput issuerMetadata(@javax.annotation.Nullable Map<String, Object> issuerMetadata) {
     
     this.issuerMetadata = issuerMetadata;
     return this;
@@ -335,11 +345,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerMetadata(Map<String, Object> issuerMetadata) {
+  public void setIssuerMetadata(@javax.annotation.Nullable Map<String, Object> issuerMetadata) {
     this.issuerMetadata = issuerMetadata;
   }
 
-  public UpdateIssuanceConfigInput returnUris(List<String> returnUris) {
+  public UpdateIssuanceConfigInput returnUris(@javax.annotation.Nullable List<String> returnUris) {
     
     this.returnUris = returnUris;
     return this;
@@ -368,11 +378,11 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_RETURN_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setReturnUris(List<String> returnUris) {
+  public void setReturnUris(@javax.annotation.Nullable List<String> returnUris) {
     this.returnUris = returnUris;
   }
 
-  public UpdateIssuanceConfigInput webhook(CisConfigurationWebhookSetting webhook) {
+  public UpdateIssuanceConfigInput webhook(@javax.annotation.Nullable CisConfigurationWebhookSetting webhook) {
     
     this.webhook = webhook;
     return this;
@@ -393,7 +403,7 @@ public class UpdateIssuanceConfigInput {
 
   @JsonProperty(JSON_PROPERTY_WEBHOOK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWebhook(CisConfigurationWebhookSetting webhook) {
+  public void setWebhook(@javax.annotation.Nullable CisConfigurationWebhookSetting webhook) {
     this.webhook = webhook;
   }
 

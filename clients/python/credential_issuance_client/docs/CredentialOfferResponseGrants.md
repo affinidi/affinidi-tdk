@@ -4,9 +4,9 @@ Object indicating to the Wallet the Grant Types the Credential Issuer's Authoriz
 
 ## Properties
 
-| Name                                                | Type                                                                                                                                                          | Description | Notes |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **urnietfparamsoauthgrant_typepre_authorized_code** | [**CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode**](CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.md) |             |
+| Name                                                     | Type                                                                                                                                                          | Description | Notes |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ----- |
+| **urn_ietf_params_oauth_grant_type_pre_authorized_code** | [**CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode**](CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.md) |             |
 
 ## Example
 

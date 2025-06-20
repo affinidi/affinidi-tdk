@@ -36,21 +36,24 @@ import java.util.StringJoiner;
   CredentialResponseImmediate.JSON_PROPERTY_C_NONCE,
   CredentialResponseImmediate.JSON_PROPERTY_C_NONCE_EXPIRES_IN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialResponseImmediate {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
+  @javax.annotation.Nonnull
   private CredentialResponseImmediateCredential credential;
 
   public static final String JSON_PROPERTY_C_NONCE = "c_nonce";
+  @javax.annotation.Nonnull
   private String cNonce;
 
   public static final String JSON_PROPERTY_C_NONCE_EXPIRES_IN = "c_nonce_expires_in";
+  @javax.annotation.Nonnull
   private CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn;
 
   public CredentialResponseImmediate() {
   }
 
-  public CredentialResponseImmediate credential(CredentialResponseImmediateCredential credential) {
+  public CredentialResponseImmediate credential(@javax.annotation.Nonnull CredentialResponseImmediateCredential credential) {
     
     this.credential = credential;
     return this;
@@ -71,11 +74,11 @@ public class CredentialResponseImmediate {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredential(CredentialResponseImmediateCredential credential) {
+  public void setCredential(@javax.annotation.Nonnull CredentialResponseImmediateCredential credential) {
     this.credential = credential;
   }
 
-  public CredentialResponseImmediate cNonce(String cNonce) {
+  public CredentialResponseImmediate cNonce(@javax.annotation.Nonnull String cNonce) {
     
     this.cNonce = cNonce;
     return this;
@@ -96,11 +99,11 @@ public class CredentialResponseImmediate {
 
   @JsonProperty(JSON_PROPERTY_C_NONCE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setcNonce(String cNonce) {
+  public void setcNonce(@javax.annotation.Nonnull String cNonce) {
     this.cNonce = cNonce;
   }
 
-  public CredentialResponseImmediate cNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
+  public CredentialResponseImmediate cNonceExpiresIn(@javax.annotation.Nonnull CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
     
     this.cNonceExpiresIn = cNonceExpiresIn;
     return this;
@@ -121,7 +124,7 @@ public class CredentialResponseImmediate {
 
   @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setcNonceExpiresIn(CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
+  public void setcNonceExpiresIn(@javax.annotation.Nonnull CredentialResponseImmediateCNonceExpiresIn cNonceExpiresIn) {
     this.cNonceExpiresIn = cNonceExpiresIn;
   }
 

@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsRestoreNodeFromTrashbinOK.JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsRestoreNodeFromTrashbinOK {
   public static final String JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK = "corsRestoreNodeFromTrashbinOk";
+  @javax.annotation.Nullable
   private String corsRestoreNodeFromTrashbinOk;
 
   public CorsRestoreNodeFromTrashbinOK() {
   }
 
-  public CorsRestoreNodeFromTrashbinOK corsRestoreNodeFromTrashbinOk(String corsRestoreNodeFromTrashbinOk) {
+  public CorsRestoreNodeFromTrashbinOK corsRestoreNodeFromTrashbinOk(@javax.annotation.Nullable String corsRestoreNodeFromTrashbinOk) {
     
     this.corsRestoreNodeFromTrashbinOk = corsRestoreNodeFromTrashbinOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsRestoreNodeFromTrashbinOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_RESTORE_NODE_FROM_TRASHBIN_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsRestoreNodeFromTrashbinOk(String corsRestoreNodeFromTrashbinOk) {
+  public void setCorsRestoreNodeFromTrashbinOk(@javax.annotation.Nullable String corsRestoreNodeFromTrashbinOk) {
     this.corsRestoreNodeFromTrashbinOk = corsRestoreNodeFromTrashbinOk;
   }
 

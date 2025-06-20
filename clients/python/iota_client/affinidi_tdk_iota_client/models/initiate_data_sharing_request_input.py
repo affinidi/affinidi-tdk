@@ -38,7 +38,7 @@ class InitiateDataSharingRequestInput(BaseModel):
     @validator('mode')
     def mode_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('redirect', 'websocket'):
+        if value not in ('redirect', 'websocket',):
             raise ValueError("must be one of enum values ('redirect', 'websocket')")
         return value
 

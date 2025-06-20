@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsBatchCredentialOK.JSON_PROPERTY_CORS_BATCH_CREDENTIAL_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsBatchCredentialOK {
   public static final String JSON_PROPERTY_CORS_BATCH_CREDENTIAL_OK = "corsBatchCredentialOk";
+  @javax.annotation.Nullable
   private String corsBatchCredentialOk;
 
   public CorsBatchCredentialOK() {
   }
 
-  public CorsBatchCredentialOK corsBatchCredentialOk(String corsBatchCredentialOk) {
+  public CorsBatchCredentialOK corsBatchCredentialOk(@javax.annotation.Nullable String corsBatchCredentialOk) {
     
     this.corsBatchCredentialOk = corsBatchCredentialOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsBatchCredentialOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_BATCH_CREDENTIAL_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsBatchCredentialOk(String corsBatchCredentialOk) {
+  public void setCorsBatchCredentialOk(@javax.annotation.Nullable String corsBatchCredentialOk) {
     this.corsBatchCredentialOk = corsBatchCredentialOk;
   }
 

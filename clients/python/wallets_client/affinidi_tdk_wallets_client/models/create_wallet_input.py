@@ -35,7 +35,7 @@ class CreateWalletInput(BaseModel):
     @validator('did_method')
     def did_method_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('key', 'web'):
+        if value not in ('key', 'web',):
             raise ValueError("must be one of enum values ('key', 'web')")
         return value
 

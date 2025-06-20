@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsLoginSessionForIdpOK.JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsLoginSessionForIdpOK {
   public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK = "corsLoginSessionForIdpOk";
+  @javax.annotation.Nullable
   private String corsLoginSessionForIdpOk;
 
   public CorsLoginSessionForIdpOK() {
   }
 
-  public CorsLoginSessionForIdpOK corsLoginSessionForIdpOk(String corsLoginSessionForIdpOk) {
+  public CorsLoginSessionForIdpOK corsLoginSessionForIdpOk(@javax.annotation.Nullable String corsLoginSessionForIdpOk) {
     
     this.corsLoginSessionForIdpOk = corsLoginSessionForIdpOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsLoginSessionForIdpOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_FOR_IDP_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsLoginSessionForIdpOk(String corsLoginSessionForIdpOk) {
+  public void setCorsLoginSessionForIdpOk(@javax.annotation.Nullable String corsLoginSessionForIdpOk) {
     this.corsLoginSessionForIdpOk = corsLoginSessionForIdpOk;
   }
 

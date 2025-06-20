@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   SignJwtToken.JSON_PROPERTY_HEADER,
   SignJwtToken.JSON_PROPERTY_PAYLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignJwtToken {
   public static final String JSON_PROPERTY_HEADER = "header";
+  @javax.annotation.Nonnull
   private Object header;
 
   public static final String JSON_PROPERTY_PAYLOAD = "payload";
+  @javax.annotation.Nonnull
   private Object payload;
 
   public SignJwtToken() {
   }
 
-  public SignJwtToken header(Object header) {
+  public SignJwtToken header(@javax.annotation.Nonnull Object header) {
     
     this.header = header;
     return this;
@@ -65,11 +67,11 @@ public class SignJwtToken {
 
   @JsonProperty(JSON_PROPERTY_HEADER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHeader(Object header) {
+  public void setHeader(@javax.annotation.Nonnull Object header) {
     this.header = header;
   }
 
-  public SignJwtToken payload(Object payload) {
+  public SignJwtToken payload(@javax.annotation.Nonnull Object payload) {
     
     this.payload = payload;
     return this;
@@ -90,7 +92,7 @@ public class SignJwtToken {
 
   @JsonProperty(JSON_PROPERTY_PAYLOAD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPayload(Object payload) {
+  public void setPayload(@javax.annotation.Nonnull Object payload) {
     this.payload = payload;
   }
 

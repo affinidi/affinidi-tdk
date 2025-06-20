@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsIotaExchangeCredentialsOK.JSON_PROPERTY_CORS_IOTA_EXCHANGE_CREDENTIALS_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsIotaExchangeCredentialsOK {
   public static final String JSON_PROPERTY_CORS_IOTA_EXCHANGE_CREDENTIALS_OK = "corsIotaExchangeCredentialsOk";
+  @javax.annotation.Nullable
   private String corsIotaExchangeCredentialsOk;
 
   public CorsIotaExchangeCredentialsOK() {
   }
 
-  public CorsIotaExchangeCredentialsOK corsIotaExchangeCredentialsOk(String corsIotaExchangeCredentialsOk) {
+  public CorsIotaExchangeCredentialsOK corsIotaExchangeCredentialsOk(@javax.annotation.Nullable String corsIotaExchangeCredentialsOk) {
     
     this.corsIotaExchangeCredentialsOk = corsIotaExchangeCredentialsOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsIotaExchangeCredentialsOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_IOTA_EXCHANGE_CREDENTIALS_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsIotaExchangeCredentialsOk(String corsIotaExchangeCredentialsOk) {
+  public void setCorsIotaExchangeCredentialsOk(@javax.annotation.Nullable String corsIotaExchangeCredentialsOk) {
     this.corsIotaExchangeCredentialsOk = corsIotaExchangeCredentialsOk;
   }
 

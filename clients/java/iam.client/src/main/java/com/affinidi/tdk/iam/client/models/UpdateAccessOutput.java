@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UpdateAccessOutput.JSON_PROPERTY_SUCCESS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateAccessOutput {
   public static final String JSON_PROPERTY_SUCCESS = "success";
+  @javax.annotation.Nonnull
   private Boolean success;
 
   public UpdateAccessOutput() {
   }
 
-  public UpdateAccessOutput success(Boolean success) {
+  public UpdateAccessOutput success(@javax.annotation.Nonnull Boolean success) {
     
     this.success = success;
     return this;
@@ -61,7 +62,7 @@ public class UpdateAccessOutput {
 
   @JsonProperty(JSON_PROPERTY_SUCCESS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSuccess(Boolean success) {
+  public void setSuccess(@javax.annotation.Nonnull Boolean success) {
     this.success = success;
   }
 

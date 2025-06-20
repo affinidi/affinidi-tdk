@@ -25,7 +25,7 @@ class TestPoliciesApi(unittest.TestCase):
         self.api = PoliciesApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_get_policies(self) -> None:
         """Test case for get_policies

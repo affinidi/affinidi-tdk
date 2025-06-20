@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   SignCredentialsDm2LdInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL,
   SignCredentialsDm2LdInputDto.JSON_PROPERTY_REVOCABLE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialsDm2LdInputDto {
   public static final String JSON_PROPERTY_UNSIGNED_CREDENTIAL = "unsignedCredential";
+  @javax.annotation.Nonnull
   private Object unsignedCredential;
 
   public static final String JSON_PROPERTY_REVOCABLE = "revocable";
+  @javax.annotation.Nullable
   private Boolean revocable;
 
   public SignCredentialsDm2LdInputDto() {
   }
 
-  public SignCredentialsDm2LdInputDto unsignedCredential(Object unsignedCredential) {
+  public SignCredentialsDm2LdInputDto unsignedCredential(@javax.annotation.Nonnull Object unsignedCredential) {
     
     this.unsignedCredential = unsignedCredential;
     return this;
@@ -65,11 +67,11 @@ public class SignCredentialsDm2LdInputDto {
 
   @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUnsignedCredential(Object unsignedCredential) {
+  public void setUnsignedCredential(@javax.annotation.Nonnull Object unsignedCredential) {
     this.unsignedCredential = unsignedCredential;
   }
 
-  public SignCredentialsDm2LdInputDto revocable(Boolean revocable) {
+  public SignCredentialsDm2LdInputDto revocable(@javax.annotation.Nullable Boolean revocable) {
     
     this.revocable = revocable;
     return this;
@@ -90,7 +92,7 @@ public class SignCredentialsDm2LdInputDto {
 
   @JsonProperty(JSON_PROPERTY_REVOCABLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRevocable(Boolean revocable) {
+  public void setRevocable(@javax.annotation.Nullable Boolean revocable) {
     this.revocable = revocable;
   }
 

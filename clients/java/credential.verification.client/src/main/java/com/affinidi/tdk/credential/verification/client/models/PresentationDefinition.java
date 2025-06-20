@@ -46,33 +46,40 @@ import java.util.StringJoiner;
   PresentationDefinition.JSON_PROPERTY_INPUT_DESCRIPTORS,
   PresentationDefinition.JSON_PROPERTY_FRAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PresentationDefinition {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_PURPOSE = "purpose";
+  @javax.annotation.Nullable
   private String purpose;
 
   public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nullable
   private Format format;
 
   public static final String JSON_PROPERTY_SUBMISSION_REQUIREMENTS = "submission_requirements";
+  @javax.annotation.Nullable
   private List<SubmissionRequirement> submissionRequirements = new ArrayList<>();
 
   public static final String JSON_PROPERTY_INPUT_DESCRIPTORS = "input_descriptors";
+  @javax.annotation.Nonnull
   private List<InputDescriptor> inputDescriptors = new ArrayList<>();
 
   public static final String JSON_PROPERTY_FRAME = "frame";
+  @javax.annotation.Nullable
   private Map<String, Object> frame = new HashMap<>();
 
   public PresentationDefinition() {
   }
 
-  public PresentationDefinition id(String id) {
+  public PresentationDefinition id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -93,11 +100,11 @@ public class PresentationDefinition {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public PresentationDefinition name(String name) {
+  public PresentationDefinition name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -118,11 +125,11 @@ public class PresentationDefinition {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public PresentationDefinition purpose(String purpose) {
+  public PresentationDefinition purpose(@javax.annotation.Nullable String purpose) {
     
     this.purpose = purpose;
     return this;
@@ -143,11 +150,11 @@ public class PresentationDefinition {
 
   @JsonProperty(JSON_PROPERTY_PURPOSE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPurpose(String purpose) {
+  public void setPurpose(@javax.annotation.Nullable String purpose) {
     this.purpose = purpose;
   }
 
-  public PresentationDefinition format(Format format) {
+  public PresentationDefinition format(@javax.annotation.Nullable Format format) {
     
     this.format = format;
     return this;
@@ -168,11 +175,11 @@ public class PresentationDefinition {
 
   @JsonProperty(JSON_PROPERTY_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(Format format) {
+  public void setFormat(@javax.annotation.Nullable Format format) {
     this.format = format;
   }
 
-  public PresentationDefinition submissionRequirements(List<SubmissionRequirement> submissionRequirements) {
+  public PresentationDefinition submissionRequirements(@javax.annotation.Nullable List<SubmissionRequirement> submissionRequirements) {
     
     this.submissionRequirements = submissionRequirements;
     return this;
@@ -201,11 +208,11 @@ public class PresentationDefinition {
 
   @JsonProperty(JSON_PROPERTY_SUBMISSION_REQUIREMENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSubmissionRequirements(List<SubmissionRequirement> submissionRequirements) {
+  public void setSubmissionRequirements(@javax.annotation.Nullable List<SubmissionRequirement> submissionRequirements) {
     this.submissionRequirements = submissionRequirements;
   }
 
-  public PresentationDefinition inputDescriptors(List<InputDescriptor> inputDescriptors) {
+  public PresentationDefinition inputDescriptors(@javax.annotation.Nonnull List<InputDescriptor> inputDescriptors) {
     
     this.inputDescriptors = inputDescriptors;
     return this;
@@ -234,11 +241,11 @@ public class PresentationDefinition {
 
   @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTORS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setInputDescriptors(List<InputDescriptor> inputDescriptors) {
+  public void setInputDescriptors(@javax.annotation.Nonnull List<InputDescriptor> inputDescriptors) {
     this.inputDescriptors = inputDescriptors;
   }
 
-  public PresentationDefinition frame(Map<String, Object> frame) {
+  public PresentationDefinition frame(@javax.annotation.Nullable Map<String, Object> frame) {
     
     this.frame = frame;
     return this;
@@ -267,7 +274,7 @@ public class PresentationDefinition {
 
   @JsonProperty(JSON_PROPERTY_FRAME)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrame(Map<String, Object> frame) {
+  public void setFrame(@javax.annotation.Nullable Map<String, Object> frame) {
     this.frame = frame;
   }
 

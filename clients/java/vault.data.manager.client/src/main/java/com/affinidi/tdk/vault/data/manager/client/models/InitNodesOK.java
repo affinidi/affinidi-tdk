@@ -35,18 +35,20 @@ import java.util.StringJoiner;
   InitNodesOK.JSON_PROPERTY_CONSUMER_METADATA,
   InitNodesOK.JSON_PROPERTY_DEFAULT_PROFILE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class InitNodesOK {
   public static final String JSON_PROPERTY_CONSUMER_METADATA = "consumerMetadata";
+  @javax.annotation.Nullable
   private ConsumerMetadataDto consumerMetadata;
 
   public static final String JSON_PROPERTY_DEFAULT_PROFILE = "defaultProfile";
+  @javax.annotation.Nullable
   private NodeDto defaultProfile;
 
   public InitNodesOK() {
   }
 
-  public InitNodesOK consumerMetadata(ConsumerMetadataDto consumerMetadata) {
+  public InitNodesOK consumerMetadata(@javax.annotation.Nullable ConsumerMetadataDto consumerMetadata) {
     
     this.consumerMetadata = consumerMetadata;
     return this;
@@ -67,11 +69,11 @@ public class InitNodesOK {
 
   @JsonProperty(JSON_PROPERTY_CONSUMER_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConsumerMetadata(ConsumerMetadataDto consumerMetadata) {
+  public void setConsumerMetadata(@javax.annotation.Nullable ConsumerMetadataDto consumerMetadata) {
     this.consumerMetadata = consumerMetadata;
   }
 
-  public InitNodesOK defaultProfile(NodeDto defaultProfile) {
+  public InitNodesOK defaultProfile(@javax.annotation.Nullable NodeDto defaultProfile) {
     
     this.defaultProfile = defaultProfile;
     return this;
@@ -92,7 +94,7 @@ public class InitNodesOK {
 
   @JsonProperty(JSON_PROPERTY_DEFAULT_PROFILE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDefaultProfile(NodeDto defaultProfile) {
+  public void setDefaultProfile(@javax.annotation.Nullable NodeDto defaultProfile) {
     this.defaultProfile = defaultProfile;
   }
 

@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   RevokeCredentialInput.JSON_PROPERTY_REVOCATION_REASON,
   RevokeCredentialInput.JSON_PROPERTY_CREDENTIAL_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RevokeCredentialInput {
   public static final String JSON_PROPERTY_REVOCATION_REASON = "revocationReason";
+  @javax.annotation.Nullable
   private JsonNullable<String> revocationReason = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_CREDENTIAL_ID = "credentialId";
+  @javax.annotation.Nullable
   private String credentialId;
 
   public RevokeCredentialInput() {
   }
 
-  public RevokeCredentialInput revocationReason(String revocationReason) {
+  public RevokeCredentialInput revocationReason(@javax.annotation.Nullable String revocationReason) {
     this.revocationReason = JsonNullable.<String>of(revocationReason);
     
     return this;
@@ -77,11 +79,11 @@ public class RevokeCredentialInput {
     this.revocationReason = revocationReason;
   }
 
-  public void setRevocationReason(String revocationReason) {
+  public void setRevocationReason(@javax.annotation.Nullable String revocationReason) {
     this.revocationReason = JsonNullable.<String>of(revocationReason);
   }
 
-  public RevokeCredentialInput credentialId(String credentialId) {
+  public RevokeCredentialInput credentialId(@javax.annotation.Nullable String credentialId) {
     
     this.credentialId = credentialId;
     return this;
@@ -102,7 +104,7 @@ public class RevokeCredentialInput {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialId(String credentialId) {
+  public void setCredentialId(@javax.annotation.Nullable String credentialId) {
     this.credentialId = credentialId;
   }
 

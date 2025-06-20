@@ -33,15 +33,16 @@ import java.util.StringJoiner;
   CisConfigurationWebhookSettingEndpoint.JSON_PROPERTY_URL
 })
 @JsonTypeName("CisConfigurationWebhookSetting_endpoint")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CisConfigurationWebhookSettingEndpoint {
   public static final String JSON_PROPERTY_URL = "url";
+  @javax.annotation.Nullable
   private String url;
 
   public CisConfigurationWebhookSettingEndpoint() {
   }
 
-  public CisConfigurationWebhookSettingEndpoint url(String url) {
+  public CisConfigurationWebhookSettingEndpoint url(@javax.annotation.Nullable String url) {
     
     this.url = url;
     return this;
@@ -62,7 +63,7 @@ public class CisConfigurationWebhookSettingEndpoint {
 
   @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(String url) {
+  public void setUrl(@javax.annotation.Nullable String url) {
     this.url = url;
   }
 

@@ -47,39 +47,47 @@ import java.util.StringJoiner;
   UpdateConfigurationByIdInput.JSON_PROPERTY_REDIRECT_URIS,
   UpdateConfigurationByIdInput.JSON_PROPERTY_ENABLE_IDV_PROVIDERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateConfigurationByIdInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_WALLET_ARI = "walletAri";
+  @javax.annotation.Nullable
   private String walletAri;
 
   public static final String JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L = "iotaResponseWebhookURL";
+  @javax.annotation.Nullable
   private String iotaResponseWebhookURL;
 
   public static final String JSON_PROPERTY_ENABLE_VERIFICATION = "enableVerification";
+  @javax.annotation.Nullable
   private Boolean enableVerification;
 
   public static final String JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG = "enableConsentAuditLog";
+  @javax.annotation.Nullable
   private Boolean enableConsentAuditLog;
 
   public static final String JSON_PROPERTY_TOKEN_MAX_AGE = "tokenMaxAge";
+  @javax.annotation.Nullable
   private BigDecimal tokenMaxAge;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
+  @javax.annotation.Nullable
   private IotaConfigurationDtoClientMetadata clientMetadata;
 
   /**
    * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
    */
   public enum ModeEnum {
-    REDIRECT("redirect"),
+    REDIRECT(String.valueOf("redirect")),
     
-    WEBSOCKET("websocket");
+    WEBSOCKET(String.valueOf("websocket"));
 
     private String value;
 
@@ -109,18 +117,21 @@ public class UpdateConfigurationByIdInput {
   }
 
   public static final String JSON_PROPERTY_MODE = "mode";
+  @javax.annotation.Nullable
   private ModeEnum mode;
 
   public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
+  @javax.annotation.Nullable
   private List<String> redirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ENABLE_IDV_PROVIDERS = "enableIdvProviders";
+  @javax.annotation.Nullable
   private Boolean enableIdvProviders;
 
   public UpdateConfigurationByIdInput() {
   }
 
-  public UpdateConfigurationByIdInput name(String name) {
+  public UpdateConfigurationByIdInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -141,11 +152,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public UpdateConfigurationByIdInput walletAri(String walletAri) {
+  public UpdateConfigurationByIdInput walletAri(@javax.annotation.Nullable String walletAri) {
     
     this.walletAri = walletAri;
     return this;
@@ -166,11 +177,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_WALLET_ARI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWalletAri(String walletAri) {
+  public void setWalletAri(@javax.annotation.Nullable String walletAri) {
     this.walletAri = walletAri;
   }
 
-  public UpdateConfigurationByIdInput iotaResponseWebhookURL(String iotaResponseWebhookURL) {
+  public UpdateConfigurationByIdInput iotaResponseWebhookURL(@javax.annotation.Nullable String iotaResponseWebhookURL) {
     
     this.iotaResponseWebhookURL = iotaResponseWebhookURL;
     return this;
@@ -191,11 +202,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIotaResponseWebhookURL(String iotaResponseWebhookURL) {
+  public void setIotaResponseWebhookURL(@javax.annotation.Nullable String iotaResponseWebhookURL) {
     this.iotaResponseWebhookURL = iotaResponseWebhookURL;
   }
 
-  public UpdateConfigurationByIdInput enableVerification(Boolean enableVerification) {
+  public UpdateConfigurationByIdInput enableVerification(@javax.annotation.Nullable Boolean enableVerification) {
     
     this.enableVerification = enableVerification;
     return this;
@@ -216,11 +227,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_ENABLE_VERIFICATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableVerification(Boolean enableVerification) {
+  public void setEnableVerification(@javax.annotation.Nullable Boolean enableVerification) {
     this.enableVerification = enableVerification;
   }
 
-  public UpdateConfigurationByIdInput enableConsentAuditLog(Boolean enableConsentAuditLog) {
+  public UpdateConfigurationByIdInput enableConsentAuditLog(@javax.annotation.Nullable Boolean enableConsentAuditLog) {
     
     this.enableConsentAuditLog = enableConsentAuditLog;
     return this;
@@ -241,11 +252,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableConsentAuditLog(Boolean enableConsentAuditLog) {
+  public void setEnableConsentAuditLog(@javax.annotation.Nullable Boolean enableConsentAuditLog) {
     this.enableConsentAuditLog = enableConsentAuditLog;
   }
 
-  public UpdateConfigurationByIdInput tokenMaxAge(BigDecimal tokenMaxAge) {
+  public UpdateConfigurationByIdInput tokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     
     this.tokenMaxAge = tokenMaxAge;
     return this;
@@ -266,11 +277,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenMaxAge(BigDecimal tokenMaxAge) {
+  public void setTokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
   }
 
-  public UpdateConfigurationByIdInput description(String description) {
+  public UpdateConfigurationByIdInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -291,11 +302,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public UpdateConfigurationByIdInput clientMetadata(IotaConfigurationDtoClientMetadata clientMetadata) {
+  public UpdateConfigurationByIdInput clientMetadata(@javax.annotation.Nullable IotaConfigurationDtoClientMetadata clientMetadata) {
     
     this.clientMetadata = clientMetadata;
     return this;
@@ -316,11 +327,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientMetadata(IotaConfigurationDtoClientMetadata clientMetadata) {
+  public void setClientMetadata(@javax.annotation.Nullable IotaConfigurationDtoClientMetadata clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 
-  public UpdateConfigurationByIdInput mode(ModeEnum mode) {
+  public UpdateConfigurationByIdInput mode(@javax.annotation.Nullable ModeEnum mode) {
     
     this.mode = mode;
     return this;
@@ -341,11 +352,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_MODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMode(ModeEnum mode) {
+  public void setMode(@javax.annotation.Nullable ModeEnum mode) {
     this.mode = mode;
   }
 
-  public UpdateConfigurationByIdInput redirectUris(List<String> redirectUris) {
+  public UpdateConfigurationByIdInput redirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     
     this.redirectUris = redirectUris;
     return this;
@@ -374,11 +385,11 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRedirectUris(List<String> redirectUris) {
+  public void setRedirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     this.redirectUris = redirectUris;
   }
 
-  public UpdateConfigurationByIdInput enableIdvProviders(Boolean enableIdvProviders) {
+  public UpdateConfigurationByIdInput enableIdvProviders(@javax.annotation.Nullable Boolean enableIdvProviders) {
     
     this.enableIdvProviders = enableIdvProviders;
     return this;
@@ -399,7 +410,7 @@ public class UpdateConfigurationByIdInput {
 
   @JsonProperty(JSON_PROPERTY_ENABLE_IDV_PROVIDERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnableIdvProviders(Boolean enableIdvProviders) {
+  public void setEnableIdvProviders(@javax.annotation.Nullable Boolean enableIdvProviders) {
     this.enableIdvProviders = enableIdvProviders;
   }
 

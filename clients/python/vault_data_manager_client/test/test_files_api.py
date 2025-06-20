@@ -25,7 +25,7 @@ class TestFilesApi(unittest.TestCase):
         self.api = FilesApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_get_scanned_file_info(self) -> None:
         """Test case for get_scanned_file_info

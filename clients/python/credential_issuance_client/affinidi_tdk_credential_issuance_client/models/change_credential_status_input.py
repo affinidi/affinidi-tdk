@@ -36,7 +36,7 @@ class ChangeCredentialStatusInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('INVALID_CREDENTIAL', 'COMPROMISED_ISSUER'):
+        if value not in ('INVALID_CREDENTIAL', 'COMPROMISED_ISSUER',):
             raise ValueError("must be one of enum values ('INVALID_CREDENTIAL', 'COMPROMISED_ISSUER')")
         return value
 

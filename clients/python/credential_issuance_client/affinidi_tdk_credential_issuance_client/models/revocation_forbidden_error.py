@@ -37,21 +37,21 @@ class RevocationForbiddenError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('RevocationForbiddenError'):
+        if value not in ('RevocationForbiddenError',):
             raise ValueError("must be one of enum values ('RevocationForbiddenError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Related VC has not been claimed yet'):
+        if value not in ('Related VC has not been claimed yet',):
             raise ValueError("must be one of enum values ('Related VC has not been claimed yet')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

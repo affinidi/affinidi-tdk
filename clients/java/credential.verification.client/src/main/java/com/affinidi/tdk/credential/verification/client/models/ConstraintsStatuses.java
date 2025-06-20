@@ -36,21 +36,24 @@ import java.util.StringJoiner;
   ConstraintsStatuses.JSON_PROPERTY_REVOKED
 })
 @JsonTypeName("Constraints_statuses")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConstraintsStatuses {
   public static final String JSON_PROPERTY_ACTIVE = "active";
+  @javax.annotation.Nullable
   private PdStatus active;
 
   public static final String JSON_PROPERTY_SUSPENDED = "suspended";
+  @javax.annotation.Nullable
   private PdStatus suspended;
 
   public static final String JSON_PROPERTY_REVOKED = "revoked";
+  @javax.annotation.Nullable
   private PdStatus revoked;
 
   public ConstraintsStatuses() {
   }
 
-  public ConstraintsStatuses active(PdStatus active) {
+  public ConstraintsStatuses active(@javax.annotation.Nullable PdStatus active) {
     
     this.active = active;
     return this;
@@ -71,11 +74,11 @@ public class ConstraintsStatuses {
 
   @JsonProperty(JSON_PROPERTY_ACTIVE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setActive(PdStatus active) {
+  public void setActive(@javax.annotation.Nullable PdStatus active) {
     this.active = active;
   }
 
-  public ConstraintsStatuses suspended(PdStatus suspended) {
+  public ConstraintsStatuses suspended(@javax.annotation.Nullable PdStatus suspended) {
     
     this.suspended = suspended;
     return this;
@@ -96,11 +99,11 @@ public class ConstraintsStatuses {
 
   @JsonProperty(JSON_PROPERTY_SUSPENDED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSuspended(PdStatus suspended) {
+  public void setSuspended(@javax.annotation.Nullable PdStatus suspended) {
     this.suspended = suspended;
   }
 
-  public ConstraintsStatuses revoked(PdStatus revoked) {
+  public ConstraintsStatuses revoked(@javax.annotation.Nullable PdStatus revoked) {
     
     this.revoked = revoked;
     return this;
@@ -121,7 +124,7 @@ public class ConstraintsStatuses {
 
   @JsonProperty(JSON_PROPERTY_REVOKED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRevoked(PdStatus revoked) {
+  public void setRevoked(@javax.annotation.Nullable PdStatus revoked) {
     this.revoked = revoked;
   }
 

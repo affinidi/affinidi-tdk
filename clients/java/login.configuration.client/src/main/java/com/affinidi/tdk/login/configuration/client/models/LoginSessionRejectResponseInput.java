@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   LoginSessionRejectResponseInput.JSON_PROPERTY_ERROR_DESCRIPTION,
   LoginSessionRejectResponseInput.JSON_PROPERTY_STATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LoginSessionRejectResponseInput {
   public static final String JSON_PROPERTY_ERROR = "error";
+  @javax.annotation.Nullable
   private String error;
 
   public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "errorDescription";
+  @javax.annotation.Nullable
   private String errorDescription;
 
   public static final String JSON_PROPERTY_STATE = "state";
+  @javax.annotation.Nonnull
   private String state;
 
   public LoginSessionRejectResponseInput() {
   }
 
-  public LoginSessionRejectResponseInput error(String error) {
+  public LoginSessionRejectResponseInput error(@javax.annotation.Nullable String error) {
     
     this.error = error;
     return this;
@@ -69,11 +72,11 @@ public class LoginSessionRejectResponseInput {
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(String error) {
+  public void setError(@javax.annotation.Nullable String error) {
     this.error = error;
   }
 
-  public LoginSessionRejectResponseInput errorDescription(String errorDescription) {
+  public LoginSessionRejectResponseInput errorDescription(@javax.annotation.Nullable String errorDescription) {
     
     this.errorDescription = errorDescription;
     return this;
@@ -94,11 +97,11 @@ public class LoginSessionRejectResponseInput {
 
   @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorDescription(String errorDescription) {
+  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
     this.errorDescription = errorDescription;
   }
 
-  public LoginSessionRejectResponseInput state(String state) {
+  public LoginSessionRejectResponseInput state(@javax.annotation.Nonnull String state) {
     
     this.state = state;
     return this;
@@ -119,7 +122,7 @@ public class LoginSessionRejectResponseInput {
 
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(String state) {
+  public void setState(@javax.annotation.Nonnull String state) {
     this.state = state;
   }
 

@@ -30,7 +30,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
 })
 @JsonTypeName("CredentialRequirements_constraints")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialRequirementsConstraints {
   public CredentialRequirementsConstraints() {
   }

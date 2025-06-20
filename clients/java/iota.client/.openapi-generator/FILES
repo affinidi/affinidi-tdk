@@ -73,6 +73,8 @@ src/main/java/com/affinidi/tdk/iota/client/Configuration.java
 src/main/java/com/affinidi/tdk/iota/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/iota/client/Pair.java
 src/main/java/com/affinidi/tdk/iota/client/RFC3339DateFormat.java
+src/main/java/com/affinidi/tdk/iota/client/RFC3339InstantDeserializer.java
+src/main/java/com/affinidi/tdk/iota/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/iota/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/iota/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/iota/client/StringUtil.java

@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsStartFileScanOK.JSON_PROPERTY_CORS_START_FILE_SCAN_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsStartFileScanOK {
   public static final String JSON_PROPERTY_CORS_START_FILE_SCAN_OK = "corsStartFileScanOk";
+  @javax.annotation.Nullable
   private String corsStartFileScanOk;
 
   public CorsStartFileScanOK() {
   }
 
-  public CorsStartFileScanOK corsStartFileScanOk(String corsStartFileScanOk) {
+  public CorsStartFileScanOK corsStartFileScanOk(@javax.annotation.Nullable String corsStartFileScanOk) {
     
     this.corsStartFileScanOk = corsStartFileScanOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsStartFileScanOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_START_FILE_SCAN_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsStartFileScanOk(String corsStartFileScanOk) {
+  public void setCorsStartFileScanOk(@javax.annotation.Nullable String corsStartFileScanOk) {
     this.corsStartFileScanOk = corsStartFileScanOk;
   }
 

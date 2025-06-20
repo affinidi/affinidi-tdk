@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AuthzApi extends BaseApi {
 
   public AuthzApi() {
@@ -52,7 +52,7 @@ public class AuthzApi extends BaseApi {
    * @param granteeDid  (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteAccessVfs(String granteeDid) throws ApiException {
+  public void deleteAccessVfs(@javax.annotation.Nonnull String granteeDid) throws ApiException {
     this.deleteAccessVfs(granteeDid, Collections.emptyMap());
   }
 
@@ -64,7 +64,7 @@ public class AuthzApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deleteAccessVfs(String granteeDid, Map<String, String> additionalHeaders) throws ApiException {
+  public void deleteAccessVfs(@javax.annotation.Nonnull String granteeDid, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'granteeDid' is set
@@ -125,7 +125,7 @@ public class AuthzApi extends BaseApi {
    * @return GrantAccessOutput
    * @throws ApiException if fails to make API call
    */
-  public GrantAccessOutput grantAccessVfs(GrantAccessInput grantAccessInput) throws ApiException {
+  public GrantAccessOutput grantAccessVfs(@javax.annotation.Nonnull GrantAccessInput grantAccessInput) throws ApiException {
     return this.grantAccessVfs(grantAccessInput, Collections.emptyMap());
   }
 
@@ -138,7 +138,7 @@ public class AuthzApi extends BaseApi {
    * @return GrantAccessOutput
    * @throws ApiException if fails to make API call
    */
-  public GrantAccessOutput grantAccessVfs(GrantAccessInput grantAccessInput, Map<String, String> additionalHeaders) throws ApiException {
+  public GrantAccessOutput grantAccessVfs(@javax.annotation.Nonnull GrantAccessInput grantAccessInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = grantAccessInput;
     
     // verify the required parameter 'grantAccessInput' is set
@@ -200,7 +200,7 @@ public class AuthzApi extends BaseApi {
    * @return UpdateAccessOutput
    * @throws ApiException if fails to make API call
    */
-  public UpdateAccessOutput updateAccessVfs(String granteeDid, UpdateAccessInput updateAccessInput) throws ApiException {
+  public UpdateAccessOutput updateAccessVfs(@javax.annotation.Nonnull String granteeDid, @javax.annotation.Nonnull UpdateAccessInput updateAccessInput) throws ApiException {
     return this.updateAccessVfs(granteeDid, updateAccessInput, Collections.emptyMap());
   }
 
@@ -214,7 +214,7 @@ public class AuthzApi extends BaseApi {
    * @return UpdateAccessOutput
    * @throws ApiException if fails to make API call
    */
-  public UpdateAccessOutput updateAccessVfs(String granteeDid, UpdateAccessInput updateAccessInput, Map<String, String> additionalHeaders) throws ApiException {
+  public UpdateAccessOutput updateAccessVfs(@javax.annotation.Nonnull String granteeDid, @javax.annotation.Nonnull UpdateAccessInput updateAccessInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateAccessInput;
     
     // verify the required parameter 'granteeDid' is set

@@ -35,18 +35,20 @@ import java.util.StringJoiner;
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.JSON_PROPERTY_TX_CODE
 })
 @JsonTypeName("CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode {
   public static final String JSON_PROPERTY_PRE_AUTHORIZED_CODE = "pre-authorized_code";
+  @javax.annotation.Nonnull
   private String preAuthorizedCode;
 
   public static final String JSON_PROPERTY_TX_CODE = "tx_code";
+  @javax.annotation.Nullable
   private CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode txCode;
 
   public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode() {
   }
 
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode preAuthorizedCode(String preAuthorizedCode) {
+  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode preAuthorizedCode(@javax.annotation.Nonnull String preAuthorizedCode) {
     
     this.preAuthorizedCode = preAuthorizedCode;
     return this;
@@ -67,11 +69,11 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
 
   @JsonProperty(JSON_PROPERTY_PRE_AUTHORIZED_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPreAuthorizedCode(String preAuthorizedCode) {
+  public void setPreAuthorizedCode(@javax.annotation.Nonnull String preAuthorizedCode) {
     this.preAuthorizedCode = preAuthorizedCode;
   }
 
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode txCode(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode txCode) {
+  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode txCode(@javax.annotation.Nullable CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode txCode) {
     
     this.txCode = txCode;
     return this;
@@ -92,7 +94,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
 
   @JsonProperty(JSON_PROPERTY_TX_CODE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTxCode(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode txCode) {
+  public void setTxCode(@javax.annotation.Nullable CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode txCode) {
     this.txCode = txCode;
   }
 

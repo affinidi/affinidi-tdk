@@ -33,15 +33,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CreateWalletResponse.JSON_PROPERTY_WALLET
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateWalletResponse {
   public static final String JSON_PROPERTY_WALLET = "wallet";
+  @javax.annotation.Nullable
   private WalletDto wallet;
 
   public CreateWalletResponse() {
   }
 
-  public CreateWalletResponse wallet(WalletDto wallet) {
+  public CreateWalletResponse wallet(@javax.annotation.Nullable WalletDto wallet) {
     
     this.wallet = wallet;
     return this;
@@ -62,7 +63,7 @@ public class CreateWalletResponse {
 
   @JsonProperty(JSON_PROPERTY_WALLET)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setWallet(WalletDto wallet) {
+  public void setWallet(@javax.annotation.Nullable WalletDto wallet) {
     this.wallet = wallet;
   }
 

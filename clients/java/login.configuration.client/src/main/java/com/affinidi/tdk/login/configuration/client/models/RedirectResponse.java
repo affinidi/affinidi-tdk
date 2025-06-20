@@ -33,13 +33,13 @@ import java.util.StringJoiner;
   RedirectResponse.JSON_PROPERTY_TYPE,
   RedirectResponse.JSON_PROPERTY_TO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RedirectResponse {
   /**
    * type
    */
   public enum TypeEnum {
-    REDIRECT_RESPONSE("REDIRECT_RESPONSE");
+    REDIRECT_RESPONSE(String.valueOf("REDIRECT_RESPONSE"));
 
     private String value;
 
@@ -69,15 +69,17 @@ public class RedirectResponse {
   }
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private TypeEnum type;
 
   public static final String JSON_PROPERTY_TO = "to";
+  @javax.annotation.Nonnull
   private String to;
 
   public RedirectResponse() {
   }
 
-  public RedirectResponse type(TypeEnum type) {
+  public RedirectResponse type(@javax.annotation.Nonnull TypeEnum type) {
     
     this.type = type;
     return this;
@@ -98,11 +100,11 @@ public class RedirectResponse {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(TypeEnum type) {
+  public void setType(@javax.annotation.Nonnull TypeEnum type) {
     this.type = type;
   }
 
-  public RedirectResponse to(String to) {
+  public RedirectResponse to(@javax.annotation.Nonnull String to) {
     
     this.to = to;
     return this;
@@ -123,7 +125,7 @@ public class RedirectResponse {
 
   @JsonProperty(JSON_PROPERTY_TO)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTo(String to) {
+  public void setTo(@javax.annotation.Nonnull String to) {
     this.to = to;
   }
 

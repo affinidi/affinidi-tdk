@@ -21,7 +21,7 @@ import json
 
 from typing import List
 from pydantic import BaseModel, Field, StrictStr, conlist
-from affinidi_tdk_iam_client.models.token_authentication_method_dto import TokenAuthenticationMethodDto
+from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto import TokenPrivateKeyAuthenticationMethodDto
 
 class TokenDto(BaseModel):
     """
@@ -31,7 +31,7 @@ class TokenDto(BaseModel):
     ari: StrictStr = Field(default=..., description="Token ARI")
     owner_ari: StrictStr = Field(default=..., alias="ownerAri", description="The Token owner's ARI")
     name: StrictStr = Field(default=..., description="Owner defined Token display name")
-    authentication_method: TokenAuthenticationMethodDto = Field(default=..., alias="authenticationMethod")
+    authentication_method: TokenPrivateKeyAuthenticationMethodDto = Field(default=..., alias="authenticationMethod")
     scopes: conlist(StrictStr) = Field(default=..., description="Scopes that will be assigned to the Token on authentication")
     __properties = ["id", "ari", "ownerAri", "name", "authenticationMethod", "scopes"]
 
@@ -78,7 +78,7 @@ class TokenDto(BaseModel):
             "ari": obj.get("ari"),
             "owner_ari": obj.get("ownerAri"),
             "name": obj.get("name"),
-            "authentication_method": TokenAuthenticationMethodDto.from_dict(obj.get("authenticationMethod")) if obj.get("authenticationMethod") is not None else None,
+            "authentication_method": TokenPrivateKeyAuthenticationMethodDto.from_dict(obj.get("authenticationMethod")) if obj.get("authenticationMethod") is not None else None,
             "scopes": obj.get("scopes")
         })
         return _obj

@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsDeleteAccountOK.JSON_PROPERTY_CORS_DELETE_ACCOUNT_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsDeleteAccountOK {
   public static final String JSON_PROPERTY_CORS_DELETE_ACCOUNT_OK = "corsDeleteAccountOk";
+  @javax.annotation.Nullable
   private String corsDeleteAccountOk;
 
   public CorsDeleteAccountOK() {
   }
 
-  public CorsDeleteAccountOK corsDeleteAccountOk(String corsDeleteAccountOk) {
+  public CorsDeleteAccountOK corsDeleteAccountOk(@javax.annotation.Nullable String corsDeleteAccountOk) {
     
     this.corsDeleteAccountOk = corsDeleteAccountOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsDeleteAccountOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_DELETE_ACCOUNT_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsDeleteAccountOk(String corsDeleteAccountOk) {
+  public void setCorsDeleteAccountOk(@javax.annotation.Nullable String corsDeleteAccountOk) {
     this.corsDeleteAccountOk = corsDeleteAccountOk;
   }
 

@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CallbackApi extends BaseApi {
 
   public CallbackApi() {
@@ -51,7 +51,7 @@ public class CallbackApi extends BaseApi {
    * @return CallbackResponseOK
    * @throws ApiException if fails to make API call
    */
-  public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput) throws ApiException {
+  public CallbackResponseOK iotOIDC4VPCallback(@javax.annotation.Nonnull CallbackInput callbackInput) throws ApiException {
     return this.iotOIDC4VPCallback(callbackInput, Collections.emptyMap());
   }
 
@@ -64,7 +64,7 @@ public class CallbackApi extends BaseApi {
    * @return CallbackResponseOK
    * @throws ApiException if fails to make API call
    */
-  public CallbackResponseOK iotOIDC4VPCallback(CallbackInput callbackInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CallbackResponseOK iotOIDC4VPCallback(@javax.annotation.Nonnull CallbackInput callbackInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = callbackInput;
     
     // verify the required parameter 'callbackInput' is set

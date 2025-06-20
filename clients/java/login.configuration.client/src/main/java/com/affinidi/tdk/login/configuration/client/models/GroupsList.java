@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   GroupsList.JSON_PROPERTY_GROUPS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupsList {
   public static final String JSON_PROPERTY_GROUPS = "groups";
+  @javax.annotation.Nullable
   private List<GroupDto> groups = new ArrayList<>();
 
   public GroupsList() {
   }
 
-  public GroupsList groups(List<GroupDto> groups) {
+  public GroupsList groups(@javax.annotation.Nullable List<GroupDto> groups) {
     
     this.groups = groups;
     return this;
@@ -73,7 +74,7 @@ public class GroupsList {
 
   @JsonProperty(JSON_PROPERTY_GROUPS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGroups(List<GroupDto> groups) {
+  public void setGroups(@javax.annotation.Nullable List<GroupDto> groups) {
     this.groups = groups;
   }
 

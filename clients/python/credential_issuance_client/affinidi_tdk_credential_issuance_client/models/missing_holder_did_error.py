@@ -37,21 +37,21 @@ class MissingHolderDidError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('MissingHolderDidError'):
+        if value not in ('MissingHolderDidError',):
             raise ValueError("must be one of enum values ('MissingHolderDidError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('holderDID is required in this claimMode'):
+        if value not in ('holderDID is required in this claimMode',):
             raise ValueError("must be one of enum values ('holderDID is required in this claimMode')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

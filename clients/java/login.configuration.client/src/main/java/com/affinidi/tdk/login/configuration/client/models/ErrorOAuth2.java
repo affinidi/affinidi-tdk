@@ -36,27 +36,32 @@ import java.util.StringJoiner;
   ErrorOAuth2.JSON_PROPERTY_ERROR_HINT,
   ErrorOAuth2.JSON_PROPERTY_STATUS_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ErrorOAuth2 {
   public static final String JSON_PROPERTY_ERROR = "error";
+  @javax.annotation.Nonnull
   private String error;
 
   public static final String JSON_PROPERTY_ERROR_DEBUG = "error_debug";
+  @javax.annotation.Nullable
   private String errorDebug;
 
   public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "error_description";
+  @javax.annotation.Nonnull
   private String errorDescription;
 
   public static final String JSON_PROPERTY_ERROR_HINT = "error_hint";
+  @javax.annotation.Nullable
   private String errorHint;
 
   public static final String JSON_PROPERTY_STATUS_CODE = "status_code";
+  @javax.annotation.Nonnull
   private String statusCode;
 
   public ErrorOAuth2() {
   }
 
-  public ErrorOAuth2 error(String error) {
+  public ErrorOAuth2 error(@javax.annotation.Nonnull String error) {
     
     this.error = error;
     return this;
@@ -77,11 +82,11 @@ public class ErrorOAuth2 {
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setError(String error) {
+  public void setError(@javax.annotation.Nonnull String error) {
     this.error = error;
   }
 
-  public ErrorOAuth2 errorDebug(String errorDebug) {
+  public ErrorOAuth2 errorDebug(@javax.annotation.Nullable String errorDebug) {
     
     this.errorDebug = errorDebug;
     return this;
@@ -102,11 +107,11 @@ public class ErrorOAuth2 {
 
   @JsonProperty(JSON_PROPERTY_ERROR_DEBUG)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorDebug(String errorDebug) {
+  public void setErrorDebug(@javax.annotation.Nullable String errorDebug) {
     this.errorDebug = errorDebug;
   }
 
-  public ErrorOAuth2 errorDescription(String errorDescription) {
+  public ErrorOAuth2 errorDescription(@javax.annotation.Nonnull String errorDescription) {
     
     this.errorDescription = errorDescription;
     return this;
@@ -127,11 +132,11 @@ public class ErrorOAuth2 {
 
   @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrorDescription(String errorDescription) {
+  public void setErrorDescription(@javax.annotation.Nonnull String errorDescription) {
     this.errorDescription = errorDescription;
   }
 
-  public ErrorOAuth2 errorHint(String errorHint) {
+  public ErrorOAuth2 errorHint(@javax.annotation.Nullable String errorHint) {
     
     this.errorHint = errorHint;
     return this;
@@ -152,11 +157,11 @@ public class ErrorOAuth2 {
 
   @JsonProperty(JSON_PROPERTY_ERROR_HINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorHint(String errorHint) {
+  public void setErrorHint(@javax.annotation.Nullable String errorHint) {
     this.errorHint = errorHint;
   }
 
-  public ErrorOAuth2 statusCode(String statusCode) {
+  public ErrorOAuth2 statusCode(@javax.annotation.Nonnull String statusCode) {
     
     this.statusCode = statusCode;
     return this;
@@ -177,7 +182,7 @@ public class ErrorOAuth2 {
 
   @JsonProperty(JSON_PROPERTY_STATUS_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatusCode(String statusCode) {
+  public void setStatusCode(@javax.annotation.Nonnull String statusCode) {
     this.statusCode = statusCode;
   }
 

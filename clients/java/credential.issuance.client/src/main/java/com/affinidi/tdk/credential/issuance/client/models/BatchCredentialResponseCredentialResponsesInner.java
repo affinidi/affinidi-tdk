@@ -33,15 +33,16 @@ import java.util.StringJoiner;
   BatchCredentialResponseCredentialResponsesInner.JSON_PROPERTY_CREDENTIAL
 })
 @JsonTypeName("BatchCredentialResponse_credential_responses_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BatchCredentialResponseCredentialResponsesInner {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
+  @javax.annotation.Nullable
   private Object credential = null;
 
   public BatchCredentialResponseCredentialResponsesInner() {
   }
 
-  public BatchCredentialResponseCredentialResponsesInner credential(Object credential) {
+  public BatchCredentialResponseCredentialResponsesInner credential(@javax.annotation.Nullable Object credential) {
     
     this.credential = credential;
     return this;
@@ -62,7 +63,7 @@ public class BatchCredentialResponseCredentialResponsesInner {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredential(Object credential) {
+  public void setCredential(@javax.annotation.Nullable Object credential) {
     this.credential = credential;
   }
 

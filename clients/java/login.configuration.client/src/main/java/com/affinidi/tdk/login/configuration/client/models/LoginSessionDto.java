@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   LoginSessionDto.JSON_PROPERTY_ID,
   LoginSessionDto.JSON_PROPERTY_AUTHORIZATION_REQUEST
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LoginSessionDto {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_AUTHORIZATION_REQUEST = "authorizationRequest";
+  @javax.annotation.Nonnull
   private LoginSessionDtoAuthorizationRequest authorizationRequest;
 
   public LoginSessionDto() {
   }
 
-  public LoginSessionDto id(String id) {
+  public LoginSessionDto id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -66,11 +68,11 @@ public class LoginSessionDto {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public LoginSessionDto authorizationRequest(LoginSessionDtoAuthorizationRequest authorizationRequest) {
+  public LoginSessionDto authorizationRequest(@javax.annotation.Nonnull LoginSessionDtoAuthorizationRequest authorizationRequest) {
     
     this.authorizationRequest = authorizationRequest;
     return this;
@@ -91,7 +93,7 @@ public class LoginSessionDto {
 
   @JsonProperty(JSON_PROPERTY_AUTHORIZATION_REQUEST)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthorizationRequest(LoginSessionDtoAuthorizationRequest authorizationRequest) {
+  public void setAuthorizationRequest(@javax.annotation.Nonnull LoginSessionDtoAuthorizationRequest authorizationRequest) {
     this.authorizationRequest = authorizationRequest;
   }
 

@@ -48,33 +48,39 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_TOKEN_ENDPOINT,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
+  @javax.annotation.Nullable
   private String authorizationEndpoint;
 
   public static final String JSON_PROPERTY_CREDENTIAL_ENDPOINT = "credential_endpoint";
+  @javax.annotation.Nullable
   private String credentialEndpoint;
 
   public static final String JSON_PROPERTY_CREDENTIAL_ISSUER = "credential_issuer";
+  @javax.annotation.Nullable
   private String credentialIssuer;
 
   public static final String JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT = "batch_credential_endpoint";
+  @javax.annotation.Nullable
   private String batchCredentialEndpoint;
 
   public static final String JSON_PROPERTY_CREDENTIALS_SUPPORTED = "credentials_supported";
+  @javax.annotation.Nullable
   private List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT = "deferred_credential_endpoint";
+  @javax.annotation.Nullable
   private String deferredCredentialEndpoint;
 
   /**
    * Gets or Sets grantTypesSupported
    */
   public enum GrantTypesSupportedEnum {
-    AUTHORIZATION_CODE("authorization_code"),
+    AUTHORIZATION_CODE(String.valueOf("authorization_code")),
     
-    URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE("urn:ietf:params:oauth:grant-type:pre-authorized_code");
+    URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE(String.valueOf("urn:ietf:params:oauth:grant-type:pre-authorized_code"));
 
     private String value;
 
@@ -104,16 +110,18 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
   }
 
   public static final String JSON_PROPERTY_GRANT_TYPES_SUPPORTED = "grant_types_supported";
+  @javax.annotation.Nullable
   private List<GrantTypesSupportedEnum> grantTypesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_JWKS_URI = "jwks_uri";
+  @javax.annotation.Nullable
   private String jwksUri;
 
   /**
    * Gets or Sets scopesSupported
    */
   public enum ScopesSupportedEnum {
-    OPENID("openid");
+    OPENID(String.valueOf("openid"));
 
     private String value;
 
@@ -143,20 +151,22 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
   }
 
   public static final String JSON_PROPERTY_SCOPES_SUPPORTED = "scopes_supported";
+  @javax.annotation.Nullable
   private List<ScopesSupportedEnum> scopesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOKEN_ENDPOINT = "token_endpoint";
+  @javax.annotation.Nullable
   private String tokenEndpoint;
 
   /**
    * Gets or Sets tokenEndpointAuthMethodsSupported
    */
   public enum TokenEndpointAuthMethodsSupportedEnum {
-    CLIENT_SECRET_POST("client_secret_post"),
+    CLIENT_SECRET_POST(String.valueOf("client_secret_post")),
     
-    CLIENT_SECRET_BASIC("client_secret_basic"),
+    CLIENT_SECRET_BASIC(String.valueOf("client_secret_basic")),
     
-    NONE("none");
+    NONE(String.valueOf("none"));
 
     private String value;
 
@@ -186,13 +196,14 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
   }
 
   public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED = "token_endpoint_auth_methods_supported";
+  @javax.annotation.Nullable
   private List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported = new ArrayList<>();
 
   public WellKnownOpenIdCredentialIssuerResponse() {
 
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse authorizationEndpoint(String authorizationEndpoint) {
+  public WellKnownOpenIdCredentialIssuerResponse authorizationEndpoint(@javax.annotation.Nullable String authorizationEndpoint) {
     
     this.authorizationEndpoint = authorizationEndpoint;
     return this;
@@ -213,11 +224,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAuthorizationEndpoint(String authorizationEndpoint) {
+  public void setAuthorizationEndpoint(@javax.annotation.Nullable String authorizationEndpoint) {
     this.authorizationEndpoint = authorizationEndpoint;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse credentialEndpoint(String credentialEndpoint) {
+  public WellKnownOpenIdCredentialIssuerResponse credentialEndpoint(@javax.annotation.Nullable String credentialEndpoint) {
     
     this.credentialEndpoint = credentialEndpoint;
     return this;
@@ -238,11 +249,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialEndpoint(String credentialEndpoint) {
+  public void setCredentialEndpoint(@javax.annotation.Nullable String credentialEndpoint) {
     this.credentialEndpoint = credentialEndpoint;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse credentialIssuer(String credentialIssuer) {
+  public WellKnownOpenIdCredentialIssuerResponse credentialIssuer(@javax.annotation.Nullable String credentialIssuer) {
     
     this.credentialIssuer = credentialIssuer;
     return this;
@@ -263,11 +274,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialIssuer(String credentialIssuer) {
+  public void setCredentialIssuer(@javax.annotation.Nullable String credentialIssuer) {
     this.credentialIssuer = credentialIssuer;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse batchCredentialEndpoint(String batchCredentialEndpoint) {
+  public WellKnownOpenIdCredentialIssuerResponse batchCredentialEndpoint(@javax.annotation.Nullable String batchCredentialEndpoint) {
     
     this.batchCredentialEndpoint = batchCredentialEndpoint;
     return this;
@@ -288,11 +299,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBatchCredentialEndpoint(String batchCredentialEndpoint) {
+  public void setBatchCredentialEndpoint(@javax.annotation.Nullable String batchCredentialEndpoint) {
     this.batchCredentialEndpoint = batchCredentialEndpoint;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse credentialsSupported(List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
+  public WellKnownOpenIdCredentialIssuerResponse credentialsSupported(@javax.annotation.Nullable List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
     
     this.credentialsSupported = credentialsSupported;
     return this;
@@ -321,11 +332,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialsSupported(List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
+  public void setCredentialsSupported(@javax.annotation.Nullable List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
     this.credentialsSupported = credentialsSupported;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse deferredCredentialEndpoint(String deferredCredentialEndpoint) {
+  public WellKnownOpenIdCredentialIssuerResponse deferredCredentialEndpoint(@javax.annotation.Nullable String deferredCredentialEndpoint) {
     
     this.deferredCredentialEndpoint = deferredCredentialEndpoint;
     return this;
@@ -346,11 +357,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDeferredCredentialEndpoint(String deferredCredentialEndpoint) {
+  public void setDeferredCredentialEndpoint(@javax.annotation.Nullable String deferredCredentialEndpoint) {
     this.deferredCredentialEndpoint = deferredCredentialEndpoint;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse grantTypesSupported(List<GrantTypesSupportedEnum> grantTypesSupported) {
+  public WellKnownOpenIdCredentialIssuerResponse grantTypesSupported(@javax.annotation.Nullable List<GrantTypesSupportedEnum> grantTypesSupported) {
     
     this.grantTypesSupported = grantTypesSupported;
     return this;
@@ -379,11 +390,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrantTypesSupported(List<GrantTypesSupportedEnum> grantTypesSupported) {
+  public void setGrantTypesSupported(@javax.annotation.Nullable List<GrantTypesSupportedEnum> grantTypesSupported) {
     this.grantTypesSupported = grantTypesSupported;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse jwksUri(String jwksUri) {
+  public WellKnownOpenIdCredentialIssuerResponse jwksUri(@javax.annotation.Nullable String jwksUri) {
     
     this.jwksUri = jwksUri;
     return this;
@@ -404,11 +415,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_JWKS_URI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJwksUri(String jwksUri) {
+  public void setJwksUri(@javax.annotation.Nullable String jwksUri) {
     this.jwksUri = jwksUri;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse scopesSupported(List<ScopesSupportedEnum> scopesSupported) {
+  public WellKnownOpenIdCredentialIssuerResponse scopesSupported(@javax.annotation.Nullable List<ScopesSupportedEnum> scopesSupported) {
     
     this.scopesSupported = scopesSupported;
     return this;
@@ -437,11 +448,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScopesSupported(List<ScopesSupportedEnum> scopesSupported) {
+  public void setScopesSupported(@javax.annotation.Nullable List<ScopesSupportedEnum> scopesSupported) {
     this.scopesSupported = scopesSupported;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse tokenEndpoint(String tokenEndpoint) {
+  public WellKnownOpenIdCredentialIssuerResponse tokenEndpoint(@javax.annotation.Nullable String tokenEndpoint) {
     
     this.tokenEndpoint = tokenEndpoint;
     return this;
@@ -462,11 +473,11 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenEndpoint(String tokenEndpoint) {
+  public void setTokenEndpoint(@javax.annotation.Nullable String tokenEndpoint) {
     this.tokenEndpoint = tokenEndpoint;
   }
 
-  public WellKnownOpenIdCredentialIssuerResponse tokenEndpointAuthMethodsSupported(List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported) {
+  public WellKnownOpenIdCredentialIssuerResponse tokenEndpointAuthMethodsSupported(@javax.annotation.Nullable List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported) {
     
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
     return this;
@@ -495,7 +506,7 @@ public class WellKnownOpenIdCredentialIssuerResponse extends HashMap<String, Obj
 
   @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenEndpointAuthMethodsSupported(List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported) {
+  public void setTokenEndpointAuthMethodsSupported(@javax.annotation.Nullable List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported) {
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
   }
 

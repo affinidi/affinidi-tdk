@@ -37,7 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StsApi extends BaseApi {
 
   public StsApi() {
@@ -55,7 +55,7 @@ public class StsApi extends BaseApi {
    * @return CreateProjectScopedTokenOutput
    * @throws ApiException if fails to make API call
    */
-  public CreateProjectScopedTokenOutput createProjectScopedToken(CreateProjectScopedTokenInput createProjectScopedTokenInput) throws ApiException {
+  public CreateProjectScopedTokenOutput createProjectScopedToken(@javax.annotation.Nonnull CreateProjectScopedTokenInput createProjectScopedTokenInput) throws ApiException {
     return this.createProjectScopedToken(createProjectScopedTokenInput, Collections.emptyMap());
   }
 
@@ -68,7 +68,7 @@ public class StsApi extends BaseApi {
    * @return CreateProjectScopedTokenOutput
    * @throws ApiException if fails to make API call
    */
-  public CreateProjectScopedTokenOutput createProjectScopedToken(CreateProjectScopedTokenInput createProjectScopedTokenInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateProjectScopedTokenOutput createProjectScopedToken(@javax.annotation.Nonnull CreateProjectScopedTokenInput createProjectScopedTokenInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createProjectScopedTokenInput;
     
     // verify the required parameter 'createProjectScopedTokenInput' is set

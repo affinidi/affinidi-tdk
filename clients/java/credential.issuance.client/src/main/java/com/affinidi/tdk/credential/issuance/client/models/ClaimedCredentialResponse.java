@@ -38,18 +38,20 @@ import java.util.StringJoiner;
   ClaimedCredentialResponse.JSON_PROPERTY_CREDENTIAL,
   ClaimedCredentialResponse.JSON_PROPERTY_CREDENTIALS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ClaimedCredentialResponse {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
+  @javax.annotation.Nullable
   private Map<String, Object> credential = new HashMap<>();
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
+  @javax.annotation.Nullable
   private List<Map<String, Object>> credentials = new ArrayList<>();
 
   public ClaimedCredentialResponse() {
   }
 
-  public ClaimedCredentialResponse credential(Map<String, Object> credential) {
+  public ClaimedCredentialResponse credential(@javax.annotation.Nullable Map<String, Object> credential) {
     
     this.credential = credential;
     return this;
@@ -80,11 +82,11 @@ public class ClaimedCredentialResponse {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredential(Map<String, Object> credential) {
+  public void setCredential(@javax.annotation.Nullable Map<String, Object> credential) {
     this.credential = credential;
   }
 
-  public ClaimedCredentialResponse credentials(List<Map<String, Object>> credentials) {
+  public ClaimedCredentialResponse credentials(@javax.annotation.Nullable List<Map<String, Object>> credentials) {
     
     this.credentials = credentials;
     return this;
@@ -113,7 +115,7 @@ public class ClaimedCredentialResponse {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentials(List<Map<String, Object>> credentials) {
+  public void setCredentials(@javax.annotation.Nullable List<Map<String, Object>> credentials) {
     this.credentials = credentials;
   }
 

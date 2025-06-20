@@ -38,21 +38,24 @@ import java.util.StringJoiner;
   CredentialOfferResponse.JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS,
   CredentialOfferResponse.JSON_PROPERTY_GRANTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialOfferResponse {
   public static final String JSON_PROPERTY_CREDENTIAL_ISSUER = "credential_issuer";
+  @javax.annotation.Nonnull
   private String credentialIssuer;
 
   public static final String JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS = "credential_configuration_ids";
+  @javax.annotation.Nonnull
   private List<String> credentialConfigurationIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_GRANTS = "grants";
+  @javax.annotation.Nonnull
   private CredentialOfferResponseGrants grants;
 
   public CredentialOfferResponse() {
   }
 
-  public CredentialOfferResponse credentialIssuer(String credentialIssuer) {
+  public CredentialOfferResponse credentialIssuer(@javax.annotation.Nonnull String credentialIssuer) {
     
     this.credentialIssuer = credentialIssuer;
     return this;
@@ -73,11 +76,11 @@ public class CredentialOfferResponse {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialIssuer(String credentialIssuer) {
+  public void setCredentialIssuer(@javax.annotation.Nonnull String credentialIssuer) {
     this.credentialIssuer = credentialIssuer;
   }
 
-  public CredentialOfferResponse credentialConfigurationIds(List<String> credentialConfigurationIds) {
+  public CredentialOfferResponse credentialConfigurationIds(@javax.annotation.Nonnull List<String> credentialConfigurationIds) {
     
     this.credentialConfigurationIds = credentialConfigurationIds;
     return this;
@@ -106,11 +109,11 @@ public class CredentialOfferResponse {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialConfigurationIds(List<String> credentialConfigurationIds) {
+  public void setCredentialConfigurationIds(@javax.annotation.Nonnull List<String> credentialConfigurationIds) {
     this.credentialConfigurationIds = credentialConfigurationIds;
   }
 
-  public CredentialOfferResponse grants(CredentialOfferResponseGrants grants) {
+  public CredentialOfferResponse grants(@javax.annotation.Nonnull CredentialOfferResponseGrants grants) {
     
     this.grants = grants;
     return this;
@@ -131,7 +134,7 @@ public class CredentialOfferResponse {
 
   @JsonProperty(JSON_PROPERTY_GRANTS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGrants(CredentialOfferResponseGrants grants) {
+  public void setGrants(@javax.annotation.Nonnull CredentialOfferResponseGrants grants) {
     this.grants = grants;
   }
 

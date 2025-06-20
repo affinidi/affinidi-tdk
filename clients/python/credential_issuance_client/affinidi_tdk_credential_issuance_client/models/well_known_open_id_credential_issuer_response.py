@@ -48,7 +48,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
             return value
 
         for i in value:
-            if i not in ('authorization_code', 'urn:ietf:params:oauth:grant-type:pre-authorized_code'):
+            if i not in ('authorization_code', 'urn:ietf:params:oauth:grant-type:pre-authorized_code',):
                 raise ValueError("each list item must be one of ('authorization_code', 'urn:ietf:params:oauth:grant-type:pre-authorized_code')")
         return value
 
@@ -59,7 +59,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
             return value
 
         for i in value:
-            if i not in ('openid'):
+            if i not in ('openid',):
                 raise ValueError("each list item must be one of ('openid')")
         return value
 
@@ -70,7 +70,7 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
             return value
 
         for i in value:
-            if i not in ('client_secret_post', 'client_secret_basic', 'none'):
+            if i not in ('client_secret_post', 'client_secret_basic', 'none',):
                 raise ValueError("each list item must be one of ('client_secret_post', 'client_secret_basic', 'none')")
         return value
 

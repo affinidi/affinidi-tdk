@@ -51,54 +51,68 @@ import java.util.StringJoiner;
   LoginConfigurationObject.JSON_PROPERTY_CLIENT_METADATA,
   LoginConfigurationObject.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LoginConfigurationObject {
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nonnull
   private String ari;
 
   public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
+  @javax.annotation.Nullable
   private String configurationId;
 
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  @javax.annotation.Nonnull
   private String projectId;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
+  @javax.annotation.Nullable
   private List<String> redirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
+  @javax.annotation.Nullable
   private List<String> postLogoutRedirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SCOPE = "scope";
+  @javax.annotation.Nullable
   private String scope;
 
   public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
+  @javax.annotation.Nullable
   private String clientId;
 
   public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+  @javax.annotation.Nonnull
   private String creationDate;
 
   public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+  @javax.annotation.Nullable
   private String vpDefinition;
 
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+  @javax.annotation.Nullable
   private Object presentationDefinition;
 
   public static final String JSON_PROPERTY_ID_TOKEN_MAPPING = "idTokenMapping";
+  @javax.annotation.Nonnull
   private List<IdTokenMappingItem> idTokenMapping = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
+  @javax.annotation.Nonnull
   private LoginConfigurationClientMetadataOutput clientMetadata;
 
   public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD = "tokenEndpointAuthMethod";
+  @javax.annotation.Nonnull
   private TokenEndpointAuthMethod tokenEndpointAuthMethod;
 
   public LoginConfigurationObject() {
   }
 
-  public LoginConfigurationObject ari(String ari) {
+  public LoginConfigurationObject ari(@javax.annotation.Nonnull String ari) {
     
     this.ari = ari;
     return this;
@@ -119,11 +133,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
   }
 
-  public LoginConfigurationObject configurationId(String configurationId) {
+  public LoginConfigurationObject configurationId(@javax.annotation.Nullable String configurationId) {
     
     this.configurationId = configurationId;
     return this;
@@ -144,11 +158,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigurationId(String configurationId) {
+  public void setConfigurationId(@javax.annotation.Nullable String configurationId) {
     this.configurationId = configurationId;
   }
 
-  public LoginConfigurationObject projectId(String projectId) {
+  public LoginConfigurationObject projectId(@javax.annotation.Nonnull String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -169,11 +183,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
+  public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
   }
 
-  public LoginConfigurationObject name(String name) {
+  public LoginConfigurationObject name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -194,11 +208,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public LoginConfigurationObject redirectUris(List<String> redirectUris) {
+  public LoginConfigurationObject redirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     
     this.redirectUris = redirectUris;
     return this;
@@ -227,11 +241,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRedirectUris(List<String> redirectUris) {
+  public void setRedirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     this.redirectUris = redirectUris;
   }
 
-  public LoginConfigurationObject postLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public LoginConfigurationObject postLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     
     this.postLogoutRedirectUris = postLogoutRedirectUris;
     return this;
@@ -260,11 +274,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public void setPostLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
   }
 
-  public LoginConfigurationObject scope(String scope) {
+  public LoginConfigurationObject scope(@javax.annotation.Nullable String scope) {
     
     this.scope = scope;
     return this;
@@ -285,11 +299,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_SCOPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScope(String scope) {
+  public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
   }
 
-  public LoginConfigurationObject clientId(String clientId) {
+  public LoginConfigurationObject clientId(@javax.annotation.Nullable String clientId) {
     
     this.clientId = clientId;
     return this;
@@ -310,11 +324,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientId(String clientId) {
+  public void setClientId(@javax.annotation.Nullable String clientId) {
     this.clientId = clientId;
   }
 
-  public LoginConfigurationObject creationDate(String creationDate) {
+  public LoginConfigurationObject creationDate(@javax.annotation.Nonnull String creationDate) {
     
     this.creationDate = creationDate;
     return this;
@@ -335,11 +349,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_CREATION_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreationDate(String creationDate) {
+  public void setCreationDate(@javax.annotation.Nonnull String creationDate) {
     this.creationDate = creationDate;
   }
 
-  public LoginConfigurationObject vpDefinition(String vpDefinition) {
+  public LoginConfigurationObject vpDefinition(@javax.annotation.Nullable String vpDefinition) {
     
     this.vpDefinition = vpDefinition;
     return this;
@@ -360,11 +374,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpDefinition(String vpDefinition) {
+  public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }
 
-  public LoginConfigurationObject presentationDefinition(Object presentationDefinition) {
+  public LoginConfigurationObject presentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     
     this.presentationDefinition = presentationDefinition;
     return this;
@@ -385,11 +399,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationDefinition(Object presentationDefinition) {
+  public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-  public LoginConfigurationObject idTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
+  public LoginConfigurationObject idTokenMapping(@javax.annotation.Nonnull List<IdTokenMappingItem> idTokenMapping) {
     
     this.idTokenMapping = idTokenMapping;
     return this;
@@ -418,11 +432,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIdTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
+  public void setIdTokenMapping(@javax.annotation.Nonnull List<IdTokenMappingItem> idTokenMapping) {
     this.idTokenMapping = idTokenMapping;
   }
 
-  public LoginConfigurationObject clientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
+  public LoginConfigurationObject clientMetadata(@javax.annotation.Nonnull LoginConfigurationClientMetadataOutput clientMetadata) {
     
     this.clientMetadata = clientMetadata;
     return this;
@@ -443,11 +457,11 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setClientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
+  public void setClientMetadata(@javax.annotation.Nonnull LoginConfigurationClientMetadataOutput clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 
-  public LoginConfigurationObject tokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
+  public LoginConfigurationObject tokenEndpointAuthMethod(@javax.annotation.Nonnull TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
     return this;
@@ -468,7 +482,7 @@ public class LoginConfigurationObject {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
+  public void setTokenEndpointAuthMethod(@javax.annotation.Nonnull TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
   }
 

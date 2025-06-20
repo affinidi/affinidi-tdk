@@ -37,21 +37,21 @@ class InvalidParameterError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidParameterError'):
+        if value not in ('InvalidParameterError',):
             raise ValueError("must be one of enum values ('InvalidParameterError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Invalid parameter: ${param}.'):
+        if value not in ('Invalid parameter: ${param}.',):
             raise ValueError("must be one of enum values ('Invalid parameter: ${param}.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

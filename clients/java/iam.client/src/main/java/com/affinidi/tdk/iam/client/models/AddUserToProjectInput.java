@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_ID,
   AddUserToProjectInput.JSON_PROPERTY_PRINCIPAL_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AddUserToProjectInput {
   public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
+  @javax.annotation.Nonnull
   private String principalId;
 
   public static final String JSON_PROPERTY_PRINCIPAL_TYPE = "principalType";
+  @javax.annotation.Nonnull
   private String principalType;
 
   public AddUserToProjectInput() {
   }
 
-  public AddUserToProjectInput principalId(String principalId) {
+  public AddUserToProjectInput principalId(@javax.annotation.Nonnull String principalId) {
     
     this.principalId = principalId;
     return this;
@@ -65,11 +67,11 @@ public class AddUserToProjectInput {
 
   @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipalId(String principalId) {
+  public void setPrincipalId(@javax.annotation.Nonnull String principalId) {
     this.principalId = principalId;
   }
 
-  public AddUserToProjectInput principalType(String principalType) {
+  public AddUserToProjectInput principalType(@javax.annotation.Nonnull String principalType) {
     
     this.principalType = principalType;
     return this;
@@ -90,7 +92,7 @@ public class AddUserToProjectInput {
 
   @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipalType(String principalType) {
+  public void setPrincipalType(@javax.annotation.Nonnull String principalType) {
     this.principalType = principalType;
   }
 

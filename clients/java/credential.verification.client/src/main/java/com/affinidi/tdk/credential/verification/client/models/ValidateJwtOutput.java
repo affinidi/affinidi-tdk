@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   ValidateJwtOutput.JSON_PROPERTY_IS_VALID,
   ValidateJwtOutput.JSON_PROPERTY_PAYLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ValidateJwtOutput {
   public static final String JSON_PROPERTY_IS_VALID = "isValid";
+  @javax.annotation.Nonnull
   private Boolean isValid;
 
   public static final String JSON_PROPERTY_PAYLOAD = "payload";
+  @javax.annotation.Nonnull
   private Object payload;
 
   public ValidateJwtOutput() {
   }
 
-  public ValidateJwtOutput isValid(Boolean isValid) {
+  public ValidateJwtOutput isValid(@javax.annotation.Nonnull Boolean isValid) {
     
     this.isValid = isValid;
     return this;
@@ -65,11 +67,11 @@ public class ValidateJwtOutput {
 
   @JsonProperty(JSON_PROPERTY_IS_VALID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIsValid(Boolean isValid) {
+  public void setIsValid(@javax.annotation.Nonnull Boolean isValid) {
     this.isValid = isValid;
   }
 
-  public ValidateJwtOutput payload(Object payload) {
+  public ValidateJwtOutput payload(@javax.annotation.Nonnull Object payload) {
     
     this.payload = payload;
     return this;
@@ -90,7 +92,7 @@ public class ValidateJwtOutput {
 
   @JsonProperty(JSON_PROPERTY_PAYLOAD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPayload(Object payload) {
+  public void setPayload(@javax.annotation.Nonnull Object payload) {
     this.payload = payload;
   }
 
