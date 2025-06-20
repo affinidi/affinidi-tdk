@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   RestoreNodeFromTrashbin.JSON_PROPERTY_RESTORE_TO_PROFILE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class RestoreNodeFromTrashbin {
   public static final String JSON_PROPERTY_RESTORE_TO_PROFILE_ID = "restoreToProfileId";
+  @javax.annotation.Nullable
   private String restoreToProfileId;
 
   public RestoreNodeFromTrashbin() {
   }
 
-  public RestoreNodeFromTrashbin restoreToProfileId(String restoreToProfileId) {
+  public RestoreNodeFromTrashbin restoreToProfileId(@javax.annotation.Nullable String restoreToProfileId) {
     
     this.restoreToProfileId = restoreToProfileId;
     return this;
@@ -61,7 +62,7 @@ public class RestoreNodeFromTrashbin {
 
   @JsonProperty(JSON_PROPERTY_RESTORE_TO_PROFILE_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRestoreToProfileId(String restoreToProfileId) {
+  public void setRestoreToProfileId(@javax.annotation.Nullable String restoreToProfileId) {
     this.restoreToProfileId = restoreToProfileId;
   }
 

@@ -45,39 +45,48 @@ import java.util.StringJoiner;
   CreateLoginConfigurationOutput.JSON_PROPERTY_CREATION_DATE,
   CreateLoginConfigurationOutput.JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateLoginConfigurationOutput {
   public static final String JSON_PROPERTY_ARI = "ari";
+  @javax.annotation.Nonnull
   private String ari;
 
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  @javax.annotation.Nonnull
   private String projectId;
 
   public static final String JSON_PROPERTY_CONFIGURATION_ID = "configurationId";
+  @javax.annotation.Nullable
   private String configurationId;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_AUTH = "auth";
+  @javax.annotation.Nonnull
   private CreateLoginConfigurationOutputAuth auth;
 
   public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
+  @javax.annotation.Nonnull
   private List<String> redirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
+  @javax.annotation.Nonnull
   private LoginConfigurationClientMetadataOutput clientMetadata;
 
   public static final String JSON_PROPERTY_CREATION_DATE = "creationDate";
+  @javax.annotation.Nonnull
   private String creationDate;
 
   public static final String JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
+  @javax.annotation.Nullable
   private List<String> postLogoutRedirectUris = new ArrayList<>();
 
   public CreateLoginConfigurationOutput() {
   }
 
-  public CreateLoginConfigurationOutput ari(String ari) {
+  public CreateLoginConfigurationOutput ari(@javax.annotation.Nonnull String ari) {
     
     this.ari = ari;
     return this;
@@ -98,11 +107,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_ARI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAri(String ari) {
+  public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
   }
 
-  public CreateLoginConfigurationOutput projectId(String projectId) {
+  public CreateLoginConfigurationOutput projectId(@javax.annotation.Nonnull String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -123,11 +132,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProjectId(String projectId) {
+  public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
   }
 
-  public CreateLoginConfigurationOutput configurationId(String configurationId) {
+  public CreateLoginConfigurationOutput configurationId(@javax.annotation.Nullable String configurationId) {
     
     this.configurationId = configurationId;
     return this;
@@ -148,11 +157,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConfigurationId(String configurationId) {
+  public void setConfigurationId(@javax.annotation.Nullable String configurationId) {
     this.configurationId = configurationId;
   }
 
-  public CreateLoginConfigurationOutput name(String name) {
+  public CreateLoginConfigurationOutput name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -173,11 +182,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public CreateLoginConfigurationOutput auth(CreateLoginConfigurationOutputAuth auth) {
+  public CreateLoginConfigurationOutput auth(@javax.annotation.Nonnull CreateLoginConfigurationOutputAuth auth) {
     
     this.auth = auth;
     return this;
@@ -198,11 +207,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_AUTH)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuth(CreateLoginConfigurationOutputAuth auth) {
+  public void setAuth(@javax.annotation.Nonnull CreateLoginConfigurationOutputAuth auth) {
     this.auth = auth;
   }
 
-  public CreateLoginConfigurationOutput redirectUris(List<String> redirectUris) {
+  public CreateLoginConfigurationOutput redirectUris(@javax.annotation.Nonnull List<String> redirectUris) {
     
     this.redirectUris = redirectUris;
     return this;
@@ -231,11 +240,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setRedirectUris(List<String> redirectUris) {
+  public void setRedirectUris(@javax.annotation.Nonnull List<String> redirectUris) {
     this.redirectUris = redirectUris;
   }
 
-  public CreateLoginConfigurationOutput clientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
+  public CreateLoginConfigurationOutput clientMetadata(@javax.annotation.Nonnull LoginConfigurationClientMetadataOutput clientMetadata) {
     
     this.clientMetadata = clientMetadata;
     return this;
@@ -256,11 +265,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setClientMetadata(LoginConfigurationClientMetadataOutput clientMetadata) {
+  public void setClientMetadata(@javax.annotation.Nonnull LoginConfigurationClientMetadataOutput clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 
-  public CreateLoginConfigurationOutput creationDate(String creationDate) {
+  public CreateLoginConfigurationOutput creationDate(@javax.annotation.Nonnull String creationDate) {
     
     this.creationDate = creationDate;
     return this;
@@ -281,11 +290,11 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_CREATION_DATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCreationDate(String creationDate) {
+  public void setCreationDate(@javax.annotation.Nonnull String creationDate) {
     this.creationDate = creationDate;
   }
 
-  public CreateLoginConfigurationOutput postLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public CreateLoginConfigurationOutput postLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     
     this.postLogoutRedirectUris = postLogoutRedirectUris;
     return this;
@@ -314,7 +323,7 @@ public class CreateLoginConfigurationOutput {
 
   @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public void setPostLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
   }
 

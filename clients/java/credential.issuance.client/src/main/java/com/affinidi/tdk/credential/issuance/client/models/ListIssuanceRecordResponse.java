@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   ListIssuanceRecordResponse.JSON_PROPERTY_FLOW_DATA,
   ListIssuanceRecordResponse.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListIssuanceRecordResponse {
   public static final String JSON_PROPERTY_FLOW_DATA = "flowData";
+  @javax.annotation.Nullable
   private List<FlowData> flowData = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public ListIssuanceRecordResponse() {
   }
 
-  public ListIssuanceRecordResponse flowData(List<FlowData> flowData) {
+  public ListIssuanceRecordResponse flowData(@javax.annotation.Nullable List<FlowData> flowData) {
     
     this.flowData = flowData;
     return this;
@@ -77,11 +79,11 @@ public class ListIssuanceRecordResponse {
 
   @JsonProperty(JSON_PROPERTY_FLOW_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFlowData(List<FlowData> flowData) {
+  public void setFlowData(@javax.annotation.Nullable List<FlowData> flowData) {
     this.flowData = flowData;
   }
 
-  public ListIssuanceRecordResponse lastEvaluatedKey(String lastEvaluatedKey) {
+  public ListIssuanceRecordResponse lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -102,7 +104,7 @@ public class ListIssuanceRecordResponse {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 

@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DefaultApi extends BaseApi {
 
   public DefaultApi() {
@@ -53,7 +53,7 @@ public class DefaultApi extends BaseApi {
    * @return VerifyCredentialOutput
    * @throws ApiException if fails to make API call
    */
-  public VerifyCredentialOutput verifyCredentials(VerifyCredentialInput verifyCredentialInput) throws ApiException {
+  public VerifyCredentialOutput verifyCredentials(@javax.annotation.Nonnull VerifyCredentialInput verifyCredentialInput) throws ApiException {
     return this.verifyCredentials(verifyCredentialInput, Collections.emptyMap());
   }
 
@@ -66,7 +66,7 @@ public class DefaultApi extends BaseApi {
    * @return VerifyCredentialOutput
    * @throws ApiException if fails to make API call
    */
-  public VerifyCredentialOutput verifyCredentials(VerifyCredentialInput verifyCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
+  public VerifyCredentialOutput verifyCredentials(@javax.annotation.Nonnull VerifyCredentialInput verifyCredentialInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = verifyCredentialInput;
     
     // verify the required parameter 'verifyCredentialInput' is set
@@ -127,7 +127,7 @@ public class DefaultApi extends BaseApi {
    * @return VerifyPresentationOutput
    * @throws ApiException if fails to make API call
    */
-  public VerifyPresentationOutput verifyPresentation(VerifyPresentationInput verifyPresentationInput) throws ApiException {
+  public VerifyPresentationOutput verifyPresentation(@javax.annotation.Nonnull VerifyPresentationInput verifyPresentationInput) throws ApiException {
     return this.verifyPresentation(verifyPresentationInput, Collections.emptyMap());
   }
 
@@ -140,7 +140,7 @@ public class DefaultApi extends BaseApi {
    * @return VerifyPresentationOutput
    * @throws ApiException if fails to make API call
    */
-  public VerifyPresentationOutput verifyPresentation(VerifyPresentationInput verifyPresentationInput, Map<String, String> additionalHeaders) throws ApiException {
+  public VerifyPresentationOutput verifyPresentation(@javax.annotation.Nonnull VerifyPresentationInput verifyPresentationInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = verifyPresentationInput;
     
     // verify the required parameter 'verifyPresentationInput' is set

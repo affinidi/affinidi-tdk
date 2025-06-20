@@ -33,13 +33,13 @@ import java.util.StringJoiner;
   CredentialProof.JSON_PROPERTY_PROOF_TYPE,
   CredentialProof.JSON_PROPERTY_JWT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialProof {
   /**
    * String denoting the key proof type.
    */
   public enum ProofTypeEnum {
-    JWT("jwt");
+    JWT(String.valueOf("jwt"));
 
     private String value;
 
@@ -69,15 +69,17 @@ public class CredentialProof {
   }
 
   public static final String JSON_PROPERTY_PROOF_TYPE = "proof_type";
+  @javax.annotation.Nonnull
   private ProofTypeEnum proofType;
 
   public static final String JSON_PROPERTY_JWT = "jwt";
+  @javax.annotation.Nonnull
   private String jwt;
 
   public CredentialProof() {
   }
 
-  public CredentialProof proofType(ProofTypeEnum proofType) {
+  public CredentialProof proofType(@javax.annotation.Nonnull ProofTypeEnum proofType) {
     
     this.proofType = proofType;
     return this;
@@ -98,11 +100,11 @@ public class CredentialProof {
 
   @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProofType(ProofTypeEnum proofType) {
+  public void setProofType(@javax.annotation.Nonnull ProofTypeEnum proofType) {
     this.proofType = proofType;
   }
 
-  public CredentialProof jwt(String jwt) {
+  public CredentialProof jwt(@javax.annotation.Nonnull String jwt) {
     
     this.jwt = jwt;
     return this;
@@ -123,7 +125,7 @@ public class CredentialProof {
 
   @JsonProperty(JSON_PROPERTY_JWT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwt(String jwt) {
+  public void setJwt(@javax.annotation.Nonnull String jwt) {
     this.jwt = jwt;
   }
 

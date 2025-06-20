@@ -36,19 +36,21 @@ import java.util.StringJoiner;
   CreateCredentialInput.JSON_PROPERTY_CREDENTIAL_IDENTIFIER,
   CreateCredentialInput.JSON_PROPERTY_PROOF
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateCredentialInput extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_CREDENTIAL_IDENTIFIER = "credential_identifier";
+  @javax.annotation.Nullable
   private String credentialIdentifier;
 
   public static final String JSON_PROPERTY_PROOF = "proof";
+  @javax.annotation.Nonnull
   private CredentialProof proof;
 
   public CreateCredentialInput() {
 
   }
 
-  public CreateCredentialInput credentialIdentifier(String credentialIdentifier) {
+  public CreateCredentialInput credentialIdentifier(@javax.annotation.Nullable String credentialIdentifier) {
     
     this.credentialIdentifier = credentialIdentifier;
     return this;
@@ -69,11 +71,11 @@ public class CreateCredentialInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialIdentifier(String credentialIdentifier) {
+  public void setCredentialIdentifier(@javax.annotation.Nullable String credentialIdentifier) {
     this.credentialIdentifier = credentialIdentifier;
   }
 
-  public CreateCredentialInput proof(CredentialProof proof) {
+  public CreateCredentialInput proof(@javax.annotation.Nonnull CredentialProof proof) {
     
     this.proof = proof;
     return this;
@@ -94,7 +96,7 @@ public class CreateCredentialInput extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_PROOF)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProof(CredentialProof proof) {
+  public void setProof(@javax.annotation.Nonnull CredentialProof proof) {
     this.proof = proof;
   }
 

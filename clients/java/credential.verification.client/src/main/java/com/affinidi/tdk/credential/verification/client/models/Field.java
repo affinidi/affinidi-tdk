@@ -40,27 +40,31 @@ import java.util.StringJoiner;
   Field.JSON_PROPERTY_FILTER,
   Field.JSON_PROPERTY_PREDICATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Field {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_PATH = "path";
+  @javax.annotation.Nullable
   private List<String> path = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PURPOSE = "purpose";
+  @javax.annotation.Nullable
   private String purpose;
 
   public static final String JSON_PROPERTY_FILTER = "filter";
+  @javax.annotation.Nullable
   private Filter filter;
 
   /**
    * Gets or Sets predicate
    */
   public enum PredicateEnum {
-    REQUIRED("required"),
+    REQUIRED(String.valueOf("required")),
     
-    PREFERRED("preferred");
+    PREFERRED(String.valueOf("preferred"));
 
     private String value;
 
@@ -90,12 +94,13 @@ public class Field {
   }
 
   public static final String JSON_PROPERTY_PREDICATE = "predicate";
+  @javax.annotation.Nullable
   private PredicateEnum predicate;
 
   public Field() {
   }
 
-  public Field id(String id) {
+  public Field id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
@@ -116,11 +121,11 @@ public class Field {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
   }
 
-  public Field path(List<String> path) {
+  public Field path(@javax.annotation.Nullable List<String> path) {
     
     this.path = path;
     return this;
@@ -149,11 +154,11 @@ public class Field {
 
   @JsonProperty(JSON_PROPERTY_PATH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPath(List<String> path) {
+  public void setPath(@javax.annotation.Nullable List<String> path) {
     this.path = path;
   }
 
-  public Field purpose(String purpose) {
+  public Field purpose(@javax.annotation.Nullable String purpose) {
     
     this.purpose = purpose;
     return this;
@@ -174,11 +179,11 @@ public class Field {
 
   @JsonProperty(JSON_PROPERTY_PURPOSE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPurpose(String purpose) {
+  public void setPurpose(@javax.annotation.Nullable String purpose) {
     this.purpose = purpose;
   }
 
-  public Field filter(Filter filter) {
+  public Field filter(@javax.annotation.Nullable Filter filter) {
     
     this.filter = filter;
     return this;
@@ -199,11 +204,11 @@ public class Field {
 
   @JsonProperty(JSON_PROPERTY_FILTER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFilter(Filter filter) {
+  public void setFilter(@javax.annotation.Nullable Filter filter) {
     this.filter = filter;
   }
 
-  public Field predicate(PredicateEnum predicate) {
+  public Field predicate(@javax.annotation.Nullable PredicateEnum predicate) {
     
     this.predicate = predicate;
     return this;
@@ -224,7 +229,7 @@ public class Field {
 
   @JsonProperty(JSON_PROPERTY_PREDICATE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPredicate(PredicateEnum predicate) {
+  public void setPredicate(@javax.annotation.Nullable PredicateEnum predicate) {
     this.predicate = predicate;
   }
 

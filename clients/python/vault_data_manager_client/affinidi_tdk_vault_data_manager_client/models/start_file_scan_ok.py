@@ -33,7 +33,7 @@ class StartFileScanOK(BaseModel):
     @validator('status')
     def status_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('STARTED', 'FAILED', 'COMPLETED'):
+        if value not in ('STARTED', 'FAILED', 'COMPLETED',):
             raise ValueError("must be one of enum values ('STARTED', 'FAILED', 'COMPLETED')")
         return value
 

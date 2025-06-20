@@ -36,18 +36,20 @@ import java.util.StringJoiner;
   EvaluateVpOutput.JSON_PROPERTY_RESULT,
   EvaluateVpOutput.JSON_PROPERTY_ERRORS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class EvaluateVpOutput {
   public static final String JSON_PROPERTY_RESULT = "result";
+  @javax.annotation.Nonnull
   private Boolean result;
 
   public static final String JSON_PROPERTY_ERRORS = "errors";
+  @javax.annotation.Nonnull
   private List<String> errors = new ArrayList<>();
 
   public EvaluateVpOutput() {
   }
 
-  public EvaluateVpOutput result(Boolean result) {
+  public EvaluateVpOutput result(@javax.annotation.Nonnull Boolean result) {
     
     this.result = result;
     return this;
@@ -68,11 +70,11 @@ public class EvaluateVpOutput {
 
   @JsonProperty(JSON_PROPERTY_RESULT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResult(Boolean result) {
+  public void setResult(@javax.annotation.Nonnull Boolean result) {
     this.result = result;
   }
 
-  public EvaluateVpOutput errors(List<String> errors) {
+  public EvaluateVpOutput errors(@javax.annotation.Nonnull List<String> errors) {
     
     this.errors = errors;
     return this;
@@ -101,7 +103,7 @@ public class EvaluateVpOutput {
 
   @JsonProperty(JSON_PROPERTY_ERRORS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setErrors(List<String> errors) {
+  public void setErrors(@javax.annotation.Nonnull List<String> errors) {
     this.errors = errors;
   }
 

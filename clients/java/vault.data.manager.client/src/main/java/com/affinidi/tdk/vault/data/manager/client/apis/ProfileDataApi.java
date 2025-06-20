@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ProfileDataApi extends BaseApi {
 
   public ProfileDataApi() {
@@ -53,7 +53,7 @@ public class ProfileDataApi extends BaseApi {
    * @return QueryProfileDataOK
    * @throws ApiException if fails to make API call
    */
-  public QueryProfileDataOK queryProfileData(String nodeId, String dek, String query) throws ApiException {
+  public QueryProfileDataOK queryProfileData(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull String dek, @javax.annotation.Nullable String query) throws ApiException {
     return this.queryProfileData(nodeId, dek, query, Collections.emptyMap());
   }
 
@@ -68,7 +68,7 @@ public class ProfileDataApi extends BaseApi {
    * @return QueryProfileDataOK
    * @throws ApiException if fails to make API call
    */
-  public QueryProfileDataOK queryProfileData(String nodeId, String dek, String query, Map<String, String> additionalHeaders) throws ApiException {
+  public QueryProfileDataOK queryProfileData(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull String dek, @javax.annotation.Nullable String query, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'nodeId' is set
@@ -138,7 +138,7 @@ public class ProfileDataApi extends BaseApi {
    * @return UpdateProfileDataOK
    * @throws ApiException if fails to make API call
    */
-  public UpdateProfileDataOK updateProfileData(String nodeId, UpdateProfileDataInput updateProfileDataInput) throws ApiException {
+  public UpdateProfileDataOK updateProfileData(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull UpdateProfileDataInput updateProfileDataInput) throws ApiException {
     return this.updateProfileData(nodeId, updateProfileDataInput, Collections.emptyMap());
   }
 
@@ -152,7 +152,7 @@ public class ProfileDataApi extends BaseApi {
    * @return UpdateProfileDataOK
    * @throws ApiException if fails to make API call
    */
-  public UpdateProfileDataOK updateProfileData(String nodeId, UpdateProfileDataInput updateProfileDataInput, Map<String, String> additionalHeaders) throws ApiException {
+  public UpdateProfileDataOK updateProfileData(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull UpdateProfileDataInput updateProfileDataInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateProfileDataInput;
     
     // verify the required parameter 'nodeId' is set

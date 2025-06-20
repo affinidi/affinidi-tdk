@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetIssuanceIdClaimedCredentialOK.JSON_PROPERTY_CORS_GET_ISSUANCE_ID_CLAIMED_CREDENTIAL_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGetIssuanceIdClaimedCredentialOK {
   public static final String JSON_PROPERTY_CORS_GET_ISSUANCE_ID_CLAIMED_CREDENTIAL_OK = "corsGetIssuanceIdClaimedCredentialOk";
+  @javax.annotation.Nullable
   private String corsGetIssuanceIdClaimedCredentialOk;
 
   public CorsGetIssuanceIdClaimedCredentialOK() {
   }
 
-  public CorsGetIssuanceIdClaimedCredentialOK corsGetIssuanceIdClaimedCredentialOk(String corsGetIssuanceIdClaimedCredentialOk) {
+  public CorsGetIssuanceIdClaimedCredentialOK corsGetIssuanceIdClaimedCredentialOk(@javax.annotation.Nullable String corsGetIssuanceIdClaimedCredentialOk) {
     
     this.corsGetIssuanceIdClaimedCredentialOk = corsGetIssuanceIdClaimedCredentialOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGetIssuanceIdClaimedCredentialOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GET_ISSUANCE_ID_CLAIMED_CREDENTIAL_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGetIssuanceIdClaimedCredentialOk(String corsGetIssuanceIdClaimedCredentialOk) {
+  public void setCorsGetIssuanceIdClaimedCredentialOk(@javax.annotation.Nullable String corsGetIssuanceIdClaimedCredentialOk) {
     this.corsGetIssuanceIdClaimedCredentialOk = corsGetIssuanceIdClaimedCredentialOk;
   }
 

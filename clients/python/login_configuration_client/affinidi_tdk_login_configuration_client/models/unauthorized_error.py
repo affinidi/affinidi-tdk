@@ -37,21 +37,21 @@ class UnauthorizedError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('UnauthorizedError'):
+        if value not in ('UnauthorizedError',):
             raise ValueError("must be one of enum values ('UnauthorizedError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Unauthorized'):
+        if value not in ('Unauthorized',):
             raise ValueError("must be one of enum values ('Unauthorized')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (401):
+        if value not in (401,):
             raise ValueError("must be one of enum values (401)")
         return value
 

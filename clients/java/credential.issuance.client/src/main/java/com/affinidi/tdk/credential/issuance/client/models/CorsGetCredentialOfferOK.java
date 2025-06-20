@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetCredentialOfferOK.JSON_PROPERTY_CORS_GET_CREDENTIAL_OFFER_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGetCredentialOfferOK {
   public static final String JSON_PROPERTY_CORS_GET_CREDENTIAL_OFFER_OK = "corsGetCredentialOfferOk";
+  @javax.annotation.Nullable
   private String corsGetCredentialOfferOk;
 
   public CorsGetCredentialOfferOK() {
   }
 
-  public CorsGetCredentialOfferOK corsGetCredentialOfferOk(String corsGetCredentialOfferOk) {
+  public CorsGetCredentialOfferOK corsGetCredentialOfferOk(@javax.annotation.Nullable String corsGetCredentialOfferOk) {
     
     this.corsGetCredentialOfferOk = corsGetCredentialOfferOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGetCredentialOfferOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GET_CREDENTIAL_OFFER_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGetCredentialOfferOk(String corsGetCredentialOfferOk) {
+  public void setCorsGetCredentialOfferOk(@javax.annotation.Nullable String corsGetCredentialOfferOk) {
     this.corsGetCredentialOfferOk = corsGetCredentialOfferOk;
   }
 

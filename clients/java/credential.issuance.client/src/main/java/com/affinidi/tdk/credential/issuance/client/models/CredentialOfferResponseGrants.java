@@ -31,40 +31,41 @@ import java.util.StringJoiner;
  * Object indicating to the Wallet the Grant Types the Credential Issuer&#39;s Authorization Server is prepared to process for this Credential Offer.
  */
 @JsonPropertyOrder({
-  CredentialOfferResponseGrants.JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE
+  CredentialOfferResponseGrants.JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE
 })
 @JsonTypeName("CredentialOfferResponse_grants")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialOfferResponseGrants {
-  public static final String JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE = "urn:ietf:params:oauth:grant-type:pre-authorized_code";
-  private CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
+  public static final String JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE = "urn:ietf:params:oauth:grant-type:pre-authorized_code";
+  @javax.annotation.Nonnull
+  private CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnIetfParamsOauthGrantTypePreAuthorizedCode;
 
   public CredentialOfferResponseGrants() {
   }
 
-  public CredentialOfferResponseGrants urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode) {
+  public CredentialOfferResponseGrants urnIetfParamsOauthGrantTypePreAuthorizedCode(@javax.annotation.Nonnull CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnIetfParamsOauthGrantTypePreAuthorizedCode) {
     
-    this.urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode = urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
+    this.urnIetfParamsOauthGrantTypePreAuthorizedCode = urnIetfParamsOauthGrantTypePreAuthorizedCode;
     return this;
   }
 
   /**
-   * Get urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
-   * @return urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode
+   * Get urnIetfParamsOauthGrantTypePreAuthorizedCode
+   * @return urnIetfParamsOauthGrantTypePreAuthorizedCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE)
+  @JsonProperty(JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode getUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode() {
-    return urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
+  public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode getUrnIetfParamsOauthGrantTypePreAuthorizedCode() {
+    return urnIetfParamsOauthGrantTypePreAuthorizedCode;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_URN_COLON_IETF_COLON_PARAMS_COLON_OAUTH_COLON_GRANT_TYPE_COLON_PRE_AUTHORIZED_CODE)
+  @JsonProperty(JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode) {
-    this.urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode = urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode;
+  public void setUrnIetfParamsOauthGrantTypePreAuthorizedCode(@javax.annotation.Nonnull CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnIetfParamsOauthGrantTypePreAuthorizedCode) {
+    this.urnIetfParamsOauthGrantTypePreAuthorizedCode = urnIetfParamsOauthGrantTypePreAuthorizedCode;
   }
 
   @Override
@@ -76,19 +77,19 @@ public class CredentialOfferResponseGrants {
       return false;
     }
     CredentialOfferResponseGrants credentialOfferResponseGrants = (CredentialOfferResponseGrants) o;
-    return Objects.equals(this.urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode, credentialOfferResponseGrants.urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode);
+    return Objects.equals(this.urnIetfParamsOauthGrantTypePreAuthorizedCode, credentialOfferResponseGrants.urnIetfParamsOauthGrantTypePreAuthorizedCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode);
+    return Objects.hash(urnIetfParamsOauthGrantTypePreAuthorizedCode);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CredentialOfferResponseGrants {\n");
-    sb.append("    urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode: ").append(toIndentedString(urnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode)).append("\n");
+    sb.append("    urnIetfParamsOauthGrantTypePreAuthorizedCode: ").append(toIndentedString(urnIetfParamsOauthGrantTypePreAuthorizedCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -137,8 +138,8 @@ public class CredentialOfferResponseGrants {
     StringJoiner joiner = new StringJoiner("&");
 
     // add `urn:ietf:params:oauth:grant-type:pre-authorized_code` to the URL query string
-    if (getUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode() != null) {
-      joiner.add(getUrnColonIetfColonParamsColonOauthColonGrantTypeColonPreAuthorizedCode().toUrlQueryString(prefix + "urn:ietf:params:oauth:grant-type:pre-authorized_code" + suffix));
+    if (getUrnIetfParamsOauthGrantTypePreAuthorizedCode() != null) {
+      joiner.add(getUrnIetfParamsOauthGrantTypePreAuthorizedCode().toUrlQueryString(prefix + "urn:ietf:params:oauth:grant-type:pre-authorized_code" + suffix));
     }
 
     return joiner.toString();

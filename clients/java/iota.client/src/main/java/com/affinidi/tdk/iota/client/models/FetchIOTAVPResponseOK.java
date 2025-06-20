@@ -36,22 +36,25 @@ import java.util.StringJoiner;
   FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+  @javax.annotation.Nullable
   private String correlationId;
 
   public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentation_submission";
+  @javax.annotation.Nullable
   private String presentationSubmission;
 
   public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
+  @javax.annotation.Nullable
   private String vpToken;
 
   public FetchIOTAVPResponseOK() {
 
   }
 
-  public FetchIOTAVPResponseOK correlationId(String correlationId) {
+  public FetchIOTAVPResponseOK correlationId(@javax.annotation.Nullable String correlationId) {
     
     this.correlationId = correlationId;
     return this;
@@ -72,11 +75,11 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorrelationId(String correlationId) {
+  public void setCorrelationId(@javax.annotation.Nullable String correlationId) {
     this.correlationId = correlationId;
   }
 
-  public FetchIOTAVPResponseOK presentationSubmission(String presentationSubmission) {
+  public FetchIOTAVPResponseOK presentationSubmission(@javax.annotation.Nullable String presentationSubmission) {
     
     this.presentationSubmission = presentationSubmission;
     return this;
@@ -97,11 +100,11 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationSubmission(String presentationSubmission) {
+  public void setPresentationSubmission(@javax.annotation.Nullable String presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-  public FetchIOTAVPResponseOK vpToken(String vpToken) {
+  public FetchIOTAVPResponseOK vpToken(@javax.annotation.Nullable String vpToken) {
     
     this.vpToken = vpToken;
     return this;
@@ -122,7 +125,7 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
 
   @JsonProperty(JSON_PROPERTY_VP_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpToken(String vpToken) {
+  public void setVpToken(@javax.annotation.Nullable String vpToken) {
     this.vpToken = vpToken;
   }
 

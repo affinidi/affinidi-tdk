@@ -37,30 +37,36 @@ import java.util.StringJoiner;
   CallbackInput.JSON_PROPERTY_ERROR_DESCRIPTION,
   CallbackInput.JSON_PROPERTY_ONBOARDED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CallbackInput {
   public static final String JSON_PROPERTY_STATE = "state";
+  @javax.annotation.Nonnull
   private String state;
 
   public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentation_submission";
+  @javax.annotation.Nullable
   private String presentationSubmission;
 
   public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
+  @javax.annotation.Nullable
   private String vpToken;
 
   public static final String JSON_PROPERTY_ERROR = "error";
+  @javax.annotation.Nullable
   private String error;
 
   public static final String JSON_PROPERTY_ERROR_DESCRIPTION = "error_description";
+  @javax.annotation.Nullable
   private String errorDescription;
 
   public static final String JSON_PROPERTY_ONBOARDED = "onboarded";
+  @javax.annotation.Nullable
   private Boolean onboarded;
 
   public CallbackInput() {
   }
 
-  public CallbackInput state(String state) {
+  public CallbackInput state(@javax.annotation.Nonnull String state) {
     
     this.state = state;
     return this;
@@ -81,11 +87,11 @@ public class CallbackInput {
 
   @JsonProperty(JSON_PROPERTY_STATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setState(String state) {
+  public void setState(@javax.annotation.Nonnull String state) {
     this.state = state;
   }
 
-  public CallbackInput presentationSubmission(String presentationSubmission) {
+  public CallbackInput presentationSubmission(@javax.annotation.Nullable String presentationSubmission) {
     
     this.presentationSubmission = presentationSubmission;
     return this;
@@ -106,11 +112,11 @@ public class CallbackInput {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationSubmission(String presentationSubmission) {
+  public void setPresentationSubmission(@javax.annotation.Nullable String presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
 
-  public CallbackInput vpToken(String vpToken) {
+  public CallbackInput vpToken(@javax.annotation.Nullable String vpToken) {
     
     this.vpToken = vpToken;
     return this;
@@ -131,11 +137,11 @@ public class CallbackInput {
 
   @JsonProperty(JSON_PROPERTY_VP_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpToken(String vpToken) {
+  public void setVpToken(@javax.annotation.Nullable String vpToken) {
     this.vpToken = vpToken;
   }
 
-  public CallbackInput error(String error) {
+  public CallbackInput error(@javax.annotation.Nullable String error) {
     
     this.error = error;
     return this;
@@ -156,11 +162,11 @@ public class CallbackInput {
 
   @JsonProperty(JSON_PROPERTY_ERROR)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setError(String error) {
+  public void setError(@javax.annotation.Nullable String error) {
     this.error = error;
   }
 
-  public CallbackInput errorDescription(String errorDescription) {
+  public CallbackInput errorDescription(@javax.annotation.Nullable String errorDescription) {
     
     this.errorDescription = errorDescription;
     return this;
@@ -181,11 +187,11 @@ public class CallbackInput {
 
   @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setErrorDescription(String errorDescription) {
+  public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
     this.errorDescription = errorDescription;
   }
 
-  public CallbackInput onboarded(Boolean onboarded) {
+  public CallbackInput onboarded(@javax.annotation.Nullable Boolean onboarded) {
     
     this.onboarded = onboarded;
     return this;
@@ -206,7 +212,7 @@ public class CallbackInput {
 
   @JsonProperty(JSON_PROPERTY_ONBOARDED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOnboarded(Boolean onboarded) {
+  public void setOnboarded(@javax.annotation.Nullable Boolean onboarded) {
     this.onboarded = onboarded;
   }
 

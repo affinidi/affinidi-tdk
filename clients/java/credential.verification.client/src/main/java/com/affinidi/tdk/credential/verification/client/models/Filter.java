@@ -54,66 +54,84 @@ import java.util.StringJoiner;
   Filter.JSON_PROPERTY_ITEMS,
   Filter.JSON_PROPERTY_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Filter {
   public static final String JSON_PROPERTY_CONST = "_const";
+  @javax.annotation.Nullable
   private FilterConst _const;
 
   public static final String JSON_PROPERTY_ENUM = "_enum";
+  @javax.annotation.Nullable
   private List<FilterConst> _enum = new ArrayList<>();
 
   public static final String JSON_PROPERTY_EXCLUSIVE_MINIMUM = "exclusiveMinimum";
+  @javax.annotation.Nullable
   private FilterConst exclusiveMinimum;
 
   public static final String JSON_PROPERTY_EXCLUSIVE_MAXIMUM = "exclusiveMaximum";
+  @javax.annotation.Nullable
   private FilterConst exclusiveMaximum;
 
   public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nullable
   private String format;
 
   public static final String JSON_PROPERTY_FORMAT_MAXIMUM = "formatMaximum";
+  @javax.annotation.Nullable
   private String formatMaximum;
 
   public static final String JSON_PROPERTY_FORMAT_MINIMUM = "formatMinimum";
+  @javax.annotation.Nullable
   private String formatMinimum;
 
   public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM = "formatExclusiveMaximum";
+  @javax.annotation.Nullable
   private String formatExclusiveMaximum;
 
   public static final String JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM = "formatExclusiveMinimum";
+  @javax.annotation.Nullable
   private String formatExclusiveMinimum;
 
   public static final String JSON_PROPERTY_MIN_LENGTH = "minLength";
+  @javax.annotation.Nullable
   private Integer minLength;
 
   public static final String JSON_PROPERTY_MAX_LENGTH = "maxLength";
+  @javax.annotation.Nullable
   private Integer maxLength;
 
   public static final String JSON_PROPERTY_MINIMUM = "minimum";
+  @javax.annotation.Nullable
   private FilterConst minimum;
 
   public static final String JSON_PROPERTY_MAXIMUM = "maximum";
+  @javax.annotation.Nullable
   private FilterConst maximum;
 
   public static final String JSON_PROPERTY_NOT = "not";
+  @javax.annotation.Nullable
   private Object not;
 
   public static final String JSON_PROPERTY_PATTERN = "pattern";
+  @javax.annotation.Nullable
   private String pattern;
 
   public static final String JSON_PROPERTY_CONTAINS = "contains";
+  @javax.annotation.Nullable
   private Filter contains;
 
   public static final String JSON_PROPERTY_ITEMS = "items";
+  @javax.annotation.Nullable
   private FilterItems items;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nullable
   private String type;
 
   public Filter() {
   }
 
-  public Filter _const(FilterConst _const) {
+  public Filter _const(@javax.annotation.Nullable FilterConst _const) {
     
     this._const = _const;
     return this;
@@ -134,11 +152,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_CONST)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setConst(FilterConst _const) {
+  public void setConst(@javax.annotation.Nullable FilterConst _const) {
     this._const = _const;
   }
 
-  public Filter _enum(List<FilterConst> _enum) {
+  public Filter _enum(@javax.annotation.Nullable List<FilterConst> _enum) {
     
     this._enum = _enum;
     return this;
@@ -167,11 +185,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_ENUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEnum(List<FilterConst> _enum) {
+  public void setEnum(@javax.annotation.Nullable List<FilterConst> _enum) {
     this._enum = _enum;
   }
 
-  public Filter exclusiveMinimum(FilterConst exclusiveMinimum) {
+  public Filter exclusiveMinimum(@javax.annotation.Nullable FilterConst exclusiveMinimum) {
     
     this.exclusiveMinimum = exclusiveMinimum;
     return this;
@@ -192,11 +210,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MINIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExclusiveMinimum(FilterConst exclusiveMinimum) {
+  public void setExclusiveMinimum(@javax.annotation.Nullable FilterConst exclusiveMinimum) {
     this.exclusiveMinimum = exclusiveMinimum;
   }
 
-  public Filter exclusiveMaximum(FilterConst exclusiveMaximum) {
+  public Filter exclusiveMaximum(@javax.annotation.Nullable FilterConst exclusiveMaximum) {
     
     this.exclusiveMaximum = exclusiveMaximum;
     return this;
@@ -217,11 +235,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_EXCLUSIVE_MAXIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setExclusiveMaximum(FilterConst exclusiveMaximum) {
+  public void setExclusiveMaximum(@javax.annotation.Nullable FilterConst exclusiveMaximum) {
     this.exclusiveMaximum = exclusiveMaximum;
   }
 
-  public Filter format(String format) {
+  public Filter format(@javax.annotation.Nullable String format) {
     
     this.format = format;
     return this;
@@ -242,11 +260,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_FORMAT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormat(String format) {
+  public void setFormat(@javax.annotation.Nullable String format) {
     this.format = format;
   }
 
-  public Filter formatMaximum(String formatMaximum) {
+  public Filter formatMaximum(@javax.annotation.Nullable String formatMaximum) {
     
     this.formatMaximum = formatMaximum;
     return this;
@@ -267,11 +285,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_FORMAT_MAXIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatMaximum(String formatMaximum) {
+  public void setFormatMaximum(@javax.annotation.Nullable String formatMaximum) {
     this.formatMaximum = formatMaximum;
   }
 
-  public Filter formatMinimum(String formatMinimum) {
+  public Filter formatMinimum(@javax.annotation.Nullable String formatMinimum) {
     
     this.formatMinimum = formatMinimum;
     return this;
@@ -292,11 +310,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_FORMAT_MINIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatMinimum(String formatMinimum) {
+  public void setFormatMinimum(@javax.annotation.Nullable String formatMinimum) {
     this.formatMinimum = formatMinimum;
   }
 
-  public Filter formatExclusiveMaximum(String formatExclusiveMaximum) {
+  public Filter formatExclusiveMaximum(@javax.annotation.Nullable String formatExclusiveMaximum) {
     
     this.formatExclusiveMaximum = formatExclusiveMaximum;
     return this;
@@ -317,11 +335,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MAXIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatExclusiveMaximum(String formatExclusiveMaximum) {
+  public void setFormatExclusiveMaximum(@javax.annotation.Nullable String formatExclusiveMaximum) {
     this.formatExclusiveMaximum = formatExclusiveMaximum;
   }
 
-  public Filter formatExclusiveMinimum(String formatExclusiveMinimum) {
+  public Filter formatExclusiveMinimum(@javax.annotation.Nullable String formatExclusiveMinimum) {
     
     this.formatExclusiveMinimum = formatExclusiveMinimum;
     return this;
@@ -342,11 +360,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_FORMAT_EXCLUSIVE_MINIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFormatExclusiveMinimum(String formatExclusiveMinimum) {
+  public void setFormatExclusiveMinimum(@javax.annotation.Nullable String formatExclusiveMinimum) {
     this.formatExclusiveMinimum = formatExclusiveMinimum;
   }
 
-  public Filter minLength(Integer minLength) {
+  public Filter minLength(@javax.annotation.Nullable Integer minLength) {
     
     this.minLength = minLength;
     return this;
@@ -367,11 +385,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_MIN_LENGTH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinLength(Integer minLength) {
+  public void setMinLength(@javax.annotation.Nullable Integer minLength) {
     this.minLength = minLength;
   }
 
-  public Filter maxLength(Integer maxLength) {
+  public Filter maxLength(@javax.annotation.Nullable Integer maxLength) {
     
     this.maxLength = maxLength;
     return this;
@@ -392,11 +410,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_MAX_LENGTH)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaxLength(Integer maxLength) {
+  public void setMaxLength(@javax.annotation.Nullable Integer maxLength) {
     this.maxLength = maxLength;
   }
 
-  public Filter minimum(FilterConst minimum) {
+  public Filter minimum(@javax.annotation.Nullable FilterConst minimum) {
     
     this.minimum = minimum;
     return this;
@@ -417,11 +435,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_MINIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMinimum(FilterConst minimum) {
+  public void setMinimum(@javax.annotation.Nullable FilterConst minimum) {
     this.minimum = minimum;
   }
 
-  public Filter maximum(FilterConst maximum) {
+  public Filter maximum(@javax.annotation.Nullable FilterConst maximum) {
     
     this.maximum = maximum;
     return this;
@@ -442,11 +460,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_MAXIMUM)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMaximum(FilterConst maximum) {
+  public void setMaximum(@javax.annotation.Nullable FilterConst maximum) {
     this.maximum = maximum;
   }
 
-  public Filter not(Object not) {
+  public Filter not(@javax.annotation.Nullable Object not) {
     
     this.not = not;
     return this;
@@ -467,11 +485,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_NOT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNot(Object not) {
+  public void setNot(@javax.annotation.Nullable Object not) {
     this.not = not;
   }
 
-  public Filter pattern(String pattern) {
+  public Filter pattern(@javax.annotation.Nullable String pattern) {
     
     this.pattern = pattern;
     return this;
@@ -492,11 +510,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_PATTERN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPattern(String pattern) {
+  public void setPattern(@javax.annotation.Nullable String pattern) {
     this.pattern = pattern;
   }
 
-  public Filter contains(Filter contains) {
+  public Filter contains(@javax.annotation.Nullable Filter contains) {
     
     this.contains = contains;
     return this;
@@ -517,11 +535,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_CONTAINS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setContains(Filter contains) {
+  public void setContains(@javax.annotation.Nullable Filter contains) {
     this.contains = contains;
   }
 
-  public Filter items(FilterItems items) {
+  public Filter items(@javax.annotation.Nullable FilterItems items) {
     
     this.items = items;
     return this;
@@ -542,11 +560,11 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_ITEMS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setItems(FilterItems items) {
+  public void setItems(@javax.annotation.Nullable FilterItems items) {
     this.items = items;
   }
 
-  public Filter type(String type) {
+  public Filter type(@javax.annotation.Nullable String type) {
     
     this.type = type;
     return this;
@@ -567,7 +585,7 @@ public class Filter {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = type;
   }
 

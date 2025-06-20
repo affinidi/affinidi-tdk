@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   GrantAccessOutput.JSON_PROPERTY_SUCCESS,
   GrantAccessOutput.JSON_PROPERTY_GRANT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GrantAccessOutput {
   public static final String JSON_PROPERTY_SUCCESS = "success";
+  @javax.annotation.Nonnull
   private Boolean success;
 
   public static final String JSON_PROPERTY_GRANT_ID = "grantId";
+  @javax.annotation.Nullable
   private UUID grantId;
 
   public GrantAccessOutput() {
   }
 
-  public GrantAccessOutput success(Boolean success) {
+  public GrantAccessOutput success(@javax.annotation.Nonnull Boolean success) {
     
     this.success = success;
     return this;
@@ -66,11 +68,11 @@ public class GrantAccessOutput {
 
   @JsonProperty(JSON_PROPERTY_SUCCESS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSuccess(Boolean success) {
+  public void setSuccess(@javax.annotation.Nonnull Boolean success) {
     this.success = success;
   }
 
-  public GrantAccessOutput grantId(UUID grantId) {
+  public GrantAccessOutput grantId(@javax.annotation.Nullable UUID grantId) {
     
     this.grantId = grantId;
     return this;
@@ -91,7 +93,7 @@ public class GrantAccessOutput {
 
   @JsonProperty(JSON_PROPERTY_GRANT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrantId(UUID grantId) {
+  public void setGrantId(@javax.annotation.Nullable UUID grantId) {
     this.grantId = grantId;
   }
 

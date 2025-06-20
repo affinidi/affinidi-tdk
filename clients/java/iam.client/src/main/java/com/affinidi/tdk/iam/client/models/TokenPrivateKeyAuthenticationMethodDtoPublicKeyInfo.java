@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo.JSON_PROPERTY_JWKS_URI
 })
 @JsonTypeName("TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
   public static final String JSON_PROPERTY_JWKS = "jwks";
+  @javax.annotation.Nonnull
   private JsonWebKeySetDto jwks;
 
   public static final String JSON_PROPERTY_JWKS_URI = "jwksUri";
+  @javax.annotation.Nonnull
   private String jwksUri;
 
   public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo() {
   }
 
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo jwks(JsonWebKeySetDto jwks) {
+  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo jwks(@javax.annotation.Nonnull JsonWebKeySetDto jwks) {
     
     this.jwks = jwks;
     return this;
@@ -69,11 +71,11 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
 
   @JsonProperty(JSON_PROPERTY_JWKS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwks(JsonWebKeySetDto jwks) {
+  public void setJwks(@javax.annotation.Nonnull JsonWebKeySetDto jwks) {
     this.jwks = jwks;
   }
 
-  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo jwksUri(String jwksUri) {
+  public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo jwksUri(@javax.annotation.Nonnull String jwksUri) {
     
     this.jwksUri = jwksUri;
     return this;
@@ -94,7 +96,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
 
   @JsonProperty(JSON_PROPERTY_JWKS_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwksUri(String jwksUri) {
+  public void setJwksUri(@javax.annotation.Nonnull String jwksUri) {
     this.jwksUri = jwksUri;
   }
 

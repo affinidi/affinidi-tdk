@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   StartFileScanInput.JSON_PROPERTY_DEK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class StartFileScanInput {
   public static final String JSON_PROPERTY_DEK = "dek";
+  @javax.annotation.Nonnull
   private String dek;
 
   public StartFileScanInput() {
   }
 
-  public StartFileScanInput dek(String dek) {
+  public StartFileScanInput dek(@javax.annotation.Nonnull String dek) {
     
     this.dek = dek;
     return this;
@@ -61,7 +62,7 @@ public class StartFileScanInput {
 
   @JsonProperty(JSON_PROPERTY_DEK)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDek(String dek) {
+  public void setDek(@javax.annotation.Nonnull String dek) {
     this.dek = dek;
   }
 

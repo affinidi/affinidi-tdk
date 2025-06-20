@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListConfigurationOK.JSON_PROPERTY_CONFIGURATIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListConfigurationOK {
   public static final String JSON_PROPERTY_CONFIGURATIONS = "configurations";
+  @javax.annotation.Nonnull
   private List<IotaConfigurationDto> configurations = new ArrayList<>();
 
   public ListConfigurationOK() {
   }
 
-  public ListConfigurationOK configurations(List<IotaConfigurationDto> configurations) {
+  public ListConfigurationOK configurations(@javax.annotation.Nonnull List<IotaConfigurationDto> configurations) {
     
     this.configurations = configurations;
     return this;
@@ -73,7 +74,7 @@ public class ListConfigurationOK {
 
   @JsonProperty(JSON_PROPERTY_CONFIGURATIONS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setConfigurations(List<IotaConfigurationDto> configurations) {
+  public void setConfigurations(@javax.annotation.Nonnull List<IotaConfigurationDto> configurations) {
     this.configurations = configurations;
   }
 

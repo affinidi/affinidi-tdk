@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsLoginSessionRejectResponseOK.JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsLoginSessionRejectResponseOK {
   public static final String JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK = "corsLoginSessionRejectResponseOk";
+  @javax.annotation.Nullable
   private String corsLoginSessionRejectResponseOk;
 
   public CorsLoginSessionRejectResponseOK() {
   }
 
-  public CorsLoginSessionRejectResponseOK corsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
+  public CorsLoginSessionRejectResponseOK corsLoginSessionRejectResponseOk(@javax.annotation.Nullable String corsLoginSessionRejectResponseOk) {
     
     this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsLoginSessionRejectResponseOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_LOGIN_SESSION_REJECT_RESPONSE_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsLoginSessionRejectResponseOk(String corsLoginSessionRejectResponseOk) {
+  public void setCorsLoginSessionRejectResponseOk(@javax.annotation.Nullable String corsLoginSessionRejectResponseOk) {
     this.corsLoginSessionRejectResponseOk = corsLoginSessionRejectResponseOk;
   }
 

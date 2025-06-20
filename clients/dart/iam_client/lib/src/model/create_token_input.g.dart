@@ -10,7 +10,7 @@ class _$CreateTokenInput extends CreateTokenInput {
   @override
   final String name;
   @override
-  final TokenAuthenticationMethodDto authenticationMethod;
+  final TokenPrivateKeyAuthenticationMethodDto authenticationMethod;
   @override
   final String? description;
 
@@ -68,11 +68,13 @@ class CreateTokenInputBuilder
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  TokenAuthenticationMethodDtoBuilder? _authenticationMethod;
-  TokenAuthenticationMethodDtoBuilder get authenticationMethod =>
-      _$this._authenticationMethod ??= TokenAuthenticationMethodDtoBuilder();
+  TokenPrivateKeyAuthenticationMethodDtoBuilder? _authenticationMethod;
+  TokenPrivateKeyAuthenticationMethodDtoBuilder get authenticationMethod =>
+      _$this._authenticationMethod ??=
+          TokenPrivateKeyAuthenticationMethodDtoBuilder();
   set authenticationMethod(
-          TokenAuthenticationMethodDtoBuilder? authenticationMethod) =>
+          TokenPrivateKeyAuthenticationMethodDtoBuilder?
+              authenticationMethod) =>
       _$this._authenticationMethod = authenticationMethod;
 
   String? _description;

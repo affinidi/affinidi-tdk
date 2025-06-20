@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class NodesApi extends BaseApi {
 
   public NodesApi() {
@@ -60,7 +60,7 @@ public class NodesApi extends BaseApi {
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(CreateNodeInput createNodeInput) throws ApiException {
+  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput) throws ApiException {
     return this.createNode(createNodeInput, Collections.emptyMap());
   }
 
@@ -73,7 +73,7 @@ public class NodesApi extends BaseApi {
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(CreateNodeInput createNodeInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createNodeInput;
     
     // verify the required parameter 'createNodeInput' is set
@@ -134,7 +134,7 @@ public class NodesApi extends BaseApi {
    * @return DeleteNodeDto
    * @throws ApiException if fails to make API call
    */
-  public DeleteNodeDto deleteNode(String nodeId) throws ApiException {
+  public DeleteNodeDto deleteNode(@javax.annotation.Nonnull String nodeId) throws ApiException {
     return this.deleteNode(nodeId, Collections.emptyMap());
   }
 
@@ -147,7 +147,7 @@ public class NodesApi extends BaseApi {
    * @return DeleteNodeDto
    * @throws ApiException if fails to make API call
    */
-  public DeleteNodeDto deleteNode(String nodeId, Map<String, String> additionalHeaders) throws ApiException {
+  public DeleteNodeDto deleteNode(@javax.annotation.Nonnull String nodeId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'nodeId' is set
@@ -210,7 +210,7 @@ public class NodesApi extends BaseApi {
    * @return GetDetailedNodeInfoOK
    * @throws ApiException if fails to make API call
    */
-  public GetDetailedNodeInfoOK getDetailedNodeInfo(String nodeId, String dek) throws ApiException {
+  public GetDetailedNodeInfoOK getDetailedNodeInfo(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nullable String dek) throws ApiException {
     return this.getDetailedNodeInfo(nodeId, dek, Collections.emptyMap());
   }
 
@@ -224,7 +224,7 @@ public class NodesApi extends BaseApi {
    * @return GetDetailedNodeInfoOK
    * @throws ApiException if fails to make API call
    */
-  public GetDetailedNodeInfoOK getDetailedNodeInfo(String nodeId, String dek, Map<String, String> additionalHeaders) throws ApiException {
+  public GetDetailedNodeInfoOK getDetailedNodeInfo(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nullable String dek, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'nodeId' is set
@@ -360,7 +360,7 @@ public class NodesApi extends BaseApi {
    * @return ListNodeChildrenOK
    * @throws ApiException if fails to make API call
    */
-  public ListNodeChildrenOK listNodeChildren(String nodeId, Integer limit, String exclusiveStartKey) throws ApiException {
+  public ListNodeChildrenOK listNodeChildren(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listNodeChildren(nodeId, limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -375,7 +375,7 @@ public class NodesApi extends BaseApi {
    * @return ListNodeChildrenOK
    * @throws ApiException if fails to make API call
    */
-  public ListNodeChildrenOK listNodeChildren(String nodeId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListNodeChildrenOK listNodeChildren(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'nodeId' is set
@@ -507,7 +507,7 @@ public class NodesApi extends BaseApi {
    * @return MoveNodeDto
    * @throws ApiException if fails to make API call
    */
-  public MoveNodeDto moveNode(String nodeId, MoveNodeInput moveNodeInput) throws ApiException {
+  public MoveNodeDto moveNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull MoveNodeInput moveNodeInput) throws ApiException {
     return this.moveNode(nodeId, moveNodeInput, Collections.emptyMap());
   }
 
@@ -521,7 +521,7 @@ public class NodesApi extends BaseApi {
    * @return MoveNodeDto
    * @throws ApiException if fails to make API call
    */
-  public MoveNodeDto moveNode(String nodeId, MoveNodeInput moveNodeInput, Map<String, String> additionalHeaders) throws ApiException {
+  public MoveNodeDto moveNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull MoveNodeInput moveNodeInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = moveNodeInput;
     
     // verify the required parameter 'nodeId' is set
@@ -588,7 +588,7 @@ public class NodesApi extends BaseApi {
    * @param nodeIdToRemove nodeId of the node to be deleted from TRASH_BIN (required)
    * @throws ApiException if fails to make API call
    */
-  public void permanentlyDeleteNode(String nodeId, String nodeIdToRemove) throws ApiException {
+  public void permanentlyDeleteNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull String nodeIdToRemove) throws ApiException {
     this.permanentlyDeleteNode(nodeId, nodeIdToRemove, Collections.emptyMap());
   }
 
@@ -601,7 +601,7 @@ public class NodesApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void permanentlyDeleteNode(String nodeId, String nodeIdToRemove, Map<String, String> additionalHeaders) throws ApiException {
+  public void permanentlyDeleteNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull String nodeIdToRemove, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'nodeId' is set
@@ -670,7 +670,7 @@ public class NodesApi extends BaseApi {
    * @return MoveNodeDto
    * @throws ApiException if fails to make API call
    */
-  public MoveNodeDto restoreNodeFromTrashbin(String nodeId, String nodeIdToRestore, RestoreNodeFromTrashbin restoreNodeFromTrashbin) throws ApiException {
+  public MoveNodeDto restoreNodeFromTrashbin(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull String nodeIdToRestore, @javax.annotation.Nonnull RestoreNodeFromTrashbin restoreNodeFromTrashbin) throws ApiException {
     return this.restoreNodeFromTrashbin(nodeId, nodeIdToRestore, restoreNodeFromTrashbin, Collections.emptyMap());
   }
 
@@ -685,7 +685,7 @@ public class NodesApi extends BaseApi {
    * @return MoveNodeDto
    * @throws ApiException if fails to make API call
    */
-  public MoveNodeDto restoreNodeFromTrashbin(String nodeId, String nodeIdToRestore, RestoreNodeFromTrashbin restoreNodeFromTrashbin, Map<String, String> additionalHeaders) throws ApiException {
+  public MoveNodeDto restoreNodeFromTrashbin(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull String nodeIdToRestore, @javax.annotation.Nonnull RestoreNodeFromTrashbin restoreNodeFromTrashbin, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = restoreNodeFromTrashbin;
     
     // verify the required parameter 'nodeId' is set
@@ -759,7 +759,7 @@ public class NodesApi extends BaseApi {
    * @return NodeDto
    * @throws ApiException if fails to make API call
    */
-  public NodeDto updateNode(String nodeId, UpdateNodeInput updateNodeInput) throws ApiException {
+  public NodeDto updateNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull UpdateNodeInput updateNodeInput) throws ApiException {
     return this.updateNode(nodeId, updateNodeInput, Collections.emptyMap());
   }
 
@@ -773,7 +773,7 @@ public class NodesApi extends BaseApi {
    * @return NodeDto
    * @throws ApiException if fails to make API call
    */
-  public NodeDto updateNode(String nodeId, UpdateNodeInput updateNodeInput, Map<String, String> additionalHeaders) throws ApiException {
+  public NodeDto updateNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull UpdateNodeInput updateNodeInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateNodeInput;
     
     // verify the required parameter 'nodeId' is set

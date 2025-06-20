@@ -38,18 +38,20 @@ import java.util.StringJoiner;
   VerifyCredentialInput.JSON_PROPERTY_VERIFIABLE_CREDENTIALS,
   VerifyCredentialInput.JSON_PROPERTY_ISSUER_DID_DOCUMENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class VerifyCredentialInput {
   public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
+  @javax.annotation.Nonnull
   private List<Object> verifiableCredentials = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ISSUER_DID_DOCUMENT = "issuerDidDocument";
+  @javax.annotation.Nullable
   private Map<String, Object> issuerDidDocument = new HashMap<>();
 
   public VerifyCredentialInput() {
   }
 
-  public VerifyCredentialInput verifiableCredentials(List<Object> verifiableCredentials) {
+  public VerifyCredentialInput verifiableCredentials(@javax.annotation.Nonnull List<Object> verifiableCredentials) {
     
     this.verifiableCredentials = verifiableCredentials;
     return this;
@@ -78,11 +80,11 @@ public class VerifyCredentialInput {
 
   @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVerifiableCredentials(List<Object> verifiableCredentials) {
+  public void setVerifiableCredentials(@javax.annotation.Nonnull List<Object> verifiableCredentials) {
     this.verifiableCredentials = verifiableCredentials;
   }
 
-  public VerifyCredentialInput issuerDidDocument(Map<String, Object> issuerDidDocument) {
+  public VerifyCredentialInput issuerDidDocument(@javax.annotation.Nullable Map<String, Object> issuerDidDocument) {
     
     this.issuerDidDocument = issuerDidDocument;
     return this;
@@ -111,7 +113,7 @@ public class VerifyCredentialInput {
 
   @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerDidDocument(Map<String, Object> issuerDidDocument) {
+  public void setIssuerDidDocument(@javax.annotation.Nullable Map<String, Object> issuerDidDocument) {
     this.issuerDidDocument = issuerDidDocument;
   }
 

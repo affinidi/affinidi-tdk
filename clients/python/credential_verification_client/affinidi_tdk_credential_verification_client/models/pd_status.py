@@ -35,7 +35,7 @@ class PdStatus(BaseModel):
         if value is None:
             return value
 
-        if value not in ('required', 'allowed', 'disallowed'):
+        if value not in ('required', 'allowed', 'disallowed',):
             raise ValueError("must be one of enum values ('required', 'allowed', 'disallowed')")
         return value
 

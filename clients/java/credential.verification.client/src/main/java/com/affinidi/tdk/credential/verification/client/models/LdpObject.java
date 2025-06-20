@@ -35,15 +35,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   LdpObject.JSON_PROPERTY_PROOF_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class LdpObject {
   public static final String JSON_PROPERTY_PROOF_TYPE = "proof_type";
+  @javax.annotation.Nonnull
   private List<String> proofType = new ArrayList<>();
 
   public LdpObject() {
   }
 
-  public LdpObject proofType(List<String> proofType) {
+  public LdpObject proofType(@javax.annotation.Nonnull List<String> proofType) {
     
     this.proofType = proofType;
     return this;
@@ -72,7 +73,7 @@ public class LdpObject {
 
   @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProofType(List<String> proofType) {
+  public void setProofType(@javax.annotation.Nonnull List<String> proofType) {
     this.proofType = proofType;
   }
 

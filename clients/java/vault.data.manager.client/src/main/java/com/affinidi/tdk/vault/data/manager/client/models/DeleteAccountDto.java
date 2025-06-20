@@ -33,15 +33,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   DeleteAccountDto.JSON_PROPERTY_ACCOUNT_INDEX
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DeleteAccountDto {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
+  @javax.annotation.Nullable
   private BigDecimal accountIndex;
 
   public DeleteAccountDto() {
   }
 
-  public DeleteAccountDto accountIndex(BigDecimal accountIndex) {
+  public DeleteAccountDto accountIndex(@javax.annotation.Nullable BigDecimal accountIndex) {
     
     this.accountIndex = accountIndex;
     return this;
@@ -62,7 +63,7 @@ public class DeleteAccountDto {
 
   @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAccountIndex(BigDecimal accountIndex) {
+  public void setAccountIndex(@javax.annotation.Nullable BigDecimal accountIndex) {
     this.accountIndex = accountIndex;
   }
 

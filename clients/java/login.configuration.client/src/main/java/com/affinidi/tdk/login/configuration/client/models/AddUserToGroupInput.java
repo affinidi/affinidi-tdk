@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   AddUserToGroupInput.JSON_PROPERTY_DESCRIPTION,
   AddUserToGroupInput.JSON_PROPERTY_USER_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AddUserToGroupInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_USER_ID = "userId";
+  @javax.annotation.Nonnull
   private String userId;
 
   public AddUserToGroupInput() {
   }
 
-  public AddUserToGroupInput name(String name) {
+  public AddUserToGroupInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -69,11 +72,11 @@ public class AddUserToGroupInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public AddUserToGroupInput description(String description) {
+  public AddUserToGroupInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -94,11 +97,11 @@ public class AddUserToGroupInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public AddUserToGroupInput userId(String userId) {
+  public AddUserToGroupInput userId(@javax.annotation.Nonnull String userId) {
     
     this.userId = userId;
     return this;
@@ -119,7 +122,7 @@ public class AddUserToGroupInput {
 
   @JsonProperty(JSON_PROPERTY_USER_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserId(String userId) {
+  public void setUserId(@javax.annotation.Nonnull String userId) {
     this.userId = userId;
   }
 

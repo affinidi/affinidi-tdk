@@ -36,18 +36,20 @@ import java.util.StringJoiner;
   BlockedUsers.JSON_PROPERTY_USER_IDS,
   BlockedUsers.JSON_PROPERTY_PAGE_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class BlockedUsers {
   public static final String JSON_PROPERTY_USER_IDS = "userIds";
+  @javax.annotation.Nonnull
   private List<String> userIds = new ArrayList<>();
 
   public static final String JSON_PROPERTY_PAGE_TOKEN = "pageToken";
+  @javax.annotation.Nullable
   private Object pageToken;
 
   public BlockedUsers() {
   }
 
-  public BlockedUsers userIds(List<String> userIds) {
+  public BlockedUsers userIds(@javax.annotation.Nonnull List<String> userIds) {
     
     this.userIds = userIds;
     return this;
@@ -76,11 +78,11 @@ public class BlockedUsers {
 
   @JsonProperty(JSON_PROPERTY_USER_IDS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserIds(List<String> userIds) {
+  public void setUserIds(@javax.annotation.Nonnull List<String> userIds) {
     this.userIds = userIds;
   }
 
-  public BlockedUsers pageToken(Object pageToken) {
+  public BlockedUsers pageToken(@javax.annotation.Nullable Object pageToken) {
     
     this.pageToken = pageToken;
     return this;
@@ -101,7 +103,7 @@ public class BlockedUsers {
 
   @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPageToken(Object pageToken) {
+  public void setPageToken(@javax.annotation.Nullable Object pageToken) {
     this.pageToken = pageToken;
   }
 

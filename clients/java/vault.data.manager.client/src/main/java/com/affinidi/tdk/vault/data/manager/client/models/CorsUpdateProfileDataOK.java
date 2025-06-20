@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsUpdateProfileDataOK.JSON_PROPERTY_CORS_UPDATE_PROFILE_DATA_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsUpdateProfileDataOK {
   public static final String JSON_PROPERTY_CORS_UPDATE_PROFILE_DATA_OK = "corsUpdateProfileDataOk";
+  @javax.annotation.Nullable
   private String corsUpdateProfileDataOk;
 
   public CorsUpdateProfileDataOK() {
   }
 
-  public CorsUpdateProfileDataOK corsUpdateProfileDataOk(String corsUpdateProfileDataOk) {
+  public CorsUpdateProfileDataOK corsUpdateProfileDataOk(@javax.annotation.Nullable String corsUpdateProfileDataOk) {
     
     this.corsUpdateProfileDataOk = corsUpdateProfileDataOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsUpdateProfileDataOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_UPDATE_PROFILE_DATA_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsUpdateProfileDataOk(String corsUpdateProfileDataOk) {
+  public void setCorsUpdateProfileDataOk(@javax.annotation.Nullable String corsUpdateProfileDataOk) {
     this.corsUpdateProfileDataOk = corsUpdateProfileDataOk;
   }
 

@@ -33,7 +33,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IdpApi extends BaseApi {
 
   public IdpApi() {
@@ -50,7 +50,7 @@ public class IdpApi extends BaseApi {
    * @param projectId  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1LoginProjectProjectIdOauth2AuthGet(String projectId) throws ApiException {
+  public void v1LoginProjectProjectIdOauth2AuthGet(@javax.annotation.Nonnull String projectId) throws ApiException {
     this.v1LoginProjectProjectIdOauth2AuthGet(projectId, Collections.emptyMap());
   }
 
@@ -62,7 +62,7 @@ public class IdpApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1LoginProjectProjectIdOauth2AuthGet(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1LoginProjectProjectIdOauth2AuthGet(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -122,7 +122,7 @@ public class IdpApi extends BaseApi {
    * @param projectId  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1LoginProjectProjectIdOauth2RevokePost(String projectId) throws ApiException {
+  public void v1LoginProjectProjectIdOauth2RevokePost(@javax.annotation.Nonnull String projectId) throws ApiException {
     this.v1LoginProjectProjectIdOauth2RevokePost(projectId, Collections.emptyMap());
   }
 
@@ -134,7 +134,7 @@ public class IdpApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1LoginProjectProjectIdOauth2RevokePost(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1LoginProjectProjectIdOauth2RevokePost(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -194,7 +194,7 @@ public class IdpApi extends BaseApi {
    * @param projectId  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1LoginProjectProjectIdOauth2SessionsLogoutGet(String projectId) throws ApiException {
+  public void v1LoginProjectProjectIdOauth2SessionsLogoutGet(@javax.annotation.Nonnull String projectId) throws ApiException {
     this.v1LoginProjectProjectIdOauth2SessionsLogoutGet(projectId, Collections.emptyMap());
   }
 
@@ -206,7 +206,7 @@ public class IdpApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1LoginProjectProjectIdOauth2SessionsLogoutGet(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1LoginProjectProjectIdOauth2SessionsLogoutGet(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -267,7 +267,7 @@ public class IdpApi extends BaseApi {
    * @return OAuth2Token
    * @throws ApiException if fails to make API call
    */
-  public OAuth2Token v1LoginProjectProjectIdOauth2TokenPost(String projectId) throws ApiException {
+  public OAuth2Token v1LoginProjectProjectIdOauth2TokenPost(@javax.annotation.Nonnull String projectId) throws ApiException {
     return this.v1LoginProjectProjectIdOauth2TokenPost(projectId, Collections.emptyMap());
   }
 
@@ -280,7 +280,7 @@ public class IdpApi extends BaseApi {
    * @return OAuth2Token
    * @throws ApiException if fails to make API call
    */
-  public OAuth2Token v1LoginProjectProjectIdOauth2TokenPost(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public OAuth2Token v1LoginProjectProjectIdOauth2TokenPost(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -342,7 +342,7 @@ public class IdpApi extends BaseApi {
    * @return GetUserInfo
    * @throws ApiException if fails to make API call
    */
-  public GetUserInfo v1LoginProjectProjectIdUserinfoGet(String projectId) throws ApiException {
+  public GetUserInfo v1LoginProjectProjectIdUserinfoGet(@javax.annotation.Nonnull String projectId) throws ApiException {
     return this.v1LoginProjectProjectIdUserinfoGet(projectId, Collections.emptyMap());
   }
 
@@ -355,7 +355,7 @@ public class IdpApi extends BaseApi {
    * @return GetUserInfo
    * @throws ApiException if fails to make API call
    */
-  public GetUserInfo v1LoginProjectProjectIdUserinfoGet(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public GetUserInfo v1LoginProjectProjectIdUserinfoGet(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -417,7 +417,7 @@ public class IdpApi extends BaseApi {
    * @return JsonWebKey
    * @throws ApiException if fails to make API call
    */
-  public JsonWebKey v1LoginProjectProjectIdWellKnownJwksJsonGet(String projectId) throws ApiException {
+  public JsonWebKey v1LoginProjectProjectIdWellKnownJwksJsonGet(@javax.annotation.Nonnull String projectId) throws ApiException {
     return this.v1LoginProjectProjectIdWellKnownJwksJsonGet(projectId, Collections.emptyMap());
   }
 
@@ -430,7 +430,7 @@ public class IdpApi extends BaseApi {
    * @return JsonWebKey
    * @throws ApiException if fails to make API call
    */
-  public JsonWebKey v1LoginProjectProjectIdWellKnownJwksJsonGet(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public JsonWebKey v1LoginProjectProjectIdWellKnownJwksJsonGet(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -492,7 +492,7 @@ public class IdpApi extends BaseApi {
    * @return OIDCConfig
    * @throws ApiException if fails to make API call
    */
-  public OIDCConfig v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(String projectId) throws ApiException {
+  public OIDCConfig v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(@javax.annotation.Nonnull String projectId) throws ApiException {
     return this.v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(projectId, Collections.emptyMap());
   }
 
@@ -505,7 +505,7 @@ public class IdpApi extends BaseApi {
    * @return OIDCConfig
    * @throws ApiException if fails to make API call
    */
-  public OIDCConfig v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(String projectId, Map<String, String> additionalHeaders) throws ApiException {
+  public OIDCConfig v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set

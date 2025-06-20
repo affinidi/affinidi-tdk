@@ -34,18 +34,20 @@ import java.util.StringJoiner;
   PrepareRequestCreatedData.JSON_PROPERTY_CORRELATION_ID
 })
 @JsonTypeName("PrepareRequestCreated_data")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PrepareRequestCreatedData {
   public static final String JSON_PROPERTY_JWT = "jwt";
+  @javax.annotation.Nonnull
   private String jwt;
 
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
+  @javax.annotation.Nonnull
   private String correlationId;
 
   public PrepareRequestCreatedData() {
   }
 
-  public PrepareRequestCreatedData jwt(String jwt) {
+  public PrepareRequestCreatedData jwt(@javax.annotation.Nonnull String jwt) {
     
     this.jwt = jwt;
     return this;
@@ -66,11 +68,11 @@ public class PrepareRequestCreatedData {
 
   @JsonProperty(JSON_PROPERTY_JWT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwt(String jwt) {
+  public void setJwt(@javax.annotation.Nonnull String jwt) {
     this.jwt = jwt;
   }
 
-  public PrepareRequestCreatedData correlationId(String correlationId) {
+  public PrepareRequestCreatedData correlationId(@javax.annotation.Nonnull String correlationId) {
     
     this.correlationId = correlationId;
     return this;
@@ -91,7 +93,7 @@ public class PrepareRequestCreatedData {
 
   @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCorrelationId(String correlationId) {
+  public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
   }
 

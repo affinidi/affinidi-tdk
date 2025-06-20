@@ -38,13 +38,13 @@ import java.util.StringJoiner;
   OAuth2TokenAuthorizationDetailsInner.JSON_PROPERTY_CREDENTIAL_IDENTIFIERS
 })
 @JsonTypeName("OAuth2Token_authorization_details_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OAuth2TokenAuthorizationDetailsInner {
   /**
    * String that determines the authorization details type. 
    */
   public enum TypeEnum {
-    OPENID_CREDENTIAL("openid_credential");
+    OPENID_CREDENTIAL(String.valueOf("openid_credential"));
 
     private String value;
 
@@ -74,18 +74,21 @@ public class OAuth2TokenAuthorizationDetailsInner {
   }
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nonnull
   private TypeEnum type = TypeEnum.OPENID_CREDENTIAL;
 
   public static final String JSON_PROPERTY_CREDENTIAL_CONFIGURATION_ID = "credential_configuration_id";
+  @javax.annotation.Nonnull
   private String credentialConfigurationId;
 
   public static final String JSON_PROPERTY_CREDENTIAL_IDENTIFIERS = "credential_identifiers";
+  @javax.annotation.Nullable
   private List<String> credentialIdentifiers = new ArrayList<>();
 
   public OAuth2TokenAuthorizationDetailsInner() {
   }
 
-  public OAuth2TokenAuthorizationDetailsInner type(TypeEnum type) {
+  public OAuth2TokenAuthorizationDetailsInner type(@javax.annotation.Nonnull TypeEnum type) {
     
     this.type = type;
     return this;
@@ -106,11 +109,11 @@ public class OAuth2TokenAuthorizationDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setType(TypeEnum type) {
+  public void setType(@javax.annotation.Nonnull TypeEnum type) {
     this.type = type;
   }
 
-  public OAuth2TokenAuthorizationDetailsInner credentialConfigurationId(String credentialConfigurationId) {
+  public OAuth2TokenAuthorizationDetailsInner credentialConfigurationId(@javax.annotation.Nonnull String credentialConfigurationId) {
     
     this.credentialConfigurationId = credentialConfigurationId;
     return this;
@@ -131,11 +134,11 @@ public class OAuth2TokenAuthorizationDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialConfigurationId(String credentialConfigurationId) {
+  public void setCredentialConfigurationId(@javax.annotation.Nonnull String credentialConfigurationId) {
     this.credentialConfigurationId = credentialConfigurationId;
   }
 
-  public OAuth2TokenAuthorizationDetailsInner credentialIdentifiers(List<String> credentialIdentifiers) {
+  public OAuth2TokenAuthorizationDetailsInner credentialIdentifiers(@javax.annotation.Nullable List<String> credentialIdentifiers) {
     
     this.credentialIdentifiers = credentialIdentifiers;
     return this;
@@ -164,7 +167,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIERS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialIdentifiers(List<String> credentialIdentifiers) {
+  public void setCredentialIdentifiers(@javax.annotation.Nullable List<String> credentialIdentifiers) {
     this.credentialIdentifiers = credentialIdentifiers;
   }
 

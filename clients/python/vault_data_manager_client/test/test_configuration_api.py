@@ -25,7 +25,7 @@ class TestConfigurationApi(unittest.TestCase):
         self.api = ConfigurationApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_get_configuration(self) -> None:
         """Test case for get_configuration

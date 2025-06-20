@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class AccountsApi extends BaseApi {
 
   public AccountsApi() {
@@ -54,7 +54,7 @@ public class AccountsApi extends BaseApi {
    * @return CreateAccountOK
    * @throws ApiException if fails to make API call
    */
-  public CreateAccountOK createAccount(CreateAccountInput createAccountInput) throws ApiException {
+  public CreateAccountOK createAccount(@javax.annotation.Nonnull CreateAccountInput createAccountInput) throws ApiException {
     return this.createAccount(createAccountInput, Collections.emptyMap());
   }
 
@@ -67,7 +67,7 @@ public class AccountsApi extends BaseApi {
    * @return CreateAccountOK
    * @throws ApiException if fails to make API call
    */
-  public CreateAccountOK createAccount(CreateAccountInput createAccountInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateAccountOK createAccount(@javax.annotation.Nonnull CreateAccountInput createAccountInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createAccountInput;
     
     // verify the required parameter 'createAccountInput' is set
@@ -128,7 +128,7 @@ public class AccountsApi extends BaseApi {
    * @return DeleteAccountDto
    * @throws ApiException if fails to make API call
    */
-  public DeleteAccountDto deleteAccount(Integer accountIndex) throws ApiException {
+  public DeleteAccountDto deleteAccount(@javax.annotation.Nonnull Integer accountIndex) throws ApiException {
     return this.deleteAccount(accountIndex, Collections.emptyMap());
   }
 
@@ -141,7 +141,7 @@ public class AccountsApi extends BaseApi {
    * @return DeleteAccountDto
    * @throws ApiException if fails to make API call
    */
-  public DeleteAccountDto deleteAccount(Integer accountIndex, Map<String, String> additionalHeaders) throws ApiException {
+  public DeleteAccountDto deleteAccount(@javax.annotation.Nonnull Integer accountIndex, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'accountIndex' is set
@@ -204,7 +204,7 @@ public class AccountsApi extends BaseApi {
    * @return ListAccountsDto
    * @throws ApiException if fails to make API call
    */
-  public ListAccountsDto listAccounts(Integer limit, String exclusiveStartKey) throws ApiException {
+  public ListAccountsDto listAccounts(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listAccounts(limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -218,7 +218,7 @@ public class AccountsApi extends BaseApi {
    * @return ListAccountsDto
    * @throws ApiException if fails to make API call
    */
-  public ListAccountsDto listAccounts(Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListAccountsDto listAccounts(@javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -277,7 +277,7 @@ public class AccountsApi extends BaseApi {
    * @return UpdateAccountDto
    * @throws ApiException if fails to make API call
    */
-  public UpdateAccountDto updateAccount(Integer accountIndex, UpdateAccountInput updateAccountInput) throws ApiException {
+  public UpdateAccountDto updateAccount(@javax.annotation.Nonnull Integer accountIndex, @javax.annotation.Nonnull UpdateAccountInput updateAccountInput) throws ApiException {
     return this.updateAccount(accountIndex, updateAccountInput, Collections.emptyMap());
   }
 
@@ -291,7 +291,7 @@ public class AccountsApi extends BaseApi {
    * @return UpdateAccountDto
    * @throws ApiException if fails to make API call
    */
-  public UpdateAccountDto updateAccount(Integer accountIndex, UpdateAccountInput updateAccountInput, Map<String, String> additionalHeaders) throws ApiException {
+  public UpdateAccountDto updateAccount(@javax.annotation.Nonnull Integer accountIndex, @javax.annotation.Nonnull UpdateAccountInput updateAccountInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateAccountInput;
     
     // verify the required parameter 'accountIndex' is set

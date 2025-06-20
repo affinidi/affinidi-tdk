@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   ListPexQueriesOK.JSON_PROPERTY_PEX_QUERIES,
   ListPexQueriesOK.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListPexQueriesOK {
   public static final String JSON_PROPERTY_PEX_QUERIES = "pexQueries";
+  @javax.annotation.Nonnull
   private List<PexQueryDto> pexQueries = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public ListPexQueriesOK() {
   }
 
-  public ListPexQueriesOK pexQueries(List<PexQueryDto> pexQueries) {
+  public ListPexQueriesOK pexQueries(@javax.annotation.Nonnull List<PexQueryDto> pexQueries) {
     
     this.pexQueries = pexQueries;
     return this;
@@ -77,11 +79,11 @@ public class ListPexQueriesOK {
 
   @JsonProperty(JSON_PROPERTY_PEX_QUERIES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPexQueries(List<PexQueryDto> pexQueries) {
+  public void setPexQueries(@javax.annotation.Nonnull List<PexQueryDto> pexQueries) {
     this.pexQueries = pexQueries;
   }
 
-  public ListPexQueriesOK lastEvaluatedKey(String lastEvaluatedKey) {
+  public ListPexQueriesOK lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -102,7 +104,7 @@ public class ListPexQueriesOK {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 

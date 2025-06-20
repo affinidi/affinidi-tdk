@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -41,13 +40,13 @@ import java.util.StringJoiner;
   GroupsPerUserLimitExceededError.JSON_PROPERTY_TRACE_ID,
   GroupsPerUserLimitExceededError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupsPerUserLimitExceededError {
   /**
    * Gets or Sets name
    */
   public enum NameEnum {
-    GROUPS_PER_USER_LIMIT_EXCEEDED_ERROR("GroupsPerUserLimitExceededError");
+    GROUPS_PER_USER_LIMIT_EXCEEDED_ERROR(String.valueOf("GroupsPerUserLimitExceededError"));
 
     private String value;
 
@@ -77,13 +76,14 @@ public class GroupsPerUserLimitExceededError {
   }
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private NameEnum name;
 
   /**
    * Gets or Sets message
    */
   public enum MessageEnum {
-    AMOUNT_OF_GROUPS_PER_USER_IS_LIMITED_("Amount of groups per user is limited.");
+    AMOUNT_OF_GROUPS_PER_USER_IS_LIMITED_(String.valueOf("Amount of groups per user is limited."));
 
     private String value;
 
@@ -113,22 +113,23 @@ public class GroupsPerUserLimitExceededError {
   }
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
+  @javax.annotation.Nonnull
   private MessageEnum message;
 
   /**
    * Gets or Sets httpStatusCode
    */
   public enum HttpStatusCodeEnum {
-    NUMBER_409(new BigDecimal("409"));
+    NUMBER_409(Integer.valueOf(409));
 
-    private BigDecimal value;
+    private Integer value;
 
-    HttpStatusCodeEnum(BigDecimal value) {
+    HttpStatusCodeEnum(Integer value) {
       this.value = value;
     }
 
     @JsonValue
-    public BigDecimal getValue() {
+    public Integer getValue() {
       return value;
     }
 
@@ -138,7 +139,7 @@ public class GroupsPerUserLimitExceededError {
     }
 
     @JsonCreator
-    public static HttpStatusCodeEnum fromValue(BigDecimal value) {
+    public static HttpStatusCodeEnum fromValue(Integer value) {
       for (HttpStatusCodeEnum b : HttpStatusCodeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
@@ -149,18 +150,21 @@ public class GroupsPerUserLimitExceededError {
   }
 
   public static final String JSON_PROPERTY_HTTP_STATUS_CODE = "httpStatusCode";
+  @javax.annotation.Nonnull
   private HttpStatusCodeEnum httpStatusCode;
 
   public static final String JSON_PROPERTY_TRACE_ID = "traceId";
+  @javax.annotation.Nonnull
   private String traceId;
 
   public static final String JSON_PROPERTY_DETAILS = "details";
+  @javax.annotation.Nullable
   private List<InvalidParameterErrorDetailsInner> details = new ArrayList<>();
 
   public GroupsPerUserLimitExceededError() {
   }
 
-  public GroupsPerUserLimitExceededError name(NameEnum name) {
+  public GroupsPerUserLimitExceededError name(@javax.annotation.Nonnull NameEnum name) {
     
     this.name = name;
     return this;
@@ -181,11 +185,11 @@ public class GroupsPerUserLimitExceededError {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(NameEnum name) {
+  public void setName(@javax.annotation.Nonnull NameEnum name) {
     this.name = name;
   }
 
-  public GroupsPerUserLimitExceededError message(MessageEnum message) {
+  public GroupsPerUserLimitExceededError message(@javax.annotation.Nonnull MessageEnum message) {
     
     this.message = message;
     return this;
@@ -206,11 +210,11 @@ public class GroupsPerUserLimitExceededError {
 
   @JsonProperty(JSON_PROPERTY_MESSAGE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setMessage(MessageEnum message) {
+  public void setMessage(@javax.annotation.Nonnull MessageEnum message) {
     this.message = message;
   }
 
-  public GroupsPerUserLimitExceededError httpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public GroupsPerUserLimitExceededError httpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     
     this.httpStatusCode = httpStatusCode;
     return this;
@@ -231,11 +235,11 @@ public class GroupsPerUserLimitExceededError {
 
   @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setHttpStatusCode(HttpStatusCodeEnum httpStatusCode) {
+  public void setHttpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
   }
 
-  public GroupsPerUserLimitExceededError traceId(String traceId) {
+  public GroupsPerUserLimitExceededError traceId(@javax.annotation.Nonnull String traceId) {
     
     this.traceId = traceId;
     return this;
@@ -256,11 +260,11 @@ public class GroupsPerUserLimitExceededError {
 
   @JsonProperty(JSON_PROPERTY_TRACE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTraceId(String traceId) {
+  public void setTraceId(@javax.annotation.Nonnull String traceId) {
     this.traceId = traceId;
   }
 
-  public GroupsPerUserLimitExceededError details(List<InvalidParameterErrorDetailsInner> details) {
+  public GroupsPerUserLimitExceededError details(@javax.annotation.Nullable List<InvalidParameterErrorDetailsInner> details) {
     
     this.details = details;
     return this;
@@ -289,7 +293,7 @@ public class GroupsPerUserLimitExceededError {
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(List<InvalidParameterErrorDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<InvalidParameterErrorDetailsInner> details) {
     this.details = details;
   }
 

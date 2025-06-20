@@ -36,24 +36,28 @@ import java.util.StringJoiner;
   Descriptor.JSON_PROPERTY_PATH_NESTED,
   Descriptor.JSON_PROPERTY_FORMAT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Descriptor {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_PATH = "path";
+  @javax.annotation.Nonnull
   private String path;
 
   public static final String JSON_PROPERTY_PATH_NESTED = "path_nested";
+  @javax.annotation.Nullable
   private NestedDescriptor pathNested;
 
   public static final String JSON_PROPERTY_FORMAT = "format";
+  @javax.annotation.Nonnull
   private String format;
 
   public Descriptor() {
   }
 
-  public Descriptor id(String id) {
+  public Descriptor id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -74,11 +78,11 @@ public class Descriptor {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public Descriptor path(String path) {
+  public Descriptor path(@javax.annotation.Nonnull String path) {
     
     this.path = path;
     return this;
@@ -99,11 +103,11 @@ public class Descriptor {
 
   @JsonProperty(JSON_PROPERTY_PATH)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPath(String path) {
+  public void setPath(@javax.annotation.Nonnull String path) {
     this.path = path;
   }
 
-  public Descriptor pathNested(NestedDescriptor pathNested) {
+  public Descriptor pathNested(@javax.annotation.Nullable NestedDescriptor pathNested) {
     
     this.pathNested = pathNested;
     return this;
@@ -124,11 +128,11 @@ public class Descriptor {
 
   @JsonProperty(JSON_PROPERTY_PATH_NESTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPathNested(NestedDescriptor pathNested) {
+  public void setPathNested(@javax.annotation.Nullable NestedDescriptor pathNested) {
     this.pathNested = pathNested;
   }
 
-  public Descriptor format(String format) {
+  public Descriptor format(@javax.annotation.Nonnull String format) {
     
     this.format = format;
     return this;
@@ -149,7 +153,7 @@ public class Descriptor {
 
   @JsonProperty(JSON_PROPERTY_FORMAT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFormat(String format) {
+  public void setFormat(@javax.annotation.Nonnull String format) {
     this.format = format;
   }
 

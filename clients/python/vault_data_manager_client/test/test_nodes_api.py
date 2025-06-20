@@ -25,7 +25,7 @@ class TestNodesApi(unittest.TestCase):
         self.api = NodesApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_create_node(self) -> None:
         """Test case for create_node

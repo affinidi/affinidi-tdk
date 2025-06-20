@@ -39,7 +39,7 @@ class StartIssuanceInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('NORMAL', 'TX_CODE', 'FIXED_HOLDER'):
+        if value not in ('NORMAL', 'TX_CODE', 'FIXED_HOLDER',):
             raise ValueError("must be one of enum values ('NORMAL', 'TX_CODE', 'FIXED_HOLDER')")
         return value
 

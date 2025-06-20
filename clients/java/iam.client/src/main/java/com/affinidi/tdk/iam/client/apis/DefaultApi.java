@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DefaultApi extends BaseApi {
 
   public DefaultApi() {
@@ -46,7 +46,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyDelete(String proxy) throws ApiException {
+  public void v1AuthProxyDelete(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1AuthProxyDelete(proxy, Collections.emptyMap());
   }
 
@@ -58,7 +58,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyDelete(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1AuthProxyDelete(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -118,7 +118,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyGet(String proxy) throws ApiException {
+  public void v1AuthProxyGet(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1AuthProxyGet(proxy, Collections.emptyMap());
   }
 
@@ -130,7 +130,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyGet(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1AuthProxyGet(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -190,7 +190,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyPatch(String proxy) throws ApiException {
+  public void v1AuthProxyPatch(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1AuthProxyPatch(proxy, Collections.emptyMap());
   }
 
@@ -202,7 +202,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyPatch(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1AuthProxyPatch(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -262,7 +262,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyPost(String proxy) throws ApiException {
+  public void v1AuthProxyPost(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1AuthProxyPost(proxy, Collections.emptyMap());
   }
 
@@ -274,7 +274,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyPost(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1AuthProxyPost(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -334,7 +334,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyPut(String proxy) throws ApiException {
+  public void v1AuthProxyPut(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1AuthProxyPut(proxy, Collections.emptyMap());
   }
 
@@ -346,7 +346,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1AuthProxyPut(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1AuthProxyPut(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -406,7 +406,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyDelete(String proxy) throws ApiException {
+  public void v1IdpProxyDelete(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1IdpProxyDelete(proxy, Collections.emptyMap());
   }
 
@@ -418,7 +418,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyDelete(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1IdpProxyDelete(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -478,7 +478,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyGet(String proxy) throws ApiException {
+  public void v1IdpProxyGet(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1IdpProxyGet(proxy, Collections.emptyMap());
   }
 
@@ -490,7 +490,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyGet(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1IdpProxyGet(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -550,7 +550,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyPatch(String proxy) throws ApiException {
+  public void v1IdpProxyPatch(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1IdpProxyPatch(proxy, Collections.emptyMap());
   }
 
@@ -562,7 +562,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyPatch(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1IdpProxyPatch(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -622,7 +622,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyPost(String proxy) throws ApiException {
+  public void v1IdpProxyPost(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1IdpProxyPost(proxy, Collections.emptyMap());
   }
 
@@ -634,7 +634,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyPost(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1IdpProxyPost(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set
@@ -694,7 +694,7 @@ public class DefaultApi extends BaseApi {
    * @param proxy  (required)
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyPut(String proxy) throws ApiException {
+  public void v1IdpProxyPut(@javax.annotation.Nonnull String proxy) throws ApiException {
     this.v1IdpProxyPut(proxy, Collections.emptyMap());
   }
 
@@ -706,7 +706,7 @@ public class DefaultApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void v1IdpProxyPut(String proxy, Map<String, String> additionalHeaders) throws ApiException {
+  public void v1IdpProxyPut(@javax.annotation.Nonnull String proxy, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'proxy' is set

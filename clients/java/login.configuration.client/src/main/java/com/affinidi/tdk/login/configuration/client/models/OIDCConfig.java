@@ -66,105 +66,136 @@ import java.util.StringJoiner;
   OIDCConfig.JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG,
   OIDCConfig.JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class OIDCConfig {
   public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
+  @javax.annotation.Nonnull
   private String authorizationEndpoint;
 
   public static final String JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED = "backchannel_logout_session_supported";
+  @javax.annotation.Nullable
   private Boolean backchannelLogoutSessionSupported;
 
   public static final String JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED = "backchannel_logout_supported";
+  @javax.annotation.Nullable
   private Boolean backchannelLogoutSupported;
 
   public static final String JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED = "claims_parameter_supported";
+  @javax.annotation.Nullable
   private Boolean claimsParameterSupported;
 
   public static final String JSON_PROPERTY_CLAIMS_SUPPORTED = "claims_supported";
+  @javax.annotation.Nullable
   private List<String> claimsSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED = "code_challenge_methods_supported";
+  @javax.annotation.Nullable
   private List<String> codeChallengeMethodsSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00 = "credentials_endpoint_draft_00";
+  @javax.annotation.Nullable
   private String credentialsEndpointDraft00;
 
   public static final String JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00 = "credentials_supported_draft_00";
+  @javax.annotation.Nullable
   private List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00 = new ArrayList<>();
 
   public static final String JSON_PROPERTY_END_SESSION_ENDPOINT = "end_session_endpoint";
+  @javax.annotation.Nullable
   private String endSessionEndpoint;
 
   public static final String JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED = "frontchannel_logout_session_supported";
+  @javax.annotation.Nullable
   private Boolean frontchannelLogoutSessionSupported;
 
   public static final String JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED = "frontchannel_logout_supported";
+  @javax.annotation.Nullable
   private Boolean frontchannelLogoutSupported;
 
   public static final String JSON_PROPERTY_GRANT_TYPES_SUPPORTED = "grant_types_supported";
+  @javax.annotation.Nullable
   private List<String> grantTypesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG = "id_token_signed_response_alg";
+  @javax.annotation.Nonnull
   private List<String> idTokenSignedResponseAlg = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED = "id_token_signing_alg_values_supported";
+  @javax.annotation.Nonnull
   private List<String> idTokenSigningAlgValuesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ISSUER = "issuer";
+  @javax.annotation.Nonnull
   private String issuer;
 
   public static final String JSON_PROPERTY_JWKS_URI = "jwks_uri";
+  @javax.annotation.Nonnull
   private String jwksUri;
 
   public static final String JSON_PROPERTY_REGISTRATION_ENDPOINT = "registration_endpoint";
+  @javax.annotation.Nullable
   private String registrationEndpoint;
 
   public static final String JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED = "request_object_signing_alg_values_supported";
+  @javax.annotation.Nullable
   private List<String> requestObjectSigningAlgValuesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED = "request_parameter_supported";
+  @javax.annotation.Nullable
   private Boolean requestParameterSupported;
 
   public static final String JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED = "request_uri_parameter_supported";
+  @javax.annotation.Nullable
   private Boolean requestUriParameterSupported;
 
   public static final String JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION = "require_request_uri_registration";
+  @javax.annotation.Nullable
   private Boolean requireRequestUriRegistration;
 
   public static final String JSON_PROPERTY_RESPONSE_MODES_SUPPORTED = "response_modes_supported";
+  @javax.annotation.Nullable
   private List<String> responseModesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED = "response_types_supported";
+  @javax.annotation.Nonnull
   private List<String> responseTypesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_REVOCATION_ENDPOINT = "revocation_endpoint";
+  @javax.annotation.Nullable
   private String revocationEndpoint;
 
   public static final String JSON_PROPERTY_SCOPES_SUPPORTED = "scopes_supported";
+  @javax.annotation.Nullable
   private List<String> scopesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED = "subject_types_supported";
+  @javax.annotation.Nonnull
   private List<String> subjectTypesSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TOKEN_ENDPOINT = "token_endpoint";
+  @javax.annotation.Nonnull
   private String tokenEndpoint;
 
   public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED = "token_endpoint_auth_methods_supported";
+  @javax.annotation.Nullable
   private List<String> tokenEndpointAuthMethodsSupported = new ArrayList<>();
 
   public static final String JSON_PROPERTY_USERINFO_ENDPOINT = "userinfo_endpoint";
+  @javax.annotation.Nullable
   private String userinfoEndpoint;
 
   public static final String JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG = "userinfo_signed_response_alg";
+  @javax.annotation.Nonnull
   private List<String> userinfoSignedResponseAlg = new ArrayList<>();
 
   public static final String JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED = "userinfo_signing_alg_values_supported";
+  @javax.annotation.Nullable
   private List<String> userinfoSigningAlgValuesSupported = new ArrayList<>();
 
   public OIDCConfig() {
   }
 
-  public OIDCConfig authorizationEndpoint(String authorizationEndpoint) {
+  public OIDCConfig authorizationEndpoint(@javax.annotation.Nonnull String authorizationEndpoint) {
     
     this.authorizationEndpoint = authorizationEndpoint;
     return this;
@@ -185,11 +216,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthorizationEndpoint(String authorizationEndpoint) {
+  public void setAuthorizationEndpoint(@javax.annotation.Nonnull String authorizationEndpoint) {
     this.authorizationEndpoint = authorizationEndpoint;
   }
 
-  public OIDCConfig backchannelLogoutSessionSupported(Boolean backchannelLogoutSessionSupported) {
+  public OIDCConfig backchannelLogoutSessionSupported(@javax.annotation.Nullable Boolean backchannelLogoutSessionSupported) {
     
     this.backchannelLogoutSessionSupported = backchannelLogoutSessionSupported;
     return this;
@@ -210,11 +241,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackchannelLogoutSessionSupported(Boolean backchannelLogoutSessionSupported) {
+  public void setBackchannelLogoutSessionSupported(@javax.annotation.Nullable Boolean backchannelLogoutSessionSupported) {
     this.backchannelLogoutSessionSupported = backchannelLogoutSessionSupported;
   }
 
-  public OIDCConfig backchannelLogoutSupported(Boolean backchannelLogoutSupported) {
+  public OIDCConfig backchannelLogoutSupported(@javax.annotation.Nullable Boolean backchannelLogoutSupported) {
     
     this.backchannelLogoutSupported = backchannelLogoutSupported;
     return this;
@@ -235,11 +266,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setBackchannelLogoutSupported(Boolean backchannelLogoutSupported) {
+  public void setBackchannelLogoutSupported(@javax.annotation.Nullable Boolean backchannelLogoutSupported) {
     this.backchannelLogoutSupported = backchannelLogoutSupported;
   }
 
-  public OIDCConfig claimsParameterSupported(Boolean claimsParameterSupported) {
+  public OIDCConfig claimsParameterSupported(@javax.annotation.Nullable Boolean claimsParameterSupported) {
     
     this.claimsParameterSupported = claimsParameterSupported;
     return this;
@@ -260,11 +291,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClaimsParameterSupported(Boolean claimsParameterSupported) {
+  public void setClaimsParameterSupported(@javax.annotation.Nullable Boolean claimsParameterSupported) {
     this.claimsParameterSupported = claimsParameterSupported;
   }
 
-  public OIDCConfig claimsSupported(List<String> claimsSupported) {
+  public OIDCConfig claimsSupported(@javax.annotation.Nullable List<String> claimsSupported) {
     
     this.claimsSupported = claimsSupported;
     return this;
@@ -293,11 +324,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_CLAIMS_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClaimsSupported(List<String> claimsSupported) {
+  public void setClaimsSupported(@javax.annotation.Nullable List<String> claimsSupported) {
     this.claimsSupported = claimsSupported;
   }
 
-  public OIDCConfig codeChallengeMethodsSupported(List<String> codeChallengeMethodsSupported) {
+  public OIDCConfig codeChallengeMethodsSupported(@javax.annotation.Nullable List<String> codeChallengeMethodsSupported) {
     
     this.codeChallengeMethodsSupported = codeChallengeMethodsSupported;
     return this;
@@ -326,11 +357,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCodeChallengeMethodsSupported(List<String> codeChallengeMethodsSupported) {
+  public void setCodeChallengeMethodsSupported(@javax.annotation.Nullable List<String> codeChallengeMethodsSupported) {
     this.codeChallengeMethodsSupported = codeChallengeMethodsSupported;
   }
 
-  public OIDCConfig credentialsEndpointDraft00(String credentialsEndpointDraft00) {
+  public OIDCConfig credentialsEndpointDraft00(@javax.annotation.Nullable String credentialsEndpointDraft00) {
     
     this.credentialsEndpointDraft00 = credentialsEndpointDraft00;
     return this;
@@ -351,11 +382,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialsEndpointDraft00(String credentialsEndpointDraft00) {
+  public void setCredentialsEndpointDraft00(@javax.annotation.Nullable String credentialsEndpointDraft00) {
     this.credentialsEndpointDraft00 = credentialsEndpointDraft00;
   }
 
-  public OIDCConfig credentialsSupportedDraft00(List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
+  public OIDCConfig credentialsSupportedDraft00(@javax.annotation.Nullable List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
     
     this.credentialsSupportedDraft00 = credentialsSupportedDraft00;
     return this;
@@ -384,11 +415,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCredentialsSupportedDraft00(List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
+  public void setCredentialsSupportedDraft00(@javax.annotation.Nullable List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
     this.credentialsSupportedDraft00 = credentialsSupportedDraft00;
   }
 
-  public OIDCConfig endSessionEndpoint(String endSessionEndpoint) {
+  public OIDCConfig endSessionEndpoint(@javax.annotation.Nullable String endSessionEndpoint) {
     
     this.endSessionEndpoint = endSessionEndpoint;
     return this;
@@ -409,11 +440,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_END_SESSION_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setEndSessionEndpoint(String endSessionEndpoint) {
+  public void setEndSessionEndpoint(@javax.annotation.Nullable String endSessionEndpoint) {
     this.endSessionEndpoint = endSessionEndpoint;
   }
 
-  public OIDCConfig frontchannelLogoutSessionSupported(Boolean frontchannelLogoutSessionSupported) {
+  public OIDCConfig frontchannelLogoutSessionSupported(@javax.annotation.Nullable Boolean frontchannelLogoutSessionSupported) {
     
     this.frontchannelLogoutSessionSupported = frontchannelLogoutSessionSupported;
     return this;
@@ -434,11 +465,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrontchannelLogoutSessionSupported(Boolean frontchannelLogoutSessionSupported) {
+  public void setFrontchannelLogoutSessionSupported(@javax.annotation.Nullable Boolean frontchannelLogoutSessionSupported) {
     this.frontchannelLogoutSessionSupported = frontchannelLogoutSessionSupported;
   }
 
-  public OIDCConfig frontchannelLogoutSupported(Boolean frontchannelLogoutSupported) {
+  public OIDCConfig frontchannelLogoutSupported(@javax.annotation.Nullable Boolean frontchannelLogoutSupported) {
     
     this.frontchannelLogoutSupported = frontchannelLogoutSupported;
     return this;
@@ -459,11 +490,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFrontchannelLogoutSupported(Boolean frontchannelLogoutSupported) {
+  public void setFrontchannelLogoutSupported(@javax.annotation.Nullable Boolean frontchannelLogoutSupported) {
     this.frontchannelLogoutSupported = frontchannelLogoutSupported;
   }
 
-  public OIDCConfig grantTypesSupported(List<String> grantTypesSupported) {
+  public OIDCConfig grantTypesSupported(@javax.annotation.Nullable List<String> grantTypesSupported) {
     
     this.grantTypesSupported = grantTypesSupported;
     return this;
@@ -492,11 +523,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setGrantTypesSupported(List<String> grantTypesSupported) {
+  public void setGrantTypesSupported(@javax.annotation.Nullable List<String> grantTypesSupported) {
     this.grantTypesSupported = grantTypesSupported;
   }
 
-  public OIDCConfig idTokenSignedResponseAlg(List<String> idTokenSignedResponseAlg) {
+  public OIDCConfig idTokenSignedResponseAlg(@javax.annotation.Nonnull List<String> idTokenSignedResponseAlg) {
     
     this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
     return this;
@@ -525,11 +556,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIdTokenSignedResponseAlg(List<String> idTokenSignedResponseAlg) {
+  public void setIdTokenSignedResponseAlg(@javax.annotation.Nonnull List<String> idTokenSignedResponseAlg) {
     this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
   }
 
-  public OIDCConfig idTokenSigningAlgValuesSupported(List<String> idTokenSigningAlgValuesSupported) {
+  public OIDCConfig idTokenSigningAlgValuesSupported(@javax.annotation.Nonnull List<String> idTokenSigningAlgValuesSupported) {
     
     this.idTokenSigningAlgValuesSupported = idTokenSigningAlgValuesSupported;
     return this;
@@ -558,11 +589,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIdTokenSigningAlgValuesSupported(List<String> idTokenSigningAlgValuesSupported) {
+  public void setIdTokenSigningAlgValuesSupported(@javax.annotation.Nonnull List<String> idTokenSigningAlgValuesSupported) {
     this.idTokenSigningAlgValuesSupported = idTokenSigningAlgValuesSupported;
   }
 
-  public OIDCConfig issuer(String issuer) {
+  public OIDCConfig issuer(@javax.annotation.Nonnull String issuer) {
     
     this.issuer = issuer;
     return this;
@@ -583,11 +614,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_ISSUER)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setIssuer(String issuer) {
+  public void setIssuer(@javax.annotation.Nonnull String issuer) {
     this.issuer = issuer;
   }
 
-  public OIDCConfig jwksUri(String jwksUri) {
+  public OIDCConfig jwksUri(@javax.annotation.Nonnull String jwksUri) {
     
     this.jwksUri = jwksUri;
     return this;
@@ -608,11 +639,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_JWKS_URI)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJwksUri(String jwksUri) {
+  public void setJwksUri(@javax.annotation.Nonnull String jwksUri) {
     this.jwksUri = jwksUri;
   }
 
-  public OIDCConfig registrationEndpoint(String registrationEndpoint) {
+  public OIDCConfig registrationEndpoint(@javax.annotation.Nullable String registrationEndpoint) {
     
     this.registrationEndpoint = registrationEndpoint;
     return this;
@@ -633,11 +664,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_REGISTRATION_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRegistrationEndpoint(String registrationEndpoint) {
+  public void setRegistrationEndpoint(@javax.annotation.Nullable String registrationEndpoint) {
     this.registrationEndpoint = registrationEndpoint;
   }
 
-  public OIDCConfig requestObjectSigningAlgValuesSupported(List<String> requestObjectSigningAlgValuesSupported) {
+  public OIDCConfig requestObjectSigningAlgValuesSupported(@javax.annotation.Nullable List<String> requestObjectSigningAlgValuesSupported) {
     
     this.requestObjectSigningAlgValuesSupported = requestObjectSigningAlgValuesSupported;
     return this;
@@ -666,11 +697,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestObjectSigningAlgValuesSupported(List<String> requestObjectSigningAlgValuesSupported) {
+  public void setRequestObjectSigningAlgValuesSupported(@javax.annotation.Nullable List<String> requestObjectSigningAlgValuesSupported) {
     this.requestObjectSigningAlgValuesSupported = requestObjectSigningAlgValuesSupported;
   }
 
-  public OIDCConfig requestParameterSupported(Boolean requestParameterSupported) {
+  public OIDCConfig requestParameterSupported(@javax.annotation.Nullable Boolean requestParameterSupported) {
     
     this.requestParameterSupported = requestParameterSupported;
     return this;
@@ -691,11 +722,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestParameterSupported(Boolean requestParameterSupported) {
+  public void setRequestParameterSupported(@javax.annotation.Nullable Boolean requestParameterSupported) {
     this.requestParameterSupported = requestParameterSupported;
   }
 
-  public OIDCConfig requestUriParameterSupported(Boolean requestUriParameterSupported) {
+  public OIDCConfig requestUriParameterSupported(@javax.annotation.Nullable Boolean requestUriParameterSupported) {
     
     this.requestUriParameterSupported = requestUriParameterSupported;
     return this;
@@ -716,11 +747,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequestUriParameterSupported(Boolean requestUriParameterSupported) {
+  public void setRequestUriParameterSupported(@javax.annotation.Nullable Boolean requestUriParameterSupported) {
     this.requestUriParameterSupported = requestUriParameterSupported;
   }
 
-  public OIDCConfig requireRequestUriRegistration(Boolean requireRequestUriRegistration) {
+  public OIDCConfig requireRequestUriRegistration(@javax.annotation.Nullable Boolean requireRequestUriRegistration) {
     
     this.requireRequestUriRegistration = requireRequestUriRegistration;
     return this;
@@ -741,11 +772,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRequireRequestUriRegistration(Boolean requireRequestUriRegistration) {
+  public void setRequireRequestUriRegistration(@javax.annotation.Nullable Boolean requireRequestUriRegistration) {
     this.requireRequestUriRegistration = requireRequestUriRegistration;
   }
 
-  public OIDCConfig responseModesSupported(List<String> responseModesSupported) {
+  public OIDCConfig responseModesSupported(@javax.annotation.Nullable List<String> responseModesSupported) {
     
     this.responseModesSupported = responseModesSupported;
     return this;
@@ -774,11 +805,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_RESPONSE_MODES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setResponseModesSupported(List<String> responseModesSupported) {
+  public void setResponseModesSupported(@javax.annotation.Nullable List<String> responseModesSupported) {
     this.responseModesSupported = responseModesSupported;
   }
 
-  public OIDCConfig responseTypesSupported(List<String> responseTypesSupported) {
+  public OIDCConfig responseTypesSupported(@javax.annotation.Nonnull List<String> responseTypesSupported) {
     
     this.responseTypesSupported = responseTypesSupported;
     return this;
@@ -807,11 +838,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResponseTypesSupported(List<String> responseTypesSupported) {
+  public void setResponseTypesSupported(@javax.annotation.Nonnull List<String> responseTypesSupported) {
     this.responseTypesSupported = responseTypesSupported;
   }
 
-  public OIDCConfig revocationEndpoint(String revocationEndpoint) {
+  public OIDCConfig revocationEndpoint(@javax.annotation.Nullable String revocationEndpoint) {
     
     this.revocationEndpoint = revocationEndpoint;
     return this;
@@ -832,11 +863,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_REVOCATION_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRevocationEndpoint(String revocationEndpoint) {
+  public void setRevocationEndpoint(@javax.annotation.Nullable String revocationEndpoint) {
     this.revocationEndpoint = revocationEndpoint;
   }
 
-  public OIDCConfig scopesSupported(List<String> scopesSupported) {
+  public OIDCConfig scopesSupported(@javax.annotation.Nullable List<String> scopesSupported) {
     
     this.scopesSupported = scopesSupported;
     return this;
@@ -865,11 +896,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setScopesSupported(List<String> scopesSupported) {
+  public void setScopesSupported(@javax.annotation.Nullable List<String> scopesSupported) {
     this.scopesSupported = scopesSupported;
   }
 
-  public OIDCConfig subjectTypesSupported(List<String> subjectTypesSupported) {
+  public OIDCConfig subjectTypesSupported(@javax.annotation.Nonnull List<String> subjectTypesSupported) {
     
     this.subjectTypesSupported = subjectTypesSupported;
     return this;
@@ -898,11 +929,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setSubjectTypesSupported(List<String> subjectTypesSupported) {
+  public void setSubjectTypesSupported(@javax.annotation.Nonnull List<String> subjectTypesSupported) {
     this.subjectTypesSupported = subjectTypesSupported;
   }
 
-  public OIDCConfig tokenEndpoint(String tokenEndpoint) {
+  public OIDCConfig tokenEndpoint(@javax.annotation.Nonnull String tokenEndpoint) {
     
     this.tokenEndpoint = tokenEndpoint;
     return this;
@@ -923,11 +954,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTokenEndpoint(String tokenEndpoint) {
+  public void setTokenEndpoint(@javax.annotation.Nonnull String tokenEndpoint) {
     this.tokenEndpoint = tokenEndpoint;
   }
 
-  public OIDCConfig tokenEndpointAuthMethodsSupported(List<String> tokenEndpointAuthMethodsSupported) {
+  public OIDCConfig tokenEndpointAuthMethodsSupported(@javax.annotation.Nullable List<String> tokenEndpointAuthMethodsSupported) {
     
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
     return this;
@@ -956,11 +987,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenEndpointAuthMethodsSupported(List<String> tokenEndpointAuthMethodsSupported) {
+  public void setTokenEndpointAuthMethodsSupported(@javax.annotation.Nullable List<String> tokenEndpointAuthMethodsSupported) {
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
   }
 
-  public OIDCConfig userinfoEndpoint(String userinfoEndpoint) {
+  public OIDCConfig userinfoEndpoint(@javax.annotation.Nullable String userinfoEndpoint) {
     
     this.userinfoEndpoint = userinfoEndpoint;
     return this;
@@ -981,11 +1012,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_USERINFO_ENDPOINT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserinfoEndpoint(String userinfoEndpoint) {
+  public void setUserinfoEndpoint(@javax.annotation.Nullable String userinfoEndpoint) {
     this.userinfoEndpoint = userinfoEndpoint;
   }
 
-  public OIDCConfig userinfoSignedResponseAlg(List<String> userinfoSignedResponseAlg) {
+  public OIDCConfig userinfoSignedResponseAlg(@javax.annotation.Nonnull List<String> userinfoSignedResponseAlg) {
     
     this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
     return this;
@@ -1014,11 +1045,11 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUserinfoSignedResponseAlg(List<String> userinfoSignedResponseAlg) {
+  public void setUserinfoSignedResponseAlg(@javax.annotation.Nonnull List<String> userinfoSignedResponseAlg) {
     this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
   }
 
-  public OIDCConfig userinfoSigningAlgValuesSupported(List<String> userinfoSigningAlgValuesSupported) {
+  public OIDCConfig userinfoSigningAlgValuesSupported(@javax.annotation.Nullable List<String> userinfoSigningAlgValuesSupported) {
     
     this.userinfoSigningAlgValuesSupported = userinfoSigningAlgValuesSupported;
     return this;
@@ -1047,7 +1078,7 @@ public class OIDCConfig {
 
   @JsonProperty(JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUserinfoSigningAlgValuesSupported(List<String> userinfoSigningAlgValuesSupported) {
+  public void setUserinfoSigningAlgValuesSupported(@javax.annotation.Nullable List<String> userinfoSigningAlgValuesSupported) {
     this.userinfoSigningAlgValuesSupported = userinfoSigningAlgValuesSupported;
   }
 

@@ -36,15 +36,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListRootNodeChildrenOK.JSON_PROPERTY_NODES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListRootNodeChildrenOK {
   public static final String JSON_PROPERTY_NODES = "nodes";
+  @javax.annotation.Nullable
   private List<NodeDto> nodes = new ArrayList<>();
 
   public ListRootNodeChildrenOK() {
   }
 
-  public ListRootNodeChildrenOK nodes(List<NodeDto> nodes) {
+  public ListRootNodeChildrenOK nodes(@javax.annotation.Nullable List<NodeDto> nodes) {
     
     this.nodes = nodes;
     return this;
@@ -73,7 +74,7 @@ public class ListRootNodeChildrenOK {
 
   @JsonProperty(JSON_PROPERTY_NODES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNodes(List<NodeDto> nodes) {
+  public void setNodes(@javax.annotation.Nullable List<NodeDto> nodes) {
     this.nodes = nodes;
   }
 

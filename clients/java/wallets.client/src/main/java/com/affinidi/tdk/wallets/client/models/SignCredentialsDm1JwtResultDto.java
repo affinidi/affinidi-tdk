@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignCredentialsDm1JwtResultDto.JSON_PROPERTY_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialsDm1JwtResultDto {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
+  @javax.annotation.Nonnull
   private String credential;
 
   public SignCredentialsDm1JwtResultDto() {
   }
 
-  public SignCredentialsDm1JwtResultDto credential(String credential) {
+  public SignCredentialsDm1JwtResultDto credential(@javax.annotation.Nonnull String credential) {
     
     this.credential = credential;
     return this;
@@ -61,7 +62,7 @@ public class SignCredentialsDm1JwtResultDto {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredential(String credential) {
+  public void setCredential(@javax.annotation.Nonnull String credential) {
     this.credential = credential;
   }
 

@@ -2,14 +2,14 @@
 
 ## Properties
 
-| Name                      | Type                                                                | Description                                                 | Notes |
-| ------------------------- | ------------------------------------------------------------------- | ----------------------------------------------------------- | ----- |
-| **id**                    | **str**                                                             | Token Id                                                    |
-| **ari**                   | **str**                                                             | Token ARI                                                   |
-| **owner_ari**             | **str**                                                             | The Token owner&#39;s ARI                                   |
-| **name**                  | **str**                                                             | Owner defined Token display name                            |
-| **authentication_method** | [**TokenAuthenticationMethodDto**](TokenAuthenticationMethodDto.md) |                                                             |
-| **scopes**                | **List[str]**                                                       | Scopes that will be assigned to the Token on authentication |
+| Name                      | Type                                                                                    | Description                                                 | Notes |
+| ------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----- |
+| **id**                    | **str**                                                                                 | Token Id                                                    |
+| **ari**                   | **str**                                                                                 | Token ARI                                                   |
+| **owner_ari**             | **str**                                                                                 | The Token owner&#39;s ARI                                   |
+| **name**                  | **str**                                                                                 | Owner defined Token display name                            |
+| **authentication_method** | [**TokenPrivateKeyAuthenticationMethodDto**](TokenPrivateKeyAuthenticationMethodDto.md) |                                                             |
+| **scopes**                | **List[str]**                                                                           | Scopes that will be assigned to the Token on authentication |
 
 ## Example
 

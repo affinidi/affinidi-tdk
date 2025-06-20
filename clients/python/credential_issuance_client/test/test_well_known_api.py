@@ -25,7 +25,7 @@ class TestWellKnownApi(unittest.TestCase):
         self.api = WellKnownApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_get_well_known_open_id_credential_issuer(self) -> None:
         """Test case for get_well_known_open_id_credential_issuer

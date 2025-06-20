@@ -13,7 +13,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
 Verifying VC
 
-Verifying Verifiable Credentials (signatures) `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+Verifying Verifiable Credentials (signatures)
+
+`isValid` - true if all credentials verified
+`errors` contains list of error messages for invalid credentials.
 
 ### Example
 
@@ -110,7 +113,10 @@ with affinidi_tdk_credential_verification_client.ApiClient(configuration) as api
 
 Verifying VP
 
-Verifying Verifiable Presentation (signatures) `isValid` - true if presentation verified `error` verificaction error.
+Verifying Verifiable Presentation (signatures)
+
+`isValid` - true if presentation verified
+`error` verificaction error.
 
 ### Example
 

@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsFetchIotaVpResponseOK.JSON_PROPERTY_CORS_FETCH_IOTA_VP_RESPONSE_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsFetchIotaVpResponseOK {
   public static final String JSON_PROPERTY_CORS_FETCH_IOTA_VP_RESPONSE_OK = "corsFetchIotaVpResponseOk";
+  @javax.annotation.Nullable
   private String corsFetchIotaVpResponseOk;
 
   public CorsFetchIotaVpResponseOK() {
   }
 
-  public CorsFetchIotaVpResponseOK corsFetchIotaVpResponseOk(String corsFetchIotaVpResponseOk) {
+  public CorsFetchIotaVpResponseOK corsFetchIotaVpResponseOk(@javax.annotation.Nullable String corsFetchIotaVpResponseOk) {
     
     this.corsFetchIotaVpResponseOk = corsFetchIotaVpResponseOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsFetchIotaVpResponseOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_FETCH_IOTA_VP_RESPONSE_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsFetchIotaVpResponseOk(String corsFetchIotaVpResponseOk) {
+  public void setCorsFetchIotaVpResponseOk(@javax.annotation.Nullable String corsFetchIotaVpResponseOk) {
     this.corsFetchIotaVpResponseOk = corsFetchIotaVpResponseOk;
   }
 

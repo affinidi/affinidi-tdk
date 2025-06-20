@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class FilesApi extends BaseApi {
 
   public FilesApi() {
@@ -53,7 +53,7 @@ public class FilesApi extends BaseApi {
    * @return GetScannedFileInfoOK
    * @throws ApiException if fails to make API call
    */
-  public GetScannedFileInfoOK getScannedFileInfo(String scannedFileJobId, String exclusiveStartKey) throws ApiException {
+  public GetScannedFileInfoOK getScannedFileInfo(@javax.annotation.Nonnull String scannedFileJobId, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.getScannedFileInfo(scannedFileJobId, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -67,7 +67,7 @@ public class FilesApi extends BaseApi {
    * @return GetScannedFileInfoOK
    * @throws ApiException if fails to make API call
    */
-  public GetScannedFileInfoOK getScannedFileInfo(String scannedFileJobId, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public GetScannedFileInfoOK getScannedFileInfo(@javax.annotation.Nonnull String scannedFileJobId, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'scannedFileJobId' is set
@@ -198,7 +198,7 @@ public class FilesApi extends BaseApi {
    * @return StartFileScanOK
    * @throws ApiException if fails to make API call
    */
-  public StartFileScanOK startFileScan(String nodeId, StartFileScanInput startFileScanInput) throws ApiException {
+  public StartFileScanOK startFileScan(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull StartFileScanInput startFileScanInput) throws ApiException {
     return this.startFileScan(nodeId, startFileScanInput, Collections.emptyMap());
   }
 
@@ -212,7 +212,7 @@ public class FilesApi extends BaseApi {
    * @return StartFileScanOK
    * @throws ApiException if fails to make API call
    */
-  public StartFileScanOK startFileScan(String nodeId, StartFileScanInput startFileScanInput, Map<String, String> additionalHeaders) throws ApiException {
+  public StartFileScanOK startFileScan(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull StartFileScanInput startFileScanInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = startFileScanInput;
     
     // verify the required parameter 'nodeId' is set

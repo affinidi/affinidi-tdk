@@ -37,18 +37,20 @@ import java.util.StringJoiner;
   ListNodeChildrenOK.JSON_PROPERTY_NODES,
   ListNodeChildrenOK.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ListNodeChildrenOK {
   public static final String JSON_PROPERTY_NODES = "nodes";
+  @javax.annotation.Nullable
   private List<NodeDto> nodes = new ArrayList<>();
 
   public static final String JSON_PROPERTY_LAST_EVALUATED_KEY = "lastEvaluatedKey";
+  @javax.annotation.Nullable
   private String lastEvaluatedKey;
 
   public ListNodeChildrenOK() {
   }
 
-  public ListNodeChildrenOK nodes(List<NodeDto> nodes) {
+  public ListNodeChildrenOK nodes(@javax.annotation.Nullable List<NodeDto> nodes) {
     
     this.nodes = nodes;
     return this;
@@ -77,11 +79,11 @@ public class ListNodeChildrenOK {
 
   @JsonProperty(JSON_PROPERTY_NODES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setNodes(List<NodeDto> nodes) {
+  public void setNodes(@javax.annotation.Nullable List<NodeDto> nodes) {
     this.nodes = nodes;
   }
 
-  public ListNodeChildrenOK lastEvaluatedKey(String lastEvaluatedKey) {
+  public ListNodeChildrenOK lastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     
     this.lastEvaluatedKey = lastEvaluatedKey;
     return this;
@@ -102,7 +104,7 @@ public class ListNodeChildrenOK {
 
   @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLastEvaluatedKey(String lastEvaluatedKey) {
+  public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
 

@@ -25,7 +25,7 @@ class TestOfferApi(unittest.TestCase):
         self.api = OfferApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_get_credential_offer(self) -> None:
         """Test case for get_credential_offer

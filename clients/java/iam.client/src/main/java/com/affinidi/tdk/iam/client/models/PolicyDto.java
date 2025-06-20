@@ -41,30 +41,36 @@ import java.util.StringJoiner;
   PolicyDto.JSON_PROPERTY_VERSION,
   PolicyDto.JSON_PROPERTY_STATEMENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PolicyDto {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
+  @javax.annotation.Nullable
   private String principalId;
 
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  @javax.annotation.Nullable
   private String projectId;
 
   public static final String JSON_PROPERTY_VERSION = "version";
+  @javax.annotation.Nonnull
   private String version;
 
   public static final String JSON_PROPERTY_STATEMENT = "statement";
+  @javax.annotation.Nonnull
   private List<PolicyStatementDto> statement = new ArrayList<>();
 
   public PolicyDto() {
   }
 
-  public PolicyDto name(String name) {
+  public PolicyDto name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -85,11 +91,11 @@ public class PolicyDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public PolicyDto description(String description) {
+  public PolicyDto description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -110,11 +116,11 @@ public class PolicyDto {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public PolicyDto principalId(String principalId) {
+  public PolicyDto principalId(@javax.annotation.Nullable String principalId) {
     
     this.principalId = principalId;
     return this;
@@ -135,11 +141,11 @@ public class PolicyDto {
 
   @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPrincipalId(String principalId) {
+  public void setPrincipalId(@javax.annotation.Nullable String principalId) {
     this.principalId = principalId;
   }
 
-  public PolicyDto projectId(String projectId) {
+  public PolicyDto projectId(@javax.annotation.Nullable String projectId) {
     
     this.projectId = projectId;
     return this;
@@ -160,11 +166,11 @@ public class PolicyDto {
 
   @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setProjectId(String projectId) {
+  public void setProjectId(@javax.annotation.Nullable String projectId) {
     this.projectId = projectId;
   }
 
-  public PolicyDto version(String version) {
+  public PolicyDto version(@javax.annotation.Nonnull String version) {
     
     this.version = version;
     return this;
@@ -185,11 +191,11 @@ public class PolicyDto {
 
   @JsonProperty(JSON_PROPERTY_VERSION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVersion(String version) {
+  public void setVersion(@javax.annotation.Nonnull String version) {
     this.version = version;
   }
 
-  public PolicyDto statement(List<PolicyStatementDto> statement) {
+  public PolicyDto statement(@javax.annotation.Nonnull List<PolicyStatementDto> statement) {
     
     this.statement = statement;
     return this;
@@ -218,7 +224,7 @@ public class PolicyDto {
 
   @JsonProperty(JSON_PROPERTY_STATEMENT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setStatement(List<PolicyStatementDto> statement) {
+  public void setStatement(@javax.annotation.Nonnull List<PolicyStatementDto> statement) {
     this.statement = statement;
   }
 

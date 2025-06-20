@@ -37,21 +37,21 @@ class ResourceCreationError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('ResourceCreationError'):
+        if value not in ('ResourceCreationError',):
             raise ValueError("must be one of enum values ('ResourceCreationError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Failed to create resources.'):
+        if value not in ('Failed to create resources.',):
             raise ValueError("must be one of enum values ('Failed to create resources.')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (424):
+        if value not in (424,):
             raise ValueError("must be one of enum values (424)")
         return value
 

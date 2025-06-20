@@ -42,33 +42,40 @@ import java.util.StringJoiner;
   W3cProof.JSON_PROPERTY_PROOF_VALUE,
   W3cProof.JSON_PROPERTY_NONCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class W3cProof {
   public static final String JSON_PROPERTY_TYPE = "type";
+  @javax.annotation.Nullable
   private JsonNullable<String> type = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_CREATED = "created";
+  @javax.annotation.Nullable
   private JsonNullable<String> created = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_VERIFICATION_METHOD = "verificationMethod";
+  @javax.annotation.Nonnull
   private String verificationMethod;
 
   public static final String JSON_PROPERTY_PROOF_PURPOSE = "proofPurpose";
+  @javax.annotation.Nonnull
   private String proofPurpose;
 
   public static final String JSON_PROPERTY_JWS = "jws";
+  @javax.annotation.Nullable
   private JsonNullable<String> jws = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_PROOF_VALUE = "proofValue";
+  @javax.annotation.Nullable
   private JsonNullable<String> proofValue = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_NONCE = "nonce";
+  @javax.annotation.Nullable
   private JsonNullable<String> nonce = JsonNullable.<String>undefined();
 
   public W3cProof() {
   }
 
-  public W3cProof type(String type) {
+  public W3cProof type(@javax.annotation.Nullable String type) {
     this.type = JsonNullable.<String>of(type);
     
     return this;
@@ -97,11 +104,11 @@ public class W3cProof {
     this.type = type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nullable String type) {
     this.type = JsonNullable.<String>of(type);
   }
 
-  public W3cProof created(String created) {
+  public W3cProof created(@javax.annotation.Nullable String created) {
     this.created = JsonNullable.<String>of(created);
     
     return this;
@@ -130,11 +137,11 @@ public class W3cProof {
     this.created = created;
   }
 
-  public void setCreated(String created) {
+  public void setCreated(@javax.annotation.Nullable String created) {
     this.created = JsonNullable.<String>of(created);
   }
 
-  public W3cProof verificationMethod(String verificationMethod) {
+  public W3cProof verificationMethod(@javax.annotation.Nonnull String verificationMethod) {
     
     this.verificationMethod = verificationMethod;
     return this;
@@ -155,11 +162,11 @@ public class W3cProof {
 
   @JsonProperty(JSON_PROPERTY_VERIFICATION_METHOD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVerificationMethod(String verificationMethod) {
+  public void setVerificationMethod(@javax.annotation.Nonnull String verificationMethod) {
     this.verificationMethod = verificationMethod;
   }
 
-  public W3cProof proofPurpose(String proofPurpose) {
+  public W3cProof proofPurpose(@javax.annotation.Nonnull String proofPurpose) {
     
     this.proofPurpose = proofPurpose;
     return this;
@@ -180,11 +187,11 @@ public class W3cProof {
 
   @JsonProperty(JSON_PROPERTY_PROOF_PURPOSE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setProofPurpose(String proofPurpose) {
+  public void setProofPurpose(@javax.annotation.Nonnull String proofPurpose) {
     this.proofPurpose = proofPurpose;
   }
 
-  public W3cProof jws(String jws) {
+  public W3cProof jws(@javax.annotation.Nullable String jws) {
     this.jws = JsonNullable.<String>of(jws);
     
     return this;
@@ -213,11 +220,11 @@ public class W3cProof {
     this.jws = jws;
   }
 
-  public void setJws(String jws) {
+  public void setJws(@javax.annotation.Nullable String jws) {
     this.jws = JsonNullable.<String>of(jws);
   }
 
-  public W3cProof proofValue(String proofValue) {
+  public W3cProof proofValue(@javax.annotation.Nullable String proofValue) {
     this.proofValue = JsonNullable.<String>of(proofValue);
     
     return this;
@@ -246,11 +253,11 @@ public class W3cProof {
     this.proofValue = proofValue;
   }
 
-  public void setProofValue(String proofValue) {
+  public void setProofValue(@javax.annotation.Nullable String proofValue) {
     this.proofValue = JsonNullable.<String>of(proofValue);
   }
 
-  public W3cProof nonce(String nonce) {
+  public W3cProof nonce(@javax.annotation.Nullable String nonce) {
     this.nonce = JsonNullable.<String>of(nonce);
     
     return this;
@@ -279,7 +286,7 @@ public class W3cProof {
     this.nonce = nonce;
   }
 
-  public void setNonce(String nonce) {
+  public void setNonce(@javax.annotation.Nullable String nonce) {
     this.nonce = JsonNullable.<String>of(nonce);
   }
 

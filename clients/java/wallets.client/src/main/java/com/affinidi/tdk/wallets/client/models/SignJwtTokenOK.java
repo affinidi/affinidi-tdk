@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignJwtTokenOK.JSON_PROPERTY_SIGNED_JWT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignJwtTokenOK {
   public static final String JSON_PROPERTY_SIGNED_JWT = "signedJwt";
+  @javax.annotation.Nullable
   private String signedJwt;
 
   public SignJwtTokenOK() {
   }
 
-  public SignJwtTokenOK signedJwt(String signedJwt) {
+  public SignJwtTokenOK signedJwt(@javax.annotation.Nullable String signedJwt) {
     
     this.signedJwt = signedJwt;
     return this;
@@ -61,7 +62,7 @@ public class SignJwtTokenOK {
 
   @JsonProperty(JSON_PROPERTY_SIGNED_JWT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSignedJwt(String signedJwt) {
+  public void setSignedJwt(@javax.annotation.Nullable String signedJwt) {
     this.signedJwt = signedJwt;
   }
 

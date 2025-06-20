@@ -34,21 +34,24 @@ import java.util.StringJoiner;
   SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_REVOCABLE,
   SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_DISCLOSURE_FRAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialsDm2SdJwtInputDto {
   public static final String JSON_PROPERTY_UNSIGNED_CREDENTIAL = "unsignedCredential";
+  @javax.annotation.Nonnull
   private Object unsignedCredential;
 
   public static final String JSON_PROPERTY_REVOCABLE = "revocable";
+  @javax.annotation.Nullable
   private Boolean revocable;
 
   public static final String JSON_PROPERTY_DISCLOSURE_FRAME = "disclosureFrame";
+  @javax.annotation.Nonnull
   private Object disclosureFrame;
 
   public SignCredentialsDm2SdJwtInputDto() {
   }
 
-  public SignCredentialsDm2SdJwtInputDto unsignedCredential(Object unsignedCredential) {
+  public SignCredentialsDm2SdJwtInputDto unsignedCredential(@javax.annotation.Nonnull Object unsignedCredential) {
     
     this.unsignedCredential = unsignedCredential;
     return this;
@@ -69,11 +72,11 @@ public class SignCredentialsDm2SdJwtInputDto {
 
   @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setUnsignedCredential(Object unsignedCredential) {
+  public void setUnsignedCredential(@javax.annotation.Nonnull Object unsignedCredential) {
     this.unsignedCredential = unsignedCredential;
   }
 
-  public SignCredentialsDm2SdJwtInputDto revocable(Boolean revocable) {
+  public SignCredentialsDm2SdJwtInputDto revocable(@javax.annotation.Nullable Boolean revocable) {
     
     this.revocable = revocable;
     return this;
@@ -94,11 +97,11 @@ public class SignCredentialsDm2SdJwtInputDto {
 
   @JsonProperty(JSON_PROPERTY_REVOCABLE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRevocable(Boolean revocable) {
+  public void setRevocable(@javax.annotation.Nullable Boolean revocable) {
     this.revocable = revocable;
   }
 
-  public SignCredentialsDm2SdJwtInputDto disclosureFrame(Object disclosureFrame) {
+  public SignCredentialsDm2SdJwtInputDto disclosureFrame(@javax.annotation.Nonnull Object disclosureFrame) {
     
     this.disclosureFrame = disclosureFrame;
     return this;
@@ -119,7 +122,7 @@ public class SignCredentialsDm2SdJwtInputDto {
 
   @JsonProperty(JSON_PROPERTY_DISCLOSURE_FRAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDisclosureFrame(Object disclosureFrame) {
+  public void setDisclosureFrame(@javax.annotation.Nonnull Object disclosureFrame) {
     this.disclosureFrame = disclosureFrame;
   }
 

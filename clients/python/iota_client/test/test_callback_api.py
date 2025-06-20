@@ -25,7 +25,7 @@ class TestCallbackApi(unittest.TestCase):
         self.api = CallbackApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_iot_oidc4_vp_callback(self) -> None:
         """Test case for iot_oidc4_vp_callback

@@ -25,7 +25,7 @@ class TestConfigurationsApi(unittest.TestCase):
         self.api = ConfigurationsApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_create_iota_configuration(self) -> None:
         """Test case for create_iota_configuration

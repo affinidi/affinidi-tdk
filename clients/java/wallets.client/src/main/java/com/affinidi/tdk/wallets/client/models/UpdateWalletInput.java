@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   UpdateWalletInput.JSON_PROPERTY_NAME,
   UpdateWalletInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateWalletInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public UpdateWalletInput() {
   }
 
-  public UpdateWalletInput name(String name) {
+  public UpdateWalletInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -65,11 +67,11 @@ public class UpdateWalletInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public UpdateWalletInput description(String description) {
+  public UpdateWalletInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -90,7 +92,7 @@ public class UpdateWalletInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

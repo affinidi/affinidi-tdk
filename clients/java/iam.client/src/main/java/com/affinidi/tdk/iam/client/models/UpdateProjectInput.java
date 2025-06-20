@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   UpdateProjectInput.JSON_PROPERTY_NAME,
   UpdateProjectInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateProjectInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public UpdateProjectInput() {
   }
 
-  public UpdateProjectInput name(String name) {
+  public UpdateProjectInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -65,11 +67,11 @@ public class UpdateProjectInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public UpdateProjectInput description(String description) {
+  public UpdateProjectInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -90,7 +92,7 @@ public class UpdateProjectInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

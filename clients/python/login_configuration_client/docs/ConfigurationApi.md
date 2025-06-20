@@ -17,7 +17,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 
 Create a new login configuration
 
-Create a new login configuration `vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions. An essential default definition is in place when it comes to the login process for end users using the Chrome extension. This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
+Create a new login configuration
+
+`vpDefinition` and `idTokenMapping` have default settings that provide user email VP presentation definitions.
+
+An essential default definition is in place when it comes to the login process for end users using the Chrome extension.
+
+This definition requires users to input their email address as OIDCVP compliant, which is then verified by the Affinidi verification service.
 
 ### Example
 

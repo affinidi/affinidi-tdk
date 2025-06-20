@@ -24,6 +24,6 @@
 
 ## Enum: HttpStatusCodeEnum
 
-| Name       | Value                           |
-| ---------- | ------------------------------- |
-| NUMBER_424 | new BigDecimal(&quot;424&quot;) |
+| Name       | Value |
+| ---------- | ----- |
+| NUMBER_424 | 424   |

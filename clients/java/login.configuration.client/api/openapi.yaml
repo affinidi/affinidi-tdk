@@ -1582,11 +1582,7 @@ components:
       content:
         application/json:
           schema:
-            oneOf:
-              - $ref: '#/components/schemas/InvalidParameterError'
-              - $ref: '#/components/schemas/VPTokenValidationError'
-              - $ref: '#/components/schemas/InvalidClaimContextError'
-              - $ref: '#/components/schemas/InvalidVPTokenCreationTimeError'
+            $ref: '#/components/schemas/inline_object'
       description: BadRequestError
       headers:
         Access-Control-Allow-Origin:
@@ -2538,7 +2534,7 @@ components:
             location: location
             value: value
         message: 'Invalid parameter: ${param}.'
-        httpStatusCode: 0.8008281904610115
+        httpStatusCode: 0
       properties:
         name:
           enum:
@@ -2551,7 +2547,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -2579,7 +2575,7 @@ components:
             location: location
             value: value
         message: 'Not found: ${param}.'
-        httpStatusCode: 0.8008281904610115
+        httpStatusCode: 0
       properties:
         name:
           enum:
@@ -2592,7 +2588,7 @@ components:
         httpStatusCode:
           enum:
             - 404
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3100,7 +3096,7 @@ components:
             location: location
             value: value
         message: Failed to create resources.
-        httpStatusCode: 0.8008281904610115
+        httpStatusCode: 0
       properties:
         name:
           enum:
@@ -3113,7 +3109,7 @@ components:
         httpStatusCode:
           enum:
             - 424
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3141,7 +3137,7 @@ components:
             location: location
             value: value
         message: Amount of groups per user is limited.
-        httpStatusCode: 0.8008281904610115
+        httpStatusCode: 0
       properties:
         name:
           enum:
@@ -3154,7 +3150,7 @@ components:
         httpStatusCode:
           enum:
             - 409
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3182,7 +3178,7 @@ components:
             location: location
             value: value
         message: Principal can not execute action on given resource
-        httpStatusCode: 6.027456183070403
+        httpStatusCode: 6
       properties:
         name:
           enum:
@@ -3195,7 +3191,7 @@ components:
         httpStatusCode:
           enum:
             - 403
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3222,7 +3218,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3324,7 +3320,7 @@ components:
             location: location
             value: value
         message: Invalid groups names
-        httpStatusCode: 0.8008281904610115
+        httpStatusCode: 0
       properties:
         name:
           enum:
@@ -3337,7 +3333,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3364,7 +3360,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3391,7 +3387,7 @@ components:
         httpStatusCode:
           enum:
             - 401
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3436,7 +3432,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3463,7 +3459,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3490,7 +3486,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3517,7 +3513,7 @@ components:
         httpStatusCode:
           enum:
             - 400
-          type: number
+          type: integer
         traceId:
           type: string
         details:
@@ -3748,6 +3744,12 @@ components:
         - credential_configuration_id
         - type
       type: object
+    inline_object:
+      oneOf:
+        - $ref: '#/components/schemas/InvalidParameterError'
+        - $ref: '#/components/schemas/VPTokenValidationError'
+        - $ref: '#/components/schemas/InvalidClaimContextError'
+        - $ref: '#/components/schemas/InvalidVPTokenCreationTimeError'
   securitySchemes:
     AwsSigV4:
       in: header

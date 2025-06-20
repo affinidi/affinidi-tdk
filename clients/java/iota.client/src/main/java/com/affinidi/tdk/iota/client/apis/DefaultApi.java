@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DefaultApi extends BaseApi {
 
   public DefaultApi() {
@@ -53,7 +53,7 @@ public class DefaultApi extends BaseApi {
    * @return ListLoggedConsentsOK
    * @throws ApiException if fails to make API call
    */
-  public ListLoggedConsentsOK listLoggedConsents(String configurationId, String userId, Integer limit, String exclusiveStartKey) throws ApiException {
+  public ListLoggedConsentsOK listLoggedConsents(@javax.annotation.Nullable String configurationId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listLoggedConsents(configurationId, userId, limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -69,7 +69,7 @@ public class DefaultApi extends BaseApi {
    * @return ListLoggedConsentsOK
    * @throws ApiException if fails to make API call
    */
-  public ListLoggedConsentsOK listLoggedConsents(String configurationId, String userId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListLoggedConsentsOK listLoggedConsents(@javax.annotation.Nullable String configurationId, @javax.annotation.Nullable String userId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables

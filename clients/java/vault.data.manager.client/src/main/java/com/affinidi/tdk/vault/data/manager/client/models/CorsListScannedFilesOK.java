@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsListScannedFilesOK.JSON_PROPERTY_CORS_LIST_SCANNED_FILES_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsListScannedFilesOK {
   public static final String JSON_PROPERTY_CORS_LIST_SCANNED_FILES_OK = "corsListScannedFilesOk";
+  @javax.annotation.Nullable
   private String corsListScannedFilesOk;
 
   public CorsListScannedFilesOK() {
   }
 
-  public CorsListScannedFilesOK corsListScannedFilesOk(String corsListScannedFilesOk) {
+  public CorsListScannedFilesOK corsListScannedFilesOk(@javax.annotation.Nullable String corsListScannedFilesOk) {
     
     this.corsListScannedFilesOk = corsListScannedFilesOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsListScannedFilesOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_LIST_SCANNED_FILES_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsListScannedFilesOk(String corsListScannedFilesOk) {
+  public void setCorsListScannedFilesOk(@javax.annotation.Nullable String corsListScannedFilesOk) {
     this.corsListScannedFilesOk = corsListScannedFilesOk;
   }
 

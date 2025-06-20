@@ -33,18 +33,20 @@ import java.util.StringJoiner;
   WhoamiDto.JSON_PROPERTY_PRINCIPAL_ID,
   WhoamiDto.JSON_PROPERTY_PRINCIPAL_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WhoamiDto {
   public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
+  @javax.annotation.Nonnull
   private String principalId;
 
   public static final String JSON_PROPERTY_PRINCIPAL_TYPE = "principalType";
+  @javax.annotation.Nonnull
   private String principalType;
 
   public WhoamiDto() {
   }
 
-  public WhoamiDto principalId(String principalId) {
+  public WhoamiDto principalId(@javax.annotation.Nonnull String principalId) {
     
     this.principalId = principalId;
     return this;
@@ -65,11 +67,11 @@ public class WhoamiDto {
 
   @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipalId(String principalId) {
+  public void setPrincipalId(@javax.annotation.Nonnull String principalId) {
     this.principalId = principalId;
   }
 
-  public WhoamiDto principalType(String principalType) {
+  public WhoamiDto principalType(@javax.annotation.Nonnull String principalType) {
     
     this.principalType = principalType;
     return this;
@@ -90,7 +92,7 @@ public class WhoamiDto {
 
   @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipalType(String principalType) {
+  public void setPrincipalType(@javax.annotation.Nonnull String principalType) {
     this.principalType = principalType;
   }
 

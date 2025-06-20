@@ -37,21 +37,21 @@ class InvalidClaimContextError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidClaimContextError'):
+        if value not in ('InvalidClaimContextError',):
             raise ValueError("must be one of enum values ('InvalidClaimContextError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Invalid Claim Context'):
+        if value not in ('Invalid Claim Context',):
             raise ValueError("must be one of enum values ('Invalid Claim Context')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

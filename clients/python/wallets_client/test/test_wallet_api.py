@@ -25,7 +25,7 @@ class TestWalletApi(unittest.TestCase):
         self.api = WalletApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_create_wallet(self) -> None:
         """Test case for create_wallet

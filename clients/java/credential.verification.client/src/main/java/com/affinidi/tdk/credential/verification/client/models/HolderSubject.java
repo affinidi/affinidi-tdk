@@ -36,18 +36,19 @@ import java.util.StringJoiner;
   HolderSubject.JSON_PROPERTY_FIELD_ID,
   HolderSubject.JSON_PROPERTY_DIRECTIVE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class HolderSubject {
   public static final String JSON_PROPERTY_FIELD_ID = "field_id";
+  @javax.annotation.Nonnull
   private List<String> fieldId = new ArrayList<>();
 
   /**
    * Gets or Sets directive
    */
   public enum DirectiveEnum {
-    REQUIRED("required"),
+    REQUIRED(String.valueOf("required")),
     
-    PREFERRED("preferred");
+    PREFERRED(String.valueOf("preferred"));
 
     private String value;
 
@@ -77,12 +78,13 @@ public class HolderSubject {
   }
 
   public static final String JSON_PROPERTY_DIRECTIVE = "directive";
+  @javax.annotation.Nonnull
   private DirectiveEnum directive;
 
   public HolderSubject() {
   }
 
-  public HolderSubject fieldId(List<String> fieldId) {
+  public HolderSubject fieldId(@javax.annotation.Nonnull List<String> fieldId) {
     
     this.fieldId = fieldId;
     return this;
@@ -111,11 +113,11 @@ public class HolderSubject {
 
   @JsonProperty(JSON_PROPERTY_FIELD_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setFieldId(List<String> fieldId) {
+  public void setFieldId(@javax.annotation.Nonnull List<String> fieldId) {
     this.fieldId = fieldId;
   }
 
-  public HolderSubject directive(DirectiveEnum directive) {
+  public HolderSubject directive(@javax.annotation.Nonnull DirectiveEnum directive) {
     
     this.directive = directive;
     return this;
@@ -136,7 +138,7 @@ public class HolderSubject {
 
   @JsonProperty(JSON_PROPERTY_DIRECTIVE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDirective(DirectiveEnum directive) {
+  public void setDirective(@javax.annotation.Nonnull DirectiveEnum directive) {
     this.directive = directive;
   }
 

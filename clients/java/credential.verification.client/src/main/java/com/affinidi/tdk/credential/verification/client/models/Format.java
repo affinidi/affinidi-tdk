@@ -39,30 +39,36 @@ import java.util.StringJoiner;
   Format.JSON_PROPERTY_LDP_VC,
   Format.JSON_PROPERTY_LDP_VP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Format {
   public static final String JSON_PROPERTY_JWT = "jwt";
+  @javax.annotation.Nullable
   private JwtObject jwt;
 
   public static final String JSON_PROPERTY_JWT_VC = "jwt_vc";
+  @javax.annotation.Nullable
   private JwtObject jwtVc;
 
   public static final String JSON_PROPERTY_JWT_VP = "jwt_vp";
+  @javax.annotation.Nullable
   private JwtObject jwtVp;
 
   public static final String JSON_PROPERTY_LDP = "ldp";
+  @javax.annotation.Nullable
   private LdpObject ldp;
 
   public static final String JSON_PROPERTY_LDP_VC = "ldp_vc";
+  @javax.annotation.Nullable
   private LdpObject ldpVc;
 
   public static final String JSON_PROPERTY_LDP_VP = "ldp_vp";
+  @javax.annotation.Nullable
   private LdpObject ldpVp;
 
   public Format() {
   }
 
-  public Format jwt(JwtObject jwt) {
+  public Format jwt(@javax.annotation.Nullable JwtObject jwt) {
     
     this.jwt = jwt;
     return this;
@@ -83,11 +89,11 @@ public class Format {
 
   @JsonProperty(JSON_PROPERTY_JWT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJwt(JwtObject jwt) {
+  public void setJwt(@javax.annotation.Nullable JwtObject jwt) {
     this.jwt = jwt;
   }
 
-  public Format jwtVc(JwtObject jwtVc) {
+  public Format jwtVc(@javax.annotation.Nullable JwtObject jwtVc) {
     
     this.jwtVc = jwtVc;
     return this;
@@ -108,11 +114,11 @@ public class Format {
 
   @JsonProperty(JSON_PROPERTY_JWT_VC)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJwtVc(JwtObject jwtVc) {
+  public void setJwtVc(@javax.annotation.Nullable JwtObject jwtVc) {
     this.jwtVc = jwtVc;
   }
 
-  public Format jwtVp(JwtObject jwtVp) {
+  public Format jwtVp(@javax.annotation.Nullable JwtObject jwtVp) {
     
     this.jwtVp = jwtVp;
     return this;
@@ -133,11 +139,11 @@ public class Format {
 
   @JsonProperty(JSON_PROPERTY_JWT_VP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setJwtVp(JwtObject jwtVp) {
+  public void setJwtVp(@javax.annotation.Nullable JwtObject jwtVp) {
     this.jwtVp = jwtVp;
   }
 
-  public Format ldp(LdpObject ldp) {
+  public Format ldp(@javax.annotation.Nullable LdpObject ldp) {
     
     this.ldp = ldp;
     return this;
@@ -158,11 +164,11 @@ public class Format {
 
   @JsonProperty(JSON_PROPERTY_LDP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLdp(LdpObject ldp) {
+  public void setLdp(@javax.annotation.Nullable LdpObject ldp) {
     this.ldp = ldp;
   }
 
-  public Format ldpVc(LdpObject ldpVc) {
+  public Format ldpVc(@javax.annotation.Nullable LdpObject ldpVc) {
     
     this.ldpVc = ldpVc;
     return this;
@@ -183,11 +189,11 @@ public class Format {
 
   @JsonProperty(JSON_PROPERTY_LDP_VC)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLdpVc(LdpObject ldpVc) {
+  public void setLdpVc(@javax.annotation.Nullable LdpObject ldpVc) {
     this.ldpVc = ldpVc;
   }
 
-  public Format ldpVp(LdpObject ldpVp) {
+  public Format ldpVp(@javax.annotation.Nullable LdpObject ldpVp) {
     
     this.ldpVp = ldpVp;
     return this;
@@ -208,7 +214,7 @@ public class Format {
 
   @JsonProperty(JSON_PROPERTY_LDP_VP)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setLdpVp(LdpObject ldpVp) {
+  public void setLdpVp(@javax.annotation.Nullable LdpObject ldpVp) {
     this.ldpVp = ldpVp;
   }
 

@@ -37,21 +37,21 @@ class InvalidCredentialRequestError(BaseModel):
     @validator('name')
     def name_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('InvalidCredentialRequestError'):
+        if value not in ('InvalidCredentialRequestError',):
             raise ValueError("must be one of enum values ('InvalidCredentialRequestError')")
         return value
 
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Credential Request is invalid'):
+        if value not in ('Credential Request is invalid',):
             raise ValueError("must be one of enum values ('Credential Request is invalid')")
         return value
 
     @validator('http_status_code')
     def http_status_code_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in (400):
+        if value not in (400,):
             raise ValueError("must be one of enum values (400)")
         return value
 

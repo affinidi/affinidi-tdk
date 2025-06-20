@@ -47,42 +47,52 @@ import java.util.StringJoiner;
   UpdateLoginConfigurationInput.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD,
   UpdateLoginConfigurationInput.JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateLoginConfigurationInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_REDIRECT_URIS = "redirectUris";
+  @javax.annotation.Nullable
   private List<String> redirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS = "postLogoutRedirectUris";
+  @javax.annotation.Nullable
   private List<String> postLogoutRedirectUris = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_SECRET = "clientSecret";
+  @javax.annotation.Nullable
   private String clientSecret;
 
   public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
+  @javax.annotation.Nullable
   private String vpDefinition;
 
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+  @javax.annotation.Nullable
   private Object presentationDefinition;
 
   public static final String JSON_PROPERTY_ID_TOKEN_MAPPING = "idTokenMapping";
+  @javax.annotation.Nullable
   private List<IdTokenMappingItem> idTokenMapping = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CLIENT_METADATA = "clientMetadata";
+  @javax.annotation.Nullable
   private LoginConfigurationClientMetadataInput clientMetadata;
 
   public static final String JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD = "tokenEndpointAuthMethod";
+  @javax.annotation.Nullable
   private TokenEndpointAuthMethod tokenEndpointAuthMethod;
 
   public static final String JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT = "failOnMappingConflict";
+  @javax.annotation.Nullable
   private Boolean failOnMappingConflict;
 
   public UpdateLoginConfigurationInput() {
   }
 
-  public UpdateLoginConfigurationInput name(String name) {
+  public UpdateLoginConfigurationInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -103,11 +113,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public UpdateLoginConfigurationInput redirectUris(List<String> redirectUris) {
+  public UpdateLoginConfigurationInput redirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     
     this.redirectUris = redirectUris;
     return this;
@@ -136,11 +146,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setRedirectUris(List<String> redirectUris) {
+  public void setRedirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     this.redirectUris = redirectUris;
   }
 
-  public UpdateLoginConfigurationInput postLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public UpdateLoginConfigurationInput postLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     
     this.postLogoutRedirectUris = postLogoutRedirectUris;
     return this;
@@ -169,11 +179,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPostLogoutRedirectUris(List<String> postLogoutRedirectUris) {
+  public void setPostLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
   }
 
-  public UpdateLoginConfigurationInput clientSecret(String clientSecret) {
+  public UpdateLoginConfigurationInput clientSecret(@javax.annotation.Nullable String clientSecret) {
     
     this.clientSecret = clientSecret;
     return this;
@@ -194,11 +204,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientSecret(String clientSecret) {
+  public void setClientSecret(@javax.annotation.Nullable String clientSecret) {
     this.clientSecret = clientSecret;
   }
 
-  public UpdateLoginConfigurationInput vpDefinition(String vpDefinition) {
+  public UpdateLoginConfigurationInput vpDefinition(@javax.annotation.Nullable String vpDefinition) {
     
     this.vpDefinition = vpDefinition;
     return this;
@@ -219,11 +229,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setVpDefinition(String vpDefinition) {
+  public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
   }
 
-  public UpdateLoginConfigurationInput presentationDefinition(Object presentationDefinition) {
+  public UpdateLoginConfigurationInput presentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     
     this.presentationDefinition = presentationDefinition;
     return this;
@@ -244,11 +254,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationDefinition(Object presentationDefinition) {
+  public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
   }
 
-  public UpdateLoginConfigurationInput idTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
+  public UpdateLoginConfigurationInput idTokenMapping(@javax.annotation.Nullable List<IdTokenMappingItem> idTokenMapping) {
     
     this.idTokenMapping = idTokenMapping;
     return this;
@@ -277,11 +287,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIdTokenMapping(List<IdTokenMappingItem> idTokenMapping) {
+  public void setIdTokenMapping(@javax.annotation.Nullable List<IdTokenMappingItem> idTokenMapping) {
     this.idTokenMapping = idTokenMapping;
   }
 
-  public UpdateLoginConfigurationInput clientMetadata(LoginConfigurationClientMetadataInput clientMetadata) {
+  public UpdateLoginConfigurationInput clientMetadata(@javax.annotation.Nullable LoginConfigurationClientMetadataInput clientMetadata) {
     
     this.clientMetadata = clientMetadata;
     return this;
@@ -302,11 +312,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setClientMetadata(LoginConfigurationClientMetadataInput clientMetadata) {
+  public void setClientMetadata(@javax.annotation.Nullable LoginConfigurationClientMetadataInput clientMetadata) {
     this.clientMetadata = clientMetadata;
   }
 
-  public UpdateLoginConfigurationInput tokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
+  public UpdateLoginConfigurationInput tokenEndpointAuthMethod(@javax.annotation.Nullable TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
     return this;
@@ -327,11 +337,11 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setTokenEndpointAuthMethod(TokenEndpointAuthMethod tokenEndpointAuthMethod) {
+  public void setTokenEndpointAuthMethod(@javax.annotation.Nullable TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
   }
 
-  public UpdateLoginConfigurationInput failOnMappingConflict(Boolean failOnMappingConflict) {
+  public UpdateLoginConfigurationInput failOnMappingConflict(@javax.annotation.Nullable Boolean failOnMappingConflict) {
     
     this.failOnMappingConflict = failOnMappingConflict;
     return this;
@@ -352,7 +362,7 @@ public class UpdateLoginConfigurationInput {
 
   @JsonProperty(JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setFailOnMappingConflict(Boolean failOnMappingConflict) {
+  public void setFailOnMappingConflict(@javax.annotation.Nullable Boolean failOnMappingConflict) {
     this.failOnMappingConflict = failOnMappingConflict;
   }
 

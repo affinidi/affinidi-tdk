@@ -35,21 +35,24 @@ import java.util.StringJoiner;
   ProjectWithPolicyDto.JSON_PROPERTY_NAME,
   ProjectWithPolicyDto.JSON_PROPERTY_POLICY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ProjectWithPolicyDto {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_POLICY = "policy";
+  @javax.annotation.Nonnull
   private PolicyDto policy;
 
   public ProjectWithPolicyDto() {
   }
 
-  public ProjectWithPolicyDto id(String id) {
+  public ProjectWithPolicyDto id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -70,11 +73,11 @@ public class ProjectWithPolicyDto {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public ProjectWithPolicyDto name(String name) {
+  public ProjectWithPolicyDto name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -95,11 +98,11 @@ public class ProjectWithPolicyDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public ProjectWithPolicyDto policy(PolicyDto policy) {
+  public ProjectWithPolicyDto policy(@javax.annotation.Nonnull PolicyDto policy) {
     
     this.policy = policy;
     return this;
@@ -120,7 +123,7 @@ public class ProjectWithPolicyDto {
 
   @JsonProperty(JSON_PROPERTY_POLICY)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPolicy(PolicyDto policy) {
+  public void setPolicy(@javax.annotation.Nonnull PolicyDto policy) {
     this.policy = policy;
   }
 

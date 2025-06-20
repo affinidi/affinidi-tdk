@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CorsGetScannedFileInfoOK.JSON_PROPERTY_CORS_GET_SCANNED_FILE_INFO_OK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CorsGetScannedFileInfoOK {
   public static final String JSON_PROPERTY_CORS_GET_SCANNED_FILE_INFO_OK = "corsGetScannedFileInfoOk";
+  @javax.annotation.Nullable
   private String corsGetScannedFileInfoOk;
 
   public CorsGetScannedFileInfoOK() {
   }
 
-  public CorsGetScannedFileInfoOK corsGetScannedFileInfoOk(String corsGetScannedFileInfoOk) {
+  public CorsGetScannedFileInfoOK corsGetScannedFileInfoOk(@javax.annotation.Nullable String corsGetScannedFileInfoOk) {
     
     this.corsGetScannedFileInfoOk = corsGetScannedFileInfoOk;
     return this;
@@ -61,7 +62,7 @@ public class CorsGetScannedFileInfoOK {
 
   @JsonProperty(JSON_PROPERTY_CORS_GET_SCANNED_FILE_INFO_OK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCorsGetScannedFileInfoOk(String corsGetScannedFileInfoOk) {
+  public void setCorsGetScannedFileInfoOk(@javax.annotation.Nullable String corsGetScannedFileInfoOk) {
     this.corsGetScannedFileInfoOk = corsGetScannedFileInfoOk;
   }
 

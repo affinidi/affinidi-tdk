@@ -37,30 +37,36 @@ import java.util.StringJoiner;
   ProjectDto.JSON_PROPERTY_CREATED_AT,
   ProjectDto.JSON_PROPERTY_UPDATED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ProjectDto {
   public static final String JSON_PROPERTY_ID = "id";
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nonnull
   private String name;
 
   public static final String JSON_PROPERTY_OWNER_ID = "ownerId";
+  @javax.annotation.Nullable
   private String ownerId;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nullable
   private String createdAt;
 
   public static final String JSON_PROPERTY_UPDATED_AT = "updatedAt";
+  @javax.annotation.Nullable
   private String updatedAt;
 
   public ProjectDto() {
   }
 
-  public ProjectDto id(String id) {
+  public ProjectDto id(@javax.annotation.Nonnull String id) {
     
     this.id = id;
     return this;
@@ -81,11 +87,11 @@ public class ProjectDto {
 
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
-  public ProjectDto name(String name) {
+  public ProjectDto name(@javax.annotation.Nonnull String name) {
     
     this.name = name;
     return this;
@@ -106,11 +112,11 @@ public class ProjectDto {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public ProjectDto ownerId(String ownerId) {
+  public ProjectDto ownerId(@javax.annotation.Nullable String ownerId) {
     
     this.ownerId = ownerId;
     return this;
@@ -131,11 +137,11 @@ public class ProjectDto {
 
   @JsonProperty(JSON_PROPERTY_OWNER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setOwnerId(String ownerId) {
+  public void setOwnerId(@javax.annotation.Nullable String ownerId) {
     this.ownerId = ownerId;
   }
 
-  public ProjectDto description(String description) {
+  public ProjectDto description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -156,11 +162,11 @@ public class ProjectDto {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public ProjectDto createdAt(String createdAt) {
+  public ProjectDto createdAt(@javax.annotation.Nullable String createdAt) {
     
     this.createdAt = createdAt;
     return this;
@@ -181,11 +187,11 @@ public class ProjectDto {
 
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setCreatedAt(String createdAt) {
+  public void setCreatedAt(@javax.annotation.Nullable String createdAt) {
     this.createdAt = createdAt;
   }
 
-  public ProjectDto updatedAt(String updatedAt) {
+  public ProjectDto updatedAt(@javax.annotation.Nullable String updatedAt) {
     
     this.updatedAt = updatedAt;
     return this;
@@ -206,7 +212,7 @@ public class ProjectDto {
 
   @JsonProperty(JSON_PROPERTY_UPDATED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUpdatedAt(String updatedAt) {
+  public void setUpdatedAt(@javax.annotation.Nullable String updatedAt) {
     this.updatedAt = updatedAt;
   }
 

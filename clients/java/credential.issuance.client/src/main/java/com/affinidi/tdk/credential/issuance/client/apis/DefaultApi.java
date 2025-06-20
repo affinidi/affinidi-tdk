@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DefaultApi extends BaseApi {
 
   public DefaultApi() {
@@ -55,7 +55,7 @@ public class DefaultApi extends BaseApi {
    * @return FlowData
    * @throws ApiException if fails to make API call
    */
-  public FlowData changeCredentialStatus(String projectId, String configurationId, ChangeCredentialStatusInput changeCredentialStatusInput) throws ApiException {
+  public FlowData changeCredentialStatus(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull ChangeCredentialStatusInput changeCredentialStatusInput) throws ApiException {
     return this.changeCredentialStatus(projectId, configurationId, changeCredentialStatusInput, Collections.emptyMap());
   }
 
@@ -70,7 +70,7 @@ public class DefaultApi extends BaseApi {
    * @return FlowData
    * @throws ApiException if fails to make API call
    */
-  public FlowData changeCredentialStatus(String projectId, String configurationId, ChangeCredentialStatusInput changeCredentialStatusInput, Map<String, String> additionalHeaders) throws ApiException {
+  public FlowData changeCredentialStatus(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull ChangeCredentialStatusInput changeCredentialStatusInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = changeCredentialStatusInput;
     
     // verify the required parameter 'projectId' is set
@@ -146,7 +146,7 @@ public class DefaultApi extends BaseApi {
    * @return ListIssuanceRecordResponse
    * @throws ApiException if fails to make API call
    */
-  public ListIssuanceRecordResponse listIssuanceDataRecords(String projectId, String configurationId, Integer limit, String exclusiveStartKey) throws ApiException {
+  public ListIssuanceRecordResponse listIssuanceDataRecords(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
     return this.listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey, Collections.emptyMap());
   }
 
@@ -162,7 +162,7 @@ public class DefaultApi extends BaseApi {
    * @return ListIssuanceRecordResponse
    * @throws ApiException if fails to make API call
    */
-  public ListIssuanceRecordResponse listIssuanceDataRecords(String projectId, String configurationId, Integer limit, String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListIssuanceRecordResponse listIssuanceDataRecords(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set

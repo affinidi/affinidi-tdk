@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ConfigurationsApi extends BaseApi {
 
   public ConfigurationsApi() {
@@ -57,7 +57,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return IotaConfigurationDto
    * @throws ApiException if fails to make API call
    */
-  public IotaConfigurationDto createIotaConfiguration(CreateIotaConfigurationInput createIotaConfigurationInput) throws ApiException {
+  public IotaConfigurationDto createIotaConfiguration(@javax.annotation.Nonnull CreateIotaConfigurationInput createIotaConfigurationInput) throws ApiException {
     return this.createIotaConfiguration(createIotaConfigurationInput, Collections.emptyMap());
   }
 
@@ -70,7 +70,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return IotaConfigurationDto
    * @throws ApiException if fails to make API call
    */
-  public IotaConfigurationDto createIotaConfiguration(CreateIotaConfigurationInput createIotaConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
+  public IotaConfigurationDto createIotaConfiguration(@javax.annotation.Nonnull CreateIotaConfigurationInput createIotaConfigurationInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createIotaConfigurationInput;
     
     // verify the required parameter 'createIotaConfigurationInput' is set
@@ -130,7 +130,7 @@ public class ConfigurationsApi extends BaseApi {
    * @param configurationId ID of the Affinidi Iota Framework configuration. (required)
    * @throws ApiException if fails to make API call
    */
-  public void deleteIotaConfigurationById(String configurationId) throws ApiException {
+  public void deleteIotaConfigurationById(@javax.annotation.Nonnull String configurationId) throws ApiException {
     this.deleteIotaConfigurationById(configurationId, Collections.emptyMap());
   }
 
@@ -142,7 +142,7 @@ public class ConfigurationsApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @throws ApiException if fails to make API call
    */
-  public void deleteIotaConfigurationById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+  public void deleteIotaConfigurationById(@javax.annotation.Nonnull String configurationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -203,7 +203,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return IotaConfigurationDto
    * @throws ApiException if fails to make API call
    */
-  public IotaConfigurationDto getIotaConfigurationById(String configurationId) throws ApiException {
+  public IotaConfigurationDto getIotaConfigurationById(@javax.annotation.Nonnull String configurationId) throws ApiException {
     return this.getIotaConfigurationById(configurationId, Collections.emptyMap());
   }
 
@@ -216,7 +216,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return IotaConfigurationDto
    * @throws ApiException if fails to make API call
    */
-  public IotaConfigurationDto getIotaConfigurationById(String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+  public IotaConfigurationDto getIotaConfigurationById(@javax.annotation.Nonnull String configurationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'configurationId' is set
@@ -279,7 +279,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return GetIotaConfigurationMetaDataOK
    * @throws ApiException if fails to make API call
    */
-  public GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(String projectId, String configurationId) throws ApiException {
+  public GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId) throws ApiException {
     return this.getIotaConfigurationMetaData(projectId, configurationId, Collections.emptyMap());
   }
 
@@ -293,7 +293,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return GetIotaConfigurationMetaDataOK
    * @throws ApiException if fails to make API call
    */
-  public GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(String projectId, String configurationId, Map<String, String> additionalHeaders) throws ApiException {
+  public GetIotaConfigurationMetaDataOK getIotaConfigurationMetaData(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -429,7 +429,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return IotaConfigurationDto
    * @throws ApiException if fails to make API call
    */
-  public IotaConfigurationDto updateIotaConfigurationById(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput) throws ApiException {
+  public IotaConfigurationDto updateIotaConfigurationById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull UpdateConfigurationByIdInput updateConfigurationByIdInput) throws ApiException {
     return this.updateIotaConfigurationById(configurationId, updateConfigurationByIdInput, Collections.emptyMap());
   }
 
@@ -443,7 +443,7 @@ public class ConfigurationsApi extends BaseApi {
    * @return IotaConfigurationDto
    * @throws ApiException if fails to make API call
    */
-  public IotaConfigurationDto updateIotaConfigurationById(String configurationId, UpdateConfigurationByIdInput updateConfigurationByIdInput, Map<String, String> additionalHeaders) throws ApiException {
+  public IotaConfigurationDto updateIotaConfigurationById(@javax.annotation.Nonnull String configurationId, @javax.annotation.Nonnull UpdateConfigurationByIdInput updateConfigurationByIdInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateConfigurationByIdInput;
     
     // verify the required parameter 'configurationId' is set

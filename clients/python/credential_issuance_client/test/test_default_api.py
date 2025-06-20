@@ -25,7 +25,7 @@ class TestDefaultApi(unittest.TestCase):
         self.api = DefaultApi()
 
     def tearDown(self) -> None:
-        pass
+        self.api.api_client.close()
 
     def test_change_credential_status(self) -> None:
         """Test case for change_credential_status

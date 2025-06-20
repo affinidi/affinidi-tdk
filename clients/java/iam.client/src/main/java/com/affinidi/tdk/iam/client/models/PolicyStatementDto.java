@@ -38,24 +38,28 @@ import java.util.StringJoiner;
   PolicyStatementDto.JSON_PROPERTY_PRINCIPAL,
   PolicyStatementDto.JSON_PROPERTY_RESOURCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class PolicyStatementDto {
   public static final String JSON_PROPERTY_ACTION = "action";
+  @javax.annotation.Nonnull
   private List<String> action = new ArrayList<>();
 
   public static final String JSON_PROPERTY_EFFECT = "effect";
+  @javax.annotation.Nonnull
   private String effect;
 
   public static final String JSON_PROPERTY_PRINCIPAL = "principal";
+  @javax.annotation.Nonnull
   private List<String> principal = new ArrayList<>();
 
   public static final String JSON_PROPERTY_RESOURCE = "resource";
+  @javax.annotation.Nonnull
   private List<String> resource = new ArrayList<>();
 
   public PolicyStatementDto() {
   }
 
-  public PolicyStatementDto action(List<String> action) {
+  public PolicyStatementDto action(@javax.annotation.Nonnull List<String> action) {
     
     this.action = action;
     return this;
@@ -84,11 +88,11 @@ public class PolicyStatementDto {
 
   @JsonProperty(JSON_PROPERTY_ACTION)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAction(List<String> action) {
+  public void setAction(@javax.annotation.Nonnull List<String> action) {
     this.action = action;
   }
 
-  public PolicyStatementDto effect(String effect) {
+  public PolicyStatementDto effect(@javax.annotation.Nonnull String effect) {
     
     this.effect = effect;
     return this;
@@ -109,11 +113,11 @@ public class PolicyStatementDto {
 
   @JsonProperty(JSON_PROPERTY_EFFECT)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setEffect(String effect) {
+  public void setEffect(@javax.annotation.Nonnull String effect) {
     this.effect = effect;
   }
 
-  public PolicyStatementDto principal(List<String> principal) {
+  public PolicyStatementDto principal(@javax.annotation.Nonnull List<String> principal) {
     
     this.principal = principal;
     return this;
@@ -142,11 +146,11 @@ public class PolicyStatementDto {
 
   @JsonProperty(JSON_PROPERTY_PRINCIPAL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setPrincipal(List<String> principal) {
+  public void setPrincipal(@javax.annotation.Nonnull List<String> principal) {
     this.principal = principal;
   }
 
-  public PolicyStatementDto resource(List<String> resource) {
+  public PolicyStatementDto resource(@javax.annotation.Nonnull List<String> resource) {
     
     this.resource = resource;
     return this;
@@ -175,7 +179,7 @@ public class PolicyStatementDto {
 
   @JsonProperty(JSON_PROPERTY_RESOURCE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setResource(List<String> resource) {
+  public void setResource(@javax.annotation.Nonnull List<String> resource) {
     this.resource = resource;
   }
 

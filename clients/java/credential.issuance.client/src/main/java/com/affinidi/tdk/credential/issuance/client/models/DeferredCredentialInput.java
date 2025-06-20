@@ -32,15 +32,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   DeferredCredentialInput.JSON_PROPERTY_TRANSACTION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class DeferredCredentialInput {
   public static final String JSON_PROPERTY_TRANSACTION_ID = "transaction_id";
+  @javax.annotation.Nonnull
   private String transactionId;
 
   public DeferredCredentialInput() {
   }
 
-  public DeferredCredentialInput transactionId(String transactionId) {
+  public DeferredCredentialInput transactionId(@javax.annotation.Nonnull String transactionId) {
     
     this.transactionId = transactionId;
     return this;
@@ -61,7 +62,7 @@ public class DeferredCredentialInput {
 
   @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setTransactionId(String transactionId) {
+  public void setTransactionId(@javax.annotation.Nonnull String transactionId) {
     this.transactionId = transactionId;
   }
 

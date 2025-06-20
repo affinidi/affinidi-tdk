@@ -35,21 +35,23 @@ import java.util.StringJoiner;
   CreateWalletInput.JSON_PROPERTY_DID_METHOD,
   CreateWalletInput.JSON_PROPERTY_DID_WEB_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateWalletInput {
   public static final String JSON_PROPERTY_NAME = "name";
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
+  @javax.annotation.Nullable
   private String description;
 
   /**
    * Define how DID of your wallet is created and resolved
    */
   public enum DidMethodEnum {
-    KEY("key"),
+    KEY(String.valueOf("key")),
     
-    WEB("web");
+    WEB(String.valueOf("web"));
 
     private String value;
 
@@ -79,15 +81,17 @@ public class CreateWalletInput {
   }
 
   public static final String JSON_PROPERTY_DID_METHOD = "didMethod";
+  @javax.annotation.Nonnull
   private DidMethodEnum didMethod;
 
   public static final String JSON_PROPERTY_DID_WEB_URL = "didWebUrl";
+  @javax.annotation.Nullable
   private String didWebUrl;
 
   public CreateWalletInput() {
   }
 
-  public CreateWalletInput name(String name) {
+  public CreateWalletInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -108,11 +112,11 @@ public class CreateWalletInput {
 
   @JsonProperty(JSON_PROPERTY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public CreateWalletInput description(String description) {
+  public CreateWalletInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -133,11 +137,11 @@ public class CreateWalletInput {
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDescription(String description) {
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public CreateWalletInput didMethod(DidMethodEnum didMethod) {
+  public CreateWalletInput didMethod(@javax.annotation.Nonnull DidMethodEnum didMethod) {
     
     this.didMethod = didMethod;
     return this;
@@ -158,11 +162,11 @@ public class CreateWalletInput {
 
   @JsonProperty(JSON_PROPERTY_DID_METHOD)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDidMethod(DidMethodEnum didMethod) {
+  public void setDidMethod(@javax.annotation.Nonnull DidMethodEnum didMethod) {
     this.didMethod = didMethod;
   }
 
-  public CreateWalletInput didWebUrl(String didWebUrl) {
+  public CreateWalletInput didWebUrl(@javax.annotation.Nullable String didWebUrl) {
     
     this.didWebUrl = didWebUrl;
     return this;
@@ -183,7 +187,7 @@ public class CreateWalletInput {
 
   @JsonProperty(JSON_PROPERTY_DID_WEB_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDidWebUrl(String didWebUrl) {
+  public void setDidWebUrl(@javax.annotation.Nullable String didWebUrl) {
     this.didWebUrl = didWebUrl;
   }
 

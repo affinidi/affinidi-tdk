@@ -35,15 +35,16 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   GroupNamesInput.JSON_PROPERTY_GROUP_NAMES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class GroupNamesInput {
   public static final String JSON_PROPERTY_GROUP_NAMES = "groupNames";
+  @javax.annotation.Nonnull
   private List<String> groupNames = new ArrayList<>();
 
   public GroupNamesInput() {
   }
 
-  public GroupNamesInput groupNames(List<String> groupNames) {
+  public GroupNamesInput groupNames(@javax.annotation.Nonnull List<String> groupNames) {
     
     this.groupNames = groupNames;
     return this;
@@ -72,7 +73,7 @@ public class GroupNamesInput {
 
   @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGroupNames(List<String> groupNames) {
+  public void setGroupNames(@javax.annotation.Nonnull List<String> groupNames) {
     this.groupNames = groupNames;
   }
 

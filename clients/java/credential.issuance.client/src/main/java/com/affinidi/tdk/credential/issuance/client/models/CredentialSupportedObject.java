@@ -36,24 +36,28 @@ import java.util.StringJoiner;
   CredentialSupportedObject.JSON_PROPERTY_JSON_LD_CONTEXT_URL,
   CredentialSupportedObject.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.9.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CredentialSupportedObject {
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
+  @javax.annotation.Nonnull
   private String credentialTypeId;
 
   public static final String JSON_PROPERTY_JSON_SCHEMA_URL = "jsonSchemaUrl";
+  @javax.annotation.Nonnull
   private String jsonSchemaUrl;
 
   public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
+  @javax.annotation.Nonnull
   private String jsonLdContextUrl;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
+  @javax.annotation.Nullable
   private SupportedCredentialMetadata metadata;
 
   public CredentialSupportedObject() {
   }
 
-  public CredentialSupportedObject credentialTypeId(String credentialTypeId) {
+  public CredentialSupportedObject credentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     
     this.credentialTypeId = credentialTypeId;
     return this;
@@ -74,11 +78,11 @@ public class CredentialSupportedObject {
 
   @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentialTypeId(String credentialTypeId) {
+  public void setCredentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
   }
 
-  public CredentialSupportedObject jsonSchemaUrl(String jsonSchemaUrl) {
+  public CredentialSupportedObject jsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     
     this.jsonSchemaUrl = jsonSchemaUrl;
     return this;
@@ -99,11 +103,11 @@ public class CredentialSupportedObject {
 
   @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonSchemaUrl(String jsonSchemaUrl) {
+  public void setJsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
   }
 
-  public CredentialSupportedObject jsonLdContextUrl(String jsonLdContextUrl) {
+  public CredentialSupportedObject jsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     
     this.jsonLdContextUrl = jsonLdContextUrl;
     return this;
@@ -124,11 +128,11 @@ public class CredentialSupportedObject {
 
   @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setJsonLdContextUrl(String jsonLdContextUrl) {
+  public void setJsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
 
-  public CredentialSupportedObject metadata(SupportedCredentialMetadata metadata) {
+  public CredentialSupportedObject metadata(@javax.annotation.Nullable SupportedCredentialMetadata metadata) {
     
     this.metadata = metadata;
     return this;
@@ -149,7 +153,7 @@ public class CredentialSupportedObject {
 
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setMetadata(SupportedCredentialMetadata metadata) {
+  public void setMetadata(@javax.annotation.Nullable SupportedCredentialMetadata metadata) {
     this.metadata = metadata;
   }
 

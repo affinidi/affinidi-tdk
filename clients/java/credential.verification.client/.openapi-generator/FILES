@@ -54,6 +54,8 @@ src/main/java/com/affinidi/tdk/credential/verification/client/Configuration.java
 src/main/java/com/affinidi/tdk/credential/verification/client/JavaTimeFormatter.java
 src/main/java/com/affinidi/tdk/credential/verification/client/Pair.java
 src/main/java/com/affinidi/tdk/credential/verification/client/RFC3339DateFormat.java
+src/main/java/com/affinidi/tdk/credential/verification/client/RFC3339InstantDeserializer.java
+src/main/java/com/affinidi/tdk/credential/verification/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/credential/verification/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/credential/verification/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/credential/verification/client/StringUtil.java
