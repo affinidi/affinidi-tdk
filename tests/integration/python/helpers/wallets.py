@@ -1,7 +1,7 @@
 import json
 from .auth import get_client_configuration
 from .utils import generate_random_string
-from affinidi_tdk_wallets_client import WalletApi, ApiClient, CreateWalletInput, Configuration, DidWebInputParams, DidKeyInputParams
+from affinidi_tdk_wallets_client import WalletApi, ApiClient, CreateWalletInput, Configuration#, DidWebInputParams, DidKeyInputParams
 
 def create_wallet(did_web=False):
     config = get_client_configuration(Configuration)
@@ -10,11 +10,10 @@ def create_wallet(did_web=False):
 
         if did_web:
             random_name = generate_random_string()
-            input = DidWebInputParams(did_method="web", did_web_url=f"{random_name}.com")
+            create_wallet_input = CreateWalletInput(did_method="web", did_web_url=f"{random_name}.com")
         else:
-            input = DidKeyInputParams(did_method="key")
+            create_wallet_input = CreateWalletInput(did_method="key")
 
-        create_wallet_input = CreateWalletInput(input)
         response = api_instance.create_wallet(create_wallet_input=create_wallet_input)
         return json.loads(response.json())['wallet']
 

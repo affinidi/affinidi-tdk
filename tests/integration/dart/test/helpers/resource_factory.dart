@@ -28,18 +28,13 @@ class ResourceFactory {
         authTokenHook: ResourceFactory.getAuthTokenHook());
     final walletApi = apiClient.getWalletApi();
 
-    final builder = CreateWalletInputBuilder();
-
-    final didKeyInputBuilder = DidKeyInputParamsBuilder();
-    final didWebInputBuilder = DidWebInputParamsBuilder()
-      ..didMethod = DidWebInputParamsDidMethodEnum.web
+    final didKeyInputBuilder = CreateWalletInputBuilder()
+      ..didMethod = CreateWalletInputDidMethodEnum.key;
+    final didWebInputBuilder = CreateWalletInputBuilder()
+      ..didMethod = CreateWalletInputDidMethodEnum.web
       ..didWebUrl = '${randomString()}.com';
 
-    builder.oneOf = didWeb
-        ? OneOf2<DidKeyInputParams, DidWebInputParams>(
-            value: didWebInputBuilder.build(), typeIndex: 1)
-        : OneOf2<DidKeyInputParams, DidWebInputParams>(
-            value: didKeyInputBuilder.build(), typeIndex: 0);
+    final builder = didWeb ? didWebInputBuilder : didKeyInputBuilder;
 
     final createdWallet =
         (await walletApi.createWallet(createWalletInput: builder.build())).data;

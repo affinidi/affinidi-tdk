@@ -1,4 +1,5 @@
-import helpers.TestUtils;
+import helpers.AuthUtils;
+import helpers.Env;
 import com.affinidi.tdk.credential.issuance.client.*;
 import com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth;
 import com.affinidi.tdk.credential.issuance.client.apis.*;
@@ -11,6 +12,11 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Integration tests for Credential Issuance Client.
+ * NOTE: due to limit of 1 config per project, CRUD is not covered.
+ * Covers end-to-end flow: issuance → offer → failure on unclaimed credential retrieval.
+ */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CredentialIssuanceClientIT {
@@ -26,11 +32,11 @@ public class CredentialIssuanceClientIT {
 
     @BeforeAll
     void setUp() {
-        projectId = TestUtils.getEnv("PROJECT_ID");
+        projectId = Env.get("PROJECT_ID");
 
         ApiClient client = Configuration.getDefaultApiClient();
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
-        auth.setApiKeySupplier(TestUtils.createTokenSupplier());
+        auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 
         configurationApi = new ConfigurationApi(client);
         issuanceApi = new IssuanceApi(client);
@@ -43,31 +49,31 @@ public class CredentialIssuanceClientIT {
     void shouldListIssuanceConfigurations() throws Exception {
         IssuanceConfigListResponse response = configurationApi.getIssuanceConfigList();
 
-        assertNotNull(response);
-        assertFalse(response.getConfigurations().isEmpty());
+        assertNotNull(response, "Issuance config list response should not be null");
+        assertFalse(response.getConfigurations().isEmpty(), "Issuance configurations should not be empty");
 
         configurationId = response.getConfigurations().get(0).getId();
     }
 
     @Test
-    @Order(2)
     void shouldGetIssuanceConfigurationById() throws Exception {
-        assertNotNull(configurationId);
+        assertNotNull(configurationId, "Configuration ID should defined");
+
         IssuanceConfigDto config = configurationApi.getIssuanceConfigById(configurationId);
 
-        assertNotNull(config.getId());
-        assertNotNull(config.getIssuerWalletId());
-        assertNotNull(config.getCredentialSupported());
+        assertNotNull(config.getId(), "Config ID should not be null");
+        assertNotNull(config.getIssuerWalletId(), "Issuer Wallet ID should not be null");
+        assertNotNull(config.getCredentialSupported(), "Credential types should not be null");
     }
 
     @Test
-    @Order(3)
+    @Order(2)
     void shouldStartIssuance() throws Exception {
-        StartIssuanceInput input = new StartIssuanceInput();
-        input.setClaimMode(StartIssuanceInput.ClaimModeEnum.TX_CODE);
+        StartIssuanceInput input = new StartIssuanceInput()
+            .claimMode(StartIssuanceInput.ClaimModeEnum.TX_CODE);
 
-        StartIssuanceInputDataInner data = new StartIssuanceInputDataInner();
-        data.setCredentialTypeId("TSimpleBioV1R0");
+        StartIssuanceInputDataInner data = new StartIssuanceInputDataInner()
+            .credentialTypeId("TSimpleBioV1R0");
 
         Map<String, Object> credentialData = new HashMap<>();
         credentialData.put("firstName", "John");
@@ -78,41 +84,44 @@ public class CredentialIssuanceClientIT {
 
         StartIssuanceResponse response = issuanceApi.startIssuance(projectId, input);
 
-        assertNotNull(response);
+        assertNotNull(response, "Issuance response should not be null");
         issuanceId = response.getIssuanceId();
-        assertNotNull(issuanceId);
+        assertNotNull(issuanceId, "Issuance ID should not be null");
+    }
+
+    @Test
+    @Order(3)
+    void shouldListProjectIssuances() throws Exception {
+        ListIssuanceResponse response = issuanceApi.listIssuance(projectId);
+
+        assertNotNull(response, "Project issuance list response should not be null");
+        assertFalse(response.getIssuances().isEmpty(), "There should be at least one issuance");
     }
 
     @Test
     @Order(4)
-    void shouldListProjectIssuances() throws Exception {
-        ListIssuanceResponse response = issuanceApi.listIssuance(projectId);
+    void shouldGetCredentialOffer() throws Exception {
+        assertNotNull(issuanceId, "Issuance ID should be available from startIssuance test");
 
-        assertNotNull(response);
-        assertFalse(response.getIssuances().isEmpty());
+        CredentialOfferResponse offer = offerApi.getCredentialOffer(projectId, issuanceId);
+
+        assertNotNull(offer, "Credential offer should not be null");
+        assertNotNull(offer.getCredentialIssuer(), "Credential issuer should be present in offer");
     }
 
     @Test
     @Order(5)
-    void shouldGetCredentialOffer() throws Exception {
-        assertNotNull(issuanceId);
-
-        CredentialOfferResponse offer = offerApi.getCredentialOffer(projectId, issuanceId);
-
-        assertNotNull(offer);
-        assertNotNull(offer.getCredentialIssuer());
-    }
-
-    @Test
-    @Order(6)
     void shouldFailToGetClaimedCredentialForUnclaimedIssuance() throws Exception {
-        assertNotNull(issuanceId);
-        try {
-            credentialsApi.getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId);
-            fail("Expected ApiException for unclaimed credential");
-        } catch (ApiException e) {
-            assertEquals(404, e.getCode());
-            assertTrue(e.getMessage().contains("No claimed credential found"));
-        }
+        assertNotNull(issuanceId, "Issuance ID should not be null");
+
+        ApiException thrown = assertThrows(
+            ApiException.class,
+            () -> credentialsApi.getIssuanceIdClaimedCredential(projectId, configurationId, issuanceId),
+            "Expected ApiException due to unclaimed issuance"
+        );
+
+        assertEquals(404, thrown.getCode(), "Expected HTTP 404 for unclaimed credential");
+        assertTrue(thrown.getMessage().contains("No claimed credential found"),
+            "Expected message to indicate no claimed credential");
     }
 }
