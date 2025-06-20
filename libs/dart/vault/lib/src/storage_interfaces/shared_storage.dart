@@ -1,7 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:ssi/ssi.dart';
-
 import '../../affinidi_tdk_vault.dart';
 
 /// Interface for managing shared storage operations, including files, folders, and credentials.
