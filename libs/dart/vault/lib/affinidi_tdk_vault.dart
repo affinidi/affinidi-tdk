@@ -2,7 +2,8 @@
 library;
 
 export 'package:affinidi_tdk_common/affinidi_tdk_common.dart' show TdkException;
-export 'package:ssi/ssi.dart' show KeyStore, StoredKey;
+export 'package:ssi/ssi.dart'
+    show KeyStore, StoredKey, UniversalParser, VerifiableCredential;
 
 export 'src/digital_credential.dart';
 export 'src/dto/shared_profile_dto.dart';

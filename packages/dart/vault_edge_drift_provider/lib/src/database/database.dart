@@ -9,6 +9,7 @@ part 'database.g.dart';
     Profiles,
     Items,
     FileContents,
+    Credentials,
   ],
 )
 
@@ -107,6 +108,19 @@ class FileContents extends Table {
   TextColumn get id => text().references(Items, #id)();
 
   /// The actual file content as a blob
+  BlobColumn get content => blob()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// Table definition to hold credential data
+@DataClassName('Credential')
+class Credentials extends Table {
+  /// A credential identifier - same as the credential item id
+  TextColumn get id => text().references(Items, #id)();
+
+  /// The actual credential data as a blob
   BlobColumn get content => blob()();
 
   @override

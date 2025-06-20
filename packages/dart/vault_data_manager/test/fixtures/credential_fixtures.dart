@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:ssi/ssi.dart';
 
 class CredentialFixtures {
   static Map<String, dynamic> mockVCJson() => {

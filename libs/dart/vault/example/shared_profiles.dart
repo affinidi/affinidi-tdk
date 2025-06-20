@@ -96,11 +96,11 @@ void main() async {
 
   // Create Alice
   accountIndexAlice =
-      await _createProfile(vaultAlice, 'Alice', accountIndexAlice);
+      await _createProfile(vaultAlice, 'Maram', accountIndexAlice);
   final aliceAccountIndex = accountIndexAlice;
 
   // Create Bob
-  accountIndexBob = await _createProfile(vaultBob, 'Bob', accountIndexBob);
+  accountIndexBob = await _createProfile(vaultBob, 'Naram', accountIndexBob);
   final bobAccountIndex = accountIndexBob;
 
   // Get Alice and Bob profiles

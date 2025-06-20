@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:dio/dio.dart';
-import 'package:ssi/ssi.dart';
 
 import '../model/account.dart';
 import '../model/node.dart';
