@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import '../helpers/vault_cancel_token.dart';
+import '../helpers/vault_progress_callback.dart';
 import 'item.dart';
 import 'paginated_list.dart';
 
@@ -73,6 +74,7 @@ abstract class FileStorage {
   Future<Uint8List> getFileContent({
     required String fileId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
   });
 
   /// Allows adding a new file
@@ -85,6 +87,7 @@ abstract class FileStorage {
     required Uint8List data,
     String? parentFolderId,
     VaultCancelToken? cancelToken,
+    VaultProgressCallback? onSendProgress,
   });
 
   /// Allows deleting a file
