@@ -68,7 +68,13 @@ class EdgeDriftCredentialRepository
         .getSingleOrNull();
 
     if (item == null) {
-      return null;
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'Credential not found',
+          code: TdkExceptionType.credentialNotFound.code,
+        ),
+        StackTrace.current,
+      );
     }
 
     final credentialContent = await (_database.select(_database.credentials)
