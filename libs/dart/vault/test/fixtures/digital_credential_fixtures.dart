@@ -1,5 +1,4 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:ssi/ssi.dart';
 
 class DigitalCredentialFixtures {
   static DigitalCredential createTestCredential({

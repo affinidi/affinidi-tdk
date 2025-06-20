@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/src/storages/vault_edge_file_storage.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
