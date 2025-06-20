@@ -10,7 +10,7 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.6.0
-  affinidi_tdk_vault: 1.1.0-dev.14
+  affinidi_tdk_vault: ^1.1.0
   copy_with_extension: ^6.0.0 # note using this version because it's compatible with analyzer version lower than 7.0.0 required by flutter_test included with flutter 3.27.0
   ssi: ^1.0.0
 
