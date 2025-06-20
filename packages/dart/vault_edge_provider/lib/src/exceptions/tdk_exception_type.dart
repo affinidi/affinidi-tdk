@@ -31,6 +31,18 @@ enum TdkExceptionType {
 
   /// [invalidFileType] - Indicates the file type is not allowed
   invalidFileType('invalid_file_type'),
+
+  /// [credentialNotFound] - Indicates the credential does not exist
+  credentialNotFound('credential_not_found'),
+
+  /// [invalidCredentialId] - Indicates the credential ID is invalid
+  invalidCredentialId('invalid_credential_id'),
+
+  /// [failedToSaveCredential] - Indicates a failure to save a credential
+  failedToSaveCredential('failed_to_save_credential'),
+
+  /// [failedToListCredentials] - Indicates a failure to list credentials
+  failedToListCredentials('failed_to_list_credentials'),
   ;
 
   /// Creates a new instance of [TdkExceptionType].
