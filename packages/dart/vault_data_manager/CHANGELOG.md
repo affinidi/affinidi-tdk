@@ -1,5 +1,28 @@
 # Change Log
 
+## 1.3.1
+
+### Changes
+
+---
+
+Fix: RightsEnum enum value references
+* Fixed `RightsEnum` enum value references in permissions extension and test fixtures
+* Updated `permissions_extensions.dart` to use correct enum values: `RightsEnum.vfsRead` and `RightsEnum.vfsWrite`
+* Updated `permissions_fixtures.dart` to use correct enum values: `RightsEnum.vfsRead` and `RightsEnum.vfsWrite`
+* Resolved linter errors where `RightsEnum.read` and `RightsEnum.write` were incorrectly referenced
+
+---
+
+## 1.3.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update
+
+
 ## 1.2.0
 
 ### Changes
