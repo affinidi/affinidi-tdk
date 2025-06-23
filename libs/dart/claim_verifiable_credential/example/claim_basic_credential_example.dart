@@ -15,7 +15,7 @@ Future<void> main() async {
     final seed = Uint8List.fromList(List<int>.generate(32, (index) => index));
     final wallet = Bip32Wallet.fromSeed(seed);
 
-    final keyId = "m/44'/60'/0'/0/0";
+    final keyId = "m/44'/60'/0'/0/1";
     final keyPair = await wallet.generateKey(keyId: keyId);
 
     final didDocument = DidKey.generateDocument(keyPair.publicKey);
