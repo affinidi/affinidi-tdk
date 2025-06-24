@@ -1,10 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_credential_repository.dart';
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:drift/native.dart';
 import 'package:test/test.dart';
-
-import 'fixtures/credential_fixtures.dart';
 
 void main() {
   late Database database;
@@ -24,65 +24,82 @@ void main() {
   });
 
   group('When performing credential operations', () {
-    test('should save and get a credential', () async {
-      final vc = CredentialFixtures.testVerifiableCredential;
-      await repository.saveCredential(
+    test('should save and get credential data', () async {
+      final credentialId = 'test-credential-id';
+      final credentialContent = Uint8List.fromList([1, 2, 3, 4, 5]);
+      final credentialName = 'TestCredential';
+
+      await repository.saveCredentialData(
         profileId: profileId,
-        verifiableCredential: vc,
+        credentialId: credentialId,
+        credentialName: credentialName,
+        credentialContent: credentialContent,
       );
 
-      final credentials =
-          await repository.listCredentials(profileId: profileId);
-      expect(credentials, isNotEmpty);
-      final credentialId = credentials.first.id;
+      final credentialsData =
+          await repository.listCredentialData(profileId: profileId);
+      expect(credentialsData, isNotEmpty);
+      expect(credentialsData.first.id, equals(credentialId));
+      expect(credentialsData.first.content, equals(credentialContent));
 
       final fetched =
-          await repository.getCredential(credentialId: credentialId);
+          await repository.getCredentialData(credentialId: credentialId);
       expect(fetched, isNotNull);
-      expect(fetched!.verifiableCredential.type, contains('TestCredential'));
+      expect(fetched!.id, equals(credentialId));
+      expect(fetched.content, equals(credentialContent));
     });
 
-    test('should list multiple credentials', () async {
-      final vc1 = CredentialFixtures.testVerifiableCredential;
-      final vc2 = CredentialFixtures.anotherVerifiableCredential;
-      await repository.saveCredential(
+    test('should list multiple credentials data', () async {
+      final credentialId1 = 'test-credential-id-1';
+      final credentialId2 = 'test-credential-id-2';
+      final credentialContent1 = Uint8List.fromList([1, 2, 3, 4, 5]);
+      final credentialContent2 = Uint8List.fromList([6, 7, 8, 9, 10]);
+
+      await repository.saveCredentialData(
         profileId: profileId,
-        verifiableCredential: vc1,
+        credentialId: credentialId1,
+        credentialName: 'TestCredential1',
+        credentialContent: credentialContent1,
       );
-      await repository.saveCredential(
+      await repository.saveCredentialData(
         profileId: profileId,
-        verifiableCredential: vc2,
+        credentialId: credentialId2,
+        credentialName: 'TestCredential2',
+        credentialContent: credentialContent2,
       );
 
-      final credentials =
-          await repository.listCredentials(profileId: profileId);
-      expect(credentials.length, equals(2));
-      expect(credentials.map((c) => c.verifiableCredential.type),
-          anyElement(contains('TestCredential')));
-      expect(credentials.map((c) => c.verifiableCredential.type),
-          anyElement(contains('AnotherCredential')));
+      final credentialsData =
+          await repository.listCredentialData(profileId: profileId);
+      expect(credentialsData.length, equals(2));
+      expect(credentialsData.map((c) => c.id), contains(credentialId1));
+      expect(credentialsData.map((c) => c.id), contains(credentialId2));
     });
 
     test('should delete a credential', () async {
-      final vc = CredentialFixtures.testVerifiableCredential;
-      await repository.saveCredential(
+      final credentialId = 'test-credential-id';
+      final credentialContent = Uint8List.fromList([1, 2, 3, 4, 5]);
+
+      await repository.saveCredentialData(
         profileId: profileId,
-        verifiableCredential: vc,
+        credentialId: credentialId,
+        credentialName: 'TestCredential',
+        credentialContent: credentialContent,
       );
-      final credentials =
-          await repository.listCredentials(profileId: profileId);
-      final credentialId = credentials.first.id;
+
+      final credentialsData =
+          await repository.listCredentialData(profileId: profileId);
+      expect(credentialsData, isNotEmpty);
 
       await repository.deleteCredential(credentialId: credentialId);
 
       final afterDelete =
-          await repository.listCredentials(profileId: profileId);
+          await repository.listCredentialData(profileId: profileId);
       expect(afterDelete, isEmpty);
     });
 
     test('should throw when getting non-existent credential', () async {
       expect(
-        () => repository.getCredential(credentialId: 'non-existent'),
+        () => repository.getCredentialData(credentialId: 'non-existent'),
         throwsA(isA<TdkException>().having(
             (e) => e.code, 'code', TdkExceptionType.credentialNotFound.code)),
       );

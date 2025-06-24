@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:drift/drift.dart';
-import 'package:uuid/uuid.dart';
 
 import 'database/database.dart' as db;
 
@@ -54,7 +51,7 @@ class EdgeDriftCredentialRepository
   }
 
   @override
-  Future<DigitalCredential?> getCredential({
+  Future<CredentialData?> getCredentialData({
     required String credentialId,
     VaultCancelToken? cancelToken,
   }) async {
@@ -89,18 +86,14 @@ class EdgeDriftCredentialRepository
       );
     }
 
-    // Parse the credential content
-    final credentialJson = utf8.decode(credentialContent.content);
-    final verifiableCredential = UniversalParser.parse(credentialJson);
-
-    return DigitalCredential(
-      verifiableCredential: verifiableCredential,
+    return CredentialData(
       id: item.id,
+      content: credentialContent.content,
     );
   }
 
   @override
-  Future<List<DigitalCredential>> listCredentials({
+  Future<List<CredentialData>> listCredentialData({
     required String profileId,
     int? limit,
     String? exclusiveStartItemId,
@@ -121,7 +114,7 @@ class EdgeDriftCredentialRepository
     }
 
     final items = await query.get();
-    final credentials = <DigitalCredential>[];
+    final credentials = <CredentialData>[];
 
     for (final item in items) {
       final credentialContent = await (_database.select(_database.credentials)
@@ -129,13 +122,9 @@ class EdgeDriftCredentialRepository
           .getSingleOrNull();
 
       if (credentialContent != null) {
-        // Parse the credential content
-        final credentialJson = utf8.decode(credentialContent.content);
-        final verifiableCredential = UniversalParser.parse(credentialJson);
-
-        credentials.add(DigitalCredential(
-          verifiableCredential: verifiableCredential,
+        credentials.add(CredentialData(
           id: item.id,
+          content: credentialContent.content,
         ));
       }
     }
@@ -144,31 +133,27 @@ class EdgeDriftCredentialRepository
   }
 
   @override
-  Future<void> saveCredential({
+  Future<void> saveCredentialData({
     required String profileId,
-    required VerifiableCredential verifiableCredential,
+    required String credentialId,
+    required String credentialName,
+    required Uint8List credentialContent,
     VaultCancelToken? cancelToken,
   }) async {
-    // Generate credential ID
-    final credentialId = const Uuid().v4();
-
     // Create credential item entry
     final credentialItem = db.ItemsCompanion.insert(
       id: Value(credentialId),
       profileId: _profileId,
-      name: verifiableCredential.type.last,
+      name: credentialName,
       itemType: db.ItemType.file, // Using file type for credentials
     );
     await _database.into(_database.items).insert(credentialItem);
 
     // Create credential content entry
-    final credentialJson = jsonEncode(verifiableCredential);
-    final credentialData = utf8.encode(credentialJson);
-
     await _database.into(_database.credentials).insert(
           db.CredentialsCompanion.insert(
             id: credentialId,
-            content: credentialData,
+            content: credentialContent,
           ),
         );
 

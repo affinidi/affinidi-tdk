@@ -1,6 +1,4 @@
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart'
-    as vault;
 import 'package:drift/drift.dart';
 import 'package:uuid/uuid.dart';
 
@@ -134,7 +132,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<vault.Folder> createFolder({
+  Future<FolderData> createFolder({
     required String profileId,
     required String folderName,
     String? parentFolderId,
@@ -183,7 +181,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       throw Exception('Failed to create folder - verification failed');
     }
 
-    return vault.Folder(
+    return FolderData(
       id: createdFolder.id,
       name: createdFolder.name,
       createdAt: createdFolder.createdAt,
@@ -235,7 +233,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<vault.File> getFile({required String fileId}) async {
+  Future<FileData> getFileData({required String fileId}) async {
     final file = await (_database.select(_database.items)
           ..where((filter) =>
               filter.id.equals(fileId) &
@@ -251,7 +249,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       );
     }
 
-    return vault.File(
+    return FileData(
       id: file.id,
       name: file.name,
       createdAt: file.createdAt,
@@ -279,7 +277,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<List<vault.Item>> getFolder({
+  Future<List<ItemData>> getFolderData({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
@@ -304,23 +302,14 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
 
     final items = await query.get();
     return items.map((item) {
-      if (item.itemType == db.ItemType.file) {
-        return vault.File(
-          id: item.id,
-          name: item.name,
-          createdAt: item.createdAt,
-          modifiedAt: item.modifiedAt,
-          parentId: item.parentId,
-        );
-      } else {
-        return vault.Folder(
-          id: item.id,
-          name: item.name,
-          createdAt: item.createdAt,
-          modifiedAt: item.modifiedAt,
-          parentId: item.parentId,
-        );
-      }
+      return ItemData(
+        id: item.id,
+        name: item.name,
+        createdAt: item.createdAt,
+        modifiedAt: item.modifiedAt,
+        isFolder: item.itemType == db.ItemType.folder,
+        parentId: item.parentId,
+      );
     }).toList();
   }
 

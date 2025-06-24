@@ -64,14 +64,14 @@ void main() async {
 
   // List contents of root folder
   print('Listing root folder contents:');
-  final rootItems = await fileRepository.getFolder(folderId: null);
+  final rootItems = await fileRepository.getFolderData(folderId: null);
   for (final item in rootItems) {
     print('- ${item.name} (${item is File ? 'File' : 'Folder'})');
   }
 
   // List contents of Folder1
   print('Listing Folder1 contents:');
-  final folderItems = await fileRepository.getFolder(folderId: folder.id);
+  final folderItems = await fileRepository.getFolderData(folderId: folder.id);
   for (final item in folderItems) {
     print('- ${item.name} (${item is File ? 'File' : 'Folder'})');
   }
@@ -100,7 +100,8 @@ void main() async {
     } else {
       print('Deleting folder: ${item.name}');
       // Delete folder contents first
-      final folderContents = await fileRepository.getFolder(folderId: item.id);
+      final folderContents =
+          await fileRepository.getFolderData(folderId: item.id);
       for (final content in folderContents) {
         print('  Deleting file: ${content.name}');
         await fileRepository.deleteFile(fileId: content.id);
@@ -111,7 +112,7 @@ void main() async {
 
   // Verify all contents are deleted
   print('Verifying root folder is empty:');
-  final remainingItems = await fileRepository.getFolder(folderId: null);
+  final remainingItems = await fileRepository.getFolderData(folderId: null);
   print('Remaining items: ${remainingItems.length}');
 
   print('Deleting profile:');

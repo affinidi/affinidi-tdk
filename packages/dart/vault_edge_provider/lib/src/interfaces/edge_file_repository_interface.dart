@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import '../models/file_data.dart';
+import '../models/folder_data.dart';
+import '../models/item_data.dart';
 
 /// Interface to manage CRUD operations on files and folders
 abstract interface class EdgeFileRepositoryInterface {
@@ -13,7 +15,7 @@ abstract interface class EdgeFileRepositoryInterface {
   });
 
   /// Add a new folder to the specified parent
-  Future<Folder> createFolder({
+  Future<FolderData> createFolder({
     required String profileId,
     required String folderName,
     String? parentFolderId,
@@ -27,10 +29,10 @@ abstract interface class EdgeFileRepositoryInterface {
   /// Delete a folder entry
   Future<bool> deleteFolder({required String folderId});
 
-  /// Retrieves the file data
+  /// Retrieves the file metadata
   ///
   /// [fileId] - the file unique identifier
-  Future<File> getFile({required String fileId});
+  Future<FileData> getFileData({required String fileId});
 
   /// Retrieves the content of the file
   Future<Uint8List> getFileContent({
@@ -43,7 +45,7 @@ abstract interface class EdgeFileRepositoryInterface {
   /// [limit] - maximum amount of items to retrieve
   // ignore: lines_longer_than_80_chars
   /// [exclusiveStartItemId] - items with an id greater than exclusiveStartItemId
-  Future<List<Item>> getFolder({
+  Future<List<ItemData>> getFolderData({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,

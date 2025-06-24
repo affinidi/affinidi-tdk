@@ -1,19 +1,25 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+
+import '../models/credential_data.dart';
 
 /// Interface to manage CRUD operations on credentials
 abstract interface class EdgeCredentialsRepositoryInterface {
-  /// Retrieves list of credentials for a profile
-  Future<List<DigitalCredential>> listCredentials({
+  /// Retrieves list of raw credential data for a profile
+  Future<List<CredentialData>> listCredentialData({
     required String profileId,
     int? limit,
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   });
 
-  /// Creates a new credential
-  Future<void> saveCredential({
+  /// Creates a new credential with raw data
+  Future<void> saveCredentialData({
     required String profileId,
-    required VerifiableCredential verifiableCredential,
+    required String credentialId,
+    required String credentialName,
+    required Uint8List credentialContent,
     VaultCancelToken? cancelToken,
   });
 
@@ -23,8 +29,8 @@ abstract interface class EdgeCredentialsRepositoryInterface {
     VaultCancelToken? cancelToken,
   });
 
-  /// Retrieves a specific credential by ID
-  Future<DigitalCredential?> getCredential({
+  /// Retrieves raw credential data by ID
+  Future<CredentialData?> getCredentialData({
     required String credentialId,
     VaultCancelToken? cancelToken,
   });
