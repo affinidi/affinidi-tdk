@@ -12,11 +12,18 @@ export 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart'
         UniversalParser,
         VaultCancelToken,
         VerifiableCredential;
+
 export 'src/exceptions/tdk_exception_type.dart';
 export 'src/interfaces/edge_credentials_repository_interface.dart';
 export 'src/interfaces/edge_file_repository_interface.dart';
 export 'src/interfaces/edge_profile_repository_interface.dart';
+export 'src/models/credential_data.dart';
 export 'src/models/edge_profile.dart';
+export 'src/models/file_data.dart';
+export 'src/models/folder_data.dart';
+export 'src/models/item_data.dart';
 export 'src/storages/vault_edge_credential_storage.dart';
 export 'src/storages/vault_edge_file_storage.dart';
 export 'src/storages/vault_edge_profile_repository.dart';
+export 'src/utils/credential_parser.dart';
+export 'src/utils/file_parser.dart';
