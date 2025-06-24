@@ -1,20 +1,17 @@
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/models/credential_data.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 import 'fixtures/credential_fixtures.dart';
+import 'mocks/credential_mock_setup.dart';
 import 'mocks/mock_edge_credential_repository.dart';
-
-class FakeVerifiableCredential extends Fake implements VerifiableCredential {}
 
 void main() {
   late MockEdgeCredentialRepository mockRepository;
   late VaultEdgeCredentialStorage storage;
 
-  setUpAll(() {
-    registerFallbackValue(DateTime.now());
-    registerFallbackValue(FakeVerifiableCredential());
-  });
+  setUpAll(CredentialMockSetup.setupFallbackValues);
 
   setUp(() {
     mockRepository = MockEdgeCredentialRepository();
@@ -24,41 +21,7 @@ void main() {
       profileId: CredentialFixtures.profileId,
     );
 
-    // Setup common mock responses
-    when(() => mockRepository.saveCredential(
-          profileId: any(named: 'profileId'),
-          verifiableCredential: any(named: 'verifiableCredential'),
-          cancelToken: any(named: 'cancelToken'),
-        )).thenAnswer((_) async {});
-
-    when(() => mockRepository.getCredential(
-          credentialId: any(named: 'credentialId'),
-          cancelToken: any(named: 'cancelToken'),
-        )).thenAnswer((_) async => DigitalCredential(
-          verifiableCredential: FakeVerifiableCredential(),
-          id: CredentialFixtures.credentialId,
-        ));
-
-    when(() => mockRepository.listCredentials(
-          profileId: any(named: 'profileId'),
-          limit: any(named: 'limit'),
-          exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-          cancelToken: any(named: 'cancelToken'),
-        )).thenAnswer((_) async => [
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: CredentialFixtures.credentialId,
-          ),
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: 'test-credential-id-2',
-          ),
-        ]);
-
-    when(() => mockRepository.deleteCredential(
-          credentialId: any(named: 'credentialId'),
-          cancelToken: any(named: 'cancelToken'),
-        )).thenAnswer((_) async {});
+    CredentialMockSetup.setupCredentialRepositoryMocks(mockRepository);
   });
 
   group('When performing credential operations', () {
@@ -68,19 +31,21 @@ void main() {
 
     group('When saving credentials', () {
       test('should save credential successfully', () async {
-        final mockVC = FakeVerifiableCredential();
+        final mockVC = CredentialFixtures.mockVerifiableCredential;
 
         await storage.saveCredential(verifiableCredential: mockVC);
 
-        verify(() => mockRepository.saveCredential(
+        verify(() => mockRepository.saveCredentialData(
               profileId: CredentialFixtures.profileId,
-              verifiableCredential: mockVC,
+              credentialId: any(named: 'credentialId'),
+              credentialName: 'UniversityDegree',
+              credentialContent: any(named: 'credentialContent'),
               cancelToken: null,
             )).called(1);
       });
 
       test('should pass cancel token when provided', () async {
-        final mockVC = FakeVerifiableCredential();
+        final mockVC = CredentialFixtures.mockVerifiableCredential;
         final cancelToken = VaultCancelToken();
 
         await storage.saveCredential(
@@ -88,9 +53,11 @@ void main() {
           cancelToken: cancelToken,
         );
 
-        verify(() => mockRepository.saveCredential(
+        verify(() => mockRepository.saveCredentialData(
               profileId: CredentialFixtures.profileId,
-              verifiableCredential: mockVC,
+              credentialId: any(named: 'credentialId'),
+              credentialName: 'UniversityDegree',
+              credentialContent: any(named: 'credentialContent'),
               cancelToken: cancelToken,
             )).called(1);
       });
@@ -98,28 +65,19 @@ void main() {
 
     group('When getting credentials', () {
       test('should get credential successfully', () async {
-        final mockCredential = DigitalCredential(
-          verifiableCredential: FakeVerifiableCredential(),
-          id: CredentialFixtures.credentialId,
-        );
-        when(() => mockRepository.getCredential(
-              credentialId: CredentialFixtures.credentialId,
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => mockCredential);
-
         final result = await storage.getCredential(
           digitalCredentialId: CredentialFixtures.credentialId,
         );
 
-        expect(result, equals(mockCredential));
-        verify(() => mockRepository.getCredential(
+        expect(result.id, equals(CredentialFixtures.credentialId));
+        verify(() => mockRepository.getCredentialData(
               credentialId: CredentialFixtures.credentialId,
               cancelToken: null,
             )).called(1);
       });
 
       test('should throw exception when credential not found', () async {
-        when(() => mockRepository.getCredential(
+        when(() => mockRepository.getCredentialData(
               credentialId: CredentialFixtures.credentialId,
               cancelToken: any(named: 'cancelToken'),
             )).thenAnswer((_) async => null);
@@ -138,21 +96,13 @@ void main() {
 
       test('should pass cancel token when provided', () async {
         final cancelToken = VaultCancelToken();
-        final mockCredential = DigitalCredential(
-          verifiableCredential: FakeVerifiableCredential(),
-          id: CredentialFixtures.credentialId,
-        );
-        when(() => mockRepository.getCredential(
-              credentialId: CredentialFixtures.credentialId,
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => mockCredential);
 
         await storage.getCredential(
           digitalCredentialId: CredentialFixtures.credentialId,
           cancelToken: cancelToken,
         );
 
-        verify(() => mockRepository.getCredential(
+        verify(() => mockRepository.getCredentialData(
               credentialId: CredentialFixtures.credentialId,
               cancelToken: cancelToken,
             )).called(1);
@@ -161,28 +111,13 @@ void main() {
 
     group('When listing credentials', () {
       test('should list credentials successfully', () async {
-        final mockCredentials = [
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: CredentialFixtures.credentialId,
-          ),
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: 'test-credential-id-2',
-          ),
-        ];
-        when(() => mockRepository.listCredentials(
-              profileId: any(named: 'profileId'),
-              limit: any(named: 'limit'),
-              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => mockCredentials);
-
         final result = await storage.listCredentials();
 
-        expect(result.items, equals(mockCredentials));
-        expect(result.lastEvaluatedItemId, equals(mockCredentials.last.id));
-        verify(() => mockRepository.listCredentials(
+        expect(result.items.length, equals(2));
+        expect(result.items.first.id, equals(CredentialFixtures.credentialId));
+        expect(result.items.last.id, equals('test-credential-id-2'));
+        expect(result.lastEvaluatedItemId, equals('test-credential-id-2'));
+        verify(() => mockRepository.listCredentialData(
               profileId: CredentialFixtures.profileId,
               limit: null,
               exclusiveStartItemId: null,
@@ -191,12 +126,12 @@ void main() {
       });
 
       test('should handle empty credential list', () async {
-        when(() => mockRepository.listCredentials(
+        when(() => mockRepository.listCredentialData(
               profileId: any(named: 'profileId'),
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
               cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => <DigitalCredential>[]);
+            )).thenAnswer((_) async => <CredentialData>[]);
 
         final result = await storage.listCredentials();
 
@@ -206,60 +141,26 @@ void main() {
 
       test('should pass limit and exclusiveStartItemId when provided',
           () async {
-        const limit = 10;
-        const exclusiveStartItemId = 'start-id';
-        final mockCredentials = [
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: CredentialFixtures.credentialId,
-          ),
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: 'test-credential-id-2',
-          ),
-        ];
-        when(() => mockRepository.listCredentials(
-              profileId: any(named: 'profileId'),
-              limit: any(named: 'limit'),
-              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => mockCredentials);
-
-        await storage.listCredentials(
-          limit: limit,
-          exclusiveStartItemId: exclusiveStartItemId,
+        final result = await storage.listCredentials(
+          limit: 10,
+          exclusiveStartItemId: 'test-credential-id-1',
         );
 
-        verify(() => mockRepository.listCredentials(
+        expect(result.items.length, equals(2));
+        verify(() => mockRepository.listCredentialData(
               profileId: CredentialFixtures.profileId,
-              limit: limit,
-              exclusiveStartItemId: exclusiveStartItemId,
+              limit: 10,
+              exclusiveStartItemId: 'test-credential-id-1',
               cancelToken: null,
             )).called(1);
       });
 
       test('should pass cancel token when provided', () async {
         final cancelToken = VaultCancelToken();
-        final mockCredentials = [
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: CredentialFixtures.credentialId,
-          ),
-          DigitalCredential(
-            verifiableCredential: FakeVerifiableCredential(),
-            id: 'test-credential-id-2',
-          ),
-        ];
-        when(() => mockRepository.listCredentials(
-              profileId: any(named: 'profileId'),
-              limit: any(named: 'limit'),
-              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => mockCredentials);
 
         await storage.listCredentials(cancelToken: cancelToken);
 
-        verify(() => mockRepository.listCredentials(
+        verify(() => mockRepository.listCredentialData(
               profileId: CredentialFixtures.profileId,
               limit: null,
               exclusiveStartItemId: null,
@@ -270,20 +171,11 @@ void main() {
 
     group('When deleting credentials', () {
       test('should delete credential successfully', () async {
-        final mockCredential = DigitalCredential(
-          verifiableCredential: FakeVerifiableCredential(),
-          id: CredentialFixtures.credentialId,
-        );
-        when(() => mockRepository.getCredential(
-              credentialId: CredentialFixtures.credentialId,
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => mockCredential);
-
         await storage.deleteCredential(
           digitalCredentialId: CredentialFixtures.credentialId,
         );
 
-        verify(() => mockRepository.getCredential(
+        verify(() => mockRepository.getCredentialData(
               credentialId: CredentialFixtures.credentialId,
               cancelToken: null,
             )).called(1);
@@ -295,7 +187,7 @@ void main() {
 
       test('should throw exception when credential not found for deletion',
           () async {
-        when(() => mockRepository.getCredential(
+        when(() => mockRepository.getCredentialData(
               credentialId: CredentialFixtures.credentialId,
               cancelToken: any(named: 'cancelToken'),
             )).thenAnswer((_) async => null);
@@ -311,7 +203,7 @@ void main() {
           )),
         );
 
-        verify(() => mockRepository.getCredential(
+        verify(() => mockRepository.getCredentialData(
               credentialId: CredentialFixtures.credentialId,
               cancelToken: null,
             )).called(1);
@@ -323,21 +215,13 @@ void main() {
 
       test('should pass cancel token when provided', () async {
         final cancelToken = VaultCancelToken();
-        final mockCredential = DigitalCredential(
-          verifiableCredential: FakeVerifiableCredential(),
-          id: CredentialFixtures.credentialId,
-        );
-        when(() => mockRepository.getCredential(
-              credentialId: CredentialFixtures.credentialId,
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => mockCredential);
 
         await storage.deleteCredential(
           digitalCredentialId: CredentialFixtures.credentialId,
           cancelToken: cancelToken,
         );
 
-        verify(() => mockRepository.getCredential(
+        verify(() => mockRepository.getCredentialData(
               credentialId: CredentialFixtures.credentialId,
               cancelToken: cancelToken,
             )).called(1);

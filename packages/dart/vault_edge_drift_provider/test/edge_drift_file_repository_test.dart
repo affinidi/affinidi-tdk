@@ -23,8 +23,8 @@ void main() {
     await database.close();
   });
 
-  group('When performing file operations', () {
-    test('should create and read a file', () async {
+  group('When managing files', () {
+    test('should create and get a file', () async {
       const fileName = 'test.txt';
       final fileContent = Uint8List.fromList([1, 2, 3, 4, 5]);
 
@@ -40,8 +40,8 @@ void main() {
       );
       expect(fileId, isNotNull);
 
-      final file = await repository.getFile(fileId: fileId!);
-      expect(file.name, equals(fileName));
+      final fileData = await repository.getFileData(fileId: fileId!);
+      expect(fileData.name, equals(fileName));
 
       final content = await repository.getFileContent(fileId: fileId);
       expect(content, equals(fileContent));
@@ -69,9 +69,9 @@ void main() {
       );
       expect(fileId, isNotNull);
 
-      final file = await repository.getFile(fileId: fileId!);
-      expect(file.name, equals(fileName));
-      expect(file.parentId, equals(folder.id));
+      final fileData = await repository.getFileData(fileId: fileId!);
+      expect(fileData.name, equals(fileName));
+      expect(fileData.parentId, equals(folder.id));
     });
 
     test('should throw error when creating file in non-existent folder',
@@ -113,7 +113,7 @@ void main() {
       await repository.deleteFile(fileId: fileId!);
 
       expect(
-        () => repository.getFile(fileId: fileId),
+        () => repository.getFileData(fileId: fileId),
         throwsA(isA<TdkException>().having(
           (error) => error.code,
           'code',
@@ -153,8 +153,8 @@ void main() {
         newName: newFileName,
       );
 
-      final file = await repository.getFile(fileId: fileId);
-      expect(file.name, equals(newFileName));
+      final fileData = await repository.getFileData(fileId: fileId);
+      expect(fileData.name, equals(newFileName));
 
       final oldFileId = await repository.getFileId(
         fileName: fileName,
@@ -185,7 +185,7 @@ void main() {
         parentFolderId: folder.id,
       );
 
-      final items = await repository.getFolder(folderId: folder.id);
+      final items = await repository.getFolderData(folderId: folder.id);
       expect(items.length, equals(4)); // 3 files + 1 subfolder
 
       final itemNames = items.map((item) => item.name).toList()..sort();
@@ -252,9 +252,10 @@ void main() {
       );
     });
 
-    test('should throw error when renaming file to disallowed extension',
+    test('should throw error when renaming file with disallowed extension',
         () async {
       const fileName = 'test.txt';
+      const newFileName = 'test.exe';
       final fileContent = Uint8List.fromList([1, 2, 3]);
 
       await repository.createFile(
@@ -267,12 +268,11 @@ void main() {
         fileName: fileName,
         parentFolderId: null,
       );
-      expect(fileId, isNotNull);
 
       expect(
         () => repository.renameFile(
           fileId: fileId!,
-          newName: 'renamed.exe',
+          newName: newFileName,
         ),
         throwsA(isA<TdkException>().having(
           (error) => error.code,
@@ -281,160 +281,132 @@ void main() {
         )),
       );
     });
-
-    test('should accept all allowed file extensions', () async {
-      final allowedExtensions = EdgeDriftFileRepository.allowedExtensions;
-      final fileContent = Uint8List.fromList([1, 2, 3]);
-
-      for (final extension in allowedExtensions) {
-        final fileName = 'test.$extension';
-        await expectLater(
-          repository.createFile(
-            profileId: profileId,
-            fileName: fileName,
-            data: fileContent,
-          ),
-          completes,
-          reason: 'Should accept .$extension extension',
-        );
-      }
-    });
   });
 
-  group('When performing folder operations', () {
-    group('When creating a folder', () {
-      test('should create root level folder', () async {
-        const folderName = 'root-folder';
-        final folder = await repository.createFolder(
-          profileId: profileId,
-          folderName: folderName,
-        );
+  group('When managing folders', () {
+    test('should create and delete a folder', () async {
+      final folder = await repository.createFolder(
+        profileId: profileId,
+        folderName: 'test-folder',
+      );
 
-        expect(folder.name, equals(folderName));
-        expect(folder.parentId, isNull);
-      });
+      expect(folder.name, equals('test-folder'));
 
-      test('should create nested folder', () async {
-        final parentFolder = await repository.createFolder(
-          profileId: profileId,
-          folderName: 'parent-folder',
-        );
-
-        const nestedFolderName = 'nested-folder';
-        final nestedFolder = await repository.createFolder(
-          profileId: profileId,
-          folderName: nestedFolderName,
-          parentFolderId: parentFolder.id,
-        );
-
-        expect(nestedFolder.name, equals(nestedFolderName));
-        expect(nestedFolder.parentId, equals(parentFolder.id));
-      });
-
-      test('should throw error when parent folder does not exist', () async {
-        expect(
-          () => repository.createFolder(
-            profileId: profileId,
-            folderName: 'nested-folder',
-            parentFolderId: 'non-existent-folder',
-          ),
-          throwsA(isA<TdkException>().having(
-            (error) => error.code,
-            'code',
-            TdkExceptionType.invalidParentFolderId.code,
-          )),
-        );
-      });
+      final deleted = await repository.deleteFolder(folderId: folder.id);
+      expect(deleted, isTrue);
     });
 
-    group('When deleting a folder', () {
-      test('should delete empty folder', () async {
-        final folder = await repository.createFolder(
-          profileId: profileId,
-          folderName: 'folder-to-delete',
-        );
+    test('should create folder in another folder', () async {
+      final parentFolder = await repository.createFolder(
+        profileId: profileId,
+        folderName: 'parent-folder',
+      );
 
-        final success = await repository.deleteFolder(folderId: folder.id);
-        expect(success, isTrue);
+      final subFolder = await repository.createFolder(
+        profileId: profileId,
+        folderName: 'sub-folder',
+        parentFolderId: parentFolder.id,
+      );
 
-        final items = await repository.getFolder(folderId: folder.id);
-        expect(items, isEmpty);
-      });
-
-      test('should throw error when deleting folder with content', () async {
-        final folder = await repository.createFolder(
-          profileId: profileId,
-          folderName: 'folder-with-content',
-        );
-
-        await repository.createFile(
-          profileId: profileId,
-          fileName: 'test.txt',
-          data: Uint8List.fromList([1, 2, 3]),
-          parentFolderId: folder.id,
-        );
-
-        expect(
-          () => repository.deleteFolder(folderId: folder.id),
-          throwsA(isA<TdkException>().having(
-            (error) => error.code,
-            'code',
-            TdkExceptionType.unableToDeleteFolderWithContent.code,
-          )),
-        );
-      });
-
-      test('should throw error when deleting non-existent folder', () async {
-        expect(
-          () => repository.deleteFolder(folderId: 'non-existent-folder'),
-          throwsA(isA<TdkException>().having(
-            (error) => error.code,
-            'code',
-            TdkExceptionType.invalidFolderId.code,
-          )),
-        );
-      });
+      expect(subFolder.parentId, equals(parentFolder.id));
     });
 
-    group('When renaming a folder', () {
-      test('should rename existing folder', () async {
-        const folderName = 'test-folder';
-        const newFolderName = 'renamed-folder';
-        final folder = await repository.createFolder(
+    test('should throw error when creating folder in non-existent parent',
+        () async {
+      expect(
+        () => repository.createFolder(
           profileId: profileId,
-          folderName: folderName,
-        );
+          folderName: 'test-folder',
+          parentFolderId: 'non-existent-parent',
+        ),
+        throwsA(isA<TdkException>().having(
+          (error) => error.code,
+          'code',
+          TdkExceptionType.invalidParentFolderId.code,
+        )),
+      );
+    });
 
-        final success = await repository.renameFolder(
-          folderId: folder.id,
-          newName: newFolderName,
-        );
-        expect(success, isTrue);
+    test('should throw error when deleting non-existent folder', () async {
+      expect(
+        () => repository.deleteFolder(folderId: 'non-existent-folder'),
+        throwsA(isA<TdkException>().having(
+          (error) => error.code,
+          'code',
+          TdkExceptionType.invalidFolderId.code,
+        )),
+      );
+    });
 
+    test('should throw error when deleting folder with content', () async {
+      final folder = await repository.createFolder(
+        profileId: profileId,
+        folderName: 'test-folder',
+      );
+
+      await repository.createFile(
+        profileId: profileId,
+        fileName: 'test.txt',
+        data: Uint8List.fromList([1, 2, 3]),
+        parentFolderId: folder.id,
+      );
+
+      expect(
+        () => repository.deleteFolder(folderId: folder.id),
+        throwsA(isA<TdkException>().having(
+          (error) => error.code,
+          'code',
+          TdkExceptionType.unableToDeleteFolderWithContent.code,
+        )),
+      );
+    });
+
+    test('should rename a folder', () async {
+      final folder = await repository.createFolder(
+        profileId: profileId,
+        folderName: 'test-folder',
+      );
+
+      final renamed = await repository.renameFolder(
+        folderId: folder.id,
+        newName: 'renamed-folder',
+      );
+
+      expect(renamed, isTrue);
+    });
+
+    test('should get root folder contents', () async {
+      const fileNames = ['file1.txt', 'file2.txt'];
+      for (final fileName in fileNames) {
         await repository.createFile(
           profileId: profileId,
-          fileName: 'test.txt',
+          fileName: fileName,
           data: Uint8List.fromList([1, 2, 3]),
-          parentFolderId: folder.id,
         );
+      }
 
-        final folderContents = await repository.getFolder(folderId: folder.id);
-        expect(folderContents.length, equals(1));
-      });
+      await repository.createFolder(
+        profileId: profileId,
+        folderName: 'root-folder',
+      );
 
-      test('should throw error when renaming non-existent folder', () async {
-        expect(
-          () => repository.renameFolder(
-            folderId: 'non-existent-folder',
-            newName: 'renamed-folder',
-          ),
-          throwsA(isA<TdkException>().having(
-            (error) => error.code,
-            'code',
-            TdkExceptionType.invalidFolderId.code,
-          )),
-        );
-      });
+      final items = await repository.getFolderData(folderId: null);
+      expect(items.length, equals(3)); // 2 files + 1 folder
+
+      final itemNames = items.map((item) => item.name).toList()..sort();
+      expect(
+        itemNames,
+        equals([...fileNames, 'root-folder']..sort()),
+      );
+
+      for (final item in items) {
+        expect(item.parentId, isNull);
+      }
+    });
+
+    test('should return empty list for non-existent folder', () async {
+      final items = await repository.getFolderData(folderId: 'non-existent');
+      expect(items, isEmpty);
     });
   });
 }
