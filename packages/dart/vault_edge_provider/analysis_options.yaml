@@ -24,6 +24,7 @@ analyzer:
     - "**/*.g.dart"
 
   errors:
+    lines_longer_than_80_chars: ignore
     avoid_print: error
 # For more information about the core and recommended set of lints, see
 # https://dart.dev/go/core-lints

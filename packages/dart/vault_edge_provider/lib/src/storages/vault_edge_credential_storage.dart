@@ -29,7 +29,6 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     required String digitalCredentialId,
     VaultCancelToken? cancelToken,
   }) async {
-    // Check if credential exists
     final credentialData = await _repository.getCredentialData(
       credentialId: digitalCredentialId,
       cancelToken: cancelToken,
@@ -71,7 +70,6 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
       );
     }
 
-    // Parse the credential content
     return CredentialParser.parseCredentialFromBytes(
       credentialBytes: credentialData.content,
       id: credentialData.id,
@@ -91,7 +89,6 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
       cancelToken: cancelToken,
     );
 
-    // Parse all credentials
     final credentials = credentialDataList.map((credentialData) {
       return CredentialParser.parseCredentialFromBytes(
         credentialBytes: credentialData.content,
@@ -118,16 +115,13 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     required VerifiableCredential verifiableCredential,
     VaultCancelToken? cancelToken,
   }) async {
-    // Generate credential ID
     final credentialId = const Uuid().v4();
 
-    // Extract credential name from the type (skip 'VerifiableCredential' and get the first custom type)
     final credentialName = verifiableCredential.type
             .where((type) => type != 'VerifiableCredential')
             .firstOrNull ??
         'Credential';
 
-    // Serialize the credential to bytes
     final credentialContent =
         CredentialParser.serializeCredentialToBytes(verifiableCredential);
 
