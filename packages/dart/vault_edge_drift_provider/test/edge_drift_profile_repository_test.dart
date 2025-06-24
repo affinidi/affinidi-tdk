@@ -1,4 +1,6 @@
-import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
+import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
+import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_profile_repository.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/models/edge_profile.dart';
 import 'package:drift/native.dart';
 import 'package:test/test.dart';
 

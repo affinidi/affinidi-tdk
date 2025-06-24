@@ -6,6 +6,12 @@ import '../models/item_data.dart';
 
 /// Interface to manage CRUD operations on files and folders
 abstract interface class EdgeFileRepositoryInterface {
+  /// Maximum allowed file size in bytes
+  int get maxFileSize;
+
+  /// List of allowed file extensions (without the dot)
+  List<String> get allowedExtensions;
+
   /// Add a file to a specific folder
   Future<void> createFile({
     required String profileId,

@@ -10,24 +10,19 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   const EdgeDriftFileRepository({
     required db.Database database,
     required String profileId,
+    this.maxFileSize = 10 * 1024 * 1024,
+    this.allowedExtensions = const ['txt', 'pdf', 'jpg', 'jpeg', 'png', 'json'],
   })  : _database = database,
         _profileId = profileId;
 
   final db.Database _database;
   final String _profileId;
 
-  /// Maximum allowed file size in bytes (10MB)
-  static const int maxFileSize = 10 * 1024 * 1024;
+  @override
+  final int maxFileSize;
 
-  /// List of allowed file extensions
-  static const List<String> allowedExtensions = [
-    'txt',
-    'pdf',
-    'jpg',
-    'jpeg',
-    'png',
-    'json'
-  ];
+  @override
+  final List<String> allowedExtensions;
 
   @override
   Future<void> createFile({

@@ -107,6 +107,21 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
       _fileRepository = EdgeDriftFileRepository(
         database: _database!,
         profileId: profileId,
+        maxFileSize: 50 * 1024 * 1024, 
+        allowedExtensions: [
+          'txt',
+          'pdf',
+          'jpg',
+          'jpeg',
+          'png',
+          'json',
+          'doc',
+          'docx',
+          'xls',
+          'xlsx',
+          'zip',
+          'rar'
+        ],
       );
       await _loadCurrentFolder();
     } catch (e, st) {
@@ -123,7 +138,8 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
       print('Loaded ${items.length} items in folder');
       setState(() {
         _currentItems = items;
-        _status = 'Loaded ${items.length} items';
+        _status =
+            'Loaded ${items.length} items (Max: ${(_fileRepository!.maxFileSize / (1024 * 1024)).toStringAsFixed(0)}MB, Extensions: ${_fileRepository!.allowedExtensions.join(', ')})';
       });
     } catch (e, st) {
       print('Error loading folder: $e\n$st');

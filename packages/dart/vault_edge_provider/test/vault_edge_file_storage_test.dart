@@ -1,5 +1,4 @@
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/src/models/item_data.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
