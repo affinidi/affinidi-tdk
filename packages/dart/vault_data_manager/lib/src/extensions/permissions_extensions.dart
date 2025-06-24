@@ -6,17 +6,17 @@ extension PermissionExtension on Permissions {
   /// Converts [Permissions] to a list of [RightsEnum].
   ///
   /// Returns a list containing the corresponding [RightsEnum] values:
-  /// - [Permissions.read] -> [RightsEnum.read]
-  /// - [Permissions.write] -> [RightsEnum.write]
-  /// - [Permissions.all] -> [RightsEnum.read, RightsEnum.write]
+  /// - [Permissions.read] -> [RightsEnum.vfsRead]
+  /// - [Permissions.write] -> [RightsEnum.vfsWrite]
+  /// - [Permissions.all] -> [RightsEnum.vfsRead, RightsEnum.vfsWrite]
   List<RightsEnum> toRights() {
     switch (this) {
       case Permissions.read:
-        return [RightsEnum.read];
+        return [RightsEnum.vfsRead];
       case Permissions.write:
-        return [RightsEnum.write];
+        return [RightsEnum.vfsWrite];
       case Permissions.all:
-        return [RightsEnum.read, RightsEnum.write];
+        return [RightsEnum.vfsRead, RightsEnum.vfsWrite];
     }
   }
 }
