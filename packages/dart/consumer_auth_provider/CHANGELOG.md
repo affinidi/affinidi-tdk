@@ -1,5 +1,15 @@
 # Change Log
 
+## 4.9.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update
+
+---
+
 ## 4.8.0
 
 ### Changes

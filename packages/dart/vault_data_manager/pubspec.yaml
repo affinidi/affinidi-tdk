@@ -1,6 +1,6 @@
 name: affinidi_tdk_vault_data_manager
 description: The Affinidi TDK - Vault Data Manager package provides the interface to interact with Afinidi's Vault Data Manager service.
-version: 1.4.0
+version: 1.5.0
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
@@ -10,21 +10,21 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.6.0
-  affinidi_tdk_consumer_auth_provider: ^4.8.0
+  affinidi_tdk_consumer_auth_provider: ^4.9.0
   affinidi_tdk_cryptography: ^2.3.2
   affinidi_tdk_iam_client: ^1.11.0
-  affinidi_tdk_vault: ^1.3.0
+  affinidi_tdk_vault: ^1.5.0
   affinidi_tdk_vault_data_manager_client: ^1.13.0
   built_collection: ^5.1.1
   built_value: ^8.9.5
   dio: ^5.7.0
   http_mock_adapter: ^0.6.1
   meta: ^1.15.0
-  path: ^1.8.0
+  path: ^1.9.0
   ssi: ^1.0.0
 
 dev_dependencies:
-  affinidi_tdk_test_utilities: ^1.0.0
+  affinidi_tdk_test_utilities: ^1.1.0
   build_runner: ^2.4.15
   dart_flutter_team_lints: ^3.2.1
   mocktail: ^1.0.4
