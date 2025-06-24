@@ -32,23 +32,24 @@ class VaultEdgeFileStorage implements FileStorage {
     String? parentFolderId,
     VaultCancelToken? cancelToken,
   }) async {
-    const maxFileSize = 10 * 1024 * 1024;
-    if (data.length > maxFileSize) {
+    if (data.length > _repository.maxFileSize) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'File size exceeds maximum limit of 10MB',
+          message:
+              'File size exceeds maximum limit of ${(_repository.maxFileSize / (1024 * 1024)).toStringAsFixed(1)}MB',
           code: TdkExceptionType.invalidFileSize.code,
         ),
         StackTrace.current,
       );
     }
 
+    // Validate file type
     final extension = fileName.split('.').last.toLowerCase();
-    final allowedExtensions = ['txt', 'pdf', 'jpg', 'jpeg', 'png', 'json'];
-    if (!allowedExtensions.contains(extension)) {
+    if (!_repository.allowedExtensions.contains(extension)) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'File type not allowed',
+          message:
+              'File type not allowed. Allowed types: ${_repository.allowedExtensions.join(', ')}',
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,
@@ -224,11 +225,11 @@ class VaultEdgeFileStorage implements FileStorage {
   }) async {
     // Check if new name has valid extension
     final extension = newName.split('.').last.toLowerCase();
-    final allowedExtensions = ['txt', 'pdf', 'jpg', 'jpeg', 'png', 'json'];
-    if (!allowedExtensions.contains(extension)) {
+    if (!_repository.allowedExtensions.contains(extension)) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'File type not allowed',
+          message:
+              'File type not allowed. Allowed types: ${_repository.allowedExtensions.join(', ')}',
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,
