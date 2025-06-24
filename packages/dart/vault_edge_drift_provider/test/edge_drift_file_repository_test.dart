@@ -2,7 +2,8 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_file_repository.dart';
-import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:drift/native.dart';
 import 'package:test/test.dart';
 
@@ -203,8 +204,7 @@ void main() {
   group('When validating files', () {
     test('should throw error when file size exceeds limit', () async {
       const fileName = 'test.txt';
-      final largeFileContent =
-          Uint8List(EdgeDriftFileRepository.maxFileSize + 1);
+      final largeFileContent = Uint8List(repository.maxFileSize + 1);
 
       expect(
         () => repository.createFile(
@@ -220,26 +220,64 @@ void main() {
       );
     });
 
-    test('should accept file with allowed extension', () async {
-      const fileName = 'test.txt';
-      final fileContent = Uint8List.fromList([1, 2, 3]);
-
-      await expectLater(
-        repository.createFile(
-          profileId: profileId,
-          fileName: fileName,
-          data: fileContent,
-        ),
-        completes,
+    test('should accept files within custom size limit', () async {
+      final customRepository = EdgeDriftFileRepository(
+        database: database,
+        profileId: profileId,
+        maxFileSize: 1000, 
       );
+
+      const fileName = 'test.txt';
+      final smallFileContent = Uint8List(500);
+
+      await customRepository.createFile(
+        profileId: profileId,
+        fileName: fileName,
+        data: smallFileContent,
+      );
+
+      final fileId = await customRepository.getFileId(
+        fileName: fileName,
+        parentFolderId: null,
+      );
+      expect(fileId, isNotNull);
     });
 
-    test('should throw error when file has disallowed extension', () async {
+    test('should accept files with custom allowed extensions', () async {
+      final customRepository = EdgeDriftFileRepository(
+        database: database,
+        profileId: profileId,
+        allowedExtensions: ['doc', 'docx', 'xls'],
+      );
+
+      const fileName = 'test.doc';
+      final fileContent = Uint8List.fromList([1, 2, 3]);
+
+      await customRepository.createFile(
+        profileId: profileId,
+        fileName: fileName,
+        data: fileContent,
+      );
+
+      final fileId = await customRepository.getFileId(
+        fileName: fileName,
+        parentFolderId: null,
+      );
+      expect(fileId, isNotNull);
+    });
+
+    test('should reject files with disallowed extensions', () async {
+      final customRepository = EdgeDriftFileRepository(
+        database: database,
+        profileId: profileId,
+        allowedExtensions: ['txt', 'pdf'],
+      );
+
       const fileName = 'test.exe';
       final fileContent = Uint8List.fromList([1, 2, 3]);
 
       expect(
-        () => repository.createFile(
+        () => customRepository.createFile(
           profileId: profileId,
           fileName: fileName,
           data: fileContent,

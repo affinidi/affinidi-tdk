@@ -1,9 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/src/models/file_data.dart';
-import 'package:affinidi_tdk_vault_edge_provider/src/models/folder_data.dart';
-import 'package:affinidi_tdk_vault_edge_provider/src/models/item_data.dart';
 
 class FileFixtures {
   static const profileId = 'test-profile';

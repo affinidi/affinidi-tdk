@@ -2,7 +2,8 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_credential_repository.dart';
-import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:drift/native.dart';
 import 'package:test/test.dart';
 
