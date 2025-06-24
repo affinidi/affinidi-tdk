@@ -6,8 +6,14 @@ import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provide
 import 'package:drift/drift.dart';
 
 void main() async {
-  // Create an in-memory database
-  final database = Database(NativeDatabase.memory());
+  // Get platform info
+  final platformInfo = DatabaseConfig.getPlatformInfo();
+  print('Platform: ${platformInfo['platform']}');
+  print('Database: ${platformInfo['database']}');
+
+  // Create database
+  final database = await DatabaseConfig.createDatabase();
+  print('Database created successfully');
 
   // Create repositories
   final profileRepository = EdgeDriftProfileRepository(database: database);

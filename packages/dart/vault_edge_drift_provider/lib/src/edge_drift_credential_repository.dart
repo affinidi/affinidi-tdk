@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart'
-    as vault;
 import 'package:drift/drift.dart';
 import 'package:uuid/uuid.dart';
 
@@ -56,7 +54,7 @@ class EdgeDriftCredentialRepository
   }
 
   @override
-  Future<vault.DigitalCredential?> getCredential({
+  Future<DigitalCredential?> getCredential({
     required String credentialId,
     VaultCancelToken? cancelToken,
   }) async {
@@ -95,14 +93,14 @@ class EdgeDriftCredentialRepository
     final credentialJson = utf8.decode(credentialContent.content);
     final verifiableCredential = UniversalParser.parse(credentialJson);
 
-    return vault.DigitalCredential(
+    return DigitalCredential(
       verifiableCredential: verifiableCredential,
       id: item.id,
     );
   }
 
   @override
-  Future<List<vault.DigitalCredential>> listCredentials({
+  Future<List<DigitalCredential>> listCredentials({
     required String profileId,
     int? limit,
     String? exclusiveStartItemId,
@@ -123,7 +121,7 @@ class EdgeDriftCredentialRepository
     }
 
     final items = await query.get();
-    final credentials = <vault.DigitalCredential>[];
+    final credentials = <DigitalCredential>[];
 
     for (final item in items) {
       final credentialContent = await (_database.select(_database.credentials)
@@ -135,7 +133,7 @@ class EdgeDriftCredentialRepository
         final credentialJson = utf8.decode(credentialContent.content);
         final verifiableCredential = UniversalParser.parse(credentialJson);
 
-        credentials.add(vault.DigitalCredential(
+        credentials.add(DigitalCredential(
           verifiableCredential: verifiableCredential,
           id: item.id,
         ));
@@ -148,7 +146,7 @@ class EdgeDriftCredentialRepository
   @override
   Future<void> saveCredential({
     required String profileId,
-    required vault.VerifiableCredential verifiableCredential,
+    required VerifiableCredential verifiableCredential,
     VaultCancelToken? cancelToken,
   }) async {
     // Generate credential ID

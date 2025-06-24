@@ -1,4 +1,5 @@
 import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
+import 'package:drift/native.dart';
 import 'package:test/test.dart';
 
 void main() {
