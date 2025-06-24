@@ -1,7 +1,9 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:uuid/uuid.dart';
 
 import '../exceptions/tdk_exception_type.dart';
 import '../interfaces/edge_credentials_repository_interface.dart';
+import '../utils/credential_parser.dart';
 
 /// An Edge based implementation of [CredentialStorage] for storing and managing
 /// verifiable credentials.
@@ -28,12 +30,12 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     VaultCancelToken? cancelToken,
   }) async {
     // Check if credential exists
-    final credential = await _repository.getCredential(
+    final credentialData = await _repository.getCredentialData(
       credentialId: digitalCredentialId,
       cancelToken: cancelToken,
     );
 
-    if (credential == null) {
+    if (credentialData == null) {
       Error.throwWithStackTrace(
         TdkException(
           message: 'Credential not found',
@@ -54,12 +56,12 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     required String digitalCredentialId,
     VaultCancelToken? cancelToken,
   }) async {
-    final credential = await _repository.getCredential(
+    final credentialData = await _repository.getCredentialData(
       credentialId: digitalCredentialId,
       cancelToken: cancelToken,
     );
 
-    if (credential == null) {
+    if (credentialData == null) {
       Error.throwWithStackTrace(
         TdkException(
           message: 'Credential not found',
@@ -69,7 +71,11 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
       );
     }
 
-    return credential;
+    // Parse the credential content
+    return CredentialParser.parseCredentialFromBytes(
+      credentialBytes: credentialData.content,
+      id: credentialData.id,
+    );
   }
 
   @override
@@ -78,12 +84,20 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
-    final credentials = await _repository.listCredentials(
+    final credentialDataList = await _repository.listCredentialData(
       profileId: _profileId,
       limit: limit,
       exclusiveStartItemId: exclusiveStartItemId,
       cancelToken: cancelToken,
     );
+
+    // Parse all credentials
+    final credentials = credentialDataList.map((credentialData) {
+      return CredentialParser.parseCredentialFromBytes(
+        credentialBytes: credentialData.content,
+        id: credentialData.id,
+      );
+    }).toList();
 
     final lastEvaluatedItemId = credentials.lastOrNull?.id;
 
@@ -104,9 +118,24 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     required VerifiableCredential verifiableCredential,
     VaultCancelToken? cancelToken,
   }) async {
-    await _repository.saveCredential(
+    // Generate credential ID
+    final credentialId = const Uuid().v4();
+
+    // Extract credential name from the type (skip 'VerifiableCredential' and get the first custom type)
+    final credentialName = verifiableCredential.type
+            .where((type) => type != 'VerifiableCredential')
+            .firstOrNull ??
+        'Credential';
+
+    // Serialize the credential to bytes
+    final credentialContent =
+        CredentialParser.serializeCredentialToBytes(verifiableCredential);
+
+    await _repository.saveCredentialData(
       profileId: _profileId,
-      verifiableCredential: verifiableCredential,
+      credentialId: credentialId,
+      credentialName: credentialName,
+      credentialContent: credentialContent,
       cancelToken: cancelToken,
     );
   }

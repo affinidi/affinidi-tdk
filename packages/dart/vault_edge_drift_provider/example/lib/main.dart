@@ -37,7 +37,7 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
   EdgeDriftProfileRepository? _profileRepository;
   EdgeDriftFileRepository? _fileRepository;
   List<EdgeProfile> _profiles = [];
-  List<dynamic> _currentItems = [];
+  List<ItemData> _currentItems = [];
   String? _selectedProfileId;
   String? _currentFolderId;
   String _status = 'Initializing...';
@@ -119,7 +119,7 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
     try {
       print('Loading folder: ${_currentFolderId ?? "root"}');
       final items =
-          await _fileRepository!.getFolder(folderId: _currentFolderId);
+          await _fileRepository!.getFolderData(folderId: _currentFolderId);
       print('Loaded ${items.length} items in folder');
       setState(() {
         _currentItems = items;
@@ -166,8 +166,8 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
     }
   }
 
-  Future<void> _openFolder(dynamic item) async {
-    if (item is Folder) {
+  Future<void> _openFolder(ItemData item) async {
+    if (item.isFolder) {
       print('Opening folder: ${item.name}');
       setState(() => _status = 'Opening folder: ${item.name}');
       _currentFolderId = item.id;
@@ -175,8 +175,8 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
     }
   }
 
-  Future<void> _viewFile(dynamic item) async {
-    if (item is File) {
+  Future<void> _viewFile(ItemData item) async {
+    if (!item.isFolder) {
       try {
         print('Viewing file: ${item.name}');
         setState(() => _status = 'Loading file content...');
@@ -190,25 +190,37 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
     }
   }
 
-  Future<void> _deleteItem(dynamic item) async {
+  Future<void> _deleteItem(ItemData item) async {
     try {
       print('Deleting item: ${item.name}');
       setState(() => _status = 'Deleting ${item.name}...');
-      if (item is File) {
-        await _fileRepository!.deleteFile(fileId: item.id);
-      } else if (item is Folder) {
-        // Delete folder contents first
-        final contents = await _fileRepository!.getFolder(folderId: item.id);
-        for (final content in contents) {
-          await _fileRepository!.deleteFile(fileId: content.id);
-        }
+
+      if (item.isFolder) {
+        // Recursively delete folder contents first
+        await _deleteFolderContents(item.id);
         await _fileRepository!.deleteFolder(folderId: item.id);
+      } else {
+        await _fileRepository!.deleteFile(fileId: item.id);
       }
+
       print('Item deleted!');
       await _loadCurrentFolder();
     } catch (e, st) {
       print('Error deleting item: $e\n$st');
       setState(() => _status = 'Error deleting item: $e');
+    }
+  }
+
+  Future<void> _deleteFolderContents(String folderId) async {
+    final contents = await _fileRepository!.getFolderData(folderId: folderId);
+    for (final content in contents) {
+      if (content.isFolder) {
+        // Recursively delete subfolder contents
+        await _deleteFolderContents(content.id);
+        await _fileRepository!.deleteFolder(folderId: content.id);
+      } else {
+        await _fileRepository!.deleteFile(fileId: content.id);
+      }
     }
   }
 
@@ -352,16 +364,16 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
                                 final item = _currentItems[index];
                                 return ListTile(
                                   leading: Icon(
-                                    item is File
-                                        ? Icons.insert_drive_file
-                                        : Icons.folder,
-                                    color: item is File
-                                        ? Colors.blue
-                                        : Colors.orange,
+                                    item.isFolder
+                                        ? Icons.folder
+                                        : Icons.insert_drive_file,
+                                    color: item.isFolder
+                                        ? Colors.orange
+                                        : Colors.blue,
                                   ),
                                   title: Text(item.name),
                                   onTap: () {
-                                    if (item is Folder) {
+                                    if (item.isFolder) {
                                       _openFolder(item);
                                     } else {
                                       _viewFile(item);

@@ -1,6 +1,9 @@
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/models/file_data.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/models/folder_data.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/models/item_data.dart';
 
 class FileFixtures {
   static const profileId = 'test-profile';
@@ -45,8 +48,48 @@ class FileFixtures {
         parentId: parentId,
       );
 
-  static List<Item> createMockFolderContents() => [
-        createMockFile(id: 'file1', name: 'test1.txt'),
-        createMockFolder(id: 'folder1', name: 'subfolder', parentId: folderId),
+  static FileData createMockFileData({
+    String? id,
+    String? name,
+    String? parentId,
+  }) =>
+      FileData(
+        id: id ?? fileId,
+        name: name ?? fileName,
+        createdAt: DateTime.now(),
+        modifiedAt: DateTime.now(),
+        parentId: parentId,
+      );
+
+  static FolderData createMockFolderData({
+    String? id,
+    String? name,
+    String? parentId,
+  }) =>
+      FolderData(
+        id: id ?? folderId,
+        name: name ?? folderName,
+        createdAt: DateTime.now(),
+        modifiedAt: DateTime.now(),
+        parentId: parentId,
+      );
+
+  static List<ItemData> createMockFolderContents() => [
+        ItemData(
+          id: 'file1',
+          name: 'test1.txt',
+          createdAt: DateTime.now(),
+          modifiedAt: DateTime.now(),
+          isFolder: false,
+          parentId: null,
+        ),
+        ItemData(
+          id: 'folder1',
+          name: 'subfolder',
+          createdAt: DateTime.now(),
+          modifiedAt: DateTime.now(),
+          isFolder: true,
+          parentId: folderId,
+        ),
       ];
 }
