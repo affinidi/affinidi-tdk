@@ -1,5 +1,14 @@
 # Change Log
 
+## 1.1.0
+
+### Changes
+
+---
+
+Chore: Provide a valid pubspec.yaml
+
+
 ## 1.0.0
 
 ### Changes
