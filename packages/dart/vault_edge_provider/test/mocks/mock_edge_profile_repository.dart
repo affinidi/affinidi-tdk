@@ -8,6 +8,8 @@ class MockEdgeProfileRepository implements EdgeProfileRepositoryInterface {
   EdgeProfile? lastCalledUpdateProfile;
   bool lastCalledListProfiles = false;
   List<EdgeProfile> listProfilesReturnValue = [];
+  bool hasAnyContentReturnValue = false;
+  String? lastCalledHasAnyContentProfileId;
 
   @override
   Future<void> createProfile({
@@ -42,5 +44,11 @@ class MockEdgeProfileRepository implements EdgeProfileRepositoryInterface {
     VaultCancelToken? cancelToken,
   }) async {
     lastCalledUpdateProfile = profile;
+  }
+
+  @override
+  Future<bool> hasAnyContent(String profileId) async {
+    lastCalledHasAnyContentProfileId = profileId;
+    return hasAnyContentReturnValue;
   }
 }
