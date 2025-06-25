@@ -74,7 +74,8 @@ def test_issuance_flow(issuance_api_instance, offer_api_instance):
 
     credential_issuer = data.get("credential_issuer")
     grants = data.get("grants", {})
-    pre_auth_code = grants.get("urnietfparamsoauthgrant_typepre_authorized_code", {}).get("pre_authorized_code")
+
+    pre_auth_code = grants.get("urn_ietf_params_oauth_grant_type_pre_authorized_code", {}).get("pre_authorized_code")
 
     assert credential_issuer, "credential_issuer is missing"
     assert pre_auth_code, "pre_authorized_code is missing"
