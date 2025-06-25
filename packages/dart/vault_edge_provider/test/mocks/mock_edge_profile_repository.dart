@@ -7,7 +7,7 @@ class MockEdgeProfileRepository implements EdgeProfileRepositoryInterface {
   String? lastCalledDeletedProfileId;
   EdgeProfile? lastCalledUpdateProfile;
   bool lastCalledListProfiles = false;
-  List<EdgeProfile> mockProfiles = [];
+  List<EdgeProfile> listProfilesReturnValue = [];
 
   @override
   Future<void> createProfile({
@@ -33,7 +33,7 @@ class MockEdgeProfileRepository implements EdgeProfileRepositoryInterface {
   Future<List<EdgeProfile>> listProfiles(
       {VaultCancelToken? cancelToken}) async {
     lastCalledListProfiles = true;
-    return mockProfiles;
+    return listProfilesReturnValue;
   }
 
   @override

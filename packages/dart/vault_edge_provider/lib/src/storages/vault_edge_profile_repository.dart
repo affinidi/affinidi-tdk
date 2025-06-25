@@ -10,12 +10,14 @@ import '../storages/vault_edge_credential_storage.dart';
 import '../storages/vault_edge_file_storage.dart';
 
 /// A Vault implementation of [ProfileRepository] for locally managing
-///  user profiles.
+/// user profiles.
 class VaultEdgeProfileRepository implements ProfileRepository {
   /// Creates a new instance of [VaultEdgeProfileRepository].
   ///
   /// The [_id] parameter is used to identify this repository instance.
   /// The [_repository] implementing available operations on profiles.
+  /// The [_fileRepository] implementing available operations for files and folders.
+  /// The [_credentialRepository] implementing available operations for credentials.
   VaultEdgeProfileRepository(
     this._id,
     this._repository,
