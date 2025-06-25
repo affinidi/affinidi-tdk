@@ -117,11 +117,23 @@ class FileContents extends Table {
 /// Table definition to hold credential data
 @DataClassName('Credential')
 class Credentials extends Table {
-  /// A credential identifier - same as the credential item id
-  TextColumn get id => text().references(Items, #id)();
+  /// A credential identifier
+  TextColumn get id => text().clientDefault(const Uuid().v4)();
+
+  /// Profile id to which the credential belongs
+  TextColumn get profileId => text().references(Profiles, #id)();
+
+  /// A credential friendly name
+  TextColumn get name => text()();
 
   /// The actual credential data as a blob
   BlobColumn get content => blob()();
+
+  /// Creation timestamp of the credential
+  DateTimeColumn get createdAt => dateTime().clientDefault(clock.now)();
+
+  /// Last modification timestamp of the credential
+  DateTimeColumn get modifiedAt => dateTime().clientDefault(clock.now)();
 
   @override
   Set<Column> get primaryKey => {id};
