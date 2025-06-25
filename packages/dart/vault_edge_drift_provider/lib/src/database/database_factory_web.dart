@@ -2,6 +2,7 @@ import 'package:drift/wasm.dart';
 
 import 'database.dart';
 
+/// Creates a database for web platform using WASM
 Future<Database> platformCreateDatabase(
     {String databaseName = 'vault_edge_drift_db'}) async {
   final result = await WasmDatabase.open(
@@ -12,8 +13,8 @@ Future<Database> platformCreateDatabase(
   return Database(result.resolvedExecutor);
 }
 
+/// Creates an in-memory database for web platform using WASM
 Future<Database> platformCreateInMemoryDatabase() async {
-  // For web, use a temporary database that will be in memory
   final result = await WasmDatabase.open(
     databaseName: ':memory:',
     sqlite3Uri: Uri.parse('sqlite3.wasm'),
