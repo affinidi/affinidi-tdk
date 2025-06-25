@@ -23,8 +23,14 @@ enum TdkExceptionType {
   /// [unableToDeleteFolderWithContent] - Indicates the folder has content and cannot be deleted
   unableToDeleteFolderWithContent('unable_to_delete_folder_with_content'),
 
+  /// [unableToDeleteNonExistentProfile] - Indicates it was not possible to delete a profile as it does not exists
+  unableToDeleteNonExistentProfile('unable_to_delete_non_existent_profile'),
+
   /// [unableToDeleteProfileWithContent] - Indicates a profile has at least on folder, file or credential associated to it and cannot be deleted
   unableToDeleteProfileWithContent('unable_to_delete_profile_with_content'),
+
+  /// [unableToUpdateNonExistentProfile] - Indicates it was not possible to update a profile as it does not exists
+  unableToUpdateNonExistentProfile('unable_to_update_non_existent_profile'),
 
   /// [invalidFileId] - Indicates the fileId does not exist
   invalidFileId('invalid_file_id'),

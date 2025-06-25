@@ -1,6 +1,4 @@
-import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
-import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_profile_repository.dart';
-import 'package:affinidi_tdk_vault_edge_provider/src/models/edge_profile.dart';
+import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
 import 'package:drift/native.dart';
 import 'package:test/test.dart';
 
@@ -81,22 +79,39 @@ void main() {
     final name = 'Test Name';
     final description = 'Test Name';
 
-    setUp(() async {
-      await sut.createProfile(
-        name: name,
-        description: description,
-        accountIndex: 1,
-      );
+    group('and the profile exists', () {
+      setUp(() async {
+        await sut.createProfile(
+          name: name,
+          description: description,
+          accountIndex: 1,
+        );
 
-      final profiles = await sut.listProfiles();
-      profile = profiles.firstOrNull!;
+        final profiles = await sut.listProfiles();
+        profile = profiles.firstOrNull!;
+      });
+
+      test('it correctly removes the entry from the database', () async {
+        await sut.deleteProfile(profileId: profile.id);
+
+        final profiles = await sut.listProfiles();
+        expect(profiles, isEmpty);
+      });
     });
 
-    test('it correctly removes the entry from the database', () async {
-      await sut.deleteProfile(profileId: profile.id);
-
-      final profiles = await sut.listProfiles();
-      expect(profiles, isEmpty);
+    group('and the profile does not exist', () {
+      test(
+          'it throws an exception with code unable_to_delete_non_existent_profile',
+          () async {
+        expect(
+          () async => await sut.deleteProfile(profileId: 'unknown'),
+          throwsA(isA<TdkException>().having(
+            (error) => error.code,
+            'code',
+            TdkExceptionType.unableToDeleteNonExistentProfile.code,
+          )),
+        );
+      });
     });
   });
 
@@ -105,61 +120,83 @@ void main() {
     final name = 'Test Name';
     final description = 'Test Name';
 
-    setUp(() async {
-      await sut.createProfile(
-        name: name,
-        description: description,
-        accountIndex: 1,
-      );
-
-      final profiles = await sut.listProfiles();
-      profile = profiles.firstOrNull!;
-    });
-
-    group('and setting the name to a different value', () {
-      test('it correctly updates name to the new value', () async {
-        final newName = 'New Name';
-        profile = profile.copyWith(name: newName);
-
-        await sut.updateProfile(profile: profile);
+    group('and the profile exists', () {
+      setUp(() async {
+        await sut.createProfile(
+          name: name,
+          description: description,
+          accountIndex: 1,
+        );
 
         final profiles = await sut.listProfiles();
-        final updatedProfile = profiles.firstOrNull;
+        profile = profiles.firstOrNull!;
+      });
 
-        expect(updatedProfile, isNotNull);
-        expect(updatedProfile!.name, equals(newName));
-        expect(updatedProfile.description, equals(description));
+      group('and setting the name to a different value', () {
+        test('it correctly updates name to the new value', () async {
+          final newName = 'New Name';
+          profile = profile.copyWith(name: newName);
+
+          await sut.updateProfile(profile: profile);
+
+          final profiles = await sut.listProfiles();
+          final updatedProfile = profiles.firstOrNull;
+
+          expect(updatedProfile, isNotNull);
+          expect(updatedProfile!.name, equals(newName));
+          expect(updatedProfile.description, equals(description));
+        });
+      });
+
+      group('and setting the description to null', () {
+        test('it correctly updates description to null', () async {
+          profile = profile.copyWith(description: null);
+
+          await sut.updateProfile(profile: profile);
+
+          final profiles = await sut.listProfiles();
+          final updatedProfile = profiles.firstOrNull;
+
+          expect(updatedProfile, isNotNull);
+          expect(updatedProfile!.name, equals(name));
+          expect(updatedProfile.description, isNull);
+        });
+      });
+
+      group('and setting the description to a different value', () {
+        test('it correctly updates description to the new value', () async {
+          final newDescription = 'New Description';
+          profile = profile.copyWith(description: newDescription);
+
+          await sut.updateProfile(profile: profile);
+
+          final profiles = await sut.listProfiles();
+          final updatedProfile = profiles.firstOrNull;
+
+          expect(updatedProfile, isNotNull);
+          expect(updatedProfile!.name, equals(name));
+          expect(updatedProfile.description, equals(newDescription));
+        });
       });
     });
 
-    group('and setting the description to null', () {
-      test('it correctly updates description to null', () async {
-        profile = profile.copyWith(description: null);
-
-        await sut.updateProfile(profile: profile);
-
-        final profiles = await sut.listProfiles();
-        final updatedProfile = profiles.firstOrNull;
-
-        expect(updatedProfile, isNotNull);
-        expect(updatedProfile!.name, equals(name));
-        expect(updatedProfile.description, isNull);
-      });
-    });
-
-    group('and setting the description to a different value', () {
-      test('it correctly updates description to the new value', () async {
-        final newDescription = 'New Description';
-        profile = profile.copyWith(description: newDescription);
-
-        await sut.updateProfile(profile: profile);
-
-        final profiles = await sut.listProfiles();
-        final updatedProfile = profiles.firstOrNull;
-
-        expect(updatedProfile, isNotNull);
-        expect(updatedProfile!.name, equals(name));
-        expect(updatedProfile.description, equals(newDescription));
+    group('and the profile does not exist', () {
+      test('it throws an error with code unable_to_update_non_existent_profile',
+          () {
+        final profile = const EdgeProfile(
+          id: 'unknown',
+          accountIndex: 1,
+          name: 'name',
+          description: 'description',
+        );
+        expect(
+          () async => await sut.updateProfile(profile: profile),
+          throwsA(isA<TdkException>().having(
+            (error) => error.code,
+            'code',
+            TdkExceptionType.unableToUpdateNonExistentProfile.code,
+          )),
+        );
       });
     });
   });
