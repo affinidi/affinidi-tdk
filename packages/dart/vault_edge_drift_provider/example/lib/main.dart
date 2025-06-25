@@ -8,7 +8,9 @@ void main() async {
   runApp(const MyApp());
 }
 
+/// Main application widget for the Edge Drift Provider Example
 class MyApp extends StatelessWidget {
+  /// Creates a new [MyApp] instance
   const MyApp({super.key});
 
   @override
