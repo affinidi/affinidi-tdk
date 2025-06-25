@@ -31,7 +31,9 @@ void main() {
     test('Create wallet: DID Web', () async {
       final name = 'Test DID Web Wallet';
       final description = 'Test wallet description';
-      final didWebUrl = 'didweb.com';
+
+      String randomStr = generateRandomString(10);
+      String didWebUrl = '$randomStr.com';
 
       final walletInputBuilder = CreateWalletInputBuilder()
         ..name = name

@@ -37,7 +37,7 @@ void main() {
 
     tearDownAll(() async {
       await configurationsApi.deleteIotaConfigurationById(
-            configurationId: configurationId);
+          configurationId: configurationId);
       await ResourceFactory.deleteWallet(walletId);
     });
 
