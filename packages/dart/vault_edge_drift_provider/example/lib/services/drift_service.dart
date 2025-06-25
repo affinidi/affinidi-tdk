@@ -9,6 +9,7 @@ import 'drift_service_state.dart';
 class DriftService {
   DriftServiceState _state = const DriftServiceState();
 
+  /// Gets the current state of the drift service
   DriftServiceState get state => _state;
 
   /// Initialize the database

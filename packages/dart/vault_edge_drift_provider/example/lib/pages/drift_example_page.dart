@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import '../services/drift_service.dart';
 import '../services/drift_service_state.dart';
 
+/// Main page widget for the Edge Drift Provider Example
 class DriftExamplePage extends StatefulWidget {
+  /// Creates a new [DriftExamplePage] instance
   const DriftExamplePage({super.key});
 
   @override
