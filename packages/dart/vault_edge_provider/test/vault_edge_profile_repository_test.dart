@@ -118,11 +118,41 @@ void main() {
     });
 
     group('and deletes a profile', () {
-      test('it calls the repository with the correct parameters', () async {
-        final profile = ProfileFixtures.profile;
-        await sut.deleteProfile(profile);
+      final profile = ProfileFixtures.profile;
 
-        expect(mockRepository.lastCalledDeletedProfileId, equals(profile.id));
+      group('and the profile does not have any associated content', () {
+        setUp(() {
+          mockRepository.hasAnyContentReturnValue = false;
+        });
+        test('it calls the repository with the correct parameters', () async {
+          await sut.deleteProfile(profile);
+
+          expect(mockRepository.lastCalledHasAnyContentProfileId,
+              equals(profile.id));
+          expect(mockRepository.lastCalledDeletedProfileId, equals(profile.id));
+        });
+      });
+
+      group('and the profile has some associated content', () {
+        setUp(() {
+          mockRepository.hasAnyContentReturnValue = true;
+        });
+
+        test(
+            'it throws an exception with code unable_to_delete_profile_with_content',
+            () async {
+          expect(
+            () async => await sut.deleteProfile(profile),
+            throwsA(isA<TdkException>().having(
+              (error) => error.code,
+              'code',
+              TdkExceptionType.unableToDeleteProfileWithContent.code,
+            )),
+          );
+          expect(mockRepository.lastCalledHasAnyContentProfileId,
+              equals(profile.id));
+          expect(mockRepository.lastCalledDeletedProfileId, isNull);
+        });
       });
     });
 

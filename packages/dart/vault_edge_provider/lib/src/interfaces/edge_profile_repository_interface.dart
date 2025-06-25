@@ -28,4 +28,7 @@ abstract interface class EdgeProfileRepositoryInterface {
     required EdgeProfile profile,
     VaultCancelToken? cancelToken,
   });
+
+  /// Returns true if a profile has at least one folder, file or credential associated
+  Future<bool> hasAnyContent(String profileId);
 }
