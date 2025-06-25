@@ -82,8 +82,10 @@ class EdgeDriftProfileRepository implements EdgeProfileRepositoryInterface {
           ..where((filter) => filter.profileId.equals(profileId)))
         .get();
 
-    // TODO(MA): Add a check for any credentials as well
+    final credentials = await (_database.select(_database.credentials)
+          ..where((filter) => filter.profileId.equals(profileId)))
+        .get();
 
-    return filesOrFolders.isNotEmpty;
+    return filesOrFolders.isNotEmpty || credentials.isNotEmpty;
   }
 }
