@@ -1,4 +1,7 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
+import 'package:drift/drift.dart' as drift;
 import 'package:drift/native.dart';
 import 'package:test/test.dart';
 
@@ -197,6 +200,72 @@ void main() {
             TdkExceptionType.unableToUpdateNonExistentProfile.code,
           )),
         );
+      });
+    });
+  });
+
+  group('When checking if a profile has content', () {
+    late EdgeProfile profile;
+    setUp(() async {
+      await sut.createProfile(name: 'Profile 1', accountIndex: 1);
+
+      final profiles = await sut.listProfiles();
+      profile = profiles.first;
+    });
+
+    group('and it has a folder', () {
+      setUp(() async {
+        final folder = ItemsCompanion.insert(
+          id: const drift.Value('1'),
+          profileId: profile.id,
+          name: 'folder',
+          parentId: const drift.Value.absent(),
+          itemType: ItemType.folder,
+        );
+        await database.into(database.items).insert(folder);
+      });
+
+      test('it returns true', () async {
+        expect(await sut.hasAnyContent(profile.id), isTrue);
+      });
+    });
+
+    group('and it has a file', () {
+      setUp(() async {
+        final file = ItemsCompanion.insert(
+          id: const drift.Value('2'),
+          profileId: profile.id,
+          name: 'file',
+          parentId: const drift.Value.absent(),
+          itemType: ItemType.file,
+        );
+        await database.into(database.items).insert(file);
+      });
+
+      test('it returns true', () async {
+        expect(await sut.hasAnyContent(profile.id), isTrue);
+      });
+    });
+
+    group('and it has a credential', () {
+      setUp(() async {
+        final credential = CredentialsCompanion.insert(
+          id: const drift.Value('3'),
+          profileId: profile.id,
+          name: 'credential',
+          content: Uint8List.fromList([1, 2, 3]),
+        );
+        await database.into(database.credentials).insert(credential);
+      });
+
+      test('it returns true', () async {
+        expect(await sut.hasAnyContent(profile.id), isTrue);
+      });
+    });
+
+    group('and it does not have any', () {
+      test('it returns false', () async {
+        expect(await sut.hasAnyContent(profile.id), isFalse);
       });
     });
   });
