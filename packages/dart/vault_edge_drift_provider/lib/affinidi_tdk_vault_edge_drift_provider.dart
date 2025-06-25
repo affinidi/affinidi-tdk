@@ -2,7 +2,15 @@
 library;
 
 export 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart'
-    show $EdgeProfileCopyWith, EdgeProfile;
+    show
+        $EdgeProfileCopyWith,
+        EdgeFileRepositoryInterface,
+        EdgeProfile,
+        FileData,
+        FolderData,
+        ItemData,
+        TdkException,
+        TdkExceptionType;
 
 export 'src/database/database.dart';
 export 'src/database/database_config.dart';

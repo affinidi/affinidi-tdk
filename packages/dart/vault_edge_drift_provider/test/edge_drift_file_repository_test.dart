@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
 import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_file_repository.dart';
-import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_vault_edge_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:drift/native.dart';
 import 'package:test/test.dart';
@@ -224,7 +224,7 @@ void main() {
       final customRepository = EdgeDriftFileRepository(
         database: database,
         profileId: profileId,
-        maxFileSize: 1000, 
+        maxFileSize: 1000,
       );
 
       const fileName = 'test.txt';

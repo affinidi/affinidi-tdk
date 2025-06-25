@@ -1,19 +1,16 @@
 // ignore_for_file: avoid_print
 
 import 'dart:typed_data';
-import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
+
+import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
+import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_file_repository.dart';
+import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_profile_repository.dart';
 import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 
 void main() async {
-  // Get platform info
-  final platformInfo = DatabaseConfig.getPlatformInfo();
-  print('Platform: ${platformInfo['platform']}');
-  print('Database: ${platformInfo['database']}');
-
-  // Create database
-  final database = await DatabaseConfig.createDatabase();
-  print('Database created successfully');
+  // Create an in-memory database directly
+  final database = Database(NativeDatabase.memory());
 
   // Create repositories
   final profileRepository = EdgeDriftProfileRepository(database: database);
@@ -66,14 +63,14 @@ void main() async {
   print('Listing root folder contents:');
   final rootItems = await fileRepository.getFolderData(folderId: null);
   for (final item in rootItems) {
-    print('- ${item.name} (${item is File ? 'File' : 'Folder'})');
+    print('- ${item.name} (${item.isFolder ? 'Folder' : 'File'})');
   }
 
   // List contents of Folder1
   print('Listing Folder1 contents:');
   final folderItems = await fileRepository.getFolderData(folderId: folder.id);
   for (final item in folderItems) {
-    print('- ${item.name} (${item is File ? 'File' : 'Folder'})');
+    print('- ${item.name} (${item.isFolder ? 'Folder' : 'File'})');
   }
 
   // Read file content
@@ -94,7 +91,7 @@ void main() async {
   // Delete all contents
   print('Deleting all contents:');
   for (final item in rootItems) {
-    if (item is File) {
+    if (!item.isFolder) {
       print('Deleting file: ${item.name}');
       await fileRepository.deleteFile(fileId: item.id);
     } else {

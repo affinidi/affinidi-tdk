@@ -11,7 +11,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     required db.Database database,
     required String profileId,
     this.maxFileSize = 10 * 1024 * 1024,
-    this.allowedExtensions = const ['txt', 'pdf', 'jpg', 'jpeg', 'png', 'json'],
+    this.allowedExtensions = const ['txt', 'pdf', 'jpg'],
   })  : _database = database,
         _profileId = profileId;
 

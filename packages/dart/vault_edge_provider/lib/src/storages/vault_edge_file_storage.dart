@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:dio/dio.dart';
 
 import '../exceptions/tdk_exception_type.dart';
 import '../interfaces/edge_file_repository_interface.dart';
@@ -31,6 +32,7 @@ class VaultEdgeFileStorage implements FileStorage {
     required Uint8List data,
     String? parentFolderId,
     VaultCancelToken? cancelToken,
+    void Function(int, int)? onSendProgress,
   }) async {
     if (data.length > _repository.maxFileSize) {
       Error.throwWithStackTrace(
@@ -178,6 +180,7 @@ class VaultEdgeFileStorage implements FileStorage {
   Future<Uint8List> getFileContent({
     required String fileId,
     VaultCancelToken? cancelToken,
+    ProgressCallback? onReceiveProgress,
   }) async {
     final content = await _repository.getFileContent(fileId: fileId);
 

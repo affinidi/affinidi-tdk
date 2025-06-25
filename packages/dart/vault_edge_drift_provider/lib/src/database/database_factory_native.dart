@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'database.dart';
 
+/// Creates a database for native platform using SQLite
 Future<Database> platformCreateDatabase(
     {String databaseName = 'vault_edge_drift_db'}) async {
   final documentsDir = await getApplicationDocumentsDirectory();
@@ -12,6 +13,7 @@ Future<Database> platformCreateDatabase(
   return Database(NativeDatabase(File(dbPath)));
 }
 
+/// Creates an in-memory database for native platform using SQLite
 Future<Database> platformCreateInMemoryDatabase() async {
   return Database(NativeDatabase.memory());
 }
