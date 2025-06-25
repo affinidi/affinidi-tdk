@@ -41,7 +41,7 @@ class EdgeDriftProfileRepository implements EdgeProfileRepositoryInterface {
     if (deleted == 0) {
       throw TdkException(
         message: 'Failed to delete profile',
-        code: TdkExceptionType.missingProfileId.code,
+        code: TdkExceptionType.unableToDeleteNonExistentProfile.code,
       );
     }
   }
@@ -67,6 +67,17 @@ class EdgeDriftProfileRepository implements EdgeProfileRepositoryInterface {
     required EdgeProfile profile,
     VaultCancelToken? cancelToken,
   }) async {
+    final existing = await (_database.select(_database.profiles)
+          ..where((filter) => filter.id.equals(profile.id)))
+        .getSingleOrNull();
+
+    if (existing == null) {
+      throw TdkException(
+        message: 'Failed to update profile',
+        code: TdkExceptionType.unableToUpdateNonExistentProfile.code,
+      );
+    }
+
     final entry = ProfilesCompanion(
       id: Value(profile.id),
       accountIndex: Value(profile.accountIndex),
