@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Apis/CallbackApi.md
 Apis/ConfigurationsApi.md
 Apis/DefaultApi.md

@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 Apis/AccountsApi.md
 Apis/ConfigurationApi.md
 Apis/FilesApi.md
