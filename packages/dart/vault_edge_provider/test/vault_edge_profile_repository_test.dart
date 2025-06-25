@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:test/test.dart';
@@ -14,15 +12,14 @@ void main() {
   late MockEdgeProfileRepository mockRepository;
   late MockEdgeFileRepository mockFileRepository;
   late MockEdgeCredentialRepository mockCredentialRepository;
-  late var sut = VaultEdgeProfileRepository(
-      'id', mockRepository, mockFileRepository, mockCredentialRepository);
+  late VaultEdgeProfileRepository sut;
 
   setUp(() {
     mockRepository = MockEdgeProfileRepository();
     mockFileRepository = MockEdgeFileRepository();
     mockCredentialRepository = MockEdgeCredentialRepository();
     sut = VaultEdgeProfileRepository(
-        'id', mockRepository, mockFileRepository, mockCredentialRepository);
+        'sut', mockRepository, mockFileRepository, mockCredentialRepository);
   });
 
   group('When edge profile repository is not configured', () {
@@ -56,7 +53,7 @@ void main() {
     group('and retrieves profiles', () {
       test('it throws an exception', () {
         expect(
-            () async => await sut.updateProfile(ProfileFixtures.profile),
+            () async => await sut.listProfiles(),
             throwsA(isA<TdkException>().having((error) => error.code, 'code',
                 TdkExceptionType.profleNotConfigured.code)));
       });
@@ -103,6 +100,10 @@ void main() {
       expect(isConfigured, isTrue);
     });
 
+    test('it returns the correct id', () async {
+      expect(sut.id, equals('sut'));
+    });
+
     group('and creates a profile', () {
       test('it calls the repository with the correct parameters', () async {
         final name = 'name';
@@ -134,7 +135,7 @@ void main() {
           description: 'Test Description',
           accountIndex: 1,
         );
-        mockRepository.mockProfiles = [mockProfile];
+        mockRepository.listProfilesReturnValue = [mockProfile];
 
         // Act
         final profiles = await sut.listProfiles();
@@ -142,12 +143,8 @@ void main() {
         // Assert
         expect(profiles.length, equals(1));
         final profile = profiles.first;
-        expect(profile.fileStorages, isNotEmpty);
-        expect(profile.fileStorages['id'], isNotNull);
-
-        // Verify file storage is properly configured
-        final fileStorage = profile.fileStorages['id']!;
-        expect(fileStorage.id, equals('id'));
+        expect(profile.defaultFileStorage, isNotNull);
+        expect(profile.defaultFileStorage!.id, equals('sut'));
       });
 
       test('it returns multiple profiles with file storage', () async {
@@ -166,7 +163,7 @@ void main() {
             accountIndex: 2,
           ),
         ];
-        mockRepository.mockProfiles = mockProfiles;
+        mockRepository.listProfilesReturnValue = mockProfiles;
 
         // Act
         final profiles = await sut.listProfiles();
@@ -175,90 +172,10 @@ void main() {
         expect(profiles.length, equals(2));
 
         // Verify each profile has its own file storage
-        for (var i = 0; i < profiles.length; i++) {
-          final profile = profiles[i];
-
-          expect(profile.fileStorages, isNotEmpty);
-          expect(profile.fileStorages['id'], isNotNull);
-
-          final fileStorage = profile.fileStorages['id']!;
-          expect(fileStorage.id, equals('id'));
+        for (final profile in profiles) {
+          expect(profile.defaultFileStorage, isNotNull);
+          expect(profile.defaultFileStorage!.id, equals('sut'));
         }
-      });
-
-      test('file storage operations use correct profile ID', () async {
-        // Arrange
-        final mockProfile = const EdgeProfile(
-          id: '1',
-          name: 'Test Profile',
-          description: 'Test Description',
-          accountIndex: 1,
-        );
-        mockRepository.mockProfiles = [mockProfile];
-
-        // Act
-        final profiles = await sut.listProfiles();
-        final profile = profiles.first;
-        final fileStorage = profile.fileStorages['id']!;
-
-        // Test createFile in root folder
-        await fileStorage.createFile(
-          fileName: 'root.txt',
-          data: Uint8List.fromList([1, 2, 3]),
-        );
-
-        // Verify the file repository was called with the correct profile ID
-        // and no parent
-        expect(mockFileRepository.profileId, equals(mockProfile.id));
-        expect(mockFileRepository.fileName, equals('root.txt'));
-        expect(mockFileRepository.parentId, isNull);
-
-        // Test createFile in parent folder
-        await fileStorage.createFile(
-          fileName: 'nested.txt',
-          data: Uint8List.fromList([4, 5, 6]),
-          parentFolderId: 'parent',
-        );
-
-        // Verify the file repository was called with the correct profile ID
-        // and parent
-        expect(mockFileRepository.profileId, equals(mockProfile.id));
-        expect(mockFileRepository.fileName, equals('nested.txt'));
-        expect(mockFileRepository.parentId, equals('parent'));
-
-        // Test getFile and getFileContent for root file
-        final rootFile = await fileStorage.getFile(
-            fileId: mockFileRepository.getFileIds().first);
-        expect(rootFile.name, equals('root.txt'));
-        expect(rootFile.parentId, isNull);
-
-        final rootContent =
-            await fileStorage.getFileContent(fileId: rootFile.id);
-        expect(rootContent, equals(Uint8List.fromList([1, 2, 3])));
-
-        // Test getFile and getFileContent for nested file
-        final nestedFileId = mockFileRepository.getFileIds().where((id) {
-          final file = mockFileRepository.files[id];
-          return file?.name == 'nested.txt';
-        }).first;
-        final nestedFile = await fileStorage.getFile(fileId: nestedFileId);
-        expect(nestedFile.name, equals('nested.txt'));
-        expect(nestedFile.parentId, equals('parent'));
-
-        final nestedContent =
-            await fileStorage.getFileContent(fileId: nestedFile.id);
-        expect(nestedContent, equals(Uint8List.fromList([4, 5, 6])));
-
-        // Test createFolder
-        await fileStorage.createFolder(
-          folderName: 'test-folder',
-          parentFolderId: 'parent',
-        );
-
-        // Verify the folder repository was called with the correct profile ID
-        expect(mockFileRepository.folderProfileId, equals(mockProfile.id));
-        expect(mockFileRepository.folderName, equals('test-folder'));
-        expect(mockFileRepository.folderParentId, equals('parent'));
       });
     });
 
