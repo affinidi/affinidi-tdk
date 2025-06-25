@@ -22,10 +22,9 @@ class EdgeDriftCredentialRepository
     VaultCancelToken? cancelToken,
   }) async {
     // Check if credential exists
-    final credential = await (_database.select(_database.items)
+    final credential = await (_database.select(_database.credentials)
           ..where((filter) =>
               filter.id.equals(credentialId) &
-              filter.itemType.equals(db.ItemType.file.value) &
               filter.profileId.equals(_profileId)))
         .getSingleOrNull();
 
@@ -43,11 +42,6 @@ class EdgeDriftCredentialRepository
     await (_database.delete(_database.credentials)
           ..where((filter) => filter.id.equals(credentialId)))
         .go();
-
-    // Delete credential item
-    await (_database.delete(_database.items)
-          ..where((filter) => filter.id.equals(credentialId)))
-        .go();
   }
 
   @override
@@ -55,14 +49,13 @@ class EdgeDriftCredentialRepository
     required String credentialId,
     VaultCancelToken? cancelToken,
   }) async {
-    final item = await (_database.select(_database.items)
+    final credential = await (_database.select(_database.credentials)
           ..where((filter) =>
               filter.id.equals(credentialId) &
-              filter.itemType.equals(db.ItemType.file.value) &
               filter.profileId.equals(_profileId)))
         .getSingleOrNull();
 
-    if (item == null) {
+    if (credential == null) {
       Error.throwWithStackTrace(
         TdkException(
           message: 'Credential not found',
@@ -72,23 +65,9 @@ class EdgeDriftCredentialRepository
       );
     }
 
-    final credentialContent = await (_database.select(_database.credentials)
-          ..where((filter) => filter.id.equals(credentialId)))
-        .getSingleOrNull();
-
-    if (credentialContent == null) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'Credential content not found',
-          code: TdkExceptionType.credentialNotFound.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
     return CredentialData(
-      id: item.id,
-      content: credentialContent.content,
+      id: credential.id,
+      content: credential.content,
     );
   }
 
@@ -99,10 +78,8 @@ class EdgeDriftCredentialRepository
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
-    var query = _database.select(_database.items)
-      ..where((filter) =>
-          filter.profileId.equals(_profileId) &
-          filter.itemType.equals(db.ItemType.file.value));
+    var query = _database.select(_database.credentials)
+      ..where((filter) => filter.profileId.equals(_profileId));
 
     if (exclusiveStartItemId != null) {
       query = query
@@ -113,23 +90,13 @@ class EdgeDriftCredentialRepository
       query = query..limit(limit);
     }
 
-    final items = await query.get();
-    final credentials = <CredentialData>[];
-
-    for (final item in items) {
-      final credentialContent = await (_database.select(_database.credentials)
-            ..where((filter) => filter.id.equals(item.id)))
-          .getSingleOrNull();
-
-      if (credentialContent != null) {
-        credentials.add(CredentialData(
-          id: item.id,
-          content: credentialContent.content,
-        ));
-      }
-    }
-
-    return credentials;
+    final credentials = await query.get();
+    return credentials
+        .map((credential) => CredentialData(
+              id: credential.id,
+              content: credential.content,
+            ))
+        .toList();
   }
 
   @override
@@ -140,28 +107,19 @@ class EdgeDriftCredentialRepository
     required Uint8List credentialContent,
     VaultCancelToken? cancelToken,
   }) async {
-    // Create credential item entry
-    final credentialItem = db.ItemsCompanion.insert(
+    // Create credential entry
+    final credentialEntry = db.CredentialsCompanion.insert(
       id: Value(credentialId),
       profileId: _profileId,
       name: credentialName,
-      itemType: db.ItemType.file, // Using file type for credentials
+      content: credentialContent,
     );
-    await _database.into(_database.items).insert(credentialItem);
-
-    // Create credential content entry
-    await _database.into(_database.credentials).insert(
-          db.CredentialsCompanion.insert(
-            id: credentialId,
-            content: credentialContent,
-          ),
-        );
+    await _database.into(_database.credentials).insert(credentialEntry);
 
     // Verify the credential was created
-    final createdCredential = await (_database.select(_database.items)
+    final createdCredential = await (_database.select(_database.credentials)
           ..where((filter) =>
               filter.id.equals(credentialId) &
-              filter.itemType.equals(db.ItemType.file.value) &
               filter.profileId.equals(_profileId)))
         .getSingleOrNull();
 
