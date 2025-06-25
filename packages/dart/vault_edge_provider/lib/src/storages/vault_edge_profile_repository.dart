@@ -125,10 +125,19 @@ Profile repository must be configured using a RepositoryConfiguration''',
       );
     }
 
-    final edgeProfile = EdgeProfile.from(profile);
+    final hasContent = await _repository.hasAnyContent(profile.id);
+    if (hasContent) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'Cannot delete profile with content',
+          code: TdkExceptionType.unableToDeleteProfileWithContent.code,
+        ),
+        StackTrace.current,
+      );
+    }
 
     return await _repository.deleteProfile(
-      profileId: edgeProfile.id,
+      profileId: profile.id,
       cancelToken: cancelToken,
     );
   }
