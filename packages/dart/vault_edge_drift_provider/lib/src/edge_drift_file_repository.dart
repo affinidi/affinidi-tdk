@@ -4,6 +4,16 @@ import 'package:uuid/uuid.dart';
 
 import 'database/database.dart' as db;
 
+/// Converts database ItemType to provider ItemType
+ItemType _convertDbItemType(db.ItemType dbType) {
+  switch (dbType) {
+    case db.ItemType.file:
+      return ItemType.file;
+    case db.ItemType.folder:
+      return ItemType.folder;
+  }
+}
+
 /// Repository class to manage files and folders on a local Drift database
 class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   /// Constructor
@@ -162,7 +172,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       name: createdFolder.name,
       createdAt: createdFolder.createdAt,
       modifiedAt: createdFolder.modifiedAt,
-      isFolder: true,
+      itemType: ItemType.folder,
       parentId: createdFolder.parentId,
     );
   }
@@ -233,7 +243,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       name: file.name,
       createdAt: file.createdAt,
       modifiedAt: file.modifiedAt,
-      isFolder: false,
+      itemType: ItemType.file,
       parentId: file.parentId,
     );
   }
@@ -287,7 +297,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
         name: item.name,
         createdAt: item.createdAt,
         modifiedAt: item.modifiedAt,
-        isFolder: item.itemType == db.ItemType.folder,
+        itemType: _convertDbItemType(item.itemType),
         parentId: item.parentId,
       );
     }).toList();
