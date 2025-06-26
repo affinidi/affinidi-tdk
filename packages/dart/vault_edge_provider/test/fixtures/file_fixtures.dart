@@ -33,7 +33,7 @@ class FileFixtures {
       name: name ?? fileName,
       createdAt: createdAt ?? DateTime.now(),
       modifiedAt: modifiedAt ?? DateTime.now(),
-      isFolder: false,
+      itemType: ItemType.file,
       parentId: parentId,
     );
   }
@@ -50,7 +50,43 @@ class FileFixtures {
       name: name ?? folderName,
       createdAt: createdAt ?? DateTime.now(),
       modifiedAt: modifiedAt ?? DateTime.now(),
-      isFolder: true,
+      itemType: ItemType.folder,
+      parentId: parentId,
+    );
+  }
+
+  /// Creates a sample file data
+  static ItemData createSampleFileData({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    DateTime? modifiedAt,
+    String? parentId,
+  }) {
+    return ItemData(
+      id: id ?? 'file-123',
+      name: name ?? 'sample.txt',
+      createdAt: createdAt ?? DateTime(2023, 1, 1),
+      modifiedAt: modifiedAt ?? DateTime(2023, 1, 1),
+      itemType: ItemType.file,
+      parentId: parentId,
+    );
+  }
+
+  /// Creates a sample folder data
+  static ItemData createSampleFolderData({
+    String? id,
+    String? name,
+    DateTime? createdAt,
+    DateTime? modifiedAt,
+    String? parentId,
+  }) {
+    return ItemData(
+      id: id ?? 'folder-123',
+      name: name ?? 'sample-folder',
+      createdAt: createdAt ?? DateTime(2023, 1, 1),
+      modifiedAt: modifiedAt ?? DateTime(2023, 1, 1),
+      itemType: ItemType.folder,
       parentId: parentId,
     );
   }
