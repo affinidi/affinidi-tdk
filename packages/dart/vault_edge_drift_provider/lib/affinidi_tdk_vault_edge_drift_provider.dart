@@ -3,17 +3,14 @@ library;
 
 export 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart'
     show
-        $EdgeProfileCopyWith,
+        EdgeCredentialsRepositoryInterface,
         EdgeFileRepositoryInterface,
-        EdgeProfile,
-        FileData,
-        FolderData,
+        EdgeProfileRepositoryInterface,
         ItemData,
         TdkException,
         TdkExceptionType;
 
 export 'src/database/database.dart';
-export 'src/database/database_config.dart';
 export 'src/edge_drift_credential_repository.dart';
 export 'src/edge_drift_file_repository.dart';
 export 'src/edge_drift_profile_repository.dart';
