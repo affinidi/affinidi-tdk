@@ -2,91 +2,56 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 
+/// Test fixtures for file storage tests
 class FileFixtures {
-  static const profileId = 'test-profile';
-  static const storageId = 'test-storage';
-  static const fileName = 'test.txt';
-  static const fileId = 'test-file';
-  static const folderId = 'test-folder';
-  static const folderName = 'test-folder';
-  static const parentFolderId = 'parent-folder';
-  static const newName = 'renamed.txt';
+  static const String storageId = 'test-file-storage';
+  static const String profileId = 'test-profile-id';
+  static const String fileId = 'test-file-id';
+  static const String folderId = 'test-folder-id';
+  static const String parentFolderId = 'test-parent-folder-id';
+  static const String fileName = 'test-file.txt';
+  static const String folderName = 'test-folder';
 
   static final smallFileData =
-      Uint8List.fromList(List.generate(1024, (i) => i % 256));
+      Uint8List.fromList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   static final largeFileData =
-      Uint8List.fromList(List.generate(11 * 1024 * 1024, (i) => i % 256));
+      Uint8List(1024 * 1024 * 11); // 11MB - exceeds 10MB limit
   static final invalidFileData = Uint8List.fromList([1, 2, 3]);
-  static final fileContent = Uint8List.fromList([1, 2, 3]);
 
-  static File createMockFile({
+  static const List<String> allowedExtensions = ['txt', 'pdf', 'jpg'];
+  static const int maxFileSize = 10 * 1024 * 1024; // 10MB
+
+  static ItemData createMockFileData({
     String? id,
     String? name,
+    DateTime? createdAt,
+    DateTime? modifiedAt,
     String? parentId,
-  }) =>
-      File(
-        id: id ?? fileId,
-        name: name ?? fileName,
-        createdAt: DateTime.now(),
-        modifiedAt: DateTime.now(),
-        parentId: parentId,
-      );
+  }) {
+    return ItemData(
+      id: id ?? fileId,
+      name: name ?? fileName,
+      createdAt: createdAt ?? DateTime.now(),
+      modifiedAt: modifiedAt ?? DateTime.now(),
+      isFolder: false,
+      parentId: parentId,
+    );
+  }
 
-  static Folder createMockFolder({
+  static ItemData createMockFolderData({
     String? id,
     String? name,
+    DateTime? createdAt,
+    DateTime? modifiedAt,
     String? parentId,
-  }) =>
-      Folder(
-        id: id ?? folderId,
-        name: name ?? folderName,
-        createdAt: DateTime.now(),
-        modifiedAt: DateTime.now(),
-        parentId: parentId,
-      );
-
-  static FileData createMockFileData({
-    String? id,
-    String? name,
-    String? parentId,
-  }) =>
-      FileData(
-        id: id ?? fileId,
-        name: name ?? fileName,
-        createdAt: DateTime.now(),
-        modifiedAt: DateTime.now(),
-        parentId: parentId,
-      );
-
-  static FolderData createMockFolderData({
-    String? id,
-    String? name,
-    String? parentId,
-  }) =>
-      FolderData(
-        id: id ?? folderId,
-        name: name ?? folderName,
-        createdAt: DateTime.now(),
-        modifiedAt: DateTime.now(),
-        parentId: parentId,
-      );
-
-  static List<ItemData> createMockFolderContents() => [
-        ItemData(
-          id: 'file1',
-          name: 'test1.txt',
-          createdAt: DateTime.now(),
-          modifiedAt: DateTime.now(),
-          isFolder: false,
-          parentId: null,
-        ),
-        ItemData(
-          id: 'folder1',
-          name: 'subfolder',
-          createdAt: DateTime.now(),
-          modifiedAt: DateTime.now(),
-          isFolder: true,
-          parentId: folderId,
-        ),
-      ];
+  }) {
+    return ItemData(
+      id: id ?? folderId,
+      name: name ?? folderName,
+      createdAt: createdAt ?? DateTime.now(),
+      modifiedAt: modifiedAt ?? DateTime.now(),
+      isFolder: true,
+      parentId: parentId,
+    );
+  }
 }

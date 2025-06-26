@@ -23,7 +23,7 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   String? requestedFileId;
   String? requestedContentId;
 
-  final Map<String, FileData> files = {};
+  final Map<String, ItemData> files = {};
   final Map<String, Uint8List> fileContents = {};
 
   List<String> getFileIds() => files.keys.toList();
@@ -40,18 +40,19 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
     fileData = data;
     parentId = parentFolderId;
     final fileId = 'file-${DateTime.now().millisecondsSinceEpoch}';
-    files[fileId] = FileData(
+    files[fileId] = ItemData(
       id: fileId,
       name: fileName,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
+      isFolder: false,
       parentId: parentFolderId,
     );
     fileContents[fileId] = data;
   }
 
   @override
-  Future<FolderData> createFolder({
+  Future<ItemData> createFolder({
     required String profileId,
     required String folderName,
     String? parentFolderId,
@@ -59,11 +60,12 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
     folderProfileId = profileId;
     this.folderName = folderName;
     folderParentId = parentFolderId;
-    return FolderData(
+    return ItemData(
       id: 'new-folder-${DateTime.now().millisecondsSinceEpoch}',
       name: folderName,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
+      isFolder: true,
       parentId: parentFolderId,
     );
   }
@@ -90,7 +92,7 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<FileData> getFileData({required String fileId}) async {
+  Future<ItemData> getFileData({required String fileId}) async {
     requestedFileId = fileId;
     final file = files[fileId];
     if (file == null) {
