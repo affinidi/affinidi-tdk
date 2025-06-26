@@ -1,6 +1,3 @@
-import 'dart:typed_data';
-
-import 'package:affinidi_tdk_vault_edge_provider/src/models/item_data.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../fixtures/file_fixtures.dart';
@@ -8,8 +5,9 @@ import 'mock_edge_file_repository.dart';
 
 class FileMockSetup {
   static void setupFallbackValues() {
-    registerFallbackValue(Uint8List(0));
-    registerFallbackValue(DateTime.now());
+    registerFallbackValue(FileFixtures.smallFileData);
+    registerFallbackValue(FileFixtures.largeFileData);
+    registerFallbackValue(FileFixtures.invalidFileData);
   }
 
   static void setupFileRepositoryMocks(
@@ -22,43 +20,36 @@ class FileMockSetup {
           parentFolderId: any(named: 'parentFolderId'),
         )).thenAnswer((_) async {});
 
-    when(() => mockRepository.getFileId(
-          fileName: any(named: 'fileName'),
-          parentFolderId: any(named: 'parentFolderId'),
-        )).thenAnswer((_) async => null);
-
     when(() => mockRepository.createFolder(
           profileId: any(named: 'profileId'),
           folderName: any(named: 'folderName'),
           parentFolderId: any(named: 'parentFolderId'),
         )).thenAnswer((_) async => FileFixtures.createMockFolderData());
 
-    when(() => mockRepository.deleteFile(fileId: any(named: 'fileId')))
-        .thenAnswer((_) async {});
-
-    when(() => mockRepository.deleteFolder(folderId: any(named: 'folderId')))
-        .thenAnswer((_) async => true);
-
     when(() => mockRepository.getFileData(fileId: any(named: 'fileId')))
         .thenAnswer((_) async => FileFixtures.createMockFileData());
 
     when(() => mockRepository.getFileContent(fileId: any(named: 'fileId')))
-        .thenAnswer((_) async => FileFixtures.fileContent);
+        .thenAnswer((_) async => FileFixtures.smallFileData);
 
     when(() => mockRepository.getFolderData(
           folderId: any(named: 'folderId'),
           limit: any(named: 'limit'),
           exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-        )).thenAnswer((_) async => [
-          ItemData(
-            id: FileFixtures.folderId,
-            name: FileFixtures.folderName,
-            createdAt: DateTime.now(),
-            modifiedAt: DateTime.now(),
-            isFolder: true,
-            parentId: FileFixtures.parentFolderId,
-          )
-        ]);
+        )).thenAnswer((invocation) async {
+      final folderId =
+          invocation.namedArguments[const Symbol('folderId')] as String?;
+      if (folderId == 'test-folder-id') {
+        return [FileFixtures.createMockFolderData(id: folderId)];
+      }
+      return [];
+    });
+
+    when(() => mockRepository.deleteFile(fileId: any(named: 'fileId')))
+        .thenAnswer((_) async {});
+
+    when(() => mockRepository.deleteFolder(folderId: any(named: 'folderId')))
+        .thenAnswer((_) async => true);
 
     when(() => mockRepository.renameFile(
           fileId: any(named: 'fileId'),
@@ -69,5 +60,10 @@ class FileMockSetup {
           folderId: any(named: 'folderId'),
           newName: any(named: 'newName'),
         )).thenAnswer((_) async => true);
+
+    when(() => mockRepository.getFileId(
+          fileName: any(named: 'fileName'),
+          parentFolderId: any(named: 'parentFolderId'),
+        )).thenAnswer((_) async => null);
   }
 }

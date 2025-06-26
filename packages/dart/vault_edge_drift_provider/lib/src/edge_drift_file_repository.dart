@@ -127,7 +127,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<FolderData> createFolder({
+  Future<ItemData> createFolder({
     required String profileId,
     required String folderName,
     String? parentFolderId,
@@ -149,38 +149,35 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       }
     }
 
-    final newFolderId = const Uuid().v4();
+    final folderId = const Uuid().v4();
+
     final folderItem = db.ItemsCompanion.insert(
-      id: Value(newFolderId),
+      id: Value(folderId),
       profileId: _profileId,
       name: folderName,
-      itemType: db.ItemType.folder,
       parentId: Value(parentFolderId),
+      itemType: db.ItemType.folder,
     );
+    await _database.into(_database.items).insert(folderItem);
 
-    try {
-      await _database.into(_database.items).insert(folderItem);
-    } catch (e) {
-      throw Exception('Failed to create folder: $e');
-    }
-
-    // Verify the folder was created
+    // Verify the folder was created with correct parentId
     final createdFolder = await (_database.select(_database.items)
           ..where((filter) =>
-              filter.id.equals(newFolderId) &
+              filter.id.equals(folderId) &
               filter.itemType.equals(db.ItemType.folder.value) &
               filter.profileId.equals(_profileId)))
         .getSingleOrNull();
 
     if (createdFolder == null) {
-      throw Exception('Failed to create folder - verification failed');
+      throw Exception('Failed to create folder');
     }
 
-    return FolderData(
+    return ItemData(
       id: createdFolder.id,
       name: createdFolder.name,
       createdAt: createdFolder.createdAt,
       modifiedAt: createdFolder.modifiedAt,
+      isFolder: true,
       parentId: createdFolder.parentId,
     );
   }
@@ -228,7 +225,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<FileData> getFileData({required String fileId}) async {
+  Future<ItemData> getFileData({required String fileId}) async {
     final file = await (_database.select(_database.items)
           ..where((filter) =>
               filter.id.equals(fileId) &
@@ -244,11 +241,12 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       );
     }
 
-    return FileData(
+    return ItemData(
       id: file.id,
       name: file.name,
       createdAt: file.createdAt,
       modifiedAt: file.modifiedAt,
+      isFolder: false,
       parentId: file.parentId,
     );
   }
