@@ -1,7 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
-import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
+import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart'
+    hide ItemType;
 import 'package:drift/drift.dart' as drift;
 import 'package:drift/native.dart';
 import 'package:test/test.dart';

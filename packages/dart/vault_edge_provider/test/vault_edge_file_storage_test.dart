@@ -76,7 +76,7 @@ void main() {
                     name: FileFixtures.folderName,
                     createdAt: DateTime.now(),
                     modifiedAt: DateTime.now(),
-                    isFolder: true,
+                    itemType: ItemType.folder,
                     parentId: null,
                   )
                 ]);
@@ -184,7 +184,7 @@ void main() {
             name: 'test1.txt',
             createdAt: DateTime.now(),
             modifiedAt: DateTime.now(),
-            isFolder: false,
+            itemType: ItemType.file,
             parentId: null,
           ),
           ItemData(
@@ -192,7 +192,7 @@ void main() {
             name: 'subfolder',
             createdAt: DateTime.now(),
             modifiedAt: DateTime.now(),
-            isFolder: true,
+            itemType: ItemType.folder,
             parentId: FileFixtures.folderId,
           ),
         ];
