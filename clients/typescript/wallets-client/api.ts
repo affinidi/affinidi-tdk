@@ -62,7 +62,7 @@ export interface CreateWalletInput {
    * @type {string}
    * @memberof CreateWalletInput
    */
-  didMethod: CreateWalletInputDidMethodEnum
+  didMethod?: CreateWalletInputDidMethodEnum
   /**
    * URL of the DID. Required if the did method is web
    * @type {string}
