@@ -1,7 +1,5 @@
 import 'dart:typed_data';
 
-import '../models/file_data.dart';
-import '../models/folder_data.dart';
 import '../models/item_data.dart';
 
 /// Interface to manage CRUD operations on files and folders
@@ -21,7 +19,7 @@ abstract interface class EdgeFileRepositoryInterface {
   });
 
   /// Add a new folder to the specified parent
-  Future<FolderData> createFolder({
+  Future<ItemData> createFolder({
     required String profileId,
     required String folderName,
     String? parentFolderId,
@@ -38,7 +36,7 @@ abstract interface class EdgeFileRepositoryInterface {
   /// Retrieves the file metadata
   ///
   /// [fileId] - the file unique identifier
-  Future<FileData> getFileData({required String fileId});
+  Future<ItemData> getFileData({required String fileId});
 
   /// Retrieves the content of the file
   Future<Uint8List> getFileContent({

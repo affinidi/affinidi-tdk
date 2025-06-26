@@ -137,7 +137,7 @@ void main() {
         final result =
             await storage.getFileContent(fileId: FileFixtures.fileId);
 
-        expect(result, equals(FileFixtures.fileContent));
+        expect(result, equals(FileFixtures.smallFileData));
         verify(() => mockRepository.getFileContent(fileId: FileFixtures.fileId))
             .called(1);
       });
@@ -217,12 +217,12 @@ void main() {
       test('it renames folder', () async {
         await storage.renameFolder(
           folderId: FileFixtures.folderId,
-          newName: FileFixtures.newName,
+          newName: 'renamed-folder',
         );
 
         verify(() => mockRepository.renameFolder(
               folderId: FileFixtures.folderId,
-              newName: FileFixtures.newName,
+              newName: 'renamed-folder',
             )).called(1);
       });
     });
@@ -238,12 +238,12 @@ void main() {
       test('it renames file', () async {
         await storage.renameFile(
           fileId: FileFixtures.fileId,
-          newName: FileFixtures.newName,
+          newName: 'renamed-file.txt',
         );
 
         verify(() => mockRepository.renameFile(
               fileId: FileFixtures.fileId,
-              newName: FileFixtures.newName,
+              newName: 'renamed-file.txt',
             )).called(1);
       });
     });
