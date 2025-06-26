@@ -38,10 +38,11 @@ class EdgeDriftCredentialRepository
       );
     }
 
-    // Delete credential content first
-    await (_database.delete(_database.credentials)
-          ..where((filter) => filter.id.equals(credentialId)))
-        .go();
+    await _database.transaction(() async {
+      await (_database.delete(_database.credentials)
+            ..where((filter) => filter.id.equals(credentialId)))
+          .go();
+    });
   }
 
   @override
@@ -107,24 +108,15 @@ class EdgeDriftCredentialRepository
     required Uint8List credentialContent,
     VaultCancelToken? cancelToken,
   }) async {
-    // Create credential entry
-    final credentialEntry = db.CredentialsCompanion.insert(
-      id: Value(credentialId),
-      profileId: _profileId,
-      name: credentialName,
-      content: credentialContent,
-    );
-    await _database.into(_database.credentials).insert(credentialEntry);
-
-    // Verify the credential was created
-    final createdCredential = await (_database.select(_database.credentials)
-          ..where((filter) =>
-              filter.id.equals(credentialId) &
-              filter.profileId.equals(_profileId)))
-        .getSingleOrNull();
-
-    if (createdCredential == null) {
-      throw Exception('Failed to create credential');
-    }
+    // Create credential entry in a transaction
+    await _database.transaction(() async {
+      final credentialEntry = db.CredentialsCompanion.insert(
+        id: Value(credentialId),
+        profileId: _profileId,
+        name: credentialName,
+        content: credentialContent,
+      );
+      await _database.into(_database.credentials).insert(credentialEntry);
+    });
   }
 }

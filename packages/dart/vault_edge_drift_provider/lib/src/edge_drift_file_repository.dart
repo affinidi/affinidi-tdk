@@ -71,40 +71,25 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       }
     }
 
-    // Create file item entry first
-    final fileId = const Uuid().v4();
+    await _database.transaction(() async {
+      final fileId = const Uuid().v4();
 
-    final fileItem = db.ItemsCompanion.insert(
-      id: Value(fileId),
-      profileId: _profileId,
-      name: fileName,
-      parentId: Value(parentFolderId),
-      itemType: db.ItemType.file,
-    );
-    await _database.into(_database.items).insert(fileItem);
+      final fileItem = db.ItemsCompanion.insert(
+        id: Value(fileId),
+        profileId: _profileId,
+        name: fileName,
+        parentId: Value(parentFolderId),
+        itemType: db.ItemType.file,
+      );
+      await _database.into(_database.items).insert(fileItem);
 
-    // Create file content entry with the same ID
-    await _database.into(_database.fileContents).insert(
-          db.FileContentsCompanion.insert(
-            id: fileId,
-            content: data,
-          ),
-        );
-
-    // Verify the file was created with correct parentId
-    final createdFile = await (_database.select(_database.items)
-          ..where((filter) =>
-              filter.id.equals(fileId) &
-              filter.itemType.equals(db.ItemType.file.value) &
-              filter.profileId.equals(_profileId)))
-        .getSingleOrNull();
-    if (createdFile == null) {
-      throw Exception('Failed to create file');
-    }
-
-    if (createdFile.parentId != parentFolderId) {
-      throw Exception('File was created with incorrect parentId.');
-    }
+      await _database.into(_database.fileContents).insert(
+            db.FileContentsCompanion.insert(
+              id: fileId,
+              content: data,
+            ),
+          );
+    });
   }
 
   @override
@@ -184,13 +169,15 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
 
   @override
   Future<void> deleteFile({required String fileId}) async {
-    await (_database.delete(_database.fileContents)
-          ..where((filter) => filter.id.equals(fileId)))
-        .go();
+    await _database.transaction(() async {
+      await (_database.delete(_database.fileContents)
+            ..where((filter) => filter.id.equals(fileId)))
+          .go();
 
-    await (_database.delete(_database.items)
-          ..where((filter) => filter.id.equals(fileId)))
-        .go();
+      await (_database.delete(_database.items)
+            ..where((filter) => filter.id.equals(fileId)))
+          .go();
+    });
   }
 
   @override

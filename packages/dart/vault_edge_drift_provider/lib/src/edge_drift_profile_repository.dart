@@ -33,17 +33,26 @@ class EdgeDriftProfileRepository implements EdgeProfileRepositoryInterface {
     required String profileId,
     VaultCancelToken? cancelToken,
   }) async {
-    // Delete the profile
-    final deleted = await (_database.delete(_database.profiles)
-          ..where((filter) => filter.id.equals(profileId)))
-        .go();
+    await _database.transaction(() async {
+      await (_database.delete(_database.items)
+            ..where((filter) => filter.profileId.equals(profileId)))
+          .go();
 
-    if (deleted == 0) {
-      throw TdkException(
-        message: 'Failed to delete profile',
-        code: TdkExceptionType.unableToDeleteNonExistentProfile.code,
-      );
-    }
+      await (_database.delete(_database.credentials)
+            ..where((filter) => filter.profileId.equals(profileId)))
+          .go();
+
+      final deleted = await (_database.delete(_database.profiles)
+            ..where((filter) => filter.id.equals(profileId)))
+          .go();
+
+      if (deleted == 0) {
+        throw TdkException(
+          message: 'Failed to delete profile',
+          code: TdkExceptionType.unableToDeleteNonExistentProfile.code,
+        );
+      }
+    });
   }
 
   @override
