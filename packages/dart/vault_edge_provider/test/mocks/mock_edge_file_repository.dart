@@ -45,7 +45,7 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
       name: fileName,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
-      isFolder: false,
+      itemType: ItemType.file,
       parentId: parentFolderId,
     );
     fileContents[fileId] = data;
@@ -61,11 +61,11 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
     this.folderName = folderName;
     folderParentId = parentFolderId;
     return ItemData(
-      id: 'new-folder-${DateTime.now().millisecondsSinceEpoch}',
+      id: 'folder-123',
       name: folderName,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
-      isFolder: true,
+      itemType: ItemType.folder,
       parentId: parentFolderId,
     );
   }
@@ -93,15 +93,14 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
 
   @override
   Future<ItemData> getFileData({required String fileId}) async {
-    requestedFileId = fileId;
-    final file = files[fileId];
-    if (file == null) {
-      throw TdkException(
-        message: 'File not found',
-        code: TdkExceptionType.invalidFileId.code,
-      );
-    }
-    return file;
+    return ItemData(
+      id: fileId,
+      name: 'test-file.txt',
+      createdAt: DateTime.now(),
+      modifiedAt: DateTime.now(),
+      itemType: ItemType.file,
+      parentId: null,
+    );
   }
 
   @override
@@ -118,18 +117,16 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
     int? limit,
     String? exclusiveStartItemId,
   }) async {
-    if (folderId == 'parent') {
-      return [
-        ItemData(
-          id: 'parent',
-          name: 'Parent Folder',
-          createdAt: DateTime.now(),
-          modifiedAt: DateTime.now(),
-          isFolder: true,
-        ),
-      ];
-    }
-    return [];
+    return [
+      ItemData(
+        id: 'folder-1',
+        name: 'test-folder',
+        createdAt: DateTime.now(),
+        modifiedAt: DateTime.now(),
+        itemType: ItemType.folder,
+        parentId: folderId,
+      ),
+    ];
   }
 
   @override
