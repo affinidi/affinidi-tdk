@@ -70,7 +70,7 @@ class _$CreateWalletInput extends CreateWalletInput {
   @override
   final String? description;
   @override
-  final CreateWalletInputDidMethodEnum didMethod;
+  final CreateWalletInputDidMethodEnum? didMethod;
   @override
   final String? didWebUrl;
 
@@ -79,7 +79,7 @@ class _$CreateWalletInput extends CreateWalletInput {
       (CreateWalletInputBuilder()..update(updates))._build();
 
   _$CreateWalletInput._(
-      {this.name, this.description, required this.didMethod, this.didWebUrl})
+      {this.name, this.description, this.didMethod, this.didWebUrl})
       : super._();
   @override
   CreateWalletInput rebuild(void Function(CreateWalletInputBuilder) updates) =>
@@ -176,8 +176,7 @@ class CreateWalletInputBuilder
         _$CreateWalletInput._(
           name: name,
           description: description,
-          didMethod: BuiltValueNullFieldError.checkNotNull(
-              didMethod, r'CreateWalletInput', 'didMethod'),
+          didMethod: didMethod,
           didWebUrl: didWebUrl,
         );
     replace(_$result);

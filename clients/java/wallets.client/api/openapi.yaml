@@ -715,8 +715,6 @@ components:
             "^(?!:\\/\\/)([a-zA-Z0-9\\-\\.]+)(:[0-9]+)?(\\/[a-zA-Z0-9\\-\\\
             /]*)?$"
           type: string
-      required:
-        - didMethod
       type: object
     UpdateWalletInput:
       additionalProperties: false

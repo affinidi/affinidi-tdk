@@ -44,7 +44,6 @@ class TestCreateWalletInput(unittest.TestCase):
             )
         else:
             return CreateWalletInput(
-                did_method = 'key',
         )
         """
 
