@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.33.0...@affinidi-tdk/auth-provider-v1.33.1) (2025-06-30)
+
+
+### Bug Fixes
+
+* update axios dependency ([#852](https://github.com/affinidi/affinidi-tdk/issues/852)) ([eb61248](https://github.com/affinidi/affinidi-tdk/commit/eb6124880929084eca003d191ee5c6bf76fe5fd8))
+
 # [1.33.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.32.0...@affinidi-tdk/auth-provider-v1.33.0) (2025-06-12)
 
 
