@@ -23,4 +23,3 @@ export 'src/storages/vault_edge_credential_storage.dart';
 export 'src/storages/vault_edge_file_storage.dart';
 export 'src/storages/vault_edge_profile_repository.dart';
 export 'src/utils/credential_parser.dart';
-export 'src/utils/file_parser.dart';
