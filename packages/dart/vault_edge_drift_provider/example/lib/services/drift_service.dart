@@ -21,7 +21,12 @@ class DriftService {
       final platformInfo = DatabaseConfig.getPlatformInfo();
       print('Platform info: $platformInfo');
 
-      final database = await DatabaseConfig.createDatabase();
+      final directory =
+          kIsWeb ? null : await getApplicationDocumentsDirectory();
+
+      final database = await DatabaseConfig.createDatabase(
+        directory: directory,
+      );
       print('Database created successfully');
 
       final profileRepository = EdgeDriftProfileRepository(database: database);
