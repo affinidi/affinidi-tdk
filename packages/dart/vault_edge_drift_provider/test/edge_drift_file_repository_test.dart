@@ -41,7 +41,7 @@ void main() {
       );
       expect(fileId, isNotNull);
 
-      final fileData = await repository.getFileData(fileId: fileId!);
+      final fileData = await repository.getFile(fileId: fileId!);
       expect(fileData.name, equals(fileName));
 
       final content = await repository.getFileContent(fileId: fileId);
@@ -70,7 +70,7 @@ void main() {
       );
       expect(fileId, isNotNull);
 
-      final fileData = await repository.getFileData(fileId: fileId!);
+      final fileData = await repository.getFile(fileId: fileId!);
       expect(fileData.name, equals(fileName));
       expect(fileData.parentId, equals(folder.id));
     });
@@ -114,7 +114,7 @@ void main() {
       await repository.deleteFile(fileId: fileId!);
 
       expect(
-        () => repository.getFileData(fileId: fileId),
+        () => repository.getFile(fileId: fileId),
         throwsA(isA<TdkException>().having(
           (error) => error.code,
           'code',
@@ -154,7 +154,7 @@ void main() {
         newName: newFileName,
       );
 
-      final fileData = await repository.getFileData(fileId: fileId);
+      final fileData = await repository.getFile(fileId: fileId);
       expect(fileData.name, equals(newFileName));
 
       final oldFileId = await repository.getFileId(
@@ -186,7 +186,7 @@ void main() {
         parentFolderId: folder.id,
       );
 
-      final items = await repository.getFolderData(folderId: folder.id);
+      final items = await repository.getFolder(folderId: folder.id);
       expect(items.length, equals(4)); // 3 files + 1 subfolder
 
       final itemNames = items.map((item) => item.name).toList()..sort();
@@ -428,7 +428,7 @@ void main() {
         folderName: 'root-folder',
       );
 
-      final items = await repository.getFolderData(folderId: null);
+      final items = await repository.getFolder(folderId: null);
       expect(items.length, equals(3)); // 2 files + 1 folder
 
       final itemNames = items.map((item) => item.name).toList()..sort();
@@ -443,7 +443,7 @@ void main() {
     });
 
     test('should return empty list for non-existent folder', () async {
-      final items = await repository.getFolderData(folderId: 'non-existent');
+      final items = await repository.getFolder(folderId: 'non-existent');
       expect(items, isEmpty);
     });
   });
