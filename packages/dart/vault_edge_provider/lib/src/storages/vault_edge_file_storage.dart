@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 
 import '../exceptions/tdk_exception_type.dart';
 import '../interfaces/edge_file_repository_interface.dart';
-import '../utils/file_parser.dart';
 
 /// An Edge based implementation of [FileStorage] for storing and managing
 /// files and folders.
@@ -121,7 +120,7 @@ class VaultEdgeFileStorage implements FileStorage {
       parentFolderId: parentFolderId,
     );
 
-    return FileParser.parseFolder(
+    return Folder(
       id: folderData.id,
       name: folderData.name,
       createdAt: folderData.createdAt,
@@ -167,7 +166,7 @@ class VaultEdgeFileStorage implements FileStorage {
   }) async {
     final fileData = await _repository.getFile(fileId: fileId);
 
-    return FileParser.parseFile(
+    return File(
       id: fileData.id,
       name: fileData.name,
       createdAt: fileData.createdAt,
