@@ -81,7 +81,7 @@ public class CreateWalletInput {
   }
 
   public static final String JSON_PROPERTY_DID_METHOD = "didMethod";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private DidMethodEnum didMethod;
 
   public static final String JSON_PROPERTY_DID_WEB_URL = "didWebUrl";
@@ -141,7 +141,7 @@ public class CreateWalletInput {
     this.description = description;
   }
 
-  public CreateWalletInput didMethod(@javax.annotation.Nonnull DidMethodEnum didMethod) {
+  public CreateWalletInput didMethod(@javax.annotation.Nullable DidMethodEnum didMethod) {
     
     this.didMethod = didMethod;
     return this;
@@ -151,9 +151,9 @@ public class CreateWalletInput {
    * Define how DID of your wallet is created and resolved
    * @return didMethod
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DID_METHOD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public DidMethodEnum getDidMethod() {
     return didMethod;
@@ -161,8 +161,8 @@ public class CreateWalletInput {
 
 
   @JsonProperty(JSON_PROPERTY_DID_METHOD)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDidMethod(@javax.annotation.Nonnull DidMethodEnum didMethod) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDidMethod(@javax.annotation.Nullable DidMethodEnum didMethod) {
     this.didMethod = didMethod;
   }
 
