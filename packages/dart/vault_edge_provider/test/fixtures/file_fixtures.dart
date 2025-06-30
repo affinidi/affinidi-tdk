@@ -21,72 +21,34 @@ class FileFixtures {
   static const List<String> allowedExtensions = ['txt', 'pdf', 'jpg'];
   static const int maxFileSize = 10 * 1024 * 1024; // 10MB
 
-  static ItemData createMockFileData({
-    String? id,
-    String? name,
+  static File createMockFileData({
+    String? id = 'file-123',
+    String? name = 'sample.txt',
     DateTime? createdAt,
     DateTime? modifiedAt,
     String? parentId,
   }) {
-    return ItemData(
+    return File(
       id: id ?? fileId,
       name: name ?? fileName,
-      createdAt: createdAt ?? DateTime.now(),
-      modifiedAt: modifiedAt ?? DateTime.now(),
-      itemType: ItemType.file,
+      createdAt: createdAt ?? DateTime(2023, 1, 1),
+      modifiedAt: modifiedAt ?? DateTime(2023, 1, 1),
       parentId: parentId,
     );
   }
 
-  static ItemData createMockFolderData({
-    String? id,
-    String? name,
+  static Folder createMockFolder({
+    String? id = 'folder-123',
+    String? name = 'sample-folder',
     DateTime? createdAt,
     DateTime? modifiedAt,
     String? parentId,
   }) {
-    return ItemData(
+    return Folder(
       id: id ?? folderId,
       name: name ?? folderName,
-      createdAt: createdAt ?? DateTime.now(),
-      modifiedAt: modifiedAt ?? DateTime.now(),
-      itemType: ItemType.folder,
-      parentId: parentId,
-    );
-  }
-
-  /// Creates a sample file data
-  static ItemData createSampleFileData({
-    String? id,
-    String? name,
-    DateTime? createdAt,
-    DateTime? modifiedAt,
-    String? parentId,
-  }) {
-    return ItemData(
-      id: id ?? 'file-123',
-      name: name ?? 'sample.txt',
       createdAt: createdAt ?? DateTime(2023, 1, 1),
       modifiedAt: modifiedAt ?? DateTime(2023, 1, 1),
-      itemType: ItemType.file,
-      parentId: parentId,
-    );
-  }
-
-  /// Creates a sample folder data
-  static ItemData createSampleFolderData({
-    String? id,
-    String? name,
-    DateTime? createdAt,
-    DateTime? modifiedAt,
-    String? parentId,
-  }) {
-    return ItemData(
-      id: id ?? 'folder-123',
-      name: name ?? 'sample-folder',
-      createdAt: createdAt ?? DateTime(2023, 1, 1),
-      modifiedAt: modifiedAt ?? DateTime(2023, 1, 1),
-      itemType: ItemType.folder,
       parentId: parentId,
     );
   }

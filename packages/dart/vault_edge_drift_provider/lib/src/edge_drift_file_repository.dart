@@ -4,16 +4,6 @@ import 'package:uuid/uuid.dart';
 
 import 'database/database.dart' as db;
 
-/// Converts database ItemType to provider ItemType
-ItemType _convertDbItemType(db.ItemType dbType) {
-  switch (dbType) {
-    case db.ItemType.file:
-      return ItemType.file;
-    case db.ItemType.folder:
-      return ItemType.folder;
-  }
-}
-
 /// Repository class to manage files and folders on a local Drift database
 class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   /// Constructor
@@ -122,7 +112,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<ItemData> createFolder({
+  Future<Folder> createFolder({
     required String profileId,
     required String folderName,
     String? parentFolderId,
@@ -167,12 +157,11 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       throw Exception('Failed to create folder');
     }
 
-    return ItemData(
+    return Folder(
       id: createdFolder.id,
       name: createdFolder.name,
       createdAt: createdFolder.createdAt,
       modifiedAt: createdFolder.modifiedAt,
-      itemType: ItemType.folder,
       parentId: createdFolder.parentId,
     );
   }
@@ -222,7 +211,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<ItemData> getFileData({required String fileId}) async {
+  Future<File> getFile({required String fileId}) async {
     final file = await (_database.select(_database.items)
           ..where((filter) =>
               filter.id.equals(fileId) &
@@ -238,12 +227,11 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       );
     }
 
-    return ItemData(
+    return File(
       id: file.id,
       name: file.name,
       createdAt: file.createdAt,
       modifiedAt: file.modifiedAt,
-      itemType: ItemType.file,
       parentId: file.parentId,
     );
   }
@@ -267,7 +255,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<List<ItemData>> getFolderData({
+  Future<List<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
@@ -292,14 +280,21 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
 
     final items = await query.get();
     return items.map((item) {
-      return ItemData(
-        id: item.id,
-        name: item.name,
-        createdAt: item.createdAt,
-        modifiedAt: item.modifiedAt,
-        itemType: _convertDbItemType(item.itemType),
-        parentId: item.parentId,
-      );
+      return (item.itemType == db.ItemType.folder)
+          ? Folder(
+              id: item.id,
+              name: item.name,
+              createdAt: item.createdAt,
+              modifiedAt: item.modifiedAt,
+              parentId: item.parentId,
+            )
+          : File(
+              id: item.id,
+              name: item.name,
+              createdAt: item.createdAt,
+              modifiedAt: item.modifiedAt,
+              parentId: item.parentId,
+            );
     }).toList();
   }
 

@@ -2,9 +2,7 @@
 
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault_edge_drift_provider/src/database/database.dart';
-import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_file_repository.dart';
-import 'package:affinidi_tdk_vault_edge_drift_provider/src/edge_drift_profile_repository.dart';
+import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 
@@ -61,16 +59,16 @@ void main() async {
 
   // List contents of root folder
   print('Listing root folder contents:');
-  final rootItems = await fileRepository.getFolderData(folderId: null);
+  final rootItems = await fileRepository.getFolder(folderId: null);
   for (final item in rootItems) {
-    print('- ${item.name} (${item.isFolder ? 'Folder' : 'File'})');
+    print('- ${item.name} (${item is Folder ? 'Folder' : 'File'})');
   }
 
   // List contents of Folder1
   print('Listing Folder1 contents:');
-  final folderItems = await fileRepository.getFolderData(folderId: folder.id);
+  final folderItems = await fileRepository.getFolder(folderId: folder.id);
   for (final item in folderItems) {
-    print('- ${item.name} (${item.isFolder ? 'Folder' : 'File'})');
+    print('- ${item.name} (${item is Folder ? 'Folder' : 'File'})');
   }
 
   // Read file content
@@ -91,15 +89,15 @@ void main() async {
   // Delete all contents
   print('Deleting all contents:');
   for (final item in rootItems) {
-    if (!item.isFolder) {
+    if (item is File) {
       print('Deleting file: ${item.name}');
       await fileRepository.deleteFile(fileId: item.id);
-    } else {
+    } else if (item is Folder) {
       print('Deleting folder: ${item.name}');
       // Delete folder contents first
-      final folderContents =
-          await fileRepository.getFolderData(folderId: item.id);
+      final folderContents = await fileRepository.getFolder(folderId: item.id);
       for (final content in folderContents) {
+        // TODO: should check for item if type file or folder and do some recursion
         print('  Deleting file: ${content.name}');
         await fileRepository.deleteFile(fileId: content.id);
       }
@@ -109,7 +107,7 @@ void main() async {
 
   // Verify all contents are deleted
   print('Verifying root folder is empty:');
-  final remainingItems = await fileRepository.getFolderData(folderId: null);
+  final remainingItems = await fileRepository.getFolder(folderId: null);
   print('Remaining items: ${remainingItems.length}');
 
   print('Deleting profile:');
