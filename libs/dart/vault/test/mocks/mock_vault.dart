@@ -8,7 +8,8 @@ class MockBip32Wallet extends Mock implements Bip32Wallet {}
 
 class MockVaultStore extends Mock implements VaultStore {}
 
-class MockProfileRepository extends Mock implements ProfileRepository {}
+class MockProfileRepository extends Mock
+    implements ProfileRepository, ProfileAccessSharing {}
 
 class MockFileStorage extends Mock implements FileStorage {}
 
