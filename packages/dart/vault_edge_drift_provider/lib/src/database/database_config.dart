@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
-
 import 'database.dart';
-import 'database_factory.dart';
+import 'database_platform.dart';
 
 /// Simple database configuration for cross-platform initialization
 class DatabaseConfig {
@@ -14,26 +12,14 @@ class DatabaseConfig {
   static Future<Database> createDatabase({
     String databaseName = 'vault_edge_drift_db',
   }) async {
-    return platformCreateDatabase(databaseName: databaseName);
+    return DatabasePlatform.createDatabase(databaseName: databaseName);
   }
 
   /// Creates an in-memory database for testing
   static Future<Database> createInMemoryDatabase() async {
-    return platformCreateInMemoryDatabase();
+    return DatabasePlatform.createInMemoryDatabase();
   }
 
   /// Gets the current platform info
-  static Map<String, String> getPlatformInfo() {
-    if (kIsWeb) {
-      return {
-        'platform': 'web',
-        'database': 'IndexedDB',
-      };
-    } else {
-      return {
-        'platform': 'native',
-        'database': 'SQLite',
-      };
-    }
-  }
+  static Map<String, String> getPlatformInfo() => DatabasePlatform.info;
 }
