@@ -68,15 +68,14 @@ void main() {
       });
 
       test('it creates file in parent folder', () async {
-        when(() => mockRepository
-                .getFolderData(folderId: FileFixtures.parentFolderId))
+        when(() =>
+                mockRepository.getFolder(folderId: FileFixtures.parentFolderId))
             .thenAnswer((_) async => [
-                  ItemData(
+                  Folder(
                     id: FileFixtures.parentFolderId,
                     name: FileFixtures.folderName,
                     createdAt: DateTime.now(),
                     modifiedAt: DateTime.now(),
-                    itemType: ItemType.folder,
                     parentId: null,
                   )
                 ]);
@@ -96,7 +95,7 @@ void main() {
       });
 
       test('it throws error when parent folder does not exist', () async {
-        when(() => mockRepository.getFolderData(
+        when(() => mockRepository.getFolder(
               folderId: 'non-existent-folder',
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
@@ -120,7 +119,7 @@ void main() {
     group('and retrieving a file', () {
       test('it gets file by ID', () async {
         final mockFileData = FileFixtures.createMockFileData();
-        when(() => mockRepository.getFileData(fileId: FileFixtures.fileId))
+        when(() => mockRepository.getFile(fileId: FileFixtures.fileId))
             .thenAnswer((_) async => mockFileData);
 
         final result = await storage.getFile(fileId: FileFixtures.fileId);
@@ -129,7 +128,7 @@ void main() {
         expect(result.name, equals(mockFileData.name));
         expect(result.createdAt, equals(mockFileData.createdAt));
         expect(result.modifiedAt, equals(mockFileData.modifiedAt));
-        verify(() => mockRepository.getFileData(fileId: FileFixtures.fileId))
+        verify(() => mockRepository.getFile(fileId: FileFixtures.fileId))
             .called(1);
       });
 
@@ -145,7 +144,7 @@ void main() {
 
     group('and managing folders', () {
       test('it creates folder', () async {
-        final mockFolderData = FileFixtures.createMockFolderData();
+        final mockFolderData = FileFixtures.createMockFolder();
         when(() => mockRepository.createFolder(
               profileId: any(named: 'profileId'),
               folderName: any(named: 'folderName'),
@@ -179,24 +178,22 @@ void main() {
 
       test('it gets folder contents', () async {
         final mockItems = [
-          ItemData(
+          File(
             id: 'file1',
             name: 'test1.txt',
             createdAt: DateTime.now(),
             modifiedAt: DateTime.now(),
-            itemType: ItemType.file,
             parentId: null,
           ),
-          ItemData(
+          Folder(
             id: 'folder1',
             name: 'subfolder',
             createdAt: DateTime.now(),
             modifiedAt: DateTime.now(),
-            itemType: ItemType.folder,
             parentId: FileFixtures.folderId,
           ),
         ];
-        when(() => mockRepository.getFolderData(
+        when(() => mockRepository.getFolder(
               folderId: any(named: 'folderId'),
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
@@ -207,7 +204,7 @@ void main() {
         expect(result.items.length, equals(mockItems.length));
         expect(result.items.first.id, equals(mockItems.first.id));
         expect(result.lastEvaluatedItemId, equals(mockItems.last.id));
-        verify(() => mockRepository.getFolderData(
+        verify(() => mockRepository.getFolder(
               folderId: FileFixtures.folderId,
               limit: null,
               exclusiveStartItemId: null,

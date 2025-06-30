@@ -19,7 +19,6 @@ export 'src/interfaces/edge_file_repository_interface.dart';
 export 'src/interfaces/edge_profile_repository_interface.dart';
 export 'src/models/credential_data.dart';
 export 'src/models/edge_profile.dart';
-export 'src/models/item_data.dart';
 export 'src/storages/vault_edge_credential_storage.dart';
 export 'src/storages/vault_edge_file_storage.dart';
 export 'src/storages/vault_edge_profile_repository.dart';

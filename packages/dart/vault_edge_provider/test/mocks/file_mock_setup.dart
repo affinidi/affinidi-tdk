@@ -24,15 +24,15 @@ class FileMockSetup {
           profileId: any(named: 'profileId'),
           folderName: any(named: 'folderName'),
           parentFolderId: any(named: 'parentFolderId'),
-        )).thenAnswer((_) async => FileFixtures.createMockFolderData());
+        )).thenAnswer((_) async => FileFixtures.createMockFolder());
 
-    when(() => mockRepository.getFileData(fileId: any(named: 'fileId')))
+    when(() => mockRepository.getFile(fileId: any(named: 'fileId')))
         .thenAnswer((_) async => FileFixtures.createMockFileData());
 
     when(() => mockRepository.getFileContent(fileId: any(named: 'fileId')))
         .thenAnswer((_) async => FileFixtures.smallFileData);
 
-    when(() => mockRepository.getFolderData(
+    when(() => mockRepository.getFolder(
           folderId: any(named: 'folderId'),
           limit: any(named: 'limit'),
           exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
@@ -40,7 +40,7 @@ class FileMockSetup {
       final folderId =
           invocation.namedArguments[const Symbol('folderId')] as String?;
       if (folderId == 'test-folder-id') {
-        return [FileFixtures.createMockFolderData(id: folderId)];
+        return [FileFixtures.createMockFolder(id: folderId)];
       }
       return [];
     });

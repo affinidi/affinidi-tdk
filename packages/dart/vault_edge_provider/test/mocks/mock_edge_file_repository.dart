@@ -23,7 +23,7 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   String? requestedFileId;
   String? requestedContentId;
 
-  final Map<String, ItemData> files = {};
+  final Map<String, Item> files = {};
   final Map<String, Uint8List> fileContents = {};
 
   List<String> getFileIds() => files.keys.toList();
@@ -40,19 +40,18 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
     fileData = data;
     parentId = parentFolderId;
     final fileId = 'file-${DateTime.now().millisecondsSinceEpoch}';
-    files[fileId] = ItemData(
+    files[fileId] = File(
       id: fileId,
       name: fileName,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
-      itemType: ItemType.file,
       parentId: parentFolderId,
     );
     fileContents[fileId] = data;
   }
 
   @override
-  Future<ItemData> createFolder({
+  Future<Folder> createFolder({
     required String profileId,
     required String folderName,
     String? parentFolderId,
@@ -60,12 +59,11 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
     folderProfileId = profileId;
     this.folderName = folderName;
     folderParentId = parentFolderId;
-    return ItemData(
+    return Folder(
       id: 'folder-123',
       name: folderName,
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
-      itemType: ItemType.folder,
       parentId: parentFolderId,
     );
   }
@@ -92,13 +90,12 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<ItemData> getFileData({required String fileId}) async {
-    return ItemData(
+  Future<File> getFile({required String fileId}) async {
+    return File(
       id: fileId,
       name: 'test-file.txt',
       createdAt: DateTime.now(),
       modifiedAt: DateTime.now(),
-      itemType: ItemType.file,
       parentId: null,
     );
   }
@@ -112,18 +109,17 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<List<ItemData>> getFolderData({
+  Future<List<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
   }) async {
     return [
-      ItemData(
+      Folder(
         id: 'folder-1',
         name: 'test-folder',
         createdAt: DateTime.now(),
         modifiedAt: DateTime.now(),
-        itemType: ItemType.folder,
         parentId: folderId,
       ),
     ];

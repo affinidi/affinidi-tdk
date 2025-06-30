@@ -60,7 +60,7 @@ class VaultEdgeFileStorage implements FileStorage {
 
     // Check if parent folder exists and is a folder
     if (parentFolderId != null) {
-      final items = await _repository.getFolderData(folderId: parentFolderId);
+      final items = await _repository.getFolder(folderId: parentFolderId);
       if (items.isEmpty) {
         Error.throwWithStackTrace(
           TdkException(
@@ -71,7 +71,7 @@ class VaultEdgeFileStorage implements FileStorage {
         );
       }
       final parentFolder = items.first;
-      if (!parentFolder.isFolder) {
+      if (parentFolder is! Folder) {
         Error.throwWithStackTrace(
           TdkException(
             message: 'Parent ID does not refer to a folder',
@@ -96,12 +96,12 @@ class VaultEdgeFileStorage implements FileStorage {
     required String fileName,
     String? parentFolderId,
   }) async {
-    final items = await _repository.getFolderData(
+    final items = await _repository.getFolder(
       folderId: parentFolderId,
     );
     try {
       final file = items.firstWhere(
-        (item) => item.name == fileName && !item.isFolder,
+        (item) => item.name == fileName && item is! Folder,
       );
       return file.id;
     } catch (e) {
@@ -136,7 +136,7 @@ class VaultEdgeFileStorage implements FileStorage {
     VaultCancelToken? cancelToken,
   }) async {
     // Check if file exists
-    await _repository.getFileData(fileId: fileId);
+    await _repository.getFile(fileId: fileId);
     await _repository.deleteFile(fileId: fileId);
   }
 
@@ -146,7 +146,7 @@ class VaultEdgeFileStorage implements FileStorage {
     VaultCancelToken? cancelToken,
   }) async {
     // Check if folder exists
-    final items = await _repository.getFolderData(folderId: folderId);
+    final items = await _repository.getFolder(folderId: folderId);
     if (items.isEmpty) {
       Error.throwWithStackTrace(
         TdkException(
@@ -165,7 +165,7 @@ class VaultEdgeFileStorage implements FileStorage {
     required String fileId,
     VaultCancelToken? cancelToken,
   }) async {
-    final fileData = await _repository.getFileData(fileId: fileId);
+    final fileData = await _repository.getFile(fileId: fileId);
 
     return FileParser.parseFile(
       id: fileData.id,
@@ -196,23 +196,11 @@ class VaultEdgeFileStorage implements FileStorage {
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
-    final itemsData = await _repository.getFolderData(
+    final items = await _repository.getFolder(
       folderId: folderId,
       limit: limit,
       exclusiveStartItemId: exclusiveStartItemId,
     );
-
-    // Parse all items
-    final items = itemsData.map((itemData) {
-      return FileParser.parseItem(
-        id: itemData.id,
-        name: itemData.name,
-        createdAt: itemData.createdAt,
-        modifiedAt: itemData.modifiedAt,
-        isFolder: itemData.isFolder,
-        parentId: itemData.parentId,
-      );
-    }).toList();
 
     final lastEvaluatedItemId = items.lastOrNull?.id;
 
@@ -252,7 +240,7 @@ class VaultEdgeFileStorage implements FileStorage {
     VaultCancelToken? cancelToken,
   }) async {
     // Check if folder exists
-    final items = await _repository.getFolderData(folderId: folderId);
+    final items = await _repository.getFolder(folderId: folderId);
     if (items.isEmpty) {
       Error.throwWithStackTrace(
         TdkException(
