@@ -129,8 +129,8 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   @override
   Future<bool> isInitialized() async {
-    final encryptedMasterKey = await _vaultStore.readContentKey();
-    return encryptedMasterKey != null;
+    final contentKey = await _vaultStore.readContentKey();
+    return contentKey != null;
   }
 
   @override
