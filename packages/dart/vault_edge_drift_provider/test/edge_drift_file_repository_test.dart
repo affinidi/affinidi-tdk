@@ -204,14 +204,12 @@ void main() {
       const fileName = 'test.txt';
       final smallFileContent = Uint8List(500);
 
-      expect(
-        () async => await customRepository.createFile(
-          profileId: profileId,
-          fileName: fileName,
-          data: smallFileContent,
-        ),
-        returnsNormally,
+      final file = await customRepository.createFile(
+        profileId: profileId,
+        fileName: fileName,
+        data: smallFileContent,
       );
+      expect(file, isNotNull);
     });
 
     test('should accept files with custom allowed extensions', () async {
@@ -224,14 +222,13 @@ void main() {
       const fileName = 'test.doc';
       final fileContent = Uint8List.fromList([1, 2, 3]);
 
-      expect(
-        () async => await customRepository.createFile(
-          profileId: profileId,
-          fileName: fileName,
-          data: fileContent,
-        ),
-        returnsNormally,
+      final file = await customRepository.createFile(
+        profileId: profileId,
+        fileName: fileName,
+        data: fileContent,
       );
+
+      expect(file, isNotNull);
     });
 
     test('should reject files with disallowed extensions', () async {

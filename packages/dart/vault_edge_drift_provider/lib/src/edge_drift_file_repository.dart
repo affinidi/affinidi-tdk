@@ -73,23 +73,22 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
 
     final fileId = const Uuid().v4();
 
+    final fileItem = db.ItemsCompanion.insert(
+      id: Value(fileId),
+      profileId: _profileId,
+      name: fileName,
+      parentId: Value(parentFolderId),
+      itemType: db.ItemType.file,
+    );
+
+    final fileContent = db.FileContentsCompanion.insert(
+      id: fileId,
+      content: data,
+    );
+
     await _database.transaction(() async {
-      final fileItem = db.ItemsCompanion.insert(
-        id: Value(fileId),
-        profileId: _profileId,
-        name: fileName,
-        parentId: Value(parentFolderId),
-        itemType: db.ItemType.file,
-      );
-
       await _database.into(_database.items).insert(fileItem);
-
-      await _database.into(_database.fileContents).insert(
-            db.FileContentsCompanion.insert(
-              id: fileId,
-              content: data,
-            ),
-          );
+      await _database.into(_database.fileContents).insert(fileContent);
     });
 
     return await getFile(fileId: fileId);
