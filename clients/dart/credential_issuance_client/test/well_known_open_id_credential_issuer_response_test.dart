@@ -32,6 +32,11 @@ void main() {
       // TODO
     });
 
+    // BuiltList<JsonObject> credentialConfigurationsSupported
+    test('to test the property `credentialConfigurationsSupported`', () async {
+      // TODO
+    });
+
     // String deferredCredentialEndpoint
     test('to test the property `deferredCredentialEndpoint`', () async {
       // TODO
@@ -47,6 +52,11 @@ void main() {
       // TODO
     });
 
+    // WellKnownOpenIdCredentialIssuerResponseDisplay display
+    test('to test the property `display`', () async {
+      // TODO
+    });
+
     // BuiltList<String> scopesSupported
     test('to test the property `scopesSupported`', () async {
       // TODO
@@ -59,6 +69,11 @@ void main() {
 
     // BuiltList<String> tokenEndpointAuthMethodsSupported
     test('to test the property `tokenEndpointAuthMethodsSupported`', () async {
+      // TODO
+    });
+
+    // BuiltList<String> returnUris
+    test('to test the property `returnUris`', () async {
       // TODO
     });
 

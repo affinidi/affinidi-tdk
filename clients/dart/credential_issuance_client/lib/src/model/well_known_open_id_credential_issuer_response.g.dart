@@ -233,6 +233,8 @@ class _$WellKnownOpenIdCredentialIssuerResponse
           WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>?
       credentialsSupported;
   @override
+  final BuiltList<JsonObject>? credentialConfigurationsSupported;
+  @override
   final String? deferredCredentialEndpoint;
   @override
   final BuiltList<
@@ -240,6 +242,8 @@ class _$WellKnownOpenIdCredentialIssuerResponse
       grantTypesSupported;
   @override
   final String? jwksUri;
+  @override
+  final WellKnownOpenIdCredentialIssuerResponseDisplay? display;
   @override
   final BuiltList<WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>?
       scopesSupported;
@@ -249,6 +253,8 @@ class _$WellKnownOpenIdCredentialIssuerResponse
   final BuiltList<
           WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>?
       tokenEndpointAuthMethodsSupported;
+  @override
+  final BuiltList<String>? returnUris;
 
   factory _$WellKnownOpenIdCredentialIssuerResponse(
           [void Function(WellKnownOpenIdCredentialIssuerResponseBuilder)?
@@ -262,12 +268,15 @@ class _$WellKnownOpenIdCredentialIssuerResponse
       this.credentialIssuer,
       this.batchCredentialEndpoint,
       this.credentialsSupported,
+      this.credentialConfigurationsSupported,
       this.deferredCredentialEndpoint,
       this.grantTypesSupported,
       this.jwksUri,
+      this.display,
       this.scopesSupported,
       this.tokenEndpoint,
-      this.tokenEndpointAuthMethodsSupported})
+      this.tokenEndpointAuthMethodsSupported,
+      this.returnUris})
       : super._();
   @override
   WellKnownOpenIdCredentialIssuerResponse rebuild(
@@ -288,13 +297,17 @@ class _$WellKnownOpenIdCredentialIssuerResponse
         credentialIssuer == other.credentialIssuer &&
         batchCredentialEndpoint == other.batchCredentialEndpoint &&
         credentialsSupported == other.credentialsSupported &&
+        credentialConfigurationsSupported ==
+            other.credentialConfigurationsSupported &&
         deferredCredentialEndpoint == other.deferredCredentialEndpoint &&
         grantTypesSupported == other.grantTypesSupported &&
         jwksUri == other.jwksUri &&
+        display == other.display &&
         scopesSupported == other.scopesSupported &&
         tokenEndpoint == other.tokenEndpoint &&
         tokenEndpointAuthMethodsSupported ==
-            other.tokenEndpointAuthMethodsSupported;
+            other.tokenEndpointAuthMethodsSupported &&
+        returnUris == other.returnUris;
   }
 
   @override
@@ -305,12 +318,15 @@ class _$WellKnownOpenIdCredentialIssuerResponse
     _$hash = $jc(_$hash, credentialIssuer.hashCode);
     _$hash = $jc(_$hash, batchCredentialEndpoint.hashCode);
     _$hash = $jc(_$hash, credentialsSupported.hashCode);
+    _$hash = $jc(_$hash, credentialConfigurationsSupported.hashCode);
     _$hash = $jc(_$hash, deferredCredentialEndpoint.hashCode);
     _$hash = $jc(_$hash, grantTypesSupported.hashCode);
     _$hash = $jc(_$hash, jwksUri.hashCode);
+    _$hash = $jc(_$hash, display.hashCode);
     _$hash = $jc(_$hash, scopesSupported.hashCode);
     _$hash = $jc(_$hash, tokenEndpoint.hashCode);
     _$hash = $jc(_$hash, tokenEndpointAuthMethodsSupported.hashCode);
+    _$hash = $jc(_$hash, returnUris.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -324,13 +340,17 @@ class _$WellKnownOpenIdCredentialIssuerResponse
           ..add('credentialIssuer', credentialIssuer)
           ..add('batchCredentialEndpoint', batchCredentialEndpoint)
           ..add('credentialsSupported', credentialsSupported)
+          ..add('credentialConfigurationsSupported',
+              credentialConfigurationsSupported)
           ..add('deferredCredentialEndpoint', deferredCredentialEndpoint)
           ..add('grantTypesSupported', grantTypesSupported)
           ..add('jwksUri', jwksUri)
+          ..add('display', display)
           ..add('scopesSupported', scopesSupported)
           ..add('tokenEndpoint', tokenEndpoint)
           ..add('tokenEndpointAuthMethodsSupported',
-              tokenEndpointAuthMethodsSupported))
+              tokenEndpointAuthMethodsSupported)
+          ..add('returnUris', returnUris))
         .toString();
   }
 }
@@ -372,6 +392,14 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
               credentialsSupported) =>
       _$this._credentialsSupported = credentialsSupported;
 
+  ListBuilder<JsonObject>? _credentialConfigurationsSupported;
+  ListBuilder<JsonObject> get credentialConfigurationsSupported =>
+      _$this._credentialConfigurationsSupported ??= ListBuilder<JsonObject>();
+  set credentialConfigurationsSupported(
+          ListBuilder<JsonObject>? credentialConfigurationsSupported) =>
+      _$this._credentialConfigurationsSupported =
+          credentialConfigurationsSupported;
+
   String? _deferredCredentialEndpoint;
   String? get deferredCredentialEndpoint => _$this._deferredCredentialEndpoint;
   set deferredCredentialEndpoint(String? deferredCredentialEndpoint) =>
@@ -391,6 +419,13 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
   String? _jwksUri;
   String? get jwksUri => _$this._jwksUri;
   set jwksUri(String? jwksUri) => _$this._jwksUri = jwksUri;
+
+  WellKnownOpenIdCredentialIssuerResponseDisplayBuilder? _display;
+  WellKnownOpenIdCredentialIssuerResponseDisplayBuilder get display =>
+      _$this._display ??=
+          WellKnownOpenIdCredentialIssuerResponseDisplayBuilder();
+  set display(WellKnownOpenIdCredentialIssuerResponseDisplayBuilder? display) =>
+      _$this._display = display;
 
   ListBuilder<WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>?
       _scopesSupported;
@@ -423,6 +458,12 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
       _$this._tokenEndpointAuthMethodsSupported =
           tokenEndpointAuthMethodsSupported;
 
+  ListBuilder<String>? _returnUris;
+  ListBuilder<String> get returnUris =>
+      _$this._returnUris ??= ListBuilder<String>();
+  set returnUris(ListBuilder<String>? returnUris) =>
+      _$this._returnUris = returnUris;
+
   WellKnownOpenIdCredentialIssuerResponseBuilder() {
     WellKnownOpenIdCredentialIssuerResponse._defaults(this);
   }
@@ -435,13 +476,17 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
       _credentialIssuer = $v.credentialIssuer;
       _batchCredentialEndpoint = $v.batchCredentialEndpoint;
       _credentialsSupported = $v.credentialsSupported?.toBuilder();
+      _credentialConfigurationsSupported =
+          $v.credentialConfigurationsSupported?.toBuilder();
       _deferredCredentialEndpoint = $v.deferredCredentialEndpoint;
       _grantTypesSupported = $v.grantTypesSupported?.toBuilder();
       _jwksUri = $v.jwksUri;
+      _display = $v.display?.toBuilder();
       _scopesSupported = $v.scopesSupported?.toBuilder();
       _tokenEndpoint = $v.tokenEndpoint;
       _tokenEndpointAuthMethodsSupported =
           $v.tokenEndpointAuthMethodsSupported?.toBuilder();
+      _returnUris = $v.returnUris?.toBuilder();
       _$v = null;
     }
     return this;
@@ -471,28 +516,38 @@ class WellKnownOpenIdCredentialIssuerResponseBuilder
             credentialIssuer: credentialIssuer,
             batchCredentialEndpoint: batchCredentialEndpoint,
             credentialsSupported: _credentialsSupported?.build(),
+            credentialConfigurationsSupported:
+                _credentialConfigurationsSupported?.build(),
             deferredCredentialEndpoint: deferredCredentialEndpoint,
             grantTypesSupported: _grantTypesSupported?.build(),
             jwksUri: jwksUri,
+            display: _display?.build(),
             scopesSupported: _scopesSupported?.build(),
             tokenEndpoint: tokenEndpoint,
             tokenEndpointAuthMethodsSupported:
                 _tokenEndpointAuthMethodsSupported?.build(),
+            returnUris: _returnUris?.build(),
           );
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'credentialsSupported';
         _credentialsSupported?.build();
+        _$failedField = 'credentialConfigurationsSupported';
+        _credentialConfigurationsSupported?.build();
 
         _$failedField = 'grantTypesSupported';
         _grantTypesSupported?.build();
 
+        _$failedField = 'display';
+        _display?.build();
         _$failedField = 'scopesSupported';
         _scopesSupported?.build();
 
         _$failedField = 'tokenEndpointAuthMethodsSupported';
         _tokenEndpointAuthMethodsSupported?.build();
+        _$failedField = 'returnUris';
+        _returnUris?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'WellKnownOpenIdCredentialIssuerResponse',

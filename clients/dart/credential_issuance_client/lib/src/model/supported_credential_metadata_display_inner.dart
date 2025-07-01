@@ -4,8 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_item_logo.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -134,7 +132,7 @@ class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSe
             value,
             specifiedType: const FullType(SupportedCredentialMetadataItemLogo),
           ) as SupportedCredentialMetadataItemLogo;
-          result.logo = valueDes.toBuilder();
+          result.logo.replace(valueDes);
           break;
         case r'backgroundColor':
           final valueDes = serializers.deserialize(

@@ -1544,7 +1544,7 @@ components:
         - modifiedAt
       type: object
     CreateCredentialInput:
-      additionalProperties: true
+      additionalProperties: false
       example:
         credential_identifier: credential_identifier
         proof:
@@ -2009,7 +2009,7 @@ components:
         - jsonSchemaUrl
       type: object
     SupportedCredentialMetadata:
-      additionalProperties: true
+      additionalProperties: false
       example:
         display:
           - backgroundColor: backgroundColor
@@ -2494,7 +2494,7 @@ components:
         - traceId
       type: object
     WellKnownOpenIdCredentialIssuerResponse:
-      additionalProperties: true
+      additionalProperties: false
       example:
         batch_credential_endpoint: batch_credential_endpoint
         credentials_supported:
@@ -2504,19 +2504,31 @@ components:
           - credentialTypeId: credentialTypeId
             jsonLdContextUrl: jsonLdContextUrl
             jsonSchemaUrl: jsonSchemaUrl
-        credential_issuer: credential_issuer
+        display:
+          name: name
+          logo:
+            alt_text: alt_text
+            uri: uri
+          locale: locale
         grant_types_supported:
           - authorization_code
           - authorization_code
+        credential_configurations_supported:
+          - '{}'
+          - '{}'
+        scopes_supported:
+          - openid
+          - openid
+        authorization_endpoint: authorization_endpoint
+        credential_issuer: credential_issuer
         jwks_uri: jwks_uri
         token_endpoint_auth_methods_supported:
           - client_secret_post
           - client_secret_post
-        scopes_supported:
-          - openid
-          - openid
+        return_uris:
+          - return_uris
+          - return_uris
         deferred_credential_endpoint: deferred_credential_endpoint
-        authorization_endpoint: authorization_endpoint
         credential_endpoint: credential_endpoint
         token_endpoint: token_endpoint
       properties:
@@ -2532,6 +2544,10 @@ components:
           items:
             $ref: '#/components/schemas/WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner'
           type: array
+        credential_configurations_supported:
+          items:
+            type: object
+          type: array
         deferred_credential_endpoint:
           type: string
         grant_types_supported:
@@ -2543,6 +2559,8 @@ components:
           type: array
         jwks_uri:
           type: string
+        display:
+          $ref: '#/components/schemas/WellKnownOpenIdCredentialIssuerResponse_display'
         scopes_supported:
           items:
             enum:
@@ -2557,6 +2575,10 @@ components:
               - client_secret_post
               - client_secret_basic
               - none
+            type: string
+          type: array
+        return_uris:
+          items:
             type: string
           type: array
       type: object
@@ -3027,7 +3049,7 @@ components:
         - traceId
       type: object
     SupportedCredentialMetadataItemLogo:
-      additionalProperties: true
+      additionalProperties: false
       example:
         altText: altText
         url: url
@@ -3271,7 +3293,7 @@ components:
         - credential
       type: object
     SupportedCredentialMetadata_display_inner:
-      additionalProperties: true
+      additionalProperties: false
       example:
         backgroundColor: backgroundColor
         name: name
@@ -3398,6 +3420,35 @@ components:
         - credentialTypeId
         - jsonLdContextUrl
         - jsonSchemaUrl
+      type: object
+    WellKnownOpenIdCredentialIssuerResponse_display_logo:
+      additionalProperties: false
+      example:
+        alt_text: alt_text
+        uri: uri
+      properties:
+        uri:
+          type: string
+        alt_text:
+          type: string
+      required:
+        - uri
+      type: object
+    WellKnownOpenIdCredentialIssuerResponse_display:
+      additionalProperties: false
+      example:
+        name: name
+        logo:
+          alt_text: alt_text
+          uri: uri
+        locale: locale
+      properties:
+        name:
+          type: string
+        locale:
+          type: string
+        logo:
+          $ref: '#/components/schemas/WellKnownOpenIdCredentialIssuerResponse_display_logo'
       type: object
     CisConfigurationWebhookSetting_endpoint:
       example:

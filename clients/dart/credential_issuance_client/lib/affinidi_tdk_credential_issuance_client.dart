@@ -90,4 +90,6 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuanc
 export 'package:affinidi_tdk_credential_issuance_client/src/model/vc_claimed_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display_logo.dart';
 
