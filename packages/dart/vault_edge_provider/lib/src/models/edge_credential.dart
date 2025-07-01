@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
 /// Data structure for raw credential information
-class CredentialData {
-  /// Creates a new instance of [CredentialData]
-  const CredentialData({
+class EdgeCredential {
+  /// Creates a new instance of [EdgeCredential]
+  const EdgeCredential({
     required this.id,
     required this.content,
   });
