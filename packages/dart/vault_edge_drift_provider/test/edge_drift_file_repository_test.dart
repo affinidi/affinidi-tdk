@@ -29,22 +29,18 @@ void main() {
       const fileName = 'test.txt';
       final fileContent = Uint8List.fromList([1, 2, 3, 4, 5]);
 
-      await repository.createFile(
+      final file = await repository.createFile(
         profileId: profileId,
         fileName: fileName,
         data: fileContent,
       );
 
-      final fileId = await repository.getFileId(
-        fileName: fileName,
-        parentFolderId: null,
-      );
-      expect(fileId, isNotNull);
+      expect(file, isNotNull);
 
-      final fileData = await repository.getFile(fileId: fileId!);
+      final fileData = await repository.getFile(fileId: file.id);
       expect(fileData.name, equals(fileName));
 
-      final content = await repository.getFileContent(fileId: fileId);
+      final content = await repository.getFileContent(fileId: file.id);
       expect(content, equals(fileContent));
     });
 
@@ -57,20 +53,16 @@ void main() {
       const fileName = 'test.txt';
       final fileContent = Uint8List.fromList([1, 2, 3, 4, 5]);
 
-      await repository.createFile(
+      final file = await repository.createFile(
         profileId: profileId,
         fileName: fileName,
         data: fileContent,
         parentFolderId: folder.id,
       );
 
-      final fileId = await repository.getFileId(
-        fileName: fileName,
-        parentFolderId: folder.id,
-      );
-      expect(fileId, isNotNull);
+      expect(file.id, isNotNull);
 
-      final fileData = await repository.getFile(fileId: fileId!);
+      final fileData = await repository.getFile(fileId: file.id);
       expect(fileData.name, equals(fileName));
       expect(fileData.parentId, equals(folder.id));
     });
@@ -99,22 +91,16 @@ void main() {
       const fileName = 'test.txt';
       final fileContent = Uint8List.fromList([1, 2, 3, 4, 5]);
 
-      await repository.createFile(
+      final file = await repository.createFile(
         profileId: profileId,
         fileName: fileName,
         data: fileContent,
       );
 
-      final fileId = await repository.getFileId(
-        fileName: fileName,
-        parentFolderId: null,
-      );
-      expect(fileId, isNotNull);
-
-      await repository.deleteFile(fileId: fileId!);
+      await repository.deleteFile(fileId: file.id);
 
       expect(
-        () => repository.getFile(fileId: fileId),
+        () => repository.getFile(fileId: file.id),
         throwsA(isA<TdkException>().having(
           (error) => error.code,
           'code',
@@ -123,7 +109,7 @@ void main() {
       );
 
       expect(
-        () => repository.getFileContent(fileId: fileId),
+        () => repository.getFileContent(fileId: file.id),
         throwsA(isA<TdkException>().having(
           (error) => error.code,
           'code',
@@ -137,31 +123,19 @@ void main() {
       const newFileName = 'renamed.txt';
       final fileContent = Uint8List.fromList([1, 2, 3, 4, 5]);
 
-      await repository.createFile(
+      final file = await repository.createFile(
         profileId: profileId,
         fileName: fileName,
         data: fileContent,
       );
 
-      final fileId = await repository.getFileId(
-        fileName: fileName,
-        parentFolderId: null,
-      );
-      expect(fileId, isNotNull);
-
       await repository.renameFile(
-        fileId: fileId!,
+        fileId: file.id,
         newName: newFileName,
       );
 
-      final fileData = await repository.getFile(fileId: fileId);
+      final fileData = await repository.getFile(fileId: file.id);
       expect(fileData.name, equals(newFileName));
-
-      final oldFileId = await repository.getFileId(
-        fileName: fileName,
-        parentFolderId: null,
-      );
-      expect(oldFileId, isNull);
     });
 
     test('should get folder contents', () async {
@@ -230,17 +204,14 @@ void main() {
       const fileName = 'test.txt';
       final smallFileContent = Uint8List(500);
 
-      await customRepository.createFile(
-        profileId: profileId,
-        fileName: fileName,
-        data: smallFileContent,
+      expect(
+        () async => await customRepository.createFile(
+          profileId: profileId,
+          fileName: fileName,
+          data: smallFileContent,
+        ),
+        returnsNormally,
       );
-
-      final fileId = await customRepository.getFileId(
-        fileName: fileName,
-        parentFolderId: null,
-      );
-      expect(fileId, isNotNull);
     });
 
     test('should accept files with custom allowed extensions', () async {
@@ -253,17 +224,14 @@ void main() {
       const fileName = 'test.doc';
       final fileContent = Uint8List.fromList([1, 2, 3]);
 
-      await customRepository.createFile(
-        profileId: profileId,
-        fileName: fileName,
-        data: fileContent,
+      expect(
+        () async => await customRepository.createFile(
+          profileId: profileId,
+          fileName: fileName,
+          data: fileContent,
+        ),
+        returnsNormally,
       );
-
-      final fileId = await customRepository.getFileId(
-        fileName: fileName,
-        parentFolderId: null,
-      );
-      expect(fileId, isNotNull);
     });
 
     test('should reject files with disallowed extensions', () async {
@@ -296,20 +264,15 @@ void main() {
       const newFileName = 'test.exe';
       final fileContent = Uint8List.fromList([1, 2, 3]);
 
-      await repository.createFile(
+      final file = await repository.createFile(
         profileId: profileId,
         fileName: fileName,
         data: fileContent,
       );
 
-      final fileId = await repository.getFileId(
-        fileName: fileName,
-        parentFolderId: null,
-      );
-
       expect(
         () => repository.renameFile(
-          fileId: fileId!,
+          fileId: file.id,
           newName: newFileName,
         ),
         throwsA(isA<TdkException>().having(

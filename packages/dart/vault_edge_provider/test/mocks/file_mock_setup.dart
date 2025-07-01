@@ -60,10 +60,5 @@ class FileMockSetup {
           folderId: any(named: 'folderId'),
           newName: any(named: 'newName'),
         )).thenAnswer((_) async => true);
-
-    when(() => mockRepository.getFileId(
-          fileName: any(named: 'fileName'),
-          parentFolderId: any(named: 'parentFolderId'),
-        )).thenAnswer((_) async => null);
   }
 }

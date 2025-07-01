@@ -72,13 +72,4 @@ abstract interface class EdgeFileRepositoryInterface {
     required String folderId,
     required String newName,
   });
-
-  /// Retrieves the ID of a file by its name and parent folder
-  ///
-  /// [fileName] - the name of the file to look up
-  /// [parentFolderId] - the ID of the parent folder, null for root level files
-  Future<String?> getFileId({
-    required String fileName,
-    String? parentFolderId,
-  });
 }

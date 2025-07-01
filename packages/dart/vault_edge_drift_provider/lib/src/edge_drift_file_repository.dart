@@ -25,7 +25,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   final List<String> allowedExtensions;
 
   @override
-  Future<void> createFile({
+  Future<File> createFile({
     required String profileId,
     required String fileName,
     required Uint8List data,
@@ -71,16 +71,17 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       }
     }
 
-    await _database.transaction(() async {
-      final fileId = const Uuid().v4();
+    final fileId = const Uuid().v4();
 
-      final fileItem = db.ItemsCompanion.insert(
-        id: Value(fileId),
-        profileId: _profileId,
-        name: fileName,
-        parentId: Value(parentFolderId),
-        itemType: db.ItemType.file,
-      );
+    final fileItem = db.ItemsCompanion.insert(
+      id: Value(fileId),
+      profileId: _profileId,
+      name: fileName,
+      parentId: Value(parentFolderId),
+      itemType: db.ItemType.file,
+    );
+
+    await _database.transaction(() async {
       await _database.into(_database.items).insert(fileItem);
 
       await _database.into(_database.fileContents).insert(
@@ -90,25 +91,8 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
             ),
           );
     });
-  }
 
-  @override
-  Future<String?> getFileId({
-    required String fileName,
-    String? parentFolderId,
-  }) async {
-    final query = _database.select(_database.items)
-      ..where((filter) =>
-          filter.name.equals(fileName) &
-          filter.itemType.equals(db.ItemType.file.value) &
-          filter.profileId.equals(_profileId) &
-          (parentFolderId != null
-              ? filter.parentId.equals(parentFolderId)
-              : filter.parentId.isNull()));
-
-    final file = await query.getSingleOrNull();
-
-    return file?.id;
+    return await getFile(fileId: fileId);
   }
 
   @override
