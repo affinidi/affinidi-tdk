@@ -5,22 +5,29 @@ import 'package:test/test.dart';
 import 'fixtures/credential_fixtures.dart';
 import 'mocks/credential_mock_setup.dart';
 import 'mocks/mock_edge_credential_repository.dart';
+import 'mocks/mock_edge_encryption_service.dart';
 
 void main() {
   late MockEdgeCredentialRepository mockRepository;
+  late MockEdgeEncryptionService mockEncryptionService;
   late VaultEdgeCredentialStorage storage;
 
   setUpAll(CredentialMockSetup.setupFallbackValues);
 
   setUp(() {
     mockRepository = MockEdgeCredentialRepository();
+    mockEncryptionService = MockEdgeEncryptionService();
+
     storage = VaultEdgeCredentialStorage(
       repository: mockRepository,
       id: CredentialFixtures.storageId,
       profileId: CredentialFixtures.profileId,
+      encryptionService: mockEncryptionService,
     );
 
     CredentialMockSetup.setupCredentialRepositoryMocks(mockRepository);
+    MockEncryptionServiceSetup.setupEncryptionServiceDefaults(
+        mockEncryptionService);
   });
 
   group('When performing credential operations', () {

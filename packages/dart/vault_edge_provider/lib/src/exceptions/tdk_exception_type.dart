@@ -52,6 +52,9 @@ enum TdkExceptionType {
 
   /// [failedToListCredentials] - Indicates a failure to list credentials
   failedToListCredentials('failed_to_list_credentials'),
+
+  /// [encryptionFailed] - Indicates a failure in encryption or decryption operations
+  encryptionFailed('encryption_failed'),
   ;
 
   /// Creates a new instance of [TdkExceptionType].

@@ -1,0 +1,56 @@
+import 'dart:typed_data';
+
+import 'package:affinidi_tdk_vault_edge_provider/src/services/edge_encryption_service_interface.dart';
+import 'package:mocktail/mocktail.dart';
+
+class MockEdgeEncryptionService extends Mock
+    implements EdgeEncryptionServiceInterface {}
+
+class MockEncryptionServiceSetup {
+  static void setupEncryptionServiceDefaults(
+    MockEdgeEncryptionService mock,
+  ) {
+    when(() => mock.initializeWithPassphrase(any()))
+        .thenAnswer((_) async => true);
+
+    when(() => mock.loadMasterKeyWithPassphrase(any()))
+        .thenAnswer((_) async => true);
+
+    when(() => mock.changePassphrase(any(), any()))
+        .thenAnswer((_) async => true);
+
+    when(() => mock.encryptData(any())).thenAnswer((invocation) async {
+      final data = invocation.positionalArguments[0] as Uint8List;
+      return data;
+    });
+
+    when(() => mock.decryptData(any())).thenAnswer((invocation) async {
+      final data = invocation.positionalArguments[0] as Uint8List;
+      return data;
+    });
+
+    when(() => mock.isMasterKeyLoaded).thenReturn(true);
+
+    when(() => mock.isInitialized()).thenAnswer((_) async => true);
+
+    when(() => mock.clearMasterKey()).thenReturn(null);
+  }
+
+  static void setupEncryptionServiceWithMasterKeyNotLoaded(
+    MockEdgeEncryptionService mock,
+  ) {
+    when(() => mock.isMasterKeyLoaded).thenReturn(false);
+  }
+
+  static void setupEncryptionServiceWithFailedEncryption(
+    MockEdgeEncryptionService mock,
+  ) {
+    when(() => mock.encryptData(any())).thenAnswer((_) async => null);
+  }
+
+  static void setupEncryptionServiceWithFailedDecryption(
+    MockEdgeEncryptionService mock,
+  ) {
+    when(() => mock.decryptData(any())).thenAnswer((_) async => null);
+  }
+}

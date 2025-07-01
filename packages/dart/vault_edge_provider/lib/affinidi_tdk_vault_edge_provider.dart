@@ -20,6 +20,8 @@ export 'src/interfaces/edge_file_repository_interface.dart';
 export 'src/interfaces/edge_profile_repository_interface.dart';
 export 'src/models/edge_credential.dart';
 export 'src/models/edge_profile.dart';
+export 'src/services/edge_encryption_service.dart';
+export 'src/services/edge_encryption_service_interface.dart';
 export 'src/storages/vault_edge_credential_storage.dart';
 export 'src/storages/vault_edge_file_storage.dart';
 export 'src/storages/vault_edge_profile_repository.dart';
