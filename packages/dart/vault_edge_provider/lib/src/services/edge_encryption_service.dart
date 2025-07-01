@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'edge_encryption_service_interface.dart';
 
+/// Implementation of the edge encryption service that provides two-layer encryption.
 class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   static const int _pbkdf2Iterations = 600000; // 600k iterations for security
   static const int _masterKeyLength = 32; // 256 bits
@@ -21,10 +22,15 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   final Random _secureRandom = Random.secure();
   Uint8List? _masterKey;
 
+  /// Creates a new instance of [EdgeEncryptionService].
   EdgeEncryptionService({
     FlutterSecureStorage? secureStorage,
   }) : _secureStorage = secureStorage ?? const FlutterSecureStorage();
 
+  /// Initializes the encryption system with a new passphrase.
+  ///
+  /// This method generates a new master key, encrypts it with the passphrase,
+  /// and stores the encrypted master key in secure storage.
   @override
   Future<bool> initializeWithPassphrase(String passphrase) async {
     try {
@@ -52,6 +58,10 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
     }
   }
 
+  /// Loads the master key using the provided passphrase.
+  ///
+  /// This method retrieves the encrypted master key from secure storage,
+  /// decrypts it using the passphrase, and loads it into memory.
   @override
   Future<bool> loadMasterKeyWithPassphrase(String passphrase) async {
     try {
@@ -82,6 +92,11 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   }
 
   @override
+
+  /// Changes the passphrase used to encrypt the master key.
+  ///
+  /// This method decrypts the master key with the old passphrase,
+  /// re-encrypts it with the new passphrase, and updates secure storage.
   Future<bool> changePassphrase(
       String oldPassphrase, String newPassphrase) async {
     try {

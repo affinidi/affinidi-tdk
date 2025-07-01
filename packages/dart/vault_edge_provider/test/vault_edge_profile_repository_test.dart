@@ -5,9 +5,9 @@ import 'package:test/test.dart';
 import 'fixtures/profile_fixtures.dart';
 import 'fixtures/wallet_fixtures.dart';
 import 'mocks/mock_edge_credential_repository.dart';
+import 'mocks/mock_edge_encryption_service.dart';
 import 'mocks/mock_edge_file_repository.dart';
 import 'mocks/mock_edge_profile_repository.dart';
-import 'mocks/mock_edge_encryption_service.dart';
 
 void main() {
   late MockEdgeProfileRepository mockRepository;
