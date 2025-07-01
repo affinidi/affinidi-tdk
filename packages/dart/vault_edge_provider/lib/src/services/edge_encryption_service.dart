@@ -159,19 +159,19 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   bool get isMasterKeyLoaded => _masterKey != null;
 
   Uint8List _generateMasterKey() {
-    final masterKey = Uint8List(_masterKeyLength);
-    for (var i = 0; i < _masterKeyLength; i++) {
-      masterKey[i] = _secureRandom.nextInt(256);
-    }
-    return masterKey;
+    const masterKeyLength = 32;
+    return _generateRandomBytes(masterKeyLength);
   }
 
   Uint8List _generateNonce() {
-    final nonce = Uint8List(_nonceLength);
-    for (var i = 0; i < _nonceLength; i++) {
-      nonce[i] = _secureRandom.nextInt(256);
-    }
-    return nonce;
+    const nonceLength = 32;
+    return _generateRandomBytes(nonceLength);
+  }
+
+  Uint8List _generateRandomBytes(int length) {
+    return Uint8List.fromList(
+      List<int>.generate(length, (_) => _secureRandom.nextInt(256)),
+    );
   }
 
   Future<Uint8List> _encryptMasterKey(
