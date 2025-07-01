@@ -38,11 +38,9 @@ class EdgeDriftCredentialRepository
       );
     }
 
-    await _database.transaction(() async {
-      await (_database.delete(_database.credentials)
-            ..where((filter) => filter.id.equals(credentialId)))
-          .go();
-    });
+    await (_database.delete(_database.credentials)
+          ..where((filter) => filter.id.equals(credentialId)))
+        .go();
   }
 
   @override
@@ -108,15 +106,12 @@ class EdgeDriftCredentialRepository
     required Uint8List credentialContent,
     VaultCancelToken? cancelToken,
   }) async {
-    // Create credential entry in a transaction
-    await _database.transaction(() async {
-      final credentialEntry = db.CredentialsCompanion.insert(
-        id: Value(credentialId),
-        profileId: _profileId,
-        name: credentialName,
-        content: credentialContent,
-      );
-      await _database.into(_database.credentials).insert(credentialEntry);
-    });
+    final credentialEntry = db.CredentialsCompanion.insert(
+      id: Value(credentialId),
+      profileId: _profileId,
+      name: credentialName,
+      content: credentialContent,
+    );
+    await _database.into(_database.credentials).insert(credentialEntry);
   }
 }
