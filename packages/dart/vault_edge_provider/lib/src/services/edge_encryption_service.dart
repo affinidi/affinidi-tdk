@@ -140,6 +140,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   @override
   void clearMasterKey() {
+    _masterKey = Uint8List.fromList([]);
     _masterKey = null;
   }
 
