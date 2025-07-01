@@ -94,21 +94,21 @@ class CredentialFixtures {
     ];
   }
 
-  static CredentialData get mockCredentialData {
-    return CredentialData(
+  static EdgeCredential get mockCredentialData {
+    return EdgeCredential(
       id: credentialId,
       content: universityDegreeCredentialBytes,
     );
   }
 
-  static CredentialData get drivingLicenseCredentialData {
-    return CredentialData(
+  static EdgeCredential get drivingLicenseCredentialData {
+    return EdgeCredential(
       id: 'test-credential-id-2',
       content: drivingLicenseCredentialBytes,
     );
   }
 
-  static List<CredentialData> get mockCredentialDataList {
+  static List<EdgeCredential> get mockCredentialDataList {
     return [
       mockCredentialData,
       drivingLicenseCredentialData,
