@@ -101,14 +101,6 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<String?> getFileId({
-    required String fileName,
-    String? parentFolderId,
-  }) async {
-    return null;
-  }
-
-  @override
   Future<List<Item>> getFolder({
     String? folderId,
     int? limit,
