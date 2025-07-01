@@ -29,7 +29,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "command": "dart test --coverage=../../../coverage"
+        "command": "flutter test"
       }
     },
     "build": {
