@@ -4,23 +4,30 @@ import 'package:test/test.dart';
 
 import 'fixtures/file_fixtures.dart';
 import 'mocks/file_mock_setup.dart';
+import 'mocks/mock_edge_encryption_service.dart';
 import 'mocks/mock_edge_file_repository.dart';
 
 void main() {
   late MockEdgeFileRepositoryInterface mockRepository;
+  late MockEdgeEncryptionService mockEncryptionService;
   late VaultEdgeFileStorage storage;
 
   setUpAll(FileMockSetup.setupFallbackValues);
 
   setUp(() {
     mockRepository = MockEdgeFileRepositoryInterface();
+    mockEncryptionService = MockEdgeEncryptionService();
+
     storage = VaultEdgeFileStorage(
       repository: mockRepository,
       id: FileFixtures.storageId,
       profileId: FileFixtures.profileId,
+      encryptionService: mockEncryptionService,
     );
 
     FileMockSetup.setupFileRepositoryMocks(mockRepository);
+    MockEncryptionServiceSetup.setupEncryptionServiceDefaults(
+        mockEncryptionService);
   });
 
   group('When performing file operations', () {

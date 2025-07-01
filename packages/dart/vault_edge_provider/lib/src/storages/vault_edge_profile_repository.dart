@@ -185,6 +185,7 @@ Profile repository must be configured using a RepositoryConfiguration''',
               repository: _fileRepository,
               id: _id,
               profileId: item.id.toString(),
+              encryptionService: _encryptionService,
             ),
           },
           credentialStorages: {

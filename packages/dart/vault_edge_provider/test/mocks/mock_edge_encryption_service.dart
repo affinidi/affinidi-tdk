@@ -41,16 +41,4 @@ class MockEncryptionServiceSetup {
   ) {
     when(() => mock.isMasterKeyLoaded).thenReturn(false);
   }
-
-  static void setupEncryptionServiceWithFailedEncryption(
-    MockEdgeEncryptionService mock,
-  ) {
-    when(() => mock.encryptData(any())).thenAnswer((_) async => null);
-  }
-
-  static void setupEncryptionServiceWithFailedDecryption(
-    MockEdgeEncryptionService mock,
-  ) {
-    when(() => mock.decryptData(any())).thenAnswer((_) async => null);
-  }
 }

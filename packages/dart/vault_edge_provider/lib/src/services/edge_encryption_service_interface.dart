@@ -18,10 +18,10 @@ abstract interface class EdgeEncryptionServiceInterface {
   Future<bool> changePassphrase(String oldPassphrase, String newPassphrase);
 
   /// Encrypts data using the loaded master key.
-  Future<Uint8List?> encryptData(Uint8List data);
+  Future<Uint8List> encryptData(Uint8List data);
 
   /// Decrypts data using the loaded master key.
-  Future<Uint8List?> decryptData(Uint8List encryptedData);
+  Future<Uint8List> decryptData(Uint8List encryptedData);
 
   /// Clears the master key from memory
   void clearMasterKey();
