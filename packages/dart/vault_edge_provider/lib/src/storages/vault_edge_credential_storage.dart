@@ -1,9 +1,7 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:uuid/uuid.dart';
 
-import '../exceptions/tdk_exception_type.dart';
-import '../interfaces/edge_credentials_repository_interface.dart';
-import '../utils/credential_parser.dart';
+import '../../affinidi_tdk_vault_edge_provider.dart';
 
 /// An Edge based implementation of [CredentialStorage] for storing and managing
 /// verifiable credentials.
@@ -13,13 +11,16 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     required EdgeCredentialsRepositoryInterface repository,
     required String id,
     required String profileId,
+    CredentialCodec? codec,
   })  : _repository = repository,
         _id = id,
-        _profileId = profileId;
+        _profileId = profileId,
+        _codec = codec ?? CredentialCodec();
 
   final EdgeCredentialsRepositoryInterface _repository;
   final String _id;
   final String _profileId;
+  final CredentialCodec _codec;
 
   @override
   String get id => _id;
@@ -70,7 +71,7 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
       );
     }
 
-    return CredentialParser.parseCredentialFromBytes(
+    return _codec.decode(
       credentialBytes: credentialData.content,
       id: credentialData.id,
     );
@@ -90,7 +91,7 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     );
 
     final credentials = credentialDataList.map((credentialData) {
-      return CredentialParser.parseCredentialFromBytes(
+      return _codec.decode(
         credentialBytes: credentialData.content,
         id: credentialData.id,
       );
@@ -122,8 +123,7 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
             .firstOrNull ??
         'Credential';
 
-    final credentialContent =
-        CredentialParser.serializeCredentialToBytes(verifiableCredential);
+    final credentialContent = _codec.encode(verifiableCredential);
 
     await _repository.saveCredentialData(
       profileId: _profileId,
