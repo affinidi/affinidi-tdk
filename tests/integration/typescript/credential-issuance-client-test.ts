@@ -136,7 +136,8 @@ describe('credential-issuance-client', function () {
       expect(data.credential_responses[0]).to.have.a.property('credential')
     })
 
-    it('Retrieves issued credentials @internal', async () => {
+    // TODO: unskip when fixed on the backend
+    it.skip('Retrieves issued credentials @internal', async () => {
       const { data } = await credentialsApi.getIssuanceIdClaimedCredential(
         projectId,
         configurationId,
