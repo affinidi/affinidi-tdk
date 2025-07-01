@@ -17,6 +17,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   final VaultStore _vaultStore;
   final Random _secureRandom = Random.secure();
   Uint8List? _masterKey;
+  late final _cryptographyAlgorythm = AesGcm.with256bits();
 
   /// Creates a new instance of [EdgeEncryptionService].
   EdgeEncryptionService({
@@ -215,10 +216,9 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
       iv[i] = _secureRandom.nextInt(256);
     }
 
-    final cipher = AesGcm.with256bits();
     final secretKey = SecretKey(key);
 
-    final encryptedData = await cipher.encrypt(
+    final encryptedData = await _cryptographyAlgorythm.encrypt(
       data,
       secretKey: secretKey,
       nonce: iv,
@@ -251,13 +251,12 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
       final mac = Mac(tag);
 
-      final cipher = AesGcm.with256bits();
       final secretKey = SecretKey(key);
 
       final secretBox = SecretBox(ciphertext, nonce: iv, mac: mac);
 
       final decryptedData =
-          await cipher.decrypt(secretBox, secretKey: secretKey);
+          await _cryptographyAlgorythm.decrypt(secretBox, secretKey: secretKey);
       return Uint8List.fromList(decryptedData);
     } catch (e) {
       return null;
