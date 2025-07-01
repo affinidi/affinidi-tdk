@@ -264,12 +264,7 @@ public class CredentialSupportedObject {
 
     // add `metadata` to the URL query string
     if (getMetadata() != null) {
-      try {
-        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+      joiner.add(getMetadata().toUrlQueryString(prefix + "metadata" + suffix));
     }
 
     return joiner.toString();

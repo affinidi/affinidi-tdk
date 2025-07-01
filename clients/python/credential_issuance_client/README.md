@@ -202,6 +202,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [VcClaimedError](docs/VcClaimedError.md)
 - [WellKnownOpenIdCredentialIssuerResponse](docs/WellKnownOpenIdCredentialIssuerResponse.md)
 - [WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner](docs/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md)
+- [WellKnownOpenIdCredentialIssuerResponseDisplay](docs/WellKnownOpenIdCredentialIssuerResponseDisplay.md)
+- [WellKnownOpenIdCredentialIssuerResponseDisplayLogo](docs/WellKnownOpenIdCredentialIssuerResponseDisplayLogo.md)
 
 <a id="documentation-for-authorization"></a>
 
