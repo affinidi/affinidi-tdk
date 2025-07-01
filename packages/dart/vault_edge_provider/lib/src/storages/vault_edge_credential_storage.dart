@@ -156,13 +156,6 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
 
   /// Encrypts credential content using the encryption service
   Future<Uint8List> _encryptCredentialContent(Uint8List content) async {
-    if (!_encryptionService.isMasterKeyLoaded) {
-      throw TdkException(
-        message: 'Master key not loaded',
-        code: TdkExceptionType.encryptionFailed.code,
-      );
-    }
-
     final encryptedContent = await _encryptionService.encryptData(content);
     if (encryptedContent == null) {
       throw TdkException(
@@ -177,13 +170,6 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
   /// Decrypts credential content using the encryption service
   Future<Uint8List> _decryptCredentialContent(
       Uint8List encryptedContent) async {
-    if (!_encryptionService.isMasterKeyLoaded) {
-      throw TdkException(
-        message: 'Master key not loaded',
-        code: TdkExceptionType.encryptionFailed.code,
-      );
-    }
-
     final decryptedContent =
         await _encryptionService.decryptData(encryptedContent);
     if (decryptedContent == null) {
