@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'content_key.dart';
+
 /// Interface for storing vault data
 abstract class VaultStore {
   /// Writes the account index to storage.
@@ -28,6 +30,14 @@ abstract class VaultStore {
     final bytes = List<int>.generate(length, (_) => random.nextInt(256));
     return Uint8List.fromList(bytes);
   }
+
+  /// Stores a contentKey
+  Future<void> writeContentKey(ContentKey contentKey);
+
+  /// Returns the stored contentKey
+  ///
+  /// Returns null if no contentKey has been stored.
+  Future<ContentKey?> readContentKey();
 
   /// Removes all stored data including account index and seed
   Future<void> clear();

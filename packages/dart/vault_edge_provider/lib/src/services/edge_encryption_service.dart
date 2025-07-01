@@ -2,30 +2,25 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:cryptography/cryptography.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'edge_encryption_service_interface.dart';
 
 /// Implementation of the edge encryption service that provides two-layer encryption.
 class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   static const int _pbkdf2Iterations = 600000; // 600k iterations for security
-  static const int _masterKeyLength = 32; // 256 bits
-  static const int _nonceLength = 32; // 256 bits
   static const int _ivLength = 12; // 96 bits for GCM
   static const int _tagLength = 16; // 128 bits for GCM
 
-  static const String _encryptedMasterKeyKey = 'encrypted_master_key';
-  static const String _nonceKey = 'encryption_nonce';
-
-  final FlutterSecureStorage _secureStorage;
+  final VaultStore _vaultStore;
   final Random _secureRandom = Random.secure();
   Uint8List? _masterKey;
 
   /// Creates a new instance of [EdgeEncryptionService].
   EdgeEncryptionService({
-    FlutterSecureStorage? secureStorage,
-  }) : _secureStorage = secureStorage ?? const FlutterSecureStorage();
+    required VaultStore vaultStore,
+  }) : _vaultStore = vaultStore;
 
   /// Initializes the encryption system with a new passphrase.
   ///
@@ -34,28 +29,25 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   @override
   Future<bool> initializeWithPassphrase(String passphrase) async {
     try {
-      final masterKey = _generateMasterKey();
+      final contentKey = await _generateContentKey(passphrase);
 
-      final nonce = _generateNonce();
+      await _vaultStore.writeContentKey(contentKey);
 
-      final encryptedMasterKey =
-          await _encryptMasterKey(masterKey, passphrase, nonce);
-
-      await _secureStorage.write(
-        key: _encryptedMasterKeyKey,
-        value: base64Encode(encryptedMasterKey),
-      );
-      await _secureStorage.write(
-        key: _nonceKey,
-        value: base64Encode(nonce),
-      );
-
-      _masterKey = masterKey;
+      _masterKey = await _decryptMasterKey(contentKey, passphrase);
 
       return true;
     } catch (e) {
       return false;
     }
+  }
+
+  Future<ContentKey> _generateContentKey(String passphrase) async {
+    final masterKey = _generateMasterKey();
+    final nonce = _generateNonce();
+    final encryptedMasterKey =
+        await _encryptMasterKey(masterKey, passphrase, nonce);
+
+    return ContentKey(key: encryptedMasterKey, nonce: nonce);
   }
 
   /// Loads the master key using the provided passphrase.
@@ -65,19 +57,13 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   @override
   Future<bool> loadMasterKeyWithPassphrase(String passphrase) async {
     try {
-      final encryptedMasterKeyString =
-          await _secureStorage.read(key: _encryptedMasterKeyKey);
-      final nonceString = await _secureStorage.read(key: _nonceKey);
+      final contentKey = await _vaultStore.readContentKey();
 
-      if (encryptedMasterKeyString == null || nonceString == null) {
+      if (contentKey == null) {
         return false;
       }
 
-      final encryptedMasterKey = base64Decode(encryptedMasterKeyString);
-      final nonce = base64Decode(nonceString);
-
-      final masterKey =
-          await _decryptMasterKey(encryptedMasterKey, passphrase, nonce);
+      final masterKey = await _decryptMasterKey(contentKey, passphrase);
 
       if (masterKey == null) {
         return false;
@@ -106,18 +92,11 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
       }
 
       final newNonce = _generateNonce();
-
       final encryptedMasterKey =
           await _encryptMasterKey(_masterKey!, newPassphrase, newNonce);
+      final contenKey = ContentKey(key: encryptedMasterKey, nonce: newNonce);
 
-      await _secureStorage.write(
-        key: _encryptedMasterKeyKey,
-        value: base64Encode(encryptedMasterKey),
-      );
-      await _secureStorage.write(
-        key: _nonceKey,
-        value: base64Encode(newNonce),
-      );
+      await _vaultStore.writeContentKey(contenKey);
 
       return true;
     } catch (e) {
@@ -150,8 +129,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   @override
   Future<bool> isInitialized() async {
-    final encryptedMasterKey =
-        await _secureStorage.read(key: _encryptedMasterKeyKey);
+    final encryptedMasterKey = await _vaultStore.readContentKey();
     return encryptedMasterKey != null;
   }
 
@@ -175,21 +153,29 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   }
 
   Future<Uint8List> _encryptMasterKey(
-      Uint8List masterKey, String passphrase, Uint8List nonce) async {
+    Uint8List masterKey,
+    String passphrase,
+    Uint8List nonce,
+  ) async {
     final derivedKey = await _deriveKeyFromPassphrase(passphrase, nonce);
 
     return _encryptData(masterKey, derivedKey);
   }
 
   Future<Uint8List?> _decryptMasterKey(
-      Uint8List encryptedMasterKey, String passphrase, Uint8List nonce) async {
-    final derivedKey = await _deriveKeyFromPassphrase(passphrase, nonce);
+    ContentKey contentKey,
+    String passphrase,
+  ) async {
+    final derivedKey =
+        await _deriveKeyFromPassphrase(passphrase, contentKey.nonce);
 
-    return _decryptData(encryptedMasterKey, derivedKey);
+    return _decryptData(contentKey.key, derivedKey);
   }
 
   Future<Uint8List> _deriveKeyFromPassphrase(
-      String passphrase, Uint8List nonce) async {
+    String passphrase,
+    Uint8List nonce,
+  ) async {
     final pbkdf2 = Pbkdf2(
       macAlgorithm: Hmac(Sha256()),
       iterations: _pbkdf2Iterations,
@@ -204,7 +190,10 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
     return Uint8List.fromList(await secretKey.extractBytes());
   }
 
-  Future<Uint8List> _encryptData(Uint8List data, Uint8List key) async {
+  Future<Uint8List> _encryptData(
+    Uint8List data,
+    Uint8List key,
+  ) async {
     final iv = Uint8List(_ivLength);
     for (var i = 0; i < _ivLength; i++) {
       iv[i] = _secureRandom.nextInt(256);
@@ -231,7 +220,9 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   }
 
   Future<Uint8List?> _decryptData(
-      Uint8List encryptedData, Uint8List key) async {
+    Uint8List encryptedData,
+    Uint8List key,
+  ) async {
     try {
       if (encryptedData.length < _ivLength + _tagLength) {
         return null;
