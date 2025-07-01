@@ -130,7 +130,7 @@ void main() {
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
               cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => <CredentialData>[]);
+            )).thenAnswer((_) async => <EdgeCredential>[]);
 
         final result = await storage.listCredentials();
 

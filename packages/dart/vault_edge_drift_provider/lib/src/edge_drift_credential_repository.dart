@@ -46,7 +46,7 @@ class EdgeDriftCredentialRepository
   }
 
   @override
-  Future<CredentialData?> getCredentialData({
+  Future<EdgeCredential?> getCredentialData({
     required String credentialId,
     VaultCancelToken? cancelToken,
   }) async {
@@ -66,14 +66,14 @@ class EdgeDriftCredentialRepository
       );
     }
 
-    return CredentialData(
+    return EdgeCredential(
       id: credential.id,
       content: credential.content,
     );
   }
 
   @override
-  Future<List<CredentialData>> listCredentialData({
+  Future<List<EdgeCredential>> listCredentialData({
     required String profileId,
     int? limit,
     String? exclusiveStartItemId,
@@ -93,7 +93,7 @@ class EdgeDriftCredentialRepository
 
     final credentials = await query.get();
     return credentials
-        .map((credential) => CredentialData(
+        .map((credential) => EdgeCredential(
               id: credential.id,
               content: credential.content,
             ))
