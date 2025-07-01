@@ -29,16 +29,8 @@ class MockEncryptionServiceSetup {
       return data;
     });
 
-    when(() => mock.isMasterKeyLoaded).thenReturn(true);
-
     when(() => mock.isInitialized()).thenAnswer((_) async => true);
 
     when(() => mock.clearMasterKey()).thenReturn(null);
-  }
-
-  static void setupEncryptionServiceWithMasterKeyNotLoaded(
-    MockEdgeEncryptionService mock,
-  ) {
-    when(() => mock.isMasterKeyLoaded).thenReturn(false);
   }
 }
