@@ -28,7 +28,4 @@ abstract interface class EdgeEncryptionServiceInterface {
 
   /// Checks if encryption is initialized
   Future<bool> isInitialized();
-
-  /// Checks if master key is loaded in memory
-  bool get isMasterKeyLoaded;
 }
