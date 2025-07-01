@@ -106,7 +106,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   }
 
   @override
-  Future<Uint8List?> encryptData(Uint8List data) async {
+  Future<Uint8List> encryptData(Uint8List data) async {
     if (!isMasterKeyLoaded) {
       throw TdkException(
         message: 'Master key not loaded',
@@ -118,7 +118,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   }
 
   @override
-  Future<Uint8List?> decryptData(Uint8List encryptedData) async {
+  Future<Uint8List> decryptData(Uint8List encryptedData) async {
     if (!isMasterKeyLoaded) {
       throw TdkException(
         message: 'Master key not loaded',
@@ -126,7 +126,16 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
       );
     }
 
-    return _decryptData(encryptedData, _masterKey!);
+    final decryptedData = await _decryptData(encryptedData, _masterKey!);
+
+    if (decryptedData == null) {
+      throw TdkException(
+        message: 'Failed to decrypt data',
+        code: TdkExceptionType.encryptionFailed.code,
+      );
+    }
+
+    return decryptedData;
   }
 
   @override

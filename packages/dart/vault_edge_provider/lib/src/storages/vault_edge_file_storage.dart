@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 
 import '../exceptions/tdk_exception_type.dart';
 import '../interfaces/edge_file_repository_interface.dart';
+import '../services/edge_encryption_service_interface.dart';
 
 /// An Edge based implementation of [FileStorage] for storing and managing
 /// files and folders.
@@ -14,13 +15,16 @@ class VaultEdgeFileStorage implements FileStorage {
     required EdgeFileRepositoryInterface repository,
     required String id,
     required String profileId,
+    required EdgeEncryptionServiceInterface encryptionService,
   })  : _repository = repository,
         _id = id,
-        _profileId = profileId;
+        _profileId = profileId,
+        _encryptionService = encryptionService;
 
   final EdgeFileRepositoryInterface _repository;
   final String _id;
   final String _profileId;
+  final EdgeEncryptionServiceInterface _encryptionService;
 
   @override
   String get id => _id;
@@ -81,11 +85,13 @@ class VaultEdgeFileStorage implements FileStorage {
       }
     }
 
+    final encryptedContent = await _encryptionService.encryptData(data);
+
     // Create the file
     await _repository.createFile(
       profileId: _profileId,
       fileName: fileName,
-      data: data,
+      data: encryptedContent,
       parentFolderId: parentFolderId,
     );
   }
@@ -181,11 +187,12 @@ class VaultEdgeFileStorage implements FileStorage {
     VaultCancelToken? cancelToken,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final content = await _repository.getFileContent(fileId: fileId);
+    final encryptedContent = await _repository.getFileContent(fileId: fileId);
 
-    // TODO: handle encryption?
+    final decryptedContent =
+        await _encryptionService.decryptData(encryptedContent);
 
-    return content;
+    return decryptedContent;
   }
 
   @override

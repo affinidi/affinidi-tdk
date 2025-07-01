@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:uuid/uuid.dart';
 
@@ -76,9 +74,8 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
       );
     }
 
-    // Decrypt the credential content
     final decryptedContent =
-        await _decryptCredentialContent(credentialData.content);
+        await _encryptionService.decryptData(credentialData.content);
 
     return _codec.decode(
       credentialBytes: decryptedContent,
@@ -101,9 +98,8 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
 
     final credentials = await Future.wait(
       credentialDataList.map((credentialData) async {
-        // Decrypt the credential content
         final decryptedContent =
-            await _decryptCredentialContent(credentialData.content);
+            await _encryptionService.decryptData(credentialData.content);
 
         return _codec.decode(
           credentialBytes: decryptedContent,
@@ -141,44 +137,15 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     final credentialContent = _codec.encode(verifiableCredential);
 
     // Encrypt the credential content
-    final finalContent = await _encryptCredentialContent(credentialContent);
+    final encryptedContent =
+        await _encryptionService.encryptData(credentialContent);
 
     await _repository.saveCredentialData(
       profileId: _profileId,
       credentialId: credentialId,
       credentialName: credentialName,
-      credentialContent: finalContent,
+      credentialContent: encryptedContent,
       cancelToken: cancelToken,
     );
-  }
-
-  // Private helper methods for encryption/decryption
-
-  /// Encrypts credential content using the encryption service
-  Future<Uint8List> _encryptCredentialContent(Uint8List content) async {
-    final encryptedContent = await _encryptionService.encryptData(content);
-    if (encryptedContent == null) {
-      throw TdkException(
-        message: 'Failed to encrypt credential content',
-        code: TdkExceptionType.encryptionFailed.code,
-      );
-    }
-
-    return encryptedContent;
-  }
-
-  /// Decrypts credential content using the encryption service
-  Future<Uint8List> _decryptCredentialContent(
-      Uint8List encryptedContent) async {
-    final decryptedContent =
-        await _encryptionService.decryptData(encryptedContent);
-    if (decryptedContent == null) {
-      throw TdkException(
-        message: 'Failed to decrypt credential content',
-        code: TdkExceptionType.encryptionFailed.code,
-      );
-    }
-
-    return decryptedContent;
   }
 }
