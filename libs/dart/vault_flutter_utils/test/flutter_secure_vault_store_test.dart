@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_flutter_utils/storages/flutter_secure_vault_store.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -93,6 +94,59 @@ void main() {
     });
   });
 
+  group('When managing content key', () {
+    final key = Uint8List.fromList([1, 2, 3, 4]);
+    final nonce = Uint8List.fromList([5, 6, 7, 8]);
+
+    group('and storing the key', () {
+      test('it stores it as a string', () async {
+        when(() => mockStorage.write(
+              key: any(named: 'key'),
+              value: any(named: 'value'),
+            )).thenAnswer((_) async {});
+
+        await vaultStore.writeContentKey(ContentKey(
+          key: key,
+          nonce: nonce,
+        ));
+        verify(() => mockStorage.write(
+              key: '${vaultId}_contentKey',
+              value: base64Encode(key),
+            )).called(1);
+        verify(() => mockStorage.write(
+              key: '${vaultId}_contentKeyNonce',
+              value: base64Encode(nonce),
+            )).called(1);
+      });
+    });
+
+    group('and reading the content key', () {
+      test('it returns the stored integer', () async {
+        when(() => mockStorage.read(key: '${vaultId}_contentKey'))
+            .thenAnswer((_) async => base64Encode(key));
+        when(() => mockStorage.read(key: '${vaultId}_contentKeyNonce'))
+            .thenAnswer((_) async => base64Encode(nonce));
+
+        final contentKey = await vaultStore.readContentKey();
+
+        expect(contentKey, isNotNull);
+        expect(contentKey!.key, key);
+        expect(contentKey.nonce, nonce);
+      });
+
+      test('it returns null if not set', () async {
+        when(() => mockStorage.read(key: '${vaultId}_contentKey'))
+            .thenAnswer((_) async => null);
+        when(() => mockStorage.read(key: '${vaultId}_contentKeyNonce'))
+            .thenAnswer((_) async => null);
+
+        final contentKey = await vaultStore.readContentKey();
+
+        expect(contentKey, isNull);
+      });
+    });
+  });
+
   group('When clearing vault data', () {
     test('it removes accountIndex and seed', () async {
       when(() => mockStorage.delete(key: any(named: 'key')))
@@ -102,6 +156,10 @@ void main() {
       verify(() => mockStorage.delete(key: '${vaultId}_accountIndex'))
           .called(1);
       verify(() => mockStorage.delete(key: '${vaultId}_seed')).called(1);
+
+      verify(() => mockStorage.delete(key: '${vaultId}_contentKey')).called(1);
+      verify(() => mockStorage.delete(key: '${vaultId}_contentKeyNonce'))
+          .called(1);
     });
   });
 }
