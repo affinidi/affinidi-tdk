@@ -98,6 +98,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cis*
 - [VcClaimedError](./Models/VcClaimedError.md)
 - [WellKnownOpenIdCredentialIssuerResponse](./Models/WellKnownOpenIdCredentialIssuerResponse.md)
 - [WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner](./Models/WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner.md)
+- [WellKnownOpenIdCredentialIssuerResponse_display](./Models/WellKnownOpenIdCredentialIssuerResponse_display.md)
+- [WellKnownOpenIdCredentialIssuerResponse_display_logo](./Models/WellKnownOpenIdCredentialIssuerResponse_display_logo.md)
 - [changeCredentialStatus_400_response](./Models/changeCredentialStatus_400_response.md)
 - [createIssuanceConfig_400_response](./Models/createIssuanceConfig_400_response.md)
 - [generateCredentials_400_response](./Models/generateCredentials_400_response.md)

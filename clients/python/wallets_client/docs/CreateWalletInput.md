@@ -6,7 +6,7 @@
 | --------------- | ------- | ----------------------------------------------------- | ---------- |
 | **name**        | **str** | The name of the wallet                                | [optional] |
 | **description** | **str** | The description of the wallet                         | [optional] |
-| **did_method**  | **str** | Define how DID of your wallet is created and resolved |
+| **did_method**  | **str** | Define how DID of your wallet is created and resolved | [optional] |
 | **did_web_url** | **str** | URL of the DID. Required if the did method is web     | [optional] |
 
 ## Example
