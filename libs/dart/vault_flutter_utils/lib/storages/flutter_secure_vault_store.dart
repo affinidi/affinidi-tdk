@@ -6,6 +6,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 enum _Key {
   accountIndex,
+  contentKey,
+  contentKeyNonce,
   seed;
 
   String key(String vaultId) => '${vaultId}_$name';
@@ -78,5 +80,35 @@ class FlutterSecureVaultStore extends VaultStore {
   Future<void> clear() async {
     await _secureStorage.delete(key: _Key.accountIndex.key(_vaultId));
     await _secureStorage.delete(key: _Key.seed.key(_vaultId));
+    await _secureStorage.delete(key: _Key.contentKey.key(_vaultId));
+    await _secureStorage.delete(key: _Key.contentKeyNonce.key(_vaultId));
+  }
+
+  @override
+  Future<ContentKey?> readContentKey() async {
+    final key = await _secureStorage.read(
+      key: _Key.contentKey.key(_vaultId),
+    );
+    final nonce = await _secureStorage.read(
+      key: _Key.contentKeyNonce.key(_vaultId),
+    );
+
+    if (key == null || nonce == null) {
+      return null;
+    }
+
+    return ContentKey(key: base64Decode(key), nonce: base64Decode(nonce));
+  }
+
+  @override
+  Future<void> writeContentKey(ContentKey contentKey) async {
+    await _secureStorage.write(
+      key: _Key.contentKey.key(_vaultId),
+      value: base64Encode(contentKey.key),
+    );
+    await _secureStorage.write(
+      key: _Key.contentKeyNonce.key(_vaultId),
+      value: base64Encode(contentKey.nonce),
+    );
   }
 }
