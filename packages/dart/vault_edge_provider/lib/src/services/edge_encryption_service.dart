@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:cryptography/cryptography.dart';
 
+import '../exceptions/tdk_exception_type.dart';
 import 'edge_encryption_service_interface.dart';
 
 /// Implementation of the edge encryption service that provides two-layer encryption.
@@ -106,8 +107,11 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   @override
   Future<Uint8List?> encryptData(Uint8List data) async {
-    if (_masterKey == null) {
-      return null;
+    if (!isMasterKeyLoaded) {
+      throw TdkException(
+        message: 'Master key not loaded',
+        code: TdkExceptionType.encryptionFailed.code,
+      );
     }
 
     return _encryptData(data, _masterKey!);
@@ -115,8 +119,11 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   @override
   Future<Uint8List?> decryptData(Uint8List encryptedData) async {
-    if (_masterKey == null) {
-      return null;
+    if (!isMasterKeyLoaded) {
+      throw TdkException(
+        message: 'Master key not loaded',
+        code: TdkExceptionType.encryptionFailed.code,
+      );
     }
 
     return _decryptData(encryptedData, _masterKey!);
