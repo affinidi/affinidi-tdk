@@ -211,10 +211,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
     Uint8List data,
     Uint8List key,
   ) async {
-    final iv = Uint8List(_ivLength);
-    for (var i = 0; i < _ivLength; i++) {
-      iv[i] = _secureRandom.nextInt(256);
-    }
+    final iv = _generateRandomBytes(_ivLength);
 
     final secretKey = SecretKey(key);
 
