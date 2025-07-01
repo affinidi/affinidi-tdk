@@ -46,7 +46,7 @@ class InMemoryVaultStore extends VaultStore {
   }
 
   @override
-  Future<void> writeContentKey(ContentKey key) async {
-    _contentKey = key;
+  Future<void> writeContentKey(ContentKey contentKey) async {
+    _contentKey = contentKey;
   }
 }
