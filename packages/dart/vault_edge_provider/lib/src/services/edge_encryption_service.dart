@@ -211,19 +211,19 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
     Uint8List data,
     Uint8List key,
   ) async {
-    final iv = _generateRandomBytes(_ivLength);
+    final nonce = _generateRandomBytes(_ivLength);
 
     final secretKey = SecretKey(key);
 
     final encryptedData = await _cryptographyAlgorythm.encrypt(
       data,
       secretKey: secretKey,
-      nonce: iv,
+      nonce: nonce,
     );
 
     final result =
         Uint8List(_ivLength + encryptedData.cipherText.length + _tagLength);
-    result.setRange(0, _ivLength, iv);
+    result.setRange(0, _ivLength, nonce);
     result.setRange(_ivLength, _ivLength + encryptedData.cipherText.length,
         encryptedData.cipherText);
     result.setRange(_ivLength + encryptedData.cipherText.length, result.length,
@@ -241,7 +241,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
         return null;
       }
 
-      final iv = encryptedData.sublist(0, _ivLength);
+      final nonce = encryptedData.sublist(0, _ivLength);
       final ciphertext =
           encryptedData.sublist(_ivLength, encryptedData.length - _tagLength);
       final tag = encryptedData.sublist(encryptedData.length - _tagLength);
@@ -250,7 +250,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
       final secretKey = SecretKey(key);
 
-      final secretBox = SecretBox(ciphertext, nonce: iv, mac: mac);
+      final secretBox = SecretBox(ciphertext, nonce: nonce, mac: mac);
 
       final decryptedData =
           await _cryptographyAlgorythm.decrypt(secretBox, secretKey: secretKey);
