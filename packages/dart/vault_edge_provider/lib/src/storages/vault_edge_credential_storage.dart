@@ -1,10 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../affinidi_tdk_vault_edge_provider.dart';
 
 /// An Edge based implementation of [CredentialStorage] for storing and managing
-/// verifiable credentials.
+/// verifiable credentials with encryption support.
 class VaultEdgeCredentialStorage implements CredentialStorage {
   /// Creates a new instance of [VaultEdgeCredentialStorage].
   VaultEdgeCredentialStorage({
@@ -12,15 +14,18 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
     required String id,
     required String profileId,
     CredentialCodec? codec,
+    required EdgeEncryptionServiceInterface encryptionService,
   })  : _repository = repository,
         _id = id,
         _profileId = profileId,
-        _codec = codec ?? CredentialCodec();
+        _codec = codec ?? CredentialCodec(),
+        _encryptionService = encryptionService;
 
   final EdgeCredentialsRepositoryInterface _repository;
   final String _id;
   final String _profileId;
   final CredentialCodec _codec;
+  final EdgeEncryptionServiceInterface _encryptionService;
 
   @override
   String get id => _id;
@@ -71,8 +76,12 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
       );
     }
 
+    // Decrypt the credential content
+    final decryptedContent =
+        await _decryptCredentialContent(credentialData.content);
+
     return _codec.decode(
-      credentialBytes: credentialData.content,
+      credentialBytes: decryptedContent,
       id: credentialData.id,
     );
   }
@@ -90,12 +99,18 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
       cancelToken: cancelToken,
     );
 
-    final credentials = credentialDataList.map((credentialData) {
-      return _codec.decode(
-        credentialBytes: credentialData.content,
-        id: credentialData.id,
-      );
-    }).toList();
+    final credentials = await Future.wait(
+      credentialDataList.map((credentialData) async {
+        // Decrypt the credential content
+        final decryptedContent =
+            await _decryptCredentialContent(credentialData.content);
+
+        return _codec.decode(
+          credentialBytes: decryptedContent,
+          id: credentialData.id,
+        );
+      }),
+    );
 
     final lastEvaluatedItemId = credentials.lastOrNull?.id;
 
@@ -125,12 +140,59 @@ class VaultEdgeCredentialStorage implements CredentialStorage {
 
     final credentialContent = _codec.encode(verifiableCredential);
 
+    // Encrypt the credential content
+    final finalContent = await _encryptCredentialContent(credentialContent);
+
     await _repository.saveCredentialData(
       profileId: _profileId,
       credentialId: credentialId,
       credentialName: credentialName,
-      credentialContent: credentialContent,
+      credentialContent: finalContent,
       cancelToken: cancelToken,
     );
+  }
+
+  // Private helper methods for encryption/decryption
+
+  /// Encrypts credential content using the encryption service
+  Future<Uint8List> _encryptCredentialContent(Uint8List content) async {
+    if (!_encryptionService.isMasterKeyLoaded) {
+      throw TdkException(
+        message: 'Master key not loaded',
+        code: TdkExceptionType.encryptionFailed.code,
+      );
+    }
+
+    final encryptedContent = await _encryptionService.encryptData(content);
+    if (encryptedContent == null) {
+      throw TdkException(
+        message: 'Failed to encrypt credential content',
+        code: TdkExceptionType.encryptionFailed.code,
+      );
+    }
+
+    return encryptedContent;
+  }
+
+  /// Decrypts credential content using the encryption service
+  Future<Uint8List> _decryptCredentialContent(
+      Uint8List encryptedContent) async {
+    if (!_encryptionService.isMasterKeyLoaded) {
+      throw TdkException(
+        message: 'Master key not loaded',
+        code: TdkExceptionType.encryptionFailed.code,
+      );
+    }
+
+    final decryptedContent =
+        await _encryptionService.decryptData(encryptedContent);
+    if (decryptedContent == null) {
+      throw TdkException(
+        message: 'Failed to decrypt credential content',
+        code: TdkExceptionType.encryptionFailed.code,
+      );
+    }
+
+    return decryptedContent;
   }
 }

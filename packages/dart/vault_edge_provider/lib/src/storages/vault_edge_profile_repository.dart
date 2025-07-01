@@ -6,6 +6,7 @@ import '../interfaces/edge_credentials_repository_interface.dart';
 import '../interfaces/edge_file_repository_interface.dart';
 import '../interfaces/edge_profile_repository_interface.dart';
 import '../models/edge_profile.dart';
+import '../services/edge_encryption_service_interface.dart';
 import '../storages/vault_edge_credential_storage.dart';
 import '../storages/vault_edge_file_storage.dart';
 
@@ -18,17 +19,20 @@ class VaultEdgeProfileRepository implements ProfileRepository {
   /// The [_repository] implementing available operations on profiles.
   /// The [_fileRepository] implementing available operations for files and folders.
   /// The [_credentialRepository] implementing available operations for credentials.
+  /// The [_encryptionService] for encrypting credential content.
   VaultEdgeProfileRepository(
     this._id,
     this._repository,
     this._fileRepository,
     this._credentialRepository,
+    this._encryptionService,
   );
 
   final String _id;
   final EdgeProfileRepositoryInterface _repository;
   final EdgeFileRepositoryInterface _fileRepository;
   final EdgeCredentialsRepositoryInterface _credentialRepository;
+  final EdgeEncryptionServiceInterface _encryptionService;
   final _keyPairs = <String, KeyPair>{};
 
   @override
@@ -188,6 +192,7 @@ Profile repository must be configured using a RepositoryConfiguration''',
               repository: _credentialRepository,
               id: _id,
               profileId: item.id.toString(),
+              encryptionService: _encryptionService,
             ),
           },
           sharedStorages: {},
