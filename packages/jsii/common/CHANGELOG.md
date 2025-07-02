@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.25.0...@affinidi-tdk/common-v1.25.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* use node 20 in CI ([#862](https://github.com/affinidi/affinidi-tdk/issues/862)) ([8c779ad](https://github.com/affinidi/affinidi-tdk/commit/8c779ad5f69aca4031a2475a459f501a427f4538))
+
 # [1.25.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.24.0...@affinidi-tdk/common-v1.25.0) (2025-06-12)
 
 
