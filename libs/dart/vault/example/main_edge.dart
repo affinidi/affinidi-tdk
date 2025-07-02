@@ -23,17 +23,18 @@ void main() async {
   const vfsRepositoryId = 'vfs';
   final profileRepositories = <String, ProfileRepository>{
     vfsRepositoryId: VaultEdgeProfileRepository(
+      // TODO(MA): Make FileRepository and CredentialRepository not required
       vfsRepositoryId,
       EdgeDriftProfileRepository(
         database: database,
       ),
       EdgeDriftFileRepository(
         database: database,
-        profileId: '',
+        profileId: '', // TODO(MA): Remove profileId from contructor params
       ),
       EdgeDriftCredentialRepository(
         database: database,
-        profileId: '',
+        profileId: '', // TODO(MA): Remove profileId from contructor params
       ),
       encryptionService,
     ),
