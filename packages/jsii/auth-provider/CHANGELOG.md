@@ -1,3 +1,10 @@
+## [1.33.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.33.1...@affinidi-tdk/auth-provider-v1.33.2) (2025-07-02)
+
+
+### Bug Fixes
+
+* use node 20 in CI ([#862](https://github.com/affinidi/affinidi-tdk/issues/862)) ([8c779ad](https://github.com/affinidi/affinidi-tdk/commit/8c779ad5f69aca4031a2475a459f501a427f4538))
+
 ## [1.33.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.33.0...@affinidi-tdk/auth-provider-v1.33.1) (2025-06-30)
 
 
