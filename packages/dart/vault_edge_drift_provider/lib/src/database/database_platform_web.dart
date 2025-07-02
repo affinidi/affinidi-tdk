@@ -8,7 +8,7 @@ class DatabasePlatform {
   ///
   /// [databaseName] - The database name
   /// [directory] - The directory where the database is stored, this parameter is ignored on web
-  Future<Database> createDatabase({
+  static Future<Database> createDatabase({
     String databaseName = 'vault_edge_drift_db',
     String? directory,
   }) async {
@@ -21,7 +21,7 @@ class DatabasePlatform {
   }
 
   /// Creates an in-memory database for web platform using WASM
-  Future<Database> createInMemoryDatabase() async {
+  static Future<Database> createInMemoryDatabase() async {
     final result = await WasmDatabase.open(
       databaseName: ':memory:',
       sqlite3Uri: Uri.parse('sqlite3.wasm'),
@@ -31,7 +31,7 @@ class DatabasePlatform {
   }
 
   /// Gets the current platform info
-  Map<String, String> get info {
+  static Map<String, String> get info {
     return {
       'platform': 'web',
       'database': 'IndexedDB',

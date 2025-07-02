@@ -15,7 +15,7 @@ class DriftServiceState {
   final List<EdgeProfile> profiles;
 
   /// List of current items in the folder
-  final List<ItemData> currentItems;
+  final List<Item> currentItems;
 
   /// ID of the selected profile
   final String? selectedProfileId;
@@ -58,7 +58,7 @@ class DriftServiceState {
     EdgeDriftProfileRepository? profileRepository,
     EdgeDriftFileRepository? fileRepository,
     List<EdgeProfile>? profiles,
-    List<ItemData>? currentItems,
+    List<Item>? currentItems,
     String? selectedProfileId,
     String? currentFolderId,
     String? status,
