@@ -11,6 +11,7 @@ import 'edge_encryption_service_interface.dart';
 /// Implementation of the edge encryption service that provides two-layer encryption.
 class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   static const int _pbkdf2Iterations = 600000; // 600k iterations for security
+  static const int _pbkdf2KeySize = 32 * 8; // key size in bits
   static const int _ivLength = 12; // 96 bits for GCM
   static const int _tagLength = 16; // 128 bits for GCM
 
@@ -194,9 +195,9 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
     Uint8List nonce,
   ) async {
     final pbkdf2 = Pbkdf2(
-      macAlgorithm: Hmac(Sha256()),
       iterations: _pbkdf2Iterations,
-      bits: 256,
+      macAlgorithm: Hmac.sha256(),
+      bits: _pbkdf2KeySize,
     );
 
     final secretKey = await pbkdf2.deriveKey(
