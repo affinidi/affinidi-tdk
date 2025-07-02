@@ -19,7 +19,7 @@ class VaultEdgeProfileRepository implements ProfileRepository {
   /// The [_repository] implementing available operations on profiles.
   /// The [_fileRepository] implementing available operations for files and folders.
   /// The [_credentialRepository] implementing available operations for credentials.
-  /// The [_encryptionService] for encrypting credential content.
+  /// The [_encryptionService] for encrypting content.
   VaultEdgeProfileRepository(
     this._id,
     this._repository,

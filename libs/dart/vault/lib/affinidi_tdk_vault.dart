@@ -12,7 +12,6 @@ export 'src/helpers/vault_progress_callback.dart';
 export 'src/in_memory_vault_store.dart';
 export 'src/permissions.dart';
 export 'src/profile.dart';
-export 'src/storage_interfaces/content_key.dart';
 export 'src/storage_interfaces/credential_storage.dart';
 export 'src/storage_interfaces/file_storage.dart';
 export 'src/storage_interfaces/item.dart';
