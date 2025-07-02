@@ -3,14 +3,12 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_edge_provider/src/services/edge_encryption_service.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 class MockVaultStore extends Mock implements VaultStore {}
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized();
-
   setUpAll(() {
     registerFallbackValue(ContentKey(
       key: Uint8List(32),

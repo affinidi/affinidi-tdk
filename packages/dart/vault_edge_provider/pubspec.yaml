@@ -24,7 +24,5 @@ dev_dependencies:
   build_runner: ^2.4.15
   copy_with_extension_gen: ^6.0.0 # note using this version because it's compatible with analyzer version lower than 7.0.0 required by flutter_test included with flutter 3.27.0
   dart_flutter_team_lints: ^3.2.1
-  flutter_test:
-    sdk: flutter
   mocktail: ^1.0.4
   test: ^1.24.0
