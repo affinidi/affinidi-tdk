@@ -122,14 +122,24 @@ export interface AddUserToProjectInput {
  * @interface ConsumerAuthTokenEndpointInput
  */
 export interface ConsumerAuthTokenEndpointInput {
-  [key: string]: any
-
   /**
    *
    * @type {string}
    * @memberof ConsumerAuthTokenEndpointInput
    */
-  grant_type: string
+  grant_type: ConsumerAuthTokenEndpointInputGrantTypeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof ConsumerAuthTokenEndpointInput
+   */
+  client_assertion_type: ConsumerAuthTokenEndpointInputClientAssertionTypeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof ConsumerAuthTokenEndpointInput
+   */
+  client_assertion: string
   /**
    *
    * @type {string}
@@ -155,6 +165,24 @@ export interface ConsumerAuthTokenEndpointInput {
    */
   client_id?: string
 }
+
+export const ConsumerAuthTokenEndpointInputGrantTypeEnum = {
+  ClientCredentials: 'client_credentials',
+  AffinidiDelegation: 'affinidi_delegation',
+} as const
+
+export type ConsumerAuthTokenEndpointInputGrantTypeEnum =
+  (typeof ConsumerAuthTokenEndpointInputGrantTypeEnum)[keyof typeof ConsumerAuthTokenEndpointInputGrantTypeEnum]
+export const ConsumerAuthTokenEndpointInputClientAssertionTypeEnum = {
+  UrnIetfParamsOauthClientAssertionTypeJwtBearer:
+    'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+  UrnIetfParamsOauthDelegationAssertionTypeJwtBearer:
+    'urn:ietf:params:oauth:delegation-assertion-type:jwt-bearer',
+} as const
+
+export type ConsumerAuthTokenEndpointInputClientAssertionTypeEnum =
+  (typeof ConsumerAuthTokenEndpointInputClientAssertionTypeEnum)[keyof typeof ConsumerAuthTokenEndpointInputClientAssertionTypeEnum]
+
 /**
  *
  * @export

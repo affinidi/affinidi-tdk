@@ -9,12 +9,15 @@
 | **credential_issuer**                     | **str**                                                                                                                                           |             | [optional] |
 | **batch_credential_endpoint**             | **str**                                                                                                                                           |             | [optional] |
 | **credentials_supported**                 | [**List[WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner]**](WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md) |             | [optional] |
+| **credential_configurations_supported**   | **List[object]**                                                                                                                                  |             | [optional] |
 | **deferred_credential_endpoint**          | **str**                                                                                                                                           |             | [optional] |
 | **grant_types_supported**                 | **List[str]**                                                                                                                                     |             | [optional] |
 | **jwks_uri**                              | **str**                                                                                                                                           |             | [optional] |
+| **display**                               | [**WellKnownOpenIdCredentialIssuerResponseDisplay**](WellKnownOpenIdCredentialIssuerResponseDisplay.md)                                           |             | [optional] |
 | **scopes_supported**                      | **List[str]**                                                                                                                                     |             | [optional] |
 | **token_endpoint**                        | **str**                                                                                                                                           |             | [optional] |
 | **token_endpoint_auth_methods_supported** | **List[str]**                                                                                                                                     |             | [optional] |
+| **return_uris**                           | **List[str]**                                                                                                                                     |             | [optional] |
 
 ## Example
 

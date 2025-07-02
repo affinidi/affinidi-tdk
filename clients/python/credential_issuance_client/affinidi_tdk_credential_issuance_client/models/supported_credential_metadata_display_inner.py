@@ -32,7 +32,6 @@ class SupportedCredentialMetadataDisplayInner(BaseModel):
     logo: Optional[SupportedCredentialMetadataItemLogo] = None
     background_color: Optional[StrictStr] = Field(default=None, alias="backgroundColor")
     text_color: Optional[StrictStr] = Field(default=None, alias="textColor")
-    additional_properties: Dict[str, Any] = {}
     __properties = ["name", "locale", "logo", "backgroundColor", "textColor"]
 
     class Config:
@@ -57,17 +56,11 @@ class SupportedCredentialMetadataDisplayInner(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "additional_properties"
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of logo
         if self.logo:
             _dict['logo'] = self.logo.to_dict()
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -86,11 +79,6 @@ class SupportedCredentialMetadataDisplayInner(BaseModel):
             "background_color": obj.get("backgroundColor"),
             "text_color": obj.get("textColor")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

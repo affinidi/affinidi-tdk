@@ -87,6 +87,8 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuanc
 import 'package:affinidi_tdk_credential_issuance_client/src/model/vc_claimed_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display_logo.dart';
 
 part 'serializers.g.dart';
 
@@ -164,6 +166,8 @@ part 'serializers.g.dart';
   VcClaimedError,
   WellKnownOpenIdCredentialIssuerResponse,
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner,
+  WellKnownOpenIdCredentialIssuerResponseDisplay,
+  WellKnownOpenIdCredentialIssuerResponseDisplayLogo,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(

@@ -28,7 +28,7 @@ abstract class CreateWalletInput implements Built<CreateWalletInput, CreateWalle
 
   /// Define how DID of your wallet is created and resolved
   @BuiltValueField(wireName: r'didMethod')
-  CreateWalletInputDidMethodEnum get didMethod;
+  CreateWalletInputDidMethodEnum? get didMethod;
   // enum didMethodEnum {  key,  web,  };
 
   /// URL of the DID. Required if the did method is web
@@ -72,11 +72,13 @@ class _$CreateWalletInputSerializer implements PrimitiveSerializer<CreateWalletI
         specifiedType: const FullType(String),
       );
     }
-    yield r'didMethod';
-    yield serializers.serialize(
-      object.didMethod,
-      specifiedType: const FullType(CreateWalletInputDidMethodEnum),
-    );
+    if (object.didMethod != null) {
+      yield r'didMethod';
+      yield serializers.serialize(
+        object.didMethod,
+        specifiedType: const FullType(CreateWalletInputDidMethodEnum),
+      );
+    }
     if (object.didWebUrl != null) {
       yield r'didWebUrl';
       yield serializers.serialize(

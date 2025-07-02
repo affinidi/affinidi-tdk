@@ -2790,15 +2790,27 @@ components:
         - traceId
       type: object
     ConsumerAuthTokenEndpointInput:
-      additionalProperties: true
+      additionalProperties: false
       example:
         refresh_token: refresh_token
+        client_assertion_type: urn:ietf:params:oauth:client-assertion-type:jwt-bearer
         code: code
-        grant_type: grant_type
+        grant_type: client_credentials
         redirect_uri: redirect_uri
+        client_assertion: client_assertion
         client_id: client_id
       properties:
         grant_type:
+          enum:
+            - client_credentials
+            - affinidi_delegation
+          type: string
+        client_assertion_type:
+          enum:
+            - urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+            - urn:ietf:params:oauth:delegation-assertion-type:jwt-bearer
+          type: string
+        client_assertion:
           type: string
         code:
           type: string
@@ -2809,6 +2821,8 @@ components:
         client_id:
           type: string
       required:
+        - client_assertion
+        - client_assertion_type
         - grant_type
       type: object
     RightsEnum:
@@ -3193,7 +3207,7 @@ components:
       x-amazon-apigateway-authtype: custom
       x-amazon-apigateway-authorizer:
         type: request
-        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:792104784284:function:iam-dev-ConsumerTokenAuthorizerLambda91B1796B-QT4lOBGrUdPH:live-alias/invocations
+        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:889051305348:function:cid-dev-ap-southeast-1-ConsumerTokenAuthorizerLamb-moJmirKhR8I9:live-alias/invocations
         authorizerResultTtlInSeconds: 0
 x-amazon-apigateway-request-validators:
   basic:
