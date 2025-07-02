@@ -2,6 +2,8 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'drift_service_state.dart';
 
@@ -25,7 +27,7 @@ class DriftService {
           kIsWeb ? null : await getApplicationDocumentsDirectory();
 
       final database = await DatabaseConfig.createDatabase(
-        directory: directory,
+        directory: directory?.path,
       );
       print('Database created successfully');
 
@@ -125,7 +127,7 @@ class DriftService {
   Future<void> loadCurrentFolder() async {
     try {
       print('Loading folder: ${_state.currentFolderId ?? "root"}');
-      final items = await _state.fileRepository!.getFolderData(
+      final items = await _state.fileRepository!.getFolder(
         folderId: _state.currentFolderId,
       );
 
@@ -224,8 +226,8 @@ class DriftService {
   }
 
   /// Open a folder
-  Future<void> openFolder(ItemData item) async {
-    if (item.isFolder) {
+  Future<void> openFolder(Item item) async {
+    if (item is Folder) {
       print('Opening folder: ${item.name}');
       _updateStatus('Opening folder: ${item.name}');
 
@@ -235,8 +237,8 @@ class DriftService {
   }
 
   /// View file content
-  Future<void> viewFile(ItemData item) async {
-    if (!item.isFolder) {
+  Future<void> viewFile(Item item) async {
+    if (item is! Folder) {
       try {
         print('Viewing file: ${item.name}');
         _updateStatus('Loading file content...');
@@ -254,12 +256,12 @@ class DriftService {
   }
 
   /// Delete an item (file or folder)
-  Future<void> deleteItem(ItemData item) async {
+  Future<void> deleteItem(Item item) async {
     try {
       print('Deleting item: ${item.name}');
       _updateStatus('Deleting ${item.name}...');
 
-      if (item.isFolder) {
+      if (item is Folder) {
         await _deleteFolderContents(item.id);
         await _state.fileRepository!.deleteFolder(folderId: item.id);
       } else {
@@ -276,10 +278,9 @@ class DriftService {
 
   /// Recursively delete folder contents
   Future<void> _deleteFolderContents(String folderId) async {
-    final contents =
-        await _state.fileRepository!.getFolderData(folderId: folderId);
+    final contents = await _state.fileRepository!.getFolder(folderId: folderId);
     for (final content in contents) {
-      if (content.isFolder) {
+      if (content is Folder) {
         await _deleteFolderContents(content.id);
         await _state.fileRepository!.deleteFolder(folderId: content.id);
       } else {

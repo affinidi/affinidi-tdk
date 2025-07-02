@@ -60,17 +60,17 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
     _updateState();
   }
 
-  Future<void> _openFolder(ItemData item) async {
+  Future<void> _openFolder(Item item) async {
     await _service.openFolder(item);
     _updateState();
   }
 
-  Future<void> _viewFile(ItemData item) async {
+  Future<void> _viewFile(Item item) async {
     await _service.viewFile(item);
     _updateState();
   }
 
-  Future<void> _deleteItem(ItemData item) async {
+  Future<void> _deleteItem(Item item) async {
     await _service.deleteItem(item);
     _updateState();
   }
@@ -211,16 +211,16 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
                                 final item = _state.currentItems[index];
                                 return ListTile(
                                   leading: Icon(
-                                    item.isFolder
+                                    item is Folder
                                         ? Icons.folder
                                         : Icons.insert_drive_file,
-                                    color: item.isFolder
+                                    color: item is Folder
                                         ? Colors.orange
                                         : Colors.blue,
                                   ),
                                   title: Text(item.name),
                                   onTap: () {
-                                    if (item.isFolder) {
+                                    if (item is Folder) {
                                       _openFolder(item);
                                     } else {
                                       _viewFile(item);
