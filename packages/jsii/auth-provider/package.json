@@ -34,6 +34,9 @@
       }
     }
   },
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "build": "jsii -vvv",
     "build:watch": "jsii -w",
