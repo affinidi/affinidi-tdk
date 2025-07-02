@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../services/drift_service.dart';
 import '../services/drift_service_state.dart';
+import '../widgets/file_preview_dialog.dart';
 
 /// Main page widget for the Edge Drift Provider Example
 class DriftExamplePage extends StatefulWidget {
@@ -68,6 +69,18 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
   Future<void> _viewFile(Item item) async {
     await _service.viewFile(item);
     _updateState();
+
+    if (_state.currentFileContent != null && _state.currentFileName != null) {
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (context) => FilePreviewDialog(
+            fileName: _state.currentFileName!,
+            content: _state.currentFileContent!,
+          ),
+        );
+      }
+    }
   }
 
   Future<void> _deleteItem(Item item) async {
@@ -99,13 +112,19 @@ class _DriftExamplePageState extends State<DriftExamplePage> {
             width: double.infinity,
             padding: const EdgeInsets.all(8),
             color: Colors.grey[200],
-            child: Text(_state.status, style: const TextStyle(fontSize: 12)),
+            constraints: const BoxConstraints(maxHeight: 60),
+            child: SingleChildScrollView(
+              child: Text(
+                _state.status,
+                style: const TextStyle(fontSize: 12),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
           ),
 
           Expanded(
             child: Row(
               children: [
-                // Left panel - Profiles
                 Expanded(
                   flex: 1,
                   child: Card(
