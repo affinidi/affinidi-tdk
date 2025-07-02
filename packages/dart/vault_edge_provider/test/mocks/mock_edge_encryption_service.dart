@@ -16,8 +16,10 @@ class MockEncryptionServiceSetup {
     when(() => mock.loadMasterKeyWithPassphrase(any()))
         .thenAnswer((_) async => true);
 
-    when(() => mock.changePassphrase(any(), any()))
-        .thenAnswer((_) async => true);
+    when(() => mock.changePassphrase(
+          oldPassphrase: any(named: 'oldPassphrase'),
+          newPassphrase: any(named: 'newPassphrase'),
+        )).thenAnswer((_) async => true);
 
     when(() => mock.encryptData(any())).thenAnswer((invocation) async {
       final data = invocation.positionalArguments[0] as Uint8List;

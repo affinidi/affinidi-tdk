@@ -160,8 +160,10 @@ void main() {
     test('it changes passphrase successfully', () async {
       await encryptionService.initializeWithPassphrase('old123');
 
-      final result =
-          await encryptionService.changePassphrase('old123', 'new456');
+      final result = await encryptionService.changePassphrase(
+        oldPassphrase: 'old123',
+        newPassphrase: 'new456',
+      );
 
       expect(result, isTrue);
       verify(() => mockVaultStore.writeContentKey(any()))
@@ -191,8 +193,10 @@ void main() {
     test('it returns false', () async {
       await encryptionService.initializeWithPassphrase('correct123');
 
-      final result =
-          await encryptionService.changePassphrase('wrong123', 'new456');
+      final result = await encryptionService.changePassphrase(
+        oldPassphrase: 'wrong123',
+        newPassphrase: 'new456',
+      );
 
       expect(result, isFalse);
     });
@@ -382,8 +386,10 @@ void main() {
       expect(encryptedData, isNotNull);
       expect(encryptedData, isNot(equals(originalData)));
 
-      final changeResult =
-          await encryptionService.changePassphrase('pass123', 'new456');
+      final changeResult = await encryptionService.changePassphrase(
+        oldPassphrase: 'pass123',
+        newPassphrase: 'new456',
+      );
       expect(changeResult, isTrue);
 
       final decryptedData = await encryptionService.decryptData(encryptedData);
