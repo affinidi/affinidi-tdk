@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
 
 /// State class for the drift service
@@ -29,6 +30,12 @@ class DriftServiceState {
   /// Error message if any
   final String? error;
 
+  /// Current file content for preview
+  final Uint8List? currentFileContent;
+
+  /// Current file name for preview
+  final String? currentFileName;
+
   /// Creates a new [DriftServiceState] instance.
   ///
   /// [database] - The database instance
@@ -40,6 +47,8 @@ class DriftServiceState {
   /// [currentFolderId] - ID of the current folder
   /// [status] - Current status message
   /// [error] - Error message if any
+  /// [currentFileContent] - Current file content for preview
+  /// [currentFileName] - Current file name for preview
   const DriftServiceState({
     this.database,
     this.profileRepository,
@@ -50,6 +59,8 @@ class DriftServiceState {
     this.currentFolderId,
     this.status = 'Initializing...',
     this.error,
+    this.currentFileContent,
+    this.currentFileName,
   });
 
   /// Creates a copy of this state with the given fields replaced by new values
@@ -63,6 +74,8 @@ class DriftServiceState {
     String? currentFolderId,
     String? status,
     String? error,
+    Uint8List? currentFileContent,
+    String? currentFileName,
   }) {
     return DriftServiceState(
       database: database ?? this.database,
@@ -74,6 +87,8 @@ class DriftServiceState {
       currentFolderId: currentFolderId ?? this.currentFolderId,
       status: status ?? this.status,
       error: error ?? this.error,
+      currentFileContent: currentFileContent ?? this.currentFileContent,
+      currentFileName: currentFileName ?? this.currentFileName,
     );
   }
 }

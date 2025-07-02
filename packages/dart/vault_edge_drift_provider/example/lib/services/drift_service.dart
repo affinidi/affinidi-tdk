@@ -245,9 +245,62 @@ class DriftService {
 
         final content =
             await _state.fileRepository!.getFileContent(fileId: item.id);
-        print('File content: ${content.join(', ')}');
 
-        _state = _state.copyWith(status: 'File content: ${content.join(', ')}');
+        final fileSize = content.length;
+        final fileSizeKB = (fileSize / 1024).toStringAsFixed(1);
+
+        final extension = item.name.split('.').last.toLowerCase();
+        String displayContent;
+
+        switch (extension) {
+          case 'txt':
+          case 'json':
+          case 'xml':
+          case 'html':
+          case 'css':
+          case 'js':
+          case 'md':
+            try {
+              final textContent = String.fromCharCodes(content);
+              displayContent =
+                  'Text file (${fileSizeKB} KB): ${textContent.substring(0, textContent.length > 200 ? 200 : textContent.length)}${textContent.length > 200 ? '...' : ''}';
+            } catch (e) {
+              displayContent = 'Text file (${fileSizeKB} KB) - encoding error';
+            }
+            break;
+          case 'png':
+          case 'jpg':
+          case 'jpeg':
+          case 'gif':
+          case 'bmp':
+          case 'webp':
+            displayContent = 'Image file (${fileSizeKB} KB) - ${item.name}';
+            break;
+          case 'pdf':
+            displayContent = 'PDF file (${fileSizeKB} KB) - ${item.name}';
+            break;
+          case 'doc':
+          case 'docx':
+            displayContent = 'Word document (${fileSizeKB} KB) - ${item.name}';
+            break;
+          case 'xls':
+          case 'xlsx':
+            displayContent = 'Excel file (${fileSizeKB} KB) - ${item.name}';
+            break;
+          case 'zip':
+          case 'rar':
+          case '7z':
+            displayContent = 'Archive file (${fileSizeKB} KB) - ${item.name}';
+            break;
+          default:
+            displayContent = 'File (${fileSizeKB} KB) - ${item.name}';
+        }
+
+        _state = _state.copyWith(
+          status: displayContent,
+          currentFileContent: content,
+          currentFileName: item.name,
+        );
       } catch (e, st) {
         print('Error reading file: $e\n$st');
         _updateError('Error reading file: $e');
