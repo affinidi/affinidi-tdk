@@ -14,8 +14,11 @@ abstract interface class EdgeEncryptionServiceInterface {
   /// Loads the master key using the provided passphrase.
   Future<bool> loadMasterKeyWithPassphrase(String passphrase);
 
-  /// Changes the passphrase used to encrypt the master key..
-  Future<bool> changePassphrase(String oldPassphrase, String newPassphrase);
+  /// Allows users to change the passphrase
+  Future<bool> changePassphrase({
+    required String oldPassphrase,
+    required String newPassphrase,
+  });
 
   /// Encrypts data using the loaded master key.
   Future<Uint8List> encryptData(Uint8List data);

@@ -86,7 +86,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   /// This method decrypts the master key with the old passphrase,
   /// re-encrypts it with the new passphrase, and updates secure storage.
   Future<bool> changePassphrase(
-      String oldPassphrase, String newPassphrase) async {
+      {required String oldPassphrase, required String newPassphrase}) async {
     try {
       final loaded = await loadMasterKeyWithPassphrase(oldPassphrase);
       if (!loaded) {
