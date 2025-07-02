@@ -170,7 +170,8 @@ Profile repository must be configured using a RepositoryConfiguration''',
     final profiles = <Profile>[];
 
     for (final item in items) {
-      final profileKeyPair = await _memoizedKeyPair(accountIndex: item.id);
+      final profileKeyPair =
+          await _memoizedKeyPair(accountIndex: item.accountIndex.toString());
       final did = DidKey.getDid(profileKeyPair.publicKey);
 
       profiles.add(
