@@ -11,6 +11,10 @@ resolution: workspace
 dependencies:
   affinidi_tdk_vault: ^1.5.0
   affinidi_tdk_vault_data_manager: ^1.5.0
+  affinidi_tdk_vault_edge_drift_provider:
+    path: ../../../../packages/dart/vault_edge_drift_provider
+  affinidi_tdk_vault_edge_provider:
+    path: ../../../../packages/dart/vault_edge_provider
   base_codecs: ^1.0.1
   ssi: ^1.0.0
 
