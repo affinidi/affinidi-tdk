@@ -10,17 +10,6 @@ class MockEncryptionServiceSetup {
   static void setupEncryptionServiceDefaults(
     MockEdgeEncryptionService mock,
   ) {
-    when(() => mock.initializeWithPassphrase(any()))
-        .thenAnswer((_) async => true);
-
-    when(() => mock.loadMasterKeyWithPassphrase(any()))
-        .thenAnswer((_) async => true);
-
-    when(() => mock.changePassphrase(
-          oldPassphrase: any(named: 'oldPassphrase'),
-          newPassphrase: any(named: 'newPassphrase'),
-        )).thenAnswer((_) async => true);
-
     when(() => mock.encryptData(any())).thenAnswer((invocation) async {
       final data = invocation.positionalArguments[0] as Uint8List;
       return data;
@@ -30,9 +19,5 @@ class MockEncryptionServiceSetup {
       final data = invocation.positionalArguments[0] as Uint8List;
       return data;
     });
-
-    when(() => mock.isInitialized()).thenAnswer((_) async => true);
-
-    when(() => mock.clearMasterKey()).thenReturn(null);
   }
 }
