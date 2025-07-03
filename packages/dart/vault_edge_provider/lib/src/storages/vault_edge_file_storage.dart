@@ -30,8 +30,11 @@ class VaultEdgeFileStorage implements FileStorage {
   String get id => _id;
 
   // A folderId matching the _profileId should be considered null as it identifies the root folder.
-  String? _sanitizeFolderId(String? folderId) {
-    return folderId != _profileId ? folderId : null;
+  String? _convertToRootFolderIfNeeded(String? folderId) {
+    if (folderId == _profileId) {
+      return null;
+    }
+    return folderId;
   }
 
   @override
@@ -66,7 +69,8 @@ class VaultEdgeFileStorage implements FileStorage {
       );
     }
 
-    final sanitizedParentFolderId = _sanitizeFolderId(parentFolderId);
+    final sanitizedParentFolderId =
+        _convertToRootFolderIfNeeded(parentFolderId);
 
     // Check if parent folder exists and is a folder
     if (sanitizedParentFolderId != null) {
@@ -110,7 +114,8 @@ class VaultEdgeFileStorage implements FileStorage {
     required String parentFolderId,
     VaultCancelToken? cancelToken,
   }) async {
-    final sanitizedParentFolderId = _sanitizeFolderId(parentFolderId);
+    final sanitizedParentFolderId =
+        _convertToRootFolderIfNeeded(parentFolderId);
 
     final folderData = await _repository.createFolder(
       profileId: _profileId,
@@ -194,7 +199,7 @@ class VaultEdgeFileStorage implements FileStorage {
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
-    final sanitizedFolderId = _sanitizeFolderId(folderId);
+    final sanitizedFolderId = _convertToRootFolderIfNeeded(folderId);
 
     final items = await _repository.getFolder(
       folderId: sanitizedFolderId,
@@ -239,7 +244,7 @@ class VaultEdgeFileStorage implements FileStorage {
     required String newName,
     VaultCancelToken? cancelToken,
   }) async {
-    final sanitizedFolderId = _sanitizeFolderId(folderId);
+    final sanitizedFolderId = _convertToRootFolderIfNeeded(folderId);
     if (sanitizedFolderId == null) {
       Error.throwWithStackTrace(
         TdkException(
