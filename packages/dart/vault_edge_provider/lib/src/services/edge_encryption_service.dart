@@ -14,17 +14,17 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   /// Creates a new instance of [EdgeEncryptionService].
   EdgeEncryptionService({
-    required Uint8List cypher,
-  }) : _cypher = cypher;
+    required Uint8List cipher,
+  }) : _cipher = cipher;
 
-  final Uint8List _cypher;
+  final Uint8List _cipher;
   late final Random _secureRandom = Random.secure();
   late final _cryptographyAlgorythm = AesGcm.with256bits();
 
   @override
   Future<Uint8List> encryptData(Uint8List data) async {
-    final secretKey = SecretKey(_cypher);
-    final nonce = _secureRandom.randomBytes(_ivLength);
+    final secretKey = SecretKey(_cipher);
+    final nonce = _secureRandom.nextBytes(_ivLength);
     final encryptedData = await _cryptographyAlgorythm.encrypt(
       data,
       secretKey: secretKey,
@@ -54,7 +54,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
     try {
       final secretBox = _makeSecretBoxFromData(encryptedData);
-      final secretKey = SecretKey(_cypher);
+      final secretKey = SecretKey(_cipher);
       final decryptedData =
           await _cryptographyAlgorythm.decrypt(secretBox, secretKey: secretKey);
       return Uint8List.fromList(decryptedData);
@@ -79,7 +79,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 }
 
 extension _RandomBytes on Random {
-  Uint8List randomBytes(int bytes) => Uint8List.fromList(
+  Uint8List nextBytes(int bytes) => Uint8List.fromList(
         List<int>.generate(bytes, (_) => nextInt(256)),
       );
 }

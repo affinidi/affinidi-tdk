@@ -11,7 +11,7 @@ void main() {
     late EdgeEncryptionService encryptionService;
 
     setUp(() async {
-      encryptionService = EdgeEncryptionService(cypher: cypher);
+      encryptionService = EdgeEncryptionService(cipher: cypher);
     });
 
     test('it encrypts and decrypts data successfully', () async {
