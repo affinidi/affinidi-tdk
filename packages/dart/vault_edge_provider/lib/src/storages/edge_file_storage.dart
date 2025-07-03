@@ -10,9 +10,9 @@ import '../utils/file_provider_configuration.dart';
 
 /// An Edge based implementation of [FileStorage] for storing and managing
 /// files and folders.
-class VaultEdgeFileStorage implements FileStorage {
-  /// Creates a new instance of [VaultEdgeFileStorage].
-  VaultEdgeFileStorage({
+class EdgeFileStorage implements FileStorage {
+  /// Creates a new instance of [EdgeFileStorage].
+  EdgeFileStorage({
     required EdgeFileRepositoryInterface repository,
     required String id,
     required String profileId,

@@ -5,9 +5,9 @@ import '../../affinidi_tdk_vault_edge_provider.dart';
 
 /// An Edge based implementation of [CredentialStorage] for storing and managing
 /// verifiable credentials with encryption support.
-class VaultEdgeCredentialStorage implements CredentialStorage {
-  /// Creates a new instance of [VaultEdgeCredentialStorage].
-  VaultEdgeCredentialStorage({
+class EdgeCredentialStorage implements CredentialStorage {
+  /// Creates a new instance of [EdgeCredentialStorage].
+  EdgeCredentialStorage({
     required EdgeCredentialsRepositoryInterface repository,
     required String id,
     required String profileId,
