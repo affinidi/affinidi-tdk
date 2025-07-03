@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 
 /// Test fixtures for file storage tests
 class FileFixtures {
@@ -18,8 +18,9 @@ class FileFixtures {
       Uint8List(1024 * 1024 * 11); // 11MB - exceeds 10MB limit
   static final invalidFileData = Uint8List.fromList([1, 2, 3]);
 
-  static const List<String> allowedExtensions = ['txt', 'pdf', 'jpg'];
-  static const int maxFileSize = 10 * 1024 * 1024; // 10MB
+  static List<String> get allowedExtensions =>
+      FileUtils.defaultAllowedExtensions;
+  static int get maxFileSize => FileUtils.defaultMaxFileSize;
 
   static File createMockFileData({
     String? id = 'file-123',
