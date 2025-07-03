@@ -5,10 +5,12 @@ import 'package:affinidi_tdk_vault_data_manager/src/model/node_status.dart';
 import 'package:affinidi_tdk_vault_data_manager/src/model/node_type.dart';
 import 'package:mocktail/mocktail.dart';
 
+import 'mock_deterministic_wallet.dart';
 import 'mock_digital_crendential.dart';
 import 'mock_key_pair.dart';
 import 'mock_profile_repository.dart';
 import 'mock_public_key.dart';
+import 'mock_vault_store.dart';
 import 'mock_verifiable_credential.dart';
 
 class FakeAccountMetadata extends Fake implements AccountMetadata {

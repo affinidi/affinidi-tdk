@@ -15,10 +15,9 @@ import 'fixtures/profile_fixtures.dart';
 import 'mocks/mock_iam_api_service.dart';
 import 'mocks/mock_key_pair.dart';
 import 'mocks/mock_vault_data_manager_service.dart';
+import 'mocks/mock_vault_store.dart';
 
 class MockWallet extends Mock implements Wallet {}
-
-class MockVaultStore extends Mock implements VaultStore {}
 
 class MockDidSigner extends Mock implements DidSigner {
   DidDocument get didDocument =>
@@ -35,17 +34,8 @@ class PublicKeyFake extends Fake implements PublicKey {
   KeyType get type => KeyFixtures.testKeyType;
 }
 
-class TestVfsProfileRepository extends VfsProfileRepository {
-  TestVfsProfileRepository(
-    super.id, {
-    super.consumerAuthProviderFactory,
-    super.iamApiServiceFactory,
-    super.vaultDataManagerServiceFactory,
-  });
-}
-
 void main() {
-  late TestVfsProfileRepository repository;
+  late VfsProfileRepository sut;
   late MockVaultDataManagerService mockDataManagerService;
   late MockWallet mockWallet;
   late MockVaultStore mockVaultStore;
@@ -70,7 +60,7 @@ void main() {
     mockIamApiService = MockIamApiService();
     mockKeyPair = MockKeyPair();
 
-    repository = TestVfsProfileRepository(
+    sut = VfsProfileRepository.withMocks(
       ProfileFixtures.repositoryId,
       consumerAuthProviderFactory: (didSigner, {client}) =>
           ConsumerAuthProvider(signer: didSigner, client: client),
@@ -107,8 +97,8 @@ void main() {
           keyStorage: mockVaultStore,
         );
 
-        await repository.configure(config);
-        final isConfigured = await repository.isConfigured();
+        await sut.configure(config);
+        final isConfigured = await sut.isConfigured();
         expect(isConfigured, isTrue);
       });
 
@@ -119,7 +109,7 @@ void main() {
         );
 
         expect(
-          () => repository.configure(config),
+          () => sut.configure(config),
           throwsA(isA<TdkException>()),
         );
       });
@@ -127,7 +117,7 @@ void main() {
       test('should throw error when configured with invalid configuration type',
           () async {
         expect(
-          () => repository.configure('invalid_config'),
+          () => sut.configure('invalid_config'),
           throwsA(isA<TdkException>()),
         );
       });
@@ -135,7 +125,7 @@ void main() {
 
     group('Profile Operations', () {
       setUp(() async {
-        await repository.configure(RepositoryConfiguration(
+        await sut.configure(RepositoryConfiguration(
           wallet: mockWallet,
           keyStorage: mockVaultStore,
         ));
@@ -164,7 +154,7 @@ void main() {
           when(() => mockDataManagerService.getProfiles()).thenAnswer(
               (_) async => [ProfileFixtures.testVaultDataManagerProfile]);
 
-          await repository.createProfile(
+          await sut.createProfile(
             name: ProfileFixtures.testProfileName,
             description: ProfileFixtures.testProfileDescription,
           );
@@ -185,7 +175,7 @@ void main() {
           when(() => mockDataManagerService.getProfiles()).thenAnswer(
               (_) async => [ProfileFixtures.testVaultDataManagerProfile]);
 
-          final profiles = await repository.listProfiles();
+          final profiles = await sut.listProfiles();
 
           expect(profiles.length, 1);
           expect(profiles.first.name, ProfileFixtures.testProfileName);
@@ -201,7 +191,7 @@ void main() {
                 profilePictureURI: any(named: 'profilePictureURI'),
               )).thenAnswer((_) async {});
 
-          await repository.updateProfile(ProfileFixtures.testProfile);
+          await sut.updateProfile(ProfileFixtures.testProfile);
 
           verify(() => mockDataManagerService.updateProfileMetadata(
                 id: ProfileFixtures.testProfileId,
@@ -216,7 +206,7 @@ void main() {
             'should throw error when updating profile from different repository',
             () async {
           expect(
-            () => repository.updateProfile(ProfileFixtures.differentProfile),
+            () => sut.updateProfile(ProfileFixtures.differentProfile),
             throwsA(isA<TdkException>()),
           );
         });
@@ -230,7 +220,7 @@ void main() {
                 accountIndex: any(named: 'accountIndex'),
               )).thenAnswer((_) async {});
 
-          await repository.deleteProfile(ProfileFixtures.testProfile);
+          await sut.deleteProfile(ProfileFixtures.testProfile);
 
           verify(() => mockDataManagerService
               .deleteProfile(ProfileFixtures.testProfileId)).called(1);
@@ -243,7 +233,7 @@ void main() {
             'should throw error when deleting profile from different repository',
             () async {
           expect(
-            () => repository.deleteProfile(ProfileFixtures.differentProfile),
+            () => sut.deleteProfile(ProfileFixtures.differentProfile),
             throwsA(isA<TdkException>()),
           );
         });
