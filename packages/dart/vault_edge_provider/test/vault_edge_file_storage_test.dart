@@ -10,7 +10,7 @@ import 'mocks/mock_edge_file_repository.dart';
 void main() {
   late MockEdgeFileRepositoryInterface mockRepository;
   late MockEdgeEncryptionService mockEncryptionService;
-  late VaultEdgeFileStorage storage;
+  late EdgeFileStorage storage;
 
   setUpAll(FileMockSetup.setupFallbackValues);
 
@@ -18,7 +18,7 @@ void main() {
     mockRepository = MockEdgeFileRepositoryInterface();
     mockEncryptionService = MockEdgeEncryptionService();
 
-    storage = VaultEdgeFileStorage(
+    storage = EdgeFileStorage(
       repository: mockRepository,
       id: FileFixtures.storageId,
       profileId: FileFixtures.profileId,

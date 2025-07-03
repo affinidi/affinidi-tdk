@@ -20,10 +20,10 @@ void main() async {
   final database = Database(NativeDatabase.memory());
 
   // initialization
-  const vfsRepositoryId = 'vfs';
+  const edgeRepositoryId = 'edge';
   final profileRepositories = <String, ProfileRepository>{
-    vfsRepositoryId: VaultEdgeProfileRepository(
-      vfsRepositoryId,
+    edgeRepositoryId: EdgeProfileRepository(
+      edgeRepositoryId,
       EdgeDriftRepositoryFactory(database: database),
       encryptionService,
     ),
@@ -33,7 +33,7 @@ void main() async {
   final vault = await Vault.fromVaultStore(
     vaultStore,
     profileRepositories: profileRepositories,
-    defaultProfileRepositoryId: vfsRepositoryId,
+    defaultProfileRepositoryId: edgeRepositoryId,
   );
 
   // Must initialize vault before being able to access any of the repositories
