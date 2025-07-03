@@ -38,7 +38,14 @@ class TestSupportedCredentialMetadata(unittest.TestCase):
         if include_optional:
             return SupportedCredentialMetadata(
                 display = [
-                    { }
+                    affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_display_inner.SupportedCredentialMetadata_display_inner(
+                        name = '', 
+                        locale = '', 
+                        logo = affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_item_logo.SupportedCredentialMetadataItemLogo(
+                            url = '', 
+                            alt_text = '', ), 
+                        background_color = '', 
+                        text_color = '', )
                     ]
             )
         else:

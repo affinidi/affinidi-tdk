@@ -20,19 +20,34 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictStr, validator
 
 class ConsumerAuthTokenEndpointInput(BaseModel):
     """
     ConsumerAuthTokenEndpointInput
     """
     grant_type: StrictStr = Field(...)
+    client_assertion_type: StrictStr = Field(...)
+    client_assertion: StrictStr = Field(...)
     code: Optional[StrictStr] = None
     refresh_token: Optional[StrictStr] = None
     redirect_uri: Optional[StrictStr] = None
     client_id: Optional[StrictStr] = None
-    additional_properties: Dict[str, Any] = {}
-    __properties = ["grant_type", "code", "refresh_token", "redirect_uri", "client_id"]
+    __properties = ["grant_type", "client_assertion_type", "client_assertion", "code", "refresh_token", "redirect_uri", "client_id"]
+
+    @validator('grant_type')
+    def grant_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in ('client_credentials', 'affinidi_delegation',):
+            raise ValueError("must be one of enum values ('client_credentials', 'affinidi_delegation')")
+        return value
+
+    @validator('client_assertion_type')
+    def client_assertion_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in ('urn:ietf:params:oauth:client-assertion-type:jwt-bearer', 'urn:ietf:params:oauth:delegation-assertion-type:jwt-bearer',):
+            raise ValueError("must be one of enum values ('urn:ietf:params:oauth:client-assertion-type:jwt-bearer', 'urn:ietf:params:oauth:delegation-assertion-type:jwt-bearer')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -56,14 +71,8 @@ class ConsumerAuthTokenEndpointInput(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "additional_properties"
                           },
                           exclude_none=True)
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -77,16 +86,13 @@ class ConsumerAuthTokenEndpointInput(BaseModel):
 
         _obj = ConsumerAuthTokenEndpointInput.parse_obj({
             "grant_type": obj.get("grant_type"),
+            "client_assertion_type": obj.get("client_assertion_type"),
+            "client_assertion": obj.get("client_assertion"),
             "code": obj.get("code"),
             "refresh_token": obj.get("refresh_token"),
             "redirect_uri": obj.get("redirect_uri"),
             "client_id": obj.get("client_id")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

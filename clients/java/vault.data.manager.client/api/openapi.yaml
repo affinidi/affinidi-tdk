@@ -3332,7 +3332,7 @@ components:
       x-amazon-apigateway-authtype: custom
       x-amazon-apigateway-authorizer:
         type: request
-        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:792104784284:function:iam-dev-ConsumerTokenAuthorizerLambda91B1796B-QT4lOBGrUdPH:live-alias/invocations
+        authorizerUri: arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:889051305348:function:cid-dev-ap-southeast-1-ConsumerTokenAuthorizerLamb-moJmirKhR8I9:live-alias/invocations
         authorizerResultTtlInSeconds: 0
     UserTokenAuth:
       in: header
