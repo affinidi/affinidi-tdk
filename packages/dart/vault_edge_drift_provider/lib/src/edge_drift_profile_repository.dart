@@ -5,7 +5,7 @@ import 'database/database.dart' hide Profile;
 
 /// Repository class to manage profiles on a local Drift database
 class EdgeDriftProfileRepository implements EdgeProfileRepositoryInterface {
-  /// Constructor
+  /// Creates a new instance of [EdgeDriftProfileRepository].
   EdgeDriftProfileRepository({
     required Database database,
   }) : _database = database;
