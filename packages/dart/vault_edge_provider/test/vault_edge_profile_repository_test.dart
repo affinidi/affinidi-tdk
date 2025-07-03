@@ -8,21 +8,34 @@ import 'mocks/mock_edge_credential_repository.dart';
 import 'mocks/mock_edge_encryption_service.dart';
 import 'mocks/mock_edge_file_repository.dart';
 import 'mocks/mock_edge_profile_repository.dart';
+import 'mocks/mock_edge_repository_factory.dart';
 
 void main() {
   late MockEdgeProfileRepository mockRepository;
   late MockEdgeFileRepository mockFileRepository;
   late MockEdgeCredentialRepository mockCredentialRepository;
+  late MockEdgeRepositoryFactory mockEdgeRepositoryFactory;
   late MockEdgeEncryptionService mockEncryptionService;
   late VaultEdgeProfileRepository sut;
 
   setUp(() {
     mockRepository = MockEdgeProfileRepository();
-    mockFileRepository = MockEdgeFileRepository();
     mockCredentialRepository = MockEdgeCredentialRepository();
+    mockFileRepository = MockEdgeFileRepository();
+
+    mockEdgeRepositoryFactory = MockEdgeRepositoryFactory(
+      profileRepository: mockRepository,
+      fileRepository: mockFileRepository,
+      credentialRepository: mockCredentialRepository,
+    );
+
     mockEncryptionService = MockEdgeEncryptionService();
-    sut = VaultEdgeProfileRepository('sut', mockRepository, mockFileRepository,
-        mockCredentialRepository, mockEncryptionService);
+
+    sut = VaultEdgeProfileRepository(
+      'sut',
+      mockEdgeRepositoryFactory,
+      mockEncryptionService,
+    );
   });
 
   group('When edge profile repository is not configured', () {

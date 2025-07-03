@@ -2,9 +2,7 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:ssi/ssi.dart';
 
 import '../exceptions/tdk_exception_type.dart';
-import '../interfaces/edge_credentials_repository_interface.dart';
-import '../interfaces/edge_file_repository_interface.dart';
-import '../interfaces/edge_profile_repository_interface.dart';
+import '../interfaces/edge_repository_factory_interface.dart';
 import '../models/edge_profile.dart';
 import '../services/edge_encryption_service_interface.dart';
 import '../storages/vault_edge_credential_storage.dart';
@@ -16,22 +14,16 @@ class VaultEdgeProfileRepository implements ProfileRepository {
   /// Creates a new instance of [VaultEdgeProfileRepository].
   ///
   /// The [_id] parameter is used to identify this repository instance.
-  /// The [_repository] implementing available operations on profiles.
-  /// The [_fileRepository] implementing available operations for files and folders.
-  /// The [_credentialRepository] implementing available operations for credentials.
+  /// The [_repositoryFactory] used to create repositories for handling operations on profiles, files and credentials.
   /// The [_encryptionService] for encrypting content.
   VaultEdgeProfileRepository(
     this._id,
-    this._repository,
-    this._fileRepository,
-    this._credentialRepository,
+    this._repositoryFactory,
     this._encryptionService,
   );
 
   final String _id;
-  final EdgeProfileRepositoryInterface _repository;
-  final EdgeFileRepositoryInterface _fileRepository;
-  final EdgeCredentialsRepositoryInterface _credentialRepository;
+  final EdgeRepositoryFactoryInterface _repositoryFactory;
   final EdgeEncryptionServiceInterface _encryptionService;
   final _keyPairs = <String, KeyPair>{};
 
@@ -41,6 +33,7 @@ class VaultEdgeProfileRepository implements ProfileRepository {
   bool _configured = false;
   late final Wallet _wallet;
   late final VaultStore _vaultStore;
+  late final _repository = _repositoryFactory.createProfileRepository();
 
   @override
   Future<void> configure(Object configuration) async {
@@ -183,7 +176,8 @@ Profile repository must be configured using a RepositoryConfiguration''',
           profileRepositoryId: _id,
           fileStorages: {
             _id: VaultEdgeFileStorage(
-              repository: _fileRepository,
+              repository:
+                  _repositoryFactory.createFileRepository(profileId: item.id),
               id: _id,
               profileId: item.id.toString(),
               encryptionService: _encryptionService,
@@ -191,7 +185,8 @@ Profile repository must be configured using a RepositoryConfiguration''',
           },
           credentialStorages: {
             _id: VaultEdgeCredentialStorage(
-              repository: _credentialRepository,
+              repository: _repositoryFactory.createCredentialRepository(
+                  profileId: item.id),
               id: _id,
               profileId: item.id.toString(),
               encryptionService: _encryptionService,
