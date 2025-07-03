@@ -45,11 +45,12 @@ class VaultEdgeFileStorage implements FileStorage {
     VaultCancelToken? cancelToken,
     void Function(int, int)? onSendProgress,
   }) async {
-    if (data.length > _repository.maxFileSize) {
+    // Validate file size
+    if (!FileUtils.isFileSizeValid(data.length, _repository.maxFileSize)) {
       Error.throwWithStackTrace(
         TdkException(
-          message:
-              'File size exceeds maximum limit of ${(_repository.maxFileSize / (1024 * 1024)).toStringAsFixed(1)}MB',
+          message: FileUtils.createFileSizeErrorMessage(
+              data.length, _repository.maxFileSize),
           code: TdkExceptionType.invalidFileSize.code,
         ),
         StackTrace.current,
@@ -57,12 +58,12 @@ class VaultEdgeFileStorage implements FileStorage {
     }
 
     // Validate file type
-    final extension = fileName.split('.').last.toLowerCase();
-    if (!_repository.allowedExtensions.contains(extension)) {
+    if (!FileUtils.isFileExtensionAllowed(
+        fileName, _repository.allowedExtensions)) {
       Error.throwWithStackTrace(
         TdkException(
-          message:
-              'File type not allowed. Allowed types: ${_repository.allowedExtensions.join(', ')}',
+          message: FileUtils.createFileExtensionErrorMessage(
+              fileName, _repository.allowedExtensions),
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,
@@ -220,12 +221,12 @@ class VaultEdgeFileStorage implements FileStorage {
     VaultCancelToken? cancelToken,
   }) async {
     // Check if new name has valid extension
-    final extension = newName.split('.').last.toLowerCase();
-    if (!_repository.allowedExtensions.contains(extension)) {
+    if (!FileUtils.isFileExtensionAllowed(
+        newName, _repository.allowedExtensions)) {
       Error.throwWithStackTrace(
         TdkException(
-          message:
-              'File type not allowed. Allowed types: ${_repository.allowedExtensions.join(', ')}',
+          message: FileUtils.createFileExtensionErrorMessage(
+              newName, _repository.allowedExtensions),
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,

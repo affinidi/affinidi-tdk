@@ -1,3 +1,4 @@
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:drift/drift.dart';
 import 'package:uuid/uuid.dart';
@@ -7,22 +8,60 @@ import 'database/database.dart' as db;
 /// Repository class to manage files and folders on a local Drift database
 class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   /// Creates a new instance of [EdgeDriftFileRepository].
-  const EdgeDriftFileRepository({
+  const EdgeDriftFileRepository._({
     required db.Database database,
     required String profileId,
-    this.maxFileSize = 10 * 1024 * 1024,
-    this.allowedExtensions = const ['txt', 'pdf', 'jpg'],
+    int? maxFileSize,
+    List<String>? allowedExtensions,
   })  : _database = database,
-        _profileId = profileId;
+        _profileId = profileId,
+        _maxFileSize = maxFileSize ?? 10 * 1024 * 1024,
+        _allowedExtensions = allowedExtensions ??
+            const [
+              'txt',
+              'pdf',
+              'jpg',
+              'jpeg',
+              'png',
+              'gif',
+              'doc',
+              'docx',
+              'xls',
+              'xlsx',
+              'json',
+              'xml',
+              'html',
+              'css',
+              'js',
+              'md'
+            ];
+
+  /// Creates a new instance of [EdgeDriftFileRepository].
+  factory EdgeDriftFileRepository({
+    required db.Database database,
+    required String profileId,
+    int? maxFileSize,
+    List<String>? allowedExtensions,
+  }) {
+    return EdgeDriftFileRepository._(
+      database: database,
+      profileId: profileId,
+      maxFileSize: maxFileSize ?? FileUtils.defaultMaxFileSize,
+      allowedExtensions:
+          allowedExtensions ?? FileUtils.defaultAllowedExtensions,
+    );
+  }
 
   final db.Database _database;
   final String _profileId;
+  final int _maxFileSize;
+  final List<String> _allowedExtensions;
 
   @override
-  final int maxFileSize;
+  int get maxFileSize => _maxFileSize;
 
   @override
-  final List<String> allowedExtensions;
+  List<String> get allowedExtensions => _allowedExtensions;
 
   @override
   Future<File> createFile({
@@ -32,10 +71,11 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     String? parentFolderId,
   }) async {
     // Validate file size
-    if (data.length > maxFileSize) {
+    if (!FileUtils.isFileSizeValid(data.length, maxFileSize)) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'File size exceeds maximum limit of 10MB',
+          message:
+              FileUtils.createFileSizeErrorMessage(data.length, maxFileSize),
           code: TdkExceptionType.invalidFileSize.code,
         ),
         StackTrace.current,
@@ -43,11 +83,11 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     }
 
     // Validate file type
-    final extension = fileName.split('.').last.toLowerCase();
-    if (!allowedExtensions.contains(extension)) {
+    if (!FileUtils.isFileExtensionAllowed(fileName, allowedExtensions)) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'File type not allowed',
+          message: FileUtils.createFileExtensionErrorMessage(
+              fileName, allowedExtensions),
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,
@@ -286,12 +326,12 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     required String fileId,
     required String newName,
   }) async {
-    // Validate file type
-    final extension = newName.split('.').last.toLowerCase();
-    if (!allowedExtensions.contains(extension)) {
+    // Validate file extension using FileUtils
+    if (!FileUtils.isFileExtensionAllowed(newName, allowedExtensions)) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'File type not allowed',
+          message: FileUtils.createFileExtensionErrorMessage(
+              newName, allowedExtensions),
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,

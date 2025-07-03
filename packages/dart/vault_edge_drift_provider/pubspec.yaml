@@ -11,6 +11,7 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.6.0
+  affinidi_tdk_vault: ^1.5.0
   affinidi_tdk_vault_edge_provider:
     path: ../vault_edge_provider
   clock: ^1.1.1
