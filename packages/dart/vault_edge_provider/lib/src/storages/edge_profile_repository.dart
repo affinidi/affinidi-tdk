@@ -5,18 +5,18 @@ import '../exceptions/tdk_exception_type.dart';
 import '../interfaces/edge_repository_factory_interface.dart';
 import '../models/edge_profile.dart';
 import '../services/edge_encryption_service_interface.dart';
-import '../storages/vault_edge_credential_storage.dart';
-import '../storages/vault_edge_file_storage.dart';
+import 'edge_credential_storage.dart';
+import 'edge_file_storage.dart';
 
 /// A Vault implementation of [ProfileRepository] for locally managing
 /// user profiles.
-class VaultEdgeProfileRepository implements ProfileRepository {
-  /// Creates a new instance of [VaultEdgeProfileRepository].
+class EdgeProfileRepository implements ProfileRepository {
+  /// Creates a new instance of [EdgeProfileRepository].
   ///
   /// The [_id] parameter is used to identify this repository instance.
   /// The [_repositoryFactory] used to create repositories for handling operations on profiles, files and credentials.
   /// The [_encryptionService] for encrypting content.
-  VaultEdgeProfileRepository(
+  EdgeProfileRepository(
     this._id,
     this._repositoryFactory,
     this._encryptionService,
@@ -175,7 +175,7 @@ Profile repository must be configured using a RepositoryConfiguration''',
           did: did,
           profileRepositoryId: _id,
           fileStorages: {
-            _id: VaultEdgeFileStorage(
+            _id: EdgeFileStorage(
               repository:
                   _repositoryFactory.createFileRepository(profileId: item.id),
               id: _id,
@@ -184,7 +184,7 @@ Profile repository must be configured using a RepositoryConfiguration''',
             ),
           },
           credentialStorages: {
-            _id: VaultEdgeCredentialStorage(
+            _id: EdgeCredentialStorage(
               repository: _repositoryFactory.createCredentialRepository(
                   profileId: item.id),
               id: _id,

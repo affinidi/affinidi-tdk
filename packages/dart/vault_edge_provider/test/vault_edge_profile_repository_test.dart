@@ -16,7 +16,7 @@ void main() {
   late MockEdgeCredentialRepository mockCredentialRepository;
   late MockEdgeRepositoryFactory mockEdgeRepositoryFactory;
   late MockEdgeEncryptionService mockEncryptionService;
-  late VaultEdgeProfileRepository sut;
+  late EdgeProfileRepository sut;
 
   setUp(() {
     mockRepository = MockEdgeProfileRepository();
@@ -31,7 +31,7 @@ void main() {
 
     mockEncryptionService = MockEdgeEncryptionService();
 
-    sut = VaultEdgeProfileRepository(
+    sut = EdgeProfileRepository(
       'sut',
       mockEdgeRepositoryFactory,
       mockEncryptionService,
