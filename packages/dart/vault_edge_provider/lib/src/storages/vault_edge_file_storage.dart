@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import '../exceptions/tdk_exception_type.dart';
 import '../interfaces/edge_file_repository_interface.dart';
 import '../services/edge_encryption_service_interface.dart';
+import '../utils/file_provider_configuration.dart';
 
 /// An Edge based implementation of [FileStorage] for storing and managing
 /// files and folders.
@@ -16,15 +17,22 @@ class VaultEdgeFileStorage implements FileStorage {
     required String id,
     required String profileId,
     required EdgeEncryptionServiceInterface encryptionService,
+    FileProviderConfiguration? configuration,
   })  : _repository = repository,
         _id = id,
         _profileId = profileId,
-        _encryptionService = encryptionService;
+        _encryptionService = encryptionService,
+        _maxFileSize =
+            configuration?.maxFileSize ?? FileUtils.defaultMaxFileSize,
+        _allowedExtensions = configuration?.allowedExtensions ??
+            FileUtils.defaultAllowedExtensions;
 
   final EdgeFileRepositoryInterface _repository;
   final String _id;
   final String _profileId;
   final EdgeEncryptionServiceInterface _encryptionService;
+  final int _maxFileSize;
+  final List<String> _allowedExtensions;
 
   @override
   String get id => _id;
@@ -46,11 +54,11 @@ class VaultEdgeFileStorage implements FileStorage {
     void Function(int, int)? onSendProgress,
   }) async {
     // Validate file size
-    if (!FileUtils.isFileSizeValid(data.length, _repository.maxFileSize)) {
+    if (!FileUtils.isFileSizeValid(data.length, _maxFileSize)) {
       Error.throwWithStackTrace(
         TdkException(
-          message: FileUtils.createFileSizeErrorMessage(
-              data.length, _repository.maxFileSize),
+          message:
+              FileUtils.createFileSizeErrorMessage(data.length, _maxFileSize),
           code: TdkExceptionType.invalidFileSize.code,
         ),
         StackTrace.current,
@@ -58,12 +66,11 @@ class VaultEdgeFileStorage implements FileStorage {
     }
 
     // Validate file type
-    if (!FileUtils.isFileExtensionAllowed(
-        fileName, _repository.allowedExtensions)) {
+    if (!FileUtils.isFileExtensionAllowed(fileName, _allowedExtensions)) {
       Error.throwWithStackTrace(
         TdkException(
           message: FileUtils.createFileExtensionErrorMessage(
-              fileName, _repository.allowedExtensions),
+              fileName, _allowedExtensions),
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,
@@ -221,12 +228,11 @@ class VaultEdgeFileStorage implements FileStorage {
     VaultCancelToken? cancelToken,
   }) async {
     // Check if new name has valid extension
-    if (!FileUtils.isFileExtensionAllowed(
-        newName, _repository.allowedExtensions)) {
+    if (!FileUtils.isFileExtensionAllowed(newName, _allowedExtensions)) {
       Error.throwWithStackTrace(
         TdkException(
           message: FileUtils.createFileExtensionErrorMessage(
-              newName, _repository.allowedExtensions),
+              newName, _allowedExtensions),
           code: TdkExceptionType.invalidFileType.code,
         ),
         StackTrace.current,

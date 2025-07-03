@@ -1,17 +1,10 @@
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockEdgeFileRepositoryInterface extends Mock
-    implements EdgeFileRepositoryInterface {
-  @override
-  int get maxFileSize => FileUtils.defaultMaxFileSize;
-
-  @override
-  List<String> get allowedExtensions => FileUtils.defaultAllowedExtensions;
-}
+    implements EdgeFileRepositoryInterface {}
 
 class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   String? profileId;
@@ -131,10 +124,4 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   }) async {
     return true;
   }
-
-  @override
-  int get maxFileSize => FileUtils.defaultMaxFileSize;
-
-  @override
-  List<String> get allowedExtensions => FileUtils.defaultAllowedExtensions;
 }

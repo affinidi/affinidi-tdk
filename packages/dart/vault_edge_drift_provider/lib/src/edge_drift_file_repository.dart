@@ -1,4 +1,3 @@
-import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:drift/drift.dart';
 import 'package:uuid/uuid.dart';
@@ -8,60 +7,25 @@ import 'database/database.dart' as db;
 /// Repository class to manage files and folders on a local Drift database
 class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   /// Creates a new instance of [EdgeDriftFileRepository].
-  const EdgeDriftFileRepository._({
+  EdgeDriftFileRepository._({
     required db.Database database,
     required String profileId,
-    int? maxFileSize,
-    List<String>? allowedExtensions,
   })  : _database = database,
-        _profileId = profileId,
-        _maxFileSize = maxFileSize ?? 10 * 1024 * 1024,
-        _allowedExtensions = allowedExtensions ??
-            const [
-              'txt',
-              'pdf',
-              'jpg',
-              'jpeg',
-              'png',
-              'gif',
-              'doc',
-              'docx',
-              'xls',
-              'xlsx',
-              'json',
-              'xml',
-              'html',
-              'css',
-              'js',
-              'md'
-            ];
+        _profileId = profileId;
 
   /// Creates a new instance of [EdgeDriftFileRepository].
   factory EdgeDriftFileRepository({
     required db.Database database,
     required String profileId,
-    int? maxFileSize,
-    List<String>? allowedExtensions,
   }) {
     return EdgeDriftFileRepository._(
       database: database,
       profileId: profileId,
-      maxFileSize: maxFileSize ?? FileUtils.defaultMaxFileSize,
-      allowedExtensions:
-          allowedExtensions ?? FileUtils.defaultAllowedExtensions,
     );
   }
 
   final db.Database _database;
   final String _profileId;
-  final int _maxFileSize;
-  final List<String> _allowedExtensions;
-
-  @override
-  int get maxFileSize => _maxFileSize;
-
-  @override
-  List<String> get allowedExtensions => _allowedExtensions;
 
   @override
   Future<File> createFile({
@@ -70,30 +34,6 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     required Uint8List data,
     String? parentFolderId,
   }) async {
-    // Validate file size
-    if (!FileUtils.isFileSizeValid(data.length, maxFileSize)) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message:
-              FileUtils.createFileSizeErrorMessage(data.length, maxFileSize),
-          code: TdkExceptionType.invalidFileSize.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
-    // Validate file type
-    if (!FileUtils.isFileExtensionAllowed(fileName, allowedExtensions)) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: FileUtils.createFileExtensionErrorMessage(
-              fileName, allowedExtensions),
-          code: TdkExceptionType.invalidFileType.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
     if (parentFolderId != null) {
       final parentFolder = await (_database.select(_database.items)
             ..where((filter) =>
@@ -326,18 +266,6 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     required String fileId,
     required String newName,
   }) async {
-    // Validate file extension using FileUtils
-    if (!FileUtils.isFileExtensionAllowed(newName, allowedExtensions)) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: FileUtils.createFileExtensionErrorMessage(
-              newName, allowedExtensions),
-          code: TdkExceptionType.invalidFileType.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
     final file = await (_database.select(_database.items)
           ..where((filter) =>
               filter.id.equals(fileId) &
