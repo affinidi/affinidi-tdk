@@ -16,7 +16,7 @@ void main() async {
   await vaultStore.setSeed(seed);
 
   final encryptionService = EdgeEncryptionService(
-      cypher: Uint8List.fromList(List.generate(32, (idx) => idx + 1)));
+      cipher: Uint8List.fromList(List.generate(32, (idx) => idx + 1)));
   final database = Database(NativeDatabase.memory());
 
   // initialization
