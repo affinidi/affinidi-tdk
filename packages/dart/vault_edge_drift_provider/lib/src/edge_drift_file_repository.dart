@@ -7,22 +7,25 @@ import 'database/database.dart' as db;
 /// Repository class to manage files and folders on a local Drift database
 class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   /// Creates a new instance of [EdgeDriftFileRepository].
-  const EdgeDriftFileRepository({
+  EdgeDriftFileRepository._({
     required db.Database database,
     required String profileId,
-    this.maxFileSize = 10 * 1024 * 1024,
-    this.allowedExtensions = const ['txt', 'pdf', 'jpg'],
   })  : _database = database,
         _profileId = profileId;
 
+  /// Creates a new instance of [EdgeDriftFileRepository].
+  factory EdgeDriftFileRepository({
+    required db.Database database,
+    required String profileId,
+  }) {
+    return EdgeDriftFileRepository._(
+      database: database,
+      profileId: profileId,
+    );
+  }
+
   final db.Database _database;
   final String _profileId;
-
-  @override
-  final int maxFileSize;
-
-  @override
-  final List<String> allowedExtensions;
 
   @override
   Future<File> createFile({
@@ -31,29 +34,6 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     required Uint8List data,
     String? parentFolderId,
   }) async {
-    // Validate file size
-    if (data.length > maxFileSize) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'File size exceeds maximum limit of 10MB',
-          code: TdkExceptionType.invalidFileSize.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
-    // Validate file type
-    final extension = fileName.split('.').last.toLowerCase();
-    if (!allowedExtensions.contains(extension)) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'File type not allowed',
-          code: TdkExceptionType.invalidFileType.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
     if (parentFolderId != null) {
       final parentFolder = await (_database.select(_database.items)
             ..where((filter) =>
@@ -286,18 +266,6 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     required String fileId,
     required String newName,
   }) async {
-    // Validate file type
-    final extension = newName.split('.').last.toLowerCase();
-    if (!allowedExtensions.contains(extension)) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'File type not allowed',
-          code: TdkExceptionType.invalidFileType.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
     final file = await (_database.select(_database.items)
           ..where((filter) =>
               filter.id.equals(fileId) &
