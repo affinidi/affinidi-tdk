@@ -18,6 +18,7 @@ export 'src/exceptions/tdk_exception_type.dart';
 export 'src/interfaces/edge_credentials_repository_interface.dart';
 export 'src/interfaces/edge_file_repository_interface.dart';
 export 'src/interfaces/edge_profile_repository_interface.dart';
+export 'src/interfaces/edge_repository_factory_interface.dart';
 export 'src/models/edge_credential.dart';
 export 'src/models/edge_profile.dart';
 export 'src/services/edge_encryption_service.dart';

@@ -6,7 +6,7 @@ import 'database/database.dart' as db;
 /// Repository class to manage credentials on a local Drift database
 class EdgeDriftCredentialRepository
     implements EdgeCredentialsRepositoryInterface {
-  /// Constructor
+  /// Creates a new instance of [EdgeDriftCredentialRepository].
   const EdgeDriftCredentialRepository({
     required db.Database database,
     required String profileId,

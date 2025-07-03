@@ -6,7 +6,7 @@ import 'database/database.dart' as db;
 
 /// Repository class to manage files and folders on a local Drift database
 class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
-  /// Constructor
+  /// Creates a new instance of [EdgeDriftFileRepository].
   const EdgeDriftFileRepository({
     required db.Database database,
     required String profileId,

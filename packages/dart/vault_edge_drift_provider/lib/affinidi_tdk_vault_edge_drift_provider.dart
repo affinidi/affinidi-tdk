@@ -10,3 +10,4 @@ export 'src/database/database_config.dart';
 export 'src/edge_drift_credential_repository.dart';
 export 'src/edge_drift_file_repository.dart';
 export 'src/edge_drift_profile_repository.dart';
+export 'src/edge_drift_repository_factory.dart';

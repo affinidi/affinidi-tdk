@@ -29,6 +29,11 @@ class VaultEdgeFileStorage implements FileStorage {
   @override
   String get id => _id;
 
+  // A folderId matching the _profileId should be considered null as it identifies the root folder.
+  String? _sanitizeFolderId(String? folderId) {
+    return folderId != _profileId ? folderId : null;
+  }
+
   @override
   Future<void> createFile({
     required String fileName,
@@ -61,9 +66,12 @@ class VaultEdgeFileStorage implements FileStorage {
       );
     }
 
+    final sanitizedParentFolderId = _sanitizeFolderId(parentFolderId);
+
     // Check if parent folder exists and is a folder
-    if (parentFolderId != null) {
-      final items = await _repository.getFolder(folderId: parentFolderId);
+    if (sanitizedParentFolderId != null) {
+      final items =
+          await _repository.getFolder(folderId: sanitizedParentFolderId);
       if (items.isEmpty) {
         Error.throwWithStackTrace(
           TdkException(
@@ -92,26 +100,8 @@ class VaultEdgeFileStorage implements FileStorage {
       profileId: _profileId,
       fileName: fileName,
       data: encryptedContent,
-      parentFolderId: parentFolderId,
+      parentFolderId: sanitizedParentFolderId,
     );
-  }
-
-  /// Gets the ID of a file by its name and parent folder
-  Future<String?> getFileId({
-    required String fileName,
-    String? parentFolderId,
-  }) async {
-    final items = await _repository.getFolder(
-      folderId: parentFolderId,
-    );
-    try {
-      final file = items.firstWhere(
-        (item) => item.name == fileName && item is! Folder,
-      );
-      return file.id;
-    } catch (e) {
-      return null;
-    }
   }
 
   @override
@@ -120,10 +110,12 @@ class VaultEdgeFileStorage implements FileStorage {
     required String parentFolderId,
     VaultCancelToken? cancelToken,
   }) async {
+    final sanitizedParentFolderId = _sanitizeFolderId(parentFolderId);
+
     final folderData = await _repository.createFolder(
       profileId: _profileId,
       folderName: folderName,
-      parentFolderId: parentFolderId,
+      parentFolderId: sanitizedParentFolderId,
     );
 
     return Folder(
@@ -202,8 +194,10 @@ class VaultEdgeFileStorage implements FileStorage {
     String? exclusiveStartItemId,
     VaultCancelToken? cancelToken,
   }) async {
+    final sanitizedFolderId = _sanitizeFolderId(folderId);
+
     final items = await _repository.getFolder(
-      folderId: folderId,
+      folderId: sanitizedFolderId,
       limit: limit,
       exclusiveStartItemId: exclusiveStartItemId,
     );
@@ -245,6 +239,17 @@ class VaultEdgeFileStorage implements FileStorage {
     required String newName,
     VaultCancelToken? cancelToken,
   }) async {
+    final sanitizedFolderId = _sanitizeFolderId(folderId);
+    if (sanitizedFolderId == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'Cannot rename root folder',
+          code: TdkExceptionType.invalidFolderId.code,
+        ),
+        StackTrace.current,
+      );
+    }
+
     // Check if folder exists
     final items = await _repository.getFolder(folderId: folderId);
     if (items.isEmpty) {
