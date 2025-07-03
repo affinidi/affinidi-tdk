@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 
 class FilePreviewDialog extends StatelessWidget {
   final String fileName;
@@ -14,8 +15,8 @@ class FilePreviewDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final extension = fileName.split('.').last.toLowerCase();
-    final fileSize = (content.length / 1024).toStringAsFixed(1);
+    final extension = FileUtils.getFileExtension(fileName);
+    final fileSize = FileUtils.formatFileSize(content.length);
 
     return Dialog(
       child: Container(
@@ -43,7 +44,7 @@ class FilePreviewDialog extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${fileSize} KB',
+                  fileSize,
                   style: const TextStyle(
                     fontSize: 12,
                     color: Colors.grey,

@@ -7,6 +7,7 @@ export 'package:ssi/ssi.dart'
 
 export 'src/digital_credential.dart';
 export 'src/dto/shared_profile_dto.dart';
+export 'src/helpers/file_utils.dart';
 export 'src/helpers/vault_cancel_token.dart';
 export 'src/helpers/vault_progress_callback.dart';
 export 'src/in_memory_vault_store.dart';

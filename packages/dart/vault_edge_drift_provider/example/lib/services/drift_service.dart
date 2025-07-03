@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
@@ -93,20 +94,11 @@ class DriftService {
       final fileRepository = EdgeDriftFileRepository(
         database: _state.database!,
         profileId: profileId,
-        maxFileSize: 50 * 1024 * 1024,
+        maxFileSize: FileUtils.defaultMaxFileSize,
         allowedExtensions: [
-          'txt',
-          'pdf',
-          'jpg',
-          'jpeg',
-          'png',
-          'json',
-          'doc',
-          'docx',
-          'xls',
-          'xlsx',
+          ...FileUtils.defaultAllowedExtensions,
           'zip',
-          'rar'
+          'rar',
         ],
       );
 
@@ -246,10 +238,9 @@ class DriftService {
         final content =
             await _state.fileRepository!.getFileContent(fileId: item.id);
 
-        final fileSize = content.length;
-        final fileSizeKB = (fileSize / 1024).toStringAsFixed(1);
+        final fileSize = FileUtils.formatFileSize(content.length);
 
-        final extension = item.name.split('.').last.toLowerCase();
+        final extension = FileUtils.getFileExtension(item.name);
         String displayContent;
 
         switch (extension) {
@@ -263,9 +254,9 @@ class DriftService {
             try {
               final textContent = String.fromCharCodes(content);
               displayContent =
-                  'Text file (${fileSizeKB} KB): ${textContent.substring(0, textContent.length > 200 ? 200 : textContent.length)}${textContent.length > 200 ? '...' : ''}';
+                  'Text file ($fileSize): ${textContent.substring(0, textContent.length > 200 ? 200 : textContent.length)}${textContent.length > 200 ? '...' : ''}';
             } catch (e) {
-              displayContent = 'Text file (${fileSizeKB} KB) - encoding error';
+              displayContent = 'Text file ($fileSize) - encoding error';
             }
             break;
           case 'png':
@@ -274,26 +265,26 @@ class DriftService {
           case 'gif':
           case 'bmp':
           case 'webp':
-            displayContent = 'Image file (${fileSizeKB} KB) - ${item.name}';
+            displayContent = 'Image file ($fileSize) - ${item.name}';
             break;
           case 'pdf':
-            displayContent = 'PDF file (${fileSizeKB} KB) - ${item.name}';
+            displayContent = 'PDF file ($fileSize) - ${item.name}';
             break;
           case 'doc':
           case 'docx':
-            displayContent = 'Word document (${fileSizeKB} KB) - ${item.name}';
+            displayContent = 'Word document ($fileSize) - ${item.name}';
             break;
           case 'xls':
           case 'xlsx':
-            displayContent = 'Excel file (${fileSizeKB} KB) - ${item.name}';
+            displayContent = 'Excel file ($fileSize) - ${item.name}';
             break;
           case 'zip':
           case 'rar':
           case '7z':
-            displayContent = 'Archive file (${fileSizeKB} KB) - ${item.name}';
+            displayContent = 'Archive file ($fileSize) - ${item.name}';
             break;
           default:
-            displayContent = 'File (${fileSizeKB} KB) - ${item.name}';
+            displayContent = 'File ($fileSize) - ${item.name}';
         }
 
         _state = _state.copyWith(
