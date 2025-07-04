@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../fixtures/credential_fixtures.dart';
@@ -34,9 +35,34 @@ class CredentialMockSetup {
           cancelToken: any(named: 'cancelToken'),
         )).thenAnswer((_) async => CredentialFixtures.mockCredentialDataList);
 
+    when(() => mockRepository.getLastEvaluatedItemId(
+          profileId: any(named: 'profileId'),
+          limit: any(named: 'limit'),
+          exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+          cancelToken: any(named: 'cancelToken'),
+        )).thenAnswer((_) async => 'test-credential-id-2');
+
     when(() => mockRepository.deleteCredential(
           credentialId: any(named: 'credentialId'),
           cancelToken: any(named: 'cancelToken'),
         )).thenAnswer((_) async {});
+  }
+
+  static void setupEmptyCredentialListMocks(
+    MockEdgeCredentialRepository mockRepository,
+  ) {
+    when(() => mockRepository.listCredentialData(
+          profileId: any(named: 'profileId'),
+          limit: any(named: 'limit'),
+          exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+          cancelToken: any(named: 'cancelToken'),
+        )).thenAnswer((_) async => <EdgeCredential>[]);
+
+    when(() => mockRepository.getLastEvaluatedItemId(
+          profileId: any(named: 'profileId'),
+          limit: any(named: 'limit'),
+          exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+          cancelToken: any(named: 'cancelToken'),
+        )).thenAnswer((_) async => null);
   }
 }

@@ -45,6 +45,19 @@ class FileMockSetup {
       return [];
     });
 
+    when(() => mockRepository.getLastEvaluatedItemId(
+          folderId: any(named: 'folderId'),
+          limit: any(named: 'limit'),
+          exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+        )).thenAnswer((invocation) async {
+      final folderId =
+          invocation.namedArguments[const Symbol('folderId')] as String?;
+      if (folderId == FileFixtures.folderId) {
+        return 'folder1';
+      }
+      return null;
+    });
+
     when(() => mockRepository.deleteFile(fileId: any(named: 'fileId')))
         .thenAnswer((_) async {});
 
