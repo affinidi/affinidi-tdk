@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_provider/src/services/edge_encryption_service.dart';
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -60,6 +61,74 @@ void main() {
       expect(encrypted, isNotNull);
       expect(decrypted, equals(largeData));
       expect(encrypted.length, greaterThan(largeData.length));
+    });
+  });
+
+  group('When decrypting data with invalid length', () {
+    late EdgeEncryptionService encryptionService;
+
+    setUp(() async {
+      encryptionService = EdgeEncryptionService(cipher: cypher);
+    });
+
+    test('it throws TdkException for data shorter than minimum required length',
+        () async {
+      final invalidData = Uint8List(20);
+
+      expect(
+        () => encryptionService.decryptData(invalidData),
+        throwsA(
+          isA<TdkException>()
+              .having(
+                (e) => e.message,
+                'message',
+                'Failed to decrypt data',
+              )
+              .having(
+                (e) => e.originalMessage,
+                'originalMessage',
+                'Invalid data length',
+              ),
+        ),
+      );
+    });
+
+    test('it throws TdkException for empty data', () async {
+      final emptyData = Uint8List(0);
+
+      expect(
+        () => encryptionService.decryptData(emptyData),
+        throwsA(
+          isA<TdkException>()
+              .having(
+                (e) => e.message,
+                'message',
+                'Failed to decrypt data',
+              )
+              .having(
+                (e) => e.originalMessage,
+                'originalMessage',
+                'Invalid data length',
+              ),
+        ),
+      );
+    });
+
+    test(
+        'it throws TdkException for data exactly at minimum length but invalid format',
+        () async {
+      final invalidData = Uint8List(28);
+
+      expect(
+        () => encryptionService.decryptData(invalidData),
+        throwsA(
+          isA<TdkException>().having(
+            (e) => e.message,
+            'message',
+            'Failed to decrypt data',
+          ),
+        ),
+      );
     });
   });
 }
