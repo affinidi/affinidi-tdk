@@ -8,10 +8,10 @@ class DatabaseConfig {
   /// Web: Uses IndexedDB
   /// Native (iOS/Android): Uses SQLite in Documents directory
   ///
-  /// [databaseName] - Name of the database (default: 'vault_edge_drift.db')
+  /// [databaseName] - Name of the database
   /// [directory] - directory where database is stored, it's ignored on web
   static Future<Database> createDatabase({
-    String databaseName = 'vault_edge_drift_db',
+    required String databaseName,
     String? directory,
   }) async {
     return DatabasePlatform.createDatabase(
