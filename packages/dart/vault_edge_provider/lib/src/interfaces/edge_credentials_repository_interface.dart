@@ -14,6 +14,18 @@ abstract interface class EdgeCredentialsRepositoryInterface {
     VaultCancelToken? cancelToken,
   });
 
+  /// Gets the autoId for the last item in a credential query for pagination
+  ///
+  /// [profileId] - the profile identifier
+  /// [limit] - maximum amount of items to retrieve
+  /// [exclusiveStartItemId] - items with an id greater than exclusiveStartItemId
+  Future<String?> getLastEvaluatedItemId({
+    required String profileId,
+    int? limit,
+    String? exclusiveStartItemId,
+    VaultCancelToken? cancelToken,
+  });
+
   /// Creates a new credential with raw data
   Future<void> saveCredentialData({
     required String profileId,

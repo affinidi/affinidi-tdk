@@ -291,12 +291,22 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $ItemsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _autoIdMeta = const VerificationMeta('autoId');
+  @override
+  late final GeneratedColumn<int> autoId = GeneratedColumn<int>(
+      'auto_id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
       clientDefault: const Uuid().v4);
   static const VerificationMeta _profileIdMeta =
       const VerificationMeta('profileId');
@@ -341,7 +351,7 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
       clientDefault: clock.now);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, profileId, name, parentId, itemType, createdAt, modifiedAt];
+      [autoId, id, profileId, name, parentId, itemType, createdAt, modifiedAt];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -352,6 +362,10 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('auto_id')) {
+      context.handle(_autoIdMeta,
+          autoId.isAcceptableOrUnknown(data['auto_id']!, _autoIdMeta));
+    }
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
     }
@@ -385,11 +399,13 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => {autoId};
   @override
   Item map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return Item(
+      autoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}auto_id'])!,
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       profileId: attachedDatabase.typeMapping
@@ -418,6 +434,9 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
 }
 
 class Item extends DataClass implements Insertable<Item> {
+  /// Auto-incrementing ID for pagination
+  final int autoId;
+
   /// An item identifier
   final String id;
 
@@ -439,7 +458,8 @@ class Item extends DataClass implements Insertable<Item> {
   /// Last modification timestamp of the item.
   final DateTime modifiedAt;
   const Item(
-      {required this.id,
+      {required this.autoId,
+      required this.id,
       required this.profileId,
       required this.name,
       this.parentId,
@@ -449,6 +469,7 @@ class Item extends DataClass implements Insertable<Item> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['auto_id'] = Variable<int>(autoId);
     map['id'] = Variable<String>(id);
     map['profile_id'] = Variable<String>(profileId);
     map['name'] = Variable<String>(name);
@@ -466,6 +487,7 @@ class Item extends DataClass implements Insertable<Item> {
 
   ItemsCompanion toCompanion(bool nullToAbsent) {
     return ItemsCompanion(
+      autoId: Value(autoId),
       id: Value(id),
       profileId: Value(profileId),
       name: Value(name),
@@ -482,6 +504,7 @@ class Item extends DataClass implements Insertable<Item> {
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Item(
+      autoId: serializer.fromJson<int>(json['autoId']),
       id: serializer.fromJson<String>(json['id']),
       profileId: serializer.fromJson<String>(json['profileId']),
       name: serializer.fromJson<String>(json['name']),
@@ -495,6 +518,7 @@ class Item extends DataClass implements Insertable<Item> {
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'autoId': serializer.toJson<int>(autoId),
       'id': serializer.toJson<String>(id),
       'profileId': serializer.toJson<String>(profileId),
       'name': serializer.toJson<String>(name),
@@ -506,7 +530,8 @@ class Item extends DataClass implements Insertable<Item> {
   }
 
   Item copyWith(
-          {String? id,
+          {int? autoId,
+          String? id,
           String? profileId,
           String? name,
           Value<String?> parentId = const Value.absent(),
@@ -514,6 +539,7 @@ class Item extends DataClass implements Insertable<Item> {
           DateTime? createdAt,
           DateTime? modifiedAt}) =>
       Item(
+        autoId: autoId ?? this.autoId,
         id: id ?? this.id,
         profileId: profileId ?? this.profileId,
         name: name ?? this.name,
@@ -524,6 +550,7 @@ class Item extends DataClass implements Insertable<Item> {
       );
   Item copyWithCompanion(ItemsCompanion data) {
     return Item(
+      autoId: data.autoId.present ? data.autoId.value : this.autoId,
       id: data.id.present ? data.id.value : this.id,
       profileId: data.profileId.present ? data.profileId.value : this.profileId,
       name: data.name.present ? data.name.value : this.name,
@@ -538,6 +565,7 @@ class Item extends DataClass implements Insertable<Item> {
   @override
   String toString() {
     return (StringBuffer('Item(')
+          ..write('autoId: $autoId, ')
           ..write('id: $id, ')
           ..write('profileId: $profileId, ')
           ..write('name: $name, ')
@@ -551,11 +579,12 @@ class Item extends DataClass implements Insertable<Item> {
 
   @override
   int get hashCode => Object.hash(
-      id, profileId, name, parentId, itemType, createdAt, modifiedAt);
+      autoId, id, profileId, name, parentId, itemType, createdAt, modifiedAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Item &&
+          other.autoId == this.autoId &&
           other.id == this.id &&
           other.profileId == this.profileId &&
           other.name == this.name &&
@@ -566,6 +595,7 @@ class Item extends DataClass implements Insertable<Item> {
 }
 
 class ItemsCompanion extends UpdateCompanion<Item> {
+  final Value<int> autoId;
   final Value<String> id;
   final Value<String> profileId;
   final Value<String> name;
@@ -573,8 +603,8 @@ class ItemsCompanion extends UpdateCompanion<Item> {
   final Value<ItemType> itemType;
   final Value<DateTime> createdAt;
   final Value<DateTime> modifiedAt;
-  final Value<int> rowid;
   const ItemsCompanion({
+    this.autoId = const Value.absent(),
     this.id = const Value.absent(),
     this.profileId = const Value.absent(),
     this.name = const Value.absent(),
@@ -582,9 +612,9 @@ class ItemsCompanion extends UpdateCompanion<Item> {
     this.itemType = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.modifiedAt = const Value.absent(),
-    this.rowid = const Value.absent(),
   });
   ItemsCompanion.insert({
+    this.autoId = const Value.absent(),
     this.id = const Value.absent(),
     required String profileId,
     required String name,
@@ -592,11 +622,11 @@ class ItemsCompanion extends UpdateCompanion<Item> {
     required ItemType itemType,
     this.createdAt = const Value.absent(),
     this.modifiedAt = const Value.absent(),
-    this.rowid = const Value.absent(),
   })  : profileId = Value(profileId),
         name = Value(name),
         itemType = Value(itemType);
   static Insertable<Item> custom({
+    Expression<int>? autoId,
     Expression<String>? id,
     Expression<String>? profileId,
     Expression<String>? name,
@@ -604,9 +634,9 @@ class ItemsCompanion extends UpdateCompanion<Item> {
     Expression<int>? itemType,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? modifiedAt,
-    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
+      if (autoId != null) 'auto_id': autoId,
       if (id != null) 'id': id,
       if (profileId != null) 'profile_id': profileId,
       if (name != null) 'name': name,
@@ -614,20 +644,20 @@ class ItemsCompanion extends UpdateCompanion<Item> {
       if (itemType != null) 'item_type': itemType,
       if (createdAt != null) 'created_at': createdAt,
       if (modifiedAt != null) 'modified_at': modifiedAt,
-      if (rowid != null) 'rowid': rowid,
     });
   }
 
   ItemsCompanion copyWith(
-      {Value<String>? id,
+      {Value<int>? autoId,
+      Value<String>? id,
       Value<String>? profileId,
       Value<String>? name,
       Value<String?>? parentId,
       Value<ItemType>? itemType,
       Value<DateTime>? createdAt,
-      Value<DateTime>? modifiedAt,
-      Value<int>? rowid}) {
+      Value<DateTime>? modifiedAt}) {
     return ItemsCompanion(
+      autoId: autoId ?? this.autoId,
       id: id ?? this.id,
       profileId: profileId ?? this.profileId,
       name: name ?? this.name,
@@ -635,13 +665,15 @@ class ItemsCompanion extends UpdateCompanion<Item> {
       itemType: itemType ?? this.itemType,
       createdAt: createdAt ?? this.createdAt,
       modifiedAt: modifiedAt ?? this.modifiedAt,
-      rowid: rowid ?? this.rowid,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (autoId.present) {
+      map['auto_id'] = Variable<int>(autoId.value);
+    }
     if (id.present) {
       map['id'] = Variable<String>(id.value);
     }
@@ -664,23 +696,20 @@ class ItemsCompanion extends UpdateCompanion<Item> {
     if (modifiedAt.present) {
       map['modified_at'] = Variable<DateTime>(modifiedAt.value);
     }
-    if (rowid.present) {
-      map['rowid'] = Variable<int>(rowid.value);
-    }
     return map;
   }
 
   @override
   String toString() {
     return (StringBuffer('ItemsCompanion(')
+          ..write('autoId: $autoId, ')
           ..write('id: $id, ')
           ..write('profileId: $profileId, ')
           ..write('name: $name, ')
           ..write('parentId: $parentId, ')
           ..write('itemType: $itemType, ')
           ..write('createdAt: $createdAt, ')
-          ..write('modifiedAt: $modifiedAt, ')
-          ..write('rowid: $rowid')
+          ..write('modifiedAt: $modifiedAt')
           ..write(')'))
         .toString();
   }
@@ -888,12 +917,22 @@ class $CredentialsTable extends Credentials
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $CredentialsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _autoIdMeta = const VerificationMeta('autoId');
+  @override
+  late final GeneratedColumn<int> autoId = GeneratedColumn<int>(
+      'auto_id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
       clientDefault: const Uuid().v4);
   static const VerificationMeta _profileIdMeta =
       const VerificationMeta('profileId');
@@ -933,7 +972,7 @@ class $CredentialsTable extends Credentials
       clientDefault: clock.now);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, profileId, name, content, createdAt, modifiedAt];
+      [autoId, id, profileId, name, content, createdAt, modifiedAt];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -944,6 +983,10 @@ class $CredentialsTable extends Credentials
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('auto_id')) {
+      context.handle(_autoIdMeta,
+          autoId.isAcceptableOrUnknown(data['auto_id']!, _autoIdMeta));
+    }
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
     }
@@ -979,11 +1022,13 @@ class $CredentialsTable extends Credentials
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => {autoId};
   @override
   Credential map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return Credential(
+      autoId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}auto_id'])!,
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       profileId: attachedDatabase.typeMapping
@@ -1006,6 +1051,9 @@ class $CredentialsTable extends Credentials
 }
 
 class Credential extends DataClass implements Insertable<Credential> {
+  /// Auto-incrementing ID for pagination
+  final int autoId;
+
   /// A credential identifier
   final String id;
 
@@ -1024,7 +1072,8 @@ class Credential extends DataClass implements Insertable<Credential> {
   /// Last modification timestamp of the credential
   final DateTime modifiedAt;
   const Credential(
-      {required this.id,
+      {required this.autoId,
+      required this.id,
       required this.profileId,
       required this.name,
       required this.content,
@@ -1033,6 +1082,7 @@ class Credential extends DataClass implements Insertable<Credential> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['auto_id'] = Variable<int>(autoId);
     map['id'] = Variable<String>(id);
     map['profile_id'] = Variable<String>(profileId);
     map['name'] = Variable<String>(name);
@@ -1044,6 +1094,7 @@ class Credential extends DataClass implements Insertable<Credential> {
 
   CredentialsCompanion toCompanion(bool nullToAbsent) {
     return CredentialsCompanion(
+      autoId: Value(autoId),
       id: Value(id),
       profileId: Value(profileId),
       name: Value(name),
@@ -1057,6 +1108,7 @@ class Credential extends DataClass implements Insertable<Credential> {
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return Credential(
+      autoId: serializer.fromJson<int>(json['autoId']),
       id: serializer.fromJson<String>(json['id']),
       profileId: serializer.fromJson<String>(json['profileId']),
       name: serializer.fromJson<String>(json['name']),
@@ -1069,6 +1121,7 @@ class Credential extends DataClass implements Insertable<Credential> {
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'autoId': serializer.toJson<int>(autoId),
       'id': serializer.toJson<String>(id),
       'profileId': serializer.toJson<String>(profileId),
       'name': serializer.toJson<String>(name),
@@ -1079,13 +1132,15 @@ class Credential extends DataClass implements Insertable<Credential> {
   }
 
   Credential copyWith(
-          {String? id,
+          {int? autoId,
+          String? id,
           String? profileId,
           String? name,
           Uint8List? content,
           DateTime? createdAt,
           DateTime? modifiedAt}) =>
       Credential(
+        autoId: autoId ?? this.autoId,
         id: id ?? this.id,
         profileId: profileId ?? this.profileId,
         name: name ?? this.name,
@@ -1095,6 +1150,7 @@ class Credential extends DataClass implements Insertable<Credential> {
       );
   Credential copyWithCompanion(CredentialsCompanion data) {
     return Credential(
+      autoId: data.autoId.present ? data.autoId.value : this.autoId,
       id: data.id.present ? data.id.value : this.id,
       profileId: data.profileId.present ? data.profileId.value : this.profileId,
       name: data.name.present ? data.name.value : this.name,
@@ -1108,6 +1164,7 @@ class Credential extends DataClass implements Insertable<Credential> {
   @override
   String toString() {
     return (StringBuffer('Credential(')
+          ..write('autoId: $autoId, ')
           ..write('id: $id, ')
           ..write('profileId: $profileId, ')
           ..write('name: $name, ')
@@ -1119,12 +1176,13 @@ class Credential extends DataClass implements Insertable<Credential> {
   }
 
   @override
-  int get hashCode => Object.hash(id, profileId, name,
+  int get hashCode => Object.hash(autoId, id, profileId, name,
       $driftBlobEquality.hash(content), createdAt, modifiedAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is Credential &&
+          other.autoId == this.autoId &&
           other.id == this.id &&
           other.profileId == this.profileId &&
           other.name == this.name &&
@@ -1134,75 +1192,78 @@ class Credential extends DataClass implements Insertable<Credential> {
 }
 
 class CredentialsCompanion extends UpdateCompanion<Credential> {
+  final Value<int> autoId;
   final Value<String> id;
   final Value<String> profileId;
   final Value<String> name;
   final Value<Uint8List> content;
   final Value<DateTime> createdAt;
   final Value<DateTime> modifiedAt;
-  final Value<int> rowid;
   const CredentialsCompanion({
+    this.autoId = const Value.absent(),
     this.id = const Value.absent(),
     this.profileId = const Value.absent(),
     this.name = const Value.absent(),
     this.content = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.modifiedAt = const Value.absent(),
-    this.rowid = const Value.absent(),
   });
   CredentialsCompanion.insert({
+    this.autoId = const Value.absent(),
     this.id = const Value.absent(),
     required String profileId,
     required String name,
     required Uint8List content,
     this.createdAt = const Value.absent(),
     this.modifiedAt = const Value.absent(),
-    this.rowid = const Value.absent(),
   })  : profileId = Value(profileId),
         name = Value(name),
         content = Value(content);
   static Insertable<Credential> custom({
+    Expression<int>? autoId,
     Expression<String>? id,
     Expression<String>? profileId,
     Expression<String>? name,
     Expression<Uint8List>? content,
     Expression<DateTime>? createdAt,
     Expression<DateTime>? modifiedAt,
-    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
+      if (autoId != null) 'auto_id': autoId,
       if (id != null) 'id': id,
       if (profileId != null) 'profile_id': profileId,
       if (name != null) 'name': name,
       if (content != null) 'content': content,
       if (createdAt != null) 'created_at': createdAt,
       if (modifiedAt != null) 'modified_at': modifiedAt,
-      if (rowid != null) 'rowid': rowid,
     });
   }
 
   CredentialsCompanion copyWith(
-      {Value<String>? id,
+      {Value<int>? autoId,
+      Value<String>? id,
       Value<String>? profileId,
       Value<String>? name,
       Value<Uint8List>? content,
       Value<DateTime>? createdAt,
-      Value<DateTime>? modifiedAt,
-      Value<int>? rowid}) {
+      Value<DateTime>? modifiedAt}) {
     return CredentialsCompanion(
+      autoId: autoId ?? this.autoId,
       id: id ?? this.id,
       profileId: profileId ?? this.profileId,
       name: name ?? this.name,
       content: content ?? this.content,
       createdAt: createdAt ?? this.createdAt,
       modifiedAt: modifiedAt ?? this.modifiedAt,
-      rowid: rowid ?? this.rowid,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (autoId.present) {
+      map['auto_id'] = Variable<int>(autoId.value);
+    }
     if (id.present) {
       map['id'] = Variable<String>(id.value);
     }
@@ -1221,22 +1282,19 @@ class CredentialsCompanion extends UpdateCompanion<Credential> {
     if (modifiedAt.present) {
       map['modified_at'] = Variable<DateTime>(modifiedAt.value);
     }
-    if (rowid.present) {
-      map['rowid'] = Variable<int>(rowid.value);
-    }
     return map;
   }
 
   @override
   String toString() {
     return (StringBuffer('CredentialsCompanion(')
+          ..write('autoId: $autoId, ')
           ..write('id: $id, ')
           ..write('profileId: $profileId, ')
           ..write('name: $name, ')
           ..write('content: $content, ')
           ..write('createdAt: $createdAt, ')
-          ..write('modifiedAt: $modifiedAt, ')
-          ..write('rowid: $rowid')
+          ..write('modifiedAt: $modifiedAt')
           ..write(')'))
         .toString();
   }
@@ -1566,6 +1624,7 @@ typedef $$ProfilesTableProcessedTableManager = ProcessedTableManager<
     Profile,
     PrefetchHooks Function({bool itemsRefs, bool credentialsRefs})>;
 typedef $$ItemsTableCreateCompanionBuilder = ItemsCompanion Function({
+  Value<int> autoId,
   Value<String> id,
   required String profileId,
   required String name,
@@ -1573,9 +1632,9 @@ typedef $$ItemsTableCreateCompanionBuilder = ItemsCompanion Function({
   required ItemType itemType,
   Value<DateTime> createdAt,
   Value<DateTime> modifiedAt,
-  Value<int> rowid,
 });
 typedef $$ItemsTableUpdateCompanionBuilder = ItemsCompanion Function({
+  Value<int> autoId,
   Value<String> id,
   Value<String> profileId,
   Value<String> name,
@@ -1583,7 +1642,6 @@ typedef $$ItemsTableUpdateCompanionBuilder = ItemsCompanion Function({
   Value<ItemType> itemType,
   Value<DateTime> createdAt,
   Value<DateTime> modifiedAt,
-  Value<int> rowid,
 });
 
 final class $$ItemsTableReferences
@@ -1627,6 +1685,9 @@ class $$ItemsTableFilterComposer extends Composer<_$Database, $ItemsTable> {
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnFilters<int> get autoId => $composableBuilder(
+      column: $table.autoId, builder: (column) => ColumnFilters(column));
+
   ColumnFilters<String> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnFilters(column));
 
@@ -1697,6 +1758,9 @@ class $$ItemsTableOrderingComposer extends Composer<_$Database, $ItemsTable> {
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnOrderings<int> get autoId => $composableBuilder(
+      column: $table.autoId, builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<String> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnOrderings(column));
 
@@ -1744,6 +1808,9 @@ class $$ItemsTableAnnotationComposer extends Composer<_$Database, $ItemsTable> {
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  GeneratedColumn<int> get autoId =>
+      $composableBuilder(column: $table.autoId, builder: (column) => column);
+
   GeneratedColumn<String> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
 
@@ -1827,6 +1894,7 @@ class $$ItemsTableTableManager extends RootTableManager<
           createComputedFieldComposer: () =>
               $$ItemsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
+            Value<int> autoId = const Value.absent(),
             Value<String> id = const Value.absent(),
             Value<String> profileId = const Value.absent(),
             Value<String> name = const Value.absent(),
@@ -1834,9 +1902,9 @@ class $$ItemsTableTableManager extends RootTableManager<
             Value<ItemType> itemType = const Value.absent(),
             Value<DateTime> createdAt = const Value.absent(),
             Value<DateTime> modifiedAt = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
           }) =>
               ItemsCompanion(
+            autoId: autoId,
             id: id,
             profileId: profileId,
             name: name,
@@ -1844,9 +1912,9 @@ class $$ItemsTableTableManager extends RootTableManager<
             itemType: itemType,
             createdAt: createdAt,
             modifiedAt: modifiedAt,
-            rowid: rowid,
           ),
           createCompanionCallback: ({
+            Value<int> autoId = const Value.absent(),
             Value<String> id = const Value.absent(),
             required String profileId,
             required String name,
@@ -1854,9 +1922,9 @@ class $$ItemsTableTableManager extends RootTableManager<
             required ItemType itemType,
             Value<DateTime> createdAt = const Value.absent(),
             Value<DateTime> modifiedAt = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
           }) =>
               ItemsCompanion.insert(
+            autoId: autoId,
             id: id,
             profileId: profileId,
             name: name,
@@ -1864,7 +1932,6 @@ class $$ItemsTableTableManager extends RootTableManager<
             itemType: itemType,
             createdAt: createdAt,
             modifiedAt: modifiedAt,
-            rowid: rowid,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) =>
@@ -2163,23 +2230,23 @@ typedef $$FileContentsTableProcessedTableManager = ProcessedTableManager<
     PrefetchHooks Function({bool id})>;
 typedef $$CredentialsTableCreateCompanionBuilder = CredentialsCompanion
     Function({
+  Value<int> autoId,
   Value<String> id,
   required String profileId,
   required String name,
   required Uint8List content,
   Value<DateTime> createdAt,
   Value<DateTime> modifiedAt,
-  Value<int> rowid,
 });
 typedef $$CredentialsTableUpdateCompanionBuilder = CredentialsCompanion
     Function({
+  Value<int> autoId,
   Value<String> id,
   Value<String> profileId,
   Value<String> name,
   Value<Uint8List> content,
   Value<DateTime> createdAt,
   Value<DateTime> modifiedAt,
-  Value<int> rowid,
 });
 
 final class $$CredentialsTableReferences
@@ -2211,6 +2278,9 @@ class $$CredentialsTableFilterComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnFilters<int> get autoId => $composableBuilder(
+      column: $table.autoId, builder: (column) => ColumnFilters(column));
+
   ColumnFilters<String> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnFilters(column));
 
@@ -2256,6 +2326,9 @@ class $$CredentialsTableOrderingComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  ColumnOrderings<int> get autoId => $composableBuilder(
+      column: $table.autoId, builder: (column) => ColumnOrderings(column));
+
   ColumnOrderings<String> get id => $composableBuilder(
       column: $table.id, builder: (column) => ColumnOrderings(column));
 
@@ -2301,6 +2374,9 @@ class $$CredentialsTableAnnotationComposer
     super.$addJoinBuilderToRootComposer,
     super.$removeJoinBuilderFromRootComposer,
   });
+  GeneratedColumn<int> get autoId =>
+      $composableBuilder(column: $table.autoId, builder: (column) => column);
+
   GeneratedColumn<String> get id =>
       $composableBuilder(column: $table.id, builder: (column) => column);
 
@@ -2360,40 +2436,40 @@ class $$CredentialsTableTableManager extends RootTableManager<
           createComputedFieldComposer: () =>
               $$CredentialsTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback: ({
+            Value<int> autoId = const Value.absent(),
             Value<String> id = const Value.absent(),
             Value<String> profileId = const Value.absent(),
             Value<String> name = const Value.absent(),
             Value<Uint8List> content = const Value.absent(),
             Value<DateTime> createdAt = const Value.absent(),
             Value<DateTime> modifiedAt = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
           }) =>
               CredentialsCompanion(
+            autoId: autoId,
             id: id,
             profileId: profileId,
             name: name,
             content: content,
             createdAt: createdAt,
             modifiedAt: modifiedAt,
-            rowid: rowid,
           ),
           createCompanionCallback: ({
+            Value<int> autoId = const Value.absent(),
             Value<String> id = const Value.absent(),
             required String profileId,
             required String name,
             required Uint8List content,
             Value<DateTime> createdAt = const Value.absent(),
             Value<DateTime> modifiedAt = const Value.absent(),
-            Value<int> rowid = const Value.absent(),
           }) =>
               CredentialsCompanion.insert(
+            autoId: autoId,
             id: id,
             profileId: profileId,
             name: name,
             content: content,
             createdAt: createdAt,
             modifiedAt: modifiedAt,
-            rowid: rowid,
           ),
           withReferenceMapper: (p0) => p0
               .map((e) => (

@@ -20,14 +20,17 @@ class Database extends _$Database {
 
   /// Returns the current schema version
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 }
 
 /// Table definition to hold folders and files with a hierarchy
 @DataClassName('Item')
 class Items extends Table {
+  /// Auto-incrementing ID for pagination
+  IntColumn get autoId => integer().autoIncrement()();
+
   /// An item identifier
-  TextColumn get id => text().clientDefault(const Uuid().v4)();
+  TextColumn get id => text().clientDefault(const Uuid().v4).unique()();
 
   /// Profile id to which the item belongs
   TextColumn get profileId => text().references(Profiles, #id)();
@@ -46,9 +49,6 @@ class Items extends Table {
 
   /// Last modification timestamp of the item.
   DateTimeColumn get modifiedAt => dateTime().clientDefault(clock.now)();
-
-  @override
-  Set<Column> get primaryKey => {id};
 }
 
 /// ItemTypes can be of type folder or file
@@ -117,8 +117,11 @@ class FileContents extends Table {
 /// Table definition to hold credential data
 @DataClassName('Credential')
 class Credentials extends Table {
+  /// Auto-incrementing ID for pagination
+  IntColumn get autoId => integer().autoIncrement()();
+
   /// A credential identifier
-  TextColumn get id => text().clientDefault(const Uuid().v4)();
+  TextColumn get id => text().clientDefault(const Uuid().v4).unique()();
 
   /// Profile id to which the credential belongs
   TextColumn get profileId => text().references(Profiles, #id)();
@@ -134,7 +137,4 @@ class Credentials extends Table {
 
   /// Last modification timestamp of the credential
   DateTimeColumn get modifiedAt => dateTime().clientDefault(clock.now)();
-
-  @override
-  Set<Column> get primaryKey => {id};
 }

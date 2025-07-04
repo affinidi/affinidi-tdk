@@ -114,4 +114,118 @@ void main() {
       );
     });
   });
+
+  group('When testing pagination', () {
+    test('should paginate credentials correctly', () async {
+      for (var i = 0; i < 25; i++) {
+        await repository.saveCredentialData(
+          profileId: profileId,
+          credentialId: 'credential_$i',
+          credentialName: 'Credential $i',
+          credentialContent: Uint8List.fromList([i]),
+        );
+      }
+
+      String? cursor;
+      var totalFetched = 0;
+      const pageSize = 10;
+      final fetchedIds = <String>[];
+      var pageCount = 0;
+
+      do {
+        pageCount++;
+        final credentials = await repository.listCredentialData(
+          profileId: profileId,
+          limit: pageSize,
+          exclusiveStartItemId: cursor,
+        );
+        final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
+          profileId: profileId,
+          limit: pageSize,
+          exclusiveStartItemId: cursor,
+        );
+
+        fetchedIds.addAll(credentials.map((e) => e.id));
+        totalFetched += credentials.length;
+        cursor = lastEvaluatedItemId;
+      } while (cursor != null);
+
+      expect(totalFetched, 25);
+      expect(fetchedIds.toSet().length, 25);
+      expect(pageCount, 3);
+    });
+
+    test('should handle empty credentials pagination', () async {
+      final credentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(credentials, isEmpty);
+      expect(lastEvaluatedItemId, isNull);
+    });
+
+    test('should handle pagination with exact page size', () async {
+      for (var i = 0; i < 10; i++) {
+        await repository.saveCredentialData(
+          profileId: profileId,
+          credentialId: 'credential_$i',
+          credentialName: 'Credential $i',
+          credentialContent: Uint8List.fromList([i]),
+        );
+      }
+
+      final credentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(credentials.length, 10);
+      expect(lastEvaluatedItemId, isNotNull);
+
+      final nextCredentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: lastEvaluatedItemId,
+      );
+      expect(nextCredentials, isEmpty);
+    });
+
+    test('should handle pagination with fewer items than page size', () async {
+      for (var i = 0; i < 5; i++) {
+        await repository.saveCredentialData(
+          profileId: profileId,
+          credentialId: 'credential_$i',
+          credentialName: 'Credential $i',
+          credentialContent: Uint8List.fromList([i]),
+        );
+      }
+
+      final credentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(credentials.length, 5);
+      expect(lastEvaluatedItemId, isNull);
+    });
+  });
 }

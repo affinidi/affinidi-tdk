@@ -49,6 +49,17 @@ abstract interface class EdgeFileRepositoryInterface {
     String? exclusiveStartItemId,
   });
 
+  /// Gets the autoId for the last item in a folder query for pagination
+  ///
+  /// [folderId] - when null returns all elements without a parent Id
+  /// [limit] - maximum amount of items to retrieve
+  /// [exclusiveStartItemId] - items with an id greater than exclusiveStartItemId
+  Future<String?> getLastEvaluatedItemId({
+    String? folderId,
+    int? limit,
+    String? exclusiveStartItemId,
+  });
+
   /// Rename a file
   ///
   /// [fileId] - the file unique identifier

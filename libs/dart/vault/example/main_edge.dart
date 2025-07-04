@@ -181,6 +181,36 @@ void main() async {
 
   profiles = await vault.listProfiles();
   _listProfileNames(profiles, label: 'Names after deleting profile');
+
+  print('[Demo] Creating 25 files for pagination test...');
+  for (var i = 0; i < 25; i++) {
+    await profile.defaultFileStorage!.createFile(
+      fileName: 'file_$i.txt',
+      data: Uint8List.fromList([i]),
+      parentFolderId: rootFolderId,
+    );
+  }
+
+  print('[Demo] Testing pagination...');
+  String? exclusiveStartItemId;
+  var pageNum = 1;
+  const pageSize = 10;
+
+  do {
+    final page = await profile.defaultFileStorage!.getFolder(
+      folderId: rootFolderId,
+      limit: pageSize,
+      exclusiveStartItemId: exclusiveStartItemId,
+    );
+
+    print('Page $pageNum:');
+    for (final item in page.items) {
+      print('  File: ${item.name} (id: ${item.id})');
+    }
+
+    exclusiveStartItemId = page.lastEvaluatedItemId;
+    pageNum++;
+  } while (exclusiveStartItemId != null);
 }
 
 String _makeNewName(Profile profile) {

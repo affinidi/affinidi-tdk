@@ -237,6 +237,14 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
               ? filter.parentId.equals(folderId)
               : filter.parentId.isNull()));
 
+    if (exclusiveStartItemId != null) {
+      final startAutoId = int.tryParse(exclusiveStartItemId);
+      if (startAutoId != null) {
+        query = query
+          ..where((filter) => filter.autoId.isBiggerThanValue(startAutoId));
+      }
+    }
+
     if (limit != null) {
       query = query..limit(limit);
     }
@@ -259,6 +267,49 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
               parentId: item.parentId,
             );
     }).toList();
+  }
+
+  /// Gets the autoId for the last item in a folder query for pagination
+  @override
+  Future<String?> getLastEvaluatedItemId({
+    String? folderId,
+    int? limit,
+    String? exclusiveStartItemId,
+  }) async {
+    if (folderId != null && folderId.isNotEmpty) {
+      final existingFolder = await _getExistingFolder(folderId);
+      if (existingFolder == null) {
+        return null;
+      }
+    }
+
+    var query = _database.select(_database.items)
+      ..where((filter) =>
+          filter.profileId.equals(_profileId) &
+          (folderId != null && folderId.isNotEmpty
+              ? filter.parentId.equals(folderId)
+              : filter.parentId.isNull()));
+
+    if (exclusiveStartItemId != null) {
+      final startAutoId = int.tryParse(exclusiveStartItemId);
+      if (startAutoId != null) {
+        query = query
+          ..where((filter) => filter.autoId.isBiggerThanValue(startAutoId));
+      }
+    }
+
+    if (limit != null) {
+      query = query..limit(limit);
+    }
+
+    final items = await query.get();
+
+    // If we got exactly the limit number of items, there might be more
+    if (items.isNotEmpty && limit != null && items.length == limit) {
+      return items.last.autoId.toString();
+    }
+
+    return null;
   }
 
   @override

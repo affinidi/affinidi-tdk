@@ -81,8 +81,11 @@ class EdgeDriftCredentialRepository
       ..where((filter) => filter.profileId.equals(_profileId));
 
     if (exclusiveStartItemId != null) {
-      query = query
-        ..where((filter) => filter.id.isBiggerThanValue(exclusiveStartItemId));
+      final startAutoId = int.tryParse(exclusiveStartItemId);
+      if (startAutoId != null) {
+        query = query
+          ..where((filter) => filter.autoId.isBiggerThanValue(startAutoId));
+      }
     }
 
     if (limit != null) {
@@ -113,5 +116,39 @@ class EdgeDriftCredentialRepository
       content: credentialContent,
     );
     await _database.into(_database.credentials).insert(credentialEntry);
+  }
+
+  @override
+  Future<String?> getLastEvaluatedItemId({
+    required String profileId,
+    int? limit,
+    String? exclusiveStartItemId,
+    VaultCancelToken? cancelToken,
+  }) async {
+    var query = _database.select(_database.credentials)
+      ..where((filter) => filter.profileId.equals(_profileId));
+
+    if (exclusiveStartItemId != null) {
+      final startAutoId = int.tryParse(exclusiveStartItemId);
+      if (startAutoId != null) {
+        query = query
+          ..where((filter) => filter.autoId.isBiggerThanValue(startAutoId));
+      }
+    }
+
+    if (limit != null) {
+      query = query..limit(limit);
+    }
+
+    final credentials = await query.get();
+
+    // If we got exactly the limit number of items, there might be more
+    if (credentials.isNotEmpty &&
+        limit != null &&
+        credentials.length == limit) {
+      return credentials.last.autoId.toString();
+    }
+
+    return null;
   }
 }

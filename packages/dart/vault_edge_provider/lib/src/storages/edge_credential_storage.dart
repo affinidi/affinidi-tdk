@@ -108,7 +108,13 @@ class EdgeCredentialStorage implements CredentialStorage {
       }),
     );
 
-    final lastEvaluatedItemId = credentials.lastOrNull?.id;
+    // Get the proper pagination cursor using autoId
+    final lastEvaluatedItemId = await _repository.getLastEvaluatedItemId(
+      profileId: _profileId,
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
+      cancelToken: cancelToken,
+    );
 
     return PaginatedList(
       items: credentials,

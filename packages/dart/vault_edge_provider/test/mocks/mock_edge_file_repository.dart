@@ -124,4 +124,13 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   }) async {
     return true;
   }
+
+  @override
+  Future<String?> getLastEvaluatedItemId({
+    String? folderId,
+    int? limit,
+    String? exclusiveStartItemId,
+  }) async {
+    return null;
+  }
 }
