@@ -17,7 +17,7 @@ void main() async {
 
   final encryptionService = EdgeEncryptionService(
       cipher: Uint8List.fromList(List.generate(32, (idx) => idx + 1)));
-  final database = Database(NativeDatabase.memory());
+  final database = await DatabaseConfig.createInMemoryDatabase();
 
   // initialization
   const edgeRepositoryId = 'edge';
