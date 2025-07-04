@@ -60,7 +60,7 @@ void main() {
     mockIamApiService = MockIamApiService();
     mockKeyPair = MockKeyPair();
 
-    sut = VfsProfileRepository.withMocks(
+    sut = VfsProfileRepository.withDependencies(
       ProfileFixtures.repositoryId,
       consumerAuthProviderFactory: (didSigner, {client}) =>
           ConsumerAuthProvider(signer: didSigner, client: client),
