@@ -91,7 +91,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   /// - [vaultDataManagerServiceFactory]: A factory function for creating regular [VaultDataManagerService] instances
   /// - [vaultDelegatedDataManagerServiceFactory]: A factory function for creating delegated [VaultDataManagerService] instances
   @visibleForTesting
-  factory VfsProfileRepository.withMocks(
+  factory VfsProfileRepository.withDependencies(
     String id, {
     CryptographyServiceInterface? cryptographyService,
     ConsumerAuthProviderFactory? consumerAuthProviderFactory,
