@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_vault_edge_provider/src/services/edge_encryption_service.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_edge_provider/src/services/edge_encryption_service.dart';
 import 'package:test/test.dart';
 
 void main() {
