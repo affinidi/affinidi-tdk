@@ -215,7 +215,12 @@ class EdgeFileStorage implements FileStorage {
       exclusiveStartItemId: exclusiveStartItemId,
     );
 
-    final lastEvaluatedItemId = items.lastOrNull?.id;
+    // Get the proper pagination cursor using autoId
+    final lastEvaluatedItemId = await _repository.getLastEvaluatedItemId(
+      folderId: sanitizedFolderId,
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
+    );
 
     return PaginatedList(
         items: items, lastEvaluatedItemId: lastEvaluatedItemId);
