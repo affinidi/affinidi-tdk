@@ -1,0 +1,24 @@
+name: vault_edge_drift_provider_example
+publish_to: "none"
+description: Example app for vault_edge_drift_provider
+version: 1.0.0
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  affinidi_tdk_vault_edge_drift_provider:
+    path: ../
+  drift: ^2.23.1
+  file_picker: ^8.0.0+1
+  flutter:
+    sdk: flutter
+  path_provider: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

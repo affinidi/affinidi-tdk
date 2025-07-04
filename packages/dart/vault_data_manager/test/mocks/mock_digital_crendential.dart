@@ -1,6 +1,5 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:ssi/ssi.dart';
 
 class MockDigitalCredential extends Mock implements DigitalCredential {
   final VerifiableCredential _vc;
