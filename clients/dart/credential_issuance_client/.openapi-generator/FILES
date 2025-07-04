@@ -82,6 +82,8 @@ doc/VcClaimedError.md
 doc/WellKnownApi.md
 doc/WellKnownOpenIdCredentialIssuerResponse.md
 doc/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md
+doc/WellKnownOpenIdCredentialIssuerResponseDisplay.md
+doc/WellKnownOpenIdCredentialIssuerResponseDisplayLogo.md
 lib/affinidi_tdk_credential_issuance_client.dart
 lib/src/api.dart
 lib/src/api/configuration_api.dart
@@ -171,6 +173,8 @@ lib/src/model/update_issuance_config_input.dart
 lib/src/model/vc_claimed_error.dart
 lib/src/model/well_known_open_id_credential_issuer_response.dart
 lib/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart
+lib/src/model/well_known_open_id_credential_issuer_response_display.dart
+lib/src/model/well_known_open_id_credential_issuer_response_display_logo.dart
 lib/src/serializers.dart
 project.json
 pubspec.yaml
@@ -252,4 +256,6 @@ test/update_issuance_config_input_test.dart
 test/vc_claimed_error_test.dart
 test/well_known_api_test.dart
 test/well_known_open_id_credential_issuer_response_credentials_supported_inner_test.dart
+test/well_known_open_id_credential_issuer_response_display_logo_test.dart
+test/well_known_open_id_credential_issuer_response_display_test.dart
 test/well_known_open_id_credential_issuer_response_test.dart

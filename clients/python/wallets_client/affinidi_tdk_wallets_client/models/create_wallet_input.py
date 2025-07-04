@@ -28,13 +28,16 @@ class CreateWalletInput(BaseModel):
     """
     name: Optional[StrictStr] = Field(default=None, description="The name of the wallet")
     description: Optional[StrictStr] = Field(default=None, description="The description of the wallet")
-    did_method: StrictStr = Field(default=..., alias="didMethod", description="Define how DID of your wallet is created and resolved")
+    did_method: Optional[StrictStr] = Field(default=None, alias="didMethod", description="Define how DID of your wallet is created and resolved")
     did_web_url: Optional[constr(strict=True, max_length=300)] = Field(default=None, alias="didWebUrl", description="URL of the DID. Required if the did method is web")
     __properties = ["name", "description", "didMethod", "didWebUrl"]
 
     @validator('did_method')
     def did_method_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in ('key', 'web',):
             raise ValueError("must be one of enum values ('key', 'web')")
         return value

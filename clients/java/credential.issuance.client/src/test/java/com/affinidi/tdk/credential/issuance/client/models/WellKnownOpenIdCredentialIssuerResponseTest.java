@@ -14,6 +14,7 @@
 package com.affinidi.tdk.credential.issuance.client.models;
 
 import com.affinidi.tdk.credential.issuance.client.models.WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner;
+import com.affinidi.tdk.credential.issuance.client.models.WellKnownOpenIdCredentialIssuerResponseDisplay;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -21,9 +22,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -83,6 +82,14 @@ class WellKnownOpenIdCredentialIssuerResponseTest {
     }
 
     /**
+     * Test the property 'credentialConfigurationsSupported'
+     */
+    @Test
+    void credentialConfigurationsSupportedTest() {
+        // TODO: test credentialConfigurationsSupported
+    }
+
+    /**
      * Test the property 'deferredCredentialEndpoint'
      */
     @Test
@@ -107,6 +114,14 @@ class WellKnownOpenIdCredentialIssuerResponseTest {
     }
 
     /**
+     * Test the property 'display'
+     */
+    @Test
+    void displayTest() {
+        // TODO: test display
+    }
+
+    /**
      * Test the property 'scopesSupported'
      */
     @Test
@@ -128,6 +143,14 @@ class WellKnownOpenIdCredentialIssuerResponseTest {
     @Test
     void tokenEndpointAuthMethodsSupportedTest() {
         // TODO: test tokenEndpointAuthMethodsSupported
+    }
+
+    /**
+     * Test the property 'returnUris'
+     */
+    @Test
+    void returnUrisTest() {
+        // TODO: test returnUris
     }
 
 }

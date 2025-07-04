@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,7 +34,7 @@ import java.util.StringJoiner;
   SupportedCredentialMetadataItemLogo.JSON_PROPERTY_ALT_TEXT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class SupportedCredentialMetadataItemLogo extends HashMap<String, Object> {
+public class SupportedCredentialMetadataItemLogo {
   public static final String JSON_PROPERTY_URL = "url";
   @javax.annotation.Nonnull
   private String url;
@@ -46,7 +44,6 @@ public class SupportedCredentialMetadataItemLogo extends HashMap<String, Object>
   private String altText;
 
   public SupportedCredentialMetadataItemLogo() {
-
   }
 
   public SupportedCredentialMetadataItemLogo url(@javax.annotation.Nonnull String url) {
@@ -109,20 +106,18 @@ public class SupportedCredentialMetadataItemLogo extends HashMap<String, Object>
     }
     SupportedCredentialMetadataItemLogo supportedCredentialMetadataItemLogo = (SupportedCredentialMetadataItemLogo) o;
     return Objects.equals(this.url, supportedCredentialMetadataItemLogo.url) &&
-        Objects.equals(this.altText, supportedCredentialMetadataItemLogo.altText) &&
-        super.equals(o);
+        Objects.equals(this.altText, supportedCredentialMetadataItemLogo.altText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, altText, super.hashCode());
+    return Objects.hash(url, altText);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SupportedCredentialMetadataItemLogo {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("}");

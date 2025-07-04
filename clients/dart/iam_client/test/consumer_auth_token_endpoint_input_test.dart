@@ -12,6 +12,16 @@ void main() {
       // TODO
     });
 
+    // String clientAssertionType
+    test('to test the property `clientAssertionType`', () async {
+      // TODO
+    });
+
+    // String clientAssertion
+    test('to test the property `clientAssertion`', () async {
+      // TODO
+    });
+
     // String code
     test('to test the property `code`', () async {
       // TODO

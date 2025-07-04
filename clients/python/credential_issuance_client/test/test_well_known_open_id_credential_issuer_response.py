@@ -47,17 +47,29 @@ class TestWellKnownOpenIdCredentialIssuerResponse(unittest.TestCase):
                         json_schema_url = '', 
                         json_ld_context_url = '', )
                     ],
+                credential_configurations_supported = [
+                    None
+                    ],
                 deferred_credential_endpoint = '',
                 grant_types_supported = [
                     'authorization_code'
                     ],
                 jwks_uri = '',
+                display = affinidi_tdk_credential_issuance_client.models.well_known_open_id_credential_issuer_response_display.WellKnownOpenIdCredentialIssuerResponse_display(
+                    name = '', 
+                    locale = '', 
+                    logo = affinidi_tdk_credential_issuance_client.models.well_known_open_id_credential_issuer_response_display_logo.WellKnownOpenIdCredentialIssuerResponse_display_logo(
+                        uri = '', 
+                        alt_text = '', ), ),
                 scopes_supported = [
                     'openid'
                     ],
                 token_endpoint = '',
                 token_endpoint_auth_methods_supported = [
                     'client_secret_post'
+                    ],
+                return_uris = [
+                    ''
                     ]
             )
         else:

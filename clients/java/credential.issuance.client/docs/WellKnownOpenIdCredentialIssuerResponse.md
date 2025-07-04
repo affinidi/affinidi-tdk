@@ -9,12 +9,15 @@
 | **credentialIssuer**                  | **String**                                                                                                                                              |             | [optional] |
 | **batchCredentialEndpoint**           | **String**                                                                                                                                              |             | [optional] |
 | **credentialsSupported**              | [**List&lt;WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner&gt;**](WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md) |             | [optional] |
+| **credentialConfigurationsSupported** | **List&lt;Object&gt;**                                                                                                                                  |             | [optional] |
 | **deferredCredentialEndpoint**        | **String**                                                                                                                                              |             | [optional] |
 | **grantTypesSupported**               | [**List&lt;GrantTypesSupportedEnum&gt;**](#List<GrantTypesSupportedEnum>)                                                                               |             | [optional] |
 | **jwksUri**                           | **String**                                                                                                                                              |             | [optional] |
+| **display**                           | [**WellKnownOpenIdCredentialIssuerResponseDisplay**](WellKnownOpenIdCredentialIssuerResponseDisplay.md)                                                 |             | [optional] |
 | **scopesSupported**                   | [**List&lt;ScopesSupportedEnum&gt;**](#List<ScopesSupportedEnum>)                                                                                       |             | [optional] |
 | **tokenEndpoint**                     | **String**                                                                                                                                              |             | [optional] |
 | **tokenEndpointAuthMethodsSupported** | [**List&lt;TokenEndpointAuthMethodsSupportedEnum&gt;**](#List<TokenEndpointAuthMethodsSupportedEnum>)                                                   |             | [optional] |
+| **returnUris**                        | **List&lt;String&gt;**                                                                                                                                  |             | [optional] |
 
 ## Enum: List&lt;GrantTypesSupportedEnum&gt;
 
