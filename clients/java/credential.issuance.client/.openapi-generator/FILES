@@ -1,7 +1,6 @@
 .github/workflows/maven.yml
 .gitignore
 README.md
-api/openapi.yaml
 build.gradle
 build.sbt
 docs/ActionForbiddenError.md
@@ -83,6 +82,8 @@ docs/VcClaimedError.md
 docs/WellKnownApi.md
 docs/WellKnownOpenIdCredentialIssuerResponse.md
 docs/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md
+docs/WellKnownOpenIdCredentialIssuerResponseDisplay.md
+docs/WellKnownOpenIdCredentialIssuerResponseDisplayLogo.md
 gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
@@ -187,6 +188,8 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/models/UpdateIssuanceC
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/VcClaimedError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponse.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponseDisplay.java
+src/main/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponseDisplayLogo.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/apis/ConfigurationApiTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/apis/CredentialsApiTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/apis/DefaultApiTest.java
@@ -265,4 +268,6 @@ src/test/java/com/affinidi/tdk/credential/issuance/client/models/SupportedCreden
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/UpdateIssuanceConfigInputTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/VcClaimedErrorTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInnerTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponseDisplayLogoTest.java
+src/test/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponseDisplayTest.java
 src/test/java/com/affinidi/tdk/credential/issuance/client/models/WellKnownOpenIdCredentialIssuerResponseTest.java

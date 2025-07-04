@@ -37,7 +37,9 @@ class TestConsumerAuthTokenEndpointInput(unittest.TestCase):
         model = ConsumerAuthTokenEndpointInput()  # noqa: E501
         if include_optional:
             return ConsumerAuthTokenEndpointInput(
-                grant_type = '',
+                grant_type = 'client_credentials',
+                client_assertion_type = 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+                client_assertion = '',
                 code = '',
                 refresh_token = '',
                 redirect_uri = '',
@@ -45,7 +47,9 @@ class TestConsumerAuthTokenEndpointInput(unittest.TestCase):
             )
         else:
             return ConsumerAuthTokenEndpointInput(
-                grant_type = '',
+                grant_type = 'client_credentials',
+                client_assertion_type = 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+                client_assertion = '',
         )
         """
 

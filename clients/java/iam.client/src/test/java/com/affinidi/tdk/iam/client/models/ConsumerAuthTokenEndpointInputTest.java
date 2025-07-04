@@ -18,8 +18,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -44,6 +42,22 @@ class ConsumerAuthTokenEndpointInputTest {
     @Test
     void grantTypeTest() {
         // TODO: test grantType
+    }
+
+    /**
+     * Test the property 'clientAssertionType'
+     */
+    @Test
+    void clientAssertionTypeTest() {
+        // TODO: test clientAssertionType
+    }
+
+    /**
+     * Test the property 'clientAssertion'
+     */
+    @Test
+    void clientAssertionTest() {
+        // TODO: test clientAssertion
     }
 
     /**

@@ -446,8 +446,6 @@ export interface CorsGetWellKnownOpenIdCredentialIssuerOK {
  * @interface CreateCredentialInput
  */
 export interface CreateCredentialInput {
-  [key: string]: any
-
   /**
    * It is a String that identifies a Credential that is being requested to be issued.
    * @type {string}
@@ -2241,8 +2239,6 @@ export interface StartIssuanceResponse {
  * @interface SupportedCredentialMetadata
  */
 export interface SupportedCredentialMetadata {
-  [key: string]: any
-
   /**
    *
    * @type {Array<SupportedCredentialMetadataDisplayInner>}
@@ -2256,8 +2252,6 @@ export interface SupportedCredentialMetadata {
  * @interface SupportedCredentialMetadataDisplayInner
  */
 export interface SupportedCredentialMetadataDisplayInner {
-  [key: string]: any
-
   /**
    *
    * @type {string}
@@ -2295,8 +2289,6 @@ export interface SupportedCredentialMetadataDisplayInner {
  * @interface SupportedCredentialMetadataItemLogo
  */
 export interface SupportedCredentialMetadataItemLogo {
-  [key: string]: any
-
   /**
    *
    * @type {string}
@@ -2451,8 +2443,6 @@ export type VcClaimedErrorHttpStatusCodeEnum =
  * @interface WellKnownOpenIdCredentialIssuerResponse
  */
 export interface WellKnownOpenIdCredentialIssuerResponse {
-  [key: string]: any
-
   /**
    *
    * @type {string}
@@ -2485,6 +2475,12 @@ export interface WellKnownOpenIdCredentialIssuerResponse {
   credentials_supported?: Array<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>
   /**
    *
+   * @type {Array<object>}
+   * @memberof WellKnownOpenIdCredentialIssuerResponse
+   */
+  credential_configurations_supported?: Array<object>
+  /**
+   *
    * @type {string}
    * @memberof WellKnownOpenIdCredentialIssuerResponse
    */
@@ -2503,6 +2499,12 @@ export interface WellKnownOpenIdCredentialIssuerResponse {
   jwks_uri?: string
   /**
    *
+   * @type {WellKnownOpenIdCredentialIssuerResponseDisplay}
+   * @memberof WellKnownOpenIdCredentialIssuerResponse
+   */
+  display?: WellKnownOpenIdCredentialIssuerResponseDisplay
+  /**
+   *
    * @type {Array<string>}
    * @memberof WellKnownOpenIdCredentialIssuerResponse
    */
@@ -2519,6 +2521,12 @@ export interface WellKnownOpenIdCredentialIssuerResponse {
    * @memberof WellKnownOpenIdCredentialIssuerResponse
    */
   token_endpoint_auth_methods_supported?: Array<WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>
+  /**
+   *
+   * @type {Array<string>}
+   * @memberof WellKnownOpenIdCredentialIssuerResponse
+   */
+  return_uris?: Array<string>
 }
 
 export const WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum = {
@@ -2569,6 +2577,50 @@ export interface WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInne
    * @memberof WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
    */
   jsonLdContextUrl: string
+}
+/**
+ *
+ * @export
+ * @interface WellKnownOpenIdCredentialIssuerResponseDisplay
+ */
+export interface WellKnownOpenIdCredentialIssuerResponseDisplay {
+  /**
+   *
+   * @type {string}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplay
+   */
+  name?: string
+  /**
+   *
+   * @type {string}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplay
+   */
+  locale?: string
+  /**
+   *
+   * @type {WellKnownOpenIdCredentialIssuerResponseDisplayLogo}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplay
+   */
+  logo?: WellKnownOpenIdCredentialIssuerResponseDisplayLogo
+}
+/**
+ *
+ * @export
+ * @interface WellKnownOpenIdCredentialIssuerResponseDisplayLogo
+ */
+export interface WellKnownOpenIdCredentialIssuerResponseDisplayLogo {
+  /**
+   *
+   * @type {string}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplayLogo
+   */
+  uri: string
+  /**
+   *
+   * @type {string}
+   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplayLogo
+   */
+  alt_text?: string
 }
 
 /**

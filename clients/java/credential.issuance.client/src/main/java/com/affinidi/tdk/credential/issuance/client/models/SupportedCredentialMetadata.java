@@ -23,9 +23,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -39,13 +37,12 @@ import java.util.StringJoiner;
   SupportedCredentialMetadata.JSON_PROPERTY_DISPLAY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class SupportedCredentialMetadata extends HashMap<String, Object> {
+public class SupportedCredentialMetadata {
   public static final String JSON_PROPERTY_DISPLAY = "display";
   @javax.annotation.Nullable
   private List<SupportedCredentialMetadataDisplayInner> display = new ArrayList<>();
 
   public SupportedCredentialMetadata() {
-
   }
 
   public SupportedCredentialMetadata display(@javax.annotation.Nullable List<SupportedCredentialMetadataDisplayInner> display) {
@@ -90,20 +87,18 @@ public class SupportedCredentialMetadata extends HashMap<String, Object> {
       return false;
     }
     SupportedCredentialMetadata supportedCredentialMetadata = (SupportedCredentialMetadata) o;
-    return Objects.equals(this.display, supportedCredentialMetadata.display) &&
-        super.equals(o);
+    return Objects.equals(this.display, supportedCredentialMetadata.display);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(display, super.hashCode());
+    return Objects.hash(display);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SupportedCredentialMetadata {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    display: ").append(toIndentedString(display)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -156,14 +151,8 @@ public class SupportedCredentialMetadata extends HashMap<String, Object> {
     if (getDisplay() != null) {
       for (int i = 0; i < getDisplay().size(); i++) {
         if (getDisplay().get(i) != null) {
-          try {
-            joiner.add(String.format("%sdisplay%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-                URLEncoder.encode(String.valueOf(getDisplay().get(i)), "UTF-8").replaceAll("\\+", "%20")));
-          } catch (UnsupportedEncodingException e) {
-            // Should never happen, UTF-8 is always supported
-            throw new RuntimeException(e);
-          }
+          joiner.add(getDisplay().get(i).toUrlQueryString(String.format("%sdisplay%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

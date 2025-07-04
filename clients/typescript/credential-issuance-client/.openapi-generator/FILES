@@ -84,6 +84,8 @@ docs/VcClaimedError.md
 docs/WellKnownApi.md
 docs/WellKnownOpenIdCredentialIssuerResponse.md
 docs/WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.md
+docs/WellKnownOpenIdCredentialIssuerResponseDisplay.md
+docs/WellKnownOpenIdCredentialIssuerResponseDisplayLogo.md
 index.ts
 package.json
 project.json

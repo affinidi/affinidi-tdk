@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -33,16 +31,96 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_GRANT_TYPE,
+  ConsumerAuthTokenEndpointInput.JSON_PROPERTY_CLIENT_ASSERTION_TYPE,
+  ConsumerAuthTokenEndpointInput.JSON_PROPERTY_CLIENT_ASSERTION,
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_CODE,
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_REFRESH_TOKEN,
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_REDIRECT_URI,
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_CLIENT_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
+public class ConsumerAuthTokenEndpointInput {
+  /**
+   * Gets or Sets grantType
+   */
+  public enum GrantTypeEnum {
+    CLIENT_CREDENTIALS(String.valueOf("client_credentials")),
+    
+    AFFINIDI_DELEGATION(String.valueOf("affinidi_delegation"));
+
+    private String value;
+
+    GrantTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static GrantTypeEnum fromValue(String value) {
+      for (GrantTypeEnum b : GrantTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
   public static final String JSON_PROPERTY_GRANT_TYPE = "grant_type";
   @javax.annotation.Nonnull
-  private String grantType;
+  private GrantTypeEnum grantType;
+
+  /**
+   * Gets or Sets clientAssertionType
+   */
+  public enum ClientAssertionTypeEnum {
+    URN_IETF_PARAMS_OAUTH_CLIENT_ASSERTION_TYPE_JWT_BEARER(String.valueOf("urn:ietf:params:oauth:client-assertion-type:jwt-bearer")),
+    
+    URN_IETF_PARAMS_OAUTH_DELEGATION_ASSERTION_TYPE_JWT_BEARER(String.valueOf("urn:ietf:params:oauth:delegation-assertion-type:jwt-bearer"));
+
+    private String value;
+
+    ClientAssertionTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ClientAssertionTypeEnum fromValue(String value) {
+      for (ClientAssertionTypeEnum b : ClientAssertionTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_CLIENT_ASSERTION_TYPE = "client_assertion_type";
+  @javax.annotation.Nonnull
+  private ClientAssertionTypeEnum clientAssertionType;
+
+  public static final String JSON_PROPERTY_CLIENT_ASSERTION = "client_assertion";
+  @javax.annotation.Nonnull
+  private String clientAssertion;
 
   public static final String JSON_PROPERTY_CODE = "code";
   @javax.annotation.Nullable
@@ -61,10 +139,9 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
   private String clientId;
 
   public ConsumerAuthTokenEndpointInput() {
-
   }
 
-  public ConsumerAuthTokenEndpointInput grantType(@javax.annotation.Nonnull String grantType) {
+  public ConsumerAuthTokenEndpointInput grantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     
     this.grantType = grantType;
     return this;
@@ -78,15 +155,65 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
   @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public String getGrantType() {
+  public GrantTypeEnum getGrantType() {
     return grantType;
   }
 
 
   @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setGrantType(@javax.annotation.Nonnull String grantType) {
+  public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
+  }
+
+  public ConsumerAuthTokenEndpointInput clientAssertionType(@javax.annotation.Nonnull ClientAssertionTypeEnum clientAssertionType) {
+    
+    this.clientAssertionType = clientAssertionType;
+    return this;
+  }
+
+  /**
+   * Get clientAssertionType
+   * @return clientAssertionType
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public ClientAssertionTypeEnum getClientAssertionType() {
+    return clientAssertionType;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setClientAssertionType(@javax.annotation.Nonnull ClientAssertionTypeEnum clientAssertionType) {
+    this.clientAssertionType = clientAssertionType;
+  }
+
+  public ConsumerAuthTokenEndpointInput clientAssertion(@javax.annotation.Nonnull String clientAssertion) {
+    
+    this.clientAssertion = clientAssertion;
+    return this;
+  }
+
+  /**
+   * Get clientAssertion
+   * @return clientAssertion
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getClientAssertion() {
+    return clientAssertion;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setClientAssertion(@javax.annotation.Nonnull String clientAssertion) {
+    this.clientAssertion = clientAssertion;
   }
 
   public ConsumerAuthTokenEndpointInput code(@javax.annotation.Nullable String code) {
@@ -199,24 +326,26 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
     }
     ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput = (ConsumerAuthTokenEndpointInput) o;
     return Objects.equals(this.grantType, consumerAuthTokenEndpointInput.grantType) &&
+        Objects.equals(this.clientAssertionType, consumerAuthTokenEndpointInput.clientAssertionType) &&
+        Objects.equals(this.clientAssertion, consumerAuthTokenEndpointInput.clientAssertion) &&
         Objects.equals(this.code, consumerAuthTokenEndpointInput.code) &&
         Objects.equals(this.refreshToken, consumerAuthTokenEndpointInput.refreshToken) &&
         Objects.equals(this.redirectUri, consumerAuthTokenEndpointInput.redirectUri) &&
-        Objects.equals(this.clientId, consumerAuthTokenEndpointInput.clientId) &&
-        super.equals(o);
+        Objects.equals(this.clientId, consumerAuthTokenEndpointInput.clientId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(grantType, code, refreshToken, redirectUri, clientId, super.hashCode());
+    return Objects.hash(grantType, clientAssertionType, clientAssertion, code, refreshToken, redirectUri, clientId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConsumerAuthTokenEndpointInput {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    grantType: ").append(toIndentedString(grantType)).append("\n");
+    sb.append("    clientAssertionType: ").append(toIndentedString(clientAssertionType)).append("\n");
+    sb.append("    clientAssertion: ").append(toIndentedString(clientAssertion)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    refreshToken: ").append(toIndentedString(refreshToken)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
@@ -272,6 +401,26 @@ public class ConsumerAuthTokenEndpointInput extends HashMap<String, Object> {
     if (getGrantType() != null) {
       try {
         joiner.add(String.format("%sgrant_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGrantType()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `client_assertion_type` to the URL query string
+    if (getClientAssertionType() != null) {
+      try {
+        joiner.add(String.format("%sclient_assertion_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientAssertionType()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `client_assertion` to the URL query string
+    if (getClientAssertion() != null) {
+      try {
+        joiner.add(String.format("%sclient_assertion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientAssertion()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

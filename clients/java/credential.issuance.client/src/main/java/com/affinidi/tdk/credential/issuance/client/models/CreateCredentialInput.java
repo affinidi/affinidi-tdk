@@ -21,8 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -37,7 +35,7 @@ import java.util.StringJoiner;
   CreateCredentialInput.JSON_PROPERTY_PROOF
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class CreateCredentialInput extends HashMap<String, Object> {
+public class CreateCredentialInput {
   public static final String JSON_PROPERTY_CREDENTIAL_IDENTIFIER = "credential_identifier";
   @javax.annotation.Nullable
   private String credentialIdentifier;
@@ -47,7 +45,6 @@ public class CreateCredentialInput extends HashMap<String, Object> {
   private CredentialProof proof;
 
   public CreateCredentialInput() {
-
   }
 
   public CreateCredentialInput credentialIdentifier(@javax.annotation.Nullable String credentialIdentifier) {
@@ -110,20 +107,18 @@ public class CreateCredentialInput extends HashMap<String, Object> {
     }
     CreateCredentialInput createCredentialInput = (CreateCredentialInput) o;
     return Objects.equals(this.credentialIdentifier, createCredentialInput.credentialIdentifier) &&
-        Objects.equals(this.proof, createCredentialInput.proof) &&
-        super.equals(o);
+        Objects.equals(this.proof, createCredentialInput.proof);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(credentialIdentifier, proof, super.hashCode());
+    return Objects.hash(credentialIdentifier, proof);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateCredentialInput {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    credentialIdentifier: ").append(toIndentedString(credentialIdentifier)).append("\n");
     sb.append("    proof: ").append(toIndentedString(proof)).append("\n");
     sb.append("}");

@@ -21,8 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -41,7 +39,7 @@ import java.util.StringJoiner;
 })
 @JsonTypeName("SupportedCredentialMetadata_display_inner")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Object> {
+public class SupportedCredentialMetadataDisplayInner {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
   private String name;
@@ -63,7 +61,6 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
   private String textColor;
 
   public SupportedCredentialMetadataDisplayInner() {
-
   }
 
   public SupportedCredentialMetadataDisplayInner name(@javax.annotation.Nonnull String name) {
@@ -204,20 +201,18 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
         Objects.equals(this.locale, supportedCredentialMetadataDisplayInner.locale) &&
         Objects.equals(this.logo, supportedCredentialMetadataDisplayInner.logo) &&
         Objects.equals(this.backgroundColor, supportedCredentialMetadataDisplayInner.backgroundColor) &&
-        Objects.equals(this.textColor, supportedCredentialMetadataDisplayInner.textColor) &&
-        super.equals(o);
+        Objects.equals(this.textColor, supportedCredentialMetadataDisplayInner.textColor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, locale, logo, backgroundColor, textColor, super.hashCode());
+    return Objects.hash(name, locale, logo, backgroundColor, textColor);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class SupportedCredentialMetadataDisplayInner {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("    logo: ").append(toIndentedString(logo)).append("\n");
@@ -292,12 +287,7 @@ public class SupportedCredentialMetadataDisplayInner extends HashMap<String, Obj
 
     // add `logo` to the URL query string
     if (getLogo() != null) {
-      try {
-        joiner.add(String.format("%slogo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLogo()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+      joiner.add(getLogo().toUrlQueryString(prefix + "logo" + suffix));
     }
 
     // add `backgroundColor` to the URL query string

@@ -48,7 +48,17 @@ class TestUpdateIssuanceConfigInput(unittest.TestCase):
                         credential_type_id = '', 
                         json_schema_url = 'https://j.json', 
                         json_ld_context_url = 'https://j.jsonld', 
-                        metadata = { }, )
+                        metadata = affinidi_tdk_credential_issuance_client.models.supported_credential_metadata.SupportedCredentialMetadata(
+                            display = [
+                                affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_display_inner.SupportedCredentialMetadata_display_inner(
+                                    name = '', 
+                                    locale = '', 
+                                    logo = affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_item_logo.SupportedCredentialMetadataItemLogo(
+                                        url = '', 
+                                        alt_text = '', ), 
+                                    background_color = '', 
+                                    text_color = '', )
+                                ], ), )
                     ],
                 issuer_metadata = { },
                 return_uris = [

@@ -2,13 +2,15 @@
 
 ## Properties
 
-| Name              | Type    | Description | Notes      |
-| ----------------- | ------- | ----------- | ---------- |
-| **grant_type**    | **str** |             |
-| **code**          | **str** |             | [optional] |
-| **refresh_token** | **str** |             | [optional] |
-| **redirect_uri**  | **str** |             | [optional] |
-| **client_id**     | **str** |             | [optional] |
+| Name                      | Type    | Description | Notes      |
+| ------------------------- | ------- | ----------- | ---------- |
+| **grant_type**            | **str** |             |
+| **client_assertion_type** | **str** |             |
+| **client_assertion**      | **str** |             |
+| **code**                  | **str** |             | [optional] |
+| **refresh_token**         | **str** |             | [optional] |
+| **redirect_uri**          | **str** |             | [optional] |
+| **client_id**             | **str** |             | [optional] |
 
 ## Example
 

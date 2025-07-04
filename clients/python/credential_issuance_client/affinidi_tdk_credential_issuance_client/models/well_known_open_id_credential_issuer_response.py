@@ -19,9 +19,10 @@ import re  # noqa: F401
 import json
 
 
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, StrictStr, conlist, validator
 from affinidi_tdk_credential_issuance_client.models.well_known_open_id_credential_issuer_response_credentials_supported_inner import WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
+from affinidi_tdk_credential_issuance_client.models.well_known_open_id_credential_issuer_response_display import WellKnownOpenIdCredentialIssuerResponseDisplay
 
 class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
     """
@@ -32,14 +33,16 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
     credential_issuer: Optional[StrictStr] = None
     batch_credential_endpoint: Optional[StrictStr] = None
     credentials_supported: Optional[conlist(WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner)] = None
+    credential_configurations_supported: Optional[conlist(Dict[str, Any])] = None
     deferred_credential_endpoint: Optional[StrictStr] = None
     grant_types_supported: Optional[conlist(StrictStr)] = None
     jwks_uri: Optional[StrictStr] = None
+    display: Optional[WellKnownOpenIdCredentialIssuerResponseDisplay] = None
     scopes_supported: Optional[conlist(StrictStr)] = None
     token_endpoint: Optional[StrictStr] = None
     token_endpoint_auth_methods_supported: Optional[conlist(StrictStr)] = None
-    additional_properties: Dict[str, Any] = {}
-    __properties = ["authorization_endpoint", "credential_endpoint", "credential_issuer", "batch_credential_endpoint", "credentials_supported", "deferred_credential_endpoint", "grant_types_supported", "jwks_uri", "scopes_supported", "token_endpoint", "token_endpoint_auth_methods_supported"]
+    return_uris: Optional[conlist(StrictStr)] = None
+    __properties = ["authorization_endpoint", "credential_endpoint", "credential_issuer", "batch_credential_endpoint", "credentials_supported", "credential_configurations_supported", "deferred_credential_endpoint", "grant_types_supported", "jwks_uri", "display", "scopes_supported", "token_endpoint", "token_endpoint_auth_methods_supported", "return_uris"]
 
     @validator('grant_types_supported')
     def grant_types_supported_validate_enum(cls, value):
@@ -96,7 +99,6 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "additional_properties"
                           },
                           exclude_none=True)
         # override the default output from pydantic by calling `to_dict()` of each item in credentials_supported (list)
@@ -106,11 +108,9 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['credentials_supported'] = _items
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
+        # override the default output from pydantic by calling `to_dict()` of display
+        if self.display:
+            _dict['display'] = self.display.to_dict()
         return _dict
 
     @classmethod
@@ -128,18 +128,16 @@ class WellKnownOpenIdCredentialIssuerResponse(BaseModel):
             "credential_issuer": obj.get("credential_issuer"),
             "batch_credential_endpoint": obj.get("batch_credential_endpoint"),
             "credentials_supported": [WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.from_dict(_item) for _item in obj.get("credentials_supported")] if obj.get("credentials_supported") is not None else None,
+            "credential_configurations_supported": obj.get("credential_configurations_supported"),
             "deferred_credential_endpoint": obj.get("deferred_credential_endpoint"),
             "grant_types_supported": obj.get("grant_types_supported"),
             "jwks_uri": obj.get("jwks_uri"),
+            "display": WellKnownOpenIdCredentialIssuerResponseDisplay.from_dict(obj.get("display")) if obj.get("display") is not None else None,
             "scopes_supported": obj.get("scopes_supported"),
             "token_endpoint": obj.get("token_endpoint"),
-            "token_endpoint_auth_methods_supported": obj.get("token_endpoint_auth_methods_supported")
+            "token_endpoint_auth_methods_supported": obj.get("token_endpoint_auth_methods_supported"),
+            "return_uris": obj.get("return_uris")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 
