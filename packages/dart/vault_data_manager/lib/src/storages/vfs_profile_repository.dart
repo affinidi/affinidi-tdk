@@ -197,7 +197,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
       );
     }
 
-    final nextAccountIndex = (await _keyStorage.readAccountIndex()) + 1;
+    final nextAccountIndex = (await _keyStorage.getAccountIndex()) + 1;
 
     final profileDidSigner = await _memoizedDidSigner('$nextAccountIndex');
     final profileDid = profileDidSigner.did;
@@ -237,7 +237,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
       metadata: accountMetadata,
       cancelToken: cancelToken,
     );
-    await _keyStorage.writeAccountIndex(nextAccountIndex);
+    await _keyStorage.setAccountIndex(nextAccountIndex);
   }
 
   @override

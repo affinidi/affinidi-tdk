@@ -52,7 +52,7 @@ class FlutterSecureVaultStore extends VaultStore {
 
   /// Returns a pre-saved account index or 0 if none was found
   @override
-  Future<int> readAccountIndex() async {
+  Future<int> getAccountIndex() async {
     final data = await _secureStorage.read(
       key: _Key.accountIndex.key(_vaultId),
     );
@@ -66,7 +66,7 @@ class FlutterSecureVaultStore extends VaultStore {
 
   /// Persists an account index
   @override
-  Future<void> writeAccountIndex(int accountIndex) async {
+  Future<void> setAccountIndex(int accountIndex) async {
     await _secureStorage.write(
       key: _Key.accountIndex.key(_vaultId),
       value: accountIndex.toString(),

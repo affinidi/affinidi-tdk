@@ -91,7 +91,7 @@ Profile repository must be configured using a RepositoryConfiguration''',
       );
     }
 
-    final nextAccountIndex = (await _vaultStore.readAccountIndex()) + 1;
+    final nextAccountIndex = (await _vaultStore.getAccountIndex()) + 1;
 
     await _repository.createProfile(
       name: name,
@@ -100,7 +100,7 @@ Profile repository must be configured using a RepositoryConfiguration''',
       accountIndex: nextAccountIndex,
     );
 
-    await _vaultStore.writeAccountIndex(nextAccountIndex);
+    await _vaultStore.setAccountIndex(nextAccountIndex);
   }
 
   /// Deleted an existing local profile
