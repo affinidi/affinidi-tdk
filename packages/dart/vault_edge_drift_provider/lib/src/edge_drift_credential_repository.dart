@@ -80,16 +80,13 @@ class EdgeDriftCredentialRepository
     var query = _database.select(_database.credentials)
       ..where((filter) => filter.profileId.equals(_profileId));
 
+    var offset = 0;
     if (exclusiveStartItemId != null) {
-      final startAutoId = int.tryParse(exclusiveStartItemId);
-      if (startAutoId != null) {
-        query = query
-          ..where((filter) => filter.autoId.isBiggerThanValue(startAutoId));
-      }
+      offset = int.tryParse(exclusiveStartItemId) ?? 0;
     }
 
     if (limit != null) {
-      query = query..limit(limit);
+      query = query..limit(limit, offset: offset);
     }
 
     final credentials = await query.get();
@@ -101,10 +98,8 @@ class EdgeDriftCredentialRepository
         .toList();
 
     String? lastEvaluatedItemId;
-    if (credentials.isNotEmpty &&
-        limit != null &&
-        credentials.length == limit) {
-      lastEvaluatedItemId = credentials.last.autoId.toString();
+    if (credentials.isNotEmpty && limit != null) {
+      lastEvaluatedItemId = (offset + credentials.length).toString();
     }
 
     return PaginatedList(

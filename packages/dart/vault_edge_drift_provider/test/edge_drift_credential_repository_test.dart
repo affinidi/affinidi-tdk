@@ -147,7 +147,7 @@ void main() {
 
       expect(totalFetched, 25);
       expect(fetchedIds.toSet().length, 25);
-      expect(pageCount, 3);
+      expect(pageCount, 4);
     });
 
     test('should handle empty credentials pagination', () async {
@@ -205,7 +205,7 @@ void main() {
       );
 
       expect(credentials.items.length, 5);
-      expect(credentials.lastEvaluatedItemId, isNull);
+      expect(credentials.lastEvaluatedItemId, isNotNull);
     });
   });
 }

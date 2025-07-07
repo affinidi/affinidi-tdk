@@ -335,7 +335,7 @@ void main() {
 
       expect(totalFetched, 25);
       expect(fetchedNames.toSet().length, 25);
-      expect(pageCount, 3);
+      expect(pageCount, 4);
     });
 
     test('should handle empty folder pagination', () async {
@@ -391,7 +391,82 @@ void main() {
       );
 
       expect(items.items.length, 5);
-      expect(items.lastEvaluatedItemId, isNull);
+      expect(items.lastEvaluatedItemId, isNotNull);
+    });
+  });
+
+  group('Pagination', () {
+    test('should paginate correctly using offset-based approach', () async {
+      for (var i = 0; i < 25; i++) {
+        await repository.createFile(
+          profileId: profileId,
+          fileName: 'file_$i.txt',
+          data: Uint8List.fromList([i]),
+        );
+      }
+
+      var result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(result.items.length, equals(10));
+      expect(result.lastEvaluatedItemId, equals('10'));
+      expect(result.items.first.name, equals('file_0.txt'));
+      expect(result.items.last.name, equals('file_9.txt'));
+
+      result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: '10',
+      );
+
+      expect(result.items.length, equals(10));
+      expect(result.lastEvaluatedItemId, equals('20'));
+      expect(result.items.first.name, equals('file_10.txt'));
+      expect(result.items.last.name, equals('file_19.txt'));
+
+      result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: '20',
+      );
+
+      expect(result.items.length, equals(5));
+      expect(result.lastEvaluatedItemId, equals('25'));
+      expect(result.items.first.name, equals('file_20.txt'));
+      expect(result.items.last.name, equals('file_24.txt'));
+
+      result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: '25',
+      );
+
+      expect(result.items.length, equals(0));
+      expect(result.lastEvaluatedItemId, isNull);
+    });
+
+    test('should handle edge case with fewer items than limit', () async {
+      for (var i = 0; i < 3; i++) {
+        await repository.createFile(
+          profileId: profileId,
+          fileName: 'file_$i.txt',
+          data: Uint8List.fromList([i]),
+        );
+      }
+
+      final result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(result.items.length, equals(3));
+      expect(result.lastEvaluatedItemId, equals('3'));
+      expect(result.items.first.name, equals('file_0.txt'));
+      expect(result.items.last.name, equals('file_2.txt'));
     });
   });
 }

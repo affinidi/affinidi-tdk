@@ -168,8 +168,9 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       );
     }
 
-    final affectedRows =
-        await _database.delete(_database.items).delete(existingFolder);
+    final affectedRows = await (_database.delete(_database.items)
+          ..where((filter) => filter.id.equals(folderId)))
+        .go();
     return affectedRows > 0;
   }
 
@@ -238,16 +239,13 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
               ? filter.parentId.equals(folderId)
               : filter.parentId.isNull()));
 
+    var offset = 0;
     if (exclusiveStartItemId != null) {
-      final startAutoId = int.tryParse(exclusiveStartItemId);
-      if (startAutoId != null) {
-        query = query
-          ..where((filter) => filter.autoId.isBiggerThanValue(startAutoId));
-      }
+      offset = int.tryParse(exclusiveStartItemId) ?? 0;
     }
 
     if (limit != null) {
-      query = query..limit(limit);
+      query = query..limit(limit, offset: offset);
     }
 
     final items = await query.get();
@@ -272,8 +270,8 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     }).toList();
 
     String? lastEvaluatedItemId;
-    if (items.isNotEmpty && limit != null && items.length == limit) {
-      lastEvaluatedItemId = items.last.autoId.toString();
+    if (items.isNotEmpty && limit != null) {
+      lastEvaluatedItemId = (offset + items.length).toString();
     }
 
     return PaginatedList(

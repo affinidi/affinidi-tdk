@@ -20,15 +20,12 @@ class Database extends _$Database {
 
   /// Returns the current schema version
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 1;
 }
 
 /// Table definition to hold folders and files with a hierarchy
 @DataClassName('Item')
 class Items extends Table {
-  /// Auto-incrementing ID for pagination
-  IntColumn get autoId => integer().autoIncrement()();
-
   /// An item identifier
   TextColumn get id => text().clientDefault(const Uuid().v4).unique()();
 
@@ -117,9 +114,6 @@ class FileContents extends Table {
 /// Table definition to hold credential data
 @DataClassName('Credential')
 class Credentials extends Table {
-  /// Auto-incrementing ID for pagination
-  IntColumn get autoId => integer().autoIncrement()();
-
   /// A credential identifier
   TextColumn get id => text().clientDefault(const Uuid().v4).unique()();
 

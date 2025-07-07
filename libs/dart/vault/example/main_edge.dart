@@ -193,28 +193,26 @@ void main() async {
 
   // Clean up before deleting profile
 
-  print('[Demo] Cleaning up pagination test files...');
-  exclusiveStartItemId = null;
+  print('[Demo] Cleaning up all files...');
+
+  final allFiles = await profile.defaultFileStorage!.getFolder(
+    folderId: rootFolderId,
+    limit: 30,
+    exclusiveStartItemId: null,
+  );
+
+  print('[Demo] Found ${allFiles.items.length} files to delete');
+
   var deletedCount = 0;
-
-  do {
-    final page = await profile.defaultFileStorage!.getFolder(
-      folderId: rootFolderId,
-      limit: 20,
-      exclusiveStartItemId: exclusiveStartItemId,
-    );
-
-    for (final item in page.items) {
-      if (item is File && item.name.startsWith('file_')) {
-        await profile.defaultFileStorage!.deleteFile(fileId: item.id);
-        deletedCount++;
-      }
+  for (final item in allFiles.items) {
+    if (item is File) {
+      await profile.defaultFileStorage!.deleteFile(fileId: item.id);
+      deletedCount++;
+      print('[Demo] Deleted file: ${item.name}');
     }
+  }
 
-    exclusiveStartItemId = page.lastEvaluatedItemId;
-  } while (exclusiveStartItemId != null);
-
-  print('[Demo] Deleted $deletedCount pagination test files');
+  print('[Demo] Deleted $deletedCount files');
 
   // Delete a profile
 
