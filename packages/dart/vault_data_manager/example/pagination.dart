@@ -180,7 +180,7 @@ Future<void> main() async {
 
     final vaultStore = InMemoryVaultStore();
     var accountIndex = 0;
-    await vaultStore.writeAccountIndex(accountIndex);
+    await vaultStore.setAccountIndex(accountIndex);
 
     final seed = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
     await vaultStore.setSeed(seed);

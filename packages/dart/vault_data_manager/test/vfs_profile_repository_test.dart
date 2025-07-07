@@ -133,7 +133,7 @@ void main() {
 
       group('When creating a profile', () {
         test('should create a new profile successfully', () async {
-          when(() => mockVaultStore.readAccountIndex())
+          when(() => mockVaultStore.getAccountIndex())
               .thenAnswer((_) async => 0);
           when(() => mockDataManagerService.createProfile(
                 name: any(named: 'name'),
@@ -149,7 +149,7 @@ void main() {
                 didProof: any(named: 'didProof'),
                 metadata: any(named: 'metadata'),
               )).thenAnswer((_) async {});
-          when(() => mockVaultStore.writeAccountIndex(any()))
+          when(() => mockVaultStore.setAccountIndex(any()))
               .thenAnswer((_) async {});
           when(() => mockDataManagerService.getProfiles()).thenAnswer(
               (_) async => [ProfileFixtures.testVaultDataManagerProfile]);
@@ -164,7 +164,7 @@ void main() {
                 description: ProfileFixtures.testProfileDescription,
               )).called(1);
           verify(() => mockVaultStore
-              .writeAccountIndex(ProfileFixtures.testAccountIndex)).called(1);
+              .setAccountIndex(ProfileFixtures.testAccountIndex)).called(1);
         });
       });
 

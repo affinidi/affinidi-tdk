@@ -65,7 +65,7 @@ void main() {
               value: any(named: 'value'),
             )).thenAnswer((_) async {});
 
-        await vaultStore.writeAccountIndex(5);
+        await vaultStore.setAccountIndex(5);
         verify(() => mockStorage.write(
               key: '${vaultId}_accountIndex',
               value: '5',
@@ -77,18 +77,18 @@ void main() {
       test('it returns the stored integer', () async {
         when(() => mockStorage.read(key: '${vaultId}_accountIndex'))
             .thenAnswer((_) async => '7');
-        final index = await vaultStore.readAccountIndex();
+        final index = await vaultStore.getAccountIndex();
         expect(index, 7);
       });
 
       test('it returns 0 if null or invalid', () async {
         when(() => mockStorage.read(key: '${vaultId}_accountIndex'))
             .thenAnswer((_) async => null);
-        expect(await vaultStore.readAccountIndex(), 0);
+        expect(await vaultStore.getAccountIndex(), 0);
 
         when(() => mockStorage.read(key: '${vaultId}_accountIndex'))
             .thenAnswer((_) async => 'invalid');
-        expect(await vaultStore.readAccountIndex(), 0);
+        expect(await vaultStore.getAccountIndex(), 0);
       });
     });
   });

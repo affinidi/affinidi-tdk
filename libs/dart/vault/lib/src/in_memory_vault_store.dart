@@ -29,12 +29,12 @@ class InMemoryVaultStore extends VaultStore {
   }
 
   @override
-  Future<int> readAccountIndex() async {
+  Future<int> getAccountIndex() async {
     return _accountIndex;
   }
 
   @override
-  Future<void> writeAccountIndex(int accountIndex) async {
+  Future<void> setAccountIndex(int accountIndex) async {
     _accountIndex = accountIndex;
   }
 }
