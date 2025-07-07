@@ -115,7 +115,7 @@ class FileContents extends Table {
 @DataClassName('Credential')
 class Credentials extends Table {
   /// A credential identifier
-  TextColumn get id => text().clientDefault(const Uuid().v4).unique()();
+  TextColumn get id => text().clientDefault(const Uuid().v4)();
 
   /// Profile id to which the credential belongs
   TextColumn get profileId => text().references(Profiles, #id)();
@@ -131,4 +131,7 @@ class Credentials extends Table {
 
   /// Last modification timestamp of the credential
   DateTimeColumn get modifiedAt => dateTime().clientDefault(clock.now)();
+
+  @override
+  Set<Column> get primaryKey => {id};
 }
