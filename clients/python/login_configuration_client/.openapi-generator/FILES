@@ -1,5 +1,6 @@
 .github/workflows/python.yml
 .gitignore
+.gitlab-ci.yml
 README.md
 README.md
 affinidi_tdk_login_configuration_client/__init__.py

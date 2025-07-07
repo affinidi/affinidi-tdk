@@ -39,7 +39,9 @@ class TestSupportedCredentialMetadataDisplayInner(unittest.TestCase):
             return SupportedCredentialMetadataDisplayInner(
                 name = '',
                 locale = '',
-                logo = { },
+                logo = affinidi_tdk_credential_issuance_client.models.supported_credential_metadata_item_logo.SupportedCredentialMetadataItemLogo(
+                    url = '', 
+                    alt_text = '', ),
                 background_color = '',
                 text_color = ''
             )
