@@ -93,6 +93,42 @@ void main() {
     });
   });
 
+  group('When managing contentKey', () {
+    final testContentKey = Uint8List.fromList([1, 2, 3, 4]);
+
+    group('and setting the content key', () {
+      test('it stores it as base64', () async {
+        when(() => mockStorage.write(
+              key: any(named: 'key'),
+              value: any(named: 'value'),
+            )).thenAnswer((_) async {});
+
+        await vaultStore.setContentKey(testContentKey);
+
+        verify(() => mockStorage.write(
+              key: '${vaultId}_contentKey',
+              value: base64Encode(testContentKey),
+            )).called(1);
+      });
+    });
+
+    group('and getting the contentKey', () {
+      test('it returns the stored content key', () async {
+        when(() => mockStorage.read(key: '${vaultId}_contentKey'))
+            .thenAnswer((_) async => base64Encode(testContentKey));
+
+        final result = await vaultStore.getContentKey();
+        expect(result, testContentKey);
+      });
+
+      test('it returns null if no contentKey is stored', () async {
+        when(() => mockStorage.read(key: '${vaultId}_contentKey'))
+            .thenAnswer((_) async => null);
+        expect(await vaultStore.getContentKey(), isNull);
+      });
+    });
+  });
+
   group('When clearing vault data', () {
     test('it removes accountIndex and seed', () async {
       when(() => mockStorage.delete(key: any(named: 'key')))
@@ -102,6 +138,7 @@ void main() {
       verify(() => mockStorage.delete(key: '${vaultId}_accountIndex'))
           .called(1);
       verify(() => mockStorage.delete(key: '${vaultId}_seed')).called(1);
+      verify(() => mockStorage.delete(key: '${vaultId}_contentKey')).called(1);
     });
   });
 }

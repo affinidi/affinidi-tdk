@@ -14,16 +14,23 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   /// Creates a new instance of [EdgeEncryptionService].
   EdgeEncryptionService({
-    required Uint8List cipher,
-  }) : _cipher = cipher;
+    required VaultStore vaultStore,
+  }) : _vaultStore = vaultStore;
 
-  final Uint8List _cipher;
+  final VaultStore _vaultStore;
   late final Random _secureRandom = Random.secure();
   late final _cryptographyAlgorythm = AesGcm.with256bits();
 
   @override
   Future<Uint8List> encryptData(Uint8List data) async {
-    final secretKey = SecretKey(_cipher);
+    final cipher = await _vaultStore.getContentKey();
+    if (cipher == null) {
+      throw TdkException(
+          message: 'Missing egde cipher for encrytping content',
+          code: TdkExceptionType.missingEdgeCipher.code);
+    }
+
+    final secretKey = SecretKey(cipher);
     final nonce = _secureRandom.nextBytes(_ivLength);
     final encryptedData = await _cryptographyAlgorythm.encrypt(
       data,
@@ -44,6 +51,13 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
   @override
   Future<Uint8List> decryptData(Uint8List encryptedData) async {
+    final cipher = await _vaultStore.getContentKey();
+    if (cipher == null) {
+      throw TdkException(
+          message: 'Missing egde cipher for encrytping content',
+          code: TdkExceptionType.missingEdgeCipher.code);
+    }
+
     if (encryptedData.length < _ivLength + _tagLength) {
       throw TdkException(
         message: 'Failed to decrypt data',
@@ -54,7 +68,7 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
 
     try {
       final secretBox = _makeSecretBoxFromData(encryptedData);
-      final secretKey = SecretKey(_cipher);
+      final secretKey = SecretKey(cipher);
       final decryptedData =
           await _cryptographyAlgorythm.decrypt(secretBox, secretKey: secretKey);
       return Uint8List.fromList(decryptedData);

@@ -11,6 +11,7 @@ class InMemoryVaultStore extends VaultStore {
 
   int _accountIndex = 0;
   Uint8List? _seed;
+  Uint8List? _contentKey;
 
   @override
   Future<void> setSeed(Uint8List seed) async {
@@ -23,12 +24,6 @@ class InMemoryVaultStore extends VaultStore {
   }
 
   @override
-  Future<void> clear() async {
-    _seed = null;
-    _accountIndex = 0;
-  }
-
-  @override
   Future<int> getAccountIndex() async {
     return _accountIndex;
   }
@@ -36,5 +31,22 @@ class InMemoryVaultStore extends VaultStore {
   @override
   Future<void> setAccountIndex(int accountIndex) async {
     _accountIndex = accountIndex;
+  }
+
+  @override
+  Future<Uint8List?> getContentKey() async {
+    return _contentKey;
+  }
+
+  @override
+  Future<void> setContentKey(Uint8List key) async {
+    _contentKey = key;
+  }
+
+  @override
+  Future<void> clear() async {
+    _seed = null;
+    _accountIndex = 0;
+    _contentKey = null;
   }
 }

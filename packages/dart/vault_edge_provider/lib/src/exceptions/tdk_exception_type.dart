@@ -38,6 +38,9 @@ enum TdkExceptionType {
   /// [failedToSaveCredential] - Indicates a failure to save a credential
   failedToSaveCredential('failed_to_save_credential'),
 
+  /// - [missingEdgeCipher] = Indicates a cipher has not been set on VaultStore
+  missingEdgeCipher('missing_edge_cipher'),
+
   /// - [missingProfileId] - Indicates the Profile does not have an identifier
   missingProfileId('missing_profile_id'),
 

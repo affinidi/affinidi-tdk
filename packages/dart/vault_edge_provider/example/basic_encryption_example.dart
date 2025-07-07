@@ -1,14 +1,18 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 
 /// This example demonstrates basic encryption and decryption using
 /// the Vault Edge Provider's encryption service.
 Future<void> main() async {
   final cipherKey = Uint8List.fromList(List.generate(32, (i) => i % 256));
+  final vaultStore = InMemoryVaultStore();
+  await vaultStore.setContentKey(cipherKey);
   print('Cipher key created');
-  final encryptionService = EdgeEncryptionService(cipher: cipherKey);
+
+  final encryptionService = EdgeEncryptionService(vaultStore: vaultStore);
 
   final originalText = 'Hello';
   final originalData = utf8.encode(originalText);

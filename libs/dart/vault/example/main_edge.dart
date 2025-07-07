@@ -11,12 +11,15 @@ void main() async {
   var accountIndex = 42;
   await vaultStore.setAccountIndex(accountIndex);
 
+  // content key
+  await vaultStore
+      .setContentKey(Uint8List.fromList(List.generate(32, (idx) => idx + 1)));
+
   // seed storage
   final seed = Uint8List.fromList(List.generate(32, (idx) => idx + 1));
   await vaultStore.setSeed(seed);
 
-  final encryptionService = EdgeEncryptionService(
-      cipher: Uint8List.fromList(List.generate(32, (idx) => idx + 1)));
+  final encryptionService = EdgeEncryptionService(vaultStore: vaultStore);
   final database = await DatabaseConfig.createInMemoryDatabase();
 
   // initialization

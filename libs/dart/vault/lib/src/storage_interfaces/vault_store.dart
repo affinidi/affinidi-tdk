@@ -31,6 +31,16 @@ abstract class VaultStore {
     return Uint8List.fromList(bytes);
   }
 
+  /// Stores the key to decrypt content.
+  ///
+  /// [key] - The key to persist.
+  Future<void> setContentKey(Uint8List key);
+
+  /// Retrieves the key to decrypt content.
+  ///
+  /// Returns the key.
+  Future<Uint8List?> getContentKey();
+
   /// Removes all stored data including account index and seed
   Future<void> clear();
 }
