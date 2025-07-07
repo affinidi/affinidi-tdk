@@ -122,4 +122,16 @@ class CredentialFixtures {
   static Uint8List get largeCredentialData {
     return Uint8List(1024 * 1024 * 11);
   }
+
+  static PaginatedList<EdgeCredential> get mockCredentialDataPaginatedList =>
+      PaginatedList(
+        items: mockCredentialDataList,
+        lastEvaluatedItemId: 'test-credential-id-2',
+      );
+
+  static PaginatedList<EdgeCredential>
+      get mockEmptyCredentialDataPaginatedList => PaginatedList(
+            items: [],
+            lastEvaluatedItemId: null,
+          );
 }

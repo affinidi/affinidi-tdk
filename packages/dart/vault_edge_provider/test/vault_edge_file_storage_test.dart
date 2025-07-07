@@ -77,15 +77,18 @@ void main() {
       test('it creates file in parent folder', () async {
         when(() =>
                 mockRepository.getFolder(folderId: FileFixtures.parentFolderId))
-            .thenAnswer((_) async => [
-                  Folder(
-                    id: FileFixtures.parentFolderId,
-                    name: FileFixtures.folderName,
-                    createdAt: DateTime.now(),
-                    modifiedAt: DateTime.now(),
-                    parentId: null,
-                  )
-                ]);
+            .thenAnswer((_) async => PaginatedList(
+                  items: [
+                    Folder(
+                      id: FileFixtures.parentFolderId,
+                      name: FileFixtures.folderName,
+                      createdAt: DateTime.now(),
+                      modifiedAt: DateTime.now(),
+                      parentId: null,
+                    )
+                  ],
+                  lastEvaluatedItemId: FileFixtures.parentFolderId,
+                ));
 
         await storage.createFile(
           fileName: FileFixtures.fileName,
@@ -103,10 +106,12 @@ void main() {
 
       test('it throws error when parent folder does not exist', () async {
         when(() => mockRepository.getFolder(
-              folderId: 'non-existent-folder',
-              limit: any(named: 'limit'),
-              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-            )).thenAnswer((_) async => []);
+                  folderId: 'non-existent-folder',
+                  limit: any(named: 'limit'),
+                  exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+                ))
+            .thenAnswer((_) async =>
+                PaginatedList(items: [], lastEvaluatedItemId: null));
 
         expect(
           () => storage.createFile(
@@ -204,7 +209,10 @@ void main() {
               folderId: any(named: 'folderId'),
               limit: any(named: 'limit'),
               exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-            )).thenAnswer((_) async => mockItems);
+            )).thenAnswer((_) async => PaginatedList(
+              items: mockItems,
+              lastEvaluatedItemId: mockItems.last.id,
+            ));
 
         final result = await storage.getFolder(folderId: FileFixtures.folderId);
 

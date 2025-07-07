@@ -59,21 +59,21 @@ void main() async {
   // List contents of root folder
   print('Listing root folder contents:');
   final rootItems = await fileRepository.getFolder(folderId: null);
-  for (final item in rootItems) {
+  for (final item in rootItems.items) {
     print('- ${item.name} (${item is Folder ? 'Folder' : 'File'})');
   }
 
   // List contents of Folder1
   print('Listing Folder1 contents:');
   final folderItems = await fileRepository.getFolder(folderId: folder.id);
-  for (final item in folderItems) {
+  for (final item in folderItems.items) {
     print('- ${item.name} (${item is Folder ? 'Folder' : 'File'})');
   }
 
   // Read file content
   print('Reading file content:');
   final fileContent = await fileRepository.getFileContent(
-    fileId: folderItems.first.id,
+    fileId: folderItems.items.first.id,
   );
   print('File content: ${fileContent.join(', ')}');
 
@@ -87,7 +87,7 @@ void main() async {
 
   // Delete all contents
   print('Deleting all contents:');
-  for (final item in rootItems) {
+  for (final item in rootItems.items) {
     if (item is File) {
       print('Deleting file: ${item.name}');
       await fileRepository.deleteFile(fileId: item.id);
@@ -95,7 +95,7 @@ void main() async {
       print('Deleting folder: ${item.name}');
       // Delete folder contents first
       final folderContents = await fileRepository.getFolder(folderId: item.id);
-      for (final content in folderContents) {
+      for (final content in folderContents.items) {
         // TODO: should check for item if type file or folder and do some recursion
         print('  Deleting file: ${content.name}');
         await fileRepository.deleteFile(fileId: content.id);
@@ -107,7 +107,7 @@ void main() async {
   // Verify all contents are deleted
   print('Verifying root folder is empty:');
   final remainingItems = await fileRepository.getFolder(folderId: null);
-  print('Remaining items: ${remainingItems.length}');
+  print('Remaining items: ${remainingItems.items.length}');
 
   print('Deleting profile:');
   try {

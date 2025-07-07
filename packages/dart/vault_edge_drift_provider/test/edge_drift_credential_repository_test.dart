@@ -39,9 +39,9 @@ void main() {
 
       final credentialsData =
           await repository.listCredentialData(profileId: profileId);
-      expect(credentialsData, isNotEmpty);
-      expect(credentialsData.first.id, equals(credentialId));
-      expect(credentialsData.first.content, equals(credentialContent));
+      expect(credentialsData.items, isNotEmpty);
+      expect(credentialsData.items.first.id, equals(credentialId));
+      expect(credentialsData.items.first.content, equals(credentialContent));
 
       final fetched =
           await repository.getCredentialData(credentialId: credentialId);
@@ -71,9 +71,9 @@ void main() {
 
       final credentialsData =
           await repository.listCredentialData(profileId: profileId);
-      expect(credentialsData.length, equals(2));
-      expect(credentialsData.map((c) => c.id), contains(credentialId1));
-      expect(credentialsData.map((c) => c.id), contains(credentialId2));
+      expect(credentialsData.items.length, equals(2));
+      expect(credentialsData.items.map((c) => c.id), contains(credentialId1));
+      expect(credentialsData.items.map((c) => c.id), contains(credentialId2));
     });
 
     test('should delete a credential', () async {
@@ -89,13 +89,13 @@ void main() {
 
       final credentialsData =
           await repository.listCredentialData(profileId: profileId);
-      expect(credentialsData, isNotEmpty);
+      expect(credentialsData.items, isNotEmpty);
 
       await repository.deleteCredential(credentialId: credentialId);
 
       final afterDelete =
           await repository.listCredentialData(profileId: profileId);
-      expect(afterDelete, isEmpty);
+      expect(afterDelete.items, isEmpty);
     });
 
     test('should throw when getting non-existent credential', () async {
@@ -112,6 +112,100 @@ void main() {
         throwsA(isA<TdkException>().having(
             (e) => e.code, 'code', TdkExceptionType.credentialNotFound.code)),
       );
+    });
+  });
+
+  group('When testing pagination', () {
+    test('should paginate credentials correctly', () async {
+      for (var i = 0; i < 25; i++) {
+        await repository.saveCredentialData(
+          profileId: profileId,
+          credentialId: 'credential_$i',
+          credentialName: 'Credential $i',
+          credentialContent: Uint8List.fromList([i]),
+        );
+      }
+
+      String? cursor;
+      var totalFetched = 0;
+      const pageSize = 10;
+      final fetchedIds = <String>[];
+      var pageCount = 0;
+
+      do {
+        pageCount++;
+        final credentials = await repository.listCredentialData(
+          profileId: profileId,
+          limit: pageSize,
+          exclusiveStartItemId: cursor,
+        );
+
+        fetchedIds.addAll(credentials.items.map((e) => e.id));
+        totalFetched += credentials.items.length;
+        cursor = credentials.lastEvaluatedItemId;
+      } while (cursor != null);
+
+      expect(totalFetched, 25);
+      expect(fetchedIds.toSet().length, 25);
+      expect(pageCount, 4);
+    });
+
+    test('should handle empty credentials pagination', () async {
+      final credentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(credentials.items, isEmpty);
+      expect(credentials.lastEvaluatedItemId, isNull);
+    });
+
+    test('should handle pagination with exact page size', () async {
+      for (var i = 0; i < 10; i++) {
+        await repository.saveCredentialData(
+          profileId: profileId,
+          credentialId: 'credential_$i',
+          credentialName: 'Credential $i',
+          credentialContent: Uint8List.fromList([i]),
+        );
+      }
+
+      final credentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(credentials.items.length, 10);
+      expect(credentials.lastEvaluatedItemId, isNotNull);
+
+      final nextCredentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: credentials.lastEvaluatedItemId,
+      );
+      expect(nextCredentials.items, isEmpty);
+    });
+
+    test('should handle pagination with fewer items than page size', () async {
+      for (var i = 0; i < 5; i++) {
+        await repository.saveCredentialData(
+          profileId: profileId,
+          credentialId: 'credential_$i',
+          credentialName: 'Credential $i',
+          credentialContent: Uint8List.fromList([i]),
+        );
+      }
+
+      final credentials = await repository.listCredentialData(
+        profileId: profileId,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(credentials.items.length, 5);
+      expect(credentials.lastEvaluatedItemId, isNotNull);
     });
   });
 }

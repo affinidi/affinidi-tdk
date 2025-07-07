@@ -132,12 +132,7 @@ void main() {
       });
 
       test('should handle empty credential list', () async {
-        when(() => mockRepository.listCredentialData(
-              profileId: any(named: 'profileId'),
-              limit: any(named: 'limit'),
-              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-              cancelToken: any(named: 'cancelToken'),
-            )).thenAnswer((_) async => <EdgeCredential>[]);
+        CredentialMockSetup.setupEmptyCredentialListMocks(mockRepository);
 
         final result = await storage.listCredentials();
 

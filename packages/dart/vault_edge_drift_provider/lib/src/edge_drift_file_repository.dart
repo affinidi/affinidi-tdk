@@ -168,8 +168,9 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
       );
     }
 
-    final affectedRows =
-        await _database.delete(_database.items).delete(existingFolder);
+    final affectedRows = await (_database.delete(_database.items)
+          ..where((filter) => filter.id.equals(folderId)))
+        .go();
     return affectedRows > 0;
   }
 
@@ -218,7 +219,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<List<Item>> getFolder({
+  Future<PaginatedList<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
@@ -226,7 +227,8 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
     if (folderId != null && folderId.isNotEmpty) {
       final existingFolder = await _getExistingFolder(folderId);
       if (existingFolder == null) {
-        return []; // Return empty list for non-existent folders
+        return PaginatedList(
+            items: []); // Return empty paginated list for non-existent folders
       }
     }
 
@@ -237,12 +239,19 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
               ? filter.parentId.equals(folderId)
               : filter.parentId.isNull()));
 
+    var offset = 0;
+    if (exclusiveStartItemId != null) {
+      offset = int.tryParse(exclusiveStartItemId) ?? 0;
+    }
+
     if (limit != null) {
-      query = query..limit(limit);
+      query = query..limit(limit, offset: offset);
     }
 
     final items = await query.get();
-    return items.map((item) {
+
+    // Convert database items to domain items
+    final domainItems = items.map((item) {
       return (item.itemType == db.ItemType.folder)
           ? Folder(
               id: item.id,
@@ -259,6 +268,16 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
               parentId: item.parentId,
             );
     }).toList();
+
+    String? lastEvaluatedItemId;
+    if (items.isNotEmpty && limit != null) {
+      lastEvaluatedItemId = (offset + items.length).toString();
+    }
+
+    return PaginatedList(
+      items: domainItems,
+      lastEvaluatedItemId: lastEvaluatedItemId,
+    );
   }
 
   @override

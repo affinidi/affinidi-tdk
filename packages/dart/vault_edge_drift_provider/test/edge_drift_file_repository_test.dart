@@ -161,15 +161,15 @@ void main() {
       );
 
       final items = await repository.getFolder(folderId: folder.id);
-      expect(items.length, equals(4)); // 3 files + 1 subfolder
+      expect(items.items.length, equals(4)); // 3 files + 1 subfolder
 
-      final itemNames = items.map((item) => item.name).toList()..sort();
+      final itemNames = items.items.map((item) => item.name).toList()..sort();
       expect(
         itemNames,
         equals([...fileNames, 'subfolder']..sort()),
       );
 
-      for (final item in items) {
+      for (final item in items.items) {
         expect(item.parentId, equals(folder.id));
       }
     });
@@ -285,22 +285,188 @@ void main() {
       );
 
       final items = await repository.getFolder(folderId: null);
-      expect(items.length, equals(3)); // 2 files + 1 folder
+      expect(items.items.length, equals(3)); // 2 files + 1 folder
 
-      final itemNames = items.map((item) => item.name).toList()..sort();
+      final itemNames = items.items.map((item) => item.name).toList()..sort();
       expect(
         itemNames,
         equals([...fileNames, 'root-folder']..sort()),
       );
 
-      for (final item in items) {
+      for (final item in items.items) {
         expect(item.parentId, isNull);
       }
     });
 
     test('should return empty list for non-existent folder', () async {
       final items = await repository.getFolder(folderId: 'non-existent');
-      expect(items, isEmpty);
+      expect(items.items, isEmpty);
+    });
+  });
+
+  group('When testing pagination', () {
+    test('should paginate files correctly', () async {
+      for (var i = 0; i < 25; i++) {
+        await repository.createFile(
+          profileId: profileId,
+          fileName: 'file_$i.txt',
+          data: Uint8List.fromList([i]),
+        );
+      }
+
+      String? cursor;
+      var totalFetched = 0;
+      const pageSize = 10;
+      final fetchedNames = <String>[];
+      var pageCount = 0;
+
+      do {
+        pageCount++;
+        final items = await repository.getFolder(
+          folderId: null,
+          limit: pageSize,
+          exclusiveStartItemId: cursor,
+        );
+
+        fetchedNames.addAll(items.items.map((e) => e.name));
+        totalFetched += items.items.length;
+        cursor = items.lastEvaluatedItemId;
+      } while (cursor != null);
+
+      expect(totalFetched, 25);
+      expect(fetchedNames.toSet().length, 25);
+      expect(pageCount, 4);
+    });
+
+    test('should handle empty folder pagination', () async {
+      final items = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(items.items, isEmpty);
+      expect(items.lastEvaluatedItemId, isNull);
+    });
+
+    test('should handle pagination with exact page size', () async {
+      for (var i = 0; i < 10; i++) {
+        await repository.createFile(
+          profileId: profileId,
+          fileName: 'file_$i.txt',
+          data: Uint8List.fromList([i]),
+        );
+      }
+
+      final items = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(items.items.length, 10);
+      expect(items.lastEvaluatedItemId, isNotNull);
+
+      final nextItems = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: items.lastEvaluatedItemId,
+      );
+      expect(nextItems.items, isEmpty);
+    });
+
+    test('should handle pagination with fewer items than page size', () async {
+      for (var i = 0; i < 5; i++) {
+        await repository.createFile(
+          profileId: profileId,
+          fileName: 'file_$i.txt',
+          data: Uint8List.fromList([i]),
+        );
+      }
+
+      final items = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(items.items.length, 5);
+      expect(items.lastEvaluatedItemId, isNotNull);
+    });
+  });
+
+  group('Pagination', () {
+    test('should paginate correctly using offset-based approach', () async {
+      for (var i = 0; i < 25; i++) {
+        await repository.createFile(
+          profileId: profileId,
+          fileName: 'file_$i.txt',
+          data: Uint8List.fromList([i]),
+        );
+      }
+
+      var result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(result.items.length, equals(10));
+      expect(result.lastEvaluatedItemId, equals('10'));
+      expect(result.items.first.name, equals('file_0.txt'));
+      expect(result.items.last.name, equals('file_9.txt'));
+
+      result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: '10',
+      );
+
+      expect(result.items.length, equals(10));
+      expect(result.lastEvaluatedItemId, equals('20'));
+      expect(result.items.first.name, equals('file_10.txt'));
+      expect(result.items.last.name, equals('file_19.txt'));
+
+      result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: '20',
+      );
+
+      expect(result.items.length, equals(5));
+      expect(result.lastEvaluatedItemId, equals('25'));
+      expect(result.items.first.name, equals('file_20.txt'));
+      expect(result.items.last.name, equals('file_24.txt'));
+
+      result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: '25',
+      );
+
+      expect(result.items.length, equals(0));
+      expect(result.lastEvaluatedItemId, isNull);
+    });
+
+    test('should handle edge case with fewer items than limit', () async {
+      for (var i = 0; i < 3; i++) {
+        await repository.createFile(
+          profileId: profileId,
+          fileName: 'file_$i.txt',
+          data: Uint8List.fromList([i]),
+        );
+      }
+
+      final result = await repository.getFolder(
+        folderId: null,
+        limit: 10,
+        exclusiveStartItemId: null,
+      );
+
+      expect(result.items.length, equals(3));
+      expect(result.lastEvaluatedItemId, equals('3'));
+      expect(result.items.first.name, equals('file_0.txt'));
+      expect(result.items.last.name, equals('file_2.txt'));
     });
   });
 }

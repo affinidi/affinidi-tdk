@@ -71,7 +71,7 @@ class EdgeDriftCredentialRepository
   }
 
   @override
-  Future<List<EdgeCredential>> listCredentialData({
+  Future<PaginatedList<EdgeCredential>> listCredentialData({
     required String profileId,
     int? limit,
     String? exclusiveStartItemId,
@@ -80,22 +80,32 @@ class EdgeDriftCredentialRepository
     var query = _database.select(_database.credentials)
       ..where((filter) => filter.profileId.equals(_profileId));
 
+    var offset = 0;
     if (exclusiveStartItemId != null) {
-      query = query
-        ..where((filter) => filter.id.isBiggerThanValue(exclusiveStartItemId));
+      offset = int.tryParse(exclusiveStartItemId) ?? 0;
     }
 
     if (limit != null) {
-      query = query..limit(limit);
+      query = query..limit(limit, offset: offset);
     }
 
     final credentials = await query.get();
-    return credentials
+    final items = credentials
         .map((credential) => EdgeCredential(
               id: credential.id,
               content: credential.content,
             ))
         .toList();
+
+    String? lastEvaluatedItemId;
+    if (credentials.isNotEmpty && limit != null) {
+      lastEvaluatedItemId = (offset + credentials.length).toString();
+    }
+
+    return PaginatedList(
+      items: items,
+      lastEvaluatedItemId: lastEvaluatedItemId,
+    );
   }
 
   @override

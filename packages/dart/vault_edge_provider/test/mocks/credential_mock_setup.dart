@@ -28,15 +28,30 @@ class CredentialMockSetup {
         )).thenAnswer((_) async => CredentialFixtures.mockCredentialData);
 
     when(() => mockRepository.listCredentialData(
-          profileId: any(named: 'profileId'),
-          limit: any(named: 'limit'),
-          exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-          cancelToken: any(named: 'cancelToken'),
-        )).thenAnswer((_) async => CredentialFixtures.mockCredentialDataList);
+              profileId: any(named: 'profileId'),
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+              cancelToken: any(named: 'cancelToken'),
+            ))
+        .thenAnswer(
+            (_) async => CredentialFixtures.mockCredentialDataPaginatedList);
 
     when(() => mockRepository.deleteCredential(
           credentialId: any(named: 'credentialId'),
           cancelToken: any(named: 'cancelToken'),
         )).thenAnswer((_) async {});
+  }
+
+  static void setupEmptyCredentialListMocks(
+    MockEdgeCredentialRepository mockRepository,
+  ) {
+    when(() => mockRepository.listCredentialData(
+              profileId: any(named: 'profileId'),
+              limit: any(named: 'limit'),
+              exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
+              cancelToken: any(named: 'cancelToken'),
+            ))
+        .thenAnswer((_) async =>
+            CredentialFixtures.mockEmptyCredentialDataPaginatedList);
   }
 }

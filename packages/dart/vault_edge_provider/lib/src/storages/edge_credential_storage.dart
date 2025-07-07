@@ -97,7 +97,7 @@ class EdgeCredentialStorage implements CredentialStorage {
     );
 
     final credentials = await Future.wait(
-      credentialDataList.map((credentialData) async {
+      credentialDataList.items.map((credentialData) async {
         final decryptedContent =
             await _encryptionService.decryptData(credentialData.content);
 
@@ -108,11 +108,9 @@ class EdgeCredentialStorage implements CredentialStorage {
       }),
     );
 
-    final lastEvaluatedItemId = credentials.lastOrNull?.id;
-
     return PaginatedList(
       items: credentials,
-      lastEvaluatedItemId: lastEvaluatedItemId,
+      lastEvaluatedItemId: credentialDataList.lastEvaluatedItemId,
     );
   }
 

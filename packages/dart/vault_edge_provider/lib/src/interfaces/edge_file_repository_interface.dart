@@ -37,13 +37,13 @@ abstract interface class EdgeFileRepositoryInterface {
     required String fileId,
   });
 
-  /// Retrieves the list of items in a folder
+  /// Retrieves the list of items in a folder with pagination support
   ///
   /// [folderId] - when null returns all elements without a parent Id
   /// [limit] - maximum amount of items to retrieve
-  // ignore: lines_longer_than_80_chars
   /// [exclusiveStartItemId] - items with an id greater than exclusiveStartItemId
-  Future<List<Item>> getFolder({
+  /// Returns a [PaginatedList] containing the items and pagination information
+  Future<PaginatedList<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,

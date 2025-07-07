@@ -1,3 +1,4 @@
+import 'package:affinidi_tdk_vault_edge_provider/affinidi_tdk_vault_edge_provider.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../fixtures/file_fixtures.dart';
@@ -40,9 +41,13 @@ class FileMockSetup {
       final folderId =
           invocation.namedArguments[const Symbol('folderId')] as String?;
       if (folderId == 'test-folder-id') {
-        return [FileFixtures.createMockFolder(id: folderId)];
+        final items = [FileFixtures.createMockFolder(id: folderId)];
+        return PaginatedList(
+          items: items,
+          lastEvaluatedItemId: items.isNotEmpty ? items.last.id : null,
+        );
       }
-      return [];
+      return PaginatedList(items: [], lastEvaluatedItemId: null);
     });
 
     when(() => mockRepository.deleteFile(fileId: any(named: 'fileId')))

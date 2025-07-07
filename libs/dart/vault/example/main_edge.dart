@@ -57,9 +57,7 @@ void main() async {
 
   // Delete all existing profiles
   await Future.wait(profiles.map((profile) => _deleteProfile(vault, profile)));
-
-  profiles = await vault.listProfiles();
-  _listProfileNames(profiles, label: 'Cleared profiles');
+  print('[Demo] All existing profiles deleted');
 
   //
   // Add a new profile
@@ -154,16 +152,69 @@ void main() async {
     //
 
     await profile.defaultFileStorage?.deleteFile(fileId: fileToDownload.id);
-    final remainingPage =
-        await profile.defaultFileStorage?.getFolder(folderId: rootFolderId);
-    print('Files: ${remainingPage?.items.length ?? 0}');
+    print('[Demo] File deleted successfully');
   } else {
     print('[Demo] Could not find any files');
   }
 
   //
-  // Delete a profile
+  // Test pagination
   //
+
+  print('[Demo] Creating 25 files for pagination test...');
+  for (var i = 0; i < 25; i++) {
+    await profile.defaultFileStorage!.createFile(
+      fileName: 'file_$i.txt',
+      data: Uint8List.fromList([i]),
+      parentFolderId: rootFolderId,
+    );
+  }
+
+  print('[Demo] Testing pagination...');
+  String? exclusiveStartItemId;
+  var pageNum = 1;
+  const pageSize = 10;
+
+  do {
+    final page = await profile.defaultFileStorage!.getFolder(
+      folderId: rootFolderId,
+      limit: pageSize,
+      exclusiveStartItemId: exclusiveStartItemId,
+    );
+
+    print('Page $pageNum:');
+    for (final item in page.items) {
+      print('  File: ${item.name} (id: ${item.id})');
+    }
+
+    exclusiveStartItemId = page.lastEvaluatedItemId;
+    pageNum++;
+  } while (exclusiveStartItemId != null);
+
+  // Clean up before deleting profile
+
+  print('[Demo] Cleaning up all files...');
+
+  final allFiles = await profile.defaultFileStorage!.getFolder(
+    folderId: rootFolderId,
+    limit: 30,
+    exclusiveStartItemId: null,
+  );
+
+  print('[Demo] Found ${allFiles.items.length} files to delete');
+
+  var deletedCount = 0;
+  for (final item in allFiles.items) {
+    if (item is File) {
+      await profile.defaultFileStorage!.deleteFile(fileId: item.id);
+      deletedCount++;
+      print('[Demo] Deleted file: ${item.name}');
+    }
+  }
+
+  print('[Demo] Deleted $deletedCount files');
+
+  // Delete a profile
 
   profile = profiles.lastOrNull;
   if (profile == null) {
@@ -172,12 +223,8 @@ void main() async {
 
   print('[Demo] Deleting profile ...');
 
-  // Option 1
   final profileRepository3 = vault.defaultProfileRepository;
   await profileRepository3.deleteProfile(profile);
-  // // Option 3
-  // final profileRepository4 = vault.profileRepositories[vfsRepositoryId]!;
-  // await profileRepository4.deleteProfile(profile);
 
   profiles = await vault.listProfiles();
   _listProfileNames(profiles, label: 'Names after deleting profile');
