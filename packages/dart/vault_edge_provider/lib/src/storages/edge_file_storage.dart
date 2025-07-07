@@ -6,7 +6,6 @@ import 'package:dio/dio.dart';
 import '../exceptions/tdk_exception_type.dart';
 import '../interfaces/edge_file_repository_interface.dart';
 import '../services/edge_encryption_service_interface.dart';
-import '../utils/file_provider_configuration.dart';
 
 /// An Edge based implementation of [FileStorage] for storing and managing
 /// files and folders.

@@ -1,4 +1,4 @@
-/// Configuration for file provider settings
+/// Configuration for file provider settings that can be shared across different providers
 class FileProviderConfiguration {
   /// Creates a new configuration with the specified settings
   const FileProviderConfiguration({
@@ -23,7 +23,7 @@ class FileProviderConfiguration {
     );
   }
 
-  /// Creates a configuration with default values from FileUtils
+  /// Creates a configuration with default values
   factory FileProviderConfiguration.defaults() {
     return const FileProviderConfiguration();
   }

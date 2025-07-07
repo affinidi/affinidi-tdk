@@ -22,4 +22,5 @@ export 'src/storage_interfaces/profile_repository.dart';
 export 'src/storage_interfaces/repository_configuration.dart';
 export 'src/storage_interfaces/shared_storage.dart';
 export 'src/storage_interfaces/vault_store.dart';
+export 'src/utils/file_provider_configuration.dart';
 export 'src/vault.dart';
