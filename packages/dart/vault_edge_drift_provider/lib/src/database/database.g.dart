@@ -297,7 +297,6 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
       'id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
       clientDefault: const Uuid().v4);
   static const VerificationMeta _profileIdMeta =
       const VerificationMeta('profileId');
@@ -386,7 +385,7 @@ class $ItemsTable extends Items with TableInfo<$ItemsTable, Item> {
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => const {};
+  Set<GeneratedColumn> get $primaryKey => {id};
   @override
   Item map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
@@ -895,7 +894,6 @@ class $CredentialsTable extends Credentials
       'id', aliasedName, false,
       type: DriftSqlType.string,
       requiredDuringInsert: false,
-      defaultConstraints: GeneratedColumn.constraintIsAlways('UNIQUE'),
       clientDefault: const Uuid().v4);
   static const VerificationMeta _profileIdMeta =
       const VerificationMeta('profileId');
@@ -981,7 +979,7 @@ class $CredentialsTable extends Credentials
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => const {};
+  Set<GeneratedColumn> get $primaryKey => {id};
   @override
   Credential map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
