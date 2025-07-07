@@ -44,8 +44,8 @@ class ProjectCredentialConfigExistError(BaseModel):
     @validator('message')
     def message_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('Credential config is exist for the project, one config is allowed for each project',):
-            raise ValueError("must be one of enum values ('Credential config is exist for the project, one config is allowed for each project')")
+        if value not in ('Credential configuration already exists for this project and only one configuration is allowed per project',):
+            raise ValueError("must be one of enum values ('Credential configuration already exists for this project and only one configuration is allowed per project')")
         return value
 
     @validator('http_status_code')

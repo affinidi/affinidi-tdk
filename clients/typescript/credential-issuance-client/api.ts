@@ -1943,8 +1943,8 @@ export const ProjectCredentialConfigExistErrorNameEnum = {
 export type ProjectCredentialConfigExistErrorNameEnum =
   (typeof ProjectCredentialConfigExistErrorNameEnum)[keyof typeof ProjectCredentialConfigExistErrorNameEnum]
 export const ProjectCredentialConfigExistErrorMessageEnum = {
-  CredentialConfigIsExistForTheProjectOneConfigIsAllowedForEachProject:
-    'Credential config is exist for the project, one config is allowed for each project',
+  CredentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject:
+    'Credential configuration already exists for this project and only one configuration is allowed per project',
 } as const
 
 export type ProjectCredentialConfigExistErrorMessageEnum =

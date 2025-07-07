@@ -38,7 +38,7 @@ class TestProjectCredentialConfigExistError(unittest.TestCase):
         if include_optional:
             return ProjectCredentialConfigExistError(
                 name = 'ProjectCredentialConfigExistError',
-                message = 'Credential config is exist for the project, one config is allowed for each project',
+                message = 'Credential configuration already exists for this project and only one configuration is allowed per project',
                 http_status_code = 400,
                 trace_id = '',
                 details = [
@@ -52,7 +52,7 @@ class TestProjectCredentialConfigExistError(unittest.TestCase):
         else:
             return ProjectCredentialConfigExistError(
                 name = 'ProjectCredentialConfigExistError',
-                message = 'Credential config is exist for the project, one config is allowed for each project',
+                message = 'Credential configuration already exists for this project and only one configuration is allowed per project',
                 http_status_code = 400,
                 trace_id = '',
         )
