@@ -7,14 +7,15 @@ import 'package:test/test.dart';
 
 void main() {
   late final cypher = Uint8List(32);
+  late EdgeEncryptionService encryptionService;
+
+  setUp(() async {
+    final vaultStore = InMemoryVaultStore();
+    await vaultStore.setContentKey(cypher);
+    encryptionService = EdgeEncryptionService(vaultStore: vaultStore);
+  });
 
   group('When encrypting and decrypting data', () {
-    late EdgeEncryptionService encryptionService;
-
-    setUp(() async {
-      encryptionService = EdgeEncryptionService(cipher: cypher);
-    });
-
     test('it encrypts and decrypts data successfully', () async {
       final originalData = Uint8List.fromList([1, 2, 3, 4, 5]);
 
@@ -65,12 +66,6 @@ void main() {
   });
 
   group('When decrypting data with invalid length', () {
-    late EdgeEncryptionService encryptionService;
-
-    setUp(() async {
-      encryptionService = EdgeEncryptionService(cipher: cypher);
-    });
-
     test('it throws TdkException for data shorter than minimum required length',
         () async {
       final invalidData = Uint8List(20);

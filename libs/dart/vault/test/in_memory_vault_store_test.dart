@@ -36,6 +36,21 @@ void main() {
       });
     });
 
+    group('When managing contentKey', () {
+      final testContentKey = Uint8List.fromList([1, 2, 3, 4]);
+
+      test('it should store and retrieve contentKey', () async {
+        await store.setContentKey(testContentKey);
+        final retrieved = await store.getContentKey();
+        expect(retrieved, equals(testContentKey));
+      });
+
+      test('it should return null when no contentKey is stored', () async {
+        final retrieved = await store.getContentKey();
+        expect(retrieved, isNull);
+      });
+    });
+
     group('When clearing data', () {
       test('it should clear all stored data', () async {
         // Setup test data
@@ -48,6 +63,7 @@ void main() {
         // Verify all data is cleared
         expect(await store.getSeed(), isNull);
         expect(await store.getAccountIndex(), equals(0));
+        expect(await store.getContentKey(), isNull);
       });
     });
   });
