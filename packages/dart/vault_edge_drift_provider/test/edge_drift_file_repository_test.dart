@@ -161,15 +161,15 @@ void main() {
       );
 
       final items = await repository.getFolder(folderId: folder.id);
-      expect(items.length, equals(4)); // 3 files + 1 subfolder
+      expect(items.items.length, equals(4)); // 3 files + 1 subfolder
 
-      final itemNames = items.map((item) => item.name).toList()..sort();
+      final itemNames = items.items.map((item) => item.name).toList()..sort();
       expect(
         itemNames,
         equals([...fileNames, 'subfolder']..sort()),
       );
 
-      for (final item in items) {
+      for (final item in items.items) {
         expect(item.parentId, equals(folder.id));
       }
     });
@@ -285,22 +285,22 @@ void main() {
       );
 
       final items = await repository.getFolder(folderId: null);
-      expect(items.length, equals(3)); // 2 files + 1 folder
+      expect(items.items.length, equals(3)); // 2 files + 1 folder
 
-      final itemNames = items.map((item) => item.name).toList()..sort();
+      final itemNames = items.items.map((item) => item.name).toList()..sort();
       expect(
         itemNames,
         equals([...fileNames, 'root-folder']..sort()),
       );
 
-      for (final item in items) {
+      for (final item in items.items) {
         expect(item.parentId, isNull);
       }
     });
 
     test('should return empty list for non-existent folder', () async {
       final items = await repository.getFolder(folderId: 'non-existent');
-      expect(items, isEmpty);
+      expect(items.items, isEmpty);
     });
   });
 
@@ -327,15 +327,10 @@ void main() {
           limit: pageSize,
           exclusiveStartItemId: cursor,
         );
-        final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-          folderId: null,
-          limit: pageSize,
-          exclusiveStartItemId: cursor,
-        );
 
-        fetchedNames.addAll(items.map((e) => e.name));
-        totalFetched += items.length;
-        cursor = lastEvaluatedItemId;
+        fetchedNames.addAll(items.items.map((e) => e.name));
+        totalFetched += items.items.length;
+        cursor = items.lastEvaluatedItemId;
       } while (cursor != null);
 
       expect(totalFetched, 25);
@@ -349,14 +344,9 @@ void main() {
         limit: 10,
         exclusiveStartItemId: null,
       );
-      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-        folderId: null,
-        limit: 10,
-        exclusiveStartItemId: null,
-      );
 
-      expect(items, isEmpty);
-      expect(lastEvaluatedItemId, isNull);
+      expect(items.items, isEmpty);
+      expect(items.lastEvaluatedItemId, isNull);
     });
 
     test('should handle pagination with exact page size', () async {
@@ -373,21 +363,16 @@ void main() {
         limit: 10,
         exclusiveStartItemId: null,
       );
-      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-        folderId: null,
-        limit: 10,
-        exclusiveStartItemId: null,
-      );
 
-      expect(items.length, 10);
-      expect(lastEvaluatedItemId, isNotNull);
+      expect(items.items.length, 10);
+      expect(items.lastEvaluatedItemId, isNotNull);
 
       final nextItems = await repository.getFolder(
         folderId: null,
         limit: 10,
-        exclusiveStartItemId: lastEvaluatedItemId,
+        exclusiveStartItemId: items.lastEvaluatedItemId,
       );
-      expect(nextItems, isEmpty);
+      expect(nextItems.items, isEmpty);
     });
 
     test('should handle pagination with fewer items than page size', () async {
@@ -404,14 +389,9 @@ void main() {
         limit: 10,
         exclusiveStartItemId: null,
       );
-      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-        folderId: null,
-        limit: 10,
-        exclusiveStartItemId: null,
-      );
 
-      expect(items.length, 5);
-      expect(lastEvaluatedItemId, isNull);
+      expect(items.items.length, 5);
+      expect(items.lastEvaluatedItemId, isNull);
     });
   });
 }

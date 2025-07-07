@@ -39,9 +39,9 @@ void main() {
 
       final credentialsData =
           await repository.listCredentialData(profileId: profileId);
-      expect(credentialsData, isNotEmpty);
-      expect(credentialsData.first.id, equals(credentialId));
-      expect(credentialsData.first.content, equals(credentialContent));
+      expect(credentialsData.items, isNotEmpty);
+      expect(credentialsData.items.first.id, equals(credentialId));
+      expect(credentialsData.items.first.content, equals(credentialContent));
 
       final fetched =
           await repository.getCredentialData(credentialId: credentialId);
@@ -71,9 +71,9 @@ void main() {
 
       final credentialsData =
           await repository.listCredentialData(profileId: profileId);
-      expect(credentialsData.length, equals(2));
-      expect(credentialsData.map((c) => c.id), contains(credentialId1));
-      expect(credentialsData.map((c) => c.id), contains(credentialId2));
+      expect(credentialsData.items.length, equals(2));
+      expect(credentialsData.items.map((c) => c.id), contains(credentialId1));
+      expect(credentialsData.items.map((c) => c.id), contains(credentialId2));
     });
 
     test('should delete a credential', () async {
@@ -89,13 +89,13 @@ void main() {
 
       final credentialsData =
           await repository.listCredentialData(profileId: profileId);
-      expect(credentialsData, isNotEmpty);
+      expect(credentialsData.items, isNotEmpty);
 
       await repository.deleteCredential(credentialId: credentialId);
 
       final afterDelete =
           await repository.listCredentialData(profileId: profileId);
-      expect(afterDelete, isEmpty);
+      expect(afterDelete.items, isEmpty);
     });
 
     test('should throw when getting non-existent credential', () async {
@@ -139,15 +139,10 @@ void main() {
           limit: pageSize,
           exclusiveStartItemId: cursor,
         );
-        final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-          profileId: profileId,
-          limit: pageSize,
-          exclusiveStartItemId: cursor,
-        );
 
-        fetchedIds.addAll(credentials.map((e) => e.id));
-        totalFetched += credentials.length;
-        cursor = lastEvaluatedItemId;
+        fetchedIds.addAll(credentials.items.map((e) => e.id));
+        totalFetched += credentials.items.length;
+        cursor = credentials.lastEvaluatedItemId;
       } while (cursor != null);
 
       expect(totalFetched, 25);
@@ -161,14 +156,9 @@ void main() {
         limit: 10,
         exclusiveStartItemId: null,
       );
-      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-        profileId: profileId,
-        limit: 10,
-        exclusiveStartItemId: null,
-      );
 
-      expect(credentials, isEmpty);
-      expect(lastEvaluatedItemId, isNull);
+      expect(credentials.items, isEmpty);
+      expect(credentials.lastEvaluatedItemId, isNull);
     });
 
     test('should handle pagination with exact page size', () async {
@@ -186,21 +176,16 @@ void main() {
         limit: 10,
         exclusiveStartItemId: null,
       );
-      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-        profileId: profileId,
-        limit: 10,
-        exclusiveStartItemId: null,
-      );
 
-      expect(credentials.length, 10);
-      expect(lastEvaluatedItemId, isNotNull);
+      expect(credentials.items.length, 10);
+      expect(credentials.lastEvaluatedItemId, isNotNull);
 
       final nextCredentials = await repository.listCredentialData(
         profileId: profileId,
         limit: 10,
-        exclusiveStartItemId: lastEvaluatedItemId,
+        exclusiveStartItemId: credentials.lastEvaluatedItemId,
       );
-      expect(nextCredentials, isEmpty);
+      expect(nextCredentials.items, isEmpty);
     });
 
     test('should handle pagination with fewer items than page size', () async {
@@ -218,14 +203,9 @@ void main() {
         limit: 10,
         exclusiveStartItemId: null,
       );
-      final lastEvaluatedItemId = await repository.getLastEvaluatedItemId(
-        profileId: profileId,
-        limit: 10,
-        exclusiveStartItemId: null,
-      );
 
-      expect(credentials.length, 5);
-      expect(lastEvaluatedItemId, isNull);
+      expect(credentials.items.length, 5);
+      expect(credentials.lastEvaluatedItemId, isNull);
     });
   });
 }

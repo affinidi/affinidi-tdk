@@ -95,12 +95,12 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
   }
 
   @override
-  Future<List<Item>> getFolder({
+  Future<PaginatedList<Item>> getFolder({
     String? folderId,
     int? limit,
     String? exclusiveStartItemId,
   }) async {
-    return [
+    final items = [
       Folder(
         id: 'folder-1',
         name: 'test-folder',
@@ -109,6 +109,10 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
         parentId: folderId,
       ),
     ];
+    return PaginatedList(
+      items: items,
+      lastEvaluatedItemId: items.isNotEmpty ? items.last.id : null,
+    );
   }
 
   @override
@@ -123,14 +127,5 @@ class MockEdgeFileRepository implements EdgeFileRepositoryInterface {
     required String newName,
   }) async {
     return true;
-  }
-
-  @override
-  Future<String?> getLastEvaluatedItemId({
-    String? folderId,
-    int? limit,
-    String? exclusiveStartItemId,
-  }) async {
-    return null;
   }
 }

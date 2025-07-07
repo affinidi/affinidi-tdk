@@ -84,7 +84,7 @@ class EdgeFileStorage implements FileStorage {
     if (sanitizedParentFolderId != null) {
       final items =
           await _repository.getFolder(folderId: sanitizedParentFolderId);
-      if (items.isEmpty) {
+      if (items.items.isEmpty) {
         Error.throwWithStackTrace(
           TdkException(
             message: 'Parent folder does not exist',
@@ -93,7 +93,7 @@ class EdgeFileStorage implements FileStorage {
           StackTrace.current,
         );
       }
-      final parentFolder = items.first;
+      final parentFolder = items.items.first;
       if (parentFolder is! Folder) {
         Error.throwWithStackTrace(
           TdkException(
@@ -157,7 +157,7 @@ class EdgeFileStorage implements FileStorage {
   }) async {
     // Check if folder exists
     final items = await _repository.getFolder(folderId: folderId);
-    if (items.isEmpty) {
+    if (items.items.isEmpty) {
       Error.throwWithStackTrace(
         TdkException(
           message: 'Folder does not exist',
@@ -209,21 +209,12 @@ class EdgeFileStorage implements FileStorage {
   }) async {
     final sanitizedFolderId = _convertToRootFolderIfNeeded(folderId);
 
-    final items = await _repository.getFolder(
+    // Use the optimized implementation that returns PaginatedList directly
+    return await _repository.getFolder(
       folderId: sanitizedFolderId,
       limit: limit,
       exclusiveStartItemId: exclusiveStartItemId,
     );
-
-    // Get the proper pagination cursor using autoId
-    final lastEvaluatedItemId = await _repository.getLastEvaluatedItemId(
-      folderId: sanitizedFolderId,
-      limit: limit,
-      exclusiveStartItemId: exclusiveStartItemId,
-    );
-
-    return PaginatedList(
-        items: items, lastEvaluatedItemId: lastEvaluatedItemId);
   }
 
   @override
@@ -269,7 +260,7 @@ class EdgeFileStorage implements FileStorage {
 
     // Check if folder exists
     final items = await _repository.getFolder(folderId: folderId);
-    if (items.isEmpty) {
+    if (items.items.isEmpty) {
       Error.throwWithStackTrace(
         TdkException(
           message: 'Folder does not exist',

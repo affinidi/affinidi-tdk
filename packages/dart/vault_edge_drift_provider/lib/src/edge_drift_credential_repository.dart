@@ -71,7 +71,7 @@ class EdgeDriftCredentialRepository
   }
 
   @override
-  Future<List<EdgeCredential>> listCredentialData({
+  Future<PaginatedList<EdgeCredential>> listCredentialData({
     required String profileId,
     int? limit,
     String? exclusiveStartItemId,
@@ -93,12 +93,24 @@ class EdgeDriftCredentialRepository
     }
 
     final credentials = await query.get();
-    return credentials
+    final items = credentials
         .map((credential) => EdgeCredential(
               id: credential.id,
               content: credential.content,
             ))
         .toList();
+
+    String? lastEvaluatedItemId;
+    if (credentials.isNotEmpty &&
+        limit != null &&
+        credentials.length == limit) {
+      lastEvaluatedItemId = credentials.last.autoId.toString();
+    }
+
+    return PaginatedList(
+      items: items,
+      lastEvaluatedItemId: lastEvaluatedItemId,
+    );
   }
 
   @override
@@ -116,39 +128,5 @@ class EdgeDriftCredentialRepository
       content: credentialContent,
     );
     await _database.into(_database.credentials).insert(credentialEntry);
-  }
-
-  @override
-  Future<String?> getLastEvaluatedItemId({
-    required String profileId,
-    int? limit,
-    String? exclusiveStartItemId,
-    VaultCancelToken? cancelToken,
-  }) async {
-    var query = _database.select(_database.credentials)
-      ..where((filter) => filter.profileId.equals(_profileId));
-
-    if (exclusiveStartItemId != null) {
-      final startAutoId = int.tryParse(exclusiveStartItemId);
-      if (startAutoId != null) {
-        query = query
-          ..where((filter) => filter.autoId.isBiggerThanValue(startAutoId));
-      }
-    }
-
-    if (limit != null) {
-      query = query..limit(limit);
-    }
-
-    final credentials = await query.get();
-
-    // If we got exactly the limit number of items, there might be more
-    if (credentials.isNotEmpty &&
-        limit != null &&
-        credentials.length == limit) {
-      return credentials.last.autoId.toString();
-    }
-
-    return null;
   }
 }

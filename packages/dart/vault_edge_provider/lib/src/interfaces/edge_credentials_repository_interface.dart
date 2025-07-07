@@ -6,20 +6,9 @@ import '../models/edge_credential.dart';
 
 /// Interface to manage CRUD operations on credentials
 abstract interface class EdgeCredentialsRepositoryInterface {
-  /// Retrieves list of raw credential data for a profile
-  Future<List<EdgeCredential>> listCredentialData({
-    required String profileId,
-    int? limit,
-    String? exclusiveStartItemId,
-    VaultCancelToken? cancelToken,
-  });
-
-  /// Gets the autoId for the last item in a credential query for pagination
-  ///
-  /// [profileId] - the profile identifier
-  /// [limit] - maximum amount of items to retrieve
-  /// [exclusiveStartItemId] - items with an id greater than exclusiveStartItemId
-  Future<String?> getLastEvaluatedItemId({
+  /// Retrieves list of raw credential data for a profile with pagination support
+  /// Returns a [PaginatedList] containing the credentials and pagination information
+  Future<PaginatedList<EdgeCredential>> listCredentialData({
     required String profileId,
     int? limit,
     String? exclusiveStartItemId,
