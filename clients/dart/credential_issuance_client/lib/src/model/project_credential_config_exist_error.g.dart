@@ -28,15 +28,15 @@ final BuiltSet<ProjectCredentialConfigExistErrorNameEnum>
 ]);
 
 const ProjectCredentialConfigExistErrorMessageEnum
-    _$projectCredentialConfigExistErrorMessageEnum_credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject =
+    _$projectCredentialConfigExistErrorMessageEnum_credentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject =
     const ProjectCredentialConfigExistErrorMessageEnum._(
-        'credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject');
+        'credentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject');
 
 ProjectCredentialConfigExistErrorMessageEnum
     _$projectCredentialConfigExistErrorMessageEnumValueOf(String name) {
   switch (name) {
-    case 'credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject':
-      return _$projectCredentialConfigExistErrorMessageEnum_credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject;
+    case 'credentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject':
+      return _$projectCredentialConfigExistErrorMessageEnum_credentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject;
     default:
       throw ArgumentError(name);
   }
@@ -45,7 +45,7 @@ ProjectCredentialConfigExistErrorMessageEnum
 final BuiltSet<ProjectCredentialConfigExistErrorMessageEnum>
     _$projectCredentialConfigExistErrorMessageEnumValues = BuiltSet<
         ProjectCredentialConfigExistErrorMessageEnum>(const <ProjectCredentialConfigExistErrorMessageEnum>[
-  _$projectCredentialConfigExistErrorMessageEnum_credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject,
+  _$projectCredentialConfigExistErrorMessageEnum_credentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject,
 ]);
 
 const ProjectCredentialConfigExistErrorHttpStatusCodeEnum
@@ -112,12 +112,12 @@ class _$ProjectCredentialConfigExistErrorMessageEnumSerializer
     implements
         PrimitiveSerializer<ProjectCredentialConfigExistErrorMessageEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
-    'credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject':
-        'Credential config is exist for the project, one config is allowed for each project',
+    'credentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject':
+        'Credential configuration already exists for this project and only one configuration is allowed per project',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
-    'Credential config is exist for the project, one config is allowed for each project':
-        'credentialConfigIsExistForTheProjectCommaOneConfigIsAllowedForEachProject',
+    'Credential configuration already exists for this project and only one configuration is allowed per project':
+        'credentialConfigurationAlreadyExistsForThisProjectAndOnlyOneConfigurationIsAllowedPerProject',
   };
 
   @override
