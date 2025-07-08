@@ -13,7 +13,8 @@ public class EnvironmentUtilTest {
     private void test_getUrlForEnvironment(String configuredEnvironment, Callable<String> getUrlForEnvironment,
             String expectedUrlForEnvironment) {
         try (MockedStatic mocked = mockStatic(EnvironmentUtil.class)) {
-            // Test the function call for local environment without reading the configured property
+            // Test the function call for local environment without reading the configured
+            // property
             mocked.when(EnvironmentUtil::getConfiguredEnvironment).thenReturn(configuredEnvironment);
             mocked.when(EnvironmentUtil::getEnvironmentDetail).thenCallRealMethod();
             mocked.when(EnvironmentUtil::getVaultUrlForEnvironment).thenCallRealMethod();
@@ -21,7 +22,8 @@ public class EnvironmentUtilTest {
             mocked.when(EnvironmentUtil::getElementAuthTokenUrlForEnvironment).thenCallRealMethod();
             mocked.when(EnvironmentUtil::getApiGatewayUrlForEnvironment).thenCallRealMethod();
             try {
-                // assertEquals(expectedUrlForEnvironment, EnvironmentUtil.getVaultUrlForEnvironment());
+                // assertEquals(expectedUrlForEnvironment,
+                // EnvironmentUtil.getVaultUrlForEnvironment());
                 assertEquals(expectedUrlForEnvironment, getUrlForEnvironment.call());
             } catch (Exception ex) {
                 throw new TestAbortedException(ex.getMessage());

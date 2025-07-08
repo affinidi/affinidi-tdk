@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 import jakarta.ws.rs.core.UriBuilder;
 
 /**
- * This class provides utility functions required to create vault specific links. Refer {@EnvironmentUtil} for more
- * information.
+ * This class provides utility functions required to create vault specific
+ * links. Refer {@EnvironmentUtil} for more information.
  */
 public final class VaultUtil {
 
@@ -21,7 +21,8 @@ public final class VaultUtil {
     private static final Logger LOGGER = Logger.getLogger(VaultUtil.class.getName());
 
     /**
-     * Returns the credential offer claim link specific to the configured environment.
+     * Returns the credential offer claim link specific to the configured
+     * environment.
      *
      * @param credentialOfferUri
      *
@@ -43,7 +44,8 @@ public final class VaultUtil {
     }
 
     /**
-     * Returns the vault share link given request and a client id, specific to the configured environment.
+     * Returns the vault share link given request and a client id, specific to the
+     * configured environment.
      *
      * @param request
      * @param clientId
