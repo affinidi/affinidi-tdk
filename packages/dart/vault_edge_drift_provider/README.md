@@ -1,6 +1,6 @@
 # Affinidi TDK - Vault Edge Drift Provider
 
-The Affinidi TDK - Vault Edge Drift Provider package provides an interface with the [Drift database](https://pub.dev/packages/drift) to persist and manage user profiles, including the related credentials and files.
+The Affinidi TDK - Vault Edge Drift Provider package implements the [Drift database](https://pub.dev/packages/drift) to persist and manage user profiles, including related credentials and files.
 
 ## Key Features
 

@@ -1,6 +1,6 @@
 # Affinidi TDK - Vault Edge Provider
 
-The Affinidi TDK - Vault Edge Provider package is a Vault implementation of the ProfileRepository that manages user profiles, including the related credentials and files, locally *(edge)* on the device.
+The Affinidi TDK - Vault Edge Provider package provides an interface to the Vault implementation of the ProfileRepository, which manages user profiles, including the related credentials and files, locally *(edge)* on the device.
 
 ## Key Features
 
