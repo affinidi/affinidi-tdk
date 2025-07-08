@@ -18,9 +18,9 @@
 
 ## Enum: MessageEnum
 
-| Name                                                                              | Value                                                                                          |
-| --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| CREDENTIAL_CONFIG_IS_EXIST_FOR_THE_PROJECT_ONE_CONFIG_IS_ALLOWED_FOR_EACH_PROJECT | &quot;Credential config is exist for the project, one config is allowed for each project&quot; |
+| Name                                                                                                       | Value                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| CREDENTIAL_CONFIGURATION_ALREADY_EXISTS_FOR_THIS_PROJECT_AND_ONLY_ONE_CONFIGURATION_IS_ALLOWED_PER_PROJECT | &quot;Credential configuration already exists for this project and only one configuration is allowed per project&quot; |
 
 ## Enum: HttpStatusCodeEnum
 
