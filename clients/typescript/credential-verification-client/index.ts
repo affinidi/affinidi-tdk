@@ -13,6 +13,7 @@
  */
 
 export * from './api'
+export { BASE_PATH } from './base'
 export * from './configuration'
 
 // @ts-ignore
