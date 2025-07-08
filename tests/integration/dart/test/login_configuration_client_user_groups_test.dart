@@ -1,4 +1,5 @@
 import 'package:affinidi_tdk_login_configuration_client/affinidi_tdk_login_configuration_client.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:test/test.dart';
@@ -12,8 +13,13 @@ void main() {
     late DenyListApi denyListApi;
 
     setUpAll(() async {
+      final apiGwUrl = Environment.fetchEnvironment().apiGwUrl;
+      String basePathOverride = replaceBaseDomain(
+          AffinidiTdkLoginConfigurationClient.basePath, apiGwUrl);
+
       final loginConfigurationClient = AffinidiTdkLoginConfigurationClient(
-          authTokenHook: ResourceFactory.getAuthTokenHook());
+          authTokenHook: ResourceFactory.getAuthTokenHook(),
+          basePathOverride: basePathOverride);
 
       groupApi = loginConfigurationClient.getGroupApi();
       allowListApi = loginConfigurationClient.getAllowListApi();

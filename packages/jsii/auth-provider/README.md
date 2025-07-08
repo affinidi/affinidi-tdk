@@ -1,6 +1,18 @@
 # @affinidi-tdk/auth-provider
 
-Affinidi TDK Internal module for managing access tokens.
+Affinidi TDK internal module for managing access token (project scoped token) to Affinidi services via Affinidi TDK clients.
+
+## Pre-requisites
+
+To initialize AuthProvider, Personal Access Token (PAT) details should be provided.
+To create PAT, use Affinidi CLI's [create-token](https://github.com/affinidi/affinidi-cli/blob/main/docs/token.md#affinidi-token-create-token) command.
+
+```sh
+affinidi token create-token -n MyNewToken -w -p YOUR-SECRET-PASSPHRASE
+```
+
+This command will return you variables to initialize AuthProvider.
+
 
 ## Install
 
@@ -20,9 +32,7 @@ run inside [python virtual env](https://docs.python.org/3/library/venv.html)
 pip install affinidi_tdk_auth_provider
 ```
 
-
 ## Usage
-
 
 ### Python package usage
 
@@ -30,13 +40,11 @@ pip install affinidi_tdk_auth_provider
 import affinidi_tdk_auth_provider
 
 stats = {
-  apiGatewayUrl,
   keyId,
   tokenId,
   passphrase,
   privateKey,
   projectId,
-  tokenEndpoint,
 }
 
 authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
@@ -50,30 +58,12 @@ projectScopedToken = authProvider.fetch_project_scoped_token()
 import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
 const authProvider = new AuthProvider({
-  apiGatewayUrl,
   keyId,
   tokenId,
   passphrase,
   privateKey,
   projectId,
-  tokenEndpoint,
 })
 
 const projectScopedToken = await authProvider.fetchProjectScopedToken()
-```
-
-### Mnually Build JSII python package
-
-This is step is required, as python package is not published to pypi.org yet
-
-```bash
-git clone git@github.com:affinidi/affinidi-tdk.git
-cd packages/auth-provider/
-npm i --prefix .
-npm run build
-npm run package
-```
-
-```bash
-pip install dist/python/affinidi_tdk_auth_provider-0.1.4-py3-none-any.whl
 ```

@@ -14,13 +14,24 @@ import com.affinidi.tdk.wallets.client.auth.ApiKeyAuth;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 import com.affinidi.tdk.wallets.client.models.*;
 
+import com.affinidi.tdk.common.EnvironmentUtil;
+
 /**
  * Wallet helpers used across integration tests.
  */
-public class WalletTestHelper {
+public class WalletsTestHelper {
+    private static final int WALLETS_LIMIT_THRESHOLD = 7;
 
     private static WalletApi getWalletApi() {
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            // String envName = Env.getEnvName();
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 
@@ -67,8 +78,12 @@ public class WalletTestHelper {
     public static void checkWalletsLimitExceeded() throws Exception {
         List<WalletDto> wallets = getWalletApi().listWallets(null).getWallets();
 
-        if (wallets != null && wallets.size() >= 10) {
-            throw new IllegalStateException("❗️Max wallets limit exceeded (10). Delete unused wallets and try again.");
+        if (wallets != null && wallets.size() > WALLETS_LIMIT_THRESHOLD) {
+            System.out.println("❗️Number of wallets reaching the limit (10). Deleting wallets.");
+            for (WalletDto wallet : wallets) {
+                String id = wallet.getId();
+                deleteWallet(id);
+            }
         }
     }
 

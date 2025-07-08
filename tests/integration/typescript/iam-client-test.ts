@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { PoliciesApi, ProjectsApi, Configuration as IamConfiguration } from '@affinidi-tdk/iam-client'
-import { apiKey, tokenId } from './helpers'
+import { apiKey, tokenId, ClientsConfigurationService } from './helpers'
 
 describe('iam-client', function () {
   let policiesApi
@@ -9,7 +9,7 @@ describe('iam-client', function () {
   const principalType = 'token'
 
   before(async function () {
-    const configuration = new IamConfiguration({ apiKey })
+    const configuration = ClientsConfigurationService.getIamClientConfiguration()
     policiesApi = new PoliciesApi(configuration)
     projectsApi = new ProjectsApi(configuration)
   })

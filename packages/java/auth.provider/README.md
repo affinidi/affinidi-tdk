@@ -52,15 +52,13 @@ Sample usage to generate Project Scoped Token to call Affinidi TDK clients.
 > You can store the required parameters like the Token details into an environment file.
 
 ```java
-
-// Import classes:
 import com.affinidi.tdk.authProvider.helper.JwtUtil;
 import com.affinidi.tdk.authProvider.helper.AuthProvider;
 
 public class AuthProviderConsumer {
   public static void main(String arg[]) {
-        try{
-            // Create an authprovider from the values configured in the environment file
+        try {
+            // Create an authProvider from the values configured in the environment file
             AuthProvider authProviderFromEnvFile = new AuthProvider.Configurations().buildWithEnv();
             String projectToken = authProviderFromEnvFile.fetchProjectScopedToken();
             System.out.println(projectToken);
@@ -68,23 +66,18 @@ public class AuthProviderConsumer {
             boolean isExistingProjectScopeTokenValid = JwtUtil.validProjectTokenPresent(projectToken, authProviderFromEnvFile.apiGatewayUrl);
             System.out.println(isExistingProjectScopeTokenValid);
 
-
             // Alternatively you can create an auth provider by explicitly passing the configurations 
             AuthProvider authProviderWithPassedValues = new AuthProvider.Configurations()
                 .keyId("")
-                .projectId("")
                 .passphrase("")
                 .projectId("")
                 .tokenId("")
                 .build();
             String projectToken = authProvider.fetchProjectScopedToken();
             System.out.println(projectToken);
-
-
-        }catch(Exception e){
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
 }
-
 ```

@@ -4,8 +4,11 @@ import com.affinidi.tdk.login.configuration.client.apis.*;
 import com.affinidi.tdk.login.configuration.client.auth.ApiKeyAuth;
 import com.affinidi.tdk.login.configuration.client.models.*;
 
+import com.affinidi.tdk.common.EnvironmentUtil;
+
 import helpers.AuthUtils;
 import helpers.TestUtils;
+import helpers.Env;
 
 import org.junit.jupiter.api.*;
 
@@ -33,6 +36,13 @@ public class LoginConfigurationClientIT {
     @BeforeAll
     void setUp() {
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 

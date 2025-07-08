@@ -1,17 +1,21 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import helpers.AuthUtils;
-import helpers.Env;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import helpers.AuthUtils;
+import helpers.Env;
+import helpers.TestUtils;
 
 import com.affinidi.tdk.credential.verification.client.ApiClient;
 import com.affinidi.tdk.credential.verification.client.Configuration;
 import com.affinidi.tdk.credential.verification.client.apis.DefaultApi;
 import com.affinidi.tdk.credential.verification.client.auth.ApiKeyAuth;
 import com.affinidi.tdk.credential.verification.client.models.*;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.affinidi.tdk.common.EnvironmentUtil;
 
 /**
  * Integration tests for Credential Verification Client.
@@ -19,7 +23,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CredentialVerificationClientIT {
-
     private String verifiableCredentialJson;
     private String verifiablePresentationJson;
 
@@ -32,6 +35,13 @@ public class CredentialVerificationClientIT {
         verifiablePresentationJson = Env.get("VERIFIABLE_PRESENTATION");
 
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 

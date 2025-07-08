@@ -1,7 +1,8 @@
-import helpers.WalletTestHelper;
-import helpers.CredentialVerificationTestHelper;
 import helpers.AuthUtils;
+import helpers.CredentialVerificationTestHelper;
 import helpers.Env;
+import helpers.TestUtils;
+import helpers.WalletsTestHelper;
 
 import com.affinidi.tdk.wallets.client.ApiClient;
 import com.affinidi.tdk.wallets.client.Configuration;
@@ -9,6 +10,8 @@ import com.affinidi.tdk.wallets.client.auth.ApiKeyAuth;
 import com.affinidi.tdk.wallets.client.apis.WalletApi;
 import com.affinidi.tdk.wallets.client.apis.RevocationApi;
 import com.affinidi.tdk.wallets.client.models.*;
+
+import com.affinidi.tdk.common.EnvironmentUtil;
 
 import org.junit.jupiter.api.*;
 
@@ -36,13 +39,20 @@ public class WalletsClientIT {
     @BeforeAll
     void setUp() throws Exception {
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 
         walletApi = new WalletApi(client);
         revocationApi = new RevocationApi(client);
 
-        WalletDto created = WalletTestHelper.createWallet(CreateWalletInput.DidMethodEnum.KEY);
+        WalletDto created = WalletsTestHelper.createWallet(CreateWalletInput.DidMethodEnum.KEY);
         assertNotNull(created, "Expected did:key wallet to be created");
 
         walletId = created.getId();
@@ -58,7 +68,7 @@ public class WalletsClientIT {
     @Test
     @DisplayName("Create did:web wallet")
     void shouldCreateDidWebWallet() throws Exception {
-        WalletDto created = WalletTestHelper.createWallet(CreateWalletInput.DidMethodEnum.WEB);
+        WalletDto created = WalletsTestHelper.createWallet(CreateWalletInput.DidMethodEnum.WEB);
         assertNotNull(created, "Expected WEB-based wallet to be created");
 
         walletIdDidWeb = created.getId();
@@ -69,7 +79,7 @@ public class WalletsClientIT {
     @Order(1)
     @DisplayName("Sign and validate a verifiable credential")
     void shouldSignAndValidateCredential() throws Exception {
-        signedCredential = WalletTestHelper.signCredential(walletDid, walletId, Instant.now().plusSeconds(600), true);
+        signedCredential = WalletsTestHelper.signCredential(walletDid, walletId, Instant.now().plusSeconds(600), true);
         assertNotNull(signedCredential, "Signed credential should not be null");
 
         boolean isValid = CredentialVerificationTestHelper.isCredentialValid(signedCredential);
@@ -80,10 +90,10 @@ public class WalletsClientIT {
     @Order(2)
     @DisplayName("Fetch revocation list credential")
     void shouldGetRevocationListCredential() throws Exception {
-        String revocationListCredential = WalletTestHelper.getRevocationListCredential(signedCredential);
+        String revocationListCredential = WalletsTestHelper.getRevocationListCredential(signedCredential);
         assertNotNull(revocationListCredential, "Expected non-null revocation list credential");
 
-        String statusId = WalletTestHelper.extractRevocationStatusId(revocationListCredential);
+        String statusId = WalletsTestHelper.extractRevocationStatusId(revocationListCredential);
         assertNotNull(statusId, "Expected non-null status ID");
 
         GetRevocationListCredentialResultDto result = revocationApi.getRevocationCredentialStatus(
@@ -111,7 +121,7 @@ public class WalletsClientIT {
     @Test
     @DisplayName("Sign expired credential and expect validation failure")
     void shouldFailValidationForExpiredCredential() throws Exception {
-        Map<String, Object> expiredCredential = WalletTestHelper.signCredential(walletDid, walletId, Instant.now(), false);
+        Map<String, Object> expiredCredential = WalletsTestHelper.signCredential(walletDid, walletId, Instant.now(), false);
         assertNotNull(expiredCredential, "Expected signed credential even if expired");
 
         boolean isValid = CredentialVerificationTestHelper.isCredentialValid(expiredCredential);

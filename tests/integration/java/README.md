@@ -47,3 +47,22 @@ Run all integration tests with:
 mvn clean verify
 ```
 
+Run integration tests for a specific file (f.e. WalletsClient) with:
+
+```bash
+mvn clean verify -Dit.test=WalletsClientIT
+```
+
+#### 3. Run Tests against DEV environment
+
+❗️For internal usage.
+
+NOTE: Only production environment should be considered as stable.
+
+PAT details should be provided in .env respectively.
+
+Run all integration tests against DEV environment with:
+
+```bash
+AFFINIDI_TDK_ENVIRONMENT=dev mvn clean verify
+```

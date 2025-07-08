@@ -25,7 +25,7 @@ Update only your PROJECT_ID ([link to docs how to create a project](https://docs
 
 Leave all other fields unchanged.
 
-### 1. Install Required Dependencies
+### Install Required Dependencies
 
 Install dependencies defined in package.json:
 
@@ -33,12 +33,15 @@ Install dependencies defined in package.json:
 npm install
 ```
 
-### 4. Run Tests
+### Run Tests
 
 Use the provided script to execute all integration tests:
 
 ```bash
 npm test
+
+# ❗️ testing against DEV environment; for internal use only
+AFFINIDI_TDK_ENVIRONMENT=dev npm test
 ```
 
 This will run all available test cases.

@@ -27,7 +27,6 @@ def get_env_var(name, default=''):
 
 # PAT variables
 token_id = get_env_var('TOKEN_ID', 'required')
-_api_gateway_url = get_env_var('API_GATEWAY_URL', 'required')
 _key_id = get_env_var('KEY_ID', '')
 _passphrase = get_env_var('PASSPHRASE', '')
 _private_key = get_env_var('PRIVATE_KEY', 'required')
@@ -116,7 +115,6 @@ def check_wallets_limit_exceeded():
 
 def _get_auth_provider() -> AuthProvider:
     stats = {
-      'apiGatewayUrl': _api_gateway_url,
       'keyId': _key_id,
       'tokenId': token_id,
       'passphrase': _passphrase,

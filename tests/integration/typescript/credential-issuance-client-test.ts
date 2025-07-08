@@ -9,7 +9,14 @@ import {
   BatchCredentialInput,
   BatchCredentialInputCredentialRequestsInner,
 } from '@affinidi-tdk/credential-issuance-client'
-import { apiKey, projectId, credentialIssuanceData, getCisToken } from './helpers'
+import {
+  ClientsConfigurationService,
+  projectId,
+  credentialIssuanceData,
+  getCisToken,
+  credentialIssuanceConfiguration,
+  createWallet,
+} from './helpers'
 
 describe('credential-issuance-client', function () {
   let offerApi
@@ -26,7 +33,7 @@ describe('credential-issuance-client', function () {
   let configurationId = ''
 
   before(async function () {
-    const configuration = new Configuration({ apiKey })
+    const configuration = ClientsConfigurationService.getCredentialIssuanceClientConfiguration()
 
     configurationApi = new ConfigurationApi(configuration)
     issuanceApi = new IssuanceApi(configuration)
@@ -35,6 +42,20 @@ describe('credential-issuance-client', function () {
   })
 
   describe('Issuance Configurations', function () {
+    it('Create issuance configuration if does not exist', async () => {
+      const issuanceConfigList = await configurationApi.getIssuanceConfigList()
+      expect(issuanceConfigList).to.have.a.property('data')
+      expect(issuanceConfigList.data).to.have.a.property('configurations')
+
+      if (issuanceConfigList.data?.configurations?.length === 0) {
+        const wallet = await createWallet()
+        const issuanceConfig = { ...JSON.parse(credentialIssuanceConfiguration), issuerWalletId: wallet?.id }
+
+        const { data, status } = await configurationApi.createIssuanceConfig(issuanceConfig)
+        expect(status).to.equal(201)
+      }
+    })
+
     it('Lists issuance configurations', async () => {
       const { data } = await configurationApi.getIssuanceConfigList()
 
@@ -136,7 +157,8 @@ describe('credential-issuance-client', function () {
       expect(data.credential_responses[0]).to.have.a.property('credential')
     })
 
-    // TODO: unskip when fixed on the backend
+    // NOTE: requires issuance configuration to have `webhook`
+    // TODO: unskip
     it.skip('Retrieves issued credentials @internal', async () => {
       const { data } = await credentialsApi.getIssuanceIdClaimedCredential(
         projectId,
@@ -148,3 +170,4 @@ describe('credential-issuance-client', function () {
     })
   })
 })
+

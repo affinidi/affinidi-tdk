@@ -1,6 +1,7 @@
 package helpers;
 
 import com.affinidi.tdk.authProvider.AuthProvider;
+import com.affinidi.tdk.common.EnvironmentUtil;
 
 import java.util.function.Supplier;
 
@@ -11,25 +12,7 @@ public final class AuthUtils {
 
     private AuthUtils() {}
 
-    /**
-     * Creates and configures an AuthProvider using environment variables.
-     *
-     * @return a configured {@link AuthProvider} instance
-     * @throws RuntimeException if initialization fails
-     */
-    private static AuthProvider createAuthProvider() {
-        try {
-            return new AuthProvider.Configurations()
-                .keyId(Env.get("KEY_ID"))
-                .privateKey(Env.get("PRIVATE_KEY"))
-                .projectId(Env.get("PROJECT_ID"))
-                .passphrase(Env.get("PASSPHRASE"))
-                .tokenId(Env.get("TOKEN_ID"))
-                .build();
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to initialize AuthProvider", e);
-        }
-    }
+    private static String cachedToken;
 
     /**
      * Returns a {@link Supplier} of hook for authenticated API calls.
@@ -38,14 +21,42 @@ public final class AuthUtils {
      * @throws RuntimeException if fetching a token fails
      */
     public static Supplier<String> createTokenSupplier() {
-        AuthProvider authProvider = createAuthProvider();
-
-        return () -> {
+        if (cachedToken == null) {
+            AuthProvider authProvider = createAuthProvider();
             try {
-                return authProvider.fetchProjectScopedToken();
-            } catch (Exception e) {
+                cachedToken = authProvider.fetchProjectScopedToken();
+            } catch (Exception  e) {
                 throw new RuntimeException("Failed to fetch project scoped token", e);
             }
-        };
+        }
+        return () -> cachedToken;
+    }
+
+    /**
+     * Creates and configures an AuthProvider using environment variables.
+     *
+     * @return a configured {@link AuthProvider} instance
+     * @throws RuntimeException if initialization fails
+     */
+    private static AuthProvider createAuthProvider() {
+        try {
+            AuthProvider.Configurations config = new AuthProvider.Configurations()
+                .projectId(Env.get("PROJECT_ID"))
+                .tokenId(Env.get("TOKEN_ID"))
+                .privateKey(Env.get("PRIVATE_KEY"))
+                .passphrase(Env.getOptional("PASSPHRASE"))
+                .keyId(Env.getOptional("KEY_ID"));
+
+            String env = Env.getOptional("AFFINIDI_TDK_ENVIRONMENT");
+
+            if (!Env.isProd() && env != null && !env.isEmpty()) {
+                config.tokenEndPoint(EnvironmentUtil.getElementAuthTokenUrlForEnvironment(env))
+                      .apiGatewayUrl(EnvironmentUtil.getApiGatewayUrlForEnvironment(env));
+            }
+
+            return config.build();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to initialize AuthProvider", e);
+        }
     }
 }

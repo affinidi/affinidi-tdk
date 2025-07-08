@@ -1,12 +1,12 @@
 import { expect } from 'chai'
 import { DefaultApi, Configuration } from '@affinidi-tdk/credential-verification-client'
-import { apiKey, verifiableCredential, verifiablePresentation } from './helpers'
+import { apiKey, verifiableCredential, verifiablePresentation, ClientsConfigurationService } from './helpers'
 
 describe('credential-verification-client', function () {
   let api
 
   before(async function () {
-    const configuration = new Configuration({ apiKey })
+    const configuration = ClientsConfigurationService.getCredentialVerificationClientConfiguration()
     api = new DefaultApi(configuration)
   })
 

@@ -61,3 +61,15 @@ This will invoke pytest and run all available test cases.
 
 > ❗️ **Note:**
 > The `chmod +x` commands only need to be run once to make the scripts executable. After that, you can run the scripts directly without `chmod`.
+
+Run a specific test file
+
+```bash
+uv run python -m pytest wallets_client_test.py
+```
+
+Run a specific test file
+
+```bash
+uv run python -m pytest wallets_client_test.py::test_list_wallets
+```

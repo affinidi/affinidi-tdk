@@ -1,9 +1,8 @@
 from affinidi_tdk_auth_provider import AuthProvider
-from .env import api_gateway_url, key_id, token_id, passphrase, private_key, project_id
+from .env import key_id, token_id, passphrase, private_key, project_id
 
 def _get_auth_provider() -> AuthProvider:
     return AuthProvider({
-        'apiGatewayUrl': api_gateway_url,
         'keyId': key_id,
         'tokenId': token_id,
         'passphrase': passphrase,

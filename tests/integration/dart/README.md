@@ -24,7 +24,7 @@ Update only your PROJECT_ID ([link to docs how to create a project](https://docs
 
 Leave all other fields unchanged.
 
-### 1. Install Required Dependencies
+### Install Required Dependencies
 
 Install dependencies defined in pubspec.yaml:
 
@@ -32,7 +32,7 @@ Install dependencies defined in pubspec.yaml:
 dart pub get
 ```
 
-### 4. Run Tests
+### Run Tests
 
 Use the provided script to execute all integration tests:
 
@@ -40,4 +40,17 @@ Use the provided script to execute all integration tests:
 dart test
 ```
 
-This will run all available test cases.
+To run a single test provide a name of the test/group:
+
+```bash
+dart test -n 'Wallets Client Integration Tests'
+```
+
+
+#### Run tests against DEV
+
+NOTE: For internal usage. To run tests against DEV environment
+
+```bash
+flutter test --dart-define=AFFINIDI_TDK_ENVIRONMENT=dev
+```

@@ -1,6 +1,7 @@
 import 'package:uuid/uuid.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 import 'helpers/helpers.dart';
 
@@ -15,8 +16,13 @@ void main() {
       final env = getProjectEnvironment();
       tokenId = env.tokenId;
 
+      final apiGwUrl = Environment.fetchEnvironment().apiGwUrl;
+      String basePathOverride =
+          replaceBaseDomain(AffinidiTdkIamClient.basePath, apiGwUrl);
+
       final iamClient = AffinidiTdkIamClient(
-          authTokenHook: ResourceFactory.getAuthTokenHook());
+          authTokenHook: ResourceFactory.getAuthTokenHook(),
+          basePathOverride: basePathOverride);
 
       policiesApi = iamClient.getPoliciesApi();
       projectsApi = iamClient.getProjectsApi();

@@ -2,8 +2,14 @@ require('dotenv').config({ path: '../../.env' })
 
 import { expect } from 'chai'
 import { AuthProvider } from '@affinidi-tdk/auth-provider'
-import { WalletApi, Configuration as WalletConfiguration } from '@affinidi-tdk/wallets-client'
-import { DefaultApi, Configuration as VerificationConfiguration } from '@affinidi-tdk/credential-verification-client'
+import { EnvironmentUtils, Environment } from '@affinidi-tdk/common'
+
+import { WalletApi } from '@affinidi-tdk/wallets-client'
+import { DefaultApi } from '@affinidi-tdk/credential-verification-client'
+
+import { ClientsConfigurationService } from './clients-configuration-service'
+export { ClientsConfigurationService }
+
 import { AuthenticationService } from './authentication-service'
 
 const missingVariables = new Set()
@@ -12,18 +18,22 @@ const required = (name: string) => {
   return ''
 }
 
+const isProd = EnvironmentUtils.fetchEnvironment() === Environment.PRODUCTION
+
+// NOTE: Max number of wallets for project is 10. Making clean up,
+//       if wallet number exceeds threshold, to prevent 422 error
+const WALLETS_LIMIT_THRESHOLD = 7
+
 const {
-  API_GATEWAY_URL: apiGatewayUrl = required('API_GATEWAY_URL'),
-  KEY_ID: keyId = '',
-  PASSPHRASE: passphrase = '',
-  TOKEN_ID: tokenId = required('TOKEN_ID'),
-  PRIVATE_KEY: privateKey = required('PRIVATE_KEY'),
-  PROJECT_ID: projectId = required('PROJECT_ID'),
+  TOKEN_ID: tokenIdProd = isProd ? required('TOKEN_ID') : '',
+  PRIVATE_KEY: privateKeyProd = isProd ? required('PRIVATE_KEY') : '',
+  PROJECT_ID: projectIdProd = isProd ? required('PROJECT_ID') : '',
   // fixtures
   VERIFIABLE_CREDENTIAL: verifiableCredential = required('VERIFIABLE_CREDENTIAL'),
   VERIFIABLE_PRESENTATION: verifiablePresentation = required('VERIFIABLE_PRESENTATION'),
   CREDENTIAL_ISSUANCE_DATA: credentialIssuanceData = required('CREDENTIAL_ISSUANCE_DATA'),
   UNSIGNED_CREDENTIAL_PARAMS: unsignedCredentialParams = required('UNSIGNED_CREDENTIAL_PARAMS'),
+  CREDENTIAL_ISSUANCE_CONFIGURATION: credentialIssuanceConfiguration = required('CREDENTIAL_ISSUANCE_CONFIGURATION'),
 
   IOTA_CONFIGURATION: iotaConfiguration = required('IOTA_CONFIGURATION'),
   IOTA_PRESENTATION_SUBMISSION: iotaPresentationSubmission = required('IOTA_PRESENTATION_SUBMISSION'),
@@ -31,7 +41,17 @@ const {
   // secrets for internal testing
   ENCRYPTION_SEED: encryptionSeed = process.env.INTERNAL ? required('ENCRYPTION_SEED') : '',
   SEED_PASSWORD: seedPassword = process.env.INTERNAL ? required('SEED_PASSWORD') : '',
+  DEV_TOKEN_ID: tokenIdDev = isProd ? required('DEV_TOKEN_ID') : '',
+  DEV_PRIVATE_KEY: privateKeyDev = isProd ? required('DEV_PRIVATE_KEY') : '',
+  DEV_PROJECT_ID: projectIdDev = isProd ? required('DEV_PROJECT_ID') : '',
 } = process.env
+
+const tokenId = isProd ? tokenIdProd : tokenIdDev
+const privateKey = isProd ? privateKeyProd : privateKeyDev
+const projectId = isProd ? projectIdProd : projectIdDev
+
+const keyId = (isProd ? process.env.KEY_ID : process.env.DEV_KEY_ID) || ''
+const passphrase = (isProd ? process.env.PASSPHRASE : process.env.DEV_PASSPHRASE) || ''
 
 if (missingVariables.size > 0) {
   throw new Error(`.env has missingVariables: ${Array.from(missingVariables).join(', ')}`)
@@ -44,9 +64,14 @@ const authProvider = new AuthProvider({
   privateKey,
   projectId,
 })
+
 const apiKey = authProvider.fetchProjectScopedToken.bind(authProvider)
+const apiGatewayUrl = EnvironmentUtils.fetchApiGwUrl()
 
 export {
+  authProvider,
+  isProd,
+  apiGatewayUrl,
   apiKey,
   tokenId,
   verifiableCredential,
@@ -57,20 +82,27 @@ export {
   iotaPresentationSubmission,
   iotaPresentationDefinition,
   unsignedCredentialParams,
+  credentialIssuanceConfiguration,
 }
 
-export const getCisToken = (aud: string = `${apiGatewayUrl}/cis`) => {
+export const getCisToken = (aud?: string) => {
+  const apiGatewayUrl = EnvironmentUtils.fetchApiGwUrl()
+  const audience = aud || `${apiGatewayUrl}/cis`
+
   const authenticationService = new AuthenticationService()
   const cisToken = authenticationService.signAssertion(
     encryptionSeed,
     seedPassword,
-    aud,
+    audience,
   )
+
   return cisToken
 }
 
 export const createWallet = async () => {
-  const configuration = new WalletConfiguration({ apiKey })
+  checkWalletsLimitExceeded()
+
+  const configuration = ClientsConfigurationService.getWalletsClientConfiguration()
   const api = new WalletApi(configuration)
 
   const { data } = await api.createWallet()
@@ -79,8 +111,26 @@ export const createWallet = async () => {
   return data.wallet
 }
 
+export const checkWalletsLimitExceeded = async () => {
+  const configuration = ClientsConfigurationService.getWalletsClientConfiguration()
+  const api = new WalletApi(configuration)
+
+  const { data } = await api.listWallets()
+  expect(data).to.have.a.property('wallets')
+  expect(data.wallets).to.be.an('array')
+
+  if (data.wallets && data.wallets.length > WALLETS_LIMIT_THRESHOLD) {
+    console.log('❗️Number of wallets reaching the limit (10). Deleting wallets.')
+
+    for (const wallet of data.wallets) {
+      deleteWallet(wallet.id as string)
+    }
+  }
+}
+
 export const deleteWallet = async (walletId: string) => {
-  const configuration = new WalletConfiguration({ apiKey })
+  const configuration = ClientsConfigurationService.getWalletsClientConfiguration()
+
   const api = new WalletApi(configuration)
 
   const { status } = await api.deleteWallet(walletId)
@@ -88,7 +138,8 @@ export const deleteWallet = async (walletId: string) => {
 }
 
 export const isCredentialValid = async (credential) => {
-  const configuration = new VerificationConfiguration({ apiKey })
+  const configuration = ClientsConfigurationService.getCredentialVerificationClientConfiguration()
+
   const api = new DefaultApi(configuration)
 
   const credentials = { verifiableCredentials: [ credential ] }
@@ -106,4 +157,15 @@ export const extractRevocationStatusId = (url: string) => {
   } catch {
     return null // In case the input is not a valid URL
   }
+}
+
+export const replaceBaseDomain = (originalBasePath: string, newDomain: string): string => {
+    const originalUrl = new URL(originalBasePath)
+    const newDomainUrl = new URL(newDomain)
+
+    newDomainUrl.pathname = originalUrl.pathname
+    newDomainUrl.search = originalUrl.search
+    newDomainUrl.hash = originalUrl.hash
+
+    return newDomainUrl.toString()
 }

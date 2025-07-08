@@ -6,13 +6,16 @@ import com.affinidi.tdk.iota.client.models.*;
 import com.affinidi.tdk.wallets.client.models.CreateWalletInput;
 import com.affinidi.tdk.wallets.client.models.WalletDto;
 
+import com.affinidi.tdk.common.EnvironmentUtil;
+
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import helpers.AuthUtils;
 import helpers.Env;
 import helpers.JwtUtils;
-import helpers.WalletTestHelper;
+import helpers.WalletsTestHelper;
+import helpers.TestUtils;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.*;
@@ -50,6 +53,13 @@ public class IotaClientIT {
     @BeforeAll
     void setUp() throws Exception {
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 
@@ -58,7 +68,7 @@ public class IotaClientIT {
         callbackApi = new CallbackApi();
         iotaApi = new IotaApi(client);
 
-        WalletDto wallet = WalletTestHelper.createWallet(CreateWalletInput.DidMethodEnum.KEY);
+        WalletDto wallet = WalletsTestHelper.createWallet(CreateWalletInput.DidMethodEnum.KEY);
         assertNotNull(wallet, "Wallet should be created");
 
         walletId = wallet.getId();
@@ -73,7 +83,7 @@ public class IotaClientIT {
         if (configurationId != null) {
             configurationsApi.deleteIotaConfigurationById(configurationId);
         }
-        WalletTestHelper.deleteWallet(walletId);
+        WalletsTestHelper.deleteWallet(walletId);
     }
 
     @Test
