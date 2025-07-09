@@ -1,0 +1,40 @@
+name: Manual integration tests for Java vs DEV environment
+
+on:
+  workflow_dispatch: # Manual trigger
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  integration_tests:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: 21
+          cache: maven
+
+      - name: Install local clients and packages
+        run: |
+          chmod +x tests/integration/java/install_modules.sh
+          ./tests/integration/java/install_modules.sh
+
+      - name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name: Create .env file as a workaround for @affinidi/common
+        run: echo "AFFINIDI_TDK_ENVIRONMENT=prod" > tests/integration/java/.env
+
+      - name: Run integration tests
+        run: AFFINIDI_TDK_ENVIRONMENT=dev mvn clean verify
+        working-directory: tests/integration/java

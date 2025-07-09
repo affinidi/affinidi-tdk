@@ -1,0 +1,38 @@
+name: Manual integration tests for Dart vs DEV environment
+
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  integration_tests:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.6.0'
+
+      - name: Install dependencies
+        run: flutter pub get
+        working-directory: tests/integration/dart
+
+      - name: Cache testing env file
+        uses: actions/cache@v4
+        id: testing-env-cache
+        with:
+          path: tests/.env
+          key: ${{ runner.os }}-testing-env-${{ hashFiles('tests/.env') }}
+
+      - if: ${{ steps.testing-env-cache.outputs.cache-hit != 'true' }}
+        name: Prepare environment file
+        env:
+          TESTING_ENV_FILE_CONTENT: ${{ secrets.TESTING_ENV_FILE_CONTENT }}
+        run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
+
+      - name: Run integration tests
+        run: flutter test --dart-define=AFFINIDI_TDK_ENVIRONMENT=dev
+        working-directory: tests/integration/dart
