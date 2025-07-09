@@ -206,6 +206,8 @@ class VaultDataManagerApiService
       _getVcRootIdByProfileId(
         profileId,
       ),
+      limit: limit,
+      exclusiveStartItemId: exclusiveStartItemId,
       cancelToken: cancelToken,
     );
   }
