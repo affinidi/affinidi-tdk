@@ -17,7 +17,6 @@ def get_env_var(name, default=''):
 
 # Load PAT env vars
 token_id = get_env_var('TOKEN_ID', 'required')
-api_gateway_url = get_env_var('API_GATEWAY_URL', 'required')
 key_id = get_env_var('KEY_ID', '')
 passphrase = get_env_var('PASSPHRASE', '')
 private_key = get_env_var('PRIVATE_KEY', 'required')

@@ -7,6 +7,8 @@ import com.affinidi.tdk.credential.verification.client.auth.ApiKeyAuth;
 import com.affinidi.tdk.credential.verification.client.models.VerifyCredentialInput;
 import com.affinidi.tdk.credential.verification.client.models.VerifyCredentialOutput;
 
+import com.affinidi.tdk.common.EnvironmentUtil;
+
 import java.util.Map;
 
 /**
@@ -23,6 +25,13 @@ public final class CredentialVerificationTestHelper {
      */
     private static DefaultApi getVerificationApi() {
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 

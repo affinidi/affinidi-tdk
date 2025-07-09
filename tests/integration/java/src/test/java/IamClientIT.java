@@ -1,5 +1,6 @@
 import helpers.AuthUtils;
 import helpers.Env;
+import helpers.TestUtils;
 
 import com.affinidi.tdk.iam.client.ApiClient;
 import com.affinidi.tdk.iam.client.Configuration;
@@ -9,6 +10,8 @@ import com.affinidi.tdk.iam.client.apis.ProjectsApi;
 import com.affinidi.tdk.iam.client.models.AddUserToProjectInput;
 import com.affinidi.tdk.iam.client.models.PolicyDto;
 import com.affinidi.tdk.iam.client.models.UserList;
+
+import com.affinidi.tdk.common.EnvironmentUtil;
 
 import org.junit.jupiter.api.*;
 
@@ -34,6 +37,13 @@ public class IamClientIT {
     @BeforeAll
     void setUp() {
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
 
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());

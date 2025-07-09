@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
@@ -27,10 +28,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 /**
- * This class provides utility functions in order to generate projectScopeToken required to call Affinidi Services.
+ * This class provides utility functions in order to generate projectScopeToken
+ * required to call Affinidi Services.
  */
 public class AuthProvider {
-
     /**
      * Gson is thread safe.
      */
@@ -44,24 +45,30 @@ public class AuthProvider {
     private final String tokenEndPoint;
     private final String apiGatewayUrl;
 
-    private String projectScopeToken;
+    private String projectScopeToken = "";
 
     private AuthProvider(Configurations configurations) {
         this.projectId = configurations.projectId;
         this.tokenId = configurations.tokenId;
         this.privateKey = configurations.privateKey;
         this.keyId = configurations.keyId;
-        this.passphrase = configurations.passphrase;
-        this.tokenEndPoint = EnvironmentUtil.getElementAuthTokenUrlForEnvironment();
-        this.apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment();
+        this.passphrase = configurations.passphrase != null ? configurations.passphrase : "";
+        this.tokenEndPoint = configurations.tokenEndPoint != null
+                ? configurations.tokenEndPoint
+                : EnvironmentUtil.getElementAuthTokenUrlForEnvironment();
+
+        this.apiGatewayUrl = configurations.apiGatewayUrl != null
+                ? configurations.apiGatewayUrl
+                : EnvironmentUtil.getApiGatewayUrlForEnvironment();
     }
 
     /**
-     * This method identifies if the current AuthProvider has a valid existing projectScopeToken or not. This helps to
-     * reuse the valid tokens without always generating a new.
+     * This method identifies if the current AuthProvider has a valid existing
+     * projectScopeToken or not. This helps to reuse the valid tokens without always
+     * generating a new.
      *
-     * The validation involves verifying token's signature against the public (verification) key; validating token's
-     * expiration or malformation.
+     * The validation involves verifying token's signature against the public
+     * (verification) key; validating token's expiration or malformation.
      *
      * @return boolean
      */
@@ -73,15 +80,17 @@ public class AuthProvider {
     /**
      * This method generates a projectScopeToken required to call Affinidi services.
      *
-     * In case there is an existing projectScopeToken in the authProvider instance; it is first validated and a new one
-     * is generated only if needed.
+     * In case there is an existing projectScopeToken in the authProvider instance;
+     * it is first validated and a new one is generated only if needed.
      *
-     * Refer {@link JwtUtil#validProjectTokenPresent(String, String)} for validation details
+     * Refer {@link JwtUtil#validProjectTokenPresent(String, String)} for validation
+     * details
      *
      * @return String
      *
      * @throws PSTGenerationException
-     *             incase access_token generation has issues or projectScopeToken end point
+     *             incase access_token generation has issues or projectScopeToken
+     *             end point
      */
     public String fetchProjectScopedToken() throws PSTGenerationException {
         if (shouldRefreshToken()) {
@@ -91,7 +100,8 @@ public class AuthProvider {
     }
 
     /**
-     * This method generates a user-access-token which is required as an API authorization token.
+     * This method generates a user-access-token which is required as an API
+     * authorization token.
      *
      * @return String
      *
@@ -129,7 +139,8 @@ public class AuthProvider {
     }
 
     /**
-     * This method generates a projectScopeToken for the configuration values associated to the AuthProvider.
+     * This method generates a projectScopeToken for the configuration values
+     * associated to the AuthProvider.
      *
      * @return String
      *
@@ -187,7 +198,8 @@ public class AuthProvider {
                     final HttpEntity responseEntity = response.getEntity();
                     final JsonElement responseAsJson = GSON.fromJson(EntityUtils.toString(responseEntity),
                             JsonElement.class);
-                    final JsonObject responseObject = responseAsJson.isJsonObject() ? responseAsJson.getAsJsonObject()
+                    final JsonObject responseObject = responseAsJson.isJsonObject()
+                            ? responseAsJson.getAsJsonObject()
                             : null;
                     if (responseObject != null && responseObject.get(memberName) != null) {
                         return responseObject.get(memberName).getAsString();
@@ -199,8 +211,8 @@ public class AuthProvider {
     }
 
     /**
-     * This class provides a way to pass configurations to the AuthProvider It also helps to build an instance of
-     * AuthProvider which uses these configurations.
+     * This class provides a way to pass configurations to the AuthProvider It also
+     * helps to build an instance of AuthProvider which uses these configurations.
      */
     public static class Configurations {
 
@@ -209,6 +221,8 @@ public class AuthProvider {
         private String privateKey;
         private String keyId;
         private String passphrase;
+        private String apiGatewayUrl;
+        private String tokenEndPoint;
 
         public Configurations projectId(String projectId) {
             this.projectId = projectId;
@@ -235,8 +249,19 @@ public class AuthProvider {
             return this;
         }
 
+        public Configurations apiGatewayUrl(String apiGatewayUrl) {
+            this.apiGatewayUrl = apiGatewayUrl;
+            return this;
+        }
+
+        public Configurations tokenEndPoint(String tokenEndPoint) {
+            this.tokenEndPoint = tokenEndPoint;
+            return this;
+        }
+
         /**
-         * This method builds an instance of AuthProvider with the values passed through {@link Configuration}.
+         * This method builds an instance of AuthProvider with the values passed through
+         * {@link Configuration}.
          *
          * @return
          *
@@ -245,13 +270,14 @@ public class AuthProvider {
         public AuthProvider build() throws ConfigurationException {
             if (this.projectId == null || this.privateKey == null || this.tokenId == null) {
                 throw new ConfigurationException(
-                        "Cannot create Auth provider without projectId, privateKey and toeknId");
+                        "Cannot create Auth provider without projectId, privateKey and tokenId");
             }
             return new AuthProvider(this);
         }
 
         /**
-         * This method builds an instance of AuthProvider with the configuration values present in the .env file.
+         * This method builds an instance of AuthProvider with the configuration values
+         * present in the .env file.
          *
          * @return
          *
@@ -280,6 +306,21 @@ public class AuthProvider {
             }
             return new AuthProvider(this);
         }
+
+        // @formatter:off
+        @Override
+        public String toString() {
+            return "Configurations {\n" +
+                " tokenEndPoint: '" + tokenEndPoint + "',\n" +
+                " apiGatewayUrl: '" + apiGatewayUrl + "',\n" +
+                " projectId: '" + projectId + "',\n" +
+                " tokenId: '" + tokenId + "',\n" +
+                " privateKey: '" + (privateKey != null ? "[PROVIDED]" : "null") + "',\n" +
+                " passphrase: '" + (passphrase != null ? "[PROVIDED]" : "null") + "',\n" +
+                " keyId: '" + keyId + "'\n" +
+            "}";
+        }
+        // @formatter:on
     }
 
     /**

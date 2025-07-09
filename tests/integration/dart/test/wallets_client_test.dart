@@ -1,21 +1,28 @@
-import 'package:one_of/one_of.dart';
 import 'package:built_value/json_object.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
+
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 import 'helpers/helpers.dart';
 import 'helpers/resource_factory.dart';
 
 void main() {
-  group('Wallets Client  Integration Tests', () {
+  group('Wallets Client Integration Tests', () {
     late WalletApi walletApi;
     late String walletId;
     late String walletIdDidWeb;
     late String holderDid;
 
     setUpAll(() async {
+      final apiGwUrl = Environment.fetchEnvironment().apiGwUrl;
+      String basePathOverride =
+          replaceBaseDomain(AffinidiTdkWalletsClient.basePath, apiGwUrl);
+
       final apiClient = AffinidiTdkWalletsClient(
-          authTokenHook: ResourceFactory.getAuthTokenHook());
+          authTokenHook: ResourceFactory.getAuthTokenHook(),
+          basePathOverride: basePathOverride);
+
       walletApi = apiClient.getWalletApi();
 
       final wallet = await ResourceFactory.createWallet();

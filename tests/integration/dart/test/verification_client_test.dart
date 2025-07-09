@@ -1,4 +1,5 @@
 import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:test/test.dart';
@@ -10,8 +11,13 @@ void main() {
     late DefaultApi verificationApi;
 
     setUpAll(() async {
+      final apiGwUrl = Environment.fetchEnvironment().apiGwUrl;
+      String basePathOverride = replaceBaseDomain(
+          AffinidiTdkCredentialVerificationClient.basePath, apiGwUrl);
+
       final apiClient = AffinidiTdkCredentialVerificationClient(
-          authTokenHook: ResourceFactory.getAuthTokenHook());
+          authTokenHook: ResourceFactory.getAuthTokenHook(),
+          basePathOverride: basePathOverride);
       verificationApi = apiClient.getDefaultApi();
     });
 

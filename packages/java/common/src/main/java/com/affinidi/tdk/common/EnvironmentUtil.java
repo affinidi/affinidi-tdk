@@ -9,8 +9,9 @@ import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvBuilder;
 
 /**
- * This class provides utility functions required to access environment specific configurations. The environment can be
- * specified in the .env file at the project base using AFFINIDI_TDK_PROPERTY_NAME or
+ * This class provides utility functions required to access environment specific
+ * configurations. The environment can be specified in the .env file at the
+ * project base using AFFINIDI_TDK_PROPERTY_NAME or
  * NEXT_PUBLIC_AFFINIDI_TDK_ENVIRONMENT as dev, local or prod.
  */
 public class EnvironmentUtil {
@@ -23,8 +24,8 @@ public class EnvironmentUtil {
     }
 
     /**
-     * Returns the environment name as configured in the .env file In case no configuration is found, the default return
-     * is production environment.
+     * Returns the environment name as configured in the .env file In case no
+     * configuration is found, the default return is production environment.
      *
      * @return String
      */
@@ -42,7 +43,7 @@ public class EnvironmentUtil {
         }
 
         if (configuredEnvironment == null) {
-            LOGGER.log(Level.SEVERE, "Could not find environment details for {0}. Defaulting to production",
+            LOGGER.log(Level.CONFIG, "Could not find environment details for {0}. Defaulting to production",
                     configuredEnvironment);
             configuredEnvironment = Environment.PRODUCTION.environmentName;
         }
@@ -99,7 +100,7 @@ public class EnvironmentUtil {
         try {
             return getProperties().get(propertyName);
         } catch (Exception exception) {
-            LOGGER.log(Level.SEVERE, "Could not read .env file for {0}", propertyName);
+            LOGGER.log(Level.CONFIG, "Could not read .env file for {0}", propertyName);
         }
         return null;
     }
@@ -116,21 +117,48 @@ public class EnvironmentUtil {
         if (envDetail != null) {
             return envDetail;
         }
-        LOGGER.log(Level.SEVERE,
+        LOGGER.log(Level.CONFIG,
                 "Could not find environment details for the specified name {0}. Hence defaulting to production",
                 envName);
         return Environment.getEnvSpecificDetails(Environment.PRODUCTION.environmentName);
+    }
+
+    static Environment getEnvironmentDetail(String envName) {
+        if (envName != null && !envName.isEmpty()) {
+            Environment envDetail = Environment.getEnvSpecificDetails(envName);
+            if (envDetail != null) {
+                return envDetail;
+            }
+            LOGGER.log(Level.CONFIG, "Invalid environment name {0}. Defaulting to production.", envName);
+        }
+        return getEnvironmentDetail(); // fallback to default behavior
+    }
+
+    public static String getIotUrlForEnvironment(String environmentName) {
+        return getEnvironmentDetail(environmentName).iotUrl;
+    }
+
+    public static String getElementAuthTokenUrlForEnvironment(String environmentName) {
+        return getEnvironmentDetail(environmentName).elementsAuthTokenUrl;
+    }
+
+    public static String getVaultUrlForEnvironment(String environmentName) {
+        return getEnvironmentDetail(environmentName).vaultUrl;
+    }
+
+    public static String getApiGatewayUrlForEnvironment(String environmentName) {
+        return getEnvironmentDetail(environmentName).apiGatewayUrl;
     }
 }
 
 enum Environment {
 
     LOCAL("LOCAL", Environment.LOCAL_IOT_URL, Environment.LOCAL_APIGATEWAY_URL,
-            Environment.LOCAL_ELEMENTS_AUTH_TOKEN_URL, Environment.LOCAL_VAULT_URL),
-    DEVELOPMENT("DEV", Environment.DEV_IOT_URL, Environment.DEV_APIGATEWAY_URL, Environment.DEV_ELEMENTS_AUTH_TOKEN_URL,
-            Environment.DEV_VAULT_URL),
-    PRODUCTION("PROD", Environment.PROD_IOT_URL, Environment.PROD_APIGATEWAY_URL,
-            Environment.PROD_ELEMENTS_AUTH_TOKEN_URL, Environment.PROD_VAULT_URL),;
+            Environment.LOCAL_ELEMENTS_AUTH_TOKEN_URL, Environment.LOCAL_VAULT_URL), DEVELOPMENT("DEV",
+                    Environment.DEV_IOT_URL, Environment.DEV_APIGATEWAY_URL, Environment.DEV_ELEMENTS_AUTH_TOKEN_URL,
+                    Environment.DEV_VAULT_URL), PRODUCTION("PROD", Environment.PROD_IOT_URL,
+                            Environment.PROD_APIGATEWAY_URL, Environment.PROD_ELEMENTS_AUTH_TOKEN_URL,
+                            Environment.PROD_VAULT_URL),;
 
     static Environment getEnvSpecificDetails(String environmentName) {
         return EnvironmentMap.get(environmentName.toUpperCase());

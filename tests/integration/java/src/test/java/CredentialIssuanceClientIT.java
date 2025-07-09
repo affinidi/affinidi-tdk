@@ -1,14 +1,26 @@
 import helpers.AuthUtils;
 import helpers.Env;
+import helpers.TestUtils;
+
 import com.affinidi.tdk.credential.issuance.client.*;
 import com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth;
 import com.affinidi.tdk.credential.issuance.client.apis.*;
 import com.affinidi.tdk.credential.issuance.client.models.*;
 
+import helpers.WalletsTestHelper;
+import com.affinidi.tdk.wallets.client.models.WalletDto;
+import com.affinidi.tdk.wallets.client.models.CreateWalletInput;
+
+import com.affinidi.tdk.common.EnvironmentUtil;
+
 import org.junit.jupiter.api.*;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,6 +32,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CredentialIssuanceClientIT {
+    private static final ObjectMapper MAPPER = new ObjectMapper()
+        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     private String projectId;
     private String configurationId;
@@ -35,6 +49,13 @@ public class CredentialIssuanceClientIT {
         projectId = Env.get("PROJECT_ID");
 
         ApiClient client = Configuration.getDefaultApiClient();
+
+        if (!Env.isProd()) {
+            String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+            String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+            client.setBasePath(basePath);
+        }
+
         ApiKeyAuth auth = (ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
         auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
 
@@ -48,11 +69,27 @@ public class CredentialIssuanceClientIT {
     @Order(1)
     void shouldListIssuanceConfigurations() throws Exception {
         IssuanceConfigListResponse response = configurationApi.getIssuanceConfigList();
-
         assertNotNull(response, "Issuance config list response should not be null");
-        assertFalse(response.getConfigurations().isEmpty(), "Issuance configurations should not be empty");
 
-        configurationId = response.getConfigurations().get(0).getId();
+        if (response.getConfigurations().isEmpty()) {
+            String rawConfig = Env.get("CREDENTIAL_ISSUANCE_CONFIGURATION");
+
+            WalletDto created = WalletsTestHelper.createWallet(CreateWalletInput.DidMethodEnum.KEY);
+            String walletId = created.getId();
+            assertNotNull(walletId, "Wallet ID should not be null");
+
+            CreateIssuanceConfigInput input =
+                MAPPER.readValue(new JSONObject(rawConfig).toString(), CreateIssuanceConfigInput.class);
+            input.setIssuerWalletId(walletId);
+
+            IssuanceConfigDto issuanceConfig = configurationApi.createIssuanceConfig(input);
+            configurationId = issuanceConfig.getId();
+
+            assertNotNull(configurationId, "Configuration ID should not be null");
+        } else {
+            assertFalse(response.getConfigurations().isEmpty(), "Issuance configurations should not be empty");
+            configurationId = response.getConfigurations().get(0).getId();
+        }
     }
 
     @Test

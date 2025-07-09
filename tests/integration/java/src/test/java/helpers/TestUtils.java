@@ -1,5 +1,6 @@
 package helpers;
 
+import java.net.URI;
 import java.util.Random;
 
 public class TestUtils {
@@ -16,5 +17,11 @@ public class TestUtils {
             sb.append(ALPHABET.charAt(random.nextInt(ALPHABET.length())));
         }
         return sb.toString();
+    }
+
+    public static String replaceBaseDomain(String originalBasePath, String newDomain) {
+        URI originalUri = URI.create(originalBasePath);
+        URI newDomainUri = URI.create(newDomain);
+        return newDomainUri.resolve(originalUri.getPath()).toString();
     }
 }

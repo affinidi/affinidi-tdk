@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:test/test.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 import 'package:ssi/ssi.dart';
 
@@ -38,8 +39,14 @@ void main() {
       );
 
       consumerAuthProvider = ConsumerAuthProvider(signer: didSigner);
+
+      final vaultApiUrl = VaultUtils.fetchElementsVaultApiUrl();
+      String basePathOverride = replaceBaseDomain(
+          AffinidiTdkVaultDataManagerClient.basePath, vaultApiUrl);
+
       final apiClient = AffinidiTdkVaultDataManagerClient(
         authTokenHook: consumerAuthProvider.fetchConsumerToken,
+        basePathOverride: basePathOverride,
       );
       nodesApi = apiClient.getNodesApi();
     });

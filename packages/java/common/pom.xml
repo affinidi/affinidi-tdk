@@ -223,6 +223,9 @@
         <groupId>net.revelc.code.formatter</groupId>
         <artifactId>formatter-maven-plugin</artifactId>
         <version>${formatter-maven-plugin-version}</version>
+        <configuration>
+          <configFile>${basedir}/formatter.xml</configFile>
+        </configuration>
         <executions>
           <execution>
             <goals>

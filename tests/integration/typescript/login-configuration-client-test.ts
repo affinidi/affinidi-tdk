@@ -1,7 +1,7 @@
 import { expect } from 'chai'
 import { customAlphabet } from 'nanoid'
 import { AllowListApi, ConfigurationApi, DenyListApi, GroupApi, Configuration as LoginConfiguration } from '@affinidi-tdk/login-configuration-client'
-import { apiKey } from './helpers'
+import { apiKey, ClientsConfigurationService } from './helpers'
 
 describe('login-configuration-client', function () {
   let loginConfigurationId: string
@@ -15,7 +15,7 @@ describe('login-configuration-client', function () {
   const groupName: string = nanoid()
 
   before(async function () {
-    const loginConfiguration = new LoginConfiguration({ apiKey })
+    const loginConfiguration = ClientsConfigurationService.getLoginConfigurationClientConfiguration()
 
     configurationApi = new ConfigurationApi(loginConfiguration)
     allowListApi = new AllowListApi(loginConfiguration)

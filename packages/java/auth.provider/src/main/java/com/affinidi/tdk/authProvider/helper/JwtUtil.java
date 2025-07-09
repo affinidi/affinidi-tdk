@@ -41,8 +41,8 @@ import io.jsonwebtoken.security.Jwk;
 import io.jsonwebtoken.security.Jwks;
 
 /**
- * This class provides utility functions required by {@link AuthProvider} related for processing(creating, signing,
- * validation) of JWT.
+ * This class provides utility functions required by {@link AuthProvider}
+ * related for processing(creating, signing, validation) of JWT.
  */
 public class JwtUtil {
 
@@ -53,11 +53,11 @@ public class JwtUtil {
     private static final Gson GSON = new Gson();
 
     /**
-     * This method builds a JSON web token for the provided claims. It then signs the token with the provided privatekey
-     * using RS256.
+     * This method builds a JSON web token for the provided claims. It then signs
+     * the token with the provided privatekey using RS256.
      *
-     * In case of an encrypted private key; this method expects to receive the passphrase which was used during
-     * generation of the key pair.
+     * In case of an encrypted private key; this method expects to receive the
+     * passphrase which was used during generation of the key pair.
      *
      * @param tokenId
      * @param audience
@@ -68,7 +68,8 @@ public class JwtUtil {
      * @return String
      *
      * @throws JwtGenerationException
-     *             in case the private key could not be processed or jwt generation failed
+     *             in case the private key could not be processed or jwt generation
+     *             failed
      */
     public static String signPayload(String tokenId, String audience, String privateKeyString, String passphrase,
             String keyId) throws JwtGenerationException {
@@ -90,11 +91,12 @@ public class JwtUtil {
     }
 
     /**
-     * This method builds a JSON web token for the provided claims specific to an iota request. It then signs the token
-     * with the provided privatekey using RS256.
+     * This method builds a JSON web token for the provided claims specific to an
+     * iota request. It then signs the token with the provided privatekey using
+     * RS256.
      *
-     * In case of an encrypted private key; this method expects to receive the passphrase which was used during
-     * generation of the key pair.
+     * In case of an encrypted private key; this method expects to receive the
+     * passphrase which was used during generation of the key pair.
      *
      * @param tokenId
      * @param audience
@@ -108,7 +110,8 @@ public class JwtUtil {
      * @return String
      *
      * @throws JwtGenerationException
-     *             in case the private key could not be processed or jwt generation failed
+     *             in case the private key could not be processed or jwt generation
+     *             failed
      */
     public static String signIotaPayload(String tokenId, String audience, String privateKeyString, String passphrase,
             String keyId, String projectId, String iotaConfigId, String iotaSessionId) throws JwtGenerationException {
@@ -137,8 +140,9 @@ public class JwtUtil {
     }
 
     /**
-     * This method fetches the signature verification key, required to validate the jws for a projectScopeToken and
-     * converts it to {@link java.security.PublicKey}.
+     * This method fetches the signature verification key, required to validate the
+     * jws for a projectScopeToken and converts it to
+     * {@link java.security.PublicKey}.
      *
      * @param apiGatewayUrl
      *
@@ -176,10 +180,12 @@ public class JwtUtil {
     }
 
     /**
-     * This method validates the projectScopeToken. Along with validating if the token is malformed or expired; it also
-     * verifies the token signature using the signature verification public key.
+     * This method validates the projectScopeToken. Along with validating if the
+     * token is malformed or expired; it also verifies the token signature using the
+     * signature verification public key.
      *
-     * If the public key could not be retrieved for any reason; the method would consider the token as invalid.
+     * If the public key could not be retrieved for any reason; the method would
+     * consider the token as invalid.
      *
      * @param token
      * @param apiGatewayUrl
@@ -201,9 +207,10 @@ public class JwtUtil {
     }
 
     /**
-     * This method converts the private key string passed to a {@link java.security.PrivateKey}. In case a passphrase is
-     * passed, the private key is treated as encrypted and processed accordingly. This passphrase should be same as the
-     * one used to create the public-private key pair.
+     * This method converts the private key string passed to a
+     * {@link java.security.PrivateKey}. In case a passphrase is passed, the private
+     * key is treated as encrypted and processed accordingly. This passphrase should
+     * be same as the one used to create the public-private key pair.
      *
      * @param privateKeyString
      * @param passphrase
@@ -226,9 +233,9 @@ public class JwtUtil {
     }
 
     /**
-     * This method generates a JSON payload representing all the claims passed. It then signs this payload with the
-     * {@link java.security.PrivateKey}, creating a json web signature (JWS) and then builds the JWT as a URL-safe
-     * string.
+     * This method generates a JSON payload representing all the claims passed. It
+     * then signs this payload with the {@link java.security.PrivateKey}, creating a
+     * json web signature (JWS) and then builds the JWT as a URL-safe string.
      *
      * @param privateKey
      * @param claims
@@ -236,7 +243,8 @@ public class JwtUtil {
      * @return String
      *
      * @throws JwtGenerationException
-     *             when the jwt generation fails. For instance if the private key is insufficient
+     *             when the jwt generation fails. For instance if the private key is
+     *             insufficient
      */
     private static String generateJwt(PrivateKey privateKey, Map<String, Object> claims) throws JwtGenerationException {
         try {
@@ -249,7 +257,8 @@ public class JwtUtil {
     }
 
     /**
-     * This method converts a private key string to {@link java.security.PrivateKey} object.
+     * This method converts a private key string to {@link java.security.PrivateKey}
+     * object.
      *
      * @param privateKeyPEM
      *
@@ -266,8 +275,10 @@ public class JwtUtil {
     }
 
     /**
-     * This method converts an encrypted private key string to {@link java.security.PrivateKey} object The passphrase
-     * which was used to generate the public-private keypair should be passed to this method for processing.
+     * This method converts an encrypted private key string to
+     * {@link java.security.PrivateKey} object The passphrase which was used to
+     * generate the public-private keypair should be passed to this method for
+     * processing.
      *
      * @param encryptedPrivateKeyPEM
      * @param password
@@ -294,7 +305,8 @@ public class JwtUtil {
     }
 
     /**
-     * This method cleans up the private key string which is required to decode the key material.
+     * This method cleans up the private key string which is required to decode the
+     * key material.
      *
      * @param privateKey
      *
@@ -307,8 +319,8 @@ public class JwtUtil {
     }
 
     /**
-     * This method processes the response from the public key API call and extracts the first key listed from the
-     * response.
+     * This method processes the response from the public key API call and extracts
+     * the first key listed from the response.
      *
      * @param responseEntity
      *

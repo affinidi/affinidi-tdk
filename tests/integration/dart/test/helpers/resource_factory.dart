@@ -1,15 +1,24 @@
 import 'dart:math';
 import 'package:built_value/json_object.dart';
-import 'package:one_of/one_of.dart';
 import 'package:built_collection/built_collection.dart';
 
 import 'package:affinidi_tdk_auth_provider/affinidi_tdk_auth_provider.dart';
 import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 import 'package:affinidi_tdk_credential_verification_client/affinidi_tdk_credential_verification_client.dart';
 
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
+import 'package:dio/dio.dart';
+
+import 'helpers.dart';
 import 'environment.dart';
 
 class ResourceFactory {
+  // NOTE: Max number of wallets for project is 10. Making clean up,
+  //       if wallet number exceeds threshold, to prevent 422 error
+  static final WALLETS_LIMIT_THRESHOLD = 7;
+
+  static final apiGwUrl = Environment.fetchEnvironment().apiGwUrl;
+
   static getAuthTokenHook() {
     final env = getProjectEnvironment();
     final authProvider = AuthProvider(
@@ -24,8 +33,14 @@ class ResourceFactory {
   }
 
   static createWallet({bool didWeb = false}) async {
+    await checkWalletLimitExceeded();
+
+    String basePathOverride =
+        replaceBaseDomain(AffinidiTdkWalletsClient.basePath, apiGwUrl);
+
     final apiClient = AffinidiTdkWalletsClient(
-        authTokenHook: ResourceFactory.getAuthTokenHook());
+        authTokenHook: ResourceFactory.getAuthTokenHook(),
+        basePathOverride: basePathOverride);
     final walletApi = apiClient.getWalletApi();
 
     final didKeyInputBuilder = CreateWalletInputBuilder()
@@ -42,9 +57,34 @@ class ResourceFactory {
     return createdWallet!.wallet;
   }
 
-  static deleteWallet(String walletId) async {
+  static getWalletById(String walletId) async {
+    String basePathOverride =
+        replaceBaseDomain(AffinidiTdkWalletsClient.basePath, apiGwUrl);
+
     final apiClient = AffinidiTdkWalletsClient(
-        authTokenHook: ResourceFactory.getAuthTokenHook());
+        authTokenHook: ResourceFactory.getAuthTokenHook(),
+        basePathOverride: basePathOverride);
+    final walletApi = apiClient.getWalletApi();
+
+    try {
+      final wallet = (await walletApi.getWallet(walletId: walletId)).data;
+      return wallet;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 404) {
+        return null;
+      } else {
+        rethrow;
+      }
+    }
+  }
+
+  static deleteWallet(String walletId) async {
+    String basePathOverride =
+        replaceBaseDomain(AffinidiTdkWalletsClient.basePath, apiGwUrl);
+
+    final apiClient = AffinidiTdkWalletsClient(
+        authTokenHook: ResourceFactory.getAuthTokenHook(),
+        basePathOverride: basePathOverride);
     final walletApi = apiClient.getWalletApi();
 
     await walletApi.deleteWallet(walletId: walletId);
@@ -58,8 +98,12 @@ class ResourceFactory {
   }
 
   static Future<bool> isCredentialValid(credential) async {
+    String basePathOverride = replaceBaseDomain(
+        AffinidiTdkCredentialVerificationClient.basePath, apiGwUrl);
+
     final apiClient = AffinidiTdkCredentialVerificationClient(
-        authTokenHook: ResourceFactory.getAuthTokenHook());
+        authTokenHook: ResourceFactory.getAuthTokenHook(),
+        basePathOverride: basePathOverride);
     final verificationApi = apiClient.getDefaultApi();
 
     final verifyCredentialInputBuilder = VerifyCredentialInputBuilder()
@@ -85,16 +129,23 @@ class ResourceFactory {
   }
 
   static checkWalletLimitExceeded() async {
+    String basePathOverride =
+        replaceBaseDomain(AffinidiTdkWalletsClient.basePath, apiGwUrl);
+
     final apiClient = AffinidiTdkWalletsClient(
-        authTokenHook: ResourceFactory.getAuthTokenHook());
+        authTokenHook: ResourceFactory.getAuthTokenHook(),
+        basePathOverride: basePathOverride);
     final walletApi = apiClient.getWalletApi();
 
     final result = (await walletApi.listWallets()).data;
     final walletsCount = result!.wallets!.length;
 
-    if (walletsCount == 10) {
-      throw Exception(
-          '❗️Max wallets limit exceeded (10). Delete unused wallets and try again.');
+    if (walletsCount > WALLETS_LIMIT_THRESHOLD) {
+      print('❗️Number of wallets reaching the limit (10). Deleting wallets.');
+
+      for (final wallet in result.wallets!) {
+        deleteWallet(wallet.id as String);
+      }
     }
   }
 }

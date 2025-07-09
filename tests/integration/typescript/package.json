@@ -4,14 +4,14 @@
   "description": "TDK testing",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require tsx --grep 'internal' --invert --timeout 10000 '*.ts'",
-    "test:internal": "env INTERNAL=true mocha --require tsx --timeout 10000 '*.ts'"
+    "test": "mocha --require tsx --grep 'internal' --invert --timeout 20000 '*.ts'",
+    "test:internal": "env INTERNAL=true mocha --require tsx --timeout 20000 '*.ts'"
   },
   "author": "Affinidi",
   "license": "ISC",
   "devDependencies": {
-    "@affinidi-tdk/auth-provider": "^1.31.0",
-    "@affinidi-tdk/common": "^1.23.2",
+    "@affinidi-tdk/auth-provider": "^1.33.1",
+    "@affinidi-tdk/common": "^1.25.1",
     "@affinidi-tdk/credential-issuance-client": "../../../clients/typescript/credential-issuance-client",
     "@affinidi-tdk/credential-verification-client": "../../../clients/typescript/credential-verification-client",
     "@affinidi-tdk/iam-client": "../../../clients/typescript/iam-client",

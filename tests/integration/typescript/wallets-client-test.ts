@@ -3,10 +3,12 @@ import { customAlphabet } from 'nanoid'
 import { WalletApi, RevocationApi, Configuration } from '@affinidi-tdk/wallets-client'
 import {
   projectId,
-  apiKey,
   isCredentialValid,
   unsignedCredentialParams,
   extractRevocationStatusId,
+  ClientsConfigurationService,
+  checkWalletsLimitExceeded,
+  createWallet,
 } from './helpers'
 
 describe('wallets-client', function () {
@@ -18,18 +20,30 @@ describe('wallets-client', function () {
   let signedCredential
 
   before(async function () {
-    const configuration = new Configuration({ apiKey })
+    await checkWalletsLimitExceeded()
+
+    const configuration = ClientsConfigurationService.getWalletsClientConfiguration()
+
     api = new WalletApi(configuration)
     revocationApi = new RevocationApi(configuration)
-  })
 
-  it('Creates wallet: DID Key', async () => {
-    const { data, status } = await api.createWallet()
-
+    const { data, status } = await api.createWallet({ didMethod: 'key' })
     expect(status).to.equal(201)
     expect(data).to.have.a.property('wallet')
     walletId = data.wallet.id
     walletDid = data.wallet.did
+  })
+
+  after(async function () {
+    {
+      const { status } = await api.deleteWallet(walletId)
+      expect(status).to.equal(204)
+    }
+
+    if (walletIdDidWeb) {
+      const { status } = await api.deleteWallet(walletIdDidWeb)
+      expect(status).to.equal(204)
+    }
   })
 
   it('Creates wallet: DID Web', async () => {
@@ -71,7 +85,6 @@ describe('wallets-client', function () {
 
     const { data } = await api.signCredential(walletId, { unsignedCredentialParams: params, revocable })
     expect(data).to.have.a.property('signedCredential')
-
     const isValid = await isCredentialValid(data.signedCredential)
     expect(isValid).to.be.false
   })
@@ -125,17 +138,5 @@ describe('wallets-client', function () {
     expect(data).to.have.a.property('id')
     expect(data).to.have.a.property('name')
     expect(data.name).to.eql(updatedName)
-  })
-
-  it('Deletes wallet', async () => {
-    {
-      const { status } = await api.deleteWallet(walletId)
-      expect(status).to.equal(204)
-    }
-
-    {
-      const { status } = await api.deleteWallet(walletIdDidWeb)
-      expect(status).to.equal(204)
-    }
   })
 })

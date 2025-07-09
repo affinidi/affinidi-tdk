@@ -1,7 +1,10 @@
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:convert/convert.dart';
 import 'package:dotenv/dotenv.dart';
+
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 class ProjectEnvironment {
   final String projectId;
@@ -39,18 +42,43 @@ class CredentialIssuanceEnvironment {
 ProjectEnvironment getProjectEnvironment() {
   final env = DotEnv()..load(['../../.env']);
 
+  final environmentName = Environment.fetchEnvironment().environmentName;
+  final isProd = environmentName == EnvironmentType.prod.value;
+
   if (!env.isEveryDefined(['PROJECT_ID', 'TOKEN_ID', 'PRIVATE_KEY'])) {
     throw Exception(
       'Missing environment variables. Please provide PROJECT_ID, TOKEN_ID, PRIVATE_KEY',
     );
   }
 
-  // Workaround for dotenv multiline limitations
-  final privateKey = env['PRIVATE_KEY']!.replaceAll('\\n', '\n');
-  final token = env['TOKEN_ID']!;
-  final projectId = env['PROJECT_ID']!;
-  final keyId = env['KEY_ID'] ?? '';
-  final passphrase = env['PASSPHRASE'] ?? '';
+  if (!isProd &&
+      !env.isEveryDefined(
+          ['DEV_PROJECT_ID', 'DEV_TOKEN_ID', 'DEV_PRIVATE_KEY'])) {
+    throw Exception(
+      'Missing environment variables. Please provide DEV_PROJECT_ID, DEV_TOKEN_ID, DEV_PRIVATE_KEY',
+    );
+  }
+
+  late final String privateKey;
+  late final String token;
+  late final String projectId;
+  late final String keyId;
+  late final String passphrase;
+
+  if (isProd) {
+    // Workaround for dotenv multiline limitations
+    privateKey = env['PRIVATE_KEY']!.replaceAll('\\n', '\n');
+    token = env['TOKEN_ID']!;
+    projectId = env['PROJECT_ID']!;
+    keyId = env['KEY_ID'] ?? '';
+    passphrase = env['PASSPHRASE'] ?? '';
+  } else {
+    privateKey = env['DEV_PRIVATE_KEY']!.replaceAll('\\n', '\n');
+    token = env['DEV_TOKEN_ID']!;
+    projectId = env['DEV_PROJECT_ID']!;
+    keyId = env['DEV_KEY_ID'] ?? '';
+    passphrase = env['DEV_PASSPHRASE'] ?? '';
+  }
 
   return ProjectEnvironment(
     projectId: projectId,

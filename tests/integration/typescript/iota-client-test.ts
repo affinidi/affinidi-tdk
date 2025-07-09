@@ -2,6 +2,7 @@ import { expect } from 'chai'
 import { randomUUID } from 'crypto'
 import * as jose from 'jose'
 import {
+  BASE_PATH,
   PexQueryApi,
   CallbackApi,
   IotaApi,
@@ -12,6 +13,9 @@ import {
   FetchIOTAVPResponseOK,
 } from '@affinidi-tdk/iota-client'
 import {
+  apiGatewayUrl,
+  replaceBaseDomain,
+  isProd,
   apiKey,
   iotaConfiguration,
   iotaPresentationSubmission,
@@ -19,6 +23,7 @@ import {
   createWallet,
   deleteWallet,
   verifiablePresentation,
+  ClientsConfigurationService,
 } from './helpers'
 
 describe('iota-client', function () {
@@ -40,9 +45,13 @@ describe('iota-client', function () {
     walletAri = wallet?.ari
     walletId = wallet?.id
 
-    const configuration = new Configuration({ apiKey })
+    const configuration = ClientsConfigurationService.getIotaClientConfiguration()
 
-    callbackApi = new CallbackApi()
+    // NOTE: CallbackApi does not require apiKey, but basePath if it is custom
+    // can be set here (if it is not Affinidi Gateway)
+    const basePath = isProd ? BASE_PATH : replaceBaseDomain(BASE_PATH, apiGatewayUrl)
+
+    callbackApi = new CallbackApi(new Configuration({ basePath }))
     iotaApi = new IotaApi(configuration)
     configurationsApi = new ConfigurationsApi(configuration)
     pexQueryApi = new PexQueryApi(configuration)
