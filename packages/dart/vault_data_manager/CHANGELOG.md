@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.6.0
+
+### Changes
+
+---
+
+Fix: Implement Pagination for credentials
+
 ## 1.5.0
 
 ### Changes
