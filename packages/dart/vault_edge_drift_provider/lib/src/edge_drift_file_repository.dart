@@ -117,7 +117,12 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
         .getSingleOrNull();
 
     if (createdFolder == null) {
-      throw Exception('Failed to create folder');
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Failed to create folder',
+            code: TdkExceptionType.unableToCreateFolder.code),
+        StackTrace.current,
+      );
     }
 
     return Folder(
@@ -239,10 +244,7 @@ class EdgeDriftFileRepository implements EdgeFileRepositoryInterface {
               ? filter.parentId.equals(folderId)
               : filter.parentId.isNull()));
 
-    var offset = 0;
-    if (exclusiveStartItemId != null) {
-      offset = int.tryParse(exclusiveStartItemId) ?? 0;
-    }
+    final offset = int.tryParse(exclusiveStartItemId ?? '') ?? 0;
 
     if (limit != null) {
       query = query..limit(limit, offset: offset);

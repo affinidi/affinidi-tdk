@@ -124,8 +124,6 @@ void main() async {
     print([error.code, error.message, error.originalMessage].join('\n'));
   }
 
-  await Future.delayed(const Duration(seconds: 2), () {});
-
   print('[Demo] Listing profile files ...');
 
   //

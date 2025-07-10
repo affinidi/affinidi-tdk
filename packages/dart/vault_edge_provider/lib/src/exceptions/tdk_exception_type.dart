@@ -50,6 +50,9 @@ enum TdkExceptionType {
   /// - [profleNotConfigured] - Indicates the profile repository is not configured.
   profleNotConfigured('profle_not_configured'),
 
+  /// - [unableToCreateFolder] - Indicates a failure in creation of folder
+  unableToCreateFolder('unable_to_create_folder'),
+
   /// [unableToDeleteFolderWithContent] - Indicates the folder has content and cannot be deleted
   unableToDeleteFolderWithContent('unable_to_delete_folder_with_content'),
 
