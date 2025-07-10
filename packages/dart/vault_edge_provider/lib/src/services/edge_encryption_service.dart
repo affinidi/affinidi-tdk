@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
@@ -78,6 +79,26 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
         code: TdkExceptionType.decryptionFailed.code,
         originalMessage: e.toString(),
       );
+    }
+  }
+
+  /// Encrypts a file or folder name
+  @override
+  Future<String> encryptFileName(String fileName) async {
+    final nameBytes = Uint8List.fromList(fileName.codeUnits);
+    final encryptedBytes = await encryptData(nameBytes);
+    return base64Encode(encryptedBytes);
+  }
+
+  /// Decrypts a file or folder name
+  @override
+  Future<String> decryptFileName(String encryptedFileName) async {
+    try {
+      final encryptedBytes = base64Decode(encryptedFileName);
+      final decryptedBytes = await decryptData(encryptedBytes);
+      return String.fromCharCodes(decryptedBytes);
+    } catch (e) {
+      return encryptedFileName;
     }
   }
 

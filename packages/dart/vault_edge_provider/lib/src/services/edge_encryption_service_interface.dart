@@ -13,4 +13,10 @@ abstract interface class EdgeEncryptionServiceInterface {
 
   /// Decrypts data using the loaded master key.
   Future<Uint8List> decryptData(Uint8List encryptedData);
+
+  /// Encrypts a file or folder name using the loaded master key.
+  Future<String> encryptFileName(String fileName);
+
+  /// Decrypts a file or folder name using the loaded master key.
+  Future<String> decryptFileName(String encryptedFileName);
 }

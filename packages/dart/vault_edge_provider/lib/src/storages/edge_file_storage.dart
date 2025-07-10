@@ -80,11 +80,13 @@ class EdgeFileStorage implements FileStorage {
         _convertToRootFolderIfNeeded(parentFolderId);
 
     final encryptedContent = await _encryptionService.encryptData(data);
+    final encryptedFileName =
+        await _encryptionService.encryptFileName(fileName);
 
     // Create the file
     await _repository.createFile(
       profileId: _profileId,
-      fileName: fileName,
+      fileName: encryptedFileName,
       data: encryptedContent,
       parentFolderId: sanitizedParentFolderId,
     );
@@ -99,15 +101,18 @@ class EdgeFileStorage implements FileStorage {
     final sanitizedParentFolderId =
         _convertToRootFolderIfNeeded(parentFolderId);
 
+    final encryptedFolderName =
+        await _encryptionService.encryptFileName(folderName);
+
     final folderData = await _repository.createFolder(
       profileId: _profileId,
-      folderName: folderName,
+      folderName: encryptedFolderName,
       parentFolderId: sanitizedParentFolderId,
     );
 
     return Folder(
       id: folderData.id,
-      name: folderData.name,
+      name: await _encryptionService.decryptFileName(folderData.name),
       createdAt: folderData.createdAt,
       modifiedAt: folderData.modifiedAt,
       parentId: folderData.parentId,
@@ -150,7 +155,7 @@ class EdgeFileStorage implements FileStorage {
 
     return File(
       id: fileData.id,
-      name: fileData.name,
+      name: await _encryptionService.decryptFileName(fileData.name),
       createdAt: fileData.createdAt,
       modifiedAt: fileData.modifiedAt,
       parentId: fileData.parentId,
@@ -180,11 +185,41 @@ class EdgeFileStorage implements FileStorage {
   }) async {
     final sanitizedFolderId = _convertToRootFolderIfNeeded(folderId);
 
-    // Use the optimized implementation that returns PaginatedList directly
-    return await _repository.getFolder(
+    // Get the raw folder data from repository
+    final rawFolderData = await _repository.getFolder(
       folderId: sanitizedFolderId,
       limit: limit,
       exclusiveStartItemId: exclusiveStartItemId,
+    );
+
+    final decryptedItems = await Future.wait(
+      rawFolderData.items.map((item) async {
+        final decryptedName =
+            await _encryptionService.decryptFileName(item.name);
+
+        if (item is Folder) {
+          return Folder(
+            id: item.id,
+            name: decryptedName,
+            createdAt: item.createdAt,
+            modifiedAt: item.modifiedAt,
+            parentId: item.parentId,
+          );
+        } else {
+          return File(
+            id: item.id,
+            name: decryptedName,
+            createdAt: item.createdAt,
+            modifiedAt: item.modifiedAt,
+            parentId: item.parentId,
+          );
+        }
+      }),
+    );
+
+    return PaginatedList(
+      items: decryptedItems,
+      lastEvaluatedItemId: rawFolderData.lastEvaluatedItemId,
     );
   }
 
@@ -206,9 +241,10 @@ class EdgeFileStorage implements FileStorage {
       );
     }
 
+    final encryptedNewName = await _encryptionService.encryptFileName(newName);
     await _repository.renameFile(
       fileId: fileId,
-      newName: newName,
+      newName: encryptedNewName,
     );
   }
 
@@ -229,9 +265,10 @@ class EdgeFileStorage implements FileStorage {
       );
     }
 
+    final encryptedNewName = await _encryptionService.encryptFileName(newName);
     final success = await _repository.renameFolder(
       folderId: folderId,
-      newName: newName,
+      newName: encryptedNewName,
     );
     if (!success) {
       Error.throwWithStackTrace(
