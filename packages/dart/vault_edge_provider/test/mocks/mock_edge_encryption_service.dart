@@ -20,12 +20,12 @@ class MockEncryptionServiceSetup {
       return data;
     });
 
-    when(() => mock.encryptFileName(any())).thenAnswer((invocation) async {
+    when(() => mock.encryptString(any())).thenAnswer((invocation) async {
       final fileName = invocation.positionalArguments[0] as String;
       return fileName;
     });
 
-    when(() => mock.decryptFileName(any())).thenAnswer((invocation) async {
+    when(() => mock.decryptString(any())).thenAnswer((invocation) async {
       final encryptedFileName = invocation.positionalArguments[0] as String;
       return encryptedFileName;
     });

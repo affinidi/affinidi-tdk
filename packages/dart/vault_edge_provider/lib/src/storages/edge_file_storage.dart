@@ -80,8 +80,7 @@ class EdgeFileStorage implements FileStorage {
         _convertToRootFolderIfNeeded(parentFolderId);
 
     final encryptedContent = await _encryptionService.encryptData(data);
-    final encryptedFileName =
-        await _encryptionService.encryptFileName(fileName);
+    final encryptedFileName = await _encryptionService.encryptString(fileName);
 
     // Create the file
     await _repository.createFile(
@@ -102,7 +101,7 @@ class EdgeFileStorage implements FileStorage {
         _convertToRootFolderIfNeeded(parentFolderId);
 
     final encryptedFolderName =
-        await _encryptionService.encryptFileName(folderName);
+        await _encryptionService.encryptString(folderName);
 
     final folderData = await _repository.createFolder(
       profileId: _profileId,
@@ -112,7 +111,7 @@ class EdgeFileStorage implements FileStorage {
 
     return Folder(
       id: folderData.id,
-      name: await _encryptionService.decryptFileName(folderData.name),
+      name: await _encryptionService.decryptString(folderData.name),
       createdAt: folderData.createdAt,
       modifiedAt: folderData.modifiedAt,
       parentId: folderData.parentId,
@@ -155,7 +154,7 @@ class EdgeFileStorage implements FileStorage {
 
     return File(
       id: fileData.id,
-      name: await _encryptionService.decryptFileName(fileData.name),
+      name: await _encryptionService.decryptString(fileData.name),
       createdAt: fileData.createdAt,
       modifiedAt: fileData.modifiedAt,
       parentId: fileData.parentId,
@@ -194,8 +193,7 @@ class EdgeFileStorage implements FileStorage {
 
     final decryptedItems = await Future.wait(
       rawFolderData.items.map((item) async {
-        final decryptedName =
-            await _encryptionService.decryptFileName(item.name);
+        final decryptedName = await _encryptionService.decryptString(item.name);
 
         if (item is Folder) {
           return Folder(
@@ -241,7 +239,7 @@ class EdgeFileStorage implements FileStorage {
       );
     }
 
-    final encryptedNewName = await _encryptionService.encryptFileName(newName);
+    final encryptedNewName = await _encryptionService.encryptString(newName);
     await _repository.renameFile(
       fileId: fileId,
       newName: encryptedNewName,
@@ -265,7 +263,7 @@ class EdgeFileStorage implements FileStorage {
       );
     }
 
-    final encryptedNewName = await _encryptionService.encryptFileName(newName);
+    final encryptedNewName = await _encryptionService.encryptString(newName);
     final success = await _repository.renameFolder(
       folderId: folderId,
       newName: encryptedNewName,
