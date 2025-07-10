@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault_edge_drift_provider/affinidi_tdk_vault_edge_drift_provider.dart';
 import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 
 void main() async {
   // Create an in-memory database directly
