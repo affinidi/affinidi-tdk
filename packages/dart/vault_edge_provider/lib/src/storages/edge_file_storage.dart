@@ -38,7 +38,7 @@ class EdgeFileStorage implements FileStorage {
 
   // A folderId matching the _profileId should be considered null as it identifies the root folder.
   String? _convertToRootFolderIfNeeded(String? folderId) {
-    if (folderId == _profileId) {
+    if (folderId == _profileId || folderId == '') {
       return null;
     }
     return folderId;
@@ -78,31 +78,6 @@ class EdgeFileStorage implements FileStorage {
 
     final sanitizedParentFolderId =
         _convertToRootFolderIfNeeded(parentFolderId);
-
-    // Check if parent folder exists and is a folder
-    if (sanitizedParentFolderId != null) {
-      final items =
-          await _repository.getFolder(folderId: sanitizedParentFolderId);
-      if (items.items.isEmpty) {
-        Error.throwWithStackTrace(
-          TdkException(
-            message: 'Parent folder does not exist',
-            code: TdkExceptionType.invalidParentFolderId.code,
-          ),
-          StackTrace.current,
-        );
-      }
-      final parentFolder = items.items.first;
-      if (parentFolder is! Folder) {
-        Error.throwWithStackTrace(
-          TdkException(
-            message: 'Parent ID does not refer to a folder',
-            code: TdkExceptionType.invalidParentFolderId.code,
-          ),
-          StackTrace.current,
-        );
-      }
-    }
 
     final encryptedContent = await _encryptionService.encryptData(data);
 
@@ -154,19 +129,16 @@ class EdgeFileStorage implements FileStorage {
     required String folderId,
     VaultCancelToken? cancelToken,
   }) async {
-    // Check if folder exists
-    final items = await _repository.getFolder(folderId: folderId);
-    if (items.items.isEmpty) {
+    final success = await _repository.deleteFolder(folderId: folderId);
+    if (!success) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Folder does not exist',
+          message: 'Failed to delete folder',
           code: TdkExceptionType.invalidFolderId.code,
         ),
         StackTrace.current,
       );
     }
-
-    await _repository.deleteFolder(folderId: folderId);
   }
 
   @override
@@ -257,21 +229,18 @@ class EdgeFileStorage implements FileStorage {
       );
     }
 
-    // Check if folder exists
-    final items = await _repository.getFolder(folderId: folderId);
-    if (items.items.isEmpty) {
+    final success = await _repository.renameFolder(
+      folderId: folderId,
+      newName: newName,
+    );
+    if (!success) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Folder does not exist',
+          message: 'Failed to rename folder',
           code: TdkExceptionType.invalidFolderId.code,
         ),
         StackTrace.current,
       );
     }
-
-    await _repository.renameFolder(
-      folderId: folderId,
-      newName: newName,
-    );
   }
 }

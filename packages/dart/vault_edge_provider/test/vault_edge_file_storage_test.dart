@@ -105,13 +105,15 @@ void main() {
       });
 
       test('it throws error when parent folder does not exist', () async {
-        when(() => mockRepository.getFolder(
-                  folderId: 'non-existent-folder',
-                  limit: any(named: 'limit'),
-                  exclusiveStartItemId: any(named: 'exclusiveStartItemId'),
-                ))
-            .thenAnswer((_) async =>
-                PaginatedList(items: [], lastEvaluatedItemId: null));
+        when(() => mockRepository.createFile(
+              profileId: any(named: 'profileId'),
+              fileName: any(named: 'fileName'),
+              data: any(named: 'data'),
+              parentFolderId: 'non-existent-folder',
+            )).thenThrow(TdkException(
+          message: 'Parent folder does not exist',
+          code: TdkExceptionType.invalidParentFolderId.code,
+        ));
 
         expect(
           () => storage.createFile(
