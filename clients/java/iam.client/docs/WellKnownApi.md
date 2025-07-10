@@ -9,7 +9,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 ## getWellKnownDid
 
-> GetWellKnownDidOK getWellKnownDid()
+> Object getWellKnownDid()
 
 ### Example
 
@@ -28,7 +28,7 @@ public class Example {
 
         WellKnownApi apiInstance = new WellKnownApi(defaultClient);
         try {
-            GetWellKnownDidOK result = apiInstance.getWellKnownDid();
+            Object result = apiInstance.getWellKnownDid();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WellKnownApi#getWellKnownDid");
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetWellKnownDidOK**](GetWellKnownDidOK.md)
+**Object**
 
 ### Authorization
 

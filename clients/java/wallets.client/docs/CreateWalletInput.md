@@ -11,7 +11,8 @@
 
 ## Enum: DidMethodEnum
 
-| Name | Value           |
-| ---- | --------------- |
-| KEY  | &quot;key&quot; |
-| WEB  | &quot;web&quot; |
+| Name  | Value             |
+| ----- | ----------------- |
+| KEY   | &quot;key&quot;   |
+| WEB   | &quot;web&quot;   |
+| PEER0 | &quot;peer0&quot; |

@@ -9,7 +9,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 # **get_well_known_did**
 
-> GetWellKnownDidOK get_well_known_did()
+> object get_well_known_did()
 
 ### Example
 
@@ -17,7 +17,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 import time
 import os
 import affinidi_tdk_iam_client
-from affinidi_tdk_iam_client.models.get_well_known_did_ok import GetWellKnownDidOK
 from affinidi_tdk_iam_client.rest import ApiException
 from pprint import pprint
 
@@ -47,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetWellKnownDidOK**](GetWellKnownDidOK.md)
+**object**
 
 ### Authorization
 
