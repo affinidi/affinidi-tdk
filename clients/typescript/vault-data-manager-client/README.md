@@ -1,59 +1,212 @@
-## @affinidi-tdk/vault-data-manager-client
+## @affinidi-tdk/vault-data-manager-client@1.0.0
 
-### Service API Endpoints and Models
+This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
-Please check [the documentation for API Endpoints and Models](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/vault-data-manager-client/docs/README.md) for more details.
+Environment
 
-### Usage
+- Node.js
+- Webpack
+- Browserify
+
+Language level
+
+- ES5 - you must have a Promises/A+ library installed
+- ES6
+
+Module system
+
+- CommonJS
+- ES6 module system
+
+It can be used in both TypeScript and JavaScript. In TypeScript, the definition will be automatically resolved via `package.json`. ([Reference](https://www.typescriptlang.org/docs/handbook/declaration-files/consumption.html))
+
+### Building
+
+To build and compile the typescript sources to javascript use:
+
+```
+npm install
+npm run build
+```
+
+### Publishing
+
+First build the package then run `npm publish`
+
+### Consuming
+
+navigate to the folder of your consuming project and run one of the following commands.
+
+_published:_
+
+```
+npm install @affinidi-tdk/vault-data-manager-client@1.0.0 --save
+```
+
+_unPublished (not recommended):_
+
+```
+npm install PATH_TO_GENERATED_PACKAGE --save
+```
+
+### Documentation for API Endpoints
+
+All URIs are relative to *https://api.vault.affinidi.com/vfs*
+
+| Class              | Method                                                                  | HTTP request                                          | Description |
+| ------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| _AccountsApi_      | [**createAccount**](docs/AccountsApi.md#createaccount)                  | **POST** /v1/accounts                                 |
+| _AccountsApi_      | [**deleteAccount**](docs/AccountsApi.md#deleteaccount)                  | **DELETE** /v1/accounts/{accountIndex}                |
+| _AccountsApi_      | [**listAccounts**](docs/AccountsApi.md#listaccounts)                    | **GET** /v1/accounts                                  |
+| _AccountsApi_      | [**updateAccount**](docs/AccountsApi.md#updateaccount)                  | **PUT** /v1/accounts/{accountIndex}                   |
+| _ConfigurationApi_ | [**getConfiguration**](docs/ConfigurationApi.md#getconfiguration)       | **GET** /v1/config                                    |
+| _FilesApi_         | [**getScannedFileInfo**](docs/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
+| _FilesApi_         | [**listScannedFiles**](docs/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            |
+| _FilesApi_         | [**startFileScan**](docs/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 |
+| _NodesApi_         | [**createNode**](docs/NodesApi.md#createnode)                           | **POST** /v1/nodes                                    |
+| _NodesApi_         | [**deleteNode**](docs/NodesApi.md#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         |
+| _NodesApi_         | [**getDetailedNodeInfo**](docs/NodesApi.md#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            |
+| _NodesApi_         | [**initNodes**](docs/NodesApi.md#initnodes)                             | **POST** /v1/nodes/init                               |
+| _NodesApi_         | [**listNodeChildren**](docs/NodesApi.md#listnodechildren)               | **GET** /v1/nodes/{nodeId}/children                   |
+| _NodesApi_         | [**listRootNodeChildren**](docs/NodesApi.md#listrootnodechildren)       | **GET** /v1/nodes                                     |
+| _NodesApi_         | [**moveNode**](docs/NodesApi.md#movenode)                               | **POST** /v1/nodes/{nodeId}/move                      |
+| _NodesApi_         | [**permanentlyDeleteNode**](docs/NodesApi.md#permanentlydeletenode)     | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} |
+| _NodesApi_         | [**restoreNodeFromTrashbin**](docs/NodesApi.md#restorenodefromtrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
+| _NodesApi_         | [**updateNode**](docs/NodesApi.md#updatenode)                           | **PATCH** /v1/nodes/{nodeId}                          |
+| _ProfileDataApi_   | [**queryProfileData**](docs/ProfileDataApi.md#queryprofiledata)         | **GET** /v1/nodes/{nodeId}/profile-data               |
+| _ProfileDataApi_   | [**updateProfileData**](docs/ProfileDataApi.md#updateprofiledata)       | **PATCH** /v1/nodes/{nodeId}/profile-data             |
+| _WellKnownApi_     | [**getWellKnownJwks**](docs/WellKnownApi.md#getwellknownjwks)           | **GET** /.well-known/jwks.json                        |
+
+### Documentation For Models
+
+- [AccountDto](docs/AccountDto.md)
+- [AwsCredentialExchangeOperationOK](docs/AwsCredentialExchangeOperationOK.md)
+- [ConsumerMetadataDto](docs/ConsumerMetadataDto.md)
+- [CorsAwsCredentialExchangeOK](docs/CorsAwsCredentialExchangeOK.md)
+- [CorsDeleteAccountOK](docs/CorsDeleteAccountOK.md)
+- [CorsDeleteNodeOK](docs/CorsDeleteNodeOK.md)
+- [CorsGetConfigOK](docs/CorsGetConfigOK.md)
+- [CorsGetConfigurationOK](docs/CorsGetConfigurationOK.md)
+- [CorsGetScannedFileInfoOK](docs/CorsGetScannedFileInfoOK.md)
+- [CorsGetWellKnownJwksOK](docs/CorsGetWellKnownJwksOK.md)
+- [CorsInitNodesOK](docs/CorsInitNodesOK.md)
+- [CorsListAccountsOK](docs/CorsListAccountsOK.md)
+- [CorsListNodeChildrenOK](docs/CorsListNodeChildrenOK.md)
+- [CorsListRootNodeChildrenOK](docs/CorsListRootNodeChildrenOK.md)
+- [CorsListScannedFilesOK](docs/CorsListScannedFilesOK.md)
+- [CorsMoveNodeOK](docs/CorsMoveNodeOK.md)
+- [CorsPermanentlyDeleteNodeOK](docs/CorsPermanentlyDeleteNodeOK.md)
+- [CorsRestoreNodeFromTrashbinOK](docs/CorsRestoreNodeFromTrashbinOK.md)
+- [CorsStartFileScanOK](docs/CorsStartFileScanOK.md)
+- [CorsUpdateProfileDataOK](docs/CorsUpdateProfileDataOK.md)
+- [CreateAccountInput](docs/CreateAccountInput.md)
+- [CreateAccountOK](docs/CreateAccountOK.md)
+- [CreateNodeInput](docs/CreateNodeInput.md)
+- [CreateNodeOK](docs/CreateNodeOK.md)
+- [DeleteAccountDto](docs/DeleteAccountDto.md)
+- [DeleteNodeDto](docs/DeleteNodeDto.md)
+- [EdekInfo](docs/EdekInfo.md)
+- [GetConfigOK](docs/GetConfigOK.md)
+- [GetDetailedNodeInfoOK](docs/GetDetailedNodeInfoOK.md)
+- [GetScannedFileInfoOK](docs/GetScannedFileInfoOK.md)
+- [InitNodesOK](docs/InitNodesOK.md)
+- [InvalidParameterError](docs/InvalidParameterError.md)
+- [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
+- [JsonWebKeyDto](docs/JsonWebKeyDto.md)
+- [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
+- [ListAccountsDto](docs/ListAccountsDto.md)
+- [ListNodeChildrenOK](docs/ListNodeChildrenOK.md)
+- [ListRootNodeChildrenOK](docs/ListRootNodeChildrenOK.md)
+- [ListScannedFilesOK](docs/ListScannedFilesOK.md)
+- [ListScannedFilesOKScannedFilesInner](docs/ListScannedFilesOKScannedFilesInner.md)
+- [MoveNodeDto](docs/MoveNodeDto.md)
+- [MoveNodeInput](docs/MoveNodeInput.md)
+- [NodeDto](docs/NodeDto.md)
+- [NodeStatus](docs/NodeStatus.md)
+- [NodeType](docs/NodeType.md)
+- [NotFoundError](docs/NotFoundError.md)
+- [QueryProfileDataOK](docs/QueryProfileDataOK.md)
+- [RestoreNodeFromTrashbin](docs/RestoreNodeFromTrashbin.md)
+- [StartFileScanInput](docs/StartFileScanInput.md)
+- [StartFileScanOK](docs/StartFileScanOK.md)
+- [UnexpectedError](docs/UnexpectedError.md)
+- [UpdateAccountDto](docs/UpdateAccountDto.md)
+- [UpdateAccountInput](docs/UpdateAccountInput.md)
+- [UpdateNodeInput](docs/UpdateNodeInput.md)
+- [UpdateProfileDataInput](docs/UpdateProfileDataInput.md)
+- [UpdateProfileDataOK](docs/UpdateProfileDataOK.md)
+
+<a id="documentation-for-authorization"></a>
+
+## Documentation For Authorization
+
+Authentication schemes defined for the API:
+<a id="AwsSigV4"></a>
+
+### AwsSigV4
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+<a id="ApiKey"></a>
+
+### ApiKey
+
+- **Type**: API key
+- **API key parameter name**: x-api-key
+- **Location**: HTTP header
+
+<a id="bearerAuth"></a>
+
+### bearerAuth
+
+- **Type**: Bearer authentication (JWT)
+
+<a id="ConsumerTokenAuth"></a>
+
+### ConsumerTokenAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
+
+<a id="UserTokenAuth"></a>
+
+### UserTokenAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
+
+<a id="ProjectTokenAuth"></a>
+
+### ProjectTokenAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
+
+#### Obtaining auth token
+
+💡 To create personal access token (PAT), use Affinidi CLI's [create-token](https://github.com/affinidi/affinidi-cli/blob/main/docs/token.md#affinidi-token-create-token) command.
+
+Login to your Affinidi Vault.
 
 ```bash
-npm install @affinidi-tdk/vault-data-manager-client --save
+affinidi login
 ```
 
-#### Http Client settings
+Check for command details if you want to set optional passphrase and keyId:
 
-We use [Axios plugin](https://github.com/softonic/axios-retry) that intercepts failed requests and retries them whenever possible.
-
-You can configure some of retry parameters:
-
-| Name               | Type      | Default | Description                                                                                                                                                                                                                                                                      |
-| ------------------ | --------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| retries            | `Number`  | `3`     | The number of times to retry before failing. 1 = One retry after first failure. The number can be between 0 and 3.                                                                                                                                                               |
-| isExponentialDelay | `Boolean` | `false` | By default there is no delay between retries. When option is set to true (See [Exponential Backoff](https://developers.google.com/analytics/devguides/reporting/core/v3/errors#backoff)), the client will periodically retry a failed request over an increasing amount of time. |
-
-Please note that retry condition is not configurable and axios-retry default value is used `isNetworkOrIdempotentRequestError`. It retries if it is a network error or a 5xx error on an idempotent request (GET, HEAD, OPTIONS, PUT or DELETE).
-
-#### With project scoped token and a custom Http client settings
-
-```ts
-import {
-  SomeClassApi,
-  Configuration,
-} from '@affinidi-tdk/vault-data-manager-client'
-
-const projectScopedToken = '...' // NOTE: you can get it after making Affinidi Login (via CLI, Dev Portal)
-
-const retryConfig = {
-  retries: 2,
-  isExponentialDelay: true,
-}
-
-const api = new SomeClassApi(
-  new Configuration({
-    apiKey: projectScopedToken,
-  }),
-  retryConfig,
-)
-
-await api.oneOfMethods()
+```bash
+affinidi token --help
 ```
 
-#### With PAT
+Create PAT:
 
-💡 To create PAT, use Affinidi CLI's [create-token](https://github.com/affinidi/affinidi-cli/blob/main/docs/token.md#affinidi-token-create-token) command.
-
-```sh
-affinidi token create-token -n MyNewToken -w -p YOUR-SECRET-PASSPHRASE
+```bash
+affinidi token create-token -n YourTokenName -g -w --no-input
 ```
 
 This command will return you variables to initialize AuthProvider as required below.
@@ -65,40 +218,12 @@ import {
 } from '@affinidi-tdk/vault-data-manager-client'
 import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
-const authProvider = new AuthProvider({
-  apiGatewayUrl,
-  keyId,
-  tokenId,
-  passphrase,
-  privateKey,
-  projectId,
-  tokenEndpoint,
-})
+const authProvider = new AuthProvider({ tokenId, privateKey, projectId })
 
 const api = new SomeClassApi(
   new Configuration({
     apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
   }),
-)
-
-await api.oneOfMethods()
-```
-
-#### With session ID via BFF
-
-```ts
-import {
-  SomeClassApi,
-  Configuration,
-} from '@affinidi-tdk/vault-data-manager-client'
-import { getBffHeaders } from '@affinidi-tdk/auth-provider'
-
-const headers = getBffHeaders(cookieName, sessionId)
-
-const baseOptions = { headers }
-
-const api = new SomeClassApi(
-  new Configuration({ basePath: `${bffHost}/vfs`, baseOptions }),
 )
 
 await api.oneOfMethods()
