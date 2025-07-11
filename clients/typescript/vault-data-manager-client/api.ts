@@ -2707,11 +2707,13 @@ export const NodesApiAxiosParamCreator = function (
     /**
      * creates node
      * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {string} [parentNodeId] parent node id, if not provided then root element is used
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createNode: async (
       createNodeInput: CreateNodeInput,
+      parentNodeId?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'createNodeInput' is not null or undefined
@@ -2738,6 +2740,10 @@ export const NodesApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (parentNodeId !== undefined) {
+        localVarQueryParameter['parentNodeId'] = parentNodeId
+      }
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
 
@@ -3303,17 +3309,20 @@ export const NodesApiFp = function (configuration?: Configuration) {
     /**
      * creates node
      * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {string} [parentNodeId] parent node id, if not provided then root element is used
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async createNode(
       createNodeInput: CreateNodeInput,
+      parentNodeId?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateNodeOK>
     > {
       const localVarAxiosArgs = await localVarAxiosParamCreator.createNode(
         createNodeInput,
+        parentNodeId,
         options,
       )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
@@ -3635,15 +3644,17 @@ export const NodesApiFactory = function (
     /**
      * creates node
      * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {string} [parentNodeId] parent node id, if not provided then root element is used
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createNode(
       createNodeInput: CreateNodeInput,
+      parentNodeId?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<CreateNodeOK> {
       return localVarFp
-        .createNode(createNodeInput, options)
+        .createNode(createNodeInput, parentNodeId, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3801,16 +3812,18 @@ export class NodesApi extends BaseAPI {
   /**
    * creates node
    * @param {CreateNodeInput} createNodeInput CreateNode
+   * @param {string} [parentNodeId] parent node id, if not provided then root element is used
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof NodesApi
    */
   public createNode(
     createNodeInput: CreateNodeInput,
+    parentNodeId?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return NodesApiFp(this.configuration)
-      .createNode(createNodeInput, options)
+      .createNode(createNodeInput, parentNodeId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
