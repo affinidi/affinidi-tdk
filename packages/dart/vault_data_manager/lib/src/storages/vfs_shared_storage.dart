@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart' as vault;
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:dio/dio.dart';
-import 'package:ssi/ssi.dart';
 
 import '../services/vault_data_manager_service.dart';
 import '../services/vault_data_manager_service_interface.dart';

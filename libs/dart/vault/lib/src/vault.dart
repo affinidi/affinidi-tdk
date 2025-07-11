@@ -6,6 +6,7 @@ import 'exceptions/tdk_exception_type.dart';
 import 'helpers/vault_cancel_token.dart';
 import 'permissions.dart';
 import 'profile.dart';
+import 'storage_interfaces/profile_access_sharing.dart';
 import 'storage_interfaces/profile_repository.dart';
 import 'storage_interfaces/repository_configuration.dart';
 import 'storage_interfaces/vault_store.dart';
@@ -238,7 +239,19 @@ class Vault {
       );
     }
 
-    final kek = await profileRepository.grantProfileAccess(
+    if (profileRepository is! ProfileAccessSharing) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message:
+                'Sharing profiles is not supported on ${profile.profileRepositoryId}',
+            code: TdkExceptionType.unsupportedProfileAccessSharing.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileSharedAccessRepository =
+        profileRepository as ProfileAccessSharing;
+    final kek = await profileSharedAccessRepository.grantProfileAccess(
       accountIndex: profile.accountIndex,
       granteeDid: toDid,
       permissions: permissions,
@@ -284,7 +297,20 @@ class Vault {
       );
     }
 
-    await profileRepository.receiveProfileAccess(
+    if (profileRepository is! ProfileAccessSharing) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message:
+                'Sharing profiles is not supported on ${profile.profileRepositoryId}',
+            code: TdkExceptionType.unsupportedProfileAccessSharing.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileSharedAccessRepository =
+        profileRepository as ProfileAccessSharing;
+
+    await profileSharedAccessRepository.receiveProfileAccess(
       accountIndex: profile.accountIndex,
       profileId: sharedProfile.profileId,
       kek: sharedProfile.kek,
@@ -329,7 +355,20 @@ class Vault {
       );
     }
 
-    await profileRepository.revokeProfileAccess(
+    if (profileRepository is! ProfileAccessSharing) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message:
+                'Sharing profiles is not supported on ${profile.profileRepositoryId}',
+            code: TdkExceptionType.unsupportedProfileAccessSharing.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileSharedAccessRepository =
+        profileRepository as ProfileAccessSharing;
+
+    await profileSharedAccessRepository.revokeProfileAccess(
       accountIndex: profile.accountIndex,
       granteeDid: granteeDid,
     );

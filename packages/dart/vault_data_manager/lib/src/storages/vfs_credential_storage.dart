@@ -1,5 +1,4 @@
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:ssi/ssi.dart';
 
 import '../exceptions/tdk_exception_type.dart';
 import '../services/vault_data_manager_service_interface.dart';

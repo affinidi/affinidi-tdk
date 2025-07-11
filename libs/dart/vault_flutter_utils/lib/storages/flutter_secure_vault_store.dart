@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 enum _Key {
   accountIndex,
+  contentKey,
   seed;
 
   String key(String vaultId) => '${vaultId}_$name';
@@ -52,7 +53,7 @@ class FlutterSecureVaultStore extends VaultStore {
 
   /// Returns a pre-saved account index or 0 if none was found
   @override
-  Future<int> readAccountIndex() async {
+  Future<int> getAccountIndex() async {
     final data = await _secureStorage.read(
       key: _Key.accountIndex.key(_vaultId),
     );
@@ -66,10 +67,29 @@ class FlutterSecureVaultStore extends VaultStore {
 
   /// Persists an account index
   @override
-  Future<void> writeAccountIndex(int accountIndex) async {
+  Future<void> setAccountIndex(int accountIndex) async {
     await _secureStorage.write(
       key: _Key.accountIndex.key(_vaultId),
       value: accountIndex.toString(),
+    );
+  }
+
+  @override
+  Future<Uint8List?> getContentKey() async {
+    final data = await _secureStorage.read(
+      key: _Key.contentKey.key(_vaultId),
+    );
+    if (data == null) {
+      return null;
+    }
+    return base64Decode(data);
+  }
+
+  @override
+  Future<void> setContentKey(Uint8List key) async {
+    await _secureStorage.write(
+      key: _Key.contentKey.key(_vaultId),
+      value: base64Encode(key),
     );
   }
 
@@ -78,5 +98,6 @@ class FlutterSecureVaultStore extends VaultStore {
   Future<void> clear() async {
     await _secureStorage.delete(key: _Key.accountIndex.key(_vaultId));
     await _secureStorage.delete(key: _Key.seed.key(_vaultId));
+    await _secureStorage.delete(key: _Key.contentKey.key(_vaultId));
   }
 }

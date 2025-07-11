@@ -30,9 +30,24 @@ void main() {
 
     group('When managing account index', () {
       test('it should store and retrieve account index', () async {
-        await store.writeAccountIndex(VaultStoreFixtures.testAccountIndex);
-        final index = await store.readAccountIndex();
+        await store.setAccountIndex(VaultStoreFixtures.testAccountIndex);
+        final index = await store.getAccountIndex();
         expect(index, equals(VaultStoreFixtures.testAccountIndex));
+      });
+    });
+
+    group('When managing contentKey', () {
+      final testContentKey = Uint8List.fromList([1, 2, 3, 4]);
+
+      test('it should store and retrieve contentKey', () async {
+        await store.setContentKey(testContentKey);
+        final retrieved = await store.getContentKey();
+        expect(retrieved, equals(testContentKey));
+      });
+
+      test('it should return null when no contentKey is stored', () async {
+        final retrieved = await store.getContentKey();
+        expect(retrieved, isNull);
       });
     });
 
@@ -40,14 +55,15 @@ void main() {
       test('it should clear all stored data', () async {
         // Setup test data
         await store.setSeed(Uint8List.fromList([1, 2, 3, 4]));
-        await store.writeAccountIndex(VaultStoreFixtures.testAccountIndex);
+        await store.setAccountIndex(VaultStoreFixtures.testAccountIndex);
 
         // Clear all data
         await store.clear();
 
         // Verify all data is cleared
         expect(await store.getSeed(), isNull);
-        expect(await store.readAccountIndex(), equals(0));
+        expect(await store.getAccountIndex(), equals(0));
+        expect(await store.getContentKey(), isNull);
       });
     });
   });

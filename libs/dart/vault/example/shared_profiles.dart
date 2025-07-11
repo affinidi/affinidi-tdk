@@ -8,11 +8,11 @@ void main() async {
   // KeyStorage
   final keyStorageAlice = InMemoryVaultStore();
   var accountIndexAlice = 0;
-  await keyStorageAlice.writeAccountIndex(accountIndexAlice);
+  await keyStorageAlice.setAccountIndex(accountIndexAlice);
 
   final keyStorageBob = InMemoryVaultStore();
   var accountIndexBob = 0;
-  await keyStorageBob.writeAccountIndex(accountIndexBob);
+  await keyStorageBob.setAccountIndex(accountIndexBob);
 
   // seed storage
   final seedAlice = Uint8List.fromList(List.generate(32, (idx) => idx + 1));

@@ -7,6 +7,7 @@ import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:dio/dio.dart';
+import 'package:meta/meta.dart';
 import 'package:ssi/ssi.dart';
 
 import '../exceptions/tdk_exception_type.dart';
@@ -45,7 +46,7 @@ typedef VaultDelegatedDataManagerServiceFactory
 });
 
 /// A VFS implementation of [ProfileRepository] for managing user profiles.
-class VfsProfileRepository implements ProfileRepository {
+class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   /// The key ID for the root account.
   static const _rootAccountKeyId = '0';
   static const _nonceSize = 32;
@@ -74,6 +75,14 @@ class VfsProfileRepository implements ProfileRepository {
   /// Creates a new instance of [VfsProfileRepository].
   ///
   /// The [id] parameter is used to identify this repository instance.
+  /// Creates a new instance of [VfsProfileRepository].
+  ///
+  /// The [id] parameter is used to identify this repository instance.
+  factory VfsProfileRepository(String id) => VfsProfileRepository._(id);
+
+  /// Creates a new instance of [VfsProfileRepository].
+  ///
+  /// The [id] parameter is used to identify this repository instance.
   ///
   /// For testing purposes, you can provide mock implementations of:
   /// - [cryptographyService]: A cryptographyService used to generate KEKs
@@ -81,7 +90,27 @@ class VfsProfileRepository implements ProfileRepository {
   /// - [iamApiServiceFactory]: A factory function for creating [VaultDataManagerSharedAccessApiService] instances
   /// - [vaultDataManagerServiceFactory]: A factory function for creating regular [VaultDataManagerService] instances
   /// - [vaultDelegatedDataManagerServiceFactory]: A factory function for creating delegated [VaultDataManagerService] instances
-  VfsProfileRepository(
+  @visibleForTesting
+  factory VfsProfileRepository.withDependencies(
+    String id, {
+    CryptographyServiceInterface? cryptographyService,
+    ConsumerAuthProviderFactory? consumerAuthProviderFactory,
+    IamApiServiceFactory? iamApiServiceFactory,
+    VaultDataManagerServiceFactory? vaultDataManagerServiceFactory,
+    VaultDelegatedDataManagerServiceFactory?
+        vaultDelegatedDataManagerServiceFactory,
+  }) =>
+      VfsProfileRepository._(
+        id,
+        cryptographyService: cryptographyService,
+        consumerAuthProviderFactory: consumerAuthProviderFactory,
+        iamApiServiceFactory: iamApiServiceFactory,
+        vaultDataManagerServiceFactory: vaultDataManagerServiceFactory,
+        vaultDelegatedDataManagerServiceFactory:
+            vaultDelegatedDataManagerServiceFactory,
+      );
+
+  VfsProfileRepository._(
     this._id, {
     CryptographyServiceInterface? cryptographyService,
     ConsumerAuthProviderFactory? consumerAuthProviderFactory,
@@ -168,7 +197,7 @@ class VfsProfileRepository implements ProfileRepository {
       );
     }
 
-    final nextAccountIndex = (await _keyStorage.readAccountIndex()) + 1;
+    final nextAccountIndex = (await _keyStorage.getAccountIndex()) + 1;
 
     final profileDidSigner = await _memoizedDidSigner('$nextAccountIndex');
     final profileDid = profileDidSigner.did;
@@ -208,7 +237,7 @@ class VfsProfileRepository implements ProfileRepository {
       metadata: accountMetadata,
       cancelToken: cancelToken,
     );
-    await _keyStorage.writeAccountIndex(nextAccountIndex);
+    await _keyStorage.setAccountIndex(nextAccountIndex);
   }
 
   @override
