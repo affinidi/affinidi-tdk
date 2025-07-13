@@ -18,7 +18,6 @@ doc/CreateProjectScopedTokenOutput.md
 doc/CreateTokenInput.md
 doc/DefaultApi.md
 doc/DeleteAccessOutput.md
-doc/GetWellKnownDidOK.md
 doc/GrantAccessInput.md
 doc/GrantAccessOutput.md
 doc/InvalidDIDError.md
@@ -91,7 +90,6 @@ lib/src/model/create_project_scoped_token_output.dart
 lib/src/model/create_token_input.dart
 lib/src/model/date.dart
 lib/src/model/delete_access_output.dart
-lib/src/model/get_well_known_did_ok.dart
 lib/src/model/grant_access_input.dart
 lib/src/model/grant_access_output.dart
 lib/src/model/invalid_did_error.dart

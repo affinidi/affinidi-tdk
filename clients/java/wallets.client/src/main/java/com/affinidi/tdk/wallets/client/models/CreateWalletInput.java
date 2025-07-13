@@ -51,7 +51,9 @@ public class CreateWalletInput {
   public enum DidMethodEnum {
     KEY(String.valueOf("key")),
     
-    WEB(String.valueOf("web"));
+    WEB(String.valueOf("web")),
+    
+    PEER0(String.valueOf("peer0"));
 
     private String value;
 
