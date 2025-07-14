@@ -1,7 +1,6 @@
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:affinidi_tdk_test_utilities/affinidi_tdk_test_utilities.dart';
-import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
 import 'fixtures/did_signer_fixture.dart';
@@ -31,8 +30,8 @@ void main() {
 
         await expectLater(
             provider.fetchConsumerToken(),
-            throwsA(isA<SsiException>().having((error) => error.code, 'code',
-                SsiExceptionType.unsupportedSignatureScheme.code)));
+            throwsA(isA<TdkException>().having((error) => error.code, 'code',
+                TdkExceptionType.failedToFetchConsumerToken.code)));
       });
     });
 

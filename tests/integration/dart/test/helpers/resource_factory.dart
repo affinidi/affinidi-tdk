@@ -10,7 +10,6 @@ import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:dio/dio.dart';
 
 import 'helpers.dart';
-import 'environment.dart';
 
 class ResourceFactory {
   // NOTE: Max number of wallets for project is 10. Making clean up,

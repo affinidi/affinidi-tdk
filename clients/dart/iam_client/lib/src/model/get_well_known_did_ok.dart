@@ -12,19 +12,23 @@ part 'get_well_known_did_ok.g.dart';
 
 /// GetWellKnownDidOK
 @BuiltValue()
-abstract class GetWellKnownDidOK implements Built<GetWellKnownDidOK, GetWellKnownDidOKBuilder> {
+abstract class GetWellKnownDidOK
+    implements Built<GetWellKnownDidOK, GetWellKnownDidOKBuilder> {
   GetWellKnownDidOK._();
 
-  factory GetWellKnownDidOK([void updates(GetWellKnownDidOKBuilder b)]) = _$GetWellKnownDidOK;
+  factory GetWellKnownDidOK([void updates(GetWellKnownDidOKBuilder b)]) =
+      _$GetWellKnownDidOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetWellKnownDidOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetWellKnownDidOK> get serializer => _$GetWellKnownDidOKSerializer();
+  static Serializer<GetWellKnownDidOK> get serializer =>
+      _$GetWellKnownDidOKSerializer();
 }
 
-class _$GetWellKnownDidOKSerializer implements PrimitiveSerializer<GetWellKnownDidOK> {
+class _$GetWellKnownDidOKSerializer
+    implements PrimitiveSerializer<GetWellKnownDidOK> {
   @override
   final Iterable<Type> types = const [GetWellKnownDidOK, _$GetWellKnownDidOK];
 
@@ -35,8 +39,7 @@ class _$GetWellKnownDidOKSerializer implements PrimitiveSerializer<GetWellKnownD
     Serializers serializers,
     GetWellKnownDidOK object, {
     FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+  }) sync* {}
 
   @override
   Object serialize(
@@ -44,7 +47,9 @@ class _$GetWellKnownDidOKSerializer implements PrimitiveSerializer<GetWellKnownD
     GetWellKnownDidOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   @override
@@ -54,8 +59,7 @@ class _$GetWellKnownDidOKSerializer implements PrimitiveSerializer<GetWellKnownD
     FullType specifiedType = FullType.unspecified,
   }) {
     final result = GetWellKnownDidOKBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
+    (serialized as Iterable<Object?>).toList();
     return result.build();
   }
 }
-
