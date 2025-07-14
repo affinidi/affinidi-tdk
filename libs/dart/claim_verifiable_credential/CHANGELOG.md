@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.4.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update (ssi)
+
+
+# Change Log
+
 ## 1.3.0
 
 ### Changes

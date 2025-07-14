@@ -1,5 +1,5 @@
 name: consumer_auth_provider_example
-version: 1.1.0
+version: 1.2.0
 publish_to: none
 
 environment:
@@ -8,9 +8,9 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_consumer_auth_provider: ^4.9.0
+  affinidi_tdk_consumer_auth_provider: ^4.10.0
   base_codecs: ^1.0.1
-  ssi: ^1.0.0
+  ssi: ^2.2.0
 
 dev_dependencies:
   dart_flutter_team_lints: ^3.2.1

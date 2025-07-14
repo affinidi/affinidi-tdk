@@ -1,6 +1,6 @@
 name: vault_example
 description: Vault Example
-version: 1.3.0
+version: 1.4.0
 publish_to: none
 
 environment:
@@ -9,14 +9,12 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_vault: ^1.6.0
+  affinidi_tdk_vault: ^1.7.0
   affinidi_tdk_vault_data_manager: ^1.6.0
-  affinidi_tdk_vault_edge_drift_provider:
-    path: ../../../../packages/dart/vault_edge_drift_provider
-  affinidi_tdk_vault_edge_provider:
-    path: ../../../../packages/dart/vault_edge_provider
+  affinidi_tdk_vault_edge_drift_provider: ^1.0.0-dev.4
+  affinidi_tdk_vault_edge_provider: ^1.0.0-dev.4
   base_codecs: ^1.0.1
-  ssi: ^1.0.0
+  ssi: ^2.2.0
 
 dev_dependencies:
   dart_flutter_team_lints: ^3.2.1

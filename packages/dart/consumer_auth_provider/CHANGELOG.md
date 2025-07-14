@@ -1,5 +1,17 @@
 # Change Log
 
+## 4.10.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update (ssi)
+
+---
+
+# Change Log
+
 ## 4.9.0
 
 ### Changes

@@ -1,3 +1,7 @@
+## 1.0.0-dev.4
+
+- Dependencies Update
+
 ## 1.0.0-dev.3
 
 - Dependencies Update

@@ -30,7 +30,7 @@ abstract class TokenProvider {
 
     final alg = signatureScheme.alg!;
     final did = signer.did;
-    final kid = signer.didKeyId;
+    final kid = signer.keyId;
 
     final header = getHeader(
       alg: alg,

@@ -11,7 +11,7 @@ dev_dependencies:
     path: ../../../packages/dart/consumer_auth_provider
   affinidi_tdk_cryptography:
     path: ../../../packages/dart/cryptography
-  ssi: ^1.0.0
+  ssi: ^2.2.0
   affinidi_tdk_iam_client:
     path: ../../../clients/dart/iam_client
   affinidi_tdk_wallets_client:
