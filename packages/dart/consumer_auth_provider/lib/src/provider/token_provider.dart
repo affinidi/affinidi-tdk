@@ -30,22 +30,32 @@ abstract class TokenProvider {
 
     final alg = signatureScheme.alg!;
     final did = signer.did;
-    final kid = signer.didKeyId;
+    final kid = signer.keyId;
 
     final header = getHeader(
       alg: alg,
       kid: kid,
     );
-    final jwt = await _getSignedJwtToken(
-      signer: signer,
-      did: did,
-      header: header,
-      tokenEndpoint: audience,
-      signatureScheme: signatureScheme,
-      expiration: expiration,
-      subject: subject,
-    );
-    return jwt;
+    try {
+      final jwt = await _getSignedJwtToken(
+        signer: signer,
+        did: did,
+        header: header,
+        tokenEndpoint: audience,
+        signatureScheme: signatureScheme,
+        expiration: expiration,
+        subject: subject,
+      );
+      return jwt;
+    } on SsiException catch (e, st) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'Signer must define signature scheme.',
+          code: TdkExceptionType.unableToGetSignatureScheme.code,
+        ),
+        st,
+      );
+    }
   }
 
   /// Retrieves the header as a map of key-value pairs.

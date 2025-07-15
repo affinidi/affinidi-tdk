@@ -31,7 +31,7 @@ void main() {
       final keyPair = await wallet.generateKey(keyId: "m/44'/60'/0'/0/0");
       final didDoc = DidKey.generateDocument(keyPair.publicKey);
       final didSigner = DidSigner(
-        didDocument: didDoc,
+        did: didDoc.id,
         didKeyId: didDoc.verificationMethod.first.id,
         keyPair: keyPair,
         signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,

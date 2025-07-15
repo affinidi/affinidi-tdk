@@ -84,7 +84,7 @@ void main() {
 
     // Mock DidSigner behavior
     when(() => mockDidSigner.did).thenReturn(ProfileFixtures.testDid);
-    when(() => mockDidSigner.didKeyId).thenReturn(ProfileFixtures.testDidKeyId);
+    when(() => mockDidSigner.keyId).thenReturn(ProfileFixtures.testDidKeyId);
     when(() => mockDidSigner.didDocument)
         .thenReturn(ProfileFixtures.testDidDocument);
   });

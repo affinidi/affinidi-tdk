@@ -21,7 +21,7 @@ Future<void> main() async {
 
     final didDocument = DidKey.generateDocument(keyPair.publicKey);
     final signer = DidSigner(
-      didDocument: didDocument,
+      did: didDocument.id,
       didKeyId: didDocument.verificationMethod.first.id,
       keyPair: keyPair,
       signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,

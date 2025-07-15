@@ -48,7 +48,7 @@ Future<DidSigner> getDidSigner() async {
   final accountDidDocument = DidKey.generateDocument(keyPair.publicKey);
 
   return DidSigner(
-    didDocument: accountDidDocument,
+    did: accountDidDocument.id,
     didKeyId: accountDidDocument.verificationMethod.first.id,
     keyPair: keyPair,
     signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
