@@ -36,6 +36,7 @@ class NodesApi {
   ///
   /// Parameters:
   /// * [createNodeInput] - CreateNode
+  /// * [parentNodeId] - parent node id, if not provided then root element is used
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -47,6 +48,7 @@ class NodesApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateNodeOK>> createNode({ 
     required CreateNodeInput createNodeInput,
+    String? parentNodeId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -75,6 +77,10 @@ class NodesApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (parentNodeId != null) r'parentNodeId': encodeQueryParameter(_serializers, parentNodeId, const FullType(String)),
+    };
+
     dynamic _bodyData;
 
     try {
@@ -86,6 +92,7 @@ class NodesApi {
          requestOptions: _options.compose(
           _dio.options,
           _path,
+          queryParameters: _queryParameters,
         ),
         type: DioExceptionType.unknown,
         error: error,
@@ -97,6 +104,7 @@ class NodesApi {
       _path,
       data: _bodyData,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

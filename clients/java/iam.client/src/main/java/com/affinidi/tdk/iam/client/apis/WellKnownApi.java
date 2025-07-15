@@ -20,7 +20,6 @@ import com.affinidi.tdk.iam.client.BaseApi;
 import com.affinidi.tdk.iam.client.Configuration;
 import com.affinidi.tdk.iam.client.Pair;
 
-import com.affinidi.tdk.iam.client.models.GetWellKnownDidOK;
 import com.affinidi.tdk.iam.client.models.JsonWebKeySetDto;
 import com.affinidi.tdk.iam.client.models.UnexpectedError;
 
@@ -46,10 +45,10 @@ public class WellKnownApi extends BaseApi {
   /**
    * 
    * 
-   * @return GetWellKnownDidOK
+   * @return Object
    * @throws ApiException if fails to make API call
    */
-  public GetWellKnownDidOK getWellKnownDid() throws ApiException {
+  public Object getWellKnownDid() throws ApiException {
     return this.getWellKnownDid(Collections.emptyMap());
   }
 
@@ -58,10 +57,10 @@ public class WellKnownApi extends BaseApi {
    * 
    * 
    * @param additionalHeaders additionalHeaders for this call
-   * @return GetWellKnownDidOK
+   * @return Object
    * @throws ApiException if fails to make API call
    */
-  public GetWellKnownDidOK getWellKnownDid(Map<String, String> additionalHeaders) throws ApiException {
+  public Object getWellKnownDid(Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -92,7 +91,7 @@ public class WellKnownApi extends BaseApi {
 
     String[] localVarAuthNames = new String[] {  };
 
-    TypeReference<GetWellKnownDidOK> localVarReturnType = new TypeReference<GetWellKnownDidOK>() {};
+    TypeReference<Object> localVarReturnType = new TypeReference<Object>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "GET",
