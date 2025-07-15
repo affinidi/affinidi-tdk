@@ -961,7 +961,7 @@ extension _KeyPairDidSigner on KeyPair {
   }) {
     final didDocument = DidKey.generateDocument(publicKey);
     return DidSigner(
-      didDocument: didDocument,
+      did: didDocument.id,
       didKeyId: didDocument.verificationMethod.first.id,
       keyPair: this,
       signatureScheme: signatureScheme,

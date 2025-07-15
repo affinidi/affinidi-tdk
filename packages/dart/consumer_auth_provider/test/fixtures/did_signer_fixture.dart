@@ -8,11 +8,11 @@ class DidSignerFixture {
         signatureScheme: SignatureScheme.ecdsa_secp256k1_sha256,
       );
 
-  /// Returns a DidSigner constructed from the seed using ed25519_sha256 which does not have an alg
+  /// Returns a DidSigner constructed from the seed using ed25519 which does not have an alg
   static Future<DidSigner> withInvalidAlgorithm(String seed) =>
       _didSignerFromSeed(
         seed: seed,
-        signatureScheme: SignatureScheme.ed25519_sha256,
+        signatureScheme: SignatureScheme.ed25519,
       );
 
   static Future<DidSigner> _didSignerFromSeed({
@@ -24,7 +24,7 @@ class DidSignerFixture {
 
     final didDoc = DidKey.generateDocument(keyPair.publicKey);
     return DidSigner(
-      didDocument: didDoc,
+      did: didDoc.id,
       didKeyId: didDoc.verificationMethod.first.id,
       keyPair: keyPair,
       signatureScheme: signatureScheme,

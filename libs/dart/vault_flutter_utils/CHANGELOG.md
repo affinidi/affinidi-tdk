@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.7.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update (ssi)
+
+---
+
+
 ## 1.5.0
 
 ### Changes
