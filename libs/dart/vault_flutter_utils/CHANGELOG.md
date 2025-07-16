@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.8.0
+
+### Changes
+
+---
+
+Fix: Remove depdendency override for meta package
+
+---
+
+
+
 ## 1.7.0
 
 ### Changes
