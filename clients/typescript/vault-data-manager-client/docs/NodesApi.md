@@ -34,15 +34,20 @@ const configuration = new Configuration()
 const apiInstance = new NodesApi(configuration)
 
 let createNodeInput: CreateNodeInput //CreateNode
+let parentNodeId: string //parent node id, if not provided then root element is used (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createNode(createNodeInput)
+const { status, data } = await apiInstance.createNode(
+  createNodeInput,
+  parentNodeId,
+)
 ```
 
 ### Parameters
 
-| Name                | Type                | Description | Notes |
-| ------------------- | ------------------- | ----------- | ----- |
-| **createNodeInput** | **CreateNodeInput** | CreateNode  |       |
+| Name                | Type                | Description                                               | Notes                            |
+| ------------------- | ------------------- | --------------------------------------------------------- | -------------------------------- |
+| **createNodeInput** | **CreateNodeInput** | CreateNode                                                |                                  |
+| **parentNodeId**    | [**string**]        | parent node id, if not provided then root element is used | (optional) defaults to undefined |
 
 ### Return type
 

@@ -38,8 +38,8 @@ class CreateWalletInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('key', 'web',):
-            raise ValueError("must be one of enum values ('key', 'web')")
+        if value not in ('key', 'web', 'peer0',):
+            raise ValueError("must be one of enum values ('key', 'web', 'peer0')")
         return value
 
     @validator('did_web_url')
