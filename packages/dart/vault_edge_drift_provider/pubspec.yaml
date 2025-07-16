@@ -1,6 +1,6 @@
 name: affinidi_tdk_vault_edge_drift_provider
 description: A library to manage Vault CRUD operations on a Drift database
-version: 1.0.0-dev.4
+version: 1.0.0-dev.5
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
