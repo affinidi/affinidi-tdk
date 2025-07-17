@@ -15,7 +15,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 # **getWellKnownDid**
 
-> GetWellKnownDidOK getWellKnownDid()
+> JsonObject getWellKnownDid()
 
 ### Example
 
@@ -38,7 +38,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**GetWellKnownDidOK**](GetWellKnownDidOK.md)
+[**JsonObject**](JsonObject.md)
 
 ### Authorization
 

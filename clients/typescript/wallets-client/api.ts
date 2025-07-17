@@ -74,6 +74,7 @@ export interface CreateWalletInput {
 export const CreateWalletInputDidMethodEnum = {
   Key: 'key',
   Web: 'web',
+  Peer0: 'peer0',
 } as const
 
 export type CreateWalletInputDidMethodEnum =

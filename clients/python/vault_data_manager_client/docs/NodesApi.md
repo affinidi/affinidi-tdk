@@ -17,7 +17,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **create_node**
 
-> CreateNodeOK create_node(create_node_input)
+> CreateNodeOK create_node(create_node_input, parent_node_id=parent_node_id)
 
 creates node
 
@@ -71,9 +71,10 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
     # Create an instance of the API class
     api_instance = affinidi_tdk_vault_data_manager_client.NodesApi(api_client)
     create_node_input = affinidi_tdk_vault_data_manager_client.CreateNodeInput() # CreateNodeInput | CreateNode
+    parent_node_id = 'parent_node_id_example' # str | parent node id, if not provided then root element is used (optional)
 
     try:
-        api_response = api_instance.create_node(create_node_input)
+        api_response = api_instance.create_node(create_node_input, parent_node_id=parent_node_id)
         print("The response of NodesApi->create_node:\n")
         pprint(api_response)
     except Exception as e:
@@ -82,9 +83,10 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 
 ### Parameters
 
-| Name                  | Type                                      | Description | Notes |
-| --------------------- | ----------------------------------------- | ----------- | ----- |
-| **create_node_input** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |
+| Name                  | Type                                      | Description                                               | Notes      |
+| --------------------- | ----------------------------------------- | --------------------------------------------------------- | ---------- |
+| **create_node_input** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode                                                |
+| **parent_node_id**    | **str**                                   | parent node id, if not provided then root element is used | [optional] |
 
 ### Return type
 

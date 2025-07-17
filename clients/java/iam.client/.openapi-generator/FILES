@@ -18,7 +18,6 @@ docs/CreateProjectScopedTokenOutput.md
 docs/CreateTokenInput.md
 docs/DefaultApi.md
 docs/DeleteAccessOutput.md
-docs/GetWellKnownDidOK.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
 docs/InvalidDIDError.md
@@ -106,7 +105,6 @@ src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenInput.j
 src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/CreateTokenInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/DeleteAccessOutput.java
-src/main/java/com/affinidi/tdk/iam/client/models/GetWellKnownDidOK.java
 src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/InvalidDIDError.java

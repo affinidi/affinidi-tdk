@@ -17,7 +17,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 ## createNode
 
-> CreateNodeOK createNode(createNodeInput)
+> CreateNodeOK createNode(createNodeInput, parentNodeId)
 
 creates node
 
@@ -45,8 +45,9 @@ public class Example {
 
         NodesApi apiInstance = new NodesApi(defaultClient);
         CreateNodeInput createNodeInput = new CreateNodeInput(); // CreateNodeInput | CreateNode
+        String parentNodeId = "parentNodeId_example"; // String | parent node id, if not provided then root element is used
         try {
-            CreateNodeOK result = apiInstance.createNode(createNodeInput);
+            CreateNodeOK result = apiInstance.createNode(createNodeInput, parentNodeId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NodesApi#createNode");
@@ -61,9 +62,10 @@ public class Example {
 
 ### Parameters
 
-| Name                | Type                                      | Description | Notes |
-| ------------------- | ----------------------------------------- | ----------- | ----- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |       |
+| Name                | Type                                      | Description                                               | Notes      |
+| ------------------- | ----------------------------------------- | --------------------------------------------------------- | ---------- |
+| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode                                                |            |
+| **parentNodeId**    | **String**                                | parent node id, if not provided then root element is used | [optional] |
 
 ### Return type
 

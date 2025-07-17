@@ -20,7 +20,6 @@ docs/CreateProjectScopedTokenOutput.md
 docs/CreateTokenInput.md
 docs/DefaultApi.md
 docs/DeleteAccessOutput.md
-docs/GetWellKnownDidOK.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
 docs/InvalidDIDError.md
