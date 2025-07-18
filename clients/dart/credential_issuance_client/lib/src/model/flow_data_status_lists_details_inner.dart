@@ -36,7 +36,7 @@ abstract class FlowDataStatusListsDetailsInner implements Built<FlowDataStatusLi
 
   @BuiltValueField(wireName: r'standard')
   FlowDataStatusListsDetailsInnerStandardEnum get standard;
-  // enum standardEnum {  RevocationList2020,  BitstringStatusListV1,  };
+  // enum standardEnum {  RevocationList2020,  };
 
   /// indicates status is true or not. Default false.
   @BuiltValueField(wireName: r'isActive')
@@ -231,8 +231,6 @@ class FlowDataStatusListsDetailsInnerStandardEnum extends EnumClass {
 
   @BuiltValueEnumConst(wireName: r'RevocationList2020')
   static const FlowDataStatusListsDetailsInnerStandardEnum revocationList2020 = _$flowDataStatusListsDetailsInnerStandardEnum_revocationList2020;
-  @BuiltValueEnumConst(wireName: r'BitstringStatusListV1')
-  static const FlowDataStatusListsDetailsInnerStandardEnum bitstringStatusListV1 = _$flowDataStatusListsDetailsInnerStandardEnum_bitstringStatusListV1;
 
   static Serializer<FlowDataStatusListsDetailsInnerStandardEnum> get serializer => _$flowDataStatusListsDetailsInnerStandardEnumSerializer;
 
