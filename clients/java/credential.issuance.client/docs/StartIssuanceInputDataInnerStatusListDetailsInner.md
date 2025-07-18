@@ -15,7 +15,6 @@
 
 ## Enum: StandardEnum
 
-| Name                     | Value                             |
-| ------------------------ | --------------------------------- |
-| REVOCATION_LIST2020      | &quot;RevocationList2020&quot;    |
-| BITSTRING_STATUS_LIST_V1 | &quot;BitstringStatusListV1&quot; |
+| Name                | Value                          |
+| ------------------- | ------------------------------ |
+| REVOCATION_LIST2020 | &quot;RevocationList2020&quot; |

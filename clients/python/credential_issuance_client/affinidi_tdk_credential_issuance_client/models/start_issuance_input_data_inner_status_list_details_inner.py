@@ -40,8 +40,8 @@ class StartIssuanceInputDataInnerStatusListDetailsInner(BaseModel):
     @validator('standard')
     def standard_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('RevocationList2020', 'BitstringStatusListV1',):
-            raise ValueError("must be one of enum values ('RevocationList2020', 'BitstringStatusListV1')")
+        if value not in ('RevocationList2020',):
+            raise ValueError("must be one of enum values ('RevocationList2020')")
         return value
 
     class Config:

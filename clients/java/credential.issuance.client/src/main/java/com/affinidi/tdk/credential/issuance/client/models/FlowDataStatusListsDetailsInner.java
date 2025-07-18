@@ -90,9 +90,7 @@ public class FlowDataStatusListsDetailsInner {
    * Gets or Sets standard
    */
   public enum StandardEnum {
-    REVOCATION_LIST2020(String.valueOf("RevocationList2020")),
-    
-    BITSTRING_STATUS_LIST_V1(String.valueOf("BitstringStatusListV1"));
+    REVOCATION_LIST2020(String.valueOf("RevocationList2020"));
 
     private String value;
 

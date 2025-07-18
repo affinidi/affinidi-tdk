@@ -1149,7 +1149,6 @@ export type FlowDataStatusListsDetailsInnerStatusListPurposeEnum =
   (typeof FlowDataStatusListsDetailsInnerStatusListPurposeEnum)[keyof typeof FlowDataStatusListsDetailsInnerStatusListPurposeEnum]
 export const FlowDataStatusListsDetailsInnerStandardEnum = {
   RevocationList2020: 'RevocationList2020',
-  BitstringStatusListV1: 'BitstringStatusListV1',
 } as const
 
 export type FlowDataStatusListsDetailsInnerStandardEnum =
@@ -2196,7 +2195,6 @@ export type StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum =
   (typeof StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum)[keyof typeof StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum]
 export const StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum = {
   RevocationList2020: 'RevocationList2020',
-  BitstringStatusListV1: 'BitstringStatusListV1',
 } as const
 
 export type StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum =
