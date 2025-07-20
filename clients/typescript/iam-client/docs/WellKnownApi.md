@@ -9,7 +9,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 # **getWellKnownDid**
 
-> GetWellKnownDidOK getWellKnownDid()
+> object getWellKnownDid()
 
 ### Example
 
@@ -28,7 +28,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-**GetWellKnownDidOK**
+**object**
 
 ### Authorization
 

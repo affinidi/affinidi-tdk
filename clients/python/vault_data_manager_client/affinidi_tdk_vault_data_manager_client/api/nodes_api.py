@@ -58,18 +58,20 @@ class NodesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_node(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], **kwargs) -> CreateNodeOK:  # noqa: E501
+    def create_node(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], parent_node_id : Annotated[Optional[StrictStr], Field(description="parent node id, if not provided then root element is used")] = None, **kwargs) -> CreateNodeOK:  # noqa: E501
         """create_node  # noqa: E501
 
         creates node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_node(create_node_input, async_req=True)
+        >>> thread = api.create_node(create_node_input, parent_node_id, async_req=True)
         >>> result = thread.get()
 
         :param create_node_input: CreateNode (required)
         :type create_node_input: CreateNodeInput
+        :param parent_node_id: parent node id, if not provided then root element is used
+        :type parent_node_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -85,21 +87,23 @@ class NodesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_node_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_node_with_http_info(create_node_input, **kwargs)  # noqa: E501
+        return self.create_node_with_http_info(create_node_input, parent_node_id, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_node_with_http_info(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], **kwargs) -> ApiResponse:  # noqa: E501
+    def create_node_with_http_info(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], parent_node_id : Annotated[Optional[StrictStr], Field(description="parent node id, if not provided then root element is used")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """create_node  # noqa: E501
 
         creates node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_node_with_http_info(create_node_input, async_req=True)
+        >>> thread = api.create_node_with_http_info(create_node_input, parent_node_id, async_req=True)
         >>> result = thread.get()
 
         :param create_node_input: CreateNode (required)
         :type create_node_input: CreateNodeInput
+        :param parent_node_id: parent node id, if not provided then root element is used
+        :type parent_node_id: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -128,7 +132,8 @@ class NodesApi:
         _params = locals()
 
         _all_params = [
-            'create_node_input'
+            'create_node_input',
+            'parent_node_id'
         ]
         _all_params.extend(
             [
@@ -159,6 +164,9 @@ class NodesApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('parent_node_id') is not None:  # noqa: E501
+            _query_params.append(('parentNodeId', _params['parent_node_id']))
+
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters

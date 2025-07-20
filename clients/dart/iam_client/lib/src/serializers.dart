@@ -26,7 +26,6 @@ import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_in
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/delete_access_output.dart';
-import 'package:affinidi_tdk_iam_client/src/model/get_well_known_did_ok.dart';
 import 'package:affinidi_tdk_iam_client/src/model/grant_access_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/grant_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/invalid_did_error.dart';
@@ -80,7 +79,6 @@ part 'serializers.g.dart';
   CreateProjectScopedTokenOutput,
   CreateTokenInput,
   DeleteAccessOutput,
-  GetWellKnownDidOK,
   GrantAccessInput,
   GrantAccessOutput,
   InvalidDIDError,
