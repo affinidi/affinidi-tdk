@@ -126,7 +126,9 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
             ((ConsumerAuthProvider provider) =>
                 VaultDataManagerSharedAccessApiService(
                     affinidiTdkIamClient: AffinidiTdkIamClient(
-                        authTokenHook: provider.fetchConsumerToken))),
+                        authTokenHook: provider.fetchConsumerToken,
+                        basePathOverride:
+                            Environment.fetchEnvironment().apiGwUrl))),
         _vaultDataManagerServiceFactory =
             vaultDataManagerServiceFactory ?? VaultDataManagerService.create,
         _vaultDelegatedDataManagerServiceFactory =

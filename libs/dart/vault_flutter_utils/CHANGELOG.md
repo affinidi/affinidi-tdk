@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.9.0
+
+### Changes
+
+---
+
+Fix: Dependencies Update
+
+---
+
 ## 1.8.0
 
 ### Changes
