@@ -1,5 +1,15 @@
 # Change Log
 
+## 1.8.0
+
+### Changes
+
+---
+
+Feat: Add Environment variable for consumer token
+
+---
+
 ## 1.7.0
 
 ### Changes
