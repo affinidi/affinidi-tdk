@@ -1,5 +1,5 @@
 {
-  "name": "affinidi_tdk_vault_edge_provider",
+  "name": "affinidi_tdk_vault_edge_provider_dart",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "{projectRoot}",
   "projectType": "library",
