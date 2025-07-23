@@ -119,7 +119,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateProjectScopedTokenOutput](doc/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](doc/CreateTokenInput.md)
 - [DeleteAccessOutput](doc/DeleteAccessOutput.md)
-- [GetWellKnownDidOK](doc/GetWellKnownDidOK.md)
 - [GrantAccessInput](doc/GrantAccessInput.md)
 - [GrantAccessOutput](doc/GrantAccessOutput.md)
 - [InvalidDIDError](doc/InvalidDIDError.md)
