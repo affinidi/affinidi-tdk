@@ -1,56 +1,211 @@
-## @affinidi-tdk/iota-client
+## @affinidi-tdk/iota-client@1.32.0
 
-### Service API Endpoints and Models
+This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
-Please check [the documentation for API Endpoints and Models](https://github.com/affinidi/affinidi-tdk/tree/main/clients/typescript/iota-client/docs/README.md) for more details.
+Environment
 
-### Usage
+- Node.js
+- Webpack
+- Browserify
+
+Language level
+
+- ES5 - you must have a Promises/A+ library installed
+- ES6
+
+Module system
+
+- CommonJS
+- ES6 module system
+
+It can be used in both TypeScript and JavaScript. In TypeScript, the definition will be automatically resolved via `package.json`. ([Reference](https://www.typescriptlang.org/docs/handbook/declaration-files/consumption.html))
+
+### Building
+
+To build and compile the typescript sources to javascript use:
+
+```
+npm install
+npm run build
+```
+
+### Publishing
+
+First build the package then run `npm publish`
+
+### Consuming
+
+navigate to the folder of your consuming project and run one of the following commands.
+
+_published:_
+
+```
+npm install @affinidi-tdk/iota-client@1.32.0 --save
+```
+
+_unPublished (not recommended):_
+
+```
+npm install PATH_TO_GENERATED_PACKAGE --save
+```
+
+### Documentation for API Endpoints
+
+All URIs are relative to *https://apse1.api.affinidi.io/ais*
+
+| Class               | Method                                                                                       | HTTP request                                                               | Description |
+| ------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ----------- |
+| _CallbackApi_       | [**iotOIDC4VPCallback**](docs/CallbackApi.md#iotoidc4vpcallback)                             | **POST** /v1/callback                                                      |
+| _ConfigurationsApi_ | [**createIotaConfiguration**](docs/ConfigurationsApi.md#createiotaconfiguration)             | **POST** /v1/configurations                                                |
+| _ConfigurationsApi_ | [**deleteIotaConfigurationById**](docs/ConfigurationsApi.md#deleteiotaconfigurationbyid)     | **DELETE** /v1/configurations/{configurationId}                            |
+| _ConfigurationsApi_ | [**getIotaConfigurationById**](docs/ConfigurationsApi.md#getiotaconfigurationbyid)           | **GET** /v1/configurations/{configurationId}                               |
+| _ConfigurationsApi_ | [**getIotaConfigurationMetaData**](docs/ConfigurationsApi.md#getiotaconfigurationmetadata)   | **GET** /v1/projects/{projectId}/configurations/{configurationId}/metadata |
+| _ConfigurationsApi_ | [**listIotaConfigurations**](docs/ConfigurationsApi.md#listiotaconfigurations)               | **GET** /v1/configurations                                                 |
+| _ConfigurationsApi_ | [**updateIotaConfigurationById**](docs/ConfigurationsApi.md#updateiotaconfigurationbyid)     | **PATCH** /v1/configurations/{configurationId}                             |
+| _DefaultApi_        | [**listLoggedConsents**](docs/DefaultApi.md#listloggedconsents)                              | **GET** /v1/logged-consents                                                |
+| _IotaApi_           | [**awsExchangeCredentials**](docs/IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials                                      |
+| _IotaApi_           | [**awsExchangeCredentialsProjectToken**](docs/IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token                        |
+| _IotaApi_           | [**fetchIotaVpResponse**](docs/IotaApi.md#fetchiotavpresponse)                               | **POST** /v1/fetch-iota-response                                           |
+| _IotaApi_           | [**initiateDataSharingRequest**](docs/IotaApi.md#initiatedatasharingrequest)                 | **POST** /v1/initiate-data-sharing-request                                 |
+| _IotaApi_           | [**iotaExchangeCredentials**](docs/IotaApi.md#iotaexchangecredentials)                       | **POST** /v1/exchange-credentials                                          |
+| _PexQueryApi_       | [**createPexQuery**](docs/PexQueryApi.md#createpexquery)                                     | **POST** /v1/configurations/{configurationId}/pex-queries                  |
+| _PexQueryApi_       | [**deletePexQueries**](docs/PexQueryApi.md#deletepexqueries)                                 | **POST** /v1/configurations/{configurationId}/delete-queries               |
+| _PexQueryApi_       | [**deletePexQueryById**](docs/PexQueryApi.md#deletepexquerybyid)                             | **DELETE** /v1/configurations/{configurationId}/pex-queries/{queryId}      |
+| _PexQueryApi_       | [**getPexQueryById**](docs/PexQueryApi.md#getpexquerybyid)                                   | **GET** /v1/configurations/{configurationId}/pex-queries/{queryId}         |
+| _PexQueryApi_       | [**listPexQueries**](docs/PexQueryApi.md#listpexqueries)                                     | **GET** /v1/configurations/{configurationId}/pex-queries                   |
+| _PexQueryApi_       | [**savePexQueries**](docs/PexQueryApi.md#savepexqueries)                                     | **POST** /v1/configurations/{configurationId}/save-queries                 |
+| _PexQueryApi_       | [**updatePexQueryById**](docs/PexQueryApi.md#updatepexquerybyid)                             | **PATCH** /v1/configurations/{configurationId}/pex-queries/{queryId}       |
+
+### Documentation For Models
+
+- [AlreadyExistsError](docs/AlreadyExistsError.md)
+- [AwsExchangeCredentials](docs/AwsExchangeCredentials.md)
+- [AwsExchangeCredentialsOK](docs/AwsExchangeCredentialsOK.md)
+- [AwsExchangeCredentialsProjectToken](docs/AwsExchangeCredentialsProjectToken.md)
+- [AwsExchangeCredentialsProjectTokenOK](docs/AwsExchangeCredentialsProjectTokenOK.md)
+- [AwsExchangeCredentialsProjectTokenOKCredentials](docs/AwsExchangeCredentialsProjectTokenOKCredentials.md)
+- [CallbackInput](docs/CallbackInput.md)
+- [CallbackResponseOK](docs/CallbackResponseOK.md)
+- [ConsentDto](docs/ConsentDto.md)
+- [CorsAwsExchangeCredentialsOK](docs/CorsAwsExchangeCredentialsOK.md)
+- [CorsAwsExchangeCredentialsProjectTokenOK](docs/CorsAwsExchangeCredentialsProjectTokenOK.md)
+- [CorsFetchIotaVpResponseOK](docs/CorsFetchIotaVpResponseOK.md)
+- [CorsInitiateDataSharingRequestOK](docs/CorsInitiateDataSharingRequestOK.md)
+- [CorsIotOidc4vpcallbackOK](docs/CorsIotOidc4vpcallbackOK.md)
+- [CorsIotaExchangeCredentialsOK](docs/CorsIotaExchangeCredentialsOK.md)
+- [CreateIotaConfigurationInput](docs/CreateIotaConfigurationInput.md)
+- [CreatePexQueryInput](docs/CreatePexQueryInput.md)
+- [DeletePexQueriesInput](docs/DeletePexQueriesInput.md)
+- [FetchIOTAVPResponseInput](docs/FetchIOTAVPResponseInput.md)
+- [FetchIOTAVPResponseOK](docs/FetchIOTAVPResponseOK.md)
+- [GetIotaConfigurationMetaDataOK](docs/GetIotaConfigurationMetaDataOK.md)
+- [InitiateDataSharingRequestInput](docs/InitiateDataSharingRequestInput.md)
+- [InitiateDataSharingRequestOK](docs/InitiateDataSharingRequestOK.md)
+- [InitiateDataSharingRequestOKData](docs/InitiateDataSharingRequestOKData.md)
+- [InvalidParameterError](docs/InvalidParameterError.md)
+- [InvalidParameterErrorDetailsInner](docs/InvalidParameterErrorDetailsInner.md)
+- [IotaConfigurationDto](docs/IotaConfigurationDto.md)
+- [IotaConfigurationDtoClientMetadata](docs/IotaConfigurationDtoClientMetadata.md)
+- [IotaExchangeCredentials](docs/IotaExchangeCredentials.md)
+- [IotaExchangeCredentialsOK](docs/IotaExchangeCredentialsOK.md)
+- [IotaExchangeCredentialsOKCredentials](docs/IotaExchangeCredentialsOKCredentials.md)
+- [ListConfigurationOK](docs/ListConfigurationOK.md)
+- [ListLoggedConsentsOK](docs/ListLoggedConsentsOK.md)
+- [ListPexQueriesOK](docs/ListPexQueriesOK.md)
+- [MessagePublishingError](docs/MessagePublishingError.md)
+- [NotFoundError](docs/NotFoundError.md)
+- [OperationForbiddenError](docs/OperationForbiddenError.md)
+- [PexQueryDto](docs/PexQueryDto.md)
+- [PrepareRequest](docs/PrepareRequest.md)
+- [PrepareRequestCreated](docs/PrepareRequestCreated.md)
+- [PrepareRequestCreatedData](docs/PrepareRequestCreatedData.md)
+- [ResourceLimitExceededError](docs/ResourceLimitExceededError.md)
+- [SavePexQueriesUpdateInput](docs/SavePexQueriesUpdateInput.md)
+- [SavePexQueriesUpdateInputQueriesInner](docs/SavePexQueriesUpdateInputQueriesInner.md)
+- [UpdateConfigurationByIdInput](docs/UpdateConfigurationByIdInput.md)
+- [UpdateConfigurationByIdOK](docs/UpdateConfigurationByIdOK.md)
+- [UpdatePexQueryInput](docs/UpdatePexQueryInput.md)
+- [VPTokenValidationError](docs/VPTokenValidationError.md)
+
+<a id="documentation-for-authorization"></a>
+
+## Documentation For Authorization
+
+Authentication schemes defined for the API:
+<a id="AwsSigV4"></a>
+
+### AwsSigV4
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+<a id="ApiKey"></a>
+
+### ApiKey
+
+- **Type**: API key
+- **API key parameter name**: x-api-key
+- **Location**: HTTP header
+
+<a id="bearerAuth"></a>
+
+### bearerAuth
+
+- **Type**: Bearer authentication (JWT)
+
+<a id="ConsumerTokenAuth"></a>
+
+### ConsumerTokenAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
+
+<a id="UserTokenAuth"></a>
+
+### UserTokenAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
+
+<a id="ProjectTokenAuth"></a>
+
+### ProjectTokenAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
+
+<a id="HeritageTokenAuth"></a>
+
+### HeritageTokenAuth
+
+- **Type**: API key
+- **API key parameter name**: authorization
+- **Location**: HTTP header
+
+#### Obtaining auth token
+
+💡 To create personal access token (PAT), use Affinidi CLI's [create-token](https://github.com/affinidi/affinidi-cli/blob/main/docs/token.md#affinidi-token-create-token) command.
+
+Login to your Affinidi Vault.
 
 ```bash
-npm install @affinidi-tdk/iota-client --save
+affinidi login
 ```
 
-#### Http Client settings
+Check for command details if you want to set optional passphrase and keyId:
 
-We use [Axios plugin](https://github.com/softonic/axios-retry) that intercepts failed requests and retries them whenever possible.
-
-You can configure some of retry parameters:
-
-| Name               | Type      | Default | Description                                                                                                                                                                                                                                                                      |
-| ------------------ | --------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| retries            | `Number`  | `3`     | The number of times to retry before failing. 1 = One retry after first failure. The number can be between 0 and 3.                                                                                                                                                               |
-| isExponentialDelay | `Boolean` | `false` | By default there is no delay between retries. When option is set to true (See [Exponential Backoff](https://developers.google.com/analytics/devguides/reporting/core/v3/errors#backoff)), the client will periodically retry a failed request over an increasing amount of time. |
-
-Please note that retry condition is not configurable and axios-retry default value is used `isNetworkOrIdempotentRequestError`. It retries if it is a network error or a 5xx error on an idempotent request (GET, HEAD, OPTIONS, PUT or DELETE).
-
-#### With project scoped token and a custom Http client settings
-
-```ts
-import { SomeClassApi, Configuration } from '@affinidi-tdk/iota-client'
-
-const projectScopedToken = '...' // NOTE: you can get it after making Affinidi Login (via CLI, Dev Portal)
-
-const retryConfig = {
-  retries: 2,
-  isExponentialDelay: true,
-}
-
-const api = new SomeClassApi(
-  new Configuration({
-    apiKey: projectScopedToken,
-  }),
-  retryConfig,
-)
-
-await api.oneOfMethods()
+```bash
+affinidi token --help
 ```
 
-#### With PAT
+Create PAT:
 
-💡 To create PAT, use Affinidi CLI's [create-token](https://github.com/affinidi/affinidi-cli/blob/main/docs/token.md#affinidi-token-create-token) command.
-
-```sh
-affinidi token create-token -n MyNewToken -w -p YOUR-SECRET-PASSPHRASE
+```bash
+affinidi token create-token -n YourTokenName -g -w --no-input
 ```
 
 This command will return you variables to initialize AuthProvider as required below.
@@ -59,37 +214,12 @@ This command will return you variables to initialize AuthProvider as required be
 import { SomeClassApi, Configuration } from '@affinidi-tdk/iota-client'
 import { AuthProvider } from '@affinidi-tdk/auth-provider'
 
-const authProvider = new AuthProvider({
-  apiGatewayUrl,
-  keyId,
-  tokenId,
-  passphrase,
-  privateKey,
-  projectId,
-  tokenEndpoint,
-})
+const authProvider = new AuthProvider({ tokenId, privateKey, projectId })
 
 const api = new SomeClassApi(
   new Configuration({
     apiKey: authProvider.fetchProjectScopedToken.bind(authProvider),
   }),
-)
-
-await api.oneOfMethods()
-```
-
-#### With session ID via BFF
-
-```ts
-import { SomeClassApi, Configuration } from '@affinidi-tdk/iota-client'
-import { getBffHeaders } from '@affinidi-tdk/auth-provider'
-
-const headers = getBffHeaders(cookieName, sessionId)
-
-const baseOptions = { headers }
-
-const api = new SomeClassApi(
-  new Configuration({ basePath: `${bffHost}/ais`, baseOptions }),
 )
 
 await api.oneOfMethods()

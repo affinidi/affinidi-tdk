@@ -19,7 +19,8 @@ import warnings
 
 from pydantic import validate_arguments, ValidationError
 
-from affinidi_tdk_iam_client.models.get_well_known_did_ok import GetWellKnownDidOK
+from typing import Any, Dict
+
 from affinidi_tdk_iam_client.models.json_web_key_set_dto import JsonWebKeySetDto
 
 from affinidi_tdk_iam_client.api_client import ApiClient
@@ -43,7 +44,7 @@ class WellKnownApi:
         self.api_client = api_client
 
     @validate_arguments
-    def get_well_known_did(self, **kwargs) -> GetWellKnownDidOK:  # noqa: E501
+    def get_well_known_did(self, **kwargs) -> object:  # noqa: E501
         """get_well_known_did  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -61,7 +62,7 @@ class WellKnownApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: GetWellKnownDidOK
+        :rtype: object
         """
         kwargs['_return_http_data_only'] = True
         if '_preload_content' in kwargs:
@@ -101,7 +102,7 @@ class WellKnownApi:
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(GetWellKnownDidOK, status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -152,7 +153,7 @@ class WellKnownApi:
         _auth_settings = []  # noqa: E501
 
         _response_types_map = {
-            '200': "GetWellKnownDidOK",
+            '200': "object",
             '500': "UnexpectedError",
         }
 

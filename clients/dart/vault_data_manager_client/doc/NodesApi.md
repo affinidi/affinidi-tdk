@@ -23,7 +23,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **createNode**
 
-> CreateNodeOK createNode(createNodeInput)
+> CreateNodeOK createNode(createNodeInput, parentNodeId)
 
 creates node
 
@@ -38,9 +38,10 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 
 final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
 final CreateNodeInput createNodeInput = ; // CreateNodeInput | CreateNode
+final String parentNodeId = parentNodeId_example; // String | parent node id, if not provided then root element is used
 
 try {
-    final response = api.createNode(createNodeInput);
+    final response = api.createNode(createNodeInput, parentNodeId);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NodesApi->createNode: $e\n');
@@ -49,9 +50,10 @@ try {
 
 ### Parameters
 
-| Name                | Type                                      | Description | Notes |
-| ------------------- | ----------------------------------------- | ----------- | ----- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |
+| Name                | Type                                      | Description                                               | Notes      |
+| ------------------- | ----------------------------------------- | --------------------------------------------------------- | ---------- |
+| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode                                                |
+| **parentNodeId**    | **String**                                | parent node id, if not provided then root element is used | [optional] |
 
 ### Return type
 
