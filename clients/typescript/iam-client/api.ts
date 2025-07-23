@@ -363,14 +363,6 @@ export interface DeleteAccessOutput {
 /**
  *
  * @export
- * @interface GetWellKnownDidOK
- */
-export interface GetWellKnownDidOK {
-  [key: string]: any
-}
-/**
- *
- * @export
  * @interface GrantAccessInput
  */
 export interface GrantAccessInput {
@@ -5454,10 +5446,7 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
     async getWellKnownDid(
       options?: RawAxiosRequestConfig,
     ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string,
-      ) => AxiosPromise<GetWellKnownDidOK>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>
     > {
       const localVarAxiosArgs =
         await localVarAxiosParamCreator.getWellKnownDid(options)
@@ -5521,9 +5510,7 @@ export const WellKnownApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    getWellKnownDid(
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<GetWellKnownDidOK> {
+    getWellKnownDid(options?: RawAxiosRequestConfig): AxiosPromise<object> {
       return localVarFp
         .getWellKnownDid(options)
         .then((request) => request(axios, basePath))

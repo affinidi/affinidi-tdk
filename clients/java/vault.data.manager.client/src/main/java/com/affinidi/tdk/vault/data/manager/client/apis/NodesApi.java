@@ -57,11 +57,12 @@ public class NodesApi extends BaseApi {
    * 
    * creates node
    * @param createNodeInput CreateNode (required)
+   * @param parentNodeId parent node id, if not provided then root element is used (optional)
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput) throws ApiException {
-    return this.createNode(createNodeInput, Collections.emptyMap());
+  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId) throws ApiException {
+    return this.createNode(createNodeInput, parentNodeId, Collections.emptyMap());
   }
 
 
@@ -69,11 +70,12 @@ public class NodesApi extends BaseApi {
    * 
    * creates node
    * @param createNodeInput CreateNode (required)
+   * @param parentNodeId parent node id, if not provided then root element is used (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createNodeInput;
     
     // verify the required parameter 'createNodeInput' is set
@@ -92,6 +94,7 @@ public class NodesApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPair("parentNodeId", parentNodeId));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
