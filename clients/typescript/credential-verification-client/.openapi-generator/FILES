@@ -35,6 +35,7 @@ docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
+docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
 docs/W3cCredentialStatus.md
