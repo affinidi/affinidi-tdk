@@ -33,6 +33,7 @@ docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
+docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
 docs/W3cCredentialStatus.md
@@ -92,6 +93,7 @@ src/main/java/com/affinidi/tdk/credential/verification/client/models/ValidateJwt
 src/main/java/com/affinidi/tdk/credential/verification/client/models/ValidateJwtOutput.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyCredentialInput.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyCredentialOutput.java
+src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyCredentialV2Input.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationInput.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationOutput.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/W3cCredentialStatus.java
