@@ -8,4 +8,10 @@ class MockKeyPair extends Mock implements KeyPair {
       {SignatureScheme? signatureScheme}) async {
     return Uint8List.fromList([1, 2, 3]);
   }
+
+  @override
+  List<SignatureScheme> get supportedSignatureSchemes => [
+        SignatureScheme.ecdsa_secp256k1_sha256,
+        SignatureScheme.ed25519,
+      ];
 }
