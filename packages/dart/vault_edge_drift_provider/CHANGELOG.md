@@ -1,3 +1,7 @@
+## 1.0.0
+
+- chore: remove experimental flag
+
 ## 1.0.0-dev.7
 
 - Dependencies Update 

@@ -1,6 +1,6 @@
 name: affinidi_tdk_vault_edge_provider
 description: The Affinidi TDK - Vault Edge Provider manages files and credentials in a local storage.
-version: 1.0.0-dev.6
+version: 1.0.0
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
