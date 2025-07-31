@@ -48,6 +48,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ValidateJwtOutput.serializer)
       ..add(VerifyCredentialInput.serializer)
       ..add(VerifyCredentialOutput.serializer)
+      ..add(VerifyCredentialV2Input.serializer)
       ..add(VerifyPresentationInput.serializer)
       ..add(VerifyPresentationOutput.serializer)
       ..add(W3cCredentialStatus.serializer)
@@ -114,6 +115,15 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltMap, const [
+            const FullType(String),
+            const FullType.nullable(JsonObject)
+          ]),
+          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SubmissionRequirement)]),
