@@ -46,7 +46,10 @@ void main() async {
   final atmServiceRegistry = await AtmServiceRegistry.init();
 
   final senderMatchedDidKeyIds = senderDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: atmServiceRegistry.all,
+    otherDidDocuments: [
+      mediatorDidDocument,
+      ...atmServiceRegistry.all,
+    ],
   );
 
   final mediatorClient = MediatorClient(
@@ -78,20 +81,15 @@ void main() async {
 
   final authTokes = await mediatorClient.authenticate();
 
-  final gatewayClient = AtmAtlasClient(
+  final atmAtlasClient = AtmAtlasClient(
     mediatorClient: mediatorClient,
     didManager: senderDidManager,
     atmServiceRegistry: atmServiceRegistry,
-    signer: senderSigner,
-    keyPair: await senderDidManager.getKeyPairByDidKeyId(
-      senderMatchedDidKeyIds.first,
-    ),
-    didKeyId: senderMatchedDidKeyIds.first,
   );
 
   prettyPrint('Sending the message...');
 
-  final responseMessage = await gatewayClient.getMediatorInstancesList(
+  final responseMessage = await atmAtlasClient.getMediatorInstancesList(
     accessToken: authTokes.accessToken,
   );
 
