@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:mediator_client/mediator_client.dart';
 import 'package:uuid/uuid.dart';
 
 import '../atm_service_registry.dart';
@@ -21,7 +20,7 @@ class AtmAtlasClient extends AtmBaseClient {
           atmServiceDidDocument: atmServiceRegistry.atlasDidDocument,
         );
 
-  Future<PlainTextMessage> getMediatorInstancesList({
+  Future<GetMediatorInstancesListResponseMessage> getMediatorInstancesList({
     required String accessToken,
   }) async {
     final requestMessage = GetMediatorInstancesListMessage(
@@ -37,6 +36,13 @@ class AtmAtlasClient extends AtmBaseClient {
       accessToken: accessToken,
     );
 
-    return responseMessage;
+    return GetMediatorInstancesListResponseMessage(
+      id: responseMessage.id,
+      from: responseMessage.from,
+      to: responseMessage.to,
+      createdTime: responseMessage.createdTime,
+      expiresTime: responseMessage.expiresTime,
+      body: responseMessage.body,
+    );
   }
 }

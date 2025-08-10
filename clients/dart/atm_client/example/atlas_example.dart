@@ -19,7 +19,7 @@ void main() async {
     store: InMemoryDidStore(),
   );
 
-  final senderKeyId = 'alice-key-1';
+  final senderKeyId = 'sender-key-1';
   final senderPrivateKeyBytes =
       await extractPrivateKeyBytes(alicePrivateKeyPath);
 
@@ -33,11 +33,6 @@ void main() async {
 
   await senderDidManager.addVerificationMethod(senderKeyId);
   final senderDidDocument = await senderDidManager.getDidDocument();
-
-  prettyPrint(
-    'Sender DID Document',
-    object: senderDidDocument,
-  );
 
   final senderSigner = await senderDidManager.getSigner(
     senderDidDocument.authentication.first.id,
@@ -103,5 +98,10 @@ void main() async {
   prettyPrint(
     'Response message',
     object: responseMessage,
+  );
+
+  prettyPrint(
+    'Mediator instances',
+    object: responseMessage.instances,
   );
 }
