@@ -12,9 +12,6 @@ class AtmAtlasClient extends AtmBaseClient {
     required super.mediatorClient,
     required super.didManager,
     required AtmServiceRegistry atmServiceRegistry,
-    required super.signer,
-    required super.keyPair,
-    required super.didKeyId,
     super.clientOptions = const ClientOptions(),
   }) : super(
           atmServiceDidDocument: atmServiceRegistry.atlasDidDocument,
@@ -25,7 +22,7 @@ class AtmAtlasClient extends AtmBaseClient {
   }) async {
     final requestMessage = GetMediatorInstancesListMessage(
       id: const Uuid().v4(),
-      from: signer.did,
+      from: mediatorClient.signer.did,
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
