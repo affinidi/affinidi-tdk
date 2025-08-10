@@ -1,0 +1,91 @@
+{
+  "id": "did:web:example.com",
+  "authentication": [
+    "did:web:example.com#key-0",
+    "did:web:example.com#key-1"
+  ],
+  "assertionMethod": [
+    "did:web:example.com#key-0",
+    "did:web:example.com#key-1"
+  ],
+  "keyAgreement": [
+    "did:web:example.com#key-2",
+    "did:web:example.com#key-3"
+  ],
+  "verificationMethod": [
+    {
+      "id": "did:web:example.com#key-0",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:example.com",
+      "publicKeyJwk": {
+        "crv": "Ed25519",
+        "kty": "OKP",
+        "x": "G17Yf5rDncd4_C2w3iex_L5Dg9cuN_Muwp3pPgXNQSQ"
+      }
+    },
+    {
+      "id": "did:web:example.com#key-1",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:example.com",
+      "publicKeyJwk": {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "example",
+        "y": "example"
+      }
+    },
+    {
+      "id": "did:web:example.com#key-2",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:example.com",
+      "publicKeyJwk": {
+        "crv": "secp256k1",
+        "kty": "EC",
+        "x": "example",
+        "y": "example"
+      }
+    },
+    {
+      "id": "did:web:example.com#key-3",
+      "type": "JsonWebKey2020",
+      "controller": "did:web:example.com",
+      "publicKeyJwk": {
+        "crv": "P-256",
+        "kty": "EC",
+        "x": "example",
+        "y": "example"
+      }
+    }
+  ],
+  "service": [
+    {
+      "id": "did:web:example.com#service",
+      "type": "DIDCommMessaging",
+      "serviceEndpoint": [
+        {
+          "accept": [
+            "didcomm/v2"
+          ],
+          "routingKeys": [],
+          "uri": "https://example.com"
+        },
+        {
+          "accept": [
+            "didcomm/v2"
+          ],
+          "routingKeys": [],
+          "uri": "wss://example.com/ws"
+        }
+      ]
+    },
+    {
+      "id": "did:web:example.com#auth",
+      "type": "Authentication",
+      "serviceEndpoint": "https://example.com/authenticate"
+    }
+  ],
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/jws-2020/v1"
+  ]
+}
