@@ -11,17 +11,11 @@ abstract class AtmBaseClient {
   final MediatorClient mediatorClient;
   final DidManager didManager;
   final DidDocument atmServiceDidDocument;
-  final DidSigner signer;
-  final KeyPair keyPair;
-  final String didKeyId;
 
   AtmBaseClient({
     required this.mediatorClient,
     required this.didManager,
     required this.atmServiceDidDocument,
-    required this.signer,
-    required this.keyPair,
-    required this.didKeyId,
     this.clientOptions = const ClientOptions(),
   });
 
@@ -37,9 +31,9 @@ abstract class AtmBaseClient {
       ],
       keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
       encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-      keyPair: keyPair,
-      didKeyId: didKeyId,
-      signer: signer,
+      keyPair: mediatorClient.keyPair,
+      didKeyId: mediatorClient.didKeyId,
+      signer: mediatorClient.signer,
     );
 
     final createdTime = DateTime.now().toUtc();
