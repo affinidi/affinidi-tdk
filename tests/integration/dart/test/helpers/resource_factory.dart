@@ -15,7 +15,7 @@ import 'environment.dart';
 class ResourceFactory {
   // NOTE: Max number of wallets for project is 10. Making clean up,
   //       if wallet number exceeds threshold, to prevent 422 error
-  static final WALLETS_LIMIT_THRESHOLD = 7;
+  static final walletsLimitThreshold = 7;
 
   static final apiGwUrl = Environment.fetchEnvironment().apiGwUrl;
 
@@ -140,7 +140,7 @@ class ResourceFactory {
     final result = (await walletApi.listWallets()).data;
     final walletsCount = result!.wallets!.length;
 
-    if (walletsCount > WALLETS_LIMIT_THRESHOLD) {
+    if (walletsCount > walletsLimitThreshold) {
       print('❗️Number of wallets reaching the limit (10). Deleting wallets.');
 
       for (final wallet in result.wallets!) {
