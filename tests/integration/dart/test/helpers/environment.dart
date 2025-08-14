@@ -1,10 +1,8 @@
-import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:convert/convert.dart';
 import 'package:dotenv/dotenv.dart';
-
-import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 class ProjectEnvironment {
   final String projectId;
