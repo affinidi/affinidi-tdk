@@ -29,6 +29,7 @@ docs/CorsStartFileScanOK.md
 docs/CorsUpdateProfileDataOK.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
 docs/DeleteAccountDto.md

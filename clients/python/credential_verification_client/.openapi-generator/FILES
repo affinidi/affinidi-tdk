@@ -40,6 +40,7 @@ affinidi_tdk_credential_verification_client/models/validate_jwt_input.py
 affinidi_tdk_credential_verification_client/models/validate_jwt_output.py
 affinidi_tdk_credential_verification_client/models/verify_credential_input.py
 affinidi_tdk_credential_verification_client/models/verify_credential_output.py
+affinidi_tdk_credential_verification_client/models/verify_credential_v2_input.py
 affinidi_tdk_credential_verification_client/models/verify_presentation_input.py
 affinidi_tdk_credential_verification_client/models/verify_presentation_output.py
 affinidi_tdk_credential_verification_client/models/w3c_credential_status.py
@@ -76,6 +77,7 @@ docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
+docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
 docs/W3cCredentialStatus.md

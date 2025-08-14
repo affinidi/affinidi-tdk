@@ -55,27 +55,102 @@ public class NodesApi extends BaseApi {
 
   /**
    * 
-   * creates node
+   * creates child node
    * @param createNodeInput CreateNode (required)
-   * @param parentNodeId parent node id, if not provided then root element is used (optional)
+   * @param parentNodeId parent node id (optional)
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId) throws ApiException {
-    return this.createNode(createNodeInput, parentNodeId, Collections.emptyMap());
+  public CreateNodeOK createChildNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId) throws ApiException {
+    return this.createChildNode(createNodeInput, parentNodeId, Collections.emptyMap());
   }
 
 
   /**
    * 
-   * creates node
+   * creates child node
    * @param createNodeInput CreateNode (required)
-   * @param parentNodeId parent node id, if not provided then root element is used (optional)
+   * @param parentNodeId parent node id (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId, Map<String, String> additionalHeaders) throws ApiException {
+  public CreateNodeOK createChildNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createNodeInput;
+    
+    // verify the required parameter 'createNodeInput' is set
+    if (createNodeInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createNodeInput' when calling createChildNode");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/nodes/{nodeId}";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPair("parentNodeId", parentNodeId));
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<CreateNodeOK> localVarReturnType = new TypeReference<CreateNodeOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * create a node
+   * @param createNodeInput CreateNode (required)
+   * @return CreateNodeOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput) throws ApiException {
+    return this.createNode(createNodeInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * create a node
+   * @param createNodeInput CreateNode (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateNodeOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateNodeOK createNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createNodeInput;
     
     // verify the required parameter 'createNodeInput' is set
@@ -94,7 +169,6 @@ public class NodesApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("parentNodeId", parentNodeId));
     
     localVarHeaderParams.putAll(additionalHeaders);
 
