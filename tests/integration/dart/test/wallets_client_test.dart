@@ -5,7 +5,6 @@ import 'package:affinidi_tdk_wallets_client/affinidi_tdk_wallets_client.dart';
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 
 import 'helpers/helpers.dart';
-import 'helpers/resource_factory.dart';
 
 void main() {
   group('Wallets Client Integration Tests', () {
