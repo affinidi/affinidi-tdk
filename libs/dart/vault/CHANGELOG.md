@@ -1,4 +1,13 @@
 # Change Log
+## 1.10.1
+
+### Changes
+
+---
+
+Chore: Combine CredentialStorage and FileStorage in SharedStorage interface 
+
+---
 
 ## 1.10.0
 

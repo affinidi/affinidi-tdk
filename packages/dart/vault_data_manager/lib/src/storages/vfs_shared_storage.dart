@@ -63,11 +63,13 @@ class VfsSharedStorage implements vault.SharedStorage {
   }
 
   @override
-  Future<void> createFile(
-      {required String fileName,
-      required Uint8List data,
-      String? parentFolderId,
-      VaultCancelToken? cancelToken}) async {
+  Future<void> createFile({
+    required String fileName,
+    required Uint8List data,
+    String? parentFolderId,
+    void Function(int, int)? onSendProgress,
+    VaultCancelToken? cancelToken,
+  }) async {
     await _fileStorage.createFile(
       fileName: fileName,
       data: data,

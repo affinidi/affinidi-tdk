@@ -10,7 +10,7 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.6.0
-  affinidi_tdk_vault_edge_provider: 1.0.0
+  affinidi_tdk_vault_edge_provider: 1.0.1
   clock: ^1.1.1
   drift: ^2.26.1 # note using this version because it's compatible with analyzer version lower than 7.0.0 required by flutter_test included with flutter 3.27.0
   path: ^1.9.0
