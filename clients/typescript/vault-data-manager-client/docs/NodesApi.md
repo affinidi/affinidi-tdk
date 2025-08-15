@@ -4,6 +4,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 | Method                                                  | HTTP request                                          | Description |
 | ------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| [**createChildNode**](#createchildnode)                 | **POST** /v1/nodes/{nodeId}                           |             |
 | [**createNode**](#createnode)                           | **POST** /v1/nodes                                    |             |
 | [**deleteNode**](#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         |             |
 | [**getDetailedNodeInfo**](#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            |             |
@@ -15,11 +16,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [**restoreNodeFromTrashbin**](#restorenodefromtrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |             |
 | [**updateNode**](#updatenode)                           | **PATCH** /v1/nodes/{nodeId}                          |             |
 
-# **createNode**
+# **createChildNode**
 
-> CreateNodeOK createNode(createNodeInput)
+> CreateNodeOK createChildNode(createNodeInput)
 
-creates node
+creates child node
 
 ### Example
 
@@ -34,9 +35,9 @@ const configuration = new Configuration()
 const apiInstance = new NodesApi(configuration)
 
 let createNodeInput: CreateNodeInput //CreateNode
-let parentNodeId: string //parent node id, if not provided then root element is used (optional) (default to undefined)
+let parentNodeId: string //parent node id (optional) (default to undefined)
 
-const { status, data } = await apiInstance.createNode(
+const { status, data } = await apiInstance.createChildNode(
   createNodeInput,
   parentNodeId,
 )
@@ -44,10 +45,61 @@ const { status, data } = await apiInstance.createNode(
 
 ### Parameters
 
-| Name                | Type                | Description                                               | Notes                            |
-| ------------------- | ------------------- | --------------------------------------------------------- | -------------------------------- |
-| **createNodeInput** | **CreateNodeInput** | CreateNode                                                |                                  |
-| **parentNodeId**    | [**string**]        | parent node id, if not provided then root element is used | (optional) defaults to undefined |
+| Name                | Type                | Description    | Notes                            |
+| ------------------- | ------------------- | -------------- | -------------------------------- |
+| **createNodeInput** | **CreateNodeInput** | CreateNode     |                                  |
+| **parentNodeId**    | [**string**]        | parent node id | (optional) defaults to undefined |
+
+### Return type
+
+**CreateNodeOK**
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createNode**
+
+> CreateNodeOK createNode(createNodeInput)
+
+create a node
+
+### Example
+
+```typescript
+import {
+  NodesApi,
+  Configuration,
+  CreateNodeInput,
+} from '@affinidi-tdk/vault-data-manager-client'
+
+const configuration = new Configuration()
+const apiInstance = new NodesApi(configuration)
+
+let createNodeInput: CreateNodeInput //CreateNode
+
+const { status, data } = await apiInstance.createNode(createNodeInput)
+```
+
+### Parameters
+
+| Name                | Type                | Description | Notes |
+| ------------------- | ------------------- | ----------- | ----- |
+| **createNodeInput** | **CreateNodeInput** | CreateNode  |       |
 
 ### Return type
 
