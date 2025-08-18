@@ -81,7 +81,7 @@ void main() async {
 
   final authTokes = await mediatorClient.authenticate();
 
-  final atmAtlasClient = AtmAtlasClient(
+  final atmAtlasClient = AtmMessagingAtlasClient(
     mediatorClient: mediatorClient,
     didManager: senderDidManager,
     atmServiceRegistry: atmServiceRegistry,

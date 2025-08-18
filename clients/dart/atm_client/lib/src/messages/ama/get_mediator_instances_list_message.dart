@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mediator_client/mediator_client.dart';
-import 'response_body.dart';
+import '../response_body.dart';
 
 part 'get_mediator_instances_list_message.g.dart';
 

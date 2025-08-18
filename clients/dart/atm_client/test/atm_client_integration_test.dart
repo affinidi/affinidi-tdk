@@ -84,7 +84,7 @@ void main() {
       // system under test
       final authTokes = await mediatorClient.authenticate();
 
-      final sut = AtmAtlasClient(
+      final sut = AtmMessagingAtlasClient(
         mediatorClient: mediatorClient,
         didManager: didManager,
         atmServiceRegistry: atmServiceRegistry,
