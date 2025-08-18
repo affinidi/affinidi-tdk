@@ -479,6 +479,50 @@ export interface CreateAccountOK {
 /**
  *
  * @export
+ * @interface CreateChildNodeInput
+ */
+export interface CreateChildNodeInput {
+  /**
+   * Name of the item
+   * @type {string}
+   * @memberof CreateChildNodeInput
+   */
+  name: string
+  /**
+   *
+   * @type {NodeType}
+   * @memberof CreateChildNodeInput
+   */
+  type: NodeType
+  /**
+   * description of profile if creating a new profile
+   * @type {string}
+   * @memberof CreateChildNodeInput
+   */
+  description?: string
+  /**
+   *
+   * @type {EdekInfo}
+   * @memberof CreateChildNodeInput
+   */
+  edekInfo?: EdekInfo
+  /**
+   * A base64 encoded data encryption key, encrypted using VFS public key, required for node types [FILE, PROFILE]
+   * @type {string}
+   * @memberof CreateChildNodeInput
+   */
+  dek?: string
+  /**
+   * metadata of the node in stringified json format
+   * @type {string}
+   * @memberof CreateChildNodeInput
+   */
+  metadata?: string
+}
+
+/**
+ *
+ * @export
  * @interface CreateNodeInput
  */
 export interface CreateNodeInput {
@@ -2705,15 +2749,75 @@ export const NodesApiAxiosParamCreator = function (
 ) {
   return {
     /**
-     * creates node
+     * creates child node
      * @param {CreateNodeInput} createNodeInput CreateNode
-     * @param {string} [parentNodeId] parent node id, if not provided then root element is used
+     * @param {string} [parentNodeId] parent node id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createChildNode: async (
+      createNodeInput: CreateNodeInput,
+      parentNodeId?: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createNodeInput' is not null or undefined
+      assertParamExists('createChildNode', 'createNodeInput', createNodeInput)
+      const localVarPath = `/v1/nodes/{nodeId}`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      if (parentNodeId !== undefined) {
+        localVarQueryParameter['parentNodeId'] = parentNodeId
+      }
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createNodeInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * create a node
+     * @param {CreateNodeInput} createNodeInput CreateNode
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createNode: async (
       createNodeInput: CreateNodeInput,
-      parentNodeId?: string,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       // verify required parameter 'createNodeInput' is not null or undefined
@@ -2740,10 +2844,6 @@ export const NodesApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
-
-      if (parentNodeId !== undefined) {
-        localVarQueryParameter['parentNodeId'] = parentNodeId
-      }
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
 
@@ -3307,22 +3407,51 @@ export const NodesApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = NodesApiAxiosParamCreator(configuration)
   return {
     /**
-     * creates node
+     * creates child node
      * @param {CreateNodeInput} createNodeInput CreateNode
-     * @param {string} [parentNodeId] parent node id, if not provided then root element is used
+     * @param {string} [parentNodeId] parent node id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async createNode(
+    async createChildNode(
       createNodeInput: CreateNodeInput,
       parentNodeId?: string,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateNodeOK>
     > {
-      const localVarAxiosArgs = await localVarAxiosParamCreator.createNode(
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createChildNode(
         createNodeInput,
         parentNodeId,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['NodesApi.createChildNode']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * create a node
+     * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createNode(
+      createNodeInput: CreateNodeInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateNodeOK>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createNode(
+        createNodeInput,
         options,
       )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
@@ -3642,19 +3771,33 @@ export const NodesApiFactory = function (
   const localVarFp = NodesApiFp(configuration)
   return {
     /**
-     * creates node
+     * creates child node
      * @param {CreateNodeInput} createNodeInput CreateNode
-     * @param {string} [parentNodeId] parent node id, if not provided then root element is used
+     * @param {string} [parentNodeId] parent node id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    createNode(
+    createChildNode(
       createNodeInput: CreateNodeInput,
       parentNodeId?: string,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<CreateNodeOK> {
       return localVarFp
-        .createNode(createNodeInput, parentNodeId, options)
+        .createChildNode(createNodeInput, parentNodeId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * create a node
+     * @param {CreateNodeInput} createNodeInput CreateNode
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createNode(
+      createNodeInput: CreateNodeInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<CreateNodeOK> {
+      return localVarFp
+        .createNode(createNodeInput, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3810,20 +3953,36 @@ export const NodesApiFactory = function (
  */
 export class NodesApi extends BaseAPI {
   /**
-   * creates node
+   * creates child node
    * @param {CreateNodeInput} createNodeInput CreateNode
-   * @param {string} [parentNodeId] parent node id, if not provided then root element is used
+   * @param {string} [parentNodeId] parent node id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof NodesApi
+   */
+  public createChildNode(
+    createNodeInput: CreateNodeInput,
+    parentNodeId?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return NodesApiFp(this.configuration)
+      .createChildNode(createNodeInput, parentNodeId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * create a node
+   * @param {CreateNodeInput} createNodeInput CreateNode
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof NodesApi
    */
   public createNode(
     createNodeInput: CreateNodeInput,
-    parentNodeId?: string,
     options?: RawAxiosRequestConfig,
   ) {
     return NodesApiFp(this.configuration)
-      .createNode(createNodeInput, parentNodeId, options)
+      .createNode(createNodeInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
