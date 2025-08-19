@@ -38,6 +38,7 @@ affinidi_tdk_vault_data_manager_client/models/cors_start_file_scan_ok.py
 affinidi_tdk_vault_data_manager_client/models/cors_update_profile_data_ok.py
 affinidi_tdk_vault_data_manager_client/models/create_account_input.py
 affinidi_tdk_vault_data_manager_client/models/create_account_ok.py
+affinidi_tdk_vault_data_manager_client/models/create_child_node_input.py
 affinidi_tdk_vault_data_manager_client/models/create_node_input.py
 affinidi_tdk_vault_data_manager_client/models/create_node_ok.py
 affinidi_tdk_vault_data_manager_client/models/delete_account_dto.py
@@ -98,6 +99,7 @@ docs/CorsStartFileScanOK.md
 docs/CorsUpdateProfileDataOK.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
 docs/DeleteAccountDto.md
