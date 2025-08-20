@@ -39,6 +39,7 @@ export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_start_file
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_update_profile_data_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_ok.dart';
+export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_child_node_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_account_dto.dart';
