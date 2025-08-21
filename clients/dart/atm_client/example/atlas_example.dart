@@ -87,19 +87,135 @@ void main() async {
     atmServiceRegistry: atmServiceRegistry,
   );
 
-  prettyPrint('Sending the message...');
+  // Example 1: Get list of mediator instances
+  prettyPrint('Getting mediator instances list...');
 
-  final responseMessage = await atmAtlasClient.getMediatorInstancesList(
+  final listResponse = await atmAtlasClient.getMediatorInstancesList(
     accessToken: authTokes.accessToken,
   );
 
   prettyPrint(
-    'Response message',
-    object: responseMessage,
+    'Mediator instances',
+    object: listResponse.instances,
+  );
+
+  // Example 2: Deploy a new mediator instance
+  prettyPrint('Deploying new mediator instance...');
+
+  final deployResponse = await atmAtlasClient.deployMediatorInstance(
+    accessToken: authTokes.accessToken,
+    deploymentData: {
+      'name': 'example-mediator',
+      'description': 'Example mediator instance',
+    },
   );
 
   prettyPrint(
-    'Mediator instances',
-    object: responseMessage.instances,
+    'Deploy response',
+    object: deployResponse.body,
   );
+
+  // Example 3: Get mediator instance metadata
+  // Note: Will fail until MediatorInstance.id is implemented
+  if (listResponse.instances.isNotEmpty) {
+    prettyPrint('Getting mediator instance metadata...');
+    
+    final mediatorId = listResponse.instances.first.id;
+    final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
+      accessToken: authTokes.accessToken,
+      mediatorId: mediatorId,
+    );
+
+    prettyPrint(
+      'Metadata response',
+      object: metadataResponse.body,
+    );
+  }
+
+  // Example 4: Update mediator instance deployment
+  if (listResponse.instances.isNotEmpty) {
+    prettyPrint('Updating mediator instance deployment...');
+    
+    final mediatorId = listResponse.instances.first.id;
+    final updateDeployResponse = await atmAtlasClient.updateMediatorInstanceDeployment(
+      accessToken: authTokes.accessToken,
+      mediatorId: mediatorId,
+      deploymentData: {
+        'description': 'Updated description',
+      },
+    );
+
+    prettyPrint(
+      'Update deployment response',
+      object: updateDeployResponse.body,
+    );
+  }
+
+  // Example 5: Update mediator instance configuration
+  if (listResponse.instances.isNotEmpty) {
+    prettyPrint('Updating mediator instance configuration...');
+    
+    final mediatorId = listResponse.instances.first.id;
+    final updateConfigResponse = await atmAtlasClient.updateMediatorInstanceConfiguration(
+      accessToken: authTokes.accessToken,
+      mediatorId: mediatorId,
+      configurationData: {
+        'logLevel': 'debug',
+      },
+    );
+
+    prettyPrint(
+      'Update configuration response',
+      object: updateConfigResponse.body,
+    );
+  }
+
+  // Example 6: Get mediators requests
+  prettyPrint('Getting mediators requests...');
+
+  final requestsResponse = await atmAtlasClient.getMediatorsRequests(
+    accessToken: authTokes.accessToken,
+    limit: 10,
+  );
+
+  prettyPrint(
+    'Requests response',
+    object: requestsResponse.body,
+  );
+
+  // Example 7: Get CloudWatch metrics
+  if (listResponse.instances.isNotEmpty) {
+    prettyPrint('Getting CloudWatch metrics...');
+    
+    final mediatorId = listResponse.instances.first.id;
+    final metricsResponse = await atmAtlasClient.getMediatorCloudwatchMetricData(
+      accessToken: authTokes.accessToken,
+      mediatorId: mediatorId,
+      metricId: 'MessageCount',
+      startDate: DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+      endDate: DateTime.now().toIso8601String(),
+      period: 3600,
+    );
+
+    prettyPrint(
+      'CloudWatch metrics',
+      object: metricsResponse.body,
+    );
+  }
+
+  // Example 8: Destroy mediator instance (commented out to prevent accidental deletion)
+  // if (listResponse.instances.isNotEmpty) {
+  //   prettyPrint('Destroying mediator instance...');
+  //   
+  //   final mediatorId = listResponse.instances.first.id;
+  //   final destroyResponse = await atmAtlasClient.destroyMediatorInstance(
+  //     accessToken: authTokes.accessToken,
+  //     mediatorId: mediatorId,
+  //   );
+  //
+  //   prettyPrint(
+  //     'Destroy response',
+  //     object: destroyResponse.body,
+  //   );
+  // }
 }
