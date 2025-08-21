@@ -116,7 +116,6 @@ void main() async {
   );
 
   // Example 3: Get mediator instance metadata
-  // Note: Will fail until MediatorInstance.id is implemented
   if (listResponse.instances.isNotEmpty) {
     prettyPrint('Getting mediator instance metadata...');
     
