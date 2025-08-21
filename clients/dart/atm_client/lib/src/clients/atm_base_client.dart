@@ -73,12 +73,28 @@ abstract class AtmBaseClient {
           ],
         );
 
-        // TODO: use parent ID instead when available on DIDComm Gateway
-        if (unpackedMessage.type.toString() ==
-            '${requestMessage.type.toString()}/response') {
-          completer.complete(unpackedMessage);
-          await mediatorClient.disconnect();
+        // Validate response type matches expected pattern
+        final expectedResponseType =
+            '${requestMessage.type.toString()}/response';
+        if (unpackedMessage.type.toString() != expectedResponseType) {
+          return; // Not the response we're waiting for
         }
+
+        // Verify sender is Atlas DID
+        if (unpackedMessage.from != atmServiceDidDocument.id) {
+          completer.completeError(
+            Exception(
+              'Security violation: Response sender ${unpackedMessage.from} '
+              'does not match expected Atlas DID ${atmServiceDidDocument.id}',
+            ),
+          );
+          await mediatorClient.disconnect();
+          return;
+        }
+
+        // All validations passed - complete with the response
+        completer.complete(unpackedMessage);
+        await mediatorClient.disconnect();
       },
       onError: completer.completeError,
       onDone: () {
