@@ -36,6 +36,7 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_start_file
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_update_profile_data_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_ok.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_child_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_account_dto.dart';
@@ -96,6 +97,7 @@ part 'serializers.g.dart';
   CorsUpdateProfileDataOK,
   CreateAccountInput,
   CreateAccountOK,
+  CreateChildNodeInput,
   CreateNodeInput,
   CreateNodeOK,
   DeleteAccountDto,
