@@ -1,220 +1,222 @@
+import 'dart:io';
+
 import 'package:atm_client/atm_client.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../test/example_configs.dart';
+import 'mediator_config.dart';
+
+// HTTP overrides for handling self-signed certificates
+class AtlasExampleHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (cert, host, port) {
+        return MediatorConfig.shouldAcceptCertificate(host);
+      };
+  }
+}
 
 void main() async {
-  // Run commands below in your terminal to generate keys for Receiver:
-  // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/bob_private_key.pem
+  // Enable certificate handling
+  HttpOverrides.global = AtlasExampleHttpOverrides();
 
-  // Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
-  // Copy its DID Document URL into example/mediator/mediator_did.txt.
+  prettyPrint('Atlas Client Example');
+  prettyPrint('Mediator Configuration',
+      object: MediatorConfig.mediatorDescription);
+  prettyPrint('Atlas Service', object: 'did:web:did.dev.affinidi.io:ama');
+  print('');
+  print('Note: To switch mediators, edit mediator_config.dart');
+  print('');
 
-  final senderKeyStore = InMemoryKeyStore();
-  final senderWallet = PersistentWallet(senderKeyStore);
+  try {
+    // Create Alice's wallet and DID manager (same pattern as didcomm_dart)
+    final aliceKeyStore = InMemoryKeyStore();
+    final aliceWallet = PersistentWallet(aliceKeyStore);
 
-  final senderDidManager = DidPeerManager(
-    wallet: senderWallet,
-    store: InMemoryDidStore(),
-  );
+    final aliceDidManager = DidPeerManager(
+      wallet: aliceWallet,
+      store: InMemoryDidStore(),
+    );
 
-  final senderKeyId = 'sender-key-1';
-  final senderPrivateKeyBytes =
-      await extractPrivateKeyBytes(alicePrivateKeyPath);
+    // Load Alice's private key from file or generate new one
+    final aliceKeyId = 'alice-key-1';
 
-  await senderKeyStore.set(
-    senderKeyId,
-    StoredKey(
-      keyType: KeyType.p256,
-      privateKeyBytes: senderPrivateKeyBytes,
-    ),
-  );
+    try {
+      // Try to load existing key
+      final alicePrivateKeyBytes = await extractPrivateKeyBytes(
+        alicePrivateKeyPath,
+      );
 
-  await senderDidManager.addVerificationMethod(senderKeyId);
-  final senderDidDocument = await senderDidManager.getDidDocument();
+      await aliceKeyStore.set(
+        aliceKeyId,
+        StoredKey(
+          keyType: KeyType.p256,
+          privateKeyBytes: alicePrivateKeyBytes,
+        ),
+      );
+    } catch (e) {
+      // Generate new key if file doesn't exist
+      print('Generating new key for Alice (key file not found)');
+      await aliceWallet.generateKey(
+        keyId: aliceKeyId,
+        keyType: KeyType.p256,
+      );
+    }
 
-  final senderSigner = await senderDidManager.getSigner(
-    senderDidDocument.authentication.first.id,
-  );
+    await aliceDidManager.addVerificationMethod(aliceKeyId);
+    final aliceDidDocument = await aliceDidManager.getDidDocument();
 
-  final mediatorDidDocument =
-      await UniversalDIDResolver.defaultResolver.resolveDid(
-    await readDid(mediatorDidPath),
-  );
+    prettyPrint('Alice DID', object: aliceDidDocument.id);
 
-  final atmServiceRegistry = await AtmServiceRegistry.init();
+    final aliceSigner = await aliceDidManager.getSigner(
+      aliceDidDocument.authentication.first.id,
+    );
 
-  final senderMatchedDidKeyIds = senderDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [
-      mediatorDidDocument,
-      ...atmServiceRegistry.all,
-    ],
-  );
+    // Resolve mediator DID
+    final mediatorDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(
+      MediatorConfig.mediatorDid,
+    );
 
-  final mediatorClient = MediatorClient(
-    mediatorDidDocument: mediatorDidDocument,
-    keyPair: await senderDidManager.getKeyPairByDidKeyId(
-      senderMatchedDidKeyIds.first,
-    ),
-    didKeyId: senderMatchedDidKeyIds.first,
-    signer: senderSigner,
-    forwardMessageOptions: const ForwardMessageOptions(
-      shouldSign: true,
-      shouldEncrypt: true,
-      keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-      encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-    ),
-    webSocketOptions: const WebSocketOptions(
-      statusRequestMessageOptions: StatusRequestMessageOptions(
-        shouldSend: true,
+    prettyPrint('Mediator DID resolved');
+
+    // Initialize Atlas service registry
+    final atmServiceRegistry = await AtmServiceRegistry.init();
+
+    prettyPrint('Atlas service registry initialized');
+
+    // Match keys for encryption
+    final aliceMatchedDidKeyIds = aliceDidDocument.matchKeysInKeyAgreement(
+      otherDidDocuments: [
+        mediatorDidDocument,
+        ...atmServiceRegistry.all,
+      ],
+    );
+
+    // Setup mediator client
+    final mediatorClient = MediatorClient(
+      mediatorDidDocument: mediatorDidDocument,
+      keyPair: await aliceDidManager.getKeyPairByDidKeyId(
+        aliceMatchedDidKeyIds.first,
+      ),
+      didKeyId: aliceMatchedDidKeyIds.first,
+      signer: aliceSigner,
+      forwardMessageOptions: const ForwardMessageOptions(
         shouldSign: true,
         shouldEncrypt: true,
+        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
+        encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
       ),
-      liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-        shouldSend: true,
-        shouldSign: true,
-        shouldEncrypt: true,
+      webSocketOptions: const WebSocketOptions(
+        statusRequestMessageOptions: StatusRequestMessageOptions(
+          shouldSend: true,
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
+        liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
+          shouldSend: true,
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
       ),
-    ),
-  );
+    );
 
-  final authTokes = await mediatorClient.authenticate();
+    prettyPrint('Mediator client created');
 
-  final atmAtlasClient = AtmMessagingAtlasClient(
-    mediatorClient: mediatorClient,
-    didManager: senderDidManager,
-    atmServiceRegistry: atmServiceRegistry,
-  );
+    // Authenticate
+    final authTokens = await mediatorClient.authenticate();
 
-  // Example 1: Get list of mediator instances
-  prettyPrint('Getting mediator instances list...');
+    prettyPrint('Authentication successful');
 
-  final listResponse = await atmAtlasClient.getMediatorInstancesList(
-    accessToken: authTokes.accessToken,
-  );
+    // Setup Atlas client
+    final atmAtlasClient = AtmMessagingAtlasClient(
+      mediatorClient: mediatorClient,
+      didManager: aliceDidManager,
+      atmServiceRegistry: atmServiceRegistry,
+    );
 
-  prettyPrint(
-    'Mediator instances',
-    object: listResponse.instances,
-  );
+    prettyPrint('Atlas client created');
 
-  // Example 2: Deploy a new mediator instance
-  prettyPrint('Deploying new mediator instance...');
+    // Example operations
+    print('');
+    prettyPrint('Testing Atlas Operations');
 
-  final deployResponse = await atmAtlasClient.deployMediatorInstance(
-    accessToken: authTokes.accessToken,
-    deploymentData: {
-      'name': 'example-mediator',
-      'description': 'Example mediator instance',
-    },
-  );
+    // Example 1: Get list of mediator instances
+    prettyPrint('Getting mediator instances list...');
 
-  prettyPrint(
-    'Deploy response',
-    object: deployResponse.body,
-  );
-
-  // Example 3: Get mediator instance metadata
-  if (listResponse.instances.isNotEmpty) {
-    prettyPrint('Getting mediator instance metadata...');
-    
-    final mediatorId = listResponse.instances.first.id;
-    final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
-      accessToken: authTokes.accessToken,
-      mediatorId: mediatorId,
+    final listResponse = await atmAtlasClient.getMediatorInstancesList(
+      accessToken: authTokens.accessToken,
     );
 
     prettyPrint(
-      'Metadata response',
-      object: metadataResponse.body,
+      'Response received',
+      object: listResponse.instances,
     );
-  }
 
-  // Example 4: Update mediator instance deployment
-  if (listResponse.instances.isNotEmpty) {
-    prettyPrint('Updating mediator instance deployment...');
+    // Example 2: Deploy a new mediator instance (commented out by default)
+    // Uncomment to test deployment
+    /*
+    prettyPrint('Deploying new mediator instance...');
     
-    final mediatorId = listResponse.instances.first.id;
-    final updateDeployResponse = await atmAtlasClient.updateMediatorInstanceDeployment(
-      accessToken: authTokes.accessToken,
-      mediatorId: mediatorId,
+    final deployResponse = await atmAtlasClient.deployMediatorInstance(
+      accessToken: authTokens.accessToken,
       deploymentData: {
-        'description': 'Updated description',
+        'name': 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',
+        'description': 'Example mediator instance',
       },
     );
 
     prettyPrint(
-      'Update deployment response',
-      object: updateDeployResponse.body,
+      'Deploy response',
+      object: deployResponse.body,
     );
+    */
+
+    // Example 3: Get mediator instance metadata
+    if (listResponse.instances.isNotEmpty) {
+      prettyPrint('Getting mediator instance metadata...');
+
+      final mediatorId = listResponse.instances.first.id;
+      final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
+        accessToken: authTokens.accessToken,
+        mediatorId: mediatorId,
+      );
+
+      prettyPrint(
+        'Metadata response',
+        object: metadataResponse.body,
+      );
+    } else {
+      print(
+          'No mediator instances found. Deploy one to test metadata retrieval.');
+    }
+
+    // Example 4: Get mediator requests (if any instances exist)
+    if (listResponse.instances.isNotEmpty) {
+      prettyPrint('Getting mediator requests...');
+
+      final requestsResponse = await atmAtlasClient.getMediatorsRequests(
+        accessToken: authTokens.accessToken,
+        limit: 10,
+      );
+
+      prettyPrint(
+        'Requests response',
+        object: requestsResponse.body,
+      );
+    }
+
+    print('');
+    prettyPrint('Example completed successfully!');
+  } catch (e) {
+    print('Error: $e');
+    if (e.toString().contains('401') || e.toString().contains('Unauthorized')) {
+      print('');
+      print(
+          'Authentication failed. Make sure your mediator supports authentication.');
+      print('You may need to configure ACL or use a different mediator.');
+    }
   }
-
-  // Example 5: Update mediator instance configuration
-  if (listResponse.instances.isNotEmpty) {
-    prettyPrint('Updating mediator instance configuration...');
-    
-    final mediatorId = listResponse.instances.first.id;
-    final updateConfigResponse = await atmAtlasClient.updateMediatorInstanceConfiguration(
-      accessToken: authTokes.accessToken,
-      mediatorId: mediatorId,
-      configurationData: {
-        'logLevel': 'debug',
-      },
-    );
-
-    prettyPrint(
-      'Update configuration response',
-      object: updateConfigResponse.body,
-    );
-  }
-
-  // Example 6: Get mediators requests
-  prettyPrint('Getting mediators requests...');
-
-  final requestsResponse = await atmAtlasClient.getMediatorsRequests(
-    accessToken: authTokes.accessToken,
-    limit: 10,
-  );
-
-  prettyPrint(
-    'Requests response',
-    object: requestsResponse.body,
-  );
-
-  // Example 7: Get CloudWatch metrics
-  if (listResponse.instances.isNotEmpty) {
-    prettyPrint('Getting CloudWatch metrics...');
-    
-    final mediatorId = listResponse.instances.first.id;
-    final metricsResponse = await atmAtlasClient.getMediatorCloudwatchMetricData(
-      accessToken: authTokes.accessToken,
-      mediatorId: mediatorId,
-      metricId: 'MessageCount',
-      startDate: DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
-      endDate: DateTime.now().toIso8601String(),
-      period: 3600,
-    );
-
-    prettyPrint(
-      'CloudWatch metrics',
-      object: metricsResponse.body,
-    );
-  }
-
-  // Example 8: Destroy mediator instance (commented out to prevent accidental deletion)
-  // if (listResponse.instances.isNotEmpty) {
-  //   prettyPrint('Destroying mediator instance...');
-  //   
-  //   final mediatorId = listResponse.instances.first.id;
-  //   final destroyResponse = await atmAtlasClient.destroyMediatorInstance(
-  //     accessToken: authTokes.accessToken,
-  //     mediatorId: mediatorId,
-  //   );
-  //
-  //   prettyPrint(
-  //     'Destroy response',
-  //     object: destroyResponse.body,
-  //   );
-  // }
 }

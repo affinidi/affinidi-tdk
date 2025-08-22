@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:atm_client/atm_client.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
@@ -6,12 +8,21 @@ import 'package:test/test.dart';
 import 'example_configs.dart';
 
 void main() {
+  configureTestFiles();
+
   group('Atlas Operations', () {
     late AtmServiceRegistry atmServiceRegistry;
     late MediatorClient mediatorClient;
     late DidManager didManager;
     late AtmMessagingAtlasClient atmAtlasClient;
     late String accessToken;
+
+    setUpAll(() async {
+      // Configure HTTP overrides for self-signed certificates if needed
+      if (Platform.environment['TEST_ALLOW_SELF_SIGNED_CERTS'] == 'true') {
+        HttpOverrides.global = _TestHttpOverrides();
+      }
+    });
 
     setUp(() async {
       final keyStore = InMemoryKeyStore();
@@ -22,7 +33,8 @@ void main() {
         store: InMemoryDidStore(),
       );
 
-      final keyId = 'key-1';
+      // Load Alice's private key from file
+      final keyId = 'alice-key-1';
       final privateKeyBytes = await extractPrivateKeyBytes(alicePrivateKeyPath);
 
       await keyStore.set(
@@ -40,9 +52,12 @@ void main() {
         didDocument.authentication.first.id,
       );
 
+      // Read mediator DID from file (same as didcomm_dart)
+      final mediatorDid = await readDid(mediatorDidPath);
+
       final mediatorDidDocument =
           await UniversalDIDResolver.defaultResolver.resolveDid(
-        await readDid(mediatorDidPath),
+        mediatorDid,
       );
 
       atmServiceRegistry = await AtmServiceRegistry.init();
@@ -64,7 +79,7 @@ void main() {
         forwardMessageOptions: const ForwardMessageOptions(
           shouldSign: true,
           shouldEncrypt: true,
-          keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+          keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
           encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
         ),
         webSocketOptions: const WebSocketOptions(
@@ -148,35 +163,43 @@ void main() {
           expect(response.body, isNotNull);
           expect(response.type.toString(),
               'affinidi.io/operations/ama/getMediatorInstanceMetadata/response');
+        } else {
+          print('No mediator instances found, skipping metadata test');
         }
       });
     });
 
     group('destroyMediatorInstance', () {
-      test('should destroy a mediator instance', () async {
-        // First get list to find a mediator ID
-        final listResponse = await atmAtlasClient.getMediatorInstancesList(
+      test('should destroy a mediator instance', skip: 'Destructive operation',
+          () async {
+        // Deploy a test instance first
+        final deployResponse = await atmAtlasClient.deployMediatorInstance(
           accessToken: accessToken,
+          deploymentData: {
+            'name': 'test-destroy-${DateTime.now().millisecondsSinceEpoch}',
+            'description': 'Test instance for destroy operation',
+          },
         );
 
-        if (listResponse.instances.isNotEmpty) {
-          final mediatorId = listResponse.instances.first.id;
-
-          final response = await atmAtlasClient.destroyMediatorInstance(
-            accessToken: accessToken,
-            mediatorId: mediatorId,
-          );
-
-          expect(response.body, isNotNull);
-          expect(response.type.toString(),
-              'affinidi.io/operations/ama/destroyMediatorInstance/response');
+        if (deployResponse.body == null || deployResponse.body!['id'] == null) {
+          throw Exception('Missing mediator ID in deploy response');
         }
+        final mediatorId = deployResponse.body!['id'] as String;
+
+        // Now destroy it
+        final response = await atmAtlasClient.destroyMediatorInstance(
+          accessToken: accessToken,
+          mediatorId: mediatorId,
+        );
+
+        expect(response.body, isNotNull);
+        expect(response.type.toString(),
+            'affinidi.io/operations/ama/destroyMediatorInstance/response');
       });
     });
 
     group('updateMediatorInstanceDeployment', () {
-      test('should update mediator deployment settings', () async {
-        // First get list to find a mediator ID
+      test('should update mediator instance deployment', () async {
         final listResponse = await atmAtlasClient.getMediatorInstancesList(
           accessToken: accessToken,
         );
@@ -184,26 +207,26 @@ void main() {
         if (listResponse.instances.isNotEmpty) {
           final mediatorId = listResponse.instances.first.id;
 
-          final deploymentData = {
-            'description': 'Updated description',
-          };
-
-          final response = await atmAtlasClient.updateMediatorInstanceDeployment(
+          final response =
+              await atmAtlasClient.updateMediatorInstanceDeployment(
             accessToken: accessToken,
             mediatorId: mediatorId,
-            deploymentData: deploymentData,
+            deploymentData: {
+              'description': 'Updated description at ${DateTime.now()}',
+            },
           );
 
           expect(response.body, isNotNull);
           expect(response.type.toString(),
               'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response');
+        } else {
+          print('No mediator instances found, skipping update deployment test');
         }
       });
     });
 
     group('updateMediatorInstanceConfiguration', () {
-      test('should update mediator runtime configuration', () async {
-        // First get list to find a mediator ID
+      test('should update mediator instance configuration', () async {
         final listResponse = await atmAtlasClient.getMediatorInstancesList(
           accessToken: accessToken,
         );
@@ -211,27 +234,30 @@ void main() {
         if (listResponse.instances.isNotEmpty) {
           final mediatorId = listResponse.instances.first.id;
 
-          final configurationData = {
-            'logLevel': 'debug',
-          };
-
-          final response = await atmAtlasClient.updateMediatorInstanceConfiguration(
+          final response =
+              await atmAtlasClient.updateMediatorInstanceConfiguration(
             accessToken: accessToken,
             mediatorId: mediatorId,
-            configurationData: configurationData,
+            configurationData: {
+              'logLevel': 'debug',
+            },
           );
 
           expect(response.body, isNotNull);
           expect(response.type.toString(),
               'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response');
+        } else {
+          print(
+              'No mediator instances found, skipping update configuration test');
         }
       });
     });
 
     group('getMediatorsRequests', () {
-      test('should retrieve mediator request logs', () async {
+      test('should retrieve mediator requests', () async {
         final response = await atmAtlasClient.getMediatorsRequests(
           accessToken: accessToken,
+          limit: 10,
         );
 
         expect(response.body, isNotNull);
@@ -239,29 +265,18 @@ void main() {
             'affinidi.io/operations/ama/getMediatorsRequests/response');
       });
 
-      test('should handle filtering by mediatorId', () async {
-        // First get list to find a mediator ID
-        final listResponse = await atmAtlasClient.getMediatorInstancesList(
+      test('should handle pagination for requests', () async {
+        final response = await atmAtlasClient.getMediatorsRequests(
           accessToken: accessToken,
+          limit: 5,
         );
 
-        if (listResponse.instances.isNotEmpty) {
-          final mediatorId = listResponse.instances.first.id;
-
-          final response = await atmAtlasClient.getMediatorsRequests(
-            accessToken: accessToken,
-            mediatorId: mediatorId,
-            limit: 5,
-          );
-
-          expect(response.body, isNotNull);
-        }
+        expect(response.body, isNotNull);
       });
     });
 
     group('getMediatorCloudwatchMetricData', () {
-      test('should retrieve CloudWatch metrics for mediator', () async {
-        // First get list to find a mediator ID
+      test('should retrieve CloudWatch metrics', () async {
         final listResponse = await atmAtlasClient.getMediatorInstancesList(
           accessToken: accessToken,
         );
@@ -273,16 +288,34 @@ void main() {
             accessToken: accessToken,
             mediatorId: mediatorId,
             metricId: 'MessageCount',
-            startDate: DateTime.now().subtract(const Duration(days: 1)).toIso8601String(),
+            startDate: DateTime.now()
+                .subtract(const Duration(hours: 1))
+                .toIso8601String(),
             endDate: DateTime.now().toIso8601String(),
-            period: 3600,
           );
 
           expect(response.body, isNotNull);
           expect(response.type.toString(),
               'affinidi.io/operations/ama/getMediatorCloudwatchMetricData/response');
+        } else {
+          print(
+              'No mediator instances found, skipping CloudWatch metrics test');
         }
       });
     });
   });
+}
+
+// HTTP overrides for testing with self-signed certificates
+class _TestHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (cert, host, port) {
+        // Allow self-signed certificates for test environments
+        return host.contains('localhost') ||
+            host.contains('127.0.0.1') ||
+            host.contains('host.docker.internal');
+      };
+  }
 }

@@ -42,6 +42,7 @@ abstract class AtmBaseClient {
     final forwardMessage = ForwardMessage(
       id: const Uuid().v4(),
       to: [mediatorClient.mediatorDidDocument.id],
+      from: mediatorClient.signer.did,
       next: atmServiceDidDocument.id,
       expiresTime: expiresTime,
       attachments: [
