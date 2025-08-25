@@ -27,6 +27,7 @@ docs/CorsStartFileScanOK.md
 docs/CorsUpdateProfileDataOK.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
 docs/DeleteAccountDto.md
@@ -118,6 +119,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsStartFileSca
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CorsUpdateProfileDataOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountOK.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateChildNodeInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/DeleteAccountDto.java

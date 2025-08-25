@@ -4,6 +4,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
+| [**createChildNode**](NodesApi.md#createChildNode)                 | **POST** /v1/nodes/{nodeId}                           |             |
 | [**createNode**](NodesApi.md#createNode)                           | **POST** /v1/nodes                                    |             |
 | [**deleteNode**](NodesApi.md#deleteNode)                           | **DELETE** /v1/nodes/{nodeId}                         |             |
 | [**getDetailedNodeInfo**](NodesApi.md#getDetailedNodeInfo)         | **GET** /v1/nodes/{nodeId}                            |             |
@@ -15,11 +16,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [**restoreNodeFromTrashbin**](NodesApi.md#restoreNodeFromTrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |             |
 | [**updateNode**](NodesApi.md#updateNode)                           | **PATCH** /v1/nodes/{nodeId}                          |             |
 
-## createNode
+## createChildNode
 
-> CreateNodeOK createNode(createNodeInput, parentNodeId)
+> CreateNodeOK createChildNode(createNodeInput, parentNodeId)
 
-creates node
+creates child node
 
 ### Example
 
@@ -45,9 +46,80 @@ public class Example {
 
         NodesApi apiInstance = new NodesApi(defaultClient);
         CreateNodeInput createNodeInput = new CreateNodeInput(); // CreateNodeInput | CreateNode
-        String parentNodeId = "parentNodeId_example"; // String | parent node id, if not provided then root element is used
+        String parentNodeId = "parentNodeId_example"; // String | parent node id
         try {
-            CreateNodeOK result = apiInstance.createNode(createNodeInput, parentNodeId);
+            CreateNodeOK result = apiInstance.createChildNode(createNodeInput, parentNodeId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NodesApi#createChildNode");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                | Type                                      | Description    | Notes      |
+| ------------------- | ----------------------------------------- | -------------- | ---------- |
+| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode     |            |
+| **parentNodeId**    | **String**                                | parent node id | [optional] |
+
+### Return type
+
+[**CreateNodeOK**](CreateNodeOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateNodeOK    | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+## createNode
+
+> CreateNodeOK createNode(createNodeInput)
+
+create a node
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.vault.data.manager.client.ApiClient;
+import com.affinidi.tdk.vault.data.manager.client.ApiException;
+import com.affinidi.tdk.vault.data.manager.client.Configuration;
+import com.affinidi.tdk.vault.data.manager.client.auth.*;
+import com.affinidi.tdk.vault.data.manager.client.models.*;
+import com.affinidi.tdk.vault.data.manager.client.apis.NodesApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.vault.affinidi.com/vfs");
+
+        // Configure API key authorization: ConsumerTokenAuth
+        ApiKeyAuth ConsumerTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ConsumerTokenAuth");
+        ConsumerTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ConsumerTokenAuth.setApiKeyPrefix("Token");
+
+        NodesApi apiInstance = new NodesApi(defaultClient);
+        CreateNodeInput createNodeInput = new CreateNodeInput(); // CreateNodeInput | CreateNode
+        try {
+            CreateNodeOK result = apiInstance.createNode(createNodeInput);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NodesApi#createNode");
@@ -62,10 +134,9 @@ public class Example {
 
 ### Parameters
 
-| Name                | Type                                      | Description                                               | Notes      |
-| ------------------- | ----------------------------------------- | --------------------------------------------------------- | ---------- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode                                                |            |
-| **parentNodeId**    | **String**                                | parent node id, if not provided then root element is used | [optional] |
+| Name                | Type                                      | Description | Notes |
+| ------------------- | ----------------------------------------- | ----------- | ----- |
+| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode  |       |
 
 ### Return type
 

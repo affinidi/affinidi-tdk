@@ -41,6 +41,7 @@ export 'package:affinidi_tdk_credential_verification_client/src/model/validate_j
 export 'package:affinidi_tdk_credential_verification_client/src/model/validate_jwt_output.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_output.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_v2_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';

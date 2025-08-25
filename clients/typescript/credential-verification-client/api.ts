@@ -975,6 +975,25 @@ export interface VerifyCredentialOutput {
   isValid: boolean
 }
 /**
+ * Request model of /v2/verify-vcs
+ * @export
+ * @interface VerifyCredentialV2Input
+ */
+export interface VerifyCredentialV2Input {
+  /**
+   * List of VC strings
+   * @type {Array<string>}
+   * @memberof VerifyCredentialV2Input
+   */
+  verifiableCredentials: Array<string>
+  /**
+   * Dynamic model
+   * @type {{ [key: string]: any; }}
+   * @memberof VerifyCredentialV2Input
+   */
+  issuerDidDocument?: { [key: string]: any }
+}
+/**
  * Request model of /verify-vp
  * @export
  * @interface VerifyPresentationInput
