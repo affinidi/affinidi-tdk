@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mediator_client/mediator_client.dart';
-import 'response_body.dart';
+import '../response_body.dart';
 
 part 'get_mediator_instances_list_message.g.dart';
 
@@ -49,10 +49,47 @@ class GetMediatorInstancesListResponseMessage extends PlainTextMessage {
   }
 }
 
-// TODO: implement MediatorInstance class
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class MediatorInstance {
-  MediatorInstance();
+  final String id;
+  final String name;
+  final String description;
+  final String createdAt;
+  final String modifiedAt;
+  final String createdBy;
+  final String modifiedBy;
+  final String projectId;
+  final String serviceType;
+  final String deploymentState;
+  final String deploymentStatus;
+  final String serviceSize;
+  final String did;
+  final String? didDocumentUrl;
+  final String? currentServiceRequest;
+  final bool? isAdministratorDidGenerated;
+  final String? administratorDid;
+  final Map<String, dynamic>? acl;
+
+  MediatorInstance({
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.createdAt,
+    required this.modifiedAt,
+    required this.createdBy,
+    required this.modifiedBy,
+    required this.projectId,
+    required this.serviceType,
+    required this.deploymentState,
+    required this.deploymentStatus,
+    required this.serviceSize,
+    required this.did,
+    this.didDocumentUrl,
+    this.currentServiceRequest,
+    this.isAdministratorDidGenerated,
+    this.administratorDid,
+    this.acl,
+  });
 
   factory MediatorInstance.fromJson(Map<String, dynamic> json) =>
       _$MediatorInstanceFromJson(json);

@@ -6,9 +6,14 @@ import 'package:mediator_client/mediator_client.dart';
 // OR
 // set environment variables TEST_MEDIATOR_DID, TEST_MEDIATOR_WITH_ACL_DID, TEST_ALICE_PRIVATE_KEY_PEM, and TEST_BOB_PRIVATE_KEY_PEM
 
-// Create and run a DIDComm mediator, for instance with https://portal.affinidi.com.
-// Copy its DID Document URL into example/mediator/mediator_did.txt.
-// For TEST_MEDIATOR_WITH_ACL_DID use a mediator with ACL explicit allow.
+// Affinidi Online Mediators:
+// - Public mediator: did:web:euw1.mediator.affinidi.io:.well-known
+// - Internal testing: did:web:internal-atn-mediator.dev.euw1.affinidi.io:.well-known
+// - Your own mediator: Create at https://portal.affinidi.com for full control
+//
+// For TEST_MEDIATOR_WITH_ACL_DID use a mediator with ACL explicit_deny mode
+// (blocks messages by default, allows only after adding to ACL).
+// You can create your own at https://portal.affinidi.com
 
 const mediatorDidPath = './example/mediator/mediator_did.txt';
 const mediatorWithAclDidPath = './example/mediator/mediator_with_acl_did.txt';

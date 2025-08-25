@@ -1,105 +1,235 @@
+import 'dart:io';
+
 import 'package:atm_client/atm_client.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../test/example_configs.dart';
 
+// Uncomment this class to use a local mediator with self-signed certificates
+// class MyHttpOverrides extends HttpOverrides {
+//   @override
+//   HttpClient createHttpClient(SecurityContext? context) {
+//     return super.createHttpClient(context)
+//       ..badCertificateCallback = (cert, host, port) => true;
+//   }
+// }
+
 void main() async {
-  // Run commands below in your terminal to generate keys for Receiver:
-  // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/bob_private_key.pem
+  // Uncomment this line to enable local mediator with self-signed certificates
+  // HttpOverrides.global = MyHttpOverrides();
+  
+  // Configure test files based on environment variables if needed
+  configureTestFiles();
 
-  // Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
-  // Copy its DID Document URL into example/mediator/mediator_did.txt.
+  prettyPrint('Atlas Client Example');
+  prettyPrint('Atlas Service', object: 'did:web:did.dev.affinidi.io:ama');
+  print('');
+  print('Note: To use your own mediator, create one at https://portal.affinidi.com');
+  print('and save its DID in example/mediator/mediator_did.txt');
+  print('');
+  
+  // For local mediator setup:
+  // 1. Update example/mediator/mediator_did.txt to: did:web:localhost:7037
+  // 2. Uncomment the MyHttpOverrides class and HttpOverrides.global line above
+  // 3. Run your local mediator on port 7037
 
-  final senderKeyStore = InMemoryKeyStore();
-  final senderWallet = PersistentWallet(senderKeyStore);
+  try {
+    // Create Alice's wallet and DID manager
+    final aliceKeyStore = InMemoryKeyStore();
+    final aliceWallet = PersistentWallet(aliceKeyStore);
 
-  final senderDidManager = DidPeerManager(
-    wallet: senderWallet,
-    store: InMemoryDidStore(),
-  );
+    final aliceDidManager = DidPeerManager(
+      wallet: aliceWallet,
+      store: InMemoryDidStore(),
+    );
 
-  final senderKeyId = 'sender-key-1';
-  final senderPrivateKeyBytes =
-      await extractPrivateKeyBytes(alicePrivateKeyPath);
+    // Load Alice's private key from file or generate new one
+    final aliceKeyId = 'alice-key-1';
 
-  await senderKeyStore.set(
-    senderKeyId,
-    StoredKey(
-      keyType: KeyType.p256,
-      privateKeyBytes: senderPrivateKeyBytes,
-    ),
-  );
+    try {
+      // Try to load existing key
+      final alicePrivateKeyBytes = await extractPrivateKeyBytes(
+        alicePrivateKeyPath,
+      );
 
-  await senderDidManager.addVerificationMethod(senderKeyId);
-  final senderDidDocument = await senderDidManager.getDidDocument();
+      await aliceKeyStore.set(
+        aliceKeyId,
+        StoredKey(
+          keyType: KeyType.p256,
+          privateKeyBytes: alicePrivateKeyBytes,
+        ),
+      );
+    } catch (e) {
+      // Generate new key if file doesn't exist
+      print('Generating new key for Alice (key file not found)');
+      await aliceWallet.generateKey(
+        keyId: aliceKeyId,
+        keyType: KeyType.p256,
+      );
+    }
 
-  final senderSigner = await senderDidManager.getSigner(
-    senderDidDocument.authentication.first.id,
-  );
+    await aliceDidManager.addVerificationMethod(aliceKeyId);
+    final aliceDidDocument = await aliceDidManager.getDidDocument();
 
-  final mediatorDidDocument =
-      await UniversalDIDResolver.defaultResolver.resolveDid(
-    await readDid(mediatorDidPath),
-  );
+    prettyPrint('Alice DID', object: aliceDidDocument.id);
 
-  final atmServiceRegistry = await AtmServiceRegistry.init();
+    final aliceSigner = await aliceDidManager.getSigner(
+      aliceDidDocument.authentication.first.id,
+    );
 
-  final senderMatchedDidKeyIds = senderDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [
-      mediatorDidDocument,
-      ...atmServiceRegistry.all,
-    ],
-  );
+    // Read mediator DID from file and resolve it
+    final mediatorDid = await readDid(mediatorDidPath);
+    prettyPrint('Using mediator', object: mediatorDid);
+    
+    final mediatorDidDocument = await UniversalDIDResolver.defaultResolver.resolveDid(
+      mediatorDid,
+    );
+    prettyPrint('Mediator DID resolved');
 
-  final mediatorClient = MediatorClient(
-    mediatorDidDocument: mediatorDidDocument,
-    keyPair: await senderDidManager.getKeyPairByDidKeyId(
-      senderMatchedDidKeyIds.first,
-    ),
-    didKeyId: senderMatchedDidKeyIds.first,
-    signer: senderSigner,
-    forwardMessageOptions: const ForwardMessageOptions(
-      shouldSign: true,
-      shouldEncrypt: true,
-      keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-      encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-    ),
-    webSocketOptions: const WebSocketOptions(
-      statusRequestMessageOptions: StatusRequestMessageOptions(
-        shouldSend: true,
+    // Initialize Atlas service registry
+    final atmServiceRegistry = await AtmServiceRegistry.init();
+
+    prettyPrint('Atlas service registry initialized');
+
+    // Match keys for encryption
+    final aliceMatchedDidKeyIds = aliceDidDocument.matchKeysInKeyAgreement(
+      otherDidDocuments: [
+        mediatorDidDocument,
+        ...atmServiceRegistry.all,
+      ],
+    );
+
+    // Setup mediator client with WebSocket enabled for proper message handling
+    final mediatorClient = MediatorClient(
+      mediatorDidDocument: mediatorDidDocument,
+      keyPair: await aliceDidManager.getKeyPairByDidKeyId(
+        aliceMatchedDidKeyIds.first,
+      ),
+      didKeyId: aliceMatchedDidKeyIds.first,
+      signer: aliceSigner,
+      forwardMessageOptions: const ForwardMessageOptions(
         shouldSign: true,
         shouldEncrypt: true,
+        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,  // Use ecdh1Pu for compatibility
+        encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
       ),
-      liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-        shouldSend: true,
-        shouldSign: true,
-        shouldEncrypt: true,
+      // Enable WebSocket to keep connection alive for responses
+      webSocketOptions: const WebSocketOptions(
+        statusRequestMessageOptions: StatusRequestMessageOptions(
+          shouldSend: true,  // Enable WebSocket status
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
+        liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
+          shouldSend: true,  // Enable WebSocket live delivery
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
       ),
-    ),
-  );
+    );
 
-  final authTokes = await mediatorClient.authenticate();
+    prettyPrint('Mediator client created');
 
-  final atmAtlasClient = AtmAtlasClient(
-    mediatorClient: mediatorClient,
-    didManager: senderDidManager,
-    atmServiceRegistry: atmServiceRegistry,
-  );
+    // Authenticate
+    final authTokens = await mediatorClient.authenticate();
 
-  prettyPrint('Sending the message...');
+    prettyPrint('Authentication successful');
 
-  final responseMessage = await atmAtlasClient.getMediatorInstancesList(
-    accessToken: authTokes.accessToken,
-  );
+    // Setup Atlas client
+    final atmAtlasClient = AtmMessagingAtlasClient(
+      mediatorClient: mediatorClient,
+      didManager: aliceDidManager,
+      atmServiceRegistry: atmServiceRegistry,
+    );
 
-  prettyPrint(
-    'Response message',
-    object: responseMessage,
-  );
+    prettyPrint('Atlas client created');
 
-  prettyPrint(
-    'Mediator instances',
-    object: responseMessage.instances,
-  );
+    // Example operations
+    print('');
+    prettyPrint('Testing Atlas Operations');
+
+    // Example 1: Get list of mediator instances
+    prettyPrint('Getting mediator instances list...');
+
+    final listResponse = await atmAtlasClient.getMediatorInstancesList(
+      accessToken: authTokens.accessToken,
+    );
+
+    prettyPrint(
+      'Response received',
+      object: listResponse.instances,
+    );
+
+    // Example 2: Deploy a new mediator instance (commented out by default)
+    // Uncomment to test deployment
+    /*
+    prettyPrint('Deploying new mediator instance...');
+    
+    final deployResponse = await atmAtlasClient.deployMediatorInstance(
+      accessToken: authTokens.accessToken,
+      deploymentData: {
+        'name': 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',
+        'description': 'Example mediator instance',
+      },
+    );
+
+    prettyPrint(
+      'Deploy response',
+      object: deployResponse.body,
+    );
+    */
+
+    // Example 3: Get mediator instance metadata
+    if (listResponse.instances.isNotEmpty) {
+      prettyPrint('Getting mediator instance metadata...');
+
+      final mediatorId = listResponse.instances.first.id;
+      final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
+        accessToken: authTokens.accessToken,
+        mediatorId: mediatorId,
+      );
+
+      prettyPrint(
+        'Metadata response',
+        object: metadataResponse.body,
+      );
+    } else {
+      print(
+          'No mediator instances found. Deploy one to test metadata retrieval.');
+    }
+
+    // Example 4: Get mediator requests (if any instances exist)
+    if (listResponse.instances.isNotEmpty) {
+      prettyPrint('Getting mediator requests...');
+
+      final requestsResponse = await atmAtlasClient.getMediatorsRequests(
+        accessToken: authTokens.accessToken,
+        limit: 10,
+      );
+
+      prettyPrint(
+        'Requests response',
+        object: requestsResponse.body,
+      );
+    }
+
+    print('');
+    prettyPrint('Example completed successfully!');
+    
+    // Clean up connections
+    await atmAtlasClient.dispose();
+    await mediatorClient.disconnect();
+    
+    // Wait a moment for connections to fully close
+    await Future.delayed(const Duration(milliseconds: 100));
+  } catch (e) {
+    print('Error: $e');
+    if (e.toString().contains('401') || e.toString().contains('Unauthorized')) {
+      print('');
+      print(
+          'Authentication failed. Make sure your mediator supports authentication.');
+      print('You may need to configure ACL or use a different mediator.');
+    }
+  }
 }
