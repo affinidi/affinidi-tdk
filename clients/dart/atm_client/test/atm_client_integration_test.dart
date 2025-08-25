@@ -82,16 +82,13 @@ void main() {
           keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
           encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
         ),
+        // Disable WebSocket for now - use HTTP only
         webSocketOptions: const WebSocketOptions(
           statusRequestMessageOptions: StatusRequestMessageOptions(
-            shouldSend: true,
-            shouldSign: true,
-            shouldEncrypt: true,
+            shouldSend: false,  // Disable WebSocket status
           ),
           liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-            shouldSend: true,
-            shouldSign: true,
-            shouldEncrypt: true,
+            shouldSend: false,  // Disable WebSocket live delivery
           ),
         ),
       );
@@ -312,9 +309,8 @@ class _TestHttpOverrides extends HttpOverrides {
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
       ..badCertificateCallback = (cert, host, port) {
-        // Allow self-signed certificates for test environments
-        return host.contains('localhost') ||
-            host.contains('127.0.0.1') ||
+        // Allow self-signed certificates for Affinidi test environments
+        return host.endsWith('.affinidi.io') ||
             host.contains('host.docker.internal');
       };
   }

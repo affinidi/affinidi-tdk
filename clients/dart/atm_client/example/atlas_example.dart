@@ -5,33 +5,37 @@ import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../test/example_configs.dart';
-import 'mediator_config.dart';
 
-// HTTP overrides for handling self-signed certificates
-class AtlasExampleHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback = (cert, host, port) {
-        return MediatorConfig.shouldAcceptCertificate(host);
-      };
-  }
-}
+// Uncomment this class to use a local mediator with self-signed certificates
+// class MyHttpOverrides extends HttpOverrides {
+//   @override
+//   HttpClient createHttpClient(SecurityContext? context) {
+//     return super.createHttpClient(context)
+//       ..badCertificateCallback = (cert, host, port) => true;
+//   }
+// }
 
 void main() async {
-  // Enable certificate handling
-  HttpOverrides.global = AtlasExampleHttpOverrides();
+  // Uncomment this line to enable local mediator with self-signed certificates
+  // HttpOverrides.global = MyHttpOverrides();
+  
+  // Configure test files based on environment variables if needed
+  configureTestFiles();
 
   prettyPrint('Atlas Client Example');
-  prettyPrint('Mediator Configuration',
-      object: MediatorConfig.mediatorDescription);
   prettyPrint('Atlas Service', object: 'did:web:did.dev.affinidi.io:ama');
   print('');
-  print('Note: To switch mediators, edit mediator_config.dart');
+  print('Note: To use your own mediator, create one at https://portal.affinidi.com');
+  print('and save its DID in example/mediator/mediator_did.txt');
   print('');
+  
+  // For local mediator setup:
+  // 1. Update example/mediator/mediator_did.txt to: did:web:localhost:7037
+  // 2. Uncomment the MyHttpOverrides class and HttpOverrides.global line above
+  // 3. Run your local mediator on port 7037
 
   try {
-    // Create Alice's wallet and DID manager (same pattern as didcomm_dart)
+    // Create Alice's wallet and DID manager
     final aliceKeyStore = InMemoryKeyStore();
     final aliceWallet = PersistentWallet(aliceKeyStore);
 
@@ -74,12 +78,13 @@ void main() async {
       aliceDidDocument.authentication.first.id,
     );
 
-    // Resolve mediator DID
-    final mediatorDidDocument =
-        await UniversalDIDResolver.defaultResolver.resolveDid(
-      MediatorConfig.mediatorDid,
+    // Read mediator DID from file and resolve it
+    final mediatorDid = await readDid(mediatorDidPath);
+    prettyPrint('Using mediator', object: mediatorDid);
+    
+    final mediatorDidDocument = await UniversalDIDResolver.defaultResolver.resolveDid(
+      mediatorDid,
     );
-
     prettyPrint('Mediator DID resolved');
 
     // Initialize Atlas service registry
@@ -95,7 +100,7 @@ void main() async {
       ],
     );
 
-    // Setup mediator client
+    // Setup mediator client with WebSocket enabled for proper message handling
     final mediatorClient = MediatorClient(
       mediatorDidDocument: mediatorDidDocument,
       keyPair: await aliceDidManager.getKeyPairByDidKeyId(
@@ -106,17 +111,18 @@ void main() async {
       forwardMessageOptions: const ForwardMessageOptions(
         shouldSign: true,
         shouldEncrypt: true,
-        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
+        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,  // Use ecdh1Pu for compatibility
         encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
       ),
+      // Enable WebSocket to keep connection alive for responses
       webSocketOptions: const WebSocketOptions(
         statusRequestMessageOptions: StatusRequestMessageOptions(
-          shouldSend: true,
+          shouldSend: true,  // Enable WebSocket status
           shouldSign: true,
           shouldEncrypt: true,
         ),
         liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-          shouldSend: true,
+          shouldSend: true,  // Enable WebSocket live delivery
           shouldSign: true,
           shouldEncrypt: true,
         ),
@@ -210,6 +216,13 @@ void main() async {
 
     print('');
     prettyPrint('Example completed successfully!');
+    
+    // Clean up connections
+    await atmAtlasClient.dispose();
+    await mediatorClient.disconnect();
+    
+    // Wait a moment for connections to fully close
+    await Future.delayed(const Duration(milliseconds: 100));
   } catch (e) {
     print('Error: $e');
     if (e.toString().contains('401') || e.toString().contains('Unauthorized')) {
