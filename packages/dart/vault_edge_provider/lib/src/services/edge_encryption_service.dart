@@ -12,6 +12,7 @@ import 'edge_encryption_service_interface.dart';
 class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   static const int _ivLength = 12; // 96 bits for GCM
   static const int _tagLength = 16; // 128 bits for GCM
+  static const int _cypherLength = 32;
 
   /// Creates a new instance of [EdgeEncryptionService].
   EdgeEncryptionService({
@@ -22,14 +23,20 @@ class EdgeEncryptionService implements EdgeEncryptionServiceInterface {
   late final Random _secureRandom = Random.secure();
   late final _cryptographyAlgorythm = AesGcm.with256bits();
 
+  Future<Uint8List> _makeContentKeyIfNeeded() async {
+    final existingKey = await _vaultStore.getContentKey();
+    if (existingKey != null) {
+      return existingKey;
+    }
+
+    final randomKey = _secureRandom.nextBytes(_cypherLength);
+    await _vaultStore.setContentKey(randomKey);
+    return randomKey;
+  }
+
   @override
   Future<Uint8List> encryptData(Uint8List data) async {
-    final cipher = await _vaultStore.getContentKey();
-    if (cipher == null) {
-      throw TdkException(
-          message: 'Missing egde cipher for encrytping content',
-          code: TdkExceptionType.missingEdgeCipher.code);
-    }
+    final cipher = await _makeContentKeyIfNeeded();
 
     final secretKey = SecretKey(cipher);
     final nonce = _secureRandom.nextBytes(_ivLength);
