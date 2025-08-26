@@ -1,3 +1,7 @@
+## 1.0.3
+
+- feat: encryption for drift database content
+
 ## 1.0.2
 
 - Dependencies Update 
