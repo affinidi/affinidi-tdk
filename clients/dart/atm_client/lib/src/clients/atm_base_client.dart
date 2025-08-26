@@ -6,12 +6,21 @@ import 'package:uuid/uuid.dart';
 
 import 'client_options.dart';
 
+/// Base client for ATM messaging operations.
 abstract class AtmBaseClient {
+  /// Client configuration options for timeouts and message expiration.
   final ClientOptions clientOptions;
+
+  /// Mediator client for message handling.
   final MediatorClient mediatorClient;
+
+  /// DID manager for handling decentralized identifiers.
   final DidManager didManager;
+
+  /// The ATM service DID document.
   final DidDocument atmServiceDidDocument;
 
+  /// Creates a base ATM client with required mediator and DID components.
   AtmBaseClient({
     required this.mediatorClient,
     required this.didManager,
@@ -19,6 +28,7 @@ abstract class AtmBaseClient {
     this.clientOptions = const ClientOptions(),
   });
 
+  /// Sends a message to the ATM service through the mediator.
   Future<PlainTextMessage> sendMessage(
     PlainTextMessage requestMessage, {
     required String accessToken,

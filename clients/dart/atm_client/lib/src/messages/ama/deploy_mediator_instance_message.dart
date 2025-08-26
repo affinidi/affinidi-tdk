@@ -2,11 +2,14 @@ import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mediator_client/mediator_client.dart';
+
 import '../response_body.dart';
 
 part 'deploy_mediator_instance_message.g.dart';
 
+/// Message for deploying a mediator instance.
 class DeployMediatorInstanceMessage extends PlainTextMessage {
+  /// Creates a deploy mediator instance message.
   DeployMediatorInstanceMessage({
     required super.id,
     required super.from,
@@ -21,7 +24,9 @@ class DeployMediatorInstanceMessage extends PlainTextMessage {
         );
 }
 
+/// Response message for deploy mediator instance operation.
 class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
+  /// Creates a deploy mediator instance response message.
   DeployMediatorInstanceResponseMessage({
     required super.id,
     required super.from,
@@ -35,6 +40,7 @@ class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
           ),
         );
 
+  /// Gets the parsed response data from the message body.
   DeployMediatorInstanceResponse get response {
     if (body == null) {
       throw ArgumentError('Response body cannot be null');
@@ -48,16 +54,25 @@ class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
+
+/// Response data for deploy mediator instance operation.
 class DeployMediatorInstanceResponse {
+  /// The ID of the deployed mediator instance.
   final String mediatorId;
+
+  /// The deployment status.
   final String status;
 
+  /// Creates a deploy mediator instance response.
   DeployMediatorInstanceResponse({
     required this.mediatorId,
     required this.status,
   });
 
+  /// Creates a DeployMediatorInstanceResponse from a JSON map.
   factory DeployMediatorInstanceResponse.fromJson(Map<String, dynamic> json) =>
       _$DeployMediatorInstanceResponseFromJson(json);
+
+  /// Converts this DeployMediatorInstanceResponse to a JSON map.
   Map<String, dynamic> toJson() => _$DeployMediatorInstanceResponseToJson(this);
 }

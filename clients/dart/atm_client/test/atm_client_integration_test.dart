@@ -85,10 +85,10 @@ void main() {
         // Disable WebSocket for now - use HTTP only
         webSocketOptions: const WebSocketOptions(
           statusRequestMessageOptions: StatusRequestMessageOptions(
-            shouldSend: false,  // Disable WebSocket status
+            shouldSend: false, // Disable WebSocket status
           ),
           liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-            shouldSend: false,  // Disable WebSocket live delivery
+            shouldSend: false, // Disable WebSocket live delivery
           ),
         ),
       );
@@ -161,7 +161,7 @@ void main() {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/getMediatorInstanceMetadata/response');
         } else {
-          print('No mediator instances found, skipping metadata test');
+          prettyPrint('No mediator instances found, skipping metadata test');
         }
       });
     });
@@ -217,7 +217,8 @@ void main() {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response');
         } else {
-          print('No mediator instances found, skipping update deployment test');
+          prettyPrint(
+              'No mediator instances found, skipping update deployment test');
         }
       });
     });
@@ -244,7 +245,7 @@ void main() {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response');
         } else {
-          print(
+          prettyPrint(
               'No mediator instances found, skipping update configuration test');
         }
       });
@@ -295,7 +296,7 @@ void main() {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/getMediatorCloudwatchMetricData/response');
         } else {
-          print(
+          prettyPrint(
               'No mediator instances found, skipping CloudWatch metrics test');
         }
       });
