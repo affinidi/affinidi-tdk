@@ -27,6 +27,7 @@ doc/CorsStartFileScanOK.md
 doc/CorsUpdateProfileDataOK.md
 doc/CreateAccountInput.md
 doc/CreateAccountOK.md
+doc/CreateChildNodeInput.md
 doc/CreateNodeInput.md
 doc/CreateNodeOK.md
 doc/DeleteAccountDto.md
@@ -102,6 +103,7 @@ lib/src/model/cors_start_file_scan_ok.dart
 lib/src/model/cors_update_profile_data_ok.dart
 lib/src/model/create_account_input.dart
 lib/src/model/create_account_ok.dart
+lib/src/model/create_child_node_input.dart
 lib/src/model/create_node_input.dart
 lib/src/model/create_node_ok.dart
 lib/src/model/date.dart
