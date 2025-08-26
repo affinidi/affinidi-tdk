@@ -4,36 +4,11 @@ import 'package:ssi/ssi.dart';
 
 import '../test/example_configs.dart';
 
-// Uncomment this class to use a local mediator with self-signed certificates
-// class MyHttpOverrides extends HttpOverrides {
-//   @override
-//   HttpClient createHttpClient(SecurityContext? context) {
-//     return super.createHttpClient(context)
-//       ..badCertificateCallback = (cert, host, port) => true;
-//   }
-// }
-
 void main() async {
-  // Uncomment this line to enable local mediator with self-signed certificates
-  // HttpOverrides.global = MyHttpOverrides();
-
   // Configure test files based on environment variables if needed
   configureTestFiles();
 
   prettyPrint('Atlas Client Example');
-  prettyPrint('Atlas Service', object: 'did:web:did.dev.affinidi.io:ama');
-  prettyPrint('');
-  prettyPrint(
-      'Note: To use your own mediator, create one at https://portal.affinidi.com');
-  prettyPrint('and save its DID in example/mediator/mediator_did.txt');
-  prettyPrint('');
-
-  // For local mediator setup:
-  // 1. Update example/mediator/mediator_did.txt to: did:web:localhost:7037
-  // 2. Uncomment the MyHttpOverrides class and HttpOverrides.global line above
-  // 3. Run your local mediator on port 7037
-
-  try {
     // Create Alice's wallet and DID manager
     final aliceKeyStore = InMemoryKeyStore();
     final aliceWallet = PersistentWallet(aliceKeyStore);
@@ -61,7 +36,6 @@ void main() async {
       );
     } catch (e) {
       // Generate new key if file doesn't exist
-      prettyPrint('Generating new key for Alice (key file not found)');
       await aliceWallet.generateKey(
         keyId: aliceKeyId,
         keyType: KeyType.p256,
@@ -72,6 +46,7 @@ void main() async {
     final aliceDidDocument = await aliceDidManager.getDidDocument();
 
     prettyPrint('Alice DID', object: aliceDidDocument.id);
+
 
     final aliceSigner = await aliceDidManager.getSigner(
       aliceDidDocument.authentication.first.id,
@@ -85,12 +60,9 @@ void main() async {
         await UniversalDIDResolver.defaultResolver.resolveDid(
       mediatorDid,
     );
-    prettyPrint('Mediator DID resolved');
 
     // Initialize Atlas service registry
     final atmServiceRegistry = await AtmServiceRegistry.init();
-
-    prettyPrint('Atlas service registry initialized');
 
     // Match keys for encryption
     final aliceMatchedDidKeyIds = aliceDidDocument.matchKeysInKeyAgreement(
@@ -130,11 +102,8 @@ void main() async {
       ),
     );
 
-    prettyPrint('Mediator client created');
-
     // Authenticate
     final authTokens = await mediatorClient.authenticate();
-
     prettyPrint('Authentication successful');
 
     // Setup Atlas client
@@ -144,14 +113,9 @@ void main() async {
       atmServiceRegistry: atmServiceRegistry,
     );
 
-    prettyPrint('Atlas client created');
-
     // Example operations
-    prettyPrint('');
-    prettyPrint('Testing Atlas Operations');
 
     // Example 1: Get list of mediator instances
-    prettyPrint('Getting mediator instances list...');
 
     // final listResponse = await atmAtlasClient.getMediatorInstancesList(
     //   accessToken: authTokens.accessToken,
@@ -166,7 +130,6 @@ void main() async {
     // Uncomment to test deployment
 
     prettyPrint('Deploying new mediator instance...');
-
     final deployResponse = await atmAtlasClient.deployMediatorInstance(
       accessToken: authTokens.accessToken,
       deploymentData: {
@@ -182,40 +145,20 @@ void main() async {
 
     // Example 3: Get mediator instance metadata
     // if (listResponse.instances.isNotEmpty) {
-    //   prettyPrint('Getting mediator instance metadata...');
-
     //   final mediatorId = listResponse.instances.first.id;
     //   final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
     //     accessToken: authTokens.accessToken,
     //     mediatorId: mediatorId,
     //   );
-
-    //   prettyPrint(
-    //     'Metadata response',
-    //     object: metadataResponse.body,
-    //   );
-    // } else {
-    //   prettyPrint(
-    //       'No mediator instances found. Deploy one to test metadata retrieval.');
     // }
 
     // Example 4: Get mediator requests (if any instances exist)
     // if (listResponse.instances.isNotEmpty) {
-    //   prettyPrint('Getting mediator requests...');
-
     //   final requestsResponse = await atmAtlasClient.getMediatorsRequests(
     //     accessToken: authTokens.accessToken,
     //     limit: 10,
     //   );
-
-    //   prettyPrint(
-    //     'Requests response',
-    //     object: requestsResponse.body,
-    //   );
     // }
-
-    prettyPrint('');
-    prettyPrint('Example completed successfully!');
 
     // Clean up connections
     await atmAtlasClient.dispose();
@@ -223,13 +166,6 @@ void main() async {
 
     // Wait a moment for connections to fully close
     await Future<void>.delayed(const Duration(milliseconds: 100));
-  } catch (e) {
-    prettyPrint('Error: $e');
-    if (e.toString().contains('401') || e.toString().contains('Unauthorized')) {
-      prettyPrint('');
-      prettyPrint(
-          'Authentication failed. Make sure your mediator supports authentication.');
-      prettyPrint('You may need to configure ACL or use a different mediator.');
-    }
-  }
+
+    prettyPrint('Example completed successfully!');
 }
