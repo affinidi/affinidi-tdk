@@ -11,7 +11,9 @@ MediatorRequest _$MediatorRequestFromJson(Map<String, dynamic> json) =>
       requestId: json['requestId'] as String,
       mediatorId: json['mediatorId'] as String,
       timestamp: DateTime.parse(json['timestamp'] as String),
-      details: json['details'] as Map<String, dynamic>?,
+      details: json['details'] == null
+          ? null
+          : RequestDetails.fromJson(json['details'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$MediatorRequestToJson(MediatorRequest instance) =>
@@ -19,7 +21,7 @@ Map<String, dynamic> _$MediatorRequestToJson(MediatorRequest instance) =>
       'requestId': instance.requestId,
       'mediatorId': instance.mediatorId,
       'timestamp': instance.timestamp.toIso8601String(),
-      if (instance.details case final value?) 'details': value,
+      if (instance.details?.toJson() case final value?) 'details': value,
     };
 
 GetMediatorsRequestsResponseData _$GetMediatorsRequestsResponseDataFromJson(

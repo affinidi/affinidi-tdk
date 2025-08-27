@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mediator_client/mediator_client.dart';
 
+import '../../models/data_models/mediator_acl.dart';
 import '../response_body.dart';
 
 part 'get_mediator_instances_list_message.g.dart';
@@ -111,7 +112,7 @@ class MediatorInstance {
   final String? administratorDid;
 
   /// The access control list.
-  final Map<String, dynamic>? acl;
+  final MediatorAcl? acl;
 
   /// Creates a mediator instance.
   MediatorInstance({

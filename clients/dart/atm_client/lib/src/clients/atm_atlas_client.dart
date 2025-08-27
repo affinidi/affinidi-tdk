@@ -6,6 +6,13 @@ import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
 import '../common/atm_mediator_client.dart';
+import '../models/request_bodies/deploy_mediator_instance_request.dart';
+import '../models/request_bodies/destroy_mediator_instance_request.dart';
+import '../models/request_bodies/get_mediator_cloudwatch_metric_data_request.dart';
+import '../models/request_bodies/get_mediator_instance_metadata_request.dart';
+import '../models/request_bodies/get_mediators_requests_request.dart';
+import '../models/request_bodies/update_mediator_instance_configuration_request.dart';
+import '../models/request_bodies/update_mediator_instance_deployment_request.dart';
 
 class AtmAtlasClient extends AtmBaseClient {
   AtmAtlasClient({
@@ -121,7 +128,7 @@ class AtmAtlasClient extends AtmBaseClient {
   /// Deploys a new mediator instance.
   Future<DeployMediatorInstanceResponseMessage> deployMediatorInstance({
     required String accessToken,
-    Map<String, dynamic>? deploymentData,
+    DeployMediatorInstanceRequest? deploymentData,
   }) async {
     final requestMessage = DeployMediatorInstanceMessage(
       id: const Uuid().v4(),
@@ -129,7 +136,7 @@ class AtmAtlasClient extends AtmBaseClient {
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: deploymentData ?? {},
+      body: deploymentData?.toJson() ?? {},
     );
 
     final responseMessage = await sendMessage(
@@ -153,13 +160,16 @@ class AtmAtlasClient extends AtmBaseClient {
     required String accessToken,
     required String mediatorId,
   }) async {
+    final request = GetMediatorInstanceMetadataRequest(
+      mediatorId: mediatorId,
+    );
     final requestMessage = GetMediatorInstanceMetadataMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: {'mediatorId': mediatorId},
+      body: request.toJson(),
     );
 
     final responseMessage = await sendMessage(
@@ -182,13 +192,16 @@ class AtmAtlasClient extends AtmBaseClient {
     required String accessToken,
     required String mediatorId,
   }) async {
+    final request = DestroyMediatorInstanceRequest(
+      mediatorId: mediatorId,
+    );
     final requestMessage = DestroyMediatorInstanceMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: {'mediatorId': mediatorId},
+      body: request.toJson(),
     );
 
     final responseMessage = await sendMessage(
@@ -211,11 +224,13 @@ class AtmAtlasClient extends AtmBaseClient {
       updateMediatorInstanceDeployment({
     required String accessToken,
     required String mediatorId,
-    Map<String, dynamic>? deploymentData,
+    UpdateMediatorInstanceDeploymentRequest? deploymentData,
   }) async {
-    final requestBody = <String, dynamic>{'mediatorId': mediatorId};
-    if (deploymentData != null) {
-      requestBody.addAll(deploymentData);
+    final request = deploymentData ??
+        UpdateMediatorInstanceDeploymentRequest(mediatorId: mediatorId);
+    // Ensure mediatorId is always set
+    if (deploymentData != null && deploymentData.mediatorId != mediatorId) {
+      throw ArgumentError('mediatorId mismatch in request data');
     }
 
     final requestMessage = UpdateMediatorInstanceDeploymentMessage(
@@ -224,7 +239,7 @@ class AtmAtlasClient extends AtmBaseClient {
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: requestBody,
+      body: request.toJson(),
     );
 
     final responseMessage = await sendMessage(
@@ -247,11 +262,13 @@ class AtmAtlasClient extends AtmBaseClient {
       updateMediatorInstanceConfiguration({
     required String accessToken,
     required String mediatorId,
-    Map<String, dynamic>? configurationData,
+    UpdateMediatorInstanceConfigurationRequest? configurationData,
   }) async {
-    final requestBody = <String, dynamic>{'mediatorId': mediatorId};
-    if (configurationData != null) {
-      requestBody.addAll(configurationData);
+    final request = configurationData ??
+        UpdateMediatorInstanceConfigurationRequest(mediatorId: mediatorId);
+    // Ensure mediatorId is always set
+    if (configurationData != null && configurationData.mediatorId != mediatorId) {
+      throw ArgumentError('mediatorId mismatch in request data');
     }
 
     final requestMessage = UpdateMediatorInstanceConfigurationMessage(
@@ -260,7 +277,7 @@ class AtmAtlasClient extends AtmBaseClient {
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: requestBody,
+      body: request.toJson(),
     );
 
     final responseMessage = await sendMessage(
@@ -285,12 +302,11 @@ class AtmAtlasClient extends AtmBaseClient {
     int? limit,
     String? exclusiveStartKey,
   }) async {
-    final requestBody = <String, dynamic>{};
-    if (mediatorId != null) requestBody['mediatorId'] = mediatorId;
-    if (limit != null) requestBody['limit'] = limit;
-    if (exclusiveStartKey != null) {
-      requestBody['exclusiveStartKey'] = exclusiveStartKey;
-    }
+    final request = GetMediatorsRequestsRequest(
+      mediatorId: mediatorId,
+      limit: limit,
+      exclusiveStartKey: exclusiveStartKey,
+    );
 
     final requestMessage = GetMediatorsRequestsMessage(
       id: const Uuid().v4(),
@@ -298,7 +314,7 @@ class AtmAtlasClient extends AtmBaseClient {
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: requestBody,
+      body: request.toJson(),
     );
 
     final responseMessage = await sendMessage(
@@ -326,13 +342,13 @@ class AtmAtlasClient extends AtmBaseClient {
     String? endDate,
     int? period,
   }) async {
-    final requestBody = <String, dynamic>{
-      'mediatorId': mediatorId,
-      'metricId': metricId,
-    };
-    if (startDate != null) requestBody['startDate'] = startDate;
-    if (endDate != null) requestBody['endDate'] = endDate;
-    if (period != null) requestBody['period'] = period;
+    final request = GetMediatorCloudwatchMetricDataRequest(
+      mediatorId: mediatorId,
+      metricId: metricId,
+      startDate: startDate,
+      endDate: endDate,
+      period: period,
+    );
 
     final requestMessage = GetMediatorCloudwatchMetricDataMessage(
       id: const Uuid().v4(),
@@ -340,7 +356,7 @@ class AtmAtlasClient extends AtmBaseClient {
       to: [atmServiceDidDocument.id],
       createdTime: DateTime.now().toUtc(),
       expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: requestBody,
+      body: request.toJson(),
     );
 
     final responseMessage = await sendMessage(

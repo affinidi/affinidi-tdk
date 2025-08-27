@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mediator_client/mediator_client.dart';
 
+import '../../models/data_models/mediator_configuration.dart';
+import '../../models/data_models/mediator_deployment.dart';
 import '../response_body.dart';
 
 part 'get_mediator_instance_metadata_message.g.dart';
@@ -64,10 +66,10 @@ class MediatorInstanceMetadata {
   final String status;
 
   /// The instance configuration.
-  final Map<String, dynamic>? configuration;
+  final MediatorConfiguration? configuration;
 
   /// The deployment information.
-  final Map<String, dynamic>? deployment;
+  final MediatorDeployment? deployment;
 
   /// Creates mediator instance metadata.
   MediatorInstanceMetadata({

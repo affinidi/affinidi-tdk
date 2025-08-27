@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mediator_client/mediator_client.dart';
 
+import '../../models/data_models/request_details.dart';
 import '../response_body.dart';
 
 part 'get_mediators_requests_message.g.dart';
@@ -69,7 +70,7 @@ class MediatorRequest {
   final DateTime timestamp;
 
   /// Additional request details.
-  final Map<String, dynamic>? details;
+  final RequestDetails? details;
 
   /// Creates a mediator request.
   MediatorRequest({

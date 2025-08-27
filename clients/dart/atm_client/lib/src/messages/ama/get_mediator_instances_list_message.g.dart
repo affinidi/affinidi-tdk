@@ -25,7 +25,9 @@ MediatorInstance _$MediatorInstanceFromJson(Map<String, dynamic> json) =>
       currentServiceRequest: json['currentServiceRequest'] as String?,
       isAdministratorDidGenerated: json['isAdministratorDidGenerated'] as bool?,
       administratorDid: json['administratorDid'] as String?,
-      acl: json['acl'] as Map<String, dynamic>?,
+      acl: json['acl'] == null
+          ? null
+          : MediatorAcl.fromJson(json['acl'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$MediatorInstanceToJson(MediatorInstance instance) =>
@@ -50,7 +52,7 @@ Map<String, dynamic> _$MediatorInstanceToJson(MediatorInstance instance) =>
         'isAdministratorDidGenerated': value,
       if (instance.administratorDid case final value?)
         'administratorDid': value,
-      if (instance.acl case final value?) 'acl': value,
+      if (instance.acl?.toJson() case final value?) 'acl': value,
     };
 
 MediatorInstanceBodyData _$MediatorInstanceBodyDataFromJson(

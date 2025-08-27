@@ -11,8 +11,14 @@ MediatorInstanceMetadata _$MediatorInstanceMetadataFromJson(
     MediatorInstanceMetadata(
       mediatorId: json['mediatorId'] as String,
       status: json['status'] as String,
-      configuration: json['configuration'] as Map<String, dynamic>?,
-      deployment: json['deployment'] as Map<String, dynamic>?,
+      configuration: json['configuration'] == null
+          ? null
+          : MediatorConfiguration.fromJson(
+              json['configuration'] as Map<String, dynamic>),
+      deployment: json['deployment'] == null
+          ? null
+          : MediatorDeployment.fromJson(
+              json['deployment'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$MediatorInstanceMetadataToJson(
@@ -20,6 +26,7 @@ Map<String, dynamic> _$MediatorInstanceMetadataToJson(
     <String, dynamic>{
       'mediatorId': instance.mediatorId,
       'status': instance.status,
-      if (instance.configuration case final value?) 'configuration': value,
-      if (instance.deployment case final value?) 'deployment': value,
+      if (instance.configuration?.toJson() case final value?)
+        'configuration': value,
+      if (instance.deployment?.toJson() case final value?) 'deployment': value,
     };
