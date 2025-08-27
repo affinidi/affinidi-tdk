@@ -2,11 +2,10 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:didcomm/didcomm.dart';
-import 'package:dio/dio.dart';
-
 // TODO: export correctly in DIDComm
 import 'package:didcomm/src/common/did_document_service_type.dart';
 import 'package:didcomm/src/mediator_client/mediator_client_exception.dart';
+import 'package:dio/dio.dart';
 
 // TODO: move this into messages folder to keep one class per file
 /// Represents a root DIDComm ACL Management Message.

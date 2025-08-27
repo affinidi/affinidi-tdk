@@ -6,10 +6,7 @@ import '../test/example_configs.dart';
 
 void main() async {
   // Run commands below in your terminal to generate keys for Receiver:
-  // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/bob_private_key.pem
-
-  // Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
-  // Copy its DID Document URL into example/mediator/mediator_did.txt.
+  // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
 
   final senderKeyStore = InMemoryKeyStore();
   final senderWallet = PersistentWallet(senderKeyStore);
@@ -32,60 +29,12 @@ void main() async {
   );
 
   await senderDidManager.addVerificationMethod(senderKeyId);
-  final senderDidDocument = await senderDidManager.getDidDocument();
 
-  final senderSigner = await senderDidManager.getSigner(
-    senderDidDocument.authentication.first.id,
-  );
-
-  final mediatorDidDocument =
-      await UniversalDIDResolver.defaultResolver.resolveDid(
-    await readDid(mediatorDidPath),
-  );
-
-  final atmServiceRegistry = await AtmServiceRegistry.init();
-
-  final senderMatchedDidKeyIds = senderDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [
-      mediatorDidDocument,
-      ...atmServiceRegistry.all,
-    ],
-  );
-
-  final mediatorClient = MediatorClient(
-    mediatorDidDocument: mediatorDidDocument,
-    keyPair: await senderDidManager.getKeyPairByDidKeyId(
-      senderMatchedDidKeyIds.first,
-    ),
-    didKeyId: senderMatchedDidKeyIds.first,
-    signer: senderSigner,
-    forwardMessageOptions: const ForwardMessageOptions(
-      shouldSign: true,
-      shouldEncrypt: true,
-      keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-      encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-    ),
-    webSocketOptions: const WebSocketOptions(
-      statusRequestMessageOptions: StatusRequestMessageOptions(
-        shouldSend: true,
-        shouldSign: true,
-        shouldEncrypt: true,
-      ),
-      liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-        shouldSend: true,
-        shouldSign: true,
-        shouldEncrypt: true,
-      ),
-    ),
-  );
-
-  final authTokes = await mediatorClient.authenticate();
-
-  final atmAtlasClient = AtmAtlasClient(
-    mediatorClient: mediatorClient,
+  final atmAtlasClient = await AtmAtlasClient.init(
     didManager: senderDidManager,
-    atmServiceRegistry: atmServiceRegistry,
   );
+
+  final authTokes = await atmAtlasClient.authenticate();
 
   prettyPrint('Sending the message...');
 
