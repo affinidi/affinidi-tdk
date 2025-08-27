@@ -4,176 +4,98 @@ import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../atm_service_registry.dart';
-import '../messages/ama/deploy_mediator_instance_message.dart';
-import '../messages/ama/destroy_mediator_instance_message.dart';
-import '../messages/ama/get_mediator_cloudwatch_metric_data_message.dart';
-import '../messages/ama/get_mediator_instance_metadata_message.dart';
-import '../messages/ama/get_mediator_instances_list_message.dart';
-import '../messages/ama/get_mediators_requests_message.dart';
-import '../messages/ama/update_mediator_instance_configuration_message.dart';
-import '../messages/ama/update_mediator_instance_deployment_message.dart';
-import 'client_options.dart';
+import '../../atm_client.dart';
+import '../common/atm_mediator_client.dart';
 
-/// Client for interacting with the ATM Atlas messaging service.
-class AtmMessagingAtlasClient {
-  /// Mediator client for message handling.
-  final MediatorClient mediatorClient;
+class AtmAtlasClient extends AtmBaseClient {
+  AtmAtlasClient({
+    required super.mediatorClient,
+    required super.didManager,
+    required super.atmServiceDidDocument,
+    super.clientOptions = const ClientOptions(),
+  });
 
-  /// DID manager for handling decentralized identifiers.
-  final DidManager didManager;
-
-  /// The ATM service DID document.
-  final DidDocument atmServiceDidDocument;
-
-  /// Client configuration options for timeouts and message expiration.
-  final ClientOptions clientOptions;
-
-  /// Creates an Atlas client with the specified mediator and registry.
-  AtmMessagingAtlasClient({
-    required this.mediatorClient,
-    required this.didManager,
-    required AtmServiceRegistry atmServiceRegistry,
-    this.clientOptions = const ClientOptions(),
-  }) : atmServiceDidDocument = atmServiceRegistry.atlasDidDocument;
-
-  /// Sends a message and waits for response.
-  Future<PlainTextMessage> _sendMessage(
-    PlainTextMessage requestMessage, {
-    required String accessToken,
+  static Future<AtmAtlasClient> init({
+    required DidManager didManager,
+    ClientOptions clientOptions = const ClientOptions(),
   }) async {
-    final completer = Completer<PlainTextMessage>();
-    final responseType = '${requestMessage.type.toString()}/response';
-    StreamSubscription? subscription;
+    final [mediatorDidDocument, atlasDidDocument] = await Future.wait([
+      UniversalDIDResolver.defaultResolver.resolveDid(
+        clientOptions.mediatorDid,
+      ),
+      UniversalDIDResolver.defaultResolver.resolveDid(
+        clientOptions.atlasDid,
+      ),
+    ]);
 
-    try {
-      // Set up listener for the response
-      subscription = await mediatorClient.listenForIncomingMessages(
-        (message) async {
-          try {
-            final unpackedMessage =
-                await DidcommMessage.unpackToPlainTextMessage(
-              message: message,
-              recipientDidManager: didManager,
-              expectedMessageWrappingTypes: [
-                MessageWrappingType.authcryptSignPlaintext,
-                MessageWrappingType.anoncryptSignPlaintext,
-              ],
-            );
+    final didDocument = await didManager.getDidDocument();
+    final signer = await didManager.getSigner(
+      didDocument.authentication.first.id,
+    );
 
-            // Verify sender is Atlas DID
-            if (unpackedMessage.from != atmServiceDidDocument.id) {
-              if (!completer.isCompleted) {
-                completer.completeError(
-                  Exception(
-                    'Security violation: Response sender ${unpackedMessage.from} '
-                    'does not match expected Atlas DID ${atmServiceDidDocument.id}',
-                  ),
-                );
-              }
-              return;
-            }
+    final matchedDidKeyIds = didDocument.matchKeysInKeyAgreement(
+      otherDidDocuments: [
+        mediatorDidDocument,
+        atlasDidDocument,
+      ],
+    );
 
-            // Check if this is the response we're waiting for
-            if (unpackedMessage.type.toString() == responseType) {
-              if (!completer.isCompleted) {
-                completer.complete(unpackedMessage);
-              }
-            }
-          } catch (e) {
-            if (!completer.isCompleted) {
-              completer.completeError(e);
-            }
-          }
-        },
-        onError: (Object error) {
-          if (!completer.isCompleted) {
-            completer.completeError(error);
-          }
-        },
-        onDone: () {
-          if (!completer.isCompleted) {
-            completer.completeError(
-              Exception('Connection closed before response received'),
-            );
-          }
-        },
-        accessToken: accessToken,
-        cancelOnError: false,
+    // TODO: improve error message to specify which key pair are supported by mediator/Atlas
+    if (matchedDidKeyIds.isEmpty) {
+      throw Exception(
+        'No matching keys found between our DID Document and mediator/Atlas',
       );
+    }
 
-      // Package the message for Atlas
-      final packagedMessageForAtmService =
-          await DidcommMessage.packIntoSignedAndEncryptedMessages(
-        requestMessage,
-        recipientDidDocuments: [
-          atmServiceDidDocument,
-        ],
+    final mediatorClient = AtmMediatorClient(
+      mediatorDidDocument: mediatorDidDocument,
+      keyPair: await didManager.getKeyPairByDidKeyId(
+        matchedDidKeyIds.first,
+      ),
+      didKeyId: matchedDidKeyIds.first,
+      signer: signer,
+      forwardMessageOptions: const ForwardMessageOptions(
+        shouldSign: true,
+        shouldEncrypt: true,
         keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
         encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-        keyPair: mediatorClient.keyPair,
-        didKeyId: mediatorClient.didKeyId,
-        signer: mediatorClient.signer,
-      );
+      ),
+      webSocketOptions: const WebSocketOptions(
+        statusRequestMessageOptions: StatusRequestMessageOptions(
+          shouldSend: true,
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
+        liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
+          shouldSend: true,
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
+      ),
+    );
 
-      final createdTime = DateTime.now().toUtc();
-      final expiresTime = createdTime.add(clientOptions.messageExpiration);
-
-      // Create forward message for mediator
-      final forwardMessage = ForwardMessage(
-        id: const Uuid().v4(),
-        to: [mediatorClient.mediatorDidDocument.id],
-        from: mediatorClient.signer.did,
-        next: atmServiceDidDocument.id,
-        expiresTime: expiresTime,
-        attachments: [
-          Attachment(
-            mediaType: 'application/json',
-            data: AttachmentData(
-              base64: base64UrlEncodeNoPadding(
-                packagedMessageForAtmService.toJsonBytes(),
-              ),
-            ),
-          ),
-        ],
-      );
-
-      // Send the message
-      await mediatorClient.sendMessage(
-        forwardMessage,
-        accessToken: accessToken,
-      );
-
-      // Wait for response with timeout
-      return await completer.future.timeout(clientOptions.requestTimeout);
-    } finally {
-      // Clean up subscription
-      await subscription?.cancel();
-    }
+    return AtmAtlasClient(
+      mediatorClient: mediatorClient,
+      didManager: didManager,
+      atmServiceDidDocument: atlasDidDocument,
+      clientOptions: clientOptions,
+    );
   }
 
-  /// Gets the list of mediator instances.
   Future<GetMediatorInstancesListResponseMessage> getMediatorInstancesList({
     required String accessToken,
-    int? limit,
-    String? exclusiveStartKey,
   }) async {
-    final requestBody = <String, dynamic>{};
-    if (limit != null) requestBody['limit'] = limit;
-    if (exclusiveStartKey != null) {
-      requestBody['exclusiveStartKey'] = exclusiveStartKey;
-    }
+    final createdTime = DateTime.now().toUtc();
 
     final requestMessage = GetMediatorInstancesListMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [atmServiceDidDocument.id],
-      createdTime: DateTime.now().toUtc(),
-      expiresTime: DateTime.now().add(clientOptions.messageExpiration).toUtc(),
-      body: requestBody,
+      createdTime: createdTime,
+      expiresTime: createdTime.add(clientOptions.messageExpiration),
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -185,6 +107,14 @@ class AtmMessagingAtlasClient {
       createdTime: responseMessage.createdTime,
       expiresTime: responseMessage.expiresTime,
       body: responseMessage.body,
+    );
+  }
+
+  Future<AuthenticationTokens> authenticate({
+    EncryptionAlgorithm encryptionAlgorithm = EncryptionAlgorithm.a256cbc,
+  }) async {
+    return await mediatorClient.authenticate(
+      encryptionAlgorithm: encryptionAlgorithm,
     );
   }
 
@@ -202,7 +132,7 @@ class AtmMessagingAtlasClient {
       body: deploymentData ?? {},
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -232,7 +162,7 @@ class AtmMessagingAtlasClient {
       body: {'mediatorId': mediatorId},
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -261,7 +191,7 @@ class AtmMessagingAtlasClient {
       body: {'mediatorId': mediatorId},
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -297,7 +227,7 @@ class AtmMessagingAtlasClient {
       body: requestBody,
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -333,7 +263,7 @@ class AtmMessagingAtlasClient {
       body: requestBody,
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -371,7 +301,7 @@ class AtmMessagingAtlasClient {
       body: requestBody,
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -413,7 +343,7 @@ class AtmMessagingAtlasClient {
       body: requestBody,
     );
 
-    final responseMessage = await _sendMessage(
+    final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );

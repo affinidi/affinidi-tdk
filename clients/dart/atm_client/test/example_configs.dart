@@ -21,7 +21,7 @@ const alicePrivateKeyPath = './example/keys/alice_private_key.pem';
 const bobPrivateKeyPath = './example/keys/bob_private_key.pem';
 
 /// Configures files based on ENV vars.
-void configureTestFiles() async {
+Future<void> configureTestFiles() async {
   await writeEnvironmentVariableToFileIfNeeded(
     'TEST_MEDIATOR_DID',
     mediatorDidPath,

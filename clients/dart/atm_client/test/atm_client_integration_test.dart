@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:atm_client/atm_client.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
@@ -7,24 +5,13 @@ import 'package:test/test.dart';
 
 import 'example_configs.dart';
 
-void main() {
-  configureTestFiles();
+Future<void> main() async {
+  await configureTestFiles();
 
-  group('Atlas Operations', () {
-    late AtmServiceRegistry atmServiceRegistry;
-    late MediatorClient mediatorClient;
+  group('Atlas', () async {
     late DidManager didManager;
-    late AtmMessagingAtlasClient atmAtlasClient;
-    late String accessToken;
 
     setUpAll(() async {
-      // Configure HTTP overrides for self-signed certificates if needed
-      if (Platform.environment['TEST_ALLOW_SELF_SIGNED_CERTS'] == 'true') {
-        HttpOverrides.global = _TestHttpOverrides();
-      }
-    });
-
-    setUp(() async {
       final keyStore = InMemoryKeyStore();
       final wallet = PersistentWallet(keyStore);
 
@@ -46,67 +33,18 @@ void main() {
       );
 
       await didManager.addVerificationMethod(keyId);
-      final didDocument = await didManager.getDidDocument();
-
-      final signer = await didManager.getSigner(
-        didDocument.authentication.first.id,
-      );
-
-      // Read mediator DID from file (same as didcomm_dart)
-      final mediatorDid = await readDid(mediatorDidPath);
-
-      final mediatorDidDocument =
-          await UniversalDIDResolver.defaultResolver.resolveDid(
-        mediatorDid,
-      );
-
-      atmServiceRegistry = await AtmServiceRegistry.init();
-
-      final senderMatchedDidKeyIds = didDocument.matchKeysInKeyAgreement(
-        otherDidDocuments: [
-          mediatorDidDocument,
-          ...atmServiceRegistry.all,
-        ],
-      );
-
-      mediatorClient = MediatorClient(
-        mediatorDidDocument: mediatorDidDocument,
-        keyPair: await didManager.getKeyPairByDidKeyId(
-          senderMatchedDidKeyIds.first,
-        ),
-        didKeyId: senderMatchedDidKeyIds.first,
-        signer: signer,
-        forwardMessageOptions: const ForwardMessageOptions(
-          shouldSign: true,
-          shouldEncrypt: true,
-          keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
-          encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-        ),
-        // Disable WebSocket for now - use HTTP only
-        webSocketOptions: const WebSocketOptions(
-          statusRequestMessageOptions: StatusRequestMessageOptions(
-            shouldSend: false, // Disable WebSocket status
-          ),
-          liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-            shouldSend: false, // Disable WebSocket live delivery
-          ),
-        ),
-      );
-
-      final authTokens = await mediatorClient.authenticate();
-      accessToken = authTokens.accessToken;
-
-      atmAtlasClient = AtmMessagingAtlasClient(
-        mediatorClient: mediatorClient,
-        didManager: didManager,
-        atmServiceRegistry: atmServiceRegistry,
-      );
     });
 
-    group('getMediatorInstancesList', () {
+    group('getMediatorInstancesList', () async {
       test('should return a list of mediator instances', () async {
-        final response = await atmAtlasClient.getMediatorInstancesList(
-          accessToken: accessToken,
+        // system under test
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+        final response = await sut.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
         );
 
         expect(response.instances, isNotNull);
@@ -115,9 +53,13 @@ void main() {
       });
 
       test('should handle pagination parameters', () async {
-        final response = await atmAtlasClient.getMediatorInstancesList(
-          accessToken: accessToken,
-          limit: 10,
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+        final response = await sut.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
         );
 
         expect(response.instances, isNotNull);
@@ -131,8 +73,15 @@ void main() {
           'description': 'Test mediator instance',
         };
 
-        final response = await atmAtlasClient.deployMediatorInstance(
-          accessToken: accessToken,
+        // system under test
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
+        final response = await sut.deployMediatorInstance(
+          accessToken: authTokens.accessToken,
           deploymentData: deploymentData,
         );
 
@@ -144,16 +93,22 @@ void main() {
 
     group('getMediatorInstanceMetadata', () {
       test('should retrieve mediator instance metadata', () async {
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
         // First get list to find a mediator ID
-        final listResponse = await atmAtlasClient.getMediatorInstancesList(
-          accessToken: accessToken,
+        final listResponse = await sut.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
         );
 
         if (listResponse.instances.isNotEmpty) {
           final mediatorId = listResponse.instances.first.id;
 
-          final response = await atmAtlasClient.getMediatorInstanceMetadata(
-            accessToken: accessToken,
+          final response = await sut.getMediatorInstanceMetadata(
+            accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
           );
 
@@ -169,9 +124,14 @@ void main() {
     group('destroyMediatorInstance', () {
       test('should destroy a mediator instance', skip: 'Destructive operation',
           () async {
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
         // Deploy a test instance first
-        final deployResponse = await atmAtlasClient.deployMediatorInstance(
-          accessToken: accessToken,
+        final deployResponse = await sut.deployMediatorInstance(
+          accessToken: authTokens.accessToken,
           deploymentData: {
             'name': 'test-destroy-${DateTime.now().millisecondsSinceEpoch}',
             'description': 'Test instance for destroy operation',
@@ -184,8 +144,8 @@ void main() {
         final mediatorId = deployResponse.body!['id'] as String;
 
         // Now destroy it
-        final response = await atmAtlasClient.destroyMediatorInstance(
-          accessToken: accessToken,
+        final response = await sut.destroyMediatorInstance(
+          accessToken: authTokens.accessToken,
           mediatorId: mediatorId,
         );
 
@@ -197,16 +157,21 @@ void main() {
 
     group('updateMediatorInstanceDeployment', () {
       test('should update mediator instance deployment', () async {
-        final listResponse = await atmAtlasClient.getMediatorInstancesList(
-          accessToken: accessToken,
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
+        final listResponse = await sut.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
         );
 
         if (listResponse.instances.isNotEmpty) {
           final mediatorId = listResponse.instances.first.id;
 
-          final response =
-              await atmAtlasClient.updateMediatorInstanceDeployment(
-            accessToken: accessToken,
+          final response = await sut.updateMediatorInstanceDeployment(
+            accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
             deploymentData: {
               'description': 'Updated description at ${DateTime.now()}',
@@ -225,16 +190,21 @@ void main() {
 
     group('updateMediatorInstanceConfiguration', () {
       test('should update mediator instance configuration', () async {
-        final listResponse = await atmAtlasClient.getMediatorInstancesList(
-          accessToken: accessToken,
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
+        final listResponse = await sut.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
         );
 
         if (listResponse.instances.isNotEmpty) {
           final mediatorId = listResponse.instances.first.id;
 
-          final response =
-              await atmAtlasClient.updateMediatorInstanceConfiguration(
-            accessToken: accessToken,
+          final response = await sut.updateMediatorInstanceConfiguration(
+            accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
             configurationData: {
               'logLevel': 'debug',
@@ -253,8 +223,14 @@ void main() {
 
     group('getMediatorsRequests', () {
       test('should retrieve mediator requests', () async {
-        final response = await atmAtlasClient.getMediatorsRequests(
-          accessToken: accessToken,
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
+        final response = await sut.getMediatorsRequests(
+          accessToken: authTokens.accessToken,
           limit: 10,
         );
 
@@ -264,8 +240,14 @@ void main() {
       });
 
       test('should handle pagination for requests', () async {
-        final response = await atmAtlasClient.getMediatorsRequests(
-          accessToken: accessToken,
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
+        final response = await sut.getMediatorsRequests(
+          accessToken: authTokens.accessToken,
           limit: 5,
         );
 
@@ -275,15 +257,21 @@ void main() {
 
     group('getMediatorCloudwatchMetricData', () {
       test('should retrieve CloudWatch metrics', () async {
-        final listResponse = await atmAtlasClient.getMediatorInstancesList(
-          accessToken: accessToken,
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
+        final listResponse = await sut.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
         );
 
         if (listResponse.instances.isNotEmpty) {
           final mediatorId = listResponse.instances.first.id;
 
-          final response = await atmAtlasClient.getMediatorCloudwatchMetricData(
-            accessToken: accessToken,
+          final response = await sut.getMediatorCloudwatchMetricData(
+            accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
             metricId: 'MessageCount',
             startDate: DateTime.now()
@@ -302,17 +290,4 @@ void main() {
       });
     });
   });
-}
-
-// HTTP overrides for testing with self-signed certificates
-class _TestHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback = (cert, host, port) {
-        // Allow self-signed certificates for Affinidi test environments
-        return host.endsWith('.affinidi.io') ||
-            host.contains('host.docker.internal');
-      };
-  }
 }

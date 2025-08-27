@@ -4,23 +4,15 @@ import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import 'client_options.dart';
+import '../common/atm_mediator_client.dart';
+import '../common/client_options.dart';
 
-/// Base client for ATM messaging operations.
 abstract class AtmBaseClient {
-  /// Client configuration options for timeouts and message expiration.
   final ClientOptions clientOptions;
-
-  /// Mediator client for message handling.
-  final MediatorClient mediatorClient;
-
-  /// DID manager for handling decentralized identifiers.
+  final AtmMediatorClient mediatorClient;
   final DidManager didManager;
-
-  /// The ATM service DID document.
   final DidDocument atmServiceDidDocument;
 
-  /// Creates a base ATM client with required mediator and DID components.
   AtmBaseClient({
     required this.mediatorClient,
     required this.didManager,
@@ -28,7 +20,6 @@ abstract class AtmBaseClient {
     this.clientOptions = const ClientOptions(),
   });
 
-  /// Sends a message to the ATM service through the mediator.
   Future<PlainTextMessage> sendMessage(
     PlainTextMessage requestMessage, {
     required String accessToken,
@@ -52,7 +43,6 @@ abstract class AtmBaseClient {
     final forwardMessage = ForwardMessage(
       id: const Uuid().v4(),
       to: [mediatorClient.mediatorDidDocument.id],
-      from: mediatorClient.signer.did,
       next: atmServiceDidDocument.id,
       expiresTime: expiresTime,
       attachments: [
@@ -67,56 +57,12 @@ abstract class AtmBaseClient {
       ],
     );
 
-    final completer = Completer<PlainTextMessage>();
-
-    await mediatorClient.listenForIncomingMessages(
-      (message) async {
-        if (completer.isCompleted) {
-          return;
-        }
-
-        final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
-          message: message,
-          recipientDidManager: didManager,
-          expectedMessageWrappingTypes: [
-            MessageWrappingType.authcryptSignPlaintext,
-            MessageWrappingType.anoncryptSignPlaintext,
-          ],
-        );
-
-        // Validate response type matches expected pattern
-        final expectedResponseType =
-            '${requestMessage.type.toString()}/response';
-        if (unpackedMessage.type.toString() != expectedResponseType) {
-          return; // Not the response we're waiting for
-        }
-
-        // Verify sender is Atlas DID
-        if (unpackedMessage.from != atmServiceDidDocument.id) {
-          completer.completeError(
-            Exception(
-              'Security violation: Response sender ${unpackedMessage.from} '
-              'does not match expected Atlas DID ${atmServiceDidDocument.id}',
-            ),
-          );
-          await mediatorClient.disconnect();
-          return;
-        }
-
-        // All validations passed - complete with the response
-        completer.complete(unpackedMessage);
-        await mediatorClient.disconnect();
-      },
-      onError: completer.completeError,
-      onDone: () {
-        if (!completer.isCompleted) {
-          completer.completeError(
-            Exception('Connection has been dropped'),
-          );
-        }
-      },
+    final responseMessageFuture = mediatorClient.waitForMessage(
+      messageType: '${requestMessage.type.toString()}/response',
+      didManager: didManager,
       accessToken: accessToken,
-      cancelOnError: false,
+      atmServiceDidDocument: atmServiceDidDocument,
+      clientOptions: clientOptions,
     );
 
     await mediatorClient.sendMessage(
@@ -124,6 +70,6 @@ abstract class AtmBaseClient {
       accessToken: accessToken,
     );
 
-    return completer.future.timeout(clientOptions.requestTimeout);
+    return await responseMessageFuture;
   }
 }

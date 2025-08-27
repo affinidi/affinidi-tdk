@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 import 'example_configs.dart';
 
 void main() async {
-  configureTestFiles();
+  await configureTestFiles();
 
   test(
     'Running example files to check if they are aligned with the code',

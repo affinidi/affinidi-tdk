@@ -1,7 +1,8 @@
-export 'src/atm_service_registry.dart';
+export 'src/clients.dart';
 export 'src/clients/atm_atlas_client.dart' show AtmMessagingAtlasClient;
 export 'src/clients/atm_base_client.dart';
-export 'src/clients/client_options.dart';
+export 'src/common/client_options.dart';
+export 'src/messages.dart';
 export 'src/messages/ama/deploy_mediator_instance_message.dart'
     show
         DeployMediatorInstanceMessage,
