@@ -4,11 +4,12 @@ import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import 'client_options.dart';
+import '../common/atm_mediator_client.dart';
+import '../common/client_options.dart';
 
 abstract class AtmBaseClient {
   final ClientOptions clientOptions;
-  final MediatorClient mediatorClient;
+  final AtmMediatorClient mediatorClient;
   final DidManager didManager;
   final DidDocument atmServiceDidDocument;
 
@@ -56,40 +57,12 @@ abstract class AtmBaseClient {
       ],
     );
 
-    final completer = Completer<PlainTextMessage>();
-
-    await mediatorClient.listenForIncomingMessages(
-      (message) async {
-        if (completer.isCompleted) {
-          return;
-        }
-
-        final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
-          message: message,
-          recipientDidManager: didManager,
-          expectedMessageWrappingTypes: [
-            MessageWrappingType.authcryptSignPlaintext,
-            MessageWrappingType.anoncryptSignPlaintext,
-          ],
-        );
-
-        // TODO: use parent ID instead when available on DIDComm Gateway
-        if (unpackedMessage.type.toString() ==
-            '${requestMessage.type.toString()}/response') {
-          completer.complete(unpackedMessage);
-          await mediatorClient.disconnect();
-        }
-      },
-      onError: completer.completeError,
-      onDone: () {
-        if (!completer.isCompleted) {
-          completer.completeError(
-            Exception('Connection has been dropped'),
-          );
-        }
-      },
+    final responseMessageFuture = mediatorClient.waitForMessage(
+      messageType: '${requestMessage.type.toString()}/response',
+      didManager: didManager,
       accessToken: accessToken,
-      cancelOnError: false,
+      atmServiceDidDocument: atmServiceDidDocument,
+      clientOptions: clientOptions,
     );
 
     await mediatorClient.sendMessage(
@@ -97,6 +70,6 @@ abstract class AtmBaseClient {
       accessToken: accessToken,
     );
 
-    return completer.future.timeout(clientOptions.requestTimeout);
+    return await responseMessageFuture;
   }
 }

@@ -1,8 +1,6 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-// TODO: export properly from didcomm package
-import 'package:didcomm/src/common/authentication_tokens/authentication_tokens.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
