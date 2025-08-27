@@ -6,41 +6,31 @@ import '../test/example_configs.dart';
 void main() async {
   // Run commands below in your terminal to generate keys for Receiver:
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
+  
   // Configure test files based on environment variables if needed
   await configureTestFiles();
 
-  // Create Alice's wallet and DID manager
-  final aliceKeyStore = InMemoryKeyStore();
-  final aliceWallet = PersistentWallet(aliceKeyStore);
+  final senderKeyStore = InMemoryKeyStore();
+  final senderWallet = PersistentWallet(senderKeyStore);
 
   final senderDidManager = DidPeerManager(
-    wallet: aliceWallet,
+    wallet: senderWallet,
     store: InMemoryDidStore(),
   );
 
-  // Load Alice's private key from file or generate new one
-  final senderKeyId = 'alice-key-1';
+  final senderKeyId = 'sender-key-1';
 
-  try {
-    // Try to load existing key
-    final senderPrivateKeyBytes = await extractPrivateKeyBytes(
-      alicePrivateKeyPath,
-    );
+  final senderPrivateKeyBytes = await extractPrivateKeyBytes(
+    alicePrivateKeyPath,
+  );
 
-    await aliceKeyStore.set(
-      senderKeyId,
-      StoredKey(
-        keyType: KeyType.p256,
-        privateKeyBytes: senderPrivateKeyBytes,
-      ),
-    );
-  } catch (e) {
-    // Generate new key if file doesn't exist
-    await aliceWallet.generateKey(
-      keyId: senderKeyId,
+  await senderKeyStore.set(
+    senderKeyId,
+    StoredKey(
       keyType: KeyType.p256,
-    );
-  }
+      privateKeyBytes: senderPrivateKeyBytes,
+    ),
+  );
 
   await senderDidManager.addVerificationMethod(senderKeyId);
 
@@ -53,7 +43,6 @@ void main() async {
   prettyPrint('Sending the message...');
 
   // Example 1: Get list of mediator instances
-
   // final listResponse = await atmAtlasClient.getMediatorInstancesList(
   //   accessToken: authTokens.accessToken,
   // );
@@ -64,8 +53,6 @@ void main() async {
   // );
 
   // Example 2: Deploy a new mediator instance (commented out by default)
-  // Uncomment to test deployment
-
   // prettyPrint('Deploying new mediator instance...');
   // final deployResponse = await atmAtlasClient.deployMediatorInstance(
   //   accessToken: authTokes.accessToken,
