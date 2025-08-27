@@ -1,4 +1,3 @@
-import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
@@ -54,6 +53,7 @@ void main() async {
   // );
 
   // Example 2: Deploy a new mediator instance (commented out by default)
+  // import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
   // prettyPrint('Deploying new mediator instance...');
   // final deployRequest = DeployMediatorInstanceRequest(
   //   name: 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',

@@ -1,5 +1,5 @@
 export 'src/clients.dart';
-export 'src/clients/atm_atlas_client.dart' show AtmMessagingAtlasClient;
+export 'src/clients/atm_atlas_client.dart' show AtmAtlasClient;
 export 'src/clients/atm_base_client.dart';
 export 'src/common/client_options.dart';
 export 'src/messages.dart';

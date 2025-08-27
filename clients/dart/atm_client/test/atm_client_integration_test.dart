@@ -1,4 +1,7 @@
 import 'package:atm_client/atm_client.dart';
+import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
+import 'package:atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
+import 'package:atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
@@ -68,10 +71,10 @@ Future<void> main() async {
 
     group('deployMediatorInstance', () {
       test('should deploy a new mediator instance', () async {
-        final deploymentData = {
-          'name': 'test-mediator-${DateTime.now().millisecondsSinceEpoch}',
-          'description': 'Test mediator instance',
-        };
+        final deploymentData = DeployMediatorInstanceRequest(
+          name: 'test-mediator-${DateTime.now().millisecondsSinceEpoch}',
+          description: 'Test mediator instance',
+        );
 
         // system under test
         final sut = await AtmAtlasClient.init(
@@ -132,16 +135,14 @@ Future<void> main() async {
         // Deploy a test instance first
         final deployResponse = await sut.deployMediatorInstance(
           accessToken: authTokens.accessToken,
-          deploymentData: {
-            'name': 'test-destroy-${DateTime.now().millisecondsSinceEpoch}',
-            'description': 'Test instance for destroy operation',
-          },
+          deploymentData: DeployMediatorInstanceRequest(
+            name: 'test-destroy-${DateTime.now().millisecondsSinceEpoch}',
+            description: 'Test instance for destroy operation',
+          ),
         );
 
-        if (deployResponse.body == null || deployResponse.body!['id'] == null) {
-          throw Exception('Missing mediator ID in deploy response');
-        }
-        final mediatorId = deployResponse.body!['id'] as String;
+        final deployResponseData = deployResponse.response;
+        final mediatorId = deployResponseData.mediatorId;
 
         // Now destroy it
         final response = await sut.destroyMediatorInstance(
@@ -173,9 +174,12 @@ Future<void> main() async {
           final response = await sut.updateMediatorInstanceDeployment(
             accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
-            deploymentData: {
-              'description': 'Updated description at ${DateTime.now()}',
-            },
+            deploymentData: UpdateMediatorInstanceDeploymentRequest(
+              mediatorId: mediatorId,
+              autoScaling: true,
+              minInstances: 1,
+              maxInstances: 3,
+            ),
           );
 
           expect(response.body, isNotNull);
@@ -206,9 +210,10 @@ Future<void> main() async {
           final response = await sut.updateMediatorInstanceConfiguration(
             accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
-            configurationData: {
-              'logLevel': 'debug',
-            },
+            configurationData: UpdateMediatorInstanceConfigurationRequest(
+              mediatorId: mediatorId,
+              logLevel: 'debug',
+            ),
           );
 
           expect(response.body, isNotNull);
