@@ -29,21 +29,6 @@ class AtmMessagingAtlasClient {
   /// Client configuration options for timeouts and message expiration.
   final ClientOptions clientOptions;
 
-  /// Active WebSocket subscription.
-  StreamSubscription? _activeSubscription;
-
-  /// Map of pending responses indexed by expected response type.
-  final Map<String, Completer<PlainTextMessage>> _pendingResponses = {};
-
-  /// Whether the WebSocket connection is established.
-  bool _isConnected = false;
-
-  /// The access token used for the current connection.
-  String? _currentAccessToken;
-
-  /// Whether the client is being disposed.
-  bool _isDisposing = false;
-
   /// Creates an Atlas client with the specified mediator and registry.
   AtmMessagingAtlasClient({
     required this.mediatorClient,
@@ -52,166 +37,126 @@ class AtmMessagingAtlasClient {
     this.clientOptions = const ClientOptions(),
   }) : atmServiceDidDocument = atmServiceRegistry.atlasDidDocument;
 
-  /// Ensures the WebSocket connection is established.
-  Future<void> _ensureConnected(String accessToken) async {
-    if (_isConnected && _currentAccessToken == accessToken) {
-      return;
-    }
-
-    if (_isConnected && _currentAccessToken != accessToken) {
-      await dispose();
-      _isDisposing = false;
-    }
-
-    _currentAccessToken = accessToken;
-    _activeSubscription = await mediatorClient.listenForIncomingMessages(
-      _handleIncomingMessage,
-      onError: _handleError,
-      onDone: _handleConnectionClosed,
-      accessToken: accessToken,
-      cancelOnError: false,
-    );
-    _isConnected = true;
-  }
-
-  /// Handles incoming messages and routes them to pending responses.
-  Future<void> _handleIncomingMessage(Map<String, dynamic> message) async {
-    try {
-      final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
-        message: message,
-        recipientDidManager: didManager,
-        expectedMessageWrappingTypes: [
-          MessageWrappingType.authcryptSignPlaintext,
-          MessageWrappingType.anoncryptSignPlaintext,
-        ],
-      );
-
-      // Verify sender is Atlas DID
-      if (unpackedMessage.from != atmServiceDidDocument.id) {
-        for (final completer in _pendingResponses.values) {
-          if (!completer.isCompleted) {
-            completer.completeError(
-              Exception(
-                'Security violation: Response sender ${unpackedMessage.from} '
-                'does not match expected Atlas DID ${atmServiceDidDocument.id}',
-              ),
-            );
-          }
-        }
-        _pendingResponses.clear();
-        return;
-      }
-
-      final messageType = unpackedMessage.type.toString();
-
-      for (final entry in _pendingResponses.entries) {
-        if (messageType == entry.key) {
-          entry.value.complete(unpackedMessage);
-          _pendingResponses.remove(entry.key);
-          break;
-        }
-      }
-    } catch (e) {
-      for (final completer in _pendingResponses.values) {
-        if (!completer.isCompleted) {
-          completer.completeError(e);
-        }
-      }
-      _pendingResponses.clear();
-    }
-  }
-
-  /// Handles WebSocket errors.
-  void _handleError(Object error) {
-    for (final completer in _pendingResponses.values) {
-      if (!completer.isCompleted) {
-        completer.completeError(error);
-      }
-    }
-    _pendingResponses.clear();
-    _isConnected = false;
-  }
-
-  /// Handles WebSocket connection closed.
-  void _handleConnectionClosed() {
-    if (!_isDisposing) {
-      for (final completer in _pendingResponses.values) {
-        if (!completer.isCompleted) {
-          completer.completeError(
-            Exception('Connection has been dropped'),
-          );
-        }
-      }
-    }
-    _pendingResponses.clear();
-    _isConnected = false;
-  }
 
   /// Sends a message and waits for response.
   Future<PlainTextMessage> _sendMessage(
     PlainTextMessage requestMessage, {
     required String accessToken,
   }) async {
-    await _ensureConnected(accessToken);
-
-    final packagedMessageForAtmService =
-        await DidcommMessage.packIntoSignedAndEncryptedMessages(
-      requestMessage,
-      recipientDidDocuments: [
-        atmServiceDidDocument,
-      ],
-      keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-      encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-      keyPair: mediatorClient.keyPair,
-      didKeyId: mediatorClient.didKeyId,
-      signer: mediatorClient.signer,
-    );
-
-    final createdTime = DateTime.now().toUtc();
-    final expiresTime = createdTime.add(clientOptions.messageExpiration);
-
-    final forwardMessage = ForwardMessage(
-      id: const Uuid().v4(),
-      to: [mediatorClient.mediatorDidDocument.id],
-      from: mediatorClient.signer.did,
-      next: atmServiceDidDocument.id,
-      expiresTime: expiresTime,
-      attachments: [
-        Attachment(
-          mediaType: 'application/json',
-          data: AttachmentData(
-            base64: base64UrlEncodeNoPadding(
-              packagedMessageForAtmService.toJsonBytes(),
-            ),
-          ),
-        ),
-      ],
-    );
-
     final completer = Completer<PlainTextMessage>();
     final responseType = '${requestMessage.type.toString()}/response';
-    _pendingResponses[responseType] = completer;
-
-    await mediatorClient.sendMessage(
-      forwardMessage,
-      accessToken: accessToken,
-    );
+    StreamSubscription? subscription;
 
     try {
+      // Set up listener for the response
+      subscription = await mediatorClient.listenForIncomingMessages(
+        (message) async {
+          try {
+            final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
+              message: message,
+              recipientDidManager: didManager,
+              expectedMessageWrappingTypes: [
+                MessageWrappingType.authcryptSignPlaintext,
+                MessageWrappingType.anoncryptSignPlaintext,
+              ],
+            );
+
+            // Verify sender is Atlas DID
+            if (unpackedMessage.from != atmServiceDidDocument.id) {
+              if (!completer.isCompleted) {
+                completer.completeError(
+                  Exception(
+                    'Security violation: Response sender ${unpackedMessage.from} '
+                    'does not match expected Atlas DID ${atmServiceDidDocument.id}',
+                  ),
+                );
+              }
+              return;
+            }
+
+            // Check if this is the response we're waiting for
+            if (unpackedMessage.type.toString() == responseType) {
+              if (!completer.isCompleted) {
+                completer.complete(unpackedMessage);
+              }
+            }
+          } catch (e) {
+            if (!completer.isCompleted) {
+              completer.completeError(e);
+            }
+          }
+        },
+        onError: (Object error) {
+          if (!completer.isCompleted) {
+            completer.completeError(error);
+          }
+        },
+        onDone: () {
+          if (!completer.isCompleted) {
+            completer.completeError(
+              Exception('Connection closed before response received'),
+            );
+          }
+        },
+        accessToken: accessToken,
+        cancelOnError: false,
+      );
+
+      // Package the message for Atlas
+      final packagedMessageForAtmService =
+          await DidcommMessage.packIntoSignedAndEncryptedMessages(
+        requestMessage,
+        recipientDidDocuments: [
+          atmServiceDidDocument,
+        ],
+        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+        encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+        keyPair: mediatorClient.keyPair,
+        didKeyId: mediatorClient.didKeyId,
+        signer: mediatorClient.signer,
+      );
+
+      final createdTime = DateTime.now().toUtc();
+      final expiresTime = createdTime.add(clientOptions.messageExpiration);
+
+      // Create forward message for mediator
+      final forwardMessage = ForwardMessage(
+        id: const Uuid().v4(),
+        to: [mediatorClient.mediatorDidDocument.id],
+        from: mediatorClient.signer.did,
+        next: atmServiceDidDocument.id,
+        expiresTime: expiresTime,
+        attachments: [
+          Attachment(
+            mediaType: 'application/json',
+            data: AttachmentData(
+              base64: base64UrlEncodeNoPadding(
+                packagedMessageForAtmService.toJsonBytes(),
+              ),
+            ),
+          ),
+        ],
+      );
+
+      // Send the message
+      await mediatorClient.sendMessage(
+        forwardMessage,
+        accessToken: accessToken,
+      );
+
+      // Wait for response with timeout
       return await completer.future.timeout(clientOptions.requestTimeout);
     } finally {
-      _pendingResponses.remove(responseType);
+      // Clean up subscription
+      await subscription?.cancel();
     }
   }
 
-  /// Disposes of the WebSocket connection and cleans up resources.
+  /// Disposes of resources.
+  /// Note: Since each method call manages its own subscription,
+  /// this method is now a no-op kept for backward compatibility.
   Future<void> dispose() async {
-    _isDisposing = true;
-    _pendingResponses.clear();
-    await _activeSubscription?.cancel();
-    _activeSubscription = null;
-    _isConnected = false;
-    _currentAccessToken = null;
+    // No-op - each method call manages its own subscription
   }
 
   /// Gets the list of mediator instances.
