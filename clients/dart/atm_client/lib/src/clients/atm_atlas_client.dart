@@ -37,7 +37,6 @@ class AtmMessagingAtlasClient {
     this.clientOptions = const ClientOptions(),
   }) : atmServiceDidDocument = atmServiceRegistry.atlasDidDocument;
 
-
   /// Sends a message and waits for response.
   Future<PlainTextMessage> _sendMessage(
     PlainTextMessage requestMessage, {
@@ -52,7 +51,8 @@ class AtmMessagingAtlasClient {
       subscription = await mediatorClient.listenForIncomingMessages(
         (message) async {
           try {
-            final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
+            final unpackedMessage =
+                await DidcommMessage.unpackToPlainTextMessage(
               message: message,
               recipientDidManager: didManager,
               expectedMessageWrappingTypes: [
@@ -150,13 +150,6 @@ class AtmMessagingAtlasClient {
       // Clean up subscription
       await subscription?.cancel();
     }
-  }
-
-  /// Disposes of resources.
-  /// Note: Since each method call manages its own subscription,
-  /// this method is now a no-op kept for backward compatibility.
-  Future<void> dispose() async {
-    // No-op - each method call manages its own subscription
   }
 
   /// Gets the list of mediator instances.
