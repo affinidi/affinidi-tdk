@@ -38,62 +38,6 @@ Future<void> main() async {
       await didManager.addVerificationMethod(keyId);
     });
 
-    group('getMediatorInstancesList', () async {
-      test('should return a list of mediator instances', () async {
-        // system under test
-        final sut = await AtmAtlasClient.init(
-          didManager: didManager,
-        );
-
-        final authTokens = await sut.authenticate();
-        final response = await sut.getMediatorInstancesList(
-          accessToken: authTokens.accessToken,
-        );
-
-        expect(response.instances, isNotNull);
-        expect(response.type.toString(),
-            'affinidi.io/operations/ama/getMediatorInstancesList/response');
-      });
-
-      test('should handle pagination parameters', () async {
-        final sut = await AtmAtlasClient.init(
-          didManager: didManager,
-        );
-
-        final authTokens = await sut.authenticate();
-        final response = await sut.getMediatorInstancesList(
-          accessToken: authTokens.accessToken,
-        );
-
-        expect(response.instances, isNotNull);
-      });
-    });
-
-    group('deployMediatorInstance', () {
-      test('should deploy a new mediator instance', () async {
-        final deploymentData = DeployMediatorInstanceRequest(
-          name: 'test-mediator-${DateTime.now().millisecondsSinceEpoch}',
-          description: 'Test mediator instance',
-        );
-
-        // system under test
-        final sut = await AtmAtlasClient.init(
-          didManager: didManager,
-        );
-
-        final authTokens = await sut.authenticate();
-
-        final response = await sut.deployMediatorInstance(
-          accessToken: authTokens.accessToken,
-          deploymentData: deploymentData,
-        );
-
-        expect(response.body, isNotNull);
-        expect(response.type.toString(),
-            'affinidi.io/operations/ama/deployMediatorInstance/response');
-      });
-    });
-
     group('getMediatorInstanceMetadata', () {
       test('should retrieve mediator instance metadata', () async {
         final sut = await AtmAtlasClient.init(
@@ -107,52 +51,16 @@ Future<void> main() async {
           accessToken: authTokens.accessToken,
         );
 
-        if (listResponse.instances.isNotEmpty) {
-          final mediatorId = listResponse.instances.first.id;
+        final mediatorId = listResponse.instances.first.id;
 
-          final response = await sut.getMediatorInstanceMetadata(
-            accessToken: authTokens.accessToken,
-            mediatorId: mediatorId,
-          );
-
-          expect(response.body, isNotNull);
-          expect(response.type.toString(),
-              'affinidi.io/operations/ama/getMediatorInstanceMetadata/response');
-        } else {
-          prettyPrint('No mediator instances found, skipping metadata test');
-        }
-      });
-    });
-
-    group('destroyMediatorInstance', () {
-      test('should destroy a mediator instance', skip: 'Destructive operation',
-          () async {
-        final sut = await AtmAtlasClient.init(
-          didManager: didManager,
-        );
-
-        final authTokens = await sut.authenticate();
-        // Deploy a test instance first
-        final deployResponse = await sut.deployMediatorInstance(
-          accessToken: authTokens.accessToken,
-          deploymentData: DeployMediatorInstanceRequest(
-            name: 'test-destroy-${DateTime.now().millisecondsSinceEpoch}',
-            description: 'Test instance for destroy operation',
-          ),
-        );
-
-        final deployResponseData = deployResponse.response;
-        final mediatorId = deployResponseData.mediatorId;
-
-        // Now destroy it
-        final response = await sut.destroyMediatorInstance(
+        final response = await sut.getMediatorInstanceMetadata(
           accessToken: authTokens.accessToken,
           mediatorId: mediatorId,
         );
 
         expect(response.body, isNotNull);
         expect(response.type.toString(),
-            'affinidi.io/operations/ama/destroyMediatorInstance/response');
+            'affinidi.io/operations/ama/getMediatorInstanceMetadata/response');
       });
     });
 
@@ -168,27 +76,22 @@ Future<void> main() async {
           accessToken: authTokens.accessToken,
         );
 
-        if (listResponse.instances.isNotEmpty) {
-          final mediatorId = listResponse.instances.first.id;
+        final mediatorId = listResponse.instances.first.id;
 
-          final response = await sut.updateMediatorInstanceDeployment(
-            accessToken: authTokens.accessToken,
+        final response = await sut.updateMediatorInstanceDeployment(
+          accessToken: authTokens.accessToken,
+          mediatorId: mediatorId,
+          deploymentData: UpdateMediatorInstanceDeploymentRequest(
             mediatorId: mediatorId,
-            deploymentData: UpdateMediatorInstanceDeploymentRequest(
-              mediatorId: mediatorId,
-              autoScaling: true,
-              minInstances: 1,
-              maxInstances: 3,
-            ),
-          );
+            autoScaling: true,
+            minInstances: 1,
+            maxInstances: 3,
+          ),
+        );
 
-          expect(response.body, isNotNull);
-          expect(response.type.toString(),
-              'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response');
-        } else {
-          prettyPrint(
-              'No mediator instances found, skipping update deployment test');
-        }
+        expect(response.body, isNotNull);
+        expect(response.type.toString(),
+            'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response');
       });
     });
 
@@ -204,25 +107,20 @@ Future<void> main() async {
           accessToken: authTokens.accessToken,
         );
 
-        if (listResponse.instances.isNotEmpty) {
-          final mediatorId = listResponse.instances.first.id;
+        final mediatorId = listResponse.instances.first.id;
 
-          final response = await sut.updateMediatorInstanceConfiguration(
-            accessToken: authTokens.accessToken,
+        final response = await sut.updateMediatorInstanceConfiguration(
+          accessToken: authTokens.accessToken,
+          mediatorId: mediatorId,
+          configurationData: UpdateMediatorInstanceConfigurationRequest(
             mediatorId: mediatorId,
-            configurationData: UpdateMediatorInstanceConfigurationRequest(
-              mediatorId: mediatorId,
-              logLevel: 'debug',
-            ),
-          );
+            logLevel: 'debug',
+          ),
+        );
 
-          expect(response.body, isNotNull);
-          expect(response.type.toString(),
-              'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response');
-        } else {
-          prettyPrint(
-              'No mediator instances found, skipping update configuration test');
-        }
+        expect(response.body, isNotNull);
+        expect(response.type.toString(),
+            'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response');
       });
     });
 
@@ -272,26 +170,82 @@ Future<void> main() async {
           accessToken: authTokens.accessToken,
         );
 
-        if (listResponse.instances.isNotEmpty) {
-          final mediatorId = listResponse.instances.first.id;
+        final mediatorId = listResponse.instances.first.id;
 
-          final response = await sut.getMediatorCloudwatchMetricData(
-            accessToken: authTokens.accessToken,
-            mediatorId: mediatorId,
-            metricId: 'MessageCount',
-            startDate: DateTime.now()
-                .subtract(const Duration(hours: 1))
-                .toIso8601String(),
-            endDate: DateTime.now().toIso8601String(),
-          );
+        final response = await sut.getMediatorCloudwatchMetricData(
+          accessToken: authTokens.accessToken,
+          mediatorId: mediatorId,
+          metricId: 'MessageCount',
+          startDate: DateTime.now()
+              .subtract(const Duration(hours: 1))
+              .toIso8601String(),
+          endDate: DateTime.now().toIso8601String(),
+        );
 
-          expect(response.body, isNotNull);
-          expect(response.type.toString(),
-              'affinidi.io/operations/ama/getMediatorCloudwatchMetricData/response');
-        } else {
-          prettyPrint(
-              'No mediator instances found, skipping CloudWatch metrics test');
-        }
+        expect(response.body, isNotNull);
+        expect(response.type.toString(),
+            'affinidi.io/operations/ama/getMediatorCloudwatchMetricData/response');
+      });
+    });
+
+    group('Deploy-List-Delete Flow', () {
+      test('should deploy, list, and delete a mediator instance', () async {
+        final sut = await AtmAtlasClient.init(
+          didManager: didManager,
+        );
+
+        final authTokens = await sut.authenticate();
+
+        final deploymentData = DeployMediatorInstanceRequest(
+          name:
+              'test-deploy-list-delete-${DateTime.now().millisecondsSinceEpoch}',
+          description: 'Integration test mediator instance',
+        );
+
+        final deployResponse = await sut.deployMediatorInstance(
+          accessToken: authTokens.accessToken,
+          deploymentData: deploymentData,
+        );
+        expect(deployResponse.body, isNotNull);
+        expect(deployResponse.type.toString(),
+            'affinidi.io/operations/ama/deployMediatorInstance/response');
+
+        final deployResponseData = deployResponse.response;
+        expect(deployResponseData.mediatorId, isNotNull);
+        expect(deployResponseData.status, isNotNull);
+        expect(deployResponseData.status.toLowerCase(),
+            anyOf(contains('deploy'), contains('start'), contains('progress')),
+            reason: 'Expected deployment status message');
+
+        final mediatorId = deployResponseData.mediatorId;
+        final listResponse = await sut.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
+        );
+
+        expect(listResponse.body, isNotNull);
+        expect(listResponse.type.toString(),
+            'affinidi.io/operations/ama/getMediatorInstancesList/response');
+        expect(listResponse.instances, isNotEmpty,
+            reason: 'Expected non-empty list of mediator instances');
+        final deployedInstance = listResponse.instances
+            .where((instance) => instance.id == mediatorId)
+            .firstOrNull;
+        expect(deployedInstance, isNotNull,
+            reason: 'Expected to find the deployed instance in the list');
+        final deleteResponse = await sut.destroyMediatorInstance(
+          accessToken: authTokens.accessToken,
+          mediatorId: mediatorId,
+        );
+        expect(deleteResponse.body, isNotNull);
+        expect(deleteResponse.type.toString(),
+            'affinidi.io/operations/ama/destroyMediatorInstance/response');
+
+        final deleteResponseData = deleteResponse.response;
+        expect(deleteResponseData.mediatorId, equals(mediatorId));
+        expect(deleteResponseData.status, isNotNull);
+        expect(deleteResponseData.status.toLowerCase(),
+            anyOf(contains('destroy'), contains('delete'), contains('remove')),
+            reason: 'Expected deletion status message');
       });
     });
   });
