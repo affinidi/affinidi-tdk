@@ -1,4 +1,3 @@
-import 'package:didcomm/src/mediator_client/mediator_client_exception.dart';
 import 'package:mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';

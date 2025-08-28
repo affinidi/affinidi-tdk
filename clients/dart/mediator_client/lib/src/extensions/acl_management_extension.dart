@@ -2,9 +2,6 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:didcomm/didcomm.dart';
-// TODO: export correctly in DIDComm
-import 'package:didcomm/src/common/did_document_service_type.dart';
-import 'package:didcomm/src/mediator_client/mediator_client_exception.dart';
 import 'package:dio/dio.dart';
 
 // TODO: move this into messages folder to keep one class per file
@@ -76,7 +73,6 @@ class AccessListAddMessage extends AclManagementMessage {
   }
 }
 
-// TODO: should be eventually moved to TDK
 /// Extension for [MediatorClient] to support Affinidi-specific ACL management.
 ///
 /// ACL management is not covered by the DIDComm standard.
