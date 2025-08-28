@@ -43,6 +43,7 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/validate_j
 import 'package:affinidi_tdk_credential_verification_client/src/model/validate_jwt_output.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_output.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_v2_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
@@ -80,6 +81,7 @@ part 'serializers.g.dart';
   ValidateJwtOutput,
   VerifyCredentialInput,
   VerifyCredentialOutput,
+  VerifyCredentialV2Input,
   VerifyPresentationInput,
   VerifyPresentationOutput,
   W3cCredentialStatus,
