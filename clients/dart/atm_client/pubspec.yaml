@@ -12,8 +12,7 @@ dependencies:
   # TODO: reference version from pub dev
   mediator_client:
     path: ../mediator_client
-  # TODO: upgrade didcomm package to the latest ssi first, and then use the latest ssi version here
-  ssi: 2.10.3
+  ssi: ^2.12.4
   uuid: ^4.5.1
 
 dev_dependencies:

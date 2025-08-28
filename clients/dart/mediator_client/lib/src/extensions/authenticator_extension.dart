@@ -2,12 +2,6 @@ import 'package:didcomm/didcomm.dart';
 import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
 
-// TODO: export correctly in DIDComm
-import 'package:didcomm/src/common/authentication_tokens/authentication_tokens.dart';
-import 'package:didcomm/src/common/did.dart';
-import 'package:didcomm/src/common/did_document_service_type.dart';
-import 'package:didcomm/src/mediator_client/mediator_client_exception.dart';
-
 /// Extension for [MediatorClient] to support Affinidi-specific authentication.
 ///
 /// Authentication by mediators is not covered by the DIDComm standard.
