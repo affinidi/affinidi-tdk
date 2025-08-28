@@ -24,7 +24,6 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/restore_node_fr
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_node_input.dart';
 
 class NodesApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -46,7 +45,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CreateNodeOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CreateNodeOK>> createNode({ 
+  Future<Response<CreateNodeOK>> createNode({
     required CreateNodeInput createNodeInput,
     String? parentNodeId,
     CancelToken? cancelToken,
@@ -56,7 +55,8 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes';
+    final folderId = createNodeInput.parentNodeId;
+    final _path = folderId != null ? '/v1/nodes/$folderId' : '/v1/nodes';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -78,7 +78,9 @@ class NodesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (parentNodeId != null) r'parentNodeId': encodeQueryParameter(_serializers, parentNodeId, const FullType(String)),
+      if (parentNodeId != null)
+        r'parentNodeId': encodeQueryParameter(
+            _serializers, parentNodeId, const FullType(String)),
     };
 
     dynamic _bodyData;
@@ -86,10 +88,9 @@ class NodesApi {
     try {
       const _type = FullType(CreateNodeInput);
       _bodyData = _serializers.serialize(createNodeInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -114,11 +115,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CreateNodeOK),
-      ) as CreateNodeOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(CreateNodeOK),
+            ) as CreateNodeOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -145,7 +147,7 @@ class NodesApi {
   /// Mark a node and any attached files for deletion. If the node is a folder, perform the same action for all its children if the profile type is PROFILE, VC_ROOT, or VC. For other node types, move them to the TRASH_BIN node.
   ///
   /// Parameters:
-  /// * [nodeId] 
+  /// * [nodeId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -155,7 +157,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DeleteNodeDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeleteNodeDto>> deleteNode({ 
+  Future<Response<DeleteNodeDto>> deleteNode({
     required String nodeId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -164,7 +166,10 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -196,11 +201,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DeleteNodeDto),
-      ) as DeleteNodeDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(DeleteNodeDto),
+            ) as DeleteNodeDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -227,7 +233,7 @@ class NodesApi {
   /// Gets detailed information about the node
   ///
   /// Parameters:
-  /// * [nodeId] 
+  /// * [nodeId]
   /// * [dek] - A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -238,7 +244,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GetDetailedNodeInfoOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetDetailedNodeInfoOK>> getDetailedNodeInfo({ 
+  Future<Response<GetDetailedNodeInfoOK>> getDetailedNodeInfo({
     required String nodeId,
     String? dek,
     CancelToken? cancelToken,
@@ -248,7 +254,10 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -269,7 +278,8 @@ class NodesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (dek != null) r'dek': encodeQueryParameter(_serializers, dek, const FullType(String)),
+      if (dek != null)
+        r'dek': encodeQueryParameter(_serializers, dek, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -285,11 +295,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetDetailedNodeInfoOK),
-      ) as GetDetailedNodeInfoOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GetDetailedNodeInfoOK),
+            ) as GetDetailedNodeInfoOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -326,7 +337,7 @@ class NodesApi {
   /// Returns a [Future] containing a [Response] with a [InitNodesOK] as data
   /// Throws [DioException] if API call or serialization fails
   @Deprecated('This operation has been deprecated')
-  Future<Response<InitNodesOK>> initNodes({ 
+  Future<Response<InitNodesOK>> initNodes({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -366,11 +377,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(InitNodesOK),
-      ) as InitNodesOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(InitNodesOK),
+            ) as InitNodesOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -409,7 +421,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ListNodeChildrenOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ListNodeChildrenOK>> listNodeChildren({ 
+  Future<Response<ListNodeChildrenOK>> listNodeChildren({
     required String nodeId,
     int? limit = 10,
     String? exclusiveStartKey,
@@ -420,7 +432,10 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}/children'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}/children'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -441,8 +456,12 @@ class NodesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (exclusiveStartKey != null) r'exclusiveStartKey': encodeQueryParameter(_serializers, exclusiveStartKey, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (exclusiveStartKey != null)
+        r'exclusiveStartKey': encodeQueryParameter(
+            _serializers, exclusiveStartKey, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -458,11 +477,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ListNodeChildrenOK),
-      ) as ListNodeChildrenOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ListNodeChildrenOK),
+            ) as ListNodeChildrenOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -498,7 +518,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ListRootNodeChildrenOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ListRootNodeChildrenOK>> listRootNodeChildren({ 
+  Future<Response<ListRootNodeChildrenOK>> listRootNodeChildren({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -538,11 +558,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ListRootNodeChildrenOK),
-      ) as ListRootNodeChildrenOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ListRootNodeChildrenOK),
+            ) as ListRootNodeChildrenOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -569,7 +590,7 @@ class NodesApi {
   /// Moves a node from source to destination along with the hierarchy
   ///
   /// Parameters:
-  /// * [nodeId] 
+  /// * [nodeId]
   /// * [moveNodeInput] - MoveNode
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -580,7 +601,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MoveNodeDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MoveNodeDto>> moveNode({ 
+  Future<Response<MoveNodeDto>> moveNode({
     required String nodeId,
     required MoveNodeInput moveNodeInput,
     CancelToken? cancelToken,
@@ -590,7 +611,10 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}/move'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}/move'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -616,10 +640,9 @@ class NodesApi {
     try {
       const _type = FullType(MoveNodeInput);
       _bodyData = _serializers.serialize(moveNodeInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -642,11 +665,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MoveNodeDto),
-      ) as MoveNodeDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MoveNodeDto),
+            ) as MoveNodeDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -684,7 +708,7 @@ class NodesApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> permanentlyDeleteNode({ 
+  Future<Response<void>> permanentlyDeleteNode({
     required String nodeId,
     required String nodeIdToRemove,
     CancelToken? cancelToken,
@@ -694,7 +718,16 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}/remove/{nodeIdToRemove}'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString()).replaceAll('{' r'nodeIdToRemove' '}', encodeQueryParameter(_serializers, nodeIdToRemove, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}/remove/{nodeIdToRemove}'
+        .replaceAll(
+            '{' r'nodeId' '}',
+            encodeQueryParameter(_serializers, nodeId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'nodeIdToRemove' '}',
+            encodeQueryParameter(
+                    _serializers, nodeIdToRemove, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -741,7 +774,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [MoveNodeDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<MoveNodeDto>> restoreNodeFromTrashbin({ 
+  Future<Response<MoveNodeDto>> restoreNodeFromTrashbin({
     required String nodeId,
     required String nodeIdToRestore,
     required RestoreNodeFromTrashbin restoreNodeFromTrashbin,
@@ -752,7 +785,16 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}/restore/{nodeIdToRestore}'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString()).replaceAll('{' r'nodeIdToRestore' '}', encodeQueryParameter(_serializers, nodeIdToRestore, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}/restore/{nodeIdToRestore}'
+        .replaceAll(
+            '{' r'nodeId' '}',
+            encodeQueryParameter(_serializers, nodeId, const FullType(String))
+                .toString())
+        .replaceAll(
+            '{' r'nodeIdToRestore' '}',
+            encodeQueryParameter(
+                    _serializers, nodeIdToRestore, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -777,11 +819,11 @@ class NodesApi {
 
     try {
       const _type = FullType(RestoreNodeFromTrashbin);
-      _bodyData = _serializers.serialize(restoreNodeFromTrashbin, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(restoreNodeFromTrashbin, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -804,11 +846,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(MoveNodeDto),
-      ) as MoveNodeDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(MoveNodeDto),
+            ) as MoveNodeDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -846,7 +889,7 @@ class NodesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [NodeDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<NodeDto>> updateNode({ 
+  Future<Response<NodeDto>> updateNode({
     required String nodeId,
     required UpdateNodeInput updateNodeInput,
     CancelToken? cancelToken,
@@ -856,7 +899,10 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -882,10 +928,9 @@ class NodesApi {
     try {
       const _type = FullType(UpdateNodeInput);
       _bodyData = _serializers.serialize(updateNodeInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -908,11 +953,12 @@ class NodesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(NodeDto),
-      ) as NodeDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(NodeDto),
+            ) as NodeDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -934,5 +980,4 @@ class NodesApi {
       extra: _response.extra,
     );
   }
-
 }
