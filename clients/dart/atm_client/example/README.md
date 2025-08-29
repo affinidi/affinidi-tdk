@@ -1,4 +1,4 @@
-# Affinidi DIDComm for Dart Examples
+# ATM Client for Dart Examples
 
 Check the code snippets on the sample usage of this package with your project.
 
