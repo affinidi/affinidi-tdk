@@ -1050,6 +1050,37 @@ export interface VerifyPresentationOutput {
   isValid: boolean
 }
 /**
+ * Request model of /v2/verify-vp
+ * @export
+ * @interface VerifyPresentationV2Input
+ */
+export interface VerifyPresentationV2Input {
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  verifiablePresentation?: object
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  presentationDefinition?: object
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  presentationSubmission?: object
+  /**
+   *
+   * @type {string}
+   * @memberof VerifyPresentationV2Input
+   */
+  challenge?: string
+}
+/**
  *
  * @export
  * @interface W3cCredentialStatus
