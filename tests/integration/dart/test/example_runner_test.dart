@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 import 'test_config.dart';
 
 void main() async {
-  group('Running example files to check if they are aligned with the code', () {
+  group('Running example files', () {
     for (final packageName in ['mediator_client']) {
       group(packageName, () {
         late TestConfig config;
