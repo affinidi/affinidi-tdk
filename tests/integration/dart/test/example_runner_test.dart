@@ -1,12 +1,19 @@
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:test/test.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart'
+    as mediator_client;
 
 import 'test_config.dart';
 
 void main() async {
+  // import anything from every package with examples, so it can be properly installed
+  final packages = {
+    'mediator_client': mediator_client.DidcommMessage.mediaType,
+  };
+
   group('Running example files', () {
-    for (final packageName in ['mediator_client']) {
+    for (final packageName in packages.keys) {
       group(packageName, () {
         late TestConfig config;
 
