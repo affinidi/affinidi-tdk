@@ -10,8 +10,9 @@ export class Iota {
     projectId: string,
     iotaConfigId: string,
     iotaSessionId: string,
-    { tokenId, privateKey, passphrase, keyId, audience }: ISignPayload,
+    signPayload: ISignPayload,
   ) {
+    const { tokenId, privateKey, passphrase, keyId, audience } = signPayload
     const issueTimeInSeconds = Math.floor(new Date().getTime() / 1000)
 
     const payload = {

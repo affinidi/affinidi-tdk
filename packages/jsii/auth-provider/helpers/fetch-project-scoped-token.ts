@@ -12,13 +12,8 @@ export interface IFetchProjectScopedToken extends ISignPayload {
 }
 
 export class ProjectScopedToken {
-  public async signPayload({
-    tokenId,
-    audience,
-    privateKey,
-    passphrase,
-    keyId,
-  }: ISignPayload) {
+  public async signPayload(signPayload: ISignPayload) {
+    const { tokenId, privateKey, passphrase, keyId, audience } = signPayload
     const issueTimeInSeconds = Math.floor(new Date().getTime() / 1000)
 
     const payload = {
@@ -48,13 +43,8 @@ export class ProjectScopedToken {
     return token
   }
 
-  public async getUserAccessToken({
-    tokenId,
-    audience,
-    privateKey,
-    passphrase,
-    keyId,
-  }: ISignPayload) {
+  public async getUserAccessToken(signPayload: ISignPayload) {
+    const { tokenId, audience, privateKey, passphrase, keyId } = signPayload
     const token = await this.signPayload({
       tokenId,
       audience,
@@ -83,15 +73,18 @@ export class ProjectScopedToken {
     return data.access_token
   }
 
-  public async fetchProjectScopedToken({
-    apiGatewayUrl,
-    projectId,
-    tokenId,
-    audience,
-    privateKey,
-    passphrase,
-    keyId,
-  }: IFetchProjectScopedToken) {
+  public async fetchProjectScopedToken(
+    projectScopedToken: IFetchProjectScopedToken,
+  ) {
+    const {
+      apiGatewayUrl,
+      projectId,
+      tokenId,
+      audience,
+      privateKey,
+      passphrase,
+      keyId,
+    } = projectScopedToken
     const userAccessToken = await this.getUserAccessToken({
       tokenId,
       audience,
