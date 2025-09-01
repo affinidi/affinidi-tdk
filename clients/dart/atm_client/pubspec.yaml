@@ -15,7 +15,7 @@ dependencies:
   uuid: ^4.5.1
 
 dev_dependencies:
-  dart_flutter_team_lints: ^3.5.2
+  dart_flutter_team_lints: ^3.2.1
   json_serializable: ^6.9.5
   lints: ^5.0.0
   path: ^1.9.1
