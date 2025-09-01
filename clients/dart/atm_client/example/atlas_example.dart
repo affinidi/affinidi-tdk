@@ -1,4 +1,4 @@
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../test/example_configs.dart';
@@ -6,7 +6,7 @@ import '../test/example_configs.dart';
 void main() async {
   // Run commands below in your terminal to generate keys for Receiver:
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
-  
+
   // Configure test files based on environment variables if needed
   await configureTestFiles();
 

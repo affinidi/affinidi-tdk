@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -271,7 +271,8 @@ class AtmAtlasClient extends AtmBaseClient {
     final request = configurationData ??
         UpdateMediatorInstanceConfigurationRequest(mediatorId: mediatorId);
     // Ensure mediatorId is always set
-    if (configurationData != null && configurationData.mediatorId != mediatorId) {
+    if (configurationData != null &&
+        configurationData.mediatorId != mediatorId) {
       throw ArgumentError('mediatorId mismatch in request data');
     }
 

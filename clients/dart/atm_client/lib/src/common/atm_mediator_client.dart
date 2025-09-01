@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../atm_client.dart';

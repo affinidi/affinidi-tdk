@@ -1,4 +1,4 @@
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 
 // Run commands below in your terminal to generate keys for Alice and Bob:
 // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem

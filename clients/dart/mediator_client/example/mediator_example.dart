@@ -1,10 +1,9 @@
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../test/example_configs.dart';
+import '../../../../tests/integration/dart/test/test_config.dart';
 
-// TODO: Configure private keys and mediator DID on CI
 void main() async {
   // Run commands below in your terminal to generate keys for Alice and Bob:
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
@@ -12,6 +11,10 @@ void main() async {
 
   // Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
   // Copy its DID Document URL into example/mediator/mediator_did.txt.
+
+  final config = await TestConfig.configureTestFiles(
+    packageDirectoryName: 'mediator_client',
+  );
 
   final aliceKeyStore = InMemoryKeyStore();
   final aliceWallet = PersistentWallet(aliceKeyStore);
@@ -31,7 +34,7 @@ void main() async {
 
   final aliceKeyId = 'alice-key-1';
   final alicePrivateKeyBytes = await extractPrivateKeyBytes(
-    alicePrivateKeyPath,
+    config.alicePrivateKeyPath,
   );
 
   await aliceKeyStore.set(
@@ -56,7 +59,7 @@ void main() async {
 
   final bobKeyId = 'bob-key-1';
   final bobPrivateKeyBytes = await extractPrivateKeyBytes(
-    bobPrivateKeyPath,
+    config.bobPrivateKeyPath,
   );
 
   await bobKeyStore.set(
@@ -77,7 +80,7 @@ void main() async {
 
   final bobMediatorDocument =
       await UniversalDIDResolver.defaultResolver.resolveDid(
-    await readDid(mediatorDidPath),
+    await readDid(config.mediatorDidPath),
   );
 
   final bobSigner = await bobDidManager.getSigner(

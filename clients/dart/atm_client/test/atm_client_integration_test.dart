@@ -1,8 +1,8 @@
-import 'package:atm_client/atm_client.dart';
-import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
-import 'package:atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
-import 'package:atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_atm_client/atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
