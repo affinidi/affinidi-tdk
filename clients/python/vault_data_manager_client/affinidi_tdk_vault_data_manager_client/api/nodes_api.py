@@ -24,6 +24,7 @@ from pydantic import Field, StrictStr, conint, constr, validator
 
 from typing import Optional
 
+from affinidi_tdk_vault_data_manager_client.models.create_child_node_input import CreateChildNodeInput
 from affinidi_tdk_vault_data_manager_client.models.create_node_input import CreateNodeInput
 from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK
 from affinidi_tdk_vault_data_manager_client.models.delete_node_dto import DeleteNodeDto
@@ -58,20 +59,20 @@ class NodesApi:
         self.api_client = api_client
 
     @validate_arguments
-    def create_child_node(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], parent_node_id : Annotated[Optional[StrictStr], Field(description="parent node id")] = None, **kwargs) -> CreateNodeOK:  # noqa: E501
+    def create_child_node(self, node_id : Annotated[constr(strict=True), Field(..., description="parent node id")], create_child_node_input : Annotated[CreateChildNodeInput, Field(..., description="CreateChildNode")], **kwargs) -> CreateNodeOK:  # noqa: E501
         """create_child_node  # noqa: E501
 
         creates child node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_child_node(create_node_input, parent_node_id, async_req=True)
+        >>> thread = api.create_child_node(node_id, create_child_node_input, async_req=True)
         >>> result = thread.get()
 
-        :param create_node_input: CreateNode (required)
-        :type create_node_input: CreateNodeInput
-        :param parent_node_id: parent node id
-        :type parent_node_id: str
+        :param node_id: parent node id (required)
+        :type node_id: str
+        :param create_child_node_input: CreateChildNode (required)
+        :type create_child_node_input: CreateChildNodeInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -87,23 +88,23 @@ class NodesApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_child_node_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_child_node_with_http_info(create_node_input, parent_node_id, **kwargs)  # noqa: E501
+        return self.create_child_node_with_http_info(node_id, create_child_node_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_child_node_with_http_info(self, create_node_input : Annotated[CreateNodeInput, Field(..., description="CreateNode")], parent_node_id : Annotated[Optional[StrictStr], Field(description="parent node id")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_child_node_with_http_info(self, node_id : Annotated[constr(strict=True), Field(..., description="parent node id")], create_child_node_input : Annotated[CreateChildNodeInput, Field(..., description="CreateChildNode")], **kwargs) -> ApiResponse:  # noqa: E501
         """create_child_node  # noqa: E501
 
         creates child node  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_child_node_with_http_info(create_node_input, parent_node_id, async_req=True)
+        >>> thread = api.create_child_node_with_http_info(node_id, create_child_node_input, async_req=True)
         >>> result = thread.get()
 
-        :param create_node_input: CreateNode (required)
-        :type create_node_input: CreateNodeInput
-        :param parent_node_id: parent node id
-        :type parent_node_id: str
+        :param node_id: parent node id (required)
+        :type node_id: str
+        :param create_child_node_input: CreateChildNode (required)
+        :type create_child_node_input: CreateChildNodeInput
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -132,8 +133,8 @@ class NodesApi:
         _params = locals()
 
         _all_params = [
-            'create_node_input',
-            'parent_node_id'
+            'node_id',
+            'create_child_node_input'
         ]
         _all_params.extend(
             [
@@ -161,12 +162,12 @@ class NodesApi:
 
         # process the path parameters
         _path_params = {}
+        if _params['node_id'] is not None:
+            _path_params['nodeId'] = _params['node_id']
+
 
         # process the query parameters
         _query_params = []
-        if _params.get('parent_node_id') is not None:  # noqa: E501
-            _query_params.append(('parentNodeId', _params['parent_node_id']))
-
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
         # process the form parameters
@@ -174,8 +175,8 @@ class NodesApi:
         _files = {}
         # process the body parameter
         _body_params = None
-        if _params['create_node_input'] is not None:
-            _body_params = _params['create_node_input']
+        if _params['create_child_node_input'] is not None:
+            _body_params = _params['create_child_node_input']
 
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
