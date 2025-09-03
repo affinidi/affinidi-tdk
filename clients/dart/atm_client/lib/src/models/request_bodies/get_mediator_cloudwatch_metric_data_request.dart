@@ -6,7 +6,9 @@ part 'get_mediator_cloudwatch_metric_data_request.g.dart';
 class GetMediatorCloudwatchMetricDataRequest {
   final String mediatorId;
   final String metricId;
+  // TODO: DateTime - @EpochSecondsConverter annotation - First check what format is expected (test and find out)
   final String? startDate;
+  // TODO: DateTime - @EpochSecondsConverter annotation - First check what format is expected (test and find out)
   final String? endDate;
   final int? period;
 
@@ -18,8 +20,10 @@ class GetMediatorCloudwatchMetricDataRequest {
     this.period,
   });
 
-  factory GetMediatorCloudwatchMetricDataRequest.fromJson(Map<String, dynamic> json) =>
+  factory GetMediatorCloudwatchMetricDataRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$GetMediatorCloudwatchMetricDataRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GetMediatorCloudwatchMetricDataRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GetMediatorCloudwatchMetricDataRequestToJson(this);
 }
