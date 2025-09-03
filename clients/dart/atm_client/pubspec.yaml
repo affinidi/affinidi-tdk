@@ -1,4 +1,4 @@
-name: atm_client
+name: affinidi_tdk_atm_client
 description: A sample command-line application.
 version: 1.0.0
 homepage: https://github.com/affinidi/affinidi-tdk
@@ -8,16 +8,15 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
-  json_annotation: ^4.9.0
-  # TODO: reference version from pub dev
-  mediator_client:
+  affinidi_tdk_mediator_client:
     path: ../mediator_client
+  json_annotation: ^4.9.0
   ssi: ^2.12.4
   uuid: ^4.5.1
 
 dev_dependencies:
-  dart_flutter_team_lints: ^3.5.2
+  dart_flutter_team_lints: ^3.2.1
   json_serializable: ^6.9.5
-  lints: ^6.0.0
+  lints: ^5.0.0
   path: ^1.9.1
   test: ^1.24.0

@@ -40,5 +40,10 @@ jobs:
         run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
 
       - name: Run integration tests
-        run: dart test
+        env:
+          TEST_MEDIATOR_DID: ${{ vars.TEST_MEDIATOR_DID }}
+          TEST_MEDIATOR_WITH_ACL_DID: ${{ vars.TEST_MEDIATOR_WITH_ACL_DID }}
+          TEST_ALICE_PRIVATE_KEY_PEM: ${{ vars.TEST_ALICE_PRIVATE_KEY_PEM }}
+          TEST_BOB_PRIVATE_KEY_PEM: ${{ vars.TEST_BOB_PRIVATE_KEY_PEM }}
+        run: dart test --concurrency=1
         working-directory: tests/integration/dart
