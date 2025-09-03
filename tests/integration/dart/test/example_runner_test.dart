@@ -6,7 +6,10 @@ import 'test_config.dart';
 
 void main() async {
   group('Running example files', () {
-    for (final packageName in ['mediator_client']) {
+    for (final packageName in [
+      'mediator_client',
+      'atm_client',
+    ]) {
       group(packageName, () {
         late TestConfig config;
 
