@@ -77,7 +77,7 @@ void main() async {
     accessToken: receiverTokens.accessToken,
   );
 
-  final messages = await receiverMediatorClient.receiveMessages(
+  final messages = await receiverMediatorClient.fetchMessages(
     messageIds: messageIds,
     accessToken: receiverTokens.accessToken,
   );
