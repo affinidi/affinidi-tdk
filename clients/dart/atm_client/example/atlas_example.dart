@@ -1,14 +1,16 @@
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_atm_client/atm_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
-import '../test/example_configs.dart';
+import '../../../../tests/integration/dart/test/test_config.dart';
 
 void main() async {
   // Run commands below in your terminal to generate keys for Receiver:
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
-  
-  // Configure test files based on environment variables if needed
-  await configureTestFiles();
+
+  final config = await TestConfig.configureTestFiles(
+    packageDirectoryName: 'mediator_client',
+  );
 
   final senderKeyStore = InMemoryKeyStore();
   final senderWallet = PersistentWallet(senderKeyStore);
@@ -21,7 +23,7 @@ void main() async {
   final senderKeyId = 'sender-key-1';
 
   final senderPrivateKeyBytes = await extractPrivateKeyBytes(
-    alicePrivateKeyPath,
+    config.alicePrivateKeyPath,
   );
 
   await senderKeyStore.set(
@@ -34,23 +36,22 @@ void main() async {
 
   await senderDidManager.addVerificationMethod(senderKeyId);
 
-  // final atmAtlasClient = await AtmAtlasClient.init(
-  //   didManager: senderDidManager,
-  // );
+  final atmAtlasClient = await AtmAtlasClient.init(
+    didManager: senderDidManager,
+  );
 
-  // final authTokes = await atmAtlasClient.authenticate();
+  final authTokens = await atmAtlasClient.authenticate();
 
   prettyPrint('Sending the message...');
 
-  // Example 1: Get list of mediator instances
-  // final listResponse = await atmAtlasClient.getMediatorInstancesList(
-  //   accessToken: authTokens.accessToken,
-  // );
+  final listResponse = await atmAtlasClient.getMediatorInstancesList(
+    accessToken: authTokens.accessToken,
+  );
 
-  // prettyPrint(
-  //   'Response received',
-  //   object: listResponse.instances,
-  // );
+  prettyPrint(
+    'Response received',
+    object: listResponse.instances,
+  );
 
   // Example 2: Deploy a new mediator instance (commented out by default)
   // import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';

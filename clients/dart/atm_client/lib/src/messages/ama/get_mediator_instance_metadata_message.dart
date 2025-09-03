@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mediator_client/mediator_client.dart';
 
 import '../../models/data_models/mediator_configuration.dart';
 import '../../models/data_models/mediator_deployment.dart';

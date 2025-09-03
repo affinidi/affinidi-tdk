@@ -1,4 +1,4 @@
-name: mediator_client
+name: affinidi_tdk_mediator_client
 description: A sample command-line application.
 version: 1.0.0
 homepage: https://github.com/affinidi/affinidi-tdk
@@ -8,15 +8,11 @@ environment:
 
 dependencies:
   crypto: ^3.0.6
-  didcomm: ^1.0.0-dev.11
+  didcomm: ^1.0.0-dev.13
   dio: ^5.9.0
+  ssi: ^2.12.4
   uuid: ^4.5.1
 
 dev_dependencies:
-  collection: ^1.19.1
-  dart_flutter_team_lints: ^3.5.2
-  lints: ^6.0.0
-  path: ^1.9.1
-  # TODO: upgrade didcomm package to the latest ssi first, and then use the latest ssi version here
-  ssi: ^2.12.4
-  test: ^1.24.0
+  dart_flutter_team_lints: ^3.2.1
+  lints: ^5.0.0
