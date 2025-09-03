@@ -1,14 +1,18 @@
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../test/example_configs.dart';
+import '../../../../tests/integration/dart/test/test_config.dart';
 
-// TODO: Configure private keys and mediator DID on CI
 void main() async {
   // Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
   // Configure ACL.
   // Copy its DID Document URL into example/mediator/mediator_with_acl_did.txt.
+
+  final config = await TestConfig.configureTestFiles(
+    packageDirectoryName: 'mediator_client',
+  );
+
   final aliceKeyStore = InMemoryKeyStore();
   final aliceWallet = PersistentWallet(aliceKeyStore);
 
@@ -55,7 +59,7 @@ void main() async {
 
   final bobMediatorDocument =
       await UniversalDIDResolver.defaultResolver.resolveDid(
-    await readDid(mediatorWithAclDidPath),
+    await readDid(config.mediatorWithAclDidPath),
   );
 
   prettyPrint('Bob Mediator Document', object: bobMediatorDocument);
@@ -219,7 +223,7 @@ void main() async {
     accessToken: bobTokens.accessToken,
   );
 
-  final messages = await bobMediatorClient.receiveMessages(
+  final messages = await bobMediatorClient.fetchMessages(
     messageIds: messageIds,
     deleteOnMediator: true,
     accessToken: bobTokens.accessToken,

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../atm_client.dart';
@@ -66,11 +66,44 @@ class AtmMediatorClient extends MediatorClient {
           ],
         );
 
-        if (unpackedMessage.from != atmServiceDidDocument.id) {
+        final expectedSenders = [
+          mediatorDidDocument.id,
+          atmServiceDidDocument.id,
+        ];
+
+        if (!expectedSenders.contains(unpackedMessage.from)) {
           return;
         }
 
         final messageType = unpackedMessage.type.toString();
+
+        // TODO: make type URLs static in DIDComm package to avoid this
+        // TODO: use correlation IDs when available so we process a specific request/response pair
+
+        if (messageType ==
+            'https://didcomm.org/report-problem/2.0/problem-report') {
+          final problemReport = ProblemReportMessage.fromJson(
+            unpackedMessage.toJson(),
+          );
+
+          for (var completer in _awaitingCompleters.values) {
+            // TODO: revisit, if we should throw an exception with problem report inside?
+            completer.completeError(problemReport);
+          }
+
+          // TODO: temporary untile we have correlation IDs
+          // ---
+          _awaitingCompleters.clear();
+
+          _subscription = null;
+          _lock = disconnect();
+
+          // prevent new subscriptions while disconnecting
+          await _lock;
+          _lock = null;
+          // ---
+        }
+
         final completer = _awaitingCompleters[messageType];
 
         if (completer == null) {
@@ -92,11 +125,13 @@ class AtmMediatorClient extends MediatorClient {
       onError: (Object error) {
         // TODO: decide if remove all completers or just the relevant one
         for (var completer in _awaitingCompleters.values) {
+          // TODO: decide if we should delete massage on mediator
           completer.completeError(error);
         }
       },
       onDone: () {
         for (var completer in _awaitingCompleters.values) {
+          // TODO: decide if we should delete massage on mediator
           completer.completeError(Exception('Connection has been dropped'));
         }
       },
