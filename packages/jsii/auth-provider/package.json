@@ -31,6 +31,10 @@
       "python": {
         "distName": "affinidi_tdk_auth_provider",
         "module": "affinidi_tdk_auth_provider"
+      },
+      "dotnet": {
+        "namespace": "Affinidi.Tdk.AuthProvider",
+        "packageId": "Affinidi.Tdk.AuthProvider"
       }
     }
   },
