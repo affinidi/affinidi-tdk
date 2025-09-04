@@ -1,11 +1,9 @@
-import 'dart:typed_data';
-
-import 'package:atm_client/atm_client.dart';
-import 'package:atm_client/src/common/atm_mediator_client.dart';
-import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
-import 'package:atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
-import 'package:atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_atm_client/atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/common/atm_mediator_client.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:ssi/ssi.dart';
@@ -14,26 +12,42 @@ import 'package:uuid/uuid.dart';
 
 import 'atm_client_unit_test.mocks.dart';
 
-@GenerateMocks(
-    [AtmMediatorClient, KeyPair, DidSigner, PersistentWallet, PublicKey])
+@GenerateMocks([AtmMediatorClient])
 void main() {
   group('AtmAtlasClient Unit Tests', () {
     late MockAtmMediatorClient mockMediatorClient;
-    late MockKeyPair mockKeyPair; //TODO: NOT MOCK
-    late MockDidSigner mockSigner; //TODO: NOT MOCK
-    late MockPersistentWallet mockWallet; //TODO: NOT MOCK
-    late MockPublicKey mockPublicKey; //TODO: NOT MOCK
+    late DidManager didManager;
     late AtmAtlasClient sut;
 
     setUp(() async {
-      mockMediatorClient = MockAtmMediatorClient();
-      mockKeyPair = MockKeyPair();
-      mockSigner = MockDidSigner();
-      mockWallet = MockPersistentWallet();
-      mockPublicKey = MockPublicKey();
+      // Create real cryptographic components
+      final keyStore = InMemoryKeyStore();
+      final wallet = PersistentWallet(keyStore);
 
-      // Create DID documents with key agreement
-      final mediatorDid = DidDocument.fromJson({
+      didManager = DidPeerManager(
+        wallet: wallet,
+        store: InMemoryDidStore(),
+      );
+
+      // Load test private key
+      const keyId = 'test-key-1';
+      final privateKeyPath = 'example/keys/alice_private_key.pem';
+      final privateKeyBytes = await extractPrivateKeyBytes(privateKeyPath);
+
+      await keyStore.set(
+        keyId,
+        StoredKey(
+          keyType: KeyType.p256,
+          privateKeyBytes: privateKeyBytes,
+        ),
+      );
+
+      // Generate DID with verification method
+      await didManager.addVerificationMethod(keyId);
+      final didDocument = await didManager.getDidDocument();
+
+      // Create mediator and atlas DID documents for testing
+      final mediatorDidDocument = DidDocument.fromJson({
         '@context': ['https://www.w3.org/ns/did/v1'],
         'id': 'did:test:mediator',
         'keyAgreement': [
@@ -44,14 +58,14 @@ void main() {
             'publicKeyJwk': {
               'kty': 'EC',
               'crv': 'P-256',
-              'x': 'MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4',
-              'y': '4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM',
+              'x': 'FE__1vF_lVzSrD75H2dIVW_HWgVFvCcIyn6YP1fbNvA',
+              'y': 'ZGwgy4-QKHsGQJiEbrGJuzvRfN3NtwmIFXICG2oPMsg',
             }
           }
         ],
       });
 
-      final atlasDid = DidDocument.fromJson({
+      final atlasDidDocument = DidDocument.fromJson({
         '@context': ['https://www.w3.org/ns/did/v1'],
         'id': 'did:test:atlas',
         'keyAgreement': [
@@ -62,42 +76,35 @@ void main() {
             'publicKeyJwk': {
               'kty': 'EC',
               'crv': 'P-256',
-              'x': 'MKBCTNIcKUSDii11ySs3526iDZ8AiTo7Tu6KPAqv7D4',
-              'y': '4Etl6SRW2YiLUrN5vfvVHuhp7x8PxltmWWlbbM4IFyM',
+              'x': 'FE__1vF_lVzSrD75H2dIVW_HWgVFvCcIyn6YP1fbNvA',
+              'y': 'ZGwgy4-QKHsGQJiEbrGJuzvRfN3NtwmIFXICG2oPMsg',
             }
           }
         ],
       });
 
-      // Mock mediator client properties
-      when(mockMediatorClient.mediatorDidDocument).thenReturn(mediatorDid);
-      when(mockMediatorClient.signer).thenReturn(mockSigner);
-      when(mockMediatorClient.keyPair).thenReturn(mockKeyPair);
-      when(mockMediatorClient.didKeyId).thenReturn('did:test:mediator#key-1');
-
-      // Mock DidSigner properties
-      when(mockSigner.did).thenReturn('did:test:mediator');
-      when(mockSigner.didKeyId).thenReturn('did:test:mediator#key-1');
-      when(mockSigner.signatureScheme)
-          .thenReturn(SignatureScheme.ecdsa_secp256k1_sha256);
-      when(mockSigner.sign(any)).thenAnswer(
-          (_) async => Uint8List.fromList(List.generate(64, (i) => i)));
-
-      // Mock KeyPair properties
-      when(mockKeyPair.publicKey).thenReturn(mockPublicKey);
-      when(mockPublicKey.bytes)
-          .thenReturn(Uint8List.fromList(List.generate(65, (i) => i)));
-      when(mockPublicKey.type).thenReturn(KeyType.p256);
-      when(mockKeyPair.computeEcdhSecret(any)).thenAnswer(
-          (_) async => Uint8List.fromList(List.generate(32, (i) => i)));
-
-      // Create DidManager
-      final didManager = DidPeerManager(
-        wallet: mockWallet,
-        store: InMemoryDidStore(),
+      // Get matched key IDs for key agreement
+      final matchedKeyIds = didDocument.matchKeysInKeyAgreement(
+        otherDidDocuments: [mediatorDidDocument, atlasDidDocument],
       );
 
-      // Mock sendMessage to return a valid DidcommMessage
+      // Get real key pair and signer
+      final keyPair = await didManager.getKeyPairByDidKeyId(
+        matchedKeyIds.first,
+      );
+      final signer = await didManager.getSigner(
+        didDocument.authentication.first.id,
+      );
+
+      // Setup mock mediator client
+      mockMediatorClient = MockAtmMediatorClient();
+      when(mockMediatorClient.mediatorDidDocument)
+          .thenReturn(mediatorDidDocument);
+      when(mockMediatorClient.signer).thenReturn(signer);
+      when(mockMediatorClient.keyPair).thenReturn(keyPair);
+      when(mockMediatorClient.didKeyId).thenReturn(matchedKeyIds.first);
+
+      // Mock sendMessage
       when(mockMediatorClient.sendMessage(
         any,
         accessToken: anyNamed('accessToken'),
@@ -111,10 +118,11 @@ void main() {
         );
       });
 
+      // Create AtmAtlasClient instance
       sut = AtmAtlasClient(
         mediatorClient: mockMediatorClient,
         didManager: didManager,
-        atmServiceDidDocument: atlasDid,
+        atmServiceDidDocument: atlasDidDocument,
       );
     });
 
