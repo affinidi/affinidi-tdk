@@ -22,17 +22,15 @@ import json
 from typing import Any, Dict, Optional
 from pydantic import BaseModel, Field, StrictStr
 
-class VerifyPresentationInput(BaseModel):
+class VerifyPresentationV2Input(BaseModel):
     """
-    Request model of /verify-vp  # noqa: E501
+    Request model of /v2/verify-vp  # noqa: E501
     """
     verifiable_presentation: Optional[Dict[str, Any]] = Field(default=None, alias="verifiablePresentation")
-    signed_presentation: Optional[Dict[str, Any]] = Field(default=None, alias="signedPresentation")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition")
     presentation_submission: Optional[Dict[str, Any]] = Field(default=None, alias="presentationSubmission")
-    dcql_query: Optional[Dict[str, Any]] = Field(default=None, alias="dcqlQuery")
     challenge: Optional[StrictStr] = None
-    __properties = ["verifiablePresentation", "signedPresentation", "presentationDefinition", "presentationSubmission", "dcqlQuery", "challenge"]
+    __properties = ["verifiablePresentation", "presentationDefinition", "presentationSubmission", "challenge"]
 
     class Config:
         """Pydantic configuration"""
@@ -48,8 +46,8 @@ class VerifyPresentationInput(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> VerifyPresentationInput:
-        """Create an instance of VerifyPresentationInput from a JSON string"""
+    def from_json(cls, json_str: str) -> VerifyPresentationV2Input:
+        """Create an instance of VerifyPresentationV2Input from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -61,20 +59,18 @@ class VerifyPresentationInput(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> VerifyPresentationInput:
-        """Create an instance of VerifyPresentationInput from a dict"""
+    def from_dict(cls, obj: dict) -> VerifyPresentationV2Input:
+        """Create an instance of VerifyPresentationV2Input from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return VerifyPresentationInput.parse_obj(obj)
+            return VerifyPresentationV2Input.parse_obj(obj)
 
-        _obj = VerifyPresentationInput.parse_obj({
+        _obj = VerifyPresentationV2Input.parse_obj({
             "verifiable_presentation": obj.get("verifiablePresentation"),
-            "signed_presentation": obj.get("signedPresentation"),
             "presentation_definition": obj.get("presentationDefinition"),
             "presentation_submission": obj.get("presentationSubmission"),
-            "dcql_query": obj.get("dcqlQuery"),
             "challenge": obj.get("challenge")
         })
         return _obj

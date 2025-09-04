@@ -1,14 +1,12 @@
-# VerifyPresentationInput
+# VerifyPresentationV2Input
 
-Request model of /verify-vp
+Request model of /v2/verify-vp
 
 ## Properties
 
 | Name                       | Type       | Description | Notes      |
 | -------------------------- | ---------- | ----------- | ---------- |
 | **verifiablePresentation** | **Object** |             | [optional] |
-| **signedPresentation**     | **Object** |             | [optional] |
 | **presentationDefinition** | **Object** |             | [optional] |
 | **presentationSubmission** | **Object** |             | [optional] |
-| **dcqlQuery**              | **Object** |             | [optional] |
 | **challenge**              | **String** |             | [optional] |

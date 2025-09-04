@@ -1025,6 +1025,12 @@ export interface VerifyPresentationInput {
   presentationSubmission?: object
   /**
    *
+   * @type {object}
+   * @memberof VerifyPresentationInput
+   */
+  dcqlQuery?: object
+  /**
+   *
    * @type {string}
    * @memberof VerifyPresentationInput
    */
@@ -1048,6 +1054,37 @@ export interface VerifyPresentationOutput {
    * @memberof VerifyPresentationOutput
    */
   isValid: boolean
+}
+/**
+ * Request model of /v2/verify-vp
+ * @export
+ * @interface VerifyPresentationV2Input
+ */
+export interface VerifyPresentationV2Input {
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  verifiablePresentation?: object
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  presentationDefinition?: object
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  presentationSubmission?: object
+  /**
+   *
+   * @type {string}
+   * @memberof VerifyPresentationV2Input
+   */
+  challenge?: string
 }
 /**
  *

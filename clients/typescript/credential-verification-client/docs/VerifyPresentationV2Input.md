@@ -1,29 +1,25 @@
-# VerifyPresentationInput
+# VerifyPresentationV2Input
 
-Request model of /verify-vp
+Request model of /v2/verify-vp
 
 ## Properties
 
 | Name                       | Type       | Description | Notes                             |
 | -------------------------- | ---------- | ----------- | --------------------------------- |
 | **verifiablePresentation** | **object** |             | [optional] [default to undefined] |
-| **signedPresentation**     | **object** |             | [optional] [default to undefined] |
 | **presentationDefinition** | **object** |             | [optional] [default to undefined] |
 | **presentationSubmission** | **object** |             | [optional] [default to undefined] |
-| **dcqlQuery**              | **object** |             | [optional] [default to undefined] |
 | **challenge**              | **string** |             | [optional] [default to undefined] |
 
 ## Example
 
 ```typescript
-import { VerifyPresentationInput } from '@affinidi-tdk/credential-verification-client'
+import { VerifyPresentationV2Input } from '@affinidi-tdk/credential-verification-client'
 
-const instance: VerifyPresentationInput = {
+const instance: VerifyPresentationV2Input = {
   verifiablePresentation,
-  signedPresentation,
   presentationDefinition,
   presentationSubmission,
-  dcqlQuery,
   challenge,
 }
 ```
