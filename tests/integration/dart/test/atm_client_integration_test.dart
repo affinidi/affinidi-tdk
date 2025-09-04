@@ -68,7 +68,7 @@ Future<void> main() async {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/getMediatorInstanceMetadata/response');
         },
-        timeout: const Timeout(Duration(minutes: 10)),
+        timeout: const Timeout(Duration(minutes: 3)),
       );
     });
 
@@ -103,7 +103,7 @@ Future<void> main() async {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response');
         },
-        timeout: const Timeout(Duration(minutes: 10)),
+        timeout: const Timeout(Duration(minutes: 5)),
       );
     });
 
@@ -136,7 +136,7 @@ Future<void> main() async {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response');
         },
-        timeout: const Timeout(Duration(minutes: 10)),
+        timeout: const Timeout(Duration(minutes: 5)),
       );
     });
 
@@ -156,7 +156,7 @@ Future<void> main() async {
         expect(response.body, isNotNull);
         expect(response.type.toString(),
             'affinidi.io/operations/ama/getMediatorsRequests/response');
-      });
+      }, timeout: const Timeout(Duration(minutes: 3)));
 
       test(
         'should handle pagination for requests',
@@ -174,7 +174,7 @@ Future<void> main() async {
 
           expect(response.body, isNotNull);
         },
-        timeout: const Timeout(Duration(minutes: 10)),
+        timeout: const Timeout(Duration(minutes: 3)),
       );
     });
 
@@ -208,7 +208,7 @@ Future<void> main() async {
           expect(response.type.toString(),
               'affinidi.io/operations/ama/getMediatorCloudwatchMetricData/response');
         },
-        timeout: const Timeout(Duration(minutes: 10)),
+        timeout: const Timeout(Duration(minutes: 3)),
       );
     });
 
