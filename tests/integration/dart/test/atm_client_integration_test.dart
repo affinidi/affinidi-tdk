@@ -3,6 +3,7 @@ import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediato
 import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
 import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:retry/retry.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
@@ -27,7 +28,8 @@ Future<void> main() async {
 
       // Load Alice's private key from file
       final keyId = 'alice-key-1';
-      final privateKeyBytes = await extractPrivateKeyBytes(config.alicePrivateKeyPath);
+      final privateKeyBytes =
+          await extractPrivateKeyBytes(config.alicePrivateKeyPath);
 
       await keyStore.set(
         keyId,
@@ -249,6 +251,33 @@ Future<void> main() async {
 
           final mediatorId = deployResponseData.mediatorId;
 
+          // Wait for deployment to complete (retry for up to 20 minutes with 5-second delays)
+          final retryOptions = RetryOptions(
+            maxAttempts: 240, // 240 attempts * 5 seconds = 20 minutes
+            delayFactor: const Duration(seconds: 5),
+            maxDelay: const Duration(seconds: 5),
+          );
+
+          await retryOptions.retry(
+            () async {
+              final listResponse = await sut.getMediatorInstancesList(
+                accessToken: authTokens.accessToken,
+              );
+
+              final instance =
+                  listResponse.instances.firstWhere((i) => i.id == mediatorId);
+
+              // Check if deployment is complete
+              if (instance.deploymentState.toLowerCase() != 'deployed' &&
+                  instance.deploymentState.toLowerCase() != 'running') {
+                throw Exception(
+                  'Mediator not yet deployed. Current state: ${instance.deploymentState}',
+                );
+              }
+            },
+            retryIf: (e) => true,
+          );
+
           // Step 2: List mediator instances and verify deployment
           final listResponse = await sut.getMediatorInstancesList(
             accessToken: authTokens.accessToken,
@@ -292,7 +321,6 @@ Future<void> main() async {
             ),
           );
 
-          //TODO: For deploy and destroy, add a loop with 5sec Future delay, to catch it when it is actually done. - Use retry: ^3.1.2 - retry in total 20minutes
           //TODO: Fetch the instance again to make sure it has been updated correctly
           //TODO: Remove equals and use the object directly
           //TODO: Remove the inNull expects - it is redundant
@@ -360,15 +388,38 @@ Future<void> main() async {
           expect(deleteResponseData.mediatorId, equals(mediatorId));
           expect(deleteResponseData.status, isNotNull);
 
-          //TODO: For deploy and destroy, add a loop with 5sec Future delay, to catch it when it is actually done. - Use retry: ^3.1.2 - retry in total 20minutes
+          // Wait for destroy to complete (retry for up to 20 minutes with 5-second delays)
+          final destroyRetryOptions = RetryOptions(
+            maxAttempts: 240, // 240 attempts * 5 seconds = 20 minutes
+            delayFactor: const Duration(seconds: 5),
+            maxDelay: const Duration(seconds: 5),
+          );
+
+          await destroyRetryOptions.retry(
+            () async {
+              final listResponse = await sut.getMediatorInstancesList(
+                accessToken: authTokens.accessToken,
+              );
+
+              final instance =
+                  listResponse.instances.firstWhere((i) => i.id == mediatorId);
+
+              // Check if destroy is complete
+              if (instance.deploymentState.toLowerCase() != 'destroyed') {
+                throw Exception(
+                  'Mediator not yet destroyed. Current state: ${instance.deploymentState}',
+                );
+              }
+            },
+            retryIf: (e) => true,
+          );
+
           expect(
               deleteResponseData.status.toLowerCase(),
               //TODO: Make sure the value is correct and only one case - Run first to see the list
               '',
               reason: 'Expected deletion status message');
         },
-        //TODO Customize the timeout for each operation based on their needs.
-        timeout: const Timeout(Duration(minutes: 10)),
       );
     });
   });
