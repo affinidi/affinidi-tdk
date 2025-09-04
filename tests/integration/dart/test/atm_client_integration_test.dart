@@ -198,10 +198,8 @@ Future<void> main() async {
             accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
             metricId: 'MessageCount',
-            startDate: DateTime.now()
-                .subtract(const Duration(hours: 1))
-                .toIso8601String(),
-            endDate: DateTime.now().toIso8601String(),
+            startDate: DateTime.now().subtract(const Duration(hours: 1)),
+            endDate: DateTime.now(),
           );
 
           expect(response.body, isNotNull);
@@ -365,10 +363,8 @@ Future<void> main() async {
             accessToken: authTokens.accessToken,
             mediatorId: mediatorId,
             metricId: 'MessageCount',
-            startDate: DateTime.now()
-                .subtract(const Duration(hours: 1))
-                .toIso8601String(),
-            endDate: DateTime.now().toIso8601String(),
+            startDate: DateTime.now().subtract(const Duration(hours: 1)),
+            endDate: DateTime.now(),
           );
 
           expect(metricsResponse.body, isNotNull);

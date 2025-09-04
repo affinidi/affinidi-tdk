@@ -6,10 +6,8 @@ part 'get_mediator_cloudwatch_metric_data_request.g.dart';
 class GetMediatorCloudwatchMetricDataRequest {
   final String mediatorId;
   final String metricId;
-  // TODO: DateTime - @EpochSecondsConverter annotation - First check what format is expected (test and find out)
-  final String? startDate;
-  // TODO: DateTime - @EpochSecondsConverter annotation - First check what format is expected (test and find out)
-  final String? endDate;
+  final DateTime? startDate;
+  final DateTime? endDate;
   final int? period;
 
   GetMediatorCloudwatchMetricDataRequest({

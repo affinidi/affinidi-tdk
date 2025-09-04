@@ -377,8 +377,8 @@ void main() {
         accessToken: 'token',
         mediatorId: 'm123',
         metricId: 'MessageCount',
-        startDate: '2024-01-01T00:00:00Z',
-        endDate: '2024-01-01T02:00:00Z',
+        startDate: DateTime.parse('2024-01-01T00:00:00Z'),
+        endDate: DateTime.parse('2024-01-01T02:00:00Z'),
       );
 
       expect(result.metricData.metricId, 'MessageCount');
