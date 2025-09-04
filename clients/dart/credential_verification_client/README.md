@@ -110,6 +110,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [VerifyCredentialV2Input](doc/VerifyCredentialV2Input.md)
 - [VerifyPresentationInput](doc/VerifyPresentationInput.md)
 - [VerifyPresentationOutput](doc/VerifyPresentationOutput.md)
+- [VerifyPresentationV2Input](doc/VerifyPresentationV2Input.md)
 - [W3cCredentialStatus](doc/W3cCredentialStatus.md)
 - [W3cProof](doc/W3cProof.md)
 

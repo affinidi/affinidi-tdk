@@ -51,6 +51,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(VerifyCredentialV2Input.serializer)
       ..add(VerifyPresentationInput.serializer)
       ..add(VerifyPresentationOutput.serializer)
+      ..add(VerifyPresentationV2Input.serializer)
       ..add(W3cCredentialStatus.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(

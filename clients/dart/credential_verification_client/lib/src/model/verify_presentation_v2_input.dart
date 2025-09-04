@@ -7,24 +7,19 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'verify_presentation_input.g.dart';
+part 'verify_presentation_v2_input.g.dart';
 
-/// Request model of /verify-vp
+/// Request model of /v2/verify-vp
 ///
 /// Properties:
 /// * [verifiablePresentation] 
-/// * [signedPresentation] 
 /// * [presentationDefinition] 
 /// * [presentationSubmission] 
-/// * [dcqlQuery] 
 /// * [challenge] 
 @BuiltValue()
-abstract class VerifyPresentationInput implements Built<VerifyPresentationInput, VerifyPresentationInputBuilder> {
+abstract class VerifyPresentationV2Input implements Built<VerifyPresentationV2Input, VerifyPresentationV2InputBuilder> {
   @BuiltValueField(wireName: r'verifiablePresentation')
   JsonObject? get verifiablePresentation;
-
-  @BuiltValueField(wireName: r'signedPresentation')
-  JsonObject? get signedPresentation;
 
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
@@ -32,46 +27,36 @@ abstract class VerifyPresentationInput implements Built<VerifyPresentationInput,
   @BuiltValueField(wireName: r'presentationSubmission')
   JsonObject? get presentationSubmission;
 
-  @BuiltValueField(wireName: r'dcqlQuery')
-  JsonObject? get dcqlQuery;
-
   @BuiltValueField(wireName: r'challenge')
   String? get challenge;
 
-  VerifyPresentationInput._();
+  VerifyPresentationV2Input._();
 
-  factory VerifyPresentationInput([void updates(VerifyPresentationInputBuilder b)]) = _$VerifyPresentationInput;
+  factory VerifyPresentationV2Input([void updates(VerifyPresentationV2InputBuilder b)]) = _$VerifyPresentationV2Input;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(VerifyPresentationInputBuilder b) => b;
+  static void _defaults(VerifyPresentationV2InputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyPresentationInput> get serializer => _$VerifyPresentationInputSerializer();
+  static Serializer<VerifyPresentationV2Input> get serializer => _$VerifyPresentationV2InputSerializer();
 }
 
-class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyPresentationInput> {
+class _$VerifyPresentationV2InputSerializer implements PrimitiveSerializer<VerifyPresentationV2Input> {
   @override
-  final Iterable<Type> types = const [VerifyPresentationInput, _$VerifyPresentationInput];
+  final Iterable<Type> types = const [VerifyPresentationV2Input, _$VerifyPresentationV2Input];
 
   @override
-  final String wireName = r'VerifyPresentationInput';
+  final String wireName = r'VerifyPresentationV2Input';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    VerifyPresentationInput object, {
+    VerifyPresentationV2Input object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.verifiablePresentation != null) {
       yield r'verifiablePresentation';
       yield serializers.serialize(
         object.verifiablePresentation,
-        specifiedType: const FullType(JsonObject),
-      );
-    }
-    if (object.signedPresentation != null) {
-      yield r'signedPresentation';
-      yield serializers.serialize(
-        object.signedPresentation,
         specifiedType: const FullType(JsonObject),
       );
     }
@@ -89,13 +74,6 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
         specifiedType: const FullType(JsonObject),
       );
     }
-    if (object.dcqlQuery != null) {
-      yield r'dcqlQuery';
-      yield serializers.serialize(
-        object.dcqlQuery,
-        specifiedType: const FullType(JsonObject),
-      );
-    }
     if (object.challenge != null) {
       yield r'challenge';
       yield serializers.serialize(
@@ -108,7 +86,7 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
   @override
   Object serialize(
     Serializers serializers,
-    VerifyPresentationInput object, {
+    VerifyPresentationV2Input object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -119,7 +97,7 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required VerifyPresentationInputBuilder result,
+    required VerifyPresentationV2InputBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -132,13 +110,6 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.verifiablePresentation = valueDes;
-          break;
-        case r'signedPresentation':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.signedPresentation = valueDes;
           break;
         case r'presentationDefinition':
           final valueDes = serializers.deserialize(
@@ -153,13 +124,6 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.presentationSubmission = valueDes;
-          break;
-        case r'dcqlQuery':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.dcqlQuery = valueDes;
           break;
         case r'challenge':
           final valueDes = serializers.deserialize(
@@ -177,12 +141,12 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
   }
 
   @override
-  VerifyPresentationInput deserialize(
+  VerifyPresentationV2Input deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = VerifyPresentationInputBuilder();
+    final result = VerifyPresentationV2InputBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

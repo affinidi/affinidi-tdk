@@ -36,6 +36,7 @@ docs/VerifyCredentialOutput.md
 docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
+docs/VerifyPresentationV2Input.md
 docs/W3cCredentialStatus.md
 docs/W3cProof.md
 gradle.properties
@@ -96,5 +97,6 @@ src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyCrede
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyCredentialV2Input.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationInput.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationOutput.java
+src/main/java/com/affinidi/tdk/credential/verification/client/models/VerifyPresentationV2Input.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/W3cCredentialStatus.java
 src/main/java/com/affinidi/tdk/credential/verification/client/models/W3cProof.java

@@ -9,6 +9,7 @@ import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
 import 'package:affinidi_tdk_vault_data_manager_client/src/api_util.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_child_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_node_dto.dart';
@@ -35,8 +36,8 @@ class NodesApi {
   /// creates child node
   ///
   /// Parameters:
-  /// * [createNodeInput] - CreateNode
-  /// * [parentNodeId] - parent node id
+  /// * [nodeId] - parent node id
+  /// * [createChildNodeInput] - CreateChildNode
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -47,8 +48,8 @@ class NodesApi {
   /// Returns a [Future] containing a [Response] with a [CreateNodeOK] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateNodeOK>> createChildNode({ 
-    required CreateNodeInput createNodeInput,
-    String? parentNodeId,
+    required String nodeId,
+    required CreateChildNodeInput createChildNodeInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -56,7 +57,7 @@ class NodesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}';
+    final _path = r'/v1/nodes/{nodeId}'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -77,22 +78,17 @@ class NodesApi {
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      if (parentNodeId != null) r'parentNodeId': encodeQueryParameter(_serializers, parentNodeId, const FullType(String)),
-    };
-
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateNodeInput);
-      _bodyData = _serializers.serialize(createNodeInput, specifiedType: _type);
+      const _type = FullType(CreateChildNodeInput);
+      _bodyData = _serializers.serialize(createChildNodeInput, specifiedType: _type);
 
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
-          queryParameters: _queryParameters,
         ),
         type: DioExceptionType.unknown,
         error: error,
@@ -104,7 +100,6 @@ class NodesApi {
       _path,
       data: _bodyData,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,

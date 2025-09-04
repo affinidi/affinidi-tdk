@@ -1,55 +1,47 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'verify_presentation_input.dart';
+part of 'verify_presentation_v2_input.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-class _$VerifyPresentationInput extends VerifyPresentationInput {
+class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
   @override
   final JsonObject? verifiablePresentation;
-  @override
-  final JsonObject? signedPresentation;
   @override
   final JsonObject? presentationDefinition;
   @override
   final JsonObject? presentationSubmission;
   @override
-  final JsonObject? dcqlQuery;
-  @override
   final String? challenge;
 
-  factory _$VerifyPresentationInput(
-          [void Function(VerifyPresentationInputBuilder)? updates]) =>
-      (VerifyPresentationInputBuilder()..update(updates))._build();
+  factory _$VerifyPresentationV2Input(
+          [void Function(VerifyPresentationV2InputBuilder)? updates]) =>
+      (VerifyPresentationV2InputBuilder()..update(updates))._build();
 
-  _$VerifyPresentationInput._(
+  _$VerifyPresentationV2Input._(
       {this.verifiablePresentation,
-      this.signedPresentation,
       this.presentationDefinition,
       this.presentationSubmission,
-      this.dcqlQuery,
       this.challenge})
       : super._();
   @override
-  VerifyPresentationInput rebuild(
-          void Function(VerifyPresentationInputBuilder) updates) =>
+  VerifyPresentationV2Input rebuild(
+          void Function(VerifyPresentationV2InputBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  VerifyPresentationInputBuilder toBuilder() =>
-      VerifyPresentationInputBuilder()..replace(this);
+  VerifyPresentationV2InputBuilder toBuilder() =>
+      VerifyPresentationV2InputBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is VerifyPresentationInput &&
+    return other is VerifyPresentationV2Input &&
         verifiablePresentation == other.verifiablePresentation &&
-        signedPresentation == other.signedPresentation &&
         presentationDefinition == other.presentationDefinition &&
         presentationSubmission == other.presentationSubmission &&
-        dcqlQuery == other.dcqlQuery &&
         challenge == other.challenge;
   }
 
@@ -57,10 +49,8 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, verifiablePresentation.hashCode);
-    _$hash = $jc(_$hash, signedPresentation.hashCode);
     _$hash = $jc(_$hash, presentationDefinition.hashCode);
     _$hash = $jc(_$hash, presentationSubmission.hashCode);
-    _$hash = $jc(_$hash, dcqlQuery.hashCode);
     _$hash = $jc(_$hash, challenge.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -68,31 +58,24 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'VerifyPresentationInput')
+    return (newBuiltValueToStringHelper(r'VerifyPresentationV2Input')
           ..add('verifiablePresentation', verifiablePresentation)
-          ..add('signedPresentation', signedPresentation)
           ..add('presentationDefinition', presentationDefinition)
           ..add('presentationSubmission', presentationSubmission)
-          ..add('dcqlQuery', dcqlQuery)
           ..add('challenge', challenge))
         .toString();
   }
 }
 
-class VerifyPresentationInputBuilder
+class VerifyPresentationV2InputBuilder
     implements
-        Builder<VerifyPresentationInput, VerifyPresentationInputBuilder> {
-  _$VerifyPresentationInput? _$v;
+        Builder<VerifyPresentationV2Input, VerifyPresentationV2InputBuilder> {
+  _$VerifyPresentationV2Input? _$v;
 
   JsonObject? _verifiablePresentation;
   JsonObject? get verifiablePresentation => _$this._verifiablePresentation;
   set verifiablePresentation(JsonObject? verifiablePresentation) =>
       _$this._verifiablePresentation = verifiablePresentation;
-
-  JsonObject? _signedPresentation;
-  JsonObject? get signedPresentation => _$this._signedPresentation;
-  set signedPresentation(JsonObject? signedPresentation) =>
-      _$this._signedPresentation = signedPresentation;
 
   JsonObject? _presentationDefinition;
   JsonObject? get presentationDefinition => _$this._presentationDefinition;
@@ -104,26 +87,20 @@ class VerifyPresentationInputBuilder
   set presentationSubmission(JsonObject? presentationSubmission) =>
       _$this._presentationSubmission = presentationSubmission;
 
-  JsonObject? _dcqlQuery;
-  JsonObject? get dcqlQuery => _$this._dcqlQuery;
-  set dcqlQuery(JsonObject? dcqlQuery) => _$this._dcqlQuery = dcqlQuery;
-
   String? _challenge;
   String? get challenge => _$this._challenge;
   set challenge(String? challenge) => _$this._challenge = challenge;
 
-  VerifyPresentationInputBuilder() {
-    VerifyPresentationInput._defaults(this);
+  VerifyPresentationV2InputBuilder() {
+    VerifyPresentationV2Input._defaults(this);
   }
 
-  VerifyPresentationInputBuilder get _$this {
+  VerifyPresentationV2InputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _verifiablePresentation = $v.verifiablePresentation;
-      _signedPresentation = $v.signedPresentation;
       _presentationDefinition = $v.presentationDefinition;
       _presentationSubmission = $v.presentationSubmission;
-      _dcqlQuery = $v.dcqlQuery;
       _challenge = $v.challenge;
       _$v = null;
     }
@@ -131,26 +108,24 @@ class VerifyPresentationInputBuilder
   }
 
   @override
-  void replace(VerifyPresentationInput other) {
-    _$v = other as _$VerifyPresentationInput;
+  void replace(VerifyPresentationV2Input other) {
+    _$v = other as _$VerifyPresentationV2Input;
   }
 
   @override
-  void update(void Function(VerifyPresentationInputBuilder)? updates) {
+  void update(void Function(VerifyPresentationV2InputBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  VerifyPresentationInput build() => _build();
+  VerifyPresentationV2Input build() => _build();
 
-  _$VerifyPresentationInput _build() {
+  _$VerifyPresentationV2Input _build() {
     final _$result = _$v ??
-        _$VerifyPresentationInput._(
+        _$VerifyPresentationV2Input._(
           verifiablePresentation: verifiablePresentation,
-          signedPresentation: signedPresentation,
           presentationDefinition: presentationDefinition,
           presentationSubmission: presentationSubmission,
-          dcqlQuery: dcqlQuery,
           challenge: challenge,
         );
     replace(_$result);
