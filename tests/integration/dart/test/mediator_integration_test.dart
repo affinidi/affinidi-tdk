@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
-import 'example_configs.dart';
+import 'test_config.dart';
 
 // sometimes websockets connection is dropped
 // it is better to delegate connection restoration strategy for the application, that uses this library
@@ -14,9 +14,11 @@ const webSocketsTestRetries = 2;
 
 // TODO: add ACL test
 void main() async {
-  configureTestFiles();
+  final config = await TestConfig.configureTestFiles(
+    packageDirectoryName: 'mediator_client',
+  );
 
-  group('Mediator Integration Test', () {
+  group('Mediator Integration Tests', () {
     late PersistentWallet aliceWallet;
     late DidManager aliceDidManager;
     late DidDocument aliceDidDocument;
@@ -71,7 +73,7 @@ void main() async {
 
           final aliceKeyId = 'alice-key-1';
           final alicePrivateKeyBytes = await extractPrivateKeyBytes(
-            alicePrivateKeyPath,
+            config.alicePrivateKeyPath,
           );
 
           await aliceKeyStore.set(
@@ -87,7 +89,7 @@ void main() async {
 
           final bobKeyId = 'bob-key-1';
           final bobPrivateKeyBytes = await extractPrivateKeyBytes(
-            bobPrivateKeyPath,
+            config.bobPrivateKeyPath,
           );
 
           await bobKeyStore.set(
@@ -103,7 +105,7 @@ void main() async {
 
           bobMediatorDocument =
               await UniversalDIDResolver.defaultResolver.resolveDid(
-            await readDid(mediatorDidPath),
+            await readDid(config.mediatorDidPath),
           );
 
           // find keys whose curve is common in the mediator DID Document
@@ -225,7 +227,7 @@ void main() async {
             accessToken: bobTokens.accessToken,
           );
 
-          final messages = await bobMediatorClient.receiveMessages(
+          final messages = await bobMediatorClient.fetchMessages(
             messageIds: messageIds,
             accessToken: bobTokens.accessToken,
           );

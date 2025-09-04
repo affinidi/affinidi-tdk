@@ -1,16 +1,17 @@
-import 'package:atm_client/atm_client.dart';
-import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_atm_client/atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
-import '../test/example_configs.dart';
+import '../../../../tests/integration/dart/test/test_config.dart';
 
 void main() async {
   // Run commands below in your terminal to generate keys for Receiver:
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
 
-  // Configure test files based on environment variables if needed
-  await configureTestFiles();
+  final config = await TestConfig.configureTestFiles(
+    packageDirectoryName: 'mediator_client',
+  );
 
   final senderKeyStore = InMemoryKeyStore();
   final senderWallet = PersistentWallet(senderKeyStore);
@@ -23,7 +24,7 @@ void main() async {
   final senderKeyId = 'sender-key-1';
 
   final senderPrivateKeyBytes = await extractPrivateKeyBytes(
-    alicePrivateKeyPath,
+    config.alicePrivateKeyPath,
   );
 
   await senderKeyStore.set(

@@ -1,15 +1,17 @@
-import 'package:atm_client/atm_client.dart';
-import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
-import 'package:atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
-import 'package:atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
-import 'package:mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_atm_client/atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
+import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
-import 'example_configs.dart';
+import 'test_config.dart';
 
 Future<void> main() async {
-  await configureTestFiles();
+  final config = await TestConfig.configureTestFiles(
+    packageDirectoryName: 'mediator_client',
+  );
 
   group('Atlas', () {
     late DidManager didManager;
@@ -25,7 +27,7 @@ Future<void> main() async {
 
       // Load Alice's private key from file
       final keyId = 'alice-key-1';
-      final privateKeyBytes = await extractPrivateKeyBytes(alicePrivateKeyPath);
+      final privateKeyBytes = await extractPrivateKeyBytes(config.alicePrivateKeyPath);
 
       await keyStore.set(
         keyId,
