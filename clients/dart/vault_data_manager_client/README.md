@@ -81,6 +81,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [_FilesApi_](doc/FilesApi.md)                 | [**getScannedFileInfo**](doc/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
 | [_FilesApi_](doc/FilesApi.md)                 | [**listScannedFiles**](doc/FilesApi.md#listscannedfiles)               | **GET** /v1/scanned-files/                            |
 | [_FilesApi_](doc/FilesApi.md)                 | [**startFileScan**](doc/FilesApi.md#startfilescan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 |
+| [_NodesApi_](doc/NodesApi.md)                 | [**createChildNode**](doc/NodesApi.md#createchildnode)                 | **POST** /v1/nodes/{nodeId}                           |
 | [_NodesApi_](doc/NodesApi.md)                 | [**createNode**](doc/NodesApi.md#createnode)                           | **POST** /v1/nodes                                    |
 | [_NodesApi_](doc/NodesApi.md)                 | [**deleteNode**](doc/NodesApi.md#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         |
 | [_NodesApi_](doc/NodesApi.md)                 | [**getDetailedNodeInfo**](doc/NodesApi.md#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            |
@@ -119,6 +120,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [CorsUpdateProfileDataOK](doc/CorsUpdateProfileDataOK.md)
 - [CreateAccountInput](doc/CreateAccountInput.md)
 - [CreateAccountOK](doc/CreateAccountOK.md)
+- [CreateChildNodeInput](doc/CreateChildNodeInput.md)
 - [CreateNodeInput](doc/CreateNodeInput.md)
 - [CreateNodeOK](doc/CreateNodeOK.md)
 - [DeleteAccountDto](doc/DeleteAccountDto.md)

@@ -8,7 +8,7 @@ environment:
   flutter: ">=3.10.0"
 
 dependencies:
-  affinidi_tdk_vault_edge_drift_provider: ^1.0.1
+  affinidi_tdk_vault_edge_drift_provider: ^1.0.3
   drift: ^2.26.1
   file_picker: ^8.0.0+1
   flutter:
@@ -18,6 +18,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+dependency_overrides:
+  clock: 1.1.1
 
 flutter:
   uses-material-design: true
