@@ -153,6 +153,8 @@ void main() {
 
       expect(result.instances.length, 1);
       expect(result.instances.first.id, 'm1');
+      expect(result.from, 'did:test:atlas');
+      expect(result.to, ['did:test:mediator']);
     });
 
     test('deployMediatorInstance - deploys new instance', () async {
@@ -348,6 +350,8 @@ void main() {
 
       expect(result.requests.length, 1);
       expect(result.requests.first.requestId, 'r1');
+      expect(result.requests.first.timestamp,
+          DateTime.parse('2024-01-01T00:00:00Z'));
     });
 
     test('getMediatorCloudwatchMetricData - returns metrics', () async {
@@ -383,6 +387,143 @@ void main() {
 
       expect(result.metricData.metricId, 'MessageCount');
       expect(result.metricData.dataPoints.length, 1);
+      expect(result.metricData.mediatorId, 'm123');
+      expect(result.metricData.dataPoints.first.value, 100);
+      expect(
+        result.metricData.dataPoints.first.timestamp,
+        DateTime.parse('2024-01-01T00:00:00Z'),
+      );
+    });
+
+    test('sendMessage envelopes requests and waits for correct response type',
+        () async {
+      final response = PlainTextMessage(
+        id: const Uuid().v4(),
+        from: 'did:test:atlas',
+        to: ['did:test:mediator'],
+        type: Uri.parse(
+            'affinidi.io/operations/ama/getMediatorInstancesList/response'),
+        body: {
+          'response': '{"instances": []}',
+          'status_code': 200,
+          'headers': <String, String>{},
+        },
+      );
+
+      when(mockMediatorClient.waitForMessage(
+        messageType: anyNamed('messageType'),
+        didManager: anyNamed('didManager'),
+        accessToken: anyNamed('accessToken'),
+        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
+        clientOptions: anyNamed('clientOptions'),
+      )).thenAnswer((_) async => response);
+
+      await sut.getMediatorInstancesList(accessToken: 'token');
+
+      verify(
+        mockMediatorClient.waitForMessage(
+          messageType:
+              'affinidi.io/operations/ama/getMediatorInstancesList/response',
+          didManager: didManager,
+          accessToken: 'token',
+          atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
+          clientOptions: anyNamed('clientOptions'),
+        ),
+      );
+
+      final captured = verify(
+        mockMediatorClient.sendMessage(
+          captureAny,
+          accessToken: anyNamed('accessToken'),
+        ),
+      ).captured.single as ForwardMessage;
+
+      expect(captured.to, ['did:test:mediator']);
+      expect(captured.next, 'did:test:atlas');
+      expect(captured.attachments?.isNotEmpty, true);
+    });
+
+    test('updateMediatorInstanceDeployment - throws on mediatorId mismatch',
+        () async {
+      expect(
+        () => sut.updateMediatorInstanceDeployment(
+          accessToken: 'token',
+          mediatorId: 'm123',
+          deploymentData:
+              UpdateMediatorInstanceDeploymentRequest(mediatorId: 'other'),
+        ),
+        throwsA(isA<ArgumentError>()),
+      );
+    });
+
+    test('updateMediatorInstanceConfiguration - throws on mediatorId mismatch',
+        () async {
+      expect(
+        () => sut.updateMediatorInstanceConfiguration(
+          accessToken: 'token',
+          mediatorId: 'm123',
+          configurationData:
+              UpdateMediatorInstanceConfigurationRequest(mediatorId: 'other'),
+        ),
+        throwsA(isA<ArgumentError>()),
+      );
+    });
+
+    test(
+        'GetMediatorInstancesListResponseMessage.instances throws on null body',
+        () async {
+      final response = PlainTextMessage(
+        id: const Uuid().v4(),
+        from: 'did:test:atlas',
+        to: ['did:test:mediator'],
+        type: Uri.parse(
+            'affinidi.io/operations/ama/getMediatorInstancesList/response'),
+        body: null,
+      );
+
+      when(mockMediatorClient.waitForMessage(
+        messageType: anyNamed('messageType'),
+        didManager: anyNamed('didManager'),
+        accessToken: anyNamed('accessToken'),
+        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
+        clientOptions: anyNamed('clientOptions'),
+      )).thenAnswer((_) async => response);
+
+      final result = await sut.getMediatorInstancesList(accessToken: 'token');
+      expect(() => result.instances, throwsA(isA<ArgumentError>()));
+    });
+
+    test(
+        'DeployMediatorInstanceResponseMessage.response throws on error payload',
+        () async {
+      final response = PlainTextMessage(
+        id: const Uuid().v4(),
+        from: 'did:test:atlas',
+        to: ['did:test:mediator'],
+        type: Uri.parse(
+            'affinidi.io/operations/ama/deployMediatorInstance/response'),
+        body: {
+          'response':
+              '{"name":"Error","message":"bad","details":"invalid params"}',
+          'status_code': 400,
+          'headers': <String, String>{},
+        },
+      );
+
+      when(mockMediatorClient.waitForMessage(
+        messageType: anyNamed('messageType'),
+        didManager: anyNamed('didManager'),
+        accessToken: anyNamed('accessToken'),
+        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
+        clientOptions: anyNamed('clientOptions'),
+      )).thenAnswer((_) async => response);
+
+      final result = await sut.deployMediatorInstance(
+        accessToken: 'token',
+        deploymentData: DeployMediatorInstanceRequest(name: 'test'),
+      );
+
+      expect(() => result.response, throwsA(isA<Exception>()));
     });
   });
 }
