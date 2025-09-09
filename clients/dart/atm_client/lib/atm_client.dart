@@ -1,7 +1,9 @@
 export 'src/clients.dart';
 export 'src/clients/atm_atlas_client.dart' show AtmAtlasClient;
 export 'src/clients/atm_base_client.dart';
+export 'src/common/atm_problem_report.dart' show AtmProblemReport;
 export 'src/common/client_options.dart';
+export 'src/common/threading_metrics.dart' show ThreadingMetrics;
 export 'src/messages.dart';
 export 'src/messages/ama/deploy_mediator_instance_message.dart'
     show

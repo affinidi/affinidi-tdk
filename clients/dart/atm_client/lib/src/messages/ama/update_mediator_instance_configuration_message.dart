@@ -17,6 +17,7 @@ class UpdateMediatorInstanceConfigurationMessage extends PlainTextMessage {
     super.createdTime,
     super.expiresTime,
     super.body = const {},
+    super.threadId,
   }) : super(
           type: Uri.parse(
             'affinidi.io/operations/ama/updateMediatorInstanceConfiguration',
