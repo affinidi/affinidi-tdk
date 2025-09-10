@@ -47,9 +47,10 @@ class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
     }
 
     final responseBody = ResponseBody.fromJson(body!);
-    return DeployMediatorInstanceResponse.fromJson(
-      jsonDecode(responseBody.response) as Map<String, dynamic>,
-    );
+    final decodedResponse =
+        jsonDecode(responseBody.response) as Map<String, dynamic>;
+
+    return DeployMediatorInstanceResponse.fromJson(decodedResponse);
   }
 }
 

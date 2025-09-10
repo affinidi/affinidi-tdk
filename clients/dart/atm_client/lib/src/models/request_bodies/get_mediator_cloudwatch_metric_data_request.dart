@@ -1,13 +1,17 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../converters/date_iso_converter.dart';
+
 part 'get_mediator_cloudwatch_metric_data_request.g.dart';
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class GetMediatorCloudwatchMetricDataRequest {
   final String mediatorId;
   final String metricId;
-  final String? startDate;
-  final String? endDate;
+  @DateIsoConverter()
+  final DateTime? startDate;
+  @DateIsoConverter()
+  final DateTime? endDate;
   final int? period;
 
   GetMediatorCloudwatchMetricDataRequest({
@@ -18,8 +22,10 @@ class GetMediatorCloudwatchMetricDataRequest {
     this.period,
   });
 
-  factory GetMediatorCloudwatchMetricDataRequest.fromJson(Map<String, dynamic> json) =>
+  factory GetMediatorCloudwatchMetricDataRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$GetMediatorCloudwatchMetricDataRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GetMediatorCloudwatchMetricDataRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GetMediatorCloudwatchMetricDataRequestToJson(this);
 }

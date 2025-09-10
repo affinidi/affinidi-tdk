@@ -345,8 +345,8 @@ class AtmAtlasClient extends AtmBaseClient {
     required String accessToken,
     required String mediatorId,
     required String metricId,
-    String? startDate,
-    String? endDate,
+    DateTime? startDate,
+    DateTime? endDate,
     int? period,
   }) async {
     final request = GetMediatorCloudwatchMetricDataRequest(
