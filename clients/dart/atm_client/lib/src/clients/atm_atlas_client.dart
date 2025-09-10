@@ -104,6 +104,11 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
+    //TODO: Remove all these empty maps 
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
+
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -144,6 +149,11 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
+    // Add custom headers as per Rust implementation
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
+
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -180,6 +190,11 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
+    // Add custom headers as per Rust implementation
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
+
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -214,6 +229,11 @@ class AtmAtlasClient extends AtmBaseClient {
       body: request.toJson(),
       threadId: messageId,
     );
+
+    // Add custom headers as per Rust implementation
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
 
     final responseMessage = await sendMessage(
       requestMessage,
@@ -255,6 +275,11 @@ class AtmAtlasClient extends AtmBaseClient {
       body: request.toJson(),
       threadId: messageId,
     );
+
+    // Add custom headers as per Rust implementation
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
 
     final responseMessage = await sendMessage(
       requestMessage,
@@ -298,6 +323,11 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
+    // Add custom headers as per Rust implementation
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
+
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -338,6 +368,11 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
+    // Add custom headers as per Rust implementation
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
+
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -361,7 +396,7 @@ class AtmAtlasClient extends AtmBaseClient {
     required String metricId,
     DateTime? startDate,
     DateTime? endDate,
-    int? period,
+    String? period,
   }) async {
     final request = GetMediatorCloudwatchMetricDataRequest(
       mediatorId: mediatorId,
@@ -382,6 +417,11 @@ class AtmAtlasClient extends AtmBaseClient {
       body: request.toJson(),
       threadId: messageId,
     );
+
+    // Add custom headers as per Rust implementation
+    requestMessage['headers'] = <String, dynamic>{};
+    requestMessage['path_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = <String, dynamic>{};
 
     final responseMessage = await sendMessage(
       requestMessage,

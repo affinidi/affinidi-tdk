@@ -61,13 +61,17 @@ class DestroyMediatorInstanceResponse {
   /// The ID of the destroyed mediator instance.
   final String mediatorId;
 
-  /// The destruction status.
-  final String status;
+  /// The destruction message/status.
+  final String message;
+
+  /// The service request ID.
+  final String? serviceRequestId;
 
   /// Creates a destroy mediator instance response.
   DestroyMediatorInstanceResponse({
     required this.mediatorId,
-    required this.status,
+    required this.message,
+    this.serviceRequestId,
   });
 
   /// Creates a DestroyMediatorInstanceResponse from a JSON map.

@@ -10,7 +10,7 @@ class GetMediatorCloudwatchMetricDataRequest {
   final DateTime? startDate;
   @JsonKey(toJson: _dateToIsoUtcString, fromJson: _dateFromIsoString)
   final DateTime? endDate;
-  final int? period;
+  final String? period;
 
   GetMediatorCloudwatchMetricDataRequest({
     required this.mediatorId,

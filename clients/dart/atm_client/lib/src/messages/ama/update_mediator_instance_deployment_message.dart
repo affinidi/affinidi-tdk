@@ -61,13 +61,17 @@ class UpdateMediatorInstanceDeploymentResponse {
   /// The mediator instance identifier.
   final String mediatorId;
 
-  /// The update status.
-  final String status;
+  /// The update message/status.
+  final String message;
+
+  /// The service request ID.
+  final String? serviceRequestId;
 
   /// Creates an update mediator instance deployment response.
   UpdateMediatorInstanceDeploymentResponse({
     required this.mediatorId,
-    required this.status,
+    required this.message,
+    this.serviceRequestId,
   });
 
   /// Creates UpdateMediatorInstanceDeploymentResponse from a JSON map.

@@ -10,8 +10,10 @@ class GetMediatorInstanceMetadataRequest {
     required this.mediatorId,
   });
 
-  factory GetMediatorInstanceMetadataRequest.fromJson(Map<String, dynamic> json) =>
+  factory GetMediatorInstanceMetadataRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$GetMediatorInstanceMetadataRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$GetMediatorInstanceMetadataRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$GetMediatorInstanceMetadataRequestToJson(this);
 }

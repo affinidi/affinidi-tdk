@@ -56,47 +56,60 @@ void main() async {
 
   // Example 2: Get mediator instance metadata
   if (listResponse.instances.isNotEmpty) {
-    final mediatorId = listResponse.instances.first.id;
-    final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
-      accessToken: authTokens.accessToken,
-      mediatorId: mediatorId,
-    );
-    prettyPrint(
-      'Mediator metadata',
-      object: metadataResponse.body,
-    );
+    try {
+      final mediatorId = listResponse.instances.first.id;
+      final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
+        accessToken: authTokens.accessToken,
+        mediatorId: mediatorId,
+      );
+      prettyPrint(
+        'Mediator metadata',
+        object: metadataResponse.body,
+      );
+    } catch (e) {
+      prettyPrint('Error getting metadata: $e');
+    }
 
     // Example 3: Get mediator requests (if any instances exist)
-    final requestsResponse = await atmAtlasClient.getMediatorsRequests(
-      accessToken: authTokens.accessToken,
-      limit: 10,
-    );
-    prettyPrint(
-      'Mediator requests',
-      object: requestsResponse.body,
-    );
+    try {
+      final requestsResponse = await atmAtlasClient.getMediatorsRequests(
+        accessToken: authTokens.accessToken,
+        limit: 10,
+      );
+      prettyPrint(
+        'Mediator requests',
+        object: requestsResponse.body,
+      );
+    } catch (e) {
+      prettyPrint('Error getting requests: $e');
+    }
   } else {
     prettyPrint('No mediator instances available.');
   }
 
   // Example 4: Deploy a new mediator instance
-  prettyPrint('Deploying new mediator instance...');
-  final deployRequest = DeployMediatorInstanceRequest(
-    name: 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',
-    description: 'Example mediator instance',
-  );
-  final deployResponse = await atmAtlasClient.deployMediatorInstance(
-    accessToken: authTokens.accessToken,
-    deploymentData: deployRequest,
-  );
+  // prettyPrint('Deploying new mediator instance...');
+  // final deployRequest = DeployMediatorInstanceRequest(
+  //   serviceSize: 'tiny',
+  //   mediatorAclMode: 'explicit_deny',
+  // );
+  // final deployResponse = await atmAtlasClient.deployMediatorInstance(
+  //   accessToken: authTokens.accessToken,
+  //   deploymentData: deployRequest,
+  // );
 
-  prettyPrint(
-    'Deploy response',
-    object: deployResponse.body,
-  );
+  // final response = deployResponse.response;
+  // prettyPrint(
+  //   'Deploy response',
+  //   object: {
+  //     'mediatorId': response.mediatorId,
+  //     'message': response.message,
+  //     'serviceRequestId': response.serviceRequestId,
+  //   },
+  // );
 
-  // Wait a moment for connections to fully close
-  await Future<void>.delayed(const Duration(milliseconds: 100));
+  // // Wait a moment for connections to fully close
+  // await Future<void>.delayed(const Duration(milliseconds: 100));
 
   prettyPrint('Example completed.');
 }

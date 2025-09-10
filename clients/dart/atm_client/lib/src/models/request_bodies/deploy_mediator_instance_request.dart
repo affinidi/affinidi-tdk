@@ -4,16 +4,12 @@ part 'deploy_mediator_instance_request.g.dart';
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class DeployMediatorInstanceRequest {
-  final String? name;
-  final String? description;
-  final String? region;
-  final String? instanceType;
+  final String? serviceSize;
+  final String? mediatorAclMode;
 
   DeployMediatorInstanceRequest({
-    this.name,
-    this.description,
-    this.region,
-    this.instanceType,
+    this.serviceSize,
+    this.mediatorAclMode,
   });
 
   factory DeployMediatorInstanceRequest.fromJson(Map<String, dynamic> json) =>

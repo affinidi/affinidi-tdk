@@ -10,12 +10,15 @@ DeployMediatorInstanceResponse _$DeployMediatorInstanceResponseFromJson(
         Map<String, dynamic> json) =>
     DeployMediatorInstanceResponse(
       mediatorId: json['mediatorId'] as String,
-      status: json['status'] as String,
+      message: json['message'] as String,
+      serviceRequestId: json['serviceRequestId'] as String?,
     );
 
 Map<String, dynamic> _$DeployMediatorInstanceResponseToJson(
         DeployMediatorInstanceResponse instance) =>
     <String, dynamic>{
       'mediatorId': instance.mediatorId,
-      'status': instance.status,
+      'message': instance.message,
+      if (instance.serviceRequestId case final value?)
+        'serviceRequestId': value,
     };

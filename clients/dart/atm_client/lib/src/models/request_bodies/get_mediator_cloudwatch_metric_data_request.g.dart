@@ -14,7 +14,7 @@ GetMediatorCloudwatchMetricDataRequest
           metricId: json['metricId'] as String,
           startDate: _dateFromIsoString(json['startDate'] as String?),
           endDate: _dateFromIsoString(json['endDate'] as String?),
-          period: (json['period'] as num?)?.toInt(),
+          period: json['period'] as String?,
         );
 
 Map<String, dynamic> _$GetMediatorCloudwatchMetricDataRequestToJson(

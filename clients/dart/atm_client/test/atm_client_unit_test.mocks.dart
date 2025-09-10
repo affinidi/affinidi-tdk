@@ -3,15 +3,15 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
-import 'package:affinidi_tdk_atm_client/atm_client.dart' as _i7;
+import 'package:affinidi_tdk_atm_client/atm_client.dart' as _i2;
 import 'package:affinidi_tdk_atm_client/src/common/atm_mediator_client.dart'
-    as _i5;
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart' as _i3;
+    as _i6;
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i6;
-import 'package:ssi/ssi.dart' as _i2;
+import 'package:mockito/src/dummies.dart' as _i7;
+import 'package:ssi/ssi.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -27,8 +27,9 @@ import 'package:ssi/ssi.dart' as _i2;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeDidDocument_0 extends _i1.SmartFake implements _i2.DidDocument {
-  _FakeDidDocument_0(
+class _FakeThreadingMetrics_0 extends _i1.SmartFake
+    implements _i2.ThreadingMetrics {
+  _FakeThreadingMetrics_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -37,8 +38,8 @@ class _FakeDidDocument_0 extends _i1.SmartFake implements _i2.DidDocument {
         );
 }
 
-class _FakeKeyPair_1 extends _i1.SmartFake implements _i2.KeyPair {
-  _FakeKeyPair_1(
+class _FakeDidDocument_1 extends _i1.SmartFake implements _i3.DidDocument {
+  _FakeDidDocument_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -47,8 +48,8 @@ class _FakeKeyPair_1 extends _i1.SmartFake implements _i2.KeyPair {
         );
 }
 
-class _FakeDidSigner_2 extends _i1.SmartFake implements _i2.DidSigner {
-  _FakeDidSigner_2(
+class _FakeKeyPair_2 extends _i1.SmartFake implements _i3.KeyPair {
+  _FakeKeyPair_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -57,9 +58,8 @@ class _FakeDidSigner_2 extends _i1.SmartFake implements _i2.DidSigner {
         );
 }
 
-class _FakeForwardMessageOptions_3 extends _i1.SmartFake
-    implements _i3.ForwardMessageOptions {
-  _FakeForwardMessageOptions_3(
+class _FakeDidSigner_3 extends _i1.SmartFake implements _i3.DidSigner {
+  _FakeDidSigner_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -68,9 +68,9 @@ class _FakeForwardMessageOptions_3 extends _i1.SmartFake
         );
 }
 
-class _FakeWebSocketOptions_4 extends _i1.SmartFake
-    implements _i3.WebSocketOptions {
-  _FakeWebSocketOptions_4(
+class _FakeForwardMessageOptions_4 extends _i1.SmartFake
+    implements _i4.ForwardMessageOptions {
+  _FakeForwardMessageOptions_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -79,9 +79,9 @@ class _FakeWebSocketOptions_4 extends _i1.SmartFake
         );
 }
 
-class _FakePlainTextMessage_5 extends _i1.SmartFake
-    implements _i3.PlainTextMessage {
-  _FakePlainTextMessage_5(
+class _FakeWebSocketOptions_5 extends _i1.SmartFake
+    implements _i4.WebSocketOptions {
+  _FakeWebSocketOptions_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -90,9 +90,9 @@ class _FakePlainTextMessage_5 extends _i1.SmartFake
         );
 }
 
-class _FakeDidcommMessage_6 extends _i1.SmartFake
-    implements _i3.DidcommMessage {
-  _FakeDidcommMessage_6(
+class _FakePlainTextMessage_6 extends _i1.SmartFake
+    implements _i4.PlainTextMessage {
+  _FakePlainTextMessage_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -101,9 +101,20 @@ class _FakeDidcommMessage_6 extends _i1.SmartFake
         );
 }
 
-class _FakeStreamSubscription_7<T> extends _i1.SmartFake
-    implements _i4.StreamSubscription<T> {
-  _FakeStreamSubscription_7(
+class _FakeDidcommMessage_7 extends _i1.SmartFake
+    implements _i4.DidcommMessage {
+  _FakeDidcommMessage_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeStreamSubscription_8<T> extends _i1.SmartFake
+    implements _i5.StreamSubscription<T> {
+  _FakeStreamSubscription_8(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -115,72 +126,83 @@ class _FakeStreamSubscription_7<T> extends _i1.SmartFake
 /// A class which mocks [AtmMediatorClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
+class MockAtmMediatorClient extends _i1.Mock implements _i6.AtmMediatorClient {
   MockAtmMediatorClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i2.DidDocument get mediatorDidDocument => (super.noSuchMethod(
+  _i2.ThreadingMetrics get metrics => (super.noSuchMethod(
+        Invocation.getter(#metrics),
+        returnValue: _FakeThreadingMetrics_0(
+          this,
+          Invocation.getter(#metrics),
+        ),
+      ) as _i2.ThreadingMetrics);
+
+  @override
+  _i3.DidDocument get mediatorDidDocument => (super.noSuchMethod(
         Invocation.getter(#mediatorDidDocument),
-        returnValue: _FakeDidDocument_0(
+        returnValue: _FakeDidDocument_1(
           this,
           Invocation.getter(#mediatorDidDocument),
         ),
-      ) as _i2.DidDocument);
+      ) as _i3.DidDocument);
 
   @override
-  _i2.KeyPair get keyPair => (super.noSuchMethod(
+  _i3.KeyPair get keyPair => (super.noSuchMethod(
         Invocation.getter(#keyPair),
-        returnValue: _FakeKeyPair_1(
+        returnValue: _FakeKeyPair_2(
           this,
           Invocation.getter(#keyPair),
         ),
-      ) as _i2.KeyPair);
+      ) as _i3.KeyPair);
 
   @override
   String get didKeyId => (super.noSuchMethod(
         Invocation.getter(#didKeyId),
-        returnValue: _i6.dummyValue<String>(
+        returnValue: _i7.dummyValue<String>(
           this,
           Invocation.getter(#didKeyId),
         ),
       ) as String);
 
   @override
-  _i2.DidSigner get signer => (super.noSuchMethod(
+  _i3.DidSigner get signer => (super.noSuchMethod(
         Invocation.getter(#signer),
-        returnValue: _FakeDidSigner_2(
+        returnValue: _FakeDidSigner_3(
           this,
           Invocation.getter(#signer),
         ),
-      ) as _i2.DidSigner);
+      ) as _i3.DidSigner);
 
   @override
-  _i3.ForwardMessageOptions get forwardMessageOptions => (super.noSuchMethod(
+  _i4.ForwardMessageOptions get forwardMessageOptions => (super.noSuchMethod(
         Invocation.getter(#forwardMessageOptions),
-        returnValue: _FakeForwardMessageOptions_3(
+        returnValue: _FakeForwardMessageOptions_4(
           this,
           Invocation.getter(#forwardMessageOptions),
         ),
-      ) as _i3.ForwardMessageOptions);
+      ) as _i4.ForwardMessageOptions);
 
   @override
-  _i3.WebSocketOptions get webSocketOptions => (super.noSuchMethod(
+  _i4.WebSocketOptions get webSocketOptions => (super.noSuchMethod(
         Invocation.getter(#webSocketOptions),
-        returnValue: _FakeWebSocketOptions_4(
+        returnValue: _FakeWebSocketOptions_5(
           this,
           Invocation.getter(#webSocketOptions),
         ),
-      ) as _i3.WebSocketOptions);
+      ) as _i4.WebSocketOptions);
 
   @override
-  _i4.Future<_i3.PlainTextMessage> waitForMessage({
+  _i5.Future<_i4.PlainTextMessage> waitForMessage({
     required String? messageType,
+    required String? threadId,
+    required String? fromDid,
     required String? accessToken,
-    required _i2.DidManager? didManager,
-    required _i2.DidDocument? atmServiceDidDocument,
-    required _i7.ClientOptions? clientOptions,
+    required _i3.DidManager? didManager,
+    required _i3.DidDocument? atmServiceDidDocument,
+    required _i2.ClientOptions? clientOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -188,6 +210,8 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
           [],
           {
             #messageType: messageType,
+            #threadId: threadId,
+            #fromDid: fromDid,
             #accessToken: accessToken,
             #didManager: didManager,
             #atmServiceDidDocument: atmServiceDidDocument,
@@ -195,13 +219,15 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
           },
         ),
         returnValue:
-            _i4.Future<_i3.PlainTextMessage>.value(_FakePlainTextMessage_5(
+            _i5.Future<_i4.PlainTextMessage>.value(_FakePlainTextMessage_6(
           this,
           Invocation.method(
             #waitForMessage,
             [],
             {
               #messageType: messageType,
+              #threadId: threadId,
+              #fromDid: fromDid,
               #accessToken: accessToken,
               #didManager: didManager,
               #atmServiceDidDocument: atmServiceDidDocument,
@@ -209,11 +235,11 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             },
           ),
         )),
-      ) as _i4.Future<_i3.PlainTextMessage>);
+      ) as _i5.Future<_i4.PlainTextMessage>);
 
   @override
-  _i4.Future<_i3.DidcommMessage> sendMessage(
-    _i3.ForwardMessage? message, {
+  _i5.Future<_i4.DidcommMessage> sendMessage(
+    _i4.ForwardMessage? message, {
     String? accessToken,
   }) =>
       (super.noSuchMethod(
@@ -222,7 +248,7 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
           [message],
           {#accessToken: accessToken},
         ),
-        returnValue: _i4.Future<_i3.DidcommMessage>.value(_FakeDidcommMessage_6(
+        returnValue: _i5.Future<_i4.DidcommMessage>.value(_FakeDidcommMessage_7(
           this,
           Invocation.method(
             #sendMessage,
@@ -230,21 +256,21 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             {#accessToken: accessToken},
           ),
         )),
-      ) as _i4.Future<_i3.DidcommMessage>);
+      ) as _i5.Future<_i4.DidcommMessage>);
 
   @override
-  _i4.Future<List<String>> listInboxMessageIds({String? accessToken}) =>
+  _i5.Future<List<String>> listInboxMessageIds({String? accessToken}) =>
       (super.noSuchMethod(
         Invocation.method(
           #listInboxMessageIds,
           [],
           {#accessToken: accessToken},
         ),
-        returnValue: _i4.Future<List<String>>.value(<String>[]),
-      ) as _i4.Future<List<String>>);
+        returnValue: _i5.Future<List<String>>.value(<String>[]),
+      ) as _i5.Future<List<String>>);
 
   @override
-  _i4.Future<List<Map<String, dynamic>>> fetchMessages({
+  _i5.Future<List<Map<String, dynamic>>> fetchMessages({
     required List<String>? messageIds,
     bool? deleteOnMediator = true,
     String? accessToken,
@@ -259,12 +285,12 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             #accessToken: accessToken,
           },
         ),
-        returnValue: _i4.Future<List<Map<String, dynamic>>>.value(
+        returnValue: _i5.Future<List<Map<String, dynamic>>>.value(
             <Map<String, dynamic>>[]),
-      ) as _i4.Future<List<Map<String, dynamic>>>);
+      ) as _i5.Future<List<Map<String, dynamic>>>);
 
   @override
-  _i4.Future<List<Map<String, dynamic>>> fetchMessagesStartingFrom({
+  _i5.Future<List<Map<String, dynamic>>> fetchMessagesStartingFrom({
     DateTime? startFrom,
     int? batchSize = 25,
     bool? deleteOnMediator = true,
@@ -281,12 +307,12 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             #accessToken: accessToken,
           },
         ),
-        returnValue: _i4.Future<List<Map<String, dynamic>>>.value(
+        returnValue: _i5.Future<List<Map<String, dynamic>>>.value(
             <Map<String, dynamic>>[]),
-      ) as _i4.Future<List<Map<String, dynamic>>>);
+      ) as _i5.Future<List<Map<String, dynamic>>>);
 
   @override
-  _i4.Future<void> deleteMessages({
+  _i5.Future<void> deleteMessages({
     required List<String>? messageIds,
     String? accessToken,
   }) =>
@@ -299,12 +325,12 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             #accessToken: accessToken,
           },
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 
   @override
-  _i4.Future<_i4.StreamSubscription<dynamic>> listenForIncomingMessages(
+  _i5.Future<_i5.StreamSubscription<dynamic>> listenForIncomingMessages(
     void Function(Map<String, dynamic>)? onMessage, {
     Function? onError,
     void Function()? onDone,
@@ -322,8 +348,8 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             #accessToken: accessToken,
           },
         ),
-        returnValue: _i4.Future<_i4.StreamSubscription<dynamic>>.value(
-            _FakeStreamSubscription_7<dynamic>(
+        returnValue: _i5.Future<_i5.StreamSubscription<dynamic>>.value(
+            _FakeStreamSubscription_8<dynamic>(
           this,
           Invocation.method(
             #listenForIncomingMessages,
@@ -336,22 +362,22 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             },
           ),
         )),
-      ) as _i4.Future<_i4.StreamSubscription<dynamic>>);
+      ) as _i5.Future<_i5.StreamSubscription<dynamic>>);
 
   @override
-  _i4.Future<void> disconnect() => (super.noSuchMethod(
+  _i5.Future<void> disconnect() => (super.noSuchMethod(
         Invocation.method(
           #disconnect,
           [],
         ),
-        returnValue: _i4.Future<void>.value(),
-        returnValueForMissingStub: _i4.Future<void>.value(),
-      ) as _i4.Future<void>);
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
 
   @override
-  _i4.Future<_i3.DidcommMessage> packMessage(
-    _i3.PlainTextMessage? message, {
-    required _i3.MessageOptions? messageOptions,
+  _i5.Future<_i4.DidcommMessage> packMessage(
+    _i4.PlainTextMessage? message, {
+    required _i4.MessageOptions? messageOptions,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -359,7 +385,7 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
           [message],
           {#messageOptions: messageOptions},
         ),
-        returnValue: _i4.Future<_i3.DidcommMessage>.value(_FakeDidcommMessage_6(
+        returnValue: _i5.Future<_i4.DidcommMessage>.value(_FakeDidcommMessage_7(
           this,
           Invocation.method(
             #packMessage,
@@ -367,5 +393,5 @@ class MockAtmMediatorClient extends _i1.Mock implements _i5.AtmMediatorClient {
             {#messageOptions: messageOptions},
           ),
         )),
-      ) as _i4.Future<_i3.DidcommMessage>);
+      ) as _i5.Future<_i4.DidcommMessage>);
 }
