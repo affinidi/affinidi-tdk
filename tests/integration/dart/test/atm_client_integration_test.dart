@@ -26,7 +26,6 @@ Future<void> main() async {
         store: InMemoryDidStore(),
       );
 
-      // Load Alice's private key from file
       final keyId = 'alice-key-1';
       final privateKeyBytes =
           await extractPrivateKeyBytes(config.alicePrivateKeyPath);
@@ -52,7 +51,6 @@ Future<void> main() async {
 
           final authTokens = await sut.authenticate();
 
-          // First get list to find a mediator ID
           final listResponse = await sut.getMediatorInstancesList(
             accessToken: authTokens.accessToken,
           );
@@ -221,6 +219,55 @@ Future<void> main() async {
 
           final authTokens = await sut.authenticate();
 
+          // Step 0: Clean up any existing mediators first
+          final initialListResponse = await sut.getMediatorInstancesList(
+            accessToken: authTokens.accessToken,
+          );
+
+          for (final instance in initialListResponse.instances) {
+            if (instance.deploymentState.toLowerCase() != 'destroyed') {
+              await sut.destroyMediatorInstance(
+                accessToken: authTokens.accessToken,
+                mediatorId: instance.id,
+              );
+            }
+          }
+
+          if (initialListResponse.instances.isNotEmpty) {
+            final cleanupRetryOptions = RetryOptions(
+              maxAttempts: 240, // 240 attempts * 5 seconds = 20 minutes
+              delayFactor: const Duration(seconds: 5),
+              maxDelay: const Duration(seconds: 5),
+            );
+
+            await cleanupRetryOptions.retry(
+              () async {
+                final listResponse = await sut.getMediatorInstancesList(
+                  accessToken: authTokens.accessToken,
+                );
+
+                final activeInstances = listResponse.instances
+                    .where(
+                        (i) => i.deploymentState.toLowerCase() != 'destroyed')
+                    .toList();
+                if (activeInstances.isNotEmpty) {
+                  throw Exception(
+                      'Waiting for ${activeInstances.length} mediators to be destroyed');
+                }
+              },
+              retryIf: (e) => e.toString().contains('Waiting for'),
+            );
+          }
+
+          final cleanListResponse = await sut.getMediatorInstancesList(
+            accessToken: authTokens.accessToken,
+          );
+          final activeInstances = cleanListResponse.instances
+              .where((i) => i.deploymentState.toLowerCase() != 'destroyed')
+              .toList();
+          expect(activeInstances.isEmpty, isTrue,
+              reason: 'Expected no active mediator instances before test');
+
           // Step 1: Deploy a new mediator instance
           final deploymentData = DeployMediatorInstanceRequest(
             name:
@@ -246,7 +293,6 @@ Future<void> main() async {
 
           final mediatorId = deployResponseData.mediatorId;
 
-          // Wait for deployment to complete (retry for up to 20 minutes with 5-second delays)
           final retryOptions = RetryOptions(
             maxAttempts: 240, // 240 attempts * 5 seconds = 20 minutes
             delayFactor: const Duration(seconds: 5),
@@ -262,7 +308,6 @@ Future<void> main() async {
               final instance =
                   listResponse.instances.firstWhere((i) => i.id == mediatorId);
 
-              // Check if deployment is complete
               final state = instance.deploymentState.toLowerCase();
               if (state != 'deployed' && state != 'running') {
                 throw Exception(
@@ -380,7 +425,6 @@ Future<void> main() async {
           expect(deleteResponseData.mediatorId, equals(mediatorId));
           expect(deleteResponseData.status, isNotNull);
 
-          // Wait for destroy to complete (retry for up to 20 minutes with 5-second delays)
           final destroyRetryOptions = RetryOptions(
             maxAttempts: 240, // 240 attempts * 5 seconds = 20 minutes
             delayFactor: const Duration(seconds: 5),
@@ -397,7 +441,6 @@ Future<void> main() async {
                   .where((i) => i.id == mediatorId)
                   .toList();
               if (maybeInstance.isEmpty) {
-                // Treat not-found as fully destroyed
                 return;
               }
               final state = maybeInstance.first.deploymentState.toLowerCase();
@@ -411,6 +454,16 @@ Future<void> main() async {
 
           expect(deleteResponseData.status, isNotEmpty,
               reason: 'Expected deletion status message');
+
+          // Step 9: Verify the list is empty or only contains destroyed instances
+          final finalListResponse = await sut.getMediatorInstancesList(
+            accessToken: authTokens.accessToken,
+          );
+          final finalActiveInstances = finalListResponse.instances
+              .where((i) => i.deploymentState.toLowerCase() != 'destroyed')
+              .toList();
+          expect(finalActiveInstances.isEmpty, isTrue,
+              reason: 'Expected no active mediator instances after deletion');
         },
       );
     });

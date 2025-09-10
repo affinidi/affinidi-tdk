@@ -12,8 +12,10 @@ GetMediatorCloudwatchMetricDataRequest
         GetMediatorCloudwatchMetricDataRequest(
           mediatorId: json['mediatorId'] as String,
           metricId: json['metricId'] as String,
-          startDate: _dateFromIsoString(json['startDate'] as String?),
-          endDate: _dateFromIsoString(json['endDate'] as String?),
+          startDate:
+              const DateIsoConverter().fromJson(json['startDate'] as String?),
+          endDate:
+              const DateIsoConverter().fromJson(json['endDate'] as String?),
           period: (json['period'] as num?)?.toInt(),
         );
 
@@ -22,9 +24,9 @@ Map<String, dynamic> _$GetMediatorCloudwatchMetricDataRequestToJson(
     <String, dynamic>{
       'mediatorId': instance.mediatorId,
       'metricId': instance.metricId,
-      if (_dateToIsoUtcString(instance.startDate) case final value?)
+      if (const DateIsoConverter().toJson(instance.startDate) case final value?)
         'startDate': value,
-      if (_dateToIsoUtcString(instance.endDate) case final value?)
+      if (const DateIsoConverter().toJson(instance.endDate) case final value?)
         'endDate': value,
       if (instance.period case final value?) 'period': value,
     };

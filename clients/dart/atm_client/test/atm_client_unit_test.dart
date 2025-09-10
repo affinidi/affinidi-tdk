@@ -4,23 +4,65 @@ import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediato
 import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_configuration_request.dart';
 import 'package:affinidi_tdk_atm_client/src/models/request_bodies/update_mediator_instance_deployment_request.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
-import 'atm_client_unit_test.mocks.dart';
+class TestAtmMediatorClient extends AtmMediatorClient {
+  final List<ForwardMessage> capturedForwardMessages = [];
 
-@GenerateMocks([AtmMediatorClient])
+  PlainTextMessage? nextWaitForMessageResponse;
+
+  DidcommMessage? nextSendMessageResponse;
+
+  TestAtmMediatorClient({
+    required super.mediatorDidDocument,
+    required super.keyPair,
+    required super.didKeyId,
+    required super.signer,
+  }) : super(
+          forwardMessageOptions: const ForwardMessageOptions(),
+          webSocketOptions: const WebSocketOptions(),
+        );
+
+  @override
+  Future<DidcommMessage> sendMessage(
+    ForwardMessage message, {
+    String? accessToken,
+  }) async {
+    capturedForwardMessages.add(message);
+
+    return nextSendMessageResponse!;
+  }
+
+  @override
+  Future<PlainTextMessage> waitForMessage({
+    required String messageType,
+    required String accessToken,
+    required DidManager didManager,
+    required DidDocument atmServiceDidDocument,
+    required ClientOptions clientOptions,
+  }) async {
+    if (nextWaitForMessageResponse == null) {
+      throw StateError(
+          'No response configured for waitForMessage with type: $messageType');
+    }
+    return nextWaitForMessageResponse!;
+  }
+}
+
 void main() {
+  const accessToken = 'token';
   group('AtmAtlasClient Unit Tests', () {
-    late MockAtmMediatorClient mockMediatorClient;
     late DidManager didManager;
-    late AtmAtlasClient sut;
+    late DidDocument atlasDidDocument;
+    late DidDocument mediatorDidDocument;
+    late String keyId;
+    late List<String> matchedKeyIds;
+    late KeyPair keyPair;
+    late DidSigner signer;
 
     setUp(() async {
-      // Create real cryptographic components
       final keyStore = InMemoryKeyStore();
       final wallet = PersistentWallet(keyStore);
 
@@ -29,8 +71,7 @@ void main() {
         store: InMemoryDidStore(),
       );
 
-      // Load test private key
-      const keyId = 'test-key-1';
+      keyId = 'test-key-1';
       final privateKeyPath = 'example/keys/alice_private_key.pem';
       final privateKeyBytes = await extractPrivateKeyBytes(privateKeyPath);
 
@@ -42,12 +83,9 @@ void main() {
         ),
       );
 
-      // Generate DID with verification method
       await didManager.addVerificationMethod(keyId);
       final didDocument = await didManager.getDidDocument();
-
-      // Create mediator and atlas DID documents for testing
-      final mediatorDidDocument = DidDocument.fromJson({
+      mediatorDidDocument = DidDocument.fromJson({
         '@context': ['https://www.w3.org/ns/did/v1'],
         'id': 'did:test:mediator',
         'keyAgreement': [
@@ -63,9 +101,17 @@ void main() {
             }
           }
         ],
+        'service': [
+          {
+            'id': '#didcomm',
+            'type': 'DIDCommMessaging',
+            'serviceEndpoint':
+                'https://test-mediator.example.com/api/v1/messages',
+          }
+        ],
       });
 
-      final atlasDidDocument = DidDocument.fromJson({
+      atlasDidDocument = DidDocument.fromJson({
         '@context': ['https://www.w3.org/ns/did/v1'],
         'id': 'did:test:atlas',
         'keyAgreement': [
@@ -83,50 +129,44 @@ void main() {
         ],
       });
 
-      // Get matched key IDs for key agreement
-      final matchedKeyIds = didDocument.matchKeysInKeyAgreement(
+      matchedKeyIds = didDocument.matchKeysInKeyAgreement(
         otherDidDocuments: [mediatorDidDocument, atlasDidDocument],
       );
 
-      // Get real key pair and signer
-      final keyPair = await didManager.getKeyPairByDidKeyId(
+      keyPair = await didManager.getKeyPairByDidKeyId(
         matchedKeyIds.first,
       );
-      final signer = await didManager.getSigner(
+      signer = await didManager.getSigner(
         didDocument.authentication.first.id,
-      );
-
-      // Setup mock mediator client
-      mockMediatorClient = MockAtmMediatorClient();
-      when(mockMediatorClient.mediatorDidDocument)
-          .thenReturn(mediatorDidDocument);
-      when(mockMediatorClient.signer).thenReturn(signer);
-      when(mockMediatorClient.keyPair).thenReturn(keyPair);
-      when(mockMediatorClient.didKeyId).thenReturn(matchedKeyIds.first);
-
-      // Mock sendMessage
-      when(mockMediatorClient.sendMessage(
-        any,
-        accessToken: anyNamed('accessToken'),
-      )).thenAnswer((_) async {
-        return PlainTextMessage(
-          id: const Uuid().v4(),
-          from: 'did:test:mediator',
-          to: ['did:test:atlas'],
-          type: Uri.parse('test'),
-          body: {},
-        );
-      });
-
-      // Create AtmAtlasClient instance
-      sut = AtmAtlasClient(
-        mediatorClient: mockMediatorClient,
-        didManager: didManager,
-        atmServiceDidDocument: atlasDidDocument,
       );
     });
 
+    EncryptedMessage createEncryptedResponse({
+      required String type,
+      required Map<String, dynamic> body,
+    }) {
+      return EncryptedMessage.fromJson({
+        'ciphertext': 'dGVzdA==',
+        'protected': 'eyJ0eXAiOiJKV1QifQ==',
+        'recipients': [
+          {
+            'encrypted_key': 'dGVzdA==',
+            'header': {'kid': 'did:test:mediator#key-1'},
+          }
+        ],
+        'tag': 'dGVzdA==',
+        'iv': 'dGVzdA==',
+      });
+    }
+
     test('getMediatorInstancesList - returns list of instances', () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -141,23 +181,44 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/getMediatorInstancesList/response',
+        body: response.body!,
+      );
 
-      final result = await sut.getMediatorInstancesList(accessToken: 'token');
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
 
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
+
+      final result =
+          await sut.getMediatorInstancesList(accessToken: accessToken);
+
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
       expect(result.instances.length, 1);
       expect(result.instances.first.id, 'm1');
       expect(result.from, 'did:test:atlas');
       expect(result.to, ['did:test:mediator']);
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/getMediatorInstancesList/response');
     });
 
     test('deployMediatorInstance - deploys new instance', () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -171,24 +232,45 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/deployMediatorInstance/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.deployMediatorInstance(
-        accessToken: 'token',
+        accessToken: accessToken,
         deploymentData: DeployMediatorInstanceRequest(name: 'test'),
       );
 
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
+
       expect(result.response.mediatorId, 'new-123');
       expect(result.response.status, 'Deploying');
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/deployMediatorInstance/response');
     });
 
     test('getMediatorInstanceMetadata - returns instance metadata', () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -202,24 +284,45 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/getMediatorInstanceMetadata/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.getMediatorInstanceMetadata(
-        accessToken: 'token',
+        accessToken: accessToken,
         mediatorId: 'm123',
       );
 
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
+
       expect(result.metadata.mediatorId, 'm123');
       expect(result.metadata.status, 'running');
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/getMediatorInstanceMetadata/response');
     });
 
     test('destroyMediatorInstance - destroys instance', () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -233,25 +336,46 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/destroyMediatorInstance/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.destroyMediatorInstance(
-        accessToken: 'token',
+        accessToken: accessToken,
         mediatorId: 'm123',
       );
 
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
+
       expect(result.response.mediatorId, 'm123');
       expect(result.response.status, 'Destroying');
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/destroyMediatorInstance/response');
     });
 
     test('updateMediatorInstanceDeployment - updates deployment config',
         () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -265,16 +389,23 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type:
+            'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.updateMediatorInstanceDeployment(
-        accessToken: 'token',
+        accessToken: accessToken,
         mediatorId: 'm123',
         deploymentData: UpdateMediatorInstanceDeploymentRequest(
           mediatorId: 'm123',
@@ -282,11 +413,26 @@ void main() {
         ),
       );
 
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
+
       expect(result.response.mediatorId, 'm123');
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response');
     });
 
     test('updateMediatorInstanceConfiguration - updates runtime config',
         () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -300,16 +446,23 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type:
+            'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.updateMediatorInstanceConfiguration(
-        accessToken: 'token',
+        accessToken: accessToken,
         mediatorId: 'm123',
         configurationData: UpdateMediatorInstanceConfigurationRequest(
           mediatorId: 'm123',
@@ -317,10 +470,25 @@ void main() {
         ),
       );
 
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
+
       expect(result.response.mediatorId, 'm123');
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response');
     });
 
     test('getMediatorsRequests - returns request logs', () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -335,26 +503,47 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/getMediatorsRequests/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.getMediatorsRequests(
-        accessToken: 'token',
+        accessToken: accessToken,
         limit: 10,
       );
+
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
 
       expect(result.requests.length, 1);
       expect(result.requests.first.requestId, 'r1');
       expect(result.requests.first.timestamp,
           DateTime.parse('2024-01-01T00:00:00Z'));
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/getMediatorsRequests/response');
     });
 
     test('getMediatorCloudwatchMetricData - returns metrics', () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -369,21 +558,34 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type:
+            'affinidi.io/operations/ama/getMediatorCloudwatchMetricData/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.getMediatorCloudwatchMetricData(
-        accessToken: 'token',
+        accessToken: accessToken,
         mediatorId: 'm123',
         metricId: 'MessageCount',
         startDate: DateTime.parse('2024-01-01T00:00:00Z'),
         endDate: DateTime.parse('2024-01-01T02:00:00Z'),
       );
+
+      expect(testClient.capturedForwardMessages.length, 1);
+      final capturedMessage = testClient.capturedForwardMessages.first;
+      expect(capturedMessage.to, ['did:test:mediator']);
+      expect(capturedMessage.next, 'did:test:atlas');
+      expect(capturedMessage.attachments?.isNotEmpty, true);
 
       expect(result.metricData.metricId, 'MessageCount');
       expect(result.metricData.dataPoints.length, 1);
@@ -393,10 +595,19 @@ void main() {
         result.metricData.dataPoints.first.timestamp,
         DateTime.parse('2024-01-01T00:00:00Z'),
       );
+      expect(result.type.toString(),
+          'affinidi.io/operations/ama/getMediatorCloudwatchMetricData/response');
     });
 
     test('sendMessage envelopes requests and waits for correct response type',
         () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -410,33 +621,24 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
-
-      await sut.getMediatorInstancesList(accessToken: 'token');
-
-      verify(
-        mockMediatorClient.waitForMessage(
-          messageType:
-              'affinidi.io/operations/ama/getMediatorInstancesList/response',
-          didManager: didManager,
-          accessToken: 'token',
-          atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-          clientOptions: anyNamed('clientOptions'),
-        ),
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/getMediatorInstancesList/response',
+        body: response.body!,
       );
 
-      final captured = verify(
-        mockMediatorClient.sendMessage(
-          captureAny,
-          accessToken: anyNamed('accessToken'),
-        ),
-      ).captured.single as ForwardMessage;
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
+
+      await sut.getMediatorInstancesList(accessToken: accessToken);
+
+      expect(testClient.capturedForwardMessages.length, 1);
+      final captured = testClient.capturedForwardMessages.first;
 
       expect(captured.to, ['did:test:mediator']);
       expect(captured.next, 'did:test:atlas');
@@ -445,9 +647,20 @@ void main() {
 
     test('updateMediatorInstanceDeployment - throws on mediatorId mismatch',
         () async {
+      final sut = AtmAtlasClient(
+        mediatorClient: TestAtmMediatorClient(
+          mediatorDidDocument: mediatorDidDocument,
+          signer: signer,
+          keyPair: keyPair,
+          didKeyId: matchedKeyIds.first,
+        ),
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
+
       expect(
         () => sut.updateMediatorInstanceDeployment(
-          accessToken: 'token',
+          accessToken: accessToken,
           mediatorId: 'm123',
           deploymentData:
               UpdateMediatorInstanceDeploymentRequest(mediatorId: 'other'),
@@ -458,9 +671,20 @@ void main() {
 
     test('updateMediatorInstanceConfiguration - throws on mediatorId mismatch',
         () async {
+      final sut = AtmAtlasClient(
+        mediatorClient: TestAtmMediatorClient(
+          mediatorDidDocument: mediatorDidDocument,
+          signer: signer,
+          keyPair: keyPair,
+          didKeyId: matchedKeyIds.first,
+        ),
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
+
       expect(
         () => sut.updateMediatorInstanceConfiguration(
-          accessToken: 'token',
+          accessToken: accessToken,
           mediatorId: 'm123',
           configurationData:
               UpdateMediatorInstanceConfigurationRequest(mediatorId: 'other'),
@@ -472,6 +696,13 @@ void main() {
     test(
         'GetMediatorInstancesListResponseMessage.instances throws on null body',
         () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -481,21 +712,34 @@ void main() {
         body: null,
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/getMediatorInstancesList/response',
+        body: {},
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.getMediatorInstancesList(accessToken: 'token');
       expect(() => result.instances, throwsA(isA<ArgumentError>()));
     });
 
     test(
-        'DeployMediatorInstanceResponseMessage.response throws on error payload',
+        'DeployMediatorInstanceResponseMessage.response does not throw on error payload',
         () async {
+      final testClient = TestAtmMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        signer: signer,
+        keyPair: keyPair,
+        didKeyId: matchedKeyIds.first,
+      );
+
       final response = PlainTextMessage(
         id: const Uuid().v4(),
         from: 'did:test:atlas',
@@ -510,20 +754,26 @@ void main() {
         },
       );
 
-      when(mockMediatorClient.waitForMessage(
-        messageType: anyNamed('messageType'),
-        didManager: anyNamed('didManager'),
-        accessToken: anyNamed('accessToken'),
-        atmServiceDidDocument: anyNamed('atmServiceDidDocument'),
-        clientOptions: anyNamed('clientOptions'),
-      )).thenAnswer((_) async => response);
+      final encryptedResponse = createEncryptedResponse(
+        type: 'affinidi.io/operations/ama/deployMediatorInstance/response',
+        body: response.body!,
+      );
+
+      testClient.nextSendMessageResponse = encryptedResponse;
+      testClient.nextWaitForMessageResponse = response;
+
+      final sut = AtmAtlasClient(
+        mediatorClient: testClient,
+        didManager: didManager,
+        atmServiceDidDocument: atlasDidDocument,
+      );
 
       final result = await sut.deployMediatorInstance(
-        accessToken: 'token',
+        accessToken: accessToken,
         deploymentData: DeployMediatorInstanceRequest(name: 'test'),
       );
 
-      expect(() => result.response, throwsA(isA<Exception>()));
+      expect(() => result.response, throwsA(isA<TypeError>()));
     });
   });
 }

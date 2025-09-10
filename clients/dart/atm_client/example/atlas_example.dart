@@ -79,21 +79,25 @@ void main() async {
     prettyPrint('No mediator instances available.');
   }
 
-  // Example 4: Deploy a new mediator instance
-  prettyPrint('Deploying new mediator instance...');
-  final deployRequest = DeployMediatorInstanceRequest(
-    name: 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',
-    description: 'Example mediator instance',
-  );
-  final deployResponse = await atmAtlasClient.deployMediatorInstance(
-    accessToken: authTokens.accessToken,
-    deploymentData: deployRequest,
-  );
+  // Example 4: Deploy a new mediator instance (only if none exist)
+  if (listResponse.instances.isEmpty) {
+    prettyPrint('Deploying new mediator instance...');
+    final deployRequest = DeployMediatorInstanceRequest(
+      name: 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',
+      description: 'Example mediator instance',
+    );
+    final deployResponse = await atmAtlasClient.deployMediatorInstance(
+      accessToken: authTokens.accessToken,
+      deploymentData: deployRequest,
+    );
 
-  prettyPrint(
-    'Deploy response',
-    object: deployResponse.body,
-  );
+    prettyPrint(
+      'Deploy response',
+      object: deployResponse.body,
+    );
+  } else {
+    prettyPrint('Skipping deployment - mediator instances already exist.');
+  }
 
   // Wait a moment for connections to fully close
   await Future<void>.delayed(const Duration(milliseconds: 100));
