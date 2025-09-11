@@ -34,6 +34,7 @@ class GetMediatorInstancesListResponseMessage extends PlainTextMessage {
     required super.to,
     super.createdTime,
     super.expiresTime,
+    super.threadId,
     super.body = const {},
   }) : super(
           type: Uri.parse(
@@ -43,10 +44,6 @@ class GetMediatorInstancesListResponseMessage extends PlainTextMessage {
 
   /// Gets the list of mediator instances from the message body.
   List<MediatorInstance> get instances {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     final bodyData = MediatorInstanceBodyData.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,

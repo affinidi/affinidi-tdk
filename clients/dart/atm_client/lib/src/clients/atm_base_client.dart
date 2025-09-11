@@ -58,7 +58,7 @@ abstract class AtmBaseClient {
     );
 
     final responseMessageFuture = mediatorClient.waitForMessage(
-      messageType: '${requestMessage.type.toString()}/response',
+      threadId: requestMessage.id,
       didManager: didManager,
       accessToken: accessToken,
       atmServiceDidDocument: atmServiceDidDocument,

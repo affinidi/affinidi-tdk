@@ -35,6 +35,7 @@ class GetMediatorInstanceMetadataResponseMessage extends PlainTextMessage {
     required super.to,
     super.createdTime,
     super.expiresTime,
+    super.threadId,
     super.body = const {},
   }) : super(
           type: Uri.parse(
@@ -44,10 +45,6 @@ class GetMediatorInstanceMetadataResponseMessage extends PlainTextMessage {
 
   /// Gets the parsed metadata from the message body.
   MediatorInstanceMetadata get metadata {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     return MediatorInstanceMetadata.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,
