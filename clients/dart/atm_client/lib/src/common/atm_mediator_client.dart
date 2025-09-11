@@ -3,13 +3,12 @@ import 'dart:async';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
-import '../../atm_client.dart';
+import '../common/client_options.dart';
 
-// TODO: add unit tests
 class AtmMediatorClient extends MediatorClient {
-  final _awaitingCompleters = <String, Completer<PlainTextMessage>>{};
+  final _pendingRequests = <String, Completer<PlainTextMessage>>{};
   StreamSubscription? _subscription;
-  Future? _lock;
+  Future<void>? _lock;
 
   AtmMediatorClient({
     required super.mediatorDidDocument,
@@ -21,20 +20,21 @@ class AtmMediatorClient extends MediatorClient {
   });
 
   Future<PlainTextMessage> waitForMessage({
-    // TODO: use parent ID instead when available on DIDComm Gateway
-    required String messageType,
+    required String threadId,
     required String accessToken,
     required DidManager didManager,
     required DidDocument atmServiceDidDocument,
     required ClientOptions clientOptions,
   }) async {
     final completer = Completer<PlainTextMessage>();
-    _awaitingCompleters[messageType] = completer;
+
+    _pendingRequests[threadId] = completer;
 
     await _handleSubscription(
       didManager: didManager,
       accessToken: accessToken,
       atmServiceDidDocument: atmServiceDidDocument,
+      clientOptions: clientOptions,
     );
 
     return completer.future.timeout(clientOptions.requestTimeout);
@@ -44,6 +44,7 @@ class AtmMediatorClient extends MediatorClient {
     required DidManager didManager,
     required String accessToken,
     required DidDocument atmServiceDidDocument,
+    required ClientOptions clientOptions,
   }) async {
     if (_lock != null) {
       await _lock;
@@ -53,8 +54,6 @@ class AtmMediatorClient extends MediatorClient {
       return;
     }
 
-    // TODO: update DIDComm Dart package to terminate the current websockets channel
-    // when calling listenForIncomingMessages
     _subscription = await listenForIncomingMessages(
       (message) async {
         final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
@@ -77,66 +76,69 @@ class AtmMediatorClient extends MediatorClient {
 
         final messageType = unpackedMessage.type.toString();
 
-        // TODO: make type URLs static in DIDComm package to avoid this
-        // TODO: use correlation IDs when available so we process a specific request/response pair
-
         if (messageType ==
             'https://didcomm.org/report-problem/2.0/problem-report') {
-          final problemReport = ProblemReportMessage.fromJson(
-            unpackedMessage.toJson(),
-          );
-
-          for (var completer in _awaitingCompleters.values) {
-            // TODO: revisit, if we should throw an exception with problem report inside?
-            completer.completeError(problemReport);
-          }
-
-          // TODO: temporary untile we have correlation IDs
-          // ---
-          _awaitingCompleters.clear();
-
-          _subscription = null;
-          _lock = disconnect();
-
-          // prevent new subscriptions while disconnecting
-          await _lock;
-          _lock = null;
-          // ---
-        }
-
-        final completer = _awaitingCompleters[messageType];
-
-        if (completer == null) {
+          _handleProblemReport(unpackedMessage);
           return;
         }
 
-        _awaitingCompleters.remove(messageType);
-        completer.complete(unpackedMessage);
+        final threadId = unpackedMessage.threadId;
+        if (threadId == null || !_pendingRequests.containsKey(threadId)) {
+          return;
+        }
 
-        if (_awaitingCompleters.isEmpty) {
+        final completer = _pendingRequests[threadId]!;
+
+        if (unpackedMessage.from != atmServiceDidDocument.id) {
+          return;
+        }
+
+        _pendingRequests.remove(threadId);
+        completer.complete(unpackedMessage);
+        if (_pendingRequests.isEmpty) {
           _subscription = null;
           _lock = disconnect();
-
-          // prevent new subscriptions while disconnecting
           await _lock;
           _lock = null;
         }
       },
       onError: (Object error) {
-        // TODO: decide if remove all completers or just the relevant one
-        for (var completer in _awaitingCompleters.values) {
-          // TODO: decide if we should delete massage on mediator
+        for (var completer in _pendingRequests.values) {
           completer.completeError(error);
         }
+        _pendingRequests.clear();
+        _subscription = null;
       },
       onDone: () {
-        for (var completer in _awaitingCompleters.values) {
-          // TODO: decide if we should delete massage on mediator
+        for (var completer in _pendingRequests.values) {
           completer.completeError(Exception('Connection has been dropped'));
         }
+        _pendingRequests.clear();
+        _subscription = null;
       },
       accessToken: accessToken,
       cancelOnError: false,
     );
+  }
+
+  void _handleProblemReport(PlainTextMessage problemMessage) {
+    final problemReport =
+        ProblemReportMessage.fromJson(problemMessage.toJson());
+
+    final parentThreadId = problemReport.parentThreadId;
+    if (parentThreadId == null) {
+      throw ArgumentError('ProblemReport missing parentThreadId');
+    }
+
+    if (_pendingRequests.containsKey(parentThreadId)) {
+      final completer = _pendingRequests.remove(parentThreadId)!;
+
+      completer.completeError(problemReport);
+      if (_pendingRequests.isEmpty) {
+        _subscription = null;
+        _lock = disconnect();
+        _lock?.then((_) => _lock = null);
+      }
+    }
   }
 }

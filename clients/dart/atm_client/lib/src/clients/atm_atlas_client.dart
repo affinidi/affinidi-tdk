@@ -8,7 +8,6 @@ import '../../atm_client.dart';
 import '../common/atm_mediator_client.dart';
 import '../models/request_bodies/deploy_mediator_instance_request.dart';
 import '../models/request_bodies/destroy_mediator_instance_request.dart';
-import '../models/request_bodies/get_mediator_cloudwatch_metric_data_request.dart';
 import '../models/request_bodies/get_mediator_instance_metadata_request.dart';
 import '../models/request_bodies/get_mediators_requests_request.dart';
 import '../models/request_bodies/update_mediator_instance_configuration_request.dart';
@@ -330,49 +329,6 @@ class AtmAtlasClient extends AtmBaseClient {
     );
 
     return GetMediatorsRequestsResponseMessage(
-      id: responseMessage.id,
-      from: responseMessage.from,
-      to: responseMessage.to,
-      createdTime: responseMessage.createdTime,
-      expiresTime: responseMessage.expiresTime,
-      body: responseMessage.body,
-    );
-  }
-
-  /// Gets CloudWatch metrics data for a mediator instance.
-  Future<GetMediatorCloudwatchMetricDataResponseMessage>
-      getMediatorCloudwatchMetricData({
-    required String accessToken,
-    required String mediatorId,
-    required String metricId,
-    String? startDate,
-    String? endDate,
-    int? period,
-  }) async {
-    final request = GetMediatorCloudwatchMetricDataRequest(
-      mediatorId: mediatorId,
-      metricId: metricId,
-      startDate: startDate,
-      endDate: endDate,
-      period: period,
-    );
-
-    final createdTime = DateTime.now().toUtc();
-    final requestMessage = GetMediatorCloudwatchMetricDataMessage(
-      id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
-      createdTime: createdTime,
-      expiresTime: createdTime.add(clientOptions.messageExpiration),
-      body: request.toJson(),
-    );
-
-    final responseMessage = await sendMessage(
-      requestMessage,
-      accessToken: accessToken,
-    );
-
-    return GetMediatorCloudwatchMetricDataResponseMessage(
       id: responseMessage.id,
       from: responseMessage.from,
       to: responseMessage.to,

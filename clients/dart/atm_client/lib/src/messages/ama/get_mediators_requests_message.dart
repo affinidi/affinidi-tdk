@@ -34,6 +34,7 @@ class GetMediatorsRequestsResponseMessage extends PlainTextMessage {
     required super.to,
     super.createdTime,
     super.expiresTime,
+    super.threadId,
     super.body = const {},
   }) : super(
           type: Uri.parse(
@@ -43,10 +44,6 @@ class GetMediatorsRequestsResponseMessage extends PlainTextMessage {
 
   /// Gets the list of mediator requests from the message body.
   List<MediatorRequest> get requests {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     final bodyData = GetMediatorsRequestsResponseData.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,
