@@ -43,10 +43,6 @@ class UpdateMediatorInstanceDeploymentResponseMessage extends PlainTextMessage {
 
   /// Gets the parsed response data from the message body.
   UpdateMediatorInstanceDeploymentResponse get response {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     return UpdateMediatorInstanceDeploymentResponse.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,

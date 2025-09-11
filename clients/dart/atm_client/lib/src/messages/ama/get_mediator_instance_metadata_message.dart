@@ -45,10 +45,6 @@ class GetMediatorInstanceMetadataResponseMessage extends PlainTextMessage {
 
   /// Gets the parsed metadata from the message body.
   MediatorInstanceMetadata get metadata {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     return MediatorInstanceMetadata.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,

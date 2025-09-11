@@ -126,8 +126,11 @@ class AtmMediatorClient extends MediatorClient {
         ProblemReportMessage.fromJson(problemMessage.toJson());
 
     final parentThreadId = problemReport.parentThreadId;
-    if (parentThreadId != null &&
-        _pendingRequests.containsKey(parentThreadId)) {
+    if (parentThreadId == null) {
+      throw ArgumentError('ProblemReport missing parentThreadId');
+    }
+
+    if (_pendingRequests.containsKey(parentThreadId)) {
       final completer = _pendingRequests.remove(parentThreadId)!;
 
       completer.completeError(problemReport);

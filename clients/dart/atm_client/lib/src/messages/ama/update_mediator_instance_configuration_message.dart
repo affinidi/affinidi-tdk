@@ -44,10 +44,6 @@ class UpdateMediatorInstanceConfigurationResponseMessage
 
   /// Gets the parsed response data from the message body.
   UpdateMediatorInstanceConfigurationResponse get response {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     return UpdateMediatorInstanceConfigurationResponse.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,

@@ -43,10 +43,6 @@ class DestroyMediatorInstanceResponseMessage extends PlainTextMessage {
 
   /// Gets the parsed response data from the message body.
   DestroyMediatorInstanceResponse get response {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     return DestroyMediatorInstanceResponse.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,

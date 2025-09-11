@@ -1,5 +1,4 @@
 import 'package:affinidi_tdk_atm_client/atm_client.dart';
-import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
@@ -45,58 +44,51 @@ void main() async {
 
   prettyPrint('Sending the message...');
 
-  // Example 1: Get list of mediator instances
   final listResponse = await atmAtlasClient.getMediatorInstancesList(
     accessToken: authTokens.accessToken,
   );
+
   prettyPrint(
     'Response received',
     object: listResponse.instances,
   );
 
-  // Example 2: Get mediator instance metadata
-  if (listResponse.instances.isNotEmpty) {
-    final mediatorId = listResponse.instances.first.id;
-    final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
-      accessToken: authTokens.accessToken,
-      mediatorId: mediatorId,
-    );
-    prettyPrint(
-      'Mediator metadata',
-      object: metadataResponse.body,
-    );
+  // Example 2: Deploy a new mediator instance (commented out by default)
+  // import 'package:atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
+  // prettyPrint('Deploying new mediator instance...');
+  // final deployRequest = DeployMediatorInstanceRequest(
+  //   name: 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',
+  //   description: 'Example mediator instance',
+  // );
+  // final deployResponse = await atmAtlasClient.deployMediatorInstance(
+  //   accessToken: authTokes.accessToken,
+  //   deploymentData: deployRequest,
+  // );
 
-    // Example 3: Get mediator requests (if any instances exist)
-    final requestsResponse = await atmAtlasClient.getMediatorsRequests(
-      accessToken: authTokens.accessToken,
-      limit: 10,
-    );
-    prettyPrint(
-      'Mediator requests',
-      object: requestsResponse.body,
-    );
-  } else {
-    prettyPrint('No mediator instances available.');
-  }
+  // prettyPrint(
+  //   'Deploy response',
+  //   object: deployResponse.body,
+  // );
 
-  // Example 4: Deploy a new mediator instance
-  prettyPrint('Deploying new mediator instance...');
-  final deployRequest = DeployMediatorInstanceRequest(
-    name: 'example-mediator-${DateTime.now().millisecondsSinceEpoch}',
-    description: 'Example mediator instance',
-  );
-  final deployResponse = await atmAtlasClient.deployMediatorInstance(
-    accessToken: authTokens.accessToken,
-    deploymentData: deployRequest,
-  );
+  // Example 3: Get mediator instance metadata
+  // if (listResponse.instances.isNotEmpty) {
+  //   final mediatorId = listResponse.instances.first.id;
+  //   final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
+  //     accessToken: authTokens.accessToken,
+  //     mediatorId: mediatorId,
+  //   );
+  // }
 
-  prettyPrint(
-    'Deploy response',
-    object: deployResponse.body,
-  );
+  // Example 4: Get mediator requests (if any instances exist)
+  // if (listResponse.instances.isNotEmpty) {
+  //   final requestsResponse = await atmAtlasClient.getMediatorsRequests(
+  //     accessToken: authTokens.accessToken,
+  //     limit: 10,
+  //   );
+  // }
 
   // Wait a moment for connections to fully close
   await Future<void>.delayed(const Duration(milliseconds: 100));
 
-  prettyPrint('Example completed.');
+  prettyPrint('Example completed successfully!');
 }

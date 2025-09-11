@@ -44,10 +44,6 @@ class GetMediatorsRequestsResponseMessage extends PlainTextMessage {
 
   /// Gets the list of mediator requests from the message body.
   List<MediatorRequest> get requests {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     final bodyData = GetMediatorsRequestsResponseData.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,
