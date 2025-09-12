@@ -15,12 +15,6 @@ export 'src/messages/ama/destroy_mediator_instance_message.dart'
         DestroyMediatorInstanceMessage,
         DestroyMediatorInstanceResponse,
         DestroyMediatorInstanceResponseMessage;
-export 'src/messages/ama/get_mediator_cloudwatch_metric_data_message.dart'
-    show
-        CloudwatchMetricData,
-        GetMediatorCloudwatchMetricDataMessage,
-        GetMediatorCloudwatchMetricDataResponseMessage,
-        MetricDataPoint;
 export 'src/messages/ama/get_mediator_instance_metadata_message.dart'
     show
         GetMediatorInstanceMetadataMessage,

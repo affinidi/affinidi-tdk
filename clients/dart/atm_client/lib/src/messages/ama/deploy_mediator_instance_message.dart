@@ -34,6 +34,7 @@ class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
     required super.to,
     super.createdTime,
     super.expiresTime,
+    super.threadId,
     super.body = const {},
   }) : super(
           type: Uri.parse(
@@ -43,20 +44,9 @@ class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
 
   /// Gets the parsed response data from the message body.
   DeployMediatorInstanceResponse get response {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     final decodedResponse =
         jsonDecode(responseBody.response) as Map<String, dynamic>;
-
-    // Check if this is an error response
-    if (decodedResponse.containsKey('name') &&
-        decodedResponse['name']?.toString().contains('Error') == true) {
-      throw Exception(
-          'Deploy failed: ${decodedResponse['message']} - ${decodedResponse['details']}');
-    }
 
     return DeployMediatorInstanceResponse.fromJson(decodedResponse);
   }

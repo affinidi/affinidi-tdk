@@ -35,6 +35,7 @@ class UpdateMediatorInstanceConfigurationResponseMessage
     required super.to,
     super.createdTime,
     super.expiresTime,
+    super.threadId,
     super.body = const {},
   }) : super(
           type: Uri.parse(
@@ -44,10 +45,6 @@ class UpdateMediatorInstanceConfigurationResponseMessage
 
   /// Gets the parsed response data from the message body.
   UpdateMediatorInstanceConfigurationResponse get response {
-    if (body == null) {
-      throw ArgumentError('Response body cannot be null');
-    }
-
     final responseBody = ResponseBody.fromJson(body!);
     return UpdateMediatorInstanceConfigurationResponse.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,
