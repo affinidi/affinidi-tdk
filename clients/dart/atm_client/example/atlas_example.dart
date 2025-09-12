@@ -1,5 +1,4 @@
 import 'package:affinidi_tdk_atm_client/atm_client.dart';
-import 'package:affinidi_tdk_atm_client/src/models/request_bodies/deploy_mediator_instance_request.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
