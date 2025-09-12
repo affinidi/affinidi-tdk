@@ -24,11 +24,11 @@ export 'src/messages/ama/get_mediator_instances_list_message.dart'
         GetMediatorInstancesListResponseMessage,
         MediatorInstance,
         MediatorInstanceBodyData;
-export 'src/messages/ama/get_mediators_requests_message.dart'
+export 'src/messages/ama/get_mediator_requests_message.dart'
     show
-        GetMediatorsRequestsMessage,
-        GetMediatorsRequestsResponseData,
-        GetMediatorsRequestsResponseMessage,
+        GetMediatorRequestsMessage,
+        GetMediatorRequestsResponseData,
+        GetMediatorRequestsResponseMessage,
         MediatorRequest;
 export 'src/messages/ama/update_mediator_instance_configuration_message.dart'
     show

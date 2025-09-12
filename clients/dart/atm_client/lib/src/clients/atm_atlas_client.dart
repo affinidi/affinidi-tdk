@@ -9,7 +9,8 @@ import '../common/atm_mediator_client.dart';
 import '../models/request_bodies/deploy_mediator_instance_request.dart';
 import '../models/request_bodies/destroy_mediator_instance_request.dart';
 import '../models/request_bodies/get_mediator_instance_metadata_request.dart';
-import '../models/request_bodies/get_mediators_requests_request.dart';
+import '../models/request_bodies/get_mediator_instances_list_request.dart';
+import '../models/request_bodies/get_mediator_requests_request.dart';
 import '../models/request_bodies/update_mediator_instance_configuration_request.dart';
 import '../models/request_bodies/update_mediator_instance_deployment_request.dart';
 
@@ -90,7 +91,14 @@ class AtmAtlasClient extends AtmBaseClient {
 
   Future<GetMediatorInstancesListResponseMessage> getMediatorInstancesList({
     required String accessToken,
+    int? limit,
+    String? exclusiveStartKey,
   }) async {
+    final request = GetMediatorInstancesListRequest(
+      limit: limit,
+      exclusiveStartKey: exclusiveStartKey,
+    );
+
     final createdTime = DateTime.now().toUtc();
     final messageId = const Uuid().v4();
 
@@ -103,10 +111,7 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
-    //TODO: Remove all these empty maps 
-    requestMessage['headers'] = <String, dynamic>{};
-    requestMessage['path_params'] = <String, dynamic>{};
-    requestMessage['query_params'] = <String, dynamic>{};
+    requestMessage['query_params'] = request.toJson();
 
     final responseMessage = await sendMessage(
       requestMessage,
@@ -148,11 +153,6 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
-    // Add custom headers as per Rust implementation
-    requestMessage['headers'] = <String, dynamic>{};
-    requestMessage['path_params'] = <String, dynamic>{};
-    requestMessage['query_params'] = <String, dynamic>{};
-
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -189,11 +189,6 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
-    // Add custom headers as per Rust implementation
-    requestMessage['headers'] = <String, dynamic>{};
-    requestMessage['path_params'] = <String, dynamic>{};
-    requestMessage['query_params'] = <String, dynamic>{};
-
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -228,11 +223,6 @@ class AtmAtlasClient extends AtmBaseClient {
       body: request.toJson(),
       threadId: messageId,
     );
-
-    // Add custom headers as per Rust implementation
-    requestMessage['headers'] = <String, dynamic>{};
-    requestMessage['path_params'] = <String, dynamic>{};
-    requestMessage['query_params'] = <String, dynamic>{};
 
     final responseMessage = await sendMessage(
       requestMessage,
@@ -274,11 +264,6 @@ class AtmAtlasClient extends AtmBaseClient {
       body: request.toJson(),
       threadId: messageId,
     );
-
-    // Add custom headers as per Rust implementation
-    requestMessage['headers'] = <String, dynamic>{};
-    requestMessage['path_params'] = <String, dynamic>{};
-    requestMessage['query_params'] = <String, dynamic>{};
 
     final responseMessage = await sendMessage(
       requestMessage,
@@ -322,11 +307,6 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
-    // Add custom headers as per Rust implementation
-    requestMessage['headers'] = <String, dynamic>{};
-    requestMessage['path_params'] = <String, dynamic>{};
-    requestMessage['query_params'] = <String, dynamic>{};
-
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
@@ -343,13 +323,13 @@ class AtmAtlasClient extends AtmBaseClient {
   }
 
   /// Gets the requests for mediators.
-  Future<GetMediatorsRequestsResponseMessage> getMediatorsRequests({
+  Future<GetMediatorRequestsResponseMessage> getMediatorRequests({
     required String accessToken,
     String? mediatorId,
     int? limit,
     String? exclusiveStartKey,
   }) async {
-    final request = GetMediatorsRequestsRequest(
+    final request = GetMediatorRequestsRequest(
       mediatorId: mediatorId,
       limit: limit,
       exclusiveStartKey: exclusiveStartKey,
@@ -357,7 +337,7 @@ class AtmAtlasClient extends AtmBaseClient {
 
     final createdTime = DateTime.now().toUtc();
     final messageId = const Uuid().v4();
-    final requestMessage = GetMediatorsRequestsMessage(
+    final requestMessage = GetMediatorRequestsMessage(
       id: messageId,
       from: mediatorClient.signer.did,
       to: [atmServiceDidDocument.id],
@@ -367,17 +347,12 @@ class AtmAtlasClient extends AtmBaseClient {
       threadId: messageId,
     );
 
-    // Add custom headers as per Rust implementation
-    requestMessage['headers'] = <String, dynamic>{};
-    requestMessage['path_params'] = <String, dynamic>{};
-    requestMessage['query_params'] = <String, dynamic>{};
-
     final responseMessage = await sendMessage(
       requestMessage,
       accessToken: accessToken,
     );
 
-    return GetMediatorsRequestsResponseMessage(
+    return GetMediatorRequestsResponseMessage(
       id: responseMessage.id,
       from: responseMessage.from,
       to: responseMessage.to,

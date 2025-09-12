@@ -71,7 +71,7 @@ void main() async {
 
     // Example 3: Get mediator requests (if any instances exist)
     try {
-      final requestsResponse = await atmAtlasClient.getMediatorsRequests(
+      final requestsResponse = await atmAtlasClient.getMediatorRequests(
         accessToken: authTokens.accessToken,
         limit: 10,
       );

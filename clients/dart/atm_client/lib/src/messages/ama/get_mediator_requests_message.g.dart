@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_mediators_requests_message.dart';
+part of 'get_mediator_requests_message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -24,16 +24,16 @@ Map<String, dynamic> _$MediatorRequestToJson(MediatorRequest instance) =>
       if (instance.details?.toJson() case final value?) 'details': value,
     };
 
-GetMediatorsRequestsResponseData _$GetMediatorsRequestsResponseDataFromJson(
+GetMediatorRequestsResponseData _$GetMediatorRequestsResponseDataFromJson(
         Map<String, dynamic> json) =>
-    GetMediatorsRequestsResponseData(
+    GetMediatorRequestsResponseData(
       requests: (json['requests'] as List<dynamic>)
           .map((e) => MediatorRequest.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$GetMediatorsRequestsResponseDataToJson(
-        GetMediatorsRequestsResponseData instance) =>
+Map<String, dynamic> _$GetMediatorRequestsResponseDataToJson(
+        GetMediatorRequestsResponseData instance) =>
     <String, dynamic>{
       'requests': instance.requests.map((e) => e.toJson()).toList(),
     };
