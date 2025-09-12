@@ -6,13 +6,6 @@ import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
 import '../common/atm_mediator_client.dart';
-import '../models/request_bodies/deploy_mediator_instance_request.dart';
-import '../models/request_bodies/destroy_mediator_instance_request.dart';
-import '../models/request_bodies/get_mediator_instance_metadata_request.dart';
-import '../models/request_bodies/get_mediator_instances_list_request.dart';
-import '../models/request_bodies/get_mediator_requests_request.dart';
-import '../models/request_bodies/update_mediator_instance_configuration_request.dart';
-import '../models/request_bodies/update_mediator_instance_deployment_request.dart';
 
 class AtmAtlasClient extends AtmBaseClient {
   AtmAtlasClient({
@@ -246,11 +239,12 @@ class AtmAtlasClient extends AtmBaseClient {
     required String mediatorId,
     UpdateMediatorInstanceDeploymentRequest? deploymentData,
   }) async {
-    final request = deploymentData ??
-        UpdateMediatorInstanceDeploymentRequest(mediatorId: mediatorId);
-    // Ensure mediatorId is always set
+    final request = deploymentData ?? UpdateMediatorInstanceDeploymentRequest(
+      mediatorId: mediatorId,
+    );
+
     if (deploymentData != null && deploymentData.mediatorId != mediatorId) {
-      throw ArgumentError('mediatorId mismatch in request data');
+      throw ArgumentError('mediatorId in request does not match parameter');
     }
 
     final createdTime = DateTime.now().toUtc();
@@ -287,12 +281,12 @@ class AtmAtlasClient extends AtmBaseClient {
     required String mediatorId,
     UpdateMediatorInstanceConfigurationRequest? configurationData,
   }) async {
-    final request = configurationData ??
-        UpdateMediatorInstanceConfigurationRequest(mediatorId: mediatorId);
-    // Ensure mediatorId is always set
-    if (configurationData != null &&
-        configurationData.mediatorId != mediatorId) {
-      throw ArgumentError('mediatorId mismatch in request data');
+    final request = configurationData ?? UpdateMediatorInstanceConfigurationRequest(
+      mediatorId: mediatorId,
+    );
+
+    if (configurationData != null && configurationData.mediatorId != mediatorId) {
+      throw ArgumentError('mediatorId in request does not match parameter');
     }
 
     final createdTime = DateTime.now().toUtc();
