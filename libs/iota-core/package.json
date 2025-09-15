@@ -47,7 +47,7 @@
   "dependencies": {
     "@affinidi-tdk/common": "^1.21.0",
     "@affinidi-tdk/iota-client": "^1.14.0",
-    "@aws-sdk/client-cognito-identity": "^3.590.0"
+    "@aws-sdk/client-cognito-identity": "^3.888.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
