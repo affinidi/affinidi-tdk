@@ -55,20 +55,12 @@ class DestroyMediatorInstanceResponseMessage extends PlainTextMessage {
 
 /// Response data for destroy mediator instance operation.
 class DestroyMediatorInstanceResponse {
-  /// The ID of the destroyed mediator instance.
-  final String mediatorId;
-
   /// The destruction message/status.
-  final String message;
-
-  /// The service request ID.
-  final String? serviceRequestId;
+  final String? message;
 
   /// Creates a destroy mediator instance response.
   DestroyMediatorInstanceResponse({
-    required this.mediatorId,
-    required this.message,
-    this.serviceRequestId,
+    this.message,
   });
 
   /// Creates a DestroyMediatorInstanceResponse from a JSON map.

@@ -59,17 +59,17 @@ class DeployMediatorInstanceResponse {
   /// The ID of the deployed mediator instance.
   final String mediatorId;
 
-  /// The deployment message/status.
-  final String message;
-
   /// The service request ID.
-  final String? serviceRequestId;
+  final String serviceRequestId;
+
+  /// The deployment message/status.
+  final String? message;
 
   /// Creates a deploy mediator instance response.
   DeployMediatorInstanceResponse({
     required this.mediatorId,
-    required this.message,
-    this.serviceRequestId,
+    required this.serviceRequestId,
+    this.message,
   });
 
   /// Creates a DeployMediatorInstanceResponse from a JSON map.

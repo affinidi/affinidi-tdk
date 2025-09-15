@@ -55,20 +55,12 @@ class UpdateMediatorInstanceDeploymentResponseMessage extends PlainTextMessage {
 
 /// Response data for update mediator instance deployment operation.
 class UpdateMediatorInstanceDeploymentResponse {
-  /// The mediator instance identifier.
-  final String mediatorId;
-
   /// The update message/status.
-  final String message;
-
-  /// The service request ID.
-  final String? serviceRequestId;
+  final String? message;
 
   /// Creates an update mediator instance deployment response.
   UpdateMediatorInstanceDeploymentResponse({
-    required this.mediatorId,
-    required this.message,
-    this.serviceRequestId,
+    this.message,
   });
 
   /// Creates UpdateMediatorInstanceDeploymentResponse from a JSON map.

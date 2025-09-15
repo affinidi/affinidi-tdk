@@ -8,20 +8,14 @@ part of 'get_mediator_requests_message.dart';
 
 MediatorRequest _$MediatorRequestFromJson(Map<String, dynamic> json) =>
     MediatorRequest(
-      requestId: json['requestId'] as String,
-      mediatorId: json['mediatorId'] as String,
-      timestamp: DateTime.parse(json['timestamp'] as String),
-      details: json['details'] == null
-          ? null
-          : RequestDetails.fromJson(json['details'] as Map<String, dynamic>),
+      createdAt: json['createdAt'] as String?,
+      createdBy: json['createdBy'] as String?,
     );
 
 Map<String, dynamic> _$MediatorRequestToJson(MediatorRequest instance) =>
     <String, dynamic>{
-      'requestId': instance.requestId,
-      'mediatorId': instance.mediatorId,
-      'timestamp': instance.timestamp.toIso8601String(),
-      if (instance.details?.toJson() case final value?) 'details': value,
+      if (instance.createdAt case final value?) 'createdAt': value,
+      if (instance.createdBy case final value?) 'createdBy': value,
     };
 
 GetMediatorRequestsResponseData _$GetMediatorRequestsResponseDataFromJson(
@@ -30,10 +24,13 @@ GetMediatorRequestsResponseData _$GetMediatorRequestsResponseDataFromJson(
       requests: (json['requests'] as List<dynamic>)
           .map((e) => MediatorRequest.fromJson(e as Map<String, dynamic>))
           .toList(),
+      lastEvaluatedKey: json['lastEvaluatedKey'] as String?,
     );
 
 Map<String, dynamic> _$GetMediatorRequestsResponseDataToJson(
         GetMediatorRequestsResponseData instance) =>
     <String, dynamic>{
       'requests': instance.requests.map((e) => e.toJson()).toList(),
+      if (instance.lastEvaluatedKey case final value?)
+        'lastEvaluatedKey': value,
     };

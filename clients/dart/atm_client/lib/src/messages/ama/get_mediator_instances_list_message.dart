@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../models/data_models/mediator_acl.dart';
 import '../response_body.dart';
 
 part 'get_mediator_instances_list_message.g.dart';
@@ -98,7 +97,10 @@ class MediatorInstance {
   final String did;
 
   /// The DID document URL.
-  final String? didDocumentUrl;
+  final String didDocumentUrl;
+
+  /// The account ID where the mediator is deployed.
+  final String accountId;
 
   /// The current service request.
   final String? currentServiceRequest;
@@ -110,7 +112,7 @@ class MediatorInstance {
   final String? administratorDid;
 
   /// The access control list.
-  final MediatorAcl? acl;
+  final Map<String, num>? acl;
 
   /// Creates a mediator instance.
   MediatorInstance({
@@ -127,7 +129,8 @@ class MediatorInstance {
     required this.deploymentStatus,
     required this.serviceSize,
     required this.did,
-    this.didDocumentUrl,
+    required this.didDocumentUrl,
+    required this.accountId,
     this.currentServiceRequest,
     this.isAdministratorDidGenerated,
     this.administratorDid,
@@ -149,9 +152,13 @@ class MediatorInstanceBodyData {
   /// The list of mediator instances.
   final List<MediatorInstance> instances;
 
+  /// The last evaluated key for pagination.
+  final String? lastEvaluatedKey;
+
   /// Creates mediator instance body data.
   MediatorInstanceBodyData({
     required this.instances,
+    this.lastEvaluatedKey,
   });
 
   /// Creates MediatorInstanceBodyData from a JSON map.

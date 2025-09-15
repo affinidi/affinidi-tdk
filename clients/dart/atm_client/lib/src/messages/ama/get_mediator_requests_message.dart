@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../models/data_models/request_details.dart';
 import '../response_body.dart';
 
 part 'get_mediator_requests_message.g.dart';
@@ -58,24 +57,16 @@ class GetMediatorRequestsResponseMessage extends PlainTextMessage {
 
 /// Represents a mediator request.
 class MediatorRequest {
-  /// The request identifier.
-  final String requestId;
+  /// The creation timestamp.
+  final String? createdAt;
 
-  /// The mediator identifier.
-  final String mediatorId;
-
-  /// The request timestamp.
-  final DateTime timestamp;
-
-  /// Additional request details.
-  final RequestDetails? details;
+  /// The creator identifier.
+  final String? createdBy;
 
   /// Creates a mediator request.
   MediatorRequest({
-    required this.requestId,
-    required this.mediatorId,
-    required this.timestamp,
-    this.details,
+    this.createdAt,
+    this.createdBy,
   });
 
   /// Creates MediatorRequest from a JSON map.
@@ -93,9 +84,13 @@ class GetMediatorRequestsResponseData {
   /// The list of mediator requests.
   final List<MediatorRequest> requests;
 
+  /// The last evaluated key for pagination.
+  final String? lastEvaluatedKey;
+
   /// Creates get mediator requests response data.
   GetMediatorRequestsResponseData({
     required this.requests,
+    this.lastEvaluatedKey,
   });
 
   /// Creates GetMediatorRequestsResponseData from a JSON map.
