@@ -37,7 +37,7 @@
     "@swc/helpers": "~0.5.11",
     "@theunderscorer/nx-semantic-release": "^2.12.0",
     "@types/node": "20.12.7",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^6.13.2",
     "nx": "^19.0.0",
     "prettier": "^3.2.5",
