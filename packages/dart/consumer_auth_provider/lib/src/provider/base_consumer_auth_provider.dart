@@ -22,19 +22,15 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
   /// - [signer] (required): Instance of [DidSigner] used for signing operations.
   /// - [client] (optional): Optional instance of [Dio] for handling HTTP requests. If not provided,
   ///   a default client will be used.
-  /// - [envType] (optional): The [EnvironmentType] to specify the environment (e.g., local, dev, prod).
-  ///   If not provided, the value will be taken from the `AFFINIDI_TDK_ENVIRONMENT` environment variable,
-  ///   or will default to `prod` if not set.
   /// - [region] (optional): The [ElementsRegion] to specify the AWS region (e.g., apSoutheast1, apSouth1).
   ///   Defaults to [ElementsRegion.apSoutheast1] if not provided.
   BaseConsumerAuthProvider({
     required DidSigner signer,
     Dio? client,
-    EnvironmentType? envType,
     ElementsRegion region = ElementsRegion.apSoutheast1,
   }) {
-    _consumerTokenProvider = ConsumerTokenProvider(
-        signer: signer, client: client, envType: envType, region: region);
+    _consumerTokenProvider =
+        ConsumerTokenProvider(signer: signer, client: client, region: region);
     _cisTokenProvider =
         CisTokenProvider(signer: signer, client: client, region: region);
     _delegatedTokenProvider =

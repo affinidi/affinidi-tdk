@@ -15,15 +15,11 @@ class CisTokenProvider extends TokenProvider {
   /// - [signer] (required): Instance of [DidSigner] used for signing operations.
   /// - [client] (optional): Optional instance of [Dio] for handling HTTP requests. If not provided,
   ///   a default client will be used.
-  /// - [envType] (optional): The [EnvironmentType] to specify the environment (e.g., local, dev, prod).
-  ///   If not provided, the value will be taken from the `AFFINIDI_TDK_ENVIRONMENT` environment variable,
-  ///   or will default to `prod` if not set.
   /// - [region] (optional): The [ElementsRegion] to specify the AWS region (e.g., apSoutheast1, apSouth1).
   ///   Defaults to [ElementsRegion.apSoutheast1] if not provided.
   CisTokenProvider({
     required DidSigner signer,
     Dio? client,
-    EnvironmentType? envType,
     ElementsRegion region = ElementsRegion.apSoutheast1,
   })  : _signer = signer,
         _client = client ??
@@ -35,13 +31,11 @@ class CisTokenProvider extends TokenProvider {
                         Duration(milliseconds: _apiTimeOutInMilliseconds!),
                   ))
                 : Dio()),
-        _envType = envType,
-        _region = region;
+        _tokenEndpoint = Environment.fetchConsumerCisUrl(null, null, region);
 
   final DidSigner _signer;
   final Dio _client;
-  final EnvironmentType? _envType;
-  final ElementsRegion _region;
+  final String _tokenEndpoint;
 
   /// Method to retrieve CIS token
   ///
@@ -62,9 +56,6 @@ class CisTokenProvider extends TokenProvider {
       'typ': 'openid4vci-proof+jwt'
     };
   }
-
-  String get _tokenEndpoint =>
-      Environment.fetchConsumerCisUrl(null, _envType, _region);
 
   /// Exchanges a pre-authorization code for an access token and authorization details.
   Future<({String accessToken, List<dynamic>? authorizationDetails})>
