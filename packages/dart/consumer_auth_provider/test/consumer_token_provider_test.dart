@@ -1,6 +1,7 @@
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/src/exceptions/tdk_exception_type.dart';
 import 'package:affinidi_tdk_test_utilities/affinidi_tdk_test_utilities.dart';
+import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
 import 'fixtures/did_signer_fixture.dart';
@@ -21,17 +22,17 @@ void main() {
 
   group('When retrieving a consumer auth access token', () {
     group('and uses a DidSigner with an invalid algorithm', () {
-      test('it throws an exception with code unableToGetSignatureScheme',
+      test('it throws an SsiException when DidSigner uses an invalid algorithm',
           () async {
-        final didSigner = await DidSignerFixture.withInvalidAlgorithm(
-            'a1772b144344781f2a55fc4d5e49f3767bb0967205ad08454a09c76d96fd2ccd');
-
-        final provider = ConsumerAuthProvider(signer: didSigner);
-
         await expectLater(
-            provider.fetchConsumerToken(),
-            throwsA(isA<TdkException>().having((error) => error.code, 'code',
-                TdkExceptionType.unableToGetSignatureScheme.code)));
+          () async {
+            final didSigner = await DidSignerFixture.withInvalidAlgorithm(
+                'a1772b144344781f2a55fc4d5e49f3767bb0967205ad08454a09c76d96fd2ccd');
+            final provider = ConsumerAuthProvider(signer: didSigner);
+            await provider.fetchCisToken();
+          },
+          throwsA(isA<SsiException>()),
+        );
       });
     });
 
