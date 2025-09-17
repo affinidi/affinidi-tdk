@@ -1,23 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_mediators_requests_request.dart';
+part of 'get_mediator_instances_list_request.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetMediatorsRequestsRequest _$GetMediatorsRequestsRequestFromJson(
+GetMediatorInstancesListRequest _$GetMediatorInstancesListRequestFromJson(
         Map<String, dynamic> json) =>
-    GetMediatorsRequestsRequest(
-      mediatorId: json['mediatorId'] as String?,
+    GetMediatorInstancesListRequest(
       limit: (json['limit'] as num?)?.toInt(),
       exclusiveStartKey: json['exclusiveStartKey'] as String?,
     );
 
-Map<String, dynamic> _$GetMediatorsRequestsRequestToJson(
-        GetMediatorsRequestsRequest instance) =>
+Map<String, dynamic> _$GetMediatorInstancesListRequestToJson(
+        GetMediatorInstancesListRequest instance) =>
     <String, dynamic>{
-      if (instance.mediatorId case final value?) 'mediatorId': value,
       if (instance.limit case final value?) 'limit': value,
       if (instance.exclusiveStartKey case final value?)
         'exclusiveStartKey': value,

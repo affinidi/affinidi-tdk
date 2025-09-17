@@ -5,23 +5,23 @@ part 'update_mediator_instance_deployment_request.g.dart';
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class UpdateMediatorInstanceDeploymentRequest {
   final String mediatorId;
-  final String? instanceType;
-  final String? region;
-  final bool? autoScaling;
-  final int? minInstances;
-  final int? maxInstances;
+  final String? serviceSize;
+  final String? mediatorAclMode;
+  final String? name;
+  final String? description;
 
   UpdateMediatorInstanceDeploymentRequest({
     required this.mediatorId,
-    this.instanceType,
-    this.region,
-    this.autoScaling,
-    this.minInstances,
-    this.maxInstances,
+    this.serviceSize,
+    this.mediatorAclMode,
+    this.name,
+    this.description,
   });
 
-  factory UpdateMediatorInstanceDeploymentRequest.fromJson(Map<String, dynamic> json) =>
+  factory UpdateMediatorInstanceDeploymentRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$UpdateMediatorInstanceDeploymentRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UpdateMediatorInstanceDeploymentRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$UpdateMediatorInstanceDeploymentRequestToJson(this);
 }

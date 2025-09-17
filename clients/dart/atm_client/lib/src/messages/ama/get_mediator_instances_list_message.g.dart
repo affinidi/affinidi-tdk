@@ -11,8 +11,8 @@ MediatorInstance _$MediatorInstanceFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      createdAt: json['createdAt'] as String,
-      modifiedAt: json['modifiedAt'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      modifiedAt: DateTime.parse(json['modifiedAt'] as String),
       createdBy: json['createdBy'] as String,
       modifiedBy: json['modifiedBy'] as String,
       projectId: json['projectId'] as String,
@@ -21,13 +21,14 @@ MediatorInstance _$MediatorInstanceFromJson(Map<String, dynamic> json) =>
       deploymentStatus: json['deploymentStatus'] as String,
       serviceSize: json['serviceSize'] as String,
       did: json['did'] as String,
-      didDocumentUrl: json['didDocumentUrl'] as String?,
+      didDocumentUrl: json['didDocumentUrl'] as String,
+      accountId: json['accountId'] as String,
       currentServiceRequest: json['currentServiceRequest'] as String?,
       isAdministratorDidGenerated: json['isAdministratorDidGenerated'] as bool?,
       administratorDid: json['administratorDid'] as String?,
-      acl: json['acl'] == null
-          ? null
-          : MediatorAcl.fromJson(json['acl'] as Map<String, dynamic>),
+      acl: (json['acl'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, e as num),
+      ),
     );
 
 Map<String, dynamic> _$MediatorInstanceToJson(MediatorInstance instance) =>
@@ -35,8 +36,8 @@ Map<String, dynamic> _$MediatorInstanceToJson(MediatorInstance instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'createdAt': instance.createdAt,
-      'modifiedAt': instance.modifiedAt,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'modifiedAt': instance.modifiedAt.toIso8601String(),
       'createdBy': instance.createdBy,
       'modifiedBy': instance.modifiedBy,
       'projectId': instance.projectId,
@@ -45,14 +46,15 @@ Map<String, dynamic> _$MediatorInstanceToJson(MediatorInstance instance) =>
       'deploymentStatus': instance.deploymentStatus,
       'serviceSize': instance.serviceSize,
       'did': instance.did,
-      if (instance.didDocumentUrl case final value?) 'didDocumentUrl': value,
+      'didDocumentUrl': instance.didDocumentUrl,
+      'accountId': instance.accountId,
       if (instance.currentServiceRequest case final value?)
         'currentServiceRequest': value,
       if (instance.isAdministratorDidGenerated case final value?)
         'isAdministratorDidGenerated': value,
       if (instance.administratorDid case final value?)
         'administratorDid': value,
-      if (instance.acl?.toJson() case final value?) 'acl': value,
+      if (instance.acl case final value?) 'acl': value,
     };
 
 MediatorInstanceBodyData _$MediatorInstanceBodyDataFromJson(
@@ -61,10 +63,13 @@ MediatorInstanceBodyData _$MediatorInstanceBodyDataFromJson(
       instances: (json['instances'] as List<dynamic>)
           .map((e) => MediatorInstance.fromJson(e as Map<String, dynamic>))
           .toList(),
+      lastEvaluatedKey: json['lastEvaluatedKey'] as String?,
     );
 
 Map<String, dynamic> _$MediatorInstanceBodyDataToJson(
         MediatorInstanceBodyData instance) =>
     <String, dynamic>{
       'instances': instance.instances.map((e) => e.toJson()).toList(),
+      if (instance.lastEvaluatedKey case final value?)
+        'lastEvaluatedKey': value,
     };

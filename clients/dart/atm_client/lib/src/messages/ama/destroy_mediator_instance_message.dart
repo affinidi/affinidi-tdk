@@ -17,6 +17,7 @@ class DestroyMediatorInstanceMessage extends PlainTextMessage {
     super.createdTime,
     super.expiresTime,
     super.body = const {},
+    super.threadId,
   }) : super(
           type: Uri.parse(
             'affinidi.io/operations/ama/destroyMediatorInstance',
@@ -54,16 +55,12 @@ class DestroyMediatorInstanceResponseMessage extends PlainTextMessage {
 
 /// Response data for destroy mediator instance operation.
 class DestroyMediatorInstanceResponse {
-  /// The ID of the destroyed mediator instance.
-  final String mediatorId;
-
-  /// The destruction status.
-  final String status;
+  /// The destruction message/status.
+  final String? message;
 
   /// Creates a destroy mediator instance response.
   DestroyMediatorInstanceResponse({
-    required this.mediatorId,
-    required this.status,
+    this.message,
   });
 
   /// Creates a DestroyMediatorInstanceResponse from a JSON map.

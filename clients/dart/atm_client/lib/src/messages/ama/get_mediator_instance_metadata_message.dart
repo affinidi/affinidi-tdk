@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../models/data_models/mediator_configuration.dart';
-import '../../models/data_models/mediator_deployment.dart';
 import '../response_body.dart';
 
 part 'get_mediator_instance_metadata_message.g.dart';
@@ -19,6 +17,7 @@ class GetMediatorInstanceMetadataMessage extends PlainTextMessage {
     super.createdTime,
     super.expiresTime,
     super.body = const {},
+    super.threadId,
   }) : super(
           type: Uri.parse(
             'affinidi.io/operations/ama/getMediatorInstanceMetadata',
@@ -56,24 +55,84 @@ class GetMediatorInstanceMetadataResponseMessage extends PlainTextMessage {
 
 /// Metadata for a mediator instance.
 class MediatorInstanceMetadata {
+  /// Name of the entity.
+  final String name;
+
+  /// Description of the entity.
+  final String description;
+
+  /// ISO 8601 string of the creation date/time the entity.
+  final DateTime createdAt;
+
+  /// ISO 8601 string of the modification date/time the entity.
+  final DateTime modifiedAt;
+
+  /// Identifier of the user who created the entity.
+  final String createdBy;
+
+  /// Identifier of the user who last updated the entity.
+  final String modifiedBy;
+
   /// The mediator instance identifier.
-  final String mediatorId;
+  final String id;
 
-  /// The instance status.
-  final String status;
+  /// The project identifier.
+  final String projectId;
 
-  /// The instance configuration.
-  final MediatorConfiguration? configuration;
+  /// The service type.
+  final String serviceType;
 
-  /// The deployment information.
-  final MediatorDeployment? deployment;
+  /// Determines the current state of the deployment.
+  final String deploymentState;
+
+  /// Determines the current status of the deployment.
+  final String deploymentStatus;
+
+  /// The service size.
+  final String serviceSize;
+
+  /// DID of mediator once it is deployed.
+  final String did;
+
+  /// URL where did document of mediator is hosted.
+  final String didDocumentUrl;
+
+  /// AccountId where the mediator is deployed.
+  final String accountId;
+
+  /// The current service request ID.
+  final String? currentServiceRequest;
+
+  /// Whether administrator DID was generated.
+  final bool? isAdministratorDidGenerated;
+
+  /// Administrator DID.
+  final String? administratorDid;
+
+  /// Access control list.
+  final Map<String, num>? acl;
 
   /// Creates mediator instance metadata.
   MediatorInstanceMetadata({
-    required this.mediatorId,
-    required this.status,
-    this.configuration,
-    this.deployment,
+    required this.name,
+    required this.description,
+    required this.createdAt,
+    required this.modifiedAt,
+    required this.createdBy,
+    required this.modifiedBy,
+    required this.id,
+    required this.projectId,
+    required this.serviceType,
+    required this.deploymentState,
+    required this.deploymentStatus,
+    required this.serviceSize,
+    required this.did,
+    required this.didDocumentUrl,
+    required this.accountId,
+    this.currentServiceRequest,
+    this.isAdministratorDidGenerated,
+    this.administratorDid,
+    this.acl,
   });
 
   /// Creates MediatorInstanceMetadata from a JSON map.

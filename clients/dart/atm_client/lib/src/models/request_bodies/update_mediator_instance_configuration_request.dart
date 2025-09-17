@@ -5,23 +5,17 @@ part 'update_mediator_instance_configuration_request.g.dart';
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class UpdateMediatorInstanceConfigurationRequest {
   final String mediatorId;
-  final int? maxMessageSize;
-  final int? messageRetentionDays;
-  final bool? enableEncryption;
-  final bool? enableLogging;
-  final String? logLevel;
+  final Map<String, num>? acl;
 
   UpdateMediatorInstanceConfigurationRequest({
     required this.mediatorId,
-    this.maxMessageSize,
-    this.messageRetentionDays,
-    this.enableEncryption,
-    this.enableLogging,
-    this.logLevel,
+    this.acl,
   });
 
-  factory UpdateMediatorInstanceConfigurationRequest.fromJson(Map<String, dynamic> json) =>
+  factory UpdateMediatorInstanceConfigurationRequest.fromJson(
+          Map<String, dynamic> json) =>
       _$UpdateMediatorInstanceConfigurationRequestFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UpdateMediatorInstanceConfigurationRequestToJson(this);
+  Map<String, dynamic> toJson() =>
+      _$UpdateMediatorInstanceConfigurationRequestToJson(this);
 }
