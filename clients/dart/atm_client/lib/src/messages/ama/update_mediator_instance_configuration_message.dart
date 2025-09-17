@@ -17,6 +17,7 @@ class UpdateMediatorInstanceConfigurationMessage extends PlainTextMessage {
     super.createdTime,
     super.expiresTime,
     super.body = const {},
+    super.threadId,
   }) : super(
           type: Uri.parse(
             'affinidi.io/operations/ama/updateMediatorInstanceConfiguration',
@@ -55,16 +56,12 @@ class UpdateMediatorInstanceConfigurationResponseMessage
 
 /// Response data for update mediator instance configuration operation.
 class UpdateMediatorInstanceConfigurationResponse {
-  /// The mediator instance identifier.
-  final String mediatorId;
-
-  /// The update status.
-  final String status;
+  /// The update message/status.
+  final String? message;
 
   /// Creates an update mediator instance configuration response.
   UpdateMediatorInstanceConfigurationResponse({
-    required this.mediatorId,
-    required this.status,
+    this.message,
   });
 
   /// Creates UpdateMediatorInstanceConfigurationResponse from a JSON map.

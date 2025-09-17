@@ -3,32 +3,32 @@ import 'dart:convert';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../models/data_models/request_details.dart';
 import '../response_body.dart';
 
-part 'get_mediators_requests_message.g.dart';
+part 'get_mediator_requests_message.g.dart';
 
 /// Message for getting mediator requests.
-class GetMediatorsRequestsMessage extends PlainTextMessage {
-  /// Creates a get mediators requests message.
-  GetMediatorsRequestsMessage({
+class GetMediatorRequestsMessage extends PlainTextMessage {
+  /// Creates a get mediator requests message.
+  GetMediatorRequestsMessage({
     required super.id,
     required super.from,
     required super.to,
     super.createdTime,
     super.expiresTime,
     super.body = const {},
+    super.threadId,
   }) : super(
           type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorsRequests',
+            'affinidi.io/operations/ama/getMediatorRequests',
           ),
         );
 }
 
-/// Response message for get mediators requests operation.
-class GetMediatorsRequestsResponseMessage extends PlainTextMessage {
-  /// Creates a get mediators requests response message.
-  GetMediatorsRequestsResponseMessage({
+/// Response message for get mediator requests operation.
+class GetMediatorRequestsResponseMessage extends PlainTextMessage {
+  /// Creates a get mediator requests response message.
+  GetMediatorRequestsResponseMessage({
     required super.id,
     required super.from,
     required super.to,
@@ -38,14 +38,14 @@ class GetMediatorsRequestsResponseMessage extends PlainTextMessage {
     super.body = const {},
   }) : super(
           type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorsRequests/response',
+            'affinidi.io/operations/ama/getMediatorRequests/response',
           ),
         );
 
   /// Gets the list of mediator requests from the message body.
   List<MediatorRequest> get requests {
     final responseBody = ResponseBody.fromJson(body!);
-    final bodyData = GetMediatorsRequestsResponseData.fromJson(
+    final bodyData = GetMediatorRequestsResponseData.fromJson(
       jsonDecode(responseBody.response) as Map<String, dynamic>,
     );
 
@@ -57,24 +57,16 @@ class GetMediatorsRequestsResponseMessage extends PlainTextMessage {
 
 /// Represents a mediator request.
 class MediatorRequest {
-  /// The request identifier.
-  final String requestId;
+  /// The creation timestamp.
+  final DateTime? createdAt;
 
-  /// The mediator identifier.
-  final String mediatorId;
-
-  /// The request timestamp.
-  final DateTime timestamp;
-
-  /// Additional request details.
-  final RequestDetails? details;
+  /// The creator identifier.
+  final String? createdBy;
 
   /// Creates a mediator request.
   MediatorRequest({
-    required this.requestId,
-    required this.mediatorId,
-    required this.timestamp,
-    this.details,
+    this.createdAt,
+    this.createdBy,
   });
 
   /// Creates MediatorRequest from a JSON map.
@@ -87,22 +79,25 @@ class MediatorRequest {
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 
-/// Response data for get mediators requests.
-class GetMediatorsRequestsResponseData {
+/// Response data for get mediator requests.
+class GetMediatorRequestsResponseData {
   /// The list of mediator requests.
   final List<MediatorRequest> requests;
 
-  /// Creates get mediators requests response data.
-  GetMediatorsRequestsResponseData({
+  /// The last evaluated key for pagination.
+  final String? lastEvaluatedKey;
+
+  /// Creates get mediator requests response data.
+  GetMediatorRequestsResponseData({
     required this.requests,
+    this.lastEvaluatedKey,
   });
 
-  /// Creates GetMediatorsRequestsResponseData from a JSON map.
-  factory GetMediatorsRequestsResponseData.fromJson(
-          Map<String, dynamic> json) =>
-      _$GetMediatorsRequestsResponseDataFromJson(json);
+  /// Creates GetMediatorRequestsResponseData from a JSON map.
+  factory GetMediatorRequestsResponseData.fromJson(Map<String, dynamic> json) =>
+      _$GetMediatorRequestsResponseDataFromJson(json);
 
-  /// Converts this GetMediatorsRequestsResponseData to a JSON map.
+  /// Converts this GetMediatorRequestsResponseData to a JSON map.
   Map<String, dynamic> toJson() =>
-      _$GetMediatorsRequestsResponseDataToJson(this);
+      _$GetMediatorRequestsResponseDataToJson(this);
 }

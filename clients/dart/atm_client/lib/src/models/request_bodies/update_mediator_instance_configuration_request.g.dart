@@ -11,22 +11,14 @@ UpdateMediatorInstanceConfigurationRequest
             Map<String, dynamic> json) =>
         UpdateMediatorInstanceConfigurationRequest(
           mediatorId: json['mediatorId'] as String,
-          maxMessageSize: (json['maxMessageSize'] as num?)?.toInt(),
-          messageRetentionDays: (json['messageRetentionDays'] as num?)?.toInt(),
-          enableEncryption: json['enableEncryption'] as bool?,
-          enableLogging: json['enableLogging'] as bool?,
-          logLevel: json['logLevel'] as String?,
+          acl: (json['acl'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(k, e as num),
+          ),
         );
 
 Map<String, dynamic> _$UpdateMediatorInstanceConfigurationRequestToJson(
         UpdateMediatorInstanceConfigurationRequest instance) =>
     <String, dynamic>{
       'mediatorId': instance.mediatorId,
-      if (instance.maxMessageSize case final value?) 'maxMessageSize': value,
-      if (instance.messageRetentionDays case final value?)
-        'messageRetentionDays': value,
-      if (instance.enableEncryption case final value?)
-        'enableEncryption': value,
-      if (instance.enableLogging case final value?) 'enableLogging': value,
-      if (instance.logLevel case final value?) 'logLevel': value,
+      if (instance.acl case final value?) 'acl': value,
     };

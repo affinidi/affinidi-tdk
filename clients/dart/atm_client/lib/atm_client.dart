@@ -24,11 +24,11 @@ export 'src/messages/ama/get_mediator_instances_list_message.dart'
         GetMediatorInstancesListResponseMessage,
         MediatorInstance,
         MediatorInstanceBodyData;
-export 'src/messages/ama/get_mediators_requests_message.dart'
+export 'src/messages/ama/get_mediator_requests_message.dart'
     show
-        GetMediatorsRequestsMessage,
-        GetMediatorsRequestsResponseData,
-        GetMediatorsRequestsResponseMessage,
+        GetMediatorRequestsMessage,
+        GetMediatorRequestsResponseData,
+        GetMediatorRequestsResponseMessage,
         MediatorRequest;
 export 'src/messages/ama/update_mediator_instance_configuration_message.dart'
     show
@@ -40,3 +40,10 @@ export 'src/messages/ama/update_mediator_instance_deployment_message.dart'
         UpdateMediatorInstanceDeploymentMessage,
         UpdateMediatorInstanceDeploymentResponse,
         UpdateMediatorInstanceDeploymentResponseMessage;
+export 'src/models/request_bodies/deploy_mediator_instance_request.dart';
+export 'src/models/request_bodies/destroy_mediator_instance_request.dart';
+export 'src/models/request_bodies/get_mediator_instance_metadata_request.dart';
+export 'src/models/request_bodies/get_mediator_instances_list_request.dart';
+export 'src/models/request_bodies/get_mediator_requests_request.dart';
+export 'src/models/request_bodies/update_mediator_instance_configuration_request.dart';
+export 'src/models/request_bodies/update_mediator_instance_deployment_request.dart';

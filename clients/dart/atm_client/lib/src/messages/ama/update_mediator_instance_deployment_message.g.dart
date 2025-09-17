@@ -10,13 +10,11 @@ UpdateMediatorInstanceDeploymentResponse
     _$UpdateMediatorInstanceDeploymentResponseFromJson(
             Map<String, dynamic> json) =>
         UpdateMediatorInstanceDeploymentResponse(
-          mediatorId: json['mediatorId'] as String,
-          status: json['status'] as String,
+          message: json['message'] as String?,
         );
 
 Map<String, dynamic> _$UpdateMediatorInstanceDeploymentResponseToJson(
         UpdateMediatorInstanceDeploymentResponse instance) =>
     <String, dynamic>{
-      'mediatorId': instance.mediatorId,
-      'status': instance.status,
+      if (instance.message case final value?) 'message': value,
     };
