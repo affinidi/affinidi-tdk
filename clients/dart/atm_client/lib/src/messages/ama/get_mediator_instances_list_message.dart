@@ -67,10 +67,10 @@ class MediatorInstance {
   final String description;
 
   /// The creation timestamp.
-  final String createdAt;
+  final DateTime createdAt;
 
   /// The modification timestamp.
-  final String modifiedAt;
+  final DateTime modifiedAt;
 
   /// The user who created the instance.
   final String createdBy;

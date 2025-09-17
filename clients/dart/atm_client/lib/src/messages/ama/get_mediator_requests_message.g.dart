@@ -8,13 +8,16 @@ part of 'get_mediator_requests_message.dart';
 
 MediatorRequest _$MediatorRequestFromJson(Map<String, dynamic> json) =>
     MediatorRequest(
-      createdAt: json['createdAt'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
       createdBy: json['createdBy'] as String?,
     );
 
 Map<String, dynamic> _$MediatorRequestToJson(MediatorRequest instance) =>
     <String, dynamic>{
-      if (instance.createdAt case final value?) 'createdAt': value,
+      if (instance.createdAt?.toIso8601String() case final value?)
+        'createdAt': value,
       if (instance.createdBy case final value?) 'createdBy': value,
     };
 

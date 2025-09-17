@@ -317,7 +317,6 @@ void main() async {
       final updateDeploymentResponse =
           await atmAtlasClient.updateMediatorInstanceDeployment(
         accessToken: authTokens.accessToken,
-        mediatorId: testMediatorId,
         deploymentData: updateDeploymentRequest,
       );
 
@@ -492,7 +491,6 @@ void main() async {
       final updateConfigResponse =
           await atmAtlasClient.updateMediatorInstanceConfiguration(
         accessToken: authTokens.accessToken,
-        mediatorId: testMediatorId,
         configurationData: updateConfigRequest,
       );
 

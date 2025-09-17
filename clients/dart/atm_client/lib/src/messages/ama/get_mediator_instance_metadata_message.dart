@@ -62,10 +62,10 @@ class MediatorInstanceMetadata {
   final String description;
 
   /// ISO 8601 string of the creation date/time the entity.
-  final String createdAt;
+  final DateTime createdAt;
 
   /// ISO 8601 string of the modification date/time the entity.
-  final String modifiedAt;
+  final DateTime modifiedAt;
 
   /// Identifier of the user who created the entity.
   final String createdBy;

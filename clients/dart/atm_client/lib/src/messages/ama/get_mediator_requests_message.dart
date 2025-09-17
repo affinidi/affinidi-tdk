@@ -58,7 +58,7 @@ class GetMediatorRequestsResponseMessage extends PlainTextMessage {
 /// Represents a mediator request.
 class MediatorRequest {
   /// The creation timestamp.
-  final String? createdAt;
+  final DateTime? createdAt;
 
   /// The creator identifier.
   final String? createdBy;

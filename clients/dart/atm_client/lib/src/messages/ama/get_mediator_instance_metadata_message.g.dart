@@ -11,8 +11,8 @@ MediatorInstanceMetadata _$MediatorInstanceMetadataFromJson(
     MediatorInstanceMetadata(
       name: json['name'] as String,
       description: json['description'] as String,
-      createdAt: json['createdAt'] as String,
-      modifiedAt: json['modifiedAt'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      modifiedAt: DateTime.parse(json['modifiedAt'] as String),
       createdBy: json['createdBy'] as String,
       modifiedBy: json['modifiedBy'] as String,
       id: json['id'] as String,
@@ -37,8 +37,8 @@ Map<String, dynamic> _$MediatorInstanceMetadataToJson(
     <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
-      'createdAt': instance.createdAt,
-      'modifiedAt': instance.modifiedAt,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'modifiedAt': instance.modifiedAt.toIso8601String(),
       'createdBy': instance.createdBy,
       'modifiedBy': instance.modifiedBy,
       'id': instance.id,

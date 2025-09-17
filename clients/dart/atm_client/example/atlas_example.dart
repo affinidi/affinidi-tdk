@@ -103,7 +103,6 @@ Future<void> main() async {
   final updateDeploymentResponse =
       await atmAtlasClient.updateMediatorInstanceDeployment(
     accessToken: authTokens.accessToken,
-    mediatorId: deployedMediator.mediatorId,
     deploymentData: UpdateMediatorInstanceDeploymentRequest(
       mediatorId: deployedMediator.mediatorId,
       name: 'Example Mediator Updated',
@@ -119,7 +118,6 @@ Future<void> main() async {
   final updateConfigurationResponse =
       await atmAtlasClient.updateMediatorInstanceConfiguration(
     accessToken: authTokens.accessToken,
-    mediatorId: deployedMediator.mediatorId,
     configurationData: UpdateMediatorInstanceConfigurationRequest(
       mediatorId: deployedMediator.mediatorId,
       acl: const {
