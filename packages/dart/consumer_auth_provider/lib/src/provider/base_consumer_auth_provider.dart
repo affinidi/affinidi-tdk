@@ -17,13 +17,24 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
 
   String? _consumerToken;
 
-  /// Constructor for [BaseConsumerAuthProvider] using the [signer] and optional [Dio] http client.
-  BaseConsumerAuthProvider({required DidSigner signer, Dio? client}) {
+  /// Constructor for [BaseConsumerAuthProvider].
+  ///
+  /// - [signer] (required): Instance of [DidSigner] used for signing operations.
+  /// - [client] (optional): Optional instance of [Dio] for handling HTTP requests. If not provided,
+  ///   a default client will be used.
+  /// - [region] (optional): The [ElementsRegion] to specify the AWS region (e.g., apSoutheast1, apSouth1).
+  ///   Defaults to [ElementsRegion.apSoutheast1] if not provided.
+  BaseConsumerAuthProvider({
+    required DidSigner signer,
+    Dio? client,
+    ElementsRegion region = ElementsRegion.apSoutheast1,
+  }) {
     _consumerTokenProvider =
-        ConsumerTokenProvider(signer: signer, client: client);
-    _cisTokenProvider = CisTokenProvider(signer: signer, client: client);
+        ConsumerTokenProvider(signer: signer, client: client, region: region);
+    _cisTokenProvider =
+        CisTokenProvider(signer: signer, client: client, region: region);
     _delegatedTokenProvider =
-        DelegatedTokenProvider(signer: signer, client: client);
+        DelegatedTokenProvider(signer: signer, client: client, region: region);
   }
 
   @override

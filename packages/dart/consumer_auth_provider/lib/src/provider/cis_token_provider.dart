@@ -6,15 +6,21 @@ import 'token_provider.dart';
 
 /// CIS Token Provider class for generating tokens required to claim credentials.
 class CisTokenProvider extends TokenProvider {
-  static final String _tokenEndpoint = Environment.fetchConsumerCisUrl();
   static final int _cisTokenExpiration = 5 * 60; // 5 minutes
   static final int? _apiTimeOutInMilliseconds =
       Environment.apiTimeOutInMilliseconds;
 
-  /// Constructor for [CisTokenProvider] using the [signer] and optional [Dio] http client.
+  /// Constructor for [CisTokenProvider].
+  ///
+  /// - [signer] (required): Instance of [DidSigner] used for signing operations.
+  /// - [client] (optional): Optional instance of [Dio] for handling HTTP requests. If not provided,
+  ///   a default client will be used.
+  /// - [region] (optional): The [ElementsRegion] to specify the AWS region (e.g., apSoutheast1, apSouth1).
+  ///   Defaults to [ElementsRegion.apSoutheast1] if not provided.
   CisTokenProvider({
     required DidSigner signer,
     Dio? client,
+    ElementsRegion region = ElementsRegion.apSoutheast1,
   })  : _signer = signer,
         _client = client ??
             ((_apiTimeOutInMilliseconds != null)
@@ -24,10 +30,12 @@ class CisTokenProvider extends TokenProvider {
                     receiveTimeout:
                         Duration(milliseconds: _apiTimeOutInMilliseconds!),
                   ))
-                : Dio());
+                : Dio()),
+        _tokenEndpoint = Environment.fetchConsumerCisUrl(null, null, region);
 
   final DidSigner _signer;
   final Dio _client;
+  final String _tokenEndpoint;
 
   /// Method to retrieve CIS token
   ///
