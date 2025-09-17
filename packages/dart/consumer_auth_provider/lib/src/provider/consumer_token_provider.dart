@@ -12,16 +12,28 @@ import 'token_provider.dart';
 class ConsumerTokenProvider extends TokenProvider with JwtTokenDidChecker {
   final DidSigner _signer;
   final Dio _dioInstance;
+  final EnvironmentType? _envType;
+  final ElementsRegion _region;
 
-  static final String _tokenEndpoint = Environment.fetchConsumerAudienceUrl();
   static final int _consumerTokenExpiration = 5 * 60; // 5 minutes
   static final int? _apiTimeOutInMilliseconds =
       Environment.apiTimeOutInMilliseconds;
 
-  /// Constructor for [ConsumerTokenProvider] using the [signer] and optional [Dio] http client.
+  /// Constructor for [ConsumerTokenProvider].
+  ///
+  /// - [signer] (required): Instance of [DidSigner] used for signing operations.
+  /// - [client] (optional): Optional instance of [Dio] for handling HTTP requests. If not provided,
+  ///   a default client will be used.
+  /// - [envType] (optional): The [EnvironmentType] to specify the environment (e.g., local, dev, prod).
+  ///   If not provided, the value will be taken from the `AFFINIDI_TDK_ENVIRONMENT` environment variable,
+  ///   or will default to `prod` if not set.
+  /// - [region] (optional): The [ElementsRegion] to specify the AWS region (e.g., apSoutheast1, apSouth1).
+  ///   Defaults to [ElementsRegion.apSoutheast1] if not provided.
   ConsumerTokenProvider({
     required DidSigner signer,
     Dio? client,
+    EnvironmentType? envType,
+    ElementsRegion region = ElementsRegion.apSoutheast1,
   })  : _signer = signer,
         _dioInstance = client ??
             ((_apiTimeOutInMilliseconds != null)
@@ -31,7 +43,12 @@ class ConsumerTokenProvider extends TokenProvider with JwtTokenDidChecker {
                     receiveTimeout:
                         Duration(milliseconds: _apiTimeOutInMilliseconds!),
                   ))
-                : Dio());
+                : Dio()),
+        _envType = envType,
+        _region = region;
+
+  String get _tokenEndpoint =>
+      Environment.fetchConsumerAudienceUrl(null, _envType, _region);
 
   /// Method to retrieve a consumer token.
   ///

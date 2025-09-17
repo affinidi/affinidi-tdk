@@ -1,3 +1,4 @@
+import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 
@@ -14,12 +15,28 @@ class ConsumerAuthProvider implements ConsumerAuthProviderInterface {
 
   /// Factory constructor for creating an instance of [ConsumerAuthProvider].
   ///
-  /// - [signer] (required) - instance of [DidSigner] used for signing operations.
-  /// - [client] (optional) - optional instance of [Dio] for handling HTTP requests. If not provided,
+  /// - [signer] (required): instance of [DidSigner] used for signing operations.
+  /// - [client] (optional): optional instance of [Dio] for handling HTTP requests. If not provided,
   ///   a default client will be used.
-  factory ConsumerAuthProvider({required DidSigner signer, Dio? client}) {
+  /// - [envType] (optional): the [EnvironmentType] to specify the environment (e.g., local, dev, prod).
+  ///   If not provided, the value will be taken from the `AFFINIDI_TDK_ENVIRONMENT` environment variable,
+  ///   or will default to `prod` if not set.
+  /// - [region] (optional): the [ElementsRegion] to specify the AWS region (e.g., apSoutheast1, apSouth1).
+  ///   Defaults to [ElementsRegion.apSoutheast1] if not provided.
+  factory ConsumerAuthProvider({
+    required DidSigner signer,
+    Dio? client,
+    EnvironmentType? envType,
+    ElementsRegion region = ElementsRegion.apSoutheast1,
+  }) {
     return ConsumerAuthProvider._(
-        BaseConsumerAuthProvider(signer: signer, client: client));
+      BaseConsumerAuthProvider(
+        signer: signer,
+        client: client,
+        envType: envType,
+        region: region,
+      ),
+    );
   }
 
   @override
