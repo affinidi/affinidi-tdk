@@ -1,6 +1,6 @@
-# Affinidi TDK - DART ATM CLIENT
+# Affinidi TDK - Dart ATM Client
 
-The Affinidi TDK DART ATM CLIENT package that contains a client for communication with the DIDComm Gateway and DIDComm message types. It is based on the DIDComm protocol and built on the decentralized design of a Decentralised Identifier (DID) to enable secure and privacy-preserving digital communication.
+The Affinidi TDK Dart ATM Client package that contains a client for communication with the DIDComm Gateway and DIDComm message types. It is based on the DIDComm protocol and built on the decentralized design of a Decentralised Identifier (DID) to enable secure and privacy-preserving digital communication.
 
 Following the DID design, it leverages public key cryptography for signing and encrypting messages, ensuring their secure and private delivery to the intended recipient while establishing verifiable and trusted communication.
 
