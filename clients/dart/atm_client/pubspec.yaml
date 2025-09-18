@@ -1,5 +1,5 @@
 name: affinidi_tdk_atm_client
-description: A sample command-line application.
+description: Dart ATM Client is a Dart package that contains a client for communication with the DIDComm Gateway and DIDComm message types.
 version: 1.0.0
 homepage: https://github.com/affinidi/affinidi-tdk
 publish_to: none
