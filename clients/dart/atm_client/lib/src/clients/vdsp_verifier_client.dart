@@ -6,6 +6,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
 import '../common/atm_mediator_client.dart';
+import '../common/vdsp_ssi_alignment.dart';
 
 class VdspVerifierClient {
   final ClientOptions clientOptions;
@@ -27,9 +28,12 @@ class VdspVerifierClient {
   Future<void> queryHolderFeatures({
     required String holderDid,
     required String accessToken,
+    String? operation,
   }) async {
     final holderDidDocument =
         await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+
+    final queries = buildDiscoverFeaturesQueries(operation: operation);
 
     final queryMessage = PlainTextMessage(
       id: const Uuid().v4(),
@@ -37,32 +41,7 @@ class VdspVerifierClient {
       from: mediatorClient.signer.did,
       to: [holderDidDocument.id],
       body: {
-        'queries': [
-          {
-            'feature-type': 'protocol',
-            'match': 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
-          },
-          {
-            'feature-type': 'operation',
-            'match': '*',
-          },
-          {
-            'feature-type': 'data_query_lang',
-            'match': '*',
-          },
-          {
-            'feature-type': 'vc_type',
-            'match': '*',
-          },
-          {
-            'feature-type': 'data_integrity_proof_suite',
-            'match': '*',
-          },
-          {
-            'feature-type': 'json_web_signature_algorithm',
-            'match': '*',
-          },
-        ],
+        'queries': queries,
       },
     );
 
@@ -77,8 +56,8 @@ class VdspVerifierClient {
       signer: mediatorClient.signer,
     );
 
-    final createdTime = DateTime.now().toUtc();
-    final expiresTime = createdTime.add(clientOptions.messageExpiration);
+    final expiresTime =
+        DateTime.now().toUtc().add(clientOptions.messageExpiration);
 
     final forwardMessage = ForwardMessage(
       id: const Uuid().v4(),
@@ -101,6 +80,41 @@ class VdspVerifierClient {
       forwardMessage,
       accessToken: accessToken,
     );
+  }
+
+  static List<Map<String, String>> buildDiscoverFeaturesQueries({
+    String? operation,
+  }) {
+    return <Map<String, String>>[
+      {
+        'feature-type': 'protocol',
+        'match': 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
+      },
+      {
+        'feature-type': 'data_query_lang',
+        'id': 'DCQL',
+      },
+      for (final vcTypeId in supportedVcTypeIds)
+        {
+          'feature-type': 'vc_type',
+          'id': vcTypeId,
+        },
+      for (final suite in supportedDataIntegritySuites)
+        {
+          'feature-type': 'data_integrity_proof_suite',
+          'id': suite,
+        },
+      for (final alg in supportedJwsAlgs)
+        {
+          'feature-type': 'json_web_signature_algorithm',
+          'id': alg,
+        },
+      if (operation != null)
+        {
+          'feature-type': 'operation',
+          'id': operation,
+        },
+    ];
   }
 
   Future<StreamSubscription<PlainTextMessage>> listenForDiscloseFeatures({
