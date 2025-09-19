@@ -25,7 +25,7 @@ class VdspVerifierClient {
     throw UnimplementedError();
   }
 
-  Future<void> queryHolderFeatures({
+  Future<QueryMessage> queryHolderFeatures({
     required String holderDid,
     required String accessToken,
     String? operation,
@@ -33,17 +33,17 @@ class VdspVerifierClient {
     final holderDidDocument =
         await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
 
-    final queries = buildDiscoverFeaturesQueries(operation: operation);
+    final queries = _buildDiscoverFeaturesQueries(operation: operation);
 
-    final queryMessage = PlainTextMessage(
-      id: const Uuid().v4(),
-      type: Uri.parse('https://didcomm.org/discover-features/2.0/queries'),
-      from: mediatorClient.signer.did,
-      to: [holderDidDocument.id],
-      body: {
+    final queryMessage = QueryMessage.fromJson({
+      'id': const Uuid().v4(),
+      'type': 'https://didcomm.org/discover-features/2.0/queries',
+      'from': mediatorClient.signer.did,
+      'to': [holderDidDocument.id],
+      'body': {
         'queries': queries,
       },
-    );
+    });
 
     final packagedMessageForHolder =
         await DidcommMessage.packIntoSignedAndEncryptedMessages(
@@ -80,9 +80,11 @@ class VdspVerifierClient {
       forwardMessage,
       accessToken: accessToken,
     );
+
+    return queryMessage;
   }
 
-  static List<Map<String, String>> buildDiscoverFeaturesQueries({
+  List<Map<String, String>> _buildDiscoverFeaturesQueries({
     String? operation,
   }) {
     return <Map<String, String>>[

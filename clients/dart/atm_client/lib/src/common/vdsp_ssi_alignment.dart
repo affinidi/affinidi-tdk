@@ -12,14 +12,6 @@ final Map<SignatureScheme, List<String>> schemeToDataIntegritySuites = () {
   return byScheme;
 }();
 
-const Map<SignatureScheme, String> schemeToJwsAlg = {
-  SignatureScheme.ecdsa_p256_sha256: 'ES256',
-  SignatureScheme.ecdsa_p384_sha384: 'ES384',
-  SignatureScheme.ecdsa_p521_sha512: 'ES512',
-  SignatureScheme.ecdsa_secp256k1_sha256: 'ES256K',
-  SignatureScheme.ed25519: 'EdDSA',
-};
-
 const Map<Type, String> ssiVcModelTypeToVcTypeId = {
   VcDataModelV1: 'w3c/v1',
   VcDataModelV2: 'w3c/v2',
@@ -30,7 +22,10 @@ final List<String> supportedDataIntegritySuites =
     (schemeToDataIntegritySuites.values.expand((v) => v).toSet().toList())
       ..sort();
 
-final List<String> supportedJwsAlgs = (schemeToJwsAlg.values.toSet().toList())
+final List<String> supportedJwsAlgs = (schemeToDataIntegritySuites.keys
+    .map((scheme) => scheme.alg!)
+    .toSet()
+    .toList())
   ..sort();
 
 final List<String> supportedVcTypeIds =
