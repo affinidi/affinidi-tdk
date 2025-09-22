@@ -44,6 +44,6 @@ dev_dependencies:
   jwt_decode: ^0.3.1
 dependencies:
   collection: ^1.19.1
-  didcomm: ^1.0.0-dev.14
+  didcomm: ^1.0.3
   path: ^1.9.1
   retry: ^3.1.2
