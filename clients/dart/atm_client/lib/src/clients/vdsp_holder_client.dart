@@ -4,6 +4,7 @@ import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../atm_client.dart';
+import '../extensions/did_manager_extention.dart';
 import 'atm_base_client.dart';
 
 class VdspHolderClient extends AtmBaseClient {
@@ -15,8 +16,26 @@ class VdspHolderClient extends AtmBaseClient {
 
   static Future<VdspHolderClient> init({
     required DidPeerManager didManager,
-  }) {
-    throw UnimplementedError();
+    String? verifierDid,
+    ClientOptions clientOptions = const ClientOptions(),
+  }) async {
+    final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
+      [
+        clientOptions.mediatorDid,
+        if (verifierDid != null) verifierDid,
+      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
+    );
+
+    return VdspHolderClient(
+      didManager: didManager,
+      clientOptions: clientOptions,
+      mediatorClient: await didManager.getMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        recipientDidDocuments: [
+          atlasDidDocument,
+        ],
+      ),
+    );
   }
 
   Future<void> discloseFeatures({

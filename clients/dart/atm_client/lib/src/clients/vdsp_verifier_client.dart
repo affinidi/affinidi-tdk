@@ -6,6 +6,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
 import '../common/vdsp_ssi_alignment.dart';
+import '../extensions/did_manager_extention.dart';
 import 'atm_base_client.dart';
 
 class VdspVerifierClient extends AtmBaseClient {
@@ -17,8 +18,26 @@ class VdspVerifierClient extends AtmBaseClient {
 
   static Future<VdspVerifierClient> init({
     required DidPeerManager didManager,
-  }) {
-    throw UnimplementedError();
+    String? holderDid,
+    ClientOptions clientOptions = const ClientOptions(),
+  }) async {
+    final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
+      [
+        clientOptions.mediatorDid,
+        if (holderDid != null) holderDid,
+      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
+    );
+
+    return VdspVerifierClient(
+      didManager: didManager,
+      clientOptions: clientOptions,
+      mediatorClient: await didManager.getMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        recipientDidDocuments: [
+          atlasDidDocument,
+        ],
+      ),
+    );
   }
 
   Future<QueryMessage> queryHolderFeatures({
@@ -26,87 +45,25 @@ class VdspVerifierClient extends AtmBaseClient {
     required String accessToken,
     String? operation,
   }) async {
-    final holderDidDocument =
-        await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
-
     final queries = _buildDiscoverFeaturesQueries(operation: operation);
 
     final queryMessage = QueryMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [holderDidDocument.id],
+      to: [holderDid],
       body: QueryBody(queries: queries),
     );
 
-    final packagedMessageForHolder =
-        await DidcommMessage.packIntoSignedAndEncryptedMessages(
-      queryMessage,
-      recipientDidDocuments: [holderDidDocument],
-      keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-      encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-      keyPair: mediatorClient.keyPair,
-      didKeyId: mediatorClient.didKeyId,
-      signer: mediatorClient.signer,
-    );
-
-    final forwardMessage = ForwardMessage(
-      id: const Uuid().v4(),
-      to: [mediatorClient.mediatorDidDocument.id],
-      next: holderDidDocument.id,
-      expiresTime: DateTime.now().toUtc().add(clientOptions.messageExpiration),
-      attachments: [
-        Attachment(
-          mediaType: 'application/json',
-          data: AttachmentData(
-            base64: base64UrlEncodeNoPadding(
-              packagedMessageForHolder.toJsonBytes(),
-            ),
-          ),
-        ),
-      ],
-    );
-
-    await mediatorClient.sendMessage(
-      forwardMessage,
+    await _sendMessage(
+      holderDid: holderDid,
       accessToken: accessToken,
+      didManager: didManager,
+      mediatorClient: mediatorClient,
+      clientOptions: clientOptions,
+      message: queryMessage,
     );
 
     return queryMessage;
-  }
-
-  List<Query> _buildDiscoverFeaturesQueries({
-    String? operation,
-  }) {
-    return <Query>[
-      Query(
-        featureType: 'protocol',
-        match: 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
-      ),
-      Query(
-        featureType: 'data_query_lang',
-        match: 'DCQL',
-      ),
-      for (final vcTypeId in supportedVcTypeIds)
-        Query(
-          featureType: 'vc_type',
-          match: vcTypeId,
-        ),
-      for (final suite in supportedDataIntegritySuites)
-        Query(
-          featureType: 'data_integrity_proof_suite',
-          match: suite,
-        ),
-      for (final alg in supportedJwsAlgs)
-        Query(
-          featureType: 'json_web_signature_algorithm',
-          match: alg,
-        ),
-      if (operation != null)
-        Query(
-          featureType: 'operation',
-          match: operation,
-        ),
-    ];
   }
 
   Future<void> queryHolderData({
@@ -171,4 +128,101 @@ class VdspVerifierClient extends AtmBaseClient {
       accessToken: accessToken,
     );
   }
+}
+
+List<Query> _buildDiscoverFeaturesQueries({
+  String? operation,
+}) {
+  return <Query>[
+    Query(
+      featureType: 'protocol',
+      match: 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
+    ),
+    Query(
+      featureType: 'data_query_lang',
+      match: 'DCQL',
+    ),
+    for (final vcTypeId in supportedVcTypeIds)
+      Query(
+        featureType: 'vc_type',
+        match: vcTypeId,
+      ),
+    for (final suite in supportedDataIntegritySuites)
+      Query(
+        featureType: 'data_integrity_proof_suite',
+        match: suite,
+      ),
+    for (final alg in supportedJwsAlgs)
+      Query(
+        featureType: 'json_web_signature_algorithm',
+        match: alg,
+      ),
+    if (operation != null)
+      Query(
+        featureType: 'operation',
+        match: operation,
+      ),
+  ];
+}
+
+Future<void> _sendMessage<T extends PlainTextMessage>({
+  required String holderDid,
+  required String accessToken,
+  required DidManager didManager,
+  required MediatorClient mediatorClient,
+  required ClientOptions clientOptions,
+  required PlainTextMessage message,
+}) async {
+  final verifierDidDocument = await didManager.getDidDocument();
+
+  final holderDidDocument =
+      await UniversalDIDResolver.defaultResolver.resolveDid(
+    holderDid,
+  );
+
+  final matchedKeyPairs =
+      verifierDidDocument.matchKeysInKeyAgreement(otherDidDocuments: [
+    holderDidDocument,
+  ]);
+
+  if (matchedKeyPairs.isEmpty) {
+    throw Exception('Can not find matching key pair type with the holder');
+  }
+
+  final verifierDidKeyId = matchedKeyPairs.first;
+
+  final packagedMessageForHolder =
+      await DidcommMessage.packIntoSignedAndEncryptedMessages(
+    message,
+    recipientDidDocuments: [holderDidDocument],
+    keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+    encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+    keyPair: await didManager.getKeyPairByDidKeyId(verifierDidKeyId),
+    didKeyId: verifierDidKeyId,
+    signer: mediatorClient.signer,
+  );
+
+  final forwardMessage = ForwardMessage(
+    id: const Uuid().v4(),
+    to: [mediatorClient.mediatorDidDocument.id],
+    next: holderDidDocument.id,
+    expiresTime: DateTime.now().toUtc().add(
+          clientOptions.messageExpiration,
+        ),
+    attachments: [
+      Attachment(
+        mediaType: 'application/json',
+        data: AttachmentData(
+          base64: base64UrlEncodeNoPadding(
+            packagedMessageForHolder.toJsonBytes(),
+          ),
+        ),
+      ),
+    ],
+  );
+
+  await mediatorClient.sendMessage(
+    forwardMessage,
+    accessToken: accessToken,
+  );
 }
