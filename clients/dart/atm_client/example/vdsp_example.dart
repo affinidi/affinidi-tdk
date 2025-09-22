@@ -109,6 +109,12 @@ Future<void> main() async {
         object: message.body!['verifiable_presentation']['vcs'],
       );
     },
+    onProblemReport: (message) {
+      prettyPrint(
+        'A problem has occurred',
+        object: message,
+      );
+    },
     accessToken: verifierAuthTokens.accessToken,
     refreshToken: verifierAuthTokens.refreshToken,
   );
@@ -143,6 +149,12 @@ Future<void> main() async {
           accessToken: holderAuthTokens.accessToken,
         );
       }
+    },
+    onProblemReport: (message) {
+      prettyPrint(
+        'A problem has occurred',
+        object: message,
+      );
     },
     accessToken: holderAuthTokens.accessToken,
     refreshToken: holderAuthTokens.refreshToken,

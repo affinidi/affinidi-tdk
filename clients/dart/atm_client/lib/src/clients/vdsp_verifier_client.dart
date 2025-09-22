@@ -121,7 +121,7 @@ class VdspVerifierClient extends AtmBaseClient {
   Future<StreamSubscription> listenForIncomingMessages({
     void Function(DiscloseMessage)? onDiscloseMessage,
     required void Function(PlainTextMessage) onDataResponse,
-    void Function(ProblemReportMessage)? onProblemReportBody,
+    void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function()? onDone,
     bool? cancelOnError,
@@ -156,9 +156,9 @@ class VdspVerifierClient extends AtmBaseClient {
           return;
         }
 
-        if (onProblemReportBody != null &&
+        if (onProblemReport != null &&
             unpacked.type == ProblemReportMessage.messageType) {
-          onProblemReportBody(
+          onProblemReport(
             ProblemReportMessage.fromJson(plainTextJson),
           );
 

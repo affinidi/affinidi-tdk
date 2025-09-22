@@ -37,7 +37,7 @@ class VdspHolderClient extends AtmBaseClient {
   Future<StreamSubscription> listenForIncomingMessages({
     void Function(QueryMessage)? onQueryFeatures,
     required void Function(PlainTextMessage) onDataRequest,
-    void Function(ProblemReportMessage)? onProblemReportBody,
+    void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function()? onDone,
     bool? cancelOnError,
@@ -72,9 +72,9 @@ class VdspHolderClient extends AtmBaseClient {
           return;
         }
 
-        if (onProblemReportBody != null &&
+        if (onProblemReport != null &&
             unpacked.type == ProblemReportMessage.messageType) {
-          onProblemReportBody(
+          onProblemReport(
             ProblemReportMessage.fromJson(plainTextJson),
           );
 
