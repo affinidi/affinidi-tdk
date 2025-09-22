@@ -1,14 +1,10 @@
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
-import 'package:didcomm/src/annotations/own_json_properties.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-// part 'vdsp_data_response_message.g.dart';
-// part 'vdsp_data_response_message.own_json_props.g.dart';
+part 'vdsp_data_response_message.g.dart';
 
-// @OwnJsonProperties()
-// @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class VdspDataResponseMessage extends PlainTextMessage {
-  static final messageType = Uri.parse(
+  static final Uri messageType = Uri.parse(
     'https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response',
   );
 
@@ -18,38 +14,50 @@ class VdspDataResponseMessage extends PlainTextMessage {
     super.to,
     super.createdTime,
     super.expiresTime,
-    super.parentThreadId,
     super.threadId,
-    super.pleaseAcknowledge,
-    super.acknowledged,
-    super.attachments,
+    super.body = const {},
   }) : super(
           type: messageType,
-          body: {},
         );
 
-  factory VdspDataResponseMessage.fromJson(Map<String, dynamic> json) {
-    return VdspDataResponseMessage(
-      id: json['id'] as String,
-      from: json['from'] as String,
+  VdspDataResponseBody get response {
+    final payload = body;
+
+    if (payload == null) {
+      throw StateError('Message body is missing.');
+    }
+
+    return VdspDataResponseBody.fromJson(
+      Map<String, dynamic>.from(payload),
     );
   }
+}
 
-  // factory VdspDataResponseMessage.fromJson(Map<String, dynamic> json) {
-  //   final message = _$VdspDataResponseMessageFromJson(json)
-  //     ..assignCustomHeaders(
-  //       json,
-  //       _$ownJsonProperties,
-  //     );
+@JsonSerializable(includeIfNull: false, explicitToJson: true)
+class VdspDataResponseBody {
+  VdspDataResponseBody({
+    required this.operation,
+    required this.dataQueryLanguage,
+    required this.responseFormat,
+    required this.dataResponse,
+    this.comment,
+  });
 
-  //   return message;
-  // }
+  final String operation;
 
-  // @override
-  // Map<String, dynamic> toJson() => withCustomHeaders(
-  //       {
-  //         ...super.toJson(),
-  //         ..._$VdspDataResponseMessageToJson(this),
-  //       },
-  //     );
+  @JsonKey(name: 'data_query_lang')
+  final String dataQueryLanguage;
+
+  @JsonKey(name: 'response_format')
+  final String responseFormat;
+
+  @JsonKey(name: 'data_response')
+  final Map<String, dynamic> dataResponse;
+
+  final String? comment;
+
+  factory VdspDataResponseBody.fromJson(Map<String, dynamic> json) =>
+      _$VdspDataResponseBodyFromJson(json);
+
+  Map<String, dynamic> toJson() => _$VdspDataResponseBodyToJson(this);
 }
