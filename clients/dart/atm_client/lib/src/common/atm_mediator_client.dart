@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
+import 'package:uuid/uuid.dart';
 
 import '../common/client_options.dart';
 
@@ -77,6 +78,78 @@ class AtmMediatorClient extends MediatorClient {
     );
 
     return controllerSubscription;
+  }
+
+  Future<void> packAndSendMessage({
+    // TODO: move to constructor
+    required DidManager didManager,
+    // TODO: move to constructor
+    required ClientOptions clientOptions,
+    required PlainTextMessage message,
+    required String accessToken,
+  }) async {
+    if (message.to == null) {
+      throw ArgumentError.notNull('message.to');
+    }
+
+    if (message.to!.length > 1) {
+      throw UnsupportedError(
+        'Only one recipient is supported at this moment. Please update message.to header accordingly.',
+      );
+    }
+
+    final senderDidDocument = await didManager.getDidDocument();
+
+    final recipientDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(
+      message.to!.first,
+    );
+
+    final matchedKeyPairs =
+        senderDidDocument.matchKeysInKeyAgreement(otherDidDocuments: [
+      recipientDidDocument,
+    ]);
+
+    if (matchedKeyPairs.isEmpty) {
+      throw Exception('Can not find matching key pair type with the holder');
+    }
+
+    final verifierDidKeyId = matchedKeyPairs.first;
+
+    final packagedMessageForHolder =
+        await DidcommMessage.packIntoSignedAndEncryptedMessages(
+      message,
+      recipientDidDocuments: [recipientDidDocument],
+      keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+      encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+      keyPair: await didManager.getKeyPairByDidKeyId(verifierDidKeyId),
+      didKeyId: verifierDidKeyId,
+      signer: signer,
+    );
+
+    final forwardMessage = ForwardMessage(
+      id: const Uuid().v4(),
+      to: [mediatorDidDocument.id],
+      next: recipientDidDocument.id,
+      expiresTime: DateTime.now().toUtc().add(
+            clientOptions.messageExpiration,
+          ),
+      attachments: [
+        Attachment(
+          mediaType: 'application/json',
+          data: AttachmentData(
+            base64: base64UrlEncodeNoPadding(
+              packagedMessageForHolder.toJsonBytes(),
+            ),
+          ),
+        ),
+      ],
+    );
+
+    await sendMessage(
+      forwardMessage,
+      accessToken: accessToken,
+    );
   }
 
   Future<void> _handleSubscription({

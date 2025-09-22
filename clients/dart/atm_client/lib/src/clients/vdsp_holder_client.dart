@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
 import '../extensions/did_manager_extention.dart';
+import '../messages/vdsp/vdsp_data_response_message.dart';
+import '../messages/vdsp/vdsp_query_data_message.dart';
 import 'atm_base_client.dart';
 
 class VdspHolderClient extends AtmBaseClient {
@@ -15,14 +18,12 @@ class VdspHolderClient extends AtmBaseClient {
   });
 
   static Future<VdspHolderClient> init({
-    required DidPeerManager didManager,
-    String? verifierDid,
+    required DidManager didManager,
     ClientOptions clientOptions = const ClientOptions(),
   }) async {
-    final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
+    final [mediatorDidDocument] = await Future.wait(
       [
         clientOptions.mediatorDid,
-        if (verifierDid != null) verifierDid,
       ].map(UniversalDIDResolver.defaultResolver.resolveDid),
     );
 
@@ -31,31 +32,58 @@ class VdspHolderClient extends AtmBaseClient {
       clientOptions: clientOptions,
       mediatorClient: await didManager.getMediatorClient(
         mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [
-          atlasDidDocument,
-        ],
+        recipientDidDocuments: [],
       ),
     );
   }
 
-  Future<void> discloseFeatures({
+  Future<DiscloseMessage> discloseFeatures({
     required String verifierDid,
     required String accessToken,
   }) async {
-    throw UnimplementedError();
+    // TODO: replace with the right message type
+    final message = DiscloseMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [verifierDid],
+      body: DiscloseBody(disclosures: []),
+    );
+
+    await mediatorClient.packAndSendMessage(
+      didManager: didManager,
+      clientOptions: clientOptions,
+      message: message,
+      accessToken: accessToken,
+    );
+
+    return message;
   }
 
-  Future<void> shareData({
+  Future<VdspDataResponseMessage> shareData({
     required String verifierDid,
     required Object verifiablePresentation,
     required String accessToken,
   }) async {
-    throw UnimplementedError();
+    // TODO: replace with the right message type
+    final message = VdspDataResponseMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [verifierDid],
+    );
+
+    await mediatorClient.packAndSendMessage(
+      didManager: didManager,
+      clientOptions: clientOptions,
+      message: message,
+      accessToken: accessToken,
+    );
+
+    return message;
   }
 
   Future<StreamSubscription> listenForIncomingMessages({
     void Function(QueryMessage)? onQueryFeatures,
-    required void Function(PlainTextMessage) onDataRequest,
+    required void Function(VdspQueryDataMessage) onDataRequest,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function()? onDone,
@@ -69,6 +97,9 @@ class VdspHolderClient extends AtmBaseClient {
         final unpacked = await DidcommMessage.unpackToPlainTextMessage(
           message: message,
           recipientDidManager: didManager,
+          expectedMessageWrappingTypes: [
+            MessageWrappingType.authcryptSignPlaintext,
+          ],
         );
 
         final plainTextJson = unpacked.toJson();
@@ -83,9 +114,9 @@ class VdspHolderClient extends AtmBaseClient {
         }
 
         // TODO: replace with DataResponse message
-        if (unpacked.type == QueryMessage.messageType) {
+        if (unpacked.type == VdspQueryDataMessage.messageType) {
           onDataRequest(
-            QueryMessage.fromJson(plainTextJson),
+            VdspQueryDataMessage.fromJson(plainTextJson),
           );
 
           return;

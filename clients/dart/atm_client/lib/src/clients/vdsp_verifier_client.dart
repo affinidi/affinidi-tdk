@@ -7,6 +7,8 @@ import 'package:uuid/uuid.dart';
 import '../../atm_client.dart';
 import '../common/vdsp_ssi_alignment.dart';
 import '../extensions/did_manager_extention.dart';
+import '../messages/vdsp/vdsp_data_response_message.dart';
+import '../messages/vdsp/vdsp_query_data_message.dart';
 import 'atm_base_client.dart';
 
 class VdspVerifierClient extends AtmBaseClient {
@@ -17,14 +19,12 @@ class VdspVerifierClient extends AtmBaseClient {
   });
 
   static Future<VdspVerifierClient> init({
-    required DidPeerManager didManager,
-    String? holderDid,
+    required DidManager didManager,
     ClientOptions clientOptions = const ClientOptions(),
   }) async {
-    final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
+    final [mediatorDidDocument] = await Future.wait(
       [
         clientOptions.mediatorDid,
-        if (holderDid != null) holderDid,
       ].map(UniversalDIDResolver.defaultResolver.resolveDid),
     );
 
@@ -33,9 +33,7 @@ class VdspVerifierClient extends AtmBaseClient {
       clientOptions: clientOptions,
       mediatorClient: await didManager.getMediatorClient(
         mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [
-          atlasDidDocument,
-        ],
+        recipientDidDocuments: [],
       ),
     );
   }
@@ -47,37 +45,48 @@ class VdspVerifierClient extends AtmBaseClient {
   }) async {
     final queries = _buildDiscoverFeaturesQueries(operation: operation);
 
-    final queryMessage = QueryMessage(
+    final message = QueryMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [holderDid],
       body: QueryBody(queries: queries),
     );
 
-    await _sendMessage(
-      holderDid: holderDid,
-      accessToken: accessToken,
+    await mediatorClient.packAndSendMessage(
       didManager: didManager,
-      mediatorClient: mediatorClient,
       clientOptions: clientOptions,
-      message: queryMessage,
+      message: message,
+      accessToken: accessToken,
     );
 
-    return queryMessage;
+    return message;
   }
 
-  Future<void> queryHolderData({
+  Future<VdspQueryDataMessage> queryHolderData({
     required String holderDid,
     required Object holderFeatures,
     required Map<String, dynamic> dsql,
     required String accessToken,
   }) async {
-    throw UnimplementedError();
+    final message = VdspQueryDataMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [holderDid],
+    );
+
+    await mediatorClient.packAndSendMessage(
+      didManager: didManager,
+      clientOptions: clientOptions,
+      message: message,
+      accessToken: accessToken,
+    );
+
+    return message;
   }
 
   Future<StreamSubscription> listenForIncomingMessages({
     void Function(DiscloseMessage)? onDiscloseMessage,
-    required void Function(PlainTextMessage) onDataResponse,
+    required void Function(VdspDataResponseMessage) onDataResponse,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function()? onDone,
@@ -91,6 +100,9 @@ class VdspVerifierClient extends AtmBaseClient {
         final unpacked = await DidcommMessage.unpackToPlainTextMessage(
           message: message,
           recipientDidManager: didManager,
+          expectedMessageWrappingTypes: [
+            MessageWrappingType.authcryptSignPlaintext,
+          ],
         );
 
         final plainTextJson = unpacked.toJson();
@@ -104,10 +116,9 @@ class VdspVerifierClient extends AtmBaseClient {
           return;
         }
 
-        // TODO: replace with DataResponse message
-        if (unpacked.type == DiscloseMessage.messageType) {
+        if (unpacked.type == VdspDataResponseMessage.messageType) {
           onDataResponse(
-            DiscloseMessage.fromJson(plainTextJson),
+            VdspDataResponseMessage.fromJson(plainTextJson),
           );
 
           return;
@@ -163,66 +174,4 @@ List<Query> _buildDiscoverFeaturesQueries({
         match: operation,
       ),
   ];
-}
-
-Future<void> _sendMessage({
-  required String holderDid,
-  required String accessToken,
-  required DidManager didManager,
-  required MediatorClient mediatorClient,
-  required ClientOptions clientOptions,
-  required PlainTextMessage message,
-}) async {
-  final verifierDidDocument = await didManager.getDidDocument();
-
-  final holderDidDocument =
-      await UniversalDIDResolver.defaultResolver.resolveDid(
-    holderDid,
-  );
-
-  final matchedKeyPairs =
-      verifierDidDocument.matchKeysInKeyAgreement(otherDidDocuments: [
-    holderDidDocument,
-  ]);
-
-  if (matchedKeyPairs.isEmpty) {
-    throw Exception('Can not find matching key pair type with the holder');
-  }
-
-  final verifierDidKeyId = matchedKeyPairs.first;
-
-  final packagedMessageForHolder =
-      await DidcommMessage.packIntoSignedAndEncryptedMessages(
-    message,
-    recipientDidDocuments: [holderDidDocument],
-    keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-    encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-    keyPair: await didManager.getKeyPairByDidKeyId(verifierDidKeyId),
-    didKeyId: verifierDidKeyId,
-    signer: mediatorClient.signer,
-  );
-
-  final forwardMessage = ForwardMessage(
-    id: const Uuid().v4(),
-    to: [mediatorClient.mediatorDidDocument.id],
-    next: holderDidDocument.id,
-    expiresTime: DateTime.now().toUtc().add(
-          clientOptions.messageExpiration,
-        ),
-    attachments: [
-      Attachment(
-        mediaType: 'application/json',
-        data: AttachmentData(
-          base64: base64UrlEncodeNoPadding(
-            packagedMessageForHolder.toJsonBytes(),
-          ),
-        ),
-      ),
-    ],
-  );
-
-  await mediatorClient.sendMessage(
-    forwardMessage,
-    accessToken: accessToken,
-  );
 }
