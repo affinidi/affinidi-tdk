@@ -165,7 +165,7 @@ List<Query> _buildDiscoverFeaturesQueries({
   ];
 }
 
-Future<void> _sendMessage<T extends PlainTextMessage>({
+Future<void> _sendMessage({
   required String holderDid,
   required String accessToken,
   required DidManager didManager,
