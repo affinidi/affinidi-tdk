@@ -139,39 +139,39 @@ class VdspVerifierClient extends AtmBaseClient {
       accessToken: accessToken,
     );
   }
-}
 
-List<Query> _buildDiscoverFeaturesQueries({
-  String? operation,
-}) {
-  return <Query>[
-    Query(
-      featureType: 'protocol',
-      match: 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
-    ),
-    Query(
-      featureType: 'data_query_lang',
-      match: 'DCQL',
-    ),
-    for (final vcTypeId in supportedVcTypeIds)
+  List<Query> _buildDiscoverFeaturesQueries({
+    String? operation,
+  }) {
+    return <Query>[
       Query(
-        featureType: 'vc_type',
-        match: vcTypeId,
+        featureType: 'protocol',
+        match: 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
       ),
-    for (final suite in supportedDataIntegritySuites)
       Query(
-        featureType: 'data_integrity_proof_suite',
-        match: suite,
+        featureType: 'data_query_lang',
+        match: 'DCQL',
       ),
-    for (final alg in supportedJwsAlgs)
-      Query(
-        featureType: 'json_web_signature_algorithm',
-        match: alg,
-      ),
-    if (operation != null)
-      Query(
-        featureType: 'operation',
-        match: operation,
-      ),
-  ];
+      for (final vcTypeId in supportedVcTypeIds)
+        Query(
+          featureType: 'vc_type',
+          match: vcTypeId,
+        ),
+      for (final suite in supportedDataIntegritySuites)
+        Query(
+          featureType: 'data_integrity_proof_suite',
+          match: suite,
+        ),
+      for (final alg in supportedJwsAlgs)
+        Query(
+          featureType: 'json_web_signature_algorithm',
+          match: alg,
+        ),
+      if (operation != null)
+        Query(
+          featureType: 'operation',
+          match: operation,
+        ),
+    ];
+  }
 }
