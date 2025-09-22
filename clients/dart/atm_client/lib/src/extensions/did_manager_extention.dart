@@ -6,6 +6,7 @@ import '../common/atm_mediator_client.dart';
 extension DidManagerExtention on DidManager {
   Future<AtmMediatorClient> getMediatorClient({
     required DidDocument mediatorDidDocument,
+    // TODO: make it optional
     required List<DidDocument> recipientDidDocuments,
   }) async {
     final otherDidDocuments = [

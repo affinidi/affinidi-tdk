@@ -13,7 +13,7 @@ Future<void> main() async {
   final verifierKeyStore = InMemoryKeyStore();
   final verifierWallet = PersistentWallet(verifierKeyStore);
 
-  final verifierDidManager = DidPeerManager(
+  final verifierDidManager = DidKeyManager(
     wallet: verifierWallet,
     store: InMemoryDidStore(),
   );
@@ -33,12 +33,11 @@ Future<void> main() async {
   );
 
   await verifierDidManager.addVerificationMethod(verifierKeyId);
-  final verifierDid = (await verifierDidManager.getDidDocument()).id;
 
   final holderKeyStore = InMemoryKeyStore();
   final holderWallet = PersistentWallet(holderKeyStore);
 
-  final holderDidManager = DidPeerManager(
+  final holderDidManager = DidKeyManager(
     wallet: holderWallet,
     store: InMemoryDidStore(),
   );
@@ -94,19 +93,22 @@ Future<void> main() async {
 
   await verifierClient.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
-      final holderFeatures = message.body!['disclosedFeatures'] as Object;
+      prettyPrint(
+        'Verifier received Disclose Message',
+        object: message,
+      );
 
       await verifierClient.queryHolderData(
         holderDid: holderDid,
-        holderFeatures: holderFeatures,
+        holderFeatures: {},
         dsql: dsql,
         accessToken: verifierAuthTokens.accessToken,
       );
     },
     onDataResponse: (message) {
       prettyPrint(
-        'holder vcs',
-        object: message.body!['verifiable_presentation']['vcs'],
+        'Verifier received Data Response Message',
+        object: message,
       );
     },
     onProblemReport: (message) {
@@ -129,26 +131,36 @@ Future<void> main() async {
 
   await holderClient.listenForIncomingMessages(
     onQueryFeatures: (message) async {
+      prettyPrint(
+        'Holder received Feature Query Message',
+        object: message,
+      );
+
       // is trusted verifier
-      if (message.from == verifierDid) {
-        await holderClient.discloseFeatures(
-          verifierDid: message.from!,
-          accessToken: holderAuthTokens.accessToken,
-        );
-      }
+      // if (message.from == verifierDid) {
+      await holderClient.discloseFeatures(
+        verifierDid: message.from!,
+        accessToken: holderAuthTokens.accessToken,
+      );
+      // }
     },
     onDataRequest: (message) async {
+      prettyPrint(
+        'Holder received Data Request Message',
+        object: message,
+      );
+
       final vcs = []; // run message.body.dcql to filter vc
       final vp = {'vc': vcs, 'proof': 'xyz'};
 
       // is trusted verifier
-      if (message.from == verifierDid) {
-        await holderClient.shareData(
-          verifierDid: message.from!,
-          verifiablePresentation: vp,
-          accessToken: holderAuthTokens.accessToken,
-        );
-      }
+      // if (message.from == verifierDid) {
+      await holderClient.shareData(
+        verifierDid: message.from!,
+        verifiablePresentation: vp,
+        accessToken: holderAuthTokens.accessToken,
+      );
+      // }
     },
     onProblemReport: (message) {
       prettyPrint(
