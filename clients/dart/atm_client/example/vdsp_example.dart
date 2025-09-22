@@ -92,34 +92,26 @@ Future<void> main() async {
     accessToken: verifierAuthTokens.accessToken,
   );
 
-  final holderDiscloseFeaturesSubscription =
-      await verifierClient.listenForDiscloseFeatures(
+  await verifierClient.listenForIncomingMessages(
+    onDiscloseMessage: (message) async {
+      final holderFeatures = message.body!['disclosedFeatures'] as Object;
+
+      await verifierClient.queryHolderData(
+        holderDid: holderDid,
+        holderFeatures: holderFeatures,
+        dsql: dsql,
+        accessToken: verifierAuthTokens.accessToken,
+      );
+    },
+    onDataResponse: (message) {
+      prettyPrint(
+        'holder vcs',
+        object: message.body!['verifiable_presentation']['vcs'],
+      );
+    },
     accessToken: verifierAuthTokens.accessToken,
     refreshToken: verifierAuthTokens.refreshToken,
   );
-
-  holderDiscloseFeaturesSubscription.onData((message) async {
-    final holderFeatures = message.body!['disclosedFeatures'] as Object;
-
-    await verifierClient.queryHolderData(
-      holderDid: holderDid,
-      holderFeatures: holderFeatures,
-      dsql: dsql,
-      accessToken: verifierAuthTokens.accessToken,
-    );
-  });
-
-  final holderDataSubscription = await verifierClient.listenForDataResponses(
-    accessToken: verifierAuthTokens.accessToken,
-    refreshToken: verifierAuthTokens.refreshToken,
-  );
-
-  holderDataSubscription.onData((message) {
-    prettyPrint(
-      'holder vcs',
-      object: message.body!['verifiable_presentation']['vcs'],
-    );
-  });
 
   // holder
 
@@ -129,37 +121,30 @@ Future<void> main() async {
 
   final holderAuthTokens = await holderClient.authenticate();
 
-  final queryFutureSubscription = await holderClient.listenForQeuryFeatures(
+  await holderClient.listenForIncomingMessages(
+    onQueryFeatures: (message) async {
+      // is trusted verifier
+      if (message.from == verifierDid) {
+        await holderClient.discloseFeatures(
+          verifierDid: message.from!,
+          accessToken: holderAuthTokens.accessToken,
+        );
+      }
+    },
+    onDataRequest: (message) async {
+      final vcs = []; // run message.body.dcql to filter vc
+      final vp = {'vc': vcs, 'proof': 'xyz'};
+
+      // is trusted verifier
+      if (message.from == verifierDid) {
+        await holderClient.shareData(
+          verifierDid: message.from!,
+          verifiablePresentation: vp,
+          accessToken: holderAuthTokens.accessToken,
+        );
+      }
+    },
     accessToken: holderAuthTokens.accessToken,
     refreshToken: holderAuthTokens.refreshToken,
   );
-
-  queryFutureSubscription.onData((message) async {
-    // is trusted verifier
-    if (message.from == verifierDid) {
-      await holderClient.discloseFeatures(
-        verifierDid: message.from!,
-        accessToken: holderAuthTokens.accessToken,
-      );
-    }
-  });
-
-  final dataRequestSubscription = await holderClient.listenForDataRequests(
-    accessToken: holderAuthTokens.accessToken,
-    refreshToken: holderAuthTokens.refreshToken,
-  );
-
-  dataRequestSubscription.onData((message) async {
-    final vcs = []; // run message.body.dcql to filter vc
-    final vp = {'vc': vcs, 'proof': 'xyz'};
-
-    // is trusted verifier
-    if (message.from == verifierDid) {
-      await holderClient.shareData(
-        verifierDid: message.from!,
-        verifiablePresentation: vp,
-        accessToken: holderAuthTokens.accessToken,
-      );
-    }
-  });
 }

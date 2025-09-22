@@ -4,17 +4,13 @@ import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../atm_client.dart';
-import '../common/atm_mediator_client.dart';
+import 'atm_base_client.dart';
 
-class VdspHolderClient {
-  final ClientOptions clientOptions;
-  final AtmMediatorClient mediatorClient;
-  final DidManager didManager;
-
+class VdspHolderClient extends AtmBaseClient {
   VdspHolderClient({
-    required this.clientOptions,
-    required this.mediatorClient,
-    required this.didManager,
+    required super.didManager,
+    required super.mediatorClient,
+    super.clientOptions = const ClientOptions(),
   });
 
   static Future<VdspHolderClient> init({
@@ -30,13 +26,6 @@ class VdspHolderClient {
     throw UnimplementedError();
   }
 
-  Future<StreamSubscription<PlainTextMessage>> listenForQeuryFeatures({
-    String? accessToken,
-    String? refreshToken,
-  }) async {
-    throw UnimplementedError();
-  }
-
   Future<void> shareData({
     required String verifierDid,
     required Object verifiablePresentation,
@@ -45,18 +34,57 @@ class VdspHolderClient {
     throw UnimplementedError();
   }
 
-  Future<StreamSubscription<PlainTextMessage>> listenForDataRequests({
+  Future<StreamSubscription> listenForIncomingMessages({
+    void Function(QueryMessage)? onQueryFeatures,
+    required void Function(PlainTextMessage) onDataRequest,
+    void Function(ProblemReportMessage)? onProblemReportBody,
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
     String? accessToken,
+    // TODO: refresh connection
     String? refreshToken,
   }) async {
-    throw UnimplementedError();
-  }
+    return await mediatorClient.listenForIncomingMessagesAndFetchMissing(
+      (message) async {
+        final unpacked = await DidcommMessage.unpackToPlainTextMessage(
+          message: message,
+          recipientDidManager: didManager,
+        );
 
-  Future<AuthenticationTokens> authenticate({
-    EncryptionAlgorithm encryptionAlgorithm = EncryptionAlgorithm.a256cbc,
-  }) async {
-    return await mediatorClient.authenticate(
-      encryptionAlgorithm: encryptionAlgorithm,
+        final plainTextJson = unpacked.toJson();
+
+        if (onQueryFeatures != null &&
+            unpacked.type == QueryMessage.messageType) {
+          onQueryFeatures(
+            QueryMessage.fromJson(plainTextJson),
+          );
+
+          return;
+        }
+
+        // TODO: replace with DataResponse message
+        if (unpacked.type == QueryMessage.messageType) {
+          onDataRequest(
+            QueryMessage.fromJson(plainTextJson),
+          );
+
+          return;
+        }
+
+        if (onProblemReportBody != null &&
+            unpacked.type == ProblemReportMessage.messageType) {
+          onProblemReportBody(
+            ProblemReportMessage.fromJson(plainTextJson),
+          );
+
+          return;
+        }
+      },
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+      accessToken: accessToken,
     );
   }
 }

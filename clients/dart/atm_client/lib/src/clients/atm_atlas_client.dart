@@ -5,12 +5,12 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
-import '../common/atm_mediator_client.dart';
+import '../extensions/did_manager_extention.dart';
 
-class AtmAtlasClient extends AtmBaseClient {
+class AtmAtlasClient extends AtmServiceClient {
   AtmAtlasClient({
-    required super.mediatorClient,
     required super.didManager,
+    required super.mediatorClient,
     required super.atmServiceDidDocument,
     super.clientOptions = const ClientOptions(),
   });
@@ -19,66 +19,23 @@ class AtmAtlasClient extends AtmBaseClient {
     required DidManager didManager,
     ClientOptions clientOptions = const ClientOptions(),
   }) async {
-    final [mediatorDidDocument, atlasDidDocument] = await Future.wait([
-      UniversalDIDResolver.defaultResolver.resolveDid(
+    final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
+      [
         clientOptions.mediatorDid,
-      ),
-      UniversalDIDResolver.defaultResolver.resolveDid(
         clientOptions.atlasDid,
-      ),
-    ]);
-
-    final didDocument = await didManager.getDidDocument();
-    final signer = await didManager.getSigner(
-      didDocument.authentication.first.id,
-    );
-
-    final matchedDidKeyIds = didDocument.matchKeysInKeyAgreement(
-      otherDidDocuments: [
-        mediatorDidDocument,
-        atlasDidDocument,
-      ],
-    );
-
-    // TODO: improve error message to specify which key pair are supported by mediator/Atlas
-    if (matchedDidKeyIds.isEmpty) {
-      throw Exception(
-        'No matching keys found between our DID Document and mediator/Atlas',
-      );
-    }
-
-    final mediatorClient = AtmMediatorClient(
-      mediatorDidDocument: mediatorDidDocument,
-      keyPair: await didManager.getKeyPairByDidKeyId(
-        matchedDidKeyIds.first,
-      ),
-      didKeyId: matchedDidKeyIds.first,
-      signer: signer,
-      forwardMessageOptions: const ForwardMessageOptions(
-        shouldSign: true,
-        shouldEncrypt: true,
-        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-        encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-      ),
-      webSocketOptions: const WebSocketOptions(
-        statusRequestMessageOptions: StatusRequestMessageOptions(
-          shouldSend: true,
-          shouldSign: true,
-          shouldEncrypt: true,
-        ),
-        liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-          shouldSend: true,
-          shouldSign: true,
-          shouldEncrypt: true,
-        ),
-      ),
+      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
     );
 
     return AtmAtlasClient(
-      mediatorClient: mediatorClient,
       didManager: didManager,
       atmServiceDidDocument: atlasDidDocument,
       clientOptions: clientOptions,
+      mediatorClient: await didManager.getMediatorClient(
+        mediatorDidDocument: mediatorDidDocument,
+        recipientDidDocuments: [
+          atlasDidDocument,
+        ],
+      ),
     );
   }
 
@@ -97,7 +54,7 @@ class AtmAtlasClient extends AtmBaseClient {
       ).toJson(),
     );
 
-    final responseMessage = await sendMessage(
+    final responseMessage = await sendServiceMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -109,14 +66,6 @@ class AtmAtlasClient extends AtmBaseClient {
       createdTime: responseMessage.createdTime,
       expiresTime: responseMessage.expiresTime,
       body: responseMessage.body,
-    );
-  }
-
-  Future<AuthenticationTokens> authenticate({
-    EncryptionAlgorithm encryptionAlgorithm = EncryptionAlgorithm.a256cbc,
-  }) async {
-    return await mediatorClient.authenticate(
-      encryptionAlgorithm: encryptionAlgorithm,
     );
   }
 
@@ -132,7 +81,7 @@ class AtmAtlasClient extends AtmBaseClient {
       body: deploymentData?.toJson() ?? {},
     );
 
-    final responseMessage = await sendMessage(
+    final responseMessage = await sendServiceMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -162,7 +111,7 @@ class AtmAtlasClient extends AtmBaseClient {
       ).toJson(),
     );
 
-    final responseMessage = await sendMessage(
+    final responseMessage = await sendServiceMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -191,7 +140,7 @@ class AtmAtlasClient extends AtmBaseClient {
       ).toJson(),
     );
 
-    final responseMessage = await sendMessage(
+    final responseMessage = await sendServiceMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -219,7 +168,7 @@ class AtmAtlasClient extends AtmBaseClient {
       body: deploymentData.toJson(),
     );
 
-    final responseMessage = await sendMessage(
+    final responseMessage = await sendServiceMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -247,7 +196,7 @@ class AtmAtlasClient extends AtmBaseClient {
       body: configurationData.toJson(),
     );
 
-    final responseMessage = await sendMessage(
+    final responseMessage = await sendServiceMessage(
       requestMessage,
       accessToken: accessToken,
     );
@@ -280,7 +229,7 @@ class AtmAtlasClient extends AtmBaseClient {
       ).toJson(),
     );
 
-    final responseMessage = await sendMessage(
+    final responseMessage = await sendServiceMessage(
       requestMessage,
       accessToken: accessToken,
     );

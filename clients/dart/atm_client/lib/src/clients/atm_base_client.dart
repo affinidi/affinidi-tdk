@@ -1,34 +1,31 @@
-import 'dart:async';
-
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../atm_client.dart';
 import '../common/atm_mediator_client.dart';
-import '../common/client_options.dart';
 
 abstract class AtmBaseClient {
-  final ClientOptions clientOptions;
   final AtmMediatorClient mediatorClient;
   final DidManager didManager;
-  final DidDocument atmServiceDidDocument;
+  final ClientOptions clientOptions;
 
   AtmBaseClient({
-    required this.mediatorClient,
     required this.didManager,
-    required this.atmServiceDidDocument,
-    this.clientOptions = const ClientOptions(),
+    required this.clientOptions,
+    required this.mediatorClient,
   });
 
-  Future<PlainTextMessage> sendMessage(
+  Future<void> sendMessage(
     PlainTextMessage requestMessage, {
+    required DidDocument recipientDidDocument,
     required String accessToken,
   }) async {
-    final packagedMessageForAtmService =
+    final packagedMessage =
         await DidcommMessage.packIntoSignedAndEncryptedMessages(
       requestMessage,
       recipientDidDocuments: [
-        atmServiceDidDocument,
+        recipientDidDocument,
       ],
       keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
       encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
@@ -43,33 +40,31 @@ abstract class AtmBaseClient {
     final forwardMessage = ForwardMessage(
       id: const Uuid().v4(),
       to: [mediatorClient.mediatorDidDocument.id],
-      next: atmServiceDidDocument.id,
+      next: recipientDidDocument.id,
       expiresTime: expiresTime,
       attachments: [
         Attachment(
           mediaType: 'application/json',
           data: AttachmentData(
             base64: base64UrlEncodeNoPadding(
-              packagedMessageForAtmService.toJsonBytes(),
+              packagedMessage.toJsonBytes(),
             ),
           ),
         ),
       ],
     );
 
-    final responseMessageFuture = mediatorClient.waitForMessage(
-      threadId: requestMessage.id,
-      didManager: didManager,
-      accessToken: accessToken,
-      atmServiceDidDocument: atmServiceDidDocument,
-      clientOptions: clientOptions,
-    );
-
     await mediatorClient.sendMessage(
       forwardMessage,
       accessToken: accessToken,
     );
+  }
 
-    return await responseMessageFuture;
+  Future<AuthenticationTokens> authenticate({
+    EncryptionAlgorithm encryptionAlgorithm = EncryptionAlgorithm.a256cbc,
+  }) async {
+    return await mediatorClient.authenticate(
+      encryptionAlgorithm: encryptionAlgorithm,
+    );
   }
 }

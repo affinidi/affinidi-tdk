@@ -40,6 +40,45 @@ class AtmMediatorClient extends MediatorClient {
     return completer.future.timeout(clientOptions.requestTimeout);
   }
 
+  Future<StreamSubscription> listenForIncomingMessagesAndFetchMissing(
+    void Function(Map<String, dynamic>) onMessage, {
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
+    String? accessToken,
+  }) async {
+    final controller = StreamController<Map<String, dynamic>>();
+
+    final mediatorSubscription = await listenForIncomingMessages(
+      controller.add,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+      accessToken: accessToken,
+    );
+
+    controller.onPause = mediatorSubscription.pause;
+    controller.onResume = mediatorSubscription.resume;
+    controller.onCancel = mediatorSubscription.cancel;
+
+    final controllerSubscription = controller.stream.listen(onMessage);
+
+    // we need to return subscription ASAP so we fetch missing messages on background
+    unawaited(
+      fetchMessagesStartingFrom(
+        accessToken: accessToken,
+      ).then((messages) {
+        for (final message in messages) {
+          controller.add(message);
+        }
+      }).catchError((Object error) async {
+        controller.addError(error);
+      }),
+    );
+
+    return controllerSubscription;
+  }
+
   Future<void> _handleSubscription({
     required DidManager didManager,
     required String accessToken,
