@@ -53,14 +53,11 @@ class VdspVerifierClient {
       signer: mediatorClient.signer,
     );
 
-    final expiresTime =
-        DateTime.now().toUtc().add(clientOptions.messageExpiration);
-
     final forwardMessage = ForwardMessage(
       id: const Uuid().v4(),
       to: [mediatorClient.mediatorDidDocument.id],
       next: holderDidDocument.id,
-      expiresTime: expiresTime,
+      expiresTime: DateTime.now().toUtc().add(clientOptions.messageExpiration),
       attachments: [
         Attachment(
           mediaType: 'application/json',

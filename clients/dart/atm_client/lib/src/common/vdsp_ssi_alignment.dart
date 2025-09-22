@@ -1,3 +1,4 @@
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 final Map<SignatureScheme, List<String>> schemeToDataIntegritySuites = () {
@@ -31,16 +32,18 @@ final List<String> supportedJwsAlgs = (schemeToDataIntegritySuites.keys
 final List<String> supportedVcTypeIds =
     (ssiVcModelTypeToVcTypeId.values.toSet().toList())..sort();
 
-List<Map<String, String>> buildSupportedFeatureDisclosures() {
-  final entries = <Map<String, String>>[];
+List<Disclosure> buildSupportedFeatureDisclosures() {
+  final disclosures = <Disclosure>[];
   for (final id in supportedVcTypeIds) {
-    entries.add({'feature-type': 'vc_type', 'id': id});
+    disclosures.add(Disclosure(featureType: 'vc_type', id: id));
   }
   for (final id in supportedDataIntegritySuites) {
-    entries.add({'feature-type': 'data_integrity_proof_suite', 'id': id});
+    disclosures
+        .add(Disclosure(featureType: 'data_integrity_proof_suite', id: id));
   }
   for (final id in supportedJwsAlgs) {
-    entries.add({'feature-type': 'json_web_signature_algorithm', 'id': id});
+    disclosures
+        .add(Disclosure(featureType: 'json_web_signature_algorithm', id: id));
   }
-  return entries;
+  return disclosures;
 }
