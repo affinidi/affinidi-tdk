@@ -35,15 +35,12 @@ class VdspVerifierClient {
 
     final queries = _buildDiscoverFeaturesQueries(operation: operation);
 
-    final queryMessage = QueryMessage.fromJson({
-      'id': const Uuid().v4(),
-      'type': 'https://didcomm.org/discover-features/2.0/queries',
-      'from': mediatorClient.signer.did,
-      'to': [holderDidDocument.id],
-      'body': {
-        'queries': queries,
-      },
-    });
+    final queryMessage = QueryMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [holderDidDocument.id],
+      body: QueryBody(queries: queries),
+    );
 
     final packagedMessageForHolder =
         await DidcommMessage.packIntoSignedAndEncryptedMessages(
@@ -84,38 +81,38 @@ class VdspVerifierClient {
     return queryMessage;
   }
 
-  List<Map<String, String>> _buildDiscoverFeaturesQueries({
+  List<Query> _buildDiscoverFeaturesQueries({
     String? operation,
   }) {
-    return <Map<String, String>>[
-      {
-        'feature-type': 'protocol',
-        'match': 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
-      },
-      {
-        'feature-type': 'data_query_lang',
-        'id': 'DCQL',
-      },
+    return <Query>[
+      Query(
+        featureType: 'protocol',
+        match: 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
+      ),
+      Query(
+        featureType: 'data_query_lang',
+        match: 'DCQL',
+      ),
       for (final vcTypeId in supportedVcTypeIds)
-        {
-          'feature-type': 'vc_type',
-          'id': vcTypeId,
-        },
+        Query(
+          featureType: 'vc_type',
+          match: vcTypeId,
+        ),
       for (final suite in supportedDataIntegritySuites)
-        {
-          'feature-type': 'data_integrity_proof_suite',
-          'id': suite,
-        },
+        Query(
+          featureType: 'data_integrity_proof_suite',
+          match: suite,
+        ),
       for (final alg in supportedJwsAlgs)
-        {
-          'feature-type': 'json_web_signature_algorithm',
-          'id': alg,
-        },
+        Query(
+          featureType: 'json_web_signature_algorithm',
+          match: alg,
+        ),
       if (operation != null)
-        {
-          'feature-type': 'operation',
-          'id': operation,
-        },
+        Query(
+          featureType: 'operation',
+          match: operation,
+        ),
     ];
   }
 
