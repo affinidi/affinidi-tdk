@@ -61,7 +61,12 @@ class VdspHolderClient extends AtmBaseClient {
 
   Future<VdspDataResponseMessage> shareData({
     required String verifierDid,
-    required Object verifiablePresentation,
+    required String operation,
+    required Map<String, dynamic> dataResponse,
+    required String dataQueryLanguage,
+    String responseFormat = 'application/json',
+    String? comment,
+    String? threadId,
     required String accessToken,
   }) async {
     // TODO: replace with the right message type
@@ -69,6 +74,14 @@ class VdspHolderClient extends AtmBaseClient {
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [verifierDid],
+      body: VdspDataResponseBody(
+        operation: operation,
+        dataQueryLanguage: dataQueryLanguage,
+        responseFormat: responseFormat,
+        dataResponse: dataResponse,
+        comment: comment,
+      ).toJson(),
+      threadId: threadId,
     );
 
     await mediatorClient.packAndSendMessage(
@@ -116,7 +129,15 @@ class VdspHolderClient extends AtmBaseClient {
         // TODO: replace with DataResponse message
         if (unpacked.type == VdspQueryDataMessage.messageType) {
           onDataRequest(
-            VdspQueryDataMessage.fromJson(plainTextJson),
+            VdspQueryDataMessage(
+              id: unpacked.id,
+              from: unpacked.from,
+              to: unpacked.to,
+              createdTime: unpacked.createdTime,
+              expiresTime: unpacked.expiresTime,
+              body: unpacked.body,
+              threadId: unpacked.threadId,
+            ),
           );
 
           return;

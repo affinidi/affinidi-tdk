@@ -1,7 +1,9 @@
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_verifier_client.dart';
+import 'package:affinidi_tdk_atm_client/src/messages/vdsp/vdsp_query_data_message.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
 
@@ -100,8 +102,14 @@ Future<void> main() async {
 
       await verifierClient.queryHolderData(
         holderDid: holderDid,
-        holderFeatures: {},
-        dsql: dsql,
+        operation: 'registerAgent',
+        query: dsql,
+        dataQueryLanguage: 'DCQL',
+        responseFormat: 'application/json',
+        proofContext: VdspQueryDataProofContext(
+          challenge: const Uuid().v4(),
+          domain: 'verifier.example',
+        ),
         accessToken: verifierAuthTokens.accessToken,
       );
     },
@@ -150,14 +158,20 @@ Future<void> main() async {
         object: message,
       );
 
-      final vcs = []; // run message.body.dcql to filter vc
+      final requestBody = VdspQueryDataBody.fromJson(message.body!);
+
+      final vcs = <Map<String, dynamic>>[];
       final vp = {'vc': vcs, 'proof': 'xyz'};
 
       // is trusted verifier
       // if (message.from == verifierDid) {
       await holderClient.shareData(
         verifierDid: message.from!,
-        verifiablePresentation: vp,
+        operation: requestBody.operation,
+        dataResponse: vp,
+        dataQueryLanguage: requestBody.dataQueryLanguage,
+        responseFormat: requestBody.responseFormat,
+        threadId: message.threadId ?? message.id,
         accessToken: holderAuthTokens.accessToken,
       );
       // }
