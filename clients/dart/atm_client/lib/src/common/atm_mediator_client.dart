@@ -116,15 +116,13 @@ class AtmMediatorClient extends MediatorClient {
 
     final verifierDidKeyId = matchedKeyPairs.first;
 
-    final packagedMessageForHolder =
-        await DidcommMessage.packIntoSignedAndEncryptedMessages(
+    final packedForHolder = await DidcommMessage.packIntoEncryptedMessage(
       message,
       recipientDidDocuments: [recipientDidDocument],
       keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
       encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
       keyPair: await didManager.getKeyPairByDidKeyId(verifierDidKeyId),
       didKeyId: verifierDidKeyId,
-      signer: signer,
     );
 
     final forwardMessage = ForwardMessage(
@@ -139,7 +137,7 @@ class AtmMediatorClient extends MediatorClient {
           mediaType: 'application/json',
           data: AttachmentData(
             base64: base64UrlEncodeNoPadding(
-              packagedMessageForHolder.toJsonBytes(),
+              packedForHolder.toJsonBytes(),
             ),
           ),
         ),

@@ -111,7 +111,9 @@ class VdspHolderClient extends AtmBaseClient {
           message: message,
           recipientDidManager: didManager,
           expectedMessageWrappingTypes: [
+            MessageWrappingType.authcryptPlaintext,
             MessageWrappingType.authcryptSignPlaintext,
+            MessageWrappingType.anoncryptAuthcryptPlaintext,
           ],
         );
 
