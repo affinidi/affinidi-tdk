@@ -138,7 +138,7 @@ Future<void> main() async {
   final holderAuthTokens = await holderClient.authenticate();
 
   await holderClient.listenForIncomingMessages(
-    onQueryFeatures: (message) async {
+    onFeatureQuery: (message) async {
       prettyPrint(
         'Holder received Feature Query Message',
         object: message,
@@ -146,8 +146,8 @@ Future<void> main() async {
 
       // is trusted verifier
       // if (message.from == verifierDid) {
-      await holderClient.discloseFeatures(
-        verifierDid: message.from!,
+      await holderClient.disclose(
+        queryMessage: message,
         accessToken: holderAuthTokens.accessToken,
       );
       // }

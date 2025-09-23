@@ -5,6 +5,7 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
+import '../common/vdsp_ssi_alignment.dart';
 import '../extensions/did_manager_extention.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
@@ -37,16 +38,34 @@ class VdspHolderClient extends AtmBaseClient {
     );
   }
 
-  Future<DiscloseMessage> discloseFeatures({
-    required String verifierDid,
+  Future<DiscloseMessage> disclose({
+    required QueryMessage queryMessage,
     required String accessToken,
   }) async {
-    // TODO: replace with the right message type
+    final senderDid = queryMessage.from;
+
+    if (senderDid == null) {
+      throw StateError('Query message is missing sender.');
+    }
+
+    final rawBody = queryMessage.body;
+
+    if (rawBody == null) {
+      throw StateError('Query message body is missing.');
+    }
+
+    final queryBody = QueryBody.fromJson(
+      Map<String, dynamic>.from(rawBody),
+    );
+
+    final disclosures = matchSupportedDisclosuresToQueries(queryBody.queries);
+
     final message = DiscloseMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [verifierDid],
-      body: DiscloseBody(disclosures: []),
+      to: [senderDid],
+      threadId: queryMessage.threadId ?? queryMessage.id,
+      body: DiscloseBody(disclosures: disclosures),
     );
 
     await mediatorClient.packAndSendMessage(
@@ -95,7 +114,7 @@ class VdspHolderClient extends AtmBaseClient {
   }
 
   Future<StreamSubscription> listenForIncomingMessages({
-    void Function(QueryMessage)? onQueryFeatures,
+    void Function(QueryMessage)? onFeatureQuery,
     required void Function(VdspQueryDataMessage) onDataRequest,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
@@ -119,9 +138,9 @@ class VdspHolderClient extends AtmBaseClient {
 
         final plainTextJson = unpacked.toJson();
 
-        if (onQueryFeatures != null &&
+        if (onFeatureQuery != null &&
             unpacked.type == QueryMessage.messageType) {
-          onQueryFeatures(
+          onFeatureQuery(
             QueryMessage.fromJson(plainTextJson),
           );
 
