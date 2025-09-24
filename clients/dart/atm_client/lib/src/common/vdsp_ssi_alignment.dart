@@ -69,11 +69,10 @@ final Map<String, List<Disclosure>> _supportedFeatureDisclosuresByType = {
   'json_web_signature_algorithm': _supportedJwsDisclosures,
 };
 
-List<Disclosure> matchSupportedDisclosuresToQueries(
+Set<Disclosure> matchSupportedDisclosuresToQueries(
   Iterable<Query> queries,
 ) {
-  final matched = <Disclosure>[];
-  final seen = <String>{};
+  final matched = <Disclosure>{};
 
   for (final query in queries) {
     final supported = _supportedFeatureDisclosuresByType[query.featureType];
@@ -81,20 +80,18 @@ List<Disclosure> matchSupportedDisclosuresToQueries(
       continue;
     }
 
-    final requestedId = query.match.trim();
-    if (requestedId.isEmpty) {
-      continue;
+    final requestedId = query.match;
+
+    Disclosure? matchedDisclosure;
+    for (final disclosure in supported) {
+      if (disclosure.id == requestedId) {
+        matchedDisclosure = disclosure;
+        break;
+      }
     }
 
-    for (final disclosure in supported) {
-      if (disclosure.id != requestedId) {
-        continue;
-      }
-
-      final key = '${disclosure.featureType}:${disclosure.id}';
-      if (seen.add(key)) {
-        matched.add(disclosure);
-      }
+    if (matchedDisclosure != null) {
+      matched.add(matchedDisclosure);
     }
   }
 

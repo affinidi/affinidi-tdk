@@ -42,10 +42,10 @@ class VdspHolderClient extends AtmBaseClient {
     required QueryMessage queryMessage,
     required String accessToken,
   }) async {
-    final senderDid = queryMessage.from;
+    final verifierDid = queryMessage.from;
 
-    if (senderDid == null) {
-      throw StateError('Query message is missing sender.');
+    if (verifierDid == null) {
+      throw StateError('Query message is missing verifier.');
     }
 
     final rawBody = queryMessage.body;
@@ -63,9 +63,9 @@ class VdspHolderClient extends AtmBaseClient {
     final message = DiscloseMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [senderDid],
+      to: [verifierDid],
       threadId: queryMessage.threadId ?? queryMessage.id,
-      body: DiscloseBody(disclosures: disclosures),
+      body: DiscloseBody(disclosures: disclosures.toList()),
     );
 
     await mediatorClient.packAndSendMessage(
