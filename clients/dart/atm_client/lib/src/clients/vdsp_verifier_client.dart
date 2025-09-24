@@ -168,7 +168,7 @@ class VdspVerifierClient extends AtmBaseClient {
     return <Query>[
       Query(
         featureType: 'protocol',
-        match: 'https://affinidi.com/didcomm/protocols/vdsp/1.*',
+        match: 'https://affinidi.com/didcomm/protocols/vdsp/1.0',
       ),
       Query(
         featureType: 'data_query_lang',
