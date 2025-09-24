@@ -1,5 +1,5 @@
 name: affinidi_tdk_mediator_client
-description: A sample command-line application.
+description: Affinidi TDK dart client for Affinidi MEDIATOR package provides libraries and tools to create a mediator service that handles and routes signed abd encrypted messages sent between participants (e.g., users, organisations, another mediator, or even AI agents).
 version: 1.0.0
 homepage: https://github.com/affinidi/affinidi-tdk
 

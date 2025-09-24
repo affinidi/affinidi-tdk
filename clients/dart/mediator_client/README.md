@@ -1,5 +1,7 @@
 # Affinidi TDK - Dart Mediator Client
 
+Affinidi TDK dart client for Affinidi MEDIATOR package provides libraries and tools to create a mediator service that handles and routes signed and encrypted messages sent between participants (e.g., users, organisations, another mediator, or even AI agents).
+
 ## Requirements
 
 - Dart SDK version >=2.18.0 <4.0.0
