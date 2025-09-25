@@ -8,11 +8,11 @@ part of 'vdsp_query_data_message.dart';
 
 VdspQueryDataBody _$VdspQueryDataBodyFromJson(Map<String, dynamic> json) =>
     VdspQueryDataBody(
-      operation: json['operation'] as String?,
       dataQueryLanguage:
           $enumDecode(_$DataQueryLanguageEnumMap, json['data_query_lang']),
       responseFormat: json['response_format'] as String,
       query: json['query'] as Map<String, dynamic>,
+      operation: json['operation'] as String?,
       comment: json['comment'] as String?,
       proofContext: json['proof_context'] == null
           ? null
