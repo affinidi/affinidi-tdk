@@ -5,7 +5,6 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
-import '../common/feature_discovery_helper.dart';
 import '../extensions/did_manager_extention.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
@@ -41,18 +40,16 @@ class VdspVerifierClient extends AtmBaseClient {
 
   Future<QueryMessage> queryHolderFeatures({
     required String holderDid,
+    required List<Query> featureQueries,
     required String accessToken,
-    String? operation,
   }) async {
-    final queries = FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-      FeatureDiscoveryHelper.expectedFeatureDisclosuresOfHolder,
-    );
-
     final message = QueryMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [holderDid],
-      body: QueryBody(queries: queries),
+      body: QueryBody(
+        queries: featureQueries,
+      ),
     );
 
     await mediatorClient.packAndSendMessage(

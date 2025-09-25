@@ -13,14 +13,18 @@ import '../models/constants/data_query_language.dart';
 import 'atm_base_client.dart';
 
 class VdspHolderClient extends AtmBaseClient {
+  final List<Disclosure> featureDisclosures;
+
   VdspHolderClient({
     required super.didManager,
     required super.mediatorClient,
+    required this.featureDisclosures,
     super.clientOptions = const ClientOptions(),
   });
 
   static Future<VdspHolderClient> init({
     required DidManager didManager,
+    required List<Disclosure> featureDisclosures,
     ClientOptions clientOptions = const ClientOptions(),
   }) async {
     final [mediatorDidDocument] = await Future.wait(
@@ -31,6 +35,7 @@ class VdspHolderClient extends AtmBaseClient {
 
     return VdspHolderClient(
       didManager: didManager,
+      featureDisclosures: featureDisclosures,
       clientOptions: clientOptions,
       mediatorClient: await didManager.getMediatorClient(
         mediatorDidDocument: mediatorDidDocument,
@@ -38,9 +43,6 @@ class VdspHolderClient extends AtmBaseClient {
       ),
     );
   }
-
-  static List<Disclosure> get featureDisclosures =>
-      FeatureDiscoveryHelper.expectedFeatureDisclosuresOfHolder;
 
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,

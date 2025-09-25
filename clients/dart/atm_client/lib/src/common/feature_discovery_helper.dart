@@ -18,7 +18,7 @@ class FeatureDiscoveryHelper {
       )
       .toList();
 
-  static final List<Disclosure> expectedFeatureDisclosuresOfHolder =
+  static final List<Disclosure> defaultFeatureDisclosuresOfHolder =
       FeatureDiscoveryHelper.vdspFeatureDisclosures
           .map(
             (disclosure) => Disclosure(
@@ -62,7 +62,7 @@ class FeatureDiscoveryHelper {
   }) =>
       expectedFeatureDisclosures
           .where(
-            (expectedDisclosure) => actualFeatureDisclosures.any(
+            (expectedDisclosure) => !actualFeatureDisclosures.any(
               (actualDisclosure) =>
                   actualDisclosure.featureType ==
                       expectedDisclosure.featureType &&
