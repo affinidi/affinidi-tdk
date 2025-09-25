@@ -1,5 +1,6 @@
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_verifier_client.dart';
+import 'package:affinidi_tdk_atm_client/src/common/feature_discovery_helper.dart';
 import 'package:affinidi_tdk_atm_client/src/messages/vdsp/vdsp_query_data_message.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
@@ -59,7 +60,6 @@ Future<void> main() async {
   );
 
   await holderDidManager.addVerificationMethod(holderKeyId);
-  final holderDid = (await holderDidManager.getDidDocument()).id;
 
   const dsql = {
     'credentials': [
@@ -89,7 +89,7 @@ Future<void> main() async {
   final verifierAuthTokens = await verifierClient.authenticate();
 
   await verifierClient.queryHolderFeatures(
-    holderDid: holderDid,
+    holderDid: (await holderDidManager.getDidDocument()).id,
     accessToken: verifierAuthTokens.accessToken,
   );
 
@@ -100,12 +100,31 @@ Future<void> main() async {
         object: message,
       );
 
+      if (message.from == null) {
+        throw ArgumentError.notNull('from');
+      }
+
+      if (message.body == null) {
+        throw ArgumentError.notNull('body');
+      }
+
+      final holderDid = message.from!;
+      final body = DiscloseBody.fromJson(message.body!);
+
+      final unsupportedFeatureDisclosures =
+          FeatureDiscoveryHelper.getUnsupportedFeatures(
+        expectedFeatureDisclosures:
+            FeatureDiscoveryHelper.expectedFeatureDisclosuresOfHolder,
+        actualFeatureDisclosures: body.disclosures,
+      );
+
+      if (unsupportedFeatureDisclosures.isNotEmpty) {
+        throw Exception('Unsupported holder');
+      }
+
       await verifierClient.queryHolderData(
         holderDid: holderDid,
-        operation: 'registerAgent',
         query: dsql,
-        dataQueryLanguage: 'DCQL',
-        responseFormat: 'application/json',
         proofContext: VdspQueryDataProofContext(
           challenge: const Uuid().v4(),
           domain: 'verifier.example',
@@ -169,9 +188,8 @@ Future<void> main() async {
         verifierDid: message.from!,
         operation: requestBody.operation,
         dataResponse: vp,
-        dataQueryLanguage: requestBody.dataQueryLanguage,
         responseFormat: requestBody.responseFormat,
-        threadId: message.threadId ?? message.id,
+        threadId: message.threadId,
         accessToken: holderAuthTokens.accessToken,
       );
       // }

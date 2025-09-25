@@ -5,10 +5,11 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../atm_client.dart';
-import '../common/vdsp_ssi_alignment.dart';
+import '../common/feature_discovery_helper.dart';
 import '../extensions/did_manager_extention.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
+import '../models/constants/data_query_language.dart';
 import 'atm_base_client.dart';
 
 class VdspHolderClient extends AtmBaseClient {
@@ -38,6 +39,9 @@ class VdspHolderClient extends AtmBaseClient {
     );
   }
 
+  static List<Disclosure> get featureDisclosures =>
+      FeatureDiscoveryHelper.expectedFeatureDisclosuresOfHolder;
+
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,
     required String accessToken,
@@ -58,14 +62,17 @@ class VdspHolderClient extends AtmBaseClient {
       Map<String, dynamic>.from(rawBody),
     );
 
-    final disclosures = matchSupportedDisclosuresToQueries(queryBody.queries);
-
     final message = DiscloseMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [verifierDid],
       threadId: queryMessage.threadId ?? queryMessage.id,
-      body: DiscloseBody(disclosures: disclosures.toList()),
+      body: DiscloseBody(
+        disclosures: FeatureDiscoveryHelper.getSupportedFeatures(
+          featureDisclosures,
+          queryBody.queries,
+        ),
+      ),
     );
 
     await mediatorClient.packAndSendMessage(
@@ -80,10 +87,10 @@ class VdspHolderClient extends AtmBaseClient {
 
   Future<VdspDataResponseMessage> shareData({
     required String verifierDid,
-    required String operation,
     required Map<String, dynamic> dataResponse,
-    required String dataQueryLanguage,
+    DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
     String responseFormat = 'application/json',
+    String? operation,
     String? comment,
     String? threadId,
     required String accessToken,
