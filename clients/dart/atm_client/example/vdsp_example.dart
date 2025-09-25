@@ -210,19 +210,14 @@ Future<void> main() async {
         object: message,
       );
 
-      final requestBody = VdspQueryDataBody.fromJson(message.body!);
-
       final vcs = <Map<String, dynamic>>[];
       final vp = {'vc': vcs, 'proof': 'xyz'};
 
       // is trusted verifier
       // if (message.from == verifierDid) {
       await holderClient.shareData(
-        verifierDid: message.from!,
-        operation: requestBody.operation,
+        requestMessage: message,
         dataResponse: vp,
-        responseFormat: requestBody.responseFormat,
-        threadId: message.threadId,
         accessToken: holderAuthTokens.accessToken,
       );
       // }

@@ -88,38 +88,46 @@ class VdspHolderClient extends AtmBaseClient {
   }
 
   Future<VdspDataResponseMessage> shareData({
-    required String verifierDid,
+    required VdspQueryDataMessage requestMessage,
     required Map<String, dynamic> dataResponse,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
-    String responseFormat = 'application/json',
     String? operation,
     String? comment,
-    String? threadId,
     required String accessToken,
   }) async {
-    // TODO: replace with the right message type
-    final message = VdspDataResponseMessage(
+    if (requestMessage.from == null) {
+      throw ArgumentError.notNull('message.from');
+    }
+
+    if (requestMessage.body == null) {
+      throw ArgumentError.notNull('message.body');
+    }
+
+    final verifierDid = requestMessage.from!;
+    final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
+
+    final responseMessage = VdspDataResponseMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [verifierDid],
       body: VdspDataResponseBody(
         operation: operation,
         dataQueryLanguage: dataQueryLanguage,
-        responseFormat: responseFormat,
+        responseFormat: requestBody.responseFormat,
         dataResponse: dataResponse,
         comment: comment,
       ).toJson(),
-      threadId: threadId,
+      threadId: requestMessage.threadId,
     );
 
     await mediatorClient.packAndSendMessage(
       didManager: didManager,
       clientOptions: clientOptions,
-      message: message,
+      message: responseMessage,
       accessToken: accessToken,
     );
 
-    return message;
+    return responseMessage;
   }
 
   Future<StreamSubscription> listenForIncomingMessages({
