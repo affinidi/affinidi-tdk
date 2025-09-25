@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_verifier_client.dart';
+import 'package:affinidi_tdk_atm_client/src/common/feature_discovery_helper.dart';
 import 'package:affinidi_tdk_atm_client/src/messages/vdsp/vdsp_query_data_message.dart';
+import 'package:affinidi_tdk_atm_client/src/models/constants/feature_type.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
@@ -59,7 +63,6 @@ Future<void> main() async {
   );
 
   await holderDidManager.addVerificationMethod(holderKeyId);
-  final holderDid = (await holderDidManager.getDidDocument()).id;
 
   const dsql = {
     'credentials': [
@@ -88,8 +91,19 @@ Future<void> main() async {
 
   final verifierAuthTokens = await verifierClient.authenticate();
 
+  final featureQueries = [
+    ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+      FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+    ),
+    Query(
+      featureType: FeatureType.operation.value,
+      match: 'registerAgent',
+    ),
+  ];
+
   await verifierClient.queryHolderFeatures(
-    holderDid: holderDid,
+    holderDid: (await holderDidManager.getDidDocument()).id,
+    featureQueries: featureQueries,
     accessToken: verifierAuthTokens.accessToken,
   );
 
@@ -100,12 +114,41 @@ Future<void> main() async {
         object: message,
       );
 
+      if (message.from == null) {
+        throw ArgumentError.notNull('from');
+      }
+
+      if (message.body == null) {
+        throw ArgumentError.notNull('body');
+      }
+
+      final holderDid = message.from!;
+      final body = DiscloseBody.fromJson(message.body!);
+
+      final expectedFeatures = [
+        ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+        Disclosure(
+          featureType: FeatureType.operation.value,
+          id: 'registerAgent',
+        ),
+      ];
+
+      final unsupportedFeatureDisclosures =
+          FeatureDiscoveryHelper.getUnsupportedFeatures(
+        expectedFeatureDisclosures: expectedFeatures,
+        actualFeatureDisclosures: body.disclosures,
+      );
+
+      if (unsupportedFeatureDisclosures.isNotEmpty) {
+        throw UnsupportedError(
+          'Unsupported features: ${jsonEncode(unsupportedFeatureDisclosures)}',
+        );
+      }
+
       await verifierClient.queryHolderData(
         holderDid: holderDid,
-        operation: 'registerAgent',
         query: dsql,
-        dataQueryLanguage: 'DCQL',
-        responseFormat: 'application/json',
+        operation: 'registerAgent',
         proofContext: VdspQueryDataProofContext(
           challenge: const Uuid().v4(),
           domain: 'verifier.example',
@@ -113,11 +156,13 @@ Future<void> main() async {
         accessToken: verifierAuthTokens.accessToken,
       );
     },
-    onDataResponse: (message) {
+    onDataResponse: (message) async {
       prettyPrint(
         'Verifier received Data Response Message',
         object: message,
       );
+
+      await verifierClient.mediatorClient.disconnect();
     },
     onProblemReport: (message) {
       prettyPrint(
@@ -133,6 +178,13 @@ Future<void> main() async {
 
   final holderClient = await VdspHolderClient.init(
     didManager: holderDidManager,
+    featureDisclosures: [
+      ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+      Disclosure(
+        featureType: FeatureType.operation.value,
+        id: 'registerAgent',
+      ),
+    ],
   );
 
   final holderAuthTokens = await holderClient.authenticate();
@@ -158,23 +210,19 @@ Future<void> main() async {
         object: message,
       );
 
-      final requestBody = VdspQueryDataBody.fromJson(message.body!);
-
       final vcs = <Map<String, dynamic>>[];
       final vp = {'vc': vcs, 'proof': 'xyz'};
 
       // is trusted verifier
       // if (message.from == verifierDid) {
       await holderClient.shareData(
-        verifierDid: message.from!,
-        operation: requestBody.operation,
+        requestMessage: message,
         dataResponse: vp,
-        dataQueryLanguage: requestBody.dataQueryLanguage,
-        responseFormat: requestBody.responseFormat,
-        threadId: message.threadId ?? message.id,
         accessToken: holderAuthTokens.accessToken,
       );
       // }
+
+      await holderClient.mediatorClient.disconnect();
     },
     onProblemReport: (message) {
       prettyPrint(

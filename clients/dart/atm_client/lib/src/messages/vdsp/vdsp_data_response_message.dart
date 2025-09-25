@@ -1,6 +1,8 @@
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../models/constants/data_query_language.dart';
+
 part 'vdsp_data_response_message.g.dart';
 
 class VdspDataResponseMessage extends PlainTextMessage {
@@ -36,17 +38,17 @@ class VdspDataResponseMessage extends PlainTextMessage {
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class VdspDataResponseBody {
   VdspDataResponseBody({
-    required this.operation,
-    required this.dataQueryLanguage,
+    this.dataQueryLanguage = DataQueryLanguage.dcql,
     required this.responseFormat,
     required this.dataResponse,
+    this.operation,
     this.comment,
   });
 
-  final String operation;
+  final String? operation;
 
   @JsonKey(name: 'data_query_lang')
-  final String dataQueryLanguage;
+  final DataQueryLanguage dataQueryLanguage;
 
   @JsonKey(name: 'response_format')
   final String responseFormat;
