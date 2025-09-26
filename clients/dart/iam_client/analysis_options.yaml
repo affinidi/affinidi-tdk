@@ -8,3 +8,4 @@ analyzer:
   errors:
     deprecated_member_use_from_same_package: ignore
     unused_import: ignore
+    unused_local_variable: ignore
