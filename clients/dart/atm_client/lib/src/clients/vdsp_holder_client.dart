@@ -14,6 +14,7 @@ import 'atm_base_client.dart';
 
 class VdspHolderClient extends AtmBaseClient {
   final List<Disclosure> featureDisclosures;
+  VdspFeatureSelection? _featureSelectionCache;
 
   VdspHolderClient({
     required super.didManager,
@@ -21,6 +22,33 @@ class VdspHolderClient extends AtmBaseClient {
     required this.featureDisclosures,
     super.clientOptions = const ClientOptions(),
   });
+
+  VdspFeatureSelection? get selectedFeatures => _featureSelectionCache;
+
+  VdspFeatureSelection negotiateDisclose(DiscloseMessage discloseMessage) {
+    final result = FeatureDiscoveryHelper.negotiateFeatures(
+      discloseMessage: discloseMessage,
+      holderSupportedDisclosures: featureDisclosures,
+    );
+    _featureSelectionCache = result;
+    return result;
+  }
+
+  void _handleDiscloseByDefault(
+    VdspFeatureSelection selected,
+  ) {
+    if (selected.protocol == null) {
+      throw UnsupportedError(
+        'No mutually supported protocol found in default handler',
+      );
+    }
+
+    if (selected.dataQueryLanguage == null) {
+      throw UnsupportedError(
+        'No mutually supported data query language found in default handler',
+      );
+    }
+  }
 
   static Future<VdspHolderClient> init({
     required DidManager didManager,
@@ -132,6 +160,7 @@ class VdspHolderClient extends AtmBaseClient {
 
   Future<StreamSubscription> listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
+    void Function(DiscloseMessage)? onDiscloseMessage,
     required void Function(VdspQueryDataMessage) onDataRequest,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
@@ -160,6 +189,19 @@ class VdspHolderClient extends AtmBaseClient {
           onFeatureQuery(
             QueryMessage.fromJson(plainTextJson),
           );
+
+          return;
+        }
+
+        if (unpacked.type == DiscloseMessage.messageType) {
+          final discloseMessage = DiscloseMessage.fromJson(plainTextJson);
+          final selection = negotiateDisclose(discloseMessage);
+
+          if (onDiscloseMessage != null) {
+            onDiscloseMessage(discloseMessage);
+          } else {
+            _handleDiscloseByDefault(selection);
+          }
 
           return;
         }
