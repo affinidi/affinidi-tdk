@@ -27,6 +27,7 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/filter.dar
 import 'package:affinidi_tdk_credential_verification_client/src/model/filter_const.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/filter_items.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/format.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/holder_subject.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/input_descriptor.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/invalid_parameter_error.dart';
@@ -43,10 +44,17 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/validate_j
 import 'package:affinidi_tdk_credential_verification_client/src/model/validate_jwt_output.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_output.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_v2_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output_errors.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_schema.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_subject.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_holder.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context_one_of_inner.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
 
 part 'serializers.g.dart';
@@ -65,6 +73,7 @@ part 'serializers.g.dart';
   FilterConst,
   FilterItems,
   Format,
+  FreeFormObject,
   HolderSubject,
   InputDescriptor,
   InvalidParameterError,
@@ -81,18 +90,25 @@ part 'serializers.g.dart';
   ValidateJwtOutput,
   VerifyCredentialInput,
   VerifyCredentialOutput,
-  VerifyCredentialV2Input,
   VerifyPresentationInput,
   VerifyPresentationOutput,
+  VerifyPresentationOutputErrors,
+  W3cCredential,
+  W3cCredentialCredentialSchema,
+  W3cCredentialCredentialSubject,
+  W3cCredentialHolder,
   W3cCredentialStatus,
+  W3cPresentation,
+  W3cPresentationContext,
+  W3cPresentationContextOneOfInner,
   W3cProof,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

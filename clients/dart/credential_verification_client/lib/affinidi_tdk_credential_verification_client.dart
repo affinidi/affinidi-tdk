@@ -25,6 +25,7 @@ export 'package:affinidi_tdk_credential_verification_client/src/model/filter.dar
 export 'package:affinidi_tdk_credential_verification_client/src/model/filter_const.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/filter_items.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/format.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/holder_subject.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/input_descriptor.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/invalid_parameter_error.dart';
@@ -41,9 +42,15 @@ export 'package:affinidi_tdk_credential_verification_client/src/model/validate_j
 export 'package:affinidi_tdk_credential_verification_client/src/model/validate_jwt_output.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_output.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_v2_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output_errors.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_schema.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_credential_subject.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_holder.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation_context_one_of_inner.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
-

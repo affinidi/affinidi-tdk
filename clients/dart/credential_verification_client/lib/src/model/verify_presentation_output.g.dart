@@ -8,7 +8,7 @@ part of 'verify_presentation_output.dart';
 
 class _$VerifyPresentationOutput extends VerifyPresentationOutput {
   @override
-  final BuiltList<String> errors;
+  final VerifyPresentationOutputErrors errors;
   @override
   final bool isValid;
 
@@ -58,9 +58,11 @@ class VerifyPresentationOutputBuilder
         Builder<VerifyPresentationOutput, VerifyPresentationOutputBuilder> {
   _$VerifyPresentationOutput? _$v;
 
-  ListBuilder<String>? _errors;
-  ListBuilder<String> get errors => _$this._errors ??= ListBuilder<String>();
-  set errors(ListBuilder<String>? errors) => _$this._errors = errors;
+  VerifyPresentationOutputErrorsBuilder? _errors;
+  VerifyPresentationOutputErrorsBuilder get errors =>
+      _$this._errors ??= VerifyPresentationOutputErrorsBuilder();
+  set errors(VerifyPresentationOutputErrorsBuilder? errors) =>
+      _$this._errors = errors;
 
   bool? _isValid;
   bool? get isValid => _$this._isValid;

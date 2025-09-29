@@ -4,10 +4,10 @@
 
 // ignore_for_file: unused_element
 import 'package:affinidi_tdk_credential_verification_client/src/model/submission_requirement.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/format.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/input_descriptor.dart';
-import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -19,12 +19,13 @@ part 'presentation_definition.g.dart';
 /// * [id] - Definition id
 /// * [name] - Definition name
 /// * [purpose] - Definition purpose
-/// * [format] 
-/// * [submissionRequirements] 
-/// * [inputDescriptors] 
-/// * [frame] - Dynamic model
+/// * [format]
+/// * [submissionRequirements]
+/// * [inputDescriptors]
+/// * [frame]
 @BuiltValue()
-abstract class PresentationDefinition implements Built<PresentationDefinition, PresentationDefinitionBuilder> {
+abstract class PresentationDefinition
+    implements Built<PresentationDefinition, PresentationDefinitionBuilder> {
   /// Definition id
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -46,24 +47,30 @@ abstract class PresentationDefinition implements Built<PresentationDefinition, P
   @BuiltValueField(wireName: r'input_descriptors')
   BuiltList<InputDescriptor> get inputDescriptors;
 
-  /// Dynamic model
   @BuiltValueField(wireName: r'frame')
-  BuiltMap<String, JsonObject?>? get frame;
+  FreeFormObject? get frame;
 
   PresentationDefinition._();
 
-  factory PresentationDefinition([void updates(PresentationDefinitionBuilder b)]) = _$PresentationDefinition;
+  factory PresentationDefinition(
+          [void updates(PresentationDefinitionBuilder b)]) =
+      _$PresentationDefinition;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PresentationDefinitionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PresentationDefinition> get serializer => _$PresentationDefinitionSerializer();
+  static Serializer<PresentationDefinition> get serializer =>
+      _$PresentationDefinitionSerializer();
 }
 
-class _$PresentationDefinitionSerializer implements PrimitiveSerializer<PresentationDefinition> {
+class _$PresentationDefinitionSerializer
+    implements PrimitiveSerializer<PresentationDefinition> {
   @override
-  final Iterable<Type> types = const [PresentationDefinition, _$PresentationDefinition];
+  final Iterable<Type> types = const [
+    PresentationDefinition,
+    _$PresentationDefinition
+  ];
 
   @override
   final String wireName = r'PresentationDefinition';
@@ -103,7 +110,8 @@ class _$PresentationDefinitionSerializer implements PrimitiveSerializer<Presenta
       yield r'submission_requirements';
       yield serializers.serialize(
         object.submissionRequirements,
-        specifiedType: const FullType(BuiltList, [FullType(SubmissionRequirement)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(SubmissionRequirement)]),
       );
     }
     yield r'input_descriptors';
@@ -115,7 +123,7 @@ class _$PresentationDefinitionSerializer implements PrimitiveSerializer<Presenta
       yield r'frame';
       yield serializers.serialize(
         object.frame,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(FreeFormObject),
       );
     }
   }
@@ -126,7 +134,9 @@ class _$PresentationDefinitionSerializer implements PrimitiveSerializer<Presenta
     PresentationDefinition object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -172,23 +182,25 @@ class _$PresentationDefinitionSerializer implements PrimitiveSerializer<Presenta
         case r'submission_requirements':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SubmissionRequirement)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(SubmissionRequirement)]),
           ) as BuiltList<SubmissionRequirement>;
           result.submissionRequirements.replace(valueDes);
           break;
         case r'input_descriptors':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InputDescriptor)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(InputDescriptor)]),
           ) as BuiltList<InputDescriptor>;
           result.inputDescriptors.replace(valueDes);
           break;
         case r'frame':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
-          result.frame.replace(valueDes);
+            specifiedType: const FullType(FreeFormObject),
+          ) as FreeFormObject;
+          result.frame = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -218,4 +230,3 @@ class _$PresentationDefinitionSerializer implements PrimitiveSerializer<Presenta
     return result.build();
   }
 }
-

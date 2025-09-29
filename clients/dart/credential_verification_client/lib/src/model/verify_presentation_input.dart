@@ -3,6 +3,7 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_presentation.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -12,18 +13,19 @@ part 'verify_presentation_input.g.dart';
 /// Request model of /verify-vp
 ///
 /// Properties:
-/// * [verifiablePresentation] 
-/// * [signedPresentation] 
-/// * [presentationDefinition] 
-/// * [presentationSubmission] 
-/// * [challenge] 
+/// * [verifiablePresentation]
+/// * [signedPresentation]
+/// * [presentationDefinition]
+/// * [presentationSubmission]
+/// * [challenge]
 @BuiltValue()
-abstract class VerifyPresentationInput implements Built<VerifyPresentationInput, VerifyPresentationInputBuilder> {
+abstract class VerifyPresentationInput
+    implements Built<VerifyPresentationInput, VerifyPresentationInputBuilder> {
   @BuiltValueField(wireName: r'verifiablePresentation')
-  JsonObject? get verifiablePresentation;
+  W3cPresentation? get verifiablePresentation;
 
   @BuiltValueField(wireName: r'signedPresentation')
-  JsonObject? get signedPresentation;
+  W3cPresentation? get signedPresentation;
 
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
@@ -36,18 +38,25 @@ abstract class VerifyPresentationInput implements Built<VerifyPresentationInput,
 
   VerifyPresentationInput._();
 
-  factory VerifyPresentationInput([void updates(VerifyPresentationInputBuilder b)]) = _$VerifyPresentationInput;
+  factory VerifyPresentationInput(
+          [void updates(VerifyPresentationInputBuilder b)]) =
+      _$VerifyPresentationInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VerifyPresentationInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyPresentationInput> get serializer => _$VerifyPresentationInputSerializer();
+  static Serializer<VerifyPresentationInput> get serializer =>
+      _$VerifyPresentationInputSerializer();
 }
 
-class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyPresentationInput> {
+class _$VerifyPresentationInputSerializer
+    implements PrimitiveSerializer<VerifyPresentationInput> {
   @override
-  final Iterable<Type> types = const [VerifyPresentationInput, _$VerifyPresentationInput];
+  final Iterable<Type> types = const [
+    VerifyPresentationInput,
+    _$VerifyPresentationInput
+  ];
 
   @override
   final String wireName = r'VerifyPresentationInput';
@@ -61,14 +70,14 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
       yield r'verifiablePresentation';
       yield serializers.serialize(
         object.verifiablePresentation,
-        specifiedType: const FullType(JsonObject),
+        specifiedType: const FullType(W3cPresentation),
       );
     }
     if (object.signedPresentation != null) {
       yield r'signedPresentation';
       yield serializers.serialize(
         object.signedPresentation,
-        specifiedType: const FullType(JsonObject),
+        specifiedType: const FullType(W3cPresentation),
       );
     }
     if (object.presentationDefinition != null) {
@@ -100,7 +109,9 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
     VerifyPresentationInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -118,16 +129,16 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
         case r'verifiablePresentation':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.verifiablePresentation = valueDes;
+            specifiedType: const FullType(W3cPresentation),
+          ) as W3cPresentation;
+          result.verifiablePresentation.replace(valueDes);
           break;
         case r'signedPresentation':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.signedPresentation = valueDes;
+            specifiedType: const FullType(W3cPresentation),
+          ) as W3cPresentation;
+          result.signedPresentation.replace(valueDes);
           break;
         case r'presentationDefinition':
           final valueDes = serializers.deserialize(
@@ -178,4 +189,3 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
     return result.build();
   }
 }
-

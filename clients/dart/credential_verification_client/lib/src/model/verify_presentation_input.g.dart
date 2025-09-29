@@ -8,9 +8,9 @@ part of 'verify_presentation_input.dart';
 
 class _$VerifyPresentationInput extends VerifyPresentationInput {
   @override
-  final JsonObject? verifiablePresentation;
+  final W3cPresentation? verifiablePresentation;
   @override
-  final JsonObject? signedPresentation;
+  final W3cPresentation? signedPresentation;
   @override
   final JsonObject? presentationDefinition;
   @override
@@ -78,14 +78,16 @@ class VerifyPresentationInputBuilder
         Builder<VerifyPresentationInput, VerifyPresentationInputBuilder> {
   _$VerifyPresentationInput? _$v;
 
-  JsonObject? _verifiablePresentation;
-  JsonObject? get verifiablePresentation => _$this._verifiablePresentation;
-  set verifiablePresentation(JsonObject? verifiablePresentation) =>
+  W3cPresentationBuilder? _verifiablePresentation;
+  W3cPresentationBuilder get verifiablePresentation =>
+      _$this._verifiablePresentation ??= W3cPresentationBuilder();
+  set verifiablePresentation(W3cPresentationBuilder? verifiablePresentation) =>
       _$this._verifiablePresentation = verifiablePresentation;
 
-  JsonObject? _signedPresentation;
-  JsonObject? get signedPresentation => _$this._signedPresentation;
-  set signedPresentation(JsonObject? signedPresentation) =>
+  W3cPresentationBuilder? _signedPresentation;
+  W3cPresentationBuilder get signedPresentation =>
+      _$this._signedPresentation ??= W3cPresentationBuilder();
+  set signedPresentation(W3cPresentationBuilder? signedPresentation) =>
       _$this._signedPresentation = signedPresentation;
 
   JsonObject? _presentationDefinition;
@@ -109,8 +111,8 @@ class VerifyPresentationInputBuilder
   VerifyPresentationInputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _verifiablePresentation = $v.verifiablePresentation;
-      _signedPresentation = $v.signedPresentation;
+      _verifiablePresentation = $v.verifiablePresentation?.toBuilder();
+      _signedPresentation = $v.signedPresentation?.toBuilder();
       _presentationDefinition = $v.presentationDefinition;
       _presentationSubmission = $v.presentationSubmission;
       _challenge = $v.challenge;
@@ -133,14 +135,29 @@ class VerifyPresentationInputBuilder
   VerifyPresentationInput build() => _build();
 
   _$VerifyPresentationInput _build() {
-    final _$result = _$v ??
-        _$VerifyPresentationInput._(
-          verifiablePresentation: verifiablePresentation,
-          signedPresentation: signedPresentation,
-          presentationDefinition: presentationDefinition,
-          presentationSubmission: presentationSubmission,
-          challenge: challenge,
-        );
+    _$VerifyPresentationInput _$result;
+    try {
+      _$result = _$v ??
+          _$VerifyPresentationInput._(
+            verifiablePresentation: _verifiablePresentation?.build(),
+            signedPresentation: _signedPresentation?.build(),
+            presentationDefinition: presentationDefinition,
+            presentationSubmission: presentationSubmission,
+            challenge: challenge,
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'verifiablePresentation';
+        _verifiablePresentation?.build();
+        _$failedField = 'signedPresentation';
+        _signedPresentation?.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'VerifyPresentationInput', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

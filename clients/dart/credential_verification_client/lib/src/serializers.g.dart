@@ -23,6 +23,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(FilterConst.serializer)
       ..add(FilterItems.serializer)
       ..add(Format.serializer)
+      ..add(FreeFormObject.serializer)
       ..add(HolderSubject.serializer)
       ..add(HolderSubjectDirectiveEnum.serializer)
       ..add(InputDescriptor.serializer)
@@ -48,10 +49,17 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ValidateJwtOutput.serializer)
       ..add(VerifyCredentialInput.serializer)
       ..add(VerifyCredentialOutput.serializer)
-      ..add(VerifyCredentialV2Input.serializer)
       ..add(VerifyPresentationInput.serializer)
       ..add(VerifyPresentationOutput.serializer)
+      ..add(VerifyPresentationOutputErrors.serializer)
+      ..add(W3cCredential.serializer)
+      ..add(W3cCredentialCredentialSchema.serializer)
+      ..add(W3cCredentialCredentialSubject.serializer)
+      ..add(W3cCredentialHolder.serializer)
       ..add(W3cCredentialStatus.serializer)
+      ..add(W3cPresentation.serializer)
+      ..add(W3cPresentationContext.serializer)
+      ..add(W3cPresentationContextOneOfInner.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Descriptor)]),
@@ -72,15 +80,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(FilterConst)]),
           () => ListBuilder<FilterConst>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(JsonObject)]),
-          () => ListBuilder<JsonObject>())
-      ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
-          ]),
-          () => MapBuilder<String, JsonObject?>())
-      ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
           () => ListBuilder<NotFoundErrorDetailsInner>())
@@ -119,11 +118,8 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
-          ]),
-          () => MapBuilder<String, JsonObject?>())
+          const FullType(BuiltList, const [const FullType(W3cCredential)]),
+          () => ListBuilder<W3cCredential>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SubmissionRequirement)]),
@@ -136,11 +132,8 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(InputDescriptor)]),
           () => ListBuilder<InputDescriptor>())
       ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
-          ]),
-          () => MapBuilder<String, JsonObject?>()))
+          const FullType(BuiltList, const [const FullType(W3cCredential)]),
+          () => ListBuilder<W3cCredential>()))
     .build();
 
 // ignore_for_file: deprecated_member_use_from_same_package,type=lint

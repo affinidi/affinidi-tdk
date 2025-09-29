@@ -20,7 +20,7 @@ class _$PresentationDefinition extends PresentationDefinition {
   @override
   final BuiltList<InputDescriptor> inputDescriptors;
   @override
-  final BuiltMap<String, JsonObject?>? frame;
+  final FreeFormObject? frame;
 
   factory _$PresentationDefinition(
           [void Function(PresentationDefinitionBuilder)? updates]) =>
@@ -118,10 +118,9 @@ class PresentationDefinitionBuilder
   set inputDescriptors(ListBuilder<InputDescriptor>? inputDescriptors) =>
       _$this._inputDescriptors = inputDescriptors;
 
-  MapBuilder<String, JsonObject?>? _frame;
-  MapBuilder<String, JsonObject?> get frame =>
-      _$this._frame ??= MapBuilder<String, JsonObject?>();
-  set frame(MapBuilder<String, JsonObject?>? frame) => _$this._frame = frame;
+  FreeFormObjectBuilder? _frame;
+  FreeFormObjectBuilder get frame => _$this._frame ??= FreeFormObjectBuilder();
+  set frame(FreeFormObjectBuilder? frame) => _$this._frame = frame;
 
   PresentationDefinitionBuilder() {
     PresentationDefinition._defaults(this);

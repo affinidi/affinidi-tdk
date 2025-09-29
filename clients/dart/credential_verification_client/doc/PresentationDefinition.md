@@ -16,6 +16,6 @@ import 'package:affinidi_tdk_credential_verification_client/api.dart';
 | **format**                 | [**Format**](Format.md)                                                |                    | [optional] |
 | **submissionRequirements** | [**BuiltList&lt;SubmissionRequirement&gt;**](SubmissionRequirement.md) |                    | [optional] |
 | **inputDescriptors**       | [**BuiltList&lt;InputDescriptor&gt;**](InputDescriptor.md)             |                    |
-| **frame**                  | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)                | Dynamic model      | [optional] |
+| **frame**                  | [**FreeFormObject**](FreeFormObject.md)                                |                    | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

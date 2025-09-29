@@ -1,10 +1,10 @@
-# affinidi_tdk_credential_verification_client (EXPERIMENTAL)
+# affinidi_tdk_credential_verification_client
 
 Affinidi TDK dart client for Affinidi CREDENTIAL VERIFICATION
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -91,6 +91,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [FilterConst](doc/FilterConst.md)
 - [FilterItems](doc/FilterItems.md)
 - [Format](doc/Format.md)
+- [FreeFormObject](doc/FreeFormObject.md)
 - [HolderSubject](doc/HolderSubject.md)
 - [InputDescriptor](doc/InputDescriptor.md)
 - [InvalidParameterError](doc/InvalidParameterError.md)
@@ -107,10 +108,17 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [ValidateJwtOutput](doc/ValidateJwtOutput.md)
 - [VerifyCredentialInput](doc/VerifyCredentialInput.md)
 - [VerifyCredentialOutput](doc/VerifyCredentialOutput.md)
-- [VerifyCredentialV2Input](doc/VerifyCredentialV2Input.md)
 - [VerifyPresentationInput](doc/VerifyPresentationInput.md)
 - [VerifyPresentationOutput](doc/VerifyPresentationOutput.md)
+- [VerifyPresentationOutputErrors](doc/VerifyPresentationOutputErrors.md)
+- [W3cCredential](doc/W3cCredential.md)
+- [W3cCredentialCredentialSchema](doc/W3cCredentialCredentialSchema.md)
+- [W3cCredentialCredentialSubject](doc/W3cCredentialCredentialSubject.md)
+- [W3cCredentialHolder](doc/W3cCredentialHolder.md)
 - [W3cCredentialStatus](doc/W3cCredentialStatus.md)
+- [W3cPresentation](doc/W3cPresentation.md)
+- [W3cPresentationContext](doc/W3cPresentationContext.md)
+- [W3cPresentationContextOneOfInner](doc/W3cPresentationContextOneOfInner.md)
 - [W3cProof](doc/W3cProof.md)
 
 ## Documentation For Authorization
