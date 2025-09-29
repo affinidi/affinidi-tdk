@@ -15,7 +15,6 @@ import 'package:affinidi_tdk_iam_client/src/model/unauthorized_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/unexpected_error.dart';
 
 class ConsumerAuthApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -36,7 +35,7 @@ class ConsumerAuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ConsumerAuthTokenEndpointOutput] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ConsumerAuthTokenEndpointOutput>> consumerAuthTokenEndpoint({ 
+  Future<Response<ConsumerAuthTokenEndpointOutput>> consumerAuthTokenEndpoint({
     required ConsumerAuthTokenEndpointInput consumerAuthTokenEndpointInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -63,11 +62,11 @@ class ConsumerAuthApi {
 
     try {
       const _type = FullType(ConsumerAuthTokenEndpointInput);
-      _bodyData = _serializers.serialize(consumerAuthTokenEndpointInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(consumerAuthTokenEndpointInput,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -90,11 +89,12 @@ class ConsumerAuthApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ConsumerAuthTokenEndpointOutput),
-      ) as ConsumerAuthTokenEndpointOutput;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ConsumerAuthTokenEndpointOutput),
+            ) as ConsumerAuthTokenEndpointOutput;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -116,5 +116,4 @@ class ConsumerAuthApi {
       extra: _response.extra,
     );
   }
-
 }

@@ -11,26 +11,33 @@ part 'cors_grant_access_vfs_ok.g.dart';
 /// CorsGrantAccessVfsOK
 ///
 /// Properties:
-/// * [corsGrantAccessVfsOk] 
+/// * [corsGrantAccessVfsOk]
 @BuiltValue()
-abstract class CorsGrantAccessVfsOK implements Built<CorsGrantAccessVfsOK, CorsGrantAccessVfsOKBuilder> {
+abstract class CorsGrantAccessVfsOK
+    implements Built<CorsGrantAccessVfsOK, CorsGrantAccessVfsOKBuilder> {
   @BuiltValueField(wireName: r'corsGrantAccessVfsOk')
   String? get corsGrantAccessVfsOk;
 
   CorsGrantAccessVfsOK._();
 
-  factory CorsGrantAccessVfsOK([void updates(CorsGrantAccessVfsOKBuilder b)]) = _$CorsGrantAccessVfsOK;
+  factory CorsGrantAccessVfsOK([void updates(CorsGrantAccessVfsOKBuilder b)]) =
+      _$CorsGrantAccessVfsOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsGrantAccessVfsOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsGrantAccessVfsOK> get serializer => _$CorsGrantAccessVfsOKSerializer();
+  static Serializer<CorsGrantAccessVfsOK> get serializer =>
+      _$CorsGrantAccessVfsOKSerializer();
 }
 
-class _$CorsGrantAccessVfsOKSerializer implements PrimitiveSerializer<CorsGrantAccessVfsOK> {
+class _$CorsGrantAccessVfsOKSerializer
+    implements PrimitiveSerializer<CorsGrantAccessVfsOK> {
   @override
-  final Iterable<Type> types = const [CorsGrantAccessVfsOK, _$CorsGrantAccessVfsOK];
+  final Iterable<Type> types = const [
+    CorsGrantAccessVfsOK,
+    _$CorsGrantAccessVfsOK
+  ];
 
   @override
   final String wireName = r'CorsGrantAccessVfsOK';
@@ -55,7 +62,9 @@ class _$CorsGrantAccessVfsOKSerializer implements PrimitiveSerializer<CorsGrantA
     CorsGrantAccessVfsOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +114,3 @@ class _$CorsGrantAccessVfsOKSerializer implements PrimitiveSerializer<CorsGrantA
     return result.build();
   }
 }
-
