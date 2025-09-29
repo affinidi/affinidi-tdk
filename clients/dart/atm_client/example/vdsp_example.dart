@@ -204,6 +204,20 @@ Future<void> main() async {
       );
       // }
     },
+    onDiscloseMessage: (message) async {
+      prettyPrint(
+        'Holder received Disclose Message (demonstrating new capability)',
+        object: message,
+      );
+
+      final negotiation = holderClient.selectedFeatures;
+      if (negotiation != null) {
+        prettyPrint(
+          'Holder negotiated features from disclose message',
+          object: negotiation,
+        );
+      }
+    },
     onDataRequest: (message) async {
       prettyPrint(
         'Holder received Data Request Message',
