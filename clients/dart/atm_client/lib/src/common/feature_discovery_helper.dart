@@ -4,7 +4,7 @@ import '../models/constants/data_integrity_proof_suite.dart';
 import '../models/constants/data_query_language.dart';
 import '../models/constants/feature_type.dart';
 import '../models/constants/json_web_signature_algorithm.dart';
-import '../models/constants/vc_type.dart';
+import '../models/constants/credential_format.dart';
 
 class FeatureDiscoveryHelper {
   static final List<Disclosure> vdspFeatureDisclosures = _vdspBaseConfig.entries
@@ -79,10 +79,10 @@ class FeatureDiscoveryHelper {
     FeatureType.dataQueryLanguage: [
       DataQueryLanguage.dcql.value,
     ],
-    FeatureType.vcType: [
-      VcType.sdJwtVc.value,
-      VcType.w3cV1.value,
-      VcType.w3cV2.value,
+    FeatureType.credentialFormat: [
+      CredentialFormat.sdJwtVc.value,
+      CredentialFormat.w3cV1.value,
+      CredentialFormat.w3cV2.value,
     ],
     FeatureType.dataIntegrityProofSuite: [
       DataIntegrityProofSuite.ecdsa_rdfc_2019.value,

@@ -5,8 +5,8 @@ enum FeatureType {
   protocol('protocol'),
   @JsonValue('data_query_lang')
   dataQueryLanguage('data_query_lang'),
-  @JsonValue('vc_type')
-  vcType('vc_type'),
+  @JsonValue('credential_format')
+  credentialFormat('credential_format'),
   @JsonValue('data_integrity_proof_suite')
   dataIntegrityProofSuite('data_integrity_proof_suite'),
   @JsonValue('json_web_signature_algorithm')
