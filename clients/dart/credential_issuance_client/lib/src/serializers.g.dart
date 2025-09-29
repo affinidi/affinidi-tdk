@@ -12,26 +12,9 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ActionForbiddenErrorHttpStatusCodeEnum.serializer)
       ..add(ActionForbiddenErrorMessageEnum.serializer)
       ..add(ActionForbiddenErrorNameEnum.serializer)
-      ..add(BatchCredentialInput.serializer)
-      ..add(BatchCredentialInputCredentialRequestsInner.serializer)
-      ..add(BatchCredentialResponse.serializer)
-      ..add(BatchCredentialResponseCredentialResponsesInner.serializer)
-      ..add(ChangeCredentialStatus400Response.serializer)
       ..add(ChangeCredentialStatusInput.serializer)
-      ..add(ChangeCredentialStatusInputChangeReasonEnum.serializer)
-      ..add(ChangeStatusForbiddenError.serializer)
-      ..add(ChangeStatusForbiddenErrorHttpStatusCodeEnum.serializer)
-      ..add(ChangeStatusForbiddenErrorMessageEnum.serializer)
-      ..add(ChangeStatusForbiddenErrorNameEnum.serializer)
-      ..add(CisConfigurationWebhookSetting.serializer)
-      ..add(CisConfigurationWebhookSettingEndpoint.serializer)
-      ..add(ClaimedCredentialListResponse.serializer)
-      ..add(ClaimedCredentialResponse.serializer)
-      ..add(CorsBatchCredentialOK.serializer)
       ..add(CorsGenerateCredentialsOK.serializer)
-      ..add(CorsGetClaimedCredentialsOK.serializer)
       ..add(CorsGetCredentialOfferOK.serializer)
-      ..add(CorsGetIssuanceIdClaimedCredentialOK.serializer)
       ..add(CorsGetWellKnownOpenIdCredentialIssuerOK.serializer)
       ..add(CreateCredentialInput.serializer)
       ..add(CreateIssuanceConfig400Response.serializer)
@@ -76,6 +59,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(FlowDataStatusListsDetailsInnerStatusListPurposeEnum.serializer)
       ..add(GenerateCredentials400Response.serializer)
       ..add(GetCredentialOffer400Response.serializer)
+      ..add(GetStatusListResultDto.serializer)
       ..add(InvalidCredentialRequestError.serializer)
       ..add(InvalidCredentialRequestErrorHttpStatusCodeEnum.serializer)
       ..add(InvalidCredentialRequestErrorMessageEnum.serializer)
@@ -126,10 +110,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum.serializer)
       ..add(ProjectCredentialConfigNotExistErrorMessageEnum.serializer)
       ..add(ProjectCredentialConfigNotExistErrorNameEnum.serializer)
-      ..add(RevocationForbiddenError.serializer)
-      ..add(RevocationForbiddenErrorHttpStatusCodeEnum.serializer)
-      ..add(RevocationForbiddenErrorMessageEnum.serializer)
-      ..add(RevocationForbiddenErrorNameEnum.serializer)
       ..add(StartIssuance400Response.serializer)
       ..add(StartIssuanceInput.serializer)
       ..add(StartIssuanceInputClaimModeEnum.serializer)
@@ -143,7 +123,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(StartIssuanceResponse.serializer)
       ..add(SupportedCredentialMetadata.serializer)
       ..add(SupportedCredentialMetadataDisplayInner.serializer)
-      ..add(SupportedCredentialMetadataItemLogo.serializer)
+      ..add(SupportedCredentialMetadataDisplayInnerLogo.serializer)
       ..add(UpdateIssuanceConfigInput.serializer)
       ..add(UpdateIssuanceConfigInputFormatEnum.serializer)
       ..add(VcClaimedError.serializer)
@@ -153,8 +133,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(WellKnownOpenIdCredentialIssuerResponse.serializer)
       ..add(WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
           .serializer)
-      ..add(WellKnownOpenIdCredentialIssuerResponseDisplay.serializer)
-      ..add(WellKnownOpenIdCredentialIssuerResponseDisplayLogo.serializer)
       ..add(WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum
           .serializer)
       ..add(
@@ -226,32 +204,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
           () => ListBuilder<ActionForbiddenErrorDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType(BatchCredentialInputCredentialRequestsInner)
-          ]),
-          () => ListBuilder<BatchCredentialInputCredentialRequestsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType(BatchCredentialResponseCredentialResponsesInner)
-          ]),
-          () => ListBuilder<BatchCredentialResponseCredentialResponsesInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType(BuiltMap, const [
-              const FullType(String),
-              const FullType.nullable(JsonObject)
-            ])
-          ]),
-          () => ListBuilder<BuiltMap<String, JsonObject?>>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(CredentialSupportedObject)]),
@@ -325,9 +277,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(JsonObject)]),
-          () => ListBuilder<JsonObject>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [
             const FullType(
                 WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum)
@@ -349,28 +298,11 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<
               WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),
             const FullType.nullable(JsonObject)
           ]),
           () => MapBuilder<String, JsonObject?>())
-      ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
-          ]),
-          () => MapBuilder<String, JsonObject?>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [
-            const FullType(BuiltMap, const [
-              const FullType(String),
-              const FullType.nullable(JsonObject)
-            ])
-          ]),
-          () => ListBuilder<BuiltMap<String, JsonObject?>>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),

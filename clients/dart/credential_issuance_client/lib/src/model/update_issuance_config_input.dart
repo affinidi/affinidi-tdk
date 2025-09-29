@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/credential_supported_object.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
@@ -15,18 +14,19 @@ part 'update_issuance_config_input.g.dart';
 /// UpdateIssuanceConfigInput
 ///
 /// Properties:
-/// * [name] 
-/// * [description] 
+/// * [name]
+/// * [description]
 /// * [issuerWalletId] - Issuer Wallet id
 /// * [credentialOfferDuration] - credential offer duration in second
 /// * [format] - String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
 /// * [issuerUri] - Issuer URI
-/// * [credentialSupported] 
+/// * [credentialSupported]
 /// * [issuerMetadata] - Issuer public information wallet may want to show to user during consent confirmation
 /// * [returnUris] - List of allowed URIs to be returned to after issuance
-/// * [webhook] 
 @BuiltValue()
-abstract class UpdateIssuanceConfigInput implements Built<UpdateIssuanceConfigInput, UpdateIssuanceConfigInputBuilder> {
+abstract class UpdateIssuanceConfigInput
+    implements
+        Built<UpdateIssuanceConfigInput, UpdateIssuanceConfigInputBuilder> {
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -61,23 +61,27 @@ abstract class UpdateIssuanceConfigInput implements Built<UpdateIssuanceConfigIn
   @BuiltValueField(wireName: r'returnUris')
   BuiltList<String>? get returnUris;
 
-  @BuiltValueField(wireName: r'webhook')
-  CisConfigurationWebhookSetting? get webhook;
-
   UpdateIssuanceConfigInput._();
 
-  factory UpdateIssuanceConfigInput([void updates(UpdateIssuanceConfigInputBuilder b)]) = _$UpdateIssuanceConfigInput;
+  factory UpdateIssuanceConfigInput(
+          [void updates(UpdateIssuanceConfigInputBuilder b)]) =
+      _$UpdateIssuanceConfigInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateIssuanceConfigInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateIssuanceConfigInput> get serializer => _$UpdateIssuanceConfigInputSerializer();
+  static Serializer<UpdateIssuanceConfigInput> get serializer =>
+      _$UpdateIssuanceConfigInputSerializer();
 }
 
-class _$UpdateIssuanceConfigInputSerializer implements PrimitiveSerializer<UpdateIssuanceConfigInput> {
+class _$UpdateIssuanceConfigInputSerializer
+    implements PrimitiveSerializer<UpdateIssuanceConfigInput> {
   @override
-  final Iterable<Type> types = const [UpdateIssuanceConfigInput, _$UpdateIssuanceConfigInput];
+  final Iterable<Type> types = const [
+    UpdateIssuanceConfigInput,
+    _$UpdateIssuanceConfigInput
+  ];
 
   @override
   final String wireName = r'UpdateIssuanceConfigInput';
@@ -133,14 +137,16 @@ class _$UpdateIssuanceConfigInputSerializer implements PrimitiveSerializer<Updat
       yield r'credentialSupported';
       yield serializers.serialize(
         object.credentialSupported,
-        specifiedType: const FullType(BuiltList, [FullType(CredentialSupportedObject)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(CredentialSupportedObject)]),
       );
     }
     if (object.issuerMetadata != null) {
       yield r'issuerMetadata';
       yield serializers.serialize(
         object.issuerMetadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(
+            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     if (object.returnUris != null) {
@@ -148,13 +154,6 @@ class _$UpdateIssuanceConfigInputSerializer implements PrimitiveSerializer<Updat
       yield serializers.serialize(
         object.returnUris,
         specifiedType: const FullType(BuiltList, [FullType(String)]),
-      );
-    }
-    if (object.webhook != null) {
-      yield r'webhook';
-      yield serializers.serialize(
-        object.webhook,
-        specifiedType: const FullType(CisConfigurationWebhookSetting),
       );
     }
   }
@@ -165,7 +164,9 @@ class _$UpdateIssuanceConfigInputSerializer implements PrimitiveSerializer<Updat
     UpdateIssuanceConfigInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -225,14 +226,16 @@ class _$UpdateIssuanceConfigInputSerializer implements PrimitiveSerializer<Updat
         case r'credentialSupported':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CredentialSupportedObject)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(CredentialSupportedObject)]),
           ) as BuiltList<CredentialSupportedObject>;
           result.credentialSupported.replace(valueDes);
           break;
         case r'issuerMetadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.issuerMetadata.replace(valueDes);
           break;
@@ -242,13 +245,6 @@ class _$UpdateIssuanceConfigInputSerializer implements PrimitiveSerializer<Updat
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.returnUris.replace(valueDes);
-          break;
-        case r'webhook':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(CisConfigurationWebhookSetting),
-          ) as CisConfigurationWebhookSetting;
-          result.webhook.replace(valueDes);
           break;
         default:
           unhandled.add(key);
@@ -280,22 +276,28 @@ class _$UpdateIssuanceConfigInputSerializer implements PrimitiveSerializer<Updat
 }
 
 class UpdateIssuanceConfigInputFormatEnum extends EnumClass {
-
   /// String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'ldp_vc')
-  static const UpdateIssuanceConfigInputFormatEnum ldpVc = _$updateIssuanceConfigInputFormatEnum_ldpVc;
+  static const UpdateIssuanceConfigInputFormatEnum ldpVc =
+      _$updateIssuanceConfigInputFormatEnum_ldpVc;
+
   /// String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'jwt_vc_json-ld')
-  static const UpdateIssuanceConfigInputFormatEnum jwtVcJsonLd = _$updateIssuanceConfigInputFormatEnum_jwtVcJsonLd;
+  static const UpdateIssuanceConfigInputFormatEnum jwtVcJsonLd =
+      _$updateIssuanceConfigInputFormatEnum_jwtVcJsonLd;
+
   /// String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'sd_jwt_vc_json-ld')
-  static const UpdateIssuanceConfigInputFormatEnum sdJwtVcJsonLd = _$updateIssuanceConfigInputFormatEnum_sdJwtVcJsonLd;
+  static const UpdateIssuanceConfigInputFormatEnum sdJwtVcJsonLd =
+      _$updateIssuanceConfigInputFormatEnum_sdJwtVcJsonLd;
 
-  static Serializer<UpdateIssuanceConfigInputFormatEnum> get serializer => _$updateIssuanceConfigInputFormatEnumSerializer;
+  static Serializer<UpdateIssuanceConfigInputFormatEnum> get serializer =>
+      _$updateIssuanceConfigInputFormatEnumSerializer;
 
-  const UpdateIssuanceConfigInputFormatEnum._(String name): super(name);
+  const UpdateIssuanceConfigInputFormatEnum._(String name) : super(name);
 
-  static BuiltSet<UpdateIssuanceConfigInputFormatEnum> get values => _$updateIssuanceConfigInputFormatEnumValues;
-  static UpdateIssuanceConfigInputFormatEnum valueOf(String name) => _$updateIssuanceConfigInputFormatEnumValueOf(name);
+  static BuiltSet<UpdateIssuanceConfigInputFormatEnum> get values =>
+      _$updateIssuanceConfigInputFormatEnumValues;
+  static UpdateIssuanceConfigInputFormatEnum valueOf(String name) =>
+      _$updateIssuanceConfigInputFormatEnumValueOf(name);
 }
-

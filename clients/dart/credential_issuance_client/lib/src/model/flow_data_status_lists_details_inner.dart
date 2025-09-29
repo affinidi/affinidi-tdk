@@ -15,12 +15,15 @@ part 'flow_data_status_lists_details_inner.g.dart';
 /// * [statusListPurpose] - Purpose of status list to which credential is added
 /// * [statusListId] - id of status list
 /// * [statusListIndex] - as usual it is a number, but all standards use a string
-/// * [standard] 
+/// * [standard]
 /// * [isActive] - indicates status is true or not. Default false.
 /// * [statusActivationReason] - text reasoning why the status is true (if true). Optional.
 /// * [statusActivatedAt] - ISO 8601 string of the modification date/time the status. Optional.
 @BuiltValue()
-abstract class FlowDataStatusListsDetailsInner implements Built<FlowDataStatusListsDetailsInner, FlowDataStatusListsDetailsInnerBuilder> {
+abstract class FlowDataStatusListsDetailsInner
+    implements
+        Built<FlowDataStatusListsDetailsInner,
+            FlowDataStatusListsDetailsInnerBuilder> {
   /// Purpose of status list to which credential is added
   @BuiltValueField(wireName: r'statusListPurpose')
   FlowDataStatusListsDetailsInnerStatusListPurposeEnum get statusListPurpose;
@@ -36,7 +39,7 @@ abstract class FlowDataStatusListsDetailsInner implements Built<FlowDataStatusLi
 
   @BuiltValueField(wireName: r'standard')
   FlowDataStatusListsDetailsInnerStandardEnum get standard;
-  // enum standardEnum {  RevocationList2020,  };
+  // enum standardEnum {  RevocationList2020,  BitstringStatusListV1,  };
 
   /// indicates status is true or not. Default false.
   @BuiltValueField(wireName: r'isActive')
@@ -52,18 +55,25 @@ abstract class FlowDataStatusListsDetailsInner implements Built<FlowDataStatusLi
 
   FlowDataStatusListsDetailsInner._();
 
-  factory FlowDataStatusListsDetailsInner([void updates(FlowDataStatusListsDetailsInnerBuilder b)]) = _$FlowDataStatusListsDetailsInner;
+  factory FlowDataStatusListsDetailsInner(
+          [void updates(FlowDataStatusListsDetailsInnerBuilder b)]) =
+      _$FlowDataStatusListsDetailsInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(FlowDataStatusListsDetailsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<FlowDataStatusListsDetailsInner> get serializer => _$FlowDataStatusListsDetailsInnerSerializer();
+  static Serializer<FlowDataStatusListsDetailsInner> get serializer =>
+      _$FlowDataStatusListsDetailsInnerSerializer();
 }
 
-class _$FlowDataStatusListsDetailsInnerSerializer implements PrimitiveSerializer<FlowDataStatusListsDetailsInner> {
+class _$FlowDataStatusListsDetailsInnerSerializer
+    implements PrimitiveSerializer<FlowDataStatusListsDetailsInner> {
   @override
-  final Iterable<Type> types = const [FlowDataStatusListsDetailsInner, _$FlowDataStatusListsDetailsInner];
+  final Iterable<Type> types = const [
+    FlowDataStatusListsDetailsInner,
+    _$FlowDataStatusListsDetailsInner
+  ];
 
   @override
   final String wireName = r'FlowDataStatusListsDetailsInner';
@@ -76,7 +86,8 @@ class _$FlowDataStatusListsDetailsInnerSerializer implements PrimitiveSerializer
     yield r'statusListPurpose';
     yield serializers.serialize(
       object.statusListPurpose,
-      specifiedType: const FullType(FlowDataStatusListsDetailsInnerStatusListPurposeEnum),
+      specifiedType:
+          const FullType(FlowDataStatusListsDetailsInnerStatusListPurposeEnum),
     );
     yield r'statusListId';
     yield serializers.serialize(
@@ -91,7 +102,8 @@ class _$FlowDataStatusListsDetailsInnerSerializer implements PrimitiveSerializer
     yield r'standard';
     yield serializers.serialize(
       object.standard,
-      specifiedType: const FullType(FlowDataStatusListsDetailsInnerStandardEnum),
+      specifiedType:
+          const FullType(FlowDataStatusListsDetailsInnerStandardEnum),
     );
     yield r'isActive';
     yield serializers.serialize(
@@ -120,7 +132,9 @@ class _$FlowDataStatusListsDetailsInnerSerializer implements PrimitiveSerializer
     FlowDataStatusListsDetailsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,7 +152,8 @@ class _$FlowDataStatusListsDetailsInnerSerializer implements PrimitiveSerializer
         case r'statusListPurpose':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(FlowDataStatusListsDetailsInnerStatusListPurposeEnum),
+            specifiedType: const FullType(
+                FlowDataStatusListsDetailsInnerStatusListPurposeEnum),
           ) as FlowDataStatusListsDetailsInnerStatusListPurposeEnum;
           result.statusListPurpose = valueDes;
           break;
@@ -159,7 +174,8 @@ class _$FlowDataStatusListsDetailsInnerSerializer implements PrimitiveSerializer
         case r'standard':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(FlowDataStatusListsDetailsInnerStandardEnum),
+            specifiedType:
+                const FullType(FlowDataStatusListsDetailsInnerStandardEnum),
           ) as FlowDataStatusListsDetailsInnerStandardEnum;
           result.standard = valueDes;
           break;
@@ -214,29 +230,43 @@ class _$FlowDataStatusListsDetailsInnerSerializer implements PrimitiveSerializer
 }
 
 class FlowDataStatusListsDetailsInnerStatusListPurposeEnum extends EnumClass {
-
   /// Purpose of status list to which credential is added
   @BuiltValueEnumConst(wireName: r'REVOKED')
-  static const FlowDataStatusListsDetailsInnerStatusListPurposeEnum REVOKED = _$flowDataStatusListsDetailsInnerStatusListPurposeEnum_REVOKED;
+  static const FlowDataStatusListsDetailsInnerStatusListPurposeEnum REVOKED =
+      _$flowDataStatusListsDetailsInnerStatusListPurposeEnum_REVOKED;
 
-  static Serializer<FlowDataStatusListsDetailsInnerStatusListPurposeEnum> get serializer => _$flowDataStatusListsDetailsInnerStatusListPurposeEnumSerializer;
+  static Serializer<FlowDataStatusListsDetailsInnerStatusListPurposeEnum>
+      get serializer =>
+          _$flowDataStatusListsDetailsInnerStatusListPurposeEnumSerializer;
 
-  const FlowDataStatusListsDetailsInnerStatusListPurposeEnum._(String name): super(name);
+  const FlowDataStatusListsDetailsInnerStatusListPurposeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<FlowDataStatusListsDetailsInnerStatusListPurposeEnum> get values => _$flowDataStatusListsDetailsInnerStatusListPurposeEnumValues;
-  static FlowDataStatusListsDetailsInnerStatusListPurposeEnum valueOf(String name) => _$flowDataStatusListsDetailsInnerStatusListPurposeEnumValueOf(name);
+  static BuiltSet<FlowDataStatusListsDetailsInnerStatusListPurposeEnum>
+      get values =>
+          _$flowDataStatusListsDetailsInnerStatusListPurposeEnumValues;
+  static FlowDataStatusListsDetailsInnerStatusListPurposeEnum valueOf(
+          String name) =>
+      _$flowDataStatusListsDetailsInnerStatusListPurposeEnumValueOf(name);
 }
 
 class FlowDataStatusListsDetailsInnerStandardEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'RevocationList2020')
-  static const FlowDataStatusListsDetailsInnerStandardEnum revocationList2020 = _$flowDataStatusListsDetailsInnerStandardEnum_revocationList2020;
+  static const FlowDataStatusListsDetailsInnerStandardEnum revocationList2020 =
+      _$flowDataStatusListsDetailsInnerStandardEnum_revocationList2020;
+  @BuiltValueEnumConst(wireName: r'BitstringStatusListV1')
+  static const FlowDataStatusListsDetailsInnerStandardEnum
+      bitstringStatusListV1 =
+      _$flowDataStatusListsDetailsInnerStandardEnum_bitstringStatusListV1;
 
-  static Serializer<FlowDataStatusListsDetailsInnerStandardEnum> get serializer => _$flowDataStatusListsDetailsInnerStandardEnumSerializer;
+  static Serializer<FlowDataStatusListsDetailsInnerStandardEnum>
+      get serializer => _$flowDataStatusListsDetailsInnerStandardEnumSerializer;
 
-  const FlowDataStatusListsDetailsInnerStandardEnum._(String name): super(name);
+  const FlowDataStatusListsDetailsInnerStandardEnum._(String name)
+      : super(name);
 
-  static BuiltSet<FlowDataStatusListsDetailsInnerStandardEnum> get values => _$flowDataStatusListsDetailsInnerStandardEnumValues;
-  static FlowDataStatusListsDetailsInnerStandardEnum valueOf(String name) => _$flowDataStatusListsDetailsInnerStandardEnumValueOf(name);
+  static BuiltSet<FlowDataStatusListsDetailsInnerStandardEnum> get values =>
+      _$flowDataStatusListsDetailsInnerStandardEnumValues;
+  static FlowDataStatusListsDetailsInnerStandardEnum valueOf(String name) =>
+      _$flowDataStatusListsDetailsInnerStandardEnumValueOf(name);
 }
-

@@ -14,7 +14,6 @@ import 'package:affinidi_tdk_iota_client/src/model/list_logged_consents_ok.dart'
 import 'package:affinidi_tdk_iota_client/src/model/operation_forbidden_error.dart';
 
 class DefaultApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -25,8 +24,8 @@ class DefaultApi {
   /// Lists all the logged consents for a project.
   ///
   /// Parameters:
-  /// * [configurationId] 
-  /// * [userId] 
+  /// * [configurationId]
+  /// * [userId]
   /// * [limit] - The maximum number of records to fetch from the list of logged consents.
   /// * [exclusiveStartKey] - The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -38,7 +37,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ListLoggedConsentsOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ListLoggedConsentsOK>> listLoggedConsents({ 
+  Future<Response<ListLoggedConsentsOK>> listLoggedConsents({
     String? configurationId,
     String? userId,
     int? limit,
@@ -71,10 +70,18 @@ class DefaultApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (configurationId != null) r'configurationId': encodeQueryParameter(_serializers, configurationId, const FullType(String)),
-      if (userId != null) r'userId': encodeQueryParameter(_serializers, userId, const FullType(String)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (exclusiveStartKey != null) r'exclusiveStartKey': encodeQueryParameter(_serializers, exclusiveStartKey, const FullType(String)),
+      if (configurationId != null)
+        r'configurationId': encodeQueryParameter(
+            _serializers, configurationId, const FullType(String)),
+      if (userId != null)
+        r'userId':
+            encodeQueryParameter(_serializers, userId, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (exclusiveStartKey != null)
+        r'exclusiveStartKey': encodeQueryParameter(
+            _serializers, exclusiveStartKey, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -90,11 +97,12 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ListLoggedConsentsOK),
-      ) as ListLoggedConsentsOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ListLoggedConsentsOK),
+            ) as ListLoggedConsentsOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -116,5 +124,4 @@ class DefaultApi {
       extra: _response.extra,
     );
   }
-
 }

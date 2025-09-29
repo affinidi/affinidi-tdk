@@ -8,7 +8,7 @@ part of 'sign_credential_result_dto.dart';
 
 class _$SignCredentialResultDto extends SignCredentialResultDto {
   @override
-  final BuiltMap<String, JsonObject?> signedCredential;
+  final SignCredentialResultDtoSignedCredential signedCredential;
 
   factory _$SignCredentialResultDto(
           [void Function(SignCredentialResultDtoBuilder)? updates]) =>
@@ -52,10 +52,12 @@ class SignCredentialResultDtoBuilder
         Builder<SignCredentialResultDto, SignCredentialResultDtoBuilder> {
   _$SignCredentialResultDto? _$v;
 
-  MapBuilder<String, JsonObject?>? _signedCredential;
-  MapBuilder<String, JsonObject?> get signedCredential =>
-      _$this._signedCredential ??= MapBuilder<String, JsonObject?>();
-  set signedCredential(MapBuilder<String, JsonObject?>? signedCredential) =>
+  SignCredentialResultDtoSignedCredentialBuilder? _signedCredential;
+  SignCredentialResultDtoSignedCredentialBuilder get signedCredential =>
+      _$this._signedCredential ??=
+          SignCredentialResultDtoSignedCredentialBuilder();
+  set signedCredential(
+          SignCredentialResultDtoSignedCredentialBuilder? signedCredential) =>
       _$this._signedCredential = signedCredential;
 
   SignCredentialResultDtoBuilder() {

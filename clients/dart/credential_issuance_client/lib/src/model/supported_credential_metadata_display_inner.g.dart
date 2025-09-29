@@ -13,7 +13,7 @@ class _$SupportedCredentialMetadataDisplayInner
   @override
   final String? locale;
   @override
-  final SupportedCredentialMetadataItemLogo? logo;
+  final SupportedCredentialMetadataDisplayInnerLogo? logo;
   @override
   final String? backgroundColor;
   @override
@@ -92,10 +92,10 @@ class SupportedCredentialMetadataDisplayInnerBuilder
   String? get locale => _$this._locale;
   set locale(String? locale) => _$this._locale = locale;
 
-  SupportedCredentialMetadataItemLogoBuilder? _logo;
-  SupportedCredentialMetadataItemLogoBuilder get logo =>
-      _$this._logo ??= SupportedCredentialMetadataItemLogoBuilder();
-  set logo(SupportedCredentialMetadataItemLogoBuilder? logo) =>
+  SupportedCredentialMetadataDisplayInnerLogoBuilder? _logo;
+  SupportedCredentialMetadataDisplayInnerLogoBuilder get logo =>
+      _$this._logo ??= SupportedCredentialMetadataDisplayInnerLogoBuilder();
+  set logo(SupportedCredentialMetadataDisplayInnerLogoBuilder? logo) =>
       _$this._logo = logo;
 
   String? _backgroundColor;

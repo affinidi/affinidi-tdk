@@ -8,9 +8,9 @@ part of 'verify_credential_input.dart';
 
 class _$VerifyCredentialInput extends VerifyCredentialInput {
   @override
-  final BuiltList<JsonObject> verifiableCredentials;
+  final BuiltList<W3cCredential> verifiableCredentials;
   @override
-  final BuiltMap<String, JsonObject?>? issuerDidDocument;
+  final FreeFormObject? issuerDidDocument;
 
   factory _$VerifyCredentialInput(
           [void Function(VerifyCredentialInputBuilder)? updates]) =>
@@ -58,16 +58,17 @@ class VerifyCredentialInputBuilder
     implements Builder<VerifyCredentialInput, VerifyCredentialInputBuilder> {
   _$VerifyCredentialInput? _$v;
 
-  ListBuilder<JsonObject>? _verifiableCredentials;
-  ListBuilder<JsonObject> get verifiableCredentials =>
-      _$this._verifiableCredentials ??= ListBuilder<JsonObject>();
-  set verifiableCredentials(ListBuilder<JsonObject>? verifiableCredentials) =>
+  ListBuilder<W3cCredential>? _verifiableCredentials;
+  ListBuilder<W3cCredential> get verifiableCredentials =>
+      _$this._verifiableCredentials ??= ListBuilder<W3cCredential>();
+  set verifiableCredentials(
+          ListBuilder<W3cCredential>? verifiableCredentials) =>
       _$this._verifiableCredentials = verifiableCredentials;
 
-  MapBuilder<String, JsonObject?>? _issuerDidDocument;
-  MapBuilder<String, JsonObject?> get issuerDidDocument =>
-      _$this._issuerDidDocument ??= MapBuilder<String, JsonObject?>();
-  set issuerDidDocument(MapBuilder<String, JsonObject?>? issuerDidDocument) =>
+  FreeFormObjectBuilder? _issuerDidDocument;
+  FreeFormObjectBuilder get issuerDidDocument =>
+      _$this._issuerDidDocument ??= FreeFormObjectBuilder();
+  set issuerDidDocument(FreeFormObjectBuilder? issuerDidDocument) =>
       _$this._issuerDidDocument = issuerDidDocument;
 
   VerifyCredentialInputBuilder() {

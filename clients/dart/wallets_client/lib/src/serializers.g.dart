@@ -8,8 +8,11 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (Serializers().toBuilder()
       ..add(CreateWalletInput.serializer)
-      ..add(CreateWalletInputDidMethodEnum.serializer)
       ..add(CreateWalletResponse.serializer)
+      ..add(DidKeyInputParams.serializer)
+      ..add(DidKeyInputParamsDidMethodEnum.serializer)
+      ..add(DidWebInputParams.serializer)
+      ..add(DidWebInputParamsDidMethodEnum.serializer)
       ..add(EntityNotFoundError.serializer)
       ..add(EntityNotFoundErrorHttpStatusCodeEnum.serializer)
       ..add(EntityNotFoundErrorMessageEnum.serializer)
@@ -44,14 +47,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(SignCredentialInputDtoCredentialFormatEnum.serializer)
       ..add(SignCredentialInputDtoUnsignedCredentialParams.serializer)
       ..add(SignCredentialResultDto.serializer)
-      ..add(SignCredentialsDm1JwtInputDto.serializer)
-      ..add(SignCredentialsDm1JwtResultDto.serializer)
-      ..add(SignCredentialsDm1LdInputDto.serializer)
-      ..add(SignCredentialsDm1LdResultDto.serializer)
-      ..add(SignCredentialsDm2LdInputDto.serializer)
-      ..add(SignCredentialsDm2LdResultDto.serializer)
-      ..add(SignCredentialsDm2SdJwtInputDto.serializer)
-      ..add(SignCredentialsDm2SdJwtResultDto.serializer)
+      ..add(SignCredentialResultDtoSignedCredential.serializer)
       ..add(SignJwtToken.serializer)
       ..add(SignJwtTokenOK.serializer)
       ..add(SigningFailedError.serializer)
@@ -100,12 +96,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WalletDtoKeysInner)]),
           () => ListBuilder<WalletDtoKeysInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
-          ]),
-          () => MapBuilder<String, JsonObject?>())
       ..addBuilderFactory(
           const FullType(BuiltMap, const [
             const FullType(String),

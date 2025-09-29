@@ -3,7 +3,9 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_item_logo.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner_logo.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,13 +14,16 @@ part 'supported_credential_metadata_display_inner.g.dart';
 /// SupportedCredentialMetadataDisplayInner
 ///
 /// Properties:
-/// * [name] 
-/// * [locale] 
-/// * [logo] 
-/// * [backgroundColor] 
-/// * [textColor] 
+/// * [name]
+/// * [locale]
+/// * [logo]
+/// * [backgroundColor]
+/// * [textColor]
 @BuiltValue()
-abstract class SupportedCredentialMetadataDisplayInner implements Built<SupportedCredentialMetadataDisplayInner, SupportedCredentialMetadataDisplayInnerBuilder> {
+abstract class SupportedCredentialMetadataDisplayInner
+    implements
+        Built<SupportedCredentialMetadataDisplayInner,
+            SupportedCredentialMetadataDisplayInnerBuilder> {
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -26,7 +31,7 @@ abstract class SupportedCredentialMetadataDisplayInner implements Built<Supporte
   String? get locale;
 
   @BuiltValueField(wireName: r'logo')
-  SupportedCredentialMetadataItemLogo? get logo;
+  SupportedCredentialMetadataDisplayInnerLogo? get logo;
 
   @BuiltValueField(wireName: r'backgroundColor')
   String? get backgroundColor;
@@ -36,18 +41,25 @@ abstract class SupportedCredentialMetadataDisplayInner implements Built<Supporte
 
   SupportedCredentialMetadataDisplayInner._();
 
-  factory SupportedCredentialMetadataDisplayInner([void updates(SupportedCredentialMetadataDisplayInnerBuilder b)]) = _$SupportedCredentialMetadataDisplayInner;
+  factory SupportedCredentialMetadataDisplayInner(
+          [void updates(SupportedCredentialMetadataDisplayInnerBuilder b)]) =
+      _$SupportedCredentialMetadataDisplayInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SupportedCredentialMetadataDisplayInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SupportedCredentialMetadataDisplayInner> get serializer => _$SupportedCredentialMetadataDisplayInnerSerializer();
+  static Serializer<SupportedCredentialMetadataDisplayInner> get serializer =>
+      _$SupportedCredentialMetadataDisplayInnerSerializer();
 }
 
-class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSerializer<SupportedCredentialMetadataDisplayInner> {
+class _$SupportedCredentialMetadataDisplayInnerSerializer
+    implements PrimitiveSerializer<SupportedCredentialMetadataDisplayInner> {
   @override
-  final Iterable<Type> types = const [SupportedCredentialMetadataDisplayInner, _$SupportedCredentialMetadataDisplayInner];
+  final Iterable<Type> types = const [
+    SupportedCredentialMetadataDisplayInner,
+    _$SupportedCredentialMetadataDisplayInner
+  ];
 
   @override
   final String wireName = r'SupportedCredentialMetadataDisplayInner';
@@ -73,7 +85,8 @@ class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSe
       yield r'logo';
       yield serializers.serialize(
         object.logo,
-        specifiedType: const FullType(SupportedCredentialMetadataItemLogo),
+        specifiedType:
+            const FullType(SupportedCredentialMetadataDisplayInnerLogo),
       );
     }
     if (object.backgroundColor != null) {
@@ -98,7 +111,9 @@ class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSe
     SupportedCredentialMetadataDisplayInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -130,9 +145,10 @@ class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSe
         case r'logo':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SupportedCredentialMetadataItemLogo),
-          ) as SupportedCredentialMetadataItemLogo;
-          result.logo.replace(valueDes);
+            specifiedType:
+                const FullType(SupportedCredentialMetadataDisplayInnerLogo),
+          ) as SupportedCredentialMetadataDisplayInnerLogo;
+          result.logo = valueDes;
           break;
         case r'backgroundColor':
           final valueDes = serializers.deserialize(
@@ -176,4 +192,3 @@ class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSe
     return result.build();
   }
 }
-

@@ -16,22 +16,9 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/date.dart';
 
 import 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error_details_inner.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input_credential_requests_inner.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response_credential_responses_inner.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status400_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status_input.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/change_status_forbidden_error.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting_endpoint.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_list_response.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_batch_credential_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_generate_credentials_ok.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_claimed_credentials_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_credential_offer_ok.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_issuance_id_claimed_credential_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_well_known_open_id_credential_issuer_ok.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/create_credential_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/create_issuance_config400_response.dart';
@@ -56,6 +43,7 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/flow_data.dart
 import 'package:affinidi_tdk_credential_issuance_client/src/model/flow_data_status_lists_details_inner.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/generate_credentials400_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/get_credential_offer400_response.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/get_status_list_result_dto.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_credential_request_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_credential_type_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_issuer_wallet_error.dart';
@@ -73,7 +61,6 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/missing_holder
 import 'package:affinidi_tdk_credential_issuance_client/src/model/not_found_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/project_credential_config_exist_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/project_credential_config_not_exist_error.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/revocation_forbidden_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance400_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input_data_inner.dart';
@@ -82,35 +69,20 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance
 import 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_item_logo.dart';
+import 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner_logo.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuance_config_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/vc_claimed_error.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display_logo.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor([
   ActionForbiddenError,
   ActionForbiddenErrorDetailsInner,
-  BatchCredentialInput,
-  BatchCredentialInputCredentialRequestsInner,
-  BatchCredentialResponse,
-  BatchCredentialResponseCredentialResponsesInner,
-  ChangeCredentialStatus400Response,
   ChangeCredentialStatusInput,
-  ChangeStatusForbiddenError,
-  CisConfigurationWebhookSetting,
-  CisConfigurationWebhookSettingEndpoint,
-  ClaimedCredentialListResponse,
-  ClaimedCredentialResponse,
-  CorsBatchCredentialOK,
   CorsGenerateCredentialsOK,
-  CorsGetClaimedCredentialsOK,
   CorsGetCredentialOfferOK,
-  CorsGetIssuanceIdClaimedCredentialOK,
   CorsGetWellKnownOpenIdCredentialIssuerOK,
   CreateCredentialInput,
   CreateIssuanceConfig400Response,
@@ -135,6 +107,7 @@ part 'serializers.g.dart';
   FlowDataStatusListsDetailsInner,
   GenerateCredentials400Response,
   GetCredentialOffer400Response,
+  GetStatusListResultDto,
   InvalidCredentialRequestError,
   InvalidCredentialTypeError,
   InvalidIssuerWalletError,
@@ -152,7 +125,6 @@ part 'serializers.g.dart';
   NotFoundError,
   ProjectCredentialConfigExistError,
   ProjectCredentialConfigNotExistError,
-  RevocationForbiddenError,
   StartIssuance400Response,
   StartIssuanceInput,
   StartIssuanceInputDataInner,
@@ -161,24 +133,18 @@ part 'serializers.g.dart';
   StartIssuanceResponse,
   SupportedCredentialMetadata,
   SupportedCredentialMetadataDisplayInner,
-  SupportedCredentialMetadataItemLogo,
+  SupportedCredentialMetadataDisplayInnerLogo,
   UpdateIssuanceConfigInput,
   VcClaimedError,
   WellKnownOpenIdCredentialIssuerResponse,
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner,
-  WellKnownOpenIdCredentialIssuerResponseDisplay,
-  WellKnownOpenIdCredentialIssuerResponseDisplayLogo,
 ])
 Serializers serializers = (_$serializers.toBuilder()
-      ..addBuilderFactory(
-        const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-        () => MapBuilder<String, JsonObject>(),
-      )
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

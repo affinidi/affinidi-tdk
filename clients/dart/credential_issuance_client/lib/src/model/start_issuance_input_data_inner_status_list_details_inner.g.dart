@@ -33,6 +33,10 @@ const StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
     _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_revocationList2020 =
     const StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum._(
         'revocationList2020');
+const StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
+    _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_bitstringStatusListV1 =
+    const StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum._(
+        'bitstringStatusListV1');
 
 StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
     _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnumValueOf(
@@ -40,6 +44,8 @@ StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
   switch (name) {
     case 'revocationList2020':
       return _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_revocationList2020;
+    case 'bitstringStatusListV1':
+      return _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_bitstringStatusListV1;
     default:
       throw ArgumentError(name);
   }
@@ -50,6 +56,7 @@ final BuiltSet<StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>
     BuiltSet<
         StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>(const <StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum>[
   _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_revocationList2020,
+  _$startIssuanceInputDataInnerStatusListDetailsInnerStandardEnum_bitstringStatusListV1,
 ]);
 
 Serializer<StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum>
@@ -98,9 +105,11 @@ class _$StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnumSerializer
             StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
     'revocationList2020': 'RevocationList2020',
+    'bitstringStatusListV1': 'BitstringStatusListV1',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'RevocationList2020': 'revocationList2020',
+    'BitstringStatusListV1': 'bitstringStatusListV1',
   };
 
   @override
@@ -128,9 +137,9 @@ class _$StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnumSerializer
 class _$StartIssuanceInputDataInnerStatusListDetailsInner
     extends StartIssuanceInputDataInnerStatusListDetailsInner {
   @override
-  final StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum purpose;
+  final StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum? purpose;
   @override
-  final StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum standard;
+  final StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum? standard;
 
   factory _$StartIssuanceInputDataInnerStatusListDetailsInner(
           [void Function(
@@ -141,7 +150,7 @@ class _$StartIssuanceInputDataInnerStatusListDetailsInner
           ._build();
 
   _$StartIssuanceInputDataInnerStatusListDetailsInner._(
-      {required this.purpose, required this.standard})
+      {this.purpose, this.standard})
       : super._();
   @override
   StartIssuanceInputDataInnerStatusListDetailsInner rebuild(
@@ -235,10 +244,8 @@ class StartIssuanceInputDataInnerStatusListDetailsInnerBuilder
   _$StartIssuanceInputDataInnerStatusListDetailsInner _build() {
     final _$result = _$v ??
         _$StartIssuanceInputDataInnerStatusListDetailsInner._(
-          purpose: BuiltValueNullFieldError.checkNotNull(purpose,
-              r'StartIssuanceInputDataInnerStatusListDetailsInner', 'purpose'),
-          standard: BuiltValueNullFieldError.checkNotNull(standard,
-              r'StartIssuanceInputDataInnerStatusListDetailsInner', 'standard'),
+          purpose: purpose,
+          standard: standard,
         );
     replace(_$result);
     return _$result;

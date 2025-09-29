@@ -83,8 +83,6 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
   @override
   final JsonObject? presentationDefinition;
   @override
-  final BuiltList<IdTokenMappingItem>? idTokenMapping;
-  @override
   final LoginConfigurationClientMetadataInput? clientMetadata;
   @override
   final CreateLoginConfigurationInputClaimFormatEnum? claimFormat;
@@ -106,7 +104,6 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
       this.postLogoutRedirectUris,
       this.vpDefinition,
       this.presentationDefinition,
-      this.idTokenMapping,
       this.clientMetadata,
       this.claimFormat,
       this.failOnMappingConflict,
@@ -132,7 +129,6 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
         postLogoutRedirectUris == other.postLogoutRedirectUris &&
         vpDefinition == other.vpDefinition &&
         presentationDefinition == other.presentationDefinition &&
-        idTokenMapping == other.idTokenMapping &&
         clientMetadata == other.clientMetadata &&
         claimFormat == other.claimFormat &&
         failOnMappingConflict == other.failOnMappingConflict &&
@@ -149,7 +145,6 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
     _$hash = $jc(_$hash, postLogoutRedirectUris.hashCode);
     _$hash = $jc(_$hash, vpDefinition.hashCode);
     _$hash = $jc(_$hash, presentationDefinition.hashCode);
-    _$hash = $jc(_$hash, idTokenMapping.hashCode);
     _$hash = $jc(_$hash, clientMetadata.hashCode);
     _$hash = $jc(_$hash, claimFormat.hashCode);
     _$hash = $jc(_$hash, failOnMappingConflict.hashCode);
@@ -168,7 +163,6 @@ class _$CreateLoginConfigurationInput extends CreateLoginConfigurationInput {
           ..add('postLogoutRedirectUris', postLogoutRedirectUris)
           ..add('vpDefinition', vpDefinition)
           ..add('presentationDefinition', presentationDefinition)
-          ..add('idTokenMapping', idTokenMapping)
           ..add('clientMetadata', clientMetadata)
           ..add('claimFormat', claimFormat)
           ..add('failOnMappingConflict', failOnMappingConflict)
@@ -213,12 +207,6 @@ class CreateLoginConfigurationInputBuilder
   set presentationDefinition(JsonObject? presentationDefinition) =>
       _$this._presentationDefinition = presentationDefinition;
 
-  ListBuilder<IdTokenMappingItem>? _idTokenMapping;
-  ListBuilder<IdTokenMappingItem> get idTokenMapping =>
-      _$this._idTokenMapping ??= ListBuilder<IdTokenMappingItem>();
-  set idTokenMapping(ListBuilder<IdTokenMappingItem>? idTokenMapping) =>
-      _$this._idTokenMapping = idTokenMapping;
-
   LoginConfigurationClientMetadataInputBuilder? _clientMetadata;
   LoginConfigurationClientMetadataInputBuilder get clientMetadata =>
       _$this._clientMetadata ??= LoginConfigurationClientMetadataInputBuilder();
@@ -261,7 +249,6 @@ class CreateLoginConfigurationInputBuilder
       _postLogoutRedirectUris = $v.postLogoutRedirectUris?.toBuilder();
       _vpDefinition = $v.vpDefinition;
       _presentationDefinition = $v.presentationDefinition;
-      _idTokenMapping = $v.idTokenMapping?.toBuilder();
       _clientMetadata = $v.clientMetadata?.toBuilder();
       _claimFormat = $v.claimFormat;
       _failOnMappingConflict = $v.failOnMappingConflict;
@@ -297,7 +284,6 @@ class CreateLoginConfigurationInputBuilder
             postLogoutRedirectUris: _postLogoutRedirectUris?.build(),
             vpDefinition: vpDefinition,
             presentationDefinition: presentationDefinition,
-            idTokenMapping: _idTokenMapping?.build(),
             clientMetadata: _clientMetadata?.build(),
             claimFormat: claimFormat,
             failOnMappingConflict: failOnMappingConflict,
@@ -312,8 +298,6 @@ class CreateLoginConfigurationInputBuilder
         _$failedField = 'postLogoutRedirectUris';
         _postLogoutRedirectUris?.build();
 
-        _$failedField = 'idTokenMapping';
-        _idTokenMapping?.build();
         _$failedField = 'clientMetadata';
         _clientMetadata?.build();
       } catch (e) {

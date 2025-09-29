@@ -64,4 +64,3 @@ export 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_in
 export 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/update_pex_query_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/vp_token_validation_error.dart';
-

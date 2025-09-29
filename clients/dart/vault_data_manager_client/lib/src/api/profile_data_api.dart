@@ -15,7 +15,6 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_ok.dart';
 
 class ProfileDataApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -38,7 +37,7 @@ class ProfileDataApi {
   ///
   /// Returns a [Future] containing a [Response] with a [QueryProfileDataOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<QueryProfileDataOK>> queryProfileData({ 
+  Future<Response<QueryProfileDataOK>> queryProfileData({
     required String nodeId,
     required String dek,
     String? query,
@@ -49,7 +48,10 @@ class ProfileDataApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}/profile-data'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}/profile-data'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -70,7 +72,9 @@ class ProfileDataApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (query != null) r'query': encodeQueryParameter(_serializers, query, const FullType(String)),
+      if (query != null)
+        r'query':
+            encodeQueryParameter(_serializers, query, const FullType(String)),
       r'dek': encodeQueryParameter(_serializers, dek, const FullType(String)),
     };
 
@@ -87,11 +91,12 @@ class ProfileDataApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(QueryProfileDataOK),
-      ) as QueryProfileDataOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(QueryProfileDataOK),
+            ) as QueryProfileDataOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -118,7 +123,7 @@ class ProfileDataApi {
   /// Updates the profile with the given data
   ///
   /// Parameters:
-  /// * [nodeId] 
+  /// * [nodeId]
   /// * [updateProfileDataInput] - Updates the schema with the given data
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -129,7 +134,7 @@ class ProfileDataApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UpdateProfileDataOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UpdateProfileDataOK>> updateProfileData({ 
+  Future<Response<UpdateProfileDataOK>> updateProfileData({
     required String nodeId,
     required UpdateProfileDataInput updateProfileDataInput,
     CancelToken? cancelToken,
@@ -139,7 +144,10 @@ class ProfileDataApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}/profile-data'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}/profile-data'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -164,11 +172,11 @@ class ProfileDataApi {
 
     try {
       const _type = FullType(UpdateProfileDataInput);
-      _bodyData = _serializers.serialize(updateProfileDataInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(updateProfileDataInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -191,11 +199,12 @@ class ProfileDataApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UpdateProfileDataOK),
-      ) as UpdateProfileDataOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UpdateProfileDataOK),
+            ) as UpdateProfileDataOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -217,5 +226,4 @@ class ProfileDataApi {
       extra: _response.extra,
     );
   }
-
 }

@@ -37,7 +37,6 @@ import 'package:affinidi_tdk_login_configuration_client/src/model/group_user_map
 import 'package:affinidi_tdk_login_configuration_client/src/model/group_user_mappings_list.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/groups_list.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/groups_per_user_limit_exceeded_error.dart';
-import 'package:affinidi_tdk_login_configuration_client/src/model/id_token_mapping_item.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/inline_object.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/invalid_claim_context_error.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/invalid_groups_error.dart';
@@ -56,7 +55,6 @@ import 'package:affinidi_tdk_login_configuration_client/src/model/login_session_
 import 'package:affinidi_tdk_login_configuration_client/src/model/login_session_for_idp_input.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/not_found_error.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token.dart';
-import 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token_authorization_details_inner.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/oidc_config.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/oidc_config_credentials_supported_draft00_inner.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/redirect_response.dart';
@@ -95,7 +93,6 @@ part 'serializers.g.dart';
   GroupUserMappingsList,
   GroupsList,
   GroupsPerUserLimitExceededError,
-  IdTokenMappingItem,
   InlineObject,
   InvalidClaimContextError,
   InvalidGroupsError,
@@ -114,7 +111,6 @@ part 'serializers.g.dart';
   LoginSessionForIDPInput,
   NotFoundError,
   OAuth2Token,
-  OAuth2TokenAuthorizationDetailsInner,
   OIDCConfig,
   OIDCConfigCredentialsSupportedDraft00Inner,
   RedirectResponse,
@@ -131,8 +127,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

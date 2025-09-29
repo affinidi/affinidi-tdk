@@ -1,10 +1,10 @@
-# affinidi_tdk_iota_client (EXPERIMENTAL)
+# affinidi_tdk_iota_client
 
 Affinidi TDK dart client for Affinidi IOTA
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage

@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,32 +11,39 @@ part 'change_credential_status_input.g.dart';
 /// ChangeCredentialStatusInput
 ///
 /// Properties:
-/// * [changeReason] - reason for revocation
-/// * [issuanceRecordId] 
+/// * [changeReason]
+/// * [issuanceFlowDataId]
 @BuiltValue()
-abstract class ChangeCredentialStatusInput implements Built<ChangeCredentialStatusInput, ChangeCredentialStatusInputBuilder> {
-  /// reason for revocation
+abstract class ChangeCredentialStatusInput
+    implements
+        Built<ChangeCredentialStatusInput, ChangeCredentialStatusInputBuilder> {
   @BuiltValueField(wireName: r'changeReason')
-  ChangeCredentialStatusInputChangeReasonEnum? get changeReason;
-  // enum changeReasonEnum {  INVALID_CREDENTIAL,  COMPROMISED_ISSUER,  };
+  String? get changeReason;
 
-  @BuiltValueField(wireName: r'issuanceRecordId')
-  String? get issuanceRecordId;
+  @BuiltValueField(wireName: r'issuanceFlowDataId')
+  String? get issuanceFlowDataId;
 
   ChangeCredentialStatusInput._();
 
-  factory ChangeCredentialStatusInput([void updates(ChangeCredentialStatusInputBuilder b)]) = _$ChangeCredentialStatusInput;
+  factory ChangeCredentialStatusInput(
+          [void updates(ChangeCredentialStatusInputBuilder b)]) =
+      _$ChangeCredentialStatusInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChangeCredentialStatusInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChangeCredentialStatusInput> get serializer => _$ChangeCredentialStatusInputSerializer();
+  static Serializer<ChangeCredentialStatusInput> get serializer =>
+      _$ChangeCredentialStatusInputSerializer();
 }
 
-class _$ChangeCredentialStatusInputSerializer implements PrimitiveSerializer<ChangeCredentialStatusInput> {
+class _$ChangeCredentialStatusInputSerializer
+    implements PrimitiveSerializer<ChangeCredentialStatusInput> {
   @override
-  final Iterable<Type> types = const [ChangeCredentialStatusInput, _$ChangeCredentialStatusInput];
+  final Iterable<Type> types = const [
+    ChangeCredentialStatusInput,
+    _$ChangeCredentialStatusInput
+  ];
 
   @override
   final String wireName = r'ChangeCredentialStatusInput';
@@ -51,13 +57,13 @@ class _$ChangeCredentialStatusInputSerializer implements PrimitiveSerializer<Cha
       yield r'changeReason';
       yield serializers.serialize(
         object.changeReason,
-        specifiedType: const FullType(ChangeCredentialStatusInputChangeReasonEnum),
+        specifiedType: const FullType(String),
       );
     }
-    if (object.issuanceRecordId != null) {
-      yield r'issuanceRecordId';
+    if (object.issuanceFlowDataId != null) {
+      yield r'issuanceFlowDataId';
       yield serializers.serialize(
-        object.issuanceRecordId,
+        object.issuanceFlowDataId,
         specifiedType: const FullType(String),
       );
     }
@@ -69,7 +75,9 @@ class _$ChangeCredentialStatusInputSerializer implements PrimitiveSerializer<Cha
     ChangeCredentialStatusInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -87,16 +95,16 @@ class _$ChangeCredentialStatusInputSerializer implements PrimitiveSerializer<Cha
         case r'changeReason':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChangeCredentialStatusInputChangeReasonEnum),
-          ) as ChangeCredentialStatusInputChangeReasonEnum;
+            specifiedType: const FullType(String),
+          ) as String;
           result.changeReason = valueDes;
           break;
-        case r'issuanceRecordId':
+        case r'issuanceFlowDataId':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(String),
           ) as String;
-          result.issuanceRecordId = valueDes;
+          result.issuanceFlowDataId = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -126,21 +134,3 @@ class _$ChangeCredentialStatusInputSerializer implements PrimitiveSerializer<Cha
     return result.build();
   }
 }
-
-class ChangeCredentialStatusInputChangeReasonEnum extends EnumClass {
-
-  /// reason for revocation
-  @BuiltValueEnumConst(wireName: r'INVALID_CREDENTIAL')
-  static const ChangeCredentialStatusInputChangeReasonEnum INVALID_CREDENTIAL = _$changeCredentialStatusInputChangeReasonEnum_INVALID_CREDENTIAL;
-  /// reason for revocation
-  @BuiltValueEnumConst(wireName: r'COMPROMISED_ISSUER')
-  static const ChangeCredentialStatusInputChangeReasonEnum COMPROMISED_ISSUER = _$changeCredentialStatusInputChangeReasonEnum_COMPROMISED_ISSUER;
-
-  static Serializer<ChangeCredentialStatusInputChangeReasonEnum> get serializer => _$changeCredentialStatusInputChangeReasonEnumSerializer;
-
-  const ChangeCredentialStatusInputChangeReasonEnum._(String name): super(name);
-
-  static BuiltSet<ChangeCredentialStatusInputChangeReasonEnum> get values => _$changeCredentialStatusInputChangeReasonEnumValues;
-  static ChangeCredentialStatusInputChangeReasonEnum valueOf(String name) => _$changeCredentialStatusInputChangeReasonEnumValueOf(name);
-}
-

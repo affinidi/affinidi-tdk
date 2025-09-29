@@ -10,7 +10,6 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 | Method                                                             | HTTP request                                          | Description |
 | ------------------------------------------------------------------ | ----------------------------------------------------- | ----------- |
-| [**createChildNode**](NodesApi.md#createchildnode)                 | **POST** /v1/nodes/{nodeId}                           |
 | [**createNode**](NodesApi.md#createnode)                           | **POST** /v1/nodes                                    |
 | [**deleteNode**](NodesApi.md#deletenode)                           | **DELETE** /v1/nodes/{nodeId}                         |
 | [**getDetailedNodeInfo**](NodesApi.md#getdetailednodeinfo)         | **GET** /v1/nodes/{nodeId}                            |
@@ -22,60 +21,11 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [**restoreNodeFromTrashbin**](NodesApi.md#restorenodefromtrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
 | [**updateNode**](NodesApi.md#updatenode)                           | **PATCH** /v1/nodes/{nodeId}                          |
 
-# **createChildNode**
-
-> CreateNodeOK createChildNode(createNodeInput, parentNodeId)
-
-creates child node
-
-### Example
-
-```dart
-import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
-// TODO Configure API key authorization: ConsumerTokenAuth
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
-
-final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
-final CreateNodeInput createNodeInput = ; // CreateNodeInput | CreateNode
-final String parentNodeId = parentNodeId_example; // String | parent node id
-
-try {
-    final response = api.createChildNode(createNodeInput, parentNodeId);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling NodesApi->createChildNode: $e\n');
-}
-```
-
-### Parameters
-
-| Name                | Type                                      | Description    | Notes      |
-| ------------------- | ----------------------------------------- | -------------- | ---------- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode     |
-| **parentNodeId**    | **String**                                | parent node id | [optional] |
-
-### Return type
-
-[**CreateNodeOK**](CreateNodeOK.md)
-
-### Authorization
-
-[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **createNode**
 
 > CreateNodeOK createNode(createNodeInput)
 
-create a node
+creates node
 
 ### Example
 

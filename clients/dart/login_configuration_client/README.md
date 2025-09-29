@@ -1,10 +1,10 @@
-# affinidi_tdk_login_configuration_client (EXPERIMENTAL)
+# affinidi_tdk_login_configuration_client
 
 Affinidi TDK dart client for Affinidi LOGIN CONFIGURATION
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -127,7 +127,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [GroupUserMappingsList](doc/GroupUserMappingsList.md)
 - [GroupsList](doc/GroupsList.md)
 - [GroupsPerUserLimitExceededError](doc/GroupsPerUserLimitExceededError.md)
-- [IdTokenMappingItem](doc/IdTokenMappingItem.md)
 - [InlineObject](doc/InlineObject.md)
 - [InvalidClaimContextError](doc/InvalidClaimContextError.md)
 - [InvalidGroupsError](doc/InvalidGroupsError.md)
@@ -146,7 +145,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 - [LoginSessionForIDPInput](doc/LoginSessionForIDPInput.md)
 - [NotFoundError](doc/NotFoundError.md)
 - [OAuth2Token](doc/OAuth2Token.md)
-- [OAuth2TokenAuthorizationDetailsInner](doc/OAuth2TokenAuthorizationDetailsInner.md)
 - [OIDCConfig](doc/OIDCConfig.md)
 - [OIDCConfigCredentialsSupportedDraft00Inner](doc/OIDCConfigCredentialsSupportedDraft00Inner.md)
 - [RedirectResponse](doc/RedirectResponse.md)

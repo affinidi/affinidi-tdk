@@ -18,7 +18,6 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/not_found_erro
 import 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuance_config_input.dart';
 
 class ConfigurationApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -39,7 +38,7 @@ class ConfigurationApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IssuanceConfigDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<IssuanceConfigDto>> createIssuanceConfig({ 
+  Future<Response<IssuanceConfigDto>> createIssuanceConfig({
     required CreateIssuanceConfigInput createIssuanceConfigInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -73,11 +72,11 @@ class ConfigurationApi {
 
     try {
       const _type = FullType(CreateIssuanceConfigInput);
-      _bodyData = _serializers.serialize(createIssuanceConfigInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(createIssuanceConfigInput,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -100,11 +99,12 @@ class ConfigurationApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(IssuanceConfigDto),
-      ) as IssuanceConfigDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(IssuanceConfigDto),
+            ) as IssuanceConfigDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -141,7 +141,7 @@ class ConfigurationApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteIssuanceConfigById({ 
+  Future<Response<void>> deleteIssuanceConfigById({
     required String configurationId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -150,7 +150,11 @@ class ConfigurationApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/configurations/{configurationId}'.replaceAll('{' r'configurationId' '}', encodeQueryParameter(_serializers, configurationId, const FullType(String)).toString());
+    final _path = r'/v1/configurations/{configurationId}'.replaceAll(
+        '{' r'configurationId' '}',
+        encodeQueryParameter(
+                _serializers, configurationId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -195,7 +199,7 @@ class ConfigurationApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IssuanceConfigDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<IssuanceConfigDto>> getIssuanceConfigById({ 
+  Future<Response<IssuanceConfigDto>> getIssuanceConfigById({
     required String configurationId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -204,7 +208,11 @@ class ConfigurationApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/configurations/{configurationId}'.replaceAll('{' r'configurationId' '}', encodeQueryParameter(_serializers, configurationId, const FullType(String)).toString());
+    final _path = r'/v1/configurations/{configurationId}'.replaceAll(
+        '{' r'configurationId' '}',
+        encodeQueryParameter(
+                _serializers, configurationId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -236,11 +244,12 @@ class ConfigurationApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(IssuanceConfigDto),
-      ) as IssuanceConfigDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(IssuanceConfigDto),
+            ) as IssuanceConfigDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -276,7 +285,7 @@ class ConfigurationApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IssuanceConfigListResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<IssuanceConfigListResponse>> getIssuanceConfigList({ 
+  Future<Response<IssuanceConfigListResponse>> getIssuanceConfigList({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -316,11 +325,12 @@ class ConfigurationApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(IssuanceConfigListResponse),
-      ) as IssuanceConfigListResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(IssuanceConfigListResponse),
+            ) as IssuanceConfigListResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -358,7 +368,7 @@ class ConfigurationApi {
   ///
   /// Returns a [Future] containing a [Response] with a [IssuanceConfigDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<IssuanceConfigDto>> updateIssuanceConfigById({ 
+  Future<Response<IssuanceConfigDto>> updateIssuanceConfigById({
     required String configurationId,
     required UpdateIssuanceConfigInput updateIssuanceConfigInput,
     CancelToken? cancelToken,
@@ -368,7 +378,11 @@ class ConfigurationApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/configurations/{configurationId}'.replaceAll('{' r'configurationId' '}', encodeQueryParameter(_serializers, configurationId, const FullType(String)).toString());
+    final _path = r'/v1/configurations/{configurationId}'.replaceAll(
+        '{' r'configurationId' '}',
+        encodeQueryParameter(
+                _serializers, configurationId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -393,11 +407,11 @@ class ConfigurationApi {
 
     try {
       const _type = FullType(UpdateIssuanceConfigInput);
-      _bodyData = _serializers.serialize(updateIssuanceConfigInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(updateIssuanceConfigInput,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -420,11 +434,12 @@ class ConfigurationApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(IssuanceConfigDto),
-      ) as IssuanceConfigDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(IssuanceConfigDto),
+            ) as IssuanceConfigDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -446,5 +461,4 @@ class ConfigurationApi {
       extra: _response.extra,
     );
   }
-
 }

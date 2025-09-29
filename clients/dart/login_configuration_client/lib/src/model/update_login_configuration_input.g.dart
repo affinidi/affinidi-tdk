@@ -20,8 +20,6 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
   @override
   final JsonObject? presentationDefinition;
   @override
-  final BuiltList<IdTokenMappingItem>? idTokenMapping;
-  @override
   final LoginConfigurationClientMetadataInput? clientMetadata;
   @override
   final TokenEndpointAuthMethod? tokenEndpointAuthMethod;
@@ -39,7 +37,6 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
       this.clientSecret,
       this.vpDefinition,
       this.presentationDefinition,
-      this.idTokenMapping,
       this.clientMetadata,
       this.tokenEndpointAuthMethod,
       this.failOnMappingConflict})
@@ -63,7 +60,6 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
         clientSecret == other.clientSecret &&
         vpDefinition == other.vpDefinition &&
         presentationDefinition == other.presentationDefinition &&
-        idTokenMapping == other.idTokenMapping &&
         clientMetadata == other.clientMetadata &&
         tokenEndpointAuthMethod == other.tokenEndpointAuthMethod &&
         failOnMappingConflict == other.failOnMappingConflict;
@@ -78,7 +74,6 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
     _$hash = $jc(_$hash, clientSecret.hashCode);
     _$hash = $jc(_$hash, vpDefinition.hashCode);
     _$hash = $jc(_$hash, presentationDefinition.hashCode);
-    _$hash = $jc(_$hash, idTokenMapping.hashCode);
     _$hash = $jc(_$hash, clientMetadata.hashCode);
     _$hash = $jc(_$hash, tokenEndpointAuthMethod.hashCode);
     _$hash = $jc(_$hash, failOnMappingConflict.hashCode);
@@ -95,7 +90,6 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
           ..add('clientSecret', clientSecret)
           ..add('vpDefinition', vpDefinition)
           ..add('presentationDefinition', presentationDefinition)
-          ..add('idTokenMapping', idTokenMapping)
           ..add('clientMetadata', clientMetadata)
           ..add('tokenEndpointAuthMethod', tokenEndpointAuthMethod)
           ..add('failOnMappingConflict', failOnMappingConflict))
@@ -138,12 +132,6 @@ class UpdateLoginConfigurationInputBuilder
   set presentationDefinition(JsonObject? presentationDefinition) =>
       _$this._presentationDefinition = presentationDefinition;
 
-  ListBuilder<IdTokenMappingItem>? _idTokenMapping;
-  ListBuilder<IdTokenMappingItem> get idTokenMapping =>
-      _$this._idTokenMapping ??= ListBuilder<IdTokenMappingItem>();
-  set idTokenMapping(ListBuilder<IdTokenMappingItem>? idTokenMapping) =>
-      _$this._idTokenMapping = idTokenMapping;
-
   LoginConfigurationClientMetadataInputBuilder? _clientMetadata;
   LoginConfigurationClientMetadataInputBuilder get clientMetadata =>
       _$this._clientMetadata ??= LoginConfigurationClientMetadataInputBuilder();
@@ -176,7 +164,6 @@ class UpdateLoginConfigurationInputBuilder
       _clientSecret = $v.clientSecret;
       _vpDefinition = $v.vpDefinition;
       _presentationDefinition = $v.presentationDefinition;
-      _idTokenMapping = $v.idTokenMapping?.toBuilder();
       _clientMetadata = $v.clientMetadata?.toBuilder();
       _tokenEndpointAuthMethod = $v.tokenEndpointAuthMethod;
       _failOnMappingConflict = $v.failOnMappingConflict;
@@ -209,7 +196,6 @@ class UpdateLoginConfigurationInputBuilder
             clientSecret: clientSecret,
             vpDefinition: vpDefinition,
             presentationDefinition: presentationDefinition,
-            idTokenMapping: _idTokenMapping?.build(),
             clientMetadata: _clientMetadata?.build(),
             tokenEndpointAuthMethod: tokenEndpointAuthMethod,
             failOnMappingConflict: failOnMappingConflict,
@@ -222,8 +208,6 @@ class UpdateLoginConfigurationInputBuilder
         _$failedField = 'postLogoutRedirectUris';
         _postLogoutRedirectUris?.build();
 
-        _$failedField = 'idTokenMapping';
-        _idTokenMapping?.build();
         _$failedField = 'clientMetadata';
         _clientMetadata?.build();
       } catch (e) {

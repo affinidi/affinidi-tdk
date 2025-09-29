@@ -43,7 +43,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(GroupsPerUserLimitExceededErrorHttpStatusCodeEnum.serializer)
       ..add(GroupsPerUserLimitExceededErrorMessageEnum.serializer)
       ..add(GroupsPerUserLimitExceededErrorNameEnum.serializer)
-      ..add(IdTokenMappingItem.serializer)
       ..add(InlineObject.serializer)
       ..add(InvalidClaimContextError.serializer)
       ..add(InvalidClaimContextErrorHttpStatusCodeEnum.serializer)
@@ -81,8 +80,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(NotFoundErrorMessageEnum.serializer)
       ..add(NotFoundErrorNameEnum.serializer)
       ..add(OAuth2Token.serializer)
-      ..add(OAuth2TokenAuthorizationDetailsInner.serializer)
-      ..add(OAuth2TokenAuthorizationDetailsInnerTypeEnum.serializer)
       ..add(OIDCConfig.serializer)
       ..add(OIDCConfigCredentialsSupportedDraft00Inner.serializer)
       ..add(RedirectResponse.serializer)
@@ -173,10 +170,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           () => ListBuilder<LoginConfigurationObject>())
       ..addBuilderFactory(
           const FullType(BuiltList,
-              const [const FullType(OAuth2TokenAuthorizationDetailsInner)]),
-          () => ListBuilder<OAuth2TokenAuthorizationDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
               const [const FullType(ServiceErrorResponseDetailsInner)]),
           () => ListBuilder<ServiceErrorResponseDetailsInner>())
       ..addBuilderFactory(
@@ -210,26 +203,14 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(IdTokenMappingItem)]),
-          () => ListBuilder<IdTokenMappingItem>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(IdTokenMappingItem)]),
-          () => ListBuilder<IdTokenMappingItem>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => ListBuilder<String>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(IdTokenMappingItem)]),
-          () => ListBuilder<IdTokenMappingItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())

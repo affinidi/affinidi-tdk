@@ -30,7 +30,6 @@ doc/GroupUserMappingDto.md
 doc/GroupUserMappingsList.md
 doc/GroupsList.md
 doc/GroupsPerUserLimitExceededError.md
-doc/IdTokenMappingItem.md
 doc/IdpApi.md
 doc/InlineObject.md
 doc/InvalidClaimContextError.md
@@ -50,7 +49,6 @@ doc/LoginSessionDtoAuthorizationRequest.md
 doc/LoginSessionForIDPInput.md
 doc/NotFoundError.md
 doc/OAuth2Token.md
-doc/OAuth2TokenAuthorizationDetailsInner.md
 doc/OIDCConfig.md
 doc/OIDCConfigCredentialsSupportedDraft00Inner.md
 doc/RedirectResponse.md
@@ -100,7 +98,6 @@ lib/src/model/group_user_mapping_dto.dart
 lib/src/model/group_user_mappings_list.dart
 lib/src/model/groups_list.dart
 lib/src/model/groups_per_user_limit_exceeded_error.dart
-lib/src/model/id_token_mapping_item.dart
 lib/src/model/inline_object.dart
 lib/src/model/invalid_claim_context_error.dart
 lib/src/model/invalid_groups_error.dart
@@ -119,7 +116,6 @@ lib/src/model/login_session_dto_authorization_request.dart
 lib/src/model/login_session_for_idp_input.dart
 lib/src/model/not_found_error.dart
 lib/src/model/o_auth2_token.dart
-lib/src/model/o_auth2_token_authorization_details_inner.dart
 lib/src/model/oidc_config.dart
 lib/src/model/oidc_config_credentials_supported_draft00_inner.dart
 lib/src/model/redirect_response.dart

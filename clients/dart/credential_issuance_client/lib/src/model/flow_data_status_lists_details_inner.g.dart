@@ -29,12 +29,18 @@ final BuiltSet<FlowDataStatusListsDetailsInnerStatusListPurposeEnum>
 const FlowDataStatusListsDetailsInnerStandardEnum
     _$flowDataStatusListsDetailsInnerStandardEnum_revocationList2020 =
     const FlowDataStatusListsDetailsInnerStandardEnum._('revocationList2020');
+const FlowDataStatusListsDetailsInnerStandardEnum
+    _$flowDataStatusListsDetailsInnerStandardEnum_bitstringStatusListV1 =
+    const FlowDataStatusListsDetailsInnerStandardEnum._(
+        'bitstringStatusListV1');
 
 FlowDataStatusListsDetailsInnerStandardEnum
     _$flowDataStatusListsDetailsInnerStandardEnumValueOf(String name) {
   switch (name) {
     case 'revocationList2020':
       return _$flowDataStatusListsDetailsInnerStandardEnum_revocationList2020;
+    case 'bitstringStatusListV1':
+      return _$flowDataStatusListsDetailsInnerStandardEnum_bitstringStatusListV1;
     default:
       throw ArgumentError(name);
   }
@@ -44,6 +50,7 @@ final BuiltSet<FlowDataStatusListsDetailsInnerStandardEnum>
     _$flowDataStatusListsDetailsInnerStandardEnumValues = BuiltSet<
         FlowDataStatusListsDetailsInnerStandardEnum>(const <FlowDataStatusListsDetailsInnerStandardEnum>[
   _$flowDataStatusListsDetailsInnerStandardEnum_revocationList2020,
+  _$flowDataStatusListsDetailsInnerStandardEnum_bitstringStatusListV1,
 ]);
 
 Serializer<FlowDataStatusListsDetailsInnerStatusListPurposeEnum>
@@ -91,9 +98,11 @@ class _$FlowDataStatusListsDetailsInnerStandardEnumSerializer
         PrimitiveSerializer<FlowDataStatusListsDetailsInnerStandardEnum> {
   static const Map<String, Object> _toWire = const <String, Object>{
     'revocationList2020': 'RevocationList2020',
+    'bitstringStatusListV1': 'BitstringStatusListV1',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'RevocationList2020': 'revocationList2020',
+    'BitstringStatusListV1': 'bitstringStatusListV1',
   };
 
   @override

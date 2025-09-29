@@ -17,7 +17,10 @@ part 'login_session_dto_authorization_request.g.dart';
 /// * [clientId] - clientId used for detect origin.
 /// * [nonce] - nonce for VP Token proof challenge
 @BuiltValue()
-abstract class LoginSessionDtoAuthorizationRequest implements Built<LoginSessionDtoAuthorizationRequest, LoginSessionDtoAuthorizationRequestBuilder> {
+abstract class LoginSessionDtoAuthorizationRequest
+    implements
+        Built<LoginSessionDtoAuthorizationRequest,
+            LoginSessionDtoAuthorizationRequestBuilder> {
   /// State parameter
   @BuiltValueField(wireName: r'state')
   String get state;
@@ -40,18 +43,25 @@ abstract class LoginSessionDtoAuthorizationRequest implements Built<LoginSession
 
   LoginSessionDtoAuthorizationRequest._();
 
-  factory LoginSessionDtoAuthorizationRequest([void updates(LoginSessionDtoAuthorizationRequestBuilder b)]) = _$LoginSessionDtoAuthorizationRequest;
+  factory LoginSessionDtoAuthorizationRequest(
+          [void updates(LoginSessionDtoAuthorizationRequestBuilder b)]) =
+      _$LoginSessionDtoAuthorizationRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LoginSessionDtoAuthorizationRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LoginSessionDtoAuthorizationRequest> get serializer => _$LoginSessionDtoAuthorizationRequestSerializer();
+  static Serializer<LoginSessionDtoAuthorizationRequest> get serializer =>
+      _$LoginSessionDtoAuthorizationRequestSerializer();
 }
 
-class _$LoginSessionDtoAuthorizationRequestSerializer implements PrimitiveSerializer<LoginSessionDtoAuthorizationRequest> {
+class _$LoginSessionDtoAuthorizationRequestSerializer
+    implements PrimitiveSerializer<LoginSessionDtoAuthorizationRequest> {
   @override
-  final Iterable<Type> types = const [LoginSessionDtoAuthorizationRequest, _$LoginSessionDtoAuthorizationRequest];
+  final Iterable<Type> types = const [
+    LoginSessionDtoAuthorizationRequest,
+    _$LoginSessionDtoAuthorizationRequest
+  ];
 
   @override
   final String wireName = r'LoginSessionDtoAuthorizationRequest';
@@ -100,7 +110,9 @@ class _$LoginSessionDtoAuthorizationRequestSerializer implements PrimitiveSerial
     LoginSessionDtoAuthorizationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -178,4 +190,3 @@ class _$LoginSessionDtoAuthorizationRequestSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-

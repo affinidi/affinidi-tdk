@@ -16,7 +16,6 @@ import 'package:affinidi_tdk_login_configuration_client/src/model/group_names_in
 import 'package:affinidi_tdk_login_configuration_client/src/model/invalid_groups_error.dart';
 
 class DenyListApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -37,7 +36,7 @@ class DenyListApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> blockGroups({ 
+  Future<Response<void>> blockGroups({
     GroupNamesInput? groupNamesInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -71,11 +70,12 @@ class DenyListApi {
 
     try {
       const _type = FullType(GroupNamesInput);
-      _bodyData = groupNamesInput == null ? null : _serializers.serialize(groupNamesInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = groupNamesInput == null
+          ? null
+          : _serializers.serialize(groupNamesInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -111,7 +111,7 @@ class DenyListApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> blockUsers({ 
+  Future<Response<void>> blockUsers({
     BlockedUsersInput? blockedUsersInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -145,11 +145,12 @@ class DenyListApi {
 
     try {
       const _type = FullType(BlockedUsersInput);
-      _bodyData = blockedUsersInput == null ? null : _serializers.serialize(blockedUsersInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = blockedUsersInput == null
+          ? null
+          : _serializers.serialize(blockedUsersInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -175,7 +176,7 @@ class DenyListApi {
   /// Get Blocked Groups
   ///
   /// Parameters:
-  /// * [pageToken] 
+  /// * [pageToken]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -185,7 +186,7 @@ class DenyListApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GroupNames] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GroupNames>> listBlockedGroups({ 
+  Future<Response<GroupNames>> listBlockedGroups({
     String? pageToken,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -215,7 +216,9 @@ class DenyListApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (pageToken != null) r'pageToken': encodeQueryParameter(_serializers, pageToken, const FullType(String)),
+      if (pageToken != null)
+        r'pageToken': encodeQueryParameter(
+            _serializers, pageToken, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -231,11 +234,12 @@ class DenyListApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GroupNames),
-      ) as GroupNames;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GroupNames),
+            ) as GroupNames;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -262,7 +266,7 @@ class DenyListApi {
   /// Get List of Blocked Users
   ///
   /// Parameters:
-  /// * [pageToken] 
+  /// * [pageToken]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -272,7 +276,7 @@ class DenyListApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BlockedUsers] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BlockedUsers>> listBlockedUsers({ 
+  Future<Response<BlockedUsers>> listBlockedUsers({
     String? pageToken,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -302,7 +306,9 @@ class DenyListApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (pageToken != null) r'pageToken': encodeQueryParameter(_serializers, pageToken, const FullType(String)),
+      if (pageToken != null)
+        r'pageToken': encodeQueryParameter(
+            _serializers, pageToken, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -318,11 +324,12 @@ class DenyListApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BlockedUsers),
-      ) as BlockedUsers;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BlockedUsers),
+            ) as BlockedUsers;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -359,7 +366,7 @@ class DenyListApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> unblockGroups({ 
+  Future<Response<void>> unblockGroups({
     GroupNamesInput? groupNamesInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -393,11 +400,12 @@ class DenyListApi {
 
     try {
       const _type = FullType(GroupNamesInput);
-      _bodyData = groupNamesInput == null ? null : _serializers.serialize(groupNamesInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = groupNamesInput == null
+          ? null
+          : _serializers.serialize(groupNamesInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -433,7 +441,7 @@ class DenyListApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> unblockUsers({ 
+  Future<Response<void>> unblockUsers({
     BlockedUsersInput? blockedUsersInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -467,11 +475,12 @@ class DenyListApi {
 
     try {
       const _type = FullType(BlockedUsersInput);
-      _bodyData = blockedUsersInput == null ? null : _serializers.serialize(blockedUsersInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = blockedUsersInput == null
+          ? null
+          : _serializers.serialize(blockedUsersInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -492,5 +501,4 @@ class DenyListApi {
 
     return _response;
   }
-
 }

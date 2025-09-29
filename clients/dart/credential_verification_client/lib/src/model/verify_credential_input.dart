@@ -3,8 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:affinidi_tdk_credential_verification_client/src/model/free_form_object.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:built_value/json_object.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -14,31 +15,37 @@ part 'verify_credential_input.g.dart';
 ///
 /// Properties:
 /// * [verifiableCredentials] - List of VCs
-/// * [issuerDidDocument] - Dynamic model
+/// * [issuerDidDocument]
 @BuiltValue()
-abstract class VerifyCredentialInput implements Built<VerifyCredentialInput, VerifyCredentialInputBuilder> {
+abstract class VerifyCredentialInput
+    implements Built<VerifyCredentialInput, VerifyCredentialInputBuilder> {
   /// List of VCs
   @BuiltValueField(wireName: r'verifiableCredentials')
-  BuiltList<JsonObject> get verifiableCredentials;
+  BuiltList<W3cCredential> get verifiableCredentials;
 
-  /// Dynamic model
   @BuiltValueField(wireName: r'issuerDidDocument')
-  BuiltMap<String, JsonObject?>? get issuerDidDocument;
+  FreeFormObject? get issuerDidDocument;
 
   VerifyCredentialInput._();
 
-  factory VerifyCredentialInput([void updates(VerifyCredentialInputBuilder b)]) = _$VerifyCredentialInput;
+  factory VerifyCredentialInput(
+      [void updates(VerifyCredentialInputBuilder b)]) = _$VerifyCredentialInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VerifyCredentialInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyCredentialInput> get serializer => _$VerifyCredentialInputSerializer();
+  static Serializer<VerifyCredentialInput> get serializer =>
+      _$VerifyCredentialInputSerializer();
 }
 
-class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCredentialInput> {
+class _$VerifyCredentialInputSerializer
+    implements PrimitiveSerializer<VerifyCredentialInput> {
   @override
-  final Iterable<Type> types = const [VerifyCredentialInput, _$VerifyCredentialInput];
+  final Iterable<Type> types = const [
+    VerifyCredentialInput,
+    _$VerifyCredentialInput
+  ];
 
   @override
   final String wireName = r'VerifyCredentialInput';
@@ -51,13 +58,13 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
     yield r'verifiableCredentials';
     yield serializers.serialize(
       object.verifiableCredentials,
-      specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
+      specifiedType: const FullType(BuiltList, [FullType(W3cCredential)]),
     );
     if (object.issuerDidDocument != null) {
       yield r'issuerDidDocument';
       yield serializers.serialize(
         object.issuerDidDocument,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(FreeFormObject),
       );
     }
   }
@@ -68,7 +75,9 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
     VerifyCredentialInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -86,16 +95,16 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
         case r'verifiableCredentials':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonObject)]),
-          ) as BuiltList<JsonObject>;
+            specifiedType: const FullType(BuiltList, [FullType(W3cCredential)]),
+          ) as BuiltList<W3cCredential>;
           result.verifiableCredentials.replace(valueDes);
           break;
         case r'issuerDidDocument':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
-          result.issuerDidDocument.replace(valueDes);
+            specifiedType: const FullType(FreeFormObject),
+          ) as FreeFormObject;
+          result.issuerDidDocument = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -125,4 +134,3 @@ class _$VerifyCredentialInputSerializer implements PrimitiveSerializer<VerifyCre
     return result.build();
   }
 }
-

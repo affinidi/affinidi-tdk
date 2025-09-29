@@ -13,13 +13,14 @@ part 'already_exists_error.g.dart';
 /// AlreadyExistsError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class AlreadyExistsError implements Built<AlreadyExistsError, AlreadyExistsErrorBuilder> {
+abstract class AlreadyExistsError
+    implements Built<AlreadyExistsError, AlreadyExistsErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   AlreadyExistsErrorNameEnum get name;
   // enum nameEnum {  AlreadyExistsError,  };
@@ -40,16 +41,19 @@ abstract class AlreadyExistsError implements Built<AlreadyExistsError, AlreadyEx
 
   AlreadyExistsError._();
 
-  factory AlreadyExistsError([void updates(AlreadyExistsErrorBuilder b)]) = _$AlreadyExistsError;
+  factory AlreadyExistsError([void updates(AlreadyExistsErrorBuilder b)]) =
+      _$AlreadyExistsError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AlreadyExistsErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AlreadyExistsError> get serializer => _$AlreadyExistsErrorSerializer();
+  static Serializer<AlreadyExistsError> get serializer =>
+      _$AlreadyExistsErrorSerializer();
 }
 
-class _$AlreadyExistsErrorSerializer implements PrimitiveSerializer<AlreadyExistsError> {
+class _$AlreadyExistsErrorSerializer
+    implements PrimitiveSerializer<AlreadyExistsError> {
   @override
   final Iterable<Type> types = const [AlreadyExistsError, _$AlreadyExistsError];
 
@@ -85,7 +89,8 @@ class _$AlreadyExistsErrorSerializer implements PrimitiveSerializer<AlreadyExist
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +101,9 @@ class _$AlreadyExistsErrorSerializer implements PrimitiveSerializer<AlreadyExist
     AlreadyExistsError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,7 +149,8 @@ class _$AlreadyExistsErrorSerializer implements PrimitiveSerializer<AlreadyExist
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +184,50 @@ class _$AlreadyExistsErrorSerializer implements PrimitiveSerializer<AlreadyExist
 }
 
 class AlreadyExistsErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'AlreadyExistsError')
-  static const AlreadyExistsErrorNameEnum alreadyExistsError = _$alreadyExistsErrorNameEnum_alreadyExistsError;
+  static const AlreadyExistsErrorNameEnum alreadyExistsError =
+      _$alreadyExistsErrorNameEnum_alreadyExistsError;
 
-  static Serializer<AlreadyExistsErrorNameEnum> get serializer => _$alreadyExistsErrorNameEnumSerializer;
+  static Serializer<AlreadyExistsErrorNameEnum> get serializer =>
+      _$alreadyExistsErrorNameEnumSerializer;
 
-  const AlreadyExistsErrorNameEnum._(String name): super(name);
+  const AlreadyExistsErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<AlreadyExistsErrorNameEnum> get values => _$alreadyExistsErrorNameEnumValues;
-  static AlreadyExistsErrorNameEnum valueOf(String name) => _$alreadyExistsErrorNameEnumValueOf(name);
+  static BuiltSet<AlreadyExistsErrorNameEnum> get values =>
+      _$alreadyExistsErrorNameEnumValues;
+  static AlreadyExistsErrorNameEnum valueOf(String name) =>
+      _$alreadyExistsErrorNameEnumValueOf(name);
 }
 
 class AlreadyExistsErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Already exists: ${param}.')
-  static const AlreadyExistsErrorMessageEnum alreadyExistsColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod = _$alreadyExistsErrorMessageEnum_alreadyExistsColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
+  static const AlreadyExistsErrorMessageEnum
+      alreadyExistsColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod =
+      _$alreadyExistsErrorMessageEnum_alreadyExistsColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
 
-  static Serializer<AlreadyExistsErrorMessageEnum> get serializer => _$alreadyExistsErrorMessageEnumSerializer;
+  static Serializer<AlreadyExistsErrorMessageEnum> get serializer =>
+      _$alreadyExistsErrorMessageEnumSerializer;
 
-  const AlreadyExistsErrorMessageEnum._(String name): super(name);
+  const AlreadyExistsErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<AlreadyExistsErrorMessageEnum> get values => _$alreadyExistsErrorMessageEnumValues;
-  static AlreadyExistsErrorMessageEnum valueOf(String name) => _$alreadyExistsErrorMessageEnumValueOf(name);
+  static BuiltSet<AlreadyExistsErrorMessageEnum> get values =>
+      _$alreadyExistsErrorMessageEnumValues;
+  static AlreadyExistsErrorMessageEnum valueOf(String name) =>
+      _$alreadyExistsErrorMessageEnumValueOf(name);
 }
 
 class AlreadyExistsErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 409)
-  static const AlreadyExistsErrorHttpStatusCodeEnum number409 = _$alreadyExistsErrorHttpStatusCodeEnum_number409;
+  static const AlreadyExistsErrorHttpStatusCodeEnum number409 =
+      _$alreadyExistsErrorHttpStatusCodeEnum_number409;
 
-  static Serializer<AlreadyExistsErrorHttpStatusCodeEnum> get serializer => _$alreadyExistsErrorHttpStatusCodeEnumSerializer;
+  static Serializer<AlreadyExistsErrorHttpStatusCodeEnum> get serializer =>
+      _$alreadyExistsErrorHttpStatusCodeEnumSerializer;
 
-  const AlreadyExistsErrorHttpStatusCodeEnum._(String name): super(name);
+  const AlreadyExistsErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<AlreadyExistsErrorHttpStatusCodeEnum> get values => _$alreadyExistsErrorHttpStatusCodeEnumValues;
-  static AlreadyExistsErrorHttpStatusCodeEnum valueOf(String name) => _$alreadyExistsErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<AlreadyExistsErrorHttpStatusCodeEnum> get values =>
+      _$alreadyExistsErrorHttpStatusCodeEnumValues;
+  static AlreadyExistsErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$alreadyExistsErrorHttpStatusCodeEnumValueOf(name);
 }
-

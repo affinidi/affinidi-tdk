@@ -14,18 +14,14 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/date_serializer.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/date.dart';
 
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/account_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/aws_credential_exchange_operation_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/consumer_metadata_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_aws_credential_exchange_ok.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_delete_account_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_delete_node_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_config_ok.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_configuration_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_scanned_file_info_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_get_well_known_jwks_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_init_nodes_ok.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_accounts_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_node_children_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_root_node_children_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_list_scanned_files_ok.dart';
@@ -34,12 +30,8 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_permanentl
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_restore_node_from_trashbin_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_start_file_scan_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/cors_update_profile_data_ok.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_input.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_ok.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_child_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_node_ok.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_account_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_node_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/edek_info.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/get_config_ok.dart';
@@ -50,7 +42,6 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/invalid_paramet
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/invalid_parameter_error_details_inner.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/json_web_key_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/json_web_key_set_dto.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/list_accounts_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/list_node_children_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/list_root_node_children_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/list_scanned_files_ok.dart';
@@ -66,8 +57,6 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/restore_node_fr
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/unexpected_error.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_dto.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_node_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_ok.dart';
@@ -75,18 +64,14 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_
 part 'serializers.g.dart';
 
 @SerializersFor([
-  AccountDto,
   AwsCredentialExchangeOperationOK,
   ConsumerMetadataDto,
   CorsAwsCredentialExchangeOK,
-  CorsDeleteAccountOK,
   CorsDeleteNodeOK,
   CorsGetConfigOK,
-  CorsGetConfigurationOK,
   CorsGetScannedFileInfoOK,
   CorsGetWellKnownJwksOK,
   CorsInitNodesOK,
-  CorsListAccountsOK,
   CorsListNodeChildrenOK,
   CorsListRootNodeChildrenOK,
   CorsListScannedFilesOK,
@@ -95,12 +80,8 @@ part 'serializers.g.dart';
   CorsRestoreNodeFromTrashbinOK,
   CorsStartFileScanOK,
   CorsUpdateProfileDataOK,
-  CreateAccountInput,
-  CreateAccountOK,
-  CreateChildNodeInput,
   CreateNodeInput,
   CreateNodeOK,
-  DeleteAccountDto,
   DeleteNodeDto,
   EdekInfo,
   GetConfigOK,
@@ -111,14 +92,14 @@ part 'serializers.g.dart';
   InvalidParameterErrorDetailsInner,
   JsonWebKeyDto,
   JsonWebKeySetDto,
-  ListAccountsDto,
   ListNodeChildrenOK,
   ListRootNodeChildrenOK,
   ListScannedFilesOK,
   ListScannedFilesOKScannedFilesInner,
   MoveNodeDto,
   MoveNodeInput,
-  NodeDto,$NodeDto,
+  NodeDto,
+  $NodeDto,
   NodeStatus,
   NodeType,
   NotFoundError,
@@ -127,8 +108,6 @@ part 'serializers.g.dart';
   StartFileScanInput,
   StartFileScanOK,
   UnexpectedError,
-  UpdateAccountDto,
-  UpdateAccountInput,
   UpdateNodeInput,
   UpdateProfileDataInput,
   UpdateProfileDataOK,
@@ -138,8 +117,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

@@ -15,9 +15,11 @@ part 'credential_supported_object.g.dart';
 /// * [credentialTypeId] - It is a String that identifies a Credential that is being requested to be issued.
 /// * [jsonSchemaUrl] - credential jsonLdContextUrl
 /// * [jsonLdContextUrl] - credential jsonSchemaUrl
-/// * [metadata] 
+/// * [metadata]
 @BuiltValue()
-abstract class CredentialSupportedObject implements Built<CredentialSupportedObject, CredentialSupportedObjectBuilder> {
+abstract class CredentialSupportedObject
+    implements
+        Built<CredentialSupportedObject, CredentialSupportedObjectBuilder> {
   /// It is a String that identifies a Credential that is being requested to be issued.
   @BuiltValueField(wireName: r'credentialTypeId')
   String get credentialTypeId;
@@ -35,18 +37,25 @@ abstract class CredentialSupportedObject implements Built<CredentialSupportedObj
 
   CredentialSupportedObject._();
 
-  factory CredentialSupportedObject([void updates(CredentialSupportedObjectBuilder b)]) = _$CredentialSupportedObject;
+  factory CredentialSupportedObject(
+          [void updates(CredentialSupportedObjectBuilder b)]) =
+      _$CredentialSupportedObject;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CredentialSupportedObjectBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CredentialSupportedObject> get serializer => _$CredentialSupportedObjectSerializer();
+  static Serializer<CredentialSupportedObject> get serializer =>
+      _$CredentialSupportedObjectSerializer();
 }
 
-class _$CredentialSupportedObjectSerializer implements PrimitiveSerializer<CredentialSupportedObject> {
+class _$CredentialSupportedObjectSerializer
+    implements PrimitiveSerializer<CredentialSupportedObject> {
   @override
-  final Iterable<Type> types = const [CredentialSupportedObject, _$CredentialSupportedObject];
+  final Iterable<Type> types = const [
+    CredentialSupportedObject,
+    _$CredentialSupportedObject
+  ];
 
   @override
   final String wireName = r'CredentialSupportedObject';
@@ -86,7 +95,9 @@ class _$CredentialSupportedObjectSerializer implements PrimitiveSerializer<Crede
     CredentialSupportedObject object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -127,7 +138,7 @@ class _$CredentialSupportedObjectSerializer implements PrimitiveSerializer<Crede
             value,
             specifiedType: const FullType(SupportedCredentialMetadata),
           ) as SupportedCredentialMetadata;
-          result.metadata.replace(valueDes);
+          result.metadata = valueDes.toBuilder();
           break;
         default:
           unhandled.add(key);
@@ -157,4 +168,3 @@ class _$CredentialSupportedObjectSerializer implements PrimitiveSerializer<Crede
     return result.build();
   }
 }
-

@@ -17,7 +17,8 @@ part 'fetch_iotavp_response_ok.g.dart';
 /// * [presentationSubmission] - A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.
 /// * [vpToken] - A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.
 @BuiltValue()
-abstract class FetchIOTAVPResponseOK implements Built<FetchIOTAVPResponseOK, FetchIOTAVPResponseOKBuilder> {
+abstract class FetchIOTAVPResponseOK
+    implements Built<FetchIOTAVPResponseOK, FetchIOTAVPResponseOKBuilder> {
   /// A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
   @BuiltValueField(wireName: r'correlationId')
   String? get correlationId;
@@ -32,18 +33,24 @@ abstract class FetchIOTAVPResponseOK implements Built<FetchIOTAVPResponseOK, Fet
 
   FetchIOTAVPResponseOK._();
 
-  factory FetchIOTAVPResponseOK([void updates(FetchIOTAVPResponseOKBuilder b)]) = _$FetchIOTAVPResponseOK;
+  factory FetchIOTAVPResponseOK(
+      [void updates(FetchIOTAVPResponseOKBuilder b)]) = _$FetchIOTAVPResponseOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(FetchIOTAVPResponseOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<FetchIOTAVPResponseOK> get serializer => _$FetchIOTAVPResponseOKSerializer();
+  static Serializer<FetchIOTAVPResponseOK> get serializer =>
+      _$FetchIOTAVPResponseOKSerializer();
 }
 
-class _$FetchIOTAVPResponseOKSerializer implements PrimitiveSerializer<FetchIOTAVPResponseOK> {
+class _$FetchIOTAVPResponseOKSerializer
+    implements PrimitiveSerializer<FetchIOTAVPResponseOK> {
   @override
-  final Iterable<Type> types = const [FetchIOTAVPResponseOK, _$FetchIOTAVPResponseOK];
+  final Iterable<Type> types = const [
+    FetchIOTAVPResponseOK,
+    _$FetchIOTAVPResponseOK
+  ];
 
   @override
   final String wireName = r'FetchIOTAVPResponseOK';
@@ -82,7 +89,9 @@ class _$FetchIOTAVPResponseOKSerializer implements PrimitiveSerializer<FetchIOTA
     FetchIOTAVPResponseOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -146,4 +155,3 @@ class _$FetchIOTAVPResponseOKSerializer implements PrimitiveSerializer<FetchIOTA
     return result.build();
   }
 }
-

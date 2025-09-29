@@ -18,13 +18,14 @@ part 'inline_object.g.dart';
 /// InlineObject
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InlineObject implements Built<InlineObject, InlineObjectBuilder> {
+abstract class InlineObject
+    implements Built<InlineObject, InlineObjectBuilder> {
   /// One Of [InvalidClaimContextError], [InvalidParameterError], [InvalidVPTokenCreationTimeError], [VPTokenValidationError]
   OneOf get oneOf;
 
@@ -47,11 +48,7 @@ class _$InlineObjectSerializer implements PrimitiveSerializer<InlineObject> {
   final String wireName = r'InlineObject';
 
   Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    InlineObject object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+      Serializers serializers, InlineObject object) sync* {}
 
   @override
   Object serialize(
@@ -60,7 +57,8 @@ class _$InlineObjectSerializer implements PrimitiveSerializer<InlineObject> {
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -71,49 +69,63 @@ class _$InlineObjectSerializer implements PrimitiveSerializer<InlineObject> {
   }) {
     final result = InlineObjectBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(InvalidParameterError), FullType(VPTokenValidationError), FullType(InvalidClaimContextError), FullType(InvalidVPTokenCreationTimeError), ]);
+    final targetType = const FullType(OneOf, [
+      FullType(InvalidParameterError),
+      FullType(VPTokenValidationError),
+      FullType(InvalidClaimContextError),
+      FullType(InvalidVPTokenCreationTimeError),
+    ]);
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }
 
 class InlineObjectNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidVPTokenCreationTimeError')
-  static const InlineObjectNameEnum invalidVPTokenCreationTimeError = _$inlineObjectNameEnum_invalidVPTokenCreationTimeError;
+  static const InlineObjectNameEnum invalidVPTokenCreationTimeError =
+      _$inlineObjectNameEnum_invalidVPTokenCreationTimeError;
 
-  static Serializer<InlineObjectNameEnum> get serializer => _$inlineObjectNameEnumSerializer;
+  static Serializer<InlineObjectNameEnum> get serializer =>
+      _$inlineObjectNameEnumSerializer;
 
-  const InlineObjectNameEnum._(String name): super(name);
+  const InlineObjectNameEnum._(String name) : super(name);
 
-  static BuiltSet<InlineObjectNameEnum> get values => _$inlineObjectNameEnumValues;
-  static InlineObjectNameEnum valueOf(String name) => _$inlineObjectNameEnumValueOf(name);
+  static BuiltSet<InlineObjectNameEnum> get values =>
+      _$inlineObjectNameEnumValues;
+  static InlineObjectNameEnum valueOf(String name) =>
+      _$inlineObjectNameEnumValueOf(name);
 }
 
 class InlineObjectMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'VP token has expired')
-  static const InlineObjectMessageEnum vPTokenHasExpired = _$inlineObjectMessageEnum_vPTokenHasExpired;
+  static const InlineObjectMessageEnum vPTokenHasExpired =
+      _$inlineObjectMessageEnum_vPTokenHasExpired;
 
-  static Serializer<InlineObjectMessageEnum> get serializer => _$inlineObjectMessageEnumSerializer;
+  static Serializer<InlineObjectMessageEnum> get serializer =>
+      _$inlineObjectMessageEnumSerializer;
 
-  const InlineObjectMessageEnum._(String name): super(name);
+  const InlineObjectMessageEnum._(String name) : super(name);
 
-  static BuiltSet<InlineObjectMessageEnum> get values => _$inlineObjectMessageEnumValues;
-  static InlineObjectMessageEnum valueOf(String name) => _$inlineObjectMessageEnumValueOf(name);
+  static BuiltSet<InlineObjectMessageEnum> get values =>
+      _$inlineObjectMessageEnumValues;
+  static InlineObjectMessageEnum valueOf(String name) =>
+      _$inlineObjectMessageEnumValueOf(name);
 }
 
 class InlineObjectHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const InlineObjectHttpStatusCodeEnum number400 = _$inlineObjectHttpStatusCodeEnum_number400;
+  static const InlineObjectHttpStatusCodeEnum number400 =
+      _$inlineObjectHttpStatusCodeEnum_number400;
 
-  static Serializer<InlineObjectHttpStatusCodeEnum> get serializer => _$inlineObjectHttpStatusCodeEnumSerializer;
+  static Serializer<InlineObjectHttpStatusCodeEnum> get serializer =>
+      _$inlineObjectHttpStatusCodeEnumSerializer;
 
-  const InlineObjectHttpStatusCodeEnum._(String name): super(name);
+  const InlineObjectHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<InlineObjectHttpStatusCodeEnum> get values => _$inlineObjectHttpStatusCodeEnumValues;
-  static InlineObjectHttpStatusCodeEnum valueOf(String name) => _$inlineObjectHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InlineObjectHttpStatusCodeEnum> get values =>
+      _$inlineObjectHttpStatusCodeEnumValues;
+  static InlineObjectHttpStatusCodeEnum valueOf(String name) =>
+      _$inlineObjectHttpStatusCodeEnumValueOf(name);
 }
-

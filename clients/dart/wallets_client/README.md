@@ -1,10 +1,10 @@
-# affinidi_tdk_wallets_client (EXPERIMENTAL)
+# affinidi_tdk_wallets_client
 
 Affinidi TDK dart client for Affinidi WALLETS
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -90,6 +90,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 
 - [CreateWalletInput](doc/CreateWalletInput.md)
 - [CreateWalletResponse](doc/CreateWalletResponse.md)
+- [DidKeyInputParams](doc/DidKeyInputParams.md)
+- [DidWebInputParams](doc/DidWebInputParams.md)
 - [EntityNotFoundError](doc/EntityNotFoundError.md)
 - [GetRevocationCredentialStatusOK](doc/GetRevocationCredentialStatusOK.md)
 - [GetRevocationListCredentialResultDto](doc/GetRevocationListCredentialResultDto.md)
@@ -105,14 +107,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialInputDto](doc/SignCredentialInputDto.md)
 - [SignCredentialInputDtoUnsignedCredentialParams](doc/SignCredentialInputDtoUnsignedCredentialParams.md)
 - [SignCredentialResultDto](doc/SignCredentialResultDto.md)
-- [SignCredentialsDm1JwtInputDto](doc/SignCredentialsDm1JwtInputDto.md)
-- [SignCredentialsDm1JwtResultDto](doc/SignCredentialsDm1JwtResultDto.md)
-- [SignCredentialsDm1LdInputDto](doc/SignCredentialsDm1LdInputDto.md)
-- [SignCredentialsDm1LdResultDto](doc/SignCredentialsDm1LdResultDto.md)
-- [SignCredentialsDm2LdInputDto](doc/SignCredentialsDm2LdInputDto.md)
-- [SignCredentialsDm2LdResultDto](doc/SignCredentialsDm2LdResultDto.md)
-- [SignCredentialsDm2SdJwtInputDto](doc/SignCredentialsDm2SdJwtInputDto.md)
-- [SignCredentialsDm2SdJwtResultDto](doc/SignCredentialsDm2SdJwtResultDto.md)
+- [SignCredentialResultDtoSignedCredential](doc/SignCredentialResultDtoSignedCredential.md)
 - [SignJwtToken](doc/SignJwtToken.md)
 - [SignJwtTokenOK](doc/SignJwtTokenOK.md)
 - [SigningFailedError](doc/SigningFailedError.md)

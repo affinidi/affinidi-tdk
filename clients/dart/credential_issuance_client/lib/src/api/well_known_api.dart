@@ -12,7 +12,6 @@ import 'package:affinidi_tdk_credential_issuance_client/src/api_util.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';
 
 class WellKnownApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -20,7 +19,7 @@ class WellKnownApi {
   const WellKnownApi(this._dio, this._serializers);
 
   /// getWellKnownOpenIdCredentialIssuer
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [projectId] - Affinidi project id
@@ -33,7 +32,8 @@ class WellKnownApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WellKnownOpenIdCredentialIssuerResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WellKnownOpenIdCredentialIssuerResponse>> getWellKnownOpenIdCredentialIssuer({ 
+  Future<Response<WellKnownOpenIdCredentialIssuerResponse>>
+      getWellKnownOpenIdCredentialIssuer({
     required String projectId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -42,7 +42,12 @@ class WellKnownApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/{projectId}/.well-known/openid-credential-issuer'.replaceAll('{' r'projectId' '}', encodeQueryParameter(_serializers, projectId, const FullType(String)).toString());
+    final _path = r'/v1/{projectId}/.well-known/openid-credential-issuer'
+        .replaceAll(
+            '{' r'projectId' '}',
+            encodeQueryParameter(
+                    _serializers, projectId, const FullType(String))
+                .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -67,11 +72,13 @@ class WellKnownApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WellKnownOpenIdCredentialIssuerResponse),
-      ) as WellKnownOpenIdCredentialIssuerResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType:
+                  const FullType(WellKnownOpenIdCredentialIssuerResponse),
+            ) as WellKnownOpenIdCredentialIssuerResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -93,5 +100,4 @@ class WellKnownApi {
       extra: _response.extra,
     );
   }
-
 }

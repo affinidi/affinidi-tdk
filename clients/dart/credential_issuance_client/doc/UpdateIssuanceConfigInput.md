@@ -19,6 +19,5 @@ import 'package:affinidi_tdk_credential_issuance_client/api.dart';
 | **credentialSupported**     | [**BuiltList&lt;CredentialSupportedObject&gt;**](CredentialSupportedObject.md) |                                                                                                                                                       | [optional] |
 | **issuerMetadata**          | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md)                        | Issuer public information wallet may want to show to user during consent confirmation                                                                 | [optional] |
 | **returnUris**              | **BuiltList&lt;String&gt;**                                                    | List of allowed URIs to be returned to after issuance                                                                                                 | [optional] |
-| **webhook**                 | [**CisConfigurationWebhookSetting**](CisConfigurationWebhookSetting.md)        |                                                                                                                                                       | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

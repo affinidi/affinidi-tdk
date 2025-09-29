@@ -16,6 +16,8 @@ import 'package:affinidi_tdk_wallets_client/src/model/date.dart';
 
 import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_input.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_response.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/did_key_input_params.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/did_web_input_params.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/entity_not_found_error.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/get_revocation_credential_status_ok.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/get_revocation_list_credential_result_dto.dart';
@@ -31,14 +33,7 @@ import 'package:affinidi_tdk_wallets_client/src/model/sign_credential400_respons
 import 'package:affinidi_tdk_wallets_client/src/model/sign_credential_input_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_credential_input_dto_unsigned_credential_params.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_credential_result_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_jwt_input_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_jwt_result_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_ld_input_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm1_ld_result_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_ld_input_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_ld_result_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jwt_input_dto.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jwt_result_dto.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/sign_credential_result_dto_signed_credential.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token_ok.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/signing_failed_error.dart';
@@ -52,6 +47,8 @@ part 'serializers.g.dart';
 @SerializersFor([
   CreateWalletInput,
   CreateWalletResponse,
+  DidKeyInputParams,
+  DidWebInputParams,
   EntityNotFoundError,
   GetRevocationCredentialStatusOK,
   GetRevocationListCredentialResultDto,
@@ -67,14 +64,7 @@ part 'serializers.g.dart';
   SignCredentialInputDto,
   SignCredentialInputDtoUnsignedCredentialParams,
   SignCredentialResultDto,
-  SignCredentialsDm1JwtInputDto,
-  SignCredentialsDm1JwtResultDto,
-  SignCredentialsDm1LdInputDto,
-  SignCredentialsDm1LdResultDto,
-  SignCredentialsDm2LdInputDto,
-  SignCredentialsDm2LdResultDto,
-  SignCredentialsDm2SdJwtInputDto,
-  SignCredentialsDm2SdJwtResultDto,
+  SignCredentialResultDtoSignedCredential,
   SignJwtToken,
   SignJwtTokenOK,
   SigningFailedError,
@@ -87,8 +77,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

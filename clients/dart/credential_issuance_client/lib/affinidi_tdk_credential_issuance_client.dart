@@ -19,22 +19,9 @@ export 'package:affinidi_tdk_credential_issuance_client/src/api/well_known_api.d
 
 export 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/action_forbidden_error_details_inner.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_input_credential_requests_inner.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/batch_credential_response_credential_responses_inner.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status400_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/change_credential_status_input.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/change_status_forbidden_error.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting_endpoint.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_list_response.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_batch_credential_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_generate_credentials_ok.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_claimed_credentials_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_credential_offer_ok.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_issuance_id_claimed_credential_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/cors_get_well_known_open_id_credential_issuer_ok.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/create_credential_input.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/create_issuance_config400_response.dart';
@@ -59,6 +46,7 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/flow_data.dart
 export 'package:affinidi_tdk_credential_issuance_client/src/model/flow_data_status_lists_details_inner.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/generate_credentials400_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/get_credential_offer400_response.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/get_status_list_result_dto.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_credential_request_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_credential_type_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_issuer_wallet_error.dart';
@@ -76,7 +64,6 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/missing_holder
 export 'package:affinidi_tdk_credential_issuance_client/src/model/not_found_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/project_credential_config_exist_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/project_credential_config_not_exist_error.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/revocation_forbidden_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance400_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_input_data_inner.dart';
@@ -85,11 +72,8 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance
 export 'package:affinidi_tdk_credential_issuance_client/src/model/start_issuance_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_item_logo.dart';
+export 'package:affinidi_tdk_credential_issuance_client/src/model/supported_credential_metadata_display_inner_logo.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/update_issuance_config_input.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/vc_claimed_error.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display.dart';
-export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display_logo.dart';
-

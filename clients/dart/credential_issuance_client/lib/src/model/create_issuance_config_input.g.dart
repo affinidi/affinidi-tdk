@@ -93,8 +93,6 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
   final BuiltMap<String, JsonObject?>? issuerMetadata;
   @override
   final BuiltList<String>? returnUris;
-  @override
-  final CisConfigurationWebhookSetting? webhook;
 
   factory _$CreateIssuanceConfigInput(
           [void Function(CreateIssuanceConfigInputBuilder)? updates]) =>
@@ -108,8 +106,7 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
       this.format,
       required this.credentialSupported,
       this.issuerMetadata,
-      this.returnUris,
-      this.webhook})
+      this.returnUris})
       : super._();
   @override
   CreateIssuanceConfigInput rebuild(
@@ -131,8 +128,7 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
         format == other.format &&
         credentialSupported == other.credentialSupported &&
         issuerMetadata == other.issuerMetadata &&
-        returnUris == other.returnUris &&
-        webhook == other.webhook;
+        returnUris == other.returnUris;
   }
 
   @override
@@ -146,7 +142,6 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
     _$hash = $jc(_$hash, credentialSupported.hashCode);
     _$hash = $jc(_$hash, issuerMetadata.hashCode);
     _$hash = $jc(_$hash, returnUris.hashCode);
-    _$hash = $jc(_$hash, webhook.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -161,8 +156,7 @@ class _$CreateIssuanceConfigInput extends CreateIssuanceConfigInput {
           ..add('format', format)
           ..add('credentialSupported', credentialSupported)
           ..add('issuerMetadata', issuerMetadata)
-          ..add('returnUris', returnUris)
-          ..add('webhook', webhook))
+          ..add('returnUris', returnUris))
         .toString();
   }
 }
@@ -214,12 +208,6 @@ class CreateIssuanceConfigInputBuilder
   set returnUris(ListBuilder<String>? returnUris) =>
       _$this._returnUris = returnUris;
 
-  CisConfigurationWebhookSettingBuilder? _webhook;
-  CisConfigurationWebhookSettingBuilder get webhook =>
-      _$this._webhook ??= CisConfigurationWebhookSettingBuilder();
-  set webhook(CisConfigurationWebhookSettingBuilder? webhook) =>
-      _$this._webhook = webhook;
-
   CreateIssuanceConfigInputBuilder() {
     CreateIssuanceConfigInput._defaults(this);
   }
@@ -235,7 +223,6 @@ class CreateIssuanceConfigInputBuilder
       _credentialSupported = $v.credentialSupported.toBuilder();
       _issuerMetadata = $v.issuerMetadata?.toBuilder();
       _returnUris = $v.returnUris?.toBuilder();
-      _webhook = $v.webhook?.toBuilder();
       _$v = null;
     }
     return this;
@@ -268,7 +255,6 @@ class CreateIssuanceConfigInputBuilder
             credentialSupported: credentialSupported.build(),
             issuerMetadata: _issuerMetadata?.build(),
             returnUris: _returnUris?.build(),
-            webhook: _webhook?.build(),
           );
     } catch (_) {
       late String _$failedField;
@@ -279,8 +265,6 @@ class CreateIssuanceConfigInputBuilder
         _issuerMetadata?.build();
         _$failedField = 'returnUris';
         _returnUris?.build();
-        _$failedField = 'webhook';
-        _webhook?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'CreateIssuanceConfigInput', _$failedField, e.toString());

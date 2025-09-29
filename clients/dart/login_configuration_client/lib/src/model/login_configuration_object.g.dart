@@ -22,15 +22,13 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
   @override
   final String? scope;
   @override
-  final String? clientId;
+  final String clientId;
   @override
   final String creationDate;
   @override
-  final String? vpDefinition;
+  final String vpDefinition;
   @override
   final JsonObject? presentationDefinition;
-  @override
-  final BuiltList<IdTokenMappingItem> idTokenMapping;
   @override
   final LoginConfigurationClientMetadataOutput clientMetadata;
   @override
@@ -48,11 +46,10 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
       this.redirectUris,
       this.postLogoutRedirectUris,
       this.scope,
-      this.clientId,
+      required this.clientId,
       required this.creationDate,
-      this.vpDefinition,
+      required this.vpDefinition,
       this.presentationDefinition,
-      required this.idTokenMapping,
       required this.clientMetadata,
       required this.tokenEndpointAuthMethod})
       : super._();
@@ -80,7 +77,6 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
         creationDate == other.creationDate &&
         vpDefinition == other.vpDefinition &&
         presentationDefinition == other.presentationDefinition &&
-        idTokenMapping == other.idTokenMapping &&
         clientMetadata == other.clientMetadata &&
         tokenEndpointAuthMethod == other.tokenEndpointAuthMethod;
   }
@@ -99,7 +95,6 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
     _$hash = $jc(_$hash, creationDate.hashCode);
     _$hash = $jc(_$hash, vpDefinition.hashCode);
     _$hash = $jc(_$hash, presentationDefinition.hashCode);
-    _$hash = $jc(_$hash, idTokenMapping.hashCode);
     _$hash = $jc(_$hash, clientMetadata.hashCode);
     _$hash = $jc(_$hash, tokenEndpointAuthMethod.hashCode);
     _$hash = $jf(_$hash);
@@ -120,7 +115,6 @@ class _$LoginConfigurationObject extends LoginConfigurationObject {
           ..add('creationDate', creationDate)
           ..add('vpDefinition', vpDefinition)
           ..add('presentationDefinition', presentationDefinition)
-          ..add('idTokenMapping', idTokenMapping)
           ..add('clientMetadata', clientMetadata)
           ..add('tokenEndpointAuthMethod', tokenEndpointAuthMethod))
         .toString();
@@ -182,12 +176,6 @@ class LoginConfigurationObjectBuilder
   set presentationDefinition(JsonObject? presentationDefinition) =>
       _$this._presentationDefinition = presentationDefinition;
 
-  ListBuilder<IdTokenMappingItem>? _idTokenMapping;
-  ListBuilder<IdTokenMappingItem> get idTokenMapping =>
-      _$this._idTokenMapping ??= ListBuilder<IdTokenMappingItem>();
-  set idTokenMapping(ListBuilder<IdTokenMappingItem>? idTokenMapping) =>
-      _$this._idTokenMapping = idTokenMapping;
-
   LoginConfigurationClientMetadataOutputBuilder? _clientMetadata;
   LoginConfigurationClientMetadataOutputBuilder get clientMetadata =>
       _$this._clientMetadata ??=
@@ -221,7 +209,6 @@ class LoginConfigurationObjectBuilder
       _creationDate = $v.creationDate;
       _vpDefinition = $v.vpDefinition;
       _presentationDefinition = $v.presentationDefinition;
-      _idTokenMapping = $v.idTokenMapping.toBuilder();
       _clientMetadata = $v.clientMetadata.toBuilder();
       _tokenEndpointAuthMethod = $v.tokenEndpointAuthMethod;
       _$v = null;
@@ -257,12 +244,13 @@ class LoginConfigurationObjectBuilder
             redirectUris: _redirectUris?.build(),
             postLogoutRedirectUris: _postLogoutRedirectUris?.build(),
             scope: scope,
-            clientId: clientId,
+            clientId: BuiltValueNullFieldError.checkNotNull(
+                clientId, r'LoginConfigurationObject', 'clientId'),
             creationDate: BuiltValueNullFieldError.checkNotNull(
                 creationDate, r'LoginConfigurationObject', 'creationDate'),
-            vpDefinition: vpDefinition,
+            vpDefinition: BuiltValueNullFieldError.checkNotNull(
+                vpDefinition, r'LoginConfigurationObject', 'vpDefinition'),
             presentationDefinition: presentationDefinition,
-            idTokenMapping: idTokenMapping.build(),
             clientMetadata: clientMetadata.build(),
             tokenEndpointAuthMethod: BuiltValueNullFieldError.checkNotNull(
                 tokenEndpointAuthMethod,
@@ -277,8 +265,6 @@ class LoginConfigurationObjectBuilder
         _$failedField = 'postLogoutRedirectUris';
         _postLogoutRedirectUris?.build();
 
-        _$failedField = 'idTokenMapping';
-        idTokenMapping.build();
         _$failedField = 'clientMetadata';
         clientMetadata.build();
       } catch (e) {

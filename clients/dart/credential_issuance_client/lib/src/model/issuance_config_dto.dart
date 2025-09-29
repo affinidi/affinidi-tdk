@@ -3,7 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_credential_issuance_client/src/model/cis_configuration_webhook_setting.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/credential_supported_object.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
@@ -15,22 +14,22 @@ part 'issuance_config_dto.g.dart';
 /// IssuanceConfigDto
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
-/// * [description] 
+/// * [id]
+/// * [name]
+/// * [description]
 /// * [issuerDid] - Issuer DID
 /// * [issuerWalletId] - Issuer Wallet id
 /// * [credentialOfferDuration] - credential offer duration in second
 /// * [cNonceDuration] - c_nonce duration in second
 /// * [format] - String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
 /// * [issuerUri] - Issuer URI
-/// * [credentialSupported] 
+/// * [credentialSupported]
 /// * [issuerMetadata] - Issuer public information wallet may want to show to user during consent confirmation
-/// * [version] 
+/// * [version]
 /// * [returnUris] - List of allowed URIs to be returned to after issuance
-/// * [webhook] 
 @BuiltValue()
-abstract class IssuanceConfigDto implements Built<IssuanceConfigDto, IssuanceConfigDtoBuilder> {
+abstract class IssuanceConfigDto
+    implements Built<IssuanceConfigDto, IssuanceConfigDtoBuilder> {
   @BuiltValueField(wireName: r'id')
   String? get id;
 
@@ -79,21 +78,21 @@ abstract class IssuanceConfigDto implements Built<IssuanceConfigDto, IssuanceCon
   @BuiltValueField(wireName: r'returnUris')
   BuiltList<String>? get returnUris;
 
-  @BuiltValueField(wireName: r'webhook')
-  CisConfigurationWebhookSetting? get webhook;
-
   IssuanceConfigDto._();
 
-  factory IssuanceConfigDto([void updates(IssuanceConfigDtoBuilder b)]) = _$IssuanceConfigDto;
+  factory IssuanceConfigDto([void updates(IssuanceConfigDtoBuilder b)]) =
+      _$IssuanceConfigDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IssuanceConfigDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IssuanceConfigDto> get serializer => _$IssuanceConfigDtoSerializer();
+  static Serializer<IssuanceConfigDto> get serializer =>
+      _$IssuanceConfigDtoSerializer();
 }
 
-class _$IssuanceConfigDtoSerializer implements PrimitiveSerializer<IssuanceConfigDto> {
+class _$IssuanceConfigDtoSerializer
+    implements PrimitiveSerializer<IssuanceConfigDto> {
   @override
   final Iterable<Type> types = const [IssuanceConfigDto, _$IssuanceConfigDto];
 
@@ -172,14 +171,16 @@ class _$IssuanceConfigDtoSerializer implements PrimitiveSerializer<IssuanceConfi
       yield r'credentialSupported';
       yield serializers.serialize(
         object.credentialSupported,
-        specifiedType: const FullType(BuiltList, [FullType(CredentialSupportedObject)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(CredentialSupportedObject)]),
       );
     }
     if (object.issuerMetadata != null) {
       yield r'issuerMetadata';
       yield serializers.serialize(
         object.issuerMetadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(
+            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     if (object.version != null) {
@@ -196,13 +197,6 @@ class _$IssuanceConfigDtoSerializer implements PrimitiveSerializer<IssuanceConfi
         specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
-    if (object.webhook != null) {
-      yield r'webhook';
-      yield serializers.serialize(
-        object.webhook,
-        specifiedType: const FullType(CisConfigurationWebhookSetting),
-      );
-    }
   }
 
   @override
@@ -211,7 +205,9 @@ class _$IssuanceConfigDtoSerializer implements PrimitiveSerializer<IssuanceConfi
     IssuanceConfigDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -292,14 +288,16 @@ class _$IssuanceConfigDtoSerializer implements PrimitiveSerializer<IssuanceConfi
         case r'credentialSupported':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(CredentialSupportedObject)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(CredentialSupportedObject)]),
           ) as BuiltList<CredentialSupportedObject>;
           result.credentialSupported.replace(valueDes);
           break;
         case r'issuerMetadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.issuerMetadata.replace(valueDes);
           break;
@@ -316,13 +314,6 @@ class _$IssuanceConfigDtoSerializer implements PrimitiveSerializer<IssuanceConfi
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.returnUris.replace(valueDes);
-          break;
-        case r'webhook':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(CisConfigurationWebhookSetting),
-          ) as CisConfigurationWebhookSetting;
-          result.webhook.replace(valueDes);
           break;
         default:
           unhandled.add(key);
@@ -354,22 +345,28 @@ class _$IssuanceConfigDtoSerializer implements PrimitiveSerializer<IssuanceConfi
 }
 
 class IssuanceConfigDtoFormatEnum extends EnumClass {
-
   /// String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'ldp_vc')
-  static const IssuanceConfigDtoFormatEnum ldpVc = _$issuanceConfigDtoFormatEnum_ldpVc;
+  static const IssuanceConfigDtoFormatEnum ldpVc =
+      _$issuanceConfigDtoFormatEnum_ldpVc;
+
   /// String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'jwt_vc_json-ld')
-  static const IssuanceConfigDtoFormatEnum jwtVcJsonLd = _$issuanceConfigDtoFormatEnum_jwtVcJsonLd;
+  static const IssuanceConfigDtoFormatEnum jwtVcJsonLd =
+      _$issuanceConfigDtoFormatEnum_jwtVcJsonLd;
+
   /// String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'sd_jwt_vc_json-ld')
-  static const IssuanceConfigDtoFormatEnum sdJwtVcJsonLd = _$issuanceConfigDtoFormatEnum_sdJwtVcJsonLd;
+  static const IssuanceConfigDtoFormatEnum sdJwtVcJsonLd =
+      _$issuanceConfigDtoFormatEnum_sdJwtVcJsonLd;
 
-  static Serializer<IssuanceConfigDtoFormatEnum> get serializer => _$issuanceConfigDtoFormatEnumSerializer;
+  static Serializer<IssuanceConfigDtoFormatEnum> get serializer =>
+      _$issuanceConfigDtoFormatEnumSerializer;
 
-  const IssuanceConfigDtoFormatEnum._(String name): super(name);
+  const IssuanceConfigDtoFormatEnum._(String name) : super(name);
 
-  static BuiltSet<IssuanceConfigDtoFormatEnum> get values => _$issuanceConfigDtoFormatEnumValues;
-  static IssuanceConfigDtoFormatEnum valueOf(String name) => _$issuanceConfigDtoFormatEnumValueOf(name);
+  static BuiltSet<IssuanceConfigDtoFormatEnum> get values =>
+      _$issuanceConfigDtoFormatEnumValues;
+  static IssuanceConfigDtoFormatEnum valueOf(String name) =>
+      _$issuanceConfigDtoFormatEnumValueOf(name);
 }
-

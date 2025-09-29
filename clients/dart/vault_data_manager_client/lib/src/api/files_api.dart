@@ -16,7 +16,6 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/start_file_scan_ok.dart';
 
 class FilesApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -38,7 +37,7 @@ class FilesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [GetScannedFileInfoOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<GetScannedFileInfoOK>> getScannedFileInfo({ 
+  Future<Response<GetScannedFileInfoOK>> getScannedFileInfo({
     required String scannedFileJobId,
     String? exclusiveStartKey,
     CancelToken? cancelToken,
@@ -48,7 +47,11 @@ class FilesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/scanned-files/{scannedFileJobId}'.replaceAll('{' r'scannedFileJobId' '}', encodeQueryParameter(_serializers, scannedFileJobId, const FullType(String)).toString());
+    final _path = r'/v1/scanned-files/{scannedFileJobId}'.replaceAll(
+        '{' r'scannedFileJobId' '}',
+        encodeQueryParameter(
+                _serializers, scannedFileJobId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -69,7 +72,9 @@ class FilesApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (exclusiveStartKey != null) r'exclusiveStartKey': encodeQueryParameter(_serializers, exclusiveStartKey, const FullType(String)),
+      if (exclusiveStartKey != null)
+        r'exclusiveStartKey': encodeQueryParameter(
+            _serializers, exclusiveStartKey, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -85,11 +90,12 @@ class FilesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(GetScannedFileInfoOK),
-      ) as GetScannedFileInfoOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(GetScannedFileInfoOK),
+            ) as GetScannedFileInfoOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -125,7 +131,7 @@ class FilesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ListScannedFilesOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ListScannedFilesOK>> listScannedFiles({ 
+  Future<Response<ListScannedFilesOK>> listScannedFiles({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -165,11 +171,12 @@ class FilesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ListScannedFilesOK),
-      ) as ListScannedFilesOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ListScannedFilesOK),
+            ) as ListScannedFilesOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -207,7 +214,7 @@ class FilesApi {
   ///
   /// Returns a [Future] containing a [Response] with a [StartFileScanOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<StartFileScanOK>> startFileScan({ 
+  Future<Response<StartFileScanOK>> startFileScan({
     required String nodeId,
     required StartFileScanInput startFileScanInput,
     CancelToken? cancelToken,
@@ -217,7 +224,10 @@ class FilesApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/nodes/{nodeId}/file/scan'.replaceAll('{' r'nodeId' '}', encodeQueryParameter(_serializers, nodeId, const FullType(String)).toString());
+    final _path = r'/v1/nodes/{nodeId}/file/scan'.replaceAll(
+        '{' r'nodeId' '}',
+        encodeQueryParameter(_serializers, nodeId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -242,11 +252,11 @@ class FilesApi {
 
     try {
       const _type = FullType(StartFileScanInput);
-      _bodyData = _serializers.serialize(startFileScanInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(startFileScanInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -269,11 +279,12 @@ class FilesApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(StartFileScanOK),
-      ) as StartFileScanOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(StartFileScanOK),
+            ) as StartFileScanOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -295,5 +306,4 @@ class FilesApi {
       extra: _response.extra,
     );
   }
-
 }

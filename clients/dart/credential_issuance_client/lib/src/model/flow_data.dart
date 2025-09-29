@@ -15,19 +15,19 @@ part 'flow_data.g.dart';
 /// Properties:
 /// * [createdAt] - [GEN] ISO 8601 string of the creation date/time the entity
 /// * [modifiedAt] - [GEN] ISO 8601 string of the modification date/time the entity
-/// * [id] 
-/// * [projectId] 
-/// * [flowId] 
-/// * [credentialTypeId] 
-/// * [jsonLdContextUrl] 
-/// * [jsonSchemaUrl] 
+/// * [id]
+/// * [projectId]
+/// * [flowId]
+/// * [credentialTypeId]
+/// * [jsonLdContextUrl]
+/// * [jsonSchemaUrl]
 /// * [configurationId] - Id of configuration, used to issue VC.
 /// * [issuedAt] - when credential was issued to the holder (holder invoked generateCredentials endpoint)
 /// * [walletId] - Id of wallet, used to issue VC.
 /// * [projectIdConfigurationId] - Id of configuration with which VC was issued. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{configurationId}\"
 /// * [projectIdConfigurationIdWalletId] - Id of wallet which issued VC. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{walletId}\"
 /// * [projectIdConfigurationIdCredentialType] - VC.type value. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{credentialType}\"
-/// * [statusListsDetails] 
+/// * [statusListsDetails]
 @BuiltValue()
 abstract class FlowData implements Built<FlowData, FlowDataBuilder> {
   /// [GEN] ISO 8601 string of the creation date/time the entity
@@ -194,7 +194,8 @@ class _$FlowDataSerializer implements PrimitiveSerializer<FlowData> {
       yield r'statusListsDetails';
       yield serializers.serialize(
         object.statusListsDetails,
-        specifiedType: const FullType(BuiltList, [FullType(FlowDataStatusListsDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(FlowDataStatusListsDetailsInner)]),
       );
     }
   }
@@ -205,7 +206,9 @@ class _$FlowDataSerializer implements PrimitiveSerializer<FlowData> {
     FlowData object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -321,7 +324,8 @@ class _$FlowDataSerializer implements PrimitiveSerializer<FlowData> {
         case r'statusListsDetails':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(FlowDataStatusListsDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(FlowDataStatusListsDetailsInner)]),
           ) as BuiltList<FlowDataStatusListsDetailsInner>;
           result.statusListsDetails.replace(valueDes);
           break;
@@ -353,4 +357,3 @@ class _$FlowDataSerializer implements PrimitiveSerializer<FlowData> {
     return result.build();
   }
 }
-

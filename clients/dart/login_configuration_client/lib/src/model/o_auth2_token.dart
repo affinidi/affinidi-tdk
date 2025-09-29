@@ -3,8 +3,6 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token_authorization_details_inner.dart';
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,42 +11,37 @@ part 'o_auth2_token.g.dart';
 /// OAuth2Token
 ///
 /// Properties:
-/// * [accessToken] - The access token issued by the authorization server. 
-/// * [expiresIn] - The lifetime in seconds of the access token.  For example, the value \"3600\" denotes that the access  token will expire in one hour from the time the response was generated. 
-/// * [idToken] - To retrieve a refresh token request the id_token scope. 
-/// * [refreshToken] - The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request. 
-/// * [scope] - The scope of the access token 
-/// * [tokenType] - The type of the token issued 
-/// * [authorizationDetails] - is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations. 
+/// * [accessToken] - The access token issued by the authorization server.
+/// * [expiresIn] - The lifetime in seconds of the access token.  For example, the value \"3600\" denotes that the access  token will expire in one hour from the time the response was generated.
+/// * [idToken] - To retrieve a refresh token request the id_token scope.
+/// * [refreshToken] - The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request.
+/// * [scope] - The scope of the access token
+/// * [tokenType] - The type of the token issued
 @BuiltValue()
 abstract class OAuth2Token implements Built<OAuth2Token, OAuth2TokenBuilder> {
-  /// The access token issued by the authorization server. 
+  /// The access token issued by the authorization server.
   @BuiltValueField(wireName: r'access_token')
   String? get accessToken;
 
-  /// The lifetime in seconds of the access token.  For example, the value \"3600\" denotes that the access  token will expire in one hour from the time the response was generated. 
+  /// The lifetime in seconds of the access token.  For example, the value \"3600\" denotes that the access  token will expire in one hour from the time the response was generated.
   @BuiltValueField(wireName: r'expires_in')
   int? get expiresIn;
 
-  /// To retrieve a refresh token request the id_token scope. 
+  /// To retrieve a refresh token request the id_token scope.
   @BuiltValueField(wireName: r'id_token')
   int? get idToken;
 
-  /// The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request. 
+  /// The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request.
   @BuiltValueField(wireName: r'refresh_token')
   String? get refreshToken;
 
-  /// The scope of the access token 
+  /// The scope of the access token
   @BuiltValueField(wireName: r'scope')
   String? get scope;
 
-  /// The type of the token issued 
+  /// The type of the token issued
   @BuiltValueField(wireName: r'token_type')
   String? get tokenType;
-
-  /// is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations. 
-  @BuiltValueField(wireName: r'authorization_details')
-  BuiltList<OAuth2TokenAuthorizationDetailsInner>? get authorizationDetails;
 
   OAuth2Token._();
 
@@ -115,13 +108,6 @@ class _$OAuth2TokenSerializer implements PrimitiveSerializer<OAuth2Token> {
         specifiedType: const FullType(String),
       );
     }
-    if (object.authorizationDetails != null) {
-      yield r'authorization_details';
-      yield serializers.serialize(
-        object.authorizationDetails,
-        specifiedType: const FullType(BuiltList, [FullType(OAuth2TokenAuthorizationDetailsInner)]),
-      );
-    }
   }
 
   @override
@@ -130,7 +116,9 @@ class _$OAuth2TokenSerializer implements PrimitiveSerializer<OAuth2Token> {
     OAuth2Token object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -187,13 +175,6 @@ class _$OAuth2TokenSerializer implements PrimitiveSerializer<OAuth2Token> {
           ) as String;
           result.tokenType = valueDes;
           break;
-        case r'authorization_details':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(OAuth2TokenAuthorizationDetailsInner)]),
-          ) as BuiltList<OAuth2TokenAuthorizationDetailsInner>;
-          result.authorizationDetails.replace(valueDes);
-          break;
         default:
           unhandled.add(key);
           unhandled.add(value);
@@ -222,4 +203,3 @@ class _$OAuth2TokenSerializer implements PrimitiveSerializer<OAuth2Token> {
     return result.build();
   }
 }
-

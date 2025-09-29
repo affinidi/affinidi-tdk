@@ -39,7 +39,6 @@ export 'package:affinidi_tdk_login_configuration_client/src/model/group_user_map
 export 'package:affinidi_tdk_login_configuration_client/src/model/group_user_mappings_list.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/groups_list.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/groups_per_user_limit_exceeded_error.dart';
-export 'package:affinidi_tdk_login_configuration_client/src/model/id_token_mapping_item.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/inline_object.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/invalid_claim_context_error.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/invalid_groups_error.dart';
@@ -58,7 +57,6 @@ export 'package:affinidi_tdk_login_configuration_client/src/model/login_session_
 export 'package:affinidi_tdk_login_configuration_client/src/model/login_session_for_idp_input.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/not_found_error.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token.dart';
-export 'package:affinidi_tdk_login_configuration_client/src/model/o_auth2_token_authorization_details_inner.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/oidc_config.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/oidc_config_credentials_supported_draft00_inner.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/redirect_response.dart';
@@ -70,4 +68,3 @@ export 'package:affinidi_tdk_login_configuration_client/src/model/token_endpoint
 export 'package:affinidi_tdk_login_configuration_client/src/model/unauthorized_error.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/update_login_configuration_input.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/vp_token_validation_error.dart';
-

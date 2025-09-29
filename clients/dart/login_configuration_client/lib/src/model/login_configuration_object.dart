@@ -4,7 +4,6 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:affinidi_tdk_login_configuration_client/src/model/id_token_mapping_item.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/login_configuration_client_metadata_output.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/token_endpoint_auth_method.dart';
 import 'package:built_value/json_object.dart';
@@ -27,11 +26,12 @@ part 'login_configuration_object.g.dart';
 /// * [creationDate] - OAuth 2.0 Client Creation Date
 /// * [vpDefinition] - VP definition in JSON stringify format
 /// * [presentationDefinition] - Presentation Definition
-/// * [idTokenMapping] - Fields name/path mapping between the vp_token and the id_token
-/// * [clientMetadata] 
-/// * [tokenEndpointAuthMethod] 
+/// * [clientMetadata]
+/// * [tokenEndpointAuthMethod]
 @BuiltValue()
-abstract class LoginConfigurationObject implements Built<LoginConfigurationObject, LoginConfigurationObjectBuilder> {
+abstract class LoginConfigurationObject
+    implements
+        Built<LoginConfigurationObject, LoginConfigurationObjectBuilder> {
   /// Configuration ari
   @BuiltValueField(wireName: r'ari')
   String get ari;
@@ -62,7 +62,7 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
 
   /// OAuth 2.0 Client ID
   @BuiltValueField(wireName: r'clientId')
-  String? get clientId;
+  String get clientId;
 
   /// OAuth 2.0 Client Creation Date
   @BuiltValueField(wireName: r'creationDate')
@@ -70,15 +70,11 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
 
   /// VP definition in JSON stringify format
   @BuiltValueField(wireName: r'vpDefinition')
-  String? get vpDefinition;
+  String get vpDefinition;
 
   /// Presentation Definition
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
-
-  /// Fields name/path mapping between the vp_token and the id_token
-  @BuiltValueField(wireName: r'idTokenMapping')
-  BuiltList<IdTokenMappingItem> get idTokenMapping;
 
   @BuiltValueField(wireName: r'clientMetadata')
   LoginConfigurationClientMetadataOutput get clientMetadata;
@@ -89,18 +85,25 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
 
   LoginConfigurationObject._();
 
-  factory LoginConfigurationObject([void updates(LoginConfigurationObjectBuilder b)]) = _$LoginConfigurationObject;
+  factory LoginConfigurationObject(
+          [void updates(LoginConfigurationObjectBuilder b)]) =
+      _$LoginConfigurationObject;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LoginConfigurationObjectBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LoginConfigurationObject> get serializer => _$LoginConfigurationObjectSerializer();
+  static Serializer<LoginConfigurationObject> get serializer =>
+      _$LoginConfigurationObjectSerializer();
 }
 
-class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginConfigurationObject> {
+class _$LoginConfigurationObjectSerializer
+    implements PrimitiveSerializer<LoginConfigurationObject> {
   @override
-  final Iterable<Type> types = const [LoginConfigurationObject, _$LoginConfigurationObject];
+  final Iterable<Type> types = const [
+    LoginConfigurationObject,
+    _$LoginConfigurationObject
+  ];
 
   @override
   final String wireName = r'LoginConfigurationObject';
@@ -153,25 +156,21 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
         specifiedType: const FullType(String),
       );
     }
-    if (object.clientId != null) {
-      yield r'clientId';
-      yield serializers.serialize(
-        object.clientId,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'clientId';
+    yield serializers.serialize(
+      object.clientId,
+      specifiedType: const FullType(String),
+    );
     yield r'creationDate';
     yield serializers.serialize(
       object.creationDate,
       specifiedType: const FullType(String),
     );
-    if (object.vpDefinition != null) {
-      yield r'vpDefinition';
-      yield serializers.serialize(
-        object.vpDefinition,
-        specifiedType: const FullType(String),
-      );
-    }
+    yield r'vpDefinition';
+    yield serializers.serialize(
+      object.vpDefinition,
+      specifiedType: const FullType(String),
+    );
     if (object.presentationDefinition != null) {
       yield r'presentationDefinition';
       yield serializers.serialize(
@@ -179,11 +178,6 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
         specifiedType: const FullType(JsonObject),
       );
     }
-    yield r'idTokenMapping';
-    yield serializers.serialize(
-      object.idTokenMapping,
-      specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
-    );
     yield r'clientMetadata';
     yield serializers.serialize(
       object.clientMetadata,
@@ -202,7 +196,9 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
     LoginConfigurationObject object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -294,19 +290,13 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
           ) as JsonObject;
           result.presentationDefinition = valueDes;
           break;
-        case r'idTokenMapping':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
-          ) as BuiltList<IdTokenMappingItem>;
-          result.idTokenMapping.replace(valueDes);
-          break;
         case r'clientMetadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LoginConfigurationClientMetadataOutput),
+            specifiedType:
+                const FullType(LoginConfigurationClientMetadataOutput),
           ) as LoginConfigurationClientMetadataOutput;
-          result.clientMetadata.replace(valueDes);
+          result.clientMetadata = valueDes.toBuilder();
           break;
         case r'tokenEndpointAuthMethod':
           final valueDes = serializers.deserialize(
@@ -343,4 +333,3 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
     return result.build();
   }
 }
-
