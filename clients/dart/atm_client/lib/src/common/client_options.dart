@@ -5,7 +5,7 @@ class ClientOptions {
   final String atlasDid;
 
   const ClientOptions({
-    this.requestTimeout = const Duration(minutes: 20),
+    this.requestTimeout = const Duration(minutes: 3),
     this.messageExpiration = const Duration(minutes: 1),
     this.mediatorDid =
         'did:web:ed39392b-8b24-49b1-9884-efc9fb1fc3f8.atlas.affinidi.io',

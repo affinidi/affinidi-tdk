@@ -7,15 +7,18 @@ import 'package:uuid/uuid.dart';
 import '../common/client_options.dart';
 
 class AtmMediatorClient extends MediatorClient {
+  final DidManager didManager;
+  final ClientOptions clientOptions;
+
   final _pendingRequests = <String, Completer<PlainTextMessage>>{};
-  StreamSubscription? _subscription;
-  Future<void>? _lock;
 
   AtmMediatorClient({
     required super.mediatorDidDocument,
     required super.keyPair,
     required super.didKeyId,
     required super.signer,
+    required this.didManager,
+    required this.clientOptions,
     super.forwardMessageOptions,
     super.webSocketOptions,
   });
@@ -23,20 +26,9 @@ class AtmMediatorClient extends MediatorClient {
   Future<PlainTextMessage> waitForMessage({
     required String threadId,
     required String accessToken,
-    required DidManager didManager,
-    required DidDocument atmServiceDidDocument,
-    required ClientOptions clientOptions,
   }) async {
     final completer = Completer<PlainTextMessage>();
-
     _pendingRequests[threadId] = completer;
-
-    await _handleSubscription(
-      didManager: didManager,
-      accessToken: accessToken,
-      atmServiceDidDocument: atmServiceDidDocument,
-      clientOptions: clientOptions,
-    );
 
     return completer.future.timeout(clientOptions.requestTimeout);
   }
@@ -81,10 +73,6 @@ class AtmMediatorClient extends MediatorClient {
   }
 
   Future<void> packAndSendMessage({
-    // TODO: move to constructor
-    required DidManager didManager,
-    // TODO: move to constructor
-    required ClientOptions clientOptions,
     required PlainTextMessage message,
     required String accessToken,
   }) async {
@@ -150,21 +138,11 @@ class AtmMediatorClient extends MediatorClient {
     );
   }
 
-  Future<void> _handleSubscription({
-    required DidManager didManager,
+  Future<void> connect({
     required String accessToken,
     required DidDocument atmServiceDidDocument,
-    required ClientOptions clientOptions,
   }) async {
-    if (_lock != null) {
-      await _lock;
-    }
-
-    if (_subscription != null) {
-      return;
-    }
-
-    _subscription = await listenForIncomingMessages(
+    await listenForIncomingMessages(
       (message) async {
         final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
           message: message,
@@ -205,26 +183,18 @@ class AtmMediatorClient extends MediatorClient {
 
         _pendingRequests.remove(threadId);
         completer.complete(unpackedMessage);
-        if (_pendingRequests.isEmpty) {
-          _subscription = null;
-          _lock = disconnect();
-          await _lock;
-          _lock = null;
-        }
       },
       onError: (Object error) {
         for (var completer in _pendingRequests.values) {
           completer.completeError(error);
         }
         _pendingRequests.clear();
-        _subscription = null;
       },
       onDone: () {
         for (var completer in _pendingRequests.values) {
           completer.completeError(Exception('Connection has been dropped'));
         }
         _pendingRequests.clear();
-        _subscription = null;
       },
       accessToken: accessToken,
       cancelOnError: false,
@@ -242,13 +212,7 @@ class AtmMediatorClient extends MediatorClient {
 
     if (_pendingRequests.containsKey(parentThreadId)) {
       final completer = _pendingRequests.remove(parentThreadId)!;
-
       completer.completeError(problemReport);
-      if (_pendingRequests.isEmpty) {
-        _subscription = null;
-        _lock = disconnect();
-        _lock?.then((_) => _lock = null);
-      }
     }
   }
 }

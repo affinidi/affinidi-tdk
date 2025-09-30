@@ -21,10 +21,7 @@ abstract class AtmServiceClient extends AtmBaseClient {
   }) async {
     final responseMessageFuture = mediatorClient.waitForMessage(
       threadId: requestMessage.id,
-      didManager: didManager,
       accessToken: accessToken,
-      atmServiceDidDocument: atmServiceDidDocument,
-      clientOptions: clientOptions,
     );
 
     await sendMessage(

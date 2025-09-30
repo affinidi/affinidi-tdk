@@ -3,17 +3,32 @@ import 'dart:convert';
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_atm_client/src/clients/vdsp_verifier_client.dart';
 import 'package:affinidi_tdk_atm_client/src/common/feature_discovery_helper.dart';
-import 'package:affinidi_tdk_atm_client/src/messages/vdsp/vdsp_query_data_message.dart';
 import 'package:affinidi_tdk_atm_client/src/models/constants/feature_type.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
 
 Future<void> main() async {
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'mediator_client',
+  );
+
+  final issuerKeyStore = InMemoryKeyStore();
+  final issuerWallet = PersistentWallet(issuerKeyStore);
+
+  final issuerKeyPair = await issuerWallet.generateKey();
+
+  final issuerDidManager = DidKeyManager(
+    wallet: issuerWallet,
+    store: InMemoryDidStore(),
+  );
+
+  await issuerDidManager.addVerificationMethod(issuerKeyPair.id);
+
+  final issuerDidDocument = await issuerDidManager.getDidDocument();
+  final issuerSigner = await issuerDidManager.getSigner(
+    issuerDidDocument.assertionMethod.first.id,
   );
 
   final verifierKeyStore = InMemoryKeyStore();
@@ -64,7 +79,43 @@ Future<void> main() async {
 
   await holderDidManager.addVerificationMethod(holderKeyId);
 
-  const dsql = {
+  final holderVerifiableCredentials = await Future.wait(
+    [
+      VcDataModelV1(
+        context: [
+          dmV1ContextUrl,
+          'https://schema.affinidi.io/TEmailV1R0.jsonld'
+        ],
+        credentialSchema: [
+          CredentialSchema(
+            id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
+            type: 'JsonSchemaValidator2018',
+          ),
+        ],
+        id: Uri.parse('claimId:ee3882a6b3058195'),
+        issuer: Issuer.uri(issuerSigner.did),
+        type: {'VerifiableCredential', 'Email'},
+        issuanceDate: DateTime.now().toUtc(),
+        credentialSubject: [
+          CredentialSubject.fromJson({'email': 'user@test.com'}),
+        ],
+      ),
+    ].map(
+      (unsignedCredential) async {
+        final suite = LdVcDm1Suite();
+        final issuedCredential = await suite.issue(
+          unsignedData: unsignedCredential,
+          proofGenerator: DataIntegrityEcdsaJcsGenerator(
+            signer: issuerSigner,
+          ),
+        );
+
+        return issuedCredential;
+      },
+    ),
+  );
+
+  const verifierDsql = {
     'credentials': [
       {
         'id': 'my_credential',
@@ -147,19 +198,34 @@ Future<void> main() async {
 
       await verifierClient.queryHolderData(
         holderDid: holderDid,
-        query: dsql,
+        query: verifierDsql,
         operation: 'registerAgent',
-        proofContext: VdspQueryDataProofContext(
-          challenge: const Uuid().v4(),
-          domain: 'verifier.example',
-        ),
+        // TODO: uncomment when Dart SSI is fixed
+        // proofContext: VdspQueryDataProofContext(
+        //   challenge: const Uuid().v4(),
+        //   domain: 'test.verifier.com',
+        // ),
         accessToken: verifierAuthTokens.accessToken,
       );
     },
-    onDataResponse: (message) async {
+    onDataResponse: (
+      message,
+      presentationAndCredentialsValid,
+      verifiablePresentation,
+    ) async {
       prettyPrint(
         'Verifier received Data Response Message',
         object: message,
+      );
+
+      prettyPrint(
+        'VP and VCs are valid',
+        object: presentationAndCredentialsValid,
+      );
+
+      prettyPrint(
+        'Verifiable Presentation',
+        object: verifiablePresentation,
       );
 
       await verifierClient.mediatorClient.disconnect();
@@ -210,17 +276,11 @@ Future<void> main() async {
         object: message,
       );
 
-      final vcs = <Map<String, dynamic>>[];
-      final vp = {'vc': vcs, 'proof': 'xyz'};
-
-      // is trusted verifier
-      // if (message.from == verifierDid) {
       await holderClient.shareData(
         requestMessage: message,
-        dataResponse: vp,
+        verifiableCredentials: holderVerifiableCredentials,
         accessToken: holderAuthTokens.accessToken,
       );
-      // }
 
       await holderClient.mediatorClient.disconnect();
     },

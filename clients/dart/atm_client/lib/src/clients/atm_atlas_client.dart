@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -241,6 +240,13 @@ class AtmAtlasClient extends AtmServiceClient {
       createdTime: responseMessage.createdTime,
       expiresTime: responseMessage.expiresTime,
       body: responseMessage.body,
+    );
+  }
+
+  Future<void> connect({required String accessToken}) async {
+    await mediatorClient.connect(
+      atmServiceDidDocument: atmServiceDidDocument,
+      accessToken: accessToken,
     );
   }
 }
