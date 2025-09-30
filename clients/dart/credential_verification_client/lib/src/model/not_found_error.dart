@@ -13,13 +13,14 @@ part 'not_found_error.g.dart';
 /// NotFoundError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class NotFoundError implements Built<NotFoundError, NotFoundErrorBuilder> {
+abstract class NotFoundError
+    implements Built<NotFoundError, NotFoundErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   NotFoundErrorNameEnum get name;
   // enum nameEnum {  NotFoundError,  };
@@ -40,13 +41,15 @@ abstract class NotFoundError implements Built<NotFoundError, NotFoundErrorBuilde
 
   NotFoundError._();
 
-  factory NotFoundError([void updates(NotFoundErrorBuilder b)]) = _$NotFoundError;
+  factory NotFoundError([void updates(NotFoundErrorBuilder b)]) =
+      _$NotFoundError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(NotFoundErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<NotFoundError> get serializer => _$NotFoundErrorSerializer();
+  static Serializer<NotFoundError> get serializer =>
+      _$NotFoundErrorSerializer();
 }
 
 class _$NotFoundErrorSerializer implements PrimitiveSerializer<NotFoundError> {
@@ -85,7 +88,8 @@ class _$NotFoundErrorSerializer implements PrimitiveSerializer<NotFoundError> {
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(NotFoundErrorDetailsInner)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(NotFoundErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +100,9 @@ class _$NotFoundErrorSerializer implements PrimitiveSerializer<NotFoundError> {
     NotFoundError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,7 +148,8 @@ class _$NotFoundErrorSerializer implements PrimitiveSerializer<NotFoundError> {
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(NotFoundErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(NotFoundErrorDetailsInner)]),
           ) as BuiltList<NotFoundErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +183,50 @@ class _$NotFoundErrorSerializer implements PrimitiveSerializer<NotFoundError> {
 }
 
 class NotFoundErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'NotFoundError')
-  static const NotFoundErrorNameEnum notFoundError = _$notFoundErrorNameEnum_notFoundError;
+  static const NotFoundErrorNameEnum notFoundError =
+      _$notFoundErrorNameEnum_notFoundError;
 
-  static Serializer<NotFoundErrorNameEnum> get serializer => _$notFoundErrorNameEnumSerializer;
+  static Serializer<NotFoundErrorNameEnum> get serializer =>
+      _$notFoundErrorNameEnumSerializer;
 
-  const NotFoundErrorNameEnum._(String name): super(name);
+  const NotFoundErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<NotFoundErrorNameEnum> get values => _$notFoundErrorNameEnumValues;
-  static NotFoundErrorNameEnum valueOf(String name) => _$notFoundErrorNameEnumValueOf(name);
+  static BuiltSet<NotFoundErrorNameEnum> get values =>
+      _$notFoundErrorNameEnumValues;
+  static NotFoundErrorNameEnum valueOf(String name) =>
+      _$notFoundErrorNameEnumValueOf(name);
 }
 
 class NotFoundErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Not found: ${param}.')
-  static const NotFoundErrorMessageEnum notFoundColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod = _$notFoundErrorMessageEnum_notFoundColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
+  static const NotFoundErrorMessageEnum
+      notFoundColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod =
+      _$notFoundErrorMessageEnum_notFoundColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
 
-  static Serializer<NotFoundErrorMessageEnum> get serializer => _$notFoundErrorMessageEnumSerializer;
+  static Serializer<NotFoundErrorMessageEnum> get serializer =>
+      _$notFoundErrorMessageEnumSerializer;
 
-  const NotFoundErrorMessageEnum._(String name): super(name);
+  const NotFoundErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<NotFoundErrorMessageEnum> get values => _$notFoundErrorMessageEnumValues;
-  static NotFoundErrorMessageEnum valueOf(String name) => _$notFoundErrorMessageEnumValueOf(name);
+  static BuiltSet<NotFoundErrorMessageEnum> get values =>
+      _$notFoundErrorMessageEnumValues;
+  static NotFoundErrorMessageEnum valueOf(String name) =>
+      _$notFoundErrorMessageEnumValueOf(name);
 }
 
 class NotFoundErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 404)
-  static const NotFoundErrorHttpStatusCodeEnum number404 = _$notFoundErrorHttpStatusCodeEnum_number404;
+  static const NotFoundErrorHttpStatusCodeEnum number404 =
+      _$notFoundErrorHttpStatusCodeEnum_number404;
 
-  static Serializer<NotFoundErrorHttpStatusCodeEnum> get serializer => _$notFoundErrorHttpStatusCodeEnumSerializer;
+  static Serializer<NotFoundErrorHttpStatusCodeEnum> get serializer =>
+      _$notFoundErrorHttpStatusCodeEnumSerializer;
 
-  const NotFoundErrorHttpStatusCodeEnum._(String name): super(name);
+  const NotFoundErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<NotFoundErrorHttpStatusCodeEnum> get values => _$notFoundErrorHttpStatusCodeEnumValues;
-  static NotFoundErrorHttpStatusCodeEnum valueOf(String name) => _$notFoundErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<NotFoundErrorHttpStatusCodeEnum> get values =>
+      _$notFoundErrorHttpStatusCodeEnumValues;
+  static NotFoundErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$notFoundErrorHttpStatusCodeEnumValueOf(name);
 }
-
