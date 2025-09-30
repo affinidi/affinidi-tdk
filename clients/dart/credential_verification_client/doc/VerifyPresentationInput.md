@@ -14,6 +14,7 @@ import 'package:affinidi_tdk_credential_verification_client/api.dart';
 | **signedPresentation**     | [**JsonObject**](.md) |             | [optional] |
 | **presentationDefinition** | [**JsonObject**](.md) |             | [optional] |
 | **presentationSubmission** | [**JsonObject**](.md) |             | [optional] |
+| **dcqlQuery**              | [**JsonObject**](.md) |             | [optional] |
 | **challenge**              | **String**            |             | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

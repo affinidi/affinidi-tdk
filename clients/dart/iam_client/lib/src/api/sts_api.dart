@@ -4,21 +4,14 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:affinidi_tdk_iam_client/src/model/action_forbidden_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
-import 'package:affinidi_tdk_iam_client/src/model/invalid_parameter_error.dart';
-import 'package:affinidi_tdk_iam_client/src/model/not_found_error.dart';
-import 'package:affinidi_tdk_iam_client/src/model/principal_does_not_belong_to_project_error.dart';
-import 'package:affinidi_tdk_iam_client/src/model/unexpected_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/whoami_dto.dart';
 
 class StsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -26,7 +19,7 @@ class StsApi {
   const StsApi(this._dio, this._serializers);
 
   /// createProjectScopedToken
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [createProjectScopedTokenInput] - CreateProjectScopedToken
@@ -39,7 +32,7 @@ class StsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CreateProjectScopedTokenOutput] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CreateProjectScopedTokenOutput>> createProjectScopedToken({ 
+  Future<Response<CreateProjectScopedTokenOutput>> createProjectScopedToken({
     required CreateProjectScopedTokenInput createProjectScopedTokenInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -73,11 +66,11 @@ class StsApi {
 
     try {
       const _type = FullType(CreateProjectScopedTokenInput);
-      _bodyData = _serializers.serialize(createProjectScopedTokenInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData = _serializers.serialize(createProjectScopedTokenInput,
+          specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -100,11 +93,12 @@ class StsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CreateProjectScopedTokenOutput),
-      ) as CreateProjectScopedTokenOutput;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(CreateProjectScopedTokenOutput),
+            ) as CreateProjectScopedTokenOutput;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -128,7 +122,7 @@ class StsApi {
   }
 
   /// whoami
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -140,7 +134,7 @@ class StsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [WhoamiDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<WhoamiDto>> whoami({ 
+  Future<Response<WhoamiDto>> whoami({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -180,11 +174,12 @@ class StsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(WhoamiDto),
-      ) as WhoamiDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(WhoamiDto),
+            ) as WhoamiDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -206,5 +201,4 @@ class StsApi {
       extra: _response.extra,
     );
   }
-
 }

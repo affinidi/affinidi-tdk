@@ -15,7 +15,7 @@ part 'node_dto.g.dart';
 ///
 /// Properties:
 /// * [nodeId] - A unique identifier of current node
-/// * [status] 
+/// * [status]
 /// * [fileCount] - number of files in current node
 /// * [profileCount] - number of profiles in current node
 /// * [folderCount] - number of folders in current node
@@ -29,14 +29,14 @@ part 'node_dto.g.dart';
 /// * [createdBy] - Identifier of the user who created the node
 /// * [modifiedBy] - Identifier of the user who last updated the node
 /// * [description] - Description of the node
-/// * [type] 
+/// * [type]
 /// * [link] - id of the file, used for FILE node only
 /// * [schema] - name of the schema, used for PROFILE node only
 /// * [consumedFileStorage] - amount of bytes used by the stored data, used for ROOT_ELEMENT only for now
-/// * [edekInfo] 
+/// * [edekInfo]
 /// * [metadata] - A JSON string format containing metadata of the node
 @BuiltValue(instantiable: false)
-abstract class NodeDto  {
+abstract class NodeDto {
   /// A unique identifier of current node
   @BuiltValueField(wireName: r'nodeId')
   String get nodeId;
@@ -269,7 +269,9 @@ class _$NodeDtoSerializer implements PrimitiveSerializer<NodeDto> {
     NodeDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   @override
@@ -278,7 +280,8 @@ class _$NodeDtoSerializer implements PrimitiveSerializer<NodeDto> {
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return serializers.deserialize(serialized, specifiedType: FullType($NodeDto)) as $NodeDto;
+    return serializers.deserialize(serialized,
+        specifiedType: FullType($NodeDto)) as $NodeDto;
   }
 }
 
@@ -499,4 +502,3 @@ class _$$NodeDtoSerializer implements PrimitiveSerializer<$NodeDto> {
     return result.build();
   }
 }
-

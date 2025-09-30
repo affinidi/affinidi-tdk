@@ -15,24 +15,24 @@ part 'filter.g.dart';
 /// Filter
 ///
 /// Properties:
-/// * [const_] 
-/// * [enum_] 
-/// * [exclusiveMinimum] 
-/// * [exclusiveMaximum] 
-/// * [format] 
-/// * [formatMaximum] 
-/// * [formatMinimum] 
-/// * [formatExclusiveMaximum] 
-/// * [formatExclusiveMinimum] 
-/// * [minLength] 
-/// * [maxLength] 
-/// * [minimum] 
-/// * [maximum] 
-/// * [not] 
-/// * [pattern] 
-/// * [contains] 
-/// * [items] 
-/// * [type] 
+/// * [const_]
+/// * [enum_]
+/// * [exclusiveMinimum]
+/// * [exclusiveMaximum]
+/// * [format]
+/// * [formatMaximum]
+/// * [formatMinimum]
+/// * [formatExclusiveMaximum]
+/// * [formatExclusiveMinimum]
+/// * [minLength]
+/// * [maxLength]
+/// * [minimum]
+/// * [maximum]
+/// * [not]
+/// * [pattern]
+/// * [contains]
+/// * [items]
+/// * [type]
 @BuiltValue()
 abstract class Filter implements Built<Filter, FilterBuilder> {
   @BuiltValueField(wireName: r'_const')
@@ -246,7 +246,9 @@ class _$FilterSerializer implements PrimitiveSerializer<Filter> {
     Filter object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -415,4 +417,3 @@ class _$FilterSerializer implements PrimitiveSerializer<Filter> {
     return result.build();
   }
 }
-

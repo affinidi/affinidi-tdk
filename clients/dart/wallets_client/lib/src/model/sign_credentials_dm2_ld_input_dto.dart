@@ -12,11 +12,14 @@ part 'sign_credentials_dm2_ld_input_dto.g.dart';
 /// DTO contains params to sign credential
 ///
 /// Properties:
-/// * [unsignedCredential] - Unsigned Credential in Dm2 format 
-/// * [revocable] 
+/// * [unsignedCredential] - Unsigned Credential in Dm2 format
+/// * [revocable]
 @BuiltValue()
-abstract class SignCredentialsDm2LdInputDto implements Built<SignCredentialsDm2LdInputDto, SignCredentialsDm2LdInputDtoBuilder> {
-  /// Unsigned Credential in Dm2 format 
+abstract class SignCredentialsDm2LdInputDto
+    implements
+        Built<SignCredentialsDm2LdInputDto,
+            SignCredentialsDm2LdInputDtoBuilder> {
+  /// Unsigned Credential in Dm2 format
   @BuiltValueField(wireName: r'unsignedCredential')
   JsonObject get unsignedCredential;
 
@@ -25,18 +28,25 @@ abstract class SignCredentialsDm2LdInputDto implements Built<SignCredentialsDm2L
 
   SignCredentialsDm2LdInputDto._();
 
-  factory SignCredentialsDm2LdInputDto([void updates(SignCredentialsDm2LdInputDtoBuilder b)]) = _$SignCredentialsDm2LdInputDto;
+  factory SignCredentialsDm2LdInputDto(
+          [void updates(SignCredentialsDm2LdInputDtoBuilder b)]) =
+      _$SignCredentialsDm2LdInputDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SignCredentialsDm2LdInputDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SignCredentialsDm2LdInputDto> get serializer => _$SignCredentialsDm2LdInputDtoSerializer();
+  static Serializer<SignCredentialsDm2LdInputDto> get serializer =>
+      _$SignCredentialsDm2LdInputDtoSerializer();
 }
 
-class _$SignCredentialsDm2LdInputDtoSerializer implements PrimitiveSerializer<SignCredentialsDm2LdInputDto> {
+class _$SignCredentialsDm2LdInputDtoSerializer
+    implements PrimitiveSerializer<SignCredentialsDm2LdInputDto> {
   @override
-  final Iterable<Type> types = const [SignCredentialsDm2LdInputDto, _$SignCredentialsDm2LdInputDto];
+  final Iterable<Type> types = const [
+    SignCredentialsDm2LdInputDto,
+    _$SignCredentialsDm2LdInputDto
+  ];
 
   @override
   final String wireName = r'SignCredentialsDm2LdInputDto';
@@ -66,7 +76,9 @@ class _$SignCredentialsDm2LdInputDtoSerializer implements PrimitiveSerializer<Si
     SignCredentialsDm2LdInputDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +135,3 @@ class _$SignCredentialsDm2LdInputDtoSerializer implements PrimitiveSerializer<Si
     return result.build();
   }
 }
-

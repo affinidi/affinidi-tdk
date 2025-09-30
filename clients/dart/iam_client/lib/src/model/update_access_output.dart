@@ -11,24 +11,28 @@ part 'update_access_output.g.dart';
 /// UpdateAccessOutput
 ///
 /// Properties:
-/// * [success] 
+/// * [success]
 @BuiltValue()
-abstract class UpdateAccessOutput implements Built<UpdateAccessOutput, UpdateAccessOutputBuilder> {
+abstract class UpdateAccessOutput
+    implements Built<UpdateAccessOutput, UpdateAccessOutputBuilder> {
   @BuiltValueField(wireName: r'success')
   bool get success;
 
   UpdateAccessOutput._();
 
-  factory UpdateAccessOutput([void updates(UpdateAccessOutputBuilder b)]) = _$UpdateAccessOutput;
+  factory UpdateAccessOutput([void updates(UpdateAccessOutputBuilder b)]) =
+      _$UpdateAccessOutput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateAccessOutputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateAccessOutput> get serializer => _$UpdateAccessOutputSerializer();
+  static Serializer<UpdateAccessOutput> get serializer =>
+      _$UpdateAccessOutputSerializer();
 }
 
-class _$UpdateAccessOutputSerializer implements PrimitiveSerializer<UpdateAccessOutput> {
+class _$UpdateAccessOutputSerializer
+    implements PrimitiveSerializer<UpdateAccessOutput> {
   @override
   final Iterable<Type> types = const [UpdateAccessOutput, _$UpdateAccessOutput];
 
@@ -53,7 +57,9 @@ class _$UpdateAccessOutputSerializer implements PrimitiveSerializer<UpdateAccess
     UpdateAccessOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -103,4 +109,3 @@ class _$UpdateAccessOutputSerializer implements PrimitiveSerializer<UpdateAccess
     return result.build();
   }
 }
-
