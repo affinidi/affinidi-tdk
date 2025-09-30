@@ -11,11 +11,14 @@ part 'create_project_scoped_token_output.g.dart';
 /// CreateProjectScopedTokenOutput
 ///
 /// Properties:
-/// * [accessToken] 
-/// * [expiresIn] 
-/// * [scope] 
+/// * [accessToken]
+/// * [expiresIn]
+/// * [scope]
 @BuiltValue()
-abstract class CreateProjectScopedTokenOutput implements Built<CreateProjectScopedTokenOutput, CreateProjectScopedTokenOutputBuilder> {
+abstract class CreateProjectScopedTokenOutput
+    implements
+        Built<CreateProjectScopedTokenOutput,
+            CreateProjectScopedTokenOutputBuilder> {
   @BuiltValueField(wireName: r'accessToken')
   String get accessToken;
 
@@ -27,18 +30,25 @@ abstract class CreateProjectScopedTokenOutput implements Built<CreateProjectScop
 
   CreateProjectScopedTokenOutput._();
 
-  factory CreateProjectScopedTokenOutput([void updates(CreateProjectScopedTokenOutputBuilder b)]) = _$CreateProjectScopedTokenOutput;
+  factory CreateProjectScopedTokenOutput(
+          [void updates(CreateProjectScopedTokenOutputBuilder b)]) =
+      _$CreateProjectScopedTokenOutput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateProjectScopedTokenOutputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateProjectScopedTokenOutput> get serializer => _$CreateProjectScopedTokenOutputSerializer();
+  static Serializer<CreateProjectScopedTokenOutput> get serializer =>
+      _$CreateProjectScopedTokenOutputSerializer();
 }
 
-class _$CreateProjectScopedTokenOutputSerializer implements PrimitiveSerializer<CreateProjectScopedTokenOutput> {
+class _$CreateProjectScopedTokenOutputSerializer
+    implements PrimitiveSerializer<CreateProjectScopedTokenOutput> {
   @override
-  final Iterable<Type> types = const [CreateProjectScopedTokenOutput, _$CreateProjectScopedTokenOutput];
+  final Iterable<Type> types = const [
+    CreateProjectScopedTokenOutput,
+    _$CreateProjectScopedTokenOutput
+  ];
 
   @override
   final String wireName = r'CreateProjectScopedTokenOutput';
@@ -71,7 +81,9 @@ class _$CreateProjectScopedTokenOutputSerializer implements PrimitiveSerializer<
     CreateProjectScopedTokenOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -135,4 +147,3 @@ class _$CreateProjectScopedTokenOutputSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

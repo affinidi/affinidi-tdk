@@ -13,26 +13,35 @@ part 'save_pex_queries_update_input.g.dart';
 /// SavePexQueriesUpdateInput
 ///
 /// Properties:
-/// * [queries] 
+/// * [queries]
 @BuiltValue()
-abstract class SavePexQueriesUpdateInput implements Built<SavePexQueriesUpdateInput, SavePexQueriesUpdateInputBuilder> {
+abstract class SavePexQueriesUpdateInput
+    implements
+        Built<SavePexQueriesUpdateInput, SavePexQueriesUpdateInputBuilder> {
   @BuiltValueField(wireName: r'queries')
   BuiltList<SavePexQueriesUpdateInputQueriesInner>? get queries;
 
   SavePexQueriesUpdateInput._();
 
-  factory SavePexQueriesUpdateInput([void updates(SavePexQueriesUpdateInputBuilder b)]) = _$SavePexQueriesUpdateInput;
+  factory SavePexQueriesUpdateInput(
+          [void updates(SavePexQueriesUpdateInputBuilder b)]) =
+      _$SavePexQueriesUpdateInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SavePexQueriesUpdateInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SavePexQueriesUpdateInput> get serializer => _$SavePexQueriesUpdateInputSerializer();
+  static Serializer<SavePexQueriesUpdateInput> get serializer =>
+      _$SavePexQueriesUpdateInputSerializer();
 }
 
-class _$SavePexQueriesUpdateInputSerializer implements PrimitiveSerializer<SavePexQueriesUpdateInput> {
+class _$SavePexQueriesUpdateInputSerializer
+    implements PrimitiveSerializer<SavePexQueriesUpdateInput> {
   @override
-  final Iterable<Type> types = const [SavePexQueriesUpdateInput, _$SavePexQueriesUpdateInput];
+  final Iterable<Type> types = const [
+    SavePexQueriesUpdateInput,
+    _$SavePexQueriesUpdateInput
+  ];
 
   @override
   final String wireName = r'SavePexQueriesUpdateInput';
@@ -46,7 +55,8 @@ class _$SavePexQueriesUpdateInputSerializer implements PrimitiveSerializer<SaveP
       yield r'queries';
       yield serializers.serialize(
         object.queries,
-        specifiedType: const FullType(BuiltList, [FullType(SavePexQueriesUpdateInputQueriesInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(SavePexQueriesUpdateInputQueriesInner)]),
       );
     }
   }
@@ -57,7 +67,9 @@ class _$SavePexQueriesUpdateInputSerializer implements PrimitiveSerializer<SaveP
     SavePexQueriesUpdateInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -75,7 +87,8 @@ class _$SavePexQueriesUpdateInputSerializer implements PrimitiveSerializer<SaveP
         case r'queries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SavePexQueriesUpdateInputQueriesInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(SavePexQueriesUpdateInputQueriesInner)]),
           ) as BuiltList<SavePexQueriesUpdateInputQueriesInner>;
           result.queries.replace(valueDes);
           break;
@@ -107,4 +120,3 @@ class _$SavePexQueriesUpdateInputSerializer implements PrimitiveSerializer<SaveP
     return result.build();
   }
 }
-
