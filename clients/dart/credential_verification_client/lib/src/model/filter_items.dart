@@ -16,24 +16,24 @@ part 'filter_items.g.dart';
 /// FilterItems
 ///
 /// Properties:
-/// * [const_] 
-/// * [enum_] 
-/// * [exclusiveMinimum] 
-/// * [exclusiveMaximum] 
-/// * [format] 
-/// * [formatMaximum] 
-/// * [formatMinimum] 
-/// * [formatExclusiveMaximum] 
-/// * [formatExclusiveMinimum] 
-/// * [minLength] 
-/// * [maxLength] 
-/// * [minimum] 
-/// * [maximum] 
-/// * [not] 
-/// * [pattern] 
-/// * [contains] 
-/// * [items] 
-/// * [type] 
+/// * [const_]
+/// * [enum_]
+/// * [exclusiveMinimum]
+/// * [exclusiveMaximum]
+/// * [format]
+/// * [formatMaximum]
+/// * [formatMinimum]
+/// * [formatExclusiveMaximum]
+/// * [formatExclusiveMinimum]
+/// * [minLength]
+/// * [maxLength]
+/// * [minimum]
+/// * [maximum]
+/// * [not]
+/// * [pattern]
+/// * [contains]
+/// * [items]
+/// * [type]
 @BuiltValue()
 abstract class FilterItems implements Built<FilterItems, FilterItemsBuilder> {
   /// One Of [BuiltList<Filter>], [Filter]
@@ -58,11 +58,7 @@ class _$FilterItemsSerializer implements PrimitiveSerializer<FilterItems> {
   final String wireName = r'FilterItems';
 
   Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    FilterItems object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-  }
+      Serializers serializers, FilterItems object) sync* {}
 
   @override
   Object serialize(
@@ -71,7 +67,8 @@ class _$FilterItemsSerializer implements PrimitiveSerializer<FilterItems> {
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    return serializers.serialize(oneOf.value,
+        specifiedType: FullType(oneOf.valueType))!;
   }
 
   @override
@@ -82,10 +79,13 @@ class _$FilterItemsSerializer implements PrimitiveSerializer<FilterItems> {
   }) {
     final result = FilterItemsBuilder();
     Object? oneOfDataSrc;
-    final targetType = const FullType(OneOf, [FullType(Filter), FullType(BuiltList, [FullType(Filter)]), ]);
+    final targetType = const FullType(OneOf, [
+      FullType(Filter),
+      FullType(BuiltList, [FullType(Filter)]),
+    ]);
     oneOfDataSrc = serialized;
-    result.oneOf = serializers.deserialize(oneOfDataSrc, specifiedType: targetType) as OneOf;
+    result.oneOf = serializers.deserialize(oneOfDataSrc,
+        specifiedType: targetType) as OneOf;
     return result.build();
   }
 }
-
