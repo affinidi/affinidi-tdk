@@ -14,9 +14,11 @@ import 'atm_base_client.dart';
 
 class VdspHolderClient extends AtmBaseClient {
   final List<Disclosure> featureDisclosures;
+  final DidSigner signer;
 
   VdspHolderClient({
     required super.didManager,
+    required this.signer,
     required super.mediatorClient,
     required this.featureDisclosures,
     super.clientOptions = const ClientOptions(),
@@ -33,10 +35,13 @@ class VdspHolderClient extends AtmBaseClient {
       ].map(UniversalDIDResolver.defaultResolver.resolveDid),
     );
 
+    final didDocument = await didManager.getDidDocument();
+
     return VdspHolderClient(
       didManager: didManager,
       featureDisclosures: featureDisclosures,
       clientOptions: clientOptions,
+      signer: await didManager.getSigner(didDocument.assertionMethod.first.id),
       mediatorClient: await didManager.getMediatorClient(
         mediatorDidDocument: mediatorDidDocument,
         recipientDidDocuments: [],
@@ -78,8 +83,6 @@ class VdspHolderClient extends AtmBaseClient {
     );
 
     await mediatorClient.packAndSendMessage(
-      didManager: didManager,
-      clientOptions: clientOptions,
       message: message,
       accessToken: accessToken,
     );
@@ -89,22 +92,47 @@ class VdspHolderClient extends AtmBaseClient {
 
   Future<VdspDataResponseMessage> shareData({
     required VdspQueryDataMessage requestMessage,
-    required Map<String, dynamic> dataResponse,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
+    required List<ParsedVerifiableCredential> verifiableCredentials,
     String? operation,
     String? comment,
     required String accessToken,
   }) async {
     if (requestMessage.from == null) {
-      throw ArgumentError.notNull('message.from');
+      throw ArgumentError.notNull('requestMessage.from');
     }
 
     if (requestMessage.body == null) {
-      throw ArgumentError.notNull('message.body');
+      throw ArgumentError.notNull('requestMessage.body');
     }
 
     final verifierDid = requestMessage.from!;
+
     final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
+    final proofContext = requestBody.proofContext;
+
+    final unsignedVerifiablePresentation = MutableVpDataModelV1(
+      context: [dmV1ContextUrl],
+      id: Uri.parse(const Uuid().v4()),
+      type: {'VerifiablePresentation'},
+      holder: MutableHolder.uri(signer.did),
+      verifiableCredential: verifiableCredentials,
+    );
+
+    final proofGenerator = DataIntegrityEcdsaJcsGenerator(
+      signer: signer,
+      challenge: proofContext?.challenge,
+      domain: proofContext != null ? [proofContext.domain] : null,
+    );
+
+    final suite = LdVpDm1Suite();
+
+    final verifiablePresentation = await suite.issue(
+      unsignedData: VpDataModelV1.fromMutable(
+        unsignedVerifiablePresentation,
+      ),
+      proofGenerator: proofGenerator,
+    );
 
     final responseMessage = VdspDataResponseMessage(
       id: const Uuid().v4(),
@@ -114,15 +142,13 @@ class VdspHolderClient extends AtmBaseClient {
         operation: operation,
         dataQueryLanguage: dataQueryLanguage,
         responseFormat: requestBody.responseFormat,
-        dataResponse: dataResponse,
+        dataResponse: verifiablePresentation.toJson(),
         comment: comment,
       ).toJson(),
       threadId: requestMessage.threadId,
     );
 
     await mediatorClient.packAndSendMessage(
-      didManager: didManager,
-      clientOptions: clientOptions,
       message: responseMessage,
       accessToken: accessToken,
     );
