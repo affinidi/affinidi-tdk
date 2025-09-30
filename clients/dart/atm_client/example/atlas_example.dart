@@ -1,5 +1,6 @@
 import 'package:affinidi_tdk_atm_client/atm_client.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:retry/retry.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
@@ -8,8 +9,14 @@ Future<void> main() async {
   // Run commands below in your terminal to generate keys for Receiver:
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
 
+  final retryOptions = const RetryOptions(
+    maxAttempts: 100,
+    maxDelay: Duration(seconds: 10),
+    delayFactor: Duration(seconds: 10),
+  );
+
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'mediator_client',
+    packageDirectoryName: 'atm_client',
   );
 
   final senderKeyStore = InMemoryKeyStore();
@@ -40,30 +47,67 @@ Future<void> main() async {
     didManager: senderDidManager,
   );
 
-  final authTokens = await atmAtlasClient.authenticate();
+  var authTokens = await atmAtlasClient.authenticate();
+  await atmAtlasClient.connect(accessToken: authTokens.accessToken);
 
-  prettyPrint('Cleaning previously deployed mediator instances...');
+  final messageQueue =
+      await atmAtlasClient.mediatorClient.fetchMessagesStartingFrom(
+    accessToken: authTokens.accessToken,
+  );
+
+  print(messageQueue.length);
+
+  prettyPrint('Checking if there are deployed mediators...');
+
   final existingInstances = await atmAtlasClient.getMediatorInstancesList(
     accessToken: authTokens.accessToken,
   );
 
-  for (final instance in existingInstances.instances) {
-    prettyPrint(
-      'Destroying mediator instance',
-      object: {
-        'mediatorId': instance.id,
-        'name': instance.name,
+  if (existingInstances.instances.isNotEmpty) {
+    prettyPrint('Cleaning previously deployed mediators...');
+    final cleaningStart = DateTime.now();
+
+    for (final instance in existingInstances.instances) {
+      final destroyResponse = await atmAtlasClient.destroyMediatorInstance(
+        accessToken: authTokens.accessToken,
+        mediatorId: instance.id,
+      );
+
+      prettyPrint(
+        'Destroy response',
+        object: destroyResponse,
+      );
+    }
+
+    // wait for deletion
+    await retryOptions.retry(
+      () async {
+        final list = await atmAtlasClient.getMediatorInstancesList(
+          accessToken: authTokens.accessToken,
+        );
+
+        if (list.instances.isNotEmpty) {
+          prettyPrint('destroying...');
+          throw Exception('Deployed mediator instances found.');
+        }
       },
+      retryIf: (e) =>
+          e.toString() == 'Exception: Deployed mediator instances found.',
     );
 
-    await atmAtlasClient.destroyMediatorInstance(
-      accessToken: authTokens.accessToken,
-      mediatorId: instance.id,
+    prettyPrint(
+      'Cleaning previously deployed mediators completed in ${DateTime.now().difference(cleaningStart).inMinutes} minutes.',
     );
   }
 
-  prettyPrint('Deploying mediator instance...');
-  final deployResponse = await atmAtlasClient.deployMediatorInstance(
+  prettyPrint('Deploying mediator...');
+
+  final deploymentStart = DateTime.now();
+
+  authTokens = await atmAtlasClient.authenticate();
+  await atmAtlasClient.connect(accessToken: authTokens.accessToken);
+
+  final deploymentResponse = await atmAtlasClient.deployMediatorInstance(
     accessToken: authTokens.accessToken,
     deploymentData: DeployMediatorInstanceRequest(
       serviceSize: 'tiny',
@@ -73,108 +117,122 @@ Future<void> main() async {
     ),
   );
 
-  final deployedMediator = deployResponse.response;
+  final deployedMediator = deploymentResponse.response;
+
   prettyPrint(
-    'Mediator deployed',
-    object: {
-      'mediatorId': deployedMediator.mediatorId,
-      'serviceRequestId': deployedMediator.serviceRequestId,
-      'message': deployedMediator.message ?? '',
-    },
+    'Deployment response',
+    object: deploymentResponse,
   );
 
-  final instancesAfterDeployment =
+  // wait for completed deployment
+  await retryOptions.retry(
+    () async {
+      final list = await atmAtlasClient.getMediatorInstancesList(
+        accessToken: authTokens.accessToken,
+      );
+
+      if (list.instances.any(
+        (instance) => instance.deploymentStatus != 'CREATE_COMPLETE',
+      )) {
+        prettyPrint('deploying...');
+        throw Exception('Mediator is still deploying.');
+      }
+    },
+    retryIf: (e) => e.toString() == 'Exception: Mediator is still deploying.',
+  );
+
+  prettyPrint(
+    'Deploying mediator completed in ${DateTime.now().difference(deploymentStart).inMinutes} minutes.',
+  );
+
+  final deployedMediatorsResponse =
       await atmAtlasClient.getMediatorInstancesList(
     accessToken: authTokens.accessToken,
   );
+
   prettyPrint(
-    'Mediator instances after deployment',
-    object: instancesAfterDeployment.instances
-        .map((MediatorInstance instance) => {
-              'mediatorId': instance.id,
-              'name': instance.name,
-              'status': instance.deploymentStatus,
-              'serviceSize': instance.serviceSize,
-            })
-        .toList(),
+    'Get mediators response',
+    object: deployedMediatorsResponse,
   );
 
-  prettyPrint('Updating mediator deployment metadata...');
-  final updateDeploymentResponse =
-      await atmAtlasClient.updateMediatorInstanceDeployment(
-    accessToken: authTokens.accessToken,
-    deploymentData: UpdateMediatorInstanceDeploymentRequest(
-      mediatorId: deployedMediator.mediatorId,
-      name: 'Example Mediator Updated',
-      description: 'Updated by atlas_example.dart',
-    ),
-  );
-  prettyPrint(
-    'Deployment update response',
-    object: {'message': updateDeploymentResponse.response.message ?? ''},
-  );
+  // final updateDeploymentResponse =
+  //     await atmAtlasClient.updateMediatorInstanceDeployment(
+  //   accessToken: authTokens.accessToken,
+  //   deploymentData: UpdateMediatorInstanceDeploymentRequest(
+  //     mediatorId: deployedMediator.mediatorId,
+  //     name: 'Example Mediator Updated',
+  //     description: 'Updated by atlas_example.dart',
+  //   ),
+  // );
 
-  prettyPrint('Updating mediator configuration...');
-  final updateConfigurationResponse =
-      await atmAtlasClient.updateMediatorInstanceConfiguration(
-    accessToken: authTokens.accessToken,
-    configurationData: UpdateMediatorInstanceConfigurationRequest(
-      mediatorId: deployedMediator.mediatorId,
-      acl: const {
-        'did:example:alice': 1,
-        'did:example:bob': 2,
-        'did:example:charlie': 3,
-      },
-    ),
-  );
-  prettyPrint(
-    'Configuration update response',
-    object: {'message': updateConfigurationResponse.response.message ?? ''},
-  );
+  // prettyPrint(
+  //   'Deployment update response',
+  //   object: {'message': updateDeploymentResponse.response.message ?? ''},
+  // );
 
-  final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
-    accessToken: authTokens.accessToken,
-    mediatorId: deployedMediator.mediatorId,
-  );
-  final metadata = metadataResponse.metadata;
-  prettyPrint(
-    'Mediator metadata after updates',
-    object: {
-      'mediatorId': metadata.id,
-      'name': metadata.name,
-      'description': metadata.description,
-      'deploymentStatus': metadata.deploymentStatus,
-      'acl': metadata.acl?.toString() ?? 'not provided',
-    },
-  );
+  // final updateConfigurationResponse =
+  //     await atmAtlasClient.updateMediatorInstanceConfiguration(
+  //   accessToken: authTokens.accessToken,
+  //   configurationData: UpdateMediatorInstanceConfigurationRequest(
+  //     mediatorId: deployedMediator.mediatorId,
+  //     acl: const {
+  //       'did:example:alice': 1,
+  //       'did:example:bob': 2,
+  //       'did:example:charlie': 3,
+  //     },
+  //   ),
+  // );
+
+  // prettyPrint(
+  //   'Configuration update response',
+  //   object: {'message': updateConfigurationResponse.response.message ?? ''},
+  // );
+
+  // final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
+  //   accessToken: authTokens.accessToken,
+  //   mediatorId: deployedMediator.mediatorId,
+  // );
+
+  // prettyPrint(
+  //   'Metadata response',
+  //   object: metadataResponse,
+  // );
 
   prettyPrint('Destroying deployed mediator instance...');
+  final destroyingStart = DateTime.now();
+
+  authTokens = await atmAtlasClient.authenticate();
+  await atmAtlasClient.connect(accessToken: authTokens.accessToken);
+
   final destroyResponse = await atmAtlasClient.destroyMediatorInstance(
     accessToken: authTokens.accessToken,
     mediatorId: deployedMediator.mediatorId,
   );
+
   prettyPrint(
     'Destroy response',
     object: {'message': destroyResponse.response.message ?? ''},
   );
 
-  final instancesAfterCleanup = await atmAtlasClient.getMediatorInstancesList(
-    accessToken: authTokens.accessToken,
+  // wait for deletion
+  await retryOptions.retry(
+    () async {
+      final list = await atmAtlasClient.getMediatorInstancesList(
+        accessToken: authTokens.accessToken,
+      );
+
+      if (list.instances.isNotEmpty) {
+        prettyPrint('destroying...');
+        throw Exception('Deployed mediator instances found.');
+      }
+    },
+    retryIf: (e) =>
+        e.toString() == 'Exception: Deployed mediator instances found.',
   );
 
-  if (instancesAfterCleanup.instances.isEmpty) {
-    prettyPrint('No mediator instances remain.');
-  } else {
-    prettyPrint(
-      'Mediator instances still present',
-      object: instancesAfterCleanup.instances
-          .map((MediatorInstance instance) => {
-                'mediatorId': instance.id,
-                'name': instance.name,
-              })
-          .toList(),
-    );
-  }
+  prettyPrint(
+    'Destroying mediator completed in ${DateTime.now().difference(destroyingStart).inMinutes} minutes.',
+  );
 
-  prettyPrint('Example completed.');
+  await atmAtlasClient.mediatorClient.disconnect();
 }

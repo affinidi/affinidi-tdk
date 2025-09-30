@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
@@ -53,8 +54,6 @@ class VdspVerifierClient extends AtmBaseClient {
     );
 
     await mediatorClient.packAndSendMessage(
-      didManager: didManager,
-      clientOptions: clientOptions,
       message: message,
       accessToken: accessToken,
     );
@@ -87,8 +86,6 @@ class VdspVerifierClient extends AtmBaseClient {
     );
 
     await mediatorClient.packAndSendMessage(
-      didManager: didManager,
-      clientOptions: clientOptions,
       message: message,
       accessToken: accessToken,
     );
@@ -98,7 +95,11 @@ class VdspVerifierClient extends AtmBaseClient {
 
   Future<StreamSubscription> listenForIncomingMessages({
     void Function(DiscloseMessage)? onDiscloseMessage,
-    required void Function(VdspDataResponseMessage) onDataResponse,
+    required void Function(
+      VdspDataResponseMessage,
+      bool,
+      VerifiablePresentation? verifiablePresentation,
+    ) onDataResponse,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function()? onDone,
@@ -131,17 +132,59 @@ class VdspVerifierClient extends AtmBaseClient {
         }
 
         if (unpacked.type == VdspDataResponseMessage.messageType) {
-          onDataResponse(
-            VdspDataResponseMessage(
-              id: unpacked.id,
-              from: unpacked.from,
-              to: unpacked.to,
-              createdTime: unpacked.createdTime,
-              expiresTime: unpacked.expiresTime,
-              threadId: unpacked.threadId,
-              body: unpacked.body,
-            ),
+          final responseMessage = VdspDataResponseMessage(
+            id: unpacked.id,
+            from: unpacked.from,
+            to: unpacked.to,
+            createdTime: unpacked.createdTime,
+            expiresTime: unpacked.expiresTime,
+            threadId: unpacked.threadId,
+            body: unpacked.body,
           );
+
+          if (responseMessage.body == null) {
+            throw ArgumentError.notNull('responseMessage.body');
+          }
+
+          final body = VdspDataResponseBody.fromJson(responseMessage.body!);
+
+          final verifiablePresentation = UniversalPresentationParser.parse(
+            jsonEncode(body.dataResponse),
+          );
+
+          final universalPresentationVerifier = UniversalPresentationVerifier();
+          final universalCredentialVerifier = UniversalVerifier();
+
+          final presentationVerificationResult =
+              await universalPresentationVerifier.verify(
+            verifiablePresentation,
+          );
+
+          if (presentationVerificationResult.isValid) {
+            final credentialsVerificationResult = await Future.wait(
+              verifiablePresentation.verifiableCredential.map(
+                universalCredentialVerifier.verify,
+              ),
+            );
+
+            final credentialsValid = credentialsVerificationResult.every(
+              (result) => result.isValid,
+            );
+
+            if (credentialsValid) {
+              onDataResponse(
+                responseMessage,
+                true,
+                verifiablePresentation,
+              );
+            } else {
+              onDataResponse(
+                responseMessage,
+                false,
+                null,
+              );
+            }
+          }
 
           return;
         }
