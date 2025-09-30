@@ -16,7 +16,8 @@ part 'verify_credential_v2_input.g.dart';
 /// * [verifiableCredentials] - List of VC strings
 /// * [issuerDidDocument] - Dynamic model
 @BuiltValue()
-abstract class VerifyCredentialV2Input implements Built<VerifyCredentialV2Input, VerifyCredentialV2InputBuilder> {
+abstract class VerifyCredentialV2Input
+    implements Built<VerifyCredentialV2Input, VerifyCredentialV2InputBuilder> {
   /// List of VC strings
   @BuiltValueField(wireName: r'verifiableCredentials')
   BuiltList<String> get verifiableCredentials;
@@ -27,18 +28,25 @@ abstract class VerifyCredentialV2Input implements Built<VerifyCredentialV2Input,
 
   VerifyCredentialV2Input._();
 
-  factory VerifyCredentialV2Input([void updates(VerifyCredentialV2InputBuilder b)]) = _$VerifyCredentialV2Input;
+  factory VerifyCredentialV2Input(
+          [void updates(VerifyCredentialV2InputBuilder b)]) =
+      _$VerifyCredentialV2Input;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VerifyCredentialV2InputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyCredentialV2Input> get serializer => _$VerifyCredentialV2InputSerializer();
+  static Serializer<VerifyCredentialV2Input> get serializer =>
+      _$VerifyCredentialV2InputSerializer();
 }
 
-class _$VerifyCredentialV2InputSerializer implements PrimitiveSerializer<VerifyCredentialV2Input> {
+class _$VerifyCredentialV2InputSerializer
+    implements PrimitiveSerializer<VerifyCredentialV2Input> {
   @override
-  final Iterable<Type> types = const [VerifyCredentialV2Input, _$VerifyCredentialV2Input];
+  final Iterable<Type> types = const [
+    VerifyCredentialV2Input,
+    _$VerifyCredentialV2Input
+  ];
 
   @override
   final String wireName = r'VerifyCredentialV2Input';
@@ -57,7 +65,8 @@ class _$VerifyCredentialV2InputSerializer implements PrimitiveSerializer<VerifyC
       yield r'issuerDidDocument';
       yield serializers.serialize(
         object.issuerDidDocument,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(
+            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
   }
@@ -68,7 +77,9 @@ class _$VerifyCredentialV2InputSerializer implements PrimitiveSerializer<VerifyC
     VerifyCredentialV2Input object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -93,7 +104,8 @@ class _$VerifyCredentialV2InputSerializer implements PrimitiveSerializer<VerifyC
         case r'issuerDidDocument':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.issuerDidDocument.replace(valueDes);
           break;
@@ -125,4 +137,3 @@ class _$VerifyCredentialV2InputSerializer implements PrimitiveSerializer<VerifyC
     return result.build();
   }
 }
-

@@ -118,7 +118,9 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
     Error object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -203,4 +205,3 @@ class _$ErrorSerializer implements PrimitiveSerializer<Error> {
     return result.build();
   }
 }
-

@@ -13,11 +13,11 @@ part 'field.g.dart';
 /// Field
 ///
 /// Properties:
-/// * [id] 
-/// * [path] 
-/// * [purpose] 
-/// * [filter] 
-/// * [predicate] 
+/// * [id]
+/// * [path]
+/// * [purpose]
+/// * [filter]
+/// * [predicate]
 @BuiltValue()
 abstract class Field implements Built<Field, FieldBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -102,7 +102,9 @@ class _$FieldSerializer implements PrimitiveSerializer<Field> {
     Field object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -182,17 +184,17 @@ class _$FieldSerializer implements PrimitiveSerializer<Field> {
 }
 
 class FieldPredicateEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'required')
   static const FieldPredicateEnum required_ = _$fieldPredicateEnum_required_;
   @BuiltValueEnumConst(wireName: r'preferred')
   static const FieldPredicateEnum preferred = _$fieldPredicateEnum_preferred;
 
-  static Serializer<FieldPredicateEnum> get serializer => _$fieldPredicateEnumSerializer;
+  static Serializer<FieldPredicateEnum> get serializer =>
+      _$fieldPredicateEnumSerializer;
 
-  const FieldPredicateEnum._(String name): super(name);
+  const FieldPredicateEnum._(String name) : super(name);
 
   static BuiltSet<FieldPredicateEnum> get values => _$fieldPredicateEnumValues;
-  static FieldPredicateEnum valueOf(String name) => _$fieldPredicateEnumValueOf(name);
+  static FieldPredicateEnum valueOf(String name) =>
+      _$fieldPredicateEnumValueOf(name);
 }
-

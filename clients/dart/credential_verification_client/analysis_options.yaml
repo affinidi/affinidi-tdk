@@ -5,6 +5,3 @@ analyzer:
     strict-casts: false
   exclude:
     - test/*.dart
-  errors:
-    deprecated_member_use_from_same_package: ignore
-    unused_import: ignore
