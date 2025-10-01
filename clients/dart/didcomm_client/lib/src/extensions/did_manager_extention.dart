@@ -2,10 +2,10 @@ import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../didcomm_client.dart';
-import '../common/atm_mediator_client.dart';
+import '../common/didcomm_mediator_client.dart';
 
 extension DidManagerExtention on DidManager {
-  Future<AtmMediatorClient> getMediatorClient({
+  Future<DidcommMediatorClient> getMediatorClient({
     required DidDocument mediatorDidDocument,
     // TODO: make it optional
     required List<DidDocument> recipientDidDocuments,
@@ -36,7 +36,7 @@ extension DidManagerExtention on DidManager {
       matchedDidKeyIds.first,
     );
 
-    return AtmMediatorClient(
+    return DidcommMediatorClient(
       didManager: this,
       clientOptions: clientOptions,
       mediatorDidDocument: mediatorDidDocument,

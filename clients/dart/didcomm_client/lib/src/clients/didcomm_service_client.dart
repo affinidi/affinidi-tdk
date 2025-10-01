@@ -6,13 +6,13 @@ import 'package:ssi/ssi.dart';
 import 'didcomm_base_client.dart';
 
 abstract class DidcommServiceClient extends DidcommBaseClient {
-  final DidDocument atmServiceDidDocument;
+  final DidDocument serviceDidDocument;
 
   DidcommServiceClient({
     required super.didManager,
     required super.clientOptions,
     required super.mediatorClient,
-    required this.atmServiceDidDocument,
+    required this.serviceDidDocument,
   });
 
   Future<PlainTextMessage> sendServiceMessage(
@@ -26,7 +26,7 @@ abstract class DidcommServiceClient extends DidcommBaseClient {
 
     await sendMessage(
       requestMessage,
-      recipientDidDocument: atmServiceDidDocument,
+      recipientDidDocument: serviceDidDocument,
       accessToken: accessToken,
     );
 

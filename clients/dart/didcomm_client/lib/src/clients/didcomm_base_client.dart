@@ -3,10 +3,10 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
-import '../common/atm_mediator_client.dart';
+import '../common/didcomm_mediator_client.dart';
 
 abstract class DidcommBaseClient {
-  final AtmMediatorClient mediatorClient;
+  final DidcommMediatorClient mediatorClient;
   final DidManager didManager;
   final ClientOptions clientOptions;
 

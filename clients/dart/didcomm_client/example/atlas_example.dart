@@ -36,16 +36,16 @@ Future<void> main() async {
 
   await senderDidManager.addVerificationMethod(senderKeyId);
 
-  final atmAtlasClient = await DidcommAtlasClient.init(
+  final atlasClient = await DidcommAtlasClient.init(
     didManager: senderDidManager,
   );
 
-  var authTokens = await atmAtlasClient.authenticate();
-  await atmAtlasClient.connect(accessToken: authTokens.accessToken);
+  var authTokens = await atlasClient.authenticate();
+  await atlasClient.connect(accessToken: authTokens.accessToken);
 
   prettyPrint('Checking if there are deployed mediators...');
 
-  final existingInstances = await atmAtlasClient.getMediatorInstancesList(
+  final existingInstances = await atlasClient.getMediatorInstancesList(
     accessToken: authTokens.accessToken,
   );
 
@@ -54,7 +54,7 @@ Future<void> main() async {
     final cleaningStart = DateTime.now();
 
     for (final instance in existingInstances.instances) {
-      final destroyResponse = await atmAtlasClient.destroyMediatorInstance(
+      final destroyResponse = await atlasClient.destroyMediatorInstance(
         accessToken: authTokens.accessToken,
         mediatorId: instance.id,
       );
@@ -68,7 +68,7 @@ Future<void> main() async {
     // wait for deletion
     await _waitUntilMediators(
       predicate: (mediators) => mediators.isNotEmpty,
-      atmAtlasClient: atmAtlasClient,
+      atlasClient: atlasClient,
       firstTimeout: const Duration(minutes: 10),
       logMessage: 'destroying...',
       authTokens: authTokens,
@@ -83,10 +83,10 @@ Future<void> main() async {
 
   final deploymentStart = DateTime.now();
 
-  authTokens = await atmAtlasClient.authenticate();
-  await atmAtlasClient.connect(accessToken: authTokens.accessToken);
+  authTokens = await atlasClient.authenticate();
+  await atlasClient.connect(accessToken: authTokens.accessToken);
 
-  final deploymentResponse = await atmAtlasClient.deployMediatorInstance(
+  final deploymentResponse = await atlasClient.deployMediatorInstance(
     accessToken: authTokens.accessToken,
     deploymentData: DeployMediatorInstanceRequest(
       serviceSize: 'tiny',
@@ -108,7 +108,7 @@ Future<void> main() async {
     predicate: (mediators) => mediators.any(
       (mediators) => mediators.deploymentStatus != 'CREATE_COMPLETE',
     ),
-    atmAtlasClient: atmAtlasClient,
+    atlasClient: atlasClient,
     firstTimeout: const Duration(minutes: 5),
     logMessage: 'deploying...',
     authTokens: authTokens,
@@ -118,8 +118,7 @@ Future<void> main() async {
     'Deploying mediator completed in ${DateTime.now().difference(deploymentStart).inMinutes} minutes.',
   );
 
-  final deployedMediatorsResponse =
-      await atmAtlasClient.getMediatorInstancesList(
+  final deployedMediatorsResponse = await atlasClient.getMediatorInstancesList(
     accessToken: authTokens.accessToken,
   );
 
@@ -128,69 +127,26 @@ Future<void> main() async {
     object: deployedMediatorsResponse,
   );
 
-  // final updateDeploymentResponse =
-  //     await atmAtlasClient.updateMediatorInstanceDeployment(
-  //   accessToken: authTokens.accessToken,
-  //   deploymentData: UpdateMediatorInstanceDeploymentRequest(
-  //     mediatorId: deployedMediator.mediatorId,
-  //     name: 'Example Mediator Updated',
-  //     description: 'Updated by atlas_example.dart',
-  //   ),
-  // );
-
-  // prettyPrint(
-  //   'Deployment update response',
-  //   object: {'message': updateDeploymentResponse.response.message ?? ''},
-  // );
-
-  // final updateConfigurationResponse =
-  //     await atmAtlasClient.updateMediatorInstanceConfiguration(
-  //   accessToken: authTokens.accessToken,
-  //   configurationData: UpdateMediatorInstanceConfigurationRequest(
-  //     mediatorId: deployedMediator.mediatorId,
-  //     acl: const {
-  //       'did:example:alice': 1,
-  //       'did:example:bob': 2,
-  //       'did:example:charlie': 3,
-  //     },
-  //   ),
-  // );
-
-  // prettyPrint(
-  //   'Configuration update response',
-  //   object: {'message': updateConfigurationResponse.response.message ?? ''},
-  // );
-
-  // final metadataResponse = await atmAtlasClient.getMediatorInstanceMetadata(
-  //   accessToken: authTokens.accessToken,
-  //   mediatorId: deployedMediator.mediatorId,
-  // );
-
-  // prettyPrint(
-  //   'Metadata response',
-  //   object: metadataResponse,
-  // );
-
   prettyPrint('Destroying deployed mediator instance...');
   final destroyingStart = DateTime.now();
 
-  authTokens = await atmAtlasClient.authenticate();
-  await atmAtlasClient.connect(accessToken: authTokens.accessToken);
+  authTokens = await atlasClient.authenticate();
+  await atlasClient.connect(accessToken: authTokens.accessToken);
 
-  final destroyResponse = await atmAtlasClient.destroyMediatorInstance(
+  final destroyResponse = await atlasClient.destroyMediatorInstance(
     accessToken: authTokens.accessToken,
     mediatorId: deployedMediator.mediatorId,
   );
 
   prettyPrint(
     'Destroy response',
-    object: {'message': destroyResponse.response.message ?? ''},
+    object: destroyResponse,
   );
 
   // wait for deletion
   await _waitUntilMediators(
     predicate: (mediators) => mediators.isNotEmpty,
-    atmAtlasClient: atmAtlasClient,
+    atlasClient: atlasClient,
     firstTimeout: const Duration(minutes: 10),
     logMessage: 'destroying...',
     authTokens: authTokens,
@@ -200,12 +156,12 @@ Future<void> main() async {
     'Destroying mediator completed in ${DateTime.now().difference(destroyingStart).inMinutes} minutes.',
   );
 
-  await atmAtlasClient.mediatorClient.disconnect();
+  await atlasClient.mediatorClient.disconnect();
 }
 
 Future<void> _waitUntilMediators({
   required bool Function(List<MediatorInstance>) predicate,
-  required DidcommAtlasClient atmAtlasClient,
+  required DidcommAtlasClient atlasClient,
   required Duration firstTimeout,
   required String logMessage,
   required AuthenticationTokens authTokens,
@@ -221,7 +177,7 @@ Future<void> _waitUntilMediators({
     prettyPrint(logMessage);
     await Future<void>.delayed(timeout);
 
-    list = await atmAtlasClient.getMediatorInstancesList(
+    list = await atlasClient.getMediatorInstancesList(
       accessToken: authTokens.accessToken,
     );
 
