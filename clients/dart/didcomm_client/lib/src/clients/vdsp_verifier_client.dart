@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../extensions/did_manager_extention.dart';
+import '../messages/vdsp/vdsp_data_processing_result_message.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
 import '../models/constants/data_query_language.dart';
@@ -82,6 +83,30 @@ class VdspVerifierClient extends DidcommBaseClient {
         query: query,
         comment: comment,
         proofContext: proofContext,
+      ).toJson(),
+    );
+
+    await mediatorClient.packAndSendMessage(
+      message: message,
+      accessToken: accessToken,
+    );
+
+    return message;
+  }
+
+  Future<VdspDataProcessingResultMessage> sendDataProcessingResult({
+    required String holderDid,
+    String? operation,
+    required Map<String, dynamic> result,
+    required String accessToken,
+  }) async {
+    final message = VdspDataProcessingResultMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [holderDid],
+      body: VdspDataProcessingResultBody(
+        operation: operation,
+        result: result,
       ).toJson(),
     );
 

@@ -227,6 +227,16 @@ Future<void> main() async {
         object: verifiablePresentation,
       );
 
+      if (message.from == null) {
+        throw ArgumentError.notNull('from');
+      }
+
+      await verifierClient.sendDataProcessingResult(
+        holderDid: message.from!,
+        result: {'success': true},
+        accessToken: verifierAuthTokens.accessToken,
+      );
+
       await verifierClient.mediatorClient.disconnect();
     },
     onProblemReport: (message) {
@@ -280,6 +290,12 @@ Future<void> main() async {
         verifiableCredentials: holderVerifiableCredentials,
         verifiablePresentationSigner: holderSigner,
         accessToken: holderAuthTokens.accessToken,
+      );
+    },
+    onDataProcessingResult: (message) async {
+      prettyPrint(
+        'Holder received Data Processing Result Message',
+        object: message,
       );
 
       await holderClient.mediatorClient.disconnect();
