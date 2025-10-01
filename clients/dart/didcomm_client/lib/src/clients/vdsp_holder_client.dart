@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
 import '../extensions/did_manager_extention.dart';
+import '../messages/vdsp/vdsp_data_processing_result_message.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
 import '../models/constants/data_query_language.dart';
@@ -161,6 +162,7 @@ class VdspHolderClient extends DidcommBaseClient {
   Future<StreamSubscription> listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
     required void Function(VdspQueryDataMessage) onDataRequest,
+    void Function(VdspDataProcessingResultMessage)? onDataProcessingResult,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function()? onDone,
@@ -196,6 +198,23 @@ class VdspHolderClient extends DidcommBaseClient {
         if (unpacked.type == VdspQueryDataMessage.messageType) {
           onDataRequest(
             VdspQueryDataMessage(
+              id: unpacked.id,
+              from: unpacked.from,
+              to: unpacked.to,
+              createdTime: unpacked.createdTime,
+              expiresTime: unpacked.expiresTime,
+              body: unpacked.body,
+              threadId: unpacked.threadId,
+            ),
+          );
+
+          return;
+        }
+
+        if (onDataProcessingResult != null &&
+            unpacked.type == VdspDataProcessingResultMessage.messageType) {
+          onDataProcessingResult(
+            VdspDataProcessingResultMessage(
               id: unpacked.id,
               from: unpacked.from,
               to: unpacked.to,
