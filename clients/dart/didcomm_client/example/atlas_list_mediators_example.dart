@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_atm_client/didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 

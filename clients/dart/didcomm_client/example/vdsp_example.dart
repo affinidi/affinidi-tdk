@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:affinidi_tdk_atm_client/src/clients/vdsp_holder_client.dart';
-import 'package:affinidi_tdk_atm_client/src/clients/vdsp_verifier_client.dart';
-import 'package:affinidi_tdk_atm_client/src/common/feature_discovery_helper.dart';
-import 'package:affinidi_tdk_atm_client/src/models/constants/feature_type.dart';
+import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
+import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
+import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
+import 'package:affinidi_tdk_didcomm_client/src/models/constants/feature_type.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
