@@ -85,10 +85,10 @@ class MediatorInstance {
   final String serviceType;
 
   /// The deployment state.
-  final String deploymentState;
+  final String? deploymentState;
 
   /// The deployment status.
-  final String deploymentStatus;
+  final String? deploymentStatus;
 
   /// The service size.
   final String serviceSize;
@@ -125,8 +125,8 @@ class MediatorInstance {
     required this.modifiedBy,
     required this.projectId,
     required this.serviceType,
-    required this.deploymentState,
-    required this.deploymentStatus,
+    this.deploymentState,
+    this.deploymentStatus,
     required this.serviceSize,
     required this.did,
     required this.didDocumentUrl,

@@ -79,6 +79,10 @@ Future<void> main() async {
 
   await holderDidManager.addVerificationMethod(holderKeyId);
 
+  final holderSigner = await holderDidManager.getSigner(
+    holderDidManager.assertionMethod.first,
+  );
+
   final holderVerifiableCredentials = await Future.wait(
     [
       VcDataModelV1(
@@ -118,20 +122,15 @@ Future<void> main() async {
   const verifierDsql = {
     'credentials': [
       {
-        'id': 'my_credential',
-        'format': 'mso_mdoc',
-        'meta': {'doctype_value': 'org.iso.7367.1.mVRC'},
+        'id': 'example_ldp_vc',
+        'format': 'ldp_vc',
         'claims': [
           {
-            'path': ['org.iso.7367.1', 'vehicle_holder'],
-            'intent_to_retain': true,
+            'path': ['credentialSubject', 'email']
           },
-          {
-            'path': ['org.iso.18013.5.1', 'first_name'],
-          },
-        ],
-      },
-    ],
+        ]
+      }
+    ]
   };
 
   // verifier
@@ -279,6 +278,7 @@ Future<void> main() async {
       await holderClient.shareData(
         requestMessage: message,
         verifiableCredentials: holderVerifiableCredentials,
+        verifiablePresentationSigner: holderSigner,
         accessToken: holderAuthTokens.accessToken,
       );
 

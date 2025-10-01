@@ -1,6 +1,5 @@
 import 'package:affinidi_tdk_atm_client/atm_client.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
-import 'package:retry/retry.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
@@ -8,12 +7,6 @@ import '../../../../tests/integration/dart/test/test_config.dart';
 Future<void> main() async {
   // Run commands below in your terminal to generate keys for Receiver:
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
-
-  final retryOptions = const RetryOptions(
-    maxAttempts: 100,
-    maxDelay: Duration(seconds: 10),
-    delayFactor: Duration(seconds: 10),
-  );
 
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'atm_client',
@@ -50,13 +43,6 @@ Future<void> main() async {
   var authTokens = await atmAtlasClient.authenticate();
   await atmAtlasClient.connect(accessToken: authTokens.accessToken);
 
-  final messageQueue =
-      await atmAtlasClient.mediatorClient.fetchMessagesStartingFrom(
-    accessToken: authTokens.accessToken,
-  );
-
-  print(messageQueue.length);
-
   prettyPrint('Checking if there are deployed mediators...');
 
   final existingInstances = await atmAtlasClient.getMediatorInstancesList(
@@ -80,19 +66,12 @@ Future<void> main() async {
     }
 
     // wait for deletion
-    await retryOptions.retry(
-      () async {
-        final list = await atmAtlasClient.getMediatorInstancesList(
-          accessToken: authTokens.accessToken,
-        );
-
-        if (list.instances.isNotEmpty) {
-          prettyPrint('destroying...');
-          throw Exception('Deployed mediator instances found.');
-        }
-      },
-      retryIf: (e) =>
-          e.toString() == 'Exception: Deployed mediator instances found.',
+    await _waitUntilMediators(
+      predicate: (mediators) => mediators.isNotEmpty,
+      atmAtlasClient: atmAtlasClient,
+      firstTimeout: const Duration(minutes: 10),
+      logMessage: 'destroying...',
+      authTokens: authTokens,
     );
 
     prettyPrint(
@@ -125,20 +104,14 @@ Future<void> main() async {
   );
 
   // wait for completed deployment
-  await retryOptions.retry(
-    () async {
-      final list = await atmAtlasClient.getMediatorInstancesList(
-        accessToken: authTokens.accessToken,
-      );
-
-      if (list.instances.any(
-        (instance) => instance.deploymentStatus != 'CREATE_COMPLETE',
-      )) {
-        prettyPrint('deploying...');
-        throw Exception('Mediator is still deploying.');
-      }
-    },
-    retryIf: (e) => e.toString() == 'Exception: Mediator is still deploying.',
+  await _waitUntilMediators(
+    predicate: (mediators) => mediators.any(
+      (mediators) => mediators.deploymentStatus != 'CREATE_COMPLETE',
+    ),
+    atmAtlasClient: atmAtlasClient,
+    firstTimeout: const Duration(minutes: 5),
+    logMessage: 'deploying...',
+    authTokens: authTokens,
   );
 
   prettyPrint(
@@ -215,19 +188,12 @@ Future<void> main() async {
   );
 
   // wait for deletion
-  await retryOptions.retry(
-    () async {
-      final list = await atmAtlasClient.getMediatorInstancesList(
-        accessToken: authTokens.accessToken,
-      );
-
-      if (list.instances.isNotEmpty) {
-        prettyPrint('destroying...');
-        throw Exception('Deployed mediator instances found.');
-      }
-    },
-    retryIf: (e) =>
-        e.toString() == 'Exception: Deployed mediator instances found.',
+  await _waitUntilMediators(
+    predicate: (mediators) => mediators.isNotEmpty,
+    atmAtlasClient: atmAtlasClient,
+    firstTimeout: const Duration(minutes: 10),
+    logMessage: 'destroying...',
+    authTokens: authTokens,
   );
 
   prettyPrint(
@@ -235,4 +201,32 @@ Future<void> main() async {
   );
 
   await atmAtlasClient.mediatorClient.disconnect();
+}
+
+Future<void> _waitUntilMediators({
+  required bool Function(List<MediatorInstance>) predicate,
+  required AtmAtlasClient atmAtlasClient,
+  required Duration firstTimeout,
+  required String logMessage,
+  required AuthenticationTokens authTokens,
+}) async {
+  final timeout = const Duration(seconds: 10);
+  var attemptsLeft = 100;
+  late GetMediatorInstancesListResponseMessage list;
+
+  prettyPrint(logMessage);
+  await Future<void>.delayed(firstTimeout);
+
+  do {
+    prettyPrint(logMessage);
+    await Future<void>.delayed(timeout);
+
+    list = await atmAtlasClient.getMediatorInstancesList(
+      accessToken: authTokens.accessToken,
+    );
+
+    if (--attemptsLeft == 0) {
+      throw Exception('Reached the max number of attempts');
+    }
+  } while (predicate(list.instances));
 }
