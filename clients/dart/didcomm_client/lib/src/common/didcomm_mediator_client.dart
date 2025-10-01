@@ -6,13 +6,13 @@ import 'package:uuid/uuid.dart';
 
 import '../common/client_options.dart';
 
-class AtmMediatorClient extends MediatorClient {
+class DidcommMediatorClient extends MediatorClient {
   final DidManager didManager;
   final ClientOptions clientOptions;
 
   final _pendingRequests = <String, Completer<PlainTextMessage>>{};
 
-  AtmMediatorClient({
+  DidcommMediatorClient({
     required super.mediatorDidDocument,
     required super.keyPair,
     required super.didKeyId,
@@ -140,7 +140,7 @@ class AtmMediatorClient extends MediatorClient {
 
   Future<void> connect({
     required String accessToken,
-    required DidDocument atmServiceDidDocument,
+    required DidDocument serviceDidDocument,
   }) async {
     await listenForIncomingMessages(
       (message) async {
@@ -155,7 +155,7 @@ class AtmMediatorClient extends MediatorClient {
 
         final expectedSenders = [
           mediatorDidDocument.id,
-          atmServiceDidDocument.id,
+          serviceDidDocument.id,
         ];
 
         if (!expectedSenders.contains(unpackedMessage.from)) {
@@ -177,7 +177,7 @@ class AtmMediatorClient extends MediatorClient {
 
         final completer = _pendingRequests[threadId]!;
 
-        if (unpackedMessage.from != atmServiceDidDocument.id) {
+        if (unpackedMessage.from != serviceDidDocument.id) {
           return;
         }
 

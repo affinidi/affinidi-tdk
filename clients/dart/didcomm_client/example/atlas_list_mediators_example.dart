@@ -36,14 +36,14 @@ Future<void> main() async {
 
   await senderDidManager.addVerificationMethod(senderKeyId);
 
-  final atmAtlasClient = await DidcommAtlasClient.init(
+  final atlasClient = await DidcommAtlasClient.init(
     didManager: senderDidManager,
   );
 
-  final authTokens = await atmAtlasClient.authenticate();
-  await atmAtlasClient.connect(accessToken: authTokens.accessToken);
+  final authTokens = await atlasClient.authenticate();
+  await atlasClient.connect(accessToken: authTokens.accessToken);
 
-  final existingInstances = await atmAtlasClient.getMediatorInstancesList(
+  final existingInstances = await atlasClient.getMediatorInstancesList(
     accessToken: authTokens.accessToken,
   );
 
@@ -52,5 +52,5 @@ Future<void> main() async {
     object: existingInstances,
   );
 
-  await atmAtlasClient.mediatorClient.disconnect();
+  await atlasClient.mediatorClient.disconnect();
 }

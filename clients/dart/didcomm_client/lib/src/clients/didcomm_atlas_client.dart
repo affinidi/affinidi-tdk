@@ -10,7 +10,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
   DidcommAtlasClient({
     required super.didManager,
     required super.mediatorClient,
-    required super.atmServiceDidDocument,
+    required super.serviceDidDocument,
     super.clientOptions = const ClientOptions(),
   });
 
@@ -27,7 +27,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     return DidcommAtlasClient(
       didManager: didManager,
-      atmServiceDidDocument: atlasDidDocument,
+      serviceDidDocument: atlasDidDocument,
       clientOptions: clientOptions,
       mediatorClient: await didManager.getMediatorClient(
         mediatorDidDocument: mediatorDidDocument,
@@ -46,7 +46,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorInstancesListMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
+      to: [serviceDidDocument.id],
       body: GetMediatorInstancesListRequest(
         limit: limit,
         exclusiveStartKey: exclusiveStartKey,
@@ -76,7 +76,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = DeployMediatorInstanceMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
+      to: [serviceDidDocument.id],
       body: deploymentData?.toJson() ?? {},
     );
 
@@ -104,7 +104,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorInstanceMetadataMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
+      to: [serviceDidDocument.id],
       body: GetMediatorInstanceMetadataRequest(
         mediatorId: mediatorId,
       ).toJson(),
@@ -133,7 +133,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = DestroyMediatorInstanceMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
+      to: [serviceDidDocument.id],
       body: DestroyMediatorInstanceRequest(
         mediatorId: mediatorId,
       ).toJson(),
@@ -163,7 +163,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = UpdateMediatorInstanceDeploymentMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
+      to: [serviceDidDocument.id],
       body: deploymentData.toJson(),
     );
 
@@ -191,7 +191,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = UpdateMediatorInstanceConfigurationMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
+      to: [serviceDidDocument.id],
       body: configurationData.toJson(),
     );
 
@@ -220,7 +220,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorRequestsMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
-      to: [atmServiceDidDocument.id],
+      to: [serviceDidDocument.id],
       body: GetMediatorRequestsRequest(
         mediatorId: mediatorId,
         limit: limit,
@@ -245,7 +245,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
   Future<void> connect({required String accessToken}) async {
     await mediatorClient.connect(
-      atmServiceDidDocument: atmServiceDidDocument,
+      serviceDidDocument: serviceDidDocument,
       accessToken: accessToken,
     );
   }

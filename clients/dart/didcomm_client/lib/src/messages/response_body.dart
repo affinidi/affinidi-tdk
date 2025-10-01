@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'response_body.g.dart';
 
-/// Represents the body of an ATM response message.
+/// Represents the body of an Didcomm response message.
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
 class ResponseBody {
   /// The response content as a string.

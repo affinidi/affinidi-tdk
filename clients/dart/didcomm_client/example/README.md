@@ -1,4 +1,4 @@
-# ATM Client for Dart Examples
+# DIDComm Client for Dart Examples
 
 Check the code snippets on the sample usage of this package with your project.
 
