@@ -94,6 +94,7 @@ class VdspHolderClient extends AtmBaseClient {
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
     required List<ParsedVerifiableCredential> verifiableCredentials,
+    required DidSigner verifiablePresentationSigner,
     String? operation,
     String? comment,
     required String accessToken,
@@ -119,8 +120,9 @@ class VdspHolderClient extends AtmBaseClient {
       verifiableCredential: verifiableCredentials,
     );
 
+    // TODO: select proof generator based on key pair type
     final proofGenerator = DataIntegrityEcdsaJcsGenerator(
-      signer: signer,
+      signer: verifiablePresentationSigner,
       challenge: proofContext?.challenge,
       domain: proofContext != null ? [proofContext.domain] : null,
     );

@@ -91,9 +91,9 @@ class FeatureDiscoveryHelper {
       DataIntegrityProofSuite.eddsa_jcs_2022.value,
     ],
     FeatureType.jsonWebSignatureAlgorithm: [
-      JsonWebSignatureAlgorithm.esS256.value,
-      JsonWebSignatureAlgorithm.es384.value,
-      JsonWebSignatureAlgorithm.ed25519.value,
+      JsonWebSignatureAlgorithm.ES256.value,
+      JsonWebSignatureAlgorithm.ES384.value,
+      JsonWebSignatureAlgorithm.EdDSA.value,
     ]
   };
 }
