@@ -11,26 +11,36 @@ part 'cors_login_session_reject_response_ok.g.dart';
 /// CorsLoginSessionRejectResponseOK
 ///
 /// Properties:
-/// * [corsLoginSessionRejectResponseOk] 
+/// * [corsLoginSessionRejectResponseOk]
 @BuiltValue()
-abstract class CorsLoginSessionRejectResponseOK implements Built<CorsLoginSessionRejectResponseOK, CorsLoginSessionRejectResponseOKBuilder> {
+abstract class CorsLoginSessionRejectResponseOK
+    implements
+        Built<CorsLoginSessionRejectResponseOK,
+            CorsLoginSessionRejectResponseOKBuilder> {
   @BuiltValueField(wireName: r'corsLoginSessionRejectResponseOk')
   String? get corsLoginSessionRejectResponseOk;
 
   CorsLoginSessionRejectResponseOK._();
 
-  factory CorsLoginSessionRejectResponseOK([void updates(CorsLoginSessionRejectResponseOKBuilder b)]) = _$CorsLoginSessionRejectResponseOK;
+  factory CorsLoginSessionRejectResponseOK(
+          [void updates(CorsLoginSessionRejectResponseOKBuilder b)]) =
+      _$CorsLoginSessionRejectResponseOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsLoginSessionRejectResponseOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsLoginSessionRejectResponseOK> get serializer => _$CorsLoginSessionRejectResponseOKSerializer();
+  static Serializer<CorsLoginSessionRejectResponseOK> get serializer =>
+      _$CorsLoginSessionRejectResponseOKSerializer();
 }
 
-class _$CorsLoginSessionRejectResponseOKSerializer implements PrimitiveSerializer<CorsLoginSessionRejectResponseOK> {
+class _$CorsLoginSessionRejectResponseOKSerializer
+    implements PrimitiveSerializer<CorsLoginSessionRejectResponseOK> {
   @override
-  final Iterable<Type> types = const [CorsLoginSessionRejectResponseOK, _$CorsLoginSessionRejectResponseOK];
+  final Iterable<Type> types = const [
+    CorsLoginSessionRejectResponseOK,
+    _$CorsLoginSessionRejectResponseOK
+  ];
 
   @override
   final String wireName = r'CorsLoginSessionRejectResponseOK';
@@ -55,7 +65,9 @@ class _$CorsLoginSessionRejectResponseOKSerializer implements PrimitiveSerialize
     CorsLoginSessionRejectResponseOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +117,3 @@ class _$CorsLoginSessionRejectResponseOKSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

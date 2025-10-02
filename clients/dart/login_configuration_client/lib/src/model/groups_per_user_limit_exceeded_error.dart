@@ -13,13 +13,16 @@ part 'groups_per_user_limit_exceeded_error.g.dart';
 /// GroupsPerUserLimitExceededError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class GroupsPerUserLimitExceededError implements Built<GroupsPerUserLimitExceededError, GroupsPerUserLimitExceededErrorBuilder> {
+abstract class GroupsPerUserLimitExceededError
+    implements
+        Built<GroupsPerUserLimitExceededError,
+            GroupsPerUserLimitExceededErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   GroupsPerUserLimitExceededErrorNameEnum get name;
   // enum nameEnum {  GroupsPerUserLimitExceededError,  };
@@ -40,18 +43,25 @@ abstract class GroupsPerUserLimitExceededError implements Built<GroupsPerUserLim
 
   GroupsPerUserLimitExceededError._();
 
-  factory GroupsPerUserLimitExceededError([void updates(GroupsPerUserLimitExceededErrorBuilder b)]) = _$GroupsPerUserLimitExceededError;
+  factory GroupsPerUserLimitExceededError(
+          [void updates(GroupsPerUserLimitExceededErrorBuilder b)]) =
+      _$GroupsPerUserLimitExceededError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GroupsPerUserLimitExceededErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GroupsPerUserLimitExceededError> get serializer => _$GroupsPerUserLimitExceededErrorSerializer();
+  static Serializer<GroupsPerUserLimitExceededError> get serializer =>
+      _$GroupsPerUserLimitExceededErrorSerializer();
 }
 
-class _$GroupsPerUserLimitExceededErrorSerializer implements PrimitiveSerializer<GroupsPerUserLimitExceededError> {
+class _$GroupsPerUserLimitExceededErrorSerializer
+    implements PrimitiveSerializer<GroupsPerUserLimitExceededError> {
   @override
-  final Iterable<Type> types = const [GroupsPerUserLimitExceededError, _$GroupsPerUserLimitExceededError];
+  final Iterable<Type> types = const [
+    GroupsPerUserLimitExceededError,
+    _$GroupsPerUserLimitExceededError
+  ];
 
   @override
   final String wireName = r'GroupsPerUserLimitExceededError';
@@ -74,7 +84,8 @@ class _$GroupsPerUserLimitExceededErrorSerializer implements PrimitiveSerializer
     yield r'httpStatusCode';
     yield serializers.serialize(
       object.httpStatusCode,
-      specifiedType: const FullType(GroupsPerUserLimitExceededErrorHttpStatusCodeEnum),
+      specifiedType:
+          const FullType(GroupsPerUserLimitExceededErrorHttpStatusCodeEnum),
     );
     yield r'traceId';
     yield serializers.serialize(
@@ -85,7 +96,8 @@ class _$GroupsPerUserLimitExceededErrorSerializer implements PrimitiveSerializer
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +108,9 @@ class _$GroupsPerUserLimitExceededErrorSerializer implements PrimitiveSerializer
     GroupsPerUserLimitExceededError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -114,21 +128,24 @@ class _$GroupsPerUserLimitExceededErrorSerializer implements PrimitiveSerializer
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GroupsPerUserLimitExceededErrorNameEnum),
+            specifiedType:
+                const FullType(GroupsPerUserLimitExceededErrorNameEnum),
           ) as GroupsPerUserLimitExceededErrorNameEnum;
           result.name = valueDes;
           break;
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GroupsPerUserLimitExceededErrorMessageEnum),
+            specifiedType:
+                const FullType(GroupsPerUserLimitExceededErrorMessageEnum),
           ) as GroupsPerUserLimitExceededErrorMessageEnum;
           result.message = valueDes;
           break;
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(GroupsPerUserLimitExceededErrorHttpStatusCodeEnum),
+            specifiedType: const FullType(
+                GroupsPerUserLimitExceededErrorHttpStatusCodeEnum),
           ) as GroupsPerUserLimitExceededErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +159,8 @@ class _$GroupsPerUserLimitExceededErrorSerializer implements PrimitiveSerializer
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +194,54 @@ class _$GroupsPerUserLimitExceededErrorSerializer implements PrimitiveSerializer
 }
 
 class GroupsPerUserLimitExceededErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'GroupsPerUserLimitExceededError')
-  static const GroupsPerUserLimitExceededErrorNameEnum groupsPerUserLimitExceededError = _$groupsPerUserLimitExceededErrorNameEnum_groupsPerUserLimitExceededError;
+  static const GroupsPerUserLimitExceededErrorNameEnum
+      groupsPerUserLimitExceededError =
+      _$groupsPerUserLimitExceededErrorNameEnum_groupsPerUserLimitExceededError;
 
-  static Serializer<GroupsPerUserLimitExceededErrorNameEnum> get serializer => _$groupsPerUserLimitExceededErrorNameEnumSerializer;
+  static Serializer<GroupsPerUserLimitExceededErrorNameEnum> get serializer =>
+      _$groupsPerUserLimitExceededErrorNameEnumSerializer;
 
-  const GroupsPerUserLimitExceededErrorNameEnum._(String name): super(name);
+  const GroupsPerUserLimitExceededErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<GroupsPerUserLimitExceededErrorNameEnum> get values => _$groupsPerUserLimitExceededErrorNameEnumValues;
-  static GroupsPerUserLimitExceededErrorNameEnum valueOf(String name) => _$groupsPerUserLimitExceededErrorNameEnumValueOf(name);
+  static BuiltSet<GroupsPerUserLimitExceededErrorNameEnum> get values =>
+      _$groupsPerUserLimitExceededErrorNameEnumValues;
+  static GroupsPerUserLimitExceededErrorNameEnum valueOf(String name) =>
+      _$groupsPerUserLimitExceededErrorNameEnumValueOf(name);
 }
 
 class GroupsPerUserLimitExceededErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Amount of groups per user is limited.')
-  static const GroupsPerUserLimitExceededErrorMessageEnum amountOfGroupsPerUserIsLimitedPeriod = _$groupsPerUserLimitExceededErrorMessageEnum_amountOfGroupsPerUserIsLimitedPeriod;
+  static const GroupsPerUserLimitExceededErrorMessageEnum
+      amountOfGroupsPerUserIsLimitedPeriod =
+      _$groupsPerUserLimitExceededErrorMessageEnum_amountOfGroupsPerUserIsLimitedPeriod;
 
-  static Serializer<GroupsPerUserLimitExceededErrorMessageEnum> get serializer => _$groupsPerUserLimitExceededErrorMessageEnumSerializer;
+  static Serializer<GroupsPerUserLimitExceededErrorMessageEnum>
+      get serializer => _$groupsPerUserLimitExceededErrorMessageEnumSerializer;
 
-  const GroupsPerUserLimitExceededErrorMessageEnum._(String name): super(name);
+  const GroupsPerUserLimitExceededErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<GroupsPerUserLimitExceededErrorMessageEnum> get values => _$groupsPerUserLimitExceededErrorMessageEnumValues;
-  static GroupsPerUserLimitExceededErrorMessageEnum valueOf(String name) => _$groupsPerUserLimitExceededErrorMessageEnumValueOf(name);
+  static BuiltSet<GroupsPerUserLimitExceededErrorMessageEnum> get values =>
+      _$groupsPerUserLimitExceededErrorMessageEnumValues;
+  static GroupsPerUserLimitExceededErrorMessageEnum valueOf(String name) =>
+      _$groupsPerUserLimitExceededErrorMessageEnumValueOf(name);
 }
 
 class GroupsPerUserLimitExceededErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 409)
-  static const GroupsPerUserLimitExceededErrorHttpStatusCodeEnum number409 = _$groupsPerUserLimitExceededErrorHttpStatusCodeEnum_number409;
+  static const GroupsPerUserLimitExceededErrorHttpStatusCodeEnum number409 =
+      _$groupsPerUserLimitExceededErrorHttpStatusCodeEnum_number409;
 
-  static Serializer<GroupsPerUserLimitExceededErrorHttpStatusCodeEnum> get serializer => _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumSerializer;
+  static Serializer<GroupsPerUserLimitExceededErrorHttpStatusCodeEnum>
+      get serializer =>
+          _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumSerializer;
 
-  const GroupsPerUserLimitExceededErrorHttpStatusCodeEnum._(String name): super(name);
+  const GroupsPerUserLimitExceededErrorHttpStatusCodeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<GroupsPerUserLimitExceededErrorHttpStatusCodeEnum> get values => _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumValues;
-  static GroupsPerUserLimitExceededErrorHttpStatusCodeEnum valueOf(String name) => _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<GroupsPerUserLimitExceededErrorHttpStatusCodeEnum>
+      get values => _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumValues;
+  static GroupsPerUserLimitExceededErrorHttpStatusCodeEnum valueOf(
+          String name) =>
+      _$groupsPerUserLimitExceededErrorHttpStatusCodeEnumValueOf(name);
 }
-

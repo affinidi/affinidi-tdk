@@ -13,11 +13,12 @@ part 'presentation_submission.g.dart';
 /// PresentationSubmission
 ///
 /// Properties:
-/// * [id] 
-/// * [definitionId] 
-/// * [descriptorMap] 
+/// * [id]
+/// * [definitionId]
+/// * [descriptorMap]
 @BuiltValue()
-abstract class PresentationSubmission implements Built<PresentationSubmission, PresentationSubmissionBuilder> {
+abstract class PresentationSubmission
+    implements Built<PresentationSubmission, PresentationSubmissionBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -29,18 +30,25 @@ abstract class PresentationSubmission implements Built<PresentationSubmission, P
 
   PresentationSubmission._();
 
-  factory PresentationSubmission([void updates(PresentationSubmissionBuilder b)]) = _$PresentationSubmission;
+  factory PresentationSubmission(
+          [void updates(PresentationSubmissionBuilder b)]) =
+      _$PresentationSubmission;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PresentationSubmissionBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PresentationSubmission> get serializer => _$PresentationSubmissionSerializer();
+  static Serializer<PresentationSubmission> get serializer =>
+      _$PresentationSubmissionSerializer();
 }
 
-class _$PresentationSubmissionSerializer implements PrimitiveSerializer<PresentationSubmission> {
+class _$PresentationSubmissionSerializer
+    implements PrimitiveSerializer<PresentationSubmission> {
   @override
-  final Iterable<Type> types = const [PresentationSubmission, _$PresentationSubmission];
+  final Iterable<Type> types = const [
+    PresentationSubmission,
+    _$PresentationSubmission
+  ];
 
   @override
   final String wireName = r'PresentationSubmission';
@@ -73,7 +81,9 @@ class _$PresentationSubmissionSerializer implements PrimitiveSerializer<Presenta
     PresentationSubmission object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -137,4 +147,3 @@ class _$PresentationSubmissionSerializer implements PrimitiveSerializer<Presenta
     return result.build();
   }
 }
-

@@ -18,7 +18,8 @@ part 'callback_input.g.dart';
 /// * [errorDescription] - A human-readable description that provides detailed information about the error.
 /// * [onboarded] - It specifies whether the data sharing flow triggered an onboarding process to the Affinidi Vault [New User].
 @BuiltValue()
-abstract class CallbackInput implements Built<CallbackInput, CallbackInputBuilder> {
+abstract class CallbackInput
+    implements Built<CallbackInput, CallbackInputBuilder> {
   /// A randomly generated string that follows a valid UUID (version 1-5) format to validate the session.
   @BuiltValueField(wireName: r'state')
   String get state;
@@ -45,13 +46,15 @@ abstract class CallbackInput implements Built<CallbackInput, CallbackInputBuilde
 
   CallbackInput._();
 
-  factory CallbackInput([void updates(CallbackInputBuilder b)]) = _$CallbackInput;
+  factory CallbackInput([void updates(CallbackInputBuilder b)]) =
+      _$CallbackInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CallbackInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CallbackInput> get serializer => _$CallbackInputSerializer();
+  static Serializer<CallbackInput> get serializer =>
+      _$CallbackInputSerializer();
 }
 
 class _$CallbackInputSerializer implements PrimitiveSerializer<CallbackInput> {
@@ -114,7 +117,9 @@ class _$CallbackInputSerializer implements PrimitiveSerializer<CallbackInput> {
     CallbackInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -199,4 +204,3 @@ class _$CallbackInputSerializer implements PrimitiveSerializer<CallbackInput> {
     return result.build();
   }
 }
-
