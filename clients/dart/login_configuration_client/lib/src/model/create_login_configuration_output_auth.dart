@@ -16,7 +16,10 @@ part 'create_login_configuration_output_auth.g.dart';
 /// * [scope] - OAuth 2.0 Client Scope
 /// * [issuer] - Issuer URL
 @BuiltValue()
-abstract class CreateLoginConfigurationOutputAuth implements Built<CreateLoginConfigurationOutputAuth, CreateLoginConfigurationOutputAuthBuilder> {
+abstract class CreateLoginConfigurationOutputAuth
+    implements
+        Built<CreateLoginConfigurationOutputAuth,
+            CreateLoginConfigurationOutputAuthBuilder> {
   /// OAuth 2.0 Client ID
   @BuiltValueField(wireName: r'clientId')
   String get clientId;
@@ -35,18 +38,25 @@ abstract class CreateLoginConfigurationOutputAuth implements Built<CreateLoginCo
 
   CreateLoginConfigurationOutputAuth._();
 
-  factory CreateLoginConfigurationOutputAuth([void updates(CreateLoginConfigurationOutputAuthBuilder b)]) = _$CreateLoginConfigurationOutputAuth;
+  factory CreateLoginConfigurationOutputAuth(
+          [void updates(CreateLoginConfigurationOutputAuthBuilder b)]) =
+      _$CreateLoginConfigurationOutputAuth;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateLoginConfigurationOutputAuthBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateLoginConfigurationOutputAuth> get serializer => _$CreateLoginConfigurationOutputAuthSerializer();
+  static Serializer<CreateLoginConfigurationOutputAuth> get serializer =>
+      _$CreateLoginConfigurationOutputAuthSerializer();
 }
 
-class _$CreateLoginConfigurationOutputAuthSerializer implements PrimitiveSerializer<CreateLoginConfigurationOutputAuth> {
+class _$CreateLoginConfigurationOutputAuthSerializer
+    implements PrimitiveSerializer<CreateLoginConfigurationOutputAuth> {
   @override
-  final Iterable<Type> types = const [CreateLoginConfigurationOutputAuth, _$CreateLoginConfigurationOutputAuth];
+  final Iterable<Type> types = const [
+    CreateLoginConfigurationOutputAuth,
+    _$CreateLoginConfigurationOutputAuth
+  ];
 
   @override
   final String wireName = r'CreateLoginConfigurationOutputAuth';
@@ -90,7 +100,9 @@ class _$CreateLoginConfigurationOutputAuthSerializer implements PrimitiveSeriali
     CreateLoginConfigurationOutputAuth object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -161,4 +173,3 @@ class _$CreateLoginConfigurationOutputAuthSerializer implements PrimitiveSeriali
     return result.build();
   }
 }
-
