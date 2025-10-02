@@ -2,7 +2,12 @@
 
 Affinidi TDK internal module for managing access token (project scoped token) to Affinidi services via Affinidi TDK clients.
 
-## Pre-requisites
+## Prerequisites
+
+Ensure you have the following installed:
+
+- **NodeJS v24.9.0+**
+- **npm v11.6.0+** (NodeJS package manager)
 
 To initialize AuthProvider, Personal Access Token (PAT) details should be provided.
 To create PAT, use Affinidi CLI's [create-token](https://github.com/affinidi/affinidi-cli/blob/main/docs/token.md#affinidi-token-create-token) command.

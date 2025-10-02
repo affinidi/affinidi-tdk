@@ -4,8 +4,7 @@
   "description": "TDK testing",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require tsx --grep 'internal' --invert --timeout 20000 '*.ts'",
-    "test:internal": "env INTERNAL=true mocha --require tsx --timeout 20000 '*.ts'"
+    "test": "mocha --require tsx --timeout 20000 '*.ts'"
   },
   "author": "Affinidi",
   "license": "ISC",
@@ -19,7 +18,6 @@
     "@affinidi-tdk/iota-core": "../../../clients/typescript/iota-core",
     "@affinidi-tdk/login-configuration-client": "../../../clients/typescript/login-configuration-client",
     "@affinidi-tdk/wallets-client": "../../../clients/typescript/wallets-client",
-    "@affinidi/common": "^3.3.1",
     "@types/node": "18.11.18",
     "base64url": "^3.0.1",
     "chai": "^5.2.0",

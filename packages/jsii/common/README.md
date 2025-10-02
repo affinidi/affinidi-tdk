@@ -2,6 +2,13 @@
 
 ## Install
 
+### Prerequisites
+
+Ensure you have the following installed:
+
+- **NodeJS v24.9.0+**
+- **npm v11.6.0+** (NodeJS package manager)
+
 ### Javascript
 
 ```bash
