@@ -14,25 +14,40 @@ part 'batch_credential_response_credential_responses_inner.g.dart';
 /// Properties:
 /// * [credential] - Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
 @BuiltValue()
-abstract class BatchCredentialResponseCredentialResponsesInner implements Built<BatchCredentialResponseCredentialResponsesInner, BatchCredentialResponseCredentialResponsesInnerBuilder> {
+abstract class BatchCredentialResponseCredentialResponsesInner
+    implements
+        Built<BatchCredentialResponseCredentialResponsesInner,
+            BatchCredentialResponseCredentialResponsesInnerBuilder> {
   /// Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
   @BuiltValueField(wireName: r'credential')
   JsonObject? get credential;
 
   BatchCredentialResponseCredentialResponsesInner._();
 
-  factory BatchCredentialResponseCredentialResponsesInner([void updates(BatchCredentialResponseCredentialResponsesInnerBuilder b)]) = _$BatchCredentialResponseCredentialResponsesInner;
+  factory BatchCredentialResponseCredentialResponsesInner(
+          [void updates(
+              BatchCredentialResponseCredentialResponsesInnerBuilder b)]) =
+      _$BatchCredentialResponseCredentialResponsesInner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(BatchCredentialResponseCredentialResponsesInnerBuilder b) => b;
+  static void _defaults(
+          BatchCredentialResponseCredentialResponsesInnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BatchCredentialResponseCredentialResponsesInner> get serializer => _$BatchCredentialResponseCredentialResponsesInnerSerializer();
+  static Serializer<BatchCredentialResponseCredentialResponsesInner>
+      get serializer =>
+          _$BatchCredentialResponseCredentialResponsesInnerSerializer();
 }
 
-class _$BatchCredentialResponseCredentialResponsesInnerSerializer implements PrimitiveSerializer<BatchCredentialResponseCredentialResponsesInner> {
+class _$BatchCredentialResponseCredentialResponsesInnerSerializer
+    implements
+        PrimitiveSerializer<BatchCredentialResponseCredentialResponsesInner> {
   @override
-  final Iterable<Type> types = const [BatchCredentialResponseCredentialResponsesInner, _$BatchCredentialResponseCredentialResponsesInner];
+  final Iterable<Type> types = const [
+    BatchCredentialResponseCredentialResponsesInner,
+    _$BatchCredentialResponseCredentialResponsesInner
+  ];
 
   @override
   final String wireName = r'BatchCredentialResponseCredentialResponsesInner';
@@ -43,10 +58,12 @@ class _$BatchCredentialResponseCredentialResponsesInnerSerializer implements Pri
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'credential';
-    yield object.credential == null ? null : serializers.serialize(
-      object.credential,
-      specifiedType: const FullType.nullable(JsonObject),
-    );
+    yield object.credential == null
+        ? null
+        : serializers.serialize(
+            object.credential,
+            specifiedType: const FullType.nullable(JsonObject),
+          );
   }
 
   @override
@@ -55,7 +72,9 @@ class _$BatchCredentialResponseCredentialResponsesInnerSerializer implements Pri
     BatchCredentialResponseCredentialResponsesInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +125,3 @@ class _$BatchCredentialResponseCredentialResponsesInnerSerializer implements Pri
     return result.build();
   }
 }
-

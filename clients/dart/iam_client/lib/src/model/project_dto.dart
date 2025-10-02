@@ -11,10 +11,10 @@ part 'project_dto.g.dart';
 /// ProjectDto
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
-/// * [ownerId] 
-/// * [description] 
+/// * [id]
+/// * [name]
+/// * [ownerId]
+/// * [description]
 /// * [createdAt] - creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
 /// * [updatedAt] - last update date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
 @BuiltValue()
@@ -108,7 +108,9 @@ class _$ProjectDtoSerializer implements PrimitiveSerializer<ProjectDto> {
     ProjectDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -193,4 +195,3 @@ class _$ProjectDtoSerializer implements PrimitiveSerializer<ProjectDto> {
     return result.build();
   }
 }
-

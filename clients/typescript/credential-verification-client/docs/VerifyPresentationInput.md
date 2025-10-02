@@ -10,6 +10,7 @@ Request model of /verify-vp
 | **signedPresentation**     | **object** |             | [optional] [default to undefined] |
 | **presentationDefinition** | **object** |             | [optional] [default to undefined] |
 | **presentationSubmission** | **object** |             | [optional] [default to undefined] |
+| **dcqlQuery**              | **object** |             | [optional] [default to undefined] |
 | **challenge**              | **string** |             | [optional] [default to undefined] |
 
 ## Example
@@ -22,6 +23,7 @@ const instance: VerifyPresentationInput = {
   signedPresentation,
   presentationDefinition,
   presentationSubmission,
+  dcqlQuery,
   challenge,
 }
 ```

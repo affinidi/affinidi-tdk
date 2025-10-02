@@ -4,19 +4,15 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:affinidi_tdk_credential_verification_client/src/model/invalid_parameter_error.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/not_found_error.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_output.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
 
 class DefaultApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -37,7 +33,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [VerifyCredentialOutput] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<VerifyCredentialOutput>> verifyCredentials({ 
+  Future<Response<VerifyCredentialOutput>> verifyCredentials({
     required VerifyCredentialInput verifyCredentialInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -71,11 +67,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(VerifyCredentialInput);
-      _bodyData = _serializers.serialize(verifyCredentialInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(verifyCredentialInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -98,11 +94,12 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(VerifyCredentialOutput),
-      ) as VerifyCredentialOutput;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(VerifyCredentialOutput),
+            ) as VerifyCredentialOutput;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -139,7 +136,7 @@ class DefaultApi {
   ///
   /// Returns a [Future] containing a [Response] with a [VerifyPresentationOutput] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<VerifyPresentationOutput>> verifyPresentation({ 
+  Future<Response<VerifyPresentationOutput>> verifyPresentation({
     required VerifyPresentationInput verifyPresentationInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -173,11 +170,11 @@ class DefaultApi {
 
     try {
       const _type = FullType(VerifyPresentationInput);
-      _bodyData = _serializers.serialize(verifyPresentationInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(verifyPresentationInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -200,11 +197,12 @@ class DefaultApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(VerifyPresentationOutput),
-      ) as VerifyPresentationOutput;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(VerifyPresentationOutput),
+            ) as VerifyPresentationOutput;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -226,5 +224,4 @@ class DefaultApi {
       extra: _response.extra,
     );
   }
-
 }

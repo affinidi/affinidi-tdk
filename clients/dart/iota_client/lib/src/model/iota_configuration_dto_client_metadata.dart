@@ -15,7 +15,10 @@ part 'iota_configuration_dto_client_metadata.g.dart';
 /// * [origin] - The URL of the requester displayed on the consent page indicates the request's origin.
 /// * [logo] - The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.
 @BuiltValue()
-abstract class IotaConfigurationDtoClientMetadata implements Built<IotaConfigurationDtoClientMetadata, IotaConfigurationDtoClientMetadataBuilder> {
+abstract class IotaConfigurationDtoClientMetadata
+    implements
+        Built<IotaConfigurationDtoClientMetadata,
+            IotaConfigurationDtoClientMetadataBuilder> {
   /// The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website's name.
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -30,18 +33,25 @@ abstract class IotaConfigurationDtoClientMetadata implements Built<IotaConfigura
 
   IotaConfigurationDtoClientMetadata._();
 
-  factory IotaConfigurationDtoClientMetadata([void updates(IotaConfigurationDtoClientMetadataBuilder b)]) = _$IotaConfigurationDtoClientMetadata;
+  factory IotaConfigurationDtoClientMetadata(
+          [void updates(IotaConfigurationDtoClientMetadataBuilder b)]) =
+      _$IotaConfigurationDtoClientMetadata;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IotaConfigurationDtoClientMetadataBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IotaConfigurationDtoClientMetadata> get serializer => _$IotaConfigurationDtoClientMetadataSerializer();
+  static Serializer<IotaConfigurationDtoClientMetadata> get serializer =>
+      _$IotaConfigurationDtoClientMetadataSerializer();
 }
 
-class _$IotaConfigurationDtoClientMetadataSerializer implements PrimitiveSerializer<IotaConfigurationDtoClientMetadata> {
+class _$IotaConfigurationDtoClientMetadataSerializer
+    implements PrimitiveSerializer<IotaConfigurationDtoClientMetadata> {
   @override
-  final Iterable<Type> types = const [IotaConfigurationDtoClientMetadata, _$IotaConfigurationDtoClientMetadata];
+  final Iterable<Type> types = const [
+    IotaConfigurationDtoClientMetadata,
+    _$IotaConfigurationDtoClientMetadata
+  ];
 
   @override
   final String wireName = r'IotaConfigurationDtoClientMetadata';
@@ -74,7 +84,9 @@ class _$IotaConfigurationDtoClientMetadataSerializer implements PrimitiveSeriali
     IotaConfigurationDtoClientMetadata object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +150,3 @@ class _$IotaConfigurationDtoClientMetadataSerializer implements PrimitiveSeriali
     return result.build();
   }
 }
-

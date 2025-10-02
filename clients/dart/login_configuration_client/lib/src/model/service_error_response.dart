@@ -18,7 +18,8 @@ part 'service_error_response.g.dart';
 /// * [code] - backwards compatible Affinidi error code
 /// * [details] - error details
 @BuiltValue()
-abstract class ServiceErrorResponse implements Built<ServiceErrorResponse, ServiceErrorResponseBuilder> {
+abstract class ServiceErrorResponse
+    implements Built<ServiceErrorResponse, ServiceErrorResponseBuilder> {
   /// unique id for correlating this specific error to logs
   @BuiltValueField(wireName: r'debugId')
   String get debugId;
@@ -37,18 +38,24 @@ abstract class ServiceErrorResponse implements Built<ServiceErrorResponse, Servi
 
   ServiceErrorResponse._();
 
-  factory ServiceErrorResponse([void updates(ServiceErrorResponseBuilder b)]) = _$ServiceErrorResponse;
+  factory ServiceErrorResponse([void updates(ServiceErrorResponseBuilder b)]) =
+      _$ServiceErrorResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ServiceErrorResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ServiceErrorResponse> get serializer => _$ServiceErrorResponseSerializer();
+  static Serializer<ServiceErrorResponse> get serializer =>
+      _$ServiceErrorResponseSerializer();
 }
 
-class _$ServiceErrorResponseSerializer implements PrimitiveSerializer<ServiceErrorResponse> {
+class _$ServiceErrorResponseSerializer
+    implements PrimitiveSerializer<ServiceErrorResponse> {
   @override
-  final Iterable<Type> types = const [ServiceErrorResponse, _$ServiceErrorResponse];
+  final Iterable<Type> types = const [
+    ServiceErrorResponse,
+    _$ServiceErrorResponse
+  ];
 
   @override
   final String wireName = r'ServiceErrorResponse';
@@ -77,7 +84,8 @@ class _$ServiceErrorResponseSerializer implements PrimitiveSerializer<ServiceErr
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
       );
     }
   }
@@ -88,7 +96,9 @@ class _$ServiceErrorResponseSerializer implements PrimitiveSerializer<ServiceErr
     ServiceErrorResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -127,7 +137,8 @@ class _$ServiceErrorResponseSerializer implements PrimitiveSerializer<ServiceErr
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
           ) as BuiltList<ServiceErrorResponseDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -159,4 +170,3 @@ class _$ServiceErrorResponseSerializer implements PrimitiveSerializer<ServiceErr
     return result.build();
   }
 }
-

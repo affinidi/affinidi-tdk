@@ -13,24 +13,28 @@ part 'json_web_key_set_dto.g.dart';
 /// JsonWebKeySetDto
 ///
 /// Properties:
-/// * [keys] 
+/// * [keys]
 @BuiltValue()
-abstract class JsonWebKeySetDto implements Built<JsonWebKeySetDto, JsonWebKeySetDtoBuilder> {
+abstract class JsonWebKeySetDto
+    implements Built<JsonWebKeySetDto, JsonWebKeySetDtoBuilder> {
   @BuiltValueField(wireName: r'keys')
   BuiltList<JsonWebKeyDto> get keys;
 
   JsonWebKeySetDto._();
 
-  factory JsonWebKeySetDto([void updates(JsonWebKeySetDtoBuilder b)]) = _$JsonWebKeySetDto;
+  factory JsonWebKeySetDto([void updates(JsonWebKeySetDtoBuilder b)]) =
+      _$JsonWebKeySetDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(JsonWebKeySetDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<JsonWebKeySetDto> get serializer => _$JsonWebKeySetDtoSerializer();
+  static Serializer<JsonWebKeySetDto> get serializer =>
+      _$JsonWebKeySetDtoSerializer();
 }
 
-class _$JsonWebKeySetDtoSerializer implements PrimitiveSerializer<JsonWebKeySetDto> {
+class _$JsonWebKeySetDtoSerializer
+    implements PrimitiveSerializer<JsonWebKeySetDto> {
   @override
   final Iterable<Type> types = const [JsonWebKeySetDto, _$JsonWebKeySetDto];
 
@@ -55,7 +59,9 @@ class _$JsonWebKeySetDtoSerializer implements PrimitiveSerializer<JsonWebKeySetD
     JsonWebKeySetDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +111,3 @@ class _$JsonWebKeySetDtoSerializer implements PrimitiveSerializer<JsonWebKeySetD
     return result.build();
   }
 }
-

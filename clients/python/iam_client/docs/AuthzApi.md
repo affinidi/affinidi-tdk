@@ -93,11 +93,11 @@ void (empty response body)
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **204**     | Ok              | -                |
-| **403**     | ForbiddenError  | -                |
-| **500**     | UnexpectedError | -                |
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **204**     | Ok              | -                                                                                                                 |
+| **403**     | ForbiddenError  | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **500**     | UnexpectedError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

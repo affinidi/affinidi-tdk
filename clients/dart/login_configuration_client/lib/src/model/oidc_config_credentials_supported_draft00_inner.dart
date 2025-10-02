@@ -12,12 +12,15 @@ part 'oidc_config_credentials_supported_draft00_inner.g.dart';
 /// OIDCConfigCredentialsSupportedDraft00Inner
 ///
 /// Properties:
-/// * [cryptographicBindingMethodsSupported] 
-/// * [cryptographicSuitesSupported] 
-/// * [format] 
-/// * [types] 
+/// * [cryptographicBindingMethodsSupported]
+/// * [cryptographicSuitesSupported]
+/// * [format]
+/// * [types]
 @BuiltValue()
-abstract class OIDCConfigCredentialsSupportedDraft00Inner implements Built<OIDCConfigCredentialsSupportedDraft00Inner, OIDCConfigCredentialsSupportedDraft00InnerBuilder> {
+abstract class OIDCConfigCredentialsSupportedDraft00Inner
+    implements
+        Built<OIDCConfigCredentialsSupportedDraft00Inner,
+            OIDCConfigCredentialsSupportedDraft00InnerBuilder> {
   @BuiltValueField(wireName: r'cryptographic_binding_methods_supported')
   BuiltList<String>? get cryptographicBindingMethodsSupported;
 
@@ -32,18 +35,27 @@ abstract class OIDCConfigCredentialsSupportedDraft00Inner implements Built<OIDCC
 
   OIDCConfigCredentialsSupportedDraft00Inner._();
 
-  factory OIDCConfigCredentialsSupportedDraft00Inner([void updates(OIDCConfigCredentialsSupportedDraft00InnerBuilder b)]) = _$OIDCConfigCredentialsSupportedDraft00Inner;
+  factory OIDCConfigCredentialsSupportedDraft00Inner(
+          [void updates(OIDCConfigCredentialsSupportedDraft00InnerBuilder b)]) =
+      _$OIDCConfigCredentialsSupportedDraft00Inner;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OIDCConfigCredentialsSupportedDraft00InnerBuilder b) => b;
+  static void _defaults(OIDCConfigCredentialsSupportedDraft00InnerBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<OIDCConfigCredentialsSupportedDraft00Inner> get serializer => _$OIDCConfigCredentialsSupportedDraft00InnerSerializer();
+  static Serializer<OIDCConfigCredentialsSupportedDraft00Inner>
+      get serializer =>
+          _$OIDCConfigCredentialsSupportedDraft00InnerSerializer();
 }
 
-class _$OIDCConfigCredentialsSupportedDraft00InnerSerializer implements PrimitiveSerializer<OIDCConfigCredentialsSupportedDraft00Inner> {
+class _$OIDCConfigCredentialsSupportedDraft00InnerSerializer
+    implements PrimitiveSerializer<OIDCConfigCredentialsSupportedDraft00Inner> {
   @override
-  final Iterable<Type> types = const [OIDCConfigCredentialsSupportedDraft00Inner, _$OIDCConfigCredentialsSupportedDraft00Inner];
+  final Iterable<Type> types = const [
+    OIDCConfigCredentialsSupportedDraft00Inner,
+    _$OIDCConfigCredentialsSupportedDraft00Inner
+  ];
 
   @override
   final String wireName = r'OIDCConfigCredentialsSupportedDraft00Inner';
@@ -89,7 +101,9 @@ class _$OIDCConfigCredentialsSupportedDraft00InnerSerializer implements Primitiv
     OIDCConfigCredentialsSupportedDraft00Inner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -160,4 +174,3 @@ class _$OIDCConfigCredentialsSupportedDraft00InnerSerializer implements Primitiv
     return result.build();
   }
 }
-

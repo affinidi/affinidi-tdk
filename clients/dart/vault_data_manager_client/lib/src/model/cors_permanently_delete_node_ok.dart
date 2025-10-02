@@ -11,26 +11,35 @@ part 'cors_permanently_delete_node_ok.g.dart';
 /// CorsPermanentlyDeleteNodeOK
 ///
 /// Properties:
-/// * [corsPermanentlyDeleteNodeOk] 
+/// * [corsPermanentlyDeleteNodeOk]
 @BuiltValue()
-abstract class CorsPermanentlyDeleteNodeOK implements Built<CorsPermanentlyDeleteNodeOK, CorsPermanentlyDeleteNodeOKBuilder> {
+abstract class CorsPermanentlyDeleteNodeOK
+    implements
+        Built<CorsPermanentlyDeleteNodeOK, CorsPermanentlyDeleteNodeOKBuilder> {
   @BuiltValueField(wireName: r'corsPermanentlyDeleteNodeOk')
   String? get corsPermanentlyDeleteNodeOk;
 
   CorsPermanentlyDeleteNodeOK._();
 
-  factory CorsPermanentlyDeleteNodeOK([void updates(CorsPermanentlyDeleteNodeOKBuilder b)]) = _$CorsPermanentlyDeleteNodeOK;
+  factory CorsPermanentlyDeleteNodeOK(
+          [void updates(CorsPermanentlyDeleteNodeOKBuilder b)]) =
+      _$CorsPermanentlyDeleteNodeOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsPermanentlyDeleteNodeOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsPermanentlyDeleteNodeOK> get serializer => _$CorsPermanentlyDeleteNodeOKSerializer();
+  static Serializer<CorsPermanentlyDeleteNodeOK> get serializer =>
+      _$CorsPermanentlyDeleteNodeOKSerializer();
 }
 
-class _$CorsPermanentlyDeleteNodeOKSerializer implements PrimitiveSerializer<CorsPermanentlyDeleteNodeOK> {
+class _$CorsPermanentlyDeleteNodeOKSerializer
+    implements PrimitiveSerializer<CorsPermanentlyDeleteNodeOK> {
   @override
-  final Iterable<Type> types = const [CorsPermanentlyDeleteNodeOK, _$CorsPermanentlyDeleteNodeOK];
+  final Iterable<Type> types = const [
+    CorsPermanentlyDeleteNodeOK,
+    _$CorsPermanentlyDeleteNodeOK
+  ];
 
   @override
   final String wireName = r'CorsPermanentlyDeleteNodeOK';
@@ -55,7 +64,9 @@ class _$CorsPermanentlyDeleteNodeOKSerializer implements PrimitiveSerializer<Cor
     CorsPermanentlyDeleteNodeOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +116,3 @@ class _$CorsPermanentlyDeleteNodeOKSerializer implements PrimitiveSerializer<Cor
     return result.build();
   }
 }
-

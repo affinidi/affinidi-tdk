@@ -11,26 +11,36 @@ part 'cors_aws_exchange_credentials_project_token_ok.g.dart';
 /// CorsAwsExchangeCredentialsProjectTokenOK
 ///
 /// Properties:
-/// * [corsAwsExchangeCredentialsProjectTokenOk] 
+/// * [corsAwsExchangeCredentialsProjectTokenOk]
 @BuiltValue()
-abstract class CorsAwsExchangeCredentialsProjectTokenOK implements Built<CorsAwsExchangeCredentialsProjectTokenOK, CorsAwsExchangeCredentialsProjectTokenOKBuilder> {
+abstract class CorsAwsExchangeCredentialsProjectTokenOK
+    implements
+        Built<CorsAwsExchangeCredentialsProjectTokenOK,
+            CorsAwsExchangeCredentialsProjectTokenOKBuilder> {
   @BuiltValueField(wireName: r'corsAwsExchangeCredentialsProjectTokenOk')
   String? get corsAwsExchangeCredentialsProjectTokenOk;
 
   CorsAwsExchangeCredentialsProjectTokenOK._();
 
-  factory CorsAwsExchangeCredentialsProjectTokenOK([void updates(CorsAwsExchangeCredentialsProjectTokenOKBuilder b)]) = _$CorsAwsExchangeCredentialsProjectTokenOK;
+  factory CorsAwsExchangeCredentialsProjectTokenOK(
+          [void updates(CorsAwsExchangeCredentialsProjectTokenOKBuilder b)]) =
+      _$CorsAwsExchangeCredentialsProjectTokenOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsAwsExchangeCredentialsProjectTokenOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsAwsExchangeCredentialsProjectTokenOK> get serializer => _$CorsAwsExchangeCredentialsProjectTokenOKSerializer();
+  static Serializer<CorsAwsExchangeCredentialsProjectTokenOK> get serializer =>
+      _$CorsAwsExchangeCredentialsProjectTokenOKSerializer();
 }
 
-class _$CorsAwsExchangeCredentialsProjectTokenOKSerializer implements PrimitiveSerializer<CorsAwsExchangeCredentialsProjectTokenOK> {
+class _$CorsAwsExchangeCredentialsProjectTokenOKSerializer
+    implements PrimitiveSerializer<CorsAwsExchangeCredentialsProjectTokenOK> {
   @override
-  final Iterable<Type> types = const [CorsAwsExchangeCredentialsProjectTokenOK, _$CorsAwsExchangeCredentialsProjectTokenOK];
+  final Iterable<Type> types = const [
+    CorsAwsExchangeCredentialsProjectTokenOK,
+    _$CorsAwsExchangeCredentialsProjectTokenOK
+  ];
 
   @override
   final String wireName = r'CorsAwsExchangeCredentialsProjectTokenOK';
@@ -55,7 +65,9 @@ class _$CorsAwsExchangeCredentialsProjectTokenOKSerializer implements PrimitiveS
     CorsAwsExchangeCredentialsProjectTokenOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +117,3 @@ class _$CorsAwsExchangeCredentialsProjectTokenOKSerializer implements PrimitiveS
     return result.build();
   }
 }
-

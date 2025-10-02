@@ -13,25 +13,33 @@ part 'iota_exchange_credentials.g.dart';
 /// Properties:
 /// * [assertion] - A valid JSON Web Token (JWT) that secures the WebSocket connection. The JWT is signed with the key pair's private key used to create the Personal Access Token (PAT).
 @BuiltValue()
-abstract class IotaExchangeCredentials implements Built<IotaExchangeCredentials, IotaExchangeCredentialsBuilder> {
+abstract class IotaExchangeCredentials
+    implements Built<IotaExchangeCredentials, IotaExchangeCredentialsBuilder> {
   /// A valid JSON Web Token (JWT) that secures the WebSocket connection. The JWT is signed with the key pair's private key used to create the Personal Access Token (PAT).
   @BuiltValueField(wireName: r'assertion')
   String get assertion;
 
   IotaExchangeCredentials._();
 
-  factory IotaExchangeCredentials([void updates(IotaExchangeCredentialsBuilder b)]) = _$IotaExchangeCredentials;
+  factory IotaExchangeCredentials(
+          [void updates(IotaExchangeCredentialsBuilder b)]) =
+      _$IotaExchangeCredentials;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IotaExchangeCredentialsBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IotaExchangeCredentials> get serializer => _$IotaExchangeCredentialsSerializer();
+  static Serializer<IotaExchangeCredentials> get serializer =>
+      _$IotaExchangeCredentialsSerializer();
 }
 
-class _$IotaExchangeCredentialsSerializer implements PrimitiveSerializer<IotaExchangeCredentials> {
+class _$IotaExchangeCredentialsSerializer
+    implements PrimitiveSerializer<IotaExchangeCredentials> {
   @override
-  final Iterable<Type> types = const [IotaExchangeCredentials, _$IotaExchangeCredentials];
+  final Iterable<Type> types = const [
+    IotaExchangeCredentials,
+    _$IotaExchangeCredentials
+  ];
 
   @override
   final String wireName = r'IotaExchangeCredentials';
@@ -54,7 +62,9 @@ class _$IotaExchangeCredentialsSerializer implements PrimitiveSerializer<IotaExc
     IotaExchangeCredentials object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +114,3 @@ class _$IotaExchangeCredentialsSerializer implements PrimitiveSerializer<IotaExc
     return result.build();
   }
 }
-

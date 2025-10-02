@@ -68,4 +68,3 @@ export 'package:affinidi_tdk_iam_client/src/model/update_token_private_key_authe
 export 'package:affinidi_tdk_iam_client/src/model/user_dto.dart';
 export 'package:affinidi_tdk_iam_client/src/model/user_list.dart';
 export 'package:affinidi_tdk_iam_client/src/model/whoami_dto.dart';
-

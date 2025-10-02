@@ -11,12 +11,13 @@ part 'w3c_credential_status.g.dart';
 /// W3cCredentialStatus
 ///
 /// Properties:
-/// * [id] 
-/// * [type] 
-/// * [revocationListIndex] 
-/// * [revocationListCredential] 
+/// * [id]
+/// * [type]
+/// * [revocationListIndex]
+/// * [revocationListCredential]
 @BuiltValue()
-abstract class W3cCredentialStatus implements Built<W3cCredentialStatus, W3cCredentialStatusBuilder> {
+abstract class W3cCredentialStatus
+    implements Built<W3cCredentialStatus, W3cCredentialStatusBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -31,18 +32,24 @@ abstract class W3cCredentialStatus implements Built<W3cCredentialStatus, W3cCred
 
   W3cCredentialStatus._();
 
-  factory W3cCredentialStatus([void updates(W3cCredentialStatusBuilder b)]) = _$W3cCredentialStatus;
+  factory W3cCredentialStatus([void updates(W3cCredentialStatusBuilder b)]) =
+      _$W3cCredentialStatus;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(W3cCredentialStatusBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<W3cCredentialStatus> get serializer => _$W3cCredentialStatusSerializer();
+  static Serializer<W3cCredentialStatus> get serializer =>
+      _$W3cCredentialStatusSerializer();
 }
 
-class _$W3cCredentialStatusSerializer implements PrimitiveSerializer<W3cCredentialStatus> {
+class _$W3cCredentialStatusSerializer
+    implements PrimitiveSerializer<W3cCredentialStatus> {
   @override
-  final Iterable<Type> types = const [W3cCredentialStatus, _$W3cCredentialStatus];
+  final Iterable<Type> types = const [
+    W3cCredentialStatus,
+    _$W3cCredentialStatus
+  ];
 
   @override
   final String wireName = r'W3cCredentialStatus';
@@ -80,7 +87,9 @@ class _$W3cCredentialStatusSerializer implements PrimitiveSerializer<W3cCredenti
     W3cCredentialStatus object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -151,4 +160,3 @@ class _$W3cCredentialStatusSerializer implements PrimitiveSerializer<W3cCredenti
     return result.build();
   }
 }
-

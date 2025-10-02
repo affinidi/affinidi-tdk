@@ -12,10 +12,12 @@ part 'aws_exchange_credentials_ok.g.dart';
 /// AwsExchangeCredentialsOK
 ///
 /// Properties:
-/// * [connectionClientId] 
-/// * [credentials] 
+/// * [connectionClientId]
+/// * [credentials]
 @BuiltValue()
-abstract class AwsExchangeCredentialsOK implements Built<AwsExchangeCredentialsOK, AwsExchangeCredentialsOKBuilder> {
+abstract class AwsExchangeCredentialsOK
+    implements
+        Built<AwsExchangeCredentialsOK, AwsExchangeCredentialsOKBuilder> {
   @BuiltValueField(wireName: r'connectionClientId')
   String get connectionClientId;
 
@@ -24,18 +26,25 @@ abstract class AwsExchangeCredentialsOK implements Built<AwsExchangeCredentialsO
 
   AwsExchangeCredentialsOK._();
 
-  factory AwsExchangeCredentialsOK([void updates(AwsExchangeCredentialsOKBuilder b)]) = _$AwsExchangeCredentialsOK;
+  factory AwsExchangeCredentialsOK(
+          [void updates(AwsExchangeCredentialsOKBuilder b)]) =
+      _$AwsExchangeCredentialsOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AwsExchangeCredentialsOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AwsExchangeCredentialsOK> get serializer => _$AwsExchangeCredentialsOKSerializer();
+  static Serializer<AwsExchangeCredentialsOK> get serializer =>
+      _$AwsExchangeCredentialsOKSerializer();
 }
 
-class _$AwsExchangeCredentialsOKSerializer implements PrimitiveSerializer<AwsExchangeCredentialsOK> {
+class _$AwsExchangeCredentialsOKSerializer
+    implements PrimitiveSerializer<AwsExchangeCredentialsOK> {
   @override
-  final Iterable<Type> types = const [AwsExchangeCredentialsOK, _$AwsExchangeCredentialsOK];
+  final Iterable<Type> types = const [
+    AwsExchangeCredentialsOK,
+    _$AwsExchangeCredentialsOK
+  ];
 
   @override
   final String wireName = r'AwsExchangeCredentialsOK';
@@ -53,7 +62,8 @@ class _$AwsExchangeCredentialsOKSerializer implements PrimitiveSerializer<AwsExc
     yield r'credentials';
     yield serializers.serialize(
       object.credentials,
-      specifiedType: const FullType(AwsExchangeCredentialsProjectTokenOKCredentials),
+      specifiedType:
+          const FullType(AwsExchangeCredentialsProjectTokenOKCredentials),
     );
   }
 
@@ -63,7 +73,9 @@ class _$AwsExchangeCredentialsOKSerializer implements PrimitiveSerializer<AwsExc
     AwsExchangeCredentialsOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -88,7 +100,8 @@ class _$AwsExchangeCredentialsOKSerializer implements PrimitiveSerializer<AwsExc
         case r'credentials':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(AwsExchangeCredentialsProjectTokenOKCredentials),
+            specifiedType:
+                const FullType(AwsExchangeCredentialsProjectTokenOKCredentials),
           ) as AwsExchangeCredentialsProjectTokenOKCredentials;
           result.credentials.replace(valueDes);
           break;
@@ -120,4 +133,3 @@ class _$AwsExchangeCredentialsOKSerializer implements PrimitiveSerializer<AwsExc
     return result.build();
   }
 }
-

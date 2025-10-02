@@ -6,7 +6,7 @@ part of 'node_dto.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
-abstract class NodeDtoBuilder {
+abstract mixin class NodeDtoBuilder {
   void replace(NodeDto other);
   void update(void Function(NodeDtoBuilder) updates);
   String? get nodeId;

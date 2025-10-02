@@ -10,4 +10,5 @@ Request model of /verify-vp
 | **signedPresentation**     | **Object** |             | [optional] |
 | **presentationDefinition** | **Object** |             | [optional] |
 | **presentationSubmission** | **Object** |             | [optional] |
+| **dcqlQuery**              | **Object** |             | [optional] |
 | **challenge**              | **String** |             | [optional] |

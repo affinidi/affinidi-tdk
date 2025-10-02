@@ -104,7 +104,9 @@ class _$PexQueryDtoSerializer implements PrimitiveSerializer<PexQueryDto> {
     PexQueryDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -189,4 +191,3 @@ class _$PexQueryDtoSerializer implements PrimitiveSerializer<PexQueryDto> {
     return result.build();
   }
 }
-

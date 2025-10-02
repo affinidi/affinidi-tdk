@@ -84,7 +84,9 @@ class _$GroupDtoSerializer implements PrimitiveSerializer<GroupDto> {
     GroupDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -155,4 +157,3 @@ class _$GroupDtoSerializer implements PrimitiveSerializer<GroupDto> {
     return result.build();
   }
 }
-

@@ -31,6 +31,8 @@ doc/SignCredentialsDm2SdJwtInputDto.md
 doc/SignCredentialsDm2SdJwtResultDto.md
 doc/SignJwtToken.md
 doc/SignJwtTokenOK.md
+doc/SignPresentationLdpInputDto.md
+doc/SignPresentationLdpResultDto.md
 doc/SigningFailedError.md
 doc/UpdateWalletInput.md
 doc/WalletApi.md
@@ -76,6 +78,8 @@ lib/src/model/sign_credentials_dm2_sd_jwt_input_dto.dart
 lib/src/model/sign_credentials_dm2_sd_jwt_result_dto.dart
 lib/src/model/sign_jwt_token.dart
 lib/src/model/sign_jwt_token_ok.dart
+lib/src/model/sign_presentation_ldp_input_dto.dart
+lib/src/model/sign_presentation_ldp_result_dto.dart
 lib/src/model/signing_failed_error.dart
 lib/src/model/update_wallet_input.dart
 lib/src/model/wallet_dto.dart

@@ -13,26 +13,34 @@ part 'sign_credential_result_dto.g.dart';
 /// DTO contains signed credential
 ///
 /// Properties:
-/// * [signedCredential] 
+/// * [signedCredential]
 @BuiltValue()
-abstract class SignCredentialResultDto implements Built<SignCredentialResultDto, SignCredentialResultDtoBuilder> {
+abstract class SignCredentialResultDto
+    implements Built<SignCredentialResultDto, SignCredentialResultDtoBuilder> {
   @BuiltValueField(wireName: r'signedCredential')
   BuiltMap<String, JsonObject?> get signedCredential;
 
   SignCredentialResultDto._();
 
-  factory SignCredentialResultDto([void updates(SignCredentialResultDtoBuilder b)]) = _$SignCredentialResultDto;
+  factory SignCredentialResultDto(
+          [void updates(SignCredentialResultDtoBuilder b)]) =
+      _$SignCredentialResultDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SignCredentialResultDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SignCredentialResultDto> get serializer => _$SignCredentialResultDtoSerializer();
+  static Serializer<SignCredentialResultDto> get serializer =>
+      _$SignCredentialResultDtoSerializer();
 }
 
-class _$SignCredentialResultDtoSerializer implements PrimitiveSerializer<SignCredentialResultDto> {
+class _$SignCredentialResultDtoSerializer
+    implements PrimitiveSerializer<SignCredentialResultDto> {
   @override
-  final Iterable<Type> types = const [SignCredentialResultDto, _$SignCredentialResultDto];
+  final Iterable<Type> types = const [
+    SignCredentialResultDto,
+    _$SignCredentialResultDto
+  ];
 
   @override
   final String wireName = r'SignCredentialResultDto';
@@ -45,7 +53,8 @@ class _$SignCredentialResultDtoSerializer implements PrimitiveSerializer<SignCre
     yield r'signedCredential';
     yield serializers.serialize(
       object.signedCredential,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      specifiedType: const FullType(
+          BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
     );
   }
 
@@ -55,7 +64,9 @@ class _$SignCredentialResultDtoSerializer implements PrimitiveSerializer<SignCre
     SignCredentialResultDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +84,8 @@ class _$SignCredentialResultDtoSerializer implements PrimitiveSerializer<SignCre
         case r'signedCredential':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.signedCredential.replace(valueDes);
           break;
@@ -105,4 +117,3 @@ class _$SignCredentialResultDtoSerializer implements PrimitiveSerializer<SignCre
     return result.build();
   }
 }
-

@@ -13,25 +13,34 @@ part 'remove_user_from_group_input.g.dart';
 /// Properties:
 /// * [userId] - Unique identifier of the user
 @BuiltValue()
-abstract class RemoveUserFromGroupInput implements Built<RemoveUserFromGroupInput, RemoveUserFromGroupInputBuilder> {
+abstract class RemoveUserFromGroupInput
+    implements
+        Built<RemoveUserFromGroupInput, RemoveUserFromGroupInputBuilder> {
   /// Unique identifier of the user
   @BuiltValueField(wireName: r'userId')
   String get userId;
 
   RemoveUserFromGroupInput._();
 
-  factory RemoveUserFromGroupInput([void updates(RemoveUserFromGroupInputBuilder b)]) = _$RemoveUserFromGroupInput;
+  factory RemoveUserFromGroupInput(
+          [void updates(RemoveUserFromGroupInputBuilder b)]) =
+      _$RemoveUserFromGroupInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RemoveUserFromGroupInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RemoveUserFromGroupInput> get serializer => _$RemoveUserFromGroupInputSerializer();
+  static Serializer<RemoveUserFromGroupInput> get serializer =>
+      _$RemoveUserFromGroupInputSerializer();
 }
 
-class _$RemoveUserFromGroupInputSerializer implements PrimitiveSerializer<RemoveUserFromGroupInput> {
+class _$RemoveUserFromGroupInputSerializer
+    implements PrimitiveSerializer<RemoveUserFromGroupInput> {
   @override
-  final Iterable<Type> types = const [RemoveUserFromGroupInput, _$RemoveUserFromGroupInput];
+  final Iterable<Type> types = const [
+    RemoveUserFromGroupInput,
+    _$RemoveUserFromGroupInput
+  ];
 
   @override
   final String wireName = r'RemoveUserFromGroupInput';
@@ -54,7 +63,9 @@ class _$RemoveUserFromGroupInputSerializer implements PrimitiveSerializer<Remove
     RemoveUserFromGroupInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +115,3 @@ class _$RemoveUserFromGroupInputSerializer implements PrimitiveSerializer<Remove
     return result.build();
   }
 }
-

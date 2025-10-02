@@ -13,10 +13,11 @@ part 'blocked_users.g.dart';
 /// BlockedUsers
 ///
 /// Properties:
-/// * [userIds] 
-/// * [pageToken] 
+/// * [userIds]
+/// * [pageToken]
 @BuiltValue()
-abstract class BlockedUsers implements Built<BlockedUsers, BlockedUsersBuilder> {
+abstract class BlockedUsers
+    implements Built<BlockedUsers, BlockedUsersBuilder> {
   @BuiltValueField(wireName: r'userIds')
   BuiltList<String> get userIds;
 
@@ -66,7 +67,9 @@ class _$BlockedUsersSerializer implements PrimitiveSerializer<BlockedUsers> {
     BlockedUsers object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +126,3 @@ class _$BlockedUsersSerializer implements PrimitiveSerializer<BlockedUsers> {
     return result.build();
   }
 }
-

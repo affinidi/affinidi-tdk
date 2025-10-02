@@ -10,20 +10,22 @@ import 'package:built_value/serializer.dart';
 part 'token_endpoint_auth_method.g.dart';
 
 class TokenEndpointAuthMethod extends EnumClass {
-
-  /// Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret. 
+  /// Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret.
   @BuiltValueEnumConst(wireName: r'client_secret_basic')
   static const TokenEndpointAuthMethod clientSecretBasic = _$clientSecretBasic;
-  /// Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret. 
+
+  /// Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret.
   @BuiltValueEnumConst(wireName: r'client_secret_post')
   static const TokenEndpointAuthMethod clientSecretPost = _$clientSecretPost;
-  /// Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret. 
+
+  /// Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret.
   @BuiltValueEnumConst(wireName: r'none')
   static const TokenEndpointAuthMethod none = _$none;
 
-  static Serializer<TokenEndpointAuthMethod> get serializer => _$tokenEndpointAuthMethodSerializer;
+  static Serializer<TokenEndpointAuthMethod> get serializer =>
+      _$tokenEndpointAuthMethodSerializer;
 
-  const TokenEndpointAuthMethod._(String name): super(name);
+  const TokenEndpointAuthMethod._(String name) : super(name);
 
   static BuiltSet<TokenEndpointAuthMethod> get values => _$values;
   static TokenEndpointAuthMethod valueOf(String name) => _$valueOf(name);
@@ -35,5 +37,5 @@ class TokenEndpointAuthMethod extends EnumClass {
 /// corresponding Angular template.
 ///
 /// Trigger mixin generation by writing a line like this one next to your enum.
-abstract class TokenEndpointAuthMethodMixin = Object with _$TokenEndpointAuthMethodMixin;
-
+abstract class TokenEndpointAuthMethodMixin = Object
+    with _$TokenEndpointAuthMethodMixin;

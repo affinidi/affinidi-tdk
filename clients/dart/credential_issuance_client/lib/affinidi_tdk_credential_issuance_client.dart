@@ -92,4 +92,3 @@ export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_ope
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_credentials_supported_inner.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display.dart';
 export 'package:affinidi_tdk_credential_issuance_client/src/model/well_known_open_id_credential_issuer_response_display_logo.dart';
-

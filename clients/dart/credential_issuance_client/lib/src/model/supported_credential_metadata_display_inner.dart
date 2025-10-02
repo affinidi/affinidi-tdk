@@ -12,13 +12,16 @@ part 'supported_credential_metadata_display_inner.g.dart';
 /// SupportedCredentialMetadataDisplayInner
 ///
 /// Properties:
-/// * [name] 
-/// * [locale] 
-/// * [logo] 
-/// * [backgroundColor] 
-/// * [textColor] 
+/// * [name]
+/// * [locale]
+/// * [logo]
+/// * [backgroundColor]
+/// * [textColor]
 @BuiltValue()
-abstract class SupportedCredentialMetadataDisplayInner implements Built<SupportedCredentialMetadataDisplayInner, SupportedCredentialMetadataDisplayInnerBuilder> {
+abstract class SupportedCredentialMetadataDisplayInner
+    implements
+        Built<SupportedCredentialMetadataDisplayInner,
+            SupportedCredentialMetadataDisplayInnerBuilder> {
   @BuiltValueField(wireName: r'name')
   String get name;
 
@@ -36,18 +39,25 @@ abstract class SupportedCredentialMetadataDisplayInner implements Built<Supporte
 
   SupportedCredentialMetadataDisplayInner._();
 
-  factory SupportedCredentialMetadataDisplayInner([void updates(SupportedCredentialMetadataDisplayInnerBuilder b)]) = _$SupportedCredentialMetadataDisplayInner;
+  factory SupportedCredentialMetadataDisplayInner(
+          [void updates(SupportedCredentialMetadataDisplayInnerBuilder b)]) =
+      _$SupportedCredentialMetadataDisplayInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SupportedCredentialMetadataDisplayInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SupportedCredentialMetadataDisplayInner> get serializer => _$SupportedCredentialMetadataDisplayInnerSerializer();
+  static Serializer<SupportedCredentialMetadataDisplayInner> get serializer =>
+      _$SupportedCredentialMetadataDisplayInnerSerializer();
 }
 
-class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSerializer<SupportedCredentialMetadataDisplayInner> {
+class _$SupportedCredentialMetadataDisplayInnerSerializer
+    implements PrimitiveSerializer<SupportedCredentialMetadataDisplayInner> {
   @override
-  final Iterable<Type> types = const [SupportedCredentialMetadataDisplayInner, _$SupportedCredentialMetadataDisplayInner];
+  final Iterable<Type> types = const [
+    SupportedCredentialMetadataDisplayInner,
+    _$SupportedCredentialMetadataDisplayInner
+  ];
 
   @override
   final String wireName = r'SupportedCredentialMetadataDisplayInner';
@@ -98,7 +108,9 @@ class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSe
     SupportedCredentialMetadataDisplayInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -176,4 +188,3 @@ class _$SupportedCredentialMetadataDisplayInnerSerializer implements PrimitiveSe
     return result.build();
   }
 }
-

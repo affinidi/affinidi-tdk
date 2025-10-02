@@ -11,21 +11,24 @@ part 'delete_node_dto.g.dart';
 /// DeleteNodeDto
 ///
 /// Properties:
-/// * [newNodeId] 
+/// * [newNodeId]
 @BuiltValue()
-abstract class DeleteNodeDto implements Built<DeleteNodeDto, DeleteNodeDtoBuilder> {
+abstract class DeleteNodeDto
+    implements Built<DeleteNodeDto, DeleteNodeDtoBuilder> {
   @BuiltValueField(wireName: r'newNodeId')
   String? get newNodeId;
 
   DeleteNodeDto._();
 
-  factory DeleteNodeDto([void updates(DeleteNodeDtoBuilder b)]) = _$DeleteNodeDto;
+  factory DeleteNodeDto([void updates(DeleteNodeDtoBuilder b)]) =
+      _$DeleteNodeDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(DeleteNodeDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<DeleteNodeDto> get serializer => _$DeleteNodeDtoSerializer();
+  static Serializer<DeleteNodeDto> get serializer =>
+      _$DeleteNodeDtoSerializer();
 }
 
 class _$DeleteNodeDtoSerializer implements PrimitiveSerializer<DeleteNodeDto> {
@@ -55,7 +58,9 @@ class _$DeleteNodeDtoSerializer implements PrimitiveSerializer<DeleteNodeDto> {
     DeleteNodeDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +110,3 @@ class _$DeleteNodeDtoSerializer implements PrimitiveSerializer<DeleteNodeDto> {
     return result.build();
   }
 }
-

@@ -13,13 +13,14 @@ part 'missing_holder_did_error.g.dart';
 /// MissingHolderDidError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class MissingHolderDidError implements Built<MissingHolderDidError, MissingHolderDidErrorBuilder> {
+abstract class MissingHolderDidError
+    implements Built<MissingHolderDidError, MissingHolderDidErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   MissingHolderDidErrorNameEnum get name;
   // enum nameEnum {  MissingHolderDidError,  };
@@ -40,18 +41,24 @@ abstract class MissingHolderDidError implements Built<MissingHolderDidError, Mis
 
   MissingHolderDidError._();
 
-  factory MissingHolderDidError([void updates(MissingHolderDidErrorBuilder b)]) = _$MissingHolderDidError;
+  factory MissingHolderDidError(
+      [void updates(MissingHolderDidErrorBuilder b)]) = _$MissingHolderDidError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MissingHolderDidErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MissingHolderDidError> get serializer => _$MissingHolderDidErrorSerializer();
+  static Serializer<MissingHolderDidError> get serializer =>
+      _$MissingHolderDidErrorSerializer();
 }
 
-class _$MissingHolderDidErrorSerializer implements PrimitiveSerializer<MissingHolderDidError> {
+class _$MissingHolderDidErrorSerializer
+    implements PrimitiveSerializer<MissingHolderDidError> {
   @override
-  final Iterable<Type> types = const [MissingHolderDidError, _$MissingHolderDidError];
+  final Iterable<Type> types = const [
+    MissingHolderDidError,
+    _$MissingHolderDidError
+  ];
 
   @override
   final String wireName = r'MissingHolderDidError';
@@ -85,7 +92,8 @@ class _$MissingHolderDidErrorSerializer implements PrimitiveSerializer<MissingHo
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +104,9 @@ class _$MissingHolderDidErrorSerializer implements PrimitiveSerializer<MissingHo
     MissingHolderDidError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +138,8 @@ class _$MissingHolderDidErrorSerializer implements PrimitiveSerializer<MissingHo
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MissingHolderDidErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(MissingHolderDidErrorHttpStatusCodeEnum),
           ) as MissingHolderDidErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +153,8 @@ class _$MissingHolderDidErrorSerializer implements PrimitiveSerializer<MissingHo
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
           ) as BuiltList<ActionForbiddenErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +188,50 @@ class _$MissingHolderDidErrorSerializer implements PrimitiveSerializer<MissingHo
 }
 
 class MissingHolderDidErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'MissingHolderDidError')
-  static const MissingHolderDidErrorNameEnum missingHolderDidError = _$missingHolderDidErrorNameEnum_missingHolderDidError;
+  static const MissingHolderDidErrorNameEnum missingHolderDidError =
+      _$missingHolderDidErrorNameEnum_missingHolderDidError;
 
-  static Serializer<MissingHolderDidErrorNameEnum> get serializer => _$missingHolderDidErrorNameEnumSerializer;
+  static Serializer<MissingHolderDidErrorNameEnum> get serializer =>
+      _$missingHolderDidErrorNameEnumSerializer;
 
-  const MissingHolderDidErrorNameEnum._(String name): super(name);
+  const MissingHolderDidErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<MissingHolderDidErrorNameEnum> get values => _$missingHolderDidErrorNameEnumValues;
-  static MissingHolderDidErrorNameEnum valueOf(String name) => _$missingHolderDidErrorNameEnumValueOf(name);
+  static BuiltSet<MissingHolderDidErrorNameEnum> get values =>
+      _$missingHolderDidErrorNameEnumValues;
+  static MissingHolderDidErrorNameEnum valueOf(String name) =>
+      _$missingHolderDidErrorNameEnumValueOf(name);
 }
 
 class MissingHolderDidErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'holderDID is required in this claimMode')
-  static const MissingHolderDidErrorMessageEnum holderDIDIsRequiredInThisClaimMode = _$missingHolderDidErrorMessageEnum_holderDIDIsRequiredInThisClaimMode;
+  static const MissingHolderDidErrorMessageEnum
+      holderDIDIsRequiredInThisClaimMode =
+      _$missingHolderDidErrorMessageEnum_holderDIDIsRequiredInThisClaimMode;
 
-  static Serializer<MissingHolderDidErrorMessageEnum> get serializer => _$missingHolderDidErrorMessageEnumSerializer;
+  static Serializer<MissingHolderDidErrorMessageEnum> get serializer =>
+      _$missingHolderDidErrorMessageEnumSerializer;
 
-  const MissingHolderDidErrorMessageEnum._(String name): super(name);
+  const MissingHolderDidErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<MissingHolderDidErrorMessageEnum> get values => _$missingHolderDidErrorMessageEnumValues;
-  static MissingHolderDidErrorMessageEnum valueOf(String name) => _$missingHolderDidErrorMessageEnumValueOf(name);
+  static BuiltSet<MissingHolderDidErrorMessageEnum> get values =>
+      _$missingHolderDidErrorMessageEnumValues;
+  static MissingHolderDidErrorMessageEnum valueOf(String name) =>
+      _$missingHolderDidErrorMessageEnumValueOf(name);
 }
 
 class MissingHolderDidErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const MissingHolderDidErrorHttpStatusCodeEnum number400 = _$missingHolderDidErrorHttpStatusCodeEnum_number400;
+  static const MissingHolderDidErrorHttpStatusCodeEnum number400 =
+      _$missingHolderDidErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<MissingHolderDidErrorHttpStatusCodeEnum> get serializer => _$missingHolderDidErrorHttpStatusCodeEnumSerializer;
+  static Serializer<MissingHolderDidErrorHttpStatusCodeEnum> get serializer =>
+      _$missingHolderDidErrorHttpStatusCodeEnumSerializer;
 
-  const MissingHolderDidErrorHttpStatusCodeEnum._(String name): super(name);
+  const MissingHolderDidErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<MissingHolderDidErrorHttpStatusCodeEnum> get values => _$missingHolderDidErrorHttpStatusCodeEnumValues;
-  static MissingHolderDidErrorHttpStatusCodeEnum valueOf(String name) => _$missingHolderDidErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<MissingHolderDidErrorHttpStatusCodeEnum> get values =>
+      _$missingHolderDidErrorHttpStatusCodeEnumValues;
+  static MissingHolderDidErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$missingHolderDidErrorHttpStatusCodeEnumValueOf(name);
 }
-

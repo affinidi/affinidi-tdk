@@ -11,8 +11,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ConstraintsLimitDisclosureEnum.serializer)
       ..add(ConstraintsStatuses.serializer)
       ..add(ConstraintsSubjectIsIssuerEnum.serializer)
-      ..add(CredentialRequirements.serializer)
-      ..add(CredentialRequirementsConstraints.serializer)
       ..add(Descriptor.serializer)
       ..add(Error.serializer)
       ..add(ErrorDetail.serializer)
@@ -51,6 +49,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(VerifyCredentialV2Input.serializer)
       ..add(VerifyPresentationInput.serializer)
       ..add(VerifyPresentationOutput.serializer)
+      ..add(VerifyPresentationV2Input.serializer)
       ..add(W3cCredentialStatus.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(
@@ -88,9 +87,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(
               BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
           () => ListBuilder<NotFoundErrorDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(String)]),
-          () => ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())

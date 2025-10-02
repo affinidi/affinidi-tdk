@@ -13,13 +13,14 @@ part 'invalid_proof_error.g.dart';
 /// InvalidProofError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InvalidProofError implements Built<InvalidProofError, InvalidProofErrorBuilder> {
+abstract class InvalidProofError
+    implements Built<InvalidProofError, InvalidProofErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   InvalidProofErrorNameEnum get name;
   // enum nameEnum {  InvalidProofError,  };
@@ -40,16 +41,19 @@ abstract class InvalidProofError implements Built<InvalidProofError, InvalidProo
 
   InvalidProofError._();
 
-  factory InvalidProofError([void updates(InvalidProofErrorBuilder b)]) = _$InvalidProofError;
+  factory InvalidProofError([void updates(InvalidProofErrorBuilder b)]) =
+      _$InvalidProofError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InvalidProofErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InvalidProofError> get serializer => _$InvalidProofErrorSerializer();
+  static Serializer<InvalidProofError> get serializer =>
+      _$InvalidProofErrorSerializer();
 }
 
-class _$InvalidProofErrorSerializer implements PrimitiveSerializer<InvalidProofError> {
+class _$InvalidProofErrorSerializer
+    implements PrimitiveSerializer<InvalidProofError> {
   @override
   final Iterable<Type> types = const [InvalidProofError, _$InvalidProofError];
 
@@ -85,7 +89,8 @@ class _$InvalidProofErrorSerializer implements PrimitiveSerializer<InvalidProofE
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +101,9 @@ class _$InvalidProofErrorSerializer implements PrimitiveSerializer<InvalidProofE
     InvalidProofError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,7 +149,8 @@ class _$InvalidProofErrorSerializer implements PrimitiveSerializer<InvalidProofE
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
           ) as BuiltList<ActionForbiddenErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +184,51 @@ class _$InvalidProofErrorSerializer implements PrimitiveSerializer<InvalidProofE
 }
 
 class InvalidProofErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidProofError')
-  static const InvalidProofErrorNameEnum invalidProofError = _$invalidProofErrorNameEnum_invalidProofError;
+  static const InvalidProofErrorNameEnum invalidProofError =
+      _$invalidProofErrorNameEnum_invalidProofError;
 
-  static Serializer<InvalidProofErrorNameEnum> get serializer => _$invalidProofErrorNameEnumSerializer;
+  static Serializer<InvalidProofErrorNameEnum> get serializer =>
+      _$invalidProofErrorNameEnumSerializer;
 
-  const InvalidProofErrorNameEnum._(String name): super(name);
+  const InvalidProofErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidProofErrorNameEnum> get values => _$invalidProofErrorNameEnumValues;
-  static InvalidProofErrorNameEnum valueOf(String name) => _$invalidProofErrorNameEnumValueOf(name);
+  static BuiltSet<InvalidProofErrorNameEnum> get values =>
+      _$invalidProofErrorNameEnumValues;
+  static InvalidProofErrorNameEnum valueOf(String name) =>
+      _$invalidProofErrorNameEnumValueOf(name);
 }
 
 class InvalidProofErrorMessageEnum extends EnumClass {
+  @BuiltValueEnumConst(
+      wireName: r'The proof in the Credential Request is invalid')
+  static const InvalidProofErrorMessageEnum
+      theProofInTheCredentialRequestIsInvalid =
+      _$invalidProofErrorMessageEnum_theProofInTheCredentialRequestIsInvalid;
 
-  @BuiltValueEnumConst(wireName: r'The proof in the Credential Request is invalid')
-  static const InvalidProofErrorMessageEnum theProofInTheCredentialRequestIsInvalid = _$invalidProofErrorMessageEnum_theProofInTheCredentialRequestIsInvalid;
+  static Serializer<InvalidProofErrorMessageEnum> get serializer =>
+      _$invalidProofErrorMessageEnumSerializer;
 
-  static Serializer<InvalidProofErrorMessageEnum> get serializer => _$invalidProofErrorMessageEnumSerializer;
+  const InvalidProofErrorMessageEnum._(String name) : super(name);
 
-  const InvalidProofErrorMessageEnum._(String name): super(name);
-
-  static BuiltSet<InvalidProofErrorMessageEnum> get values => _$invalidProofErrorMessageEnumValues;
-  static InvalidProofErrorMessageEnum valueOf(String name) => _$invalidProofErrorMessageEnumValueOf(name);
+  static BuiltSet<InvalidProofErrorMessageEnum> get values =>
+      _$invalidProofErrorMessageEnumValues;
+  static InvalidProofErrorMessageEnum valueOf(String name) =>
+      _$invalidProofErrorMessageEnumValueOf(name);
 }
 
 class InvalidProofErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const InvalidProofErrorHttpStatusCodeEnum number400 = _$invalidProofErrorHttpStatusCodeEnum_number400;
+  static const InvalidProofErrorHttpStatusCodeEnum number400 =
+      _$invalidProofErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<InvalidProofErrorHttpStatusCodeEnum> get serializer => _$invalidProofErrorHttpStatusCodeEnumSerializer;
+  static Serializer<InvalidProofErrorHttpStatusCodeEnum> get serializer =>
+      _$invalidProofErrorHttpStatusCodeEnumSerializer;
 
-  const InvalidProofErrorHttpStatusCodeEnum._(String name): super(name);
+  const InvalidProofErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidProofErrorHttpStatusCodeEnum> get values => _$invalidProofErrorHttpStatusCodeEnumValues;
-  static InvalidProofErrorHttpStatusCodeEnum valueOf(String name) => _$invalidProofErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InvalidProofErrorHttpStatusCodeEnum> get values =>
+      _$invalidProofErrorHttpStatusCodeEnumValues;
+  static InvalidProofErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$invalidProofErrorHttpStatusCodeEnumValueOf(name);
 }
-

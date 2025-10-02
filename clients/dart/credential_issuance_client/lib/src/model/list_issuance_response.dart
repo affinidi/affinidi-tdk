@@ -15,25 +15,32 @@ part 'list_issuance_response.g.dart';
 /// Properties:
 /// * [issuances] - The list of all issuances for the Project
 @BuiltValue()
-abstract class ListIssuanceResponse implements Built<ListIssuanceResponse, ListIssuanceResponseBuilder> {
+abstract class ListIssuanceResponse
+    implements Built<ListIssuanceResponse, ListIssuanceResponseBuilder> {
   /// The list of all issuances for the Project
   @BuiltValueField(wireName: r'issuances')
   BuiltList<ListIssuanceResponseIssuancesInner> get issuances;
 
   ListIssuanceResponse._();
 
-  factory ListIssuanceResponse([void updates(ListIssuanceResponseBuilder b)]) = _$ListIssuanceResponse;
+  factory ListIssuanceResponse([void updates(ListIssuanceResponseBuilder b)]) =
+      _$ListIssuanceResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListIssuanceResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListIssuanceResponse> get serializer => _$ListIssuanceResponseSerializer();
+  static Serializer<ListIssuanceResponse> get serializer =>
+      _$ListIssuanceResponseSerializer();
 }
 
-class _$ListIssuanceResponseSerializer implements PrimitiveSerializer<ListIssuanceResponse> {
+class _$ListIssuanceResponseSerializer
+    implements PrimitiveSerializer<ListIssuanceResponse> {
   @override
-  final Iterable<Type> types = const [ListIssuanceResponse, _$ListIssuanceResponse];
+  final Iterable<Type> types = const [
+    ListIssuanceResponse,
+    _$ListIssuanceResponse
+  ];
 
   @override
   final String wireName = r'ListIssuanceResponse';
@@ -46,7 +53,8 @@ class _$ListIssuanceResponseSerializer implements PrimitiveSerializer<ListIssuan
     yield r'issuances';
     yield serializers.serialize(
       object.issuances,
-      specifiedType: const FullType(BuiltList, [FullType(ListIssuanceResponseIssuancesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(ListIssuanceResponseIssuancesInner)]),
     );
   }
 
@@ -56,7 +64,9 @@ class _$ListIssuanceResponseSerializer implements PrimitiveSerializer<ListIssuan
     ListIssuanceResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +84,8 @@ class _$ListIssuanceResponseSerializer implements PrimitiveSerializer<ListIssuan
         case r'issuances':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ListIssuanceResponseIssuancesInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ListIssuanceResponseIssuancesInner)]),
           ) as BuiltList<ListIssuanceResponseIssuancesInner>;
           result.issuances.replace(valueDes);
           break;
@@ -106,4 +117,3 @@ class _$ListIssuanceResponseSerializer implements PrimitiveSerializer<ListIssuan
     return result.build();
   }
 }
-
