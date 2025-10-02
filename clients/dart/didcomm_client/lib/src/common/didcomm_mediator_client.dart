@@ -36,7 +36,7 @@ class DidcommMediatorClient extends MediatorClient {
   Future<StreamSubscription> listenForIncomingMessagesAndFetchMissing(
     void Function(Map<String, dynamic>) onMessage, {
     Function? onError,
-    void Function()? onDone,
+    void Function({int? closeCode, String? closeReason})? onDone,
     bool? cancelOnError,
     String? accessToken,
   }) async {
@@ -190,7 +190,7 @@ class DidcommMediatorClient extends MediatorClient {
         }
         _pendingRequests.clear();
       },
-      onDone: () {
+      onDone: ({int? closeCode, String? closeReason}) {
         for (var completer in _pendingRequests.values) {
           completer.completeError(Exception('Connection has been dropped'));
         }

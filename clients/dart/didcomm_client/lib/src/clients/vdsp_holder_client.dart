@@ -165,7 +165,7 @@ class VdspHolderClient extends DidcommBaseClient {
     void Function(VdspDataProcessingResultMessage)? onDataProcessingResult,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
-    void Function()? onDone,
+    void Function({int? closeCode, String? closeReason})? onDone,
     bool? cancelOnError,
     String? accessToken,
     // TODO: refresh connection
