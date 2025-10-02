@@ -127,7 +127,7 @@ class VdspVerifierClient extends DidcommBaseClient {
     ) onDataResponse,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
-    void Function()? onDone,
+    void Function({int? closeCode, String? closeReason})? onDone,
     bool? cancelOnError,
     String? accessToken,
     // TODO: refresh connection
