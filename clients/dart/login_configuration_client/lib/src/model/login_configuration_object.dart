@@ -27,6 +27,7 @@ part 'login_configuration_object.g.dart';
 /// * [creationDate] - OAuth 2.0 Client Creation Date
 /// * [vpDefinition] - VP definition in JSON stringify format
 /// * [presentationDefinition] - Presentation Definition
+/// * [dcqlQuery] - DCQL query
 /// * [idTokenMapping] - Fields name/path mapping between the vp_token and the id_token
 /// * [clientMetadata] 
 /// * [tokenEndpointAuthMethod] 
@@ -75,6 +76,10 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
   /// Presentation Definition
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
+
+  /// DCQL query
+  @BuiltValueField(wireName: r'dcqlQuery')
+  JsonObject? get dcqlQuery;
 
   /// Fields name/path mapping between the vp_token and the id_token
   @BuiltValueField(wireName: r'idTokenMapping')
@@ -176,6 +181,13 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
       yield r'presentationDefinition';
       yield serializers.serialize(
         object.presentationDefinition,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.dcqlQuery != null) {
+      yield r'dcqlQuery';
+      yield serializers.serialize(
+        object.dcqlQuery,
         specifiedType: const FullType(JsonObject),
       );
     }
@@ -293,6 +305,13 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.presentationDefinition = valueDes;
+          break;
+        case r'dcqlQuery':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.dcqlQuery = valueDes;
           break;
         case r'idTokenMapping':
           final valueDes = serializers.deserialize(

@@ -16,6 +16,7 @@ part 'verify_presentation_input.g.dart';
 /// * [signedPresentation] 
 /// * [presentationDefinition] 
 /// * [presentationSubmission] 
+/// * [dcqlQuery] 
 /// * [challenge] 
 @BuiltValue()
 abstract class VerifyPresentationInput implements Built<VerifyPresentationInput, VerifyPresentationInputBuilder> {
@@ -30,6 +31,9 @@ abstract class VerifyPresentationInput implements Built<VerifyPresentationInput,
 
   @BuiltValueField(wireName: r'presentationSubmission')
   JsonObject? get presentationSubmission;
+
+  @BuiltValueField(wireName: r'dcqlQuery')
+  JsonObject? get dcqlQuery;
 
   @BuiltValueField(wireName: r'challenge')
   String? get challenge;
@@ -82,6 +86,13 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
       yield r'presentationSubmission';
       yield serializers.serialize(
         object.presentationSubmission,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.dcqlQuery != null) {
+      yield r'dcqlQuery';
+      yield serializers.serialize(
+        object.dcqlQuery,
         specifiedType: const FullType(JsonObject),
       );
     }
@@ -142,6 +153,13 @@ class _$VerifyPresentationInputSerializer implements PrimitiveSerializer<VerifyP
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.presentationSubmission = valueDes;
+          break;
+        case r'dcqlQuery':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.dcqlQuery = valueDes;
           break;
         case r'challenge':
           final valueDes = serializers.deserialize(

@@ -39,6 +39,8 @@ affinidi_tdk_wallets_client/models/sign_credentials_dm2_sd_jwt_input_dto.py
 affinidi_tdk_wallets_client/models/sign_credentials_dm2_sd_jwt_result_dto.py
 affinidi_tdk_wallets_client/models/sign_jwt_token.py
 affinidi_tdk_wallets_client/models/sign_jwt_token_ok.py
+affinidi_tdk_wallets_client/models/sign_presentation_ldp_input_dto.py
+affinidi_tdk_wallets_client/models/sign_presentation_ldp_result_dto.py
 affinidi_tdk_wallets_client/models/signing_failed_error.py
 affinidi_tdk_wallets_client/models/update_wallet_input.py
 affinidi_tdk_wallets_client/models/wallet_dto.py
@@ -74,6 +76,8 @@ docs/SignCredentialsDm2SdJwtInputDto.md
 docs/SignCredentialsDm2SdJwtResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignPresentationLdpInputDto.md
+docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md

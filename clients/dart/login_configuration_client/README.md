@@ -106,6 +106,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 
 - [ActionForbiddenError](doc/ActionForbiddenError.md)
 - [AddUserToGroupInput](doc/AddUserToGroupInput.md)
+- [AuthorizationRequestDcql](doc/AuthorizationRequestDcql.md)
+- [AuthorizationRequestPex](doc/AuthorizationRequestPex.md)
 - [BlockedUsers](doc/BlockedUsers.md)
 - [BlockedUsersInput](doc/BlockedUsersInput.md)
 - [CorsLoginSessionAcceptResponseOK](doc/CorsLoginSessionAcceptResponseOK.md)

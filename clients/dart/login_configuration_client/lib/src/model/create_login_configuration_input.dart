@@ -22,6 +22,7 @@ part 'create_login_configuration_input.g.dart';
 /// * [postLogoutRedirectUris] - Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
 /// * [vpDefinition] - VP definition in JSON stringify format
 /// * [presentationDefinition] - Presentation Definition
+/// * [dcqlQuery] - DCQL query in JSON stringify format
 /// * [idTokenMapping] - Fields name/path mapping between the vp_token and the id_token
 /// * [clientMetadata] 
 /// * [claimFormat] - ID token claims output format. Default is array.
@@ -52,6 +53,10 @@ abstract class CreateLoginConfigurationInput implements Built<CreateLoginConfigu
   /// Presentation Definition
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
+
+  /// DCQL query in JSON stringify format
+  @BuiltValueField(wireName: r'dcqlQuery')
+  JsonObject? get dcqlQuery;
 
   /// Fields name/path mapping between the vp_token and the id_token
   @BuiltValueField(wireName: r'idTokenMapping')
@@ -136,6 +141,13 @@ class _$CreateLoginConfigurationInputSerializer implements PrimitiveSerializer<C
       yield r'presentationDefinition';
       yield serializers.serialize(
         object.presentationDefinition,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.dcqlQuery != null) {
+      yield r'dcqlQuery';
+      yield serializers.serialize(
+        object.dcqlQuery,
         specifiedType: const FullType(JsonObject),
       );
     }
@@ -245,6 +257,13 @@ class _$CreateLoginConfigurationInputSerializer implements PrimitiveSerializer<C
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.presentationDefinition = valueDes;
+          break;
+        case r'dcqlQuery':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.dcqlQuery = valueDes;
           break;
         case r'idTokenMapping':
           final valueDes = serializers.deserialize(

@@ -41,6 +41,8 @@ import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jw
 import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jwt_result_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token_ok.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_input_dto.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_result_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/signing_failed_error.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/update_wallet_input.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/wallet_dto.dart';
@@ -77,6 +79,8 @@ part 'serializers.g.dart';
   SignCredentialsDm2SdJwtResultDto,
   SignJwtToken,
   SignJwtTokenOK,
+  SignPresentationLdpInputDto,
+  SignPresentationLdpResultDto,
   SigningFailedError,
   UpdateWalletInput,
   WalletDto,

@@ -17,6 +17,8 @@ affinidi_tdk_login_configuration_client/exceptions.py
 affinidi_tdk_login_configuration_client/models/__init__.py
 affinidi_tdk_login_configuration_client/models/action_forbidden_error.py
 affinidi_tdk_login_configuration_client/models/add_user_to_group_input.py
+affinidi_tdk_login_configuration_client/models/authorization_request_dcql.py
+affinidi_tdk_login_configuration_client/models/authorization_request_pex.py
 affinidi_tdk_login_configuration_client/models/blocked_users.py
 affinidi_tdk_login_configuration_client/models/blocked_users_input.py
 affinidi_tdk_login_configuration_client/models/cors_login_session_accept_response_ok.py
@@ -78,6 +80,8 @@ affinidi_tdk_login_configuration_client/rest.py
 docs/ActionForbiddenError.md
 docs/AddUserToGroupInput.md
 docs/AllowListApi.md
+docs/AuthorizationRequestDcql.md
+docs/AuthorizationRequestPex.md
 docs/BlockedUsers.md
 docs/BlockedUsersInput.md
 docs/ConfigurationApi.md
