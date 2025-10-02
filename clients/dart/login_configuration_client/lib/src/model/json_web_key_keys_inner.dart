@@ -12,26 +12,27 @@ part 'json_web_key_keys_inner.g.dart';
 /// JsonWebKeyKeysInner
 ///
 /// Properties:
-/// * [alg] - The \"alg\" (algorithm) parameter identifies the algorithm intended for use  with the key. The values used should either be registered in the IANA  \"JSON Web Signature and Encryption Algorithms\" registry established  by [JWA] or be a value that contains a Collision- Resistant Name. 
-/// * [crv] 
-/// * [d] 
-/// * [dp] 
-/// * [dq] 
-/// * [e] 
-/// * [k] 
-/// * [kid] - The \"kid\" (key ID) parameter is used to match a specific key. This is used,  for instance, to choose among a set of keys within a JWK Set during key  rollover. The structure of the \"kid\" value is unspecified. When \"kid\"  values are used within a JWK Set, different keys within the JWK Set SHOULD  use distinct \"kid\" values. (One example in which different keys might use  the same \"kid\" value is if they have different \"kty\" (key type) values but  are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string. 
-/// * [kty] - The \"kty\" (key type) parameter identifies the cryptographic algorithm family  used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be  registered in the IANA \"JSON Web Key Types\" registry established by [JWA]  or be a value that contains a Collision- Resistant Name. The \"kty\" value  is a case-sensitive string. 
-/// * [n] 
-/// * [p] 
-/// * [q] 
-/// * [qi] 
-/// * [use] - Use (\"public key use\") identifies the intended use of the public key. The  \"use\" parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \"sig\" (signature) or \"enc\" (encryption). 
-/// * [x] 
-/// * [x5c] - The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. 
-/// * [y] 
+/// * [alg] - The \"alg\" (algorithm) parameter identifies the algorithm intended for use  with the key. The values used should either be registered in the IANA  \"JSON Web Signature and Encryption Algorithms\" registry established  by [JWA] or be a value that contains a Collision- Resistant Name.
+/// * [crv]
+/// * [d]
+/// * [dp]
+/// * [dq]
+/// * [e]
+/// * [k]
+/// * [kid] - The \"kid\" (key ID) parameter is used to match a specific key. This is used,  for instance, to choose among a set of keys within a JWK Set during key  rollover. The structure of the \"kid\" value is unspecified. When \"kid\"  values are used within a JWK Set, different keys within the JWK Set SHOULD  use distinct \"kid\" values. (One example in which different keys might use  the same \"kid\" value is if they have different \"kty\" (key type) values but  are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string.
+/// * [kty] - The \"kty\" (key type) parameter identifies the cryptographic algorithm family  used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be  registered in the IANA \"JSON Web Key Types\" registry established by [JWA]  or be a value that contains a Collision- Resistant Name. The \"kty\" value  is a case-sensitive string.
+/// * [n]
+/// * [p]
+/// * [q]
+/// * [qi]
+/// * [use] - Use (\"public key use\") identifies the intended use of the public key. The  \"use\" parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \"sig\" (signature) or \"enc\" (encryption).
+/// * [x]
+/// * [x5c] - The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate.
+/// * [y]
 @BuiltValue()
-abstract class JsonWebKeyKeysInner implements Built<JsonWebKeyKeysInner, JsonWebKeyKeysInnerBuilder> {
-  /// The \"alg\" (algorithm) parameter identifies the algorithm intended for use  with the key. The values used should either be registered in the IANA  \"JSON Web Signature and Encryption Algorithms\" registry established  by [JWA] or be a value that contains a Collision- Resistant Name. 
+abstract class JsonWebKeyKeysInner
+    implements Built<JsonWebKeyKeysInner, JsonWebKeyKeysInnerBuilder> {
+  /// The \"alg\" (algorithm) parameter identifies the algorithm intended for use  with the key. The values used should either be registered in the IANA  \"JSON Web Signature and Encryption Algorithms\" registry established  by [JWA] or be a value that contains a Collision- Resistant Name.
   @BuiltValueField(wireName: r'alg')
   String get alg;
 
@@ -53,11 +54,11 @@ abstract class JsonWebKeyKeysInner implements Built<JsonWebKeyKeysInner, JsonWeb
   @BuiltValueField(wireName: r'k')
   String? get k;
 
-  /// The \"kid\" (key ID) parameter is used to match a specific key. This is used,  for instance, to choose among a set of keys within a JWK Set during key  rollover. The structure of the \"kid\" value is unspecified. When \"kid\"  values are used within a JWK Set, different keys within the JWK Set SHOULD  use distinct \"kid\" values. (One example in which different keys might use  the same \"kid\" value is if they have different \"kty\" (key type) values but  are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string. 
+  /// The \"kid\" (key ID) parameter is used to match a specific key. This is used,  for instance, to choose among a set of keys within a JWK Set during key  rollover. The structure of the \"kid\" value is unspecified. When \"kid\"  values are used within a JWK Set, different keys within the JWK Set SHOULD  use distinct \"kid\" values. (One example in which different keys might use  the same \"kid\" value is if they have different \"kty\" (key type) values but  are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string.
   @BuiltValueField(wireName: r'kid')
   String get kid;
 
-  /// The \"kty\" (key type) parameter identifies the cryptographic algorithm family  used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be  registered in the IANA \"JSON Web Key Types\" registry established by [JWA]  or be a value that contains a Collision- Resistant Name. The \"kty\" value  is a case-sensitive string. 
+  /// The \"kty\" (key type) parameter identifies the cryptographic algorithm family  used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be  registered in the IANA \"JSON Web Key Types\" registry established by [JWA]  or be a value that contains a Collision- Resistant Name. The \"kty\" value  is a case-sensitive string.
   @BuiltValueField(wireName: r'kty')
   String get kty;
 
@@ -73,14 +74,14 @@ abstract class JsonWebKeyKeysInner implements Built<JsonWebKeyKeysInner, JsonWeb
   @BuiltValueField(wireName: r'qi')
   String? get qi;
 
-  /// Use (\"public key use\") identifies the intended use of the public key. The  \"use\" parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \"sig\" (signature) or \"enc\" (encryption). 
+  /// Use (\"public key use\") identifies the intended use of the public key. The  \"use\" parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \"sig\" (signature) or \"enc\" (encryption).
   @BuiltValueField(wireName: r'use')
   String get use;
 
   @BuiltValueField(wireName: r'x')
   String? get x;
 
-  /// The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate. 
+  /// The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate.
   @BuiltValueField(wireName: r'x5c')
   BuiltList<String> get x5c;
 
@@ -89,18 +90,24 @@ abstract class JsonWebKeyKeysInner implements Built<JsonWebKeyKeysInner, JsonWeb
 
   JsonWebKeyKeysInner._();
 
-  factory JsonWebKeyKeysInner([void updates(JsonWebKeyKeysInnerBuilder b)]) = _$JsonWebKeyKeysInner;
+  factory JsonWebKeyKeysInner([void updates(JsonWebKeyKeysInnerBuilder b)]) =
+      _$JsonWebKeyKeysInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(JsonWebKeyKeysInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<JsonWebKeyKeysInner> get serializer => _$JsonWebKeyKeysInnerSerializer();
+  static Serializer<JsonWebKeyKeysInner> get serializer =>
+      _$JsonWebKeyKeysInnerSerializer();
 }
 
-class _$JsonWebKeyKeysInnerSerializer implements PrimitiveSerializer<JsonWebKeyKeysInner> {
+class _$JsonWebKeyKeysInnerSerializer
+    implements PrimitiveSerializer<JsonWebKeyKeysInner> {
   @override
-  final Iterable<Type> types = const [JsonWebKeyKeysInner, _$JsonWebKeyKeysInner];
+  final Iterable<Type> types = const [
+    JsonWebKeyKeysInner,
+    _$JsonWebKeyKeysInner
+  ];
 
   @override
   final String wireName = r'JsonWebKeyKeysInner';
@@ -227,7 +234,9 @@ class _$JsonWebKeyKeysInnerSerializer implements PrimitiveSerializer<JsonWebKeyK
     JsonWebKeyKeysInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -389,4 +398,3 @@ class _$JsonWebKeyKeysInnerSerializer implements PrimitiveSerializer<JsonWebKeyK
     return result.build();
   }
 }
-
