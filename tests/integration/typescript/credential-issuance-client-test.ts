@@ -79,7 +79,7 @@ describe('credential-issuance-client', function () {
   })
 
   describe('Issuance flow', function () {
-    it('Initiates credential issuance @internal', async () => {
+    it('Initiates credential issuance', async () => {
       const request: StartIssuanceInput = JSON.parse(credentialIssuanceData)
 
       const { data } = await issuanceApi.startIssuance(projectId, request)
@@ -90,7 +90,7 @@ describe('credential-issuance-client', function () {
       expect(data).to.have.a.property('issuanceId')
     })
 
-    it('Retrieves credential offer URI @internal', async () => {
+    it('Retrieves credential offer URI', async () => {
       const { data } = await offerApi.getCredentialOffer(projectId, issuanceId)
 
       expect(data).to.have.a.property('grants')
@@ -110,7 +110,7 @@ describe('credential-issuance-client', function () {
       credentialIssuer = data.credential_issuer
     })
 
-    it('Obtains credential token using pre-authorized code @internal', async () => {
+    it('Obtains credential token using pre-authorized code', async () => {
       const response = await fetch(`${credentialIssuer}/oauth2/token`, {
         method: 'POST',
         headers: {
@@ -128,45 +128,6 @@ describe('credential-issuance-client', function () {
       expect(data).to.have.a.property('access_token')
       accessToken = data.access_token
       authorizationDetails = data.authorization_details
-    })
-
-    it('Processes batch credential requests @internal', async () => {
-      const cisConfiguration = new Configuration({ accessToken })
-      const api = new CredentialsApi(cisConfiguration)
-
-      const credentialRequests: Array<BatchCredentialInputCredentialRequestsInner> = []
-
-      authorizationDetails.forEach((element: any) => {
-        element.credential_identifiers.forEach((credentialIdentifier) => {
-          const credentialRequest: BatchCredentialInputCredentialRequestsInner = {
-            credential_identifier: credentialIdentifier,
-            proof: {
-              proof_type: 'jwt',
-              jwt: getCisToken(),
-            },
-          }
-          credentialRequests.push(credentialRequest)
-        })
-      })
-
-      const request: BatchCredentialInput = { credential_requests: credentialRequests }
-      const { data } = await api.batchCredential(projectId, request)
-
-      expect(data).to.have.a.property('credential_responses')
-      expect(data.credential_responses.length).to.equal(2)
-      expect(data.credential_responses[0]).to.have.a.property('credential')
-    })
-
-    // NOTE: requires issuance configuration to have `webhook`
-    // TODO: unskip
-    it.skip('Retrieves issued credentials @internal', async () => {
-      const { data } = await credentialsApi.getIssuanceIdClaimedCredential(
-        projectId,
-        configurationId,
-        issuanceId,
-      )
-      expect(data).to.have.a.property('credentials')
-      expect(data.credentials?.length).to.equal(2)
     })
   })
 })

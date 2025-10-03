@@ -47,5 +47,5 @@ jobs:
         run: echo $TESTING_ENV_FILE_CONTENT | base64 --decode > tests/.env
 
       - name: Run integration tests
-        run: npm run test:internal
+        run: npm run test
         working-directory: tests/integration/typescript

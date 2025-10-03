@@ -4,8 +4,10 @@
 
 Ensure you have the following installed:
 
-- **NodeJS v20.18.0+**
-- **npm v10.8.2+** (NodeJS package manager)
+- **Node.js v20.x or later**
+  > 💡 Node.js v20 is supported, but the LTS (Long Term Support) version is recommended for better stability and performance.
+  > For details on current LTS version check [Node.js releases page](https://nodejs.org/en/about/previous-releases).
+- **npm v11.6.0+** (Node.js package manager)
 
 ## Setup Instructions
 
@@ -39,9 +41,6 @@ Use the provided script to execute all integration tests:
 
 ```bash
 npm test
-
-# ❗️ testing against DEV environment; for internal use only
-AFFINIDI_TDK_ENVIRONMENT=dev npm test
 ```
 
 This will run all available test cases.

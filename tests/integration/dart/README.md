@@ -45,12 +45,3 @@ To run a single test provide a name of the test/group:
 ```bash
 dart test -n 'Wallets Client Integration Tests'
 ```
-
-
-#### Run tests against DEV
-
-NOTE: For internal usage. To run tests against DEV environment
-
-```bash
-flutter test --dart-define=AFFINIDI_TDK_ENVIRONMENT=dev
-```

@@ -10,8 +10,6 @@ import { DefaultApi } from '@affinidi-tdk/credential-verification-client'
 import { ClientsConfigurationService } from './clients-configuration-service'
 export { ClientsConfigurationService }
 
-import { AuthenticationService } from './authentication-service'
-
 const missingVariables = new Set()
 const required = (name: string) => {
   missingVariables.add(name)
@@ -39,8 +37,6 @@ const {
   IOTA_PRESENTATION_SUBMISSION: iotaPresentationSubmission = required('IOTA_PRESENTATION_SUBMISSION'),
   IOTA_PRESENTATION_DEFINITION: iotaPresentationDefinition = required('IOTA_PRESENTATION_DEFINITION'),
   // secrets for internal testing
-  ENCRYPTION_SEED: encryptionSeed = process.env.INTERNAL ? required('ENCRYPTION_SEED') : '',
-  SEED_PASSWORD: seedPassword = process.env.INTERNAL ? required('SEED_PASSWORD') : '',
   DEV_TOKEN_ID: tokenIdDev = isProd ? required('DEV_TOKEN_ID') : '',
   DEV_PRIVATE_KEY: privateKeyDev = isProd ? required('DEV_PRIVATE_KEY') : '',
   DEV_PROJECT_ID: projectIdDev = isProd ? required('DEV_PROJECT_ID') : '',
@@ -83,20 +79,6 @@ export {
   iotaPresentationDefinition,
   unsignedCredentialParams,
   credentialIssuanceConfiguration,
-}
-
-export const getCisToken = (aud?: string) => {
-  const apiGatewayUrl = EnvironmentUtils.fetchApiGwUrl()
-  const audience = aud || `${apiGatewayUrl}/cis`
-
-  const authenticationService = new AuthenticationService()
-  const cisToken = authenticationService.signAssertion(
-    encryptionSeed,
-    seedPassword,
-    audience,
-  )
-
-  return cisToken
 }
 
 export const createWallet = async () => {
