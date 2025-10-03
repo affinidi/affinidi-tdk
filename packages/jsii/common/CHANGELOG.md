@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.25.1...@affinidi-tdk/common-v1.26.0) (2025-10-03)
+
+
+### Features
+
+* **FTL-23348:** remove deprecated dependency and internal notes ([#997](https://github.com/affinidi/affinidi-tdk/issues/997)) ([7d8fab2](https://github.com/affinidi/affinidi-tdk/commit/7d8fab21f346126f696c634f697a7ceae57ec703))
+
 ## [1.25.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.25.0...@affinidi-tdk/common-v1.25.1) (2025-07-02)
 
 
