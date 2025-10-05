@@ -19,7 +19,6 @@ abstract class DidcommBaseClient {
   Future<void> sendMessage(
     PlainTextMessage requestMessage, {
     required DidDocument recipientDidDocument,
-    required String accessToken,
   }) async {
     final packagedMessage =
         await DidcommMessage.packIntoSignedAndEncryptedMessages(
@@ -56,15 +55,6 @@ abstract class DidcommBaseClient {
 
     await mediatorClient.sendMessage(
       forwardMessage,
-      accessToken: accessToken,
-    );
-  }
-
-  Future<AuthenticationTokens> authenticate({
-    EncryptionAlgorithm encryptionAlgorithm = EncryptionAlgorithm.a256cbc,
-  }) async {
-    return await mediatorClient.authenticate(
-      encryptionAlgorithm: encryptionAlgorithm,
     );
   }
 }

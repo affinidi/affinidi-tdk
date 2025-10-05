@@ -139,8 +139,6 @@ Future<void> main() async {
     didManager: verifierDidManager,
   );
 
-  final verifierAuthTokens = await verifierClient.authenticate();
-
   final featureQueries = [
     ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
       FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
@@ -154,10 +152,9 @@ Future<void> main() async {
   await verifierClient.queryHolderFeatures(
     holderDid: (await holderDidManager.getDidDocument()).id,
     featureQueries: featureQueries,
-    accessToken: verifierAuthTokens.accessToken,
   );
 
-  await verifierClient.listenForIncomingMessages(
+  verifierClient.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
       prettyPrint(
         'Verifier received Disclose Message',
@@ -204,7 +201,6 @@ Future<void> main() async {
         //   challenge: const Uuid().v4(),
         //   domain: 'test.verifier.com',
         // ),
-        accessToken: verifierAuthTokens.accessToken,
       );
     },
     onDataResponse: (
@@ -234,10 +230,7 @@ Future<void> main() async {
       await verifierClient.sendDataProcessingResult(
         holderDid: message.from!,
         result: {'success': true},
-        accessToken: verifierAuthTokens.accessToken,
       );
-
-      await verifierClient.mediatorClient.disconnect();
     },
     onProblemReport: (message) {
       prettyPrint(
@@ -245,8 +238,6 @@ Future<void> main() async {
         object: message,
       );
     },
-    accessToken: verifierAuthTokens.accessToken,
-    refreshToken: verifierAuthTokens.refreshToken,
   );
 
   // holder
@@ -262,9 +253,7 @@ Future<void> main() async {
     ],
   );
 
-  final holderAuthTokens = await holderClient.authenticate();
-
-  await holderClient.listenForIncomingMessages(
+  holderClient.listenForIncomingMessages(
     onFeatureQuery: (message) async {
       prettyPrint(
         'Holder received Feature Query Message',
@@ -275,7 +264,6 @@ Future<void> main() async {
       // if (message.from == verifierDid) {
       await holderClient.disclose(
         queryMessage: message,
-        accessToken: holderAuthTokens.accessToken,
       );
       // }
     },
@@ -289,7 +277,6 @@ Future<void> main() async {
         requestMessage: message,
         verifiableCredentials: holderVerifiableCredentials,
         verifiablePresentationSigner: holderSigner,
-        accessToken: holderAuthTokens.accessToken,
       );
     },
     onDataProcessingResult: (message) async {
@@ -298,7 +285,7 @@ Future<void> main() async {
         object: message,
       );
 
-      await holderClient.mediatorClient.disconnect();
+      await ConnectionPool.instance.stopConnections();
     },
     onProblemReport: (message) {
       prettyPrint(
@@ -306,7 +293,7 @@ Future<void> main() async {
         object: message,
       );
     },
-    accessToken: holderAuthTokens.accessToken,
-    refreshToken: holderAuthTokens.refreshToken,
   );
+
+  await ConnectionPool.instance.startConnections();
 }

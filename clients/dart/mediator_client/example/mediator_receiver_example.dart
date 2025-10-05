@@ -50,37 +50,18 @@ void main() async {
     await readDid(config.mediatorDidPath),
   );
 
-  final receiverSigner = await receiverDidManager.getSigner(
-    receiverDidDocument.assertionMethod.first.id,
-  );
-
-  final receiverMatchedDidKeyIds = receiverDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [
-      receiverMediatorDocument,
-      // receiver only sends messages to the mediator, so we don't need to match keys with sender's DID Document
-    ],
-  );
-
-  final receiverMediatorClient = MediatorClient(
-    mediatorDidDocument: receiverMediatorDocument,
-    keyPair: await receiverDidManager.getKeyPairByDidKeyId(
-      receiverMatchedDidKeyIds.first,
+  final receiverMediatorClient = await MediatorClient.init(
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      didManager: receiverDidManager,
+      mediatorDidDocument: receiverMediatorDocument,
     ),
-    didKeyId: receiverMatchedDidKeyIds.first,
-    signer: receiverSigner,
+    didManager: receiverDidManager,
+    mediatorDidDocument: receiverMediatorDocument,
   );
 
-  final receiverTokens = await receiverMediatorClient.authenticate();
   prettyPrint('Receiver is fetching messages...');
 
-  final messageIds = await receiverMediatorClient.listInboxMessageIds(
-    accessToken: receiverTokens.accessToken,
-  );
-
-  final messages = await receiverMediatorClient.fetchMessages(
-    messageIds: messageIds,
-    accessToken: receiverTokens.accessToken,
-  );
+  final messages = await receiverMediatorClient.fetchMessages();
 
   for (final message in messages) {
     final originalPlainTextMessageFromSender =

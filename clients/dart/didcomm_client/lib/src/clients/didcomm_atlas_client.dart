@@ -39,7 +39,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }
 
   Future<GetMediatorInstancesListResponseMessage> getMediatorInstancesList({
-    required String accessToken,
     int? limit,
     String? exclusiveStartKey,
   }) async {
@@ -55,7 +54,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-      accessToken: accessToken,
     );
 
     return GetMediatorInstancesListResponseMessage(
@@ -70,7 +68,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
   /// Deploys a new mediator instance.
   Future<DeployMediatorInstanceResponseMessage> deployMediatorInstance({
-    required String accessToken,
     DeployMediatorInstanceRequest? deploymentData,
   }) async {
     final requestMessage = DeployMediatorInstanceMessage(
@@ -82,7 +79,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-      accessToken: accessToken,
     );
 
     return DeployMediatorInstanceResponseMessage(
@@ -98,7 +94,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   /// Gets the metadata for a specific mediator instance.
   Future<GetMediatorInstanceMetadataResponseMessage>
       getMediatorInstanceMetadata({
-    required String accessToken,
     required String mediatorId,
   }) async {
     final requestMessage = GetMediatorInstanceMetadataMessage(
@@ -112,7 +107,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-      accessToken: accessToken,
     );
 
     return GetMediatorInstanceMetadataResponseMessage(
@@ -127,7 +121,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
   /// Destroys a mediator instance.
   Future<DestroyMediatorInstanceResponseMessage> destroyMediatorInstance({
-    required String accessToken,
     required String mediatorId,
   }) async {
     final requestMessage = DestroyMediatorInstanceMessage(
@@ -141,7 +134,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-      accessToken: accessToken,
     );
 
     return DestroyMediatorInstanceResponseMessage(
@@ -157,7 +149,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   /// Updates the deployment configuration of a mediator instance.
   Future<UpdateMediatorInstanceDeploymentResponseMessage>
       updateMediatorInstanceDeployment({
-    required String accessToken,
     required UpdateMediatorInstanceDeploymentRequest deploymentData,
   }) async {
     final requestMessage = UpdateMediatorInstanceDeploymentMessage(
@@ -169,7 +160,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-      accessToken: accessToken,
     );
 
     return UpdateMediatorInstanceDeploymentResponseMessage(
@@ -185,7 +175,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   /// Updates the configuration of a mediator instance.
   Future<UpdateMediatorInstanceConfigurationResponseMessage>
       updateMediatorInstanceConfiguration({
-    required String accessToken,
     required UpdateMediatorInstanceConfigurationRequest configurationData,
   }) async {
     final requestMessage = UpdateMediatorInstanceConfigurationMessage(
@@ -197,7 +186,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-      accessToken: accessToken,
     );
 
     return UpdateMediatorInstanceConfigurationResponseMessage(
@@ -212,7 +200,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
   /// Gets the requests for mediators.
   Future<GetMediatorRequestsResponseMessage> getMediatorRequests({
-    required String accessToken,
     String? mediatorId,
     int? limit,
     String? exclusiveStartKey,
@@ -230,7 +217,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-      accessToken: accessToken,
     );
 
     return GetMediatorRequestsResponseMessage(
@@ -243,10 +229,10 @@ class DidcommAtlasClient extends DidcommServiceClient {
     );
   }
 
-  Future<void> connect({required String accessToken}) async {
-    await mediatorClient.connect(
+  // TODO: run it by default in the parent constructor
+  void linkRequestsAndResponses() {
+    mediatorClient.linkRequestsAndResponses(
       serviceDidDocument: serviceDidDocument,
-      accessToken: accessToken,
     );
   }
 }

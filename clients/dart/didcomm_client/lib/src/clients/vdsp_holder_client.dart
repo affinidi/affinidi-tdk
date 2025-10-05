@@ -52,7 +52,6 @@ class VdspHolderClient extends DidcommBaseClient {
 
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,
-    required String accessToken,
   }) async {
     final verifierDid = queryMessage.from;
 
@@ -85,7 +84,6 @@ class VdspHolderClient extends DidcommBaseClient {
 
     await mediatorClient.packAndSendMessage(
       message: message,
-      accessToken: accessToken,
     );
 
     return message;
@@ -98,7 +96,6 @@ class VdspHolderClient extends DidcommBaseClient {
     required DidSigner verifiablePresentationSigner,
     String? operation,
     String? comment,
-    required String accessToken,
   }) async {
     if (requestMessage.from == null) {
       throw ArgumentError.notNull('requestMessage.from');
@@ -153,13 +150,12 @@ class VdspHolderClient extends DidcommBaseClient {
 
     await mediatorClient.packAndSendMessage(
       message: responseMessage,
-      accessToken: accessToken,
     );
 
     return responseMessage;
   }
 
-  Future<StreamSubscription> listenForIncomingMessages({
+  StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
     required void Function(VdspQueryDataMessage) onDataRequest,
     void Function(VdspDataProcessingResultMessage)? onDataProcessingResult,
@@ -167,11 +163,8 @@ class VdspHolderClient extends DidcommBaseClient {
     Function? onError,
     void Function({int? closeCode, String? closeReason})? onDone,
     bool? cancelOnError,
-    String? accessToken,
-    // TODO: refresh connection
-    String? refreshToken,
-  }) async {
-    return await mediatorClient.listenForIncomingMessagesAndFetchMissing(
+  }) {
+    return mediatorClient.listenForIncomingMessages(
       (message) async {
         final unpacked = await DidcommMessage.unpackToPlainTextMessage(
           message: message,
@@ -240,7 +233,6 @@ class VdspHolderClient extends DidcommBaseClient {
       onError: onError,
       onDone: onDone,
       cancelOnError: cancelOnError,
-      accessToken: accessToken,
     );
   }
 }
