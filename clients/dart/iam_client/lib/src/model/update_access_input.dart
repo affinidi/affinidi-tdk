@@ -15,23 +15,27 @@ part 'update_access_input.g.dart';
 /// Properties:
 /// * [rights] - List of rights to update access
 @BuiltValue()
-abstract class UpdateAccessInput implements Built<UpdateAccessInput, UpdateAccessInputBuilder> {
+abstract class UpdateAccessInput
+    implements Built<UpdateAccessInput, UpdateAccessInputBuilder> {
   /// List of rights to update access
   @BuiltValueField(wireName: r'rights')
   BuiltList<RightsEnum> get rights;
 
   UpdateAccessInput._();
 
-  factory UpdateAccessInput([void updates(UpdateAccessInputBuilder b)]) = _$UpdateAccessInput;
+  factory UpdateAccessInput([void updates(UpdateAccessInputBuilder b)]) =
+      _$UpdateAccessInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateAccessInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateAccessInput> get serializer => _$UpdateAccessInputSerializer();
+  static Serializer<UpdateAccessInput> get serializer =>
+      _$UpdateAccessInputSerializer();
 }
 
-class _$UpdateAccessInputSerializer implements PrimitiveSerializer<UpdateAccessInput> {
+class _$UpdateAccessInputSerializer
+    implements PrimitiveSerializer<UpdateAccessInput> {
   @override
   final Iterable<Type> types = const [UpdateAccessInput, _$UpdateAccessInput];
 
@@ -56,7 +60,9 @@ class _$UpdateAccessInputSerializer implements PrimitiveSerializer<UpdateAccessI
     UpdateAccessInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +112,3 @@ class _$UpdateAccessInputSerializer implements PrimitiveSerializer<UpdateAccessI
     return result.build();
   }
 }
-

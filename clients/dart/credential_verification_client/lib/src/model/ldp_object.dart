@@ -55,7 +55,9 @@ class _$LdpObjectSerializer implements PrimitiveSerializer<LdpObject> {
     LdpObject object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +107,3 @@ class _$LdpObjectSerializer implements PrimitiveSerializer<LdpObject> {
     return result.build();
   }
 }
-
