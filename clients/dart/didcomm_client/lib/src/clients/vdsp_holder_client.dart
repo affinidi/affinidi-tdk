@@ -89,6 +89,22 @@ class VdspHolderClient extends DidcommBaseClient {
     return message;
   }
 
+  Future<List<ParsedVerifiableCredential>> filterVerifiableCredentials({
+    required VdspQueryDataMessage requestMessage,
+    DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
+    required List<ParsedVerifiableCredential> verifiableCredentials,
+  }) async {
+    if (requestMessage.body == null) {
+      throw ArgumentError.notNull('requestMessage.body');
+    }
+
+    final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
+    final query = requestBody.query;
+
+    // TODO: implement filtering based on query and dataQueryLanguage
+    return verifiableCredentials;
+  }
+
   Future<VdspDataResponseMessage> shareData({
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,

@@ -46,11 +46,7 @@ Future<void> main() async {
           didManager: didManager,
         );
 
-        final authTokens = await sut.authenticate();
-
-        final actual = await sut.getMediatorInstancesList(
-          accessToken: authTokens.accessToken,
-        );
+        final actual = await sut.getMediatorInstancesList();
 
         expect(actual.instances, isNotNull);
       });
