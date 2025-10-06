@@ -7,8 +7,6 @@ common.ts
 configuration.ts
 docs/Constraints.md
 docs/ConstraintsStatuses.md
-docs/CredentialRequirements.md
-docs/CredentialRequirementsConstraints.md
 docs/DefaultApi.md
 docs/Descriptor.md
 docs/Error.md
@@ -38,6 +36,7 @@ docs/VerifyCredentialOutput.md
 docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
+docs/VerifyPresentationV2Input.md
 docs/W3cCredentialStatus.md
 docs/W3cProof.md
 index.ts

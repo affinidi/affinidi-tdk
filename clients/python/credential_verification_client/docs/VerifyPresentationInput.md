@@ -10,6 +10,7 @@ Request model of /verify-vp
 | **signed_presentation**     | **object** |             | [optional] |
 | **presentation_definition** | **object** |             | [optional] |
 | **presentation_submission** | **object** |             | [optional] |
+| **dcql_query**              | **object** |             | [optional] |
 | **challenge**               | **str**    |             | [optional] |
 
 ## Example

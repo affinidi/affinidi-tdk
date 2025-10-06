@@ -13,13 +13,14 @@ part 'entity_not_found_error.g.dart';
 /// EntityNotFoundError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class EntityNotFoundError implements Built<EntityNotFoundError, EntityNotFoundErrorBuilder> {
+abstract class EntityNotFoundError
+    implements Built<EntityNotFoundError, EntityNotFoundErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   EntityNotFoundErrorNameEnum get name;
   // enum nameEnum {  EntityNotFoundError,  };
@@ -40,18 +41,24 @@ abstract class EntityNotFoundError implements Built<EntityNotFoundError, EntityN
 
   EntityNotFoundError._();
 
-  factory EntityNotFoundError([void updates(EntityNotFoundErrorBuilder b)]) = _$EntityNotFoundError;
+  factory EntityNotFoundError([void updates(EntityNotFoundErrorBuilder b)]) =
+      _$EntityNotFoundError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EntityNotFoundErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EntityNotFoundError> get serializer => _$EntityNotFoundErrorSerializer();
+  static Serializer<EntityNotFoundError> get serializer =>
+      _$EntityNotFoundErrorSerializer();
 }
 
-class _$EntityNotFoundErrorSerializer implements PrimitiveSerializer<EntityNotFoundError> {
+class _$EntityNotFoundErrorSerializer
+    implements PrimitiveSerializer<EntityNotFoundError> {
   @override
-  final Iterable<Type> types = const [EntityNotFoundError, _$EntityNotFoundError];
+  final Iterable<Type> types = const [
+    EntityNotFoundError,
+    _$EntityNotFoundError
+  ];
 
   @override
   final String wireName = r'EntityNotFoundError';
@@ -85,7 +92,8 @@ class _$EntityNotFoundErrorSerializer implements PrimitiveSerializer<EntityNotFo
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
       );
     }
   }
@@ -96,7 +104,9 @@ class _$EntityNotFoundErrorSerializer implements PrimitiveSerializer<EntityNotFo
     EntityNotFoundError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +138,8 @@ class _$EntityNotFoundErrorSerializer implements PrimitiveSerializer<EntityNotFo
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(EntityNotFoundErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(EntityNotFoundErrorHttpStatusCodeEnum),
           ) as EntityNotFoundErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +153,8 @@ class _$EntityNotFoundErrorSerializer implements PrimitiveSerializer<EntityNotFo
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
           ) as BuiltList<ServiceErrorResponseDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +188,49 @@ class _$EntityNotFoundErrorSerializer implements PrimitiveSerializer<EntityNotFo
 }
 
 class EntityNotFoundErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'EntityNotFoundError')
-  static const EntityNotFoundErrorNameEnum entityNotFoundError = _$entityNotFoundErrorNameEnum_entityNotFoundError;
+  static const EntityNotFoundErrorNameEnum entityNotFoundError =
+      _$entityNotFoundErrorNameEnum_entityNotFoundError;
 
-  static Serializer<EntityNotFoundErrorNameEnum> get serializer => _$entityNotFoundErrorNameEnumSerializer;
+  static Serializer<EntityNotFoundErrorNameEnum> get serializer =>
+      _$entityNotFoundErrorNameEnumSerializer;
 
-  const EntityNotFoundErrorNameEnum._(String name): super(name);
+  const EntityNotFoundErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<EntityNotFoundErrorNameEnum> get values => _$entityNotFoundErrorNameEnumValues;
-  static EntityNotFoundErrorNameEnum valueOf(String name) => _$entityNotFoundErrorNameEnumValueOf(name);
+  static BuiltSet<EntityNotFoundErrorNameEnum> get values =>
+      _$entityNotFoundErrorNameEnumValues;
+  static EntityNotFoundErrorNameEnum valueOf(String name) =>
+      _$entityNotFoundErrorNameEnumValueOf(name);
 }
 
 class EntityNotFoundErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Entity not found')
-  static const EntityNotFoundErrorMessageEnum entityNotFound = _$entityNotFoundErrorMessageEnum_entityNotFound;
+  static const EntityNotFoundErrorMessageEnum entityNotFound =
+      _$entityNotFoundErrorMessageEnum_entityNotFound;
 
-  static Serializer<EntityNotFoundErrorMessageEnum> get serializer => _$entityNotFoundErrorMessageEnumSerializer;
+  static Serializer<EntityNotFoundErrorMessageEnum> get serializer =>
+      _$entityNotFoundErrorMessageEnumSerializer;
 
-  const EntityNotFoundErrorMessageEnum._(String name): super(name);
+  const EntityNotFoundErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<EntityNotFoundErrorMessageEnum> get values => _$entityNotFoundErrorMessageEnumValues;
-  static EntityNotFoundErrorMessageEnum valueOf(String name) => _$entityNotFoundErrorMessageEnumValueOf(name);
+  static BuiltSet<EntityNotFoundErrorMessageEnum> get values =>
+      _$entityNotFoundErrorMessageEnumValues;
+  static EntityNotFoundErrorMessageEnum valueOf(String name) =>
+      _$entityNotFoundErrorMessageEnumValueOf(name);
 }
 
 class EntityNotFoundErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 404)
-  static const EntityNotFoundErrorHttpStatusCodeEnum number404 = _$entityNotFoundErrorHttpStatusCodeEnum_number404;
+  static const EntityNotFoundErrorHttpStatusCodeEnum number404 =
+      _$entityNotFoundErrorHttpStatusCodeEnum_number404;
 
-  static Serializer<EntityNotFoundErrorHttpStatusCodeEnum> get serializer => _$entityNotFoundErrorHttpStatusCodeEnumSerializer;
+  static Serializer<EntityNotFoundErrorHttpStatusCodeEnum> get serializer =>
+      _$entityNotFoundErrorHttpStatusCodeEnumSerializer;
 
-  const EntityNotFoundErrorHttpStatusCodeEnum._(String name): super(name);
+  const EntityNotFoundErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<EntityNotFoundErrorHttpStatusCodeEnum> get values => _$entityNotFoundErrorHttpStatusCodeEnumValues;
-  static EntityNotFoundErrorHttpStatusCodeEnum valueOf(String name) => _$entityNotFoundErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<EntityNotFoundErrorHttpStatusCodeEnum> get values =>
+      _$entityNotFoundErrorHttpStatusCodeEnumValues;
+  static EntityNotFoundErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$entityNotFoundErrorHttpStatusCodeEnumValueOf(name);
 }
-

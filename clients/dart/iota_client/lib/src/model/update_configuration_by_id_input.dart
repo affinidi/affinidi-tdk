@@ -20,12 +20,15 @@ part 'update_configuration_by_id_input.g.dart';
 /// * [enableConsentAuditLog] - Records the user's consent when they share their data, including the type of data shared when enabled.
 /// * [tokenMaxAge] - This is the lifetime of the signed request token during the data-sharing flow.
 /// * [description] - An optional description of what the configuration is used for.
-/// * [clientMetadata] 
+/// * [clientMetadata]
 /// * [mode] - Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
 /// * [redirectUris] - List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
 /// * [enableIdvProviders] - Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
 @BuiltValue()
-abstract class UpdateConfigurationByIdInput implements Built<UpdateConfigurationByIdInput, UpdateConfigurationByIdInputBuilder> {
+abstract class UpdateConfigurationByIdInput
+    implements
+        Built<UpdateConfigurationByIdInput,
+            UpdateConfigurationByIdInputBuilder> {
   /// The name of the configuration to quickly identify the resource.
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -72,18 +75,25 @@ abstract class UpdateConfigurationByIdInput implements Built<UpdateConfiguration
 
   UpdateConfigurationByIdInput._();
 
-  factory UpdateConfigurationByIdInput([void updates(UpdateConfigurationByIdInputBuilder b)]) = _$UpdateConfigurationByIdInput;
+  factory UpdateConfigurationByIdInput(
+          [void updates(UpdateConfigurationByIdInputBuilder b)]) =
+      _$UpdateConfigurationByIdInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateConfigurationByIdInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateConfigurationByIdInput> get serializer => _$UpdateConfigurationByIdInputSerializer();
+  static Serializer<UpdateConfigurationByIdInput> get serializer =>
+      _$UpdateConfigurationByIdInputSerializer();
 }
 
-class _$UpdateConfigurationByIdInputSerializer implements PrimitiveSerializer<UpdateConfigurationByIdInput> {
+class _$UpdateConfigurationByIdInputSerializer
+    implements PrimitiveSerializer<UpdateConfigurationByIdInput> {
   @override
-  final Iterable<Type> types = const [UpdateConfigurationByIdInput, _$UpdateConfigurationByIdInput];
+  final Iterable<Type> types = const [
+    UpdateConfigurationByIdInput,
+    _$UpdateConfigurationByIdInput
+  ];
 
   @override
   final String wireName = r'UpdateConfigurationByIdInput';
@@ -178,7 +188,9 @@ class _$UpdateConfigurationByIdInputSerializer implements PrimitiveSerializer<Up
     UpdateConfigurationByIdInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -300,19 +312,23 @@ class _$UpdateConfigurationByIdInputSerializer implements PrimitiveSerializer<Up
 }
 
 class UpdateConfigurationByIdInputModeEnum extends EnumClass {
-
   /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   @BuiltValueEnumConst(wireName: r'redirect')
-  static const UpdateConfigurationByIdInputModeEnum redirect = _$updateConfigurationByIdInputModeEnum_redirect;
+  static const UpdateConfigurationByIdInputModeEnum redirect =
+      _$updateConfigurationByIdInputModeEnum_redirect;
+
   /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   @BuiltValueEnumConst(wireName: r'websocket')
-  static const UpdateConfigurationByIdInputModeEnum websocket = _$updateConfigurationByIdInputModeEnum_websocket;
+  static const UpdateConfigurationByIdInputModeEnum websocket =
+      _$updateConfigurationByIdInputModeEnum_websocket;
 
-  static Serializer<UpdateConfigurationByIdInputModeEnum> get serializer => _$updateConfigurationByIdInputModeEnumSerializer;
+  static Serializer<UpdateConfigurationByIdInputModeEnum> get serializer =>
+      _$updateConfigurationByIdInputModeEnumSerializer;
 
-  const UpdateConfigurationByIdInputModeEnum._(String name): super(name);
+  const UpdateConfigurationByIdInputModeEnum._(String name) : super(name);
 
-  static BuiltSet<UpdateConfigurationByIdInputModeEnum> get values => _$updateConfigurationByIdInputModeEnumValues;
-  static UpdateConfigurationByIdInputModeEnum valueOf(String name) => _$updateConfigurationByIdInputModeEnumValueOf(name);
+  static BuiltSet<UpdateConfigurationByIdInputModeEnum> get values =>
+      _$updateConfigurationByIdInputModeEnumValues;
+  static UpdateConfigurationByIdInputModeEnum valueOf(String name) =>
+      _$updateConfigurationByIdInputModeEnumValueOf(name);
 }
-

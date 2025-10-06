@@ -14,14 +14,15 @@ part 'input_descriptor.g.dart';
 /// InputDescriptor
 ///
 /// Properties:
-/// * [id] 
-/// * [constraints] 
-/// * [name] 
-/// * [purpose] 
-/// * [format] 
-/// * [group] 
+/// * [id]
+/// * [constraints]
+/// * [name]
+/// * [purpose]
+/// * [format]
+/// * [group]
 @BuiltValue()
-abstract class InputDescriptor implements Built<InputDescriptor, InputDescriptorBuilder> {
+abstract class InputDescriptor
+    implements Built<InputDescriptor, InputDescriptorBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -42,16 +43,19 @@ abstract class InputDescriptor implements Built<InputDescriptor, InputDescriptor
 
   InputDescriptor._();
 
-  factory InputDescriptor([void updates(InputDescriptorBuilder b)]) = _$InputDescriptor;
+  factory InputDescriptor([void updates(InputDescriptorBuilder b)]) =
+      _$InputDescriptor;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InputDescriptorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InputDescriptor> get serializer => _$InputDescriptorSerializer();
+  static Serializer<InputDescriptor> get serializer =>
+      _$InputDescriptorSerializer();
 }
 
-class _$InputDescriptorSerializer implements PrimitiveSerializer<InputDescriptor> {
+class _$InputDescriptorSerializer
+    implements PrimitiveSerializer<InputDescriptor> {
   @override
   final Iterable<Type> types = const [InputDescriptor, _$InputDescriptor];
 
@@ -109,7 +113,9 @@ class _$InputDescriptorSerializer implements PrimitiveSerializer<InputDescriptor
     InputDescriptor object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -194,4 +200,3 @@ class _$InputDescriptorSerializer implements PrimitiveSerializer<InputDescriptor
     return result.build();
   }
 }
-

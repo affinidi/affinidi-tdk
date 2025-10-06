@@ -13,9 +13,10 @@ part 'login_session_dto.g.dart';
 ///
 /// Properties:
 /// * [id] - Session primary identifier
-/// * [authorizationRequest] 
+/// * [authorizationRequest]
 @BuiltValue()
-abstract class LoginSessionDto implements Built<LoginSessionDto, LoginSessionDtoBuilder> {
+abstract class LoginSessionDto
+    implements Built<LoginSessionDto, LoginSessionDtoBuilder> {
   /// Session primary identifier
   @BuiltValueField(wireName: r'id')
   String get id;
@@ -25,16 +26,19 @@ abstract class LoginSessionDto implements Built<LoginSessionDto, LoginSessionDto
 
   LoginSessionDto._();
 
-  factory LoginSessionDto([void updates(LoginSessionDtoBuilder b)]) = _$LoginSessionDto;
+  factory LoginSessionDto([void updates(LoginSessionDtoBuilder b)]) =
+      _$LoginSessionDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LoginSessionDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LoginSessionDto> get serializer => _$LoginSessionDtoSerializer();
+  static Serializer<LoginSessionDto> get serializer =>
+      _$LoginSessionDtoSerializer();
 }
 
-class _$LoginSessionDtoSerializer implements PrimitiveSerializer<LoginSessionDto> {
+class _$LoginSessionDtoSerializer
+    implements PrimitiveSerializer<LoginSessionDto> {
   @override
   final Iterable<Type> types = const [LoginSessionDto, _$LoginSessionDto];
 
@@ -64,7 +68,9 @@ class _$LoginSessionDtoSerializer implements PrimitiveSerializer<LoginSessionDto
     LoginSessionDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +127,3 @@ class _$LoginSessionDtoSerializer implements PrimitiveSerializer<LoginSessionDto
     return result.build();
   }
 }
-

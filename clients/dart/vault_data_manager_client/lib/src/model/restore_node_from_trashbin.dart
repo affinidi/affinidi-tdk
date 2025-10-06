@@ -13,25 +13,33 @@ part 'restore_node_from_trashbin.g.dart';
 /// Properties:
 /// * [restoreToProfileId] - The base64 encoded nodeId of the profile which is base64 encoded, to which node will be restored
 @BuiltValue()
-abstract class RestoreNodeFromTrashbin implements Built<RestoreNodeFromTrashbin, RestoreNodeFromTrashbinBuilder> {
+abstract class RestoreNodeFromTrashbin
+    implements Built<RestoreNodeFromTrashbin, RestoreNodeFromTrashbinBuilder> {
   /// The base64 encoded nodeId of the profile which is base64 encoded, to which node will be restored
   @BuiltValueField(wireName: r'restoreToProfileId')
   String? get restoreToProfileId;
 
   RestoreNodeFromTrashbin._();
 
-  factory RestoreNodeFromTrashbin([void updates(RestoreNodeFromTrashbinBuilder b)]) = _$RestoreNodeFromTrashbin;
+  factory RestoreNodeFromTrashbin(
+          [void updates(RestoreNodeFromTrashbinBuilder b)]) =
+      _$RestoreNodeFromTrashbin;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RestoreNodeFromTrashbinBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RestoreNodeFromTrashbin> get serializer => _$RestoreNodeFromTrashbinSerializer();
+  static Serializer<RestoreNodeFromTrashbin> get serializer =>
+      _$RestoreNodeFromTrashbinSerializer();
 }
 
-class _$RestoreNodeFromTrashbinSerializer implements PrimitiveSerializer<RestoreNodeFromTrashbin> {
+class _$RestoreNodeFromTrashbinSerializer
+    implements PrimitiveSerializer<RestoreNodeFromTrashbin> {
   @override
-  final Iterable<Type> types = const [RestoreNodeFromTrashbin, _$RestoreNodeFromTrashbin];
+  final Iterable<Type> types = const [
+    RestoreNodeFromTrashbin,
+    _$RestoreNodeFromTrashbin
+  ];
 
   @override
   final String wireName = r'RestoreNodeFromTrashbin';
@@ -56,7 +64,9 @@ class _$RestoreNodeFromTrashbinSerializer implements PrimitiveSerializer<Restore
     RestoreNodeFromTrashbin object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +116,3 @@ class _$RestoreNodeFromTrashbinSerializer implements PrimitiveSerializer<Restore
     return result.build();
   }
 }
-

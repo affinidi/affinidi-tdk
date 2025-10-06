@@ -15,7 +15,9 @@ part 'verify_presentation_output.g.dart';
 /// * [errors] - Error of the verification
 /// * [isValid] - Verification result
 @BuiltValue()
-abstract class VerifyPresentationOutput implements Built<VerifyPresentationOutput, VerifyPresentationOutputBuilder> {
+abstract class VerifyPresentationOutput
+    implements
+        Built<VerifyPresentationOutput, VerifyPresentationOutputBuilder> {
   /// Error of the verification
   @BuiltValueField(wireName: r'errors')
   BuiltList<String> get errors;
@@ -26,18 +28,25 @@ abstract class VerifyPresentationOutput implements Built<VerifyPresentationOutpu
 
   VerifyPresentationOutput._();
 
-  factory VerifyPresentationOutput([void updates(VerifyPresentationOutputBuilder b)]) = _$VerifyPresentationOutput;
+  factory VerifyPresentationOutput(
+          [void updates(VerifyPresentationOutputBuilder b)]) =
+      _$VerifyPresentationOutput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VerifyPresentationOutputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VerifyPresentationOutput> get serializer => _$VerifyPresentationOutputSerializer();
+  static Serializer<VerifyPresentationOutput> get serializer =>
+      _$VerifyPresentationOutputSerializer();
 }
 
-class _$VerifyPresentationOutputSerializer implements PrimitiveSerializer<VerifyPresentationOutput> {
+class _$VerifyPresentationOutputSerializer
+    implements PrimitiveSerializer<VerifyPresentationOutput> {
   @override
-  final Iterable<Type> types = const [VerifyPresentationOutput, _$VerifyPresentationOutput];
+  final Iterable<Type> types = const [
+    VerifyPresentationOutput,
+    _$VerifyPresentationOutput
+  ];
 
   @override
   final String wireName = r'VerifyPresentationOutput';
@@ -65,7 +74,9 @@ class _$VerifyPresentationOutputSerializer implements PrimitiveSerializer<Verify
     VerifyPresentationOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -122,4 +133,3 @@ class _$VerifyPresentationOutputSerializer implements PrimitiveSerializer<Verify
     return result.build();
   }
 }
-

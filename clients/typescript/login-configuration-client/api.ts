@@ -125,6 +125,80 @@ export interface AddUserToGroupInput {
 /**
  *
  * @export
+ * @interface AuthorizationRequestDcql
+ */
+export interface AuthorizationRequestDcql {
+  /**
+   * State parameter
+   * @type {string}
+   * @memberof AuthorizationRequestDcql
+   */
+  state: string
+  /**
+   * DCQL query to ask from the user. In JSON Stringify format.
+   * @type {string}
+   * @memberof AuthorizationRequestDcql
+   */
+  dcqlQuery: string
+  /**
+   * ARI is used for analytics proposals.
+   * @type {string}
+   * @memberof AuthorizationRequestDcql
+   */
+  ari?: string
+  /**
+   * clientId used for detect origin.
+   * @type {string}
+   * @memberof AuthorizationRequestDcql
+   */
+  clientId?: string
+  /**
+   * nonce for VP Token proof challenge
+   * @type {string}
+   * @memberof AuthorizationRequestDcql
+   */
+  nonce?: string
+}
+/**
+ *
+ * @export
+ * @interface AuthorizationRequestPex
+ */
+export interface AuthorizationRequestPex {
+  /**
+   * State parameter
+   * @type {string}
+   * @memberof AuthorizationRequestPex
+   */
+  state: string
+  /**
+   * Presentation Definition to ask from the user. In JSON Stringify format.
+   * @type {string}
+   * @memberof AuthorizationRequestPex
+   */
+  presentationDefinition: string
+  /**
+   * ARI is used for analytics proposals.
+   * @type {string}
+   * @memberof AuthorizationRequestPex
+   */
+  ari?: string
+  /**
+   * clientId used for detect origin.
+   * @type {string}
+   * @memberof AuthorizationRequestPex
+   */
+  clientId?: string
+  /**
+   * nonce for VP Token proof challenge
+   * @type {string}
+   * @memberof AuthorizationRequestPex
+   */
+  nonce?: string
+}
+/**
+ *
+ * @export
  * @interface BlockedUsers
  */
 export interface BlockedUsers {
@@ -329,6 +403,12 @@ export interface CreateLoginConfigurationInput {
    * @memberof CreateLoginConfigurationInput
    */
   presentationDefinition?: object
+  /**
+   * DCQL query in JSON stringify format
+   * @type {object}
+   * @memberof CreateLoginConfigurationInput
+   */
+  dcqlQuery?: object
   /**
    * Fields name/path mapping between the vp_token and the id_token
    * @type {Array<IdTokenMappingItem>}
@@ -1432,6 +1512,12 @@ export interface LoginConfigurationObject {
    */
   presentationDefinition?: object
   /**
+   * DCQL query
+   * @type {object}
+   * @memberof LoginConfigurationObject
+   */
+  dcqlQuery?: object
+  /**
    * Fields name/path mapping between the vp_token and the id_token
    * @type {Array<IdTokenMappingItem>}
    * @memberof LoginConfigurationObject
@@ -1546,42 +1632,14 @@ export interface LoginSessionDto {
   authorizationRequest: LoginSessionDtoAuthorizationRequest
 }
 /**
- *
+ * @type LoginSessionDtoAuthorizationRequest
+ * Authorization Request Object
  * @export
- * @interface LoginSessionDtoAuthorizationRequest
  */
-export interface LoginSessionDtoAuthorizationRequest {
-  /**
-   * State parameter
-   * @type {string}
-   * @memberof LoginSessionDtoAuthorizationRequest
-   */
-  state: string
-  /**
-   * Presentation Definition to ask from the user. In JSON Stringify format.
-   * @type {string}
-   * @memberof LoginSessionDtoAuthorizationRequest
-   */
-  presentationDefinition: string
-  /**
-   * ARI is used for analytics proposals.
-   * @type {string}
-   * @memberof LoginSessionDtoAuthorizationRequest
-   */
-  ari?: string
-  /**
-   * clientId used for detect origin.
-   * @type {string}
-   * @memberof LoginSessionDtoAuthorizationRequest
-   */
-  clientId?: string
-  /**
-   * nonce for VP Token proof challenge
-   * @type {string}
-   * @memberof LoginSessionDtoAuthorizationRequest
-   */
-  nonce?: string
-}
+export type LoginSessionDtoAuthorizationRequest =
+  | AuthorizationRequestDcql
+  | AuthorizationRequestPex
+
 /**
  * Input for Creating a Login Session
  * @export
@@ -2270,6 +2328,12 @@ export interface UpdateLoginConfigurationInput {
    * @memberof UpdateLoginConfigurationInput
    */
   presentationDefinition?: object
+  /**
+   * DCQL query in JSON stringify format
+   * @type {object}
+   * @memberof UpdateLoginConfigurationInput
+   */
+  dcqlQuery?: object
   /**
    * Fields name/path mapping between the vp_token and the id_token
    * @type {Array<IdTokenMappingItem>}

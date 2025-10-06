@@ -33,6 +33,8 @@ docs/SignCredentialsDm2SdJwtInputDto.md
 docs/SignCredentialsDm2SdJwtResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignPresentationLdpInputDto.md
+docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
