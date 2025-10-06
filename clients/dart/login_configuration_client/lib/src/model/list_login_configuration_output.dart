@@ -13,10 +13,13 @@ part 'list_login_configuration_output.g.dart';
 /// ListLoginConfigurationOutput
 ///
 /// Properties:
-/// * [configurations] 
-/// * [lastEvaluatedKey] 
+/// * [configurations]
+/// * [lastEvaluatedKey]
 @BuiltValue()
-abstract class ListLoginConfigurationOutput implements Built<ListLoginConfigurationOutput, ListLoginConfigurationOutputBuilder> {
+abstract class ListLoginConfigurationOutput
+    implements
+        Built<ListLoginConfigurationOutput,
+            ListLoginConfigurationOutputBuilder> {
   @BuiltValueField(wireName: r'configurations')
   BuiltList<LoginConfigurationObject> get configurations;
 
@@ -25,18 +28,25 @@ abstract class ListLoginConfigurationOutput implements Built<ListLoginConfigurat
 
   ListLoginConfigurationOutput._();
 
-  factory ListLoginConfigurationOutput([void updates(ListLoginConfigurationOutputBuilder b)]) = _$ListLoginConfigurationOutput;
+  factory ListLoginConfigurationOutput(
+          [void updates(ListLoginConfigurationOutputBuilder b)]) =
+      _$ListLoginConfigurationOutput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListLoginConfigurationOutputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListLoginConfigurationOutput> get serializer => _$ListLoginConfigurationOutputSerializer();
+  static Serializer<ListLoginConfigurationOutput> get serializer =>
+      _$ListLoginConfigurationOutputSerializer();
 }
 
-class _$ListLoginConfigurationOutputSerializer implements PrimitiveSerializer<ListLoginConfigurationOutput> {
+class _$ListLoginConfigurationOutputSerializer
+    implements PrimitiveSerializer<ListLoginConfigurationOutput> {
   @override
-  final Iterable<Type> types = const [ListLoginConfigurationOutput, _$ListLoginConfigurationOutput];
+  final Iterable<Type> types = const [
+    ListLoginConfigurationOutput,
+    _$ListLoginConfigurationOutput
+  ];
 
   @override
   final String wireName = r'ListLoginConfigurationOutput';
@@ -49,7 +59,8 @@ class _$ListLoginConfigurationOutputSerializer implements PrimitiveSerializer<Li
     yield r'configurations';
     yield serializers.serialize(
       object.configurations,
-      specifiedType: const FullType(BuiltList, [FullType(LoginConfigurationObject)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(LoginConfigurationObject)]),
     );
     if (object.lastEvaluatedKey != null) {
       yield r'lastEvaluatedKey';
@@ -66,7 +77,9 @@ class _$ListLoginConfigurationOutputSerializer implements PrimitiveSerializer<Li
     ListLoginConfigurationOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -84,7 +97,8 @@ class _$ListLoginConfigurationOutputSerializer implements PrimitiveSerializer<Li
         case r'configurations':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(LoginConfigurationObject)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(LoginConfigurationObject)]),
           ) as BuiltList<LoginConfigurationObject>;
           result.configurations.replace(valueDes);
           break;
@@ -123,4 +137,3 @@ class _$ListLoginConfigurationOutputSerializer implements PrimitiveSerializer<Li
     return result.build();
   }
 }
-

@@ -31,8 +31,10 @@ export 'package:affinidi_tdk_iota_client/src/model/cors_fetch_iota_vp_response_o
 export 'package:affinidi_tdk_iota_client/src/model/cors_initiate_data_sharing_request_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/cors_iot_oidc4vpcallback_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/cors_iota_exchange_credentials_ok.dart';
+export 'package:affinidi_tdk_iota_client/src/model/create_dcql_query_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/create_iota_configuration_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/create_pex_query_input.dart';
+export 'package:affinidi_tdk_iota_client/src/model/dcql_query_dto.dart';
 export 'package:affinidi_tdk_iota_client/src/model/delete_pex_queries_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/fetch_iotavp_response_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/fetch_iotavp_response_ok.dart';
@@ -48,6 +50,7 @@ export 'package:affinidi_tdk_iota_client/src/model/iota_exchange_credentials.dar
 export 'package:affinidi_tdk_iota_client/src/model/iota_exchange_credentials_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/iota_exchange_credentials_ok_credentials.dart';
 export 'package:affinidi_tdk_iota_client/src/model/list_configuration_ok.dart';
+export 'package:affinidi_tdk_iota_client/src/model/list_dcql_queries_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/list_logged_consents_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/list_pex_queries_ok.dart';
 export 'package:affinidi_tdk_iota_client/src/model/message_publishing_error.dart';
@@ -62,6 +65,6 @@ export 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input
 export 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input_queries_inner.dart';
 export 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_ok.dart';
+export 'package:affinidi_tdk_iota_client/src/model/update_dcql_query_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/update_pex_query_input.dart';
 export 'package:affinidi_tdk_iota_client/src/model/vp_token_validation_error.dart';
-

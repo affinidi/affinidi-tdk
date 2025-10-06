@@ -13,9 +13,10 @@ part 'update_profile_data_input.g.dart';
 ///
 /// Properties:
 /// * [dek] - A base64 encoded data encryption key, encrypted using VFS public key. This is used to get profile data from s3
-/// * [data] 
+/// * [data]
 @BuiltValue()
-abstract class UpdateProfileDataInput implements Built<UpdateProfileDataInput, UpdateProfileDataInputBuilder> {
+abstract class UpdateProfileDataInput
+    implements Built<UpdateProfileDataInput, UpdateProfileDataInputBuilder> {
   /// A base64 encoded data encryption key, encrypted using VFS public key. This is used to get profile data from s3
   @BuiltValueField(wireName: r'dek')
   String get dek;
@@ -25,18 +26,25 @@ abstract class UpdateProfileDataInput implements Built<UpdateProfileDataInput, U
 
   UpdateProfileDataInput._();
 
-  factory UpdateProfileDataInput([void updates(UpdateProfileDataInputBuilder b)]) = _$UpdateProfileDataInput;
+  factory UpdateProfileDataInput(
+          [void updates(UpdateProfileDataInputBuilder b)]) =
+      _$UpdateProfileDataInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateProfileDataInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateProfileDataInput> get serializer => _$UpdateProfileDataInputSerializer();
+  static Serializer<UpdateProfileDataInput> get serializer =>
+      _$UpdateProfileDataInputSerializer();
 }
 
-class _$UpdateProfileDataInputSerializer implements PrimitiveSerializer<UpdateProfileDataInput> {
+class _$UpdateProfileDataInputSerializer
+    implements PrimitiveSerializer<UpdateProfileDataInput> {
   @override
-  final Iterable<Type> types = const [UpdateProfileDataInput, _$UpdateProfileDataInput];
+  final Iterable<Type> types = const [
+    UpdateProfileDataInput,
+    _$UpdateProfileDataInput
+  ];
 
   @override
   final String wireName = r'UpdateProfileDataInput';
@@ -64,7 +72,9 @@ class _$UpdateProfileDataInputSerializer implements PrimitiveSerializer<UpdatePr
     UpdateProfileDataInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,4 +131,3 @@ class _$UpdateProfileDataInputSerializer implements PrimitiveSerializer<UpdatePr
     return result.build();
   }
 }
-

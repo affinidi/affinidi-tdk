@@ -11,26 +11,34 @@ part 'cors_update_profile_data_ok.g.dart';
 /// CorsUpdateProfileDataOK
 ///
 /// Properties:
-/// * [corsUpdateProfileDataOk] 
+/// * [corsUpdateProfileDataOk]
 @BuiltValue()
-abstract class CorsUpdateProfileDataOK implements Built<CorsUpdateProfileDataOK, CorsUpdateProfileDataOKBuilder> {
+abstract class CorsUpdateProfileDataOK
+    implements Built<CorsUpdateProfileDataOK, CorsUpdateProfileDataOKBuilder> {
   @BuiltValueField(wireName: r'corsUpdateProfileDataOk')
   String? get corsUpdateProfileDataOk;
 
   CorsUpdateProfileDataOK._();
 
-  factory CorsUpdateProfileDataOK([void updates(CorsUpdateProfileDataOKBuilder b)]) = _$CorsUpdateProfileDataOK;
+  factory CorsUpdateProfileDataOK(
+          [void updates(CorsUpdateProfileDataOKBuilder b)]) =
+      _$CorsUpdateProfileDataOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsUpdateProfileDataOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsUpdateProfileDataOK> get serializer => _$CorsUpdateProfileDataOKSerializer();
+  static Serializer<CorsUpdateProfileDataOK> get serializer =>
+      _$CorsUpdateProfileDataOKSerializer();
 }
 
-class _$CorsUpdateProfileDataOKSerializer implements PrimitiveSerializer<CorsUpdateProfileDataOK> {
+class _$CorsUpdateProfileDataOKSerializer
+    implements PrimitiveSerializer<CorsUpdateProfileDataOK> {
   @override
-  final Iterable<Type> types = const [CorsUpdateProfileDataOK, _$CorsUpdateProfileDataOK];
+  final Iterable<Type> types = const [
+    CorsUpdateProfileDataOK,
+    _$CorsUpdateProfileDataOK
+  ];
 
   @override
   final String wireName = r'CorsUpdateProfileDataOK';
@@ -55,7 +63,9 @@ class _$CorsUpdateProfileDataOKSerializer implements PrimitiveSerializer<CorsUpd
     CorsUpdateProfileDataOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +115,3 @@ class _$CorsUpdateProfileDataOKSerializer implements PrimitiveSerializer<CorsUpd
     return result.build();
   }
 }
-

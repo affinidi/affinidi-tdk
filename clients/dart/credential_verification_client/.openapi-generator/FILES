@@ -5,8 +5,6 @@ README.md
 analysis_options.yaml
 doc/Constraints.md
 doc/ConstraintsStatuses.md
-doc/CredentialRequirements.md
-doc/CredentialRequirementsConstraints.md
 doc/DefaultApi.md
 doc/Descriptor.md
 doc/Error.md
@@ -36,6 +34,7 @@ doc/VerifyCredentialOutput.md
 doc/VerifyCredentialV2Input.md
 doc/VerifyPresentationInput.md
 doc/VerifyPresentationOutput.md
+doc/VerifyPresentationV2Input.md
 doc/W3cCredentialStatus.md
 doc/W3cProof.md
 lib/affinidi_tdk_credential_verification_client.dart
@@ -50,8 +49,6 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/constraints.dart
 lib/src/model/constraints_statuses.dart
-lib/src/model/credential_requirements.dart
-lib/src/model/credential_requirements_constraints.dart
 lib/src/model/date.dart
 lib/src/model/descriptor.dart
 lib/src/model/error.dart
@@ -81,6 +78,7 @@ lib/src/model/verify_credential_output.dart
 lib/src/model/verify_credential_v2_input.dart
 lib/src/model/verify_presentation_input.dart
 lib/src/model/verify_presentation_output.dart
+lib/src/model/verify_presentation_v2_input.dart
 lib/src/model/w3c_credential_status.dart
 lib/src/model/w3c_proof.dart
 lib/src/serializers.dart

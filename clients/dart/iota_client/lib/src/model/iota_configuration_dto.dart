@@ -22,12 +22,13 @@ part 'iota_configuration_dto.g.dart';
 /// * [iotaResponseWebhookURL] - The webhook URL is used for callback when the data is ready.
 /// * [enableVerification] - Cryptographically verifies the data shared by the user when enabled.
 /// * [enableConsentAuditLog] - Records the consent the user gave when they shared their data, including the type of data shared.
-/// * [clientMetadata] 
+/// * [clientMetadata]
 /// * [mode] - Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
 /// * [redirectUris] - List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
 /// * [enableIdvProviders] - Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
 @BuiltValue()
-abstract class IotaConfigurationDto implements Built<IotaConfigurationDto, IotaConfigurationDtoBuilder> {
+abstract class IotaConfigurationDto
+    implements Built<IotaConfigurationDto, IotaConfigurationDtoBuilder> {
   /// This is a unique resource identifier of the Affinidi Iota Framework configuration.
   @BuiltValueField(wireName: r'ari')
   String get ari;
@@ -82,19 +83,25 @@ abstract class IotaConfigurationDto implements Built<IotaConfigurationDto, IotaC
 
   IotaConfigurationDto._();
 
-  factory IotaConfigurationDto([void updates(IotaConfigurationDtoBuilder b)]) = _$IotaConfigurationDto;
+  factory IotaConfigurationDto([void updates(IotaConfigurationDtoBuilder b)]) =
+      _$IotaConfigurationDto;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(IotaConfigurationDtoBuilder b) => b
-      ..mode = const IotaConfigurationDtoModeEnum._('websocket');
+  static void _defaults(IotaConfigurationDtoBuilder b) =>
+      b..mode = const IotaConfigurationDtoModeEnum._('websocket');
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IotaConfigurationDto> get serializer => _$IotaConfigurationDtoSerializer();
+  static Serializer<IotaConfigurationDto> get serializer =>
+      _$IotaConfigurationDtoSerializer();
 }
 
-class _$IotaConfigurationDtoSerializer implements PrimitiveSerializer<IotaConfigurationDto> {
+class _$IotaConfigurationDtoSerializer
+    implements PrimitiveSerializer<IotaConfigurationDto> {
   @override
-  final Iterable<Type> types = const [IotaConfigurationDto, _$IotaConfigurationDto];
+  final Iterable<Type> types = const [
+    IotaConfigurationDto,
+    _$IotaConfigurationDto
+  ];
 
   @override
   final String wireName = r'IotaConfigurationDto';
@@ -185,7 +192,9 @@ class _$IotaConfigurationDtoSerializer implements PrimitiveSerializer<IotaConfig
     IotaConfigurationDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -321,19 +330,23 @@ class _$IotaConfigurationDtoSerializer implements PrimitiveSerializer<IotaConfig
 }
 
 class IotaConfigurationDtoModeEnum extends EnumClass {
-
   /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   @BuiltValueEnumConst(wireName: r'redirect')
-  static const IotaConfigurationDtoModeEnum redirect = _$iotaConfigurationDtoModeEnum_redirect;
+  static const IotaConfigurationDtoModeEnum redirect =
+      _$iotaConfigurationDtoModeEnum_redirect;
+
   /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
   @BuiltValueEnumConst(wireName: r'websocket')
-  static const IotaConfigurationDtoModeEnum websocket = _$iotaConfigurationDtoModeEnum_websocket;
+  static const IotaConfigurationDtoModeEnum websocket =
+      _$iotaConfigurationDtoModeEnum_websocket;
 
-  static Serializer<IotaConfigurationDtoModeEnum> get serializer => _$iotaConfigurationDtoModeEnumSerializer;
+  static Serializer<IotaConfigurationDtoModeEnum> get serializer =>
+      _$iotaConfigurationDtoModeEnumSerializer;
 
-  const IotaConfigurationDtoModeEnum._(String name): super(name);
+  const IotaConfigurationDtoModeEnum._(String name) : super(name);
 
-  static BuiltSet<IotaConfigurationDtoModeEnum> get values => _$iotaConfigurationDtoModeEnumValues;
-  static IotaConfigurationDtoModeEnum valueOf(String name) => _$iotaConfigurationDtoModeEnumValueOf(name);
+  static BuiltSet<IotaConfigurationDtoModeEnum> get values =>
+      _$iotaConfigurationDtoModeEnumValues;
+  static IotaConfigurationDtoModeEnum valueOf(String name) =>
+      _$iotaConfigurationDtoModeEnumValueOf(name);
 }
-

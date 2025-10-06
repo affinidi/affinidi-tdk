@@ -12,10 +12,11 @@ part 'start_file_scan_ok.g.dart';
 /// StartFileScanOK
 ///
 /// Properties:
-/// * [jobId] 
-/// * [status] 
+/// * [jobId]
+/// * [status]
 @BuiltValue()
-abstract class StartFileScanOK implements Built<StartFileScanOK, StartFileScanOKBuilder> {
+abstract class StartFileScanOK
+    implements Built<StartFileScanOK, StartFileScanOKBuilder> {
   @BuiltValueField(wireName: r'jobId')
   String get jobId;
 
@@ -25,16 +26,19 @@ abstract class StartFileScanOK implements Built<StartFileScanOK, StartFileScanOK
 
   StartFileScanOK._();
 
-  factory StartFileScanOK([void updates(StartFileScanOKBuilder b)]) = _$StartFileScanOK;
+  factory StartFileScanOK([void updates(StartFileScanOKBuilder b)]) =
+      _$StartFileScanOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(StartFileScanOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<StartFileScanOK> get serializer => _$StartFileScanOKSerializer();
+  static Serializer<StartFileScanOK> get serializer =>
+      _$StartFileScanOKSerializer();
 }
 
-class _$StartFileScanOKSerializer implements PrimitiveSerializer<StartFileScanOK> {
+class _$StartFileScanOKSerializer
+    implements PrimitiveSerializer<StartFileScanOK> {
   @override
   final Iterable<Type> types = const [StartFileScanOK, _$StartFileScanOK];
 
@@ -64,7 +68,9 @@ class _$StartFileScanOKSerializer implements PrimitiveSerializer<StartFileScanOK
     StartFileScanOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,19 +129,23 @@ class _$StartFileScanOKSerializer implements PrimitiveSerializer<StartFileScanOK
 }
 
 class StartFileScanOKStatusEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'STARTED')
-  static const StartFileScanOKStatusEnum STARTED = _$startFileScanOKStatusEnum_STARTED;
+  static const StartFileScanOKStatusEnum STARTED =
+      _$startFileScanOKStatusEnum_STARTED;
   @BuiltValueEnumConst(wireName: r'FAILED')
-  static const StartFileScanOKStatusEnum FAILED = _$startFileScanOKStatusEnum_FAILED;
+  static const StartFileScanOKStatusEnum FAILED =
+      _$startFileScanOKStatusEnum_FAILED;
   @BuiltValueEnumConst(wireName: r'COMPLETED')
-  static const StartFileScanOKStatusEnum COMPLETED = _$startFileScanOKStatusEnum_COMPLETED;
+  static const StartFileScanOKStatusEnum COMPLETED =
+      _$startFileScanOKStatusEnum_COMPLETED;
 
-  static Serializer<StartFileScanOKStatusEnum> get serializer => _$startFileScanOKStatusEnumSerializer;
+  static Serializer<StartFileScanOKStatusEnum> get serializer =>
+      _$startFileScanOKStatusEnumSerializer;
 
-  const StartFileScanOKStatusEnum._(String name): super(name);
+  const StartFileScanOKStatusEnum._(String name) : super(name);
 
-  static BuiltSet<StartFileScanOKStatusEnum> get values => _$startFileScanOKStatusEnumValues;
-  static StartFileScanOKStatusEnum valueOf(String name) => _$startFileScanOKStatusEnumValueOf(name);
+  static BuiltSet<StartFileScanOKStatusEnum> get values =>
+      _$startFileScanOKStatusEnumValues;
+  static StartFileScanOKStatusEnum valueOf(String name) =>
+      _$startFileScanOKStatusEnumValueOf(name);
 }
-

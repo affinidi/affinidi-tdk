@@ -31,6 +31,8 @@ docs/SignCredentialsDm2SdJwtInputDto.md
 docs/SignCredentialsDm2SdJwtResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignPresentationLdpInputDto.md
+docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
@@ -91,6 +93,8 @@ src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialsDm2SdJwtInpu
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialsDm2SdJwtResultDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignJwtToken.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignJwtTokenOK.java
+src/main/java/com/affinidi/tdk/wallets/client/models/SignPresentationLdpInputDto.java
+src/main/java/com/affinidi/tdk/wallets/client/models/SignPresentationLdpResultDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SigningFailedError.java
 src/main/java/com/affinidi/tdk/wallets/client/models/UpdateWalletInput.java
 src/main/java/com/affinidi/tdk/wallets/client/models/WalletDto.java

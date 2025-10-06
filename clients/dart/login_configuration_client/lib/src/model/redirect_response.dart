@@ -15,7 +15,8 @@ part 'redirect_response.g.dart';
 /// * [type] - type
 /// * [to] - URL to redirect to
 @BuiltValue()
-abstract class RedirectResponse implements Built<RedirectResponse, RedirectResponseBuilder> {
+abstract class RedirectResponse
+    implements Built<RedirectResponse, RedirectResponseBuilder> {
   /// type
   @BuiltValueField(wireName: r'type')
   RedirectResponseTypeEnum get type;
@@ -27,16 +28,19 @@ abstract class RedirectResponse implements Built<RedirectResponse, RedirectRespo
 
   RedirectResponse._();
 
-  factory RedirectResponse([void updates(RedirectResponseBuilder b)]) = _$RedirectResponse;
+  factory RedirectResponse([void updates(RedirectResponseBuilder b)]) =
+      _$RedirectResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RedirectResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RedirectResponse> get serializer => _$RedirectResponseSerializer();
+  static Serializer<RedirectResponse> get serializer =>
+      _$RedirectResponseSerializer();
 }
 
-class _$RedirectResponseSerializer implements PrimitiveSerializer<RedirectResponse> {
+class _$RedirectResponseSerializer
+    implements PrimitiveSerializer<RedirectResponse> {
   @override
   final Iterable<Type> types = const [RedirectResponse, _$RedirectResponse];
 
@@ -66,7 +70,9 @@ class _$RedirectResponseSerializer implements PrimitiveSerializer<RedirectRespon
     RedirectResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,16 +131,18 @@ class _$RedirectResponseSerializer implements PrimitiveSerializer<RedirectRespon
 }
 
 class RedirectResponseTypeEnum extends EnumClass {
-
   /// type
   @BuiltValueEnumConst(wireName: r'REDIRECT_RESPONSE')
-  static const RedirectResponseTypeEnum REDIRECT_RESPONSE = _$redirectResponseTypeEnum_REDIRECT_RESPONSE;
+  static const RedirectResponseTypeEnum REDIRECT_RESPONSE =
+      _$redirectResponseTypeEnum_REDIRECT_RESPONSE;
 
-  static Serializer<RedirectResponseTypeEnum> get serializer => _$redirectResponseTypeEnumSerializer;
+  static Serializer<RedirectResponseTypeEnum> get serializer =>
+      _$redirectResponseTypeEnumSerializer;
 
-  const RedirectResponseTypeEnum._(String name): super(name);
+  const RedirectResponseTypeEnum._(String name) : super(name);
 
-  static BuiltSet<RedirectResponseTypeEnum> get values => _$redirectResponseTypeEnumValues;
-  static RedirectResponseTypeEnum valueOf(String name) => _$redirectResponseTypeEnumValueOf(name);
+  static BuiltSet<RedirectResponseTypeEnum> get values =>
+      _$redirectResponseTypeEnumValues;
+  static RedirectResponseTypeEnum valueOf(String name) =>
+      _$redirectResponseTypeEnumValueOf(name);
 }
-

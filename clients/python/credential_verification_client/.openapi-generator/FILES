@@ -1,6 +1,5 @@
 .github/workflows/python.yml
 .gitignore
-.gitlab-ci.yml
 README.md
 README.md
 affinidi_tdk_credential_verification_client/__init__.py
@@ -13,8 +12,6 @@ affinidi_tdk_credential_verification_client/exceptions.py
 affinidi_tdk_credential_verification_client/models/__init__.py
 affinidi_tdk_credential_verification_client/models/constraints.py
 affinidi_tdk_credential_verification_client/models/constraints_statuses.py
-affinidi_tdk_credential_verification_client/models/credential_requirements.py
-affinidi_tdk_credential_verification_client/models/credential_requirements_constraints.py
 affinidi_tdk_credential_verification_client/models/descriptor.py
 affinidi_tdk_credential_verification_client/models/error.py
 affinidi_tdk_credential_verification_client/models/error_detail.py
@@ -43,14 +40,13 @@ affinidi_tdk_credential_verification_client/models/verify_credential_output.py
 affinidi_tdk_credential_verification_client/models/verify_credential_v2_input.py
 affinidi_tdk_credential_verification_client/models/verify_presentation_input.py
 affinidi_tdk_credential_verification_client/models/verify_presentation_output.py
+affinidi_tdk_credential_verification_client/models/verify_presentation_v2_input.py
 affinidi_tdk_credential_verification_client/models/w3c_credential_status.py
 affinidi_tdk_credential_verification_client/models/w3c_proof.py
 affinidi_tdk_credential_verification_client/py.typed
 affinidi_tdk_credential_verification_client/rest.py
 docs/Constraints.md
 docs/ConstraintsStatuses.md
-docs/CredentialRequirements.md
-docs/CredentialRequirementsConstraints.md
 docs/DefaultApi.md
 docs/Descriptor.md
 docs/Error.md
@@ -80,6 +76,7 @@ docs/VerifyCredentialOutput.md
 docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
+docs/VerifyPresentationV2Input.md
 docs/W3cCredentialStatus.md
 docs/W3cProof.md
 project.json
