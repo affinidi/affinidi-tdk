@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 import '../common/client_options.dart';
 
 class DidcommMediatorClient extends MediatorClient {
+  final AuthorizationProvider authorizationProvider;
   final DidManager didManager;
   final ClientOptions clientOptions;
 
@@ -17,6 +18,7 @@ class DidcommMediatorClient extends MediatorClient {
     required super.keyPair,
     required super.didKeyId,
     required super.signer,
+    required this.authorizationProvider,
     required this.didManager,
     required this.clientOptions,
     super.forwardMessageOptions,
@@ -25,7 +27,6 @@ class DidcommMediatorClient extends MediatorClient {
 
   Future<PlainTextMessage> waitForMessage({
     required String threadId,
-    required String accessToken,
   }) async {
     final completer = Completer<PlainTextMessage>();
     _pendingRequests[threadId] = completer;
@@ -33,48 +34,8 @@ class DidcommMediatorClient extends MediatorClient {
     return completer.future.timeout(clientOptions.requestTimeout);
   }
 
-  Future<StreamSubscription> listenForIncomingMessagesAndFetchMissing(
-    void Function(Map<String, dynamic>) onMessage, {
-    Function? onError,
-    void Function({int? closeCode, String? closeReason})? onDone,
-    bool? cancelOnError,
-    String? accessToken,
-  }) async {
-    final controller = StreamController<Map<String, dynamic>>();
-
-    final mediatorSubscription = await listenForIncomingMessages(
-      controller.add,
-      onError: onError,
-      onDone: onDone,
-      cancelOnError: cancelOnError,
-      accessToken: accessToken,
-    );
-
-    controller.onPause = mediatorSubscription.pause;
-    controller.onResume = mediatorSubscription.resume;
-    controller.onCancel = mediatorSubscription.cancel;
-
-    final controllerSubscription = controller.stream.listen(onMessage);
-
-    // we need to return subscription ASAP so we fetch missing messages on background
-    unawaited(
-      fetchMessagesStartingFrom(
-        accessToken: accessToken,
-      ).then((messages) {
-        for (final message in messages) {
-          controller.add(message);
-        }
-      }).catchError((Object error) async {
-        controller.addError(error);
-      }),
-    );
-
-    return controllerSubscription;
-  }
-
   Future<void> packAndSendMessage({
     required PlainTextMessage message,
-    required String accessToken,
   }) async {
     if (message.to == null) {
       throw ArgumentError.notNull('message.to');
@@ -134,15 +95,14 @@ class DidcommMediatorClient extends MediatorClient {
 
     await sendMessage(
       forwardMessage,
-      accessToken: accessToken,
     );
   }
 
-  Future<void> connect({
-    required String accessToken,
+  // TODO: run it by default in the constructor
+  void linkRequestsAndResponses({
     required DidDocument serviceDidDocument,
-  }) async {
-    await listenForIncomingMessages(
+  }) {
+    listenForIncomingMessages(
       (message) async {
         final unpackedMessage = await DidcommMessage.unpackToPlainTextMessage(
           message: message,
@@ -162,10 +122,7 @@ class DidcommMediatorClient extends MediatorClient {
           return;
         }
 
-        final messageType = unpackedMessage.type.toString();
-
-        if (messageType ==
-            'https://didcomm.org/report-problem/2.0/problem-report') {
+        if (unpackedMessage.type == ProblemReportMessage.messageType) {
           _handleProblemReport(unpackedMessage);
           return;
         }
@@ -196,8 +153,6 @@ class DidcommMediatorClient extends MediatorClient {
         }
         _pendingRequests.clear();
       },
-      accessToken: accessToken,
-      cancelOnError: false,
     );
   }
 

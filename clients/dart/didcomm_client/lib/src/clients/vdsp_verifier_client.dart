@@ -43,7 +43,6 @@ class VdspVerifierClient extends DidcommBaseClient {
   Future<QueryMessage> queryHolderFeatures({
     required String holderDid,
     required List<Query> featureQueries,
-    required String accessToken,
   }) async {
     final message = QueryMessage(
       id: const Uuid().v4(),
@@ -56,7 +55,6 @@ class VdspVerifierClient extends DidcommBaseClient {
 
     await mediatorClient.packAndSendMessage(
       message: message,
-      accessToken: accessToken,
     );
 
     return message;
@@ -70,7 +68,6 @@ class VdspVerifierClient extends DidcommBaseClient {
     String responseFormat = 'application/json',
     VdspQueryDataProofContext? proofContext,
     String? comment,
-    required String accessToken,
   }) async {
     final message = VdspQueryDataMessage(
       id: const Uuid().v4(),
@@ -88,7 +85,6 @@ class VdspVerifierClient extends DidcommBaseClient {
 
     await mediatorClient.packAndSendMessage(
       message: message,
-      accessToken: accessToken,
     );
 
     return message;
@@ -98,7 +94,6 @@ class VdspVerifierClient extends DidcommBaseClient {
     required String holderDid,
     String? operation,
     required Map<String, dynamic> result,
-    required String accessToken,
   }) async {
     final message = VdspDataProcessingResultMessage(
       id: const Uuid().v4(),
@@ -112,13 +107,12 @@ class VdspVerifierClient extends DidcommBaseClient {
 
     await mediatorClient.packAndSendMessage(
       message: message,
-      accessToken: accessToken,
     );
 
     return message;
   }
 
-  Future<StreamSubscription> listenForIncomingMessages({
+  StreamSubscription listenForIncomingMessages({
     void Function(DiscloseMessage)? onDiscloseMessage,
     required void Function(
       VdspDataResponseMessage,
@@ -129,11 +123,8 @@ class VdspVerifierClient extends DidcommBaseClient {
     Function? onError,
     void Function({int? closeCode, String? closeReason})? onDone,
     bool? cancelOnError,
-    String? accessToken,
-    // TODO: refresh connection
-    String? refreshToken,
-  }) async {
-    return await mediatorClient.listenForIncomingMessagesAndFetchMissing(
+  }) {
+    return mediatorClient.listenForIncomingMessages(
       (message) async {
         final unpacked = await DidcommMessage.unpackToPlainTextMessage(
           message: message,
@@ -226,7 +217,6 @@ class VdspVerifierClient extends DidcommBaseClient {
       onError: onError,
       onDone: onDone,
       cancelOnError: cancelOnError,
-      accessToken: accessToken,
     );
   }
 }

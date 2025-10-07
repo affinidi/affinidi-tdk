@@ -40,17 +40,15 @@ Future<void> main() async {
     didManager: senderDidManager,
   );
 
-  final authTokens = await atlasClient.authenticate();
-  await atlasClient.connect(accessToken: authTokens.accessToken);
+  atlasClient.linkRequestsAndResponses();
+  await ConnectionPool.instance.startConnections();
 
-  final existingInstances = await atlasClient.getMediatorInstancesList(
-    accessToken: authTokens.accessToken,
-  );
+  final existingInstances = await atlasClient.getMediatorInstancesList();
 
   prettyPrint(
     'mediators',
     object: existingInstances,
   );
 
-  await atlasClient.mediatorClient.disconnect();
+  await ConnectionPool.instance.stopConnections();
 }

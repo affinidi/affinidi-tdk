@@ -40,14 +40,12 @@ Future<void> main() async {
     didManager: senderDidManager,
   );
 
-  var authTokens = await atlasClient.authenticate();
-  await atlasClient.connect(accessToken: authTokens.accessToken);
+  atlasClient.linkRequestsAndResponses();
+  await ConnectionPool.instance.startConnections();
 
   prettyPrint('Checking if there are deployed mediators...');
 
-  final existingInstances = await atlasClient.getMediatorInstancesList(
-    accessToken: authTokens.accessToken,
-  );
+  final existingInstances = await atlasClient.getMediatorInstancesList();
 
   if (existingInstances.instances.isNotEmpty) {
     prettyPrint('Cleaning previously deployed mediators...');
@@ -55,7 +53,6 @@ Future<void> main() async {
 
     for (final instance in existingInstances.instances) {
       final destroyResponse = await atlasClient.destroyMediatorInstance(
-        accessToken: authTokens.accessToken,
         mediatorId: instance.id,
       );
 
@@ -71,7 +68,6 @@ Future<void> main() async {
       atlasClient: atlasClient,
       firstTimeout: const Duration(minutes: 10),
       logMessage: 'destroying...',
-      authTokens: authTokens,
     );
 
     prettyPrint(
@@ -83,11 +79,7 @@ Future<void> main() async {
 
   final deploymentStart = DateTime.now();
 
-  authTokens = await atlasClient.authenticate();
-  await atlasClient.connect(accessToken: authTokens.accessToken);
-
   final deploymentResponse = await atlasClient.deployMediatorInstance(
-    accessToken: authTokens.accessToken,
     deploymentData: DeployMediatorInstanceRequest(
       serviceSize: 'tiny',
       mediatorAclMode: 'explicit_deny',
@@ -111,16 +103,14 @@ Future<void> main() async {
     atlasClient: atlasClient,
     firstTimeout: const Duration(minutes: 5),
     logMessage: 'deploying...',
-    authTokens: authTokens,
   );
 
   prettyPrint(
     'Deploying mediator completed in ${DateTime.now().difference(deploymentStart).inMinutes} minutes.',
   );
 
-  final deployedMediatorsResponse = await atlasClient.getMediatorInstancesList(
-    accessToken: authTokens.accessToken,
-  );
+  final deployedMediatorsResponse =
+      await atlasClient.getMediatorInstancesList();
 
   prettyPrint(
     'Get mediators response',
@@ -130,11 +120,7 @@ Future<void> main() async {
   prettyPrint('Destroying deployed mediator instance...');
   final destroyingStart = DateTime.now();
 
-  authTokens = await atlasClient.authenticate();
-  await atlasClient.connect(accessToken: authTokens.accessToken);
-
   final destroyResponse = await atlasClient.destroyMediatorInstance(
-    accessToken: authTokens.accessToken,
     mediatorId: deployedMediator.mediatorId,
   );
 
@@ -149,14 +135,13 @@ Future<void> main() async {
     atlasClient: atlasClient,
     firstTimeout: const Duration(minutes: 10),
     logMessage: 'destroying...',
-    authTokens: authTokens,
   );
 
   prettyPrint(
     'Destroying mediator completed in ${DateTime.now().difference(destroyingStart).inMinutes} minutes.',
   );
 
-  await atlasClient.mediatorClient.disconnect();
+  await ConnectionPool.instance.stopConnections();
 }
 
 Future<void> _waitUntilMediators({
@@ -164,7 +149,6 @@ Future<void> _waitUntilMediators({
   required DidcommAtlasClient atlasClient,
   required Duration firstTimeout,
   required String logMessage,
-  required AuthenticationTokens authTokens,
 }) async {
   final timeout = const Duration(seconds: 10);
   var attemptsLeft = 100;
@@ -177,9 +161,7 @@ Future<void> _waitUntilMediators({
     prettyPrint(logMessage);
     await Future<void>.delayed(timeout);
 
-    list = await atlasClient.getMediatorInstancesList(
-      accessToken: authTokens.accessToken,
-    );
+    list = await atlasClient.getMediatorInstancesList();
 
     if (--attemptsLeft == 0) {
       throw Exception('Reached the max number of attempts');
