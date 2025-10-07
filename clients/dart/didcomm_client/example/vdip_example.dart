@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_holder_client.dart';
+import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_issuer_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
@@ -10,6 +12,17 @@ import 'package:ssi/ssi.dart';
 import '../../../../tests/integration/dart/test/test_config.dart';
 
 Future<void> main() async {
+  // 1. Holder queries Issuer features
+  // 2. Issuer replies with features it supports
+  // 3. Holder requests MusicStreaming VC from Issuer
+  // 4. Verifier starts VDSP flow
+  //  4.1. Verifier queries Holder features
+  //  4.2. Holder replies with features it supports
+  //  4.3. Verifier requests email VC from Holder
+  //  4.4. Holder shares email VC with Verifier
+  // 5. Issuer issues MusicStreaming VC and sends it to Holder
+  // 6. Holder receives MusicStreaming VC
+
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'didcomm_client',
   );
@@ -17,43 +30,30 @@ Future<void> main() async {
   final issuerKeyStore = InMemoryKeyStore();
   final issuerWallet = PersistentWallet(issuerKeyStore);
 
-  final issuerKeyPair = await issuerWallet.generateKey();
-
   final issuerDidManager = DidKeyManager(
     wallet: issuerWallet,
     store: InMemoryDidStore(),
   );
 
-  await issuerDidManager.addVerificationMethod(issuerKeyPair.id);
+  final issuerKeyId = 'issuer-key-1';
 
-  final issuerDidDocument = await issuerDidManager.getDidDocument();
-  final issuerSigner = await issuerDidManager.getSigner(
-    issuerDidDocument.assertionMethod.first.id,
-  );
-
-  final verifierKeyStore = InMemoryKeyStore();
-  final verifierWallet = PersistentWallet(verifierKeyStore);
-
-  final verifierDidManager = DidKeyManager(
-    wallet: verifierWallet,
-    store: InMemoryDidStore(),
-  );
-
-  final verifierKeyId = 'verifier-key-1';
-
-  final verifierPrivateKeyBytes = await extractPrivateKeyBytes(
+  final issuerPrivateKeyBytes = await extractPrivateKeyBytes(
     config.alicePrivateKeyPath,
   );
 
-  await verifierKeyStore.set(
-    verifierKeyId,
+  await issuerKeyStore.set(
+    issuerKeyId,
     StoredKey(
       keyType: KeyType.p256,
-      privateKeyBytes: verifierPrivateKeyBytes,
+      privateKeyBytes: issuerPrivateKeyBytes,
     ),
   );
 
-  await verifierDidManager.addVerificationMethod(verifierKeyId);
+  await issuerDidManager.addVerificationMethod(issuerKeyId);
+
+  final issuerSigner = await issuerDidManager.getSigner(
+    issuerDidManager.assertionMethod.first,
+  );
 
   final holderKeyStore = InMemoryKeyStore();
   final holderWallet = PersistentWallet(holderKeyStore);
@@ -133,13 +133,8 @@ Future<void> main() async {
     ]
   };
 
-  // verifier
-
-  final verifierClient = await VdspVerifierClient.init(
-    didManager: verifierDidManager,
-  );
-
   final featureQueries = [
+    // TODO: add vdip features
     ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
       FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
     ),
@@ -149,12 +144,138 @@ Future<void> main() async {
     ),
   ];
 
-  await verifierClient.queryHolderFeatures(
-    holderDid: (await holderDidManager.getDidDocument()).id,
+  // holder
+  final vdipHolderClient = await VdipHolderClient.init(
+    didManager: holderDidManager,
+  );
+
+  final vdspHolderClient = await VdspHolderClient.init(
+    didManager: holderDidManager,
+    featureDisclosures: [
+      ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+      Disclosure(
+        featureType: FeatureType.operation.value,
+        id: 'registerAgent',
+      ),
+    ],
+  );
+
+  await vdipHolderClient.queryIssuerFeatures(
+    issuerDid: issuerSigner.did,
     featureQueries: featureQueries,
   );
 
-  verifierClient.listenForIncomingMessages(
+  vdipHolderClient.listenForIncomingMessages(
+    onDiscloseMessage: (message) async {
+      prettyPrint(
+        'Holder received Feature Query Message',
+        object: message,
+      );
+
+      await vdipHolderClient.requestCredentials(
+        issuerDid: issuerSigner.did,
+        credentialFormat: '',
+        credentialTypes: [],
+      );
+    },
+    onCredentialsIssuanceResponse: (message) async {
+      prettyPrint(
+        'Holder received Credentials Issuance Response Message',
+        object: message,
+      );
+
+      await ConnectionPool.instance.stopConnections();
+    },
+    onProblemReport: (message) {
+      prettyPrint(
+        'A problem has occurred',
+        object: message,
+      );
+    },
+  );
+
+  vdspHolderClient.listenForIncomingMessages(
+    onFeatureQuery: (message) async {
+      prettyPrint(
+        'Holder received Feature Query Message',
+        object: message,
+      );
+
+      await vdspHolderClient.disclose(
+        queryMessage: message,
+      );
+    },
+    onDataRequest: (message) async {
+      prettyPrint(
+        'Holder received Data Request Message',
+        object: message,
+      );
+
+      final credentialsToShare =
+          await vdspHolderClient.filterVerifiableCredentials(
+        requestMessage: message,
+        verifiableCredentials: holderVerifiableCredentials,
+      );
+
+      await vdspHolderClient.shareData(
+        requestMessage: message,
+        verifiableCredentials: credentialsToShare,
+        verifiablePresentationSigner: holderSigner,
+      );
+    },
+    onDataProcessingResult: (message) async {
+      prettyPrint(
+        'Holder received Data Processing Result Message',
+        object: message,
+      );
+
+      await ConnectionPool.instance.stopConnections();
+    },
+    onProblemReport: (message) {
+      prettyPrint(
+        'A problem has occurred',
+        object: message,
+      );
+    },
+  );
+
+  // verifier
+
+  final issuerVdipClient = await VdipIssuerClient.init(
+    didManager: issuerDidManager,
+  );
+
+  final vdspIssuerClient = await VdspVerifierClient.init(
+    didManager: issuerDidManager,
+  );
+
+  issuerVdipClient.listenForIncomingMessages(
+    onFeatureQuery: (message) {
+      prettyPrint(
+        'Issuer received Feature Query Message',
+        object: message,
+      );
+    },
+    onRequestToIssueCredentials: (message) async {
+      prettyPrint(
+        'Issuer received Request to Issue Credentials Message',
+        object: message,
+      );
+
+      await vdspIssuerClient.queryHolderFeatures(
+        holderDid: (await holderDidManager.getDidDocument()).id,
+        featureQueries: featureQueries,
+      );
+    },
+    onProblemReport: (message) {
+      prettyPrint(
+        'A problem has occurred',
+        object: message,
+      );
+    },
+  );
+
+  vdspIssuerClient.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
       prettyPrint(
         'Verifier received Disclose Message',
@@ -192,7 +313,7 @@ Future<void> main() async {
         );
       }
 
-      await verifierClient.queryHolderData(
+      await vdspIssuerClient.queryHolderData(
         holderDid: holderDid,
         query: verifierDsql,
         operation: 'registerAgent',
@@ -227,70 +348,12 @@ Future<void> main() async {
         throw ArgumentError.notNull('from');
       }
 
-      await verifierClient.sendDataProcessingResult(
+      final issuedCredentials = <ParsedVerifiableCredential>[];
+
+      await issuerVdipClient.sendIssuedCredentials(
         holderDid: message.from!,
-        result: {'success': true},
+        verifiableCredentials: issuedCredentials,
       );
-    },
-    onProblemReport: (message) {
-      prettyPrint(
-        'A problem has occurred',
-        object: message,
-      );
-    },
-  );
-
-  // holder
-
-  final holderClient = await VdspHolderClient.init(
-    didManager: holderDidManager,
-    featureDisclosures: [
-      ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
-      Disclosure(
-        featureType: FeatureType.operation.value,
-        id: 'registerAgent',
-      ),
-    ],
-  );
-
-  holderClient.listenForIncomingMessages(
-    onFeatureQuery: (message) async {
-      prettyPrint(
-        'Holder received Feature Query Message',
-        object: message,
-      );
-
-      // is trusted verifier
-      // if (message.from == verifierDid) {
-      await holderClient.disclose(
-        queryMessage: message,
-      );
-      // }
-    },
-    onDataRequest: (message) async {
-      prettyPrint(
-        'Holder received Data Request Message',
-        object: message,
-      );
-
-      final credentialsToShare = await holderClient.filterVerifiableCredentials(
-        requestMessage: message,
-        verifiableCredentials: holderVerifiableCredentials,
-      );
-
-      await holderClient.shareData(
-        requestMessage: message,
-        verifiableCredentials: credentialsToShare,
-        verifiablePresentationSigner: holderSigner,
-      );
-    },
-    onDataProcessingResult: (message) async {
-      prettyPrint(
-        'Holder received Data Processing Result Message',
-        object: message,
-      );
-
-      await ConnectionPool.instance.stopConnections();
     },
     onProblemReport: (message) {
       prettyPrint(

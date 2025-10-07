@@ -43,6 +43,10 @@ extension DidManagerExtention on DidManager {
       keyPair: keyPair,
       didKeyId: matchedDidKeyIds.first,
       signer: signer,
+      authorizationProvider: await AffinidiAuthorizationProvider.init(
+        didManager: this,
+        mediatorDidDocument: mediatorDidDocument,
+      ),
       forwardMessageOptions: const ForwardMessageOptions(
         shouldSign: true,
         shouldEncrypt: true,

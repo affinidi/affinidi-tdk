@@ -16,18 +16,15 @@ abstract class DidcommServiceClient extends DidcommBaseClient {
   });
 
   Future<PlainTextMessage> sendServiceMessage(
-    PlainTextMessage requestMessage, {
-    required String accessToken,
-  }) async {
+    PlainTextMessage requestMessage,
+  ) async {
     final responseMessageFuture = mediatorClient.waitForMessage(
       threadId: requestMessage.id,
-      accessToken: accessToken,
     );
 
     await sendMessage(
       requestMessage,
       recipientDidDocument: serviceDidDocument,
-      accessToken: accessToken,
     );
 
     return await responseMessageFuture;
