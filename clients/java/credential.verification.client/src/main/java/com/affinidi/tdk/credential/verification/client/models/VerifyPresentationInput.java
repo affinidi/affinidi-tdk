@@ -34,6 +34,7 @@ import java.util.StringJoiner;
   VerifyPresentationInput.JSON_PROPERTY_SIGNED_PRESENTATION,
   VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_DEFINITION,
   VerifyPresentationInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+  VerifyPresentationInput.JSON_PROPERTY_DCQL_QUERY,
   VerifyPresentationInput.JSON_PROPERTY_CHALLENGE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -53,6 +54,10 @@ public class VerifyPresentationInput {
   public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
   @javax.annotation.Nullable
   private Object presentationSubmission;
+
+  public static final String JSON_PROPERTY_DCQL_QUERY = "dcqlQuery";
+  @javax.annotation.Nullable
+  private Object dcqlQuery;
 
   public static final String JSON_PROPERTY_CHALLENGE = "challenge";
   @javax.annotation.Nullable
@@ -161,6 +166,31 @@ public class VerifyPresentationInput {
     this.presentationSubmission = presentationSubmission;
   }
 
+  public VerifyPresentationInput dcqlQuery(@javax.annotation.Nullable Object dcqlQuery) {
+    
+    this.dcqlQuery = dcqlQuery;
+    return this;
+  }
+
+  /**
+   * Get dcqlQuery
+   * @return dcqlQuery
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Object getDcqlQuery() {
+    return dcqlQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDcqlQuery(@javax.annotation.Nullable Object dcqlQuery) {
+    this.dcqlQuery = dcqlQuery;
+  }
+
   public VerifyPresentationInput challenge(@javax.annotation.Nullable String challenge) {
     
     this.challenge = challenge;
@@ -199,12 +229,13 @@ public class VerifyPresentationInput {
         Objects.equals(this.signedPresentation, verifyPresentationInput.signedPresentation) &&
         Objects.equals(this.presentationDefinition, verifyPresentationInput.presentationDefinition) &&
         Objects.equals(this.presentationSubmission, verifyPresentationInput.presentationSubmission) &&
+        Objects.equals(this.dcqlQuery, verifyPresentationInput.dcqlQuery) &&
         Objects.equals(this.challenge, verifyPresentationInput.challenge);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verifiablePresentation, signedPresentation, presentationDefinition, presentationSubmission, challenge);
+    return Objects.hash(verifiablePresentation, signedPresentation, presentationDefinition, presentationSubmission, dcqlQuery, challenge);
   }
 
   @Override
@@ -215,6 +246,7 @@ public class VerifyPresentationInput {
     sb.append("    signedPresentation: ").append(toIndentedString(signedPresentation)).append("\n");
     sb.append("    presentationDefinition: ").append(toIndentedString(presentationDefinition)).append("\n");
     sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
+    sb.append("    dcqlQuery: ").append(toIndentedString(dcqlQuery)).append("\n");
     sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -297,6 +329,16 @@ public class VerifyPresentationInput {
     if (getPresentationSubmission() != null) {
       try {
         joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `dcqlQuery` to the URL query string
+    if (getDcqlQuery() != null) {
+      try {
+        joiner.add(String.format("%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

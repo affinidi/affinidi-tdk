@@ -20,9 +20,9 @@ part 'wallet_dto.g.dart';
 /// * [description] - The description of the wallet
 /// * [didDocument] - did document of the wallet
 /// * [ari] - ARI of the wallet
-/// * [keys] 
-/// * [createdAt] 
-/// * [modifiedAt] 
+/// * [keys]
+/// * [createdAt]
+/// * [modifiedAt]
 @BuiltValue()
 abstract class WalletDto implements Built<WalletDto, WalletDtoBuilder> {
   /// id of the wallet in uuidV4 format
@@ -127,7 +127,8 @@ class _$WalletDtoSerializer implements PrimitiveSerializer<WalletDto> {
       yield r'keys';
       yield serializers.serialize(
         object.keys,
-        specifiedType: const FullType(BuiltList, [FullType(WalletDtoKeysInner)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(WalletDtoKeysInner)]),
       );
     }
     if (object.createdAt != null) {
@@ -152,7 +153,9 @@ class _$WalletDtoSerializer implements PrimitiveSerializer<WalletDto> {
     WalletDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -212,7 +215,8 @@ class _$WalletDtoSerializer implements PrimitiveSerializer<WalletDto> {
         case r'keys':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(WalletDtoKeysInner)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(WalletDtoKeysInner)]),
           ) as BuiltList<WalletDtoKeysInner>;
           result.keys.replace(valueDes);
           break;
@@ -258,4 +262,3 @@ class _$WalletDtoSerializer implements PrimitiveSerializer<WalletDto> {
     return result.build();
   }
 }
-

@@ -13,13 +13,16 @@ part 'invalid_vp_token_creation_time_error.g.dart';
 /// InvalidVPTokenCreationTimeError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InvalidVPTokenCreationTimeError implements Built<InvalidVPTokenCreationTimeError, InvalidVPTokenCreationTimeErrorBuilder> {
+abstract class InvalidVPTokenCreationTimeError
+    implements
+        Built<InvalidVPTokenCreationTimeError,
+            InvalidVPTokenCreationTimeErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   InvalidVPTokenCreationTimeErrorNameEnum get name;
   // enum nameEnum {  InvalidVPTokenCreationTimeError,  };
@@ -40,18 +43,25 @@ abstract class InvalidVPTokenCreationTimeError implements Built<InvalidVPTokenCr
 
   InvalidVPTokenCreationTimeError._();
 
-  factory InvalidVPTokenCreationTimeError([void updates(InvalidVPTokenCreationTimeErrorBuilder b)]) = _$InvalidVPTokenCreationTimeError;
+  factory InvalidVPTokenCreationTimeError(
+          [void updates(InvalidVPTokenCreationTimeErrorBuilder b)]) =
+      _$InvalidVPTokenCreationTimeError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InvalidVPTokenCreationTimeErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InvalidVPTokenCreationTimeError> get serializer => _$InvalidVPTokenCreationTimeErrorSerializer();
+  static Serializer<InvalidVPTokenCreationTimeError> get serializer =>
+      _$InvalidVPTokenCreationTimeErrorSerializer();
 }
 
-class _$InvalidVPTokenCreationTimeErrorSerializer implements PrimitiveSerializer<InvalidVPTokenCreationTimeError> {
+class _$InvalidVPTokenCreationTimeErrorSerializer
+    implements PrimitiveSerializer<InvalidVPTokenCreationTimeError> {
   @override
-  final Iterable<Type> types = const [InvalidVPTokenCreationTimeError, _$InvalidVPTokenCreationTimeError];
+  final Iterable<Type> types = const [
+    InvalidVPTokenCreationTimeError,
+    _$InvalidVPTokenCreationTimeError
+  ];
 
   @override
   final String wireName = r'InvalidVPTokenCreationTimeError';
@@ -74,7 +84,8 @@ class _$InvalidVPTokenCreationTimeErrorSerializer implements PrimitiveSerializer
     yield r'httpStatusCode';
     yield serializers.serialize(
       object.httpStatusCode,
-      specifiedType: const FullType(InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum),
+      specifiedType:
+          const FullType(InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum),
     );
     yield r'traceId';
     yield serializers.serialize(
@@ -85,7 +96,8 @@ class _$InvalidVPTokenCreationTimeErrorSerializer implements PrimitiveSerializer
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +108,9 @@ class _$InvalidVPTokenCreationTimeErrorSerializer implements PrimitiveSerializer
     InvalidVPTokenCreationTimeError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -114,21 +128,24 @@ class _$InvalidVPTokenCreationTimeErrorSerializer implements PrimitiveSerializer
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InvalidVPTokenCreationTimeErrorNameEnum),
+            specifiedType:
+                const FullType(InvalidVPTokenCreationTimeErrorNameEnum),
           ) as InvalidVPTokenCreationTimeErrorNameEnum;
           result.name = valueDes;
           break;
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InvalidVPTokenCreationTimeErrorMessageEnum),
+            specifiedType:
+                const FullType(InvalidVPTokenCreationTimeErrorMessageEnum),
           ) as InvalidVPTokenCreationTimeErrorMessageEnum;
           result.message = valueDes;
           break;
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum),
+            specifiedType: const FullType(
+                InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum),
           ) as InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +159,8 @@ class _$InvalidVPTokenCreationTimeErrorSerializer implements PrimitiveSerializer
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +194,53 @@ class _$InvalidVPTokenCreationTimeErrorSerializer implements PrimitiveSerializer
 }
 
 class InvalidVPTokenCreationTimeErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidVPTokenCreationTimeError')
-  static const InvalidVPTokenCreationTimeErrorNameEnum invalidVPTokenCreationTimeError = _$invalidVPTokenCreationTimeErrorNameEnum_invalidVPTokenCreationTimeError;
+  static const InvalidVPTokenCreationTimeErrorNameEnum
+      invalidVPTokenCreationTimeError =
+      _$invalidVPTokenCreationTimeErrorNameEnum_invalidVPTokenCreationTimeError;
 
-  static Serializer<InvalidVPTokenCreationTimeErrorNameEnum> get serializer => _$invalidVPTokenCreationTimeErrorNameEnumSerializer;
+  static Serializer<InvalidVPTokenCreationTimeErrorNameEnum> get serializer =>
+      _$invalidVPTokenCreationTimeErrorNameEnumSerializer;
 
-  const InvalidVPTokenCreationTimeErrorNameEnum._(String name): super(name);
+  const InvalidVPTokenCreationTimeErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidVPTokenCreationTimeErrorNameEnum> get values => _$invalidVPTokenCreationTimeErrorNameEnumValues;
-  static InvalidVPTokenCreationTimeErrorNameEnum valueOf(String name) => _$invalidVPTokenCreationTimeErrorNameEnumValueOf(name);
+  static BuiltSet<InvalidVPTokenCreationTimeErrorNameEnum> get values =>
+      _$invalidVPTokenCreationTimeErrorNameEnumValues;
+  static InvalidVPTokenCreationTimeErrorNameEnum valueOf(String name) =>
+      _$invalidVPTokenCreationTimeErrorNameEnumValueOf(name);
 }
 
 class InvalidVPTokenCreationTimeErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'VP token has expired')
-  static const InvalidVPTokenCreationTimeErrorMessageEnum vPTokenHasExpired = _$invalidVPTokenCreationTimeErrorMessageEnum_vPTokenHasExpired;
+  static const InvalidVPTokenCreationTimeErrorMessageEnum vPTokenHasExpired =
+      _$invalidVPTokenCreationTimeErrorMessageEnum_vPTokenHasExpired;
 
-  static Serializer<InvalidVPTokenCreationTimeErrorMessageEnum> get serializer => _$invalidVPTokenCreationTimeErrorMessageEnumSerializer;
+  static Serializer<InvalidVPTokenCreationTimeErrorMessageEnum>
+      get serializer => _$invalidVPTokenCreationTimeErrorMessageEnumSerializer;
 
-  const InvalidVPTokenCreationTimeErrorMessageEnum._(String name): super(name);
+  const InvalidVPTokenCreationTimeErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidVPTokenCreationTimeErrorMessageEnum> get values => _$invalidVPTokenCreationTimeErrorMessageEnumValues;
-  static InvalidVPTokenCreationTimeErrorMessageEnum valueOf(String name) => _$invalidVPTokenCreationTimeErrorMessageEnumValueOf(name);
+  static BuiltSet<InvalidVPTokenCreationTimeErrorMessageEnum> get values =>
+      _$invalidVPTokenCreationTimeErrorMessageEnumValues;
+  static InvalidVPTokenCreationTimeErrorMessageEnum valueOf(String name) =>
+      _$invalidVPTokenCreationTimeErrorMessageEnumValueOf(name);
 }
 
 class InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum number400 = _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnum_number400;
+  static const InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum number400 =
+      _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum> get serializer => _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumSerializer;
+  static Serializer<InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum>
+      get serializer =>
+          _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumSerializer;
 
-  const InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum._(String name): super(name);
+  const InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum> get values => _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumValues;
-  static InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum valueOf(String name) => _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum>
+      get values => _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumValues;
+  static InvalidVPTokenCreationTimeErrorHttpStatusCodeEnum valueOf(
+          String name) =>
+      _$invalidVPTokenCreationTimeErrorHttpStatusCodeEnumValueOf(name);
 }
-

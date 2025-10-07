@@ -1,10 +1,10 @@
-# affinidi_tdk_wallets_client (EXPERIMENTAL)
+# affinidi_tdk_wallets_client
 
 Affinidi TDK dart client for Affinidi WALLETS
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -115,6 +115,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialsDm2SdJwtResultDto](doc/SignCredentialsDm2SdJwtResultDto.md)
 - [SignJwtToken](doc/SignJwtToken.md)
 - [SignJwtTokenOK](doc/SignJwtTokenOK.md)
+- [SignPresentationLdpInputDto](doc/SignPresentationLdpInputDto.md)
+- [SignPresentationLdpResultDto](doc/SignPresentationLdpResultDto.md)
 - [SigningFailedError](doc/SigningFailedError.md)
 - [UpdateWalletInput](doc/UpdateWalletInput.md)
 - [WalletDto](doc/WalletDto.md)

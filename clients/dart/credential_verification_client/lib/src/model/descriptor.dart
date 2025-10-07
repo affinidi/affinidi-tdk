@@ -12,10 +12,10 @@ part 'descriptor.g.dart';
 /// Descriptor
 ///
 /// Properties:
-/// * [id] 
-/// * [path] 
-/// * [pathNested] 
-/// * [format] 
+/// * [id]
+/// * [path]
+/// * [pathNested]
+/// * [format]
 @BuiltValue()
 abstract class Descriptor implements Built<Descriptor, DescriptorBuilder> {
   @BuiltValueField(wireName: r'id')
@@ -83,7 +83,9 @@ class _$DescriptorSerializer implements PrimitiveSerializer<Descriptor> {
     Descriptor object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -154,4 +156,3 @@ class _$DescriptorSerializer implements PrimitiveSerializer<Descriptor> {
     return result.build();
   }
 }
-
