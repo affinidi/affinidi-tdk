@@ -200,7 +200,15 @@ class VdspVerifierClient extends DidcommBaseClient {
                 null,
               );
             }
+
+            return;
           }
+
+          onDataResponse(
+            responseMessage,
+            false,
+            null,
+          );
 
           return;
         }
