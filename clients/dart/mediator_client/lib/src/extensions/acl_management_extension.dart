@@ -92,20 +92,16 @@ extension AffinidiAclManagementExtension on MediatorClient {
       mediatorServiceType: DidDocumentServiceType.didCommMessaging,
     );
 
-    // TODO: remove internal in DIDComm
     final messageToSend = await packMessage(
       message,
       messageOptions: forwardMessageOptions,
     );
 
-    final headers =
-        accessToken != null ? {'Authorization': 'Bearer $accessToken'} : null;
-
     try {
       await dio.post<Map<String, dynamic>>(
         '/inbound',
         data: messageToSend,
-        options: Options(headers: headers),
+        options: Options(headers: await getAuthorizationHeaders()),
       );
 
       return messageToSend;

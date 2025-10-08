@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_atm_client/atm_client.dart';
+import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
@@ -42,15 +42,11 @@ Future<void> main() async {
 
     group('dummy group', () {
       test('dummy test', () async {
-        final sut = await AtmAtlasClient.init(
+        final sut = await DidcommAtlasClient.init(
           didManager: didManager,
         );
 
-        final authTokens = await sut.authenticate();
-
-        final actual = await sut.getMediatorInstancesList(
-          accessToken: authTokens.accessToken,
-        );
+        final actual = await sut.getMediatorInstancesList();
 
         expect(actual.instances, isNotNull);
       });

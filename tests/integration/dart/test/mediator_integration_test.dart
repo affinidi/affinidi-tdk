@@ -23,13 +23,11 @@ void main() async {
     late DidManager aliceDidManager;
     late DidDocument aliceDidDocument;
     late MediatorClient aliceMediatorClient;
-    late AuthenticationTokens aliceTokens;
 
     late PersistentWallet bobWallet;
     late DidManager bobDidManager;
     late DidDocument bobDidDocument;
     late MediatorClient bobMediatorClient;
-    late AuthenticationTokens bobTokens;
 
     late DidDocument bobMediatorDocument;
 
@@ -108,30 +106,13 @@ void main() async {
             await readDid(config.mediatorDidPath),
           );
 
-          // find keys whose curve is common in the mediator DID Document
-          final aliceMatchedDidKeyIds =
-              aliceDidDocument.matchKeysInKeyAgreement(
-            otherDidDocuments: [
-              bobMediatorDocument,
-            ],
-          );
-
-          // find keys whose curve is common in the mediator DID Document
-          final bobMatchedDidKeyIds = bobDidDocument.matchKeysInKeyAgreement(
-            otherDidDocuments: [
-              bobMediatorDocument,
-            ],
-          );
-
-          aliceMediatorClient = MediatorClient(
+          aliceMediatorClient = await MediatorClient.init(
+            authorizationProvider: await AffinidiAuthorizationProvider.init(
+              didManager: aliceDidManager,
+              mediatorDidDocument: bobMediatorDocument,
+            ),
+            didManager: aliceDidManager,
             mediatorDidDocument: bobMediatorDocument,
-            keyPair: await aliceDidManager.getKeyPairByDidKeyId(
-              aliceMatchedDidKeyIds.first,
-            ),
-            didKeyId: aliceMatchedDidKeyIds.first,
-            signer: await aliceDidManager.getSigner(
-              aliceDidDocument.authentication.first.id,
-            ),
             forwardMessageOptions: const ForwardMessageOptions(
               shouldSign: true,
               shouldEncrypt: true,
@@ -140,15 +121,13 @@ void main() async {
             ),
           );
 
-          bobMediatorClient = MediatorClient(
+          bobMediatorClient = await MediatorClient.init(
+            authorizationProvider: await AffinidiAuthorizationProvider.init(
+              didManager: bobDidManager,
+              mediatorDidDocument: bobMediatorDocument,
+            ),
+            didManager: bobDidManager,
             mediatorDidDocument: bobMediatorDocument,
-            keyPair: await bobDidManager.getKeyPairByDidKeyId(
-              bobMatchedDidKeyIds.first,
-            ),
-            didKeyId: bobMatchedDidKeyIds.first,
-            signer: await bobDidManager.getSigner(
-              bobDidDocument.authentication.first.id,
-            ),
             webSocketOptions: const WebSocketOptions(
               liveDeliveryChangeMessageOptions:
                   LiveDeliveryChangeMessageOptions(
@@ -167,9 +146,6 @@ void main() async {
               ),
             ),
           );
-
-          aliceTokens = await aliceMediatorClient.authenticate();
-          bobTokens = await bobMediatorClient.authenticate();
         });
 
         test('REST API works correctly', () async {
@@ -220,17 +196,9 @@ void main() async {
 
           await aliceMediatorClient.sendMessage(
             forwardMessage,
-            accessToken: aliceTokens.accessToken,
           );
 
-          final messageIds = await bobMediatorClient.listInboxMessageIds(
-            accessToken: bobTokens.accessToken,
-          );
-
-          final messages = await bobMediatorClient.fetchMessages(
-            messageIds: messageIds,
-            accessToken: bobTokens.accessToken,
-          );
+          final messages = await bobMediatorClient.fetchMessages();
 
           expect(messages.isNotEmpty, isTrue);
 
@@ -318,7 +286,7 @@ void main() async {
 
             final completer = Completer<void>();
 
-            await bobMediatorClient.listenForIncomingMessages(
+            bobMediatorClient.listenForIncomingMessages(
               (message) async {
                 final encryptedMessage = EncryptedMessage.fromJson(message);
                 final senderDid = const JweHeaderConverter()
@@ -354,21 +322,22 @@ void main() async {
 
                 if (actualBodyContent == expectedBodyContent &&
                     telemetryMessageReceived == true) {
-                  await bobMediatorClient.disconnect();
+                  await ConnectionPool.instance.stopConnections();
                   completer.complete();
                 }
               },
               onError: (Object error) => prettyPrint('error', object: error),
-              accessToken: bobTokens.accessToken,
               cancelOnError: false,
             );
 
+            await ConnectionPool.instance.startConnections();
+
             await aliceMediatorClient.sendMessage(
               forwardMessage,
-              accessToken: aliceTokens.accessToken,
             );
 
             await completer.future;
+            await ConnectionPool.instance.stopConnections();
 
             expect(actualBodyContent, expectedBodyContent);
             expect(telemetryMessageReceived, isTrue);

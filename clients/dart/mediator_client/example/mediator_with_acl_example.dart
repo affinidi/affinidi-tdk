@@ -64,10 +64,6 @@ void main() async {
 
   prettyPrint('Bob Mediator Document', object: bobMediatorDocument);
 
-  final bobSigner = await bobDidManager.getSigner(
-    bobDidDocument.assertionMethod.first.id,
-  );
-
   final alicePlainTextMassage = PlainTextMessage(
     id: const Uuid().v4(),
     from: aliceDidDocument.id,
@@ -121,18 +117,14 @@ void main() async {
     object: forwardMessage,
   );
 
-  final aliceMatchedKeyIds = aliceDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [bobMediatorDocument],
-  );
-
   // Alice is going to use Bob's Mediator to send him a message
-  final aliceMediatorClient = MediatorClient(
-    mediatorDidDocument: bobMediatorDocument,
-    keyPair: await aliceDidManager.getKeyPairByDidKeyId(
-      aliceMatchedKeyIds.first,
+  final aliceMediatorClient = await MediatorClient.init(
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      didManager: aliceDidManager,
+      mediatorDidDocument: bobMediatorDocument,
     ),
-    didKeyId: aliceMatchedKeyIds.first,
-    signer: aliceSigner,
+    didManager: aliceDidManager,
+    mediatorDidDocument: bobMediatorDocument,
     forwardMessageOptions: const ForwardMessageOptions(
       shouldSign: true,
       shouldEncrypt: true,
@@ -141,16 +133,12 @@ void main() async {
     ),
   );
 
-  // authenticate method is not direct part of mediatorClient, but it is extension method
-  // this method is need for mediators, that require authentication like an Affinidi mediator
-  final aliceTokens = await aliceMediatorClient.authenticate();
-
   // Alice shall not send a message
   try {
     await aliceMediatorClient.sendMessage(
       forwardMessage,
-      accessToken: aliceTokens.accessToken,
     );
+
     throw Exception(
         'No error, Alice did send a message, are we using a mediator with explicit allow per DID?');
   } on MediatorClientException catch (e) {
@@ -163,20 +151,13 @@ void main() async {
     throw Exception('Unexpected error occurred: $e');
   }
 
-  final bobMatchedDidKeyIds = bobDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [
-      bobMediatorDocument,
-      // bob only sends messages to the mediator, so we don't need to match keys with Alice's DID Document
-    ],
-  );
-
-  final bobMediatorClient = MediatorClient(
-    mediatorDidDocument: bobMediatorDocument,
-    keyPair: await bobDidManager.getKeyPairByDidKeyId(
-      bobMatchedDidKeyIds.first,
+  final bobMediatorClient = await MediatorClient.init(
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      didManager: bobDidManager,
+      mediatorDidDocument: bobMediatorDocument,
     ),
-    didKeyId: bobMatchedDidKeyIds.first,
-    signer: bobSigner,
+    didManager: bobDidManager,
+    mediatorDidDocument: bobMediatorDocument,
     forwardMessageOptions: const ForwardMessageOptions(
       shouldSign: true,
       shouldEncrypt: true,
@@ -184,8 +165,6 @@ void main() async {
       encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
     ),
   );
-
-  final bobTokens = await bobMediatorClient.authenticate();
 
   // Bob needs to add Alice's DID to their ACL...
   final bobAccessListAddMessage = AccessListAddMessage(
@@ -201,7 +180,6 @@ void main() async {
   final bobAccessListAddSentMessage =
       await bobMediatorClient.sendAclManagementMessage(
     bobAccessListAddMessage,
-    accessToken: bobTokens.accessToken,
   );
 
   prettyPrint(
@@ -212,21 +190,13 @@ void main() async {
   // ...only then Alice can send a message
   final sentMessage = await aliceMediatorClient.sendMessage(
     forwardMessage,
-    accessToken: aliceTokens.accessToken,
   );
 
   prettyPrint('Encrypted and Signed Forward Message', object: sentMessage);
-
   prettyPrint('Bob is fetching messages...');
 
-  final messageIds = await bobMediatorClient.listInboxMessageIds(
-    accessToken: bobTokens.accessToken,
-  );
-
   final messages = await bobMediatorClient.fetchMessages(
-    messageIds: messageIds,
     deleteOnMediator: true,
-    accessToken: bobTokens.accessToken,
   );
 
   for (final message in messages) {

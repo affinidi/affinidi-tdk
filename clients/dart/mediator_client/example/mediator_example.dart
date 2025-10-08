@@ -83,10 +83,6 @@ void main() async {
     await readDid(config.mediatorDidPath),
   );
 
-  final bobSigner = await bobDidManager.getSigner(
-    bobDidDocument.assertionMethod.first.id,
-  );
-
   final alicePlainTextMassage = PlainTextMessage(
     id: const Uuid().v4(),
     from: aliceDidDocument.id,
@@ -142,20 +138,14 @@ void main() async {
     object: forwardMessage,
   );
 
-  final aliceMatchedKeyIds = aliceDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [
-      bobMediatorDocument,
-    ],
-  );
-
   // Alice is going to use Bob's Mediator to send him a message
-  final aliceMediatorClient = MediatorClient(
-    mediatorDidDocument: bobMediatorDocument,
-    keyPair: await aliceDidManager.getKeyPairByDidKeyId(
-      aliceMatchedKeyIds.first,
+  final aliceMediatorClient = await MediatorClient.init(
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      didManager: aliceDidManager,
+      mediatorDidDocument: bobMediatorDocument,
     ),
-    didKeyId: aliceMatchedKeyIds.first,
-    signer: aliceSigner,
+    didManager: aliceDidManager,
+    mediatorDidDocument: bobMediatorDocument,
     forwardMessageOptions: const ForwardMessageOptions(
       shouldSign: true,
       shouldEncrypt: true,
@@ -164,31 +154,17 @@ void main() async {
     ),
   );
 
-  // authenticate method is not direct part of mediatorClient, but it is extension method
-  // this method is need for mediators, that require authentication like an Affinidi mediator
-  final aliceTokens = await aliceMediatorClient.authenticate();
-
-  final bobMatchedDidKeyIds = bobDidDocument.matchKeysInKeyAgreement(
-    otherDidDocuments: [
-      bobMediatorDocument,
-      // bob only sends messages to the mediator, so we don't need to match keys with Alice's DID Document
-    ],
-  );
-
-  final bobMediatorClient = MediatorClient(
-    mediatorDidDocument: bobMediatorDocument,
-    keyPair: await bobDidManager.getKeyPairByDidKeyId(
-      bobMatchedDidKeyIds.first,
+  final bobMediatorClient = await MediatorClient.init(
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      didManager: bobDidManager,
+      mediatorDidDocument: bobMediatorDocument,
     ),
-    didKeyId: bobMatchedDidKeyIds.first,
-    signer: bobSigner,
+    didManager: bobDidManager,
+    mediatorDidDocument: bobMediatorDocument,
   );
-
-  final bobTokens = await bobMediatorClient.authenticate();
 
   final sentMessage = await aliceMediatorClient.sendMessage(
     forwardMessage,
-    accessToken: aliceTokens.accessToken,
   );
 
   prettyPrint(
@@ -198,14 +174,7 @@ void main() async {
 
   prettyPrint('Bob is fetching messages...');
 
-  final messageIds = await bobMediatorClient.listInboxMessageIds(
-    accessToken: bobTokens.accessToken,
-  );
-
-  final messages = await bobMediatorClient.fetchMessages(
-    messageIds: messageIds,
-    accessToken: bobTokens.accessToken,
-  );
+  final messages = await bobMediatorClient.fetchMessages();
 
   for (final message in messages) {
     final originalPlainTextMessageFromAlice =

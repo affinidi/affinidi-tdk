@@ -28,8 +28,8 @@ dev_dependencies:
     path: ../../../clients/dart/login_configuration_client
   affinidi_tdk_mediator_client:
     path: ../../../clients/dart/mediator_client
-  affinidi_tdk_atm_client:
-    path: ../../../clients/dart/atm_client
+  affinidi_tdk_didcomm_client:
+    path: ../../../clients/dart/didcomm_client
   dotenv: ^4.2.0
   lints: ^5.0.0
   test: ^1.24.0
@@ -44,6 +44,8 @@ dev_dependencies:
   jwt_decode: ^0.3.1
 dependencies:
   collection: ^1.19.1
-  didcomm: ^1.0.3
+  didcomm:
+    git:
+      url: git@github.com:affinidi/affinidi-didcomm-dart.git
+      ref: breaking-change/connection-pool
   path: ^1.9.1
-  retry: ^3.1.2
