@@ -409,6 +409,31 @@ export interface CorsIotaExchangeCredentialsOK {
 /**
  *
  * @export
+ * @interface CreateDcqlQueryInput
+ */
+export interface CreateDcqlQueryInput {
+  /**
+   * The name of the DCQL query to quickly identify the query.
+   * @type {string}
+   * @memberof CreateDcqlQueryInput
+   */
+  name: string
+  /**
+   * The DCQL query describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
+   * @type {string}
+   * @memberof CreateDcqlQueryInput
+   */
+  dcqlQuery: string
+  /**
+   * An optional description of what the query is used for.
+   * @type {string}
+   * @memberof CreateDcqlQueryInput
+   */
+  description?: string
+}
+/**
+ *
+ * @export
  * @interface CreateIotaConfigurationInput
  */
 export interface CreateIotaConfigurationInput {
@@ -461,7 +486,7 @@ export interface CreateIotaConfigurationInput {
    */
   clientMetadata: IotaConfigurationDtoClientMetadata
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof CreateIotaConfigurationInput
    */
@@ -483,6 +508,7 @@ export interface CreateIotaConfigurationInput {
 export const CreateIotaConfigurationInputModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type CreateIotaConfigurationInputModeEnum =
@@ -512,6 +538,49 @@ export interface CreatePexQueryInput {
    * @memberof CreatePexQueryInput
    */
   description?: string
+}
+/**
+ *
+ * @export
+ * @interface DcqlQueryDto
+ */
+export interface DcqlQueryDto {
+  /**
+   * The unique resource identifier of the qeuery.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  ari: string
+  /**
+   * The ID of the query.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  queryId: string
+  /**
+   * The name of the DCQL query to quickly identify the query.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  name: string
+  /**
+   * An optional description of what the query is used for.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  description: string
+  /**
+   * The unique resource identifier of the related configuration where the query is defined.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  configurationAri: string
+  /**
+   * The DCQL query describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  dcqlQuery: string
 }
 /**
  *
@@ -563,8 +632,6 @@ export interface FetchIOTAVPResponseInput {
  * @interface FetchIOTAVPResponseOK
  */
 export interface FetchIOTAVPResponseOK {
-  [key: string]: any
-
   /**
    * A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
    * @type {string}
@@ -652,7 +719,13 @@ export interface InitiateDataSharingRequestInput {
    */
   configurationId: string
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * User did to send the initiating request to. Only required if mode is didcomm
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  userDid?: string
+  /**
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof InitiateDataSharingRequestInput
    */
@@ -662,6 +735,7 @@ export interface InitiateDataSharingRequestInput {
 export const InitiateDataSharingRequestInputModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type InitiateDataSharingRequestInputModeEnum =
@@ -860,7 +934,7 @@ export interface IotaConfigurationDto {
    */
   clientMetadata: IotaConfigurationDtoClientMetadata
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof IotaConfigurationDto
    */
@@ -882,6 +956,7 @@ export interface IotaConfigurationDto {
 export const IotaConfigurationDtoModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type IotaConfigurationDtoModeEnum =
@@ -987,6 +1062,25 @@ export interface ListConfigurationOK {
    * @memberof ListConfigurationOK
    */
   configurations: Array<IotaConfigurationDto>
+}
+/**
+ *
+ * @export
+ * @interface ListDcqlQueriesOK
+ */
+export interface ListDcqlQueriesOK {
+  /**
+   *
+   * @type {Array<DcqlQueryDto>}
+   * @memberof ListDcqlQueriesOK
+   */
+  dcqlQueries: Array<DcqlQueryDto>
+  /**
+   *
+   * @type {string}
+   * @memberof ListDcqlQueriesOK
+   */
+  lastEvaluatedKey?: string
 }
 /**
  *
@@ -1459,7 +1553,7 @@ export interface UpdateConfigurationByIdInput {
    */
   clientMetadata?: IotaConfigurationDtoClientMetadata
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof UpdateConfigurationByIdInput
    */
@@ -1481,6 +1575,7 @@ export interface UpdateConfigurationByIdInput {
 export const UpdateConfigurationByIdInputModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type UpdateConfigurationByIdInputModeEnum =
@@ -1498,6 +1593,25 @@ export interface UpdateConfigurationByIdOK {
    * @memberof UpdateConfigurationByIdOK
    */
   updateConfigurationByIdOk?: string
+}
+/**
+ *
+ * @export
+ * @interface UpdateDcqlQueryInput
+ */
+export interface UpdateDcqlQueryInput {
+  /**
+   * The DCQL query describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
+   * @type {string}
+   * @memberof UpdateDcqlQueryInput
+   */
+  dcqlQuery?: string
+  /**
+   * An optional description of what the query is used for.
+   * @type {string}
+   * @memberof UpdateDcqlQueryInput
+   */
+  description?: string
 }
 /**
  *

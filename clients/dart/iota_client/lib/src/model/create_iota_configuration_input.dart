@@ -20,12 +20,15 @@ part 'create_iota_configuration_input.g.dart';
 /// * [enableVerification] - Cryptographically verifies the data shared by the user when enabled.
 /// * [enableConsentAuditLog] - Records the user's consent when they share their data, including the type of data shared when enabled.
 /// * [tokenMaxAge] - This is the lifetime of the signed request token during the data-sharing flow.
-/// * [clientMetadata] 
-/// * [mode] - Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+/// * [clientMetadata]
+/// * [mode] - Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
 /// * [redirectUris] - List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
 /// * [enableIdvProviders] - Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
 @BuiltValue()
-abstract class CreateIotaConfigurationInput implements Built<CreateIotaConfigurationInput, CreateIotaConfigurationInputBuilder> {
+abstract class CreateIotaConfigurationInput
+    implements
+        Built<CreateIotaConfigurationInput,
+            CreateIotaConfigurationInputBuilder> {
   /// The name of the configuration to quickly identify the resource.
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -57,10 +60,10 @@ abstract class CreateIotaConfigurationInput implements Built<CreateIotaConfigura
   @BuiltValueField(wireName: r'clientMetadata')
   IotaConfigurationDtoClientMetadata get clientMetadata;
 
-  /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+  /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
   @BuiltValueField(wireName: r'mode')
   CreateIotaConfigurationInputModeEnum? get mode;
-  // enum modeEnum {  redirect,  websocket,  };
+  // enum modeEnum {  redirect,  websocket,  didcomm,  };
 
   /// List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
   @BuiltValueField(wireName: r'redirectUris')
@@ -72,19 +75,26 @@ abstract class CreateIotaConfigurationInput implements Built<CreateIotaConfigura
 
   CreateIotaConfigurationInput._();
 
-  factory CreateIotaConfigurationInput([void updates(CreateIotaConfigurationInputBuilder b)]) = _$CreateIotaConfigurationInput;
+  factory CreateIotaConfigurationInput(
+          [void updates(CreateIotaConfigurationInputBuilder b)]) =
+      _$CreateIotaConfigurationInput;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CreateIotaConfigurationInputBuilder b) => b
-      ..mode = const CreateIotaConfigurationInputModeEnum._('websocket');
+  static void _defaults(CreateIotaConfigurationInputBuilder b) =>
+      b..mode = const CreateIotaConfigurationInputModeEnum._('websocket');
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateIotaConfigurationInput> get serializer => _$CreateIotaConfigurationInputSerializer();
+  static Serializer<CreateIotaConfigurationInput> get serializer =>
+      _$CreateIotaConfigurationInputSerializer();
 }
 
-class _$CreateIotaConfigurationInputSerializer implements PrimitiveSerializer<CreateIotaConfigurationInput> {
+class _$CreateIotaConfigurationInputSerializer
+    implements PrimitiveSerializer<CreateIotaConfigurationInput> {
   @override
-  final Iterable<Type> types = const [CreateIotaConfigurationInput, _$CreateIotaConfigurationInput];
+  final Iterable<Type> types = const [
+    CreateIotaConfigurationInput,
+    _$CreateIotaConfigurationInput
+  ];
 
   @override
   final String wireName = r'CreateIotaConfigurationInput';
@@ -169,7 +179,9 @@ class _$CreateIotaConfigurationInputSerializer implements PrimitiveSerializer<Cr
     CreateIotaConfigurationInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -291,19 +303,28 @@ class _$CreateIotaConfigurationInputSerializer implements PrimitiveSerializer<Cr
 }
 
 class CreateIotaConfigurationInputModeEnum extends EnumClass {
-
-  /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+  /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
   @BuiltValueEnumConst(wireName: r'redirect')
-  static const CreateIotaConfigurationInputModeEnum redirect = _$createIotaConfigurationInputModeEnum_redirect;
-  /// Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+  static const CreateIotaConfigurationInputModeEnum redirect =
+      _$createIotaConfigurationInputModeEnum_redirect;
+
+  /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
   @BuiltValueEnumConst(wireName: r'websocket')
-  static const CreateIotaConfigurationInputModeEnum websocket = _$createIotaConfigurationInputModeEnum_websocket;
+  static const CreateIotaConfigurationInputModeEnum websocket =
+      _$createIotaConfigurationInputModeEnum_websocket;
 
-  static Serializer<CreateIotaConfigurationInputModeEnum> get serializer => _$createIotaConfigurationInputModeEnumSerializer;
+  /// Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
+  @BuiltValueEnumConst(wireName: r'didcomm')
+  static const CreateIotaConfigurationInputModeEnum didcomm =
+      _$createIotaConfigurationInputModeEnum_didcomm;
 
-  const CreateIotaConfigurationInputModeEnum._(String name): super(name);
+  static Serializer<CreateIotaConfigurationInputModeEnum> get serializer =>
+      _$createIotaConfigurationInputModeEnumSerializer;
 
-  static BuiltSet<CreateIotaConfigurationInputModeEnum> get values => _$createIotaConfigurationInputModeEnumValues;
-  static CreateIotaConfigurationInputModeEnum valueOf(String name) => _$createIotaConfigurationInputModeEnumValueOf(name);
+  const CreateIotaConfigurationInputModeEnum._(String name) : super(name);
+
+  static BuiltSet<CreateIotaConfigurationInputModeEnum> get values =>
+      _$createIotaConfigurationInputModeEnumValues;
+  static CreateIotaConfigurationInputModeEnum valueOf(String name) =>
+      _$createIotaConfigurationInputModeEnumValueOf(name);
 }
-

@@ -18,7 +18,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 ## createChildNode
 
-> CreateNodeOK createChildNode(createNodeInput, parentNodeId)
+> CreateNodeOK createChildNode(nodeId, createChildNodeInput)
 
 creates child node
 
@@ -45,10 +45,10 @@ public class Example {
         //ConsumerTokenAuth.setApiKeyPrefix("Token");
 
         NodesApi apiInstance = new NodesApi(defaultClient);
-        CreateNodeInput createNodeInput = new CreateNodeInput(); // CreateNodeInput | CreateNode
-        String parentNodeId = "parentNodeId_example"; // String | parent node id
+        String nodeId = "nodeId_example"; // String | parent node id
+        CreateChildNodeInput createChildNodeInput = new CreateChildNodeInput(); // CreateChildNodeInput | CreateChildNode
         try {
-            CreateNodeOK result = apiInstance.createChildNode(createNodeInput, parentNodeId);
+            CreateNodeOK result = apiInstance.createChildNode(nodeId, createChildNodeInput);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling NodesApi#createChildNode");
@@ -63,10 +63,10 @@ public class Example {
 
 ### Parameters
 
-| Name                | Type                                      | Description    | Notes      |
-| ------------------- | ----------------------------------------- | -------------- | ---------- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode     |            |
-| **parentNodeId**    | **String**                                | parent node id | [optional] |
+| Name                     | Type                                                | Description     | Notes |
+| ------------------------ | --------------------------------------------------- | --------------- | ----- |
+| **nodeId**               | **String**                                          | parent node id  |       |
+| **createChildNodeInput** | [**CreateChildNodeInput**](CreateChildNodeInput.md) | CreateChildNode |       |
 
 ### Return type
 

@@ -11,26 +11,35 @@ part 'cors_list_root_node_children_ok.g.dart';
 /// CorsListRootNodeChildrenOK
 ///
 /// Properties:
-/// * [corsListRootNodeChildrenOk] 
+/// * [corsListRootNodeChildrenOk]
 @BuiltValue()
-abstract class CorsListRootNodeChildrenOK implements Built<CorsListRootNodeChildrenOK, CorsListRootNodeChildrenOKBuilder> {
+abstract class CorsListRootNodeChildrenOK
+    implements
+        Built<CorsListRootNodeChildrenOK, CorsListRootNodeChildrenOKBuilder> {
   @BuiltValueField(wireName: r'corsListRootNodeChildrenOk')
   String? get corsListRootNodeChildrenOk;
 
   CorsListRootNodeChildrenOK._();
 
-  factory CorsListRootNodeChildrenOK([void updates(CorsListRootNodeChildrenOKBuilder b)]) = _$CorsListRootNodeChildrenOK;
+  factory CorsListRootNodeChildrenOK(
+          [void updates(CorsListRootNodeChildrenOKBuilder b)]) =
+      _$CorsListRootNodeChildrenOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsListRootNodeChildrenOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsListRootNodeChildrenOK> get serializer => _$CorsListRootNodeChildrenOKSerializer();
+  static Serializer<CorsListRootNodeChildrenOK> get serializer =>
+      _$CorsListRootNodeChildrenOKSerializer();
 }
 
-class _$CorsListRootNodeChildrenOKSerializer implements PrimitiveSerializer<CorsListRootNodeChildrenOK> {
+class _$CorsListRootNodeChildrenOKSerializer
+    implements PrimitiveSerializer<CorsListRootNodeChildrenOK> {
   @override
-  final Iterable<Type> types = const [CorsListRootNodeChildrenOK, _$CorsListRootNodeChildrenOK];
+  final Iterable<Type> types = const [
+    CorsListRootNodeChildrenOK,
+    _$CorsListRootNodeChildrenOK
+  ];
 
   @override
   final String wireName = r'CorsListRootNodeChildrenOK';
@@ -55,7 +64,9 @@ class _$CorsListRootNodeChildrenOKSerializer implements PrimitiveSerializer<Cors
     CorsListRootNodeChildrenOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +116,3 @@ class _$CorsListRootNodeChildrenOKSerializer implements PrimitiveSerializer<Cors
     return result.build();
   }
 }
-

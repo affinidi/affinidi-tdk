@@ -32,14 +32,15 @@ class InitiateDataSharingRequestInput(BaseModel):
     nonce: StrictStr = Field(default=..., description="A randomly generated value that is added in the request and response to prevent replay attacks.")
     redirect_uri: StrictStr = Field(default=..., alias="redirectUri", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
     configuration_id: StrictStr = Field(default=..., alias="configurationId", description="ID of the Affinidi Iota Framework configuration.")
-    mode: StrictStr = Field(default=..., description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
-    __properties = ["queryId", "correlationId", "tokenMaxAge", "nonce", "redirectUri", "configurationId", "mode"]
+    user_did: Optional[StrictStr] = Field(default=None, alias="userDid", description="User did to send the initiating request to. Only required if mode is didcomm")
+    mode: StrictStr = Field(default=..., description="Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.")
+    __properties = ["queryId", "correlationId", "tokenMaxAge", "nonce", "redirectUri", "configurationId", "userDid", "mode"]
 
     @validator('mode')
     def mode_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in ('redirect', 'websocket',):
-            raise ValueError("must be one of enum values ('redirect', 'websocket')")
+        if value not in ('redirect', 'websocket', 'didcomm',):
+            raise ValueError("must be one of enum values ('redirect', 'websocket', 'didcomm')")
         return value
 
     class Config:
@@ -84,6 +85,7 @@ class InitiateDataSharingRequestInput(BaseModel):
             "nonce": obj.get("nonce"),
             "redirect_uri": obj.get("redirectUri"),
             "configuration_id": obj.get("configurationId"),
+            "user_did": obj.get("userDid"),
             "mode": obj.get("mode")
         })
         return _obj

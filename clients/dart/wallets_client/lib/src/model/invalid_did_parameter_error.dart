@@ -13,13 +13,15 @@ part 'invalid_did_parameter_error.g.dart';
 /// InvalidDidParameterError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InvalidDidParameterError implements Built<InvalidDidParameterError, InvalidDidParameterErrorBuilder> {
+abstract class InvalidDidParameterError
+    implements
+        Built<InvalidDidParameterError, InvalidDidParameterErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   InvalidDidParameterErrorNameEnum get name;
   // enum nameEnum {  InvalidDidParameterError,  };
@@ -40,18 +42,25 @@ abstract class InvalidDidParameterError implements Built<InvalidDidParameterErro
 
   InvalidDidParameterError._();
 
-  factory InvalidDidParameterError([void updates(InvalidDidParameterErrorBuilder b)]) = _$InvalidDidParameterError;
+  factory InvalidDidParameterError(
+          [void updates(InvalidDidParameterErrorBuilder b)]) =
+      _$InvalidDidParameterError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InvalidDidParameterErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InvalidDidParameterError> get serializer => _$InvalidDidParameterErrorSerializer();
+  static Serializer<InvalidDidParameterError> get serializer =>
+      _$InvalidDidParameterErrorSerializer();
 }
 
-class _$InvalidDidParameterErrorSerializer implements PrimitiveSerializer<InvalidDidParameterError> {
+class _$InvalidDidParameterErrorSerializer
+    implements PrimitiveSerializer<InvalidDidParameterError> {
   @override
-  final Iterable<Type> types = const [InvalidDidParameterError, _$InvalidDidParameterError];
+  final Iterable<Type> types = const [
+    InvalidDidParameterError,
+    _$InvalidDidParameterError
+  ];
 
   @override
   final String wireName = r'InvalidDidParameterError';
@@ -85,7 +94,8 @@ class _$InvalidDidParameterErrorSerializer implements PrimitiveSerializer<Invali
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
       );
     }
   }
@@ -96,7 +106,9 @@ class _$InvalidDidParameterErrorSerializer implements PrimitiveSerializer<Invali
     InvalidDidParameterError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +140,8 @@ class _$InvalidDidParameterErrorSerializer implements PrimitiveSerializer<Invali
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InvalidDidParameterErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(InvalidDidParameterErrorHttpStatusCodeEnum),
           ) as InvalidDidParameterErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +155,8 @@ class _$InvalidDidParameterErrorSerializer implements PrimitiveSerializer<Invali
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
           ) as BuiltList<ServiceErrorResponseDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +190,52 @@ class _$InvalidDidParameterErrorSerializer implements PrimitiveSerializer<Invali
 }
 
 class InvalidDidParameterErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidDidParameterError')
-  static const InvalidDidParameterErrorNameEnum invalidDidParameterError = _$invalidDidParameterErrorNameEnum_invalidDidParameterError;
+  static const InvalidDidParameterErrorNameEnum invalidDidParameterError =
+      _$invalidDidParameterErrorNameEnum_invalidDidParameterError;
 
-  static Serializer<InvalidDidParameterErrorNameEnum> get serializer => _$invalidDidParameterErrorNameEnumSerializer;
+  static Serializer<InvalidDidParameterErrorNameEnum> get serializer =>
+      _$invalidDidParameterErrorNameEnumSerializer;
 
-  const InvalidDidParameterErrorNameEnum._(String name): super(name);
+  const InvalidDidParameterErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidDidParameterErrorNameEnum> get values => _$invalidDidParameterErrorNameEnumValues;
-  static InvalidDidParameterErrorNameEnum valueOf(String name) => _$invalidDidParameterErrorNameEnumValueOf(name);
+  static BuiltSet<InvalidDidParameterErrorNameEnum> get values =>
+      _$invalidDidParameterErrorNameEnumValues;
+  static InvalidDidParameterErrorNameEnum valueOf(String name) =>
+      _$invalidDidParameterErrorNameEnumValueOf(name);
 }
 
 class InvalidDidParameterErrorMessageEnum extends EnumClass {
+  @BuiltValueEnumConst(
+      wireName:
+          r'Given did in field toDid is invalid. Use only resolvable form of did.')
+  static const InvalidDidParameterErrorMessageEnum
+      givenDidInFieldToDidIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod =
+      _$invalidDidParameterErrorMessageEnum_givenDidInFieldToDidIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod;
 
-  @BuiltValueEnumConst(wireName: r'Given did in field toDid is invalid. Use only resolvable form of did.')
-  static const InvalidDidParameterErrorMessageEnum givenDidInFieldToDidIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod = _$invalidDidParameterErrorMessageEnum_givenDidInFieldToDidIsInvalidPeriodUseOnlyResolvableFormOfDidPeriod;
+  static Serializer<InvalidDidParameterErrorMessageEnum> get serializer =>
+      _$invalidDidParameterErrorMessageEnumSerializer;
 
-  static Serializer<InvalidDidParameterErrorMessageEnum> get serializer => _$invalidDidParameterErrorMessageEnumSerializer;
+  const InvalidDidParameterErrorMessageEnum._(String name) : super(name);
 
-  const InvalidDidParameterErrorMessageEnum._(String name): super(name);
-
-  static BuiltSet<InvalidDidParameterErrorMessageEnum> get values => _$invalidDidParameterErrorMessageEnumValues;
-  static InvalidDidParameterErrorMessageEnum valueOf(String name) => _$invalidDidParameterErrorMessageEnumValueOf(name);
+  static BuiltSet<InvalidDidParameterErrorMessageEnum> get values =>
+      _$invalidDidParameterErrorMessageEnumValues;
+  static InvalidDidParameterErrorMessageEnum valueOf(String name) =>
+      _$invalidDidParameterErrorMessageEnumValueOf(name);
 }
 
 class InvalidDidParameterErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const InvalidDidParameterErrorHttpStatusCodeEnum number400 = _$invalidDidParameterErrorHttpStatusCodeEnum_number400;
+  static const InvalidDidParameterErrorHttpStatusCodeEnum number400 =
+      _$invalidDidParameterErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<InvalidDidParameterErrorHttpStatusCodeEnum> get serializer => _$invalidDidParameterErrorHttpStatusCodeEnumSerializer;
+  static Serializer<InvalidDidParameterErrorHttpStatusCodeEnum>
+      get serializer => _$invalidDidParameterErrorHttpStatusCodeEnumSerializer;
 
-  const InvalidDidParameterErrorHttpStatusCodeEnum._(String name): super(name);
+  const InvalidDidParameterErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidDidParameterErrorHttpStatusCodeEnum> get values => _$invalidDidParameterErrorHttpStatusCodeEnumValues;
-  static InvalidDidParameterErrorHttpStatusCodeEnum valueOf(String name) => _$invalidDidParameterErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InvalidDidParameterErrorHttpStatusCodeEnum> get values =>
+      _$invalidDidParameterErrorHttpStatusCodeEnumValues;
+  static InvalidDidParameterErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$invalidDidParameterErrorHttpStatusCodeEnumValueOf(name);
 }
-
