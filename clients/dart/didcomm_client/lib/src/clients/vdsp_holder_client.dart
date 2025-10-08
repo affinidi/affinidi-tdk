@@ -16,6 +16,7 @@ import 'didcomm_base_client.dart';
 class VdspHolderClient extends DidcommBaseClient {
   final List<Disclosure> featureDisclosures;
   final DidSigner signer;
+  VdspFeatureSelection? _featureSelectionCache;
 
   VdspHolderClient({
     required super.didManager,
@@ -24,6 +25,33 @@ class VdspHolderClient extends DidcommBaseClient {
     required this.featureDisclosures,
     super.clientOptions = const ClientOptions(),
   });
+
+  VdspFeatureSelection? get selectedFeatures => _featureSelectionCache;
+
+  VdspFeatureSelection negotiateDisclose(DiscloseMessage discloseMessage) {
+    final result = FeatureDiscoveryHelper.negotiateFeatures(
+      discloseMessage: discloseMessage,
+      holderSupportedDisclosures: featureDisclosures,
+    );
+    _featureSelectionCache = result;
+    return result;
+  }
+
+  void _handleDiscloseByDefault(
+    VdspFeatureSelection selected,
+  ) {
+    if (selected.protocol == null) {
+      throw UnsupportedError(
+        'No mutually supported protocol found in default handler',
+      );
+    }
+
+    if (selected.dataQueryLanguage == null) {
+      throw UnsupportedError(
+        'No mutually supported data query language found in default handler',
+      );
+    }
+  }
 
   static Future<VdspHolderClient> init({
     required DidManager didManager,
@@ -98,9 +126,6 @@ class VdspHolderClient extends DidcommBaseClient {
       throw ArgumentError.notNull('requestMessage.body');
     }
 
-    final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
-    final query = requestBody.query;
-
     // TODO: implement filtering based on query and dataQueryLanguage
     return verifiableCredentials;
   }
@@ -173,6 +198,7 @@ class VdspHolderClient extends DidcommBaseClient {
 
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
+    void Function(DiscloseMessage)? onDiscloseMessage,
     required void Function(VdspQueryDataMessage) onDataRequest,
     void Function(VdspDataProcessingResultMessage)? onDataProcessingResult,
     void Function(ProblemReportMessage)? onProblemReport,
@@ -199,6 +225,19 @@ class VdspHolderClient extends DidcommBaseClient {
           onFeatureQuery(
             QueryMessage.fromJson(plainTextJson),
           );
+
+          return;
+        }
+
+        if (unpacked.type == DiscloseMessage.messageType) {
+          final discloseMessage = DiscloseMessage.fromJson(plainTextJson);
+          final selection = negotiateDisclose(discloseMessage);
+
+          if (onDiscloseMessage != null) {
+            onDiscloseMessage(discloseMessage);
+          } else {
+            _handleDiscloseByDefault(selection);
+          }
 
           return;
         }
