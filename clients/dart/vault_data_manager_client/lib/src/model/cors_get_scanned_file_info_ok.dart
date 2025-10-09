@@ -11,26 +11,35 @@ part 'cors_get_scanned_file_info_ok.g.dart';
 /// CorsGetScannedFileInfoOK
 ///
 /// Properties:
-/// * [corsGetScannedFileInfoOk] 
+/// * [corsGetScannedFileInfoOk]
 @BuiltValue()
-abstract class CorsGetScannedFileInfoOK implements Built<CorsGetScannedFileInfoOK, CorsGetScannedFileInfoOKBuilder> {
+abstract class CorsGetScannedFileInfoOK
+    implements
+        Built<CorsGetScannedFileInfoOK, CorsGetScannedFileInfoOKBuilder> {
   @BuiltValueField(wireName: r'corsGetScannedFileInfoOk')
   String? get corsGetScannedFileInfoOk;
 
   CorsGetScannedFileInfoOK._();
 
-  factory CorsGetScannedFileInfoOK([void updates(CorsGetScannedFileInfoOKBuilder b)]) = _$CorsGetScannedFileInfoOK;
+  factory CorsGetScannedFileInfoOK(
+          [void updates(CorsGetScannedFileInfoOKBuilder b)]) =
+      _$CorsGetScannedFileInfoOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsGetScannedFileInfoOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsGetScannedFileInfoOK> get serializer => _$CorsGetScannedFileInfoOKSerializer();
+  static Serializer<CorsGetScannedFileInfoOK> get serializer =>
+      _$CorsGetScannedFileInfoOKSerializer();
 }
 
-class _$CorsGetScannedFileInfoOKSerializer implements PrimitiveSerializer<CorsGetScannedFileInfoOK> {
+class _$CorsGetScannedFileInfoOKSerializer
+    implements PrimitiveSerializer<CorsGetScannedFileInfoOK> {
   @override
-  final Iterable<Type> types = const [CorsGetScannedFileInfoOK, _$CorsGetScannedFileInfoOK];
+  final Iterable<Type> types = const [
+    CorsGetScannedFileInfoOK,
+    _$CorsGetScannedFileInfoOK
+  ];
 
   @override
   final String wireName = r'CorsGetScannedFileInfoOK';
@@ -55,7 +64,9 @@ class _$CorsGetScannedFileInfoOKSerializer implements PrimitiveSerializer<CorsGe
     CorsGetScannedFileInfoOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +116,3 @@ class _$CorsGetScannedFileInfoOKSerializer implements PrimitiveSerializer<CorsGe
     return result.build();
   }
 }
-

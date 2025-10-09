@@ -11,26 +11,33 @@ part 'cors_batch_credential_ok.g.dart';
 /// CorsBatchCredentialOK
 ///
 /// Properties:
-/// * [corsBatchCredentialOk] 
+/// * [corsBatchCredentialOk]
 @BuiltValue()
-abstract class CorsBatchCredentialOK implements Built<CorsBatchCredentialOK, CorsBatchCredentialOKBuilder> {
+abstract class CorsBatchCredentialOK
+    implements Built<CorsBatchCredentialOK, CorsBatchCredentialOKBuilder> {
   @BuiltValueField(wireName: r'corsBatchCredentialOk')
   String? get corsBatchCredentialOk;
 
   CorsBatchCredentialOK._();
 
-  factory CorsBatchCredentialOK([void updates(CorsBatchCredentialOKBuilder b)]) = _$CorsBatchCredentialOK;
+  factory CorsBatchCredentialOK(
+      [void updates(CorsBatchCredentialOKBuilder b)]) = _$CorsBatchCredentialOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsBatchCredentialOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsBatchCredentialOK> get serializer => _$CorsBatchCredentialOKSerializer();
+  static Serializer<CorsBatchCredentialOK> get serializer =>
+      _$CorsBatchCredentialOKSerializer();
 }
 
-class _$CorsBatchCredentialOKSerializer implements PrimitiveSerializer<CorsBatchCredentialOK> {
+class _$CorsBatchCredentialOKSerializer
+    implements PrimitiveSerializer<CorsBatchCredentialOK> {
   @override
-  final Iterable<Type> types = const [CorsBatchCredentialOK, _$CorsBatchCredentialOK];
+  final Iterable<Type> types = const [
+    CorsBatchCredentialOK,
+    _$CorsBatchCredentialOK
+  ];
 
   @override
   final String wireName = r'CorsBatchCredentialOK';
@@ -55,7 +62,9 @@ class _$CorsBatchCredentialOKSerializer implements PrimitiveSerializer<CorsBatch
     CorsBatchCredentialOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +114,3 @@ class _$CorsBatchCredentialOKSerializer implements PrimitiveSerializer<CorsBatch
     return result.build();
   }
 }
-

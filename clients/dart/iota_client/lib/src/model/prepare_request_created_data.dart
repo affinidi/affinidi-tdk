@@ -11,10 +11,12 @@ part 'prepare_request_created_data.g.dart';
 /// PrepareRequestCreatedData
 ///
 /// Properties:
-/// * [jwt] 
+/// * [jwt]
 /// * [correlationId] - A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
 @BuiltValue()
-abstract class PrepareRequestCreatedData implements Built<PrepareRequestCreatedData, PrepareRequestCreatedDataBuilder> {
+abstract class PrepareRequestCreatedData
+    implements
+        Built<PrepareRequestCreatedData, PrepareRequestCreatedDataBuilder> {
   @BuiltValueField(wireName: r'jwt')
   String get jwt;
 
@@ -24,18 +26,25 @@ abstract class PrepareRequestCreatedData implements Built<PrepareRequestCreatedD
 
   PrepareRequestCreatedData._();
 
-  factory PrepareRequestCreatedData([void updates(PrepareRequestCreatedDataBuilder b)]) = _$PrepareRequestCreatedData;
+  factory PrepareRequestCreatedData(
+          [void updates(PrepareRequestCreatedDataBuilder b)]) =
+      _$PrepareRequestCreatedData;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PrepareRequestCreatedDataBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PrepareRequestCreatedData> get serializer => _$PrepareRequestCreatedDataSerializer();
+  static Serializer<PrepareRequestCreatedData> get serializer =>
+      _$PrepareRequestCreatedDataSerializer();
 }
 
-class _$PrepareRequestCreatedDataSerializer implements PrimitiveSerializer<PrepareRequestCreatedData> {
+class _$PrepareRequestCreatedDataSerializer
+    implements PrimitiveSerializer<PrepareRequestCreatedData> {
   @override
-  final Iterable<Type> types = const [PrepareRequestCreatedData, _$PrepareRequestCreatedData];
+  final Iterable<Type> types = const [
+    PrepareRequestCreatedData,
+    _$PrepareRequestCreatedData
+  ];
 
   @override
   final String wireName = r'PrepareRequestCreatedData';
@@ -63,7 +72,9 @@ class _$PrepareRequestCreatedDataSerializer implements PrimitiveSerializer<Prepa
     PrepareRequestCreatedData object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +131,3 @@ class _$PrepareRequestCreatedDataSerializer implements PrimitiveSerializer<Prepa
     return result.build();
   }
 }
-

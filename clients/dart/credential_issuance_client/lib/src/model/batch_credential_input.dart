@@ -15,25 +15,32 @@ part 'batch_credential_input.g.dart';
 /// Properties:
 /// * [credentialRequests] - Array that contains Credential Request objects.
 @BuiltValue()
-abstract class BatchCredentialInput implements Built<BatchCredentialInput, BatchCredentialInputBuilder> {
+abstract class BatchCredentialInput
+    implements Built<BatchCredentialInput, BatchCredentialInputBuilder> {
   /// Array that contains Credential Request objects.
   @BuiltValueField(wireName: r'credential_requests')
   BuiltList<BatchCredentialInputCredentialRequestsInner> get credentialRequests;
 
   BatchCredentialInput._();
 
-  factory BatchCredentialInput([void updates(BatchCredentialInputBuilder b)]) = _$BatchCredentialInput;
+  factory BatchCredentialInput([void updates(BatchCredentialInputBuilder b)]) =
+      _$BatchCredentialInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BatchCredentialInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BatchCredentialInput> get serializer => _$BatchCredentialInputSerializer();
+  static Serializer<BatchCredentialInput> get serializer =>
+      _$BatchCredentialInputSerializer();
 }
 
-class _$BatchCredentialInputSerializer implements PrimitiveSerializer<BatchCredentialInput> {
+class _$BatchCredentialInputSerializer
+    implements PrimitiveSerializer<BatchCredentialInput> {
   @override
-  final Iterable<Type> types = const [BatchCredentialInput, _$BatchCredentialInput];
+  final Iterable<Type> types = const [
+    BatchCredentialInput,
+    _$BatchCredentialInput
+  ];
 
   @override
   final String wireName = r'BatchCredentialInput';
@@ -46,7 +53,8 @@ class _$BatchCredentialInputSerializer implements PrimitiveSerializer<BatchCrede
     yield r'credential_requests';
     yield serializers.serialize(
       object.credentialRequests,
-      specifiedType: const FullType(BuiltList, [FullType(BatchCredentialInputCredentialRequestsInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(BatchCredentialInputCredentialRequestsInner)]),
     );
   }
 
@@ -56,7 +64,9 @@ class _$BatchCredentialInputSerializer implements PrimitiveSerializer<BatchCrede
     BatchCredentialInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +84,8 @@ class _$BatchCredentialInputSerializer implements PrimitiveSerializer<BatchCrede
         case r'credential_requests':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BatchCredentialInputCredentialRequestsInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(BatchCredentialInputCredentialRequestsInner)]),
           ) as BuiltList<BatchCredentialInputCredentialRequestsInner>;
           result.credentialRequests.replace(valueDes);
           break;
@@ -106,4 +117,3 @@ class _$BatchCredentialInputSerializer implements PrimitiveSerializer<BatchCrede
     return result.build();
   }
 }
-

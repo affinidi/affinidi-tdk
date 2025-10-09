@@ -1,10 +1,10 @@
-# affinidi_tdk_iota_client (EXPERIMENTAL)
+# affinidi_tdk_iota_client
 
 Affinidi TDK dart client for Affinidi IOTA
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -111,8 +111,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [CorsInitiateDataSharingRequestOK](doc/CorsInitiateDataSharingRequestOK.md)
 - [CorsIotOidc4vpcallbackOK](doc/CorsIotOidc4vpcallbackOK.md)
 - [CorsIotaExchangeCredentialsOK](doc/CorsIotaExchangeCredentialsOK.md)
+- [CreateDcqlQueryInput](doc/CreateDcqlQueryInput.md)
 - [CreateIotaConfigurationInput](doc/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](doc/CreatePexQueryInput.md)
+- [DcqlQueryDto](doc/DcqlQueryDto.md)
 - [DeletePexQueriesInput](doc/DeletePexQueriesInput.md)
 - [FetchIOTAVPResponseInput](doc/FetchIOTAVPResponseInput.md)
 - [FetchIOTAVPResponseOK](doc/FetchIOTAVPResponseOK.md)
@@ -128,6 +130,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [IotaExchangeCredentialsOK](doc/IotaExchangeCredentialsOK.md)
 - [IotaExchangeCredentialsOKCredentials](doc/IotaExchangeCredentialsOKCredentials.md)
 - [ListConfigurationOK](doc/ListConfigurationOK.md)
+- [ListDcqlQueriesOK](doc/ListDcqlQueriesOK.md)
 - [ListLoggedConsentsOK](doc/ListLoggedConsentsOK.md)
 - [ListPexQueriesOK](doc/ListPexQueriesOK.md)
 - [MessagePublishingError](doc/MessagePublishingError.md)
@@ -142,6 +145,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [SavePexQueriesUpdateInputQueriesInner](doc/SavePexQueriesUpdateInputQueriesInner.md)
 - [UpdateConfigurationByIdInput](doc/UpdateConfigurationByIdInput.md)
 - [UpdateConfigurationByIdOK](doc/UpdateConfigurationByIdOK.md)
+- [UpdateDcqlQueryInput](doc/UpdateDcqlQueryInput.md)
 - [UpdatePexQueryInput](doc/UpdatePexQueryInput.md)
 - [VPTokenValidationError](doc/VPTokenValidationError.md)
 

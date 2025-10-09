@@ -34,9 +34,8 @@ github
 travis.yaml
 api/openapi.yaml
 git_push.sh
+.gitlab-ci.yml
 .travis.yml
 composer.json
-openapi.yaml
-gitlab-ci.yml
 .github/workflows/maven
 .github

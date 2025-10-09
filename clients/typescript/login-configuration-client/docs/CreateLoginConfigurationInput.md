@@ -10,6 +10,7 @@
 | **postLogoutRedirectUris**  | **Array&lt;string&gt;**                                                               | Post Logout Redirect URIs, Used to redirect the user\&#39;s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs | [optional] [default to undefined] |
 | **vpDefinition**            | **string**                                                                            | VP definition in JSON stringify format                                                                                                                                                                           | [optional] [default to undefined] |
 | **presentationDefinition**  | **object**                                                                            | Presentation Definition                                                                                                                                                                                          | [optional] [default to undefined] |
+| **dcqlQuery**               | **object**                                                                            | DCQL query in JSON stringify format                                                                                                                                                                              | [optional] [default to undefined] |
 | **idTokenMapping**          | [**Array&lt;IdTokenMappingItem&gt;**](IdTokenMappingItem.md)                          | Fields name/path mapping between the vp_token and the id_token                                                                                                                                                   | [optional] [default to undefined] |
 | **clientMetadata**          | [**LoginConfigurationClientMetadataInput**](LoginConfigurationClientMetadataInput.md) |                                                                                                                                                                                                                  | [optional] [default to undefined] |
 | **claimFormat**             | **string**                                                                            | ID token claims output format. Default is array.                                                                                                                                                                 | [optional] [default to undefined] |
@@ -29,6 +30,7 @@ const instance: CreateLoginConfigurationInput = {
   postLogoutRedirectUris,
   vpDefinition,
   presentationDefinition,
+  dcqlQuery,
   idTokenMapping,
   clientMetadata,
   claimFormat,

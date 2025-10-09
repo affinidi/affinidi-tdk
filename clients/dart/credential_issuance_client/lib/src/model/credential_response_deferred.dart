@@ -15,7 +15,9 @@ part 'credential_response_deferred.g.dart';
 /// * [cNonce] - String containing a nonce to be used when creating a proof of possession of the key proof
 /// * [cNonceExpiresIn] - Lifetime in seconds of the c_nonce
 @BuiltValue()
-abstract class CredentialResponseDeferred implements Built<CredentialResponseDeferred, CredentialResponseDeferredBuilder> {
+abstract class CredentialResponseDeferred
+    implements
+        Built<CredentialResponseDeferred, CredentialResponseDeferredBuilder> {
   /// String identifying a Deferred Issuance transaction. This claim is contained in the response if the Credential Issuer was unable to immediately issue the Credential.
   @BuiltValueField(wireName: r'transaction_id')
   String get transactionId;
@@ -30,18 +32,25 @@ abstract class CredentialResponseDeferred implements Built<CredentialResponseDef
 
   CredentialResponseDeferred._();
 
-  factory CredentialResponseDeferred([void updates(CredentialResponseDeferredBuilder b)]) = _$CredentialResponseDeferred;
+  factory CredentialResponseDeferred(
+          [void updates(CredentialResponseDeferredBuilder b)]) =
+      _$CredentialResponseDeferred;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CredentialResponseDeferredBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CredentialResponseDeferred> get serializer => _$CredentialResponseDeferredSerializer();
+  static Serializer<CredentialResponseDeferred> get serializer =>
+      _$CredentialResponseDeferredSerializer();
 }
 
-class _$CredentialResponseDeferredSerializer implements PrimitiveSerializer<CredentialResponseDeferred> {
+class _$CredentialResponseDeferredSerializer
+    implements PrimitiveSerializer<CredentialResponseDeferred> {
   @override
-  final Iterable<Type> types = const [CredentialResponseDeferred, _$CredentialResponseDeferred];
+  final Iterable<Type> types = const [
+    CredentialResponseDeferred,
+    _$CredentialResponseDeferred
+  ];
 
   @override
   final String wireName = r'CredentialResponseDeferred';
@@ -74,7 +83,9 @@ class _$CredentialResponseDeferredSerializer implements PrimitiveSerializer<Cred
     CredentialResponseDeferred object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +149,3 @@ class _$CredentialResponseDeferredSerializer implements PrimitiveSerializer<Cred
     return result.build();
   }
 }
-
