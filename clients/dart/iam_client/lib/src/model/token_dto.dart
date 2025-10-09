@@ -17,7 +17,7 @@ part 'token_dto.g.dart';
 /// * [ari] - Token ARI
 /// * [ownerAri] - The Token owner's ARI
 /// * [name] - Owner defined Token display name
-/// * [authenticationMethod] 
+/// * [authenticationMethod]
 /// * [scopes] - Scopes that will be assigned to the Token on authentication
 @BuiltValue()
 abstract class TokenDto implements Built<TokenDto, TokenDtoBuilder> {
@@ -105,7 +105,9 @@ class _$TokenDtoSerializer implements PrimitiveSerializer<TokenDto> {
     TokenDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -151,7 +153,8 @@ class _$TokenDtoSerializer implements PrimitiveSerializer<TokenDto> {
         case r'authenticationMethod':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(TokenPrivateKeyAuthenticationMethodDto),
+            specifiedType:
+                const FullType(TokenPrivateKeyAuthenticationMethodDto),
           ) as TokenPrivateKeyAuthenticationMethodDto;
           result.authenticationMethod.replace(valueDes);
           break;
@@ -190,4 +193,3 @@ class _$TokenDtoSerializer implements PrimitiveSerializer<TokenDto> {
     return result.build();
   }
 }
-

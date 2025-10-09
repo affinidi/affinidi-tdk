@@ -124,31 +124,6 @@ export interface ConstraintsStatuses {
   revoked?: PdStatus
 }
 /**
- * Requirements of the VC
- * @export
- * @interface CredentialRequirements
- */
-export interface CredentialRequirements {
-  /**
-   * Type list of the VC requirements
-   * @type {Array<string>}
-   * @memberof CredentialRequirements
-   */
-  type: Array<string>
-  /**
-   *
-   * @type {CredentialRequirementsConstraints}
-   * @memberof CredentialRequirements
-   */
-  constraints?: CredentialRequirementsConstraints
-}
-/**
- * Constraint list of the VC requirements
- * @export
- * @interface CredentialRequirementsConstraints
- */
-export interface CredentialRequirementsConstraints {}
-/**
  *
  * @export
  * @interface Descriptor
@@ -1025,6 +1000,12 @@ export interface VerifyPresentationInput {
   presentationSubmission?: object
   /**
    *
+   * @type {object}
+   * @memberof VerifyPresentationInput
+   */
+  dcqlQuery?: object
+  /**
+   *
    * @type {string}
    * @memberof VerifyPresentationInput
    */
@@ -1048,6 +1029,37 @@ export interface VerifyPresentationOutput {
    * @memberof VerifyPresentationOutput
    */
   isValid: boolean
+}
+/**
+ * Request model of /v2/verify-vp
+ * @export
+ * @interface VerifyPresentationV2Input
+ */
+export interface VerifyPresentationV2Input {
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  verifiablePresentation?: object
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  presentationDefinition?: object
+  /**
+   *
+   * @type {object}
+   * @memberof VerifyPresentationV2Input
+   */
+  presentationSubmission?: object
+  /**
+   *
+   * @type {string}
+   * @memberof VerifyPresentationV2Input
+   */
+  challenge?: string
 }
 /**
  *

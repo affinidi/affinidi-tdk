@@ -11,8 +11,8 @@ part 'edek_info.g.dart';
 /// A base64 encoded data encryption key, encrypted with consumer DEKEK, required for node types [FILE, PROFILE]
 ///
 /// Properties:
-/// * [edek] 
-/// * [dekekId] 
+/// * [edek]
+/// * [dekekId]
 @BuiltValue()
 abstract class EdekInfo implements Built<EdekInfo, EdekInfoBuilder> {
   @BuiltValueField(wireName: r'edek')
@@ -62,7 +62,9 @@ class _$EdekInfoSerializer implements PrimitiveSerializer<EdekInfo> {
     EdekInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +121,3 @@ class _$EdekInfoSerializer implements PrimitiveSerializer<EdekInfo> {
     return result.build();
   }
 }
-

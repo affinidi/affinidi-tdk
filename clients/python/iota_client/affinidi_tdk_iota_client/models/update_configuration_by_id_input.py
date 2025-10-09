@@ -35,7 +35,7 @@ class UpdateConfigurationByIdInput(BaseModel):
     token_max_age: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="tokenMaxAge", description="This is the lifetime of the signed request token during the data-sharing flow.")
     description: Optional[StrictStr] = Field(default=None, description="An optional description of what the configuration is used for.")
     client_metadata: Optional[IotaConfigurationDtoClientMetadata] = Field(default=None, alias="clientMetadata")
-    mode: Optional[StrictStr] = Field(default=None, description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
+    mode: Optional[StrictStr] = Field(default=None, description="Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.")
     redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
     enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.")
     __properties = ["name", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "description", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
@@ -46,8 +46,8 @@ class UpdateConfigurationByIdInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('redirect', 'websocket',):
-            raise ValueError("must be one of enum values ('redirect', 'websocket')")
+        if value not in ('redirect', 'websocket', 'didcomm',):
+            raise ValueError("must be one of enum values ('redirect', 'websocket', 'didcomm')")
         return value
 
     class Config:

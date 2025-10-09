@@ -8,6 +8,8 @@ configuration.ts
 docs/ActionForbiddenError.md
 docs/AddUserToGroupInput.md
 docs/AllowListApi.md
+docs/AuthorizationRequestDcql.md
+docs/AuthorizationRequestPex.md
 docs/BlockedUsers.md
 docs/BlockedUsersInput.md
 docs/ConfigurationApi.md

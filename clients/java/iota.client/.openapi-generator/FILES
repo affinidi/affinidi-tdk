@@ -20,8 +20,10 @@ docs/CorsFetchIotaVpResponseOK.md
 docs/CorsInitiateDataSharingRequestOK.md
 docs/CorsIotOidc4vpcallbackOK.md
 docs/CorsIotaExchangeCredentialsOK.md
+docs/CreateDcqlQueryInput.md
 docs/CreateIotaConfigurationInput.md
 docs/CreatePexQueryInput.md
+docs/DcqlQueryDto.md
 docs/DefaultApi.md
 docs/DeletePexQueriesInput.md
 docs/FetchIOTAVPResponseInput.md
@@ -39,6 +41,7 @@ docs/IotaExchangeCredentials.md
 docs/IotaExchangeCredentialsOK.md
 docs/IotaExchangeCredentialsOKCredentials.md
 docs/ListConfigurationOK.md
+docs/ListDcqlQueriesOK.md
 docs/ListLoggedConsentsOK.md
 docs/ListPexQueriesOK.md
 docs/MessagePublishingError.md
@@ -54,6 +57,7 @@ docs/SavePexQueriesUpdateInput.md
 docs/SavePexQueriesUpdateInputQueriesInner.md
 docs/UpdateConfigurationByIdInput.md
 docs/UpdateConfigurationByIdOK.md
+docs/UpdateDcqlQueryInput.md
 docs/UpdatePexQueryInput.md
 docs/VPTokenValidationError.md
 gradle.properties
@@ -101,8 +105,10 @@ src/main/java/com/affinidi/tdk/iota/client/models/CorsFetchIotaVpResponseOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/CorsInitiateDataSharingRequestOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/CorsIotOidc4vpcallbackOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/CorsIotaExchangeCredentialsOK.java
+src/main/java/com/affinidi/tdk/iota/client/models/CreateDcqlQueryInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/CreateIotaConfigurationInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/CreatePexQueryInput.java
+src/main/java/com/affinidi/tdk/iota/client/models/DcqlQueryDto.java
 src/main/java/com/affinidi/tdk/iota/client/models/DeletePexQueriesInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/FetchIOTAVPResponseInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/FetchIOTAVPResponseOK.java
@@ -118,6 +124,7 @@ src/main/java/com/affinidi/tdk/iota/client/models/IotaExchangeCredentials.java
 src/main/java/com/affinidi/tdk/iota/client/models/IotaExchangeCredentialsOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/IotaExchangeCredentialsOKCredentials.java
 src/main/java/com/affinidi/tdk/iota/client/models/ListConfigurationOK.java
+src/main/java/com/affinidi/tdk/iota/client/models/ListDcqlQueriesOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/ListLoggedConsentsOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/ListPexQueriesOK.java
 src/main/java/com/affinidi/tdk/iota/client/models/MessagePublishingError.java
@@ -132,5 +139,6 @@ src/main/java/com/affinidi/tdk/iota/client/models/SavePexQueriesUpdateInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/SavePexQueriesUpdateInputQueriesInner.java
 src/main/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/UpdateConfigurationByIdOK.java
+src/main/java/com/affinidi/tdk/iota/client/models/UpdateDcqlQueryInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/UpdatePexQueryInput.java
 src/main/java/com/affinidi/tdk/iota/client/models/VPTokenValidationError.java

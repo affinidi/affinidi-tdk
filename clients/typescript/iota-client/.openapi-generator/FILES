@@ -22,8 +22,10 @@ docs/CorsFetchIotaVpResponseOK.md
 docs/CorsInitiateDataSharingRequestOK.md
 docs/CorsIotOidc4vpcallbackOK.md
 docs/CorsIotaExchangeCredentialsOK.md
+docs/CreateDcqlQueryInput.md
 docs/CreateIotaConfigurationInput.md
 docs/CreatePexQueryInput.md
+docs/DcqlQueryDto.md
 docs/DefaultApi.md
 docs/DeletePexQueriesInput.md
 docs/FetchIOTAVPResponseInput.md
@@ -41,6 +43,7 @@ docs/IotaExchangeCredentials.md
 docs/IotaExchangeCredentialsOK.md
 docs/IotaExchangeCredentialsOKCredentials.md
 docs/ListConfigurationOK.md
+docs/ListDcqlQueriesOK.md
 docs/ListLoggedConsentsOK.md
 docs/ListPexQueriesOK.md
 docs/MessagePublishingError.md
@@ -56,6 +59,7 @@ docs/SavePexQueriesUpdateInput.md
 docs/SavePexQueriesUpdateInputQueriesInner.md
 docs/UpdateConfigurationByIdInput.md
 docs/UpdateConfigurationByIdOK.md
+docs/UpdateDcqlQueryInput.md
 docs/UpdatePexQueryInput.md
 docs/VPTokenValidationError.md
 index.ts

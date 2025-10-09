@@ -41,7 +41,7 @@ class _$TokenEndpointAuthMethodMeta {
   BuiltSet<TokenEndpointAuthMethod> get values => _$values;
 }
 
-abstract class _$TokenEndpointAuthMethodMixin {
+mixin _$TokenEndpointAuthMethodMixin {
   // ignore: non_constant_identifier_names
   _$TokenEndpointAuthMethodMeta get TokenEndpointAuthMethod =>
       const _$TokenEndpointAuthMethodMeta();

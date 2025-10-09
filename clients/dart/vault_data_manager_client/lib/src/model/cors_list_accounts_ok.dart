@@ -11,24 +11,28 @@ part 'cors_list_accounts_ok.g.dart';
 /// CorsListAccountsOK
 ///
 /// Properties:
-/// * [corsListAccountsOk] 
+/// * [corsListAccountsOk]
 @BuiltValue()
-abstract class CorsListAccountsOK implements Built<CorsListAccountsOK, CorsListAccountsOKBuilder> {
+abstract class CorsListAccountsOK
+    implements Built<CorsListAccountsOK, CorsListAccountsOKBuilder> {
   @BuiltValueField(wireName: r'corsListAccountsOk')
   String? get corsListAccountsOk;
 
   CorsListAccountsOK._();
 
-  factory CorsListAccountsOK([void updates(CorsListAccountsOKBuilder b)]) = _$CorsListAccountsOK;
+  factory CorsListAccountsOK([void updates(CorsListAccountsOKBuilder b)]) =
+      _$CorsListAccountsOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsListAccountsOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsListAccountsOK> get serializer => _$CorsListAccountsOKSerializer();
+  static Serializer<CorsListAccountsOK> get serializer =>
+      _$CorsListAccountsOKSerializer();
 }
 
-class _$CorsListAccountsOKSerializer implements PrimitiveSerializer<CorsListAccountsOK> {
+class _$CorsListAccountsOKSerializer
+    implements PrimitiveSerializer<CorsListAccountsOK> {
   @override
   final Iterable<Type> types = const [CorsListAccountsOK, _$CorsListAccountsOK];
 
@@ -55,7 +59,9 @@ class _$CorsListAccountsOKSerializer implements PrimitiveSerializer<CorsListAcco
     CorsListAccountsOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +111,3 @@ class _$CorsListAccountsOKSerializer implements PrimitiveSerializer<CorsListAcco
     return result.build();
   }
 }
-

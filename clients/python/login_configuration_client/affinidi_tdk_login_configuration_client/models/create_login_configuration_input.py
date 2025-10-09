@@ -35,13 +35,14 @@ class CreateLoginConfigurationInput(BaseModel):
     post_logout_redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="postLogoutRedirectUris", description="Post Logout Redirect URIs, Used to redirect the user's browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs")
     vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition", description="Presentation Definition")
+    dcql_query: Optional[Dict[str, Any]] = Field(default=None, alias="dcqlQuery", description="DCQL query in JSON stringify format")
     id_token_mapping: Optional[conlist(IdTokenMappingItem, min_items=1)] = Field(default=None, alias="idTokenMapping", description="Fields name/path mapping between the vp_token and the id_token")
     client_metadata: Optional[LoginConfigurationClientMetadataInput] = Field(default=None, alias="clientMetadata")
     claim_format: Optional[StrictStr] = Field(default=None, alias="claimFormat", description="ID token claims output format. Default is array.")
     fail_on_mapping_conflict: Optional[StrictBool] = Field(default=True, alias="failOnMappingConflict", description="Interrupts login process if duplications of data fields names will be found")
     scope: Optional[StrictStr] = Field(default=None, description="List of groups separated by space")
     token_endpoint_auth_method: Optional[TokenEndpointAuthMethod] = Field(default=None, alias="tokenEndpointAuthMethod")
-    __properties = ["name", "description", "redirectUris", "postLogoutRedirectUris", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "claimFormat", "failOnMappingConflict", "scope", "tokenEndpointAuthMethod"]
+    __properties = ["name", "description", "redirectUris", "postLogoutRedirectUris", "vpDefinition", "presentationDefinition", "dcqlQuery", "idTokenMapping", "clientMetadata", "claimFormat", "failOnMappingConflict", "scope", "tokenEndpointAuthMethod"]
 
     @validator('claim_format')
     def claim_format_validate_enum(cls, value):
@@ -105,6 +106,7 @@ class CreateLoginConfigurationInput(BaseModel):
             "post_logout_redirect_uris": obj.get("postLogoutRedirectUris"),
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
+            "dcql_query": obj.get("dcqlQuery"),
             "id_token_mapping": [IdTokenMappingItem.from_dict(_item) for _item in obj.get("idTokenMapping")] if obj.get("idTokenMapping") is not None else None,
             "client_metadata": LoginConfigurationClientMetadataInput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "claim_format": obj.get("claimFormat"),

@@ -22,12 +22,16 @@ part 'update_login_configuration_input.g.dart';
 /// * [clientSecret] - OAuth2 client secret
 /// * [vpDefinition] - VP definition in JSON stringify format
 /// * [presentationDefinition] - Presentation Definition
+/// * [dcqlQuery] - DCQL query in JSON stringify format
 /// * [idTokenMapping] - Fields name/path mapping between the vp_token and the id_token
-/// * [clientMetadata] 
-/// * [tokenEndpointAuthMethod] 
+/// * [clientMetadata]
+/// * [tokenEndpointAuthMethod]
 /// * [failOnMappingConflict] - Interrupts login process if duplications of data fields names will be found
 @BuiltValue()
-abstract class UpdateLoginConfigurationInput implements Built<UpdateLoginConfigurationInput, UpdateLoginConfigurationInputBuilder> {
+abstract class UpdateLoginConfigurationInput
+    implements
+        Built<UpdateLoginConfigurationInput,
+            UpdateLoginConfigurationInputBuilder> {
   /// User defined login configuration name
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -52,6 +56,10 @@ abstract class UpdateLoginConfigurationInput implements Built<UpdateLoginConfigu
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
 
+  /// DCQL query in JSON stringify format
+  @BuiltValueField(wireName: r'dcqlQuery')
+  JsonObject? get dcqlQuery;
+
   /// Fields name/path mapping between the vp_token and the id_token
   @BuiltValueField(wireName: r'idTokenMapping')
   BuiltList<IdTokenMappingItem>? get idTokenMapping;
@@ -69,18 +77,25 @@ abstract class UpdateLoginConfigurationInput implements Built<UpdateLoginConfigu
 
   UpdateLoginConfigurationInput._();
 
-  factory UpdateLoginConfigurationInput([void updates(UpdateLoginConfigurationInputBuilder b)]) = _$UpdateLoginConfigurationInput;
+  factory UpdateLoginConfigurationInput(
+          [void updates(UpdateLoginConfigurationInputBuilder b)]) =
+      _$UpdateLoginConfigurationInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateLoginConfigurationInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateLoginConfigurationInput> get serializer => _$UpdateLoginConfigurationInputSerializer();
+  static Serializer<UpdateLoginConfigurationInput> get serializer =>
+      _$UpdateLoginConfigurationInputSerializer();
 }
 
-class _$UpdateLoginConfigurationInputSerializer implements PrimitiveSerializer<UpdateLoginConfigurationInput> {
+class _$UpdateLoginConfigurationInputSerializer
+    implements PrimitiveSerializer<UpdateLoginConfigurationInput> {
   @override
-  final Iterable<Type> types = const [UpdateLoginConfigurationInput, _$UpdateLoginConfigurationInput];
+  final Iterable<Type> types = const [
+    UpdateLoginConfigurationInput,
+    _$UpdateLoginConfigurationInput
+  ];
 
   @override
   final String wireName = r'UpdateLoginConfigurationInput';
@@ -132,11 +147,19 @@ class _$UpdateLoginConfigurationInputSerializer implements PrimitiveSerializer<U
         specifiedType: const FullType(JsonObject),
       );
     }
+    if (object.dcqlQuery != null) {
+      yield r'dcqlQuery';
+      yield serializers.serialize(
+        object.dcqlQuery,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
     if (object.idTokenMapping != null) {
       yield r'idTokenMapping';
       yield serializers.serialize(
         object.idTokenMapping,
-        specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
       );
     }
     if (object.clientMetadata != null) {
@@ -168,7 +191,9 @@ class _$UpdateLoginConfigurationInputSerializer implements PrimitiveSerializer<U
     UpdateLoginConfigurationInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -225,17 +250,26 @@ class _$UpdateLoginConfigurationInputSerializer implements PrimitiveSerializer<U
           ) as JsonObject;
           result.presentationDefinition = valueDes;
           break;
+        case r'dcqlQuery':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.dcqlQuery = valueDes;
+          break;
         case r'idTokenMapping':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
           ) as BuiltList<IdTokenMappingItem>;
           result.idTokenMapping.replace(valueDes);
           break;
         case r'clientMetadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LoginConfigurationClientMetadataInput),
+            specifiedType:
+                const FullType(LoginConfigurationClientMetadataInput),
           ) as LoginConfigurationClientMetadataInput;
           result.clientMetadata.replace(valueDes);
           break;
@@ -281,4 +315,3 @@ class _$UpdateLoginConfigurationInputSerializer implements PrimitiveSerializer<U
     return result.build();
   }
 }
-

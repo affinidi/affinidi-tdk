@@ -12,11 +12,12 @@ part 'create_account_ok.g.dart';
 /// CreateAccountOK
 ///
 /// Properties:
-/// * [accountIndex] 
-/// * [accountDid] 
-/// * [metadata] 
+/// * [accountIndex]
+/// * [accountDid]
+/// * [metadata]
 @BuiltValue()
-abstract class CreateAccountOK implements Built<CreateAccountOK, CreateAccountOKBuilder> {
+abstract class CreateAccountOK
+    implements Built<CreateAccountOK, CreateAccountOKBuilder> {
   @BuiltValueField(wireName: r'accountIndex')
   int get accountIndex;
 
@@ -28,16 +29,19 @@ abstract class CreateAccountOK implements Built<CreateAccountOK, CreateAccountOK
 
   CreateAccountOK._();
 
-  factory CreateAccountOK([void updates(CreateAccountOKBuilder b)]) = _$CreateAccountOK;
+  factory CreateAccountOK([void updates(CreateAccountOKBuilder b)]) =
+      _$CreateAccountOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateAccountOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateAccountOK> get serializer => _$CreateAccountOKSerializer();
+  static Serializer<CreateAccountOK> get serializer =>
+      _$CreateAccountOKSerializer();
 }
 
-class _$CreateAccountOKSerializer implements PrimitiveSerializer<CreateAccountOK> {
+class _$CreateAccountOKSerializer
+    implements PrimitiveSerializer<CreateAccountOK> {
   @override
   final Iterable<Type> types = const [CreateAccountOK, _$CreateAccountOK];
 
@@ -74,7 +78,9 @@ class _$CreateAccountOKSerializer implements PrimitiveSerializer<CreateAccountOK
     CreateAccountOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +144,3 @@ class _$CreateAccountOKSerializer implements PrimitiveSerializer<CreateAccountOK
     return result.build();
   }
 }
-

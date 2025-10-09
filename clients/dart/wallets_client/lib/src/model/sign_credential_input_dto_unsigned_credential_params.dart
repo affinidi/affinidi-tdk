@@ -13,14 +13,17 @@ part 'sign_credential_input_dto_unsigned_credential_params.g.dart';
 /// unsignedCredentialParams. Used to build an unsigned credential before the signing. This param is not accepted when \"unsignedCredential\" is given
 ///
 /// Properties:
-/// * [jsonLdContextUrl] 
-/// * [jsonSchemaUrl] 
-/// * [typeName] 
-/// * [credentialSubject] 
-/// * [holderDid] 
-/// * [expiresAt] 
+/// * [jsonLdContextUrl]
+/// * [jsonSchemaUrl]
+/// * [typeName]
+/// * [credentialSubject]
+/// * [holderDid]
+/// * [expiresAt]
 @BuiltValue()
-abstract class SignCredentialInputDtoUnsignedCredentialParams implements Built<SignCredentialInputDtoUnsignedCredentialParams, SignCredentialInputDtoUnsignedCredentialParamsBuilder> {
+abstract class SignCredentialInputDtoUnsignedCredentialParams
+    implements
+        Built<SignCredentialInputDtoUnsignedCredentialParams,
+            SignCredentialInputDtoUnsignedCredentialParamsBuilder> {
   @BuiltValueField(wireName: r'jsonLdContextUrl')
   String get jsonLdContextUrl;
 
@@ -41,18 +44,30 @@ abstract class SignCredentialInputDtoUnsignedCredentialParams implements Built<S
 
   SignCredentialInputDtoUnsignedCredentialParams._();
 
-  factory SignCredentialInputDtoUnsignedCredentialParams([void updates(SignCredentialInputDtoUnsignedCredentialParamsBuilder b)]) = _$SignCredentialInputDtoUnsignedCredentialParams;
+  factory SignCredentialInputDtoUnsignedCredentialParams(
+          [void updates(
+              SignCredentialInputDtoUnsignedCredentialParamsBuilder b)]) =
+      _$SignCredentialInputDtoUnsignedCredentialParams;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SignCredentialInputDtoUnsignedCredentialParamsBuilder b) => b;
+  static void _defaults(
+          SignCredentialInputDtoUnsignedCredentialParamsBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SignCredentialInputDtoUnsignedCredentialParams> get serializer => _$SignCredentialInputDtoUnsignedCredentialParamsSerializer();
+  static Serializer<SignCredentialInputDtoUnsignedCredentialParams>
+      get serializer =>
+          _$SignCredentialInputDtoUnsignedCredentialParamsSerializer();
 }
 
-class _$SignCredentialInputDtoUnsignedCredentialParamsSerializer implements PrimitiveSerializer<SignCredentialInputDtoUnsignedCredentialParams> {
+class _$SignCredentialInputDtoUnsignedCredentialParamsSerializer
+    implements
+        PrimitiveSerializer<SignCredentialInputDtoUnsignedCredentialParams> {
   @override
-  final Iterable<Type> types = const [SignCredentialInputDtoUnsignedCredentialParams, _$SignCredentialInputDtoUnsignedCredentialParams];
+  final Iterable<Type> types = const [
+    SignCredentialInputDtoUnsignedCredentialParams,
+    _$SignCredentialInputDtoUnsignedCredentialParams
+  ];
 
   @override
   final String wireName = r'SignCredentialInputDtoUnsignedCredentialParams';
@@ -80,7 +95,8 @@ class _$SignCredentialInputDtoUnsignedCredentialParamsSerializer implements Prim
     yield r'credentialSubject';
     yield serializers.serialize(
       object.credentialSubject,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      specifiedType: const FullType(
+          BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
     );
     yield r'holderDid';
     yield serializers.serialize(
@@ -100,7 +116,9 @@ class _$SignCredentialInputDtoUnsignedCredentialParamsSerializer implements Prim
     SignCredentialInputDtoUnsignedCredentialParams object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -139,7 +157,8 @@ class _$SignCredentialInputDtoUnsignedCredentialParamsSerializer implements Prim
         case r'credentialSubject':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.credentialSubject.replace(valueDes);
           break;
@@ -185,4 +204,3 @@ class _$SignCredentialInputDtoUnsignedCredentialParamsSerializer implements Prim
     return result.build();
   }
 }
-

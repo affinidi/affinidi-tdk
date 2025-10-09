@@ -13,13 +13,14 @@ part 'message_publishing_error.g.dart';
 /// MessagePublishingError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class MessagePublishingError implements Built<MessagePublishingError, MessagePublishingErrorBuilder> {
+abstract class MessagePublishingError
+    implements Built<MessagePublishingError, MessagePublishingErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   MessagePublishingErrorNameEnum get name;
   // enum nameEnum {  MessagePublishingError,  };
@@ -40,18 +41,25 @@ abstract class MessagePublishingError implements Built<MessagePublishingError, M
 
   MessagePublishingError._();
 
-  factory MessagePublishingError([void updates(MessagePublishingErrorBuilder b)]) = _$MessagePublishingError;
+  factory MessagePublishingError(
+          [void updates(MessagePublishingErrorBuilder b)]) =
+      _$MessagePublishingError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(MessagePublishingErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<MessagePublishingError> get serializer => _$MessagePublishingErrorSerializer();
+  static Serializer<MessagePublishingError> get serializer =>
+      _$MessagePublishingErrorSerializer();
 }
 
-class _$MessagePublishingErrorSerializer implements PrimitiveSerializer<MessagePublishingError> {
+class _$MessagePublishingErrorSerializer
+    implements PrimitiveSerializer<MessagePublishingError> {
   @override
-  final Iterable<Type> types = const [MessagePublishingError, _$MessagePublishingError];
+  final Iterable<Type> types = const [
+    MessagePublishingError,
+    _$MessagePublishingError
+  ];
 
   @override
   final String wireName = r'MessagePublishingError';
@@ -85,7 +93,8 @@ class _$MessagePublishingErrorSerializer implements PrimitiveSerializer<MessageP
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +105,9 @@ class _$MessagePublishingErrorSerializer implements PrimitiveSerializer<MessageP
     MessagePublishingError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +139,8 @@ class _$MessagePublishingErrorSerializer implements PrimitiveSerializer<MessageP
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(MessagePublishingErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(MessagePublishingErrorHttpStatusCodeEnum),
           ) as MessagePublishingErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +154,8 @@ class _$MessagePublishingErrorSerializer implements PrimitiveSerializer<MessageP
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +189,50 @@ class _$MessagePublishingErrorSerializer implements PrimitiveSerializer<MessageP
 }
 
 class MessagePublishingErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'MessagePublishingError')
-  static const MessagePublishingErrorNameEnum messagePublishingError = _$messagePublishingErrorNameEnum_messagePublishingError;
+  static const MessagePublishingErrorNameEnum messagePublishingError =
+      _$messagePublishingErrorNameEnum_messagePublishingError;
 
-  static Serializer<MessagePublishingErrorNameEnum> get serializer => _$messagePublishingErrorNameEnumSerializer;
+  static Serializer<MessagePublishingErrorNameEnum> get serializer =>
+      _$messagePublishingErrorNameEnumSerializer;
 
-  const MessagePublishingErrorNameEnum._(String name): super(name);
+  const MessagePublishingErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<MessagePublishingErrorNameEnum> get values => _$messagePublishingErrorNameEnumValues;
-  static MessagePublishingErrorNameEnum valueOf(String name) => _$messagePublishingErrorNameEnumValueOf(name);
+  static BuiltSet<MessagePublishingErrorNameEnum> get values =>
+      _$messagePublishingErrorNameEnumValues;
+  static MessagePublishingErrorNameEnum valueOf(String name) =>
+      _$messagePublishingErrorNameEnumValueOf(name);
 }
 
 class MessagePublishingErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Not able to publish messages to topic')
-  static const MessagePublishingErrorMessageEnum notAbleToPublishMessagesToTopic = _$messagePublishingErrorMessageEnum_notAbleToPublishMessagesToTopic;
+  static const MessagePublishingErrorMessageEnum
+      notAbleToPublishMessagesToTopic =
+      _$messagePublishingErrorMessageEnum_notAbleToPublishMessagesToTopic;
 
-  static Serializer<MessagePublishingErrorMessageEnum> get serializer => _$messagePublishingErrorMessageEnumSerializer;
+  static Serializer<MessagePublishingErrorMessageEnum> get serializer =>
+      _$messagePublishingErrorMessageEnumSerializer;
 
-  const MessagePublishingErrorMessageEnum._(String name): super(name);
+  const MessagePublishingErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<MessagePublishingErrorMessageEnum> get values => _$messagePublishingErrorMessageEnumValues;
-  static MessagePublishingErrorMessageEnum valueOf(String name) => _$messagePublishingErrorMessageEnumValueOf(name);
+  static BuiltSet<MessagePublishingErrorMessageEnum> get values =>
+      _$messagePublishingErrorMessageEnumValues;
+  static MessagePublishingErrorMessageEnum valueOf(String name) =>
+      _$messagePublishingErrorMessageEnumValueOf(name);
 }
 
 class MessagePublishingErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 500)
-  static const MessagePublishingErrorHttpStatusCodeEnum number500 = _$messagePublishingErrorHttpStatusCodeEnum_number500;
+  static const MessagePublishingErrorHttpStatusCodeEnum number500 =
+      _$messagePublishingErrorHttpStatusCodeEnum_number500;
 
-  static Serializer<MessagePublishingErrorHttpStatusCodeEnum> get serializer => _$messagePublishingErrorHttpStatusCodeEnumSerializer;
+  static Serializer<MessagePublishingErrorHttpStatusCodeEnum> get serializer =>
+      _$messagePublishingErrorHttpStatusCodeEnumSerializer;
 
-  const MessagePublishingErrorHttpStatusCodeEnum._(String name): super(name);
+  const MessagePublishingErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<MessagePublishingErrorHttpStatusCodeEnum> get values => _$messagePublishingErrorHttpStatusCodeEnumValues;
-  static MessagePublishingErrorHttpStatusCodeEnum valueOf(String name) => _$messagePublishingErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<MessagePublishingErrorHttpStatusCodeEnum> get values =>
+      _$messagePublishingErrorHttpStatusCodeEnumValues;
+  static MessagePublishingErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$messagePublishingErrorHttpStatusCodeEnumValueOf(name);
 }
-

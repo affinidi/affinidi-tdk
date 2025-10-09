@@ -14,7 +14,8 @@ part 'update_pex_query_input.g.dart';
 /// * [vpDefinition] - The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
 /// * [description] - An optional description of what the query is used for.
 @BuiltValue()
-abstract class UpdatePexQueryInput implements Built<UpdatePexQueryInput, UpdatePexQueryInputBuilder> {
+abstract class UpdatePexQueryInput
+    implements Built<UpdatePexQueryInput, UpdatePexQueryInputBuilder> {
   /// The presentation definition describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
   @BuiltValueField(wireName: r'vpDefinition')
   String? get vpDefinition;
@@ -25,18 +26,24 @@ abstract class UpdatePexQueryInput implements Built<UpdatePexQueryInput, UpdateP
 
   UpdatePexQueryInput._();
 
-  factory UpdatePexQueryInput([void updates(UpdatePexQueryInputBuilder b)]) = _$UpdatePexQueryInput;
+  factory UpdatePexQueryInput([void updates(UpdatePexQueryInputBuilder b)]) =
+      _$UpdatePexQueryInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdatePexQueryInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdatePexQueryInput> get serializer => _$UpdatePexQueryInputSerializer();
+  static Serializer<UpdatePexQueryInput> get serializer =>
+      _$UpdatePexQueryInputSerializer();
 }
 
-class _$UpdatePexQueryInputSerializer implements PrimitiveSerializer<UpdatePexQueryInput> {
+class _$UpdatePexQueryInputSerializer
+    implements PrimitiveSerializer<UpdatePexQueryInput> {
   @override
-  final Iterable<Type> types = const [UpdatePexQueryInput, _$UpdatePexQueryInput];
+  final Iterable<Type> types = const [
+    UpdatePexQueryInput,
+    _$UpdatePexQueryInput
+  ];
 
   @override
   final String wireName = r'UpdatePexQueryInput';
@@ -68,7 +75,9 @@ class _$UpdatePexQueryInputSerializer implements PrimitiveSerializer<UpdatePexQu
     UpdatePexQueryInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +134,3 @@ class _$UpdatePexQueryInputSerializer implements PrimitiveSerializer<UpdatePexQu
     return result.build();
   }
 }
-

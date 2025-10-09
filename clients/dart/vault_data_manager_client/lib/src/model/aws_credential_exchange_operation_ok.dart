@@ -11,10 +11,13 @@ part 'aws_credential_exchange_operation_ok.g.dart';
 /// AwsCredentialExchangeOperationOK
 ///
 /// Properties:
-/// * [token] 
-/// * [identityId] 
+/// * [token]
+/// * [identityId]
 @BuiltValue()
-abstract class AwsCredentialExchangeOperationOK implements Built<AwsCredentialExchangeOperationOK, AwsCredentialExchangeOperationOKBuilder> {
+abstract class AwsCredentialExchangeOperationOK
+    implements
+        Built<AwsCredentialExchangeOperationOK,
+            AwsCredentialExchangeOperationOKBuilder> {
   @BuiltValueField(wireName: r'token')
   String get token;
 
@@ -23,18 +26,25 @@ abstract class AwsCredentialExchangeOperationOK implements Built<AwsCredentialEx
 
   AwsCredentialExchangeOperationOK._();
 
-  factory AwsCredentialExchangeOperationOK([void updates(AwsCredentialExchangeOperationOKBuilder b)]) = _$AwsCredentialExchangeOperationOK;
+  factory AwsCredentialExchangeOperationOK(
+          [void updates(AwsCredentialExchangeOperationOKBuilder b)]) =
+      _$AwsCredentialExchangeOperationOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AwsCredentialExchangeOperationOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AwsCredentialExchangeOperationOK> get serializer => _$AwsCredentialExchangeOperationOKSerializer();
+  static Serializer<AwsCredentialExchangeOperationOK> get serializer =>
+      _$AwsCredentialExchangeOperationOKSerializer();
 }
 
-class _$AwsCredentialExchangeOperationOKSerializer implements PrimitiveSerializer<AwsCredentialExchangeOperationOK> {
+class _$AwsCredentialExchangeOperationOKSerializer
+    implements PrimitiveSerializer<AwsCredentialExchangeOperationOK> {
   @override
-  final Iterable<Type> types = const [AwsCredentialExchangeOperationOK, _$AwsCredentialExchangeOperationOK];
+  final Iterable<Type> types = const [
+    AwsCredentialExchangeOperationOK,
+    _$AwsCredentialExchangeOperationOK
+  ];
 
   @override
   final String wireName = r'AwsCredentialExchangeOperationOK';
@@ -62,7 +72,9 @@ class _$AwsCredentialExchangeOperationOKSerializer implements PrimitiveSerialize
     AwsCredentialExchangeOperationOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +131,3 @@ class _$AwsCredentialExchangeOperationOKSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

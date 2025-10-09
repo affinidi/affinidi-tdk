@@ -13,12 +13,12 @@ part 'format.g.dart';
 /// Format
 ///
 /// Properties:
-/// * [jwt] 
-/// * [jwtVc] 
-/// * [jwtVp] 
-/// * [ldp] 
-/// * [ldpVc] 
-/// * [ldpVp] 
+/// * [jwt]
+/// * [jwtVc]
+/// * [jwtVp]
+/// * [ldp]
+/// * [ldpVc]
+/// * [ldpVp]
 @BuiltValue()
 abstract class Format implements Built<Format, FormatBuilder> {
   @BuiltValueField(wireName: r'jwt')
@@ -112,7 +112,9 @@ class _$FormatSerializer implements PrimitiveSerializer<Format> {
     Format object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -197,4 +199,3 @@ class _$FormatSerializer implements PrimitiveSerializer<Format> {
     return result.build();
   }
 }
-

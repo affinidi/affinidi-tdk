@@ -11,26 +11,33 @@ part 'cors_update_access_vfs_ok.g.dart';
 /// CorsUpdateAccessVfsOK
 ///
 /// Properties:
-/// * [corsUpdateAccessVfsOk] 
+/// * [corsUpdateAccessVfsOk]
 @BuiltValue()
-abstract class CorsUpdateAccessVfsOK implements Built<CorsUpdateAccessVfsOK, CorsUpdateAccessVfsOKBuilder> {
+abstract class CorsUpdateAccessVfsOK
+    implements Built<CorsUpdateAccessVfsOK, CorsUpdateAccessVfsOKBuilder> {
   @BuiltValueField(wireName: r'corsUpdateAccessVfsOk')
   String? get corsUpdateAccessVfsOk;
 
   CorsUpdateAccessVfsOK._();
 
-  factory CorsUpdateAccessVfsOK([void updates(CorsUpdateAccessVfsOKBuilder b)]) = _$CorsUpdateAccessVfsOK;
+  factory CorsUpdateAccessVfsOK(
+      [void updates(CorsUpdateAccessVfsOKBuilder b)]) = _$CorsUpdateAccessVfsOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsUpdateAccessVfsOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsUpdateAccessVfsOK> get serializer => _$CorsUpdateAccessVfsOKSerializer();
+  static Serializer<CorsUpdateAccessVfsOK> get serializer =>
+      _$CorsUpdateAccessVfsOKSerializer();
 }
 
-class _$CorsUpdateAccessVfsOKSerializer implements PrimitiveSerializer<CorsUpdateAccessVfsOK> {
+class _$CorsUpdateAccessVfsOKSerializer
+    implements PrimitiveSerializer<CorsUpdateAccessVfsOK> {
   @override
-  final Iterable<Type> types = const [CorsUpdateAccessVfsOK, _$CorsUpdateAccessVfsOK];
+  final Iterable<Type> types = const [
+    CorsUpdateAccessVfsOK,
+    _$CorsUpdateAccessVfsOK
+  ];
 
   @override
   final String wireName = r'CorsUpdateAccessVfsOK';
@@ -55,7 +62,9 @@ class _$CorsUpdateAccessVfsOKSerializer implements PrimitiveSerializer<CorsUpdat
     CorsUpdateAccessVfsOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +114,3 @@ class _$CorsUpdateAccessVfsOKSerializer implements PrimitiveSerializer<CorsUpdat
     return result.build();
   }
 }
-

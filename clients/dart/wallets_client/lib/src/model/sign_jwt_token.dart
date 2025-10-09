@@ -12,10 +12,11 @@ part 'sign_jwt_token.g.dart';
 /// DTO contains parts of JWT to be signed
 ///
 /// Properties:
-/// * [header] 
-/// * [payload] 
+/// * [header]
+/// * [payload]
 @BuiltValue()
-abstract class SignJwtToken implements Built<SignJwtToken, SignJwtTokenBuilder> {
+abstract class SignJwtToken
+    implements Built<SignJwtToken, SignJwtTokenBuilder> {
   @BuiltValueField(wireName: r'header')
   JsonObject get header;
 
@@ -63,7 +64,9 @@ class _$SignJwtTokenSerializer implements PrimitiveSerializer<SignJwtToken> {
     SignJwtToken object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +123,3 @@ class _$SignJwtTokenSerializer implements PrimitiveSerializer<SignJwtToken> {
     return result.build();
   }
 }
-

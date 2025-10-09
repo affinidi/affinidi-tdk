@@ -20,6 +20,8 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
   @override
   final JsonObject? presentationDefinition;
   @override
+  final JsonObject? dcqlQuery;
+  @override
   final BuiltList<IdTokenMappingItem>? idTokenMapping;
   @override
   final LoginConfigurationClientMetadataInput? clientMetadata;
@@ -39,6 +41,7 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
       this.clientSecret,
       this.vpDefinition,
       this.presentationDefinition,
+      this.dcqlQuery,
       this.idTokenMapping,
       this.clientMetadata,
       this.tokenEndpointAuthMethod,
@@ -63,6 +66,7 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
         clientSecret == other.clientSecret &&
         vpDefinition == other.vpDefinition &&
         presentationDefinition == other.presentationDefinition &&
+        dcqlQuery == other.dcqlQuery &&
         idTokenMapping == other.idTokenMapping &&
         clientMetadata == other.clientMetadata &&
         tokenEndpointAuthMethod == other.tokenEndpointAuthMethod &&
@@ -78,6 +82,7 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
     _$hash = $jc(_$hash, clientSecret.hashCode);
     _$hash = $jc(_$hash, vpDefinition.hashCode);
     _$hash = $jc(_$hash, presentationDefinition.hashCode);
+    _$hash = $jc(_$hash, dcqlQuery.hashCode);
     _$hash = $jc(_$hash, idTokenMapping.hashCode);
     _$hash = $jc(_$hash, clientMetadata.hashCode);
     _$hash = $jc(_$hash, tokenEndpointAuthMethod.hashCode);
@@ -95,6 +100,7 @@ class _$UpdateLoginConfigurationInput extends UpdateLoginConfigurationInput {
           ..add('clientSecret', clientSecret)
           ..add('vpDefinition', vpDefinition)
           ..add('presentationDefinition', presentationDefinition)
+          ..add('dcqlQuery', dcqlQuery)
           ..add('idTokenMapping', idTokenMapping)
           ..add('clientMetadata', clientMetadata)
           ..add('tokenEndpointAuthMethod', tokenEndpointAuthMethod)
@@ -138,6 +144,10 @@ class UpdateLoginConfigurationInputBuilder
   set presentationDefinition(JsonObject? presentationDefinition) =>
       _$this._presentationDefinition = presentationDefinition;
 
+  JsonObject? _dcqlQuery;
+  JsonObject? get dcqlQuery => _$this._dcqlQuery;
+  set dcqlQuery(JsonObject? dcqlQuery) => _$this._dcqlQuery = dcqlQuery;
+
   ListBuilder<IdTokenMappingItem>? _idTokenMapping;
   ListBuilder<IdTokenMappingItem> get idTokenMapping =>
       _$this._idTokenMapping ??= ListBuilder<IdTokenMappingItem>();
@@ -176,6 +186,7 @@ class UpdateLoginConfigurationInputBuilder
       _clientSecret = $v.clientSecret;
       _vpDefinition = $v.vpDefinition;
       _presentationDefinition = $v.presentationDefinition;
+      _dcqlQuery = $v.dcqlQuery;
       _idTokenMapping = $v.idTokenMapping?.toBuilder();
       _clientMetadata = $v.clientMetadata?.toBuilder();
       _tokenEndpointAuthMethod = $v.tokenEndpointAuthMethod;
@@ -209,6 +220,7 @@ class UpdateLoginConfigurationInputBuilder
             clientSecret: clientSecret,
             vpDefinition: vpDefinition,
             presentationDefinition: presentationDefinition,
+            dcqlQuery: dcqlQuery,
             idTokenMapping: _idTokenMapping?.build(),
             clientMetadata: _clientMetadata?.build(),
             tokenEndpointAuthMethod: tokenEndpointAuthMethod,

@@ -11,8 +11,8 @@ part 'whoami_dto.g.dart';
 /// WhoamiDto
 ///
 /// Properties:
-/// * [principalId] 
-/// * [principalType] 
+/// * [principalId]
+/// * [principalType]
 @BuiltValue()
 abstract class WhoamiDto implements Built<WhoamiDto, WhoamiDtoBuilder> {
   @BuiltValueField(wireName: r'principalId')
@@ -62,7 +62,9 @@ class _$WhoamiDtoSerializer implements PrimitiveSerializer<WhoamiDto> {
     WhoamiDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +121,3 @@ class _$WhoamiDtoSerializer implements PrimitiveSerializer<WhoamiDto> {
     return result.build();
   }
 }
-

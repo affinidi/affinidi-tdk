@@ -26,9 +26,11 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(CorsInitiateDataSharingRequestOK.serializer)
       ..add(CorsIotOidc4vpcallbackOK.serializer)
       ..add(CorsIotaExchangeCredentialsOK.serializer)
+      ..add(CreateDcqlQueryInput.serializer)
       ..add(CreateIotaConfigurationInput.serializer)
       ..add(CreateIotaConfigurationInputModeEnum.serializer)
       ..add(CreatePexQueryInput.serializer)
+      ..add(DcqlQueryDto.serializer)
       ..add(DeletePexQueriesInput.serializer)
       ..add(FetchIOTAVPResponseInput.serializer)
       ..add(FetchIOTAVPResponseOK.serializer)
@@ -49,6 +51,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(IotaExchangeCredentialsOK.serializer)
       ..add(IotaExchangeCredentialsOKCredentials.serializer)
       ..add(ListConfigurationOK.serializer)
+      ..add(ListDcqlQueriesOK.serializer)
       ..add(ListLoggedConsentsOK.serializer)
       ..add(ListPexQueriesOK.serializer)
       ..add(MessagePublishingError.serializer)
@@ -76,6 +79,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(UpdateConfigurationByIdInput.serializer)
       ..add(UpdateConfigurationByIdInputModeEnum.serializer)
       ..add(UpdateConfigurationByIdOK.serializer)
+      ..add(UpdateDcqlQueryInput.serializer)
       ..add(UpdatePexQueryInput.serializer)
       ..add(VPTokenValidationError.serializer)
       ..add(VPTokenValidationErrorHttpStatusCodeEnum.serializer)
@@ -84,6 +88,9 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ConsentDto)]),
           () => ListBuilder<ConsentDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(DcqlQueryDto)]),
+          () => ListBuilder<DcqlQueryDto>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),

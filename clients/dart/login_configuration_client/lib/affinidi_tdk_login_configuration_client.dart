@@ -18,6 +18,8 @@ export 'package:affinidi_tdk_login_configuration_client/src/api/idp_api.dart';
 
 export 'package:affinidi_tdk_login_configuration_client/src/model/action_forbidden_error.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/add_user_to_group_input.dart';
+export 'package:affinidi_tdk_login_configuration_client/src/model/authorization_request_dcql.dart';
+export 'package:affinidi_tdk_login_configuration_client/src/model/authorization_request_pex.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/blocked_users.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/blocked_users_input.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/cors_login_session_accept_response_ok.dart';
@@ -70,4 +72,3 @@ export 'package:affinidi_tdk_login_configuration_client/src/model/token_endpoint
 export 'package:affinidi_tdk_login_configuration_client/src/model/unauthorized_error.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/update_login_configuration_input.dart';
 export 'package:affinidi_tdk_login_configuration_client/src/model/vp_token_validation_error.dart';
-

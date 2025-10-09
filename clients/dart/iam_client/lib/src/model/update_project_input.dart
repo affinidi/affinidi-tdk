@@ -11,10 +11,11 @@ part 'update_project_input.g.dart';
 /// UpdateProjectInput
 ///
 /// Properties:
-/// * [name] 
-/// * [description] 
+/// * [name]
+/// * [description]
 @BuiltValue()
-abstract class UpdateProjectInput implements Built<UpdateProjectInput, UpdateProjectInputBuilder> {
+abstract class UpdateProjectInput
+    implements Built<UpdateProjectInput, UpdateProjectInputBuilder> {
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -23,16 +24,19 @@ abstract class UpdateProjectInput implements Built<UpdateProjectInput, UpdatePro
 
   UpdateProjectInput._();
 
-  factory UpdateProjectInput([void updates(UpdateProjectInputBuilder b)]) = _$UpdateProjectInput;
+  factory UpdateProjectInput([void updates(UpdateProjectInputBuilder b)]) =
+      _$UpdateProjectInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateProjectInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateProjectInput> get serializer => _$UpdateProjectInputSerializer();
+  static Serializer<UpdateProjectInput> get serializer =>
+      _$UpdateProjectInputSerializer();
 }
 
-class _$UpdateProjectInputSerializer implements PrimitiveSerializer<UpdateProjectInput> {
+class _$UpdateProjectInputSerializer
+    implements PrimitiveSerializer<UpdateProjectInput> {
   @override
   final Iterable<Type> types = const [UpdateProjectInput, _$UpdateProjectInput];
 
@@ -66,7 +70,9 @@ class _$UpdateProjectInputSerializer implements PrimitiveSerializer<UpdateProjec
     UpdateProjectInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +129,3 @@ class _$UpdateProjectInputSerializer implements PrimitiveSerializer<UpdateProjec
     return result.build();
   }
 }
-

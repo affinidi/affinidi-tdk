@@ -16,6 +16,7 @@ import 'package:affinidi_tdk_iota_client/api.dart';
 | **nonce**           | **String** | A randomly generated value that is added in the request and response to prevent replay attacks.                                                  |
 | **redirectUri**     | **String** | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. |
 | **configurationId** | **String** | ID of the Affinidi Iota Framework configuration.                                                                                                 |
-| **mode**            | **String** | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.                                                      |
+| **userDid**         | **String** | User did to send the initiating request to. Only required if mode is didcomm                                                                     | [optional] |
+| **mode**            | **String** | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.                                   |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

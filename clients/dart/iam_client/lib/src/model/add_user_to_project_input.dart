@@ -11,10 +11,11 @@ part 'add_user_to_project_input.g.dart';
 /// AddUserToProjectInput
 ///
 /// Properties:
-/// * [principalId] 
-/// * [principalType] 
+/// * [principalId]
+/// * [principalType]
 @BuiltValue()
-abstract class AddUserToProjectInput implements Built<AddUserToProjectInput, AddUserToProjectInputBuilder> {
+abstract class AddUserToProjectInput
+    implements Built<AddUserToProjectInput, AddUserToProjectInputBuilder> {
   @BuiltValueField(wireName: r'principalId')
   String get principalId;
 
@@ -23,18 +24,24 @@ abstract class AddUserToProjectInput implements Built<AddUserToProjectInput, Add
 
   AddUserToProjectInput._();
 
-  factory AddUserToProjectInput([void updates(AddUserToProjectInputBuilder b)]) = _$AddUserToProjectInput;
+  factory AddUserToProjectInput(
+      [void updates(AddUserToProjectInputBuilder b)]) = _$AddUserToProjectInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(AddUserToProjectInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<AddUserToProjectInput> get serializer => _$AddUserToProjectInputSerializer();
+  static Serializer<AddUserToProjectInput> get serializer =>
+      _$AddUserToProjectInputSerializer();
 }
 
-class _$AddUserToProjectInputSerializer implements PrimitiveSerializer<AddUserToProjectInput> {
+class _$AddUserToProjectInputSerializer
+    implements PrimitiveSerializer<AddUserToProjectInput> {
   @override
-  final Iterable<Type> types = const [AddUserToProjectInput, _$AddUserToProjectInput];
+  final Iterable<Type> types = const [
+    AddUserToProjectInput,
+    _$AddUserToProjectInput
+  ];
 
   @override
   final String wireName = r'AddUserToProjectInput';
@@ -62,7 +69,9 @@ class _$AddUserToProjectInputSerializer implements PrimitiveSerializer<AddUserTo
     AddUserToProjectInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +128,3 @@ class _$AddUserToProjectInputSerializer implements PrimitiveSerializer<AddUserTo
     return result.build();
   }
 }
-

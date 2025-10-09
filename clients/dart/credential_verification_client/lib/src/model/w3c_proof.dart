@@ -11,13 +11,13 @@ part 'w3c_proof.g.dart';
 /// W3cProof
 ///
 /// Properties:
-/// * [type] 
-/// * [created] 
-/// * [verificationMethod] 
-/// * [proofPurpose] 
-/// * [jws] 
-/// * [proofValue] 
-/// * [nonce] 
+/// * [type]
+/// * [created]
+/// * [verificationMethod]
+/// * [proofPurpose]
+/// * [jws]
+/// * [proofValue]
+/// * [nonce]
 @BuiltValue()
 abstract class W3cProof implements Built<W3cProof, W3cProofBuilder> {
   @BuiltValueField(wireName: r'type')
@@ -117,7 +117,9 @@ class _$W3cProofSerializer implements PrimitiveSerializer<W3cProof> {
     W3cProof object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -214,4 +216,3 @@ class _$W3cProofSerializer implements PrimitiveSerializer<W3cProof> {
     return result.build();
   }
 }
-

@@ -13,8 +13,8 @@ part 'issuance_config_mini_dto.g.dart';
 /// IssuanceConfigMiniDto
 ///
 /// Properties:
-/// * [id] 
-/// * [name] 
+/// * [id]
+/// * [name]
 /// * [issuerDid] - Issuer DID
 /// * [issuerWalletId] - Issuer Wallet id
 /// * [credentialOfferDuration] - credential offer duration in second
@@ -22,9 +22,10 @@ part 'issuance_config_mini_dto.g.dart';
 /// * [format] - String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
 /// * [issuerUri] - Issuer URI
 /// * [issuerMetadata] - Issuer public information wallet may want to show to user during consent confirmation
-/// * [version] 
+/// * [version]
 @BuiltValue()
-abstract class IssuanceConfigMiniDto implements Built<IssuanceConfigMiniDto, IssuanceConfigMiniDtoBuilder> {
+abstract class IssuanceConfigMiniDto
+    implements Built<IssuanceConfigMiniDto, IssuanceConfigMiniDtoBuilder> {
   @BuiltValueField(wireName: r'id')
   String get id;
 
@@ -65,18 +66,24 @@ abstract class IssuanceConfigMiniDto implements Built<IssuanceConfigMiniDto, Iss
 
   IssuanceConfigMiniDto._();
 
-  factory IssuanceConfigMiniDto([void updates(IssuanceConfigMiniDtoBuilder b)]) = _$IssuanceConfigMiniDto;
+  factory IssuanceConfigMiniDto(
+      [void updates(IssuanceConfigMiniDtoBuilder b)]) = _$IssuanceConfigMiniDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(IssuanceConfigMiniDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<IssuanceConfigMiniDto> get serializer => _$IssuanceConfigMiniDtoSerializer();
+  static Serializer<IssuanceConfigMiniDto> get serializer =>
+      _$IssuanceConfigMiniDtoSerializer();
 }
 
-class _$IssuanceConfigMiniDtoSerializer implements PrimitiveSerializer<IssuanceConfigMiniDto> {
+class _$IssuanceConfigMiniDtoSerializer
+    implements PrimitiveSerializer<IssuanceConfigMiniDto> {
   @override
-  final Iterable<Type> types = const [IssuanceConfigMiniDto, _$IssuanceConfigMiniDto];
+  final Iterable<Type> types = const [
+    IssuanceConfigMiniDto,
+    _$IssuanceConfigMiniDto
+  ];
 
   @override
   final String wireName = r'IssuanceConfigMiniDto';
@@ -144,7 +151,8 @@ class _$IssuanceConfigMiniDtoSerializer implements PrimitiveSerializer<IssuanceC
       yield r'issuerMetadata';
       yield serializers.serialize(
         object.issuerMetadata,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(
+            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     if (object.version != null) {
@@ -162,7 +170,9 @@ class _$IssuanceConfigMiniDtoSerializer implements PrimitiveSerializer<IssuanceC
     IssuanceConfigMiniDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -236,7 +246,8 @@ class _$IssuanceConfigMiniDtoSerializer implements PrimitiveSerializer<IssuanceC
         case r'issuerMetadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.issuerMetadata.replace(valueDes);
           break;
@@ -277,22 +288,28 @@ class _$IssuanceConfigMiniDtoSerializer implements PrimitiveSerializer<IssuanceC
 }
 
 class IssuanceConfigMiniDtoFormatEnum extends EnumClass {
-
   /// String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'ldp_vc')
-  static const IssuanceConfigMiniDtoFormatEnum ldpVc = _$issuanceConfigMiniDtoFormatEnum_ldpVc;
+  static const IssuanceConfigMiniDtoFormatEnum ldpVc =
+      _$issuanceConfigMiniDtoFormatEnum_ldpVc;
+
   /// String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'jwt_vc_json-ld')
-  static const IssuanceConfigMiniDtoFormatEnum jwtVcJsonLd = _$issuanceConfigMiniDtoFormatEnum_jwtVcJsonLd;
+  static const IssuanceConfigMiniDtoFormatEnum jwtVcJsonLd =
+      _$issuanceConfigMiniDtoFormatEnum_jwtVcJsonLd;
+
   /// String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
   @BuiltValueEnumConst(wireName: r'sd_jwt_vc_json-ld')
-  static const IssuanceConfigMiniDtoFormatEnum sdJwtVcJsonLd = _$issuanceConfigMiniDtoFormatEnum_sdJwtVcJsonLd;
+  static const IssuanceConfigMiniDtoFormatEnum sdJwtVcJsonLd =
+      _$issuanceConfigMiniDtoFormatEnum_sdJwtVcJsonLd;
 
-  static Serializer<IssuanceConfigMiniDtoFormatEnum> get serializer => _$issuanceConfigMiniDtoFormatEnumSerializer;
+  static Serializer<IssuanceConfigMiniDtoFormatEnum> get serializer =>
+      _$issuanceConfigMiniDtoFormatEnumSerializer;
 
-  const IssuanceConfigMiniDtoFormatEnum._(String name): super(name);
+  const IssuanceConfigMiniDtoFormatEnum._(String name) : super(name);
 
-  static BuiltSet<IssuanceConfigMiniDtoFormatEnum> get values => _$issuanceConfigMiniDtoFormatEnumValues;
-  static IssuanceConfigMiniDtoFormatEnum valueOf(String name) => _$issuanceConfigMiniDtoFormatEnumValueOf(name);
+  static BuiltSet<IssuanceConfigMiniDtoFormatEnum> get values =>
+      _$issuanceConfigMiniDtoFormatEnumValues;
+  static IssuanceConfigMiniDtoFormatEnum valueOf(String name) =>
+      _$issuanceConfigMiniDtoFormatEnumValueOf(name);
 }
-

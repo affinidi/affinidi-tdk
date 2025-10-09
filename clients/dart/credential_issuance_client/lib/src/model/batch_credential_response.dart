@@ -13,13 +13,15 @@ part 'batch_credential_response.g.dart';
 /// BatchCredentialResponse
 ///
 /// Properties:
-/// * [credentialResponses] 
-/// * [cNonce] 
+/// * [credentialResponses]
+/// * [cNonce]
 /// * [cNonceExpiresIn] - Expiration time in seconds
 @BuiltValue()
-abstract class BatchCredentialResponse implements Built<BatchCredentialResponse, BatchCredentialResponseBuilder> {
+abstract class BatchCredentialResponse
+    implements Built<BatchCredentialResponse, BatchCredentialResponseBuilder> {
   @BuiltValueField(wireName: r'credential_responses')
-  BuiltList<BatchCredentialResponseCredentialResponsesInner> get credentialResponses;
+  BuiltList<BatchCredentialResponseCredentialResponsesInner>
+      get credentialResponses;
 
   @BuiltValueField(wireName: r'c_nonce')
   String? get cNonce;
@@ -30,18 +32,25 @@ abstract class BatchCredentialResponse implements Built<BatchCredentialResponse,
 
   BatchCredentialResponse._();
 
-  factory BatchCredentialResponse([void updates(BatchCredentialResponseBuilder b)]) = _$BatchCredentialResponse;
+  factory BatchCredentialResponse(
+          [void updates(BatchCredentialResponseBuilder b)]) =
+      _$BatchCredentialResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BatchCredentialResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BatchCredentialResponse> get serializer => _$BatchCredentialResponseSerializer();
+  static Serializer<BatchCredentialResponse> get serializer =>
+      _$BatchCredentialResponseSerializer();
 }
 
-class _$BatchCredentialResponseSerializer implements PrimitiveSerializer<BatchCredentialResponse> {
+class _$BatchCredentialResponseSerializer
+    implements PrimitiveSerializer<BatchCredentialResponse> {
   @override
-  final Iterable<Type> types = const [BatchCredentialResponse, _$BatchCredentialResponse];
+  final Iterable<Type> types = const [
+    BatchCredentialResponse,
+    _$BatchCredentialResponse
+  ];
 
   @override
   final String wireName = r'BatchCredentialResponse';
@@ -54,7 +63,8 @@ class _$BatchCredentialResponseSerializer implements PrimitiveSerializer<BatchCr
     yield r'credential_responses';
     yield serializers.serialize(
       object.credentialResponses,
-      specifiedType: const FullType(BuiltList, [FullType(BatchCredentialResponseCredentialResponsesInner)]),
+      specifiedType: const FullType(BuiltList,
+          [FullType(BatchCredentialResponseCredentialResponsesInner)]),
     );
     if (object.cNonce != null) {
       yield r'c_nonce';
@@ -78,7 +88,9 @@ class _$BatchCredentialResponseSerializer implements PrimitiveSerializer<BatchCr
     BatchCredentialResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -96,7 +108,8 @@ class _$BatchCredentialResponseSerializer implements PrimitiveSerializer<BatchCr
         case r'credential_responses':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BatchCredentialResponseCredentialResponsesInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(BatchCredentialResponseCredentialResponsesInner)]),
           ) as BuiltList<BatchCredentialResponseCredentialResponsesInner>;
           result.credentialResponses.replace(valueDes);
           break;
@@ -142,4 +155,3 @@ class _$BatchCredentialResponseSerializer implements PrimitiveSerializer<BatchCr
     return result.build();
   }
 }
-

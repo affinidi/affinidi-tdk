@@ -12,10 +12,11 @@ part 'evaluate_vp_output.g.dart';
 /// EvaluateVpOutput
 ///
 /// Properties:
-/// * [result] 
-/// * [errors] 
+/// * [result]
+/// * [errors]
 @BuiltValue()
-abstract class EvaluateVpOutput implements Built<EvaluateVpOutput, EvaluateVpOutputBuilder> {
+abstract class EvaluateVpOutput
+    implements Built<EvaluateVpOutput, EvaluateVpOutputBuilder> {
   @BuiltValueField(wireName: r'result')
   bool get result;
 
@@ -24,16 +25,19 @@ abstract class EvaluateVpOutput implements Built<EvaluateVpOutput, EvaluateVpOut
 
   EvaluateVpOutput._();
 
-  factory EvaluateVpOutput([void updates(EvaluateVpOutputBuilder b)]) = _$EvaluateVpOutput;
+  factory EvaluateVpOutput([void updates(EvaluateVpOutputBuilder b)]) =
+      _$EvaluateVpOutput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(EvaluateVpOutputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<EvaluateVpOutput> get serializer => _$EvaluateVpOutputSerializer();
+  static Serializer<EvaluateVpOutput> get serializer =>
+      _$EvaluateVpOutputSerializer();
 }
 
-class _$EvaluateVpOutputSerializer implements PrimitiveSerializer<EvaluateVpOutput> {
+class _$EvaluateVpOutputSerializer
+    implements PrimitiveSerializer<EvaluateVpOutput> {
   @override
   final Iterable<Type> types = const [EvaluateVpOutput, _$EvaluateVpOutput];
 
@@ -63,7 +67,9 @@ class _$EvaluateVpOutputSerializer implements PrimitiveSerializer<EvaluateVpOutp
     EvaluateVpOutput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -120,4 +126,3 @@ class _$EvaluateVpOutputSerializer implements PrimitiveSerializer<EvaluateVpOutp
     return result.build();
   }
 }
-

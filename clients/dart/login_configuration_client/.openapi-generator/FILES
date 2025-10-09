@@ -6,6 +6,8 @@ analysis_options.yaml
 doc/ActionForbiddenError.md
 doc/AddUserToGroupInput.md
 doc/AllowListApi.md
+doc/AuthorizationRequestDcql.md
+doc/AuthorizationRequestPex.md
 doc/BlockedUsers.md
 doc/BlockedUsersInput.md
 doc/ConfigurationApi.md
@@ -78,6 +80,8 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/action_forbidden_error.dart
 lib/src/model/add_user_to_group_input.dart
+lib/src/model/authorization_request_dcql.dart
+lib/src/model/authorization_request_pex.dart
 lib/src/model/blocked_users.dart
 lib/src/model/blocked_users_input.dart
 lib/src/model/cors_login_session_accept_response_ok.dart

@@ -13,12 +13,12 @@ part 'policy_dto.g.dart';
 /// PolicyDto
 ///
 /// Properties:
-/// * [name] 
-/// * [description] 
-/// * [principalId] 
-/// * [projectId] 
-/// * [version] 
-/// * [statement] 
+/// * [name]
+/// * [description]
+/// * [principalId]
+/// * [projectId]
+/// * [version]
+/// * [statement]
 @BuiltValue()
 abstract class PolicyDto implements Built<PolicyDto, PolicyDtoBuilder> {
   @BuiltValueField(wireName: r'name')
@@ -108,7 +108,9 @@ class _$PolicyDtoSerializer implements PrimitiveSerializer<PolicyDto> {
     PolicyDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -161,7 +163,8 @@ class _$PolicyDtoSerializer implements PrimitiveSerializer<PolicyDto> {
         case r'statement':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(PolicyStatementDto)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(PolicyStatementDto)]),
           ) as BuiltList<PolicyStatementDto>;
           result.statement.replace(valueDes);
           break;
@@ -193,4 +196,3 @@ class _$PolicyDtoSerializer implements PrimitiveSerializer<PolicyDto> {
     return result.build();
   }
 }
-

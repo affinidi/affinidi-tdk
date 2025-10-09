@@ -74,4 +74,3 @@ export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_node_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_input.dart';
 export 'package:affinidi_tdk_vault_data_manager_client/src/model/update_profile_data_ok.dart';
-

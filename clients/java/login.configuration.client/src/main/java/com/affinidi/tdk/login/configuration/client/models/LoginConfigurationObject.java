@@ -47,6 +47,7 @@ import java.util.StringJoiner;
   LoginConfigurationObject.JSON_PROPERTY_CREATION_DATE,
   LoginConfigurationObject.JSON_PROPERTY_VP_DEFINITION,
   LoginConfigurationObject.JSON_PROPERTY_PRESENTATION_DEFINITION,
+  LoginConfigurationObject.JSON_PROPERTY_DCQL_QUERY,
   LoginConfigurationObject.JSON_PROPERTY_ID_TOKEN_MAPPING,
   LoginConfigurationObject.JSON_PROPERTY_CLIENT_METADATA,
   LoginConfigurationObject.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD
@@ -96,6 +97,10 @@ public class LoginConfigurationObject {
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
   @javax.annotation.Nullable
   private Object presentationDefinition;
+
+  public static final String JSON_PROPERTY_DCQL_QUERY = "dcqlQuery";
+  @javax.annotation.Nullable
+  private Object dcqlQuery;
 
   public static final String JSON_PROPERTY_ID_TOKEN_MAPPING = "idTokenMapping";
   @javax.annotation.Nonnull
@@ -403,6 +408,31 @@ public class LoginConfigurationObject {
     this.presentationDefinition = presentationDefinition;
   }
 
+  public LoginConfigurationObject dcqlQuery(@javax.annotation.Nullable Object dcqlQuery) {
+    
+    this.dcqlQuery = dcqlQuery;
+    return this;
+  }
+
+  /**
+   * DCQL query
+   * @return dcqlQuery
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Object getDcqlQuery() {
+    return dcqlQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDcqlQuery(@javax.annotation.Nullable Object dcqlQuery) {
+    this.dcqlQuery = dcqlQuery;
+  }
+
   public LoginConfigurationObject idTokenMapping(@javax.annotation.Nonnull List<IdTokenMappingItem> idTokenMapping) {
     
     this.idTokenMapping = idTokenMapping;
@@ -506,6 +536,7 @@ public class LoginConfigurationObject {
         Objects.equals(this.creationDate, loginConfigurationObject.creationDate) &&
         Objects.equals(this.vpDefinition, loginConfigurationObject.vpDefinition) &&
         Objects.equals(this.presentationDefinition, loginConfigurationObject.presentationDefinition) &&
+        Objects.equals(this.dcqlQuery, loginConfigurationObject.dcqlQuery) &&
         Objects.equals(this.idTokenMapping, loginConfigurationObject.idTokenMapping) &&
         Objects.equals(this.clientMetadata, loginConfigurationObject.clientMetadata) &&
         Objects.equals(this.tokenEndpointAuthMethod, loginConfigurationObject.tokenEndpointAuthMethod);
@@ -513,7 +544,7 @@ public class LoginConfigurationObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ari, configurationId, projectId, name, redirectUris, postLogoutRedirectUris, scope, clientId, creationDate, vpDefinition, presentationDefinition, idTokenMapping, clientMetadata, tokenEndpointAuthMethod);
+    return Objects.hash(ari, configurationId, projectId, name, redirectUris, postLogoutRedirectUris, scope, clientId, creationDate, vpDefinition, presentationDefinition, dcqlQuery, idTokenMapping, clientMetadata, tokenEndpointAuthMethod);
   }
 
   @Override
@@ -531,6 +562,7 @@ public class LoginConfigurationObject {
     sb.append("    creationDate: ").append(toIndentedString(creationDate)).append("\n");
     sb.append("    vpDefinition: ").append(toIndentedString(vpDefinition)).append("\n");
     sb.append("    presentationDefinition: ").append(toIndentedString(presentationDefinition)).append("\n");
+    sb.append("    dcqlQuery: ").append(toIndentedString(dcqlQuery)).append("\n");
     sb.append("    idTokenMapping: ").append(toIndentedString(idTokenMapping)).append("\n");
     sb.append("    clientMetadata: ").append(toIndentedString(clientMetadata)).append("\n");
     sb.append("    tokenEndpointAuthMethod: ").append(toIndentedString(tokenEndpointAuthMethod)).append("\n");
@@ -693,6 +725,16 @@ public class LoginConfigurationObject {
     if (getPresentationDefinition() != null) {
       try {
         joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `dcqlQuery` to the URL query string
+    if (getDcqlQuery() != null) {
+      try {
+        joiner.add(String.format("%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
