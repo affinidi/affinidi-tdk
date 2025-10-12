@@ -13,13 +13,14 @@ part 'create_hydra_network_error.g.dart';
 /// CreateHydraNetworkError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class CreateHydraNetworkError implements Built<CreateHydraNetworkError, CreateHydraNetworkErrorBuilder> {
+abstract class CreateHydraNetworkError
+    implements Built<CreateHydraNetworkError, CreateHydraNetworkErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   CreateHydraNetworkErrorNameEnum get name;
   // enum nameEnum {  CreateHydraNetworkError,  };
@@ -40,18 +41,25 @@ abstract class CreateHydraNetworkError implements Built<CreateHydraNetworkError,
 
   CreateHydraNetworkError._();
 
-  factory CreateHydraNetworkError([void updates(CreateHydraNetworkErrorBuilder b)]) = _$CreateHydraNetworkError;
+  factory CreateHydraNetworkError(
+          [void updates(CreateHydraNetworkErrorBuilder b)]) =
+      _$CreateHydraNetworkError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateHydraNetworkErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateHydraNetworkError> get serializer => _$CreateHydraNetworkErrorSerializer();
+  static Serializer<CreateHydraNetworkError> get serializer =>
+      _$CreateHydraNetworkErrorSerializer();
 }
 
-class _$CreateHydraNetworkErrorSerializer implements PrimitiveSerializer<CreateHydraNetworkError> {
+class _$CreateHydraNetworkErrorSerializer
+    implements PrimitiveSerializer<CreateHydraNetworkError> {
   @override
-  final Iterable<Type> types = const [CreateHydraNetworkError, _$CreateHydraNetworkError];
+  final Iterable<Type> types = const [
+    CreateHydraNetworkError,
+    _$CreateHydraNetworkError
+  ];
 
   @override
   final String wireName = r'CreateHydraNetworkError';
@@ -85,7 +93,8 @@ class _$CreateHydraNetworkErrorSerializer implements PrimitiveSerializer<CreateH
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +105,9 @@ class _$CreateHydraNetworkErrorSerializer implements PrimitiveSerializer<CreateH
     CreateHydraNetworkError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +139,8 @@ class _$CreateHydraNetworkErrorSerializer implements PrimitiveSerializer<CreateH
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CreateHydraNetworkErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(CreateHydraNetworkErrorHttpStatusCodeEnum),
           ) as CreateHydraNetworkErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +154,8 @@ class _$CreateHydraNetworkErrorSerializer implements PrimitiveSerializer<CreateH
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +189,49 @@ class _$CreateHydraNetworkErrorSerializer implements PrimitiveSerializer<CreateH
 }
 
 class CreateHydraNetworkErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'CreateHydraNetworkError')
-  static const CreateHydraNetworkErrorNameEnum createHydraNetworkError = _$createHydraNetworkErrorNameEnum_createHydraNetworkError;
+  static const CreateHydraNetworkErrorNameEnum createHydraNetworkError =
+      _$createHydraNetworkErrorNameEnum_createHydraNetworkError;
 
-  static Serializer<CreateHydraNetworkErrorNameEnum> get serializer => _$createHydraNetworkErrorNameEnumSerializer;
+  static Serializer<CreateHydraNetworkErrorNameEnum> get serializer =>
+      _$createHydraNetworkErrorNameEnumSerializer;
 
-  const CreateHydraNetworkErrorNameEnum._(String name): super(name);
+  const CreateHydraNetworkErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<CreateHydraNetworkErrorNameEnum> get values => _$createHydraNetworkErrorNameEnumValues;
-  static CreateHydraNetworkErrorNameEnum valueOf(String name) => _$createHydraNetworkErrorNameEnumValueOf(name);
+  static BuiltSet<CreateHydraNetworkErrorNameEnum> get values =>
+      _$createHydraNetworkErrorNameEnumValues;
+  static CreateHydraNetworkErrorNameEnum valueOf(String name) =>
+      _$createHydraNetworkErrorNameEnumValueOf(name);
 }
 
 class CreateHydraNetworkErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'CreateHydraNetworkError')
-  static const CreateHydraNetworkErrorMessageEnum createHydraNetworkError = _$createHydraNetworkErrorMessageEnum_createHydraNetworkError;
+  static const CreateHydraNetworkErrorMessageEnum createHydraNetworkError =
+      _$createHydraNetworkErrorMessageEnum_createHydraNetworkError;
 
-  static Serializer<CreateHydraNetworkErrorMessageEnum> get serializer => _$createHydraNetworkErrorMessageEnumSerializer;
+  static Serializer<CreateHydraNetworkErrorMessageEnum> get serializer =>
+      _$createHydraNetworkErrorMessageEnumSerializer;
 
-  const CreateHydraNetworkErrorMessageEnum._(String name): super(name);
+  const CreateHydraNetworkErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<CreateHydraNetworkErrorMessageEnum> get values => _$createHydraNetworkErrorMessageEnumValues;
-  static CreateHydraNetworkErrorMessageEnum valueOf(String name) => _$createHydraNetworkErrorMessageEnumValueOf(name);
+  static BuiltSet<CreateHydraNetworkErrorMessageEnum> get values =>
+      _$createHydraNetworkErrorMessageEnumValues;
+  static CreateHydraNetworkErrorMessageEnum valueOf(String name) =>
+      _$createHydraNetworkErrorMessageEnumValueOf(name);
 }
 
 class CreateHydraNetworkErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const CreateHydraNetworkErrorHttpStatusCodeEnum number400 = _$createHydraNetworkErrorHttpStatusCodeEnum_number400;
+  static const CreateHydraNetworkErrorHttpStatusCodeEnum number400 =
+      _$createHydraNetworkErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<CreateHydraNetworkErrorHttpStatusCodeEnum> get serializer => _$createHydraNetworkErrorHttpStatusCodeEnumSerializer;
+  static Serializer<CreateHydraNetworkErrorHttpStatusCodeEnum> get serializer =>
+      _$createHydraNetworkErrorHttpStatusCodeEnumSerializer;
 
-  const CreateHydraNetworkErrorHttpStatusCodeEnum._(String name): super(name);
+  const CreateHydraNetworkErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<CreateHydraNetworkErrorHttpStatusCodeEnum> get values => _$createHydraNetworkErrorHttpStatusCodeEnumValues;
-  static CreateHydraNetworkErrorHttpStatusCodeEnum valueOf(String name) => _$createHydraNetworkErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<CreateHydraNetworkErrorHttpStatusCodeEnum> get values =>
+      _$createHydraNetworkErrorHttpStatusCodeEnumValues;
+  static CreateHydraNetworkErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$createHydraNetworkErrorHttpStatusCodeEnumValueOf(name);
 }
-

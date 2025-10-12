@@ -14,13 +14,14 @@ part 'create_child_node_input.g.dart';
 ///
 /// Properties:
 /// * [name] - Name of the item
-/// * [type] 
+/// * [type]
 /// * [description] - description of profile if creating a new profile
-/// * [edekInfo] 
+/// * [edekInfo]
 /// * [dek] - A base64 encoded data encryption key, encrypted using VFS public key, required for node types [FILE, PROFILE]
 /// * [metadata] - metadata of the node in stringified json format
 @BuiltValue()
-abstract class CreateChildNodeInput implements Built<CreateChildNodeInput, CreateChildNodeInputBuilder> {
+abstract class CreateChildNodeInput
+    implements Built<CreateChildNodeInput, CreateChildNodeInputBuilder> {
   /// Name of the item
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -46,18 +47,24 @@ abstract class CreateChildNodeInput implements Built<CreateChildNodeInput, Creat
 
   CreateChildNodeInput._();
 
-  factory CreateChildNodeInput([void updates(CreateChildNodeInputBuilder b)]) = _$CreateChildNodeInput;
+  factory CreateChildNodeInput([void updates(CreateChildNodeInputBuilder b)]) =
+      _$CreateChildNodeInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateChildNodeInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateChildNodeInput> get serializer => _$CreateChildNodeInputSerializer();
+  static Serializer<CreateChildNodeInput> get serializer =>
+      _$CreateChildNodeInputSerializer();
 }
 
-class _$CreateChildNodeInputSerializer implements PrimitiveSerializer<CreateChildNodeInput> {
+class _$CreateChildNodeInputSerializer
+    implements PrimitiveSerializer<CreateChildNodeInput> {
   @override
-  final Iterable<Type> types = const [CreateChildNodeInput, _$CreateChildNodeInput];
+  final Iterable<Type> types = const [
+    CreateChildNodeInput,
+    _$CreateChildNodeInput
+  ];
 
   @override
   final String wireName = r'CreateChildNodeInput';
@@ -113,7 +120,9 @@ class _$CreateChildNodeInputSerializer implements PrimitiveSerializer<CreateChil
     CreateChildNodeInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -198,4 +207,3 @@ class _$CreateChildNodeInputSerializer implements PrimitiveSerializer<CreateChil
     return result.build();
   }
 }
-
