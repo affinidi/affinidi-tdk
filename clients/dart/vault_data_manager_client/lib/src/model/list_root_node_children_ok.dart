@@ -13,26 +13,34 @@ part 'list_root_node_children_ok.g.dart';
 /// ListRootNodeChildrenOK
 ///
 /// Properties:
-/// * [nodes] 
+/// * [nodes]
 @BuiltValue()
-abstract class ListRootNodeChildrenOK implements Built<ListRootNodeChildrenOK, ListRootNodeChildrenOKBuilder> {
+abstract class ListRootNodeChildrenOK
+    implements Built<ListRootNodeChildrenOK, ListRootNodeChildrenOKBuilder> {
   @BuiltValueField(wireName: r'nodes')
   BuiltList<NodeDto>? get nodes;
 
   ListRootNodeChildrenOK._();
 
-  factory ListRootNodeChildrenOK([void updates(ListRootNodeChildrenOKBuilder b)]) = _$ListRootNodeChildrenOK;
+  factory ListRootNodeChildrenOK(
+          [void updates(ListRootNodeChildrenOKBuilder b)]) =
+      _$ListRootNodeChildrenOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListRootNodeChildrenOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListRootNodeChildrenOK> get serializer => _$ListRootNodeChildrenOKSerializer();
+  static Serializer<ListRootNodeChildrenOK> get serializer =>
+      _$ListRootNodeChildrenOKSerializer();
 }
 
-class _$ListRootNodeChildrenOKSerializer implements PrimitiveSerializer<ListRootNodeChildrenOK> {
+class _$ListRootNodeChildrenOKSerializer
+    implements PrimitiveSerializer<ListRootNodeChildrenOK> {
   @override
-  final Iterable<Type> types = const [ListRootNodeChildrenOK, _$ListRootNodeChildrenOK];
+  final Iterable<Type> types = const [
+    ListRootNodeChildrenOK,
+    _$ListRootNodeChildrenOK
+  ];
 
   @override
   final String wireName = r'ListRootNodeChildrenOK';
@@ -57,7 +65,9 @@ class _$ListRootNodeChildrenOKSerializer implements PrimitiveSerializer<ListRoot
     ListRootNodeChildrenOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -107,4 +117,3 @@ class _$ListRootNodeChildrenOKSerializer implements PrimitiveSerializer<ListRoot
     return result.build();
   }
 }
-

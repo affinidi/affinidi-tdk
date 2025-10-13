@@ -6,6 +6,8 @@ build.sbt
 docs/ActionForbiddenError.md
 docs/AddUserToGroupInput.md
 docs/AllowListApi.md
+docs/AuthorizationRequestDcql.md
+docs/AuthorizationRequestPex.md
 docs/BlockedUsers.md
 docs/BlockedUsersInput.md
 docs/ConfigurationApi.md
@@ -98,6 +100,8 @@ src/main/java/com/affinidi/tdk/login/configuration/client/auth/HttpBasicAuth.jav
 src/main/java/com/affinidi/tdk/login/configuration/client/auth/HttpBearerAuth.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/ActionForbiddenError.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/AddUserToGroupInput.java
+src/main/java/com/affinidi/tdk/login/configuration/client/models/AuthorizationRequestDcql.java
+src/main/java/com/affinidi/tdk/login/configuration/client/models/AuthorizationRequestPex.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/BlockedUsers.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/BlockedUsersInput.java
 src/main/java/com/affinidi/tdk/login/configuration/client/models/CorsLoginSessionAcceptResponseOK.java

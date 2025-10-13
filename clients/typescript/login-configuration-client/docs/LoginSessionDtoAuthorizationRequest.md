@@ -1,5 +1,7 @@
 # LoginSessionDtoAuthorizationRequest
 
+Authorization Request Object
+
 ## Properties
 
 | Name                       | Type       | Description                                                             | Notes                             |
@@ -9,6 +11,7 @@
 | **ari**                    | **string** | ARI is used for analytics proposals.                                    | [optional] [default to undefined] |
 | **clientId**               | **string** | clientId used for detect origin.                                        | [optional] [default to undefined] |
 | **nonce**                  | **string** | nonce for VP Token proof challenge                                      | [optional] [default to undefined] |
+| **dcqlQuery**              | **string** | DCQL query to ask from the user. In JSON Stringify format.              | [default to undefined]            |
 
 ## Example
 
@@ -21,6 +24,7 @@ const instance: LoginSessionDtoAuthorizationRequest = {
   ari,
   clientId,
   nonce,
+  dcqlQuery,
 }
 ```
 

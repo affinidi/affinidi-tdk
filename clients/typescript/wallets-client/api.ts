@@ -815,6 +815,32 @@ export interface SignJwtTokenOK {
   signedJwt?: string
 }
 /**
+ * DTO contains params to sign presentation
+ * @export
+ * @interface SignPresentationLdpInputDto
+ */
+export interface SignPresentationLdpInputDto {
+  /**
+   * Unsigned presentation in Dm1 format
+   * @type {object}
+   * @memberof SignPresentationLdpInputDto
+   */
+  unsignedPresentation: object
+}
+/**
+ * DTO contains signed presentation
+ * @export
+ * @interface SignPresentationLdpResultDto
+ */
+export interface SignPresentationLdpResultDto {
+  /**
+   * Signed presentation in Dm1Ld format
+   * @type {object}
+   * @memberof SignPresentationLdpResultDto
+   */
+  presentation: object
+}
+/**
  *
  * @export
  * @interface SigningFailedError
