@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -63,12 +64,18 @@ class VdspVerifierClient extends DidcommBaseClient {
   Future<VdspQueryDataMessage> queryHolderData({
     required String holderDid,
     String? operation,
-    required Map<String, dynamic> query,
+    DcqlCredentialQuery? dcqlQuery,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
     String responseFormat = 'application/json',
     VdspQueryDataProofContext? proofContext,
     String? comment,
   }) async {
+    if (dataQueryLanguage == DataQueryLanguage.dcql && dcqlQuery == null) {
+      throw ArgumentError(
+        'dcqlQuery must be provided when dataQueryLanguage is DCQL',
+      );
+    }
+
     final message = VdspQueryDataMessage(
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
@@ -77,7 +84,7 @@ class VdspVerifierClient extends DidcommBaseClient {
         operation: operation,
         dataQueryLanguage: dataQueryLanguage,
         responseFormat: responseFormat,
-        query: query,
+        query: dcqlQuery!.toJson(),
         comment: comment,
         proofContext: proofContext,
       ).toJson(),
@@ -114,11 +121,13 @@ class VdspVerifierClient extends DidcommBaseClient {
 
   StreamSubscription listenForIncomingMessages({
     void Function(DiscloseMessage)? onDiscloseMessage,
-    required void Function(
-      VdspDataResponseMessage,
-      bool,
+    required void Function({
+      required VdspDataResponseMessage message,
+      required bool presentationAndCredentialsAreValid,
       VerifiablePresentation? verifiablePresentation,
-    ) onDataResponse,
+      required VerificationResult presentationVerificationResult,
+      required List<VerificationResult> credentialVerificationResults,
+    }) onDataResponse,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function({int? closeCode, String? closeReason})? onDone,
@@ -177,29 +186,39 @@ class VdspVerifierClient extends DidcommBaseClient {
           );
 
           if (presentationVerificationResult.isValid) {
-            final credentialsVerificationResult = await Future.wait(
+            final credentialVerificationResults = await Future.wait(
               verifiablePresentation.verifiableCredential.map(
                 universalCredentialVerifier.verify,
               ),
             );
 
-            final credentialsValid = credentialsVerificationResult.every(
+            final credentialsValid = credentialVerificationResults.every(
               (result) => result.isValid,
             );
 
             if (credentialsValid) {
               onDataResponse(
-                responseMessage,
-                true,
-                verifiablePresentation,
+                message: responseMessage,
+                presentationAndCredentialsAreValid: true,
+                verifiablePresentation: verifiablePresentation,
+                presentationVerificationResult: presentationVerificationResult,
+                credentialVerificationResults: credentialVerificationResults,
               );
             } else {
               onDataResponse(
-                responseMessage,
-                false,
-                null,
+                message: responseMessage,
+                presentationAndCredentialsAreValid: false,
+                presentationVerificationResult: presentationVerificationResult,
+                credentialVerificationResults: credentialVerificationResults,
               );
             }
+          } else {
+            onDataResponse(
+              message: responseMessage,
+              presentationAndCredentialsAreValid: false,
+              presentationVerificationResult: presentationVerificationResult,
+              credentialVerificationResults: [],
+            );
           }
 
           return;

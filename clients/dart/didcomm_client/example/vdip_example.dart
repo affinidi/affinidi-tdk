@@ -5,9 +5,12 @@ import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_issuer_client.dart'
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
+import 'package:affinidi_tdk_didcomm_client/src/messages/vdsp/vdsp_data_response_message.dart';
 import 'package:affinidi_tdk_didcomm_client/src/models/constants/feature_type.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
 
@@ -96,7 +99,7 @@ Future<void> main() async {
             type: 'JsonSchemaValidator2018',
           ),
         ],
-        id: Uri.parse('claimId:ee3882a6b3058195'),
+        id: Uri.parse(const Uuid().v4()),
         issuer: Issuer.uri(issuerSigner.did),
         type: {'VerifiableCredential', 'Email'},
         issuanceDate: DateTime.now().toUtc(),
@@ -119,19 +122,19 @@ Future<void> main() async {
     ),
   );
 
-  const verifierDsql = {
-    'credentials': [
-      {
-        'id': 'example_ldp_vc',
-        'format': 'ldp_vc',
-        'claims': [
-          {
-            'path': ['credentialSubject', 'email']
-          },
-        ]
-      }
-    ]
-  };
+  final verifierDsql = DcqlCredentialQuery(
+    credentials: [
+      DcqlCredential(
+        id: const Uuid().v4(),
+        format: CredentialFormat.ldpVc,
+        claims: [
+          DcqlClaim(
+            path: ['credentialSubject', 'email'],
+          ),
+        ],
+      ),
+    ],
+  );
 
   final featureQueries = [
     ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
@@ -322,7 +325,7 @@ Future<void> main() async {
 
       await vdspIssuerClient.queryHolderData(
         holderDid: holderDid,
-        query: verifierDsql,
+        dcqlQuery: verifierDsql,
         operation: 'registerAgent',
         // TODO: uncomment when Dart SSI is fixed
         // proofContext: VdspQueryDataProofContext(
@@ -331,11 +334,13 @@ Future<void> main() async {
         // ),
       );
     },
-    onDataResponse: (
-      message,
-      presentationAndCredentialsValid,
-      verifiablePresentation,
-    ) async {
+    onDataResponse: ({
+      required VdspDataResponseMessage message,
+      required bool presentationAndCredentialsAreValid,
+      VerifiablePresentation? verifiablePresentation,
+      required VerificationResult presentationVerificationResult,
+      required List<VerificationResult> credentialVerificationResults,
+    }) async {
       prettyPrint(
         'Verifier received Data Response Message',
         object: message,
@@ -343,7 +348,7 @@ Future<void> main() async {
 
       prettyPrint(
         'VP and VCs are valid',
-        object: presentationAndCredentialsValid,
+        object: presentationAndCredentialsAreValid,
       );
 
       prettyPrint(

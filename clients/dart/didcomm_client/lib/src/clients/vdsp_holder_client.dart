@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -99,10 +100,37 @@ class VdspHolderClient extends DidcommBaseClient {
     }
 
     final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
-    final query = requestBody.query;
+    final List<ParsedVerifiableCredential<dynamic>> filtered;
 
-    // TODO: implement filtering based on query and dataQueryLanguage
-    return verifiableCredentials;
+    switch (dataQueryLanguage) {
+      case DataQueryLanguage.dcql:
+        final dcqlQuery = DcqlCredentialQuery.fromJson(
+          Map<String, dynamic>.from(requestBody.query),
+        );
+
+        final digitalCredentials = verifiableCredentials.map((vc) {
+          return W3CDigitalCredential.fromLdVcDataModelV1(
+            vc.toJson(),
+          );
+        }).toList();
+
+        final result = dcqlQuery.query(
+          digitalCredentials,
+        );
+
+        final ids = result.verifiableCredentials.values
+            .expand((list) => list.map(
+                (credential) => credential.getValueByPath(['id']) as String))
+            .toSet();
+
+        filtered = verifiableCredentials
+            .where((credential) => ids.contains(credential.id.toString()))
+            .toList();
+
+        break;
+    }
+
+    return filtered;
   }
 
   Future<VdspDataResponseMessage> shareData({
