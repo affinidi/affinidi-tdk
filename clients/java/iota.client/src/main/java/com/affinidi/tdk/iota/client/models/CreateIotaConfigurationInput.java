@@ -82,12 +82,14 @@ public class CreateIotaConfigurationInput {
   private IotaConfigurationDtoClientMetadata clientMetadata;
 
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    */
   public enum ModeEnum {
     REDIRECT(String.valueOf("redirect")),
     
-    WEBSOCKET(String.valueOf("websocket"));
+    WEBSOCKET(String.valueOf("websocket")),
+    
+    DIDCOMM(String.valueOf("didcomm"));
 
     private String value;
 
@@ -339,7 +341,7 @@ public class CreateIotaConfigurationInput {
   }
 
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @return mode
    */
   @javax.annotation.Nullable

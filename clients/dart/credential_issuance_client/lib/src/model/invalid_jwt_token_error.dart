@@ -13,13 +13,14 @@ part 'invalid_jwt_token_error.g.dart';
 /// InvalidJwtTokenError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InvalidJwtTokenError implements Built<InvalidJwtTokenError, InvalidJwtTokenErrorBuilder> {
+abstract class InvalidJwtTokenError
+    implements Built<InvalidJwtTokenError, InvalidJwtTokenErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   InvalidJwtTokenErrorNameEnum get name;
   // enum nameEnum {  InvalidJwtTokenError,  };
@@ -40,18 +41,24 @@ abstract class InvalidJwtTokenError implements Built<InvalidJwtTokenError, Inval
 
   InvalidJwtTokenError._();
 
-  factory InvalidJwtTokenError([void updates(InvalidJwtTokenErrorBuilder b)]) = _$InvalidJwtTokenError;
+  factory InvalidJwtTokenError([void updates(InvalidJwtTokenErrorBuilder b)]) =
+      _$InvalidJwtTokenError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InvalidJwtTokenErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InvalidJwtTokenError> get serializer => _$InvalidJwtTokenErrorSerializer();
+  static Serializer<InvalidJwtTokenError> get serializer =>
+      _$InvalidJwtTokenErrorSerializer();
 }
 
-class _$InvalidJwtTokenErrorSerializer implements PrimitiveSerializer<InvalidJwtTokenError> {
+class _$InvalidJwtTokenErrorSerializer
+    implements PrimitiveSerializer<InvalidJwtTokenError> {
   @override
-  final Iterable<Type> types = const [InvalidJwtTokenError, _$InvalidJwtTokenError];
+  final Iterable<Type> types = const [
+    InvalidJwtTokenError,
+    _$InvalidJwtTokenError
+  ];
 
   @override
   final String wireName = r'InvalidJwtTokenError';
@@ -85,7 +92,8 @@ class _$InvalidJwtTokenErrorSerializer implements PrimitiveSerializer<InvalidJwt
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +104,9 @@ class _$InvalidJwtTokenErrorSerializer implements PrimitiveSerializer<InvalidJwt
     InvalidJwtTokenError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +138,8 @@ class _$InvalidJwtTokenErrorSerializer implements PrimitiveSerializer<InvalidJwt
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InvalidJwtTokenErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(InvalidJwtTokenErrorHttpStatusCodeEnum),
           ) as InvalidJwtTokenErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +153,8 @@ class _$InvalidJwtTokenErrorSerializer implements PrimitiveSerializer<InvalidJwt
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
           ) as BuiltList<ActionForbiddenErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +188,49 @@ class _$InvalidJwtTokenErrorSerializer implements PrimitiveSerializer<InvalidJwt
 }
 
 class InvalidJwtTokenErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidJwtTokenError')
-  static const InvalidJwtTokenErrorNameEnum invalidJwtTokenError = _$invalidJwtTokenErrorNameEnum_invalidJwtTokenError;
+  static const InvalidJwtTokenErrorNameEnum invalidJwtTokenError =
+      _$invalidJwtTokenErrorNameEnum_invalidJwtTokenError;
 
-  static Serializer<InvalidJwtTokenErrorNameEnum> get serializer => _$invalidJwtTokenErrorNameEnumSerializer;
+  static Serializer<InvalidJwtTokenErrorNameEnum> get serializer =>
+      _$invalidJwtTokenErrorNameEnumSerializer;
 
-  const InvalidJwtTokenErrorNameEnum._(String name): super(name);
+  const InvalidJwtTokenErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidJwtTokenErrorNameEnum> get values => _$invalidJwtTokenErrorNameEnumValues;
-  static InvalidJwtTokenErrorNameEnum valueOf(String name) => _$invalidJwtTokenErrorNameEnumValueOf(name);
+  static BuiltSet<InvalidJwtTokenErrorNameEnum> get values =>
+      _$invalidJwtTokenErrorNameEnumValues;
+  static InvalidJwtTokenErrorNameEnum valueOf(String name) =>
+      _$invalidJwtTokenErrorNameEnumValueOf(name);
 }
 
 class InvalidJwtTokenErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'JWT token is invalid')
-  static const InvalidJwtTokenErrorMessageEnum jWTTokenIsInvalid = _$invalidJwtTokenErrorMessageEnum_jWTTokenIsInvalid;
+  static const InvalidJwtTokenErrorMessageEnum jWTTokenIsInvalid =
+      _$invalidJwtTokenErrorMessageEnum_jWTTokenIsInvalid;
 
-  static Serializer<InvalidJwtTokenErrorMessageEnum> get serializer => _$invalidJwtTokenErrorMessageEnumSerializer;
+  static Serializer<InvalidJwtTokenErrorMessageEnum> get serializer =>
+      _$invalidJwtTokenErrorMessageEnumSerializer;
 
-  const InvalidJwtTokenErrorMessageEnum._(String name): super(name);
+  const InvalidJwtTokenErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidJwtTokenErrorMessageEnum> get values => _$invalidJwtTokenErrorMessageEnumValues;
-  static InvalidJwtTokenErrorMessageEnum valueOf(String name) => _$invalidJwtTokenErrorMessageEnumValueOf(name);
+  static BuiltSet<InvalidJwtTokenErrorMessageEnum> get values =>
+      _$invalidJwtTokenErrorMessageEnumValues;
+  static InvalidJwtTokenErrorMessageEnum valueOf(String name) =>
+      _$invalidJwtTokenErrorMessageEnumValueOf(name);
 }
 
 class InvalidJwtTokenErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 401)
-  static const InvalidJwtTokenErrorHttpStatusCodeEnum number401 = _$invalidJwtTokenErrorHttpStatusCodeEnum_number401;
+  static const InvalidJwtTokenErrorHttpStatusCodeEnum number401 =
+      _$invalidJwtTokenErrorHttpStatusCodeEnum_number401;
 
-  static Serializer<InvalidJwtTokenErrorHttpStatusCodeEnum> get serializer => _$invalidJwtTokenErrorHttpStatusCodeEnumSerializer;
+  static Serializer<InvalidJwtTokenErrorHttpStatusCodeEnum> get serializer =>
+      _$invalidJwtTokenErrorHttpStatusCodeEnumSerializer;
 
-  const InvalidJwtTokenErrorHttpStatusCodeEnum._(String name): super(name);
+  const InvalidJwtTokenErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidJwtTokenErrorHttpStatusCodeEnum> get values => _$invalidJwtTokenErrorHttpStatusCodeEnumValues;
-  static InvalidJwtTokenErrorHttpStatusCodeEnum valueOf(String name) => _$invalidJwtTokenErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InvalidJwtTokenErrorHttpStatusCodeEnum> get values =>
+      _$invalidJwtTokenErrorHttpStatusCodeEnumValues;
+  static InvalidJwtTokenErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$invalidJwtTokenErrorHttpStatusCodeEnumValueOf(name);
 }
-

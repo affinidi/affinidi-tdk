@@ -11,12 +11,15 @@ part 'action_forbidden_error_details_inner.g.dart';
 /// ActionForbiddenErrorDetailsInner
 ///
 /// Properties:
-/// * [issue] 
-/// * [field] 
-/// * [value] 
-/// * [location] 
+/// * [issue]
+/// * [field]
+/// * [value]
+/// * [location]
 @BuiltValue()
-abstract class ActionForbiddenErrorDetailsInner implements Built<ActionForbiddenErrorDetailsInner, ActionForbiddenErrorDetailsInnerBuilder> {
+abstract class ActionForbiddenErrorDetailsInner
+    implements
+        Built<ActionForbiddenErrorDetailsInner,
+            ActionForbiddenErrorDetailsInnerBuilder> {
   @BuiltValueField(wireName: r'issue')
   String get issue;
 
@@ -31,18 +34,25 @@ abstract class ActionForbiddenErrorDetailsInner implements Built<ActionForbidden
 
   ActionForbiddenErrorDetailsInner._();
 
-  factory ActionForbiddenErrorDetailsInner([void updates(ActionForbiddenErrorDetailsInnerBuilder b)]) = _$ActionForbiddenErrorDetailsInner;
+  factory ActionForbiddenErrorDetailsInner(
+          [void updates(ActionForbiddenErrorDetailsInnerBuilder b)]) =
+      _$ActionForbiddenErrorDetailsInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ActionForbiddenErrorDetailsInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ActionForbiddenErrorDetailsInner> get serializer => _$ActionForbiddenErrorDetailsInnerSerializer();
+  static Serializer<ActionForbiddenErrorDetailsInner> get serializer =>
+      _$ActionForbiddenErrorDetailsInnerSerializer();
 }
 
-class _$ActionForbiddenErrorDetailsInnerSerializer implements PrimitiveSerializer<ActionForbiddenErrorDetailsInner> {
+class _$ActionForbiddenErrorDetailsInnerSerializer
+    implements PrimitiveSerializer<ActionForbiddenErrorDetailsInner> {
   @override
-  final Iterable<Type> types = const [ActionForbiddenErrorDetailsInner, _$ActionForbiddenErrorDetailsInner];
+  final Iterable<Type> types = const [
+    ActionForbiddenErrorDetailsInner,
+    _$ActionForbiddenErrorDetailsInner
+  ];
 
   @override
   final String wireName = r'ActionForbiddenErrorDetailsInner';
@@ -86,7 +96,9 @@ class _$ActionForbiddenErrorDetailsInnerSerializer implements PrimitiveSerialize
     ActionForbiddenErrorDetailsInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -157,4 +169,3 @@ class _$ActionForbiddenErrorDetailsInnerSerializer implements PrimitiveSerialize
     return result.build();
   }
 }
-

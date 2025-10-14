@@ -18,7 +18,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **create_child_node**
 
-> CreateNodeOK create_child_node(create_node_input, parent_node_id=parent_node_id)
+> CreateNodeOK create_child_node(node_id, create_child_node_input)
 
 creates child node
 
@@ -30,7 +30,7 @@ creates child node
 import time
 import os
 import affinidi_tdk_vault_data_manager_client
-from affinidi_tdk_vault_data_manager_client.models.create_node_input import CreateNodeInput
+from affinidi_tdk_vault_data_manager_client.models.create_child_node_input import CreateChildNodeInput
 from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK
 from affinidi_tdk_vault_data_manager_client.rest import ApiException
 from pprint import pprint
@@ -71,11 +71,11 @@ configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_proje
 with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = affinidi_tdk_vault_data_manager_client.NodesApi(api_client)
-    create_node_input = affinidi_tdk_vault_data_manager_client.CreateNodeInput() # CreateNodeInput | CreateNode
-    parent_node_id = 'parent_node_id_example' # str | parent node id (optional)
+    node_id = 'node_id_example' # str | parent node id
+    create_child_node_input = affinidi_tdk_vault_data_manager_client.CreateChildNodeInput() # CreateChildNodeInput | CreateChildNode
 
     try:
-        api_response = api_instance.create_child_node(create_node_input, parent_node_id=parent_node_id)
+        api_response = api_instance.create_child_node(node_id, create_child_node_input)
         print("The response of NodesApi->create_child_node:\n")
         pprint(api_response)
     except Exception as e:
@@ -84,10 +84,10 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 
 ### Parameters
 
-| Name                  | Type                                      | Description    | Notes      |
-| --------------------- | ----------------------------------------- | -------------- | ---------- |
-| **create_node_input** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode     |
-| **parent_node_id**    | **str**                                   | parent node id | [optional] |
+| Name                        | Type                                                | Description     | Notes |
+| --------------------------- | --------------------------------------------------- | --------------- | ----- |
+| **node_id**                 | **str**                                             | parent node id  |
+| **create_child_node_input** | [**CreateChildNodeInput**](CreateChildNodeInput.md) | CreateChildNode |
 
 ### Return type
 

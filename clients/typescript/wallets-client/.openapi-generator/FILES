@@ -7,6 +7,8 @@ common.ts
 configuration.ts
 docs/CreateWalletInput.md
 docs/CreateWalletResponse.md
+docs/CreateWalletV2Input.md
+docs/CreateWalletV2Response.md
 docs/EntityNotFoundError.md
 docs/GetRevocationCredentialStatusOK.md
 docs/GetRevocationListCredentialResultDto.md
@@ -33,11 +35,14 @@ docs/SignCredentialsDm2SdJwtInputDto.md
 docs/SignCredentialsDm2SdJwtResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignPresentationLdpInputDto.md
+docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
 docs/WalletDto.md
 docs/WalletDtoKeysInner.md
+docs/WalletV2Dto.md
 docs/WalletsListDto.md
 index.ts
 package.json

@@ -10,6 +10,10 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(CreateWalletInput.serializer)
       ..add(CreateWalletInputDidMethodEnum.serializer)
       ..add(CreateWalletResponse.serializer)
+      ..add(CreateWalletV2Input.serializer)
+      ..add(CreateWalletV2InputAlgorithmEnum.serializer)
+      ..add(CreateWalletV2InputDidMethodEnum.serializer)
+      ..add(CreateWalletV2Response.serializer)
       ..add(EntityNotFoundError.serializer)
       ..add(EntityNotFoundErrorHttpStatusCodeEnum.serializer)
       ..add(EntityNotFoundErrorMessageEnum.serializer)
@@ -54,6 +58,8 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(SignCredentialsDm2SdJwtResultDto.serializer)
       ..add(SignJwtToken.serializer)
       ..add(SignJwtTokenOK.serializer)
+      ..add(SignPresentationLdpInputDto.serializer)
+      ..add(SignPresentationLdpResultDto.serializer)
       ..add(SigningFailedError.serializer)
       ..add(SigningFailedErrorHttpStatusCodeEnum.serializer)
       ..add(SigningFailedErrorMessageEnum.serializer)
@@ -61,6 +67,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(UpdateWalletInput.serializer)
       ..add(WalletDto.serializer)
       ..add(WalletDtoKeysInner.serializer)
+      ..add(WalletV2Dto.serializer)
       ..add(WalletsListDto.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList,
@@ -97,6 +104,9 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WalletDto)]),
           () => ListBuilder<WalletDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(WalletDtoKeysInner)]),
+          () => ListBuilder<WalletDtoKeysInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(WalletDtoKeysInner)]),
           () => ListBuilder<WalletDtoKeysInner>())
