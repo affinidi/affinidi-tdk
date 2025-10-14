@@ -15,6 +15,7 @@ import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
 import '../models/constants/data_query_language.dart';
 import '../models/constants/verifiable_credentials_data_model.dart';
+import '../models/results/data_query_result.dart';
 import 'didcomm_base_client.dart';
 
 class VdspHolderClient extends DidcommBaseClient {
@@ -75,7 +76,7 @@ class VdspHolderClient extends DidcommBaseClient {
 
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,
-    required List<Disclosure> featureDisclosures,
+    required List<Disclosure> disclosures,
   }) async {
     final verifierDid = queryMessage.from;
 
@@ -89,7 +90,7 @@ class VdspHolderClient extends DidcommBaseClient {
       to: [verifierDid],
       threadId: queryMessage.threadId ?? queryMessage.id,
       body: DiscloseBody(
-        disclosures: featureDisclosures,
+        disclosures: disclosures,
       ),
     );
 
@@ -100,7 +101,7 @@ class VdspHolderClient extends DidcommBaseClient {
     return message;
   }
 
-  Future<List<ParsedVerifiableCredential>> filterVerifiableCredentials({
+  Future<DataQueryResult> filterVerifiableCredentials({
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
     required List<ParsedVerifiableCredential> verifiableCredentials,
@@ -307,13 +308,11 @@ class VdspHolderClient extends DidcommBaseClient {
     }
   }
 
-  List<ParsedVerifiableCredential<dynamic>> _runDataQuery({
+  DataQueryResult _runDataQuery({
     required DataQueryLanguage dataQueryLanguage,
     required VdspQueryDataBody requestBody,
-    required List<ParsedVerifiableCredential<dynamic>> verifiableCredentials,
+    required List<ParsedVerifiableCredential> verifiableCredentials,
   }) {
-    final Set<String> filteredVcIds;
-
     switch (dataQueryLanguage) {
       case DataQueryLanguage.dcql:
         final dcqlQuery = DcqlCredentialQuery.fromJson(
@@ -328,23 +327,24 @@ class VdspHolderClient extends DidcommBaseClient {
           digitalCredentials,
         );
 
-        filteredVcIds = result.verifiableCredentials.values
+        final filteredVcIds = result.verifiableCredentials.values
             .expand((list) => list.map(
                 (credential) => credential.getValueByPath(['id']) as String))
             .toSet();
 
-        break;
+        return DataQueryResult(
+          dcqlResult: result,
+          verifiableCredentials: verifiableCredentials
+              .where(
+                (credential) => filteredVcIds.contains(
+                  credential.id.toString(),
+                ),
+              )
+              .toList(),
+        );
       // case DataQueryLanguage.per:
       // case DataQueryLanguage.sql:
     }
-
-    return verifiableCredentials
-        .where(
-          (credential) => filteredVcIds.contains(
-            credential.id.toString(),
-          ),
-        )
-        .toList();
   }
 
   List<W3CDigitalCredential> _convertToDcqlCredentials(

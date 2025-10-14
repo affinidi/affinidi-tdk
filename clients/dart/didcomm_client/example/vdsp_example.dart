@@ -282,7 +282,7 @@ Future<void> main() async {
 
       await holderClient.disclose(
         queryMessage: message,
-        featureDisclosures: disclosures,
+        disclosures: disclosures,
       );
     },
     onDataRequest: (message) async {
@@ -291,10 +291,14 @@ Future<void> main() async {
         object: message,
       );
 
-      final credentialsToShare = await holderClient.filterVerifiableCredentials(
+      final queryResult = await holderClient.filterVerifiableCredentials(
         requestMessage: message,
         verifiableCredentials: holderVerifiableCredentials,
       );
+
+      if (queryResult.dcqlResult?.fulfilled == false) {
+        throw StateError('The query could not be fulfilled by holder');
+      }
 
       // the app can decide which credentials to share
       // e.g. based on the operation requested
@@ -302,7 +306,7 @@ Future<void> main() async {
 
       await holderClient.shareData(
         requestMessage: message,
-        verifiableCredentials: credentialsToShare,
+        verifiableCredentials: queryResult.verifiableCredentials,
         verifiablePresentationSigner: holderSigner,
       );
     },

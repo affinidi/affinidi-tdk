@@ -205,8 +205,13 @@ Future<void> main() async {
         object: message,
       );
 
+      final disclosures = vdspHolderClient.getDisclosures(
+        queryMessage: message,
+      );
+
       await vdspHolderClient.disclose(
         queryMessage: message,
+        disclosures: disclosures,
       );
     },
     onDataRequest: (message) async {
@@ -215,15 +220,14 @@ Future<void> main() async {
         object: message,
       );
 
-      final credentialsToShare =
-          await vdspHolderClient.filterVerifiableCredentials(
+      final queryResult = await vdspHolderClient.filterVerifiableCredentials(
         requestMessage: message,
         verifiableCredentials: holderVerifiableCredentials,
       );
 
       await vdspHolderClient.shareData(
         requestMessage: message,
-        verifiableCredentials: credentialsToShare,
+        verifiableCredentials: queryResult.verifiableCredentials,
         verifiablePresentationSigner: holderSigner,
       );
     },
