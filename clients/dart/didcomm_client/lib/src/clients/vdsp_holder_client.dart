@@ -113,25 +113,23 @@ class VdspHolderClient extends DidcommBaseClient {
     final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
     final proofContext = requestBody.proofContext;
 
-    final unsignedVerifiablePresentation = MutableVpDataModelV1(
-      context: [dmV1ContextUrl],
+    final unsignedVerifiablePresentation = MutableVpDataModelV2(
+      context: [dmV2ContextUrl],
       id: Uri.parse(const Uuid().v4()),
       type: {'VerifiablePresentation'},
-      holder: MutableHolder.uri(signer.did),
+      holder: MutableHolder.uri(verifiablePresentationSigner.did),
       verifiableCredential: verifiableCredentials,
     );
 
     // TODO: select proof generator based on key pair type
-    final proofGenerator = DataIntegrityEcdsaJcsGenerator(
+    final proofGenerator = Secp256k1Signature2019Generator(
       signer: verifiablePresentationSigner,
-      challenge: proofContext?.challenge,
-      domain: proofContext != null ? [proofContext.domain] : null,
     );
 
-    final suite = LdVpDm1Suite();
+    final suite = LdVpDm2Suite();
 
     final verifiablePresentation = await suite.issue(
-      unsignedData: VpDataModelV1.fromMutable(
+      unsignedData: VpDataModelV2.fromMutable(
         unsignedVerifiablePresentation,
       ),
       proofGenerator: proofGenerator,

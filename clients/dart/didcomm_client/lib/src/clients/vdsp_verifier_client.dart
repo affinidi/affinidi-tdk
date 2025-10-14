@@ -209,6 +209,12 @@ class VdspVerifierClient extends DidcommBaseClient {
                 null,
               );
             }
+          } else {
+            onDataResponse(
+              responseMessage,
+              false,
+              verifiablePresentation,
+            );
           }
 
           return;
