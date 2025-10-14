@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart'
-    hide Disclosure;
+    show SdJwtHandlerV1;
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -54,24 +54,34 @@ class VdspHolderClient extends DidcommBaseClient {
     );
   }
 
-  Future<DiscloseMessage> disclose({
+  List<Disclosure> getDisclosures({
     required QueryMessage queryMessage,
-  }) async {
-    final verifierDid = queryMessage.from;
-
-    if (verifierDid == null) {
-      throw StateError('Query message is missing verifier.');
-    }
-
+  }) {
     final rawBody = queryMessage.body;
 
     if (rawBody == null) {
-      throw StateError('Query message body is missing.');
+      throw ArgumentError.notNull('queryMessage.body');
     }
 
     final queryBody = QueryBody.fromJson(
       Map<String, dynamic>.from(rawBody),
     );
+
+    return FeatureDiscoveryHelper.getSupportedFeatures(
+      featureDisclosures,
+      queryBody.queries,
+    );
+  }
+
+  Future<DiscloseMessage> disclose({
+    required QueryMessage queryMessage,
+    required List<Disclosure> featureDisclosures,
+  }) async {
+    final verifierDid = queryMessage.from;
+
+    if (verifierDid == null) {
+      throw ArgumentError.notNull('queryMessage.from');
+    }
 
     final message = DiscloseMessage(
       id: const Uuid().v4(),
@@ -79,10 +89,7 @@ class VdspHolderClient extends DidcommBaseClient {
       to: [verifierDid],
       threadId: queryMessage.threadId ?? queryMessage.id,
       body: DiscloseBody(
-        disclosures: FeatureDiscoveryHelper.getSupportedFeatures(
-          featureDisclosures,
-          queryBody.queries,
-        ),
+        disclosures: featureDisclosures,
       ),
     );
 
@@ -143,6 +150,7 @@ class VdspHolderClient extends DidcommBaseClient {
       id: const Uuid().v4(),
       from: mediatorClient.signer.did,
       to: [verifierDid],
+      threadId: requestMessage.threadId,
       body: VdspDataResponseBody(
         operation: operation,
         dataQueryLanguage: dataQueryLanguage,
@@ -150,7 +158,6 @@ class VdspHolderClient extends DidcommBaseClient {
         dataResponse: verifiablePresentation,
         comment: comment,
       ).toJson(),
-      threadId: requestMessage.threadId,
     );
 
     await mediatorClient.packAndSendMessage(
@@ -332,7 +339,11 @@ class VdspHolderClient extends DidcommBaseClient {
     }
 
     return verifiableCredentials
-        .where((credential) => filteredVcIds.contains(credential.id.toString()))
+        .where(
+          (credential) => filteredVcIds.contains(
+            credential.id.toString(),
+          ),
+        )
         .toList();
   }
 

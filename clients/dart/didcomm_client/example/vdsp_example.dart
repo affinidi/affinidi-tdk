@@ -271,12 +271,19 @@ Future<void> main() async {
         object: message,
       );
 
-      // is trusted verifier
-      // if (message.from == verifierDid) {
-      await holderClient.disclose(
+      // here you can check if this is a trusted verifier
+      // e.g. by checking the `message.from` value
+
+      final disclosures = holderClient.getDisclosures(
         queryMessage: message,
       );
-      // }
+
+      // here you can check if those are the right disclosures to share
+
+      await holderClient.disclose(
+        queryMessage: message,
+        featureDisclosures: disclosures,
+      );
     },
     onDataRequest: (message) async {
       prettyPrint(
