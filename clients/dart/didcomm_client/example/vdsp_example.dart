@@ -132,7 +132,10 @@ Future<void> main() async {
         format: CredentialFormat.ldpVc,
         claims: [
           DcqlClaim(
-            path: ['credentialSubject', 'email'],
+            path: [
+              'credentialSubject',
+              'email',
+            ],
           ),
         ],
       ),
@@ -286,7 +289,7 @@ Future<void> main() async {
         verifiableCredentials: holderVerifiableCredentials,
       );
 
-      // the app can decice which credentials to share
+      // the app can decide which credentials to share
       // e.g. based on the operation requested
       // here we share all the filtered credentials
 

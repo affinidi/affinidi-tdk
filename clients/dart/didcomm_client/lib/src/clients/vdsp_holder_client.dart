@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:dcql/dcql.dart';
+import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart'
+    hide Disclosure;
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -12,6 +14,7 @@ import '../messages/vdsp/vdsp_data_processing_result_message.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
 import '../models/constants/data_query_language.dart';
+import '../models/constants/verifiable_credentials_data_model.dart';
 import 'didcomm_base_client.dart';
 
 class VdspHolderClient extends DidcommBaseClient {
@@ -100,42 +103,19 @@ class VdspHolderClient extends DidcommBaseClient {
     }
 
     final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
-    final List<ParsedVerifiableCredential<dynamic>> filtered;
 
-    switch (dataQueryLanguage) {
-      case DataQueryLanguage.dcql:
-        final dcqlQuery = DcqlCredentialQuery.fromJson(
-          Map<String, dynamic>.from(requestBody.query),
-        );
-
-        final digitalCredentials = verifiableCredentials.map((vc) {
-          return W3CDigitalCredential.fromLdVcDataModelV1(
-            vc.toJson(),
-          );
-        }).toList();
-
-        final result = dcqlQuery.query(
-          digitalCredentials,
-        );
-
-        final ids = result.verifiableCredentials.values
-            .expand((list) => list.map(
-                (credential) => credential.getValueByPath(['id']) as String))
-            .toSet();
-
-        filtered = verifiableCredentials
-            .where((credential) => ids.contains(credential.id.toString()))
-            .toList();
-
-        break;
-    }
-
-    return filtered;
+    return _runDataQuery(
+      dataQueryLanguage: dataQueryLanguage,
+      requestBody: requestBody,
+      verifiableCredentials: verifiableCredentials,
+    );
   }
 
   Future<VdspDataResponseMessage> shareData({
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
+    VerifiableCredentialsDataModel verifiablePresentationDataModel =
+        VerifiableCredentialsDataModel.v2,
     required List<ParsedVerifiableCredential> verifiableCredentials,
     required DidSigner verifiablePresentationSigner,
     String? operation,
@@ -150,32 +130,13 @@ class VdspHolderClient extends DidcommBaseClient {
     }
 
     final verifierDid = requestMessage.from!;
-
     final requestBody = VdspQueryDataBody.fromJson(requestMessage.body!);
-    final proofContext = requestBody.proofContext;
 
-    final unsignedVerifiablePresentation = MutableVpDataModelV1(
-      context: [dmV1ContextUrl],
-      id: Uri.parse(const Uuid().v4()),
-      type: {'VerifiablePresentation'},
-      holder: MutableHolder.uri(signer.did),
-      verifiableCredential: verifiableCredentials,
-    );
-
-    // TODO: select proof generator based on key pair type
-    final proofGenerator = DataIntegrityEcdsaJcsGenerator(
-      signer: verifiablePresentationSigner,
-      challenge: proofContext?.challenge,
-      domain: proofContext != null ? [proofContext.domain] : null,
-    );
-
-    final suite = LdVpDm1Suite();
-
-    final verifiablePresentation = await suite.issue(
-      unsignedData: VpDataModelV1.fromMutable(
-        unsignedVerifiablePresentation,
-      ),
-      proofGenerator: proofGenerator,
+    final verifiablePresentation = await _createVerifiablePresentation(
+      verifiablePresentationDataModel: verifiablePresentationDataModel,
+      verifiableCredentials: verifiableCredentials,
+      verifiablePresentationSigner: verifiablePresentationSigner,
+      proofContext: requestBody.proofContext,
     );
 
     final responseMessage = VdspDataResponseMessage(
@@ -186,7 +147,7 @@ class VdspHolderClient extends DidcommBaseClient {
         operation: operation,
         dataQueryLanguage: dataQueryLanguage,
         responseFormat: requestBody.responseFormat,
-        dataResponse: verifiablePresentation.toJson(),
+        dataResponse: verifiablePresentation,
         comment: comment,
       ).toJson(),
       threadId: requestMessage.threadId,
@@ -231,7 +192,6 @@ class VdspHolderClient extends DidcommBaseClient {
           return;
         }
 
-        // TODO: replace with DataResponse message
         if (unpacked.type == VdspQueryDataMessage.messageType) {
           onDataRequest(
             VdspQueryDataMessage(
@@ -278,5 +238,142 @@ class VdspHolderClient extends DidcommBaseClient {
       onDone: onDone,
       cancelOnError: cancelOnError,
     );
+  }
+
+  Future<Map<String, dynamic>> _createVerifiablePresentation({
+    required VerifiableCredentialsDataModel verifiablePresentationDataModel,
+    required List<ParsedVerifiableCredential<dynamic>> verifiableCredentials,
+    required DidSigner verifiablePresentationSigner,
+    VdspQueryDataProofContext? proofContext,
+  }) async {
+    // TODO: select proof generator based on key pair type
+    final proofGenerator = DataIntegrityEcdsaJcsGenerator(
+      signer: verifiablePresentationSigner,
+      challenge: proofContext?.challenge,
+      domain: proofContext != null ? [proofContext.domain] : null,
+    );
+
+    switch (verifiablePresentationDataModel) {
+      case VerifiableCredentialsDataModel.v1:
+        {
+          final unsignedVerifiablePresentation = MutableVpDataModelV1(
+            context: [dmV1ContextUrl],
+            id: Uri.parse(const Uuid().v4()),
+            type: {'VerifiablePresentation'},
+            holder: MutableHolder.uri(signer.did),
+            verifiableCredential: verifiableCredentials,
+          );
+
+          final suite = LdVpDm1Suite();
+
+          final verifiablePresentation = await suite.issue(
+            unsignedData: VpDataModelV1.fromMutable(
+              unsignedVerifiablePresentation,
+            ),
+            proofGenerator: proofGenerator,
+          );
+
+          return verifiablePresentation.toJson();
+        }
+
+      case VerifiableCredentialsDataModel.v2:
+        {
+          final unsignedVerifiablePresentation = MutableVpDataModelV2(
+            context: [dmV2ContextUrl],
+            id: Uri.parse(const Uuid().v4()),
+            type: {'VerifiablePresentation'},
+            holder: MutableHolder.uri(signer.did),
+            verifiableCredential: verifiableCredentials,
+          );
+
+          final suite = LdVpDm2Suite();
+
+          final verifiablePresentation = await suite.issue(
+            unsignedData: VpDataModelV2.fromMutable(
+              unsignedVerifiablePresentation,
+            ),
+            proofGenerator: proofGenerator,
+          );
+
+          return verifiablePresentation.toJson();
+        }
+    }
+  }
+
+  List<ParsedVerifiableCredential<dynamic>> _runDataQuery({
+    required DataQueryLanguage dataQueryLanguage,
+    required VdspQueryDataBody requestBody,
+    required List<ParsedVerifiableCredential<dynamic>> verifiableCredentials,
+  }) {
+    final Set<String> filteredVcIds;
+
+    switch (dataQueryLanguage) {
+      case DataQueryLanguage.dcql:
+        final dcqlQuery = DcqlCredentialQuery.fromJson(
+          Map<String, dynamic>.from(requestBody.query),
+        );
+
+        final digitalCredentials = _convertToDcqlCredentials(
+          verifiableCredentials,
+        );
+
+        final result = dcqlQuery.query(
+          digitalCredentials,
+        );
+
+        filteredVcIds = result.verifiableCredentials.values
+            .expand((list) => list.map(
+                (credential) => credential.getValueByPath(['id']) as String))
+            .toSet();
+
+        break;
+      // case DataQueryLanguage.per:
+      // case DataQueryLanguage.sql:
+    }
+
+    return verifiableCredentials
+        .where((credential) => filteredVcIds.contains(credential.id.toString()))
+        .toList();
+  }
+
+  List<W3CDigitalCredential> _convertToDcqlCredentials(
+    List<ParsedVerifiableCredential<dynamic>> verifiableCredentials,
+  ) {
+    final unsupportedError = UnsupportedError(
+      'Unsupported credential format. Only LDP VC v1.0, LDP VC v2.0 and SD-JWT are supported.',
+    );
+
+    return verifiableCredentials.map(
+      (vc) {
+        if (vc.context.contains(dmV1ContextUrl)) {
+          return W3CDigitalCredential.fromLdVcDataModelV1(
+            vc.toJson(),
+          );
+        }
+
+        if (vc.context.contains(dmV2ContextUrl)) {
+          return W3CDigitalCredential.fromLdVcDataModelV2(
+            vc.toJson(),
+          );
+        }
+
+        final sdJwtHandler = SdJwtHandlerV1();
+
+        if (vc.serialized is String) {
+          // TODO: find a better way to check if it's SD-JWT
+          try {
+            final sdJwt = sdJwtHandler.unverifiedDecode(
+              sdJwtToken: vc.serialized as String,
+            );
+
+            return W3CDigitalCredential.fromSdJwt(sdJwt);
+          } catch (_) {
+            throw unsupportedError;
+          }
+        }
+
+        throw unsupportedError;
+      },
+    ).toList();
   }
 }
