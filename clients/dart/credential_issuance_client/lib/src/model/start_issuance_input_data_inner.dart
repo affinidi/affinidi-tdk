@@ -18,9 +18,11 @@ part 'start_issuance_input_data_inner.g.dart';
 /// * [credentialTypeId] - It is a String that identifies a Credential that is being requested to be issued.
 /// * [credentialData] - Object of data to be included in the issued credential ,should  match the credential type
 /// * [statusListDetails] - Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.
-/// * [metaData] 
+/// * [metaData]
 @BuiltValue()
-abstract class StartIssuanceInputDataInner implements Built<StartIssuanceInputDataInner, StartIssuanceInputDataInnerBuilder> {
+abstract class StartIssuanceInputDataInner
+    implements
+        Built<StartIssuanceInputDataInner, StartIssuanceInputDataInnerBuilder> {
   /// It is a String that identifies a Credential that is being requested to be issued.
   @BuiltValueField(wireName: r'credentialTypeId')
   String get credentialTypeId;
@@ -31,25 +33,33 @@ abstract class StartIssuanceInputDataInner implements Built<StartIssuanceInputDa
 
   /// Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.
   @BuiltValueField(wireName: r'statusListDetails')
-  BuiltList<StartIssuanceInputDataInnerStatusListDetailsInner>? get statusListDetails;
+  BuiltList<StartIssuanceInputDataInnerStatusListDetailsInner>?
+      get statusListDetails;
 
   @BuiltValueField(wireName: r'metaData')
   StartIssuanceInputDataInnerMetaData? get metaData;
 
   StartIssuanceInputDataInner._();
 
-  factory StartIssuanceInputDataInner([void updates(StartIssuanceInputDataInnerBuilder b)]) = _$StartIssuanceInputDataInner;
+  factory StartIssuanceInputDataInner(
+          [void updates(StartIssuanceInputDataInnerBuilder b)]) =
+      _$StartIssuanceInputDataInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(StartIssuanceInputDataInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<StartIssuanceInputDataInner> get serializer => _$StartIssuanceInputDataInnerSerializer();
+  static Serializer<StartIssuanceInputDataInner> get serializer =>
+      _$StartIssuanceInputDataInnerSerializer();
 }
 
-class _$StartIssuanceInputDataInnerSerializer implements PrimitiveSerializer<StartIssuanceInputDataInner> {
+class _$StartIssuanceInputDataInnerSerializer
+    implements PrimitiveSerializer<StartIssuanceInputDataInner> {
   @override
-  final Iterable<Type> types = const [StartIssuanceInputDataInner, _$StartIssuanceInputDataInner];
+  final Iterable<Type> types = const [
+    StartIssuanceInputDataInner,
+    _$StartIssuanceInputDataInner
+  ];
 
   @override
   final String wireName = r'StartIssuanceInputDataInner';
@@ -67,13 +77,15 @@ class _$StartIssuanceInputDataInnerSerializer implements PrimitiveSerializer<Sta
     yield r'credentialData';
     yield serializers.serialize(
       object.credentialData,
-      specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+      specifiedType: const FullType(
+          BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
     );
     if (object.statusListDetails != null) {
       yield r'statusListDetails';
       yield serializers.serialize(
         object.statusListDetails,
-        specifiedType: const FullType(BuiltList, [FullType(StartIssuanceInputDataInnerStatusListDetailsInner)]),
+        specifiedType: const FullType(BuiltList,
+            [FullType(StartIssuanceInputDataInnerStatusListDetailsInner)]),
       );
     }
     if (object.metaData != null) {
@@ -91,7 +103,9 @@ class _$StartIssuanceInputDataInnerSerializer implements PrimitiveSerializer<Sta
     StartIssuanceInputDataInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -116,14 +130,16 @@ class _$StartIssuanceInputDataInnerSerializer implements PrimitiveSerializer<Sta
         case r'credentialData':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.credentialData.replace(valueDes);
           break;
         case r'statusListDetails':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(StartIssuanceInputDataInnerStatusListDetailsInner)]),
+            specifiedType: const FullType(BuiltList,
+                [FullType(StartIssuanceInputDataInnerStatusListDetailsInner)]),
           ) as BuiltList<StartIssuanceInputDataInnerStatusListDetailsInner>;
           result.statusListDetails.replace(valueDes);
           break;
@@ -162,4 +178,3 @@ class _$StartIssuanceInputDataInnerSerializer implements PrimitiveSerializer<Sta
     return result.build();
   }
 }
-

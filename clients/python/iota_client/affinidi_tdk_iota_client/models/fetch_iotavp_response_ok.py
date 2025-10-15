@@ -29,7 +29,6 @@ class FetchIOTAVPResponseOK(BaseModel):
     correlation_id: Optional[StrictStr] = Field(default=None, alias="correlationId", description="A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.")
     presentation_submission: Optional[StrictStr] = Field(default=None, description="A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.")
     vp_token: Optional[StrictStr] = Field(default=None, description="A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.")
-    additional_properties: Dict[str, Any] = {}
     __properties = ["correlationId", "presentation_submission", "vp_token"]
 
     class Config:
@@ -54,14 +53,8 @@ class FetchIOTAVPResponseOK(BaseModel):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True,
                           exclude={
-                            "additional_properties"
                           },
                           exclude_none=True)
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -78,11 +71,6 @@ class FetchIOTAVPResponseOK(BaseModel):
             "presentation_submission": obj.get("presentation_submission"),
             "vp_token": obj.get("vp_token")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

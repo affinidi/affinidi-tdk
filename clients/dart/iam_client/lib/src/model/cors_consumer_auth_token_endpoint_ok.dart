@@ -11,26 +11,36 @@ part 'cors_consumer_auth_token_endpoint_ok.g.dart';
 /// CorsConsumerAuthTokenEndpointOK
 ///
 /// Properties:
-/// * [corsConsumerAuthTokenEndpointOk] 
+/// * [corsConsumerAuthTokenEndpointOk]
 @BuiltValue()
-abstract class CorsConsumerAuthTokenEndpointOK implements Built<CorsConsumerAuthTokenEndpointOK, CorsConsumerAuthTokenEndpointOKBuilder> {
+abstract class CorsConsumerAuthTokenEndpointOK
+    implements
+        Built<CorsConsumerAuthTokenEndpointOK,
+            CorsConsumerAuthTokenEndpointOKBuilder> {
   @BuiltValueField(wireName: r'corsConsumerAuthTokenEndpointOk')
   String? get corsConsumerAuthTokenEndpointOk;
 
   CorsConsumerAuthTokenEndpointOK._();
 
-  factory CorsConsumerAuthTokenEndpointOK([void updates(CorsConsumerAuthTokenEndpointOKBuilder b)]) = _$CorsConsumerAuthTokenEndpointOK;
+  factory CorsConsumerAuthTokenEndpointOK(
+          [void updates(CorsConsumerAuthTokenEndpointOKBuilder b)]) =
+      _$CorsConsumerAuthTokenEndpointOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsConsumerAuthTokenEndpointOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsConsumerAuthTokenEndpointOK> get serializer => _$CorsConsumerAuthTokenEndpointOKSerializer();
+  static Serializer<CorsConsumerAuthTokenEndpointOK> get serializer =>
+      _$CorsConsumerAuthTokenEndpointOKSerializer();
 }
 
-class _$CorsConsumerAuthTokenEndpointOKSerializer implements PrimitiveSerializer<CorsConsumerAuthTokenEndpointOK> {
+class _$CorsConsumerAuthTokenEndpointOKSerializer
+    implements PrimitiveSerializer<CorsConsumerAuthTokenEndpointOK> {
   @override
-  final Iterable<Type> types = const [CorsConsumerAuthTokenEndpointOK, _$CorsConsumerAuthTokenEndpointOK];
+  final Iterable<Type> types = const [
+    CorsConsumerAuthTokenEndpointOK,
+    _$CorsConsumerAuthTokenEndpointOK
+  ];
 
   @override
   final String wireName = r'CorsConsumerAuthTokenEndpointOK';
@@ -55,7 +65,9 @@ class _$CorsConsumerAuthTokenEndpointOKSerializer implements PrimitiveSerializer
     CorsConsumerAuthTokenEndpointOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +117,3 @@ class _$CorsConsumerAuthTokenEndpointOKSerializer implements PrimitiveSerializer
     return result.build();
   }
 }
-

@@ -11,26 +11,34 @@ part 'cors_get_well_known_jwks_ok.g.dart';
 /// CorsGetWellKnownJwksOK
 ///
 /// Properties:
-/// * [corsGetWellKnownJwksOk] 
+/// * [corsGetWellKnownJwksOk]
 @BuiltValue()
-abstract class CorsGetWellKnownJwksOK implements Built<CorsGetWellKnownJwksOK, CorsGetWellKnownJwksOKBuilder> {
+abstract class CorsGetWellKnownJwksOK
+    implements Built<CorsGetWellKnownJwksOK, CorsGetWellKnownJwksOKBuilder> {
   @BuiltValueField(wireName: r'corsGetWellKnownJwksOk')
   String? get corsGetWellKnownJwksOk;
 
   CorsGetWellKnownJwksOK._();
 
-  factory CorsGetWellKnownJwksOK([void updates(CorsGetWellKnownJwksOKBuilder b)]) = _$CorsGetWellKnownJwksOK;
+  factory CorsGetWellKnownJwksOK(
+          [void updates(CorsGetWellKnownJwksOKBuilder b)]) =
+      _$CorsGetWellKnownJwksOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsGetWellKnownJwksOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsGetWellKnownJwksOK> get serializer => _$CorsGetWellKnownJwksOKSerializer();
+  static Serializer<CorsGetWellKnownJwksOK> get serializer =>
+      _$CorsGetWellKnownJwksOKSerializer();
 }
 
-class _$CorsGetWellKnownJwksOKSerializer implements PrimitiveSerializer<CorsGetWellKnownJwksOK> {
+class _$CorsGetWellKnownJwksOKSerializer
+    implements PrimitiveSerializer<CorsGetWellKnownJwksOK> {
   @override
-  final Iterable<Type> types = const [CorsGetWellKnownJwksOK, _$CorsGetWellKnownJwksOK];
+  final Iterable<Type> types = const [
+    CorsGetWellKnownJwksOK,
+    _$CorsGetWellKnownJwksOK
+  ];
 
   @override
   final String wireName = r'CorsGetWellKnownJwksOK';
@@ -55,7 +63,9 @@ class _$CorsGetWellKnownJwksOKSerializer implements PrimitiveSerializer<CorsGetW
     CorsGetWellKnownJwksOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +115,3 @@ class _$CorsGetWellKnownJwksOKSerializer implements PrimitiveSerializer<CorsGetW
     return result.build();
   }
 }
-

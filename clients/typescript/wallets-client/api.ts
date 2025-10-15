@@ -96,6 +96,74 @@ export interface CreateWalletResponse {
 /**
  *
  * @export
+ * @interface CreateWalletV2Input
+ */
+export interface CreateWalletV2Input {
+  /**
+   * The name of the wallet
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  name?: string
+  /**
+   * The description of the wallet
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  description?: string
+  /**
+   * Define how DID of your wallet is created and resolved
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  didMethod?: CreateWalletV2InputDidMethodEnum
+  /**
+   * URL of the DID. Required if the did method is web
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  didWebUrl?: string
+  /**
+   * algorithm to generate key for the wallet
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  algorithm?: CreateWalletV2InputAlgorithmEnum
+}
+
+export const CreateWalletV2InputDidMethodEnum = {
+  Key: 'key',
+  Web: 'web',
+  Peer0: 'peer0',
+} as const
+
+export type CreateWalletV2InputDidMethodEnum =
+  (typeof CreateWalletV2InputDidMethodEnum)[keyof typeof CreateWalletV2InputDidMethodEnum]
+export const CreateWalletV2InputAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+} as const
+
+export type CreateWalletV2InputAlgorithmEnum =
+  (typeof CreateWalletV2InputAlgorithmEnum)[keyof typeof CreateWalletV2InputAlgorithmEnum]
+
+/**
+ * wallet dto
+ * @export
+ * @interface CreateWalletV2Response
+ */
+export interface CreateWalletV2Response {
+  /**
+   *
+   * @type {WalletV2Dto}
+   * @memberof CreateWalletV2Response
+   */
+  wallet?: WalletV2Dto
+}
+/**
+ *
+ * @export
  * @interface EntityNotFoundError
  */
 export interface EntityNotFoundError {
@@ -815,6 +883,32 @@ export interface SignJwtTokenOK {
   signedJwt?: string
 }
 /**
+ * DTO contains params to sign presentation
+ * @export
+ * @interface SignPresentationLdpInputDto
+ */
+export interface SignPresentationLdpInputDto {
+  /**
+   * Unsigned presentation in Dm1 format
+   * @type {object}
+   * @memberof SignPresentationLdpInputDto
+   */
+  unsignedPresentation: object
+}
+/**
+ * DTO contains signed presentation
+ * @export
+ * @interface SignPresentationLdpResultDto
+ */
+export interface SignPresentationLdpResultDto {
+  /**
+   * Signed presentation in Dm1Ld format
+   * @type {object}
+   * @memberof SignPresentationLdpResultDto
+   */
+  presentation: object
+}
+/**
  *
  * @export
  * @interface SigningFailedError
@@ -969,6 +1063,73 @@ export interface WalletDtoKeysInner {
    * @memberof WalletDtoKeysInner
    */
   ari?: string
+}
+/**
+ * wallet v2 dto
+ * @export
+ * @interface WalletV2Dto
+ */
+export interface WalletV2Dto {
+  /**
+   * id of the wallet in uuidV4 format
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  id?: string
+  /**
+   * did of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  did?: string
+  /**
+   * The name of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  name?: string
+  /**
+   * The description of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  description?: string
+  /**
+   * did document of the wallet
+   * @type {object}
+   * @memberof WalletV2Dto
+   */
+  didDocument?: object
+  /**
+   * ARI of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  ari?: string
+  /**
+   * algorithm used to generate key for the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  algorithm?: string
+  /**
+   *
+   * @type {Array<WalletDtoKeysInner>}
+   * @memberof WalletV2Dto
+   */
+  keys?: Array<WalletDtoKeysInner>
+  /**
+   *
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  createdAt?: string
+  /**
+   *
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  modifiedAt?: string
 }
 /**
  * list of wallets

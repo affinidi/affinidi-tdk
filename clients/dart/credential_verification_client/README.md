@@ -1,10 +1,10 @@
-# affinidi_tdk_credential_verification_client (EXPERIMENTAL)
+# affinidi_tdk_credential_verification_client
 
 Affinidi TDK dart client for Affinidi CREDENTIAL VERIFICATION
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -80,8 +80,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
 - [Constraints](doc/Constraints.md)
 - [ConstraintsStatuses](doc/ConstraintsStatuses.md)
-- [CredentialRequirements](doc/CredentialRequirements.md)
-- [CredentialRequirementsConstraints](doc/CredentialRequirementsConstraints.md)
 - [Descriptor](doc/Descriptor.md)
 - [Error](doc/Error.md)
 - [ErrorDetail](doc/ErrorDetail.md)
@@ -110,6 +108,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [VerifyCredentialV2Input](doc/VerifyCredentialV2Input.md)
 - [VerifyPresentationInput](doc/VerifyPresentationInput.md)
 - [VerifyPresentationOutput](doc/VerifyPresentationOutput.md)
+- [VerifyPresentationV2Input](doc/VerifyPresentationV2Input.md)
 - [W3cCredentialStatus](doc/W3cCredentialStatus.md)
 - [W3cProof](doc/W3cProof.md)
 

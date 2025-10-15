@@ -11,24 +11,28 @@ part 'sign_jwt_token_ok.g.dart';
 /// SignJwtTokenOK
 ///
 /// Properties:
-/// * [signedJwt] 
+/// * [signedJwt]
 @BuiltValue()
-abstract class SignJwtTokenOK implements Built<SignJwtTokenOK, SignJwtTokenOKBuilder> {
+abstract class SignJwtTokenOK
+    implements Built<SignJwtTokenOK, SignJwtTokenOKBuilder> {
   @BuiltValueField(wireName: r'signedJwt')
   String? get signedJwt;
 
   SignJwtTokenOK._();
 
-  factory SignJwtTokenOK([void updates(SignJwtTokenOKBuilder b)]) = _$SignJwtTokenOK;
+  factory SignJwtTokenOK([void updates(SignJwtTokenOKBuilder b)]) =
+      _$SignJwtTokenOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SignJwtTokenOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SignJwtTokenOK> get serializer => _$SignJwtTokenOKSerializer();
+  static Serializer<SignJwtTokenOK> get serializer =>
+      _$SignJwtTokenOKSerializer();
 }
 
-class _$SignJwtTokenOKSerializer implements PrimitiveSerializer<SignJwtTokenOK> {
+class _$SignJwtTokenOKSerializer
+    implements PrimitiveSerializer<SignJwtTokenOK> {
   @override
   final Iterable<Type> types = const [SignJwtTokenOK, _$SignJwtTokenOK];
 
@@ -55,7 +59,9 @@ class _$SignJwtTokenOKSerializer implements PrimitiveSerializer<SignJwtTokenOK> 
     SignJwtTokenOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +111,3 @@ class _$SignJwtTokenOKSerializer implements PrimitiveSerializer<SignJwtTokenOK> 
     return result.build();
   }
 }
-
