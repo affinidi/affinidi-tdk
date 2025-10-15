@@ -13,6 +13,7 @@ import '../extensions/did_manager_extention.dart';
 import '../messages/vdsp/vdsp_data_processing_result_message.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
+import '../models/constants/data_integrity_proof_suite.dart';
 import '../models/constants/data_query_language.dart';
 import '../models/constants/verifiable_credentials_data_model.dart';
 import '../models/results/data_query_result.dart';
@@ -125,6 +126,7 @@ class VdspHolderClient extends DidcommBaseClient {
         VerifiableCredentialsDataModel.v2,
     required List<ParsedVerifiableCredential> verifiableCredentials,
     required DidSigner verifiablePresentationSigner,
+    required DataIntegrityProofSuite verifiablePresentationProofSuite,
     String? operation,
     String? comment,
   }) async {
@@ -143,6 +145,7 @@ class VdspHolderClient extends DidcommBaseClient {
       verifiablePresentationDataModel: verifiablePresentationDataModel,
       verifiableCredentials: verifiableCredentials,
       verifiablePresentationSigner: verifiablePresentationSigner,
+      verifiablePresentationProofSuite: verifiablePresentationProofSuite,
       proofContext: requestBody.proofContext,
     );
 
@@ -250,14 +253,33 @@ class VdspHolderClient extends DidcommBaseClient {
     required VerifiableCredentialsDataModel verifiablePresentationDataModel,
     required List<ParsedVerifiableCredential<dynamic>> verifiableCredentials,
     required DidSigner verifiablePresentationSigner,
+    required DataIntegrityProofSuite verifiablePresentationProofSuite,
     VdspQueryDataProofContext? proofContext,
   }) async {
-    // TODO: select proof generator based on key pair type
-    final proofGenerator = DataIntegrityEcdsaJcsGenerator(
-      signer: verifiablePresentationSigner,
-      challenge: proofContext?.challenge,
-      domain: proofContext != null ? [proofContext.domain] : null,
-    );
+    final proofGenerator = switch (verifiablePresentationProofSuite) {
+      DataIntegrityProofSuite.ecdsa_jcs_2019 => DataIntegrityEcdsaJcsGenerator(
+          signer: verifiablePresentationSigner,
+          challenge: proofContext?.challenge,
+          domain: proofContext != null ? [proofContext.domain] : null,
+        ) as EmbeddedProofGenerator,
+      DataIntegrityProofSuite.eddsa_jcs_2022 => DataIntegrityEddsaJcsGenerator(
+          signer: verifiablePresentationSigner,
+          challenge: proofContext?.challenge,
+          domain: proofContext != null ? [proofContext.domain] : null,
+        ) as EmbeddedProofGenerator,
+      DataIntegrityProofSuite.ecdsa_rdfc_2019 =>
+        DataIntegrityEcdsaRdfcGenerator(
+          signer: verifiablePresentationSigner,
+          challenge: proofContext?.challenge,
+          domain: proofContext != null ? [proofContext.domain] : null,
+        ) as EmbeddedProofGenerator,
+      DataIntegrityProofSuite.eddsa_rdfc_2022 =>
+        DataIntegrityEddsaRdfcGenerator(
+          signer: verifiablePresentationSigner,
+          challenge: proofContext?.challenge,
+          domain: proofContext != null ? [proofContext.domain] : null,
+        ) as EmbeddedProofGenerator,
+    };
 
     switch (verifiablePresentationDataModel) {
       case VerifiableCredentialsDataModel.v1:
@@ -266,7 +288,7 @@ class VdspHolderClient extends DidcommBaseClient {
             context: [dmV1ContextUrl],
             id: Uri.parse(const Uuid().v4()),
             type: {'VerifiablePresentation'},
-            holder: MutableHolder.uri(signer.did),
+            holder: MutableHolder.uri(verifiablePresentationSigner.did),
             verifiableCredential: verifiableCredentials,
           );
 
@@ -288,7 +310,7 @@ class VdspHolderClient extends DidcommBaseClient {
             context: [dmV2ContextUrl],
             id: Uri.parse(const Uuid().v4()),
             type: {'VerifiablePresentation'},
-            holder: MutableHolder.uri(signer.did),
+            holder: MutableHolder.uri(verifiablePresentationSigner.did),
             verifiableCredential: verifiableCredentials,
           );
 
