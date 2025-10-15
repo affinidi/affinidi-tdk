@@ -6,7 +6,9 @@ enum CredentialFormat {
   @JsonValue('w3c/v1')
   w3cV1('w3c/v1'),
   @JsonValue('w3c/v2')
-  w3cV2('w3c/v2');
+  w3cV2('w3c/v2'),
+  @JsonValue('jwt_vc')
+  jwtVc('jwt_vc');
 
   final String value;
   const CredentialFormat(this.value);
