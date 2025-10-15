@@ -96,4 +96,66 @@ class FeatureDiscoveryHelper {
       JsonWebSignatureAlgorithm.EdDSA.value,
     ]
   };
+
+  static final _vdipBaseConfig = <FeatureType, List<String>>{
+    FeatureType.protocol: [
+      'https://affinidi.com/didcomm/protocols/vdip/1.0',
+    ],
+    FeatureType.credentialFormat: [
+      CredentialFormat.sdJwtVc.value,
+      CredentialFormat.w3cV1.value,
+      CredentialFormat.w3cV2.value,
+      CredentialFormat.jwtVc.value,
+    ],
+    FeatureType.dataIntegrityProofSuite: [
+      DataIntegrityProofSuite.ecdsa_rdfc_2019.value,
+      DataIntegrityProofSuite.eddsa_rdfc_2022.value,
+      DataIntegrityProofSuite.ecdsa_jcs_2019.value,
+      DataIntegrityProofSuite.eddsa_jcs_2022.value,
+    ],
+    FeatureType.jsonWebSignatureAlgorithm: [
+      JsonWebSignatureAlgorithm.ES256.value,
+      JsonWebSignatureAlgorithm.ES384.value,
+      JsonWebSignatureAlgorithm.ES512.value,
+      JsonWebSignatureAlgorithm.ES256K.value,
+      JsonWebSignatureAlgorithm.EdDSA.value,
+    ]
+  };
+
+  static final List<Disclosure> vdipFeatureDisclosures = _vdipBaseConfig.entries
+      .expand(
+        (entry) => entry.value.map(
+          (item) => Disclosure(
+            featureType: entry.key.value,
+            id: item,
+          ),
+        ),
+      )
+      .toList();
+
+  static final List<Disclosure> defaultFeatureDisclosuresOfHolderForVdip =
+      FeatureDiscoveryHelper.vdipFeatureDisclosures
+          .map(
+            (disclosure) => Disclosure(
+              featureType: disclosure.featureType,
+              id: disclosure.id,
+              roles: disclosure.featureType == FeatureType.protocol.name
+                  ? ['holder']
+                  : null,
+            ),
+          )
+          .toList();
+
+  static final List<Disclosure> defaultFeatureDisclosuresOfIssuerForVdip =
+      FeatureDiscoveryHelper.vdipFeatureDisclosures
+          .map(
+            (disclosure) => Disclosure(
+              featureType: disclosure.featureType,
+              id: disclosure.id,
+              roles: disclosure.featureType == FeatureType.protocol.name
+                  ? ['issuer']
+                  : null,
+            ),
+          )
+          .toList();
 }

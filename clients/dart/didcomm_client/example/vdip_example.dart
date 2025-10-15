@@ -134,9 +134,8 @@ Future<void> main() async {
   };
 
   final featureQueries = [
-    // TODO: add vdip features
     ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-      FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+      FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolderForVdip,
     ),
     Query(
       featureType: FeatureType.operation.value,
@@ -147,6 +146,8 @@ Future<void> main() async {
   // holder
   final vdipHolderClient = await VdipHolderClient.init(
     didManager: holderDidManager,
+    featureDisclosures:
+        FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolderForVdip,
   );
 
   final vdspHolderClient = await VdspHolderClient.init(
@@ -243,6 +244,8 @@ Future<void> main() async {
 
   final issuerVdipClient = await VdipIssuerClient.init(
     didManager: issuerDidManager,
+    featureDisclosures:
+        FeatureDiscoveryHelper.defaultFeatureDisclosuresOfIssuerForVdip,
   );
 
   final vdspIssuerClient = await VdspVerifierClient.init(
@@ -250,10 +253,14 @@ Future<void> main() async {
   );
 
   issuerVdipClient.listenForIncomingMessages(
-    onFeatureQuery: (message) {
+    onFeatureQuery: (message) async {
       prettyPrint(
         'Issuer received Feature Query Message',
         object: message,
+      );
+
+      await issuerVdipClient.disclose(
+        queryMessage: message,
       );
     },
     onRequestToIssueCredentials: (message) async {

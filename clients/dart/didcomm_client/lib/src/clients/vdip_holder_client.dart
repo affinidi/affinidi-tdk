@@ -5,18 +5,25 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
+import '../common/feature_discovery_helper.dart';
 import '../extensions/did_manager_extention.dart';
 import 'didcomm_base_client.dart';
 
 class VdipHolderClient extends DidcommBaseClient {
+  final List<Disclosure> featureDisclosures;
+  final DidSigner signer;
+
   VdipHolderClient({
     required super.didManager,
+    required this.signer,
     required super.mediatorClient,
+    required this.featureDisclosures,
     super.clientOptions = const ClientOptions(),
   });
 
   static Future<VdipHolderClient> init({
     required DidManager didManager,
+    required List<Disclosure> featureDisclosures,
     ClientOptions clientOptions = const ClientOptions(),
   }) async {
     final [mediatorDidDocument] = await Future.wait(
@@ -25,9 +32,13 @@ class VdipHolderClient extends DidcommBaseClient {
       ].map(UniversalDIDResolver.defaultResolver.resolveDid),
     );
 
+    final didDocument = await didManager.getDidDocument();
+
     return VdipHolderClient(
       didManager: didManager,
+      featureDisclosures: featureDisclosures,
       clientOptions: clientOptions,
+      signer: await didManager.getSigner(didDocument.assertionMethod.first.id),
       mediatorClient: await didManager.getMediatorClient(
         mediatorDidDocument: mediatorDidDocument,
         recipientDidDocuments: [],
@@ -55,6 +66,45 @@ class VdipHolderClient extends DidcommBaseClient {
     return message;
   }
 
+  Future<DiscloseMessage> disclose({
+    required QueryMessage queryMessage,
+  }) async {
+    final issuerDid = queryMessage.from;
+
+    if (issuerDid == null) {
+      throw StateError('Query message is missing issuer.');
+    }
+
+    final rawBody = queryMessage.body;
+
+    if (rawBody == null) {
+      throw StateError('Query message body is missing.');
+    }
+
+    final queryBody = QueryBody.fromJson(
+      Map<String, dynamic>.from(rawBody),
+    );
+
+    final message = DiscloseMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [issuerDid],
+      threadId: queryMessage.threadId ?? queryMessage.id,
+      body: DiscloseBody(
+        disclosures: FeatureDiscoveryHelper.getSupportedFeatures(
+          featureDisclosures,
+          queryBody.queries,
+        ),
+      ),
+    );
+
+    await mediatorClient.packAndSendMessage(
+      message: message,
+    );
+
+    return message;
+  }
+
   Future<PlainTextMessage> requestCredentials({
     required String issuerDid,
     required String credentialFormat,
@@ -64,6 +114,7 @@ class VdipHolderClient extends DidcommBaseClient {
   }
 
   StreamSubscription listenForIncomingMessages({
+    void Function(QueryMessage)? onFeatureQuery,
     void Function(DiscloseMessage)? onDiscloseMessage,
     required void Function(
       PlainTextMessage,
@@ -87,7 +138,23 @@ class VdipHolderClient extends DidcommBaseClient {
 
         final plainTextJson = unpacked.toJson();
 
-        // TODO: implement missing callbacks
+        if (onFeatureQuery != null &&
+            unpacked.type == QueryMessage.messageType) {
+          onFeatureQuery(
+            QueryMessage.fromJson(plainTextJson),
+          );
+
+          return;
+        }
+
+        if (onDiscloseMessage != null &&
+            unpacked.type == DiscloseMessage.messageType) {
+          onDiscloseMessage(
+            DiscloseMessage.fromJson(plainTextJson),
+          );
+
+          return;
+        }
 
         if (onProblemReport != null &&
             unpacked.type == ProblemReportMessage.messageType) {
