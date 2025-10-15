@@ -86,7 +86,6 @@ class VdspHolderClient extends DidcommBaseClient {
 
     final message = DiscloseMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [verifierDid],
       threadId: queryMessage.threadId ?? queryMessage.id,
       body: DiscloseBody(
@@ -149,7 +148,6 @@ class VdspHolderClient extends DidcommBaseClient {
 
     final responseMessage = VdspDataResponseMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [verifierDid],
       threadId: requestMessage.threadId,
       body: VdspDataResponseBody(

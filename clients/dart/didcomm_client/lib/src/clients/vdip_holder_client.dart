@@ -52,7 +52,6 @@ class VdipHolderClient extends DidcommBaseClient {
   }) async {
     final message = QueryMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [issuerDid],
       body: QueryBody(
         queries: featureQueries,

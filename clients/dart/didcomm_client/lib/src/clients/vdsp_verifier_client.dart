@@ -47,7 +47,6 @@ class VdspVerifierClient extends DidcommBaseClient {
   }) async {
     final message = QueryMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [holderDid],
       body: QueryBody(
         queries: featureQueries,
@@ -78,7 +77,6 @@ class VdspVerifierClient extends DidcommBaseClient {
 
     final message = VdspQueryDataMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [holderDid],
       body: VdspQueryDataBody(
         operation: operation,
@@ -104,7 +102,6 @@ class VdspVerifierClient extends DidcommBaseClient {
   }) async {
     final message = VdspDataProcessingResultMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [holderDid],
       body: VdspDataProcessingResultBody(
         operation: operation,

@@ -198,7 +198,6 @@ Future<void> main() async {
           message: ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
-            from: verifierClient.mediatorClient.signer.did,
             parentThreadId: message.threadId ?? message.id,
             body: ProblemReportBody(
               code: ProblemCode(
@@ -322,7 +321,6 @@ Future<void> main() async {
           message: ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
-            from: holderClient.signer.did,
             parentThreadId: message.threadId ?? message.id,
             body: ProblemReportBody(
               code: ProblemCode(

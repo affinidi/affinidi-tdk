@@ -12,8 +12,8 @@ class DeployMediatorInstanceMessage extends PlainTextMessage {
   /// Creates a deploy mediator instance message.
   DeployMediatorInstanceMessage({
     required super.id,
-    required super.from,
     required super.to,
+    super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},

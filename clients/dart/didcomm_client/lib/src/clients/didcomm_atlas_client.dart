@@ -44,7 +44,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final requestMessage = GetMediatorInstancesListMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [serviceDidDocument.id],
       body: GetMediatorInstancesListRequest(
         limit: limit,
@@ -72,7 +71,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final requestMessage = DeployMediatorInstanceMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [serviceDidDocument.id],
       body: deploymentData?.toJson() ?? {},
     );
@@ -98,7 +96,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final requestMessage = GetMediatorInstanceMetadataMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [serviceDidDocument.id],
       body: GetMediatorInstanceMetadataRequest(
         mediatorId: mediatorId,
@@ -125,7 +122,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final requestMessage = DestroyMediatorInstanceMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [serviceDidDocument.id],
       body: DestroyMediatorInstanceRequest(
         mediatorId: mediatorId,
@@ -153,7 +149,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final requestMessage = UpdateMediatorInstanceDeploymentMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [serviceDidDocument.id],
       body: deploymentData.toJson(),
     );
@@ -179,7 +174,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final requestMessage = UpdateMediatorInstanceConfigurationMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [serviceDidDocument.id],
       body: configurationData.toJson(),
     );
@@ -206,7 +200,6 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final requestMessage = GetMediatorRequestsMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [serviceDidDocument.id],
       body: GetMediatorRequestsRequest(
         mediatorId: mediatorId,

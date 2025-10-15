@@ -12,8 +12,8 @@ class DestroyMediatorInstanceMessage extends PlainTextMessage {
   /// Creates a destroy mediator instance message.
   DestroyMediatorInstanceMessage({
     required super.id,
-    required super.from,
     required super.to,
+    super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},
