@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
@@ -196,9 +194,26 @@ Future<void> main() async {
       );
 
       if (unsupportedFeatureDisclosures.isNotEmpty) {
-        throw UnsupportedError(
-          'Unsupported features: ${jsonEncode(unsupportedFeatureDisclosures)}',
+        await verifierClient.mediatorClient.packAndSendMessage(
+          message: ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            from: verifierClient.mediatorClient.signer.did,
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdsp',
+                  'features-not-supported',
+                ],
+              ),
+            ),
+          ),
         );
+
+        return;
       }
 
       await verifierClient.queryHolderData(
@@ -248,6 +263,8 @@ Future<void> main() async {
         'A problem has occurred',
         object: message,
       );
+
+      ConnectionPool.instance.stopConnections();
     },
   );
 
@@ -297,7 +314,30 @@ Future<void> main() async {
       );
 
       if (queryResult.dcqlResult?.fulfilled == false) {
-        throw StateError('The query could not be fulfilled by holder');
+        if (message.from == null) {
+          throw ArgumentError.notNull('message.from');
+        }
+
+        await holderClient.mediatorClient.packAndSendMessage(
+          message: ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            from: holderClient.signer.did,
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdsp',
+                  'data-not-found',
+                ],
+              ),
+            ),
+          ),
+        );
+
+        return;
       }
 
       // the app can decide which credentials to share
@@ -323,6 +363,8 @@ Future<void> main() async {
         'A problem has occurred',
         object: message,
       );
+
+      ConnectionPool.instance.stopConnections();
     },
   );
 
