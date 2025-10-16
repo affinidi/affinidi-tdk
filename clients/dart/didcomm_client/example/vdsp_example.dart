@@ -1,11 +1,13 @@
-import 'dart:convert';
-
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
+import 'package:affinidi_tdk_didcomm_client/src/messages/vdsp/vdsp_data_response_message.dart';
+import 'package:affinidi_tdk_didcomm_client/src/models/constants/data_integrity_proof_suite.dart';
 import 'package:affinidi_tdk_didcomm_client/src/models/constants/feature_type.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
 
@@ -96,12 +98,15 @@ Future<void> main() async {
             type: 'JsonSchemaValidator2018',
           ),
         ],
-        id: Uri.parse('claimId:ee3882a6b3058195'),
+        id: Uri.parse(const Uuid().v4()),
         issuer: Issuer.uri(issuerSigner.did),
         type: {'VerifiableCredential', 'Email'},
         issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
-          CredentialSubject.fromJson({'email': 'user@test.com'}),
+          CredentialSubject.fromJson({
+            'id': holderSigner.did,
+            'email': 'user@test.com',
+          }),
         ],
       ),
     ].map(
@@ -119,19 +124,22 @@ Future<void> main() async {
     ),
   );
 
-  const verifierDsql = {
-    'credentials': [
-      {
-        'id': 'example_ldp_vc',
-        'format': 'ldp_vc',
-        'claims': [
-          {
-            'path': ['credentialSubject', 'email']
-          },
-        ]
-      }
-    ]
-  };
+  final verifierDcql = DcqlCredentialQuery(
+    credentials: [
+      DcqlCredential(
+        id: const Uuid().v4(),
+        format: CredentialFormat.ldpVc,
+        claims: [
+          DcqlClaim(
+            path: [
+              'credentialSubject',
+              'email',
+            ],
+          ),
+        ],
+      ),
+    ],
+  );
 
   // verifier
 
@@ -187,14 +195,30 @@ Future<void> main() async {
       );
 
       if (unsupportedFeatureDisclosures.isNotEmpty) {
-        throw UnsupportedError(
-          'Unsupported features: ${jsonEncode(unsupportedFeatureDisclosures)}',
+        await verifierClient.mediatorClient.packAndSendMessage(
+          message: ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdsp',
+                  'features-not-supported',
+                ],
+              ),
+            ),
+          ),
         );
+
+        return;
       }
 
       await verifierClient.queryHolderData(
         holderDid: holderDid,
-        query: verifierDsql,
+        dcqlQuery: verifierDcql,
         operation: 'registerAgent',
         // TODO: uncomment when Dart SSI is fixed
         // proofContext: VdspQueryDataProofContext(
@@ -203,11 +227,13 @@ Future<void> main() async {
         // ),
       );
     },
-    onDataResponse: (
-      message,
-      presentationAndCredentialsValid,
-      verifiablePresentation,
-    ) async {
+    onDataResponse: ({
+      required VdspDataResponseMessage message,
+      required bool presentationAndCredentialsAreValid,
+      VerifiablePresentation? verifiablePresentation,
+      required VerificationResult presentationVerificationResult,
+      required List<VerificationResult> credentialVerificationResults,
+    }) async {
       prettyPrint(
         'Verifier received Data Response Message',
         object: message,
@@ -215,7 +241,7 @@ Future<void> main() async {
 
       prettyPrint(
         'VP and VCs are valid',
-        object: presentationAndCredentialsValid,
+        object: presentationAndCredentialsAreValid,
       );
 
       prettyPrint(
@@ -237,6 +263,8 @@ Future<void> main() async {
         'A problem has occurred',
         object: message,
       );
+
+      ConnectionPool.instance.stopConnections();
     },
   );
 
@@ -260,12 +288,19 @@ Future<void> main() async {
         object: message,
       );
 
-      // is trusted verifier
-      // if (message.from == verifierDid) {
-      await holderClient.disclose(
+      // here you can check if this is a trusted verifier
+      // e.g. by checking the `message.from` value
+
+      final disclosures = holderClient.getDisclosures(
         queryMessage: message,
       );
-      // }
+
+      // here you can check if those are the right disclosures to share
+
+      await holderClient.disclose(
+        queryMessage: message,
+        disclosures: disclosures,
+      );
     },
     onDataRequest: (message) async {
       prettyPrint(
@@ -273,15 +308,47 @@ Future<void> main() async {
         object: message,
       );
 
-      final credentialsToShare = await holderClient.filterVerifiableCredentials(
+      final queryResult = await holderClient.filterVerifiableCredentials(
         requestMessage: message,
         verifiableCredentials: holderVerifiableCredentials,
       );
 
+      if (queryResult.dcqlResult?.fulfilled == false) {
+        if (message.from == null) {
+          throw ArgumentError.notNull('message.from');
+        }
+
+        await holderClient.mediatorClient.packAndSendMessage(
+          message: ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdsp',
+                  'data-not-found',
+                ],
+              ),
+            ),
+          ),
+        );
+
+        return;
+      }
+
+      // the app can decide which credentials to share
+      // e.g. based on the operation requested
+      // here we share all the filtered credentials
+
       await holderClient.shareData(
         requestMessage: message,
-        verifiableCredentials: credentialsToShare,
+        verifiableCredentials: queryResult.verifiableCredentials,
         verifiablePresentationSigner: holderSigner,
+        verifiablePresentationProofSuite:
+            DataIntegrityProofSuite.ecdsa_jcs_2019,
       );
     },
     onDataProcessingResult: (message) async {
@@ -297,6 +364,8 @@ Future<void> main() async {
         'A problem has occurred',
         object: message,
       );
+
+      ConnectionPool.instance.stopConnections();
     },
   );
 

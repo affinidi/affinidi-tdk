@@ -12,8 +12,8 @@ class UpdateMediatorInstanceConfigurationMessage extends PlainTextMessage {
   /// Creates an update mediator instance configuration message.
   UpdateMediatorInstanceConfigurationMessage({
     required super.id,
-    required super.from,
     required super.to,
+    super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},

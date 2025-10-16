@@ -12,8 +12,8 @@ class GetMediatorInstanceMetadataMessage extends PlainTextMessage {
   /// Creates a get mediator instance metadata message.
   GetMediatorInstanceMetadataMessage({
     required super.id,
-    required super.from,
     required super.to,
+    super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},

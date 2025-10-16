@@ -12,8 +12,8 @@ class GetMediatorInstancesListMessage extends PlainTextMessage {
   /// Creates a get mediator instances list message.
   GetMediatorInstancesListMessage({
     required super.id,
-    required super.from,
     required super.to,
+    super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},
