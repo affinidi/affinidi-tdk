@@ -47,6 +47,13 @@ class DidcommMediatorClient extends MediatorClient {
       );
     }
 
+    if (message.from != null) {
+      throw ArgumentError(
+        'message.from must be null. It will be filled automatically.',
+        'message.from',
+      );
+    }
+
     final senderDidDocument = await didManager.getDidDocument();
 
     final recipientDidDocument =
@@ -56,22 +63,28 @@ class DidcommMediatorClient extends MediatorClient {
 
     final matchedKeyPairs =
         senderDidDocument.matchKeysInKeyAgreement(otherDidDocuments: [
+      mediatorDidDocument,
       recipientDidDocument,
     ]);
 
     if (matchedKeyPairs.isEmpty) {
-      throw Exception('Can not find matching key pair type with the holder');
+      throw Exception(
+        'No matching key agreement keys found for the mediator and the recipient.',
+      );
     }
 
-    final verifierDidKeyId = matchedKeyPairs.first;
+    final senderDidKeyId = matchedKeyPairs.first;
 
-    final packedForHolder = await DidcommMessage.packIntoEncryptedMessage(
-      message,
+    final packed = await DidcommMessage.packIntoEncryptedMessage(
+      PlainTextMessage.fromJson({
+        ...message.toJson(),
+        'from': senderDidDocument.id,
+      }),
       recipientDidDocuments: [recipientDidDocument],
       keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
       encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-      keyPair: await didManager.getKeyPairByDidKeyId(verifierDidKeyId),
-      didKeyId: verifierDidKeyId,
+      keyPair: await didManager.getKeyPairByDidKeyId(senderDidKeyId),
+      didKeyId: senderDidKeyId,
     );
 
     final forwardMessage = ForwardMessage(
@@ -86,7 +99,7 @@ class DidcommMediatorClient extends MediatorClient {
           mediaType: 'application/json',
           data: AttachmentData(
             base64: base64UrlEncodeNoPadding(
-              packedForHolder.toJsonBytes(),
+              packed.toJsonBytes(),
             ),
           ),
         ),

@@ -12,8 +12,8 @@ class GetMediatorRequestsMessage extends PlainTextMessage {
   /// Creates a get mediator requests message.
   GetMediatorRequestsMessage({
     required super.id,
-    required super.from,
     required super.to,
+    super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},
