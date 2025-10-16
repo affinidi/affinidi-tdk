@@ -33,6 +33,7 @@ class VdspHolderClient {
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
+    AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
   }) async =>
       VdspHolderClient(
@@ -41,6 +42,8 @@ class VdspHolderClient {
         mediatorClient: await DidcommMediatorClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
+          authorizationProvider: authorizationProvider,
+          clientOptions: clientOptions,
         ),
       );
 

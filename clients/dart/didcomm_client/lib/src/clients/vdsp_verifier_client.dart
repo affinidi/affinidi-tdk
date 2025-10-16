@@ -25,6 +25,7 @@ class VdspVerifierClient {
   static Future<VdspVerifierClient> init({
     required DidManager didManager,
     required DidDocument mediatorDidDocument,
+    AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
   }) async =>
       VdspVerifierClient(
@@ -32,6 +33,8 @@ class VdspVerifierClient {
         mediatorClient: await DidcommMediatorClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
+          authorizationProvider: authorizationProvider,
+          clientOptions: clientOptions,
         ),
       );
 

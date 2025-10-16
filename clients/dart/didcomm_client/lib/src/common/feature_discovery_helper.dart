@@ -6,6 +6,7 @@ import '../models/constants/data_query_language.dart';
 import '../models/constants/feature_type.dart';
 import '../models/constants/json_web_signature_algorithm.dart';
 
+/// A helper class for feature discovery in DIDComm protocols.
 class FeatureDiscoveryHelper {
   static final _commonBaseConfig = <FeatureType, List<String>>{
     FeatureType.credentialFormat: [
@@ -46,6 +47,7 @@ class FeatureDiscoveryHelper {
     ..._commonBaseConfig,
   };
 
+  /// List of [Disclosure]s for VDSP holder.
   static final List<Disclosure> vdspHolderDisclosures = _vdspBaseConfig.entries
       .expand(
         (entry) => entry.value.map(
@@ -60,6 +62,7 @@ class FeatureDiscoveryHelper {
       )
       .toList();
 
+  /// List of [Disclosure]s for VDIP issuer.
   static final List<Disclosure> vdipIssuerDisclosures = _vdipBaseConfig.entries
       .expand(
         (entry) => entry.value.map(
@@ -80,6 +83,7 @@ class FeatureDiscoveryHelper {
       )
       .toList();
 
+  /// Returns a list of [Query] objects for the given [disclosures].
   static List<Query> getFeatureQueriesByDisclosures(
           List<Disclosure> disclosures) =>
       disclosures
@@ -91,6 +95,7 @@ class FeatureDiscoveryHelper {
           )
           .toList();
 
+  /// Returns the list of supported [Disclosure]s from [discloses] that match the given [queries].
   static List<Disclosure> getSupportedFeatures(
     List<Disclosure> discloses,
     List<Query> queries,
@@ -105,6 +110,7 @@ class FeatureDiscoveryHelper {
           )
           .toList();
 
+  /// Returns the list of [Disclosure]s from [expectedFeatureDisclosures] that are not present in [actualFeatureDisclosures].
   static List<Disclosure> getUnsupportedFeatures({
     required List<Disclosure> expectedFeatureDisclosures,
     required List<Disclosure> actualFeatureDisclosures,

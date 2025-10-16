@@ -23,6 +23,7 @@ class VdipIssuerClient {
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
+    AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
   }) async =>
       VdipIssuerClient(
@@ -31,6 +32,8 @@ class VdipIssuerClient {
         mediatorClient: await DidcommMediatorClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
+          authorizationProvider: authorizationProvider,
+          clientOptions: clientOptions,
         ),
       );
 
