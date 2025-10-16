@@ -42,29 +42,9 @@ class DidcommMediatorClient extends MediatorClient {
       keyPair: tmpParent.keyPair,
       didKeyId: tmpParent.didKeyId,
       signer: tmpParent.signer,
-      authorizationProvider: authorizationProvider ??
-          await AffinidiAuthorizationProvider.init(
-            didManager: didManager,
-            mediatorDidDocument: mediatorDidDocument,
-          ),
-      forwardMessageOptions: const ForwardMessageOptions(
-        shouldSign: true,
-        shouldEncrypt: true,
-        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
-        encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-      ),
-      webSocketOptions: const WebSocketOptions(
-        statusRequestMessageOptions: StatusRequestMessageOptions(
-          shouldSend: true,
-          shouldSign: true,
-          shouldEncrypt: true,
-        ),
-        liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
-          shouldSend: true,
-          shouldSign: true,
-          shouldEncrypt: true,
-        ),
-      ),
+      authorizationProvider: authorizationProvider,
+      forwardMessageOptions: clientOptions.forwardMessageOptions,
+      webSocketOptions: clientOptions.webSocketOptions,
     );
   }
 
