@@ -13,22 +13,23 @@ part 'consumer_metadata_dto.g.dart';
 /// ConsumerMetadataDto
 ///
 /// Properties:
-/// * [nodeId] 
-/// * [status] 
-/// * [fileCount] 
-/// * [folderCount] 
-/// * [profileCount] 
-/// * [name] 
-/// * [consumerId] 
+/// * [nodeId]
+/// * [status]
+/// * [fileCount]
+/// * [folderCount]
+/// * [profileCount]
+/// * [name]
+/// * [consumerId]
 /// * [createdAt] - creation date/time
 /// * [modifiedAt] - modification date/time
 /// * [createdBy] - Identifier of the user who created
 /// * [modifiedBy] - Identifier of the user who last updated
 /// * [description] - Description of the node
-/// * [type] 
+/// * [type]
 /// * [consumedFileStorage] - Tracks the amount of bytes used by the stored data.
 @BuiltValue()
-abstract class ConsumerMetadataDto implements Built<ConsumerMetadataDto, ConsumerMetadataDtoBuilder> {
+abstract class ConsumerMetadataDto
+    implements Built<ConsumerMetadataDto, ConsumerMetadataDtoBuilder> {
   @BuiltValueField(wireName: r'nodeId')
   String get nodeId;
 
@@ -81,18 +82,24 @@ abstract class ConsumerMetadataDto implements Built<ConsumerMetadataDto, Consume
 
   ConsumerMetadataDto._();
 
-  factory ConsumerMetadataDto([void updates(ConsumerMetadataDtoBuilder b)]) = _$ConsumerMetadataDto;
+  factory ConsumerMetadataDto([void updates(ConsumerMetadataDtoBuilder b)]) =
+      _$ConsumerMetadataDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ConsumerMetadataDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ConsumerMetadataDto> get serializer => _$ConsumerMetadataDtoSerializer();
+  static Serializer<ConsumerMetadataDto> get serializer =>
+      _$ConsumerMetadataDtoSerializer();
 }
 
-class _$ConsumerMetadataDtoSerializer implements PrimitiveSerializer<ConsumerMetadataDto> {
+class _$ConsumerMetadataDtoSerializer
+    implements PrimitiveSerializer<ConsumerMetadataDto> {
   @override
-  final Iterable<Type> types = const [ConsumerMetadataDto, _$ConsumerMetadataDto];
+  final Iterable<Type> types = const [
+    ConsumerMetadataDto,
+    _$ConsumerMetadataDto
+  ];
 
   @override
   final String wireName = r'ConsumerMetadataDto';
@@ -188,7 +195,9 @@ class _$ConsumerMetadataDtoSerializer implements PrimitiveSerializer<ConsumerMet
     ConsumerMetadataDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -329,4 +338,3 @@ class _$ConsumerMetadataDtoSerializer implements PrimitiveSerializer<ConsumerMet
     return result.build();
   }
 }
-

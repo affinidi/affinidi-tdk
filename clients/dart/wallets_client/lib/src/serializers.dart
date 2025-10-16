@@ -16,6 +16,8 @@ import 'package:affinidi_tdk_wallets_client/src/model/date.dart';
 
 import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_input.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_response.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_v2_input.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_v2_response.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/entity_not_found_error.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/get_revocation_credential_status_ok.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/get_revocation_list_credential_result_dto.dart';
@@ -41,10 +43,13 @@ import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jw
 import 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_dm2_sd_jwt_result_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token_ok.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_input_dto.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_result_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/signing_failed_error.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/update_wallet_input.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/wallet_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/wallet_dto_keys_inner.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/wallet_v2_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/wallets_list_dto.dart';
 
 part 'serializers.g.dart';
@@ -52,6 +57,8 @@ part 'serializers.g.dart';
 @SerializersFor([
   CreateWalletInput,
   CreateWalletResponse,
+  CreateWalletV2Input,
+  CreateWalletV2Response,
   EntityNotFoundError,
   GetRevocationCredentialStatusOK,
   GetRevocationListCredentialResultDto,
@@ -77,18 +84,21 @@ part 'serializers.g.dart';
   SignCredentialsDm2SdJwtResultDto,
   SignJwtToken,
   SignJwtTokenOK,
+  SignPresentationLdpInputDto,
+  SignPresentationLdpResultDto,
   SigningFailedError,
   UpdateWalletInput,
   WalletDto,
   WalletDtoKeysInner,
+  WalletV2Dto,
   WalletsListDto,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

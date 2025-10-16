@@ -12,26 +12,33 @@ part 'create_wallet_response.g.dart';
 /// wallet dto
 ///
 /// Properties:
-/// * [wallet] 
+/// * [wallet]
 @BuiltValue()
-abstract class CreateWalletResponse implements Built<CreateWalletResponse, CreateWalletResponseBuilder> {
+abstract class CreateWalletResponse
+    implements Built<CreateWalletResponse, CreateWalletResponseBuilder> {
   @BuiltValueField(wireName: r'wallet')
   WalletDto? get wallet;
 
   CreateWalletResponse._();
 
-  factory CreateWalletResponse([void updates(CreateWalletResponseBuilder b)]) = _$CreateWalletResponse;
+  factory CreateWalletResponse([void updates(CreateWalletResponseBuilder b)]) =
+      _$CreateWalletResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CreateWalletResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CreateWalletResponse> get serializer => _$CreateWalletResponseSerializer();
+  static Serializer<CreateWalletResponse> get serializer =>
+      _$CreateWalletResponseSerializer();
 }
 
-class _$CreateWalletResponseSerializer implements PrimitiveSerializer<CreateWalletResponse> {
+class _$CreateWalletResponseSerializer
+    implements PrimitiveSerializer<CreateWalletResponse> {
   @override
-  final Iterable<Type> types = const [CreateWalletResponse, _$CreateWalletResponse];
+  final Iterable<Type> types = const [
+    CreateWalletResponse,
+    _$CreateWalletResponse
+  ];
 
   @override
   final String wireName = r'CreateWalletResponse';
@@ -56,7 +63,9 @@ class _$CreateWalletResponseSerializer implements PrimitiveSerializer<CreateWall
     CreateWalletResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +115,3 @@ class _$CreateWalletResponseSerializer implements PrimitiveSerializer<CreateWall
     return result.build();
   }
 }
-

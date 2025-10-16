@@ -29,8 +29,10 @@ import 'package:affinidi_tdk_iota_client/src/model/cors_fetch_iota_vp_response_o
 import 'package:affinidi_tdk_iota_client/src/model/cors_initiate_data_sharing_request_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/cors_iot_oidc4vpcallback_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/cors_iota_exchange_credentials_ok.dart';
+import 'package:affinidi_tdk_iota_client/src/model/create_dcql_query_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/create_iota_configuration_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/create_pex_query_input.dart';
+import 'package:affinidi_tdk_iota_client/src/model/dcql_query_dto.dart';
 import 'package:affinidi_tdk_iota_client/src/model/delete_pex_queries_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/fetch_iotavp_response_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/fetch_iotavp_response_ok.dart';
@@ -46,6 +48,7 @@ import 'package:affinidi_tdk_iota_client/src/model/iota_exchange_credentials.dar
 import 'package:affinidi_tdk_iota_client/src/model/iota_exchange_credentials_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/iota_exchange_credentials_ok_credentials.dart';
 import 'package:affinidi_tdk_iota_client/src/model/list_configuration_ok.dart';
+import 'package:affinidi_tdk_iota_client/src/model/list_dcql_queries_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/list_logged_consents_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/list_pex_queries_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/message_publishing_error.dart';
@@ -60,6 +63,7 @@ import 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input
 import 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input_queries_inner.dart';
 import 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_ok.dart';
+import 'package:affinidi_tdk_iota_client/src/model/update_dcql_query_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/update_pex_query_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/vp_token_validation_error.dart';
 
@@ -81,8 +85,10 @@ part 'serializers.g.dart';
   CorsInitiateDataSharingRequestOK,
   CorsIotOidc4vpcallbackOK,
   CorsIotaExchangeCredentialsOK,
+  CreateDcqlQueryInput,
   CreateIotaConfigurationInput,
   CreatePexQueryInput,
+  DcqlQueryDto,
   DeletePexQueriesInput,
   FetchIOTAVPResponseInput,
   FetchIOTAVPResponseOK,
@@ -98,6 +104,7 @@ part 'serializers.g.dart';
   IotaExchangeCredentialsOK,
   IotaExchangeCredentialsOKCredentials,
   ListConfigurationOK,
+  ListDcqlQueriesOK,
   ListLoggedConsentsOK,
   ListPexQueriesOK,
   MessagePublishingError,
@@ -112,6 +119,7 @@ part 'serializers.g.dart';
   SavePexQueriesUpdateInputQueriesInner,
   UpdateConfigurationByIdInput,
   UpdateConfigurationByIdOK,
+  UpdateDcqlQueryInput,
   UpdatePexQueryInput,
   VPTokenValidationError,
 ])
@@ -119,8 +127,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

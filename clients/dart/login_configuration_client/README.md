@@ -1,10 +1,10 @@
-# affinidi_tdk_login_configuration_client (EXPERIMENTAL)
+# affinidi_tdk_login_configuration_client
 
 Affinidi TDK dart client for Affinidi LOGIN CONFIGURATION
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -106,6 +106,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/vpa*
 
 - [ActionForbiddenError](doc/ActionForbiddenError.md)
 - [AddUserToGroupInput](doc/AddUserToGroupInput.md)
+- [AuthorizationRequestDcql](doc/AuthorizationRequestDcql.md)
+- [AuthorizationRequestPex](doc/AuthorizationRequestPex.md)
 - [BlockedUsers](doc/BlockedUsers.md)
 - [BlockedUsersInput](doc/BlockedUsersInput.md)
 - [CorsLoginSessionAcceptResponseOK](doc/CorsLoginSessionAcceptResponseOK.md)
