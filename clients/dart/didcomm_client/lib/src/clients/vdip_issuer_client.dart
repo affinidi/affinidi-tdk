@@ -7,6 +7,7 @@ import 'package:uuid/uuid.dart';
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
 import '../extensions/did_manager_extention.dart';
+import '../messages/vdip/vdip_switch_context_message.dart';
 import 'didcomm_base_client.dart';
 
 class VdipIssuerClient extends DidcommBaseClient {
@@ -90,6 +91,47 @@ class VdipIssuerClient extends DidcommBaseClient {
     required List<ParsedVerifiableCredential> verifiableCredentials,
   }) async {
     throw UnimplementedError();
+  }
+
+  Future<VdipSwitchContextMessage> sendSwitchContext({
+    required String holderDid,
+    required Uri baseIssuerUrl,
+    required String nonce,
+    required String threadId,
+  }) async {
+    if (!Uuid.isValidUUID(fromString: nonce)) {
+      throw ArgumentError.value(nonce, 'nonce', 'Must be a valid UUID');
+    }
+
+    if (!baseIssuerUrl.hasScheme ||
+        (baseIssuerUrl.scheme != 'http' && baseIssuerUrl.scheme != 'https')) {
+      throw ArgumentError.value(
+        baseIssuerUrl,
+        'baseIssuerUrl',
+        'Must have http or https scheme',
+      );
+    }
+
+    final holderDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+
+    final message = VdipSwitchContextMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [holderDid],
+      threadId: threadId,
+      body: VdipSwitchContextBody(
+        baseIssuerUrl: baseIssuerUrl.toString(),
+        nonce: nonce,
+      ).toJson(),
+    );
+
+    await sendMessage(
+      message,
+      recipientDidDocument: holderDidDocument,
+    );
+
+    return message;
   }
 
   StreamSubscription listenForIncomingMessages({
