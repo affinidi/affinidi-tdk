@@ -146,29 +146,18 @@ Future<void> main() async {
     ],
   );
 
-  final featureQueries = [
-    ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-      FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolderForVdip,
-    ),
-    Query(
-      featureType: FeatureType.operation.value,
-      match: 'registerAgent',
-    ),
-  ];
-
   // holder
   final vdipHolderClient = await VdipHolderClient.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
-    featureDisclosures:
-        FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolderForVdip,
+    featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
   );
 
   final vdspHolderClient = await VdspHolderClient.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     featureDisclosures: [
-      ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+      ...FeatureDiscoveryHelper.vdspHolderDisclosures,
       Disclosure(
         featureType: FeatureType.operation.value,
         id: 'registerAgent',
@@ -178,7 +167,15 @@ Future<void> main() async {
 
   await vdipHolderClient.queryIssuerFeatures(
     issuerDid: issuerSigner.did,
-    featureQueries: featureQueries,
+    featureQueries: [
+      ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+        FeatureDiscoveryHelper.vdipIssuerDisclosures,
+      ),
+      Query(
+        featureType: FeatureType.operation.value,
+        match: 'registerAgent',
+      ),
+    ],
   );
 
   vdipHolderClient.listenForIncomingMessages(
@@ -266,8 +263,7 @@ Future<void> main() async {
   final issuerVdipClient = await VdipIssuerClient.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: issuerDidManager,
-    featureDisclosures:
-        FeatureDiscoveryHelper.defaultFeatureDisclosuresOfIssuerForVdip,
+    featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
   );
 
   final vdspIssuerClient = await VdspVerifierClient.init(
@@ -294,7 +290,15 @@ Future<void> main() async {
 
       await vdspIssuerClient.queryHolderFeatures(
         holderDid: (await holderDidManager.getDidDocument()).id,
-        featureQueries: featureQueries,
+        featureQueries: [
+          ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+            FeatureDiscoveryHelper.vdspHolderDisclosures,
+          ),
+          Query(
+            featureType: FeatureType.operation.value,
+            match: 'registerAgent',
+          ),
+        ],
       );
     },
     onProblemReport: (message) {
@@ -324,7 +328,7 @@ Future<void> main() async {
       final body = DiscloseBody.fromJson(message.body!);
 
       final expectedFeatures = [
-        ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+        ...FeatureDiscoveryHelper.vdspHolderDisclosures,
         Disclosure(
           featureType: FeatureType.operation.value,
           id: 'registerAgent',

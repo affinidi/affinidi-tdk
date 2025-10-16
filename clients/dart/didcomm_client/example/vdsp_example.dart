@@ -157,19 +157,17 @@ Future<void> main() async {
     didManager: verifierDidManager,
   );
 
-  final featureQueries = [
-    ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-      FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
-    ),
-    Query(
-      featureType: FeatureType.operation.value,
-      match: 'registerAgent',
-    ),
-  ];
-
   await verifierClient.queryHolderFeatures(
     holderDid: (await holderDidManager.getDidDocument()).id,
-    featureQueries: featureQueries,
+    featureQueries: [
+      ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+        FeatureDiscoveryHelper.vdspHolderDisclosures,
+      ),
+      Query(
+        featureType: FeatureType.operation.value,
+        match: 'registerAgent',
+      ),
+    ],
   );
 
   verifierClient.listenForIncomingMessages(
@@ -191,7 +189,7 @@ Future<void> main() async {
       final body = DiscloseBody.fromJson(message.body!);
 
       final expectedFeatures = [
-        ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+        ...FeatureDiscoveryHelper.vdspHolderDisclosures,
         Disclosure(
           featureType: FeatureType.operation.value,
           id: 'registerAgent',
@@ -284,7 +282,7 @@ Future<void> main() async {
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     featureDisclosures: [
-      ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+      ...FeatureDiscoveryHelper.vdspHolderDisclosures,
       Disclosure(
         featureType: FeatureType.operation.value,
         id: 'registerAgent',
