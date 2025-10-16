@@ -11,38 +11,28 @@ import 'didcomm_mediator_client.dart';
 class VdipIssuerClient {
   final DidcommMediatorClient mediatorClient;
   final DidManager didManager;
-  final ClientOptions clientOptions;
-
   final List<Disclosure> featureDisclosures;
 
   VdipIssuerClient({
     required this.didManager,
     required this.mediatorClient,
     required this.featureDisclosures,
-    this.clientOptions = const ClientOptions(),
   });
 
   static Future<VdipIssuerClient> init({
+    required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
     ClientOptions clientOptions = const ClientOptions(),
-  }) async {
-    final [mediatorDidDocument] = await Future.wait(
-      [
-        clientOptions.mediatorDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
-
-    return VdipIssuerClient(
-      didManager: didManager,
-      featureDisclosures: featureDisclosures,
-      clientOptions: clientOptions,
-      mediatorClient: await DidcommMediatorClient.init(
+  }) async =>
+      VdipIssuerClient(
         didManager: didManager,
-        mediatorDidDocument: mediatorDidDocument,
-      ),
-    );
-  }
+        featureDisclosures: featureDisclosures,
+        mediatorClient: await DidcommMediatorClient.init(
+          didManager: didManager,
+          mediatorDidDocument: mediatorDidDocument,
+        ),
+      );
 
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,

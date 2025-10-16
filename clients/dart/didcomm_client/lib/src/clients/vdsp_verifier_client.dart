@@ -16,33 +16,24 @@ import 'didcomm_mediator_client.dart';
 class VdspVerifierClient {
   final DidcommMediatorClient mediatorClient;
   final DidManager didManager;
-  final ClientOptions clientOptions;
 
   VdspVerifierClient({
     required this.didManager,
     required this.mediatorClient,
-    this.clientOptions = const ClientOptions(),
   });
 
   static Future<VdspVerifierClient> init({
     required DidManager didManager,
+    required DidDocument mediatorDidDocument,
     ClientOptions clientOptions = const ClientOptions(),
-  }) async {
-    final [mediatorDidDocument] = await Future.wait(
-      [
-        clientOptions.mediatorDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
-
-    return VdspVerifierClient(
-      didManager: didManager,
-      clientOptions: clientOptions,
-      mediatorClient: await DidcommMediatorClient.init(
+  }) async =>
+      VdspVerifierClient(
         didManager: didManager,
-        mediatorDidDocument: mediatorDidDocument,
-      ),
-    );
-  }
+        mediatorClient: await DidcommMediatorClient.init(
+          didManager: didManager,
+          mediatorDidDocument: mediatorDidDocument,
+        ),
+      );
 
   Future<QueryMessage> queryHolderFeatures({
     required String holderDid,

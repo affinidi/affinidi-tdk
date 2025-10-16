@@ -16,6 +16,15 @@ Future<void> main() async {
     packageDirectoryName: 'didcomm_client',
   );
 
+  final mediatorDid = await readDid(
+    config.mediatorDidPath,
+  );
+
+  final mediatorDidDocument =
+      await UniversalDIDResolver.defaultResolver.resolveDid(
+    mediatorDid,
+  );
+
   final issuerKeyStore = InMemoryKeyStore();
   final issuerWallet = PersistentWallet(issuerKeyStore);
 
@@ -144,6 +153,7 @@ Future<void> main() async {
   // verifier
 
   final verifierClient = await VdspVerifierClient.init(
+    mediatorDidDocument: mediatorDidDocument,
     didManager: verifierDidManager,
   );
 
@@ -271,6 +281,7 @@ Future<void> main() async {
   // holder
 
   final holderClient = await VdspHolderClient.init(
+    mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     featureDisclosures: [
       ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,

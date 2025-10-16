@@ -11,43 +11,28 @@ import 'didcomm_mediator_client.dart';
 class VdipHolderClient {
   final DidcommMediatorClient mediatorClient;
   final DidManager didManager;
-  final ClientOptions clientOptions;
-
   final List<Disclosure> featureDisclosures;
-  final DidSigner signer;
 
   VdipHolderClient({
     required this.didManager,
-    required this.signer,
     required this.mediatorClient,
     required this.featureDisclosures,
-    this.clientOptions = const ClientOptions(),
   });
 
   static Future<VdipHolderClient> init({
+    required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
     ClientOptions clientOptions = const ClientOptions(),
-  }) async {
-    final [mediatorDidDocument] = await Future.wait(
-      [
-        clientOptions.mediatorDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
-
-    final didDocument = await didManager.getDidDocument();
-
-    return VdipHolderClient(
-      didManager: didManager,
-      featureDisclosures: featureDisclosures,
-      clientOptions: clientOptions,
-      signer: await didManager.getSigner(didDocument.assertionMethod.first.id),
-      mediatorClient: await DidcommMediatorClient.init(
+  }) async =>
+      VdipHolderClient(
         didManager: didManager,
-        mediatorDidDocument: mediatorDidDocument,
-      ),
-    );
-  }
+        featureDisclosures: featureDisclosures,
+        mediatorClient: await DidcommMediatorClient.init(
+          didManager: didManager,
+          mediatorDidDocument: mediatorDidDocument,
+        ),
+      );
 
   Future<QueryMessage> queryIssuerFeatures({
     required String issuerDid,
@@ -89,7 +74,6 @@ class VdipHolderClient {
 
     final message = DiscloseMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [issuerDid],
       threadId: queryMessage.threadId ?? queryMessage.id,
       body: DiscloseBody(
