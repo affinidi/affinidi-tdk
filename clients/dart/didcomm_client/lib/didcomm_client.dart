@@ -1,9 +1,12 @@
 export 'src/clients.dart';
 export 'src/clients/didcomm_atlas_client.dart' show DidcommAtlasClient;
 export 'src/clients/didcomm_service_client.dart';
+export 'src/clients/vdip_holder_client.dart';
+export 'src/clients/vdip_issuer_client.dart';
 export 'src/clients/vdsp_holder_client.dart';
 export 'src/clients/vdsp_verifier_client.dart';
 export 'src/common/client_options.dart';
+export 'src/common/feature_discovery_helper.dart';
 export 'src/messages.dart';
 export 'src/messages/ama/deploy_mediator_instance_message.dart'
     show

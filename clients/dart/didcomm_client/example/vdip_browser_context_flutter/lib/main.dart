@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_holder_client.dart';
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_issuer_client.dart';
+import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +70,8 @@ Future<void> runVdipFlow() async {
 
   final vdipHolderClient = await VdipHolderClient.init(
     didManager: holderDidManager,
+    featureDisclosures:
+        FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolderForVdip,
   );
 
   final veriff = Veriff();
@@ -109,7 +110,7 @@ Future<void> runVdipFlow() async {
         object: null,
       );
 
-      final response = await dio.post(
+      final response = await dio.post<Map<String, dynamic>>(
         '/sessions',
         data: {
           'verification': {
@@ -119,7 +120,10 @@ Future<void> runVdipFlow() async {
         },
       );
 
-      final sessionUrl = response.data['verification']['url'] as String;
+      final responseData = response.data as Map<String, dynamic>;
+      final verificationData =
+          responseData['verification'] as Map<String, dynamic>;
+      final sessionUrl = verificationData['url'] as String;
 
       prettyPrint(
         'Veriff session created',
@@ -157,6 +161,8 @@ Future<void> runVdipFlow() async {
 
   final issuerVdipClient = await VdipIssuerClient.init(
     didManager: issuerDidManager,
+    featureDisclosures:
+        FeatureDiscoveryHelper.defaultFeatureDisclosuresOfIssuerForVdip,
   );
 
   issuerVdipClient.listenForIncomingMessages(
@@ -213,12 +219,12 @@ class VdipBrowserContextApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
         body: Center(
           child: ElevatedButton(
             onPressed: runVdipFlow,
-            child: const Text('Run VDIP Browser Context Flow'),
+            child: Text('Run VDIP Browser Context Flow'),
           ),
         ),
       ),
