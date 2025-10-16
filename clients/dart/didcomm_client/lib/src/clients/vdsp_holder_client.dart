@@ -9,7 +9,6 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
-import '../extensions/did_manager_extention.dart';
 import '../messages/vdsp/vdsp_data_processing_result_message.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
@@ -17,18 +16,19 @@ import '../models/constants/data_integrity_proof_suite.dart';
 import '../models/constants/data_query_language.dart';
 import '../models/constants/verifiable_credentials_data_model.dart';
 import '../models/results/data_query_result.dart';
-import 'didcomm_base_client.dart';
+import 'didcomm_mediator_client.dart';
 
-class VdspHolderClient extends DidcommBaseClient {
+class VdspHolderClient {
+  final DidcommMediatorClient mediatorClient;
+  final DidManager didManager;
+  final ClientOptions clientOptions;
   final List<Disclosure> featureDisclosures;
-  final DidSigner signer;
 
   VdspHolderClient({
-    required super.didManager,
-    required this.signer,
-    required super.mediatorClient,
+    required this.didManager,
+    required this.mediatorClient,
     required this.featureDisclosures,
-    super.clientOptions = const ClientOptions(),
+    this.clientOptions = const ClientOptions(),
   });
 
   static Future<VdspHolderClient> init({
@@ -42,16 +42,13 @@ class VdspHolderClient extends DidcommBaseClient {
       ].map(UniversalDIDResolver.defaultResolver.resolveDid),
     );
 
-    final didDocument = await didManager.getDidDocument();
-
     return VdspHolderClient(
       didManager: didManager,
       featureDisclosures: featureDisclosures,
       clientOptions: clientOptions,
-      signer: await didManager.getSigner(didDocument.assertionMethod.first.id),
-      mediatorClient: await didManager.getMediatorClient(
+      mediatorClient: await DidcommMediatorClient.init(
+        didManager: didManager,
         mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [],
       ),
     );
   }

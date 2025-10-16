@@ -4,7 +4,7 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
-import '../extensions/did_manager_extention.dart';
+import 'didcomm_mediator_client.dart';
 
 class DidcommAtlasClient extends DidcommServiceClient {
   DidcommAtlasClient({
@@ -29,11 +29,9 @@ class DidcommAtlasClient extends DidcommServiceClient {
       didManager: didManager,
       serviceDidDocument: atlasDidDocument,
       clientOptions: clientOptions,
-      mediatorClient: await didManager.getMediatorClient(
+      mediatorClient: await DidcommMediatorClient.init(
+        didManager: didManager,
         mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [
-          atlasDidDocument,
-        ],
       ),
     );
   }

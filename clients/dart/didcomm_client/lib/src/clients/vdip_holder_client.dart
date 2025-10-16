@@ -6,19 +6,22 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
-import '../extensions/did_manager_extention.dart';
-import 'didcomm_base_client.dart';
+import 'didcomm_mediator_client.dart';
 
-class VdipHolderClient extends DidcommBaseClient {
+class VdipHolderClient {
+  final DidcommMediatorClient mediatorClient;
+  final DidManager didManager;
+  final ClientOptions clientOptions;
+
   final List<Disclosure> featureDisclosures;
   final DidSigner signer;
 
   VdipHolderClient({
-    required super.didManager,
+    required this.didManager,
     required this.signer,
-    required super.mediatorClient,
+    required this.mediatorClient,
     required this.featureDisclosures,
-    super.clientOptions = const ClientOptions(),
+    this.clientOptions = const ClientOptions(),
   });
 
   static Future<VdipHolderClient> init({
@@ -39,9 +42,9 @@ class VdipHolderClient extends DidcommBaseClient {
       featureDisclosures: featureDisclosures,
       clientOptions: clientOptions,
       signer: await didManager.getSigner(didDocument.assertionMethod.first.id),
-      mediatorClient: await didManager.getMediatorClient(
+      mediatorClient: await DidcommMediatorClient.init(
+        didManager: didManager,
         mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [],
       ),
     );
   }

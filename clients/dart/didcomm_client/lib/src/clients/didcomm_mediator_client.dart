@@ -7,7 +7,6 @@ import 'package:uuid/uuid.dart';
 import '../common/client_options.dart';
 
 class DidcommMediatorClient extends MediatorClient {
-  final AuthorizationProvider authorizationProvider;
   final DidManager didManager;
   final ClientOptions clientOptions;
 
@@ -18,12 +17,56 @@ class DidcommMediatorClient extends MediatorClient {
     required super.keyPair,
     required super.didKeyId,
     required super.signer,
-    required this.authorizationProvider,
+    required super.authorizationProvider,
     required this.didManager,
     required this.clientOptions,
     super.forwardMessageOptions,
     super.webSocketOptions,
   });
+
+  static Future<DidcommMediatorClient> init({
+    required DidManager didManager,
+    required DidDocument mediatorDidDocument,
+    AuthorizationProvider? authorizationProvider,
+    ClientOptions clientOptions = const ClientOptions(),
+  }) async {
+    final tmpParent = await MediatorClient.init(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: didManager,
+    );
+
+    return DidcommMediatorClient(
+      didManager: didManager,
+      clientOptions: clientOptions,
+      mediatorDidDocument: mediatorDidDocument,
+      keyPair: tmpParent.keyPair,
+      didKeyId: tmpParent.didKeyId,
+      signer: tmpParent.signer,
+      authorizationProvider: authorizationProvider ??
+          await AffinidiAuthorizationProvider.init(
+            didManager: didManager,
+            mediatorDidDocument: mediatorDidDocument,
+          ),
+      forwardMessageOptions: const ForwardMessageOptions(
+        shouldSign: true,
+        shouldEncrypt: true,
+        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+        encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+      ),
+      webSocketOptions: const WebSocketOptions(
+        statusRequestMessageOptions: StatusRequestMessageOptions(
+          shouldSend: true,
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
+        liveDeliveryChangeMessageOptions: LiveDeliveryChangeMessageOptions(
+          shouldSend: true,
+          shouldSign: true,
+          shouldEncrypt: true,
+        ),
+      ),
+    );
+  }
 
   Future<PlainTextMessage> waitForMessage({
     required String threadId,
@@ -61,11 +104,11 @@ class DidcommMediatorClient extends MediatorClient {
       message.to!.first,
     );
 
-    final matchedKeyPairs =
-        senderDidDocument.matchKeysInKeyAgreement(otherDidDocuments: [
-      mediatorDidDocument,
-      recipientDidDocument,
-    ]);
+    final matchedKeyPairs = senderDidDocument.matchKeysInKeyAgreement(
+      otherDidDocuments: [
+        recipientDidDocument,
+      ],
+    );
 
     if (matchedKeyPairs.isEmpty) {
       throw Exception(
@@ -90,6 +133,7 @@ class DidcommMediatorClient extends MediatorClient {
     final forwardMessage = ForwardMessage(
       id: const Uuid().v4(),
       to: [mediatorDidDocument.id],
+      from: senderDidDocument.id,
       next: recipientDidDocument.id,
       expiresTime: DateTime.now().toUtc().add(
             clientOptions.messageExpiration,

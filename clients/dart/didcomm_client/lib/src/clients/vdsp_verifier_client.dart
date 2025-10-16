@@ -7,18 +7,21 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
-import '../extensions/did_manager_extention.dart';
 import '../messages/vdsp/vdsp_data_processing_result_message.dart';
 import '../messages/vdsp/vdsp_data_response_message.dart';
 import '../messages/vdsp/vdsp_query_data_message.dart';
 import '../models/constants/data_query_language.dart';
-import 'didcomm_base_client.dart';
+import 'didcomm_mediator_client.dart';
 
-class VdspVerifierClient extends DidcommBaseClient {
+class VdspVerifierClient {
+  final DidcommMediatorClient mediatorClient;
+  final DidManager didManager;
+  final ClientOptions clientOptions;
+
   VdspVerifierClient({
-    required super.didManager,
-    required super.mediatorClient,
-    super.clientOptions = const ClientOptions(),
+    required this.didManager,
+    required this.mediatorClient,
+    this.clientOptions = const ClientOptions(),
   });
 
   static Future<VdspVerifierClient> init({
@@ -34,9 +37,9 @@ class VdspVerifierClient extends DidcommBaseClient {
     return VdspVerifierClient(
       didManager: didManager,
       clientOptions: clientOptions,
-      mediatorClient: await didManager.getMediatorClient(
+      mediatorClient: await DidcommMediatorClient.init(
+        didManager: didManager,
         mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [],
       ),
     );
   }
