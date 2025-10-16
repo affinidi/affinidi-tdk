@@ -18,17 +18,25 @@ import '../models/constants/verifiable_credentials_data_model.dart';
 import '../models/results/data_query_result.dart';
 import 'didcomm_mediator_client.dart';
 
+/// Implements the VDSP protocol for a holder, supporting feature discovery, credential filtering, and data sharing.
 class VdspHolderClient {
+  /// The mediator client used for DIDComm communication.
   final DidcommMediatorClient mediatorClient;
+
+  /// The DID manager for handling DIDs and keys.
   final DidManager didManager;
+
+  /// The list of feature disclosures supported by this holder in the VDSP protocol.
   final List<Disclosure> featureDisclosures;
 
+  /// Constructs a [VdspHolderClient] for the VDSP protocol with the given [didManager], [mediatorClient], and [featureDisclosures].
   VdspHolderClient({
     required this.didManager,
     required this.mediatorClient,
     required this.featureDisclosures,
   });
 
+  /// Initializes a [VdspHolderClient] for the VDSP protocol asynchronously with the provided mediator DID document, DID manager, and feature disclosures.
   static Future<VdspHolderClient> init({
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
@@ -47,6 +55,7 @@ class VdspHolderClient {
         ),
       );
 
+  /// Returns the supported feature disclosures for a given [queryMessage].
   List<Disclosure> getDisclosures({
     required QueryMessage queryMessage,
   }) {
@@ -66,6 +75,7 @@ class VdspHolderClient {
     );
   }
 
+  /// Creates and sends a [DiscloseMessage] in response to a feature query.
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,
     required List<Disclosure> disclosures,
@@ -92,6 +102,7 @@ class VdspHolderClient {
     return message;
   }
 
+  /// Filters the provided [verifiableCredentials] using the query in [requestMessage].
   Future<DataQueryResult> filterVerifiableCredentials({
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
@@ -110,6 +121,7 @@ class VdspHolderClient {
     );
   }
 
+  /// Shares filtered verifiable credentials as a verifiable presentation in response to a data query.
   Future<VdspDataResponseMessage> shareData({
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
@@ -160,6 +172,13 @@ class VdspHolderClient {
     return responseMessage;
   }
 
+  /// Listens for incoming DIDComm messages and dispatches them to the appropriate handlers as defined by the VDSP protocol.
+  ///
+  /// [onFeatureQuery] is called for VDSP feature query messages. Optional.
+  /// [onDataRequest] is called for VDSP data request messages.
+  /// [onDataProcessingResult] is called for VDSP data processing result messages. Optional.
+  /// [onProblemReport] is called for VDSP problem report messages. Optional.
+  /// [onError], [onDone], and [cancelOnError] control the stream behavior. Optional.
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
     required void Function(VdspQueryDataMessage) onDataRequest,

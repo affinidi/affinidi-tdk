@@ -13,15 +13,22 @@ import '../messages/vdsp/vdsp_query_data_message.dart';
 import '../models/constants/data_query_language.dart';
 import 'didcomm_mediator_client.dart';
 
+/// Implements the VDSP protocol for a verifier, supporting feature discovery,
+/// data queries, and verification of presentations and credentials.
 class VdspVerifierClient {
+  /// The mediator client used for DIDComm communication.
   final DidcommMediatorClient mediatorClient;
+
+  /// The DID manager for handling DIDs and keys.
   final DidManager didManager;
 
+  /// Constructs a [VdspVerifierClient] for the VDSP protocol with the given [didManager] and [mediatorClient].
   VdspVerifierClient({
     required this.didManager,
     required this.mediatorClient,
   });
 
+  /// Initializes a [VdspVerifierClient] for the VDSP protocol asynchronously with the provided mediator DID document and DID manager.
   static Future<VdspVerifierClient> init({
     required DidManager didManager,
     required DidDocument mediatorDidDocument,
@@ -38,6 +45,7 @@ class VdspVerifierClient {
         ),
       );
 
+  /// Sends a feature query to a holder to discover supported features.
   Future<QueryMessage> queryHolderFeatures({
     required String holderDid,
     required List<Query> featureQueries,
@@ -57,6 +65,7 @@ class VdspVerifierClient {
     return message;
   }
 
+  /// Sends a data query to a holder to request a verifiable presentation.
   Future<VdspQueryDataMessage> queryHolderData({
     required String holderDid,
     String? operation,
@@ -92,6 +101,7 @@ class VdspVerifierClient {
     return message;
   }
 
+  /// Sends a data processing result message to a holder after processing received data.
   Future<VdspDataProcessingResultMessage> sendDataProcessingResult({
     required String holderDid,
     String? operation,
@@ -113,6 +123,12 @@ class VdspVerifierClient {
     return message;
   }
 
+  /// Listens for incoming DIDComm messages and dispatches them to the appropriate handlers as defined by the VDSP protocol.
+  ///
+  /// [onDiscloseMessage] is called for VDSP disclose messages. Optional.
+  /// [onDataResponse] is called for VDSP data response messages and provides verification results.
+  /// [onProblemReport] is called for VDSP problem report messages. Optional.
+  /// [onError], [onDone], and [cancelOnError] control the stream behavior. Optional.
   StreamSubscription listenForIncomingMessages({
     void Function(DiscloseMessage)? onDiscloseMessage,
     required void Function({

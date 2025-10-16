@@ -7,11 +7,15 @@ import 'package:uuid/uuid.dart';
 import '../common/client_options.dart';
 
 class DidcommMediatorClient extends MediatorClient {
+  /// The DID manager for managing DIDs and keys.
   final DidManager didManager;
+
+  /// The client options for configuring timeouts and message forwarding.
   final ClientOptions clientOptions;
 
   final _pendingRequests = <String, Completer<PlainTextMessage>>{};
 
+  /// Creates a [DidcommMediatorClient] instance.
   DidcommMediatorClient({
     required super.mediatorDidDocument,
     required super.keyPair,
@@ -24,6 +28,12 @@ class DidcommMediatorClient extends MediatorClient {
     super.webSocketOptions,
   });
 
+  /// Initializes a [DidcommMediatorClient] asynchronously.
+  ///
+  /// [didManager] is required for DID operations.
+  /// [mediatorDidDocument] is the mediator's DID document.
+  /// [authorizationProvider] is optional.
+  /// [clientOptions] configures timeouts and forwarding.
   static Future<DidcommMediatorClient> init({
     required DidManager didManager,
     required DidDocument mediatorDidDocument,
@@ -48,6 +58,8 @@ class DidcommMediatorClient extends MediatorClient {
     );
   }
 
+  /// Waits for a message with the given [threadId].
+  /// Returns a [PlainTextMessage] when received or throws on timeout.
   Future<PlainTextMessage> waitForMessage({
     required String threadId,
   }) async {
@@ -57,6 +69,8 @@ class DidcommMediatorClient extends MediatorClient {
     return completer.future.timeout(clientOptions.requestTimeout);
   }
 
+  /// Packs and sends a [PlainTextMessage] to the mediator and recipient.
+  /// Throws if the message is invalid or recipient cannot be resolved.
   Future<void> packAndSendMessage({
     required PlainTextMessage message,
   }) async {
@@ -104,6 +118,7 @@ class DidcommMediatorClient extends MediatorClient {
         'from': senderDidDocument.id,
       }),
       recipientDidDocuments: [recipientDidDocument],
+      // TODO: move to configuration
       keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
       encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
       keyPair: await didManager.getKeyPairByDidKeyId(senderDidKeyId),
@@ -136,6 +151,9 @@ class DidcommMediatorClient extends MediatorClient {
   }
 
   // TODO: run it by default in the constructor
+  /// Links requests and responses by listening for incoming messages.
+  /// Handles problem reports and matches responses to pending requests.
+  /// [serviceDidDocument] is used to validate sender.
   void linkRequestsAndResponses({
     required DidDocument serviceDidDocument,
   }) {
@@ -193,6 +211,7 @@ class DidcommMediatorClient extends MediatorClient {
     );
   }
 
+  /// Handles incoming problem reports and completes the corresponding pending request with an error.
   void _handleProblemReport(PlainTextMessage problemMessage) {
     final problemReport =
         ProblemReportMessage.fromJson(problemMessage.toJson());
