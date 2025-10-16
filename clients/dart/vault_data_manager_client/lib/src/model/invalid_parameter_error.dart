@@ -13,13 +13,14 @@ part 'invalid_parameter_error.g.dart';
 /// Some of the parameters are invalid
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InvalidParameterError implements Built<InvalidParameterError, InvalidParameterErrorBuilder> {
+abstract class InvalidParameterError
+    implements Built<InvalidParameterError, InvalidParameterErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   InvalidParameterErrorNameEnum get name;
   // enum nameEnum {  InvalidParameterError,  };
@@ -40,18 +41,24 @@ abstract class InvalidParameterError implements Built<InvalidParameterError, Inv
 
   InvalidParameterError._();
 
-  factory InvalidParameterError([void updates(InvalidParameterErrorBuilder b)]) = _$InvalidParameterError;
+  factory InvalidParameterError(
+      [void updates(InvalidParameterErrorBuilder b)]) = _$InvalidParameterError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InvalidParameterErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InvalidParameterError> get serializer => _$InvalidParameterErrorSerializer();
+  static Serializer<InvalidParameterError> get serializer =>
+      _$InvalidParameterErrorSerializer();
 }
 
-class _$InvalidParameterErrorSerializer implements PrimitiveSerializer<InvalidParameterError> {
+class _$InvalidParameterErrorSerializer
+    implements PrimitiveSerializer<InvalidParameterError> {
   @override
-  final Iterable<Type> types = const [InvalidParameterError, _$InvalidParameterError];
+  final Iterable<Type> types = const [
+    InvalidParameterError,
+    _$InvalidParameterError
+  ];
 
   @override
   final String wireName = r'InvalidParameterError';
@@ -85,7 +92,8 @@ class _$InvalidParameterErrorSerializer implements PrimitiveSerializer<InvalidPa
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +104,9 @@ class _$InvalidParameterErrorSerializer implements PrimitiveSerializer<InvalidPa
     InvalidParameterError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +138,8 @@ class _$InvalidParameterErrorSerializer implements PrimitiveSerializer<InvalidPa
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(InvalidParameterErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(InvalidParameterErrorHttpStatusCodeEnum),
           ) as InvalidParameterErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +153,8 @@ class _$InvalidParameterErrorSerializer implements PrimitiveSerializer<InvalidPa
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +188,50 @@ class _$InvalidParameterErrorSerializer implements PrimitiveSerializer<InvalidPa
 }
 
 class InvalidParameterErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidParameterError')
-  static const InvalidParameterErrorNameEnum invalidParameterError = _$invalidParameterErrorNameEnum_invalidParameterError;
+  static const InvalidParameterErrorNameEnum invalidParameterError =
+      _$invalidParameterErrorNameEnum_invalidParameterError;
 
-  static Serializer<InvalidParameterErrorNameEnum> get serializer => _$invalidParameterErrorNameEnumSerializer;
+  static Serializer<InvalidParameterErrorNameEnum> get serializer =>
+      _$invalidParameterErrorNameEnumSerializer;
 
-  const InvalidParameterErrorNameEnum._(String name): super(name);
+  const InvalidParameterErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidParameterErrorNameEnum> get values => _$invalidParameterErrorNameEnumValues;
-  static InvalidParameterErrorNameEnum valueOf(String name) => _$invalidParameterErrorNameEnumValueOf(name);
+  static BuiltSet<InvalidParameterErrorNameEnum> get values =>
+      _$invalidParameterErrorNameEnumValues;
+  static InvalidParameterErrorNameEnum valueOf(String name) =>
+      _$invalidParameterErrorNameEnumValueOf(name);
 }
 
 class InvalidParameterErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Invalid parameter: ${param}.')
-  static const InvalidParameterErrorMessageEnum invalidParameterColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod = _$invalidParameterErrorMessageEnum_invalidParameterColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
+  static const InvalidParameterErrorMessageEnum
+      invalidParameterColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod =
+      _$invalidParameterErrorMessageEnum_invalidParameterColonDollarLeftCurlyBracketParamRightCurlyBracketPeriod;
 
-  static Serializer<InvalidParameterErrorMessageEnum> get serializer => _$invalidParameterErrorMessageEnumSerializer;
+  static Serializer<InvalidParameterErrorMessageEnum> get serializer =>
+      _$invalidParameterErrorMessageEnumSerializer;
 
-  const InvalidParameterErrorMessageEnum._(String name): super(name);
+  const InvalidParameterErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidParameterErrorMessageEnum> get values => _$invalidParameterErrorMessageEnumValues;
-  static InvalidParameterErrorMessageEnum valueOf(String name) => _$invalidParameterErrorMessageEnumValueOf(name);
+  static BuiltSet<InvalidParameterErrorMessageEnum> get values =>
+      _$invalidParameterErrorMessageEnumValues;
+  static InvalidParameterErrorMessageEnum valueOf(String name) =>
+      _$invalidParameterErrorMessageEnumValueOf(name);
 }
 
 class InvalidParameterErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const InvalidParameterErrorHttpStatusCodeEnum number400 = _$invalidParameterErrorHttpStatusCodeEnum_number400;
+  static const InvalidParameterErrorHttpStatusCodeEnum number400 =
+      _$invalidParameterErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<InvalidParameterErrorHttpStatusCodeEnum> get serializer => _$invalidParameterErrorHttpStatusCodeEnumSerializer;
+  static Serializer<InvalidParameterErrorHttpStatusCodeEnum> get serializer =>
+      _$invalidParameterErrorHttpStatusCodeEnumSerializer;
 
-  const InvalidParameterErrorHttpStatusCodeEnum._(String name): super(name);
+  const InvalidParameterErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidParameterErrorHttpStatusCodeEnum> get values => _$invalidParameterErrorHttpStatusCodeEnumValues;
-  static InvalidParameterErrorHttpStatusCodeEnum valueOf(String name) => _$invalidParameterErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InvalidParameterErrorHttpStatusCodeEnum> get values =>
+      _$invalidParameterErrorHttpStatusCodeEnumValues;
+  static InvalidParameterErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$invalidParameterErrorHttpStatusCodeEnumValueOf(name);
 }
-

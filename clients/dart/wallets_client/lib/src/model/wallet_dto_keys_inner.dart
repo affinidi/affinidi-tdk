@@ -14,7 +14,8 @@ part 'wallet_dto_keys_inner.g.dart';
 /// * [id] - id of linked key
 /// * [ari] - ari of linked key
 @BuiltValue()
-abstract class WalletDtoKeysInner implements Built<WalletDtoKeysInner, WalletDtoKeysInnerBuilder> {
+abstract class WalletDtoKeysInner
+    implements Built<WalletDtoKeysInner, WalletDtoKeysInnerBuilder> {
   /// id of linked key
   @BuiltValueField(wireName: r'id')
   String? get id;
@@ -25,16 +26,19 @@ abstract class WalletDtoKeysInner implements Built<WalletDtoKeysInner, WalletDto
 
   WalletDtoKeysInner._();
 
-  factory WalletDtoKeysInner([void updates(WalletDtoKeysInnerBuilder b)]) = _$WalletDtoKeysInner;
+  factory WalletDtoKeysInner([void updates(WalletDtoKeysInnerBuilder b)]) =
+      _$WalletDtoKeysInner;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(WalletDtoKeysInnerBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WalletDtoKeysInner> get serializer => _$WalletDtoKeysInnerSerializer();
+  static Serializer<WalletDtoKeysInner> get serializer =>
+      _$WalletDtoKeysInnerSerializer();
 }
 
-class _$WalletDtoKeysInnerSerializer implements PrimitiveSerializer<WalletDtoKeysInner> {
+class _$WalletDtoKeysInnerSerializer
+    implements PrimitiveSerializer<WalletDtoKeysInner> {
   @override
   final Iterable<Type> types = const [WalletDtoKeysInner, _$WalletDtoKeysInner];
 
@@ -68,7 +72,9 @@ class _$WalletDtoKeysInnerSerializer implements PrimitiveSerializer<WalletDtoKey
     WalletDtoKeysInner object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +131,3 @@ class _$WalletDtoKeysInnerSerializer implements PrimitiveSerializer<WalletDtoKey
     return result.build();
   }
 }
-

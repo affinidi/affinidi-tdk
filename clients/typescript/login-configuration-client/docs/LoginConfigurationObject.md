@@ -15,6 +15,7 @@
 | **creationDate**            | **string**                                                                              | OAuth 2.0 Client Creation Date                                                                                                                                                                                   | [default to undefined]            |
 | **vpDefinition**            | **string**                                                                              | VP definition in JSON stringify format                                                                                                                                                                           | [optional] [default to undefined] |
 | **presentationDefinition**  | **object**                                                                              | Presentation Definition                                                                                                                                                                                          | [optional] [default to undefined] |
+| **dcqlQuery**               | **object**                                                                              | DCQL query                                                                                                                                                                                                       | [optional] [default to undefined] |
 | **idTokenMapping**          | [**Array&lt;IdTokenMappingItem&gt;**](IdTokenMappingItem.md)                            | Fields name/path mapping between the vp_token and the id_token                                                                                                                                                   | [default to undefined]            |
 | **clientMetadata**          | [**LoginConfigurationClientMetadataOutput**](LoginConfigurationClientMetadataOutput.md) |                                                                                                                                                                                                                  | [default to undefined]            |
 | **tokenEndpointAuthMethod** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                               |                                                                                                                                                                                                                  | [default to undefined]            |
@@ -36,6 +37,7 @@ const instance: LoginConfigurationObject = {
   creationDate,
   vpDefinition,
   presentationDefinition,
+  dcqlQuery,
   idTokenMapping,
   clientMetadata,
   tokenEndpointAuthMethod,

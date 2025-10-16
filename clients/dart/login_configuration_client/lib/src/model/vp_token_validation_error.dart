@@ -13,13 +13,14 @@ part 'vp_token_validation_error.g.dart';
 /// VPTokenValidationError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class VPTokenValidationError implements Built<VPTokenValidationError, VPTokenValidationErrorBuilder> {
+abstract class VPTokenValidationError
+    implements Built<VPTokenValidationError, VPTokenValidationErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   VPTokenValidationErrorNameEnum get name;
   // enum nameEnum {  VPTokenValidationError,  };
@@ -40,18 +41,25 @@ abstract class VPTokenValidationError implements Built<VPTokenValidationError, V
 
   VPTokenValidationError._();
 
-  factory VPTokenValidationError([void updates(VPTokenValidationErrorBuilder b)]) = _$VPTokenValidationError;
+  factory VPTokenValidationError(
+          [void updates(VPTokenValidationErrorBuilder b)]) =
+      _$VPTokenValidationError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(VPTokenValidationErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<VPTokenValidationError> get serializer => _$VPTokenValidationErrorSerializer();
+  static Serializer<VPTokenValidationError> get serializer =>
+      _$VPTokenValidationErrorSerializer();
 }
 
-class _$VPTokenValidationErrorSerializer implements PrimitiveSerializer<VPTokenValidationError> {
+class _$VPTokenValidationErrorSerializer
+    implements PrimitiveSerializer<VPTokenValidationError> {
   @override
-  final Iterable<Type> types = const [VPTokenValidationError, _$VPTokenValidationError];
+  final Iterable<Type> types = const [
+    VPTokenValidationError,
+    _$VPTokenValidationError
+  ];
 
   @override
   final String wireName = r'VPTokenValidationError';
@@ -85,7 +93,8 @@ class _$VPTokenValidationErrorSerializer implements PrimitiveSerializer<VPTokenV
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +105,9 @@ class _$VPTokenValidationErrorSerializer implements PrimitiveSerializer<VPTokenV
     VPTokenValidationError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +139,8 @@ class _$VPTokenValidationErrorSerializer implements PrimitiveSerializer<VPTokenV
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(VPTokenValidationErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(VPTokenValidationErrorHttpStatusCodeEnum),
           ) as VPTokenValidationErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +154,8 @@ class _$VPTokenValidationErrorSerializer implements PrimitiveSerializer<VPTokenV
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +189,50 @@ class _$VPTokenValidationErrorSerializer implements PrimitiveSerializer<VPTokenV
 }
 
 class VPTokenValidationErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'VPTokenValidationError')
-  static const VPTokenValidationErrorNameEnum vPTokenValidationError = _$vPTokenValidationErrorNameEnum_vPTokenValidationError;
+  static const VPTokenValidationErrorNameEnum vPTokenValidationError =
+      _$vPTokenValidationErrorNameEnum_vPTokenValidationError;
 
-  static Serializer<VPTokenValidationErrorNameEnum> get serializer => _$vPTokenValidationErrorNameEnumSerializer;
+  static Serializer<VPTokenValidationErrorNameEnum> get serializer =>
+      _$vPTokenValidationErrorNameEnumSerializer;
 
-  const VPTokenValidationErrorNameEnum._(String name): super(name);
+  const VPTokenValidationErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<VPTokenValidationErrorNameEnum> get values => _$vPTokenValidationErrorNameEnumValues;
-  static VPTokenValidationErrorNameEnum valueOf(String name) => _$vPTokenValidationErrorNameEnumValueOf(name);
+  static BuiltSet<VPTokenValidationErrorNameEnum> get values =>
+      _$vPTokenValidationErrorNameEnumValues;
+  static VPTokenValidationErrorNameEnum valueOf(String name) =>
+      _$vPTokenValidationErrorNameEnumValueOf(name);
 }
 
 class VPTokenValidationErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'VP token validation ended with an error')
-  static const VPTokenValidationErrorMessageEnum vPTokenValidationEndedWithAnError = _$vPTokenValidationErrorMessageEnum_vPTokenValidationEndedWithAnError;
+  static const VPTokenValidationErrorMessageEnum
+      vPTokenValidationEndedWithAnError =
+      _$vPTokenValidationErrorMessageEnum_vPTokenValidationEndedWithAnError;
 
-  static Serializer<VPTokenValidationErrorMessageEnum> get serializer => _$vPTokenValidationErrorMessageEnumSerializer;
+  static Serializer<VPTokenValidationErrorMessageEnum> get serializer =>
+      _$vPTokenValidationErrorMessageEnumSerializer;
 
-  const VPTokenValidationErrorMessageEnum._(String name): super(name);
+  const VPTokenValidationErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<VPTokenValidationErrorMessageEnum> get values => _$vPTokenValidationErrorMessageEnumValues;
-  static VPTokenValidationErrorMessageEnum valueOf(String name) => _$vPTokenValidationErrorMessageEnumValueOf(name);
+  static BuiltSet<VPTokenValidationErrorMessageEnum> get values =>
+      _$vPTokenValidationErrorMessageEnumValues;
+  static VPTokenValidationErrorMessageEnum valueOf(String name) =>
+      _$vPTokenValidationErrorMessageEnumValueOf(name);
 }
 
 class VPTokenValidationErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const VPTokenValidationErrorHttpStatusCodeEnum number400 = _$vPTokenValidationErrorHttpStatusCodeEnum_number400;
+  static const VPTokenValidationErrorHttpStatusCodeEnum number400 =
+      _$vPTokenValidationErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<VPTokenValidationErrorHttpStatusCodeEnum> get serializer => _$vPTokenValidationErrorHttpStatusCodeEnumSerializer;
+  static Serializer<VPTokenValidationErrorHttpStatusCodeEnum> get serializer =>
+      _$vPTokenValidationErrorHttpStatusCodeEnumSerializer;
 
-  const VPTokenValidationErrorHttpStatusCodeEnum._(String name): super(name);
+  const VPTokenValidationErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<VPTokenValidationErrorHttpStatusCodeEnum> get values => _$vPTokenValidationErrorHttpStatusCodeEnumValues;
-  static VPTokenValidationErrorHttpStatusCodeEnum valueOf(String name) => _$vPTokenValidationErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<VPTokenValidationErrorHttpStatusCodeEnum> get values =>
+      _$vPTokenValidationErrorHttpStatusCodeEnumValues;
+  static VPTokenValidationErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$vPTokenValidationErrorHttpStatusCodeEnumValueOf(name);
 }
-

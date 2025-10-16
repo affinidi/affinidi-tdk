@@ -216,6 +216,12 @@ export interface CallbackInput {
    */
   vp_token?: string
   /**
+   * Used only for internal system flows. This field is not applicable  for external client integrations and will not produce valid results  when used outside of internal contexts.
+   * @type {string}
+   * @memberof CallbackInput
+   */
+  response_code?: string
+  /**
    * A short string indicating the error code reported by the service. It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied). The default is access_denied.
    * @type {string}
    * @memberof CallbackInput
@@ -409,6 +415,31 @@ export interface CorsIotaExchangeCredentialsOK {
 /**
  *
  * @export
+ * @interface CreateDcqlQueryInput
+ */
+export interface CreateDcqlQueryInput {
+  /**
+   * The name of the DCQL query to quickly identify the query.
+   * @type {string}
+   * @memberof CreateDcqlQueryInput
+   */
+  name: string
+  /**
+   * The DCQL query describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
+   * @type {string}
+   * @memberof CreateDcqlQueryInput
+   */
+  dcqlQuery: string
+  /**
+   * An optional description of what the query is used for.
+   * @type {string}
+   * @memberof CreateDcqlQueryInput
+   */
+  description?: string
+}
+/**
+ *
+ * @export
  * @interface CreateIotaConfigurationInput
  */
 export interface CreateIotaConfigurationInput {
@@ -461,7 +492,7 @@ export interface CreateIotaConfigurationInput {
    */
   clientMetadata: IotaConfigurationDtoClientMetadata
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof CreateIotaConfigurationInput
    */
@@ -483,6 +514,7 @@ export interface CreateIotaConfigurationInput {
 export const CreateIotaConfigurationInputModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type CreateIotaConfigurationInputModeEnum =
@@ -512,6 +544,49 @@ export interface CreatePexQueryInput {
    * @memberof CreatePexQueryInput
    */
   description?: string
+}
+/**
+ *
+ * @export
+ * @interface DcqlQueryDto
+ */
+export interface DcqlQueryDto {
+  /**
+   * The unique resource identifier of the qeuery.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  ari: string
+  /**
+   * The ID of the query.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  queryId: string
+  /**
+   * The name of the DCQL query to quickly identify the query.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  name: string
+  /**
+   * An optional description of what the query is used for.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  description: string
+  /**
+   * The unique resource identifier of the related configuration where the query is defined.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  configurationAri: string
+  /**
+   * The DCQL query describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
+   * @type {string}
+   * @memberof DcqlQueryDto
+   */
+  dcqlQuery: string
 }
 /**
  *
@@ -563,8 +638,6 @@ export interface FetchIOTAVPResponseInput {
  * @interface FetchIOTAVPResponseOK
  */
 export interface FetchIOTAVPResponseOK {
-  [key: string]: any
-
   /**
    * A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
    * @type {string}
@@ -652,7 +725,13 @@ export interface InitiateDataSharingRequestInput {
    */
   configurationId: string
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * User did to send the initiating request to. Only required if mode is didcomm
+   * @type {string}
+   * @memberof InitiateDataSharingRequestInput
+   */
+  userDid?: string
+  /**
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof InitiateDataSharingRequestInput
    */
@@ -662,6 +741,7 @@ export interface InitiateDataSharingRequestInput {
 export const InitiateDataSharingRequestInputModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type InitiateDataSharingRequestInputModeEnum =
@@ -860,7 +940,7 @@ export interface IotaConfigurationDto {
    */
   clientMetadata: IotaConfigurationDtoClientMetadata
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof IotaConfigurationDto
    */
@@ -882,6 +962,7 @@ export interface IotaConfigurationDto {
 export const IotaConfigurationDtoModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type IotaConfigurationDtoModeEnum =
@@ -987,6 +1068,25 @@ export interface ListConfigurationOK {
    * @memberof ListConfigurationOK
    */
   configurations: Array<IotaConfigurationDto>
+}
+/**
+ *
+ * @export
+ * @interface ListDcqlQueriesOK
+ */
+export interface ListDcqlQueriesOK {
+  /**
+   *
+   * @type {Array<DcqlQueryDto>}
+   * @memberof ListDcqlQueriesOK
+   */
+  dcqlQueries: Array<DcqlQueryDto>
+  /**
+   *
+   * @type {string}
+   * @memberof ListDcqlQueriesOK
+   */
+  lastEvaluatedKey?: string
 }
 /**
  *
@@ -1459,7 +1559,7 @@ export interface UpdateConfigurationByIdInput {
    */
   clientMetadata?: IotaConfigurationDtoClientMetadata
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @type {string}
    * @memberof UpdateConfigurationByIdInput
    */
@@ -1481,6 +1581,7 @@ export interface UpdateConfigurationByIdInput {
 export const UpdateConfigurationByIdInputModeEnum = {
   Redirect: 'redirect',
   Websocket: 'websocket',
+  Didcomm: 'didcomm',
 } as const
 
 export type UpdateConfigurationByIdInputModeEnum =
@@ -1498,6 +1599,25 @@ export interface UpdateConfigurationByIdOK {
    * @memberof UpdateConfigurationByIdOK
    */
   updateConfigurationByIdOk?: string
+}
+/**
+ *
+ * @export
+ * @interface UpdateDcqlQueryInput
+ */
+export interface UpdateDcqlQueryInput {
+  /**
+   * The DCQL query describing the data requirement that must be satisfied by the user. The value is in a JSON stringify format.
+   * @type {string}
+   * @memberof UpdateDcqlQueryInput
+   */
+  dcqlQuery?: string
+  /**
+   * An optional description of what the query is used for.
+   * @type {string}
+   * @memberof UpdateDcqlQueryInput
+   */
+  description?: string
 }
 /**
  *
@@ -2498,6 +2618,742 @@ export class ConfigurationsApi extends BaseAPI {
       .updateIotaConfigurationById(
         configurationId,
         updateConfigurationByIdInput,
+        options,
+      )
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
+ * DcqlQueryApi - axios parameter creator
+ * @export
+ */
+export const DcqlQueryApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     * Creates a new DCQL query in the configuration to query data.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {CreateDcqlQueryInput} createDcqlQueryInput CreateDcqlQuery
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createDcqlQuery: async (
+      configurationId: string,
+      createDcqlQueryInput: CreateDcqlQueryInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('createDcqlQuery', 'configurationId', configurationId)
+      // verify required parameter 'createDcqlQueryInput' is not null or undefined
+      assertParamExists(
+        'createDcqlQuery',
+        'createDcqlQueryInput',
+        createDcqlQueryInput,
+      )
+      const localVarPath =
+        `/v1/configurations/{configurationId}/dcql-queries`.replace(
+          `{${'configurationId'}}`,
+          encodeURIComponent(String(configurationId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createDcqlQueryInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Deletes a DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteDcqlQueryById: async (
+      configurationId: string,
+      queryId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'deleteDcqlQueryById',
+        'configurationId',
+        configurationId,
+      )
+      // verify required parameter 'queryId' is not null or undefined
+      assertParamExists('deleteDcqlQueryById', 'queryId', queryId)
+      const localVarPath =
+        `/v1/configurations/{configurationId}/dcql-queries/{queryId}`
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+          .replace(`{${'queryId'}}`, encodeURIComponent(String(queryId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Retrieves a DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getDcqlQueryById: async (
+      configurationId: string,
+      queryId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('getDcqlQueryById', 'configurationId', configurationId)
+      // verify required parameter 'queryId' is not null or undefined
+      assertParamExists('getDcqlQueryById', 'queryId', queryId)
+      const localVarPath =
+        `/v1/configurations/{configurationId}/dcql-queries/{queryId}`
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+          .replace(`{${'queryId'}}`, encodeURIComponent(String(queryId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Lists all DCQL queries in the configuration.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listDcqlQueries: async (
+      configurationId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists('listDcqlQueries', 'configurationId', configurationId)
+      const localVarPath =
+        `/v1/configurations/{configurationId}/dcql-queries`.replace(
+          `{${'configurationId'}}`,
+          encodeURIComponent(String(configurationId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      if (limit !== undefined) {
+        localVarQueryParameter['limit'] = limit
+      }
+
+      if (exclusiveStartKey !== undefined) {
+        localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
+      }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Updates the DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {UpdateDcqlQueryInput} updateDcqlQueryInput UpdateDcqlQueryById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateDcqlQueryById: async (
+      configurationId: string,
+      queryId: string,
+      updateDcqlQueryInput: UpdateDcqlQueryInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'configurationId' is not null or undefined
+      assertParamExists(
+        'updateDcqlQueryById',
+        'configurationId',
+        configurationId,
+      )
+      // verify required parameter 'queryId' is not null or undefined
+      assertParamExists('updateDcqlQueryById', 'queryId', queryId)
+      // verify required parameter 'updateDcqlQueryInput' is not null or undefined
+      assertParamExists(
+        'updateDcqlQueryById',
+        'updateDcqlQueryInput',
+        updateDcqlQueryInput,
+      )
+      const localVarPath =
+        `/v1/configurations/{configurationId}/dcql-queries/{queryId}`
+          .replace(
+            `{${'configurationId'}}`,
+            encodeURIComponent(String(configurationId)),
+          )
+          .replace(`{${'queryId'}}`, encodeURIComponent(String(queryId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateDcqlQueryInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * DcqlQueryApi - functional programming interface
+ * @export
+ */
+export const DcqlQueryApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = DcqlQueryApiAxiosParamCreator(configuration)
+  return {
+    /**
+     * Creates a new DCQL query in the configuration to query data.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {CreateDcqlQueryInput} createDcqlQueryInput CreateDcqlQuery
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createDcqlQuery(
+      configurationId: string,
+      createDcqlQueryInput: CreateDcqlQueryInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DcqlQueryDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createDcqlQuery(
+        configurationId,
+        createDcqlQueryInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DcqlQueryApi.createDcqlQuery']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Deletes a DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteDcqlQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.deleteDcqlQueryById(
+          configurationId,
+          queryId,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DcqlQueryApi.deleteDcqlQueryById']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Retrieves a DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getDcqlQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DcqlQueryDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.getDcqlQueryById(
+          configurationId,
+          queryId,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DcqlQueryApi.getDcqlQueryById']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Lists all DCQL queries in the configuration.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listDcqlQueries(
+      configurationId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ListDcqlQueriesOK>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listDcqlQueries(
+        configurationId,
+        limit,
+        exclusiveStartKey,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DcqlQueryApi.listDcqlQueries']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Updates the DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {UpdateDcqlQueryInput} updateDcqlQueryInput UpdateDcqlQueryById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateDcqlQueryById(
+      configurationId: string,
+      queryId: string,
+      updateDcqlQueryInput: UpdateDcqlQueryInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<DcqlQueryDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.updateDcqlQueryById(
+          configurationId,
+          queryId,
+          updateDcqlQueryInput,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DcqlQueryApi.updateDcqlQueryById']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * DcqlQueryApi - factory interface
+ * @export
+ */
+export const DcqlQueryApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = DcqlQueryApiFp(configuration)
+  return {
+    /**
+     * Creates a new DCQL query in the configuration to query data.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {CreateDcqlQueryInput} createDcqlQueryInput CreateDcqlQuery
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createDcqlQuery(
+      configurationId: string,
+      createDcqlQueryInput: CreateDcqlQueryInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<DcqlQueryDto> {
+      return localVarFp
+        .createDcqlQuery(configurationId, createDcqlQueryInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Deletes a DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    deleteDcqlQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<void> {
+      return localVarFp
+        .deleteDcqlQueryById(configurationId, queryId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Retrieves a DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getDcqlQueryById(
+      configurationId: string,
+      queryId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<DcqlQueryDto> {
+      return localVarFp
+        .getDcqlQueryById(configurationId, queryId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Lists all DCQL queries in the configuration.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {number} [limit] Maximum number of records to fetch in a list
+     * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listDcqlQueries(
+      configurationId: string,
+      limit?: number,
+      exclusiveStartKey?: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ListDcqlQueriesOK> {
+      return localVarFp
+        .listDcqlQueries(configurationId, limit, exclusiveStartKey, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Updates the DCQL query in the configuration by ID.
+     * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+     * @param {string} queryId The ID of the query.
+     * @param {UpdateDcqlQueryInput} updateDcqlQueryInput UpdateDcqlQueryById
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateDcqlQueryById(
+      configurationId: string,
+      queryId: string,
+      updateDcqlQueryInput: UpdateDcqlQueryInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<DcqlQueryDto> {
+      return localVarFp
+        .updateDcqlQueryById(
+          configurationId,
+          queryId,
+          updateDcqlQueryInput,
+          options,
+        )
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * DcqlQueryApi - object-oriented interface
+ * @export
+ * @class DcqlQueryApi
+ * @extends {BaseAPI}
+ */
+export class DcqlQueryApi extends BaseAPI {
+  /**
+   * Creates a new DCQL query in the configuration to query data.
+   * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+   * @param {CreateDcqlQueryInput} createDcqlQueryInput CreateDcqlQuery
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DcqlQueryApi
+   */
+  public createDcqlQuery(
+    configurationId: string,
+    createDcqlQueryInput: CreateDcqlQueryInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DcqlQueryApiFp(this.configuration)
+      .createDcqlQuery(configurationId, createDcqlQueryInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Deletes a DCQL query in the configuration by ID.
+   * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+   * @param {string} queryId The ID of the query.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DcqlQueryApi
+   */
+  public deleteDcqlQueryById(
+    configurationId: string,
+    queryId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DcqlQueryApiFp(this.configuration)
+      .deleteDcqlQueryById(configurationId, queryId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Retrieves a DCQL query in the configuration by ID.
+   * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+   * @param {string} queryId The ID of the query.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DcqlQueryApi
+   */
+  public getDcqlQueryById(
+    configurationId: string,
+    queryId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DcqlQueryApiFp(this.configuration)
+      .getDcqlQueryById(configurationId, queryId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Lists all DCQL queries in the configuration.
+   * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+   * @param {number} [limit] Maximum number of records to fetch in a list
+   * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DcqlQueryApi
+   */
+  public listDcqlQueries(
+    configurationId: string,
+    limit?: number,
+    exclusiveStartKey?: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DcqlQueryApiFp(this.configuration)
+      .listDcqlQueries(configurationId, limit, exclusiveStartKey, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Updates the DCQL query in the configuration by ID.
+   * @param {string} configurationId ID of the Affinidi Iota Framework configuration.
+   * @param {string} queryId The ID of the query.
+   * @param {UpdateDcqlQueryInput} updateDcqlQueryInput UpdateDcqlQueryById
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DcqlQueryApi
+   */
+  public updateDcqlQueryById(
+    configurationId: string,
+    queryId: string,
+    updateDcqlQueryInput: UpdateDcqlQueryInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DcqlQueryApiFp(this.configuration)
+      .updateDcqlQueryById(
+        configurationId,
+        queryId,
+        updateDcqlQueryInput,
         options,
       )
       .then((request) => request(this.axios, this.basePath))

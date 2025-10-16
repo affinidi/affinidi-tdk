@@ -98,7 +98,9 @@ class _$ErrorOAuth2Serializer implements PrimitiveSerializer<ErrorOAuth2> {
     ErrorOAuth2 object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -176,4 +178,3 @@ class _$ErrorOAuth2Serializer implements PrimitiveSerializer<ErrorOAuth2> {
     return result.build();
   }
 }
-

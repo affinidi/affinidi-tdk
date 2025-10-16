@@ -16,6 +16,8 @@ import 'package:affinidi_tdk_login_configuration_client/src/model/date.dart';
 
 import 'package:affinidi_tdk_login_configuration_client/src/model/action_forbidden_error.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/add_user_to_group_input.dart';
+import 'package:affinidi_tdk_login_configuration_client/src/model/authorization_request_dcql.dart';
+import 'package:affinidi_tdk_login_configuration_client/src/model/authorization_request_pex.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/blocked_users.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/blocked_users_input.dart';
 import 'package:affinidi_tdk_login_configuration_client/src/model/cors_login_session_accept_response_ok.dart';
@@ -74,6 +76,8 @@ part 'serializers.g.dart';
 @SerializersFor([
   ActionForbiddenError,
   AddUserToGroupInput,
+  AuthorizationRequestDcql,
+  AuthorizationRequestPex,
   BlockedUsers,
   BlockedUsersInput,
   CorsLoginSessionAcceptResponseOK,
@@ -131,8 +135,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

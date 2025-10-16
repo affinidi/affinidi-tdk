@@ -70,6 +70,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 
 - [CreateWalletInput](docs/CreateWalletInput.md)
 - [CreateWalletResponse](docs/CreateWalletResponse.md)
+- [CreateWalletV2Input](docs/CreateWalletV2Input.md)
+- [CreateWalletV2Response](docs/CreateWalletV2Response.md)
 - [EntityNotFoundError](docs/EntityNotFoundError.md)
 - [GetRevocationCredentialStatusOK](docs/GetRevocationCredentialStatusOK.md)
 - [GetRevocationListCredentialResultDto](docs/GetRevocationListCredentialResultDto.md)
@@ -95,10 +97,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialsDm2SdJwtResultDto](docs/SignCredentialsDm2SdJwtResultDto.md)
 - [SignJwtToken](docs/SignJwtToken.md)
 - [SignJwtTokenOK](docs/SignJwtTokenOK.md)
+- [SignPresentationLdpInputDto](docs/SignPresentationLdpInputDto.md)
+- [SignPresentationLdpResultDto](docs/SignPresentationLdpResultDto.md)
 - [SigningFailedError](docs/SigningFailedError.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)
+- [WalletV2Dto](docs/WalletV2Dto.md)
 - [WalletsListDto](docs/WalletsListDto.md)
 
 <a id="documentation-for-authorization"></a>

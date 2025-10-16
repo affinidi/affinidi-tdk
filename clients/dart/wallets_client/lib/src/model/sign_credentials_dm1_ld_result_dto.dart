@@ -14,25 +14,35 @@ part 'sign_credentials_dm1_ld_result_dto.g.dart';
 /// Properties:
 /// * [credential] - Signed credential can be in Dm1Ld format
 @BuiltValue()
-abstract class SignCredentialsDm1LdResultDto implements Built<SignCredentialsDm1LdResultDto, SignCredentialsDm1LdResultDtoBuilder> {
+abstract class SignCredentialsDm1LdResultDto
+    implements
+        Built<SignCredentialsDm1LdResultDto,
+            SignCredentialsDm1LdResultDtoBuilder> {
   /// Signed credential can be in Dm1Ld format
   @BuiltValueField(wireName: r'credential')
   JsonObject get credential;
 
   SignCredentialsDm1LdResultDto._();
 
-  factory SignCredentialsDm1LdResultDto([void updates(SignCredentialsDm1LdResultDtoBuilder b)]) = _$SignCredentialsDm1LdResultDto;
+  factory SignCredentialsDm1LdResultDto(
+          [void updates(SignCredentialsDm1LdResultDtoBuilder b)]) =
+      _$SignCredentialsDm1LdResultDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SignCredentialsDm1LdResultDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SignCredentialsDm1LdResultDto> get serializer => _$SignCredentialsDm1LdResultDtoSerializer();
+  static Serializer<SignCredentialsDm1LdResultDto> get serializer =>
+      _$SignCredentialsDm1LdResultDtoSerializer();
 }
 
-class _$SignCredentialsDm1LdResultDtoSerializer implements PrimitiveSerializer<SignCredentialsDm1LdResultDto> {
+class _$SignCredentialsDm1LdResultDtoSerializer
+    implements PrimitiveSerializer<SignCredentialsDm1LdResultDto> {
   @override
-  final Iterable<Type> types = const [SignCredentialsDm1LdResultDto, _$SignCredentialsDm1LdResultDto];
+  final Iterable<Type> types = const [
+    SignCredentialsDm1LdResultDto,
+    _$SignCredentialsDm1LdResultDto
+  ];
 
   @override
   final String wireName = r'SignCredentialsDm1LdResultDto';
@@ -55,7 +65,9 @@ class _$SignCredentialsDm1LdResultDtoSerializer implements PrimitiveSerializer<S
     SignCredentialsDm1LdResultDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +117,3 @@ class _$SignCredentialsDm1LdResultDtoSerializer implements PrimitiveSerializer<S
     return result.build();
   }
 }
-

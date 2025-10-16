@@ -20,8 +20,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -37,7 +35,7 @@ import java.util.StringJoiner;
   FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
+public class FetchIOTAVPResponseOK {
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   @javax.annotation.Nullable
   private String correlationId;
@@ -51,7 +49,6 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
   private String vpToken;
 
   public FetchIOTAVPResponseOK() {
-
   }
 
   public FetchIOTAVPResponseOK correlationId(@javax.annotation.Nullable String correlationId) {
@@ -140,20 +137,18 @@ public class FetchIOTAVPResponseOK extends HashMap<String, Object> {
     FetchIOTAVPResponseOK fetchIOTAVPResponseOK = (FetchIOTAVPResponseOK) o;
     return Objects.equals(this.correlationId, fetchIOTAVPResponseOK.correlationId) &&
         Objects.equals(this.presentationSubmission, fetchIOTAVPResponseOK.presentationSubmission) &&
-        Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken) &&
-        super.equals(o);
+        Objects.equals(this.vpToken, fetchIOTAVPResponseOK.vpToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(correlationId, presentationSubmission, vpToken, super.hashCode());
+    return Objects.hash(correlationId, presentationSubmission, vpToken);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FetchIOTAVPResponseOK {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
     sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");

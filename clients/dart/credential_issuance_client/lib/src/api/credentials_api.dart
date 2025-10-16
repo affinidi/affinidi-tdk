@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -15,13 +14,8 @@ import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_creden
 import 'package:affinidi_tdk_credential_issuance_client/src/model/claimed_credential_response.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/create_credential_input.dart';
 import 'package:affinidi_tdk_credential_issuance_client/src/model/credential_response.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/generate_credentials400_response.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_jwt_token_error.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/invalid_parameter_error.dart';
-import 'package:affinidi_tdk_credential_issuance_client/src/model/not_found_error.dart';
 
 class CredentialsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -43,7 +37,7 @@ class CredentialsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [BatchCredentialResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BatchCredentialResponse>> batchCredential({ 
+  Future<Response<BatchCredentialResponse>> batchCredential({
     required String projectId,
     required BatchCredentialInput batchCredentialInput,
     CancelToken? cancelToken,
@@ -53,7 +47,10 @@ class CredentialsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/{projectId}/batch_credential'.replaceAll('{' r'projectId' '}', encodeQueryParameter(_serializers, projectId, const FullType(String)).toString());
+    final _path = r'/v1/{projectId}/batch_credential'.replaceAll(
+        '{' r'projectId' '}',
+        encodeQueryParameter(_serializers, projectId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -77,11 +74,11 @@ class CredentialsApi {
 
     try {
       const _type = FullType(BatchCredentialInput);
-      _bodyData = _serializers.serialize(batchCredentialInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(batchCredentialInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -104,11 +101,12 @@ class CredentialsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BatchCredentialResponse),
-      ) as BatchCredentialResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(BatchCredentialResponse),
+            ) as BatchCredentialResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -146,7 +144,7 @@ class CredentialsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CredentialResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CredentialResponse>> generateCredentials({ 
+  Future<Response<CredentialResponse>> generateCredentials({
     required String projectId,
     required CreateCredentialInput createCredentialInput,
     CancelToken? cancelToken,
@@ -156,7 +154,10 @@ class CredentialsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/{projectId}/credential'.replaceAll('{' r'projectId' '}', encodeQueryParameter(_serializers, projectId, const FullType(String)).toString());
+    final _path = r'/v1/{projectId}/credential'.replaceAll(
+        '{' r'projectId' '}',
+        encodeQueryParameter(_serializers, projectId, const FullType(String))
+            .toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -180,11 +181,11 @@ class CredentialsApi {
 
     try {
       const _type = FullType(CreateCredentialInput);
-      _bodyData = _serializers.serialize(createCredentialInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(createCredentialInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -207,11 +208,12 @@ class CredentialsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CredentialResponse),
-      ) as CredentialResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(CredentialResponse),
+            ) as CredentialResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -240,10 +242,10 @@ class CredentialsApi {
   /// Parameters:
   /// * [projectId] - project id
   /// * [configurationId] - configuration id
-  /// * [rangeStartTime] 
-  /// * [rangeEndTime] 
+  /// * [rangeStartTime]
+  /// * [rangeEndTime]
   /// * [exclusiveStartKey] - exclusiveStartKey for retrieving the next batch of data.
-  /// * [limit] 
+  /// * [limit]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -253,7 +255,7 @@ class CredentialsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ClaimedCredentialListResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ClaimedCredentialListResponse>> getClaimedCredentials({ 
+  Future<Response<ClaimedCredentialListResponse>> getClaimedCredentials({
     required String projectId,
     required String configurationId,
     required String rangeStartTime,
@@ -267,7 +269,18 @@ class CredentialsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/{projectId}/configurations/{configurationId}/credentials'.replaceAll('{' r'projectId' '}', encodeQueryParameter(_serializers, projectId, const FullType(String)).toString()).replaceAll('{' r'configurationId' '}', encodeQueryParameter(_serializers, configurationId, const FullType(String)).toString());
+    final _path =
+        r'/v1/{projectId}/configurations/{configurationId}/credentials'
+            .replaceAll(
+                '{' r'projectId' '}',
+                encodeQueryParameter(
+                        _serializers, projectId, const FullType(String))
+                    .toString())
+            .replaceAll(
+                '{' r'configurationId' '}',
+                encodeQueryParameter(
+                        _serializers, configurationId, const FullType(String))
+                    .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -288,10 +301,17 @@ class CredentialsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'rangeStartTime': encodeQueryParameter(_serializers, rangeStartTime, const FullType(String)),
-      if (rangeEndTime != null) r'rangeEndTime': encodeQueryParameter(_serializers, rangeEndTime, const FullType(String)),
-      if (exclusiveStartKey != null) r'exclusiveStartKey': encodeQueryParameter(_serializers, exclusiveStartKey, const FullType(String)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
+      r'rangeStartTime': encodeQueryParameter(
+          _serializers, rangeStartTime, const FullType(String)),
+      if (rangeEndTime != null)
+        r'rangeEndTime': encodeQueryParameter(
+            _serializers, rangeEndTime, const FullType(String)),
+      if (exclusiveStartKey != null)
+        r'exclusiveStartKey': encodeQueryParameter(
+            _serializers, exclusiveStartKey, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
     };
 
     final _response = await _dio.request<Object>(
@@ -307,11 +327,12 @@ class CredentialsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ClaimedCredentialListResponse),
-      ) as ClaimedCredentialListResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ClaimedCredentialListResponse),
+            ) as ClaimedCredentialListResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -350,7 +371,7 @@ class CredentialsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ClaimedCredentialResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ClaimedCredentialResponse>> getIssuanceIdClaimedCredential({ 
+  Future<Response<ClaimedCredentialResponse>> getIssuanceIdClaimedCredential({
     required String projectId,
     required String configurationId,
     required String issuanceId,
@@ -361,7 +382,23 @@ class CredentialsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials'.replaceAll('{' r'projectId' '}', encodeQueryParameter(_serializers, projectId, const FullType(String)).toString()).replaceAll('{' r'configurationId' '}', encodeQueryParameter(_serializers, configurationId, const FullType(String)).toString()).replaceAll('{' r'issuanceId' '}', encodeQueryParameter(_serializers, issuanceId, const FullType(String)).toString());
+    final _path =
+        r'/v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials'
+            .replaceAll(
+                '{' r'projectId' '}',
+                encodeQueryParameter(
+                        _serializers, projectId, const FullType(String))
+                    .toString())
+            .replaceAll(
+                '{' r'configurationId' '}',
+                encodeQueryParameter(
+                        _serializers, configurationId, const FullType(String))
+                    .toString())
+            .replaceAll(
+                '{' r'issuanceId' '}',
+                encodeQueryParameter(
+                        _serializers, issuanceId, const FullType(String))
+                    .toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -393,11 +430,12 @@ class CredentialsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ClaimedCredentialResponse),
-      ) as ClaimedCredentialResponse;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ClaimedCredentialResponse),
+            ) as ClaimedCredentialResponse;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -419,5 +457,4 @@ class CredentialsApi {
       extra: _response.extra,
     );
   }
-
 }

@@ -27,11 +27,14 @@ part 'login_configuration_object.g.dart';
 /// * [creationDate] - OAuth 2.0 Client Creation Date
 /// * [vpDefinition] - VP definition in JSON stringify format
 /// * [presentationDefinition] - Presentation Definition
+/// * [dcqlQuery] - DCQL query
 /// * [idTokenMapping] - Fields name/path mapping between the vp_token and the id_token
-/// * [clientMetadata] 
-/// * [tokenEndpointAuthMethod] 
+/// * [clientMetadata]
+/// * [tokenEndpointAuthMethod]
 @BuiltValue()
-abstract class LoginConfigurationObject implements Built<LoginConfigurationObject, LoginConfigurationObjectBuilder> {
+abstract class LoginConfigurationObject
+    implements
+        Built<LoginConfigurationObject, LoginConfigurationObjectBuilder> {
   /// Configuration ari
   @BuiltValueField(wireName: r'ari')
   String get ari;
@@ -76,6 +79,10 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
   @BuiltValueField(wireName: r'presentationDefinition')
   JsonObject? get presentationDefinition;
 
+  /// DCQL query
+  @BuiltValueField(wireName: r'dcqlQuery')
+  JsonObject? get dcqlQuery;
+
   /// Fields name/path mapping between the vp_token and the id_token
   @BuiltValueField(wireName: r'idTokenMapping')
   BuiltList<IdTokenMappingItem> get idTokenMapping;
@@ -89,18 +96,25 @@ abstract class LoginConfigurationObject implements Built<LoginConfigurationObjec
 
   LoginConfigurationObject._();
 
-  factory LoginConfigurationObject([void updates(LoginConfigurationObjectBuilder b)]) = _$LoginConfigurationObject;
+  factory LoginConfigurationObject(
+          [void updates(LoginConfigurationObjectBuilder b)]) =
+      _$LoginConfigurationObject;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(LoginConfigurationObjectBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<LoginConfigurationObject> get serializer => _$LoginConfigurationObjectSerializer();
+  static Serializer<LoginConfigurationObject> get serializer =>
+      _$LoginConfigurationObjectSerializer();
 }
 
-class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginConfigurationObject> {
+class _$LoginConfigurationObjectSerializer
+    implements PrimitiveSerializer<LoginConfigurationObject> {
   @override
-  final Iterable<Type> types = const [LoginConfigurationObject, _$LoginConfigurationObject];
+  final Iterable<Type> types = const [
+    LoginConfigurationObject,
+    _$LoginConfigurationObject
+  ];
 
   @override
   final String wireName = r'LoginConfigurationObject';
@@ -179,6 +193,13 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
         specifiedType: const FullType(JsonObject),
       );
     }
+    if (object.dcqlQuery != null) {
+      yield r'dcqlQuery';
+      yield serializers.serialize(
+        object.dcqlQuery,
+        specifiedType: const FullType(JsonObject),
+      );
+    }
     yield r'idTokenMapping';
     yield serializers.serialize(
       object.idTokenMapping,
@@ -202,7 +223,9 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
     LoginConfigurationObject object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -294,17 +317,26 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
           ) as JsonObject;
           result.presentationDefinition = valueDes;
           break;
+        case r'dcqlQuery':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JsonObject),
+          ) as JsonObject;
+          result.dcqlQuery = valueDes;
+          break;
         case r'idTokenMapping':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(IdTokenMappingItem)]),
           ) as BuiltList<IdTokenMappingItem>;
           result.idTokenMapping.replace(valueDes);
           break;
         case r'clientMetadata':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(LoginConfigurationClientMetadataOutput),
+            specifiedType:
+                const FullType(LoginConfigurationClientMetadataOutput),
           ) as LoginConfigurationClientMetadataOutput;
           result.clientMetadata.replace(valueDes);
           break;
@@ -343,4 +375,3 @@ class _$LoginConfigurationObjectSerializer implements PrimitiveSerializer<LoginC
     return result.build();
   }
 }
-

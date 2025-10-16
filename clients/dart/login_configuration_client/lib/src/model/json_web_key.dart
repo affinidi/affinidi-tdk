@@ -13,10 +13,10 @@ part 'json_web_key.g.dart';
 /// JsonWebKey
 ///
 /// Properties:
-/// * [keys] - The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values.  By default, the order of the JWK values within the array does not imply an  order of preference among them, although applications of JWK Sets can choose  to assign a meaning to the order for their purposes, if desired. 
+/// * [keys] - The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values.  By default, the order of the JWK values within the array does not imply an  order of preference among them, although applications of JWK Sets can choose  to assign a meaning to the order for their purposes, if desired.
 @BuiltValue()
 abstract class JsonWebKey implements Built<JsonWebKey, JsonWebKeyBuilder> {
-  /// The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values.  By default, the order of the JWK values within the array does not imply an  order of preference among them, although applications of JWK Sets can choose  to assign a meaning to the order for their purposes, if desired. 
+  /// The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values.  By default, the order of the JWK values within the array does not imply an  order of preference among them, although applications of JWK Sets can choose  to assign a meaning to the order for their purposes, if desired.
   @BuiltValueField(wireName: r'keys')
   BuiltList<JsonWebKeyKeysInner>? get keys;
 
@@ -47,7 +47,8 @@ class _$JsonWebKeySerializer implements PrimitiveSerializer<JsonWebKey> {
       yield r'keys';
       yield serializers.serialize(
         object.keys,
-        specifiedType: const FullType(BuiltList, [FullType(JsonWebKeyKeysInner)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(JsonWebKeyKeysInner)]),
       );
     }
   }
@@ -58,7 +59,9 @@ class _$JsonWebKeySerializer implements PrimitiveSerializer<JsonWebKey> {
     JsonWebKey object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -76,7 +79,8 @@ class _$JsonWebKeySerializer implements PrimitiveSerializer<JsonWebKey> {
         case r'keys':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(JsonWebKeyKeysInner)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(JsonWebKeyKeysInner)]),
           ) as BuiltList<JsonWebKeyKeysInner>;
           result.keys.replace(valueDes);
           break;
@@ -108,4 +112,3 @@ class _$JsonWebKeySerializer implements PrimitiveSerializer<JsonWebKey> {
     return result.build();
   }
 }
-

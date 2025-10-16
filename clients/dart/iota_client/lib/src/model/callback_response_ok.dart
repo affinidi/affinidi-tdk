@@ -15,7 +15,8 @@ part 'callback_response_ok.g.dart';
 /// * [responseCode] - A unique identifier to fetch the callback response data. Send this value together with the transactionId to successfully fetch the data.
 /// * [message] - A message to the Affinidi Vault indicating that the update was successful.
 @BuiltValue()
-abstract class CallbackResponseOK implements Built<CallbackResponseOK, CallbackResponseOKBuilder> {
+abstract class CallbackResponseOK
+    implements Built<CallbackResponseOK, CallbackResponseOKBuilder> {
   /// The URL to which Affinidi Vault will redirect the user.
   @BuiltValueField(wireName: r'redirect_uri')
   String? get redirectUri;
@@ -30,16 +31,19 @@ abstract class CallbackResponseOK implements Built<CallbackResponseOK, CallbackR
 
   CallbackResponseOK._();
 
-  factory CallbackResponseOK([void updates(CallbackResponseOKBuilder b)]) = _$CallbackResponseOK;
+  factory CallbackResponseOK([void updates(CallbackResponseOKBuilder b)]) =
+      _$CallbackResponseOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CallbackResponseOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CallbackResponseOK> get serializer => _$CallbackResponseOKSerializer();
+  static Serializer<CallbackResponseOK> get serializer =>
+      _$CallbackResponseOKSerializer();
 }
 
-class _$CallbackResponseOKSerializer implements PrimitiveSerializer<CallbackResponseOK> {
+class _$CallbackResponseOKSerializer
+    implements PrimitiveSerializer<CallbackResponseOK> {
   @override
   final Iterable<Type> types = const [CallbackResponseOK, _$CallbackResponseOK];
 
@@ -78,7 +82,9 @@ class _$CallbackResponseOKSerializer implements PrimitiveSerializer<CallbackResp
     CallbackResponseOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,4 +148,3 @@ class _$CallbackResponseOKSerializer implements PrimitiveSerializer<CallbackResp
     return result.build();
   }
 }
-

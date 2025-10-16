@@ -15,6 +15,8 @@ package com.affinidi.tdk.login.configuration.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.login.configuration.client.models.AuthorizationRequestDcql;
+import com.affinidi.tdk.login.configuration.client.models.AuthorizationRequestPex;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -27,14 +29,15 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * LoginSessionDtoAuthorizationRequest
+ * Authorization Request Object
  */
 @JsonPropertyOrder({
   LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_STATE,
   LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_PRESENTATION_DEFINITION,
   LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_ARI,
   LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_CLIENT_ID,
-  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_NONCE
+  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_NONCE,
+  LoginSessionDtoAuthorizationRequest.JSON_PROPERTY_DCQL_QUERY
 })
 @JsonTypeName("LoginSessionDto_authorizationRequest")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -58,6 +61,10 @@ public class LoginSessionDtoAuthorizationRequest {
   public static final String JSON_PROPERTY_NONCE = "nonce";
   @javax.annotation.Nullable
   private String nonce;
+
+  public static final String JSON_PROPERTY_DCQL_QUERY = "dcqlQuery";
+  @javax.annotation.Nonnull
+  private String dcqlQuery;
 
   public LoginSessionDtoAuthorizationRequest() {
   }
@@ -187,6 +194,31 @@ public class LoginSessionDtoAuthorizationRequest {
     this.nonce = nonce;
   }
 
+  public LoginSessionDtoAuthorizationRequest dcqlQuery(@javax.annotation.Nonnull String dcqlQuery) {
+    
+    this.dcqlQuery = dcqlQuery;
+    return this;
+  }
+
+  /**
+   * DCQL query to ask from the user. In JSON Stringify format.
+   * @return dcqlQuery
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getDcqlQuery() {
+    return dcqlQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setDcqlQuery(@javax.annotation.Nonnull String dcqlQuery) {
+    this.dcqlQuery = dcqlQuery;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -200,12 +232,13 @@ public class LoginSessionDtoAuthorizationRequest {
         Objects.equals(this.presentationDefinition, loginSessionDtoAuthorizationRequest.presentationDefinition) &&
         Objects.equals(this.ari, loginSessionDtoAuthorizationRequest.ari) &&
         Objects.equals(this.clientId, loginSessionDtoAuthorizationRequest.clientId) &&
-        Objects.equals(this.nonce, loginSessionDtoAuthorizationRequest.nonce);
+        Objects.equals(this.nonce, loginSessionDtoAuthorizationRequest.nonce) &&
+        Objects.equals(this.dcqlQuery, loginSessionDtoAuthorizationRequest.dcqlQuery);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(state, presentationDefinition, ari, clientId, nonce);
+    return Objects.hash(state, presentationDefinition, ari, clientId, nonce, dcqlQuery);
   }
 
   @Override
@@ -217,6 +250,7 @@ public class LoginSessionDtoAuthorizationRequest {
     sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
     sb.append("    clientId: ").append(toIndentedString(clientId)).append("\n");
     sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
+    sb.append("    dcqlQuery: ").append(toIndentedString(dcqlQuery)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -308,6 +342,16 @@ public class LoginSessionDtoAuthorizationRequest {
     if (getNonce() != null) {
       try {
         joiner.add(String.format("%snonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `dcqlQuery` to the URL query string
+    if (getDcqlQuery() != null) {
+      try {
+        joiner.add(String.format("%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

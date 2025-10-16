@@ -16,7 +16,10 @@ part 'claimed_credential_list_response.g.dart';
 /// * [credentials] - list of credentials
 /// * [lastEvaluatedKey] - for pagination to fetch next set of records
 @BuiltValue()
-abstract class ClaimedCredentialListResponse implements Built<ClaimedCredentialListResponse, ClaimedCredentialListResponseBuilder> {
+abstract class ClaimedCredentialListResponse
+    implements
+        Built<ClaimedCredentialListResponse,
+            ClaimedCredentialListResponseBuilder> {
   /// list of credentials
   @BuiltValueField(wireName: r'credentials')
   BuiltList<BuiltMap<String, JsonObject?>>? get credentials;
@@ -27,18 +30,25 @@ abstract class ClaimedCredentialListResponse implements Built<ClaimedCredentialL
 
   ClaimedCredentialListResponse._();
 
-  factory ClaimedCredentialListResponse([void updates(ClaimedCredentialListResponseBuilder b)]) = _$ClaimedCredentialListResponse;
+  factory ClaimedCredentialListResponse(
+          [void updates(ClaimedCredentialListResponseBuilder b)]) =
+      _$ClaimedCredentialListResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ClaimedCredentialListResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ClaimedCredentialListResponse> get serializer => _$ClaimedCredentialListResponseSerializer();
+  static Serializer<ClaimedCredentialListResponse> get serializer =>
+      _$ClaimedCredentialListResponseSerializer();
 }
 
-class _$ClaimedCredentialListResponseSerializer implements PrimitiveSerializer<ClaimedCredentialListResponse> {
+class _$ClaimedCredentialListResponseSerializer
+    implements PrimitiveSerializer<ClaimedCredentialListResponse> {
   @override
-  final Iterable<Type> types = const [ClaimedCredentialListResponse, _$ClaimedCredentialListResponse];
+  final Iterable<Type> types = const [
+    ClaimedCredentialListResponse,
+    _$ClaimedCredentialListResponse
+  ];
 
   @override
   final String wireName = r'ClaimedCredentialListResponse';
@@ -52,7 +62,9 @@ class _$ClaimedCredentialListResponseSerializer implements PrimitiveSerializer<C
       yield r'credentials';
       yield serializers.serialize(
         object.credentials,
-        specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+        specifiedType: const FullType(BuiltList, [
+          FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])
+        ]),
       );
     }
     if (object.lastEvaluatedKey != null) {
@@ -70,7 +82,9 @@ class _$ClaimedCredentialListResponseSerializer implements PrimitiveSerializer<C
     ClaimedCredentialListResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -88,7 +102,10 @@ class _$ClaimedCredentialListResponseSerializer implements PrimitiveSerializer<C
         case r'credentials':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+            specifiedType: const FullType(BuiltList, [
+              FullType(
+                  BuiltMap, [FullType(String), FullType.nullable(JsonObject)])
+            ]),
           ) as BuiltList<BuiltMap<String, JsonObject?>>;
           result.credentials.replace(valueDes);
           break;
@@ -127,4 +144,3 @@ class _$ClaimedCredentialListResponseSerializer implements PrimitiveSerializer<C
     return result.build();
   }
 }
-

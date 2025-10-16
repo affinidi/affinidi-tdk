@@ -10,6 +10,7 @@
 | **clientSecret**            | **string**                                                                            | OAuth2 client secret                                                                                                                                                                                             | [optional] [default to undefined] |
 | **vpDefinition**            | **string**                                                                            | VP definition in JSON stringify format                                                                                                                                                                           | [optional] [default to undefined] |
 | **presentationDefinition**  | **object**                                                                            | Presentation Definition                                                                                                                                                                                          | [optional] [default to undefined] |
+| **dcqlQuery**               | **object**                                                                            | DCQL query in JSON stringify format                                                                                                                                                                              | [optional] [default to undefined] |
 | **idTokenMapping**          | [**Array&lt;IdTokenMappingItem&gt;**](IdTokenMappingItem.md)                          | Fields name/path mapping between the vp_token and the id_token                                                                                                                                                   | [optional] [default to undefined] |
 | **clientMetadata**          | [**LoginConfigurationClientMetadataInput**](LoginConfigurationClientMetadataInput.md) |                                                                                                                                                                                                                  | [optional] [default to undefined] |
 | **tokenEndpointAuthMethod** | [**TokenEndpointAuthMethod**](TokenEndpointAuthMethod.md)                             |                                                                                                                                                                                                                  | [optional] [default to undefined] |
@@ -27,6 +28,7 @@ const instance: UpdateLoginConfigurationInput = {
   clientSecret,
   vpDefinition,
   presentationDefinition,
+  dcqlQuery,
   idTokenMapping,
   clientMetadata,
   tokenEndpointAuthMethod,

@@ -15,12 +15,12 @@ part 'constraints.g.dart';
 /// Constraints
 ///
 /// Properties:
-/// * [limitDisclosure] 
-/// * [statuses] 
-/// * [fields] 
-/// * [subjectIsIssuer] 
-/// * [isHolder] 
-/// * [sameSubject] 
+/// * [limitDisclosure]
+/// * [statuses]
+/// * [fields]
+/// * [subjectIsIssuer]
+/// * [isHolder]
+/// * [sameSubject]
 @BuiltValue()
 abstract class Constraints implements Built<Constraints, ConstraintsBuilder> {
   @BuiltValueField(wireName: r'limit_disclosure')
@@ -116,7 +116,9 @@ class _$ConstraintsSerializer implements PrimitiveSerializer<Constraints> {
     Constraints object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -203,32 +205,39 @@ class _$ConstraintsSerializer implements PrimitiveSerializer<Constraints> {
 }
 
 class ConstraintsLimitDisclosureEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'required')
-  static const ConstraintsLimitDisclosureEnum required_ = _$constraintsLimitDisclosureEnum_required_;
+  static const ConstraintsLimitDisclosureEnum required_ =
+      _$constraintsLimitDisclosureEnum_required_;
   @BuiltValueEnumConst(wireName: r'preferred')
-  static const ConstraintsLimitDisclosureEnum preferred = _$constraintsLimitDisclosureEnum_preferred;
+  static const ConstraintsLimitDisclosureEnum preferred =
+      _$constraintsLimitDisclosureEnum_preferred;
 
-  static Serializer<ConstraintsLimitDisclosureEnum> get serializer => _$constraintsLimitDisclosureEnumSerializer;
+  static Serializer<ConstraintsLimitDisclosureEnum> get serializer =>
+      _$constraintsLimitDisclosureEnumSerializer;
 
-  const ConstraintsLimitDisclosureEnum._(String name): super(name);
+  const ConstraintsLimitDisclosureEnum._(String name) : super(name);
 
-  static BuiltSet<ConstraintsLimitDisclosureEnum> get values => _$constraintsLimitDisclosureEnumValues;
-  static ConstraintsLimitDisclosureEnum valueOf(String name) => _$constraintsLimitDisclosureEnumValueOf(name);
+  static BuiltSet<ConstraintsLimitDisclosureEnum> get values =>
+      _$constraintsLimitDisclosureEnumValues;
+  static ConstraintsLimitDisclosureEnum valueOf(String name) =>
+      _$constraintsLimitDisclosureEnumValueOf(name);
 }
 
 class ConstraintsSubjectIsIssuerEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'required')
-  static const ConstraintsSubjectIsIssuerEnum required_ = _$constraintsSubjectIsIssuerEnum_required_;
+  static const ConstraintsSubjectIsIssuerEnum required_ =
+      _$constraintsSubjectIsIssuerEnum_required_;
   @BuiltValueEnumConst(wireName: r'preferred')
-  static const ConstraintsSubjectIsIssuerEnum preferred = _$constraintsSubjectIsIssuerEnum_preferred;
+  static const ConstraintsSubjectIsIssuerEnum preferred =
+      _$constraintsSubjectIsIssuerEnum_preferred;
 
-  static Serializer<ConstraintsSubjectIsIssuerEnum> get serializer => _$constraintsSubjectIsIssuerEnumSerializer;
+  static Serializer<ConstraintsSubjectIsIssuerEnum> get serializer =>
+      _$constraintsSubjectIsIssuerEnumSerializer;
 
-  const ConstraintsSubjectIsIssuerEnum._(String name): super(name);
+  const ConstraintsSubjectIsIssuerEnum._(String name) : super(name);
 
-  static BuiltSet<ConstraintsSubjectIsIssuerEnum> get values => _$constraintsSubjectIsIssuerEnumValues;
-  static ConstraintsSubjectIsIssuerEnum valueOf(String name) => _$constraintsSubjectIsIssuerEnumValueOf(name);
+  static BuiltSet<ConstraintsSubjectIsIssuerEnum> get values =>
+      _$constraintsSubjectIsIssuerEnumValues;
+  static ConstraintsSubjectIsIssuerEnum valueOf(String name) =>
+      _$constraintsSubjectIsIssuerEnumValueOf(name);
 }
-

@@ -12,6 +12,9 @@ const UpdateConfigurationByIdInputModeEnum
 const UpdateConfigurationByIdInputModeEnum
     _$updateConfigurationByIdInputModeEnum_websocket =
     const UpdateConfigurationByIdInputModeEnum._('websocket');
+const UpdateConfigurationByIdInputModeEnum
+    _$updateConfigurationByIdInputModeEnum_didcomm =
+    const UpdateConfigurationByIdInputModeEnum._('didcomm');
 
 UpdateConfigurationByIdInputModeEnum
     _$updateConfigurationByIdInputModeEnumValueOf(String name) {
@@ -20,6 +23,8 @@ UpdateConfigurationByIdInputModeEnum
       return _$updateConfigurationByIdInputModeEnum_redirect;
     case 'websocket':
       return _$updateConfigurationByIdInputModeEnum_websocket;
+    case 'didcomm':
+      return _$updateConfigurationByIdInputModeEnum_didcomm;
     default:
       throw ArgumentError(name);
   }
@@ -30,6 +35,7 @@ final BuiltSet<UpdateConfigurationByIdInputModeEnum>
         UpdateConfigurationByIdInputModeEnum>(const <UpdateConfigurationByIdInputModeEnum>[
   _$updateConfigurationByIdInputModeEnum_redirect,
   _$updateConfigurationByIdInputModeEnum_websocket,
+  _$updateConfigurationByIdInputModeEnum_didcomm,
 ]);
 
 Serializer<UpdateConfigurationByIdInputModeEnum>
@@ -41,10 +47,12 @@ class _$UpdateConfigurationByIdInputModeEnumSerializer
   static const Map<String, Object> _toWire = const <String, Object>{
     'redirect': 'redirect',
     'websocket': 'websocket',
+    'didcomm': 'didcomm',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'redirect': 'redirect',
     'websocket': 'websocket',
+    'didcomm': 'didcomm',
   };
 
   @override

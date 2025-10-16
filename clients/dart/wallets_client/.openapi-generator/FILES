@@ -5,6 +5,8 @@ README.md
 analysis_options.yaml
 doc/CreateWalletInput.md
 doc/CreateWalletResponse.md
+doc/CreateWalletV2Input.md
+doc/CreateWalletV2Response.md
 doc/EntityNotFoundError.md
 doc/GetRevocationCredentialStatusOK.md
 doc/GetRevocationListCredentialResultDto.md
@@ -31,11 +33,14 @@ doc/SignCredentialsDm2SdJwtInputDto.md
 doc/SignCredentialsDm2SdJwtResultDto.md
 doc/SignJwtToken.md
 doc/SignJwtTokenOK.md
+doc/SignPresentationLdpInputDto.md
+doc/SignPresentationLdpResultDto.md
 doc/SigningFailedError.md
 doc/UpdateWalletInput.md
 doc/WalletApi.md
 doc/WalletDto.md
 doc/WalletDtoKeysInner.md
+doc/WalletV2Dto.md
 doc/WalletsListDto.md
 lib/affinidi_tdk_wallets_client.dart
 lib/src/api.dart
@@ -50,6 +55,8 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/create_wallet_input.dart
 lib/src/model/create_wallet_response.dart
+lib/src/model/create_wallet_v2_input.dart
+lib/src/model/create_wallet_v2_response.dart
 lib/src/model/date.dart
 lib/src/model/entity_not_found_error.dart
 lib/src/model/get_revocation_credential_status_ok.dart
@@ -76,10 +83,13 @@ lib/src/model/sign_credentials_dm2_sd_jwt_input_dto.dart
 lib/src/model/sign_credentials_dm2_sd_jwt_result_dto.dart
 lib/src/model/sign_jwt_token.dart
 lib/src/model/sign_jwt_token_ok.dart
+lib/src/model/sign_presentation_ldp_input_dto.dart
+lib/src/model/sign_presentation_ldp_result_dto.dart
 lib/src/model/signing_failed_error.dart
 lib/src/model/update_wallet_input.dart
 lib/src/model/wallet_dto.dart
 lib/src/model/wallet_dto_keys_inner.dart
+lib/src/model/wallet_v2_dto.dart
 lib/src/model/wallets_list_dto.dart
 lib/src/serializers.dart
 project.json

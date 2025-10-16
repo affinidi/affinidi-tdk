@@ -16,8 +16,6 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/date.dart'
 
 import 'package:affinidi_tdk_credential_verification_client/src/model/constraints.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/constraints_statuses.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/credential_requirements.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/model/credential_requirements_constraints.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/descriptor.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/error.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/error_detail.dart';
@@ -46,6 +44,7 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/verify_cre
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_v2_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_v2_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
 
@@ -54,8 +53,6 @@ part 'serializers.g.dart';
 @SerializersFor([
   Constraints,
   ConstraintsStatuses,
-  CredentialRequirements,
-  CredentialRequirementsConstraints,
   Descriptor,
   Error,
   ErrorDetail,
@@ -84,6 +81,7 @@ part 'serializers.g.dart';
   VerifyCredentialV2Input,
   VerifyPresentationInput,
   VerifyPresentationOutput,
+  VerifyPresentationV2Input,
   W3cCredentialStatus,
   W3cProof,
 ])
@@ -91,8 +89,8 @@ Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())
       ..add(const AnyOfSerializer())
       ..add(const DateSerializer())
-      ..add(Iso8601DateTimeSerializer())
-    ).build();
+      ..add(Iso8601DateTimeSerializer()))
+    .build();
 
 Serializers standardSerializers =
     (serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

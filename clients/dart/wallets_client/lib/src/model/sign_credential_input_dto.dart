@@ -15,11 +15,12 @@ part 'sign_credential_input_dto.g.dart';
 ///
 /// Properties:
 /// * [unsignedCredential] - Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted
-/// * [revocable] 
-/// * [credentialFormat] 
-/// * [unsignedCredentialParams] 
+/// * [revocable]
+/// * [credentialFormat]
+/// * [unsignedCredentialParams]
 @BuiltValue()
-abstract class SignCredentialInputDto implements Built<SignCredentialInputDto, SignCredentialInputDtoBuilder> {
+abstract class SignCredentialInputDto
+    implements Built<SignCredentialInputDto, SignCredentialInputDtoBuilder> {
   /// Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted
   @BuiltValueField(wireName: r'unsignedCredential')
   JsonObject? get unsignedCredential;
@@ -36,18 +37,25 @@ abstract class SignCredentialInputDto implements Built<SignCredentialInputDto, S
 
   SignCredentialInputDto._();
 
-  factory SignCredentialInputDto([void updates(SignCredentialInputDtoBuilder b)]) = _$SignCredentialInputDto;
+  factory SignCredentialInputDto(
+          [void updates(SignCredentialInputDtoBuilder b)]) =
+      _$SignCredentialInputDto;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SignCredentialInputDtoBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SignCredentialInputDto> get serializer => _$SignCredentialInputDtoSerializer();
+  static Serializer<SignCredentialInputDto> get serializer =>
+      _$SignCredentialInputDtoSerializer();
 }
 
-class _$SignCredentialInputDtoSerializer implements PrimitiveSerializer<SignCredentialInputDto> {
+class _$SignCredentialInputDtoSerializer
+    implements PrimitiveSerializer<SignCredentialInputDto> {
   @override
-  final Iterable<Type> types = const [SignCredentialInputDto, _$SignCredentialInputDto];
+  final Iterable<Type> types = const [
+    SignCredentialInputDto,
+    _$SignCredentialInputDto
+  ];
 
   @override
   final String wireName = r'SignCredentialInputDto';
@@ -75,14 +83,16 @@ class _$SignCredentialInputDtoSerializer implements PrimitiveSerializer<SignCred
       yield r'credentialFormat';
       yield serializers.serialize(
         object.credentialFormat,
-        specifiedType: const FullType(SignCredentialInputDtoCredentialFormatEnum),
+        specifiedType:
+            const FullType(SignCredentialInputDtoCredentialFormatEnum),
       );
     }
     if (object.unsignedCredentialParams != null) {
       yield r'unsignedCredentialParams';
       yield serializers.serialize(
         object.unsignedCredentialParams,
-        specifiedType: const FullType(SignCredentialInputDtoUnsignedCredentialParams),
+        specifiedType:
+            const FullType(SignCredentialInputDtoUnsignedCredentialParams),
       );
     }
   }
@@ -93,7 +103,9 @@ class _$SignCredentialInputDtoSerializer implements PrimitiveSerializer<SignCred
     SignCredentialInputDto object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,14 +137,16 @@ class _$SignCredentialInputDtoSerializer implements PrimitiveSerializer<SignCred
         case r'credentialFormat':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SignCredentialInputDtoCredentialFormatEnum),
+            specifiedType:
+                const FullType(SignCredentialInputDtoCredentialFormatEnum),
           ) as SignCredentialInputDtoCredentialFormatEnum;
           result.credentialFormat = valueDes;
           break;
         case r'unsignedCredentialParams':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SignCredentialInputDtoUnsignedCredentialParams),
+            specifiedType:
+                const FullType(SignCredentialInputDtoUnsignedCredentialParams),
           ) as SignCredentialInputDtoUnsignedCredentialParams;
           result.unsignedCredentialParams.replace(valueDes);
           break;
@@ -166,19 +180,23 @@ class _$SignCredentialInputDtoSerializer implements PrimitiveSerializer<SignCred
 }
 
 class SignCredentialInputDtoCredentialFormatEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'ldp_vc')
-  static const SignCredentialInputDtoCredentialFormatEnum ldpVc = _$signCredentialInputDtoCredentialFormatEnum_ldpVc;
+  static const SignCredentialInputDtoCredentialFormatEnum ldpVc =
+      _$signCredentialInputDtoCredentialFormatEnum_ldpVc;
   @BuiltValueEnumConst(wireName: r'jwt_vc_json-ld')
-  static const SignCredentialInputDtoCredentialFormatEnum jwtVcJsonLd = _$signCredentialInputDtoCredentialFormatEnum_jwtVcJsonLd;
+  static const SignCredentialInputDtoCredentialFormatEnum jwtVcJsonLd =
+      _$signCredentialInputDtoCredentialFormatEnum_jwtVcJsonLd;
   @BuiltValueEnumConst(wireName: r'sd_jwt_vc_json-ld')
-  static const SignCredentialInputDtoCredentialFormatEnum sdJwtVcJsonLd = _$signCredentialInputDtoCredentialFormatEnum_sdJwtVcJsonLd;
+  static const SignCredentialInputDtoCredentialFormatEnum sdJwtVcJsonLd =
+      _$signCredentialInputDtoCredentialFormatEnum_sdJwtVcJsonLd;
 
-  static Serializer<SignCredentialInputDtoCredentialFormatEnum> get serializer => _$signCredentialInputDtoCredentialFormatEnumSerializer;
+  static Serializer<SignCredentialInputDtoCredentialFormatEnum>
+      get serializer => _$signCredentialInputDtoCredentialFormatEnumSerializer;
 
-  const SignCredentialInputDtoCredentialFormatEnum._(String name): super(name);
+  const SignCredentialInputDtoCredentialFormatEnum._(String name) : super(name);
 
-  static BuiltSet<SignCredentialInputDtoCredentialFormatEnum> get values => _$signCredentialInputDtoCredentialFormatEnumValues;
-  static SignCredentialInputDtoCredentialFormatEnum valueOf(String name) => _$signCredentialInputDtoCredentialFormatEnumValueOf(name);
+  static BuiltSet<SignCredentialInputDtoCredentialFormatEnum> get values =>
+      _$signCredentialInputDtoCredentialFormatEnumValues;
+  static SignCredentialInputDtoCredentialFormatEnum valueOf(String name) =>
+      _$signCredentialInputDtoCredentialFormatEnumValueOf(name);
 }
-

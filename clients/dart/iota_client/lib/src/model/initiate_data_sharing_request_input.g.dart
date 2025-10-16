@@ -12,6 +12,9 @@ const InitiateDataSharingRequestInputModeEnum
 const InitiateDataSharingRequestInputModeEnum
     _$initiateDataSharingRequestInputModeEnum_websocket =
     const InitiateDataSharingRequestInputModeEnum._('websocket');
+const InitiateDataSharingRequestInputModeEnum
+    _$initiateDataSharingRequestInputModeEnum_didcomm =
+    const InitiateDataSharingRequestInputModeEnum._('didcomm');
 
 InitiateDataSharingRequestInputModeEnum
     _$initiateDataSharingRequestInputModeEnumValueOf(String name) {
@@ -20,6 +23,8 @@ InitiateDataSharingRequestInputModeEnum
       return _$initiateDataSharingRequestInputModeEnum_redirect;
     case 'websocket':
       return _$initiateDataSharingRequestInputModeEnum_websocket;
+    case 'didcomm':
+      return _$initiateDataSharingRequestInputModeEnum_didcomm;
     default:
       throw ArgumentError(name);
   }
@@ -30,6 +35,7 @@ final BuiltSet<InitiateDataSharingRequestInputModeEnum>
         InitiateDataSharingRequestInputModeEnum>(const <InitiateDataSharingRequestInputModeEnum>[
   _$initiateDataSharingRequestInputModeEnum_redirect,
   _$initiateDataSharingRequestInputModeEnum_websocket,
+  _$initiateDataSharingRequestInputModeEnum_didcomm,
 ]);
 
 Serializer<InitiateDataSharingRequestInputModeEnum>
@@ -41,10 +47,12 @@ class _$InitiateDataSharingRequestInputModeEnumSerializer
   static const Map<String, Object> _toWire = const <String, Object>{
     'redirect': 'redirect',
     'websocket': 'websocket',
+    'didcomm': 'didcomm',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'redirect': 'redirect',
     'websocket': 'websocket',
+    'didcomm': 'didcomm',
   };
 
   @override
@@ -83,6 +91,8 @@ class _$InitiateDataSharingRequestInput
   @override
   final String configurationId;
   @override
+  final String? userDid;
+  @override
   final InitiateDataSharingRequestInputModeEnum mode;
 
   factory _$InitiateDataSharingRequestInput(
@@ -96,6 +106,7 @@ class _$InitiateDataSharingRequestInput
       required this.nonce,
       required this.redirectUri,
       required this.configurationId,
+      this.userDid,
       required this.mode})
       : super._();
   @override
@@ -117,6 +128,7 @@ class _$InitiateDataSharingRequestInput
         nonce == other.nonce &&
         redirectUri == other.redirectUri &&
         configurationId == other.configurationId &&
+        userDid == other.userDid &&
         mode == other.mode;
   }
 
@@ -129,6 +141,7 @@ class _$InitiateDataSharingRequestInput
     _$hash = $jc(_$hash, nonce.hashCode);
     _$hash = $jc(_$hash, redirectUri.hashCode);
     _$hash = $jc(_$hash, configurationId.hashCode);
+    _$hash = $jc(_$hash, userDid.hashCode);
     _$hash = $jc(_$hash, mode.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -143,6 +156,7 @@ class _$InitiateDataSharingRequestInput
           ..add('nonce', nonce)
           ..add('redirectUri', redirectUri)
           ..add('configurationId', configurationId)
+          ..add('userDid', userDid)
           ..add('mode', mode))
         .toString();
   }
@@ -180,6 +194,10 @@ class InitiateDataSharingRequestInputBuilder
   set configurationId(String? configurationId) =>
       _$this._configurationId = configurationId;
 
+  String? _userDid;
+  String? get userDid => _$this._userDid;
+  set userDid(String? userDid) => _$this._userDid = userDid;
+
   InitiateDataSharingRequestInputModeEnum? _mode;
   InitiateDataSharingRequestInputModeEnum? get mode => _$this._mode;
   set mode(InitiateDataSharingRequestInputModeEnum? mode) =>
@@ -198,6 +216,7 @@ class InitiateDataSharingRequestInputBuilder
       _nonce = $v.nonce;
       _redirectUri = $v.redirectUri;
       _configurationId = $v.configurationId;
+      _userDid = $v.userDid;
       _mode = $v.mode;
       _$v = null;
     }
@@ -233,6 +252,7 @@ class InitiateDataSharingRequestInputBuilder
               configurationId,
               r'InitiateDataSharingRequestInput',
               'configurationId'),
+          userDid: userDid,
           mode: BuiltValueNullFieldError.checkNotNull(
               mode, r'InitiateDataSharingRequestInput', 'mode'),
         );

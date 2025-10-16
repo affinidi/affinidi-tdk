@@ -13,26 +13,33 @@ part 'list_configuration_ok.g.dart';
 /// ListConfigurationOK
 ///
 /// Properties:
-/// * [configurations] 
+/// * [configurations]
 @BuiltValue()
-abstract class ListConfigurationOK implements Built<ListConfigurationOK, ListConfigurationOKBuilder> {
+abstract class ListConfigurationOK
+    implements Built<ListConfigurationOK, ListConfigurationOKBuilder> {
   @BuiltValueField(wireName: r'configurations')
   BuiltList<IotaConfigurationDto> get configurations;
 
   ListConfigurationOK._();
 
-  factory ListConfigurationOK([void updates(ListConfigurationOKBuilder b)]) = _$ListConfigurationOK;
+  factory ListConfigurationOK([void updates(ListConfigurationOKBuilder b)]) =
+      _$ListConfigurationOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListConfigurationOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListConfigurationOK> get serializer => _$ListConfigurationOKSerializer();
+  static Serializer<ListConfigurationOK> get serializer =>
+      _$ListConfigurationOKSerializer();
 }
 
-class _$ListConfigurationOKSerializer implements PrimitiveSerializer<ListConfigurationOK> {
+class _$ListConfigurationOKSerializer
+    implements PrimitiveSerializer<ListConfigurationOK> {
   @override
-  final Iterable<Type> types = const [ListConfigurationOK, _$ListConfigurationOK];
+  final Iterable<Type> types = const [
+    ListConfigurationOK,
+    _$ListConfigurationOK
+  ];
 
   @override
   final String wireName = r'ListConfigurationOK';
@@ -45,7 +52,8 @@ class _$ListConfigurationOKSerializer implements PrimitiveSerializer<ListConfigu
     yield r'configurations';
     yield serializers.serialize(
       object.configurations,
-      specifiedType: const FullType(BuiltList, [FullType(IotaConfigurationDto)]),
+      specifiedType:
+          const FullType(BuiltList, [FullType(IotaConfigurationDto)]),
     );
   }
 
@@ -55,7 +63,9 @@ class _$ListConfigurationOKSerializer implements PrimitiveSerializer<ListConfigu
     ListConfigurationOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +83,8 @@ class _$ListConfigurationOKSerializer implements PrimitiveSerializer<ListConfigu
         case r'configurations':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(IotaConfigurationDto)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(IotaConfigurationDto)]),
           ) as BuiltList<IotaConfigurationDto>;
           result.configurations.replace(valueDes);
           break;
@@ -105,4 +116,3 @@ class _$ListConfigurationOKSerializer implements PrimitiveSerializer<ListConfigu
     return result.build();
   }
 }
-

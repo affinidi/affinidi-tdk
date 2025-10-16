@@ -13,13 +13,15 @@ part 'change_status_forbidden_error.g.dart';
 /// ChangeStatusForbiddenError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class ChangeStatusForbiddenError implements Built<ChangeStatusForbiddenError, ChangeStatusForbiddenErrorBuilder> {
+abstract class ChangeStatusForbiddenError
+    implements
+        Built<ChangeStatusForbiddenError, ChangeStatusForbiddenErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   ChangeStatusForbiddenErrorNameEnum get name;
   // enum nameEnum {  ChangeStatusForbiddenError,  };
@@ -40,18 +42,25 @@ abstract class ChangeStatusForbiddenError implements Built<ChangeStatusForbidden
 
   ChangeStatusForbiddenError._();
 
-  factory ChangeStatusForbiddenError([void updates(ChangeStatusForbiddenErrorBuilder b)]) = _$ChangeStatusForbiddenError;
+  factory ChangeStatusForbiddenError(
+          [void updates(ChangeStatusForbiddenErrorBuilder b)]) =
+      _$ChangeStatusForbiddenError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ChangeStatusForbiddenErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ChangeStatusForbiddenError> get serializer => _$ChangeStatusForbiddenErrorSerializer();
+  static Serializer<ChangeStatusForbiddenError> get serializer =>
+      _$ChangeStatusForbiddenErrorSerializer();
 }
 
-class _$ChangeStatusForbiddenErrorSerializer implements PrimitiveSerializer<ChangeStatusForbiddenError> {
+class _$ChangeStatusForbiddenErrorSerializer
+    implements PrimitiveSerializer<ChangeStatusForbiddenError> {
   @override
-  final Iterable<Type> types = const [ChangeStatusForbiddenError, _$ChangeStatusForbiddenError];
+  final Iterable<Type> types = const [
+    ChangeStatusForbiddenError,
+    _$ChangeStatusForbiddenError
+  ];
 
   @override
   final String wireName = r'ChangeStatusForbiddenError';
@@ -74,7 +83,8 @@ class _$ChangeStatusForbiddenErrorSerializer implements PrimitiveSerializer<Chan
     yield r'httpStatusCode';
     yield serializers.serialize(
       object.httpStatusCode,
-      specifiedType: const FullType(ChangeStatusForbiddenErrorHttpStatusCodeEnum),
+      specifiedType:
+          const FullType(ChangeStatusForbiddenErrorHttpStatusCodeEnum),
     );
     yield r'traceId';
     yield serializers.serialize(
@@ -85,7 +95,8 @@ class _$ChangeStatusForbiddenErrorSerializer implements PrimitiveSerializer<Chan
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +107,9 @@ class _$ChangeStatusForbiddenErrorSerializer implements PrimitiveSerializer<Chan
     ChangeStatusForbiddenError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,14 +134,16 @@ class _$ChangeStatusForbiddenErrorSerializer implements PrimitiveSerializer<Chan
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChangeStatusForbiddenErrorMessageEnum),
+            specifiedType:
+                const FullType(ChangeStatusForbiddenErrorMessageEnum),
           ) as ChangeStatusForbiddenErrorMessageEnum;
           result.message = valueDes;
           break;
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(ChangeStatusForbiddenErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(ChangeStatusForbiddenErrorHttpStatusCodeEnum),
           ) as ChangeStatusForbiddenErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +157,8 @@ class _$ChangeStatusForbiddenErrorSerializer implements PrimitiveSerializer<Chan
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
           ) as BuiltList<ActionForbiddenErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +192,52 @@ class _$ChangeStatusForbiddenErrorSerializer implements PrimitiveSerializer<Chan
 }
 
 class ChangeStatusForbiddenErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'ChangeStatusForbiddenError')
-  static const ChangeStatusForbiddenErrorNameEnum changeStatusForbiddenError = _$changeStatusForbiddenErrorNameEnum_changeStatusForbiddenError;
+  static const ChangeStatusForbiddenErrorNameEnum changeStatusForbiddenError =
+      _$changeStatusForbiddenErrorNameEnum_changeStatusForbiddenError;
 
-  static Serializer<ChangeStatusForbiddenErrorNameEnum> get serializer => _$changeStatusForbiddenErrorNameEnumSerializer;
+  static Serializer<ChangeStatusForbiddenErrorNameEnum> get serializer =>
+      _$changeStatusForbiddenErrorNameEnumSerializer;
 
-  const ChangeStatusForbiddenErrorNameEnum._(String name): super(name);
+  const ChangeStatusForbiddenErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<ChangeStatusForbiddenErrorNameEnum> get values => _$changeStatusForbiddenErrorNameEnumValues;
-  static ChangeStatusForbiddenErrorNameEnum valueOf(String name) => _$changeStatusForbiddenErrorNameEnumValueOf(name);
+  static BuiltSet<ChangeStatusForbiddenErrorNameEnum> get values =>
+      _$changeStatusForbiddenErrorNameEnumValues;
+  static ChangeStatusForbiddenErrorNameEnum valueOf(String name) =>
+      _$changeStatusForbiddenErrorNameEnumValueOf(name);
 }
 
 class ChangeStatusForbiddenErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Related VC status cannot be changed')
-  static const ChangeStatusForbiddenErrorMessageEnum relatedVCStatusCannotBeChanged = _$changeStatusForbiddenErrorMessageEnum_relatedVCStatusCannotBeChanged;
+  static const ChangeStatusForbiddenErrorMessageEnum
+      relatedVCStatusCannotBeChanged =
+      _$changeStatusForbiddenErrorMessageEnum_relatedVCStatusCannotBeChanged;
 
-  static Serializer<ChangeStatusForbiddenErrorMessageEnum> get serializer => _$changeStatusForbiddenErrorMessageEnumSerializer;
+  static Serializer<ChangeStatusForbiddenErrorMessageEnum> get serializer =>
+      _$changeStatusForbiddenErrorMessageEnumSerializer;
 
-  const ChangeStatusForbiddenErrorMessageEnum._(String name): super(name);
+  const ChangeStatusForbiddenErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<ChangeStatusForbiddenErrorMessageEnum> get values => _$changeStatusForbiddenErrorMessageEnumValues;
-  static ChangeStatusForbiddenErrorMessageEnum valueOf(String name) => _$changeStatusForbiddenErrorMessageEnumValueOf(name);
+  static BuiltSet<ChangeStatusForbiddenErrorMessageEnum> get values =>
+      _$changeStatusForbiddenErrorMessageEnumValues;
+  static ChangeStatusForbiddenErrorMessageEnum valueOf(String name) =>
+      _$changeStatusForbiddenErrorMessageEnumValueOf(name);
 }
 
 class ChangeStatusForbiddenErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const ChangeStatusForbiddenErrorHttpStatusCodeEnum number400 = _$changeStatusForbiddenErrorHttpStatusCodeEnum_number400;
+  static const ChangeStatusForbiddenErrorHttpStatusCodeEnum number400 =
+      _$changeStatusForbiddenErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<ChangeStatusForbiddenErrorHttpStatusCodeEnum> get serializer => _$changeStatusForbiddenErrorHttpStatusCodeEnumSerializer;
+  static Serializer<ChangeStatusForbiddenErrorHttpStatusCodeEnum>
+      get serializer =>
+          _$changeStatusForbiddenErrorHttpStatusCodeEnumSerializer;
 
-  const ChangeStatusForbiddenErrorHttpStatusCodeEnum._(String name): super(name);
+  const ChangeStatusForbiddenErrorHttpStatusCodeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<ChangeStatusForbiddenErrorHttpStatusCodeEnum> get values => _$changeStatusForbiddenErrorHttpStatusCodeEnumValues;
-  static ChangeStatusForbiddenErrorHttpStatusCodeEnum valueOf(String name) => _$changeStatusForbiddenErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<ChangeStatusForbiddenErrorHttpStatusCodeEnum> get values =>
+      _$changeStatusForbiddenErrorHttpStatusCodeEnumValues;
+  static ChangeStatusForbiddenErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$changeStatusForbiddenErrorHttpStatusCodeEnumValueOf(name);
 }
-

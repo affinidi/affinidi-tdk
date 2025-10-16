@@ -58,7 +58,7 @@ class _$NodeTypeMeta {
   BuiltSet<NodeType> get values => _$values;
 }
 
-abstract class _$NodeTypeMixin {
+mixin _$NodeTypeMixin {
   // ignore: non_constant_identifier_names
   _$NodeTypeMeta get NodeType => const _$NodeTypeMeta();
 }

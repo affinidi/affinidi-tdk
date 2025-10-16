@@ -37,7 +37,7 @@ class IotaConfigurationDto(BaseModel):
     enable_verification: StrictBool = Field(default=..., alias="enableVerification", description="Cryptographically verifies the data shared by the user when enabled.")
     enable_consent_audit_log: StrictBool = Field(default=..., alias="enableConsentAuditLog", description="Records the consent the user gave when they shared their data, including the type of data shared.")
     client_metadata: IotaConfigurationDtoClientMetadata = Field(default=..., alias="clientMetadata")
-    mode: Optional[StrictStr] = Field(default='websocket', description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
+    mode: Optional[StrictStr] = Field(default='websocket', description="Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.")
     redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
     enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.")
     __properties = ["ari", "configurationId", "name", "projectId", "walletAri", "tokenMaxAge", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
@@ -48,8 +48,8 @@ class IotaConfigurationDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('redirect', 'websocket',):
-            raise ValueError("must be one of enum values ('redirect', 'websocket')")
+        if value not in ('redirect', 'websocket', 'didcomm',):
+            raise ValueError("must be one of enum values ('redirect', 'websocket', 'didcomm')")
         return value
 
     class Config:

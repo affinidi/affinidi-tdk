@@ -62,6 +62,11 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | _ConfigurationsApi_ | [**getIotaConfigurationMetaData**](docs/ConfigurationsApi.md#getiotaconfigurationmetadata)   | **GET** /v1/projects/{projectId}/configurations/{configurationId}/metadata |
 | _ConfigurationsApi_ | [**listIotaConfigurations**](docs/ConfigurationsApi.md#listiotaconfigurations)               | **GET** /v1/configurations                                                 |
 | _ConfigurationsApi_ | [**updateIotaConfigurationById**](docs/ConfigurationsApi.md#updateiotaconfigurationbyid)     | **PATCH** /v1/configurations/{configurationId}                             |
+| _DcqlQueryApi_      | [**createDcqlQuery**](docs/DcqlQueryApi.md#createdcqlquery)                                  | **POST** /v1/configurations/{configurationId}/dcql-queries                 |
+| _DcqlQueryApi_      | [**deleteDcqlQueryById**](docs/DcqlQueryApi.md#deletedcqlquerybyid)                          | **DELETE** /v1/configurations/{configurationId}/dcql-queries/{queryId}     |
+| _DcqlQueryApi_      | [**getDcqlQueryById**](docs/DcqlQueryApi.md#getdcqlquerybyid)                                | **GET** /v1/configurations/{configurationId}/dcql-queries/{queryId}        |
+| _DcqlQueryApi_      | [**listDcqlQueries**](docs/DcqlQueryApi.md#listdcqlqueries)                                  | **GET** /v1/configurations/{configurationId}/dcql-queries                  |
+| _DcqlQueryApi_      | [**updateDcqlQueryById**](docs/DcqlQueryApi.md#updatedcqlquerybyid)                          | **PATCH** /v1/configurations/{configurationId}/dcql-queries/{queryId}      |
 | _DefaultApi_        | [**listLoggedConsents**](docs/DefaultApi.md#listloggedconsents)                              | **GET** /v1/logged-consents                                                |
 | _IotaApi_           | [**awsExchangeCredentials**](docs/IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials                                      |
 | _IotaApi_           | [**awsExchangeCredentialsProjectToken**](docs/IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token                        |
@@ -93,8 +98,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [CorsInitiateDataSharingRequestOK](docs/CorsInitiateDataSharingRequestOK.md)
 - [CorsIotOidc4vpcallbackOK](docs/CorsIotOidc4vpcallbackOK.md)
 - [CorsIotaExchangeCredentialsOK](docs/CorsIotaExchangeCredentialsOK.md)
+- [CreateDcqlQueryInput](docs/CreateDcqlQueryInput.md)
 - [CreateIotaConfigurationInput](docs/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](docs/CreatePexQueryInput.md)
+- [DcqlQueryDto](docs/DcqlQueryDto.md)
 - [DeletePexQueriesInput](docs/DeletePexQueriesInput.md)
 - [FetchIOTAVPResponseInput](docs/FetchIOTAVPResponseInput.md)
 - [FetchIOTAVPResponseOK](docs/FetchIOTAVPResponseOK.md)
@@ -110,6 +117,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [IotaExchangeCredentialsOK](docs/IotaExchangeCredentialsOK.md)
 - [IotaExchangeCredentialsOKCredentials](docs/IotaExchangeCredentialsOKCredentials.md)
 - [ListConfigurationOK](docs/ListConfigurationOK.md)
+- [ListDcqlQueriesOK](docs/ListDcqlQueriesOK.md)
 - [ListLoggedConsentsOK](docs/ListLoggedConsentsOK.md)
 - [ListPexQueriesOK](docs/ListPexQueriesOK.md)
 - [MessagePublishingError](docs/MessagePublishingError.md)
@@ -124,6 +132,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [SavePexQueriesUpdateInputQueriesInner](docs/SavePexQueriesUpdateInputQueriesInner.md)
 - [UpdateConfigurationByIdInput](docs/UpdateConfigurationByIdInput.md)
 - [UpdateConfigurationByIdOK](docs/UpdateConfigurationByIdOK.md)
+- [UpdateDcqlQueryInput](docs/UpdateDcqlQueryInput.md)
 - [UpdatePexQueryInput](docs/UpdatePexQueryInput.md)
 - [VPTokenValidationError](docs/VPTokenValidationError.md)
 

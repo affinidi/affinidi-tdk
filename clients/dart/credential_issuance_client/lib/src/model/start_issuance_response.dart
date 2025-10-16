@@ -16,7 +16,8 @@ part 'start_issuance_response.g.dart';
 /// * [issuanceId] - Website's internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
 /// * [expiresIn] - Expire time in seconds
 @BuiltValue()
-abstract class StartIssuanceResponse implements Built<StartIssuanceResponse, StartIssuanceResponseBuilder> {
+abstract class StartIssuanceResponse
+    implements Built<StartIssuanceResponse, StartIssuanceResponseBuilder> {
   /// URL where wallet can view offer details
   @BuiltValueField(wireName: r'credentialOfferUri')
   String get credentialOfferUri;
@@ -35,18 +36,24 @@ abstract class StartIssuanceResponse implements Built<StartIssuanceResponse, Sta
 
   StartIssuanceResponse._();
 
-  factory StartIssuanceResponse([void updates(StartIssuanceResponseBuilder b)]) = _$StartIssuanceResponse;
+  factory StartIssuanceResponse(
+      [void updates(StartIssuanceResponseBuilder b)]) = _$StartIssuanceResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(StartIssuanceResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<StartIssuanceResponse> get serializer => _$StartIssuanceResponseSerializer();
+  static Serializer<StartIssuanceResponse> get serializer =>
+      _$StartIssuanceResponseSerializer();
 }
 
-class _$StartIssuanceResponseSerializer implements PrimitiveSerializer<StartIssuanceResponse> {
+class _$StartIssuanceResponseSerializer
+    implements PrimitiveSerializer<StartIssuanceResponse> {
   @override
-  final Iterable<Type> types = const [StartIssuanceResponse, _$StartIssuanceResponse];
+  final Iterable<Type> types = const [
+    StartIssuanceResponse,
+    _$StartIssuanceResponse
+  ];
 
   @override
   final String wireName = r'StartIssuanceResponse';
@@ -86,7 +93,9 @@ class _$StartIssuanceResponseSerializer implements PrimitiveSerializer<StartIssu
     StartIssuanceResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -157,4 +166,3 @@ class _$StartIssuanceResponseSerializer implements PrimitiveSerializer<StartIssu
     return result.build();
   }
 }
-

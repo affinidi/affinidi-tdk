@@ -12,16 +12,17 @@ part 'submission_requirement.g.dart';
 /// SubmissionRequirement
 ///
 /// Properties:
-/// * [name] 
-/// * [purpose] 
-/// * [rule] 
-/// * [count] 
-/// * [min] 
-/// * [max] 
-/// * [from] 
-/// * [fromNested] 
+/// * [name]
+/// * [purpose]
+/// * [rule]
+/// * [count]
+/// * [min]
+/// * [max]
+/// * [from]
+/// * [fromNested]
 @BuiltValue()
-abstract class SubmissionRequirement implements Built<SubmissionRequirement, SubmissionRequirementBuilder> {
+abstract class SubmissionRequirement
+    implements Built<SubmissionRequirement, SubmissionRequirementBuilder> {
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -49,18 +50,24 @@ abstract class SubmissionRequirement implements Built<SubmissionRequirement, Sub
 
   SubmissionRequirement._();
 
-  factory SubmissionRequirement([void updates(SubmissionRequirementBuilder b)]) = _$SubmissionRequirement;
+  factory SubmissionRequirement(
+      [void updates(SubmissionRequirementBuilder b)]) = _$SubmissionRequirement;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(SubmissionRequirementBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SubmissionRequirement> get serializer => _$SubmissionRequirementSerializer();
+  static Serializer<SubmissionRequirement> get serializer =>
+      _$SubmissionRequirementSerializer();
 }
 
-class _$SubmissionRequirementSerializer implements PrimitiveSerializer<SubmissionRequirement> {
+class _$SubmissionRequirementSerializer
+    implements PrimitiveSerializer<SubmissionRequirement> {
   @override
-  final Iterable<Type> types = const [SubmissionRequirement, _$SubmissionRequirement];
+  final Iterable<Type> types = const [
+    SubmissionRequirement,
+    _$SubmissionRequirement
+  ];
 
   @override
   final String wireName = r'SubmissionRequirement';
@@ -121,7 +128,8 @@ class _$SubmissionRequirementSerializer implements PrimitiveSerializer<Submissio
       yield r'from_nested';
       yield serializers.serialize(
         object.fromNested,
-        specifiedType: const FullType(BuiltList, [FullType(SubmissionRequirement)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(SubmissionRequirement)]),
       );
     }
   }
@@ -132,7 +140,9 @@ class _$SubmissionRequirementSerializer implements PrimitiveSerializer<Submissio
     SubmissionRequirement object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -199,7 +209,8 @@ class _$SubmissionRequirementSerializer implements PrimitiveSerializer<Submissio
         case r'from_nested':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(SubmissionRequirement)]),
+            specifiedType:
+                const FullType(BuiltList, [FullType(SubmissionRequirement)]),
           ) as BuiltList<SubmissionRequirement>;
           result.fromNested.replace(valueDes);
           break;
@@ -233,17 +244,20 @@ class _$SubmissionRequirementSerializer implements PrimitiveSerializer<Submissio
 }
 
 class SubmissionRequirementRuleEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'all')
-  static const SubmissionRequirementRuleEnum all = _$submissionRequirementRuleEnum_all;
+  static const SubmissionRequirementRuleEnum all =
+      _$submissionRequirementRuleEnum_all;
   @BuiltValueEnumConst(wireName: r'pick')
-  static const SubmissionRequirementRuleEnum pick = _$submissionRequirementRuleEnum_pick;
+  static const SubmissionRequirementRuleEnum pick =
+      _$submissionRequirementRuleEnum_pick;
 
-  static Serializer<SubmissionRequirementRuleEnum> get serializer => _$submissionRequirementRuleEnumSerializer;
+  static Serializer<SubmissionRequirementRuleEnum> get serializer =>
+      _$submissionRequirementRuleEnumSerializer;
 
-  const SubmissionRequirementRuleEnum._(String name): super(name);
+  const SubmissionRequirementRuleEnum._(String name) : super(name);
 
-  static BuiltSet<SubmissionRequirementRuleEnum> get values => _$submissionRequirementRuleEnumValues;
-  static SubmissionRequirementRuleEnum valueOf(String name) => _$submissionRequirementRuleEnumValueOf(name);
+  static BuiltSet<SubmissionRequirementRuleEnum> get values =>
+      _$submissionRequirementRuleEnumValues;
+  static SubmissionRequirementRuleEnum valueOf(String name) =>
+      _$submissionRequirementRuleEnumValueOf(name);
 }
-

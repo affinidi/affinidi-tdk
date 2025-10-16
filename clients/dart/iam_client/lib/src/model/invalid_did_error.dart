@@ -13,13 +13,14 @@ part 'invalid_did_error.g.dart';
 /// InvalidDIDError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InvalidDIDError implements Built<InvalidDIDError, InvalidDIDErrorBuilder> {
+abstract class InvalidDIDError
+    implements Built<InvalidDIDError, InvalidDIDErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   InvalidDIDErrorNameEnum get name;
   // enum nameEnum {  InvalidDIDError,  };
@@ -40,16 +41,19 @@ abstract class InvalidDIDError implements Built<InvalidDIDError, InvalidDIDError
 
   InvalidDIDError._();
 
-  factory InvalidDIDError([void updates(InvalidDIDErrorBuilder b)]) = _$InvalidDIDError;
+  factory InvalidDIDError([void updates(InvalidDIDErrorBuilder b)]) =
+      _$InvalidDIDError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InvalidDIDErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InvalidDIDError> get serializer => _$InvalidDIDErrorSerializer();
+  static Serializer<InvalidDIDError> get serializer =>
+      _$InvalidDIDErrorSerializer();
 }
 
-class _$InvalidDIDErrorSerializer implements PrimitiveSerializer<InvalidDIDError> {
+class _$InvalidDIDErrorSerializer
+    implements PrimitiveSerializer<InvalidDIDError> {
   @override
   final Iterable<Type> types = const [InvalidDIDError, _$InvalidDIDError];
 
@@ -85,7 +89,8 @@ class _$InvalidDIDErrorSerializer implements PrimitiveSerializer<InvalidDIDError
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
       );
     }
   }
@@ -96,7 +101,9 @@ class _$InvalidDIDErrorSerializer implements PrimitiveSerializer<InvalidDIDError
     InvalidDIDError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,7 +149,8 @@ class _$InvalidDIDErrorSerializer implements PrimitiveSerializer<InvalidDIDError
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
           ) as BuiltList<ServiceErrorResponseDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +184,51 @@ class _$InvalidDIDErrorSerializer implements PrimitiveSerializer<InvalidDIDError
 }
 
 class InvalidDIDErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidDIDError')
-  static const InvalidDIDErrorNameEnum invalidDIDError = _$invalidDIDErrorNameEnum_invalidDIDError;
+  static const InvalidDIDErrorNameEnum invalidDIDError =
+      _$invalidDIDErrorNameEnum_invalidDIDError;
 
-  static Serializer<InvalidDIDErrorNameEnum> get serializer => _$invalidDIDErrorNameEnumSerializer;
+  static Serializer<InvalidDIDErrorNameEnum> get serializer =>
+      _$invalidDIDErrorNameEnumSerializer;
 
-  const InvalidDIDErrorNameEnum._(String name): super(name);
+  const InvalidDIDErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidDIDErrorNameEnum> get values => _$invalidDIDErrorNameEnumValues;
-  static InvalidDIDErrorNameEnum valueOf(String name) => _$invalidDIDErrorNameEnumValueOf(name);
+  static BuiltSet<InvalidDIDErrorNameEnum> get values =>
+      _$invalidDIDErrorNameEnumValues;
+  static InvalidDIDErrorNameEnum valueOf(String name) =>
+      _$invalidDIDErrorNameEnumValueOf(name);
 }
 
 class InvalidDIDErrorMessageEnum extends EnumClass {
+  @BuiltValueEnumConst(
+      wireName: r'Unable to resolve DID method. Invalid public key')
+  static const InvalidDIDErrorMessageEnum
+      unableToResolveDIDMethodPeriodInvalidPublicKey =
+      _$invalidDIDErrorMessageEnum_unableToResolveDIDMethodPeriodInvalidPublicKey;
 
-  @BuiltValueEnumConst(wireName: r'Unable to resolve DID method. Invalid public key')
-  static const InvalidDIDErrorMessageEnum unableToResolveDIDMethodPeriodInvalidPublicKey = _$invalidDIDErrorMessageEnum_unableToResolveDIDMethodPeriodInvalidPublicKey;
+  static Serializer<InvalidDIDErrorMessageEnum> get serializer =>
+      _$invalidDIDErrorMessageEnumSerializer;
 
-  static Serializer<InvalidDIDErrorMessageEnum> get serializer => _$invalidDIDErrorMessageEnumSerializer;
+  const InvalidDIDErrorMessageEnum._(String name) : super(name);
 
-  const InvalidDIDErrorMessageEnum._(String name): super(name);
-
-  static BuiltSet<InvalidDIDErrorMessageEnum> get values => _$invalidDIDErrorMessageEnumValues;
-  static InvalidDIDErrorMessageEnum valueOf(String name) => _$invalidDIDErrorMessageEnumValueOf(name);
+  static BuiltSet<InvalidDIDErrorMessageEnum> get values =>
+      _$invalidDIDErrorMessageEnumValues;
+  static InvalidDIDErrorMessageEnum valueOf(String name) =>
+      _$invalidDIDErrorMessageEnumValueOf(name);
 }
 
 class InvalidDIDErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const InvalidDIDErrorHttpStatusCodeEnum number400 = _$invalidDIDErrorHttpStatusCodeEnum_number400;
+  static const InvalidDIDErrorHttpStatusCodeEnum number400 =
+      _$invalidDIDErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<InvalidDIDErrorHttpStatusCodeEnum> get serializer => _$invalidDIDErrorHttpStatusCodeEnumSerializer;
+  static Serializer<InvalidDIDErrorHttpStatusCodeEnum> get serializer =>
+      _$invalidDIDErrorHttpStatusCodeEnumSerializer;
 
-  const InvalidDIDErrorHttpStatusCodeEnum._(String name): super(name);
+  const InvalidDIDErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidDIDErrorHttpStatusCodeEnum> get values => _$invalidDIDErrorHttpStatusCodeEnumValues;
-  static InvalidDIDErrorHttpStatusCodeEnum valueOf(String name) => _$invalidDIDErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InvalidDIDErrorHttpStatusCodeEnum> get values =>
+      _$invalidDIDErrorHttpStatusCodeEnumValues;
+  static InvalidDIDErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$invalidDIDErrorHttpStatusCodeEnumValueOf(name);
 }
-

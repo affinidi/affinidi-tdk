@@ -35,7 +35,7 @@ class CreateIotaConfigurationInput(BaseModel):
     enable_consent_audit_log: StrictBool = Field(default=..., alias="enableConsentAuditLog", description="Records the user's consent when they share their data, including the type of data shared when enabled.")
     token_max_age: Optional[Union[confloat(ge=1, strict=True), conint(ge=1, strict=True)]] = Field(default=None, alias="tokenMaxAge", description="This is the lifetime of the signed request token during the data-sharing flow.")
     client_metadata: IotaConfigurationDtoClientMetadata = Field(default=..., alias="clientMetadata")
-    mode: Optional[StrictStr] = Field(default='websocket', description="Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.")
+    mode: Optional[StrictStr] = Field(default='websocket', description="Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.")
     redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
     enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.")
     __properties = ["name", "description", "walletAri", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "tokenMaxAge", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
@@ -46,8 +46,8 @@ class CreateIotaConfigurationInput(BaseModel):
         if value is None:
             return value
 
-        if value not in ('redirect', 'websocket',):
-            raise ValueError("must be one of enum values ('redirect', 'websocket')")
+        if value not in ('redirect', 'websocket', 'didcomm',):
+            raise ValueError("must be one of enum values ('redirect', 'websocket', 'didcomm')")
         return value
 
     class Config:

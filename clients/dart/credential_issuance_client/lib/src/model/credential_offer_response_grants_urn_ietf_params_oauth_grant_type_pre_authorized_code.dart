@@ -13,37 +13,60 @@ part 'credential_offer_response_grants_urn_ietf_params_oauth_grant_type_pre_auth
 ///
 /// Properties:
 /// * [preAuthorizedCode] - pre authorized code to be exchanged with jwt token
-/// * [txCode] 
+/// * [txCode]
 @BuiltValue()
-abstract class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode implements Built<CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode, CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder> {
+abstract class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
+    implements
+        Built<
+            CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode,
+            CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder> {
   /// pre authorized code to be exchanged with jwt token
   @BuiltValueField(wireName: r'pre-authorized_code')
   String get preAuthorizedCode;
 
   @BuiltValueField(wireName: r'tx_code')
-  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode? get txCode;
+  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode?
+      get txCode;
 
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode._();
 
-  factory CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode([void updates(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder b)]) = _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode;
+  factory CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode(
+          [void updates(
+              CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder
+                  b)]) =
+      _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder b) => b;
+  static void _defaults(
+          CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder
+              b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode> get serializer => _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeSerializer();
+  static Serializer<
+          CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode>
+      get serializer =>
+          _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeSerializer();
 }
 
-class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeSerializer implements PrimitiveSerializer<CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode> {
+class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeSerializer
+    implements
+        PrimitiveSerializer<
+            CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode> {
   @override
-  final Iterable<Type> types = const [CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode, _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode];
+  final Iterable<Type> types = const [
+    CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode,
+    _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
+  ];
 
   @override
-  final String wireName = r'CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode';
+  final String wireName =
+      r'CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode object, {
+    CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
+        object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     yield r'pre-authorized_code';
@@ -55,7 +78,8 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
       yield r'tx_code';
       yield serializers.serialize(
         object.txCode,
-        specifiedType: const FullType(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode),
+        specifiedType: const FullType(
+            CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode),
       );
     }
   }
@@ -63,10 +87,13 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
   @override
   Object serialize(
     Serializers serializers,
-    CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode object, {
+    CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
+        object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -74,7 +101,8 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder result,
+    required CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder
+        result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -91,7 +119,8 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
         case r'tx_code':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode),
+            specifiedType: const FullType(
+                CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode),
           ) as CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode;
           result.txCode.replace(valueDes);
           break;
@@ -104,12 +133,14 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
   }
 
   @override
-  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode deserialize(
+  CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
+      deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder();
+    final result =
+        CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(
@@ -123,4 +154,3 @@ class _$CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCod
     return result.build();
   }
 }
-

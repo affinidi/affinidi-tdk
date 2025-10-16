@@ -14,8 +14,6 @@ export 'package:affinidi_tdk_credential_verification_client/src/api/default_api.
 
 export 'package:affinidi_tdk_credential_verification_client/src/model/constraints.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/constraints_statuses.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/credential_requirements.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/model/credential_requirements_constraints.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/descriptor.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/error.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/error_detail.dart';
@@ -44,6 +42,6 @@ export 'package:affinidi_tdk_credential_verification_client/src/model/verify_cre
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_v2_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
+export 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_v2_input.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
-

@@ -29,10 +29,11 @@ class CallbackInput(BaseModel):
     state: StrictStr = Field(default=..., description="A randomly generated string that follows a valid UUID (version 1-5) format to validate the session.")
     presentation_submission: Optional[StrictStr] = Field(default=None, description="A JSON string format that describes the link between the Verifiable Presentation and Presentation Definition for the verifier. The presentation submission follows the OID4VP standard.")
     vp_token: Optional[StrictStr] = Field(default=None, description="A JSON string format containing the data the user consented to share in a Verifiable Presentation format. The VP Token follows the OID4VP standard.")
+    response_code: Optional[StrictStr] = Field(default=None, description="Used only for internal system flows. This field is not applicable  for external client integrations and will not produce valid results  when used outside of internal contexts.")
     error: Optional[StrictStr] = Field(default=None, description="A short string indicating the error code reported by the service. It follows the OAuth 2.0 error code format (e.g., invalid_request, access_denied). The default is access_denied.")
     error_description: Optional[StrictStr] = Field(default=None, description="A human-readable description that provides detailed information about the error.")
     onboarded: Optional[StrictBool] = Field(default=None, description="It specifies whether the data sharing flow triggered an onboarding process to the Affinidi Vault [New User].")
-    __properties = ["state", "presentation_submission", "vp_token", "error", "error_description", "onboarded"]
+    __properties = ["state", "presentation_submission", "vp_token", "response_code", "error", "error_description", "onboarded"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,6 +74,7 @@ class CallbackInput(BaseModel):
             "state": obj.get("state"),
             "presentation_submission": obj.get("presentation_submission"),
             "vp_token": obj.get("vp_token"),
+            "response_code": obj.get("response_code"),
             "error": obj.get("error"),
             "error_description": obj.get("error_description"),
             "onboarded": obj.get("onboarded")

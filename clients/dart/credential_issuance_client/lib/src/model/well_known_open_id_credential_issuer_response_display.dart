@@ -12,11 +12,14 @@ part 'well_known_open_id_credential_issuer_response_display.g.dart';
 /// WellKnownOpenIdCredentialIssuerResponseDisplay
 ///
 /// Properties:
-/// * [name] 
-/// * [locale] 
-/// * [logo] 
+/// * [name]
+/// * [locale]
+/// * [logo]
 @BuiltValue()
-abstract class WellKnownOpenIdCredentialIssuerResponseDisplay implements Built<WellKnownOpenIdCredentialIssuerResponseDisplay, WellKnownOpenIdCredentialIssuerResponseDisplayBuilder> {
+abstract class WellKnownOpenIdCredentialIssuerResponseDisplay
+    implements
+        Built<WellKnownOpenIdCredentialIssuerResponseDisplay,
+            WellKnownOpenIdCredentialIssuerResponseDisplayBuilder> {
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -28,18 +31,30 @@ abstract class WellKnownOpenIdCredentialIssuerResponseDisplay implements Built<W
 
   WellKnownOpenIdCredentialIssuerResponseDisplay._();
 
-  factory WellKnownOpenIdCredentialIssuerResponseDisplay([void updates(WellKnownOpenIdCredentialIssuerResponseDisplayBuilder b)]) = _$WellKnownOpenIdCredentialIssuerResponseDisplay;
+  factory WellKnownOpenIdCredentialIssuerResponseDisplay(
+          [void updates(
+              WellKnownOpenIdCredentialIssuerResponseDisplayBuilder b)]) =
+      _$WellKnownOpenIdCredentialIssuerResponseDisplay;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(WellKnownOpenIdCredentialIssuerResponseDisplayBuilder b) => b;
+  static void _defaults(
+          WellKnownOpenIdCredentialIssuerResponseDisplayBuilder b) =>
+      b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<WellKnownOpenIdCredentialIssuerResponseDisplay> get serializer => _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer();
+  static Serializer<WellKnownOpenIdCredentialIssuerResponseDisplay>
+      get serializer =>
+          _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer();
 }
 
-class _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer implements PrimitiveSerializer<WellKnownOpenIdCredentialIssuerResponseDisplay> {
+class _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer
+    implements
+        PrimitiveSerializer<WellKnownOpenIdCredentialIssuerResponseDisplay> {
   @override
-  final Iterable<Type> types = const [WellKnownOpenIdCredentialIssuerResponseDisplay, _$WellKnownOpenIdCredentialIssuerResponseDisplay];
+  final Iterable<Type> types = const [
+    WellKnownOpenIdCredentialIssuerResponseDisplay,
+    _$WellKnownOpenIdCredentialIssuerResponseDisplay
+  ];
 
   @override
   final String wireName = r'WellKnownOpenIdCredentialIssuerResponseDisplay';
@@ -67,7 +82,8 @@ class _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer implements Prim
       yield r'logo';
       yield serializers.serialize(
         object.logo,
-        specifiedType: const FullType(WellKnownOpenIdCredentialIssuerResponseDisplayLogo),
+        specifiedType:
+            const FullType(WellKnownOpenIdCredentialIssuerResponseDisplayLogo),
       );
     }
   }
@@ -78,7 +94,9 @@ class _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer implements Prim
     WellKnownOpenIdCredentialIssuerResponseDisplay object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -110,7 +128,8 @@ class _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer implements Prim
         case r'logo':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(WellKnownOpenIdCredentialIssuerResponseDisplayLogo),
+            specifiedType: const FullType(
+                WellKnownOpenIdCredentialIssuerResponseDisplayLogo),
           ) as WellKnownOpenIdCredentialIssuerResponseDisplayLogo;
           result.logo.replace(valueDes);
           break;
@@ -142,4 +161,3 @@ class _$WellKnownOpenIdCredentialIssuerResponseDisplaySerializer implements Prim
     return result.build();
   }
 }
-

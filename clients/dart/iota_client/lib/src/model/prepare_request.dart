@@ -11,13 +11,14 @@ part 'prepare_request.g.dart';
 /// PrepareRequest
 ///
 /// Properties:
-/// * [connectionClientId] 
-/// * [queryId] 
+/// * [connectionClientId]
+/// * [queryId]
 /// * [correlationId] - A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
 /// * [tokenMaxAge] - This is the lifetime of the signed request token during the data-sharing flow.
-/// * [audience] 
+/// * [audience]
 @BuiltValue()
-abstract class PrepareRequest implements Built<PrepareRequest, PrepareRequestBuilder> {
+abstract class PrepareRequest
+    implements Built<PrepareRequest, PrepareRequestBuilder> {
   @BuiltValueField(wireName: r'connectionClientId')
   String get connectionClientId;
 
@@ -37,16 +38,19 @@ abstract class PrepareRequest implements Built<PrepareRequest, PrepareRequestBui
 
   PrepareRequest._();
 
-  factory PrepareRequest([void updates(PrepareRequestBuilder b)]) = _$PrepareRequest;
+  factory PrepareRequest([void updates(PrepareRequestBuilder b)]) =
+      _$PrepareRequest;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(PrepareRequestBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<PrepareRequest> get serializer => _$PrepareRequestSerializer();
+  static Serializer<PrepareRequest> get serializer =>
+      _$PrepareRequestSerializer();
 }
 
-class _$PrepareRequestSerializer implements PrimitiveSerializer<PrepareRequest> {
+class _$PrepareRequestSerializer
+    implements PrimitiveSerializer<PrepareRequest> {
   @override
   final Iterable<Type> types = const [PrepareRequest, _$PrepareRequest];
 
@@ -95,7 +99,9 @@ class _$PrepareRequestSerializer implements PrimitiveSerializer<PrepareRequest> 
     PrepareRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -173,4 +179,3 @@ class _$PrepareRequestSerializer implements PrimitiveSerializer<PrepareRequest> 
     return result.build();
   }
 }
-

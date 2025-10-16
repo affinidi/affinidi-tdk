@@ -13,25 +13,35 @@ part 'start_issuance_input_data_inner_meta_data.g.dart';
 /// Properties:
 /// * [expirationDate] - Date and time when the credential will expire
 @BuiltValue()
-abstract class StartIssuanceInputDataInnerMetaData implements Built<StartIssuanceInputDataInnerMetaData, StartIssuanceInputDataInnerMetaDataBuilder> {
+abstract class StartIssuanceInputDataInnerMetaData
+    implements
+        Built<StartIssuanceInputDataInnerMetaData,
+            StartIssuanceInputDataInnerMetaDataBuilder> {
   /// Date and time when the credential will expire
   @BuiltValueField(wireName: r'expirationDate')
   DateTime get expirationDate;
 
   StartIssuanceInputDataInnerMetaData._();
 
-  factory StartIssuanceInputDataInnerMetaData([void updates(StartIssuanceInputDataInnerMetaDataBuilder b)]) = _$StartIssuanceInputDataInnerMetaData;
+  factory StartIssuanceInputDataInnerMetaData(
+          [void updates(StartIssuanceInputDataInnerMetaDataBuilder b)]) =
+      _$StartIssuanceInputDataInnerMetaData;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(StartIssuanceInputDataInnerMetaDataBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<StartIssuanceInputDataInnerMetaData> get serializer => _$StartIssuanceInputDataInnerMetaDataSerializer();
+  static Serializer<StartIssuanceInputDataInnerMetaData> get serializer =>
+      _$StartIssuanceInputDataInnerMetaDataSerializer();
 }
 
-class _$StartIssuanceInputDataInnerMetaDataSerializer implements PrimitiveSerializer<StartIssuanceInputDataInnerMetaData> {
+class _$StartIssuanceInputDataInnerMetaDataSerializer
+    implements PrimitiveSerializer<StartIssuanceInputDataInnerMetaData> {
   @override
-  final Iterable<Type> types = const [StartIssuanceInputDataInnerMetaData, _$StartIssuanceInputDataInnerMetaData];
+  final Iterable<Type> types = const [
+    StartIssuanceInputDataInnerMetaData,
+    _$StartIssuanceInputDataInnerMetaData
+  ];
 
   @override
   final String wireName = r'StartIssuanceInputDataInnerMetaData';
@@ -54,7 +64,9 @@ class _$StartIssuanceInputDataInnerMetaDataSerializer implements PrimitiveSerial
     StartIssuanceInputDataInnerMetaData object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -104,4 +116,3 @@ class _$StartIssuanceInputDataInnerMetaDataSerializer implements PrimitiveSerial
     return result.build();
   }
 }
-
