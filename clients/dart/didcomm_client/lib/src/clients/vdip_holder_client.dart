@@ -118,10 +118,16 @@ class VdipHolderClient extends DidcommBaseClient {
   Future<String> buildBrowserContextUrl({
     required VdipSwitchContextMessage switchContextMessage,
   }) async {
+    final threadId = switchContextMessage.threadId;
+
+    if (threadId == null) {
+      throw StateError('Switch context message is missing threadId.');
+    }
+
     final body = switchContextMessage.switchContext;
     final requestJwt = await _buildRequestJwt(
       nonce: body.nonce,
-      threadId: switchContextMessage.threadId ?? '',
+      threadId: threadId,
     );
 
     return '${body.baseIssuerUrl}/vdip/issuance?token=$requestJwt';
