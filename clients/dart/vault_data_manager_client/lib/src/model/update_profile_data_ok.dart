@@ -12,26 +12,33 @@ part 'update_profile_data_ok.g.dart';
 /// UpdateProfileDataOK
 ///
 /// Properties:
-/// * [data] 
+/// * [data]
 @BuiltValue()
-abstract class UpdateProfileDataOK implements Built<UpdateProfileDataOK, UpdateProfileDataOKBuilder> {
+abstract class UpdateProfileDataOK
+    implements Built<UpdateProfileDataOK, UpdateProfileDataOKBuilder> {
   @BuiltValueField(wireName: r'data')
   JsonObject? get data;
 
   UpdateProfileDataOK._();
 
-  factory UpdateProfileDataOK([void updates(UpdateProfileDataOKBuilder b)]) = _$UpdateProfileDataOK;
+  factory UpdateProfileDataOK([void updates(UpdateProfileDataOKBuilder b)]) =
+      _$UpdateProfileDataOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateProfileDataOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateProfileDataOK> get serializer => _$UpdateProfileDataOKSerializer();
+  static Serializer<UpdateProfileDataOK> get serializer =>
+      _$UpdateProfileDataOKSerializer();
 }
 
-class _$UpdateProfileDataOKSerializer implements PrimitiveSerializer<UpdateProfileDataOK> {
+class _$UpdateProfileDataOKSerializer
+    implements PrimitiveSerializer<UpdateProfileDataOK> {
   @override
-  final Iterable<Type> types = const [UpdateProfileDataOK, _$UpdateProfileDataOK];
+  final Iterable<Type> types = const [
+    UpdateProfileDataOK,
+    _$UpdateProfileDataOK
+  ];
 
   @override
   final String wireName = r'UpdateProfileDataOK';
@@ -56,7 +63,9 @@ class _$UpdateProfileDataOKSerializer implements PrimitiveSerializer<UpdateProfi
     UpdateProfileDataOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -106,4 +115,3 @@ class _$UpdateProfileDataOKSerializer implements PrimitiveSerializer<UpdateProfi
     return result.build();
   }
 }
-

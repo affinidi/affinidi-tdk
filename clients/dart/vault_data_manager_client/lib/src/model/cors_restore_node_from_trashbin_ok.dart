@@ -11,26 +11,36 @@ part 'cors_restore_node_from_trashbin_ok.g.dart';
 /// CorsRestoreNodeFromTrashbinOK
 ///
 /// Properties:
-/// * [corsRestoreNodeFromTrashbinOk] 
+/// * [corsRestoreNodeFromTrashbinOk]
 @BuiltValue()
-abstract class CorsRestoreNodeFromTrashbinOK implements Built<CorsRestoreNodeFromTrashbinOK, CorsRestoreNodeFromTrashbinOKBuilder> {
+abstract class CorsRestoreNodeFromTrashbinOK
+    implements
+        Built<CorsRestoreNodeFromTrashbinOK,
+            CorsRestoreNodeFromTrashbinOKBuilder> {
   @BuiltValueField(wireName: r'corsRestoreNodeFromTrashbinOk')
   String? get corsRestoreNodeFromTrashbinOk;
 
   CorsRestoreNodeFromTrashbinOK._();
 
-  factory CorsRestoreNodeFromTrashbinOK([void updates(CorsRestoreNodeFromTrashbinOKBuilder b)]) = _$CorsRestoreNodeFromTrashbinOK;
+  factory CorsRestoreNodeFromTrashbinOK(
+          [void updates(CorsRestoreNodeFromTrashbinOKBuilder b)]) =
+      _$CorsRestoreNodeFromTrashbinOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsRestoreNodeFromTrashbinOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsRestoreNodeFromTrashbinOK> get serializer => _$CorsRestoreNodeFromTrashbinOKSerializer();
+  static Serializer<CorsRestoreNodeFromTrashbinOK> get serializer =>
+      _$CorsRestoreNodeFromTrashbinOKSerializer();
 }
 
-class _$CorsRestoreNodeFromTrashbinOKSerializer implements PrimitiveSerializer<CorsRestoreNodeFromTrashbinOK> {
+class _$CorsRestoreNodeFromTrashbinOKSerializer
+    implements PrimitiveSerializer<CorsRestoreNodeFromTrashbinOK> {
   @override
-  final Iterable<Type> types = const [CorsRestoreNodeFromTrashbinOK, _$CorsRestoreNodeFromTrashbinOK];
+  final Iterable<Type> types = const [
+    CorsRestoreNodeFromTrashbinOK,
+    _$CorsRestoreNodeFromTrashbinOK
+  ];
 
   @override
   final String wireName = r'CorsRestoreNodeFromTrashbinOK';
@@ -55,7 +65,9 @@ class _$CorsRestoreNodeFromTrashbinOKSerializer implements PrimitiveSerializer<C
     CorsRestoreNodeFromTrashbinOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +117,3 @@ class _$CorsRestoreNodeFromTrashbinOKSerializer implements PrimitiveSerializer<C
     return result.build();
   }
 }
-

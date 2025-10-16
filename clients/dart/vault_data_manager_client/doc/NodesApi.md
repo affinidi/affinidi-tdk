@@ -24,7 +24,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **createChildNode**
 
-> CreateNodeOK createChildNode(createNodeInput, parentNodeId)
+> CreateNodeOK createChildNode(nodeId, createChildNodeInput)
 
 creates child node
 
@@ -38,11 +38,11 @@ import 'package:affinidi_tdk_vault_data_manager_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
 
 final api = AffinidiTdkVaultDataManagerClient().getNodesApi();
-final CreateNodeInput createNodeInput = ; // CreateNodeInput | CreateNode
-final String parentNodeId = parentNodeId_example; // String | parent node id
+final String nodeId = nodeId_example; // String | parent node id
+final CreateChildNodeInput createChildNodeInput = ; // CreateChildNodeInput | CreateChildNode
 
 try {
-    final response = api.createChildNode(createNodeInput, parentNodeId);
+    final response = api.createChildNode(nodeId, createChildNodeInput);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling NodesApi->createChildNode: $e\n');
@@ -51,10 +51,10 @@ try {
 
 ### Parameters
 
-| Name                | Type                                      | Description    | Notes      |
-| ------------------- | ----------------------------------------- | -------------- | ---------- |
-| **createNodeInput** | [**CreateNodeInput**](CreateNodeInput.md) | CreateNode     |
-| **parentNodeId**    | **String**                                | parent node id | [optional] |
+| Name                     | Type                                                | Description     | Notes |
+| ------------------------ | --------------------------------------------------- | --------------- | ----- |
+| **nodeId**               | **String**                                          | parent node id  |
+| **createChildNodeInput** | [**CreateChildNodeInput**](CreateChildNodeInput.md) | CreateChildNode |
 
 ### Return type
 

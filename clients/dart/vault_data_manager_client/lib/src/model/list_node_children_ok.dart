@@ -13,10 +13,11 @@ part 'list_node_children_ok.g.dart';
 /// ListNodeChildrenOK
 ///
 /// Properties:
-/// * [nodes] 
-/// * [lastEvaluatedKey] 
+/// * [nodes]
+/// * [lastEvaluatedKey]
 @BuiltValue()
-abstract class ListNodeChildrenOK implements Built<ListNodeChildrenOK, ListNodeChildrenOKBuilder> {
+abstract class ListNodeChildrenOK
+    implements Built<ListNodeChildrenOK, ListNodeChildrenOKBuilder> {
   @BuiltValueField(wireName: r'nodes')
   BuiltList<NodeDto>? get nodes;
 
@@ -25,16 +26,19 @@ abstract class ListNodeChildrenOK implements Built<ListNodeChildrenOK, ListNodeC
 
   ListNodeChildrenOK._();
 
-  factory ListNodeChildrenOK([void updates(ListNodeChildrenOKBuilder b)]) = _$ListNodeChildrenOK;
+  factory ListNodeChildrenOK([void updates(ListNodeChildrenOKBuilder b)]) =
+      _$ListNodeChildrenOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListNodeChildrenOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListNodeChildrenOK> get serializer => _$ListNodeChildrenOKSerializer();
+  static Serializer<ListNodeChildrenOK> get serializer =>
+      _$ListNodeChildrenOKSerializer();
 }
 
-class _$ListNodeChildrenOKSerializer implements PrimitiveSerializer<ListNodeChildrenOK> {
+class _$ListNodeChildrenOKSerializer
+    implements PrimitiveSerializer<ListNodeChildrenOK> {
   @override
   final Iterable<Type> types = const [ListNodeChildrenOK, _$ListNodeChildrenOK];
 
@@ -68,7 +72,9 @@ class _$ListNodeChildrenOKSerializer implements PrimitiveSerializer<ListNodeChil
     ListNodeChildrenOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -125,4 +131,3 @@ class _$ListNodeChildrenOKSerializer implements PrimitiveSerializer<ListNodeChil
     return result.build();
   }
 }
-

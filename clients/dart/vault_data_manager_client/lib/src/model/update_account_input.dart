@@ -19,7 +19,8 @@ part 'update_account_input.g.dart';
 /// * [metadata] - Description of metadata
 /// * [accountDid] - DID that is associated with the account number
 @BuiltValue()
-abstract class UpdateAccountInput implements Built<UpdateAccountInput, UpdateAccountInputBuilder> {
+abstract class UpdateAccountInput
+    implements Built<UpdateAccountInput, UpdateAccountInputBuilder> {
   /// Name of the account
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -46,16 +47,19 @@ abstract class UpdateAccountInput implements Built<UpdateAccountInput, UpdateAcc
 
   UpdateAccountInput._();
 
-  factory UpdateAccountInput([void updates(UpdateAccountInputBuilder b)]) = _$UpdateAccountInput;
+  factory UpdateAccountInput([void updates(UpdateAccountInputBuilder b)]) =
+      _$UpdateAccountInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UpdateAccountInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UpdateAccountInput> get serializer => _$UpdateAccountInputSerializer();
+  static Serializer<UpdateAccountInput> get serializer =>
+      _$UpdateAccountInputSerializer();
 }
 
-class _$UpdateAccountInputSerializer implements PrimitiveSerializer<UpdateAccountInput> {
+class _$UpdateAccountInputSerializer
+    implements PrimitiveSerializer<UpdateAccountInput> {
   @override
   final Iterable<Type> types = const [UpdateAccountInput, _$UpdateAccountInput];
 
@@ -113,7 +117,9 @@ class _$UpdateAccountInputSerializer implements PrimitiveSerializer<UpdateAccoun
     UpdateAccountInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -198,4 +204,3 @@ class _$UpdateAccountInputSerializer implements PrimitiveSerializer<UpdateAccoun
     return result.build();
   }
 }
-
