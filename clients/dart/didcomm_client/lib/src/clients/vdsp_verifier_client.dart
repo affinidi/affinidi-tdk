@@ -54,10 +54,7 @@ class VdspVerifierClient {
       ),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: message,
-    );
-
+    await mediatorClient.packAndSendMessage(message);
     return message;
   }
 
@@ -90,10 +87,7 @@ class VdspVerifierClient {
       ).toJson(),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: message,
-    );
-
+    await mediatorClient.packAndSendMessage(message);
     return message;
   }
 
@@ -112,10 +106,7 @@ class VdspVerifierClient {
       ).toJson(),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: message,
-    );
-
+    await mediatorClient.packAndSendMessage(message);
     return message;
   }
 

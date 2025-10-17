@@ -9,27 +9,16 @@ import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../../tests/integration/dart/test/test_config.dart';
+import 'mock_mediator.dart';
 
 Future<void> main() async {
-  final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'didcomm_client',
-  );
-
-  final mediatorDid = await readDid(
-    config.mediatorDidPath,
-  );
-
-  final mediatorDidDocument =
-      await UniversalDIDResolver.defaultResolver.resolveDid(
-    mediatorDid,
-  );
-
   group('VDSP holder and verifier clients Integration Tests', () {
     late String holderEmail;
 
     late String verifierDomain;
     late String verifierChallenge;
+
+    late MockMediator mockMediator;
 
     late DidKeyManager verifierDidManager;
     late DidKeyManager holderDidManager;
@@ -44,6 +33,10 @@ Future<void> main() async {
 
       verifierChallenge = const Uuid().v4();
       verifierDomain = 'test.verifier.com';
+
+      mockMediator = await MockMediator.init(
+        keyType: KeyType.p256,
+      );
 
       final issuerKeyStore = InMemoryKeyStore();
       final issuerWallet = PersistentWallet(issuerKeyStore);
@@ -72,19 +65,13 @@ Future<void> main() async {
 
       final verifierKeyId = 'verifier-key-1';
 
-      final verifierPrivateKeyBytes = await extractPrivateKeyBytes(
-        config.alicePrivateKeyPath,
-      );
-
-      await verifierKeyStore.set(
-        verifierKeyId,
-        StoredKey(
-          keyType: KeyType.p256,
-          privateKeyBytes: verifierPrivateKeyBytes,
-        ),
+      await verifierWallet.generateKey(
+        keyId: verifierKeyId,
+        keyType: KeyType.p256,
       );
 
       await verifierDidManager.addVerificationMethod(verifierKeyId);
+      await mockMediator.addClientForDidManager(verifierDidManager);
 
       final holderKeyStore = InMemoryKeyStore();
       final holderWallet = PersistentWallet(holderKeyStore);
@@ -96,19 +83,13 @@ Future<void> main() async {
 
       final holderKeyId = 'holder-key-1';
 
-      final holderPrivateKeyBytes = await extractPrivateKeyBytes(
-        config.bobPrivateKeyPath,
-      );
-
-      await holderKeyStore.set(
-        holderKeyId,
-        StoredKey(
-          keyType: KeyType.p256,
-          privateKeyBytes: holderPrivateKeyBytes,
-        ),
+      await holderWallet.generateKey(
+        keyId: holderKeyId,
+        keyType: KeyType.p256,
       );
 
       await holderDidManager.addVerificationMethod(holderKeyId);
+      await mockMediator.addClientForDidManager(holderDidManager);
 
       holderSigner = await holderDidManager.getSigner(
         holderDidManager.assertionMethod.first,
@@ -174,14 +155,9 @@ Future<void> main() async {
     test('VDSP works correctly', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final verifierClient = await VdspVerifierClient.init(
-        mediatorDidDocument: mediatorDidDocument,
+      final verifierClient = VdspVerifierClient(
         didManager: verifierDidManager,
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: verifierDidManager,
-        ),
+        mediatorClient: mockMediator.clients[verifierDidManager]!,
       );
 
       await verifierClient.queryHolderFeatures(
@@ -284,18 +260,13 @@ Future<void> main() async {
         },
         onProblemReport: (message) async {
           testCompleter.complete(message);
-          await ConnectionPool.instance.stopConnections();
+          await mockMediator.stopConnections();
         },
       );
 
-      final holderClient = await VdspHolderClient.init(
-        mediatorDidDocument: mediatorDidDocument,
+      final holderClient = VdspHolderClient(
         didManager: holderDidManager,
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: holderDidManager,
-        ),
+        mediatorClient: mockMediator.clients[holderDidManager]!,
         featureDisclosures: [
           ...FeatureDiscoveryHelper.vdspHolderDisclosures,
           Disclosure(
@@ -360,15 +331,15 @@ Future<void> main() async {
         },
         onDataProcessingResult: (message) async {
           testCompleter.complete(message);
-          await ConnectionPool.instance.stopConnections();
+          await mockMediator.stopConnections();
         },
         onProblemReport: (message) async {
           testCompleter.complete(message);
-          await ConnectionPool.instance.stopConnections();
+          await mockMediator.stopConnections();
         },
       );
 
-      await ConnectionPool.instance.startConnections();
+      await mockMediator.startConnections();
 
       final actual = await testCompleter.future;
       final actualResult = actual.body?['result'] as Map<String, dynamic>?;

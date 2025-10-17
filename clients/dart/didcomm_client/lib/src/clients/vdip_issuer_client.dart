@@ -69,10 +69,7 @@ class VdipIssuerClient {
       ),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: message,
-    );
-
+    await mediatorClient.packAndSendMessage(message);
     return message;
   }
 

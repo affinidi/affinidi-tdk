@@ -27,10 +27,7 @@ abstract class DidcommServiceClient {
       threadId: requestMessage.id,
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: requestMessage,
-    );
-
+    await mediatorClient.packAndSendMessage(requestMessage);
     return await responseMessageFuture;
   }
 }

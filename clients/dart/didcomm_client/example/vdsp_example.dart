@@ -209,7 +209,7 @@ Future<void> main() async {
 
       if (unsupportedFeatureDisclosures.isNotEmpty) {
         await verifierClient.mediatorClient.packAndSendMessage(
-          message: ProblemReportMessage(
+          ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
             parentThreadId: message.threadId ?? message.id,
@@ -275,13 +275,13 @@ Future<void> main() async {
         result: {'success': result},
       );
     },
-    onProblemReport: (message) {
+    onProblemReport: (message) async {
       prettyPrint(
         'A problem has occurred',
         object: message,
       );
 
-      ConnectionPool.instance.stopConnections();
+      await ConnectionPool.instance.stopConnections();
     },
   );
 
@@ -342,7 +342,7 @@ Future<void> main() async {
         }
 
         await holderClient.mediatorClient.packAndSendMessage(
-          message: ProblemReportMessage(
+          ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
             parentThreadId: message.threadId ?? message.id,
@@ -382,13 +382,13 @@ Future<void> main() async {
 
       await ConnectionPool.instance.stopConnections();
     },
-    onProblemReport: (message) {
+    onProblemReport: (message) async {
       prettyPrint(
         'A problem has occurred',
         object: message,
       );
 
-      ConnectionPool.instance.stopConnections();
+      await ConnectionPool.instance.stopConnections();
     },
   );
 
