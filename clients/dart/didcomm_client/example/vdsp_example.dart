@@ -1,10 +1,6 @@
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
-import 'package:affinidi_tdk_didcomm_client/src/common/client_options.dart';
+import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
+    hide CredentialFormat;
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
-import 'package:affinidi_tdk_didcomm_client/src/messages/vdsp/vdsp_data_response_message.dart';
-import 'package:affinidi_tdk_didcomm_client/src/models/constants/data_integrity_proof_suite.dart';
-import 'package:affinidi_tdk_didcomm_client/src/models/constants/feature_type.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
@@ -13,6 +9,9 @@ import 'package:uuid/uuid.dart';
 import '../../../../tests/integration/dart/test/test_config.dart';
 
 Future<void> main() async {
+  final verifierChallenge = const Uuid().v4();
+  final verifierDomain = 'test.verifier.com';
+
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'didcomm_client',
   );
@@ -234,11 +233,10 @@ Future<void> main() async {
         holderDid: holderDid,
         dcqlQuery: verifierDcql,
         operation: 'registerAgent',
-        // TODO: uncomment when Dart SSI is fixed
-        // proofContext: VdspQueryDataProofContext(
-        //   challenge: const Uuid().v4(),
-        //   domain: 'test.verifier.com',
-        // ),
+        proofContext: VdspQueryDataProofContext(
+          challenge: verifierChallenge,
+          domain: verifierDomain,
+        ),
       );
     },
     onDataResponse: ({
@@ -267,9 +265,14 @@ Future<void> main() async {
         throw ArgumentError.notNull('from');
       }
 
+      // domain and challenge check to prevent replay attacks
+      final result = presentationAndCredentialsAreValid &&
+          verifiablePresentation?.proof.first.challenge == verifierChallenge &&
+          verifiablePresentation!.proof.first.domain?.first == verifierDomain;
+
       await verifierClient.sendDataProcessingResult(
         holderDid: message.from!,
-        result: {'success': true},
+        result: {'success': result},
       );
     },
     onProblemReport: (message) {

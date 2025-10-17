@@ -28,6 +28,9 @@ Future<void> main() async {
   group('VDSP holder and verifier clients Integration Tests', () {
     late String holderEmail;
 
+    late String verifierDomain;
+    late String verifierChallenge;
+
     late DidKeyManager verifierDidManager;
     late DidKeyManager holderDidManager;
 
@@ -38,6 +41,8 @@ Future<void> main() async {
 
     setUp(() async {
       holderEmail = '${Uuid().v4()}@test.com';
+      verifierChallenge = const Uuid().v4();
+      verifierDomain = 'test.verifier.com';
 
       final issuerKeyStore = InMemoryKeyStore();
       final issuerWallet = PersistentWallet(issuerKeyStore);
@@ -244,11 +249,10 @@ Future<void> main() async {
             holderDid: holderDid,
             dcqlQuery: verifierDcql,
             operation: 'registerAgent',
-            // TODO: uncomment when Dart SSI is fixed
-            // proofContext: VdspQueryDataProofContext(
-            //   challenge: const Uuid().v4(),
-            //   domain: 'test.verifier.com',
-            // ),
+            proofContext: VdspQueryDataProofContext(
+              challenge: verifierChallenge,
+              domain: verifierDomain,
+            ),
           );
         },
         onDataResponse: ({
@@ -262,12 +266,16 @@ Future<void> main() async {
             throw ArgumentError.notNull('from');
           }
 
+          final result = presentationAndCredentialsAreValid &&
+              verifiablePresentation?.proof.first.challenge ==
+                  verifierChallenge &&
+              verifiablePresentation!.proof.first.domain?.first ==
+                  verifierDomain;
+
           await verifierClient.sendDataProcessingResult(
             holderDid: message.from!,
             result: {
-              'success': true,
-              'presentationAndCredentialsAreValid':
-                  presentationAndCredentialsAreValid,
+              'success': result,
               'email': verifiablePresentation
                   ?.verifiableCredential.first.credentialSubject.first['email'],
             },
@@ -373,7 +381,7 @@ Future<void> main() async {
       );
 
       expect(
-        actual.body?['result']['presentationAndCredentialsAreValid'],
+        actual.body?['result']['success'],
         isTrue,
       );
     });
