@@ -1,5 +1,6 @@
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
+import 'package:affinidi_tdk_didcomm_client/src/common/client_options.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
 import 'package:affinidi_tdk_didcomm_client/src/messages/vdsp/vdsp_data_response_message.dart';
 import 'package:affinidi_tdk_didcomm_client/src/models/constants/data_integrity_proof_suite.dart';
@@ -14,6 +15,15 @@ import '../../../../tests/integration/dart/test/test_config.dart';
 Future<void> main() async {
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'didcomm_client',
+  );
+
+  final mediatorDid = await readDid(
+    config.mediatorDidPath,
+  );
+
+  final mediatorDidDocument =
+      await UniversalDIDResolver.defaultResolver.resolveDid(
+    mediatorDid,
   );
 
   final issuerKeyStore = InMemoryKeyStore();
@@ -144,22 +154,26 @@ Future<void> main() async {
   // verifier
 
   final verifierClient = await VdspVerifierClient.init(
+    mediatorDidDocument: mediatorDidDocument,
     didManager: verifierDidManager,
+    clientOptions: const AffinidiClientOptions(),
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: verifierDidManager,
+    ),
   );
-
-  final featureQueries = [
-    ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-      FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
-    ),
-    Query(
-      featureType: FeatureType.operation.value,
-      match: 'registerAgent',
-    ),
-  ];
 
   await verifierClient.queryHolderFeatures(
     holderDid: (await holderDidManager.getDidDocument()).id,
-    featureQueries: featureQueries,
+    featureQueries: [
+      ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+        FeatureDiscoveryHelper.vdspHolderDisclosures,
+      ),
+      Query(
+        featureType: FeatureType.operation.value,
+        match: 'registerAgent',
+      ),
+    ],
   );
 
   verifierClient.listenForIncomingMessages(
@@ -181,7 +195,7 @@ Future<void> main() async {
       final body = DiscloseBody.fromJson(message.body!);
 
       final expectedFeatures = [
-        ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+        ...FeatureDiscoveryHelper.vdspHolderDisclosures,
         Disclosure(
           featureType: FeatureType.operation.value,
           id: 'registerAgent',
@@ -271,9 +285,15 @@ Future<void> main() async {
   // holder
 
   final holderClient = await VdspHolderClient.init(
+    mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
+    clientOptions: const AffinidiClientOptions(),
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: holderDidManager,
+    ),
     featureDisclosures: [
-      ...FeatureDiscoveryHelper.defaultFeatureDisclosuresOfHolder,
+      ...FeatureDiscoveryHelper.vdspHolderDisclosures,
       Disclosure(
         featureType: FeatureType.operation.value,
         id: 'registerAgent',

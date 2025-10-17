@@ -1,22 +1,24 @@
 import 'dart:async';
 
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
-import '../extensions/did_manager_extention.dart';
+import 'didcomm_mediator_client.dart';
 
 class DidcommAtlasClient extends DidcommServiceClient {
   DidcommAtlasClient({
     required super.didManager,
     required super.mediatorClient,
     required super.serviceDidDocument,
-    super.clientOptions = const ClientOptions(),
+    super.clientOptions = const AffinidiClientOptions(),
   });
 
   static Future<DidcommAtlasClient> init({
     required DidManager didManager,
-    ClientOptions clientOptions = const ClientOptions(),
+    AuthorizationProvider? authorizationProvider,
+    AffinidiClientOptions clientOptions = const AffinidiClientOptions(),
   }) async {
     final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
       [
@@ -29,11 +31,15 @@ class DidcommAtlasClient extends DidcommServiceClient {
       didManager: didManager,
       serviceDidDocument: atlasDidDocument,
       clientOptions: clientOptions,
-      mediatorClient: await didManager.getMediatorClient(
+      mediatorClient: await DidcommMediatorClient.init(
+        didManager: didManager,
         mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [
-          atlasDidDocument,
-        ],
+        clientOptions: clientOptions,
+        authorizationProvider: authorizationProvider ??
+            await AffinidiAuthorizationProvider.init(
+              didManager: didManager,
+              mediatorDidDocument: mediatorDidDocument,
+            ),
       ),
     );
   }
