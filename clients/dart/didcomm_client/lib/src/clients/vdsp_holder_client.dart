@@ -9,53 +9,46 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
-import '../extensions/did_manager_extention.dart';
-import '../messages/vdsp/vdsp_data_processing_result_message.dart';
-import '../messages/vdsp/vdsp_data_response_message.dart';
-import '../messages/vdsp/vdsp_query_data_message.dart';
-import '../models/constants/data_integrity_proof_suite.dart';
-import '../models/constants/data_query_language.dart';
-import '../models/constants/verifiable_credentials_data_model.dart';
-import '../models/results/data_query_result.dart';
-import 'didcomm_base_client.dart';
+import 'didcomm_mediator_client.dart';
 
-class VdspHolderClient extends DidcommBaseClient {
+/// Implements the VDSP protocol for a holder, supporting feature discovery, credential filtering, and data sharing.
+class VdspHolderClient {
+  /// The mediator client used for DIDComm communication.
+  final DidcommMediatorClient mediatorClient;
+
+  /// The DID manager for handling DIDs and keys.
+  final DidManager didManager;
+
+  /// The list of feature disclosures supported by this holder in the VDSP protocol.
   final List<Disclosure> featureDisclosures;
-  final DidSigner signer;
 
+  /// Constructs a [VdspHolderClient] for the VDSP protocol with the given [didManager], [mediatorClient], and [featureDisclosures].
   VdspHolderClient({
-    required super.didManager,
-    required this.signer,
-    required super.mediatorClient,
+    required this.didManager,
+    required this.mediatorClient,
     required this.featureDisclosures,
-    super.clientOptions = const ClientOptions(),
   });
 
+  /// Initializes a [VdspHolderClient] for the VDSP protocol asynchronously with the provided mediator DID document, DID manager, and feature disclosures.
   static Future<VdspHolderClient> init({
+    required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
+    AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
-  }) async {
-    final [mediatorDidDocument] = await Future.wait(
-      [
-        clientOptions.mediatorDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
+  }) async =>
+      VdspHolderClient(
+        didManager: didManager,
+        featureDisclosures: featureDisclosures,
+        mediatorClient: await DidcommMediatorClient.init(
+          didManager: didManager,
+          mediatorDidDocument: mediatorDidDocument,
+          authorizationProvider: authorizationProvider,
+          clientOptions: clientOptions,
+        ),
+      );
 
-    final didDocument = await didManager.getDidDocument();
-
-    return VdspHolderClient(
-      didManager: didManager,
-      featureDisclosures: featureDisclosures,
-      clientOptions: clientOptions,
-      signer: await didManager.getSigner(didDocument.assertionMethod.first.id),
-      mediatorClient: await didManager.getMediatorClient(
-        mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [],
-      ),
-    );
-  }
-
+  /// Returns the supported feature disclosures for a given [queryMessage].
   List<Disclosure> getDisclosures({
     required QueryMessage queryMessage,
   }) {
@@ -75,6 +68,7 @@ class VdspHolderClient extends DidcommBaseClient {
     );
   }
 
+  /// Creates and sends a [DiscloseMessage] in response to a feature query.
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,
     required List<Disclosure> disclosures,
@@ -101,6 +95,7 @@ class VdspHolderClient extends DidcommBaseClient {
     return message;
   }
 
+  /// Filters the provided [verifiableCredentials] using the query in [requestMessage].
   Future<DataQueryResult> filterVerifiableCredentials({
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
@@ -119,6 +114,7 @@ class VdspHolderClient extends DidcommBaseClient {
     );
   }
 
+  /// Shares filtered verifiable credentials as a verifiable presentation in response to a data query.
   Future<VdspDataResponseMessage> shareData({
     required VdspQueryDataMessage requestMessage,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
@@ -169,6 +165,13 @@ class VdspHolderClient extends DidcommBaseClient {
     return responseMessage;
   }
 
+  /// Listens for incoming DIDComm messages and dispatches them to the appropriate handlers as defined by the VDSP protocol.
+  ///
+  /// [onFeatureQuery] is called for VDSP feature query messages. Optional.
+  /// [onDataRequest] is called for VDSP data request messages.
+  /// [onDataProcessingResult] is called for VDSP data processing result messages. Optional.
+  /// [onProblemReport] is called for VDSP problem report messages. Optional.
+  /// [onError], [onDone], and [cancelOnError] control the stream behavior. Optional.
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
     required void Function(VdspQueryDataMessage) onDataRequest,
@@ -261,23 +264,27 @@ class VdspHolderClient extends DidcommBaseClient {
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
+          proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
       DataIntegrityProofSuite.eddsa_jcs_2022 => DataIntegrityEddsaJcsGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
+          proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
       DataIntegrityProofSuite.ecdsa_rdfc_2019 =>
         DataIntegrityEcdsaRdfcGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
+          proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
       DataIntegrityProofSuite.eddsa_rdfc_2022 =>
         DataIntegrityEddsaRdfcGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
+          proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
     };
 

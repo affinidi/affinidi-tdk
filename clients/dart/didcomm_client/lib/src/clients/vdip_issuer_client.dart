@@ -6,45 +6,36 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
-import '../extensions/did_manager_extention.dart';
-import 'didcomm_base_client.dart';
+import 'didcomm_mediator_client.dart';
 
-class VdipIssuerClient extends DidcommBaseClient {
+class VdipIssuerClient {
+  final DidcommMediatorClient mediatorClient;
+  final DidManager didManager;
   final List<Disclosure> featureDisclosures;
-  final DidSigner signer;
 
   VdipIssuerClient({
-    required super.didManager,
-    required this.signer,
-    required super.mediatorClient,
+    required this.didManager,
+    required this.mediatorClient,
     required this.featureDisclosures,
-    super.clientOptions = const ClientOptions(),
   });
 
   static Future<VdipIssuerClient> init({
+    required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
+    AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
-  }) async {
-    final [mediatorDidDocument] = await Future.wait(
-      [
-        clientOptions.mediatorDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
-
-    final didDocument = await didManager.getDidDocument();
-
-    return VdipIssuerClient(
-      didManager: didManager,
-      featureDisclosures: featureDisclosures,
-      clientOptions: clientOptions,
-      signer: await didManager.getSigner(didDocument.assertionMethod.first.id),
-      mediatorClient: await didManager.getMediatorClient(
-        mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [],
-      ),
-    );
-  }
+  }) async =>
+      VdipIssuerClient(
+        didManager: didManager,
+        featureDisclosures: featureDisclosures,
+        mediatorClient: await DidcommMediatorClient.init(
+          didManager: didManager,
+          mediatorDidDocument: mediatorDidDocument,
+          authorizationProvider: authorizationProvider,
+          clientOptions: clientOptions,
+        ),
+      );
 
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,

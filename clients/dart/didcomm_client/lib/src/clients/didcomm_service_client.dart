@@ -3,15 +3,20 @@ import 'dart:async';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
-import 'didcomm_base_client.dart';
+import '../../didcomm_client.dart';
+import 'didcomm_mediator_client.dart';
 
-abstract class DidcommServiceClient extends DidcommBaseClient {
+abstract class DidcommServiceClient {
+  final DidcommMediatorClient mediatorClient;
+  final DidManager didManager;
+  final ClientOptions clientOptions;
+
   final DidDocument serviceDidDocument;
 
   DidcommServiceClient({
-    required super.didManager,
-    required super.clientOptions,
-    required super.mediatorClient,
+    required this.didManager,
+    required this.clientOptions,
+    required this.mediatorClient,
     required this.serviceDidDocument,
   });
 
@@ -22,9 +27,8 @@ abstract class DidcommServiceClient extends DidcommBaseClient {
       threadId: requestMessage.id,
     );
 
-    await sendMessage(
-      requestMessage,
-      recipientDidDocument: serviceDidDocument,
+    await mediatorClient.packAndSendMessage(
+      message: requestMessage,
     );
 
     return await responseMessageFuture;

@@ -7,40 +7,41 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
-import '../extensions/did_manager_extention.dart';
-import '../messages/vdsp/vdsp_data_processing_result_message.dart';
-import '../messages/vdsp/vdsp_data_response_message.dart';
-import '../messages/vdsp/vdsp_query_data_message.dart';
-import '../models/constants/data_query_language.dart';
-import 'didcomm_base_client.dart';
+import 'didcomm_mediator_client.dart';
 
-class VdspVerifierClient extends DidcommBaseClient {
+/// Implements the VDSP protocol for a verifier, supporting feature discovery,
+/// data queries, and verification of presentations and credentials.
+class VdspVerifierClient {
+  /// The mediator client used for DIDComm communication.
+  final DidcommMediatorClient mediatorClient;
+
+  /// The DID manager for handling DIDs and keys.
+  final DidManager didManager;
+
+  /// Constructs a [VdspVerifierClient] for the VDSP protocol with the given [didManager] and [mediatorClient].
   VdspVerifierClient({
-    required super.didManager,
-    required super.mediatorClient,
-    super.clientOptions = const ClientOptions(),
+    required this.didManager,
+    required this.mediatorClient,
   });
 
+  /// Initializes a [VdspVerifierClient] for the VDSP protocol asynchronously with the provided mediator DID document and DID manager.
   static Future<VdspVerifierClient> init({
     required DidManager didManager,
+    required DidDocument mediatorDidDocument,
+    AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
-  }) async {
-    final [mediatorDidDocument] = await Future.wait(
-      [
-        clientOptions.mediatorDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
+  }) async =>
+      VdspVerifierClient(
+        didManager: didManager,
+        mediatorClient: await DidcommMediatorClient.init(
+          didManager: didManager,
+          mediatorDidDocument: mediatorDidDocument,
+          authorizationProvider: authorizationProvider,
+          clientOptions: clientOptions,
+        ),
+      );
 
-    return VdspVerifierClient(
-      didManager: didManager,
-      clientOptions: clientOptions,
-      mediatorClient: await didManager.getMediatorClient(
-        mediatorDidDocument: mediatorDidDocument,
-        recipientDidDocuments: [],
-      ),
-    );
-  }
-
+  /// Sends a feature query to a holder to discover supported features.
   Future<QueryMessage> queryHolderFeatures({
     required String holderDid,
     required List<Query> featureQueries,
@@ -60,6 +61,7 @@ class VdspVerifierClient extends DidcommBaseClient {
     return message;
   }
 
+  /// Sends a data query to a holder to request a verifiable presentation.
   Future<VdspQueryDataMessage> queryHolderData({
     required String holderDid,
     String? operation,
@@ -95,6 +97,7 @@ class VdspVerifierClient extends DidcommBaseClient {
     return message;
   }
 
+  /// Sends a data processing result message to a holder after processing received data.
   Future<VdspDataProcessingResultMessage> sendDataProcessingResult({
     required String holderDid,
     String? operation,
@@ -116,6 +119,12 @@ class VdspVerifierClient extends DidcommBaseClient {
     return message;
   }
 
+  /// Listens for incoming DIDComm messages and dispatches them to the appropriate handlers as defined by the VDSP protocol.
+  ///
+  /// [onDiscloseMessage] is called for VDSP disclose messages. Optional.
+  /// [onDataResponse] is called for VDSP data response messages and provides verification results.
+  /// [onProblemReport] is called for VDSP problem report messages. Optional.
+  /// [onError], [onDone], and [cancelOnError] control the stream behavior. Optional.
   StreamSubscription listenForIncomingMessages({
     void Function(DiscloseMessage)? onDiscloseMessage,
     required void Function({

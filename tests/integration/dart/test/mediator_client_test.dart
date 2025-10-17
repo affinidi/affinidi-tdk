@@ -18,7 +18,7 @@ void main() async {
     packageDirectoryName: 'mediator_client',
   );
 
-  group('Mediator Integration Tests', () {
+  group('Mediator Client Integration Tests', () {
     late PersistentWallet aliceWallet;
     late DidManager aliceDidManager;
     late DidDocument aliceDidDocument;
