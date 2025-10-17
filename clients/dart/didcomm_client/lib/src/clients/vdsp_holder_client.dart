@@ -9,13 +9,6 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
-import '../messages/vdsp/vdsp_data_processing_result_message.dart';
-import '../messages/vdsp/vdsp_data_response_message.dart';
-import '../messages/vdsp/vdsp_query_data_message.dart';
-import '../models/constants/data_integrity_proof_suite.dart';
-import '../models/constants/data_query_language.dart';
-import '../models/constants/verifiable_credentials_data_model.dart';
-import '../models/results/data_query_result.dart';
 import 'didcomm_mediator_client.dart';
 
 /// Implements the VDSP protocol for a holder, supporting feature discovery, credential filtering, and data sharing.

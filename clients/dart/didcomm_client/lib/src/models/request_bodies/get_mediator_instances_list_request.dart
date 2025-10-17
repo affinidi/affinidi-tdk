@@ -12,8 +12,7 @@ class GetMediatorInstancesListRequest {
     this.exclusiveStartKey,
   });
 
-  factory GetMediatorInstancesListRequest.fromJson(
-          Map<String, dynamic> json) =>
+  factory GetMediatorInstancesListRequest.fromJson(Map<String, dynamic> json) =>
       _$GetMediatorInstancesListRequestFromJson(json);
 
   Map<String, dynamic> toJson() =>

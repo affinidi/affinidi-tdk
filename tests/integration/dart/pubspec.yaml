@@ -44,4 +44,5 @@ dev_dependencies:
   jwt_decode: ^0.3.1
 dependencies:
   collection: ^1.19.1
+  dcql: ^1.0.0
   path: ^1.9.1

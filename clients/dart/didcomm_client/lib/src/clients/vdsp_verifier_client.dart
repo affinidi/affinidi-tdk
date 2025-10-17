@@ -7,10 +7,6 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
-import '../messages/vdsp/vdsp_data_processing_result_message.dart';
-import '../messages/vdsp/vdsp_data_response_message.dart';
-import '../messages/vdsp/vdsp_query_data_message.dart';
-import '../models/constants/data_query_language.dart';
 import 'didcomm_mediator_client.dart';
 
 /// Implements the VDSP protocol for a verifier, supporting feature discovery,
