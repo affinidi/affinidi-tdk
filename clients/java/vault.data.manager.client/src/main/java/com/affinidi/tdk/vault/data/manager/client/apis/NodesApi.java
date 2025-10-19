@@ -20,6 +20,7 @@ import com.affinidi.tdk.vault.data.manager.client.BaseApi;
 import com.affinidi.tdk.vault.data.manager.client.Configuration;
 import com.affinidi.tdk.vault.data.manager.client.Pair;
 
+import com.affinidi.tdk.vault.data.manager.client.models.CreateChildNodeInput;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeInput;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateNodeOK;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteNodeDto;
@@ -56,35 +57,41 @@ public class NodesApi extends BaseApi {
   /**
    * 
    * creates child node
-   * @param createNodeInput CreateNode (required)
-   * @param parentNodeId parent node id (optional)
+   * @param nodeId parent node id (required)
+   * @param createChildNodeInput CreateChildNode (required)
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createChildNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId) throws ApiException {
-    return this.createChildNode(createNodeInput, parentNodeId, Collections.emptyMap());
+  public CreateNodeOK createChildNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull CreateChildNodeInput createChildNodeInput) throws ApiException {
+    return this.createChildNode(nodeId, createChildNodeInput, Collections.emptyMap());
   }
 
 
   /**
    * 
    * creates child node
-   * @param createNodeInput CreateNode (required)
-   * @param parentNodeId parent node id (optional)
+   * @param nodeId parent node id (required)
+   * @param createChildNodeInput CreateChildNode (required)
    * @param additionalHeaders additionalHeaders for this call
    * @return CreateNodeOK
    * @throws ApiException if fails to make API call
    */
-  public CreateNodeOK createChildNode(@javax.annotation.Nonnull CreateNodeInput createNodeInput, @javax.annotation.Nullable String parentNodeId, Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = createNodeInput;
+  public CreateNodeOK createChildNode(@javax.annotation.Nonnull String nodeId, @javax.annotation.Nonnull CreateChildNodeInput createChildNodeInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createChildNodeInput;
     
-    // verify the required parameter 'createNodeInput' is set
-    if (createNodeInput == null) {
-      throw new ApiException(400, "Missing the required parameter 'createNodeInput' when calling createChildNode");
+    // verify the required parameter 'nodeId' is set
+    if (nodeId == null) {
+      throw new ApiException(400, "Missing the required parameter 'nodeId' when calling createChildNode");
+    }
+    
+    // verify the required parameter 'createChildNodeInput' is set
+    if (createChildNodeInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createChildNodeInput' when calling createChildNode");
     }
     
     // create path and map variables
-    String localVarPath = "/v1/nodes/{nodeId}";
+    String localVarPath = "/v1/nodes/{nodeId}"
+      .replaceAll("\\{" + "nodeId" + "\\}", apiClient.escapeString(apiClient.parameterToString(nodeId)));
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
@@ -94,7 +101,6 @@ public class NodesApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPair("parentNodeId", parentNodeId));
     
     localVarHeaderParams.putAll(additionalHeaders);
 

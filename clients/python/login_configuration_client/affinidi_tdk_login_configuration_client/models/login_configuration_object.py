@@ -40,10 +40,11 @@ class LoginConfigurationObject(BaseModel):
     creation_date: StrictStr = Field(default=..., alias="creationDate", description="OAuth 2.0 Client Creation Date")
     vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition", description="Presentation Definition")
+    dcql_query: Optional[Dict[str, Any]] = Field(default=None, alias="dcqlQuery", description="DCQL query")
     id_token_mapping: conlist(IdTokenMappingItem, min_items=1) = Field(default=..., alias="idTokenMapping", description="Fields name/path mapping between the vp_token and the id_token")
     client_metadata: LoginConfigurationClientMetadataOutput = Field(default=..., alias="clientMetadata")
     token_endpoint_auth_method: TokenEndpointAuthMethod = Field(default=..., alias="tokenEndpointAuthMethod")
-    __properties = ["ari", "configurationId", "projectId", "name", "redirectUris", "postLogoutRedirectUris", "scope", "clientId", "creationDate", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod"]
+    __properties = ["ari", "configurationId", "projectId", "name", "redirectUris", "postLogoutRedirectUris", "scope", "clientId", "creationDate", "vpDefinition", "presentationDefinition", "dcqlQuery", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod"]
 
     class Config:
         """Pydantic configuration"""
@@ -102,6 +103,7 @@ class LoginConfigurationObject(BaseModel):
             "creation_date": obj.get("creationDate"),
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
+            "dcql_query": obj.get("dcqlQuery"),
             "id_token_mapping": [IdTokenMappingItem.from_dict(_item) for _item in obj.get("idTokenMapping")] if obj.get("idTokenMapping") is not None else None,
             "client_metadata": LoginConfigurationClientMetadataOutput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "token_endpoint_auth_method": obj.get("tokenEndpointAuthMethod")

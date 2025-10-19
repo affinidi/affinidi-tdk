@@ -48,7 +48,7 @@ class _$NodeStatusMeta {
   BuiltSet<NodeStatus> get values => _$values;
 }
 
-abstract class _$NodeStatusMixin {
+mixin _$NodeStatusMixin {
   // ignore: non_constant_identifier_names
   _$NodeStatusMeta get NodeStatus => const _$NodeStatusMeta();
 }

@@ -13,13 +13,14 @@ part 'invalid_groups_error.g.dart';
 /// InvalidGroupsError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class InvalidGroupsError implements Built<InvalidGroupsError, InvalidGroupsErrorBuilder> {
+abstract class InvalidGroupsError
+    implements Built<InvalidGroupsError, InvalidGroupsErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   InvalidGroupsErrorNameEnum get name;
   // enum nameEnum {  InvalidGroupsError,  };
@@ -40,16 +41,19 @@ abstract class InvalidGroupsError implements Built<InvalidGroupsError, InvalidGr
 
   InvalidGroupsError._();
 
-  factory InvalidGroupsError([void updates(InvalidGroupsErrorBuilder b)]) = _$InvalidGroupsError;
+  factory InvalidGroupsError([void updates(InvalidGroupsErrorBuilder b)]) =
+      _$InvalidGroupsError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(InvalidGroupsErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<InvalidGroupsError> get serializer => _$InvalidGroupsErrorSerializer();
+  static Serializer<InvalidGroupsError> get serializer =>
+      _$InvalidGroupsErrorSerializer();
 }
 
-class _$InvalidGroupsErrorSerializer implements PrimitiveSerializer<InvalidGroupsError> {
+class _$InvalidGroupsErrorSerializer
+    implements PrimitiveSerializer<InvalidGroupsError> {
   @override
   final Iterable<Type> types = const [InvalidGroupsError, _$InvalidGroupsError];
 
@@ -85,7 +89,8 @@ class _$InvalidGroupsErrorSerializer implements PrimitiveSerializer<InvalidGroup
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +101,9 @@ class _$InvalidGroupsErrorSerializer implements PrimitiveSerializer<InvalidGroup
     InvalidGroupsError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,7 +149,8 @@ class _$InvalidGroupsErrorSerializer implements PrimitiveSerializer<InvalidGroup
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +184,49 @@ class _$InvalidGroupsErrorSerializer implements PrimitiveSerializer<InvalidGroup
 }
 
 class InvalidGroupsErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'InvalidGroupsError')
-  static const InvalidGroupsErrorNameEnum invalidGroupsError = _$invalidGroupsErrorNameEnum_invalidGroupsError;
+  static const InvalidGroupsErrorNameEnum invalidGroupsError =
+      _$invalidGroupsErrorNameEnum_invalidGroupsError;
 
-  static Serializer<InvalidGroupsErrorNameEnum> get serializer => _$invalidGroupsErrorNameEnumSerializer;
+  static Serializer<InvalidGroupsErrorNameEnum> get serializer =>
+      _$invalidGroupsErrorNameEnumSerializer;
 
-  const InvalidGroupsErrorNameEnum._(String name): super(name);
+  const InvalidGroupsErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidGroupsErrorNameEnum> get values => _$invalidGroupsErrorNameEnumValues;
-  static InvalidGroupsErrorNameEnum valueOf(String name) => _$invalidGroupsErrorNameEnumValueOf(name);
+  static BuiltSet<InvalidGroupsErrorNameEnum> get values =>
+      _$invalidGroupsErrorNameEnumValues;
+  static InvalidGroupsErrorNameEnum valueOf(String name) =>
+      _$invalidGroupsErrorNameEnumValueOf(name);
 }
 
 class InvalidGroupsErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Invalid groups names')
-  static const InvalidGroupsErrorMessageEnum invalidGroupsNames = _$invalidGroupsErrorMessageEnum_invalidGroupsNames;
+  static const InvalidGroupsErrorMessageEnum invalidGroupsNames =
+      _$invalidGroupsErrorMessageEnum_invalidGroupsNames;
 
-  static Serializer<InvalidGroupsErrorMessageEnum> get serializer => _$invalidGroupsErrorMessageEnumSerializer;
+  static Serializer<InvalidGroupsErrorMessageEnum> get serializer =>
+      _$invalidGroupsErrorMessageEnumSerializer;
 
-  const InvalidGroupsErrorMessageEnum._(String name): super(name);
+  const InvalidGroupsErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidGroupsErrorMessageEnum> get values => _$invalidGroupsErrorMessageEnumValues;
-  static InvalidGroupsErrorMessageEnum valueOf(String name) => _$invalidGroupsErrorMessageEnumValueOf(name);
+  static BuiltSet<InvalidGroupsErrorMessageEnum> get values =>
+      _$invalidGroupsErrorMessageEnumValues;
+  static InvalidGroupsErrorMessageEnum valueOf(String name) =>
+      _$invalidGroupsErrorMessageEnumValueOf(name);
 }
 
 class InvalidGroupsErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const InvalidGroupsErrorHttpStatusCodeEnum number400 = _$invalidGroupsErrorHttpStatusCodeEnum_number400;
+  static const InvalidGroupsErrorHttpStatusCodeEnum number400 =
+      _$invalidGroupsErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<InvalidGroupsErrorHttpStatusCodeEnum> get serializer => _$invalidGroupsErrorHttpStatusCodeEnumSerializer;
+  static Serializer<InvalidGroupsErrorHttpStatusCodeEnum> get serializer =>
+      _$invalidGroupsErrorHttpStatusCodeEnumSerializer;
 
-  const InvalidGroupsErrorHttpStatusCodeEnum._(String name): super(name);
+  const InvalidGroupsErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<InvalidGroupsErrorHttpStatusCodeEnum> get values => _$invalidGroupsErrorHttpStatusCodeEnumValues;
-  static InvalidGroupsErrorHttpStatusCodeEnum valueOf(String name) => _$invalidGroupsErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<InvalidGroupsErrorHttpStatusCodeEnum> get values =>
+      _$invalidGroupsErrorHttpStatusCodeEnumValues;
+  static InvalidGroupsErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$invalidGroupsErrorHttpStatusCodeEnumValueOf(name);
 }
-

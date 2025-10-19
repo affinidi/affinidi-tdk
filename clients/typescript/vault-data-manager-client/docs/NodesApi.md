@@ -18,7 +18,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
 # **createChildNode**
 
-> CreateNodeOK createChildNode(createNodeInput)
+> CreateNodeOK createChildNode(createChildNodeInput)
 
 creates child node
 
@@ -28,27 +28,27 @@ creates child node
 import {
   NodesApi,
   Configuration,
-  CreateNodeInput,
+  CreateChildNodeInput,
 } from '@affinidi-tdk/vault-data-manager-client'
 
 const configuration = new Configuration()
 const apiInstance = new NodesApi(configuration)
 
-let createNodeInput: CreateNodeInput //CreateNode
-let parentNodeId: string //parent node id (optional) (default to undefined)
+let nodeId: string //parent node id (default to undefined)
+let createChildNodeInput: CreateChildNodeInput //CreateChildNode
 
 const { status, data } = await apiInstance.createChildNode(
-  createNodeInput,
-  parentNodeId,
+  nodeId,
+  createChildNodeInput,
 )
 ```
 
 ### Parameters
 
-| Name                | Type                | Description    | Notes                            |
-| ------------------- | ------------------- | -------------- | -------------------------------- |
-| **createNodeInput** | **CreateNodeInput** | CreateNode     |                                  |
-| **parentNodeId**    | [**string**]        | parent node id | (optional) defaults to undefined |
+| Name                     | Type                     | Description     | Notes                 |
+| ------------------------ | ------------------------ | --------------- | --------------------- |
+| **createChildNodeInput** | **CreateChildNodeInput** | CreateChildNode |                       |
+| **nodeId**               | [**string**]             | parent node id  | defaults to undefined |
 
 ### Return type
 

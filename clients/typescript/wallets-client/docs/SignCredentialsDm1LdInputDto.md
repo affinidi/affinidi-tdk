@@ -8,6 +8,7 @@ DTO contains params to sign credential
 | ---------------------- | ----------- | --------------------------------- | --------------------------------- |
 | **unsignedCredential** | **object**  | Unsigned Credential in Dm1 format | [default to undefined]            |
 | **revocable**          | **boolean** |                                   | [optional] [default to undefined] |
+| **signatureScheme**    | **string**  |                                   | [optional] [default to undefined] |
 
 ## Example
 
@@ -17,6 +18,7 @@ import { SignCredentialsDm1LdInputDto } from '@affinidi-tdk/wallets-client'
 const instance: SignCredentialsDm1LdInputDto = {
   unsignedCredential,
   revocable,
+  signatureScheme,
 }
 ```
 

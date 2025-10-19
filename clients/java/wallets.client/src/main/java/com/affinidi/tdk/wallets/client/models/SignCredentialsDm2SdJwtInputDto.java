@@ -32,7 +32,8 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL,
   SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_REVOCABLE,
-  SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_DISCLOSURE_FRAME
+  SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_DISCLOSURE_FRAME,
+  SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_SIGNATURE_SCHEME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialsDm2SdJwtInputDto {
@@ -47,6 +48,47 @@ public class SignCredentialsDm2SdJwtInputDto {
   public static final String JSON_PROPERTY_DISCLOSURE_FRAME = "disclosureFrame";
   @javax.annotation.Nonnull
   private Object disclosureFrame;
+
+  /**
+   * Gets or Sets signatureScheme
+   */
+  public enum SignatureSchemeEnum {
+    ECDSA_SECP256K1_SHA256(String.valueOf("ecdsa_secp256k1_sha256")),
+    
+    ECDSA_P256_SHA256(String.valueOf("ecdsa_p256_sha256")),
+    
+    ED25519(String.valueOf("ed25519"));
+
+    private String value;
+
+    SignatureSchemeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SignatureSchemeEnum fromValue(String value) {
+      for (SignatureSchemeEnum b : SignatureSchemeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_SIGNATURE_SCHEME = "signatureScheme";
+  @javax.annotation.Nullable
+  private SignatureSchemeEnum signatureScheme;
 
   public SignCredentialsDm2SdJwtInputDto() {
   }
@@ -126,6 +168,31 @@ public class SignCredentialsDm2SdJwtInputDto {
     this.disclosureFrame = disclosureFrame;
   }
 
+  public SignCredentialsDm2SdJwtInputDto signatureScheme(@javax.annotation.Nullable SignatureSchemeEnum signatureScheme) {
+    
+    this.signatureScheme = signatureScheme;
+    return this;
+  }
+
+  /**
+   * Get signatureScheme
+   * @return signatureScheme
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignatureSchemeEnum getSignatureScheme() {
+    return signatureScheme;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSignatureScheme(@javax.annotation.Nullable SignatureSchemeEnum signatureScheme) {
+    this.signatureScheme = signatureScheme;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -137,12 +204,13 @@ public class SignCredentialsDm2SdJwtInputDto {
     SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto = (SignCredentialsDm2SdJwtInputDto) o;
     return Objects.equals(this.unsignedCredential, signCredentialsDm2SdJwtInputDto.unsignedCredential) &&
         Objects.equals(this.revocable, signCredentialsDm2SdJwtInputDto.revocable) &&
-        Objects.equals(this.disclosureFrame, signCredentialsDm2SdJwtInputDto.disclosureFrame);
+        Objects.equals(this.disclosureFrame, signCredentialsDm2SdJwtInputDto.disclosureFrame) &&
+        Objects.equals(this.signatureScheme, signCredentialsDm2SdJwtInputDto.signatureScheme);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unsignedCredential, revocable, disclosureFrame);
+    return Objects.hash(unsignedCredential, revocable, disclosureFrame, signatureScheme);
   }
 
   @Override
@@ -152,6 +220,7 @@ public class SignCredentialsDm2SdJwtInputDto {
     sb.append("    unsignedCredential: ").append(toIndentedString(unsignedCredential)).append("\n");
     sb.append("    revocable: ").append(toIndentedString(revocable)).append("\n");
     sb.append("    disclosureFrame: ").append(toIndentedString(disclosureFrame)).append("\n");
+    sb.append("    signatureScheme: ").append(toIndentedString(signatureScheme)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -223,6 +292,16 @@ public class SignCredentialsDm2SdJwtInputDto {
     if (getDisclosureFrame() != null) {
       try {
         joiner.add(String.format("%sdisclosureFrame%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDisclosureFrame()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `signatureScheme` to the URL query string
+    if (getSignatureScheme() != null) {
+      try {
+        joiner.add(String.format("%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

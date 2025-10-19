@@ -4,7 +4,6 @@
 
 import 'dart:async';
 
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -12,13 +11,11 @@ import 'package:affinidi_tdk_vault_data_manager_client/src/api_util.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_input.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/create_account_ok.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/delete_account_dto.dart';
-import 'package:affinidi_tdk_vault_data_manager_client/src/model/invalid_parameter_error.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/list_accounts_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_dto.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/src/model/update_account_input.dart';
 
 class AccountsApi {
-
   final Dio _dio;
 
   final Serializers _serializers;
@@ -39,7 +36,7 @@ class AccountsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CreateAccountOK] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CreateAccountOK>> createAccount({ 
+  Future<Response<CreateAccountOK>> createAccount({
     required CreateAccountInput createAccountInput,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -73,11 +70,11 @@ class AccountsApi {
 
     try {
       const _type = FullType(CreateAccountInput);
-      _bodyData = _serializers.serialize(createAccountInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(createAccountInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -100,11 +97,12 @@ class AccountsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CreateAccountOK),
-      ) as CreateAccountOK;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(CreateAccountOK),
+            ) as CreateAccountOK;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -131,7 +129,7 @@ class AccountsApi {
   /// Delete account.
   ///
   /// Parameters:
-  /// * [accountIndex] 
+  /// * [accountIndex]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -141,7 +139,7 @@ class AccountsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [DeleteAccountDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<DeleteAccountDto>> deleteAccount({ 
+  Future<Response<DeleteAccountDto>> deleteAccount({
     required int accountIndex,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -150,7 +148,10 @@ class AccountsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/accounts/{accountIndex}'.replaceAll('{' r'accountIndex' '}', encodeQueryParameter(_serializers, accountIndex, const FullType(int)).toString());
+    final _path = r'/v1/accounts/{accountIndex}'.replaceAll(
+        '{' r'accountIndex' '}',
+        encodeQueryParameter(_serializers, accountIndex, const FullType(int))
+            .toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -182,11 +183,12 @@ class AccountsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(DeleteAccountDto),
-      ) as DeleteAccountDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(DeleteAccountDto),
+            ) as DeleteAccountDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -224,7 +226,7 @@ class AccountsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [ListAccountsDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ListAccountsDto>> listAccounts({ 
+  Future<Response<ListAccountsDto>> listAccounts({
     int? limit = 50,
     String? exclusiveStartKey,
     CancelToken? cancelToken,
@@ -255,8 +257,12 @@ class AccountsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
-      if (exclusiveStartKey != null) r'exclusiveStartKey': encodeQueryParameter(_serializers, exclusiveStartKey, const FullType(String)),
+      if (limit != null)
+        r'limit':
+            encodeQueryParameter(_serializers, limit, const FullType(int)),
+      if (exclusiveStartKey != null)
+        r'exclusiveStartKey': encodeQueryParameter(
+            _serializers, exclusiveStartKey, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(
@@ -272,11 +278,12 @@ class AccountsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ListAccountsDto),
-      ) as ListAccountsDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(ListAccountsDto),
+            ) as ListAccountsDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -303,7 +310,7 @@ class AccountsApi {
   /// Update account.
   ///
   /// Parameters:
-  /// * [accountIndex] 
+  /// * [accountIndex]
   /// * [updateAccountInput] - UpdateAccount
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -314,7 +321,7 @@ class AccountsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [UpdateAccountDto] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<UpdateAccountDto>> updateAccount({ 
+  Future<Response<UpdateAccountDto>> updateAccount({
     required int accountIndex,
     required UpdateAccountInput updateAccountInput,
     CancelToken? cancelToken,
@@ -324,7 +331,10 @@ class AccountsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v1/accounts/{accountIndex}'.replaceAll('{' r'accountIndex' '}', encodeQueryParameter(_serializers, accountIndex, const FullType(int)).toString());
+    final _path = r'/v1/accounts/{accountIndex}'.replaceAll(
+        '{' r'accountIndex' '}',
+        encodeQueryParameter(_serializers, accountIndex, const FullType(int))
+            .toString());
     final _options = Options(
       method: r'PUT',
       headers: <String, dynamic>{
@@ -349,11 +359,11 @@ class AccountsApi {
 
     try {
       const _type = FullType(UpdateAccountInput);
-      _bodyData = _serializers.serialize(updateAccountInput, specifiedType: _type);
-
-    } catch(error, stackTrace) {
+      _bodyData =
+          _serializers.serialize(updateAccountInput, specifiedType: _type);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -376,11 +386,12 @@ class AccountsApi {
 
     try {
       final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(UpdateAccountDto),
-      ) as UpdateAccountDto;
-
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(UpdateAccountDto),
+            ) as UpdateAccountDto;
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -402,5 +413,4 @@ class AccountsApi {
       extra: _response.extra,
     );
   }
-
 }

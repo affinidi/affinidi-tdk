@@ -13,13 +13,14 @@ part 'unauthorized_error.g.dart';
 /// UnauthorizedError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class UnauthorizedError implements Built<UnauthorizedError, UnauthorizedErrorBuilder> {
+abstract class UnauthorizedError
+    implements Built<UnauthorizedError, UnauthorizedErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   UnauthorizedErrorNameEnum get name;
   // enum nameEnum {  UnauthorizedError,  };
@@ -40,16 +41,19 @@ abstract class UnauthorizedError implements Built<UnauthorizedError, Unauthorize
 
   UnauthorizedError._();
 
-  factory UnauthorizedError([void updates(UnauthorizedErrorBuilder b)]) = _$UnauthorizedError;
+  factory UnauthorizedError([void updates(UnauthorizedErrorBuilder b)]) =
+      _$UnauthorizedError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(UnauthorizedErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<UnauthorizedError> get serializer => _$UnauthorizedErrorSerializer();
+  static Serializer<UnauthorizedError> get serializer =>
+      _$UnauthorizedErrorSerializer();
 }
 
-class _$UnauthorizedErrorSerializer implements PrimitiveSerializer<UnauthorizedError> {
+class _$UnauthorizedErrorSerializer
+    implements PrimitiveSerializer<UnauthorizedError> {
   @override
   final Iterable<Type> types = const [UnauthorizedError, _$UnauthorizedError];
 
@@ -85,7 +89,8 @@ class _$UnauthorizedErrorSerializer implements PrimitiveSerializer<UnauthorizedE
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +101,9 @@ class _$UnauthorizedErrorSerializer implements PrimitiveSerializer<UnauthorizedE
     UnauthorizedError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -142,7 +149,8 @@ class _$UnauthorizedErrorSerializer implements PrimitiveSerializer<UnauthorizedE
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(InvalidParameterErrorDetailsInner)]),
           ) as BuiltList<InvalidParameterErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +184,49 @@ class _$UnauthorizedErrorSerializer implements PrimitiveSerializer<UnauthorizedE
 }
 
 class UnauthorizedErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'UnauthorizedError')
-  static const UnauthorizedErrorNameEnum unauthorizedError = _$unauthorizedErrorNameEnum_unauthorizedError;
+  static const UnauthorizedErrorNameEnum unauthorizedError =
+      _$unauthorizedErrorNameEnum_unauthorizedError;
 
-  static Serializer<UnauthorizedErrorNameEnum> get serializer => _$unauthorizedErrorNameEnumSerializer;
+  static Serializer<UnauthorizedErrorNameEnum> get serializer =>
+      _$unauthorizedErrorNameEnumSerializer;
 
-  const UnauthorizedErrorNameEnum._(String name): super(name);
+  const UnauthorizedErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<UnauthorizedErrorNameEnum> get values => _$unauthorizedErrorNameEnumValues;
-  static UnauthorizedErrorNameEnum valueOf(String name) => _$unauthorizedErrorNameEnumValueOf(name);
+  static BuiltSet<UnauthorizedErrorNameEnum> get values =>
+      _$unauthorizedErrorNameEnumValues;
+  static UnauthorizedErrorNameEnum valueOf(String name) =>
+      _$unauthorizedErrorNameEnumValueOf(name);
 }
 
 class UnauthorizedErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Unauthorized')
-  static const UnauthorizedErrorMessageEnum unauthorized = _$unauthorizedErrorMessageEnum_unauthorized;
+  static const UnauthorizedErrorMessageEnum unauthorized =
+      _$unauthorizedErrorMessageEnum_unauthorized;
 
-  static Serializer<UnauthorizedErrorMessageEnum> get serializer => _$unauthorizedErrorMessageEnumSerializer;
+  static Serializer<UnauthorizedErrorMessageEnum> get serializer =>
+      _$unauthorizedErrorMessageEnumSerializer;
 
-  const UnauthorizedErrorMessageEnum._(String name): super(name);
+  const UnauthorizedErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<UnauthorizedErrorMessageEnum> get values => _$unauthorizedErrorMessageEnumValues;
-  static UnauthorizedErrorMessageEnum valueOf(String name) => _$unauthorizedErrorMessageEnumValueOf(name);
+  static BuiltSet<UnauthorizedErrorMessageEnum> get values =>
+      _$unauthorizedErrorMessageEnumValues;
+  static UnauthorizedErrorMessageEnum valueOf(String name) =>
+      _$unauthorizedErrorMessageEnumValueOf(name);
 }
 
 class UnauthorizedErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 401)
-  static const UnauthorizedErrorHttpStatusCodeEnum number401 = _$unauthorizedErrorHttpStatusCodeEnum_number401;
+  static const UnauthorizedErrorHttpStatusCodeEnum number401 =
+      _$unauthorizedErrorHttpStatusCodeEnum_number401;
 
-  static Serializer<UnauthorizedErrorHttpStatusCodeEnum> get serializer => _$unauthorizedErrorHttpStatusCodeEnumSerializer;
+  static Serializer<UnauthorizedErrorHttpStatusCodeEnum> get serializer =>
+      _$unauthorizedErrorHttpStatusCodeEnumSerializer;
 
-  const UnauthorizedErrorHttpStatusCodeEnum._(String name): super(name);
+  const UnauthorizedErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<UnauthorizedErrorHttpStatusCodeEnum> get values => _$unauthorizedErrorHttpStatusCodeEnumValues;
-  static UnauthorizedErrorHttpStatusCodeEnum valueOf(String name) => _$unauthorizedErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<UnauthorizedErrorHttpStatusCodeEnum> get values =>
+      _$unauthorizedErrorHttpStatusCodeEnumValues;
+  static UnauthorizedErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$unauthorizedErrorHttpStatusCodeEnumValueOf(name);
 }
-
