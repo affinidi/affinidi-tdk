@@ -11,7 +11,7 @@ class MockMediator {
   final requestController = StreamController<DidcommMessage>();
   final responseControllers =
       <String, StreamController<Map<String, dynamic>>>{};
-  final clients = <DidKeyManager, MockDidcommMediatorClient>{};
+  final clients = <DidManager, MockDidcommMediatorClient>{};
 
   MockMediator({
     required this.didManager,
@@ -78,7 +78,7 @@ class MockMediator {
   }
 
   Future<void> addClientForDidManager(
-    DidKeyManager clientDidManager,
+    DidManager clientDidManager,
   ) async {
     final clientDidDocument = await clientDidManager.getDidDocument();
     final clientDidKeyId = clientDidDocument.keyAgreement.first.id;

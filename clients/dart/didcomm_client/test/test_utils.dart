@@ -29,11 +29,16 @@ Future<LdVcDataModelV1> generateEmailLdVcV1({
   );
 
   final suite = LdVcDm1Suite();
+
   final issuedCredential = await suite.issue(
     unsignedData: unsignedCredential,
-    proofGenerator: DataIntegrityEcdsaJcsGenerator(
-      signer: issuerSigner,
-    ),
+    proofGenerator: issuerSigner.signatureScheme == SignatureScheme.ed25519
+        ? DataIntegrityEddsaJcsGenerator(
+            signer: issuerSigner,
+          )
+        : DataIntegrityEcdsaJcsGenerator(
+            signer: issuerSigner,
+          ),
   );
 
   return issuedCredential;
@@ -75,3 +80,31 @@ ProblemReportMessage createProblemReportMessage({
         ),
       ),
     );
+
+Future<DidManager> createDidManager({
+  required String didMethod,
+  required KeyType keyType,
+}) async {
+  final wallet = PersistentWallet(InMemoryKeyStore());
+  final keyPair = await wallet.generateKey(keyType: keyType);
+
+  final didManager = didMethod == 'did:key'
+      ? DidKeyManager(
+          store: InMemoryDidStore(),
+          wallet: wallet,
+        )
+      : DidPeerManager(
+          store: InMemoryDidStore(),
+          wallet: wallet,
+        );
+
+  await didManager.addVerificationMethod(keyPair.id);
+
+  if (didMethod == 'did:peer') {
+    await didManager.addKeyAgreement(keyPair.id);
+    await didManager.addAuthentication(keyPair.id);
+    await didManager.addAssertionMethod(keyPair.id);
+  }
+
+  return didManager;
+}
