@@ -25,7 +25,7 @@ Future<void> main() async {
     mediatorDid,
   );
 
-  group('VDSP holder and verifier clients Integration Tests', () {
+  group('VDSP Holder and Verifier Clients Integration Tests', () {
     late String holderEmail;
 
     late String verifierDomain;

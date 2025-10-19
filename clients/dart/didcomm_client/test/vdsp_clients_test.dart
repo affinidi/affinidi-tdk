@@ -10,9 +10,10 @@ import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
 import 'mock_mediator.dart';
+import 'test_utils.dart';
 
 Future<void> main() async {
-  group('VDSP holder and verifier clients Integration Tests', () {
+  group('VDSP Holder and Verifier Clients Unit Tests', () {
     late String holderEmail;
 
     late String verifierDomain;
@@ -95,269 +96,164 @@ Future<void> main() async {
         holderDidManager.assertionMethod.first,
       );
 
-      holderVerifiableCredentials = await Future.wait(
-        [
-          VcDataModelV1(
-            context: [
-              dmV1ContextUrl,
-              'https://schema.affinidi.io/TEmailV1R0.jsonld'
-            ],
-            credentialSchema: [
-              CredentialSchema(
-                id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
-                type: 'JsonSchemaValidator2018',
-              ),
-            ],
-            id: Uri.parse(const Uuid().v4()),
-            issuer: Issuer.uri(issuerSigner.did),
-            type: {'VerifiableCredential', 'Email'},
-            issuanceDate: DateTime.now().toUtc(),
-            credentialSubject: [
-              CredentialSubject.fromJson({
-                'id': holderSigner.did,
-                'email': holderEmail,
-              }),
-            ],
-          ),
-        ].map(
-          (unsignedCredential) async {
-            final suite = LdVcDm1Suite();
-            final issuedCredential = await suite.issue(
-              unsignedData: unsignedCredential,
-              proofGenerator: DataIntegrityEcdsaJcsGenerator(
-                signer: issuerSigner,
-              ),
-            );
-
-            return issuedCredential;
-          },
+      holderVerifiableCredentials = [
+        await generateEmailLdVcV1(
+          holderDid: holderSigner.did,
+          holderEmail: holderEmail,
+          issuerSigner: issuerSigner,
         ),
-      );
+      ];
 
-      verifierDcql = DcqlCredentialQuery(
-        credentials: [
-          DcqlCredential(
-            id: const Uuid().v4(),
-            format: CredentialFormat.ldpVc,
-            claims: [
-              DcqlClaim(
-                path: [
-                  'credentialSubject',
-                  'email',
-                ],
-              ),
-            ],
-          ),
-        ],
+      verifierDcql = createDataQuery(
+        format: CredentialFormat.ldpVc,
+        path: ['credentialSubject', 'email'],
       );
     });
 
-    test('VDSP works correctly', () async {
-      final testCompleter = Completer<PlainTextMessage>();
+    for (final verifiablePresentationProofSuite in [
+      DataIntegrityProofSuite.ecdsa_jcs_2019,
+      // DataIntegrityProofSuite.eddsa_jcs_2022,
+      // DataIntegrityProofSuite.ecdsa_rdfc_2019,
+      // DataIntegrityProofSuite.eddsa_rdfc_2022
+    ]) {
+      group(verifiablePresentationProofSuite.value, () {
+        test('VDSP works correctly', () async {
+          final testCompleter = Completer<PlainTextMessage>();
 
-      final verifierClient = VdspVerifierClient(
-        didManager: verifierDidManager,
-        mediatorClient: mockMediator.clients[verifierDidManager]!,
-      );
-
-      await verifierClient.queryHolderFeatures(
-        holderDid: (await holderDidManager.getDidDocument()).id,
-        featureQueries: [
-          ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-            FeatureDiscoveryHelper.vdspHolderDisclosures,
-          ),
-          Query(
-            featureType: FeatureType.operation.value,
-            match: 'registerAgent',
-          ),
-        ],
-      );
-
-      verifierClient.listenForIncomingMessages(
-        onDiscloseMessage: (message) async {
-          if (message.from == null) {
-            throw ArgumentError.notNull('from');
-          }
-
-          if (message.body == null) {
-            throw ArgumentError.notNull('body');
-          }
-
-          final holderDid = message.from!;
-          final body = DiscloseBody.fromJson(message.body!);
-
-          final expectedFeatures = [
-            ...FeatureDiscoveryHelper.vdspHolderDisclosures,
-            Disclosure(
-              featureType: FeatureType.operation.value,
-              id: 'registerAgent',
-            ),
-          ];
-
-          final unsupportedFeatureDisclosures =
-              FeatureDiscoveryHelper.getUnsupportedFeatures(
-            expectedFeatureDisclosures: expectedFeatures,
-            actualFeatureDisclosures: body.disclosures,
+          final verifierClient = VdspVerifierClient(
+            didManager: verifierDidManager,
+            mediatorClient: mockMediator.clients[verifierDidManager]!,
           );
 
-          if (unsupportedFeatureDisclosures.isNotEmpty) {
-            await verifierClient.mediatorClient.packAndSendMessage(
-              ProblemReportMessage(
-                id: const Uuid().v4(),
-                to: [message.from!],
-                parentThreadId: message.threadId ?? message.id,
-                body: ProblemReportBody(
-                  code: ProblemCode(
-                    sorter: SorterType.warning,
-                    scope: Scope(scope: ScopeType.message),
-                    descriptors: [
-                      'vdsp',
-                      'features-not-supported',
-                    ],
+          await verifierClient.queryHolderFeatures(
+            holderDid: (await holderDidManager.getDidDocument()).id,
+            featureQueries:
+                FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+              FeatureDiscoveryHelper.vdspHolderDisclosures,
+            ),
+          );
+
+          verifierClient.listenForIncomingMessages(
+            onDiscloseMessage: (message) async {
+              final holderDid = message.from!;
+              final body = DiscloseBody.fromJson(message.body!);
+
+              final unsupportedFeatureDisclosures =
+                  FeatureDiscoveryHelper.getUnsupportedFeatures(
+                expectedFeatureDisclosures:
+                    FeatureDiscoveryHelper.vdspHolderDisclosures,
+                actualFeatureDisclosures: body.disclosures,
+              );
+
+              if (unsupportedFeatureDisclosures.isNotEmpty) {
+                await verifierClient.mediatorClient.packAndSendMessage(
+                  createProblemReportMessage(
+                    message: message,
                   ),
+                );
+
+                return;
+              }
+
+              await verifierClient.queryHolderData(
+                holderDid: holderDid,
+                dcqlQuery: verifierDcql,
+                proofContext: VdspQueryDataProofContext(
+                  challenge: verifierChallenge,
+                  domain: verifierDomain,
                 ),
-              ),
-            );
+              );
+            },
+            onDataResponse: ({
+              required VdspDataResponseMessage message,
+              required bool presentationAndCredentialsAreValid,
+              VerifiablePresentation? verifiablePresentation,
+              required VerificationResult presentationVerificationResult,
+              required List<VerificationResult> credentialVerificationResults,
+            }) async {
+              final result = presentationAndCredentialsAreValid &&
+                  verifiablePresentation?.proof.first.challenge ==
+                      verifierChallenge &&
+                  verifiablePresentation!.proof.first.domain?.first ==
+                      verifierDomain;
 
-            return;
-          }
-
-          await verifierClient.queryHolderData(
-            holderDid: holderDid,
-            dcqlQuery: verifierDcql,
-            operation: 'registerAgent',
-            proofContext: VdspQueryDataProofContext(
-              challenge: verifierChallenge,
-              domain: verifierDomain,
-            ),
-          );
-        },
-        onDataResponse: ({
-          required VdspDataResponseMessage message,
-          required bool presentationAndCredentialsAreValid,
-          VerifiablePresentation? verifiablePresentation,
-          required VerificationResult presentationVerificationResult,
-          required List<VerificationResult> credentialVerificationResults,
-        }) async {
-          if (message.from == null) {
-            throw ArgumentError.notNull('from');
-          }
-
-          final result = presentationAndCredentialsAreValid &&
-              verifiablePresentation?.proof.first.challenge ==
-                  verifierChallenge &&
-              verifiablePresentation!.proof.first.domain?.first ==
-                  verifierDomain;
-
-          await verifierClient.sendDataProcessingResult(
-            holderDid: message.from!,
-            result: {
-              'success': result,
-              'email': verifiablePresentation
-                  ?.verifiableCredential.first.credentialSubject.first['email'],
+              await verifierClient.sendDataProcessingResult(
+                holderDid: message.from!,
+                result: {
+                  'success': result,
+                  'email': verifiablePresentation?.verifiableCredential.first
+                      .credentialSubject.first['email'],
+                },
+              );
+            },
+            onProblemReport: (message) async {
+              testCompleter.complete(message);
+              await mockMediator.stopConnections();
             },
           );
-        },
-        onProblemReport: (message) async {
-          testCompleter.complete(message);
-          await mockMediator.stopConnections();
-        },
-      );
 
-      final holderClient = VdspHolderClient(
-        didManager: holderDidManager,
-        mediatorClient: mockMediator.clients[holderDidManager]!,
-        featureDisclosures: [
-          ...FeatureDiscoveryHelper.vdspHolderDisclosures,
-          Disclosure(
-            featureType: FeatureType.operation.value,
-            id: 'registerAgent',
-          ),
-        ],
-      );
-
-      holderClient.listenForIncomingMessages(
-        onFeatureQuery: (message) async {
-          final disclosures = holderClient.getDisclosures(
-            queryMessage: message,
+          final holderClient = VdspHolderClient(
+            didManager: holderDidManager,
+            mediatorClient: mockMediator.clients[holderDidManager]!,
+            featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
           );
 
-          // here you can check if those are the right disclosures to share
+          holderClient.listenForIncomingMessages(
+            onFeatureQuery: (message) async {
+              final disclosures = holderClient.getDisclosures(
+                queryMessage: message,
+              );
 
-          await holderClient.disclose(
-            queryMessage: message,
-            disclosures: disclosures,
-          );
-        },
-        onDataRequest: (message) async {
-          final queryResult = await holderClient.filterVerifiableCredentials(
-            requestMessage: message,
-            verifiableCredentials: holderVerifiableCredentials,
-          );
+              await holderClient.disclose(
+                queryMessage: message,
+                disclosures: disclosures,
+              );
+            },
+            onDataRequest: (message) async {
+              final queryResult =
+                  await holderClient.filterVerifiableCredentials(
+                requestMessage: message,
+                verifiableCredentials: holderVerifiableCredentials,
+              );
 
-          if (queryResult.dcqlResult?.fulfilled == false) {
-            if (message.from == null) {
-              throw ArgumentError.notNull('message.from');
-            }
-
-            await holderClient.mediatorClient.packAndSendMessage(
-              ProblemReportMessage(
-                id: const Uuid().v4(),
-                to: [message.from!],
-                parentThreadId: message.threadId ?? message.id,
-                body: ProblemReportBody(
-                  code: ProblemCode(
-                    sorter: SorterType.warning,
-                    scope: Scope(scope: ScopeType.message),
-                    descriptors: [
-                      'vdsp',
-                      'data-not-found',
-                    ],
+              if (queryResult.dcqlResult?.fulfilled == false) {
+                await holderClient.mediatorClient.packAndSendMessage(
+                  createProblemReportMessage(
+                    message: message,
                   ),
-                ),
-              ),
-            );
+                );
 
-            return;
-          }
+                return;
+              }
 
-          await holderClient.shareData(
-            requestMessage: message,
-            verifiableCredentials: queryResult.verifiableCredentials,
-            verifiablePresentationSigner: holderSigner,
-            verifiablePresentationProofSuite:
-                DataIntegrityProofSuite.ecdsa_jcs_2019,
+              await holderClient.shareData(
+                requestMessage: message,
+                verifiableCredentials: queryResult.verifiableCredentials,
+                verifiablePresentationSigner: holderSigner,
+                verifiablePresentationProofSuite:
+                    verifiablePresentationProofSuite,
+              );
+            },
+            onDataProcessingResult: (message) async {
+              testCompleter.complete(message);
+              await mockMediator.stopConnections();
+            },
+            onProblemReport: (message) async {
+              testCompleter.complete(message);
+              await mockMediator.stopConnections();
+            },
           );
-        },
-        onDataProcessingResult: (message) async {
-          testCompleter.complete(message);
-          await mockMediator.stopConnections();
-        },
-        onProblemReport: (message) async {
-          testCompleter.complete(message);
-          await mockMediator.stopConnections();
-        },
-      );
 
-      await mockMediator.startConnections();
+          await mockMediator.startConnections();
 
-      final actual = await testCompleter.future;
-      final actualResult = actual.body?['result'] as Map<String, dynamic>?;
+          final actual = await testCompleter.future;
+          final actualResult = actual.body?['result'] as Map<String, dynamic>?;
 
-      expect(
-        actual,
-        isA<VdspDataProcessingResultMessage>(),
-      );
-
-      expect(
-        actualResult?['email'],
-        holderEmail,
-      );
-
-      expect(
-        actualResult?['success'],
-        isTrue,
-      );
-    });
+          expect(actual, isA<VdspDataProcessingResultMessage>());
+          expect(actualResult?['email'], holderEmail);
+          expect(actualResult?['success'], isTrue);
+        });
+      });
+    }
   });
 }
