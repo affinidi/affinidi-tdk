@@ -96,9 +96,8 @@ class VdipHolderClient {
 
   /// Request credentials using type-safe parameters.
   ///
-  /// Use [RequestCredentialsParams.byProposalId] when you only have proposalId.
-  /// Use [RequestCredentialsParams.byProposalIdFor] when you know want the fixed holder,need to provide
-  /// both holderDid and assertion together.
+  /// Use [RequestCredentialsParams.byProposalId] to request credential by [RequestCredentialsParams.proposalId].
+  /// Use [RequestCredentialsParams.byProposalIdFor] to request credential by [RequestCredentialsParams.proposalId] for a specific holder [forDid], its ownership should be proven with the assertion.
   ///
   /// Example:
   /// ```dart
