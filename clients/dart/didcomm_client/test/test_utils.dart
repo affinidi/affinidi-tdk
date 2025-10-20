@@ -1,3 +1,5 @@
+import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
+    hide CredentialFormat;
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
@@ -107,4 +109,31 @@ Future<DidManager> createDidManager({
   }
 
   return didManager;
+}
+
+Future<EncryptedMessage> createdEncryptedDataResponseMessage({
+  required DidManager verifierDidManager,
+  required DidManager holderDidManager,
+  String? from,
+  Map<String, dynamic>? body,
+}) async {
+  final verifierDidDocument = await verifierDidManager.getDidDocument();
+  final holderDidDocument = await holderDidManager.getDidDocument();
+
+  final message = VdspDataResponseMessage(
+    id: const Uuid().v4(),
+    from: from,
+    to: [verifierDidDocument.id],
+    body: body,
+  );
+
+  return await DidcommMessage.packIntoEncryptedMessage(
+    message,
+    keyPair: await holderDidManager
+        .getKeyPairByDidKeyId(holderDidDocument.keyAgreement.first.id),
+    didKeyId: holderDidDocument.keyAgreement.first.id,
+    encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+    keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+    recipientDidDocuments: [verifierDidDocument],
+  );
 }

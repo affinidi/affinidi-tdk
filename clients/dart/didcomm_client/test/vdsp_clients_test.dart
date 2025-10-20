@@ -254,5 +254,111 @@ Future<void> main() async {
         }
       });
     }
+
+    group('Can handle errors', () {
+      late DidDocument verifierDidDocument;
+      late DidDocument holderDidDocument;
+
+      void emptyCallback({
+        required credentialVerificationResults,
+        required message,
+        required presentationAndCredentialsAreValid,
+        required presentationVerificationResult,
+        verifiablePresentation,
+      }) {}
+
+      setUp(() async {
+        verifierDidManager = await createDidManager(
+          didMethod: 'did:key',
+          keyType: KeyType.p256,
+        );
+
+        holderDidManager = await createDidManager(
+          didMethod: 'did:key',
+          keyType: KeyType.p256,
+        );
+
+        mockMediator = await MockMediator.init(
+          keyType: KeyType.p256,
+        );
+
+        await mockMediator.addClientForDidManager(verifierDidManager);
+        await mockMediator.addClientForDidManager(holderDidManager);
+
+        verifierDidDocument = await verifierDidManager.getDidDocument();
+        holderDidDocument = await holderDidManager.getDidDocument();
+      });
+
+      group('VDSP Verifier Client', () {
+        test('should fail if from header is missing', () async {
+          final completer = Completer<Object>();
+
+          // Simulate an invalid message format
+          final encryptedMessage = await createdEncryptedDataResponseMessage(
+            verifierDidManager: verifierDidManager,
+            holderDidManager: holderDidManager,
+          );
+
+          final sut = VdspVerifierClient(
+            didManager: verifierDidManager,
+            mediatorClient: mockMediator.clients[verifierDidManager]!,
+          );
+
+          sut.listenForIncomingMessages(
+            onDataResponse: emptyCallback,
+            onError: (Object error) {
+              completer.complete(error);
+            },
+          );
+
+          mockMediator.responseControllers[verifierDidDocument.id]!.add(
+            encryptedMessage.toJson(),
+          );
+
+          final actual = await completer.future;
+
+          expect(actual, isA<ArgumentError>());
+          expect(
+            actual.toString(),
+            contains('from header in a Plain Text Message does not match'),
+          );
+        });
+
+        test('should fail if body header is missing', () async {
+          final completer = Completer<Object>();
+
+          // Simulate an invalid message format
+          final encryptedMessage = await createdEncryptedDataResponseMessage(
+            verifierDidManager: verifierDidManager,
+            holderDidManager: holderDidManager,
+            from: holderDidDocument.id,
+          );
+
+          final sut = VdspVerifierClient(
+            didManager: verifierDidManager,
+            mediatorClient: mockMediator.clients[verifierDidManager]!,
+          );
+
+          sut.listenForIncomingMessages(
+            onDataResponse: emptyCallback,
+            onError: (Object error) {
+              completer.complete(error);
+            },
+          );
+
+          mockMediator.responseControllers[verifierDidDocument.id]!.add(
+            encryptedMessage.toJson(),
+          );
+
+          final actual = await completer.future;
+
+          expect(actual, isA<ArgumentError>());
+          expect(
+            actual.toString(),
+            contains('(responseMessage.body): Must not be null'),
+          );
+        });
+      });
+    });
   });
 }

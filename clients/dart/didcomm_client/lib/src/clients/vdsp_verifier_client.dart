@@ -132,102 +132,111 @@ class VdspVerifierClient {
   }) {
     return mediatorClient.listenForIncomingMessages(
       (message) async {
-        final unpacked = await DidcommMessage.unpackToPlainTextMessage(
-          message: message,
-          recipientDidManager: didManager,
-          expectedMessageWrappingTypes: [
-            MessageWrappingType.authcryptPlaintext,
-            MessageWrappingType.authcryptSignPlaintext,
-            MessageWrappingType.anoncryptAuthcryptPlaintext,
-          ],
-        );
-
-        final plainTextJson = unpacked.toJson();
-
-        if (onDiscloseMessage != null &&
-            unpacked.type == DiscloseMessage.messageType) {
-          onDiscloseMessage(
-            DiscloseMessage.fromJson(plainTextJson),
+        try {
+          final unpacked = await DidcommMessage.unpackToPlainTextMessage(
+            message: message,
+            recipientDidManager: didManager,
+            expectedMessageWrappingTypes: [
+              MessageWrappingType.authcryptPlaintext,
+              MessageWrappingType.authcryptSignPlaintext,
+              MessageWrappingType.anoncryptAuthcryptPlaintext,
+            ],
           );
 
-          return;
-        }
+          final plainTextJson = unpacked.toJson();
 
-        if (unpacked.type == VdspDataResponseMessage.messageType) {
-          final responseMessage = VdspDataResponseMessage(
-            id: unpacked.id,
-            from: unpacked.from,
-            to: unpacked.to,
-            createdTime: unpacked.createdTime,
-            expiresTime: unpacked.expiresTime,
-            threadId: unpacked.threadId,
-            body: unpacked.body,
-          );
+          if (onDiscloseMessage != null &&
+              unpacked.type == DiscloseMessage.messageType) {
+            onDiscloseMessage(
+              DiscloseMessage.fromJson(plainTextJson),
+            );
 
-          if (responseMessage.body == null) {
-            throw ArgumentError.notNull('responseMessage.body');
+            return;
           }
 
-          final body = VdspDataResponseBody.fromJson(responseMessage.body!);
-
-          final verifiablePresentation = UniversalPresentationParser.parse(
-            jsonEncode(body.dataResponse),
-          );
-
-          final universalPresentationVerifier = UniversalPresentationVerifier();
-          final universalCredentialVerifier = UniversalVerifier();
-
-          final presentationVerificationResult =
-              await universalPresentationVerifier.verify(
-            verifiablePresentation,
-          );
-
-          if (presentationVerificationResult.isValid) {
-            final credentialVerificationResults = await Future.wait(
-              verifiablePresentation.verifiableCredential.map(
-                universalCredentialVerifier.verify,
-              ),
+          if (unpacked.type == VdspDataResponseMessage.messageType) {
+            final responseMessage = VdspDataResponseMessage(
+              id: unpacked.id,
+              from: unpacked.from,
+              to: unpacked.to,
+              createdTime: unpacked.createdTime,
+              expiresTime: unpacked.expiresTime,
+              threadId: unpacked.threadId,
+              body: unpacked.body,
             );
 
-            final credentialsValid = credentialVerificationResults.every(
-              (result) => result.isValid,
+            if (responseMessage.body == null) {
+              throw ArgumentError.notNull('responseMessage.body');
+            }
+
+            final body = VdspDataResponseBody.fromJson(responseMessage.body!);
+
+            final verifiablePresentation = UniversalPresentationParser.parse(
+              jsonEncode(body.dataResponse),
             );
 
-            if (credentialsValid) {
-              onDataResponse(
-                message: responseMessage,
-                presentationAndCredentialsAreValid: true,
-                verifiablePresentation: verifiablePresentation,
-                presentationVerificationResult: presentationVerificationResult,
-                credentialVerificationResults: credentialVerificationResults,
+            final universalPresentationVerifier =
+                UniversalPresentationVerifier();
+            final universalCredentialVerifier = UniversalVerifier();
+
+            final presentationVerificationResult =
+                await universalPresentationVerifier.verify(
+              verifiablePresentation,
+            );
+
+            if (presentationVerificationResult.isValid) {
+              final credentialVerificationResults = await Future.wait(
+                verifiablePresentation.verifiableCredential.map(
+                  universalCredentialVerifier.verify,
+                ),
               );
+
+              final credentialsValid = credentialVerificationResults.every(
+                (result) => result.isValid,
+              );
+
+              if (credentialsValid) {
+                onDataResponse(
+                  message: responseMessage,
+                  presentationAndCredentialsAreValid: true,
+                  verifiablePresentation: verifiablePresentation,
+                  presentationVerificationResult:
+                      presentationVerificationResult,
+                  credentialVerificationResults: credentialVerificationResults,
+                );
+              } else {
+                onDataResponse(
+                  message: responseMessage,
+                  presentationAndCredentialsAreValid: false,
+                  presentationVerificationResult:
+                      presentationVerificationResult,
+                  credentialVerificationResults: credentialVerificationResults,
+                );
+              }
             } else {
               onDataResponse(
                 message: responseMessage,
                 presentationAndCredentialsAreValid: false,
                 presentationVerificationResult: presentationVerificationResult,
-                credentialVerificationResults: credentialVerificationResults,
+                credentialVerificationResults: [],
               );
             }
-          } else {
-            onDataResponse(
-              message: responseMessage,
-              presentationAndCredentialsAreValid: false,
-              presentationVerificationResult: presentationVerificationResult,
-              credentialVerificationResults: [],
-            );
+
+            return;
           }
 
-          return;
-        }
+          if (onProblemReport != null &&
+              unpacked.type == ProblemReportMessage.messageType) {
+            onProblemReport(
+              ProblemReportMessage.fromJson(plainTextJson),
+            );
 
-        if (onProblemReport != null &&
-            unpacked.type == ProblemReportMessage.messageType) {
-          onProblemReport(
-            ProblemReportMessage.fromJson(plainTextJson),
-          );
-
-          return;
+            return;
+          }
+        } catch (e) {
+          if (onError != null) {
+            (onError as void Function(Object))(e);
+          }
         }
       },
       onError: onError,
