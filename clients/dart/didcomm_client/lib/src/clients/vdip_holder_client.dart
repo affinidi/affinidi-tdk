@@ -119,7 +119,6 @@ class VdipHolderClient {
     required String forDid,
     required String fromDid,
     required RequestCredentialsParams params,
-    required DidSigner didSigner,
   }) async {
     // Pattern match to handle both cases
     final requestIssuanceMessage = await params.when(
