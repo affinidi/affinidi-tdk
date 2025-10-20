@@ -101,13 +101,6 @@ Future<DidManager> createDidManager({
         );
 
   await didManager.addVerificationMethod(keyPair.id);
-
-  if (didMethod == 'did:peer') {
-    await didManager.addKeyAgreement(keyPair.id);
-    await didManager.addAuthentication(keyPair.id);
-    await didManager.addAssertionMethod(keyPair.id);
-  }
-
   return didManager;
 }
 
