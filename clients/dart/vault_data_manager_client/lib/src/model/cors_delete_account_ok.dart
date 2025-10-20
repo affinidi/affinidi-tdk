@@ -11,26 +11,33 @@ part 'cors_delete_account_ok.g.dart';
 /// CorsDeleteAccountOK
 ///
 /// Properties:
-/// * [corsDeleteAccountOk] 
+/// * [corsDeleteAccountOk]
 @BuiltValue()
-abstract class CorsDeleteAccountOK implements Built<CorsDeleteAccountOK, CorsDeleteAccountOKBuilder> {
+abstract class CorsDeleteAccountOK
+    implements Built<CorsDeleteAccountOK, CorsDeleteAccountOKBuilder> {
   @BuiltValueField(wireName: r'corsDeleteAccountOk')
   String? get corsDeleteAccountOk;
 
   CorsDeleteAccountOK._();
 
-  factory CorsDeleteAccountOK([void updates(CorsDeleteAccountOKBuilder b)]) = _$CorsDeleteAccountOK;
+  factory CorsDeleteAccountOK([void updates(CorsDeleteAccountOKBuilder b)]) =
+      _$CorsDeleteAccountOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CorsDeleteAccountOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CorsDeleteAccountOK> get serializer => _$CorsDeleteAccountOKSerializer();
+  static Serializer<CorsDeleteAccountOK> get serializer =>
+      _$CorsDeleteAccountOKSerializer();
 }
 
-class _$CorsDeleteAccountOKSerializer implements PrimitiveSerializer<CorsDeleteAccountOK> {
+class _$CorsDeleteAccountOKSerializer
+    implements PrimitiveSerializer<CorsDeleteAccountOK> {
   @override
-  final Iterable<Type> types = const [CorsDeleteAccountOK, _$CorsDeleteAccountOK];
+  final Iterable<Type> types = const [
+    CorsDeleteAccountOK,
+    _$CorsDeleteAccountOK
+  ];
 
   @override
   final String wireName = r'CorsDeleteAccountOK';
@@ -55,7 +62,9 @@ class _$CorsDeleteAccountOKSerializer implements PrimitiveSerializer<CorsDeleteA
     CorsDeleteAccountOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -105,4 +114,3 @@ class _$CorsDeleteAccountOKSerializer implements PrimitiveSerializer<CorsDeleteA
     return result.build();
   }
 }
-

@@ -30,8 +30,9 @@ class VerifyPresentationInput(BaseModel):
     signed_presentation: Optional[Dict[str, Any]] = Field(default=None, alias="signedPresentation")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition")
     presentation_submission: Optional[Dict[str, Any]] = Field(default=None, alias="presentationSubmission")
+    dcql_query: Optional[Dict[str, Any]] = Field(default=None, alias="dcqlQuery")
     challenge: Optional[StrictStr] = None
-    __properties = ["verifiablePresentation", "signedPresentation", "presentationDefinition", "presentationSubmission", "challenge"]
+    __properties = ["verifiablePresentation", "signedPresentation", "presentationDefinition", "presentationSubmission", "dcqlQuery", "challenge"]
 
     class Config:
         """Pydantic configuration"""
@@ -73,6 +74,7 @@ class VerifyPresentationInput(BaseModel):
             "signed_presentation": obj.get("signedPresentation"),
             "presentation_definition": obj.get("presentationDefinition"),
             "presentation_submission": obj.get("presentationSubmission"),
+            "dcql_query": obj.get("dcqlQuery"),
             "challenge": obj.get("challenge")
         })
         return _obj

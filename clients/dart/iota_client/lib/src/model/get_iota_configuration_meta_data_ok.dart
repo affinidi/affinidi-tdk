@@ -15,7 +15,10 @@ part 'get_iota_configuration_meta_data_ok.g.dart';
 /// * [origin] - The URL of the requester displayed on the consent page indicates the request's origin.
 /// * [logo] - The logo of the requester displayed on the consent page, allowing users to easily recognise who requests the data.
 @BuiltValue()
-abstract class GetIotaConfigurationMetaDataOK implements Built<GetIotaConfigurationMetaDataOK, GetIotaConfigurationMetaDataOKBuilder> {
+abstract class GetIotaConfigurationMetaDataOK
+    implements
+        Built<GetIotaConfigurationMetaDataOK,
+            GetIotaConfigurationMetaDataOKBuilder> {
   /// The name displayed on the consent page indicates who is requesting data from the user. It can be the application or website's name.
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -30,18 +33,25 @@ abstract class GetIotaConfigurationMetaDataOK implements Built<GetIotaConfigurat
 
   GetIotaConfigurationMetaDataOK._();
 
-  factory GetIotaConfigurationMetaDataOK([void updates(GetIotaConfigurationMetaDataOKBuilder b)]) = _$GetIotaConfigurationMetaDataOK;
+  factory GetIotaConfigurationMetaDataOK(
+          [void updates(GetIotaConfigurationMetaDataOKBuilder b)]) =
+      _$GetIotaConfigurationMetaDataOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(GetIotaConfigurationMetaDataOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<GetIotaConfigurationMetaDataOK> get serializer => _$GetIotaConfigurationMetaDataOKSerializer();
+  static Serializer<GetIotaConfigurationMetaDataOK> get serializer =>
+      _$GetIotaConfigurationMetaDataOKSerializer();
 }
 
-class _$GetIotaConfigurationMetaDataOKSerializer implements PrimitiveSerializer<GetIotaConfigurationMetaDataOK> {
+class _$GetIotaConfigurationMetaDataOKSerializer
+    implements PrimitiveSerializer<GetIotaConfigurationMetaDataOK> {
   @override
-  final Iterable<Type> types = const [GetIotaConfigurationMetaDataOK, _$GetIotaConfigurationMetaDataOK];
+  final Iterable<Type> types = const [
+    GetIotaConfigurationMetaDataOK,
+    _$GetIotaConfigurationMetaDataOK
+  ];
 
   @override
   final String wireName = r'GetIotaConfigurationMetaDataOK';
@@ -74,7 +84,9 @@ class _$GetIotaConfigurationMetaDataOKSerializer implements PrimitiveSerializer<
     GetIotaConfigurationMetaDataOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -138,4 +150,3 @@ class _$GetIotaConfigurationMetaDataOKSerializer implements PrimitiveSerializer<
     return result.build();
   }
 }
-

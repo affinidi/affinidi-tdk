@@ -13,13 +13,16 @@ part 'credential_subject_not_valid_error.g.dart';
 /// CredentialSubjectNotValidError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class CredentialSubjectNotValidError implements Built<CredentialSubjectNotValidError, CredentialSubjectNotValidErrorBuilder> {
+abstract class CredentialSubjectNotValidError
+    implements
+        Built<CredentialSubjectNotValidError,
+            CredentialSubjectNotValidErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   CredentialSubjectNotValidErrorNameEnum get name;
   // enum nameEnum {  CredentialSubjectNotValidError,  };
@@ -40,18 +43,25 @@ abstract class CredentialSubjectNotValidError implements Built<CredentialSubject
 
   CredentialSubjectNotValidError._();
 
-  factory CredentialSubjectNotValidError([void updates(CredentialSubjectNotValidErrorBuilder b)]) = _$CredentialSubjectNotValidError;
+  factory CredentialSubjectNotValidError(
+          [void updates(CredentialSubjectNotValidErrorBuilder b)]) =
+      _$CredentialSubjectNotValidError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CredentialSubjectNotValidErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CredentialSubjectNotValidError> get serializer => _$CredentialSubjectNotValidErrorSerializer();
+  static Serializer<CredentialSubjectNotValidError> get serializer =>
+      _$CredentialSubjectNotValidErrorSerializer();
 }
 
-class _$CredentialSubjectNotValidErrorSerializer implements PrimitiveSerializer<CredentialSubjectNotValidError> {
+class _$CredentialSubjectNotValidErrorSerializer
+    implements PrimitiveSerializer<CredentialSubjectNotValidError> {
   @override
-  final Iterable<Type> types = const [CredentialSubjectNotValidError, _$CredentialSubjectNotValidError];
+  final Iterable<Type> types = const [
+    CredentialSubjectNotValidError,
+    _$CredentialSubjectNotValidError
+  ];
 
   @override
   final String wireName = r'CredentialSubjectNotValidError';
@@ -74,7 +84,8 @@ class _$CredentialSubjectNotValidErrorSerializer implements PrimitiveSerializer<
     yield r'httpStatusCode';
     yield serializers.serialize(
       object.httpStatusCode,
-      specifiedType: const FullType(CredentialSubjectNotValidErrorHttpStatusCodeEnum),
+      specifiedType:
+          const FullType(CredentialSubjectNotValidErrorHttpStatusCodeEnum),
     );
     yield r'traceId';
     yield serializers.serialize(
@@ -85,7 +96,8 @@ class _$CredentialSubjectNotValidErrorSerializer implements PrimitiveSerializer<
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +108,9 @@ class _$CredentialSubjectNotValidErrorSerializer implements PrimitiveSerializer<
     CredentialSubjectNotValidError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -114,21 +128,24 @@ class _$CredentialSubjectNotValidErrorSerializer implements PrimitiveSerializer<
         case r'name':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CredentialSubjectNotValidErrorNameEnum),
+            specifiedType:
+                const FullType(CredentialSubjectNotValidErrorNameEnum),
           ) as CredentialSubjectNotValidErrorNameEnum;
           result.name = valueDes;
           break;
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CredentialSubjectNotValidErrorMessageEnum),
+            specifiedType:
+                const FullType(CredentialSubjectNotValidErrorMessageEnum),
           ) as CredentialSubjectNotValidErrorMessageEnum;
           result.message = valueDes;
           break;
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CredentialSubjectNotValidErrorHttpStatusCodeEnum),
+            specifiedType: const FullType(
+                CredentialSubjectNotValidErrorHttpStatusCodeEnum),
           ) as CredentialSubjectNotValidErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +159,8 @@ class _$CredentialSubjectNotValidErrorSerializer implements PrimitiveSerializer<
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
           ) as BuiltList<ActionForbiddenErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +194,55 @@ class _$CredentialSubjectNotValidErrorSerializer implements PrimitiveSerializer<
 }
 
 class CredentialSubjectNotValidErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'CredentialSubjectNotValidError')
-  static const CredentialSubjectNotValidErrorNameEnum credentialSubjectNotValidError = _$credentialSubjectNotValidErrorNameEnum_credentialSubjectNotValidError;
+  static const CredentialSubjectNotValidErrorNameEnum
+      credentialSubjectNotValidError =
+      _$credentialSubjectNotValidErrorNameEnum_credentialSubjectNotValidError;
 
-  static Serializer<CredentialSubjectNotValidErrorNameEnum> get serializer => _$credentialSubjectNotValidErrorNameEnumSerializer;
+  static Serializer<CredentialSubjectNotValidErrorNameEnum> get serializer =>
+      _$credentialSubjectNotValidErrorNameEnumSerializer;
 
-  const CredentialSubjectNotValidErrorNameEnum._(String name): super(name);
+  const CredentialSubjectNotValidErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<CredentialSubjectNotValidErrorNameEnum> get values => _$credentialSubjectNotValidErrorNameEnumValues;
-  static CredentialSubjectNotValidErrorNameEnum valueOf(String name) => _$credentialSubjectNotValidErrorNameEnumValueOf(name);
+  static BuiltSet<CredentialSubjectNotValidErrorNameEnum> get values =>
+      _$credentialSubjectNotValidErrorNameEnumValues;
+  static CredentialSubjectNotValidErrorNameEnum valueOf(String name) =>
+      _$credentialSubjectNotValidErrorNameEnumValueOf(name);
 }
 
 class CredentialSubjectNotValidErrorMessageEnum extends EnumClass {
+  @BuiltValueEnumConst(
+      wireName: r'Credential subject is not according to the vc schema')
+  static const CredentialSubjectNotValidErrorMessageEnum
+      credentialSubjectIsNotAccordingToTheVcSchema =
+      _$credentialSubjectNotValidErrorMessageEnum_credentialSubjectIsNotAccordingToTheVcSchema;
 
-  @BuiltValueEnumConst(wireName: r'Credential subject is not according to the vc schema')
-  static const CredentialSubjectNotValidErrorMessageEnum credentialSubjectIsNotAccordingToTheVcSchema = _$credentialSubjectNotValidErrorMessageEnum_credentialSubjectIsNotAccordingToTheVcSchema;
+  static Serializer<CredentialSubjectNotValidErrorMessageEnum> get serializer =>
+      _$credentialSubjectNotValidErrorMessageEnumSerializer;
 
-  static Serializer<CredentialSubjectNotValidErrorMessageEnum> get serializer => _$credentialSubjectNotValidErrorMessageEnumSerializer;
+  const CredentialSubjectNotValidErrorMessageEnum._(String name) : super(name);
 
-  const CredentialSubjectNotValidErrorMessageEnum._(String name): super(name);
-
-  static BuiltSet<CredentialSubjectNotValidErrorMessageEnum> get values => _$credentialSubjectNotValidErrorMessageEnumValues;
-  static CredentialSubjectNotValidErrorMessageEnum valueOf(String name) => _$credentialSubjectNotValidErrorMessageEnumValueOf(name);
+  static BuiltSet<CredentialSubjectNotValidErrorMessageEnum> get values =>
+      _$credentialSubjectNotValidErrorMessageEnumValues;
+  static CredentialSubjectNotValidErrorMessageEnum valueOf(String name) =>
+      _$credentialSubjectNotValidErrorMessageEnumValueOf(name);
 }
 
 class CredentialSubjectNotValidErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const CredentialSubjectNotValidErrorHttpStatusCodeEnum number400 = _$credentialSubjectNotValidErrorHttpStatusCodeEnum_number400;
+  static const CredentialSubjectNotValidErrorHttpStatusCodeEnum number400 =
+      _$credentialSubjectNotValidErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<CredentialSubjectNotValidErrorHttpStatusCodeEnum> get serializer => _$credentialSubjectNotValidErrorHttpStatusCodeEnumSerializer;
+  static Serializer<CredentialSubjectNotValidErrorHttpStatusCodeEnum>
+      get serializer =>
+          _$credentialSubjectNotValidErrorHttpStatusCodeEnumSerializer;
 
-  const CredentialSubjectNotValidErrorHttpStatusCodeEnum._(String name): super(name);
+  const CredentialSubjectNotValidErrorHttpStatusCodeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<CredentialSubjectNotValidErrorHttpStatusCodeEnum> get values => _$credentialSubjectNotValidErrorHttpStatusCodeEnumValues;
-  static CredentialSubjectNotValidErrorHttpStatusCodeEnum valueOf(String name) => _$credentialSubjectNotValidErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<CredentialSubjectNotValidErrorHttpStatusCodeEnum>
+      get values => _$credentialSubjectNotValidErrorHttpStatusCodeEnumValues;
+  static CredentialSubjectNotValidErrorHttpStatusCodeEnum valueOf(
+          String name) =>
+      _$credentialSubjectNotValidErrorHttpStatusCodeEnumValueOf(name);
 }
-

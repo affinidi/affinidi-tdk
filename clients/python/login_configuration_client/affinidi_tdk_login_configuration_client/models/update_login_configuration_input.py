@@ -35,11 +35,12 @@ class UpdateLoginConfigurationInput(BaseModel):
     client_secret: Optional[StrictStr] = Field(default=None, alias="clientSecret", description="OAuth2 client secret")
     vp_definition: Optional[StrictStr] = Field(default=None, alias="vpDefinition", description="VP definition in JSON stringify format")
     presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition", description="Presentation Definition")
+    dcql_query: Optional[Dict[str, Any]] = Field(default=None, alias="dcqlQuery", description="DCQL query in JSON stringify format")
     id_token_mapping: Optional[conlist(IdTokenMappingItem, min_items=1)] = Field(default=None, alias="idTokenMapping", description="Fields name/path mapping between the vp_token and the id_token")
     client_metadata: Optional[LoginConfigurationClientMetadataInput] = Field(default=None, alias="clientMetadata")
     token_endpoint_auth_method: Optional[TokenEndpointAuthMethod] = Field(default=None, alias="tokenEndpointAuthMethod")
     fail_on_mapping_conflict: Optional[StrictBool] = Field(default=None, alias="failOnMappingConflict", description="Interrupts login process if duplications of data fields names will be found")
-    __properties = ["name", "redirectUris", "postLogoutRedirectUris", "clientSecret", "vpDefinition", "presentationDefinition", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod", "failOnMappingConflict"]
+    __properties = ["name", "redirectUris", "postLogoutRedirectUris", "clientSecret", "vpDefinition", "presentationDefinition", "dcqlQuery", "idTokenMapping", "clientMetadata", "tokenEndpointAuthMethod", "failOnMappingConflict"]
 
     class Config:
         """Pydantic configuration"""
@@ -93,6 +94,7 @@ class UpdateLoginConfigurationInput(BaseModel):
             "client_secret": obj.get("clientSecret"),
             "vp_definition": obj.get("vpDefinition"),
             "presentation_definition": obj.get("presentationDefinition"),
+            "dcql_query": obj.get("dcqlQuery"),
             "id_token_mapping": [IdTokenMappingItem.from_dict(_item) for _item in obj.get("idTokenMapping")] if obj.get("idTokenMapping") is not None else None,
             "client_metadata": LoginConfigurationClientMetadataInput.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "token_endpoint_auth_method": obj.get("tokenEndpointAuthMethod"),

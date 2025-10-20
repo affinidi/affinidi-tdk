@@ -13,24 +13,28 @@ part 'list_scanned_files_ok.g.dart';
 /// ListScannedFilesOK
 ///
 /// Properties:
-/// * [scannedFiles] 
+/// * [scannedFiles]
 @BuiltValue()
-abstract class ListScannedFilesOK implements Built<ListScannedFilesOK, ListScannedFilesOKBuilder> {
+abstract class ListScannedFilesOK
+    implements Built<ListScannedFilesOK, ListScannedFilesOKBuilder> {
   @BuiltValueField(wireName: r'scannedFiles')
   BuiltList<ListScannedFilesOKScannedFilesInner> get scannedFiles;
 
   ListScannedFilesOK._();
 
-  factory ListScannedFilesOK([void updates(ListScannedFilesOKBuilder b)]) = _$ListScannedFilesOK;
+  factory ListScannedFilesOK([void updates(ListScannedFilesOKBuilder b)]) =
+      _$ListScannedFilesOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListScannedFilesOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListScannedFilesOK> get serializer => _$ListScannedFilesOKSerializer();
+  static Serializer<ListScannedFilesOK> get serializer =>
+      _$ListScannedFilesOKSerializer();
 }
 
-class _$ListScannedFilesOKSerializer implements PrimitiveSerializer<ListScannedFilesOK> {
+class _$ListScannedFilesOKSerializer
+    implements PrimitiveSerializer<ListScannedFilesOK> {
   @override
   final Iterable<Type> types = const [ListScannedFilesOK, _$ListScannedFilesOK];
 
@@ -45,7 +49,8 @@ class _$ListScannedFilesOKSerializer implements PrimitiveSerializer<ListScannedF
     yield r'scannedFiles';
     yield serializers.serialize(
       object.scannedFiles,
-      specifiedType: const FullType(BuiltList, [FullType(ListScannedFilesOKScannedFilesInner)]),
+      specifiedType: const FullType(
+          BuiltList, [FullType(ListScannedFilesOKScannedFilesInner)]),
     );
   }
 
@@ -55,7 +60,9 @@ class _$ListScannedFilesOKSerializer implements PrimitiveSerializer<ListScannedF
     ListScannedFilesOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -73,7 +80,8 @@ class _$ListScannedFilesOKSerializer implements PrimitiveSerializer<ListScannedF
         case r'scannedFiles':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ListScannedFilesOKScannedFilesInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ListScannedFilesOKScannedFilesInner)]),
           ) as BuiltList<ListScannedFilesOKScannedFilesInner>;
           result.scannedFiles.replace(valueDes);
           break;
@@ -105,4 +113,3 @@ class _$ListScannedFilesOKSerializer implements PrimitiveSerializer<ListScannedF
     return result.build();
   }
 }
-

@@ -33,6 +33,7 @@ import java.util.StringJoiner;
   CallbackInput.JSON_PROPERTY_STATE,
   CallbackInput.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   CallbackInput.JSON_PROPERTY_VP_TOKEN,
+  CallbackInput.JSON_PROPERTY_RESPONSE_CODE,
   CallbackInput.JSON_PROPERTY_ERROR,
   CallbackInput.JSON_PROPERTY_ERROR_DESCRIPTION,
   CallbackInput.JSON_PROPERTY_ONBOARDED
@@ -50,6 +51,10 @@ public class CallbackInput {
   public static final String JSON_PROPERTY_VP_TOKEN = "vp_token";
   @javax.annotation.Nullable
   private String vpToken;
+
+  public static final String JSON_PROPERTY_RESPONSE_CODE = "response_code";
+  @javax.annotation.Nullable
+  private String responseCode;
 
   public static final String JSON_PROPERTY_ERROR = "error";
   @javax.annotation.Nullable
@@ -141,6 +146,31 @@ public class CallbackInput {
     this.vpToken = vpToken;
   }
 
+  public CallbackInput responseCode(@javax.annotation.Nullable String responseCode) {
+    
+    this.responseCode = responseCode;
+    return this;
+  }
+
+  /**
+   * Used only for internal system flows. This field is not applicable  for external client integrations and will not produce valid results  when used outside of internal contexts.
+   * @return responseCode
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getResponseCode() {
+    return responseCode;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setResponseCode(@javax.annotation.Nullable String responseCode) {
+    this.responseCode = responseCode;
+  }
+
   public CallbackInput error(@javax.annotation.Nullable String error) {
     
     this.error = error;
@@ -228,6 +258,7 @@ public class CallbackInput {
     return Objects.equals(this.state, callbackInput.state) &&
         Objects.equals(this.presentationSubmission, callbackInput.presentationSubmission) &&
         Objects.equals(this.vpToken, callbackInput.vpToken) &&
+        Objects.equals(this.responseCode, callbackInput.responseCode) &&
         Objects.equals(this.error, callbackInput.error) &&
         Objects.equals(this.errorDescription, callbackInput.errorDescription) &&
         Objects.equals(this.onboarded, callbackInput.onboarded);
@@ -235,7 +266,7 @@ public class CallbackInput {
 
   @Override
   public int hashCode() {
-    return Objects.hash(state, presentationSubmission, vpToken, error, errorDescription, onboarded);
+    return Objects.hash(state, presentationSubmission, vpToken, responseCode, error, errorDescription, onboarded);
   }
 
   @Override
@@ -245,6 +276,7 @@ public class CallbackInput {
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
     sb.append("    vpToken: ").append(toIndentedString(vpToken)).append("\n");
+    sb.append("    responseCode: ").append(toIndentedString(responseCode)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    errorDescription: ").append(toIndentedString(errorDescription)).append("\n");
     sb.append("    onboarded: ").append(toIndentedString(onboarded)).append("\n");
@@ -319,6 +351,16 @@ public class CallbackInput {
     if (getVpToken() != null) {
       try {
         joiner.add(String.format("%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `response_code` to the URL query string
+    if (getResponseCode() != null) {
+      try {
+        joiner.add(String.format("%sresponse_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -11,8 +11,8 @@ part 'get_config_ok.g.dart';
 /// GetConfigOK
 ///
 /// Properties:
-/// * [profileName] 
-/// * [maximumProfiles] 
+/// * [profileName]
+/// * [maximumProfiles]
 @BuiltValue()
 abstract class GetConfigOK implements Built<GetConfigOK, GetConfigOKBuilder> {
   @BuiltValueField(wireName: r'profileName')
@@ -62,7 +62,9 @@ class _$GetConfigOKSerializer implements PrimitiveSerializer<GetConfigOK> {
     GetConfigOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -119,4 +121,3 @@ class _$GetConfigOKSerializer implements PrimitiveSerializer<GetConfigOK> {
     return result.build();
   }
 }
-

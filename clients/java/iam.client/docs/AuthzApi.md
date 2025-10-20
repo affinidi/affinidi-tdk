@@ -74,11 +74,11 @@ null (empty response body)
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **204**     | Ok              | -                |
-| **403**     | ForbiddenError  | -                |
-| **500**     | UnexpectedError | -                |
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **204**     | Ok              | -                                                                                                                 |
+| **403**     | ForbiddenError  | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **500**     | UnexpectedError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 ## grantAccessVfs
 
