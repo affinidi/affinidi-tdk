@@ -70,6 +70,7 @@ ProblemReportMessage createProblemReportMessage({
     ProblemReportMessage(
       id: const Uuid().v4(),
       to: [message.from!],
+      from: message.to!.first,
       parentThreadId: message.threadId ?? message.id,
       body: ProblemReportBody(
         code: ProblemCode(
@@ -128,5 +129,70 @@ Future<EncryptedMessage> createdEncryptedDataResponseMessage({
     encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
     keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
     recipientDidDocuments: [verifierDidDocument],
+  );
+}
+
+Future<EncryptedMessage> createdEncryptedProblemReportMessage({
+  required DidManager senderDidManager,
+  required DidManager receiverDidManager,
+  required String parentThreadId,
+}) async {
+  final senderDidDocument = await senderDidManager.getDidDocument();
+  final receiverDidDocument = await receiverDidManager.getDidDocument();
+
+  final message = ProblemReportMessage(
+    id: const Uuid().v4(),
+    to: [receiverDidDocument.id],
+    from: senderDidDocument.id,
+    parentThreadId: parentThreadId,
+    body: ProblemReportBody(
+      code: ProblemCode(
+        sorter: SorterType.error,
+        scope: Scope(scope: ScopeType.message),
+        descriptors: [
+          'vdsp',
+          'unit-test',
+        ],
+      ),
+    ),
+  );
+
+  return await DidcommMessage.packIntoEncryptedMessage(
+    message,
+    keyPair: await senderDidManager.getKeyPairByDidKeyId(
+      senderDidDocument.keyAgreement.first.id,
+    ),
+    didKeyId: senderDidDocument.keyAgreement.first.id,
+    encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+    keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+    recipientDidDocuments: [receiverDidDocument],
+  );
+}
+
+Future<LdVpDataModelV1> createVerifiablePresentation({
+  required DidManager didManager,
+  required List<ParsedVerifiableCredential> verifiableCredentials,
+}) async {
+  final signer = await didManager.getSigner(
+    didManager.authentication.first,
+  );
+
+  final suite = LdVpDm1Suite();
+
+  final proofGenerator = DataIntegrityEcdsaJcsGenerator(
+    signer: signer,
+  );
+
+  return await suite.issue(
+    unsignedData: VpDataModelV1.fromMutable(
+      MutableVpDataModelV1(
+        context: [dmV1ContextUrl],
+        id: Uri.parse(const Uuid().v4()),
+        type: {'VerifiablePresentation'},
+        holder: MutableHolder.uri(signer.did),
+        verifiableCredential: verifiableCredentials,
+      ),
+    ),
+    proofGenerator: proofGenerator,
   );
 }

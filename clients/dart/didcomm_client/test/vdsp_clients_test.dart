@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
     hide CredentialFormat;
@@ -13,10 +14,9 @@ import 'mock_mediator.dart';
 import 'test_utils.dart';
 
 Future<void> main() async {
-  late String holderEmail;
-
-  late String verifierDomain;
-  late String verifierChallenge;
+  const holderEmail = 'user@test.com';
+  const verifierDomain = 'test.verifier.com';
+  const verifierChallenge = 'c823f1a6-3af6-4cb7-b06a-e1122eb274be';
 
   late MockMediator mockMediator;
 
@@ -43,11 +43,6 @@ Future<void> main() async {
         ]) {
           group(didMethod, () {
             setUp(() async {
-              holderEmail = '${const Uuid().v4()}@test.com';
-
-              verifierChallenge = const Uuid().v4();
-              verifierDomain = 'test.verifier.com';
-
               mockMediator = await MockMediator.init(
                 keyType: keyType,
               );
@@ -287,16 +282,40 @@ Future<void> main() async {
 
         verifierDidDocument = await verifierDidManager.getDidDocument();
         holderDidDocument = await holderDidManager.getDidDocument();
+
+        holderSigner = await holderDidManager.getSigner(
+          holderDidManager.authentication.first,
+        );
+
+        final issuerDidManager = await createDidManager(
+          didMethod: 'did:key',
+          keyType: KeyType.p256,
+        );
+
+        final issuerDidDocument = await issuerDidManager.getDidDocument();
+
+        final issuerSigner = await issuerDidManager.getSigner(
+          issuerDidDocument.assertionMethod.first.id,
+        );
+
+        holderVerifiableCredentials = [
+          await generateEmailLdVcV1(
+            holderDid: holderSigner.did,
+            holderEmail: holderEmail,
+            issuerSigner: issuerSigner,
+          ),
+        ];
       });
 
       group('VDSP Verifier Client', () {
-        test('should fail if from header is missing', () async {
+        test('Should fail if from header is missing', () async {
           final completer = Completer<Object>();
 
           // Simulate an invalid message format
           final encryptedMessage = await createdEncryptedDataResponseMessage(
             verifierDidManager: verifierDidManager,
             holderDidManager: holderDidManager,
+            from: null, // simulate missing 'from' header
           );
 
           final sut = VdspVerifierClient(
@@ -324,14 +343,14 @@ Future<void> main() async {
           );
         });
 
-        test('should fail if body header is missing', () async {
+        test('Should fail if body header is missing', () async {
           final completer = Completer<Object>();
 
-          // Simulate an invalid message format
           final encryptedMessage = await createdEncryptedDataResponseMessage(
             verifierDidManager: verifierDidManager,
             holderDidManager: holderDidManager,
             from: holderDidDocument.id,
+            body: null, // simulate missing 'body' header
           );
 
           final sut = VdspVerifierClient(
@@ -357,6 +376,138 @@ Future<void> main() async {
             actual.toString(),
             contains('(responseMessage.body): Must not be null'),
           );
+        });
+
+        test('Should detect invalid VP', () async {
+          final completer = Completer<bool>();
+
+          final vp = await createVerifiablePresentation(
+            didManager: holderDidManager,
+            verifiableCredentials: holderVerifiableCredentials,
+          );
+
+          final invalidVp = vp.toJson();
+          // ignore: avoid_dynamic_calls
+          invalidVp['proof']['challenge'] =
+              'invalid-challenge'; // simulate invalid vp
+
+          final encryptedMessage = await createdEncryptedDataResponseMessage(
+            verifierDidManager: verifierDidManager,
+            holderDidManager: holderDidManager,
+            from: holderDidDocument.id,
+            body: VdspDataResponseBody(
+              responseFormat: 'application/json',
+              dataResponse: invalidVp,
+            ).toJson(),
+          );
+
+          final sut = VdspVerifierClient(
+            didManager: verifierDidManager,
+            mediatorClient: mockMediator.clients[verifierDidManager]!,
+          );
+
+          sut.listenForIncomingMessages(
+            onDataResponse: ({
+              required VdspDataResponseMessage message,
+              required bool presentationAndCredentialsAreValid,
+              VerifiablePresentation? verifiablePresentation,
+              required VerificationResult presentationVerificationResult,
+              required List<VerificationResult> credentialVerificationResults,
+            }) {
+              completer.complete(presentationAndCredentialsAreValid);
+            },
+            onProblemReport: completer.completeError,
+            onError: completer.completeError,
+          );
+
+          mockMediator.responseControllers[verifierDidDocument.id]!.add(
+            encryptedMessage.toJson(),
+          );
+
+          final actual = await completer.future;
+          expect(actual, isFalse);
+        });
+
+        test('Should detect invalid VC', () async {
+          final completer = Completer<bool>();
+
+          final invalidVc = holderVerifiableCredentials.first.toJson();
+          // ignore: avoid_dynamic_calls
+          invalidVc['credentialSubject']['email'] = 'invalid-email';
+
+          final vp = await createVerifiablePresentation(
+            didManager: holderDidManager,
+            verifiableCredentials: [
+              UniversalParser.parse(jsonEncode(invalidVc)),
+            ],
+          );
+
+          final encryptedMessage = await createdEncryptedDataResponseMessage(
+            verifierDidManager: verifierDidManager,
+            holderDidManager: holderDidManager,
+            from: holderDidDocument.id,
+            body: VdspDataResponseBody(
+              responseFormat: 'application/json',
+              dataResponse: vp.toJson(),
+            ).toJson(),
+          );
+
+          final sut = VdspVerifierClient(
+            didManager: verifierDidManager,
+            mediatorClient: mockMediator.clients[verifierDidManager]!,
+          );
+
+          sut.listenForIncomingMessages(
+            onDataResponse: ({
+              required VdspDataResponseMessage message,
+              required bool presentationAndCredentialsAreValid,
+              VerifiablePresentation? verifiablePresentation,
+              required VerificationResult presentationVerificationResult,
+              required List<VerificationResult> credentialVerificationResults,
+            }) {
+              completer.complete(presentationAndCredentialsAreValid);
+            },
+            onProblemReport: completer.completeError,
+            onError: completer.completeError,
+          );
+
+          mockMediator.responseControllers[verifierDidDocument.id]!.add(
+            encryptedMessage.toJson(),
+          );
+
+          final actual = await completer.future;
+          expect(actual, isFalse);
+        });
+
+        test('Should accept Problem Report', () async {
+          final completer = Completer<PlainTextMessage>();
+          final messageId = const Uuid().v4();
+
+          final encryptedMessage = await createdEncryptedProblemReportMessage(
+            receiverDidManager: verifierDidManager,
+            senderDidManager: holderDidManager,
+            parentThreadId: messageId,
+          );
+
+          final sut = VdspVerifierClient(
+            didManager: verifierDidManager,
+            mediatorClient: mockMediator.clients[verifierDidManager]!,
+          );
+
+          sut.listenForIncomingMessages(
+            onDataResponse: emptyCallback,
+            onProblemReport: completer.complete,
+            onError: completer.completeError,
+          );
+
+          mockMediator.responseControllers[verifierDidDocument.id]!.add(
+            encryptedMessage.toJson(),
+          );
+
+          final actual = await completer.future;
+
+          expect(actual, isA<ProblemReportMessage>());
+          expect(actual.parentThreadId, messageId);
         });
       });
     });

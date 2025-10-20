@@ -144,15 +144,9 @@ class MockDidcommMediatorClient extends DidcommMediatorClient {
     bool? cancelOnError,
   }) {
     return responseStream.listen(
-      (json) {
-        onMessage(json);
-      },
+      onMessage,
       onError: onError,
-      onDone: () {
-        if (onDone != null) {
-          onDone();
-        }
-      },
+      onDone: onDone,
       cancelOnError: cancelOnError,
     );
   }
