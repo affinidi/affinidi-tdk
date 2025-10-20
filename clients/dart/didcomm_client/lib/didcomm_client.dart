@@ -1,6 +1,7 @@
 export 'src/clients.dart';
 export 'src/clients/didcomm_atlas_client.dart' show DidcommAtlasClient;
 export 'src/clients/didcomm_service_client.dart';
+export 'src/clients/request_credentials_params.dart';
 export 'src/clients/vdsp_holder_client.dart';
 export 'src/clients/vdsp_verifier_client.dart';
 export 'src/common/client_options.dart';
