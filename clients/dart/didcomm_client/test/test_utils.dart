@@ -1,9 +1,23 @@
+// ignore_for_file: strict_top_level_inference, type_annotate_public_apis
+
 import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
     hide CredentialFormat;
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
+
+void emptyOnDataRequestCallback(
+  VdspQueryDataMessage message,
+) {}
+
+void emptyOnDataResponseCallback({
+  required credentialVerificationResults,
+  required message,
+  required presentationAndCredentialsAreValid,
+  required presentationVerificationResult,
+  verifiablePresentation,
+}) {}
 
 Future<LdVcDataModelV1> generateEmailLdVcV1({
   required String holderDid,
@@ -62,26 +76,6 @@ DcqlCredentialQuery createDataQuery({
           ],
         ),
       ],
-    );
-
-ProblemReportMessage createProblemReportMessage({
-  required PlainTextMessage message,
-}) =>
-    ProblemReportMessage(
-      id: const Uuid().v4(),
-      to: [message.from!],
-      from: message.to!.first,
-      parentThreadId: message.threadId ?? message.id,
-      body: ProblemReportBody(
-        code: ProblemCode(
-          sorter: SorterType.error,
-          scope: Scope(scope: ScopeType.message),
-          descriptors: [
-            'vdsp',
-            'unit-test',
-          ],
-        ),
-      ),
     );
 
 Future<DidManager> createDidManager({

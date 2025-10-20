@@ -110,14 +110,6 @@ Future<void> main() async {
                     mediatorClient: mockMediator.clients[verifierDidManager]!,
                   );
 
-                  await verifierClient.queryHolderFeatures(
-                    holderDid: (await holderDidManager.getDidDocument()).id,
-                    featureQueries:
-                        FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-                      FeatureDiscoveryHelper.vdspHolderDisclosures,
-                    ),
-                  );
-
                   verifierClient.listenForIncomingMessages(
                     onDiscloseMessage: (message) async {
                       final holderDid = message.from!;
@@ -131,11 +123,9 @@ Future<void> main() async {
                       );
 
                       if (unsupportedFeatureDisclosures.isNotEmpty) {
-                        await verifierClient.mediatorClient.packAndSendMessage(
-                          createProblemReportMessage(
-                            message: message,
-                          ),
-                        );
+                        testCompleter.completeError(Exception(
+                          'Holder disclosed unsupported features: $unsupportedFeatureDisclosures',
+                        ));
 
                         return;
                       }
@@ -205,11 +195,9 @@ Future<void> main() async {
                       );
 
                       if (queryResult.dcqlResult?.fulfilled == false) {
-                        await holderClient.mediatorClient.packAndSendMessage(
-                          createProblemReportMessage(
-                            message: message,
-                          ),
-                        );
+                        testCompleter.completeError(Exception(
+                          'Holder cannot fulfill the data request',
+                        ));
 
                         return;
                       }
@@ -235,6 +223,14 @@ Future<void> main() async {
 
                   await mockMediator.startConnections();
 
+                  await verifierClient.queryHolderFeatures(
+                    holderDid: (await holderDidManager.getDidDocument()).id,
+                    featureQueries:
+                        FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+                      FeatureDiscoveryHelper.vdspHolderDisclosures,
+                    ),
+                  );
+
                   final actual = await testCompleter.future;
                   final actualResult =
                       actual.body?['result'] as Map<String, dynamic>?;
@@ -253,14 +249,6 @@ Future<void> main() async {
     group('Can handle errors', () {
       late DidDocument verifierDidDocument;
       late DidDocument holderDidDocument;
-
-      void emptyCallback({
-        required credentialVerificationResults,
-        required message,
-        required presentationAndCredentialsAreValid,
-        required presentationVerificationResult,
-        verifiablePresentation,
-      }) {}
 
       setUp(() async {
         verifierDidManager = await createDidManager(
@@ -308,6 +296,37 @@ Future<void> main() async {
       });
 
       group('VDSP Verifier Client', () {
+        test('Should accept Problem Report', () async {
+          final completer = Completer<PlainTextMessage>();
+          final messageId = const Uuid().v4();
+
+          final encryptedMessage = await createdEncryptedProblemReportMessage(
+            receiverDidManager: verifierDidManager,
+            senderDidManager: holderDidManager,
+            parentThreadId: messageId,
+          );
+
+          final sut = VdspVerifierClient(
+            didManager: verifierDidManager,
+            mediatorClient: mockMediator.clients[verifierDidManager]!,
+          );
+
+          sut.listenForIncomingMessages(
+            onDataResponse: emptyOnDataResponseCallback,
+            onProblemReport: completer.complete,
+            onError: completer.completeError,
+          );
+
+          mockMediator.responseControllers[verifierDidDocument.id]!.add(
+            encryptedMessage.toJson(),
+          );
+
+          final actual = await completer.future;
+
+          expect(actual, isA<ProblemReportMessage>());
+          expect(actual.parentThreadId, messageId);
+        });
+
         test('Should fail if from header is missing', () async {
           final completer = Completer<Object>();
 
@@ -324,7 +343,7 @@ Future<void> main() async {
           );
 
           sut.listenForIncomingMessages(
-            onDataResponse: emptyCallback,
+            onDataResponse: emptyOnDataResponseCallback,
             onError: (Object error) {
               completer.complete(error);
             },
@@ -359,7 +378,7 @@ Future<void> main() async {
           );
 
           sut.listenForIncomingMessages(
-            onDataResponse: emptyCallback,
+            onDataResponse: emptyOnDataResponseCallback,
             onError: (Object error) {
               completer.complete(error);
             },
@@ -478,29 +497,35 @@ Future<void> main() async {
           final actual = await completer.future;
           expect(actual, isFalse);
         });
+      });
 
+      group('VDSP Holder Client', () {
         test('Should accept Problem Report', () async {
           final completer = Completer<PlainTextMessage>();
           final messageId = const Uuid().v4();
 
-          final encryptedMessage = await createdEncryptedProblemReportMessage(
-            receiverDidManager: verifierDidManager,
-            senderDidManager: holderDidManager,
-            parentThreadId: messageId,
-          );
-
-          final sut = VdspVerifierClient(
-            didManager: verifierDidManager,
-            mediatorClient: mockMediator.clients[verifierDidManager]!,
+          final sut = VdspHolderClient(
+            didManager: holderDidManager,
+            mediatorClient: mockMediator.clients[holderDidManager]!,
+            featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
           );
 
           sut.listenForIncomingMessages(
-            onDataResponse: emptyCallback,
-            onProblemReport: completer.complete,
+            onDataRequest: emptyOnDataRequestCallback,
+            onProblemReport: (message) async {
+              completer.complete(message);
+              await mockMediator.stopConnections();
+            },
             onError: completer.completeError,
           );
 
-          mockMediator.responseControllers[verifierDidDocument.id]!.add(
+          final encryptedMessage = await createdEncryptedProblemReportMessage(
+            receiverDidManager: holderDidManager,
+            senderDidManager: verifierDidManager,
+            parentThreadId: messageId,
+          );
+
+          mockMediator.responseControllers[holderDidDocument.id]!.add(
             encryptedMessage.toJson(),
           );
 
