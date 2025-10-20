@@ -5,13 +5,19 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
+import '../common/did_signer_adapter.dart';
 import '../common/feature_discovery_helper.dart';
+import '../common/jwt_helper.dart';
+import '../messages/vdip/vdip_request_issuance_body.dart';
+import '../messages/vdip/vdip_request_issuance_message.dart';
 import 'didcomm_mediator_client.dart';
 
 class VdipHolderClient {
   final DidcommMediatorClient mediatorClient;
   final DidManager didManager;
   final List<Disclosure> featureDisclosures;
+
+  static const tokenExpirationSeconds = 600;
 
   VdipHolderClient({
     required this.didManager,
@@ -88,12 +94,106 @@ class VdipHolderClient {
     return message;
   }
 
-  Future<PlainTextMessage> requestCredentials({
-    required String issuerDid,
-    required String credentialFormat,
-    required List<String> credentialTypes,
+  /// Request credentials using type-safe parameters.
+  ///
+  /// Use [RequestCredentialsParams.byProposalId] when you only have proposalId.
+  /// Use [RequestCredentialsParams.byProposalIdFor] when you know want the fixed holder,need to provide
+  /// both holderDid and assertion together.
+  ///
+  /// Example:
+  /// ```dart
+  /// // With proposal only
+  /// await requestCredentials(
+  ///   RequestCredentialsParams.byProposalId(proposalId: 'id123')
+  /// );
+  ///
+  /// // With holder and assertion
+  /// await requestCredentials(
+  ///   RequestCredentialsParams.byProposalIdFor(
+  ///     proposalId: 'id123',
+  ///     holderDid: 'did:example:holder',
+  ///     assertion: 'assertion-jwt',
+  ///   )
+  /// );
+  /// ```
+  Future<VdipRequestIssuanceMessage> requestCredentials({
+    required String forDid,
+    required String fromDid,
+    required RequestCredentialsParams params,
+    required DidSigner didSigner,
   }) async {
-    throw UnimplementedError();
+    // Pattern match to handle both cases
+    final requestIssuanceMessage = await params.when(
+      byProposalId: (
+        proposalId,
+        challenge,
+        credentialFormat,
+        dataIntegrityProofSuite,
+        jsonWebSignatureAlgorithm,
+        comment,
+        credentialMeta,
+      ) async {
+        return VdipRequestIssuanceMessage(
+          id: const Uuid().v4(),
+          from: forDid,
+          to: [fromDid],
+          body: VdipRequestIssuanceMessageBody(
+            proposalId: proposalId,
+            challenge: challenge,
+            credentialFormat: credentialFormat.toString(),
+            jsonWebSignatureAlgorithm: jsonWebSignatureAlgorithm.toString(),
+            comment: comment,
+            credentialMeta: credentialMeta,
+          ),
+        );
+      },
+      byProposalIdFor: (
+        proposalId,
+        holderDid,
+        didSigner,
+        challenge,
+        credentialFormat,
+        dataIntegrityProofSuite,
+        jsonWebSignatureAlgorithm,
+        comment,
+        credentialMeta,
+      ) async {
+        final issueTime =
+            (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+        final payload = {
+          'proposalId': proposalId,
+          'iss': forDid,
+          'sub': forDid,
+          'aud': fromDid,
+          'jti': const Uuid().v4(),
+          'exp': issueTime + tokenExpirationSeconds,
+          'iat': issueTime,
+        };
+        final signedAssertion =
+            JwtHelper().createAndSignJwt(payload, DidSignerAdapter(didSigner));
+        return VdipRequestIssuanceMessage(
+          id: const Uuid().v4(),
+          from: forDid,
+          to: [fromDid],
+          body: VdipRequestIssuanceMessageBody(
+            assertion: signedAssertion.toString(),
+            proposalId: proposalId,
+            holderDid: holderDid,
+            challenge: challenge,
+            credentialFormat: credentialFormat.toString(),
+            jsonWebSignatureAlgorithm: jsonWebSignatureAlgorithm.toString(),
+            comment: comment,
+            credentialMeta: credentialMeta,
+          ),
+        );
+      },
+    );
+
+    await mediatorClient.packAndSendMessage(
+      message: requestIssuanceMessage,
+    );
+
+    return requestIssuanceMessage;
   }
 
   StreamSubscription listenForIncomingMessages({
