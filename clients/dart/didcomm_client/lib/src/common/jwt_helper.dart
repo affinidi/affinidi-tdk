@@ -19,7 +19,9 @@ class JwtHelper {
   String _getJwtStringWithoutDisclosure(SdJwt sdJwt) {
     const separator = '~';
     final serializedSdJwt = sdJwt.serialized;
-    final parts = serializedSdJwt.split(separator);
-    return parts.length > 1 ? parts[0] : serializedSdJwt;
+    if (serializedSdJwt.endsWith(separator)) {
+      return serializedSdJwt.substring(0, serializedSdJwt.length - 1);
+    }
+    return serializedSdJwt;
   }
 }
