@@ -3,10 +3,10 @@ import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart';
 /// JWT signer for creating, signing and verifying JWTs.
 
 class JwtHelper {
-  final SdJwtHandlerV1 _handler = SdJwtHandlerV1();
+  static final SdJwtHandlerV1 _handler = SdJwtHandlerV1();
 
   /// Creates a new JWT.
-  Future<String> createAndSignJwt(
+  static Future<String> createAndSignJwt(
     Map<String, dynamic> claims,
     Signer signer,
   ) async {
@@ -16,7 +16,7 @@ class JwtHelper {
     return _getJwtStringWithoutDisclosure(sdJwt);
   }
 
-  String _getJwtStringWithoutDisclosure(SdJwt sdJwt) {
+  static String _getJwtStringWithoutDisclosure(SdJwt sdJwt) {
     const separator = '~';
     final serializedSdJwt = sdJwt.serialized;
     if (serializedSdJwt.endsWith(separator)) {

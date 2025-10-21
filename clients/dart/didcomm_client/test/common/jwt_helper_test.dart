@@ -7,12 +7,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('JwtHelper', () {
-    late JwtHelper jwtHelper;
-
-    setUp(() {
-      jwtHelper = JwtHelper();
-    });
-
     final testCases = [
       {
         'name': 'P-256',
@@ -68,7 +62,7 @@ void main() {
           };
 
           final result =
-              await jwtHelper.createAndSignJwt(claims, signerAdapter);
+              await JwtHelper.createAndSignJwt(claims, signerAdapter);
 
           expect(result.contains('~'), isFalse);
 
@@ -86,7 +80,7 @@ void main() {
           };
 
           final result =
-              await jwtHelper.createAndSignJwt(claims, signerAdapter);
+              await JwtHelper.createAndSignJwt(claims, signerAdapter);
 
           final parts = result.split('.');
           final payloadJson = utf8.decode(
@@ -106,7 +100,7 @@ void main() {
           };
 
           final result =
-              await jwtHelper.createAndSignJwt(claims, signerAdapter);
+              await JwtHelper.createAndSignJwt(claims, signerAdapter);
 
           final parts = result.split('.');
           final headerJson = utf8.decode(
@@ -124,7 +118,7 @@ void main() {
             'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
           };
 
-          final jwt = await jwtHelper.createAndSignJwt(claims, signerAdapter);
+          final jwt = await JwtHelper.createAndSignJwt(claims, signerAdapter);
 
           final parts = jwt.split('.');
           expect(parts.length, equals(3));

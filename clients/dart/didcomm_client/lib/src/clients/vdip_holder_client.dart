@@ -138,7 +138,7 @@ class VdipHolderClient {
       'iat': issueTime,
     };
     final signedAssertion =
-        JwtHelper().createAndSignJwt(payload, DidSignerAdapter(didSigner));
+        JwtHelper.createAndSignJwt(payload, DidSignerAdapter(didSigner));
 
     final requestIssuanceMessage = VdipRequestIssuanceMessage(
       id: const Uuid().v4(),
