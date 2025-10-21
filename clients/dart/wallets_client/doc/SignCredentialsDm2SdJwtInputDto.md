@@ -13,5 +13,6 @@ import 'package:affinidi_tdk_wallets_client/api.dart';
 | **unsignedCredential** | [**JsonObject**](.md) | Unsigned Credential in Dm2 format |
 | **revocable**          | **bool**              |                                   | [optional] |
 | **disclosureFrame**    | [**JsonObject**](.md) |                                   |
+| **signatureScheme**    | **String**            |                                   | [optional] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

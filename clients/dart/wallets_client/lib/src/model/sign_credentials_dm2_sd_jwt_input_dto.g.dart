@@ -6,6 +6,80 @@ part of 'sign_credentials_dm2_sd_jwt_input_dto.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+const SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum
+    _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ecdsaSecp256k1Sha256 =
+    const SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum._(
+        'ecdsaSecp256k1Sha256');
+const SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum
+    _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ecdsaP256Sha256 =
+    const SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum._(
+        'ecdsaP256Sha256');
+const SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum
+    _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ed25519 =
+    const SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum._('ed25519');
+
+SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum
+    _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnumValueOf(String name) {
+  switch (name) {
+    case 'ecdsaSecp256k1Sha256':
+      return _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ecdsaSecp256k1Sha256;
+    case 'ecdsaP256Sha256':
+      return _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ecdsaP256Sha256;
+    case 'ed25519':
+      return _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ed25519;
+    default:
+      throw ArgumentError(name);
+  }
+}
+
+final BuiltSet<SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum>
+    _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnumValues = BuiltSet<
+        SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum>(const <SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum>[
+  _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ecdsaSecp256k1Sha256,
+  _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ecdsaP256Sha256,
+  _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnum_ed25519,
+]);
+
+Serializer<SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum>
+    _$signCredentialsDm2SdJwtInputDtoSignatureSchemeEnumSerializer =
+    _$SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnumSerializer();
+
+class _$SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnumSerializer
+    implements
+        PrimitiveSerializer<
+            SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'ecdsaSecp256k1Sha256': 'ecdsa_secp256k1_sha256',
+    'ecdsaP256Sha256': 'ecdsa_p256_sha256',
+    'ed25519': 'ed25519',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'ecdsa_secp256k1_sha256': 'ecdsaSecp256k1Sha256',
+    'ecdsa_p256_sha256': 'ecdsaP256Sha256',
+    'ed25519': 'ed25519',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[
+    SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum
+  ];
+  @override
+  final String wireName = 'SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum';
+
+  @override
+  Object serialize(Serializers serializers,
+          SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$SignCredentialsDm2SdJwtInputDto
     extends SignCredentialsDm2SdJwtInputDto {
   @override
@@ -14,6 +88,8 @@ class _$SignCredentialsDm2SdJwtInputDto
   final bool? revocable;
   @override
   final JsonObject disclosureFrame;
+  @override
+  final SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum? signatureScheme;
 
   factory _$SignCredentialsDm2SdJwtInputDto(
           [void Function(SignCredentialsDm2SdJwtInputDtoBuilder)? updates]) =>
@@ -22,7 +98,8 @@ class _$SignCredentialsDm2SdJwtInputDto
   _$SignCredentialsDm2SdJwtInputDto._(
       {required this.unsignedCredential,
       this.revocable,
-      required this.disclosureFrame})
+      required this.disclosureFrame,
+      this.signatureScheme})
       : super._();
   @override
   SignCredentialsDm2SdJwtInputDto rebuild(
@@ -39,7 +116,8 @@ class _$SignCredentialsDm2SdJwtInputDto
     return other is SignCredentialsDm2SdJwtInputDto &&
         unsignedCredential == other.unsignedCredential &&
         revocable == other.revocable &&
-        disclosureFrame == other.disclosureFrame;
+        disclosureFrame == other.disclosureFrame &&
+        signatureScheme == other.signatureScheme;
   }
 
   @override
@@ -48,6 +126,7 @@ class _$SignCredentialsDm2SdJwtInputDto
     _$hash = $jc(_$hash, unsignedCredential.hashCode);
     _$hash = $jc(_$hash, revocable.hashCode);
     _$hash = $jc(_$hash, disclosureFrame.hashCode);
+    _$hash = $jc(_$hash, signatureScheme.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -57,7 +136,8 @@ class _$SignCredentialsDm2SdJwtInputDto
     return (newBuiltValueToStringHelper(r'SignCredentialsDm2SdJwtInputDto')
           ..add('unsignedCredential', unsignedCredential)
           ..add('revocable', revocable)
-          ..add('disclosureFrame', disclosureFrame))
+          ..add('disclosureFrame', disclosureFrame)
+          ..add('signatureScheme', signatureScheme))
         .toString();
   }
 }
@@ -82,6 +162,14 @@ class SignCredentialsDm2SdJwtInputDtoBuilder
   set disclosureFrame(JsonObject? disclosureFrame) =>
       _$this._disclosureFrame = disclosureFrame;
 
+  SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum? _signatureScheme;
+  SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum? get signatureScheme =>
+      _$this._signatureScheme;
+  set signatureScheme(
+          SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum?
+              signatureScheme) =>
+      _$this._signatureScheme = signatureScheme;
+
   SignCredentialsDm2SdJwtInputDtoBuilder() {
     SignCredentialsDm2SdJwtInputDto._defaults(this);
   }
@@ -92,6 +180,7 @@ class SignCredentialsDm2SdJwtInputDtoBuilder
       _unsignedCredential = $v.unsignedCredential;
       _revocable = $v.revocable;
       _disclosureFrame = $v.disclosureFrame;
+      _signatureScheme = $v.signatureScheme;
       _$v = null;
     }
     return this;
@@ -122,6 +211,7 @@ class SignCredentialsDm2SdJwtInputDtoBuilder
               disclosureFrame,
               r'SignCredentialsDm2SdJwtInputDto',
               'disclosureFrame'),
+          signatureScheme: signatureScheme,
         );
     replace(_$result);
     return _$result;

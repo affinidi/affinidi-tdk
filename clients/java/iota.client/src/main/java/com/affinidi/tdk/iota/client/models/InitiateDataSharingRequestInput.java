@@ -37,6 +37,7 @@ import java.util.StringJoiner;
   InitiateDataSharingRequestInput.JSON_PROPERTY_NONCE,
   InitiateDataSharingRequestInput.JSON_PROPERTY_REDIRECT_URI,
   InitiateDataSharingRequestInput.JSON_PROPERTY_CONFIGURATION_ID,
+  InitiateDataSharingRequestInput.JSON_PROPERTY_USER_DID,
   InitiateDataSharingRequestInput.JSON_PROPERTY_MODE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -65,13 +66,19 @@ public class InitiateDataSharingRequestInput {
   @javax.annotation.Nonnull
   private String configurationId;
 
+  public static final String JSON_PROPERTY_USER_DID = "userDid";
+  @javax.annotation.Nullable
+  private String userDid;
+
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    */
   public enum ModeEnum {
     REDIRECT(String.valueOf("redirect")),
     
-    WEBSOCKET(String.valueOf("websocket"));
+    WEBSOCKET(String.valueOf("websocket")),
+    
+    DIDCOMM(String.valueOf("didcomm"));
 
     private String value;
 
@@ -257,6 +264,31 @@ public class InitiateDataSharingRequestInput {
     this.configurationId = configurationId;
   }
 
+  public InitiateDataSharingRequestInput userDid(@javax.annotation.Nullable String userDid) {
+    
+    this.userDid = userDid;
+    return this;
+  }
+
+  /**
+   * User DID to send the initiating request to. Only required if mode is didcomm
+   * @return userDid
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_USER_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserDid() {
+    return userDid;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_USER_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setUserDid(@javax.annotation.Nullable String userDid) {
+    this.userDid = userDid;
+  }
+
   public InitiateDataSharingRequestInput mode(@javax.annotation.Nonnull ModeEnum mode) {
     
     this.mode = mode;
@@ -264,7 +296,7 @@ public class InitiateDataSharingRequestInput {
   }
 
   /**
-   * Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.
+   * Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
    * @return mode
    */
   @javax.annotation.Nonnull
@@ -297,12 +329,13 @@ public class InitiateDataSharingRequestInput {
         Objects.equals(this.nonce, initiateDataSharingRequestInput.nonce) &&
         Objects.equals(this.redirectUri, initiateDataSharingRequestInput.redirectUri) &&
         Objects.equals(this.configurationId, initiateDataSharingRequestInput.configurationId) &&
+        Objects.equals(this.userDid, initiateDataSharingRequestInput.userDid) &&
         Objects.equals(this.mode, initiateDataSharingRequestInput.mode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(queryId, correlationId, tokenMaxAge, nonce, redirectUri, configurationId, mode);
+    return Objects.hash(queryId, correlationId, tokenMaxAge, nonce, redirectUri, configurationId, userDid, mode);
   }
 
   @Override
@@ -315,6 +348,7 @@ public class InitiateDataSharingRequestInput {
     sb.append("    nonce: ").append(toIndentedString(nonce)).append("\n");
     sb.append("    redirectUri: ").append(toIndentedString(redirectUri)).append("\n");
     sb.append("    configurationId: ").append(toIndentedString(configurationId)).append("\n");
+    sb.append("    userDid: ").append(toIndentedString(userDid)).append("\n");
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -417,6 +451,16 @@ public class InitiateDataSharingRequestInput {
     if (getConfigurationId() != null) {
       try {
         joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `userDid` to the URL query string
+    if (getUserDid() != null) {
+      try {
+        joiner.add(String.format("%suserDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

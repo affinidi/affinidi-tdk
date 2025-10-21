@@ -33,7 +33,7 @@ class _$RightsEnumMeta {
   BuiltSet<RightsEnum> get values => _$values;
 }
 
-abstract class _$RightsEnumMixin {
+mixin _$RightsEnumMixin {
   // ignore: non_constant_identifier_names
   _$RightsEnumMeta get RightsEnum => const _$RightsEnumMeta();
 }

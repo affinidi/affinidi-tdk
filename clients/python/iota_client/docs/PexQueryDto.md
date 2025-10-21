@@ -4,7 +4,7 @@
 
 | Name                  | Type    | Description                                                                                                                              | Notes |
 | --------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----- |
-| **ari**               | **str** | The unique resource identifier of the qeuery.                                                                                            |
+| **ari**               | **str** | The unique resource identifier of the query.                                                                                             |
 | **query_id**          | **str** | The ID of the query.                                                                                                                     |
 | **name**              | **str** | The name of the presentation definition to quickly identify the query.                                                                   |
 | **description**       | **str** | An optional description of what the query is used for.                                                                                   |

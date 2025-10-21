@@ -1,10 +1,10 @@
-# affinidi_tdk_iota_client (EXPERIMENTAL)
+# affinidi_tdk_iota_client
 
 Affinidi TDK dart client for Affinidi IOTA
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage
@@ -80,6 +80,11 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 | [_ConfigurationsApi_](doc/ConfigurationsApi.md) | [**getIotaConfigurationMetaData**](doc/ConfigurationsApi.md#getiotaconfigurationmetadata)   | **GET** /v1/projects/{projectId}/configurations/{configurationId}/metadata |
 | [_ConfigurationsApi_](doc/ConfigurationsApi.md) | [**listIotaConfigurations**](doc/ConfigurationsApi.md#listiotaconfigurations)               | **GET** /v1/configurations                                                 |
 | [_ConfigurationsApi_](doc/ConfigurationsApi.md) | [**updateIotaConfigurationById**](doc/ConfigurationsApi.md#updateiotaconfigurationbyid)     | **PATCH** /v1/configurations/{configurationId}                             |
+| [_DcqlQueryApi_](doc/DcqlQueryApi.md)           | [**createDcqlQuery**](doc/DcqlQueryApi.md#createdcqlquery)                                  | **POST** /v1/configurations/{configurationId}/dcql-queries                 |
+| [_DcqlQueryApi_](doc/DcqlQueryApi.md)           | [**deleteDcqlQueryById**](doc/DcqlQueryApi.md#deletedcqlquerybyid)                          | **DELETE** /v1/configurations/{configurationId}/dcql-queries/{queryId}     |
+| [_DcqlQueryApi_](doc/DcqlQueryApi.md)           | [**getDcqlQueryById**](doc/DcqlQueryApi.md#getdcqlquerybyid)                                | **GET** /v1/configurations/{configurationId}/dcql-queries/{queryId}        |
+| [_DcqlQueryApi_](doc/DcqlQueryApi.md)           | [**listDcqlQueries**](doc/DcqlQueryApi.md#listdcqlqueries)                                  | **GET** /v1/configurations/{configurationId}/dcql-queries                  |
+| [_DcqlQueryApi_](doc/DcqlQueryApi.md)           | [**updateDcqlQueryById**](doc/DcqlQueryApi.md#updatedcqlquerybyid)                          | **PATCH** /v1/configurations/{configurationId}/dcql-queries/{queryId}      |
 | [_DefaultApi_](doc/DefaultApi.md)               | [**listLoggedConsents**](doc/DefaultApi.md#listloggedconsents)                              | **GET** /v1/logged-consents                                                |
 | [_IotaApi_](doc/IotaApi.md)                     | [**awsExchangeCredentials**](doc/IotaApi.md#awsexchangecredentials)                         | **POST** /v1/aws-exchange-credentials                                      |
 | [_IotaApi_](doc/IotaApi.md)                     | [**awsExchangeCredentialsProjectToken**](doc/IotaApi.md#awsexchangecredentialsprojecttoken) | **POST** /v1/aws-exchange-credentials/project-token                        |
@@ -111,8 +116,10 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [CorsInitiateDataSharingRequestOK](doc/CorsInitiateDataSharingRequestOK.md)
 - [CorsIotOidc4vpcallbackOK](doc/CorsIotOidc4vpcallbackOK.md)
 - [CorsIotaExchangeCredentialsOK](doc/CorsIotaExchangeCredentialsOK.md)
+- [CreateDcqlQueryInput](doc/CreateDcqlQueryInput.md)
 - [CreateIotaConfigurationInput](doc/CreateIotaConfigurationInput.md)
 - [CreatePexQueryInput](doc/CreatePexQueryInput.md)
+- [DcqlQueryDto](doc/DcqlQueryDto.md)
 - [DeletePexQueriesInput](doc/DeletePexQueriesInput.md)
 - [FetchIOTAVPResponseInput](doc/FetchIOTAVPResponseInput.md)
 - [FetchIOTAVPResponseOK](doc/FetchIOTAVPResponseOK.md)
@@ -128,6 +135,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [IotaExchangeCredentialsOK](doc/IotaExchangeCredentialsOK.md)
 - [IotaExchangeCredentialsOKCredentials](doc/IotaExchangeCredentialsOKCredentials.md)
 - [ListConfigurationOK](doc/ListConfigurationOK.md)
+- [ListDcqlQueriesOK](doc/ListDcqlQueriesOK.md)
 - [ListLoggedConsentsOK](doc/ListLoggedConsentsOK.md)
 - [ListPexQueriesOK](doc/ListPexQueriesOK.md)
 - [MessagePublishingError](doc/MessagePublishingError.md)
@@ -142,6 +150,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/ais*
 - [SavePexQueriesUpdateInputQueriesInner](doc/SavePexQueriesUpdateInputQueriesInner.md)
 - [UpdateConfigurationByIdInput](doc/UpdateConfigurationByIdInput.md)
 - [UpdateConfigurationByIdOK](doc/UpdateConfigurationByIdOK.md)
+- [UpdateDcqlQueryInput](doc/UpdateDcqlQueryInput.md)
 - [UpdatePexQueryInput](doc/UpdatePexQueryInput.md)
 - [VPTokenValidationError](doc/VPTokenValidationError.md)
 

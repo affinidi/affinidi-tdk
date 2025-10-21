@@ -9,6 +9,7 @@ DTO contains params to sign credential
 | **unsignedCredential** | **object**  | Unsigned Credential in Dm2 format | [default to undefined]            |
 | **revocable**          | **boolean** |                                   | [optional] [default to undefined] |
 | **disclosureFrame**    | **object**  |                                   | [default to undefined]            |
+| **signatureScheme**    | **string**  |                                   | [optional] [default to undefined] |
 
 ## Example
 
@@ -19,6 +20,7 @@ const instance: SignCredentialsDm2SdJwtInputDto = {
   unsignedCredential,
   revocable,
   disclosureFrame,
+  signatureScheme,
 }
 ```
 

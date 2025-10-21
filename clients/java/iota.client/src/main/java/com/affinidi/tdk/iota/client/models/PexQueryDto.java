@@ -73,7 +73,7 @@ public class PexQueryDto {
   }
 
   /**
-   * The unique resource identifier of the qeuery.
+   * The unique resource identifier of the query.
    * @return ari
    */
   @javax.annotation.Nonnull

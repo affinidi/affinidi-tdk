@@ -14,6 +14,8 @@ class _$CallbackInput extends CallbackInput {
   @override
   final String? vpToken;
   @override
+  final String? responseCode;
+  @override
   final String? error;
   @override
   final String? errorDescription;
@@ -27,6 +29,7 @@ class _$CallbackInput extends CallbackInput {
       {required this.state,
       this.presentationSubmission,
       this.vpToken,
+      this.responseCode,
       this.error,
       this.errorDescription,
       this.onboarded})
@@ -45,6 +48,7 @@ class _$CallbackInput extends CallbackInput {
         state == other.state &&
         presentationSubmission == other.presentationSubmission &&
         vpToken == other.vpToken &&
+        responseCode == other.responseCode &&
         error == other.error &&
         errorDescription == other.errorDescription &&
         onboarded == other.onboarded;
@@ -56,6 +60,7 @@ class _$CallbackInput extends CallbackInput {
     _$hash = $jc(_$hash, state.hashCode);
     _$hash = $jc(_$hash, presentationSubmission.hashCode);
     _$hash = $jc(_$hash, vpToken.hashCode);
+    _$hash = $jc(_$hash, responseCode.hashCode);
     _$hash = $jc(_$hash, error.hashCode);
     _$hash = $jc(_$hash, errorDescription.hashCode);
     _$hash = $jc(_$hash, onboarded.hashCode);
@@ -69,6 +74,7 @@ class _$CallbackInput extends CallbackInput {
           ..add('state', state)
           ..add('presentationSubmission', presentationSubmission)
           ..add('vpToken', vpToken)
+          ..add('responseCode', responseCode)
           ..add('error', error)
           ..add('errorDescription', errorDescription)
           ..add('onboarded', onboarded))
@@ -93,6 +99,10 @@ class CallbackInputBuilder
   String? get vpToken => _$this._vpToken;
   set vpToken(String? vpToken) => _$this._vpToken = vpToken;
 
+  String? _responseCode;
+  String? get responseCode => _$this._responseCode;
+  set responseCode(String? responseCode) => _$this._responseCode = responseCode;
+
   String? _error;
   String? get error => _$this._error;
   set error(String? error) => _$this._error = error;
@@ -116,6 +126,7 @@ class CallbackInputBuilder
       _state = $v.state;
       _presentationSubmission = $v.presentationSubmission;
       _vpToken = $v.vpToken;
+      _responseCode = $v.responseCode;
       _error = $v.error;
       _errorDescription = $v.errorDescription;
       _onboarded = $v.onboarded;
@@ -144,6 +155,7 @@ class CallbackInputBuilder
               state, r'CallbackInput', 'state'),
           presentationSubmission: presentationSubmission,
           vpToken: vpToken,
+          responseCode: responseCode,
           error: error,
           errorDescription: errorDescription,
           onboarded: onboarded,

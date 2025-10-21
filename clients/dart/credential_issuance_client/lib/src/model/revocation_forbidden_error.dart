@@ -13,13 +13,15 @@ part 'revocation_forbidden_error.g.dart';
 /// RevocationForbiddenError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class RevocationForbiddenError implements Built<RevocationForbiddenError, RevocationForbiddenErrorBuilder> {
+abstract class RevocationForbiddenError
+    implements
+        Built<RevocationForbiddenError, RevocationForbiddenErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   RevocationForbiddenErrorNameEnum get name;
   // enum nameEnum {  RevocationForbiddenError,  };
@@ -40,18 +42,25 @@ abstract class RevocationForbiddenError implements Built<RevocationForbiddenErro
 
   RevocationForbiddenError._();
 
-  factory RevocationForbiddenError([void updates(RevocationForbiddenErrorBuilder b)]) = _$RevocationForbiddenError;
+  factory RevocationForbiddenError(
+          [void updates(RevocationForbiddenErrorBuilder b)]) =
+      _$RevocationForbiddenError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(RevocationForbiddenErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<RevocationForbiddenError> get serializer => _$RevocationForbiddenErrorSerializer();
+  static Serializer<RevocationForbiddenError> get serializer =>
+      _$RevocationForbiddenErrorSerializer();
 }
 
-class _$RevocationForbiddenErrorSerializer implements PrimitiveSerializer<RevocationForbiddenError> {
+class _$RevocationForbiddenErrorSerializer
+    implements PrimitiveSerializer<RevocationForbiddenError> {
   @override
-  final Iterable<Type> types = const [RevocationForbiddenError, _$RevocationForbiddenError];
+  final Iterable<Type> types = const [
+    RevocationForbiddenError,
+    _$RevocationForbiddenError
+  ];
 
   @override
   final String wireName = r'RevocationForbiddenError';
@@ -85,7 +94,8 @@ class _$RevocationForbiddenErrorSerializer implements PrimitiveSerializer<Revoca
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +106,9 @@ class _$RevocationForbiddenErrorSerializer implements PrimitiveSerializer<Revoca
     RevocationForbiddenError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -128,7 +140,8 @@ class _$RevocationForbiddenErrorSerializer implements PrimitiveSerializer<Revoca
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(RevocationForbiddenErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(RevocationForbiddenErrorHttpStatusCodeEnum),
           ) as RevocationForbiddenErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +155,8 @@ class _$RevocationForbiddenErrorSerializer implements PrimitiveSerializer<Revoca
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
           ) as BuiltList<ActionForbiddenErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +190,50 @@ class _$RevocationForbiddenErrorSerializer implements PrimitiveSerializer<Revoca
 }
 
 class RevocationForbiddenErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'RevocationForbiddenError')
-  static const RevocationForbiddenErrorNameEnum revocationForbiddenError = _$revocationForbiddenErrorNameEnum_revocationForbiddenError;
+  static const RevocationForbiddenErrorNameEnum revocationForbiddenError =
+      _$revocationForbiddenErrorNameEnum_revocationForbiddenError;
 
-  static Serializer<RevocationForbiddenErrorNameEnum> get serializer => _$revocationForbiddenErrorNameEnumSerializer;
+  static Serializer<RevocationForbiddenErrorNameEnum> get serializer =>
+      _$revocationForbiddenErrorNameEnumSerializer;
 
-  const RevocationForbiddenErrorNameEnum._(String name): super(name);
+  const RevocationForbiddenErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<RevocationForbiddenErrorNameEnum> get values => _$revocationForbiddenErrorNameEnumValues;
-  static RevocationForbiddenErrorNameEnum valueOf(String name) => _$revocationForbiddenErrorNameEnumValueOf(name);
+  static BuiltSet<RevocationForbiddenErrorNameEnum> get values =>
+      _$revocationForbiddenErrorNameEnumValues;
+  static RevocationForbiddenErrorNameEnum valueOf(String name) =>
+      _$revocationForbiddenErrorNameEnumValueOf(name);
 }
 
 class RevocationForbiddenErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Related VC has not been claimed yet')
-  static const RevocationForbiddenErrorMessageEnum relatedVCHasNotBeenClaimedYet = _$revocationForbiddenErrorMessageEnum_relatedVCHasNotBeenClaimedYet;
+  static const RevocationForbiddenErrorMessageEnum
+      relatedVCHasNotBeenClaimedYet =
+      _$revocationForbiddenErrorMessageEnum_relatedVCHasNotBeenClaimedYet;
 
-  static Serializer<RevocationForbiddenErrorMessageEnum> get serializer => _$revocationForbiddenErrorMessageEnumSerializer;
+  static Serializer<RevocationForbiddenErrorMessageEnum> get serializer =>
+      _$revocationForbiddenErrorMessageEnumSerializer;
 
-  const RevocationForbiddenErrorMessageEnum._(String name): super(name);
+  const RevocationForbiddenErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<RevocationForbiddenErrorMessageEnum> get values => _$revocationForbiddenErrorMessageEnumValues;
-  static RevocationForbiddenErrorMessageEnum valueOf(String name) => _$revocationForbiddenErrorMessageEnumValueOf(name);
+  static BuiltSet<RevocationForbiddenErrorMessageEnum> get values =>
+      _$revocationForbiddenErrorMessageEnumValues;
+  static RevocationForbiddenErrorMessageEnum valueOf(String name) =>
+      _$revocationForbiddenErrorMessageEnumValueOf(name);
 }
 
 class RevocationForbiddenErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const RevocationForbiddenErrorHttpStatusCodeEnum number400 = _$revocationForbiddenErrorHttpStatusCodeEnum_number400;
+  static const RevocationForbiddenErrorHttpStatusCodeEnum number400 =
+      _$revocationForbiddenErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<RevocationForbiddenErrorHttpStatusCodeEnum> get serializer => _$revocationForbiddenErrorHttpStatusCodeEnumSerializer;
+  static Serializer<RevocationForbiddenErrorHttpStatusCodeEnum>
+      get serializer => _$revocationForbiddenErrorHttpStatusCodeEnumSerializer;
 
-  const RevocationForbiddenErrorHttpStatusCodeEnum._(String name): super(name);
+  const RevocationForbiddenErrorHttpStatusCodeEnum._(String name) : super(name);
 
-  static BuiltSet<RevocationForbiddenErrorHttpStatusCodeEnum> get values => _$revocationForbiddenErrorHttpStatusCodeEnumValues;
-  static RevocationForbiddenErrorHttpStatusCodeEnum valueOf(String name) => _$revocationForbiddenErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<RevocationForbiddenErrorHttpStatusCodeEnum> get values =>
+      _$revocationForbiddenErrorHttpStatusCodeEnumValues;
+  static RevocationForbiddenErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$revocationForbiddenErrorHttpStatusCodeEnumValueOf(name);
 }
-

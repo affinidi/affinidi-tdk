@@ -12,7 +12,7 @@
 | **tokenMaxAge**            | **BigDecimal**                                                                  | This is the lifetime of the signed request token during the data-sharing flow.                                                                   | [optional] |
 | **description**            | **String**                                                                      | An optional description of what the configuration is used for.                                                                                   | [optional] |
 | **clientMetadata**         | [**IotaConfigurationDtoClientMetadata**](IotaConfigurationDtoClientMetadata.md) |                                                                                                                                                  | [optional] |
-| **mode**                   | [**ModeEnum**](#ModeEnum)                                                       | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.                                                      | [optional] |
+| **mode**                   | [**ModeEnum**](#ModeEnum)                                                       | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.                                   | [optional] |
 | **redirectUris**           | **List&lt;String&gt;**                                                          | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [optional] |
 | **enableIdvProviders**     | **Boolean**                                                                     | Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.                                | [optional] |
 
@@ -22,3 +22,4 @@
 | --------- | --------------------- |
 | REDIRECT  | &quot;redirect&quot;  |
 | WEBSOCKET | &quot;websocket&quot; |
+| DIDCOMM   | &quot;didcomm&quot;   |
