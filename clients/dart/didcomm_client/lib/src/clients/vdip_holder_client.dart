@@ -18,8 +18,6 @@ class VdipHolderClient {
   final DidManager didManager;
   final List<Disclosure> featureDisclosures;
 
-  static const tokenExpirationSeconds = 600;
-
   VdipHolderClient({
     required this.didManager,
     required this.mediatorClient,
@@ -133,7 +131,7 @@ class VdipHolderClient {
       'sub': holderDid,
       'aud': issuerDid,
       'jti': const Uuid().v4(),
-      'exp': issueTime + tokenExpirationSeconds,
+      'exp': issueTime + options.tokenExpiration.inSeconds,
       'iat': issueTime,
     };
     final signedAssertion =

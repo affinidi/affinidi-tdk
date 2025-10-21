@@ -18,6 +18,8 @@ class RequestCredentialsOptions {
 
   final CredentialMeta? credentialMeta;
 
+  final Duration tokenExpiration;
+
   const RequestCredentialsOptions({
     required this.proposalId,
     this.challenge,
@@ -25,6 +27,7 @@ class RequestCredentialsOptions {
     this.dataIntegrityProofSuite,
     this.jsonWebSignatureAlgorithm,
     this.comment,
+    this.tokenExpiration = const Duration(minutes: 5),
     this.credentialMeta,
   });
 }
