@@ -12,6 +12,13 @@ import 'package:uuid/uuid.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
 
+// Run commands below in your terminal to generate keys for Alice and Bob:
+// openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
+// openssl ecparam -name prime256v1 -genkey -noout -out example/keys/bob_private_key.pem
+
+// Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
+// Copy its DID Document URL into example/mediator/mediator_did.txt.
+
 Future<void> main() async {
   // 1. Holder queries Issuer features
   // 2. Issuer replies with features it supports
