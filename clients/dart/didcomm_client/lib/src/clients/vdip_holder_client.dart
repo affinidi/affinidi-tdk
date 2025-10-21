@@ -11,7 +11,7 @@ import '../common/jwt_helper.dart';
 import '../messages/vdip/vdip_request_issuance_body.dart';
 import '../messages/vdip/vdip_request_issuance_message.dart';
 import 'didcomm_mediator_client.dart';
-import 'request_credentials_params.dart' show RequestCredentialsParams;
+import 'request_credentials_options.dart' show RequestCredentialsOptions;
 
 class VdipHolderClient {
   final DidcommMediatorClient mediatorClient;
@@ -98,18 +98,17 @@ class VdipHolderClient {
   Future<VdipRequestIssuanceMessage> requestCredentials({
     required String issuerDid,
     required String holderDid,
-    required RequestCredentialsParams requestParameters,
+    required RequestCredentialsOptions options,
   }) async {
     final requestIssuanceMessage = VdipRequestIssuanceMessage(
       id: const Uuid().v4(),
       from: holderDid,
       to: [issuerDid],
       body: VdipRequestIssuanceMessageBody(
-        proposalId: requestParameters.proposalId,
-        challenge: requestParameters.challenge,
-        credentialFormat: requestParameters.credentialFormat.toString(),
-        jsonWebSignatureAlgorithm:
-            requestParameters.jsonWebSignatureAlgorithm.toString(),
+        proposalId: options.proposalId,
+        challenge: options.challenge,
+        credentialFormat: options.credentialFormat.toString(),
+        jsonWebSignatureAlgorithm: options.jsonWebSignatureAlgorithm.toString(),
       ),
     );
 
@@ -124,12 +123,12 @@ class VdipHolderClient {
     required String issuerDid,
     required String holderDid,
     required DidSigner didSigner,
-    required RequestCredentialsParams requestParameters,
+    required RequestCredentialsOptions options,
   }) async {
     final issueTime =
         (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
     final payload = {
-      'proposalId': requestParameters.proposalId,
+      'proposalId': options.proposalId,
       'iss': holderDid,
       'sub': holderDid,
       'aud': issuerDid,
@@ -146,14 +145,13 @@ class VdipHolderClient {
       to: [issuerDid],
       body: VdipRequestIssuanceMessageBody(
         assertion: signedAssertion.toString(),
-        proposalId: requestParameters.proposalId,
+        proposalId: options.proposalId,
         holderDid: holderDid,
-        challenge: requestParameters.challenge,
-        credentialFormat: requestParameters.credentialFormat.toString(),
-        jsonWebSignatureAlgorithm:
-            requestParameters.jsonWebSignatureAlgorithm.toString(),
-        comment: requestParameters.comment,
-        credentialMeta: requestParameters.credentialMeta,
+        challenge: options.challenge,
+        credentialFormat: options.credentialFormat.toString(),
+        jsonWebSignatureAlgorithm: options.jsonWebSignatureAlgorithm.toString(),
+        comment: options.comment,
+        credentialMeta: options.credentialMeta,
       ),
     );
 

@@ -202,7 +202,7 @@ Future<void> main() async {
       await vdipHolderClient.requestCredentials(
         holderDid: holderSigner.did,
         issuerDid: issuerSigner.did,
-        requestParameters: const RequestCredentialsParams(
+        options: const RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
         ),
       );
