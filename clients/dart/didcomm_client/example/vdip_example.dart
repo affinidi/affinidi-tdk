@@ -23,11 +23,11 @@ Future<void> main() async {
   // 1. Holder queries Issuer features
   // 2. Issuer replies with features it supports
   // 3. Holder requests MusicStreaming VC from Issuer
-  // 4. Verifier starts VDSP flow
-  //  4.1. Verifier queries Holder features
+  // 4. Issuer starts VDSP flow
+  //  4.1. Issuer queries Holder features
   //  4.2. Holder replies with features it supports
-  //  4.3. Verifier requests email VC from Holder
-  //  4.4. Holder shares email VC with Verifier
+  //  4.3. Issuer requests email VC from Holder
+  //  4.4. Holder shares email VC with Issuer
   // 5. Issuer issues MusicStreaming VC and sends it to Holder
   // 6. Holder receives MusicStreaming VC
 
