@@ -200,12 +200,10 @@ Future<void> main() async {
       );
 
       await vdipHolderClient.requestCredentials(
-        forDid: holderSigner.did,
-        fromDid: issuerSigner.did,
-        params: RequestCredentialsParams.byProposalIdFor(
+        holderDid: holderSigner.did,
+        issuerDid: issuerSigner.did,
+        requestParameters: const RequestCredentialsParams(
           proposalId: 'proposal_id_from_oob',
-          holderDid: holderSigner.did,
-          didSigner: holderSigner,
         ),
       );
     },

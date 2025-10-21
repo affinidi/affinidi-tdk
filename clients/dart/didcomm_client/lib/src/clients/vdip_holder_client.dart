@@ -11,6 +11,7 @@ import '../common/jwt_helper.dart';
 import '../messages/vdip/vdip_request_issuance_body.dart';
 import '../messages/vdip/vdip_request_issuance_message.dart';
 import 'didcomm_mediator_client.dart';
+import 'request_credentials_params.dart' show RequestCredentialsParams;
 
 class VdipHolderClient {
   final DidcommMediatorClient mediatorClient;
@@ -94,97 +95,66 @@ class VdipHolderClient {
     return message;
   }
 
-  /// Request credentials using type-safe parameters.
-  ///
-  /// Use [RequestCredentialsParams.byProposalId] to request credential by [RequestCredentialsParams.proposalId].
-  /// Use [RequestCredentialsParams.byProposalIdFor] to request credential by [RequestCredentialsParams.proposalId] for a specific holder [forDid], its ownership should be proven with the assertion.
-  ///
-  /// Example:
-  /// ```dart
-  /// // With proposal only
-  /// await requestCredentials(
-  ///   RequestCredentialsParams.byProposalId(proposalId: 'id123')
-  /// );
-  ///
-  /// // With holder and assertion
-  /// await requestCredentials(
-  ///   RequestCredentialsParams.byProposalIdFor(
-  ///     proposalId: 'id123',
-  ///     holderDid: 'did:example:holder',
-  ///     assertion: 'assertion-jwt',
-  ///   )
-  /// );
-  /// ```
   Future<VdipRequestIssuanceMessage> requestCredentials({
-    required String forDid,
-    required String fromDid,
-    required RequestCredentialsParams params,
+    required String issuerDid,
+    required String holderDid,
+    required RequestCredentialsParams requestParameters,
   }) async {
-    // Pattern match to handle both cases
-    final requestIssuanceMessage = await params.when(
-      byProposalId: (
-        proposalId,
-        challenge,
-        credentialFormat,
-        dataIntegrityProofSuite,
-        jsonWebSignatureAlgorithm,
-        comment,
-        credentialMeta,
-      ) async {
-        return VdipRequestIssuanceMessage(
-          id: const Uuid().v4(),
-          from: forDid,
-          to: [fromDid],
-          body: VdipRequestIssuanceMessageBody(
-            proposalId: proposalId,
-            challenge: challenge,
-            credentialFormat: credentialFormat.toString(),
-            jsonWebSignatureAlgorithm: jsonWebSignatureAlgorithm.toString(),
-            comment: comment,
-            credentialMeta: credentialMeta,
-          ),
-        );
-      },
-      byProposalIdFor: (
-        proposalId,
-        holderDid,
-        didSigner,
-        challenge,
-        credentialFormat,
-        dataIntegrityProofSuite,
-        jsonWebSignatureAlgorithm,
-        comment,
-        credentialMeta,
-      ) async {
-        final issueTime =
-            (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
-        final payload = {
-          'proposalId': proposalId,
-          'iss': forDid,
-          'sub': forDid,
-          'aud': fromDid,
-          'jti': const Uuid().v4(),
-          'exp': issueTime + tokenExpirationSeconds,
-          'iat': issueTime,
-        };
-        final signedAssertion =
-            JwtHelper().createAndSignJwt(payload, DidSignerAdapter(didSigner));
-        return VdipRequestIssuanceMessage(
-          id: const Uuid().v4(),
-          from: forDid,
-          to: [fromDid],
-          body: VdipRequestIssuanceMessageBody(
-            assertion: signedAssertion.toString(),
-            proposalId: proposalId,
-            holderDid: holderDid,
-            challenge: challenge,
-            credentialFormat: credentialFormat.toString(),
-            jsonWebSignatureAlgorithm: jsonWebSignatureAlgorithm.toString(),
-            comment: comment,
-            credentialMeta: credentialMeta,
-          ),
-        );
-      },
+    final requestIssuanceMessage = VdipRequestIssuanceMessage(
+      id: const Uuid().v4(),
+      from: holderDid,
+      to: [issuerDid],
+      body: VdipRequestIssuanceMessageBody(
+        proposalId: requestParameters.proposalId,
+        challenge: requestParameters.challenge,
+        credentialFormat: requestParameters.credentialFormat.toString(),
+        jsonWebSignatureAlgorithm:
+            requestParameters.jsonWebSignatureAlgorithm.toString(),
+      ),
+    );
+
+    await mediatorClient.packAndSendMessage(
+      message: requestIssuanceMessage,
+    );
+
+    return requestIssuanceMessage;
+  }
+
+  Future<VdipRequestIssuanceMessage> requestCredentialsForHolder({
+    required String issuerDid,
+    required String holderDid,
+    required DidSigner didSigner,
+    required RequestCredentialsParams requestParameters,
+  }) async {
+    final issueTime =
+        (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+    final payload = {
+      'proposalId': requestParameters.proposalId,
+      'iss': holderDid,
+      'sub': holderDid,
+      'aud': issuerDid,
+      'jti': const Uuid().v4(),
+      'exp': issueTime + tokenExpirationSeconds,
+      'iat': issueTime,
+    };
+    final signedAssertion =
+        JwtHelper().createAndSignJwt(payload, DidSignerAdapter(didSigner));
+
+    final requestIssuanceMessage = VdipRequestIssuanceMessage(
+      id: const Uuid().v4(),
+      from: holderDid,
+      to: [issuerDid],
+      body: VdipRequestIssuanceMessageBody(
+        assertion: signedAssertion.toString(),
+        proposalId: requestParameters.proposalId,
+        holderDid: holderDid,
+        challenge: requestParameters.challenge,
+        credentialFormat: requestParameters.credentialFormat.toString(),
+        jsonWebSignatureAlgorithm:
+            requestParameters.jsonWebSignatureAlgorithm.toString(),
+        comment: requestParameters.comment,
+        credentialMeta: requestParameters.credentialMeta,
+      ),
     );
 
     await mediatorClient.packAndSendMessage(
