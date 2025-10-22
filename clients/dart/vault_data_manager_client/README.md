@@ -1,10 +1,10 @@
-# affinidi_tdk_vault_data_manager_client (EXPERIMENTAL)
+# affinidi_tdk_vault_data_manager_client
 
 Affinidi TDK dart client for Affinidi VAULT DATA MANAGER
 
 ## Requirements
 
-- Dart 2.15.0+
+- Dart 3.6.0+
 - Dio 5.0.0+ (https://pub.dev/packages/dio)
 
 ## Installation & Usage

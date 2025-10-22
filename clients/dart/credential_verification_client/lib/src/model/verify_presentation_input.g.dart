@@ -16,6 +16,8 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
   @override
   final JsonObject? presentationSubmission;
   @override
+  final JsonObject? dcqlQuery;
+  @override
   final String? challenge;
 
   factory _$VerifyPresentationInput(
@@ -27,6 +29,7 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
       this.signedPresentation,
       this.presentationDefinition,
       this.presentationSubmission,
+      this.dcqlQuery,
       this.challenge})
       : super._();
   @override
@@ -46,6 +49,7 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
         signedPresentation == other.signedPresentation &&
         presentationDefinition == other.presentationDefinition &&
         presentationSubmission == other.presentationSubmission &&
+        dcqlQuery == other.dcqlQuery &&
         challenge == other.challenge;
   }
 
@@ -56,6 +60,7 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
     _$hash = $jc(_$hash, signedPresentation.hashCode);
     _$hash = $jc(_$hash, presentationDefinition.hashCode);
     _$hash = $jc(_$hash, presentationSubmission.hashCode);
+    _$hash = $jc(_$hash, dcqlQuery.hashCode);
     _$hash = $jc(_$hash, challenge.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -68,6 +73,7 @@ class _$VerifyPresentationInput extends VerifyPresentationInput {
           ..add('signedPresentation', signedPresentation)
           ..add('presentationDefinition', presentationDefinition)
           ..add('presentationSubmission', presentationSubmission)
+          ..add('dcqlQuery', dcqlQuery)
           ..add('challenge', challenge))
         .toString();
   }
@@ -98,6 +104,10 @@ class VerifyPresentationInputBuilder
   set presentationSubmission(JsonObject? presentationSubmission) =>
       _$this._presentationSubmission = presentationSubmission;
 
+  JsonObject? _dcqlQuery;
+  JsonObject? get dcqlQuery => _$this._dcqlQuery;
+  set dcqlQuery(JsonObject? dcqlQuery) => _$this._dcqlQuery = dcqlQuery;
+
   String? _challenge;
   String? get challenge => _$this._challenge;
   set challenge(String? challenge) => _$this._challenge = challenge;
@@ -113,6 +123,7 @@ class VerifyPresentationInputBuilder
       _signedPresentation = $v.signedPresentation;
       _presentationDefinition = $v.presentationDefinition;
       _presentationSubmission = $v.presentationSubmission;
+      _dcqlQuery = $v.dcqlQuery;
       _challenge = $v.challenge;
       _$v = null;
     }
@@ -139,6 +150,7 @@ class VerifyPresentationInputBuilder
           signedPresentation: signedPresentation,
           presentationDefinition: presentationDefinition,
           presentationSubmission: presentationSubmission,
+          dcqlQuery: dcqlQuery,
           challenge: challenge,
         );
     replace(_$result);

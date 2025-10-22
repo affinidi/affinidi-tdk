@@ -108,7 +108,7 @@ public class AwsExchangeCredentialsProjectToken {
   }
 
   /**
-   * The Decentalised Identifier (DID) of the user.
+   * The Decentralized Identifier (DID) of the user.
    * @return did
    */
   @javax.annotation.Nonnull

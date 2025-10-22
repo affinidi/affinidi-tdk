@@ -26,7 +26,7 @@ class PexQueryDto(BaseModel):
     """
     PexQueryDto
     """
-    ari: StrictStr = Field(default=..., description="The unique resource identifier of the qeuery.")
+    ari: StrictStr = Field(default=..., description="The unique resource identifier of the query.")
     query_id: StrictStr = Field(default=..., alias="queryId", description="The ID of the query.")
     name: StrictStr = Field(default=..., description="The name of the presentation definition to quickly identify the query.")
     description: StrictStr = Field(default=..., description="An optional description of what the query is used for.")

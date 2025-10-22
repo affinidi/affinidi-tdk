@@ -96,6 +96,74 @@ export interface CreateWalletResponse {
 /**
  *
  * @export
+ * @interface CreateWalletV2Input
+ */
+export interface CreateWalletV2Input {
+  /**
+   * The name of the wallet
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  name?: string
+  /**
+   * The description of the wallet
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  description?: string
+  /**
+   * Define how DID of your wallet is created and resolved
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  didMethod?: CreateWalletV2InputDidMethodEnum
+  /**
+   * URL of the DID. Required if the did method is web
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  didWebUrl?: string
+  /**
+   * algorithm to generate key for the wallet
+   * @type {string}
+   * @memberof CreateWalletV2Input
+   */
+  algorithm?: CreateWalletV2InputAlgorithmEnum
+}
+
+export const CreateWalletV2InputDidMethodEnum = {
+  Key: 'key',
+  Web: 'web',
+  Peer0: 'peer0',
+} as const
+
+export type CreateWalletV2InputDidMethodEnum =
+  (typeof CreateWalletV2InputDidMethodEnum)[keyof typeof CreateWalletV2InputDidMethodEnum]
+export const CreateWalletV2InputAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+} as const
+
+export type CreateWalletV2InputAlgorithmEnum =
+  (typeof CreateWalletV2InputAlgorithmEnum)[keyof typeof CreateWalletV2InputAlgorithmEnum]
+
+/**
+ * wallet dto
+ * @export
+ * @interface CreateWalletV2Response
+ */
+export interface CreateWalletV2Response {
+  /**
+   *
+   * @type {WalletV2Dto}
+   * @memberof CreateWalletV2Response
+   */
+  wallet?: WalletV2Dto
+}
+/**
+ *
+ * @export
  * @interface EntityNotFoundError
  */
 export interface EntityNotFoundError {
@@ -651,38 +719,6 @@ export interface SignCredentialResultDto {
 /**
  * DTO contains params to sign credential
  * @export
- * @interface SignCredentialsDm1JwtInputDto
- */
-export interface SignCredentialsDm1JwtInputDto {
-  /**
-   * Unsigned Credential in Dm1 format
-   * @type {object}
-   * @memberof SignCredentialsDm1JwtInputDto
-   */
-  unsignedCredential: object
-  /**
-   *
-   * @type {boolean}
-   * @memberof SignCredentialsDm1JwtInputDto
-   */
-  revocable?: boolean
-}
-/**
- * DTO contains signed credential
- * @export
- * @interface SignCredentialsDm1JwtResultDto
- */
-export interface SignCredentialsDm1JwtResultDto {
-  /**
-   * Signed credential in DM2 jwt format
-   * @type {string}
-   * @memberof SignCredentialsDm1JwtResultDto
-   */
-  credential: string
-}
-/**
- * DTO contains params to sign credential
- * @export
  * @interface SignCredentialsDm1LdInputDto
  */
 export interface SignCredentialsDm1LdInputDto {
@@ -698,7 +734,23 @@ export interface SignCredentialsDm1LdInputDto {
    * @memberof SignCredentialsDm1LdInputDto
    */
   revocable?: boolean
+  /**
+   *
+   * @type {string}
+   * @memberof SignCredentialsDm1LdInputDto
+   */
+  signatureScheme?: SignCredentialsDm1LdInputDtoSignatureSchemeEnum
 }
+
+export const SignCredentialsDm1LdInputDtoSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type SignCredentialsDm1LdInputDtoSignatureSchemeEnum =
+  (typeof SignCredentialsDm1LdInputDtoSignatureSchemeEnum)[keyof typeof SignCredentialsDm1LdInputDtoSignatureSchemeEnum]
+
 /**
  * DTO contains signed credential
  * @export
@@ -709,38 +761,6 @@ export interface SignCredentialsDm1LdResultDto {
    * Signed credential can be in Dm1Ld format
    * @type {object}
    * @memberof SignCredentialsDm1LdResultDto
-   */
-  credential: object
-}
-/**
- * DTO contains params to sign credential
- * @export
- * @interface SignCredentialsDm2LdInputDto
- */
-export interface SignCredentialsDm2LdInputDto {
-  /**
-   * Unsigned Credential in Dm2 format
-   * @type {object}
-   * @memberof SignCredentialsDm2LdInputDto
-   */
-  unsignedCredential: object
-  /**
-   *
-   * @type {boolean}
-   * @memberof SignCredentialsDm2LdInputDto
-   */
-  revocable?: boolean
-}
-/**
- * DTO contains signed credential
- * @export
- * @interface SignCredentialsDm2LdResultDto
- */
-export interface SignCredentialsDm2LdResultDto {
-  /**
-   * Signed credential can be in Dm2Ld format
-   * @type {object}
-   * @memberof SignCredentialsDm2LdResultDto
    */
   credential: object
 }
@@ -768,7 +788,23 @@ export interface SignCredentialsDm2SdJwtInputDto {
    * @memberof SignCredentialsDm2SdJwtInputDto
    */
   disclosureFrame: object
+  /**
+   *
+   * @type {string}
+   * @memberof SignCredentialsDm2SdJwtInputDto
+   */
+  signatureScheme?: SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum
 }
+
+export const SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum =
+  (typeof SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum)[keyof typeof SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum]
+
 /**
  * DTO contains signed credential
  * @export
@@ -781,6 +817,102 @@ export interface SignCredentialsDm2SdJwtResultDto {
    * @memberof SignCredentialsDm2SdJwtResultDto
    */
   credential: string
+}
+/**
+ * DTO contains params to sign credential
+ * @export
+ * @interface SignCredentialsJwtInputDto
+ */
+export interface SignCredentialsJwtInputDto {
+  /**
+   * Unsigned Credential in Dm1 format
+   * @type {object}
+   * @memberof SignCredentialsJwtInputDto
+   */
+  unsignedCredential: object
+  /**
+   *
+   * @type {boolean}
+   * @memberof SignCredentialsJwtInputDto
+   */
+  revocable?: boolean
+  /**
+   *
+   * @type {string}
+   * @memberof SignCredentialsJwtInputDto
+   */
+  signatureScheme?: SignCredentialsJwtInputDtoSignatureSchemeEnum
+}
+
+export const SignCredentialsJwtInputDtoSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type SignCredentialsJwtInputDtoSignatureSchemeEnum =
+  (typeof SignCredentialsJwtInputDtoSignatureSchemeEnum)[keyof typeof SignCredentialsJwtInputDtoSignatureSchemeEnum]
+
+/**
+ * DTO contains signed credential
+ * @export
+ * @interface SignCredentialsJwtResultDto
+ */
+export interface SignCredentialsJwtResultDto {
+  /**
+   * Signed credential in DM2 jwt format
+   * @type {string}
+   * @memberof SignCredentialsJwtResultDto
+   */
+  credential: string
+}
+/**
+ * DTO contains params to sign credential
+ * @export
+ * @interface SignCredentialsLdpInputDto
+ */
+export interface SignCredentialsLdpInputDto {
+  /**
+   * Unsigned Credential in Dm2 format
+   * @type {object}
+   * @memberof SignCredentialsLdpInputDto
+   */
+  unsignedCredential: object
+  /**
+   *
+   * @type {boolean}
+   * @memberof SignCredentialsLdpInputDto
+   */
+  revocable?: boolean
+  /**
+   *
+   * @type {string}
+   * @memberof SignCredentialsLdpInputDto
+   */
+  signatureScheme?: SignCredentialsLdpInputDtoSignatureSchemeEnum
+}
+
+export const SignCredentialsLdpInputDtoSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type SignCredentialsLdpInputDtoSignatureSchemeEnum =
+  (typeof SignCredentialsLdpInputDtoSignatureSchemeEnum)[keyof typeof SignCredentialsLdpInputDtoSignatureSchemeEnum]
+
+/**
+ * DTO contains signed credential
+ * @export
+ * @interface SignCredentialsLdpResultDto
+ */
+export interface SignCredentialsLdpResultDto {
+  /**
+   * Signed credential can be in Dm2Ld format
+   * @type {object}
+   * @memberof SignCredentialsLdpResultDto
+   */
+  credential: object
 }
 /**
  * DTO contains parts of JWT to be signed
@@ -813,6 +945,60 @@ export interface SignJwtTokenOK {
    * @memberof SignJwtTokenOK
    */
   signedJwt?: string
+}
+/**
+ * DTO contains params to sign presentation
+ * @export
+ * @interface SignPresentationLdpInputDto
+ */
+export interface SignPresentationLdpInputDto {
+  /**
+   * Unsigned presentation in Dm1 format
+   * @type {object}
+   * @memberof SignPresentationLdpInputDto
+   */
+  unsignedPresentation: object
+  /**
+   *
+   * @type {string}
+   * @memberof SignPresentationLdpInputDto
+   */
+  signatureScheme?: SignPresentationLdpInputDtoSignatureSchemeEnum
+  /**
+   * Domain(s) for which the presentation is intended
+   * @type {Array<string>}
+   * @memberof SignPresentationLdpInputDto
+   */
+  domain?: Array<string>
+  /**
+   * Challenge string
+   * @type {string}
+   * @memberof SignPresentationLdpInputDto
+   */
+  challenge?: string
+}
+
+export const SignPresentationLdpInputDtoSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type SignPresentationLdpInputDtoSignatureSchemeEnum =
+  (typeof SignPresentationLdpInputDtoSignatureSchemeEnum)[keyof typeof SignPresentationLdpInputDtoSignatureSchemeEnum]
+
+/**
+ * DTO contains signed presentation
+ * @export
+ * @interface SignPresentationLdpResultDto
+ */
+export interface SignPresentationLdpResultDto {
+  /**
+   * Signed presentation in Dm1Ld format
+   * @type {object}
+   * @memberof SignPresentationLdpResultDto
+   */
+  presentation: object
 }
 /**
  *
@@ -969,6 +1155,73 @@ export interface WalletDtoKeysInner {
    * @memberof WalletDtoKeysInner
    */
   ari?: string
+}
+/**
+ * wallet v2 dto
+ * @export
+ * @interface WalletV2Dto
+ */
+export interface WalletV2Dto {
+  /**
+   * id of the wallet in uuidV4 format
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  id?: string
+  /**
+   * did of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  did?: string
+  /**
+   * The name of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  name?: string
+  /**
+   * The description of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  description?: string
+  /**
+   * did document of the wallet
+   * @type {object}
+   * @memberof WalletV2Dto
+   */
+  didDocument?: object
+  /**
+   * ARI of the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  ari?: string
+  /**
+   * algorithm used to generate key for the wallet
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  algorithm?: string
+  /**
+   *
+   * @type {Array<WalletDtoKeysInner>}
+   * @memberof WalletV2Dto
+   */
+  keys?: Array<WalletDtoKeysInner>
+  /**
+   *
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  createdAt?: string
+  /**
+   *
+   * @type {string}
+   * @memberof WalletV2Dto
+   */
+  modifiedAt?: string
 }
 /**
  * list of wallets

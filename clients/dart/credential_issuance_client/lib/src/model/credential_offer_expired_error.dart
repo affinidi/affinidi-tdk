@@ -13,13 +13,15 @@ part 'credential_offer_expired_error.g.dart';
 /// CredentialOfferExpiredError
 ///
 /// Properties:
-/// * [name] 
-/// * [message] 
-/// * [httpStatusCode] 
-/// * [traceId] 
-/// * [details] 
+/// * [name]
+/// * [message]
+/// * [httpStatusCode]
+/// * [traceId]
+/// * [details]
 @BuiltValue()
-abstract class CredentialOfferExpiredError implements Built<CredentialOfferExpiredError, CredentialOfferExpiredErrorBuilder> {
+abstract class CredentialOfferExpiredError
+    implements
+        Built<CredentialOfferExpiredError, CredentialOfferExpiredErrorBuilder> {
   @BuiltValueField(wireName: r'name')
   CredentialOfferExpiredErrorNameEnum get name;
   // enum nameEnum {  CredentialOfferExpiredError,  };
@@ -40,18 +42,25 @@ abstract class CredentialOfferExpiredError implements Built<CredentialOfferExpir
 
   CredentialOfferExpiredError._();
 
-  factory CredentialOfferExpiredError([void updates(CredentialOfferExpiredErrorBuilder b)]) = _$CredentialOfferExpiredError;
+  factory CredentialOfferExpiredError(
+          [void updates(CredentialOfferExpiredErrorBuilder b)]) =
+      _$CredentialOfferExpiredError;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(CredentialOfferExpiredErrorBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<CredentialOfferExpiredError> get serializer => _$CredentialOfferExpiredErrorSerializer();
+  static Serializer<CredentialOfferExpiredError> get serializer =>
+      _$CredentialOfferExpiredErrorSerializer();
 }
 
-class _$CredentialOfferExpiredErrorSerializer implements PrimitiveSerializer<CredentialOfferExpiredError> {
+class _$CredentialOfferExpiredErrorSerializer
+    implements PrimitiveSerializer<CredentialOfferExpiredError> {
   @override
-  final Iterable<Type> types = const [CredentialOfferExpiredError, _$CredentialOfferExpiredError];
+  final Iterable<Type> types = const [
+    CredentialOfferExpiredError,
+    _$CredentialOfferExpiredError
+  ];
 
   @override
   final String wireName = r'CredentialOfferExpiredError';
@@ -74,7 +83,8 @@ class _$CredentialOfferExpiredErrorSerializer implements PrimitiveSerializer<Cre
     yield r'httpStatusCode';
     yield serializers.serialize(
       object.httpStatusCode,
-      specifiedType: const FullType(CredentialOfferExpiredErrorHttpStatusCodeEnum),
+      specifiedType:
+          const FullType(CredentialOfferExpiredErrorHttpStatusCodeEnum),
     );
     yield r'traceId';
     yield serializers.serialize(
@@ -85,7 +95,8 @@ class _$CredentialOfferExpiredErrorSerializer implements PrimitiveSerializer<Cre
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+        specifiedType: const FullType(
+            BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
       );
     }
   }
@@ -96,7 +107,9 @@ class _$CredentialOfferExpiredErrorSerializer implements PrimitiveSerializer<Cre
     CredentialOfferExpiredError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -121,14 +134,16 @@ class _$CredentialOfferExpiredErrorSerializer implements PrimitiveSerializer<Cre
         case r'message':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CredentialOfferExpiredErrorMessageEnum),
+            specifiedType:
+                const FullType(CredentialOfferExpiredErrorMessageEnum),
           ) as CredentialOfferExpiredErrorMessageEnum;
           result.message = valueDes;
           break;
         case r'httpStatusCode':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(CredentialOfferExpiredErrorHttpStatusCodeEnum),
+            specifiedType:
+                const FullType(CredentialOfferExpiredErrorHttpStatusCodeEnum),
           ) as CredentialOfferExpiredErrorHttpStatusCodeEnum;
           result.httpStatusCode = valueDes;
           break;
@@ -142,7 +157,8 @@ class _$CredentialOfferExpiredErrorSerializer implements PrimitiveSerializer<Cre
         case r'details':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
+            specifiedType: const FullType(
+                BuiltList, [FullType(ActionForbiddenErrorDetailsInner)]),
           ) as BuiltList<ActionForbiddenErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
@@ -176,41 +192,51 @@ class _$CredentialOfferExpiredErrorSerializer implements PrimitiveSerializer<Cre
 }
 
 class CredentialOfferExpiredErrorNameEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'CredentialOfferExpiredError')
-  static const CredentialOfferExpiredErrorNameEnum credentialOfferExpiredError = _$credentialOfferExpiredErrorNameEnum_credentialOfferExpiredError;
+  static const CredentialOfferExpiredErrorNameEnum credentialOfferExpiredError =
+      _$credentialOfferExpiredErrorNameEnum_credentialOfferExpiredError;
 
-  static Serializer<CredentialOfferExpiredErrorNameEnum> get serializer => _$credentialOfferExpiredErrorNameEnumSerializer;
+  static Serializer<CredentialOfferExpiredErrorNameEnum> get serializer =>
+      _$credentialOfferExpiredErrorNameEnumSerializer;
 
-  const CredentialOfferExpiredErrorNameEnum._(String name): super(name);
+  const CredentialOfferExpiredErrorNameEnum._(String name) : super(name);
 
-  static BuiltSet<CredentialOfferExpiredErrorNameEnum> get values => _$credentialOfferExpiredErrorNameEnumValues;
-  static CredentialOfferExpiredErrorNameEnum valueOf(String name) => _$credentialOfferExpiredErrorNameEnumValueOf(name);
+  static BuiltSet<CredentialOfferExpiredErrorNameEnum> get values =>
+      _$credentialOfferExpiredErrorNameEnumValues;
+  static CredentialOfferExpiredErrorNameEnum valueOf(String name) =>
+      _$credentialOfferExpiredErrorNameEnumValueOf(name);
 }
 
 class CredentialOfferExpiredErrorMessageEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireName: r'Credential offer is expired')
-  static const CredentialOfferExpiredErrorMessageEnum credentialOfferIsExpired = _$credentialOfferExpiredErrorMessageEnum_credentialOfferIsExpired;
+  static const CredentialOfferExpiredErrorMessageEnum credentialOfferIsExpired =
+      _$credentialOfferExpiredErrorMessageEnum_credentialOfferIsExpired;
 
-  static Serializer<CredentialOfferExpiredErrorMessageEnum> get serializer => _$credentialOfferExpiredErrorMessageEnumSerializer;
+  static Serializer<CredentialOfferExpiredErrorMessageEnum> get serializer =>
+      _$credentialOfferExpiredErrorMessageEnumSerializer;
 
-  const CredentialOfferExpiredErrorMessageEnum._(String name): super(name);
+  const CredentialOfferExpiredErrorMessageEnum._(String name) : super(name);
 
-  static BuiltSet<CredentialOfferExpiredErrorMessageEnum> get values => _$credentialOfferExpiredErrorMessageEnumValues;
-  static CredentialOfferExpiredErrorMessageEnum valueOf(String name) => _$credentialOfferExpiredErrorMessageEnumValueOf(name);
+  static BuiltSet<CredentialOfferExpiredErrorMessageEnum> get values =>
+      _$credentialOfferExpiredErrorMessageEnumValues;
+  static CredentialOfferExpiredErrorMessageEnum valueOf(String name) =>
+      _$credentialOfferExpiredErrorMessageEnumValueOf(name);
 }
 
 class CredentialOfferExpiredErrorHttpStatusCodeEnum extends EnumClass {
-
   @BuiltValueEnumConst(wireNumber: 400)
-  static const CredentialOfferExpiredErrorHttpStatusCodeEnum number400 = _$credentialOfferExpiredErrorHttpStatusCodeEnum_number400;
+  static const CredentialOfferExpiredErrorHttpStatusCodeEnum number400 =
+      _$credentialOfferExpiredErrorHttpStatusCodeEnum_number400;
 
-  static Serializer<CredentialOfferExpiredErrorHttpStatusCodeEnum> get serializer => _$credentialOfferExpiredErrorHttpStatusCodeEnumSerializer;
+  static Serializer<CredentialOfferExpiredErrorHttpStatusCodeEnum>
+      get serializer =>
+          _$credentialOfferExpiredErrorHttpStatusCodeEnumSerializer;
 
-  const CredentialOfferExpiredErrorHttpStatusCodeEnum._(String name): super(name);
+  const CredentialOfferExpiredErrorHttpStatusCodeEnum._(String name)
+      : super(name);
 
-  static BuiltSet<CredentialOfferExpiredErrorHttpStatusCodeEnum> get values => _$credentialOfferExpiredErrorHttpStatusCodeEnumValues;
-  static CredentialOfferExpiredErrorHttpStatusCodeEnum valueOf(String name) => _$credentialOfferExpiredErrorHttpStatusCodeEnumValueOf(name);
+  static BuiltSet<CredentialOfferExpiredErrorHttpStatusCodeEnum> get values =>
+      _$credentialOfferExpiredErrorHttpStatusCodeEnumValues;
+  static CredentialOfferExpiredErrorHttpStatusCodeEnum valueOf(String name) =>
+      _$credentialOfferExpiredErrorHttpStatusCodeEnumValueOf(name);
 }
-

@@ -4,7 +4,7 @@
 
 | Name                 | Type       | Description                                                                                                                              | Notes                  |
 | -------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| **ari**              | **string** | The unique resource identifier of the qeuery.                                                                                            | [default to undefined] |
+| **ari**              | **string** | The unique resource identifier of the query.                                                                                             | [default to undefined] |
 | **queryId**          | **string** | The ID of the query.                                                                                                                     | [default to undefined] |
 | **name**             | **string** | The name of the presentation definition to quickly identify the query.                                                                   | [default to undefined] |
 | **description**      | **string** | An optional description of what the query is used for.                                                                                   | [default to undefined] |

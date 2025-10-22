@@ -10,7 +10,8 @@
 | **nonce**           | **string** | A randomly generated value that is added in the request and response to prevent replay attacks.                                                  | [default to undefined]            |
 | **redirectUri**     | **string** | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [default to undefined]            |
 | **configurationId** | **string** | ID of the Affinidi Iota Framework configuration.                                                                                                 | [default to undefined]            |
-| **mode**            | **string** | Determines whether to handle the data-sharing request using the WebSocket or Redirect flow.                                                      | [default to undefined]            |
+| **userDid**         | **string** | User DID to send the initiating request to. Only required if mode is didcomm                                                                     | [optional] [default to undefined] |
+| **mode**            | **string** | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.                                   | [default to undefined]            |
 
 ## Example
 
@@ -24,6 +25,7 @@ const instance: InitiateDataSharingRequestInput = {
   nonce,
   redirectUri,
   configurationId,
+  userDid,
   mode,
 }
 ```

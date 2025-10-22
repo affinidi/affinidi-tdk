@@ -13,10 +13,11 @@ part 'list_logged_consents_ok.g.dart';
 /// ListLoggedConsentsOK
 ///
 /// Properties:
-/// * [consents] 
-/// * [lastEvaluatedKey] 
+/// * [consents]
+/// * [lastEvaluatedKey]
 @BuiltValue()
-abstract class ListLoggedConsentsOK implements Built<ListLoggedConsentsOK, ListLoggedConsentsOKBuilder> {
+abstract class ListLoggedConsentsOK
+    implements Built<ListLoggedConsentsOK, ListLoggedConsentsOKBuilder> {
   @BuiltValueField(wireName: r'consents')
   BuiltList<ConsentDto> get consents;
 
@@ -25,18 +26,24 @@ abstract class ListLoggedConsentsOK implements Built<ListLoggedConsentsOK, ListL
 
   ListLoggedConsentsOK._();
 
-  factory ListLoggedConsentsOK([void updates(ListLoggedConsentsOKBuilder b)]) = _$ListLoggedConsentsOK;
+  factory ListLoggedConsentsOK([void updates(ListLoggedConsentsOKBuilder b)]) =
+      _$ListLoggedConsentsOK;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ListLoggedConsentsOKBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ListLoggedConsentsOK> get serializer => _$ListLoggedConsentsOKSerializer();
+  static Serializer<ListLoggedConsentsOK> get serializer =>
+      _$ListLoggedConsentsOKSerializer();
 }
 
-class _$ListLoggedConsentsOKSerializer implements PrimitiveSerializer<ListLoggedConsentsOK> {
+class _$ListLoggedConsentsOKSerializer
+    implements PrimitiveSerializer<ListLoggedConsentsOK> {
   @override
-  final Iterable<Type> types = const [ListLoggedConsentsOK, _$ListLoggedConsentsOK];
+  final Iterable<Type> types = const [
+    ListLoggedConsentsOK,
+    _$ListLoggedConsentsOK
+  ];
 
   @override
   final String wireName = r'ListLoggedConsentsOK';
@@ -66,7 +73,9 @@ class _$ListLoggedConsentsOKSerializer implements PrimitiveSerializer<ListLogged
     ListLoggedConsentsOK object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +132,3 @@ class _$ListLoggedConsentsOKSerializer implements PrimitiveSerializer<ListLogged
     return result.build();
   }
 }
-
