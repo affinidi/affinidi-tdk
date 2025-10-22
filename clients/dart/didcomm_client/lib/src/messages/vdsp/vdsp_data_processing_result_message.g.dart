@@ -9,8 +9,8 @@ part of 'vdsp_data_processing_result_message.dart';
 VdspDataProcessingResultBody _$VdspDataProcessingResultBodyFromJson(
         Map<String, dynamic> json) =>
     VdspDataProcessingResultBody(
+      result: json['result'] as Map<String, dynamic>,
       operation: json['operation'] as String?,
-      result: json['result'] as Map<String, dynamic>? ?? const {},
     );
 
 Map<String, dynamic> _$VdspDataProcessingResultBodyToJson(

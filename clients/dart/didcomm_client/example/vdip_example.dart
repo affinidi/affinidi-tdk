@@ -12,15 +12,22 @@ import 'package:uuid/uuid.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
 
+// Run commands below in your terminal to generate keys for Alice and Bob:
+// openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
+// openssl ecparam -name prime256v1 -genkey -noout -out example/keys/bob_private_key.pem
+
+// Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
+// Copy its DID Document URL into example/mediator/mediator_did.txt.
+
 Future<void> main() async {
   // 1. Holder queries Issuer features
   // 2. Issuer replies with features it supports
   // 3. Holder requests MusicStreaming VC from Issuer
-  // 4. Verifier starts VDSP flow
-  //  4.1. Verifier queries Holder features
+  // 4. Issuer starts VDSP flow
+  //  4.1. Issuer queries Holder features
   //  4.2. Holder replies with features it supports
-  //  4.3. Verifier requests email VC from Holder
-  //  4.4. Holder shares email VC with Verifier
+  //  4.3. Issuer requests email VC from Holder
+  //  4.4. Holder shares email VC with Issuer
   // 5. Issuer issues MusicStreaming VC and sends it to Holder
   // 6. Holder receives MusicStreaming VC
 

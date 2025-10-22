@@ -49,10 +49,7 @@ class VdipHolderClient {
       ),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: message,
-    );
-
+    await mediatorClient.packAndSendMessage(message);
     return message;
   }
 
@@ -87,10 +84,7 @@ class VdipHolderClient {
       ),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: message,
-    );
-
+    await mediatorClient.packAndSendMessage(message);
     return message;
   }
 

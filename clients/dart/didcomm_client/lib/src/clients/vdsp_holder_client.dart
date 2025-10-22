@@ -88,10 +88,7 @@ class VdspHolderClient {
       ),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: message,
-    );
-
+    await mediatorClient.packAndSendMessage(message);
     return message;
   }
 
@@ -158,10 +155,7 @@ class VdspHolderClient {
       ).toJson(),
     );
 
-    await mediatorClient.packAndSendMessage(
-      message: responseMessage,
-    );
-
+    await mediatorClient.packAndSendMessage(responseMessage);
     return responseMessage;
   }
 
