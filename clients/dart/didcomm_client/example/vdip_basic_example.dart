@@ -414,7 +414,7 @@ Future<void> main() async {
 
       await issuerVdipClient.sendIssuedCredentials(
         holderDid: message.from!,
-        verifiableCredentials: issuedCredentials,
+        verifiableCredential: issuedCredentials.first,
       );
     },
     onProblemReport: (message) {

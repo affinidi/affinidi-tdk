@@ -12,19 +12,19 @@ class VdipIssuedCredentialBody {
 
   @JsonKey(name: 'credential_format')
   final CredentialFormat credentialFormat;
-  final String comment;
+  final String? comment;
 
   VdipIssuedCredentialBody._({
     required this.credential,
     required this.credentialFormat,
-    this.comment = '',
+    this.comment,
   });
 
   /// Creates an instance for SD-JWT VC format credentials.
   /// For SD-JWT VC format, the credential must be a String.
   factory VdipIssuedCredentialBody.sdJwtVc({
     required SdJwt credential,
-    String comment = '',
+    String? comment,
   }) {
     return VdipIssuedCredentialBody._(
       credential: credential.serialized,
@@ -37,7 +37,7 @@ class VdipIssuedCredentialBody {
   /// For W3C V1 format, the credential can be a String or Map.
   factory VdipIssuedCredentialBody.w3cV1({
     required VcDataModelV1 credential,
-    String comment = '',
+    String? comment,
   }) {
     return VdipIssuedCredentialBody._(
       credential: credential.toJson().toString(),
@@ -50,7 +50,7 @@ class VdipIssuedCredentialBody {
   /// For W3C V2 format, the credential can be a String or Map.
   factory VdipIssuedCredentialBody.w3cV2({
     required VcDataModelV2 credential,
-    String comment = '',
+    String? comment,
   }) {
     return VdipIssuedCredentialBody._(
       credential: credential.toJson().toString(),
@@ -63,7 +63,7 @@ class VdipIssuedCredentialBody {
   /// For JWT VC format, the credential can be a String or Map.
   factory VdipIssuedCredentialBody.jwtVc({
     required Jws credential,
-    String comment = '',
+    String? comment,
   }) {
     return VdipIssuedCredentialBody._(
       credential: credential.serialized,

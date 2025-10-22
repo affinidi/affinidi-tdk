@@ -6,6 +6,8 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
+import '../messages/vdip/issued_credential/issued_credential_body/vdip_issued_credential_body.dart';
+import '../messages/vdip/issued_credential/issued_credential_message/vdip_issued_credential_message.dart';
 import 'didcomm_mediator_client.dart';
 
 class VdipIssuerClient {
@@ -75,9 +77,55 @@ class VdipIssuerClient {
 
   Future<PlainTextMessage> sendIssuedCredentials({
     required String holderDid,
-    required List<ParsedVerifiableCredential> verifiableCredentials,
+    required VerifiableCredential verifiableCredential,
+    String comment = '',
   }) async {
-    throw UnimplementedError();
+    VdipIssuedCredentialBody issuedCredentialBody;
+
+    switch (verifiableCredential) {
+      case JwtVcDataModelV1():
+        issuedCredentialBody = VdipIssuedCredentialBody.jwtVc(
+          credential: verifiableCredential.jws,
+          comment: comment,
+        );
+        break;
+
+      case SdJwtDataModelV2():
+        issuedCredentialBody = VdipIssuedCredentialBody.sdJwtVc(
+          credential: verifiableCredential.sdJwt,
+          comment: comment,
+        );
+        break;
+
+      case VcDataModelV1():
+        issuedCredentialBody = VdipIssuedCredentialBody.w3cV1(
+          credential: verifiableCredential,
+          comment: comment,
+        );
+        break;
+
+      case VcDataModelV2():
+        issuedCredentialBody = VdipIssuedCredentialBody.w3cV2(
+          credential: verifiableCredential,
+          comment: comment,
+        );
+        break;
+
+      default:
+        throw ArgumentError(
+          'Unsupported credential format',
+        );
+    }
+
+    final message = VdipIssuedCredentialMessage(
+      id: const Uuid().v4(),
+      from: mediatorClient.signer.did,
+      to: [holderDid],
+      body: issuedCredentialBody,
+    );
+
+    await mediatorClient.packAndSendMessage(message);
+    return message;
   }
 
   StreamSubscription listenForIncomingMessages({
