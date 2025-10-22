@@ -5,8 +5,13 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
+import '../common/did_signer_adapter.dart';
 import '../common/feature_discovery_helper.dart';
+import '../common/jwt_helper.dart';
+import '../messages/vdip/request_issuance/request_issuance_body/vdip_request_issuance_body.dart';
+import '../messages/vdip/request_issuance/request_issuance_message/vdip_request_issuance_message.dart';
 import 'didcomm_mediator_client.dart';
+import 'request_credentials_options.dart' show RequestCredentialsOptions;
 
 class VdipHolderClient {
   final DidcommMediatorClient mediatorClient;
@@ -88,12 +93,71 @@ class VdipHolderClient {
     return message;
   }
 
-  Future<PlainTextMessage> requestCredentials({
+  Future<VdipRequestIssuanceMessage> requestCredentials({
     required String issuerDid,
-    required String credentialFormat,
-    required List<String> credentialTypes,
+    required String holderDid,
+    required RequestCredentialsOptions options,
   }) async {
-    throw UnimplementedError();
+    final requestIssuanceMessage = VdipRequestIssuanceMessage(
+      id: const Uuid().v4(),
+      from: holderDid,
+      to: [issuerDid],
+      body: VdipRequestIssuanceMessageBody(
+        proposalId: options.proposalId,
+        challenge: options.challenge,
+        credentialFormat: options.credentialFormat.toString(),
+        jsonWebSignatureAlgorithm: options.jsonWebSignatureAlgorithm.toString(),
+      ),
+    );
+
+    await mediatorClient.packAndSendMessage(
+      requestIssuanceMessage,
+    );
+
+    return requestIssuanceMessage;
+  }
+
+  Future<VdipRequestIssuanceMessage> requestCredentialsForHolder({
+    required String issuerDid,
+    required String holderDid,
+    required DidSigner didSigner,
+    required RequestCredentialsOptions options,
+  }) async {
+    final issueTime =
+        (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+    final payload = {
+      'proposalId': options.proposalId,
+      'iss': holderDid,
+      'sub': holderDid,
+      'aud': issuerDid,
+      'jti': const Uuid().v4(),
+      'exp': issueTime + options.tokenExpiration.inSeconds,
+      'iat': issueTime,
+    };
+    final signedAssertion =
+        JwtHelper.createAndSignJwt(payload, DidSignerAdapter(didSigner));
+
+    final requestIssuanceMessage = VdipRequestIssuanceMessage(
+      id: const Uuid().v4(),
+      from: holderDid,
+      to: [issuerDid],
+      body: VdipRequestIssuanceMessageBody(
+        assertion: signedAssertion.toString(),
+        proposalId: options.proposalId,
+        holderDid: holderDid,
+        challenge: options.challenge,
+        credentialFormat: options.credentialFormat.toString(),
+        jsonWebSignatureAlgorithm: options.jsonWebSignatureAlgorithm.toString(),
+        comment: options.comment,
+        credentialMeta: options.credentialMeta,
+      ),
+    );
+
+    await mediatorClient.packAndSendMessage(
+      requestIssuanceMessage,
+    );
+
+    return requestIssuanceMessage;
   }
 
   StreamSubscription listenForIncomingMessages({

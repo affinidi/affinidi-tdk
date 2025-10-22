@@ -200,9 +200,11 @@ Future<void> main() async {
       );
 
       await vdipHolderClient.requestCredentials(
+        holderDid: holderSigner.did,
         issuerDid: issuerSigner.did,
-        credentialFormat: '',
-        credentialTypes: [],
+        options: const RequestCredentialsOptions(
+          proposalId: 'proposal_id_from_oob',
+        ),
       );
     },
     onCredentialsIssuanceResponse: (message) async {
@@ -412,7 +414,7 @@ Future<void> main() async {
 
       await issuerVdipClient.sendIssuedCredentials(
         holderDid: message.from!,
-        verifiableCredentials: issuedCredentials,
+        verifiableCredential: issuedCredentials.first,
       );
     },
     onProblemReport: (message) {
