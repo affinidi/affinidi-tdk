@@ -1,7 +1,7 @@
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'vdip_request_issuance_body.dart';
+import '../request_issuance_body/vdip_request_issuance_body.dart';
 
 part 'vdip_request_issuance_message.g.dart';
 

@@ -8,8 +8,8 @@ import '../../didcomm_client.dart';
 import '../common/did_signer_adapter.dart';
 import '../common/feature_discovery_helper.dart';
 import '../common/jwt_helper.dart';
-import '../messages/vdip/vdip_request_issuance_body.dart';
-import '../messages/vdip/vdip_request_issuance_message.dart';
+import '../messages/vdip/request_issuance/request_issuance_body/vdip_request_issuance_body.dart';
+import '../messages/vdip/request_issuance/request_issuance_message/vdip_request_issuance_message.dart';
 import 'didcomm_mediator_client.dart';
 import 'request_credentials_options.dart' show RequestCredentialsOptions;
 
@@ -111,7 +111,7 @@ class VdipHolderClient {
     );
 
     await mediatorClient.packAndSendMessage(
-      message: requestIssuanceMessage,
+      requestIssuanceMessage,
     );
 
     return requestIssuanceMessage;
@@ -154,7 +154,7 @@ class VdipHolderClient {
     );
 
     await mediatorClient.packAndSendMessage(
-      message: requestIssuanceMessage,
+      requestIssuanceMessage,
     );
 
     return requestIssuanceMessage;

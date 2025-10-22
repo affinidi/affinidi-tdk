@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import './credential_meta/credential_meta.dart';
+import '../../credential_meta/credential_meta.dart';
 
 part 'vdip_request_issuance_body.g.dart';
 
