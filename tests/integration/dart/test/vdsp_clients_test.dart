@@ -25,8 +25,11 @@ Future<void> main() async {
     mediatorDid,
   );
 
-  group('VDSP holder and verifier clients Integration Tests', () {
+  group('VDSP Holder and Verifier Clients Integration Tests', () {
     late String holderEmail;
+
+    late String verifierDomain;
+    late String verifierChallenge;
 
     late DidKeyManager verifierDidManager;
     late DidKeyManager holderDidManager;
@@ -37,7 +40,10 @@ Future<void> main() async {
     late DcqlCredentialQuery verifierDcql;
 
     setUp(() async {
-      holderEmail = '${Uuid().v4()}@test.com';
+      holderEmail = '${const Uuid().v4()}@test.com';
+
+      verifierChallenge = const Uuid().v4();
+      verifierDomain = 'test.verifier.com';
 
       final issuerKeyStore = InMemoryKeyStore();
       final issuerWallet = PersistentWallet(issuerKeyStore);
@@ -220,7 +226,7 @@ Future<void> main() async {
 
           if (unsupportedFeatureDisclosures.isNotEmpty) {
             await verifierClient.mediatorClient.packAndSendMessage(
-              message: ProblemReportMessage(
+              ProblemReportMessage(
                 id: const Uuid().v4(),
                 to: [message.from!],
                 parentThreadId: message.threadId ?? message.id,
@@ -244,11 +250,10 @@ Future<void> main() async {
             holderDid: holderDid,
             dcqlQuery: verifierDcql,
             operation: 'registerAgent',
-            // TODO: uncomment when Dart SSI is fixed
-            // proofContext: VdspQueryDataProofContext(
-            //   challenge: const Uuid().v4(),
-            //   domain: 'test.verifier.com',
-            // ),
+            proofContext: VdspQueryDataProofContext(
+              challenge: verifierChallenge,
+              domain: verifierDomain,
+            ),
           );
         },
         onDataResponse: ({
@@ -262,20 +267,24 @@ Future<void> main() async {
             throw ArgumentError.notNull('from');
           }
 
+          final result = presentationAndCredentialsAreValid &&
+              verifiablePresentation?.proof.first.challenge ==
+                  verifierChallenge &&
+              verifiablePresentation!.proof.first.domain?.first ==
+                  verifierDomain;
+
           await verifierClient.sendDataProcessingResult(
             holderDid: message.from!,
             result: {
-              'success': true,
-              'presentationAndCredentialsAreValid':
-                  presentationAndCredentialsAreValid,
+              'success': result,
               'email': verifiablePresentation
                   ?.verifiableCredential.first.credentialSubject.first['email'],
             },
           );
         },
-        onProblemReport: (message) {
+        onProblemReport: (message) async {
           testCompleter.complete(message);
-          ConnectionPool.instance.stopConnections();
+          await ConnectionPool.instance.stopConnections();
         },
       );
 
@@ -321,7 +330,7 @@ Future<void> main() async {
             }
 
             await holderClient.mediatorClient.packAndSendMessage(
-              message: ProblemReportMessage(
+              ProblemReportMessage(
                 id: const Uuid().v4(),
                 to: [message.from!],
                 parentThreadId: message.threadId ?? message.id,
@@ -353,14 +362,16 @@ Future<void> main() async {
           testCompleter.complete(message);
           await ConnectionPool.instance.stopConnections();
         },
-        onProblemReport: (message) {
+        onProblemReport: (message) async {
           testCompleter.complete(message);
-          ConnectionPool.instance.stopConnections();
+          await ConnectionPool.instance.stopConnections();
         },
       );
 
       await ConnectionPool.instance.startConnections();
+
       final actual = await testCompleter.future;
+      final actualResult = actual.body?['result'] as Map<String, dynamic>?;
 
       expect(
         actual,
@@ -368,12 +379,12 @@ Future<void> main() async {
       );
 
       expect(
-        actual.body?['result']['email'],
+        actualResult?['email'],
         holderEmail,
       );
 
       expect(
-        actual.body?['result']['presentationAndCredentialsAreValid'],
+        actualResult?['success'],
         isTrue,
       );
     });

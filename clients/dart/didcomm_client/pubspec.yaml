@@ -10,10 +10,10 @@ environment:
 dependencies:
   affinidi_tdk_mediator_client:
     path: ../mediator_client
-  dcql: ^1.0.0
+  dcql: ^1.2.0
   json_annotation: ^4.9.0
   selective_disclosure_jwt: ^1.1.1
-  ssi: ^2.12.4
+  ssi: ^2.14.2
   uuid: ^4.5.1
 
 dev_dependencies:

@@ -1,10 +1,6 @@
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_holder_client.dart';
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdsp_verifier_client.dart';
-import 'package:affinidi_tdk_didcomm_client/src/common/client_options.dart';
+import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
+    hide CredentialFormat;
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
-import 'package:affinidi_tdk_didcomm_client/src/messages/vdsp/vdsp_data_response_message.dart';
-import 'package:affinidi_tdk_didcomm_client/src/models/constants/data_integrity_proof_suite.dart';
-import 'package:affinidi_tdk_didcomm_client/src/models/constants/feature_type.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
@@ -12,7 +8,17 @@ import 'package:uuid/uuid.dart';
 
 import '../../../../tests/integration/dart/test/test_config.dart';
 
+// Run commands below in your terminal to generate keys for Alice and Bob:
+// openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
+// openssl ecparam -name prime256v1 -genkey -noout -out example/keys/bob_private_key.pem
+
+// Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
+// Copy its DID Document URL into example/mediator/mediator_did.txt.
+
 Future<void> main() async {
+  final verifierChallenge = const Uuid().v4();
+  final verifierDomain = 'test.verifier.com';
+
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'didcomm_client',
   );
@@ -210,7 +216,7 @@ Future<void> main() async {
 
       if (unsupportedFeatureDisclosures.isNotEmpty) {
         await verifierClient.mediatorClient.packAndSendMessage(
-          message: ProblemReportMessage(
+          ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
             parentThreadId: message.threadId ?? message.id,
@@ -234,11 +240,10 @@ Future<void> main() async {
         holderDid: holderDid,
         dcqlQuery: verifierDcql,
         operation: 'registerAgent',
-        // TODO: uncomment when Dart SSI is fixed
-        // proofContext: VdspQueryDataProofContext(
-        //   challenge: const Uuid().v4(),
-        //   domain: 'test.verifier.com',
-        // ),
+        proofContext: VdspQueryDataProofContext(
+          challenge: verifierChallenge,
+          domain: verifierDomain,
+        ),
       );
     },
     onDataResponse: ({
@@ -267,18 +272,23 @@ Future<void> main() async {
         throw ArgumentError.notNull('from');
       }
 
+      // domain and challenge check to prevent replay attacks
+      final result = presentationAndCredentialsAreValid &&
+          verifiablePresentation?.proof.first.challenge == verifierChallenge &&
+          verifiablePresentation!.proof.first.domain?.first == verifierDomain;
+
       await verifierClient.sendDataProcessingResult(
         holderDid: message.from!,
-        result: {'success': true},
+        result: {'success': result},
       );
     },
-    onProblemReport: (message) {
+    onProblemReport: (message) async {
       prettyPrint(
         'A problem has occurred',
         object: message,
       );
 
-      ConnectionPool.instance.stopConnections();
+      await ConnectionPool.instance.stopConnections();
     },
   );
 
@@ -339,7 +349,7 @@ Future<void> main() async {
         }
 
         await holderClient.mediatorClient.packAndSendMessage(
-          message: ProblemReportMessage(
+          ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
             parentThreadId: message.threadId ?? message.id,
@@ -379,13 +389,13 @@ Future<void> main() async {
 
       await ConnectionPool.instance.stopConnections();
     },
-    onProblemReport: (message) {
+    onProblemReport: (message) async {
       prettyPrint(
         'A problem has occurred',
         object: message,
       );
 
-      ConnectionPool.instance.stopConnections();
+      await ConnectionPool.instance.stopConnections();
     },
   );
 

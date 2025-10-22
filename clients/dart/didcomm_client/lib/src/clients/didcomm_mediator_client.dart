@@ -6,6 +6,23 @@ import 'package:uuid/uuid.dart';
 
 import '../common/client_options.dart';
 
+/// A DIDComm v2 client for interacting with a mediator service using DID-based secure messaging.
+///
+/// Extends [MediatorClient] to provide:
+/// - DID and key management for secure communication
+/// - Packing and sending encrypted messages to a mediator or recipient
+/// - Request/response linking with timeouts and error handling
+/// - Flexible configuration via [ClientOptions]
+///
+/// Example usage:
+/// ```dart
+/// final client = await DidcommMediatorClient.init(
+///   didManager: myDidManager,
+///   mediatorDidDocument: mediatorDoc,
+/// );
+/// await client.packAndSendMessage(message: myMessage);
+/// final response = await client.waitForMessage(threadId: myThreadId);
+/// ```
 class DidcommMediatorClient extends MediatorClient {
   /// The DID manager for managing DIDs and keys.
   final DidManager didManager;
@@ -21,9 +38,9 @@ class DidcommMediatorClient extends MediatorClient {
     required super.keyPair,
     required super.didKeyId,
     required super.signer,
-    required super.authorizationProvider,
     required this.didManager,
-    required this.clientOptions,
+    this.clientOptions = const ClientOptions(),
+    super.authorizationProvider,
     super.forwardMessageOptions,
     super.webSocketOptions,
   });
@@ -71,9 +88,9 @@ class DidcommMediatorClient extends MediatorClient {
 
   /// Packs and sends a [PlainTextMessage] to the mediator and recipient.
   /// Throws if the message is invalid or recipient cannot be resolved.
-  Future<void> packAndSendMessage({
-    required PlainTextMessage message,
-  }) async {
+  Future<void> packAndSendMessage(
+    PlainTextMessage message,
+  ) async {
     if (message.to == null) {
       throw ArgumentError.notNull('message.to');
     }
@@ -112,6 +129,7 @@ class DidcommMediatorClient extends MediatorClient {
 
     final senderDidKeyId = matchedKeyPairs.first;
 
+    // TODO: add configuration for envelope type
     final packed = await DidcommMessage.packIntoEncryptedMessage(
       PlainTextMessage.fromJson({
         ...message.toJson(),
@@ -125,10 +143,18 @@ class DidcommMediatorClient extends MediatorClient {
       didKeyId: senderDidKeyId,
     );
 
+    final forwardMessageOptions = clientOptions.forwardMessageOptions;
+
+    final forwardFrom = forwardMessageOptions.shouldEncrypt &&
+            forwardMessageOptions.keyWrappingAlgorithm ==
+                KeyWrappingAlgorithm.ecdh1Pu
+        ? senderDidDocument.id
+        : null;
+
     final forwardMessage = ForwardMessage(
       id: const Uuid().v4(),
       to: [mediatorDidDocument.id],
-      from: senderDidDocument.id,
+      from: forwardFrom,
       next: recipientDidDocument.id,
       expiresTime: DateTime.now().toUtc().add(
             clientOptions.messageExpiration,
