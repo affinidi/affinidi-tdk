@@ -8,6 +8,7 @@ DTO contains params to sign credential
 | ----------------------- | ---------- | --------------------------------- | ---------- |
 | **unsigned_credential** | **object** | Unsigned Credential in Dm1 format |
 | **revocable**           | **bool**   |                                   | [optional] |
+| **signature_scheme**    | **str**    |                                   | [optional] |
 
 ## Example
 

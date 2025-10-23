@@ -31,7 +31,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   SignCredentialsDm1LdInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL,
-  SignCredentialsDm1LdInputDto.JSON_PROPERTY_REVOCABLE
+  SignCredentialsDm1LdInputDto.JSON_PROPERTY_REVOCABLE,
+  SignCredentialsDm1LdInputDto.JSON_PROPERTY_SIGNATURE_SCHEME
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialsDm1LdInputDto {
@@ -42,6 +43,47 @@ public class SignCredentialsDm1LdInputDto {
   public static final String JSON_PROPERTY_REVOCABLE = "revocable";
   @javax.annotation.Nullable
   private Boolean revocable;
+
+  /**
+   * Gets or Sets signatureScheme
+   */
+  public enum SignatureSchemeEnum {
+    ECDSA_SECP256K1_SHA256(String.valueOf("ecdsa_secp256k1_sha256")),
+    
+    ECDSA_P256_SHA256(String.valueOf("ecdsa_p256_sha256")),
+    
+    ED25519(String.valueOf("ed25519"));
+
+    private String value;
+
+    SignatureSchemeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SignatureSchemeEnum fromValue(String value) {
+      for (SignatureSchemeEnum b : SignatureSchemeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_SIGNATURE_SCHEME = "signatureScheme";
+  @javax.annotation.Nullable
+  private SignatureSchemeEnum signatureScheme;
 
   public SignCredentialsDm1LdInputDto() {
   }
@@ -96,6 +138,31 @@ public class SignCredentialsDm1LdInputDto {
     this.revocable = revocable;
   }
 
+  public SignCredentialsDm1LdInputDto signatureScheme(@javax.annotation.Nullable SignatureSchemeEnum signatureScheme) {
+    
+    this.signatureScheme = signatureScheme;
+    return this;
+  }
+
+  /**
+   * Get signatureScheme
+   * @return signatureScheme
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignatureSchemeEnum getSignatureScheme() {
+    return signatureScheme;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSignatureScheme(@javax.annotation.Nullable SignatureSchemeEnum signatureScheme) {
+    this.signatureScheme = signatureScheme;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -106,12 +173,13 @@ public class SignCredentialsDm1LdInputDto {
     }
     SignCredentialsDm1LdInputDto signCredentialsDm1LdInputDto = (SignCredentialsDm1LdInputDto) o;
     return Objects.equals(this.unsignedCredential, signCredentialsDm1LdInputDto.unsignedCredential) &&
-        Objects.equals(this.revocable, signCredentialsDm1LdInputDto.revocable);
+        Objects.equals(this.revocable, signCredentialsDm1LdInputDto.revocable) &&
+        Objects.equals(this.signatureScheme, signCredentialsDm1LdInputDto.signatureScheme);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unsignedCredential, revocable);
+    return Objects.hash(unsignedCredential, revocable, signatureScheme);
   }
 
   @Override
@@ -120,6 +188,7 @@ public class SignCredentialsDm1LdInputDto {
     sb.append("class SignCredentialsDm1LdInputDto {\n");
     sb.append("    unsignedCredential: ").append(toIndentedString(unsignedCredential)).append("\n");
     sb.append("    revocable: ").append(toIndentedString(revocable)).append("\n");
+    sb.append("    signatureScheme: ").append(toIndentedString(signatureScheme)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -181,6 +250,16 @@ public class SignCredentialsDm1LdInputDto {
     if (getRevocable() != null) {
       try {
         joiner.add(String.format("%srevocable%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocable()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `signatureScheme` to the URL query string
+    if (getSignatureScheme() != null) {
+      try {
+        joiner.add(String.format("%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

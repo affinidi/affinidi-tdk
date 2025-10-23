@@ -16,7 +16,9 @@ part 'claimed_credential_response.g.dart';
 /// * [credential] - claimed credential for a single issuance
 /// * [credentials] - claimed credentials for batch issuances
 @BuiltValue()
-abstract class ClaimedCredentialResponse implements Built<ClaimedCredentialResponse, ClaimedCredentialResponseBuilder> {
+abstract class ClaimedCredentialResponse
+    implements
+        Built<ClaimedCredentialResponse, ClaimedCredentialResponseBuilder> {
   /// claimed credential for a single issuance
   @Deprecated('credential has been deprecated')
   @BuiltValueField(wireName: r'credential')
@@ -28,18 +30,25 @@ abstract class ClaimedCredentialResponse implements Built<ClaimedCredentialRespo
 
   ClaimedCredentialResponse._();
 
-  factory ClaimedCredentialResponse([void updates(ClaimedCredentialResponseBuilder b)]) = _$ClaimedCredentialResponse;
+  factory ClaimedCredentialResponse(
+          [void updates(ClaimedCredentialResponseBuilder b)]) =
+      _$ClaimedCredentialResponse;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(ClaimedCredentialResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<ClaimedCredentialResponse> get serializer => _$ClaimedCredentialResponseSerializer();
+  static Serializer<ClaimedCredentialResponse> get serializer =>
+      _$ClaimedCredentialResponseSerializer();
 }
 
-class _$ClaimedCredentialResponseSerializer implements PrimitiveSerializer<ClaimedCredentialResponse> {
+class _$ClaimedCredentialResponseSerializer
+    implements PrimitiveSerializer<ClaimedCredentialResponse> {
   @override
-  final Iterable<Type> types = const [ClaimedCredentialResponse, _$ClaimedCredentialResponse];
+  final Iterable<Type> types = const [
+    ClaimedCredentialResponse,
+    _$ClaimedCredentialResponse
+  ];
 
   @override
   final String wireName = r'ClaimedCredentialResponse';
@@ -53,14 +62,17 @@ class _$ClaimedCredentialResponseSerializer implements PrimitiveSerializer<Claim
       yield r'credential';
       yield serializers.serialize(
         object.credential,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        specifiedType: const FullType(
+            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     if (object.credentials != null) {
       yield r'credentials';
       yield serializers.serialize(
         object.credentials,
-        specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+        specifiedType: const FullType(BuiltList, [
+          FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])
+        ]),
       );
     }
   }
@@ -71,7 +83,9 @@ class _$ClaimedCredentialResponseSerializer implements PrimitiveSerializer<Claim
     ClaimedCredentialResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -89,14 +103,18 @@ class _$ClaimedCredentialResponseSerializer implements PrimitiveSerializer<Claim
         case r'credential':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
           ) as BuiltMap<String, JsonObject?>;
           result.credential.replace(valueDes);
           break;
         case r'credentials':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])]),
+            specifiedType: const FullType(BuiltList, [
+              FullType(
+                  BuiltMap, [FullType(String), FullType.nullable(JsonObject)])
+            ]),
           ) as BuiltList<BuiltMap<String, JsonObject?>>;
           result.credentials.replace(valueDes);
           break;
@@ -128,4 +146,3 @@ class _$ClaimedCredentialResponseSerializer implements PrimitiveSerializer<Claim
     return result.build();
   }
 }
-

@@ -12,11 +12,12 @@ part 'blocked_users_input.g.dart';
 /// BlockedUsersInput
 ///
 /// Properties:
-/// * [name] 
-/// * [description] 
-/// * [userIds] 
+/// * [name]
+/// * [description]
+/// * [userIds]
 @BuiltValue()
-abstract class BlockedUsersInput implements Built<BlockedUsersInput, BlockedUsersInputBuilder> {
+abstract class BlockedUsersInput
+    implements Built<BlockedUsersInput, BlockedUsersInputBuilder> {
   @BuiltValueField(wireName: r'name')
   String? get name;
 
@@ -28,16 +29,19 @@ abstract class BlockedUsersInput implements Built<BlockedUsersInput, BlockedUser
 
   BlockedUsersInput._();
 
-  factory BlockedUsersInput([void updates(BlockedUsersInputBuilder b)]) = _$BlockedUsersInput;
+  factory BlockedUsersInput([void updates(BlockedUsersInputBuilder b)]) =
+      _$BlockedUsersInput;
 
   @BuiltValueHook(initializeBuilder: true)
   static void _defaults(BlockedUsersInputBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<BlockedUsersInput> get serializer => _$BlockedUsersInputSerializer();
+  static Serializer<BlockedUsersInput> get serializer =>
+      _$BlockedUsersInputSerializer();
 }
 
-class _$BlockedUsersInputSerializer implements PrimitiveSerializer<BlockedUsersInput> {
+class _$BlockedUsersInputSerializer
+    implements PrimitiveSerializer<BlockedUsersInput> {
   @override
   final Iterable<Type> types = const [BlockedUsersInput, _$BlockedUsersInput];
 
@@ -76,7 +80,9 @@ class _$BlockedUsersInputSerializer implements PrimitiveSerializer<BlockedUsersI
     BlockedUsersInput object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -140,4 +146,3 @@ class _$BlockedUsersInputSerializer implements PrimitiveSerializer<BlockedUsersI
     return result.build();
   }
 }
-

@@ -13,8 +13,8 @@ part 'user_list.g.dart';
 /// UserList
 ///
 /// Properties:
-/// * [records] 
-/// * [lastEvaluatedKey] 
+/// * [records]
+/// * [lastEvaluatedKey]
 @BuiltValue()
 abstract class UserList implements Built<UserList, UserListBuilder> {
   @BuiltValueField(wireName: r'records')
@@ -66,7 +66,9 @@ class _$UserListSerializer implements PrimitiveSerializer<UserList> {
     UserList object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    return _serializeProperties(serializers, object,
+            specifiedType: specifiedType)
+        .toList();
   }
 
   void _deserializeProperties(
@@ -123,4 +125,3 @@ class _$UserListSerializer implements PrimitiveSerializer<UserList> {
     return result.build();
   }
 }
-

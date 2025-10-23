@@ -20,7 +20,7 @@ import json
 
 
 from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictBool
+from pydantic import BaseModel, Field, StrictBool, StrictStr, validator
 
 class SignCredentialsDm2SdJwtInputDto(BaseModel):
     """
@@ -29,7 +29,18 @@ class SignCredentialsDm2SdJwtInputDto(BaseModel):
     unsigned_credential: Dict[str, Any] = Field(default=..., alias="unsignedCredential", description="Unsigned Credential in Dm2 format")
     revocable: Optional[StrictBool] = None
     disclosure_frame: Dict[str, Any] = Field(default=..., alias="disclosureFrame")
-    __properties = ["unsignedCredential", "revocable", "disclosureFrame"]
+    signature_scheme: Optional[StrictStr] = Field(default=None, alias="signatureScheme")
+    __properties = ["unsignedCredential", "revocable", "disclosureFrame", "signatureScheme"]
+
+    @validator('signature_scheme')
+    def signature_scheme_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519',):
+            raise ValueError("must be one of enum values ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519')")
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -69,7 +80,8 @@ class SignCredentialsDm2SdJwtInputDto(BaseModel):
         _obj = SignCredentialsDm2SdJwtInputDto.parse_obj({
             "unsigned_credential": obj.get("unsignedCredential"),
             "revocable": obj.get("revocable"),
-            "disclosure_frame": obj.get("disclosureFrame")
+            "disclosure_frame": obj.get("disclosureFrame"),
+            "signature_scheme": obj.get("signatureScheme")
         })
         return _obj
 
