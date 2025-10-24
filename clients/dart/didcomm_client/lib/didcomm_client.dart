@@ -1,19 +1,10 @@
 export 'src/clients.dart';
-export 'src/clients/didcomm_atlas_client.dart' show DidcommAtlasClient;
 export 'src/clients/didcomm_service_client.dart';
 export 'src/clients/request_credentials_options.dart';
 export 'src/clients/vdsp_holder_client.dart';
 export 'src/clients/vdsp_verifier_client.dart';
 export 'src/common/client_options.dart';
 export 'src/messages.dart';
-// ama messages
-export 'src/messages/ama/deploy_mediator_instance_message.dart';
-export 'src/messages/ama/destroy_mediator_instance_message.dart';
-export 'src/messages/ama/get_mediator_instance_metadata_message.dart';
-export 'src/messages/ama/get_mediator_instances_list_message.dart';
-export 'src/messages/ama/get_mediator_requests_message.dart';
-export 'src/messages/ama/update_mediator_instance_configuration_message.dart';
-export 'src/messages/ama/update_mediator_instance_deployment_message.dart';
 // vdsp messages
 export 'src/messages/vdsp/vdsp_data_processing_result_message.dart';
 export 'src/messages/vdsp/vdsp_data_response_message.dart';
@@ -25,17 +16,5 @@ export 'src/models/constants/data_query_language.dart';
 export 'src/models/constants/feature_type.dart';
 export 'src/models/constants/json_web_signature_algorithm.dart';
 export 'src/models/constants/verifiable_credentials_data_model.dart';
-// models/data_models
-export 'src/models/data_models/mediator_acl.dart';
-export 'src/models/data_models/mediator_configuration.dart';
-export 'src/models/data_models/mediator_deployment.dart';
-export 'src/models/data_models/request_details.dart';
-export 'src/models/request_bodies/deploy_mediator_instance_request.dart';
-export 'src/models/request_bodies/destroy_mediator_instance_request.dart';
-export 'src/models/request_bodies/get_mediator_instance_metadata_request.dart';
-export 'src/models/request_bodies/get_mediator_instances_list_request.dart';
-export 'src/models/request_bodies/get_mediator_requests_request.dart';
-export 'src/models/request_bodies/update_mediator_instance_configuration_request.dart';
-export 'src/models/request_bodies/update_mediator_instance_deployment_request.dart';
 // models/results
 export 'src/models/results/data_query_result.dart';

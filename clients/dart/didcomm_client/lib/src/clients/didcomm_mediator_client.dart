@@ -191,6 +191,8 @@ class DidcommMediatorClient extends MediatorClient {
           expectedMessageWrappingTypes: [
             MessageWrappingType.authcryptSignPlaintext,
             MessageWrappingType.anoncryptSignPlaintext,
+            MessageWrappingType.authcryptPlaintext,
+            MessageWrappingType.anoncryptAuthcryptPlaintext,
           ],
         );
 

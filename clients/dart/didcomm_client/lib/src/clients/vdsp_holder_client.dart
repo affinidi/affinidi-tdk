@@ -182,6 +182,7 @@ class VdspHolderClient {
           recipientDidManager: didManager,
           expectedMessageWrappingTypes: [
             MessageWrappingType.authcryptPlaintext,
+            MessageWrappingType.anoncryptSignPlaintext,
             MessageWrappingType.authcryptSignPlaintext,
             MessageWrappingType.anoncryptAuthcryptPlaintext,
           ],

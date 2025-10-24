@@ -114,6 +114,12 @@ Future<void> main() async {
         holderDidManager.assertionMethod.first,
       );
 
+      await config.configureAcl(
+        mediatorDidDocument: mediatorDidDocument,
+        didManager: verifierDidManager,
+        theirDids: [holderSigner.did],
+      );
+
       holderVerifiableCredentials = await Future.wait(
         [
           VcDataModelV1(

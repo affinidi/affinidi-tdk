@@ -85,6 +85,12 @@ void main() async {
     await readDid(config.mediatorDidPath),
   );
 
+  await config.configureAcl(
+    mediatorDidDocument: bobMediatorDocument,
+    didManager: bobDidManager,
+    theirDids: [aliceDidDocument.id],
+  );
+
   final alicePlainTextMassage = PlainTextMessage(
     id: const Uuid().v4(),
     from: aliceDidDocument.id,
@@ -120,6 +126,7 @@ void main() async {
 
   final forwardMessage = ForwardMessage(
     id: const Uuid().v4(),
+    from: aliceDidDocument.id,
     to: [bobMediatorDocument.id],
     next: bobDidDocument.id,
     expiresTime: expiresTime,
