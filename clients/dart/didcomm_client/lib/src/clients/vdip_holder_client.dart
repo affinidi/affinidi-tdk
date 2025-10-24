@@ -63,9 +63,10 @@ class VdipHolderClient {
         challenge: options.challenge,
         credentialFormat: options.credentialFormat.toString(),
         jsonWebSignatureAlgorithm: options.jsonWebSignatureAlgorithm.toString(),
+        credentialMeta: options.credentialMeta,
+        comment: options.comment,
       ),
     );
-
     await mediatorClient.packAndSendMessage(
       requestIssuanceMessage,
     );
@@ -147,6 +148,20 @@ class VdipHolderClient {
           onFeatureQuery(
             QueryMessage.fromJson(plainTextJson),
           );
+
+          return;
+        }
+
+        if (unpacked.type == VdipIssuedCredentialMessage.messageType) {
+          onCredentialsIssuanceResponse(VdipIssuedCredentialMessage(
+            id: unpacked.id,
+            body: unpacked.body,
+            from: unpacked.from,
+            to: unpacked.to,
+            createdTime: unpacked.createdTime,
+            expiresTime: unpacked.expiresTime,
+            threadId: unpacked.threadId,
+          ));
 
           return;
         }

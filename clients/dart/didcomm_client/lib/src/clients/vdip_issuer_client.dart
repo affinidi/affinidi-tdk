@@ -116,9 +116,8 @@ class VdipIssuerClient {
 
     final message = VdipIssuedCredentialMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [holderDid],
-      body: issuedCredentialBody,
+      body: issuedCredentialBody.toJson(),
     );
 
     await mediatorClient.packAndSendMessage(message);
@@ -127,7 +126,9 @@ class VdipIssuerClient {
 
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
-    required void Function(PlainTextMessage) onRequestToIssueCredentials,
+    required void Function(
+      PlainTextMessage message,
+    ) onRequestToIssueCredentials,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function({int? closeCode, String? closeReason})? onDone,
@@ -156,7 +157,7 @@ class VdipIssuerClient {
 
           return;
         }
-
+        // Add fields to callback, assertion validity
         if (unpacked.type == VdipRequestIssuanceMessage.messageType) {
           onRequestToIssueCredentials(
             PlainTextMessage.fromJson(plainTextJson),

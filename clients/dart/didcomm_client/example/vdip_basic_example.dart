@@ -104,11 +104,18 @@ Future<void> main() async {
     holderDidManager.assertionMethod.first,
   );
 
-  await config.configureAcl(
-    mediatorDidDocument: mediatorDidDocument,
-    didManager: issuerDidManager,
-    theirDids: [holderSigner.did],
-  );
+  await Future.wait([
+    config.configureAcl(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: issuerDidManager,
+      theirDids: [holderSigner.did],
+    ),
+    config.configureAcl(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: holderDidManager,
+      theirDids: [issuerSigner.did],
+    ),
+  ]);
 
   final vdipHolderClient = await VdipHolderClient.init(
     mediatorDidDocument: mediatorDidDocument,
@@ -146,8 +153,9 @@ Future<void> main() async {
       await vdipHolderClient.requestCredentials(
         holderDid: holderSigner.did,
         issuerDid: issuerSigner.did,
-        options: const RequestCredentialsOptions(
+        options: RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
+          credentialMeta: CredentialMeta(data: {'email': 'test@example.com'}),
         ),
       );
     },
@@ -177,8 +185,10 @@ Future<void> main() async {
       );
     },
     onRequestToIssueCredentials: (message) async {
-      final email = message.body?['email'] as String?;
-
+      final vdipRequestIssuanceMessageBody =
+          VdipRequestIssuanceMessageBody.fromJson(message.body!);
+      final email = vdipRequestIssuanceMessageBody
+          .credentialMeta?.data?['email'] as String?;
       if (email == null) {
         // TODO: put into metadata
         throw ArgumentError.notNull('body.email');
