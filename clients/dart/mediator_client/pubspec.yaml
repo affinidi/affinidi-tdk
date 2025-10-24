@@ -8,9 +8,9 @@ environment:
 
 dependencies:
   crypto: ^3.0.6
-  didcomm: ^2.0.0
+  didcomm: ^2.0.2
   dio: ^5.9.0
-  ssi: ^2.12.4
+  ssi: ^2.15.1
   uuid: ^4.5.1
 
 dev_dependencies:

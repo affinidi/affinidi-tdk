@@ -30,24 +30,12 @@ class ClientOptions {
 
 /// Affinidi-specific client options, extending [ClientOptions].
 class AffinidiClientOptions extends ClientOptions {
-  /// The DID of the mediator service.
-  final String mediatorDid;
-
-  /// The DID of the Atlas service.
-  final String atlasDid;
-
   /// Creates an [AffinidiClientOptions] instance.
   ///
-  /// [mediatorDid] sets the mediator DID.
-  /// [atlasDid] sets the Atlas DID.
   /// Inherits all options from [ClientOptions].
   const AffinidiClientOptions({
     super.requestTimeout,
     super.messageExpiration,
-    this.mediatorDid =
-        'did:web:ed39392b-8b24-49b1-9884-efc9fb1fc3f8.atlas.affinidi.io',
-    // TODO: clarify when we should use PROD instead of DEV
-    this.atlasDid = 'did:web:did.dev.affinidi.io:ama',
     super.forwardMessageOptions = const ForwardMessageOptions(
       shouldSign: true,
       shouldEncrypt: true,

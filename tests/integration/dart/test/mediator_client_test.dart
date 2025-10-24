@@ -145,7 +145,21 @@ void main() async {
                 encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
               ),
             ),
+            forwardMessageOptions: const ForwardMessageOptions(
+              shouldSign: true,
+              keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
+              encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+            ),
           );
+
+          await config.configureAcl(
+            mediatorDidDocument: bobMediatorDocument,
+            didManager: bobDidManager,
+            theirDids: [aliceDidDocument.id],
+          );
+
+          // Clear Bob's mediator messages on the mediator before each test
+          await bobMediatorClient.fetchMessages();
         });
 
         test('REST API works correctly', () async {
@@ -211,16 +225,15 @@ void main() async {
                 expectedMessageWrappingTypes: [
                   MessageWrappingType.anoncryptSignPlaintext,
                   MessageWrappingType.authcryptSignPlaintext,
-                ],
-                expectedSigners: [
-                  aliceDidDocument.assertionMethod.first.didKeyId,
+                  MessageWrappingType.authcryptPlaintext,
+                  MessageWrappingType.anoncryptAuthcryptPlaintext,
                 ],
               ),
             ),
           );
 
           final actualBodyContents = actualUnpackedMessages
-              .map<String?>((message) => message.body?['content'] as String)
+              .map<String?>((message) => message.body?['content'] as String?)
               .toList();
 
           expect(

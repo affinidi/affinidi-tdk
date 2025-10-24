@@ -89,7 +89,7 @@ Future<void> main() async {
       group(keyType.name, () {
         for (final didMethod in [
           'did:key',
-          // 'did:peer',
+          'did:peer',
         ]) {
           group(didMethod, () {
             setUp(() async {

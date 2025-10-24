@@ -14,6 +14,10 @@ void main() async {
     packageDirectoryName: 'mediator_client',
   );
 
+  final senderDid = await config.getDidKeyForPrivateKeyPath(
+    config.alicePrivateKeyPath,
+  );
+
   final receiverKeyStore = InMemoryKeyStore();
   final receiverWallet = PersistentWallet(receiverKeyStore);
 
@@ -45,6 +49,14 @@ void main() async {
     object: receiverDidDocument,
   );
 
+  await config.configureAcl(
+    mediatorDidDocument: await UniversalDIDResolver.defaultResolver.resolveDid(
+      await readDid(config.mediatorDidPath),
+    ),
+    didManager: receiverDidManager,
+    theirDids: [senderDid],
+  );
+
   final receiverMediatorDocument =
       await UniversalDIDResolver.defaultResolver.resolveDid(
     await readDid(config.mediatorDidPath),
@@ -70,6 +82,9 @@ void main() async {
       recipientDidManager: receiverDidManager,
       expectedMessageWrappingTypes: [
         MessageWrappingType.anoncryptSignPlaintext,
+        MessageWrappingType.authcryptSignPlaintext,
+        MessageWrappingType.authcryptPlaintext,
+        MessageWrappingType.anoncryptAuthcryptPlaintext,
       ],
     );
 

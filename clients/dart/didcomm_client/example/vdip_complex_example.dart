@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
     hide CredentialFormat;
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_holder_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_issuer_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
@@ -91,6 +90,12 @@ Future<void> main() async {
 
   final holderSigner = await holderDidManager.getSigner(
     holderDidManager.assertionMethod.first,
+  );
+
+  await config.configureAcl(
+    mediatorDidDocument: mediatorDidDocument,
+    didManager: issuerDidManager,
+    theirDids: [holderSigner.did],
   );
 
   final holderVerifiableCredentials = await Future.wait(

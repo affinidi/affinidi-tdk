@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:didcomm/didcomm.dart';
 import 'package:path/path.dart' as path;
+import 'package:ssi/ssi.dart';
+import 'package:uuid/uuid.dart';
 
 // Run commands below in your terminal to generate keys for Alice and Bob:
 // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
@@ -16,14 +18,12 @@ import 'package:path/path.dart' as path;
 class TestConfig {
   final String packagePath;
   final String mediatorDidPath;
-  final String mediatorWithAclDidPath;
   final String alicePrivateKeyPath;
   final String bobPrivateKeyPath;
 
   TestConfig._({
     required this.packagePath,
     required this.mediatorDidPath,
-    required this.mediatorWithAclDidPath,
     required this.alicePrivateKeyPath,
     required this.bobPrivateKeyPath,
   });
@@ -37,12 +37,10 @@ class TestConfig {
 
     final [
       mediatorDidPath,
-      mediatorWithAclDidPath,
       alicePrivateKeyPath,
-      bobPrivateKeyPath
+      bobPrivateKeyPath,
     ] = [
       'example/mediator/mediator_did.txt',
-      'example/mediator/mediator_with_acl_did.txt',
       'example/keys/alice_private_key.pem',
       'example/keys/bob_private_key.pem',
     ]
@@ -57,14 +55,6 @@ class TestConfig {
     await writeEnvironmentVariableToFileIfNeeded(
       'TEST_MEDIATOR_DID',
       mediatorDidPath,
-    );
-
-    await writeEnvironmentVariableToFileIfNeeded(
-      'TEST_MEDIATOR_WITH_ACL_DID',
-      _getFilePath(
-        packagePath: packagePath,
-        fileName: mediatorWithAclDidPath,
-      ),
     );
 
     await writeEnvironmentVariableToFileIfNeeded(
@@ -88,7 +78,6 @@ class TestConfig {
     return TestConfig._(
       packagePath: packagePath,
       mediatorDidPath: mediatorDidPath,
-      mediatorWithAclDidPath: mediatorWithAclDidPath,
       alicePrivateKeyPath: alicePrivateKeyPath,
       bobPrivateKeyPath: bobPrivateKeyPath,
     );
@@ -112,5 +101,69 @@ class TestConfig {
       '../../../clients/dart',
       packageDirectoryName,
     ));
+  }
+
+  Future<void> configureAcl({
+    required DidDocument mediatorDidDocument,
+    required DidManager didManager,
+    required List<String> theirDids,
+    DateTime? expiresTime,
+  }) async {
+    final ownDidDocument = await didManager.getDidDocument();
+
+    final mediatorClient = await MediatorClient.init(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: didManager,
+      authorizationProvider: await AffinidiAuthorizationProvider.init(
+        mediatorDidDocument: mediatorDidDocument,
+        didManager: didManager,
+      ),
+      forwardMessageOptions: ForwardMessageOptions(
+        encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+        keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+        shouldSign: true,
+      ),
+    );
+
+    final accessListAddMessage = AccessListAddMessage(
+      id: const Uuid().v4(),
+      from: ownDidDocument.id,
+      to: [mediatorClient.mediatorDidDocument.id],
+      theirDids: theirDids,
+      expiresTime: expiresTime,
+    );
+
+    await mediatorClient.sendAclManagementMessage(
+      accessListAddMessage,
+    );
+  }
+
+  Future<String> getDidKeyForPrivateKeyPath(String privateKeyPath) async {
+    final keyStore = InMemoryKeyStore();
+    final wallet = PersistentWallet(keyStore);
+
+    final didManager = DidKeyManager(
+      wallet: wallet,
+      store: InMemoryDidStore(),
+    );
+
+    final keyId = 'key-1';
+
+    final privateKeyBytes = await extractPrivateKeyBytes(
+      bobPrivateKeyPath,
+    );
+
+    await keyStore.set(
+      keyId,
+      StoredKey(
+        keyType: KeyType.p256,
+        privateKeyBytes: privateKeyBytes,
+      ),
+    );
+
+    await didManager.addVerificationMethod(keyId);
+    final receiverDidDocument = await didManager.getDidDocument();
+
+    return receiverDidDocument.id;
   }
 }
