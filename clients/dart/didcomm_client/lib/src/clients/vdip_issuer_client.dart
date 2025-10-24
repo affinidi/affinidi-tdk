@@ -157,6 +157,14 @@ class VdipIssuerClient {
           return;
         }
 
+        if (unpacked.type == VdipRequestIssuanceMessage.messageType) {
+          onRequestToIssueCredentials(
+            PlainTextMessage.fromJson(plainTextJson),
+          );
+
+          return;
+        }
+
         if (onProblemReport != null &&
             unpacked.type == ProblemReportMessage.messageType) {
           onProblemReport(
