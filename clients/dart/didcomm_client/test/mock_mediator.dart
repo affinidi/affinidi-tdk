@@ -54,6 +54,8 @@ class MockMediator {
         message: message.toJson(),
         recipientDidManager: didManager,
         expectedMessageWrappingTypes: [
+          // mock mediator supports anoncryptPlainText messages
+          MessageWrappingType.anoncryptPlaintext,
           MessageWrappingType.authcryptPlaintext,
           MessageWrappingType.authcryptSignPlaintext,
           MessageWrappingType.anoncryptSignPlaintext,
