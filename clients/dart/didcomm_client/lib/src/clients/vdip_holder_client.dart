@@ -179,6 +179,7 @@ class VdipHolderClient {
           expectedMessageWrappingTypes: [
             MessageWrappingType.authcryptPlaintext,
             MessageWrappingType.authcryptSignPlaintext,
+            MessageWrappingType.anoncryptSignPlaintext,
             MessageWrappingType.anoncryptAuthcryptPlaintext,
           ],
         );
