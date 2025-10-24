@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
@@ -17,39 +15,15 @@ void main() async {
     packageDirectoryName: 'mediator_client',
   );
 
-  // Replace this DID Document with your receiver DID Document
-  final receiverDidDocument = DidDocument.fromJson(jsonDecode('''
-    {
-      "id": "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy",
-      "@context": [
-        "https://www.w3.org/ns/did/v1",
-        "https://ns.did.ai/suites/multikey-2021/v1/"
-      ],
-      "verificationMethod": [
-        {
-          "id": "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy#zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy",
-          "controller": "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy",
-          "type": "P256Key2021",
-          "publicKeyMultibase": "zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy"
-        }
-      ],
-      "authentication": [
-        "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy#zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy"
-      ],
-      "capabilityDelegation": [
-        "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy#zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy"
-      ],
-      "capabilityInvocation": [
-        "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy#zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy"
-      ],
-      "keyAgreement": [
-        "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy#zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy"
-      ],
-      "assertionMethod": [
-        "did:key:zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy#zDnaemfWXqUu9bSWWEAVb4KNfbPC1Ca5AftrkiuDeUDdw1eMy"
-      ]
-    }
-  '''));
+  // Replace this DID Document with your receiver DID
+  final receiverDid = await config.getDidKeyForPrivateKeyPath(
+    config.bobPrivateKeyPath,
+  );
+
+  final receiverDidDocument =
+      await UniversalDIDResolver.defaultResolver.resolveDid(
+    receiverDid,
+  );
 
   final messageForReceiver = 'Hello, Bob!';
 
@@ -127,6 +101,7 @@ void main() async {
 
   final forwardMessage = ForwardMessage(
     id: const Uuid().v4(),
+    from: senderDidDocument.id,
     to: [receiverMediatorDidDocument.id],
     next: receiverDidDocument.id,
     expiresTime: expiresTime,

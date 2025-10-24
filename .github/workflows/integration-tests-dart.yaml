@@ -42,7 +42,6 @@ jobs:
       - name: Run integration tests
         env:
           TEST_MEDIATOR_DID: ${{ vars.TEST_MEDIATOR_DID }}
-          TEST_MEDIATOR_WITH_ACL_DID: ${{ vars.TEST_MEDIATOR_WITH_ACL_DID }}
           TEST_ALICE_PRIVATE_KEY_PEM: ${{ vars.TEST_ALICE_PRIVATE_KEY_PEM }}
           TEST_BOB_PRIVATE_KEY_PEM: ${{ vars.TEST_BOB_PRIVATE_KEY_PEM }}
         run: dart test --concurrency=1

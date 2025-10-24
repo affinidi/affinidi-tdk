@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
     hide CredentialFormat;
-import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_holder_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_issuer_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
@@ -23,13 +22,8 @@ Future<void> main() async {
   // 1. Holder queries Issuer features
   // 2. Issuer replies with features it supports
   // 3. Holder requests MusicStreaming VC from Issuer
-  // 4. Issuer starts VDSP flow
-  //  4.1. Issuer queries Holder features
-  //  4.2. Holder replies with features it supports
-  //  4.3. Issuer requests email VC from Holder
-  //  4.4. Holder shares email VC with Issuer
-  // 5. Issuer issues MusicStreaming VC and sends it to Holder
-  // 6. Holder receives MusicStreaming VC
+  // 4. Issuer issues MusicStreaming VC and sends it to Holder
+  // 5. Holder receives MusicStreaming VC
 
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'didcomm_client',
@@ -98,6 +92,12 @@ Future<void> main() async {
 
   final holderSigner = await holderDidManager.getSigner(
     holderDidManager.assertionMethod.first,
+  );
+
+  await config.configureAcl(
+    mediatorDidDocument: mediatorDidDocument,
+    didManager: issuerDidManager,
+    theirDids: [holderSigner.did],
   );
 
   final holderVerifiableCredentials = await Future.wait(
@@ -377,11 +377,10 @@ Future<void> main() async {
         holderDid: holderDid,
         dcqlQuery: verifierDsql,
         operation: 'registerAgent',
-        // TODO: uncomment when Dart SSI is fixed
-        // proofContext: VdspQueryDataProofContext(
-        //   challenge: const Uuid().v4(),
-        //   domain: 'test.verifier.com',
-        // ),
+        proofContext: VdspQueryDataProofContext(
+          challenge: const Uuid().v4(),
+          domain: 'test.verifier.com',
+        ),
       );
     },
     onDataResponse: ({

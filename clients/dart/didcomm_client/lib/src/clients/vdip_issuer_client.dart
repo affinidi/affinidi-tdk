@@ -6,8 +6,6 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
-import '../messages/vdip/issued_credential/issued_credential_body/vdip_issued_credential_body.dart';
-import '../messages/vdip/issued_credential/issued_credential_message/vdip_issued_credential_message.dart';
 import 'didcomm_mediator_client.dart';
 
 class VdipIssuerClient {
@@ -60,7 +58,6 @@ class VdipIssuerClient {
 
     final message = DiscloseMessage(
       id: const Uuid().v4(),
-      from: mediatorClient.signer.did,
       to: [holderDid],
       threadId: queryMessage.threadId ?? queryMessage.id,
       body: DiscloseBody(
@@ -143,6 +140,7 @@ class VdipIssuerClient {
           recipientDidManager: didManager,
           expectedMessageWrappingTypes: [
             MessageWrappingType.authcryptPlaintext,
+            MessageWrappingType.anoncryptSignPlaintext,
             MessageWrappingType.authcryptSignPlaintext,
             MessageWrappingType.anoncryptAuthcryptPlaintext,
           ],
