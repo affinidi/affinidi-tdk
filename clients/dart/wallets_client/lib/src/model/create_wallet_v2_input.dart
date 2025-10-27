@@ -31,7 +31,7 @@ abstract class CreateWalletV2Input
   /// Define how DID of your wallet is created and resolved
   @BuiltValueField(wireName: r'didMethod')
   CreateWalletV2InputDidMethodEnum? get didMethod;
-  // enum didMethodEnum {  key,  web,  peer0,  };
+  // enum didMethodEnum {  key,  web,  peer,  };
 
   /// URL of the DID. Required if the did method is web
   @BuiltValueField(wireName: r'didWebUrl')
@@ -209,9 +209,9 @@ class CreateWalletV2InputDidMethodEnum extends EnumClass {
       _$createWalletV2InputDidMethodEnum_web;
 
   /// Define how DID of your wallet is created and resolved
-  @BuiltValueEnumConst(wireName: r'peer0')
-  static const CreateWalletV2InputDidMethodEnum peer0 =
-      _$createWalletV2InputDidMethodEnum_peer0;
+  @BuiltValueEnumConst(wireName: r'peer')
+  static const CreateWalletV2InputDidMethodEnum peer =
+      _$createWalletV2InputDidMethodEnum_peer;
 
   static Serializer<CreateWalletV2InputDidMethodEnum> get serializer =>
       _$createWalletV2InputDidMethodEnumSerializer;

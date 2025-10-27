@@ -10,9 +10,8 @@ const CreateWalletV2InputDidMethodEnum _$createWalletV2InputDidMethodEnum_key =
     const CreateWalletV2InputDidMethodEnum._('key');
 const CreateWalletV2InputDidMethodEnum _$createWalletV2InputDidMethodEnum_web =
     const CreateWalletV2InputDidMethodEnum._('web');
-const CreateWalletV2InputDidMethodEnum
-    _$createWalletV2InputDidMethodEnum_peer0 =
-    const CreateWalletV2InputDidMethodEnum._('peer0');
+const CreateWalletV2InputDidMethodEnum _$createWalletV2InputDidMethodEnum_peer =
+    const CreateWalletV2InputDidMethodEnum._('peer');
 
 CreateWalletV2InputDidMethodEnum _$createWalletV2InputDidMethodEnumValueOf(
     String name) {
@@ -21,8 +20,8 @@ CreateWalletV2InputDidMethodEnum _$createWalletV2InputDidMethodEnumValueOf(
       return _$createWalletV2InputDidMethodEnum_key;
     case 'web':
       return _$createWalletV2InputDidMethodEnum_web;
-    case 'peer0':
-      return _$createWalletV2InputDidMethodEnum_peer0;
+    case 'peer':
+      return _$createWalletV2InputDidMethodEnum_peer;
     default:
       throw ArgumentError(name);
   }
@@ -33,7 +32,7 @@ final BuiltSet<CreateWalletV2InputDidMethodEnum>
         CreateWalletV2InputDidMethodEnum>(const <CreateWalletV2InputDidMethodEnum>[
   _$createWalletV2InputDidMethodEnum_key,
   _$createWalletV2InputDidMethodEnum_web,
-  _$createWalletV2InputDidMethodEnum_peer0,
+  _$createWalletV2InputDidMethodEnum_peer,
 ]);
 
 const CreateWalletV2InputAlgorithmEnum
@@ -79,12 +78,12 @@ class _$CreateWalletV2InputDidMethodEnumSerializer
   static const Map<String, Object> _toWire = const <String, Object>{
     'key': 'key',
     'web': 'web',
-    'peer0': 'peer0',
+    'peer': 'peer',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'key': 'key',
     'web': 'web',
-    'peer0': 'peer0',
+    'peer': 'peer',
   };
 
   @override

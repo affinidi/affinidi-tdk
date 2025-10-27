@@ -134,7 +134,7 @@ export interface CreateWalletV2Input {
 export const CreateWalletV2InputDidMethodEnum = {
   Key: 'key',
   Web: 'web',
-  Peer0: 'peer0',
+  Peer: 'peer',
 } as const
 
 export type CreateWalletV2InputDidMethodEnum =

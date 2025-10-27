@@ -54,7 +54,7 @@ public class CreateWalletV2Input {
     
     WEB(String.valueOf("web")),
     
-    PEER0(String.valueOf("peer0"));
+    PEER(String.valueOf("peer"));
 
     private String value;
 

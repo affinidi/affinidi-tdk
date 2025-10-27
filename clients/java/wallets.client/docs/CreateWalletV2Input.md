@@ -12,11 +12,11 @@
 
 ## Enum: DidMethodEnum
 
-| Name  | Value             |
-| ----- | ----------------- |
-| KEY   | &quot;key&quot;   |
-| WEB   | &quot;web&quot;   |
-| PEER0 | &quot;peer0&quot; |
+| Name | Value            |
+| ---- | ---------------- |
+| KEY  | &quot;key&quot;  |
+| WEB  | &quot;web&quot;  |
+| PEER | &quot;peer&quot; |
 
 ## Enum: AlgorithmEnum
 
