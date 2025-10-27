@@ -255,6 +255,13 @@ class VdspHolderClient {
     VdspQueryDataProofContext? proofContext,
   }) async {
     final proofGenerator = switch (verifiablePresentationProofSuite) {
+      DataIntegrityProofSuite.secp256k1_signature_2019 =>
+        Secp256k1Signature2019Generator(
+          signer: verifiablePresentationSigner,
+          challenge: proofContext?.challenge,
+          domain: proofContext != null ? [proofContext.domain] : null,
+          proofPurpose: ProofPurpose.authentication,
+        ) as EmbeddedProofGenerator,
       DataIntegrityProofSuite.ecdsa_jcs_2019 => DataIntegrityEcdsaJcsGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
