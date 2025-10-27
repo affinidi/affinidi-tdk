@@ -15,8 +15,10 @@ class CredentialMeta {
   @JsonKey(name: 'valid_from')
   DateTime? validFrom;
 
+  Map<String, dynamic>? data;
+
   /// Constructor
-  CredentialMeta({this.context, this.issuer, this.validFrom});
+  CredentialMeta({this.context, this.issuer, this.validFrom, this.data});
 
   /// Creates [CredentialMeta] from JSON.
   factory CredentialMeta.fromJson(Map<String, dynamic> json) =>
