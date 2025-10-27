@@ -6,34 +6,26 @@ import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/did_signer_adapter.dart';
-import '../common/feature_discovery_helper.dart';
 import '../common/jwt_helper.dart';
-import '../messages/vdip/request_issuance/request_issuance_body/vdip_request_issuance_body.dart';
-import '../messages/vdip/request_issuance/request_issuance_message/vdip_request_issuance_message.dart';
 import 'didcomm_mediator_client.dart';
-import 'request_credentials_options.dart' show RequestCredentialsOptions;
 
 class VdipHolderClient {
   final DidcommMediatorClient mediatorClient;
   final DidManager didManager;
-  final List<Disclosure> featureDisclosures;
 
   VdipHolderClient({
     required this.didManager,
     required this.mediatorClient,
-    required this.featureDisclosures,
   });
 
   static Future<VdipHolderClient> init({
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
-    required List<Disclosure> featureDisclosures,
     AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
   }) async =>
       VdipHolderClient(
         didManager: didManager,
-        featureDisclosures: featureDisclosures,
         mediatorClient: await DidcommMediatorClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
@@ -58,41 +50,6 @@ class VdipHolderClient {
     return message;
   }
 
-  Future<DiscloseMessage> disclose({
-    required QueryMessage queryMessage,
-  }) async {
-    final issuerDid = queryMessage.from;
-
-    if (issuerDid == null) {
-      throw StateError('Query message is missing issuer.');
-    }
-
-    final rawBody = queryMessage.body;
-
-    if (rawBody == null) {
-      throw StateError('Query message body is missing.');
-    }
-
-    final queryBody = QueryBody.fromJson(
-      Map<String, dynamic>.from(rawBody),
-    );
-
-    final message = DiscloseMessage(
-      id: const Uuid().v4(),
-      to: [issuerDid],
-      threadId: queryMessage.threadId ?? queryMessage.id,
-      body: DiscloseBody(
-        disclosures: FeatureDiscoveryHelper.getSupportedFeatures(
-          featureDisclosures,
-          queryBody.queries,
-        ),
-      ),
-    );
-
-    await mediatorClient.packAndSendMessage(message);
-    return message;
-  }
-
   Future<VdipRequestIssuanceMessage> requestCredentials({
     required String issuerDid,
     required String holderDid,
@@ -100,16 +57,16 @@ class VdipHolderClient {
   }) async {
     final requestIssuanceMessage = VdipRequestIssuanceMessage(
       id: const Uuid().v4(),
-      from: holderDid,
       to: [issuerDid],
       body: VdipRequestIssuanceMessageBody(
         proposalId: options.proposalId,
         challenge: options.challenge,
         credentialFormat: options.credentialFormat.toString(),
         jsonWebSignatureAlgorithm: options.jsonWebSignatureAlgorithm.toString(),
+        credentialMeta: options.credentialMeta,
+        comment: options.comment,
       ),
     );
-
     await mediatorClient.packAndSendMessage(
       requestIssuanceMessage,
     );
@@ -191,6 +148,20 @@ class VdipHolderClient {
           onFeatureQuery(
             QueryMessage.fromJson(plainTextJson),
           );
+
+          return;
+        }
+
+        if (unpacked.type == VdipIssuedCredentialMessage.messageType) {
+          onCredentialsIssuanceResponse(VdipIssuedCredentialMessage(
+            id: unpacked.id,
+            body: unpacked.body,
+            from: unpacked.from,
+            to: unpacked.to,
+            createdTime: unpacked.createdTime,
+            expiresTime: unpacked.expiresTime,
+            threadId: unpacked.threadId,
+          ));
 
           return;
         }

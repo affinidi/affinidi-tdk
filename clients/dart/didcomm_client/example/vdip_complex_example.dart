@@ -152,7 +152,6 @@ Future<void> main() async {
   final vdipHolderClient = await VdipHolderClient.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
-    featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       mediatorDidDocument: mediatorDidDocument,
       didManager: holderDidManager,

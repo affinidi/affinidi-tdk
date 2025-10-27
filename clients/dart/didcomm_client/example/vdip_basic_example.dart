@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
     hide CredentialFormat;
 import 'package:affinidi_tdk_didcomm_client/src/clients/vdip_issuer_client.dart';
 import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
-import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -66,6 +63,19 @@ Future<void> main() async {
     issuerDidManager.assertionMethod.first,
   );
 
+  final issuerClient = await VdipIssuerClient.init(
+    mediatorDidDocument: mediatorDidDocument,
+    didManager: issuerDidManager,
+    featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
+    authorizationProvider: await AffinidiAuthorizationProvider.init(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: issuerDidManager,
+    ),
+    clientOptions: const AffinidiClientOptions(),
+  );
+
+  // holder
+
   final holderKeyStore = InMemoryKeyStore();
   final holderWallet = PersistentWallet(holderKeyStore);
 
@@ -94,84 +104,22 @@ Future<void> main() async {
     holderDidManager.assertionMethod.first,
   );
 
-  await config.configureAcl(
-    mediatorDidDocument: mediatorDidDocument,
-    didManager: issuerDidManager,
-    theirDids: [holderSigner.did],
-  );
-
-  final holderVerifiableCredentials = await Future.wait(
-    [
-      VcDataModelV1(
-        context: [
-          dmV1ContextUrl,
-          'https://schema.affinidi.io/TEmailV1R0.jsonld'
-        ],
-        credentialSchema: [
-          CredentialSchema(
-            id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
-            type: 'JsonSchemaValidator2018',
-          ),
-        ],
-        id: Uri.parse(const Uuid().v4()),
-        issuer: Issuer.uri(issuerSigner.did),
-        type: {'VerifiableCredential', 'Email'},
-        issuanceDate: DateTime.now().toUtc(),
-        credentialSubject: [
-          CredentialSubject.fromJson({'email': 'user@test.com'}),
-        ],
-      ),
-    ].map(
-      (unsignedCredential) async {
-        final suite = LdVcDm1Suite();
-        final issuedCredential = await suite.issue(
-          unsignedData: unsignedCredential,
-          proofGenerator: DataIntegrityEcdsaJcsGenerator(
-            signer: issuerSigner,
-          ),
-        );
-
-        return issuedCredential;
-      },
+  await Future.wait([
+    config.configureAcl(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: issuerDidManager,
+      theirDids: [holderSigner.did],
     ),
-  );
+    config.configureAcl(
+      mediatorDidDocument: mediatorDidDocument,
+      didManager: holderDidManager,
+      theirDids: [issuerSigner.did],
+    ),
+  ]);
 
-  final verifierDsql = DcqlCredentialQuery(
-    credentials: [
-      DcqlCredential(
-        id: const Uuid().v4(),
-        format: CredentialFormat.ldpVc,
-        claims: [
-          DcqlClaim(
-            path: ['credentialSubject', 'email'],
-          ),
-        ],
-      ),
-    ],
-  );
-
-  // holder
   final vdipHolderClient = await VdipHolderClient.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
-    featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
-    authorizationProvider: await AffinidiAuthorizationProvider.init(
-      mediatorDidDocument: mediatorDidDocument,
-      didManager: holderDidManager,
-    ),
-    clientOptions: const AffinidiClientOptions(),
-  );
-
-  final vdspHolderClient = await VdspHolderClient.init(
-    mediatorDidDocument: mediatorDidDocument,
-    didManager: holderDidManager,
-    featureDisclosures: [
-      ...FeatureDiscoveryHelper.vdspHolderDisclosures,
-      Disclosure(
-        featureType: FeatureType.operation.value,
-        id: 'registerAgent',
-      ),
-    ],
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       mediatorDidDocument: mediatorDidDocument,
       didManager: holderDidManager,
@@ -199,11 +147,15 @@ Future<void> main() async {
         object: message,
       );
 
+      // TODO: verify disclosed features
+      // TODO: add mapping from header to propousalId
+
       await vdipHolderClient.requestCredentials(
         holderDid: holderSigner.did,
         issuerDid: issuerSigner.did,
-        options: const RequestCredentialsOptions(
+        options: RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
+          credentialMeta: CredentialMeta(data: {'email': 'test@example.com'}),
         ),
       );
     },
@@ -223,197 +175,61 @@ Future<void> main() async {
     },
   );
 
-  vdspHolderClient.listenForIncomingMessages(
+  issuerClient.listenForIncomingMessages(
+    // TODO: implement onFeatureQuery in VdipIssuerClient
+    // TODO: verify challenge
+    // TODO: verify assertion
     onFeatureQuery: (message) async {
-      prettyPrint(
-        'Holder received Feature Query Message',
-        object: message,
-      );
-
-      final disclosures = vdspHolderClient.getDisclosures(
-        queryMessage: message,
-      );
-
-      await vdspHolderClient.disclose(
-        queryMessage: message,
-        disclosures: disclosures,
-      );
-    },
-    onDataRequest: (message) async {
-      prettyPrint(
-        'Holder received Data Request Message',
-        object: message,
-      );
-
-      final queryResult = await vdspHolderClient.filterVerifiableCredentials(
-        requestMessage: message,
-        verifiableCredentials: holderVerifiableCredentials,
-      );
-
-      await vdspHolderClient.shareData(
-        requestMessage: message,
-        verifiableCredentials: queryResult.verifiableCredentials,
-        verifiablePresentationSigner: holderSigner,
-        verifiablePresentationProofSuite:
-            DataIntegrityProofSuite.ecdsa_jcs_2019,
-      );
-    },
-    onDataProcessingResult: (message) async {
-      prettyPrint(
-        'Holder received Data Processing Result Message',
-        object: message,
-      );
-
-      await ConnectionPool.instance.stopConnections();
-    },
-    onProblemReport: (message) {
-      prettyPrint(
-        'A problem has occurred',
-        object: message,
-      );
-    },
-  );
-
-  // verifier
-
-  final issuerVdipClient = await VdipIssuerClient.init(
-    mediatorDidDocument: mediatorDidDocument,
-    didManager: issuerDidManager,
-    featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
-    authorizationProvider: await AffinidiAuthorizationProvider.init(
-      mediatorDidDocument: mediatorDidDocument,
-      didManager: issuerDidManager,
-    ),
-    clientOptions: const AffinidiClientOptions(),
-  );
-
-  final vdspIssuerClient = await VdspVerifierClient.init(
-    mediatorDidDocument: mediatorDidDocument,
-    didManager: issuerDidManager,
-    authorizationProvider: await AffinidiAuthorizationProvider.init(
-      mediatorDidDocument: mediatorDidDocument,
-      didManager: issuerDidManager,
-    ),
-    clientOptions: const AffinidiClientOptions(),
-  );
-
-  issuerVdipClient.listenForIncomingMessages(
-    onFeatureQuery: (message) async {
-      prettyPrint(
-        'Issuer received Feature Query Message',
-        object: message,
-      );
-
-      await issuerVdipClient.disclose(
+      await issuerClient.disclose(
         queryMessage: message,
       );
     },
     onRequestToIssueCredentials: (message) async {
-      prettyPrint(
-        'Issuer received Request to Issue Credentials Message',
-        object: message,
-      );
+      final vdipRequestIssuanceMessageBody =
+          VdipRequestIssuanceMessageBody.fromJson(message.body!);
+      final email = vdipRequestIssuanceMessageBody
+          .credentialMeta?.data?['email'] as String?;
+      if (email == null) {
+        // TODO: put into metadata
+        throw ArgumentError.notNull('body.email');
+      }
 
-      await vdspIssuerClient.queryHolderFeatures(
-        holderDid: (await holderDidManager.getDidDocument()).id,
-        featureQueries: [
-          ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-            FeatureDiscoveryHelper.vdspHolderDisclosures,
-          ),
-          Query(
-            featureType: FeatureType.operation.value,
-            match: 'registerAgent',
+      if (message.from == null) {
+        throw ArgumentError.notNull('from');
+      }
+
+      final unsignedCredential = VcDataModelV1(
+        context: [
+          dmV1ContextUrl,
+          'https://schema.affinidi.io/TEmailV1R0.jsonld'
+        ],
+        credentialSchema: [
+          CredentialSchema(
+            id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
+            type: 'JsonSchemaValidator2018',
           ),
         ],
-      );
-    },
-    onProblemReport: (message) {
-      prettyPrint(
-        'A problem has occurred',
-        object: message,
-      );
-    },
-  );
-
-  vdspIssuerClient.listenForIncomingMessages(
-    onDiscloseMessage: (message) async {
-      prettyPrint(
-        'Verifier received Disclose Message',
-        object: message,
+        id: Uri.parse(const Uuid().v4()),
+        issuer: Issuer.uri(issuerSigner.did),
+        type: {'VerifiableCredential', 'Email'},
+        issuanceDate: DateTime.now().toUtc(),
+        credentialSubject: [
+          CredentialSubject.fromJson({'email': email}),
+        ],
       );
 
-      if (message.from == null) {
-        throw ArgumentError.notNull('from');
-      }
+      final suite = LdVcDm1Suite();
 
-      if (message.body == null) {
-        throw ArgumentError.notNull('body');
-      }
-
-      final holderDid = message.from!;
-      final body = DiscloseBody.fromJson(message.body!);
-
-      final expectedFeatures = [
-        ...FeatureDiscoveryHelper.vdspHolderDisclosures,
-        Disclosure(
-          featureType: FeatureType.operation.value,
-          id: 'registerAgent',
-        ),
-      ];
-
-      final unsupportedFeatureDisclosures =
-          FeatureDiscoveryHelper.getUnsupportedFeatures(
-        expectedFeatureDisclosures: expectedFeatures,
-        actualFeatureDisclosures: body.disclosures,
-      );
-
-      if (unsupportedFeatureDisclosures.isNotEmpty) {
-        throw UnsupportedError(
-          'Unsupported features: ${jsonEncode(unsupportedFeatureDisclosures)}',
-        );
-      }
-
-      await vdspIssuerClient.queryHolderData(
-        holderDid: holderDid,
-        dcqlQuery: verifierDsql,
-        operation: 'registerAgent',
-        proofContext: VdspQueryDataProofContext(
-          challenge: const Uuid().v4(),
-          domain: 'test.verifier.com',
+      final issuedCredential = await suite.issue(
+        unsignedData: unsignedCredential,
+        proofGenerator: DataIntegrityEcdsaJcsGenerator(
+          signer: issuerSigner,
         ),
       );
-    },
-    onDataResponse: ({
-      required VdspDataResponseMessage message,
-      required bool presentationAndCredentialsAreValid,
-      VerifiablePresentation? verifiablePresentation,
-      required VerificationResult presentationVerificationResult,
-      required List<VerificationResult> credentialVerificationResults,
-    }) async {
-      prettyPrint(
-        'Verifier received Data Response Message',
-        object: message,
-      );
 
-      prettyPrint(
-        'VP and VCs are valid',
-        object: presentationAndCredentialsAreValid,
-      );
-
-      prettyPrint(
-        'Verifiable Presentation',
-        object: verifiablePresentation,
-      );
-
-      if (message.from == null) {
-        throw ArgumentError.notNull('from');
-      }
-
-      final issuedCredentials = <ParsedVerifiableCredential>[];
-
-      await issuerVdipClient.sendIssuedCredentials(
+      await issuerClient.sendIssuedCredentials(
         holderDid: message.from!,
-        verifiableCredential: issuedCredentials.first,
+        verifiableCredential: issuedCredential,
       );
     },
     onProblemReport: (message) {

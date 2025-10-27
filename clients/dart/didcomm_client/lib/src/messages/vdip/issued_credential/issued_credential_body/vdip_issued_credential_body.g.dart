@@ -12,7 +12,7 @@ VdipIssuedCredentialBody _$VdipIssuedCredentialBodyFromJson(
       credential: json['credential'] as String,
       credentialFormat:
           $enumDecode(_$CredentialFormatEnumMap, json['credential_format']),
-      comment: json['comment'] as String? ?? '',
+      comment: json['comment'] as String?,
     );
 
 Map<String, dynamic> _$VdipIssuedCredentialBodyToJson(
@@ -21,7 +21,7 @@ Map<String, dynamic> _$VdipIssuedCredentialBodyToJson(
       'credential': instance.credential,
       'credential_format':
           _$CredentialFormatEnumMap[instance.credentialFormat]!,
-      'comment': instance.comment,
+      if (instance.comment case final value?) 'comment': value,
     };
 
 const _$CredentialFormatEnumMap = {
