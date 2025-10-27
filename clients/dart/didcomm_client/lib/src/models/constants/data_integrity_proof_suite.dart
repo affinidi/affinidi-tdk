@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
 enum DataIntegrityProofSuite {
+  @JsonValue('secp256k1-signature-2019')
+  secp256k1_signature_2019('secp256k1-signature-2019'),
   @JsonValue('ecdsa-rdfc-2019')
   ecdsa_rdfc_2019('ecdsa-rdfc-2019'),
   @JsonValue('ecdsa-jcs-2019')
