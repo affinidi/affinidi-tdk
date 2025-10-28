@@ -165,7 +165,7 @@ Future<void> main() async {
         'Holder received Credentials Issuance Response Message',
         object: message,
       );
-
+      await Future<void>.delayed(const Duration(seconds: 2));
       await ConnectionPool.instance.stopConnections();
     },
     onProblemReport: (message) {
