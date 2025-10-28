@@ -150,8 +150,10 @@ Future<void> main() async {
       // TODO: verify disclosed features
       // TODO: add mapping from header to propousalId
 
-      await vdipHolderClient.requestCredential(
+      await vdipHolderClient.requestCredentialForHolder(
+        holderSigner.did,
         issuerDid: issuerSigner.did,
+        assertionSigner: holderSigner,
         options: RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
           credentialMeta: CredentialMeta(data: {'email': 'test@example.com'}),

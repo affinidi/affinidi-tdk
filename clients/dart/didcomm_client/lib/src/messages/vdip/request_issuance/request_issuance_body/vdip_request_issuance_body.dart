@@ -9,7 +9,7 @@ class VdipRequestIssuanceMessageBody {
   @JsonKey(name: 'proposal_id')
   final String proposalId;
 
-  @JsonKey(name: 'holder_id')
+  @JsonKey(name: 'holder_did')
   final String? holderDid;
   final String? assertion;
   final String? challenge;

@@ -196,8 +196,7 @@ Future<void> main() async {
         object: message,
       );
 
-      await vdipHolderClient.requestCredentials(
-        holderDid: holderSigner.did,
+      await vdipHolderClient.requestCredential(
         issuerDid: issuerSigner.did,
         options: const RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
@@ -305,7 +304,11 @@ Future<void> main() async {
         queryMessage: message,
       );
     },
-    onRequestToIssueCredentials: (message) async {
+    onRequestToIssueCredential: ({
+      required message,
+      holderDidFromAssertion,
+      isAssertionValid,
+    }) async {
       prettyPrint(
         'Issuer received Request to Issue Credentials Message',
         object: message,

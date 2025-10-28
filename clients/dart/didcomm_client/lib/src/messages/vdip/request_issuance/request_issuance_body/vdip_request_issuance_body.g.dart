@@ -10,7 +10,7 @@ VdipRequestIssuanceMessageBody _$VdipRequestIssuanceMessageBodyFromJson(
         Map<String, dynamic> json) =>
     VdipRequestIssuanceMessageBody(
       proposalId: json['proposal_id'] as String,
-      holderDid: json['holder_id'] as String?,
+      holderDid: json['holder_did'] as String?,
       assertion: json['assertion'] as String?,
       challenge: json['challenge'] as String?,
       credentialFormat: json['credential_format'] as String?,
@@ -27,7 +27,7 @@ Map<String, dynamic> _$VdipRequestIssuanceMessageBodyToJson(
         VdipRequestIssuanceMessageBody instance) =>
     <String, dynamic>{
       'proposal_id': instance.proposalId,
-      if (instance.holderDid case final value?) 'holder_id': value,
+      if (instance.holderDid case final value?) 'holder_did': value,
       if (instance.assertion case final value?) 'assertion': value,
       if (instance.challenge case final value?) 'challenge': value,
       if (instance.credentialFormat case final value?)
