@@ -19,7 +19,11 @@ Future<void> main() async {
   // 1. Holder queries Issuer features
   // 2. Issuer replies with features it supports
   // 3. Holder requests MusicStreaming VC from Issuer
+  //    - email is set in the message metadata
+  //    - holder DID and assertion are included in the request
   // 4. Issuer issues MusicStreaming VC and sends it to Holder
+  //    - email is taken from the message metadata, which was priorly set by Holder
+  //    - assertion is validated by Issuer to verify holder DID ownership
   // 5. Holder receives MusicStreaming VC
 
   final config = await TestConfig.configureTestFiles(
@@ -177,10 +181,13 @@ Future<void> main() async {
   );
 
   issuerClient.listenForIncomingMessages(
-    // TODO: implement onFeatureQuery in VdipIssuerClient
     // TODO: verify challenge
-    // TODO: verify assertion
     onFeatureQuery: (message) async {
+      prettyPrint(
+        'Issuer received Feature Query Message',
+        object: message,
+      );
+
       await issuerClient.disclose(
         queryMessage: message,
       );
@@ -190,36 +197,72 @@ Future<void> main() async {
       holderDidFromAssertion,
       isAssertionValid,
     }) async {
-      final vdipRequestIssuanceMessageBody =
-          VdipRequestIssuanceMessageBody.fromJson(message.body!);
-      final email = vdipRequestIssuanceMessageBody
-          .credentialMeta?.data?['email'] as String?;
-      if (email == null) {
-        // TODO: put into metadata
-        throw ArgumentError.notNull('body.email');
+      prettyPrint(
+        'Issuer received Request to Issue Credential Message',
+        object: message,
+      );
+
+      if (isAssertionValid != true) {
+        await issuerClient.mediatorClient.packAndSendMessage(
+          ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdip',
+                  'invalid-assertion',
+                ],
+              ),
+            ),
+          ),
+        );
+
+        return;
       }
 
-      if (message.from == null) {
-        throw ArgumentError.notNull('from');
+      final vdipRequestIssuanceMessageBody =
+          VdipRequestIssuanceMessageBody.fromJson(
+        message.body!,
+      );
+
+      final email = vdipRequestIssuanceMessageBody
+          .credentialMeta?.data?['email'] as String?;
+
+      if (email == null) {
+        throw ArgumentError.notNull('body.credentialMeta.data.email');
       }
+
+      // if multiple credential formats are supported, check which one is requested
+      // vdipRequestIssuanceMessageBody.credentialFormat
+      // we will proceed with W3C Verifiable Credentials Data Model 1.0
 
       final unsignedCredential = VcDataModelV1(
         context: [
           dmV1ContextUrl,
-          'https://schema.affinidi.io/TEmailV1R0.jsonld'
+          'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
         ],
         credentialSchema: [
           CredentialSchema(
-            id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
+            id: Uri.parse(
+              'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.json',
+            ),
             type: 'JsonSchemaValidator2018',
           ),
         ],
         id: Uri.parse(const Uuid().v4()),
         issuer: Issuer.uri(issuerSigner.did),
-        type: {'VerifiableCredential', 'Email'},
+        type: {'VerifiableCredential', 'TestMusicSubscription'},
         issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
-          CredentialSubject.fromJson({'email': email}),
+          CredentialSubject.fromJson({
+            'id': holderDidFromAssertion, // holder DID
+            'email': email,
+            'subscriptionType': 'basic',
+          }),
         ],
       );
 
