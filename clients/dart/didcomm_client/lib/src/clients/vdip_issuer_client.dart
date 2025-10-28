@@ -179,6 +179,7 @@ class VdipIssuerClient {
               isAssertionValid: isAssertionValid,
               message: plainTextMessage,
             );
+            return;
           }
 
           onRequestToIssueCredential(
