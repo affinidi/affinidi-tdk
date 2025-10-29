@@ -5,12 +5,19 @@ import 'package:ssi/ssi.dart';
 
 part 'vdip_issued_credential_body.g.dart';
 
+/// Body payload for a VDIP issued credential message containing the
+/// serialized credential and associated metadata.
 @JsonSerializable(includeIfNull: false, explicitToJson: true, constructor: '_')
 class VdipIssuedCredentialBody {
+  /// Serialized credential payload. Depending on [credentialFormat] this may
+  /// be a JSON-encoded W3C VC string, JWT, or SD-JWT.
   final String credential;
 
+  /// Format indicator describing the type of credential issued.
   @JsonKey(name: 'credential_format')
   final CredentialFormat credentialFormat;
+
+  /// Optional human-readable comment supplied by the issuer.
   final String? comment;
 
   VdipIssuedCredentialBody._({
@@ -71,8 +78,10 @@ class VdipIssuedCredentialBody {
     );
   }
 
+  /// Creates an instance from JSON.
   factory VdipIssuedCredentialBody.fromJson(Map<String, dynamic> json) =>
       _$VdipIssuedCredentialBodyFromJson(json);
 
+  /// Converts this body into JSON.
   Map<String, dynamic> toJson() => _$VdipIssuedCredentialBodyToJson(this);
 }

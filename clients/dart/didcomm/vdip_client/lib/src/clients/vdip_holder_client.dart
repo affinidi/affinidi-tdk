@@ -6,15 +6,26 @@ import 'package:uuid/uuid.dart';
 
 import '../../vdip_didcomm_client.dart';
 
+/// DIDComm holder-side client for the VDIP protocol.
+///
+/// Provides convenience helpers for discovering issuer features and
+/// requesting credential issuance.
 class VdipHolderClient {
+  /// Underlying mediator DIDComm client used for packing / sending messages.
   final MediatorDidcommClient mediatorClient;
+
+  /// DID manager used for DIDComm operations.
   final DidManager didManager;
 
+  /// Creates a new [VdipHolderClient] with the provided DID manager and
+  /// mediator client instance.
   VdipHolderClient({
     required this.didManager,
     required this.mediatorClient,
   });
 
+  /// Convenience initializer that creates the underlying [MediatorDidcommClient]
+  /// before constructing the holder client.
   static Future<VdipHolderClient> init({
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
@@ -31,6 +42,8 @@ class VdipHolderClient {
         ),
       );
 
+  /// Sends a DIDComm `feature query` message to an issuer asking for supported
+  /// feature disclosures matching [featureQueries]. Returns the sent message.
   Future<QueryMessage> queryIssuerFeatures({
     required String issuerDid,
     required List<Query> featureQueries,
@@ -47,6 +60,9 @@ class VdipHolderClient {
     return message;
   }
 
+  /// Requests credential issuance from [issuerDid] using the provided
+  /// request [options]. The issuer will use `message.from` as holder DID.
+  /// Returns the sent DIDComm message.
   Future<VdipRequestIssuanceMessage> requestCredential({
     required String issuerDid,
     required RequestCredentialsOptions options,
@@ -70,6 +86,10 @@ class VdipHolderClient {
     return requestIssuanceMessage;
   }
 
+  /// Requests credential issuance for the specific [holderDid].
+  /// Ownership of the DID is proven by signing an assertion JWT with
+  /// [assertionSigner]. The [options] configure the issuance request.
+  /// Throws [ArgumentError] if [holderDid] does not match the signer DID.
   Future<VdipRequestIssuanceMessage> requestCredentialForHolder(
     String holderDid, {
     required String issuerDid,
@@ -115,6 +135,10 @@ class VdipHolderClient {
     return requestIssuanceMessage;
   }
 
+  /// Listens to incoming DIDComm messages related to VDIP holder flows.
+  ///
+  /// Handlers are invoked based on message type. Returns the active
+  /// [StreamSubscription] which can be cancelled to stop listening.
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
     void Function(DiscloseMessage)? onDiscloseMessage,

@@ -21,8 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: dart pub get
-        working-directory: clients/dart/didcomm_client
+        working-directory: clients/dart/vdsp_didcomm_client
 
       - name: Run unit tests
         run: dart test
-        working-directory: clients/dart/didcomm_client
+        working-directory: clients/dart/vdsp_didcomm_client
