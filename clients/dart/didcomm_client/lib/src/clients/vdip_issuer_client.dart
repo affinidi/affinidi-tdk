@@ -164,12 +164,16 @@ class VdipIssuerClient {
         // Add fields to callback, assertion validity
         if (unpacked.type == VdipRequestIssuanceMessage.messageType) {
           final plainTextMessage = PlainTextMessage.fromJson(plainTextJson);
+
+          final requestIssuanceMessageBody =
+              VdipRequestIssuanceMessageBody.fromJson(plainTextMessage.body!);
+
           final isRequestForSpecificHolder =
-              plainTextMessage.body!['holder_did'] != null;
+              requestIssuanceMessageBody.holderDid != null;
 
           if (isRequestForSpecificHolder) {
-            final assertion = plainTextMessage.body!['assertion'] as String;
-            final holderDid = plainTextMessage.body!['holder_did'] as String;
+            final assertion = requestIssuanceMessageBody.assertion!;
+            final holderDid = requestIssuanceMessageBody.holderDid!;
 
             final isAssertionValid =
                 await _isAssertionValid(assertion, holderDid);
@@ -208,8 +212,12 @@ class VdipIssuerClient {
     String jwsAssertion,
     String holderDid,
   ) async {
-    final decodedJwsAssertion =
-        await JwtHelper.decodeAndVerify(jwsAssertion, holderDid);
+    final resolvedHolderDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+    final decodedJwsAssertion = JwtHelper.decodeAndVerify(
+      serializedJwt: jwsAssertion,
+      holderDidDocument: resolvedHolderDidDocument,
+    );
 
     final assertionSubject = decodedJwsAssertion.payload['sub'];
 

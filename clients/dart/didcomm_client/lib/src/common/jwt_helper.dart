@@ -26,12 +26,16 @@ class JwtHelper {
     return serializedSdJwt;
   }
 
-  static Future<SdJwt> decodeAndVerify(
-      String serializedJwt, String holderDid) async {
-    final resolvedHolderDidDocument =
-        await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
-    final assertionMethod = resolvedHolderDidDocument.assertionMethod.first;
+  static SdJwt decodeAndVerify({
+    required String serializedJwt,
+    required DidDocument holderDidDocument,
+  }) {
+    final assertionMethod = holderDidDocument.assertionMethod.first;
     final jwk = assertionMethod.asJwk();
+
+    // Second argument of [SdPublicKey] is not taken into account if key is constructed from JWK,
+    // so we can put any algorithm as the second argument.
+    // TODO: fix SdPublicKey in affinidi-sd-jwt
     final publicKey = SdPublicKey(jwk.doc, SdJwtSignAlgorithm.es256);
 
     final verifier = SDKeyVerifier(publicKey);
