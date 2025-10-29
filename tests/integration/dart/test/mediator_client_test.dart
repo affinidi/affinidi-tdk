@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:collection/collection.dart';
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:collection/collection.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
@@ -22,12 +22,12 @@ void main() async {
     late PersistentWallet aliceWallet;
     late DidManager aliceDidManager;
     late DidDocument aliceDidDocument;
-    late MediatorClient aliceMediatorClient;
+    late DidcommMediatorClient aliceMediatorClient;
 
     late PersistentWallet bobWallet;
     late DidManager bobDidManager;
     late DidDocument bobDidDocument;
-    late MediatorClient bobMediatorClient;
+    late DidcommMediatorClient bobMediatorClient;
 
     late DidDocument bobMediatorDocument;
 
@@ -36,7 +36,7 @@ void main() async {
       'did:peer',
     ]) {
       group(didType, () {
-        setUp(() async {
+        setUpAll(() async {
           final useDidKey = didType == 'did:key';
 
           final aliceKeyStore = InMemoryKeyStore();
@@ -106,50 +106,24 @@ void main() async {
             await readDid(config.mediatorDidPath),
           );
 
-          aliceMediatorClient = await MediatorClient.init(
+          aliceMediatorClient = await DidcommMediatorClient.init(
             authorizationProvider: await AffinidiAuthorizationProvider.init(
               didManager: aliceDidManager,
               mediatorDidDocument: bobMediatorDocument,
             ),
             didManager: aliceDidManager,
             mediatorDidDocument: bobMediatorDocument,
-            forwardMessageOptions: const ForwardMessageOptions(
-              shouldSign: true,
-              shouldEncrypt: true,
-              keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
-              encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-            ),
+            clientOptions: AffinidiClientOptions(),
           );
 
-          bobMediatorClient = await MediatorClient.init(
+          bobMediatorClient = await DidcommMediatorClient.init(
             authorizationProvider: await AffinidiAuthorizationProvider.init(
               didManager: bobDidManager,
               mediatorDidDocument: bobMediatorDocument,
             ),
             didManager: bobDidManager,
             mediatorDidDocument: bobMediatorDocument,
-            webSocketOptions: const WebSocketOptions(
-              liveDeliveryChangeMessageOptions:
-                  LiveDeliveryChangeMessageOptions(
-                shouldSend: true,
-                shouldSign: true,
-                shouldEncrypt: true,
-                keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
-                encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-              ),
-              statusRequestMessageOptions: StatusRequestMessageOptions(
-                shouldSend: true,
-                shouldSign: true,
-                shouldEncrypt: true,
-                keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
-                encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-              ),
-            ),
-            forwardMessageOptions: const ForwardMessageOptions(
-              shouldSign: true,
-              keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdhEs,
-              encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
-            ),
+            clientOptions: AffinidiClientOptions(),
           );
 
           await config.configureAcl(
