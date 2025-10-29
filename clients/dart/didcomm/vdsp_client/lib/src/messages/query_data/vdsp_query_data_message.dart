@@ -25,6 +25,11 @@ class VdspQueryDataMessage extends PlainTextMessage {
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
+/// Body payload for a VDSP query-data DIDComm message.
+///
+/// Encapsulates a structured [query] expression together with language,
+/// expected response formatting and optional correlation / proof context
+/// metadata used when constructing verifiable presentations.
 class VdspQueryDataBody {
   /// Constructs a query data body.
   ///
@@ -71,6 +76,10 @@ class VdspQueryDataBody {
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
+/// Proof generation context supplied by the verifier.
+///
+/// The [challenge] guards against replay while [domain] scopes the proof
+/// to an application or audience specific value.
 class VdspQueryDataProofContext {
   /// Constructs a proof context used during cryptographic proof generation.
   VdspQueryDataProofContext({
