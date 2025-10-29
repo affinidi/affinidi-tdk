@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
@@ -12,7 +12,7 @@ import '../../vdsp_didcomm_client.dart';
 /// data queries, and verification of presentations and credentials.
 class VdspVerifierClient {
   /// The mediator client used for DIDComm communication.
-  final DidcommMediatorClient mediatorClient;
+  final MediatorDidcommClient mediatorClient;
 
   /// The DID manager for handling DIDs and keys.
   final DidManager didManager;
@@ -32,7 +32,7 @@ class VdspVerifierClient {
   }) async =>
       VdspVerifierClient(
         didManager: didManager,
-        mediatorClient: await DidcommMediatorClient.init(
+        mediatorClient: await MediatorDidcommClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
           authorizationProvider: authorizationProvider,

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
 
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
@@ -8,7 +8,7 @@ import 'package:uuid/uuid.dart';
 import '../../vdip_didcomm_client.dart';
 
 class VdipIssuerClient {
-  final DidcommMediatorClient mediatorClient;
+  final MediatorDidcommClient mediatorClient;
   final DidManager didManager;
   final List<Disclosure> featureDisclosures;
 
@@ -28,7 +28,7 @@ class VdipIssuerClient {
       VdipIssuerClient(
         didManager: didManager,
         featureDisclosures: featureDisclosures,
-        mediatorClient: await DidcommMediatorClient.init(
+        mediatorClient: await MediatorDidcommClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
           authorizationProvider: authorizationProvider,

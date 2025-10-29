@@ -26,7 +26,7 @@ dev_dependencies:
     path: ../../../clients/dart/iota_client
   affinidi_tdk_login_configuration_client:
     path: ../../../clients/dart/login_configuration_client
-  affinidi_tdk_mediator_client:
+  affinidi_tdk_mediator_didcomm_client:
     path: ../../../clients/dart/didcomm/mediator_client
   affinidi_tdk_vdsp_didcomm_client:
     path: ../../../clients/dart/didcomm/vdsp_client

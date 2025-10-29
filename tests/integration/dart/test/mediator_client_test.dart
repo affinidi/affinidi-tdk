@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
 import 'package:collection/collection.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
@@ -22,12 +22,12 @@ void main() async {
     late PersistentWallet aliceWallet;
     late DidManager aliceDidManager;
     late DidDocument aliceDidDocument;
-    late DidcommMediatorClient aliceMediatorClient;
+    late MediatorDidcommClient aliceMediatorClient;
 
     late PersistentWallet bobWallet;
     late DidManager bobDidManager;
     late DidDocument bobDidDocument;
-    late DidcommMediatorClient bobMediatorClient;
+    late MediatorDidcommClient bobMediatorClient;
 
     late DidDocument bobMediatorDocument;
 
@@ -36,7 +36,7 @@ void main() async {
       'did:peer',
     ]) {
       group(didType, () {
-        setUpAll(() async {
+        setUp(() async {
           final useDidKey = didType == 'did:key';
 
           final aliceKeyStore = InMemoryKeyStore();
@@ -106,7 +106,7 @@ void main() async {
             await readDid(config.mediatorDidPath),
           );
 
-          aliceMediatorClient = await DidcommMediatorClient.init(
+          aliceMediatorClient = await MediatorDidcommClient.init(
             authorizationProvider: await AffinidiAuthorizationProvider.init(
               didManager: aliceDidManager,
               mediatorDidDocument: bobMediatorDocument,
@@ -116,7 +116,7 @@ void main() async {
             clientOptions: AffinidiClientOptions(),
           );
 
-          bobMediatorClient = await DidcommMediatorClient.init(
+          bobMediatorClient = await MediatorDidcommClient.init(
             authorizationProvider: await AffinidiAuthorizationProvider.init(
               didManager: bobDidManager,
               mediatorDidDocument: bobMediatorDocument,

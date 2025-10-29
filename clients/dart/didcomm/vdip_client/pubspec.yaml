@@ -8,7 +8,7 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
-  affinidi_tdk_mediator_client:
+  affinidi_tdk_mediator_didcomm_client:
     path: ../mediator_client
   affinidi_tdk_vdsp_didcomm_client:
     path: ../vdsp_client
