@@ -16,11 +16,13 @@ Future<void> main() async {
   // 2. Issuer replies with features it supports
   // 3. Holder requests MusicStreaming VC from Issuer
   // 4. Verifier starts VDSP flow
-  //  4.1. Verifier queries Holder features
-  //  4.2. Holder replies with features it supports
-  //  4.3. Verifier requests email VC from Holder
-  //  4.4. Holder shares email VC with Verifier
+  //    4.1. Verifier queries Holder features
+  //    4.2. Holder replies with features it supports
+  //    4.3. Verifier requests email VC from Holder
+  //    4.4. Holder shares email VC with Verifier
   // 5. Issuer issues MusicStreaming VC and sends it to Holder
+  //    - email is taken from shared email VC
+  //    - DID is taken from the "from" field of the request message
   // 6. Holder receives MusicStreaming VC
 
   final config = await TestConfig.configureTestFiles(
@@ -116,7 +118,10 @@ Future<void> main() async {
         type: {'VerifiableCredential', 'Email'},
         issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
-          CredentialSubject.fromJson({'email': 'user@test.com'}),
+          CredentialSubject.fromJson({
+            'id': holderSigner.did,
+            'email': 'user@test.com',
+          }),
         ],
       ),
     ].map(
@@ -162,13 +167,7 @@ Future<void> main() async {
   final vdspHolderClient = await VdspHolderClient.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
-    featureDisclosures: [
-      ...FeatureDiscoveryHelper.vdspHolderDisclosures,
-      Disclosure(
-        featureType: FeatureType.operation.value,
-        id: 'registerAgent',
-      ),
-    ],
+    featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       mediatorDidDocument: mediatorDidDocument,
       didManager: holderDidManager,
@@ -178,15 +177,9 @@ Future<void> main() async {
 
   await vdipHolderClient.queryIssuerFeatures(
     issuerDid: issuerSigner.did,
-    featureQueries: [
-      ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-        FeatureDiscoveryHelper.vdipIssuerDisclosures,
-      ),
-      Query(
-        featureType: FeatureType.operation.value,
-        match: 'registerAgent',
-      ),
-    ],
+    featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+      FeatureDiscoveryHelper.vdipIssuerDisclosures,
+    ),
   );
 
   vdipHolderClient.listenForIncomingMessages(
@@ -196,8 +189,7 @@ Future<void> main() async {
         object: message,
       );
 
-      await vdipHolderClient.requestCredentials(
-        holderDid: holderSigner.did,
+      await vdipHolderClient.requestCredential(
         issuerDid: issuerSigner.did,
         options: const RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
@@ -305,7 +297,11 @@ Future<void> main() async {
         queryMessage: message,
       );
     },
-    onRequestToIssueCredentials: (message) async {
+    onRequestToIssueCredential: ({
+      required message,
+      holderDidFromAssertion,
+      isAssertionValid,
+    }) async {
       prettyPrint(
         'Issuer received Request to Issue Credentials Message',
         object: message,
@@ -313,15 +309,9 @@ Future<void> main() async {
 
       await vdspIssuerClient.queryHolderFeatures(
         holderDid: (await holderDidManager.getDidDocument()).id,
-        featureQueries: [
-          ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-            FeatureDiscoveryHelper.vdspHolderDisclosures,
-          ),
-          Query(
-            featureType: FeatureType.operation.value,
-            match: 'registerAgent',
-          ),
-        ],
+        featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+          FeatureDiscoveryHelper.vdspHolderDisclosures,
+        ),
       );
     },
     onProblemReport: (message) {
@@ -350,13 +340,7 @@ Future<void> main() async {
       final holderDid = message.from!;
       final body = DiscloseBody.fromJson(message.body!);
 
-      final expectedFeatures = [
-        ...FeatureDiscoveryHelper.vdspHolderDisclosures,
-        Disclosure(
-          featureType: FeatureType.operation.value,
-          id: 'registerAgent',
-        ),
-      ];
+      final expectedFeatures = FeatureDiscoveryHelper.vdspHolderDisclosures;
 
       final unsupportedFeatureDisclosures =
           FeatureDiscoveryHelper.getUnsupportedFeatures(
@@ -373,12 +357,10 @@ Future<void> main() async {
       await vdspIssuerClient.queryHolderData(
         holderDid: holderDid,
         dcqlQuery: verifierDsql,
-        operation: 'registerAgent',
-        // TODO: uncomment when Dart SSI is fixed
-        // proofContext: VdspQueryDataProofContext(
-        //   challenge: const Uuid().v4(),
-        //   domain: 'test.verifier.com',
-        // ),
+        proofContext: VdspQueryDataProofContext(
+          challenge: const Uuid().v4(),
+          domain: 'test.verifier.com',
+        ),
       );
     },
     onDataResponse: ({
@@ -407,11 +389,91 @@ Future<void> main() async {
         throw ArgumentError.notNull('from');
       }
 
-      final issuedCredentials = <ParsedVerifiableCredential>[];
+      if (presentationAndCredentialsAreValid != true) {
+        await issuerVdipClient.mediatorClient.packAndSendMessage(
+          ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdip',
+                  'invalid-presentation-or-credentials',
+                ],
+              ),
+            ),
+          ),
+        );
+
+        return;
+      }
+
+      final email = verifiablePresentation!.verifiableCredential.first
+          .credentialSubject.first['email'] as String?;
+
+      if (email == null) {
+        await issuerVdipClient.mediatorClient.packAndSendMessage(
+          ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdip',
+                  'missing-email-claim',
+                ],
+              ),
+            ),
+          ),
+        );
+
+        return;
+      }
+
+      final unsignedCredential = VcDataModelV1(
+        context: [
+          dmV1ContextUrl,
+          'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
+        ],
+        credentialSchema: [
+          CredentialSchema(
+            id: Uri.parse(
+              'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.json',
+            ),
+            type: 'JsonSchemaValidator2018',
+          ),
+        ],
+        id: Uri.parse(const Uuid().v4()),
+        issuer: Issuer.uri(issuerSigner.did),
+        type: {'VerifiableCredential', 'TestMusicSubscription'},
+        issuanceDate: DateTime.now().toUtc(),
+        credentialSubject: [
+          CredentialSubject.fromJson({
+            'id': message.from!, // holder DID
+            'email': email,
+            'subscriptionType': 'basic',
+          }),
+        ],
+      );
+
+      final suite = LdVcDm1Suite();
+
+      final issuedCredential = await suite.issue(
+        unsignedData: unsignedCredential,
+        proofGenerator: DataIntegrityEcdsaJcsGenerator(
+          signer: issuerSigner,
+        ),
+      );
 
       await issuerVdipClient.sendIssuedCredentials(
         holderDid: message.from!,
-        verifiableCredential: issuedCredentials[0],
+        verifiableCredential: issuedCredential,
       );
     },
     onProblemReport: (message) {
