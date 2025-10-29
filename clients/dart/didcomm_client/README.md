@@ -64,12 +64,12 @@ The package implements the following VDSP message types:
 
 | Message Type | Purpose | Direction |
 |---|---|---|
-| \`discover-features/2.0/queries\` | Query supported features | Verifier → Holder |
-| \`discover-features/2.0/disclose\` | Disclose supported features | Holder → Verifier |
-| \`vdsp/query-data\` | Request verifiable credentials | Verifier → Holder |
-| \`vdsp/data-response\` | Share verifiable presentation | Holder → Verifier |
-| \`vdsp/data-processing-result\` | Send processing result | Verifier → Holder |
-| \`report-problem/2.0/problem-report\` | Report errors or warnings | Any → Any |
+| `discover-features/2.0/queries` | Query supported features | Verifier → Holder |
+| `discover-features/2.0/disclose` | Disclose supported features | Holder → Verifier |
+| `vdsp/query-data` | Request verifiable credentials | Verifier → Holder |
+| `vdsp/data-response` | Share verifiable presentation | Holder → Verifier |
+| `vdsp/data-processing-result` | Send processing result | Verifier → Holder |
+| `report-problem/2.0/problem-report` | Report errors or warnings | Any → Any |
 
 ### Supported Query Languages
 
@@ -89,7 +89,7 @@ Run:
 dart pub add affinidi_tdk_didcomm_client
 ```
 
-or manually, add the package into your \`pubspec.yaml\` file:
+or manually, add the package into your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
@@ -106,7 +106,7 @@ dart pub get
 
 ### VdspVerifierClient
 
-The \`VdspVerifierClient\` implements the VDSP protocol for a verifier, enabling your application to:
+The `VdspVerifierClient` implements the VDSP protocol for a verifier, enabling your application to:
 
 - Discover supported features from holders using feature queries.
 - Request verifiable credentials from holders using DCQL queries.
@@ -115,14 +115,14 @@ The \`VdspVerifierClient\` implements the VDSP protocol for a verifier, enabling
 
 **Key Methods:**
 
-- \`queryHolderFeatures()\` - Sends a feature query to discover what the holder supports.
-- \`queryHolderData()\` - Requests verifiable credentials from a holder using a DCQL query.
-- \`sendDataProcessingResult()\` - Sends a processing result message to the holder.
-- \`listenForIncomingMessages()\` - Listens for incoming messages (disclose, data response, problem reports).
+- `queryHolderFeatures()` - Sends a feature query to discover what the holder supports.
+- `queryHolderData()` - Requests verifiable credentials from a holder using a DCQL query.
+- `sendDataProcessingResult()` - Sends a processing result message to the holder.
+- `listenForIncomingMessages()` - Listens for incoming messages (disclose, data response, problem reports).
 
 ### VdspHolderClient
 
-The \`VdspHolderClient\` implements the VDSP protocol for a holder, enabling your application to:
+The `VdspHolderClient` implements the VDSP protocol for a holder, enabling your application to:
 
 - Respond to feature queries with supported feature disclosures.
 - Filter stored verifiable credentials based on DCQL queries.
@@ -131,11 +131,11 @@ The \`VdspHolderClient\` implements the VDSP protocol for a holder, enabling you
 
 **Key Methods:**
 
-- \`getDisclosures()\` - Returns supported feature disclosures for a query message.
-- \`disclose()\` - Sends a disclose message in response to a feature query.
-- \`filterVerifiableCredentials()\` - Filters credentials using a DCQL query.
-- \`shareData()\` - Creates and sends a verifiable presentation in response to a data request.
-- \`listenForIncomingMessages()\` - Listens for incoming messages (feature queries, data requests, processing results, problem reports).
+- `getDisclosures()` - Returns supported feature disclosures for a query message.
+- `disclose()` - Sends a disclose message in response to a feature query.
+- `filterVerifiableCredentials()` - Filters credentials using a DCQL query.
+- `shareData()` - Creates and sends a verifiable presentation in response to a data request.
+- `listenForIncomingMessages()` - Listens for incoming messages (feature queries, data requests, processing results, problem reports).
 
 ## Usage
 
