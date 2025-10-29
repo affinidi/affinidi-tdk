@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
-import 'package:affinidi_tdk_mediator_client/src/didcomm_mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 class MockMediator {
@@ -11,7 +10,7 @@ class MockMediator {
   final requestController = StreamController<DidcommMessage>();
   final responseControllers =
       <String, StreamController<Map<String, dynamic>>>{};
-  final clients = <DidManager, MockDidcommMediatorClient>{};
+  final clients = <DidManager, MockMediatorDidcommClient>{};
 
   MockMediator({
     required this.didManager,
@@ -95,7 +94,7 @@ class MockMediator {
     responseControllers[clientDidDocument.id] =
         StreamController<Map<String, dynamic>>();
 
-    final client = MockDidcommMediatorClient(
+    final client = MockMediatorDidcommClient(
       mediatorDidDocument: didDocument,
       didManager: clientDidManager,
       keyPair: clientKeyPair,
@@ -111,11 +110,11 @@ class MockMediator {
   }
 }
 
-class MockDidcommMediatorClient extends DidcommMediatorClient {
+class MockMediatorDidcommClient extends MediatorDidcommClient {
   final StreamController<DidcommMessage> requestController;
   final Stream<Map<String, dynamic>> responseStream;
 
-  MockDidcommMediatorClient({
+  MockMediatorDidcommClient({
     required super.mediatorDidDocument,
     required super.didManager,
     required super.keyPair,

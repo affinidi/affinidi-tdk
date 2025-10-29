@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
 
 class VdipIssuedCredentialMessage extends PlainTextMessage {
   static final Uri messageType = Uri.parse(

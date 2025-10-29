@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -122,7 +122,7 @@ void main() async {
     object: forwardMessage,
   );
 
-  final senderMediatorClient = await DidcommMediatorClient.init(
+  final senderMediatorClient = await MediatorDidcommClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       mediatorDidDocument: receiverMediatorDidDocument,
       didManager: senderDidManager,

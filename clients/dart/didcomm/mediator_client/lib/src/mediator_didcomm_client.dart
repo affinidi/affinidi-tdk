@@ -17,22 +17,22 @@ import '../mediator_client.dart';
 ///
 /// Example usage:
 /// ```dart
-/// final client = await DidcommMediatorClient.init(
+/// final client = await MediatorDidcommClient.init(
 ///   didManager: myDidManager,
 ///   mediatorDidDocument: mediatorDoc,
 /// );
 /// await client.packAndSendMessage(message: myMessage);
 /// final response = await client.waitForMessage(threadId: myThreadId);
 /// ```
-class DidcommMediatorClient extends MediatorClient {
+class MediatorDidcommClient extends MediatorClient {
   /// The DID manager for managing DIDs and keys.
   final DidManager didManager;
 
   /// The client options for configuring timeouts and message forwarding.
   final ClientOptions clientOptions;
 
-  /// Creates a [DidcommMediatorClient] instance.
-  DidcommMediatorClient({
+  /// Creates a [MediatorDidcommClient] instance.
+  MediatorDidcommClient({
     required super.mediatorDidDocument,
     required super.keyPair,
     required super.didKeyId,
@@ -44,13 +44,13 @@ class DidcommMediatorClient extends MediatorClient {
     super.webSocketOptions,
   });
 
-  /// Initializes a [DidcommMediatorClient] asynchronously.
+  /// Initializes a [MediatorDidcommClient] asynchronously.
   ///
   /// [didManager] is required for DID operations.
   /// [mediatorDidDocument] is the mediator's DID document.
   /// [authorizationProvider] is optional.
   /// [clientOptions] configures timeouts and forwarding.
-  static Future<DidcommMediatorClient> init({
+  static Future<MediatorDidcommClient> init({
     required DidManager didManager,
     required DidDocument mediatorDidDocument,
     AuthorizationProvider? authorizationProvider,
@@ -61,7 +61,7 @@ class DidcommMediatorClient extends MediatorClient {
       didManager: didManager,
     );
 
-    return DidcommMediatorClient(
+    return MediatorDidcommClient(
       didManager: didManager,
       clientOptions: clientOptions,
       mediatorDidDocument: mediatorDidDocument,
