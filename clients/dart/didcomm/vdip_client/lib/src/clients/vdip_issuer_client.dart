@@ -7,17 +7,29 @@ import 'package:uuid/uuid.dart';
 
 import '../../vdip_didcomm_client.dart';
 
+/// DIDComm issuer-side client for the VDIP protocol.
+///
+/// Handles feature disclosure responses and processing credential issuance
+/// requests from holders (including holder-bound assertions).
 class VdipIssuerClient {
+  /// Underlying mediator DIDComm client used to send and receive messages.
   final MediatorDidcommClient mediatorClient;
+
+  /// DID manager for DIDComm operations.
   final DidManager didManager;
+
+  /// Static list of supported feature disclosures supported by this issuer.
   final List<Disclosure> featureDisclosures;
 
+  /// Creates a new [VdipIssuerClient] with the provided dependencies.
   VdipIssuerClient({
     required this.didManager,
     required this.mediatorClient,
     required this.featureDisclosures,
   });
 
+  /// Convenience initializer that creates the underlying [MediatorDidcommClient]
+  /// prior to constructing the issuer client instance.
   static Future<VdipIssuerClient> init({
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
@@ -36,6 +48,8 @@ class VdipIssuerClient {
         ),
       );
 
+  /// Responds to a feature [queryMessage] by computing and sending a
+  /// corresponding `disclose` message. Returns the sent message.
   Future<DiscloseMessage> disclose({
     required QueryMessage queryMessage,
   }) async {
@@ -71,10 +85,11 @@ class VdipIssuerClient {
     return message;
   }
 
-  Future<PlainTextMessage> sendIssuedCredentials({
+  /// Sends an issued credential to the given [holderDid].
+  Future<VdipIssuedCredentialMessage> sendIssuedCredentials({
     required String holderDid,
     required VerifiableCredential verifiableCredential,
-    String comment = '',
+    String? comment,
   }) async {
     VdipIssuedCredentialBody issuedCredentialBody;
 
@@ -123,6 +138,11 @@ class VdipIssuerClient {
     return message;
   }
 
+  /// Listens for incoming VDIP issuer-related messages.
+  ///
+  /// Invokes [onRequestToIssueCredential] when a credential issuance request
+  /// arrives, optionally passing assertion validation details. Returns the
+  /// active subscription.
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
     required void Function({
@@ -205,6 +225,7 @@ class VdipIssuerClient {
     );
   }
 
+  /// Validates that the signed JWS [jwsAssertion] subject matches [holderDid].
   Future<bool> _isAssertionValid(
     String jwsAssertion,
     String holderDid,

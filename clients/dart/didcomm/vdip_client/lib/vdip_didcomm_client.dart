@@ -1,3 +1,8 @@
+/// Provides holder and issuer client implementations along with the
+/// protocol message and model classes used to perform feature discovery
+/// and credential issuance.
+library;
+
 // Clients
 export 'src/clients/vdip_holder_client.dart';
 export 'src/clients/vdip_issuer_client.dart';
