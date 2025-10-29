@@ -1,0 +1,27 @@
+name: affinidi_tdk_vdip_didcomm_client
+description: A sample command-line application.
+version: 1.0.0
+homepage: https://github.com/affinidi/affinidi-tdk
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  affinidi_tdk_mediator_client:
+    path: ../mediator_client
+  affinidi_tdk_vdsp_didcomm_client:
+    path: ../vdsp_client
+  dcql: ^1.2.0
+  json_annotation: ^4.9.0
+  selective_disclosure_jwt: ^1.1.1
+  ssi: ^2.15.1
+  uuid: ^4.5.1
+
+dev_dependencies:
+  build_runner: ^2.4.11
+  dart_flutter_team_lints: ^3.2.1
+  json_serializable: ^6.9.5
+  lints: ^5.0.0
+  path: ^1.9.1
+  test: ^1.24.0

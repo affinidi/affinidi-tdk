@@ -98,7 +98,7 @@ class TestConfig {
   }) {
     return path.normalize(path.join(
       Directory.current.path,
-      '../../../clients/dart',
+      '../../../clients/dart/didcomm',
       packageDirectoryName,
     ));
   }

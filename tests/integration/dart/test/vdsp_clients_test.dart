@@ -1,19 +1,18 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_didcomm_client/didcomm_client.dart'
+import 'package:affinidi_tdk_mediator_client/mediator_client.dart'
     hide CredentialFormat;
-import 'package:affinidi_tdk_didcomm_client/src/common/feature_discovery_helper.dart';
-import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+import 'package:affinidi_tdk_vdsp_didcomm_client/vdsp_didcomm_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../../tests/integration/dart/test/test_config.dart';
+import 'test_config.dart';
 
 Future<void> main() async {
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'didcomm_client',
+    packageDirectoryName: 'vdsp_client',
   );
 
   final mediatorDid = await readDid(
