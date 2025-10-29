@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:affinidi_tdk_mediator_client/mediator_client.dart';
+
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../didcomm_client.dart';
 import '../common/feature_discovery_helper.dart';
+import '../common/jwt_helper.dart';
 import 'didcomm_mediator_client.dart';
 
 class VdipIssuerClient {
@@ -126,9 +128,11 @@ class VdipIssuerClient {
 
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
-    required void Function(
-      PlainTextMessage message,
-    ) onRequestToIssueCredentials,
+    required void Function({
+      required PlainTextMessage message,
+      bool? isAssertionValid,
+      String? holderDidFromAssertion,
+    }) onRequestToIssueCredential,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function({int? closeCode, String? closeReason})? onDone,
@@ -159,8 +163,31 @@ class VdipIssuerClient {
         }
         // Add fields to callback, assertion validity
         if (unpacked.type == VdipRequestIssuanceMessage.messageType) {
-          onRequestToIssueCredentials(
-            PlainTextMessage.fromJson(plainTextJson),
+          final plainTextMessage = PlainTextMessage.fromJson(plainTextJson);
+
+          final requestIssuanceMessageBody =
+              VdipRequestIssuanceMessageBody.fromJson(plainTextMessage.body!);
+
+          final isRequestForSpecificHolder =
+              requestIssuanceMessageBody.holderDid != null;
+
+          if (isRequestForSpecificHolder) {
+            final assertion = requestIssuanceMessageBody.assertion!;
+            final holderDid = requestIssuanceMessageBody.holderDid!;
+
+            final isAssertionValid =
+                await _isAssertionValid(assertion, holderDid);
+
+            onRequestToIssueCredential(
+              holderDidFromAssertion: holderDid,
+              isAssertionValid: isAssertionValid,
+              message: plainTextMessage,
+            );
+            return;
+          }
+
+          onRequestToIssueCredential(
+            message: plainTextMessage,
           );
 
           return;
@@ -179,5 +206,21 @@ class VdipIssuerClient {
       onDone: onDone,
       cancelOnError: cancelOnError,
     );
+  }
+
+  Future<bool> _isAssertionValid(
+    String jwsAssertion,
+    String holderDid,
+  ) async {
+    final resolvedHolderDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+    final decodedJwsAssertion = JwtHelper.decodeAndVerify(
+      serializedJwt: jwsAssertion,
+      holderDidDocument: resolvedHolderDidDocument,
+    );
+
+    final assertionSubject = decodedJwsAssertion.payload['sub'];
+
+    return assertionSubject == holderDid;
   }
 }

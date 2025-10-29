@@ -50,9 +50,8 @@ class VdipHolderClient {
     return message;
   }
 
-  Future<VdipRequestIssuanceMessage> requestCredentials({
+  Future<VdipRequestIssuanceMessage> requestCredential({
     required String issuerDid,
-    required String holderDid,
     required RequestCredentialsOptions options,
   }) async {
     final requestIssuanceMessage = VdipRequestIssuanceMessage(
@@ -74,12 +73,15 @@ class VdipHolderClient {
     return requestIssuanceMessage;
   }
 
-  Future<VdipRequestIssuanceMessage> requestCredentialsForHolder({
+  Future<VdipRequestIssuanceMessage> requestCredentialForHolder(
+    String holderDid, {
     required String issuerDid,
-    required String holderDid,
-    required DidSigner didSigner,
+    required DidSigner assertionSigner,
     required RequestCredentialsOptions options,
   }) async {
+    if (holderDid != assertionSigner.did) {
+      throw ArgumentError('Holder DID does not match assertion signer DID.');
+    }
     final issueTime =
         (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
     final payload = {
@@ -91,12 +93,11 @@ class VdipHolderClient {
       'exp': issueTime + options.tokenExpiration.inSeconds,
       'iat': issueTime,
     };
-    final signedAssertion =
-        JwtHelper.createAndSignJwt(payload, DidSignerAdapter(didSigner));
+    final signedAssertion = await JwtHelper.createAndSignJwt(
+        payload, DidSignerAdapter(assertionSigner));
 
     final requestIssuanceMessage = VdipRequestIssuanceMessage(
       id: const Uuid().v4(),
-      from: holderDid,
       to: [issuerDid],
       body: VdipRequestIssuanceMessageBody(
         assertion: signedAssertion.toString(),

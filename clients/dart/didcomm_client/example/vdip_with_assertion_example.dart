@@ -16,15 +16,15 @@ import '../../../../tests/integration/dart/test/test_config.dart';
 // Copy its DID Document URL into example/mediator/mediator_did.txt.
 
 Future<void> main() async {
-  // 1. Holder users the same DID for messaging and VCs
-  // 2. Holder queries Issuer features
-  // 3. Issuer replies with features it supports
-  // 4. Holder requests MusicStreaming VC from Issuer
+  // 1. Holder queries Issuer features
+  // 2. Issuer replies with features it supports
+  // 3. Holder requests MusicStreaming VC from Issuer
   //    - email is set in the message metadata
-  // 5. Issuer issues MusicStreaming VC and sends it to Holder.
+  //    - holder DID and assertion are included in the request
+  // 4. Issuer issues MusicStreaming VC and sends it to Holder
   //    - email is taken from the message metadata, which was priorly set by Holder
-  //    - DID is taken from the "from" field of the request message
-  // 6. Holder receives MusicStreaming VC
+  //    - assertion is validated by Issuer to verify holder DID ownership
+  // 5. Holder receives MusicStreaming VC
 
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'didcomm_client',
@@ -154,8 +154,10 @@ Future<void> main() async {
       // TODO: verify disclosed features
       // TODO: add mapping from header to propousalId
 
-      await vdipHolderClient.requestCredential(
+      await vdipHolderClient.requestCredentialForHolder(
+        holderSigner.did,
         issuerDid: issuerSigner.did,
+        assertionSigner: holderSigner,
         options: RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
           credentialMeta: CredentialMeta(data: {'email': 'test@example.com'}),
@@ -167,7 +169,7 @@ Future<void> main() async {
         'Holder received Credentials Issuance Response Message',
         object: message,
       );
-
+      await Future<void>.delayed(const Duration(seconds: 2));
       await ConnectionPool.instance.stopConnections();
     },
     onProblemReport: (message) {
@@ -179,9 +181,7 @@ Future<void> main() async {
   );
 
   issuerClient.listenForIncomingMessages(
-    // TODO: implement onFeatureQuery in VdipIssuerClient
     // TODO: verify challenge
-    // TODO: verify assertion
     onFeatureQuery: (message) async {
       prettyPrint(
         'Issuer received Feature Query Message',
@@ -202,6 +202,28 @@ Future<void> main() async {
         object: message,
       );
 
+      if (isAssertionValid != true) {
+        await issuerClient.mediatorClient.packAndSendMessage(
+          ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdip',
+                  'invalid-assertion',
+                ],
+              ),
+            ),
+          ),
+        );
+
+        return;
+      }
+
       final vdipRequestIssuanceMessageBody =
           VdipRequestIssuanceMessageBody.fromJson(
         message.body!,
@@ -212,10 +234,6 @@ Future<void> main() async {
 
       if (email == null) {
         throw ArgumentError.notNull('body.credentialMeta.data.email');
-      }
-
-      if (message.from == null) {
-        throw ArgumentError.notNull('from');
       }
 
       // if multiple credential formats are supported, check which one is requested
@@ -241,7 +259,7 @@ Future<void> main() async {
         issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
           CredentialSubject.fromJson({
-            'id': message.from!, // holder DID
+            'id': holderDidFromAssertion, // holder DID
             'email': email,
             'subscriptionType': 'basic',
           }),
