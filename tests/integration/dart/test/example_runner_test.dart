@@ -98,7 +98,7 @@ void main() async {
             expect(errors, isEmpty);
           },
           // gives enough time for the examples to run
-          timeout: const Timeout.factor(2),
+          timeout: Timeout(Duration(minutes: 2)),
         );
       });
     }
