@@ -19,7 +19,7 @@ Future<void> main() async {
   final verifierDomain = 'test.verifier.com';
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'vdsp_didcomm_client',
+    packageDirectoryName: 'vdsp_client',
   );
 
   final mediatorDid = await readDid(

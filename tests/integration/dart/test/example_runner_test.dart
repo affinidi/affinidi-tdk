@@ -56,25 +56,24 @@ void main() async {
                 .where((file) => !testsToSkip.contains(basename(file.path)))
                 .toList();
 
-            // TODO: uncomment when when atlas_example.dart is fixed
-            // if (dartFiles.isEmpty) {
-            //   failTest('No Dart example files found.');
-            // }
+            if (dartFiles.isEmpty) {
+              failTest('No Dart example files found.');
+            }
 
             final filesWithMain = <File>[];
 
             for (final file in dartFiles) {
               final content = await file.readAsString();
-              if (content.contains('void main()')) {
+              if (content.contains('main() {') ||
+                  content.contains('main() async {')) {
                 filesWithMain.add(file);
               }
             }
 
-            // TODO: uncomment when when atlas_example.dart is fixed
-            // if (filesWithMain.isEmpty) {
-            //   failTest('No Dart example files with void main() found.');
-            //   return;
-            // }
+            if (filesWithMain.isEmpty) {
+              failTest('No Dart example files with main() found.');
+              return;
+            }
 
             final errors = <String>[];
 

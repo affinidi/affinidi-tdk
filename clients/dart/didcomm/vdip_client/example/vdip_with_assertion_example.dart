@@ -24,7 +24,7 @@ Future<void> main() async {
   // 5. Holder receives MusicStreaming VC
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'vdip_didcomm_client',
+    packageDirectoryName: 'vdip_client',
   );
 
   final mediatorDid = await readDid(
