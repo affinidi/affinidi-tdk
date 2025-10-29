@@ -83,7 +83,7 @@ Future<void> main() async {
       KeyType.ed25519,
       KeyType.p256,
       KeyType.p384,
-      // KeyType.secp256k1, TODO: decide if it is necessary
+      // KeyType.secp256k1,
       // KeyType.p521, not supported by ecdsa
     ]) {
       group(keyType.name, () {

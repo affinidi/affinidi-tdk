@@ -47,15 +47,32 @@ Future<LdVcDataModelV1> generateEmailLdVcV1({
   final suite = LdVcDm1Suite();
 
   final issuedCredential = await suite.issue(
-    unsignedData: unsignedCredential,
-    proofGenerator: issuerSigner.signatureScheme == SignatureScheme.ed25519
-        ? DataIntegrityEddsaJcsGenerator(
+      unsignedData: unsignedCredential,
+      proofGenerator: switch (issuerSigner.signatureScheme) {
+        SignatureScheme.ecdsa_secp256k1_sha256 =>
+          Secp256k1Signature2019Generator(
             signer: issuerSigner,
-          )
-        : DataIntegrityEcdsaJcsGenerator(
+            proofPurpose: ProofPurpose.authentication,
+          ) as EmbeddedProofGenerator,
+        SignatureScheme.ecdsa_p256_sha256 => DataIntegrityEcdsaJcsGenerator(
             signer: issuerSigner,
+            proofPurpose: ProofPurpose.authentication,
+          ) as EmbeddedProofGenerator,
+        SignatureScheme.ecdsa_p384_sha384 => DataIntegrityEcdsaJcsGenerator(
+            signer: issuerSigner,
+            proofPurpose: ProofPurpose.authentication,
           ),
-  );
+        SignatureScheme.ecdsa_p521_sha512 => DataIntegrityEcdsaJcsGenerator(
+            signer: issuerSigner,
+            proofPurpose: ProofPurpose.authentication,
+          ),
+        SignatureScheme.ed25519 => DataIntegrityEddsaJcsGenerator(
+            signer: issuerSigner,
+            proofPurpose: ProofPurpose.authentication,
+          ) as EmbeddedProofGenerator,
+        SignatureScheme.rsa_pkcs1_sha256 =>
+          throw UnimplementedError('RSA is not supported'),
+      });
 
   return issuedCredential;
 }
