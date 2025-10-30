@@ -11,7 +11,7 @@ import 'test_utils.dart';
 
 Future<void> main() async {
   const holderEmail = 'user@test.com';
-  const proposalId = 'proposal-123';
+  final proposalId = const Uuid().v4();
   const comment = 'Requesting email credential issuance';
 
   late MockMediator mockMediator;
@@ -197,7 +197,7 @@ Future<void> main() async {
               // Holder requests credential
               await holderClient.requestCredential(
                 issuerDid: issuerDidDocument.id,
-                options: const RequestCredentialsOptions(
+                options: RequestCredentialsOptions(
                   proposalId: proposalId,
                   credentialFormat: CredentialFormat.w3cV1,
                   comment: comment,
@@ -299,7 +299,7 @@ Future<void> main() async {
                 holderSigner.did,
                 issuerDid: issuerDidDocument.id,
                 assertionSigner: holderSigner,
-                options: const RequestCredentialsOptions(
+                options: RequestCredentialsOptions(
                   proposalId: proposalId,
                   credentialFormat: CredentialFormat.w3cV1,
                   comment: comment,
@@ -430,7 +430,10 @@ Future<void> main() async {
       expect(actual, isA<VdipIssuedCredentialMessage>());
 
       final actualBody = VdipIssuedCredentialBody.fromJson(actual.body!);
+      final credentialSerialized = actualBody.credential;
+      final verifiableCredential = VcDataModelV1.fromJson(credentialSerialized);
       expect(actualBody.comment, comment);
+      expect(verifiableCredential.id, credential.id);
       expect(actualBody.credentialFormat, CredentialFormat.w3cV1);
     });
   });
