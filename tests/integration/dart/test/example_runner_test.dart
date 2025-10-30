@@ -20,6 +20,19 @@ void main() async {
           config = await TestConfig.configureTestFiles(
             packageDirectoryName: packageName,
           );
+
+          final result = await Process.run(
+            Platform.resolvedExecutable,
+            ['pub', 'get'],
+            runInShell: true,
+            workingDirectory: config.packagePath,
+          );
+
+          if (result.exitCode != 0) {
+            throw Exception(
+              'Could not run "dart pub get".\nExit code: ${result.exitCode}.\nStdout: ${result.stdout}.\nStderr: ${result.stderr}.',
+            );
+          }
         });
 
         test(

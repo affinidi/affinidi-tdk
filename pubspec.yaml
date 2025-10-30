@@ -18,7 +18,6 @@ workspace:
   - libs/dart/vault
   - libs/dart/vault/example
   - libs/dart/vault_flutter_utils
-  - libs/dart/vault_flutter_utils/example/flutter_secure_storage
   - clients/dart/didcomm/mediator_client
   - clients/dart/didcomm/vdsp_client
   - clients/dart/didcomm/vdip_client

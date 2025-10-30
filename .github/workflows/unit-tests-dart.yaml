@@ -20,7 +20,7 @@ jobs:
           sdk: 3.6.0
 
       - name: Install dependencies
-        run: flutter pub get
+        run: dart pub get
         working-directory: clients/dart/didcomm/vdsp_client
 
       - name: Run unit tests
