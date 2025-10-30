@@ -15,6 +15,7 @@ package com.affinidi.tdk.credential.verification.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.credential.verification.client.models.VerifyPresentationV2InputPexQuery;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -31,8 +32,7 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   VerifyPresentationV2Input.JSON_PROPERTY_VERIFIABLE_PRESENTATION,
-  VerifyPresentationV2Input.JSON_PROPERTY_PRESENTATION_DEFINITION,
-  VerifyPresentationV2Input.JSON_PROPERTY_PRESENTATION_SUBMISSION,
+  VerifyPresentationV2Input.JSON_PROPERTY_PEX_QUERY,
   VerifyPresentationV2Input.JSON_PROPERTY_CHALLENGE
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -41,13 +41,9 @@ public class VerifyPresentationV2Input {
   @javax.annotation.Nullable
   private Object verifiablePresentation;
 
-  public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
+  public static final String JSON_PROPERTY_PEX_QUERY = "pexQuery";
   @javax.annotation.Nullable
-  private Object presentationDefinition;
-
-  public static final String JSON_PROPERTY_PRESENTATION_SUBMISSION = "presentationSubmission";
-  @javax.annotation.Nullable
-  private Object presentationSubmission;
+  private VerifyPresentationV2InputPexQuery pexQuery;
 
   public static final String JSON_PROPERTY_CHALLENGE = "challenge";
   @javax.annotation.Nullable
@@ -81,54 +77,29 @@ public class VerifyPresentationV2Input {
     this.verifiablePresentation = verifiablePresentation;
   }
 
-  public VerifyPresentationV2Input presentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
+  public VerifyPresentationV2Input pexQuery(@javax.annotation.Nullable VerifyPresentationV2InputPexQuery pexQuery) {
     
-    this.presentationDefinition = presentationDefinition;
+    this.pexQuery = pexQuery;
     return this;
   }
 
   /**
-   * Get presentationDefinition
-   * @return presentationDefinition
+   * Get pexQuery
+   * @return pexQuery
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(JSON_PROPERTY_PEX_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getPresentationDefinition() {
-    return presentationDefinition;
+  public VerifyPresentationV2InputPexQuery getPexQuery() {
+    return pexQuery;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(JSON_PROPERTY_PEX_QUERY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
-    this.presentationDefinition = presentationDefinition;
-  }
-
-  public VerifyPresentationV2Input presentationSubmission(@javax.annotation.Nullable Object presentationSubmission) {
-    
-    this.presentationSubmission = presentationSubmission;
-    return this;
-  }
-
-  /**
-   * Get presentationSubmission
-   * @return presentationSubmission
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public Object getPresentationSubmission() {
-    return presentationSubmission;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setPresentationSubmission(@javax.annotation.Nullable Object presentationSubmission) {
-    this.presentationSubmission = presentationSubmission;
+  public void setPexQuery(@javax.annotation.Nullable VerifyPresentationV2InputPexQuery pexQuery) {
+    this.pexQuery = pexQuery;
   }
 
   public VerifyPresentationV2Input challenge(@javax.annotation.Nullable String challenge) {
@@ -166,14 +137,13 @@ public class VerifyPresentationV2Input {
     }
     VerifyPresentationV2Input verifyPresentationV2Input = (VerifyPresentationV2Input) o;
     return Objects.equals(this.verifiablePresentation, verifyPresentationV2Input.verifiablePresentation) &&
-        Objects.equals(this.presentationDefinition, verifyPresentationV2Input.presentationDefinition) &&
-        Objects.equals(this.presentationSubmission, verifyPresentationV2Input.presentationSubmission) &&
+        Objects.equals(this.pexQuery, verifyPresentationV2Input.pexQuery) &&
         Objects.equals(this.challenge, verifyPresentationV2Input.challenge);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verifiablePresentation, presentationDefinition, presentationSubmission, challenge);
+    return Objects.hash(verifiablePresentation, pexQuery, challenge);
   }
 
   @Override
@@ -181,8 +151,7 @@ public class VerifyPresentationV2Input {
     StringBuilder sb = new StringBuilder();
     sb.append("class VerifyPresentationV2Input {\n");
     sb.append("    verifiablePresentation: ").append(toIndentedString(verifiablePresentation)).append("\n");
-    sb.append("    presentationDefinition: ").append(toIndentedString(presentationDefinition)).append("\n");
-    sb.append("    presentationSubmission: ").append(toIndentedString(presentationSubmission)).append("\n");
+    sb.append("    pexQuery: ").append(toIndentedString(pexQuery)).append("\n");
     sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -241,24 +210,9 @@ public class VerifyPresentationV2Input {
       }
     }
 
-    // add `presentationDefinition` to the URL query string
-    if (getPresentationDefinition() != null) {
-      try {
-        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
-    // add `presentationSubmission` to the URL query string
-    if (getPresentationSubmission() != null) {
-      try {
-        joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
+    // add `pexQuery` to the URL query string
+    if (getPexQuery() != null) {
+      joiner.add(getPexQuery().toUrlQueryString(prefix + "pexQuery" + suffix));
     }
 
     // add `challenge` to the URL query string

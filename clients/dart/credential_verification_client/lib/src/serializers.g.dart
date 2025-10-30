@@ -50,6 +50,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(VerifyPresentationInput.serializer)
       ..add(VerifyPresentationOutput.serializer)
       ..add(VerifyPresentationV2Input.serializer)
+      ..add(VerifyPresentationV2InputPexQuery.serializer)
       ..add(W3cCredentialStatus.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(

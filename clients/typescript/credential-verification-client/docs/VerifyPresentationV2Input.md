@@ -4,12 +4,11 @@ Request model of /v2/verify-vp
 
 ## Properties
 
-| Name                       | Type       | Description | Notes                             |
-| -------------------------- | ---------- | ----------- | --------------------------------- |
-| **verifiablePresentation** | **object** |             | [optional] [default to undefined] |
-| **presentationDefinition** | **object** |             | [optional] [default to undefined] |
-| **presentationSubmission** | **object** |             | [optional] [default to undefined] |
-| **challenge**              | **string** |             | [optional] [default to undefined] |
+| Name                       | Type                                                                          | Description | Notes                             |
+| -------------------------- | ----------------------------------------------------------------------------- | ----------- | --------------------------------- |
+| **verifiablePresentation** | **object**                                                                    |             | [optional] [default to undefined] |
+| **pexQuery**               | [**VerifyPresentationV2InputPexQuery**](VerifyPresentationV2InputPexQuery.md) |             | [optional] [default to undefined] |
+| **challenge**              | **string**                                                                    |             | [optional] [default to undefined] |
 
 ## Example
 
@@ -18,8 +17,7 @@ import { VerifyPresentationV2Input } from '@affinidi-tdk/credential-verification
 
 const instance: VerifyPresentationV2Input = {
   verifiablePresentation,
-  presentationDefinition,
-  presentationSubmission,
+  pexQuery,
   challenge,
 }
 ```

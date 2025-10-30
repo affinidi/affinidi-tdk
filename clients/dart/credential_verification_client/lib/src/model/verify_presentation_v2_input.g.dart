@@ -10,9 +10,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
   @override
   final JsonObject? verifiablePresentation;
   @override
-  final JsonObject? presentationDefinition;
-  @override
-  final JsonObject? presentationSubmission;
+  final VerifyPresentationV2InputPexQuery? pexQuery;
   @override
   final String? challenge;
 
@@ -21,10 +19,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
       (VerifyPresentationV2InputBuilder()..update(updates))._build();
 
   _$VerifyPresentationV2Input._(
-      {this.verifiablePresentation,
-      this.presentationDefinition,
-      this.presentationSubmission,
-      this.challenge})
+      {this.verifiablePresentation, this.pexQuery, this.challenge})
       : super._();
   @override
   VerifyPresentationV2Input rebuild(
@@ -40,8 +35,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
     if (identical(other, this)) return true;
     return other is VerifyPresentationV2Input &&
         verifiablePresentation == other.verifiablePresentation &&
-        presentationDefinition == other.presentationDefinition &&
-        presentationSubmission == other.presentationSubmission &&
+        pexQuery == other.pexQuery &&
         challenge == other.challenge;
   }
 
@@ -49,8 +43,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, verifiablePresentation.hashCode);
-    _$hash = $jc(_$hash, presentationDefinition.hashCode);
-    _$hash = $jc(_$hash, presentationSubmission.hashCode);
+    _$hash = $jc(_$hash, pexQuery.hashCode);
     _$hash = $jc(_$hash, challenge.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
@@ -60,8 +53,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
   String toString() {
     return (newBuiltValueToStringHelper(r'VerifyPresentationV2Input')
           ..add('verifiablePresentation', verifiablePresentation)
-          ..add('presentationDefinition', presentationDefinition)
-          ..add('presentationSubmission', presentationSubmission)
+          ..add('pexQuery', pexQuery)
           ..add('challenge', challenge))
         .toString();
   }
@@ -77,15 +69,11 @@ class VerifyPresentationV2InputBuilder
   set verifiablePresentation(JsonObject? verifiablePresentation) =>
       _$this._verifiablePresentation = verifiablePresentation;
 
-  JsonObject? _presentationDefinition;
-  JsonObject? get presentationDefinition => _$this._presentationDefinition;
-  set presentationDefinition(JsonObject? presentationDefinition) =>
-      _$this._presentationDefinition = presentationDefinition;
-
-  JsonObject? _presentationSubmission;
-  JsonObject? get presentationSubmission => _$this._presentationSubmission;
-  set presentationSubmission(JsonObject? presentationSubmission) =>
-      _$this._presentationSubmission = presentationSubmission;
+  VerifyPresentationV2InputPexQueryBuilder? _pexQuery;
+  VerifyPresentationV2InputPexQueryBuilder get pexQuery =>
+      _$this._pexQuery ??= VerifyPresentationV2InputPexQueryBuilder();
+  set pexQuery(VerifyPresentationV2InputPexQueryBuilder? pexQuery) =>
+      _$this._pexQuery = pexQuery;
 
   String? _challenge;
   String? get challenge => _$this._challenge;
@@ -99,8 +87,7 @@ class VerifyPresentationV2InputBuilder
     final $v = _$v;
     if ($v != null) {
       _verifiablePresentation = $v.verifiablePresentation;
-      _presentationDefinition = $v.presentationDefinition;
-      _presentationSubmission = $v.presentationSubmission;
+      _pexQuery = $v.pexQuery?.toBuilder();
       _challenge = $v.challenge;
       _$v = null;
     }
@@ -121,13 +108,25 @@ class VerifyPresentationV2InputBuilder
   VerifyPresentationV2Input build() => _build();
 
   _$VerifyPresentationV2Input _build() {
-    final _$result = _$v ??
-        _$VerifyPresentationV2Input._(
-          verifiablePresentation: verifiablePresentation,
-          presentationDefinition: presentationDefinition,
-          presentationSubmission: presentationSubmission,
-          challenge: challenge,
-        );
+    _$VerifyPresentationV2Input _$result;
+    try {
+      _$result = _$v ??
+          _$VerifyPresentationV2Input._(
+            verifiablePresentation: verifiablePresentation,
+            pexQuery: _pexQuery?.build(),
+            challenge: challenge,
+          );
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'pexQuery';
+        _pexQuery?.build();
+      } catch (e) {
+        throw BuiltValueNestedFieldError(
+            r'VerifyPresentationV2Input', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

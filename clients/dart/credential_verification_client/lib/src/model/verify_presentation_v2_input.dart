@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_value/json_object.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_v2_input_pex_query.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,8 +14,7 @@ part 'verify_presentation_v2_input.g.dart';
 ///
 /// Properties:
 /// * [verifiablePresentation]
-/// * [presentationDefinition]
-/// * [presentationSubmission]
+/// * [pexQuery]
 /// * [challenge]
 @BuiltValue()
 abstract class VerifyPresentationV2Input
@@ -23,11 +23,8 @@ abstract class VerifyPresentationV2Input
   @BuiltValueField(wireName: r'verifiablePresentation')
   JsonObject? get verifiablePresentation;
 
-  @BuiltValueField(wireName: r'presentationDefinition')
-  JsonObject? get presentationDefinition;
-
-  @BuiltValueField(wireName: r'presentationSubmission')
-  JsonObject? get presentationSubmission;
+  @BuiltValueField(wireName: r'pexQuery')
+  VerifyPresentationV2InputPexQuery? get pexQuery;
 
   @BuiltValueField(wireName: r'challenge')
   String? get challenge;
@@ -69,18 +66,11 @@ class _$VerifyPresentationV2InputSerializer
         specifiedType: const FullType(JsonObject),
       );
     }
-    if (object.presentationDefinition != null) {
-      yield r'presentationDefinition';
+    if (object.pexQuery != null) {
+      yield r'pexQuery';
       yield serializers.serialize(
-        object.presentationDefinition,
-        specifiedType: const FullType(JsonObject),
-      );
-    }
-    if (object.presentationSubmission != null) {
-      yield r'presentationSubmission';
-      yield serializers.serialize(
-        object.presentationSubmission,
-        specifiedType: const FullType(JsonObject),
+        object.pexQuery,
+        specifiedType: const FullType(VerifyPresentationV2InputPexQuery),
       );
     }
     if (object.challenge != null) {
@@ -122,19 +112,12 @@ class _$VerifyPresentationV2InputSerializer
           ) as JsonObject;
           result.verifiablePresentation = valueDes;
           break;
-        case r'presentationDefinition':
+        case r'pexQuery':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.presentationDefinition = valueDes;
-          break;
-        case r'presentationSubmission':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.presentationSubmission = valueDes;
+            specifiedType: const FullType(VerifyPresentationV2InputPexQuery),
+          ) as VerifyPresentationV2InputPexQuery;
+          result.pexQuery.replace(valueDes);
           break;
         case r'challenge':
           final valueDes = serializers.deserialize(
