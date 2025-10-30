@@ -245,7 +245,8 @@ Future<void> main() async {
       );
 
       // Verify the credential structure
-      final credential = credentialBody.credential as VcDataModelV1;
+      final credential = UniversalParser.parse(credentialBody.credential);
+
       expect(
         credential.credentialSubject.first['email'],
         holderEmail,
@@ -253,7 +254,7 @@ Future<void> main() async {
 
       // Check the issuer DID
       expect(
-        credential.issuer.toString(),
+        credential.issuer.id.toString(),
         contains(issuerSigner.did),
       );
     });
@@ -410,7 +411,8 @@ Future<void> main() async {
       );
 
       // Verify the credential structure
-      final credential = credentialBody.credential as VcDataModelV1;
+      final credential = UniversalParser.parse(credentialBody.credential);
+
       expect(
         credential.credentialSubject.first['email'],
         holderEmail,
@@ -418,12 +420,12 @@ Future<void> main() async {
 
       // Check the issuer DID
       expect(
-        credential.issuer.toString(),
+        credential.issuer.id.toString(),
         contains(issuerSigner.did),
       );
 
       expect(
-        credential.credentialSubject.first['id'],
+        credential.credentialSubject.first['id'].toString(),
         holderSigner.did,
       );
     });
