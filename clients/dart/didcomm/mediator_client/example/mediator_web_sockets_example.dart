@@ -184,9 +184,10 @@ void main() async {
         message: message,
         recipientDidManager: bobDidManager,
         expectedMessageWrappingTypes: [
-          isMediatorTelemetryMessage
-              ? MessageWrappingType.authcryptSignPlaintext
-              : MessageWrappingType.anoncryptSignPlaintext,
+          MessageWrappingType.authcryptPlaintext,
+          MessageWrappingType.authcryptSignPlaintext,
+          MessageWrappingType.anoncryptSignPlaintext,
+          MessageWrappingType.anoncryptAuthcryptPlaintext,
         ],
         expectedSigners: [
           isMediatorTelemetryMessage

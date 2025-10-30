@@ -178,6 +178,7 @@ class VdipIssuerClient {
 
           return;
         }
+
         // Add fields to callback, assertion validity
         if (unpacked.type == VdipRequestIssuanceMessage.messageType) {
           final plainTextMessage = PlainTextMessage.fromJson(plainTextJson);
