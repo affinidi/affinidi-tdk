@@ -1,38 +1,52 @@
-# Affinidi DIDComm for Dart - VDIP Clients
+# Affinidi VDIP Clients for Dart
 
-A Dart package for implementing the Verifiable Data Issuance Protocol (VDIP) using DIDComm v2 Messaging. VDIP enables secure, privacy-preserving issuance of verifiable credentials between issuers and holders through decentralized communication channels. It supports feature discovery, credential issuance workflows with multiple formats (W3C VC Data Model v1 & v2, JWT VC, SD-JWT VC), and optional holder-bound assertions for advanced use cases.
 
-VDIP is ideal for scenarios like digital identity onboarding, credential provisioning for employees or students, certification issuance, and any context where a trusted issuer needs to securely deliver verifiable credentials to holders while maintaining privacy and control.
+A Dart package for implementing the Verifiable Data Issuance Protocol (VDIP), a protocol that facilitates secure, interoperable verifiable credential issuance between **Issuers** and **Holders** using the DIDComm v2.1 protocol, an open standard for decentralised communication.
 
-VDIP clients facilitate secure, standardized issuance of verifiable credentials between two parties: issuers and holders. The `VdipIssuerClient` represents the credential-issuing authority that creates and signs verifiable credentials (such as diplomas, certificates, licenses, or identity documents), while the `VdipHolderClient` represents the user or entity requesting and receiving these credentials. These clients abstract away the complexity of DIDComm v2 messaging, credential formatting, cryptographic signing, and assertion verification, providing developers with a simple, high-level API for building credential issuance applications.
+The VDIP consist of two main clients:
+
+- **`VdipIssuerClient`** that represents the credential-issuing authority (***Issuer***) that creates and signs verifiable credentials, such as diplomas, certificates, licenses, or identity documents, attesting to the claim about the subject (*Holder*).
+
+- **`VdipHolderClient`** that represents the user or entity requesting and claiming the credential offer issued by the issuer.
+
+These clients simplify the credential issuance using the DIDComm v2.1 protocol, including support for different credential formats such as W3C Data Model V1 and V2, JWT VC, and SD-JWT VC. Additionally, VDIP clients provide holder-bound assertions to bind the credential to the holder cryptographically, ensuring only the intended recipient of the credential offer can claim it.
+
+VDIP clients provide developers with tools to build robust and secure credential issuance features into their applications. VDIP enables use cases such as:
+
+- Verified identity credential issuance for onboarding and background screening
+- Employee or student credential issuance to grant access to systems
+- Issuance of certificates, such as training or course completion
+
+These are a few scenarios from a wide range of use cases unlocked by VDIP that require the issuance of attested and verified information from a trusted issuer to the holders while maintaining privacy and control over their data.
 
 ## Table of Contents
 
 - [Core Concepts](#core-concepts)
 - [Key Features](#key-features)
   - [Supported Credential Formats](#supported-credential-formats)
-  - [Protocol Messages](#protocol-messages)
+  - [VDIP Protocol Support](#vdip-protocol-support)
 - [Protocol Flow](#protocol-flow)
   - [Basic Issuance Flow](#basic-issuance-flow)
   - [Holder-Bound Assertions](#holder-bound-assertions)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [1. Set up DID Managers and Mediator Connection](#1-set-up-did-managers-and-mediator-connection)
-  - [2. Initialize VDIP Clients](#2-initialize-vdip-clients)
-  - [3. Discover Issuer Features](#3-discover-issuer-features)
-  - [4. Request Credential (Basic)](#4-request-credential-basic)
-  - [5. Request Credential with Holder-Bound Assertion](#5-request-credential-with-holder-bound-assertion)
-  - [6. Issue Credentials](#6-issue-credentials)
-  - [7. Receive Credentials](#7-receive-credentials)
-- [Message Reference](#message-reference)
+  - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
+  - [2. Initialise VDIP Issuer Client](#2-initialise-vdip-issuer-client)
+  - [3. Initialise VDIP Holder Client](#3-initialise-vdip-holder-client)
+  - [4. Feature Discovery](#4-feature-discovery)
+  - [5. Request Credential (Basic)](#5-request-credential-basic)
+  - [6. Request Credential with Holder-Bound Assertion](#6-request-credential-with-holder-bound-assertion)
+  - [7. Issue Credential](#7-issue-credential)
+  - [8. Claim Credential](#8-claim-credential)
+- [Message References](#message-references)
   - [Request Issuance Message](#request-issuance-message)
   - [Issued Credential Message](#issued-credential-message)
 - [Security Features](#security-features)
   - [Message Wrapping Verification](#message-wrapping-verification)
   - [Addressing Consistency](#addressing-consistency)
   - [Assertion Verification](#assertion-verification)
-- [Problem Report Messages](#problem-report-messages)
+- [Problem Report Message](#problem-report-message)
 - [Complete Example](#complete-example)
 - [Support & Feedback](#support--feedback)
   - [Reporting Technical Issues](#reporting-technical-issues)
@@ -40,31 +54,33 @@ VDIP clients facilitate secure, standardized issuance of verifiable credentials 
 
 ## Core Concepts
 
-The DIDComm for Dart package implements the Verifiable Data Issuance Protocol (VDIP) using existing open standards and cryptographic techniques to provide secure, private, and verifiable communication.
+The Verifiable Data Issuance Protocol (VDIP) uses existing open standards, such as DIDComm v2.1, and cryptographic techniques to provide a secure, private, and trusted credential issuance flow.
 
-- **Verifiable Data Issuance Protocol (VDIP)** - A protocol built on top of DIDComm v2 that enables secure issuance of verifiable credentials between issuers and holders. VDIP defines message types, workflows, and security requirements for credential issuance.
+- **DIDComm v2.1 protocol** - An open standard for decentralised communication. Built on the foundation of Decentralised Identifiers (DIDs), it enables parties to exchange verifiable data such as credentials and establishes secure communication channels between parties without relying on centralised servers.
 
-- **Issuer** - An entity that creates and issues verifiable credentials. The issuer validates requests, constructs credentials in the appropriate format, signs them, and delivers them to the holder via DIDComm messages.
+- **Verifiable Data Issuance Protocol (VDIP)** - A protocol built on top of DIDComm v2 that enables secure issuance of verifiable credentials between issuers and holders. VDIP defines message types, workflows, and security requirements for credential issuance. There are two main roles in the credential issuance flow:
 
-- **Holder** - An entity requesting and receiving verifiable credentials. The holder initiates the issuance flow by sending a request specifying the desired credential format and providing any required metadata.
+  - **Issuer** - An entity that creates, signs, and issues verifiable credentials. The issuer validates requests, constructs credentials in a supported format, signs them, and delivers them to the holder via DIDComm message.
 
-- **Verifiable Credential** - A cryptographically secure, tamper-evident credential that contains claims about a subject, issued by a trusted issuer.
+  - **Holder** - An entity requesting and claiming the verifiable credentials. The holder initiates the issuance flow by sending a request specifying the desired credential format and providing any required metadata.
 
-- **Holder-Bound Assertion** - A signed JWT token that proves the holder controls a specific DID. This allows credentials to be issued to a DID different from the DIDComm message sender, with cryptographic proof of ownership.
+- **Verifiable Credential** - A cryptographically secure, tamper-evident credential that contains claims about a subject (*Holder*), issued by a trusted issuer.
 
-- **Feature Discovery** - A mechanism that allows holders and issuers to discover each other's supported features, credential formats, and operations before initiating credential issuance. This ensures compatibility and prevents protocol mismatches.
+- **Holder-Bound Assertion** - A signed JWT token that proves the holder controls a specific DID. It allows issuing credentials to a DID different from the DIDComm message sender requesting for credential issuance, with cryptographic proof of ownership.
 
-- **Credential Metadata** - Extensible data structure (`CredentialMeta`) that allows holders to pass auxiliary information to issuers during the credential request process, such as personal details or context needed for credential construction.
+- **Feature Discovery** - A mechanism that allows holders and issuers to discover each other's supported features, credential formats, and operations before initiating credential issuance. It ensures compatibility and prevents protocol mismatches.
+
+- **Credential Metadata** - An extensible data structure (`CredentialMeta`) that allows holders to pass auxiliary information to issuers during the credential request process, such as personal details or context needed for constructing a credential.
 
 ## Key Features
 
 - Implements the Verifiable Data Issuance Protocol (VDIP) for secure credential issuance.
-- Support for feature discovery between holders and issuers.
-- Multiple credential format support including W3C VC Data Model v1 & v2, JWT VC, and SD-JWT VC.
-- Holder-bound assertions for proving control of specific DIDs via signed JWT tokens.
-- Extensible credential metadata for passing auxiliary information during issuance.
-- Automatic security verification including message wrapping validation and addressing consistency checks.
-- Uses DIDComm v2 Messaging for secure, encrypted communication.
+- Implements DIDComm v2.1 protocol for secure, end-to-end encrypted communication.
+- Support for feature discovery between issuers and holders.
+- Support multiple credential format, such as W3C VC Data Model v1 & v2, JWT VC, and SD-JWT VC.
+- Holder-bound assertions to prove control of specific DIDs via signed JWT tokens.
+- Extensible credential metadata to pass auxiliary information during issuance.
+- Automatic security verification, such as message wrapping validation and addressing consistency checks.
 - Problem reporting mechanism for error handling.
 
 ### Supported Credential Formats
@@ -92,43 +108,43 @@ The package implements the following VDIP message types:
 
 ### Basic Issuance Flow
 
-The typical VDIP credential issuance flow follows these steps:
+The basic VDIP credential issuance flow follows these steps:
 
-1. **Setup**: Both Holder and Issuer initialize their DID managers and establish connections to a DIDComm mediator.
+1. **Setup**: Holder and Issuer initialise their DID managers and establish connections to a DIDComm mediator.
 
 2. **Feature Discovery**: 
-   - Holder sends a `query` message to discover what credential formats and features the Issuer supports.
+   - Holder sends a `query` message to discover what credential formats and features the issuer supports.
    - Issuer responds with a `disclose` message listing supported formats (e.g., W3C v1, JWT VC, SD-JWT VC).
 
 3. **Request Issuance**:
    - Holder sends a `request-issuance` message specifying:
-     - `proposal_id`: References an external proposal or out-of-band offer
-     - `credential_format`: Desired format (optional, Issuer may choose)
-     - `credential_meta`: Additional data needed for credential construction (e.g., email, attributes)
+     - `proposal_id`: References an external proposal or out-of-band offer.
+     - `credential_format`: Desired format (optional, Issuer may choose).
+     - `credential_meta`: Additional data needed to construct the credential (e.g., email, attributes).
    
 4. **Validation**:
-   - Issuer validates the request
-   - Issuer verifies any holder-bound assertions if present
-   - Issuer determines if it can fulfill the request
+   - Issuer validates the request.
+   - Issuer verifies holder-bound assertions if present.
+   - Issuer determines if it can fulfil the request.
 
 5. **Credential Construction**:
-   - Issuer constructs the credential with appropriate claims
-   - Issuer signs the credential using the appropriate proof mechanism for the format
+   - Issuer constructs the credential with verified claims.
+   - Issuer signs the credential using the appropriate proof mechanism for the format.
    
 6. **Credential Delivery**:
-   - Issuer sends `issued-credential` message containing the serialized credential
+   - Issuer sends an `issued-credential` message containing the serialised credential.
    
-7. **Receipt**:
-   - Holder receives and processes the credential
-   - Holder can store it locally or present it to verifiers
+7. **Claim Credential**:
+   - Holder receives and processes the credential.
+   - Holder stores it locally and presents it to verifiers.
 
 ### Holder-Bound Assertions
 
-In some scenarios, the credential should be issued to a DID that is different from the DIDComm message sender. For example:
+In some scenarios, the credential should be issued to a DID different from the DIDComm message sender requesting credential issuance. For example:
 
-- A parent requesting a credential for their child
-- A service requesting a credential on behalf of a user
-- An agent acting for a principal
+- A parent requesting a credential for their child.
+- A service requesting a credential on behalf of a user.
+- An agent acting for a principal.
 
 VDIP supports this through **holder-bound assertions**:
 
@@ -137,22 +153,22 @@ VDIP supports this through **holder-bound assertions**:
 2. The Holder includes a signed `assertion` JWT proving control of that DID.
 
 3. The assertion JWT contains:
-   - `iss`: Holder DID (issuer of the assertion)
-   - `sub`: Holder DID (subject of the assertion)
-   - `aud`: Issuer DID (audience)
-   - `proposalId`: Links to the credential request
-   - `exp`: Expiration timestamp (prevents replay attacks)
-   - `iat`: Issuance timestamp
-   - Optional `challenge`: Additional anti-replay binding
+   - `iss`: Holder DID (issuer of the assertion).
+   - `sub`: Holder DID (subject of the assertion).
+   - `aud`: Issuer DID (audience).
+   - `proposalId`: Links to the credential request.
+   - `exp`: Expiration timestamp (prevents replay attacks).
+   - `iat`: Issuance timestamp.
+   - Optional `challenge`: Additional anti-replay binding.
 
 4. The Issuer:
-   - Resolves the `holder_did` to get its DID Document
-   - Verifies the assertion JWT signature
-   - Validates that `sub` matches `holder_did`
-   - Checks expiration and challenge (if used)
-   - Issues the credential to the verified `holder_did`
+   - Resolves the `holder_did` to get its DID Document.
+   - Verifies the assertion JWT signature.
+   - Validates that `sub` matches `holder_did`.
+   - Checks expiration and challenge (if used).
+   - Issues the credential to the verified `holder_did`.
 
-This mechanism ensures cryptographic proof of DID ownership while keeping the credential issuance secure.
+The **holder-bound assertions** mechanism ensures cryptographic proof of DID ownership while securing credential issuance.
 
 ## Requirements
 
@@ -181,7 +197,7 @@ dart pub get
 
 ## Usage
 
-Below is a step-by-step example of secure credential issuance between an issuer and holder using the VDIP protocol. The example demonstrates feature discovery, credential requesting, and issuance.
+Below is a step-by-step example of secure credential issuance between an issuer and holder using the VDIP protocol. The example demonstrates feature discovery, credential request, and issuance.
 
 ### 1. Set up DID Managers and Mediator
 
@@ -225,7 +241,7 @@ await holderWallet.generateKey(
 await holderDidManager.addVerificationMethod(holderKeyId);
 ```
 
-### 2. Initialize VDIP Issuer Client
+### 2. Initialise VDIP Issuer Client
 
 Create an issuer client for issuing credentials:
 
@@ -237,7 +253,7 @@ final issuerClient = await VdipIssuerClient.init(
 );
 ```
 
-### 3. Initialize VDIP Holder Client
+### 3. Initialise VDIP Holder Client
 
 Create a holder client for requesting credentials:
 
@@ -334,9 +350,9 @@ final requestWithAssertion = await holderClient.requestCredentialForHolder(
 );
 ```
 
-### 7. Issue Credentials
+### 7. Issue Credential
 
-The issuer receives requests and issues credentials:
+The issuer receives and validates requests, then issues a credential:
 
 ```dart
 issuerClient.listenForIncomingMessages(
@@ -419,9 +435,9 @@ issuerClient.listenForIncomingMessages(
 );
 ```
 
-### 8. Receive Credentials
+### 8. Claim Credential
 
-The holder receives and processes issued credentials:
+The holder claims, receives, and processes issued credentials:
 
 ```dart
 holderClient.listenForIncomingMessages(
@@ -453,9 +469,11 @@ holderClient.listenForIncomingMessages(
 );
 ```
 
-## Message Reference
+## Message References
 
 ### Request Issuance Message
+
+DIDComm message to request credential issuance to the issuer.
 
 **Message Type**: `https://affinidi.com/didcomm/protocols/vdip/1.0/request-issuance`
 
@@ -463,14 +481,14 @@ holderClient.listenForIncomingMessages(
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `proposal_id` | `String` | Yes | Identifier referencing a credential proposal or out-of-band offer |
-| `holder_did` | `String?` | Conditional | DID to issue the credential to (requires `assertion` if specified) |
-| `assertion` | `String?` | Conditional | Signed JWT proving control of `holder_did` (required if `holder_did` is specified) |
+| `proposal_id` | `String` | Yes | Identifier referencing a credential proposal or out-of-band offer. |
+| `holder_did` | `String?` | Conditional | DID to issue the credential to (requires `assertion` if specified). |
+| `assertion` | `String?` | Conditional | Signed JWT proving control of `holder_did` (required if `holder_did` is specified). |
 | `challenge` | `String?` | Optional | Anti-replay or session binding value |
-| `credential_format` | `String?` | Optional | Requested credential format (e.g., "w3cV1", "jwtVc", "sdJwtVc") |
-| `json_web_signature_algorithm` | `String?` | Optional | JWS algorithm for JWT-based credentials (e.g., "ES256") |
-| `comment` | `String?` | Optional | Human-readable note from the requester |
-| `credential_meta` | `CredentialMeta?` | Optional | Arbitrary metadata to assist credential construction |
+| `credential_format` | `String?` | Optional | Requested credential format (e.g., "w3cV1", "jwtVc", "sdJwtVc"). |
+| `json_web_signature_algorithm` | `String?` | Optional | JWS algorithm for JWT-based credentials (e.g., "ES256"). |
+| `comment` | `String?` | Optional | Human-readable note from the requester. |
+| `credential_meta` | `CredentialMeta?` | Optional | Arbitrary metadata to assist credential construction. |
 
 **Example**:
 ```json
@@ -494,21 +512,23 @@ holderClient.listenForIncomingMessages(
 
 ### Issued Credential Message
 
+DIDComm message containing the issued credential to the holder.
+
 **Message Type**: `https://affinidi.com/didcomm/protocols/vdip/1.0/issued-credential`
 
 **Body Fields** (`VdipIssuedCredentialBody`):
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `credential` | `String` | Yes | Serialized credential payload (format depends on `credential_format`) |
-| `credential_format` | `CredentialFormat` | Yes | Format of the issued credential |
-| `comment` | `String?` | Optional | Human-readable note from the issuer |
+| `credential` | `String` | Yes | Serialized credential payload (format depends on `credential_format`). |
+| `credential_format` | `CredentialFormat` | Yes | Format of the issued credential. |
+| `comment` | `String?` | Optional | Human-readable note from the issuer. |
 
 **Credential Formats**:
-- `w3cV1`: JSON string of W3C VC Data Model 1.0 credential
-- `w3cV2`: JSON string of W3C VC Data Model 2.0 credential
-- `jwtVc`: JWT (JWS) string
-- `sdJwtVc`: SD-JWT string with selective disclosure
+- `w3cV1`: JSON string of W3C VC Data Model 1.0 credential.
+- `w3cV2`: JSON string of W3C VC Data Model 2.0 credential.
+- `jwtVc`: JWT (JWS) string.
+- `sdJwtVc`: SD-JWT string with selective disclosure.
 
 **Example**:
 ```json
@@ -526,16 +546,17 @@ holderClient.listenForIncomingMessages(
 }
 ```
 
+## Security Features
 
 ### Message Wrapping Verification
 
 Both `VdipHolderClient` and `VdipIssuerClient` enforce strict message wrapping requirements to prevent downgrade attacks:
 
 **Accepted Message Wrapping Types**:
-- `authcryptPlaintext` – Authenticated encryption (recommended default)
-- `authcryptSignPlaintext` – Authenticated encryption with signature (highest security)
-- `anoncryptSignPlaintext` – Anonymous encryption with signature (sender anonymous to intermediaries)
-- `anoncryptAuthcryptPlaintext` – Layered encryption (advanced scenarios)
+- `authcryptPlaintext` – Authenticated encryption (recommended default).
+- `authcryptSignPlaintext` – Authenticated encryption with signature (highest security).
+- `anoncryptSignPlaintext` – Anonymous encryption with signature (sender anonymous to intermediaries).
+- `anoncryptAuthcryptPlaintext` – Layered encryption (advanced scenarios).
 
 These restrictions ensure that messages cannot be downgraded to plaintext or improperly wrapped formats. The library automatically validates the wrapping when unpacking messages using `DidcommMessage.unpackToPlainTextMessage`.
 
@@ -572,13 +593,13 @@ When a Holder requests a credential with a holder-bound assertion, the Issuer pe
    - Prevents replay of old assertions
 
 4. **Challenge Validation** (optional):
-   - If a challenge was provided, validates its uniqueness and binding to the session
+   - If a challenge was provided, it validates its uniqueness and binding to the session
 
 The `VdipIssuerClient` performs these checks automatically and provides the verification result via the `isAssertionValid` parameter in the `onRequestToIssueCredential` callback.
 
 **Why this matters**: Assertion verification ensures that only the legitimate controller of a DID can request credentials for that DID, preventing credential issuance to unauthorized parties.
 
-## Problem Report Messages
+## Problem Report Message
 
 VDIP uses DIDComm's standard problem-report mechanism to communicate errors and issues during the protocol flow.
 
@@ -627,7 +648,7 @@ onProblemReport: (message) {
 
 ## Complete Example
 
-See [example/vdip_basic_example.dart](example/vdip_basic_example.dart) for a complete runnable example that demonstrates:
+See [example/vdip_basic_example.dart](https://github.com/affinidi/affinidi-tdk/blob/main/clients/dart/didcomm/vdip_client/example/vdip_basic_example.dart) for a complete runnable example that demonstrates:
 
 - Feature discovery between holder and issuer
 - Credential request workflows with and without holder-bound assertions
