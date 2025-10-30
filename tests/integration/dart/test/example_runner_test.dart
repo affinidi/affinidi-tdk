@@ -22,7 +22,7 @@ void main() async {
           );
 
           final result = await Process.run(
-            Platform.resolvedExecutable,
+            'flutter',
             ['pub', 'get'],
             runInShell: true,
             workingDirectory: config.packagePath,
