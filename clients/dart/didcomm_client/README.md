@@ -1,10 +1,22 @@
-# Affinidi DIDComm for Dart - VDSP Clients
+# Affinidi VDSP Clients for Dart
 
-A Dart package for implementing the Verifiable Data Sharing Protocol (VDSP) using DIDComm v2 Messaging. VDSP enables secure, privacy-preserving sharing of verifiable credentials between holders and verifiers through decentralized communication channels. It supports feature discovery, data queries using DCQL (Digital Credential Query Language), and automatic verification of presentations and credentials.
+A Dart package for implementing the Verifiable Data Sharing Protocol (VDSP), a protocol that facilitates secure, interoperable verifiable credential exchange between **Holders** and **Verifiers** using the DIDComm v2.1 protocol, an open standard for decentralised communication.
 
-VDSP ideal for use cases like onboarding, KYC (Know Your Customer), educational verification, healthcare data sharing, and any scenario where selective disclosure of verified information is required while maintaining user privacy and control.
+The VDSP clients consist of two main clients:
 
-VDSP clients facilitate secure, standardized exchange of verifiable credentials between two parties: verifiers and holders. The `VdspVerifierClient` represents the requesting party that needs to verify specific credentials (such as identity documents, educational certificates, or professional qualifications), while the `VdspHolderClient` represents the user or entity that possesses these credentials and controls when and how they are shared. These clients abstract away the complexity of DIDComm v2 messaging, credential queries, and cryptographic operations, providing developers with a simple, high-level API for building credential-sharing applications.
+- **`VdspVerifierClient`** that represents the requesting party (***Verifier***) that verifies one or more credentials, such as identity documents, educational certificates, or professional qualifications, as part of a workflow like background screening for employees.
+
+- **`VdspHolderClient`** that represents the user or entity (***Holder***) that possesses the credentials required by the verifiers. They have complete control over their data and how they are shared.
+
+These clients simplify the data sharing over the DIDComm v2.1 protocol, including credential queries and cryptographic operations such as signature verifications.
+
+VDSP clients provide developers with tools to build robust, privacy-first, and secure credential-sharing features into their applications. VDSP enables use cases such as:
+
+- Customer onboarding and KYC (Know Your Customer)
+- Background screening, including education credential verification
+- Healthcare data sharing
+
+These are a few scenarios from a wide range of use cases unlocked by VDSP that require selective disclosure of verified information while maintaining users' privacy and control over their data.
 
 ## Table of Contents
 
@@ -19,11 +31,11 @@ VDSP clients facilitate secure, standardized exchange of verifiable credentials 
   - [VdspHolderClient](#vdspholderclient)
 - [Usage](#usage)
   - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
-  - [2. Initialize VDSP Verifier Client](#2-initialize-vdsp-verifier-client)
-  - [3. Initialize VDSP Holder Client](#3-initialize-vdsp-holder-client)
+  - [2. Initialise VDSP Verifier Client](#2-initialise-vdsp-verifier-client)
+  - [3. Initialise VDSP Holder Client](#3-initialise-vdsp-holder-client)
   - [4. Feature Discovery](#4-feature-discovery)
-  - [5. Query Holder Data](#5-query-holder-data)
-  - [6. Holder Responds with Data](#6-holder-responds-with-data)
+  - [5. Query Holder Credentials](#5-query-holder-credentials)
+  - [6. Holder Shares Credentials](#6-holder-shares-credentials)
   - [7. Process Data Response](#7-process-data-response)
 - [Complete Example](#complete-example)
 - [Security Features](#security-features)
@@ -33,29 +45,31 @@ VDSP clients facilitate secure, standardized exchange of verifiable credentials 
 
 ## Core Concepts
 
-The DIDComm for Dart package implements the Verifiable Data Sharing Protocol (VDSP) using existing open standards and cryptographic techniques to provide secure, private, and verifiable communication.
+The Verifiable Data Sharing Protocol (VDSP) uses existing open standards, such as DIDComm v2.1, and cryptographic techniques to provide a secure, private, and verifiable data sharing flow.
 
-- **Verifiable Data Sharing Protocol (VDSP)** - A protocol built on top of DIDComm v2 that enables secure sharing of verifiable credentials between holders and verifiers. VDSP defines message types, workflows, and security requirements for credential sharing.
+- **DIDComm v2.1 protocol** - An open standard for decentralised communication. Built on the foundation of Decentralised Identifiers (DIDs), it enables parties to exchange verifiable data such as credentials and establishes secure communication channels between parties without relying on centralised servers.
 
-- **Verifier** - An entity that requests verifiable credentials from holders. The verifier can query holders for specific data using credential query languages and verify the authenticity of the received credentials.
+- **Verifiable Data Sharing Protocol (VDSP)** - A protocol built on top of DIDComm v2.1 that enables secure sharing of verifiable credentials between holders and verifiers. VDSP defines message types, workflows, and security requirements for credential sharing. There are two main roles in the data-sharing flow:
 
-- **Holder** - An entity that stores and controls verifiable credentials. The holder can receive data requests, filter their credentials, and share selected credentials with verifiers in the form of verifiable presentations.
+  - **Verifier** - An entity that requests verifiable credentials from holders. The verifier can query holders for specific data using credential query language and verify the authenticity of the shared credentials.
 
-- **DCQL (DIF Credential Query Language)** - A standardized query language for requesting verifiable credentials. It allows verifiers to specify what credentials they need and what claims within those credentials are required.
+  - **Holder** - An entity that stores and controls verifiable credentials. The holder can receive data requests, filter their credentials, and share selected credentials with verifiers through a verifiable presentation format.
 
-- **Feature Discovery** - A mechanism that allows verifiers and holders to discover each other's supported features, protocols, and operations before initiating data exchange. This ensures compatibility and prevents protocol mismatches.
+- **DCQL (Digital Credential Query Language)** - A standardised query language for requesting verifiable credentials. It allows verifiers to specify what credentials they need and what claims within those credentials are required.
 
-- **Verifiable Presentation** - A data structure containing one or more verifiable credentials, cryptographically signed by the holder to prove authenticity. The presentation is created in response to a verifier's data query.
+- **Feature Discovery** - A mechanism that allows verifiers and holders to discover each other's supported features, protocols, and operations before initiating data exchange. It ensures compatibility and prevents protocol mismatches.
+
+- **Verifiable Presentation** - A data structure containing one or more verifiable credentials, cryptographically signed by the holder to prove authenticity. It creates the presentation in response to a verifier's credential query.
 
 ## Key Features
 
 - Implements the Verifiable Data Sharing Protocol (VDSP) for secure credential sharing.
+- Implements DIDComm v2.1 protocol for secure, end-to-end encrypted communication.
 - Support for feature discovery between verifiers and holders.
-- DCQL-based credential querying with automatic credential filtering.
-- Automatic verification of verifiable presentations and credentials.
-- Built-in support for proof context (challenge and domain) for replay attack prevention.
-- Supports Data Integrity proof suites (ECDSA and EdDSA) for signing presentations.
-- Uses DIDComm v2 Messaging for secure, encrypted communication.
+- Supports DCQL for credential querying and filtering.
+- Cryptographically verifies the signature of verifiable presentations and credentials.
+- Built-in support for proof context (challenge and domain) to prevent replay attack.
+- Supports data integrity proof suites (ECDSA and EdDSA) for signing presentations.
 - Problem reporting mechanism for error handling.
 
 ### VDSP Protocol Support
@@ -75,7 +89,7 @@ The package implements the following VDSP message types:
 
 | Query Language | Status | Description |
 |---|---|---|
-| DCQL | ✅ Fully supported | Digital Credential Query Language for querying credentials |
+| DCQL | ✅ Fully supported | Digital Credential Query Language for querying credentials from the holder's digital wallet |
 
 ## Requirements
 
@@ -108,15 +122,15 @@ dart pub get
 
 The `VdspVerifierClient` implements the VDSP protocol for a verifier, enabling your application to:
 
-- Discover supported features from holders using feature queries.
+- Discover supported features from holders using feature query.
 - Request verifiable credentials from holders using DCQL queries.
-- Automatically verify received verifiable presentations and credentials.
+- Automatically verifies verifiable presentations and credentials.
 - Send processing results back to holders.
 
 **Key Methods:**
 
 - `queryHolderFeatures()` - Sends a feature query to discover what the holder supports.
-- `queryHolderData()` - Requests verifiable credentials from a holder using a DCQL query.
+- `queryHolderData()` - Requests verifiable credentials from a holder using DCQL query.
 - `sendDataProcessingResult()` - Sends a processing result message to the holder.
 - `listenForIncomingMessages()` - Listens for incoming messages (disclose, data response, problem reports).
 
@@ -125,7 +139,7 @@ The `VdspVerifierClient` implements the VDSP protocol for a verifier, enabling y
 The `VdspHolderClient` implements the VDSP protocol for a holder, enabling your application to:
 
 - Respond to feature queries with supported feature disclosures.
-- Filter stored verifiable credentials based on DCQL queries.
+- Filter stored verifiable credentials based on DCQL queries from verifiers.
 - Create and share verifiable presentations in response to data requests.
 - Receive processing results from verifiers.
 
@@ -139,7 +153,7 @@ The `VdspHolderClient` implements the VDSP protocol for a holder, enabling your 
 
 ## Usage
 
-Below is a step-by-step example of secure credential sharing between a verifier and holder using the VDSP protocol. The example demonstrates feature discovery, credential querying, and verification.
+Below is a step-by-step example of secure credential sharing between verifiers and holders using the VDSP protocol. The example demonstrates feature discovery, credential querying, and verification.
 
 ### 1. Set up DID Managers and Mediator
 
@@ -147,7 +161,7 @@ Both the verifier and holder need DID managers and a connection to a DIDComm med
 
 ```dart
 // Resolve the mediator's DID document
-final mediatorDid = 'did:peer:...'; // Your mediator's DID
+final mediatorDid = 'did:web:...'; // Your mediator's DID
 final mediatorDidDocument = await UniversalDIDResolver.defaultResolver.resolveDid(
   mediatorDid,
 );
@@ -183,7 +197,7 @@ await holderWallet.generateKey(
 await holderDidManager.addVerificationMethod(holderKeyId);
 ```
 
-### 2. Initialize VDSP Verifier Client
+### 2. Initialise VDSP Verifier Client
 
 Create a verifier client for requesting credentials:
 
@@ -194,7 +208,7 @@ final verifierClient = await VdspVerifierClient.init(
 );
 ```
 
-### 3. Initialize VDSP Holder Client
+### 3. Initialise VDSP Holder Client
 
 Create a holder client for sharing credentials:
 
@@ -246,7 +260,7 @@ holderClient.listenForIncomingMessages(
 );
 ```
 
-### 5. Query Holder Data
+### 5. Query Holder Credentials
 
 After feature discovery, the verifier sends a DCQL query to request specific credentials:
 
@@ -254,6 +268,7 @@ After feature discovery, the verifier sends a DCQL query to request specific cre
 import 'package:uuid/uuid.dart';
 
 // Define what credentials the verifier needs
+// In this example, verifier requests for holder's email address
 final dcqlQuery = DcqlCredentialQuery(
   credentials: [
     DcqlCredential(
@@ -281,9 +296,9 @@ await verifierClient.queryHolderData(
 );
 ```
 
-### 6. Holder Responds with Data
+### 6. Holder Shares Credentials
 
-The holder receives the query, filters credentials, and shares a verifiable presentation:
+The holder receives the query, filters existing credentials, and shares a verifiable presentation:
 
 ```dart
 holderClient.listenForIncomingMessages(
@@ -359,13 +374,21 @@ verifierClient.listenForIncomingMessages(
 
 ## Complete Example
 
-See [example/vdsp_example.dart](example/vdsp_example.dart) for a complete runnable example that demonstrates:
+See [example/vdsp_example.dart](https://github.com/affinidi/affinidi-tdk/blob/main/clients/dart/didcomm_client/example/vdsp_example.dart) for a complete runnable example that demonstrates:
 
 - Feature discovery between verifier and holder
 - DCQL-based credential querying
 - Verifiable presentation creation and sharing
 - Automatic verification of presentations and credentials
 - Processing result handling
+
+## Security Features
+
+- **Replay Attack Prevention**: Utilises proof context through unique challenge and domain parameters, ensuring each credential presentation is bound to a specific request and cannot be reused maliciously.
+
+- **Robust Data Integrity**: Leverages the Data Integrity Proof Suite with support for both ECDSA and EdDSA algorithms to generate and verify digital signatures, guaranteeing the authenticity and tamper-evidence of credential data.
+
+- **Automated Verification**: Enables seamless and automated validation of verifiable presentations upon credential sharing by the holder, streamlining trust establishment between parties.
 
 ## Support & Feedback
 
