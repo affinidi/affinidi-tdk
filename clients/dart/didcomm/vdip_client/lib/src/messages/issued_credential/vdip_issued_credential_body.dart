@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart';
@@ -46,7 +48,7 @@ class VdipIssuedCredentialBody {
     String? comment,
   }) {
     return VdipIssuedCredentialBody._(
-      credential: credential.toJson().toString(),
+      credential: jsonEncode(credential.toJson()),
       credentialFormat: CredentialFormat.w3cV1,
       comment: comment,
     );
@@ -59,7 +61,7 @@ class VdipIssuedCredentialBody {
     String? comment,
   }) {
     return VdipIssuedCredentialBody._(
-      credential: credential.toJson().toString(),
+      credential: jsonEncode(credential.toJson()),
       credentialFormat: CredentialFormat.w3cV2,
       comment: comment,
     );
