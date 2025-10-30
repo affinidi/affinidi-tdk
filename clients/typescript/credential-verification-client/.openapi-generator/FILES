@@ -37,6 +37,7 @@ docs/VerifyCredentialV2Input.md
 docs/VerifyPresentationInput.md
 docs/VerifyPresentationOutput.md
 docs/VerifyPresentationV2Input.md
+docs/VerifyPresentationV2InputPexQuery.md
 docs/W3cCredentialStatus.md
 docs/W3cProof.md
 index.ts
