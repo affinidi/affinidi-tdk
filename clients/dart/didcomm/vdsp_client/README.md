@@ -374,7 +374,7 @@ verifierClient.listenForIncomingMessages(
 
 ## Complete Example
 
-See [example/vdsp_example.dart](https://github.com/affinidi/affinidi-tdk/blob/main/clients/dart/didcomm_client/example/vdsp_example.dart) for a complete runnable example that demonstrates:
+See [example/vdsp_example.dart](https://github.com/affinidi/affinidi-tdk/blob/main/clients/dart/didcomm/vdsp_client/example/vdsp_example.dart) for a complete runnable example that demonstrates:
 
 - Feature discovery between verifier and holder
 - DCQL-based credential querying
