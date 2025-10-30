@@ -8,7 +8,7 @@ The VDSP clients consist of two main clients:
 
 - **`VdspHolderClient`** that represents the user or entity (***Holder***) that possesses the credentials required by the verifiers. They have complete control over their data and how they are shared.
 
-These clients simplify the data sharing over the DIDComm v2.1 protocol, including credential queries and cryptographic operations such as signature verifications.
+These clients simplify the data sharing using the DIDComm v2.1 protocol, including credential queries and cryptographic operations such as signature verifications.
 
 VDSP clients provide developers with tools to build robust, privacy-first, and secure credential-sharing features into their applications. VDSP enables use cases such as:
 
