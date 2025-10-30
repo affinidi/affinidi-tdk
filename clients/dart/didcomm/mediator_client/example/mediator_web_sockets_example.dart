@@ -171,14 +171,6 @@ void main() async {
 
   bobMediatorClient.listenForIncomingMessages(
     (message) async {
-      final encryptedMessage = EncryptedMessage.fromJson(message);
-      final senderDid = const JweHeaderConverter()
-          .fromJson(encryptedMessage.protected)
-          .subjectKeyId;
-
-      final isMediatorTelemetryMessage =
-          senderDid?.contains('.affinidi.io') == true;
-
       final unpackedMessageByBob =
           await DidcommMessage.unpackToPlainTextMessage(
         message: message,
@@ -188,11 +180,6 @@ void main() async {
           MessageWrappingType.authcryptSignPlaintext,
           MessageWrappingType.anoncryptSignPlaintext,
           MessageWrappingType.anoncryptAuthcryptPlaintext,
-        ],
-        expectedSigners: [
-          isMediatorTelemetryMessage
-              ? bobMediatorDocument.assertionMethod.first.didKeyId
-              : aliceDidDocument.assertionMethod.first.didKeyId,
         ],
       );
 
