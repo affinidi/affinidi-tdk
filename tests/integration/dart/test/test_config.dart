@@ -96,11 +96,19 @@ class TestConfig {
   static String _getPackagePath({
     required String packageDirectoryName,
   }) {
-    return path.normalize(path.join(
-      Directory.current.path,
-      '../../../clients/dart/didcomm',
-      packageDirectoryName,
-    ));
+    final expectedPath = 'clients/dart/didcomm/$packageDirectoryName';
+
+    if (Directory.current.path.endsWith(expectedPath)) {
+      return Directory.current.path;
+    }
+
+    // calling from integration tests folder
+    return path.normalize(
+      path.join(
+        Directory.current.path,
+        '../../../$expectedPath',
+      ),
+    );
   }
 
   Future<void> configureAcl({
