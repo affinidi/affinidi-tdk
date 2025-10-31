@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 /// Represents data query languages for credential queries.
 enum DataQueryLanguage {
-  /// Decentralized Credential Query Language
+  /// Digital Credential Query Language
   @JsonValue('DCQL')
   dcql('DCQL');
 
