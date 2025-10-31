@@ -176,9 +176,6 @@ Future<void> main() async {
   );
 
   issuerClient.listenForIncomingMessages(
-    // TODO: implement onFeatureQuery in VdipIssuerClient
-    // TODO: verify challenge
-    // TODO: verify assertion
     onFeatureQuery: (message) async {
       prettyPrint(
         'Issuer received Feature Query Message',
