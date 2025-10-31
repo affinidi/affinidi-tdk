@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart'
     hide CredentialFormat;
+import 'package:affinidi_tdk_vdip/vdip.dart';
+import 'package:affinidi_tdk_vdsp/vdsp.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
-import 'package:vdip/vdip.dart';
-import 'package:vdsp/vdsp.dart';
 
 import '../../../../../tests/integration/dart/test/test_config.dart';
 

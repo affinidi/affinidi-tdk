@@ -1,5 +1,5 @@
 name: affinidi_tdk_mediator_didcomm_client
-description: A sample command-line application.
+description: A Dart package for implementing secure and private communication on your app using DIDComm v2 Messaging protocol.
 version: 1.0.0-dev.1
 homepage: https://github.com/affinidi/affinidi-tdk
 

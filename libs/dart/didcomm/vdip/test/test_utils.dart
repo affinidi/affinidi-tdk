@@ -2,9 +2,9 @@
 
 import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart'
     hide CredentialFormat;
+import 'package:affinidi_tdk_vdip/vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
-import 'package:vdip/vdip.dart';
 
 void emptyOnRequestIssuanceCallback({
   required message,
