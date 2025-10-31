@@ -96,7 +96,7 @@ class TestConfig {
   static String _getPackagePath({
     required String packageDirectoryName,
   }) {
-    final expectedPath = 'clients/dart/didcomm/$packageDirectoryName';
+    final expectedPath = 'libs/dart/didcomm/$packageDirectoryName';
 
     if (Directory.current.path.endsWith(expectedPath)) {
       return Directory.current.path;
