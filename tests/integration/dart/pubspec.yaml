@@ -28,10 +28,10 @@ dev_dependencies:
     path: ../../../clients/dart/login_configuration_client
   affinidi_tdk_mediator_didcomm_client:
     path: ../../../clients/dart/didcomm/mediator_didcomm_client
-  affinidi_tdk_vdsp_didcomm_client:
-    path: ../../../clients/dart/didcomm/vdsp_client
-  affinidi_tdk_vdip_didcomm_client:
-    path: ../../../clients/dart/didcomm/vdip_client
+  vdsp:
+    path: ../../../clients/dart/didcomm/vdsp
+  vdip:
+    path: ../../../clients/dart/didcomm/vdip
 
   dotenv: ^4.2.0
   lints: ^5.0.0

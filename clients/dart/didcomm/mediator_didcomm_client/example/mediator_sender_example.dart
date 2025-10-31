@@ -12,7 +12,7 @@ void main() async {
   // Copy its DID Document URL into example/mediator/mediator_did.txt.
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'mediator_client',
+    packageDirectoryName: 'mediator_didcomm_client',
   );
 
   // Replace this DID Document with your receiver DID

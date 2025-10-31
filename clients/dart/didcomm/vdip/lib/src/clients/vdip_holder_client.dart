@@ -4,7 +4,7 @@ import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dar
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../vdip_didcomm_client.dart';
+import '../../vdip.dart';
 
 /// DIDComm holder-side client for the VDIP protocol.
 ///

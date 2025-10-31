@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart'
     hide CredentialFormat;
-import 'package:affinidi_tdk_vdsp_didcomm_client/vdsp_didcomm_client.dart';
+import 'package:vdsp/vdsp.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';

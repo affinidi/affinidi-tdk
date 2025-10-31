@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart'
     hide CredentialFormat;
-import 'package:affinidi_tdk_vdip_didcomm_client/vdip_didcomm_client.dart';
-import 'package:affinidi_tdk_vdsp_didcomm_client/vdsp_didcomm_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vdip/vdip.dart';
+import 'package:vdsp/vdsp.dart';
 
 import '../../../../../tests/integration/dart/test/test_config.dart';
 
@@ -25,7 +25,7 @@ Future<void> main() async {
   // 6. Holder receives MusicStreaming VC
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'vdip_client',
+    packageDirectoryName: 'vdip',
   );
 
   final mediatorDid = await readDid(

@@ -4,5 +4,5 @@ environment:
   sdk: ^3.6.0
 workspace:
   - mediator_didcomm_client
-  - vdsp_client
-  - vdip_client
+  - vdsp
+  - vdip

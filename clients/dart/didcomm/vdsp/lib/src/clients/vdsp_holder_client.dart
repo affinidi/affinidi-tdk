@@ -7,7 +7,7 @@ import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart'
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../vdsp_didcomm_client.dart';
+import '../../vdsp.dart';
 
 /// Implements the VDSP protocol for a holder, supporting feature discovery, credential filtering, and data sharing.
 class VdspHolderClient {

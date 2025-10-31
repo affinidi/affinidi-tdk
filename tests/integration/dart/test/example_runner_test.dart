@@ -10,8 +10,8 @@ void main() async {
   group('Running example files', () {
     for (final packageName in [
       'mediator_didcomm_client',
-      'vdsp_client',
-      'vdip_client',
+      'vdsp',
+      'vdip',
     ]) {
       group(packageName, () {
         late TestConfig config;

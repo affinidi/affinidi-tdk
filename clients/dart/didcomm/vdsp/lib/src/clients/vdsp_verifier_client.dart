@@ -6,7 +6,7 @@ import 'package:dcql/dcql.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../vdsp_didcomm_client.dart';
+import '../../vdsp.dart';
 
 /// Implements the VDSP protocol for a verifier, supporting feature discovery,
 /// data queries, and verification of presentations and credentials.
