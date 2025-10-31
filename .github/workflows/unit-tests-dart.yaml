@@ -19,10 +19,18 @@ jobs:
         with:
           sdk: 3.6.0
 
-      - name: Install dependencies
+      - name: Install dependencies for VDSP
         run: dart pub get
-        working-directory: clients/dart/didcomm/vdsp_client
+        working-directory: clients/dart/didcomm/vdsp
 
-      - name: Run unit tests
+      - name: Install dependencies for VDIP
+        run: dart pub get
+        working-directory: clients/dart/didcomm/vdip
+
+      - name: Run unit tests for VDSP
         run: dart test
-        working-directory: clients/dart/didcomm/vdsp_client
+        working-directory: clients/dart/didcomm/vdsp
+
+      - name: Run unit tests for VDIP
+        run: dart test
+        working-directory: clients/dart/didcomm/vdip
