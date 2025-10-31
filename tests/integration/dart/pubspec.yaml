@@ -26,6 +26,13 @@ dev_dependencies:
     path: ../../../clients/dart/iota_client
   affinidi_tdk_login_configuration_client:
     path: ../../../clients/dart/login_configuration_client
+  affinidi_tdk_mediator_didcomm_client:
+    path: ../../../libs/dart/didcomm/mediator_didcomm_client
+  affinidi_tdk_vdsp:
+    path: ../../../libs/dart/didcomm/vdsp
+  affinidi_tdk_vdip:
+    path: ../../../libs/dart/didcomm/vdip
+
   dotenv: ^4.2.0
   lints: ^5.0.0
   test: ^1.24.0
@@ -38,3 +45,7 @@ dev_dependencies:
   convert: ^3.1.2
   uuid: ^4.5.1
   jwt_decode: ^0.3.1
+dependencies:
+  collection: ^1.19.1
+  dcql: ^1.0.0
+  path: ^1.9.1

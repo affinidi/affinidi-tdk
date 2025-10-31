@@ -1,0 +1,36 @@
+name: Unit tests for Dart
+
+on:
+  push:
+    branches-ignore:
+      - main
+    paths: # run if any of below was changed
+      - 'libs/dart/didcomm/**'
+
+jobs:
+  unit_tests_didcomm_client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.6.0
+
+      - name: Install dependencies for VDSP
+        run: dart pub get
+        working-directory: libs/dart/didcomm/vdsp
+
+      - name: Install dependencies for VDIP
+        run: dart pub get
+        working-directory: libs/dart/didcomm/vdip
+
+      - name: Run unit tests for VDSP
+        run: dart test
+        working-directory: libs/dart/didcomm/vdsp
+
+      - name: Run unit tests for VDIP
+        run: dart test
+        working-directory: libs/dart/didcomm/vdip
