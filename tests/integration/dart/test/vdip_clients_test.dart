@@ -10,7 +10,7 @@ import 'test_config.dart';
 
 Future<void> main() async {
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'vdip_client',
+    packageDirectoryName: 'vdip',
   );
 
   final mediatorDid = await readDid(
