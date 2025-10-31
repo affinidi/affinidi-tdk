@@ -6,7 +6,6 @@ import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
-import 'mock_mediator.dart';
 import 'test_utils.dart';
 
 Future<void> main() async {
