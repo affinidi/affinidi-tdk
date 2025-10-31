@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart'
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart'
     hide CredentialFormat;
 import 'package:affinidi_tdk_vdsp_didcomm_client/vdsp_didcomm_client.dart';
 import 'package:dcql/dcql.dart';
@@ -360,7 +360,7 @@ Future<void> main() async {
             verifiableCredentials: queryResult.verifiableCredentials,
             verifiablePresentationSigner: holderSigner,
             verifiablePresentationProofSuite:
-                DataIntegrityProofSuite.ecdsa_jcs_2019,
+                DataIntegrityProofSuite.ecdsaJcs2019,
           );
         },
         onDataProcessingResult: (message) async {

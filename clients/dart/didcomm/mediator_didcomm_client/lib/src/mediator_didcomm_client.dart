@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../mediator_client.dart';
+import '../mediator_didcomm_client.dart';
 
 /// A DIDComm v2 client for interacting with a mediator service using DID-based secure messaging.
 ///

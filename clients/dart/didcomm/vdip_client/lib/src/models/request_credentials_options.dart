@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
 
 import '../messages/request_issuance/credential_meta.dart';
 

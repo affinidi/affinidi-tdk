@@ -1,4 +1,4 @@
-import '../../mediator_client.dart';
+import '../../mediator_didcomm_client.dart';
 
 /// Configuration options for the DIDComm client.
 class ClientOptions {

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart'
     show SdJwtHandlerV1;
@@ -253,34 +253,32 @@ class VdspHolderClient {
     VdspQueryDataProofContext? proofContext,
   }) async {
     final proofGenerator = switch (verifiablePresentationProofSuite) {
-      DataIntegrityProofSuite.secp256k1_signature_2019 =>
+      DataIntegrityProofSuite.secp256k1Signature2019 =>
         Secp256k1Signature2019Generator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
           proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
-      DataIntegrityProofSuite.ecdsa_jcs_2019 => DataIntegrityEcdsaJcsGenerator(
+      DataIntegrityProofSuite.ecdsaJcs2019 => DataIntegrityEcdsaJcsGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
           proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
-      DataIntegrityProofSuite.eddsa_jcs_2022 => DataIntegrityEddsaJcsGenerator(
+      DataIntegrityProofSuite.eddsaJcs2022 => DataIntegrityEddsaJcsGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
           proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
-      DataIntegrityProofSuite.ecdsa_rdfc_2019 =>
-        DataIntegrityEcdsaRdfcGenerator(
+      DataIntegrityProofSuite.ecdsaRdfc2019 => DataIntegrityEcdsaRdfcGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,
           proofPurpose: ProofPurpose.authentication,
         ) as EmbeddedProofGenerator,
-      DataIntegrityProofSuite.eddsa_rdfc_2022 =>
-        DataIntegrityEddsaRdfcGenerator(
+      DataIntegrityProofSuite.eddsaRdfc2022 => DataIntegrityEddsaRdfcGenerator(
           signer: verifiablePresentationSigner,
           challenge: proofContext?.challenge,
           domain: proofContext != null ? [proofContext.domain] : null,

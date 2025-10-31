@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -10,7 +10,8 @@ void main() async {
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/bob_private_key.pem
 
   // Create and run a DIDComm mediator, for instance https://github.com/affinidi/affinidi-tdk-rs/tree/main/crates/affinidi-messaging/affinidi-messaging-mediator or with https://portal.affinidi.com.
-  // Copy its DID Document URL into example/mediator/mediator_did.txt.
+  // Configure ACL.
+  // Copy its DID Document URL into example/mediator/mediator_with_acl_did.txt.
 
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'mediator_client',
@@ -33,61 +34,39 @@ void main() async {
   );
 
   final aliceKeyId = 'alice-key-1';
-  final alicePrivateKeyBytes = await extractPrivateKeyBytes(
-    config.alicePrivateKeyPath,
-  );
 
-  await aliceKeyStore.set(
-    aliceKeyId,
-    StoredKey(
-      keyType: KeyType.p256,
-      privateKeyBytes: alicePrivateKeyBytes,
-    ),
+  await aliceWallet.generateKey(
+    keyId: aliceKeyId,
+    keyType: KeyType.p256,
   );
 
   await aliceDidManager.addVerificationMethod(aliceKeyId);
   final aliceDidDocument = await aliceDidManager.getDidDocument();
 
-  prettyPrint(
-    'Alice DID',
-    object: aliceDidDocument.id,
-  );
+  prettyPrint('Alice DID', object: aliceDidDocument.id);
 
   final aliceSigner = await aliceDidManager.getSigner(
     aliceDidDocument.assertionMethod.first.id,
   );
 
   final bobKeyId = 'bob-key-1';
-  final bobPrivateKeyBytes = await extractPrivateKeyBytes(
-    config.bobPrivateKeyPath,
-  );
 
-  await bobKeyStore.set(
-    bobKeyId,
-    StoredKey(
-      keyType: KeyType.p256,
-      privateKeyBytes: bobPrivateKeyBytes,
-    ),
+  await bobWallet.generateKey(
+    keyId: bobKeyId,
+    keyType: KeyType.p256,
   );
 
   await bobDidManager.addVerificationMethod(bobKeyId);
   final bobDidDocument = await bobDidManager.getDidDocument();
 
-  prettyPrint(
-    'Bob DID Document',
-    object: bobDidDocument,
-  );
+  prettyPrint('Bob DID Document', object: bobDidDocument);
 
   final bobMediatorDocument =
       await UniversalDIDResolver.defaultResolver.resolveDid(
     await readDid(config.mediatorDidPath),
   );
 
-  await config.configureAcl(
-    mediatorDidDocument: bobMediatorDocument,
-    didManager: bobDidManager,
-    theirDids: [aliceDidDocument.id],
-  );
+  prettyPrint('Bob Mediator Document', object: bobMediatorDocument);
 
   final alicePlainTextMassage = PlainTextMessage(
     id: const Uuid().v4(),
@@ -99,10 +78,7 @@ void main() async {
 
   alicePlainTextMassage['custom-header'] = 'custom-value';
 
-  prettyPrint(
-    'Plain Text Message for Bob',
-    object: alicePlainTextMassage,
-  );
+  prettyPrint('Plain Text Message for Bob', object: alicePlainTextMassage);
 
   final aliceSignedAndEncryptedMessage =
       await DidcommMessage.packIntoSignedAndEncryptedMessages(
@@ -156,6 +132,24 @@ void main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
+  // Alice shall not send a message
+  try {
+    await aliceMediatorClient.sendMessage(
+      forwardMessage,
+    );
+
+    throw Exception(
+        'No error, Alice did send a message, are we using a mediator with explicit allow per DID?');
+  } on MediatorClientException catch (e) {
+    if (!e.innerMessage
+        .contains('Delivery blocked due to ACLs (access_list denied)')) {
+      throw Exception('Unexpected error occurred: ${e.innerMessage}');
+    }
+    prettyPrint('Expected error occurred', object: e.innerMessage);
+  } catch (e) {
+    throw Exception('Unexpected error occurred: $e');
+  }
+
   final bobMediatorClient = await MediatorDidcommClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       didManager: bobDidManager,
@@ -163,37 +157,62 @@ void main() async {
     ),
     didManager: bobDidManager,
     mediatorDidDocument: bobMediatorDocument,
+    clientOptions: const AffinidiClientOptions(),
   );
 
+  // Bob needs to add Alice's DID to their ACL...
+  final bobAccessListAddMessage = AccessListAddMessage(
+    id: const Uuid().v4(),
+    from: bobDidDocument.id,
+    to: [bobMediatorDocument.id],
+    theirDids: [aliceDidDocument.id],
+    expiresTime: expiresTime,
+  );
+
+  prettyPrint('bobAccessListAddMessage', object: bobAccessListAddMessage);
+
+  final bobAccessListAddSentMessage =
+      await bobMediatorClient.sendAclManagementMessage(
+    bobAccessListAddMessage,
+  );
+
+  prettyPrint(
+    'bobAccessListAddSentMessage',
+    object: bobAccessListAddSentMessage,
+  );
+
+  // ...only then Alice can send a message
   final sentMessage = await aliceMediatorClient.sendMessage(
     forwardMessage,
   );
 
-  prettyPrint(
-    'Encrypted and Signed Forward Message',
-    object: sentMessage,
-  );
-
+  prettyPrint('Encrypted and Signed Forward Message', object: sentMessage);
   prettyPrint('Bob is fetching messages...');
 
-  final messages = await bobMediatorClient.fetchMessages();
+  final messages = await bobMediatorClient.fetchMessages(
+    deleteOnMediator: true,
+  );
 
   for (final message in messages) {
-    final originalPlainTextMessageFromAlice =
+    prettyPrint(
+      'Raw message received by Bob via Mediator',
+      object: message,
+    );
+
+    final originalPlainTextMessage =
         await DidcommMessage.unpackToPlainTextMessage(
       message: message,
       recipientDidManager: bobDidManager,
       expectedMessageWrappingTypes: [
         MessageWrappingType.anoncryptSignPlaintext,
-        MessageWrappingType.authcryptSignPlaintext,
         MessageWrappingType.authcryptPlaintext,
-        MessageWrappingType.anoncryptAuthcryptPlaintext,
+        MessageWrappingType.authcryptSignPlaintext,
       ],
     );
 
     prettyPrint(
       'Unpacked Plain Text Message received by Bob via Mediator',
-      object: originalPlainTextMessageFromAlice,
+      object: originalPlainTextMessage,
     );
   }
 }

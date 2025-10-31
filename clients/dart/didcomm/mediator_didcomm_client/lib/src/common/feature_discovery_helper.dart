@@ -1,4 +1,4 @@
-import '../../mediator_client.dart';
+import '../../mediator_didcomm_client.dart';
 
 /// A helper class for feature discovery in DIDComm protocols.
 class FeatureDiscoveryHelper {
@@ -10,17 +10,17 @@ class FeatureDiscoveryHelper {
       CredentialFormat.jwtVc.value,
     ],
     FeatureType.dataIntegrityProofSuite: [
-      DataIntegrityProofSuite.ecdsa_rdfc_2019.value,
-      DataIntegrityProofSuite.eddsa_rdfc_2022.value,
-      DataIntegrityProofSuite.ecdsa_jcs_2019.value,
-      DataIntegrityProofSuite.eddsa_jcs_2022.value,
+      DataIntegrityProofSuite.ecdsaRdfc2019.value,
+      DataIntegrityProofSuite.eddsaRdfc2022.value,
+      DataIntegrityProofSuite.ecdsaJcs2019.value,
+      DataIntegrityProofSuite.eddsaJcs2022.value,
     ],
     FeatureType.jsonWebSignatureAlgorithm: [
-      JsonWebSignatureAlgorithm.ES256.value,
-      JsonWebSignatureAlgorithm.ES384.value,
-      JsonWebSignatureAlgorithm.ES512.value,
-      JsonWebSignatureAlgorithm.ES256K.value,
-      JsonWebSignatureAlgorithm.EdDSA.value,
+      JsonWebSignatureAlgorithm.es256.value,
+      JsonWebSignatureAlgorithm.es384.value,
+      JsonWebSignatureAlgorithm.es512.value,
+      JsonWebSignatureAlgorithm.es256K.value,
+      JsonWebSignatureAlgorithm.edDSA.value,
     ]
   };
 

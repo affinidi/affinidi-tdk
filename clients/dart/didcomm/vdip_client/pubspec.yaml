@@ -12,7 +12,7 @@ resolution: workspace
 dependencies:
   # update to version when mediator client is published
   affinidi_tdk_mediator_didcomm_client:
-    path: ../mediator_client
+    path: ../mediator_didcomm_client
   # update to version when vdsp client is published
   affinidi_tdk_vdsp_didcomm_client:
     path: ../vdsp_client

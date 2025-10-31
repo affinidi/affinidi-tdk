@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_client.dart'
+import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart'
     hide CredentialFormat;
 import 'package:affinidi_tdk_vdsp_didcomm_client/vdsp_didcomm_client.dart';
 import 'package:dcql/dcql.dart';
@@ -141,11 +141,11 @@ Future<void> main() async {
 
             final proofSuits = keyType == KeyType.ed25519
                 ? [
-                    DataIntegrityProofSuite.eddsa_jcs_2022,
+                    DataIntegrityProofSuite.eddsaJcs2022,
                     // DataIntegrityProofSuite.eddsa_rdfc_2022,
                   ]
                 : [
-                    DataIntegrityProofSuite.ecdsa_jcs_2019,
+                    DataIntegrityProofSuite.ecdsaJcs2019,
                     // DataIntegrityProofSuite.ecdsa_rdfc_2019,
                   ];
 
