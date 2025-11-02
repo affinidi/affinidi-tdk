@@ -55,4 +55,9 @@ class AffinidiClientOptions extends ClientOptions {
       ),
     ),
   });
+
+  String get mediatorDid =>
+      'did:web:66a6ec69-0646-4a8d-ae08-94e959855fa9.atlas.affinidi.io';
+
+  String get atlasDid => 'did:web:did.dev.affinidi.io:ama';
 }
