@@ -117,6 +117,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialsLdpResultDto](doc/SignCredentialsLdpResultDto.md)
 - [SignJwtToken](doc/SignJwtToken.md)
 - [SignJwtTokenOK](doc/SignJwtTokenOK.md)
+- [SignMessageInput](doc/SignMessageInput.md)
+- [SignMessageResultDto](doc/SignMessageResultDto.md)
 - [SignPresentationLdpInputDto](doc/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](doc/SignPresentationLdpResultDto.md)
 - [SigningFailedError](doc/SigningFailedError.md)

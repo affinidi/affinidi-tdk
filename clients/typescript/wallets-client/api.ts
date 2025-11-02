@@ -947,6 +947,48 @@ export interface SignJwtTokenOK {
   signedJwt?: string
 }
 /**
+ * DTO contains params to sign plain text DIDComm message
+ * @export
+ * @interface SignMessageInput
+ */
+export interface SignMessageInput {
+  /**
+   * Unsigned plain text DIDComm message
+   * @type {object}
+   * @memberof SignMessageInput
+   */
+  plainTextMessage: object
+  /**
+   *
+   * @type {string}
+   * @memberof SignMessageInput
+   */
+  signatureScheme?: SignMessageInputSignatureSchemeEnum
+}
+
+export const SignMessageInputSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type SignMessageInputSignatureSchemeEnum =
+  (typeof SignMessageInputSignatureSchemeEnum)[keyof typeof SignMessageInputSignatureSchemeEnum]
+
+/**
+ * DTO contains signed JSON
+ * @export
+ * @interface SignMessageResultDto
+ */
+export interface SignMessageResultDto {
+  /**
+   * Signed message in JSON format
+   * @type {object}
+   * @memberof SignMessageResultDto
+   */
+  signedMessage: object
+}
+/**
  * DTO contains params to sign presentation
  * @export
  * @interface SignPresentationLdpInputDto

@@ -3,7 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_v2_input_pex_query.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -13,9 +15,9 @@ part 'verify_presentation_v2_input.g.dart';
 ///
 /// Properties:
 /// * [verifiablePresentation]
-/// * [presentationDefinition]
-/// * [presentationSubmission]
-/// * [challenge]
+/// * [pexQuery]
+/// * [challenge] - Optional challenge string for domain/challenge verification
+/// * [domain] - Optional domain for verification. Array of domain strings as per W3C VP standard
 @BuiltValue()
 abstract class VerifyPresentationV2Input
     implements
@@ -23,14 +25,16 @@ abstract class VerifyPresentationV2Input
   @BuiltValueField(wireName: r'verifiablePresentation')
   JsonObject? get verifiablePresentation;
 
-  @BuiltValueField(wireName: r'presentationDefinition')
-  JsonObject? get presentationDefinition;
+  @BuiltValueField(wireName: r'pexQuery')
+  VerifyPresentationV2InputPexQuery? get pexQuery;
 
-  @BuiltValueField(wireName: r'presentationSubmission')
-  JsonObject? get presentationSubmission;
-
+  /// Optional challenge string for domain/challenge verification
   @BuiltValueField(wireName: r'challenge')
   String? get challenge;
+
+  /// Optional domain for verification. Array of domain strings as per W3C VP standard
+  @BuiltValueField(wireName: r'domain')
+  BuiltList<String>? get domain;
 
   VerifyPresentationV2Input._();
 
@@ -69,18 +73,11 @@ class _$VerifyPresentationV2InputSerializer
         specifiedType: const FullType(JsonObject),
       );
     }
-    if (object.presentationDefinition != null) {
-      yield r'presentationDefinition';
+    if (object.pexQuery != null) {
+      yield r'pexQuery';
       yield serializers.serialize(
-        object.presentationDefinition,
-        specifiedType: const FullType(JsonObject),
-      );
-    }
-    if (object.presentationSubmission != null) {
-      yield r'presentationSubmission';
-      yield serializers.serialize(
-        object.presentationSubmission,
-        specifiedType: const FullType(JsonObject),
+        object.pexQuery,
+        specifiedType: const FullType(VerifyPresentationV2InputPexQuery),
       );
     }
     if (object.challenge != null) {
@@ -88,6 +85,13 @@ class _$VerifyPresentationV2InputSerializer
       yield serializers.serialize(
         object.challenge,
         specifiedType: const FullType(String),
+      );
+    }
+    if (object.domain != null) {
+      yield r'domain';
+      yield serializers.serialize(
+        object.domain,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
       );
     }
   }
@@ -122,19 +126,12 @@ class _$VerifyPresentationV2InputSerializer
           ) as JsonObject;
           result.verifiablePresentation = valueDes;
           break;
-        case r'presentationDefinition':
+        case r'pexQuery':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.presentationDefinition = valueDes;
-          break;
-        case r'presentationSubmission':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(JsonObject),
-          ) as JsonObject;
-          result.presentationSubmission = valueDes;
+            specifiedType: const FullType(VerifyPresentationV2InputPexQuery),
+          ) as VerifyPresentationV2InputPexQuery;
+          result.pexQuery.replace(valueDes);
           break;
         case r'challenge':
           final valueDes = serializers.deserialize(
@@ -142,6 +139,13 @@ class _$VerifyPresentationV2InputSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.challenge = valueDes;
+          break;
+        case r'domain':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltList, [FullType(String)]),
+          ) as BuiltList<String>;
+          result.domain.replace(valueDes);
           break;
         default:
           unhandled.add(key);
