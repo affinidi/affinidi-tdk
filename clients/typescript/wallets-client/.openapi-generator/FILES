@@ -35,6 +35,8 @@ docs/SignCredentialsLdpInputDto.md
 docs/SignCredentialsLdpResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignMessageInput.md
+docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
 docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
