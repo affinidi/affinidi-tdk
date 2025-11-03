@@ -193,8 +193,14 @@ class VdipIssuerClient {
             final assertion = requestIssuanceMessageBody.assertion!;
             final holderDid = requestIssuanceMessageBody.holderDid!;
 
-            final isAssertionValid =
-                await _isAssertionValid(assertion, holderDid);
+            final vcIssuerDidDocument = await didManager.getDidDocument();
+
+            final isAssertionValid = await _isAssertionValid(
+              jwsAssertion: assertion,
+              holderDid: holderDid,
+              proposalId: requestIssuanceMessageBody.proposalId,
+              vcIssuerDid: vcIssuerDidDocument.id,
+            );
 
             onRequestToIssueCredential(
               holderDidFromAssertion: holderDid,
@@ -227,10 +233,12 @@ class VdipIssuerClient {
   }
 
   /// Validates that the signed JWS [jwsAssertion] subject matches [holderDid].
-  Future<bool> _isAssertionValid(
-    String jwsAssertion,
-    String holderDid,
-  ) async {
+  Future<bool> _isAssertionValid({
+    required String jwsAssertion,
+    required String holderDid,
+    required String proposalId,
+    required String vcIssuerDid,
+  }) async {
     final resolvedHolderDidDocument =
         await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
     final decodedJwsAssertion = JwtHelper.decodeAndVerify(
@@ -238,8 +246,14 @@ class VdipIssuerClient {
       holderDidDocument: resolvedHolderDidDocument,
     );
 
-    final assertionSubject = decodedJwsAssertion.payload['sub'];
+    final payload = decodedJwsAssertion.payload;
 
-    return assertionSubject == holderDid;
+    final assertionSubject = payload['sub'];
+    final assertionProposalId = payload['proposalId'];
+    final assertionAudienceId = payload['aud'];
+
+    return assertionSubject == holderDid &&
+        assertionProposalId == proposalId &&
+        assertionAudienceId == vcIssuerDid;
   }
 }
