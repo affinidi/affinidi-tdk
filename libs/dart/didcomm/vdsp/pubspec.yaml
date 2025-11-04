@@ -2,7 +2,6 @@ name: affinidi_tdk_vdsp
 description: A Dart package for implementing the Verifiable Data Sharing Protocol (VDSP) using DIDComm v2.1 to facilitate secure data sharing.
 version: 1.0.0-dev.1
 homepage: https://github.com/affinidi/affinidi-tdk
-publish_to: none
 
 environment:
   sdk: ^3.6.0
@@ -10,9 +9,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  # update to version when mediator client is published
-  affinidi_tdk_mediator_didcomm_client:
-    path: ../mediator_didcomm_client
+  affinidi_tdk_mediator_didcomm_client: ^1.0.0-dev.1
   dcql: ^1.2.0
   json_annotation: ^4.9.0
   selective_disclosure_jwt: ^1.1.1

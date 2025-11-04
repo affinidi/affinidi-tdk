@@ -10,9 +10,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  # update to version when mediator client is published
-  affinidi_tdk_mediator_didcomm_client:
-    path: ../mediator_didcomm_client
+  affinidi_tdk_mediator_didcomm_client: ^1.0.0-dev.1
   affinidi_tdk_vdsp:
     path: ../vdsp
   dcql: ^1.2.0
