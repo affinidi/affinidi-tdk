@@ -1,6 +1,6 @@
 name: affinidi_tdk_mediator_didcomm_client
 description: A Dart package for implementing secure and private communication on your app using DIDComm v2 Messaging protocol.
-version: 1.0.0-dev.1
+version: 1.0.0-dev.2
 homepage: https://github.com/affinidi/affinidi-tdk
 
 environment:
