@@ -1,6 +1,6 @@
-# Affinidi Mediator DIDComm Client for Dart
+# Affinidi DIDComm Mediator Client for Dart
 
-A Dart package for implementing secure and private communication on your app using DIDComm v2 Messaging protocol. DIDComm v2 Messaging is a decentralised communication protocol that uses a Decentralised Identifier (DID) to establish a secure communication channel and send a private and verifiable message.
+A Dart package for implementing secure and private communication on your app using DIDComm v2.1 protocol. DIDComm v2.1 protocol is a decentralised communication protocol that uses a Decentralised Identifier (DID) to establish a secure communication channel and send a private and verifiable message.
 
 The DIDComm for Dart package provides the tools and libraries to enable your app to send DIDComm messages. It supports various encryption algorithms and DID methods, such as `did:peer`, `did:key`, and `did:web` for signing and encrypting to ensure the secure and private transport of messages to the intended recipient, establishing verifiable and trusted communication.
 
@@ -63,13 +63,13 @@ The Mediator DIDComm for Dart package utilises existing open standards and crypt
 
 ## Key Features
 
-- Implements the DIDComm Message v2.0 protocol.
+- Implements the DIDComm Message v2.1 protocol.
 
 - Support for DIDComm Messaging Envelope types. Refer to the [DIDComm Message Envelopes](#didcomm-message-envelopes) section to learn more.
 
 - Support for digital wallets under [Affinidi Dart SSI](https://pub.dev/packages/ssi) to manage cryptographic keys.
 
-- Connect and authenticate with different mediator services that follow the DIDComm Message v2.0 protocol.
+- Connect and authenticate with different mediator services that follow the DIDComm Message v2.1 protocol.
 
 ### Supported Curves and Algorithms
 
@@ -107,7 +107,7 @@ The Mediator DIDComm package supports the following DID methods to represent the
 
 ## DIDComm Message Envelopes
 
-DIDComm v2 messages can be sent in the following formats: plaintext, signed, and encrypted. Each format, called "envelope", provides different security and privacy guarantees and can be combined in various ways.
+DIDComm v2.1 messages can be sent in the following formats: plaintext, signed, and encrypted. Each format, called "envelope", provides different security and privacy guarantees and can be combined in various ways.
 
 ![didcomm messages](assets/didcomm-messages.svg)
 
@@ -507,7 +507,7 @@ The DIDComm package performs different verification processes to ensure the inte
 
 ### Message Layer Addressing Consistency
 
-To ensure trust and prevent message tampering or misrouting, DIDComm v2 enforces message layer addressing consistency between the plaintext message and its cryptographic envelopes. According to the [DIDComm v2 spec](https://identity.foundation/didcomm-messaging/spec/#message-layer-addressing-consistency):
+To ensure trust and prevent message tampering or misrouting, DIDComm v2.1 enforces message layer addressing consistency between the plaintext message and its cryptographic envelopes. According to the [DIDComm v2.1 spec](https://identity.foundation/didcomm-messaging/spec/v2.1/#message-layer-addressing-consistency):
 
 - The `from` attribute in the plaintext message **must match** the `skid` (sender key ID) in the encryption layer.
 - The `to` attribute in the plaintext message **must contain** the `kid` (recipient key ID) in the encryption layer.
@@ -546,7 +546,7 @@ For development or debugging purposes, you can disable addressing consistency ch
 The `expectedMessageWrappingTypes` argument of `unpackToPlainTextMessage` lets you specify which message wrapping types (e.g., authenticated encryption, signed, plaintext) are allowed when unpacking a message. This is an important security feature that helps prevent downgrade attacks and ensures the message you receive matches your security expectations.
 
 - If you provide a list of wrapping types (such as `[MessageWrappingType.authcryptSignPlaintext, MessageWrappingType.authcryptPlaintext, MessageWrappingType.anoncryptPlaintext]`), only messages with those wrappings will be accepted. Any message with a different wrapping will be rejected.
-- If you do **not** specify `expectedMessageWrappingTypes` (i.e., leave it `null` or omit it), the default is `[MessageWrappingType.authcryptPlaintext]` as recommended by the DIDComm v2 specification. This means only authenticated encrypted messages will be accepted by default.
+- If you do **not** specify `expectedMessageWrappingTypes` (i.e., leave it `null` or omit it), the default is `[MessageWrappingType.authcryptPlaintext]` as recommended by the DIDComm v2.1 specification. This means only authenticated encrypted messages will be accepted by default.
 
 **Tip:** Always set `expectedMessageWrappingTypes` explicitly to match your protocol or application's requirements. This helps ensure you are not tricked into processing a message with weaker security than intended.
 
@@ -664,7 +664,7 @@ This mechanism gives you full control over post-unpacking validation and process
 
 ## Problem Report Messages
 
-DIDComm v2 defines a standard mechanism for reporting problems between parties using a special message type: `problem-report`. Problem reports help communicate errors, warnings, or issues encountered during protocol execution, improving robustness and interoperability.
+DIDComm v2.1 defines a standard mechanism for reporting problems between parties using a special message type: `problem-report`. Problem reports help communicate errors, warnings, or issues encountered during protocol execution, improving robustness and interoperability.
 
 This is similar to HTTP status codes (400, 401, 500), where each code provides a standardized way to indicate the nature and category of a problem. In DIDComm, problem report codes are structured to convey both the severity (error or warning) and the context (protocol, message, or state), followed by specific descriptors.
 
@@ -722,11 +722,11 @@ final message = ProblemReportMessage(
 );
 ```
 
-This approach ensures your problem reports are fully compatible with the DIDComm v2 spec.
+This approach ensures your problem reports are fully compatible with the DIDComm v2.1 specification.
 
 ## Discovery Features
 
-DIDComm v2 supports a protocol for feature discovery between agents, using two main message types: **Query Message** and **Disclose Message**.
+DIDComm v2.1 supports a protocol for feature discovery between agents, using two main message types: **Query Message** and **Disclose Message**.
 
 The `feature-type` field in Query and Disclose messages indicates the type of feature being described or requested. This library provides the `FeatureType` enum for this purpose:
 
