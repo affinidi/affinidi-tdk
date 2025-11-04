@@ -42,6 +42,8 @@ export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_ldp_input
 export 'package:affinidi_tdk_wallets_client/src/model/sign_credentials_ldp_result_dto.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_jwt_token_ok.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_message_input.dart';
+export 'package:affinidi_tdk_wallets_client/src/model/sign_message_result_dto.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_input_dto.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_result_dto.dart';
 export 'package:affinidi_tdk_wallets_client/src/model/signing_failed_error.dart';

@@ -33,6 +33,8 @@ doc/SignCredentialsLdpInputDto.md
 doc/SignCredentialsLdpResultDto.md
 doc/SignJwtToken.md
 doc/SignJwtTokenOK.md
+doc/SignMessageInput.md
+doc/SignMessageResultDto.md
 doc/SignPresentationLdpInputDto.md
 doc/SignPresentationLdpResultDto.md
 doc/SigningFailedError.md
@@ -83,6 +85,8 @@ lib/src/model/sign_credentials_ldp_input_dto.dart
 lib/src/model/sign_credentials_ldp_result_dto.dart
 lib/src/model/sign_jwt_token.dart
 lib/src/model/sign_jwt_token_ok.dart
+lib/src/model/sign_message_input.dart
+lib/src/model/sign_message_result_dto.dart
 lib/src/model/sign_presentation_ldp_input_dto.dart
 lib/src/model/sign_presentation_ldp_result_dto.dart
 lib/src/model/signing_failed_error.dart

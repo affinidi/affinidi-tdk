@@ -4,12 +4,12 @@ Request model of /v2/verify-vp
 
 ## Properties
 
-| Name                        | Type       | Description | Notes      |
-| --------------------------- | ---------- | ----------- | ---------- |
-| **verifiable_presentation** | **object** |             | [optional] |
-| **presentation_definition** | **object** |             | [optional] |
-| **presentation_submission** | **object** |             | [optional] |
-| **challenge**               | **str**    |             | [optional] |
+| Name                        | Type                                                                          | Description                                                                      | Notes      |
+| --------------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------- |
+| **verifiable_presentation** | **object**                                                                    |                                                                                  | [optional] |
+| **pex_query**               | [**VerifyPresentationV2InputPexQuery**](VerifyPresentationV2InputPexQuery.md) |                                                                                  | [optional] |
+| **challenge**               | **str**                                                                       | Optional challenge string for domain/challenge verification                      | [optional] |
+| **domain**                  | **List[str]**                                                                 | Optional domain for verification. Array of domain strings as per W3C VP standard | [optional] |
 
 ## Example
 
