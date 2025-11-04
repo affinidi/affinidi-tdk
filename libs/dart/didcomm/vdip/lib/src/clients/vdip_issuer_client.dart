@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
 
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../vdip.dart';
+import '../../affinidi_tdk_vdip.dart';
 
 /// DIDComm issuer-side client for the VDIP protocol.
 ///

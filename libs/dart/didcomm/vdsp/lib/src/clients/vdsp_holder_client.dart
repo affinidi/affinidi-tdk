@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart'
     show SdJwtHandlerV1;
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../vdsp.dart';
+import '../../affinidi_tdk_vdsp.dart';
 
 /// Implements the VDSP protocol for a holder, supporting feature discovery, credential filtering, and data sharing.
 class VdspHolderClient {

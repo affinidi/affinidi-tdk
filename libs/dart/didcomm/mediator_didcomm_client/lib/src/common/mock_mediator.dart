@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:ssi/ssi.dart';
 
-import '../../mediator_didcomm_client.dart';
+import '../../affinidi_tdk_mediator_didcomm_client.dart';
 
 /// A mock implementation of a DIDComm mediator for testing purposes.
 ///

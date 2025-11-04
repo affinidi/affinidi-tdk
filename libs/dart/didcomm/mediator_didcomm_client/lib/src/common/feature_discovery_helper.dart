@@ -1,4 +1,4 @@
-import '../../mediator_didcomm_client.dart';
+import '../../affinidi_tdk_mediator_didcomm_client.dart';
 
 /// A helper class for feature discovery in DIDComm protocols.
 class FeatureDiscoveryHelper {
