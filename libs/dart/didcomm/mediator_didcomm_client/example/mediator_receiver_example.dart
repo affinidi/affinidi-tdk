@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../../../../tests/integration/dart/test/test_config.dart';
@@ -15,7 +15,7 @@ void main() async {
   );
 
   final senderDid = await config.getDidKeyForPrivateKeyPath(
-    config.alicePrivateKeyPath,
+    config.bobPrivateKeyPath,
   );
 
   final receiverKeyStore = InMemoryKeyStore();
@@ -29,7 +29,7 @@ void main() async {
   final receiverKeyId = 'receiver-key-1';
 
   final receiverPrivateKeyBytes = await extractPrivateKeyBytes(
-    config.alicePrivateKeyPath,
+    config.bobPrivateKeyPath,
   );
 
   await receiverKeyStore.set(

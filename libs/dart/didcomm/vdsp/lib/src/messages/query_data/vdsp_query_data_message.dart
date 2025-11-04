@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'vdsp_query_data_message.g.dart';

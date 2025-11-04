@@ -1,5 +1,5 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
-import 'package:affinidi_tdk_vdip/vdip.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 

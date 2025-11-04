@@ -1,4 +1,4 @@
-import '../../mediator_didcomm_client.dart';
+import '../../affinidi_tdk_mediator_didcomm_client.dart';
 
 /// Configuration options for the DIDComm client.
 class ClientOptions {

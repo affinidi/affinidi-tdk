@@ -1,8 +1,8 @@
 // ignore_for_file: strict_top_level_inference, type_annotate_public_apis
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart'
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart'
     hide CredentialFormat;
-import 'package:affinidi_tdk_vdip/vdip.dart';
+import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
