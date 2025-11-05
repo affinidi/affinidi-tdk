@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'dart:typed_data';
 
@@ -112,13 +114,15 @@ class VaultDataManagerService implements VaultDataManagerServiceInterface {
     required KeyPair keyPair,
     required Future<String?> Function() authTokenHook,
   }) async {
-    final elementsVaultApiUrl =
-        Environment.fetchEnvironment().elementsVaultApiUrl;
+    final environment = Environment.fetchEnvironment();
+    final elementsVaultApiUrl = environment.elementsVaultApiUrl;
+
     final vaultDataManagerApiService = VaultDataManagerApiService(
         apiClient: AffinidiTdkVaultDataManagerClient(
       authTokenHook: authTokenHook,
       basePathOverride: '$elementsVaultApiUrl/vfs',
     ));
+    print('[ENV] VFS client basePathOverride: ${elementsVaultApiUrl}/vfs');
 
     final vfsPublicKey =
         await vaultDataManagerApiService.getVaultDataManagerPublicKey();

@@ -55,10 +55,9 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   static int expiration = 300;
 
   /// The audience URL for authentication tokens.
-  static String aud =
-      Uri.parse(Environment.fetchEnvironment().elementsVaultApiUrl)
-          .resolve('vfs/v1/accounts')
-          .toString();
+  static String get aud {
+    return Environment.fetchVaultAccountsAudienceUrl();
+  }
 
   final String _id;
   late final Wallet _wallet;
@@ -123,13 +122,14 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
             ((DidSigner didSigner, {Dio? client}) =>
                 ConsumerAuthProvider(signer: didSigner, client: client)),
         _iamApiServiceFactory = iamApiServiceFactory ??
-            ((ConsumerAuthProvider provider) =>
-                VaultDataManagerSharedAccessApiService(
-                    affinidiTdkIamClient: AffinidiTdkIamClient(
-                  authTokenHook: provider.fetchConsumerToken,
-                  basePathOverride:
-                      '${Environment.fetchEnvironment().apiGwUrl}/iam',
-                ))),
+            ((ConsumerAuthProvider provider) {
+              final environment = Environment.fetchEnvironment();
+              return VaultDataManagerSharedAccessApiService(
+                  affinidiTdkIamClient: AffinidiTdkIamClient(
+                authTokenHook: provider.fetchConsumerToken,
+                basePathOverride: '${environment.apiGwUrl}/iam',
+              ));
+            }),
         _vaultDataManagerServiceFactory =
             vaultDataManagerServiceFactory ?? VaultDataManagerService.create,
         _vaultDelegatedDataManagerServiceFactory =

@@ -10,7 +10,11 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_common: ^1.6.0
-  affinidi_tdk_consumer_auth_provider: ^4.10.0
+  affinidi_tdk_consumer_auth_provider:
+    git:
+      url: https://github.com/affinidi/affinidi-tdk.git
+      ref: e652fa24fe810a6decc4edf1dad69e9e5daa66dc
+      path: packages/dart/consumer_auth_provider
   dio: ^5.8.0+1
   jwt_decoder: ^2.0.1
   path: ^1.8.0

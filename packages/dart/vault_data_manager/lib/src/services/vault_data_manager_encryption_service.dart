@@ -1,11 +1,12 @@
+// ignore_for_file: avoid_print
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
+import 'package:pointycastle/export.dart' as pc;
 
-import '../exceptions/tdk_exception_type.dart';
 import '../model/data_encryption_material.dart';
 import 'vault_data_manager_encryption_service_interface.dart';
 
@@ -31,6 +32,10 @@ class VaultDataManagerEncryptionService
     implements VaultDataManagerEncryptionServiceInterface {
   /// Size of the nonce used for encryption operations (32 bytes).
   static const nonceSize = 32;
+
+  static final Uint8List _fixedIv = Uint8List.fromList(
+    'Initvector16byte'.codeUnits,
+  );
 
   /// JSON Web Key used for API-based encryption operations.
   final Map<String, dynamic> _jwk;
@@ -61,12 +66,12 @@ class VaultDataManagerEncryptionService
     required Uint8List encryptionKey,
     required List<int> dek,
   }) async {
-    final encrypted = _cryptographyService.encryptToBytes(
-      Uint8List.fromList(encryptionKey),
-      Uint8List.fromList(dek),
+    final cipherText = _aesCbcEncrypt(
+      key: Uint8List.fromList(encryptionKey),
+      iv: _fixedIv,
+      plainText: Uint8List.fromList(dek),
     );
-
-    return encrypted;
+    return cipherText;
   }
 
   /// Method to decrypt a data encryption key [encryptedDek] using the wallet crypto material.
@@ -80,22 +85,37 @@ class VaultDataManagerEncryptionService
     required Uint8List encryptionKey,
     required List<int> encryptedDek,
   }) async {
-    final decrypted = _cryptographyService.decryptFromBytes(
-      Uint8List.fromList(encryptionKey),
-      Uint8List.fromList(encryptedDek),
+    final decrypted =
+        (_cryptographyService as CryptographyService).aesCbcDecrypt(
+      key: Uint8List.fromList(encryptionKey),
+      iv: _fixedIv,
+      cipherText: Uint8List.fromList(encryptedDek),
+      enforceAssertions: true,
     );
 
-    if (decrypted == null) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'Failed to decrypt data encryption key',
-          code: TdkExceptionType.failedToDecrypt.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
     return decrypted;
+  }
+
+  Uint8List _aesCbcEncrypt({
+    required Uint8List key,
+    required Uint8List iv,
+    required Uint8List plainText,
+  }) {
+    final padLen = 16 - (plainText.length % 16);
+    final padded = Uint8List.fromList([
+      ...plainText,
+      ...List<int>.filled(padLen, padLen),
+    ]);
+
+    final cbc = pc.CBCBlockCipher(pc.AESEngine())
+      ..init(true, pc.ParametersWithIV(pc.KeyParameter(key), iv));
+
+    final out = Uint8List(padded.length);
+    var offset = 0;
+    while (offset < padded.length) {
+      offset += cbc.processBlock(padded, offset, out, offset);
+    }
+    return out;
   }
 
   /// Method to encrypt a data encryption key [dek] using the VFS public key.
@@ -166,9 +186,21 @@ class VaultDataManagerEncryptionService
   }) async {
     final dek = _cryptographyService.getRandomBytes(nonceSize);
 
+    // Print pure DEK in multiple formats
+    final dekBase64 = base64.encode(dek);
+    final dekHex = dek.map((b) => b.toRadixString(16).padLeft(2, '0')).join('');
+    print('═══════════════════════════════════════════════════════════');
+    print('PURE DEK GENERATED');
+    print('═══════════════════════════════════════════════════════════');
+    print('DEK (Base64): $dekBase64');
+    print('DEK (Hex): $dekHex');
+    print('═══════════════════════════════════════════════════════════');
+
     final dekEncryptedByVfsPublicKey = await encryptDekByApiPublicKey(
       dek: dek,
     );
+
+    base64.encode(dekEncryptedByVfsPublicKey);
 
     final dekEncryptedByWalletCryptoMaterial =
         await encryptDekByWalletCryptoMaterial(
