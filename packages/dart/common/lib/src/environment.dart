@@ -134,8 +134,7 @@ class Environment {
           elementsAuthTokenUrl:
               'https://$regionCode.dev.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-          elementsVaultApiUrl:
-              'https://q5pfk6rd25.execute-api.ap-southeast-1.amazonaws.com/dev',
+          elementsVaultApiUrl: 'https://dev.api.vault.affinidi.com',
           webVaultUrl: 'https://vault.dev.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
@@ -159,14 +158,14 @@ class Environment {
     }
   }
 
-  /// Helper to get environment type from environment variable with dev as default
+  /// Helper to get environment type from environment variable with prod as default
   static EnvironmentType _getEnvironmentTypeFromVariable() {
     return EnvironmentType.values.firstWhere(
       (e) =>
           e.value ==
           const String.fromEnvironment(enviromentVariableName,
-              defaultValue: 'dev'),
-      orElse: () => EnvironmentType.dev,
+              defaultValue: 'prod'),
+      orElse: () => EnvironmentType.prod,
     );
   }
 

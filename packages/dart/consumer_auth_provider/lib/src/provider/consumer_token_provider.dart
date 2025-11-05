@@ -25,10 +25,12 @@ class ConsumerTokenProvider extends TokenProvider with JwtTokenDidChecker {
   ///   a default client will be used.
   /// - [region] (optional): The [ElementsRegion] to specify the AWS region (e.g., apSoutheast1, apSouth1).
   ///   Defaults to [ElementsRegion.apSoutheast1] if not provided.
+  /// - [env] (optional): The [Environment] configuration to use. If not provided, the default environment will be used.
   ConsumerTokenProvider({
     required DidSigner signer,
     Dio? client,
     ElementsRegion region = ElementsRegion.apSoutheast1,
+    Environment? env,
   })  : _signer = signer,
         _dioInstance = client ??
             ((_apiTimeOutInMilliseconds != null)
@@ -39,8 +41,9 @@ class ConsumerTokenProvider extends TokenProvider with JwtTokenDidChecker {
                         Duration(milliseconds: _apiTimeOutInMilliseconds!),
                   ))
                 : Dio()),
-        _tokenEndpoint =
-            Environment.fetchConsumerAudienceUrl(null, null, region);
+        _tokenEndpoint = env?.apiGwUrl != null
+            ? '${env!.apiGwUrl}${env.consumerAudienceEndpoint}'
+            : Environment.fetchConsumerAudienceUrl(null, null, region);
 
   /// Method to retrieve a consumer token.
   ///
