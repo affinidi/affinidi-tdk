@@ -29,7 +29,6 @@ enum ElementsRegion {
 
   /// Short region code used in endpoints (e.g., `apse1`)
   final String regionCode;
-
   const ElementsRegion(this.awsRegion, this.regionCode);
 
   /// Utility to get enum from a region string.
@@ -69,7 +68,6 @@ class Environment {
 
   /// The URL of the Vautl accounts audience.
   final String vaultAccountsAudienceEndpoint;
-
   const Environment._({
     required this.environmentName,
     required this.apiGwUrl,
@@ -86,9 +84,7 @@ class Environment {
   static const enviromentVariableName = "AFFINIDI_TDK_ENVIRONMENT";
   static const _consumerAudienceEndpoint = '/iam/v1/consumer/oauth2/token';
   static const _consumerCisEndpoint = '/cis';
-
   static const _defaultRegion = ElementsRegion.apSoutheast1;
-
   static final Map<String, LogLevel> _levels = {
     'ALL': LogLevel.all,
     'FINEST': LogLevel.finest,
@@ -116,7 +112,6 @@ class Environment {
   static Environment getEnvironmentConfig(EnvironmentType envType,
       [ElementsRegion region = _defaultRegion]) {
     final regionCode = region.regionCode;
-
     switch (envType) {
       case EnvironmentType.local:
         return Environment._(
@@ -139,7 +134,8 @@ class Environment {
           elementsAuthTokenUrl:
               'https://$regionCode.dev.auth.developer.affinidi.io/auth/oauth2/token',
           iotUrl: 'a3sq1vuw0cw9an-ats.iot.ap-southeast-1.amazonaws.com',
-          elementsVaultApiUrl: 'https://dev.api.vault.affinidi.com',
+          elementsVaultApiUrl:
+              'https://q5pfk6rd25.execute-api.ap-southeast-1.amazonaws.com/dev',
           webVaultUrl: 'https://vault.dev.affinidi.com',
           consumerAudienceEndpoint: _consumerAudienceEndpoint,
           consumerCisEndpoint: _consumerCisEndpoint,
@@ -163,19 +159,40 @@ class Environment {
     }
   }
 
+  /// Helper to get environment type from environment variable with dev as default
+  static EnvironmentType _getEnvironmentTypeFromVariable() {
+    return EnvironmentType.values.firstWhere(
+      (e) =>
+          e.value ==
+          const String.fromEnvironment(enviromentVariableName,
+              defaultValue: 'dev'),
+      orElse: () => EnvironmentType.dev,
+    );
+  }
+
   /// Fetches the current environment based on the provided environment variable.
   static Environment fetchEnvironment({
     EnvironmentType? envType,
     ElementsRegion region = _defaultRegion,
   }) {
-    final resolvedEnvType = envType ??
-        EnvironmentType.values.firstWhere(
-          (e) =>
-              e.value == const String.fromEnvironment(enviromentVariableName),
-          orElse: () => EnvironmentType.prod,
-        );
-
-    return getEnvironmentConfig(resolvedEnvType, region);
+    final resolvedEnvType = envType ?? _getEnvironmentTypeFromVariable();
+    final baseEnv = getEnvironmentConfig(resolvedEnvType, region);
+    final vfsOverride =
+        const String.fromEnvironment('AFFINIDI_VFS_BASE_URL', defaultValue: '');
+    if (vfsOverride.isNotEmpty) {
+      return Environment._(
+        environmentName: baseEnv.environmentName,
+        apiGwUrl: baseEnv.apiGwUrl,
+        elementsAuthTokenUrl: baseEnv.elementsAuthTokenUrl,
+        iotUrl: baseEnv.iotUrl,
+        elementsVaultApiUrl: vfsOverride,
+        webVaultUrl: baseEnv.webVaultUrl,
+        consumerAudienceEndpoint: baseEnv.consumerAudienceEndpoint,
+        consumerCisEndpoint: baseEnv.consumerCisEndpoint,
+        vaultAccountsAudienceEndpoint: baseEnv.vaultAccountsAudienceEndpoint,
+      );
+    }
+    return baseEnv;
   }
 
   /// Fetches the API Gateway URL for the current environment.
