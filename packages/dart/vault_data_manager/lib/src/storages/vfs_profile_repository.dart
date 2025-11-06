@@ -6,6 +6,7 @@ import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_p
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:ssi/ssi.dart';
@@ -14,6 +15,8 @@ import '../exceptions/tdk_exception_type.dart';
 import '../helpers/dio_cancel_token_adapter.dart';
 import '../helpers/jwt_helper.dart';
 import '../model/account.dart';
+import '../services/vault_data_manager_api_service.dart';
+import '../services/vault_data_manager_encryption_service.dart';
 import '../services/vault_data_manager_service.dart';
 import '../services/vault_data_manager_service_interface.dart';
 import '../services/vault_data_manager_shared_access_api_service.dart';
@@ -614,4 +617,99 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
 
   String _getDerivationPath(String accountIndex) =>
       "m/44'/60'/$accountIndex'/0'/0'";
+
+  /// Gets the decrypted profile encryption information
+  /// Returns the pure DEK as a base64-encoded string
+  Future<String?> getDecryptedProfileEncryptionInfo(
+    String profileId,
+  ) async {
+    if (!_configured) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message:
+                'Profile repository must be configured using a RepositoryConfiguration',
+            code: TdkExceptionType.profleNotConfigured.code),
+        StackTrace.current,
+      );
+    }
+
+    try {
+      final accountVaultDataManagerService =
+          await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+      final accounts = await accountVaultDataManagerService.getAccounts();
+
+      Account? targetAccount;
+      int? accountIndex;
+      VaultDataManagerServiceInterface? profileDataManager;
+
+      for (final account in accounts) {
+        final accountIdx = account.accountIndex;
+
+        final dataManager = await _memoizedDataManagerService(
+          walletKeyId: accountIdx.toString(),
+          encryptedDekek:
+              base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
+        );
+
+        final vfsProfiles = await dataManager.getProfiles();
+        final profile = vfsProfiles.where((p) => p.id == profileId).firstOrNull;
+
+        if (profile != null) {
+          targetAccount = account;
+          accountIndex = accountIdx;
+          profileDataManager = dataManager;
+          break;
+        }
+      }
+
+      if (targetAccount == null ||
+          accountIndex == null ||
+          profileDataManager == null) {
+        return null;
+      }
+
+      final nodeInfo = await profileDataManager.getNodeInfo(profileId);
+
+      if (nodeInfo.edekInfo == null || nodeInfo.edekInfo!['edek'] == null) {
+        return null;
+      }
+
+      final encryptedDekBase64 = nodeInfo.edekInfo!['edek']!;
+
+      final profileKeyPair =
+          await _memoizedKeyPair(accountIndex: '$accountIndex');
+      final kek = await profileKeyPair.decrypt(
+        base64.decode(targetAccount.accountMetadata!.dekekInfo.encryptedDekek),
+      );
+
+      final didSigner = await _memoizedDidSigner('$accountIndex');
+      final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
+      final environment = Environment.fetchEnvironment();
+      final elementsVaultApiUrl = environment.elementsVaultApiUrl;
+
+      final vaultDataManagerApiService = VaultDataManagerApiService(
+        apiClient: AffinidiTdkVaultDataManagerClient(
+          authTokenHook: consumerAuthProvider.fetchConsumerToken,
+          basePathOverride: '$elementsVaultApiUrl/vfs',
+        ),
+      );
+
+      final vfsPublicKey =
+          await vaultDataManagerApiService.getVaultDataManagerPublicKey();
+      final vaultDataManagerEncryptionService =
+          VaultDataManagerEncryptionService(
+        cryptographyService: _cryptographyService,
+        jwk: vfsPublicKey,
+      );
+
+      final dek = await vaultDataManagerEncryptionService.decryptDek(
+        encryptedDek: base64.decode(encryptedDekBase64),
+        encryptionKey: kek,
+      );
+
+      return base64.encode(dek);
+    } catch (e) {
+      return null;
+    }
+  }
 }
