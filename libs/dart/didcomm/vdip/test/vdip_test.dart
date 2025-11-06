@@ -314,6 +314,157 @@ Future<void> main() async {
               );
               expect(actualBody.comment, comment);
             });
+
+            test('VDIP switch context flow works correctly', () async {
+              final testCompleter = Completer<VdipSwitchContextMessage>();
+              final baseIssuerUrl = Uri.parse('https://issuer.example.com');
+              final nonce = const Uuid().v4();
+              String? receivedThreadId;
+
+              final issuerClient = VdipIssuerClient(
+                didManager: issuerDidManager,
+                mediatorClient: mockMediator.clients[issuerDidManager]!,
+                featureDisclosures:
+                    FeatureDiscoveryHelper.vdipIssuerDisclosures,
+              );
+
+              issuerClient.listenForIncomingMessages(
+                onFeatureQuery: (message) async {
+                  await issuerClient.disclose(
+                    queryMessage: message,
+                  );
+
+                  // After feature disclosure, send switch context
+                  await issuerClient.sendSwitchContext(
+                    holderDid: holderDidDocument.id,
+                    baseIssuerUrl: baseIssuerUrl,
+                    nonce: nonce,
+                    threadId: message.threadId ?? message.id,
+                  );
+                },
+                onRequestToIssueCredential: emptyOnRequestIssuanceCallback,
+                onProblemReport: (message) async {
+                  testCompleter.completeError(message);
+                  await mockMediator.stopConnections();
+                },
+              );
+
+              final holderClient = VdipHolderClient(
+                didManager: holderDidManager,
+                mediatorClient: mockMediator.clients[holderDidManager]!,
+              );
+
+              holderClient.listenForIncomingMessages(
+                onCredentialsIssuanceResponse: (message) {
+                  // Not expecting credential issuance in this test
+                },
+                onSwitchContext: (message) async {
+                  receivedThreadId = message.threadId;
+                  testCompleter.complete(message);
+                  await mockMediator.stopConnections();
+                },
+                onProblemReport: (message) async {
+                  testCompleter.completeError(message);
+                  await mockMediator.stopConnections();
+                },
+              );
+
+              await mockMediator.startConnections();
+
+              // Holder queries issuer features
+              await holderClient.queryIssuerFeatures(
+                issuerDid: issuerDidDocument.id,
+                featureQueries:
+                    FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+                  FeatureDiscoveryHelper.vdipIssuerDisclosures,
+                ),
+              );
+
+              final actual = await testCompleter.future;
+
+              expect(actual, isA<VdipSwitchContextMessage>());
+              // Note: actual.from will be set by mediator client during packing
+              expect(actual.to, contains(holderDidDocument.id));
+              expect(receivedThreadId, isNotNull);
+
+              final actualBody = actual.switchContext;
+              expect(actualBody.baseIssuerUrl, baseIssuerUrl.toString());
+              expect(actualBody.nonce, nonce);
+            });
+
+            test('VDIP buildBrowserContextUrl creates valid URL', () async {
+              final testCompleter = Completer<String>();
+              final baseIssuerUrl = Uri.parse('https://issuer.example.com');
+              final nonce = const Uuid().v4();
+
+              final issuerClient = VdipIssuerClient(
+                didManager: issuerDidManager,
+                mediatorClient: mockMediator.clients[issuerDidManager]!,
+                featureDisclosures:
+                    FeatureDiscoveryHelper.vdipIssuerDisclosures,
+              );
+
+              issuerClient.listenForIncomingMessages(
+                onFeatureQuery: (message) async {
+                  await issuerClient.disclose(
+                    queryMessage: message,
+                  );
+
+                  await issuerClient.sendSwitchContext(
+                    holderDid: holderDidDocument.id,
+                    baseIssuerUrl: baseIssuerUrl,
+                    nonce: nonce,
+                    threadId: message.threadId ?? message.id,
+                  );
+                },
+                onRequestToIssueCredential: emptyOnRequestIssuanceCallback,
+                onProblemReport: (message) async {
+                  testCompleter.completeError(message);
+                  await mockMediator.stopConnections();
+                },
+              );
+
+              final holderClient = VdipHolderClient(
+                didManager: holderDidManager,
+                mediatorClient: mockMediator.clients[holderDidManager]!,
+              );
+
+              holderClient.listenForIncomingMessages(
+                onCredentialsIssuanceResponse: (message) {
+                  // Not expecting credential issuance in this test
+                },
+                onSwitchContext: (switchContextMsg) async {
+                  final url = await holderClient.buildBrowserContextUrl(
+                    switchContextMessage: switchContextMsg,
+                  );
+                  testCompleter.complete(url);
+                  await mockMediator.stopConnections();
+                },
+                onProblemReport: (message) async {
+                  testCompleter.completeError(message);
+                  await mockMediator.stopConnections();
+                },
+              );
+
+              await mockMediator.startConnections();
+
+              // Holder queries issuer features
+              await holderClient.queryIssuerFeatures(
+                issuerDid: issuerDidDocument.id,
+                featureQueries:
+                    FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
+                  FeatureDiscoveryHelper.vdipIssuerDisclosures,
+                ),
+              );
+
+              final actualUrl = await testCompleter.future;
+
+              expect(actualUrl, isNotEmpty);
+              expect(actualUrl, startsWith(baseIssuerUrl.toString()));
+              // The nonce and thread ID are embedded in a JWT token, not as query parameters
+              expect(actualUrl, contains('token='));
+              expect(actualUrl, contains('/vdip/issuance'));
+            });
           });
         }
       });
