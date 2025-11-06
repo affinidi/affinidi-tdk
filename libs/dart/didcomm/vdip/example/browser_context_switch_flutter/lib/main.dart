@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 import 'package:veriff_flutter/veriff_flutter.dart';
-import 'package:affinidi_tdk_vdip/vdip.dart';
 
 import 'test_config.dart';
 

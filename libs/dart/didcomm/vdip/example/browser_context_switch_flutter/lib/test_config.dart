@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
 import 'package:path/path.dart' as path;
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
@@ -126,7 +126,7 @@ class TestConfig {
         mediatorDidDocument: mediatorDidDocument,
         didManager: didManager,
       ),
-      clientOptions: AffinidiClientOptions(),
+      clientOptions: const AffinidiClientOptions(),
     );
 
     final accessListAddMessage = AccessListAddMessage(
