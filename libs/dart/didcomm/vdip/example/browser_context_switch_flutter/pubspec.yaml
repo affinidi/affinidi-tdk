@@ -9,8 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  affinidi_tdk_mediator_didcomm_client:
-      path: ../../../mediator_didcomm_client
+  affinidi_tdk_mediator_didcomm_client: ^1.0.0-dev.1
   affinidi_tdk_vdip:
       path: ../../.
   ssi: ^2.12.4
@@ -20,4 +19,5 @@ dependencies:
   path: ^1.9.1
 
 dependency_overrides:
+  collection: ^1.19.1
   meta: 1.16.0
