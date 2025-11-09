@@ -1,9 +1,10 @@
-# Affinidi DIDComm Mediator Client for Dart
+# Affinidi Mediator DIDComm Client for Dart
 
 A Dart package for implementing secure and private communication on your app using DIDComm v2.1 protocol. DIDComm v2.1 protocol is a decentralised communication protocol that uses a Decentralised Identifier (DID) to establish a secure communication channel and send a private and verifiable message.
 
-The DIDComm for Dart package provides the tools and libraries to enable your app to send DIDComm messages. It supports various encryption algorithms and DID methods, such as `did:peer`, `did:key`, and `did:web` for signing and encrypting to ensure the secure and private transport of messages to the intended recipient, establishing verifiable and trusted communication.
+This package provides the tools and libraries to enable your app to send DIDComm messages. It supports various encryption algorithms and DID methods, such as `did:peer`, `did:key`, and `did:web` for signing and encrypting to ensure the secure and private transport of messages to the intended recipient, establishing verifiable and trusted communication.
 
+In addition, the Mediator DIDComm Client lets you route and forward encrypted messages through a mediator while handling DID & key resolution, packing, authorization headers, and ACL management. 
 
 ## Table of Contents
 
@@ -15,12 +16,14 @@ The DIDComm for Dart package provides the tools and libraries to enable your app
     - [Combining Different Envelope Types](#combining-different-envelope-types)
     - [Security Features of Envelope Type Combinations](#security-features-of-envelope-type-combinations)
   - [Requirements](#requirements)
+  - [MediatorDidcommClient](#mediatordidcommclient)
   - [Installation](#installation)
   - [Usage](#usage)
     - [1. Set up DID Manager and DIDs](#1-set-up-did-manager-and-dids)
     - [2. Compose a Plain Text Message](#2-compose-a-plain-text-message)
     - [3. Sign the Message](#3-sign-the-message)
     - [4. Encrypt the Message](#4-encrypt-the-message)
+    - [5. Send Via Mediator (MediatorDidcommClient)](#5-send-via-mediator-mediatordidcommclient)
   - [Pack and Unpack DIDComm Message Helpers](#pack-and-unpack-didcomm-message-helpers)
     - [packIntoEncryptedMessage](#packintoencryptedmessage)
     - [packIntoSignedMessage](#packintosignedmessage)
@@ -334,6 +337,48 @@ final anonymousEncryptedMessage = await EncryptedMessage.packAnonymously(
 In this case, Bob can decrypt and read the message but cannot determine who sent it. This approach is helpful for scenarios where sender anonymity is required.
 
 More details about the [key type selection for authcrypt and anoncrypt](#key-type-selection-for-authcrypt-and-anoncrypt).
+
+### 5. Send Via Mediator (MediatorDidcommClient)
+
+Use `MediatorDidcommClient` to forward an encrypted message through a mediator. The client resolves keys, encrypts, wraps the message in a forward envelope, and posts it to the mediator's DIDComm endpoint.
+
+```dart
+import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:uuid/uuid.dart';
+
+// Assume: aliceDidManager (sender), bobDidDocument (recipient), mediatorDidDocument already created.
+
+final mediatorClient = await MediatorDidcommClient.init(
+  didManager: aliceDidManager,
+  mediatorDidDocument: mediatorDidDocument,
+  clientOptions: const ClientOptions(), // customize timeouts, forwarding options
+);
+
+// Plain text message (no 'from'; client fills it automatically)
+final message = PlainTextMessage(
+  id: const Uuid().v4(),
+  to: [bobDidDocument.id], // single recipient supported currently
+  type: Uri.parse('https://didcomm.org/example/1.0/message'),
+  body: {'content': 'Hello world!'},
+);
+
+// Packs (authcrypt) and forwards via mediator
+// If mediator requires ACL, make sure Bob added Alice into his ACL
+await mediatorClient.packAndSendMessage(message);
+
+// Optional: manage ACL (e.g., allow Bob to reply back)
+final ownDidDocument = await aliceDidManager.getDidDocument();
+await mediatorClient.sendAclManagementMessage(
+  AccessListAddMessage(
+    id: const Uuid().v4(),
+    to: [mediatorDidDocument.id],
+    from: ownDidDocument.id,
+    theirDids: [bobDidDocument.id],
+  ),
+);
+```
+
+If you need different encryption (e.g., anoncrypt) set the appropriate `keyWrappingAlgorithm` and parameters in `packAndSendMessage` logic or use lower-level packing helpers before forwarding.
 
 
 ## Pack and Unpack DIDComm Message Helpers
