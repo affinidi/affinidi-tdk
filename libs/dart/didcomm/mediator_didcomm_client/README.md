@@ -16,7 +16,6 @@ In addition, the Mediator DIDComm Client lets you route and forward encrypted me
     - [Combining Different Envelope Types](#combining-different-envelope-types)
     - [Security Features of Envelope Type Combinations](#security-features-of-envelope-type-combinations)
   - [Requirements](#requirements)
-  - [MediatorDidcommClient](#mediatordidcommclient)
   - [Installation](#installation)
   - [Usage](#usage)
     - [1. Set up DID Manager and DIDs](#1-set-up-did-manager-and-dids)
