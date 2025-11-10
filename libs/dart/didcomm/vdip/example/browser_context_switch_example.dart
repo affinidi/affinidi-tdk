@@ -137,35 +137,7 @@ Future<void> main() async {
       );
 
       // Features are disclosed, now waiting for Switch Context message
-    },
-    onSwitchContext: (switchContextMsg) async {
-      prettyPrint(
-        'Holder received Switch Context Message',
-        object: switchContextMsg,
-      );
 
-      final issuerUrl = await vdipHolderClient.buildBrowserContextUrl(
-        switchContextMessage: switchContextMsg,
-      );
-
-      prettyPrint(
-        'Issuer URL built successfully (VDIP spec step 5)',
-        object: issuerUrl,
-      );
-
-      // Store the nonce for later use
-      contextNonce = switchContextMsg.switchContext.nonce;
-
-      prettyPrint(
-        'Simulating browser context switch with nonce',
-        object: {'nonce': contextNonce},
-      );
-
-      // In a real scenario, this URL would be opened in a browser
-      // and the user would complete verification (e.g., KYC, identity proofing)
-      // For this example, we simulate the completion of that process
-
-      // After browser context verification is complete, request credential
       await vdipHolderClient.requestCredential(
         issuerDid: issuerSigner.did,
         options: RequestCredentialsOptions(
@@ -178,6 +150,35 @@ Future<void> main() async {
           ),
         ),
       );
+    },
+    onSwitchContext: (message) async {
+      prettyPrint(
+        'Holder received Switch Context Message',
+        object: message,
+      );
+
+      final issuerUrl = await vdipHolderClient.buildBrowserContextUrl(
+        switchContextMessage: message,
+      );
+
+      prettyPrint(
+        'Issuer URL built successfully (VDIP spec step 5)',
+        object: issuerUrl,
+      );
+
+      // Store the nonce for later use
+      contextNonce = message.switchContext.nonce;
+
+      prettyPrint(
+        'Simulating browser context switch with nonce',
+        object: {'nonce': contextNonce},
+      );
+
+      // In a real scenario, this URL would be opened in a browser
+      // and the user would complete verification (e.g., KYC, identity proofing)
+      // For this example, we simulate the completion of that process
+
+      // After browser context verification is complete, request credential
     },
     onCredentialsIssuanceResponse: (message) async {
       prettyPrint(
@@ -206,18 +207,6 @@ Future<void> main() async {
       await issuerClient.disclose(
         queryMessage: message,
       );
-
-      // After disclosing features, send switch context message
-      if (message.from == null) {
-        throw ArgumentError.notNull('from');
-      }
-
-      await issuerClient.sendSwitchContext(
-        holderDid: message.from!,
-        baseIssuerUrl: Uri.parse('https://issuer.example.com'),
-        nonce: const Uuid().v4(),
-        threadId: message.threadId ?? message.id,
-      );
     },
     onRequestToIssueCredential: ({
       required message,
@@ -227,6 +216,14 @@ Future<void> main() async {
       prettyPrint(
         'Issuer received Request to Issue Credential Message',
         object: message,
+      );
+
+      /// Decide if holder need to switch context to issue verifiable credential
+      await issuerClient.sendSwitchContext(
+        holderDid: message.from!,
+        baseIssuerUrl: Uri.parse('https://issuer.example.com'),
+        nonce: const Uuid().v4(),
+        threadId: message.threadId ?? message.id,
       );
 
       final vdipRequestIssuanceMessageBody =

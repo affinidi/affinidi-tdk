@@ -250,10 +250,6 @@ class VdipIssuer {
     required String nonce,
     required String threadId,
   }) async {
-    if (!Uuid.isValidUUID(fromString: nonce)) {
-      throw ArgumentError.value(nonce, 'nonce', 'Must be a valid UUID');
-    }
-
     if (!baseIssuerUrl.hasScheme ||
         (baseIssuerUrl.scheme != 'http' && baseIssuerUrl.scheme != 'https')) {
       throw ArgumentError.value(
