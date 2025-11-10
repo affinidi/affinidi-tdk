@@ -10,8 +10,8 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_mediator_didcomm_client: ^1.0.0-dev.2
-  affinidi_tdk_vdsp: ^1.0.0-dev.2
+  affinidi_tdk_mediator_didcomm_client: ^1.0.0-dev.1
+  affinidi_tdk_vdsp: ^1.0.0-dev.1
   dcql: ^1.2.0
   json_annotation: ^4.9.0
     # update to version when vdsp client is published
