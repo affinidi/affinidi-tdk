@@ -1,10 +1,10 @@
-# Affinidi Mediator DIDComm Client for Dart
+# Affinidi DIDComm Mediator Client for Dart
 
 A Dart package for implementing secure and private communication on your app using DIDComm v2.1 protocol. DIDComm v2.1 protocol is a decentralised communication protocol that uses a Decentralised Identifier (DID) to establish a secure communication channel and send a private and verifiable message.
 
 This package provides the tools and libraries to enable your app to send DIDComm messages. It supports various encryption algorithms and DID methods, such as `did:peer`, `did:key`, and `did:web` for signing and encrypting to ensure the secure and private transport of messages to the intended recipient, establishing verifiable and trusted communication.
 
-In addition, the Mediator DIDComm Client lets you route and forward encrypted messages through a mediator while handling DID & key resolution, packing, authorization headers, and ACL management. 
+In addition, the DIDComm Mediator Client lets you route and forward encrypted messages through a mediator while handling DID & key resolution, packing, authorization headers, and ACL management. 
 
 ## Table of Contents
 
@@ -51,7 +51,7 @@ In addition, the Mediator DIDComm Client lets you route and forward encrypted me
 
 ## Core Concepts
 
-The Mediator DIDComm for Dart package utilises existing open standards and cryptographic techniques to provide secure, private, and verifiable communication.
+The DIDComm Mediator Client for Dart package utilises existing open standards and cryptographic techniques to provide secure, private, and verifiable communication.
 
 - **Decentralised Identifier (DID)** - A globally unique identifier that enables secure interactions. The DID is the cornerstone of Self-Sovereign Identity (SSI), a concept that aims to put individuals or entities in control of their digital identities.
 
@@ -75,7 +75,7 @@ The Mediator DIDComm for Dart package utilises existing open standards and crypt
 
 ### Supported Curves and Algorithms
 
-The Mediator DIDComm package supports the following curves and algorithms for signing and encrypting content.
+The DIDComm Mediator Client package supports the following curves and algorithms for signing and encrypting content.
 
 #### Curves and Signing Algorithms
 | Curve                   | Signing Algorithm           | Used in Content Encryption           | Notes                  |
