@@ -13,7 +13,7 @@ void main() async {
   // Copy its DID Document URL into example/mediator/mediator_did.txt.
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'mediator_didcomm_client',
+    packageDirectoryName: 'didcomm_mediator_client',
   );
 
   final aliceKeyStore = InMemoryKeyStore();

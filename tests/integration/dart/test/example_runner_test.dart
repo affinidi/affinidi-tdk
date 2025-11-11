@@ -9,7 +9,7 @@ void main() async {
 
   group('Running example files', () {
     for (final packageName in [
-      'mediator_didcomm_client',
+      'didcomm_mediator_client',
       'vdsp',
       'vdip',
     ]) {
