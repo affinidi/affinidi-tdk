@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:collection/collection.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
@@ -14,22 +14,20 @@ const webSocketsTestRetries = 2;
 
 // TODO: add ACL test
 void main() async {
-  // TODO: temporary. remove when packages are published
-  return;
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'mediator_didcomm_client',
+    packageDirectoryName: 'didcomm_mediator_client',
   );
 
   group('Mediator Client Integration Tests', () {
     late PersistentWallet aliceWallet;
     late DidManager aliceDidManager;
     late DidDocument aliceDidDocument;
-    late MediatorDidcommClient aliceMediatorClient;
+    late DidcommMediatorClient aliceMediatorClient;
 
     late PersistentWallet bobWallet;
     late DidManager bobDidManager;
     late DidDocument bobDidDocument;
-    late MediatorDidcommClient bobMediatorClient;
+    late DidcommMediatorClient bobMediatorClient;
 
     late DidDocument bobMediatorDocument;
 
@@ -108,7 +106,7 @@ void main() async {
             await readDid(config.mediatorDidPath),
           );
 
-          aliceMediatorClient = await MediatorDidcommClient.init(
+          aliceMediatorClient = await DidcommMediatorClient.init(
             authorizationProvider: await AffinidiAuthorizationProvider.init(
               didManager: aliceDidManager,
               mediatorDidDocument: bobMediatorDocument,
@@ -118,7 +116,7 @@ void main() async {
             clientOptions: AffinidiClientOptions(),
           );
 
-          bobMediatorClient = await MediatorDidcommClient.init(
+          bobMediatorClient = await DidcommMediatorClient.init(
             authorizationProvider: await AffinidiAuthorizationProvider.init(
               didManager: bobDidManager,
               mediatorDidDocument: bobMediatorDocument,
