@@ -8,4 +8,4 @@
 
 ## 1.0.0-dev.3
 
-- Rename VdipIssuerClient and VdipHolderClient to VdipIssuer and VdipHolder
+- BREAKING CHANGE: Rename VdipIssuerClient and VdipHolderClient to VdipIssuer and VdipHolder

@@ -8,4 +8,4 @@
 
 ## 1.0.0-dev.3
 
-- Rename VdspVerifierClient and VdspHolderClient to VdspVerifier and VdspHolder
+- BREAKING CHANGE: Rename VdspVerifierClient and VdspHolderClient to VdspVerifier and VdspHolder
