@@ -184,14 +184,14 @@ For more details, see the [DIDComm Messaging specification](https://identity.fou
 Run:
 
 ```bash
-dart pub add affinidi_tdk_mediator_didcomm_client
+dart pub add affinidi_tdk_didcomm_mediator_client
 ```
 
 or manually, add the package into your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  affinidi_tdk_mediator_didcomm_client: ^<version_number>
+  affinidi_tdk_didcomm_mediator_client: ^<version_number>
 ```
 
 and then run the command below to install the package:
@@ -342,7 +342,7 @@ More details about the [key type selection for authcrypt and anoncrypt](#key-typ
 Use `MediatorDidcommClient` to forward an encrypted message through a mediator. The client resolves keys, encrypts, wraps the message in a forward envelope, and posts it to the mediator's DIDComm endpoint.
 
 ```dart
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:uuid/uuid.dart';
 
 // Assume: aliceDidManager (sender), bobDidDocument (recipient), mediatorDidDocument already created.

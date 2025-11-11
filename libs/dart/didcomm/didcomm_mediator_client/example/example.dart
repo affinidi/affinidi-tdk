@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -146,7 +146,7 @@ void main() async {
   );
 
   // Alice is going to use Bob's Mediator to send him a message
-  final aliceMediatorClient = await MediatorDidcommClient.init(
+  final aliceMediatorClient = await DidcommMediatorClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       didManager: aliceDidManager,
       mediatorDidDocument: bobMediatorDocument,
@@ -156,7 +156,7 @@ void main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
-  final bobMediatorClient = await MediatorDidcommClient.init(
+  final bobMediatorClient = await DidcommMediatorClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       didManager: bobDidManager,
       mediatorDidDocument: bobMediatorDocument,

@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart'
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart'
     hide CredentialFormat;
 import 'package:affinidi_tdk_vdsp/affinidi_tdk_vdsp.dart';
 import 'package:dcql/dcql.dart';

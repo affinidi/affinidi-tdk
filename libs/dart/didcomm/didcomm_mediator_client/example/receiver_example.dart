@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../../../../tests/integration/dart/test/test_config.dart';
@@ -62,7 +62,7 @@ void main() async {
     await readDid(config.mediatorDidPath),
   );
 
-  final receiverMediatorClient = await MediatorDidcommClient.init(
+  final receiverMediatorClient = await DidcommMediatorClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       didManager: receiverDidManager,
       mediatorDidDocument: receiverMediatorDocument,

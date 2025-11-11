@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -9,7 +9,7 @@ import '../affinidi_tdk_vdip.dart';
 /// Implements the VDIP protocol for a holder, supporting feature discovery and credential issuance flows.
 class VdipHolder {
   /// Underlying mediator DIDComm client used for packing / sending messages.
-  final MediatorDidcommClient mediatorClient;
+  final DidcommMediatorClient mediatorClient;
 
   /// DID manager used for DIDComm operations.
   final DidManager didManager;
@@ -21,7 +21,7 @@ class VdipHolder {
     required this.mediatorClient,
   });
 
-  /// Convenience initializer that creates the underlying [MediatorDidcommClient]
+  /// Convenience initializer that creates the underlying [DidcommMediatorClient]
   /// before constructing the holder client.
   static Future<VdipHolder> init({
     required DidDocument mediatorDidDocument,
@@ -31,7 +31,7 @@ class VdipHolder {
   }) async =>
       VdipHolder(
         didManager: didManager,
-        mediatorClient: await MediatorDidcommClient.init(
+        mediatorClient: await DidcommMediatorClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
           authorizationProvider: authorizationProvider,

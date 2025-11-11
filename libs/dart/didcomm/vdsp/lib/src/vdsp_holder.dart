@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart'
     show SdJwtHandlerV1;
@@ -12,7 +12,7 @@ import '../affinidi_tdk_vdsp.dart';
 /// Implements the VDSP protocol for a holder, supporting feature discovery, credential filtering, and data sharing.
 class VdspHolder {
   /// The mediator client used for DIDComm communication.
-  final MediatorDidcommClient mediatorClient;
+  final DidcommMediatorClient mediatorClient;
 
   /// The DID manager for handling DIDs and keys.
   final DidManager didManager;
@@ -38,7 +38,7 @@ class VdspHolder {
       VdspHolder(
         didManager: didManager,
         featureDisclosures: featureDisclosures,
-        mediatorClient: await MediatorDidcommClient.init(
+        mediatorClient: await DidcommMediatorClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
           authorizationProvider: authorizationProvider,
