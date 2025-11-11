@@ -20,28 +20,30 @@ These are a few scenarios from a wide range of use cases unlocked by VDSP that r
 
 ## Table of Contents
 
-- [Core Concepts](#core-concepts)
-- [Key Features](#key-features)
-  - [VDSP Protocol Support](#vdsp-protocol-support)
-  - [Supported Query Languages](#supported-query-languages)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [VDSP Clients](#vdsp-clients)
-  - [VdspVerifierClient](#vdspverifierclient)
-  - [VdspHolderClient](#vdspholderclient)
-- [Usage](#usage)
-  - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
-  - [2. Initialise VDSP Verifier Client](#2-initialise-vdsp-verifier-client)
-  - [3. Initialise VDSP Holder Client](#3-initialise-vdsp-holder-client)
-  - [4. Feature Discovery](#4-feature-discovery)
-  - [5. Query Holder Credentials](#5-query-holder-credentials)
-  - [6. Holder Shares Credentials](#6-holder-shares-credentials)
-  - [7. Process Data Response](#7-process-data-response)
-- [Complete Example](#complete-example)
-- [Security Features](#security-features)
-- [Support & Feedback](#support--feedback)
-  - [Reporting Technical Issues](#reporting-technical-issues)
-- [Contributing](#contributing)
+- [Affinidi VDSP Clients for Dart](#affinidi-vdsp-clients-for-dart)
+  - [Table of Contents](#table-of-contents)
+  - [Core Concepts](#core-concepts)
+  - [Key Features](#key-features)
+    - [VDSP Protocol Support](#vdsp-protocol-support)
+    - [Supported Query Languages](#supported-query-languages)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [VDSP Clients](#vdsp-clients)
+    - [VdspVerifierClient](#vdspverifierclient)
+    - [VdspHolderClient](#vdspholderclient)
+  - [Usage](#usage)
+    - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
+    - [2. Initialise VDSP Verifier Client](#2-initialise-vdsp-verifier-client)
+    - [3. Initialise VDSP Holder Client](#3-initialise-vdsp-holder-client)
+    - [4. Feature Discovery](#4-feature-discovery)
+    - [5. Query Holder Credentials](#5-query-holder-credentials)
+    - [6. Holder Shares Credentials](#6-holder-shares-credentials)
+    - [7. Process Data Response](#7-process-data-response)
+  - [Complete Example](#complete-example)
+  - [Security Features](#security-features)
+  - [Support \& Feedback](#support--feedback)
+    - [Reporting Technical Issues](#reporting-technical-issues)
+  - [Contributing](#contributing)
 
 ## Core Concepts
 
@@ -76,22 +78,22 @@ The Verifiable Data Sharing Protocol (VDSP) uses existing open standards, such a
 
 The package implements the following VDSP message types:
 
-| Message Type | Purpose | Direction |
-|---|---|---|
-| `discover-features/2.0/queries` | Query Supported Features | Verifier → Holder |
-| `discover-features/2.0/disclose` | Disclose Supported Features | Holder → Verifier |
-| `vdsp/1.0/query-data` | Request Verifiable Credentials | Verifier → Holder |
-| `vdsp/1.0/data-response` | Share Verifiable Presentation | Holder → Verifier |
-| `vdsp/1.0/data-processing-result` | Send Processing Result | Verifier → Holder |
-| `report-problem/2.0/problem-report` | Report Errors or Warnings | Any → Any |
+| Message Type                        | Purpose                        | Direction         |
+| ----------------------------------- | ------------------------------ | ----------------- |
+| `discover-features/2.0/queries`     | Query Supported Features       | Verifier → Holder |
+| `discover-features/2.0/disclose`    | Disclose Supported Features    | Holder → Verifier |
+| `vdsp/1.0/query-data`               | Request Verifiable Credentials | Verifier → Holder |
+| `vdsp/1.0/data-response`            | Share Verifiable Presentation  | Holder → Verifier |
+| `vdsp/1.0/data-processing-result`   | Send Processing Result         | Verifier → Holder |
+| `report-problem/2.0/problem-report` | Report Errors or Warnings      | Any → Any         |
 
-Detailed protocol specification can be found [here](PROTOCOL.md).
+Detailed protocol specification can be found [here](PROTOCOLS.md).
 
 ### Supported Query Languages
 
-| Query Language | Status | Description |
-|---|---|---|
-| DCQL | ✅ Fully supported | Digital Credential Query Language for querying credentials from the holder's digital wallet |
+| Query Language | Status            | Description                                                                                 |
+| -------------- | ----------------- | ------------------------------------------------------------------------------------------- |
+| DCQL           | ✅ Fully supported | Digital Credential Query Language for querying credentials from the holder's digital wallet |
 
 ## Requirements
 

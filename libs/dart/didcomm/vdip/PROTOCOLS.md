@@ -1,8 +1,8 @@
-# DIDComm VDIP Protocol
+# DIDComm VDIP Protocols
 
 ## Table of Contents
 
-- [DIDComm VDIP Protocol](#didcomm-vdip-protocol)
+- [DIDComm VDIP Protocols](#didcomm-vdip-protocols)
   - [Table of Contents](#table-of-contents)
   - [Query Supported Features](#query-supported-features)
     - [Roles](#roles)

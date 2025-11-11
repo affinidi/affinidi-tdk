@@ -21,36 +21,38 @@ These are a few scenarios from a wide range of use cases unlocked by VDIP that r
 
 ## Table of Contents
 
-- [Core Concepts](#core-concepts)
-- [Key Features](#key-features)
-  - [Supported Credential Formats](#supported-credential-formats)
-  - [VDIP Protocol Support](#vdip-protocol-support)
-- [Protocol Flow](#protocol-flow)
-  - [Basic Issuance Flow](#basic-issuance-flow)
-  - [Holder-Bound Assertions](#holder-bound-assertions)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
-  - [2. Initialise VDIP Issuer Client](#2-initialise-vdip-issuer-client)
-  - [3. Initialise VDIP Holder Client](#3-initialise-vdip-holder-client)
-  - [4. Feature Discovery](#4-feature-discovery)
-  - [5. Request Credential (Basic)](#5-request-credential-basic)
-  - [6. Request Credential with Holder-Bound Assertion](#6-request-credential-with-holder-bound-assertion)
-  - [7. Issue Credential](#7-issue-credential)
-  - [8. Claim Credential](#8-claim-credential)
-- [Message References](#message-references)
-  - [Request Issuance Message](#request-issuance-message)
-  - [Issued Credential Message](#issued-credential-message)
-- [Security Features](#security-features)
-  - [Message Wrapping Verification](#message-wrapping-verification)
-  - [Addressing Consistency](#addressing-consistency)
-  - [Assertion Verification](#assertion-verification)
-- [Problem Report Message](#problem-report-message)
-- [Complete Example](#complete-example)
-- [Support & Feedback](#support--feedback)
-  - [Reporting Technical Issues](#reporting-technical-issues)
-- [Contributing](#contributing)
+- [Affinidi VDIP Clients for Dart](#affinidi-vdip-clients-for-dart)
+  - [Table of Contents](#table-of-contents)
+  - [Core Concepts](#core-concepts)
+  - [Key Features](#key-features)
+    - [Supported Credential Formats](#supported-credential-formats)
+    - [VDIP Protocol Support](#vdip-protocol-support)
+  - [Protocol Flow](#protocol-flow)
+    - [Basic Issuance Flow](#basic-issuance-flow)
+    - [Holder-Bound Assertions](#holder-bound-assertions)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
+    - [2. Initialise VDIP Issuer Client](#2-initialise-vdip-issuer-client)
+    - [3. Initialise VDIP Holder Client](#3-initialise-vdip-holder-client)
+    - [4. Feature Discovery](#4-feature-discovery)
+    - [5. Request Credential (Basic)](#5-request-credential-basic)
+    - [6. Request Credential with Holder-Bound Assertion](#6-request-credential-with-holder-bound-assertion)
+    - [7. Issue Credential](#7-issue-credential)
+    - [8. Claim Credential](#8-claim-credential)
+  - [Message References](#message-references)
+    - [Request Issuance Message](#request-issuance-message)
+    - [Issued Credential Message](#issued-credential-message)
+  - [Security Features](#security-features)
+    - [Message Wrapping Verification](#message-wrapping-verification)
+    - [Addressing Consistency](#addressing-consistency)
+    - [Assertion Verification](#assertion-verification)
+  - [Problem Report Message](#problem-report-message)
+  - [Complete Example](#complete-example)
+  - [Support \& Feedback](#support--feedback)
+    - [Reporting Technical Issues](#reporting-technical-issues)
+  - [Contributing](#contributing)
 
 ## Core Concepts
 
@@ -85,26 +87,26 @@ The Verifiable Data Issuance Protocol (VDIP) uses existing open standards, such 
 
 ### Supported Credential Formats
 
-| Format | Description | Use Case |
-|--------|-------------|----------|
-| `w3cV1` | W3C Verifiable Credentials Data Model 1.0 with JSON-LD and Data Integrity proofs | Standard JSON-LD credentials with linked data semantics |
-| `w3cV2` | W3C Verifiable Credentials Data Model 2.0 with enhanced proof options | Next-generation W3C credentials with improved proof mechanisms |
-| `jwtVc` | JWT-encoded Verifiable Credential (JWS) | Compact JWT format for credentials, widely supported |
-| `sdJwtVc` | Selective Disclosure JWT-based Verifiable Credential | Privacy-preserving credentials allowing selective claim disclosure |
+| Format    | Description                                                                      | Use Case                                                           |
+| --------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `w3cV1`   | W3C Verifiable Credentials Data Model 1.0 with JSON-LD and Data Integrity proofs | Standard JSON-LD credentials with linked data semantics            |
+| `w3cV2`   | W3C Verifiable Credentials Data Model 2.0 with enhanced proof options            | Next-generation W3C credentials with improved proof mechanisms     |
+| `jwtVc`   | JWT-encoded Verifiable Credential (JWS)                                          | Compact JWT format for credentials, widely supported               |
+| `sdJwtVc` | Selective Disclosure JWT-based Verifiable Credential                             | Privacy-preserving credentials allowing selective claim disclosure |
 
 ### VDIP Protocol Support
 
 The package implements the following VDIP message types:
 
-| Message Type | Purpose | Direction |
-|---|---|---|
-| `discover-features/2.0/queries` | Query Supported Features | Holder → Issuer |
-| `discover-features/2.0/disclose` | Disclose Supported Features | Issuer → Holder |
-| `vdip/1.0/request-issuance` | Request Credential Issuance | Holder → Issuer |
-| `vdip/1.0/issued-credential` | Deliver Issued Credential | Issuer → Holder |
-| `report-problem/2.0/problem-report` | Report Errors or Warnings | Any → Any |
+| Message Type                        | Purpose                     | Direction       |
+| ----------------------------------- | --------------------------- | --------------- |
+| `discover-features/2.0/queries`     | Query Supported Features    | Holder → Issuer |
+| `discover-features/2.0/disclose`    | Disclose Supported Features | Issuer → Holder |
+| `vdip/1.0/request-issuance`         | Request Credential Issuance | Holder → Issuer |
+| `vdip/1.0/issued-credential`        | Deliver Issued Credential   | Issuer → Holder |
+| `report-problem/2.0/problem-report` | Report Errors or Warnings   | Any → Any       |
 
-Detailed protocol specification can be found [here](PROTOCOL.md).
+Detailed protocol specification can be found [here](PROTOCOLS.md).
 
 ## Protocol Flow
 
@@ -481,16 +483,16 @@ DIDComm message to request credential issuance to the issuer.
 
 **Body Fields** (`VdipRequestIssuanceMessageBody`):
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `proposal_id` | `String` | Yes | Identifier referencing a credential proposal or out-of-band offer. |
-| `holder_did` | `String?` | Conditional | DID to issue the credential to (requires `assertion` if specified). |
-| `assertion` | `String?` | Conditional | Signed JWT proving control of `holder_did` (required if `holder_did` is specified). |
-| `challenge` | `String?` | Optional | Anti-replay or session binding value |
-| `credential_format` | `String?` | Optional | Requested credential format (e.g., "w3cV1", "jwtVc", "sdJwtVc"). |
-| `json_web_signature_algorithm` | `String?` | Optional | JWS algorithm for JWT-based credentials (e.g., "ES256"). |
-| `comment` | `String?` | Optional | Human-readable note from the requester. |
-| `credential_meta` | `CredentialMeta?` | Optional | Arbitrary metadata to assist credential construction. |
+| Field                          | Type              | Required    | Description                                                                         |
+| ------------------------------ | ----------------- | ----------- | ----------------------------------------------------------------------------------- |
+| `proposal_id`                  | `String`          | Yes         | Identifier referencing a credential proposal or out-of-band offer.                  |
+| `holder_did`                   | `String?`         | Conditional | DID to issue the credential to (requires `assertion` if specified).                 |
+| `assertion`                    | `String?`         | Conditional | Signed JWT proving control of `holder_did` (required if `holder_did` is specified). |
+| `challenge`                    | `String?`         | Optional    | Anti-replay or session binding value                                                |
+| `credential_format`            | `String?`         | Optional    | Requested credential format (e.g., "w3cV1", "jwtVc", "sdJwtVc").                    |
+| `json_web_signature_algorithm` | `String?`         | Optional    | JWS algorithm for JWT-based credentials (e.g., "ES256").                            |
+| `comment`                      | `String?`         | Optional    | Human-readable note from the requester.                                             |
+| `credential_meta`              | `CredentialMeta?` | Optional    | Arbitrary metadata to assist credential construction.                               |
 
 **Example**:
 ```json
@@ -520,11 +522,11 @@ DIDComm message containing the issued credential to the holder.
 
 **Body Fields** (`VdipIssuedCredentialBody`):
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `credential` | `String` | Yes | Serialized credential payload (format depends on `credential_format`). |
-| `credential_format` | `CredentialFormat` | Yes | Format of the issued credential. |
-| `comment` | `String?` | Optional | Human-readable note from the issuer. |
+| Field               | Type               | Required | Description                                                            |
+| ------------------- | ------------------ | -------- | ---------------------------------------------------------------------- |
+| `credential`        | `String`           | Yes      | Serialized credential payload (format depends on `credential_format`). |
+| `credential_format` | `CredentialFormat` | Yes      | Format of the issued credential.                                       |
+| `comment`           | `String?`          | Optional | Human-readable note from the issuer.                                   |
 
 **Credential Formats**:
 - `w3cV1`: JSON string of W3C VC Data Model 1.0 credential.
