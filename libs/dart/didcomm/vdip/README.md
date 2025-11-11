@@ -1,4 +1,4 @@
-# Affinidi VDIP Issuer and Holder for Dart
+# Affinidi VDIP for Dart
 
 A Dart package for implementing the Verifiable Data Issuance Protocol (VDIP), a protocol that facilitates secure, interoperable verifiable credential issuance between **Issuers** and **Holders** using the DIDComm v2.1 protocol, an open standard for decentralised communication.
 

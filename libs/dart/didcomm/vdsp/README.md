@@ -1,4 +1,4 @@
-# Affinidi VDSP Verifier and Holder for Dart
+# Affinidi VDSP for Dart
 
 A Dart package for implementing the Verifiable Data Sharing Protocol (VDSP), a protocol that facilitates secure, interoperable verifiable credential exchange between **Holders** and **Verifiers** using the DIDComm v2.1 protocol, an open standard for decentralised communication.
 
@@ -10,7 +10,7 @@ The VDSP package consist of two main classes:
 
 These classes simplify the data sharing over the DIDComm v2.1 protocol, including credential queries and cryptographic operations such as signature verifications.
 
-VDSP Verifier and Holder provide developers with tools to build robust, privacy-first, and secure credential-sharing features into their applications. VDSP enables use cases such as:
+VDSP classes provide developers with tools to build robust, privacy-first, and secure credential-sharing features into their applications. VDSP enables use cases such as:
 
 - Customer onboarding and KYC (Know Your Customer)
 - Background screening, including education credential verification
@@ -26,7 +26,7 @@ These are a few scenarios from a wide range of use cases unlocked by VDSP that r
   - [Supported Query Languages](#supported-query-languages)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [VDSP Verifier and Holder](#vdsp-verifier-and-holder)
+- [VDSP classes](#vdsp-classes)
   - [VdspVerifier](#vdspverifier)
   - [VdspHolder](#vdspholder)
 - [Usage](#usage)
@@ -116,7 +116,7 @@ and then run the command below to install the package:
 dart pub get
 ```
 
-## VDSP Verifier and Holder
+## VDSP Classes
 
 ### VdspVerifier
 
