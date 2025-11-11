@@ -1,35 +1,35 @@
 # Protocols
 
+This document describes protocols implemented in the scope of `Verifiable Data Sharing Protocol` library.
+
 ## Table of Contents
 
-- [Protocols](#protocols)
-  - [Table of Contents](#table-of-contents)
-  - [Discover Features Protocol 2.0](#discover-features-protocol-20)
-    - [Motivation](#motivation)
-    - [Roles](#roles)
-      - [Verifier](#verifier)
-      - [Holder](#holder)
-    - [States](#states)
-    - [Messages](#messages)
-      - [queries](#queries)
-      - [disclose](#disclose)
-  - [Verifiable Data Sharing (VDSP) Protocol](#verifiable-data-sharing-vdsp-protocol)
-    - [Motivation](#motivation-1)
-    - [Roles](#roles-1)
-      - [Verifier](#verifier-1)
-      - [Holder](#holder-1)
-    - [States](#states-1)
-    - [Messages](#messages-1)
-      - [query-data](#query-data)
-      - [data-response](#data-response)
-      - [data-processing-result](#data-processing-result)
-  - [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
-    - [Motivation](#motivation-2)
-    - [Roles](#roles-2)
-      - [Any](#any)
-    - [States](#states-2)
-    - [Messages](#messages-2)
-      - [problem-report](#problem-report)
+- [Discover Features Protocol 2.0](#discover-features-protocol-20)
+  - [Motivation](#motivation)
+  - [Roles](#roles)
+    - [Verifier](#verifier)
+    - [Holder](#holder)
+  - [States](#states)
+  - [Messages](#messages)
+    - [queries](#queries)
+    - [disclose](#disclose)
+- [Verifiable Data Sharing Protocol (VDSP)](#verifiable-data-sharing-protocol-vdsp)
+  - [Motivation](#motivation-1)
+  - [Roles](#roles-1)
+    - [Verifier](#verifier-1)
+    - [Holder](#holder-1)
+  - [States](#states-1)
+  - [Messages](#messages-1)
+    - [query-data](#query-data)
+    - [data-response](#data-response)
+    - [data-processing-result](#data-processing-result)
+- [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
+  - [Motivation](#motivation-2)
+  - [Roles](#roles-2)
+    - [Any](#any)
+  - [States](#states-2)
+  - [Messages](#messages-2)
+    - [problem-report](#problem-report)
 
 ## Discover Features Protocol 2.0
 
@@ -77,7 +77,7 @@ Holder → Verifier
 
 `discover-features/2.0/disclose`
 
-## Verifiable Data Sharing (VDSP) Protocol
+## Verifiable Data Sharing Protocol (VDSP)
 
 The [PIURI] for this protocol is:
 

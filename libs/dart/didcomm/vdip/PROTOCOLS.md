@@ -1,47 +1,34 @@
 # Protocols
 
+This document describes protocols implemented in the scope of `Verifiable Data Issuance Protocol` library.
+
 ## Table of Contents
 
-- [Protocols](#protocols)
-  - [Table of Contents](#table-of-contents)
+- [Discover Features Protocol 2.0](#discover-features-protocol-20)
+  - [Motivation](#motivation)
   - [Roles](#roles)
-    - [Issuer](#issuer)
+    - [Verifier](#verifier)
     - [Holder](#holder)
-  - [Discover Features Protocol 2.0](#discover-features-protocol-20)
-    - [Motivation](#motivation)
-    - [Roles](#roles-1)
-      - [Verifier](#verifier)
-      - [Holder](#holder-1)
-    - [States](#states)
-    - [Messages](#messages)
-      - [queries](#queries)
-      - [disclose](#disclose)
+  - [States](#states)
+  - [Messages](#messages)
+    - [queries](#queries)
+    - [disclose](#disclose)
 - [Verifiable Data Issuance Protocol (VDIP)](#verifiable-data-issuance-protocol-vdip)
-    - [Motivation](#motivation-1)
-    - [Roles](#roles-2)
-      - [Verifier](#verifier-1)
-      - [Holder](#holder-2)
-    - [States](#states-1)
-    - [Messages](#messages-1)
-      - [request-issuance](#request-issuance)
-      - [issued-credential](#issued-credential)
-  - [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
-    - [Motivation](#motivation-2)
-    - [Roles](#roles-3)
-      - [Any](#any)
-    - [States](#states-2)
-    - [Messages](#messages-2)
-      - [problem-report](#problem-report)
-
-## Roles
-
-### Issuer
-
-An entity that creates, signs, and issues verifiable credentials. The issuer validates requests, constructs credentials in a supported format, signs them, and delivers them to the holder via DIDComm message.
-
-### Holder
-
-An entity requesting and claiming the verifiable credentials. The holder initiates the issuance flow by sending a request specifying the desired credential format and providing any required metadata.
+  - [Motivation](#motivation-1)
+  - [Roles](#roles-1)
+    - [Verifier](#verifier-1)
+    - [Holder](#holder-1)
+  - [States](#states-1)
+  - [Messages](#messages-1)
+    - [request-issuance](#request-issuance)
+    - [issued-credential](#issued-credential)
+- [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
+  - [Motivation](#motivation-2)
+  - [Roles](#roles-2)
+    - [Any](#any)
+  - [States](#states-2)
+  - [Messages](#messages-2)
+    - [problem-report](#problem-report)
 
 ## Discover Features Protocol 2.0
 
