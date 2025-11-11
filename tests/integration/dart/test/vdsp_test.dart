@@ -293,7 +293,6 @@ Future<void> main() async {
         },
       );
 
-      // TODO: publish vdsp and reference a new version here
       final vdspHolder = await VdspHolder.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
