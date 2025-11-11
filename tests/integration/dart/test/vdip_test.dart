@@ -102,7 +102,7 @@ Future<void> main() async {
     test('VDIP works correctly', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final vdspIssuer = await VdipIssuer.init(
+      final vdspIssuer = await VdipIssuerClient.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: issuerDidManager,
         featureDisclosures: [
@@ -180,7 +180,7 @@ Future<void> main() async {
         },
       );
 
-      final vdipHolder = await VdipHolder.init(
+      final vdipHolder = await VdipHolderClient.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),
@@ -262,7 +262,7 @@ Future<void> main() async {
     test('VDIP works correctly with holder-bound assertion', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final vdipIssuer = await VdipIssuer.init(
+      final vdipIssuer = await VdipIssuerClient.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: issuerDidManager,
         featureDisclosures: [
@@ -344,7 +344,7 @@ Future<void> main() async {
         },
       );
 
-      final vdipHolder = await VdipHolder.init(
+      final vdipHolder = await VdipHolderClient.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),
