@@ -14,6 +14,8 @@ const webSocketsTestRetries = 2;
 
 // TODO: add ACL test
 void main() async {
+  // TODO: temporary. remove when packages are published
+  return;
   final config = await TestConfig.configureTestFiles(
     packageDirectoryName: 'mediator_didcomm_client',
   );
