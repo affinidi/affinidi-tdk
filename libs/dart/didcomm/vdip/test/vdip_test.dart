@@ -100,16 +100,16 @@ Future<void> main() async {
             test('VDIP credential issuance works correctly', () async {
               final testCompleter = Completer<PlainTextMessage>();
 
-              final issuer = VdipIssuer(
+              final vdipIssuer = VdipIssuer(
                 didManager: issuerDidManager,
                 mediatorClient: mockMediator.clients[issuerDidManager]!,
                 featureDisclosures:
                     FeatureDiscoveryHelper.vdipIssuerDisclosures,
               );
 
-              issuer.listenForIncomingMessages(
+              vdipIssuer.listenForIncomingMessages(
                 onFeatureQuery: (message) async {
-                  await issuer.disclose(
+                  await vdipIssuer.disclose(
                     queryMessage: message,
                   );
                 },
@@ -137,7 +137,7 @@ Future<void> main() async {
                     issuerSigner: issuerSigner,
                   );
 
-                  await issuer.sendIssuedCredentials(
+                  await vdipIssuer.sendIssuedCredentials(
                     holderDid: holderDid,
                     verifiableCredential: credential,
                     comment: comment,
@@ -149,12 +149,12 @@ Future<void> main() async {
                 },
               );
 
-              final holder = VdipHolder(
+              final vdipHolder = VdipHolder(
                 didManager: holderDidManager,
                 mediatorClient: mockMediator.clients[holderDidManager]!,
               );
 
-              holder.listenForIncomingMessages(
+              vdipHolder.listenForIncomingMessages(
                 onFeatureQuery: (message) async {
                   // Holder responds to feature query if needed
                 },
@@ -182,7 +182,7 @@ Future<void> main() async {
               await mockMediator.startConnections();
 
               // Start the flow: Holder queries issuer features
-              await holder.queryIssuerFeatures(
+              await vdipHolder.queryIssuerFeatures(
                 issuerDid: issuerDidDocument.id,
                 featureQueries:
                     FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
@@ -194,7 +194,7 @@ Future<void> main() async {
               await Future<void>.delayed(const Duration(milliseconds: 100));
 
               // Holder requests credential
-              await holder.requestCredential(
+              await vdipHolder.requestCredential(
                 issuerDid: issuerDidDocument.id,
                 options: RequestCredentialsOptions(
                   proposalId: proposalId,
@@ -218,14 +218,14 @@ Future<void> main() async {
                 () async {
               final testCompleter = Completer<PlainTextMessage>();
 
-              final issuer = VdipIssuer(
+              final vdipIssuer = VdipIssuer(
                 didManager: issuerDidManager,
                 mediatorClient: mockMediator.clients[issuerDidManager]!,
                 featureDisclosures:
                     FeatureDiscoveryHelper.vdipIssuerDisclosures,
               );
 
-              issuer.listenForIncomingMessages(
+              vdipIssuer.listenForIncomingMessages(
                 onRequestToIssueCredential: ({
                   required message,
                   isAssertionValid,
@@ -263,7 +263,7 @@ Future<void> main() async {
                     issuerSigner: issuerSigner,
                   );
 
-                  await issuer.sendIssuedCredentials(
+                  await vdipIssuer.sendIssuedCredentials(
                     holderDid: message.from!,
                     verifiableCredential: credential,
                     comment: comment,
@@ -275,12 +275,12 @@ Future<void> main() async {
                 },
               );
 
-              final holder = VdipHolder(
+              final vdipHolder = VdipHolder(
                 didManager: holderDidManager,
                 mediatorClient: mockMediator.clients[holderDidManager]!,
               );
 
-              holder.listenForIncomingMessages(
+              vdipHolder.listenForIncomingMessages(
                 onCredentialsIssuanceResponse: (message) async {
                   testCompleter.complete(message);
                   await mockMediator.stopConnections();
@@ -294,7 +294,7 @@ Future<void> main() async {
               await mockMediator.startConnections();
 
               // Holder requests credential for specific holder DID with assertion
-              await holder.requestCredentialForHolder(
+              await vdipHolder.requestCredentialForHolder(
                 holderSigner.did,
                 issuerDid: issuerDidDocument.id,
                 assertionSigner: holderSigner,
