@@ -153,7 +153,7 @@ Future<void> main() async {
   );
 
   // holder
-  final vdipHolderClient = await VdipHolderClient.init(
+  final vdipHolder = await VdipHolder.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     authorizationProvider: await AffinidiAuthorizationProvider.init(
@@ -163,7 +163,7 @@ Future<void> main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
-  final vdspHolderClient = await VdspHolderClient.init(
+  final vdspHolder = await VdspHolder.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
@@ -174,21 +174,21 @@ Future<void> main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
-  await vdipHolderClient.queryIssuerFeatures(
+  await vdipHolder.queryIssuerFeatures(
     issuerDid: issuerSigner.did,
     featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
       FeatureDiscoveryHelper.vdipIssuerDisclosures,
     ),
   );
 
-  vdipHolderClient.listenForIncomingMessages(
+  vdipHolder.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
       prettyPrint(
         'Holder received Feature Query Message',
         object: message,
       );
 
-      await vdipHolderClient.requestCredential(
+      await vdipHolder.requestCredential(
         issuerDid: issuerSigner.did,
         options: const RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
@@ -211,18 +211,18 @@ Future<void> main() async {
     },
   );
 
-  vdspHolderClient.listenForIncomingMessages(
+  vdspHolder.listenForIncomingMessages(
     onFeatureQuery: (message) async {
       prettyPrint(
         'Holder received Feature Query Message',
         object: message,
       );
 
-      final disclosures = vdspHolderClient.getDisclosures(
+      final disclosures = vdspHolder.getDisclosures(
         queryMessage: message,
       );
 
-      await vdspHolderClient.disclose(
+      await vdspHolder.disclose(
         queryMessage: message,
         disclosures: disclosures,
       );
@@ -233,12 +233,12 @@ Future<void> main() async {
         object: message,
       );
 
-      final queryResult = await vdspHolderClient.filterVerifiableCredentials(
+      final queryResult = await vdspHolder.filterVerifiableCredentials(
         requestMessage: message,
         verifiableCredentials: holderVerifiableCredentials,
       );
 
-      await vdspHolderClient.shareData(
+      await vdspHolder.shareData(
         requestMessage: message,
         verifiableCredentials: queryResult.verifiableCredentials,
         verifiablePresentationSigner: holderSigner,
@@ -263,7 +263,7 @@ Future<void> main() async {
 
   // verifier
 
-  final issuerVdipClient = await VdipIssuerClient.init(
+  final vdipIssuer = await VdipIssuer.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: issuerDidManager,
     featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -274,7 +274,7 @@ Future<void> main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
-  final vdspIssuerClient = await VdspVerifierClient.init(
+  final vdspIssuer = await VdspVerifier.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: issuerDidManager,
     authorizationProvider: await AffinidiAuthorizationProvider.init(
@@ -284,14 +284,14 @@ Future<void> main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
-  issuerVdipClient.listenForIncomingMessages(
+  vdipIssuer.listenForIncomingMessages(
     onFeatureQuery: (message) async {
       prettyPrint(
         'Issuer received Feature Query Message',
         object: message,
       );
 
-      await issuerVdipClient.disclose(
+      await vdipIssuer.disclose(
         queryMessage: message,
       );
     },
@@ -305,7 +305,7 @@ Future<void> main() async {
         object: message,
       );
 
-      await vdspIssuerClient.queryHolderFeatures(
+      await vdspIssuer.queryHolderFeatures(
         holderDid: (await holderDidManager.getDidDocument()).id,
         featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
           FeatureDiscoveryHelper.vdspHolderDisclosures,
@@ -320,7 +320,7 @@ Future<void> main() async {
     },
   );
 
-  vdspIssuerClient.listenForIncomingMessages(
+  vdspIssuer.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
       prettyPrint(
         'Verifier received Disclose Message',
@@ -352,7 +352,7 @@ Future<void> main() async {
         );
       }
 
-      await vdspIssuerClient.queryHolderData(
+      await vdspIssuer.queryHolderData(
         holderDid: holderDid,
         dcqlQuery: verifierDsql,
         proofContext: VdspQueryDataProofContext(
@@ -388,7 +388,7 @@ Future<void> main() async {
       }
 
       if (presentationAndCredentialsAreValid != true) {
-        await issuerVdipClient.mediatorClient.packAndSendMessage(
+        await vdipIssuer.mediatorClient.packAndSendMessage(
           ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
@@ -413,7 +413,7 @@ Future<void> main() async {
           .credentialSubject.first['email'] as String?;
 
       if (email == null) {
-        await issuerVdipClient.mediatorClient.packAndSendMessage(
+        await vdipIssuer.mediatorClient.packAndSendMessage(
           ProblemReportMessage(
             id: const Uuid().v4(),
             to: [message.from!],
@@ -469,7 +469,7 @@ Future<void> main() async {
         ),
       );
 
-      await issuerVdipClient.sendIssuedCredentials(
+      await vdipIssuer.sendIssuedCredentials(
         holderDid: message.from!,
         verifiableCredential: issuedCredential,
       );

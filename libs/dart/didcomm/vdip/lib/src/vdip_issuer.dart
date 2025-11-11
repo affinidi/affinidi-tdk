@@ -5,13 +5,13 @@ import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didco
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../affinidi_tdk_vdip.dart';
+import '../affinidi_tdk_vdip.dart';
 
 /// DIDComm issuer-side client for the VDIP protocol.
 ///
 /// Handles feature disclosure responses and processing credential issuance
 /// requests from holders (including holder-bound assertions).
-class VdipIssuerClient {
+class VdipIssuer {
   /// Underlying mediator DIDComm client used to send and receive messages.
   final MediatorDidcommClient mediatorClient;
 
@@ -21,8 +21,8 @@ class VdipIssuerClient {
   /// Static list of supported feature disclosures supported by this issuer.
   final List<Disclosure> featureDisclosures;
 
-  /// Creates a new [VdipIssuerClient] with the provided dependencies.
-  VdipIssuerClient({
+  /// Creates a new [VdipIssuer] with the provided dependencies.
+  VdipIssuer({
     required this.didManager,
     required this.mediatorClient,
     required this.featureDisclosures,
@@ -30,14 +30,14 @@ class VdipIssuerClient {
 
   /// Convenience initializer that creates the underlying [MediatorDidcommClient]
   /// prior to constructing the issuer client instance.
-  static Future<VdipIssuerClient> init({
+  static Future<VdipIssuer> init({
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
     AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
   }) async =>
-      VdipIssuerClient(
+      VdipIssuer(
         didManager: didManager,
         featureDisclosures: featureDisclosures,
         mediatorClient: await MediatorDidcommClient.init(

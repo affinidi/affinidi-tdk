@@ -64,7 +64,7 @@ Future<void> main() async {
     issuerDidManager.assertionMethod.first,
   );
 
-  final issuerClient = await VdipIssuerClient.init(
+  final vdipIssuer = await VdipIssuer.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: issuerDidManager,
     featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -118,7 +118,7 @@ Future<void> main() async {
     ),
   ]);
 
-  final vdipHolderClient = await VdipHolderClient.init(
+  final vdipHolder = await VdipHolder.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     authorizationProvider: await AffinidiAuthorizationProvider.init(
@@ -128,7 +128,7 @@ Future<void> main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
-  await vdipHolderClient.queryIssuerFeatures(
+  await vdipHolder.queryIssuerFeatures(
     issuerDid: issuerSigner.did,
     featureQueries: [
       ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
@@ -141,7 +141,7 @@ Future<void> main() async {
     ],
   );
 
-  vdipHolderClient.listenForIncomingMessages(
+  vdipHolder.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
       prettyPrint(
         'Holder received Feature Query Message',
@@ -151,7 +151,7 @@ Future<void> main() async {
       // TODO: verify disclosed features
       // TODO: add mapping from header to propousalId
 
-      await vdipHolderClient.requestCredential(
+      await vdipHolder.requestCredential(
         issuerDid: issuerSigner.did,
         options: RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
@@ -175,14 +175,14 @@ Future<void> main() async {
     },
   );
 
-  issuerClient.listenForIncomingMessages(
+  vdipIssuer.listenForIncomingMessages(
     onFeatureQuery: (message) async {
       prettyPrint(
         'Issuer received Feature Query Message',
         object: message,
       );
 
-      await issuerClient.disclose(
+      await vdipIssuer.disclose(
         queryMessage: message,
       );
     },
@@ -251,7 +251,7 @@ Future<void> main() async {
         ),
       );
 
-      await issuerClient.sendIssuedCredentials(
+      await vdipIssuer.sendIssuedCredentials(
         holderDid: message.from!,
         verifiableCredential: issuedCredential,
       );

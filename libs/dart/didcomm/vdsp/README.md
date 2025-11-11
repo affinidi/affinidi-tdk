@@ -1,16 +1,16 @@
-# Affinidi VDSP Clients for Dart
+# Affinidi VDSP Verifier and Holder for Dart
 
 A Dart package for implementing the Verifiable Data Sharing Protocol (VDSP), a protocol that facilitates secure, interoperable verifiable credential exchange between **Holders** and **Verifiers** using the DIDComm v2.1 protocol, an open standard for decentralised communication.
 
-The VDSP clients consist of two main clients:
+The VDSP package consist of two main classes:
 
-- **`VdspVerifierClient`** that represents the requesting party (***Verifier***) that verifies one or more credentials, such as identity documents, educational certificates, or professional qualifications, as part of a workflow like background screening for employees.
+- **`VdspVerifier`** that represents the requesting party (***Verifier***) that verifies one or more credentials, such as identity documents, educational certificates, or professional qualifications, as part of a workflow like background screening for employees.
 
-- **`VdspHolderClient`** that represents the user or entity (***Holder***) that possesses the credentials required by the verifiers. They have complete control over their data and how they are shared.
+- **`VdspHolder`** that represents the user or entity (***Holder***) that possesses the credentials required by the verifiers. They have complete control over their data and how they are shared.
 
-These clients simplify the data sharing over the DIDComm v2.1 protocol, including credential queries and cryptographic operations such as signature verifications.
+These classes simplify the data sharing over the DIDComm v2.1 protocol, including credential queries and cryptographic operations such as signature verifications.
 
-VDSP clients provide developers with tools to build robust, privacy-first, and secure credential-sharing features into their applications. VDSP enables use cases such as:
+VDSP Verifier and Holder provide developers with tools to build robust, privacy-first, and secure credential-sharing features into their applications. VDSP enables use cases such as:
 
 - Customer onboarding and KYC (Know Your Customer)
 - Background screening, including education credential verification
@@ -26,13 +26,13 @@ These are a few scenarios from a wide range of use cases unlocked by VDSP that r
   - [Supported Query Languages](#supported-query-languages)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [VDSP Clients](#vdsp-clients)
-  - [VdspVerifierClient](#vdspverifierclient)
-  - [VdspHolderClient](#vdspholderclient)
+- [VDSP Verifier and Holder](#vdsp-verifier-and-holder)
+  - [VdspVerifier](#vdspverifier)
+  - [VdspHolder](#vdspholder)
 - [Usage](#usage)
   - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
-  - [2. Initialise VDSP Verifier Client](#2-initialise-vdsp-verifier-client)
-  - [3. Initialise VDSP Holder Client](#3-initialise-vdsp-holder-client)
+  - [2. Initialise VDSP Verifier](#2-initialise-vdsp-verifier)
+  - [3. Initialise VDSP Holder](#3-initialise-vdsp-holder)
   - [4. Feature Discovery](#4-feature-discovery)
   - [5. Query Holder Credentials](#5-query-holder-credentials)
   - [6. Holder Shares Credentials](#6-holder-shares-credentials)
@@ -100,14 +100,14 @@ The package implements the following VDSP message types:
 Run:
 
 ```bash
-dart pub add affinidi_tdk_didcomm_client
+dart pub add affinidi_tdk_vdsp
 ```
 
 or manually, add the package into your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  affinidi_tdk_didcomm_client: ^<version_number>
+  affinidi_tdk_vdsp: ^<version_number>
 ```
 
 and then run the command below to install the package:
@@ -116,11 +116,11 @@ and then run the command below to install the package:
 dart pub get
 ```
 
-## VDSP Clients
+## VDSP Verifier and Holder
 
-### VdspVerifierClient
+### VdspVerifier
 
-The `VdspVerifierClient` implements the VDSP protocol for a verifier, enabling your application to:
+The `VdspVerifier` implements the VDSP protocol for a verifier, enabling your application to:
 
 - Discover supported features from holders using feature query.
 - Request verifiable credentials from holders using DCQL queries.
@@ -134,9 +134,9 @@ The `VdspVerifierClient` implements the VDSP protocol for a verifier, enabling y
 - `sendDataProcessingResult()` - Sends a processing result message to the holder.
 - `listenForIncomingMessages()` - Listens for incoming messages (disclose, data response, problem reports).
 
-### VdspHolderClient
+### VdspHolder
 
-The `VdspHolderClient` implements the VDSP protocol for a holder, enabling your application to:
+The `VdspHolder` implements the VDSP protocol for a holder, enabling your application to:
 
 - Respond to feature queries with supported feature disclosures.
 - Filter stored verifiable credentials based on DCQL queries from verifiers.
@@ -197,23 +197,23 @@ await holderWallet.generateKey(
 await holderDidManager.addVerificationMethod(holderKeyId);
 ```
 
-### 2. Initialise VDSP Verifier Client
+### 2. Initialise VDSP Verifier
 
-Create a verifier client for requesting credentials:
+Create a VDSP verifier for requesting credentials:
 
 ```dart
-final verifierClient = await VdspVerifierClient.init(
+final vdspVerifier = await VdspVerifier.init(
   mediatorDidDocument: mediatorDidDocument,
   didManager: verifierDidManager,
 );
 ```
 
-### 3. Initialise VDSP Holder Client
+### 3. Initialise VDSP Holder
 
-Create a holder client for sharing credentials:
+Create a VDSP holder for sharing credentials:
 
 ```dart
-final holderClient = await VdspHolderClient.init(
+final vdspHolder = await VdspHolder.init(
   mediatorDidDocument: mediatorDidDocument,
   didManager: holderDidManager,
   featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,
@@ -225,7 +225,7 @@ final holderClient = await VdspHolderClient.init(
 The verifier first queries the holder to discover supported features:
 
 ```dart
-await verifierClient.queryHolderFeatures(
+await vdspVerifier.queryHolderFeatures(
   holderDid: (await holderDidManager.getDidDocument()).id,
   featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
     FeatureDiscoveryHelper.vdspHolderDisclosures,
@@ -233,7 +233,7 @@ await verifierClient.queryHolderFeatures(
 );
 
 // Verifier listens for disclose messages
-verifierClient.listenForIncomingMessages(
+vdspVerifier.listenForIncomingMessages(
   onDiscloseMessage: (message) async {
     print('Holder supports: \${message.body}');
     // Check if holder supports required features
@@ -246,10 +246,10 @@ verifierClient.listenForIncomingMessages(
 );
 
 // Holder listens for feature queries and responds
-holderClient.listenForIncomingMessages(
+vdspHolder.listenForIncomingMessages(
   onFeatureQuery: (message) async {
-    final disclosures = holderClient.getDisclosures(queryMessage: message);
-    await holderClient.disclose(
+    final disclosures = vdspHolder.getDisclosures(queryMessage: message);
+    await vdspHolder.disclose(
       queryMessage: message,
       disclosures: disclosures,
     );
@@ -284,7 +284,7 @@ final dcqlQuery = DcqlCredentialQuery(
 );
 
 // Send the query to the holder
-await verifierClient.queryHolderData(
+await vdspHolder.queryHolderData(
   holderDid: holderDid,
   dcqlQuery: dcqlQuery,
   operation: 'registerAgent', // Optional operation identifier
@@ -301,10 +301,10 @@ await verifierClient.queryHolderData(
 The holder receives the query, filters existing credentials, and shares a verifiable presentation:
 
 ```dart
-holderClient.listenForIncomingMessages(
+vdspHolder.listenForIncomingMessages(
   onDataRequest: (message) async {
     // Filter credentials based on the query
-    final queryResult = await holderClient.filterVerifiableCredentials(
+    final queryResult = await vdspHolder.filterVerifiableCredentials(
       requestMessage: message,
       verifiableCredentials: holderVerifiableCredentials, // Holder's credentials
     );
@@ -315,7 +315,7 @@ holderClient.listenForIncomingMessages(
     );
 
     // Share the filtered credentials as a verifiable presentation
-    await holderClient.shareData(
+    await vdspHolder.shareData(
       requestMessage: message,
       verifiableCredentials: queryResult.verifiableCredentials,
       verifiablePresentationSigner: holderSigner,
@@ -332,7 +332,7 @@ holderClient.listenForIncomingMessages(
 The verifier receives the verifiable presentation and automatically verifies it:
 
 ```dart
-verifierClient.listenForIncomingMessages(
+vdspVerifier.listenForIncomingMessages(
   onDataResponse: ({
     required VdspDataResponseMessage message,
     required bool presentationAndCredentialsAreValid,
@@ -353,7 +353,7 @@ verifierClient.listenForIncomingMessages(
       print('Verified email: \$email');
 
       // Send processing result to holder
-      await verifierClient.sendDataProcessingResult(
+      await vdspVerifier.sendDataProcessingResult(
         holderDid: message.from!,
         result: {
           'success': true,

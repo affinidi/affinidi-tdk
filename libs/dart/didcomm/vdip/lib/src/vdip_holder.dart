@@ -4,35 +4,35 @@ import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didco
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../affinidi_tdk_vdip.dart';
+import '../affinidi_tdk_vdip.dart';
 
 /// DIDComm holder-side client for the VDIP protocol.
 ///
 /// Provides convenience helpers for discovering issuer features and
 /// requesting credential issuance.
-class VdipHolderClient {
+class VdipHolder {
   /// Underlying mediator DIDComm client used for packing / sending messages.
   final MediatorDidcommClient mediatorClient;
 
   /// DID manager used for DIDComm operations.
   final DidManager didManager;
 
-  /// Creates a new [VdipHolderClient] with the provided DID manager and
+  /// Creates a new [VdipHolder] with the provided DID manager and
   /// mediator client instance.
-  VdipHolderClient({
+  VdipHolder({
     required this.didManager,
     required this.mediatorClient,
   });
 
   /// Convenience initializer that creates the underlying [MediatorDidcommClient]
   /// before constructing the holder client.
-  static Future<VdipHolderClient> init({
+  static Future<VdipHolder> init({
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
     AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
   }) async =>
-      VdipHolderClient(
+      VdipHolder(
         didManager: didManager,
         mediatorClient: await MediatorDidcommClient.init(
           didManager: didManager,
