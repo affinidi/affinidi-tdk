@@ -1,6 +1,19 @@
 # DIDComm VDIP Protocol
 
-[[_TOC_]]
+## Table of Contents
+
+- [DIDComm VDIP Protocol](#didcomm-vdip-protocol)
+  - [Table of Contents](#table-of-contents)
+  - [Query Supported Features](#query-supported-features)
+    - [Roles](#roles)
+  - [Disclose Supported Features](#disclose-supported-features)
+    - [Roles](#roles-1)
+  - [Request Credential Issuance](#request-credential-issuance)
+    - [Roles](#roles-2)
+  - [Deliver Issued Credential](#deliver-issued-credential)
+    - [Roles](#roles-3)
+  - [Report Errors or Warnings](#report-errors-or-warnings)
+    - [Roles](#roles-4)
 
 ## Query Supported Features
 

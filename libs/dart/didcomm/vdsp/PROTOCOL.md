@@ -1,6 +1,21 @@
 # DIDComm VDSP Protocol
 
-[[_TOC_]]
+## Table of Contents
+
+- [DIDComm VDSP Protocol](#didcomm-vdsp-protocol)
+  - [Table of Contents](#table-of-contents)
+  - [Query Supported Features](#query-supported-features)
+    - [Roles](#roles)
+  - [Disclose Supported Features](#disclose-supported-features)
+    - [Roles](#roles-1)
+  - [Request Verifiable Credentials](#request-verifiable-credentials)
+    - [Roles](#roles-2)
+  - [Share Verifiable Presentation](#share-verifiable-presentation)
+    - [Roles](#roles-3)
+  - [Send Processing Result](#send-processing-result)
+    - [Roles](#roles-4)
+  - [Report Errors or Warnings](#report-errors-or-warnings)
+    - [Roles](#roles-5)
 
 ## Query Supported Features
 
