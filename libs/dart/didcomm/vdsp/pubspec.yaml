@@ -1,8 +1,8 @@
 name: affinidi_tdk_vdsp
 description: A Dart package for implementing the Verifiable Data Sharing Protocol (VDSP) using DIDComm v2.1 to facilitate secure data sharing.
 version: 1.0.0-dev.2
-homepage: https://github.com/affinidi/affinidi-tdk
-repository: https://pub.dev/packages/affinidi_tdk_vdip
+homepage: https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/didcomm/vdsp
+repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
   sdk: ^3.6.0
