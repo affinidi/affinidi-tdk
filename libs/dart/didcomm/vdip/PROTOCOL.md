@@ -1,0 +1,71 @@
+# DIDComm VDIP Protocol
+
+[[_TOC_]]
+
+## Query Supported Features
+
+Query Supported Features
+
+The [PIURI] for this protocol is:
+
+```
+https://discover-features/2.0/queries
+```
+
+### Roles
+
+Holder → Issuer
+
+## Disclose Supported Features
+
+Disclose Supported Features
+
+The [PIURI] for this protocol is:
+
+```
+https://discover-features/2.0/disclose
+```
+
+### Roles
+
+Issuer → Holder
+
+## Request Credential Issuance
+
+Request Credential Issuance
+
+The [PIURI] for this protocol is:
+
+```
+https://vdip/1.0/request-issuance
+```
+
+### Roles
+
+Holder → Issuer
+
+## Deliver Issued Credential
+
+The [PIURI] for this protocol is:
+
+```
+https://vdip/1.0/issued-credential
+```
+
+### Roles
+
+Issuer → Holder
+
+## Report Errors or Warnings
+
+The [PIURI] for this protocol is:
+
+```
+https://report-problem/2.0/problem-report
+```
+
+### Roles
+
+Any → Any
+
+[PIURI]: https://identity.foundation/didcomm-messaging/spec/v2.1/#protocol-identifier-uri

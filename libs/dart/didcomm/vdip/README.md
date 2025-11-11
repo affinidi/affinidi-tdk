@@ -98,11 +98,13 @@ The package implements the following VDIP message types:
 
 | Message Type | Purpose | Direction |
 |---|---|---|
-| `discover-features/2.0/queries` | Query supported features | Holder → Issuer |
-| `discover-features/2.0/disclose` | Disclose supported features | Issuer → Holder |
-| `vdip/1.0/request-issuance` | Request credential issuance | Holder → Issuer |
-| `vdip/1.0/issued-credential` | Deliver issued credential | Issuer → Holder |
-| `report-problem/2.0/problem-report` | Report errors or warnings | Any → Any |
+| `discover-features/2.0/queries` | Query Supported Features | Holder → Issuer |
+| `discover-features/2.0/disclose` | Disclose Supported Features | Issuer → Holder |
+| `vdip/1.0/request-issuance` | Request Credential Issuance | Holder → Issuer |
+| `vdip/1.0/issued-credential` | Deliver Issued Credential | Issuer → Holder |
+| `report-problem/2.0/problem-report` | Report Errors or Warnings | Any → Any |
+
+Detailed protocol specification can be found [here](PROTOCOL.md).
 
 ## Protocol Flow
 

@@ -78,12 +78,14 @@ The package implements the following VDSP message types:
 
 | Message Type | Purpose | Direction |
 |---|---|---|
-| `discover-features/2.0/queries` | Query supported features | Verifier → Holder |
-| `discover-features/2.0/disclose` | Disclose supported features | Holder → Verifier |
-| `vdsp/1.0/query-data` | Request verifiable credentials | Verifier → Holder |
-| `vdsp/1.0/data-response` | Share verifiable presentation | Holder → Verifier |
-| `vdsp/1.0/data-processing-result` | Send processing result | Verifier → Holder |
-| `report-problem/2.0/problem-report` | Report errors or warnings | Any → Any |
+| `discover-features/2.0/queries` | Query Supported Features | Verifier → Holder |
+| `discover-features/2.0/disclose` | Disclose Supported Features | Holder → Verifier |
+| `vdsp/1.0/query-data` | Request Verifiable Credentials | Verifier → Holder |
+| `vdsp/1.0/data-response` | Share Verifiable Presentation | Holder → Verifier |
+| `vdsp/1.0/data-processing-result` | Send Processing Result | Verifier → Holder |
+| `report-problem/2.0/problem-report` | Report Errors or Warnings | Any → Any |
+
+Detailed protocol specification can be found [here](PROTOCOL.md).
 
 ### Supported Query Languages
 
