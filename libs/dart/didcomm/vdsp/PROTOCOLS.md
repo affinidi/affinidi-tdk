@@ -1,98 +1,163 @@
-# DIDComm VDSP Protocol
+# Protocols
 
 ## Table of Contents
 
-- [DIDComm VDSP Protocol](#didcomm-vdsp-protocol)
+- [Protocols](#protocols)
   - [Table of Contents](#table-of-contents)
-  - [Query Supported Features](#query-supported-features)
+  - [Discover Features Protocol 2.0](#discover-features-protocol-20)
+    - [Motivation](#motivation)
     - [Roles](#roles)
-  - [Disclose Supported Features](#disclose-supported-features)
+      - [Verifier](#verifier)
+      - [Holder](#holder)
+    - [States](#states)
+    - [Messages](#messages)
+      - [queries](#queries)
+      - [disclose](#disclose)
+  - [Verifiable Data Sharing (VDSP) Protocol](#verifiable-data-sharing-vdsp-protocol)
+    - [Motivation](#motivation-1)
     - [Roles](#roles-1)
-  - [Request Verifiable Credentials](#request-verifiable-credentials)
+      - [Verifier](#verifier-1)
+      - [Holder](#holder-1)
+    - [States](#states-1)
+    - [Messages](#messages-1)
+      - [query-data](#query-data)
+      - [data-response](#data-response)
+      - [data-processing-result](#data-processing-result)
+  - [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
+    - [Motivation](#motivation-2)
     - [Roles](#roles-2)
-  - [Share Verifiable Presentation](#share-verifiable-presentation)
-    - [Roles](#roles-3)
-  - [Send Processing Result](#send-processing-result)
-    - [Roles](#roles-4)
-  - [Report Errors or Warnings](#report-errors-or-warnings)
-    - [Roles](#roles-5)
+      - [Any](#any)
+    - [States](#states-2)
+    - [Messages](#messages-2)
+      - [problem-report](#problem-report)
 
-## Query Supported Features
+## Discover Features Protocol 2.0
+
+The [PIURI] for this protocol is:
+
+```
+https://didcomm.org/discover-features/2.0
+```
+
+### Motivation
+
+TBD
+
+### Roles
+
+#### Verifier
+
+An entity that requests verifiable credentials from holders. The verifier can query holders for specific data using credential query language and verify the authenticity of the shared credentials.
+
+#### Holder
+
+An entity that stores and controls verifiable credentials. The holder can receive data requests, filter their credentials, and share selected credentials with verifiers through a verifiable presentation format.
+
+### States
+
+**Feature Discovery**: 
+ - Verifier sends a `queries` message to discover what the holder supports.
+ - Holder responds with a `disclose` message listing supported functionalities.
+
+### Messages
+
+TBD
+
+#### queries
 
 Query Supported Features
-
-The [PIURI] for this protocol is:
-
-```
-https://discover-features/2.0/queries
-```
-
-### Roles
-
 Verifier → Holder
 
-## Disclose Supported Features
+`discover-features/2.0/queries`
+
+#### disclose
 
 Disclose Supported Features
+Holder → Verifier
+
+`discover-features/2.0/disclose`
+
+## Verifiable Data Sharing (VDSP) Protocol
 
 The [PIURI] for this protocol is:
 
 ```
-https://discover-features/2.0/disclose
+https://didcomm.org/vdsp/1.0
 ```
+
+### Motivation
+
+TBD
 
 ### Roles
 
-Holder → Verifier
+#### Verifier
 
-## Request Verifiable Credentials
+An entity that requests verifiable credentials from holders. The verifier can query holders for specific data using credential query language and verify the authenticity of the shared credentials.
+
+#### Holder
+
+An entity that stores and controls verifiable credentials. The holder can receive data requests, filter their credentials, and share selected credentials with verifiers through a verifiable presentation format.
+
+### States
+
+TBD
+
+### Messages
+
+TBD
+
+#### query-data
 
 Request Verifiable Credentials
-
-The [PIURI] for this protocol is:
-
-```
-https://vdsp/1.0/query-data
-```
-
-### Roles
-
 Verifier → Holder
 
-## Share Verifiable Presentation
+`vdsp/1.0/query-data`
 
-The [PIURI] for this protocol is:
+#### data-response
 
-```
-https://vdsp/1.0/data-response
-```
-
-### Roles
-
+Share Verifiable Presentation
 Holder → Verifier
 
-## Send Processing Result
+`vdsp/1.0/data-response`
 
-The [PIURI] for this protocol is:
+#### data-processing-result
 
-```
-https://vdsp/1.0/data-processing-result
-```
-
-### Roles
-
+Send Processing Result
 Verifier → Holder
 
-## Report Errors or Warnings
+`vdsp/1.0/data-processing-result`
+
+
+## Report Errors or Warnings Protocol
 
 The [PIURI] for this protocol is:
 
 ```
-https://report-problem/2.0/problem-report
+https://didcomm.org/report-problem/2.0
 ```
+
+### Motivation
+
+TBD
 
 ### Roles
 
+#### Any
+
+TBD 
+
+### States
+
+TBD
+
+### Messages
+
+TBD
+
+#### problem-report
+
+Report Errors or Warnings
 Any → Any
 
-[PIURI]: https://identity.foundation/didcomm-messaging/spec/v2.1/#protocol-identifier-uri
+`report-problem/2.0/problem-report`

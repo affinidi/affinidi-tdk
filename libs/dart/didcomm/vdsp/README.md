@@ -133,10 +133,10 @@ The `VdspVerifierClient` implements the VDSP protocol for a verifier, enabling y
 
 **Key Methods:**
 
-- `queryHolderFeatures()` - Sends a feature query to discover what the holder supports.
-- `queryHolderData()` - Requests verifiable credentials from a holder using DCQL query.
-- `sendDataProcessingResult()` - Sends a processing result message to the holder.
-- `listenForIncomingMessages()` - Listens for incoming messages (disclose, data response, problem reports).
+- `queryHolderFeatures()` - (verifier) sends a feature query to discover what the holder supports.
+- `queryHolderData()` - (verifier) requests verifiable credentials from a holder using DCQL query.
+- `sendDataProcessingResult()` - (verifier) sends a processing result message to the holder.
+- `listenForIncomingMessages()` - (holder and verifier) Listens for incoming messages (disclose, data response, problem reports).
 
 ### VdspHolderClient
 

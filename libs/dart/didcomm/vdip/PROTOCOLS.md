@@ -1,84 +1,184 @@
-# DIDComm VDIP Protocols
+# Protocols
 
 ## Table of Contents
 
-- [DIDComm VDIP Protocols](#didcomm-vdip-protocols)
+- [Protocols](#protocols)
   - [Table of Contents](#table-of-contents)
-  - [Query Supported Features](#query-supported-features)
-    - [Roles](#roles)
-  - [Disclose Supported Features](#disclose-supported-features)
+  - [Roles](#roles)
+    - [Issuer](#issuer)
+    - [Holder](#holder)
+  - [Discover Features Protocol 2.0](#discover-features-protocol-20)
+    - [Motivation](#motivation)
     - [Roles](#roles-1)
-  - [Request Credential Issuance](#request-credential-issuance)
+      - [Verifier](#verifier)
+      - [Holder](#holder-1)
+    - [States](#states)
+    - [Messages](#messages)
+      - [queries](#queries)
+      - [disclose](#disclose)
+- [Verifiable Data Issuance Protocol (VDIP)](#verifiable-data-issuance-protocol-vdip)
+    - [Motivation](#motivation-1)
     - [Roles](#roles-2)
-  - [Deliver Issued Credential](#deliver-issued-credential)
+      - [Verifier](#verifier-1)
+      - [Holder](#holder-2)
+    - [States](#states-1)
+    - [Messages](#messages-1)
+      - [request-issuance](#request-issuance)
+      - [issued-credential](#issued-credential)
+  - [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
+    - [Motivation](#motivation-2)
     - [Roles](#roles-3)
-  - [Report Errors or Warnings](#report-errors-or-warnings)
-    - [Roles](#roles-4)
+      - [Any](#any)
+    - [States](#states-2)
+    - [Messages](#messages-2)
+      - [problem-report](#problem-report)
 
-## Query Supported Features
+## Roles
+
+### Issuer
+
+An entity that creates, signs, and issues verifiable credentials. The issuer validates requests, constructs credentials in a supported format, signs them, and delivers them to the holder via DIDComm message.
+
+### Holder
+
+An entity requesting and claiming the verifiable credentials. The holder initiates the issuance flow by sending a request specifying the desired credential format and providing any required metadata.
+
+## Discover Features Protocol 2.0
+
+The [PIURI] for this protocol is:
+
+```
+https://didcomm.org/discover-features/2.0
+```
+
+### Motivation
+
+TBD
+
+### Roles
+
+#### Verifier
+
+An entity that requests verifiable credentials from holders. The verifier can query holders for specific data using credential query language and verify the authenticity of the shared credentials.
+
+#### Holder
+
+An entity that stores and controls verifiable credentials. The holder can receive data requests, filter their credentials, and share selected credentials with verifiers through a verifiable presentation format.
+
+### States
+
+**Feature Discovery**: 
+ - Holder sends a `queries` message to discover what credential formats and features the issuer supports.
+ - Issuer responds with a `disclose` message listing supported formats (e.g., W3C v1, JWT VC, SD-JWT VC).
+
+### Messages
+
+TBD
+
+#### queries
 
 Query Supported Features
-
-The [PIURI] for this protocol is:
-
-```
-https://discover-features/2.0/queries
-```
-
-### Roles
-
 Holder → Issuer
 
-## Disclose Supported Features
+`discover-features/2.0/queries`
+
+#### disclose
+
 
 Disclose Supported Features
+Issuer → Holder
+
+`discover-features/2.0/disclose`
+
+# Verifiable Data Issuance Protocol (VDIP)
 
 The [PIURI] for this protocol is:
 
 ```
-https://discover-features/2.0/disclose
+https://didcomm.org/vdip/1.0
 ```
+
+### Motivation
+
+TBD
 
 ### Roles
 
-Issuer → Holder
+#### Verifier
 
-## Request Credential Issuance
+An entity that requests verifiable credentials from holders. The verifier can query holders for specific data using credential query language and verify the authenticity of the shared credentials.
+
+#### Holder
+
+An entity that stores and controls verifiable credentials. The holder can receive data requests, filter their credentials, and share selected credentials with verifiers through a verifiable presentation format.
+
+### States
+
+1. **Request Issuance**:
+   - Holder sends a `request-issuance` message specifying:
+     - `proposal_id`: References an external proposal or out-of-band offer.
+     - `credential_format`: Desired format (optional, Issuer may choose).
+     - `credential_meta`: Additional data needed to construct the credential (e.g., email, attributes).  
+2. **Validation**:
+   - Issuer validates the request.
+   - Issuer verifies holder-bound assertions if present.
+   - Issuer determines if it can fulfil the request.
+3. **Credential Construction**:
+   - Issuer constructs the credential with verified claims.
+   - Issuer signs the credential using the appropriate proof mechanism for the format.
+4. **Credential Delivery**:
+   - Issuer sends an `issued-credential` message containing the serialised credential.  
+5. **Claim Credential**:
+   - Holder receives and processes the credential.
+   - Holder stores it locally and presents it to verifiers.
+
+### Messages
+
+TBD
+
+#### request-issuance
 
 Request Credential Issuance
-
-The [PIURI] for this protocol is:
-
-```
-https://vdip/1.0/request-issuance
-```
-
-### Roles
-
 Holder → Issuer
 
-## Deliver Issued Credential
+`vdip/1.0/request-issuance`
 
-The [PIURI] for this protocol is:
+#### issued-credential
 
-```
-https://vdip/1.0/issued-credential
-```
-
-### Roles
-
+Deliver Issued Credential
 Issuer → Holder
 
-## Report Errors or Warnings
+`vdip/1.0/issued-credential`
+
+## Report Errors or Warnings Protocol
 
 The [PIURI] for this protocol is:
 
 ```
-https://report-problem/2.0/problem-report
+https://didcomm.org/report-problem/2.0
 ```
+
+### Motivation
+
+TBD
 
 ### Roles
 
+#### Any
+
+TBD 
+
+### States
+
+TBD
+
+### Messages
+
+TBD
+
+#### problem-report
+
+Report Errors or Warnings
 Any → Any
 
-[PIURI]: https://identity.foundation/didcomm-messaging/spec/v2.1/#protocol-identifier-uri
+`report-problem/2.0/problem-report`
