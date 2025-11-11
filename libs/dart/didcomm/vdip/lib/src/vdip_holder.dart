@@ -6,10 +6,7 @@ import 'package:uuid/uuid.dart';
 
 import '../affinidi_tdk_vdip.dart';
 
-/// DIDComm holder-side client for the VDIP protocol.
-///
-/// Provides convenience helpers for discovering issuer features and
-/// requesting credential issuance.
+/// Implements the VDIP protocol for a holder, supporting feature discovery and credential issuance flows.
 class VdipHolder {
   /// Underlying mediator DIDComm client used for packing / sending messages.
   final MediatorDidcommClient mediatorClient;
