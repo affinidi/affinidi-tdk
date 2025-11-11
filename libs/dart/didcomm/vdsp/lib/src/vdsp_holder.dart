@@ -1,18 +1,18 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:dcql/dcql.dart';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart'
     show SdJwtHandlerV1;
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../affinidi_tdk_vdsp.dart';
+import '../affinidi_tdk_vdsp.dart';
 
 /// Implements the VDSP protocol for a holder, supporting feature discovery, credential filtering, and data sharing.
-class VdspHolderClient {
+class VdspHolder {
   /// The mediator client used for DIDComm communication.
-  final MediatorDidcommClient mediatorClient;
+  final DidcommMediatorClient mediatorClient;
 
   /// The DID manager for handling DIDs and keys.
   final DidManager didManager;
@@ -20,25 +20,25 @@ class VdspHolderClient {
   /// The list of feature disclosures supported by this holder in the VDSP protocol.
   final List<Disclosure> featureDisclosures;
 
-  /// Constructs a [VdspHolderClient] for the VDSP protocol with the given [didManager], [mediatorClient], and [featureDisclosures].
-  VdspHolderClient({
+  /// Constructs a [VdspHolder] for the VDSP protocol with the given [didManager], [mediatorClient], and [featureDisclosures].
+  VdspHolder({
     required this.didManager,
     required this.mediatorClient,
     required this.featureDisclosures,
   });
 
-  /// Initializes a [VdspHolderClient] for the VDSP protocol asynchronously with the provided mediator DID document, DID manager, and feature disclosures.
-  static Future<VdspHolderClient> init({
+  /// Initializes a [VdspHolder] for the VDSP protocol asynchronously with the provided mediator DID document, DID manager, and feature disclosures.
+  static Future<VdspHolder> init({
     required DidDocument mediatorDidDocument,
     required DidManager didManager,
     required List<Disclosure> featureDisclosures,
     AuthorizationProvider? authorizationProvider,
     ClientOptions clientOptions = const ClientOptions(),
   }) async =>
-      VdspHolderClient(
+      VdspHolder(
         didManager: didManager,
         featureDisclosures: featureDisclosures,
-        mediatorClient: await MediatorDidcommClient.init(
+        mediatorClient: await DidcommMediatorClient.init(
           didManager: didManager,
           mediatorDidDocument: mediatorDidDocument,
           authorizationProvider: authorizationProvider,

@@ -179,7 +179,7 @@ Future<void> main() async {
     test('VDSP works correctly', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final verifierClient = await VdspVerifierClient.init(
+      final vdspVerifier = await VdspVerifierClient.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: verifierDidManager,
         clientOptions: const AffinidiClientOptions(),
@@ -189,7 +189,7 @@ Future<void> main() async {
         ),
       );
 
-      await verifierClient.queryHolderFeatures(
+      await vdspVerifier.queryHolderFeatures(
         holderDid: (await holderDidManager.getDidDocument()).id,
         featureQueries: [
           ...FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
@@ -202,7 +202,7 @@ Future<void> main() async {
         ],
       );
 
-      verifierClient.listenForIncomingMessages(
+      vdspVerifier.listenForIncomingMessages(
         onDiscloseMessage: (message) async {
           if (message.from == null) {
             throw ArgumentError.notNull('from');
@@ -230,7 +230,7 @@ Future<void> main() async {
           );
 
           if (unsupportedFeatureDisclosures.isNotEmpty) {
-            await verifierClient.mediatorClient.packAndSendMessage(
+            await vdspVerifier.mediatorClient.packAndSendMessage(
               ProblemReportMessage(
                 id: const Uuid().v4(),
                 to: [message.from!],
@@ -251,7 +251,7 @@ Future<void> main() async {
             return;
           }
 
-          await verifierClient.queryHolderData(
+          await vdspVerifier.queryHolderData(
             holderDid: holderDid,
             dcqlQuery: verifierDcql,
             operation: 'registerAgent',
@@ -278,7 +278,7 @@ Future<void> main() async {
               verifiablePresentation!.proof.first.domain?.first ==
                   verifierDomain;
 
-          await verifierClient.sendDataProcessingResult(
+          await vdspVerifier.sendDataProcessingResult(
             holderDid: message.from!,
             result: {
               'success': result,
@@ -293,7 +293,8 @@ Future<void> main() async {
         },
       );
 
-      final holderClient = await VdspHolderClient.init(
+      // TODO: publish vdsp and reference a new version here
+      final vdspHolder = await VdspHolderClient.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),
@@ -310,21 +311,21 @@ Future<void> main() async {
         ],
       );
 
-      holderClient.listenForIncomingMessages(
+      vdspHolder.listenForIncomingMessages(
         onFeatureQuery: (message) async {
-          final disclosures = holderClient.getDisclosures(
+          final disclosures = vdspHolder.getDisclosures(
             queryMessage: message,
           );
 
           // here you can check if those are the right disclosures to share
 
-          await holderClient.disclose(
+          await vdspHolder.disclose(
             queryMessage: message,
             disclosures: disclosures,
           );
         },
         onDataRequest: (message) async {
-          final queryResult = await holderClient.filterVerifiableCredentials(
+          final queryResult = await vdspHolder.filterVerifiableCredentials(
             requestMessage: message,
             verifiableCredentials: holderVerifiableCredentials,
           );
@@ -334,7 +335,7 @@ Future<void> main() async {
               throw ArgumentError.notNull('message.from');
             }
 
-            await holderClient.mediatorClient.packAndSendMessage(
+            await vdspHolder.mediatorClient.packAndSendMessage(
               ProblemReportMessage(
                 id: const Uuid().v4(),
                 to: [message.from!],
@@ -355,7 +356,7 @@ Future<void> main() async {
             return;
           }
 
-          await holderClient.shareData(
+          await vdspHolder.shareData(
             requestMessage: message,
             verifiableCredentials: queryResult.verifiableCredentials,
             verifiablePresentationSigner: holderSigner,

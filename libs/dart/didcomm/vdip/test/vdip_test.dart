@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
@@ -100,16 +100,16 @@ Future<void> main() async {
             test('VDIP credential issuance works correctly', () async {
               final testCompleter = Completer<PlainTextMessage>();
 
-              final issuerClient = VdipIssuerClient(
+              final vdipIssuer = VdipIssuer(
                 didManager: issuerDidManager,
                 mediatorClient: mockMediator.clients[issuerDidManager]!,
                 featureDisclosures:
                     FeatureDiscoveryHelper.vdipIssuerDisclosures,
               );
 
-              issuerClient.listenForIncomingMessages(
+              vdipIssuer.listenForIncomingMessages(
                 onFeatureQuery: (message) async {
-                  await issuerClient.disclose(
+                  await vdipIssuer.disclose(
                     queryMessage: message,
                   );
                 },
@@ -137,7 +137,7 @@ Future<void> main() async {
                     issuerSigner: issuerSigner,
                   );
 
-                  await issuerClient.sendIssuedCredentials(
+                  await vdipIssuer.sendIssuedCredentials(
                     holderDid: holderDid,
                     verifiableCredential: credential,
                     comment: comment,
@@ -149,12 +149,12 @@ Future<void> main() async {
                 },
               );
 
-              final holderClient = VdipHolderClient(
+              final vdipHolder = VdipHolder(
                 didManager: holderDidManager,
                 mediatorClient: mockMediator.clients[holderDidManager]!,
               );
 
-              holderClient.listenForIncomingMessages(
+              vdipHolder.listenForIncomingMessages(
                 onFeatureQuery: (message) async {
                   // Holder responds to feature query if needed
                 },
@@ -182,7 +182,7 @@ Future<void> main() async {
               await mockMediator.startConnections();
 
               // Start the flow: Holder queries issuer features
-              await holderClient.queryIssuerFeatures(
+              await vdipHolder.queryIssuerFeatures(
                 issuerDid: issuerDidDocument.id,
                 featureQueries:
                     FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
@@ -194,7 +194,7 @@ Future<void> main() async {
               await Future<void>.delayed(const Duration(milliseconds: 100));
 
               // Holder requests credential
-              await holderClient.requestCredential(
+              await vdipHolder.requestCredential(
                 issuerDid: issuerDidDocument.id,
                 options: RequestCredentialsOptions(
                   proposalId: proposalId,
@@ -218,14 +218,14 @@ Future<void> main() async {
                 () async {
               final testCompleter = Completer<PlainTextMessage>();
 
-              final issuerClient = VdipIssuerClient(
+              final vdipIssuer = VdipIssuer(
                 didManager: issuerDidManager,
                 mediatorClient: mockMediator.clients[issuerDidManager]!,
                 featureDisclosures:
                     FeatureDiscoveryHelper.vdipIssuerDisclosures,
               );
 
-              issuerClient.listenForIncomingMessages(
+              vdipIssuer.listenForIncomingMessages(
                 onRequestToIssueCredential: ({
                   required message,
                   isAssertionValid,
@@ -263,7 +263,7 @@ Future<void> main() async {
                     issuerSigner: issuerSigner,
                   );
 
-                  await issuerClient.sendIssuedCredentials(
+                  await vdipIssuer.sendIssuedCredentials(
                     holderDid: message.from!,
                     verifiableCredential: credential,
                     comment: comment,
@@ -275,12 +275,12 @@ Future<void> main() async {
                 },
               );
 
-              final holderClient = VdipHolderClient(
+              final vdipHolder = VdipHolder(
                 didManager: holderDidManager,
                 mediatorClient: mockMediator.clients[holderDidManager]!,
               );
 
-              holderClient.listenForIncomingMessages(
+              vdipHolder.listenForIncomingMessages(
                 onCredentialsIssuanceResponse: (message) async {
                   testCompleter.complete(message);
                   await mockMediator.stopConnections();
@@ -294,7 +294,7 @@ Future<void> main() async {
               await mockMediator.startConnections();
 
               // Holder requests credential for specific holder DID with assertion
-              await holderClient.requestCredentialForHolder(
+              await vdipHolder.requestCredentialForHolder(
                 holderSigner.did,
                 issuerDid: issuerDidDocument.id,
                 assertionSigner: holderSigner,
@@ -331,7 +331,7 @@ Future<void> main() async {
         parentThreadId: messageId,
       );
 
-      final sut = VdipIssuerClient(
+      final sut = VdipIssuer(
         didManager: issuerDidManager,
         mediatorClient: mockMediator.clients[issuerDidManager]!,
         featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -359,7 +359,7 @@ Future<void> main() async {
       final completer = Completer<PlainTextMessage>();
       final messageId = const Uuid().v4();
 
-      final sut = VdipHolderClient(
+      final sut = VdipHolder(
         didManager: holderDidManager,
         mediatorClient: mockMediator.clients[holderDidManager]!,
       );
@@ -410,7 +410,7 @@ Future<void> main() async {
         body: credentialBody.toJson(),
       );
 
-      final sut = VdipHolderClient(
+      final sut = VdipHolder(
         didManager: holderDidManager,
         mediatorClient: mockMediator.clients[holderDidManager]!,
       );

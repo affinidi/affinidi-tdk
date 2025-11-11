@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../affinidi_tdk_mediator_didcomm_client.dart';
+import '../affinidi_tdk_didcomm_mediator_client.dart';
 
 /// A DIDComm v2 client for interacting with a mediator service using DID-based secure messaging.
 ///
@@ -24,15 +24,15 @@ import '../affinidi_tdk_mediator_didcomm_client.dart';
 /// await client.packAndSendMessage(message: myMessage);
 /// final response = await client.waitForMessage(threadId: myThreadId);
 /// ```
-class MediatorDidcommClient extends MediatorClient {
+class DidcommMediatorClient extends MediatorClient {
   /// The DID manager for managing DIDs and keys.
   final DidManager didManager;
 
   /// The client options for configuring timeouts and message forwarding.
   final ClientOptions clientOptions;
 
-  /// Creates a [MediatorDidcommClient] instance.
-  MediatorDidcommClient({
+  /// Creates a [DidcommMediatorClient] instance.
+  DidcommMediatorClient({
     required super.mediatorDidDocument,
     required super.keyPair,
     required super.didKeyId,
@@ -44,13 +44,13 @@ class MediatorDidcommClient extends MediatorClient {
     super.webSocketOptions,
   });
 
-  /// Initializes a [MediatorDidcommClient] asynchronously.
+  /// Initializes a [DidcommMediatorClient] asynchronously.
   ///
   /// [didManager] is required for DID operations.
   /// [mediatorDidDocument] is the mediator's DID document.
   /// [authorizationProvider] is optional.
   /// [clientOptions] configures timeouts and forwarding.
-  static Future<MediatorDidcommClient> init({
+  static Future<DidcommMediatorClient> init({
     required DidManager didManager,
     required DidDocument mediatorDidDocument,
     AuthorizationProvider? authorizationProvider,
@@ -61,7 +61,7 @@ class MediatorDidcommClient extends MediatorClient {
       didManager: didManager,
     );
 
-    return MediatorDidcommClient(
+    return DidcommMediatorClient(
       didManager: didManager,
       clientOptions: clientOptions,
       mediatorDidDocument: mediatorDidDocument,

@@ -1,17 +1,16 @@
-# Affinidi VDIP Clients for Dart
-
+# Affinidi VDIP for Dart
 
 A Dart package for implementing the Verifiable Data Issuance Protocol (VDIP), a protocol that facilitates secure, interoperable verifiable credential issuance between **Issuers** and **Holders** using the DIDComm v2.1 protocol, an open standard for decentralised communication.
 
-The VDIP consist of two main clients:
+The VDIP consist of two main classes:
 
-- **`VdipIssuerClient`** that represents the credential-issuing authority (***Issuer***) that creates and signs verifiable credentials, such as diplomas, certificates, licenses, or identity documents, attesting to the claim about the subject (*Holder*).
+- **`VdipIssuer`** that represents the credential-issuing authority (***Issuer***) that creates and signs verifiable credentials, such as diplomas, certificates, licenses, or identity documents, attesting to the claim about the subject (*Holder*).
 
-- **`VdipHolderClient`** that represents the user or entity requesting and claiming the credential offer issued by the issuer.
+- **`VdipHolder`** that represents the user or entity requesting and claiming the credential offer issued by the issuer.
 
-These clients simplify the credential issuance using the DIDComm v2.1 protocol, including support for different credential formats such as W3C Data Model V1 and V2, JWT VC, and SD-JWT VC. Additionally, VDIP clients provide holder-bound assertions to bind the credential to the holder cryptographically, ensuring only the intended recipient of the credential offer can claim it.
+These classes simplify the credential issuance using the DIDComm v2.1 protocol, including support for different credential formats such as W3C Data Model V1 and V2, JWT VC, and SD-JWT VC. Additionally, this package provides holder-bound assertions to bind the credential to the holder cryptographically, ensuring only the intended recipient of the credential offer can claim it.
 
-VDIP clients provide developers with tools to build robust and secure credential issuance features into their applications. VDIP enables use cases such as:
+The VDIP package provides developers with tools to build robust and secure credential issuance features into their applications. VDIP enables use cases such as:
 
 - Verified identity credential issuance for onboarding and background screening
 - Employee or student credential issuance to grant access to systems
@@ -32,8 +31,8 @@ These are a few scenarios from a wide range of use cases unlocked by VDIP that r
 - [Installation](#installation)
 - [Usage](#usage)
   - [1. Set up DID Managers and Mediator](#1-set-up-did-managers-and-mediator)
-  - [2. Initialise VDIP Issuer Client](#2-initialise-vdip-issuer-client)
-  - [3. Initialise VDIP Holder Client](#3-initialise-vdip-holder-client)
+  - [2. Initialise VDIP Issuer](#2-initialise-vdip-issuer)
+  - [3. Initialise VDIP Holder](#3-initialise-vdip-holder)
   - [4. Feature Discovery](#4-feature-discovery)
   - [5. Request Credential (Basic)](#5-request-credential-basic)
   - [6. Request Credential with Holder-Bound Assertion](#6-request-credential-with-holder-bound-assertion)
@@ -142,6 +141,7 @@ The basic VDIP credential issuance flow follows these steps:
 
 In some scenarios, the credential should be issued to a DID different from the DIDComm message sender requesting credential issuance. For example:
 
+- Holder users different DIDs for DIDComm and Verifiable Credentials
 - A parent requesting a credential for their child.
 - A service requesting a credential on behalf of a user.
 - An agent acting for a principal.
@@ -179,14 +179,14 @@ The **holder-bound assertions** mechanism ensures cryptographic proof of DID own
 Run:
 
 ```bash
-dart pub add affinidi_tdk_vdip_didcomm_client
+dart pub add affinidi_tdk_vdip
 ```
 
 or manually, add the package into your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  affinidi_tdk_vdip_didcomm_client: ^<version_number>
+  affinidi_tdk_vdip: ^<version_number>
 ```
 
 and then run the command below to install the package:
@@ -205,7 +205,7 @@ Both the issuer and holder need DID managers and a connection to a DIDComm media
 
 ```dart
 // Resolve the mediator's DID document
-final mediatorDid = 'did:peer:...'; // Your mediator's DID
+final mediatorDid = 'did:web:...'; // Your mediator's DID
 final mediatorDidDocument = await UniversalDIDResolver.defaultResolver.resolveDid(
   mediatorDid,
 );
@@ -241,24 +241,24 @@ await holderWallet.generateKey(
 await holderDidManager.addVerificationMethod(holderKeyId);
 ```
 
-### 2. Initialise VDIP Issuer Client
+### 2. Initialise VDIP Issuer
 
-Create an issuer client for issuing credentials:
+Create a VDIP issuer for issuing credentials:
 
 ```dart
-final issuerClient = await VdipIssuerClient.init(
+final vdipIssuer = await VdipIssuer.init(
   mediatorDidDocument: mediatorDidDocument,
   didManager: issuerDidManager,
   featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
 );
 ```
 
-### 3. Initialise VDIP Holder Client
+### 3. Initialise VDIP Holder
 
-Create a holder client for requesting credentials:
+Create a VDIP holder for requesting credentials:
 
 ```dart
-final holderClient = await VdipHolderClient.init(
+final vdipHolder = await VdipHolder.init(
   mediatorDidDocument: mediatorDidDocument,
   didManager: holderDidManager,
   featureDisclosures: FeatureDiscoveryHelper.vdipHolderDisclosures,
@@ -270,7 +270,7 @@ final holderClient = await VdipHolderClient.init(
 The holder first queries the issuer to discover supported features:
 
 ```dart
-await holderClient.queryIssuerFeatures(
+await vdipHolder.queryIssuerFeatures(
   issuerDid: (await issuerDidManager.getDidDocument()).id,
   featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
     FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -278,7 +278,7 @@ await holderClient.queryIssuerFeatures(
 );
 
 // Holder listens for disclose messages
-holderClient.listenForIncomingMessages(
+vdipHolder.listenForIncomingMessages(
   onDiscloseMessage: (message) async {
     print('Issuer supports: \${message.body}');
     // Check if issuer supports required features
@@ -291,9 +291,9 @@ holderClient.listenForIncomingMessages(
 );
 
 // Issuer listens for feature queries and responds
-issuerClient.listenForIncomingMessages(
+vdipIssuer.listenForIncomingMessages(
   onFeatureQuery: (message) async {
-    await issuerClient.disclose(queryMessage: message);
+    await vdipIssuer.disclose(queryMessage: message);
   },
   onRequestToIssueCredential: ({required message, holderDidFromAssertion, isAssertionValid}) async {
     // Handle credential request (see section 6)
@@ -306,7 +306,7 @@ issuerClient.listenForIncomingMessages(
 After feature discovery, the holder sends a credential request:
 
 ```dart
-final requestMessage = await holderClient.requestCredential(
+final requestMessage = await vdipHolder.requestCredential(
   issuerDid: issuerDidManager.getDidDocument().id,
   options: RequestCredentialsOptions(
     proposalId: 'proposal-123',
@@ -333,7 +333,7 @@ final holderSigner = await holderDidManager.getSigner(
 );
 
 // Request credential with assertion
-final requestWithAssertion = await holderClient.requestCredentialForHolder(
+final requestWithAssertion = await vdipHolder.requestCredentialForHolder(
   holderSigner.did,
   issuerDid: issuerDidManager.getDidDocument().id,
   assertionSigner: holderSigner,
@@ -355,10 +355,10 @@ final requestWithAssertion = await holderClient.requestCredentialForHolder(
 The issuer receives and validates requests, then issues a credential:
 
 ```dart
-issuerClient.listenForIncomingMessages(
+vdipIssuer.listenForIncomingMessages(
   onFeatureQuery: (message) async {
     // Respond to feature discovery
-    await issuerClient.disclose(queryMessage: message);
+    await vdipIssuer.disclose(queryMessage: message);
   },
   onRequestToIssueCredential: ({
     required message,
@@ -423,7 +423,7 @@ issuerClient.listenForIncomingMessages(
     );
     
     // Send the issued credential
-    await issuerClient.sendIssuedCredentials(
+    await vdipIssuer.sendIssuedCredentials(
       holderDid: message.from!,
       verifiableCredential: issuedVc,
       comment: 'Email verification credential issued successfully',
@@ -440,7 +440,7 @@ issuerClient.listenForIncomingMessages(
 The holder claims, receives, and processes issued credentials:
 
 ```dart
-holderClient.listenForIncomingMessages(
+holder.listenForIncomingMessages(
   onCredentialsIssuanceResponse: (message) {
     // Parse the issued credential
     final body = VdipIssuedCredentialBody.fromJson(message.body!);
@@ -550,7 +550,7 @@ DIDComm message containing the issued credential to the holder.
 
 ### Message Wrapping Verification
 
-Both `VdipHolderClient` and `VdipIssuerClient` enforce strict message wrapping requirements to prevent downgrade attacks:
+Both `VdipHolder` and `VdipIssuer` enforce strict message wrapping requirements to prevent downgrade attacks:
 
 **Accepted Message Wrapping Types**:
 - `authcryptPlaintext` – Authenticated encryption (recommended default).
@@ -595,7 +595,7 @@ When a Holder requests a credential with a holder-bound assertion, the Issuer pe
 4. **Challenge Validation** (optional):
    - If a challenge was provided, it validates its uniqueness and binding to the session
 
-The `VdipIssuerClient` performs these checks automatically and provides the verification result via the `isAssertionValid` parameter in the `onRequestToIssueCredential` callback.
+The `VdipIssuer` performs these checks automatically and provides the verification result via the `isAssertionValid` parameter in the `onRequestToIssueCredential` callback.
 
 **Why this matters**: Assertion verification ensures that only the legitimate controller of a DID can request credentials for that DID, preventing credential issuance to unauthorized parties.
 

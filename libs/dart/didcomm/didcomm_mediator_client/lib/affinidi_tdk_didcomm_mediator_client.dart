@@ -12,7 +12,7 @@ export 'src/common/did_signer_adapter.dart';
 export 'src/common/feature_discovery_helper.dart';
 export 'src/common/jwt_helper.dart';
 export 'src/common/mock_mediator.dart';
-export 'src/mediator_didcomm_client.dart';
+export 'src/didcomm_mediator_client.dart';
 // TODO: remove AffinidiAclManagementExtension and AffinidiAuthorization from Didcomm package
 export 'src/messages/access_list_add_message.dart';
 export 'src/messages/acl_management_message.dart';
