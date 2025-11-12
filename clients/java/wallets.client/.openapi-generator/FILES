@@ -17,6 +17,7 @@ docs/NotFoundError.md
 docs/OperationForbiddenError.md
 docs/RevocationApi.md
 docs/RevokeCredentialInput.md
+docs/RevokeCredentialsInput.md
 docs/ServiceErrorResponse.md
 docs/ServiceErrorResponseDetailsInner.md
 docs/SignCredential400Response.md
@@ -33,6 +34,8 @@ docs/SignCredentialsLdpInputDto.md
 docs/SignCredentialsLdpResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignMessageInput.md
+docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
 docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
@@ -82,6 +85,7 @@ src/main/java/com/affinidi/tdk/wallets/client/models/KeyNotFoundError.java
 src/main/java/com/affinidi/tdk/wallets/client/models/NotFoundError.java
 src/main/java/com/affinidi/tdk/wallets/client/models/OperationForbiddenError.java
 src/main/java/com/affinidi/tdk/wallets/client/models/RevokeCredentialInput.java
+src/main/java/com/affinidi/tdk/wallets/client/models/RevokeCredentialsInput.java
 src/main/java/com/affinidi/tdk/wallets/client/models/ServiceErrorResponse.java
 src/main/java/com/affinidi/tdk/wallets/client/models/ServiceErrorResponseDetailsInner.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredential400Response.java
@@ -98,6 +102,8 @@ src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialsLdpInputDto.
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialsLdpResultDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignJwtToken.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignJwtTokenOK.java
+src/main/java/com/affinidi/tdk/wallets/client/models/SignMessageInput.java
+src/main/java/com/affinidi/tdk/wallets/client/models/SignMessageResultDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignPresentationLdpInputDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignPresentationLdpResultDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SigningFailedError.java

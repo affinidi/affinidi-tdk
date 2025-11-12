@@ -35,6 +35,7 @@ doc/VerifyCredentialV2Input.md
 doc/VerifyPresentationInput.md
 doc/VerifyPresentationOutput.md
 doc/VerifyPresentationV2Input.md
+doc/VerifyPresentationV2InputPexQuery.md
 doc/W3cCredentialStatus.md
 doc/W3cProof.md
 lib/affinidi_tdk_credential_verification_client.dart
@@ -79,6 +80,7 @@ lib/src/model/verify_credential_v2_input.dart
 lib/src/model/verify_presentation_input.dart
 lib/src/model/verify_presentation_output.dart
 lib/src/model/verify_presentation_v2_input.dart
+lib/src/model/verify_presentation_v2_input_pex_query.dart
 lib/src/model/w3c_credential_status.dart
 lib/src/model/w3c_proof.dart
 lib/src/serializers.dart

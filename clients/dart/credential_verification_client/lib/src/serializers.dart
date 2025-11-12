@@ -45,6 +45,7 @@ import 'package:affinidi_tdk_credential_verification_client/src/model/verify_cre
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_v2_input.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_v2_input_pex_query.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_credential_status.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/w3c_proof.dart';
 
@@ -82,6 +83,7 @@ part 'serializers.g.dart';
   VerifyPresentationInput,
   VerifyPresentationOutput,
   VerifyPresentationV2Input,
+  VerifyPresentationV2InputPexQuery,
   W3cCredentialStatus,
   W3cProof,
 ])

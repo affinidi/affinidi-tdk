@@ -1044,22 +1044,41 @@ export interface VerifyPresentationV2Input {
   verifiablePresentation?: object
   /**
    *
-   * @type {object}
+   * @type {VerifyPresentationV2InputPexQuery}
    * @memberof VerifyPresentationV2Input
    */
-  presentationDefinition?: object
+  pexQuery?: VerifyPresentationV2InputPexQuery
   /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationV2Input
-   */
-  presentationSubmission?: object
-  /**
-   *
+   * Optional challenge string for domain/challenge verification
    * @type {string}
    * @memberof VerifyPresentationV2Input
    */
   challenge?: string
+  /**
+   * Optional domain for verification. Array of domain strings as per W3C VP standard
+   * @type {Array<string>}
+   * @memberof VerifyPresentationV2Input
+   */
+  domain?: Array<string>
+}
+/**
+ * Presentation Exchange Query containing presentation definition and submission
+ * @export
+ * @interface VerifyPresentationV2InputPexQuery
+ */
+export interface VerifyPresentationV2InputPexQuery {
+  /**
+   * Presentation definition for the verification request
+   * @type {object}
+   * @memberof VerifyPresentationV2InputPexQuery
+   */
+  presentationDefinition?: object
+  /**
+   * Presentation submission for the verification request
+   * @type {object}
+   * @memberof VerifyPresentationV2InputPexQuery
+   */
+  presentationSubmission?: object
 }
 /**
  *

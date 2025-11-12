@@ -24,6 +24,7 @@ affinidi_tdk_wallets_client/models/key_not_found_error.py
 affinidi_tdk_wallets_client/models/not_found_error.py
 affinidi_tdk_wallets_client/models/operation_forbidden_error.py
 affinidi_tdk_wallets_client/models/revoke_credential_input.py
+affinidi_tdk_wallets_client/models/revoke_credentials_input.py
 affinidi_tdk_wallets_client/models/service_error_response.py
 affinidi_tdk_wallets_client/models/service_error_response_details_inner.py
 affinidi_tdk_wallets_client/models/sign_credential400_response.py
@@ -40,6 +41,8 @@ affinidi_tdk_wallets_client/models/sign_credentials_ldp_input_dto.py
 affinidi_tdk_wallets_client/models/sign_credentials_ldp_result_dto.py
 affinidi_tdk_wallets_client/models/sign_jwt_token.py
 affinidi_tdk_wallets_client/models/sign_jwt_token_ok.py
+affinidi_tdk_wallets_client/models/sign_message_input.py
+affinidi_tdk_wallets_client/models/sign_message_result_dto.py
 affinidi_tdk_wallets_client/models/sign_presentation_ldp_input_dto.py
 affinidi_tdk_wallets_client/models/sign_presentation_ldp_result_dto.py
 affinidi_tdk_wallets_client/models/signing_failed_error.py
@@ -64,6 +67,7 @@ docs/NotFoundError.md
 docs/OperationForbiddenError.md
 docs/RevocationApi.md
 docs/RevokeCredentialInput.md
+docs/RevokeCredentialsInput.md
 docs/ServiceErrorResponse.md
 docs/ServiceErrorResponseDetailsInner.md
 docs/SignCredential400Response.md
@@ -80,6 +84,8 @@ docs/SignCredentialsLdpInputDto.md
 docs/SignCredentialsLdpResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignMessageInput.md
+docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
 docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
