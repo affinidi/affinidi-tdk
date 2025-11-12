@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -12,7 +12,7 @@ void main() async {
   // Copy its DID Document URL into example/mediator/mediator_did.txt.
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'mediator_didcomm_client',
+    packageDirectoryName: 'didcomm_mediator_client',
   );
 
   // Replace this DID Document with your receiver DID
@@ -122,7 +122,7 @@ void main() async {
     object: forwardMessage,
   );
 
-  final senderMediatorClient = await MediatorDidcommClient.init(
+  final senderMediatorClient = await DidcommMediatorClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       mediatorDidDocument: receiverMediatorDidDocument,
       didManager: senderDidManager,

@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../../../../tests/integration/dart/test/test_config.dart';
@@ -11,7 +11,7 @@ void main() async {
   // Copy its DID Document URL into example/mediator/mediator_did.txt.
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'mediator_didcomm_client',
+    packageDirectoryName: 'didcomm_mediator_client',
   );
 
   final senderDid = await config.getDidKeyForPrivateKeyPath(
@@ -62,7 +62,7 @@ void main() async {
     await readDid(config.mediatorDidPath),
   );
 
-  final receiverMediatorClient = await MediatorDidcommClient.init(
+  final receiverMediatorClient = await DidcommMediatorClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       didManager: receiverDidManager,
       mediatorDidDocument: receiverMediatorDocument,

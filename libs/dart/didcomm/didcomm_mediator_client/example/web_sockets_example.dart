@@ -1,4 +1,5 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
+
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -13,19 +14,19 @@ void main() async {
   // Copy its DID Document URL into example/mediator/mediator_did.txt.
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'mediator_didcomm_client',
+    packageDirectoryName: 'didcomm_mediator_client',
   );
 
   final aliceKeyStore = InMemoryKeyStore();
   final aliceWallet = PersistentWallet(aliceKeyStore);
 
-  final bobKeyStore = InMemoryKeyStore();
-  final bobWallet = PersistentWallet(bobKeyStore);
-
   final aliceDidManager = DidKeyManager(
     wallet: aliceWallet,
     store: InMemoryDidStore(),
   );
+
+  final bobKeyStore = InMemoryKeyStore();
+  final bobWallet = PersistentWallet(bobKeyStore);
 
   final bobDidManager = DidKeyManager(
     wallet: bobWallet,
@@ -73,6 +74,7 @@ void main() async {
   await bobDidManager.addVerificationMethod(bobKeyId);
   final bobDidDocument = await bobDidManager.getDidDocument();
 
+  // Serialized bobDidDocument needs to shared with sender
   prettyPrint(
     'Bob DID Document',
     object: bobDidDocument,
@@ -145,8 +147,7 @@ void main() async {
     object: forwardMessage,
   );
 
-  // Alice is going to use Bob's Mediator to send him a message
-  final aliceMediatorClient = await MediatorDidcommClient.init(
+  final aliceMediatorClient = await DidcommMediatorClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
       didManager: aliceDidManager,
       mediatorDidDocument: bobMediatorDocument,
@@ -156,44 +157,47 @@ void main() async {
     clientOptions: const AffinidiClientOptions(),
   );
 
-  final bobMediatorClient = await MediatorDidcommClient.init(
+  final bobMediatorClient = await DidcommMediatorClient.init(
     authorizationProvider: await AffinidiAuthorizationProvider.init(
-      didManager: bobDidManager,
       mediatorDidDocument: bobMediatorDocument,
+      didManager: bobDidManager,
     ),
     didManager: bobDidManager,
     mediatorDidDocument: bobMediatorDocument,
+    clientOptions: const AffinidiClientOptions(),
   );
 
-  final sentMessage = await aliceMediatorClient.sendMessage(
+  prettyPrint('Bob is waiting for a message...');
+
+  bobMediatorClient.listenForIncomingMessages(
+    (message) async {
+      final unpackedMessageByBob =
+          await DidcommMessage.unpackToPlainTextMessage(
+        message: message,
+        recipientDidManager: bobDidManager,
+        expectedMessageWrappingTypes: [
+          MessageWrappingType.authcryptPlaintext,
+          MessageWrappingType.authcryptSignPlaintext,
+          MessageWrappingType.anoncryptSignPlaintext,
+          MessageWrappingType.anoncryptAuthcryptPlaintext,
+        ],
+      );
+
+      prettyPrint(
+        'Unpacked Plain Text Message received by Bob via Mediator',
+        object: unpackedMessageByBob,
+      );
+
+      await ConnectionPool.instance.stopConnections();
+    },
+    onError: (dynamic error) => prettyPrint('error', object: error),
+    onDone: ({int? closeCode, String? closeReason}) => prettyPrint('done'),
+    cancelOnError: false,
+  );
+
+  await ConnectionPool.instance.startConnections();
+
+  await aliceMediatorClient.sendMessage(
     forwardMessage,
   );
-
-  prettyPrint(
-    'Encrypted and Signed Forward Message',
-    object: sentMessage,
-  );
-
-  prettyPrint('Bob is fetching messages...');
-
-  final messages = await bobMediatorClient.fetchMessages();
-
-  for (final message in messages) {
-    final originalPlainTextMessageFromAlice =
-        await DidcommMessage.unpackToPlainTextMessage(
-      message: message,
-      recipientDidManager: bobDidManager,
-      expectedMessageWrappingTypes: [
-        MessageWrappingType.anoncryptSignPlaintext,
-        MessageWrappingType.authcryptSignPlaintext,
-        MessageWrappingType.authcryptPlaintext,
-        MessageWrappingType.anoncryptAuthcryptPlaintext,
-      ],
-    );
-
-    prettyPrint(
-      'Unpacked Plain Text Message received by Bob via Mediator',
-      object: originalPlainTextMessageFromAlice,
-    );
-  }
 }

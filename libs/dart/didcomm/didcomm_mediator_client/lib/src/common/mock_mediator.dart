@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:ssi/ssi.dart';
 
-import '../../affinidi_tdk_mediator_didcomm_client.dart';
+import '../../affinidi_tdk_didcomm_mediator_client.dart';
 
 /// A mock implementation of a DIDComm mediator for testing purposes.
 ///
@@ -155,12 +155,12 @@ class MockMediator {
   }
 }
 
-/// A mock implementation of [MediatorDidcommClient] for testing purposes.
+/// A mock implementation of [DidcommMediatorClient] for testing purposes.
 ///
 /// This class provides an in-memory implementation of a DIDComm client connected
 /// to a [MockMediator]. Messages are sent and received through stream controllers
 /// rather than over a network.
-class MockMediatorDidcommClient extends MediatorDidcommClient {
+class MockMediatorDidcommClient extends DidcommMediatorClient {
   /// Stream controller for sending outgoing messages to the mediator.
   final StreamController<DidcommMessage> requestController;
 

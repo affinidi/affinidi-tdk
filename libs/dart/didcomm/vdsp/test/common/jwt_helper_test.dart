@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/src/common/did_signer_adapter.dart';
-import 'package:affinidi_tdk_mediator_didcomm_client/src/common/jwt_helper.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/src/common/did_signer_adapter.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/src/common/jwt_helper.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
 
