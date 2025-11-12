@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart'
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart'
     hide CredentialFormat;
 import 'package:affinidi_tdk_vdsp/affinidi_tdk_vdsp.dart';
 import 'package:dcql/dcql.dart';
@@ -179,7 +179,7 @@ Future<void> main() async {
     test('VDSP works correctly', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final vdspVerifier = await VdspVerifierClient.init(
+      final vdspVerifier = await VdspVerifier.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: verifierDidManager,
         clientOptions: const AffinidiClientOptions(),
@@ -293,8 +293,7 @@ Future<void> main() async {
         },
       );
 
-      // TODO: publish vdsp and reference a new version here
-      final vdspHolder = await VdspHolderClient.init(
+      final vdspHolder = await VdspHolder.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),

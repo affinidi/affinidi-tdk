@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
@@ -102,7 +102,7 @@ Future<void> main() async {
     test('VDIP works correctly', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final vdspIssuer = await VdipIssuerClient.init(
+      final vdspIssuer = await VdipIssuer.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: issuerDidManager,
         featureDisclosures: [
@@ -180,7 +180,7 @@ Future<void> main() async {
         },
       );
 
-      final vdipHolder = await VdipHolderClient.init(
+      final vdipHolder = await VdipHolder.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),
@@ -262,7 +262,7 @@ Future<void> main() async {
     test('VDIP works correctly with holder-bound assertion', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final vdipIssuer = await VdipIssuerClient.init(
+      final vdipIssuer = await VdipIssuer.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: issuerDidManager,
         featureDisclosures: [
@@ -344,7 +344,7 @@ Future<void> main() async {
         },
       );
 
-      final vdipHolder = await VdipHolderClient.init(
+      final vdipHolder = await VdipHolder.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),
