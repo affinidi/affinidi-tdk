@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart'
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart'
     hide CredentialFormat;
 import 'package:affinidi_tdk_vdsp/affinidi_tdk_vdsp.dart';
 import 'package:dcql/dcql.dart';
@@ -159,13 +159,13 @@ Future<void> main() async {
                     test('VDSP works correctly', () async {
                       final testCompleter = Completer<PlainTextMessage>();
 
-                      final verifierClient = VdspVerifierClient(
+                      final vdspVerifier = VdspVerifier(
                         didManager: verifierDidManager,
                         mediatorClient:
                             mockMediator.clients[verifierDidManager]!,
                       );
 
-                      verifierClient.listenForIncomingMessages(
+                      vdspVerifier.listenForIncomingMessages(
                         onDiscloseMessage: (message) async {
                           final holderDid = message.from!;
                           final body = DiscloseBody.fromJson(message.body!);
@@ -187,7 +187,7 @@ Future<void> main() async {
                             return;
                           }
 
-                          await verifierClient.queryHolderData(
+                          await vdspVerifier.queryHolderData(
                             holderDid: holderDid,
                             dcqlQuery: verifierDcql,
                             comment: comment,
@@ -226,7 +226,7 @@ Future<void> main() async {
                             return;
                           }
 
-                          await verifierClient.sendDataProcessingResult(
+                          await vdspVerifier.sendDataProcessingResult(
                             holderDid: message.from!,
                             operation: body.operation,
                             result: {
@@ -245,27 +245,27 @@ Future<void> main() async {
                         },
                       );
 
-                      final holderClient = VdspHolderClient(
+                      final vdspHolder = VdspHolder(
                         didManager: holderDidManager,
                         mediatorClient: mockMediator.clients[holderDidManager]!,
                         featureDisclosures:
                             FeatureDiscoveryHelper.vdspHolderDisclosures,
                       );
 
-                      holderClient.listenForIncomingMessages(
+                      vdspHolder.listenForIncomingMessages(
                         onFeatureQuery: (message) async {
-                          final disclosures = holderClient.getDisclosures(
+                          final disclosures = vdspHolder.getDisclosures(
                             queryMessage: message,
                           );
 
-                          await holderClient.disclose(
+                          await vdspHolder.disclose(
                             queryMessage: message,
                             disclosures: disclosures,
                           );
                         },
                         onDataRequest: (message) async {
                           final queryResult =
-                              await holderClient.filterVerifiableCredentials(
+                              await vdspHolder.filterVerifiableCredentials(
                             requestMessage: message,
                             verifiableCredentials: holderVerifiableCredentials,
                           );
@@ -282,7 +282,7 @@ Future<void> main() async {
                             message.body!,
                           );
 
-                          await holderClient.shareData(
+                          await vdspHolder.shareData(
                             verifiablePresentationDataModel:
                                 verifiablePresentationDataModel,
                             requestMessage: message,
@@ -321,7 +321,7 @@ Future<void> main() async {
 
                       await mockMediator.startConnections();
 
-                      await verifierClient.queryHolderFeatures(
+                      await vdspVerifier.queryHolderFeatures(
                         holderDid: (await holderDidManager.getDidDocument()).id,
                         featureQueries: FeatureDiscoveryHelper
                             .getFeatureQueriesByDisclosures(
@@ -358,7 +358,7 @@ Future<void> main() async {
         parentThreadId: messageId,
       );
 
-      final sut = VdspVerifierClient(
+      final sut = VdspVerifier(
         didManager: verifierDidManager,
         mediatorClient: mockMediator.clients[verifierDidManager]!,
       );
@@ -389,7 +389,7 @@ Future<void> main() async {
         from: null, // simulate missing 'from' header
       );
 
-      final sut = VdspVerifierClient(
+      final sut = VdspVerifier(
         didManager: verifierDidManager,
         mediatorClient: mockMediator.clients[verifierDidManager]!,
       );
@@ -424,7 +424,7 @@ Future<void> main() async {
         body: null, // simulate missing 'body' header
       );
 
-      final sut = VdspVerifierClient(
+      final sut = VdspVerifier(
         didManager: verifierDidManager,
         mediatorClient: mockMediator.clients[verifierDidManager]!,
       );
@@ -472,7 +472,7 @@ Future<void> main() async {
         ).toJson(),
       );
 
-      final sut = VdspVerifierClient(
+      final sut = VdspVerifier(
         didManager: verifierDidManager,
         mediatorClient: mockMediator.clients[verifierDidManager]!,
       );
@@ -523,7 +523,7 @@ Future<void> main() async {
         ).toJson(),
       );
 
-      final sut = VdspVerifierClient(
+      final sut = VdspVerifier(
         didManager: verifierDidManager,
         mediatorClient: mockMediator.clients[verifierDidManager]!,
       );
@@ -556,7 +556,7 @@ Future<void> main() async {
       final completer = Completer<PlainTextMessage>();
       final messageId = const Uuid().v4();
 
-      final sut = VdspHolderClient(
+      final sut = VdspHolder(
         didManager: holderDidManager,
         mediatorClient: mockMediator.clients[holderDidManager]!,
         featureDisclosures: FeatureDiscoveryHelper.vdspHolderDisclosures,

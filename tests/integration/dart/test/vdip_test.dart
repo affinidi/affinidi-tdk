@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:test/test.dart';
@@ -102,7 +102,7 @@ Future<void> main() async {
     test('VDIP works correctly', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final issuerClient = await VdipIssuerClient.init(
+      final vdspIssuer = await VdipIssuer.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: issuerDidManager,
         featureDisclosures: [
@@ -119,9 +119,9 @@ Future<void> main() async {
         ),
       );
 
-      issuerClient.listenForIncomingMessages(
+      vdspIssuer.listenForIncomingMessages(
         onFeatureQuery: (message) async {
-          await issuerClient.disclose(queryMessage: message);
+          await vdspIssuer.disclose(queryMessage: message);
         },
         onRequestToIssueCredential: ({
           required PlainTextMessage message,
@@ -168,7 +168,7 @@ Future<void> main() async {
           );
 
           // Send the issued credential to the holder
-          await issuerClient.sendIssuedCredentials(
+          await vdspIssuer.sendIssuedCredentials(
             holderDid: holderDid,
             verifiableCredential: issuedCredential,
             comment: 'Your email credential',
@@ -180,7 +180,7 @@ Future<void> main() async {
         },
       );
 
-      final holderClient = await VdipHolderClient.init(
+      final vdipHolder = await VdipHolder.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),
@@ -190,7 +190,7 @@ Future<void> main() async {
         ),
       );
 
-      holderClient.listenForIncomingMessages(
+      vdipHolder.listenForIncomingMessages(
         onCredentialsIssuanceResponse: (message) async {
           testCompleter.complete(message);
           await ConnectionPool.instance.stopConnections();
@@ -204,7 +204,7 @@ Future<void> main() async {
       await ConnectionPool.instance.startConnections();
 
       // Query issuer features first
-      await holderClient.queryIssuerFeatures(
+      await vdipHolder.queryIssuerFeatures(
         issuerDid: (await issuerDidManager.getDidDocument()).id,
         featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
           FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -215,7 +215,7 @@ Future<void> main() async {
       await Future.delayed(const Duration(milliseconds: 500));
 
       // Request credential issuance
-      await holderClient.requestCredential(
+      await vdipHolder.requestCredential(
         issuerDid: (await issuerDidManager.getDidDocument()).id,
         options: RequestCredentialsOptions(
           proposalId: proposalId,
@@ -262,7 +262,7 @@ Future<void> main() async {
     test('VDIP works correctly with holder-bound assertion', () async {
       final testCompleter = Completer<PlainTextMessage>();
 
-      final issuerClient = await VdipIssuerClient.init(
+      final vdipIssuer = await VdipIssuer.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: issuerDidManager,
         featureDisclosures: [
@@ -279,9 +279,9 @@ Future<void> main() async {
         ),
       );
 
-      issuerClient.listenForIncomingMessages(
+      vdipIssuer.listenForIncomingMessages(
         onFeatureQuery: (message) async {
-          await issuerClient.disclose(queryMessage: message);
+          await vdipIssuer.disclose(queryMessage: message);
         },
         onRequestToIssueCredential: ({
           required PlainTextMessage message,
@@ -332,7 +332,7 @@ Future<void> main() async {
           );
 
           // Send the issued credential to the holder
-          await issuerClient.sendIssuedCredentials(
+          await vdipIssuer.sendIssuedCredentials(
             holderDid: holderDid,
             verifiableCredential: issuedCredential,
             comment: 'Your email credential with holder-bound assertion',
@@ -344,7 +344,7 @@ Future<void> main() async {
         },
       );
 
-      final holderClient = await VdipHolderClient.init(
+      final vdipHolder = await VdipHolder.init(
         mediatorDidDocument: mediatorDidDocument,
         didManager: holderDidManager,
         clientOptions: const AffinidiClientOptions(),
@@ -354,7 +354,7 @@ Future<void> main() async {
         ),
       );
 
-      holderClient.listenForIncomingMessages(
+      vdipHolder.listenForIncomingMessages(
         onCredentialsIssuanceResponse: (message) async {
           testCompleter.complete(message);
           await ConnectionPool.instance.stopConnections();
@@ -368,7 +368,7 @@ Future<void> main() async {
       await ConnectionPool.instance.startConnections();
 
       // Query issuer features first
-      await holderClient.queryIssuerFeatures(
+      await vdipHolder.queryIssuerFeatures(
         issuerDid: (await issuerDidManager.getDidDocument()).id,
         featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
           FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -379,7 +379,7 @@ Future<void> main() async {
       await Future.delayed(const Duration(milliseconds: 500));
 
       // Request credential issuance with holder-bound assertion
-      await holderClient.requestCredentialForHolder(
+      await vdipHolder.requestCredentialForHolder(
         holderSigner.did,
         issuerDid: (await issuerDidManager.getDidDocument()).id,
         assertionSigner: holderSigner,
