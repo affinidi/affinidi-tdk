@@ -6,7 +6,6 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../affinidi_tdk_vdip.dart';
-import '../messages/switch_context/vdip_switch_context_message.dart';
 
 /// Implements the VDIP protocol for a holder, supporting feature discovery and credential issuance flows.
 class VdipHolder {

@@ -321,7 +321,7 @@ Future<void> main() async {
               final nonce = const Uuid().v4();
               String? receivedThreadId;
 
-              final issuerClient = VdipIssuerClient(
+              final issuerClient = VdipIssuer(
                 didManager: issuerDidManager,
                 mediatorClient: mockMediator.clients[issuerDidManager]!,
                 featureDisclosures:
@@ -349,7 +349,7 @@ Future<void> main() async {
                 },
               );
 
-              final holderClient = VdipHolderClient(
+              final holderClient = VdipHolder(
                 didManager: holderDidManager,
                 mediatorClient: mockMediator.clients[holderDidManager]!,
               );
@@ -397,7 +397,7 @@ Future<void> main() async {
               final baseIssuerUrl = Uri.parse('https://issuer.example.com');
               final nonce = const Uuid().v4();
 
-              final issuerClient = VdipIssuerClient(
+              final issuerClient = VdipIssuer(
                 didManager: issuerDidManager,
                 mediatorClient: mockMediator.clients[issuerDidManager]!,
                 featureDisclosures:
@@ -424,7 +424,7 @@ Future<void> main() async {
                 },
               );
 
-              final holderClient = VdipHolderClient(
+              final holderClient = VdipHolder(
                 didManager: holderDidManager,
                 mediatorClient: mockMediator.clients[holderDidManager]!,
               );

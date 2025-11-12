@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_mediator_didcomm_client/affinidi_tdk_mediator_didcomm_client.dart';
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
@@ -63,7 +63,7 @@ Future<void> main() async {
     issuerDidManager.assertionMethod.first,
   );
 
-  final issuerClient = await VdipIssuerClient.init(
+  final issuerClient = await VdipIssuer.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: issuerDidManager,
     featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -117,7 +117,7 @@ Future<void> main() async {
     ),
   ]);
 
-  final vdipHolderClient = await VdipHolderClient.init(
+  final vdipHolderClient = await VdipHolder.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     authorizationProvider: await AffinidiAuthorizationProvider.init(
