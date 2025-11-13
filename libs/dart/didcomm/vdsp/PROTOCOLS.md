@@ -1,4 +1,4 @@
-# Protocols
+# Verifiable Data Sharing Protocol
 
 This document describes protocols implemented in the scope of `Verifiable Data Sharing Protocol` workflow.
 
@@ -11,12 +11,12 @@ This document describes protocols implemented in the scope of `Verifiable Data S
   - [Holder](#holder)
 - [States](#states)
 - [Security](#security)
-- [VDSP Workflow](#vdsp-workflow)
-- [Message References](#message-references)
+- [Workflow](#workflow)
+- [Messages](#messages)
   - [query-data](#query-data)
   - [data-response](#data-response)
   - [data-processing-result](#data-processing-result)
-- [Other Protocols Utilised](#other-protocols-utilised)
+- [Other Protocols](#other-protocols)
   - [Discover Features Protocol 2.0](#discover-features-protocol-20)
   - [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
 - [Implementation](#implementation)
@@ -51,7 +51,7 @@ The Verifier must send the `data-processing-result` to inform the Holder of the 
 
 The protocol requires message exchanges between the Verifier and the Holder to be encrypted and verifiable. The implementer must cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
 
-## VDSP Workflow
+## Workflow
 
 When initiating the data-sharing flow, it usually takes the following steps:
 
@@ -67,23 +67,46 @@ sequenceDiagram
     DM->>VVDSP: [2.1] Verifier Agent fetches the disclosure response
     VVDSP->>VVDSP: [3] Creates a credential query using DCQL
     VVDSP->>DM: [3.1] Sends a DIDComm Message with the credential query<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data`
-    DM->>HVDSP: [3.2] Fetches the DIDComm Message containing the query
-    HVDSP->>HVDSP: [4] Evaluates the query and generates a Verifiable Presentation (VP) for matching VCs
-    HVDSP->>DM: [4.1] Sends a DIDComm Message containing the VP<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response`
-    DM->>VVDSP: [4.1] Fetches the response with the VP
-    VVDSP->>VVDSP: [5] Process the shared credentials
-    VVDSP->>DM: [5.1] Creates a DIDComm Message containing processing the result<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-processing-result`
-    DM->>HVDSP: [5.2] Fetches the processing result
+    DM->>HVDSP: [4] Fetches the DIDComm Message containing the query
+    HVDSP->>HVDSP: [4.1] Evaluates the query
+    HVDSP->>HVDSP: [5] Generates a Verifiable Presentation (VP) for matching VCs
+    HVDSP->>DM: [6] Sends a DIDComm Message containing the VP<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response`
+    DM->>VVDSP: [7] Fetches the response with the VP
+    VVDSP->>VVDSP: [7.1] Process the shared credentials
+    VVDSP->>DM: [7.2] Creates a DIDComm Message containing processing the result<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-processing-result`
+    DM->>HVDSP: Data processing result
 
 ```
 
-1. Verifier sends a message to the Holder to query supported features (`https://didcomm.org/discover-features/2.0/queries`).
-2. Holder sends a message back to the Verifier with the disclosure of supported features (`https://didcomm.org/discover-features/2.0/disclose`).
-3. If the desired feature is supported, the Verifier sends a message containing the credential query to request specific credentials from the Holder's digital wallet (`https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data`).
-4. Evaluates the credential query. If the credentials exist in the Holder's digital wallet, the wallet generates the Verifiable Presentation (VP) of the credentials. The Holder sends a message back to the Verifier containing the VP (`https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response`).
-5. Once the Verifier receives the response, it processes the data according to its purpose and sends the result back to the Holder (`https://affinidi.com/didcomm/protocols/vdsp/1.0/data-processing-result`).
+1. **Feature Query Initiation**
 
-## Message References
+    The Verifier sends a message to the Holder requesting information about supported features ([`discover-features/2.0/queries`](#querying-features)).
+
+2. **Feature Disclosure**
+    
+    The Holder responds with a message listing the supported features ([`discover-features/2.0/disclose`](#feature-disclosures)).
+
+3. **Credential Query Request**
+
+    If the desired feature is supported, the Verifier sends a message containing a credential query to request specific credentials from the Holder’s digital wallet ([`vdsp/1.0/query-data`](#query-data)).
+
+4. **Credential Evaluation**
+
+    The Holder retrieves the message and evaluates the credential query to identify matching credentials in the digital wallet.
+
+5. **Verifiable Presentation Generation**
+
+    If matching credentials exist, the wallet generates a Verifiable Presentation (VP) signed with the Holder’s Decentralised Identifier (DID).
+
+6. **Presentation Delivery**
+
+    The Holder sends a message back to the Verifier containing the Verifiable Presentation ([`vdsp/1.0/data-response`](#data-response)).
+
+7. **Verification and Processing**
+   
+    Upon receiving the VP, the Verifier cryptographically verifies the credentials, processes the data for its intended purpose, and sends the result back to the Holder ([`vdsp/1.0/data-processing-result`](#data-processing-result)). 
+
+## Messages
 
 VDSP implements the following message types.
 
@@ -238,7 +261,7 @@ For example, if the Holder is applying for a loan, the Verifier sends the result
 
 In the above example, the Verifier returns a success message. The content of the body is flexible where you can include additional details about the result of the processing.
 
-## Other Protocols Utilised
+## Other Protocols
 
 The VDSP utilises existing protocols to implement the data-sharing flow from initiating the request to sharing the presentation and the results.
 
