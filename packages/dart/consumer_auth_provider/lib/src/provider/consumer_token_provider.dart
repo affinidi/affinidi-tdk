@@ -41,10 +41,8 @@ class ConsumerTokenProvider extends TokenProvider with JwtTokenDidChecker {
                         Duration(milliseconds: _apiTimeOutInMilliseconds!),
                   ))
                 : Dio()),
-        _tokenEndpoint = env?.apiGwUrl != null
-            ? '${env!.apiGwUrl}${env.consumerAudienceEndpoint}'
-            : Environment.fetchConsumerAudienceUrl(null, null, region);
-
+      _tokenEndpoint =
+             Environment.fetchConsumerAudienceUrl(env, null, region);
   /// Method to retrieve a consumer token.
   ///
   /// Returns [Future] that resolves to a [String] representing the token.
