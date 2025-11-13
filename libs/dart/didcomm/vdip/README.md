@@ -27,6 +27,7 @@ These are a few scenarios from a wide range of use cases unlocked by VDIP that r
 - [Protocol Flow](#protocol-flow)
   - [Basic Issuance Flow](#basic-issuance-flow)
   - [Holder-Bound Assertions](#holder-bound-assertions)
+  - [Context Switching](#context-switching)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -113,7 +114,7 @@ The basic VDIP credential issuance flow follows these steps:
 
 1. **Setup**: Holder and Issuer initialise their DID managers and establish connections to a DIDComm mediator.
 
-2. **Feature Discovery**: 
+2. **Feature Discovery**:
    - Holder sends a `query` message to discover what credential formats and features the issuer supports.
    - Issuer responds with a `disclose` message listing supported formats (e.g., W3C v1, JWT VC, SD-JWT VC).
 
@@ -122,7 +123,7 @@ The basic VDIP credential issuance flow follows these steps:
      - `proposal_id`: References an external proposal or out-of-band offer.
      - `credential_format`: Desired format (optional, Issuer may choose).
      - `credential_meta`: Additional data needed to construct the credential (e.g., email, attributes).
-   
+
 4. **Validation**:
    - Issuer validates the request.
    - Issuer verifies holder-bound assertions if present.
@@ -131,10 +132,10 @@ The basic VDIP credential issuance flow follows these steps:
 5. **Credential Construction**:
    - Issuer constructs the credential with verified claims.
    - Issuer signs the credential using the appropriate proof mechanism for the format.
-   
+
 6. **Credential Delivery**:
    - Issuer sends an `issued-credential` message containing the serialised credential.
-   
+
 7. **Claim Credential**:
    - Holder receives and processes the credential.
    - Holder stores it locally and presents it to verifiers.
@@ -171,6 +172,99 @@ VDIP supports this through **holder-bound assertions**:
    - Issues the credential to the verified `holder_did`.
 
 The **holder-bound assertions** mechanism ensures cryptographic proof of DID ownership while securing credential issuance.
+
+### Context Switching
+
+**Context switching** is a feature in VDIP that allows the credential issuance flow to transition user from the DIDComm messaging channel to an alternative context, typically a web browser. This enables richer user interactions and integrations with third-party services during the credential issuance process.
+
+#### What is Context Switching?
+
+During a standard VDIP flow, all communication happens through DIDComm messages. However, some issuance scenarios require:
+
+- **User interactions**: Collecting consent, displaying terms and conditions, or completing forms
+- **Third-party verification**: Integrating with external services like Veriff, KYC providers, OAuth/OIDC providers, or biometric systems
+- **Enhanced authentication**: Performing additional security checks before credential issuance
+- **Rich UI experiences**: Presenting complex information or media that would be difficult in a pure messaging flow
+
+Context switching allows the issuer to pause the DIDComm flow, redirect the holder to a browser-based interaction, and then resume the DIDComm flow once the interaction is complete.
+
+#### When to Use Context Switching
+
+Context switching is **optional** and **decision-based**. The issuer evaluates each credential request and decides whether to:
+
+- **Issue directly**: If sufficient information is available and no additional verification is needed
+- **Trigger context switch**: If additional user interaction or third-party verification is required
+
+**Use context switching when:**
+
+- Additional user verification or consent is required (e.g., email/phone verification, identity proofing)
+- Integration with third-party verification services is needed (e.g., KYC/AML checks, government ID verification)
+- Complex user interactions are necessary (e.g., reviewing legal terms, filling out detailed forms)
+- Browser-based authentication is preferred (e.g., OAuth flows, OIDC integration)
+- Real-time user decisions are needed (e.g., approval/denial of credential terms)
+
+**Skip context switching when:**
+
+- The credential can be issued immediately based on the request data
+- All necessary verification was completed before the VDIP flow started
+- The issuer has sufficient information and authorization to issue the credential directly
+- Low-friction issuance is desired for simple credential types (e.g., membership cards, basic attestations)
+
+#### How Context Switching Works
+
+1. **Holder** sends a credential request via DIDComm
+2. **Issuer** evaluates the request and decides if context switching is needed
+3. **Issuer** sends a `switch-context` message containing:
+   - A browser URL for the holder to open
+   - A unique nonce to bind the browser session to the DIDComm conversation
+   - Optional context about what verification is needed
+4. **Holder** receives the switch context message and opens the URL in a browser (or embedded web view)
+5. User completes the browser-based interaction (verification, consent, form submission, etc.)
+6. Browser context sends the result back to the issuer (typically via HTTP callback)
+7. **Issuer** validates the browser interaction results
+8. **Issuer** resumes the DIDComm flow and issues the credential
+9. **Holder** receives the verifiable credential through the original DIDComm channel
+
+#### Security Considerations
+
+When implementing context switching:
+
+- **Nonce validation**: The nonce from the switch context message must be included in subsequent credential requests to prove the holder completed the browser interaction
+- **Token expiration**: Browser context URLs should use time-limited JWT tokens (default: 15 minutes)
+- **Thread binding**: The browser session must be bound to the DIDComm thread ID to prevent session hijacking
+- **HTTPS**: Browser interactions should always use HTTPS in production environments
+- **State validation**: The issuer must validate that the browser interaction completed successfully before issuing the credential
+
+#### Example Usage
+
+```dart
+// Issuer decides to trigger context switch
+await issuerClient.sendSwitchContext(
+  holderDid: message.from!,
+  baseIssuerUrl: Uri.parse('https://issuer.example.com'),
+  nonce: contextNonce,
+  threadId: threadId,
+);
+
+// Holder builds browser URL and opens it
+final verificationUrl = await holderClient.buildBrowserContextUrl(
+  switchContextMessage: message,
+  tokenExpiration: const Duration(minutes: 15),
+);
+// Open verificationUrl in browser or web view
+
+// After browser interaction, holder requests credential with nonce
+await holderClient.requestCredential(
+  issuerDid: issuerDid,
+  options: RequestCredentialsOptions(
+    proposalId: proposalId,
+    nonce: contextNonce, // Proves browser interaction completed
+    credentialMeta: CredentialMeta(data: {...}),
+  ),
+);
+```
+
+For a complete working example with HTTP servers and browser verification, see [example/BROWSER_CONTEXT_EXAMPLE.md](example/BROWSER_CONTEXT_EXAMPLE.md).
 
 ## Requirements
 
@@ -369,7 +463,7 @@ vdipIssuer.listenForIncomingMessages(
   }) async {
     // Parse the request
     final body = VdipRequestIssuanceMessageBody.fromJson(message.body!);
-    
+
     // Validate assertion if present
     if (holderDidFromAssertion != null) {
       if (isAssertionValid != true) {
@@ -377,21 +471,21 @@ vdipIssuer.listenForIncomingMessages(
         return;
       }
     }
-    
+
     // Extract metadata
     final email = body.credentialMeta?.data?['email'] as String?;
     if (email == null) {
       throw ArgumentError('Email is required');
     }
-    
+
     // Determine credential subject DID
     final subjectDid = holderDidFromAssertion ?? message.from!;
-    
+
     // Get issuer signer
     final issuerSigner = await issuerDidManager.getSigner(
       issuerDidManager.assertionMethod.first,
     );
-    
+
     // Construct unsigned credential (W3C v1 example)
     final unsignedVc = VcDataModelV1(
       context: [
@@ -416,14 +510,14 @@ vdipIssuer.listenForIncomingMessages(
         }),
       ],
     );
-    
+
     // Sign the credential
     final suite = LdVcDm1Suite();
     final issuedVc = await suite.issue(
       unsignedData: unsignedVc,
       proofGenerator: DataIntegrityEcdsaJcsGenerator(signer: issuerSigner),
     );
-    
+
     // Send the issued credential
     await vdipIssuer.sendIssuedCredentials(
       holderDid: message.from!,
@@ -446,14 +540,14 @@ holder.listenForIncomingMessages(
   onCredentialsIssuanceResponse: (message) {
     // Parse the issued credential
     final body = VdipIssuedCredentialBody.fromJson(message.body!);
-    
+
     print('Received credential in format: ${body.credentialFormat}');
     print('Credential: ${body.credential}');
-    
+
     if (body.comment != null) {
       print('Issuer comment: ${body.comment}');
     }
-    
+
     // Store or process the credential
     // For W3C v1 credentials:
     if (body.credentialFormat == CredentialFormat.w3cV1) {
@@ -493,6 +587,7 @@ DIDComm message to request credential issuance to the issuer.
 | `credential_meta`              | `CredentialMeta?` | Optional    | Arbitrary metadata to assist credential construction.                               |
 
 **Example**:
+
 ```json
 {
   "type": "https://affinidi.com/didcomm/protocols/vdip/1.0/request-issuance",
@@ -527,12 +622,14 @@ DIDComm message containing the issued credential to the holder.
 | `comment`           | `String?`          | Optional | Human-readable note from the issuer.                                   |
 
 **Credential Formats**:
+
 - `w3cV1`: JSON string of W3C VC Data Model 1.0 credential.
 - `w3cV2`: JSON string of W3C VC Data Model 2.0 credential.
 - `jwtVc`: JWT (JWS) string.
 - `sdJwtVc`: SD-JWT string with selective disclosure.
 
 **Example**:
+
 ```json
 {
   "type": "https://affinidi.com/didcomm/protocols/vdip/1.0/issued-credential",
@@ -555,6 +652,7 @@ DIDComm message containing the issued credential to the holder.
 Both `VdipHolder` and `VdipIssuer` enforce strict message wrapping requirements to prevent downgrade attacks:
 
 **Accepted Message Wrapping Types**:
+
 - `authcryptPlaintext` – Authenticated encryption (recommended default).
 - `authcryptSignPlaintext` – Authenticated encryption with signature (highest security).
 - `anoncryptSignPlaintext` – Anonymous encryption with signature (sender anonymous to intermediaries).
@@ -580,7 +678,7 @@ These checks are performed automatically during message unpacking. If consistenc
 
 When a Holder requests a credential with a holder-bound assertion, the Issuer performs comprehensive verification:
 
-1. **Signature Verification**: 
+1. **Signature Verification**:
    - Resolves the `holder_did` to obtain its DID Document
    - Verifies the assertion JWT signature using the public key from the DID Document
 
@@ -606,6 +704,7 @@ The `VdipIssuer` performs these checks automatically and provides the verificati
 VDIP uses DIDComm's standard problem-report mechanism to communicate errors and issues during the protocol flow.
 
 **When to send problem reports**:
+
 - Invalid or missing required fields in request
 - Unsupported credential format requested
 - Assertion verification failure
@@ -613,6 +712,7 @@ VDIP uses DIDComm's standard problem-report mechanism to communicate errors and 
 - Internal issuer errors
 
 **Problem Report Structure**:
+
 ```json
 {
   "type": "https://didcomm.org/report-problem/2.0/problem-report",
@@ -627,13 +727,14 @@ VDIP uses DIDComm's standard problem-report mechanism to communicate errors and 
 ```
 
 **Handling problem reports**:
+
 ```dart
 // In your message listener
 onProblemReport: (message) {
   final body = ProblemReportBody.fromJson(message.body!);
   print('Error code: ${body.code}');
   print('Description: ${body.comment}');
-  
+
   // Take appropriate action based on the error
   switch (body.code.descriptors.first) {
     case 'invalid-request':

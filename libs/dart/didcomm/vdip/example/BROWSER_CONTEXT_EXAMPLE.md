@@ -2,51 +2,106 @@
 
 This example demonstrates the complete browser context switch flow for credential issuance using VDIP (Verifiable Data Issuance Protocol) with real HTTP servers.
 
+## What is Context Switching?
+
+**Context switching** is an optional feature in VDIP that allows the credential issuance flow to temporarily transition from the DIDComm messaging channel to an alternative context, such as a web browser. This enables:
+
+- **User interaction**: Collecting consent, displaying terms, or performing identity verification in a familiar web interface
+- **Third-party verification**: Integrating with external verification services (KYC providers, OAuth providers, biometric systems)
+- **Enhanced security**: Performing additional authentication steps before credential issuance
+- **Rich UI experiences**: Showing complex forms or media that would be difficult in a pure DIDComm flow
+
+### When to Use Context Switching
+
+Context switching is **optional** and should be used strategically:
+
+**Use context switching when:**
+
+- Additional user verification or consent is required (e.g., email verification, phone verification)
+- Integration with third-party verification services is needed (e.g., KYC providers, government ID verification)
+- Complex user interactions are necessary (e.g., reviewing terms and conditions, filling out forms)
+- Browser-based authentication is preferred (e.g., OAuth, OIDC flows)
+
+**Skip context switching when:**
+
+- The credential can be issued immediately based on the request data
+- All necessary verification was completed before the VDIP flow started
+- The issuer has sufficient information to issue the credential directly
+- Low-friction issuance is desired for simple credential types
+
+### How It Works
+
+1. **Holder** sends a credential request via DIDComm
+2. **Issuer** evaluates the request and **decides** whether context switching is needed
+3. If needed, **Issuer** sends a `switch-context` message with a verification URL
+4. **Holder** opens the URL in a browser (or embedded web view)
+5. User completes the browser-based verification/interaction
+6. Browser context sends results back to the **Issuer**
+7. **Issuer** validates the results and issues the credential via DIDComm
+8. **Holder** receives the verifiable credential through the original DIDComm channel
+
 ## Overview
 
 The example showcases a realistic scenario where:
 
 1. **Holder** requests a credential from an **Issuer**
-2. **Issuer** determines that browser-based verification is needed
+2. **Issuer** determines that browser-based verification is needed (context switch decision)
 3. **Issuer** sends a Switch Context message with a verification URL
-4. **Holder** receives the URL and simulates opening it in a browser
+4. **Holder** receives the URL and opens it in a browser
 5. The URL redirects to a **Verification Server** (3rd party) with a simple HTML UI
-6. User approves/denies the verification request via a button
+6. User approves/declines the verification request via a button
 7. **Verification Server** sends the result back to **Issuer Server**
 8. **Issuer** validates the verification result and issues the credential
 9. **Holder** receives the verifiable credential
 
 ## Architecture
 
+```plantuml
+@startuml
+!theme plain
+skinparam backgroundColor white
+skinparam componentStyle rectangle
+
+actor User
+participant "Holder\nClient" as Holder
+participant "Issuer\nServer" as Issuer
+participant "Verification\nServer" as Verifier
+
+User -> Holder: Request credential
+Holder -> Issuer: Request Issuance\n(DIDComm)
+activate Issuer
+
+note right of Issuer
+  Issuer **decides** if
+  context switch is needed
+end note
+
+Issuer -> Holder: Switch Context\n(verification URL)\n(DIDComm)
+deactivate Issuer
+
+Holder -> User: Display URL
+User -> Verifier: Open URL\n(Browser)
+activate Verifier
+
+Verifier -> User: Show verification UI
+User -> Verifier: Prove claims
+Verifier -> Issuer: POST verification result\n(HTTP)
+deactivate Verifier
+
+activate Issuer
+Issuer -> Issuer: Validate result
+Issuer -> Holder: Issued Credential\n(DIDComm)
+deactivate Issuer
+
+Holder -> User: Credential received
+@enduml
 ```
-┌─────────────┐         ┌─────────────────┐         ┌─────────────────────┐
-│             │         │                 │         │                     │
-│   Holder    │◄───────►│  Issuer Client  │◄───────►│  Verification      │
-│   Client    │ DIDComm │  + HTTP Server  │  HTTP   │  Server (3rd party)│
-│             │         │  (port 8080)    │         │  (port 8081)       │
-└─────────────┘         └─────────────────┘         └─────────────────────┘
-```
 
-### Components
+**Components:**
 
-1. **Holder Client** (VDIP Holder)
-   - Requests credentials
-   - Receives switch context messages
-   - Builds browser verification URLs
-   - Receives issued credentials
-
-2. **Issuer Server** (HTTP + VDIP Issuer)
-   - Port: 8080
-   - Handles `/vdip/issuance` endpoint (redirects to verification)
-   - Handles `/verification-callback` endpoint (receives verification results)
-   - Issues verifiable credentials after successful verification
-
-3. **Verification Server** (HTTP)
-   - Port: 8081
-   - Serves `/verify` endpoint with HTML UI
-   - Displays verification information
-   - Allows user to approve/deny via button
-   - Sends result back to Issuer Server
+- **Holder Client** (DIDComm): Requests credentials and receives issued VCs using DIDComm
+- **Issuer Server** (DIDComm + HTTP port 8080): Decides when to trigger context switch, handles verification callbacks, issues credentials. It runs a web server on port 8080 with webhook, triggered by Verification Server after Holder successfully finishes verification.
+- **Verification Server** (HTTP port 8081): Third-party service for user verification with web UI, provides utilities for verification and claims proofs.
 
 ## Prerequisites
 
@@ -87,7 +142,7 @@ dart run example/browser_context_with_servers_example.dart
 
 1. **Server Startup**:
 
-   ```
+   ```text
    Servers started:
       - Issuer Server: http://localhost:8080
       - Verification Server: http://localhost:8081
@@ -95,19 +150,19 @@ dart run example/browser_context_with_servers_example.dart
 
 2. **Flow Initiation**:
 
-   ```
+   ```text
    STARTING BROWSER CONTEXT SWITCH FLOW
    Holder: Initiating credential request...
    ```
 
 3. **Switch Context**:
 
-   ```
+   ```text
    Holder: Received Switch Context Message
    Holder: Browser context URL built
 
    ================================================================================
-    SIMULATING BROWSER OPEN
+   BROWSER OPEN
       In a real app, this URL would open in a browser:
       http://localhost:8080/vdip/issuance?token=eyJ...
    ================================================================================
@@ -115,7 +170,7 @@ dart run example/browser_context_with_servers_example.dart
 
 4. **Verification Page**:
 
-   ```
+   ```text
    Verification Server: Serving verification page
 
    ================================================================================
@@ -126,13 +181,14 @@ dart run example/browser_context_with_servers_example.dart
    ```
 
    The page will:
+
    - Display verification details
    - Show approve/deny buttons
    - Auto-submit after 3 seconds (for demo purposes)
 
 5. **Verification Callback**:
 
-   ```
+   ```text
     Issuer Server: Verification callback received
       - Nonce: abc-123-xyz
       - Verified: true
@@ -142,7 +198,7 @@ dart run example/browser_context_with_servers_example.dart
 
 6. **Credential Issuance**:
 
-   ```
+   ```text
    Holder: CREDENTIAL RECEIVED!
 
    SUCCESS! The complete flow is finished:
@@ -153,22 +209,6 @@ dart run example/browser_context_with_servers_example.dart
      5. ✓ Holder received credential
 
    ```
-
-## Manual Testing
-
-For a more realistic experience, you can manually open the verification page:
-
-1. Run the example
-2. When you see the verification URL, open it in your browser:
-
-   ```bash
-   open "http://localhost:8081/verify?token=eyJ..."
-   ```
-
-3. You'll see a basic verification UI with:
-   - Verification details (request type, ID, purpose)
-   - Approve and Deny buttons
-   - Real-time status updates
 
 ## Flow Details
 
@@ -236,85 +276,3 @@ final unsignedCredential = VcDataModelV1(
   ],
 );
 ```
-
-## Security Considerations
-
-1. **Nonce Validation**: The nonce from the switch context is validated when the holder requests the credential
-2. **JWT Tokens**: Browser context URLs use JWT tokens with expiration (15 minutes by default)
-3. **Thread ID**: Ensures messages are part of the same conversation
-
-## Customization
-
-### Change Server Ports
-
-Modify the port numbers in the server initialization:
-
-```dart
-final issuerServer = await HttpServer.bind('localhost', 8080);
-final verificationServer = await HttpServer.bind('localhost', 8081);
-```
-
-### Customize Verification UI
-
-Edit the `_getVerificationHtml()` function to customize:
-
-- Styling (CSS)
-- Information displayed
-- Button labels
-- Auto-submit behavior
-
-### Adjust Timeouts
-
-```dart
-// JWT token expiration
-buildBrowserContextUrl(
-  switchContextMessage: message,
-  tokenExpiration: const Duration(minutes: 30), // Custom expiration
-);
-
-// Verification timeout
-await verificationRequest.completer.future.timeout(
-  const Duration(minutes: 10), // Custom timeout
-);
-```
-
-## Troubleshooting
-
-### Servers won't start
-
-- Ensure ports 8080 and 8081 are not already in use
-- Check firewall settings
-
-### Verification page not loading
-
-- Verify the verification server is running
-- Check the console for the correct URL
-- Try manually opening the URL in a browser
-
-### Credential not issued
-
-- Check that verification was approved (not denied)
-- Ensure the nonce matches between requests
-- Verify mediator is running and accessible
-
-### Connection issues
-
-- Confirm mediator DID is correct in `example/mediator/mediator_did.txt`
-- Ensure private keys are valid
-- Check ACL configuration
-
-## API Reference
-
-### Key Classes
-
-- **`VdipHolderClient`**: Client for holders requesting credentials
-- **`VdipIssuerClient`**: Client for issuers providing credentials
-- **`VdipSwitchContextMessage`**: Message for browser context switching
-- **`VerificationRequest`**: Stores pending verification state
-
-### Key Methods
-
-- `sendSwitchContext()`: Issuer sends browser verification request
-- `buildBrowserContextUrl()`: Holder builds verification URL
-- `requestCredential()`: Holder requests credential with verification nonce
-- `sendIssuedCredentials()`: Issuer sends final credential
