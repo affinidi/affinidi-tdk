@@ -29,10 +29,12 @@ class BaseConsumerAuthProvider implements ConsumerAuthProviderInterface {
     Dio? client,
     ElementsRegion region = ElementsRegion.apSoutheast1,
   }) {
-    _consumerTokenProvider =
-        ConsumerTokenProvider(signer: signer, client: client, region: region);
-    _cisTokenProvider =
-        CisTokenProvider(signer: signer, client: client, region: region);
+    final environment = Environment.fetchEnvironment(region: region);
+
+    _consumerTokenProvider = ConsumerTokenProvider(
+        signer: signer, client: client, region: region, env: environment);
+    _cisTokenProvider = CisTokenProvider(
+        signer: signer, client: client, region: region, env: environment);
     _delegatedTokenProvider =
         DelegatedTokenProvider(signer: signer, client: client, region: region);
   }
