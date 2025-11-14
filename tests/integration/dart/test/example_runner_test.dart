@@ -12,7 +12,7 @@ void main() async {
       'didcomm_mediator_client',
       'vdsp',
       'vdip',
-      'atl_client'
+      'atm_client'
     ]) {
       group(packageName, () {
         late TestConfig config;
