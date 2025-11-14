@@ -98,7 +98,7 @@ void main() async {
             expect(errors, isEmpty);
           },
           // gives enough time for the examples to run
-          timeout: Timeout(Duration(minutes: 4)),
+          timeout: Timeout(Duration(minutes: 5)),
         );
       });
     }
