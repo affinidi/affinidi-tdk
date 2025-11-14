@@ -57,6 +57,7 @@ The example showcases a realistic scenario where:
 ## Architecture
 
 ```plantuml
+
 @startuml
 !theme plain
 skinparam backgroundColor white

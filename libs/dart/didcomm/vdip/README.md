@@ -235,35 +235,6 @@ When implementing context switching:
 - **HTTPS**: Browser interactions should always use HTTPS in production environments
 - **State validation**: The issuer must validate that the browser interaction completed successfully before issuing the credential
 
-#### Example Usage
-
-```dart
-// Issuer decides to trigger context switch
-await issuerClient.sendSwitchContext(
-  holderDid: message.from!,
-  baseIssuerUrl: Uri.parse('https://issuer.example.com'),
-  nonce: contextNonce,
-  threadId: threadId,
-);
-
-// Holder builds browser URL and opens it
-final verificationUrl = await holderClient.buildBrowserContextUrl(
-  switchContextMessage: message,
-  tokenExpiration: const Duration(minutes: 15),
-);
-// Open verificationUrl in browser or web view
-
-// After browser interaction, holder requests credential with nonce
-await holderClient.requestCredential(
-  issuerDid: issuerDid,
-  options: RequestCredentialsOptions(
-    proposalId: proposalId,
-    nonce: contextNonce, // Proves browser interaction completed
-    credentialMeta: CredentialMeta(data: {...}),
-  ),
-);
-```
-
 For a complete working example with HTTP servers and browser verification, see [example/BROWSER_CONTEXT_EXAMPLE.md](example/BROWSER_CONTEXT_EXAMPLE.md).
 
 ## Requirements
