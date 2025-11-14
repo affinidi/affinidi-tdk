@@ -16,6 +16,7 @@ This document describes protocols implemented in the scope of `Verifiable Data S
   - [query-data](#query-data)
   - [data-response](#data-response)
   - [data-processing-result](#data-processing-result)
+- [Error Models](#error-models)
 - [Other Protocols](#other-protocols)
   - [Discover Features Protocol 2.0](#discover-features-protocol-20)
   - [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
@@ -260,6 +261,28 @@ For example, if the Holder is applying for a loan, the Verifier sends the result
 ```
 
 In the above example, the Verifier returns a success message. The content of the body is flexible where you can include additional details about the result of the processing.
+
+## Error Models
+
+Error reporting in this protocol **MUST** use the standard [Problem Report 2.0](#problem-report-protocol) protocol and the associated [problem codes](https://identity.foundation/didcomm-messaging/spec/v2.1/#problem-codes). These codes provide a structured way to communicate issues during protocol execution.
+
+| Error Code | Description |
+|------------|-------------|
+| e.p.feature-not-supported | The requested feature is not supported by the agent. |
+| e.m.capability.query-lang-not-supported | The query language used to request credentials is not supported by the Holder.  |
+| e.m.capability.alg-not-supported | The cryptographic algorithm for signing the Verifiable Presentation (VP) is not supported. |
+| e.m.capability.crv-not-supported | The elliptic curve for signing the Verifiable Presentation (VP) is not supported. |
+| e.m.capability.did-not-supported | The Decentralised Identifier (DID) of Verifier or Holder is not supported. |
+| e.m.capability.format-not-supported | The response format is not supported. |
+| e.m.validation.invalid-signature | The digital signature in the Verifiable Presentation (VP) is invalid. | 
+| e.m.validation.invalid-vc | One or more Verifiable Credentials or the Verifiable Presentation shared by the Holder is invalid. The comment **SHOULD** indicate details of the issue (e.g., expired, revoked, invalid signature). |
+
+**Notes on Error Codes**
+
+- This list is not exhaustive. Other errors **MAY** occur during workflow execution.
+- Implementers **MAY** define additional error codes, provided they conform to the Problem Report 2.0 protocol.
+- Non-protocol errors (e.g., internal system failures) **SHOULD** be mapped to appropriate problem codes where possible.
+- The `comment` property is **MAY** be included in a Problem Report message to provide human-readable context or troubleshooting hints. This property is informative only.
 
 ## Other Protocols
 

@@ -15,9 +15,11 @@ This document describes protocols implemented in the scope of `Verifiable Data I
 - [Messages](#messages)
   - [request-issuance](#request-issuance)
   - [issued-credential](#issued-credential)
+  - [switch-context](#switch-context)
+- [Error Models](#error-models)
 - [Other Protocols](#other-protocols)
   - [Discover Features Protocol 2.0](#discover-features-protocol-20)
-  - [Report Errors or Warnings Protocol](#report-errors-or-warnings-protocol)
+  - [Problem Report Protocol 2.0](#problem-report-protocol-20)
 - [Implementation](#implementation)
 
 
@@ -243,6 +245,52 @@ In the above example, the Issuer sends the signed credential to the requester, p
 
 The Holder parses this data and stores the credential securely in their digital wallet.
 
+### switch-context
+
+Requests that the Holder navigate to the Issuer's URL provided in the message to complete the Issuer's workflow before issuing a credential.
+
+For example, the Issuer, based on its workflow, requests that the Holder provide additional information, beyond the details provided in the Holder's original request, via a website form.
+
+**Direction:** Issuer → Holder
+
+**Message Type URI:** `https://affinidi.com/didcomm/protocols/vdip/1.0/switch-context"`
+
+**Examples:**
+
+```json
+{
+    "id": "3defa415-70c7-4901-ab6b-10c19d1bfa34",
+    "type": "https://affinidi.com/didcomm/protocols/vdip/1.0/switch-context",
+    "to": ["did:key:Vz6MkhA4WiEoTaSXmShG4s2mpYsWku2km2MaLq1m2g3yReZF7"],
+    "from": "did:webvh:QmQfsx1wNZYpVxjWwMnUj16rDH2dq8UbcsC1igZMR2387h:issuerdomain.com",
+    "body":{
+        "base_issuer_url": "https://issuer.website.com/identity-verification",
+        "nonce": "uuid-used-only-once"
+    }
+}
+
+```
+
+In the example above, the Issuer sends a message to the Holder requesting that they access the Issuer's website to perform identity verification before issuing the credential.
+
+## Error Models
+
+Error reporting in this protocol **MUST** use the standard [Problem Report 2.0](#problem-report-protocol) protocol and the associated [problem codes](https://identity.foundation/didcomm-messaging/spec/v2.1/#problem-codes). These codes provide a structured way to communicate issues during protocol execution.
+
+| Error Code | Description |
+|------------|-------------|
+| e.p.proposal-not-valid | The out-of-band offer for issuance has expired, or the proposal ID provided is invalid. |
+| e.p.feature-not-supported | The requested feature is not supported by the agent. |
+| w.m.credential-rejected | The issued credential was rejected by the Holder. The Issuer **MAY** choose to ignore or act on this based on its workflow. |
+| w.m.bad-credential-subject | The issued credential contains an incorrect credential subject. The Issuer **MAY** choose to ignore or act on this based on its workflow. |
+
+**Notes on Error Codes**
+
+- This list is not exhaustive. Other errors **MAY** occur during workflow execution.
+- Implementers **MAY** define additional error codes, provided they conform to the Problem Report 2.0 protocol.
+- Non-protocol errors (e.g., internal system failures) **SHOULD** be mapped to appropriate problem codes where possible.
+- The `comment` property is **MAY** be included in a Problem Report message to provide human-readable context or troubleshooting hints. This property is informative only.
+
 ## Other Protocols
 
 The VDIP utilises existing protocols to implement the data-sharing flow from initiating the request to sharing the presentation and the results.
@@ -363,7 +411,7 @@ The [PIURI](https://identity.foundation/didcomm-messaging/spec/v2.1/#protocol-id
 
 For more information, visit the [Discover Features Protocol 2.0](https://didcomm.org/discover-features/2.0/) documentation.
 
-### Report Errors or Warnings Protocol
+### Problem Report Protocol 2.0
 
 The existing Problem Reports defined within the DIDComm v2.1 protocol specification for standard reporting of any issues encountered during the data sharing flow.
 
