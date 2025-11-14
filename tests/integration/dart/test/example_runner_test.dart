@@ -12,6 +12,7 @@ void main() async {
       'didcomm_mediator_client',
       'vdsp',
       'vdip',
+      'atm_client',
     ]) {
       group(packageName, () {
         late TestConfig config;
@@ -19,6 +20,8 @@ void main() async {
         setUp(() async {
           config = await TestConfig.configureTestFiles(
             packageDirectoryName: packageName,
+            skipBob: true,
+            skipMediator: true,
           );
 
           final result = await Process.run(
