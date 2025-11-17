@@ -101,7 +101,7 @@ Holder -> User: Credential received
 **Components:**
 
 - **Holder Client** (DIDComm): Requests credentials and receives issued VCs using DIDComm
-- **Issuer Server** (DIDComm + HTTP port 8080): Decides when to trigger context switch, handles verification callbacks, issues credentials. It runs a web server on port 8080 with webhook, triggered by Verification Server after Holder successfully finishes verification.
+- **Issuer Server** (DIDComm + HTTP port 8080): Decides when to trigger context switch, handles verification callbacks, issues credentials. It runs a web server on port 8080 with webhook, triggered by Verification Server after Holder successfully finishes verification. Webhook can be implemented according to <https://devdocs.veriff.com/docs/webhooks-guide> and <https://github.com/Veriff/js-integration-demo>.
 - **Verification Server** (HTTP port 8081): Third-party service for user verification with web UI, provides utilities for verification and claims proofs.
 
 ## Prerequisites
