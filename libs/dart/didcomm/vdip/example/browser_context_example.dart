@@ -39,14 +39,13 @@ class VerificationRequest {
   final String threadId;
   final String holderDid;
   final String email;
-  final Completer<bool> completer;
 
   VerificationRequest({
     required this.nonce,
     required this.threadId,
     required this.holderDid,
     required this.email,
-  }) : completer = Completer<bool>();
+  });
 }
 
 Future<void> main() async {
@@ -122,15 +121,6 @@ Future<void> main() async {
     ),
   ]);
 
-  // Start servers
-  final issuerServer = await startIssuerServer();
-  final verificationServer = await startVerificationServer();
-
-  print('\nServers started:');
-  print('   - Issuer Server: http://localhost:8080');
-  print('   - Verification Server: http://localhost:8081');
-  print('\n');
-
   // Initialize VDIP Clients
   final issuerClient = await VdipIssuer.init(
     mediatorDidDocument: mediatorDidDocument,
@@ -142,6 +132,18 @@ Future<void> main() async {
     ),
     clientOptions: const AffinidiClientOptions(),
   );
+
+  // Start servers
+  final issuerServer = await startIssuerServer(
+    issuerClient: issuerClient,
+    issuerSigner: issuerSigner,
+  );
+  final verificationServer = await startVerificationServer();
+
+  print('\nServers started:');
+  print('   - Issuer Server: http://localhost:8080');
+  print('   - Verification Server: http://localhost:8081');
+  print('\n');
 
   final holderClient = await VdipHolder.init(
     mediatorDidDocument: mediatorDidDocument,
@@ -159,6 +161,18 @@ Future<void> main() async {
       prettyPrint(
         'Holder: Received Feature Disclose Message',
         object: message,
+      );
+
+      await holderClient.requestCredential(
+        issuerDid: issuerSigner.did,
+        options: RequestCredentialsOptions(
+          proposalId: 'proposal_browser_verification',
+          credentialMeta: CredentialMeta(
+            data: {
+              'email': 'holder@example.com',
+            },
+          ),
+        ),
       );
     },
     onSwitchContext: (message) async {
@@ -178,31 +192,17 @@ Future<void> main() async {
 
       print('\n${'=' * 80}');
       print('BROWSER OPEN');
-      print('   In a real app, this URL would open in a browser:');
       print('   $verificationUrl');
       print('=' * 80 + '\n');
 
-      // Store nonce and request credential with it
-      final nonce = message.switchContext.nonce;
-
-      // Simulate delay before requesting credential
-      await Future<void>.delayed(const Duration(seconds: 1));
+      /// Opens verification URL in the browser
+      await Process.run(
+        'open',
+        [verificationUrl.toString()],
+      );
 
       print(
           'Holder: Sending credential request with nonce from context switch\n');
-
-      await holderClient.requestCredential(
-        issuerDid: issuerSigner.did,
-        options: RequestCredentialsOptions(
-          proposalId: 'proposal_browser_verification',
-          credentialMeta: CredentialMeta(
-            data: {
-              'email': 'holder@example.com',
-              'nonce': nonce,
-            },
-          ),
-        ),
-      );
     },
     onCredentialsIssuanceResponse: (message) async {
       prettyPrint(
@@ -251,115 +251,40 @@ Future<void> main() async {
         object: message,
       );
 
-      final vdipRequestBody =
-          VdipRequestIssuanceMessageBody.fromJson(message.body!);
+      final vdipRequestIssuanceBody = VdipRequestIssuanceMessageBody.fromJson(
+        Map<String, dynamic>.from(message.body!),
+      );
 
-      final email = vdipRequestBody.credentialMeta?.data?['email'] as String?;
-      final nonce = vdipRequestBody.credentialMeta?.data?['nonce'] as String?;
+      print('Issuer: No nonce found, initiating browser context switch\n');
+      final email = vdipRequestIssuanceBody.credentialMeta?.data?['email'];
 
-      if (email == null || message.from == null) {
-        throw ArgumentError('Missing required fields');
+      if (email == null) {
+        throw StateError('Issuer: Email is missing in credential meta\n');
       }
 
-      // Check if this is the first request (no nonce yet)
-      if (nonce == null) {
-        print('Issuer: No nonce found, initiating browser context switch\n');
+      final contextNonce = const Uuid().v4();
+      final threadId = message.threadId ?? message.id;
 
-        final contextNonce = const Uuid().v4();
-        final threadId = message.threadId ?? message.id;
+      // Store verification request
+      pendingVerifications[contextNonce] = VerificationRequest(
+        nonce: contextNonce,
+        threadId: threadId,
+        holderDid: message.from!,
+        email: email as String,
+      );
 
-        // Store verification request
-        pendingVerifications[contextNonce] = VerificationRequest(
-          nonce: contextNonce,
-          threadId: threadId,
-          holderDid: message.from!,
-          email: email,
-        );
+      await issuerClient.sendSwitchContext(
+        holderDid: message.from!,
+        baseIssuerUrl: Uri.parse('http://localhost:8080'),
+        nonce: contextNonce,
+        threadId: threadId,
+      );
 
-        await issuerClient.sendSwitchContext(
-          holderDid: message.from!,
-          baseIssuerUrl: Uri.parse('http://localhost:8080'),
-          nonce: contextNonce,
-          threadId: threadId,
-        );
-
-        print(
-            'Issuer: Switch context sent. Waiting for browser verification...\n');
-        return;
-      }
+      print(
+          'Issuer: Switch context sent. Waiting for browser verification...\n');
 
       // If we have a nonce, wait for verification result
       print('Issuer: Nonce received, waiting for verification result...\n');
-
-      final verificationRequest = pendingVerifications[nonce];
-      if (verificationRequest == null) {
-        throw StateError('No pending verification for nonce: $nonce');
-      }
-
-      // Wait for verification to complete (with timeout)
-      final verificationResult =
-          await verificationRequest.completer.future.timeout(
-        const Duration(minutes: 5),
-        onTimeout: () {
-          print('Verification timed out\n');
-          return false;
-        },
-      );
-
-      if (!verificationResult) {
-        print('Issuer: Verification failed or denied\n');
-        // Could send a problem report here
-        return;
-      }
-
-      print('Issuer: Verification successful! Issuing credential...\n');
-
-      // Issue the credential
-      final unsignedCredential = VcDataModelV1(
-        context: [
-          dmV1ContextUrl,
-          'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
-        ],
-        credentialSchema: [
-          CredentialSchema(
-            id: Uri.parse(
-              'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.json',
-            ),
-            type: 'JsonSchemaValidator2018',
-          ),
-        ],
-        id: Uri.parse(const Uuid().v4()),
-        issuer: Issuer.uri(issuerSigner.did),
-        type: {'VerifiableCredential', 'TestMusicSubscription'},
-        issuanceDate: DateTime.now().toUtc(),
-        credentialSubject: [
-          CredentialSubject.fromJson({
-            'id': message.from!,
-            'email': email,
-            'subscriptionType': 'premium',
-            'verified': true,
-            'verificationMethod': 'browser_context_switch',
-          }),
-        ],
-      );
-
-      final suite = LdVcDm1Suite();
-      final issuedCredential = await suite.issue(
-        unsignedData: unsignedCredential,
-        proofGenerator: DataIntegrityEcdsaJcsGenerator(
-          signer: issuerSigner,
-        ),
-      );
-
-      await issuerClient.sendIssuedCredentials(
-        holderDid: message.from!,
-        verifiableCredential: issuedCredential,
-      );
-
-      // Clean up
-      pendingVerifications.remove(nonce);
-
-      print('Issuer: Credential sent to holder!\n');
     },
     onProblemReport: (message) {
       prettyPrint('Issuer: Problem occurred', object: message);
@@ -389,7 +314,10 @@ Future<void> main() async {
 }
 
 /// Starts the Issuer Server that handles verification callbacks
-Future<HttpServer> startIssuerServer() async {
+Future<HttpServer> startIssuerServer({
+  required VdipIssuer issuerClient,
+  required DidSigner issuerSigner,
+}) async {
   final server = await HttpServer.bind('localhost', 8080);
 
   server.listen((HttpRequest request) async {
@@ -439,9 +367,59 @@ Future<HttpServer> startIssuerServer() async {
       print('   - Verified: $verified\n');
 
       final verificationRequest = pendingVerifications[nonce];
-      if (verificationRequest != null &&
-          !verificationRequest.completer.isCompleted) {
-        verificationRequest.completer.complete(verified);
+      if (verificationRequest != null) {
+        final verificationRequest = pendingVerifications[nonce];
+        if (verificationRequest == null) {
+          throw StateError('No pending verification for nonce: $nonce');
+        }
+
+        print('Issuer: Verification successful! Issuing credential...\n');
+        // Issue the credential
+        final unsignedCredential = VcDataModelV1(
+          context: [
+            dmV1ContextUrl,
+            'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
+          ],
+          credentialSchema: [
+            CredentialSchema(
+              id: Uri.parse(
+                'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.json',
+              ),
+              type: 'JsonSchemaValidator2018',
+            ),
+          ],
+          id: Uri.parse(const Uuid().v4()),
+          issuer: Issuer.uri(issuerSigner.did),
+          type: {'VerifiableCredential', 'TestMusicSubscription'},
+          issuanceDate: DateTime.now().toUtc(),
+          credentialSubject: [
+            CredentialSubject.fromJson({
+              'id': verificationRequest.holderDid,
+              'email': verificationRequest.email,
+              'subscriptionType': 'premium',
+              'verified': true,
+              'verificationMethod': 'browser_context_switch',
+            }),
+          ],
+        );
+
+        final suite = LdVcDm1Suite();
+        final issuedCredential = await suite.issue(
+          unsignedData: unsignedCredential,
+          proofGenerator: DataIntegrityEcdsaJcsGenerator(
+            signer: issuerSigner,
+          ),
+        );
+
+        await issuerClient.sendIssuedCredentials(
+          holderDid: verificationRequest.holderDid,
+          verifiableCredential: issuedCredential,
+        );
+
+        // Clean up
+        pendingVerifications.remove(nonce);
+
+        print('Issuer: Credential sent to holder!\n');
       }
 
       request.response.statusCode = HttpStatus.ok;

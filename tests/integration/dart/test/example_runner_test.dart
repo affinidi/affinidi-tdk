@@ -5,7 +5,10 @@ import 'package:test/test.dart';
 import 'test_config.dart';
 
 void main() async {
-  final testsToSkip = ['atlas_example.dart'];
+  final testsToSkip = [
+    'atlas_example.dart',
+    'browser_context_example.dart',
+  ];
 
   group('Running example files', () {
     for (final packageName in [
@@ -98,7 +101,7 @@ void main() async {
             expect(errors, isEmpty);
           },
           // gives enough time for the examples to run
-          timeout: Timeout(Duration(minutes: 5)),
+          timeout: Timeout(Duration(minutes: 2)),
         );
       });
     }
