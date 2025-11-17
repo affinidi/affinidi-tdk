@@ -36,26 +36,16 @@ Future<void> main() async {
       holderEmail = '${const Uuid().v4()}@test.com';
       proposalId = const Uuid().v4();
 
-      final issuerKeyStore = InMemoryKeyStore();
-      final issuerWallet = PersistentWallet(issuerKeyStore);
-
       issuerDidManager = DidKeyManager(
-        wallet: issuerWallet,
+        wallet: PersistentWallet(InMemoryKeyStore()),
         store: InMemoryDidStore(),
       );
 
       final issuerKeyId = 'issuer-key-1';
 
-      final issuerPrivateKeyBytes = await extractPrivateKeyBytes(
-        config.alicePrivateKeyPath,
-      );
-
-      await issuerKeyStore.set(
-        issuerKeyId,
-        StoredKey(
-          keyType: KeyType.p256,
-          privateKeyBytes: issuerPrivateKeyBytes,
-        ),
+      issuerDidManager.wallet.generateKey(
+        keyId: issuerKeyId,
+        keyType: KeyType.p256,
       );
 
       await issuerDidManager.addVerificationMethod(issuerKeyId);
@@ -64,8 +54,7 @@ Future<void> main() async {
         issuerDidManager.assertionMethod.first,
       );
 
-      final holderKeyStore = InMemoryKeyStore();
-      final holderWallet = PersistentWallet(holderKeyStore);
+      final holderWallet = PersistentWallet(InMemoryKeyStore());
 
       holderDidManager = DidKeyManager(
         wallet: holderWallet,
@@ -73,17 +62,9 @@ Future<void> main() async {
       );
 
       final holderKeyId = 'holder-key-1';
-
-      final holderPrivateKeyBytes = await extractPrivateKeyBytes(
-        config.bobPrivateKeyPath,
-      );
-
-      await holderKeyStore.set(
-        holderKeyId,
-        StoredKey(
-          keyType: KeyType.p256,
-          privateKeyBytes: holderPrivateKeyBytes,
-        ),
+      holderWallet.generateKey(
+        keyId: holderKeyId,
+        keyType: KeyType.p256,
       );
 
       await holderDidManager.addVerificationMethod(holderKeyId);
@@ -96,6 +77,11 @@ Future<void> main() async {
         mediatorDidDocument: mediatorDidDocument,
         didManager: issuerDidManager,
         theirDids: [holderSigner.did],
+      );
+      await config.configureAcl(
+        mediatorDidDocument: mediatorDidDocument,
+        didManager: holderDidManager,
+        theirDids: [issuerSigner.did],
       );
     });
 
