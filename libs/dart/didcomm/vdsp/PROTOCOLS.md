@@ -50,7 +50,9 @@ The Verifier **MUST** send the `data-processing-result` to inform the Holder of 
 
 ## Security
 
-The protocol requires message exchanges between the Verifier and the Holder to be encrypted and verifiable. 
+The protocol requires that all message exchanges between the Verifier and the Holder **MUST** be encrypted and verifiable to ensure confidentiality, integrity, and authenticity.
+
+- All messages **MUST** be structured as `authcrypt(signed(plaintext))` envelopes to verify the sender and the content remains confidential throughout transmission.
 
 - The Verifier **MUST** cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
 

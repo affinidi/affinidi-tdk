@@ -50,7 +50,9 @@ The protocol follows the request-response pattern of message exchange, where it 
 
 ## Security
 
-The protocol requires message exchanges between the Issuer and the Holder to be encrypted and verifiable. 
+The protocol requires that all message exchanges between the Issuer and the Holder **MUST** be encrypted and verifiable to ensure confidentiality, integrity, and authenticity.
+
+- All messages **MUST** be structured as `authcrypt(signed(plaintext))` envelopes to verify the sender and the content remains confidential throughout transmission.
 
 - The Issuer **SHOULD** implement a workflow to verify the request, including the **`credential_meta`** details. 
 
