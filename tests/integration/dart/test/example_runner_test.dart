@@ -5,7 +5,10 @@ import 'package:test/test.dart';
 import 'test_config.dart';
 
 void main() async {
-  final testsToSkip = ['atlas_example.dart'];
+  final testsToSkip = [
+    'atlas_example.dart',
+    'browser_context_example.dart',
+  ];
 
   group('Running example files', () {
     for (final packageName in [

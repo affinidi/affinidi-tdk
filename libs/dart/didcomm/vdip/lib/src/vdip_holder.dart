@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
@@ -48,9 +49,7 @@ class VdipHolder {
     final message = QueryMessage(
       id: const Uuid().v4(),
       to: [issuerDid],
-      body: QueryBody(
-        queries: featureQueries,
-      ),
+      body: QueryBody(queries: featureQueries),
     );
 
     await mediatorClient.packAndSendMessage(message);
@@ -76,9 +75,7 @@ class VdipHolder {
         comment: options.comment,
       ),
     );
-    await mediatorClient.packAndSendMessage(
-      requestIssuanceMessage,
-    );
+    await mediatorClient.packAndSendMessage(requestIssuanceMessage);
 
     return requestIssuanceMessage;
   }
@@ -108,7 +105,9 @@ class VdipHolder {
       'iat': issueTime,
     };
     final signedAssertion = await JwtHelper.createAndSignJwt(
-        payload, DidSignerAdapter(assertionSigner));
+      payload,
+      DidSignerAdapter(assertionSigner),
+    );
 
     final requestIssuanceMessage = VdipRequestIssuanceMessage(
       id: const Uuid().v4(),
@@ -125,9 +124,7 @@ class VdipHolder {
       ),
     );
 
-    await mediatorClient.packAndSendMessage(
-      requestIssuanceMessage,
-    );
+    await mediatorClient.packAndSendMessage(requestIssuanceMessage);
 
     return requestIssuanceMessage;
   }
@@ -139,9 +136,8 @@ class VdipHolder {
   StreamSubscription listenForIncomingMessages({
     void Function(QueryMessage)? onFeatureQuery,
     void Function(DiscloseMessage)? onDiscloseMessage,
-    required void Function(
-      PlainTextMessage,
-    ) onCredentialsIssuanceResponse,
+    required void Function(PlainTextMessage) onCredentialsIssuanceResponse,
+    void Function(VdipSwitchContextMessage)? onSwitchContext,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function({int? closeCode, String? closeReason})? onDone,
@@ -164,41 +160,53 @@ class VdipHolder {
 
         if (onFeatureQuery != null &&
             unpacked.type == QueryMessage.messageType) {
-          onFeatureQuery(
-            QueryMessage.fromJson(plainTextJson),
+          onFeatureQuery(QueryMessage.fromJson(plainTextJson));
+
+          return;
+        }
+
+        if (onSwitchContext != null &&
+            unpacked.type == VdipSwitchContextMessage.messageType) {
+          onSwitchContext(
+            VdipSwitchContextMessage(
+              id: unpacked.id,
+              to: unpacked.to,
+              createdTime: unpacked.createdTime,
+              expiresTime: unpacked.expiresTime,
+              body: unpacked.body,
+              threadId: unpacked.threadId,
+            ),
           );
 
           return;
         }
 
         if (unpacked.type == VdipIssuedCredentialMessage.messageType) {
-          onCredentialsIssuanceResponse(VdipIssuedCredentialMessage(
-            id: unpacked.id,
-            body: unpacked.body,
-            from: unpacked.from,
-            to: unpacked.to,
-            createdTime: unpacked.createdTime,
-            expiresTime: unpacked.expiresTime,
-            threadId: unpacked.threadId,
-          ));
+          onCredentialsIssuanceResponse(
+            VdipIssuedCredentialMessage(
+              id: unpacked.id,
+              body: unpacked.body,
+              from: unpacked.from,
+              to: unpacked.to,
+              createdTime: unpacked.createdTime,
+              expiresTime: unpacked.expiresTime,
+              threadId: unpacked.threadId,
+            ),
+          );
 
           return;
         }
 
         if (onDiscloseMessage != null &&
             unpacked.type == DiscloseMessage.messageType) {
-          onDiscloseMessage(
-            DiscloseMessage.fromJson(plainTextJson),
-          );
+          onDiscloseMessage(DiscloseMessage.fromJson(plainTextJson));
 
           return;
         }
 
         if (onProblemReport != null &&
             unpacked.type == ProblemReportMessage.messageType) {
-          onProblemReport(
-            ProblemReportMessage.fromJson(plainTextJson),
-          );
+          onProblemReport(ProblemReportMessage.fromJson(plainTextJson));
 
           return;
         }
@@ -207,5 +215,53 @@ class VdipHolder {
       onDone: onDone,
       cancelOnError: cancelOnError,
     );
+  }
+
+  /// Builds the browser context URL for the given [switchContextMessage].
+  Future<String> buildBrowserContextUrl({
+    required VdipSwitchContextMessage switchContextMessage,
+    Duration tokenExpiration = const Duration(minutes: 15),
+  }) async {
+    final threadId = switchContextMessage.threadId;
+
+    if (threadId == null) {
+      throw StateError('Switch context message is missing threadId.');
+    }
+
+    final body = switchContextMessage.switchContext;
+    final requestJwt = await _buildRequestJwt(
+      nonce: body.nonce,
+      threadId: threadId,
+      tokenExpiration: tokenExpiration,
+    );
+
+    return '${body.baseIssuerUrl}/vdip/issuance?token=$requestJwt';
+  }
+
+  Future<String> _buildRequestJwt({
+    required String nonce,
+    required String threadId,
+    required Duration tokenExpiration,
+  }) async {
+    final signer = await didManager.getSigner(mediatorClient.signer.keyId);
+
+    final issueTime =
+        (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+
+    final payload = {
+      'nonce': nonce,
+      'threadId': threadId,
+      'iss': mediatorClient.signer.did,
+      'sub': mediatorClient.signer.did,
+      'iat': issueTime,
+      'exp': issueTime + tokenExpiration.inSeconds,
+    };
+
+    final signedAssertion = await JwtHelper.createAndSignJwt(
+      payload,
+      DidSignerAdapter(signer),
+    );
+
+    return signedAssertion;
   }
 }

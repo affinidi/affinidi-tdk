@@ -21,6 +21,7 @@ class CisTokenProvider extends TokenProvider {
     required DidSigner signer,
     Dio? client,
     ElementsRegion region = ElementsRegion.apSoutheast1,
+    Environment? env,
   })  : _signer = signer,
         _client = client ??
             ((_apiTimeOutInMilliseconds != null)
@@ -31,7 +32,7 @@ class CisTokenProvider extends TokenProvider {
                         Duration(milliseconds: _apiTimeOutInMilliseconds!),
                   ))
                 : Dio()),
-        _tokenEndpoint = Environment.fetchConsumerCisUrl(null, null, region);
+        _tokenEndpoint = Environment.fetchConsumerCisUrl(env, null, region);
 
   final DidSigner _signer;
   final Dio _client;

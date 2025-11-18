@@ -47,9 +47,7 @@ class VdipIssuer {
 
   /// Responds to a feature [queryMessage] by computing and sending a
   /// corresponding `disclose` message. Returns the sent message.
-  Future<DiscloseMessage> disclose({
-    required QueryMessage queryMessage,
-  }) async {
+  Future<DiscloseMessage> disclose({required QueryMessage queryMessage}) async {
     final holderDid = queryMessage.from;
 
     if (holderDid == null) {
@@ -62,9 +60,7 @@ class VdipIssuer {
       throw StateError('Query message body is missing.');
     }
 
-    final queryBody = QueryBody.fromJson(
-      Map<String, dynamic>.from(rawBody),
-    );
+    final queryBody = QueryBody.fromJson(Map<String, dynamic>.from(rawBody));
 
     final message = DiscloseMessage(
       id: const Uuid().v4(),
@@ -120,9 +116,7 @@ class VdipIssuer {
         break;
 
       default:
-        throw ArgumentError(
-          'Unsupported credential format',
-        );
+        throw ArgumentError('Unsupported credential format');
     }
 
     final message = VdipIssuedCredentialMessage(
@@ -169,9 +163,7 @@ class VdipIssuer {
 
         if (onFeatureQuery != null &&
             unpacked.type == QueryMessage.messageType) {
-          onFeatureQuery(
-            QueryMessage.fromJson(plainTextJson),
-          );
+          onFeatureQuery(QueryMessage.fromJson(plainTextJson));
 
           return;
         }
@@ -207,18 +199,14 @@ class VdipIssuer {
             return;
           }
 
-          onRequestToIssueCredential(
-            message: plainTextMessage,
-          );
+          onRequestToIssueCredential(message: plainTextMessage);
 
           return;
         }
 
         if (onProblemReport != null &&
             unpacked.type == ProblemReportMessage.messageType) {
-          onProblemReport(
-            ProblemReportMessage.fromJson(plainTextJson),
-          );
+          onProblemReport(ProblemReportMessage.fromJson(plainTextJson));
 
           return;
         }
@@ -252,5 +240,36 @@ class VdipIssuer {
     return assertionSubject == holderDid &&
         assertionProposalId == proposalId &&
         assertionAudienceId == vcIssuerDid;
+  }
+
+  /// Sends a switch context message to the given [holderDid].
+  Future<VdipSwitchContextMessage> sendSwitchContext({
+    required String holderDid,
+    required Uri baseIssuerUrl,
+    required String nonce,
+    required String threadId,
+  }) async {
+    if (!baseIssuerUrl.hasScheme ||
+        (baseIssuerUrl.scheme != 'http' && baseIssuerUrl.scheme != 'https')) {
+      throw ArgumentError.value(
+        baseIssuerUrl,
+        'baseIssuerUrl',
+        'Must have http or https scheme',
+      );
+    }
+
+    final message = VdipSwitchContextMessage(
+      id: const Uuid().v4(),
+      to: [holderDid],
+      threadId: threadId,
+      body: VdipSwitchContextBody(
+        baseIssuerUrl: baseIssuerUrl.toString(),
+        nonce: nonce,
+      ).toJson(),
+    );
+
+    await mediatorClient.packAndSendMessage(message);
+
+    return message;
   }
 }
