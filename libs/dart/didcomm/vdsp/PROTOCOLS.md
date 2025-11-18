@@ -46,13 +46,13 @@ An entity that stores and controls verifiable credentials. The holder can receiv
 
 The protocol follows the request-response pattern of message exchange, where it waits for a response from the Holder, especially when querying data.
 
-The Verifier MUST send the `data-processing-result` to inform the Holder of the outcome after sharing the data.
+The Verifier **MUST** send the `data-processing-result` to inform the Holder of the outcome after sharing the data.
 
 ## Security
 
 The protocol requires message exchanges between the Verifier and the Holder to be encrypted and verifiable. 
 
-- The implementer **MUST** cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
+- The Verifier **MUST** cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
 
 ## Workflow
 
@@ -196,8 +196,6 @@ https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response
 ```
 
 **Message Fields:**
-
-- **`operation` REQUIRED:** The operation to use by the Verifier based on the supported operation of the Holder's agent.
 
 - **`data_query_lang` REQUIRED:** The query language to use to request data from the Holder's digital wallet. The sample implementation of this protocol supports DCQL defined within the [OID4VP specification](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l).
 

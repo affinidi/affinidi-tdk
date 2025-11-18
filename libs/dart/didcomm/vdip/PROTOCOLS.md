@@ -20,6 +20,7 @@ This document describes protocols implemented in the scope of `Verifiable Data I
 - [Other Protocols](#other-protocols)
   - [Discover Features Protocol 2.0](#discover-features-protocol-20)
   - [Problem Report Protocol 2.0](#problem-report-protocol-20)
+- [Additional Notes](#additional-notes)
 - [Implementation](#implementation)
 
 
@@ -495,6 +496,22 @@ The [PIURI](https://identity.foundation/didcomm-messaging/spec/v2.1/#protocol-id
 ```
 
 For more information, visit the [Problem Reports](https://identity.foundation/didcomm-messaging/spec/v2.1/#problem-reports) section.
+
+## Additional Notes
+
+The **Verifiable Data Issuance Protocol (VDIP)** can be combined with the **Verifiable Data Sharing Protocol (VDSP)** to streamline workflows where credential issuance and additional data requests occur simultaneously.
+
+In this combined scenario:
+
+- The Holder **MAY** share additional credentials or data required to complete the issuance process.
+
+- The Issuer **MUST** validate the shared data before proceeding with credential creation.
+
+- The Issuer also acts as the Verifier, ensuring that the Holder’s credentials are authentic and meet the requirements for issuance.
+
+**Example Use Case:**
+
+A training institution (Issuer) issues a course completion credential while requesting additional credentials from the Holder (e.g., identity verification) to finalise the issuance process.
 
 ## Implementation
 
