@@ -28,7 +28,7 @@ The Verifiable Data Sharing Protocol (VDSP) facilitates the secure and interoper
 
 ## Motivation
 
-To enable a more secure and trusted data sharing between Holders and Verifiers using DIDComm-compatible mediators.
+To enable a secure and trusted data sharing between Holders and Verifiers using DIDComm-compatible mediators.
 
 ## Roles
 
@@ -52,7 +52,7 @@ The Verifier **MUST** send the `data-processing-result` to inform the Holder of 
 
 The protocol requires that all message exchanges between the Verifier and the Holder **MUST** be encrypted and verifiable to ensure confidentiality, integrity, and authenticity.
 
-- All messages **MUST** be structured as `authcrypt(signed(plaintext))` envelopes to verify the sender and the content remains confidential throughout transmission.
+- All messages **MUST** use `authcrypt` encryption envelope (e.g., `authcrypt(signed(plaintext))` or `authcrypt(plaintext)`) to verify the sender and the content remains confidential throughout transmission.
 
 - The Verifier **MUST** cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
 
