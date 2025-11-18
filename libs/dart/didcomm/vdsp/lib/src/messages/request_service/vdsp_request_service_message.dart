@@ -1,11 +1,6 @@
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-import 'vdsp_request_service_message_body.dart';
-
 part 'vdsp_request_service_message.g.dart';
-
-@JsonSerializable(includeIfNull: false, explicitToJson: true)
 
 /// DIDComm message for requesting a service.
 class VdspRequestServiceMessage extends PlainTextMessage {
@@ -26,10 +21,28 @@ class VdspRequestServiceMessage extends PlainTextMessage {
           type: messageType,
           body: body.toJson(),
         );
+}
 
-  factory VdspRequestServiceMessage.fromJson(Map<String, dynamic> json) =>
-      _$VdspRequestServiceMessageFromJson(json);
+@JsonSerializable(includeIfNull: false, explicitToJson: true)
 
-  @override
-  Map<String, dynamic> toJson() => _$VdspRequestServiceMessageToJson(this);
+/// Body payload for the request service message.
+/// This message should provide enough context for the Verifier to understand which service is requested,
+///  via [operation] and optional [comment].
+class VdspRequestServiceMessageBody {
+  /// Identifier of the original operation / correlation id.
+  final String operation;
+
+  /// An optional human-readable comment providing additional context.i
+  final String? comment;
+
+  /// Creates a new [VdspRequestServiceMessageBody].
+  VdspRequestServiceMessageBody({
+    required this.operation,
+    this.comment,
+  });
+
+  factory VdspRequestServiceMessageBody.fromJson(Map<String, dynamic> json) =>
+      _$VdspRequestServiceMessageBodyFromJson(json);
+
+  Map<String, dynamic> toJson() => _$VdspRequestServiceMessageBodyToJson(this);
 }

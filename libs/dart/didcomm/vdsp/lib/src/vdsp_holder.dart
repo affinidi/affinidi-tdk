@@ -157,6 +157,23 @@ class VdspHolder {
     return responseMessage;
   }
 
+  /// Requests service from the Verifier.
+  Future<VdspRequestServiceMessage> requestService({
+    required String operation,
+    String? comment,
+  }) async {
+    final message = VdspRequestServiceMessage(
+      id: const Uuid().v4(),
+      body: VdspRequestServiceMessageBody(
+        operation: operation,
+        comment: comment,
+      ),
+    );
+
+    await mediatorClient.packAndSendMessage(message);
+    return message;
+  }
+
   /// Listens for incoming DIDComm messages and dispatches them to the appropriate handlers as defined by the VDSP protocol.
   ///
   /// [onFeatureQuery] is called for VDSP feature query messages. Optional.
