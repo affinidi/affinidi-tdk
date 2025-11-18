@@ -46,11 +46,13 @@ An entity that stores and controls verifiable credentials. The holder can receiv
 
 The protocol follows the request-response pattern of message exchange, where it waits for a response from the Holder, especially when querying data.
 
-The Verifier must send the `data-processing-result` to inform the Holder of the outcome after sharing the data.
+The Verifier MUST send the `data-processing-result` to inform the Holder of the outcome after sharing the data.
 
 ## Security
 
-The protocol requires message exchanges between the Verifier and the Holder to be encrypted and verifiable. The implementer must cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
+The protocol requires message exchanges between the Verifier and the Holder to be encrypted and verifiable. 
+
+- The implementer **MUST** cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
 
 ## Workflow
 
@@ -81,15 +83,15 @@ sequenceDiagram
 
 1. **Feature Query Initiation**
 
-    The Verifier sends a message to the Holder requesting information about supported features ([`discover-features/2.0/queries`](#querying-features)).
+    The Verifier **MAY** send a message to the Holder requesting information about supported features ([`discover-features/2.0/queries`](#querying-features)).
 
 2. **Feature Disclosure**
     
-    The Holder responds with a message listing the supported features ([`discover-features/2.0/disclose`](#feature-disclosures)).
+    The Holder **MAY** respond with a message listing the supported features ([`discover-features/2.0/disclose`](#feature-disclosures)).
 
 3. **Credential Query Request**
 
-    If the desired feature is supported, the Verifier sends a message containing a credential query to request specific credentials from the Holder’s digital wallet ([`vdsp/1.0/query-data`](#query-data)).
+    If the desired feature is supported, the Verifier **MUST** send a message containing a credential query to request specific credentials from the Holder’s digital wallet ([`vdsp/1.0/query-data`](#query-data)).
 
 4. **Credential Evaluation**
 
@@ -97,15 +99,15 @@ sequenceDiagram
 
 5. **Verifiable Presentation Generation**
 
-    If matching credentials exist, the wallet generates a Verifiable Presentation (VP) signed with the Holder’s Decentralised Identifier (DID).
+    If matching credentials exist, the wallet **MUST** generate a Verifiable Presentation (VP) signed with the Holder’s Decentralised Identifier (DID).
 
 6. **Presentation Delivery**
 
-    The Holder sends a message back to the Verifier containing the Verifiable Presentation ([`vdsp/1.0/data-response`](#data-response)).
+    The Holder **MUST** send a message back to the Verifier containing the Verifiable Presentation ([`vdsp/1.0/data-response`](#data-response)).
 
 7. **Verification and Processing**
    
-    Upon receiving the VP, the Verifier cryptographically verifies the credentials, processes the data for its intended purpose, and sends the result back to the Holder ([`vdsp/1.0/data-processing-result`](#data-processing-result)). 
+    Upon receiving the VP, the Verifier **MUST** cryptographically verifies the credentials, processes the data for its intended purpose, and the Verifier **MUST** send the result back to the Holder ([`vdsp/1.0/data-processing-result`](#data-processing-result)). 
 
 ## Messages
 
@@ -117,7 +119,27 @@ Request Verifiable Credentials (VCs) from Verifier to Holder using Digital Crede
 
 **Direction:** Verifier → Holder
 
-**Message Type URI:** `https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data`
+**Message Type URI:** 
+
+```
+https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data
+```
+
+**Message Fields:**
+
+- **`operation` REQUIRED:** The operation to use by the Verifier based on the supported operation of the Holder's agent.
+
+- **`data_query_lang` REQUIRED:** The query language to use to request data from the Holder's digital wallet. The sample implemention of this protocol supports DCQL defined within the [OID4VP specification](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l).
+
+- **`query` REQUIRED:** The query that adheres to the syntax of the selected `data_query_lang`. The sample implementation of this protocol uses a query that adheres to the format defined in DCQL within the [OID4VP specification](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l).
+
+- **`proof_context` REQUIRED:** Contains a random challenge string and the domain of the Verifier to prevent replay attacks.
+  - `challenge`: A unique random string used to verify the request.
+  - `domain`: The domain of the Verifier for verifying the request origin.
+
+- **`response_format` REQUIRED:** The format of the data to be returned to the Verifier (e.g., application/json)
+
+- **`comment` OPTIONAL:** An optional comment about the request from the Verifier.
 
 **Example:**
 
@@ -161,15 +183,30 @@ Request Verifiable Credentials (VCs) from Verifier to Holder using Digital Crede
 
 In the example above, the **`query`** property adheres to the format defined in DCQL within the [OID4VP specification](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l). 
 
-The message includes the **`proof_context`**, which contains a random challenge string and the domain of the Verifier to prevent replay attacks.
-
 ### data-response
 
 Shares the presentation of the Verifiable Credentials (VCs) from Holder to Verifier using Verifiable Presentation (VP) format, cryptographically signed by the holder.
 
 **Direction:** Holder → Verifier
 
-**Message Type URI:** `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response`
+**Message Type URI:**
+
+```
+https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response
+```
+
+**Message Fields:**
+
+- **`operation` REQUIRED:** The operation to use by the Verifier based on the supported operation of the Holder's agent.
+
+- **`data_query_lang` REQUIRED:** The query language to use to request data from the Holder's digital wallet. The sample implementation of this protocol supports DCQL defined within the [OID4VP specification](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l).
+
+- **`data_response` REQUIRED:** Contains the Verifiable Presentation (VP) of the shared credentials from the Holder's digital wallet.
+
+- **`response_format` REQUIRED:** The format of the data to be returned to the Verifier (e.g., application/json)
+
+- **`comment` OPTIONAL:** An optional comment about the request from the Holder.
+
 
 **Example:**
 
@@ -232,6 +269,25 @@ Shares the presentation of the Verifiable Credentials (VCs) from Holder to Verif
 
 In the example above, the **`data_response`** property contains the Verifiable Presentation (VP) of the shared credentials from the Holder.
 
+#### Data Response Validation by Verifier
+
+The Verifier MUST validate the data shared by the Holder by performing the following steps:
+
+1. The Verifier **MUST** resolve the `holder_did` to obtain its DID Document.
+
+2. The Verifier **MUST** verify the digital signature of the Verifiable Presentation (VP) using the public key from the Holder’s DID Document.
+
+3. For every Verifiable Credential (VC) included in the VP, the Verifier **MUST** resolve the Issuer’s DID to obtain its DID Document.
+
+4. The Verifier **MUST** verify the digital signature of each VC to ensure tamper-evidence and authenticity using the Issuer’s public key from the Issuer’s DID Document.
+
+5. The Verifier **MUST** check whether each VC has expired or been revoked by the Issuer.
+
+**This process ensures that:**
+
+- The credentials are authentic and have not been tampered with.
+- The Holder has control over the DID associated with the credentials shared from their wallet.
+
 ### data-processing-result
 
 After the Verifier receives the shared data and processes it, they send a response to the Holder regarding the result. 
@@ -240,7 +296,15 @@ For example, if the Holder is applying for a loan, the Verifier sends the result
 
 **Direction:** Verifier → Holder
 
-**Message Type URI:** `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-processing-result`
+**Message Type URI:**
+
+```
+https://affinidi.com/didcomm/protocols/vdsp/1.0/data-processing-result
+```
+
+**Message Fields:**
+
+- **`result` REQUIRED:** The result of the data processing conducted by the Verifier using the data shared by the Holder.
 
 **Example:**
 
@@ -277,7 +341,7 @@ Error reporting in this protocol **MUST** use the standard [Problem Report 2.0](
 | e.m.validation.invalid-signature | The digital signature in the Verifiable Presentation (VP) is invalid. | 
 | e.m.validation.invalid-vc | One or more Verifiable Credentials or the Verifiable Presentation shared by the Holder is invalid. The comment **SHOULD** indicate details of the issue (e.g., expired, revoked, invalid signature). |
 
-**Notes on Error Codes**
+**Notes on Error Models**
 
 - This list is not exhaustive. Other errors **MAY** occur during workflow execution.
 - Implementers **MAY** define additional error codes, provided they conform to the Problem Report 2.0 protocol.
