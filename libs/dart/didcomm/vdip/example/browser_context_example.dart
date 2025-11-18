@@ -121,8 +121,8 @@ Future<void> main() async {
     ),
   ]);
 
-  // Initialize VDIP Clients
-  final issuerClient = await VdipIssuer.init(
+  // Initialize VDIP issuer
+  final vdipIssuer = await VdipIssuer.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: issuerDidManager,
     featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
@@ -135,7 +135,7 @@ Future<void> main() async {
 
   // Start servers
   final issuerServer = await startIssuerServer(
-    issuerClient: issuerClient,
+    vdipIssuer: vdipIssuer,
     issuerSigner: issuerSigner,
   );
   final verificationServer = await startVerificationServer();
@@ -145,7 +145,7 @@ Future<void> main() async {
   print('   - Verification Server: http://localhost:8081');
   print('\n');
 
-  final holderClient = await VdipHolder.init(
+  final vdipHolder = await VdipHolder.init(
     mediatorDidDocument: mediatorDidDocument,
     didManager: holderDidManager,
     authorizationProvider: await AffinidiAuthorizationProvider.init(
@@ -156,14 +156,14 @@ Future<void> main() async {
   );
 
   // Set up Holder message listeners
-  holderClient.listenForIncomingMessages(
+  vdipHolder.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
       prettyPrint(
         'Holder: Received Feature Disclose Message',
         object: message,
       );
 
-      await holderClient.requestCredential(
+      await vdipHolder.requestCredential(
         issuerDid: issuerSigner.did,
         options: RequestCredentialsOptions(
           proposalId: 'proposal_browser_verification',
@@ -181,7 +181,7 @@ Future<void> main() async {
         object: message,
       );
 
-      final verificationUrl = await holderClient.buildBrowserContextUrl(
+      final verificationUrl = await vdipHolder.buildBrowserContextUrl(
         switchContextMessage: message,
       );
 
@@ -232,14 +232,14 @@ Future<void> main() async {
   );
 
   // Set up Issuer message listeners
-  issuerClient.listenForIncomingMessages(
+  vdipIssuer.listenForIncomingMessages(
     onFeatureQuery: (message) async {
       prettyPrint(
         'Issuer: Received Feature Query',
         object: message,
       );
 
-      await issuerClient.disclose(queryMessage: message);
+      await vdipIssuer.disclose(queryMessage: message);
     },
     onRequestToIssueCredential: ({
       required message,
@@ -273,7 +273,7 @@ Future<void> main() async {
         email: email as String,
       );
 
-      await issuerClient.sendSwitchContext(
+      await vdipIssuer.sendSwitchContext(
         holderDid: message.from!,
         baseIssuerUrl: Uri.parse('http://localhost:8080'),
         nonce: contextNonce,
@@ -298,7 +298,7 @@ Future<void> main() async {
 
   print('Holder: Initiating credential request...\n');
 
-  await holderClient.requestCredential(
+  await vdipHolder.requestCredential(
     issuerDid: issuerSigner.did,
     options: RequestCredentialsOptions(
       proposalId: 'proposal_browser_verification',
@@ -315,7 +315,7 @@ Future<void> main() async {
 
 /// Starts the Issuer Server that handles verification callbacks
 Future<HttpServer> startIssuerServer({
-  required VdipIssuer issuerClient,
+  required VdipIssuer vdipIssuer,
   required DidSigner issuerSigner,
 }) async {
   final server = await HttpServer.bind('localhost', 8080);
@@ -411,7 +411,7 @@ Future<HttpServer> startIssuerServer({
           ),
         );
 
-        await issuerClient.sendIssuedCredentials(
+        await vdipIssuer.sendIssuedCredentials(
           holderDid: verificationRequest.holderDid,
           verifiableCredential: issuedCredential,
         );
