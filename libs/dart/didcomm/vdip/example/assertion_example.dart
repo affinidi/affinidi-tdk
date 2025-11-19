@@ -209,10 +209,11 @@ Future<void> main() async {
           'Challenge received from holder',
           object: {'challenge': challenge},
         );
-        // In a real application, you would:
-        // 1. Store the challenge when you send a credential offer
-        // 2. Verify it matches the stored challenge here
-        // 3. Ensure the challenge hasn't been used before (prevent replay attacks)
+
+        /// In a real application challenge is used to prevent replay attacks:
+        /// 1. Store the challenge when sending a credential offer
+        /// 2. Verify it matches the stored challenge with [challenge] passed as an argument to [onRequestToIssueCredential]
+        /// 3. Ensure the challenge hasn't been used before
       }
 
       if (isAssertionValid != true) {
