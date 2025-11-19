@@ -116,7 +116,7 @@ sequenceDiagram
 
 **NOTE:** 
 
-Steps **1 - 4** in this workflow are **optional**. The Issuer **MAY** issue a credential without the Holder initiating feature discovery or receiving a request.
+Steps **1 - 4** in this workflow are **optional**. The Issuer **MAY** issue a credential without the Holder initiating feature discovery or an issuance request.
 
 For example, if the Holder is enrolled in a course, the training institution (Issuer) may automatically issue a credential upon completion. In this scenario, the Holder’s DID is already known to the Issuer, enabling credential generation and delivery without prior queries or requests.
 
