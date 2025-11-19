@@ -10,6 +10,7 @@ void emptyOnRequestIssuanceCallback({
   required message,
   isAssertionValid,
   holderDidFromAssertion,
+  challenge,
 }) {}
 
 Future<LdVcDataModelV1> generateEmailLdVcV1({

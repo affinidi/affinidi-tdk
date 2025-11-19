@@ -138,6 +138,7 @@ class VdipIssuer {
     void Function(QueryMessage)? onFeatureQuery,
     required void Function({
       required PlainTextMessage message,
+      String? challenge,
       bool? isAssertionValid,
       String? holderDidFromAssertion,
     }) onRequestToIssueCredential,
@@ -175,6 +176,8 @@ class VdipIssuer {
           final requestIssuanceMessageBody =
               VdipRequestIssuanceMessageBody.fromJson(plainTextMessage.body!);
 
+          final challenge = requestIssuanceMessageBody.challenge;
+
           final isRequestForSpecificHolder =
               requestIssuanceMessageBody.holderDid != null;
 
@@ -195,11 +198,15 @@ class VdipIssuer {
               holderDidFromAssertion: holderDid,
               isAssertionValid: isAssertionValid,
               message: plainTextMessage,
+              challenge: challenge,
             );
             return;
           }
 
-          onRequestToIssueCredential(message: plainTextMessage);
+          onRequestToIssueCredential(
+            message: plainTextMessage,
+            challenge: challenge,
+          );
 
           return;
         }

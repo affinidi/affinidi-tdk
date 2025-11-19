@@ -141,6 +141,9 @@ Future<void> main() async {
     ],
   );
 
+  // Generate a challenge for the credential request
+  final challenge = const Uuid().v4();
+
   vdipHolder.listenForIncomingMessages(
     onDiscloseMessage: (message) async {
       prettyPrint(
@@ -157,6 +160,7 @@ Future<void> main() async {
         assertionSigner: holderSigner,
         options: RequestCredentialsOptions(
           proposalId: 'proposal_id_from_oob',
+          challenge: challenge,
           credentialMeta: CredentialMeta(data: {'email': 'test@example.com'}),
         ),
       );
@@ -178,7 +182,6 @@ Future<void> main() async {
   );
 
   vdipIssuer.listenForIncomingMessages(
-    // TODO: verify challenge
     onFeatureQuery: (message) async {
       prettyPrint(
         'Issuer received Feature Query Message',
@@ -193,11 +196,24 @@ Future<void> main() async {
       required message,
       holderDidFromAssertion,
       isAssertionValid,
+      challenge,
     }) async {
       prettyPrint(
         'Issuer received Request to Issue Credential Message',
         object: message,
       );
+
+      // Verify the challenge if provided
+      if (challenge != null) {
+        prettyPrint(
+          'Challenge received from holder',
+          object: {'challenge': challenge},
+        );
+        // In a real application, you would:
+        // 1. Store the challenge when you send a credential offer
+        // 2. Verify it matches the stored challenge here
+        // 3. Ensure the challenge hasn't been used before (prevent replay attacks)
+      }
 
       if (isAssertionValid != true) {
         await vdipIssuer.mediatorClient.packAndSendMessage(

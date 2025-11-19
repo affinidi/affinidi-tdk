@@ -117,6 +117,7 @@ Future<void> main() async {
                   required message,
                   isAssertionValid,
                   holderDidFromAssertion,
+                  challenge,
                 }) async {
                   final holderDid = message.from!;
                   final body = VdipRequestIssuanceMessageBody.fromJson(
@@ -230,6 +231,7 @@ Future<void> main() async {
                   required message,
                   isAssertionValid,
                   holderDidFromAssertion,
+                  challenge,
                 }) async {
                   if (isAssertionValid == null || !isAssertionValid) {
                     testCompleter.completeError(
@@ -313,6 +315,58 @@ Future<void> main() async {
                 actual.body!,
               );
               expect(actualBody.comment, comment);
+            });
+
+            test('VDIP challenge validation works correctly', () async {
+              final testCompleter = Completer<String?>();
+              final expectedChallenge = const Uuid().v4();
+
+              final vdipIssuer = VdipIssuer(
+                didManager: issuerDidManager,
+                mediatorClient: mockMediator.clients[issuerDidManager]!,
+                featureDisclosures:
+                    FeatureDiscoveryHelper.vdipIssuerDisclosures,
+              );
+
+              vdipIssuer.listenForIncomingMessages(
+                onRequestToIssueCredential: ({
+                  required message,
+                  isAssertionValid,
+                  holderDidFromAssertion,
+                  challenge,
+                }) async {
+                  // Complete with the received challenge
+                  testCompleter.complete(challenge);
+                  await mockMediator.stopConnections();
+                },
+                onProblemReport: (message) async {
+                  testCompleter.completeError(message);
+                  await mockMediator.stopConnections();
+                },
+              );
+
+              final vdipHolder = VdipHolder(
+                didManager: holderDidManager,
+                mediatorClient: mockMediator.clients[holderDidManager]!,
+              );
+
+              await mockMediator.startConnections();
+
+              // Holder requests credential with challenge
+              await vdipHolder.requestCredential(
+                issuerDid: issuerDidDocument.id,
+                options: RequestCredentialsOptions(
+                  proposalId: proposalId,
+                  challenge: expectedChallenge,
+                  credentialFormat: CredentialFormat.w3cV1,
+                ),
+              );
+
+              final receivedChallenge = await testCompleter.future;
+
+              // Verify the challenge was properly transmitted
+              expect(receivedChallenge, isNotNull);
+              expect(receivedChallenge, equals(expectedChallenge));
             });
 
             test('VDIP switch context flow works correctly', () async {

@@ -299,11 +299,20 @@ Future<void> main() async {
       required message,
       holderDidFromAssertion,
       isAssertionValid,
+      challenge,
     }) async {
       prettyPrint(
         'Issuer received Request to Issue Credentials Message',
         object: message,
       );
+
+      // Log the received challenge
+      if (challenge != null) {
+        prettyPrint(
+          'Challenge received from holder',
+          object: {'challenge': challenge},
+        );
+      }
 
       await vdspIssuer.queryHolderFeatures(
         holderDid: (await holderDidManager.getDidDocument()).id,

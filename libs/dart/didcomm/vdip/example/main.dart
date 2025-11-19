@@ -190,11 +190,20 @@ Future<void> main() async {
       required message,
       holderDidFromAssertion,
       isAssertionValid,
+      challenge,
     }) async {
       prettyPrint(
         'Issuer received Request to Issue Credential Message',
         object: message,
       );
+
+      // Log challenge if present
+      if (challenge != null) {
+        prettyPrint(
+          'Challenge received',
+          object: {'challenge': challenge},
+        );
+      }
 
       final vdipRequestIssuanceMessageBody =
           VdipRequestIssuanceMessageBody.fromJson(
