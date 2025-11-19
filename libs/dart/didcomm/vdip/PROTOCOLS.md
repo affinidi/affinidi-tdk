@@ -68,16 +68,16 @@ sequenceDiagram
     participant DM as DIDComm Mediator
     participant IVDIP as Issuer's VDIP<br />Agent
     
-    HVDIP->>DM: [1] Queries the Issuer Agent for features discovery<br />Type `https://didcomm.org/discover-features/2.0/queries`
-    DM->>IVDIP: [1.1] Fetches the message for features discovery
-    IVDIP->>DM: [2] Disclosed supported features<br />Type: `https://didcomm.org/discover-features/2.0/disclose`
-    DM->>HVDIP: [2.1] Holder Agent fetches the disclosure response
-    HVDIP->>DM: [3] Request credential issuance from the Issuer<br />Type: `https://affinidi.com/didcomm/protocols/vdip/1.0/request-issuance`
-    DM->>IVDIP: [4] Fetches the message containing the request
+    HVDIP->>DM: [1] Holder forwards the feature query messsage to the mediator for discovery<br />Type `https://didcomm.org/discover-features/2.0/queries`
+    DM->>IVDIP: [1.1] Issuer fetches the feature query message
+    IVDIP->>DM: [2] Issuer forwards the disclosure to the mediator for the Holder<br />Type: `https://didcomm.org/discover-features/2.0/disclose`
+    DM->>HVDIP: [2.1] Holder fetches the disclosure response
+    HVDIP->>DM: [3] Holder send a request credential issuance message to the mediator for the Issuer<br />Type: `https://affinidi.com/didcomm/protocols/vdip/1.0/request-issuance`
+    DM->>IVDIP: [4] Issuer fetches the message containing the issuance request
     IVDIP->>IVDIP: [4.1] Checks the request and verifies the details
     IVDIP->>IVDIP: [5] Generates a VC and signs it
-    IVDIP->>DM: [6] Sends the signed VC to the Holder
-    DM->>HVDIP: [7] Fetches the message containing the signed VC
+    IVDIP->>DM: [6] Issuer forwards the message containing the signed VC to the mediator for the Holder
+    DM->>HVDIP: [7] Holder fetches the message containing the signed VC
     Note over HVDIP: [7.1] Holder stores the VC into their digital wallet
 
 ```

@@ -73,20 +73,20 @@ sequenceDiagram
     participant DM as DIDComm Mediator
     participant HVDSP as Holder's VDSP<br />Agent
     
-    VVDSP->>DM: [1] Queries the Holder Agent for features discovery<br />Type `https://didcomm.org/discover-features/2.0/queries`
-    DM->>HVDSP: [1.1] Fetches the DIDComm Message
-    HVDSP->>DM: [2] Disclosed supported features<br />Type: `https://didcomm.org/discover-features/2.0/disclose`
-    DM->>VVDSP: [2.1] Verifier Agent fetches the disclosure response
+    VVDSP->>DM: [1] Verifier forwards the feature query messsage to the mediator for discovery<br />Type `https://didcomm.org/discover-features/2.0/queries`
+    DM->>HVDSP: [1.1] Holder fetches the feature query message
+    HVDSP->>DM: [2] Holder forwards the disclosure to the mediator for the Verifier<br />Type: `https://didcomm.org/discover-features/2.0/disclose`
+    DM->>VVDSP: [2.1] Verifier fetches the disclosure response
     VVDSP->>VVDSP: [3] Creates a credential query using DCQL
-    VVDSP->>DM: [3.1] Sends a DIDComm Message with the credential query<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data`
-    DM->>HVDSP: [4] Fetches the DIDComm Message containing the query
+    VVDSP->>DM: [3.1] Verifier forwards the credential query message to the mediator for the Holder<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data`
+    DM->>HVDSP: [4] Holder fetches the message containing the credential query
     HVDSP->>HVDSP: [4.1] Evaluates the query
     HVDSP->>HVDSP: [5] Generates a Verifiable Presentation (VP) for matching VCs
-    HVDSP->>DM: [6] Sends a DIDComm Message containing the VP<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response`
-    DM->>VVDSP: [7] Fetches the response with the VP
+    HVDSP->>DM: [6] Holder forwards a message to the mediator containing the VP for the Verifier<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-response`
+    DM->>VVDSP: [7] Verifier fetches the message with the VP
     VVDSP->>VVDSP: [7.1] Process the shared credentials
-    VVDSP->>DM: [7.2] Creates a DIDComm Message containing processing the result<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-processing-result`
-    DM->>HVDSP: Data processing result
+    VVDSP->>DM: [7.2] Verifier forwards a message containing processing the result to mediator<br />Type: `https://affinidi.com/didcomm/protocols/vdsp/1.0/data-processing-result`
+    DM->>HVDSP: Holder fetches the processing result
 
 ```
 
