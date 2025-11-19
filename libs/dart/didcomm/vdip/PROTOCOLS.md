@@ -148,9 +148,11 @@ https://affinidi.com/didcomm/protocols/vdip/1.0/request-issuance
 
 - **`credential_format` OPTIONAL:** The format of the Verifiable Credential to be issued (e.g., W3C/V2 Data Model). This field is optional, and the Issuer may choose to issue using one of the supported formats from the list disclosed by the discovery features disclosure.
 
-- **`credential_meta` OPTIONAL:** Additional data needed to create the credential for issuance (e.g., email, other relevant attributes).
+- **`credential_meta` OPTIONAL:** An optional object that contains credential-specific metadata or claims. This field **MAY** include information such as `@context`, validity based on the credential format, or additional data for the `credentialSubject` to be included as claims in the issued credential.
 
-- **`holder_did` OPTIONAL:** The DID of the Holder who will receive the credential, different from the DID of the message sender. Only **REQUIRED** when issuing a credential to a different DID.
+  The Issuer MAY choose to ignore the values provided in credential_meta, or use them as additional input to validate the request and enrich the issued credential.
+
+- **`holder_did` OPTIONAL:** The DID of the Holder who will receive the credential, different from the DID of the message sender. Only **REQUIRED** when issuing a credential to a different DID that the sender owned.
 
 - **`assertion` OPTIONAL:** A signed JWT for proving control of the specified **`holder_did`** in the request. Only **REQUIRED** when issuing a credential to a different DID. 
 
@@ -164,7 +166,7 @@ https://affinidi.com/didcomm/protocols/vdip/1.0/request-issuance
     - `iat`: Issuance timestamp.
     - `challenge`: Optional additional anti-replay binding.
 
-- **`challenge` OPTIONAL:** An optional secret. Allows Issuer to associate Holder with a conventional contact method (e.g., email or phone).
+- **`challenge` OPTIONAL:** An optional secret value used to bind the request to a proof of control. It enables the Issuer to associate the credential request with a challenge that the Holder **MUST** satisfy to prove ownership of the claim.
 
 - **`data_integrity_proof_suite` OPTIONAL:** An optional configuration that specifies which data integrity proof suite Holder requires. Applies only for VC types that support it. If not provided, the Issuer can choose to use one of the proof suites it supports.
 
