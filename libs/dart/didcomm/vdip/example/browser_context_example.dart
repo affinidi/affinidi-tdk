@@ -252,7 +252,6 @@ Future<void> main() async {
         object: message,
       );
 
-      // Log challenge if present
       if (challenge != null) {
         prettyPrint(
           'Challenge received',
