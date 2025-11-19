@@ -14,6 +14,10 @@ class ClientOptions {
   /// Options for WebSocket connections.
   final WebSocketOptions webSocketOptions;
 
+  final String mediatorDid;
+
+  final String atlasDid;
+
   /// Creates a [ClientOptions] instance.
   ///
   /// [requestTimeout] sets the maximum duration for requests.
@@ -25,6 +29,9 @@ class ClientOptions {
     this.messageExpiration = const Duration(minutes: 1),
     this.forwardMessageOptions = const ForwardMessageOptions(),
     this.webSocketOptions = const WebSocketOptions(),
+    this.mediatorDid =
+        'did:web:66a6ec69-0646-4a8d-ae08-94e959855fa9.atlas.affinidi.io',
+    this.atlasDid = 'did:web:did.dev.affinidi.io:ama',
   });
 }
 

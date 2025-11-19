@@ -30,6 +30,8 @@ class TestConfig {
 
   static Future<TestConfig> configureTestFiles({
     required String packageDirectoryName,
+    bool skipBob = false,
+    bool skipMediator = false,
   }) async {
     final packagePath = _getPackagePath(
       packageDirectoryName: packageDirectoryName,
@@ -52,10 +54,12 @@ class TestConfig {
         )
         .toList();
 
-    await writeEnvironmentVariableToFileIfNeeded(
-      'TEST_MEDIATOR_DID',
-      mediatorDidPath,
-    );
+    if (!skipMediator) {
+      await writeEnvironmentVariableToFileIfNeeded(
+        'TEST_MEDIATOR_DID',
+        mediatorDidPath,
+      );
+    }
 
     await writeEnvironmentVariableToFileIfNeeded(
       'TEST_ALICE_PRIVATE_KEY_PEM',
@@ -66,14 +70,16 @@ class TestConfig {
       decodeBase64: true,
     );
 
-    await writeEnvironmentVariableToFileIfNeeded(
-      'TEST_BOB_PRIVATE_KEY_PEM',
-      _getFilePath(
-        packagePath: packagePath,
-        fileName: bobPrivateKeyPath,
-      ),
-      decodeBase64: true,
-    );
+    if (!skipBob) {
+      await writeEnvironmentVariableToFileIfNeeded(
+        'TEST_BOB_PRIVATE_KEY_PEM',
+        _getFilePath(
+          packagePath: packagePath,
+          fileName: bobPrivateKeyPath,
+        ),
+        decodeBase64: true,
+      );
+    }
 
     return TestConfig._(
       packagePath: packagePath,

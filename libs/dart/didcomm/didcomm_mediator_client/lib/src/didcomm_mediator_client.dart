@@ -40,9 +40,10 @@ class DidcommMediatorClient extends MediatorClient {
     required this.didManager,
     this.clientOptions = const ClientOptions(),
     super.authorizationProvider,
-    super.forwardMessageOptions,
-    super.webSocketOptions,
-  });
+  }) : super(
+          forwardMessageOptions: clientOptions.forwardMessageOptions,
+          webSocketOptions: clientOptions.webSocketOptions,
+        );
 
   /// Initializes a [DidcommMediatorClient] asynchronously.
   ///
@@ -69,8 +70,6 @@ class DidcommMediatorClient extends MediatorClient {
       didKeyId: tmpParent.didKeyId,
       signer: tmpParent.signer,
       authorizationProvider: authorizationProvider,
-      forwardMessageOptions: clientOptions.forwardMessageOptions,
-      webSocketOptions: clientOptions.webSocketOptions,
     );
   }
 
@@ -167,20 +166,18 @@ class DidcommMediatorClient extends MediatorClient {
   /// Sends a [AclManagementMessage] to the mediator.
   ///
   /// [message] - The message to send.
-  /// [accessToken] - Optional bearer token for authentication.
   ///
   /// Returns the packed [DidcommMessage] that was sent.
   Future<DidcommMessage> sendAclManagementMessage(
-    AclManagementMessage message, {
-    String? accessToken,
-  }) async {
+    AclManagementMessage message,
+  ) async {
     final dio = mediatorDidDocument.toDio(
       mediatorServiceType: DidDocumentServiceType.didCommMessaging,
     );
 
     final messageToSend = await packMessage(
       message,
-      messageOptions: forwardMessageOptions,
+      messageOptions: clientOptions.forwardMessageOptions,
     );
 
     try {
