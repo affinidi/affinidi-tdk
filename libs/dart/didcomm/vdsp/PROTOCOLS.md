@@ -13,6 +13,7 @@ This document describes protocols implemented in the scope of `Verifiable Data S
 - [Security](#security)
 - [Workflow](#workflow)
 - [Messages](#messages)
+  - [request-service](#request-service)
   - [query-data](#query-data)
   - [data-response](#data-response)
   - [data-processing-result](#data-processing-result)
@@ -46,7 +47,7 @@ An entity that stores and controls verifiable credentials. The holder can receiv
 
 The protocol follows the request-response pattern of message exchange, where it waits for a response from the Holder, especially when querying data.
 
-The Verifier **MUST** send the `data-processing-result` to inform the Holder of the outcome after sharing the data.
+The Verifier **MAY** send the `data-processing-result` to inform the Holder of the outcome after sharing the data.
 
 ## Security
 
@@ -55,6 +56,12 @@ The protocol requires that all message exchanges between the Verifier and the Ho
 - All messages **MUST** use `authcrypt` encryption envelope (e.g., `authcrypt(signed(plaintext))` or `authcrypt(plaintext)`) to verify the sender and the content remains confidential throughout transmission.
 
 - The Verifier **MUST** cryptographically verify the digital signatures of Verifiable Credentials (VCs) and Verifiable Presentations (VPs) shared by the Holder.
+
+- The Verifier **MUST** check whether each VC has expired or been revoked by the Issuer.
+
+- If `query-data` request uses `proof_context` (**RECOMMENDED**), the Verifier **MUST** check the challenge string and domain included in the VP's proof data.
+
+- The Verifier **MUST** check whether the Issuer DID and Holder DID have the expected value.
 
 ## Workflow
 
@@ -88,8 +95,12 @@ sequenceDiagram
     The Verifier **MAY** send a message to the Holder requesting information about supported features ([`discover-features/2.0/queries`](#querying-features)).
 
 2. **Feature Disclosure**
-    
-    The Holder **MAY** respond with a message listing the supported features ([`discover-features/2.0/disclose`](#feature-disclosures)).
+
+    If the Verifier sends a feature query:
+
+    - The Holder **MUST** check whether the Verifier is trusted and ensure that only the necessary features are disclosed.
+    - 
+    - The Holder **MUST** respond with a message listing the supported features ([`discover-features/2.0/disclose`](#feature-disclosures)).
 
 3. **Credential Query Request**
 
@@ -99,25 +110,72 @@ sequenceDiagram
 
     The Holder retrieves the message and evaluates the credential query to identify matching credentials in the digital wallet.
 
+    - Once matching credentials are found, the Holder's digital wallet **SHOULD** display the list of VCs and **SHOULD** allow the Holder to select which VCs to share if multiple matches exist.
+
 5. **Verifiable Presentation Generation**
 
-    If matching credentials exist, the wallet **MUST** generate a Verifiable Presentation (VP) signed with the Holder’s Decentralised Identifier (DID).
+    If matching credentials exist, the wallet **MUST** generate a Verifiable Presentation (VP) signed with the Holder’s Decentralised Identifier (DID). 
+    
+    Otherwise, the Holder **MUST** return a [Problem Report](#error-models) message conforming to the Problem Report 2.0 protocol..
 
 6. **Presentation Delivery**
 
     The Holder **MUST** send a message back to the Verifier containing the Verifiable Presentation ([`vdsp/1.0/data-response`](#data-response)).
 
 7. **Verification and Processing**
-   
-    Upon receiving the VP, the Verifier **MUST** cryptographically verifies the credentials, processes the data for its intended purpose, and the Verifier **MUST** send the result back to the Holder ([`vdsp/1.0/data-processing-result`](#data-processing-result)). 
+
+   - The Verifier **MUST** cryptographically verify the credentials and process the data for its intended purpose.
+
+   - The Verifier **MUST** also verify other details of the VP to ensure authenticity and tamper-evidence (refer to [Data Response Validation by Verifier](#data-response-validation-by-verifier) for additional steps).
+
+   - The Verifier **MAY** send the result back to the Holder ([`vdsp/1.0/data-processing-result`](#data-processing-result)).
+
 
 ## Messages
 
 VDSP implements the following message types.
 
+### request-service
+
+The Holder sends a message to the Verifier whether a particular service is available, for example, if the Verifier has LoanApplicationAgent for the Holder to apply for loan. In this scenario, the Holder is the initiator of the workflow instead of the Verifier.
+
+**Direction:** Holder → Verifier
+
+**Message Type URI:** 
+
+```
+https://affinidi.com/didcomm/protocols/vdsp/1.0/request-service
+```
+
+**Message Fields:**
+
+- **`operation` REQUIRED:** The operation to use by the Holder based on the supported operations of the Verifier's agent.
+
+- **`comment` OPTIONAL:** An optional comment about the request from the Holder.
+
+**Example:**
+
+```json
+{
+  "id": "13c8e304-cc5c-4a2f-90d9-cbc939bfe67f",
+  "type": "https://affinidi.com/didcomm/protocols/vdsp/1.0/request-service",
+  "from": "did:key:Vz6MkhA4WiEoTaSXmShG4s2mpYsWku2km2MaLq1m2g3yReZF7",
+  "to": [
+    "did:webvh:QmQfsx1wNZYpVxjWwMnUj16rDH2dq8UbcsC1igZMR23k9z:verifierdomain.com"
+  ],
+  "body": {
+    "operation": "LoanApplicationAgent",
+    "comment": "I'd like to apply for a car loan."
+  }
+}
+```
+
+
 ### query-data
 
 Request Verifiable Credentials (VCs) from Verifier to Holder using Digital Credentials Query Language (DCQL).
+
+The `query-data` **MAY** be executed multiple times by the Verifier based on previous data exchanges to complete the process according to their business workflow.
 
 **Direction:** Verifier → Holder
 
@@ -129,8 +187,6 @@ https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data
 
 **Message Fields:**
 
-- **`operation` REQUIRED:** The operation to use by the Verifier based on the supported operation of the Holder's agent.
-
 - **`data_query_lang` REQUIRED:** The query language to use to request data from the Holder's digital wallet. The sample implemention of this protocol supports DCQL defined within the [OID4VP specification](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l).
 
 - **`query` REQUIRED:** The query that adheres to the syntax of the selected `data_query_lang`. The sample implementation of this protocol uses a query that adheres to the format defined in DCQL within the [OID4VP specification](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l).
@@ -140,6 +196,8 @@ https://affinidi.com/didcomm/protocols/vdsp/1.0/query-data
   - `domain`: The domain of the Verifier for verifying the request origin.
 
 - **`response_format` REQUIRED:** The format of the data to be returned to the Verifier (e.g., application/json)
+
+- **`operation` OPTIONAL:** The operation to use by the Holder based on the supported operations of the Verifier's agent.
 
 - **`comment` OPTIONAL:** An optional comment about the request from the Verifier.
 
@@ -283,9 +341,13 @@ The Verifier MUST validate the data shared by the Holder by performing the follo
 
 5. The Verifier **MUST** check whether each VC has expired or been revoked by the Issuer.
 
-**This process ensures that:**
+6. The Verifier **MUST** check the challenge string and domain included in the VP's proof data.
 
-- The credentials are authentic and have not been tampered with.
+7. The Verifier **MUST** check whether the Issuer DID and Holder DID have the expected value.
+
+**This process ensures:**
+
+- The credentials authenticity and tamper-evidence.
 - The Holder has control over the DID associated with the credentials shared from their wallet.
 
 ### data-processing-result
