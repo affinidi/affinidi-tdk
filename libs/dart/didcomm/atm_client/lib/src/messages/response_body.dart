@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'response_body.g.dart';
@@ -23,9 +25,24 @@ class ResponseBody {
   });
 
   /// Creates a ResponseBody from a JSON map.
-  factory ResponseBody.fromJson(Map<String, dynamic> json) =>
-      _$ResponseBodyFromJson(json);
+  factory ResponseBody.fromJson(Map<String, dynamic> json) => ResponseBody(
+    response: _stringifyResponse(json['response']),
+    headers: (json['headers'] as Map<String, dynamic>?)?.map(
+      (k, e) => MapEntry(k, e as String),
+    ),
+    statusCode: (json['status_code'] as num).toInt(),
+  );
 
   /// Converts this ResponseBody to a JSON map.
   Map<String, dynamic> toJson() => _$ResponseBodyToJson(this);
+
+  static String _stringifyResponse(Object? value) {
+    if (value is String) {
+      return value;
+    }
+    if (value == null) {
+      throw ArgumentError('Response field must not be null');
+    }
+    return jsonEncode(value);
+  }
 }
