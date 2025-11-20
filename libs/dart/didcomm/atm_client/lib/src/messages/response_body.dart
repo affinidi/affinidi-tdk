@@ -26,7 +26,7 @@ class ResponseBody {
 
   /// Creates a ResponseBody from a JSON map.
   factory ResponseBody.fromJson(Map<String, dynamic> json) => ResponseBody(
-    response: _stringifyResponse(json['response']),
+    response: _normalizeResponse(json['response']),
     headers: (json['headers'] as Map<String, dynamic>?)?.map(
       (k, e) => MapEntry(k, e as String),
     ),
@@ -36,7 +36,7 @@ class ResponseBody {
   /// Converts this ResponseBody to a JSON map.
   Map<String, dynamic> toJson() => _$ResponseBodyToJson(this);
 
-  static String _stringifyResponse(Object? value) {
+  static String _normalizeResponse(Object? value) {
     if (value is String) {
       return value;
     }
