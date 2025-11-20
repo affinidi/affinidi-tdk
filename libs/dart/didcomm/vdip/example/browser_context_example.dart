@@ -252,6 +252,59 @@ Future<void> main() async {
         object: message,
       );
 
+      /// Issuer & Holder negotiate on how challenge get to holder, challenge must be used once.
+      /// Simple example of how to verify a challenge:
+      ///
+      /// // 1. Issuer generates and stores a challenge when offering a credential
+      /// final challenge = const Uuid().v4();
+      /// final challengeStore = <String, String>{}; // In production, use secure storage
+      /// challengeStore[holderDid] = challenge;
+      ///
+      /// // 2. Holder requests the credential with the challenge
+      /// await vdipHolder.requestCredential(
+      ///   issuerDid: issuerDid,
+      ///   options: RequestCredentialsOptions(
+      ///     proposalId: proposalId,
+      ///     challenge: challenge, // Include the challenge received from issuer
+      ///     credentialFormat: CredentialFormat.w3cV1,
+      ///   ),
+      /// );
+      ///
+      /// // 3. Issuer verifies the challenge in the callback
+      /// vdipIssuer.listenForIncomingMessages(
+      ///   onRequestToIssueCredential: ({
+      ///     required message,
+      ///     holderDidFromAssertion,
+      ///     isAssertionValid,
+      ///     challenge,
+      ///   }) async {
+      ///     // Verify the challenge matches the one we stored
+      ///     final storedChallenge = challengeStore[holderDidFromAssertion];
+      ///     final isChallengeValid = storedChallenge != null &&
+      ///                               storedChallenge == challenge;
+      ///
+      ///     if (!isChallengeValid) {
+      ///       // Reject the request - potential replay attack
+      ///       await vdipIssuer.mediatorClient.packAndSendMessage(
+      ///         ProblemReportMessage(
+      ///           id: const Uuid().v4(),
+      ///           to: [message.from!],
+      ///           body: {
+      ///             'code': 'invalid-challenge',
+      ///             'comment': 'Challenge validation failed',
+      ///           },
+      ///         ),
+      ///       );
+      ///       return;
+      ///     }
+      ///
+      ///     // Challenge is valid, remove it from storage (single-use)
+      ///     challengeStore.remove(holderDidFromAssertion);
+      ///
+      ///     // Proceed with credential issuance...
+      ///   },
+      /// );
+
       if (challenge != null) {
         prettyPrint(
           'Challenge received',
