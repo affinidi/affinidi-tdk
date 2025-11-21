@@ -306,7 +306,7 @@ Future<void> main() async {
         object: message,
       );
 
-      // Log the received challenge
+      // Issuer should verify challenge matches the expected challenge
       if (challenge != null) {
         prettyPrint(
           'Challenge received from holder',
