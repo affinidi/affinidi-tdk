@@ -1,7 +1,6 @@
 // ignore_for_file: strict_top_level_inference, type_annotate_public_apis
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart'
-    hide CredentialFormat;
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
@@ -92,7 +91,7 @@ Future<DidManager> createDidManager({
   return didManager;
 }
 
-Future<EncryptedMessage> createdEncryptedIssuedCredentialMessage({
+Future<EncryptedMessage> createEncryptedIssuedCredentialMessage({
   required DidManager issuerDidManager,
   required DidManager holderDidManager,
   String? from,
@@ -153,5 +152,38 @@ Future<EncryptedMessage> createdEncryptedProblemReportMessage({
     encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
     keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
     recipientDidDocuments: [receiverDidDocument],
+  );
+}
+
+Future<EncryptedMessage> createEncryptedMessageForAssertion({
+  required DidManager issuerDidManager,
+  required DidManager holderDidManager,
+  required String signedAssertion,
+  required String proposalId,
+}) async {
+  final issuerDidDocument = await issuerDidManager.getDidDocument();
+  final holderDidDocument = await holderDidManager.getDidDocument();
+
+  final requestIssuanceMessage = VdipRequestIssuanceMessage(
+    id: const Uuid().v4(),
+    to: [issuerDidDocument.id],
+    from: holderDidDocument.id,
+    body: VdipRequestIssuanceMessageBody(
+      assertion: signedAssertion,
+      proposalId: proposalId,
+      holderDid: holderDidDocument.id,
+      credentialFormat: CredentialFormat.w3cV1.toString(),
+      jsonWebSignatureAlgorithm: JsonWebSignatureAlgorithm.es256.toString(),
+    ),
+  );
+
+  return await DidcommMessage.packIntoEncryptedMessage(
+    requestIssuanceMessage,
+    keyPair: await holderDidManager
+        .getKeyPairByDidKeyId(holderDidDocument.keyAgreement.first.id),
+    didKeyId: holderDidDocument.keyAgreement.first.id,
+    encryptionAlgorithm: EncryptionAlgorithm.a256cbc,
+    keyWrappingAlgorithm: KeyWrappingAlgorithm.ecdh1Pu,
+    recipientDidDocuments: [issuerDidDocument],
   );
 }

@@ -240,13 +240,23 @@ class VdipIssuer {
 
     final payload = decodedJwsAssertion.payload;
 
-    final assertionSubject = payload['sub'];
     final assertionProposalId = payload['proposalId'];
+    final assertionSubject = payload['sub'];
+    final assertionIssuer = payload['iss'];
     final assertionAudienceId = payload['aud'];
+    final assertionExpiration = payload['exp'] as int?;
 
-    return assertionSubject == holderDid &&
-        assertionProposalId == proposalId &&
-        assertionAudienceId == vcIssuerDid;
+    final isProvenDID =
+        assertionSubject == holderDid && assertionIssuer == holderDid;
+    final isProposalValid = assertionProposalId == proposalId;
+    final isAudienceValid = assertionAudienceId == vcIssuerDid;
+    final isAssertionExpirationValid = assertionExpiration != null &&
+        assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
+
+    return isProvenDID &&
+        isProposalValid &&
+        isAudienceValid &&
+        isAssertionExpirationValid;
   }
 
   /// Sends a switch context message to the given [holderDid].
@@ -276,7 +286,6 @@ class VdipIssuer {
     );
 
     await mediatorClient.packAndSendMessage(message);
-
     return message;
   }
 }
