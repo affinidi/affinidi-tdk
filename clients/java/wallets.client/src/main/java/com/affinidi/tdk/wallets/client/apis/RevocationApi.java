@@ -26,6 +26,7 @@ import com.affinidi.tdk.wallets.client.models.InvalidParameterError;
 import com.affinidi.tdk.wallets.client.models.NotFoundError;
 import com.affinidi.tdk.wallets.client.models.OperationForbiddenError;
 import com.affinidi.tdk.wallets.client.models.RevokeCredentialInput;
+import com.affinidi.tdk.wallets.client.models.RevokeCredentialsInput;
 
 
 import java.util.ArrayList;
@@ -259,6 +260,85 @@ public class RevocationApi extends BaseApi {
     
     // create path and map variables
     String localVarPath = "/v1/wallets/{walletId}/revoke"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        null
+    );
+  }
+
+  /**
+   * Revoke Credentials.
+   * Update index/credential at appropriate revocation list (set revoked is true).
+   * @param walletId id of the wallet (required)
+   * @param revokeCredentialsInput RevokeCredentials (required)
+   * @throws ApiException if fails to make API call
+   */
+  public void revokeCredentials(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull RevokeCredentialsInput revokeCredentialsInput) throws ApiException {
+    this.revokeCredentials(walletId, revokeCredentialsInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * Revoke Credentials.
+   * Update index/credential at appropriate revocation list (set revoked is true).
+   * @param walletId id of the wallet (required)
+   * @param revokeCredentialsInput RevokeCredentials (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @throws ApiException if fails to make API call
+   */
+  public void revokeCredentials(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull RevokeCredentialsInput revokeCredentialsInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = revokeCredentialsInput;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling revokeCredentials");
+    }
+    
+    // verify the required parameter 'revokeCredentialsInput' is set
+    if (revokeCredentialsInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'revokeCredentialsInput' when calling revokeCredentials");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/wallets/{walletId}/credentials/revoke"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
