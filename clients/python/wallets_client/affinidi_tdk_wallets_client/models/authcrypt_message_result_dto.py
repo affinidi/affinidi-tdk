@@ -24,7 +24,7 @@ from pydantic import BaseModel, Field
 
 class AuthcryptMessageResultDto(BaseModel):
     """
-    DTO contains authcrypted message in JSON fromat  # noqa: E501
+    DTO contains authcrypted message in JSON format  # noqa: E501
     """
     authcrypted_message: Dict[str, Any] = Field(default=..., alias="authcryptedMessage", description="Authcrypted message in JSON format")
     __properties = ["authcryptedMessage"]

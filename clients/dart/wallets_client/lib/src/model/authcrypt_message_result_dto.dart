@@ -9,7 +9,7 @@ import 'package:built_value/serializer.dart';
 
 part 'authcrypt_message_result_dto.g.dart';
 
-/// DTO contains authcrypted message in JSON fromat
+/// DTO contains authcrypted message in JSON format
 ///
 /// Properties:
 /// * [authcryptedMessage] - Authcrypted message in JSON format

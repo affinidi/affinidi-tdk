@@ -1,6 +1,6 @@
 # AuthcryptMessageResultDto
 
-DTO contains authcrypted message in JSON fromat
+DTO contains authcrypted message in JSON format
 
 ## Properties
 

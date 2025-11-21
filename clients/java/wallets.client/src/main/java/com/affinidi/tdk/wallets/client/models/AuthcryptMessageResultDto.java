@@ -27,7 +27,7 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * DTO contains authcrypted message in JSON fromat
+ * DTO contains authcrypted message in JSON format
  */
 @JsonPropertyOrder({
   AuthcryptMessageResultDto.JSON_PROPERTY_AUTHCRYPTED_MESSAGE
