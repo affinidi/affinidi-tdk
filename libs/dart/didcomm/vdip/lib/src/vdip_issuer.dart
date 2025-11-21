@@ -246,14 +246,14 @@ class VdipIssuer {
     final assertionAudienceId = payload['aud'];
     final assertionExpiration = payload['exp'] as int?;
 
-    final isProvenDID =
+    final isCorrectDID =
         assertionSubject == holderDid && assertionIssuer == holderDid;
     final isProposalValid = assertionProposalId == proposalId;
     final isAudienceValid = assertionAudienceId == vcIssuerDid;
     final isAssertionExpirationValid = assertionExpiration != null &&
         assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-    return isProvenDID &&
+    return isCorrectDID &&
         isProposalValid &&
         isAudienceValid &&
         isAssertionExpirationValid;
