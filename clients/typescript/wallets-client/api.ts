@@ -69,7 +69,7 @@ export type AuthcryptMessageInputSignatureSchemeEnum =
   (typeof AuthcryptMessageInputSignatureSchemeEnum)[keyof typeof AuthcryptMessageInputSignatureSchemeEnum]
 
 /**
- * DTO contains authcrypted message in JSON fromat
+ * DTO contains authcrypted message in JSON format
  * @export
  * @interface AuthcryptMessageResultDto
  */
