@@ -1,14 +1,13 @@
-import 'dart:convert';
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../response_body.dart';
+import 'config/base_instance_message.dart';
+import 'config/instance_type_config.dart';
 
 part 'get_mediator_requests_message.g.dart';
 
 /// Message for getting mediator requests.
-class GetMediatorRequestsMessage extends PlainTextMessage {
+class GetMediatorRequestsMessage extends BaseInstanceMessage {
   /// Creates a get mediator requests message.
   GetMediatorRequestsMessage({
     required super.id,
@@ -19,14 +18,13 @@ class GetMediatorRequestsMessage extends PlainTextMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorRequests',
-          ),
+         operationName: 'getMediatorRequests',
+          instanceType: InstanceType.mediator
         );
 }
 
 /// Response message for get mediator requests operation.
-class GetMediatorRequestsResponseMessage extends PlainTextMessage {
+class GetMediatorRequestsResponseMessage extends BaseInstanceResponseMessage<GetMediatorRequestsResponseData> {
   /// Creates a get mediator requests response message.
   GetMediatorRequestsResponseMessage({
     required super.id,
@@ -37,20 +35,12 @@ class GetMediatorRequestsResponseMessage extends PlainTextMessage {
     super.threadId,
     super.body = const {},
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorRequests/response',
-          ),
+          operationName: 'getMediatorRequests',
+          instanceType: InstanceType.mediator,
         );
 
-  /// Gets the list of mediator requests from the message body.
-  List<MediatorRequest> get requests {
-    final responseBody = ResponseBody.fromJson(body!);
-    final bodyData = GetMediatorRequestsResponseData.fromJson(
-      jsonDecode(responseBody.response) as Map<String, dynamic>,
-    );
-
-    return bodyData.requests;
-  }
+  @override
+  GetMediatorRequestsResponseData parseResponse(Map<String, dynamic> json) => GetMediatorRequestsResponseData.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

@@ -5,8 +5,11 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../affinidi_tdk_atm_client.dart';
+import '../messages/atlas/config/instance_type_config.dart';
 
+/// DIDComm client for interacting with the Affinidi Atlas service.
 class DidcommAtlasClient extends DidcommServiceClient {
+  /// Creates a [DidcommAtlasClient] instance.
   DidcommAtlasClient({
     required super.didManager,
     required super.serviceDidDocument,
@@ -18,6 +21,11 @@ class DidcommAtlasClient extends DidcommServiceClient {
     required super.signer,
   });
 
+  /// Initializes a [DidcommAtlasClient] instance.
+  /// 
+  /// [didManager] required for managing DIDs and keys.
+  /// [authorizationProvider] is optional; if not provided an [AffinidiAuthorizationProvider] will be created.
+  /// [clientOptions] configures client behavior
   static Future<DidcommAtlasClient> init({
     required DidManager didManager,
     AuthorizationProvider? authorizationProvider,
@@ -63,7 +71,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorInstancesListMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: GetMediatorInstancesListRequest(
+      body: BaseGetInstancesListRequest(
         limit: limit,
         exclusiveStartKey: exclusiveStartKey,
       ).toJson(),
@@ -85,7 +93,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
   /// Deploys a new mediator instance.
   Future<DeployMediatorInstanceResponseMessage> deployMediatorInstance({
-    DeployMediatorInstanceRequest? deploymentData,
+    BaseDeployInstanceRequest? deploymentData,
   }) async {
     final requestMessage = DeployMediatorInstanceMessage(
       id: const Uuid().v4(),
@@ -115,8 +123,9 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorInstanceMetadataMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: GetMediatorInstanceMetadataRequest(
-        mediatorId: mediatorId,
+      body: BaseGetInstanceMetadataRequest(
+        instanceId: mediatorId,
+        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 
@@ -141,8 +150,9 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = DestroyMediatorInstanceMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: DestroyMediatorInstanceRequest(
-        mediatorId: mediatorId,
+      body: BaseDestroyInstanceRequest(
+        instanceId: mediatorId,
+        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 
@@ -163,7 +173,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
   /// Updates the deployment configuration of a mediator instance.
   Future<UpdateMediatorInstanceDeploymentResponseMessage>
       updateMediatorInstanceDeployment({
-    required UpdateMediatorInstanceDeploymentRequest deploymentData,
+    required BaseUpdateInstanceDeploymentRequest deploymentData,
   }) async {
     final requestMessage = UpdateMediatorInstanceDeploymentMessage(
       id: const Uuid().v4(),
@@ -188,7 +198,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
   /// Updates the configuration of a mediator instance.
   Future<UpdateMediatorInstanceConfigurationResponseMessage>
       updateMediatorInstanceConfiguration({
-    required UpdateMediatorInstanceConfigurationRequest configurationData,
+    required BaseUpdateInstanceConfigurationRequest configurationData,
   }) async {
     final requestMessage = UpdateMediatorInstanceConfigurationMessage(
       id: const Uuid().v4(),
@@ -219,10 +229,11 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorRequestsMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: GetMediatorRequestsRequest(
-        mediatorId: mediatorId,
+      body: BaseGetInstanceRequestsRequest(
+        instanceId: mediatorId,
         limit: limit,
         exclusiveStartKey: exclusiveStartKey,
+        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 

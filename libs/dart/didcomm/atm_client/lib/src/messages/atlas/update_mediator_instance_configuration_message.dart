@@ -1,14 +1,13 @@
-import 'dart:convert';
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../response_body.dart';
+import 'config/base_instance_message.dart';
+import 'config/instance_type_config.dart';
 
 part 'update_mediator_instance_configuration_message.g.dart';
 
 /// Message for updating mediator instance configuration.
-class UpdateMediatorInstanceConfigurationMessage extends PlainTextMessage {
+class UpdateMediatorInstanceConfigurationMessage extends BaseInstanceMessage {
   /// Creates an update mediator instance configuration message.
   UpdateMediatorInstanceConfigurationMessage({
     required super.id,
@@ -19,15 +18,15 @@ class UpdateMediatorInstanceConfigurationMessage extends PlainTextMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/updateMediatorInstanceConfiguration',
-          ),
+          operationName: 'updateMediatorInstanceConfiguration',
+          instanceType: InstanceType.mediator,
         );
 }
 
 /// Response message for update mediator instance configuration operation.
 class UpdateMediatorInstanceConfigurationResponseMessage
-    extends PlainTextMessage {
+    extends BaseInstanceResponseMessage<
+        UpdateMediatorInstanceConfigurationResponse> {
   /// Creates an update mediator instance configuration response message.
   UpdateMediatorInstanceConfigurationResponseMessage({
     required super.id,
@@ -38,18 +37,14 @@ class UpdateMediatorInstanceConfigurationResponseMessage
     super.threadId,
     super.body = const {},
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/updateMediatorInstanceConfiguration/response',
-          ),
+          operationName: 'updateMediatorInstanceConfiguration',
+          instanceType: InstanceType.mediator,
         );
 
-  /// Gets the parsed response data from the message body.
-  UpdateMediatorInstanceConfigurationResponse get response {
-    final responseBody = ResponseBody.fromJson(body!);
-    return UpdateMediatorInstanceConfigurationResponse.fromJson(
-      jsonDecode(responseBody.response) as Map<String, dynamic>,
-    );
-  }
+  @override
+  UpdateMediatorInstanceConfigurationResponse parseResponse(
+          Map<String, dynamic> json) =>
+      UpdateMediatorInstanceConfigurationResponse.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

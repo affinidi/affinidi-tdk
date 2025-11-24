@@ -1,14 +1,13 @@
-import 'dart:convert';
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../response_body.dart';
+import 'config/base_instance_message.dart';
+import 'config/instance_type_config.dart';
 
 part 'deploy_mediator_instance_message.g.dart';
 
 /// Message for deploying a mediator instance.
-class DeployMediatorInstanceMessage extends PlainTextMessage {
+class DeployMediatorInstanceMessage extends BaseInstanceMessage {
   /// Creates a deploy mediator instance message.
   DeployMediatorInstanceMessage({
     required super.id,
@@ -19,14 +18,15 @@ class DeployMediatorInstanceMessage extends PlainTextMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/deployMediatorInstance',
-          ),
+          operationName: 'deployMediatorInstance',
+          instanceType: InstanceType.mediator,
         );
 }
 
+
+
 /// Response message for deploy mediator instance operation.
-class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
+class DeployMediatorInstanceResponseMessage extends BaseInstanceResponseMessage<DeployMediatorInstanceResponse> {
   /// Creates a deploy mediator instance response message.
   DeployMediatorInstanceResponseMessage({
     required super.id,
@@ -37,19 +37,12 @@ class DeployMediatorInstanceResponseMessage extends PlainTextMessage {
     super.threadId,
     super.body = const {},
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/deployMediatorInstance/response',
-          ),
+          operationName: 'deployMediatorInstance',
+          instanceType: InstanceType.mediator,
         );
 
-  /// Gets the parsed response data from the message body.
-  DeployMediatorInstanceResponse get response {
-    final responseBody = ResponseBody.fromJson(body!);
-    final decodedResponse =
-        jsonDecode(responseBody.response) as Map<String, dynamic>;
-
-    return DeployMediatorInstanceResponse.fromJson(decodedResponse);
-  }
+  @override
+  DeployMediatorInstanceResponse parseResponse(Map<String, dynamic> json) => DeployMediatorInstanceResponse.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

@@ -1,14 +1,13 @@
-import 'dart:convert';
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../response_body.dart';
+import 'config/base_instance_message.dart';
+import 'config/instance_type_config.dart';
 
 part 'get_mediator_instances_list_message.g.dart';
 
 /// Message for getting list of mediator instances.
-class GetMediatorInstancesListMessage extends PlainTextMessage {
+class GetMediatorInstancesListMessage extends BaseInstanceMessage {
   /// Creates a get mediator instances list message.
   GetMediatorInstancesListMessage({
     required super.id,
@@ -19,14 +18,13 @@ class GetMediatorInstancesListMessage extends PlainTextMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorInstancesList',
-          ),
+          operationName: 'getMediatorInstancesList',
+          instanceType: InstanceType.mediator,
         );
 }
 
 /// Response message for get mediator instances list operation.
-class GetMediatorInstancesListResponseMessage extends PlainTextMessage {
+class GetMediatorInstancesListResponseMessage extends BaseInstanceResponseMessage<MediatorInstanceBodyData> {
   /// Creates a get mediator instances list response message.
   GetMediatorInstancesListResponseMessage({
     required super.id,
@@ -37,20 +35,15 @@ class GetMediatorInstancesListResponseMessage extends PlainTextMessage {
     super.threadId,
     super.body = const {},
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorInstancesList/response',
-          ),
+         operationName: 'getMediatorInstancesList',
+          instanceType: InstanceType.mediator,
         );
 
-  /// Gets the list of mediator instances from the message body.
-  List<MediatorInstance> get instances {
-    final responseBody = ResponseBody.fromJson(body!);
-    final bodyData = MediatorInstanceBodyData.fromJson(
-      jsonDecode(responseBody.response) as Map<String, dynamic>,
-    );
+  @override
+  MediatorInstanceBodyData parseResponse(Map<String, dynamic> json) => MediatorInstanceBodyData.fromJson(json);
 
-    return bodyData.instances;
-  }
+  /// Gets the list of mediator instances from the response.
+  List<MediatorInstance> get instances => response.instances;
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

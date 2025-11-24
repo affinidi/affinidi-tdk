@@ -1,14 +1,13 @@
-import 'dart:convert';
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../response_body.dart';
+import 'config/base_instance_message.dart';
+import 'config/instance_type_config.dart';
 
 part 'get_mediator_instance_metadata_message.g.dart';
 
 /// Message for getting metadata of a mediator instance.
-class GetMediatorInstanceMetadataMessage extends PlainTextMessage {
+class GetMediatorInstanceMetadataMessage extends BaseInstanceMessage {
   /// Creates a get mediator instance metadata message.
   GetMediatorInstanceMetadataMessage({
     required super.id,
@@ -19,14 +18,13 @@ class GetMediatorInstanceMetadataMessage extends PlainTextMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorInstanceMetadata',
-          ),
+         operationName: 'getMediatorInstanceMetadata',
+          instanceType: InstanceType.mediator,
         );
 }
 
 /// Response message for get mediator instance metadata operation.
-class GetMediatorInstanceMetadataResponseMessage extends PlainTextMessage {
+class GetMediatorInstanceMetadataResponseMessage extends BaseInstanceResponseMessage<MediatorInstanceMetadata> {
   /// Creates a get mediator instance metadata response message.
   GetMediatorInstanceMetadataResponseMessage({
     required super.id,
@@ -37,18 +35,15 @@ class GetMediatorInstanceMetadataResponseMessage extends PlainTextMessage {
     super.threadId,
     super.body = const {},
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/getMediatorInstanceMetadata/response',
-          ),
+          operationName: 'getMediatorInstanceMetadata',
+          instanceType: InstanceType.mediator,
         );
 
-  /// Gets the parsed metadata from the message body.
-  MediatorInstanceMetadata get metadata {
-    final responseBody = ResponseBody.fromJson(body!);
-    return MediatorInstanceMetadata.fromJson(
-      jsonDecode(responseBody.response) as Map<String, dynamic>,
-    );
-  }
+  @override
+  MediatorInstanceMetadata parseResponse(Map<String, dynamic> json) => MediatorInstanceMetadata.fromJson(json);
+
+  /// Gets the mediator instance metadata from the response.
+  MediatorInstanceMetadata get metadata => response;
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

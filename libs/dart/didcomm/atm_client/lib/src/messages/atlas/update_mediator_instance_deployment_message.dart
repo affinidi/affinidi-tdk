@@ -1,14 +1,13 @@
-import 'dart:convert';
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../response_body.dart';
+import 'config/base_instance_message.dart';
+import 'config/instance_type_config.dart';
 
 part 'update_mediator_instance_deployment_message.g.dart';
 
 /// Message for updating mediator instance deployment.
-class UpdateMediatorInstanceDeploymentMessage extends PlainTextMessage {
+class UpdateMediatorInstanceDeploymentMessage extends BaseInstanceMessage {
   /// Creates an update mediator instance deployment message.
   UpdateMediatorInstanceDeploymentMessage({
     required super.id,
@@ -19,14 +18,13 @@ class UpdateMediatorInstanceDeploymentMessage extends PlainTextMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/updateMediatorInstanceDeployment',
-          ),
+          operationName: 'updateMediatorInstanceDeployment',
+          instanceType: InstanceType.mediator,
         );
 }
 
 /// Response message for update mediator instance deployment operation.
-class UpdateMediatorInstanceDeploymentResponseMessage extends PlainTextMessage {
+class UpdateMediatorInstanceDeploymentResponseMessage extends BaseInstanceResponseMessage<UpdateMediatorInstanceDeploymentResponse> {
   /// Creates an update mediator instance deployment response message.
   UpdateMediatorInstanceDeploymentResponseMessage({
     required super.id,
@@ -37,18 +35,13 @@ class UpdateMediatorInstanceDeploymentResponseMessage extends PlainTextMessage {
     super.threadId,
     super.body = const {},
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/updateMediatorInstanceDeployment/response',
-          ),
+          operationName: 'updateMediatorInstanceDeployment',
+          instanceType: InstanceType.mediator,
+          
         );
 
-  /// Gets the parsed response data from the message body.
-  UpdateMediatorInstanceDeploymentResponse get response {
-    final responseBody = ResponseBody.fromJson(body!);
-    return UpdateMediatorInstanceDeploymentResponse.fromJson(
-      jsonDecode(responseBody.response) as Map<String, dynamic>,
-    );
-  }
+  @override
+  UpdateMediatorInstanceDeploymentResponse parseResponse(Map<String, dynamic> json) => UpdateMediatorInstanceDeploymentResponse.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
