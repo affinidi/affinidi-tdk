@@ -4,8 +4,22 @@ import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediat
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../affinidi_tdk_atm_client.dart';
 import '../messages/atlas/config/instance_type_config.dart';
+import '../messages/atlas/deploy_mediator_instance_message.dart';
+import '../messages/atlas/destroy_mediator_instance_message.dart';
+import '../messages/atlas/get_mediator_instance_metadata_message.dart';
+import '../messages/atlas/get_mediator_instances_list_message.dart';
+import '../messages/atlas/get_mediator_requests_message.dart';
+import '../messages/atlas/update_mediator_instance_configuration_message.dart';
+import '../messages/atlas/update_mediator_instance_deployment_message.dart';
+import '../models/request_bodies/base_deploy_instance_request.dart';
+import '../models/request_bodies/base_destroy_instance_request.dart';
+import '../models/request_bodies/base_get_instance_metadata_request.dart';
+import '../models/request_bodies/base_get_instance_requests_request.dart';
+import '../models/request_bodies/base_get_instances_list_request.dart';
+import '../models/request_bodies/base_update_instance_configuration_request.dart';
+import '../models/request_bodies/base_update_instance_deployment_request.dart';
+import 'service_client.dart';
 
 /// DIDComm client for interacting with the Affinidi Atlas service.
 class DidcommAtlasClient extends DidcommServiceClient {

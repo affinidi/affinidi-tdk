@@ -12,7 +12,7 @@ class BaseDeployInstanceRequest {
   /// Service size for the instance.
   final String serviceSize;
   /// Mediator ACL mode for the instance.
-  final String mediatorAclMode;
+  final String? mediatorAclMode;
   /// Name of the instance.
   final String? name;
   /// Description of the instance.
@@ -22,7 +22,7 @@ class BaseDeployInstanceRequest {
   BaseDeployInstanceRequest({
     this.administratorDids,
     required this.serviceSize,
-    required this.mediatorAclMode,
+    this.mediatorAclMode,
     this.name,
     this.description,
   });
