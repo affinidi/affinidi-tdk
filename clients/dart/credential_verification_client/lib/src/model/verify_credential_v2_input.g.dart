@@ -8,17 +8,15 @@ part of 'verify_credential_v2_input.dart';
 
 class _$VerifyCredentialV2Input extends VerifyCredentialV2Input {
   @override
-  final BuiltList<String> verifiableCredentials;
+  final BuiltList<String>? jwtVcs;
   @override
-  final BuiltMap<String, JsonObject?>? issuerDidDocument;
+  final BuiltList<BuiltMap<String, JsonObject?>>? ldpVcs;
 
   factory _$VerifyCredentialV2Input(
           [void Function(VerifyCredentialV2InputBuilder)? updates]) =>
       (VerifyCredentialV2InputBuilder()..update(updates))._build();
 
-  _$VerifyCredentialV2Input._(
-      {required this.verifiableCredentials, this.issuerDidDocument})
-      : super._();
+  _$VerifyCredentialV2Input._({this.jwtVcs, this.ldpVcs}) : super._();
   @override
   VerifyCredentialV2Input rebuild(
           void Function(VerifyCredentialV2InputBuilder) updates) =>
@@ -32,15 +30,15 @@ class _$VerifyCredentialV2Input extends VerifyCredentialV2Input {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is VerifyCredentialV2Input &&
-        verifiableCredentials == other.verifiableCredentials &&
-        issuerDidDocument == other.issuerDidDocument;
+        jwtVcs == other.jwtVcs &&
+        ldpVcs == other.ldpVcs;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, verifiableCredentials.hashCode);
-    _$hash = $jc(_$hash, issuerDidDocument.hashCode);
+    _$hash = $jc(_$hash, jwtVcs.hashCode);
+    _$hash = $jc(_$hash, ldpVcs.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -48,8 +46,8 @@ class _$VerifyCredentialV2Input extends VerifyCredentialV2Input {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'VerifyCredentialV2Input')
-          ..add('verifiableCredentials', verifiableCredentials)
-          ..add('issuerDidDocument', issuerDidDocument))
+          ..add('jwtVcs', jwtVcs)
+          ..add('ldpVcs', ldpVcs))
         .toString();
   }
 }
@@ -59,17 +57,15 @@ class VerifyCredentialV2InputBuilder
         Builder<VerifyCredentialV2Input, VerifyCredentialV2InputBuilder> {
   _$VerifyCredentialV2Input? _$v;
 
-  ListBuilder<String>? _verifiableCredentials;
-  ListBuilder<String> get verifiableCredentials =>
-      _$this._verifiableCredentials ??= ListBuilder<String>();
-  set verifiableCredentials(ListBuilder<String>? verifiableCredentials) =>
-      _$this._verifiableCredentials = verifiableCredentials;
+  ListBuilder<String>? _jwtVcs;
+  ListBuilder<String> get jwtVcs => _$this._jwtVcs ??= ListBuilder<String>();
+  set jwtVcs(ListBuilder<String>? jwtVcs) => _$this._jwtVcs = jwtVcs;
 
-  MapBuilder<String, JsonObject?>? _issuerDidDocument;
-  MapBuilder<String, JsonObject?> get issuerDidDocument =>
-      _$this._issuerDidDocument ??= MapBuilder<String, JsonObject?>();
-  set issuerDidDocument(MapBuilder<String, JsonObject?>? issuerDidDocument) =>
-      _$this._issuerDidDocument = issuerDidDocument;
+  ListBuilder<BuiltMap<String, JsonObject?>>? _ldpVcs;
+  ListBuilder<BuiltMap<String, JsonObject?>> get ldpVcs =>
+      _$this._ldpVcs ??= ListBuilder<BuiltMap<String, JsonObject?>>();
+  set ldpVcs(ListBuilder<BuiltMap<String, JsonObject?>>? ldpVcs) =>
+      _$this._ldpVcs = ldpVcs;
 
   VerifyCredentialV2InputBuilder() {
     VerifyCredentialV2Input._defaults(this);
@@ -78,8 +74,8 @@ class VerifyCredentialV2InputBuilder
   VerifyCredentialV2InputBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _verifiableCredentials = $v.verifiableCredentials.toBuilder();
-      _issuerDidDocument = $v.issuerDidDocument?.toBuilder();
+      _jwtVcs = $v.jwtVcs?.toBuilder();
+      _ldpVcs = $v.ldpVcs?.toBuilder();
       _$v = null;
     }
     return this;
@@ -103,16 +99,16 @@ class VerifyCredentialV2InputBuilder
     try {
       _$result = _$v ??
           _$VerifyCredentialV2Input._(
-            verifiableCredentials: verifiableCredentials.build(),
-            issuerDidDocument: _issuerDidDocument?.build(),
+            jwtVcs: _jwtVcs?.build(),
+            ldpVcs: _ldpVcs?.build(),
           );
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'verifiableCredentials';
-        verifiableCredentials.build();
-        _$failedField = 'issuerDidDocument';
-        _issuerDidDocument?.build();
+        _$failedField = 'jwtVcs';
+        _jwtVcs?.build();
+        _$failedField = 'ldpVcs';
+        _ldpVcs?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'VerifyCredentialV2Input', _$failedField, e.toString());

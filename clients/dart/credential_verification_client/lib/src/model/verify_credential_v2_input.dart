@@ -13,18 +13,18 @@ part 'verify_credential_v2_input.g.dart';
 /// Request model of /v2/verify-vcs
 ///
 /// Properties:
-/// * [verifiableCredentials] - List of VC strings
-/// * [issuerDidDocument] - Dynamic model
+/// * [jwtVcs] - List of JWT VC strings
+/// * [ldpVcs] - List of LDP VC objects
 @BuiltValue()
 abstract class VerifyCredentialV2Input
     implements Built<VerifyCredentialV2Input, VerifyCredentialV2InputBuilder> {
-  /// List of VC strings
-  @BuiltValueField(wireName: r'verifiableCredentials')
-  BuiltList<String> get verifiableCredentials;
+  /// List of JWT VC strings
+  @BuiltValueField(wireName: r'jwtVcs')
+  BuiltList<String>? get jwtVcs;
 
-  /// Dynamic model
-  @BuiltValueField(wireName: r'issuerDidDocument')
-  BuiltMap<String, JsonObject?>? get issuerDidDocument;
+  /// List of LDP VC objects
+  @BuiltValueField(wireName: r'ldpVcs')
+  BuiltList<BuiltMap<String, JsonObject?>>? get ldpVcs;
 
   VerifyCredentialV2Input._();
 
@@ -56,17 +56,20 @@ class _$VerifyCredentialV2InputSerializer
     VerifyCredentialV2Input object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    yield r'verifiableCredentials';
-    yield serializers.serialize(
-      object.verifiableCredentials,
-      specifiedType: const FullType(BuiltList, [FullType(String)]),
-    );
-    if (object.issuerDidDocument != null) {
-      yield r'issuerDidDocument';
+    if (object.jwtVcs != null) {
+      yield r'jwtVcs';
       yield serializers.serialize(
-        object.issuerDidDocument,
-        specifiedType: const FullType(
-            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+        object.jwtVcs,
+        specifiedType: const FullType(BuiltList, [FullType(String)]),
+      );
+    }
+    if (object.ldpVcs != null) {
+      yield r'ldpVcs';
+      yield serializers.serialize(
+        object.ldpVcs,
+        specifiedType: const FullType(BuiltList, [
+          FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)])
+        ]),
       );
     }
   }
@@ -94,20 +97,22 @@ class _$VerifyCredentialV2InputSerializer
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'verifiableCredentials':
+        case r'jwtVcs':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
-          result.verifiableCredentials.replace(valueDes);
+          result.jwtVcs.replace(valueDes);
           break;
-        case r'issuerDidDocument':
+        case r'ldpVcs':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(
-                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
-          ) as BuiltMap<String, JsonObject?>;
-          result.issuerDidDocument.replace(valueDes);
+            specifiedType: const FullType(BuiltList, [
+              FullType(
+                  BuiltMap, [FullType(String), FullType.nullable(JsonObject)])
+            ]),
+          ) as BuiltList<BuiltMap<String, JsonObject?>>;
+          result.ldpVcs.replace(valueDes);
           break;
         default:
           unhandled.add(key);

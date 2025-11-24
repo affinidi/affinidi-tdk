@@ -78,16 +78,24 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [_RevocationApi_](doc/RevocationApi.md) | [**getRevocationCredentialStatus**](doc/RevocationApi.md#getrevocationcredentialstatus) | **GET** /v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId} |
 | [_RevocationApi_](doc/RevocationApi.md) | [**getRevocationListCredential**](doc/RevocationApi.md#getrevocationlistcredential)     | **GET** /v1/wallets/{walletId}/revocation-list/{listId}                            | Return revocation list credential. |
 | [_RevocationApi_](doc/RevocationApi.md) | [**revokeCredential**](doc/RevocationApi.md#revokecredential)                           | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
+| [_RevocationApi_](doc/RevocationApi.md) | [**revokeCredentials**](doc/RevocationApi.md#revokecredentials)                         | **POST** /v2/wallets/{walletId}/credentials/revoke                                 | Revoke Credentials.                |
 | [_WalletApi_](doc/WalletApi.md)         | [**createWallet**](doc/WalletApi.md#createwallet)                                       | **POST** /v1/wallets                                                               |
+| [_WalletApi_](doc/WalletApi.md)         | [**createWalletV2**](doc/WalletApi.md#createwalletv2)                                   | **POST** /v2/wallets                                                               |
 | [_WalletApi_](doc/WalletApi.md)         | [**deleteWallet**](doc/WalletApi.md#deletewallet)                                       | **DELETE** /v1/wallets/{walletId}                                                  |
 | [_WalletApi_](doc/WalletApi.md)         | [**getWallet**](doc/WalletApi.md#getwallet)                                             | **GET** /v1/wallets/{walletId}                                                     |
 | [_WalletApi_](doc/WalletApi.md)         | [**listWallets**](doc/WalletApi.md#listwallets)                                         | **GET** /v1/wallets                                                                |
 | [_WalletApi_](doc/WalletApi.md)         | [**signCredential**](doc/WalletApi.md#signcredential)                                   | **POST** /v1/wallets/{walletId}/sign-credential                                    |
+| [_WalletApi_](doc/WalletApi.md)         | [**signCredentialsJwt**](doc/WalletApi.md#signcredentialsjwt)                           | **POST** /v2/wallets/{walletId}/credentials/jwt/sign                               |
+| [_WalletApi_](doc/WalletApi.md)         | [**signCredentialsLdp**](doc/WalletApi.md#signcredentialsldp)                           | **POST** /v2/wallets/{walletId}/credentials/ldp/sign                               |
+| [_WalletApi_](doc/WalletApi.md)         | [**signCredentialsSdJwt**](doc/WalletApi.md#signcredentialssdjwt)                       | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign                            |
 | [_WalletApi_](doc/WalletApi.md)         | [**signJwtToken**](doc/WalletApi.md#signjwttoken)                                       | **POST** /v1/wallets/{walletId}/sign-jwt                                           |
+| [_WalletApi_](doc/WalletApi.md)         | [**signPresentationsLdp**](doc/WalletApi.md#signpresentationsldp)                       | **POST** /v2/wallets/{walletId}/presentations/ldp/sign                             |
 | [_WalletApi_](doc/WalletApi.md)         | [**updateWallet**](doc/WalletApi.md#updatewallet)                                       | **PATCH** /v1/wallets/{walletId}                                                   |
 
 ## Documentation For Models
 
+- [AuthcryptMessageInput](doc/AuthcryptMessageInput.md)
+- [AuthcryptMessageResultDto](doc/AuthcryptMessageResultDto.md)
 - [CreateWalletInput](doc/CreateWalletInput.md)
 - [CreateWalletResponse](doc/CreateWalletResponse.md)
 - [CreateWalletV2Input](doc/CreateWalletV2Input.md)
@@ -101,6 +109,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [NotFoundError](doc/NotFoundError.md)
 - [OperationForbiddenError](doc/OperationForbiddenError.md)
 - [RevokeCredentialInput](doc/RevokeCredentialInput.md)
+- [RevokeCredentialsInput](doc/RevokeCredentialsInput.md)
 - [ServiceErrorResponse](doc/ServiceErrorResponse.md)
 - [ServiceErrorResponseDetailsInner](doc/ServiceErrorResponseDetailsInner.md)
 - [SignCredential400Response](doc/SignCredential400Response.md)
@@ -117,6 +126,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialsLdpResultDto](doc/SignCredentialsLdpResultDto.md)
 - [SignJwtToken](doc/SignJwtToken.md)
 - [SignJwtTokenOK](doc/SignJwtTokenOK.md)
+- [SignMessageInput](doc/SignMessageInput.md)
+- [SignMessageResultDto](doc/SignMessageResultDto.md)
 - [SignPresentationLdpInputDto](doc/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](doc/SignPresentationLdpResultDto.md)
 - [SigningFailedError](doc/SigningFailedError.md)
