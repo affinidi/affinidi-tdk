@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
+import 'package:crypto/crypto.dart';
 import 'package:ssi/ssi.dart';
 
 import '../../../../../tests/integration/dart/test/test_config.dart';
@@ -30,10 +33,7 @@ Future<void> main() async {
 
   await senderKeyStore.set(
     senderKeyId,
-    StoredKey(
-      keyType: KeyType.p256,
-      privateKeyBytes: senderPrivateKeyBytes,
-    ),
+    StoredKey(keyType: KeyType.p256, privateKeyBytes: senderPrivateKeyBytes),
   );
 
   await senderDidManager.addVerificationMethod(senderKeyId);
@@ -57,10 +57,7 @@ Future<void> main() async {
         mediatorId: instance.id,
       );
 
-      prettyPrint(
-        'Destroy response',
-        object: destroyResponse,
-      );
+      prettyPrint('Destroy response', object: destroyResponse);
     }
 
     // wait for deletion
@@ -91,10 +88,7 @@ Future<void> main() async {
 
   final deployedMediator = deploymentResponse.response;
 
-  prettyPrint(
-    'Deployment response',
-    object: deploymentResponse,
-  );
+  prettyPrint('Deployment response', object: deploymentResponse);
 
   // wait for completed deployment
   await _waitUntilMediators(
@@ -110,13 +104,57 @@ Future<void> main() async {
     'Deploying mediator completed in ${DateTime.now().difference(deploymentStart).inMinutes} minutes.',
   );
 
-  final deployedMediatorsResponse =
-      await atlasClient.getMediatorInstancesList();
+  prettyPrint('Updating mediator metadata...');
+
+  final updateMetadataResponse = await atlasClient
+      .updateMediatorInstanceDeployment(
+        deploymentData: UpdateMediatorInstanceDeploymentRequest(
+          mediatorId: deployedMediator.mediatorId,
+          name: 'Example Mediator (updated)',
+          description:
+              'Example mediator metadata updated by atlas_example.dart',
+        ),
+      );
+
+  prettyPrint('Update metadata response', object: updateMetadataResponse);
+
+  prettyPrint('Updating mediator configuration (ACL)...');
+
+  String hashDid(String did) {
+    return sha256.convert(utf8.encode(did)).toString();
+  }
+
+  final mediatorMetadata = await atlasClient.getMediatorInstanceMetadata(
+    mediatorId: deployedMediator.mediatorId,
+  );
+
+  final mediatorDid = mediatorMetadata.metadata.did;
+  final adminDid = mediatorMetadata.metadata.administratorDid;
+
+  final acl = <String,num>{if (adminDid != null) hashDid(adminDid): 1, hashDid(mediatorDid): 1};
+
+  final updateConfigurationResponse = await atlasClient
+      .updateMediatorInstanceConfiguration(
+        configurationData: UpdateMediatorInstanceConfigurationRequest(
+          mediatorId: deployedMediator.mediatorId,
+          acl: acl,
+        ),
+      );
 
   prettyPrint(
-    'Get mediators response',
-    object: deployedMediatorsResponse,
+    'Update configuration response',
+    object: updateConfigurationResponse,
   );
+
+  final finalMediatorMetadata = await atlasClient.getMediatorInstanceMetadata(
+    mediatorId: deployedMediator.mediatorId,
+  );
+
+  prettyPrint('Metadata after updates', object: finalMediatorMetadata);
+  final deployedMediatorsResponse = await atlasClient
+      .getMediatorInstancesList();
+
+  prettyPrint('Get mediators response', object: deployedMediatorsResponse);
 
   prettyPrint('Destroying deployed mediator instance...');
   final destroyingStart = DateTime.now();
@@ -125,10 +163,7 @@ Future<void> main() async {
     mediatorId: deployedMediator.mediatorId,
   );
 
-  prettyPrint(
-    'Destroy response',
-    object: destroyResponse,
-  );
+  prettyPrint('Destroy response', object: destroyResponse);
 
   // wait for deletion
   await _waitUntilMediators(
