@@ -12,12 +12,10 @@ VdspQueryDataBody _$VdspQueryDataBodyFromJson(Map<String, dynamic> json) =>
           $enumDecode(_$DataQueryLanguageEnumMap, json['data_query_lang']),
       responseFormat: json['response_format'] as String,
       query: json['query'] as Map<String, dynamic>,
+      proofContext: VdspQueryDataProofContext.fromJson(
+          json['proof_context'] as Map<String, dynamic>),
       operation: json['operation'] as String?,
       comment: json['comment'] as String?,
-      proofContext: json['proof_context'] == null
-          ? null
-          : VdspQueryDataProofContext.fromJson(
-              json['proof_context'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$VdspQueryDataBodyToJson(VdspQueryDataBody instance) =>
@@ -28,8 +26,7 @@ Map<String, dynamic> _$VdspQueryDataBodyToJson(VdspQueryDataBody instance) =>
       'response_format': instance.responseFormat,
       if (instance.comment case final value?) 'comment': value,
       'query': instance.query,
-      if (instance.proofContext?.toJson() case final value?)
-        'proof_context': value,
+      'proof_context': instance.proofContext.toJson(),
     };
 
 const _$DataQueryLanguageEnumMap = {

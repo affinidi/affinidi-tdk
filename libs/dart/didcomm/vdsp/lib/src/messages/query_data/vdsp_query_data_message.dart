@@ -42,9 +42,9 @@ class VdspQueryDataBody {
     required this.dataQueryLanguage,
     required this.responseFormat,
     required this.query,
+    required this.proofContext,
     this.operation,
     this.comment,
-    this.proofContext,
   });
 
   /// Identifier of the operation / correlation id.
@@ -66,7 +66,7 @@ class VdspQueryDataBody {
 
   /// Context controlling proof generation parameters.
   @JsonKey(name: 'proof_context')
-  final VdspQueryDataProofContext? proofContext;
+  final VdspQueryDataProofContext proofContext;
 
   /// Creates a body instance from JSON.
   factory VdspQueryDataBody.fromJson(Map<String, dynamic> json) =>

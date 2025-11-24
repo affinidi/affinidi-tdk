@@ -7,6 +7,7 @@ import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
 import '../affinidi_tdk_vdsp.dart';
+import 'messages/request_service/vdsp_request_service_message.dart';
 
 /// Implements the VDSP protocol for a verifier, supporting feature discovery,
 /// data queries, and verification of presentations and credentials.
@@ -60,11 +61,11 @@ class VdspVerifier {
   /// Sends a data query to a holder to request a verifiable presentation.
   Future<VdspQueryDataMessage> queryHolderData({
     required String holderDid,
+    required VdspQueryDataProofContext proofContext,
     String? operation,
     DcqlCredentialQuery? dcqlQuery,
     DataQueryLanguage dataQueryLanguage = DataQueryLanguage.dcql,
     String responseFormat = 'application/json',
-    VdspQueryDataProofContext? proofContext,
     String? comment,
   }) async {
     if (dataQueryLanguage == DataQueryLanguage.dcql && dcqlQuery == null) {
@@ -124,6 +125,7 @@ class VdspVerifier {
       required VerificationResult presentationVerificationResult,
       required List<VerificationResult> credentialVerificationResults,
     }) onDataResponse,
+    void Function(VdspRequestServiceMessage)? onRequestService,
     void Function(ProblemReportMessage)? onProblemReport,
     Function? onError,
     void Function({int? closeCode, String? closeReason})? onDone,
@@ -221,6 +223,25 @@ class VdspVerifier {
                 credentialVerificationResults: [],
               );
             }
+
+            return;
+          }
+
+          if (onRequestService != null &&
+              unpacked.type == VdspRequestServiceMessage.messageType) {
+            final requestServiceMessage = VdspRequestServiceMessage(
+              id: unpacked.id,
+              from: unpacked.from,
+              to: unpacked.to,
+              createdTime: unpacked.createdTime,
+              expiresTime: unpacked.expiresTime,
+              threadId: unpacked.threadId,
+              body: VdspRequestServiceMessageBody.fromJson(
+                  unpacked.body as Map<String, dynamic>),
+            );
+            onRequestService(
+              requestServiceMessage,
+            );
 
             return;
           }

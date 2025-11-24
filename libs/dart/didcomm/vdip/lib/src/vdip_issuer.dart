@@ -138,6 +138,7 @@ class VdipIssuer {
     void Function(QueryMessage)? onFeatureQuery,
     required void Function({
       required PlainTextMessage message,
+      String? challenge,
       bool? isAssertionValid,
       String? holderDidFromAssertion,
     }) onRequestToIssueCredential,
@@ -175,6 +176,8 @@ class VdipIssuer {
           final requestIssuanceMessageBody =
               VdipRequestIssuanceMessageBody.fromJson(plainTextMessage.body!);
 
+          final challenge = requestIssuanceMessageBody.challenge;
+
           final isRequestForSpecificHolder =
               requestIssuanceMessageBody.holderDid != null;
 
@@ -195,11 +198,15 @@ class VdipIssuer {
               holderDidFromAssertion: holderDid,
               isAssertionValid: isAssertionValid,
               message: plainTextMessage,
+              challenge: challenge,
             );
             return;
           }
 
-          onRequestToIssueCredential(message: plainTextMessage);
+          onRequestToIssueCredential(
+            message: plainTextMessage,
+            challenge: challenge,
+          );
 
           return;
         }
@@ -233,13 +240,23 @@ class VdipIssuer {
 
     final payload = decodedJwsAssertion.payload;
 
-    final assertionSubject = payload['sub'];
     final assertionProposalId = payload['proposalId'];
+    final assertionSubject = payload['sub'];
+    final assertionIssuer = payload['iss'];
     final assertionAudienceId = payload['aud'];
+    final assertionExpiration = payload['exp'] as int?;
 
-    return assertionSubject == holderDid &&
-        assertionProposalId == proposalId &&
-        assertionAudienceId == vcIssuerDid;
+    final isCorrectDID =
+        assertionSubject == holderDid && assertionIssuer == holderDid;
+    final isProposalValid = assertionProposalId == proposalId;
+    final isAudienceValid = assertionAudienceId == vcIssuerDid;
+    final isAssertionExpirationValid = assertionExpiration != null &&
+        assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
+
+    return isCorrectDID &&
+        isProposalValid &&
+        isAudienceValid &&
+        isAssertionExpirationValid;
   }
 
   /// Sends a switch context message to the given [holderDid].
@@ -269,7 +286,6 @@ class VdipIssuer {
     );
 
     await mediatorClient.packAndSendMessage(message);
-
     return message;
   }
 }
