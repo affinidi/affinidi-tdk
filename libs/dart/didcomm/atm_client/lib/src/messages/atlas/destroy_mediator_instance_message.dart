@@ -1,14 +1,13 @@
-import 'dart:convert';
 
-import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../response_body.dart';
+import 'config/base_instance_message.dart';
+import 'config/instance_type_config.dart';
 
 part 'destroy_mediator_instance_message.g.dart';
 
 /// Message for destroying a mediator instance.
-class DestroyMediatorInstanceMessage extends PlainTextMessage {
+class DestroyMediatorInstanceMessage extends BaseInstanceMessage {
   /// Creates a destroy mediator instance message.
   DestroyMediatorInstanceMessage({
     required super.id,
@@ -19,14 +18,13 @@ class DestroyMediatorInstanceMessage extends PlainTextMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/destroyMediatorInstance',
-          ),
+         operationName: 'destroyMediatorInstance',
+          instanceType: InstanceType.mediator,
         );
 }
 
 /// Response message for destroy mediator instance operation.
-class DestroyMediatorInstanceResponseMessage extends PlainTextMessage {
+class DestroyMediatorInstanceResponseMessage extends BaseInstanceResponseMessage<DestroyMediatorInstanceResponse> {
   /// Creates a destroy mediator instance response message.
   DestroyMediatorInstanceResponseMessage({
     required super.id,
@@ -37,18 +35,12 @@ class DestroyMediatorInstanceResponseMessage extends PlainTextMessage {
     super.threadId,
     super.body = const {},
   }) : super(
-          type: Uri.parse(
-            'affinidi.io/operations/ama/destroyMediatorInstance/response',
-          ),
+          operationName: 'destroyMediatorInstance',
+          instanceType: InstanceType.mediator,
         );
 
-  /// Gets the parsed response data from the message body.
-  DestroyMediatorInstanceResponse get response {
-    final responseBody = ResponseBody.fromJson(body!);
-    return DestroyMediatorInstanceResponse.fromJson(
-      jsonDecode(responseBody.response) as Map<String, dynamic>,
-    );
-  }
+  @override
+  DestroyMediatorInstanceResponse parseResponse(Map<String, dynamic> json) => DestroyMediatorInstanceResponse.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

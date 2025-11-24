@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'deploy_mediator_instance_request.dart';
+part of 'base_deploy_instance_request.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-DeployMediatorInstanceRequest _$DeployMediatorInstanceRequestFromJson(
+BaseDeployInstanceRequest _$BaseDeployInstanceRequestFromJson(
         Map<String, dynamic> json) =>
-    DeployMediatorInstanceRequest(
+    BaseDeployInstanceRequest(
       administratorDids: json['administratorDids'] as String?,
       serviceSize: json['serviceSize'] as String,
       mediatorAclMode: json['mediatorAclMode'] as String,
@@ -16,8 +16,8 @@ DeployMediatorInstanceRequest _$DeployMediatorInstanceRequestFromJson(
       description: json['description'] as String?,
     );
 
-Map<String, dynamic> _$DeployMediatorInstanceRequestToJson(
-        DeployMediatorInstanceRequest instance) =>
+Map<String, dynamic> _$BaseDeployInstanceRequestToJson(
+        BaseDeployInstanceRequest instance) =>
     <String, dynamic>{
       if (instance.administratorDids case final value?)
         'administratorDids': value,
