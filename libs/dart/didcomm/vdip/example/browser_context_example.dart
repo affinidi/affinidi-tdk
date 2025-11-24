@@ -34,6 +34,9 @@ import '../../../../../tests/integration/dart/test/test_config.dart';
 // Storage for pending verification requests
 final Map<String, VerificationRequest> pendingVerifications = {};
 
+// Generated challenge by issuer that is meant to be passed to holder via SMS or Email
+final issuerChallenge = const Uuid().v4();
+
 class VerificationRequest {
   final String nonce;
   final String threadId;
@@ -252,65 +255,34 @@ Future<void> main() async {
         object: message,
       );
 
-      /// Issuer & Holder negotiate on how challenge get to holder, challenge must be used once.
-      /// Simple example of how to verify a challenge:
-      ///
-      /// // 1. Issuer generates and stores a challenge when offering a credential
-      /// final challenge = const Uuid().v4();
-      /// final challengeStore = <String, String>{}; // In production, use secure storage
-      /// challengeStore[holderDid] = challenge;
-      ///
-      /// // 2. Holder requests the credential with the challenge
-      /// await vdipHolder.requestCredential(
-      ///   issuerDid: issuerDid,
-      ///   options: RequestCredentialsOptions(
-      ///     proposalId: proposalId,
-      ///     challenge: challenge, // Include the challenge received from issuer
-      ///     credentialFormat: CredentialFormat.w3cV1,
-      ///   ),
-      /// );
-      ///
-      /// // 3. Issuer verifies the challenge in the callback
-      /// vdipIssuer.listenForIncomingMessages(
-      ///   onRequestToIssueCredential: ({
-      ///     required message,
-      ///     holderDidFromAssertion,
-      ///     isAssertionValid,
-      ///     challenge,
-      ///   }) async {
-      ///     // Verify the challenge matches the one we stored
-      ///     final storedChallenge = challengeStore[holderDidFromAssertion];
-      ///     final isChallengeValid = storedChallenge != null &&
-      ///                               storedChallenge == challenge;
-      ///
-      ///     if (!isChallengeValid) {
-      ///       // Reject the request - potential replay attack
-      ///       await vdipIssuer.mediatorClient.packAndSendMessage(
-      ///         ProblemReportMessage(
-      ///           id: const Uuid().v4(),
-      ///           to: [message.from!],
-      ///           body: {
-      ///             'code': 'invalid-challenge',
-      ///             'comment': 'Challenge validation failed',
-      ///           },
-      ///         ),
-      ///       );
-      ///       return;
-      ///     }
-      ///
-      ///     // Challenge is valid, remove it from storage (single-use)
-      ///     challengeStore.remove(holderDidFromAssertion);
-      ///
-      ///     // Proceed with credential issuance...
-      ///   },
-      /// );
+      final isChallengeValid = issuerChallenge == challenge;
 
-      if (challenge != null) {
-        prettyPrint(
-          'Challenge received',
-          object: {'challenge': challenge},
+      if (!isChallengeValid) {
+        await vdipIssuer.mediatorClient.packAndSendMessage(
+          ProblemReportMessage(
+            id: const Uuid().v4(),
+            to: [message.from!],
+            parentThreadId: message.threadId ?? message.id,
+            body: ProblemReportBody(
+              code: ProblemCode(
+                sorter: SorterType.warning,
+                scope: Scope(scope: ScopeType.message),
+                descriptors: [
+                  'vdip',
+                  'invalid-challenge',
+                ],
+              ),
+            ),
+          ),
         );
+
+        return;
       }
+
+      prettyPrint(
+        'Challenge received',
+        object: {'challenge': challenge},
+      );
 
       final vdipRequestIssuanceBody = VdipRequestIssuanceMessageBody.fromJson(
         Map<String, dynamic>.from(message.body!),
