@@ -99,6 +99,9 @@ Future<void> main() async {
     theirDids: [holderSigner.did],
   );
 
+  // Generated challenge by issuer that is meant to be passed to holder via SMS or Email
+  final issuerChallenge = const Uuid().v4();
+
   final holderVerifiableCredentials = await Future.wait(
     [
       VcDataModelV1(
@@ -299,11 +302,49 @@ Future<void> main() async {
       required message,
       holderDidFromAssertion,
       isAssertionValid,
+      challenge,
     }) async {
       prettyPrint(
         'Issuer received Request to Issue Credentials Message',
         object: message,
       );
+
+      // Issuer should verify challenge matches the expected challenge
+      if (challenge != null) {
+        prettyPrint(
+          'Challenge received from holder',
+          object: {'challenge': challenge},
+        );
+
+        final isChallengeValid = issuerChallenge == challenge;
+
+        if (!isChallengeValid) {
+          await vdipIssuer.mediatorClient.packAndSendMessage(
+            ProblemReportMessage(
+              id: const Uuid().v4(),
+              to: [message.from!],
+              parentThreadId: message.threadId ?? message.id,
+              body: ProblemReportBody(
+                code: ProblemCode(
+                  sorter: SorterType.warning,
+                  scope: Scope(scope: ScopeType.message),
+                  descriptors: [
+                    'vdip',
+                    'invalid-challenge',
+                  ],
+                ),
+              ),
+            ),
+          );
+
+          return;
+        }
+
+        prettyPrint(
+          'Challenge received',
+          object: {'challenge': challenge},
+        );
+      }
 
       await vdspIssuer.queryHolderFeatures(
         holderDid: (await holderDidManager.getDidDocument()).id,

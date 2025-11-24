@@ -218,7 +218,7 @@ dart run example/browser_context_with_servers_example.dart
 The Holder sends a credential request without a nonce:
 
 ```dart
-await holderClient.requestCredential(
+await vdipHolder.requestCredential(
   issuerDid: issuerSigner.did,
   options: RequestCredentialsOptions(
     proposalId: 'proposal_browser_verification',
@@ -234,7 +234,7 @@ await holderClient.requestCredential(
 The Issuer determines verification is needed and sends a switch context message:
 
 ```dart
-await issuerClient.sendSwitchContext(
+await vdipIssuer.sendSwitchContext(
   holderDid: message.from!,
   baseIssuerUrl: Uri.parse('http://localhost:8080'),
   nonce: contextNonce,
@@ -247,7 +247,7 @@ await issuerClient.sendSwitchContext(
 The Holder builds a verification URL with a JWT token:
 
 ```dart
-final verificationUrl = await holderClient.buildBrowserContextUrl(
+final verificationUrl = await vdipHolder.buildBrowserContextUrl(
   switchContextMessage: message,
 );
 // Returns: http://localhost:8080/vdip/issuance?token=eyJ...

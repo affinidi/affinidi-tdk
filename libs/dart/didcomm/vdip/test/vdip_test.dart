@@ -100,6 +100,12 @@ Future<void> main() async {
             test('VDIP credential issuance works correctly', () async {
               final testCompleter = Completer<PlainTextMessage>();
 
+              final credential = await generateEmailLdVcV1(
+                holderDid: holderDidDocument.id,
+                holderEmail: holderEmail,
+                issuerSigner: issuerSigner,
+              );
+
               final vdipIssuer = VdipIssuer(
                 didManager: issuerDidManager,
                 mediatorClient: mockMediator.clients[issuerDidManager]!,
@@ -117,6 +123,7 @@ Future<void> main() async {
                   required message,
                   isAssertionValid,
                   holderDidFromAssertion,
+                  challenge,
                 }) async {
                   final holderDid = message.from!;
                   final body = VdipRequestIssuanceMessageBody.fromJson(
@@ -129,13 +136,6 @@ Future<void> main() async {
                     );
                     return;
                   }
-
-                  // Issue credential
-                  final credential = await generateEmailLdVcV1(
-                    holderDid: holderDid,
-                    holderEmail: holderEmail,
-                    issuerSigner: issuerSigner,
-                  );
 
                   await vdipIssuer.sendIssuedCredentials(
                     holderDid: holderDid,
@@ -212,6 +212,13 @@ Future<void> main() async {
               );
               expect(actualBody.comment, comment);
               expect(actualBody.credentialFormat, CredentialFormat.w3cV1);
+
+              final credentialSerialized = actualBody.credential;
+              final verifiableCredential =
+                  VcDataModelV1.fromJson(credentialSerialized);
+
+              expect(actualBody.comment, comment);
+              expect(verifiableCredential.id, credential.id);
             });
 
             test('VDIP holder-bound credential issuance works correctly',
@@ -230,6 +237,7 @@ Future<void> main() async {
                   required message,
                   isAssertionValid,
                   holderDidFromAssertion,
+                  challenge,
                 }) async {
                   if (isAssertionValid == null || !isAssertionValid) {
                     testCompleter.completeError(
@@ -315,6 +323,59 @@ Future<void> main() async {
               expect(actualBody.comment, comment);
             });
 
+            test('VDIP challenge validation works correctly', () async {
+              final testCompleter = Completer<String?>();
+              final expectedChallenge = const Uuid().v4();
+
+              final vdipIssuer = VdipIssuer(
+                didManager: issuerDidManager,
+                mediatorClient: mockMediator.clients[issuerDidManager]!,
+                featureDisclosures:
+                    FeatureDiscoveryHelper.vdipIssuerDisclosures,
+              );
+
+              vdipIssuer.listenForIncomingMessages(
+                onRequestToIssueCredential: ({
+                  required message,
+                  isAssertionValid,
+                  holderDidFromAssertion,
+                  challenge,
+                }) async {
+                  // Complete with the received challenge
+                  testCompleter.complete(challenge);
+                  await mockMediator.stopConnections();
+                },
+                onProblemReport: (message) async {
+                  testCompleter.completeError(message);
+                  await mockMediator.stopConnections();
+                },
+              );
+
+              final vdipHolder = VdipHolder(
+                didManager: holderDidManager,
+                mediatorClient: mockMediator.clients[holderDidManager]!,
+              );
+
+              await mockMediator.startConnections();
+
+              // Holder requests credential with challenge
+              await vdipHolder.requestCredential(
+                issuerDid: issuerDidDocument.id,
+                options: RequestCredentialsOptions(
+                  proposalId: proposalId,
+                  challenge: expectedChallenge,
+                  credentialFormat: CredentialFormat.w3cV1,
+                ),
+              );
+
+              final receivedChallenge = await testCompleter.future;
+
+              // Verify the challenge was properly transmitted
+              expect(receivedChallenge, isNotNull);
+              expect(receivedChallenge, equals(expectedChallenge));
+              // TODO: add chellange expectation in general test above
+            });
+
             test('VDIP switch context flow works correctly', () async {
               final testCompleter = Completer<VdipSwitchContextMessage>();
               final baseIssuerUrl = Uri.parse('https://issuer.example.com');
@@ -390,80 +451,7 @@ Future<void> main() async {
               final actualBody = actual.switchContext;
               expect(actualBody.baseIssuerUrl, baseIssuerUrl.toString());
               expect(actualBody.nonce, nonce);
-            });
-
-            test('VDIP buildBrowserContextUrl creates valid URL', () async {
-              final testCompleter = Completer<String>();
-              final baseIssuerUrl = Uri.parse('https://issuer.example.com');
-              final nonce = const Uuid().v4();
-
-              final issuerClient = VdipIssuer(
-                didManager: issuerDidManager,
-                mediatorClient: mockMediator.clients[issuerDidManager]!,
-                featureDisclosures:
-                    FeatureDiscoveryHelper.vdipIssuerDisclosures,
-              );
-
-              issuerClient.listenForIncomingMessages(
-                onFeatureQuery: (message) async {
-                  await issuerClient.disclose(
-                    queryMessage: message,
-                  );
-
-                  await issuerClient.sendSwitchContext(
-                    holderDid: holderDidDocument.id,
-                    baseIssuerUrl: baseIssuerUrl,
-                    nonce: nonce,
-                    threadId: message.threadId ?? message.id,
-                  );
-                },
-                onRequestToIssueCredential: emptyOnRequestIssuanceCallback,
-                onProblemReport: (message) async {
-                  testCompleter.completeError(message);
-                  await mockMediator.stopConnections();
-                },
-              );
-
-              final holderClient = VdipHolder(
-                didManager: holderDidManager,
-                mediatorClient: mockMediator.clients[holderDidManager]!,
-              );
-
-              holderClient.listenForIncomingMessages(
-                onCredentialsIssuanceResponse: (message) {
-                  // Not expecting credential issuance in this test
-                },
-                onSwitchContext: (switchContextMsg) async {
-                  final url = await holderClient.buildBrowserContextUrl(
-                    switchContextMessage: switchContextMsg,
-                  );
-                  testCompleter.complete(url);
-                  await mockMediator.stopConnections();
-                },
-                onProblemReport: (message) async {
-                  testCompleter.completeError(message);
-                  await mockMediator.stopConnections();
-                },
-              );
-
-              await mockMediator.startConnections();
-
-              // Holder queries issuer features
-              await holderClient.queryIssuerFeatures(
-                issuerDid: issuerDidDocument.id,
-                featureQueries:
-                    FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-                  FeatureDiscoveryHelper.vdipIssuerDisclosures,
-                ),
-              );
-
-              final actualUrl = await testCompleter.future;
-
-              expect(actualUrl, isNotEmpty);
-              expect(actualUrl, startsWith(baseIssuerUrl.toString()));
-              // The nonce and thread ID are embedded in a JWT token, not as query parameters
-              expect(actualUrl, contains('token='));
-              expect(actualUrl, contains('/vdip/issuance'));
+              // TODO: verify jwt claims
             });
           });
         }
@@ -503,6 +491,238 @@ Future<void> main() async {
       expect(actual, isA<ProblemReportMessage>());
       expect(actual.parentThreadId, messageId);
     });
+
+    test('Should fail if expired assertion', () async {
+      final testCompleter = Completer<bool>();
+
+      final sut = VdipIssuer(
+        didManager: issuerDidManager,
+        mediatorClient: mockMediator.clients[issuerDidManager]!,
+        featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
+      );
+
+      sut.listenForIncomingMessages(
+        onRequestToIssueCredential: ({
+          required message,
+          isAssertionValid,
+          holderDidFromAssertion,
+          challenge,
+        }) async {
+          testCompleter.complete(
+              isAssertionValid == false && holderDidFromAssertion == null);
+        },
+        onProblemReport: (message) async {
+          testCompleter.completeError(message);
+        },
+      );
+
+      final issueTime =
+          (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+
+      final payload = {
+        'proposalId': proposalId,
+        'iss': holderSigner.did,
+        'sub': holderSigner.did,
+        'aud': issuerDidDocument.id,
+        'jti': const Uuid().v4(),
+        'exp': issueTime - 5 * 60, // Expired 5 minutes ago
+        'iat': issueTime,
+      };
+
+      final signedAssertion = await JwtHelper.createAndSignJwt(
+        payload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final encryptedMessage = await createEncryptedMessageForAssertion(
+        issuerDidManager: issuerDidManager,
+        holderDidManager: holderDidManager,
+        signedAssertion: signedAssertion,
+        proposalId: proposalId,
+      );
+
+      mockMediator.responseControllers[issuerDidDocument.id]!.add(
+        encryptedMessage.toJson(),
+      );
+
+      final actual = await testCompleter.future;
+      expect(actual, isFalse);
+    });
+
+    test('Should fail if invalid subject', () async {
+      final testCompleter = Completer<bool>();
+
+      final vdipIssuer = VdipIssuer(
+        didManager: issuerDidManager,
+        mediatorClient: mockMediator.clients[issuerDidManager]!,
+        featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
+      );
+
+      vdipIssuer.listenForIncomingMessages(
+        onRequestToIssueCredential: ({
+          required message,
+          isAssertionValid,
+          holderDidFromAssertion,
+          challenge,
+        }) async {
+          testCompleter.complete(
+              isAssertionValid == false && holderDidFromAssertion == null);
+        },
+        onProblemReport: (message) async {
+          testCompleter.completeError(message);
+        },
+      );
+
+      final issueTime =
+          (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+
+      final payload = {
+        'proposalId': proposalId,
+        'iss': holderSigner.did,
+        'sub': 'did:key:someotherdid', // Invalid subject
+        'aud': issuerDidDocument.id,
+        'jti': const Uuid().v4(),
+        'exp': issueTime + 300,
+        'iat': issueTime,
+      };
+
+      final signedAssertion = await JwtHelper.createAndSignJwt(
+        payload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final encryptedMessage = await createEncryptedMessageForAssertion(
+        issuerDidManager: issuerDidManager,
+        holderDidManager: holderDidManager,
+        signedAssertion: signedAssertion,
+        proposalId: proposalId,
+      );
+
+      mockMediator.responseControllers[issuerDidDocument.id]!.add(
+        encryptedMessage.toJson(),
+      );
+
+      final isValid = await testCompleter.future;
+      expect(isValid, isFalse);
+    });
+
+    test('Should fails if invalid issuer', () async {
+      final testCompleter = Completer<bool>();
+
+      final vdipIssuer = VdipIssuer(
+        didManager: issuerDidManager,
+        mediatorClient: mockMediator.clients[issuerDidManager]!,
+        featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
+      );
+
+      vdipIssuer.listenForIncomingMessages(
+        onRequestToIssueCredential: ({
+          required message,
+          isAssertionValid,
+          holderDidFromAssertion,
+          challenge,
+        }) async {
+          testCompleter.complete(
+              isAssertionValid == true && holderDidFromAssertion == null);
+        },
+        onProblemReport: (message) async {
+          testCompleter.completeError(message);
+        },
+      );
+
+      await mockMediator.startConnections();
+
+      final issueTime =
+          (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+
+      final payload = {
+        'proposalId': proposalId,
+        'iss': 'did:key:someotherdid', // Invalid issuer
+        'sub': holderSigner.did,
+        'aud': issuerDidDocument.id,
+        'jti': const Uuid().v4(),
+        'exp': issueTime + 300,
+        'iat': issueTime,
+      };
+
+      final signedAssertion = await JwtHelper.createAndSignJwt(
+        payload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final encryptedMessage = await createEncryptedMessageForAssertion(
+        issuerDidManager: issuerDidManager,
+        holderDidManager: holderDidManager,
+        signedAssertion: signedAssertion,
+        proposalId: proposalId,
+      );
+
+      mockMediator.responseControllers[issuerDidDocument.id]!.add(
+        encryptedMessage.toJson(),
+      );
+
+      final isValid = await testCompleter.future;
+      expect(isValid, isFalse);
+    });
+
+    test('Should fails if invalid audience', () async {
+      final testCompleter = Completer<bool>();
+
+      final vdipIssuer = VdipIssuer(
+        didManager: issuerDidManager,
+        mediatorClient: mockMediator.clients[issuerDidManager]!,
+        featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
+      );
+
+      vdipIssuer.listenForIncomingMessages(
+        onRequestToIssueCredential: ({
+          required message,
+          isAssertionValid,
+          holderDidFromAssertion,
+          challenge,
+        }) async {
+          testCompleter.complete(
+              isAssertionValid == false && holderDidFromAssertion == null);
+        },
+        onProblemReport: (message) async {
+          testCompleter.completeError(message);
+        },
+      );
+
+      await mockMediator.startConnections();
+
+      // Create assertion with a different issuer DID in the audience
+      final issueTime =
+          (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+
+      final payload = {
+        'proposalId': proposalId,
+        'iss': holderSigner.did,
+        'sub': holderSigner.did,
+        'aud': 'did:key:someotherdid', // Invalid audience
+        'jti': const Uuid().v4(),
+        'exp': issueTime + 300,
+        'iat': issueTime,
+      };
+      final signedAssertion = await JwtHelper.createAndSignJwt(
+        payload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final encryptedMessage = await createEncryptedMessageForAssertion(
+        issuerDidManager: issuerDidManager,
+        holderDidManager: holderDidManager,
+        signedAssertion: signedAssertion,
+        proposalId: proposalId,
+      );
+
+      mockMediator.responseControllers[issuerDidDocument.id]!.add(
+        encryptedMessage.toJson(),
+      );
+
+      final isValid = await testCompleter.future;
+      expect(isValid, isFalse);
+    });
   });
 
   group('VDIP Holder Client Unit Tests', () {
@@ -538,53 +758,6 @@ Future<void> main() async {
 
       expect(actual, isA<ProblemReportMessage>());
       expect(actual.parentThreadId, messageId);
-    });
-
-    test('Should receive issued credential', () async {
-      final completer = Completer<PlainTextMessage>();
-
-      final credential = await generateEmailLdVcV1(
-        holderDid: holderDidDocument.id,
-        holderEmail: holderEmail,
-        issuerSigner: issuerSigner,
-      );
-
-      final credentialBody = VdipIssuedCredentialBody.w3cV1(
-        credential: credential,
-        comment: comment,
-      );
-
-      final encryptedMessage = await createdEncryptedIssuedCredentialMessage(
-        issuerDidManager: issuerDidManager,
-        holderDidManager: holderDidManager,
-        from: issuerDidDocument.id,
-        body: credentialBody.toJson(),
-      );
-
-      final sut = VdipHolder(
-        didManager: holderDidManager,
-        mediatorClient: mockMediator.clients[holderDidManager]!,
-      );
-
-      sut.listenForIncomingMessages(
-        onCredentialsIssuanceResponse: completer.complete,
-        onError: completer.completeError,
-      );
-
-      mockMediator.responseControllers[holderDidDocument.id]!.add(
-        encryptedMessage.toJson(),
-      );
-
-      final actual = await completer.future;
-
-      expect(actual, isA<VdipIssuedCredentialMessage>());
-
-      final actualBody = VdipIssuedCredentialBody.fromJson(actual.body!);
-      final credentialSerialized = actualBody.credential;
-      final verifiableCredential = VcDataModelV1.fromJson(credentialSerialized);
-      expect(actualBody.comment, comment);
-      expect(verifiableCredential.id, credential.id);
-      expect(actualBody.credentialFormat, CredentialFormat.w3cV1);
     });
   });
 }

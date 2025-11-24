@@ -3,11 +3,14 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'vdip_switch_context_message.g.dart';
 
+/// DIDComm message for switching context.
 class VdipSwitchContextMessage extends PlainTextMessage {
+  /// Message type URI for switching context.
   static final Uri messageType = Uri.parse(
     'https://affinidi.com/didcomm/protocols/vdip/1.0/switch-context',
   );
 
+  /// Creates a new [VdipSwitchContextMessage].
   VdipSwitchContextMessage({
     required super.id,
     super.from,
@@ -20,6 +23,7 @@ class VdipSwitchContextMessage extends PlainTextMessage {
           type: messageType,
         );
 
+  /// Strongly typed view of the switch context body.
   VdipSwitchContextBody get switchContext {
     final payload = body;
 
@@ -34,6 +38,10 @@ class VdipSwitchContextMessage extends PlainTextMessage {
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
+
+/// Body payload for the switch context message.
+///
+///
 class VdipSwitchContextBody {
   VdipSwitchContextBody({
     required this.baseIssuerUrl,
