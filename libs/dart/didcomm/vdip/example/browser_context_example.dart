@@ -34,9 +34,6 @@ import '../../../../../tests/integration/dart/test/test_config.dart';
 // Storage for pending verification requests
 final Map<String, VerificationRequest> pendingVerifications = {};
 
-// Generated challenge by issuer that is meant to be passed to holder via SMS or Email
-final issuerChallenge = const Uuid().v4();
-
 class VerificationRequest {
   final String nonce;
   final String threadId;
@@ -253,35 +250,6 @@ Future<void> main() async {
       prettyPrint(
         'Issuer: Received Request to Issue Credential',
         object: message,
-      );
-
-      final isChallengeValid = issuerChallenge == challenge;
-
-      if (!isChallengeValid) {
-        await vdipIssuer.mediatorClient.packAndSendMessage(
-          ProblemReportMessage(
-            id: const Uuid().v4(),
-            to: [message.from!],
-            parentThreadId: message.threadId ?? message.id,
-            body: ProblemReportBody(
-              code: ProblemCode(
-                sorter: SorterType.warning,
-                scope: Scope(scope: ScopeType.message),
-                descriptors: [
-                  'vdip',
-                  'invalid-challenge',
-                ],
-              ),
-            ),
-          ),
-        );
-
-        return;
-      }
-
-      prettyPrint(
-        'Challenge received',
-        object: {'challenge': challenge},
       );
 
       final vdipRequestIssuanceBody = VdipRequestIssuanceMessageBody.fromJson(
