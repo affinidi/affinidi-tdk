@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:affinidi_tdk_wallets_client/src/api_util.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/get_revocation_list_credential_result_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/revoke_credential_input.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/revoke_credentials_input.dart';
 
 class RevocationApi {
   final Dio _dio;
@@ -274,6 +275,85 @@ class RevocationApi {
       const _type = FullType(RevokeCredentialInput);
       _bodyData =
           _serializers.serialize(revokeCredentialInput, specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
+  /// Revoke Credentials.
+  /// Update index/credential at appropriate revocation list (set revoked is true).
+  ///
+  /// Parameters:
+  /// * [walletId] - id of the wallet
+  /// * [revokeCredentialsInput] - RevokeCredentials
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> revokeCredentials({
+    required String walletId,
+    required RevokeCredentialsInput revokeCredentialsInput,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/wallets/{walletId}/credentials/revoke'.replaceAll(
+        '{' r'walletId' '}',
+        encodeQueryParameter(_serializers, walletId, const FullType(String))
+            .toString());
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ProjectTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(RevokeCredentialsInput);
+      _bodyData =
+          _serializers.serialize(revokeCredentialsInput, specifiedType: _type);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(

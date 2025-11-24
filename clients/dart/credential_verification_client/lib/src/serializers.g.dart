@@ -50,6 +50,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(VerifyPresentationInput.serializer)
       ..add(VerifyPresentationOutput.serializer)
       ..add(VerifyPresentationV2Input.serializer)
+      ..add(VerifyPresentationV2InputPexQuery.serializer)
       ..add(W3cCredentialStatus.serializer)
       ..add(W3cProof.serializer)
       ..addBuilderFactory(
@@ -115,11 +116,16 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(
-          const FullType(BuiltMap, const [
-            const FullType(String),
-            const FullType.nullable(JsonObject)
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [
+            const FullType(BuiltMap, const [
+              const FullType(String),
+              const FullType.nullable(JsonObject)
+            ])
           ]),
-          () => MapBuilder<String, JsonObject?>())
+          () => ListBuilder<BuiltMap<String, JsonObject?>>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(SubmissionRequirement)]),

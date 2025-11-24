@@ -956,17 +956,17 @@ export interface VerifyCredentialOutput {
  */
 export interface VerifyCredentialV2Input {
   /**
-   * List of VC strings
+   * List of JWT VC strings
    * @type {Array<string>}
    * @memberof VerifyCredentialV2Input
    */
-  verifiableCredentials: Array<string>
+  jwtVcs?: Array<string>
   /**
-   * Dynamic model
-   * @type {{ [key: string]: any; }}
+   * List of LDP VC objects
+   * @type {Array<{ [key: string]: any; }>}
    * @memberof VerifyCredentialV2Input
    */
-  issuerDidDocument?: { [key: string]: any }
+  ldpVcs?: Array<{ [key: string]: any }>
 }
 /**
  * Request model of /verify-vp
@@ -1044,22 +1044,41 @@ export interface VerifyPresentationV2Input {
   verifiablePresentation?: object
   /**
    *
-   * @type {object}
+   * @type {VerifyPresentationV2InputPexQuery}
    * @memberof VerifyPresentationV2Input
    */
-  presentationDefinition?: object
+  pexQuery?: VerifyPresentationV2InputPexQuery
   /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationV2Input
-   */
-  presentationSubmission?: object
-  /**
-   *
+   * Optional challenge string for domain/challenge verification
    * @type {string}
    * @memberof VerifyPresentationV2Input
    */
   challenge?: string
+  /**
+   * Optional domain for verification. Array of domain strings as per W3C VP standard
+   * @type {Array<string>}
+   * @memberof VerifyPresentationV2Input
+   */
+  domain?: Array<string>
+}
+/**
+ * Presentation Exchange Query containing presentation definition and submission
+ * @export
+ * @interface VerifyPresentationV2InputPexQuery
+ */
+export interface VerifyPresentationV2InputPexQuery {
+  /**
+   * Presentation definition for the verification request
+   * @type {object}
+   * @memberof VerifyPresentationV2InputPexQuery
+   */
+  presentationDefinition?: object
+  /**
+   * Presentation submission for the verification request
+   * @type {object}
+   * @memberof VerifyPresentationV2InputPexQuery
+   */
+  presentationSubmission?: object
 }
 /**
  *

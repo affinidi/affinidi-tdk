@@ -4,10 +4,10 @@ Request model of /v2/verify-vcs
 
 ## Properties
 
-| Name                       | Type                  | Description        | Notes      |
-| -------------------------- | --------------------- | ------------------ | ---------- |
-| **verifiable_credentials** | **List[str]**         | List of VC strings |
-| **issuer_did_document**    | **Dict[str, object]** | Dynamic model      | [optional] |
+| Name        | Type                        | Description            | Notes      |
+| ----------- | --------------------------- | ---------------------- | ---------- |
+| **jwt_vcs** | **List[str]**               | List of JWT VC strings | [optional] |
+| **ldp_vcs** | **List[Dict[str, object]]** | List of LDP VC objects | [optional] |
 
 ## Example
 

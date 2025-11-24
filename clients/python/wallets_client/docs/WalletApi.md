@@ -2,15 +2,20 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 
-| Method                                              | HTTP request                                    | Description |
-| --------------------------------------------------- | ----------------------------------------------- | ----------- |
-| [**create_wallet**](WalletApi.md#create_wallet)     | **POST** /v1/wallets                            |
-| [**delete_wallet**](WalletApi.md#delete_wallet)     | **DELETE** /v1/wallets/{walletId}               |
-| [**get_wallet**](WalletApi.md#get_wallet)           | **GET** /v1/wallets/{walletId}                  |
-| [**list_wallets**](WalletApi.md#list_wallets)       | **GET** /v1/wallets                             |
-| [**sign_credential**](WalletApi.md#sign_credential) | **POST** /v1/wallets/{walletId}/sign-credential |
-| [**sign_jwt_token**](WalletApi.md#sign_jwt_token)   | **POST** /v1/wallets/{walletId}/sign-jwt        |
-| [**update_wallet**](WalletApi.md#update_wallet)     | **PATCH** /v1/wallets/{walletId}                |
+| Method                                                              | HTTP request                                            | Description |
+| ------------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| [**create_wallet**](WalletApi.md#create_wallet)                     | **POST** /v1/wallets                                    |
+| [**create_wallet_v2**](WalletApi.md#create_wallet_v2)               | **POST** /v2/wallets                                    |
+| [**delete_wallet**](WalletApi.md#delete_wallet)                     | **DELETE** /v1/wallets/{walletId}                       |
+| [**get_wallet**](WalletApi.md#get_wallet)                           | **GET** /v1/wallets/{walletId}                          |
+| [**list_wallets**](WalletApi.md#list_wallets)                       | **GET** /v1/wallets                                     |
+| [**sign_credential**](WalletApi.md#sign_credential)                 | **POST** /v1/wallets/{walletId}/sign-credential         |
+| [**sign_credentials_jwt**](WalletApi.md#sign_credentials_jwt)       | **POST** /v2/wallets/{walletId}/credentials/jwt/sign    |
+| [**sign_credentials_ldp**](WalletApi.md#sign_credentials_ldp)       | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |
+| [**sign_credentials_sd_jwt**](WalletApi.md#sign_credentials_sd_jwt) | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |
+| [**sign_jwt_token**](WalletApi.md#sign_jwt_token)                   | **POST** /v1/wallets/{walletId}/sign-jwt                |
+| [**sign_presentations_ldp**](WalletApi.md#sign_presentations_ldp)   | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |
+| [**update_wallet**](WalletApi.md#update_wallet)                     | **PATCH** /v1/wallets/{walletId}                        |
 
 # **create_wallet**
 
@@ -101,6 +106,95 @@ with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
 | Status code | Description    | Response headers |
 | ----------- | -------------- | ---------------- |
 | **201**     | Created        | -                |
+| **403**     | ForbiddenError | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_wallet_v2**
+
+> CreateWalletV2Response create_wallet_v2()
+
+Create v2 wallet
+
+### Example
+
+- Api Key Authentication (ProjectTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_wallets_client
+from affinidi_tdk_wallets_client.models.create_wallet_v2_response import CreateWalletV2Response
+from affinidi_tdk_wallets_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_wallets_client.Configuration(
+    host = "https://apse1.api.affinidi.io/cwe"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_wallets_client.WalletApi(api_client)
+
+    try:
+        api_response = api_instance.create_wallet_v2()
+        print("The response of WalletApi->create_wallet_v2:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WalletApi->create_wallet_v2: %s\n" % e)
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CreateWalletV2Response**](CreateWalletV2Response.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description    | Response headers |
+| ----------- | -------------- | ---------------- |
+| **201**     | OK             | -                |
 | **403**     | ForbiddenError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -477,6 +571,297 @@ with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **sign_credentials_jwt**
+
+> SignCredentialsJwtResultDto sign_credentials_jwt(wallet_id, sign_credentials_jwt_input_dto)
+
+signs credential with the wallet v2
+
+### Example
+
+- Api Key Authentication (ProjectTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_wallets_client
+from affinidi_tdk_wallets_client.models.sign_credentials_jwt_input_dto import SignCredentialsJwtInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_jwt_result_dto import SignCredentialsJwtResultDto
+from affinidi_tdk_wallets_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_wallets_client.Configuration(
+    host = "https://apse1.api.affinidi.io/cwe"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_wallets_client.WalletApi(api_client)
+    wallet_id = 'wallet_id_example' # str | id of the wallet
+    sign_credentials_jwt_input_dto = affinidi_tdk_wallets_client.SignCredentialsJwtInputDto() # SignCredentialsJwtInputDto | signCredentialsJwt
+
+    try:
+        api_response = api_instance.sign_credentials_jwt(wallet_id, sign_credentials_jwt_input_dto)
+        print("The response of WalletApi->sign_credentials_jwt:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WalletApi->sign_credentials_jwt: %s\n" % e)
+```
+
+### Parameters
+
+| Name                               | Type                                                            | Description        | Notes |
+| ---------------------------------- | --------------------------------------------------------------- | ------------------ | ----- |
+| **wallet_id**                      | **str**                                                         | id of the wallet   |
+| **sign_credentials_jwt_input_dto** | [**SignCredentialsJwtInputDto**](SignCredentialsJwtInputDto.md) | signCredentialsJwt |
+
+### Return type
+
+[**SignCredentialsJwtResultDto**](SignCredentialsJwtResultDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | Ok              | -                |
+| **400**     | BadRequestError | -                |
+| **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sign_credentials_ldp**
+
+> SignCredentialsLdpResultDto sign_credentials_ldp(wallet_id, sign_credentials_ldp_input_dto)
+
+signs credential with the wallet v2
+
+### Example
+
+- Api Key Authentication (ProjectTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_wallets_client
+from affinidi_tdk_wallets_client.models.sign_credentials_ldp_input_dto import SignCredentialsLdpInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_ldp_result_dto import SignCredentialsLdpResultDto
+from affinidi_tdk_wallets_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_wallets_client.Configuration(
+    host = "https://apse1.api.affinidi.io/cwe"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_wallets_client.WalletApi(api_client)
+    wallet_id = 'wallet_id_example' # str | id of the wallet
+    sign_credentials_ldp_input_dto = affinidi_tdk_wallets_client.SignCredentialsLdpInputDto() # SignCredentialsLdpInputDto | signCredentialsLdp
+
+    try:
+        api_response = api_instance.sign_credentials_ldp(wallet_id, sign_credentials_ldp_input_dto)
+        print("The response of WalletApi->sign_credentials_ldp:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WalletApi->sign_credentials_ldp: %s\n" % e)
+```
+
+### Parameters
+
+| Name                               | Type                                                            | Description        | Notes |
+| ---------------------------------- | --------------------------------------------------------------- | ------------------ | ----- |
+| **wallet_id**                      | **str**                                                         | id of the wallet   |
+| **sign_credentials_ldp_input_dto** | [**SignCredentialsLdpInputDto**](SignCredentialsLdpInputDto.md) | signCredentialsLdp |
+
+### Return type
+
+[**SignCredentialsLdpResultDto**](SignCredentialsLdpResultDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | Ok              | -                |
+| **400**     | BadRequestError | -                |
+| **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sign_credentials_sd_jwt**
+
+> SignCredentialsDm2SdJwtResultDto sign_credentials_sd_jwt(wallet_id, sign_credentials_dm2_sd_jwt_input_dto)
+
+signs credential with the wallet v2
+
+### Example
+
+- Api Key Authentication (ProjectTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_wallets_client
+from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_input_dto import SignCredentialsDm2SdJwtInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_result_dto import SignCredentialsDm2SdJwtResultDto
+from affinidi_tdk_wallets_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_wallets_client.Configuration(
+    host = "https://apse1.api.affinidi.io/cwe"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_wallets_client.WalletApi(api_client)
+    wallet_id = 'wallet_id_example' # str | id of the wallet
+    sign_credentials_dm2_sd_jwt_input_dto = affinidi_tdk_wallets_client.SignCredentialsDm2SdJwtInputDto() # SignCredentialsDm2SdJwtInputDto | SignCredentialsDm1SdJwt
+
+    try:
+        api_response = api_instance.sign_credentials_sd_jwt(wallet_id, sign_credentials_dm2_sd_jwt_input_dto)
+        print("The response of WalletApi->sign_credentials_sd_jwt:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WalletApi->sign_credentials_sd_jwt: %s\n" % e)
+```
+
+### Parameters
+
+| Name                                      | Type                                                                      | Description             | Notes |
+| ----------------------------------------- | ------------------------------------------------------------------------- | ----------------------- | ----- |
+| **wallet_id**                             | **str**                                                                   | id of the wallet        |
+| **sign_credentials_dm2_sd_jwt_input_dto** | [**SignCredentialsDm2SdJwtInputDto**](SignCredentialsDm2SdJwtInputDto.md) | SignCredentialsDm1SdJwt |
+
+### Return type
+
+[**SignCredentialsDm2SdJwtResultDto**](SignCredentialsDm2SdJwtResultDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | Ok              | -                |
+| **400**     | BadRequestError | -                |
+| **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **sign_jwt_token**
 
 > SignJwtTokenOK sign_jwt_token(wallet_id, sign_jwt_token)
@@ -568,6 +953,103 @@ with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
 | Status code | Description     | Response headers |
 | ----------- | --------------- | ---------------- |
 | **200**     | SignJwtTokenOK  | -                |
+| **400**     | BadRequestError | -                |
+| **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **sign_presentations_ldp**
+
+> SignPresentationLdpResultDto sign_presentations_ldp(wallet_id, sign_presentation_ldp_input_dto)
+
+signs presentation with the wallet
+
+### Example
+
+- Api Key Authentication (ProjectTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_wallets_client
+from affinidi_tdk_wallets_client.models.sign_presentation_ldp_input_dto import SignPresentationLdpInputDto
+from affinidi_tdk_wallets_client.models.sign_presentation_ldp_result_dto import SignPresentationLdpResultDto
+from affinidi_tdk_wallets_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://apse1.api.affinidi.io/cwe
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_wallets_client.Configuration(
+    host = "https://apse1.api.affinidi.io/cwe"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ProjectTokenAuth
+configuration.api_key['ProjectTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ProjectTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_wallets_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_wallets_client.WalletApi(api_client)
+    wallet_id = 'wallet_id_example' # str | id of the wallet
+    sign_presentation_ldp_input_dto = affinidi_tdk_wallets_client.SignPresentationLdpInputDto() # SignPresentationLdpInputDto | signPresentationLdp
+
+    try:
+        api_response = api_instance.sign_presentations_ldp(wallet_id, sign_presentation_ldp_input_dto)
+        print("The response of WalletApi->sign_presentations_ldp:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling WalletApi->sign_presentations_ldp: %s\n" % e)
+```
+
+### Parameters
+
+| Name                                | Type                                                              | Description         | Notes |
+| ----------------------------------- | ----------------------------------------------------------------- | ------------------- | ----- |
+| **wallet_id**                       | **str**                                                           | id of the wallet    |
+| **sign_presentation_ldp_input_dto** | [**SignPresentationLdpInputDto**](SignPresentationLdpInputDto.md) | signPresentationLdp |
+
+### Return type
+
+[**SignPresentationLdpResultDto**](SignPresentationLdpResultDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
