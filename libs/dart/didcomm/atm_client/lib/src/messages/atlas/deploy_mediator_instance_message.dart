@@ -23,6 +23,7 @@ class DeployMediatorInstanceMessage extends BaseInstanceMessage {
   }) : super(
           operationName: DeployMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
+
         );
 }
 
@@ -42,10 +43,8 @@ class DeployMediatorInstanceResponseMessage extends BaseInstanceResponseMessage<
   }) : super(
           operationName: DeployMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
+          fromJson: DeployMediatorInstanceResponse.fromJson,
         );
-
-  @override
-  DeployMediatorInstanceResponse parseResponse(Map<String, dynamic> json) => DeployMediatorInstanceResponse.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

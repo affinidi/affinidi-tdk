@@ -41,10 +41,8 @@ class DestroyMediatorInstanceResponseMessage extends BaseInstanceResponseMessage
   }) : super(
           operationName: DestroyMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
+          fromJson: DestroyMediatorInstanceResponse.fromJson,
         );
-
-  @override
-  DestroyMediatorInstanceResponse parseResponse(Map<String, dynamic> json) => DestroyMediatorInstanceResponse.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

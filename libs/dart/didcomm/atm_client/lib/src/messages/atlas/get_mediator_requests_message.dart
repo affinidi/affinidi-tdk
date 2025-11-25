@@ -8,6 +8,9 @@ part 'get_mediator_requests_message.g.dart';
 
 /// Message for getting mediator requests.
 class GetMediatorRequestsMessage extends BaseInstanceMessage {
+  /// The operation name for getting mediator requests.
+  static const String operationName = 'getMediatorRequests';
+
   /// Creates a get mediator requests message.
   GetMediatorRequestsMessage({
     required super.id,
@@ -18,7 +21,7 @@ class GetMediatorRequestsMessage extends BaseInstanceMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-         operationName: 'getMediatorRequests',
+         operationName: GetMediatorRequestsMessage.operationName,
           instanceType: InstanceType.mediator
         );
 }
@@ -35,12 +38,10 @@ class GetMediatorRequestsResponseMessage extends BaseInstanceResponseMessage<Get
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: 'getMediatorRequests',
+          operationName: GetMediatorRequestsMessage.operationName,
           instanceType: InstanceType.mediator,
+          fromJson: GetMediatorRequestsResponseData.fromJson,
         );
-
-  @override
-  GetMediatorRequestsResponseData parseResponse(Map<String, dynamic> json) => GetMediatorRequestsResponseData.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)
