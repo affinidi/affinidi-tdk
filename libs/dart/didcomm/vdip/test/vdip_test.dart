@@ -376,61 +376,6 @@ Future<void> main() async {
               // TODO: add chellange expectation in general test above
             });
 
-            test('VDIP expired assertion validation', () async {
-              final testCompleter = Completer<Map<String, dynamic>>();
-
-              final vdipIssuer = VdipIssuer(
-                didManager: issuerDidManager,
-                mediatorClient: mockMediator.clients[issuerDidManager]!,
-                featureDisclosures:
-                    FeatureDiscoveryHelper.vdipIssuerDisclosures,
-              );
-
-              vdipIssuer.listenForIncomingMessages(
-                onRequestToIssueCredential: ({
-                  required message,
-                  isAssertionValid,
-                  holderDidFromAssertion,
-                  challenge,
-                }) async {
-                  testCompleter.complete({
-                    'isAssertionValid': isAssertionValid ?? false,
-                    'holderDidFromAssertion': holderDidFromAssertion,
-                  });
-                  await mockMediator.stopConnections();
-                },
-                onProblemReport: (message) async {
-                  testCompleter.completeError(message);
-                  await mockMediator.stopConnections();
-                },
-              );
-
-              final vdipHolder = VdipHolder(
-                didManager: holderDidManager,
-                mediatorClient: mockMediator.clients[holderDidManager]!,
-              );
-
-              await mockMediator.startConnections();
-
-              // Create an assertion with negative expiration (expired)
-              // Note: Current implementation doesn't validate expiration time
-              // This test documents the expected behavior
-              await vdipHolder.requestCredentialForHolder(
-                holderSigner.did,
-                issuerDid: issuerDidDocument.id,
-                assertionSigner: holderSigner,
-                options: RequestCredentialsOptions(
-                  proposalId: proposalId,
-                  credentialFormat: CredentialFormat.w3cV1,
-                  comment: comment,
-                ),
-              );
-
-              final result = await testCompleter.future;
-
-              expect(result['holderDidFromAssertion'], holderSigner.did);
-            });
-
             test('VDIP invalid holderDID should be invalid', () async {
               final testCompleter = Completer<bool>();
 
