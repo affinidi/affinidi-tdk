@@ -360,20 +360,53 @@ Future<HttpServer> startIssuerServer({
           await request.cast<List<int>>().transform(const Utf8Decoder()).join();
       final data = Uri.splitQueryString(body);
 
-      final nonce = data['nonce'];
+      final token = data['token'];
       final verified = data['verified'] == 'true';
 
       print('Issuer Server: Verification callback received');
-      print('   - Nonce: $nonce');
+      print('   - Token: ${token?.substring(0, 20)}...');
       print('   - Verified: $verified\n');
 
-      final verificationRequest = pendingVerifications[nonce];
-      if (verificationRequest != null) {
-        final verificationRequest = pendingVerifications[nonce];
-        if (verificationRequest == null) {
-          throw StateError('No pending verification for nonce: $nonce');
-        }
+      if (token == null) {
+        request.response.statusCode = HttpStatus.badRequest;
+        request.response.write('Missing token');
+        await request.response.close();
+        return;
+      }
 
+      // Find the pending verification by validating token against all stored nonces
+      String? matchingNonce;
+      for (final entry in pendingVerifications.entries) {
+        final isValid = await vdipIssuer.validateHolderToken(
+          token: token,
+          holderDid: entry.value.holderDid,
+          expectedNonce: entry.key,
+          expectedThreadId: entry.value.threadId,
+        );
+
+        if (isValid) {
+          matchingNonce = entry.key;
+          break;
+        }
+      }
+
+      if (matchingNonce == null) {
+        print(
+            'Issuer: Token validation failed or no matching verification found\n');
+        request.response.statusCode = HttpStatus.unauthorized;
+        request.response.write('Invalid or expired token');
+        await request.response.close();
+        return;
+      }
+
+      final verificationRequest = pendingVerifications[matchingNonce];
+      if (verificationRequest == null) {
+        throw StateError('No pending verification for nonce: $matchingNonce');
+      }
+
+      print('Issuer: Token validated successfully!\n');
+
+      if (verified) {
         print('Issuer: Verification successful! Issuing credential...\n');
         // Issue the credential
         final unsignedCredential = VcDataModelV1(
@@ -418,9 +451,12 @@ Future<HttpServer> startIssuerServer({
         );
 
         // Clean up
-        pendingVerifications.remove(nonce);
+        pendingVerifications.remove(matchingNonce);
 
         print('Issuer: Credential sent to holder!\n');
+      } else {
+        print('Issuer: Verification denied by user\n');
+        pendingVerifications.remove(matchingNonce);
       }
 
       request.response.statusCode = HttpStatus.ok;

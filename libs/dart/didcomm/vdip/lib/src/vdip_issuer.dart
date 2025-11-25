@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
-
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -287,5 +286,49 @@ class VdipIssuer {
 
     await mediatorClient.packAndSendMessage(message);
     return message;
+  }
+
+  /// Validates a token created by the holder during browser context switch.
+  ///
+  /// Verifies that the JWT token signed by the holder contains the expected
+  /// nonce and thread ID, and that it has not expired. The token signature
+  /// is verified using the holder's DID document.
+  Future<bool> validateHolderToken({
+    required String token,
+    required String holderDid,
+    required String expectedNonce,
+    required String expectedThreadId,
+  }) async {
+    try {
+      final resolvedHolderDidDocument =
+          await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+
+      final decodedToken = JwtHelper.decodeAndVerify(
+        serializedJwt: token,
+        holderDidDocument: resolvedHolderDidDocument,
+      );
+
+      final tokenPayload = decodedToken.payload;
+
+      final tokenNonce = tokenPayload['nonce'];
+      final tokenThreadId = tokenPayload['threadId'];
+      final tokenSubject = tokenPayload['sub'];
+      final tokenIssuer = tokenPayload['iss'];
+      final tokenExpiration = tokenPayload['exp'] as int?;
+
+      final isCorrectDID =
+          tokenSubject == holderDid && tokenIssuer == holderDid;
+      final isNonceValid = tokenNonce == expectedNonce;
+      final isThreadIdValid = tokenThreadId == expectedThreadId;
+      final isTokenExpirationValid = tokenExpiration != null &&
+          tokenExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
+
+      return isCorrectDID &&
+          isNonceValid &&
+          isThreadIdValid &&
+          isTokenExpirationValid;
+    } catch (e) {
+      return false;
+    }
   }
 }
