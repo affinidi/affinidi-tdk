@@ -373,7 +373,6 @@ Future<void> main() async {
               // Verify the challenge was properly transmitted
               expect(receivedChallenge, isNotNull);
               expect(receivedChallenge, equals(expectedChallenge));
-              // TODO: add chellange expectation in general test above
             });
 
             test('VDIP switch context flow works correctly', () async {

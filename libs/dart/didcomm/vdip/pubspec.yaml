@@ -11,7 +11,7 @@ resolution: workspace
 
 dependencies:
   affinidi_tdk_didcomm_mediator_client: ^1.0.0-dev.1
-  affinidi_tdk_vdsp: ^1.0.0-dev.1
+  affinidi_tdk_vdsp: ^1.0.0-dev.4
   dcql: ^1.2.0
   json_annotation: ^4.9.0
   selective_disclosure_jwt: ^1.1.1
