@@ -8,7 +8,7 @@ part of 'base_get_instances_list_request.dart';
 
 BaseGetInstancesListRequest _$BaseGetInstancesListRequestFromJson(
         Map<String, dynamic> json) =>
-    BaseGetInstancesListRequest(
+    BaseGetInstancesListRequest._(
       limit: (json['limit'] as num?)?.toInt(),
       exclusiveStartKey: json['exclusiveStartKey'] as String?,
     );

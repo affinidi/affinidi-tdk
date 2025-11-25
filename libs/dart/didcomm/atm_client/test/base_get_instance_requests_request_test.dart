@@ -1,4 +1,5 @@
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/instance_type_config.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -6,8 +7,7 @@ void main() {
     test(
         'should create request with mediator instance type and no optional fields',
         () {
-      final request = BaseGetInstanceRequestsRequest(
-        instanceType: InstanceType.mediator,
+      final request = BaseGetInstanceRequestsRequest.mediator(
       );
 
       expect(request.instanceId, isNull);
@@ -17,11 +17,10 @@ void main() {
     });
 
     test('should create request with all fields for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = BaseGetInstanceRequestsRequest.mediator(
         instanceId: 'mediator-123',
         limit: 10,
         exclusiveStartKey: 'key-456',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
@@ -31,9 +30,8 @@ void main() {
     });
 
     test('should create request with only instanceId for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = BaseGetInstanceRequestsRequest.mediator(
         instanceId: 'mediator-789',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-789');
@@ -43,11 +41,10 @@ void main() {
     });
 
     test('should serialize to JSON with all fields for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = BaseGetInstanceRequestsRequest.mediator(
         instanceId: 'mediator-123',
         limit: 20,
         exclusiveStartKey: 'key-abc',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -59,9 +56,8 @@ void main() {
     });
 
     test('should serialize to JSON with only instanceId for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = BaseGetInstanceRequestsRequest.mediator(
         instanceId: 'mediator-456',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -71,10 +67,9 @@ void main() {
     });
 
     test('should serialize to JSON without instanceId for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = BaseGetInstanceRequestsRequest.mediator(
         limit: 15,
         exclusiveStartKey: 'key-xyz',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -86,8 +81,7 @@ void main() {
     });
 
     test('should serialize to JSON with no optional fields for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
-        instanceType: InstanceType.mediator,
+      final request = BaseGetInstanceRequestsRequest.mediator(
       );
 
       final json = request.toJson();

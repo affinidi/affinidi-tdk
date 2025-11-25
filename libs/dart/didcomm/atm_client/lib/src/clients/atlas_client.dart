@@ -4,7 +4,6 @@ import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediat
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../messages/atlas/config/instance_type_config.dart';
 import '../messages/atlas/deploy_mediator_instance_message.dart';
 import '../messages/atlas/destroy_mediator_instance_message.dart';
 import '../messages/atlas/get_mediator_instance_metadata_message.dart';
@@ -78,6 +77,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     return client;
   }
 
+  /// Gets the list of deployed mediator instances.
   Future<GetMediatorInstancesListResponseMessage> getMediatorInstancesList({
     int? limit,
     String? exclusiveStartKey,
@@ -85,7 +85,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorInstancesListMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: BaseGetInstancesListRequest(
+      body: BaseGetInstancesListRequest.mediator(
         limit: limit,
         exclusiveStartKey: exclusiveStartKey,
       ).toJson(),
@@ -137,9 +137,9 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorInstanceMetadataMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: BaseGetInstanceMetadataRequest(
+      body: BaseGetInstanceMetadataRequest.mediator(
         instanceId: mediatorId,
-        instanceType: InstanceType.mediator,
+     
       ).toJson(),
     );
 
@@ -164,9 +164,8 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = DestroyMediatorInstanceMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: BaseDestroyInstanceRequest(
+      body: BaseDestroyInstanceRequest.mediator(
         instanceId: mediatorId,
-        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 
@@ -243,11 +242,10 @@ class DidcommAtlasClient extends DidcommServiceClient {
     final requestMessage = GetMediatorRequestsMessage(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: BaseGetInstanceRequestsRequest(
+      body: BaseGetInstanceRequestsRequest.mediator(
         instanceId: mediatorId,
         limit: limit,
         exclusiveStartKey: exclusiveStartKey,
-        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 

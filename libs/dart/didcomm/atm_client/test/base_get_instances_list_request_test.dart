@@ -4,21 +4,23 @@ import 'package:test/test.dart';
 void main() {
   group('BaseGetInstancesListRequest', () {
     test('should create request with no parameters', () {
-      final request = BaseGetInstancesListRequest();
+      final request = BaseGetInstancesListRequest.mediator();
 
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
     });
 
     test('should create request with limit only', () {
-      final request = BaseGetInstancesListRequest(limit: 10);
+      final request = BaseGetInstancesListRequest.mediator(
+        limit: 10,
+      );
 
       expect(request.limit, 10);
       expect(request.exclusiveStartKey, isNull);
     });
 
     test('should create request with exclusiveStartKey only', () {
-      final request = BaseGetInstancesListRequest(
+      final request = BaseGetInstancesListRequest.mediator(
         exclusiveStartKey: 'key-123',
       );
 
@@ -27,7 +29,7 @@ void main() {
     });
 
     test('should create request with all parameters', () {
-      final request = BaseGetInstancesListRequest(
+      final request = BaseGetInstancesListRequest.mediator(
         limit: 20,
         exclusiveStartKey: 'key-456',
       );
@@ -37,7 +39,7 @@ void main() {
     });
 
     test('should serialize to JSON with all fields', () {
-      final request = BaseGetInstancesListRequest(
+      final request = BaseGetInstancesListRequest.mediator(
         limit: 15,
         exclusiveStartKey: 'key-789',
       );
@@ -49,7 +51,7 @@ void main() {
     });
 
     test('should serialize to JSON without null fields', () {
-      final request = BaseGetInstancesListRequest();
+      final request = BaseGetInstancesListRequest.mediator();
 
       final json = request.toJson();
 
@@ -57,8 +59,9 @@ void main() {
     });
 
     test('should serialize to JSON with only limit', () {
-      final request = BaseGetInstancesListRequest(limit: 5);
-
+      final request = BaseGetInstancesListRequest.mediator(
+        limit: 5,
+      );
       final json = request.toJson();
 
       expect(json['limit'], 5);
@@ -66,7 +69,7 @@ void main() {
     });
 
     test('should serialize to JSON with only exclusiveStartKey', () {
-      final request = BaseGetInstancesListRequest(
+      final request = BaseGetInstancesListRequest.mediator(
         exclusiveStartKey: 'key-abc',
       );
 

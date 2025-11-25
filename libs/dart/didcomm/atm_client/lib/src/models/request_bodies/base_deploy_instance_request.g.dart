@@ -8,7 +8,7 @@ part of 'base_deploy_instance_request.dart';
 
 BaseDeployInstanceRequest _$BaseDeployInstanceRequestFromJson(
         Map<String, dynamic> json) =>
-    BaseDeployInstanceRequest(
+    BaseDeployInstanceRequest._(
       administratorDids: json['administratorDids'] as String?,
       serviceSize: json['serviceSize'] as String,
       mediatorAclMode: json['mediatorAclMode'] as String?,

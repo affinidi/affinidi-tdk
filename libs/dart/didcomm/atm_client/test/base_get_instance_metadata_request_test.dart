@@ -5,20 +5,18 @@ import 'package:test/test.dart';
 void main() {
   group('BaseGetInstanceMetadataRequest', () {
     test('should create request with mediator instance type', () {
-      final request = BaseGetInstanceMetadataRequest(
+      final request = BaseGetInstanceMetadataRequest.mediator(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
-      );
+        );
 
       expect(request.instanceId, 'mediator-123');
       expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should serialize to JSON with correct field name for mediator', () {
-      final request = BaseGetInstanceMetadataRequest(
+      final request = BaseGetInstanceMetadataRequest.mediator(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
-      );
+        );
 
       final json = request.toJson();
 

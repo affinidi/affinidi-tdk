@@ -16,8 +16,8 @@ class BaseUpdateInstanceDeploymentRequest {
   /// The type of the instance.
   final InstanceType instanceType;
 
-  /// Creates a [BaseUpdateInstanceDeploymentRequest] instance.
-  BaseUpdateInstanceDeploymentRequest({
+
+  BaseUpdateInstanceDeploymentRequest._({
     required this.instanceId,
     this.serviceSize,
     this.mediatorAclMode,
@@ -25,12 +25,63 @@ class BaseUpdateInstanceDeploymentRequest {
     this.description,
     required this.instanceType,
   });
- 
+
+  /// Creates a [BaseUpdateInstanceDeploymentRequest] for a mediator instance.
+  factory BaseUpdateInstanceDeploymentRequest.mediator({
+    required String instanceId,
+    String? serviceSize,
+    String? mediatorAclMode,
+    String? name,
+    String? description,
+  }) {
+    return BaseUpdateInstanceDeploymentRequest._(
+      instanceId: instanceId,
+      serviceSize: serviceSize, 
+      mediatorAclMode: mediatorAclMode,
+      name: name,
+      description: description,
+      instanceType: InstanceType.mediator,
+    );
+  }
+
+  /// Creates a [BaseUpdateInstanceDeploymentRequest] for a meetingplace instance.
+  factory BaseUpdateInstanceDeploymentRequest.meetingplace({
+    required String instanceId,
+    String? serviceSize,
+    String? name,
+    String? description,
+  }) {
+    return BaseUpdateInstanceDeploymentRequest._(
+      instanceId: instanceId,
+      serviceSize: serviceSize,
+      name: name,
+      description: description,
+      instanceType: InstanceType.meetingplace,
+    );
+  }
+
+  /// Creates a [BaseUpdateInstanceDeploymentRequest] for a trustregistry instance.
+  factory BaseUpdateInstanceDeploymentRequest.trustregistry({
+    required String instanceId,
+    String? serviceSize,
+    String? name,
+    String? description,
+  }) {
+    return BaseUpdateInstanceDeploymentRequest._(
+      instanceId: instanceId,
+      serviceSize: serviceSize,
+      name: name,
+      description: description,
+      instanceType: InstanceType.meetingplace,
+    );
+  }
+
+
   /// Creates a [BaseUpdateInstanceDeploymentRequest] from a JSON map.
   factory BaseUpdateInstanceDeploymentRequest.fromJson(
           Map<String, dynamic> json, InstanceType instanceType) {
             final fieldName = instanceType.instanceIdField;
-    return BaseUpdateInstanceDeploymentRequest(
+    return BaseUpdateInstanceDeploymentRequest._(
       instanceId: json[fieldName] as String,
       serviceSize: json['serviceSize'] as String?,
       mediatorAclMode: json['mediatorAclMode'] as String?,
@@ -39,7 +90,7 @@ class BaseUpdateInstanceDeploymentRequest {
       instanceType: instanceType,
     );
   }
-  
+
   /// Converts the [BaseUpdateInstanceDeploymentRequest] instance to JSON.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{
