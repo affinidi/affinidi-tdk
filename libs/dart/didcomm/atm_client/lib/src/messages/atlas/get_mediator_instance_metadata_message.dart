@@ -41,10 +41,8 @@ class GetMediatorInstanceMetadataResponseMessage extends BaseInstanceResponseMes
   }) : super(
           operationName: GetMediatorInstanceMetadataMessage.operationName,
           instanceType: InstanceType.mediator,
+          fromJson: MediatorInstanceMetadata.fromJson,
         );
-
-  @override
-  MediatorInstanceMetadata parseResponse(Map<String, dynamic> json) => MediatorInstanceMetadata.fromJson(json);
 
   /// Gets the mediator instance metadata from the response.
   MediatorInstanceMetadata get metadata => response;

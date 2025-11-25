@@ -39,11 +39,8 @@ class UpdateMediatorInstanceDeploymentResponseMessage extends BaseInstanceRespon
   }) : super(
           operationName: UpdateMediatorInstanceDeploymentMessage.operationName,
           instanceType: InstanceType.mediator,
-          
+          fromJson: UpdateMediatorInstanceDeploymentResponse.fromJson,
         );
-
-  @override
-  UpdateMediatorInstanceDeploymentResponse parseResponse(Map<String, dynamic> json) => UpdateMediatorInstanceDeploymentResponse.fromJson(json);
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

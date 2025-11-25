@@ -42,12 +42,11 @@ class UpdateMediatorInstanceConfigurationResponseMessage
   }) : super(
           operationName: UpdateMediatorInstanceConfigurationMessage.operationName,
           instanceType: InstanceType.mediator,
+          fromJson:
+              UpdateMediatorInstanceConfigurationResponse.fromJson,
         );
 
-  @override
-  UpdateMediatorInstanceConfigurationResponse parseResponse(
-          Map<String, dynamic> json) =>
-      UpdateMediatorInstanceConfigurationResponse.fromJson(json);
+
 }
 
 @JsonSerializable(includeIfNull: false, explicitToJson: true)

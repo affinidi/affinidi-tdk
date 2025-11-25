@@ -40,10 +40,8 @@ class GetMediatorInstancesListResponseMessage extends BaseInstanceResponseMessag
   }) : super(
          operationName: GetMediatorInstancesListMessage.operationName,
           instanceType: InstanceType.mediator,
+          fromJson: MediatorInstanceBodyData.fromJson,
         );
-
-  @override
-  MediatorInstanceBodyData parseResponse(Map<String, dynamic> json) => MediatorInstanceBodyData.fromJson(json);
 
   /// Gets the list of mediator instances from the response.
   List<MediatorInstance> get instances => response.instances;

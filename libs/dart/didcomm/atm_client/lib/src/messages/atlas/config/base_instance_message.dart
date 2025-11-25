@@ -30,6 +30,8 @@ abstract class BaseInstanceMessage extends PlainTextMessage{
 
 /// Base class for instance operation response messages.
 abstract class BaseInstanceResponseMessage<T> extends PlainTextMessage {
+
+  final T Function(Map<String,dynamic>) _fromJson;
   /// Creates a base instance response message.
   /// 
   /// [operationName] is the name of the operation.
@@ -44,7 +46,9 @@ abstract class BaseInstanceResponseMessage<T> extends PlainTextMessage {
     super.body = const {},
     required String operationName,
     required InstanceType instanceType,
-  }) : super(
+    required T Function(Map<String,dynamic>) fromJson,
+  }) : _fromJson = fromJson,
+       super(
           type: Uri.parse(
             '${instanceType.operationBasePath}/$operationName/response',
           ),
@@ -56,9 +60,6 @@ abstract class BaseInstanceResponseMessage<T> extends PlainTextMessage {
     final decodedResponse =
         jsonDecode(responseBody.response) as Map<String, dynamic>;
 
-    return parseResponse(decodedResponse);
+    return _fromJson(decodedResponse);
   }
-
-  /// Parses the decoded JSON into the response type.
-  T parseResponse(Map<String, dynamic> json);
 }
