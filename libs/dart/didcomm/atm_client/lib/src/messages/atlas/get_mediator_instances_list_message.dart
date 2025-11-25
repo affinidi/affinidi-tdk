@@ -8,6 +8,9 @@ part 'get_mediator_instances_list_message.g.dart';
 
 /// Message for getting list of mediator instances.
 class GetMediatorInstancesListMessage extends BaseInstanceMessage {
+  /// The operation name for getting list of mediator instances.
+  static const String operationName = 'getMediatorInstancesList';
+
   /// Creates a get mediator instances list message.
   GetMediatorInstancesListMessage({
     required super.id,
@@ -18,7 +21,7 @@ class GetMediatorInstancesListMessage extends BaseInstanceMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          operationName: 'getMediatorInstancesList',
+          operationName: GetMediatorInstancesListMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 }
@@ -35,7 +38,7 @@ class GetMediatorInstancesListResponseMessage extends BaseInstanceResponseMessag
     super.threadId,
     super.body = const {},
   }) : super(
-         operationName: 'getMediatorInstancesList',
+         operationName: GetMediatorInstancesListMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 

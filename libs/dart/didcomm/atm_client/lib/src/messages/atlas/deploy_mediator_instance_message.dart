@@ -8,6 +8,9 @@ part 'deploy_mediator_instance_message.g.dart';
 
 /// Message for deploying a mediator instance.
 class DeployMediatorInstanceMessage extends BaseInstanceMessage {
+
+  /// The operation name for deploying a mediator instance.
+  static const String operationName = 'deployMediatorInstance';
   /// Creates a deploy mediator instance message.
   DeployMediatorInstanceMessage({
     required super.id,
@@ -18,7 +21,7 @@ class DeployMediatorInstanceMessage extends BaseInstanceMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          operationName: 'deployMediatorInstance',
+          operationName: DeployMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 }
@@ -37,7 +40,7 @@ class DeployMediatorInstanceResponseMessage extends BaseInstanceResponseMessage<
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: 'deployMediatorInstance',
+          operationName: DeployMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 

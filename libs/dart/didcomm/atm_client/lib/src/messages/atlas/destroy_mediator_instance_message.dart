@@ -8,6 +8,10 @@ part 'destroy_mediator_instance_message.g.dart';
 
 /// Message for destroying a mediator instance.
 class DestroyMediatorInstanceMessage extends BaseInstanceMessage {
+
+  /// The operation name for destroying a mediator instance.
+  static const String operationName = 'destroyMediatorInstance';
+
   /// Creates a destroy mediator instance message.
   DestroyMediatorInstanceMessage({
     required super.id,
@@ -18,7 +22,7 @@ class DestroyMediatorInstanceMessage extends BaseInstanceMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-         operationName: 'destroyMediatorInstance',
+         operationName: DestroyMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 }
@@ -35,7 +39,7 @@ class DestroyMediatorInstanceResponseMessage extends BaseInstanceResponseMessage
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: 'destroyMediatorInstance',
+          operationName: DestroyMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 

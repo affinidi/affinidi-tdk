@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'base_get_instances_list_request.g.dart';
 
-@JsonSerializable(includeIfNull: false, explicitToJson: true)
+@JsonSerializable(includeIfNull: false, explicitToJson: true, constructor: '_')
 /// Request for getting a list of instances.
 class BaseGetInstancesListRequest {
   /// The maximum number of instances to return.
@@ -10,8 +10,7 @@ class BaseGetInstancesListRequest {
   //// The exclusive start key for pagination.
   final String? exclusiveStartKey;
 
-  /// Creates a [BaseGetInstancesListRequest] instance.
-  BaseGetInstancesListRequest({
+  BaseGetInstancesListRequest._({
     this.limit,
     this.exclusiveStartKey,
   });
@@ -21,7 +20,7 @@ class BaseGetInstancesListRequest {
     int? limit,
     String? exclusiveStartKey,
   }) {
-    return BaseGetInstancesListRequest(
+    return BaseGetInstancesListRequest._(
       limit: limit,
       exclusiveStartKey: exclusiveStartKey,
     );
@@ -32,7 +31,7 @@ class BaseGetInstancesListRequest {
     int? limit,
     String? exclusiveStartKey,
   }) {
-    return BaseGetInstancesListRequest(
+    return BaseGetInstancesListRequest._(
       limit: limit,
       exclusiveStartKey: exclusiveStartKey,
     );
@@ -43,7 +42,7 @@ class BaseGetInstancesListRequest {
     int? limit,
     String? exclusiveStartKey,
   }) {
-    return BaseGetInstancesListRequest(
+    return BaseGetInstancesListRequest._(
       limit: limit,
       exclusiveStartKey: exclusiveStartKey,
     );

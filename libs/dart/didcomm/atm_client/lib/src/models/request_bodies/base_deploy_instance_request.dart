@@ -1,11 +1,14 @@
 import 'package:json_annotation/json_annotation.dart';
-
 part 'base_deploy_instance_request.g.dart';
-
 /// Request for deploying an instance.
-/// 
+///
 /// Contains all fields required for deployment across all instance types.
-@JsonSerializable(includeIfNull: false, explicitToJson: true)
+@JsonSerializable(
+  includeIfNull: false,
+  explicitToJson: true,
+  constructor: '_',
+)
+
 class BaseDeployInstanceRequest {
   /// Administrator DIDs for the instance.
   final String? administratorDids;
@@ -43,7 +46,7 @@ class BaseDeployInstanceRequest {
     );
   }
 
-    /// Creates a [BaseDeployInstanceRequest] for a meetingplace instance.
+  /// Creates a [BaseDeployInstanceRequest] for a meetingplace instance.
   factory BaseDeployInstanceRequest.meetingplace({
     String? administratorDids,
     required String serviceSize,
@@ -60,7 +63,7 @@ class BaseDeployInstanceRequest {
     );
   }
 
-    /// Creates a [BaseDeployInstanceRequest] for a trustregistry instance.
+  /// Creates a [BaseDeployInstanceRequest] for a trustregistry instance.
   factory BaseDeployInstanceRequest.trustregistry({
     String? administratorDids,
     required String serviceSize,
@@ -80,7 +83,11 @@ class BaseDeployInstanceRequest {
   /// Creates a deploy instance request from JSON.
   factory BaseDeployInstanceRequest.fromJson(Map<String, dynamic> json) =>
       _$BaseDeployInstanceRequestFromJson(json);
-
+      
   /// Converts the deploy instance request to JSON.
   Map<String, dynamic> toJson() => _$BaseDeployInstanceRequestToJson(this);
 }
+
+
+
+
