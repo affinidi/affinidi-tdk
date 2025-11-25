@@ -87,6 +87,7 @@ Future<void> main() async {
 
     test('VDIP works correctly', () async {
       final testCompleter = Completer<PlainTextMessage>();
+      final expectedChallenge = const Uuid().v4();
 
       final vdspIssuer = await VdipIssuer.init(
         mediatorDidDocument: mediatorDidDocument,
@@ -118,6 +119,14 @@ Future<void> main() async {
           if (message.from == null) {
             throw ArgumentError.notNull('from');
           }
+
+          // Verify challenge was properly transmitted
+          expect(challenge, isNotNull);
+          expect(challenge, equals(expectedChallenge));
+
+          // Verify assertion validation is null for non-holder-bound requests
+          expect(isAssertionValid, isNull);
+          expect(holderDidFromAssertion, isNull);
 
           final holderDid = message.from!;
 
@@ -201,11 +210,12 @@ Future<void> main() async {
       // Small delay to let feature query complete
       await Future.delayed(const Duration(milliseconds: 500));
 
-      // Request credential issuance
+      // Request credential issuance with challenge
       await vdipHolder.requestCredential(
         issuerDid: (await issuerDidManager.getDidDocument()).id,
         options: RequestCredentialsOptions(
           proposalId: proposalId,
+          challenge: expectedChallenge,
           credentialFormat: CredentialFormat.w3cV1,
           credentialMeta: CredentialMeta(
             data: {
@@ -248,6 +258,7 @@ Future<void> main() async {
 
     test('VDIP works correctly with holder-bound assertion', () async {
       final testCompleter = Completer<PlainTextMessage>();
+      final expectedChallenge = const Uuid().v4();
 
       final vdipIssuer = await VdipIssuer.init(
         mediatorDidDocument: mediatorDidDocument,
@@ -283,6 +294,50 @@ Future<void> main() async {
           // Verify the assertion is valid
           expect(isAssertionValid, isTrue);
           expect(holderDidFromAssertion, holderSigner.did);
+
+          // Verify challenge was properly transmitted with assertion
+          expect(challenge, isNotNull);
+          expect(challenge, equals(expectedChallenge));
+
+          // Verify that holderDid in message body matches holderDidFromAssertion
+          final body = VdipRequestIssuanceMessageBody.fromJson(message.body!);
+          expect(body.holderDid, equals(holderDidFromAssertion));
+
+          // Verify assertion JWT claims
+          if (body.assertion != null) {
+            final holderDidDocument =
+                await UniversalDIDResolver.defaultResolver.resolveDid(
+              holderSigner.did,
+            );
+
+            final decodedAssertion = JwtHelper.decodeAndVerify(
+              serializedJwt: body.assertion!,
+              holderDidDocument: holderDidDocument,
+            );
+
+            final payload = decodedAssertion.payload;
+
+            // Verify JWT payload contains expected fields
+            expect(payload['sub'],
+                equals(holderSigner.did)); // Subject is holder DID
+            expect(payload['iss'],
+                equals(holderSigner.did)); // Issuer is holder DID
+            expect(
+                payload['aud'],
+                equals((await issuerDidManager.getDidDocument())
+                    .id)); // Audience is issuer DID
+            expect(payload['proposalId'],
+                equals(proposalId)); // Proposal ID matches
+            expect(payload['jti'], isNotNull); // Has unique JWT ID
+            expect(payload['iat'], isNotNull); // Has issued at time
+            expect(payload['exp'], isNotNull); // Has expiration time
+
+            // Verify expiration is in the future
+            final exp = payload['exp'] as int;
+            final now =
+                (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
+            expect(exp, greaterThan(now));
+          }
 
           final holderDid = holderDidFromAssertion!;
 
@@ -366,13 +421,42 @@ Future<void> main() async {
       // Small delay to let feature query complete
       await Future.delayed(const Duration(milliseconds: 500));
 
-      // Request credential issuance with holder-bound assertion
+      // Verify that requesting with mismatched holder DID and assertion signer throws
+      final differentDidManager = DidKeyManager(
+        wallet: PersistentWallet(InMemoryKeyStore()),
+        store: InMemoryDidStore(),
+      );
+      final differentKeyId = 'different-key-1';
+      differentDidManager.wallet.generateKey(
+        keyId: differentKeyId,
+        keyType: KeyType.p256,
+      );
+      await differentDidManager.addVerificationMethod(differentKeyId);
+      final differentSigner = await differentDidManager.getSigner(
+        differentDidManager.assertionMethod.first,
+      );
+
+      expect(
+        () async => await vdipHolder.requestCredentialForHolder(
+          holderSigner.did, // Requesting for holderSigner.did
+          issuerDid: (await issuerDidManager.getDidDocument()).id,
+          assertionSigner: differentSigner, // But signing with differentSigner
+          options: RequestCredentialsOptions(
+            proposalId: proposalId,
+            credentialFormat: CredentialFormat.w3cV1,
+          ),
+        ),
+        throwsA(isA<ArgumentError>()),
+      );
+
+      // Request credential issuance with holder-bound assertion and challenge
       await vdipHolder.requestCredentialForHolder(
         holderSigner.did,
         issuerDid: (await issuerDidManager.getDidDocument()).id,
         assertionSigner: holderSigner,
         options: RequestCredentialsOptions(
           proposalId: proposalId,
+          challenge: expectedChallenge,
           credentialFormat: CredentialFormat.w3cV1,
           credentialMeta: CredentialMeta(
             data: {
@@ -416,343 +500,6 @@ Future<void> main() async {
         credential.credentialSubject.first['id'].toString(),
         holderSigner.did,
       );
-    });
-
-    test('VDIP challenge validation works correctly', () async {
-      final testCompleter = Completer<String?>();
-      final expectedChallenge = const Uuid().v4();
-
-      final vdipIssuer = await VdipIssuer.init(
-        mediatorDidDocument: mediatorDidDocument,
-        didManager: issuerDidManager,
-        featureDisclosures: [
-          ...FeatureDiscoveryHelper.vdipIssuerDisclosures,
-          Disclosure(
-            featureType: FeatureType.credentialFormat.value,
-            id: CredentialFormat.w3cV1.value,
-          ),
-        ],
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: issuerDidManager,
-        ),
-      );
-
-      vdipIssuer.listenForIncomingMessages(
-        onFeatureQuery: (message) async {
-          await vdipIssuer.disclose(queryMessage: message);
-        },
-        onRequestToIssueCredential: ({
-          required PlainTextMessage message,
-          bool? isAssertionValid,
-          String? holderDidFromAssertion,
-          String? challenge,
-        }) async {
-          // Complete with the received challenge
-          testCompleter.complete(challenge);
-          await ConnectionPool.instance.stopConnections();
-        },
-        onProblemReport: (message) async {
-          testCompleter.completeError(message);
-          await ConnectionPool.instance.stopConnections();
-        },
-      );
-
-      final vdipHolder = await VdipHolder.init(
-        mediatorDidDocument: mediatorDidDocument,
-        didManager: holderDidManager,
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: holderDidManager,
-        ),
-      );
-
-      await ConnectionPool.instance.startConnections();
-
-      // Query issuer features first
-      await vdipHolder.queryIssuerFeatures(
-        issuerDid: (await issuerDidManager.getDidDocument()).id,
-        featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-          FeatureDiscoveryHelper.vdipIssuerDisclosures,
-        ),
-      );
-
-      // Small delay to let feature query complete
-      await Future.delayed(const Duration(milliseconds: 500));
-
-      // Request credential with challenge
-      await vdipHolder.requestCredential(
-        issuerDid: (await issuerDidManager.getDidDocument()).id,
-        options: RequestCredentialsOptions(
-          proposalId: proposalId,
-          challenge: expectedChallenge,
-          credentialFormat: CredentialFormat.w3cV1,
-        ),
-      );
-
-      final receivedChallenge = await testCompleter.future;
-
-      // Verify the challenge was properly transmitted
-      expect(receivedChallenge, isNotNull);
-      expect(receivedChallenge, equals(expectedChallenge));
-    });
-
-    test(
-        'VDIP challenge validation with holder-bound assertion works correctly',
-        () async {
-      final testCompleter = Completer<Map<String, dynamic>>();
-      final expectedChallenge = const Uuid().v4();
-
-      final vdipIssuer = await VdipIssuer.init(
-        mediatorDidDocument: mediatorDidDocument,
-        didManager: issuerDidManager,
-        featureDisclosures: [
-          ...FeatureDiscoveryHelper.vdipIssuerDisclosures,
-          Disclosure(
-            featureType: FeatureType.credentialFormat.value,
-            id: CredentialFormat.w3cV1.value,
-          ),
-        ],
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: issuerDidManager,
-        ),
-      );
-
-      vdipIssuer.listenForIncomingMessages(
-        onFeatureQuery: (message) async {
-          await vdipIssuer.disclose(queryMessage: message);
-        },
-        onRequestToIssueCredential: ({
-          required PlainTextMessage message,
-          bool? isAssertionValid,
-          String? holderDidFromAssertion,
-          String? challenge,
-        }) async {
-          // Complete with both challenge and assertion validation result
-          testCompleter.complete({
-            'challenge': challenge,
-            'isAssertionValid': isAssertionValid,
-            'holderDidFromAssertion': holderDidFromAssertion,
-          });
-          await ConnectionPool.instance.stopConnections();
-        },
-        onProblemReport: (message) async {
-          testCompleter.completeError(message);
-          await ConnectionPool.instance.stopConnections();
-        },
-      );
-
-      final vdipHolder = await VdipHolder.init(
-        mediatorDidDocument: mediatorDidDocument,
-        didManager: holderDidManager,
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: holderDidManager,
-        ),
-      );
-
-      await ConnectionPool.instance.startConnections();
-
-      // Query issuer features first
-      await vdipHolder.queryIssuerFeatures(
-        issuerDid: (await issuerDidManager.getDidDocument()).id,
-        featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-          FeatureDiscoveryHelper.vdipIssuerDisclosures,
-        ),
-      );
-
-      // Small delay to let feature query complete
-      await Future.delayed(const Duration(milliseconds: 500));
-
-      // Request credential with both challenge and assertion
-      await vdipHolder.requestCredentialForHolder(
-        holderSigner.did,
-        issuerDid: (await issuerDidManager.getDidDocument()).id,
-        assertionSigner: holderSigner,
-        options: RequestCredentialsOptions(
-          proposalId: proposalId,
-          challenge: expectedChallenge,
-          credentialFormat: CredentialFormat.w3cV1,
-        ),
-      );
-
-      final result = await testCompleter.future;
-
-      // Verify both challenge and assertion were validated
-      expect(result['challenge'], equals(expectedChallenge));
-      expect(result['isAssertionValid'], isTrue);
-      expect(result['holderDidFromAssertion'], equals(holderSigner.did));
-    });
-
-    test('VDIP rejects request with mismatched holder DID and assertion signer',
-        () async {
-      final vdipHolder = await VdipHolder.init(
-        mediatorDidDocument: mediatorDidDocument,
-        didManager: holderDidManager,
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: holderDidManager,
-        ),
-      );
-
-      // Create a different DID manager to simulate a mismatched signer
-      final differentDidManager = DidKeyManager(
-        wallet: PersistentWallet(InMemoryKeyStore()),
-        store: InMemoryDidStore(),
-      );
-
-      final differentKeyId = 'different-key-1';
-      differentDidManager.wallet.generateKey(
-        keyId: differentKeyId,
-        keyType: KeyType.p256,
-      );
-      await differentDidManager.addVerificationMethod(differentKeyId);
-      final differentSigner = await differentDidManager.getSigner(
-        differentDidManager.assertionMethod.first,
-      );
-
-      final issuerDid = (await issuerDidManager.getDidDocument()).id;
-
-      // Attempt to request credential with mismatched holderDid and assertionSigner
-      // This should throw an ArgumentError
-      expect(
-        () async => await vdipHolder.requestCredentialForHolder(
-          holderSigner.did, // Requesting for holderSigner.did
-          issuerDid: issuerDid,
-          assertionSigner: differentSigner, // But signing with differentSigner
-          options: RequestCredentialsOptions(
-            proposalId: proposalId,
-            credentialFormat: CredentialFormat.w3cV1,
-          ),
-        ),
-        throwsA(isA<ArgumentError>()),
-      );
-    });
-
-    test('VDIP assertion contains correct claims', () async {
-      final testCompleter = Completer<Map<String, dynamic>>();
-
-      final vdipIssuer = await VdipIssuer.init(
-        mediatorDidDocument: mediatorDidDocument,
-        didManager: issuerDidManager,
-        featureDisclosures: [
-          ...FeatureDiscoveryHelper.vdipIssuerDisclosures,
-          Disclosure(
-            featureType: FeatureType.credentialFormat.value,
-            id: CredentialFormat.w3cV1.value,
-          ),
-        ],
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: issuerDidManager,
-        ),
-      );
-
-      vdipIssuer.listenForIncomingMessages(
-        onFeatureQuery: (message) async {
-          await vdipIssuer.disclose(queryMessage: message);
-        },
-        onRequestToIssueCredential: ({
-          required PlainTextMessage message,
-          bool? isAssertionValid,
-          String? holderDidFromAssertion,
-          String? challenge,
-        }) async {
-          // Extract and decode the assertion to verify its claims
-          final body = VdipRequestIssuanceMessageBody.fromJson(message.body!);
-
-          if (body.assertion != null) {
-            final holderDidDocument =
-                await UniversalDIDResolver.defaultResolver.resolveDid(
-              holderSigner.did,
-            );
-
-            final decodedAssertion = JwtHelper.decodeAndVerify(
-              serializedJwt: body.assertion!,
-              holderDidDocument: holderDidDocument,
-            );
-
-            testCompleter.complete({
-              'payload': decodedAssertion.payload,
-              'isAssertionValid': isAssertionValid,
-              'holderDidFromAssertion': holderDidFromAssertion,
-            });
-          } else {
-            testCompleter.completeError('No assertion found');
-          }
-
-          await ConnectionPool.instance.stopConnections();
-        },
-        onProblemReport: (message) async {
-          testCompleter.completeError(message);
-          await ConnectionPool.instance.stopConnections();
-        },
-      );
-
-      final vdipHolder = await VdipHolder.init(
-        mediatorDidDocument: mediatorDidDocument,
-        didManager: holderDidManager,
-        clientOptions: const AffinidiClientOptions(),
-        authorizationProvider: await AffinidiAuthorizationProvider.init(
-          mediatorDidDocument: mediatorDidDocument,
-          didManager: holderDidManager,
-        ),
-      );
-
-      await ConnectionPool.instance.startConnections();
-
-      // Query issuer features first
-      await vdipHolder.queryIssuerFeatures(
-        issuerDid: (await issuerDidManager.getDidDocument()).id,
-        featureQueries: FeatureDiscoveryHelper.getFeatureQueriesByDisclosures(
-          FeatureDiscoveryHelper.vdipIssuerDisclosures,
-        ),
-      );
-
-      // Small delay to let feature query complete
-      await Future.delayed(const Duration(milliseconds: 500));
-
-      // Request credential with holder-bound assertion
-      await vdipHolder.requestCredentialForHolder(
-        holderSigner.did,
-        issuerDid: (await issuerDidManager.getDidDocument()).id,
-        assertionSigner: holderSigner,
-        options: RequestCredentialsOptions(
-          proposalId: proposalId,
-          credentialFormat: CredentialFormat.w3cV1,
-        ),
-      );
-
-      final result = await testCompleter.future;
-      final payload = result['payload'] as Map<String, dynamic>;
-
-      // Verify assertion claims
-      expect(result['isAssertionValid'], isTrue);
-      expect(result['holderDidFromAssertion'], equals(holderSigner.did));
-
-      // Verify JWT payload contains expected fields
-      expect(payload['sub'], equals(holderSigner.did)); // Subject is holder DID
-      expect(payload['iss'], equals(holderSigner.did)); // Issuer is holder DID
-      expect(
-          payload['aud'],
-          equals((await issuerDidManager.getDidDocument())
-              .id)); // Audience is issuer DID
-      expect(payload['proposalId'], equals(proposalId)); // Proposal ID matches
-      expect(payload['jti'], isNotNull); // Has unique JWT ID
-      expect(payload['iat'], isNotNull); // Has issued at time
-      expect(payload['exp'], isNotNull); // Has expiration time
-
-      // Verify expiration is in the future
-      final exp = payload['exp'] as int;
-      final now = (DateTime.timestamp().millisecondsSinceEpoch / 1000).floor();
-      expect(exp, greaterThan(now));
     });
   });
 }
