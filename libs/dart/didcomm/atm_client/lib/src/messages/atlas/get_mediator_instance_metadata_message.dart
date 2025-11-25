@@ -8,6 +8,10 @@ part 'get_mediator_instance_metadata_message.g.dart';
 
 /// Message for getting metadata of a mediator instance.
 class GetMediatorInstanceMetadataMessage extends BaseInstanceMessage {
+
+  /// The operation name for getting metadata of a mediator instance.
+  static const String operationName = 'getMediatorInstanceMetadata';
+
   /// Creates a get mediator instance metadata message.
   GetMediatorInstanceMetadataMessage({
     required super.id,
@@ -18,7 +22,7 @@ class GetMediatorInstanceMetadataMessage extends BaseInstanceMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-         operationName: 'getMediatorInstanceMetadata',
+         operationName: GetMediatorInstanceMetadataMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 }
@@ -35,7 +39,7 @@ class GetMediatorInstanceMetadataResponseMessage extends BaseInstanceResponseMes
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: 'getMediatorInstanceMetadata',
+          operationName: GetMediatorInstanceMetadataMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 

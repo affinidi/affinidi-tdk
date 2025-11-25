@@ -8,6 +8,9 @@ part 'update_mediator_instance_configuration_message.g.dart';
 
 /// Message for updating mediator instance configuration.
 class UpdateMediatorInstanceConfigurationMessage extends BaseInstanceMessage {
+  /// The operation name for updating mediator instance configuration.
+  static const String operationName = 'updateMediatorInstanceConfiguration';
+
   /// Creates an update mediator instance configuration message.
   UpdateMediatorInstanceConfigurationMessage({
     required super.id,
@@ -18,7 +21,7 @@ class UpdateMediatorInstanceConfigurationMessage extends BaseInstanceMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          operationName: 'updateMediatorInstanceConfiguration',
+          operationName: UpdateMediatorInstanceConfigurationMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 }
@@ -37,7 +40,7 @@ class UpdateMediatorInstanceConfigurationResponseMessage
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: 'updateMediatorInstanceConfiguration',
+          operationName: UpdateMediatorInstanceConfigurationMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 

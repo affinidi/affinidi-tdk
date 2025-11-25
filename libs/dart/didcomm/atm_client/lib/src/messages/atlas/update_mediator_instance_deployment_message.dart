@@ -8,6 +8,8 @@ part 'update_mediator_instance_deployment_message.g.dart';
 
 /// Message for updating mediator instance deployment.
 class UpdateMediatorInstanceDeploymentMessage extends BaseInstanceMessage {
+  /// The operation name for updating mediator instance deployment.
+  static const String operationName = 'updateMediatorInstanceDeployment';
   /// Creates an update mediator instance deployment message.
   UpdateMediatorInstanceDeploymentMessage({
     required super.id,
@@ -18,7 +20,7 @@ class UpdateMediatorInstanceDeploymentMessage extends BaseInstanceMessage {
     super.body = const {},
     super.threadId,
   }) : super(
-          operationName: 'updateMediatorInstanceDeployment',
+          operationName: UpdateMediatorInstanceDeploymentMessage.operationName,
           instanceType: InstanceType.mediator,
         );
 }
@@ -35,7 +37,7 @@ class UpdateMediatorInstanceDeploymentResponseMessage extends BaseInstanceRespon
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: 'updateMediatorInstanceDeployment',
+          operationName: UpdateMediatorInstanceDeploymentMessage.operationName,
           instanceType: InstanceType.mediator,
           
         );

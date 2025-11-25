@@ -1,9 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
-
 import '../../messages/atlas/config/instance_type_config.dart';
 
-
-@JsonSerializable(includeIfNull: false, explicitToJson: true)
 /// Request for updating an instance configuration.
 class BaseUpdateInstanceConfigurationRequest {
   /// The ID of the instance to be updated.
@@ -14,18 +10,18 @@ class BaseUpdateInstanceConfigurationRequest {
   final InstanceType instanceType;
 
   /// Creates a [BaseUpdateInstanceConfigurationRequest] instance.
-  BaseUpdateInstanceConfigurationRequest({
+  BaseUpdateInstanceConfigurationRequest._({
     required this.instanceId,
     this.acl,
     required this.instanceType,
   });
- 
+
   /// Creates a [BaseUpdateInstanceConfigurationRequest] for a mediator instance.
   factory BaseUpdateInstanceConfigurationRequest.mediator({
     required String instanceId,
     Map<String, num>? acl,
   }) {
-    return BaseUpdateInstanceConfigurationRequest(
+    return BaseUpdateInstanceConfigurationRequest._(
       instanceId: instanceId,
       acl: acl,
       instanceType: InstanceType.mediator,
@@ -37,7 +33,7 @@ class BaseUpdateInstanceConfigurationRequest {
     required String instanceId,
     Map<String, num>? acl,
   }) {
-    return BaseUpdateInstanceConfigurationRequest(
+    return BaseUpdateInstanceConfigurationRequest._(
       instanceId: instanceId,
       acl: acl,
       instanceType: InstanceType.meetingplace,
@@ -49,24 +45,28 @@ class BaseUpdateInstanceConfigurationRequest {
     required String instanceId,
     Map<String, num>? acl,
   }) {
-    return BaseUpdateInstanceConfigurationRequest(
+    return BaseUpdateInstanceConfigurationRequest._(
       instanceId: instanceId,
       acl: acl,
       instanceType: InstanceType.trustregistry,
     );
   }
 
-/// Creates a [BaseUpdateInstanceConfigurationRequest] from a JSON map.
+  /// Creates a [BaseUpdateInstanceConfigurationRequest] from a JSON map.
   factory BaseUpdateInstanceConfigurationRequest.fromJson(
-          Map<String, dynamic> json, InstanceType instanceType) {
-           final fieldName = instanceType.instanceIdField;
-    return BaseUpdateInstanceConfigurationRequest(
+      Map<String, dynamic> json, InstanceType instanceType) {
+    final fieldName = instanceType.instanceIdField;
+    return BaseUpdateInstanceConfigurationRequest._(
       instanceId: json[fieldName] as String,
-      acl : json['acl'] as Map<String, num>?,
+      acl: json['acl'] != null
+          ? (json['acl'] as Map<String, dynamic>).map(
+              (k, e) => MapEntry(k, e as num),
+            )
+          : null,
       instanceType: instanceType,
     );
-          }
-    
+  }
+  
   /// Converts the [BaseUpdateInstanceConfigurationRequest] instance to JSON.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{
@@ -78,3 +78,9 @@ class BaseUpdateInstanceConfigurationRequest {
     return json;
   }
 }
+
+
+
+
+
+
