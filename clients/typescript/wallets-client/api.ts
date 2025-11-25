@@ -40,6 +40,48 @@ import {
 } from './base'
 
 /**
+ * DTO contains params to authcrypt plain text DIDComm message
+ * @export
+ * @interface AuthcryptMessageInput
+ */
+export interface AuthcryptMessageInput {
+  /**
+   * Unsigned plain text DIDComm message
+   * @type {object}
+   * @memberof AuthcryptMessageInput
+   */
+  plainTextMessage: object
+  /**
+   *
+   * @type {string}
+   * @memberof AuthcryptMessageInput
+   */
+  signatureScheme?: AuthcryptMessageInputSignatureSchemeEnum
+}
+
+export const AuthcryptMessageInputSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type AuthcryptMessageInputSignatureSchemeEnum =
+  (typeof AuthcryptMessageInputSignatureSchemeEnum)[keyof typeof AuthcryptMessageInputSignatureSchemeEnum]
+
+/**
+ * DTO contains authcrypted message in JSON fromat
+ * @export
+ * @interface AuthcryptMessageResultDto
+ */
+export interface AuthcryptMessageResultDto {
+  /**
+   * Authcrypted message in JSON format
+   * @type {object}
+   * @memberof AuthcryptMessageResultDto
+   */
+  authcryptedMessage: object
+}
+/**
  *
  * @export
  * @interface CreateWalletInput
@@ -552,6 +594,25 @@ export interface RevokeCredentialInput {
 /**
  *
  * @export
+ * @interface RevokeCredentialsInput
+ */
+export interface RevokeCredentialsInput {
+  /**
+   *
+   * @type {string}
+   * @memberof RevokeCredentialsInput
+   */
+  revocationReason?: string
+  /**
+   *
+   * @type {string}
+   * @memberof RevokeCredentialsInput
+   */
+  credentialId: string
+}
+/**
+ *
+ * @export
  * @interface ServiceErrorResponse
  */
 export interface ServiceErrorResponse {
@@ -945,6 +1006,48 @@ export interface SignJwtTokenOK {
    * @memberof SignJwtTokenOK
    */
   signedJwt?: string
+}
+/**
+ * DTO contains params to sign plain text DIDComm message
+ * @export
+ * @interface SignMessageInput
+ */
+export interface SignMessageInput {
+  /**
+   * Unsigned plain text DIDComm message
+   * @type {object}
+   * @memberof SignMessageInput
+   */
+  plainTextMessage: object
+  /**
+   *
+   * @type {string}
+   * @memberof SignMessageInput
+   */
+  signatureScheme?: SignMessageInputSignatureSchemeEnum
+}
+
+export const SignMessageInputSignatureSchemeEnum = {
+  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
+  EcdsaP256Sha256: 'ecdsa_p256_sha256',
+  Ed25519: 'ed25519',
+} as const
+
+export type SignMessageInputSignatureSchemeEnum =
+  (typeof SignMessageInputSignatureSchemeEnum)[keyof typeof SignMessageInputSignatureSchemeEnum]
+
+/**
+ * DTO contains signed JSON
+ * @export
+ * @interface SignMessageResultDto
+ */
+export interface SignMessageResultDto {
+  /**
+   * Signed message in JSON format
+   * @type {object}
+   * @memberof SignMessageResultDto
+   */
+  signedMessage: object
 }
 /**
  * DTO contains params to sign presentation
@@ -1431,6 +1534,74 @@ export const RevocationApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Update index/credential at appropriate revocation list (set revoked is true).
+     * @summary Revoke Credentials.
+     * @param {string} walletId id of the wallet
+     * @param {RevokeCredentialsInput} revokeCredentialsInput RevokeCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    revokeCredentials: async (
+      walletId: string,
+      revokeCredentialsInput: RevokeCredentialsInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('revokeCredentials', 'walletId', walletId)
+      // verify required parameter 'revokeCredentialsInput' is not null or undefined
+      assertParamExists(
+        'revokeCredentials',
+        'revokeCredentialsInput',
+        revokeCredentialsInput,
+      )
+      const localVarPath = `/v2/wallets/{walletId}/credentials/revoke`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        revokeCredentialsInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -1553,6 +1724,40 @@ export const RevocationApiFp = function (configuration?: Configuration) {
           configuration,
         )(axios, localVarOperationServerBasePath || basePath)
     },
+    /**
+     * Update index/credential at appropriate revocation list (set revoked is true).
+     * @summary Revoke Credentials.
+     * @param {string} walletId id of the wallet
+     * @param {RevokeCredentialsInput} revokeCredentialsInput RevokeCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async revokeCredentials(
+      walletId: string,
+      revokeCredentialsInput: RevokeCredentialsInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.revokeCredentials(
+          walletId,
+          revokeCredentialsInput,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['RevocationApi.revokeCredentials']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
   }
 }
 
@@ -1618,6 +1823,23 @@ export const RevocationApiFactory = function (
     ): AxiosPromise<void> {
       return localVarFp
         .revokeCredential(walletId, revokeCredentialInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Update index/credential at appropriate revocation list (set revoked is true).
+     * @summary Revoke Credentials.
+     * @param {string} walletId id of the wallet
+     * @param {RevokeCredentialsInput} revokeCredentialsInput RevokeCredentials
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    revokeCredentials(
+      walletId: string,
+      revokeCredentialsInput: RevokeCredentialsInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<void> {
+      return localVarFp
+        .revokeCredentials(walletId, revokeCredentialsInput, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -1686,6 +1908,25 @@ export class RevocationApi extends BaseAPI {
   ) {
     return RevocationApiFp(this.configuration)
       .revokeCredential(walletId, revokeCredentialInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Update index/credential at appropriate revocation list (set revoked is true).
+   * @summary Revoke Credentials.
+   * @param {string} walletId id of the wallet
+   * @param {RevokeCredentialsInput} revokeCredentialsInput RevokeCredentials
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof RevocationApi
+   */
+  public revokeCredentials(
+    walletId: string,
+    revokeCredentialsInput: RevokeCredentialsInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return RevocationApiFp(this.configuration)
+      .revokeCredentials(walletId, revokeCredentialsInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
@@ -1975,6 +2216,210 @@ export const WalletApiAxiosParamCreator = function (
       }
     },
     /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsJwtInputDto} signCredentialsJwtInputDto signCredentialsJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredentialsJwt: async (
+      walletId: string,
+      signCredentialsJwtInputDto: SignCredentialsJwtInputDto,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('signCredentialsJwt', 'walletId', walletId)
+      // verify required parameter 'signCredentialsJwtInputDto' is not null or undefined
+      assertParamExists(
+        'signCredentialsJwt',
+        'signCredentialsJwtInputDto',
+        signCredentialsJwtInputDto,
+      )
+      const localVarPath =
+        `/v2/wallets/{walletId}/credentials/jwt/sign`.replace(
+          `{${'walletId'}}`,
+          encodeURIComponent(String(walletId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signCredentialsJwtInputDto,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsLdpInputDto} signCredentialsLdpInputDto signCredentialsLdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredentialsLdp: async (
+      walletId: string,
+      signCredentialsLdpInputDto: SignCredentialsLdpInputDto,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('signCredentialsLdp', 'walletId', walletId)
+      // verify required parameter 'signCredentialsLdpInputDto' is not null or undefined
+      assertParamExists(
+        'signCredentialsLdp',
+        'signCredentialsLdpInputDto',
+        signCredentialsLdpInputDto,
+      )
+      const localVarPath =
+        `/v2/wallets/{walletId}/credentials/ldp/sign`.replace(
+          `{${'walletId'}}`,
+          encodeURIComponent(String(walletId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signCredentialsLdpInputDto,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsDm2SdJwtInputDto} signCredentialsDm2SdJwtInputDto SignCredentialsDm1SdJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredentialsSdJwt: async (
+      walletId: string,
+      signCredentialsDm2SdJwtInputDto: SignCredentialsDm2SdJwtInputDto,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('signCredentialsSdJwt', 'walletId', walletId)
+      // verify required parameter 'signCredentialsDm2SdJwtInputDto' is not null or undefined
+      assertParamExists(
+        'signCredentialsSdJwt',
+        'signCredentialsDm2SdJwtInputDto',
+        signCredentialsDm2SdJwtInputDto,
+      )
+      const localVarPath =
+        `/v2/wallets/{walletId}/credentials/sd-jwt/sign`.replace(
+          `{${'walletId'}}`,
+          encodeURIComponent(String(walletId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signCredentialsDm2SdJwtInputDto,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * signs a jwt token with the wallet
      * @param {string} walletId id of the wallet.
      * @param {SignJwtToken} signJwtToken SignJwtToken
@@ -2028,6 +2473,74 @@ export const WalletApiAxiosParamCreator = function (
       }
       localVarRequestOptions.data = serializeDataIfNeeded(
         signJwtToken,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * signs presentation with the wallet
+     * @param {string} walletId id of the wallet
+     * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signPresentationsLdp: async (
+      walletId: string,
+      signPresentationLdpInputDto: SignPresentationLdpInputDto,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('signPresentationsLdp', 'walletId', walletId)
+      // verify required parameter 'signPresentationLdpInputDto' is not null or undefined
+      assertParamExists(
+        'signPresentationsLdp',
+        'signPresentationLdpInputDto',
+        signPresentationLdpInputDto,
+      )
+      const localVarPath =
+        `/v2/wallets/{walletId}/presentations/ldp/sign`.replace(
+          `{${'walletId'}}`,
+          encodeURIComponent(String(walletId)),
+        )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signPresentationLdpInputDto,
         localVarRequestOptions,
         configuration,
       )
@@ -2265,6 +2778,114 @@ export const WalletApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsJwtInputDto} signCredentialsJwtInputDto signCredentialsJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signCredentialsJwt(
+      walletId: string,
+      signCredentialsJwtInputDto: SignCredentialsJwtInputDto,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<SignCredentialsJwtResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.signCredentialsJwt(
+          walletId,
+          signCredentialsJwtInputDto,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.signCredentialsJwt']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsLdpInputDto} signCredentialsLdpInputDto signCredentialsLdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signCredentialsLdp(
+      walletId: string,
+      signCredentialsLdpInputDto: SignCredentialsLdpInputDto,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<SignCredentialsLdpResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.signCredentialsLdp(
+          walletId,
+          signCredentialsLdpInputDto,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.signCredentialsLdp']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsDm2SdJwtInputDto} signCredentialsDm2SdJwtInputDto SignCredentialsDm1SdJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signCredentialsSdJwt(
+      walletId: string,
+      signCredentialsDm2SdJwtInputDto: SignCredentialsDm2SdJwtInputDto,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<SignCredentialsDm2SdJwtResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.signCredentialsSdJwt(
+          walletId,
+          signCredentialsDm2SdJwtInputDto,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.signCredentialsSdJwt']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * signs a jwt token with the wallet
      * @param {string} walletId id of the wallet.
      * @param {SignJwtToken} signJwtToken SignJwtToken
@@ -2286,6 +2907,42 @@ export const WalletApiFp = function (configuration?: Configuration) {
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['WalletApi.signJwtToken']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * signs presentation with the wallet
+     * @param {string} walletId id of the wallet
+     * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signPresentationsLdp(
+      walletId: string,
+      signPresentationLdpInputDto: SignPresentationLdpInputDto,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<SignPresentationLdpResultDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.signPresentationsLdp(
+          walletId,
+          signPresentationLdpInputDto,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.signPresentationsLdp']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -2415,6 +3072,58 @@ export const WalletApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsJwtInputDto} signCredentialsJwtInputDto signCredentialsJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredentialsJwt(
+      walletId: string,
+      signCredentialsJwtInputDto: SignCredentialsJwtInputDto,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<SignCredentialsJwtResultDto> {
+      return localVarFp
+        .signCredentialsJwt(walletId, signCredentialsJwtInputDto, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsLdpInputDto} signCredentialsLdpInputDto signCredentialsLdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredentialsLdp(
+      walletId: string,
+      signCredentialsLdpInputDto: SignCredentialsLdpInputDto,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<SignCredentialsLdpResultDto> {
+      return localVarFp
+        .signCredentialsLdp(walletId, signCredentialsLdpInputDto, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * signs credential with the wallet v2
+     * @param {string} walletId id of the wallet
+     * @param {SignCredentialsDm2SdJwtInputDto} signCredentialsDm2SdJwtInputDto SignCredentialsDm1SdJwt
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signCredentialsSdJwt(
+      walletId: string,
+      signCredentialsDm2SdJwtInputDto: SignCredentialsDm2SdJwtInputDto,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<SignCredentialsDm2SdJwtResultDto> {
+      return localVarFp
+        .signCredentialsSdJwt(
+          walletId,
+          signCredentialsDm2SdJwtInputDto,
+          options,
+        )
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * signs a jwt token with the wallet
      * @param {string} walletId id of the wallet.
      * @param {SignJwtToken} signJwtToken SignJwtToken
@@ -2428,6 +3137,22 @@ export const WalletApiFactory = function (
     ): AxiosPromise<SignJwtTokenOK> {
       return localVarFp
         .signJwtToken(walletId, signJwtToken, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * signs presentation with the wallet
+     * @param {string} walletId id of the wallet
+     * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signPresentationsLdp(
+      walletId: string,
+      signPresentationLdpInputDto: SignPresentationLdpInputDto,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<SignPresentationLdpResultDto> {
+      return localVarFp
+        .signPresentationsLdp(walletId, signPresentationLdpInputDto, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -2533,6 +3258,60 @@ export class WalletApi extends BaseAPI {
   }
 
   /**
+   * signs credential with the wallet v2
+   * @param {string} walletId id of the wallet
+   * @param {SignCredentialsJwtInputDto} signCredentialsJwtInputDto signCredentialsJwt
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public signCredentialsJwt(
+    walletId: string,
+    signCredentialsJwtInputDto: SignCredentialsJwtInputDto,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .signCredentialsJwt(walletId, signCredentialsJwtInputDto, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * signs credential with the wallet v2
+   * @param {string} walletId id of the wallet
+   * @param {SignCredentialsLdpInputDto} signCredentialsLdpInputDto signCredentialsLdp
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public signCredentialsLdp(
+    walletId: string,
+    signCredentialsLdpInputDto: SignCredentialsLdpInputDto,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .signCredentialsLdp(walletId, signCredentialsLdpInputDto, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * signs credential with the wallet v2
+   * @param {string} walletId id of the wallet
+   * @param {SignCredentialsDm2SdJwtInputDto} signCredentialsDm2SdJwtInputDto SignCredentialsDm1SdJwt
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public signCredentialsSdJwt(
+    walletId: string,
+    signCredentialsDm2SdJwtInputDto: SignCredentialsDm2SdJwtInputDto,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .signCredentialsSdJwt(walletId, signCredentialsDm2SdJwtInputDto, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * signs a jwt token with the wallet
    * @param {string} walletId id of the wallet.
    * @param {SignJwtToken} signJwtToken SignJwtToken
@@ -2547,6 +3326,24 @@ export class WalletApi extends BaseAPI {
   ) {
     return WalletApiFp(this.configuration)
       .signJwtToken(walletId, signJwtToken, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * signs presentation with the wallet
+   * @param {string} walletId id of the wallet
+   * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public signPresentationsLdp(
+    walletId: string,
+    signPresentationLdpInputDto: SignPresentationLdpInputDto,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .signPresentationsLdp(walletId, signPresentationLdpInputDto, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

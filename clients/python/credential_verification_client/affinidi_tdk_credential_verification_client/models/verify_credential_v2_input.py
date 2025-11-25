@@ -26,9 +26,9 @@ class VerifyCredentialV2Input(BaseModel):
     """
     Request model of /v2/verify-vcs  # noqa: E501
     """
-    verifiable_credentials: conlist(StrictStr, min_items=1) = Field(default=..., alias="verifiableCredentials", description="List of VC strings")
-    issuer_did_document: Optional[Dict[str, Any]] = Field(default=None, alias="issuerDidDocument", description="Dynamic model")
-    __properties = ["verifiableCredentials", "issuerDidDocument"]
+    jwt_vcs: Optional[conlist(StrictStr)] = Field(default=None, alias="jwtVcs", description="List of JWT VC strings")
+    ldp_vcs: Optional[conlist(Dict[str, Any])] = Field(default=None, alias="ldpVcs", description="List of LDP VC objects")
+    __properties = ["jwtVcs", "ldpVcs"]
 
     class Config:
         """Pydantic configuration"""
@@ -66,8 +66,8 @@ class VerifyCredentialV2Input(BaseModel):
             return VerifyCredentialV2Input.parse_obj(obj)
 
         _obj = VerifyCredentialV2Input.parse_obj({
-            "verifiable_credentials": obj.get("verifiableCredentials"),
-            "issuer_did_document": obj.get("issuerDidDocument")
+            "jwt_vcs": obj.get("jwtVcs"),
+            "ldp_vcs": obj.get("ldpVcs")
         })
         return _obj
 
