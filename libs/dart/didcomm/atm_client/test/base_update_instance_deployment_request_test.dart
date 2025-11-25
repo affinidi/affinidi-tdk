@@ -4,9 +4,8 @@ import 'package:test/test.dart';
 void main() {
   group('BaseUpdateInstanceDeploymentRequest', () {
     test('should create request with required fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = BaseUpdateInstanceDeploymentRequest.mediator(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
@@ -18,13 +17,12 @@ void main() {
     });
 
     test('should create request with all optional fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = BaseUpdateInstanceDeploymentRequest.mediator(
         instanceId: 'mediator-456',
         serviceSize: 'small',
         mediatorAclMode: 'explicit_deny',
         name: 'Updated Mediator',
         description: 'Updated description',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-456');
@@ -37,11 +35,10 @@ void main() {
 
     test('should create request with only name and description for mediator',
         () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = BaseUpdateInstanceDeploymentRequest.mediator(
         instanceId: 'mediator-789',
         name: 'Test Mediator',
         description: 'Test description',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-789');
@@ -52,13 +49,12 @@ void main() {
     });
 
     test('should serialize to JSON with all fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = BaseUpdateInstanceDeploymentRequest.mediator(
         instanceId: 'mediator-123',
         serviceSize: 'medium',
         mediatorAclMode: 'explicit_deny',
         name: 'Updated Name',
         description: 'Updated Description',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -72,9 +68,8 @@ void main() {
     });
 
     test('should serialize to JSON with only instanceId for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = BaseUpdateInstanceDeploymentRequest.mediator(
         instanceId: 'mediator-456',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -84,10 +79,9 @@ void main() {
     });
 
     test('should serialize to JSON without null fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = BaseUpdateInstanceDeploymentRequest.mediator(
         instanceId: 'mediator-789',
         name: 'Test Name',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();

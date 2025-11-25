@@ -15,6 +15,39 @@ class BaseGetInstancesListRequest {
     this.limit,
     this.exclusiveStartKey,
   });
+
+  /// Creates a [BaseGetInstancesListRequest] for a mediator instance.
+  factory BaseGetInstancesListRequest.mediator({
+    int? limit,
+    String? exclusiveStartKey,
+  }) {
+    return BaseGetInstancesListRequest(
+      limit: limit,
+      exclusiveStartKey: exclusiveStartKey,
+    );
+  }
+
+  /// Creates a [BaseGetInstancesListRequest] for a meetingplace instance.
+  factory BaseGetInstancesListRequest.meetingplace({
+    int? limit,
+    String? exclusiveStartKey,
+  }) {
+    return BaseGetInstancesListRequest(
+      limit: limit,
+      exclusiveStartKey: exclusiveStartKey,
+    );
+  }
+
+  /// Creates a [BaseGetInstancesListRequest] for a trustregistry instance.
+  factory BaseGetInstancesListRequest.trustregistry({
+    int? limit,
+    String? exclusiveStartKey,
+  }) {
+    return BaseGetInstancesListRequest(
+      limit: limit,
+      exclusiveStartKey: exclusiveStartKey,
+    );
+  }
  
   /// Creates a [BaseGetInstancesListRequest] from a JSON map.
   factory BaseGetInstancesListRequest.fromJson(Map<String, dynamic> json) =>
