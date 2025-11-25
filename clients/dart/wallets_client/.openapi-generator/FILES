@@ -3,6 +3,8 @@
 LICENSE
 README.md
 analysis_options.yaml
+doc/AuthcryptMessageInput.md
+doc/AuthcryptMessageResultDto.md
 doc/CreateWalletInput.md
 doc/CreateWalletResponse.md
 doc/CreateWalletV2Input.md
@@ -17,6 +19,7 @@ doc/NotFoundError.md
 doc/OperationForbiddenError.md
 doc/RevocationApi.md
 doc/RevokeCredentialInput.md
+doc/RevokeCredentialsInput.md
 doc/ServiceErrorResponse.md
 doc/ServiceErrorResponseDetailsInner.md
 doc/SignCredential400Response.md
@@ -33,6 +36,8 @@ doc/SignCredentialsLdpInputDto.md
 doc/SignCredentialsLdpResultDto.md
 doc/SignJwtToken.md
 doc/SignJwtTokenOK.md
+doc/SignMessageInput.md
+doc/SignMessageResultDto.md
 doc/SignPresentationLdpInputDto.md
 doc/SignPresentationLdpResultDto.md
 doc/SigningFailedError.md
@@ -53,6 +58,8 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
+lib/src/model/authcrypt_message_input.dart
+lib/src/model/authcrypt_message_result_dto.dart
 lib/src/model/create_wallet_input.dart
 lib/src/model/create_wallet_response.dart
 lib/src/model/create_wallet_v2_input.dart
@@ -67,6 +74,7 @@ lib/src/model/key_not_found_error.dart
 lib/src/model/not_found_error.dart
 lib/src/model/operation_forbidden_error.dart
 lib/src/model/revoke_credential_input.dart
+lib/src/model/revoke_credentials_input.dart
 lib/src/model/service_error_response.dart
 lib/src/model/service_error_response_details_inner.dart
 lib/src/model/sign_credential400_response.dart
@@ -83,6 +91,8 @@ lib/src/model/sign_credentials_ldp_input_dto.dart
 lib/src/model/sign_credentials_ldp_result_dto.dart
 lib/src/model/sign_jwt_token.dart
 lib/src/model/sign_jwt_token_ok.dart
+lib/src/model/sign_message_input.dart
+lib/src/model/sign_message_result_dto.dart
 lib/src/model/sign_presentation_ldp_input_dto.dart
 lib/src/model/sign_presentation_ldp_result_dto.dart
 lib/src/model/signing_failed_error.dart

@@ -7,6 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**getRevocationCredentialStatus**](#getrevocationcredentialstatus) | **GET** /v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId} |                                    |
 | [**getRevocationListCredential**](#getrevocationlistcredential)     | **GET** /v1/wallets/{walletId}/revocation-list/{listId}                            | Return revocation list credential. |
 | [**revokeCredential**](#revokecredential)                           | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
+| [**revokeCredentials**](#revokecredentials)                         | **POST** /v2/wallets/{walletId}/credentials/revoke                                 | Revoke Credentials.                |
 
 # **getRevocationCredentialStatus**
 
@@ -170,6 +171,63 @@ void (empty response body)
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **revokeCredentials**
+
+> revokeCredentials(revokeCredentialsInput)
+
+Update index/credential at appropriate revocation list (set revoked is true).
+
+### Example
+
+```typescript
+import {
+  RevocationApi,
+  Configuration,
+  RevokeCredentialsInput,
+} from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new RevocationApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let revokeCredentialsInput: RevokeCredentialsInput //RevokeCredentials
+
+const { status, data } = await apiInstance.revokeCredentials(
+  walletId,
+  revokeCredentialsInput,
+)
+```
+
+### Parameters
+
+| Name                       | Type                       | Description       | Notes                 |
+| -------------------------- | -------------------------- | ----------------- | --------------------- |
+| **revokeCredentialsInput** | **RevokeCredentialsInput** | RevokeCredentials |                       |
+| **walletId**               | [**string**]               | id of the wallet  | defaults to undefined |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | Ok              | -                |
+| **400**     | BadRequestError | -                |
 | **404**     | NotFoundError   | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
