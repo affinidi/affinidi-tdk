@@ -19,18 +19,19 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, Optional
-from pydantic import BaseModel, Field, StrictStr
+from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist
+from affinidi_tdk_credential_verification_client.models.verify_presentation_v2_input_pex_query import VerifyPresentationV2InputPexQuery
 
 class VerifyPresentationV2Input(BaseModel):
     """
     Request model of /v2/verify-vp  # noqa: E501
     """
     verifiable_presentation: Optional[Dict[str, Any]] = Field(default=None, alias="verifiablePresentation")
-    presentation_definition: Optional[Dict[str, Any]] = Field(default=None, alias="presentationDefinition")
-    presentation_submission: Optional[Dict[str, Any]] = Field(default=None, alias="presentationSubmission")
-    challenge: Optional[StrictStr] = None
-    __properties = ["verifiablePresentation", "presentationDefinition", "presentationSubmission", "challenge"]
+    pex_query: Optional[VerifyPresentationV2InputPexQuery] = Field(default=None, alias="pexQuery")
+    challenge: Optional[StrictStr] = Field(default=None, description="Optional challenge string for domain/challenge verification")
+    domain: Optional[conlist(StrictStr)] = Field(default=None, description="Optional domain for verification. Array of domain strings as per W3C VP standard")
+    __properties = ["verifiablePresentation", "pexQuery", "challenge", "domain"]
 
     class Config:
         """Pydantic configuration"""
@@ -56,6 +57,9 @@ class VerifyPresentationV2Input(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of pex_query
+        if self.pex_query:
+            _dict['pexQuery'] = self.pex_query.to_dict()
         return _dict
 
     @classmethod
@@ -69,9 +73,9 @@ class VerifyPresentationV2Input(BaseModel):
 
         _obj = VerifyPresentationV2Input.parse_obj({
             "verifiable_presentation": obj.get("verifiablePresentation"),
-            "presentation_definition": obj.get("presentationDefinition"),
-            "presentation_submission": obj.get("presentationSubmission"),
-            "challenge": obj.get("challenge")
+            "pex_query": VerifyPresentationV2InputPexQuery.from_dict(obj.get("pexQuery")) if obj.get("pexQuery") is not None else None,
+            "challenge": obj.get("challenge"),
+            "domain": obj.get("domain")
         })
         return _obj
 
