@@ -493,7 +493,7 @@ Future<void> main() async {
     });
 
     test('Should fail if expired assertion', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final sut = VdipIssuer(
         didManager: issuerDidManager,
@@ -508,8 +508,7 @@ Future<void> main() async {
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(assertionValidationResult?.isValid == false &&
-              holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -545,12 +544,19 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final actual = await testCompleter.future;
-      expect(actual, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isExpirationValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isDidValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isAudienceValid, isTrue);
     });
 
     test('Should fail if invalid subject', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final vdipIssuer = VdipIssuer(
         didManager: issuerDidManager,
@@ -565,8 +571,7 @@ Future<void> main() async {
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(assertionValidationResult?.isValid == false &&
-              holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -602,12 +607,19 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final isValid = await testCompleter.future;
-      expect(isValid, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isDidValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isAudienceValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
     });
 
     test('Should fails if invalid issuer', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final vdipIssuer = VdipIssuer(
         didManager: issuerDidManager,
@@ -622,8 +634,7 @@ Future<void> main() async {
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(assertionValidationResult?.isValid == true &&
-              holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -661,12 +672,19 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final isValid = await testCompleter.future;
-      expect(isValid, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isDidValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isAudienceValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
     });
 
     test('Should fails if invalid audience', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final vdipIssuer = VdipIssuer(
         didManager: issuerDidManager,
@@ -681,8 +699,7 @@ Future<void> main() async {
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(assertionValidationResult?.isValid == false &&
-              holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -720,8 +737,15 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final isValid = await testCompleter.future;
-      expect(isValid, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isAudienceValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isDidValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
     });
   });
 
