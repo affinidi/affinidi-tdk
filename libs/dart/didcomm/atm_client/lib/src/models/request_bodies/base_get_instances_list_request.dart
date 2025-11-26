@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'base_get_instances_list_request.g.dart';
 
-@JsonSerializable(includeIfNull: false, explicitToJson: true, constructor: '_')
+@JsonSerializable(includeIfNull: false, explicitToJson: true)
 /// Request for getting a list of instances.
 class BaseGetInstancesListRequest {
   /// The maximum number of instances to return.

@@ -20,7 +20,7 @@ class BaseUpdateInstanceConfigurationRequest {
   factory BaseUpdateInstanceConfigurationRequest.fromJson(
       Map<String, dynamic> json, InstanceType instanceType) {
     final fieldName = instanceType.instanceIdField;
-    return BaseUpdateInstanceConfigurationRequest._(
+    return BaseUpdateInstanceConfigurationRequest(
       instanceId: json[fieldName] as String,
       acl: json['acl'] != null
           ? (json['acl'] as Map<String, dynamic>).map(

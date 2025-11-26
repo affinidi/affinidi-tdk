@@ -6,7 +6,6 @@ part 'base_deploy_instance_request.g.dart';
 @JsonSerializable(
   includeIfNull: false,
   explicitToJson: true,
-  constructor: '_',
 )
 
 class BaseDeployInstanceRequest {
