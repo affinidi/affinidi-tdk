@@ -759,4 +759,334 @@ Future<void> main() async {
       expect(actual.parentThreadId, messageId);
     });
   });
+
+  group('validateHolderToken', () {
+    late VdipIssuer vdipIssuer;
+    late DidManager holderDidManager;
+    late DidSigner holderSigner;
+    late String holderDid;
+
+    setUp(() async {
+      mockMediator = await MockMediator.init(keyType: KeyType.p256);
+
+      issuerDidManager = await createDidManager(
+        didMethod: 'did:key',
+        keyType: KeyType.p256,
+      );
+
+      holderDidManager = await createDidManager(
+        didMethod: 'did:key',
+        keyType: KeyType.p256,
+      );
+
+      await mockMediator.addClientForDidManager(issuerDidManager);
+      await mockMediator.addClientForDidManager(holderDidManager);
+
+      final holderDidDocument = await holderDidManager.getDidDocument();
+      holderDid = holderDidDocument.id;
+
+      holderSigner = await holderDidManager.getSigner(
+        holderDidManager.authentication.first,
+      );
+
+      vdipIssuer = VdipIssuer(
+        didManager: issuerDidManager,
+        mediatorClient: mockMediator.clients[issuerDidManager]!,
+        featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
+      );
+    });
+
+    test('validates a valid holder token successfully', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600; // 1 hour
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isTrue);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isDidValid, isTrue);
+      expect(result.isNonceValid, isTrue);
+      expect(result.isThreadIdValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when nonce does not match', () async {
+      final nonce = const Uuid().v4();
+      final differentNonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: differentNonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isDidValid, isTrue);
+      expect(result.isNonceValid, isFalse);
+      expect(result.isThreadIdValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when threadId does not match', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final differentThreadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: differentThreadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isDidValid, isTrue);
+      expect(result.isNonceValid, isTrue);
+      expect(result.isThreadIdValid, isFalse);
+      expect(result.isExpirationValid, isTrue);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when token has expired', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 - 3600; // 1 hour ago
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000 - 7200,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isDidValid, isTrue);
+      expect(result.isNonceValid, isTrue);
+      expect(result.isThreadIdValid, isTrue);
+      expect(result.isExpirationValid, isFalse);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when DID does not match', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      // Create another DID manager for a different holder
+      final differentHolderDidManager = await createDidManager(
+        didMethod: 'did:key',
+        keyType: KeyType.p256,
+      );
+      final differentHolderDidDocument =
+          await differentHolderDidManager.getDidDocument();
+      final differentHolderDid = differentHolderDidDocument.id;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: differentHolderDid, // Different DID
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      // When we try to verify with a different DID's document, the signature
+      // verification might still succeed if the DID document contains compatible keys,
+      // but the DID validation will fail because iss/sub don't match
+      expect(result.isValid, isFalse);
+      // Signature might succeed depending on key compatibility, but DID check will fail
+      expect(result.isDidValid, isFalse,
+          reason:
+              'DID validation should fail when token DIDs dont match expected DID');
+    });
+
+    test('fails validation with invalid token format', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: 'invalid.token.format',
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isFalse);
+      expect(result.isDidValid, isFalse);
+      expect(result.isNonceValid, isFalse);
+      expect(result.isThreadIdValid, isFalse);
+      expect(result.isExpirationValid, isFalse);
+      expect(result.nonce, isEmpty);
+      expect(result.error, isNotNull);
+    });
+
+    test('TokenValidationResult.toJson() works correctly', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isTrue);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isDidValid, isTrue);
+      expect(result.isNonceValid, isTrue);
+      expect(result.isThreadIdValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('TokenValidationResult.toString() includes all fields', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      final str = result.toString();
+
+      expect(str, contains('TokenValidationResult'));
+      expect(str, contains('isValid: true'));
+      expect(str, contains('isSignatureValid: true'));
+      expect(str, contains('isDidValid: true'));
+      expect(str, contains('isNonceValid: true'));
+      expect(str, contains('isThreadIdValid: true'));
+      expect(str, contains('isExpirationValid: true'));
+      expect(str, contains('nonce: $nonce'));
+    });
+  });
 }

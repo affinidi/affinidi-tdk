@@ -293,7 +293,9 @@ class VdipIssuer {
   /// Verifies that the JWT token signed by the holder contains the expected
   /// nonce and thread ID, and that it has not expired. The token signature
   /// is verified using the holder's DID document.
-  Future<bool> validateHolderToken({
+  ///
+  /// Returns a [TokenValidationResult] with detailed validation information.
+  Future<TokenValidationResult> validateHolderToken({
     required String token,
     required String holderDid,
     required String expectedNonce,
@@ -310,25 +312,41 @@ class VdipIssuer {
 
       final tokenPayload = decodedToken.payload;
 
-      final tokenNonce = tokenPayload['nonce'];
-      final tokenThreadId = tokenPayload['threadId'];
-      final tokenSubject = tokenPayload['sub'];
-      final tokenIssuer = tokenPayload['iss'];
+      final tokenNonce = tokenPayload['nonce'] as String?;
+      final tokenThreadId = tokenPayload['threadId'] as String?;
+      final tokenSubject = tokenPayload['sub'] as String?;
+      final tokenIssuer = tokenPayload['iss'] as String?;
       final tokenExpiration = tokenPayload['exp'] as int?;
 
-      final isCorrectDID =
-          tokenSubject == holderDid && tokenIssuer == holderDid;
+      final isDidValid = tokenSubject == holderDid && tokenIssuer == holderDid;
       final isNonceValid = tokenNonce == expectedNonce;
       final isThreadIdValid = tokenThreadId == expectedThreadId;
-      final isTokenExpirationValid = tokenExpiration != null &&
+      final isExpirationValid = tokenExpiration != null &&
           tokenExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-      return isCorrectDID &&
-          isNonceValid &&
-          isThreadIdValid &&
-          isTokenExpirationValid;
+      final isValid =
+          isDidValid && isNonceValid && isThreadIdValid && isExpirationValid;
+
+      return TokenValidationResult(
+        isValid: isValid,
+        isSignatureValid: true,
+        isDidValid: isDidValid,
+        isNonceValid: isNonceValid,
+        isThreadIdValid: isThreadIdValid,
+        isExpirationValid: isExpirationValid,
+        nonce: tokenNonce ?? '',
+      );
     } catch (e) {
-      return false;
+      return TokenValidationResult(
+        isValid: false,
+        isSignatureValid: false,
+        isDidValid: false,
+        isNonceValid: false,
+        isThreadIdValid: false,
+        isExpirationValid: false,
+        nonce: '',
+        error: e.toString(),
+      );
     }
   }
 }

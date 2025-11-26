@@ -361,12 +361,10 @@ Future<HttpServer> startIssuerServer({
       final data = Uri.splitQueryString(body);
 
       final token = data['token'];
-      final nonce = data['nonce'];
       final verified = data['verified'] == 'true';
 
       print('Issuer Server: Verification callback received');
       print('   - Token: ${token?.substring(0, 20)}...');
-      print('   - Nonce: $nonce');
       print('   - Verified: $verified\n');
 
       if (token == null) {
@@ -376,40 +374,52 @@ Future<HttpServer> startIssuerServer({
         return;
       }
 
-      if (nonce == null) {
-        request.response.statusCode = HttpStatus.badRequest;
-        request.response.write('Missing nonce');
-        await request.response.close();
-        return;
+      // First, validate the token to extract the nonce and check all validation criteria
+      // We'll try to find the matching verification request by iterating through pending verifications
+      String? matchingNonce;
+      TokenValidationResult? validationResult;
+
+      for (final entry in pendingVerifications.entries) {
+        final result = await vdipIssuer.validateHolderToken(
+          token: token,
+          holderDid: entry.value.holderDid,
+          expectedNonce: entry.key,
+          expectedThreadId: entry.value.threadId,
+        );
+
+        if (result.isValid) {
+          matchingNonce = entry.key;
+          validationResult = result;
+          break;
+        }
       }
 
-      // Get the pending verification for this nonce
-      final verificationRequest = pendingVerifications[nonce];
-      if (verificationRequest == null) {
-        print('Issuer: No pending verification found for nonce: $nonce\n');
-        request.response.statusCode = HttpStatus.notFound;
-        request.response.write('No pending verification found');
-        await request.response.close();
-        return;
-      }
+      if (matchingNonce == null || validationResult == null) {
+        print('Issuer: Token validation failed');
+        if (validationResult != null) {
+          print('   - Signature valid: ${validationResult.isSignatureValid}');
+          print('   - DID valid: ${validationResult.isDidValid}');
+          print('   - Nonce valid: ${validationResult.isNonceValid}');
+          print('   - Thread ID valid: ${validationResult.isThreadIdValid}');
+          print('   - Expiration valid: ${validationResult.isExpirationValid}');
+          if (validationResult.error != null) {
+            print('   - Error: ${validationResult.error}');
+          }
+        }
 
-      // Validate the token
-      final isValid = await vdipIssuer.validateHolderToken(
-        token: token,
-        holderDid: verificationRequest.holderDid,
-        expectedNonce: nonce,
-        expectedThreadId: verificationRequest.threadId,
-      );
-
-      if (!isValid) {
-        print('Issuer: Token validation failed\n');
         request.response.statusCode = HttpStatus.unauthorized;
         request.response.write('Invalid or expired token');
         await request.response.close();
         return;
       }
 
-      print('Issuer: Token validated successfully!\n');
+      final verificationRequest = pendingVerifications[matchingNonce];
+      if (verificationRequest == null) {
+        throw StateError('No pending verification for nonce: $matchingNonce');
+      }
+
+      print('Issuer: Token validated successfully!');
+      print('   - Nonce from token: ${validationResult.nonce}\n');
 
       if (verified) {
         print('Issuer: Verification successful! Issuing credential...\n');
@@ -461,7 +471,7 @@ Future<HttpServer> startIssuerServer({
       }
 
       // Clean up
-      pendingVerifications.remove(nonce);
+      pendingVerifications.remove(matchingNonce);
 
       request.response.statusCode = HttpStatus.ok;
       request.response.write('OK');

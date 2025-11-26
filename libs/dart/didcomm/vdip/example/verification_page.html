@@ -222,22 +222,6 @@
             return urlParams.get('token');
         }
 
-        // Extract nonce from JWT token
-        function extractNonceFromToken(token) {
-            try {
-                const parts = token.split('.');
-                if (parts.length !== 3) return null;
-
-                const payload = parts[1];
-                const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
-                const json = JSON.parse(decoded);
-                return json.nonce;
-            } catch (e) {
-                console.error('Error extracting nonce:', e);
-                return null;
-            }
-        }
-
         async function submitVerification(approved) {
             if (submitted) return;
             submitted = true;
@@ -256,11 +240,6 @@
                     throw new Error('No token found in URL');
                 }
 
-                const nonce = extractNonceFromToken(token);
-                if (!nonce) {
-                    throw new Error('Could not extract nonce from token');
-                }
-
                 const response = await fetch('http://localhost:8080/verification-callback', {
                     method: 'POST',
                     headers: {
@@ -268,7 +247,6 @@
                     },
                     body: new URLSearchParams({
                         token: token,
-                        nonce: nonce,
                         verified: approved.toString()
                     })
                 });
