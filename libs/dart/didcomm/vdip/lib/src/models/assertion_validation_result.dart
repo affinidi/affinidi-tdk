@@ -9,8 +9,11 @@ class AssertionValidationResult {
   /// Whether the token signature could be verified using the holder's DID document.
   final bool isSignatureValid;
 
-  /// Whether the token iss/sub claims match the expected holder DID.
-  final bool isDidValid;
+  /// Whether the token iss claim match the expected holder DID.
+  final bool isIssuerValid;
+
+  /// Whether the token sub claim match the expected holder DID.
+  final bool isSubjectValid;
 
   /// Whether the proposalId in the token matches the expected value.
   final bool isProposalValid;
@@ -28,7 +31,8 @@ class AssertionValidationResult {
   const AssertionValidationResult({
     required this.isValid,
     required this.isSignatureValid,
-    required this.isDidValid,
+    required this.isIssuerValid,
+    required this.isSubjectValid,
     required this.isProposalValid,
     required this.isAudienceValid,
     required this.isExpirationValid,

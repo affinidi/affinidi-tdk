@@ -246,20 +246,24 @@ class VdipIssuer {
       final assertionAudienceId = payload['aud'];
       final assertionExpiration = payload['exp'] as int?;
 
-      final isDidValid =
-          assertionSubject == holderDid && assertionIssuer == holderDid;
+      final isIssuerValid = assertionIssuer == holderDid;
+      final isSubjectValid = assertionSubject == holderDid;
       final isProposalValid = assertionProposalId == proposalId;
       final isAudienceValid = assertionAudienceId == vcIssuerDid;
       final isExpirationValid = assertionExpiration != null &&
           assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-      final isValid =
-          isDidValid && isProposalValid && isAudienceValid && isExpirationValid;
+      final isValid = isIssuerValid &&
+          isSubjectValid &&
+          isProposalValid &&
+          isAudienceValid &&
+          isExpirationValid;
 
       return AssertionValidationResult(
         isValid: isValid,
         isSignatureValid: true,
-        isDidValid: isDidValid,
+        isIssuerValid: isIssuerValid,
+        isSubjectValid: isSubjectValid,
         isProposalValid: isProposalValid,
         isAudienceValid: isAudienceValid,
         isExpirationValid: isExpirationValid,
@@ -268,7 +272,8 @@ class VdipIssuer {
       return AssertionValidationResult(
         isValid: false,
         isSignatureValid: false,
-        isDidValid: false,
+        isIssuerValid: false,
+        isSubjectValid: false,
         isProposalValid: false,
         isAudienceValid: false,
         isExpirationValid: false,
@@ -337,19 +342,24 @@ class VdipIssuer {
       final tokenIssuer = tokenPayload['iss'] as String;
       final tokenExpiration = tokenPayload['exp'] as int;
 
-      final isDidValid = tokenSubject == holderDid && tokenIssuer == holderDid;
+      final isIssuerValid = tokenIssuer == holderDid;
+      final isSubjectValid = tokenSubject == holderDid;
       final isNonceValid = tokenNonce == expectedNonce;
       final isThreadIdValid = tokenThreadId == expectedThreadId;
       final isExpirationValid =
           tokenExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-      final isValid =
-          isDidValid && isNonceValid && isThreadIdValid && isExpirationValid;
+      final isValid = isIssuerValid &&
+          isSubjectValid &&
+          isNonceValid &&
+          isThreadIdValid &&
+          isExpirationValid;
 
       return TokenValidationResult(
         isValid: isValid,
         isSignatureValid: true,
-        isDidValid: isDidValid,
+        isIssuerValid: isIssuerValid,
+        isSubjectValid: isSubjectValid,
         isNonceValid: isNonceValid,
         isThreadIdValid: isThreadIdValid,
         isExpirationValid: isExpirationValid,
@@ -359,7 +369,8 @@ class VdipIssuer {
       return TokenValidationResult(
         isValid: false,
         isSignatureValid: false,
-        isDidValid: false,
+        isIssuerValid: false,
+        isSubjectValid: false,
         isNonceValid: false,
         isThreadIdValid: false,
         isExpirationValid: false,

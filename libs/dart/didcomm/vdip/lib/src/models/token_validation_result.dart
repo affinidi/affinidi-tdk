@@ -9,8 +9,11 @@ class TokenValidationResult {
   /// Whether the token signature could be verified using the holder's DID document.
   final bool isSignatureValid;
 
-  /// Whether the token iss/sub claims match the expected holder DID.
-  final bool isDidValid;
+  /// Whether the token iss claims match the expected holder DID.
+  final bool isIssuerValid;
+
+  /// Whether the token sub claims match the expected holder DID.
+  final bool isSubjectValid;
 
   /// Whether the nonce in the token matches the expected value.
   final bool isNonceValid;
@@ -31,7 +34,8 @@ class TokenValidationResult {
   const TokenValidationResult({
     required this.isValid,
     required this.isSignatureValid,
-    required this.isDidValid,
+    required this.isIssuerValid,
+    required this.isSubjectValid,
     required this.isNonceValid,
     required this.isThreadIdValid,
     required this.isExpirationValid,

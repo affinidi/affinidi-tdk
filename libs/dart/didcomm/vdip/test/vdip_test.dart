@@ -550,7 +550,8 @@ Future<void> main() async {
       expect(result!.isValid, isFalse);
       expect(result.isExpirationValid, isFalse);
       expect(result.isSignatureValid, isTrue);
-      expect(result.isDidValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
       expect(result.isProposalValid, isTrue);
       expect(result.isAudienceValid, isTrue);
     });
@@ -611,7 +612,8 @@ Future<void> main() async {
 
       expect(result, isNotNull);
       expect(result!.isValid, isFalse);
-      expect(result.isDidValid, isFalse);
+      expect(result.isIssuerValid, isFalse);
+      expect(result.isSubjectValid, isFalse);
       expect(result.isSignatureValid, isTrue);
       expect(result.isProposalValid, isTrue);
       expect(result.isAudienceValid, isTrue);
@@ -676,7 +678,8 @@ Future<void> main() async {
 
       expect(result, isNotNull);
       expect(result!.isValid, isFalse);
-      expect(result.isDidValid, isFalse);
+      expect(result.isIssuerValid, isFalse);
+      expect(result.isSubjectValid, isFalse);
       expect(result.isSignatureValid, isTrue);
       expect(result.isProposalValid, isTrue);
       expect(result.isAudienceValid, isTrue);
@@ -743,7 +746,8 @@ Future<void> main() async {
       expect(result!.isValid, isFalse);
       expect(result.isAudienceValid, isFalse);
       expect(result.isSignatureValid, isTrue);
-      expect(result.isDidValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
       expect(result.isProposalValid, isTrue);
       expect(result.isExpirationValid, isTrue);
     });
@@ -850,7 +854,8 @@ Future<void> main() async {
 
       expect(result.isValid, isTrue);
       expect(result.isSignatureValid, isTrue);
-      expect(result.isDidValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
       expect(result.isNonceValid, isTrue);
       expect(result.isThreadIdValid, isTrue);
       expect(result.isExpirationValid, isTrue);
@@ -888,7 +893,8 @@ Future<void> main() async {
 
       expect(result.isValid, isFalse);
       expect(result.isSignatureValid, isTrue);
-      expect(result.isDidValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
       expect(result.isNonceValid, isFalse);
       expect(result.isThreadIdValid, isTrue);
       expect(result.isExpirationValid, isTrue);
@@ -926,7 +932,8 @@ Future<void> main() async {
 
       expect(result.isValid, isFalse);
       expect(result.isSignatureValid, isTrue);
-      expect(result.isDidValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
       expect(result.isNonceValid, isTrue);
       expect(result.isThreadIdValid, isFalse);
       expect(result.isExpirationValid, isTrue);
@@ -963,7 +970,8 @@ Future<void> main() async {
 
       expect(result.isValid, isFalse);
       expect(result.isSignatureValid, isTrue);
-      expect(result.isDidValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
       expect(result.isNonceValid, isTrue);
       expect(result.isThreadIdValid, isTrue);
       expect(result.isExpirationValid, isFalse);
@@ -1012,9 +1020,12 @@ Future<void> main() async {
       // but the DID validation will fail because iss/sub don't match
       expect(result.isValid, isFalse);
       // Signature might succeed depending on key compatibility, but DID check will fail
-      expect(result.isDidValid, isFalse,
+      expect(result.isIssuerValid, isFalse,
           reason:
-              'DID validation should fail when token DIDs dont match expected DID');
+              'Issuer validation should fail when token DIDs dont match expected DID');
+      expect(result.isSubjectValid, isFalse,
+          reason:
+              'Subject validation should fail when token DIDs dont match expected DID');
     });
 
     test('fails validation with invalid token format', () async {
@@ -1030,7 +1041,8 @@ Future<void> main() async {
 
       expect(result.isValid, isFalse);
       expect(result.isSignatureValid, isFalse);
-      expect(result.isDidValid, isFalse);
+      expect(result.isIssuerValid, isFalse);
+      expect(result.isSubjectValid, isFalse);
       expect(result.isNonceValid, isFalse);
       expect(result.isThreadIdValid, isFalse);
       expect(result.isExpirationValid, isFalse);

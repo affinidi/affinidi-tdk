@@ -407,7 +407,8 @@ Future<HttpServer> startIssuerServer({
       if (!validationResult.isValid) {
         print('Issuer: Token validation failed');
         print('   - Signature valid: ${validationResult.isSignatureValid}');
-        print('   - DID valid: ${validationResult.isDidValid}');
+        print('   - Iss valid: ${validationResult.isIssuerValid}');
+        print('   - Sub valid: ${validationResult.isSubjectValid}');
         print('   - Nonce valid: ${validationResult.isNonceValid}');
         print('   - Thread ID valid: ${validationResult.isThreadIdValid}');
         print('   - Expiration valid: ${validationResult.isExpirationValid}');
