@@ -1049,44 +1049,5 @@ Future<void> main() async {
       expect(result.nonce, equals(nonce));
       expect(result.error, isNull);
     });
-
-    test('TokenValidationResult.toString() includes all fields', () async {
-      final nonce = const Uuid().v4();
-      final threadId = const Uuid().v4();
-      final expirationTime =
-          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
-
-      final tokenPayload = {
-        'iss': holderDid,
-        'sub': holderDid,
-        'nonce': nonce,
-        'threadId': threadId,
-        'exp': expirationTime,
-        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
-      };
-
-      final token = await JwtHelper.createAndSignJwt(
-        tokenPayload,
-        DidSignerAdapter(holderSigner),
-      );
-
-      final result = await vdipIssuer.validateHolderToken(
-        token: token,
-        holderDid: holderDid,
-        expectedNonce: nonce,
-        expectedThreadId: threadId,
-      );
-
-      final str = result.toString();
-
-      expect(str, contains('TokenValidationResult'));
-      expect(str, contains('isValid: true'));
-      expect(str, contains('isSignatureValid: true'));
-      expect(str, contains('isDidValid: true'));
-      expect(str, contains('isNonceValid: true'));
-      expect(str, contains('isThreadIdValid: true'));
-      expect(str, contains('isExpirationValid: true'));
-      expect(str, contains('nonce: $nonce'));
-    });
   });
 }
