@@ -361,10 +361,12 @@ Future<HttpServer> startIssuerServer({
       final data = Uri.splitQueryString(body);
 
       final token = data['token'];
+      final nonce = data['nonce'];
       final verified = data['verified'] == 'true';
 
       print('Issuer Server: Verification callback received');
       print('   - Token: ${token?.substring(0, 20)}...');
+      print('   - Nonce: $nonce');
       print('   - Verified: $verified\n');
 
       if (token == null) {
@@ -374,34 +376,37 @@ Future<HttpServer> startIssuerServer({
         return;
       }
 
-      // Find the pending verification by validating token against all stored nonces
-      String? matchingNonce;
-      for (final entry in pendingVerifications.entries) {
-        final isValid = await vdipIssuer.validateHolderToken(
-          token: token,
-          holderDid: entry.value.holderDid,
-          expectedNonce: entry.key,
-          expectedThreadId: entry.value.threadId,
-        );
-
-        if (isValid) {
-          matchingNonce = entry.key;
-          break;
-        }
-      }
-
-      if (matchingNonce == null) {
-        print(
-            'Issuer: Token validation failed or no matching verification found\n');
-        request.response.statusCode = HttpStatus.unauthorized;
-        request.response.write('Invalid or expired token');
+      if (nonce == null) {
+        request.response.statusCode = HttpStatus.badRequest;
+        request.response.write('Missing nonce');
         await request.response.close();
         return;
       }
 
-      final verificationRequest = pendingVerifications[matchingNonce];
+      // Get the pending verification for this nonce
+      final verificationRequest = pendingVerifications[nonce];
       if (verificationRequest == null) {
-        throw StateError('No pending verification for nonce: $matchingNonce');
+        print('Issuer: No pending verification found for nonce: $nonce\n');
+        request.response.statusCode = HttpStatus.notFound;
+        request.response.write('No pending verification found');
+        await request.response.close();
+        return;
+      }
+
+      // Validate the token
+      final isValid = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: verificationRequest.holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: verificationRequest.threadId,
+      );
+
+      if (!isValid) {
+        print('Issuer: Token validation failed\n');
+        request.response.statusCode = HttpStatus.unauthorized;
+        request.response.write('Invalid or expired token');
+        await request.response.close();
+        return;
       }
 
       print('Issuer: Token validated successfully!\n');
@@ -450,14 +455,13 @@ Future<HttpServer> startIssuerServer({
           verifiableCredential: issuedCredential,
         );
 
-        // Clean up
-        pendingVerifications.remove(matchingNonce);
-
         print('Issuer: Credential sent to holder!\n');
       } else {
         print('Issuer: Verification denied by user\n');
-        pendingVerifications.remove(matchingNonce);
       }
+
+      // Clean up
+      pendingVerifications.remove(nonce);
 
       request.response.statusCode = HttpStatus.ok;
       request.response.write('OK');
