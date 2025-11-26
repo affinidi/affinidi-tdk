@@ -7,7 +7,7 @@ import 'package:uuid/uuid.dart';
 
 void emptyOnRequestIssuanceCallback({
   required message,
-  isAssertionValid,
+  assertionValidationResult,
   holderDidFromAssertion,
   challenge,
 }) {}

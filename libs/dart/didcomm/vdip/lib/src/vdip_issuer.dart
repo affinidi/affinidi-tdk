@@ -138,7 +138,7 @@ class VdipIssuer {
     required void Function({
       required PlainTextMessage message,
       String? challenge,
-      bool? isAssertionValid,
+      AssertionValidationResult? assertionValidationResult,
       String? holderDidFromAssertion,
     }) onRequestToIssueCredential,
     void Function(ProblemReportMessage)? onProblemReport,
@@ -195,7 +195,7 @@ class VdipIssuer {
 
             onRequestToIssueCredential(
               holderDidFromAssertion: holderDid,
-              isAssertionValid: assertionValidationResult.isValid,
+              assertionValidationResult: assertionValidationResult,
               message: plainTextMessage,
               challenge: challenge,
             );

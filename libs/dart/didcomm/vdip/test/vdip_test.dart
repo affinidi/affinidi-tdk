@@ -121,7 +121,7 @@ Future<void> main() async {
                 },
                 onRequestToIssueCredential: ({
                   required message,
-                  isAssertionValid,
+                  assertionValidationResult,
                   holderDidFromAssertion,
                   challenge,
                 }) async {
@@ -235,11 +235,12 @@ Future<void> main() async {
               vdipIssuer.listenForIncomingMessages(
                 onRequestToIssueCredential: ({
                   required message,
-                  isAssertionValid,
+                  assertionValidationResult,
                   holderDidFromAssertion,
                   challenge,
                 }) async {
-                  if (isAssertionValid == null || !isAssertionValid) {
+                  if (assertionValidationResult == null ||
+                      !assertionValidationResult.isValid) {
                     testCompleter.completeError(
                       Exception('Assertion is not valid'),
                     );
@@ -337,7 +338,7 @@ Future<void> main() async {
               vdipIssuer.listenForIncomingMessages(
                 onRequestToIssueCredential: ({
                   required message,
-                  isAssertionValid,
+                  assertionValidationResult,
                   holderDidFromAssertion,
                   challenge,
                 }) async {
@@ -503,12 +504,12 @@ Future<void> main() async {
       sut.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == false && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult?.isValid == false &&
+              holderDidFromAssertion == null);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -560,12 +561,12 @@ Future<void> main() async {
       vdipIssuer.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == false && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult?.isValid == false &&
+              holderDidFromAssertion == null);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -617,12 +618,12 @@ Future<void> main() async {
       vdipIssuer.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == true && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult?.isValid == true &&
+              holderDidFromAssertion == null);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -676,12 +677,12 @@ Future<void> main() async {
       vdipIssuer.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == false && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult?.isValid == false &&
+              holderDidFromAssertion == null);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
