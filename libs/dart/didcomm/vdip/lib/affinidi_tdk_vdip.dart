@@ -11,6 +11,7 @@ export 'src/messages/request_issuance/vdip_request_issuance_message.dart';
 
 // Messages - switch_context
 export 'src/messages/switch_context/vdip_switch_context_message.dart';
+export 'src/models/assertion_validation_result.dart';
 export 'src/models/request_credentials_options.dart';
 export 'src/models/token_validation_result.dart';
 export 'src/vdip_holder.dart';

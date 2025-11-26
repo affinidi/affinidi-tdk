@@ -374,48 +374,51 @@ Future<HttpServer> startIssuerServer({
         return;
       }
 
-      // First, validate the token to extract the nonce and check all validation criteria
-      // We'll try to find the matching verification request by iterating through pending verifications
-      String? matchingNonce;
-      TokenValidationResult? validationResult;
+      // First, decode the token to extract the nonce
+      final decodedToken = JwtHelper.decode(serializedJwt: token);
+      final nonce = decodedToken.claims['nonce'] as String?;
 
-      for (final entry in pendingVerifications.entries) {
-        final result = await vdipIssuer.validateHolderToken(
-          token: token,
-          holderDid: entry.value.holderDid,
-          expectedNonce: entry.key,
-          expectedThreadId: entry.value.threadId,
-        );
-
-        if (result.isValid) {
-          matchingNonce = entry.key;
-          validationResult = result;
-          break;
-        }
+      if (nonce == null) {
+        print('Issuer: No nonce found in token');
+        request.response.statusCode = HttpStatus.badRequest;
+        request.response.write('Invalid token: missing nonce');
+        await request.response.close();
+        return;
       }
 
-      if (matchingNonce == null || validationResult == null) {
-        print('Issuer: Token validation failed');
-        if (validationResult != null) {
-          print('   - Signature valid: ${validationResult.isSignatureValid}');
-          print('   - DID valid: ${validationResult.isDidValid}');
-          print('   - Nonce valid: ${validationResult.isNonceValid}');
-          print('   - Thread ID valid: ${validationResult.isThreadIdValid}');
-          print('   - Expiration valid: ${validationResult.isExpirationValid}');
-          if (validationResult.error != null) {
-            print('   - Error: ${validationResult.error}');
-          }
-        }
-
+      // Get the verification request for this nonce
+      final verificationRequest = pendingVerifications[nonce];
+      if (verificationRequest == null) {
+        print('Issuer: No pending verification found for nonce: $nonce');
         request.response.statusCode = HttpStatus.unauthorized;
         request.response.write('Invalid or expired token');
         await request.response.close();
         return;
       }
 
-      final verificationRequest = pendingVerifications[matchingNonce];
-      if (verificationRequest == null) {
-        throw StateError('No pending verification for nonce: $matchingNonce');
+      // Now validate the token with the expected values
+      final validationResult = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: verificationRequest.holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: verificationRequest.threadId,
+      );
+
+      if (!validationResult.isValid) {
+        print('Issuer: Token validation failed');
+        print('   - Signature valid: ${validationResult.isSignatureValid}');
+        print('   - DID valid: ${validationResult.isDidValid}');
+        print('   - Nonce valid: ${validationResult.isNonceValid}');
+        print('   - Thread ID valid: ${validationResult.isThreadIdValid}');
+        print('   - Expiration valid: ${validationResult.isExpirationValid}');
+        if (validationResult.error != null) {
+          print('   - Error: ${validationResult.error}');
+        }
+
+        request.response.statusCode = HttpStatus.unauthorized;
+        request.response.write('Invalid or expired token');
+        await request.response.close();
+        return;
       }
 
       print('Issuer: Token validated successfully!');
@@ -471,7 +474,7 @@ Future<HttpServer> startIssuerServer({
       }
 
       // Clean up
-      pendingVerifications.remove(matchingNonce);
+      pendingVerifications.remove(nonce);
 
       request.response.statusCode = HttpStatus.ok;
       request.response.write('OK');
@@ -522,21 +525,12 @@ Future<HttpServer> startVerificationServer() async {
   return server;
 }
 
-/// Extracts nonce from JWT token (simplified for demo)
+/// Extracts nonce from JWT token using JwtHelper
 String _extractNonceFromToken(String token) {
   try {
-    // JWT format: header.payload.signature
-    final parts = token.split('.');
-    if (parts.length != 3) return '';
+    final decodedToken = JwtHelper.decode(serializedJwt: token);
 
-    // Decode payload (base64url)
-    final payload = parts[1];
-    final normalized = base64Url.normalize(payload);
-    final decoded = utf8.decode(base64Url.decode(normalized));
-
-    // Parse JSON and extract nonce
-    final json = jsonDecode(decoded) as Map<String, dynamic>;
-    return json['nonce'] as String? ?? '';
+    return decodedToken.claims['nonce'] as String? ?? '';
   } catch (e) {
     print('Error extracting nonce: $e');
     return '';

@@ -1,8 +1,8 @@
-/// Result of validating a holder token during browser context switch.
+/// Result of validating holder's assertion
 ///
 /// Contains detailed information about each validation check performed
 /// on the JWT token.
-class TokenValidationResult {
+class AssertionValidationResult {
   /// Overall validation result - true if all checks pass.
   final bool isValid;
 
@@ -12,30 +12,26 @@ class TokenValidationResult {
   /// Whether the token iss/sub claims match the expected holder DID.
   final bool isDidValid;
 
-  /// Whether the nonce in the token matches the expected value.
-  final bool isNonceValid;
+  /// Whether the proposalId in the token matches the expected value.
+  final bool isProposalValid;
 
-  /// Whether the threadId in the token matches the expected value.
-  final bool isThreadIdValid;
+  /// Whether the audience in the token matches the expected value.
+  final bool isAudienceValid;
 
   /// Whether the token has not expired based on the exp claim.
   final bool isExpirationValid;
 
-  /// The nonce value extracted from the token.
-  final String nonce;
-
   /// Error message if validation failed (null if successful).
   final String? error;
 
-  /// Creates new [TokenValidationResult] with the provided validation details.
-  const TokenValidationResult({
+  /// Creates new [AssertionValidationResult] with the provided validation details.
+  const AssertionValidationResult({
     required this.isValid,
     required this.isSignatureValid,
     required this.isDidValid,
-    required this.isNonceValid,
-    required this.isThreadIdValid,
+    required this.isProposalValid,
+    required this.isAudienceValid,
     required this.isExpirationValid,
-    required this.nonce,
     this.error,
   });
 }

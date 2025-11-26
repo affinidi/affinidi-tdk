@@ -186,7 +186,7 @@ class VdipIssuer {
 
             final vcIssuerDidDocument = await didManager.getDidDocument();
 
-            final isAssertionValid = await _isAssertionValid(
+            final assertionValidationResult = await _isAssertionValid(
               jwsAssertion: assertion,
               holderDid: holderDid,
               proposalId: requestIssuanceMessageBody.proposalId,
@@ -195,7 +195,7 @@ class VdipIssuer {
 
             onRequestToIssueCredential(
               holderDidFromAssertion: holderDid,
-              isAssertionValid: isAssertionValid,
+              isAssertionValid: assertionValidationResult.isValid,
               message: plainTextMessage,
               challenge: challenge,
             );
@@ -224,38 +224,57 @@ class VdipIssuer {
   }
 
   /// Validates that the signed JWS [jwsAssertion] subject matches [holderDid].
-  Future<bool> _isAssertionValid({
+  Future<AssertionValidationResult> _isAssertionValid({
     required String jwsAssertion,
     required String holderDid,
     required String proposalId,
     required String vcIssuerDid,
   }) async {
-    final resolvedHolderDidDocument =
-        await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
-    final decodedJwsAssertion = JwtHelper.decodeAndVerify(
-      serializedJwt: jwsAssertion,
-      holderDidDocument: resolvedHolderDidDocument,
-    );
+    try {
+      final resolvedHolderDidDocument =
+          await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+      final decodedJwsAssertion = JwtHelper.decodeAndVerify(
+        serializedJwt: jwsAssertion,
+        holderDidDocument: resolvedHolderDidDocument,
+      );
 
-    final payload = decodedJwsAssertion.payload;
+      final payload = decodedJwsAssertion.payload;
 
-    final assertionProposalId = payload['proposalId'];
-    final assertionSubject = payload['sub'];
-    final assertionIssuer = payload['iss'];
-    final assertionAudienceId = payload['aud'];
-    final assertionExpiration = payload['exp'] as int?;
+      final assertionProposalId = payload['proposalId'];
+      final assertionSubject = payload['sub'];
+      final assertionIssuer = payload['iss'];
+      final assertionAudienceId = payload['aud'];
+      final assertionExpiration = payload['exp'] as int?;
 
-    final isCorrectDID =
-        assertionSubject == holderDid && assertionIssuer == holderDid;
-    final isProposalValid = assertionProposalId == proposalId;
-    final isAudienceValid = assertionAudienceId == vcIssuerDid;
-    final isAssertionExpirationValid = assertionExpiration != null &&
-        assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      final isDidValid =
+          assertionSubject == holderDid && assertionIssuer == holderDid;
+      final isProposalValid = assertionProposalId == proposalId;
+      final isAudienceValid = assertionAudienceId == vcIssuerDid;
+      final isExpirationValid = assertionExpiration != null &&
+          assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-    return isCorrectDID &&
-        isProposalValid &&
-        isAudienceValid &&
-        isAssertionExpirationValid;
+      final isValid =
+          isDidValid && isProposalValid && isAudienceValid && isExpirationValid;
+
+      return AssertionValidationResult(
+        isValid: isValid,
+        isSignatureValid: true,
+        isDidValid: isDidValid,
+        isProposalValid: isProposalValid,
+        isAudienceValid: isAudienceValid,
+        isExpirationValid: isExpirationValid,
+      );
+    } catch (e) {
+      return AssertionValidationResult(
+        isValid: false,
+        isSignatureValid: false,
+        isDidValid: false,
+        isProposalValid: false,
+        isAudienceValid: false,
+        isExpirationValid: false,
+        error: e.toString(),
+      );
+    }
   }
 
   /// Sends a switch context message to the given [holderDid].
@@ -312,16 +331,16 @@ class VdipIssuer {
 
       final tokenPayload = decodedToken.payload;
 
-      final tokenNonce = tokenPayload['nonce'] as String?;
-      final tokenThreadId = tokenPayload['threadId'] as String?;
-      final tokenSubject = tokenPayload['sub'] as String?;
-      final tokenIssuer = tokenPayload['iss'] as String?;
-      final tokenExpiration = tokenPayload['exp'] as int?;
+      final tokenNonce = tokenPayload['nonce'] as String;
+      final tokenThreadId = tokenPayload['threadId'] as String;
+      final tokenSubject = tokenPayload['sub'] as String;
+      final tokenIssuer = tokenPayload['iss'] as String;
+      final tokenExpiration = tokenPayload['exp'] as int;
 
       final isDidValid = tokenSubject == holderDid && tokenIssuer == holderDid;
       final isNonceValid = tokenNonce == expectedNonce;
       final isThreadIdValid = tokenThreadId == expectedThreadId;
-      final isExpirationValid = tokenExpiration != null &&
+      final isExpirationValid =
           tokenExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
       final isValid =
@@ -334,7 +353,7 @@ class VdipIssuer {
         isNonceValid: isNonceValid,
         isThreadIdValid: isThreadIdValid,
         isExpirationValid: isExpirationValid,
-        nonce: tokenNonce ?? '',
+        nonce: tokenNonce,
       );
     } catch (e) {
       return TokenValidationResult(

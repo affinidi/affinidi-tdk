@@ -26,7 +26,7 @@ class JwtHelper {
     return serializedSdJwt;
   }
 
-  /// Decodes and verifies a JWT using the holder's DID document.
+  /// Decodes and verifies JWT signature using the holder's DID document.
   static SdJwt decodeAndVerify({
     required String serializedJwt,
     required DidDocument holderDidDocument,
@@ -48,5 +48,12 @@ class JwtHelper {
     );
 
     return decodedToken;
+  }
+
+  /// Decodes JWT
+  static SdJwt decode({
+    required String serializedJwt,
+  }) {
+    return SdJwtHandlerV1().unverifiedDecode(sdJwtToken: '$serializedJwt~');
   }
 }
