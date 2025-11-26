@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('BaseDeployInstanceRequest', () {
     test('should create request with required serviceSize', () {
-      final request = BaseDeployInstanceRequest.mediator(
+      final request = BaseDeployInstanceRequest(
         serviceSize: 'tiny',
       );
 
@@ -16,7 +16,7 @@ void main() {
     });
 
     test('should create request with all optional fields', () {
-      final request = BaseDeployInstanceRequest.mediator(
+      final request = BaseDeployInstanceRequest(
         administratorDids: 'did:example:admin',
         serviceSize: 'small',
         mediatorAclMode: 'explicit_deny',
@@ -32,7 +32,7 @@ void main() {
     });
 
     test('should serialize to JSON correctly with all fields', () {
-      final request = BaseDeployInstanceRequest.mediator(
+      final request = BaseDeployInstanceRequest(
         administratorDids: 'did:example:admin',
         serviceSize: 'medium',
         mediatorAclMode: 'explicit_deny',
@@ -50,7 +50,7 @@ void main() {
     });
 
     test('should serialize to JSON without null fields', () {
-      final request = BaseDeployInstanceRequest.mediator(
+      final request = BaseDeployInstanceRequest(
         serviceSize: 'large',
       );
 

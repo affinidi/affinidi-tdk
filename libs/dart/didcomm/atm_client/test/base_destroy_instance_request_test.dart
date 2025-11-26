@@ -1,11 +1,13 @@
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/instance_type_config.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('BaseDestroyInstanceRequest', () {
     test('should create request with mediator instance type', () {
-      final request = BaseDestroyInstanceRequest.mediator(
+      final request = BaseDestroyInstanceRequest(
         instanceId: 'mediator-123',
+        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
@@ -13,8 +15,9 @@ void main() {
     });
 
     test('should serialize to JSON with correct field name for mediator', () {
-      final request = BaseDestroyInstanceRequest.mediator(
+      final request = BaseDestroyInstanceRequest(
         instanceId: 'mediator-123',
+        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();

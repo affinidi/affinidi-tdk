@@ -14,59 +14,17 @@ class BaseGetInstanceRequestsRequest {
   final InstanceType instanceType;
 
   /// Creates a [BaseGetInstanceRequestsRequest] instance.
-  BaseGetInstanceRequestsRequest._({
+  BaseGetInstanceRequestsRequest({
     this.instanceId,
     this.limit,
     this.exclusiveStartKey,
     required this.instanceType,
   });
 
-  /// Creates a [BaseGetInstanceRequestsRequest] for a mediator instance.
-  factory BaseGetInstanceRequestsRequest.mediator({
-    String? instanceId,
-    int? limit,
-    String? exclusiveStartKey,
-  }) {
-    return BaseGetInstanceRequestsRequest._(
-      instanceId: instanceId,
-      limit: limit,
-      exclusiveStartKey: exclusiveStartKey,
-      instanceType: InstanceType.mediator,
-    );
-  }
- 
-  /// Creates a [BaseGetInstanceRequestsRequest] for a meetingplace instance.
-  factory BaseGetInstanceRequestsRequest.meetingplace({
-    String? instanceId,
-    int? limit,
-    String? exclusiveStartKey,
-  }) {
-    return BaseGetInstanceRequestsRequest._(
-      instanceId: instanceId,
-      limit: limit,
-      exclusiveStartKey: exclusiveStartKey,
-      instanceType: InstanceType.meetingplace,
-    );
-  }
-
-  /// Creates a [BaseGetInstanceRequestsRequest] for a trustregistry instance.
-  factory BaseGetInstanceRequestsRequest.trustregistry({
-    String? instanceId,
-    int? limit,
-    String? exclusiveStartKey,
-  }) {
-    return BaseGetInstanceRequestsRequest._(
-      instanceId: instanceId,
-      limit: limit,
-      exclusiveStartKey: exclusiveStartKey,
-      instanceType: InstanceType.trustregistry,
-    );
-  }
-
   /// Creates a [BaseGetInstanceRequestsRequest] from a JSON map.
   factory BaseGetInstanceRequestsRequest.fromJson(Map<String, dynamic> json, InstanceType instanceType) {
     final fieldName = instanceType.instanceIdField;
-    return BaseGetInstanceRequestsRequest._(
+    return BaseGetInstanceRequestsRequest(
       instanceId: json[fieldName] as String?,
       limit: json['limit'] as int?,
       exclusiveStartKey: json['exclusiveStartKey'] as String?,

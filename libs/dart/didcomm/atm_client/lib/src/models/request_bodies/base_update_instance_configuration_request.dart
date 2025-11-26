@@ -10,47 +10,11 @@ class BaseUpdateInstanceConfigurationRequest {
   final InstanceType instanceType;
 
   /// Creates a [BaseUpdateInstanceConfigurationRequest] instance.
-  BaseUpdateInstanceConfigurationRequest._({
+  BaseUpdateInstanceConfigurationRequest({
     required this.instanceId,
     this.acl,
     required this.instanceType,
   });
-
-  /// Creates a [BaseUpdateInstanceConfigurationRequest] for a mediator instance.
-  factory BaseUpdateInstanceConfigurationRequest.mediator({
-    required String instanceId,
-    Map<String, num>? acl,
-  }) {
-    return BaseUpdateInstanceConfigurationRequest._(
-      instanceId: instanceId,
-      acl: acl,
-      instanceType: InstanceType.mediator,
-    );
-  }
-
-  /// Creates a [BaseUpdateInstanceConfigurationRequest] for a meetingplace instance.
-  factory BaseUpdateInstanceConfigurationRequest.meetingplace({
-    required String instanceId,
-    Map<String, num>? acl,
-  }) {
-    return BaseUpdateInstanceConfigurationRequest._(
-      instanceId: instanceId,
-      acl: acl,
-      instanceType: InstanceType.meetingplace,
-    );
-  }
-
-  /// Creates a [BaseUpdateInstanceConfigurationRequest] for a trustregistry instance.
-  factory BaseUpdateInstanceConfigurationRequest.trustregistry({
-    required String instanceId,
-    Map<String, num>? acl,
-  }) {
-    return BaseUpdateInstanceConfigurationRequest._(
-      instanceId: instanceId,
-      acl: acl,
-      instanceType: InstanceType.trustregistry,
-    );
-  }
 
   /// Creates a [BaseUpdateInstanceConfigurationRequest] from a JSON map.
   factory BaseUpdateInstanceConfigurationRequest.fromJson(

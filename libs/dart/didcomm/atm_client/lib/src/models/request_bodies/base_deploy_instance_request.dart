@@ -21,64 +21,14 @@ class BaseDeployInstanceRequest {
   /// Description of the instance.
   final String? description;
 
-  BaseDeployInstanceRequest._({
+  /// Creates a deploy instance request.
+  BaseDeployInstanceRequest({
     this.administratorDids,
     required this.serviceSize,
     this.mediatorAclMode,
     this.name,
     this.description,
   });
-
-  /// Creates a [BaseDeployInstanceRequest] for a mediator instance.
-  factory BaseDeployInstanceRequest.mediator({
-    String? administratorDids,
-    required String serviceSize,
-    String? mediatorAclMode,
-    String? name,
-    String? description,
-  }) {
-    return BaseDeployInstanceRequest._(
-      administratorDids: administratorDids,
-      serviceSize: serviceSize,
-      mediatorAclMode: mediatorAclMode,
-      name: name,
-      description: description,
-    );
-  }
-
-  /// Creates a [BaseDeployInstanceRequest] for a meetingplace instance.
-  factory BaseDeployInstanceRequest.meetingplace({
-    String? administratorDids,
-    required String serviceSize,
-    String? mediatorAclMode,
-    String? name,
-    String? description,
-  }) {
-    return BaseDeployInstanceRequest._(
-      administratorDids: administratorDids,
-      serviceSize: serviceSize,
-      mediatorAclMode: mediatorAclMode,
-      name: name,
-      description: description,
-    );
-  }
-
-  /// Creates a [BaseDeployInstanceRequest] for a trustregistry instance.
-  factory BaseDeployInstanceRequest.trustregistry({
-    String? administratorDids,
-    required String serviceSize,
-    String? mediatorAclMode,
-    String? name,
-    String? description,
-  }) {
-    return BaseDeployInstanceRequest._(
-      administratorDids: administratorDids,
-      serviceSize: serviceSize,
-      mediatorAclMode: mediatorAclMode,
-      name: name,
-      description: description,
-    );
-  }
 
   /// Creates a deploy instance request from JSON.
   factory BaseDeployInstanceRequest.fromJson(Map<String, dynamic> json) =>

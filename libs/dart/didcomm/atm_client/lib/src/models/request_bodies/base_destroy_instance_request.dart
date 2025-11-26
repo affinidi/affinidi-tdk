@@ -13,36 +13,6 @@ class BaseDestroyInstanceRequest {
     required this.instanceType,
   });
 
-  /// Creates a [BaseDestroyInstanceRequest] for a mediator instance.
-  factory BaseDestroyInstanceRequest.mediator({
-    required String instanceId,
-  }) {
-    return BaseDestroyInstanceRequest(
-      instanceId: instanceId,
-      instanceType: InstanceType.mediator,
-    );
-  }
-
-  /// Creates a [BaseDestroyInstanceRequest] for a meetingplace instance.
-  factory BaseDestroyInstanceRequest.meetingplace({
-    required String instanceId,
-  }) {
-    return BaseDestroyInstanceRequest(
-      instanceId: instanceId,
-      instanceType: InstanceType.meetingplace,
-    );
-  }
-
-  /// Creates a [BaseDestroyInstanceRequest] for a trustregistry instance.
-  factory BaseDestroyInstanceRequest.trustregistry({
-    required String instanceId,
-  }) {
-    return BaseDestroyInstanceRequest(
-      instanceId: instanceId,
-      instanceType: InstanceType.trustregistry,
-    );
-  }
-
   /// Creates a [BaseDestroyInstanceRequest] from a JSON map.
   factory BaseDestroyInstanceRequest.fromJson(Map<String, dynamic> json, InstanceType instanceType) {
     final fieldName = instanceType.instanceIdField;
@@ -54,6 +24,7 @@ class BaseDestroyInstanceRequest {
 
   /// Converts the [BaseDestroyInstanceRequest] instance to JSON.
   Map<String, dynamic> toJson() {
+  
     return {
        instanceType.instanceIdField: instanceId,
     };

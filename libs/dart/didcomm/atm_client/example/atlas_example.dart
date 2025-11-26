@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/instance_type_config.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:crypto/crypto.dart';
 import 'package:ssi/ssi.dart';
@@ -78,7 +79,7 @@ Future<void> main() async {
   final deploymentStart = DateTime.now();
 
   final deploymentResponse = await atlasClient.deployMediatorInstance(
-    deploymentData: BaseDeployInstanceRequest.mediator(
+    deploymentData: BaseDeployInstanceRequest(
       serviceSize: 'tiny',
       mediatorAclMode: 'explicit_deny',
       name: 'Example Mediator',
@@ -108,8 +109,9 @@ Future<void> main() async {
 
   final updateMetadataResponse = await atlasClient
       .updateMediatorInstanceDeployment(
-        deploymentData: BaseUpdateInstanceDeploymentRequest.mediator(
+        deploymentData: BaseUpdateInstanceDeploymentRequest(
           instanceId: deployedMediator.mediatorId,
+          instanceType: InstanceType.mediator,
           name: 'Example Mediator (updated)',
           description:
               'Example mediator metadata updated by atlas_example.dart',
@@ -135,9 +137,10 @@ Future<void> main() async {
 
   final updateConfigurationResponse = await atlasClient
       .updateMediatorInstanceConfiguration(
-        configurationData: BaseUpdateInstanceConfigurationRequest.mediator(
+        configurationData: BaseUpdateInstanceConfigurationRequest(
           instanceId: deployedMediator.mediatorId,
           acl: acl,
+          instanceType: InstanceType.mediator,
         ),
       );
 
