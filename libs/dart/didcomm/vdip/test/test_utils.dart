@@ -172,8 +172,8 @@ Future<EncryptedMessage> createEncryptedMessageForAssertion({
       assertion: signedAssertion,
       proposalId: proposalId,
       holderDid: holderDidDocument.id,
-      credentialFormat: CredentialFormat.w3cV1.toString(),
-      jsonWebSignatureAlgorithm: JsonWebSignatureAlgorithm.es256.toString(),
+      credentialFormat: CredentialFormat.w3cV1,
+      jsonWebSignatureAlgorithm: JsonWebSignatureAlgorithm.es256,
     ),
   );
 
