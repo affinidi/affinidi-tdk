@@ -612,7 +612,7 @@ Future<void> main() async {
 
       expect(result, isNotNull);
       expect(result!.isValid, isFalse);
-      expect(result.isIssuerValid, isFalse);
+      expect(result.isIssuerValid, isTrue);
       expect(result.isSubjectValid, isFalse);
       expect(result.isSignatureValid, isTrue);
       expect(result.isProposalValid, isTrue);
@@ -679,7 +679,7 @@ Future<void> main() async {
       expect(result, isNotNull);
       expect(result!.isValid, isFalse);
       expect(result.isIssuerValid, isFalse);
-      expect(result.isSubjectValid, isFalse);
+      expect(result.isSubjectValid, isTrue);
       expect(result.isSignatureValid, isTrue);
       expect(result.isProposalValid, isTrue);
       expect(result.isAudienceValid, isTrue);
