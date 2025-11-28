@@ -1,3 +1,4 @@
+import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'credential_meta.dart';
@@ -27,11 +28,11 @@ class VdipRequestIssuanceMessageBody {
 
   /// Requested credential format (W3c, JWT VC, SD-JWT VC, etc.).
   @JsonKey(name: 'credential_format')
-  final String? credentialFormat;
+  final CredentialFormat? credentialFormat;
 
   /// JSON Web Signature algorithm to be used for signing (if applicable).
   @JsonKey(name: 'json_web_signature_algorithm')
-  final String? jsonWebSignatureAlgorithm;
+  final JsonWebSignatureAlgorithm? jsonWebSignatureAlgorithm;
 
   /// Optional human-readable comment from the requester.
   final String? comment;

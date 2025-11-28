@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
-
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
@@ -139,7 +138,7 @@ class VdipIssuer {
     required void Function({
       required PlainTextMessage message,
       String? challenge,
-      bool? isAssertionValid,
+      AssertionValidationResult? assertionValidationResult,
       String? holderDidFromAssertion,
     }) onRequestToIssueCredential,
     void Function(ProblemReportMessage)? onProblemReport,
@@ -187,7 +186,7 @@ class VdipIssuer {
 
             final vcIssuerDidDocument = await didManager.getDidDocument();
 
-            final isAssertionValid = await _isAssertionValid(
+            final assertionValidationResult = await _isAssertionValid(
               jwsAssertion: assertion,
               holderDid: holderDid,
               proposalId: requestIssuanceMessageBody.proposalId,
@@ -196,7 +195,7 @@ class VdipIssuer {
 
             onRequestToIssueCredential(
               holderDidFromAssertion: holderDid,
-              isAssertionValid: isAssertionValid,
+              assertionValidationResult: assertionValidationResult,
               message: plainTextMessage,
               challenge: challenge,
             );
@@ -225,38 +224,62 @@ class VdipIssuer {
   }
 
   /// Validates that the signed JWS [jwsAssertion] subject matches [holderDid].
-  Future<bool> _isAssertionValid({
+  Future<AssertionValidationResult> _isAssertionValid({
     required String jwsAssertion,
     required String holderDid,
     required String proposalId,
     required String vcIssuerDid,
   }) async {
-    final resolvedHolderDidDocument =
-        await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
-    final decodedJwsAssertion = JwtHelper.decodeAndVerify(
-      serializedJwt: jwsAssertion,
-      holderDidDocument: resolvedHolderDidDocument,
-    );
+    try {
+      final resolvedHolderDidDocument =
+          await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+      final decodedJwsAssertion = JwtHelper.decodeAndVerify(
+        serializedJwt: jwsAssertion,
+        holderDidDocument: resolvedHolderDidDocument,
+      );
 
-    final payload = decodedJwsAssertion.payload;
+      final payload = decodedJwsAssertion.payload;
 
-    final assertionProposalId = payload['proposalId'];
-    final assertionSubject = payload['sub'];
-    final assertionIssuer = payload['iss'];
-    final assertionAudienceId = payload['aud'];
-    final assertionExpiration = payload['exp'] as int?;
+      final assertionProposalId = payload['proposalId'];
+      final assertionSubject = payload['sub'];
+      final assertionIssuer = payload['iss'];
+      final assertionAudienceId = payload['aud'];
+      final assertionExpiration = payload['exp'] as int?;
 
-    final isCorrectDID =
-        assertionSubject == holderDid && assertionIssuer == holderDid;
-    final isProposalValid = assertionProposalId == proposalId;
-    final isAudienceValid = assertionAudienceId == vcIssuerDid;
-    final isAssertionExpirationValid = assertionExpiration != null &&
-        assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      final isIssuerValid = assertionIssuer == holderDid;
+      final isSubjectValid = assertionSubject == holderDid;
+      final isProposalValid = assertionProposalId == proposalId;
+      final isAudienceValid = assertionAudienceId == vcIssuerDid;
+      final isExpirationValid = assertionExpiration != null &&
+          assertionExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
 
-    return isCorrectDID &&
-        isProposalValid &&
-        isAudienceValid &&
-        isAssertionExpirationValid;
+      final isValid = isIssuerValid &&
+          isSubjectValid &&
+          isProposalValid &&
+          isAudienceValid &&
+          isExpirationValid;
+
+      return AssertionValidationResult(
+        isValid: isValid,
+        isSignatureValid: true,
+        isIssuerValid: isIssuerValid,
+        isSubjectValid: isSubjectValid,
+        isProposalValid: isProposalValid,
+        isAudienceValid: isAudienceValid,
+        isExpirationValid: isExpirationValid,
+      );
+    } catch (e) {
+      return AssertionValidationResult(
+        isValid: false,
+        isSignatureValid: false,
+        isIssuerValid: false,
+        isSubjectValid: false,
+        isProposalValid: false,
+        isAudienceValid: false,
+        isExpirationValid: false,
+        error: e.toString(),
+      );
+    }
   }
 
   /// Sends a switch context message to the given [holderDid].
@@ -287,5 +310,73 @@ class VdipIssuer {
 
     await mediatorClient.packAndSendMessage(message);
     return message;
+  }
+
+  /// Validates a token created by the holder during browser context switch.
+  ///
+  /// Verifies that the JWT token signed by the holder contains the expected
+  /// nonce and thread ID, and that it has not expired. The token signature
+  /// is verified using the holder's DID document.
+  ///
+  /// Returns a [TokenValidationResult] with detailed validation information.
+  Future<TokenValidationResult> validateHolderToken({
+    required String token,
+    required String holderDid,
+    required String expectedNonce,
+    required String expectedThreadId,
+  }) async {
+    try {
+      final resolvedHolderDidDocument =
+          await UniversalDIDResolver.defaultResolver.resolveDid(holderDid);
+
+      final decodedToken = JwtHelper.decodeAndVerify(
+        serializedJwt: token,
+        holderDidDocument: resolvedHolderDidDocument,
+      );
+
+      final tokenPayload = decodedToken.payload;
+
+      final tokenNonce = tokenPayload['nonce'] as String;
+      final tokenThreadId = tokenPayload['threadId'] as String;
+      final tokenSubject = tokenPayload['sub'] as String;
+      final tokenIssuer = tokenPayload['iss'] as String;
+      final tokenExpiration = tokenPayload['exp'] as int;
+
+      final isIssuerValid = tokenIssuer == holderDid;
+      final isSubjectValid = tokenSubject == holderDid;
+      final isNonceValid = tokenNonce == expectedNonce;
+      final isThreadIdValid = tokenThreadId == expectedThreadId;
+      final isExpirationValid =
+          tokenExpiration > DateTime.now().millisecondsSinceEpoch ~/ 1000;
+
+      final isValid = isIssuerValid &&
+          isSubjectValid &&
+          isNonceValid &&
+          isThreadIdValid &&
+          isExpirationValid;
+
+      return TokenValidationResult(
+        isValid: isValid,
+        isSignatureValid: true,
+        isIssuerValid: isIssuerValid,
+        isSubjectValid: isSubjectValid,
+        isNonceValid: isNonceValid,
+        isThreadIdValid: isThreadIdValid,
+        isExpirationValid: isExpirationValid,
+        nonce: tokenNonce,
+      );
+    } catch (e) {
+      return TokenValidationResult(
+        isValid: false,
+        isSignatureValid: false,
+        isIssuerValid: false,
+        isSubjectValid: false,
+        isNonceValid: false,
+        isThreadIdValid: false,
+        isExpirationValid: false,
+        nonce: '',
+        error: e.toString(),
+      );
+    }
   }
 }

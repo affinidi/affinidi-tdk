@@ -195,7 +195,7 @@ Future<void> main() async {
     onRequestToIssueCredential: ({
       required message,
       holderDidFromAssertion,
-      isAssertionValid,
+      assertionValidationResult,
       challenge,
     }) async {
       prettyPrint(
@@ -216,7 +216,7 @@ Future<void> main() async {
         /// 3. Ensure the challenge hasn't been used before
       }
 
-      if (isAssertionValid != true) {
+      if (assertionValidationResult?.isValid != true) {
         await vdipIssuer.mediatorClient.packAndSendMessage(
           ProblemReportMessage(
             id: const Uuid().v4(),
