@@ -10,7 +10,7 @@ BaseDeployInstanceRequest _$BaseDeployInstanceRequestFromJson(
         Map<String, dynamic> json) =>
     BaseDeployInstanceRequest(
       administratorDids: json['administratorDids'] as String?,
-      serviceSize: json['serviceSize'] as String,
+      serviceSize: $enumDecode(_$ServiceSizeEnumMap, json['serviceSize']),
       mediatorAclMode: json['mediatorAclMode'] as String?,
       name: json['name'] as String?,
       description: json['description'] as String?,
@@ -21,8 +21,15 @@ Map<String, dynamic> _$BaseDeployInstanceRequestToJson(
     <String, dynamic>{
       if (instance.administratorDids case final value?)
         'administratorDids': value,
-      'serviceSize': instance.serviceSize,
+      'serviceSize': _$ServiceSizeEnumMap[instance.serviceSize]!,
       if (instance.mediatorAclMode case final value?) 'mediatorAclMode': value,
       if (instance.name case final value?) 'name': value,
       if (instance.description case final value?) 'description': value,
     };
+
+const _$ServiceSizeEnumMap = {
+  ServiceSize.tiny: 'tiny',
+  ServiceSize.small: 'small',
+  ServiceSize.medium: 'medium',
+  ServiceSize.large: 'large',
+};

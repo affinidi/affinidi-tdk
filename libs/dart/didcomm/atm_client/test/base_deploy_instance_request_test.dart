@@ -1,11 +1,12 @@
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/service_size.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('BaseDeployInstanceRequest', () {
     test('should create request with required serviceSize', () {
       final request = BaseDeployInstanceRequest(
-        serviceSize: 'tiny',
+        serviceSize: ServiceSize.tiny,
       );
 
       expect(request.serviceSize, 'tiny');
@@ -18,7 +19,7 @@ void main() {
     test('should create request with all optional fields', () {
       final request = BaseDeployInstanceRequest(
         administratorDids: 'did:example:admin',
-        serviceSize: 'small',
+        serviceSize: ServiceSize.small,
         mediatorAclMode: 'explicit_deny',
         name: 'Test Instance',
         description: 'Test description',
@@ -34,7 +35,7 @@ void main() {
     test('should serialize to JSON correctly with all fields', () {
       final request = BaseDeployInstanceRequest(
         administratorDids: 'did:example:admin',
-        serviceSize: 'medium',
+        serviceSize: ServiceSize.medium,
         mediatorAclMode: 'explicit_deny',
         name: 'Test Instance',
         description: 'Test description',
@@ -51,7 +52,7 @@ void main() {
 
     test('should serialize to JSON without null fields', () {
       final request = BaseDeployInstanceRequest(
-        serviceSize: 'large',
+        serviceSize: ServiceSize.large,
       );
 
       final json = request.toJson();

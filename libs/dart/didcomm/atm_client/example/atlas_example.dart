@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
 import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/instance_type_config.dart';
+import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/service_size.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:crypto/crypto.dart';
 import 'package:ssi/ssi.dart';
@@ -80,7 +81,7 @@ Future<void> main() async {
 
   final deploymentResponse = await atlasClient.deployMediatorInstance(
     deploymentData: BaseDeployInstanceRequest(
-      serviceSize: 'tiny',
+      serviceSize: ServiceSize.tiny,
       mediatorAclMode: 'explicit_deny',
       name: 'Example Mediator',
       description: 'Example mediator created by atlas_example.dart',
@@ -107,16 +108,15 @@ Future<void> main() async {
 
   prettyPrint('Updating mediator metadata...');
 
-  final updateMetadataResponse = await atlasClient
-      .updateMediatorInstanceDeployment(
-        deploymentData: BaseUpdateInstanceDeploymentRequest(
-          instanceId: deployedMediator.mediatorId,
-          instanceType: InstanceType.mediator,
-          name: 'Example Mediator (updated)',
-          description:
-              'Example mediator metadata updated by atlas_example.dart',
-        ),
-      );
+  final updateMetadataResponse =
+      await atlasClient.updateMediatorInstanceDeployment(
+    deploymentData: BaseUpdateInstanceDeploymentRequest(
+      instanceId: deployedMediator.mediatorId,
+      instanceType: InstanceType.mediator,
+      name: 'Example Mediator (updated)',
+      description: 'Example mediator metadata updated by atlas_example.dart',
+    ),
+  );
 
   prettyPrint('Update metadata response', object: updateMetadataResponse);
 
@@ -133,16 +133,19 @@ Future<void> main() async {
   final mediatorDid = mediatorMetadata.metadata.did;
   final adminDid = mediatorMetadata.metadata.administratorDid;
 
-  final acl = <String,num>{if (adminDid != null) hashDid(adminDid): 1, hashDid(mediatorDid): 1};
+  final acl = <String, num>{
+    if (adminDid != null) hashDid(adminDid): 1,
+    hashDid(mediatorDid): 1
+  };
 
-  final updateConfigurationResponse = await atlasClient
-      .updateMediatorInstanceConfiguration(
-        configurationData: BaseUpdateInstanceConfigurationRequest(
-          instanceId: deployedMediator.mediatorId,
-          acl: acl,
-          instanceType: InstanceType.mediator,
-        ),
-      );
+  final updateConfigurationResponse =
+      await atlasClient.updateMediatorInstanceConfiguration(
+    configurationData: BaseUpdateInstanceConfigurationRequest(
+      instanceId: deployedMediator.mediatorId,
+      acl: acl,
+      instanceType: InstanceType.mediator,
+    ),
+  );
 
   prettyPrint(
     'Update configuration response',
@@ -154,8 +157,8 @@ Future<void> main() async {
   );
 
   prettyPrint('Metadata after updates', object: finalMediatorMetadata);
-  final deployedMediatorsResponse = await atlasClient
-      .getMediatorInstancesList();
+  final deployedMediatorsResponse =
+      await atlasClient.getMediatorInstancesList();
 
   prettyPrint('Get mediators response', object: deployedMediatorsResponse);
 

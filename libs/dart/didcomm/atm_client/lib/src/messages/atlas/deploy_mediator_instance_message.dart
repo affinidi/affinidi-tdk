@@ -1,4 +1,3 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 import 'config/base_instance_message.dart';
@@ -8,9 +7,9 @@ part 'deploy_mediator_instance_message.g.dart';
 
 /// Message for deploying a mediator instance.
 class DeployMediatorInstanceMessage extends BaseInstanceMessage {
-
   /// The operation name for deploying a mediator instance.
   static const String operationName = 'deployMediatorInstance';
+
   /// Creates a deploy mediator instance message.
   DeployMediatorInstanceMessage({
     required super.id,
@@ -23,14 +22,12 @@ class DeployMediatorInstanceMessage extends BaseInstanceMessage {
   }) : super(
           operationName: DeployMediatorInstanceMessage.operationName,
           instanceType: InstanceType.mediator,
-
         );
 }
 
-
-
 /// Response message for deploy mediator instance operation.
-class DeployMediatorInstanceResponseMessage extends BaseInstanceResponseMessage<DeployMediatorInstanceResponse> {
+class DeployMediatorInstanceResponseMessage
+    extends BaseInstanceResponseMessage<DeployMediatorInstanceResponse> {
   /// Creates a deploy mediator instance response message.
   DeployMediatorInstanceResponseMessage({
     required super.id,

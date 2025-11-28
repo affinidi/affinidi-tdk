@@ -1,6 +1,7 @@
 export 'src/clients/atlas_client.dart';
 export 'src/clients/service_client.dart';
 export 'src/messages/atlas/config/instance_type_config.dart';
+export 'src/messages/atlas/config/service_size.dart';
 export 'src/messages/atlas/deploy_mediator_instance_message.dart';
 export 'src/messages/atlas/destroy_mediator_instance_message.dart';
 export 'src/messages/atlas/get_mediator_instance_metadata_message.dart';
