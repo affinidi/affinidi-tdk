@@ -951,6 +951,12 @@ export interface SignCredentialsLdpInputDto {
    * @memberof SignCredentialsLdpInputDto
    */
   signatureScheme?: SignCredentialsLdpInputDtoSignatureSchemeEnum
+  /**
+   * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+   * @type {string}
+   * @memberof SignCredentialsLdpInputDto
+   */
+  signatureSuite?: SignCredentialsLdpInputDtoSignatureSuiteEnum
 }
 
 export const SignCredentialsLdpInputDtoSignatureSchemeEnum = {
@@ -961,6 +967,16 @@ export const SignCredentialsLdpInputDtoSignatureSchemeEnum = {
 
 export type SignCredentialsLdpInputDtoSignatureSchemeEnum =
   (typeof SignCredentialsLdpInputDtoSignatureSchemeEnum)[keyof typeof SignCredentialsLdpInputDtoSignatureSchemeEnum]
+export const SignCredentialsLdpInputDtoSignatureSuiteEnum = {
+  EcdsaJcs2019: 'ecdsa-jcs-2019',
+  EcdsaRdfc2019: 'ecdsa-rdfc-2019',
+  EddsaJcs2022: 'eddsa-jcs-2022',
+  EddsaRdfc2022: 'eddsa-rdfc-2022',
+  EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+} as const
+
+export type SignCredentialsLdpInputDtoSignatureSuiteEnum =
+  (typeof SignCredentialsLdpInputDtoSignatureSuiteEnum)[keyof typeof SignCredentialsLdpInputDtoSignatureSuiteEnum]
 
 /**
  * DTO contains signed credential
@@ -1068,6 +1084,12 @@ export interface SignPresentationLdpInputDto {
    */
   signatureScheme?: SignPresentationLdpInputDtoSignatureSchemeEnum
   /**
+   * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+   * @type {string}
+   * @memberof SignPresentationLdpInputDto
+   */
+  signatureSuite?: SignPresentationLdpInputDtoSignatureSuiteEnum
+  /**
    * Domain(s) for which the presentation is intended
    * @type {Array<string>}
    * @memberof SignPresentationLdpInputDto
@@ -1089,6 +1111,16 @@ export const SignPresentationLdpInputDtoSignatureSchemeEnum = {
 
 export type SignPresentationLdpInputDtoSignatureSchemeEnum =
   (typeof SignPresentationLdpInputDtoSignatureSchemeEnum)[keyof typeof SignPresentationLdpInputDtoSignatureSchemeEnum]
+export const SignPresentationLdpInputDtoSignatureSuiteEnum = {
+  EcdsaJcs2019: 'ecdsa-jcs-2019',
+  EcdsaRdfc2019: 'ecdsa-rdfc-2019',
+  EddsaJcs2022: 'eddsa-jcs-2022',
+  EddsaRdfc2022: 'eddsa-rdfc-2022',
+  EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+} as const
+
+export type SignPresentationLdpInputDtoSignatureSuiteEnum =
+  (typeof SignPresentationLdpInputDtoSignatureSuiteEnum)[keyof typeof SignPresentationLdpInputDtoSignatureSuiteEnum]
 
 /**
  * DTO contains signed presentation
