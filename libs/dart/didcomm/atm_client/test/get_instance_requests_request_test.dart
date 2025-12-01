@@ -6,7 +6,7 @@ void main() {
     test(
         'should create request with mediator instance type and no optional fields',
         () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = GetInstanceRequestsRequest(
         instanceType: InstanceType.mediator,
       );
 
@@ -17,7 +17,7 @@ void main() {
     });
 
     test('should create request with all fields for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = GetInstanceRequestsRequest(
         instanceId: 'mediator-123',
         limit: 10,
         exclusiveStartKey: 'key-456',
@@ -31,7 +31,7 @@ void main() {
     });
 
     test('should create request with only instanceId for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = GetInstanceRequestsRequest(
         instanceId: 'mediator-789',
         instanceType: InstanceType.mediator,
       );
@@ -43,7 +43,7 @@ void main() {
     });
 
     test('should serialize to JSON with all fields for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = GetInstanceRequestsRequest(
         instanceId: 'mediator-123',
         limit: 20,
         exclusiveStartKey: 'key-abc',
@@ -59,7 +59,7 @@ void main() {
     });
 
     test('should serialize to JSON with only instanceId for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = GetInstanceRequestsRequest(
         instanceId: 'mediator-456',
         instanceType: InstanceType.mediator,
       );
@@ -71,7 +71,7 @@ void main() {
     });
 
     test('should serialize to JSON without instanceId for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = GetInstanceRequestsRequest(
         limit: 15,
         exclusiveStartKey: 'key-xyz',
         instanceType: InstanceType.mediator,
@@ -86,7 +86,7 @@ void main() {
     });
 
     test('should serialize to JSON with no optional fields for mediator', () {
-      final request = BaseGetInstanceRequestsRequest(
+      final request = GetInstanceRequestsRequest(
         instanceType: InstanceType.mediator,
       );
 
@@ -102,7 +102,7 @@ void main() {
         'exclusiveStartKey': 'key-def',
       };
 
-      final request = BaseGetInstanceRequestsRequest.fromJson(
+      final request = GetInstanceRequestsRequest.fromJson(
         json,
         InstanceType.mediator,
       );
@@ -116,7 +116,7 @@ void main() {
     test('should deserialize from JSON with only instanceId for mediator', () {
       final json = {'mediatorId': 'mediator-789'};
 
-      final request = BaseGetInstanceRequestsRequest.fromJson(
+      final request = GetInstanceRequestsRequest.fromJson(
         json,
         InstanceType.mediator,
       );
@@ -133,7 +133,7 @@ void main() {
         'exclusiveStartKey': 'key-ghi',
       };
 
-      final request = BaseGetInstanceRequestsRequest.fromJson(
+      final request = GetInstanceRequestsRequest.fromJson(
         json,
         InstanceType.mediator,
       );
@@ -147,7 +147,7 @@ void main() {
     test('should deserialize from empty JSON for mediator', () {
       final json = <String, dynamic>{};
 
-      final request = BaseGetInstanceRequestsRequest.fromJson(
+      final request = GetInstanceRequestsRequest.fromJson(
         json,
         InstanceType.mediator,
       );
@@ -164,7 +164,7 @@ void main() {
         'limit': 10,
       };
 
-      final request = BaseGetInstanceRequestsRequest.fromJson(
+      final request = GetInstanceRequestsRequest.fromJson(
         json,
         InstanceType.mediator,
       );
@@ -180,7 +180,7 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = BaseGetInstanceRequestsRequest.fromJson(
+      final request = GetInstanceRequestsRequest.fromJson(
         json,
         InstanceType.mediator,
       );

@@ -80,7 +80,7 @@ Future<void> main() async {
   final deploymentStart = DateTime.now();
 
   final deploymentResponse = await atlasClient.deployMediatorInstance(
-    deploymentData: BaseDeployInstanceRequest(
+    deploymentData: DeployInstanceRequest(
       serviceSize: ServiceSize.tiny,
       mediatorAclMode: 'explicit_deny',
       name: 'Example Mediator',

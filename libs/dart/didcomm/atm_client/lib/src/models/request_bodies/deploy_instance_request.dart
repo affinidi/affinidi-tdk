@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../messages/atlas/config/service_size.dart';
-part 'base_deploy_instance_request.g.dart';
+part 'deploy_instance_request.g.dart';
 
 /// Request for deploying an instance.
 ///
@@ -10,12 +10,12 @@ part 'base_deploy_instance_request.g.dart';
   includeIfNull: false,
   explicitToJson: true,
 )
-class BaseDeployInstanceRequest {
-  /// Administrator DIDs for the instance.
-  final String? administratorDids;
-
+class DeployInstanceRequest {
   /// Service size for the instance.
   final ServiceSize serviceSize;
+
+  /// Administrator DIDs for the instance.
+  final String? administratorDids;
 
   /// Mediator ACL mode for the instance.
   final String? mediatorAclMode;
@@ -27,16 +27,16 @@ class BaseDeployInstanceRequest {
   final String? description;
 
   /// Creates a deploy instance request.
-  BaseDeployInstanceRequest({
-    this.administratorDids,
+  DeployInstanceRequest({
     required this.serviceSize,
+    this.administratorDids,
     this.mediatorAclMode,
     this.name,
     this.description,
   });
 
   /// Creates a deploy instance request from JSON.
-  factory BaseDeployInstanceRequest.fromJson(Map<String, dynamic> json) =>
+  factory DeployInstanceRequest.fromJson(Map<String, dynamic> json) =>
       _$BaseDeployInstanceRequestFromJson(json);
 
   /// Converts the deploy instance request to JSON.

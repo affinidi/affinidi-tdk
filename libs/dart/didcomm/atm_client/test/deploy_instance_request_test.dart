@@ -1,11 +1,10 @@
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
-import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/service_size.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('BaseDeployInstanceRequest', () {
     test('should create request with required serviceSize', () {
-      final request = BaseDeployInstanceRequest(
+      final request = DeployInstanceRequest(
         serviceSize: ServiceSize.tiny,
       );
 
@@ -17,7 +16,7 @@ void main() {
     });
 
     test('should create request with all optional fields', () {
-      final request = BaseDeployInstanceRequest(
+      final request = DeployInstanceRequest(
         administratorDids: 'did:example:admin',
         serviceSize: ServiceSize.small,
         mediatorAclMode: 'explicit_deny',
@@ -33,7 +32,7 @@ void main() {
     });
 
     test('should serialize to JSON correctly with all fields', () {
-      final request = BaseDeployInstanceRequest(
+      final request = DeployInstanceRequest(
         administratorDids: 'did:example:admin',
         serviceSize: ServiceSize.medium,
         mediatorAclMode: 'explicit_deny',
@@ -51,7 +50,7 @@ void main() {
     });
 
     test('should serialize to JSON without null fields', () {
-      final request = BaseDeployInstanceRequest(
+      final request = DeployInstanceRequest(
         serviceSize: ServiceSize.large,
       );
 
@@ -73,7 +72,7 @@ void main() {
         'description': 'Test description',
       };
 
-      final request = BaseDeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequest.fromJson(json);
 
       expect(request.administratorDids, 'did:example:admin');
       expect(request.serviceSize, 'tiny');
@@ -87,7 +86,7 @@ void main() {
         'serviceSize': 'small',
       };
 
-      final request = BaseDeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequest.fromJson(json);
 
       expect(request.serviceSize, 'small');
       expect(request.administratorDids, isNull);
@@ -100,7 +99,7 @@ void main() {
       final json = <String, dynamic>{};
 
       expect(
-        () => BaseDeployInstanceRequest.fromJson(json),
+        () => DeployInstanceRequest.fromJson(json),
         throwsA(isA<TypeError>()),
       );
     });
@@ -114,7 +113,7 @@ void main() {
         'description': null,
       };
 
-      final request = BaseDeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequest.fromJson(json);
 
       expect(request.serviceSize, 'tiny');
       expect(request.administratorDids, isNull);
@@ -129,7 +128,7 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = BaseDeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequest.fromJson(json);
 
       expect(request.serviceSize, 'tiny');
     });

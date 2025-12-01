@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'base_deploy_instance_request.dart';
+part of 'deploy_instance_request.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-BaseDeployInstanceRequest _$BaseDeployInstanceRequestFromJson(
+DeployInstanceRequest _$BaseDeployInstanceRequestFromJson(
         Map<String, dynamic> json) =>
-    BaseDeployInstanceRequest(
+    DeployInstanceRequest(
       administratorDids: json['administratorDids'] as String?,
       serviceSize: $enumDecode(_$ServiceSizeEnumMap, json['serviceSize']),
       mediatorAclMode: json['mediatorAclMode'] as String?,
@@ -17,7 +17,7 @@ BaseDeployInstanceRequest _$BaseDeployInstanceRequestFromJson(
     );
 
 Map<String, dynamic> _$BaseDeployInstanceRequestToJson(
-        BaseDeployInstanceRequest instance) =>
+        DeployInstanceRequest instance) =>
     <String, dynamic>{
       if (instance.administratorDids case final value?)
         'administratorDids': value,

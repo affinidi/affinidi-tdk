@@ -4,21 +4,21 @@ import 'package:test/test.dart';
 void main() {
   group('BaseGetInstancesListRequest', () {
     test('should create request with no parameters', () {
-      final request = BaseGetInstancesListRequest();
+      final request = GetInstancesListRequest();
 
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
     });
 
     test('should create request with limit only', () {
-      final request = BaseGetInstancesListRequest(limit: 10);
+      final request = GetInstancesListRequest(limit: 10);
 
       expect(request.limit, 10);
       expect(request.exclusiveStartKey, isNull);
     });
 
     test('should create request with exclusiveStartKey only', () {
-      final request = BaseGetInstancesListRequest(
+      final request = GetInstancesListRequest(
         exclusiveStartKey: 'key-123',
       );
 
@@ -27,7 +27,7 @@ void main() {
     });
 
     test('should create request with all parameters', () {
-      final request = BaseGetInstancesListRequest(
+      final request = GetInstancesListRequest(
         limit: 20,
         exclusiveStartKey: 'key-456',
       );
@@ -37,7 +37,7 @@ void main() {
     });
 
     test('should serialize to JSON with all fields', () {
-      final request = BaseGetInstancesListRequest(
+      final request = GetInstancesListRequest(
         limit: 15,
         exclusiveStartKey: 'key-789',
       );
@@ -49,7 +49,7 @@ void main() {
     });
 
     test('should serialize to JSON without null fields', () {
-      final request = BaseGetInstancesListRequest();
+      final request = GetInstancesListRequest();
 
       final json = request.toJson();
 
@@ -57,7 +57,7 @@ void main() {
     });
 
     test('should serialize to JSON with only limit', () {
-      final request = BaseGetInstancesListRequest(limit: 5);
+      final request = GetInstancesListRequest(limit: 5);
 
       final json = request.toJson();
 
@@ -66,7 +66,7 @@ void main() {
     });
 
     test('should serialize to JSON with only exclusiveStartKey', () {
-      final request = BaseGetInstancesListRequest(
+      final request = GetInstancesListRequest(
         exclusiveStartKey: 'key-abc',
       );
 
@@ -82,7 +82,7 @@ void main() {
         'exclusiveStartKey': 'key-xyz',
       };
 
-      final request = BaseGetInstancesListRequest.fromJson(json);
+      final request = GetInstancesListRequest.fromJson(json);
 
       expect(request.limit, 25);
       expect(request.exclusiveStartKey, 'key-xyz');
@@ -91,7 +91,7 @@ void main() {
     test('should deserialize from JSON with only limit', () {
       final json = {'limit': 30};
 
-      final request = BaseGetInstancesListRequest.fromJson(json);
+      final request = GetInstancesListRequest.fromJson(json);
 
       expect(request.limit, 30);
       expect(request.exclusiveStartKey, isNull);
@@ -100,7 +100,7 @@ void main() {
     test('should deserialize from JSON with only exclusiveStartKey', () {
       final json = {'exclusiveStartKey': 'key-def'};
 
-      final request = BaseGetInstancesListRequest.fromJson(json);
+      final request = GetInstancesListRequest.fromJson(json);
 
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, 'key-def');
@@ -109,7 +109,7 @@ void main() {
     test('should deserialize from empty JSON', () {
       final json = <String, dynamic>{};
 
-      final request = BaseGetInstancesListRequest.fromJson(json);
+      final request = GetInstancesListRequest.fromJson(json);
 
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
@@ -121,7 +121,7 @@ void main() {
         'exclusiveStartKey': null,
       };
 
-      final request = BaseGetInstancesListRequest.fromJson(json);
+      final request = GetInstancesListRequest.fromJson(json);
 
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
@@ -133,7 +133,7 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = BaseGetInstancesListRequest.fromJson(json);
+      final request = GetInstancesListRequest.fromJson(json);
 
       expect(request.limit, 10);
     });

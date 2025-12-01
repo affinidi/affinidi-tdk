@@ -1,11 +1,10 @@
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
-import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/instance_type_config.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('BaseDestroyInstanceRequest', () {
     test('should create request with mediator instance type', () {
-      final request = BaseDestroyInstanceRequest(
+      final request = DestroyInstanceRequest(
         instanceId: 'mediator-123',
         instanceType: InstanceType.mediator,
       );
@@ -15,7 +14,7 @@ void main() {
     });
 
     test('should serialize to JSON with correct field name for mediator', () {
-      final request = BaseDestroyInstanceRequest(
+      final request = DestroyInstanceRequest(
         instanceId: 'mediator-123',
         instanceType: InstanceType.mediator,
       );
@@ -29,7 +28,7 @@ void main() {
     test('should deserialize from JSON for mediator', () {
       final json = {'mediatorId': 'mediator-123'};
 
-      final request = BaseDestroyInstanceRequest.fromJson(
+      final request = DestroyInstanceRequest.fromJson(
         json,
         InstanceType.mediator,
       );
@@ -42,7 +41,7 @@ void main() {
       final json = <String, dynamic>{};
 
       expect(
-        () => BaseDestroyInstanceRequest.fromJson(
+        () => DestroyInstanceRequest.fromJson(
           json,
           InstanceType.mediator,
         ),
@@ -54,7 +53,7 @@ void main() {
       final json = {'mediatorId': 123};
 
       expect(
-        () => BaseDestroyInstanceRequest.fromJson(
+        () => DestroyInstanceRequest.fromJson(
           json,
           InstanceType.mediator,
         ),
@@ -68,7 +67,7 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = BaseDestroyInstanceRequest.fromJson(
+      final request = DestroyInstanceRequest.fromJson(
         json,
         InstanceType.mediator,
       );
