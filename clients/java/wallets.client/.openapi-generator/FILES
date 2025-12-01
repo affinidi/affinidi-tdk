@@ -41,6 +41,7 @@ docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
 docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
+docs/TooManyRequestsError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
 docs/WalletDto.md
@@ -111,6 +112,7 @@ src/main/java/com/affinidi/tdk/wallets/client/models/SignMessageResultDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignPresentationLdpInputDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignPresentationLdpResultDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SigningFailedError.java
+src/main/java/com/affinidi/tdk/wallets/client/models/TooManyRequestsError.java
 src/main/java/com/affinidi/tdk/wallets/client/models/UpdateWalletInput.java
 src/main/java/com/affinidi/tdk/wallets/client/models/WalletDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/WalletDtoKeysInner.java

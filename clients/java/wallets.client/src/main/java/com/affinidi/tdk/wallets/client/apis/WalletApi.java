@@ -38,6 +38,7 @@ import com.affinidi.tdk.wallets.client.models.SignJwtToken;
 import com.affinidi.tdk.wallets.client.models.SignJwtTokenOK;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpInputDto;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpResultDto;
+import com.affinidi.tdk.wallets.client.models.TooManyRequestsError;
 import com.affinidi.tdk.wallets.client.models.UpdateWalletInput;
 import com.affinidi.tdk.wallets.client.models.WalletDto;
 import com.affinidi.tdk.wallets.client.models.WalletsListDto;
