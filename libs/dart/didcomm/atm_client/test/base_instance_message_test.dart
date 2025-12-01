@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() {
   group('BaseInstanceMessage', () {
     test('should generate correct URI for mediator instance', () {
-      final message = DestroyMediatorInstanceMessage(
+      final message = DestroyInstanceMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
       );
@@ -17,14 +17,13 @@ void main() {
       );
     });
 
-   
     test('should preserve all constructor parameters', () {
       final now = DateTime.now();
       final expires = now.add(const Duration(hours: 1));
       final body = {'key': 'value'};
       const threadId = 'thread-123';
 
-      final message = DestroyMediatorInstanceMessage(
+      final message = DestroyInstanceMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
         from: 'did:example:bob',
@@ -44,7 +43,7 @@ void main() {
     });
 
     test('should handle empty body by default', () {
-      final message = DestroyMediatorInstanceMessage(
+      final message = DestroyInstanceMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
       );
@@ -75,7 +74,7 @@ void main() {
     test('should parse response when response field is already a Map', () {
       final responseData = {'message': 'Success'};
       final bodyWithMapResponse = {
-        'response': responseData, 
+        'response': responseData,
         'status_code': 200,
         'headers': null,
       };
@@ -180,4 +179,3 @@ void main() {
     });
   });
 }
-

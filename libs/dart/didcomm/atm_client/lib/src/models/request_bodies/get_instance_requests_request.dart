@@ -1,8 +1,6 @@
-import '../../messages/atlas/config/instance_type_config.dart';
-
 /// Base request for getting instance requests.
 class GetInstanceRequestsRequest {
-  /// The ID of the instance.
+  /// The ID of the mediator instance.
   final String? instanceId;
 
   /// Maximum number of requests to return.
@@ -11,26 +9,19 @@ class GetInstanceRequestsRequest {
   /// Exclusive start key for pagination.
   final String? exclusiveStartKey;
 
-  /// The type of the instance.
-  final InstanceType instanceType;
-
   /// Creates a [GetInstanceRequestsRequest] instance.
   GetInstanceRequestsRequest({
     this.instanceId,
     this.limit,
     this.exclusiveStartKey,
-    required this.instanceType,
   });
 
   /// Creates a [GetInstanceRequestsRequest] from a JSON map.
-  factory GetInstanceRequestsRequest.fromJson(
-      Map<String, dynamic> json, InstanceType instanceType) {
-    final fieldName = instanceType.instanceIdField;
+  factory GetInstanceRequestsRequest.fromJson(Map<String, dynamic> json) {
     return GetInstanceRequestsRequest(
-      instanceId: json[fieldName] as String?,
+      instanceId: json['mediatorId'] as String?,
       limit: json['limit'] as int?,
       exclusiveStartKey: json['exclusiveStartKey'] as String?,
-      instanceType: instanceType,
     );
   }
 
@@ -38,7 +29,7 @@ class GetInstanceRequestsRequest {
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (instanceId != null) {
-      json[instanceType.instanceIdField] = instanceId;
+      json['mediatorId'] = instanceId;
     }
     if (limit != null) {
       json['limit'] = limit;

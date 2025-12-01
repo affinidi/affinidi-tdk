@@ -1,33 +1,30 @@
-import '../../messages/atlas/config/instance_type_config.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 /// Request for destroying an instance.
+@JsonSerializable(
+  includeIfNull: false,
+  explicitToJson: true,
+)
 class DestroyInstanceRequest {
-  /// The ID of the instance to be destroyed.
+  /// The ID of the mediator instance to be destroyed.
   final String instanceId;
-
-  /// The type of the instance.
-  final InstanceType instanceType;
 
   /// Creates a [DestroyInstanceRequest] instance.
   DestroyInstanceRequest({
     required this.instanceId,
-    required this.instanceType,
   });
 
   /// Creates a [DestroyInstanceRequest] from a JSON map.
-  factory DestroyInstanceRequest.fromJson(
-      Map<String, dynamic> json, InstanceType instanceType) {
-    final fieldName = instanceType.instanceIdField;
+  factory DestroyInstanceRequest.fromJson(Map<String, dynamic> json) {
     return DestroyInstanceRequest(
-      instanceId: json[fieldName] as String,
-      instanceType: instanceType,
+      instanceId: json['mediatorId'] as String,
     );
   }
 
   /// Converts the [DestroyInstanceRequest] instance to JSON.
   Map<String, dynamic> toJson() {
     return {
-      instanceType.instanceIdField: instanceId,
+      'mediatorId': instanceId,
     };
   }
 }

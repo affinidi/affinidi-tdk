@@ -1,33 +1,77 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 import 'config/base_instance_message.dart';
-import 'config/instance_type_config.dart';
 
-part 'get_mediator_instances_list_message.g.dart';
+part 'get_instances_list_message.g.dart';
 
-/// Message for getting list of mediator instances.
-class GetMediatorInstancesListMessage extends BaseInstanceMessage {
-  /// The operation name for getting list of mediator instances.
-  static const String operationName = 'getMediatorInstancesList';
-
-  /// Creates a get mediator instances list message.
-  GetMediatorInstancesListMessage({
+/// Message for getting list of instances.
+class GetInstancesListMessage extends BaseInstanceMessage {
+  /// Creates a get instances list message.
+  GetInstancesListMessage._({
     required super.id,
     required super.to,
+    required super.operationName,
     super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},
     super.threadId,
-  }) : super(
-          operationName: GetMediatorInstancesListMessage.operationName,
-          instanceType: InstanceType.mediator,
-        );
+  });
+
+  /// Creates a get mediator instances list message.
+  factory GetInstancesListMessage.mediator({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    return GetInstancesListMessage._(
+      id: id,
+      to: to,
+      from: from,
+      createdTime: createdTime,
+      expiresTime: expiresTime,
+      body: body,
+      threadId: threadId,
+      operationName: 'getMediatorInstancesList',
+    );
+  }
+
+  /// Creates a get meeting place instances list message.
+  factory GetInstancesListMessage.meetingPlace({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    throw UnimplementedError(
+        'Meeting place list retrieval is not yet implemented');
+  }
+
+  /// Creates a get trust registry instances list message.
+  factory GetInstancesListMessage.trustRegistry({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    throw UnimplementedError(
+        'Trust registry list retrieval is not yet implemented');
+  }
 }
 
 /// Response message for get mediator instances list operation.
-class GetMediatorInstancesListResponseMessage extends BaseInstanceResponseMessage<MediatorInstanceBodyData> {
+class GetMediatorInstancesListResponseMessage
+    extends BaseInstanceResponseMessage<MediatorInstanceBodyData> {
   /// Creates a get mediator instances list response message.
   GetMediatorInstancesListResponseMessage({
     required super.id,
@@ -38,8 +82,7 @@ class GetMediatorInstancesListResponseMessage extends BaseInstanceResponseMessag
     super.threadId,
     super.body = const {},
   }) : super(
-         operationName: GetMediatorInstancesListMessage.operationName,
-          instanceType: InstanceType.mediator,
+          operationName: 'getMediatorInstancesList',
           fromJson: MediatorInstanceBodyData.fromJson,
         );
 

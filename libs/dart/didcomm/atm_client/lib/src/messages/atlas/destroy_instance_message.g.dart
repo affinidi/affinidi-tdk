@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'destroy_mediator_instance_message.dart';
+part of 'destroy_instance_message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

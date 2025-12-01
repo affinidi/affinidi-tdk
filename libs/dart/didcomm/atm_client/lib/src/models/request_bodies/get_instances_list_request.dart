@@ -19,8 +19,8 @@ class GetInstancesListRequest {
 
   /// Creates a [GetInstancesListRequest] from a JSON map.
   factory GetInstancesListRequest.fromJson(Map<String, dynamic> json) =>
-      _$BaseGetInstancesListRequestFromJson(json);
+      _$GetInstancesListRequestFromJson(json);
 
   /// Converts the [GetInstancesListRequest] instance to a JSON map.
-  Map<String, dynamic> toJson() => _$BaseGetInstancesListRequestToJson(this);
+  Map<String, dynamic> toJson() => _$GetInstancesListRequestToJson(this);
 }

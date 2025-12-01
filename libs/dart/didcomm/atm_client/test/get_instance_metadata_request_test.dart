@@ -1,23 +1,19 @@
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
-import 'package:affinidi_tdk_atm_client/src/messages/atlas/config/instance_type_config.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('BaseGetInstanceMetadataRequest', () {
-    test('should create request with mediator instance type', () {
-      final request = BaseGetInstanceMetadataRequest(
+    test('should create request with instance ID', () {
+      final request = GetInstanceMetadataRequest(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should serialize to JSON with correct field name for mediator', () {
-      final request = BaseGetInstanceMetadataRequest(
+      final request = GetInstanceMetadataRequest(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -29,23 +25,16 @@ void main() {
     test('should deserialize from JSON for mediator', () {
       final json = {'mediatorId': 'mediator-123'};
 
-      final request = BaseGetInstanceMetadataRequest.fromJson(
-        json,
-        InstanceType.mediator,
-      );
+      final request = GetInstanceMetadataRequest.fromJson(json);
 
       expect(request.instanceId, 'mediator-123');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should throw TypeError when instance ID field is missing', () {
       final json = <String, dynamic>{};
 
       expect(
-        () => BaseGetInstanceMetadataRequest.fromJson(
-          json,
-          InstanceType.mediator,
-        ),
+        () => GetInstanceMetadataRequest.fromJson(json),
         throwsA(isA<TypeError>()),
       );
     });
@@ -54,10 +43,7 @@ void main() {
       final json = {'mediatorId': 123};
 
       expect(
-        () => BaseGetInstanceMetadataRequest.fromJson(
-          json,
-          InstanceType.mediator,
-        ),
+        () => GetInstanceMetadataRequest.fromJson(json),
         throwsA(isA<TypeError>()),
       );
     });

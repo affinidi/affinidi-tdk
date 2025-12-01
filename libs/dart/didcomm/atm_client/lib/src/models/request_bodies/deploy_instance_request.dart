@@ -37,8 +37,8 @@ class DeployInstanceRequest {
 
   /// Creates a deploy instance request from JSON.
   factory DeployInstanceRequest.fromJson(Map<String, dynamic> json) =>
-      _$BaseDeployInstanceRequestFromJson(json);
+      _$DeployInstanceRequestFromJson(json);
 
   /// Converts the deploy instance request to JSON.
-  Map<String, dynamic> toJson() => _$BaseDeployInstanceRequestToJson(this);
+  Map<String, dynamic> toJson() => _$DeployInstanceRequestToJson(this);
 }

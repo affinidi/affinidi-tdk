@@ -4,13 +4,11 @@ import 'package:test/test.dart';
 void main() {
   group('BaseUpdateInstanceConfigurationRequest', () {
     test('should create request with required fields for mediator', () {
-      final request = BaseUpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationRequest(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
-      expect(request.instanceType, InstanceType.mediator);
       expect(request.acl, isNull);
     });
 
@@ -20,33 +18,28 @@ void main() {
         'hash2': 2,
       };
 
-      final request = BaseUpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationRequest(
         instanceId: 'mediator-456',
         acl: acl,
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-456');
       expect(request.acl, acl);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should create request with empty ACL map for mediator', () {
-      final request = BaseUpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationRequest(
         instanceId: 'mediator-789',
         acl: <String, num>{},
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-789');
       expect(request.acl, isEmpty);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should serialize to JSON with instanceId only for mediator', () {
-      final request = BaseUpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationRequest(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -62,10 +55,9 @@ void main() {
         'hash2': 2,
       };
 
-      final request = BaseUpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationRequest(
         instanceId: 'mediator-456',
         acl: acl,
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -76,10 +68,9 @@ void main() {
     });
 
     test('should serialize to JSON with empty ACL map for mediator', () {
-      final request = BaseUpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationRequest(
         instanceId: 'mediator-789',
         acl: <String, num>{},
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -92,14 +83,12 @@ void main() {
     test('should deserialize from JSON with instanceId only for mediator', () {
       final json = {'mediatorId': 'mediator-123'};
 
-      final request = BaseUpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
       expect(request.acl, isNull);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should deserialize from JSON with ACL for mediator', () {
@@ -113,14 +102,12 @@ void main() {
         'acl': acl,
       };
 
-      final request = BaseUpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-456');
       expect(request.acl, acl);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should deserialize from JSON with null ACL for mediator', () {
@@ -129,23 +116,20 @@ void main() {
         'acl': null,
       };
 
-      final request = BaseUpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-789');
       expect(request.acl, isNull);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should throw TypeError when mediatorId is missing', () {
       final json = <String, dynamic>{};
 
       expect(
-        () => BaseUpdateInstanceConfigurationRequest.fromJson(
+        () => UpdateInstanceConfigurationRequest.fromJson(
           json,
-          InstanceType.mediator,
         ),
         throwsA(isA<TypeError>()),
       );
@@ -155,9 +139,8 @@ void main() {
       final json = {'mediatorId': 123};
 
       expect(
-        () => BaseUpdateInstanceConfigurationRequest.fromJson(
+        () => UpdateInstanceConfigurationRequest.fromJson(
           json,
-          InstanceType.mediator,
         ),
         throwsA(isA<TypeError>()),
       );
@@ -169,10 +152,9 @@ void main() {
         'hash2': 2.5,
       };
 
-      final request = BaseUpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationRequest(
         instanceId: 'mediator-123',
         acl: acl,
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.acl, acl);
@@ -185,9 +167,8 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = BaseUpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');

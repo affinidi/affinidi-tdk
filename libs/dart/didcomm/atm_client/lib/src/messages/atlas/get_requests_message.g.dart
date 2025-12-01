@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_mediator_requests_message.dart';
+part of 'get_requests_message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

@@ -1,49 +1,46 @@
-
-import '../../messages/atlas/config/instance_type_config.dart';
+import '../../../affinidi_tdk_atm_client.dart';
 
 /// Request for updating an instance deployment.
-class BaseUpdateInstanceDeploymentRequest { 
-  /// The ID of the instance to be updated.
+class UpdateInstanceDeploymentRequest {
+  /// The ID of the mediator instance to be updated.
   final String instanceId;
+
   /// The service size for the instance.
-  final String? serviceSize;
+  final ServiceSize? serviceSize;
+
   /// The ACL mode for the mediator.
   final String? mediatorAclMode;
+
   /// The name of the instance.
   final String? name;
+
   /// The description of the instance.
   final String? description;
-  /// The type of the instance.
-  final InstanceType instanceType;
 
-  /// Creates a [BaseUpdateInstanceDeploymentRequest] instance.
-  BaseUpdateInstanceDeploymentRequest({
+  /// Creates a [UpdateInstanceDeploymentRequest] instance.
+  UpdateInstanceDeploymentRequest({
     required this.instanceId,
     this.serviceSize,
     this.mediatorAclMode,
     this.name,
     this.description,
-    required this.instanceType,
   });
- 
-  /// Creates a [BaseUpdateInstanceDeploymentRequest] from a JSON map.
-  factory BaseUpdateInstanceDeploymentRequest.fromJson(
-          Map<String, dynamic> json, InstanceType instanceType) {
-            final fieldName = instanceType.instanceIdField;
-    return BaseUpdateInstanceDeploymentRequest(
-      instanceId: json[fieldName] as String,
-      serviceSize: json['serviceSize'] as String?,
+
+  /// Creates a [UpdateInstanceDeploymentRequest] from a JSON map.
+  factory UpdateInstanceDeploymentRequest.fromJson(Map<String, dynamic> json) {
+    return UpdateInstanceDeploymentRequest(
+      instanceId: json['mediatorId'] as String,
+      serviceSize: json['serviceSize'] as ServiceSize?,
       mediatorAclMode: json['mediatorAclMode'] as String?,
       name: json['name'] as String?,
       description: json['description'] as String?,
-      instanceType: instanceType,
     );
   }
-  
-  /// Converts the [BaseUpdateInstanceDeploymentRequest] instance to JSON.
+
+  /// Converts the [UpdateInstanceDeploymentRequest] instance to JSON.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{
-      instanceType.instanceIdField: instanceId,
+      'mediatorId': instanceId,
     };
     if (serviceSize != null) {
       json['serviceSize'] = serviceSize;

@@ -4,13 +4,11 @@ import 'package:test/test.dart';
 void main() {
   group('BaseUpdateInstanceDeploymentRequest', () {
     test('should create request with required fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = UpdateInstanceDeploymentRequest(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
-      expect(request.instanceType, InstanceType.mediator);
       expect(request.serviceSize, isNull);
       expect(request.mediatorAclMode, isNull);
       expect(request.name, isNull);
@@ -18,13 +16,12 @@ void main() {
     });
 
     test('should create request with all optional fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = UpdateInstanceDeploymentRequest(
         instanceId: 'mediator-456',
-        serviceSize: 'small',
+        serviceSize: ServiceSize.small,
         mediatorAclMode: 'explicit_deny',
         name: 'Updated Mediator',
         description: 'Updated description',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-456');
@@ -32,16 +29,14 @@ void main() {
       expect(request.mediatorAclMode, 'explicit_deny');
       expect(request.name, 'Updated Mediator');
       expect(request.description, 'Updated description');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should create request with only name and description for mediator',
         () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = UpdateInstanceDeploymentRequest(
         instanceId: 'mediator-789',
         name: 'Test Mediator',
         description: 'Test description',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-789');
@@ -52,13 +47,12 @@ void main() {
     });
 
     test('should serialize to JSON with all fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = UpdateInstanceDeploymentRequest(
         instanceId: 'mediator-123',
-        serviceSize: 'medium',
+        serviceSize: ServiceSize.medium,
         mediatorAclMode: 'explicit_deny',
         name: 'Updated Name',
         description: 'Updated Description',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -72,9 +66,8 @@ void main() {
     });
 
     test('should serialize to JSON with only instanceId for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = UpdateInstanceDeploymentRequest(
         instanceId: 'mediator-456',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -84,10 +77,9 @@ void main() {
     });
 
     test('should serialize to JSON without null fields for mediator', () {
-      final request = BaseUpdateInstanceDeploymentRequest(
+      final request = UpdateInstanceDeploymentRequest(
         instanceId: 'mediator-789',
         name: 'Test Name',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -108,9 +100,8 @@ void main() {
         'description': 'Deserialized Description',
       };
 
-      final request = BaseUpdateInstanceDeploymentRequest.fromJson(
+      final request = UpdateInstanceDeploymentRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
@@ -118,15 +109,13 @@ void main() {
       expect(request.mediatorAclMode, 'explicit_deny');
       expect(request.name, 'Deserialized Name');
       expect(request.description, 'Deserialized Description');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should deserialize from JSON with only instanceId for mediator', () {
       final json = {'mediatorId': 'mediator-456'};
 
-      final request = BaseUpdateInstanceDeploymentRequest.fromJson(
+      final request = UpdateInstanceDeploymentRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-456');
@@ -134,16 +123,14 @@ void main() {
       expect(request.mediatorAclMode, isNull);
       expect(request.name, isNull);
       expect(request.description, isNull);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should throw TypeError when mediatorId is missing', () {
       final json = <String, dynamic>{};
 
       expect(
-        () => BaseUpdateInstanceDeploymentRequest.fromJson(
+        () => UpdateInstanceDeploymentRequest.fromJson(
           json,
-          InstanceType.mediator,
         ),
         throwsA(isA<TypeError>()),
       );
@@ -153,9 +140,8 @@ void main() {
       final json = {'mediatorId': 123};
 
       expect(
-        () => BaseUpdateInstanceDeploymentRequest.fromJson(
+        () => UpdateInstanceDeploymentRequest.fromJson(
           json,
-          InstanceType.mediator,
         ),
         throwsA(isA<TypeError>()),
       );
@@ -170,9 +156,8 @@ void main() {
         'description': null,
       };
 
-      final request = BaseUpdateInstanceDeploymentRequest.fromJson(
+      final request = UpdateInstanceDeploymentRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
@@ -189,9 +174,8 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = BaseUpdateInstanceDeploymentRequest.fromJson(
+      final request = UpdateInstanceDeploymentRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');

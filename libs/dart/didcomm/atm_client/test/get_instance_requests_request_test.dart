@@ -6,14 +6,11 @@ void main() {
     test(
         'should create request with mediator instance type and no optional fields',
         () {
-      final request = GetInstanceRequestsRequest(
-        instanceType: InstanceType.mediator,
-      );
+      final request = GetInstanceRequestsRequest();
 
       expect(request.instanceId, isNull);
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should create request with all fields for mediator', () {
@@ -21,25 +18,21 @@ void main() {
         instanceId: 'mediator-123',
         limit: 10,
         exclusiveStartKey: 'key-456',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
       expect(request.limit, 10);
       expect(request.exclusiveStartKey, 'key-456');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should create request with only instanceId for mediator', () {
       final request = GetInstanceRequestsRequest(
         instanceId: 'mediator-789',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-789');
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should serialize to JSON with all fields for mediator', () {
@@ -47,7 +40,6 @@ void main() {
         instanceId: 'mediator-123',
         limit: 20,
         exclusiveStartKey: 'key-abc',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -61,7 +53,6 @@ void main() {
     test('should serialize to JSON with only instanceId for mediator', () {
       final request = GetInstanceRequestsRequest(
         instanceId: 'mediator-456',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -74,7 +65,6 @@ void main() {
       final request = GetInstanceRequestsRequest(
         limit: 15,
         exclusiveStartKey: 'key-xyz',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -86,9 +76,7 @@ void main() {
     });
 
     test('should serialize to JSON with no optional fields for mediator', () {
-      final request = GetInstanceRequestsRequest(
-        instanceType: InstanceType.mediator,
-      );
+      final request = GetInstanceRequestsRequest();
 
       final json = request.toJson();
 
@@ -104,13 +92,11 @@ void main() {
 
       final request = GetInstanceRequestsRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
       expect(request.limit, 25);
       expect(request.exclusiveStartKey, 'key-def');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should deserialize from JSON with only instanceId for mediator', () {
@@ -118,13 +104,11 @@ void main() {
 
       final request = GetInstanceRequestsRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-789');
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should deserialize from JSON without instanceId for mediator', () {
@@ -135,13 +119,11 @@ void main() {
 
       final request = GetInstanceRequestsRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, isNull);
       expect(request.limit, 30);
       expect(request.exclusiveStartKey, 'key-ghi');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should deserialize from empty JSON for mediator', () {
@@ -149,13 +131,11 @@ void main() {
 
       final request = GetInstanceRequestsRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, isNull);
       expect(request.limit, isNull);
       expect(request.exclusiveStartKey, isNull);
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should handle null instanceId in JSON for mediator', () {
@@ -166,7 +146,6 @@ void main() {
 
       final request = GetInstanceRequestsRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, isNull);
@@ -182,7 +161,6 @@ void main() {
 
       final request = GetInstanceRequestsRequest.fromJson(
         json,
-        InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');

@@ -2,21 +2,18 @@ import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('BaseDestroyInstanceRequest', () {
-    test('should create request with mediator instance type', () {
+  group('DestroyInstanceRequest', () {
+    test('should create request with instance ID', () {
       final request = DestroyInstanceRequest(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       expect(request.instanceId, 'mediator-123');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should serialize to JSON with correct field name for mediator', () {
       final request = DestroyInstanceRequest(
         instanceId: 'mediator-123',
-        instanceType: InstanceType.mediator,
       );
 
       final json = request.toJson();
@@ -28,23 +25,16 @@ void main() {
     test('should deserialize from JSON for mediator', () {
       final json = {'mediatorId': 'mediator-123'};
 
-      final request = DestroyInstanceRequest.fromJson(
-        json,
-        InstanceType.mediator,
-      );
+      final request = DestroyInstanceRequest.fromJson(json);
 
       expect(request.instanceId, 'mediator-123');
-      expect(request.instanceType, InstanceType.mediator);
     });
 
     test('should throw TypeError when instance ID field is missing', () {
       final json = <String, dynamic>{};
 
       expect(
-        () => DestroyInstanceRequest.fromJson(
-          json,
-          InstanceType.mediator,
-        ),
+        () => DestroyInstanceRequest.fromJson(json),
         throwsA(isA<TypeError>()),
       );
     });
@@ -53,10 +43,7 @@ void main() {
       final json = {'mediatorId': 123};
 
       expect(
-        () => DestroyInstanceRequest.fromJson(
-          json,
-          InstanceType.mediator,
-        ),
+        () => DestroyInstanceRequest.fromJson(json),
         throwsA(isA<TypeError>()),
       );
     });
@@ -67,10 +54,7 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = DestroyInstanceRequest.fromJson(
-        json,
-        InstanceType.mediator,
-      );
+      final request = DestroyInstanceRequest.fromJson(json);
 
       expect(request.instanceId, 'mediator-123');
     });

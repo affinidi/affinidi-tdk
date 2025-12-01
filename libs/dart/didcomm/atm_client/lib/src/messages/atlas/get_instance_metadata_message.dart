@@ -1,34 +1,77 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 import 'config/base_instance_message.dart';
-import 'config/instance_type_config.dart';
 
-part 'get_mediator_instance_metadata_message.g.dart';
+part 'get_instance_metadata_message.g.dart';
 
-/// Message for getting metadata of a mediator instance.
-class GetMediatorInstanceMetadataMessage extends BaseInstanceMessage {
-
-  /// The operation name for getting metadata of a mediator instance.
-  static const String operationName = 'getMediatorInstanceMetadata';
-
-  /// Creates a get mediator instance metadata message.
-  GetMediatorInstanceMetadataMessage({
+/// Message for getting metadata of an instance.
+class GetInstanceMetadataMessage extends BaseInstanceMessage {
+  /// Creates a get instance metadata message.
+  GetInstanceMetadataMessage._({
     required super.id,
     required super.to,
+    required super.operationName,
     super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},
     super.threadId,
-  }) : super(
-         operationName: GetMediatorInstanceMetadataMessage.operationName,
-          instanceType: InstanceType.mediator,
-        );
+  });
+
+  /// Creates a get mediator instance metadata message.
+  factory GetInstanceMetadataMessage.mediator({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    return GetInstanceMetadataMessage._(
+      id: id,
+      to: to,
+      from: from,
+      createdTime: createdTime,
+      expiresTime: expiresTime,
+      body: body,
+      threadId: threadId,
+      operationName: 'getMediatorInstanceMetadata',
+    );
+  }
+
+  /// Creates a get meeting place instance metadata message.
+  factory GetInstanceMetadataMessage.meetingPlace({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    throw UnimplementedError(
+        'Meeting place metadata retrieval is not yet implemented');
+  }
+
+  /// Creates a get trust registry instance metadata message.
+  factory GetInstanceMetadataMessage.trustRegistry({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    throw UnimplementedError(
+        'Trust registry metadata retrieval is not yet implemented');
+  }
 }
 
 /// Response message for get mediator instance metadata operation.
-class GetMediatorInstanceMetadataResponseMessage extends BaseInstanceResponseMessage<MediatorInstanceMetadata> {
+class GetMediatorInstanceMetadataResponseMessage
+    extends BaseInstanceResponseMessage<MediatorInstanceMetadata> {
   /// Creates a get mediator instance metadata response message.
   GetMediatorInstanceMetadataResponseMessage({
     required super.id,
@@ -39,8 +82,7 @@ class GetMediatorInstanceMetadataResponseMessage extends BaseInstanceResponseMes
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: GetMediatorInstanceMetadataMessage.operationName,
-          instanceType: InstanceType.mediator,
+          operationName: 'getMediatorInstanceMetadata',
           fromJson: MediatorInstanceMetadata.fromJson,
         );
 

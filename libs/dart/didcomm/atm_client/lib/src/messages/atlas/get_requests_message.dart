@@ -1,33 +1,77 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 import 'config/base_instance_message.dart';
-import 'config/instance_type_config.dart';
 
-part 'get_mediator_requests_message.g.dart';
+part 'get_requests_message.g.dart';
 
-/// Message for getting mediator requests.
-class GetMediatorRequestsMessage extends BaseInstanceMessage {
-  /// The operation name for getting mediator requests.
-  static const String operationName = 'getMediatorRequests';
-
-  /// Creates a get mediator requests message.
-  GetMediatorRequestsMessage({
+/// Message for getting instance requests.
+class GetRequestsMessage extends BaseInstanceMessage {
+  /// Creates a get requests message.
+  GetRequestsMessage._({
     required super.id,
     required super.to,
+    required super.operationName,
     super.from,
     super.createdTime,
     super.expiresTime,
     super.body = const {},
     super.threadId,
-  }) : super(
-         operationName: GetMediatorRequestsMessage.operationName,
-          instanceType: InstanceType.mediator
-        );
+  });
+
+  /// Creates a get mediator requests message.
+  factory GetRequestsMessage.mediator({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    return GetRequestsMessage._(
+      id: id,
+      to: to,
+      from: from,
+      createdTime: createdTime,
+      expiresTime: expiresTime,
+      body: body,
+      threadId: threadId,
+      operationName: 'getMediatorRequests',
+    );
+  }
+
+  /// Creates a get meeting place requests message.
+  factory GetRequestsMessage.meetingPlace({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    throw UnimplementedError(
+        'Meeting place requests retrieval is not yet implemented');
+  }
+
+  /// Creates a get trust registry requests message.
+  factory GetRequestsMessage.trustRegistry({
+    required String id,
+    required List<String> to,
+    String? from,
+    DateTime? createdTime,
+    DateTime? expiresTime,
+    Map<String, dynamic> body = const {},
+    String? threadId,
+  }) {
+    throw UnimplementedError(
+        'Trust registry requests retrieval is not yet implemented');
+  }
 }
 
 /// Response message for get mediator requests operation.
-class GetMediatorRequestsResponseMessage extends BaseInstanceResponseMessage<GetMediatorRequestsResponseData> {
+class GetMediatorRequestsResponseMessage
+    extends BaseInstanceResponseMessage<GetMediatorRequestsResponseData> {
   /// Creates a get mediator requests response message.
   GetMediatorRequestsResponseMessage({
     required super.id,
@@ -38,8 +82,7 @@ class GetMediatorRequestsResponseMessage extends BaseInstanceResponseMessage<Get
     super.threadId,
     super.body = const {},
   }) : super(
-          operationName: GetMediatorRequestsMessage.operationName,
-          instanceType: InstanceType.mediator,
+          operationName: 'getMediatorRequests',
           fromJson: GetMediatorRequestsResponseData.fromJson,
         );
 }

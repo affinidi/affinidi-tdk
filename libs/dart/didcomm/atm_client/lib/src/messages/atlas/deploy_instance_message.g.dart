@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'deploy_mediator_instance_message.dart';
+part of 'deploy_instance_message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

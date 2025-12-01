@@ -1,25 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_mediator_instance_metadata_message.dart';
+part of 'get_instances_list_message.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-MediatorInstanceMetadata _$MediatorInstanceMetadataFromJson(
-        Map<String, dynamic> json) =>
-    MediatorInstanceMetadata(
+MediatorInstance _$MediatorInstanceFromJson(Map<String, dynamic> json) =>
+    MediatorInstance(
+      id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       modifiedAt: DateTime.parse(json['modifiedAt'] as String),
       createdBy: json['createdBy'] as String,
       modifiedBy: json['modifiedBy'] as String,
-      id: json['id'] as String,
       projectId: json['projectId'] as String,
       serviceType: json['serviceType'] as String,
-      deploymentState: json['deploymentState'] as String,
-      deploymentStatus: json['deploymentStatus'] as String,
+      deploymentState: json['deploymentState'] as String?,
+      deploymentStatus: json['deploymentStatus'] as String?,
       serviceSize: json['serviceSize'] as String,
       did: json['did'] as String,
       didDocumentUrl: json['didDocumentUrl'] as String,
@@ -32,20 +31,20 @@ MediatorInstanceMetadata _$MediatorInstanceMetadataFromJson(
       ),
     );
 
-Map<String, dynamic> _$MediatorInstanceMetadataToJson(
-        MediatorInstanceMetadata instance) =>
+Map<String, dynamic> _$MediatorInstanceToJson(MediatorInstance instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'description': instance.description,
       'createdAt': instance.createdAt.toIso8601String(),
       'modifiedAt': instance.modifiedAt.toIso8601String(),
       'createdBy': instance.createdBy,
       'modifiedBy': instance.modifiedBy,
-      'id': instance.id,
       'projectId': instance.projectId,
       'serviceType': instance.serviceType,
-      'deploymentState': instance.deploymentState,
-      'deploymentStatus': instance.deploymentStatus,
+      if (instance.deploymentState case final value?) 'deploymentState': value,
+      if (instance.deploymentStatus case final value?)
+        'deploymentStatus': value,
       'serviceSize': instance.serviceSize,
       'did': instance.did,
       'didDocumentUrl': instance.didDocumentUrl,
@@ -57,4 +56,21 @@ Map<String, dynamic> _$MediatorInstanceMetadataToJson(
       if (instance.administratorDid case final value?)
         'administratorDid': value,
       if (instance.acl case final value?) 'acl': value,
+    };
+
+MediatorInstanceBodyData _$MediatorInstanceBodyDataFromJson(
+        Map<String, dynamic> json) =>
+    MediatorInstanceBodyData(
+      instances: (json['instances'] as List<dynamic>)
+          .map((e) => MediatorInstance.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      lastEvaluatedKey: json['lastEvaluatedKey'] as String?,
+    );
+
+Map<String, dynamic> _$MediatorInstanceBodyDataToJson(
+        MediatorInstanceBodyData instance) =>
+    <String, dynamic>{
+      'instances': instance.instances.map((e) => e.toJson()).toList(),
+      if (instance.lastEvaluatedKey case final value?)
+        'lastEvaluatedKey': value,
     };

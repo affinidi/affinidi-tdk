@@ -1,40 +1,34 @@
-import '../../messages/atlas/config/instance_type_config.dart';
-
 /// Request for updating an instance configuration.
-class BaseUpdateInstanceConfigurationRequest {
-  /// The ID of the instance to be updated.
+class UpdateInstanceConfigurationRequest {
+  /// The ID of the mediator instance to be updated.
   final String instanceId;
+
   /// ACL configuration for the instance.
   final Map<String, num>? acl;
-  /// The type of the instance.
-  final InstanceType instanceType;
 
-  /// Creates a [BaseUpdateInstanceConfigurationRequest] instance.
-  BaseUpdateInstanceConfigurationRequest({
+  /// Creates a [UpdateInstanceConfigurationRequest] instance.
+  UpdateInstanceConfigurationRequest({
     required this.instanceId,
     this.acl,
-    required this.instanceType,
   });
 
-  /// Creates a [BaseUpdateInstanceConfigurationRequest] from a JSON map.
-  factory BaseUpdateInstanceConfigurationRequest.fromJson(
-      Map<String, dynamic> json, InstanceType instanceType) {
-    final fieldName = instanceType.instanceIdField;
-    return BaseUpdateInstanceConfigurationRequest(
-      instanceId: json[fieldName] as String,
+  /// Creates a [UpdateInstanceConfigurationRequest] from a JSON map.
+  factory UpdateInstanceConfigurationRequest.fromJson(
+      Map<String, dynamic> json) {
+    return UpdateInstanceConfigurationRequest(
+      instanceId: json['mediatorId'] as String,
       acl: json['acl'] != null
           ? (json['acl'] as Map<String, dynamic>).map(
               (k, e) => MapEntry(k, e as num),
             )
           : null,
-      instanceType: instanceType,
     );
   }
-  
-  /// Converts the [BaseUpdateInstanceConfigurationRequest] instance to JSON.
+
+  /// Converts the [UpdateInstanceConfigurationRequest] instance to JSON.
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{
-      instanceType.instanceIdField: instanceId,
+      'mediatorId': instanceId,
     };
     if (acl != null) {
       json['acl'] = acl;
@@ -42,9 +36,3 @@ class BaseUpdateInstanceConfigurationRequest {
     return json;
   }
 }
-
-
-
-
-
-

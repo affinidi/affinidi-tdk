@@ -6,14 +6,14 @@ part of 'get_instances_list_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetInstancesListRequest _$BaseGetInstancesListRequestFromJson(
+GetInstancesListRequest _$GetInstancesListRequestFromJson(
         Map<String, dynamic> json) =>
     GetInstancesListRequest(
       limit: (json['limit'] as num?)?.toInt(),
       exclusiveStartKey: json['exclusiveStartKey'] as String?,
     );
 
-Map<String, dynamic> _$BaseGetInstancesListRequestToJson(
+Map<String, dynamic> _$GetInstancesListRequestToJson(
         GetInstancesListRequest instance) =>
     <String, dynamic>{
       if (instance.limit case final value?) 'limit': value,

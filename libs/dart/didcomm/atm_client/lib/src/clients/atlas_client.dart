@@ -4,14 +4,13 @@ import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediat
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
-import '../messages/atlas/config/instance_type_config.dart';
-import '../messages/atlas/deploy_mediator_instance_message.dart';
-import '../messages/atlas/destroy_mediator_instance_message.dart';
-import '../messages/atlas/get_mediator_instance_metadata_message.dart';
-import '../messages/atlas/get_mediator_instances_list_message.dart';
-import '../messages/atlas/get_mediator_requests_message.dart';
-import '../messages/atlas/update_mediator_instance_configuration_message.dart';
-import '../messages/atlas/update_mediator_instance_deployment_message.dart';
+import '../messages/atlas/deploy_instance_message.dart';
+import '../messages/atlas/destroy_instance_message.dart';
+import '../messages/atlas/get_instance_metadata_message.dart';
+import '../messages/atlas/get_instances_list_message.dart';
+import '../messages/atlas/get_requests_message.dart';
+import '../messages/atlas/update_instance_configuration_message.dart';
+import '../messages/atlas/update_instance_deployment_message.dart';
 import '../models/request_bodies/deploy_instance_request.dart';
 import '../models/request_bodies/destroy_instance_request.dart';
 import '../models/request_bodies/get_instance_metadata_request.dart';
@@ -82,7 +81,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     int? limit,
     String? exclusiveStartKey,
   }) async {
-    final requestMessage = GetMediatorInstancesListMessage(
+    final requestMessage = GetInstancesListMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       body: GetInstancesListRequest(
@@ -109,7 +108,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
   Future<DeployMediatorInstanceResponseMessage> deployMediatorInstance({
     DeployInstanceRequest? deploymentData,
   }) async {
-    final requestMessage = DeployMediatorInstanceMessage(
+    final requestMessage = DeployInstanceMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       body: deploymentData?.toJson() ?? {},
@@ -134,12 +133,11 @@ class DidcommAtlasClient extends DidcommServiceClient {
       getMediatorInstanceMetadata({
     required String mediatorId,
   }) async {
-    final requestMessage = GetMediatorInstanceMetadataMessage(
+    final requestMessage = GetInstanceMetadataMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
-      body: BaseGetInstanceMetadataRequest(
+      body: GetInstanceMetadataRequest(
         instanceId: mediatorId,
-        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 
@@ -161,12 +159,11 @@ class DidcommAtlasClient extends DidcommServiceClient {
   Future<DestroyMediatorInstanceResponseMessage> destroyMediatorInstance({
     required String mediatorId,
   }) async {
-    final requestMessage = DestroyMediatorInstanceMessage(
+    final requestMessage = DestroyInstanceMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       body: DestroyInstanceRequest(
         instanceId: mediatorId,
-        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 
@@ -187,9 +184,9 @@ class DidcommAtlasClient extends DidcommServiceClient {
   /// Updates the deployment configuration of a mediator instance.
   Future<UpdateMediatorInstanceDeploymentResponseMessage>
       updateMediatorInstanceDeployment({
-    required BaseUpdateInstanceDeploymentRequest deploymentData,
+    required UpdateInstanceDeploymentRequest deploymentData,
   }) async {
-    final requestMessage = UpdateMediatorInstanceDeploymentMessage(
+    final requestMessage = UpdateInstanceDeploymentMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       body: deploymentData.toJson(),
@@ -212,9 +209,9 @@ class DidcommAtlasClient extends DidcommServiceClient {
   /// Updates the configuration of a mediator instance.
   Future<UpdateMediatorInstanceConfigurationResponseMessage>
       updateMediatorInstanceConfiguration({
-    required BaseUpdateInstanceConfigurationRequest configurationData,
+    required UpdateInstanceConfigurationRequest configurationData,
   }) async {
-    final requestMessage = UpdateMediatorInstanceConfigurationMessage(
+    final requestMessage = UpdateInstanceConfigurationMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       body: configurationData.toJson(),
@@ -240,14 +237,13 @@ class DidcommAtlasClient extends DidcommServiceClient {
     int? limit,
     String? exclusiveStartKey,
   }) async {
-    final requestMessage = GetMediatorRequestsMessage(
+    final requestMessage = GetRequestsMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       body: GetInstanceRequestsRequest(
         instanceId: mediatorId,
         limit: limit,
         exclusiveStartKey: exclusiveStartKey,
-        instanceType: InstanceType.mediator,
       ).toJson(),
     );
 
