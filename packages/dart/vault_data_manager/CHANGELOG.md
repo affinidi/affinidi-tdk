@@ -1,5 +1,20 @@
 # Change Log
 
+## 1.11.0
+
+### Changes
+
+---
+
+Feat: Granular Node-Level Access Control
+
+* Added GET endpoint support for retrieving node access permissions (`getNodeAccessVfs`)
+* Added `grantNodeAccessMultiple` method to `ProfileAccessSharing` interface for sending multiple permission groups in a single API call
+* Fixed permission grouping to preserve separate permission groups (READ, WRITE) when sharing multiple files with different permissions
+* Made both `affinidiTdkIamClient` and `affinidiTdkConsumerIamClient` optional in `VaultDataManagerSharedAccessApiService`
+
+---
+
 ## 1.10.2
 
 ### Changes

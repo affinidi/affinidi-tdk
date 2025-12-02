@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
+import 'package:affinidi_tdk_consumer_iam_client/affinidi_tdk_consumer_iam_client.dart';
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
 import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
@@ -123,13 +124,22 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
             ((DidSigner didSigner, {Dio? client}) =>
                 ConsumerAuthProvider(signer: didSigner, client: client)),
         _iamApiServiceFactory = iamApiServiceFactory ??
-            ((ConsumerAuthProvider provider) =>
-                VaultDataManagerSharedAccessApiService(
-                    affinidiTdkIamClient: AffinidiTdkIamClient(
-                  authTokenHook: provider.fetchConsumerToken,
-                  basePathOverride:
-                      '${Environment.fetchEnvironment().apiGwUrl}/iam',
-                ))),
+            ((ConsumerAuthProvider provider) {
+              final iamClient = AffinidiTdkIamClient(
+                authTokenHook: provider.fetchConsumerToken,
+                basePathOverride:
+                    '${Environment.fetchEnvironment().apiGwUrl}/iam',
+              );
+              final consumerIamClient = AffinidiTdkConsumerIamClient(
+                authTokenHook: provider.fetchConsumerToken,
+                basePathOverride:
+                    '${Environment.fetchEnvironment().apiGwUrl}/cid',
+              );
+              return VaultDataManagerSharedAccessApiService(
+                affinidiTdkIamClient: iamClient,
+                affinidiTdkConsumerIamClient: consumerIamClient,
+              );
+            }),
         _vaultDataManagerServiceFactory =
             vaultDataManagerServiceFactory ?? VaultDataManagerService.create,
         _vaultDelegatedDataManagerServiceFactory =
@@ -554,6 +564,89 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     );
   }
 
+  @override
+  Future<void> grantNodeAccess({
+    required int accountIndex,
+    required String granteeDid,
+    required List<String> nodeIds,
+    required Permissions permissions,
+    VaultCancelToken? cancelToken,
+  }) async {
+    _ensureConfigured();
+
+    final iamApiService = await _getIamApiService(accountIndex);
+    await iamApiService.updateNodeAccessVfs(
+      granteeDid: granteeDid,
+      nodeIds: nodeIds,
+      permissions: permissions,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+    );
+  }
+
+  @override
+  Future<void> grantNodeAccessMultiple({
+    required int accountIndex,
+    required String granteeDid,
+    required List<({List<String> nodeIds, Permissions permissions})>
+        permissionGroups,
+    VaultCancelToken? cancelToken,
+  }) async {
+    _ensureConfigured();
+
+    final iamApiService = await _getIamApiService(accountIndex);
+    await (iamApiService as dynamic).updateNodeAccessVfsWithMultiplePermissions(
+      granteeDid: granteeDid,
+      permissionGroups: permissionGroups,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+    );
+  }
+
+  @override
+  Future<void> revokeNodeAccess({
+    required int accountIndex,
+    required String granteeDid,
+    required List<String> nodeIds,
+    VaultCancelToken? cancelToken,
+  }) async {
+    _ensureConfigured();
+
+    final iamApiService = await _getIamApiService(accountIndex);
+    await iamApiService.revokeNodeAccessVfs(
+      granteeDid: granteeDid,
+      nodeIds: nodeIds,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+    );
+  }
+
+  @override
+  Future<Map<String, dynamic>> getNodeAccess({
+    required int accountIndex,
+    required String granteeDid,
+    VaultCancelToken? cancelToken,
+  }) async {
+    _ensureConfigured();
+
+    final iamApiService = await _getIamApiService(accountIndex);
+    final response = await iamApiService.getNodeAccessVfs(
+      granteeDid: granteeDid,
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+    );
+
+    return {
+      'permissions': response.data!.permissions
+          .map((p) => {
+                'nodeIds': p.nodeIds.toList(),
+                'rights': p.rights.map((r) => r.toString()).toList(),
+                'expiresAt': p.expiresAt?.toString(),
+              })
+          .toList(),
+    };
+  }
+
   Future<KeyPair> _getProfileKeyPair({required String accountIndex}) async {
     return await _wallet.generateKey(keyId: _getDerivationPath(accountIndex));
   }
@@ -614,4 +707,28 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
 
   String _getDerivationPath(String accountIndex) =>
       "m/44'/60'/$accountIndex'/0'/0'";
+
+  /// Ensures the repository is configured.
+  ///
+  /// Throws [TdkException] if not configured.
+  void _ensureConfigured() {
+    if (!_configured) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message:
+              'Profile repository must be configured using a RepositoryConfiguration',
+          code: TdkExceptionType.profleNotConfigured.code,
+        ),
+        StackTrace.current,
+      );
+    }
+  }
+
+  /// Creates an IAM API service for the given account index.
+  Future<VaultDataManagerSharedAccessApiServiceInterface> _getIamApiService(
+      int accountIndex) async {
+    final didSigner = await _memoizedDidSigner('$accountIndex');
+    final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
+    return _iamApiServiceFactory(consumerAuthProvider);
+  }
 }

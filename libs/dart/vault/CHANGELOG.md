@@ -1,5 +1,19 @@
 # Change Log
 
+## 1.12.0
+
+### Changes
+
+---
+
+Feat: Granular File and Folder Sharing
+
+* Added `shareFile` method to share individual files/folders with specific permissions (read, write, or all)
+* Added `revokeFileAccess` method to revoke access to specific files/folders
+* Added `getNodeAccess` method to retrieve access permissions for files/folders
+
+---
+
 ## 1.11.2
 
 ### Changes

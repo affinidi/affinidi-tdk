@@ -404,6 +404,164 @@ void main() {
     });
   });
 
+  group('File and Folder Sharing', () {
+    setUp(() async {
+      await vault.ensureInitialized();
+    });
+
+    test('should share file successfully', () async {
+      final testProfile = VaultFixtures.createTestProfile(
+        fileStorages: {'test': mockFileStorage},
+        credentialStorages: {'test': mockCredentialStorage},
+        sharedStorages: {'test': mockSharedStorage},
+      );
+
+      when(() => mockProfileRepository.listProfiles())
+          .thenAnswer((_) async => [testProfile]);
+      when(() => mockProfileRepository.getNodeAccess(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+          )).thenAnswer((_) async => {'permissions': <dynamic>[]});
+      when(() => mockProfileRepository.grantNodeAccessMultiple(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+            permissionGroups:
+                any<List<({List<String> nodeIds, Permissions permissions})>>(
+                    named: 'permissionGroups'),
+          )).thenAnswer((_) async {});
+
+      await vault.shareFile(
+        profileId: 'test-id',
+        nodeId: 'node-123',
+        toDid: 'did:test:123',
+        permissions: Permissions.read,
+      );
+
+      verify(() => mockProfileRepository.getNodeAccess(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+          )).called(1);
+      verify(() => mockProfileRepository.grantNodeAccessMultiple(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+            permissionGroups:
+                any<List<({List<String> nodeIds, Permissions permissions})>>(
+                    named: 'permissionGroups'),
+          )).called(1);
+    });
+
+    test('should throw when sharing file for non-existent profile', () async {
+      when(() => mockProfileRepository.listProfiles())
+          .thenAnswer((_) async => []);
+
+      expect(
+        () => vault.shareFile(
+          profileId: 'non-existent',
+          nodeId: 'node-123',
+          toDid: 'did:test:123',
+          permissions: Permissions.read,
+        ),
+        throwsA(isA<TdkException>()),
+      );
+    });
+
+    test('should revoke file access successfully', () async {
+      final testProfile = VaultFixtures.createTestProfile(
+        fileStorages: {'test': mockFileStorage},
+        credentialStorages: {'test': mockCredentialStorage},
+        sharedStorages: {'test': mockSharedStorage},
+      );
+
+      when(() => mockProfileRepository.listProfiles())
+          .thenAnswer((_) async => [testProfile]);
+      when(() => mockProfileRepository.revokeNodeAccess(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+            nodeIds: ['node-123'],
+          )).thenAnswer((_) async {});
+
+      await vault.revokeFileAccess(
+        profileId: 'test-id',
+        nodeId: 'node-123',
+        granteeDid: 'did:test:123',
+      );
+
+      verify(() => mockProfileRepository.revokeNodeAccess(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+            nodeIds: ['node-123'],
+          )).called(1);
+    });
+
+    test('should get node access successfully', () async {
+      final testProfile = VaultFixtures.createTestProfile(
+        fileStorages: {'test': mockFileStorage},
+        credentialStorages: {'test': mockCredentialStorage},
+        sharedStorages: {'test': mockSharedStorage},
+      );
+
+      final expectedPermissions = {
+        'permissions': [
+          {
+            'nodeIds': ['node-123'],
+            'rights': ['vfsRead'],
+          }
+        ]
+      };
+
+      when(() => mockProfileRepository.listProfiles())
+          .thenAnswer((_) async => [testProfile]);
+      when(() => mockProfileRepository.getNodeAccess(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+          )).thenAnswer((_) async => expectedPermissions);
+
+      final result = await vault.getNodeAccess(
+        profileId: 'test-id',
+        granteeDid: 'did:test:123',
+      );
+
+      expect(result, equals(expectedPermissions));
+      verify(() => mockProfileRepository.getNodeAccess(
+            accountIndex: 0,
+            granteeDid: 'did:test:123',
+          )).called(1);
+    });
+
+    test('should throw when repository does not support access sharing',
+        () async {
+      final testProfile = VaultFixtures.createTestProfile(
+        fileStorages: {'test': mockFileStorage},
+        credentialStorages: {'test': mockCredentialStorage},
+        sharedStorages: {'test': mockSharedStorage},
+      );
+
+      final mockRepoWithoutSharing = MockProfileRepositoryOnly();
+      when(() => mockRepoWithoutSharing.listProfiles())
+          .thenAnswer((_) async => [testProfile]);
+      when(() => mockRepoWithoutSharing.isConfigured())
+          .thenAnswer((_) async => false);
+      when(() => mockRepoWithoutSharing.configure(any()))
+          .thenAnswer((_) async {});
+
+      final vaultWithoutSharing = await createTestVault(
+        vaultStore: mockVaultStore,
+        profileRepositories: {'test': mockRepoWithoutSharing},
+      );
+      await vaultWithoutSharing.ensureInitialized();
+
+      expect(
+        () => vaultWithoutSharing.shareFile(
+          profileId: 'test-id',
+          nodeId: 'node-123',
+          toDid: 'did:test:123',
+          permissions: Permissions.read,
+        ),
+        throwsA(isA<TdkException>()),
+      );
+    });
+  });
+
   group('Vault Operations', () {
     setUp(() async {
       await vault.ensureInitialized();
