@@ -51,6 +51,7 @@ import 'package:affinidi_tdk_wallets_client/src/model/sign_message_result_dto.da
 import 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_input_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_presentation_ldp_result_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/signing_failed_error.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/too_many_requests_error.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/update_wallet_input.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/wallet_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/wallet_dto_keys_inner.dart';
@@ -97,6 +98,7 @@ part 'serializers.g.dart';
   SignPresentationLdpInputDto,
   SignPresentationLdpResultDto,
   SigningFailedError,
+  TooManyRequestsError,
   UpdateWalletInput,
   WalletDto,
   WalletDtoKeysInner,

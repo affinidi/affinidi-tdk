@@ -48,6 +48,7 @@ affinidi_tdk_wallets_client/models/sign_message_result_dto.py
 affinidi_tdk_wallets_client/models/sign_presentation_ldp_input_dto.py
 affinidi_tdk_wallets_client/models/sign_presentation_ldp_result_dto.py
 affinidi_tdk_wallets_client/models/signing_failed_error.py
+affinidi_tdk_wallets_client/models/too_many_requests_error.py
 affinidi_tdk_wallets_client/models/update_wallet_input.py
 affinidi_tdk_wallets_client/models/wallet_dto.py
 affinidi_tdk_wallets_client/models/wallet_dto_keys_inner.py
@@ -93,6 +94,7 @@ docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
 docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
+docs/TooManyRequestsError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
 docs/WalletDto.md
