@@ -8,6 +8,7 @@ doc/ConsumerAuthApi.md
 doc/ConsumerAuthTokenEndpointInput.md
 doc/ConsumerAuthTokenEndpointOutput.md
 doc/CorsConsumerAuthTokenEndpointOK.md
+doc/GetAccessOutput.md
 doc/GrantAccessInput.md
 doc/GrantAccessOutput.md
 doc/InvalidDIDError.md
@@ -39,6 +40,7 @@ lib/src/model/consumer_auth_token_endpoint_input.dart
 lib/src/model/consumer_auth_token_endpoint_output.dart
 lib/src/model/cors_consumer_auth_token_endpoint_ok.dart
 lib/src/model/date.dart
+lib/src/model/get_access_output.dart
 lib/src/model/grant_access_input.dart
 lib/src/model/grant_access_output.dart
 lib/src/model/invalid_did_error.dart

@@ -10,6 +10,7 @@ docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
 docs/CorsConsumerAuthTokenEndpointOK.md
+docs/GetAccessOutput.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
 docs/InvalidDIDError.md

@@ -8,6 +8,7 @@ docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
 docs/CorsConsumerAuthTokenEndpointOK.md
+docs/GetAccessOutput.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
 docs/InvalidDIDError.md
@@ -54,6 +55,7 @@ src/main/java/com/affinidi/tdk/consumer/iam/client/auth/HttpBearerAuth.java
 src/main/java/com/affinidi/tdk/consumer/iam/client/models/ConsumerAuthTokenEndpointInput.java
 src/main/java/com/affinidi/tdk/consumer/iam/client/models/ConsumerAuthTokenEndpointOutput.java
 src/main/java/com/affinidi/tdk/consumer/iam/client/models/CorsConsumerAuthTokenEndpointOK.java
+src/main/java/com/affinidi/tdk/consumer/iam/client/models/GetAccessOutput.java
 src/main/java/com/affinidi/tdk/consumer/iam/client/models/GrantAccessInput.java
 src/main/java/com/affinidi/tdk/consumer/iam/client/models/GrantAccessOutput.java
 src/main/java/com/affinidi/tdk/consumer/iam/client/models/InvalidDIDError.java

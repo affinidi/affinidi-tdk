@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +36,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   Permission.JSON_PROPERTY_RIGHTS,
-  Permission.JSON_PROPERTY_NODE_IDS
+  Permission.JSON_PROPERTY_NODE_IDS,
+  Permission.JSON_PROPERTY_EXPIRES_AT
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class Permission {
@@ -46,6 +48,10 @@ public class Permission {
   public static final String JSON_PROPERTY_NODE_IDS = "nodeIds";
   @javax.annotation.Nonnull
   private List<String> nodeIds = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_EXPIRES_AT = "expiresAt";
+  @javax.annotation.Nullable
+  private OffsetDateTime expiresAt;
 
   public Permission() {
   }
@@ -116,6 +122,31 @@ public class Permission {
     this.nodeIds = nodeIds;
   }
 
+  public Permission expiresAt(@javax.annotation.Nullable OffsetDateTime expiresAt) {
+    
+    this.expiresAt = expiresAt;
+    return this;
+  }
+
+  /**
+   * Get expiresAt
+   * @return expiresAt
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public OffsetDateTime getExpiresAt() {
+    return expiresAt;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setExpiresAt(@javax.annotation.Nullable OffsetDateTime expiresAt) {
+    this.expiresAt = expiresAt;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -126,12 +157,13 @@ public class Permission {
     }
     Permission permission = (Permission) o;
     return Objects.equals(this.rights, permission.rights) &&
-        Objects.equals(this.nodeIds, permission.nodeIds);
+        Objects.equals(this.nodeIds, permission.nodeIds) &&
+        Objects.equals(this.expiresAt, permission.expiresAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(rights, nodeIds);
+    return Objects.hash(rights, nodeIds, expiresAt);
   }
 
   @Override
@@ -140,6 +172,7 @@ public class Permission {
     sb.append("class Permission {\n");
     sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
     sb.append("    nodeIds: ").append(toIndentedString(nodeIds)).append("\n");
+    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -214,6 +247,16 @@ public class Permission {
           // Should never happen, UTF-8 is always supported
           throw new RuntimeException(e);
         }
+      }
+    }
+
+    // add `expiresAt` to the URL query string
+    if (getExpiresAt() != null) {
+      try {
+        joiner.add(String.format("%sexpiresAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
       }
     }
 

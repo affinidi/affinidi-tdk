@@ -8,11 +8,12 @@ import 'package:affinidi_tdk_consumer_iam_client/api.dart';
 
 All URIs are relative to *https://apse1.api.affinidi.io/cid*
 
-| Method                                             | HTTP request                                 | Description                             |
-| -------------------------------------------------- | -------------------------------------------- | --------------------------------------- |
-| [**deleteAccessVfs**](AuthzApi.md#deleteaccessvfs) | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid             |
-| [**grantAccessVfs**](AuthzApi.md#grantaccessvfs)   | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system |
-| [**updateAccessVfs**](AuthzApi.md#updateaccessvfs) | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid             |
+| Method                                             | HTTP request                                 | Description                                              |
+| -------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| [**deleteAccessVfs**](AuthzApi.md#deleteaccessvfs) | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid                              |
+| [**getAccessVfs**](AuthzApi.md#getaccessvfs)       | **GET** /v1/authz/vfs/access/{granteeDid}    | Get permissions to the virtual file system for a subject |
+| [**grantAccessVfs**](AuthzApi.md#grantaccessvfs)   | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system                  |
+| [**updateAccessVfs**](AuthzApi.md#updateaccessvfs) | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid                              |
 
 # **deleteAccessVfs**
 
@@ -50,6 +51,55 @@ try {
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAccessVfs**
+
+> GetAccessOutput getAccessVfs(granteeDid)
+
+Get permissions to the virtual file system for a subject
+
+Retrieves access rights granted to a subject for the virtual file system
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_consumer_iam_client/api.dart';
+// TODO Configure API key authorization: ConsumerTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ConsumerTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api = AffinidiTdkConsumerIamClient().getAuthzApi();
+final String granteeDid = granteeDid_example; // String |
+
+try {
+    final response = api.getAccessVfs(granteeDid);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AuthzApi->getAccessVfs: $e\n');
+}
+```
+
+### Parameters
+
+| Name           | Type       | Description | Notes |
+| -------------- | ---------- | ----------- | ----- |
+| **granteeDid** | **String** |             |
+
+### Return type
+
+[**GetAccessOutput**](GetAccessOutput.md)
 
 ### Authorization
 

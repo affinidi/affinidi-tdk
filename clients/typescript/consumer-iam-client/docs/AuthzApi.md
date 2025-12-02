@@ -2,11 +2,12 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cid*
 
-| Method                                  | HTTP request                                 | Description                             |
-| --------------------------------------- | -------------------------------------------- | --------------------------------------- |
-| [**deleteAccessVfs**](#deleteaccessvfs) | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid             |
-| [**grantAccessVfs**](#grantaccessvfs)   | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system |
-| [**updateAccessVfs**](#updateaccessvfs) | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid             |
+| Method                                  | HTTP request                                 | Description                                              |
+| --------------------------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| [**deleteAccessVfs**](#deleteaccessvfs) | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid                              |
+| [**getAccessVfs**](#getaccessvfs)       | **GET** /v1/authz/vfs/access/{granteeDid}    | Get permissions to the virtual file system for a subject |
+| [**grantAccessVfs**](#grantaccessvfs)   | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system                  |
+| [**updateAccessVfs**](#updateaccessvfs) | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid                              |
 
 # **deleteAccessVfs**
 
@@ -53,6 +54,54 @@ void (empty response body)
 | **204**     | Ok              | -                |
 | **403**     | ForbiddenError  | -                |
 | **500**     | UnexpectedError | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getAccessVfs**
+
+> GetAccessOutput getAccessVfs()
+
+Retrieves access rights granted to a subject for the virtual file system
+
+### Example
+
+```typescript
+import { AuthzApi, Configuration } from '@affinidi-tdk/consumer-iam-client'
+
+const configuration = new Configuration()
+const apiInstance = new AuthzApi(configuration)
+
+let granteeDid: string // (default to undefined)
+
+const { status, data } = await apiInstance.getAccessVfs(granteeDid)
+```
+
+### Parameters
+
+| Name           | Type         | Description | Notes                 |
+| -------------- | ------------ | ----------- | --------------------- |
+| **granteeDid** | [**string**] |             | defaults to undefined |
+
+### Return type
+
+**GetAccessOutput**
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                                               | Response headers |
+| ----------- | --------------------------------------------------------- | ---------------- |
+| **200**     | Successfully retrieved access permissions for the subject | -                |
+| **403**     | ForbiddenError                                            | -                |
+| **500**     | UnexpectedError                                           | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

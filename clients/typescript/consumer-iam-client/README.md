@@ -53,12 +53,13 @@ npm install PATH_TO_GENERATED_PACKAGE --save
 
 All URIs are relative to *https://apse1.api.affinidi.io/cid*
 
-| Class             | Method                                                                             | HTTP request                                 | Description                             |
-| ----------------- | ---------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------- |
-| _AuthzApi_        | [**deleteAccessVfs**](docs/AuthzApi.md#deleteaccessvfs)                            | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid             |
-| _AuthzApi_        | [**grantAccessVfs**](docs/AuthzApi.md#grantaccessvfs)                              | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system |
-| _AuthzApi_        | [**updateAccessVfs**](docs/AuthzApi.md#updateaccessvfs)                            | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid             |
-| _ConsumerAuthApi_ | [**consumerAuthTokenEndpoint**](docs/ConsumerAuthApi.md#consumerauthtokenendpoint) | **POST** /v1/consumer/oauth2/token           | The Consumer OAuth 2.0 Token Endpoint   |
+| Class             | Method                                                                             | HTTP request                                 | Description                                              |
+| ----------------- | ---------------------------------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| _AuthzApi_        | [**deleteAccessVfs**](docs/AuthzApi.md#deleteaccessvfs)                            | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid                              |
+| _AuthzApi_        | [**getAccessVfs**](docs/AuthzApi.md#getaccessvfs)                                  | **GET** /v1/authz/vfs/access/{granteeDid}    | Get permissions to the virtual file system for a subject |
+| _AuthzApi_        | [**grantAccessVfs**](docs/AuthzApi.md#grantaccessvfs)                              | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system                  |
+| _AuthzApi_        | [**updateAccessVfs**](docs/AuthzApi.md#updateaccessvfs)                            | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid                              |
+| _ConsumerAuthApi_ | [**consumerAuthTokenEndpoint**](docs/ConsumerAuthApi.md#consumerauthtokenendpoint) | **POST** /v1/consumer/oauth2/token           | The Consumer OAuth 2.0 Token Endpoint                    |
 | _WellKnownApi_    | [**getWellKnownJwks**](docs/WellKnownApi.md#getwellknownjwks)                      | **GET** /.well-known/jwks.json               |
 
 ### Documentation For Models
@@ -66,6 +67,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cid*
 - [ConsumerAuthTokenEndpointInput](docs/ConsumerAuthTokenEndpointInput.md)
 - [ConsumerAuthTokenEndpointOutput](docs/ConsumerAuthTokenEndpointOutput.md)
 - [CorsConsumerAuthTokenEndpointOK](docs/CorsConsumerAuthTokenEndpointOK.md)
+- [GetAccessOutput](docs/GetAccessOutput.md)
 - [GrantAccessInput](docs/GrantAccessInput.md)
 - [GrantAccessOutput](docs/GrantAccessOutput.md)
 - [InvalidDIDError](docs/InvalidDIDError.md)
