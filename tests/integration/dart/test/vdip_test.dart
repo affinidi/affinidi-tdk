@@ -112,7 +112,7 @@ Future<void> main() async {
         },
         onRequestToIssueCredential: ({
           required PlainTextMessage message,
-          bool? isAssertionValid,
+          AssertionValidationResult? assertionValidationResult,
           String? holderDidFromAssertion,
           String? challenge,
         }) async {
@@ -125,7 +125,7 @@ Future<void> main() async {
           expect(challenge, equals(expectedChallenge));
 
           // Verify assertion validation is null for non-holder-bound requests
-          expect(isAssertionValid, isNull);
+          expect(assertionValidationResult, isNull);
           expect(holderDidFromAssertion, isNull);
 
           final holderDid = message.from!;
@@ -283,7 +283,7 @@ Future<void> main() async {
         },
         onRequestToIssueCredential: ({
           required PlainTextMessage message,
-          bool? isAssertionValid,
+          AssertionValidationResult? assertionValidationResult,
           String? holderDidFromAssertion,
           String? challenge,
         }) async {
@@ -292,7 +292,7 @@ Future<void> main() async {
           }
 
           // Verify the assertion is valid
-          expect(isAssertionValid, isTrue);
+          expect(assertionValidationResult?.isValid, isTrue);
           expect(holderDidFromAssertion, holderSigner.did);
 
           // Verify challenge was properly transmitted with assertion
