@@ -321,8 +321,7 @@ void main() {
       });
 
       test('should grant multiple node access groups successfully', () async {
-        when(() => mockIamApiService
-                .updateNodeAccessVfsWithMultiplePermissions(
+        when(() => mockIamApiService.updateNodeAccessVfsWithMultiplePermissions(
               granteeDid: any<String>(named: 'granteeDid'),
               permissionGroups:
                   any<List<({List<String> nodeIds, Permissions permissions})>>(
@@ -341,8 +340,8 @@ void main() {
           permissionGroups: permissionGroups,
         );
 
-        verify(() => mockIamApiService
-                .updateNodeAccessVfsWithMultiplePermissions(
+        verify(() =>
+            mockIamApiService.updateNodeAccessVfsWithMultiplePermissions(
               granteeDid: 'did:test:123',
               permissionGroups:
                   any<List<({List<String> nodeIds, Permissions permissions})>>(

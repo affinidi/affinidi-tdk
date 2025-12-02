@@ -539,8 +539,7 @@ void main() {
       final mockRepoWithoutSharing = MockProfileRepositoryOnly();
       when(mockRepoWithoutSharing.listProfiles)
           .thenAnswer((_) async => [testProfile]);
-      when(mockRepoWithoutSharing.isConfigured)
-          .thenAnswer((_) async => false);
+      when(mockRepoWithoutSharing.isConfigured).thenAnswer((_) async => false);
       when(() => mockRepoWithoutSharing.configure(any()))
           .thenAnswer((_) async {});
 
