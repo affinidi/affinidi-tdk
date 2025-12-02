@@ -182,4 +182,30 @@ class MockIamApiService extends Mock
       }),
     ) as Future<Response<consumer_iam.GetAccessOutput>>;
   }
+
+  @override
+  Future<void> updateNodeAccessVfsWithMultiplePermissions({
+    required String granteeDid,
+    required List<({List<String> nodeIds, Permissions permissions})>
+        permissionGroups,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) {
+    return super.noSuchMethod(
+      Invocation.method(#updateNodeAccessVfsWithMultiplePermissions, [], {
+        #granteeDid: granteeDid,
+        #permissionGroups: permissionGroups,
+        #cancelToken: cancelToken,
+        #headers: headers,
+        #extra: extra,
+        #validateStatus: validateStatus,
+        #onSendProgress: onSendProgress,
+        #onReceiveProgress: onReceiveProgress,
+      }),
+    ) as Future<void>;
+  }
 }

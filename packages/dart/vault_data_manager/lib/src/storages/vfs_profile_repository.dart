@@ -595,7 +595,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-    await (iamApiService as dynamic).updateNodeAccessVfsWithMultiplePermissions(
+    await iamApiService.updateNodeAccessVfsWithMultiplePermissions(
       granteeDid: granteeDid,
       permissionGroups: permissionGroups,
       cancelToken:

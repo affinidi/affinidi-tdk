@@ -321,7 +321,7 @@ void main() {
       });
 
       test('should grant multiple node access groups successfully', () async {
-        when(() => (mockIamApiService as dynamic)
+        when(() => mockIamApiService
                 .updateNodeAccessVfsWithMultiplePermissions(
               granteeDid: any<String>(named: 'granteeDid'),
               permissionGroups:
@@ -341,7 +341,7 @@ void main() {
           permissionGroups: permissionGroups,
         );
 
-        verify(() => (mockIamApiService as dynamic)
+        verify(() => mockIamApiService
                 .updateNodeAccessVfsWithMultiplePermissions(
               granteeDid: 'did:test:123',
               permissionGroups:
