@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -35,86 +34,86 @@ import java.util.StringJoiner;
  * Request model of /v2/verify-vcs
  */
 @JsonPropertyOrder({
-  VerifyCredentialV2Input.JSON_PROPERTY_VERIFIABLE_CREDENTIALS,
-  VerifyCredentialV2Input.JSON_PROPERTY_ISSUER_DID_DOCUMENT
+  VerifyCredentialV2Input.JSON_PROPERTY_JWT_VCS,
+  VerifyCredentialV2Input.JSON_PROPERTY_LDP_VCS
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class VerifyCredentialV2Input {
-  public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
-  @javax.annotation.Nonnull
-  private List<String> verifiableCredentials = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_ISSUER_DID_DOCUMENT = "issuerDidDocument";
+  public static final String JSON_PROPERTY_JWT_VCS = "jwtVcs";
   @javax.annotation.Nullable
-  private Map<String, Object> issuerDidDocument = new HashMap<>();
+  private List<String> jwtVcs = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_LDP_VCS = "ldpVcs";
+  @javax.annotation.Nullable
+  private List<Map<String, Object>> ldpVcs = new ArrayList<>();
 
   public VerifyCredentialV2Input() {
   }
 
-  public VerifyCredentialV2Input verifiableCredentials(@javax.annotation.Nonnull List<String> verifiableCredentials) {
+  public VerifyCredentialV2Input jwtVcs(@javax.annotation.Nullable List<String> jwtVcs) {
     
-    this.verifiableCredentials = verifiableCredentials;
+    this.jwtVcs = jwtVcs;
     return this;
   }
 
-  public VerifyCredentialV2Input addVerifiableCredentialsItem(String verifiableCredentialsItem) {
-    if (this.verifiableCredentials == null) {
-      this.verifiableCredentials = new ArrayList<>();
+  public VerifyCredentialV2Input addJwtVcsItem(String jwtVcsItem) {
+    if (this.jwtVcs == null) {
+      this.jwtVcs = new ArrayList<>();
     }
-    this.verifiableCredentials.add(verifiableCredentialsItem);
+    this.jwtVcs.add(jwtVcsItem);
     return this;
   }
 
   /**
-   * List of VC strings
-   * @return verifiableCredentials
-   */
-  @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public List<String> getVerifiableCredentials() {
-    return verifiableCredentials;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setVerifiableCredentials(@javax.annotation.Nonnull List<String> verifiableCredentials) {
-    this.verifiableCredentials = verifiableCredentials;
-  }
-
-  public VerifyCredentialV2Input issuerDidDocument(@javax.annotation.Nullable Map<String, Object> issuerDidDocument) {
-    
-    this.issuerDidDocument = issuerDidDocument;
-    return this;
-  }
-
-  public VerifyCredentialV2Input putIssuerDidDocumentItem(String key, Object issuerDidDocumentItem) {
-    if (this.issuerDidDocument == null) {
-      this.issuerDidDocument = new HashMap<>();
-    }
-    this.issuerDidDocument.put(key, issuerDidDocumentItem);
-    return this;
-  }
-
-  /**
-   * Dynamic model
-   * @return issuerDidDocument
+   * List of JWT VC strings
+   * @return jwtVcs
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonProperty(JSON_PROPERTY_JWT_VCS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Map<String, Object> getIssuerDidDocument() {
-    return issuerDidDocument;
+  public List<String> getJwtVcs() {
+    return jwtVcs;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
-  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
-  public void setIssuerDidDocument(@javax.annotation.Nullable Map<String, Object> issuerDidDocument) {
-    this.issuerDidDocument = issuerDidDocument;
+  @JsonProperty(JSON_PROPERTY_JWT_VCS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setJwtVcs(@javax.annotation.Nullable List<String> jwtVcs) {
+    this.jwtVcs = jwtVcs;
+  }
+
+  public VerifyCredentialV2Input ldpVcs(@javax.annotation.Nullable List<Map<String, Object>> ldpVcs) {
+    
+    this.ldpVcs = ldpVcs;
+    return this;
+  }
+
+  public VerifyCredentialV2Input addLdpVcsItem(Map<String, Object> ldpVcsItem) {
+    if (this.ldpVcs == null) {
+      this.ldpVcs = new ArrayList<>();
+    }
+    this.ldpVcs.add(ldpVcsItem);
+    return this;
+  }
+
+  /**
+   * List of LDP VC objects
+   * @return ldpVcs
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_LDP_VCS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Map<String, Object>> getLdpVcs() {
+    return ldpVcs;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_LDP_VCS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLdpVcs(@javax.annotation.Nullable List<Map<String, Object>> ldpVcs) {
+    this.ldpVcs = ldpVcs;
   }
 
   @Override
@@ -126,21 +125,21 @@ public class VerifyCredentialV2Input {
       return false;
     }
     VerifyCredentialV2Input verifyCredentialV2Input = (VerifyCredentialV2Input) o;
-    return Objects.equals(this.verifiableCredentials, verifyCredentialV2Input.verifiableCredentials) &&
-        Objects.equals(this.issuerDidDocument, verifyCredentialV2Input.issuerDidDocument);
+    return Objects.equals(this.jwtVcs, verifyCredentialV2Input.jwtVcs) &&
+        Objects.equals(this.ldpVcs, verifyCredentialV2Input.ldpVcs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verifiableCredentials, issuerDidDocument);
+    return Objects.hash(jwtVcs, ldpVcs);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class VerifyCredentialV2Input {\n");
-    sb.append("    verifiableCredentials: ").append(toIndentedString(verifiableCredentials)).append("\n");
-    sb.append("    issuerDidDocument: ").append(toIndentedString(issuerDidDocument)).append("\n");
+    sb.append("    jwtVcs: ").append(toIndentedString(jwtVcs)).append("\n");
+    sb.append("    ldpVcs: ").append(toIndentedString(ldpVcs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -188,13 +187,13 @@ public class VerifyCredentialV2Input {
 
     StringJoiner joiner = new StringJoiner("&");
 
-    // add `verifiableCredentials` to the URL query string
-    if (getVerifiableCredentials() != null) {
-      for (int i = 0; i < getVerifiableCredentials().size(); i++) {
+    // add `jwtVcs` to the URL query string
+    if (getJwtVcs() != null) {
+      for (int i = 0; i < getJwtVcs().size(); i++) {
         try {
-          joiner.add(String.format("%sverifiableCredentials%s%s=%s", prefix, suffix,
+          joiner.add(String.format("%sjwtVcs%s%s=%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
-              URLEncoder.encode(String.valueOf(getVerifiableCredentials().get(i)), "UTF-8").replaceAll("\\+", "%20")));
+              URLEncoder.encode(String.valueOf(getJwtVcs().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
           throw new RuntimeException(e);
@@ -202,13 +201,13 @@ public class VerifyCredentialV2Input {
       }
     }
 
-    // add `issuerDidDocument` to the URL query string
-    if (getIssuerDidDocument() != null) {
-      for (String _key : getIssuerDidDocument().keySet()) {
+    // add `ldpVcs` to the URL query string
+    if (getLdpVcs() != null) {
+      for (int i = 0; i < getLdpVcs().size(); i++) {
         try {
-          joiner.add(String.format("%sissuerDidDocument%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
-              getIssuerDidDocument().get(_key), URLEncoder.encode(String.valueOf(getIssuerDidDocument().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+          joiner.add(String.format("%sldpVcs%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+              URLEncoder.encode(String.valueOf(getLdpVcs().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
           throw new RuntimeException(e);

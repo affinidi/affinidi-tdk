@@ -4,10 +4,10 @@ Request model of /v2/verify-vcs
 
 ## Properties
 
-| Name                      | Type                        | Description        | Notes                             |
-| ------------------------- | --------------------------- | ------------------ | --------------------------------- |
-| **verifiableCredentials** | **Array&lt;string&gt;**     | List of VC strings | [default to undefined]            |
-| **issuerDidDocument**     | **{ [key: string]: any; }** | Dynamic model      | [optional] [default to undefined] |
+| Name       | Type                                     | Description            | Notes                             |
+| ---------- | ---------------------------------------- | ---------------------- | --------------------------------- |
+| **jwtVcs** | **Array&lt;string&gt;**                  | List of JWT VC strings | [optional] [default to undefined] |
+| **ldpVcs** | **Array&lt;{ [key: string]: any; }&gt;** | List of LDP VC objects | [optional] [default to undefined] |
 
 ## Example
 
@@ -15,8 +15,8 @@ Request model of /v2/verify-vcs
 import { VerifyCredentialV2Input } from '@affinidi-tdk/credential-verification-client'
 
 const instance: VerifyCredentialV2Input = {
-  verifiableCredentials,
-  issuerDidDocument,
+  jwtVcs,
+  ldpVcs,
 }
 ```
 

@@ -216,6 +216,12 @@
     <script>
         let submitted = false;
 
+        // Extract token from URL query parameters
+        function getTokenFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('token');
+        }
+
         async function submitVerification(approved) {
             if (submitted) return;
             submitted = true;
@@ -229,13 +235,18 @@
             status.style.display = 'block';
 
             try {
+                const token = getTokenFromUrl();
+                if (!token) {
+                    throw new Error('No token found in URL');
+                }
+
                 const response = await fetch('http://localhost:8080/verification-callback', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
                     body: new URLSearchParams({
-                        nonce: '{{NONCE}}',
+                        token: token,
                         verified: approved.toString()
                     })
                 });

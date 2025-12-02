@@ -121,7 +121,7 @@ Future<void> main() async {
                 },
                 onRequestToIssueCredential: ({
                   required message,
-                  isAssertionValid,
+                  assertionValidationResult,
                   holderDidFromAssertion,
                   challenge,
                 }) async {
@@ -235,11 +235,12 @@ Future<void> main() async {
               vdipIssuer.listenForIncomingMessages(
                 onRequestToIssueCredential: ({
                   required message,
-                  isAssertionValid,
+                  assertionValidationResult,
                   holderDidFromAssertion,
                   challenge,
                 }) async {
-                  if (isAssertionValid == null || !isAssertionValid) {
+                  if (assertionValidationResult == null ||
+                      !assertionValidationResult.isValid) {
                     testCompleter.completeError(
                       Exception('Assertion is not valid'),
                     );
@@ -337,7 +338,7 @@ Future<void> main() async {
               vdipIssuer.listenForIncomingMessages(
                 onRequestToIssueCredential: ({
                   required message,
-                  isAssertionValid,
+                  assertionValidationResult,
                   holderDidFromAssertion,
                   challenge,
                 }) async {
@@ -492,7 +493,7 @@ Future<void> main() async {
     });
 
     test('Should fail if expired assertion', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final sut = VdipIssuer(
         didManager: issuerDidManager,
@@ -503,12 +504,11 @@ Future<void> main() async {
       sut.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == false && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -544,12 +544,20 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final actual = await testCompleter.future;
-      expect(actual, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isExpirationValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isAudienceValid, isTrue);
     });
 
     test('Should fail if invalid subject', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final vdipIssuer = VdipIssuer(
         didManager: issuerDidManager,
@@ -560,12 +568,11 @@ Future<void> main() async {
       vdipIssuer.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == false && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -601,12 +608,20 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final isValid = await testCompleter.future;
-      expect(isValid, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isAudienceValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
     });
 
     test('Should fails if invalid issuer', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final vdipIssuer = VdipIssuer(
         didManager: issuerDidManager,
@@ -617,12 +632,11 @@ Future<void> main() async {
       vdipIssuer.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == true && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -660,12 +674,20 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final isValid = await testCompleter.future;
-      expect(isValid, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isIssuerValid, isFalse);
+      expect(result.isSubjectValid, isTrue);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isAudienceValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
     });
 
     test('Should fails if invalid audience', () async {
-      final testCompleter = Completer<bool>();
+      final testCompleter = Completer<AssertionValidationResult?>();
 
       final vdipIssuer = VdipIssuer(
         didManager: issuerDidManager,
@@ -676,12 +698,11 @@ Future<void> main() async {
       vdipIssuer.listenForIncomingMessages(
         onRequestToIssueCredential: ({
           required message,
-          isAssertionValid,
+          assertionValidationResult,
           holderDidFromAssertion,
           challenge,
         }) async {
-          testCompleter.complete(
-              isAssertionValid == false && holderDidFromAssertion == null);
+          testCompleter.complete(assertionValidationResult);
         },
         onProblemReport: (message) async {
           testCompleter.completeError(message);
@@ -719,8 +740,16 @@ Future<void> main() async {
         encryptedMessage.toJson(),
       );
 
-      final isValid = await testCompleter.future;
-      expect(isValid, isFalse);
+      final result = await testCompleter.future;
+
+      expect(result, isNotNull);
+      expect(result!.isValid, isFalse);
+      expect(result.isAudienceValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
+      expect(result.isProposalValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
     });
   });
 
@@ -757,6 +786,268 @@ Future<void> main() async {
 
       expect(actual, isA<ProblemReportMessage>());
       expect(actual.parentThreadId, messageId);
+    });
+  });
+
+  group('validateHolderToken', () {
+    late VdipIssuer vdipIssuer;
+    late DidManager holderDidManager;
+    late DidSigner holderSigner;
+    late String holderDid;
+
+    setUp(() async {
+      mockMediator = await MockMediator.init(keyType: KeyType.p256);
+
+      issuerDidManager = await createDidManager(
+        didMethod: 'did:key',
+        keyType: KeyType.p256,
+      );
+
+      holderDidManager = await createDidManager(
+        didMethod: 'did:key',
+        keyType: KeyType.p256,
+      );
+
+      await mockMediator.addClientForDidManager(issuerDidManager);
+      await mockMediator.addClientForDidManager(holderDidManager);
+
+      final holderDidDocument = await holderDidManager.getDidDocument();
+      holderDid = holderDidDocument.id;
+
+      holderSigner = await holderDidManager.getSigner(
+        holderDidManager.authentication.first,
+      );
+
+      vdipIssuer = VdipIssuer(
+        didManager: issuerDidManager,
+        mediatorClient: mockMediator.clients[issuerDidManager]!,
+        featureDisclosures: FeatureDiscoveryHelper.vdipIssuerDisclosures,
+      );
+    });
+
+    test('validates a valid holder token successfully', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600; // 1 hour
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isTrue);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
+      expect(result.isNonceValid, isTrue);
+      expect(result.isThreadIdValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when nonce does not match', () async {
+      final nonce = const Uuid().v4();
+      final differentNonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: differentNonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
+      expect(result.isNonceValid, isFalse);
+      expect(result.isThreadIdValid, isTrue);
+      expect(result.isExpirationValid, isTrue);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when threadId does not match', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final differentThreadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: differentThreadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
+      expect(result.isNonceValid, isTrue);
+      expect(result.isThreadIdValid, isFalse);
+      expect(result.isExpirationValid, isTrue);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when token has expired', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 - 3600; // 1 hour ago
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000 - 7200,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isTrue);
+      expect(result.isIssuerValid, isTrue);
+      expect(result.isSubjectValid, isTrue);
+      expect(result.isNonceValid, isTrue);
+      expect(result.isThreadIdValid, isTrue);
+      expect(result.isExpirationValid, isFalse);
+      expect(result.nonce, equals(nonce));
+      expect(result.error, isNull);
+    });
+
+    test('fails validation when DID does not match', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+      final expirationTime =
+          DateTime.now().millisecondsSinceEpoch ~/ 1000 + 3600;
+
+      // Create another DID manager for a different holder
+      final differentHolderDidManager = await createDidManager(
+        didMethod: 'did:key',
+        keyType: KeyType.p256,
+      );
+      final differentHolderDidDocument =
+          await differentHolderDidManager.getDidDocument();
+      final differentHolderDid = differentHolderDidDocument.id;
+
+      final tokenPayload = {
+        'iss': holderDid,
+        'sub': holderDid,
+        'nonce': nonce,
+        'threadId': threadId,
+        'exp': expirationTime,
+        'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+      };
+
+      final token = await JwtHelper.createAndSignJwt(
+        tokenPayload,
+        DidSignerAdapter(holderSigner),
+      );
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: differentHolderDid, // Different DID
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      // When we try to verify with a different DID's document, the signature
+      // verification might still succeed if the DID document contains compatible keys,
+      // but the DID validation will fail because iss/sub don't match
+      expect(result.isValid, isFalse);
+      // Signature might succeed depending on key compatibility, but DID check will fail
+      expect(result.isIssuerValid, isFalse,
+          reason:
+              'Issuer validation should fail when token DIDs dont match expected DID');
+      expect(result.isSubjectValid, isFalse,
+          reason:
+              'Subject validation should fail when token DIDs dont match expected DID');
+    });
+
+    test('fails validation with invalid token format', () async {
+      final nonce = const Uuid().v4();
+      final threadId = const Uuid().v4();
+
+      final result = await vdipIssuer.validateHolderToken(
+        token: 'invalid.token.format',
+        holderDid: holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: threadId,
+      );
+
+      expect(result.isValid, isFalse);
+      expect(result.isSignatureValid, isFalse);
+      expect(result.isIssuerValid, isFalse);
+      expect(result.isSubjectValid, isFalse);
+      expect(result.isNonceValid, isFalse);
+      expect(result.isThreadIdValid, isFalse);
+      expect(result.isExpirationValid, isFalse);
+      expect(result.nonce, isEmpty);
+      expect(result.error, isNotNull);
     });
   });
 }

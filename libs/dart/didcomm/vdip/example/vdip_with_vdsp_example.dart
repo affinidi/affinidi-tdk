@@ -301,7 +301,7 @@ Future<void> main() async {
     onRequestToIssueCredential: ({
       required message,
       holderDidFromAssertion,
-      isAssertionValid,
+      assertionValidationResult,
       challenge,
     }) async {
       prettyPrint(

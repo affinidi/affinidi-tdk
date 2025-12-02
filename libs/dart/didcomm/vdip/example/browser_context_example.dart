@@ -244,7 +244,7 @@ Future<void> main() async {
     onRequestToIssueCredential: ({
       required message,
       holderDidFromAssertion,
-      isAssertionValid,
+      assertionValidationResult,
       challenge,
     }) async {
       prettyPrint(
@@ -360,20 +360,72 @@ Future<HttpServer> startIssuerServer({
           await request.cast<List<int>>().transform(const Utf8Decoder()).join();
       final data = Uri.splitQueryString(body);
 
-      final nonce = data['nonce'];
+      final token = data['token'];
       final verified = data['verified'] == 'true';
 
       print('Issuer Server: Verification callback received');
-      print('   - Nonce: $nonce');
+      print('   - Token: ${token?.substring(0, 20)}...');
       print('   - Verified: $verified\n');
 
+      if (token == null) {
+        request.response.statusCode = HttpStatus.badRequest;
+        request.response.write('Missing token');
+        await request.response.close();
+        return;
+      }
+
+      // First, decode the token to extract the nonce
+      final decodedToken = JwtHelper.decode(serializedJwt: token);
+      final nonce = decodedToken.claims['nonce'] as String?;
+
+      if (nonce == null) {
+        print('Issuer: No nonce found in token');
+        request.response.statusCode = HttpStatus.badRequest;
+        request.response.write('Invalid token: missing nonce');
+        await request.response.close();
+        return;
+      }
+
+      // Get the verification request for this nonce
       final verificationRequest = pendingVerifications[nonce];
-      if (verificationRequest != null) {
-        final verificationRequest = pendingVerifications[nonce];
-        if (verificationRequest == null) {
-          throw StateError('No pending verification for nonce: $nonce');
+      if (verificationRequest == null) {
+        print('Issuer: No pending verification found for nonce: $nonce');
+        request.response.statusCode = HttpStatus.unauthorized;
+        request.response.write('Invalid or expired token');
+        await request.response.close();
+        return;
+      }
+
+      // Now validate the token with the expected values
+      final validationResult = await vdipIssuer.validateHolderToken(
+        token: token,
+        holderDid: verificationRequest.holderDid,
+        expectedNonce: nonce,
+        expectedThreadId: verificationRequest.threadId,
+      );
+
+      if (!validationResult.isValid) {
+        print('Issuer: Token validation failed');
+        print('   - Signature valid: ${validationResult.isSignatureValid}');
+        print('   - Iss valid: ${validationResult.isIssuerValid}');
+        print('   - Sub valid: ${validationResult.isSubjectValid}');
+        print('   - Nonce valid: ${validationResult.isNonceValid}');
+        print('   - Thread ID valid: ${validationResult.isThreadIdValid}');
+        print('   - Expiration valid: ${validationResult.isExpirationValid}');
+        if (validationResult.error != null) {
+          print('   - Error: ${validationResult.error}');
         }
 
+        request.response.statusCode = HttpStatus.unauthorized;
+        request.response.write('Invalid or expired token');
+        await request.response.close();
+        return;
+      }
+
+      print('Issuer: Token validated successfully!');
+      print('   - Nonce from token: ${validationResult.nonce}\n');
+
+      if (verified) {
         print('Issuer: Verification successful! Issuing credential...\n');
         // Issue the credential
         final unsignedCredential = VcDataModelV1(
@@ -417,11 +469,13 @@ Future<HttpServer> startIssuerServer({
           verifiableCredential: issuedCredential,
         );
 
-        // Clean up
-        pendingVerifications.remove(nonce);
-
         print('Issuer: Credential sent to holder!\n');
+      } else {
+        print('Issuer: Verification denied by user\n');
       }
+
+      // Clean up
+      pendingVerifications.remove(nonce);
 
       request.response.statusCode = HttpStatus.ok;
       request.response.write('OK');
@@ -472,21 +526,12 @@ Future<HttpServer> startVerificationServer() async {
   return server;
 }
 
-/// Extracts nonce from JWT token (simplified for demo)
+/// Extracts nonce from JWT token using JwtHelper
 String _extractNonceFromToken(String token) {
   try {
-    // JWT format: header.payload.signature
-    final parts = token.split('.');
-    if (parts.length != 3) return '';
+    final decodedToken = JwtHelper.decode(serializedJwt: token);
 
-    // Decode payload (base64url)
-    final payload = parts[1];
-    final normalized = base64Url.normalize(payload);
-    final decoded = utf8.decode(base64Url.decode(normalized));
-
-    // Parse JSON and extract nonce
-    final json = jsonDecode(decoded) as Map<String, dynamic>;
-    return json['nonce'] as String? ?? '';
+    return decodedToken.claims['nonce'] as String? ?? '';
   } catch (e) {
     print('Error extracting nonce: $e');
     return '';

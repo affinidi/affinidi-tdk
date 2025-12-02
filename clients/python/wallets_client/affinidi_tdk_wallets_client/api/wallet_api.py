@@ -28,8 +28,16 @@ from affinidi_tdk_wallets_client.models.create_wallet_input import CreateWalletI
 from affinidi_tdk_wallets_client.models.create_wallet_response import CreateWalletResponse
 from affinidi_tdk_wallets_client.models.sign_credential_input_dto import SignCredentialInputDto
 from affinidi_tdk_wallets_client.models.sign_credential_result_dto import SignCredentialResultDto
+from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_input_dto import SignCredentialsDm2SdJwtInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_result_dto import SignCredentialsDm2SdJwtResultDto
+from affinidi_tdk_wallets_client.models.sign_credentials_jwt_input_dto import SignCredentialsJwtInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_jwt_result_dto import SignCredentialsJwtResultDto
+from affinidi_tdk_wallets_client.models.sign_credentials_ldp_input_dto import SignCredentialsLdpInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_ldp_result_dto import SignCredentialsLdpResultDto
 from affinidi_tdk_wallets_client.models.sign_jwt_token import SignJwtToken
 from affinidi_tdk_wallets_client.models.sign_jwt_token_ok import SignJwtTokenOK
+from affinidi_tdk_wallets_client.models.sign_presentation_ldp_input_dto import SignPresentationLdpInputDto
+from affinidi_tdk_wallets_client.models.sign_presentation_ldp_result_dto import SignPresentationLdpResultDto
 from affinidi_tdk_wallets_client.models.update_wallet_input import UpdateWalletInput
 from affinidi_tdk_wallets_client.models.wallet_dto import WalletDto
 from affinidi_tdk_wallets_client.models.wallets_list_dto import WalletsListDto
@@ -780,6 +788,480 @@ class WalletApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
+    def sign_credentials_jwt(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_credentials_jwt_input_dto : Annotated[SignCredentialsJwtInputDto, Field(..., description="signCredentialsJwt")], **kwargs) -> SignCredentialsJwtResultDto:  # noqa: E501
+        """sign_credentials_jwt  # noqa: E501
+
+        signs credential with the wallet v2  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_credentials_jwt(wallet_id, sign_credentials_jwt_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_credentials_jwt_input_dto: signCredentialsJwt (required)
+        :type sign_credentials_jwt_input_dto: SignCredentialsJwtInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SignCredentialsJwtResultDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the sign_credentials_jwt_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.sign_credentials_jwt_with_http_info(wallet_id, sign_credentials_jwt_input_dto, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def sign_credentials_jwt_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_credentials_jwt_input_dto : Annotated[SignCredentialsJwtInputDto, Field(..., description="signCredentialsJwt")], **kwargs) -> ApiResponse:  # noqa: E501
+        """sign_credentials_jwt  # noqa: E501
+
+        signs credential with the wallet v2  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_credentials_jwt_with_http_info(wallet_id, sign_credentials_jwt_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_credentials_jwt_input_dto: signCredentialsJwt (required)
+        :type sign_credentials_jwt_input_dto: SignCredentialsJwtInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SignCredentialsJwtResultDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'sign_credentials_jwt_input_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sign_credentials_jwt" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['sign_credentials_jwt_input_dto'] is not None:
+            _body_params = _params['sign_credentials_jwt_input_dto']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SignCredentialsJwtResultDto",
+            '400': "InvalidParameterError",
+            '403': "OperationForbiddenError",
+            '404': "NotFoundError",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/credentials/jwt/sign', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def sign_credentials_ldp(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_credentials_ldp_input_dto : Annotated[SignCredentialsLdpInputDto, Field(..., description="signCredentialsLdp")], **kwargs) -> SignCredentialsLdpResultDto:  # noqa: E501
+        """sign_credentials_ldp  # noqa: E501
+
+        signs credential with the wallet v2  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_credentials_ldp(wallet_id, sign_credentials_ldp_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_credentials_ldp_input_dto: signCredentialsLdp (required)
+        :type sign_credentials_ldp_input_dto: SignCredentialsLdpInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SignCredentialsLdpResultDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the sign_credentials_ldp_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.sign_credentials_ldp_with_http_info(wallet_id, sign_credentials_ldp_input_dto, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def sign_credentials_ldp_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_credentials_ldp_input_dto : Annotated[SignCredentialsLdpInputDto, Field(..., description="signCredentialsLdp")], **kwargs) -> ApiResponse:  # noqa: E501
+        """sign_credentials_ldp  # noqa: E501
+
+        signs credential with the wallet v2  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_credentials_ldp_with_http_info(wallet_id, sign_credentials_ldp_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_credentials_ldp_input_dto: signCredentialsLdp (required)
+        :type sign_credentials_ldp_input_dto: SignCredentialsLdpInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SignCredentialsLdpResultDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'sign_credentials_ldp_input_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sign_credentials_ldp" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['sign_credentials_ldp_input_dto'] is not None:
+            _body_params = _params['sign_credentials_ldp_input_dto']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SignCredentialsLdpResultDto",
+            '400': "InvalidParameterError",
+            '403': "OperationForbiddenError",
+            '404': "NotFoundError",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/credentials/ldp/sign', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def sign_credentials_sd_jwt(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_credentials_dm2_sd_jwt_input_dto : Annotated[SignCredentialsDm2SdJwtInputDto, Field(..., description="SignCredentialsDm1SdJwt")], **kwargs) -> SignCredentialsDm2SdJwtResultDto:  # noqa: E501
+        """sign_credentials_sd_jwt  # noqa: E501
+
+        signs credential with the wallet v2  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_credentials_sd_jwt(wallet_id, sign_credentials_dm2_sd_jwt_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_credentials_dm2_sd_jwt_input_dto: SignCredentialsDm1SdJwt (required)
+        :type sign_credentials_dm2_sd_jwt_input_dto: SignCredentialsDm2SdJwtInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SignCredentialsDm2SdJwtResultDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the sign_credentials_sd_jwt_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.sign_credentials_sd_jwt_with_http_info(wallet_id, sign_credentials_dm2_sd_jwt_input_dto, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def sign_credentials_sd_jwt_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_credentials_dm2_sd_jwt_input_dto : Annotated[SignCredentialsDm2SdJwtInputDto, Field(..., description="SignCredentialsDm1SdJwt")], **kwargs) -> ApiResponse:  # noqa: E501
+        """sign_credentials_sd_jwt  # noqa: E501
+
+        signs credential with the wallet v2  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_credentials_sd_jwt_with_http_info(wallet_id, sign_credentials_dm2_sd_jwt_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_credentials_dm2_sd_jwt_input_dto: SignCredentialsDm1SdJwt (required)
+        :type sign_credentials_dm2_sd_jwt_input_dto: SignCredentialsDm2SdJwtInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SignCredentialsDm2SdJwtResultDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'sign_credentials_dm2_sd_jwt_input_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sign_credentials_sd_jwt" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['sign_credentials_dm2_sd_jwt_input_dto'] is not None:
+            _body_params = _params['sign_credentials_dm2_sd_jwt_input_dto']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SignCredentialsDm2SdJwtResultDto",
+            '400': "InvalidParameterError",
+            '403': "OperationForbiddenError",
+            '404': "NotFoundError",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/credentials/sd-jwt/sign', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
     def sign_jwt_token(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet.")], sign_jwt_token : Annotated[SignJwtToken, Field(..., description="SignJwtToken")], **kwargs) -> SignJwtTokenOK:  # noqa: E501
         """sign_jwt_token  # noqa: E501
 
@@ -922,6 +1404,164 @@ class WalletApi:
 
         return self.api_client.call_api(
             '/v1/wallets/{walletId}/sign-jwt', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def sign_presentations_ldp(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_presentation_ldp_input_dto : Annotated[SignPresentationLdpInputDto, Field(..., description="signPresentationLdp")], **kwargs) -> SignPresentationLdpResultDto:  # noqa: E501
+        """sign_presentations_ldp  # noqa: E501
+
+        signs presentation with the wallet  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_presentations_ldp(wallet_id, sign_presentation_ldp_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_presentation_ldp_input_dto: signPresentationLdp (required)
+        :type sign_presentation_ldp_input_dto: SignPresentationLdpInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: SignPresentationLdpResultDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the sign_presentations_ldp_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.sign_presentations_ldp_with_http_info(wallet_id, sign_presentation_ldp_input_dto, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def sign_presentations_ldp_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], sign_presentation_ldp_input_dto : Annotated[SignPresentationLdpInputDto, Field(..., description="signPresentationLdp")], **kwargs) -> ApiResponse:  # noqa: E501
+        """sign_presentations_ldp  # noqa: E501
+
+        signs presentation with the wallet  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.sign_presentations_ldp_with_http_info(wallet_id, sign_presentation_ldp_input_dto, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param sign_presentation_ldp_input_dto: signPresentationLdp (required)
+        :type sign_presentation_ldp_input_dto: SignPresentationLdpInputDto
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(SignPresentationLdpResultDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'sign_presentation_ldp_input_dto'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method sign_presentations_ldp" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['sign_presentation_ldp_input_dto'] is not None:
+            _body_params = _params['sign_presentation_ldp_input_dto']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "SignPresentationLdpResultDto",
+            '400': "InvalidParameterError",
+            '403': "OperationForbiddenError",
+            '404': "NotFoundError",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/presentations/ldp/sign', 'POST',
             _path_params,
             _query_params,
             _header_params,
