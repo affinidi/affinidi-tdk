@@ -6,6 +6,9 @@ import '../../response_body.dart';
 
 /// Base class for instance operation messages.
 abstract class BaseInstanceMessage extends PlainTextMessage {
+  /// Base URI for instance operations.
+  static String baseInstanceOperationsUri = 'affinidi.io/operations/ama';
+
   /// Creates a base instance message.
   ///
   /// [operationName] is the name of the operation.
@@ -20,7 +23,7 @@ abstract class BaseInstanceMessage extends PlainTextMessage {
     required String operationName,
   }) : super(
           type: Uri.parse(
-            'affinidi.io/operations/ama/$operationName',
+            '$baseInstanceOperationsUri/$operationName',
           ),
         );
 }
