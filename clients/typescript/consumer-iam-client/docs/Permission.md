@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name        | Type                                         | Description | Notes                  |
-| ----------- | -------------------------------------------- | ----------- | ---------------------- |
-| **rights**  | [**Array&lt;RightsEnum&gt;**](RightsEnum.md) |             | [default to undefined] |
-| **nodeIds** | **Array&lt;string&gt;**                      |             | [default to undefined] |
+| Name          | Type                                         | Description | Notes                             |
+| ------------- | -------------------------------------------- | ----------- | --------------------------------- |
+| **rights**    | [**Array&lt;RightsEnum&gt;**](RightsEnum.md) |             | [default to undefined]            |
+| **nodeIds**   | **Array&lt;string&gt;**                      |             | [default to undefined]            |
+| **expiresAt** | **string**                                   |             | [optional] [default to undefined] |
 
 ## Example
 
@@ -15,6 +16,7 @@ import { Permission } from '@affinidi-tdk/consumer-iam-client'
 const instance: Permission = {
   rights,
   nodeIds,
+  expiresAt,
 }
 ```
 

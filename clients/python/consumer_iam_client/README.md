@@ -106,12 +106,13 @@ with affinidi_tdk_consumer_iam_client.ApiClient(configuration) as api_client:
 
 All URIs are relative to *https://apse1.api.affinidi.io/cid*
 
-| Class             | Method                                                                                   | HTTP request                                 | Description                             |
-| ----------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------- |
-| _AuthzApi_        | [**delete_access_vfs**](docs/AuthzApi.md#delete_access_vfs)                              | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid             |
-| _AuthzApi_        | [**grant_access_vfs**](docs/AuthzApi.md#grant_access_vfs)                                | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system |
-| _AuthzApi_        | [**update_access_vfs**](docs/AuthzApi.md#update_access_vfs)                              | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid             |
-| _ConsumerAuthApi_ | [**consumer_auth_token_endpoint**](docs/ConsumerAuthApi.md#consumer_auth_token_endpoint) | **POST** /v1/consumer/oauth2/token           | The Consumer OAuth 2.0 Token Endpoint   |
+| Class             | Method                                                                                   | HTTP request                                 | Description                                              |
+| ----------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| _AuthzApi_        | [**delete_access_vfs**](docs/AuthzApi.md#delete_access_vfs)                              | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid                              |
+| _AuthzApi_        | [**get_access_vfs**](docs/AuthzApi.md#get_access_vfs)                                    | **GET** /v1/authz/vfs/access/{granteeDid}    | Get permissions to the virtual file system for a subject |
+| _AuthzApi_        | [**grant_access_vfs**](docs/AuthzApi.md#grant_access_vfs)                                | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system                  |
+| _AuthzApi_        | [**update_access_vfs**](docs/AuthzApi.md#update_access_vfs)                              | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid                              |
+| _ConsumerAuthApi_ | [**consumer_auth_token_endpoint**](docs/ConsumerAuthApi.md#consumer_auth_token_endpoint) | **POST** /v1/consumer/oauth2/token           | The Consumer OAuth 2.0 Token Endpoint                    |
 | _WellKnownApi_    | [**get_well_known_jwks**](docs/WellKnownApi.md#get_well_known_jwks)                      | **GET** /.well-known/jwks.json               |
 
 ## Documentation For Models
@@ -119,6 +120,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cid*
 - [ConsumerAuthTokenEndpointInput](docs/ConsumerAuthTokenEndpointInput.md)
 - [ConsumerAuthTokenEndpointOutput](docs/ConsumerAuthTokenEndpointOutput.md)
 - [CorsConsumerAuthTokenEndpointOK](docs/CorsConsumerAuthTokenEndpointOK.md)
+- [GetAccessOutput](docs/GetAccessOutput.md)
 - [GrantAccessInput](docs/GrantAccessInput.md)
 - [GrantAccessOutput](docs/GrantAccessOutput.md)
 - [InvalidDIDError](docs/InvalidDIDError.md)

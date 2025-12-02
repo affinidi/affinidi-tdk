@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name         | Type                                  | Description | Notes |
-| ------------ | ------------------------------------- | ----------- | ----- |
-| **rights**   | [**List[RightsEnum]**](RightsEnum.md) |             |
-| **node_ids** | **List[str]**                         |             |
+| Name           | Type                                  | Description | Notes      |
+| -------------- | ------------------------------------- | ----------- | ---------- |
+| **rights**     | [**List[RightsEnum]**](RightsEnum.md) |             |
+| **node_ids**   | **List[str]**                         |             |
+| **expires_at** | **datetime**                          |             | [optional] |
 
 ## Example
 

@@ -135,6 +135,19 @@ export interface CorsConsumerAuthTokenEndpointOK {
 /**
  *
  * @export
+ * @interface GetAccessOutput
+ */
+export interface GetAccessOutput {
+  /**
+   * List of permissions currently granted
+   * @type {Array<Permission>}
+   * @memberof GetAccessOutput
+   */
+  permissions: Array<Permission>
+}
+/**
+ *
+ * @export
  * @interface GrantAccessInput
  */
 export interface GrantAccessInput {
@@ -458,6 +471,12 @@ export interface Permission {
    * @memberof Permission
    */
   nodeIds: Array<string>
+  /**
+   *
+   * @type {string}
+   * @memberof Permission
+   */
+  expiresAt?: string
 }
 /**
  *
@@ -675,11 +694,65 @@ export const AuthzApiAxiosParamCreator = function (
       }
     },
     /**
+     * Retrieves access rights granted to a subject for the virtual file system
+     * @summary Get permissions to the virtual file system for a subject
+     * @param {string} granteeDid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAccessVfs: async (
+      granteeDid: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'granteeDid' is not null or undefined
+      assertParamExists('getAccessVfs', 'granteeDid', granteeDid)
+      const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
+        `{${'granteeDid'}}`,
+        encodeURIComponent(String(granteeDid)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Grants access rights to a subject for the virtual file system
      * @summary Grant access to the virtual file system
      * @param {string} granteeDid
      * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     grantAccessVfs: async (
@@ -847,11 +920,45 @@ export const AuthzApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * Retrieves access rights granted to a subject for the virtual file system
+     * @summary Get permissions to the virtual file system for a subject
+     * @param {string} granteeDid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getAccessVfs(
+      granteeDid: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<GetAccessOutput>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getAccessVfs(
+        granteeDid,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AuthzApi.getAccessVfs']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Grants access rights to a subject for the virtual file system
      * @summary Grant access to the virtual file system
      * @param {string} granteeDid
      * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     async grantAccessVfs(
@@ -948,11 +1055,27 @@ export const AuthzApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * Retrieves access rights granted to a subject for the virtual file system
+     * @summary Get permissions to the virtual file system for a subject
+     * @param {string} granteeDid
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getAccessVfs(
+      granteeDid: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<GetAccessOutput> {
+      return localVarFp
+        .getAccessVfs(granteeDid, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Grants access rights to a subject for the virtual file system
      * @summary Grant access to the virtual file system
      * @param {string} granteeDid
      * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
      * @param {*} [options] Override http request option.
+     * @deprecated
      * @throws {RequiredError}
      */
     grantAccessVfs(
@@ -1006,11 +1129,26 @@ export class AuthzApi extends BaseAPI {
   }
 
   /**
+   * Retrieves access rights granted to a subject for the virtual file system
+   * @summary Get permissions to the virtual file system for a subject
+   * @param {string} granteeDid
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthzApi
+   */
+  public getAccessVfs(granteeDid: string, options?: RawAxiosRequestConfig) {
+    return AuthzApiFp(this.configuration)
+      .getAccessVfs(granteeDid, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * Grants access rights to a subject for the virtual file system
    * @summary Grant access to the virtual file system
    * @param {string} granteeDid
    * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
    * @param {*} [options] Override http request option.
+   * @deprecated
    * @throws {RequiredError}
    * @memberof AuthzApi
    */

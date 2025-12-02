@@ -12,6 +12,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ConsumerAuthTokenEndpointInputGrantTypeEnum.serializer)
       ..add(ConsumerAuthTokenEndpointOutput.serializer)
       ..add(CorsConsumerAuthTokenEndpointOK.serializer)
+      ..add(GetAccessOutput.serializer)
       ..add(GrantAccessInput.serializer)
       ..add(GrantAccessOutput.serializer)
       ..add(InvalidDIDError.serializer)
@@ -64,6 +65,9 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JsonWebKeyDto)]),
           () => ListBuilder<JsonWebKeyDto>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Permission)]),
+          () => ListBuilder<Permission>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Permission)]),
           () => ListBuilder<Permission>())

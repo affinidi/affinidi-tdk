@@ -20,6 +20,7 @@ import com.affinidi.tdk.consumer.iam.client.BaseApi;
 import com.affinidi.tdk.consumer.iam.client.Configuration;
 import com.affinidi.tdk.consumer.iam.client.Pair;
 
+import com.affinidi.tdk.consumer.iam.client.models.GetAccessOutput;
 import com.affinidi.tdk.consumer.iam.client.models.GrantAccessInput;
 import com.affinidi.tdk.consumer.iam.client.models.GrantAccessOutput;
 import com.affinidi.tdk.consumer.iam.client.models.UnauthorizedError;
@@ -119,13 +120,90 @@ public class AuthzApi extends BaseApi {
   }
 
   /**
+   * Get permissions to the virtual file system for a subject
+   * Retrieves access rights granted to a subject for the virtual file system
+   * @param granteeDid  (required)
+   * @return GetAccessOutput
+   * @throws ApiException if fails to make API call
+   */
+  public GetAccessOutput getAccessVfs(@javax.annotation.Nonnull String granteeDid) throws ApiException {
+    return this.getAccessVfs(granteeDid, Collections.emptyMap());
+  }
+
+
+  /**
+   * Get permissions to the virtual file system for a subject
+   * Retrieves access rights granted to a subject for the virtual file system
+   * @param granteeDid  (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return GetAccessOutput
+   * @throws ApiException if fails to make API call
+   */
+  public GetAccessOutput getAccessVfs(@javax.annotation.Nonnull String granteeDid, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'granteeDid' is set
+    if (granteeDid == null) {
+      throw new ApiException(400, "Missing the required parameter 'granteeDid' when calling getAccessVfs");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/authz/vfs/access/{granteeDid}"
+      .replaceAll("\\{" + "granteeDid" + "\\}", apiClient.escapeString(apiClient.parameterToString(granteeDid)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<GetAccessOutput> localVarReturnType = new TypeReference<GetAccessOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
    * Grant access to the virtual file system
    * Grants access rights to a subject for the virtual file system
    * @param granteeDid  (required)
    * @param grantAccessInput Grant access to virtual file system (required)
    * @return GrantAccessOutput
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   public GrantAccessOutput grantAccessVfs(@javax.annotation.Nonnull String granteeDid, @javax.annotation.Nonnull GrantAccessInput grantAccessInput) throws ApiException {
     return this.grantAccessVfs(granteeDid, grantAccessInput, Collections.emptyMap());
   }
@@ -139,7 +217,9 @@ public class AuthzApi extends BaseApi {
    * @param additionalHeaders additionalHeaders for this call
    * @return GrantAccessOutput
    * @throws ApiException if fails to make API call
+   * @deprecated
    */
+  @Deprecated
   public GrantAccessOutput grantAccessVfs(@javax.annotation.Nonnull String granteeDid, @javax.annotation.Nonnull GrantAccessInput grantAccessInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = grantAccessInput;
     

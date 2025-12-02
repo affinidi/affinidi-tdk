@@ -18,19 +18,17 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from typing import List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
-from affinidi_tdk_consumer_iam_client.models.rights_enum import RightsEnum
 
-class Permission(BaseModel):
+from typing import List
+from pydantic import BaseModel, Field, conlist
+from affinidi_tdk_consumer_iam_client.models.permission import Permission
+
+class GetAccessOutput(BaseModel):
     """
-    Permission
+    GetAccessOutput
     """
-    rights: conlist(RightsEnum) = Field(...)
-    node_ids: conlist(StrictStr) = Field(default=..., alias="nodeIds")
-    expires_at: Optional[datetime] = Field(default=None, alias="expiresAt")
-    __properties = ["rights", "nodeIds", "expiresAt"]
+    permissions: conlist(Permission) = Field(default=..., description="List of permissions currently granted")
+    __properties = ["permissions"]
 
     class Config:
         """Pydantic configuration"""
@@ -46,8 +44,8 @@ class Permission(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Permission:
-        """Create an instance of Permission from a JSON string"""
+    def from_json(cls, json_str: str) -> GetAccessOutput:
+        """Create an instance of GetAccessOutput from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -56,21 +54,26 @@ class Permission(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in permissions (list)
+        _items = []
+        if self.permissions:
+            for _item in self.permissions:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['permissions'] = _items
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> Permission:
-        """Create an instance of Permission from a dict"""
+    def from_dict(cls, obj: dict) -> GetAccessOutput:
+        """Create an instance of GetAccessOutput from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return Permission.parse_obj(obj)
+            return GetAccessOutput.parse_obj(obj)
 
-        _obj = Permission.parse_obj({
-            "rights": obj.get("rights"),
-            "node_ids": obj.get("nodeIds"),
-            "expires_at": obj.get("expiresAt")
+        _obj = GetAccessOutput.parse_obj({
+            "permissions": [Permission.from_dict(_item) for _item in obj.get("permissions")] if obj.get("permissions") is not None else None
         })
         return _obj
 
