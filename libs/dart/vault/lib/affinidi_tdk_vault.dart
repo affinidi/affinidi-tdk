@@ -6,6 +6,7 @@ export 'package:ssi/ssi.dart'
     show KeyStore, StoredKey, UniversalParser, VerifiableCredential;
 
 export 'src/digital_credential.dart';
+export 'src/dto/shared_item_dto.dart';
 export 'src/dto/shared_profile_dto.dart';
 export 'src/helpers/file_utils.dart';
 export 'src/helpers/vault_cancel_token.dart';
