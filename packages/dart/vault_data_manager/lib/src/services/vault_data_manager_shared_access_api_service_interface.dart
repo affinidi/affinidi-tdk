@@ -139,22 +139,22 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     VaultProgressCallback? onReceiveProgress,
   });
 
-  /// Updates node access with multiple permission groups in a single API call.
+  /// Updates item access with multiple permission groups in a single API call.
   /// This allows sending multiple Permission objects with different rights
   /// in one request, preserving separate permission groups.
   ///
   /// Parameters:
   /// * [granteeDid] - update access to this DID
-  /// * [permissionGroups] - List of permission groups, each containing node IDs and permissions
+  /// * [permissionGroups] - List of permission groups, each containing item IDs and permissions
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extra] - Can be used to add flags to the request
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> updateNodeAccessVfsWithMultiplePermissions({
+  Future<void> updateItemAccessVfsWithMultiplePermissions({
     required String granteeDid,
-    required List<({List<String> nodeIds, Permissions permissions})>
+    required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
