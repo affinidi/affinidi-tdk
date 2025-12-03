@@ -1049,6 +1049,12 @@ export interface VerifyPresentationV2Input {
    */
   pexQuery?: VerifyPresentationV2InputPexQuery
   /**
+   * DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.
+   * @type {{ [key: string]: any; }}
+   * @memberof VerifyPresentationV2Input
+   */
+  dcqlQuery?: { [key: string]: any }
+  /**
    * Optional challenge string for domain/challenge verification
    * @type {string}
    * @memberof VerifyPresentationV2Input

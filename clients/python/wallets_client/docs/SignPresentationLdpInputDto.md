@@ -4,12 +4,13 @@ DTO contains params to sign presentation
 
 ## Properties
 
-| Name                      | Type          | Description                                      | Notes      |
-| ------------------------- | ------------- | ------------------------------------------------ | ---------- |
-| **unsigned_presentation** | **object**    | Unsigned presentation in Dm1 format              |
-| **signature_scheme**      | **str**       |                                                  | [optional] |
-| **domain**                | **List[str]** | Domain(s) for which the presentation is intended | [optional] |
-| **challenge**             | **str**       | Challenge string                                 | [optional] |
+| Name                      | Type          | Description                                                                                                                                                                                | Notes      |
+| ------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| **unsigned_presentation** | **object**    | Unsigned presentation in Dm1 format                                                                                                                                                        |
+| **signature_scheme**      | **str**       |                                                                                                                                                                                            | [optional] |
+| **signature_suite**       | **str**       | W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1). | [optional] |
+| **domain**                | **List[str]** | Domain(s) for which the presentation is intended                                                                                                                                           | [optional] |
+| **challenge**             | **str**       | Challenge string                                                                                                                                                                           | [optional] |
 
 ## Example
 
