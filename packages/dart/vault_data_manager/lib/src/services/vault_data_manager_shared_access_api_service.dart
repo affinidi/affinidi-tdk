@@ -324,6 +324,7 @@ class VaultDataManagerSharedAccessApiService
   ///
   /// This allows sending multiple Permission objects with different rights
   /// in one request, preserving separate permission groups.
+  @override
   Future<void> updateNodeAccessVfsWithMultiplePermissions({
     required String granteeDid,
     required List<({List<String> nodeIds, Permissions permissions})>
