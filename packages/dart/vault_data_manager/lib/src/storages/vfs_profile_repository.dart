@@ -586,6 +586,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     final accountVaultDataManagerService =
         await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
     final accounts = await accountVaultDataManagerService.getAccounts();
+    final account = accounts
         .where((account) => account.accountIndex == accountIndex)
         .firstOrNull;
 
