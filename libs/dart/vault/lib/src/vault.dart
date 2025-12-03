@@ -1,9 +1,15 @@
+import 'dart:typed_data';
+
 import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:ssi/ssi.dart';
 
+import 'dto/shared_item_dto.dart';
 import 'dto/shared_profile_dto.dart';
 import 'exceptions/tdk_exception_type.dart';
+import 'helpers/item_permission_helper.dart';
 import 'helpers/vault_cancel_token.dart';
+import 'helpers/vault_progress_callback.dart';
+import 'item_permission.dart';
 import 'permissions.dart';
 import 'profile.dart';
 import 'storage_interfaces/profile_access_sharing.dart';
@@ -318,6 +324,63 @@ class Vault {
     );
   }
 
+  /// Adds a shared item storage to the current user's profile.
+  ///
+  /// [profileId] - Identifier of the profile to which add a shared item storage.
+  /// [sharedItem] - Shared item info including kek, owner profile id, and node ids.
+  /// [cancelToken] - Optional cancel token for the operation.
+  Future<void> addSharedItem({
+    required String profileId,
+    required SharedItemDto sharedItem,
+    VaultCancelToken? cancelToken,
+  }) async {
+    final profiles = await listProfiles();
+    final profile =
+        profiles.where((profile) => profile.id == profileId).firstOrNull;
+
+    if (profile == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Can not find profile $profileId',
+            code: TdkExceptionType.invalidProfileIdentifier.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileRepository = _profileRepositories[profile.profileRepositoryId];
+
+    if (profileRepository == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message:
+                'Can not find profile repository ${profile.profileRepositoryId}',
+            code: TdkExceptionType.invalidProfileRepositoryIdentifier.code),
+        StackTrace.current,
+      );
+    }
+
+    if (profileRepository is! ProfileAccessSharing) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message:
+                'Sharing nodes is not supported on ${profile.profileRepositoryId}',
+            code: TdkExceptionType.unsupportedProfileAccessSharing.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileSharedAccessRepository =
+        profileRepository as ProfileAccessSharing;
+
+    await profileSharedAccessRepository.receiveItemAccess(
+      accountIndex: profile.accountIndex,
+      ownerProfileId: sharedItem.ownerProfileId,
+      kek: sharedItem.kek,
+      ownerProfileDid: sharedItem.ownerProfileDID,
+      cancelToken: cancelToken,
+    );
+  }
+
   /// Revokes access to a profile for a specific user.
   ///
   /// [profileId] - ID of the profile to revoke access from.
@@ -374,22 +437,25 @@ class Vault {
     );
   }
 
-  /// Shares a file or folder with another user.
+  /// Shares a file or folder (item) with another user.
   ///
   /// [profileId] - ID of the profile that owns the file/folder.
-  /// [nodeId] - ID of the file or folder to share.
+  /// [itemId] - ID of the file or folder to share.
   /// [toDid] - DID of the user to share with.
-  /// [permissions] - Permissions to grant (read, write, or all).
+  /// [permissions] - List of permissions to grant (read, write, or all).
   /// [cancelToken] - Optional cancel token for the operation.
+  ///
+  /// Returns a [SharedItemDto] containing the KEK and profile information
+  /// that the grantee needs to accept the shared item.
   ///
   /// Throws [TdkException] if:
   /// - The profile is not found
   /// - The profile repository is not found
-  Future<void> shareFile({
+  Future<SharedItemDto> shareItem({
     required String profileId,
-    required String nodeId,
+    required String itemId,
     required String toDid,
-    required Permissions permissions,
+    required List<Permissions> permissions,
     VaultCancelToken? cancelToken,
   }) async {
     final profile = await _getProfileById(profileId);
@@ -421,7 +487,7 @@ class Vault {
       Error.throwWithStackTrace(
         TdkException(
           message:
-              'Sharing files is not supported on ${profile.profileRepositoryId}',
+              'Sharing nodes is not supported on ${profile.profileRepositoryId}',
           code: TdkExceptionType.unsupportedProfileAccessSharing.code,
         ),
         StackTrace.current,
@@ -431,56 +497,80 @@ class Vault {
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
 
-    final existingAccess = await profileSharedAccessRepository.getNodeAccess(
+    final existingAccess = await profileSharedAccessRepository.getItemAccess(
       accountIndex: profile.accountIndex,
       granteeDid: toDid,
       cancelToken: cancelToken,
     );
 
-    final permissionsByRights = _groupPermissionsByRights(existingAccess);
 
-    final newRights = _permissionsToRightsList(permissions);
-    final newRightsKey = newRights.map((r) => r.toString()).toList()..sort();
-    final matchingKey = newRightsKey.join(',');
+    final permissionsList = existingAccess['permissions'] as List?;
+    final existingPermissions = permissionsList != null
+        ? permissionsList
+            .map((perm) => ItemPermission.fromMap(perm as Map<String, dynamic>))
+            .toList()
+        : <ItemPermission>[];
 
-    permissionsByRights[matchingKey] ??= <String>{};
-    permissionsByRights[matchingKey]!.add(nodeId);
 
-    // Build all permission groups to send in a single API call
+    final newRights =
+        ItemPermissionHelper.permissionsListToRightsList(permissions);
+    final newPermission = ItemPermission(
+      itemIds: [itemId],
+      rights: newRights,
+      expiresAt: null,
+    );
+
+    final allPermissions = <ItemPermission>[
+      ...existingPermissions,
+      newPermission,
+    ];
+    final dedupedPermissions =
+        ItemPermissionHelper.dedupePermissions(allPermissions);
+
+
     final permissionGroups =
-        <({List<String> nodeIds, Permissions permissions})>[];
-    for (final entry in permissionsByRights.entries) {
-      final rightsList = entry.key.split(',');
-      final nodePerms = _rightsListToPermissions(rightsList);
-      permissionGroups.add((
-        nodeIds: entry.value.toList(),
-        permissions: nodePerms,
-      ));
-    }
+        ItemPermissionHelper.buildPermissionGroups(dedupedPermissions);
 
-    // Send all permission groups in one call to preserve separate groups
-    await profileSharedAccessRepository.grantNodeAccessMultiple(
+
+    final kek = await profileSharedAccessRepository.grantItemAccessMultiple(
       accountIndex: profile.accountIndex,
       granteeDid: toDid,
       permissionGroups: permissionGroups,
       cancelToken: cancelToken,
     );
+
+
+
+
+    final allItemIds = <String>{};
+    for (final permission in dedupedPermissions) {
+      allItemIds.addAll(permission.itemIds);
+    }
+
+    return SharedItemDto(
+      kek: kek,
+      ownerProfileId: profileId,
+      ownerProfileDID: profile.did,
+      itemIds: allItemIds.toList(),
+    );
   }
 
-  /// Revokes access to a file or folder for a specific user.
+  /// Revokes access to a file or folder (item) for a specific user.
   ///
   /// [profileId] - ID of the profile that owns the file/folder.
-  /// [nodeId] - ID of the file or folder to revoke access from.
+  /// [itemId] - ID of the file or folder to revoke access from.
   /// [granteeDid] - DID of the user to revoke access from.
+  /// [permissions] - Optional list of specific permissions to revoke. If not provided, revokes all access.
   /// [cancelToken] - Optional cancel token for the operation.
   ///
   /// Throws [TdkException] if:
   /// - The profile is not found
   /// - The profile repository is not found
-  Future<void> revokeFileAccess({
+  Future<void> revokeItemAccess({
     required String profileId,
-    required String nodeId,
+    required String itemId,
     required String granteeDid,
+    List<Permissions>? permissions,
     VaultCancelToken? cancelToken,
   }) async {
     final profile = await _getProfileById(profileId);
@@ -512,7 +602,7 @@ class Vault {
       Error.throwWithStackTrace(
         TdkException(
           message:
-              'Revoking file access is not supported on ${profile.profileRepositoryId}',
+              'Revoking item access is not supported on ${profile.profileRepositoryId}',
           code: TdkExceptionType.unsupportedProfileAccessSharing.code,
         ),
         StackTrace.current,
@@ -522,37 +612,68 @@ class Vault {
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
 
-    await profileSharedAccessRepository.revokeNodeAccess(
+
+    if (permissions == null || permissions.isEmpty) {
+      await profileSharedAccessRepository.revokeItemAccess(
+        accountIndex: profile.accountIndex,
+        granteeDid: granteeDid,
+        itemIds: [itemId],
+        cancelToken: cancelToken,
+      );
+      return;
+    }
+
+    final existingAccess = await profileSharedAccessRepository.getItemAccess(
       accountIndex: profile.accountIndex,
       granteeDid: granteeDid,
-      nodeIds: [nodeId],
+      cancelToken: cancelToken,
+    );
+
+    final permissionsList = existingAccess['permissions'] as List?;
+    final existingPermissions = permissionsList != null
+        ? permissionsList
+            .map((perm) => ItemPermission.fromMap(perm as Map<String, dynamic>))
+            .toList()
+        : <ItemPermission>[];
+
+
+    final rightsToRevoke =
+        ItemPermissionHelper.permissionsListToRightsList(permissions);
+
+
+    final updatedPermissions = ItemPermissionHelper.processRevocation(
+      existingPermissions,
+      itemId,
+      rightsToRevoke,
+    );
+
+
+    final mergedPermissions =
+        ItemPermissionHelper.dedupePermissions(updatedPermissions);
+    final permissionGroups =
+        ItemPermissionHelper.buildPermissionGroups(mergedPermissions);
+
+
+    await profileSharedAccessRepository.grantItemAccessMultiple(
+      accountIndex: profile.accountIndex,
+      granteeDid: granteeDid,
+      permissionGroups: permissionGroups,
       cancelToken: cancelToken,
     );
   }
 
-  /// Gets access permissions for files/folders for a specific user.
+  /// Gets access permissions for items (files/folders) for a specific user.
   ///
-  /// [profileId] - ID of the profile that owns the files/folders.
+  /// [profileId] - ID of the profile that owns the items.
   /// [granteeDid] - DID of the user to get permissions for.
   /// [cancelToken] - Optional cancel token for the operation.
   ///
-  /// Returns a map containing the permissions with the following structure:
-  /// ```dart
-  /// {
-  ///   'permissions': [
-  ///     {
-  ///       'nodeIds': ['node1', 'node2'],
-  ///       'rights': ['vfs-read', 'vfs-write'],
-  ///       'expiresAt': '2025-12-02T17:02:37.897Z',
-  ///     }
-  ///   ]
-  /// }
-  /// ```
+  /// Returns a list of [ItemPermission] objects representing the access permissions.
   ///
   /// Throws [TdkException] if:
   /// - The profile is not found
   /// - The profile repository is not found
-  Future<Map<String, dynamic>> getNodeAccess({
+  Future<List<ItemPermission>> getItemAccess({
     required String profileId,
     required String granteeDid,
     VaultCancelToken? cancelToken,
@@ -586,7 +707,7 @@ class Vault {
       Error.throwWithStackTrace(
         TdkException(
           message:
-              'Getting node access is not supported on ${profile.profileRepositoryId}',
+              'Getting item access is not supported on ${profile.profileRepositoryId}',
           code: TdkExceptionType.unsupportedProfileAccessSharing.code,
         ),
         StackTrace.current,
@@ -596,11 +717,21 @@ class Vault {
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
 
-    return await profileSharedAccessRepository.getNodeAccess(
+    final result = await profileSharedAccessRepository.getItemAccess(
       accountIndex: profile.accountIndex,
       granteeDid: granteeDid,
       cancelToken: cancelToken,
     );
+
+
+    final permissionsList = result['permissions'] as List?;
+    if (permissionsList == null) {
+      return [];
+    }
+
+    return permissionsList
+        .map((perm) => ItemPermission.fromMap(perm as Map<String, dynamic>))
+        .toList();
   }
 
   Future<Profile?> _getProfileById(String id) async {
@@ -608,54 +739,56 @@ class Vault {
     return profiles.where((profile) => profile.id == id).firstOrNull;
   }
 
-  /// Groups existing permissions by rights, returning a map of rights key to nodeIds set.
+  /// Reads a shared item (file/folder) from another user's profile.
   ///
-  /// [existingAccess] - The access permissions map from getNodeAccess.
-  /// Returns a map where keys are comma-separated sorted rights strings,
-  /// and values are sets of nodeIds with those rights.
-  Map<String, Set<String>> _groupPermissionsByRights(
-      Map<String, dynamic> existingAccess) {
-    final permissionsByRights = <String, Set<String>>{};
-    final permissionsList = existingAccess['permissions'] as List?;
-    if (permissionsList != null) {
-      for (final perm in permissionsList) {
-        final permMap = perm as Map<String, dynamic>;
-        final nodeIds = permMap['nodeIds'] as List?;
-        final rights = permMap['rights'] as List?;
-        if (nodeIds != null && rights != null) {
-          final rightsKey = rights.map((r) => r.toString()).toList()..sort();
-          final key = rightsKey.join(',');
-          permissionsByRights[key] ??= <String>{};
-          permissionsByRights[key]!.addAll(nodeIds.cast<String>());
-        }
-      }
+  /// [ownerProfileId] - ID of the profile that owns the item.
+  /// [itemId] - ID of the item (file or folder) to read.
+  /// [cancelToken] - Optional cancel token for the operation.
+  /// [onReceiveProgress] - Optional progress callback for file downloads.
+  ///
+  /// Returns the file content as [Uint8List].
+  ///
+  /// Throws [TdkException] if:
+  /// - The shared storage for the owner profile is not found 
+  /// - The item is not found or access is denied
+  Future<Uint8List> readSharedItem({
+    required String ownerProfileId,
+    required String itemId,
+    VaultCancelToken? cancelToken,
+    VaultProgressCallback? onReceiveProgress,
+  }) async {
+  
+    final currentUserProfiles = await listProfiles();
+    if (currentUserProfiles.isEmpty) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message: 'No profiles found for current user',
+          code: TdkExceptionType.invalidProfileIdentifier.code,
+        ),
+        StackTrace.current,
+      );
     }
-    return permissionsByRights;
-  }
 
-  /// Converts Permissions enum to a list of rights strings.
-  List<String> _permissionsToRightsList(Permissions permissions) {
-    switch (permissions) {
-      case Permissions.read:
-        return ['vfsRead'];
-      case Permissions.write:
-        return ['vfsWrite'];
-      case Permissions.all:
-        return ['vfsRead', 'vfsWrite'];
-    }
-  }
+    final currentUserProfile = currentUserProfiles.first;
 
-  /// Converts a list of rights strings to Permissions enum.
-  Permissions _rightsListToPermissions(List<String> rightsList) {
-    final sortedRights = rightsList.toList()..sort();
-    if (sortedRights.length == 2 &&
-        sortedRights.contains('vfsRead') &&
-        sortedRights.contains('vfsWrite')) {
-      return Permissions.all;
-    } else if (sortedRights.contains('vfsWrite')) {
-      return Permissions.write;
-    } else {
-      return Permissions.read;
+    final sharedStorage = currentUserProfile.sharedStorages
+        .where((storage) => storage.id == ownerProfileId)
+        .firstOrNull;
+
+    if (sharedStorage == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+          message:
+              'Cannot read shared item',
+          code: TdkExceptionType.invalidProfileIdentifier.code,
+        ),
+        StackTrace.current,
+      );
     }
+    return await sharedStorage.getFileContent(
+      fileId: itemId,
+      cancelToken: cancelToken,
+      onReceiveProgress: onReceiveProgress,
+    );
   }
 }

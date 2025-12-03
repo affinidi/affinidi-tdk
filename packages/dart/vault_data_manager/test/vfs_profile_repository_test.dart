@@ -253,45 +253,57 @@ void main() {
       });
 
       test('should grant node access successfully', () async {
-        when(() => mockIamApiService.updateNodeAccessVfs(
+        when(() => mockIamApiService.updateItemAccessVfs(
               granteeDid: any(named: 'granteeDid'),
-              nodeIds: any(named: 'nodeIds'),
+              itemIds: any(named: 'itemIds'),
               permissions: any(named: 'permissions'),
             )).thenAnswer((_) async {});
 
-        await sut.grantNodeAccess(
+        when(() => mockDataManagerService.getAccounts())
+            .thenAnswer((_) async => [
+                  Account(
+                    accountIndex: 0,
+                    accountDid: ProfileFixtures.testDid,
+                    accountMetadata: AccountMetadata(
+                      dekekInfo: DekekInfo(encryptedDekek: 'dGVzdF9rZXk='),
+                      sharedStorageData: [],
+                    ),
+                  ),
+                ]);
+
+        await sut.grantItemAccess(
           accountIndex: 0,
           granteeDid: 'did:test:123',
-          nodeIds: ['node-1', 'node-2'],
+          itemIds: ['node-1', 'node-2'],
           permissions: Permissions.read,
         );
 
-        verify(() => mockIamApiService.updateNodeAccessVfs(
+        verify(() => mockIamApiService.updateItemAccessVfs(
               granteeDid: 'did:test:123',
-              nodeIds: ['node-1', 'node-2'],
+              itemIds: ['node-1', 'node-2'],
               permissions: Permissions.read,
             )).called(1);
       });
 
-      test('should revoke node access successfully', () async {
-        when(() => mockIamApiService.revokeNodeAccessVfs(
+      test('should revoke item access successfully', () async {
+        when(() => mockIamApiService.revokeItemAccessVfs(
               granteeDid: any(named: 'granteeDid'),
-              nodeIds: any(named: 'nodeIds'),
+              itemIds: any(named: 'itemIds'),
             )).thenAnswer((_) async {});
 
-        await sut.revokeNodeAccess(
+        await sut.revokeItemAccess(
           accountIndex: 0,
           granteeDid: 'did:test:123',
-          nodeIds: ['node-1'],
+          itemIds: ['node-1'],
         );
 
-        verify(() => mockIamApiService.revokeNodeAccessVfs(
+        verify(() => mockIamApiService.revokeItemAccessVfs(
               granteeDid: 'did:test:123',
-              nodeIds: ['node-1'],
+              itemIds: ['node-1'],
             )).called(1);
       });
 
-      test('should get node access successfully', () async {
+      test('should get item access successfully', () async {
         final expectedResponse = Response<consumer_iam.GetAccessOutput>(
           data: consumer_iam.GetAccessOutput(
             (b) => b.permissions = ListBuilder([
@@ -305,46 +317,46 @@ void main() {
           requestOptions: RequestOptions(path: '/'),
         );
 
-        when(() => mockIamApiService.getNodeAccessVfs(
+        when(() => mockIamApiService.getItemAccessVfs(
               granteeDid: any(named: 'granteeDid'),
             )).thenAnswer((_) async => expectedResponse);
 
-        final result = await sut.getNodeAccess(
+        final result = await sut.getItemAccess(
           accountIndex: 0,
           granteeDid: 'did:test:123',
         );
 
         expect(result['permissions'], isA<List>());
-        verify(() => mockIamApiService.getNodeAccessVfs(
+        verify(() => mockIamApiService.getItemAccessVfs(
               granteeDid: 'did:test:123',
             )).called(1);
       });
 
-      test('should grant multiple node access groups successfully', () async {
-        when(() => mockIamApiService.updateNodeAccessVfsWithMultiplePermissions(
+      test('should grant multiple item access groups successfully', () async {
+        when(() => mockIamApiService.updateItemAccessVfsWithMultiplePermissions(
               granteeDid: any<String>(named: 'granteeDid'),
               permissionGroups:
-                  any<List<({List<String> nodeIds, Permissions permissions})>>(
+                  any<List<({List<String> itemIds, Permissions permissions})>>(
                       named: 'permissionGroups'),
               cancelToken: any<CancelToken?>(named: 'cancelToken'),
             )).thenAnswer((_) async {});
 
         final permissionGroups = [
-          (nodeIds: ['node-1'], permissions: Permissions.read),
-          (nodeIds: ['node-2'], permissions: Permissions.write),
+          (itemIds: ['node-1'], permissions: Permissions.read),
+          (itemIds: ['node-2'], permissions: Permissions.write),
         ];
 
-        await sut.grantNodeAccessMultiple(
+        await sut.grantItemAccessMultiple(
           accountIndex: 0,
           granteeDid: 'did:test:123',
           permissionGroups: permissionGroups,
         );
 
         verify(() =>
-            mockIamApiService.updateNodeAccessVfsWithMultiplePermissions(
+            mockIamApiService.updateItemAccessVfsWithMultiplePermissions(
               granteeDid: 'did:test:123',
               permissionGroups:
-                  any<List<({List<String> nodeIds, Permissions permissions})>>(
+                  any<List<({List<String> itemIds, Permissions permissions})>>(
                       named: 'permissionGroups'),
               cancelToken: any<CancelToken?>(named: 'cancelToken'),
             )).called(1);

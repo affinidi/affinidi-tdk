@@ -8,8 +8,8 @@
 
 Feat: Granular File and Folder Sharing
 
-* Added `shareFile` method to share individual files/folders with specific permissions (read, write, or all)
-* Added `revokeFileAccess` method to revoke access to specific files/folders
+* Added `shareItem` method to share individual files/folders with specific permissions (read, write, or all)
+* Added `revokeNodeAccess` method to revoke access to specific files/folders
 * Added `getNodeAccess` method to retrieve access permissions for files/folders
 
 ---

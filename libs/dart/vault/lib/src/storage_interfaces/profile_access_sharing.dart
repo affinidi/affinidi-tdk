@@ -45,17 +45,18 @@ abstract interface class ProfileAccessSharing {
     VaultCancelToken? cancelToken,
   });
 
-  /// Grants access to specific nodes (files/folders) for a specific user.
+  /// Grants access to specific items (files/folders) for a specific user.
   ///
   /// [accountIndex] - The index of the account.
   /// [granteeDid] - The DID of the user to grant access to.
-  /// [nodeIds] - List of node IDs (file or folder IDs) to grant access to.
+  /// [itemIds] - List of item IDs (file or folder IDs) to grant access to.
   /// [permissions] - The permissions to grant (read, write, or all).
   /// [cancelToken] - Optional cancel token for API requests.
-  Future<void> grantNodeAccess({
+  /// Returns the KEK for accessing the shared items.
+  Future<Uint8List> grantItemAccess({
     required int accountIndex,
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     VaultCancelToken? cancelToken,
   });
@@ -67,38 +68,54 @@ abstract interface class ProfileAccessSharing {
   ///
   /// [accountIndex] - The index of the account.
   /// [granteeDid] - The DID of the user to grant access to.
-  /// [permissionGroups] - List of permission groups, each containing nodeIds and permissions.
+  /// [permissionGroups] - List of permission groups, each containing itemIds and permissions.
   /// [cancelToken] - Optional cancel token for API requests.
-  Future<void> grantNodeAccessMultiple({
+  /// Returns the KEK for accessing the shared items.
+  Future<Uint8List> grantItemAccessMultiple({
     required int accountIndex,
     required String granteeDid,
-    required List<({List<String> nodeIds, Permissions permissions})>
+    required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,
     VaultCancelToken? cancelToken,
   });
 
-  /// Revokes access to specific nodes (files/folders) for a specific user.
+  /// Revokes access to specific items (files/folders) for a specific user.
   ///
   /// [accountIndex] - The index of the account.
   /// [granteeDid] - The DID of the user to revoke access from.
-  /// [nodeIds] - List of node IDs (file or folder IDs) to revoke access from.
+  /// [itemIds] - List of item IDs (file or folder IDs) to revoke access from.
   /// [cancelToken] - Optional cancel token for API requests.
-  Future<void> revokeNodeAccess({
+  Future<void> revokeItemAccess({
     required int accountIndex,
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     VaultCancelToken? cancelToken,
   });
 
-  /// Gets access permissions for specific nodes (files/folders) for a specific user.
+  /// Gets access permissions for specific items (files/folders) for a specific user.
   ///
   /// [accountIndex] - The index of the account.
   /// [granteeDid] - The DID of the user to get access permissions for.
   /// [cancelToken] - Optional cancel token for API requests.
   /// Returns the access permissions for the grantee.
-  Future<Map<String, dynamic>> getNodeAccess({
+  Future<Map<String, dynamic>> getItemAccess({
     required int accountIndex,
     required String granteeDid,
+    VaultCancelToken? cancelToken,
+  });
+
+  /// Receives access to nodes that were granted by another user.
+  ///
+  /// [accountIndex] - The index of the account.
+  /// [ownerProfileId] - The ID of the profile that owns the nodes.
+  /// [kek] - The key encryption key for accessing the nodes.
+  /// [ownerProfileDid] - The DID of the profile that owns the nodes.
+  /// [cancelToken] - Optional cancel token for API requests.
+  Future<void> receiveItemAccess({
+    required int accountIndex,
+    required String ownerProfileId,
+    required Uint8List kek,
+    required String ownerProfileDid,
     VaultCancelToken? cancelToken,
   });
 }

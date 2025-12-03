@@ -11,6 +11,7 @@ export 'src/helpers/file_utils.dart';
 export 'src/helpers/vault_cancel_token.dart';
 export 'src/helpers/vault_progress_callback.dart';
 export 'src/in_memory_vault_store.dart';
+export 'src/item_permission.dart';
 export 'src/permissions.dart';
 export 'src/profile.dart';
 export 'src/storage_interfaces/credential_storage.dart';

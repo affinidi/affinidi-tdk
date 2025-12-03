@@ -200,9 +200,9 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<void> grantNodeAccessVfs({
+  Future<void> grantItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -214,7 +214,7 @@ class VaultDataManagerSharedAccessApiService
     if (_consumerAuthzApi == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Consumer IAM client is required for node-level access',
+          message: 'Consumer IAM client is required for item-level access',
           code: TdkExceptionType.unableToGrantAccess.code,
         ),
         StackTrace.current,
@@ -225,7 +225,8 @@ class VaultDataManagerSharedAccessApiService
       final permission = consumer_iam.PermissionBuilder()
         ..rights = ListBuilder<consumer_iam.RightsEnum>(
             _permissionsToConsumerRights(permissions))
-        ..nodeIds = ListBuilder<String>(nodeIds);
+        ..nodeIds = ListBuilder<String>(
+            itemIds); 
 
       final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()
         ..permissions =
@@ -244,7 +245,7 @@ class VaultDataManagerSharedAccessApiService
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Failed to grant node access to $granteeDid',
+          message: 'Failed to grant item access to $granteeDid',
           code: TdkExceptionType.unableToGrantAccess.code,
           originalMessage: e.toString(),
         ),
@@ -254,9 +255,9 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<void> revokeNodeAccessVfs({
+  Future<void> revokeItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -267,7 +268,7 @@ class VaultDataManagerSharedAccessApiService
     if (_consumerAuthzApi == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Consumer IAM client is required for node-level access',
+          message: 'Consumer IAM client is required for item-level access',
           code: TdkExceptionType.unableToRevokeAccess.code,
         ),
         StackTrace.current,
@@ -287,7 +288,7 @@ class VaultDataManagerSharedAccessApiService
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Failed to revoke node access from $granteeDid',
+          message: 'Failed to revoke item access from $granteeDid',
           code: TdkExceptionType.unableToRevokeAccess.code,
           originalMessage: e.toString(),
         ),
@@ -297,9 +298,9 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<void> updateNodeAccessVfs({
+  Future<void> updateItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -308,9 +309,9 @@ class VaultDataManagerSharedAccessApiService
     VaultProgressCallback? onSendProgress,
     VaultProgressCallback? onReceiveProgress,
   }) async {
-    await updateNodeAccessVfsWithMultiplePermissions(
+    await updateItemAccessVfsWithMultiplePermissions(
       granteeDid: granteeDid,
-      permissionGroups: [(nodeIds: nodeIds, permissions: permissions)],
+      permissionGroups: [(itemIds: itemIds, permissions: permissions)],
       cancelToken: cancelToken,
       headers: headers,
       extra: extra,
@@ -320,14 +321,14 @@ class VaultDataManagerSharedAccessApiService
     );
   }
 
-  /// Updates node access with multiple permission groups in a single API call.
+  /// Updates item access with multiple permission groups.
   ///
   /// This allows sending multiple Permission objects with different rights
   /// in one request, preserving separate permission groups.
   @override
-  Future<void> updateNodeAccessVfsWithMultiplePermissions({
+  Future<void> updateItemAccessVfsWithMultiplePermissions({
     required String granteeDid,
-    required List<({List<String> nodeIds, Permissions permissions})>
+    required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -339,7 +340,7 @@ class VaultDataManagerSharedAccessApiService
     if (_consumerAuthzApi == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Consumer IAM client is required for node-level access',
+          message: 'Consumer IAM client is required for item-level access',
           code: TdkExceptionType.unableToUpdateAccess.code,
         ),
         StackTrace.current,
@@ -351,7 +352,8 @@ class VaultDataManagerSharedAccessApiService
         return consumer_iam.PermissionBuilder()
           ..rights = ListBuilder<consumer_iam.RightsEnum>(
               _permissionsToConsumerRights(group.permissions))
-          ..nodeIds = ListBuilder<String>(group.nodeIds);
+          ..nodeIds = ListBuilder<String>(group
+              .itemIds);
       }).toList();
 
       final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()
@@ -371,7 +373,7 @@ class VaultDataManagerSharedAccessApiService
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Failed to update node access for $granteeDid',
+          message: 'Failed to update item access for $granteeDid',
           code: TdkExceptionType.unableToUpdateAccess.code,
           originalMessage: e.toString(),
         ),
@@ -381,7 +383,7 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<Response<consumer_iam.GetAccessOutput>> getNodeAccessVfs({
+  Future<Response<consumer_iam.GetAccessOutput>> getItemAccessVfs({
     required String granteeDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -393,7 +395,7 @@ class VaultDataManagerSharedAccessApiService
     if (_consumerAuthzApi == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Consumer IAM client is required for node-level access',
+          message: 'Consumer IAM client is required for item-level access',
           code: TdkExceptionType.unableToGetAccess.code,
         ),
         StackTrace.current,
@@ -413,7 +415,7 @@ class VaultDataManagerSharedAccessApiService
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'Failed to get node access for $granteeDid',
+          message: 'Failed to get item access for $granteeDid',
           code: TdkExceptionType.unableToGetAccess.code,
           originalMessage: e.toString(),
         ),

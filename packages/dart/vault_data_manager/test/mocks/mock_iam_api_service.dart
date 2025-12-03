@@ -82,9 +82,9 @@ class MockIamApiService extends Mock
   }
 
   @override
-  Future<void> grantNodeAccessVfs({
+  Future<void> grantItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -94,9 +94,9 @@ class MockIamApiService extends Mock
     ProgressCallback? onReceiveProgress,
   }) {
     return super.noSuchMethod(
-      Invocation.method(#grantNodeAccessVfs, [], {
+      Invocation.method(#grantItemAccessVfs, [], {
         #granteeDid: granteeDid,
-        #nodeIds: nodeIds,
+        #itemIds: itemIds,
         #permissions: permissions,
         #cancelToken: cancelToken,
         #headers: headers,
@@ -109,9 +109,9 @@ class MockIamApiService extends Mock
   }
 
   @override
-  Future<void> revokeNodeAccessVfs({
+  Future<void> revokeItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -120,9 +120,9 @@ class MockIamApiService extends Mock
     ProgressCallback? onReceiveProgress,
   }) {
     return super.noSuchMethod(
-      Invocation.method(#revokeNodeAccessVfs, [], {
+      Invocation.method(#revokeItemAccessVfs, [], {
         #granteeDid: granteeDid,
-        #nodeIds: nodeIds,
+        #itemIds: itemIds,
         #cancelToken: cancelToken,
         #headers: headers,
         #extra: extra,
@@ -134,9 +134,9 @@ class MockIamApiService extends Mock
   }
 
   @override
-  Future<void> updateNodeAccessVfs({
+  Future<void> updateItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -146,9 +146,9 @@ class MockIamApiService extends Mock
     ProgressCallback? onReceiveProgress,
   }) {
     return super.noSuchMethod(
-      Invocation.method(#updateNodeAccessVfs, [], {
+      Invocation.method(#updateItemAccessVfs, [], {
         #granteeDid: granteeDid,
-        #nodeIds: nodeIds,
+        #itemIds: itemIds,
         #permissions: permissions,
         #cancelToken: cancelToken,
         #headers: headers,
@@ -161,7 +161,7 @@ class MockIamApiService extends Mock
   }
 
   @override
-  Future<Response<consumer_iam.GetAccessOutput>> getNodeAccessVfs({
+  Future<Response<consumer_iam.GetAccessOutput>> getItemAccessVfs({
     required String granteeDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -171,7 +171,7 @@ class MockIamApiService extends Mock
     ProgressCallback? onReceiveProgress,
   }) {
     return super.noSuchMethod(
-      Invocation.method(#getNodeAccessVfs, [], {
+      Invocation.method(#getItemAccessVfs, [], {
         #granteeDid: granteeDid,
         #cancelToken: cancelToken,
         #headers: headers,
@@ -184,9 +184,9 @@ class MockIamApiService extends Mock
   }
 
   @override
-  Future<void> updateNodeAccessVfsWithMultiplePermissions({
+  Future<void> updateItemAccessVfsWithMultiplePermissions({
     required String granteeDid,
-    required List<({List<String> nodeIds, Permissions permissions})>
+    required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -196,7 +196,7 @@ class MockIamApiService extends Mock
     ProgressCallback? onReceiveProgress,
   }) {
     return super.noSuchMethod(
-      Invocation.method(#updateNodeAccessVfsWithMultiplePermissions, [], {
+      Invocation.method(#updateItemAccessVfsWithMultiplePermissions, [], {
         #granteeDid: granteeDid,
         #permissionGroups: permissionGroups,
         #cancelToken: cancelToken,

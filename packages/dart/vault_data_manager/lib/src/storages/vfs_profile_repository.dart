@@ -565,64 +565,117 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   }
 
   @override
-  Future<void> grantNodeAccess({
+  Future<Uint8List> grantItemAccess({
     required int accountIndex,
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     VaultCancelToken? cancelToken,
   }) async {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-    await iamApiService.updateNodeAccessVfs(
+    await iamApiService.updateItemAccessVfs(
       granteeDid: granteeDid,
-      nodeIds: nodeIds,
+      itemIds: itemIds,
       permissions: permissions,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );
+
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accounts = await accountVaultDataManagerService.getAccounts();
+        .where((account) => account.accountIndex == accountIndex)
+        .firstOrNull;
+
+    if (account == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Account with index $accountIndex does not exist',
+            code: TdkExceptionType.invalidAccountIndex.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileKeyPair =
+        await _memoizedKeyPair(accountIndex: '$accountIndex');
+    final kek = await profileKeyPair.decrypt(
+      base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
+    );
+
+    return kek;
   }
 
   @override
-  Future<void> grantNodeAccessMultiple({
+  Future<Uint8List> grantItemAccessMultiple({
     required int accountIndex,
     required String granteeDid,
-    required List<({List<String> nodeIds, Permissions permissions})>
+    required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,
     VaultCancelToken? cancelToken,
   }) async {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-    await iamApiService.updateNodeAccessVfsWithMultiplePermissions(
+    await iamApiService.updateItemAccessVfsWithMultiplePermissions(
       granteeDid: granteeDid,
-      permissionGroups: permissionGroups,
+      permissionGroups: permissionGroups
+          .map((group) => (
+                itemIds: group.itemIds,
+                permissions: group.permissions,
+              ))
+          .toList(),
+      cancelToken:
+          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
+    );
+
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accounts = await accountVaultDataManagerService.getAccounts();
+    final account = accounts
+        .where((account) => account.accountIndex == accountIndex)
+        .firstOrNull;
+
+    if (account == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Account with index $accountIndex does not exist',
+            code: TdkExceptionType.invalidAccountIndex.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileKeyPair =
+        await _memoizedKeyPair(accountIndex: '$accountIndex');
+    final kek = await profileKeyPair.decrypt(
+      base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
+    );
+
+    return kek;
+  }
+
+  @override
+  Future<void> revokeItemAccess({
+    required int accountIndex,
+    required String granteeDid,
+    required List<String> itemIds,
+    VaultCancelToken? cancelToken,
+  }) async {
+    _ensureConfigured();
+
+    final iamApiService = await _getIamApiService(accountIndex);
+  
+    await iamApiService.revokeItemAccessVfs(
+      granteeDid: granteeDid,
+      itemIds: itemIds,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
     );
   }
 
   @override
-  Future<void> revokeNodeAccess({
-    required int accountIndex,
-    required String granteeDid,
-    required List<String> nodeIds,
-    VaultCancelToken? cancelToken,
-  }) async {
-    _ensureConfigured();
-
-    final iamApiService = await _getIamApiService(accountIndex);
-    await iamApiService.revokeNodeAccessVfs(
-      granteeDid: granteeDid,
-      nodeIds: nodeIds,
-      cancelToken:
-          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
-    );
-  }
-
-  @override
-  Future<Map<String, dynamic>> getNodeAccess({
+  Future<Map<String, dynamic>> getItemAccess({
     required int accountIndex,
     required String granteeDid,
     VaultCancelToken? cancelToken,
@@ -630,7 +683,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-    final response = await iamApiService.getNodeAccessVfs(
+    final response = await iamApiService.getItemAccessVfs(
       granteeDid: granteeDid,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
@@ -639,12 +692,89 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     return {
       'permissions': response.data!.permissions
           .map((p) => {
-                'nodeIds': p.nodeIds.toList(),
+                'nodeIds': p.nodeIds.toList(), 
                 'rights': p.rights.map((r) => r.toString()).toList(),
                 'expiresAt': p.expiresAt?.toString(),
               })
           .toList(),
     };
+  }
+
+  @override
+  Future<void> receiveItemAccess({
+    required int accountIndex,
+    required String ownerProfileId,
+    required Uint8List kek,
+    required String ownerProfileDid,
+    VaultCancelToken? cancelToken,
+  }) async {
+    if (!_configured) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message:
+                'Profile repository must be configured using a RepositoryConfiguration',
+            code: TdkExceptionType.profleNotConfigured.code),
+        StackTrace.current,
+      );
+    }
+
+    final profileKeyPair =
+        await _memoizedKeyPair(accountIndex: '$accountIndex');
+    final sharedStorageData = SharedStorageData(
+      encryptedDekek: base64.encode(await profileKeyPair.encrypt(kek)),
+      nodePath: ownerProfileId,
+      profileDid: ownerProfileDid,
+    );
+
+    final accountVaultDataManagerService =
+        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
+    final accountsResponse = await accountVaultDataManagerService.getAccounts();
+    final previousAccountData = accountsResponse
+        .where((account) => account.accountIndex == accountIndex)
+        .firstOrNull;
+
+    if (previousAccountData == null) {
+      Error.throwWithStackTrace(
+        TdkException(
+            message: 'Account with index $accountIndex does not exist',
+            code: TdkExceptionType.invalidAccountIndex.code),
+        StackTrace.current,
+      );
+    }
+
+    final existingSharedStorageData =
+        previousAccountData.accountMetadata?.sharedStorageData ?? [];
+
+    final existingIndex = existingSharedStorageData
+        .indexWhere((data) => data.profileDid == ownerProfileDid);
+
+    final updatedSharedStorageData =
+        List<SharedStorageData>.from(existingSharedStorageData);
+    if (existingIndex >= 0) {
+
+      updatedSharedStorageData[existingIndex] = sharedStorageData;
+    } else {
+
+      updatedSharedStorageData.add(sharedStorageData);
+    }
+
+    final updatedMetadata = AccountMetadata(
+      sharedStorageData: updatedSharedStorageData,
+      dekekInfo: previousAccountData.accountMetadata!.dekekInfo,
+    );
+
+    final profileDidSigner = await _memoizedDidSigner(
+      accountIndex.toString(),
+    );
+    final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
+
+    await accountVaultDataManagerService.updateAccount(
+      accountIndex: accountIndex,
+      accountDid: profileDidSigner.did,
+      didProof: profileDidProof,
+      metadata: updatedMetadata,
+      cancelToken: cancelToken,
+    );
   }
 
   Future<KeyPair> _getProfileKeyPair({required String accountIndex}) async {

@@ -72,12 +72,12 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     VaultProgressCallback? onReceiveProgress,
   });
 
-  /// Grant granular access to specific nodes (files/folders) in the virtual file system
-  /// Grants access rights to specific nodes for a subject
+  /// Grant granular access to specific items (files/folders) in the virtual file system
+  /// Grants access rights to specific items for a subject
   ///
   /// Parameters:
   /// * [granteeDid] - grant access to this DID
-  /// * [nodeIds] - List of node IDs (file or folder IDs) to grant access to
+  /// * [itemIds] - List of item IDs (file or folder IDs) to grant access to
   /// * [permissions] - the rights [Permissions] to grant to the grantee DID
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -85,9 +85,9 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> grantNodeAccessVfs({
+  Future<void> grantItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -97,21 +97,21 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     VaultProgressCallback? onReceiveProgress,
   });
 
-  /// Revoke granular access to specific nodes (files/folders) in the virtual file system
-  /// Revokes access rights to specific nodes for a subject
+  /// Revoke granular access to specific items (files/folders) in the virtual file system
+  /// Revokes access rights to specific items for a subject
   ///
   /// Parameters:
   /// * [granteeDid] - revoke access to this DID
-  /// * [nodeIds] - List of node IDs (file or folder IDs) to revoke access from
+  /// * [itemIds] - List of item IDs (file or folder IDs) to revoke access from
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extra] - Can be used to add flags to the request
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> revokeNodeAccessVfs({
+  Future<void> revokeItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -120,13 +120,13 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     VaultProgressCallback? onReceiveProgress,
   });
 
-  /// Update granular access to specific nodes (files/folders) in the virtual file system
-  /// Updates access rights to specific nodes for a subject. This can be used to add new nodes
-  /// to existing permissions or update existing node permissions.
+  /// Update granular access to specific items (files/folders) in the virtual file system
+  /// Updates access rights to specific items for a subject. This can be used to add new items
+  /// to existing permissions or update existing item permissions.
   ///
   /// Parameters:
   /// * [granteeDid] - update access to this DID
-  /// * [nodeIds] - List of node IDs (file or folder IDs) to update access for
+  /// * [itemIds] - List of item IDs (file or folder IDs) to update access for
   /// * [permissions] - the rights [Permissions] to update for the grantee DID
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -134,9 +134,9 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> updateNodeAccessVfs({
+  Future<void> updateItemAccessVfs({
     required String granteeDid,
-    required List<String> nodeIds,
+    required List<String> itemIds,
     required Permissions permissions,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -146,7 +146,7 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     VaultProgressCallback? onReceiveProgress,
   });
 
-  /// Get granular access permissions for specific nodes (files/folders) in the virtual file system
+  /// Get granular access permissions for specific items (files/folders) in the virtual file system
   /// Retrieves access rights for a subject
   ///
   /// Parameters:
@@ -157,7 +157,7 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<Response<consumer_iam.GetAccessOutput>> getNodeAccessVfs({
+  Future<Response<consumer_iam.GetAccessOutput>> getItemAccessVfs({
     required String granteeDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -167,22 +167,22 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     VaultProgressCallback? onReceiveProgress,
   });
 
-  /// Updates node access with multiple permission groups in a single API call.
+  /// Updates item access with multiple permission groups in a single API call.
   /// This allows sending multiple Permission objects with different rights
   /// in one request, preserving separate permission groups.
   ///
   /// Parameters:
   /// * [granteeDid] - update access to this DID
-  /// * [permissionGroups] - List of permission groups, each containing node IDs and permissions
+  /// * [permissionGroups] - List of permission groups, each containing item IDs and permissions
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extra] - Can be used to add flags to the request
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> updateNodeAccessVfsWithMultiplePermissions({
+  Future<void> updateItemAccessVfsWithMultiplePermissions({
     required String granteeDid,
-    required List<({List<String> nodeIds, Permissions permissions})>
+    required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
