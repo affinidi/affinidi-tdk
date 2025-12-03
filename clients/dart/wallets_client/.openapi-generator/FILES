@@ -41,6 +41,7 @@ doc/SignMessageResultDto.md
 doc/SignPresentationLdpInputDto.md
 doc/SignPresentationLdpResultDto.md
 doc/SigningFailedError.md
+doc/TooManyRequestsError.md
 doc/UpdateWalletInput.md
 doc/WalletApi.md
 doc/WalletDto.md
@@ -96,6 +97,7 @@ lib/src/model/sign_message_result_dto.dart
 lib/src/model/sign_presentation_ldp_input_dto.dart
 lib/src/model/sign_presentation_ldp_result_dto.dart
 lib/src/model/signing_failed_error.dart
+lib/src/model/too_many_requests_error.dart
 lib/src/model/update_wallet_input.dart
 lib/src/model/wallet_dto.dart
 lib/src/model/wallet_dto_keys_inner.dart

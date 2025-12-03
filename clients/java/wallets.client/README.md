@@ -174,6 +174,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignPresentationLdpInputDto](docs/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](docs/SignPresentationLdpResultDto.md)
 - [SigningFailedError](docs/SigningFailedError.md)
+- [TooManyRequestsError](docs/TooManyRequestsError.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)
