@@ -503,14 +503,12 @@ class Vault {
       cancelToken: cancelToken,
     );
 
-
     final permissionsList = existingAccess['permissions'] as List?;
     final existingPermissions = permissionsList != null
         ? permissionsList
             .map((perm) => ItemPermission.fromMap(perm as Map<String, dynamic>))
             .toList()
         : <ItemPermission>[];
-
 
     final newRights =
         ItemPermissionHelper.permissionsListToRightsList(permissions);
@@ -527,10 +525,8 @@ class Vault {
     final dedupedPermissions =
         ItemPermissionHelper.dedupePermissions(allPermissions);
 
-
     final permissionGroups =
         ItemPermissionHelper.buildPermissionGroups(dedupedPermissions);
-
 
     final kek = await profileSharedAccessRepository.grantItemAccessMultiple(
       accountIndex: profile.accountIndex,
@@ -538,9 +534,6 @@ class Vault {
       permissionGroups: permissionGroups,
       cancelToken: cancelToken,
     );
-
-
-
 
     final allItemIds = <String>{};
     for (final permission in dedupedPermissions) {
@@ -612,7 +605,6 @@ class Vault {
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
 
-
     if (permissions == null || permissions.isEmpty) {
       await profileSharedAccessRepository.revokeItemAccess(
         accountIndex: profile.accountIndex,
@@ -636,10 +628,8 @@ class Vault {
             .toList()
         : <ItemPermission>[];
 
-
     final rightsToRevoke =
         ItemPermissionHelper.permissionsListToRightsList(permissions);
-
 
     final updatedPermissions = ItemPermissionHelper.processRevocation(
       existingPermissions,
@@ -647,12 +637,10 @@ class Vault {
       rightsToRevoke,
     );
 
-
     final mergedPermissions =
         ItemPermissionHelper.dedupePermissions(updatedPermissions);
     final permissionGroups =
         ItemPermissionHelper.buildPermissionGroups(mergedPermissions);
-
 
     await profileSharedAccessRepository.grantItemAccessMultiple(
       accountIndex: profile.accountIndex,
@@ -723,7 +711,6 @@ class Vault {
       cancelToken: cancelToken,
     );
 
-
     final permissionsList = result['permissions'] as List?;
     if (permissionsList == null) {
       return [];
@@ -749,7 +736,7 @@ class Vault {
   /// Returns the file content as [Uint8List].
   ///
   /// Throws [TdkException] if:
-  /// - The shared storage for the owner profile is not found 
+  /// - The shared storage for the owner profile is not found
   /// - The item is not found or access is denied
   Future<Uint8List> readSharedItem({
     required String ownerProfileId,
@@ -757,7 +744,6 @@ class Vault {
     VaultCancelToken? cancelToken,
     VaultProgressCallback? onReceiveProgress,
   }) async {
-  
     final currentUserProfiles = await listProfiles();
     if (currentUserProfiles.isEmpty) {
       Error.throwWithStackTrace(
@@ -778,8 +764,7 @@ class Vault {
     if (sharedStorage == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message:
-              'Cannot read shared item',
+          message: 'Cannot read shared item',
           code: TdkExceptionType.invalidProfileIdentifier.code,
         ),
         StackTrace.current,

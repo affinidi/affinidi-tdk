@@ -346,6 +346,18 @@ void main() {
           (itemIds: ['node-2'], permissions: Permissions.write),
         ];
 
+        when(() => mockDataManagerService.getAccounts())
+            .thenAnswer((_) async => [
+                  Account(
+                    accountIndex: 0,
+                    accountDid: ProfileFixtures.testDid,
+                    accountMetadata: AccountMetadata(
+                      dekekInfo: DekekInfo(encryptedDekek: 'dGVzdF9rZXk='),
+                      sharedStorageData: [],
+                    ),
+                  ),
+                ]);
+
         await sut.grantItemAccessMultiple(
           accountIndex: 0,
           granteeDid: 'did:test:123',

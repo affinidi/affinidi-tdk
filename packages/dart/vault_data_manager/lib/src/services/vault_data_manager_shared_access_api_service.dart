@@ -225,8 +225,7 @@ class VaultDataManagerSharedAccessApiService
       final permission = consumer_iam.PermissionBuilder()
         ..rights = ListBuilder<consumer_iam.RightsEnum>(
             _permissionsToConsumerRights(permissions))
-        ..nodeIds = ListBuilder<String>(
-            itemIds); 
+        ..nodeIds = ListBuilder<String>(itemIds);
 
       final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()
         ..permissions =
@@ -352,8 +351,7 @@ class VaultDataManagerSharedAccessApiService
         return consumer_iam.PermissionBuilder()
           ..rights = ListBuilder<consumer_iam.RightsEnum>(
               _permissionsToConsumerRights(group.permissions))
-          ..nodeIds = ListBuilder<String>(group
-              .itemIds);
+          ..nodeIds = ListBuilder<String>(group.itemIds);
       }).toList();
 
       final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()

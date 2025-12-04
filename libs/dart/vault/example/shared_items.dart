@@ -127,13 +127,11 @@ void main() async {
     print('[Demo] Rights: ${permission.rights}');
   }
 
-  
   print('[Demo] Bob is accepting the shared item ...');
   await vaultBob.addSharedItem(
     profileId: bobProfile.id,
     sharedItem: sharedItem1,
   );
-
 
   profilesBob = await vaultBob.listProfiles();
 
@@ -187,13 +185,13 @@ void main() async {
     print('[Demo] Item IDs: ${permission.itemIds}');
     print('[Demo] Rights: ${permission.rights}');
   }
-  
+
   print('[Demo] Bob is accepting the second shared item ...');
   await vaultBob.addSharedItem(
     profileId: bobProfile.id,
     sharedItem: sharedItem2,
   );
- 
+
   profilesBob = await vaultBob.listProfiles();
 
   print('[Demo] Bob is reading the shared file2 using readSharedItem ...');

@@ -35,7 +35,6 @@ class ItemPermission {
   /// {
   ///   'nodeIds': ['item1', 'item2'],  // Backend uses 'nodeIds' key
   ///   'rights': ['vfs-read', 'vfs-write'],
-  ///   'expiresAt': '2025-12-02T17:02:37.897Z', // optional, as ISO 8601 string
   /// }
   /// ```
   factory ItemPermission.fromMap(Map<String, dynamic> map) {
@@ -57,7 +56,7 @@ class ItemPermission {
   /// Converts this [ItemPermission] to a map.
   Map<String, dynamic> toMap() {
     return {
-      'nodeIds': itemIds,  
+      'nodeIds': itemIds,
       'rights': rights,
       if (expiresAt != null) 'expiresAt': expiresAt!.toIso8601String(),
     };
@@ -111,7 +110,6 @@ class ItemPermission {
 
   @override
   String toString() {
-    return 'ItemPermission(itemIds: $itemIds, rights: $rights, expiresAt: $expiresAt)';
+    return 'ItemPermission(itemIds: $itemIds, rights: $rights)';
   }
 }
-

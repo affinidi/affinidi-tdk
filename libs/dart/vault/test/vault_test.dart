@@ -125,7 +125,7 @@ void main() {
           .thenAnswer((_) async => true);
 
       await vault.ensureInitialized();
-      
+
       // Verify repository was not configured again
       verifyNever(() => mockProfileRepository.configure(any()));
     });

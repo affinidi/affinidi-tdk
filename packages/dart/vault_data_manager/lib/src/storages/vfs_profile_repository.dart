@@ -666,7 +666,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-  
+
     await iamApiService.revokeItemAccessVfs(
       granteeDid: granteeDid,
       itemIds: itemIds,
@@ -693,7 +693,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     return {
       'permissions': response.data!.permissions
           .map((p) => {
-                'nodeIds': p.nodeIds.toList(), 
+                'nodeIds': p.nodeIds.toList(),
                 'rights': p.rights.map((r) => r.toString()).toList(),
                 'expiresAt': p.expiresAt?.toString(),
               })
@@ -746,16 +746,19 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     final existingSharedStorageData =
         previousAccountData.accountMetadata?.sharedStorageData ?? [];
 
-    final existingIndex = existingSharedStorageData
-        .indexWhere((data) => data.profileDid == ownerProfileDid);
+    final existingIndex = existingSharedStorageData.indexWhere((data) =>
+        data.nodePath == ownerProfileId && data.profileDid == ownerProfileDid);
 
     final updatedSharedStorageData =
         List<SharedStorageData>.from(existingSharedStorageData);
     if (existingIndex >= 0) {
-
-      updatedSharedStorageData[existingIndex] = sharedStorageData;
+      final existingEncryptedKek =
+          existingSharedStorageData[existingIndex].encryptedDekek;
+      final newEncryptedKek = sharedStorageData.encryptedDekek;
+      if (existingEncryptedKek != newEncryptedKek) {
+        updatedSharedStorageData[existingIndex] = sharedStorageData;
+      }
     } else {
-
       updatedSharedStorageData.add(sharedStorageData);
     }
 

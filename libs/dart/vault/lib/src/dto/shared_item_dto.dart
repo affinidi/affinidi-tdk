@@ -4,7 +4,7 @@ import 'dart:typed_data';
 class SharedItemDto {
   /// Creates a new instance of [SharedItemDto].
   ///
-  /// [kek] - Key encryption key for accessing the shared items.
+  /// [kek] - Key encryption key for the shared items.
   /// [ownerProfileId] - Unique identifier of the profile that owns the items.
   /// [ownerProfileDID] - Decentralized identifier of the profile that owns the items.
   /// [itemIds] - List of item IDs (files/folders) that are shared.
