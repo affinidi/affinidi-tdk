@@ -169,7 +169,7 @@ void main() async {
   print(
       '[Demo] Alice is sharing $fileName2 with Bob with READ and WRITE access ...');
 
-  // Multiple permission types: [Permissions.read, Permissions.all] creates two permission groups 
+  // Multiple permission types: [Permissions.read, Permissions.all] creates two permission groups
   //get combined into one permision group with "all" rights
   final sharedItem2 = await vaultAlice.shareItem(
     profileId: aliceProfile.id,
