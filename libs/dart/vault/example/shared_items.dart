@@ -107,6 +107,8 @@ void main() async {
   final file1 = filesPage1.items.firstWhere((item) => item.name == fileName1);
 
   print('[Demo] Alice is sharing $fileName1 with Bob with READ access ...');
+
+  // Single permission type: [Permissions.read] creates one permission group with read rights
   final sharedItem1 = await vaultAlice.shareItem(
     profileId: aliceProfile.id,
     itemId: file1.id,
@@ -166,11 +168,14 @@ void main() async {
 
   print(
       '[Demo] Alice is sharing $fileName2 with Bob with READ and WRITE access ...');
+
+  // Multiple permission types: [Permissions.read, Permissions.all] creates two permission groups 
+  //get combined into one permision group with "all" rights
   final sharedItem2 = await vaultAlice.shareItem(
     profileId: aliceProfile.id,
     itemId: file2.id,
     toDid: bobProfile.did,
-    permissions: [Permissions.read, Permissions.write],
+    permissions: [Permissions.all],
   );
 
   print('[Demo] Verifying Bob\'s permissions after $fileName2 is shared ...');

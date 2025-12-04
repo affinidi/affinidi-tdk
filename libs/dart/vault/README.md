@@ -65,7 +65,78 @@ void main() async {
 
 **Note**: The example above uses `VfsProfileRepository` from the `affinidi_tdk_vault_data_manager` package to enable cloud storage functionality. If you only need local storage or custom implementations, you can use just the core vault package.
 
-For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example).
+### Profile Sharing
+
+The Vault package supports sharing profiles and individual items (files/folders) with other users. This enables collaborative access to data while maintaining security through encryption.
+
+#### Sharing a Profile
+
+To share an entire profile with another user:
+
+```dart
+// Owner shares their profile with a grantee
+final granteeDid = 'did:key:recipient-did';
+final sharedProfile = await vault.shareProfile(
+  profileId: 'my-profile-id',
+  toDid: granteeDid,  // granteeDid: the DID of the user receiving access
+  permissions: Permissions.read,  // or Permissions.write, Permissions.all
+);
+
+// Owner sends SharedProfileDto to grantee 
+// Grantee accepts the shared profile
+await vault.addSharedProfile(
+  profileId: 'grantee-profile-id',
+  sharedProfile: sharedProfile,
+);
+```
+
+#### Sharing Individual Items
+
+To share specific files or folders (items) with another user:
+
+```dart
+// Owner shares a file with a grantee
+final granteeDid = 'did:key:recipient-did';
+final sharedItem = await vault.shareItem(
+  profileId: 'my-profile-id',
+  itemId: 'file-123',
+  toDid: granteeDid,  // granteeDid: the DID of the user receiving access
+  permissions: [Permissions.read, Permissions.write],
+);
+
+// Owner sends SharedItemDto to grantee 
+// Grantee accepts the shared item
+await vault.addSharedItem(
+  profileId: 'grantee-profile-id',
+  sharedItem: sharedItem,
+);
+```
+
+#### Revoking Access
+
+To revoke access to a profile or item:
+
+```dart
+// Revoke profile access from grantee
+final granteeDid = 'did:key:recipient-did';
+await vault.revokeProfileAccess(
+  profileId: 'my-profile-id',
+  granteeDid: granteeDid,
+);
+
+// Revoke item access from grantee
+await vault.revokeItemAccess(
+  profileId: 'my-profile-id',
+  itemId: 'file-123',
+  granteeDid: granteeDid,
+);
+```
+
+**Note**: Profile and item sharing require the profile repository to implement the `ProfileAccessSharing` interface. The `VfsProfileRepository` from `affinidi_tdk_vault_data_manager` supports both profile and item-level sharing.
+
+For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example), including:
+- [shared_profiles.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/shared_profiles.dart) - Profile sharing examples
+- [shared_items.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/shared_items.dart) - Item-level sharing examples
 
 
 ## Support & feedback
