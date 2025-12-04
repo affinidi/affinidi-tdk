@@ -97,16 +97,34 @@ To share specific files or folders (items) with another user:
 ```dart
 // Owner shares a file with a grantee
 final granteeDid = 'did:key:recipient-did';
-final sharedItem = await vault.shareItem(
+
+// 1. Get current permissions policy
+final policy = await vault.getItemPermissionsPolicy(
   profileId: 'my-profile-id',
-  itemId: 'file-123',
-  toDid: granteeDid,  // granteeDid: the DID of the user receiving access
-  permissions: [Permissions.read, Permissions.write],
+  granteeDid: granteeDid,
+);
+
+// 2. Add permission locally 
+policy.addPermission(['file-123'], [Permissions.read, Permissions.write]);
+
+// 3. Set complete policy 
+final kek = await vault.setItemAccess(
+  profileId: 'my-profile-id',
+  granteeDid: granteeDid,
+  policy: policy,
+);
+
+// Create SharedItemDto to send to grantee
+final sharedItem = SharedItemDto(
+  kek: kek,
+  ownerProfileId: 'my-profile-id',
+  ownerProfileDID: 'did:key:owner-did',
+  itemIds: ['file-123'],
 );
 
 // Owner sends SharedItemDto to grantee 
 // Grantee accepts the shared item
-await vault.addSharedItem(
+await vault.acceptSharedItem(
   profileId: 'grantee-profile-id',
   sharedItem: sharedItem,
 );
@@ -124,11 +142,20 @@ await vault.revokeProfileAccess(
   granteeDid: granteeDid,
 );
 
-// Revoke item access from grantee
-await vault.revokeItemAccess(
+// Revoke item access from grantee 
+final policy = await vault.getItemPermissionsPolicy(
   profileId: 'my-profile-id',
-  itemId: 'file-123',
   granteeDid: granteeDid,
+);
+
+// Remove permission locally 
+policy.removePermission(['file-123'], []); // Empty list removes all permissions
+
+// Set complete policy
+await vault.setItemAccess(
+  profileId: 'my-profile-id',
+  granteeDid: granteeDid,
+  policy: policy,
 );
 ```
 

@@ -252,39 +252,6 @@ void main() {
         ));
       });
 
-      test('should grant node access successfully', () async {
-        when(() => mockIamApiService.updateItemAccessVfs(
-              granteeDid: any(named: 'granteeDid'),
-              itemIds: any(named: 'itemIds'),
-              permissions: any(named: 'permissions'),
-            )).thenAnswer((_) async {});
-
-        when(() => mockDataManagerService.getAccounts())
-            .thenAnswer((_) async => [
-                  Account(
-                    accountIndex: 0,
-                    accountDid: ProfileFixtures.testDid,
-                    accountMetadata: AccountMetadata(
-                      dekekInfo: DekekInfo(encryptedDekek: 'dGVzdF9rZXk='),
-                      sharedStorageData: [],
-                    ),
-                  ),
-                ]);
-
-        await sut.grantItemAccess(
-          accountIndex: 0,
-          granteeDid: 'did:test:123',
-          itemIds: ['node-1', 'node-2'],
-          permissions: Permissions.read,
-        );
-
-        verify(() => mockIamApiService.updateItemAccessVfs(
-              granteeDid: 'did:test:123',
-              itemIds: ['node-1', 'node-2'],
-              permissions: Permissions.read,
-            )).called(1);
-      });
-
       test('should revoke item access successfully', () async {
         when(() => mockIamApiService.revokeItemAccessVfs(
               granteeDid: any(named: 'granteeDid'),
@@ -333,7 +300,7 @@ void main() {
       });
 
       test('should grant multiple item access groups successfully', () async {
-        when(() => mockIamApiService.updateItemAccessVfsWithMultiplePermissions(
+        when(() => mockIamApiService.setItemAccessVfs(
               granteeDid: any<String>(named: 'granteeDid'),
               permissionGroups:
                   any<List<({List<String> itemIds, Permissions permissions})>>(
@@ -364,8 +331,7 @@ void main() {
           permissionGroups: permissionGroups,
         );
 
-        verify(() =>
-            mockIamApiService.updateItemAccessVfsWithMultiplePermissions(
+        verify(() => mockIamApiService.setItemAccessVfs(
               granteeDid: 'did:test:123',
               permissionGroups:
                   any<List<({List<String> itemIds, Permissions permissions})>>(

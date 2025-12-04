@@ -45,22 +45,6 @@ abstract interface class ProfileAccessSharing {
     VaultCancelToken? cancelToken,
   });
 
-  /// Grants access to specific items (files/folders) for a specific user.
-  ///
-  /// [accountIndex] - The index of the account.
-  /// [granteeDid] - The DID of the user to grant access to.
-  /// [itemIds] - List of item IDs (file or folder IDs) to grant access to.
-  /// [permissions] - The permissions to grant (read, write, or all).
-  /// [cancelToken] - Optional cancel token for API requests.
-  /// Returns the KEK for accessing the shared items.
-  Future<Uint8List> grantItemAccess({
-    required int accountIndex,
-    required String granteeDid,
-    required List<String> itemIds,
-    required Permissions permissions,
-    VaultCancelToken? cancelToken,
-  });
-
   /// Grants access to multiple permission groups in a single call.
   ///
   /// This allows sending multiple Permission objects with different rights

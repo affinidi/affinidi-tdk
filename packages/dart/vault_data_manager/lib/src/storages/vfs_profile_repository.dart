@@ -565,50 +565,6 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   }
 
   @override
-  Future<Uint8List> grantItemAccess({
-    required int accountIndex,
-    required String granteeDid,
-    required List<String> itemIds,
-    required Permissions permissions,
-    VaultCancelToken? cancelToken,
-  }) async {
-    _ensureConfigured();
-
-    final iamApiService = await _getIamApiService(accountIndex);
-    await iamApiService.updateItemAccessVfs(
-      granteeDid: granteeDid,
-      itemIds: itemIds,
-      permissions: permissions,
-      cancelToken:
-          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
-    );
-
-    final accountVaultDataManagerService =
-        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
-    final accounts = await accountVaultDataManagerService.getAccounts();
-    final account = accounts
-        .where((account) => account.accountIndex == accountIndex)
-        .firstOrNull;
-
-    if (account == null) {
-      Error.throwWithStackTrace(
-        TdkException(
-            message: 'Account with index $accountIndex does not exist',
-            code: TdkExceptionType.invalidAccountIndex.code),
-        StackTrace.current,
-      );
-    }
-
-    final profileKeyPair =
-        await _memoizedKeyPair(accountIndex: '$accountIndex');
-    final kek = await profileKeyPair.decrypt(
-      base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
-    );
-
-    return kek;
-  }
-
-  @override
   Future<Uint8List> grantItemAccessMultiple({
     required int accountIndex,
     required String granteeDid,
@@ -619,7 +575,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-    await iamApiService.updateItemAccessVfsWithMultiplePermissions(
+    await iamApiService.setItemAccessVfs(
       granteeDid: granteeDid,
       permissionGroups: permissionGroups
           .map((group) => (

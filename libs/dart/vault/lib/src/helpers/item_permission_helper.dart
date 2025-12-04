@@ -4,50 +4,9 @@ import '../permissions.dart';
 /// Helper class for managing item permissions.
 ///
 /// This class provides utilities for:
-/// - Deduplicating and merging permission groups
 /// - Converting between Permissions enum and rights strings
 /// - Processing permission updates and revocations
 class ItemPermissionHelper {
-  /// Deduplicates and merges a list of [ItemPermission]s.
-  static List<ItemPermission> dedupePermissions(
-      List<ItemPermission> permissions) {
-    if (permissions.isEmpty) return permissions;
-
-    final uniquePermissions = Set<ItemPermission>.from(permissions);
-
-    final groupedByItemIds = <String, List<ItemPermission>>{};
-    for (final perm in uniquePermissions) {
-      final sortedItemIds = perm.itemIds.toList()..sort();
-      final key = sortedItemIds.join(',');
-      groupedByItemIds.putIfAbsent(key, () => []).add(perm);
-    }
-
-    return groupedByItemIds.values.map(_mergePermissionGroup).toList();
-  }
-
-  static ItemPermission _mergePermissionGroup(List<ItemPermission> group) {
-    if (group.length == 1) return group.first;
-
-    final allRights = <String>{};
-    DateTime? earliestExpiresAt;
-
-    for (final perm in group) {
-      allRights.addAll(perm.rights);
-      if (perm.expiresAt != null) {
-        earliestExpiresAt = earliestExpiresAt == null ||
-                perm.expiresAt!.isBefore(earliestExpiresAt)
-            ? perm.expiresAt
-            : earliestExpiresAt;
-      }
-    }
-
-    return ItemPermission(
-      itemIds: group.first.itemIds,
-      rights: allRights.toList()..sort(),
-      expiresAt: earliestExpiresAt,
-    );
-  }
-
   /// Converts a list of [Permissions] enum values to a list of rights strings.
   static List<String> permissionsListToRightsList(
       List<Permissions> permissions) {
@@ -142,5 +101,113 @@ class ItemPermissionHelper {
               permissions: rightsListToPermissions(perm.rights),
             ))
         .toList();
+  }
+
+  /// Adds or updates permissions for the given item IDs.
+  ///
+  /// [existingPermissions] - Current list of permissions
+  /// [itemIds] - Item IDs to add/update permissions for
+  /// [rights] - Rights to grant (e.g., ['vfsRead', 'vfsWrite'])
+  static List<ItemPermission> addPermission(
+    List<ItemPermission> existingPermissions,
+    List<String> itemIds,
+    List<String> rights,
+  ) {
+    final updatedPermissions = <ItemPermission>[];
+    final itemIdsSet = itemIds.toSet();
+    final rightsSet = rights.toSet();
+
+    for (final perm in existingPermissions) {
+      final hasOverlap = perm.itemIds.any(itemIdsSet.contains);
+
+      if (!hasOverlap) {
+        updatedPermissions.add(perm);
+      } else {
+        final overlappingIds = perm.itemIds.where(itemIdsSet.contains).toList();
+        final nonOverlappingIds =
+            perm.itemIds.where((id) => !itemIdsSet.contains(id)).toList();
+
+        if (nonOverlappingIds.isNotEmpty) {
+          updatedPermissions.add(perm.copyWith(itemIds: nonOverlappingIds));
+        }
+
+        final mergedRights = {...perm.rights, ...rightsSet}.toList()..sort();
+        if (mergedRights.isNotEmpty) {
+          updatedPermissions.add(ItemPermission(
+            itemIds: overlappingIds,
+            rights: mergedRights,
+            expiresAt: perm.expiresAt,
+          ));
+        }
+      }
+    }
+
+    final existingItemIds =
+        existingPermissions.expand((perm) => perm.itemIds).toSet();
+    final newItemIds =
+        itemIds.where((id) => !existingItemIds.contains(id)).toList();
+
+    if (newItemIds.isNotEmpty && rightsSet.isNotEmpty) {
+      updatedPermissions.add(ItemPermission(
+        itemIds: newItemIds,
+        rights: rightsSet.toList()..sort(),
+      ));
+    }
+
+    return updatedPermissions;
+  }
+
+  /// Removes permissions for the given item IDs and rights.
+  ///
+  /// [existingPermissions] - Current list of permissions
+  /// [itemIds] - Item IDs to remove permissions from
+  /// [rights] - Rights to remove (empty list removes all rights for these items)
+  /// Returns updated list of permissions
+  static List<ItemPermission> removePermission(
+    List<ItemPermission> existingPermissions,
+    List<String> itemIds,
+    List<String> rights,
+  ) {
+    if (itemIds.isEmpty) return existingPermissions;
+
+    final itemIdsSet = itemIds.toSet();
+    final rightsSet = rights.toSet();
+    final removeAllRights = rightsSet.isEmpty;
+
+    final updatedPermissions = <ItemPermission>[];
+
+    for (final perm in existingPermissions) {
+      final hasOverlap = perm.itemIds.any(itemIdsSet.contains);
+
+      if (!hasOverlap) {
+        updatedPermissions.add(perm);
+        continue;
+      }
+
+      final overlappingIds = perm.itemIds.where(itemIdsSet.contains).toList();
+      final nonOverlappingIds =
+          perm.itemIds.where((id) => !itemIdsSet.contains(id)).toList();
+
+      if (nonOverlappingIds.isNotEmpty) {
+        updatedPermissions.add(perm.copyWith(itemIds: nonOverlappingIds));
+      }
+
+      if (removeAllRights) {
+        continue;
+      } else {
+        final remainingRights =
+            perm.rights.where((right) => !rightsSet.contains(right)).toList();
+
+        if (remainingRights.isNotEmpty) {
+          updatedPermissions.add(ItemPermission(
+            itemIds: overlappingIds,
+            rights: remainingRights,
+            expiresAt: perm.expiresAt,
+          ));
+        }
+      }
+    }
+
+    return updatedPermissions;
   }
 }

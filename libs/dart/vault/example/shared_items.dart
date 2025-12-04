@@ -108,20 +108,29 @@ void main() async {
 
   print('[Demo] Alice is sharing $fileName1 with Bob with READ access ...');
 
-  // Single permission type: [Permissions.read] creates one permission group with read rights
-  final sharedItem1 = await vaultAlice.shareItem(
+  var policy = await vaultAlice.getItemPermissionsPolicy(
     profileId: aliceProfile.id,
-    itemId: file1.id,
-    toDid: bobProfile.did,
-    permissions: [Permissions.read],
+    granteeDid: bobProfile.did,
+  );
+
+  policy.addPermission([file1.id], [Permissions.read]);
+
+  final kek1 = await vaultAlice.setItemAccess(
+    profileId: aliceProfile.id,
+    granteeDid: bobProfile.did,
+    policy: policy,
+  );
+
+  final sharedItem1 = SharedItemDto(
+    kek: kek1,
+    ownerProfileId: aliceProfile.id,
+    ownerProfileDID: aliceProfile.did,
+    itemIds: [file1.id],
   );
 
   print('[Demo] Verifying Bob\'s permissions after $fileName1 is shared ...');
 
-  final bobPermissions = await vaultAlice.getItemAccess(
-    profileId: aliceProfile.id,
-    granteeDid: bobProfile.did,
-  );
+  final bobPermissions = policy.permissions;
 
   print('[Demo] Bob has ${bobPermissions.length} permission group(s)');
   for (var permission in bobPermissions) {
@@ -130,7 +139,7 @@ void main() async {
   }
 
   print('[Demo] Bob is accepting the shared item ...');
-  await vaultBob.addSharedItem(
+  await vaultBob.acceptSharedItem(
     profileId: bobProfile.id,
     sharedItem: sharedItem1,
   );
@@ -168,22 +177,29 @@ void main() async {
 
   print(
       '[Demo] Alice is sharing $fileName2 with Bob with READ and WRITE access ...');
-
-  // Multiple permission types: [Permissions.read, Permissions.all] creates two permission groups
-  //get combined into one permision group with "all" rights
-  final sharedItem2 = await vaultAlice.shareItem(
+  policy = await vaultAlice.getItemPermissionsPolicy(
     profileId: aliceProfile.id,
-    itemId: file2.id,
-    toDid: bobProfile.did,
-    permissions: [Permissions.all],
+    granteeDid: bobProfile.did,
+  );
+
+  policy.addPermission([file2.id], [Permissions.read, Permissions.write]);
+
+  final kek2 = await vaultAlice.setItemAccess(
+    profileId: aliceProfile.id,
+    granteeDid: bobProfile.did,
+    policy: policy,
+  );
+
+  final sharedItem2 = SharedItemDto(
+    kek: kek2,
+    ownerProfileId: aliceProfile.id,
+    ownerProfileDID: aliceProfile.did,
+    itemIds: [file1.id, file2.id],
   );
 
   print('[Demo] Verifying Bob\'s permissions after $fileName2 is shared ...');
 
-  final bobPermissions2 = await vaultAlice.getItemAccess(
-    profileId: aliceProfile.id,
-    granteeDid: bobProfile.did,
-  );
+  final bobPermissions2 = policy.permissions;
 
   print('[Demo] Bob has ${bobPermissions2.length} permission group(s)');
   for (var permission in bobPermissions2) {
@@ -192,7 +208,7 @@ void main() async {
   }
 
   print('[Demo] Bob is accepting the second shared item ...');
-  await vaultBob.addSharedItem(
+  await vaultBob.acceptSharedItem(
     profileId: bobProfile.id,
     sharedItem: sharedItem2,
   );
@@ -216,24 +232,122 @@ void main() async {
     print('[Demo] Bob failed to read file2 content: $e');
   }
 
-  print('[Demo] Alice is revoking Bob\'s access ...');
-  await vaultAlice.revokeItemAccess(
+  print('[Demo] Alice is adding two more files ...');
+  final fileName3 = 'alice_file3_$timestamp-$random.txt';
+  final fileName4 = 'alice_file4_$timestamp-$random.txt';
+  await _addFileToProfile(
+    aliceProfile,
+    aliceProfile.id,
+    fileName3,
+  );
+  await _addFileToProfile(
+    aliceProfile,
+    aliceProfile.id,
+    fileName4,
+  );
+
+  final filesPage3 = await aliceProfile.defaultFileStorage!
+      .getFolder(folderId: aliceProfile.id);
+  final file3 = filesPage3.items.firstWhere((item) => item.name == fileName3);
+  final file4 = filesPage3.items.firstWhere((item) => item.name == fileName4);
+
+  print(
+      '[Demo] Alice is sharing $fileName3 and $fileName4 with Bob at the same time ...');
+
+  policy = await vaultAlice.getItemPermissionsPolicy(
     profileId: aliceProfile.id,
-    itemId: file1.id,
     granteeDid: bobProfile.did,
   );
-  await vaultAlice.revokeItemAccess(
+
+  policy.addPermission([file3.id], [Permissions.read]);
+  policy.addPermission([file4.id], [Permissions.read, Permissions.write]);
+
+  final kek3 = await vaultAlice.setItemAccess(
     profileId: aliceProfile.id,
-    itemId: file2.id,
     granteeDid: bobProfile.did,
+    policy: policy,
+  );
+
+  final sharedItem3 = SharedItemDto(
+    kek: kek3,
+    ownerProfileId: aliceProfile.id,
+    ownerProfileDID: aliceProfile.did,
+    itemIds: [file1.id, file2.id, file3.id, file4.id],
+  );
+
+  print(
+      '[Demo] Verifying Bob\'s permissions after sharing file3 and file4 ...');
+
+  final bobPermissions4 = policy.permissions;
+
+  print('[Demo] Bob has ${bobPermissions4.length} permission group(s)');
+  for (var permission in bobPermissions4) {
+    print('[Demo] Item IDs: ${permission.itemIds}');
+    print('[Demo] Rights: ${permission.rights}');
+  }
+
+  print('[Demo] Bob is accepting the shared items (file3 and file4) ...');
+  await vaultBob.acceptSharedItem(
+    profileId: bobProfile.id,
+    sharedItem: sharedItem3,
+  );
+
+  profilesBob = await vaultBob.listProfiles();
+
+  print('[Demo] Bob is reading the shared file3 using readSharedItem ...');
+  try {
+    final bobFile3Content = await vaultBob.readSharedItem(
+      ownerProfileId: aliceProfile.id,
+      itemId: file3.id,
+      onReceiveProgress: (received, total) {
+        if (total != -1) {
+          final progress = (received / total * 100).toStringAsFixed(2);
+          print('[Demo] Download progress: $progress%');
+        }
+      },
+    );
+    print('[Demo] Bob successfully read file3 content: $bobFile3Content');
+  } catch (e) {
+    print('[Demo] Bob failed to read file3 content: $e');
+  }
+
+  print('[Demo] Bob is reading the shared file4 using readSharedItem ...');
+  try {
+    final bobFile4Content = await vaultBob.readSharedItem(
+      ownerProfileId: aliceProfile.id,
+      itemId: file4.id,
+      onReceiveProgress: (received, total) {
+        if (total != -1) {
+          final progress = (received / total * 100).toStringAsFixed(2);
+          print('[Demo] Download progress: $progress%');
+        }
+      },
+    );
+    print('[Demo] Bob successfully read file4 content: $bobFile4Content');
+  } catch (e) {
+    print('[Demo] Bob failed to read file4 content: $e');
+  }
+
+  print('[Demo] Alice is revoking Bob\'s access to all files ...');
+  policy = await vaultAlice.getItemPermissionsPolicy(
+    profileId: aliceProfile.id,
+    granteeDid: bobProfile.did,
+  );
+
+  policy.removePermission([file1.id], []);
+  policy.removePermission([file2.id], []);
+  policy.removePermission([file3.id], []);
+  policy.removePermission([file4.id], []);
+
+  await vaultAlice.setItemAccess(
+    profileId: aliceProfile.id,
+    granteeDid: bobProfile.did,
+    policy: policy,
   );
 
   print('[Demo] Verifying Bob\'s permissions after revoke ...');
 
-  final bobPermissions3 = await vaultAlice.getItemAccess(
-    profileId: aliceProfile.id,
-    granteeDid: bobProfile.did,
-  );
+  final bobPermissions3 = policy.permissions;
 
   print(
       '[Demo] Bob has ${bobPermissions3.length} permission group(s) after revoke');
@@ -242,10 +356,9 @@ void main() async {
     print('[Demo] Rights: ${permission.rights}');
   }
 
-  print(
-      '[Demo] Bob is trying to read the shared file1 using readSharedItem after revoke ...');
+  print('[Demo] Bob is trying to read the shared file1 after revoke ...');
   try {
-    final bobFile1ContentAfterRevoke = await vaultBob.readSharedItem(
+    await vaultBob.readSharedItem(
       ownerProfileId: aliceProfile.id,
       itemId: file1.id,
       onReceiveProgress: (received, total) {
@@ -255,41 +368,8 @@ void main() async {
         }
       },
     );
-    print(
-        '[Demo] ERROR: Bob was able to read file1 after revoke (this should not happen): $bobFile1ContentAfterRevoke');
   } catch (e) {
     print('[Demo] Bob correctly failed to read file1 content after revoke: $e');
-  }
-
-  print(
-      '[Demo] Bob is trying to read the shared file2 using readSharedItem after revoke ...');
-  try {
-    final bobFile2ContentAfterRevoke = await vaultBob.readSharedItem(
-      ownerProfileId: aliceProfile.id,
-      itemId: file2.id,
-      onReceiveProgress: (received, total) {
-        if (total != -1) {
-          final progress = (received / total * 100).toStringAsFixed(2);
-          print('[Demo] Download progress: $progress%');
-        }
-      },
-    );
-    print(
-        '[Demo] ERROR: Bob was able to read file2 after revoke (this should not happen): $bobFile2ContentAfterRevoke');
-  } catch (e) {
-    print('[Demo] Bob correctly failed to read file2 content after revoke: $e');
-  }
-
-  print('[Demo] Bob tries to read file2 after revoke ...');
-  try {
-    await bobProfile.defaultFileStorage!.getFileContent(
-      fileId: file2.id,
-    );
-    print(
-        '[Demo] ERROR: Bob was able to read file2 after revoke (this should not happen)');
-  } catch (e) {
-    print(
-        '[Demo] Bob correctly failed to read file2 after revoke: ${e.toString()}');
   }
 
   print('[Demo] Alice is deleting all files...');
@@ -371,7 +451,7 @@ Future<int> _createProfile(Vault vault, String name, int accountIndex) async {
   }
 
   final profiles = await vault.listProfiles();
-  _listProfileNames(profiles, label: 'Names after adding $name profile');
+  _listProfileNames(profiles, label: name);
   return newAccountIndex;
 }
 

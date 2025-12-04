@@ -200,60 +200,6 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<void> grantItemAccessVfs({
-    required String granteeDid,
-    required List<String> itemIds,
-    required Permissions permissions,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    VaultProgressCallback? onSendProgress,
-    VaultProgressCallback? onReceiveProgress,
-  }) async {
-    if (_consumerAuthzApi == null) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'Consumer IAM client is required for item-level access',
-          code: TdkExceptionType.unableToGrantAccess.code,
-        ),
-        StackTrace.current,
-      );
-    }
-
-    try {
-      final permission = consumer_iam.PermissionBuilder()
-        ..rights = ListBuilder<consumer_iam.RightsEnum>(
-            _permissionsToConsumerRights(permissions))
-        ..nodeIds = ListBuilder<String>(itemIds);
-
-      final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()
-        ..permissions =
-            ListBuilder<consumer_iam.Permission>([permission.build()]);
-
-      await _consumerAuthzApi!.updateAccessVfs(
-        granteeDid: granteeDid,
-        updateAccessInput: updateAccessInput.build(),
-        cancelToken: cancelToken,
-        headers: headers,
-        extra: extra,
-        validateStatus: validateStatus,
-        onSendProgress: onSendProgress,
-        onReceiveProgress: onReceiveProgress,
-      );
-    } catch (e, stackTrace) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'Failed to grant item access to $granteeDid',
-          code: TdkExceptionType.unableToGrantAccess.code,
-          originalMessage: e.toString(),
-        ),
-        stackTrace,
-      );
-    }
-  }
-
-  @override
   Future<void> revokeItemAccessVfs({
     required String granteeDid,
     required List<String> itemIds,
@@ -296,36 +242,9 @@ class VaultDataManagerSharedAccessApiService
     }
   }
 
+  /// Sets the complete item access policy for a grantee.
   @override
-  Future<void> updateItemAccessVfs({
-    required String granteeDid,
-    required List<String> itemIds,
-    required Permissions permissions,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    VaultProgressCallback? onSendProgress,
-    VaultProgressCallback? onReceiveProgress,
-  }) async {
-    await updateItemAccessVfsWithMultiplePermissions(
-      granteeDid: granteeDid,
-      permissionGroups: [(itemIds: itemIds, permissions: permissions)],
-      cancelToken: cancelToken,
-      headers: headers,
-      extra: extra,
-      validateStatus: validateStatus,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-  }
-
-  /// Updates item access with multiple permission groups.
-  ///
-  /// This allows sending multiple Permission objects with different rights
-  /// in one request, preserving separate permission groups.
-  @override
-  Future<void> updateItemAccessVfsWithMultiplePermissions({
+  Future<void> setItemAccessVfs({
     required String granteeDid,
     required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,

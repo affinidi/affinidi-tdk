@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault/src/item_permissions_policy.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -359,217 +360,6 @@ void main() {
       await vault.ensureInitialized();
     });
 
-    test('should share file successfully', () async {
-      final testProfile = VaultFixtures.createTestProfile(
-        fileStorages: {'test': mockFileStorage},
-        credentialStorages: {'test': mockCredentialStorage},
-        sharedStorages: {'test': mockSharedStorage},
-      );
-
-      when(() => mockProfileRepository.listProfiles())
-          .thenAnswer((_) async => [testProfile]);
-      when(() => mockProfileRepository.getItemAccess(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-          )).thenAnswer((_) async => {'permissions': <dynamic>[]});
-      when(() => mockProfileRepository.grantItemAccessMultiple(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-            permissionGroups:
-                any<List<({List<String> itemIds, Permissions permissions})>>(
-                    named: 'permissionGroups'),
-          )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
-
-      await vault.shareItem(
-        profileId: 'test-id',
-        itemId: 'node-123',
-        toDid: 'did:test:123',
-        permissions: [Permissions.read],
-      );
-
-      verify(() => mockProfileRepository.getItemAccess(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-          )).called(1);
-      verify(() => mockProfileRepository.grantItemAccessMultiple(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-            permissionGroups:
-                any<List<({List<String> itemIds, Permissions permissions})>>(
-                    named: 'permissionGroups'),
-          )).called(1);
-    });
-
-    test('should throw when sharing node for non-existent profile', () async {
-      when(() => mockProfileRepository.listProfiles())
-          .thenAnswer((_) async => []);
-
-      expect(
-        () => vault.shareItem(
-          profileId: 'non-existent',
-          itemId: 'node-123',
-          toDid: 'did:test:123',
-          permissions: [Permissions.read],
-        ),
-        throwsA(isA<TdkException>()),
-      );
-    });
-
-    test('should handle multiple permission groups for same item', () async {
-      final testProfile = VaultFixtures.createTestProfile(
-        fileStorages: {'test': mockFileStorage},
-        credentialStorages: {'test': mockCredentialStorage},
-        sharedStorages: {'test': mockSharedStorage},
-      );
-
-      const itemId1 = 'NzY3ZjYjNWJ1UksjN3p4SEI=';
-      const itemId2 = 'NzY3ZjYjNWJ1UksjblNHcTc=';
-
-      when(() => mockProfileRepository.listProfiles())
-          .thenAnswer((_) async => [testProfile]);
-      when(() => mockProfileRepository.getItemAccess(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-          )).thenAnswer((_) async => {
-            'permissions': [
-              {
-                'nodeIds': [itemId1],
-                'rights': ['vfsRead'],
-              },
-              {
-                'nodeIds': [itemId2],
-                'rights': ['vfsWrite'],
-              },
-            ]
-          });
-      when(() => mockProfileRepository.grantItemAccessMultiple(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-            permissionGroups:
-                any<List<({List<String> itemIds, Permissions permissions})>>(
-                    named: 'permissionGroups'),
-          )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
-
-      await vault.shareItem(
-        profileId: 'test-id',
-        itemId: itemId2,
-        toDid: 'did:test:123',
-        permissions: [Permissions.read, Permissions.write],
-      );
-
-      final captured =
-          verify(() => mockProfileRepository.grantItemAccessMultiple(
-                accountIndex: 0,
-                granteeDid: 'did:test:123',
-                permissionGroups: captureAny(named: 'permissionGroups'),
-              )).captured;
-
-      expect(captured.length, 1);
-      final permissionGroups = captured.first
-          as List<({List<String> itemIds, Permissions permissions})>;
-
-      expect(permissionGroups.length, greaterThanOrEqualTo(2));
-      final item2Groups =
-          permissionGroups.where((g) => g.itemIds.contains(itemId2)).toList();
-      expect(item2Groups.length, greaterThanOrEqualTo(1));
-    });
-
-    test('should merge permissions when same item shared multiple times',
-        () async {
-      final testProfile = VaultFixtures.createTestProfile(
-        fileStorages: {'test': mockFileStorage},
-        credentialStorages: {'test': mockCredentialStorage},
-        sharedStorages: {'test': mockSharedStorage},
-      );
-
-      const itemId = 'NzY3ZjYjNWJ1UksjblNHcTc=';
-
-      when(() => mockProfileRepository.listProfiles())
-          .thenAnswer((_) async => [testProfile]);
-      when(() => mockProfileRepository.getItemAccess(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-          )).thenAnswer((_) async => {'permissions': <dynamic>[]});
-      when(() => mockProfileRepository.grantItemAccessMultiple(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-            permissionGroups:
-                any<List<({List<String> itemIds, Permissions permissions})>>(
-                    named: 'permissionGroups'),
-          )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
-
-      await vault.shareItem(
-        profileId: 'test-id',
-        itemId: itemId,
-        toDid: 'did:test:123',
-        permissions: [Permissions.read],
-      );
-
-      when(() => mockProfileRepository.getItemAccess(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-          )).thenAnswer((_) async => {
-            'permissions': [
-              {
-                'nodeIds': [itemId],
-                'rights': ['vfsRead'],
-              },
-            ]
-          });
-
-      await vault.shareItem(
-        profileId: 'test-id',
-        itemId: itemId,
-        toDid: 'did:test:123',
-        permissions: [Permissions.write],
-      );
-
-      final captured = verify(
-        () => mockProfileRepository.grantItemAccessMultiple(
-          accountIndex: 0,
-          granteeDid: 'did:test:123',
-          permissionGroups: captureAny(named: 'permissionGroups'),
-        ),
-      ).captured;
-
-      expect(captured.length, 2);
-      final secondCallGroups = captured.last
-          as List<({List<String> itemIds, Permissions permissions})>;
-
-      final itemGroups =
-          secondCallGroups.where((g) => g.itemIds.contains(itemId)).toList();
-      expect(itemGroups.length, 1);
-      expect(itemGroups.first.permissions, Permissions.all);
-    });
-
-    test('should handle revoke for specific item', () async {
-      final testProfile = VaultFixtures.createTestProfile(
-        fileStorages: {'test': mockFileStorage},
-        credentialStorages: {'test': mockCredentialStorage},
-        sharedStorages: {'test': mockSharedStorage},
-      );
-
-      when(() => mockProfileRepository.listProfiles())
-          .thenAnswer((_) async => [testProfile]);
-      when(() => mockProfileRepository.revokeItemAccess(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-            itemIds: ['node-123'],
-          )).thenAnswer((_) async {});
-
-      await vault.revokeItemAccess(
-        profileId: 'test-id',
-        itemId: 'node-123',
-        granteeDid: 'did:test:123',
-      );
-
-      verify(() => mockProfileRepository.revokeItemAccess(
-            accountIndex: 0,
-            granteeDid: 'did:test:123',
-            itemIds: ['node-123'],
-          )).called(1);
-    });
-
     test('should get item access successfully', () async {
       final testProfile = VaultFixtures.createTestProfile(
         fileStorages: {'test': mockFileStorage},
@@ -607,7 +397,7 @@ void main() {
           )).called(1);
     });
 
-    group('Complex Permission Scenarios', () {
+    group('Multiple Permission Scenarios', () {
       test(
           'should handle same item in multiple permission groups with different rights',
           () async {
@@ -673,41 +463,31 @@ void main() {
         expect(writeOnlyGroup.rights, contains('vfsWrite'));
         expect(readWriteGroup.rights, containsAll(['vfsRead', 'vfsWrite']));
       });
+    });
 
-      test('should handle revoke removing only specific rights, not all',
-          () async {
+    group('ItemPermissionsPolicy', () {
+      test('should get and set permissions policy efficiently', () async {
         final testProfile = VaultFixtures.createTestProfile(
           fileStorages: {'test': mockFileStorage},
           credentialStorages: {'test': mockCredentialStorage},
           sharedStorages: {'test': mockSharedStorage},
         );
 
-        const itemId1 = 'NzY3ZjYjNWJ1UksjN3p4SEI=';
-        const itemId2 = 'NzY3ZjYjNWJ1UksjblNHcTc=';
-        const itemId3 = 'abc';
+        final expectedPermissionsMap = {
+          'permissions': [
+            {
+              'nodeIds': ['node-1'],
+              'rights': ['vfsRead'],
+            }
+          ]
+        };
 
         when(() => mockProfileRepository.listProfiles())
             .thenAnswer((_) async => [testProfile]);
         when(() => mockProfileRepository.getItemAccess(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-            )).thenAnswer((_) async => {
-              'permissions': [
-                {
-                  'nodeIds': [itemId1],
-                  'rights': ['vfsRead'],
-                },
-                {
-                  'nodeIds': [itemId2],
-                  'rights': ['vfsWrite'],
-                },
-                {
-                  'nodeIds': [itemId2, itemId3],
-                  'rights': ['vfsRead', 'vfsWrite'],
-                },
-              ]
-            });
-
+            )).thenAnswer((_) async => expectedPermissionsMap);
         when(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
@@ -716,104 +496,43 @@ void main() {
                       named: 'permissionGroups'),
             )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
 
-        await vault.revokeItemAccess(
+        final policy = await vault.getItemPermissionsPolicy(
           profileId: 'test-id',
-          itemId: itemId2,
           granteeDid: 'did:test:123',
-          permissions: [Permissions.write],
         );
 
-        final captured =
-            verify(() => mockProfileRepository.grantItemAccessMultiple(
-                  accountIndex: 0,
-                  granteeDid: 'did:test:123',
-                  permissionGroups: captureAny(named: 'permissionGroups'),
-                )).captured;
+        expect(policy.permissions.length, 1);
+        expect(policy.permissions[0].itemIds, contains('node-1'));
 
-        expect(captured.length, 1);
-        final permissionGroups = captured.first
-            as List<({List<String> itemIds, Permissions permissions})>;
+        policy.addPermission(['node-2'], [Permissions.write]);
+        policy.removePermission(['node-1'], []);
 
-        expect(permissionGroups.length, greaterThanOrEqualTo(1));
-
-        expect(
-          permissionGroups.any((g) =>
-              g.itemIds.contains(itemId1) && g.permissions == Permissions.read),
-          isTrue,
-        );
-        expect(
-          permissionGroups.any((g) =>
-              g.itemIds.length == 1 &&
-              g.itemIds.contains(itemId2) &&
-              g.permissions == Permissions.write),
-          isFalse,
-        );
-      });
-
-      test('should handle adding permissions creating new groups', () async {
-        final testProfile = VaultFixtures.createTestProfile(
-          fileStorages: {'test': mockFileStorage},
-          credentialStorages: {'test': mockCredentialStorage},
-          sharedStorages: {'test': mockSharedStorage},
+        await vault.setItemAccess(
+          profileId: 'test-id',
+          granteeDid: 'did:test:123',
+          policy: policy,
         );
 
-        const itemId1 = 'NzY3ZjYjNWJ1UksjN3p4SEI=';
-
-        when(() => mockProfileRepository.listProfiles())
-            .thenAnswer((_) async => [testProfile]);
-        when(() => mockProfileRepository.getItemAccess(
+        verify(() => mockProfileRepository.getItemAccess(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-            )).thenAnswer((_) async => {
-              'permissions': [
-                {
-                  'nodeIds': [itemId1],
-                  'rights': ['vfsRead'],
-                },
-              ]
-            });
-        when(() => mockProfileRepository.grantItemAccessMultiple(
+            )).called(1);
+        verify(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
               permissionGroups:
                   any<List<({List<String> itemIds, Permissions permissions})>>(
                       named: 'permissionGroups'),
-            )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
-
-        await vault.shareItem(
-          profileId: 'test-id',
-          itemId: itemId1,
-          toDid: 'did:test:123',
-          permissions: [Permissions.write],
-        );
-
-        final captured =
-            verify(() => mockProfileRepository.grantItemAccessMultiple(
-                  accountIndex: 0,
-                  granteeDid: 'did:test:123',
-                  permissionGroups: captureAny(named: 'permissionGroups'),
-                )).captured;
-
-        expect(captured.length, 1);
-        final permissionGroups = captured.first
-            as List<({List<String> itemIds, Permissions permissions})>;
-        expect(permissionGroups.length, greaterThanOrEqualTo(1));
-
-        final item1Groups =
-            permissionGroups.where((g) => g.itemIds.contains(itemId1)).toList();
-        expect(item1Groups.length, greaterThanOrEqualTo(1));
+            )).called(1);
       });
 
-      test(
-          'should handle equivalent permission groups (read+write vs separate)',
+      test('should handle multiple add and remove operations locally',
           () async {
         final testProfile = VaultFixtures.createTestProfile(
           fileStorages: {'test': mockFileStorage},
           credentialStorages: {'test': mockCredentialStorage},
           sharedStorages: {'test': mockSharedStorage},
         );
-
-        const itemId = 'NzY3ZjYjNWJ1UksjblNHcTc=';
 
         when(() => mockProfileRepository.listProfiles())
             .thenAnswer((_) async => [testProfile]);
@@ -829,30 +548,309 @@ void main() {
                       named: 'permissionGroups'),
             )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
 
-        await vault.shareItem(
+        final policy = await vault.getItemPermissionsPolicy(
           profileId: 'test-id',
-          itemId: itemId,
-          toDid: 'did:test:123',
-          permissions: [Permissions.read, Permissions.write],
+          granteeDid: 'did:test:123',
         );
 
-        final captured =
-            verify(() => mockProfileRepository.grantItemAccessMultiple(
-                  accountIndex: 0,
-                  granteeDid: 'did:test:123',
-                  permissionGroups: captureAny(named: 'permissionGroups'),
-                )).captured;
+        policy.addPermission(['file-1'], [Permissions.read]);
+        policy.addPermission(['file-2'], [Permissions.write]);
+        policy.addPermission(['file-3'], [Permissions.read, Permissions.write]);
 
-        expect(captured.length, 1);
-        final permissionGroups = captured.first
-            as List<({List<String> itemIds, Permissions permissions})>;
+        policy.removePermission(['file-2'], []);
 
-        final itemGroups =
-            permissionGroups.where((g) => g.itemIds.contains(itemId)).toList();
-        expect(itemGroups.length, greaterThanOrEqualTo(1));
+        await vault.setItemAccess(
+          profileId: 'test-id',
+          granteeDid: 'did:test:123',
+          policy: policy,
+        );
 
-        final itemGroup = itemGroups.first;
-        expect(itemGroup.permissions, Permissions.all);
+        verify(() => mockProfileRepository.getItemAccess(
+              accountIndex: 0,
+              granteeDid: 'did:test:123',
+            )).called(1);
+        verify(() => mockProfileRepository.grantItemAccessMultiple(
+              accountIndex: 0,
+              granteeDid: 'did:test:123',
+              permissionGroups:
+                  any<List<({List<String> itemIds, Permissions permissions})>>(
+                      named: 'permissionGroups'),
+            )).called(1);
+      });
+
+      test('should handle empty policy and clearing all permissions', () async {
+        final testProfile = VaultFixtures.createTestProfile(
+          fileStorages: {'test': mockFileStorage},
+          credentialStorages: {'test': mockCredentialStorage},
+          sharedStorages: {'test': mockSharedStorage},
+        );
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => [testProfile]);
+        when(() => mockProfileRepository.getItemAccess(
+              accountIndex: 0,
+              granteeDid: 'did:test:123',
+            )).thenAnswer((_) async => {'permissions': <dynamic>[]});
+        when(() => mockProfileRepository.grantItemAccessMultiple(
+              accountIndex: 0,
+              granteeDid: 'did:test:123',
+              permissionGroups:
+                  any<List<({List<String> itemIds, Permissions permissions})>>(
+                      named: 'permissionGroups'),
+            )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
+
+        final policy = await vault.getItemPermissionsPolicy(
+          profileId: 'test-id',
+          granteeDid: 'did:test:123',
+        );
+
+        expect(policy.permissions, isEmpty);
+
+        policy.addPermission(['file-1'], [Permissions.read]);
+        policy.addPermission(['file-2'], [Permissions.write]);
+
+        policy.clear();
+
+        expect(policy.permissions, isEmpty);
+
+        await vault.setItemAccess(
+          profileId: 'test-id',
+          granteeDid: 'did:test:123',
+          policy: policy,
+        );
+
+        verify(() => mockProfileRepository.grantItemAccessMultiple(
+              accountIndex: 0,
+              granteeDid: 'did:test:123',
+              permissionGroups:
+                  any<List<({List<String> itemIds, Permissions permissions})>>(
+                      named: 'permissionGroups'),
+            )).called(1);
+      });
+
+      test('should throw when getting policy for non-existent profile',
+          () async {
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => []);
+
+        expect(
+          () => vault.getItemPermissionsPolicy(
+            profileId: 'non-existent',
+            granteeDid: 'did:test:123',
+          ),
+          throwsA(isA<TdkException>()),
+        );
+      });
+
+      test('should throw when getting policy with unsupported repository',
+          () async {
+        final testProfile = VaultFixtures.createTestProfile(
+          fileStorages: {'test': mockFileStorage},
+          credentialStorages: {'test': mockCredentialStorage},
+          sharedStorages: {'test': mockSharedStorage},
+          profileRepositoryId: 'non-sharing-repo',
+        );
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => [testProfile]);
+
+        expect(
+          () => vault.getItemPermissionsPolicy(
+            profileId: 'test-id',
+            granteeDid: 'did:test:123',
+          ),
+          throwsA(isA<TdkException>()),
+        );
+      });
+
+      test('should throw when setting policy for non-existent profile',
+          () async {
+        final policy = ItemPermissionsPolicy.empty();
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => []);
+
+        expect(
+          () => vault.setItemAccess(
+            profileId: 'non-existent',
+            granteeDid: 'did:test:123',
+            policy: policy,
+          ),
+          throwsA(isA<TdkException>()),
+        );
+      });
+
+      test('should throw when setting policy with unsupported repository',
+          () async {
+        final testProfile = VaultFixtures.createTestProfile(
+          fileStorages: {'test': mockFileStorage},
+          credentialStorages: {'test': mockCredentialStorage},
+          sharedStorages: {'test': mockSharedStorage},
+          profileRepositoryId: 'non-sharing-repo',
+        );
+        final policy = ItemPermissionsPolicy.empty();
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => [testProfile]);
+
+        expect(
+          () => vault.setItemAccess(
+            profileId: 'test-id',
+            granteeDid: 'did:test:123',
+            policy: policy,
+          ),
+          throwsA(isA<TdkException>()),
+        );
+      });
+    });
+
+    group('acceptSharedItem', () {
+      test('should accept shared item successfully', () async {
+        final testProfile = VaultFixtures.createTestProfile(
+          fileStorages: {'test': mockFileStorage},
+          credentialStorages: {'test': mockCredentialStorage},
+          sharedStorages: {'test': mockSharedStorage},
+        );
+
+        final sharedItem = SharedItemDto(
+          kek: Uint8List.fromList([1, 2, 3, 4]),
+          ownerProfileId: 'owner-profile-id',
+          ownerProfileDID: 'did:key:owner-did',
+          itemIds: ['item-1', 'item-2'],
+        );
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => [testProfile]);
+        when(() => mockProfileRepository.receiveItemAccess(
+              accountIndex: 0,
+              ownerProfileId: 'owner-profile-id',
+              kek: Uint8List.fromList([1, 2, 3, 4]),
+              ownerProfileDid: 'did:key:owner-did',
+            )).thenAnswer((_) async {});
+
+        await vault.acceptSharedItem(
+          profileId: 'test-id',
+          sharedItem: sharedItem,
+        );
+
+        verify(() => mockProfileRepository.receiveItemAccess(
+              accountIndex: 0,
+              ownerProfileId: 'owner-profile-id',
+              kek: Uint8List.fromList([1, 2, 3, 4]),
+              ownerProfileDid: 'did:key:owner-did',
+            )).called(1);
+      });
+
+      test('should throw when accepting shared item for non-existent profile',
+          () async {
+        final sharedItem = SharedItemDto(
+          kek: Uint8List.fromList([1, 2, 3, 4]),
+          ownerProfileId: 'owner-profile-id',
+          ownerProfileDID: 'did:key:owner-did',
+          itemIds: ['item-1'],
+        );
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => []);
+
+        expect(
+          () => vault.acceptSharedItem(
+            profileId: 'non-existent',
+            sharedItem: sharedItem,
+          ),
+          throwsA(isA<TdkException>()),
+        );
+      });
+
+      test(
+          'should throw when accepting shared item with unsupported repository',
+          () async {
+        final testProfile = VaultFixtures.createTestProfile(
+          fileStorages: {'test': mockFileStorage},
+          credentialStorages: {'test': mockCredentialStorage},
+          sharedStorages: {'test': mockSharedStorage},
+          profileRepositoryId: 'non-sharing-repo',
+        );
+
+        final sharedItem = SharedItemDto(
+          kek: Uint8List.fromList([1, 2, 3, 4]),
+          ownerProfileId: 'owner-profile-id',
+          ownerProfileDID: 'did:key:owner-did',
+          itemIds: ['item-1'],
+        );
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => [testProfile]);
+
+        expect(
+          () => vault.acceptSharedItem(
+            profileId: 'test-id',
+            sharedItem: sharedItem,
+          ),
+          throwsA(isA<TdkException>()),
+        );
+      });
+    });
+
+    group('readSharedItem', () {
+      test('should read shared item successfully', () async {
+        final testProfile = VaultFixtures.createTestProfile(
+          fileStorages: {'test': mockFileStorage},
+          credentialStorages: {'test': mockCredentialStorage},
+          sharedStorages: {'test': mockSharedStorage},
+        );
+
+        final expectedContent = Uint8List.fromList([1, 2, 3, 4, 5]);
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => [testProfile]);
+        when(() => mockSharedStorage.id).thenReturn('owner-profile-id');
+        when(() => mockSharedStorage.getFileContent(
+              fileId: 'item-123',
+            )).thenAnswer((_) async => expectedContent);
+
+        final content = await vault.readSharedItem(
+          ownerProfileId: 'owner-profile-id',
+          itemId: 'item-123',
+        );
+
+        expect(content, equals(expectedContent));
+        verify(() => mockSharedStorage.getFileContent(
+              fileId: 'item-123',
+            )).called(1);
+      });
+
+      test('should throw when reading shared item with no profiles', () async {
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => []);
+
+        expect(
+          () => vault.readSharedItem(
+            ownerProfileId: 'owner-profile-id',
+            itemId: 'item-123',
+          ),
+          throwsA(isA<TdkException>()),
+        );
+      });
+
+      test('should throw when shared storage not found', () async {
+        final testProfile = VaultFixtures.createTestProfile(
+          fileStorages: {'test': mockFileStorage},
+          credentialStorages: {'test': mockCredentialStorage},
+          sharedStorages: {'test': mockSharedStorage},
+        );
+
+        when(() => mockProfileRepository.listProfiles())
+            .thenAnswer((_) async => [testProfile]);
+        when(() => mockSharedStorage.id).thenReturn('different-profile-id');
+
+        expect(
+          () => vault.readSharedItem(
+            ownerProfileId: 'owner-profile-id',
+            itemId: 'item-123',
+          ),
+          throwsA(isA<TdkException>()),
+        );
       });
     });
   });
