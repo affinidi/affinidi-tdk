@@ -259,12 +259,13 @@ const { status, data } = await apiInstance.signCredential(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -317,12 +318,13 @@ const { status, data } = await apiInstance.signCredentialsJwt(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -375,12 +377,13 @@ const { status, data } = await apiInstance.signCredentialsLdp(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -433,12 +436,13 @@ const { status, data } = await apiInstance.signCredentialsSdJwt(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

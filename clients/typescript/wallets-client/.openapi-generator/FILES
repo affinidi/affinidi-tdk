@@ -43,6 +43,7 @@ docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
 docs/SignPresentationLdpResultDto.md
 docs/SigningFailedError.md
+docs/TooManyRequestsError.md
 docs/UpdateWalletInput.md
 docs/WalletApi.md
 docs/WalletDto.md

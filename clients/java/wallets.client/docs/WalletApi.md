@@ -364,12 +364,13 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 ## signCredentialsJwt
 
@@ -438,12 +439,13 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 ## signCredentialsLdp
 
@@ -512,12 +514,13 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 ## signCredentialsSdJwt
 
@@ -586,12 +589,13 @@ public class Example {
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 ## signJwtToken
 

@@ -768,6 +768,7 @@ class WalletApi:
             '400': "SignCredential400Response",
             '403': "OperationForbiddenError",
             '404': "NotFoundError",
+            '429': "TooManyRequestsError",
         }
 
         return self.api_client.call_api(
@@ -926,6 +927,7 @@ class WalletApi:
             '400': "InvalidParameterError",
             '403': "OperationForbiddenError",
             '404': "NotFoundError",
+            '429': "TooManyRequestsError",
         }
 
         return self.api_client.call_api(
@@ -1084,6 +1086,7 @@ class WalletApi:
             '400': "InvalidParameterError",
             '403': "OperationForbiddenError",
             '404': "NotFoundError",
+            '429': "TooManyRequestsError",
         }
 
         return self.api_client.call_api(
@@ -1242,6 +1245,7 @@ class WalletApi:
             '400': "InvalidParameterError",
             '403': "OperationForbiddenError",
             '404': "NotFoundError",
+            '429': "TooManyRequestsError",
         }
 
         return self.api_client.call_api(

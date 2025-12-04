@@ -130,6 +130,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignPresentationLdpInputDto](doc/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](doc/SignPresentationLdpResultDto.md)
 - [SigningFailedError](doc/SigningFailedError.md)
+- [TooManyRequestsError](doc/TooManyRequestsError.md)
 - [UpdateWalletInput](doc/UpdateWalletInput.md)
 - [WalletDto](doc/WalletDto.md)
 - [WalletDtoKeysInner](doc/WalletDtoKeysInner.md)
