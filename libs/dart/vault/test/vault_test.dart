@@ -704,7 +704,7 @@ void main() {
       });
     });
 
-    group('acceptSharedItem', () {
+    group('acceptSharedItems', () {
       test('should accept shared item successfully', () async {
         final testProfile = VaultFixtures.createTestProfile(
           fileStorages: {'test': mockFileStorage},
@@ -712,7 +712,7 @@ void main() {
           sharedStorages: {'test': mockSharedStorage},
         );
 
-        final sharedItem = SharedItemDto(
+        final sharedItem = SharedItemsDto(
           kek: Uint8List.fromList([1, 2, 3, 4]),
           ownerProfileId: 'owner-profile-id',
           ownerProfileDID: 'did:key:owner-did',
@@ -728,9 +728,9 @@ void main() {
               ownerProfileDid: 'did:key:owner-did',
             )).thenAnswer((_) async {});
 
-        await vault.acceptSharedItem(
+        await vault.acceptSharedItems(
           profileId: 'test-id',
-          sharedItem: sharedItem,
+          sharedItems: sharedItem,
         );
 
         verify(() => mockProfileRepository.receiveItemAccess(
@@ -743,7 +743,7 @@ void main() {
 
       test('should throw when accepting shared item for non-existent profile',
           () async {
-        final sharedItem = SharedItemDto(
+        final sharedItem = SharedItemsDto(
           kek: Uint8List.fromList([1, 2, 3, 4]),
           ownerProfileId: 'owner-profile-id',
           ownerProfileDID: 'did:key:owner-did',
@@ -754,9 +754,9 @@ void main() {
             .thenAnswer((_) async => []);
 
         expect(
-          () => vault.acceptSharedItem(
+          () => vault.acceptSharedItems(
             profileId: 'non-existent',
-            sharedItem: sharedItem,
+            sharedItems: sharedItem,
           ),
           throwsA(isA<TdkException>()),
         );
@@ -772,7 +772,7 @@ void main() {
           profileRepositoryId: 'non-sharing-repo',
         );
 
-        final sharedItem = SharedItemDto(
+        final sharedItem = SharedItemsDto(
           kek: Uint8List.fromList([1, 2, 3, 4]),
           ownerProfileId: 'owner-profile-id',
           ownerProfileDID: 'did:key:owner-did',
@@ -783,9 +783,9 @@ void main() {
             .thenAnswer((_) async => [testProfile]);
 
         expect(
-          () => vault.acceptSharedItem(
+          () => vault.acceptSharedItems(
             profileId: 'test-id',
-            sharedItem: sharedItem,
+            sharedItems: sharedItem,
           ),
           throwsA(isA<TdkException>()),
         );

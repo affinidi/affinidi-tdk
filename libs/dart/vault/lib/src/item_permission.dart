@@ -110,6 +110,6 @@ class ItemPermission {
 
   @override
   String toString() {
-    return 'ItemPermission(itemIds: $itemIds, rights: $rights)';
+    return 'ItemPermission(itemIds: $itemIds, rights: $rights, expiresAt: $expiresAt)';
   }
 }

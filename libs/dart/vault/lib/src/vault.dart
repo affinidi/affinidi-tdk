@@ -327,11 +327,11 @@ class Vault {
   /// Accepts a shared item (file/folder) that was granted by another user.
   ///
   /// [profileId] - Identifier of the profile to which add the shared item
-  /// [sharedItem] - Shared item info including KEK, owner profile id, and item ids.
+  /// [sharedItems] - Shared item info including KEK, owner profile id, and item ids.
   /// [cancelToken] - Optional cancel token for the operation.
-  Future<void> acceptSharedItem({
+  Future<void> acceptSharedItems({
     required String profileId,
-    required SharedItemDto sharedItem,
+    required SharedItemsDto sharedItems,
     VaultCancelToken? cancelToken,
   }) async {
     final profiles = await listProfiles();
@@ -374,9 +374,9 @@ class Vault {
 
     await profileSharedAccessRepository.receiveItemAccess(
       accountIndex: profile.accountIndex,
-      ownerProfileId: sharedItem.ownerProfileId,
-      kek: sharedItem.kek,
-      ownerProfileDid: sharedItem.ownerProfileDID,
+      ownerProfileId: sharedItems.ownerProfileId,
+      kek: sharedItems.kek,
+      ownerProfileDid: sharedItems.ownerProfileDID,
       cancelToken: cancelToken,
     );
   }

@@ -84,7 +84,7 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> revokeItemAccessVfs({
+  Future<void> revokeItemsAccessVfs({
     required String granteeDid,
     required List<String> itemIds,
     CancelToken? cancelToken,
@@ -95,18 +95,18 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
     VaultProgressCallback? onReceiveProgress,
   });
 
-  /// Get granular access permissions for specific items (files/folders) in the virtual file system
-  /// Retrieves access rights for a subject
+  /// Get granular access permissions for all items (files/folders)
+  /// Retrieves all access rights for a subject
   ///
   /// Parameters:
-  /// * [granteeDid] - get access permissions for this DID
+  /// * [granteeDid] - get access permissions for this DID (returns all items the grantee can access)
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extra] - Can be used to add flags to the request
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<Response<consumer_iam.GetAccessOutput>> getItemAccessVfs({
+  Future<Response<consumer_iam.GetAccessOutput>> getItemsAccessVfs({
     required String granteeDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -127,7 +127,7 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> setItemAccessVfs({
+  Future<void> setItemsAccessVfs({
     required String granteeDid,
     required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,

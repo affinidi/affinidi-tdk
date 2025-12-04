@@ -114,17 +114,17 @@ final kek = await vault.setItemAccess(
   policy: policy,
 );
 
-// Create SharedItemDto to send to grantee
-final sharedItem = SharedItemDto(
+// Create SharedItemsDto to send to grantee
+final sharedItem = SharedItemsDto(
   kek: kek,
   ownerProfileId: 'my-profile-id',
   ownerProfileDID: 'did:key:owner-did',
   itemIds: ['file-123'],
 );
 
-// Owner sends SharedItemDto to grantee 
+// Owner sends SharedItemsDto to grantee 
 // Grantee accepts the shared item
-await vault.acceptSharedItem(
+await vault.acceptSharedItems(
   profileId: 'grantee-profile-id',
   sharedItem: sharedItem,
 );

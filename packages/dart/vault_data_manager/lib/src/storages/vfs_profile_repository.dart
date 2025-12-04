@@ -575,7 +575,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-    await iamApiService.setItemAccessVfs(
+    await iamApiService.setItemsAccessVfs(
       granteeDid: granteeDid,
       permissionGroups: permissionGroups
           .map((group) => (
@@ -623,7 +623,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
 
     final iamApiService = await _getIamApiService(accountIndex);
 
-    await iamApiService.revokeItemAccessVfs(
+    await iamApiService.revokeItemsAccessVfs(
       granteeDid: granteeDid,
       itemIds: itemIds,
       cancelToken:
@@ -640,7 +640,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
     _ensureConfigured();
 
     final iamApiService = await _getIamApiService(accountIndex);
-    final response = await iamApiService.getItemAccessVfs(
+    final response = await iamApiService.getItemsAccessVfs(
       granteeDid: granteeDid,
       cancelToken:
           cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,

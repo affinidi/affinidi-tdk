@@ -30,16 +30,27 @@ class ItemPermissionHelper {
   }
 
   /// Converts a list of rights strings to Permissions enum.
-  static Permissions rightsListToPermissions(List<String> rightsList) {
+  static Permissions? rightsListToPermissions(List<String> rightsList) {
+    if (rightsList.isEmpty) {
+      return null;
+    }
     final sortedRights = rightsList.toList()..sort();
+    final knownRights = {'vfsRead', 'vfsWrite'};
+    final hasUnknownRights =
+        sortedRights.any((right) => !knownRights.contains(right));
+    if (hasUnknownRights) {
+      return null;
+    }
     if (sortedRights.length == 2 &&
         sortedRights.contains('vfsRead') &&
         sortedRights.contains('vfsWrite')) {
       return Permissions.all;
     } else if (sortedRights.contains('vfsWrite')) {
       return Permissions.write;
-    } else {
+    } else if (sortedRights.contains('vfsRead')) {
       return Permissions.read;
+    } else {
+      return null;
     }
   }
 
@@ -96,10 +107,17 @@ class ItemPermissionHelper {
   static List<({List<String> itemIds, Permissions permissions})>
       buildPermissionGroups(List<ItemPermission> permissions) {
     return permissions
-        .map((perm) => (
-              itemIds: perm.itemIds,
-              permissions: rightsListToPermissions(perm.rights),
-            ))
+        .map((perm) {
+          final convertedPermissions = rightsListToPermissions(perm.rights);
+          if (convertedPermissions == null) {
+            return null;
+          }
+          return (
+            itemIds: perm.itemIds,
+            permissions: convertedPermissions,
+          );
+        })
+        .whereType<({List<String> itemIds, Permissions permissions})>()
         .toList();
   }
 

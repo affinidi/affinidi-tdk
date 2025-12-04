@@ -113,6 +113,7 @@ void main() async {
     granteeDid: bobProfile.did,
   );
 
+  // Single permission type: [Permissions.read] creates one permission group with read-only access
   policy.addPermission([file1.id], [Permissions.read]);
 
   final kek1 = await vaultAlice.setItemAccess(
@@ -121,11 +122,12 @@ void main() async {
     policy: policy,
   );
 
-  final sharedItem1 = SharedItemDto(
+  // Create SharedItemsDto (can contain multiple item IDs)
+  final sharedItems1 = SharedItemsDto(
     kek: kek1,
     ownerProfileId: aliceProfile.id,
     ownerProfileDID: aliceProfile.did,
-    itemIds: [file1.id],
+    itemIds: [file1.id], // Can include multiple item IDs
   );
 
   print('[Demo] Verifying Bob\'s permissions after $fileName1 is shared ...');
@@ -138,10 +140,10 @@ void main() async {
     print('[Demo] Rights: ${permission.rights}');
   }
 
-  print('[Demo] Bob is accepting the shared item ...');
-  await vaultBob.acceptSharedItem(
+  print('[Demo] Bob is accepting the shared items ...');
+  await vaultBob.acceptSharedItems(
     profileId: bobProfile.id,
-    sharedItem: sharedItem1,
+    sharedItems: sharedItems1,
   );
 
   profilesBob = await vaultBob.listProfiles();
@@ -182,6 +184,8 @@ void main() async {
     granteeDid: bobProfile.did,
   );
 
+  // Multiple permission types: [Permissions.read, Permissions.write] gets combined
+  // into one permission group with "all" rights
   policy.addPermission([file2.id], [Permissions.read, Permissions.write]);
 
   final kek2 = await vaultAlice.setItemAccess(
@@ -190,11 +194,12 @@ void main() async {
     policy: policy,
   );
 
-  final sharedItem2 = SharedItemDto(
+  // Create SharedItemsDto with multiple items (file1 and file2)
+  final sharedItems2 = SharedItemsDto(
     kek: kek2,
     ownerProfileId: aliceProfile.id,
     ownerProfileDID: aliceProfile.did,
-    itemIds: [file1.id, file2.id],
+    itemIds: [file1.id, file2.id], // Multiple items shared together
   );
 
   print('[Demo] Verifying Bob\'s permissions after $fileName2 is shared ...');
@@ -207,10 +212,10 @@ void main() async {
     print('[Demo] Rights: ${permission.rights}');
   }
 
-  print('[Demo] Bob is accepting the second shared item ...');
-  await vaultBob.acceptSharedItem(
+  print('[Demo] Bob is accepting the shared items (file1 and file2) ...');
+  await vaultBob.acceptSharedItems(
     profileId: bobProfile.id,
-    sharedItem: sharedItem2,
+    sharedItems: sharedItems2,
   );
 
   profilesBob = await vaultBob.listProfiles();
@@ -259,6 +264,7 @@ void main() async {
     granteeDid: bobProfile.did,
   );
 
+  // Add multiple files at once (all local edits, no backend calls)
   policy.addPermission([file3.id], [Permissions.read]);
   policy.addPermission([file4.id], [Permissions.read, Permissions.write]);
 
@@ -268,7 +274,8 @@ void main() async {
     policy: policy,
   );
 
-  final sharedItem3 = SharedItemDto(
+  // Create SharedItemsDto with all shared items (file1, file2, file3, file4)
+  final sharedItems3 = SharedItemsDto(
     kek: kek3,
     ownerProfileId: aliceProfile.id,
     ownerProfileDID: aliceProfile.did,
@@ -286,10 +293,11 @@ void main() async {
     print('[Demo] Rights: ${permission.rights}');
   }
 
-  print('[Demo] Bob is accepting the shared items (file3 and file4) ...');
-  await vaultBob.acceptSharedItem(
+  print(
+      '[Demo] Bob is accepting the shared items (file1, file2, file3, and file4) ...');
+  await vaultBob.acceptSharedItems(
     profileId: bobProfile.id,
-    sharedItem: sharedItem3,
+    sharedItems: sharedItems3,
   );
 
   profilesBob = await vaultBob.listProfiles();

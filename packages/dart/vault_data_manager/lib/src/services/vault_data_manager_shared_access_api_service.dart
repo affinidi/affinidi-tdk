@@ -200,7 +200,7 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<void> revokeItemAccessVfs({
+  Future<void> revokeItemsAccessVfs({
     required String granteeDid,
     required List<String> itemIds,
     CancelToken? cancelToken,
@@ -244,7 +244,7 @@ class VaultDataManagerSharedAccessApiService
 
   /// Sets the complete item access policy for a grantee.
   @override
-  Future<void> setItemAccessVfs({
+  Future<void> setItemsAccessVfs({
     required String granteeDid,
     required List<({List<String> itemIds, Permissions permissions})>
         permissionGroups,
@@ -300,7 +300,7 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<Response<consumer_iam.GetAccessOutput>> getItemAccessVfs({
+  Future<Response<consumer_iam.GetAccessOutput>> getItemsAccessVfs({
     required String granteeDid,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,

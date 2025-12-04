@@ -253,7 +253,7 @@ void main() {
       });
 
       test('should revoke item access successfully', () async {
-        when(() => mockIamApiService.revokeItemAccessVfs(
+        when(() => mockIamApiService.revokeItemsAccessVfs(
               granteeDid: any(named: 'granteeDid'),
               itemIds: any(named: 'itemIds'),
             )).thenAnswer((_) async {});
@@ -264,7 +264,7 @@ void main() {
           itemIds: ['node-1'],
         );
 
-        verify(() => mockIamApiService.revokeItemAccessVfs(
+        verify(() => mockIamApiService.revokeItemsAccessVfs(
               granteeDid: 'did:test:123',
               itemIds: ['node-1'],
             )).called(1);
@@ -284,7 +284,7 @@ void main() {
           requestOptions: RequestOptions(path: '/'),
         );
 
-        when(() => mockIamApiService.getItemAccessVfs(
+        when(() => mockIamApiService.getItemsAccessVfs(
               granteeDid: any(named: 'granteeDid'),
             )).thenAnswer((_) async => expectedResponse);
 
@@ -294,13 +294,13 @@ void main() {
         );
 
         expect(result['permissions'], isA<List>());
-        verify(() => mockIamApiService.getItemAccessVfs(
+        verify(() => mockIamApiService.getItemsAccessVfs(
               granteeDid: 'did:test:123',
             )).called(1);
       });
 
       test('should grant multiple item access groups successfully', () async {
-        when(() => mockIamApiService.setItemAccessVfs(
+        when(() => mockIamApiService.setItemsAccessVfs(
               granteeDid: any<String>(named: 'granteeDid'),
               permissionGroups:
                   any<List<({List<String> itemIds, Permissions permissions})>>(
@@ -331,7 +331,7 @@ void main() {
           permissionGroups: permissionGroups,
         );
 
-        verify(() => mockIamApiService.setItemAccessVfs(
+        verify(() => mockIamApiService.setItemsAccessVfs(
               granteeDid: 'did:test:123',
               permissionGroups:
                   any<List<({List<String> itemIds, Permissions permissions})>>(
