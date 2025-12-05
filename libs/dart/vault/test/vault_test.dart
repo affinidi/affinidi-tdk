@@ -887,8 +887,8 @@ void main() {
         await vault.ensureInitialized();
       });
 
-      group('ItemPermissionsPolicy timeFrame validation', () {
-        test('should throw when timeFrame is zero in addPermission', () {
+      group('ItemPermissionsPolicy expiresIn validation', () {
+        test('should throw when expiresIn is zero in addPermission', () {
           final policy = ItemPermissionsPolicy.empty();
 
           expect(
@@ -907,7 +907,7 @@ void main() {
           );
         });
 
-        test('should throw when timeFrame is negative in addPermission', () {
+        test('should throw when expiresIn is negative in addPermission', () {
           final policy = ItemPermissionsPolicy.empty();
 
           expect(
@@ -926,7 +926,7 @@ void main() {
           );
         });
 
-        test('should allow addPermission with valid timeFrame', () {
+        test('should allow addPermission with valid expiresIn', () {
           final policy = ItemPermissionsPolicy.empty();
 
           policy.addPermission(
@@ -948,7 +948,7 @@ void main() {
           );
         });
 
-        test('should allow addPermission without timeFrame', () {
+        test('should allow addPermission without expiresIn', () {
           final policy = ItemPermissionsPolicy.empty();
 
           policy.addPermission(['item-1'], [Permissions.read]);
@@ -958,15 +958,15 @@ void main() {
           expect(policy.permissions[0].expiresAt, isNull);
         });
 
-        test('should set expiresAt correctly from timeFrame', () {
+        test('should set expiresAt correctly from expiresIn', () {
           final policy = ItemPermissionsPolicy.empty();
           final now = DateTime.now().toUtc();
-          final timeFrame = const Duration(hours: 2);
+          final expiresIn = const Duration(hours: 2);
 
           policy.addPermission(
             ['item-1'],
             [Permissions.read],
-            expiresIn: timeFrame,
+            expiresIn: expiresIn,
           );
 
           final expiresAt = policy.permissions[0].expiresAt;

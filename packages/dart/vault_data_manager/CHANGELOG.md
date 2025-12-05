@@ -1,5 +1,21 @@
 # Change Log
 
+## 1.12.0
+
+### Changes
+
+---
+
+Feat: Time-Bound Sharing for Granular Access
+
+* Added `expiresAt` support to `setItemsAccessVfs` method for automatic expiration of shared items
+* Updated permission groups to include optional `expiresAt` field for time-bound access control
+* Updated `VaultDataManagerSharedAccessApiServiceInterface` to support `expiresAt` in permission groups
+* Updated dependency constraint for `affinidi_tdk_consumer_iam_client` to `^1.2.0` to support `GetAccessOutput` and `getAccessVfs` methods
+
+---
+
+
 ## 1.11.0
 
 ### Changes

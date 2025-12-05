@@ -144,10 +144,10 @@ final policy = await vault.getItemPermissionsPolicy(
 policy.addPermission(
   ['file-123'], 
   [Permissions.read],
-  timeFrame: Duration(hours: 1), // Access valid for 1 hour
+  expiresIn: Duration(hours: 1), // Access valid for 1 hour
 );
 
-// After the timeFrame expires, access is automatically revoked by the backend
+// After the expiresIn expires, access is automatically revoked by the backend
 // The grantee will no longer be able to access the shared item
 ```
 
