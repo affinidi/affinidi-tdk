@@ -887,68 +887,66 @@ void main() {
         await vault.ensureInitialized();
       });
 
-      group('ItemPermissionsPolicy expiresIn validation', () {
-        test('should throw when expiresIn is zero in addPermission', () {
+      group('ItemPermissionsPolicy expiresAt validation', () {
+        test('should allow expiresAt in the past', () {
           final policy = ItemPermissionsPolicy.empty();
-
-          expect(
-            () => policy.addPermission(
-              ['item-1'],
-              [Permissions.read],
-              expiresIn: Duration.zero,
-            ),
-            throwsA(
-              isA<TdkException>().having(
-                (e) => e.code,
-                'code',
-                TdkExceptionType.invalidTimeFrame.code,
-              ),
-            ),
-          );
-        });
-
-        test('should throw when expiresIn is negative in addPermission', () {
-          final policy = ItemPermissionsPolicy.empty();
-
-          expect(
-            () => policy.addPermission(
-              ['item-1'],
-              [Permissions.read],
-              expiresIn: const Duration(seconds: -1),
-            ),
-            throwsA(
-              isA<TdkException>().having(
-                (e) => e.code,
-                'code',
-                TdkExceptionType.invalidTimeFrame.code,
-              ),
-            ),
-          );
-        });
-
-        test('should allow addPermission with valid expiresIn', () {
-          final policy = ItemPermissionsPolicy.empty();
+          final pastDate =
+              DateTime.now().toUtc().subtract(const Duration(hours: 1));
 
           policy.addPermission(
             ['item-1'],
             [Permissions.read],
-            expiresIn: const Duration(hours: 1),
+            expiresAt: pastDate,
           );
 
           expect(policy.permissions.length, 1);
           expect(policy.permissions[0].itemIds, contains('item-1'));
-          expect(policy.permissions[0].expiresAt, isNotNull);
+          expect(policy.permissions[0].expiresAt, equals(pastDate));
+        });
+
+        test('should throw when expiresAt is not in UTC', () {
+          final policy = ItemPermissionsPolicy.empty();
+          final localDate = DateTime.now().add(const Duration(hours: 1));
+
           expect(
-            policy.permissions[0].expiresAt,
-            isA<DateTime>().having(
-              (dt) => dt.isAfter(DateTime.now().toUtc()),
-              'isAfter',
-              true,
+            () => policy.addPermission(
+              ['item-1'],
+              [Permissions.read],
+              expiresAt: localDate,
+            ),
+            throwsA(
+              isA<TdkException>()
+                  .having(
+                    (e) => e.code,
+                    'code',
+                    TdkExceptionType.invalidTimeFrame.code,
+                  )
+                  .having(
+                    (e) => e.message,
+                    'message',
+                    contains('expiresAt must be in UTC'),
+                  ),
             ),
           );
         });
 
-        test('should allow addPermission without expiresIn', () {
+        test('should allow addPermission with valid expiresAt', () {
+          final policy = ItemPermissionsPolicy.empty();
+          final futureDate =
+              DateTime.now().toUtc().add(const Duration(hours: 1));
+
+          policy.addPermission(
+            ['item-1'],
+            [Permissions.read],
+            expiresAt: futureDate,
+          );
+
+          expect(policy.permissions.length, 1);
+          expect(policy.permissions[0].itemIds, contains('item-1'));
+          expect(policy.permissions[0].expiresAt, equals(futureDate));
+        });
+
+        test('should allow addPermission without expiresAt', () {
           final policy = ItemPermissionsPolicy.empty();
 
           policy.addPermission(['item-1'], [Permissions.read]);
@@ -956,23 +954,6 @@ void main() {
           expect(policy.permissions.length, 1);
           expect(policy.permissions[0].itemIds, contains('item-1'));
           expect(policy.permissions[0].expiresAt, isNull);
-        });
-
-        test('should set expiresAt correctly from expiresIn', () {
-          final policy = ItemPermissionsPolicy.empty();
-          final now = DateTime.now().toUtc();
-          final expiresIn = const Duration(hours: 2);
-
-          policy.addPermission(
-            ['item-1'],
-            [Permissions.read],
-            expiresIn: expiresIn,
-          );
-
-          final expiresAt = policy.permissions[0].expiresAt;
-          expect(expiresAt, isNotNull);
-          expect(expiresAt!.isAfter(now), isTrue);
-          expect(expiresAt.difference(now).inHours, 2);
         });
       });
     });

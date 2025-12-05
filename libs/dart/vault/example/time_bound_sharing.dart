@@ -132,7 +132,7 @@ void main() async {
   );
 
   policy.addPermission([file.id], [Permissions.read],
-      expiresIn: const Duration(minutes: 1));
+      expiresAt: DateTime.now().toUtc().add(const Duration(minutes: 1)));
 
   final kek = await vaultAlice.setItemAccess(
     profileId: aliceProfile.id,
