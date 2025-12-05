@@ -292,7 +292,7 @@ Future<void> main() async {
           }
 
           // Verify the assertion is valid
-          expect(assertionValidationResult!.isValid, isTrue);
+          expect(assertionValidationResult?.isValid, isTrue);
           expect(holderDidFromAssertion, holderSigner.did);
 
           // Verify challenge was properly transmitted with assertion

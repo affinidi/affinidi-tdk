@@ -15,6 +15,7 @@ affinidi_tdk_consumer_iam_client/models/__init__.py
 affinidi_tdk_consumer_iam_client/models/consumer_auth_token_endpoint_input.py
 affinidi_tdk_consumer_iam_client/models/consumer_auth_token_endpoint_output.py
 affinidi_tdk_consumer_iam_client/models/cors_consumer_auth_token_endpoint_ok.py
+affinidi_tdk_consumer_iam_client/models/get_access_output.py
 affinidi_tdk_consumer_iam_client/models/grant_access_input.py
 affinidi_tdk_consumer_iam_client/models/grant_access_output.py
 affinidi_tdk_consumer_iam_client/models/invalid_did_error.py
@@ -36,6 +37,7 @@ docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
 docs/CorsConsumerAuthTokenEndpointOK.md
+docs/GetAccessOutput.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
 docs/InvalidDIDError.md

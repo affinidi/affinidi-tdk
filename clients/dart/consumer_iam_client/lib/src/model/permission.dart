@@ -15,6 +15,7 @@ part 'permission.g.dart';
 /// Properties:
 /// * [rights]
 /// * [nodeIds]
+/// * [expiresAt]
 @BuiltValue()
 abstract class Permission implements Built<Permission, PermissionBuilder> {
   @BuiltValueField(wireName: r'rights')
@@ -22,6 +23,9 @@ abstract class Permission implements Built<Permission, PermissionBuilder> {
 
   @BuiltValueField(wireName: r'nodeIds')
   BuiltList<String> get nodeIds;
+
+  @BuiltValueField(wireName: r'expiresAt')
+  DateTime? get expiresAt;
 
   Permission._();
 
@@ -56,6 +60,13 @@ class _$PermissionSerializer implements PrimitiveSerializer<Permission> {
       object.nodeIds,
       specifiedType: const FullType(BuiltList, [FullType(String)]),
     );
+    if (object.expiresAt != null) {
+      yield r'expiresAt';
+      yield serializers.serialize(
+        object.expiresAt,
+        specifiedType: const FullType(DateTime),
+      );
+    }
   }
 
   @override
@@ -94,6 +105,13 @@ class _$PermissionSerializer implements PrimitiveSerializer<Permission> {
             specifiedType: const FullType(BuiltList, [FullType(String)]),
           ) as BuiltList<String>;
           result.nodeIds.replace(valueDes);
+          break;
+        case r'expiresAt':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.expiresAt = valueDes;
           break;
         default:
           unhandled.add(key);

@@ -2,11 +2,12 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cid*
 
-| Method                                             | HTTP request                                 | Description                             |
-| -------------------------------------------------- | -------------------------------------------- | --------------------------------------- |
-| [**deleteAccessVfs**](AuthzApi.md#deleteAccessVfs) | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid             |
-| [**grantAccessVfs**](AuthzApi.md#grantAccessVfs)   | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system |
-| [**updateAccessVfs**](AuthzApi.md#updateAccessVfs) | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid             |
+| Method                                             | HTTP request                                 | Description                                              |
+| -------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------- |
+| [**deleteAccessVfs**](AuthzApi.md#deleteAccessVfs) | **DELETE** /v1/authz/vfs/access/{granteeDid} | delete access of granteeDid                              |
+| [**getAccessVfs**](AuthzApi.md#getAccessVfs)       | **GET** /v1/authz/vfs/access/{granteeDid}    | Get permissions to the virtual file system for a subject |
+| [**grantAccessVfs**](AuthzApi.md#grantAccessVfs)   | **POST** /v1/authz/vfs/access/{granteeDid}   | Grant access to the virtual file system                  |
+| [**updateAccessVfs**](AuthzApi.md#updateAccessVfs) | **PUT** /v1/authz/vfs/access/{granteeDid}    | Update access of granteeDid                              |
 
 ## deleteAccessVfs
 
@@ -79,6 +80,79 @@ null (empty response body)
 | **204**     | Ok              | -                |
 | **403**     | ForbiddenError  | -                |
 | **500**     | UnexpectedError | -                |
+
+## getAccessVfs
+
+> GetAccessOutput getAccessVfs(granteeDid)
+
+Get permissions to the virtual file system for a subject
+
+Retrieves access rights granted to a subject for the virtual file system
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.consumer.iam.client.ApiClient;
+import com.affinidi.tdk.consumer.iam.client.ApiException;
+import com.affinidi.tdk.consumer.iam.client.Configuration;
+import com.affinidi.tdk.consumer.iam.client.auth.*;
+import com.affinidi.tdk.consumer.iam.client.models.*;
+import com.affinidi.tdk.consumer.iam.client.apis.AuthzApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cid");
+
+        // Configure API key authorization: ConsumerTokenAuth
+        ApiKeyAuth ConsumerTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ConsumerTokenAuth");
+        ConsumerTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ConsumerTokenAuth.setApiKeyPrefix("Token");
+
+        AuthzApi apiInstance = new AuthzApi(defaultClient);
+        String granteeDid = "granteeDid_example"; // String |
+        try {
+            GetAccessOutput result = apiInstance.getAccessVfs(granteeDid);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AuthzApi#getAccessVfs");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name           | Type       | Description | Notes |
+| -------------- | ---------- | ----------- | ----- |
+| **granteeDid** | **String** |             |       |
+
+### Return type
+
+[**GetAccessOutput**](GetAccessOutput.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                                               | Response headers |
+| ----------- | --------------------------------------------------------- | ---------------- |
+| **200**     | Successfully retrieved access permissions for the subject | -                |
+| **403**     | ForbiddenError                                            | -                |
+| **500**     | UnexpectedError                                           | -                |
 
 ## grantAccessVfs
 
