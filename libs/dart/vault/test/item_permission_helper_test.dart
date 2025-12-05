@@ -16,12 +16,6 @@ void main() {
         expect(result, equals(Permissions.read));
       });
 
-      test('should return Permissions.read for vfsRead in different order', () {
-        final result =
-            ItemPermissionHelper.rightsListToPermissions(['vfsRead']);
-        expect(result, equals(Permissions.read));
-      });
-
       test('should return Permissions.write for vfsWrite only', () {
         final result =
             ItemPermissionHelper.rightsListToPermissions(['vfsWrite']);
