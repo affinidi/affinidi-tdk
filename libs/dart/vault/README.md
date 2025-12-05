@@ -152,10 +152,10 @@ policy.addPermission(
 ```
 
 **Note**: 
-- Time-bound sharing is only supported for item-level sharing (files/folders), not for profile-level sharing.
-- If `expiresIn` is not provided, access is unlimited (default behavior).
-- If `expiresIn` is invalid (negative or zero), an error will be thrown.
-- Once the time frame expires, the backend automatically revokes access.
+- Time-bound sharing applies only to item-level sharing (e.g., files and folders). It does not support profile-level sharing.
+- If `expiresIn` is not provided, access remains valid until manually revoked (default behaviour).
+- If `expiresIn` is set to zero or a negative value, it throws an invalid error.
+- Once the specified time frame expires, the backend automatically revokes access.
 
 #### Revoking Access
 
