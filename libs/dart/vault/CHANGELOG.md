@@ -1,5 +1,20 @@
 # Change Log
 
+## 1.13.0
+
+### Changes
+
+---
+
+Feat: Time-Bound Sharing for Granular Access
+
+* Added `expiresin` parameter to `ItemPermissionsPolicy.addPermission()` to configure automatic expiration for shared items
+* Shared items (files/folders) can now be shared with a time limit, after which access is automatically revoked by the backend
+* If `expiresIn` is not provided, access remains unlimited (default behavior)
+* Throws an error if `expiresIn` is invalid (negative or zero)
+
+---
+
 ## 1.12.0
 
 ### Changes
