@@ -36,25 +36,29 @@ class ItemPermissionsPolicy {
   ///
   /// [itemIds] - Item IDs to add/update permissions for
   /// [permissions] - Permissions to grant
-  /// [expiresIn] - Optional expiration time frame for the permissions
+  /// [expiresAt] - Optional expiration date/time for the permissions.
   ItemPermissionsPolicy addPermission(
-      List<String> itemIds, List<Permissions> permissions,
-      {Duration? expiresIn}) {
-    if (expiresIn != null && expiresIn <= Duration.zero) {
+    List<String> itemIds,
+    List<Permissions> permissions, {
+    DateTime? expiresAt,
+  }) {
+    if (expiresAt != null && !expiresAt.isUtc) {
       Error.throwWithStackTrace(
         TdkException(
-            message: 'Time frame must be positive',
-            code: TdkExceptionType.invalidTimeFrame.code),
+          message: 'expiresAt must be in UTC',
+          code: TdkExceptionType.invalidTimeFrame.code,
+        ),
         StackTrace.current,
       );
     }
     final rights =
         ItemPermissionHelper.permissionsListToRightsList(permissions);
-    final expiresAt =
-        expiresIn != null ? DateTime.now().toUtc().add(expiresIn) : null;
     _permissions = ItemPermissionHelper.addPermission(
-        _permissions, itemIds, rights,
-        expiresAt: expiresAt);
+      _permissions,
+      itemIds,
+      rights,
+      expiresAt: expiresAt,
+    );
     return this;
   }
 

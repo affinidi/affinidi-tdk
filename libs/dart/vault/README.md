@@ -132,30 +132,33 @@ await vault.acceptSharedItems(
 
 #### Time-Bound Sharing
 
-To share items with automatic expiration (time-bound access), specify a `expiresIn` when adding permissions:
+To share items with automatic expiration (time-bound access), specify an `expiresAt` DateTime when adding permissions:
 
 ```dart
-// Owner shares a file with time-bound access (expires after 1 hour)
+// Owner shares a file with time-bound access (expires at a specific date/time)
 final granteeDid = 'did:key:recipient-did';
 final policy = await vault.getItemPermissionsPolicy(
   profileId: 'my-profile-id',
   granteeDid: granteeDid,
 );
+
+// Add permission with expiration date (access expires at specified DateTime in UTC)
 policy.addPermission(
   ['file-123'], 
   [Permissions.read],
-  expiresIn: Duration(hours: 1), // Access valid for 1 hour
+  expiresAt: DateTime.now().toUtc().add(Duration(hours: 1)), // Access valid until 1 hour from now
 );
 
-// After the expiresIn expires, access is automatically revoked by the backend
+// After the expiresAt DateTime passes, access is automatically revoked by the backend
 // The grantee will no longer be able to access the shared item
 ```
 
 **Note**: 
-- Time-bound sharing applies only to item-level sharing (e.g., files and folders). It does not support profile-level sharing.
-- If `expiresIn` is not provided, access remains valid until manually revoked (default behaviour).
-- If `expiresIn` is set to zero or a negative value, it throws an invalid error.
-- Once the specified time frame expires, the backend automatically revokes access.
+- Time-bound sharing is only supported for item-level sharing (files/folders), not for profile-level sharing.
+- If `expiresAt` is not provided, access is unlimited (default behavior).
+- `expiresAt` must be in UTC format. Use `DateTime.now().toUtc().add(...)` to create UTC dates.
+- `expiresAt` can be set to any date (past or future). Applications should enforce UI restrictions if needed.
+- Once the expiration date/time passes, the backend automatically revokes access.
 
 #### Revoking Access
 

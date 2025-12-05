@@ -162,11 +162,10 @@ class ItemPermissionHelper {
 
         final mergedRights = {...perm.rights, ...rightsSet}.toList()..sort();
         if (mergedRights.isNotEmpty) {
-          final finalExpiresAt = expiresAt ?? perm.expiresAt;
           updatedPermissions.add(ItemPermission(
             itemIds: overlappingIds,
             rights: mergedRights,
-            expiresAt: finalExpiresAt,
+            expiresAt: expiresAt,
           ));
         }
       }
