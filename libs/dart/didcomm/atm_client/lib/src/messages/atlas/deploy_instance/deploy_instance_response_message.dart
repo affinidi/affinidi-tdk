@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../base_messages/base_response_response_message.dart';
+import '../base_messages/base_response_message.dart';
 
 part 'deploy_instance_response_message.g.dart';
 
@@ -115,7 +115,7 @@ final class DeployTrustRegistryInstanceResponse extends DeployInstanceResponse {
 
 /// Response message for deploy instance operation.
 class DeployInstanceResponseMessage
-    extends BaseInstanceResponseMessage<DeployInstanceResponse> {
+    extends BaseResponseMessage<DeployInstanceResponse> {
   /// Creates a deploy instance response message.
   DeployInstanceResponseMessage._({
     required super.id,

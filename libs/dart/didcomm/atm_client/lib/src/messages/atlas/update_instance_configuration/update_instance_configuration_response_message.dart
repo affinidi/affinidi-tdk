@@ -1,13 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../base_messages/base_response_response_message.dart';
+import '../base_messages/base_response_message.dart';
 
 part 'update_instance_configuration_response_message.g.dart';
 
 /// Response message for update mediator instance configuration operation.
 class UpdateMediatorInstanceConfigurationResponseMessage
-    extends BaseInstanceResponseMessage<
-        UpdateMediatorInstanceConfigurationResponse> {
+    extends BaseResponseMessage<UpdateMediatorInstanceConfigurationResponse> {
   /// Creates an update mediator instance configuration response message.
   UpdateMediatorInstanceConfigurationResponseMessage({
     required super.id,

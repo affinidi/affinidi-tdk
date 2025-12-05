@@ -5,15 +5,15 @@ import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediat
 import '../../response_body.dart';
 
 /// Base class for instance operation response messages.
-abstract class BaseInstanceResponseMessage<T> extends PlainTextMessage {
+abstract class BaseResponseMessage<T> extends PlainTextMessage {
   /// Base URI for instance operations.
-  static String baseInstanceOperationsUri = 'affinidi.io/operations/ama';
+  static String baseOperationUri = 'affinidi.io/operations/ama';
   final T Function(Map<String, dynamic>) _fromJson;
 
   /// Creates a base instance response message.
   ///
   /// [operationName] is the name of the operation.
-  BaseInstanceResponseMessage({
+  BaseResponseMessage({
     required super.id,
     required super.from,
     required super.to,
@@ -26,7 +26,7 @@ abstract class BaseInstanceResponseMessage<T> extends PlainTextMessage {
   })  : _fromJson = fromJson,
         super(
           type: Uri.parse(
-            '$baseInstanceOperationsUri/$operationName/response',
+            '$baseOperationUri/$operationName/response',
           ),
         );
 

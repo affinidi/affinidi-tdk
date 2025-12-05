@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../base_messages/base_response_response_message.dart';
+import '../base_messages/base_response_message.dart';
 
 part 'destroy_instance_response_message.g.dart';
 
@@ -27,7 +27,7 @@ class DestroyInstanceResponse {
 
 /// Response message for destroy instance operation.
 class DestroyInstanceResponseMessage
-    extends BaseInstanceResponseMessage<DestroyInstanceResponse> {
+    extends BaseResponseMessage<DestroyInstanceResponse> {
   /// Creates a destroy instance response message.
   DestroyInstanceResponseMessage._({
     required super.id,

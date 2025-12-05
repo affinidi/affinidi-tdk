@@ -1,10 +1,10 @@
 import '../../../models/request_bodies/deploy_mediator_instance_options.dart';
 import '../../../models/request_bodies/deploy_mpx_instance_options.dart';
 import '../../../models/request_bodies/deploy_tr_instance_options.dart';
-import '../base_messages/base_instance_request_message.dart';
+import '../base_messages/base_request_message.dart';
 
 /// Message for deploying an instance.
-class DeployInstanceRequestMessage extends BaseInstanceRequestMessage {
+class DeployInstanceRequestMessage extends BaseRequestMessage {
   /// Creates a deploy instance message.
   DeployInstanceRequestMessage._({
     required super.id,

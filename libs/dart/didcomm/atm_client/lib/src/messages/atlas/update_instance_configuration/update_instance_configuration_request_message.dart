@@ -1,8 +1,7 @@
-import '../base_messages/base_instance_request_message.dart';
+import '../base_messages/base_request_message.dart';
 
 /// Message for updating instance configuration.
-class UpdateInstanceConfigurationRequestMessage
-    extends BaseInstanceRequestMessage {
+class UpdateInstanceConfigurationRequestMessage extends BaseRequestMessage {
   /// Creates an update instance configuration message.
   UpdateInstanceConfigurationRequestMessage._({
     required super.id,

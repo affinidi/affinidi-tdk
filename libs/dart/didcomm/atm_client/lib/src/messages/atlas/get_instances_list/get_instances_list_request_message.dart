@@ -1,8 +1,8 @@
 import '../../../models/request_bodies/get_instances_list_request_options.dart';
-import '../base_messages/base_instance_request_message.dart';
+import '../base_messages/base_request_message.dart';
 
 /// Message for getting list of instances.
-class GetInstancesListMessage extends BaseInstanceRequestMessage {
+class GetInstancesListMessage extends BaseRequestMessage {
   /// Creates a get instances list message.
   GetInstancesListMessage._({
     required super.id,

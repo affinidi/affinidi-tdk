@@ -1,8 +1,8 @@
 import '../../../models/request_bodies/get_instance_requests_request_options.dart';
-import '../base_messages/base_instance_request_message.dart';
+import '../base_messages/base_request_message.dart';
 
 /// Message for getting instance requests.
-class GetRequestsMessage extends BaseInstanceRequestMessage {
+class GetRequestsMessage extends BaseRequestMessage {
   /// Creates a get requests message.
   GetRequestsMessage._({
     required super.id,

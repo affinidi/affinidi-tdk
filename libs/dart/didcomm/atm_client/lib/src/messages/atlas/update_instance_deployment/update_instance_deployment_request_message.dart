@@ -1,11 +1,10 @@
 import '../../../models/request_bodies/update_mediator_instance_deployment_options.dart';
 import '../../../models/request_bodies/update_mpx_instance_deployment_options.dart';
 import '../../../models/request_bodies/update_tr_instance_deployment_options.dart';
-import '../base_messages/base_instance_request_message.dart';
+import '../base_messages/base_request_message.dart';
 
 /// Message for updating instance deployment.
-class UpdateInstanceDeploymentRequestMessage
-    extends BaseInstanceRequestMessage {
+class UpdateInstanceDeploymentRequestMessage extends BaseRequestMessage {
   /// Creates an update instance deployment message.
   UpdateInstanceDeploymentRequestMessage._({
     required super.id,

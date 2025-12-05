@@ -1,7 +1,7 @@
-import '../base_messages/base_instance_request_message.dart';
+import '../base_messages/base_request_message.dart';
 
 /// Message for getting metadata of an instance.
-class GetInstanceMetadataRequestMessage extends BaseInstanceRequestMessage {
+class GetInstanceMetadataRequestMessage extends BaseRequestMessage {
   /// Creates a get instance metadata message.
   GetInstanceMetadataRequestMessage._({
     required super.id,

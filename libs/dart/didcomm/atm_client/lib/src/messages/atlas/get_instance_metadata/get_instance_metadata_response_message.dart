@@ -1,11 +1,10 @@
 import '../../../models/mediator_instance_metadata/mediator_instance_metadata.dart';
 import '../../../models/mpx_instance_metadata/mpx_instance_metadata.dart';
 import '../../../models/tr_instance_metadata/tr_instance_metadata.dart';
-import '../base_messages/base_response_response_message.dart';
+import '../base_messages/base_response_message.dart';
 
 /// Response message for get instance metadata operation - generic for all service types.
-class GetInstanceMetadataResponseMessage<T>
-    extends BaseInstanceResponseMessage<T> {
+class GetInstanceMetadataResponseMessage<T> extends BaseResponseMessage<T> {
   /// Creates a get instance metadata response message.
   GetInstanceMetadataResponseMessage({
     required super.id,

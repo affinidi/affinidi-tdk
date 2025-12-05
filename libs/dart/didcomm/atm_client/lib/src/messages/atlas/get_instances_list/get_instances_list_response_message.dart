@@ -3,13 +3,13 @@ import 'package:json_annotation/json_annotation.dart';
 import '../../../models/mediator_instance_metadata/mediator_instance_metadata.dart';
 import '../../../models/mpx_instance_metadata/mpx_instance_metadata.dart';
 import '../../../models/tr_instance_metadata/tr_instance_metadata.dart';
-import '../base_messages/base_response_response_message.dart';
+import '../base_messages/base_response_message.dart';
 
 part 'get_instances_list_response_message.g.dart';
 
 /// Response message for get mediator instances list operation.
 class GetMediatorInstancesListResponseMessage
-    extends BaseInstanceResponseMessage<MediatorInstanceBodyData> {
+    extends BaseResponseMessage<MediatorInstanceBodyData> {
   /// Creates a get mediator instances list response message.
   GetMediatorInstancesListResponseMessage({
     required super.id,
@@ -30,7 +30,7 @@ class GetMediatorInstancesListResponseMessage
 
 /// Response message for get MPX instances list operation.
 class GetMpxInstancesListResponseMessage
-    extends BaseInstanceResponseMessage<MpxInstanceBodyData> {
+    extends BaseResponseMessage<MpxInstanceBodyData> {
   /// Creates a get MPX instances list response message.
   GetMpxInstancesListResponseMessage({
     required super.id,
@@ -51,7 +51,7 @@ class GetMpxInstancesListResponseMessage
 
 /// Response message for get Trust Registry instances list operation.
 class GetTrInstancesListResponseMessage
-    extends BaseInstanceResponseMessage<TrInstanceBodyData> {
+    extends BaseResponseMessage<TrInstanceBodyData> {
   /// Creates a get Trust Registry instances list response message.
   GetTrInstancesListResponseMessage({
     required super.id,

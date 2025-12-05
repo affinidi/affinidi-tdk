@@ -1,13 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../base_messages/base_response_response_message.dart';
+import '../base_messages/base_response_message.dart';
 
 part 'update_instance_deployment_response_message.g.dart';
 
 /// Response message for update mediator instance deployment operation.
 class UpdateMediatorInstanceDeploymentResponseMessage
-    extends BaseInstanceResponseMessage<
-        UpdateMediatorInstanceDeploymentResponse> {
+    extends BaseResponseMessage<UpdateMediatorInstanceDeploymentResponse> {
   /// Creates an update mediator instance deployment response message.
   UpdateMediatorInstanceDeploymentResponseMessage({
     required super.id,

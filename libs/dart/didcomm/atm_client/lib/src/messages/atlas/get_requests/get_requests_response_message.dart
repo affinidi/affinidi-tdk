@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
-import '../base_messages/base_response_response_message.dart';
+import '../base_messages/base_response_message.dart';
 
 part 'get_requests_response_message.g.dart';
 
 /// Response message for get mediator requests operation.
 class GetMediatorRequestsResponseMessage
-    extends BaseInstanceResponseMessage<GetMediatorRequestsResponseData> {
+    extends BaseResponseMessage<GetMediatorRequestsResponseData> {
   /// Creates a get mediator requests response message.
   GetMediatorRequestsResponseMessage({
     required super.id,
@@ -23,7 +23,7 @@ class GetMediatorRequestsResponseMessage
 
 /// Response message for get MPX requests operation.
 class GetMpxRequestsResponseMessage
-    extends BaseInstanceResponseMessage<GetMpxRequestsResponseData> {
+    extends BaseResponseMessage<GetMpxRequestsResponseData> {
   /// Creates a get MPX requests response message.
   GetMpxRequestsResponseMessage({
     required super.id,
@@ -41,7 +41,7 @@ class GetMpxRequestsResponseMessage
 
 /// Response message for get Trust Registry requests operation.
 class GetTrRequestsResponseMessage
-    extends BaseInstanceResponseMessage<GetTrRequestsResponseData> {
+    extends BaseResponseMessage<GetTrRequestsResponseData> {
   /// Creates a get Trust Registry requests response message.
   GetTrRequestsResponseMessage({
     required super.id,
