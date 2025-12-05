@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault/src/item_permissions_policy.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
