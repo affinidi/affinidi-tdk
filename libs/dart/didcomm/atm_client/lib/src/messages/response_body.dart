@@ -25,14 +25,12 @@ class ResponseBody {
   });
 
   /// Creates a ResponseBody from a JSON map.
-  factory ResponseBody.fromJson(Map<String, dynamic> json) => ResponseBody(
-    response: _normalizeResponse(json['response']),
-    headers: (json['headers'] as Map<String, dynamic>?)?.map(
-      (k, e) => MapEntry(k, e as String),
-    ),
-    statusCode: (json['status_code'] as num).toInt(),
-  );
-
+  factory ResponseBody.fromJson(Map<String, dynamic> json) {
+    final normalizedJson = Map<String, dynamic>.from(json);
+    normalizedJson['response'] = _normalizeResponse(json['response']);
+    return _$ResponseBodyFromJson(normalizedJson);
+  }
+   
   /// Converts this ResponseBody to a JSON map.
   Map<String, dynamic> toJson() => _$ResponseBodyToJson(this);
 
