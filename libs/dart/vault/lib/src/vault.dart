@@ -258,7 +258,6 @@ class Vault {
 
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
-
     final kek = await profileSharedAccessRepository.grantProfileAccess(
       accountIndex: profile.accountIndex,
       granteeDid: toDid,
