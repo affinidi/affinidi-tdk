@@ -2,184 +2,224 @@ import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('BaseUpdateInstanceDeploymentRequest', () {
-    test('should create request with required fields for mediator', () {
-      final request = UpdateInstanceDeploymentRequest(
-        instanceId: 'mediator-123',
-      );
+  group('UpdateMediatorInstanceDeploymentOptions', () {
+    test('should create options with all fields null', () {
+      final options = const UpdateMediatorInstanceDeploymentOptions();
 
-      expect(request.instanceId, 'mediator-123');
-      expect(request.serviceSize, isNull);
-      expect(request.mediatorAclMode, isNull);
-      expect(request.name, isNull);
-      expect(request.description, isNull);
+      expect(options.serviceSize, isNull);
+      expect(options.mediatorAclMode, isNull);
+      expect(options.name, isNull);
+      expect(options.description, isNull);
     });
 
-    test('should create request with all optional fields for mediator', () {
-      final request = UpdateInstanceDeploymentRequest(
-        instanceId: 'mediator-456',
+    test('should create options with all fields', () {
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         serviceSize: ServiceSize.small,
-        mediatorAclMode: 'explicit_deny',
+        mediatorAclMode: MediatorAclMode.explicitDeny,
         name: 'Updated Mediator',
         description: 'Updated description',
       );
 
-      expect(request.instanceId, 'mediator-456');
-      expect(request.serviceSize, 'small');
-      expect(request.mediatorAclMode, 'explicit_deny');
-      expect(request.name, 'Updated Mediator');
-      expect(request.description, 'Updated description');
+      expect(options.serviceSize, ServiceSize.small);
+      expect(options.mediatorAclMode, MediatorAclMode.explicitDeny);
+      expect(options.name, 'Updated Mediator');
+      expect(options.description, 'Updated description');
     });
 
-    test('should create request with only name and description for mediator',
-        () {
-      final request = UpdateInstanceDeploymentRequest(
-        instanceId: 'mediator-789',
+    test('should create options with only name and description', () {
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         name: 'Test Mediator',
         description: 'Test description',
       );
 
-      expect(request.instanceId, 'mediator-789');
-      expect(request.name, 'Test Mediator');
-      expect(request.description, 'Test description');
-      expect(request.serviceSize, isNull);
-      expect(request.mediatorAclMode, isNull);
+      expect(options.name, 'Test Mediator');
+      expect(options.description, 'Test description');
+      expect(options.serviceSize, isNull);
+      expect(options.mediatorAclMode, isNull);
     });
 
-    test('should serialize to JSON with all fields for mediator', () {
-      final request = UpdateInstanceDeploymentRequest(
-        instanceId: 'mediator-123',
+    test('should create options with only serviceSize', () {
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         serviceSize: ServiceSize.medium,
-        mediatorAclMode: 'explicit_deny',
+      );
+
+      expect(options.serviceSize, ServiceSize.medium);
+      expect(options.mediatorAclMode, isNull);
+      expect(options.name, isNull);
+      expect(options.description, isNull);
+    });
+
+    test('should create options with only mediatorAclMode', () {
+      final options = const UpdateMediatorInstanceDeploymentOptions(
+        mediatorAclMode: MediatorAclMode.explicitAllow,
+      );
+
+      expect(options.serviceSize, isNull);
+      expect(options.mediatorAclMode, MediatorAclMode.explicitAllow);
+      expect(options.name, isNull);
+      expect(options.description, isNull);
+    });
+
+    test('should serialize to JSON with all fields', () {
+      final options = const UpdateMediatorInstanceDeploymentOptions(
+        serviceSize: ServiceSize.medium,
+        mediatorAclMode: MediatorAclMode.explicitDeny,
         name: 'Updated Name',
         description: 'Updated Description',
       );
 
-      final json = request.toJson();
+      final json = options.toJson();
 
-      expect(json['mediatorId'], 'mediator-123');
       expect(json['serviceSize'], 'medium');
       expect(json['mediatorAclMode'], 'explicit_deny');
       expect(json['name'], 'Updated Name');
       expect(json['description'], 'Updated Description');
-      expect(json.length, 5);
+      expect(json.length, 4);
     });
 
-    test('should serialize to JSON with only instanceId for mediator', () {
-      final request = UpdateInstanceDeploymentRequest(
-        instanceId: 'mediator-456',
-      );
+    test('should serialize to JSON with empty object when all fields are null',
+        () {
+      final options = const UpdateMediatorInstanceDeploymentOptions();
 
-      final json = request.toJson();
+      final json = options.toJson();
 
-      expect(json['mediatorId'], 'mediator-456');
-      expect(json.length, 1);
+      expect(json, isEmpty);
     });
 
-    test('should serialize to JSON without null fields for mediator', () {
-      final request = UpdateInstanceDeploymentRequest(
-        instanceId: 'mediator-789',
+    test('should serialize to JSON without null fields', () {
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         name: 'Test Name',
+        serviceSize: ServiceSize.large,
       );
 
-      final json = request.toJson();
+      final json = options.toJson();
 
-      expect(json['mediatorId'], 'mediator-789');
+      expect(json['serviceSize'], 'large');
       expect(json['name'], 'Test Name');
-      expect(json.containsKey('serviceSize'), isFalse);
       expect(json.containsKey('mediatorAclMode'), isFalse);
       expect(json.containsKey('description'), isFalse);
+      expect(json.length, 2);
     });
 
-    test('should deserialize from JSON with all fields for mediator', () {
+    test('should deserialize from JSON with all fields', () {
       final json = {
-        'mediatorId': 'mediator-123',
         'serviceSize': 'large',
         'mediatorAclMode': 'explicit_deny',
         'name': 'Deserialized Name',
         'description': 'Deserialized Description',
       };
 
-      final request = UpdateInstanceDeploymentRequest.fromJson(
-        json,
-      );
+      final options = UpdateMediatorInstanceDeploymentOptions.fromJson(json);
 
-      expect(request.instanceId, 'mediator-123');
-      expect(request.serviceSize, 'large');
-      expect(request.mediatorAclMode, 'explicit_deny');
-      expect(request.name, 'Deserialized Name');
-      expect(request.description, 'Deserialized Description');
+      expect(options.serviceSize, ServiceSize.large);
+      expect(options.mediatorAclMode, MediatorAclMode.explicitDeny);
+      expect(options.name, 'Deserialized Name');
+      expect(options.description, 'Deserialized Description');
     });
 
-    test('should deserialize from JSON with only instanceId for mediator', () {
-      final json = {'mediatorId': 'mediator-456'};
-
-      final request = UpdateInstanceDeploymentRequest.fromJson(
-        json,
-      );
-
-      expect(request.instanceId, 'mediator-456');
-      expect(request.serviceSize, isNull);
-      expect(request.mediatorAclMode, isNull);
-      expect(request.name, isNull);
-      expect(request.description, isNull);
-    });
-
-    test('should throw TypeError when mediatorId is missing', () {
+    test('should deserialize from JSON with empty object', () {
       final json = <String, dynamic>{};
 
-      expect(
-        () => UpdateInstanceDeploymentRequest.fromJson(
-          json,
-        ),
-        throwsA(isA<TypeError>()),
-      );
+      final options = UpdateMediatorInstanceDeploymentOptions.fromJson(json);
+
+      expect(options.serviceSize, isNull);
+      expect(options.mediatorAclMode, isNull);
+      expect(options.name, isNull);
+      expect(options.description, isNull);
     });
 
-    test('should throw TypeError when mediatorId has wrong type', () {
-      final json = {'mediatorId': 123};
-
-      expect(
-        () => UpdateInstanceDeploymentRequest.fromJson(
-          json,
-        ),
-        throwsA(isA<TypeError>()),
-      );
-    });
-
-    test('should handle null values in JSON for mediator', () {
+    test('should deserialize from JSON with partial fields', () {
       final json = {
-        'mediatorId': 'mediator-123',
+        'serviceSize': 'tiny',
+        'description': 'Only description',
+      };
+
+      final options = UpdateMediatorInstanceDeploymentOptions.fromJson(json);
+
+      expect(options.serviceSize, ServiceSize.tiny);
+      expect(options.description, 'Only description');
+      expect(options.mediatorAclMode, isNull);
+      expect(options.name, isNull);
+    });
+
+    test('should handle null values in JSON', () {
+      final json = {
         'serviceSize': null,
         'mediatorAclMode': null,
         'name': null,
         'description': null,
       };
 
-      final request = UpdateInstanceDeploymentRequest.fromJson(
-        json,
-      );
+      final options = UpdateMediatorInstanceDeploymentOptions.fromJson(json);
 
-      expect(request.instanceId, 'mediator-123');
-      expect(request.serviceSize, isNull);
-      expect(request.mediatorAclMode, isNull);
-      expect(request.name, isNull);
-      expect(request.description, isNull);
+      expect(options.serviceSize, isNull);
+      expect(options.mediatorAclMode, isNull);
+      expect(options.name, isNull);
+      expect(options.description, isNull);
     });
 
-    test('should handle extra fields in JSON for mediator', () {
+    test('should handle extra fields in JSON', () {
       final json = {
-        'mediatorId': 'mediator-123',
         'name': 'Test Name',
+        'serviceSize': 'small',
         'extraField': 'should be ignored',
+        'anotherExtra': 123,
       };
 
-      final request = UpdateInstanceDeploymentRequest.fromJson(
-        json,
+      final options = UpdateMediatorInstanceDeploymentOptions.fromJson(json);
+
+      expect(options.name, 'Test Name');
+      expect(options.serviceSize, ServiceSize.small);
+    });
+
+    test('should serialize different service sizes correctly', () {
+      final sizes = [
+        ServiceSize.dev,
+        ServiceSize.tiny,
+        ServiceSize.small,
+        ServiceSize.medium,
+        ServiceSize.large,
+      ];
+
+      final expectedStrings = ['dev', 'tiny', 'small', 'medium', 'large'];
+
+      for (var i = 0; i < sizes.length; i++) {
+        final options = UpdateMediatorInstanceDeploymentOptions(
+          serviceSize: sizes[i],
+        );
+        final json = options.toJson();
+        expect(json['serviceSize'], expectedStrings[i]);
+      }
+    });
+
+    test('should serialize different ACL modes correctly', () {
+      final explicitDeny = const UpdateMediatorInstanceDeploymentOptions(
+        mediatorAclMode: MediatorAclMode.explicitDeny,
+      );
+      expect(explicitDeny.toJson()['mediatorAclMode'], 'explicit_deny');
+
+      final explicitAllow = const UpdateMediatorInstanceDeploymentOptions(
+        mediatorAclMode: MediatorAclMode.explicitAllow,
+      );
+      expect(explicitAllow.toJson()['mediatorAclMode'], 'explicit_allow');
+    });
+
+    test('should round-trip through JSON serialization', () {
+      final original = const UpdateMediatorInstanceDeploymentOptions(
+        serviceSize: ServiceSize.medium,
+        mediatorAclMode: MediatorAclMode.explicitDeny,
+        name: 'Test Name',
+        description: 'Test Description',
       );
 
-      expect(request.instanceId, 'mediator-123');
-      expect(request.name, 'Test Name');
+      final json = original.toJson();
+      final deserialized =
+          UpdateMediatorInstanceDeploymentOptions.fromJson(json);
+
+      expect(deserialized.serviceSize, original.serviceSize);
+      expect(deserialized.mediatorAclMode, original.mediatorAclMode);
+      expect(deserialized.name, original.name);
+      expect(deserialized.description, original.description);
     });
   });
 }

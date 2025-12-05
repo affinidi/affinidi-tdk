@@ -2,177 +2,144 @@ import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('BaseUpdateInstanceConfigurationRequest', () {
-    test('should create request with required fields for mediator', () {
-      final request = UpdateInstanceConfigurationOptions(
-        instanceId: 'mediator-123',
-      );
+  group('UpdateInstanceConfigurationOptions', () {
+    test('should create options with no fields', () {
+      final options = UpdateInstanceConfigurationOptions();
 
-      expect(request.instanceId, 'mediator-123');
-      expect(request.acl, isNull);
+      expect(options.acl, isNull);
     });
 
-    test('should create request with ACL for mediator', () {
+    test('should create options with ACL', () {
       final acl = <String, num>{
         'hash1': 1,
         'hash2': 2,
       };
 
-      final request = UpdateInstanceConfigurationOptions(
-        instanceId: 'mediator-456',
+      final options = UpdateInstanceConfigurationOptions(
         acl: acl,
       );
 
-      expect(request.instanceId, 'mediator-456');
-      expect(request.acl, acl);
+      expect(options.acl, acl);
     });
 
-    test('should create request with empty ACL map for mediator', () {
-      final request = UpdateInstanceConfigurationOptions(
-        instanceId: 'mediator-789',
+    test('should create options with empty ACL map', () {
+      final options = UpdateInstanceConfigurationOptions(
         acl: <String, num>{},
       );
 
-      expect(request.instanceId, 'mediator-789');
-      expect(request.acl, isEmpty);
+      expect(options.acl, isEmpty);
     });
 
-    test('should serialize to JSON with instanceId only for mediator', () {
-      final request = UpdateInstanceConfigurationOptions(
-        instanceId: 'mediator-123',
+    test('should serialize to JSON without fields when ACL is null', () {
+      final options = UpdateInstanceConfigurationOptions();
+
+      final json = options.toJson();
+
+      expect(json.containsKey('acl'), isFalse);
+      expect(json, isEmpty);
+    });
+
+    test('should serialize to JSON with ACL', () {
+      final acl = <String, num>{
+        'hash1': 1,
+        'hash2': 2,
+      };
+
+      final options = UpdateInstanceConfigurationOptions(
+        acl: acl,
       );
 
-      final json = request.toJson();
+      final json = options.toJson();
 
-      expect(json['mediatorId'], 'mediator-123');
-      expect(json.containsKey('acl'), isFalse);
+      expect(json['acl'], acl);
       expect(json.length, 1);
     });
 
-    test('should serialize to JSON with ACL for mediator', () {
-      final acl = <String, num>{
-        'hash1': 1,
-        'hash2': 2,
-      };
-
-      final request = UpdateInstanceConfigurationOptions(
-        instanceId: 'mediator-456',
-        acl: acl,
-      );
-
-      final json = request.toJson();
-
-      expect(json['mediatorId'], 'mediator-456');
-      expect(json['acl'], acl);
-      expect(json.length, 2);
-    });
-
-    test('should serialize to JSON with empty ACL map for mediator', () {
-      final request = UpdateInstanceConfigurationOptions(
-        instanceId: 'mediator-789',
+    test('should serialize to JSON with empty ACL map', () {
+      final options = UpdateInstanceConfigurationOptions(
         acl: <String, num>{},
       );
 
-      final json = request.toJson();
+      final json = options.toJson();
 
-      expect(json['mediatorId'], 'mediator-789');
       expect(json['acl'], isEmpty);
-      expect(json.length, 2);
+      expect(json.length, 1);
     });
 
-    test('should deserialize from JSON with instanceId only for mediator', () {
-      final json = {'mediatorId': 'mediator-123'};
-
-      final request = UpdateInstanceConfigurationOptions.fromJson(
-        json,
-      );
-
-      expect(request.instanceId, 'mediator-123');
-      expect(request.acl, isNull);
-    });
-
-    test('should deserialize from JSON with ACL for mediator', () {
+    test('should deserialize from JSON with ACL', () {
       final acl = <String, num>{
         'hash1': 1,
         'hash2': 2,
       };
 
       final json = {
-        'mediatorId': 'mediator-456',
         'acl': acl,
       };
 
-      final request = UpdateInstanceConfigurationOptions.fromJson(
-        json,
-      );
+      final options = UpdateInstanceConfigurationOptions.fromJson(json);
 
-      expect(request.instanceId, 'mediator-456');
-      expect(request.acl, acl);
+      expect(options.acl, acl);
     });
 
-    test('should deserialize from JSON with null ACL for mediator', () {
+    test('should deserialize from JSON with empty object', () {
+      final json = <String, dynamic>{};
+
+      final options = UpdateInstanceConfigurationOptions.fromJson(json);
+
+      expect(options.acl, isNull);
+    });
+
+    test('should deserialize from JSON with null ACL', () {
       final json = {
-        'mediatorId': 'mediator-789',
         'acl': null,
       };
 
-      final request = UpdateInstanceConfigurationOptions.fromJson(
-        json,
-      );
+      final options = UpdateInstanceConfigurationOptions.fromJson(json);
 
-      expect(request.instanceId, 'mediator-789');
-      expect(request.acl, isNull);
+      expect(options.acl, isNull);
     });
 
-    test('should throw TypeError when mediatorId is missing', () {
-      final json = <String, dynamic>{};
-
-      expect(
-        () => UpdateInstanceConfigurationOptions.fromJson(
-          json,
-        ),
-        throwsA(isA<TypeError>()),
-      );
-    });
-
-    test('should throw TypeError when mediatorId has wrong type', () {
-      final json = {'mediatorId': 123};
-
-      expect(
-        () => UpdateInstanceConfigurationOptions.fromJson(
-          json,
-        ),
-        throwsA(isA<TypeError>()),
-      );
-    });
-
-    test('should handle ACL with different numeric types for mediator', () {
+    test('should handle ACL with different numeric types', () {
       final acl = <String, num>{
         'hash1': 1,
         'hash2': 2.5,
+        'hash3': 3,
       };
 
-      final request = UpdateInstanceConfigurationOptions(
-        instanceId: 'mediator-123',
+      final options = UpdateInstanceConfigurationOptions(
         acl: acl,
       );
 
-      expect(request.acl, acl);
+      expect(options.acl, acl);
+      expect(options.acl!['hash1'], 1);
+      expect(options.acl!['hash2'], 2.5);
+      expect(options.acl!['hash3'], 3);
     });
 
-    test('should handle extra fields in JSON for mediator', () {
+    test('should handle extra fields in JSON', () {
       final json = {
-        'mediatorId': 'mediator-123',
         'acl': {'hash1': 1},
         'extraField': 'should be ignored',
+        'anotherExtra': 123,
       };
 
-      final request = UpdateInstanceConfigurationOptions.fromJson(
-        json,
-      );
+      final options = UpdateInstanceConfigurationOptions.fromJson(json);
 
-      expect(request.instanceId, 'mediator-123');
-      expect(request.acl, {'hash1': 1});
+      expect(options.acl, {'hash1': 1});
+    });
+
+    test('should round-trip through JSON serialization', () {
+      final acl = <String, num>{
+        'hash1': 1,
+        'hash2': 2,
+        'hash3': 3.5,
+      };
+
+      final original = UpdateInstanceConfigurationOptions(acl: acl);
+      final json = original.toJson();
+      final deserialized = UpdateInstanceConfigurationOptions.fromJson(json);
+
+      expect(deserialized.acl, original.acl);
     });
   });
 }

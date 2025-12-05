@@ -2,50 +2,128 @@ import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('BaseGetInstanceMetadataRequest', () {
-    test('should create request with instance ID', () {
-      final request = GetInstanceMetadataRequest(
-        instanceId: 'mediator-123',
-      );
+  group('GetInstanceMetadataRequestMessage', () {
+    group('mediator', () {
+      test('should create mediator request with instance ID', () {
+        final message = GetInstanceMetadataRequestMessage.mediator(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          instanceId: 'mediator-123',
+        );
 
-      expect(request.instanceId, 'mediator-123');
+        expect(message.id, 'test-id');
+        expect(message.to, ['did:example:alice']);
+        expect(message.body!['mediatorId'], 'mediator-123');
+        expect(
+          message.type.toString(),
+          'affinidi.io/operations/ama/getMediatorInstanceMetadata',
+        );
+      });
+
+      test('should preserve all optional parameters', () {
+        final now = DateTime.now();
+        final expires = now.add(const Duration(hours: 1));
+
+        final message = GetInstanceMetadataRequestMessage.mediator(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          from: 'did:example:bob',
+          createdTime: now,
+          expiresTime: expires,
+          instanceId: 'mediator-123',
+          threadId: 'thread-123',
+        );
+
+        expect(message.id, 'test-id');
+        expect(message.to, ['did:example:alice']);
+        expect(message.from, 'did:example:bob');
+        expect(message.createdTime, now);
+        expect(message.expiresTime, expires);
+        expect(message.body!['mediatorId'], 'mediator-123');
+        expect(message.threadId, 'thread-123');
+      });
     });
 
-    test('should serialize to JSON with correct field name for mediator', () {
-      final request = GetInstanceMetadataRequest(
-        instanceId: 'mediator-123',
-      );
+    group('meetingPlace', () {
+      test('should create meeting place request with instance ID', () {
+        final message = GetInstanceMetadataRequestMessage.meetingPlace(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          instanceId: 'mpx-123',
+        );
 
-      final json = request.toJson();
+        expect(message.id, 'test-id');
+        expect(message.to, ['did:example:alice']);
+        expect(message.body!['mpxId'], 'mpx-123');
+        expect(
+          message.type.toString(),
+          'affinidi.io/operations/ama/getMpxInstanceMetadata',
+        );
+      });
 
-      expect(json['mediatorId'], 'mediator-123');
-      expect(json.length, 1);
+      test('should preserve all optional parameters', () {
+        final now = DateTime.now();
+        final expires = now.add(const Duration(hours: 1));
+
+        final message = GetInstanceMetadataRequestMessage.meetingPlace(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          from: 'did:example:bob',
+          createdTime: now,
+          expiresTime: expires,
+          instanceId: 'mpx-123',
+          threadId: 'thread-456',
+        );
+
+        expect(message.id, 'test-id');
+        expect(message.to, ['did:example:alice']);
+        expect(message.from, 'did:example:bob');
+        expect(message.createdTime, now);
+        expect(message.expiresTime, expires);
+        expect(message.body!['mpxId'], 'mpx-123');
+        expect(message.threadId, 'thread-456');
+      });
     });
 
-    test('should deserialize from JSON for mediator', () {
-      final json = {'mediatorId': 'mediator-123'};
+    group('trustRegistry', () {
+      test('should create trust registry request with instance ID', () {
+        final message = GetInstanceMetadataRequestMessage.trustRegistry(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          instanceId: 'tr-123',
+        );
 
-      final request = GetInstanceMetadataRequest.fromJson(json);
+        expect(message.id, 'test-id');
+        expect(message.to, ['did:example:alice']);
+        expect(message.body!['trId'], 'tr-123');
+        expect(
+          message.type.toString(),
+          'affinidi.io/operations/ama/getTrInstanceMetadata',
+        );
+      });
 
-      expect(request.instanceId, 'mediator-123');
-    });
+      test('should preserve all optional parameters', () {
+        final now = DateTime.now();
+        final expires = now.add(const Duration(hours: 1));
 
-    test('should throw TypeError when instance ID field is missing', () {
-      final json = <String, dynamic>{};
+        final message = GetInstanceMetadataRequestMessage.trustRegistry(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          from: 'did:example:bob',
+          createdTime: now,
+          expiresTime: expires,
+          instanceId: 'tr-123',
+          threadId: 'thread-789',
+        );
 
-      expect(
-        () => GetInstanceMetadataRequest.fromJson(json),
-        throwsA(isA<TypeError>()),
-      );
-    });
-
-    test('should throw TypeError when instance ID has wrong type', () {
-      final json = {'mediatorId': 123};
-
-      expect(
-        () => GetInstanceMetadataRequest.fromJson(json),
-        throwsA(isA<TypeError>()),
-      );
+        expect(message.id, 'test-id');
+        expect(message.to, ['did:example:alice']);
+        expect(message.from, 'did:example:bob');
+        expect(message.createdTime, now);
+        expect(message.expiresTime, expires);
+        expect(message.body!['trId'], 'tr-123');
+        expect(message.threadId, 'thread-789');
+      });
     });
   });
 }
