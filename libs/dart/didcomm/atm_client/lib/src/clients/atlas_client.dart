@@ -16,8 +16,8 @@ import '../messages/atlas/get_requests/get_requests_request_message.dart';
 import '../messages/atlas/get_requests/get_requests_response_message.dart';
 import '../messages/atlas/update_instance_configuration/update_instance_configuration_request_message.dart';
 import '../messages/atlas/update_instance_configuration/update_instance_configuration_response_message.dart';
+import '../messages/atlas/update_instance_deployment/update_instance_deployment_request_message.dart';
 import '../messages/atlas/update_instance_deployment/update_instance_deployment_response_message.dart';
-import '../messages/atlas/update_instance_deployment/update_instance_deployment_message.dart';
 import '../models/request_bodies/deploy_mediator_instance_options.dart';
 import '../models/request_bodies/deploy_mpx_instance_options.dart';
 import '../models/request_bodies/deploy_tr_instance_options.dart';
@@ -337,7 +337,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     required String mediatorId,
     required UpdateMediatorInstanceDeploymentOptions options,
   }) async {
-    final requestMessage = UpdateInstanceDeploymentMessage.mediator(
+    final requestMessage = UpdateInstanceDeploymentRequestMessage.mediator(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       mediatorId: mediatorId,
@@ -364,7 +364,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     required String mpxId,
     required UpdateMpxInstanceDeploymentOptions options,
   }) async {
-    final requestMessage = UpdateInstanceDeploymentMessage.meetingPlace(
+    final requestMessage = UpdateInstanceDeploymentRequestMessage.meetingPlace(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       mpxId: mpxId,
@@ -391,7 +391,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
     required String trId,
     required UpdateTrInstanceDeploymentOptions options,
   }) async {
-    final requestMessage = UpdateInstanceDeploymentMessage.trustRegistry(
+    final requestMessage = UpdateInstanceDeploymentRequestMessage.trustRegistry(
       id: const Uuid().v4(),
       to: [serviceDidDocument.id],
       trId: trId,

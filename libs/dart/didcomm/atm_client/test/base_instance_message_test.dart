@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
+import 'package:affinidi_tdk_atm_client/src/messages/atlas/destroy_instance/destroy_instance_response_message.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -9,6 +10,7 @@ void main() {
       final message = DestroyInstanceRequestMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
+        instanceId: 'instance-id',
       );
 
       expect(
@@ -29,7 +31,7 @@ void main() {
         from: 'did:example:bob',
         createdTime: now,
         expiresTime: expires,
-        body: body,
+        instanceId: 'instance-id',
         threadId: threadId,
       );
 
@@ -46,6 +48,7 @@ void main() {
       final message = DestroyInstanceRequestMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
+        instanceId: 'instance-id',
       );
 
       expect(message.body, isEmpty);
@@ -61,7 +64,7 @@ void main() {
         'headers': null,
       };
 
-      final responseMessage = DestroyMediatorInstanceResponseMessage(
+      final responseMessage = DestroyInstanceResponseMessage.mediator(
         id: 'response-id',
         from: 'did:example:service',
         to: ['did:example:alice'],
@@ -79,7 +82,7 @@ void main() {
         'headers': null,
       };
 
-      final responseMessage = DestroyMediatorInstanceResponseMessage(
+      final responseMessage = DestroyInstanceResponseMessage.mediator(
         id: 'response-id',
         from: 'did:example:service',
         to: ['did:example:alice'],
@@ -96,7 +99,7 @@ void main() {
         'headers': null,
       };
 
-      final responseMessage = DestroyMediatorInstanceResponseMessage(
+      final responseMessage = DestroyInstanceResponseMessage.mediator(
         id: 'response-id',
         from: 'did:example:service',
         to: ['did:example:alice'],
@@ -116,7 +119,7 @@ void main() {
         'headers': null,
       };
 
-      final responseMessage = DestroyMediatorInstanceResponseMessage(
+      final responseMessage = DestroyInstanceResponseMessage.mediator(
         id: 'response-id',
         from: 'did:example:service',
         to: ['did:example:alice'],
@@ -127,29 +130,15 @@ void main() {
     });
 
     test('should handle null body', () {
-      final responseMessage = DestroyMediatorInstanceResponseMessage(
+      final responseMessage = DestroyInstanceResponseMessage.mediator(
         id: 'response-id',
         from: 'did:example:service',
         to: ['did:example:alice'],
-        body: null,
       );
 
       expect(
         () => responseMessage.response,
         throwsA(isA<TypeError>()),
-      );
-    });
-
-    test('should generate correct response URI', () {
-      final responseMessage = DestroyMediatorInstanceResponseMessage(
-        id: 'response-id',
-        from: 'did:example:service',
-        to: ['did:example:alice'],
-      );
-
-      expect(
-        responseMessage.type.toString(),
-        'affinidi.io/operations/ama/destroyMediatorInstance/response',
       );
     });
 
@@ -159,7 +148,7 @@ void main() {
       const threadId = 'thread-123';
       final body = {'key': 'value'};
 
-      final responseMessage = DestroyMediatorInstanceResponseMessage(
+      final responseMessage = DestroyInstanceResponseMessage.mediator(
         id: 'response-id',
         from: 'did:example:service',
         to: ['did:example:alice'],

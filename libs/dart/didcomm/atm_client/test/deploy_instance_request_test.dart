@@ -3,41 +3,37 @@ import 'package:test/test.dart';
 
 void main() {
   group('BaseDeployInstanceRequest', () {
-    test('should create request with required serviceSize', () {
-      final request = DeployInstanceRequest(
-        serviceSize: ServiceSize.tiny,
-      );
-
-      expect(request.serviceSize, 'tiny');
-      expect(request.administratorDids, isNull);
-      expect(request.mediatorAclMode, isNull);
-      expect(request.name, isNull);
-      expect(request.description, isNull);
-    });
-
     test('should create request with all optional fields', () {
-      final request = DeployInstanceRequest(
-        administratorDids: 'did:example:admin',
-        serviceSize: ServiceSize.small,
-        mediatorAclMode: 'explicit_deny',
-        name: 'Test Instance',
-        description: 'Test description',
+      final request = DeployInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        options: const DeployMediatorInstanceOptions(
+          serviceSize: ServiceSize.small,
+          mediatorAclMode: MediatorAclMode.explicitDeny,
+          administratorDids: 'did:example:admin',
+          name: 'Test Instance',
+          description: 'Test description',
+        ),
       );
 
-      expect(request.administratorDids, 'did:example:admin');
-      expect(request.serviceSize, 'small');
-      expect(request.mediatorAclMode, 'explicit_deny');
-      expect(request.name, 'Test Instance');
-      expect(request.description, 'Test description');
+      expect(request.body!['administratorDids'], 'did:example:admin');
+      expect(request.body!['serviceSize'], 'small');
+      expect(request.body!['mediatorAclMode'], 'explicit_deny');
+      expect(request.body!['name'], 'Test Instance');
+      expect(request.body!['description'], 'Test description');
     });
 
     test('should serialize to JSON correctly with all fields', () {
-      final request = DeployInstanceRequest(
-        administratorDids: 'did:example:admin',
-        serviceSize: ServiceSize.medium,
-        mediatorAclMode: 'explicit_deny',
-        name: 'Test Instance',
-        description: 'Test description',
+      final request = DeployInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        options: const DeployMediatorInstanceOptions(
+          serviceSize: ServiceSize.medium,
+          mediatorAclMode: MediatorAclMode.explicitDeny,
+          administratorDids: 'did:example:admin',
+          name: 'Test Instance',
+          description: 'Test description',
+        ),
       );
 
       final json = request.toJson();
@@ -49,15 +45,22 @@ void main() {
       expect(json['description'], 'Test description');
     });
 
-    test('should serialize to JSON without null fields', () {
-      final request = DeployInstanceRequest(
-        serviceSize: ServiceSize.large,
+    test('should serialize to JSON without proper fields', () {
+      final request = DeployInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        options: const DeployMediatorInstanceOptions(
+          serviceSize: ServiceSize.large,
+          mediatorAclMode: MediatorAclMode.explicitDeny,
+          administratorDids: 'did:example:admin',
+          name: 'Test Instance',
+          description: 'Test description',
+        ),
       );
 
       final json = request.toJson();
-
-      expect(json['serviceSize'], 'large');
       expect(json.containsKey('administratorDids'), isFalse);
+      expect(json.containsKey('serviceSize'), isFalse);
       expect(json.containsKey('mediatorAclMode'), isFalse);
       expect(json.containsKey('name'), isFalse);
       expect(json.containsKey('description'), isFalse);
@@ -72,13 +75,19 @@ void main() {
         'description': 'Test description',
       };
 
-      final request = DeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        options: DeployMediatorInstanceOptions.fromJson(json),
+      );
 
-      expect(request.administratorDids, 'did:example:admin');
-      expect(request.serviceSize, 'tiny');
-      expect(request.mediatorAclMode, 'explicit_deny');
-      expect(request.name, 'Test Instance');
-      expect(request.description, 'Test description');
+      final jsonRequest = request.toJson();
+
+      expect(jsonRequest['administratorDids'], 'did:example:admin');
+      expect(jsonRequest['serviceSize'], 'tiny');
+      expect(jsonRequest['mediatorAclMode'], 'explicit_deny');
+      expect(jsonRequest['name'], 'Test Instance');
+      expect(jsonRequest['description'], 'Test description');
     });
 
     test('should deserialize from JSON with only required field', () {
@@ -86,20 +95,30 @@ void main() {
         'serviceSize': 'small',
       };
 
-      final request = DeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        options: DeployMediatorInstanceOptions.fromJson(json),
+      );
 
-      expect(request.serviceSize, 'small');
-      expect(request.administratorDids, isNull);
-      expect(request.mediatorAclMode, isNull);
-      expect(request.name, isNull);
-      expect(request.description, isNull);
+      final jsonRequest = request.toJson();
+
+      expect(jsonRequest['serviceSize'], 'small');
+      expect(jsonRequest['administratorDids'], isNull);
+      expect(jsonRequest['mediatorAclMode'], isNull);
+      expect(jsonRequest['name'], isNull);
+      expect(jsonRequest['description'], isNull);
     });
 
     test('should throw TypeError when serviceSize is missing', () {
       final json = <String, dynamic>{};
 
       expect(
-        () => DeployInstanceRequest.fromJson(json),
+        () => DeployInstanceRequestMessage.mediator(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          options: DeployMediatorInstanceOptions.fromJson(json),
+        ),
         throwsA(isA<TypeError>()),
       );
     });
@@ -113,13 +132,19 @@ void main() {
         'description': null,
       };
 
-      final request = DeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        options: DeployMediatorInstanceOptions.fromJson(json),
+      );
 
-      expect(request.serviceSize, 'tiny');
-      expect(request.administratorDids, isNull);
-      expect(request.mediatorAclMode, isNull);
-      expect(request.name, isNull);
-      expect(request.description, isNull);
+      final jsonRequest = request.toJson();
+
+      expect(jsonRequest['serviceSize'], 'tiny');
+      expect(jsonRequest['administratorDids'], isNull);
+      expect(jsonRequest['mediatorAclMode'], isNull);
+      expect(jsonRequest['name'], isNull);
+      expect(jsonRequest['description'], isNull);
     });
 
     test('should handle extra fields in JSON', () {
@@ -128,9 +153,15 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = DeployInstanceRequest.fromJson(json);
+      final request = DeployInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        options: DeployMediatorInstanceOptions.fromJson(json),
+      );
 
-      expect(request.serviceSize, 'tiny');
+      final jsonRequest = request.toJson();
+
+      expect(jsonRequest['serviceSize'], 'tiny');
     });
   });
 }

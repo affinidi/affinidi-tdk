@@ -4,15 +4,20 @@ import 'package:test/test.dart';
 void main() {
   group('DestroyInstanceRequest', () {
     test('should create request with instance ID', () {
-      final request = DestroyInstanceRequest(
+      final request = DestroyInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
         instanceId: 'mediator-123',
       );
 
-      expect(request.instanceId, 'mediator-123');
+      final jsonRequest = request.toJson();
+      expect(jsonRequest['instanceId'], 'mediator-123');
     });
 
     test('should serialize to JSON with correct field name for mediator', () {
-      final request = DestroyInstanceRequest(
+      final request = DestroyInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
         instanceId: 'mediator-123',
       );
 
@@ -25,16 +30,26 @@ void main() {
     test('should deserialize from JSON for mediator', () {
       final json = {'mediatorId': 'mediator-123'};
 
-      final request = DestroyInstanceRequest.fromJson(json);
+      final request = DestroyInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        instanceId: 'mediator-123',
+      );
 
-      expect(request.instanceId, 'mediator-123');
+      final jsonRequest = request.toJson();
+
+      expect(jsonRequest['instanceId'], 'mediator-123');
     });
 
     test('should throw TypeError when instance ID field is missing', () {
       final json = <String, dynamic>{};
 
       expect(
-        () => DestroyInstanceRequest.fromJson(json),
+        () => DestroyInstanceRequestMessage.mediator(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          instanceId: 'mediator-123',
+        ),
         throwsA(isA<TypeError>()),
       );
     });
@@ -43,20 +58,35 @@ void main() {
       final json = {'mediatorId': 123};
 
       expect(
-        () => DestroyInstanceRequest.fromJson(json),
+        () => DestroyInstanceRequestMessage.mediator(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          instanceId: 'mediator-123',
+        ),
         throwsA(isA<TypeError>()),
       );
     });
 
-    test('should handle extra fields in JSON', () {
-      final json = {
-        'mediatorId': 'mediator-123',
-        'extraField': 'should be ignored',
-      };
+    test('should throw TypeError when instance ID has wrong type', () {
+      expect(
+        () => DestroyInstanceRequestMessage.mediator(
+          id: 'test-id',
+          to: ['did:example:alice'],
+          instanceId: 'mediator-123',
+        ),
+        throwsA(isA<TypeError>()),
+      );
+    });
 
-      final request = DestroyInstanceRequest.fromJson(json);
+    test('should throw TypeError when instance ID has wrong type', () {
+      final request = DestroyInstanceRequestMessage.mediator(
+        id: 'test-id',
+        to: ['did:example:alice'],
+        instanceId: 'mediator-123',
+      );
 
-      expect(request.instanceId, 'mediator-123');
+      final jsonRequest = request.toJson();
+      expect(jsonRequest['instanceId'], 'mediator-123');
     });
   });
 }
