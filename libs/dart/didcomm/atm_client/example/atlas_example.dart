@@ -137,7 +137,7 @@ Future<void> main() async {
 
   final updateConfigurationResponse =
       await atlasClient.updateMediatorInstanceConfiguration(
-    configurationData: UpdateInstanceConfigurationRequest(
+    configurationData: UpdateInstanceConfigurationOptions(
       instanceId: deployedMediator.mediatorId,
       acl: acl,
     ),

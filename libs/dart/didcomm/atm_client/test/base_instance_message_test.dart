@@ -6,7 +6,7 @@ import 'package:test/test.dart';
 void main() {
   group('BaseInstanceMessage', () {
     test('should generate correct URI for mediator instance', () {
-      final message = DestroyInstanceMessage.mediator(
+      final message = DestroyInstanceRequestMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
       );
@@ -23,7 +23,7 @@ void main() {
       final body = {'key': 'value'};
       const threadId = 'thread-123';
 
-      final message = DestroyInstanceMessage.mediator(
+      final message = DestroyInstanceRequestMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
         from: 'did:example:bob',
@@ -43,7 +43,7 @@ void main() {
     });
 
     test('should handle empty body by default', () {
-      final message = DestroyInstanceMessage.mediator(
+      final message = DestroyInstanceRequestMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
       );

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('BaseUpdateInstanceConfigurationRequest', () {
     test('should create request with required fields for mediator', () {
-      final request = UpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationOptions(
         instanceId: 'mediator-123',
       );
 
@@ -18,7 +18,7 @@ void main() {
         'hash2': 2,
       };
 
-      final request = UpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationOptions(
         instanceId: 'mediator-456',
         acl: acl,
       );
@@ -28,7 +28,7 @@ void main() {
     });
 
     test('should create request with empty ACL map for mediator', () {
-      final request = UpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationOptions(
         instanceId: 'mediator-789',
         acl: <String, num>{},
       );
@@ -38,7 +38,7 @@ void main() {
     });
 
     test('should serialize to JSON with instanceId only for mediator', () {
-      final request = UpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationOptions(
         instanceId: 'mediator-123',
       );
 
@@ -55,7 +55,7 @@ void main() {
         'hash2': 2,
       };
 
-      final request = UpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationOptions(
         instanceId: 'mediator-456',
         acl: acl,
       );
@@ -68,7 +68,7 @@ void main() {
     });
 
     test('should serialize to JSON with empty ACL map for mediator', () {
-      final request = UpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationOptions(
         instanceId: 'mediator-789',
         acl: <String, num>{},
       );
@@ -83,7 +83,7 @@ void main() {
     test('should deserialize from JSON with instanceId only for mediator', () {
       final json = {'mediatorId': 'mediator-123'};
 
-      final request = UpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationOptions.fromJson(
         json,
       );
 
@@ -102,7 +102,7 @@ void main() {
         'acl': acl,
       };
 
-      final request = UpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationOptions.fromJson(
         json,
       );
 
@@ -116,7 +116,7 @@ void main() {
         'acl': null,
       };
 
-      final request = UpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationOptions.fromJson(
         json,
       );
 
@@ -128,7 +128,7 @@ void main() {
       final json = <String, dynamic>{};
 
       expect(
-        () => UpdateInstanceConfigurationRequest.fromJson(
+        () => UpdateInstanceConfigurationOptions.fromJson(
           json,
         ),
         throwsA(isA<TypeError>()),
@@ -139,7 +139,7 @@ void main() {
       final json = {'mediatorId': 123};
 
       expect(
-        () => UpdateInstanceConfigurationRequest.fromJson(
+        () => UpdateInstanceConfigurationOptions.fromJson(
           json,
         ),
         throwsA(isA<TypeError>()),
@@ -152,7 +152,7 @@ void main() {
         'hash2': 2.5,
       };
 
-      final request = UpdateInstanceConfigurationRequest(
+      final request = UpdateInstanceConfigurationOptions(
         instanceId: 'mediator-123',
         acl: acl,
       );
@@ -167,7 +167,7 @@ void main() {
         'extraField': 'should be ignored',
       };
 
-      final request = UpdateInstanceConfigurationRequest.fromJson(
+      final request = UpdateInstanceConfigurationOptions.fromJson(
         json,
       );
 
