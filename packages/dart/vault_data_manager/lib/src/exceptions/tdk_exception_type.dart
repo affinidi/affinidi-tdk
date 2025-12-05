@@ -198,6 +198,9 @@ enum TdkExceptionType {
   /// Exception thrown when access cannot be updated.
   unableToUpdateAccess(code: 'unable_to_update_access'),
 
+  /// Exception thrown when access cannot be retrieved.
+  unableToGetAccess(code: 'unable_to_get_access'),
+
   /// Exception thrown when the node type is not supported.
   unsupportedNodeType(code: 'unsupported_node_type'),
 

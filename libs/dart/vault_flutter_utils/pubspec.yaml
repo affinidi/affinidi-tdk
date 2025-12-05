@@ -1,6 +1,6 @@
 name: affinidi_tdk_vault_flutter_utils
 description: "A Flutter companion package for Vault that simplifies integration of secure storage capabilities in Flutter applications."
-version: 1.10.2
+version: 1.11.0
 
 homepage: https://github.com/affinidi/affinidi-tdk
 repository: https://github.com/affinidi/affinidi-tdk
@@ -12,7 +12,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_vault: ^1.11.2
+  affinidi_tdk_vault: ^1.12.0
   flutter:
     sdk: flutter
   flutter_secure_storage: ^9.2.4

@@ -1,10 +1,13 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
+import 'package:affinidi_tdk_consumer_iam_client/affinidi_tdk_consumer_iam_client.dart'
+    as consumer_iam;
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 import 'package:affinidi_tdk_vault_data_manager/src/model/account.dart';
 import 'package:affinidi_tdk_vault_data_manager_client/affinidi_tdk_vault_data_manager_client.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:ssi/ssi.dart';
@@ -50,6 +53,7 @@ void main() {
       sharedStorageData: [],
     ));
     registerFallbackValue(PublicKeyFake());
+    registerFallbackValue(Permissions.read);
   });
 
   setUp(() {
@@ -237,6 +241,103 @@ void main() {
             throwsA(isA<TdkException>()),
           );
         });
+      });
+    });
+
+    group('Node Access Sharing', () {
+      setUp(() async {
+        await sut.configure(RepositoryConfiguration(
+          wallet: mockWallet,
+          keyStorage: mockVaultStore,
+        ));
+      });
+
+      test('should revoke item access successfully', () async {
+        when(() => mockIamApiService.revokeItemsAccessVfs(
+              granteeDid: any(named: 'granteeDid'),
+              itemIds: any(named: 'itemIds'),
+            )).thenAnswer((_) async {});
+
+        await sut.revokeItemAccess(
+          accountIndex: 0,
+          granteeDid: 'did:test:123',
+          itemIds: ['node-1'],
+        );
+
+        verify(() => mockIamApiService.revokeItemsAccessVfs(
+              granteeDid: 'did:test:123',
+              itemIds: ['node-1'],
+            )).called(1);
+      });
+
+      test('should get item access successfully', () async {
+        final expectedResponse = Response<consumer_iam.GetAccessOutput>(
+          data: consumer_iam.GetAccessOutput(
+            (b) => b.permissions = ListBuilder([
+              consumer_iam.Permission(
+                (b) => b
+                  ..nodeIds = ListBuilder(['node-1'])
+                  ..rights = ListBuilder([consumer_iam.RightsEnum.vfsRead]),
+              ),
+            ]),
+          ),
+          requestOptions: RequestOptions(path: '/'),
+        );
+
+        when(() => mockIamApiService.getItemsAccessVfs(
+              granteeDid: any(named: 'granteeDid'),
+            )).thenAnswer((_) async => expectedResponse);
+
+        final result = await sut.getItemAccess(
+          accountIndex: 0,
+          granteeDid: 'did:test:123',
+        );
+
+        expect(result['permissions'], isA<List>());
+        verify(() => mockIamApiService.getItemsAccessVfs(
+              granteeDid: 'did:test:123',
+            )).called(1);
+      });
+
+      test('should grant multiple item access groups successfully', () async {
+        when(() => mockIamApiService.setItemsAccessVfs(
+              granteeDid: any<String>(named: 'granteeDid'),
+              permissionGroups:
+                  any<List<({List<String> itemIds, Permissions permissions})>>(
+                      named: 'permissionGroups'),
+              cancelToken: any<CancelToken?>(named: 'cancelToken'),
+            )).thenAnswer((_) async {});
+
+        final permissionGroups = [
+          (itemIds: ['node-1'], permissions: Permissions.read),
+          (itemIds: ['node-2'], permissions: Permissions.write),
+        ];
+
+        when(() => mockDataManagerService.getAccounts())
+            .thenAnswer((_) async => [
+                  Account(
+                    accountIndex: 0,
+                    accountDid: ProfileFixtures.testDid,
+                    accountMetadata: AccountMetadata(
+                      dekekInfo: DekekInfo(encryptedDekek: 'dGVzdF9rZXk='),
+                      sharedStorageData: [],
+                    ),
+                  ),
+                ]);
+
+        await sut.grantItemAccessMultiple(
+          accountIndex: 0,
+          granteeDid: 'did:test:123',
+          permissionGroups: permissionGroups,
+        );
+
+        verify(() => mockIamApiService.setItemsAccessVfs(
+              granteeDid: 'did:test:123',
+              permissionGroups:
+                  any<List<({List<String> itemIds, Permissions permissions})>>(
+                      named: 'permissionGroups'),
+              cancelToken: any<CancelToken?>(named: 'cancelToken'),
+            )).called(1);
       });
     });
   });

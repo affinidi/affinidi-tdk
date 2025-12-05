@@ -40,6 +40,8 @@ Future<void> main() async {
 
   final atlasClient = await DidcommAtlasClient.init(
     didManager: senderDidManager,
+    clientOptions:
+        const AffinidiClientOptions(requestTimeout: Duration(minutes: 5)),
   );
 
   await ConnectionPool.instance.startConnections();

@@ -44,4 +44,62 @@ abstract interface class ProfileAccessSharing {
     required String grantedProfileDid,
     VaultCancelToken? cancelToken,
   });
+
+  /// Grants access to multiple permission groups in a single call.
+  ///
+  /// This allows sending multiple Permission objects with different rights
+  /// in one request, preserving separate permission groups.
+  ///
+  /// [accountIndex] - The index of the account.
+  /// [granteeDid] - The DID of the user to grant access to.
+  /// [permissionGroups] - List of permission groups, each containing itemIds and permissions.
+  /// [cancelToken] - Optional cancel token for API requests.
+  /// Returns the KEK for accessing the shared items.
+  Future<Uint8List> grantItemAccessMultiple({
+    required int accountIndex,
+    required String granteeDid,
+    required List<({List<String> itemIds, Permissions permissions})>
+        permissionGroups,
+    VaultCancelToken? cancelToken,
+  });
+
+  /// Revokes access to specific items (files/folders) for a specific user.
+  ///
+  /// [accountIndex] - The index of the account.
+  /// [granteeDid] - The DID of the user to revoke access from.
+  /// [itemIds] - List of item IDs (file or folder IDs) to revoke access from.
+  /// [cancelToken] - Optional cancel token for API requests.
+  Future<void> revokeItemAccess({
+    required int accountIndex,
+    required String granteeDid,
+    required List<String> itemIds,
+    VaultCancelToken? cancelToken,
+  });
+
+  /// Gets access permissions for specific items (files/folders) for a specific user.
+  ///
+  /// [accountIndex] - The index of the account.
+  /// [granteeDid] - The DID of the user to get access permissions for.
+  /// [cancelToken] - Optional cancel token for API requests.
+  /// Returns the access permissions for the grantee.
+  Future<Map<String, dynamic>> getItemAccess({
+    required int accountIndex,
+    required String granteeDid,
+    VaultCancelToken? cancelToken,
+  });
+
+  /// Receives access to nodes that were granted by another user.
+  ///
+  /// [accountIndex] - The index of the account.
+  /// [ownerProfileId] - The ID of the profile that owns the nodes.
+  /// [kek] - The key encryption key for accessing the nodes.
+  /// [ownerProfileDid] - The DID of the profile that owns the nodes.
+  /// [cancelToken] - Optional cancel token for API requests.
+  Future<void> receiveItemAccess({
+    required int accountIndex,
+    required String ownerProfileId,
+    required Uint8List kek,
+    required String ownerProfileDid,
+    VaultCancelToken? cancelToken,
+  });
 }
