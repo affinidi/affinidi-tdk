@@ -104,8 +104,12 @@ class ItemPermissionHelper {
 
   /// Builds permission groups for API calls from a list of ItemPermissions.
   /// Returns a list of permission groups in the format expected by the API.
-  static List<({List<String> itemIds, Permissions permissions})>
-      buildPermissionGroups(List<ItemPermission> permissions) {
+  static List<
+      ({
+        List<String> itemIds,
+        Permissions permissions,
+        DateTime? expiresAt,
+      })> buildPermissionGroups(List<ItemPermission> permissions) {
     return permissions
         .map((perm) {
           final convertedPermissions = rightsListToPermissions(perm.rights);
@@ -115,9 +119,15 @@ class ItemPermissionHelper {
           return (
             itemIds: perm.itemIds,
             permissions: convertedPermissions,
+            expiresAt: perm.expiresAt,
           );
         })
-        .whereType<({List<String> itemIds, Permissions permissions})>()
+        .whereType<
+            ({
+              List<String> itemIds,
+              Permissions permissions,
+              DateTime? expiresAt
+            })>()
         .toList();
   }
 
@@ -126,11 +136,12 @@ class ItemPermissionHelper {
   /// [existingPermissions] - Current list of permissions
   /// [itemIds] - Item IDs to add/update permissions for
   /// [rights] - Rights to grant (e.g., ['vfsRead', 'vfsWrite'])
+  /// [expiresAt] - Optional expiration date for the permissions
   static List<ItemPermission> addPermission(
-    List<ItemPermission> existingPermissions,
-    List<String> itemIds,
-    List<String> rights,
-  ) {
+      List<ItemPermission> existingPermissions,
+      List<String> itemIds,
+      List<String> rights,
+      {DateTime? expiresAt}) {
     final updatedPermissions = <ItemPermission>[];
     final itemIdsSet = itemIds.toSet();
     final rightsSet = rights.toSet();
@@ -154,7 +165,7 @@ class ItemPermissionHelper {
           updatedPermissions.add(ItemPermission(
             itemIds: overlappingIds,
             rights: mergedRights,
-            expiresAt: perm.expiresAt,
+            expiresAt: expiresAt,
           ));
         }
       }
@@ -169,6 +180,7 @@ class ItemPermissionHelper {
       updatedPermissions.add(ItemPermission(
         itemIds: newItemIds,
         rights: rightsSet.toList()..sort(),
+        expiresAt: expiresAt,
       ));
     }
 

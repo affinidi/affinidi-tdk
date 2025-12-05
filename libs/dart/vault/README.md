@@ -130,6 +130,36 @@ await vault.acceptSharedItems(
 );
 ```
 
+#### Time-Bound Sharing
+
+To share items with automatic expiration (time-bound access), specify an `expiresAt` DateTime when adding permissions:
+
+```dart
+// Owner shares a file with time-bound access (expires at a specific date/time)
+final granteeDid = 'did:key:recipient-did';
+final policy = await vault.getItemPermissionsPolicy(
+  profileId: 'my-profile-id',
+  granteeDid: granteeDid,
+);
+
+// Add permission with expiration date
+policy.addPermission(
+  ['file-123'], 
+  [Permissions.read],
+  expiresAt: DateTime.now().add(Duration(hours: 1)), // Access valid until 1 hour from now
+);
+
+// After the expiresAt DateTime passes, access is automatically revoked by the backend
+// The grantee will no longer be able to access the shared item
+```
+
+**Note**: 
+- Time-bound sharing is only supported for item-level sharing (files/folders), not for profile-level sharing.
+- If `expiresAt` is not provided, access is unlimited (default behavior).
+- `expiresAt` can be in any timezone, it will be automatically converted to UTC before sending to the backend.
+- `expiresAt` can be set to any date (past or future). Applications should enforce UI restrictions if needed.
+- Once the expiration date/time passes, the backend automatically revokes access.
+
 #### Revoking Access
 
 To revoke access to a profile or item:
@@ -164,6 +194,7 @@ await vault.setItemAccess(
 For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example), including:
 - [shared_profiles.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/shared_profiles.dart) - Profile sharing examples
 - [shared_items.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/shared_items.dart) - Item-level sharing examples
+- [time_bound_sharing.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/time_bound_sharing.dart) - Time-bound sharing examples
 
 
 ## Support & feedback
