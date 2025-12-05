@@ -5,7 +5,7 @@ import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager/affinidi_tdk_vault_data_manager.dart';
 
 void main() async {
-  print('[Demo] === Time-Bound Sharing Example ===');
+  print('[Demo] Time-Bound Sharing Example');
 
   // Initialize vaults for Alice and Bob
   final keyStorageAlice = InMemoryVaultStore();
@@ -85,11 +85,11 @@ void main() async {
 
   // Create Alice
   accountIndexAlice =
-      await _createProfile(vaultAlice, 'Alice22', accountIndexAlice);
+      await _createProfile(vaultAlice, 'Alice88', accountIndexAlice);
   final aliceAccountIndex = accountIndexAlice;
 
   // Create Bob
-  accountIndexBob = await _createProfile(vaultBob, 'Bob22', accountIndexBob);
+  accountIndexBob = await _createProfile(vaultBob, 'Bob8888', accountIndexBob);
   final bobAccountIndex = accountIndexBob;
 
   // Get Alice and Bob profiles

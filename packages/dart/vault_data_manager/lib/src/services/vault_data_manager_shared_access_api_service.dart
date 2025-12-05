@@ -277,7 +277,7 @@ class VaultDataManagerSharedAccessApiService
         if (group.expiresAt != null) {
           final dt = group.expiresAt!;
           formattedExpiresAt = DateTime.utc(dt.year, dt.month, dt.day, dt.hour,
-              dt.minute, dt.second, dt.millisecond, dt.microsecond);
+              dt.minute, dt.second, dt.millisecond, 0);
         }
         return consumer_iam.PermissionBuilder()
           ..rights = ListBuilder<consumer_iam.RightsEnum>(
