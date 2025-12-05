@@ -142,11 +142,11 @@ final policy = await vault.getItemPermissionsPolicy(
   granteeDid: granteeDid,
 );
 
-// Add permission with expiration date (access expires at specified DateTime in UTC)
+// Add permission with expiration date
 policy.addPermission(
   ['file-123'], 
   [Permissions.read],
-  expiresAt: DateTime.now().toUtc().add(Duration(hours: 1)), // Access valid until 1 hour from now
+  expiresAt: DateTime.now().add(Duration(hours: 1)), // Access valid until 1 hour from now
 );
 
 // After the expiresAt DateTime passes, access is automatically revoked by the backend
@@ -156,7 +156,7 @@ policy.addPermission(
 **Note**: 
 - Time-bound sharing is only supported for item-level sharing (files/folders), not for profile-level sharing.
 - If `expiresAt` is not provided, access is unlimited (default behavior).
-- `expiresAt` must be in UTC format. Use `DateTime.now().toUtc().add(...)` to create UTC dates.
+- `expiresAt` can be in any timezone, it will be automatically converted to UTC before sending to the backend.
 - `expiresAt` can be set to any date (past or future). Applications should enforce UI restrictions if needed.
 - Once the expiration date/time passes, the backend automatically revokes access.
 

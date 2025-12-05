@@ -1,5 +1,4 @@
 import '../affinidi_tdk_vault.dart';
-import 'exceptions/tdk_exception_type.dart';
 import 'helpers/item_permission_helper.dart';
 
 /// Represents an item permissions policy that can be edited locally
@@ -42,15 +41,6 @@ class ItemPermissionsPolicy {
     List<Permissions> permissions, {
     DateTime? expiresAt,
   }) {
-    if (expiresAt != null && !expiresAt.isUtc) {
-      Error.throwWithStackTrace(
-        TdkException(
-          message: 'expiresAt must be in UTC',
-          code: TdkExceptionType.invalidTimeFrame.code,
-        ),
-        StackTrace.current,
-      );
-    }
     final rights =
         ItemPermissionHelper.permissionsListToRightsList(permissions);
     _permissions = ItemPermissionHelper.addPermission(

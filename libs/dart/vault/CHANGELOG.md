@@ -11,7 +11,6 @@ Feat: Time-Bound Sharing for Granular Access
 * Added `expiresAt` parameter to `ItemPermissionsPolicy.addPermission()` to configure automatic expiration for shared items
 * Shared items (files/folders) can now be shared with a time limit, after which access is automatically revoked by the backend
 * If `expiresAt` is not provided, access remains until manually revoked (default behavior)
-* Throws an error if `expiresAt` is not in UTC format
 * `expiresAt` can be set to any date (past or future) to support testing scenarios
 
 ---

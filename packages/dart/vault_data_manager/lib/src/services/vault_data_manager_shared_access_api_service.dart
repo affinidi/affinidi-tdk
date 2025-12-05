@@ -275,7 +275,7 @@ class VaultDataManagerSharedAccessApiService
       final permissionBuilders = permissionGroups.map((group) {
         DateTime? formattedExpiresAt;
         if (group.expiresAt != null) {
-          final dt = group.expiresAt!;
+          final dt = group.expiresAt!.toUtc();
           formattedExpiresAt = DateTime.utc(dt.year, dt.month, dt.day, dt.hour,
               dt.minute, dt.second, dt.millisecond, 0);
         }
