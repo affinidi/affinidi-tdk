@@ -120,7 +120,7 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   ///
   /// Parameters:
   /// * [granteeDid] - set access policy for this DID
-  /// * [permissionGroups] - List of permission groups, each containing item IDs and permissions
+  /// * [permissionGroups] - List of permission groups, each containing item IDs, permissions, and optional expiration date
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extra] - Can be used to add flags to the request
@@ -129,7 +129,12 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   Future<void> setItemsAccessVfs({
     required String granteeDid,
-    required List<({List<String> itemIds, Permissions permissions})>
+    required List<
+            ({
+              List<String> itemIds,
+              Permissions permissions,
+              DateTime? expiresAt
+            })>
         permissionGroups,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,

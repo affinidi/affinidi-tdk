@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
+import 'package:affinidi_tdk_vault/src/exceptions/tdk_exception_type.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -434,9 +435,13 @@ void main() {
         when(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
             )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
 
         final access = await vault.getItemAccess(
@@ -490,9 +495,13 @@ void main() {
         when(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
             )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
 
         final policy = await vault.getItemPermissionsPolicy(
@@ -519,9 +528,13 @@ void main() {
         verify(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
             )).called(1);
       });
 
@@ -542,9 +555,13 @@ void main() {
         when(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
             )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
 
         final policy = await vault.getItemPermissionsPolicy(
@@ -571,9 +588,13 @@ void main() {
         verify(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
             )).called(1);
       });
 
@@ -593,9 +614,13 @@ void main() {
         when(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
             )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3, 4]));
 
         final policy = await vault.getItemPermissionsPolicy(
@@ -621,9 +646,13 @@ void main() {
         verify(() => mockProfileRepository.grantItemAccessMultiple(
               accountIndex: 0,
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
             )).called(1);
       });
 
@@ -850,6 +879,101 @@ void main() {
           ),
           throwsA(isA<TdkException>()),
         );
+      });
+    });
+
+    group('Time-Bound Sharing', () {
+      setUp(() async {
+        await vault.ensureInitialized();
+      });
+
+      group('ItemPermissionsPolicy timeFrame validation', () {
+        test('should throw when timeFrame is zero in addPermission', () {
+          final policy = ItemPermissionsPolicy.empty();
+
+          expect(
+            () => policy.addPermission(
+              ['item-1'],
+              [Permissions.read],
+              expiresIn: Duration.zero,
+            ),
+            throwsA(
+              isA<TdkException>().having(
+                (e) => e.code,
+                'code',
+                TdkExceptionType.invalidTimeFrame.code,
+              ),
+            ),
+          );
+        });
+
+        test('should throw when timeFrame is negative in addPermission', () {
+          final policy = ItemPermissionsPolicy.empty();
+
+          expect(
+            () => policy.addPermission(
+              ['item-1'],
+              [Permissions.read],
+              expiresIn: const Duration(seconds: -1),
+            ),
+            throwsA(
+              isA<TdkException>().having(
+                (e) => e.code,
+                'code',
+                TdkExceptionType.invalidTimeFrame.code,
+              ),
+            ),
+          );
+        });
+
+        test('should allow addPermission with valid timeFrame', () {
+          final policy = ItemPermissionsPolicy.empty();
+
+          policy.addPermission(
+            ['item-1'],
+            [Permissions.read],
+            expiresIn: const Duration(hours: 1),
+          );
+
+          expect(policy.permissions.length, 1);
+          expect(policy.permissions[0].itemIds, contains('item-1'));
+          expect(policy.permissions[0].expiresAt, isNotNull);
+          expect(
+            policy.permissions[0].expiresAt,
+            isA<DateTime>().having(
+              (dt) => dt.isAfter(DateTime.now().toUtc()),
+              'isAfter',
+              true,
+            ),
+          );
+        });
+
+        test('should allow addPermission without timeFrame', () {
+          final policy = ItemPermissionsPolicy.empty();
+
+          policy.addPermission(['item-1'], [Permissions.read]);
+
+          expect(policy.permissions.length, 1);
+          expect(policy.permissions[0].itemIds, contains('item-1'));
+          expect(policy.permissions[0].expiresAt, isNull);
+        });
+
+        test('should set expiresAt correctly from timeFrame', () {
+          final policy = ItemPermissionsPolicy.empty();
+          final now = DateTime.now().toUtc();
+          final timeFrame = const Duration(hours: 2);
+
+          policy.addPermission(
+            ['item-1'],
+            [Permissions.read],
+            expiresIn: timeFrame,
+          );
+
+          final expiresAt = policy.permissions[0].expiresAt;
+          expect(expiresAt, isNotNull);
+          expect(expiresAt!.isAfter(now), isTrue);
+          expect(expiresAt.difference(now).inHours, 2);
+        });
       });
     });
   });

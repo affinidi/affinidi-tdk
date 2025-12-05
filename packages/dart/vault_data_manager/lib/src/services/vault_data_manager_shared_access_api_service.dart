@@ -56,6 +56,7 @@ class VaultDataManagerSharedAccessApiService
   Future<void> grantAccessVfs({
     required String granteeDid,
     required Permissions permissions,
+    DateTime? expiresAt,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -246,7 +247,12 @@ class VaultDataManagerSharedAccessApiService
   @override
   Future<void> setItemsAccessVfs({
     required String granteeDid,
-    required List<({List<String> itemIds, Permissions permissions})>
+    required List<
+            ({
+              List<String> itemIds,
+              Permissions permissions,
+              DateTime? expiresAt
+            })>
         permissionGroups,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -267,10 +273,17 @@ class VaultDataManagerSharedAccessApiService
 
     try {
       final permissionBuilders = permissionGroups.map((group) {
+        DateTime? formattedExpiresAt;
+        if (group.expiresAt != null) {
+          final dt = group.expiresAt!;
+          formattedExpiresAt = DateTime.utc(dt.year, dt.month, dt.day, dt.hour,
+              dt.minute, dt.second, dt.millisecond, dt.microsecond);
+        }
         return consumer_iam.PermissionBuilder()
           ..rights = ListBuilder<consumer_iam.RightsEnum>(
               _permissionsToConsumerRights(group.permissions))
-          ..nodeIds = ListBuilder<String>(group.itemIds);
+          ..nodeIds = ListBuilder<String>(group.itemIds)
+          ..expiresAt = formattedExpiresAt;
       }).toList();
 
       final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()

@@ -26,6 +26,9 @@ enum TdkExceptionType {
 
   /// Exception thrown when the request has been cancelled.
   requestCancelled('request_cancelled'),
+
+  /// Exception thrown when the provided time frame is invalid.
+  invalidTimeFrame('invalid_time_frame'),
   ;
 
   /// Creates a new instance of [TdkExceptionType].

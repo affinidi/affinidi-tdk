@@ -568,7 +568,12 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   Future<Uint8List> grantItemAccessMultiple({
     required int accountIndex,
     required String granteeDid,
-    required List<({List<String> itemIds, Permissions permissions})>
+    required List<
+            ({
+              List<String> itemIds,
+              Permissions permissions,
+              DateTime? expiresAt
+            })>
         permissionGroups,
     VaultCancelToken? cancelToken,
   }) async {
@@ -581,6 +586,7 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
           .map((group) => (
                 itemIds: group.itemIds,
                 permissions: group.permissions,
+                expiresAt: group.expiresAt,
               ))
           .toList(),
       cancelToken:
