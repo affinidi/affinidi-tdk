@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
-import 'package:affinidi_tdk_vault/src/exceptions/tdk_exception_type.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -904,30 +903,18 @@ void main() {
           expect(policy.permissions[0].expiresAt, equals(pastDate));
         });
 
-        test('should throw when expiresAt is not in UTC', () {
+        test('should accept expiresAt in any timezone', () {
           final policy = ItemPermissionsPolicy.empty();
           final localDate = DateTime.now().add(const Duration(hours: 1));
 
-          expect(
-            () => policy.addPermission(
-              ['item-1'],
-              [Permissions.read],
-              expiresAt: localDate,
-            ),
-            throwsA(
-              isA<TdkException>()
-                  .having(
-                    (e) => e.code,
-                    'code',
-                    TdkExceptionType.invalidTimeFrame.code,
-                  )
-                  .having(
-                    (e) => e.message,
-                    'message',
-                    contains('expiresAt must be in UTC'),
-                  ),
-            ),
+          policy.addPermission(
+            ['item-1'],
+            [Permissions.read],
+            expiresAt: localDate,
           );
+          expect(policy.permissions.length, 1);
+          expect(policy.permissions[0].itemIds, contains('item-1'));
+          expect(policy.permissions[0].expiresAt, equals(localDate));
         });
 
         test('should allow addPermission with valid expiresAt', () {
