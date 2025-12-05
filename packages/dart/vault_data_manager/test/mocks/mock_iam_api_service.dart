@@ -132,7 +132,12 @@ class MockIamApiService extends Mock
   @override
   Future<void> setItemsAccessVfs({
     required String granteeDid,
-    required List<({List<String> itemIds, Permissions permissions})>
+    required List<
+            ({
+              List<String> itemIds,
+              Permissions permissions,
+              DateTime? expiresAt
+            })>
         permissionGroups,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,

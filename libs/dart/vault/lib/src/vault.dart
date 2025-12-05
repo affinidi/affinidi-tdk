@@ -216,6 +216,7 @@ class Vault {
   /// Throws [TdkException] if:
   /// - The profile is not found
   /// - The profile repository is not found
+  /// - Expiration time frame is invalid
   Future<SharedProfileDto> shareProfile({
     required String profileId,
     required String toDid,
@@ -257,6 +258,7 @@ class Vault {
 
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
+
     final kek = await profileSharedAccessRepository.grantProfileAccess(
       accountIndex: profile.accountIndex,
       granteeDid: toDid,

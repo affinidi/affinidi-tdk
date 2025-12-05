@@ -130,6 +130,33 @@ await vault.acceptSharedItems(
 );
 ```
 
+#### Time-Bound Sharing
+
+To share items with automatic expiration (time-bound access), specify a `expiresIn` when adding permissions:
+
+```dart
+// Owner shares a file with time-bound access (expires after 1 hour)
+final granteeDid = 'did:key:recipient-did';
+final policy = await vault.getItemPermissionsPolicy(
+  profileId: 'my-profile-id',
+  granteeDid: granteeDid,
+);
+policy.addPermission(
+  ['file-123'], 
+  [Permissions.read],
+  timeFrame: Duration(hours: 1), // Access valid for 1 hour
+);
+
+// After the timeFrame expires, access is automatically revoked by the backend
+// The grantee will no longer be able to access the shared item
+```
+
+**Note**: 
+- Time-bound sharing is only supported for item-level sharing (files/folders), not for profile-level sharing.
+- If `expiresIn` is not provided, access is unlimited (default behavior).
+- If `expiresIn` is invalid (negative or zero), an error will be thrown.
+- Once the time frame expires, the backend automatically revokes access.
+
 #### Revoking Access
 
 To revoke access to a profile or item:
@@ -164,6 +191,7 @@ await vault.setItemAccess(
 For more sample usage, go to the [example folder](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example), including:
 - [shared_profiles.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/shared_profiles.dart) - Profile sharing examples
 - [shared_items.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/shared_items.dart) - Item-level sharing examples
+- [time_bound_sharing.dart](https://github.com/affinidi/affinidi-tdk/tree/main/libs/dart/vault/example/time_bound_sharing.dart) - Time-bound sharing examples
 
 
 ## Support & feedback
