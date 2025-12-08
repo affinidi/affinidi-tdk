@@ -1,3 +1,7 @@
+## 1.2.2
+
+- Dependencies Update 
+
 ## 1.2.1
 
 - Dependencies Update 
