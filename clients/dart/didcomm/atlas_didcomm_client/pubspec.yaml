@@ -1,16 +1,13 @@
-name: affinidi_tdk_atm_client
-description: A sample command-line application.
+name: affinidi_tdk_atlas_didcomm_client
+description: Affinidi TDK dart client for Affinidi Atlas
 version: 1.0.0-dev.1
 homepage: https://github.com/affinidi/affinidi-tdk
-publish_to: none
 
 environment:
   sdk: ^3.6.0
 
-resolution: workspace
-
 dependencies:
-  affinidi_tdk_didcomm_mediator_client: ^1.0.0-dev.1
+  affinidi_tdk_didcomm_mediator_client: ^1.0.0
   crypto: ^3.0.6
   dcql: ^1.2.0
   json_annotation: ^4.9.0

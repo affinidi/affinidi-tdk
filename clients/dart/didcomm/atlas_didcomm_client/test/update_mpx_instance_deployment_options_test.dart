@@ -1,4 +1,4 @@
-import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
+import 'package:affinidi_tdk_atlas_didcomm_client/affinidi_tdk_atlas_didcomm_client.dart';
 import 'package:test/test.dart';
 
 void main() {
