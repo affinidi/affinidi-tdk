@@ -4,11 +4,14 @@ import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediat
 import 'package:ssi/ssi.dart';
 import 'package:uuid/uuid.dart';
 
+/// Base class for DIDComm service clients.
 abstract class DidcommServiceClient extends DidcommMediatorClient {
+  /// The DID Document of the service the client communicates with.
   final DidDocument serviceDidDocument;
 
   final _pendingRequests = <String, Completer<PlainTextMessage>>{};
 
+  /// Creates a [DidcommServiceClient] instance.
   DidcommServiceClient({
     required super.didManager,
     required super.clientOptions,
@@ -24,6 +27,7 @@ abstract class DidcommServiceClient extends DidcommMediatorClient {
     );
   }
 
+  /// Waits for a message with the specified [threadId].
   Future<PlainTextMessage> waitForMessage({
     required String threadId,
   }) async {
@@ -33,6 +37,7 @@ abstract class DidcommServiceClient extends DidcommMediatorClient {
     return completer.future.timeout(clientOptions.requestTimeout);
   }
 
+  /// Sends a service message and waits for the response.
   Future<PlainTextMessage> sendServiceMessage(
     PlainTextMessage requestMessage,
   ) async {
@@ -44,6 +49,7 @@ abstract class DidcommServiceClient extends DidcommMediatorClient {
     return await responseMessageFuture;
   }
 
+  /// Configures the ACL to allow the service to communicate via the mediator.
   Future<void> configureAcl() async {
     final ownDidDocument = await didManager.getDidDocument();
 
