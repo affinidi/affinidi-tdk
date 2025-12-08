@@ -1,4 +1,4 @@
-test1
+test2
 
 # Affinidi Trust Development Kit (Affinidi TDK)
 
