@@ -1,6 +1,5 @@
+import '../affinidi_tdk_vault.dart';
 import 'helpers/item_permission_helper.dart';
-import 'item_permission.dart';
-import 'permissions.dart';
 
 /// Represents an item permissions policy that can be edited locally
 class ItemPermissionsPolicy {
@@ -36,14 +35,20 @@ class ItemPermissionsPolicy {
   ///
   /// [itemIds] - Item IDs to add/update permissions for
   /// [permissions] - Permissions to grant
+  /// [expiresAt] - Optional expiration date/time for the permissions.
   ItemPermissionsPolicy addPermission(
     List<String> itemIds,
-    List<Permissions> permissions,
-  ) {
+    List<Permissions> permissions, {
+    DateTime? expiresAt,
+  }) {
     final rights =
         ItemPermissionHelper.permissionsListToRightsList(permissions);
-    _permissions =
-        ItemPermissionHelper.addPermission(_permissions, itemIds, rights);
+    _permissions = ItemPermissionHelper.addPermission(
+      _permissions,
+      itemIds,
+      rights,
+      expiresAt: expiresAt,
+    );
     return this;
   }
 
@@ -64,7 +69,7 @@ class ItemPermissionsPolicy {
   }
 
   /// Builds permission groups
-  List<({List<String> itemIds, Permissions permissions})>
+  List<({List<String> itemIds, Permissions permissions, DateTime? expiresAt})>
       buildPermissionGroups() {
     return ItemPermissionHelper.buildPermissionGroups(_permissions);
   }

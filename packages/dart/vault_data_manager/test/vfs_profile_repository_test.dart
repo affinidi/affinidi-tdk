@@ -302,15 +302,23 @@ void main() {
       test('should grant multiple item access groups successfully', () async {
         when(() => mockIamApiService.setItemsAccessVfs(
               granteeDid: any<String>(named: 'granteeDid'),
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
               cancelToken: any<CancelToken?>(named: 'cancelToken'),
             )).thenAnswer((_) async {});
 
         final permissionGroups = [
-          (itemIds: ['node-1'], permissions: Permissions.read),
-          (itemIds: ['node-2'], permissions: Permissions.write),
+          (itemIds: ['node-1'], permissions: Permissions.read, expiresAt: null),
+          (
+            itemIds: ['node-2'],
+            permissions: Permissions.write,
+            expiresAt: null
+          ),
         ];
 
         when(() => mockDataManagerService.getAccounts())
@@ -333,9 +341,13 @@ void main() {
 
         verify(() => mockIamApiService.setItemsAccessVfs(
               granteeDid: 'did:test:123',
-              permissionGroups:
-                  any<List<({List<String> itemIds, Permissions permissions})>>(
-                      named: 'permissionGroups'),
+              permissionGroups: any<
+                  List<
+                      ({
+                        List<String> itemIds,
+                        Permissions permissions,
+                        DateTime? expiresAt
+                      })>>(named: 'permissionGroups'),
               cancelToken: any<CancelToken?>(named: 'cancelToken'),
             )).called(1);
       });

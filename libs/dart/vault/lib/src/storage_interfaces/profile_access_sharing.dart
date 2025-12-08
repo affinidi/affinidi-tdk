@@ -52,13 +52,18 @@ abstract interface class ProfileAccessSharing {
   ///
   /// [accountIndex] - The index of the account.
   /// [granteeDid] - The DID of the user to grant access to.
-  /// [permissionGroups] - List of permission groups, each containing itemIds and permissions.
+  /// [permissionGroups] - List of permission groups, each containing itemIds, permissions, and optional expiration date.
   /// [cancelToken] - Optional cancel token for API requests.
   /// Returns the KEK for accessing the shared items.
   Future<Uint8List> grantItemAccessMultiple({
     required int accountIndex,
     required String granteeDid,
-    required List<({List<String> itemIds, Permissions permissions})>
+    required List<
+            ({
+              List<String> itemIds,
+              Permissions permissions,
+              DateTime? expiresAt
+            })>
         permissionGroups,
     VaultCancelToken? cancelToken,
   });
