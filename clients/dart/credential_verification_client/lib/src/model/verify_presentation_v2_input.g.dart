@@ -12,6 +12,8 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
   @override
   final VerifyPresentationV2InputPexQuery? pexQuery;
   @override
+  final BuiltMap<String, JsonObject?>? dcqlQuery;
+  @override
   final String? challenge;
   @override
   final BuiltList<String>? domain;
@@ -21,7 +23,11 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
       (VerifyPresentationV2InputBuilder()..update(updates))._build();
 
   _$VerifyPresentationV2Input._(
-      {this.verifiablePresentation, this.pexQuery, this.challenge, this.domain})
+      {this.verifiablePresentation,
+      this.pexQuery,
+      this.dcqlQuery,
+      this.challenge,
+      this.domain})
       : super._();
   @override
   VerifyPresentationV2Input rebuild(
@@ -38,6 +44,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
     return other is VerifyPresentationV2Input &&
         verifiablePresentation == other.verifiablePresentation &&
         pexQuery == other.pexQuery &&
+        dcqlQuery == other.dcqlQuery &&
         challenge == other.challenge &&
         domain == other.domain;
   }
@@ -47,6 +54,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
     var _$hash = 0;
     _$hash = $jc(_$hash, verifiablePresentation.hashCode);
     _$hash = $jc(_$hash, pexQuery.hashCode);
+    _$hash = $jc(_$hash, dcqlQuery.hashCode);
     _$hash = $jc(_$hash, challenge.hashCode);
     _$hash = $jc(_$hash, domain.hashCode);
     _$hash = $jf(_$hash);
@@ -58,6 +66,7 @@ class _$VerifyPresentationV2Input extends VerifyPresentationV2Input {
     return (newBuiltValueToStringHelper(r'VerifyPresentationV2Input')
           ..add('verifiablePresentation', verifiablePresentation)
           ..add('pexQuery', pexQuery)
+          ..add('dcqlQuery', dcqlQuery)
           ..add('challenge', challenge)
           ..add('domain', domain))
         .toString();
@@ -80,6 +89,12 @@ class VerifyPresentationV2InputBuilder
   set pexQuery(VerifyPresentationV2InputPexQueryBuilder? pexQuery) =>
       _$this._pexQuery = pexQuery;
 
+  MapBuilder<String, JsonObject?>? _dcqlQuery;
+  MapBuilder<String, JsonObject?> get dcqlQuery =>
+      _$this._dcqlQuery ??= MapBuilder<String, JsonObject?>();
+  set dcqlQuery(MapBuilder<String, JsonObject?>? dcqlQuery) =>
+      _$this._dcqlQuery = dcqlQuery;
+
   String? _challenge;
   String? get challenge => _$this._challenge;
   set challenge(String? challenge) => _$this._challenge = challenge;
@@ -97,6 +112,7 @@ class VerifyPresentationV2InputBuilder
     if ($v != null) {
       _verifiablePresentation = $v.verifiablePresentation;
       _pexQuery = $v.pexQuery?.toBuilder();
+      _dcqlQuery = $v.dcqlQuery?.toBuilder();
       _challenge = $v.challenge;
       _domain = $v.domain?.toBuilder();
       _$v = null;
@@ -124,6 +140,7 @@ class VerifyPresentationV2InputBuilder
           _$VerifyPresentationV2Input._(
             verifiablePresentation: verifiablePresentation,
             pexQuery: _pexQuery?.build(),
+            dcqlQuery: _dcqlQuery?.build(),
             challenge: challenge,
             domain: _domain?.build(),
           );
@@ -132,6 +149,8 @@ class VerifyPresentationV2InputBuilder
       try {
         _$failedField = 'pexQuery';
         _pexQuery?.build();
+        _$failedField = 'dcqlQuery';
+        _dcqlQuery?.build();
 
         _$failedField = 'domain';
         _domain?.build();
