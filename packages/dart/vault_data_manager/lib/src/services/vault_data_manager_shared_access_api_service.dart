@@ -276,6 +276,10 @@ class VaultDataManagerSharedAccessApiService
         DateTime? formattedExpiresAt;
         if (group.expiresAt != null) {
           final dt = group.expiresAt!.toUtc();
+
+          /// Format the date by creating a new DateTime with microsecond set to 0
+          /// The backend API rejects dates that contain microseconds/nanoseconds.
+          /// This ensures the date is serialized in a format accepted by the backend.
           formattedExpiresAt = DateTime.utc(dt.year, dt.month, dt.day, dt.hour,
               dt.minute, dt.second, dt.millisecond, 0);
         }
