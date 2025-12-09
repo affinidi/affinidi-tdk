@@ -18,9 +18,11 @@ class DestroyInstanceResponse {
   DestroyInstanceResponse({
     this.message,
   });
+
   /// Creates a [DestroyInstanceResponse] from a JSON map.
   factory DestroyInstanceResponse.fromJson(Map<String, dynamic> json) =>
       _$DestroyInstanceResponseFromJson(json);
+
   /// Converts this [DestroyInstanceResponse] to a JSON map.
   Map<String, dynamic> toJson() => _$DestroyInstanceResponseToJson(this);
 }
