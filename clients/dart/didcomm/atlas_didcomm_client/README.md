@@ -1,11 +1,11 @@
 # Affinidi Atlas DIDComm Client for Dart
 
-A Dart client for interacting with Affinidi Atlas over DIDComm v2.1. It enables secure, end-to-end encrypted management of Atlas services (Mediator, Meeting Place/MPX, Trust Registry/TR) using DID-based identities and message flows.
+A Dart client for interacting with Affinidi Atlas over DIDComm v2.1. It enables secure, end-to-end encrypted management of Atlas services using DID-based identities and message flows.
 
-This client builds on the Affinidi DIDComm Mediator Client and provides high-level APIs to:
+This client provides high-level APIs to:
 
-- Manage service ACLs via the mediator
-- Deploy and destroy Atlas service instances (Mediator, MPX, TR)
+- Manage service ACLs
+- Deploy and destroy Atlas service instances
 - Retrieve instance metadata and lists
 - Query service requests and update deployments/configurations
 
@@ -28,14 +28,14 @@ This client builds on the Affinidi DIDComm Mediator Client and provides high-lev
 ## Core Concepts
 
 - **DIDComm v2.1**: Open standard for secure, interoperable, end-to-end encrypted communication using DIDs.
-- **Affinidi Atlas**: An orchestrator that manages services — Mediator, Meeting Place (MPX), and Trust Registry (TR) — via DIDComm, providing coordinated lifecycle, configuration, and secure messaging across them.
-- **Mediator ACL**: Access control list that configures which users/DIDs can access a specific Atlas‑deployed instance (Mediator, MPX, TR).
+- **Affinidi Atlas**: An orchestrator that manages Mediator instances via DIDComm, providing coordinated lifecycle, configuration, and secure messaging.
+- **Mediator ACL**: Access control list that configures which users/DIDs can access a specific Atlas‑deployed instance.
 
 ## Key Features
 
 - High-level Dart APIs over DIDComm for Atlas
 - Instance lifecycle: deploy, destroy, list, and metadata
-- Requests query for Mediator, MPX, TR
+- Requests query for a deployed instance
 - Deployment and configuration updates
 
 ## Requirements
@@ -100,14 +100,6 @@ Future<void> main() async {
 // Mediator instances
 final mediators = await client.getMediatorInstancesList(limit: 10);
 print(mediators.body);
-
-// MPX instances
-final mpx = await client.getMpxInstancesList(limit: 10);
-print(mpx.body);
-
-// Trust Registry instances
-final trs = await client.getTrInstancesList(limit: 10);
-print(trs.body);
 ```
 
 ### Deploy and destroy instances
@@ -127,28 +119,6 @@ final destroyedMed = await client.destroyMediatorInstance(
 	mediatorId: deployMed.body.instanceId,
 );
 print(destroyedMed.body);
-
-// Deploy MPX
-final deployMpx = await client.deployMpxInstance(
-	options: DeployMpxInstanceOptions(
-		serviceSize: ServiceSize.small,
-		// ... other deployment options
-	),
-);
-
-// Destroy MPX
-await client.destroyMpxInstance(mpxId: deployMpx.body.instanceId);
-
-// Deploy TR
-final deployTr = await client.deployTrInstance(
-	options: DeployTrInstanceOptions(
-		serviceSize: ServiceSize.small,
-		// ... other deployment options
-	),
-);
-
-// Destroy TR
-await client.destroyTrInstance(trId: deployTr.body.instanceId);
 ```
 
 ### Get metadata and requests
@@ -160,13 +130,8 @@ final medMeta = await client.getMediatorInstanceMetadata(
 );
 print(medMeta.body);
 
-final mpxMeta = await client.getMpxInstanceMetadata(mpxId: 'mpx-123');
-final trMeta = await client.getTrInstanceMetadata(trId: 'tr-123');
-
 // Requests
-final medReqs = await client.getMediatorRequests(limit: 20);
-final mpxReqs = await client.getMpxRequests(limit: 20);
-final trReqs = await client.getTrRequests(limit: 20);
+final requests = await client.getMediatorRequests(limit: 20);
 ```
 
 ### Update deployment/configuration
@@ -185,21 +150,6 @@ await client.updateMediatorInstanceDeployment(
 await client.updateMediatorInstanceConfiguration(
 	configurationData: UpdateInstanceConfigurationOptions(
 		// ... configuration fields
-	),
-);
-
-// MPX and TR deployments
-await client.updateMpxInstanceDeployment(
-	mpxId: 'mpx-123',
-	options: UpdateMpxInstanceDeploymentOptions(
-		serviceSize: ServiceSize.medium,
-	),
-);
-
-await client.updateTrInstanceDeployment(
-	trId: 'tr-123',
-	options: UpdateTrInstanceDeploymentOptions(
-		serviceSize: ServiceSize.medium,
 	),
 );
 ```
