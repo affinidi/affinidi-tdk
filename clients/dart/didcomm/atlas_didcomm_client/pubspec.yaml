@@ -1,5 +1,5 @@
 name: affinidi_tdk_atlas_didcomm_client
-description: Affinidi TDK dart client for Affinidi Atlas
+description: Affinidi TDK for Dart client to manage Affinidi Atlas services.
 version: 1.0.0-dev.1
 homepage: https://github.com/affinidi/affinidi-tdk
 
