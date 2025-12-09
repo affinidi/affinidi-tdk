@@ -20,16 +20,13 @@ void main() {
         to: ['did:example:alice'],
         instanceId: 'mediator-123',
       );
+      final jsonRequest = request.toJson();
 
-      final json = request.toJson();
-
-      expect(json['mediatorId'], 'mediator-123');
-      expect(json.length, 1);
+      expect(jsonRequest['mediatorId'], 'mediator-123');
+      expect(jsonRequest.length, 1);
     });
 
     test('should deserialize from JSON for mediator', () {
-      final json = {'mediatorId': 'mediator-123'};
-
       final request = DestroyInstanceRequestMessage.mediator(
         id: 'test-id',
         to: ['did:example:alice'],
@@ -42,8 +39,6 @@ void main() {
     });
 
     test('should throw TypeError when instance ID field is missing', () {
-      final json = <String, dynamic>{};
-
       expect(
         () => DestroyInstanceRequestMessage.mediator(
           id: 'test-id',
@@ -55,8 +50,6 @@ void main() {
     });
 
     test('should throw TypeError when instance ID has wrong type', () {
-      final json = {'mediatorId': 123};
-
       expect(
         () => DestroyInstanceRequestMessage.mediator(
           id: 'test-id',

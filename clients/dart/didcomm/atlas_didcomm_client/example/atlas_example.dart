@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:affinidi_tdk_atlas_didcomm_client/affinidi_tdk_atlas_didcomm_client.dart';
 import 'package:affinidi_tdk_atlas_didcomm_client/src/messages/atlas/deploy_instance/deploy_instance_response_message.dart';
 import 'package:affinidi_tdk_atlas_didcomm_client/src/messages/atlas/get_instances_list/get_instances_list_response_message.dart';
+import 'package:affinidi_tdk_atlas_didcomm_client/src/models/deployment_status/deployment_status.dart';
 import 'package:affinidi_tdk_atlas_didcomm_client/src/models/mediator_instance_metadata/mediator_instance_metadata.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:crypto/crypto.dart';
@@ -97,7 +98,8 @@ Future<void> main() async {
   // wait for completed deployment
   await _waitUntilMediators(
     predicate: (mediators) => mediators.any(
-      (mediator) => mediator.deploymentStatus != 'CREATE_COMPLETE',
+      (mediator) =>
+          mediator.deploymentStatus != DeploymentStatus.createComplete,
     ),
     atlasClient: atlasClient,
     firstTimeout: const Duration(minutes: 5),
