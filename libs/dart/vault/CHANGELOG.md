@@ -1,5 +1,16 @@
 # Change Log
 
+## 1.14.0
+
+### Changes
+
+---
+
+Chore: Dependencies Update 
+
+---
+
+
 ## 1.13.0
 
 ### Changes
