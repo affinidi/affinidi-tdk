@@ -15,7 +15,7 @@ Future<void> main() async {
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'atm_client',
+    packageDirectoryName: 'atlas_didcomm_client',
     skipMediator: true,
     skipBob: true,
   );
