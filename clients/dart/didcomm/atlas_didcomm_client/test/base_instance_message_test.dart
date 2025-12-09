@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:affinidi_tdk_atlas_didcomm_client/affinidi_tdk_atlas_didcomm_client.dart';
-import 'package:affinidi_tdk_atlas_didcomm_client/src/messages/atlas/destroy_instance/destroy_instance_response_message.dart';
 import 'package:test/test.dart';
 
 void main() {
