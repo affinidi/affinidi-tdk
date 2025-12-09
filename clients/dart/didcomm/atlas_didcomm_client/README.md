@@ -35,7 +35,7 @@ This client provides high-level APIs to:
 
 - High-level Dart APIs over DIDComm for Atlas
 - Instance lifecycle: deploy, destroy, list, and metadata
-- Requests query for a deployed instance
+- Gets a list of requests from a deployed instance
 - Deployment and configuration updates
 
 ## Requirements
