@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('DeployMediatorInstanceOptions', () {
     test('should create options with required fields', () {
-      final options = DeployMediatorInstanceOptions(
+      final options = const DeployMediatorInstanceOptions(
         serviceSize: ServiceSize.tiny,
         mediatorAclMode: MediatorAclMode.explicitDeny,
       );
@@ -17,7 +17,7 @@ void main() {
     });
 
     test('should create options with all fields', () {
-      final options = DeployMediatorInstanceOptions(
+      final options = const DeployMediatorInstanceOptions(
         serviceSize: ServiceSize.small,
         mediatorAclMode: MediatorAclMode.explicitAllow,
         administratorDids: 'did:example:admin1,did:example:admin2',
@@ -34,7 +34,7 @@ void main() {
     });
 
     test('should serialize to JSON correctly with all fields', () {
-      final options = DeployMediatorInstanceOptions(
+      final options = const DeployMediatorInstanceOptions(
         serviceSize: ServiceSize.medium,
         mediatorAclMode: MediatorAclMode.explicitDeny,
         administratorDids: 'did:example:admin',
@@ -52,7 +52,7 @@ void main() {
     });
 
     test('should serialize to JSON without null fields', () {
-      final options = DeployMediatorInstanceOptions(
+      final options = const DeployMediatorInstanceOptions(
         serviceSize: ServiceSize.large,
         mediatorAclMode: MediatorAclMode.explicitAllow,
       );
@@ -118,7 +118,7 @@ void main() {
     });
 
     test('should round-trip through JSON', () {
-      final original = DeployMediatorInstanceOptions(
+      final original = const DeployMediatorInstanceOptions(
         serviceSize: ServiceSize.medium,
         mediatorAclMode: MediatorAclMode.explicitAllow,
         administratorDids: 'did:example:admin',

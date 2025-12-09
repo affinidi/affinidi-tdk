@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../service_size/service_size.dart';
 import '../deployment_state/deployment_state.dart';
 import '../deployment_status/deployment_status.dart';
+import '../service_size/service_size.dart';
 import '../service_type/service_type.dart';
 
 part 'tr_instance_metadata.g.dart';

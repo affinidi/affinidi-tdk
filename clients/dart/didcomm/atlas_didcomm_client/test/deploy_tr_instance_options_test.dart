@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('DeployTrInstanceOptions', () {
     test('should create options with all required fields', () {
-      final options = DeployTrInstanceOptions(
+      final options = const DeployTrInstanceOptions(
         serviceSize: ServiceSize.tiny,
         defaultMediatorDid: 'did:example:mediator',
         administratorDids: 'did:example:admin1,did:example:admin2',
@@ -22,7 +22,7 @@ void main() {
     });
 
     test('should create options with all fields including optional', () {
-      final options = DeployTrInstanceOptions(
+      final options = const DeployTrInstanceOptions(
         serviceSize: ServiceSize.small,
         defaultMediatorDid: 'did:example:mediator',
         administratorDids: 'did:example:admin',
@@ -40,7 +40,7 @@ void main() {
     });
 
     test('should serialize to JSON correctly with all fields', () {
-      final options = DeployTrInstanceOptions(
+      final options = const DeployTrInstanceOptions(
         serviceSize: ServiceSize.medium,
         defaultMediatorDid: 'did:example:mediator',
         administratorDids: 'did:example:admin',
@@ -60,7 +60,7 @@ void main() {
     });
 
     test('should serialize to JSON without null optional fields', () {
-      final options = DeployTrInstanceOptions(
+      final options = const DeployTrInstanceOptions(
         serviceSize: ServiceSize.large,
         defaultMediatorDid: 'did:example:mediator',
         administratorDids: 'did:example:admin',
@@ -137,7 +137,7 @@ void main() {
     });
 
     test('should round-trip through JSON', () {
-      final original = DeployTrInstanceOptions(
+      final original = const DeployTrInstanceOptions(
         serviceSize: ServiceSize.medium,
         defaultMediatorDid: 'did:example:mediator',
         administratorDids: 'did:example:admin1,did:example:admin2',
@@ -158,7 +158,7 @@ void main() {
     });
 
     test('should handle wildcard CORS origins', () {
-      final options = DeployTrInstanceOptions(
+      final options = const DeployTrInstanceOptions(
         serviceSize: ServiceSize.dev,
         defaultMediatorDid: 'did:example:mediator',
         administratorDids: 'did:example:admin',
