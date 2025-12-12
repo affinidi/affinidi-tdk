@@ -3,7 +3,6 @@ publish_to: none
 environment:
   sdk: ^3.6.0
 workspace:
-  - atm_client
   - didcomm_mediator_client
   - vdsp
   - vdip

@@ -102,18 +102,34 @@ class TestConfig {
   static String _getPackagePath({
     required String packageDirectoryName,
   }) {
-    final expectedPath = 'libs/dart/didcomm/$packageDirectoryName';
+    final expectedPaths = [
+      'libs/dart/didcomm/$packageDirectoryName',
+      'clients/dart/didcomm/$packageDirectoryName'
+    ];
 
-    if (Directory.current.path.endsWith(expectedPath)) {
-      return Directory.current.path;
+    for (final expectedPath in expectedPaths) {
+      if (Directory.current.path.endsWith(expectedPath)) {
+        return Directory.current.path;
+      }
     }
 
     // calling from integration tests folder
-    return path.normalize(
-      path.join(
-        Directory.current.path,
-        '../../../$expectedPath',
-      ),
+
+    for (final expectedPath in expectedPaths) {
+      final possiblePath = path.normalize(
+        path.join(
+          Directory.current.path,
+          '../../../$expectedPath',
+        ),
+      );
+
+      if (Directory(possiblePath).existsSync()) {
+        return possiblePath;
+      }
+    }
+
+    throw Exception(
+      'Could not determine package path for $packageDirectoryName.',
     );
   }
 
