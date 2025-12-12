@@ -136,6 +136,31 @@ void main() {
           equals('https://apse1.api.affinidi.io/cis'));
     });
 
+    test('Bridge Mediator DID values are correct', () {
+      expect(
+          Environment.fetchEnvironment(envType: envTypeLocal).bridgeMediatorDid,
+          equals('did:web:finance-union.mediator.affinidi.io'));
+      expect(
+          Environment.fetchEnvironment(envType: envTypeDev).bridgeMediatorDid,
+          equals('did:web:finance-union.mediator.affinidi.io'));
+      expect(
+          Environment.fetchEnvironment(envType: envTypeProd).bridgeMediatorDid,
+          equals('did:web:finance-union.mediator.affinidi.io'));
+      expect(Environment.fetchEnvironment().bridgeMediatorDid,
+          equals('did:web:finance-union.mediator.affinidi.io'));
+    });
+
+    test('Atlas DID values are correct', () {
+      expect(Environment.fetchEnvironment(envType: envTypeLocal).atlasDid,
+          equals('did:web:did.dev.affinidi.io:ama'));
+      expect(Environment.fetchEnvironment(envType: envTypeDev).atlasDid,
+          equals('did:web:did.dev.affinidi.io:ama'));
+      expect(Environment.fetchEnvironment(envType: envTypeProd).atlasDid,
+          equals('did:web:did.affinidi.io:ama'));
+      expect(Environment.fetchEnvironment().atlasDid,
+          equals('did:web:did.affinidi.io:ama'));
+    });
+
     test('Vault account audience URLs are correct', () {
       expect(Environment.fetchVaultAccountsAudienceUrl(local),
           equals('https://apse1.dev.api.affinidi.io/vfs/v1/accounts'));
