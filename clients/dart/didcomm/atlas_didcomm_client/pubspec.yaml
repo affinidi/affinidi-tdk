@@ -7,7 +7,9 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
-  affinidi_tdk_didcomm_mediator_client: ^1.0.0
+  affinidi_tdk_didcomm_mediator_client:
+    # temporary path until a new version of didcomm_mediator_client is published
+    path: ../../../../libs/dart/didcomm/didcomm_mediator_client
   crypto: ^3.0.6
   dcql: ^1.2.0
   json_annotation: ^4.9.0

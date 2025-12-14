@@ -66,12 +66,6 @@ class Environment {
   /// The URL of the Consumer CIS endpoint.
   final String consumerCisEndpoint;
 
-  /// The DID of the bridge's mediator.
-  final String bridgeMediatorDid;
-
-  /// The DID of the Atlas service.
-  final String atlasDid;
-
   /// The URL of the Vautl accounts audience.
   final String vaultAccountsAudienceEndpoint;
   const Environment._({
@@ -84,8 +78,6 @@ class Environment {
     required this.consumerAudienceEndpoint,
     required this.consumerCisEndpoint,
     required this.vaultAccountsAudienceEndpoint,
-    required this.bridgeMediatorDid,
-    required this.atlasDid,
   });
 
   /// The name of the environment variable that holds the current environment type.
@@ -134,8 +126,6 @@ class Environment {
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
               'https://$regionCode.dev.api.affinidi.io/vfs/v1/accounts',
-          bridgeMediatorDid: 'did:web:finance-union.mediator.affinidi.io',
-          atlasDid: 'did:web:did.dev.affinidi.io:ama',
         );
       case EnvironmentType.dev:
         return Environment._(
@@ -150,8 +140,6 @@ class Environment {
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
               'https://$regionCode.dev.api.affinidi.io/vfs/v1/accounts',
-          bridgeMediatorDid: 'did:web:finance-union.mediator.affinidi.io',
-          atlasDid: 'did:web:did.dev.affinidi.io:ama',
         );
       case EnvironmentType.prod:
         return Environment._(
@@ -166,8 +154,6 @@ class Environment {
           consumerCisEndpoint: _consumerCisEndpoint,
           vaultAccountsAudienceEndpoint:
               'https://$regionCode.api.affinidi.io/vfs/v1/accounts',
-          bridgeMediatorDid: 'did:web:finance-union.mediator.affinidi.io',
-          atlasDid: 'did:web:did.affinidi.io:ama',
         );
     }
   }
@@ -203,8 +189,6 @@ class Environment {
         consumerAudienceEndpoint: baseEnv.consumerAudienceEndpoint,
         consumerCisEndpoint: baseEnv.consumerCisEndpoint,
         vaultAccountsAudienceEndpoint: baseEnv.vaultAccountsAudienceEndpoint,
-        bridgeMediatorDid: baseEnv.bridgeMediatorDid,
-        atlasDid: baseEnv.atlasDid,
       );
     }
     return baseEnv;

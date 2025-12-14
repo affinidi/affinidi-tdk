@@ -14,8 +14,10 @@ class ClientOptions {
   /// Options for WebSocket connections.
   final WebSocketOptions webSocketOptions;
 
-  final String mediatorDid;
+  /// The DID of the bridge's mediator.
+  final String bridgeMediatorDid;
 
+  /// The DID of the Atlas service.
   final String atlasDid;
 
   /// Creates a [ClientOptions] instance.
@@ -29,9 +31,14 @@ class ClientOptions {
     this.messageExpiration = const Duration(minutes: 1),
     this.forwardMessageOptions = const ForwardMessageOptions(),
     this.webSocketOptions = const WebSocketOptions(),
-    this.mediatorDid =
-        'did:web:66a6ec69-0646-4a8d-ae08-94e959855fa9.atlas.affinidi.io',
-    this.atlasDid = 'did:web:did.dev.affinidi.io:ama',
+    this.bridgeMediatorDid = const String.fromEnvironment(
+      'AFFINIDI_BRIDGE_MEDIATOR_DID',
+      defaultValue: 'did:web:finance-union.mediator.affinidi.io',
+    ),
+    this.atlasDid = const String.fromEnvironment(
+      'AFFINIDI_ATLAS_DID',
+      defaultValue: 'did:web:did.affinidi.io:ama',
+    ),
   });
 }
 

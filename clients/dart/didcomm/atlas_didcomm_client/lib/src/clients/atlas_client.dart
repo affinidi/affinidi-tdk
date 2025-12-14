@@ -55,7 +55,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
   }) async {
     final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
       [
-        clientOptions.mediatorDid,
+        clientOptions.bridgeMediatorDid,
         clientOptions.atlasDid,
       ].map(UniversalDIDResolver.defaultResolver.resolveDid),
     );
