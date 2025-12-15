@@ -23,7 +23,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -36,6 +38,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   VerifyPresentationV2Input.JSON_PROPERTY_VERIFIABLE_PRESENTATION,
   VerifyPresentationV2Input.JSON_PROPERTY_PEX_QUERY,
+  VerifyPresentationV2Input.JSON_PROPERTY_DCQL_QUERY,
   VerifyPresentationV2Input.JSON_PROPERTY_CHALLENGE,
   VerifyPresentationV2Input.JSON_PROPERTY_DOMAIN
 })
@@ -48,6 +51,10 @@ public class VerifyPresentationV2Input {
   public static final String JSON_PROPERTY_PEX_QUERY = "pexQuery";
   @javax.annotation.Nullable
   private VerifyPresentationV2InputPexQuery pexQuery;
+
+  public static final String JSON_PROPERTY_DCQL_QUERY = "dcqlQuery";
+  @javax.annotation.Nullable
+  private Map<String, Object> dcqlQuery = new HashMap<>();
 
   public static final String JSON_PROPERTY_CHALLENGE = "challenge";
   @javax.annotation.Nullable
@@ -108,6 +115,39 @@ public class VerifyPresentationV2Input {
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPexQuery(@javax.annotation.Nullable VerifyPresentationV2InputPexQuery pexQuery) {
     this.pexQuery = pexQuery;
+  }
+
+  public VerifyPresentationV2Input dcqlQuery(@javax.annotation.Nullable Map<String, Object> dcqlQuery) {
+    
+    this.dcqlQuery = dcqlQuery;
+    return this;
+  }
+
+  public VerifyPresentationV2Input putDcqlQueryItem(String key, Object dcqlQueryItem) {
+    if (this.dcqlQuery == null) {
+      this.dcqlQuery = new HashMap<>();
+    }
+    this.dcqlQuery.put(key, dcqlQueryItem);
+    return this;
+  }
+
+  /**
+   * DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.
+   * @return dcqlQuery
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Map<String, Object> getDcqlQuery() {
+    return dcqlQuery;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDcqlQuery(@javax.annotation.Nullable Map<String, Object> dcqlQuery) {
+    this.dcqlQuery = dcqlQuery;
   }
 
   public VerifyPresentationV2Input challenge(@javax.annotation.Nullable String challenge) {
@@ -179,13 +219,14 @@ public class VerifyPresentationV2Input {
     VerifyPresentationV2Input verifyPresentationV2Input = (VerifyPresentationV2Input) o;
     return Objects.equals(this.verifiablePresentation, verifyPresentationV2Input.verifiablePresentation) &&
         Objects.equals(this.pexQuery, verifyPresentationV2Input.pexQuery) &&
+        Objects.equals(this.dcqlQuery, verifyPresentationV2Input.dcqlQuery) &&
         Objects.equals(this.challenge, verifyPresentationV2Input.challenge) &&
         Objects.equals(this.domain, verifyPresentationV2Input.domain);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(verifiablePresentation, pexQuery, challenge, domain);
+    return Objects.hash(verifiablePresentation, pexQuery, dcqlQuery, challenge, domain);
   }
 
   @Override
@@ -194,6 +235,7 @@ public class VerifyPresentationV2Input {
     sb.append("class VerifyPresentationV2Input {\n");
     sb.append("    verifiablePresentation: ").append(toIndentedString(verifiablePresentation)).append("\n");
     sb.append("    pexQuery: ").append(toIndentedString(pexQuery)).append("\n");
+    sb.append("    dcqlQuery: ").append(toIndentedString(dcqlQuery)).append("\n");
     sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("}");
@@ -256,6 +298,20 @@ public class VerifyPresentationV2Input {
     // add `pexQuery` to the URL query string
     if (getPexQuery() != null) {
       joiner.add(getPexQuery().toUrlQueryString(prefix + "pexQuery" + suffix));
+    }
+
+    // add `dcqlQuery` to the URL query string
+    if (getDcqlQuery() != null) {
+      for (String _key : getDcqlQuery().keySet()) {
+        try {
+          joiner.add(String.format("%sdcqlQuery%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+              getDcqlQuery().get(_key), URLEncoder.encode(String.valueOf(getDcqlQuery().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
+        } catch (UnsupportedEncodingException e) {
+          // Should never happen, UTF-8 is always supported
+          throw new RuntimeException(e);
+        }
+      }
     }
 
     // add `challenge` to the URL query string

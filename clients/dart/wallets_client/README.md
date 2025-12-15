@@ -80,6 +80,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [_RevocationApi_](doc/RevocationApi.md) | [**revokeCredential**](doc/RevocationApi.md#revokecredential)                           | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
 | [_RevocationApi_](doc/RevocationApi.md) | [**revokeCredentials**](doc/RevocationApi.md#revokecredentials)                         | **POST** /v2/wallets/{walletId}/credentials/revoke                                 | Revoke Credentials.                |
 | [_WalletApi_](doc/WalletApi.md)         | [**createWallet**](doc/WalletApi.md#createwallet)                                       | **POST** /v1/wallets                                                               |
+| [_WalletApi_](doc/WalletApi.md)         | [**createWalletV2**](doc/WalletApi.md#createwalletv2)                                   | **POST** /v2/wallets                                                               |
 | [_WalletApi_](doc/WalletApi.md)         | [**deleteWallet**](doc/WalletApi.md#deletewallet)                                       | **DELETE** /v1/wallets/{walletId}                                                  |
 | [_WalletApi_](doc/WalletApi.md)         | [**getWallet**](doc/WalletApi.md#getwallet)                                             | **GET** /v1/wallets/{walletId}                                                     |
 | [_WalletApi_](doc/WalletApi.md)         | [**listWallets**](doc/WalletApi.md#listwallets)                                         | **GET** /v1/wallets                                                                |
@@ -130,6 +131,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignPresentationLdpInputDto](doc/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](doc/SignPresentationLdpResultDto.md)
 - [SigningFailedError](doc/SigningFailedError.md)
+- [TooManyRequestsError](doc/TooManyRequestsError.md)
+- [UnpackMessageInput](doc/UnpackMessageInput.md)
+- [UnpackMessageResultDto](doc/UnpackMessageResultDto.md)
 - [UpdateWalletInput](doc/UpdateWalletInput.md)
 - [WalletDto](doc/WalletDto.md)
 - [WalletDtoKeysInner](doc/WalletDtoKeysInner.md)
