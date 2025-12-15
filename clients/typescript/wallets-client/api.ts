@@ -2111,10 +2111,12 @@ export const WalletApiAxiosParamCreator = function (
     },
     /**
      * Create v2 wallet
+     * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     createWalletV2: async (
+      createWalletV2Input?: CreateWalletV2Input,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v2/wallets`
@@ -2140,6 +2142,8 @@ export const WalletApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -2148,6 +2152,11 @@ export const WalletApiAxiosParamCreator = function (
         ...headersFromBaseOptions,
         ...options.headers,
       }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createWalletV2Input,
+        localVarRequestOptions,
+        configuration,
+      )
 
       return {
         url: toPathString(localVarUrlObj),
@@ -2818,10 +2827,12 @@ export const WalletApiFp = function (configuration?: Configuration) {
     },
     /**
      * Create v2 wallet
+     * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async createWalletV2(
+      createWalletV2Input?: CreateWalletV2Input,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (
@@ -2829,8 +2840,10 @@ export const WalletApiFp = function (configuration?: Configuration) {
         basePath?: string,
       ) => AxiosPromise<CreateWalletV2Response>
     > {
-      const localVarAxiosArgs =
-        await localVarAxiosParamCreator.createWalletV2(options)
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createWalletV2(
+        createWalletV2Input,
+        options,
+      )
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['WalletApi.createWalletV2']?.[
@@ -3204,6 +3217,20 @@ export const WalletApiFactory = function (
     },
     /**
      * Create v2 wallet
+     * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWalletV2(
+      createWalletV2Input?: CreateWalletV2Input,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<CreateWalletV2Response> {
+      return localVarFp
+        .createWalletV2(createWalletV2Input, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Create v2 wallet
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
@@ -3400,13 +3427,17 @@ export class WalletApi extends BaseAPI {
 
   /**
    * Create v2 wallet
+   * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof WalletApi
    */
-  public createWalletV2(options?: RawAxiosRequestConfig) {
+  public createWalletV2(
+    createWalletV2Input?: CreateWalletV2Input,
+    options?: RawAxiosRequestConfig,
+  ) {
     return WalletApiFp(this.configuration)
-      .createWalletV2(options)
+      .createWalletV2(createWalletV2Input, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

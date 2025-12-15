@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:affinidi_tdk_wallets_client/src/api_util.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_input.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_response.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_v2_input.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/create_wallet_v2_response.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_credential_input_dto.dart';
 import 'package:affinidi_tdk_wallets_client/src/model/sign_credential_result_dto.dart';
@@ -142,6 +143,7 @@ class WalletApi {
   /// Create v2 wallet
   ///
   /// Parameters:
+  /// * [createWalletV2Input] - CreateWallet
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -152,6 +154,7 @@ class WalletApi {
   /// Returns a [Future] containing a [Response] with a [CreateWalletV2Response] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<CreateWalletV2Response>> createWalletV2({
+    CreateWalletV2Input? createWalletV2Input,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -176,11 +179,32 @@ class WalletApi {
         ],
         ...?extra,
       },
+      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(CreateWalletV2Input);
+      _bodyData = createWalletV2Input == null
+          ? null
+          : _serializers.serialize(createWalletV2Input, specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
     final _response = await _dio.request<Object>(
       _path,
+      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,

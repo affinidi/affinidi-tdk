@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:affinidi_tdk_atm_client/affinidi_tdk_atm_client.dart';
-import 'package:affinidi_tdk_atm_client/src/messages/atlas/deploy_instance/deploy_instance_response_message.dart';
-import 'package:affinidi_tdk_atm_client/src/messages/atlas/get_instances_list/get_instances_list_response_message.dart';
-import 'package:affinidi_tdk_atm_client/src/models/mediator_instance_metadata/mediator_instance_metadata.dart';
+import 'package:affinidi_tdk_atlas_didcomm_client/affinidi_tdk_atlas_didcomm_client.dart';
+import 'package:affinidi_tdk_atlas_didcomm_client/src/messages/atlas/deploy_instance/deploy_instance_response_message.dart';
+import 'package:affinidi_tdk_atlas_didcomm_client/src/messages/atlas/get_instances_list/get_instances_list_response_message.dart';
+import 'package:affinidi_tdk_atlas_didcomm_client/src/models/mediator_instance_metadata/mediator_instance_metadata.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:crypto/crypto.dart';
 import 'package:ssi/ssi.dart';
@@ -15,7 +15,7 @@ Future<void> main() async {
   // openssl ecparam -name prime256v1 -genkey -noout -out example/keys/alice_private_key.pem
 
   final config = await TestConfig.configureTestFiles(
-    packageDirectoryName: 'atm_client',
+    packageDirectoryName: 'atlas_didcomm_client',
     skipMediator: true,
     skipBob: true,
   );

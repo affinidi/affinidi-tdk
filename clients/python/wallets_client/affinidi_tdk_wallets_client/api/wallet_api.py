@@ -26,6 +26,7 @@ from typing import Optional
 
 from affinidi_tdk_wallets_client.models.create_wallet_input import CreateWalletInput
 from affinidi_tdk_wallets_client.models.create_wallet_response import CreateWalletResponse
+from affinidi_tdk_wallets_client.models.create_wallet_v2_input import CreateWalletV2Input
 from affinidi_tdk_wallets_client.models.create_wallet_v2_response import CreateWalletV2Response
 from affinidi_tdk_wallets_client.models.sign_credential_input_dto import SignCredentialInputDto
 from affinidi_tdk_wallets_client.models.sign_credential_result_dto import SignCredentialResultDto
@@ -212,16 +213,18 @@ class WalletApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def create_wallet_v2(self, **kwargs) -> CreateWalletV2Response:  # noqa: E501
+    def create_wallet_v2(self, create_wallet_v2_input : Annotated[Optional[CreateWalletV2Input], Field(description="CreateWallet")] = None, **kwargs) -> CreateWalletV2Response:  # noqa: E501
         """create_wallet_v2  # noqa: E501
 
         Create v2 wallet  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_wallet_v2(async_req=True)
+        >>> thread = api.create_wallet_v2(create_wallet_v2_input, async_req=True)
         >>> result = thread.get()
 
+        :param create_wallet_v2_input: CreateWallet
+        :type create_wallet_v2_input: CreateWalletV2Input
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -237,19 +240,21 @@ class WalletApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the create_wallet_v2_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.create_wallet_v2_with_http_info(**kwargs)  # noqa: E501
+        return self.create_wallet_v2_with_http_info(create_wallet_v2_input, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def create_wallet_v2_with_http_info(self, **kwargs) -> ApiResponse:  # noqa: E501
+    def create_wallet_v2_with_http_info(self, create_wallet_v2_input : Annotated[Optional[CreateWalletV2Input], Field(description="CreateWallet")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """create_wallet_v2  # noqa: E501
 
         Create v2 wallet  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.create_wallet_v2_with_http_info(async_req=True)
+        >>> thread = api.create_wallet_v2_with_http_info(create_wallet_v2_input, async_req=True)
         >>> result = thread.get()
 
+        :param create_wallet_v2_input: CreateWallet
+        :type create_wallet_v2_input: CreateWalletV2Input
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -278,6 +283,7 @@ class WalletApi:
         _params = locals()
 
         _all_params = [
+            'create_wallet_v2_input'
         ]
         _all_params.extend(
             [
@@ -315,9 +321,19 @@ class WalletApi:
         _files = {}
         # process the body parameter
         _body_params = None
+        if _params['create_wallet_v2_input'] is not None:
+            _body_params = _params['create_wallet_v2_input']
+
         # set the HTTP header `Accept`
         _header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
 
         # authentication setting
         _auth_settings = ['ProjectTokenAuth']  # noqa: E501

@@ -89,6 +89,76 @@ public class Example {
 
 ## createWalletV2
 
+> CreateWalletV2Response createWalletV2(createWalletV2Input)
+
+Create v2 wallet
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        CreateWalletV2Input createWalletV2Input = new CreateWalletV2Input(); // CreateWalletV2Input | CreateWallet
+        try {
+            CreateWalletV2Response result = apiInstance.createWalletV2(createWalletV2Input);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#createWalletV2");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                    | Type                                              | Description  | Notes      |
+| ----------------------- | ------------------------------------------------- | ------------ | ---------- |
+| **createWalletV2Input** | [**CreateWalletV2Input**](CreateWalletV2Input.md) | CreateWallet | [optional] |
+
+### Return type
+
+[**CreateWalletV2Response**](CreateWalletV2Response.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description    | Response headers |
+| ----------- | -------------- | ---------------- |
+| **201**     | OK             | -                |
+| **403**     | ForbiddenError | -                |
+
+## createWalletV2
+
 > CreateWalletV2Response createWalletV2()
 
 Create v2 wallet

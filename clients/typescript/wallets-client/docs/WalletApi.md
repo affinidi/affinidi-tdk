@@ -77,17 +77,25 @@ Create v2 wallet
 ### Example
 
 ```typescript
-import { WalletApi, Configuration } from '@affinidi-tdk/wallets-client'
+import {
+  WalletApi,
+  Configuration,
+  CreateWalletV2Input,
+} from '@affinidi-tdk/wallets-client'
 
 const configuration = new Configuration()
 const apiInstance = new WalletApi(configuration)
 
-const { status, data } = await apiInstance.createWalletV2()
+let createWalletV2Input: CreateWalletV2Input //CreateWallet (optional)
+
+const { status, data } = await apiInstance.createWalletV2(createWalletV2Input)
 ```
 
 ### Parameters
 
-This endpoint does not have any parameters.
+| Name                    | Type                    | Description  | Notes |
+| ----------------------- | ----------------------- | ------------ | ----- |
+| **createWalletV2Input** | **CreateWalletV2Input** | CreateWallet |       |
 
 ### Return type
 
@@ -99,7 +107,7 @@ This endpoint does not have any parameters.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ### HTTP response details

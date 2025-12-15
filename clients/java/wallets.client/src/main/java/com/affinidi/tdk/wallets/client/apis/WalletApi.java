@@ -22,6 +22,7 @@ import com.affinidi.tdk.wallets.client.Pair;
 
 import com.affinidi.tdk.wallets.client.models.CreateWalletInput;
 import com.affinidi.tdk.wallets.client.models.CreateWalletResponse;
+import com.affinidi.tdk.wallets.client.models.CreateWalletV2Input;
 import com.affinidi.tdk.wallets.client.models.CreateWalletV2Response;
 import com.affinidi.tdk.wallets.client.models.InvalidParameterError;
 import com.affinidi.tdk.wallets.client.models.NotFoundError;
@@ -64,7 +65,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * creates a wallet
    * @param createWalletInput CreateWallet (optional)
    * @return CreateWalletResponse
@@ -76,7 +77,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * creates a wallet
    * @param createWalletInput CreateWallet (optional)
    * @param additionalHeaders additionalHeaders for this call
@@ -85,7 +86,7 @@ public class WalletApi extends BaseApi {
    */
   public CreateWalletResponse createWallet(@javax.annotation.Nullable CreateWalletInput createWalletInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createWalletInput;
-    
+
     // create path and map variables
     String localVarPath = "/v1/wallets";
 
@@ -97,11 +98,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -133,26 +134,28 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * Create v2 wallet
+   * @param createWalletV2Input CreateWallet (optional)
    * @return CreateWalletV2Response
    * @throws ApiException if fails to make API call
    */
-  public CreateWalletV2Response createWalletV2() throws ApiException {
-    return this.createWalletV2(Collections.emptyMap());
+  public CreateWalletV2Response createWalletV2(@javax.annotation.Nullable CreateWalletV2Input createWalletV2Input) throws ApiException {
+    return this.createWalletV2(createWalletV2Input, Collections.emptyMap());
   }
 
 
   /**
-   * 
+   *
    * Create v2 wallet
+   * @param createWalletV2Input CreateWallet (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return CreateWalletV2Response
    * @throws ApiException if fails to make API call
    */
-  public CreateWalletV2Response createWalletV2(Map<String, String> additionalHeaders) throws ApiException {
-    Object localVarPostBody = null;
-    
+  public CreateWalletV2Response createWalletV2(@javax.annotation.Nullable CreateWalletV2Input createWalletV2Input, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createWalletV2Input;
+
     // create path and map variables
     String localVarPath = "/v2/wallets";
 
@@ -164,18 +167,18 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -200,7 +203,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * delete wallet by walletId
    * @param walletId id of the wallet (required)
    * @throws ApiException if fails to make API call
@@ -211,7 +214,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * delete wallet by walletId
    * @param walletId id of the wallet (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -219,12 +222,12 @@ public class WalletApi extends BaseApi {
    */
   public void deleteWallet(@javax.annotation.Nonnull String walletId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling deleteWallet");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v1/wallets/{walletId}"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -237,18 +240,18 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
-      
+
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -272,7 +275,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * get wallet details using wallet Id.
    * @param walletId id of the wallet (required)
    * @return WalletDto
@@ -284,7 +287,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * get wallet details using wallet Id.
    * @param walletId id of the wallet (required)
    * @param additionalHeaders additionalHeaders for this call
@@ -293,12 +296,12 @@ public class WalletApi extends BaseApi {
    */
   public WalletDto getWallet(@javax.annotation.Nonnull String walletId, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling getWallet");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v1/wallets/{walletId}"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -311,18 +314,18 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -347,7 +350,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * lists all wallets
    * @param didType  (optional)
    * @return WalletsListDto
@@ -359,7 +362,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * lists all wallets
    * @param didType  (optional)
    * @param additionalHeaders additionalHeaders for this call
@@ -368,7 +371,7 @@ public class WalletApi extends BaseApi {
    */
   public WalletsListDto listWallets(@javax.annotation.Nullable String didType, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
-    
+
     // create path and map variables
     String localVarPath = "/v1/wallets";
 
@@ -381,18 +384,18 @@ public class WalletApi extends BaseApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPair("didType", didType));
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -417,7 +420,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * signs credential with the wallet
    * @param walletId id of the wallet (required)
    * @param signCredentialInputDto SignCredential (required)
@@ -430,7 +433,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * signs credential with the wallet
    * @param walletId id of the wallet (required)
    * @param signCredentialInputDto SignCredential (required)
@@ -440,17 +443,17 @@ public class WalletApi extends BaseApi {
    */
   public SignCredentialResultDto signCredential(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignCredentialInputDto signCredentialInputDto, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signCredentialInputDto;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling signCredential");
     }
-    
+
     // verify the required parameter 'signCredentialInputDto' is set
     if (signCredentialInputDto == null) {
       throw new ApiException(400, "Missing the required parameter 'signCredentialInputDto' when calling signCredential");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v1/wallets/{walletId}/sign-credential"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -463,11 +466,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -499,7 +502,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * signs credential with the wallet v2
    * @param walletId id of the wallet (required)
    * @param signCredentialsJwtInputDto signCredentialsJwt (required)
@@ -512,7 +515,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * signs credential with the wallet v2
    * @param walletId id of the wallet (required)
    * @param signCredentialsJwtInputDto signCredentialsJwt (required)
@@ -522,17 +525,17 @@ public class WalletApi extends BaseApi {
    */
   public SignCredentialsJwtResultDto signCredentialsJwt(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignCredentialsJwtInputDto signCredentialsJwtInputDto, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signCredentialsJwtInputDto;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling signCredentialsJwt");
     }
-    
+
     // verify the required parameter 'signCredentialsJwtInputDto' is set
     if (signCredentialsJwtInputDto == null) {
       throw new ApiException(400, "Missing the required parameter 'signCredentialsJwtInputDto' when calling signCredentialsJwt");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v2/wallets/{walletId}/credentials/jwt/sign"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -545,11 +548,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -581,7 +584,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * signs credential with the wallet v2
    * @param walletId id of the wallet (required)
    * @param signCredentialsLdpInputDto signCredentialsLdp (required)
@@ -594,7 +597,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * signs credential with the wallet v2
    * @param walletId id of the wallet (required)
    * @param signCredentialsLdpInputDto signCredentialsLdp (required)
@@ -604,17 +607,17 @@ public class WalletApi extends BaseApi {
    */
   public SignCredentialsLdpResultDto signCredentialsLdp(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignCredentialsLdpInputDto signCredentialsLdpInputDto, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signCredentialsLdpInputDto;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling signCredentialsLdp");
     }
-    
+
     // verify the required parameter 'signCredentialsLdpInputDto' is set
     if (signCredentialsLdpInputDto == null) {
       throw new ApiException(400, "Missing the required parameter 'signCredentialsLdpInputDto' when calling signCredentialsLdp");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v2/wallets/{walletId}/credentials/ldp/sign"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -627,11 +630,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -663,7 +666,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * signs credential with the wallet v2
    * @param walletId id of the wallet (required)
    * @param signCredentialsDm2SdJwtInputDto SignCredentialsDm1SdJwt (required)
@@ -676,7 +679,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * signs credential with the wallet v2
    * @param walletId id of the wallet (required)
    * @param signCredentialsDm2SdJwtInputDto SignCredentialsDm1SdJwt (required)
@@ -686,17 +689,17 @@ public class WalletApi extends BaseApi {
    */
   public SignCredentialsDm2SdJwtResultDto signCredentialsSdJwt(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignCredentialsDm2SdJwtInputDto signCredentialsDm2SdJwtInputDto, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signCredentialsDm2SdJwtInputDto;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling signCredentialsSdJwt");
     }
-    
+
     // verify the required parameter 'signCredentialsDm2SdJwtInputDto' is set
     if (signCredentialsDm2SdJwtInputDto == null) {
       throw new ApiException(400, "Missing the required parameter 'signCredentialsDm2SdJwtInputDto' when calling signCredentialsSdJwt");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v2/wallets/{walletId}/credentials/sd-jwt/sign"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -709,11 +712,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -745,7 +748,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * signs a jwt token with the wallet
    * @param walletId id of the wallet. (required)
    * @param signJwtToken SignJwtToken (required)
@@ -758,7 +761,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * signs a jwt token with the wallet
    * @param walletId id of the wallet. (required)
    * @param signJwtToken SignJwtToken (required)
@@ -768,17 +771,17 @@ public class WalletApi extends BaseApi {
    */
   public SignJwtTokenOK signJwtToken(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignJwtToken signJwtToken, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signJwtToken;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling signJwtToken");
     }
-    
+
     // verify the required parameter 'signJwtToken' is set
     if (signJwtToken == null) {
       throw new ApiException(400, "Missing the required parameter 'signJwtToken' when calling signJwtToken");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v1/wallets/{walletId}/sign-jwt"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -791,11 +794,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -827,7 +830,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * signs presentation with the wallet
    * @param walletId id of the wallet (required)
    * @param signPresentationLdpInputDto signPresentationLdp (required)
@@ -840,7 +843,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * signs presentation with the wallet
    * @param walletId id of the wallet (required)
    * @param signPresentationLdpInputDto signPresentationLdp (required)
@@ -850,17 +853,17 @@ public class WalletApi extends BaseApi {
    */
   public SignPresentationLdpResultDto signPresentationsLdp(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignPresentationLdpInputDto signPresentationLdpInputDto, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = signPresentationLdpInputDto;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling signPresentationsLdp");
     }
-    
+
     // verify the required parameter 'signPresentationLdpInputDto' is set
     if (signPresentationLdpInputDto == null) {
       throw new ApiException(400, "Missing the required parameter 'signPresentationLdpInputDto' when calling signPresentationsLdp");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v2/wallets/{walletId}/presentations/ldp/sign"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -873,11 +876,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -909,7 +912,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   * 
+   *
    * update wallet details using wallet Id.
    * @param walletId id of the wallet (required)
    * @param updateWalletInput UpdateWallet (required)
@@ -922,7 +925,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   * 
+   *
    * update wallet details using wallet Id.
    * @param walletId id of the wallet (required)
    * @param updateWalletInput UpdateWallet (required)
@@ -932,17 +935,17 @@ public class WalletApi extends BaseApi {
    */
   public WalletDto updateWallet(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull UpdateWalletInput updateWalletInput, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = updateWalletInput;
-    
+
     // verify the required parameter 'walletId' is set
     if (walletId == null) {
       throw new ApiException(400, "Missing the required parameter 'walletId' when calling updateWallet");
     }
-    
+
     // verify the required parameter 'updateWalletInput' is set
     if (updateWalletInput == null) {
       throw new ApiException(400, "Missing the required parameter 'updateWalletInput' when calling updateWallet");
     }
-    
+
     // create path and map variables
     String localVarPath = "/v1/wallets/{walletId}"
       .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
@@ -955,11 +958,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    
+
     localVarHeaderParams.putAll(additionalHeaders);
 
-    
-    
+
+
     final String[] localVarAccepts = {
       "application/json"
     };
