@@ -53,12 +53,16 @@ class DidcommAtlasClient extends DidcommServiceClient {
     AuthorizationProvider? authorizationProvider,
     AffinidiClientOptions clientOptions = const AffinidiClientOptions(),
   }) async {
-    final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
-      [
-        clientOptions.bridgeMediatorDid,
-        clientOptions.atlasDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
+    final atlasDidDocument = await UniversalDIDResolver.defaultResolver
+        .resolveDid(clientOptions.atlasDid);
+
+    final mediatorService = atlasDidDocument.service
+        .firstWhere((service) => service.type == 'DIDCommMessaging');
+
+    final mediatorDid = mediatorService.id.split('#').first;
+
+    final mediatorDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(mediatorDid);
 
     final mediatorClient = await DidcommMediatorClient.init(
       didManager: didManager,
