@@ -16,6 +16,7 @@ part 'verify_presentation_v2_input.g.dart';
 /// Properties:
 /// * [verifiablePresentation]
 /// * [pexQuery]
+/// * [dcqlQuery] - DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.
 /// * [challenge] - Optional challenge string for domain/challenge verification
 /// * [domain] - Optional domain for verification. Array of domain strings as per W3C VP standard
 @BuiltValue()
@@ -27,6 +28,10 @@ abstract class VerifyPresentationV2Input
 
   @BuiltValueField(wireName: r'pexQuery')
   VerifyPresentationV2InputPexQuery? get pexQuery;
+
+  /// DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.
+  @BuiltValueField(wireName: r'dcqlQuery')
+  BuiltMap<String, JsonObject?>? get dcqlQuery;
 
   /// Optional challenge string for domain/challenge verification
   @BuiltValueField(wireName: r'challenge')
@@ -78,6 +83,14 @@ class _$VerifyPresentationV2InputSerializer
       yield serializers.serialize(
         object.pexQuery,
         specifiedType: const FullType(VerifyPresentationV2InputPexQuery),
+      );
+    }
+    if (object.dcqlQuery != null) {
+      yield r'dcqlQuery';
+      yield serializers.serialize(
+        object.dcqlQuery,
+        specifiedType: const FullType(
+            BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
     if (object.challenge != null) {
@@ -132,6 +145,14 @@ class _$VerifyPresentationV2InputSerializer
             specifiedType: const FullType(VerifyPresentationV2InputPexQuery),
           ) as VerifyPresentationV2InputPexQuery;
           result.pexQuery.replace(valueDes);
+          break;
+        case r'dcqlQuery':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(
+                BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.dcqlQuery.replace(valueDes);
           break;
         case r'challenge':
           final valueDes = serializers.deserialize(
