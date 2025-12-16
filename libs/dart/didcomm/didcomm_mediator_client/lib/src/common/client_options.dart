@@ -14,9 +14,6 @@ class ClientOptions {
   /// Options for WebSocket connections.
   final WebSocketOptions webSocketOptions;
 
-  /// The DID of the Atlas service.
-  final String atlasDid;
-
   /// Creates a [ClientOptions] instance.
   ///
   /// [requestTimeout] sets the maximum duration for requests.
@@ -28,10 +25,6 @@ class ClientOptions {
     this.messageExpiration = const Duration(minutes: 1),
     this.forwardMessageOptions = const ForwardMessageOptions(),
     this.webSocketOptions = const WebSocketOptions(),
-    this.atlasDid = const String.fromEnvironment(
-      'AFFINIDI_ATLAS_DID',
-      defaultValue: 'did:web:did.affinidi.io:ama',
-    ),
   });
 }
 

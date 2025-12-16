@@ -31,6 +31,11 @@ import 'service_client.dart';
 
 /// DIDComm client for interacting with the Affinidi Atlas service.
 class DidcommAtlasClient extends DidcommServiceClient {
+  static final atlasDid = const String.fromEnvironment(
+    'AFFINIDI_ATLAS_DID',
+    defaultValue: 'did:web:did.affinidi.io:ama',
+  );
+
   /// Creates a [DidcommAtlasClient] instance.
   DidcommAtlasClient({
     required super.didManager,
@@ -53,9 +58,10 @@ class DidcommAtlasClient extends DidcommServiceClient {
     AuthorizationProvider? authorizationProvider,
     AffinidiClientOptions clientOptions = const AffinidiClientOptions(),
   }) async {
-    final atlasDidDocument = await UniversalDIDResolver.defaultResolver
-        .resolveDid(clientOptions.atlasDid);
+    final atlasDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(atlasDid);
 
+    // TODO: add enum instead of hardcoding service type
     final mediatorService = atlasDidDocument.service
         .firstWhere((service) => service.type == 'DIDCommMessaging');
 
