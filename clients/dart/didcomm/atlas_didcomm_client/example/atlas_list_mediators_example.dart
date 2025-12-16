@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:affinidi_tdk_atlas_didcomm_client/affinidi_tdk_atlas_didcomm_client.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
@@ -44,13 +46,15 @@ Future<void> main() async {
         const AffinidiClientOptions(requestTimeout: Duration(minutes: 5)),
   );
 
+  prettyPrint('Atlas DID', object: DidcommAtlasClient.atlasDid);
+
   await ConnectionPool.instance.startConnections();
 
-  final existingInstances = await atlasClient.getMediatorInstancesList();
+  final instances = await atlasClient.getMediatorInstancesList();
 
   prettyPrint(
-    'mediators',
-    object: existingInstances,
+    'Mediators',
+    object: instances,
   );
 
   await ConnectionPool.instance.stopConnections();

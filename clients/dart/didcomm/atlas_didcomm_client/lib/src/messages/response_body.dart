@@ -30,7 +30,7 @@ class ResponseBody {
     normalizedJson['response'] = _normalizeResponse(json['response']);
     return _$ResponseBodyFromJson(normalizedJson);
   }
-   
+
   /// Converts this ResponseBody to a JSON map.
   Map<String, dynamic> toJson() => _$ResponseBodyToJson(this);
 

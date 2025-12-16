@@ -31,6 +31,17 @@ import 'service_client.dart';
 
 /// DIDComm client for interacting with the Affinidi Atlas service.
 class DidcommAtlasClient extends DidcommServiceClient {
+  /// The DID for the Atlas service.
+  ///
+  /// Override at compile time by defining `AFFINIDI_ATLAS_DID`:
+  /// - Dart: `dart run -D AFFINIDI_ATLAS_DID=<did>`
+  /// - Flutter: `flutter run --dart-define=AFFINIDI_ATLAS_DID=<did>`
+  /// If not set, defaults to `did:web:did.affinidi.io:ama`.
+  static final atlasDid = const String.fromEnvironment(
+    'AFFINIDI_ATLAS_DID',
+    defaultValue: 'did:web:did.affinidi.io:ama',
+  );
+
   /// Creates a [DidcommAtlasClient] instance.
   DidcommAtlasClient({
     required super.didManager,
@@ -53,12 +64,17 @@ class DidcommAtlasClient extends DidcommServiceClient {
     AuthorizationProvider? authorizationProvider,
     AffinidiClientOptions clientOptions = const AffinidiClientOptions(),
   }) async {
-    final [mediatorDidDocument, atlasDidDocument] = await Future.wait(
-      [
-        clientOptions.mediatorDid,
-        clientOptions.atlasDid,
-      ].map(UniversalDIDResolver.defaultResolver.resolveDid),
-    );
+    final atlasDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(atlasDid);
+
+    // TODO: add enum instead of hardcoding service type
+    final mediatorService = atlasDidDocument.service
+        .firstWhere((service) => service.type == 'DIDCommMessaging');
+
+    final mediatorDid = mediatorService.id.split('#').first;
+
+    final mediatorDidDocument =
+        await UniversalDIDResolver.defaultResolver.resolveDid(mediatorDid);
 
     final mediatorClient = await DidcommMediatorClient.init(
       didManager: didManager,

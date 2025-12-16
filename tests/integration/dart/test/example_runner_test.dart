@@ -30,7 +30,6 @@ void main() async {
           final result = await Process.run(
             Platform.resolvedExecutable,
             ['pub', 'get'],
-            runInShell: true,
             workingDirectory: config.packagePath,
           );
 
@@ -83,11 +82,27 @@ void main() async {
 
             final errors = <String>[];
 
+            final compileKeys = [
+              'AFFINIDI_ATLAS_DID',
+            ];
+
+            final compileConfigs = Platform.environment.keys
+                .where((key) => compileKeys.contains(key))
+                .map(
+                  (key) => '--define=$key=${Platform.environment[key]}',
+                );
+
+            print('compileConfigs:');
+            print(compileConfigs);
+
             for (final file in filesWithMain) {
               final result = await Process.run(
                 Platform.resolvedExecutable,
-                [file.path],
-                runInShell: true,
+                [
+                  'run',
+                  ...compileConfigs,
+                  file.path,
+                ],
               );
 
               if (result.exitCode != 0) {

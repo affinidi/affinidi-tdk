@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('UpdateMediatorInstanceDeploymentOptions', () {
     test('should create empty options with all fields null', () {
-      final options = UpdateMediatorInstanceDeploymentOptions();
+      final options = const UpdateMediatorInstanceDeploymentOptions();
 
       expect(options.serviceSize, isNull);
       expect(options.mediatorAclMode, isNull);
@@ -13,7 +13,7 @@ void main() {
     });
 
     test('should create options with only serviceSize', () {
-      final options = UpdateMediatorInstanceDeploymentOptions(
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         serviceSize: ServiceSize.medium,
       );
 
@@ -24,7 +24,7 @@ void main() {
     });
 
     test('should create options with only mediatorAclMode', () {
-      final options = UpdateMediatorInstanceDeploymentOptions(
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         mediatorAclMode: MediatorAclMode.explicitAllow,
       );
 
@@ -35,7 +35,7 @@ void main() {
     });
 
     test('should create options with all fields', () {
-      final options = UpdateMediatorInstanceDeploymentOptions(
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         serviceSize: ServiceSize.large,
         mediatorAclMode: MediatorAclMode.explicitDeny,
         name: 'Updated Mediator',
@@ -49,7 +49,7 @@ void main() {
     });
 
     test('should serialize to JSON with only non-null fields', () {
-      final options = UpdateMediatorInstanceDeploymentOptions(
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         serviceSize: ServiceSize.small,
         name: 'Updated Name',
       );
@@ -63,7 +63,7 @@ void main() {
     });
 
     test('should serialize to JSON with all fields', () {
-      final options = UpdateMediatorInstanceDeploymentOptions(
+      final options = const UpdateMediatorInstanceDeploymentOptions(
         serviceSize: ServiceSize.tiny,
         mediatorAclMode: MediatorAclMode.explicitAllow,
         name: 'Test',
@@ -117,7 +117,7 @@ void main() {
     });
 
     test('should round-trip through JSON', () {
-      final original = UpdateMediatorInstanceDeploymentOptions(
+      final original = const UpdateMediatorInstanceDeploymentOptions(
         serviceSize: ServiceSize.dev,
         mediatorAclMode: MediatorAclMode.explicitAllow,
         name: 'Round-trip test',
@@ -136,7 +136,7 @@ void main() {
 
     test('should support partial updates scenario', () {
       // Simulate updating only name and description, keeping size and ACL mode unchanged
-      final updateOptions = UpdateMediatorInstanceDeploymentOptions(
+      final updateOptions = const UpdateMediatorInstanceDeploymentOptions(
         name: 'New Name',
         description: 'New Description',
       );
