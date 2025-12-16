@@ -47,7 +47,6 @@ Future<void> main() async {
   );
 
   prettyPrint('Atlas DID', object: DidcommAtlasClient.atlasDid);
-  prettyPrint('Atlas DID', object: Platform.environment);
 
   await ConnectionPool.instance.startConnections();
 

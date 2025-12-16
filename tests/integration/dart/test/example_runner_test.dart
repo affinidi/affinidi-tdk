@@ -85,8 +85,14 @@ void main() async {
             for (final file in filesWithMain) {
               final result = await Process.run(
                 Platform.resolvedExecutable,
-                [file.path],
-                environment: Platform.environment,
+                [
+                  'run',
+                  file.path,
+                  ...Platform.environment.keys
+                      .where((key) => key.startsWith('AFFINIDI_'))
+                      .map((key) =>
+                          '--dart-define=$key=${Platform.environment[key]}'),
+                ],
               );
 
               if (result.exitCode != 0) {
