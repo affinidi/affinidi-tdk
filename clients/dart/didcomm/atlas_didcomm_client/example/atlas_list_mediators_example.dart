@@ -44,13 +44,15 @@ Future<void> main() async {
         const AffinidiClientOptions(requestTimeout: Duration(minutes: 5)),
   );
 
+  prettyPrint('Atlas DID:', object: DidcommAtlasClient.atlasDid);
+
   await ConnectionPool.instance.startConnections();
 
-  final existingInstances = await atlasClient.getMediatorInstancesList();
+  final instances = await atlasClient.getMediatorInstancesList();
 
   prettyPrint(
-    'mediators',
-    object: existingInstances,
+    'Mediators',
+    object: instances,
   );
 
   await ConnectionPool.instance.stopConnections();

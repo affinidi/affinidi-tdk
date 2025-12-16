@@ -31,6 +31,8 @@ import 'service_client.dart';
 
 /// DIDComm client for interacting with the Affinidi Atlas service.
 class DidcommAtlasClient extends DidcommServiceClient {
+  /// The DID for the Atlas service.
+  /// Can be overridden using the `AFFINIDI_ATLAS_DID` environment variable.
   static final atlasDid = const String.fromEnvironment(
     'AFFINIDI_ATLAS_DID',
     defaultValue: 'did:web:did.affinidi.io:ama',
