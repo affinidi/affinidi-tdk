@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:affinidi_tdk_atlas_didcomm_client/affinidi_tdk_atlas_didcomm_client.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:ssi/ssi.dart';
@@ -45,6 +47,7 @@ Future<void> main() async {
   );
 
   prettyPrint('Atlas DID', object: DidcommAtlasClient.atlasDid);
+  prettyPrint('Atlas DID', object: Platform.environment);
 
   await ConnectionPool.instance.startConnections();
 
