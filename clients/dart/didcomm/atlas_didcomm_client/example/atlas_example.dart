@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:affinidi_tdk_atlas_didcomm_client/affinidi_tdk_atlas_didcomm_client.dart';
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
@@ -46,7 +47,17 @@ Future<void> main() async {
 
   prettyPrint('Checking if there are deployed mediators...');
 
-  final existingInstances = await atlasClient.getMediatorInstancesList();
+  final existingInstances =
+      await atlasClient.getMediatorInstancesList().catchError(
+    (Object error) {
+      prettyPrint(
+        'Error while listing mediators',
+        object: error,
+      );
+
+      exit(1);
+    },
+  );
 
   if (existingInstances.instances.isNotEmpty) {
     prettyPrint('Cleaning previously deployed mediators...');

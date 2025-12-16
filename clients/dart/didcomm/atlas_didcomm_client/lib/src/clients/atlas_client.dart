@@ -118,7 +118,20 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-    );
+    ).catchError((Object error) {
+      if (error is ProblemReportMessage && error.body != null) {
+        final body = ProblemReportBody.fromJson(error.body!);
+
+        if (const ProblemCodeConverter().toJson(body.code) ==
+            'e.msg.forbidden') {
+          // ignore: only_throw_errors
+          throw 'To access Affinidi Atlas via the TDK Atlas Client, you need to complete onboarding for the beta testing group. Kindly send an email to TBD@affinidi.com and include your DID: ${error.to!.first}.';
+        }
+      }
+
+      // ignore: only_throw_errors
+      throw error;
+    });
 
     return GetMediatorInstancesListResponseMessage(
       id: responseMessage.id,

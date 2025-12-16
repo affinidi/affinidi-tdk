@@ -1,5 +1,7 @@
 # Affinidi Atlas DIDComm Client for Dart
 
+> IMPORTANT: This package is in open beta. Please run any file in the `/example` folder and follow the instructions.
+
 A Dart client for interacting with Affinidi Atlas over DIDComm v2.1. It enables secure, end-to-end encrypted management of Atlas services using DID-based identities and message flows.
 
 This client provides high-level APIs to:
