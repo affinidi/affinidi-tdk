@@ -86,7 +86,6 @@ void main() async {
               final result = await Process.run(
                 Platform.resolvedExecutable,
                 [file.path],
-                runInShell: true,
               );
 
               if (result.exitCode != 0) {
