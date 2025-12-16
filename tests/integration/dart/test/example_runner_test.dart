@@ -82,16 +82,26 @@ void main() async {
 
             final errors = <String>[];
 
+            final compileKeys = [
+              'AFFINIDI_ATLAS_DID',
+            ];
+
+            final compileConfigs = Platform.environment.keys
+                .where((key) => compileKeys.contains(key))
+                .map(
+                  (key) => '--define=$key=${Platform.environment[key]}',
+                );
+
+            print('compileConfigs:');
+            print(compileConfigs);
+
             for (final file in filesWithMain) {
               final result = await Process.run(
                 Platform.resolvedExecutable,
                 [
                   'run',
+                  ...compileConfigs,
                   file.path,
-                  ...Platform.environment.keys
-                      .where((key) => key.startsWith('AFFINIDI_'))
-                      .map((key) =>
-                          '--dart-define=$key=${Platform.environment[key]}'),
                 ],
               );
 
