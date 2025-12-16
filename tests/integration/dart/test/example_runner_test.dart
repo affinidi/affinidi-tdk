@@ -30,7 +30,6 @@ void main() async {
           final result = await Process.run(
             Platform.resolvedExecutable,
             ['pub', 'get'],
-            runInShell: true,
             workingDirectory: config.packagePath,
           );
 

@@ -44,7 +44,7 @@ Future<void> main() async {
         const AffinidiClientOptions(requestTimeout: Duration(minutes: 5)),
   );
 
-  prettyPrint('Atlas DID:', object: DidcommAtlasClient.atlasDid);
+  prettyPrint('Atlas DID', object: DidcommAtlasClient.atlasDid);
 
   await ConnectionPool.instance.startConnections();
 
