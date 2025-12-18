@@ -125,7 +125,7 @@ class DidcommAtlasClient extends DidcommServiceClient {
         if (const ProblemCodeConverter().toJson(body.code) ==
             'e.msg.forbidden') {
           // ignore: only_throw_errors
-          throw 'To access Affinidi Atlas via the TDK Atlas Client, you need to complete onboarding for the beta testing group. Kindly <TBD> and include your DID: ${error.to!.first}.';
+          throw 'This feature is currently in closed beta and not enabled for your account. Submit a closed beta registration form with your DID (${error.to!.first}) at https://share.hsforms.com/1ayUlp606Qt27QDiiipff0g8oa2v to request access.';
         }
       }
 
