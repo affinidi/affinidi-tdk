@@ -11,6 +11,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | Method                                                        | HTTP request                                            | Description |
 | ------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
 | [**createWallet**](WalletApi.md#createwallet)                 | **POST** /v1/wallets                                    |
+| [**createWalletV2**](WalletApi.md#createwalletv2)             | **POST** /v2/wallets                                    |
 | [**deleteWallet**](WalletApi.md#deletewallet)                 | **DELETE** /v1/wallets/{walletId}                       |
 | [**getWallet**](WalletApi.md#getwallet)                       | **GET** /v1/wallets/{walletId}                          |
 | [**listWallets**](WalletApi.md#listwallets)                   | **GET** /v1/wallets                                     |
@@ -57,6 +58,53 @@ try {
 ### Return type
 
 [**CreateWalletResponse**](CreateWalletResponse.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createWalletV2**
+
+> CreateWalletV2Response createWalletV2(createWalletV2Input)
+
+Create v2 wallet
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_wallets_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final CreateWalletV2Input createWalletV2Input = ; // CreateWalletV2Input | CreateWallet
+
+try {
+    final response = api.createWalletV2(createWalletV2Input);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling WalletApi->createWalletV2: $e\n');
+}
+```
+
+### Parameters
+
+| Name                    | Type                                              | Description  | Notes      |
+| ----------------------- | ------------------------------------------------- | ------------ | ---------- |
+| **createWalletV2Input** | [**CreateWalletV2Input**](CreateWalletV2Input.md) | CreateWallet | [optional] |
+
+### Return type
+
+[**CreateWalletV2Response**](CreateWalletV2Response.md)
 
 ### Authorization
 
