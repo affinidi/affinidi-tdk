@@ -28,9 +28,10 @@ class SignPresentationLdpInputDto(BaseModel):
     """
     unsigned_presentation: Dict[str, Any] = Field(default=..., alias="unsignedPresentation", description="Unsigned presentation in Dm1 format")
     signature_scheme: Optional[StrictStr] = Field(default=None, alias="signatureScheme")
+    signature_suite: Optional[StrictStr] = Field(default=None, alias="signatureSuite", description="W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).")
     domain: Optional[conlist(StrictStr)] = Field(default=None, description="Domain(s) for which the presentation is intended")
     challenge: Optional[StrictStr] = Field(default=None, description="Challenge string")
-    __properties = ["unsignedPresentation", "signatureScheme", "domain", "challenge"]
+    __properties = ["unsignedPresentation", "signatureScheme", "signatureSuite", "domain", "challenge"]
 
     @validator('signature_scheme')
     def signature_scheme_validate_enum(cls, value):
@@ -40,6 +41,16 @@ class SignPresentationLdpInputDto(BaseModel):
 
         if value not in ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519',):
             raise ValueError("must be one of enum values ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519')")
+        return value
+
+    @validator('signature_suite')
+    def signature_suite_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019',):
+            raise ValueError("must be one of enum values ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019')")
         return value
 
     class Config:
@@ -80,6 +91,7 @@ class SignPresentationLdpInputDto(BaseModel):
         _obj = SignPresentationLdpInputDto.parse_obj({
             "unsigned_presentation": obj.get("unsignedPresentation"),
             "signature_scheme": obj.get("signatureScheme"),
+            "signature_suite": obj.get("signatureSuite"),
             "domain": obj.get("domain"),
             "challenge": obj.get("challenge")
         })

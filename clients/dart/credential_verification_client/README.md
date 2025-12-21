@@ -71,10 +71,13 @@ try {
 
 All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
-| Class                             | Method                                                         | HTTP request                     | Description  |
-| --------------------------------- | -------------------------------------------------------------- | -------------------------------- | ------------ |
-| [_DefaultApi_](doc/DefaultApi.md) | [**verifyCredentials**](doc/DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
-| [_DefaultApi_](doc/DefaultApi.md) | [**verifyPresentation**](doc/DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
+| Class                               | Method                                                             | HTTP request                       | Description         |
+| ----------------------------------- | ------------------------------------------------------------------ | ---------------------------------- | ------------------- |
+| [_DefaultApi_](doc/DefaultApi.md)   | [**verifyCredentials**](doc/DefaultApi.md#verifycredentials)       | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
+| [_DefaultApi_](doc/DefaultApi.md)   | [**verifyCredentialsV2**](doc/DefaultApi.md#verifycredentialsv2)   | **POST** /v2/verifier/credentials  | Verifying VC        |
+| [_DefaultApi_](doc/DefaultApi.md)   | [**verifyPresentation**](doc/DefaultApi.md#verifypresentation)     | **POST** /v1/verifier/verify-vp    | Verifying VP        |
+| [_DefaultApi_](doc/DefaultApi.md)   | [**verifyPresentationV2**](doc/DefaultApi.md#verifypresentationv2) | **POST** /v2/verifier/presentation | Verifying VP        |
+| [_VerifierApi_](doc/VerifierApi.md) | [**validateJwt**](doc/VerifierApi.md#validatejwt)                  | **POST** /v1/verifier/validate-jwt | Validates JWT token |
 
 ## Documentation For Models
 
