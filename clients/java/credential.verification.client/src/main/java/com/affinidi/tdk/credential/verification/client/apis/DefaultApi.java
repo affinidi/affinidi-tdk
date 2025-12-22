@@ -24,8 +24,10 @@ import com.affinidi.tdk.credential.verification.client.models.InvalidParameterEr
 import com.affinidi.tdk.credential.verification.client.models.NotFoundError;
 import com.affinidi.tdk.credential.verification.client.models.VerifyCredentialInput;
 import com.affinidi.tdk.credential.verification.client.models.VerifyCredentialOutput;
+import com.affinidi.tdk.credential.verification.client.models.VerifyCredentialV2Input;
 import com.affinidi.tdk.credential.verification.client.models.VerifyPresentationInput;
 import com.affinidi.tdk.credential.verification.client.models.VerifyPresentationOutput;
+import com.affinidi.tdk.credential.verification.client.models.VerifyPresentationV2Input;
 
 
 import java.util.ArrayList;
@@ -121,6 +123,80 @@ public class DefaultApi extends BaseApi {
   }
 
   /**
+   * Verifying VC
+   * Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+   * @param verifyCredentialV2Input Request body for verifying VCs with separate JWT and LDP arrays (required)
+   * @return VerifyCredentialOutput
+   * @throws ApiException if fails to make API call
+   */
+  public VerifyCredentialOutput verifyCredentialsV2(@javax.annotation.Nonnull VerifyCredentialV2Input verifyCredentialV2Input) throws ApiException {
+    return this.verifyCredentialsV2(verifyCredentialV2Input, Collections.emptyMap());
+  }
+
+
+  /**
+   * Verifying VC
+   * Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+   * @param verifyCredentialV2Input Request body for verifying VCs with separate JWT and LDP arrays (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return VerifyCredentialOutput
+   * @throws ApiException if fails to make API call
+   */
+  public VerifyCredentialOutput verifyCredentialsV2(@javax.annotation.Nonnull VerifyCredentialV2Input verifyCredentialV2Input, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = verifyCredentialV2Input;
+    
+    // verify the required parameter 'verifyCredentialV2Input' is set
+    if (verifyCredentialV2Input == null) {
+      throw new ApiException(400, "Missing the required parameter 'verifyCredentialV2Input' when calling verifyCredentialsV2");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/verifier/credentials";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<VerifyCredentialOutput> localVarReturnType = new TypeReference<VerifyCredentialOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
    * Verifying VP
    * Verifying Verifiable Presentation (signatures)  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
    * @param verifyPresentationInput VerifyPresentation (required)
@@ -150,6 +226,80 @@ public class DefaultApi extends BaseApi {
     
     // create path and map variables
     String localVarPath = "/v1/verifier/verify-vp";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<VerifyPresentationOutput> localVarReturnType = new TypeReference<VerifyPresentationOutput>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Verifying VP
+   * Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+   * @param verifyPresentationV2Input VerifyPresentationV2 (required)
+   * @return VerifyPresentationOutput
+   * @throws ApiException if fails to make API call
+   */
+  public VerifyPresentationOutput verifyPresentationV2(@javax.annotation.Nonnull VerifyPresentationV2Input verifyPresentationV2Input) throws ApiException {
+    return this.verifyPresentationV2(verifyPresentationV2Input, Collections.emptyMap());
+  }
+
+
+  /**
+   * Verifying VP
+   * Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+   * @param verifyPresentationV2Input VerifyPresentationV2 (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return VerifyPresentationOutput
+   * @throws ApiException if fails to make API call
+   */
+  public VerifyPresentationOutput verifyPresentationV2(@javax.annotation.Nonnull VerifyPresentationV2Input verifyPresentationV2Input, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = verifyPresentationV2Input;
+    
+    // verify the required parameter 'verifyPresentationV2Input' is set
+    if (verifyPresentationV2Input == null) {
+      throw new ApiException(400, "Missing the required parameter 'verifyPresentationV2Input' when calling verifyPresentationV2");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/verifier/presentation";
 
     StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
     String localVarQueryParameterBaseName;
