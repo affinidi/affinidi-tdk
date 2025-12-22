@@ -118,7 +118,20 @@ class DidcommAtlasClient extends DidcommServiceClient {
 
     final responseMessage = await sendServiceMessage(
       requestMessage,
-    );
+    ).catchError((Object error) {
+      if (error is ProblemReportMessage && error.body != null) {
+        final body = ProblemReportBody.fromJson(error.body!);
+
+        if (const ProblemCodeConverter().toJson(body.code) ==
+            'e.msg.forbidden') {
+          // ignore: only_throw_errors
+          throw 'This feature is currently in closed beta and not enabled for your account. Submit a closed beta registration form with your DID (${error.to!.first}) at https://share.hsforms.com/1ayUlp606Qt27QDiiipff0g8oa2v to request access.';
+        }
+      }
+
+      // ignore: only_throw_errors
+      throw error;
+    });
 
     return GetMediatorInstancesListResponseMessage(
       id: responseMessage.id,

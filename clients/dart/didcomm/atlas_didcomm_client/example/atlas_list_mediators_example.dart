@@ -50,7 +50,16 @@ Future<void> main() async {
 
   await ConnectionPool.instance.startConnections();
 
-  final instances = await atlasClient.getMediatorInstancesList();
+  final instances = await atlasClient.getMediatorInstancesList().catchError(
+    (Object error) {
+      prettyPrint(
+        'Error while listing mediators',
+        object: error,
+      );
+
+      exit(1);
+    },
+  );
 
   prettyPrint(
     'Mediators',
