@@ -5,6 +5,7 @@ README.md
 affinidi_tdk_credential_verification_client/__init__.py
 affinidi_tdk_credential_verification_client/api/__init__.py
 affinidi_tdk_credential_verification_client/api/default_api.py
+affinidi_tdk_credential_verification_client/api/verifier_api.py
 affinidi_tdk_credential_verification_client/api_client.py
 affinidi_tdk_credential_verification_client/api_response.py
 affinidi_tdk_credential_verification_client/configuration.py
@@ -72,6 +73,7 @@ docs/PresentationSubmission.md
 docs/SubmissionRequirement.md
 docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
+docs/VerifierApi.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
 docs/VerifyCredentialV2Input.md

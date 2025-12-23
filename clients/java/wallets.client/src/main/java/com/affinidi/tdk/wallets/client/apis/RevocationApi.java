@@ -27,6 +27,7 @@ import com.affinidi.tdk.wallets.client.models.NotFoundError;
 import com.affinidi.tdk.wallets.client.models.OperationForbiddenError;
 import com.affinidi.tdk.wallets.client.models.RevokeCredentialInput;
 import com.affinidi.tdk.wallets.client.models.RevokeCredentialsInput;
+import com.affinidi.tdk.wallets.client.models.TooManyRequestsError;
 
 
 import java.util.ArrayList;
