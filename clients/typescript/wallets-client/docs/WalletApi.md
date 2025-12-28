@@ -5,6 +5,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | Method                                            | HTTP request                                            | Description |
 | ------------------------------------------------- | ------------------------------------------------------- | ----------- |
 | [**createWallet**](#createwallet)                 | **POST** /v1/wallets                                    |             |
+| [**createWalletV2**](#createwalletv2)             | **POST** /v2/wallets                                    |             |
 | [**deleteWallet**](#deletewallet)                 | **DELETE** /v1/wallets/{walletId}                       |             |
 | [**getWallet**](#getwallet)                       | **GET** /v1/wallets/{walletId}                          |             |
 | [**listWallets**](#listwallets)                   | **GET** /v1/wallets                                     |             |
@@ -63,6 +64,57 @@ const { status, data } = await apiInstance.createWallet(createWalletInput)
 | Status code | Description    | Response headers |
 | ----------- | -------------- | ---------------- |
 | **201**     | Created        | -                |
+| **403**     | ForbiddenError | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createWalletV2**
+
+> CreateWalletV2Response createWalletV2()
+
+Create v2 wallet
+
+### Example
+
+```typescript
+import {
+  WalletApi,
+  Configuration,
+  CreateWalletV2Input,
+} from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let createWalletV2Input: CreateWalletV2Input //CreateWallet (optional)
+
+const { status, data } = await apiInstance.createWalletV2(createWalletV2Input)
+```
+
+### Parameters
+
+| Name                    | Type                    | Description  | Notes |
+| ----------------------- | ----------------------- | ------------ | ----- |
+| **createWalletV2Input** | **CreateWalletV2Input** | CreateWallet |       |
+
+### Return type
+
+**CreateWalletV2Response**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description    | Response headers |
+| ----------- | -------------- | ---------------- |
+| **201**     | OK             | -                |
 | **403**     | ForbiddenError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -259,12 +311,13 @@ const { status, data } = await apiInstance.signCredential(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -317,12 +370,13 @@ const { status, data } = await apiInstance.signCredentialsJwt(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -375,12 +429,13 @@ const { status, data } = await apiInstance.signCredentialsLdp(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -433,12 +488,13 @@ const { status, data } = await apiInstance.signCredentialsSdJwt(
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
