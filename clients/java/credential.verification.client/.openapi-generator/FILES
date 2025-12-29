@@ -29,6 +29,7 @@ docs/PresentationSubmission.md
 docs/SubmissionRequirement.md
 docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
+docs/VerifierApi.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
 docs/VerifyCredentialV2Input.md
@@ -60,6 +61,7 @@ src/main/java/com/affinidi/tdk/credential/verification/client/ServerConfiguratio
 src/main/java/com/affinidi/tdk/credential/verification/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/credential/verification/client/StringUtil.java
 src/main/java/com/affinidi/tdk/credential/verification/client/apis/DefaultApi.java
+src/main/java/com/affinidi/tdk/credential/verification/client/apis/VerifierApi.java
 src/main/java/com/affinidi/tdk/credential/verification/client/auth/ApiKeyAuth.java
 src/main/java/com/affinidi/tdk/credential/verification/client/auth/Authentication.java
 src/main/java/com/affinidi/tdk/credential/verification/client/auth/HttpBasicAuth.java

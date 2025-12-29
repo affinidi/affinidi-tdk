@@ -60,6 +60,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | _RevocationApi_ | [**revokeCredential**](docs/RevocationApi.md#revokecredential)                           | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
 | _RevocationApi_ | [**revokeCredentials**](docs/RevocationApi.md#revokecredentials)                         | **POST** /v2/wallets/{walletId}/credentials/revoke                                 | Revoke Credentials.                |
 | _WalletApi_     | [**createWallet**](docs/WalletApi.md#createwallet)                                       | **POST** /v1/wallets                                                               |
+| _WalletApi_     | [**createWalletV2**](docs/WalletApi.md#createwalletv2)                                   | **POST** /v2/wallets                                                               |
 | _WalletApi_     | [**deleteWallet**](docs/WalletApi.md#deletewallet)                                       | **DELETE** /v1/wallets/{walletId}                                                  |
 | _WalletApi_     | [**getWallet**](docs/WalletApi.md#getwallet)                                             | **GET** /v1/wallets/{walletId}                                                     |
 | _WalletApi_     | [**listWallets**](docs/WalletApi.md#listwallets)                                         | **GET** /v1/wallets                                                                |
@@ -110,6 +111,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignPresentationLdpInputDto](docs/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](docs/SignPresentationLdpResultDto.md)
 - [SigningFailedError](docs/SigningFailedError.md)
+- [TooManyRequestsError](docs/TooManyRequestsError.md)
+- [UnpackMessageInput](docs/UnpackMessageInput.md)
+- [UnpackMessageResultDto](docs/UnpackMessageResultDto.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)
