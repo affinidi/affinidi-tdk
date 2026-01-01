@@ -31,6 +31,7 @@ docs/PresentationSubmission.md
 docs/SubmissionRequirement.md
 docs/ValidateJwtInput.md
 docs/ValidateJwtOutput.md
+docs/VerifierApi.md
 docs/VerifyCredentialInput.md
 docs/VerifyCredentialOutput.md
 docs/VerifyCredentialV2Input.md

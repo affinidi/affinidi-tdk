@@ -22,6 +22,8 @@ import com.affinidi.tdk.wallets.client.Pair;
 
 import com.affinidi.tdk.wallets.client.models.CreateWalletInput;
 import com.affinidi.tdk.wallets.client.models.CreateWalletResponse;
+import com.affinidi.tdk.wallets.client.models.CreateWalletV2Input;
+import com.affinidi.tdk.wallets.client.models.CreateWalletV2Response;
 import com.affinidi.tdk.wallets.client.models.InvalidParameterError;
 import com.affinidi.tdk.wallets.client.models.NotFoundError;
 import com.affinidi.tdk.wallets.client.models.OperationForbiddenError;
@@ -38,6 +40,7 @@ import com.affinidi.tdk.wallets.client.models.SignJwtToken;
 import com.affinidi.tdk.wallets.client.models.SignJwtTokenOK;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpInputDto;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpResultDto;
+import com.affinidi.tdk.wallets.client.models.TooManyRequestsError;
 import com.affinidi.tdk.wallets.client.models.UpdateWalletInput;
 import com.affinidi.tdk.wallets.client.models.WalletDto;
 import com.affinidi.tdk.wallets.client.models.WalletsListDto;
@@ -113,6 +116,75 @@ public class WalletApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
     TypeReference<CreateWalletResponse> localVarReturnType = new TypeReference<CreateWalletResponse>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Create v2 wallet
+   * @param createWalletV2Input CreateWallet (optional)
+   * @return CreateWalletV2Response
+   * @throws ApiException if fails to make API call
+   */
+  public CreateWalletV2Response createWalletV2(@javax.annotation.Nullable CreateWalletV2Input createWalletV2Input) throws ApiException {
+    return this.createWalletV2(createWalletV2Input, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Create v2 wallet
+   * @param createWalletV2Input CreateWallet (optional)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateWalletV2Response
+   * @throws ApiException if fails to make API call
+   */
+  public CreateWalletV2Response createWalletV2(@javax.annotation.Nullable CreateWalletV2Input createWalletV2Input, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createWalletV2Input;
+    
+    // create path and map variables
+    String localVarPath = "/v2/wallets";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<CreateWalletV2Response> localVarReturnType = new TypeReference<CreateWalletV2Response>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",

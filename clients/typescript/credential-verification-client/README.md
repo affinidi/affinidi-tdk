@@ -53,10 +53,13 @@ npm install PATH_TO_GENERATED_PACKAGE --save
 
 All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
-| Class        | Method                                                          | HTTP request                     | Description  |
-| ------------ | --------------------------------------------------------------- | -------------------------------- | ------------ |
-| _DefaultApi_ | [**verifyCredentials**](docs/DefaultApi.md#verifycredentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
-| _DefaultApi_ | [**verifyPresentation**](docs/DefaultApi.md#verifypresentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
+| Class         | Method                                                              | HTTP request                       | Description         |
+| ------------- | ------------------------------------------------------------------- | ---------------------------------- | ------------------- |
+| _DefaultApi_  | [**verifyCredentials**](docs/DefaultApi.md#verifycredentials)       | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
+| _DefaultApi_  | [**verifyCredentialsV2**](docs/DefaultApi.md#verifycredentialsv2)   | **POST** /v2/verifier/credentials  | Verifying VC        |
+| _DefaultApi_  | [**verifyPresentation**](docs/DefaultApi.md#verifypresentation)     | **POST** /v1/verifier/verify-vp    | Verifying VP        |
+| _DefaultApi_  | [**verifyPresentationV2**](docs/DefaultApi.md#verifypresentationv2) | **POST** /v2/verifier/presentation | Verifying VP        |
+| _VerifierApi_ | [**validateJwt**](docs/VerifierApi.md#validatejwt)                  | **POST** /v1/verifier/validate-jwt | Validates JWT token |
 
 ### Documentation For Models
 
