@@ -116,6 +116,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | _RevocationApi_ | [**revoke_credential**](docs/RevocationApi.md#revoke_credential)                               | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
 | _RevocationApi_ | [**revoke_credentials**](docs/RevocationApi.md#revoke_credentials)                             | **POST** /v2/wallets/{walletId}/credentials/revoke                                 | Revoke Credentials.                |
 | _WalletApi_     | [**create_wallet**](docs/WalletApi.md#create_wallet)                                           | **POST** /v1/wallets                                                               |
+| _WalletApi_     | [**create_wallet_v2**](docs/WalletApi.md#create_wallet_v2)                                     | **POST** /v2/wallets                                                               |
 | _WalletApi_     | [**delete_wallet**](docs/WalletApi.md#delete_wallet)                                           | **DELETE** /v1/wallets/{walletId}                                                  |
 | _WalletApi_     | [**get_wallet**](docs/WalletApi.md#get_wallet)                                                 | **GET** /v1/wallets/{walletId}                                                     |
 | _WalletApi_     | [**list_wallets**](docs/WalletApi.md#list_wallets)                                             | **GET** /v1/wallets                                                                |
@@ -166,6 +167,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignPresentationLdpInputDto](docs/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](docs/SignPresentationLdpResultDto.md)
 - [SigningFailedError](docs/SigningFailedError.md)
+- [TooManyRequestsError](docs/TooManyRequestsError.md)
+- [UnpackMessageInput](docs/UnpackMessageInput.md)
+- [UnpackMessageResultDto](docs/UnpackMessageResultDto.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)
