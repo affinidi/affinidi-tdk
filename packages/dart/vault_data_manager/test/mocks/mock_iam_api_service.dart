@@ -1,6 +1,5 @@
 import 'package:affinidi_tdk_consumer_iam_client/affinidi_tdk_consumer_iam_client.dart'
     as consumer_iam;
-import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:affinidi_tdk_vault_data_manager/src/services/vault_data_manager_shared_access_api_service_interface.dart';
 import 'package:dio/dio.dart';
@@ -12,6 +11,8 @@ class MockIamApiService extends Mock
   Future<void> grantAccessVfs({
     required String granteeDid,
     required Permissions permissions,
+    DateTime? expiresAt,
+    String? profileId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -23,6 +24,8 @@ class MockIamApiService extends Mock
       Invocation.method(#grantAccessVfs, [], {
         #granteeDid: granteeDid,
         #permissions: permissions,
+        #expiresAt: expiresAt,
+        #profileId: profileId,
         #cancelToken: cancelToken,
         #headers: headers,
         #extra: extra,
@@ -57,7 +60,7 @@ class MockIamApiService extends Mock
   }
 
   @override
-  Future<Response<UpdateAccessOutput>> updateAccessVfs({
+  Future<Response<consumer_iam.UpdateAccessOutput>> updateAccessVfs({
     required String granteeDid,
     required Permissions permissions,
     CancelToken? cancelToken,
@@ -78,7 +81,7 @@ class MockIamApiService extends Mock
         #onSendProgress: onSendProgress,
         #onReceiveProgress: onReceiveProgress,
       }),
-    ) as Future<Response<UpdateAccessOutput>>;
+    ) as Future<Response<consumer_iam.UpdateAccessOutput>>;
   }
 
   @override

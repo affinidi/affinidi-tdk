@@ -2,28 +2,22 @@
 
 import 'package:affinidi_tdk_consumer_iam_client/affinidi_tdk_consumer_iam_client.dart'
     as consumer_iam;
-import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:dio/dio.dart';
 
 import '../exceptions/tdk_exception_type.dart';
-import '../extensions/permissions_extensions.dart';
 import 'vault_data_manager_shared_access_api_service_interface.dart';
 
 /// A service to grant or revoke shared access to vault cloud storages.
 class VaultDataManagerSharedAccessApiService
     implements VaultDataManagerSharedAccessApiServiceInterface {
-  /// The IAM client to make API calls for profile-level access.
-  final AffinidiTdkIamClient? affinidiTdkIamClient;
-
-  /// The Consumer IAM client to make granular access API calls for node-level access.
+  /// The Consumer IAM client to make granular access API calls for profile-level and node-level access.
   final consumer_iam.AffinidiTdkConsumerIamClient? affinidiTdkConsumerIamClient;
 
-  AuthzApi? _authzApi;
   consumer_iam.AuthzApi? _consumerAuthzApi;
 
-  /// Converts [Permissions] to Consumer IAM [RightsEnum] list.
+  /// Converts [Permissions] to Consumer IAM rights list.
   List<consumer_iam.RightsEnum> _permissionsToConsumerRights(
       Permissions permissions) {
     switch (permissions) {
@@ -41,14 +35,10 @@ class VaultDataManagerSharedAccessApiService
 
   /// Creates a new instance of [VaultDataManagerSharedAccessApiService].
   ///
-  /// [affinidiTdkIamClient] - optional IAM client for profile-level access methods.
-  /// [affinidiTdkConsumerIamClient] - optional Consumer IAM client for node-level access methods.
-  /// At least one client must be provided to use the corresponding methods.
+  /// [affinidiTdkConsumerIamClient] - Consumer IAM client for profile-level and node-level access methods.
   VaultDataManagerSharedAccessApiService({
-    this.affinidiTdkIamClient,
     this.affinidiTdkConsumerIamClient,
   }) {
-    _authzApi = affinidiTdkIamClient?.getAuthzApi();
     _consumerAuthzApi = affinidiTdkConsumerIamClient?.getAuthzApi();
   }
 
@@ -57,6 +47,7 @@ class VaultDataManagerSharedAccessApiService
     required String granteeDid,
     required Permissions permissions,
     DateTime? expiresAt,
+    String? profileId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -64,10 +55,10 @@ class VaultDataManagerSharedAccessApiService
     VaultProgressCallback? onSendProgress,
     VaultProgressCallback? onReceiveProgress,
   }) async {
-    if (_authzApi == null) {
+    if (_consumerAuthzApi == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'IAM client is required for profile-level access',
+          message: 'Consumer IAM client is required for profile-level access',
           code: TdkExceptionType.unableToGrantAccess.code,
         ),
         StackTrace.current,
@@ -75,24 +66,40 @@ class VaultDataManagerSharedAccessApiService
     }
 
     try {
-      final grantAccessInputBuilder = GrantAccessInputBuilder()
-        ..granteeDid = granteeDid
-        ..rights = ListBuilder(permissions.toRights());
+      DateTime? formattedExpiresAt;
+      if (expiresAt != null) {
+        final dt = expiresAt.toUtc();
 
-      final grantAccessInput = grantAccessInputBuilder.build();
-
-      final grantAccessVfsResponse =
-          await _authzApi!.grantAccessVfs(grantAccessInput: grantAccessInput);
-      final isAccessGranted = grantAccessVfsResponse.data!.success == true;
-
-      if (!isAccessGranted) {
-        Error.throwWithStackTrace(
-            TdkException(
-              message: 'Failed to grant access to $granteeDid',
-              code: TdkExceptionType.unableToGrantAccess.code,
-            ),
-            StackTrace.current);
+        /// Format the date by creating a new DateTime with microsecond set to 0
+        /// The backend API rejects dates that contain microseconds/nanoseconds.
+        /// This ensures the date is serialized in a format accepted by the backend.
+        formattedExpiresAt = DateTime.utc(dt.year, dt.month, dt.day, dt.hour,
+            dt.minute, dt.second, dt.millisecond, 0);
       }
+
+      // Use profileId as nodeId if provided (since profile is a node), otherwise use empty list
+      final nodeIds = profileId != null ? [profileId] : <String>[];
+
+      final permissionBuilder = consumer_iam.PermissionBuilder()
+        ..rights = ListBuilder<consumer_iam.RightsEnum>(
+            _permissionsToConsumerRights(permissions))
+        ..nodeIds = ListBuilder<String>(nodeIds)
+        ..expiresAt = formattedExpiresAt;
+
+      final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()
+        ..permissions =
+            ListBuilder<consumer_iam.Permission>([permissionBuilder.build()]);
+
+      await _consumerAuthzApi!.updateAccessVfs(
+        granteeDid: granteeDid,
+        updateAccessInput: updateAccessInput.build(),
+        cancelToken: cancelToken,
+        headers: headers,
+        extra: extra,
+        validateStatus: validateStatus,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
     } on DioException catch (e, stackTrace) {
       final errorResponse = e.response;
       if (errorResponse == null) {
@@ -136,10 +143,10 @@ class VaultDataManagerSharedAccessApiService
     VaultProgressCallback? onSendProgress,
     VaultProgressCallback? onReceiveProgress,
   }) async {
-    if (_authzApi == null) {
+    if (_consumerAuthzApi == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'IAM client is required for profile-level access',
+          message: 'Consumer IAM client is required for profile-level access',
           code: TdkExceptionType.unableToRevokeAccess.code,
         ),
         StackTrace.current,
@@ -147,7 +154,15 @@ class VaultDataManagerSharedAccessApiService
     }
 
     try {
-      await _authzApi!.deleteAccessVfs(granteeDid: granteeDid);
+      await _consumerAuthzApi!.deleteAccessVfs(
+        granteeDid: granteeDid,
+        cancelToken: cancelToken,
+        headers: headers,
+        extra: extra,
+        validateStatus: validateStatus,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
     } catch (e, stackTrace) {
       Error.throwWithStackTrace(
           TdkException(
@@ -160,7 +175,7 @@ class VaultDataManagerSharedAccessApiService
   }
 
   @override
-  Future<Response<UpdateAccessOutput>> updateAccessVfs({
+  Future<Response<consumer_iam.UpdateAccessOutput>> updateAccessVfs({
     required String granteeDid,
     required Permissions permissions,
     CancelToken? cancelToken,
@@ -170,10 +185,10 @@ class VaultDataManagerSharedAccessApiService
     VaultProgressCallback? onSendProgress,
     VaultProgressCallback? onReceiveProgress,
   }) async {
-    if (_authzApi == null) {
+    if (_consumerAuthzApi == null) {
       Error.throwWithStackTrace(
         TdkException(
-          message: 'IAM client is required for profile-level access',
+          message: 'Consumer IAM client is required for profile-level access',
           code: TdkExceptionType.unableToUpdateAccess.code,
         ),
         StackTrace.current,
@@ -181,12 +196,24 @@ class VaultDataManagerSharedAccessApiService
     }
 
     try {
-      final updateAccessInputBuilder = UpdateAccessInputBuilder()
-        ..rights = ListBuilder(permissions.toRights());
-      final updateAccessInput = updateAccessInputBuilder.build();
-      final response = await _authzApi!.updateAccessVfs(
+      final permissionBuilder = consumer_iam.PermissionBuilder()
+        ..rights = ListBuilder<consumer_iam.RightsEnum>(
+            _permissionsToConsumerRights(permissions))
+        ..nodeIds = ListBuilder<String>([]);
+
+      final updateAccessInput = consumer_iam.UpdateAccessInputBuilder()
+        ..permissions =
+            ListBuilder<consumer_iam.Permission>([permissionBuilder.build()]);
+
+      final response = await _consumerAuthzApi!.updateAccessVfs(
         granteeDid: granteeDid,
-        updateAccessInput: updateAccessInput,
+        updateAccessInput: updateAccessInput.build(),
+        cancelToken: cancelToken,
+        headers: headers,
+        extra: extra,
+        validateStatus: validateStatus,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
       );
 
       return response;
@@ -195,6 +222,7 @@ class VaultDataManagerSharedAccessApiService
           TdkException(
             message: 'Failed to update access for $granteeDid',
             code: TdkExceptionType.unableToUpdateAccess.code,
+            originalMessage: e.toString(),
           ),
           stackTrace);
     }

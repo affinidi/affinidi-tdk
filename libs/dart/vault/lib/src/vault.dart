@@ -221,6 +221,7 @@ class Vault {
     required String profileId,
     required String toDid,
     required Permissions permissions,
+    DateTime? expiresAt,
     VaultCancelToken? cancelToken,
   }) async {
     final profile = await _getProfileById(profileId);
@@ -258,10 +259,18 @@ class Vault {
 
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
-    final kek = await profileSharedAccessRepository.grantProfileAccess(
+
+    // Use item-level access method since profile is a node
+    final kek = await profileSharedAccessRepository.grantItemAccessMultiple(
       accountIndex: profile.accountIndex,
       granteeDid: toDid,
-      permissions: permissions,
+      permissionGroups: [
+        (
+          itemIds: [profileId], // Profile ID is the nodeId
+          permissions: permissions,
+          expiresAt: expiresAt,
+        ),
+      ],
     );
 
     return SharedProfileDto(
@@ -317,11 +326,12 @@ class Vault {
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
 
-    await profileSharedAccessRepository.receiveProfileAccess(
+    // Use item-level access method since profile is a node
+    await profileSharedAccessRepository.receiveItemAccess(
       accountIndex: profile.accountIndex,
-      profileId: sharedProfile.profileId,
+      ownerProfileId: sharedProfile.profileId,
       kek: sharedProfile.kek,
-      grantedProfileDid: sharedProfile.profileDID,
+      ownerProfileDid: sharedProfile.profileDID,
     );
   }
 
@@ -432,9 +442,11 @@ class Vault {
     final profileSharedAccessRepository =
         profileRepository as ProfileAccessSharing;
 
-    await profileSharedAccessRepository.revokeProfileAccess(
+    // Use item-level access method since profile is a node
+    await profileSharedAccessRepository.revokeItemAccess(
       accountIndex: profile.accountIndex,
       granteeDid: granteeDid,
+      itemIds: [profileId], // Profile ID is the nodeId
     );
   }
 

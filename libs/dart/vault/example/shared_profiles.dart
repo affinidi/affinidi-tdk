@@ -96,11 +96,11 @@ void main() async {
 
   // Create Alice
   accountIndexAlice =
-      await _createProfile(vaultAlice, 'Alice', accountIndexAlice);
+      await _createProfile(vaultAlice, 'Alice522', accountIndexAlice);
   final aliceAccountIndex = accountIndexAlice;
 
   // Create Bob
-  accountIndexBob = await _createProfile(vaultBob, 'Bob', accountIndexBob);
+  accountIndexBob = await _createProfile(vaultBob, 'Bob410', accountIndexBob);
   final bobAccountIndex = accountIndexBob;
 
   // Get Alice and Bob profiles
@@ -173,19 +173,20 @@ void main() async {
     print('[Demo] Error while revoking $error...');
   }
 
-  // Alice to share with Bob
+  print(
+      '[Demo] Alice is sharing her profile with Bob with time-bound access (expires in 1 minute)...');
   SharedProfileDto? sharedProfile = await vaultAlice.shareProfile(
       profileId: aliceProfile.id,
       toDid: bobProfile.did,
-      permissions: Permissions.all);
+      permissions: Permissions.all,
+      expiresAt: DateTime.now().add(const Duration(minutes: 1)));
 
   // Bob to accept shared profile
   print('[Demo] Bob is accepting a shared profile ...');
   await vaultBob.addSharedProfile(
       profileId: bobProfile.id, sharedProfile: sharedProfile);
 
-  profilesBob = await vaultBob
-      .listProfiles(); // Must be called to refresh profile metadata
+  profilesBob = await vaultBob.listProfiles();
   var bobProfileWithSharedStorage =
       profilesBob.where((profile) => profile.id == bobProfile.id).firstOrNull;
   final bobSharedStorages = bobProfileWithSharedStorage!.sharedStorages;
@@ -194,31 +195,38 @@ void main() async {
       '[Demo] Bob available shared storages ${bobSharedStorages.map((storage) => storage.id).join(', ')}');
 
   // Bob to Access Alice files
+  print('[Demo] Bob is accessing Alice\'s files...');
   final bobSharedStorageWAliceProfile = bobSharedStorages
       .where((storage) => storage.id == aliceProfile.id)
       .firstOrNull;
-  final folderPage = await bobSharedStorageWAliceProfile!.getFolder();
-  final fileContent = await bobSharedStorageWAliceProfile.getFileContent(
-    fileId: folderPage.items.first.id,
-    onReceiveProgress: (received, total) {
-      if (total != -1) {
-        final progress = (received / total * 100).toStringAsFixed(2);
-        print('[Demo] Download progress: $progress%');
-      }
-    },
-  );
-  print('[Demo] Bob file content: $fileContent');
+  try {
+    final folderPage = await bobSharedStorageWAliceProfile!.getFolder();
+    final fileContent = await bobSharedStorageWAliceProfile.getFileContent(
+      fileId: folderPage.items.first.id,
+      onReceiveProgress: (received, total) {
+        if (total != -1) {
+          final progress = (received / total * 100).toStringAsFixed(2);
+          print('[Demo] Download progress: $progress%');
+        }
+      },
+    );
+    print('[Demo] Bob successfully accessed Alice\'s file: $fileContent');
+    print(
+        '[Demo] Bob available shared files from Alice ${folderPage.items.map((item) => item.name).join('\n')}');
+  } catch (e) {
+    print('[Demo] Bob failed to access Alice\'s files: $e');
+  }
+
+  // Wait for access to expire
+  print('[Demo] Waiting 1 minute for access to expire...');
+  await Future<void>.delayed(const Duration(minutes: 1));
+
+  // Bob tries to access Alice files after revocation
   print(
-      '[Demo] Bob available shared files from Alice ${folderPage.items.map((item) => item.name).join('\n')}');
-
-  // Alice revokes Bob access to her profile
-  await vaultAlice.revokeProfileAccess(
-      profileId: aliceProfile.id, granteeDid: bobProfile.did);
-
-  // Bob to Access Alice files after revokal
+      '[Demo] Bob is trying to access Alice\'s files after expiration (should fail)...');
   try {
     final folderPageAfterRevokal =
-        await bobSharedStorageWAliceProfile.getFolder();
+        await bobSharedStorageWAliceProfile!.getFolder();
     print(
         '[Demo] Bob available shared files from Alice after revokal: ${folderPageAfterRevokal.items.map((item) => item.name).join('\n')}');
   } catch (error) {

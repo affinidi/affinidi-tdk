@@ -274,10 +274,10 @@ void main() {
 
       when(() => mockProfileRepository.listProfiles())
           .thenAnswer((_) async => [testProfile]);
-      when(() => mockProfileRepository.grantProfileAccess(
+      when(() => mockProfileRepository.grantItemAccessMultiple(
             accountIndex: 0,
             granteeDid: 'did:test:123',
-            permissions: Permissions.all,
+            permissionGroups: any(named: 'permissionGroups'),
           )).thenAnswer((_) async => Uint8List.fromList([1, 2, 3]));
 
       final sharedProfile = await vault.shareProfile(

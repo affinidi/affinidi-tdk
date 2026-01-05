@@ -1,6 +1,5 @@
 import 'package:affinidi_tdk_consumer_iam_client/affinidi_tdk_consumer_iam_client.dart'
     as consumer_iam;
-import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:dio/dio.dart';
 
@@ -11,22 +10,27 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   ///
   /// Parameters:
   /// * [granteeDid] - grant access to this DID
-  /// * [permissions] - the rights [RightsEnum] to grant to the grantee DID
+  /// * [permissions] - the rights to grant to the grantee DID
+  /// * [expiresAt] - Optional expiration date/time for the permissions
+  /// * [profileId] - Optional profile ID (nodeId) to grant profile-level access.
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extra] - Can be used to add flags to the request
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<void> grantAccessVfs(
-      {required String granteeDid,
-      required Permissions permissions,
-      CancelToken? cancelToken,
-      Map<String, dynamic>? headers,
-      Map<String, dynamic>? extra,
-      ValidateStatus? validateStatus,
-      VaultProgressCallback? onSendProgress,
-      VaultProgressCallback? onReceiveProgress});
+  Future<void> grantAccessVfs({
+    required String granteeDid,
+    required Permissions permissions,
+    DateTime? expiresAt,
+    String? profileId,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    VaultProgressCallback? onSendProgress,
+    VaultProgressCallback? onReceiveProgress,
+  });
 
   /// Update access to the virtual file system
   /// Updates access rights to a subject for the virtual file system
@@ -40,7 +44,7 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  Future<Response<UpdateAccessOutput>> updateAccessVfs({
+  Future<Response<consumer_iam.UpdateAccessOutput>> updateAccessVfs({
     required String granteeDid,
     required Permissions permissions,
     CancelToken? cancelToken,
