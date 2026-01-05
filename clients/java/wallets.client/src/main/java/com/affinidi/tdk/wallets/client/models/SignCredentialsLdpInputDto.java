@@ -32,7 +32,8 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignCredentialsLdpInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL,
   SignCredentialsLdpInputDto.JSON_PROPERTY_REVOCABLE,
-  SignCredentialsLdpInputDto.JSON_PROPERTY_SIGNATURE_SCHEME
+  SignCredentialsLdpInputDto.JSON_PROPERTY_SIGNATURE_SCHEME,
+  SignCredentialsLdpInputDto.JSON_PROPERTY_SIGNATURE_SUITE
 })
 @JsonTypeName("signCredentialsLdpInputDto")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
@@ -85,6 +86,51 @@ public class SignCredentialsLdpInputDto {
   public static final String JSON_PROPERTY_SIGNATURE_SCHEME = "signatureScheme";
   @javax.annotation.Nullable
   private SignatureSchemeEnum signatureScheme;
+
+  /**
+   * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+   */
+  public enum SignatureSuiteEnum {
+    ECDSA_JCS_2019(String.valueOf("ecdsa-jcs-2019")),
+    
+    ECDSA_RDFC_2019(String.valueOf("ecdsa-rdfc-2019")),
+    
+    EDDSA_JCS_2022(String.valueOf("eddsa-jcs-2022")),
+    
+    EDDSA_RDFC_2022(String.valueOf("eddsa-rdfc-2022")),
+    
+    ECDSA_SECP256K1_SIGNATURE2019(String.valueOf("EcdsaSecp256k1Signature2019"));
+
+    private String value;
+
+    SignatureSuiteEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SignatureSuiteEnum fromValue(String value) {
+      for (SignatureSuiteEnum b : SignatureSuiteEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_SIGNATURE_SUITE = "signatureSuite";
+  @javax.annotation.Nullable
+  private SignatureSuiteEnum signatureSuite;
 
   public SignCredentialsLdpInputDto() {
   }
@@ -164,6 +210,31 @@ public class SignCredentialsLdpInputDto {
     this.signatureScheme = signatureScheme;
   }
 
+  public SignCredentialsLdpInputDto signatureSuite(@javax.annotation.Nullable SignatureSuiteEnum signatureSuite) {
+    
+    this.signatureSuite = signatureSuite;
+    return this;
+  }
+
+  /**
+   * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+   * @return signatureSuite
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_SUITE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public SignatureSuiteEnum getSignatureSuite() {
+    return signatureSuite;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SIGNATURE_SUITE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setSignatureSuite(@javax.annotation.Nullable SignatureSuiteEnum signatureSuite) {
+    this.signatureSuite = signatureSuite;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -175,12 +246,13 @@ public class SignCredentialsLdpInputDto {
     SignCredentialsLdpInputDto signCredentialsLdpInputDto = (SignCredentialsLdpInputDto) o;
     return Objects.equals(this.unsignedCredential, signCredentialsLdpInputDto.unsignedCredential) &&
         Objects.equals(this.revocable, signCredentialsLdpInputDto.revocable) &&
-        Objects.equals(this.signatureScheme, signCredentialsLdpInputDto.signatureScheme);
+        Objects.equals(this.signatureScheme, signCredentialsLdpInputDto.signatureScheme) &&
+        Objects.equals(this.signatureSuite, signCredentialsLdpInputDto.signatureSuite);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unsignedCredential, revocable, signatureScheme);
+    return Objects.hash(unsignedCredential, revocable, signatureScheme, signatureSuite);
   }
 
   @Override
@@ -190,6 +262,7 @@ public class SignCredentialsLdpInputDto {
     sb.append("    unsignedCredential: ").append(toIndentedString(unsignedCredential)).append("\n");
     sb.append("    revocable: ").append(toIndentedString(revocable)).append("\n");
     sb.append("    signatureScheme: ").append(toIndentedString(signatureScheme)).append("\n");
+    sb.append("    signatureSuite: ").append(toIndentedString(signatureSuite)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -261,6 +334,16 @@ public class SignCredentialsLdpInputDto {
     if (getSignatureScheme() != null) {
       try {
         joiner.add(String.format("%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `signatureSuite` to the URL query string
+    if (getSignatureSuite() != null) {
+      try {
+        joiner.add(String.format("%ssignatureSuite%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureSuite()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
