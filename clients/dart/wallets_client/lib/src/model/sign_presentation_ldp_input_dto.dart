@@ -15,6 +15,7 @@ part 'sign_presentation_ldp_input_dto.g.dart';
 /// Properties:
 /// * [unsignedPresentation] - Unsigned presentation in Dm1 format
 /// * [signatureScheme]
+/// * [signatureSuite] - W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
 /// * [domain] - Domain(s) for which the presentation is intended
 /// * [challenge] - Challenge string
 @BuiltValue()
@@ -28,6 +29,11 @@ abstract class SignPresentationLdpInputDto
   @BuiltValueField(wireName: r'signatureScheme')
   SignPresentationLdpInputDtoSignatureSchemeEnum? get signatureScheme;
   // enum signatureSchemeEnum {  ecdsa_secp256k1_sha256,  ecdsa_p256_sha256,  ed25519,  };
+
+  /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+  @BuiltValueField(wireName: r'signatureSuite')
+  SignPresentationLdpInputDtoSignatureSuiteEnum? get signatureSuite;
+  // enum signatureSuiteEnum {  ecdsa-jcs-2019,  ecdsa-rdfc-2019,  eddsa-jcs-2022,  eddsa-rdfc-2022,  EcdsaSecp256k1Signature2019,  };
 
   /// Domain(s) for which the presentation is intended
   @BuiltValueField(wireName: r'domain')
@@ -78,6 +84,14 @@ class _$SignPresentationLdpInputDtoSerializer
         object.signatureScheme,
         specifiedType:
             const FullType(SignPresentationLdpInputDtoSignatureSchemeEnum),
+      );
+    }
+    if (object.signatureSuite != null) {
+      yield r'signatureSuite';
+      yield serializers.serialize(
+        object.signatureSuite,
+        specifiedType:
+            const FullType(SignPresentationLdpInputDtoSignatureSuiteEnum),
       );
     }
     if (object.domain != null) {
@@ -133,6 +147,14 @@ class _$SignPresentationLdpInputDtoSerializer
                 const FullType(SignPresentationLdpInputDtoSignatureSchemeEnum),
           ) as SignPresentationLdpInputDtoSignatureSchemeEnum;
           result.signatureScheme = valueDes;
+          break;
+        case r'signatureSuite':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(SignPresentationLdpInputDtoSignatureSuiteEnum),
+          ) as SignPresentationLdpInputDtoSignatureSuiteEnum;
+          result.signatureSuite = valueDes;
           break;
         case r'domain':
           final valueDes = serializers.deserialize(
@@ -200,4 +222,44 @@ class SignPresentationLdpInputDtoSignatureSchemeEnum extends EnumClass {
       _$signPresentationLdpInputDtoSignatureSchemeEnumValues;
   static SignPresentationLdpInputDtoSignatureSchemeEnum valueOf(String name) =>
       _$signPresentationLdpInputDtoSignatureSchemeEnumValueOf(name);
+}
+
+class SignPresentationLdpInputDtoSignatureSuiteEnum extends EnumClass {
+  /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+  @BuiltValueEnumConst(wireName: r'ecdsa-jcs-2019')
+  static const SignPresentationLdpInputDtoSignatureSuiteEnum ecdsaJcs2019 =
+      _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaJcs2019;
+
+  /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+  @BuiltValueEnumConst(wireName: r'ecdsa-rdfc-2019')
+  static const SignPresentationLdpInputDtoSignatureSuiteEnum ecdsaRdfc2019 =
+      _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaRdfc2019;
+
+  /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+  @BuiltValueEnumConst(wireName: r'eddsa-jcs-2022')
+  static const SignPresentationLdpInputDtoSignatureSuiteEnum eddsaJcs2022 =
+      _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaJcs2022;
+
+  /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+  @BuiltValueEnumConst(wireName: r'eddsa-rdfc-2022')
+  static const SignPresentationLdpInputDtoSignatureSuiteEnum eddsaRdfc2022 =
+      _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaRdfc2022;
+
+  /// W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+  @BuiltValueEnumConst(wireName: r'EcdsaSecp256k1Signature2019')
+  static const SignPresentationLdpInputDtoSignatureSuiteEnum
+      ecdsaSecp256k1Signature2019 =
+      _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaSecp256k1Signature2019;
+
+  static Serializer<SignPresentationLdpInputDtoSignatureSuiteEnum>
+      get serializer =>
+          _$signPresentationLdpInputDtoSignatureSuiteEnumSerializer;
+
+  const SignPresentationLdpInputDtoSignatureSuiteEnum._(String name)
+      : super(name);
+
+  static BuiltSet<SignPresentationLdpInputDtoSignatureSuiteEnum> get values =>
+      _$signPresentationLdpInputDtoSignatureSuiteEnumValues;
+  static SignPresentationLdpInputDtoSignatureSuiteEnum valueOf(String name) =>
+      _$signPresentationLdpInputDtoSignatureSuiteEnumValueOf(name);
 }
