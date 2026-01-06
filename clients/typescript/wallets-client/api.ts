@@ -3230,18 +3230,6 @@ export const WalletApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
-     * Create v2 wallet
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    createWalletV2(
-      options?: RawAxiosRequestConfig,
-    ): AxiosPromise<CreateWalletV2Response> {
-      return localVarFp
-        .createWalletV2(options)
-        .then((request) => request(axios, basePath))
-    },
-    /**
      * delete wallet by walletId
      * @param {string} walletId id of the wallet
      * @param {*} [options] Override http request option.

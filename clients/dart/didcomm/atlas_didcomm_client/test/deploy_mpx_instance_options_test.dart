@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('DeployMpxInstanceOptions', () {
     test('should create options with required serviceSize', () {
-      final options = DeployMpxInstanceOptions(
+      final options = const DeployMpxInstanceOptions(
         serviceSize: ServiceSize.tiny,
       );
 
@@ -14,7 +14,7 @@ void main() {
     });
 
     test('should create options with all fields', () {
-      final options = DeployMpxInstanceOptions(
+      final options = const DeployMpxInstanceOptions(
         serviceSize: ServiceSize.small,
         name: 'Test MPX',
         description: 'Test MPX description',
@@ -26,7 +26,7 @@ void main() {
     });
 
     test('should serialize to JSON correctly with all fields', () {
-      final options = DeployMpxInstanceOptions(
+      final options = const DeployMpxInstanceOptions(
         serviceSize: ServiceSize.medium,
         name: 'Test MPX',
         description: 'Test description',
@@ -40,7 +40,7 @@ void main() {
     });
 
     test('should serialize to JSON without null fields', () {
-      final options = DeployMpxInstanceOptions(
+      final options = const DeployMpxInstanceOptions(
         serviceSize: ServiceSize.large,
       );
 
@@ -92,7 +92,7 @@ void main() {
     });
 
     test('should round-trip through JSON', () {
-      final original = DeployMpxInstanceOptions(
+      final original = const DeployMpxInstanceOptions(
         serviceSize: ServiceSize.medium,
         name: 'Round-trip MPX',
         description: 'Round-trip description',

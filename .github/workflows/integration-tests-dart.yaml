@@ -44,5 +44,6 @@ jobs:
           TEST_MEDIATOR_DID: ${{ vars.TEST_MEDIATOR_DID }}
           TEST_ALICE_PRIVATE_KEY_PEM: ${{ vars.TEST_ALICE_PRIVATE_KEY_PEM }}
           TEST_BOB_PRIVATE_KEY_PEM: ${{ vars.TEST_BOB_PRIVATE_KEY_PEM }}
+          AFFINIDI_ATLAS_DID: ${{ vars.AFFINIDI_ATLAS_DID }}
         run: dart test --concurrency=1
         working-directory: tests/integration/dart

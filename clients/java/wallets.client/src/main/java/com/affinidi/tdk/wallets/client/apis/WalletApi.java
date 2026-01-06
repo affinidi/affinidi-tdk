@@ -134,7 +134,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   *
+   * 
    * Create v2 wallet
    * @param createWalletV2Input CreateWallet (optional)
    * @return CreateWalletV2Response
@@ -146,7 +146,7 @@ public class WalletApi extends BaseApi {
 
 
   /**
-   *
+   * 
    * Create v2 wallet
    * @param createWalletV2Input CreateWallet (optional)
    * @param additionalHeaders additionalHeaders for this call
@@ -155,7 +155,7 @@ public class WalletApi extends BaseApi {
    */
   public CreateWalletV2Response createWalletV2(@javax.annotation.Nullable CreateWalletV2Input createWalletV2Input, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = createWalletV2Input;
-
+    
     // create path and map variables
     String localVarPath = "/v2/wallets";
 
@@ -167,11 +167,11 @@ public class WalletApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-
+    
     localVarHeaderParams.putAll(additionalHeaders);
 
-
-
+    
+    
     final String[] localVarAccepts = {
       "application/json"
     };
@@ -203,7 +203,7 @@ public class WalletApi extends BaseApi {
   }
 
   /**
-   *
+   * 
    * delete wallet by walletId
    * @param walletId id of the wallet (required)
    * @throws ApiException if fails to make API call
