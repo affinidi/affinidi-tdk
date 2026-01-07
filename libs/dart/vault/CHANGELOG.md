@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.15.0
+
+### Changes
+
+---
+
+feat: add time bound for profile sharing
+
+* Added: Optional expiresAt when sharing profiles, enabling time bound profile access
+
+---
+
 ## 1.14.0
 
 ### Changes
