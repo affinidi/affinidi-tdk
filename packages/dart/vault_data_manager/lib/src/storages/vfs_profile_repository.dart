@@ -5,7 +5,6 @@ import 'package:affinidi_tdk_common/affinidi_tdk_common.dart';
 import 'package:affinidi_tdk_consumer_auth_provider/affinidi_tdk_consumer_auth_provider.dart';
 import 'package:affinidi_tdk_consumer_iam_client/affinidi_tdk_consumer_iam_client.dart';
 import 'package:affinidi_tdk_cryptography/affinidi_tdk_cryptography.dart';
-import 'package:affinidi_tdk_iam_client/affinidi_tdk_iam_client.dart';
 import 'package:affinidi_tdk_vault/affinidi_tdk_vault.dart';
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
@@ -125,18 +124,12 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
                 ConsumerAuthProvider(signer: didSigner, client: client)),
         _iamApiServiceFactory = iamApiServiceFactory ??
             ((ConsumerAuthProvider provider) {
-              final iamClient = AffinidiTdkIamClient(
-                authTokenHook: provider.fetchConsumerToken,
-                basePathOverride:
-                    '${Environment.fetchEnvironment().apiGwUrl}/iam',
-              );
               final consumerIamClient = AffinidiTdkConsumerIamClient(
                 authTokenHook: provider.fetchConsumerToken,
                 basePathOverride:
                     '${Environment.fetchEnvironment().apiGwUrl}/cid',
               );
               return VaultDataManagerSharedAccessApiService(
-                affinidiTdkIamClient: iamClient,
                 affinidiTdkConsumerIamClient: consumerIamClient,
               );
             }),
@@ -486,85 +479,6 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
   }
 
   @override
-  Future<Uint8List> grantProfileAccess({
-    required int accountIndex,
-    required String granteeDid,
-    required Permissions permissions,
-    VaultCancelToken? cancelToken,
-  }) async {
-    if (!_configured) {
-      Error.throwWithStackTrace(
-        TdkException(
-            message:
-                'Profile repository must be configured using a RepositoryConfiguration',
-            code: TdkExceptionType.profleNotConfigured.code),
-        StackTrace.current,
-      );
-    }
-
-    final didSigner = await _memoizedDidSigner('$accountIndex');
-    final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
-    final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
-
-    await iamApiService.grantAccessVfs(
-      granteeDid: granteeDid,
-      permissions: permissions,
-      cancelToken:
-          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
-    );
-
-    final accountVaultDataManagerService =
-        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
-    final accounts = await accountVaultDataManagerService.getAccounts();
-    final account = accounts
-        .where((account) => account.accountIndex == accountIndex)
-        .firstOrNull;
-
-    if (account == null) {
-      Error.throwWithStackTrace(
-        TdkException(
-            message: 'Account with index $accountIndex does not exist',
-            code: TdkExceptionType.invalidAccountIndex.code),
-        StackTrace.current,
-      );
-    }
-
-    final profileKeyPair =
-        await _memoizedKeyPair(accountIndex: '$accountIndex');
-    final kek = await profileKeyPair.decrypt(
-      base64.decode(account.accountMetadata!.dekekInfo.encryptedDekek),
-    );
-
-    return kek;
-  }
-
-  @override
-  Future<void> revokeProfileAccess({
-    required int accountIndex,
-    required String granteeDid,
-    VaultCancelToken? cancelToken,
-  }) async {
-    if (!_configured) {
-      Error.throwWithStackTrace(
-        TdkException(
-            message:
-                'Profile repository must be configured using a RepositoryConfiguration',
-            code: TdkExceptionType.profleNotConfigured.code),
-        StackTrace.current,
-      );
-    }
-
-    final didSigner = await _memoizedDidSigner('$accountIndex');
-    final consumerAuthProvider = _consumerAuthProviderFactory(didSigner);
-    final iamApiService = _iamApiServiceFactory(consumerAuthProvider);
-    await iamApiService.revokeAccessVfs(
-      granteeDid: granteeDid,
-      cancelToken:
-          cancelToken != null ? DioCancelTokenAdapter.from(cancelToken) : null,
-    );
-  }
-
-  @override
   Future<Uint8List> grantItemAccessMultiple({
     required int accountIndex,
     required String granteeDid,
@@ -745,60 +659,6 @@ class VfsProfileRepository implements ProfileRepository, ProfileAccessSharing {
 
   Future<KeyPair> _getProfileKeyPair({required String accountIndex}) async {
     return await _wallet.generateKey(keyId: _getDerivationPath(accountIndex));
-  }
-
-  @override
-  Future<void> receiveProfileAccess({
-    required int accountIndex,
-    required String profileId,
-    required Uint8List kek,
-    required String grantedProfileDid,
-    VaultCancelToken? cancelToken,
-  }) async {
-    if (!_configured) {
-      Error.throwWithStackTrace(
-        TdkException(
-            message:
-                'Profile repository must be configured using a RepositoryConfiguration',
-            code: TdkExceptionType.profleNotConfigured.code),
-        StackTrace.current,
-      );
-    }
-
-    final profileKeyPair =
-        await _memoizedKeyPair(accountIndex: '$accountIndex');
-    final sharedStorageData = SharedStorageData(
-      encryptedDekek: base64.encode(await profileKeyPair.encrypt(kek)),
-      nodePath: profileId,
-      profileDid: grantedProfileDid,
-    );
-
-    final accountVaultDataManagerService =
-        await _memoizedDataManagerService(walletKeyId: _rootAccountKeyId);
-    final accountsResponse = await accountVaultDataManagerService.getAccounts();
-    final previousAccountData = accountsResponse
-        .firstWhere((account) => account.accountIndex == accountIndex);
-
-    final accountMetadata = AccountMetadata(
-      sharedStorageData: [
-        ...previousAccountData.accountMetadata!.sharedStorageData,
-        sharedStorageData
-      ],
-      dekekInfo: previousAccountData.accountMetadata!.dekekInfo,
-    );
-
-    final profileDidSigner = await _memoizedDidSigner(
-      accountIndex.toString(),
-    );
-    final profileDidProof = await _getDidProof(didSigner: profileDidSigner);
-
-    await accountVaultDataManagerService.updateAccount(
-      accountIndex: accountIndex,
-      accountDid: profileDidSigner.did,
-      didProof: profileDidProof,
-      metadata: accountMetadata,
-      cancelToken: cancelToken,
-    );
   }
 
   String _getDerivationPath(String accountIndex) =>

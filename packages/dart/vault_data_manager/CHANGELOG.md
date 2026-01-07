@@ -1,5 +1,17 @@
 # Change Log
 
+## 1.14.0
+
+### Changes
+
+---
+
+feat: add time bound for profile sharing
+
+* Deprecated: grantAccessVfs in favor of item level addess and clarified profileId docs 
+
+---
+
 ## 1.13.0
 
 ### Changes
