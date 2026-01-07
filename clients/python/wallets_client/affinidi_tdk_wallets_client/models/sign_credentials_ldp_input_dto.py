@@ -29,7 +29,8 @@ class SignCredentialsLdpInputDto(BaseModel):
     unsigned_credential: Dict[str, Any] = Field(default=..., alias="unsignedCredential", description="Unsigned Credential in Dm2 format ")
     revocable: Optional[StrictBool] = None
     signature_scheme: Optional[StrictStr] = Field(default=None, alias="signatureScheme")
-    __properties = ["unsignedCredential", "revocable", "signatureScheme"]
+    signature_suite: Optional[StrictStr] = Field(default=None, alias="signatureSuite", description="W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).")
+    __properties = ["unsignedCredential", "revocable", "signatureScheme", "signatureSuite"]
 
     @validator('signature_scheme')
     def signature_scheme_validate_enum(cls, value):
@@ -39,6 +40,16 @@ class SignCredentialsLdpInputDto(BaseModel):
 
         if value not in ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519',):
             raise ValueError("must be one of enum values ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519')")
+        return value
+
+    @validator('signature_suite')
+    def signature_suite_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019',):
+            raise ValueError("must be one of enum values ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019')")
         return value
 
     class Config:
@@ -79,7 +90,8 @@ class SignCredentialsLdpInputDto(BaseModel):
         _obj = SignCredentialsLdpInputDto.parse_obj({
             "unsigned_credential": obj.get("unsignedCredential"),
             "revocable": obj.get("revocable"),
-            "signature_scheme": obj.get("signatureScheme")
+            "signature_scheme": obj.get("signatureScheme"),
+            "signature_suite": obj.get("signatureSuite")
         })
         return _obj
 
