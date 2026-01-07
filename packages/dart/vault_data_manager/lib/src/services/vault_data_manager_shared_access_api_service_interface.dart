@@ -12,13 +12,20 @@ abstract interface class VaultDataManagerSharedAccessApiServiceInterface {
   /// * [granteeDid] - grant access to this DID
   /// * [permissions] - the rights to grant to the grantee DID
   /// * [expiresAt] - Optional expiration date/time for the permissions
-  /// * [profileId] - Optional profile ID (nodeId) to grant profile-level access.
+  /// * [profileId] - Optional profile ID (nodeId) for profile‑level access.
+  ///   From the legacy profile‑scoped API: when set, access is scoped to that
+  ///   profile; when omitted, no nodeId is sent and access is granted at the
+  ///   VFS level (not tied to any specific profile).
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extra] - Can be used to add flags to the request
   /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Deprecated: use [setItemsAccessVfs] (item-level access) or the vault
+  /// `grantItemAccessMultiple`-based flows instead.
+  @Deprecated('Use setItemsAccessVfs / grantItemAccessMultiple instead')
   Future<void> grantAccessVfs({
     required String granteeDid,
     required Permissions permissions,

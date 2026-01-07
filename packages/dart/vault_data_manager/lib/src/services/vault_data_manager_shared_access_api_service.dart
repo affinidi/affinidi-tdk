@@ -42,6 +42,9 @@ class VaultDataManagerSharedAccessApiService
     _consumerAuthzApi = affinidiTdkConsumerIamClient?.getAuthzApi();
   }
 
+  /// Deprecated: use [setItemsAccessVfs] (item-level access) or the vault
+  /// `grantItemAccessMultiple`-based flows instead.
+  @Deprecated('Use setItemsAccessVfs / grantItemAccessMultiple instead')
   @override
   Future<void> grantAccessVfs({
     required String granteeDid,
