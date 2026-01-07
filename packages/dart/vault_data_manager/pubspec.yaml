@@ -9,7 +9,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_common: ^1.6.0
+  affinidi_tdk_common: ^1.7.0
   affinidi_tdk_consumer_auth_provider: ^4.10.0
   affinidi_tdk_consumer_iam_client: ^1.2.0
   affinidi_tdk_cryptography: ^2.3.2

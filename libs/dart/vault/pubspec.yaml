@@ -9,7 +9,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  affinidi_tdk_common: ^1.6.0
+  affinidi_tdk_common: ^1.7.0
   ssi: ^2.2.0
 
 dev_dependencies:

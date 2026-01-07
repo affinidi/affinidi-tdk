@@ -32,7 +32,7 @@ resolution: workspace
 dependencies:
   affinidi_tdk_vault: ^1.15.0
   affinidi_tdk_vault_data_manager: ^1.14.0
-  affinidi_tdk_vault_flutter_utils: ^1.11.2
+  affinidi_tdk_vault_flutter_utils: ^1.14.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
