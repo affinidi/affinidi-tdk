@@ -9,8 +9,10 @@ import 'package:dio/dio.dart';
 
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_output.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_credential_v2_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_input.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_output.dart';
+import 'package:affinidi_tdk_credential_verification_client/src/model/verify_presentation_v2_input.dart';
 
 class DefaultApi {
   final Dio _dio;
@@ -122,6 +124,109 @@ class DefaultApi {
     );
   }
 
+  /// Verifying VC
+  /// Verifying Verifiable Credentials (signatures)  &#x60;isValid&#x60; - true if all credentials verified &#x60;errors&#x60; contains list of error messages for invalid credentials.
+  ///
+  /// Parameters:
+  /// * [verifyCredentialV2Input] - Request body for verifying VCs with separate JWT and LDP arrays
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [VerifyCredentialOutput] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<VerifyCredentialOutput>> verifyCredentialsV2({
+    required VerifyCredentialV2Input verifyCredentialV2Input,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/verifier/credentials';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ProjectTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(VerifyCredentialV2Input);
+      _bodyData =
+          _serializers.serialize(verifyCredentialV2Input, specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    VerifyCredentialOutput? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(VerifyCredentialOutput),
+            ) as VerifyCredentialOutput;
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<VerifyCredentialOutput>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Verifying VP
   /// Verifying Verifiable Presentation (signatures)  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
   ///
@@ -172,6 +277,109 @@ class DefaultApi {
       const _type = FullType(VerifyPresentationInput);
       _bodyData =
           _serializers.serialize(verifyPresentationInput, specifiedType: _type);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    VerifyPresentationOutput? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null
+          ? null
+          : _serializers.deserialize(
+              rawResponse,
+              specifiedType: const FullType(VerifyPresentationOutput),
+            ) as VerifyPresentationOutput;
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<VerifyPresentationOutput>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Verifying VP
+  /// Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  &#x60;isValid&#x60; - true if presentation verified &#x60;error&#x60; verificaction error.
+  ///
+  /// Parameters:
+  /// * [verifyPresentationV2Input] - VerifyPresentationV2
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [VerifyPresentationOutput] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<VerifyPresentationOutput>> verifyPresentationV2({
+    required VerifyPresentationV2Input verifyPresentationV2Input,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/verifier/presentation';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'ProjectTokenAuth',
+            'keyName': 'authorization',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      const _type = FullType(VerifyPresentationV2Input);
+      _bodyData = _serializers.serialize(verifyPresentationV2Input,
+          specifiedType: _type);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(

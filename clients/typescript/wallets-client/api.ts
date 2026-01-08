@@ -951,6 +951,12 @@ export interface SignCredentialsLdpInputDto {
    * @memberof SignCredentialsLdpInputDto
    */
   signatureScheme?: SignCredentialsLdpInputDtoSignatureSchemeEnum
+  /**
+   * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+   * @type {string}
+   * @memberof SignCredentialsLdpInputDto
+   */
+  signatureSuite?: SignCredentialsLdpInputDtoSignatureSuiteEnum
 }
 
 export const SignCredentialsLdpInputDtoSignatureSchemeEnum = {
@@ -961,6 +967,16 @@ export const SignCredentialsLdpInputDtoSignatureSchemeEnum = {
 
 export type SignCredentialsLdpInputDtoSignatureSchemeEnum =
   (typeof SignCredentialsLdpInputDtoSignatureSchemeEnum)[keyof typeof SignCredentialsLdpInputDtoSignatureSchemeEnum]
+export const SignCredentialsLdpInputDtoSignatureSuiteEnum = {
+  EcdsaJcs2019: 'ecdsa-jcs-2019',
+  EcdsaRdfc2019: 'ecdsa-rdfc-2019',
+  EddsaJcs2022: 'eddsa-jcs-2022',
+  EddsaRdfc2022: 'eddsa-rdfc-2022',
+  EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+} as const
+
+export type SignCredentialsLdpInputDtoSignatureSuiteEnum =
+  (typeof SignCredentialsLdpInputDtoSignatureSuiteEnum)[keyof typeof SignCredentialsLdpInputDtoSignatureSuiteEnum]
 
 /**
  * DTO contains signed credential
@@ -1068,6 +1084,12 @@ export interface SignPresentationLdpInputDto {
    */
   signatureScheme?: SignPresentationLdpInputDtoSignatureSchemeEnum
   /**
+   * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+   * @type {string}
+   * @memberof SignPresentationLdpInputDto
+   */
+  signatureSuite?: SignPresentationLdpInputDtoSignatureSuiteEnum
+  /**
    * Domain(s) for which the presentation is intended
    * @type {Array<string>}
    * @memberof SignPresentationLdpInputDto
@@ -1089,6 +1111,16 @@ export const SignPresentationLdpInputDtoSignatureSchemeEnum = {
 
 export type SignPresentationLdpInputDtoSignatureSchemeEnum =
   (typeof SignPresentationLdpInputDtoSignatureSchemeEnum)[keyof typeof SignPresentationLdpInputDtoSignatureSchemeEnum]
+export const SignPresentationLdpInputDtoSignatureSuiteEnum = {
+  EcdsaJcs2019: 'ecdsa-jcs-2019',
+  EcdsaRdfc2019: 'ecdsa-rdfc-2019',
+  EddsaJcs2022: 'eddsa-jcs-2022',
+  EddsaRdfc2022: 'eddsa-rdfc-2022',
+  EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+} as const
+
+export type SignPresentationLdpInputDtoSignatureSuiteEnum =
+  (typeof SignPresentationLdpInputDtoSignatureSuiteEnum)[keyof typeof SignPresentationLdpInputDtoSignatureSuiteEnum]
 
 /**
  * DTO contains signed presentation
@@ -1160,6 +1192,90 @@ export const SigningFailedErrorHttpStatusCodeEnum = {
 export type SigningFailedErrorHttpStatusCodeEnum =
   (typeof SigningFailedErrorHttpStatusCodeEnum)[keyof typeof SigningFailedErrorHttpStatusCodeEnum]
 
+/**
+ *
+ * @export
+ * @interface TooManyRequestsError
+ */
+export interface TooManyRequestsError {
+  /**
+   *
+   * @type {string}
+   * @memberof TooManyRequestsError
+   */
+  name: TooManyRequestsErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof TooManyRequestsError
+   */
+  message: TooManyRequestsErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof TooManyRequestsError
+   */
+  httpStatusCode: TooManyRequestsErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof TooManyRequestsError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @memberof TooManyRequestsError
+   */
+  details?: Array<ServiceErrorResponseDetailsInner>
+}
+
+export const TooManyRequestsErrorNameEnum = {
+  TooManyRequestsError: 'TooManyRequestsError',
+} as const
+
+export type TooManyRequestsErrorNameEnum =
+  (typeof TooManyRequestsErrorNameEnum)[keyof typeof TooManyRequestsErrorNameEnum]
+export const TooManyRequestsErrorMessageEnum = {
+  TooManyConcurrentRequestsToTheSameWalletTheOperationFailedAfterMultipleRetryAttemptsDueToConcurrentUpdatesPleaseRetryYourRequestAfterAShortDelay:
+    'Too many concurrent requests to the same wallet. The operation failed after multiple retry attempts due to concurrent updates. Please retry your request after a short delay.',
+} as const
+
+export type TooManyRequestsErrorMessageEnum =
+  (typeof TooManyRequestsErrorMessageEnum)[keyof typeof TooManyRequestsErrorMessageEnum]
+export const TooManyRequestsErrorHttpStatusCodeEnum = {
+  NUMBER_429: 429,
+} as const
+
+export type TooManyRequestsErrorHttpStatusCodeEnum =
+  (typeof TooManyRequestsErrorHttpStatusCodeEnum)[keyof typeof TooManyRequestsErrorHttpStatusCodeEnum]
+
+/**
+ * DTO contains params to unpack encrypted DIDComm message
+ * @export
+ * @interface UnpackMessageInput
+ */
+export interface UnpackMessageInput {
+  /**
+   * Encrypted DIDComm message
+   * @type {object}
+   * @memberof UnpackMessageInput
+   */
+  message: object
+}
+/**
+ * DTO contains decrypted message in JSON fromat
+ * @export
+ * @interface UnpackMessageResultDto
+ */
+export interface UnpackMessageResultDto {
+  /**
+   * decrypted message in JSON format
+   * @type {object}
+   * @memberof UnpackMessageResultDto
+   */
+  message: object
+}
 /**
  * Update wallet input params
  * @export
@@ -1994,6 +2110,60 @@ export const WalletApiAxiosParamCreator = function (
       }
     },
     /**
+     * Create v2 wallet
+     * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWalletV2: async (
+      createWalletV2Input?: CreateWalletV2Input,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v2/wallets`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createWalletV2Input,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * delete wallet by walletId
      * @param {string} walletId id of the wallet
      * @param {*} [options] Override http request option.
@@ -2656,6 +2826,38 @@ export const WalletApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * Create v2 wallet
+     * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createWalletV2(
+      createWalletV2Input?: CreateWalletV2Input,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<CreateWalletV2Response>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createWalletV2(
+        createWalletV2Input,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.createWalletV2']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * delete wallet by walletId
      * @param {string} walletId id of the wallet
      * @param {*} [options] Override http request option.
@@ -3014,6 +3216,20 @@ export const WalletApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * Create v2 wallet
+     * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWalletV2(
+      createWalletV2Input?: CreateWalletV2Input,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<CreateWalletV2Response> {
+      return localVarFp
+        .createWalletV2(createWalletV2Input, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * delete wallet by walletId
      * @param {string} walletId id of the wallet
      * @param {*} [options] Override http request option.
@@ -3194,6 +3410,22 @@ export class WalletApi extends BaseAPI {
   ) {
     return WalletApiFp(this.configuration)
       .createWallet(createWalletInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Create v2 wallet
+   * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public createWalletV2(
+    createWalletV2Input?: CreateWalletV2Input,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .createWalletV2(createWalletV2Input, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

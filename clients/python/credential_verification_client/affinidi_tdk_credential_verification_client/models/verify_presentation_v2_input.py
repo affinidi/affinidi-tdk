@@ -29,9 +29,10 @@ class VerifyPresentationV2Input(BaseModel):
     """
     verifiable_presentation: Optional[Dict[str, Any]] = Field(default=None, alias="verifiablePresentation")
     pex_query: Optional[VerifyPresentationV2InputPexQuery] = Field(default=None, alias="pexQuery")
+    dcql_query: Optional[Dict[str, Any]] = Field(default=None, alias="dcqlQuery", description="DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.")
     challenge: Optional[StrictStr] = Field(default=None, description="Optional challenge string for domain/challenge verification")
     domain: Optional[conlist(StrictStr)] = Field(default=None, description="Optional domain for verification. Array of domain strings as per W3C VP standard")
-    __properties = ["verifiablePresentation", "pexQuery", "challenge", "domain"]
+    __properties = ["verifiablePresentation", "pexQuery", "dcqlQuery", "challenge", "domain"]
 
     class Config:
         """Pydantic configuration"""
@@ -74,6 +75,7 @@ class VerifyPresentationV2Input(BaseModel):
         _obj = VerifyPresentationV2Input.parse_obj({
             "verifiable_presentation": obj.get("verifiablePresentation"),
             "pex_query": VerifyPresentationV2InputPexQuery.from_dict(obj.get("pexQuery")) if obj.get("pexQuery") is not None else None,
+            "dcql_query": obj.get("dcqlQuery"),
             "challenge": obj.get("challenge"),
             "domain": obj.get("domain")
         })
