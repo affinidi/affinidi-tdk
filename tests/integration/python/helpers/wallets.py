@@ -1,7 +1,7 @@
 import json
 from .auth import get_client_configuration
 from .utils import generate_random_string
-from affinidi_tdk_wallets_client import WalletApi, ApiClient, CreateWalletInput, Configuration#, DidWebInputParams, DidKeyInputParams
+from affinidi_tdk_wallets_client import WalletApi, ApiClient, CreateWalletInput, CreateWalletV2Input, Configuration
 
 def create_wallet(did_web=False):
     config = get_client_configuration(Configuration)
@@ -15,6 +15,24 @@ def create_wallet(did_web=False):
             create_wallet_input = CreateWalletInput(did_method="key")
 
         response = api_instance.create_wallet(create_wallet_input=create_wallet_input)
+        return json.loads(response.json())['wallet']
+
+def create_wallet_v2(did_web=False):
+    """Create a v2 wallet using the new API."""
+    config = get_client_configuration(Configuration)
+    with ApiClient(config) as api_client:
+        api_instance = WalletApi(api_client)
+
+        if did_web:
+            random_name = generate_random_string()
+            create_wallet_input = CreateWalletV2Input(
+                did_method="web", 
+                did_web_url=f"https://{random_name}.com"
+            )
+        else:
+            create_wallet_input = CreateWalletV2Input(did_method="key")
+
+        response = api_instance.create_wallet_v2(create_wallet_v2_input=create_wallet_input)
         return json.loads(response.json())['wallet']
 
 def delete_wallet(wallet_id):
