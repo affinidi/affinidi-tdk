@@ -39,9 +39,57 @@ final BuiltSet<SignPresentationLdpInputDtoSignatureSchemeEnum>
   _$signPresentationLdpInputDtoSignatureSchemeEnum_ed25519,
 ]);
 
+const SignPresentationLdpInputDtoSignatureSuiteEnum
+    _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaJcs2019 =
+    const SignPresentationLdpInputDtoSignatureSuiteEnum._('ecdsaJcs2019');
+const SignPresentationLdpInputDtoSignatureSuiteEnum
+    _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaRdfc2019 =
+    const SignPresentationLdpInputDtoSignatureSuiteEnum._('ecdsaRdfc2019');
+const SignPresentationLdpInputDtoSignatureSuiteEnum
+    _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaJcs2022 =
+    const SignPresentationLdpInputDtoSignatureSuiteEnum._('eddsaJcs2022');
+const SignPresentationLdpInputDtoSignatureSuiteEnum
+    _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaRdfc2022 =
+    const SignPresentationLdpInputDtoSignatureSuiteEnum._('eddsaRdfc2022');
+const SignPresentationLdpInputDtoSignatureSuiteEnum
+    _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaSecp256k1Signature2019 =
+    const SignPresentationLdpInputDtoSignatureSuiteEnum._(
+        'ecdsaSecp256k1Signature2019');
+
+SignPresentationLdpInputDtoSignatureSuiteEnum
+    _$signPresentationLdpInputDtoSignatureSuiteEnumValueOf(String name) {
+  switch (name) {
+    case 'ecdsaJcs2019':
+      return _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaJcs2019;
+    case 'ecdsaRdfc2019':
+      return _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaRdfc2019;
+    case 'eddsaJcs2022':
+      return _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaJcs2022;
+    case 'eddsaRdfc2022':
+      return _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaRdfc2022;
+    case 'ecdsaSecp256k1Signature2019':
+      return _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaSecp256k1Signature2019;
+    default:
+      throw ArgumentError(name);
+  }
+}
+
+final BuiltSet<SignPresentationLdpInputDtoSignatureSuiteEnum>
+    _$signPresentationLdpInputDtoSignatureSuiteEnumValues = BuiltSet<
+        SignPresentationLdpInputDtoSignatureSuiteEnum>(const <SignPresentationLdpInputDtoSignatureSuiteEnum>[
+  _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaJcs2019,
+  _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaRdfc2019,
+  _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaJcs2022,
+  _$signPresentationLdpInputDtoSignatureSuiteEnum_eddsaRdfc2022,
+  _$signPresentationLdpInputDtoSignatureSuiteEnum_ecdsaSecp256k1Signature2019,
+]);
+
 Serializer<SignPresentationLdpInputDtoSignatureSchemeEnum>
     _$signPresentationLdpInputDtoSignatureSchemeEnumSerializer =
     _$SignPresentationLdpInputDtoSignatureSchemeEnumSerializer();
+Serializer<SignPresentationLdpInputDtoSignatureSuiteEnum>
+    _$signPresentationLdpInputDtoSignatureSuiteEnumSerializer =
+    _$SignPresentationLdpInputDtoSignatureSuiteEnumSerializer();
 
 class _$SignPresentationLdpInputDtoSignatureSchemeEnumSerializer
     implements
@@ -78,11 +126,52 @@ class _$SignPresentationLdpInputDtoSignatureSchemeEnumSerializer
           _fromWire[serialized] ?? (serialized is String ? serialized : ''));
 }
 
+class _$SignPresentationLdpInputDtoSignatureSuiteEnumSerializer
+    implements
+        PrimitiveSerializer<SignPresentationLdpInputDtoSignatureSuiteEnum> {
+  static const Map<String, Object> _toWire = const <String, Object>{
+    'ecdsaJcs2019': 'ecdsa-jcs-2019',
+    'ecdsaRdfc2019': 'ecdsa-rdfc-2019',
+    'eddsaJcs2022': 'eddsa-jcs-2022',
+    'eddsaRdfc2022': 'eddsa-rdfc-2022',
+    'ecdsaSecp256k1Signature2019': 'EcdsaSecp256k1Signature2019',
+  };
+  static const Map<Object, String> _fromWire = const <Object, String>{
+    'ecdsa-jcs-2019': 'ecdsaJcs2019',
+    'ecdsa-rdfc-2019': 'ecdsaRdfc2019',
+    'eddsa-jcs-2022': 'eddsaJcs2022',
+    'eddsa-rdfc-2022': 'eddsaRdfc2022',
+    'EcdsaSecp256k1Signature2019': 'ecdsaSecp256k1Signature2019',
+  };
+
+  @override
+  final Iterable<Type> types = const <Type>[
+    SignPresentationLdpInputDtoSignatureSuiteEnum
+  ];
+  @override
+  final String wireName = 'SignPresentationLdpInputDtoSignatureSuiteEnum';
+
+  @override
+  Object serialize(Serializers serializers,
+          SignPresentationLdpInputDtoSignatureSuiteEnum object,
+          {FullType specifiedType = FullType.unspecified}) =>
+      _toWire[object.name] ?? object.name;
+
+  @override
+  SignPresentationLdpInputDtoSignatureSuiteEnum deserialize(
+          Serializers serializers, Object serialized,
+          {FullType specifiedType = FullType.unspecified}) =>
+      SignPresentationLdpInputDtoSignatureSuiteEnum.valueOf(
+          _fromWire[serialized] ?? (serialized is String ? serialized : ''));
+}
+
 class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
   @override
   final JsonObject unsignedPresentation;
   @override
   final SignPresentationLdpInputDtoSignatureSchemeEnum? signatureScheme;
+  @override
+  final SignPresentationLdpInputDtoSignatureSuiteEnum? signatureSuite;
   @override
   final BuiltList<String>? domain;
   @override
@@ -95,6 +184,7 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
   _$SignPresentationLdpInputDto._(
       {required this.unsignedPresentation,
       this.signatureScheme,
+      this.signatureSuite,
       this.domain,
       this.challenge})
       : super._();
@@ -113,6 +203,7 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
     return other is SignPresentationLdpInputDto &&
         unsignedPresentation == other.unsignedPresentation &&
         signatureScheme == other.signatureScheme &&
+        signatureSuite == other.signatureSuite &&
         domain == other.domain &&
         challenge == other.challenge;
   }
@@ -122,6 +213,7 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
     var _$hash = 0;
     _$hash = $jc(_$hash, unsignedPresentation.hashCode);
     _$hash = $jc(_$hash, signatureScheme.hashCode);
+    _$hash = $jc(_$hash, signatureSuite.hashCode);
     _$hash = $jc(_$hash, domain.hashCode);
     _$hash = $jc(_$hash, challenge.hashCode);
     _$hash = $jf(_$hash);
@@ -133,6 +225,7 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
     return (newBuiltValueToStringHelper(r'SignPresentationLdpInputDto')
           ..add('unsignedPresentation', unsignedPresentation)
           ..add('signatureScheme', signatureScheme)
+          ..add('signatureSuite', signatureSuite)
           ..add('domain', domain)
           ..add('challenge', challenge))
         .toString();
@@ -157,6 +250,13 @@ class SignPresentationLdpInputDtoBuilder
           SignPresentationLdpInputDtoSignatureSchemeEnum? signatureScheme) =>
       _$this._signatureScheme = signatureScheme;
 
+  SignPresentationLdpInputDtoSignatureSuiteEnum? _signatureSuite;
+  SignPresentationLdpInputDtoSignatureSuiteEnum? get signatureSuite =>
+      _$this._signatureSuite;
+  set signatureSuite(
+          SignPresentationLdpInputDtoSignatureSuiteEnum? signatureSuite) =>
+      _$this._signatureSuite = signatureSuite;
+
   ListBuilder<String>? _domain;
   ListBuilder<String> get domain => _$this._domain ??= ListBuilder<String>();
   set domain(ListBuilder<String>? domain) => _$this._domain = domain;
@@ -174,6 +274,7 @@ class SignPresentationLdpInputDtoBuilder
     if ($v != null) {
       _unsignedPresentation = $v.unsignedPresentation;
       _signatureScheme = $v.signatureScheme;
+      _signatureSuite = $v.signatureSuite;
       _domain = $v.domain?.toBuilder();
       _challenge = $v.challenge;
       _$v = null;
@@ -204,6 +305,7 @@ class SignPresentationLdpInputDtoBuilder
                 r'SignPresentationLdpInputDto',
                 'unsignedPresentation'),
             signatureScheme: signatureScheme,
+            signatureSuite: signatureSuite,
             domain: _domain?.build(),
             challenge: challenge,
           );
