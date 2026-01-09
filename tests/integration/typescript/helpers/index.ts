@@ -27,15 +27,36 @@ const {
   PRIVATE_KEY: privateKeyProd = isProd ? required('PRIVATE_KEY') : '',
   PROJECT_ID: projectIdProd = isProd ? required('PROJECT_ID') : '',
   // fixtures
-  VERIFIABLE_CREDENTIAL: verifiableCredential = required('VERIFIABLE_CREDENTIAL'),
-  VERIFIABLE_PRESENTATION: verifiablePresentation = required('VERIFIABLE_PRESENTATION'),
-  CREDENTIAL_ISSUANCE_DATA: credentialIssuanceData = required('CREDENTIAL_ISSUANCE_DATA'),
-  UNSIGNED_CREDENTIAL_PARAMS: unsignedCredentialParams = required('UNSIGNED_CREDENTIAL_PARAMS'),
-  CREDENTIAL_ISSUANCE_CONFIGURATION: credentialIssuanceConfiguration = required('CREDENTIAL_ISSUANCE_CONFIGURATION'),
+  VERIFIABLE_CREDENTIAL: verifiableCredential = required(
+    'VERIFIABLE_CREDENTIAL',
+  ),
+  VERIFIABLE_PRESENTATION: verifiablePresentation = required(
+    'VERIFIABLE_PRESENTATION',
+  ),
+  CREDENTIAL_ISSUANCE_DATA: credentialIssuanceData = required(
+    'CREDENTIAL_ISSUANCE_DATA',
+  ),
+  UNSIGNED_CREDENTIAL_PARAMS: unsignedCredentialParams = required(
+    'UNSIGNED_CREDENTIAL_PARAMS',
+  ),
+  CREDENTIAL_ISSUANCE_CONFIGURATION: credentialIssuanceConfiguration = required(
+    'CREDENTIAL_ISSUANCE_CONFIGURATION',
+  ),
+
+  // v2 fixtures - universal credential template for JWT, LDP, and SD-JWT
+  UNSIGNED_CREDENTIAL_V2: unsignedCredentialV2 = required(
+    'UNSIGNED_CREDENTIAL_V2',
+  ),
+  DISCLOSURE_FRAME_V2: disclosureFrameV2 = required('DISCLOSURE_FRAME_V2'),
+  JWT_CREDENTIAL_V2: jwtCredentialV2 = required('JWT_CREDENTIAL_V2'),
 
   IOTA_CONFIGURATION: iotaConfiguration = required('IOTA_CONFIGURATION'),
-  IOTA_PRESENTATION_SUBMISSION: iotaPresentationSubmission = required('IOTA_PRESENTATION_SUBMISSION'),
-  IOTA_PRESENTATION_DEFINITION: iotaPresentationDefinition = required('IOTA_PRESENTATION_DEFINITION'),
+  IOTA_PRESENTATION_SUBMISSION: iotaPresentationSubmission = required(
+    'IOTA_PRESENTATION_SUBMISSION',
+  ),
+  IOTA_PRESENTATION_DEFINITION: iotaPresentationDefinition = required(
+    'IOTA_PRESENTATION_DEFINITION',
+  ),
   // secrets for internal testing
   DEV_TOKEN_ID: tokenIdDev = isProd ? required('DEV_TOKEN_ID') : '',
   DEV_PRIVATE_KEY: privateKeyDev = isProd ? required('DEV_PRIVATE_KEY') : '',
@@ -79,6 +100,10 @@ export {
   iotaPresentationDefinition,
   unsignedCredentialParams,
   credentialIssuanceConfiguration,
+  // v2 exports
+  unsignedCredentialV2,
+  disclosureFrameV2,
+  jwtCredentialV2,
 }
 
 export const createWallet = async () => {

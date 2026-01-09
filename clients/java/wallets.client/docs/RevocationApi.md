@@ -226,12 +226,13 @@ null (empty response body)
 
 ### HTTP response details
 
-| Status code | Description     | Response headers |
-| ----------- | --------------- | ---------------- |
-| **200**     | Ok              | -                |
-| **400**     | BadRequestError | -                |
-| **403**     | ForbiddenError  | -                |
-| **404**     | NotFoundError   | -                |
+| Status code | Description          | Response headers |
+| ----------- | -------------------- | ---------------- |
+| **200**     | Ok                   | -                |
+| **400**     | BadRequestError      | -                |
+| **403**     | ForbiddenError       | -                |
+| **404**     | NotFoundError        | -                |
+| **429**     | TooManyRequestsError | -                |
 
 ## revokeCredentials
 

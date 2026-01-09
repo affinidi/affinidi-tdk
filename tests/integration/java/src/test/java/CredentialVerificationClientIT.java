@@ -1,10 +1,13 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Map;
 
 import helpers.AuthUtils;
 import helpers.Env;
@@ -25,6 +28,7 @@ import com.affinidi.tdk.common.EnvironmentUtil;
 public class CredentialVerificationClientIT {
     private String verifiableCredentialJson;
     private String verifiablePresentationJson;
+    private String verifiableCredentialJwt;
 
     private DefaultApi verificationApi;
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -33,6 +37,7 @@ public class CredentialVerificationClientIT {
     void setUp() throws Exception {
         verifiableCredentialJson = Env.get("VERIFIABLE_CREDENTIAL");
         verifiablePresentationJson = Env.get("VERIFIABLE_PRESENTATION");
+        verifiableCredentialJwt = Env.get("JWT_CREDENTIAL_V2");
 
         ApiClient client = Configuration.getDefaultApiClient();
 
@@ -53,7 +58,7 @@ public class CredentialVerificationClientIT {
         Object credential = objectMapper.readValue(verifiableCredentialJson, Object.class);
 
         VerifyCredentialInput input = new VerifyCredentialInput()
-            .addVerifiableCredentialsItem(credential);
+                .addVerifiableCredentialsItem(credential);
 
         VerifyCredentialOutput result = verificationApi.verifyCredentials(input);
 
@@ -65,9 +70,67 @@ public class CredentialVerificationClientIT {
         Object presentation = objectMapper.readValue(verifiablePresentationJson, Object.class);
 
         VerifyPresentationInput input = new VerifyPresentationInput()
-            .verifiablePresentation(presentation);
+                .verifiablePresentation(presentation);
 
         VerifyPresentationOutput result = verificationApi.verifyPresentation(input);
+
+        assertTrue(result.getIsValid(), "Presentation should be valid.");
+    }
+
+    @Test
+    @DisplayName("Test LDP Credential Verification using v2 API")
+    void testLdpCredentialVerification() throws Exception {
+        Map<String, Object> ldpCredential = (Map<String, Object>) objectMapper.readValue(verifiableCredentialJson,
+                Object.class);
+
+        VerifyCredentialV2Input input = new VerifyCredentialV2Input()
+                .addLdpVcsItem(ldpCredential);
+
+        VerifyCredentialOutput result = verificationApi.verifyCredentialsV2(input);
+
+        assertTrue(result.getIsValid(), "Credential should be valid.");
+    }
+
+    @Test
+    @DisplayName("Test JWT Credential Verification using v2 API")
+    void testJwtCredentialVerification() throws Exception {
+        String jwtCredential = verifiableCredentialJwt;
+
+        VerifyCredentialV2Input input = new VerifyCredentialV2Input()
+                .addJwtVcsItem(jwtCredential);
+
+        VerifyCredentialOutput result = verificationApi.verifyCredentialsV2(input);
+
+        assertTrue(result.getIsValid(), "Credential should be valid.");
+    }
+
+    @Test
+    @DisplayName("Test both LDP and JWT Credential Verification using v2 API")
+    void testLdpAndJwtCredentialVerification() throws Exception {
+        String jwtCredential = verifiableCredentialJwt;
+        Map<String, Object> ldpCredential = (Map<String, Object>) objectMapper.readValue(verifiableCredentialJson,
+                Object.class);
+
+        VerifyCredentialV2Input input = new VerifyCredentialV2Input()
+                .addLdpVcsItem(ldpCredential)
+                .addJwtVcsItem(jwtCredential);
+
+        VerifyCredentialOutput result = verificationApi.verifyCredentialsV2(input);
+
+        assertTrue(result.getIsValid(), "Credential should be valid.");
+    }
+
+    @Test
+    @DisplayName("Test Presentation Verification using v2 API")
+    void testPresentationVerificationV2() throws Exception {
+        Object presentation = objectMapper.readValue(verifiablePresentationJson, Object.class);
+
+        VerifyPresentationV2Input input = new VerifyPresentationV2Input()
+                .verifiablePresentation(presentation);
+        input.setDcqlQuery(null);
+        input.setDomain(null);
+        input.setChallenge(null);
+        VerifyPresentationOutput result = verificationApi.verifyPresentationV2(input);
 
         assertTrue(result.getIsValid(), "Presentation should be valid.");
     }

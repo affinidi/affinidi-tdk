@@ -48,8 +48,8 @@ class CreateWalletInput(BaseModel):
         if value is None:
             return value
 
-        if not re.match(r"^(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$", value):
-            raise ValueError(r"must validate the regular expression /^(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$/")
+        if not re.match(r"^(https?:\/\/)?(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$", value):
+            raise ValueError(r"must validate the regular expression /^(https?:\/\/)?(?!:\/\/)([a-zA-Z0-9\-\.]+)(:[0-9]+)?(\/[a-zA-Z0-9\-\/]*)?$/")
         return value
 
     class Config:
