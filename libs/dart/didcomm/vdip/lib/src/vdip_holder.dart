@@ -61,6 +61,7 @@ class VdipHolder {
   Future<VdipRequestIssuanceMessage> requestCredential({
     required String issuerDid,
     required RequestCredentialsOptions options,
+    List<Attachment>? attachments,
   }) async {
     final requestIssuanceMessage = VdipRequestIssuanceMessage(
       id: const Uuid().v4(),
@@ -73,6 +74,7 @@ class VdipHolder {
         credentialMeta: options.credentialMeta,
         comment: options.comment,
       ),
+      attachments: attachments,
     );
     await mediatorClient.packAndSendMessage(requestIssuanceMessage);
 
@@ -88,6 +90,7 @@ class VdipHolder {
     required String issuerDid,
     required DidSigner assertionSigner,
     required RequestCredentialsOptions options,
+    List<Attachment>? attachments,
   }) async {
     if (holderDid != assertionSigner.did) {
       throw ArgumentError('Holder DID does not match assertion signer DID.');
@@ -121,6 +124,7 @@ class VdipHolder {
         comment: options.comment,
         credentialMeta: options.credentialMeta,
       ),
+      attachments: attachments,
     );
 
     await mediatorClient.packAndSendMessage(requestIssuanceMessage);
@@ -174,6 +178,7 @@ class VdipHolder {
               expiresTime: unpacked.expiresTime,
               body: unpacked.body,
               threadId: unpacked.threadId,
+              attachments: unpacked.attachments,
             ),
           );
 
@@ -190,6 +195,7 @@ class VdipHolder {
               createdTime: unpacked.createdTime,
               expiresTime: unpacked.expiresTime,
               threadId: unpacked.threadId,
+              attachments: unpacked.attachments,
             ),
           );
 

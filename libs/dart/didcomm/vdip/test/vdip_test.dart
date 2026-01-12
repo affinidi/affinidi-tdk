@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:affinidi_tdk_didcomm_mediator_client/affinidi_tdk_didcomm_mediator_client.dart';
 import 'package:affinidi_tdk_vdip/affinidi_tdk_vdip.dart';
@@ -12,6 +13,13 @@ Future<void> main() async {
   const holderEmail = 'user@test.com';
   final proposalId = const Uuid().v4();
   const comment = 'Requesting email credential issuance';
+  final attachment = Attachment(
+    id: 'sample-attachment',
+    mediaType: 'application/json',
+    data: AttachmentData(
+      json: jsonEncode({'sample': 'data'}),
+    ),
+  );
 
   late MockMediator mockMediator;
 
@@ -141,6 +149,7 @@ Future<void> main() async {
                     holderDid: holderDid,
                     verifiableCredential: credential,
                     comment: comment,
+                    attachments: [attachment],
                   );
                 },
                 onProblemReport: (message) async {
@@ -212,6 +221,7 @@ Future<void> main() async {
               );
               expect(actualBody.comment, comment);
               expect(actualBody.credentialFormat, CredentialFormat.w3cV1);
+              expect(actual.attachments?.first.toJson(), attachment.toJson());
 
               final credentialSerialized = actualBody.credential;
               final verifiableCredential =
@@ -276,6 +286,7 @@ Future<void> main() async {
                     holderDid: message.from!,
                     verifiableCredential: credential,
                     comment: comment,
+                    attachments: [attachment],
                   );
                 },
                 onProblemReport: (message) async {
@@ -322,6 +333,7 @@ Future<void> main() async {
                 actual.body!,
               );
               expect(actualBody.comment, comment);
+              expect(actual.attachments?.first.toJson(), attachment.toJson());
             });
 
             test('VDIP challenge validation works correctly', () async {
@@ -401,6 +413,7 @@ Future<void> main() async {
                     baseIssuerUrl: baseIssuerUrl,
                     nonce: nonce,
                     threadId: message.threadId ?? message.id,
+                    attachments: [attachment],
                   );
                 },
                 onRequestToIssueCredential: emptyOnRequestIssuanceCallback,
@@ -447,6 +460,7 @@ Future<void> main() async {
               // Note: actual.from will be set by mediator client during packing
               expect(actual.to, contains(holderDidDocument.id));
               expect(receivedThreadId, isNotNull);
+              expect(actual.attachments?.first.toJson(), attachment.toJson());
 
               final actualBody = actual.switchContext;
               expect(actualBody.baseIssuerUrl, baseIssuerUrl.toString());

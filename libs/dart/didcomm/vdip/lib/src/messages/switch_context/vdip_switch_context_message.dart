@@ -19,6 +19,7 @@ class VdipSwitchContextMessage extends PlainTextMessage {
     super.expiresTime,
     super.threadId,
     super.body = const {},
+    super.attachments,
   }) : super(
           type: messageType,
         );

@@ -18,6 +18,7 @@ class VdipRequestIssuanceMessage extends PlainTextMessage {
     super.createdTime,
     super.expiresTime,
     super.threadId,
+    super.attachments,
   }) : super(
           type: messageType,
           body: body.toJson(),
