@@ -8,7 +8,7 @@ environment:
   flutter: ">=3.10.0"
 
 dependencies:
-  affinidi_tdk_vault_edge_drift_provider: ^1.5.0
+  affinidi_tdk_vault_edge_drift_provider: ^1.6.0
   drift: ^2.26.1
   file_picker: ^8.0.0+1
   flutter:

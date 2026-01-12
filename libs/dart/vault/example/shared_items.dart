@@ -84,7 +84,7 @@ void main() async {
   final aliceProfile = profilesAfterAccountsAlice
       .where((profile) => profile.accountIndex == aliceAccountIndex)
       .firstOrNull;
-  final bobProfile = profilesAfterAccountsBob
+  var bobProfile = profilesAfterAccountsBob
       .where((profile) => profile.accountIndex == bobAccountIndex)
       .firstOrNull;
 
@@ -145,8 +145,18 @@ void main() async {
     profileId: bobProfile.id,
     sharedItems: sharedItems1,
   );
-
+  // Refresh Bob's profile to ensure shared storage is attached after accept.
   profilesBob = await vaultBob.listProfiles();
+  bobProfile =
+      profilesBob.where((p) => p.accountIndex == bobAccountIndex).firstOrNull ??
+          bobProfile;
+
+  print('[Demo] Bob is reading shared file1 metadata ...');
+  await _printMetadataFromSharedStorage(
+    granteeProfile: bobProfile,
+    ownerProfileId: aliceProfile.id,
+    itemId: file1.id,
+  );
 
   print('[Demo] Bob is reading the shared file1 using readSharedItem ...');
   try {
@@ -216,6 +226,18 @@ void main() async {
   await vaultBob.acceptSharedItems(
     profileId: bobProfile.id,
     sharedItems: sharedItems2,
+  );
+  // Refresh Bob's profile again to pick up any new shared storage state.
+  profilesBob = await vaultBob.listProfiles();
+  bobProfile =
+      profilesBob.where((p) => p.accountIndex == bobAccountIndex).firstOrNull ??
+          bobProfile;
+
+  print('[Demo] Bob is reading shared file2 metadata ...');
+  await _printMetadataFromSharedStorage(
+    granteeProfile: bobProfile,
+    ownerProfileId: aliceProfile.id,
+    itemId: file2.id,
   );
 
   profilesBob = await vaultBob.listProfiles();
@@ -474,6 +496,29 @@ Future<void> _addFileToProfile(
     data: fileContent,
     parentFolderId: folderId,
   );
+}
+
+Future<void> _printMetadataFromSharedStorage({
+  required Profile granteeProfile,
+  required String ownerProfileId,
+  required String itemId,
+}) async {
+  final sharedStorage = granteeProfile.sharedStorages
+      .where((storage) => storage.id == ownerProfileId)
+      .firstOrNull;
+
+  if (sharedStorage == null) {
+    print('[Demo] No shared storage found for owner $ownerProfileId');
+    return;
+  }
+
+  try {
+    final item = await sharedStorage.getFile(fileId: itemId);
+    print(
+        '[Demo] File Metadata:\n id: ${item.id}, name: ${item.name}, createdAt: ${item.createdAt}');
+  } catch (e) {
+    print('[Demo] Could not fetch metadata for $itemId: $e');
+  }
 }
 
 void _listProfileNames(
