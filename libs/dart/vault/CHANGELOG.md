@@ -1,12 +1,12 @@
 # Change Log
 
-## 1.18.0
+## 1.16.0
 
 ### Changes
 
 ---
 
-Chore: Dependencies Update 
+Chore: update example to include method to fetch item metadata
 
 ---
 
