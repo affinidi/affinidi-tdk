@@ -82,6 +82,7 @@ class VdipIssuer {
     required String holderDid,
     required VerifiableCredential verifiableCredential,
     String? comment,
+    List<Attachment>? attachments,
   }) async {
     VdipIssuedCredentialBody issuedCredentialBody;
 
@@ -122,6 +123,7 @@ class VdipIssuer {
       id: const Uuid().v4(),
       to: [holderDid],
       body: issuedCredentialBody.toJson(),
+      attachments: attachments,
     );
 
     await mediatorClient.packAndSendMessage(message);
@@ -288,6 +290,7 @@ class VdipIssuer {
     required Uri baseIssuerUrl,
     required String nonce,
     required String threadId,
+    List<Attachment>? attachments,
   }) async {
     if (!baseIssuerUrl.hasScheme ||
         (baseIssuerUrl.scheme != 'http' && baseIssuerUrl.scheme != 'https')) {
@@ -306,6 +309,7 @@ class VdipIssuer {
         baseIssuerUrl: baseIssuerUrl.toString(),
         nonce: nonce,
       ).toJson(),
+      attachments: attachments,
     );
 
     await mediatorClient.packAndSendMessage(message);

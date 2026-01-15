@@ -17,6 +17,7 @@ class VdipIssuedCredentialMessage extends PlainTextMessage {
     super.expiresTime,
     super.threadId,
     super.body,
+    super.attachments,
   }) : super(
           type: messageType,
         );
