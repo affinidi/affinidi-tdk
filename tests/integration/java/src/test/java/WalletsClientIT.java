@@ -268,7 +268,6 @@ public class WalletsClientIT {
         assertTrue(isValid, "Signed credential should be valid");
     }
 
-
     @Test
     @Order(16)
     @DisplayName("Sign presentation - ldp v2")

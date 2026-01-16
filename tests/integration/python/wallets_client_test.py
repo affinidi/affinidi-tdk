@@ -466,10 +466,13 @@ def test_revoke_credential_v2(revocation_api, wallet_v2_resource, signed_credent
     )
     
     # Should complete without throwing an exception
-    revocation_api.revoke_credentials(
-        wallet_id=wallet_id,
-        revoke_credentials_input=input_data
-    )
+    try:
+        revocation_api.revoke_credentials(
+            wallet_id=wallet_id,
+            revoke_credentials_input=input_data
+        )
+    except Exception as e:
+        pytest.fail(f"revoke_credentials should not throw an exception: {e}")
 
 
 def test_fetch_wallet_by_id_v2(wallet_api, wallet_v2_resource):

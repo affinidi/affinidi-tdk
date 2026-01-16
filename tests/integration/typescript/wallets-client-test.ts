@@ -352,7 +352,6 @@ describe('wallets-client v2', function () {
         revocationReason: 'test v2 tdk',
         credentialId: signedCredentialLdp.id
       })
-
       // Verify the revocation call succeeded
       expect(response.status).to.be.oneOf([200, 204])
     } else {

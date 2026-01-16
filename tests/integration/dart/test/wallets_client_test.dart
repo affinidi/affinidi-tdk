@@ -416,19 +416,15 @@ void main() {
     });
 
     test('Revokes verifiable credential v2', () async {
-      if (signedCredentialLdp != null && signedCredentialLdp!['id'] != null) {
-        final revokeBuilder = RevokeCredentialsInputBuilder()
-          ..revocationReason = 'test v2 tdk'
-          ..credentialId = signedCredentialLdp!['id'] as String;
+      final revokeBuilder = RevokeCredentialsInputBuilder()
+        ..revocationReason = 'test v2 tdk'
+        ..credentialId = signedCredentialLdp!['id'] as String;
 
-        final response = await revocationApi.revokeCredentials(
-            walletId: walletId, revokeCredentialsInput: revokeBuilder.build());
+      final response = await revocationApi.revokeCredentials(
+          walletId: walletId, revokeCredentialsInput: revokeBuilder.build());
 
-        // Verify the revocation call succeeded (200 or 204)
-        expect(response.statusCode, anyOf([200, 204]));
-      } else {
-        print('Skipping revocation test - no LDP credential available');
-      }
+      // Verify the revocation call succeeded (200 or 204)
+      expect(response.statusCode, anyOf([200, 204]));
     });
   });
 }
