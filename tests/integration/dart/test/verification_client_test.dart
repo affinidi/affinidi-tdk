@@ -37,5 +37,55 @@ void main() {
       expect(verificationResponse!.isValid, isTrue);
       expect(verificationResponse.errors, isEmpty);
     });
+    test('Verifies credentials v2 - LDP format', () async {
+      final fixtures = getFixtures();
+      final credential = fixtures.verifiableCredential;
+
+      // Convert the credential map to BuiltMap<String, JsonObject?>
+      final mapBuilder = MapBuilder<String, JsonObject?>();
+      credential.forEach((key, value) {
+        mapBuilder[key] = JsonObject(value);
+      });
+      final credentialBuiltMap = mapBuilder.build();
+
+      final verifyBuilder = VerifyCredentialV2InputBuilder()
+        ..ldpVcs = ListBuilder<BuiltMap<String, JsonObject?>>([
+          credentialBuiltMap,
+        ]);
+
+      final verificationResponse = await verificationApi.verifyCredentialsV2(
+          verifyCredentialV2Input: verifyBuilder.build());
+
+      expect(verificationResponse.data, isNotNull);
+      expect(verificationResponse.data!.isValid, isTrue);
+    });
+
+    test('Verifies credentials v2 - JWT format', () async {
+      final fixtures = getFixtures();
+      final jwtCredential = fixtures.jwtCredentialV2;
+
+      final verifyBuilder = VerifyCredentialV2InputBuilder()
+        ..jwtVcs = ListBuilder<String>([jwtCredential]);
+
+      final verificationResponse = await verificationApi.verifyCredentialsV2(
+          verifyCredentialV2Input: verifyBuilder.build());
+
+      expect(verificationResponse.data, isNotNull);
+      expect(verificationResponse.data!.isValid, isTrue);
+    });
+
+    test('Verifies presentation v2', () async {
+      final fixtures = getFixtures();
+      final presentation = fixtures.verifiablePresentation;
+
+      final verifyBuilder = VerifyPresentationV2InputBuilder()
+        ..verifiablePresentation = MapJsonObject(presentation);
+
+      final verificationResponse = await verificationApi.verifyPresentationV2(
+          verifyPresentationV2Input: verifyBuilder.build());
+
+      expect(verificationResponse.data, isNotNull);
+      expect(verificationResponse.data!.isValid, isTrue);
+    });
   });
 }
