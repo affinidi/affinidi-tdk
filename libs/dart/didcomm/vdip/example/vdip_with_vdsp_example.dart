@@ -107,6 +107,7 @@ Future<void> main() async {
       VcDataModelV1(
         context: JsonLdContext.fromJson([
           dmV1ContextUrl,
+          'https://w3id.org/security/data-integrity/v2',
           'https://schema.affinidi.io/TEmailV1R0.jsonld',
         ]),
         credentialSchema: [
@@ -478,6 +479,7 @@ Future<void> main() async {
       final unsignedCredential = VcDataModelV1(
         context: JsonLdContext.fromJson([
           dmV1ContextUrl,
+          'https://w3id.org/security/data-integrity/v2',
           'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
         ]),
         credentialSchema: [

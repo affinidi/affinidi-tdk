@@ -27,6 +27,7 @@ Future<LdVcDataModelV1> generateEmailLdVcV1({
   final unsignedCredential = VcDataModelV1(
     context: JsonLdContext.fromJson([
       dmV1ContextUrl,
+      'https://w3id.org/security/data-integrity/v2',
       'https://schema.affinidi.io/TEmailV1R0.jsonld',
     ]),
     credentialSchema: [
