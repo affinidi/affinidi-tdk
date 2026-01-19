@@ -429,10 +429,10 @@ Future<HttpServer> startIssuerServer({
         print('Issuer: Verification successful! Issuing credential...\n');
         // Issue the credential
         final unsignedCredential = VcDataModelV1(
-          context: [
+          context: JsonLdContext.fromJson([
             dmV1ContextUrl,
             'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
-          ],
+          ]),
           credentialSchema: [
             CredentialSchema(
               id: Uri.parse(

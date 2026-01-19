@@ -18,7 +18,10 @@ Future<LdVcDataModelV1> generateEmailLdVcV1({
   required DidSigner issuerSigner,
 }) async {
   final unsignedCredential = VcDataModelV1(
-    context: [dmV1ContextUrl, 'https://schema.affinidi.io/TEmailV1R0.jsonld'],
+    context: JsonLdContext.fromJson([
+      dmV1ContextUrl,
+      'https://schema.affinidi.io/TEmailV1R0.jsonld',
+    ]),
     credentialSchema: [
       CredentialSchema(
         id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),

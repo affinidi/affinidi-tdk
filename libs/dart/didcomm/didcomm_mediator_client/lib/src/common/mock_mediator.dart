@@ -60,7 +60,7 @@ class MockMediator {
     await didManager.addServiceEndpoint(
       ServiceEndpoint(
         id: 'mediator-endpoint',
-        type: DidDocumentServiceType.didCommMessaging.value,
+        type: StringServiceType(DidDocumentServiceType.didCommMessaging.value),
         serviceEndpoint: const StringEndpoint('https://mock.mediator'),
       ),
     );

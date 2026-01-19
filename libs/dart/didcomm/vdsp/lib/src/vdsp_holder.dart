@@ -307,7 +307,7 @@ class VdspHolder {
       case VerifiableCredentialsDataModel.v1:
         {
           final unsignedVerifiablePresentation = MutableVpDataModelV1(
-            context: [dmV1ContextUrl],
+            context: MutableJsonLdContext.fromJson([dmV1ContextUrl]),
             id: Uri.parse(const Uuid().v4()),
             type: {'VerifiablePresentation'},
             holder: MutableHolder.uri(verifiablePresentationSigner.did),
@@ -329,7 +329,7 @@ class VdspHolder {
       case VerifiableCredentialsDataModel.v2:
         {
           final unsignedVerifiablePresentation = MutableVpDataModelV2(
-            context: [dmV2ContextUrl],
+            context: MutableJsonLdContext.fromJson([dmV2ContextUrl]),
             id: Uri.parse(const Uuid().v4()),
             type: {'VerifiablePresentation'},
             holder: MutableHolder.uri(verifiablePresentationSigner.did),
@@ -398,13 +398,13 @@ class VdspHolder {
 
     return verifiableCredentials.map(
       (vc) {
-        if (vc.context.contains(dmV1ContextUrl)) {
+        if (vc.context.hasUrlContext(Uri.parse(dmV1ContextUrl))) {
           return W3CDigitalCredential.fromLdVcDataModelV1(
             vc.toJson(),
           );
         }
 
-        if (vc.context.contains(dmV2ContextUrl)) {
+        if (vc.context.hasUrlContext(Uri.parse(dmV2ContextUrl))) {
           return W3CDigitalCredential.fromLdVcDataModelV2(
             vc.toJson(),
           );
