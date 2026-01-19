@@ -254,11 +254,11 @@ Future<void> main() async {
       // vdipRequestIssuanceMessageBody.credentialFormat
       // we will proceed with W3C Verifiable Credentials Data Model 1.0
 
-      final unsignedCredential = VcDataModelV1(
-        context: [
-          dmV1ContextUrl,
+      final unsignedCredential = VcDataModelV2(
+        context: JsonLdContext.fromJson([
+          dmV2ContextUrl,
           'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
-        ],
+        ]),
         credentialSchema: [
           CredentialSchema(
             id: Uri.parse(
@@ -270,7 +270,6 @@ Future<void> main() async {
         id: Uri.parse(const Uuid().v4()),
         issuer: Issuer.uri(issuerSigner.did),
         type: {'VerifiableCredential', 'TestMusicSubscription'},
-        issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
           CredentialSubject.fromJson({
             'id': holderDidFromAssertion, // holder DID
@@ -280,7 +279,7 @@ Future<void> main() async {
         ],
       );
 
-      final suite = LdVcDm1Suite();
+      final suite = LdVcDm2Suite();
 
       final issuedCredential = await suite.issue(
         unsignedData: unsignedCredential,

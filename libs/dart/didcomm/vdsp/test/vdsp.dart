@@ -25,7 +25,7 @@ Future<void> main() async {
 
   late DidSigner holderSigner;
 
-  late List<LdVcDataModelV1> holderVerifiableCredentials;
+  late List<LdVcDataModelV2> holderVerifiableCredentials;
   late DcqlCredentialQuery verifierDcql;
 
   late DidDocument verifierDidDocument;
@@ -68,7 +68,7 @@ Future<void> main() async {
     );
 
     holderVerifiableCredentials = [
-      await generateEmailLdVcV1(
+      await generateEmailLdVcV2(
         holderDid: holderSigner.did,
         holderEmail: holderEmail,
         issuerSigner: issuerSigner,
@@ -125,7 +125,7 @@ Future<void> main() async {
               );
 
               holderVerifiableCredentials = [
-                await generateEmailLdVcV1(
+                await generateEmailLdVcV2(
                   holderDid: holderSigner.did,
                   holderEmail: holderEmail,
                   issuerSigner: issuerSigner,

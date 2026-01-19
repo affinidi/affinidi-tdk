@@ -12,13 +12,16 @@ void emptyOnRequestIssuanceCallback({
   challenge,
 }) {}
 
-Future<LdVcDataModelV1> generateEmailLdVcV1({
+Future<LdVcDataModelV2> generateEmailLdVcV2({
   required String holderDid,
   required String holderEmail,
   required DidSigner issuerSigner,
 }) async {
-  final unsignedCredential = VcDataModelV1(
-    context: [dmV1ContextUrl, 'https://schema.affinidi.io/TEmailV1R0.jsonld'],
+  final unsignedCredential = VcDataModelV2(
+    context: JsonLdContext.fromJson([
+      dmV2ContextUrl,
+      'https://schema.affinidi.io/TEmailV1R0.jsonld',
+    ]),
     credentialSchema: [
       CredentialSchema(
         id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
@@ -28,7 +31,6 @@ Future<LdVcDataModelV1> generateEmailLdVcV1({
     id: Uri.parse(const Uuid().v4()),
     issuer: Issuer.uri(issuerSigner.did),
     type: {'VerifiableCredential', 'Email'},
-    issuanceDate: DateTime.now().toUtc(),
     credentialSubject: [
       CredentialSubject.fromJson({
         'id': holderDid,
@@ -37,7 +39,7 @@ Future<LdVcDataModelV1> generateEmailLdVcV1({
     ],
   );
 
-  final suite = LdVcDm1Suite();
+  final suite = LdVcDm2Suite();
 
   final issuedCredential = await suite.issue(
       unsignedData: unsignedCredential,

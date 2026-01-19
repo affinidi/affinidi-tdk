@@ -109,17 +109,17 @@ Future<void> main() async {
     config.configureAcl(
       mediatorDidDocument: mediatorDidDocument,
       didManager: holderDidManager,
-      theirDids: [(await issuerDidManager.getDidDocument()).id],
+      theirDids: [(await verifierDidManager.getDidDocument()).id],
     ),
   ]);
 
   final holderVerifiableCredentials = await Future.wait(
     [
-      VcDataModelV1(
-        context: [
-          dmV1ContextUrl,
-          'https://schema.affinidi.io/TEmailV1R0.jsonld'
-        ],
+      VcDataModelV2(
+        context: JsonLdContext.fromJson([
+          dmV2ContextUrl,
+          'https://schema.affinidi.io/TEmailV1R0.jsonld',
+        ]),
         credentialSchema: [
           CredentialSchema(
             id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
@@ -129,7 +129,6 @@ Future<void> main() async {
         id: Uri.parse(const Uuid().v4()),
         issuer: Issuer.uri(issuerSigner.did),
         type: {'VerifiableCredential', 'Email'},
-        issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
           CredentialSubject.fromJson({
             'id': holderSigner.did,
@@ -139,7 +138,7 @@ Future<void> main() async {
       ),
     ].map(
       (unsignedCredential) async {
-        final suite = LdVcDm1Suite();
+        final suite = LdVcDm2Suite();
         final issuedCredential = await suite.issue(
           unsignedData: unsignedCredential,
           proofGenerator: DataIntegrityEcdsaJcsGenerator(
