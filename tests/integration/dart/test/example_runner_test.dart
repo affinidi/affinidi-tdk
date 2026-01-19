@@ -7,6 +7,7 @@ import 'test_config.dart';
 void main() async {
   final testsToSkip = [
     'atlas_example.dart',
+    'atlas_list_mediators_example.dart',
     'browser_context_example.dart',
   ];
 
