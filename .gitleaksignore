@@ -9,3 +9,5 @@ tests/integration/python/cis.py:generic-api-key:68
 
 tests/integration/typescript/cis.ts:generic-api-key:68
 tests/integration/typescript/cis.ts:generic-api-key:78
+
+tests/.env.example:jwt:29

@@ -28,6 +28,11 @@ verifiable_presentation = json.loads(get_env_var('VERIFIABLE_PRESENTATION', 'req
 credential_issuance_data = json.loads(get_env_var('CREDENTIAL_ISSUANCE_DATA', 'required'))
 unsigned_credential_params = json.loads(get_env_var('UNSIGNED_CREDENTIAL_PARAMS', 'required'))
 
+# V2 fixtures
+unsigned_credential_v2 = json.loads(get_env_var('UNSIGNED_CREDENTIAL_V2', 'required'))
+disclosure_frame_v2 = json.loads(get_env_var('DISCLOSURE_FRAME_V2', 'required'))
+jwt_credential_v2 = get_env_var('JWT_CREDENTIAL_V2', 'required')
+
 iota_configuration = json.loads(get_env_var('IOTA_CONFIGURATION', 'required'))
 iota_presentation_submission = json.loads(get_env_var('IOTA_PRESENTATION_SUBMISSION', 'required'))
 iota_presentation_definition = json.loads(get_env_var('IOTA_PRESENTATION_DEFINITION', 'required'))

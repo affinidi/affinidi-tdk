@@ -108,10 +108,12 @@ with affinidi_tdk_credential_verification_client.ApiClient(configuration) as api
 
 All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
-| Class        | Method                                                            | HTTP request                     | Description  |
-| ------------ | ----------------------------------------------------------------- | -------------------------------- | ------------ |
-| _DefaultApi_ | [**verify_credentials**](docs/DefaultApi.md#verify_credentials)   | **POST** /v1/verifier/verify-vcs | Verifying VC |
-| _DefaultApi_ | [**verify_presentation**](docs/DefaultApi.md#verify_presentation) | **POST** /v1/verifier/verify-vp  | Verifying VP |
+| Class        | Method                                                                  | HTTP request                       | Description  |
+| ------------ | ----------------------------------------------------------------------- | ---------------------------------- | ------------ |
+| _DefaultApi_ | [**verify_credentials**](docs/DefaultApi.md#verify_credentials)         | **POST** /v1/verifier/verify-vcs   | Verifying VC |
+| _DefaultApi_ | [**verify_credentials_v2**](docs/DefaultApi.md#verify_credentials_v2)   | **POST** /v2/verifier/credentials  | Verifying VC |
+| _DefaultApi_ | [**verify_presentation**](docs/DefaultApi.md#verify_presentation)       | **POST** /v1/verifier/verify-vp    | Verifying VP |
+| _DefaultApi_ | [**verify_presentation_v2**](docs/DefaultApi.md#verify_presentation_v2) | **POST** /v2/verifier/presentation | Verifying VP |
 
 ## Documentation For Models
 
