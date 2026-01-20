@@ -1049,6 +1049,12 @@ export interface VerifyPresentationV2Input {
    */
   pexQuery?: VerifyPresentationV2InputPexQuery
   /**
+   * DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.
+   * @type {{ [key: string]: any; }}
+   * @memberof VerifyPresentationV2Input
+   */
+  dcqlQuery?: { [key: string]: any }
+  /**
    * Optional challenge string for domain/challenge verification
    * @type {string}
    * @memberof VerifyPresentationV2Input
@@ -1231,6 +1237,67 @@ export const DefaultApiAxiosParamCreator = function (
       }
     },
     /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialV2Input} verifyCredentialV2Input Request body for verifying VCs with separate JWT and LDP arrays
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentialsV2: async (
+      verifyCredentialV2Input: VerifyCredentialV2Input,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'verifyCredentialV2Input' is not null or undefined
+      assertParamExists(
+        'verifyCredentialsV2',
+        'verifyCredentialV2Input',
+        verifyCredentialV2Input,
+      )
+      const localVarPath = `/v2/verifier/credentials`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        verifyCredentialV2Input,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
      * @summary Verifying VP
      * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
@@ -1291,6 +1358,67 @@ export const DefaultApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationV2Input} verifyPresentationV2Input VerifyPresentationV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyPresentationV2: async (
+      verifyPresentationV2Input: VerifyPresentationV2Input,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'verifyPresentationV2Input' is not null or undefined
+      assertParamExists(
+        'verifyPresentationV2',
+        'verifyPresentationV2Input',
+        verifyPresentationV2Input,
+      )
+      const localVarPath = `/v2/verifier/presentation`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        verifyPresentationV2Input,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -1336,6 +1464,40 @@ export const DefaultApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialV2Input} verifyCredentialV2Input Request body for verifying VCs with separate JWT and LDP arrays
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async verifyCredentialsV2(
+      verifyCredentialV2Input: VerifyCredentialV2Input,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<VerifyCredentialOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.verifyCredentialsV2(
+          verifyCredentialV2Input,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DefaultApi.verifyCredentialsV2']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
      * @summary Verifying VP
      * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
@@ -1359,6 +1521,40 @@ export const DefaultApiFp = function (configuration?: Configuration) {
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['DefaultApi.verifyPresentation']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationV2Input} verifyPresentationV2Input VerifyPresentationV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async verifyPresentationV2(
+      verifyPresentationV2Input: VerifyPresentationV2Input,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<VerifyPresentationOutput>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.verifyPresentationV2(
+          verifyPresentationV2Input,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['DefaultApi.verifyPresentationV2']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -1399,6 +1595,21 @@ export const DefaultApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+     * @summary Verifying VC
+     * @param {VerifyCredentialV2Input} verifyCredentialV2Input Request body for verifying VCs with separate JWT and LDP arrays
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyCredentialsV2(
+      verifyCredentialV2Input: VerifyCredentialV2Input,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<VerifyCredentialOutput> {
+      return localVarFp
+        .verifyCredentialsV2(verifyCredentialV2Input, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
      * @summary Verifying VP
      * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
@@ -1411,6 +1622,21 @@ export const DefaultApiFactory = function (
     ): AxiosPromise<VerifyPresentationOutput> {
       return localVarFp
         .verifyPresentation(verifyPresentationInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  `isValid` - true if presentation verified `error` verificaction error.
+     * @summary Verifying VP
+     * @param {VerifyPresentationV2Input} verifyPresentationV2Input VerifyPresentationV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    verifyPresentationV2(
+      verifyPresentationV2Input: VerifyPresentationV2Input,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<VerifyPresentationOutput> {
+      return localVarFp
+        .verifyPresentationV2(verifyPresentationV2Input, options)
         .then((request) => request(axios, basePath))
     },
   }
@@ -1441,6 +1667,23 @@ export class DefaultApi extends BaseAPI {
   }
 
   /**
+   * Verifying Verifiable Credentials (signatures)  `isValid` - true if all credentials verified `errors` contains list of error messages for invalid credentials.
+   * @summary Verifying VC
+   * @param {VerifyCredentialV2Input} verifyCredentialV2Input Request body for verifying VCs with separate JWT and LDP arrays
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public verifyCredentialsV2(
+    verifyCredentialV2Input: VerifyCredentialV2Input,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .verifyCredentialsV2(verifyCredentialV2Input, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * Verifying Verifiable Presentation (signatures)  `isValid` - true if presentation verified `error` verificaction error.
    * @summary Verifying VP
    * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
@@ -1454,6 +1697,23 @@ export class DefaultApi extends BaseAPI {
   ) {
     return DefaultApiFp(this.configuration)
       .verifyPresentation(verifyPresentationInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Verifying Verifiable Presentation (signatures)  Uses Presentation Exchange Query (pexQuery) structure for presentation definition and submission. Supports optional domain and challenge verification as per W3C VP standard.  `isValid` - true if presentation verified `error` verificaction error.
+   * @summary Verifying VP
+   * @param {VerifyPresentationV2Input} verifyPresentationV2Input VerifyPresentationV2
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public verifyPresentationV2(
+    verifyPresentationV2Input: VerifyPresentationV2Input,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return DefaultApiFp(this.configuration)
+      .verifyPresentationV2(verifyPresentationV2Input, options)
       .then((request) => request(this.axios, this.basePath))
   }
 }
