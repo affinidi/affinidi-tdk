@@ -10,7 +10,6 @@ import 'package:affinidi_tdk_credential_verification_client/src/auth/basic_auth.
 import 'package:affinidi_tdk_credential_verification_client/src/auth/bearer_auth.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/auth/oauth.dart';
 import 'package:affinidi_tdk_credential_verification_client/src/api/default_api.dart';
-import 'package:affinidi_tdk_credential_verification_client/src/api/verifier_api.dart';
 
 class AffinidiTdkCredentialVerificationClient {
   static const String basePath = r'https://apse1.api.affinidi.io/ver';
@@ -145,11 +144,5 @@ class AffinidiTdkCredentialVerificationClient {
   /// by doing that all interceptors will not be executed
   DefaultApi getDefaultApi() {
     return DefaultApi(dio, serializers);
-  }
-
-  /// Get VerifierApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  VerifierApi getVerifierApi() {
-    return VerifierApi(dio, serializers);
   }
 }

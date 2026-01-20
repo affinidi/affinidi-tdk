@@ -11,7 +11,6 @@ export 'package:affinidi_tdk_credential_verification_client/src/serializers.dart
 export 'package:affinidi_tdk_credential_verification_client/src/model/date.dart';
 
 export 'package:affinidi_tdk_credential_verification_client/src/api/default_api.dart';
-export 'package:affinidi_tdk_credential_verification_client/src/api/verifier_api.dart';
 
 export 'package:affinidi_tdk_credential_verification_client/src/model/constraints.dart';
 export 'package:affinidi_tdk_credential_verification_client/src/model/constraints_statuses.dart';

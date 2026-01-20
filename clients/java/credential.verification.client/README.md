@@ -115,13 +115,12 @@ public class DefaultApiExample {
 
 All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
-| Class         | Method                                                              | HTTP request                       | Description         |
-| ------------- | ------------------------------------------------------------------- | ---------------------------------- | ------------------- |
-| _DefaultApi_  | [**verifyCredentials**](docs/DefaultApi.md#verifyCredentials)       | **POST** /v1/verifier/verify-vcs   | Verifying VC        |
-| _DefaultApi_  | [**verifyCredentialsV2**](docs/DefaultApi.md#verifyCredentialsV2)   | **POST** /v2/verifier/credentials  | Verifying VC        |
-| _DefaultApi_  | [**verifyPresentation**](docs/DefaultApi.md#verifyPresentation)     | **POST** /v1/verifier/verify-vp    | Verifying VP        |
-| _DefaultApi_  | [**verifyPresentationV2**](docs/DefaultApi.md#verifyPresentationV2) | **POST** /v2/verifier/presentation | Verifying VP        |
-| _VerifierApi_ | [**validateJwt**](docs/VerifierApi.md#validateJwt)                  | **POST** /v1/verifier/validate-jwt | Validates JWT token |
+| Class        | Method                                                              | HTTP request                       | Description  |
+| ------------ | ------------------------------------------------------------------- | ---------------------------------- | ------------ |
+| _DefaultApi_ | [**verifyCredentials**](docs/DefaultApi.md#verifyCredentials)       | **POST** /v1/verifier/verify-vcs   | Verifying VC |
+| _DefaultApi_ | [**verifyCredentialsV2**](docs/DefaultApi.md#verifyCredentialsV2)   | **POST** /v2/verifier/credentials  | Verifying VC |
+| _DefaultApi_ | [**verifyPresentation**](docs/DefaultApi.md#verifyPresentation)     | **POST** /v1/verifier/verify-vp    | Verifying VP |
+| _DefaultApi_ | [**verifyPresentationV2**](docs/DefaultApi.md#verifyPresentationV2) | **POST** /v2/verifier/presentation | Verifying VP |
 
 ## Documentation for Models
 
