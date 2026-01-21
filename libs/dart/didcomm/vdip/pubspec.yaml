@@ -15,7 +15,7 @@ dependencies:
   dcql: ^1.2.0
   json_annotation: ^4.9.0
   selective_disclosure_jwt: ^1.1.1
-  ssi: ^2.15.1
+  ssi: ^3.3.0
   uuid: ^4.5.1
 
 dev_dependencies:

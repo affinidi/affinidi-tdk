@@ -116,10 +116,11 @@ Future<void> main() async {
   final holderVerifiableCredentials = await Future.wait(
     [
       VcDataModelV1(
-        context: [
+        context: JsonLdContext.fromJson([
           dmV1ContextUrl,
-          'https://schema.affinidi.io/TEmailV1R0.jsonld'
-        ],
+          'https://w3id.org/security/data-integrity/v2',
+          'https://schema.affinidi.io/TEmailV1R0.jsonld',
+        ]),
         credentialSchema: [
           CredentialSchema(
             id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),

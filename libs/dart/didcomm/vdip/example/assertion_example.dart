@@ -255,10 +255,11 @@ Future<void> main() async {
       // we will proceed with W3C Verifiable Credentials Data Model 1.0
 
       final unsignedCredential = VcDataModelV1(
-        context: [
+        context: JsonLdContext.fromJson([
           dmV1ContextUrl,
+          'https://w3id.org/security/data-integrity/v2',
           'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
-        ],
+        ]),
         credentialSchema: [
           CredentialSchema(
             id: Uri.parse(
