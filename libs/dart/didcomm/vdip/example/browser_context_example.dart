@@ -428,11 +428,11 @@ Future<HttpServer> startIssuerServer({
       if (verified) {
         print('Issuer: Verification successful! Issuing credential...\n');
         // Issue the credential
-        final unsignedCredential = VcDataModelV1(
-          context: [
-            dmV1ContextUrl,
+        final unsignedCredential = VcDataModelV2(
+          context: JsonLdContext.fromJson([
+            dmV2ContextUrl,
             'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
-          ],
+          ]),
           credentialSchema: [
             CredentialSchema(
               id: Uri.parse(
@@ -444,7 +444,6 @@ Future<HttpServer> startIssuerServer({
           id: Uri.parse(const Uuid().v4()),
           issuer: Issuer.uri(issuerSigner.did),
           type: {'VerifiableCredential', 'TestMusicSubscription'},
-          issuanceDate: DateTime.now().toUtc(),
           credentialSubject: [
             CredentialSubject.fromJson({
               'id': verificationRequest.holderDid,
@@ -456,7 +455,7 @@ Future<HttpServer> startIssuerServer({
           ],
         );
 
-        final suite = LdVcDm1Suite();
+        final suite = LdVcDm2Suite();
         final issuedCredential = await suite.issue(
           unsignedData: unsignedCredential,
           proofGenerator: DataIntegrityEcdsaJcsGenerator(

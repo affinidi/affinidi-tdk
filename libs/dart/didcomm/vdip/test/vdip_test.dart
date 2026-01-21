@@ -108,7 +108,7 @@ Future<void> main() async {
             test('VDIP credential issuance works correctly', () async {
               final testCompleter = Completer<PlainTextMessage>();
 
-              final credential = await generateEmailLdVcV1(
+              final credential = await generateEmailLdVcV2(
                 holderDid: holderDidDocument.id,
                 holderEmail: holderEmail,
                 issuerSigner: issuerSigner,
@@ -207,7 +207,7 @@ Future<void> main() async {
                 issuerDid: issuerDidDocument.id,
                 options: RequestCredentialsOptions(
                   proposalId: proposalId,
-                  credentialFormat: CredentialFormat.w3cV1,
+                  credentialFormat: CredentialFormat.w3cV2,
                   comment: comment,
                 ),
               );
@@ -220,12 +220,12 @@ Future<void> main() async {
                 actual.body!,
               );
               expect(actualBody.comment, comment);
-              expect(actualBody.credentialFormat, CredentialFormat.w3cV1);
+              expect(actualBody.credentialFormat, CredentialFormat.w3cV2);
               expect(actual.attachments?.first.toJson(), attachment.toJson());
 
               final credentialSerialized = actualBody.credential;
               final verifiableCredential =
-                  VcDataModelV1.fromJson(credentialSerialized);
+                  VcDataModelV2.fromJson(credentialSerialized);
 
               expect(actualBody.comment, comment);
               expect(verifiableCredential.id, credential.id);
@@ -276,7 +276,7 @@ Future<void> main() async {
                   }
 
                   // Issue credential for the specific holder
-                  final credential = await generateEmailLdVcV1(
+                  final credential = await generateEmailLdVcV2(
                     holderDid: holderDidFromAssertion,
                     holderEmail: holderEmail,
                     issuerSigner: issuerSigner,
@@ -320,7 +320,7 @@ Future<void> main() async {
                 assertionSigner: holderSigner,
                 options: RequestCredentialsOptions(
                   proposalId: proposalId,
-                  credentialFormat: CredentialFormat.w3cV1,
+                  credentialFormat: CredentialFormat.w3cV2,
                   comment: comment,
                 ),
               );
@@ -377,7 +377,7 @@ Future<void> main() async {
                 options: RequestCredentialsOptions(
                   proposalId: proposalId,
                   challenge: expectedChallenge,
-                  credentialFormat: CredentialFormat.w3cV1,
+                  credentialFormat: CredentialFormat.w3cV2,
                 ),
               );
 

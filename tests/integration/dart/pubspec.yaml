@@ -4,28 +4,18 @@ environment:
   sdk: ^3.6.0
 
 dev_dependencies:
-  affinidi_tdk_auth_provider:
-    path: ../../../packages/dart/auth_provider
-  affinidi_tdk_common: ^1.6.0
-  affinidi_tdk_consumer_auth_provider:
-    path: ../../../packages/dart/consumer_auth_provider
-  affinidi_tdk_cryptography:
-    path: ../../../packages/dart/cryptography
-  ssi: ^2.2.0
-  affinidi_tdk_iam_client:
-    path: ../../../clients/dart/iam_client
-  affinidi_tdk_wallets_client:
-    path: ../../../clients/dart/wallets_client
-  affinidi_tdk_credential_issuance_client:
-    path: ../../../clients/dart/credential_issuance_client
-  affinidi_tdk_vault_data_manager_client:
-    path: ../../../clients/dart/vault_data_manager_client
-  affinidi_tdk_credential_verification_client:
-    path: ../../../clients/dart/credential_verification_client
-  affinidi_tdk_iota_client:
-    path: ../../../clients/dart/iota_client
-  affinidi_tdk_login_configuration_client:
-    path: ../../../clients/dart/login_configuration_client
+  affinidi_tdk_auth_provider: ^1.6.0
+  affinidi_tdk_common: ^1.8.0
+  affinidi_tdk_consumer_auth_provider: ^4.11.0
+  affinidi_tdk_cryptography: ^2.4.0
+  ssi: ^2.15.1
+  affinidi_tdk_iam_client: ^1.16.0
+  affinidi_tdk_wallets_client: ^1.14.0
+  affinidi_tdk_credential_issuance_client: ^1.16.0
+  affinidi_tdk_vault_data_manager_client: ^1.19.0
+  affinidi_tdk_credential_verification_client: ^1.14.0
+  affinidi_tdk_iota_client: ^1.12.0
+  affinidi_tdk_login_configuration_client: ^1.15.0
   affinidi_tdk_didcomm_mediator_client: ^1.0.0
   affinidi_tdk_vdsp: ^1.0.0
   affinidi_tdk_vdip: ^1.0.0

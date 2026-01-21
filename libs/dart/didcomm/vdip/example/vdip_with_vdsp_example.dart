@@ -104,11 +104,11 @@ Future<void> main() async {
 
   final holderVerifiableCredentials = await Future.wait(
     [
-      VcDataModelV1(
-        context: [
-          dmV1ContextUrl,
-          'https://schema.affinidi.io/TEmailV1R0.jsonld'
-        ],
+      VcDataModelV2(
+        context: JsonLdContext.fromJson([
+          dmV2ContextUrl,
+          'https://schema.affinidi.io/TEmailV1R0.jsonld',
+        ]),
         credentialSchema: [
           CredentialSchema(
             id: Uri.parse('https://schema.affinidi.io/TEmailV1R0.json'),
@@ -118,7 +118,6 @@ Future<void> main() async {
         id: Uri.parse(const Uuid().v4()),
         issuer: Issuer.uri(issuerSigner.did),
         type: {'VerifiableCredential', 'Email'},
-        issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
           CredentialSubject.fromJson({
             'id': holderSigner.did,
@@ -128,7 +127,7 @@ Future<void> main() async {
       ),
     ].map(
       (unsignedCredential) async {
-        final suite = LdVcDm1Suite();
+        final suite = LdVcDm2Suite();
         final issuedCredential = await suite.issue(
           unsignedData: unsignedCredential,
           proofGenerator: DataIntegrityEcdsaJcsGenerator(
@@ -475,11 +474,11 @@ Future<void> main() async {
         return;
       }
 
-      final unsignedCredential = VcDataModelV1(
-        context: [
-          dmV1ContextUrl,
+      final unsignedCredential = VcDataModelV2(
+        context: JsonLdContext.fromJson([
+          dmV2ContextUrl,
           'https://d2oeuqaac90cm.cloudfront.net/TTestMusicSubscriptionV1R0.jsonld',
-        ],
+        ]),
         credentialSchema: [
           CredentialSchema(
             id: Uri.parse(
@@ -491,7 +490,6 @@ Future<void> main() async {
         id: Uri.parse(const Uuid().v4()),
         issuer: Issuer.uri(issuerSigner.did),
         type: {'VerifiableCredential', 'TestMusicSubscription'},
-        issuanceDate: DateTime.now().toUtc(),
         credentialSubject: [
           CredentialSubject.fromJson({
             'id': message.from!, // holder DID
@@ -501,7 +499,7 @@ Future<void> main() async {
         ],
       );
 
-      final suite = LdVcDm1Suite();
+      final suite = LdVcDm2Suite();
 
       final issuedCredential = await suite.issue(
         unsignedData: unsignedCredential,

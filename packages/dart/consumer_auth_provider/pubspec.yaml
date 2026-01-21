@@ -1,6 +1,6 @@
 name: affinidi_tdk_consumer_auth_provider
 description: Auth provider that allows creating consumer scoped tokens to access Affinidi Vault services
-version: 4.10.0
+version: 4.11.0
 repository: https://github.com/affinidi/affinidi-tdk
 
 environment:
@@ -15,7 +15,7 @@ dependencies:
   crypto: ^3.0.6
   dio: ^5.7.0
   jwt_decoder: ^2.0.1
-  ssi: ^2.2.0
+  ssi: ^3.3.0
   uuid: ^4.5.1
   web3dart: ^3.0.0
 
