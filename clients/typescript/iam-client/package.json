@@ -30,7 +30,7 @@
   "module": "./dist/esm/index.js",
   "sideEffects": false,
   "engines": {
-    "node": "20.x"
+    "node": ">=20.x"
   },
   "scripts": {
     "build": "tsc && tsc -p tsconfig.esm.json",
