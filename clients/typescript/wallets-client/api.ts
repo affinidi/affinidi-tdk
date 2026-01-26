@@ -1024,6 +1024,32 @@ export interface SignJwtTokenOK {
   signedJwt?: string
 }
 /**
+ * DTO contains payload of JWT to be signed
+ * @export
+ * @interface SignJwtV2
+ */
+export interface SignJwtV2 {
+  /**
+   *
+   * @type {object}
+   * @memberof SignJwtV2
+   */
+  payload: object
+}
+/**
+ *
+ * @export
+ * @interface SignJwtV2OK
+ */
+export interface SignJwtV2OK {
+  /**
+   *
+   * @type {string}
+   * @memberof SignJwtV2OK
+   */
+  signedJwt?: string
+}
+/**
  * DTO contains params to sign plain text DIDComm message
  * @export
  * @interface SignMessageInput
@@ -2653,6 +2679,70 @@ export const WalletApiAxiosParamCreator = function (
       }
     },
     /**
+     * Sign a JSON Web Token (JWT).
+     * @summary Sign JWT.
+     * @param {string} walletId id of the wallet
+     * @param {SignJwtV2} signJwtV2 SignJwtV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signJwtV2: async (
+      walletId: string,
+      signJwtV2: SignJwtV2,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('signJwtV2', 'walletId', walletId)
+      // verify required parameter 'signJwtV2' is not null or undefined
+      assertParamExists('signJwtV2', 'signJwtV2', signJwtV2)
+      const localVarPath = `/v2/wallets/{walletId}/jwt/sign`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signJwtV2,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * signs presentation with the wallet
      * @param {string} walletId id of the wallet
      * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
@@ -3120,6 +3210,39 @@ export const WalletApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * Sign a JSON Web Token (JWT).
+     * @summary Sign JWT.
+     * @param {string} walletId id of the wallet
+     * @param {SignJwtV2} signJwtV2 SignJwtV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signJwtV2(
+      walletId: string,
+      signJwtV2: SignJwtV2,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<SignJwtV2OK>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.signJwtV2(
+        walletId,
+        signJwtV2,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.signJwtV2']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * signs presentation with the wallet
      * @param {string} walletId id of the wallet
      * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
@@ -3356,6 +3479,23 @@ export const WalletApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * Sign a JSON Web Token (JWT).
+     * @summary Sign JWT.
+     * @param {string} walletId id of the wallet
+     * @param {SignJwtV2} signJwtV2 SignJwtV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signJwtV2(
+      walletId: string,
+      signJwtV2: SignJwtV2,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<SignJwtV2OK> {
+      return localVarFp
+        .signJwtV2(walletId, signJwtV2, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * signs presentation with the wallet
      * @param {string} walletId id of the wallet
      * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
@@ -3558,6 +3698,25 @@ export class WalletApi extends BaseAPI {
   ) {
     return WalletApiFp(this.configuration)
       .signJwtToken(walletId, signJwtToken, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Sign a JSON Web Token (JWT).
+   * @summary Sign JWT.
+   * @param {string} walletId id of the wallet
+   * @param {SignJwtV2} signJwtV2 SignJwtV2
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public signJwtV2(
+    walletId: string,
+    signJwtV2: SignJwtV2,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .signJwtV2(walletId, signJwtV2, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
