@@ -38,6 +38,8 @@ import com.affinidi.tdk.wallets.client.models.SignCredentialsLdpInputDto;
 import com.affinidi.tdk.wallets.client.models.SignCredentialsLdpResultDto;
 import com.affinidi.tdk.wallets.client.models.SignJwtToken;
 import com.affinidi.tdk.wallets.client.models.SignJwtTokenOK;
+import com.affinidi.tdk.wallets.client.models.SignJwtV2;
+import com.affinidi.tdk.wallets.client.models.SignJwtV2OK;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpInputDto;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpResultDto;
 import com.affinidi.tdk.wallets.client.models.TooManyRequestsError;
@@ -812,6 +814,88 @@ public class WalletApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
     TypeReference<SignJwtTokenOK> localVarReturnType = new TypeReference<SignJwtTokenOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Sign JWT.
+   * Sign a JSON Web Token (JWT).
+   * @param walletId id of the wallet (required)
+   * @param signJwtV2 SignJwtV2 (required)
+   * @return SignJwtV2OK
+   * @throws ApiException if fails to make API call
+   */
+  public SignJwtV2OK signJwtV2(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignJwtV2 signJwtV2) throws ApiException {
+    return this.signJwtV2(walletId, signJwtV2, Collections.emptyMap());
+  }
+
+
+  /**
+   * Sign JWT.
+   * Sign a JSON Web Token (JWT).
+   * @param walletId id of the wallet (required)
+   * @param signJwtV2 SignJwtV2 (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SignJwtV2OK
+   * @throws ApiException if fails to make API call
+   */
+  public SignJwtV2OK signJwtV2(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignJwtV2 signJwtV2, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = signJwtV2;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling signJwtV2");
+    }
+    
+    // verify the required parameter 'signJwtV2' is set
+    if (signJwtV2 == null) {
+      throw new ApiException(400, "Missing the required parameter 'signJwtV2' when calling signJwtV2");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/wallets/{walletId}/jwt/sign"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<SignJwtV2OK> localVarReturnType = new TypeReference<SignJwtV2OK>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",
