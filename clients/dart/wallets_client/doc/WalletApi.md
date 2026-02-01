@@ -20,6 +20,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**signCredentialsLdp**](WalletApi.md#signcredentialsldp)     | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |
 | [**signCredentialsSdJwt**](WalletApi.md#signcredentialssdjwt) | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |
 | [**signJwtToken**](WalletApi.md#signjwttoken)                 | **POST** /v1/wallets/{walletId}/sign-jwt                |
+| [**signJwtV2**](WalletApi.md#signjwtv2)                       | **POST** /v2/wallets/{walletId}/jwt/sign                | Sign JWT.   |
 | [**signPresentationsLdp**](WalletApi.md#signpresentationsldp) | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |
 | [**updateWallet**](WalletApi.md#updatewallet)                 | **PATCH** /v1/wallets/{walletId}                        |
 
@@ -490,6 +491,57 @@ try {
 ### Return type
 
 [**SignJwtTokenOK**](SignJwtTokenOK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **signJwtV2**
+
+> SignJwtV2OK signJwtV2(walletId, signJwtV2)
+
+Sign JWT.
+
+Sign a JSON Web Token (JWT).
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_wallets_client/api.dart';
+// TODO Configure API key authorization: ProjectTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('ProjectTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api = AffinidiTdkWalletsClient().getWalletApi();
+final String walletId = walletId_example; // String | id of the wallet
+final SignJwtV2 signJwtV2 = ; // SignJwtV2 | SignJwtV2
+
+try {
+    final response = api.signJwtV2(walletId, signJwtV2);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling WalletApi->signJwtV2: $e\n');
+}
+```
+
+### Parameters
+
+| Name          | Type                          | Description      | Notes |
+| ------------- | ----------------------------- | ---------------- | ----- |
+| **walletId**  | **String**                    | id of the wallet |
+| **signJwtV2** | [**SignJwtV2**](SignJwtV2.md) | SignJwtV2        |
+
+### Return type
+
+[**SignJwtV2OK**](SignJwtV2OK.md)
 
 ### Authorization
 
