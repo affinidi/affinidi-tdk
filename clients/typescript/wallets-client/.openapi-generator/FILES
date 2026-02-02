@@ -38,6 +38,8 @@ docs/SignCredentialsLdpInputDto.md
 docs/SignCredentialsLdpResultDto.md
 docs/SignJwtToken.md
 docs/SignJwtTokenOK.md
+docs/SignJwtV2.md
+docs/SignJwtV2OK.md
 docs/SignMessageInput.md
 docs/SignMessageResultDto.md
 docs/SignPresentationLdpInputDto.md
