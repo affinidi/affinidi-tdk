@@ -89,6 +89,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [_WalletApi_](doc/WalletApi.md)         | [**signCredentialsLdp**](doc/WalletApi.md#signcredentialsldp)                           | **POST** /v2/wallets/{walletId}/credentials/ldp/sign                               |
 | [_WalletApi_](doc/WalletApi.md)         | [**signCredentialsSdJwt**](doc/WalletApi.md#signcredentialssdjwt)                       | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign                            |
 | [_WalletApi_](doc/WalletApi.md)         | [**signJwtToken**](doc/WalletApi.md#signjwttoken)                                       | **POST** /v1/wallets/{walletId}/sign-jwt                                           |
+| [_WalletApi_](doc/WalletApi.md)         | [**signJwtV2**](doc/WalletApi.md#signjwtv2)                                             | **POST** /v2/wallets/{walletId}/jwt/sign                                           | Sign JWT.                          |
 | [_WalletApi_](doc/WalletApi.md)         | [**signPresentationsLdp**](doc/WalletApi.md#signpresentationsldp)                       | **POST** /v2/wallets/{walletId}/presentations/ldp/sign                             |
 | [_WalletApi_](doc/WalletApi.md)         | [**updateWallet**](doc/WalletApi.md#updatewallet)                                       | **PATCH** /v1/wallets/{walletId}                                                   |
 
@@ -126,6 +127,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialsLdpResultDto](doc/SignCredentialsLdpResultDto.md)
 - [SignJwtToken](doc/SignJwtToken.md)
 - [SignJwtTokenOK](doc/SignJwtTokenOK.md)
+- [SignJwtV2](doc/SignJwtV2.md)
+- [SignJwtV2OK](doc/SignJwtV2OK.md)
 - [SignMessageInput](doc/SignMessageInput.md)
 - [SignMessageResultDto](doc/SignMessageResultDto.md)
 - [SignPresentationLdpInputDto](doc/SignPresentationLdpInputDto.md)

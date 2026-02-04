@@ -127,6 +127,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | _ProjectsApi_     | [**add_principal_to_project**](docs/ProjectsApi.md#add_principal_to_project)             | **POST** /v1/projects/principals                 |
 | _ProjectsApi_     | [**create_project**](docs/ProjectsApi.md#create_project)                                 | **POST** /v1/projects                            |
 | _ProjectsApi_     | [**delete_principal_from_project**](docs/ProjectsApi.md#delete_principal_from_project)   | **DELETE** /v1/projects/principals/{principalId} |
+| _ProjectsApi_     | [**get_project**](docs/ProjectsApi.md#get_project)                                       | **GET** /v1/projects/{projectId}                 |
 | _ProjectsApi_     | [**list_principals_of_project**](docs/ProjectsApi.md#list_principals_of_project)         | **GET** /v1/projects/principals                  |
 | _ProjectsApi_     | [**list_project**](docs/ProjectsApi.md#list_project)                                     | **GET** /v1/projects                             |
 | _ProjectsApi_     | [**update_project**](docs/ProjectsApi.md#update_project)                                 | **PATCH** /v1/projects/{projectId}               |

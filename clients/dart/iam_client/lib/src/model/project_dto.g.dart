@@ -16,6 +16,8 @@ class _$ProjectDto extends ProjectDto {
   @override
   final String? description;
   @override
+  final bool? identityVerificationEnabled;
+  @override
   final String? createdAt;
   @override
   final String? updatedAt;
@@ -28,6 +30,7 @@ class _$ProjectDto extends ProjectDto {
       required this.name,
       this.ownerId,
       this.description,
+      this.identityVerificationEnabled,
       this.createdAt,
       this.updatedAt})
       : super._();
@@ -46,6 +49,7 @@ class _$ProjectDto extends ProjectDto {
         name == other.name &&
         ownerId == other.ownerId &&
         description == other.description &&
+        identityVerificationEnabled == other.identityVerificationEnabled &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt;
   }
@@ -57,6 +61,7 @@ class _$ProjectDto extends ProjectDto {
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, ownerId.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, identityVerificationEnabled.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, updatedAt.hashCode);
     _$hash = $jf(_$hash);
@@ -70,6 +75,7 @@ class _$ProjectDto extends ProjectDto {
           ..add('name', name)
           ..add('ownerId', ownerId)
           ..add('description', description)
+          ..add('identityVerificationEnabled', identityVerificationEnabled)
           ..add('createdAt', createdAt)
           ..add('updatedAt', updatedAt))
         .toString();
@@ -95,6 +101,11 @@ class ProjectDtoBuilder implements Builder<ProjectDto, ProjectDtoBuilder> {
   String? get description => _$this._description;
   set description(String? description) => _$this._description = description;
 
+  bool? _identityVerificationEnabled;
+  bool? get identityVerificationEnabled => _$this._identityVerificationEnabled;
+  set identityVerificationEnabled(bool? identityVerificationEnabled) =>
+      _$this._identityVerificationEnabled = identityVerificationEnabled;
+
   String? _createdAt;
   String? get createdAt => _$this._createdAt;
   set createdAt(String? createdAt) => _$this._createdAt = createdAt;
@@ -114,6 +125,7 @@ class ProjectDtoBuilder implements Builder<ProjectDto, ProjectDtoBuilder> {
       _name = $v.name;
       _ownerId = $v.ownerId;
       _description = $v.description;
+      _identityVerificationEnabled = $v.identityVerificationEnabled;
       _createdAt = $v.createdAt;
       _updatedAt = $v.updatedAt;
       _$v = null;
@@ -142,6 +154,7 @@ class ProjectDtoBuilder implements Builder<ProjectDto, ProjectDtoBuilder> {
               name, r'ProjectDto', 'name'),
           ownerId: ownerId,
           description: description,
+          identityVerificationEnabled: identityVerificationEnabled,
           createdAt: createdAt,
           updatedAt: updatedAt,
         );

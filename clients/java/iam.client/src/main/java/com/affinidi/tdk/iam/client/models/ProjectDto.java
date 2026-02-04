@@ -34,6 +34,7 @@ import java.util.StringJoiner;
   ProjectDto.JSON_PROPERTY_NAME,
   ProjectDto.JSON_PROPERTY_OWNER_ID,
   ProjectDto.JSON_PROPERTY_DESCRIPTION,
+  ProjectDto.JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED,
   ProjectDto.JSON_PROPERTY_CREATED_AT,
   ProjectDto.JSON_PROPERTY_UPDATED_AT
 })
@@ -54,6 +55,10 @@ public class ProjectDto {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
   private String description;
+
+  public static final String JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED = "identityVerificationEnabled";
+  @javax.annotation.Nullable
+  private Boolean identityVerificationEnabled;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   @javax.annotation.Nullable
@@ -166,6 +171,31 @@ public class ProjectDto {
     this.description = description;
   }
 
+  public ProjectDto identityVerificationEnabled(@javax.annotation.Nullable Boolean identityVerificationEnabled) {
+    
+    this.identityVerificationEnabled = identityVerificationEnabled;
+    return this;
+  }
+
+  /**
+   * Get identityVerificationEnabled
+   * @return identityVerificationEnabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIdentityVerificationEnabled() {
+    return identityVerificationEnabled;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdentityVerificationEnabled(@javax.annotation.Nullable Boolean identityVerificationEnabled) {
+    this.identityVerificationEnabled = identityVerificationEnabled;
+  }
+
   public ProjectDto createdAt(@javax.annotation.Nullable String createdAt) {
     
     this.createdAt = createdAt;
@@ -229,13 +259,14 @@ public class ProjectDto {
         Objects.equals(this.name, projectDto.name) &&
         Objects.equals(this.ownerId, projectDto.ownerId) &&
         Objects.equals(this.description, projectDto.description) &&
+        Objects.equals(this.identityVerificationEnabled, projectDto.identityVerificationEnabled) &&
         Objects.equals(this.createdAt, projectDto.createdAt) &&
         Objects.equals(this.updatedAt, projectDto.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, ownerId, description, createdAt, updatedAt);
+    return Objects.hash(id, name, ownerId, description, identityVerificationEnabled, createdAt, updatedAt);
   }
 
   @Override
@@ -246,6 +277,7 @@ public class ProjectDto {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    ownerId: ").append(toIndentedString(ownerId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    identityVerificationEnabled: ").append(toIndentedString(identityVerificationEnabled)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
@@ -329,6 +361,16 @@ public class ProjectDto {
     if (getDescription() != null) {
       try {
         joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `identityVerificationEnabled` to the URL query string
+    if (getIdentityVerificationEnabled() != null) {
+      try {
+        joiner.add(String.format("%sidentityVerificationEnabled%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdentityVerificationEnabled()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
