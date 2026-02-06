@@ -7,9 +7,6 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (Serializers().toBuilder()
-      ..add(AuthcryptMessageInput.serializer)
-      ..add(AuthcryptMessageInputSignatureSchemeEnum.serializer)
-      ..add(AuthcryptMessageResultDto.serializer)
       ..add(CreateWalletInput.serializer)
       ..add(CreateWalletInputDidMethodEnum.serializer)
       ..add(CreateWalletResponse.serializer)
@@ -21,21 +18,13 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(EntityNotFoundErrorHttpStatusCodeEnum.serializer)
       ..add(EntityNotFoundErrorMessageEnum.serializer)
       ..add(EntityNotFoundErrorNameEnum.serializer)
-      ..add(GetRevocationCredentialStatusOK.serializer)
       ..add(GetRevocationListCredentialResultDto.serializer)
-      ..add(InvalidDidParameterError.serializer)
-      ..add(InvalidDidParameterErrorHttpStatusCodeEnum.serializer)
-      ..add(InvalidDidParameterErrorMessageEnum.serializer)
-      ..add(InvalidDidParameterErrorNameEnum.serializer)
       ..add(InvalidParameterError.serializer)
       ..add(InvalidParameterErrorHttpStatusCodeEnum.serializer)
       ..add(InvalidParameterErrorMessageEnum.serializer)
       ..add(InvalidParameterErrorNameEnum.serializer)
-      ..add(KeyNotFoundError.serializer)
-      ..add(KeyNotFoundErrorHttpStatusCodeEnum.serializer)
-      ..add(KeyNotFoundErrorMessageEnum.serializer)
-      ..add(KeyNotFoundErrorNameEnum.serializer)
       ..add(NotFoundError.serializer)
+      ..add(NotFoundErrorDetailsInner.serializer)
       ..add(NotFoundErrorHttpStatusCodeEnum.serializer)
       ..add(NotFoundErrorMessageEnum.serializer)
       ..add(NotFoundErrorNameEnum.serializer)
@@ -45,16 +34,11 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(OperationForbiddenErrorNameEnum.serializer)
       ..add(RevokeCredentialInput.serializer)
       ..add(RevokeCredentialsInput.serializer)
-      ..add(ServiceErrorResponse.serializer)
-      ..add(ServiceErrorResponseDetailsInner.serializer)
       ..add(SignCredential400Response.serializer)
       ..add(SignCredentialInputDto.serializer)
       ..add(SignCredentialInputDtoCredentialFormatEnum.serializer)
       ..add(SignCredentialInputDtoUnsignedCredentialParams.serializer)
       ..add(SignCredentialResultDto.serializer)
-      ..add(SignCredentialsDm1LdInputDto.serializer)
-      ..add(SignCredentialsDm1LdInputDtoSignatureSchemeEnum.serializer)
-      ..add(SignCredentialsDm1LdResultDto.serializer)
       ..add(SignCredentialsDm2SdJwtInputDto.serializer)
       ..add(SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum.serializer)
       ..add(SignCredentialsDm2SdJwtResultDto.serializer)
@@ -67,9 +51,8 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(SignCredentialsLdpResultDto.serializer)
       ..add(SignJwtToken.serializer)
       ..add(SignJwtTokenOK.serializer)
-      ..add(SignMessageInput.serializer)
-      ..add(SignMessageInputSignatureSchemeEnum.serializer)
-      ..add(SignMessageResultDto.serializer)
+      ..add(SignJwtV2.serializer)
+      ..add(SignJwtV2OK.serializer)
       ..add(SignPresentationLdpInputDto.serializer)
       ..add(SignPresentationLdpInputDtoSignatureSchemeEnum.serializer)
       ..add(SignPresentationLdpInputDtoSignatureSuiteEnum.serializer)
@@ -82,49 +65,35 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(TooManyRequestsErrorHttpStatusCodeEnum.serializer)
       ..add(TooManyRequestsErrorMessageEnum.serializer)
       ..add(TooManyRequestsErrorNameEnum.serializer)
-      ..add(UnpackMessageInput.serializer)
-      ..add(UnpackMessageResultDto.serializer)
       ..add(UpdateWalletInput.serializer)
       ..add(WalletDto.serializer)
       ..add(WalletDtoKeysInner.serializer)
       ..add(WalletV2Dto.serializer)
       ..add(WalletsListDto.serializer)
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
+          const FullType(
+              BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
+          const FullType(
+              BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
+          const FullType(
+              BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
+          const FullType(
+              BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
+          const FullType(
+              BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
+          const FullType(
+              BuiltList, const [const FullType(NotFoundErrorDetailsInner)]),
+          () => ListBuilder<NotFoundErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())

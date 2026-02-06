@@ -18,18 +18,13 @@ import 'package:affinidi_tdk_iam_client/src/model/action_forbidden_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/add_user_to_project_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/consumer_auth_token_endpoint_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/consumer_auth_token_endpoint_output.dart';
-import 'package:affinidi_tdk_iam_client/src/model/cors_consumer_auth_token_endpoint_ok.dart';
-import 'package:affinidi_tdk_iam_client/src/model/cors_grant_access_vfs_ok.dart';
-import 'package:affinidi_tdk_iam_client/src/model/cors_update_access_vfs_ok.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_project_scoped_token_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/create_token_input.dart';
-import 'package:affinidi_tdk_iam_client/src/model/delete_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/grant_access_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/grant_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/invalid_did_error.dart';
-import 'package:affinidi_tdk_iam_client/src/model/invalid_jwt_token_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/invalid_parameter_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/json_web_key_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/json_web_key_set_dto.dart';
@@ -42,19 +37,16 @@ import 'package:affinidi_tdk_iam_client/src/model/project_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/project_list.dart';
 import 'package:affinidi_tdk_iam_client/src/model/project_with_policy_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/project_with_policy_list.dart';
-import 'package:affinidi_tdk_iam_client/src/model/public_key_cannot_be_resolved_from_did_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/rights_enum.dart';
-import 'package:affinidi_tdk_iam_client/src/model/service_error_response.dart';
-import 'package:affinidi_tdk_iam_client/src/model/service_error_response_details_inner.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_list.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authentication_method_dto.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authentication_method_dto_public_key_info.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authentication_method_dto_public_key_info_one_of.dart';
 import 'package:affinidi_tdk_iam_client/src/model/token_private_key_authentication_method_dto_public_key_info_one_of1.dart';
-import 'package:affinidi_tdk_iam_client/src/model/typed_principal_id.dart';
 import 'package:affinidi_tdk_iam_client/src/model/unauthorized_error.dart';
 import 'package:affinidi_tdk_iam_client/src/model/unexpected_error.dart';
+import 'package:affinidi_tdk_iam_client/src/model/unexpected_error_details_inner.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_access_input.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_access_output.dart';
 import 'package:affinidi_tdk_iam_client/src/model/update_project_input.dart';
@@ -71,18 +63,13 @@ part 'serializers.g.dart';
   AddUserToProjectInput,
   ConsumerAuthTokenEndpointInput,
   ConsumerAuthTokenEndpointOutput,
-  CorsConsumerAuthTokenEndpointOK,
-  CorsGrantAccessVfsOK,
-  CorsUpdateAccessVfsOK,
   CreateProjectInput,
   CreateProjectScopedTokenInput,
   CreateProjectScopedTokenOutput,
   CreateTokenInput,
-  DeleteAccessOutput,
   GrantAccessInput,
   GrantAccessOutput,
   InvalidDIDError,
-  InvalidJwtTokenError,
   InvalidParameterError,
   JsonWebKeyDto,
   JsonWebKeySetDto,
@@ -95,19 +82,16 @@ part 'serializers.g.dart';
   ProjectList,
   ProjectWithPolicyDto,
   ProjectWithPolicyList,
-  PublicKeyCannotBeResolvedFromDidError,
   RightsEnum,
-  ServiceErrorResponse,
-  ServiceErrorResponseDetailsInner,
   TokenDto,
   TokenList,
   TokenPrivateKeyAuthenticationMethodDto,
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo,
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf,
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1,
-  TypedPrincipalId,
   UnauthorizedError,
   UnexpectedError,
+  UnexpectedErrorDetailsInner,
   UpdateAccessInput,
   UpdateAccessOutput,
   UpdateProjectInput,
