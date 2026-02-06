@@ -91,6 +91,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [_ProjectsApi_](doc/ProjectsApi.md)         | [**addPrincipalToProject**](doc/ProjectsApi.md#addprincipaltoproject)             | **POST** /v1/projects/principals                 |
 | [_ProjectsApi_](doc/ProjectsApi.md)         | [**createProject**](doc/ProjectsApi.md#createproject)                             | **POST** /v1/projects                            |
 | [_ProjectsApi_](doc/ProjectsApi.md)         | [**deletePrincipalFromProject**](doc/ProjectsApi.md#deleteprincipalfromproject)   | **DELETE** /v1/projects/principals/{principalId} |
+| [_ProjectsApi_](doc/ProjectsApi.md)         | [**getProject**](doc/ProjectsApi.md#getproject)                                   | **GET** /v1/projects/{projectId}                 |
 | [_ProjectsApi_](doc/ProjectsApi.md)         | [**listPrincipalsOfProject**](doc/ProjectsApi.md#listprincipalsofproject)         | **GET** /v1/projects/principals                  |
 | [_ProjectsApi_](doc/ProjectsApi.md)         | [**listProject**](doc/ProjectsApi.md#listproject)                                 | **GET** /v1/projects                             |
 | [_ProjectsApi_](doc/ProjectsApi.md)         | [**updateProject**](doc/ProjectsApi.md#updateproject)                             | **PATCH** /v1/projects/{projectId}               |
@@ -111,18 +112,13 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [AddUserToProjectInput](doc/AddUserToProjectInput.md)
 - [ConsumerAuthTokenEndpointInput](doc/ConsumerAuthTokenEndpointInput.md)
 - [ConsumerAuthTokenEndpointOutput](doc/ConsumerAuthTokenEndpointOutput.md)
-- [CorsConsumerAuthTokenEndpointOK](doc/CorsConsumerAuthTokenEndpointOK.md)
-- [CorsGrantAccessVfsOK](doc/CorsGrantAccessVfsOK.md)
-- [CorsUpdateAccessVfsOK](doc/CorsUpdateAccessVfsOK.md)
 - [CreateProjectInput](doc/CreateProjectInput.md)
 - [CreateProjectScopedTokenInput](doc/CreateProjectScopedTokenInput.md)
 - [CreateProjectScopedTokenOutput](doc/CreateProjectScopedTokenOutput.md)
 - [CreateTokenInput](doc/CreateTokenInput.md)
-- [DeleteAccessOutput](doc/DeleteAccessOutput.md)
 - [GrantAccessInput](doc/GrantAccessInput.md)
 - [GrantAccessOutput](doc/GrantAccessOutput.md)
 - [InvalidDIDError](doc/InvalidDIDError.md)
-- [InvalidJwtTokenError](doc/InvalidJwtTokenError.md)
 - [InvalidParameterError](doc/InvalidParameterError.md)
 - [JsonWebKeyDto](doc/JsonWebKeyDto.md)
 - [JsonWebKeySetDto](doc/JsonWebKeySetDto.md)
@@ -135,19 +131,16 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [ProjectList](doc/ProjectList.md)
 - [ProjectWithPolicyDto](doc/ProjectWithPolicyDto.md)
 - [ProjectWithPolicyList](doc/ProjectWithPolicyList.md)
-- [PublicKeyCannotBeResolvedFromDidError](doc/PublicKeyCannotBeResolvedFromDidError.md)
 - [RightsEnum](doc/RightsEnum.md)
-- [ServiceErrorResponse](doc/ServiceErrorResponse.md)
-- [ServiceErrorResponseDetailsInner](doc/ServiceErrorResponseDetailsInner.md)
 - [TokenDto](doc/TokenDto.md)
 - [TokenList](doc/TokenList.md)
 - [TokenPrivateKeyAuthenticationMethodDto](doc/TokenPrivateKeyAuthenticationMethodDto.md)
 - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo](doc/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo.md)
 - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf](doc/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.md)
 - [TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1](doc/TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.md)
-- [TypedPrincipalId](doc/TypedPrincipalId.md)
 - [UnauthorizedError](doc/UnauthorizedError.md)
 - [UnexpectedError](doc/UnexpectedError.md)
+- [UnexpectedErrorDetailsInner](doc/UnexpectedErrorDetailsInner.md)
 - [UpdateAccessInput](doc/UpdateAccessInput.md)
 - [UpdateAccessOutput](doc/UpdateAccessOutput.md)
 - [UpdateProjectInput](doc/UpdateProjectInput.md)

@@ -71,10 +71,10 @@ export interface ActionForbiddenError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof ActionForbiddenError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const ActionForbiddenErrorNameEnum = {
@@ -229,45 +229,6 @@ export interface ConsumerAuthTokenEndpointOutput {
 /**
  *
  * @export
- * @interface CorsConsumerAuthTokenEndpointOK
- */
-export interface CorsConsumerAuthTokenEndpointOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsConsumerAuthTokenEndpointOK
-   */
-  corsConsumerAuthTokenEndpointOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGrantAccessVfsOK
- */
-export interface CorsGrantAccessVfsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGrantAccessVfsOK
-   */
-  corsGrantAccessVfsOk?: string
-}
-/**
- *
- * @export
- * @interface CorsUpdateAccessVfsOK
- */
-export interface CorsUpdateAccessVfsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsUpdateAccessVfsOK
-   */
-  corsUpdateAccessVfsOk?: string
-}
-/**
- *
- * @export
  * @interface CreateProjectInput
  */
 export interface CreateProjectInput {
@@ -350,19 +311,6 @@ export interface CreateTokenInput {
 /**
  *
  * @export
- * @interface DeleteAccessOutput
- */
-export interface DeleteAccessOutput {
-  /**
-   *
-   * @type {boolean}
-   * @memberof DeleteAccessOutput
-   */
-  success: boolean
-}
-/**
- *
- * @export
  * @interface GrantAccessInput
  */
 export interface GrantAccessInput {
@@ -430,10 +378,10 @@ export interface InvalidDIDError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof InvalidDIDError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const InvalidDIDErrorNameEnum = {
@@ -455,63 +403,6 @@ export const InvalidDIDErrorHttpStatusCodeEnum = {
 
 export type InvalidDIDErrorHttpStatusCodeEnum =
   (typeof InvalidDIDErrorHttpStatusCodeEnum)[keyof typeof InvalidDIDErrorHttpStatusCodeEnum]
-
-/**
- *
- * @export
- * @interface InvalidJwtTokenError
- */
-export interface InvalidJwtTokenError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
-  name: InvalidJwtTokenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
-  message: InvalidJwtTokenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidJwtTokenError
-   */
-  httpStatusCode: InvalidJwtTokenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
-   * @memberof InvalidJwtTokenError
-   */
-  details?: Array<ServiceErrorResponseDetailsInner>
-}
-
-export const InvalidJwtTokenErrorNameEnum = {
-  InvalidJwtTokenError: 'InvalidJwtTokenError',
-} as const
-
-export type InvalidJwtTokenErrorNameEnum =
-  (typeof InvalidJwtTokenErrorNameEnum)[keyof typeof InvalidJwtTokenErrorNameEnum]
-export const InvalidJwtTokenErrorMessageEnum = {
-  JwtTokenIsInvalid: 'JWT token is invalid',
-} as const
-
-export type InvalidJwtTokenErrorMessageEnum =
-  (typeof InvalidJwtTokenErrorMessageEnum)[keyof typeof InvalidJwtTokenErrorMessageEnum]
-export const InvalidJwtTokenErrorHttpStatusCodeEnum = {
-  NUMBER_401: 401,
-} as const
-
-export type InvalidJwtTokenErrorHttpStatusCodeEnum =
-  (typeof InvalidJwtTokenErrorHttpStatusCodeEnum)[keyof typeof InvalidJwtTokenErrorHttpStatusCodeEnum]
 
 /**
  *
@@ -545,10 +436,10 @@ export interface InvalidParameterError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof InvalidParameterError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const InvalidParameterErrorNameEnum = {
@@ -676,10 +567,10 @@ export interface NotFoundError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof NotFoundError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const NotFoundErrorNameEnum = {
@@ -807,10 +698,10 @@ export interface PrincipalCannotBeDeletedError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof PrincipalCannotBeDeletedError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const PrincipalCannotBeDeletedErrorNameEnum = {
@@ -865,10 +756,10 @@ export interface PrincipalDoesNotBelongToProjectError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof PrincipalDoesNotBelongToProjectError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const PrincipalDoesNotBelongToProjectErrorNameEnum = {
@@ -921,6 +812,12 @@ export interface ProjectDto {
    * @memberof ProjectDto
    */
   description?: string
+  /**
+   *
+   * @type {boolean}
+   * @memberof ProjectDto
+   */
+  identityVerificationEnabled?: boolean
   /**
    * creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
    * @type {string}
@@ -1000,65 +897,6 @@ export interface ProjectWithPolicyList {
 /**
  *
  * @export
- * @interface PublicKeyCannotBeResolvedFromDidError
- */
-export interface PublicKeyCannotBeResolvedFromDidError {
-  /**
-   *
-   * @type {string}
-   * @memberof PublicKeyCannotBeResolvedFromDidError
-   */
-  name: PublicKeyCannotBeResolvedFromDidErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof PublicKeyCannotBeResolvedFromDidError
-   */
-  message: PublicKeyCannotBeResolvedFromDidErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof PublicKeyCannotBeResolvedFromDidError
-   */
-  httpStatusCode: PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof PublicKeyCannotBeResolvedFromDidError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
-   * @memberof PublicKeyCannotBeResolvedFromDidError
-   */
-  details?: Array<ServiceErrorResponseDetailsInner>
-}
-
-export const PublicKeyCannotBeResolvedFromDidErrorNameEnum = {
-  PublicKeyCannotBeResolvedFromDidError:
-    'PublicKeyCannotBeResolvedFromDidError',
-} as const
-
-export type PublicKeyCannotBeResolvedFromDidErrorNameEnum =
-  (typeof PublicKeyCannotBeResolvedFromDidErrorNameEnum)[keyof typeof PublicKeyCannotBeResolvedFromDidErrorNameEnum]
-export const PublicKeyCannotBeResolvedFromDidErrorMessageEnum = {
-  UnableToResolveDidMethodInvalidPublicKey:
-    'Unable to resolve DID method. Invalid public key',
-} as const
-
-export type PublicKeyCannotBeResolvedFromDidErrorMessageEnum =
-  (typeof PublicKeyCannotBeResolvedFromDidErrorMessageEnum)[keyof typeof PublicKeyCannotBeResolvedFromDidErrorMessageEnum]
-export const PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum = {
-  NUMBER_400: 400,
-} as const
-
-export type PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum =
-  (typeof PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum)[keyof typeof PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum]
-
-/**
- *
- * @export
  * @enum {string}
  */
 
@@ -1069,68 +907,6 @@ export const RightsEnum = {
 
 export type RightsEnum = (typeof RightsEnum)[keyof typeof RightsEnum]
 
-/**
- *
- * @export
- * @interface ServiceErrorResponse
- */
-export interface ServiceErrorResponse {
-  /**
-   * unique id for correlating this specific error to logs
-   * @type {string}
-   * @memberof ServiceErrorResponse
-   */
-  debugId: string
-  /**
-   * name of the error
-   * @type {string}
-   * @memberof ServiceErrorResponse
-   */
-  name: string
-  /**
-   * backwards compatible Affinidi error code
-   * @type {string}
-   * @memberof ServiceErrorResponse
-   */
-  code: string
-  /**
-   *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
-   * @memberof ServiceErrorResponse
-   */
-  details?: Array<ServiceErrorResponseDetailsInner>
-}
-/**
- *
- * @export
- * @interface ServiceErrorResponseDetailsInner
- */
-export interface ServiceErrorResponseDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  location?: string
-}
 /**
  *
  * @export
@@ -1273,19 +1049,6 @@ export interface TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
 /**
  *
  * @export
- * @interface TypedPrincipalId
- */
-export interface TypedPrincipalId {
-  /**
-   *
-   * @type {string}
-   * @memberof TypedPrincipalId
-   */
-  principalId: string
-}
-/**
- *
- * @export
  * @interface UnauthorizedError
  */
 export interface UnauthorizedError {
@@ -1315,10 +1078,10 @@ export interface UnauthorizedError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof UnauthorizedError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const UnauthorizedErrorNameEnum = {
@@ -1372,10 +1135,10 @@ export interface UnexpectedError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<UnexpectedErrorDetailsInner>}
    * @memberof UnexpectedError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<UnexpectedErrorDetailsInner>
 }
 
 export const UnexpectedErrorNameEnum = {
@@ -1397,6 +1160,37 @@ export const UnexpectedErrorHttpStatusCodeEnum = {
 export type UnexpectedErrorHttpStatusCodeEnum =
   (typeof UnexpectedErrorHttpStatusCodeEnum)[keyof typeof UnexpectedErrorHttpStatusCodeEnum]
 
+/**
+ *
+ * @export
+ * @interface UnexpectedErrorDetailsInner
+ */
+export interface UnexpectedErrorDetailsInner {
+  /**
+   *
+   * @type {string}
+   * @memberof UnexpectedErrorDetailsInner
+   */
+  issue: string
+  /**
+   *
+   * @type {string}
+   * @memberof UnexpectedErrorDetailsInner
+   */
+  field?: string
+  /**
+   *
+   * @type {string}
+   * @memberof UnexpectedErrorDetailsInner
+   */
+  value?: string
+  /**
+   *
+   * @type {string}
+   * @memberof UnexpectedErrorDetailsInner
+   */
+  location?: string
+}
 /**
  *
  * @export
@@ -3714,6 +3508,58 @@ export const ProjectsApiAxiosParamCreator = function (
     },
     /**
      *
+     * @param {string} projectId projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProject: async (
+      projectId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'projectId' is not null or undefined
+      assertParamExists('getProject', 'projectId', projectId)
+      const localVarPath = `/v1/projects/{projectId}`.replace(
+        `{${'projectId'}}`,
+        encodeURIComponent(String(projectId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
@@ -3997,6 +3843,35 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
     },
     /**
      *
+     * @param {string} projectId projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getProject(
+      projectId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.getProject(
+        projectId,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['ProjectsApi.getProject']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     *
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
@@ -4152,6 +4027,20 @@ export const ProjectsApiFactory = function (
     },
     /**
      *
+     * @param {string} projectId projectId
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    getProject(
+      projectId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ProjectDto> {
+      return localVarFp
+        .getProject(projectId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
      * @param {*} [options] Override http request option.
@@ -4255,6 +4144,19 @@ export class ProjectsApi extends BaseAPI {
   ) {
     return ProjectsApiFp(this.configuration)
       .deletePrincipalFromProject(principalId, principalType, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {string} projectId projectId
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ProjectsApi
+   */
+  public getProject(projectId: string, options?: RawAxiosRequestConfig) {
+    return ProjectsApiFp(this.configuration)
+      .getProject(projectId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
