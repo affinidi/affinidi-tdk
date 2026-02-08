@@ -2,14 +2,15 @@
 
 ## Properties
 
-| Name            | Type    | Description                                                            | Notes      |
-| --------------- | ------- | ---------------------------------------------------------------------- | ---------- |
-| **id**          | **str** |                                                                        |
-| **name**        | **str** |                                                                        |
-| **owner_id**    | **str** |                                                                        | [optional] |
-| **description** | **str** |                                                                        | [optional] |
-| **created_at**  | **str** | creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13    | [optional] |
-| **updated_at**  | **str** | last update date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13 | [optional] |
+| Name                              | Type     | Description                                                            | Notes      |
+| --------------------------------- | -------- | ---------------------------------------------------------------------- | ---------- |
+| **id**                            | **str**  |                                                                        |
+| **name**                          | **str**  |                                                                        |
+| **owner_id**                      | **str**  |                                                                        | [optional] |
+| **description**                   | **str**  |                                                                        | [optional] |
+| **identity_verification_enabled** | **bool** |                                                                        | [optional] |
+| **created_at**                    | **str**  | creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13    | [optional] |
+| **updated_at**                    | **str**  | last update date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13 | [optional] |
 
 ## Example
 

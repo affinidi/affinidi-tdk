@@ -14,6 +14,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**signCredentialsLdp**](#signcredentialsldp)     | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |             |
 | [**signCredentialsSdJwt**](#signcredentialssdjwt) | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |             |
 | [**signJwtToken**](#signjwttoken)                 | **POST** /v1/wallets/{walletId}/sign-jwt                |             |
+| [**signJwtV2**](#signjwtv2)                       | **POST** /v2/wallets/{walletId}/jwt/sign                | Sign JWT.   |
 | [**signPresentationsLdp**](#signpresentationsldp) | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |             |
 | [**updateWallet**](#updatewallet)                 | **PATCH** /v1/wallets/{walletId}                        |             |
 
@@ -547,6 +548,61 @@ const { status, data } = await apiInstance.signJwtToken(walletId, signJwtToken)
 | Status code | Description     | Response headers |
 | ----------- | --------------- | ---------------- |
 | **200**     | SignJwtTokenOK  | -                |
+| **400**     | BadRequestError | -                |
+| **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **signJwtV2**
+
+> SignJwtV2OK signJwtV2(signJwtV2)
+
+Sign a JSON Web Token (JWT).
+
+### Example
+
+```typescript
+import {
+  WalletApi,
+  Configuration,
+  SignJwtV2,
+} from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let signJwtV2: SignJwtV2 //SignJwtV2
+
+const { status, data } = await apiInstance.signJwtV2(walletId, signJwtV2)
+```
+
+### Parameters
+
+| Name          | Type          | Description      | Notes                 |
+| ------------- | ------------- | ---------------- | --------------------- |
+| **signJwtV2** | **SignJwtV2** | SignJwtV2        |                       |
+| **walletId**  | [**string**]  | id of the wallet | defaults to undefined |
+
+### Return type
+
+**SignJwtV2OK**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | SignJwtOK       | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |

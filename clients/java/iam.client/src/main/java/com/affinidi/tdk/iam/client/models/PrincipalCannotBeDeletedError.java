@@ -15,7 +15,7 @@ package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iam.client.models.ServiceErrorResponseDetailsInner;
+import com.affinidi.tdk.iam.client.models.UnexpectedErrorDetailsInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -159,7 +159,7 @@ public class PrincipalCannotBeDeletedError {
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable
-  private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
+  private List<UnexpectedErrorDetailsInner> details = new ArrayList<>();
 
   public PrincipalCannotBeDeletedError() {
   }
@@ -264,13 +264,13 @@ public class PrincipalCannotBeDeletedError {
     this.traceId = traceId;
   }
 
-  public PrincipalCannotBeDeletedError details(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public PrincipalCannotBeDeletedError details(@javax.annotation.Nullable List<UnexpectedErrorDetailsInner> details) {
     
     this.details = details;
     return this;
   }
 
-  public PrincipalCannotBeDeletedError addDetailsItem(ServiceErrorResponseDetailsInner detailsItem) {
+  public PrincipalCannotBeDeletedError addDetailsItem(UnexpectedErrorDetailsInner detailsItem) {
     if (this.details == null) {
       this.details = new ArrayList<>();
     }
@@ -286,14 +286,14 @@ public class PrincipalCannotBeDeletedError {
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ServiceErrorResponseDetailsInner> getDetails() {
+  public List<UnexpectedErrorDetailsInner> getDetails() {
     return details;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<UnexpectedErrorDetailsInner> details) {
     this.details = details;
   }
 
