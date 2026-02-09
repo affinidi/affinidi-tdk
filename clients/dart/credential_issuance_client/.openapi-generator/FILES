@@ -17,12 +17,6 @@ doc/CisConfigurationWebhookSettingEndpoint.md
 doc/ClaimedCredentialListResponse.md
 doc/ClaimedCredentialResponse.md
 doc/ConfigurationApi.md
-doc/CorsBatchCredentialOK.md
-doc/CorsGenerateCredentialsOK.md
-doc/CorsGetClaimedCredentialsOK.md
-doc/CorsGetCredentialOfferOK.md
-doc/CorsGetIssuanceIdClaimedCredentialOK.md
-doc/CorsGetWellKnownOpenIdCredentialIssuerOK.md
 doc/CreateCredentialInput.md
 doc/CreateIssuanceConfig400Response.md
 doc/CreateIssuanceConfigInput.md
@@ -43,7 +37,6 @@ doc/CredentialSubjectNotValidError.md
 doc/CredentialSupportedObject.md
 doc/CredentialsApi.md
 doc/DefaultApi.md
-doc/DeferredCredentialInput.md
 doc/FlowData.md
 doc/FlowDataStatusListsDetailsInner.md
 doc/GenerateCredentials400Response.md
@@ -67,7 +60,6 @@ doc/NotFoundError.md
 doc/OfferApi.md
 doc/ProjectCredentialConfigExistError.md
 doc/ProjectCredentialConfigNotExistError.md
-doc/RevocationForbiddenError.md
 doc/StartIssuance400Response.md
 doc/StartIssuanceInput.md
 doc/StartIssuanceInputDataInner.md
@@ -112,12 +104,6 @@ lib/src/model/cis_configuration_webhook_setting.dart
 lib/src/model/cis_configuration_webhook_setting_endpoint.dart
 lib/src/model/claimed_credential_list_response.dart
 lib/src/model/claimed_credential_response.dart
-lib/src/model/cors_batch_credential_ok.dart
-lib/src/model/cors_generate_credentials_ok.dart
-lib/src/model/cors_get_claimed_credentials_ok.dart
-lib/src/model/cors_get_credential_offer_ok.dart
-lib/src/model/cors_get_issuance_id_claimed_credential_ok.dart
-lib/src/model/cors_get_well_known_open_id_credential_issuer_ok.dart
 lib/src/model/create_credential_input.dart
 lib/src/model/create_issuance_config400_response.dart
 lib/src/model/create_issuance_config_input.dart
@@ -137,7 +123,6 @@ lib/src/model/credential_response_immediate_credential.dart
 lib/src/model/credential_subject_not_valid_error.dart
 lib/src/model/credential_supported_object.dart
 lib/src/model/date.dart
-lib/src/model/deferred_credential_input.dart
 lib/src/model/flow_data.dart
 lib/src/model/flow_data_status_lists_details_inner.dart
 lib/src/model/generate_credentials400_response.dart
@@ -159,7 +144,6 @@ lib/src/model/missing_holder_did_error.dart
 lib/src/model/not_found_error.dart
 lib/src/model/project_credential_config_exist_error.dart
 lib/src/model/project_credential_config_not_exist_error.dart
-lib/src/model/revocation_forbidden_error.dart
 lib/src/model/start_issuance400_response.dart
 lib/src/model/start_issuance_input.dart
 lib/src/model/start_issuance_input_data_inner.dart

@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name            | Type    | Description | Notes      |
-| --------------- | ------- | ----------- | ---------- |
-| **name**        | **str** |             | [optional] |
-| **description** | **str** |             | [optional] |
+| Name                              | Type     | Description                                                    | Notes      |
+| --------------------------------- | -------- | -------------------------------------------------------------- | ---------- |
+| **name**                          | **str**  |                                                                | [optional] |
+| **description**                   | **str**  |                                                                | [optional] |
+| **identity_verification_enabled** | **bool** | flag indicates if identity verification is enabled for project | [optional] |
 
 ## Example
 

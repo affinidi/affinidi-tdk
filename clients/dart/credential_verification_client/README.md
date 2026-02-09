@@ -80,31 +80,9 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 
 ## Documentation For Models
 
-- [Constraints](doc/Constraints.md)
-- [ConstraintsStatuses](doc/ConstraintsStatuses.md)
-- [Descriptor](doc/Descriptor.md)
-- [Error](doc/Error.md)
-- [ErrorDetail](doc/ErrorDetail.md)
-- [EvaluateVpOutput](doc/EvaluateVpOutput.md)
-- [Field](doc/Field.md)
-- [Filter](doc/Filter.md)
-- [FilterConst](doc/FilterConst.md)
-- [FilterItems](doc/FilterItems.md)
-- [Format](doc/Format.md)
-- [HolderSubject](doc/HolderSubject.md)
-- [InputDescriptor](doc/InputDescriptor.md)
 - [InvalidParameterError](doc/InvalidParameterError.md)
-- [JwtObject](doc/JwtObject.md)
-- [LdpObject](doc/LdpObject.md)
-- [NestedDescriptor](doc/NestedDescriptor.md)
 - [NotFoundError](doc/NotFoundError.md)
 - [NotFoundErrorDetailsInner](doc/NotFoundErrorDetailsInner.md)
-- [PdStatus](doc/PdStatus.md)
-- [PresentationDefinition](doc/PresentationDefinition.md)
-- [PresentationSubmission](doc/PresentationSubmission.md)
-- [SubmissionRequirement](doc/SubmissionRequirement.md)
-- [ValidateJwtInput](doc/ValidateJwtInput.md)
-- [ValidateJwtOutput](doc/ValidateJwtOutput.md)
 - [VerifyCredentialInput](doc/VerifyCredentialInput.md)
 - [VerifyCredentialOutput](doc/VerifyCredentialOutput.md)
 - [VerifyCredentialV2Input](doc/VerifyCredentialV2Input.md)
@@ -112,8 +90,6 @@ All URIs are relative to *https://apse1.api.affinidi.io/ver*
 - [VerifyPresentationOutput](doc/VerifyPresentationOutput.md)
 - [VerifyPresentationV2Input](doc/VerifyPresentationV2Input.md)
 - [VerifyPresentationV2InputPexQuery](doc/VerifyPresentationV2InputPexQuery.md)
-- [W3cCredentialStatus](doc/W3cCredentialStatus.md)
-- [W3cProof](doc/W3cProof.md)
 
 ## Documentation For Authorization
 
