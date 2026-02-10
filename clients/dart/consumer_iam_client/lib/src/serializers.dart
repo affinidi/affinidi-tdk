@@ -16,14 +16,12 @@ import 'package:affinidi_tdk_consumer_iam_client/src/model/date.dart';
 
 import 'package:affinidi_tdk_consumer_iam_client/src/model/consumer_auth_token_endpoint_input.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/consumer_auth_token_endpoint_output.dart';
-import 'package:affinidi_tdk_consumer_iam_client/src/model/cors_consumer_auth_token_endpoint_ok.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/get_access_output.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/grant_access_input.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/grant_access_output.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_did_error.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_jwt_token_error.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_jwt_token_error_details_inner.dart';
-import 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_parameter_error.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/json_web_key_dto.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/json_web_key_set_dto.dart';
 import 'package:affinidi_tdk_consumer_iam_client/src/model/permission.dart';
@@ -38,14 +36,12 @@ part 'serializers.g.dart';
 @SerializersFor([
   ConsumerAuthTokenEndpointInput,
   ConsumerAuthTokenEndpointOutput,
-  CorsConsumerAuthTokenEndpointOK,
   GetAccessOutput,
   GrantAccessInput,
   GrantAccessOutput,
   InvalidDIDError,
   InvalidJwtTokenError,
   InvalidJwtTokenErrorDetailsInner,
-  InvalidParameterError,
   JsonWebKeyDto,
   JsonWebKeySetDto,
   Permission,

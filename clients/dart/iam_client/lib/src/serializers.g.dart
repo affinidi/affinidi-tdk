@@ -16,24 +16,16 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ConsumerAuthTokenEndpointInputClientAssertionTypeEnum.serializer)
       ..add(ConsumerAuthTokenEndpointInputGrantTypeEnum.serializer)
       ..add(ConsumerAuthTokenEndpointOutput.serializer)
-      ..add(CorsConsumerAuthTokenEndpointOK.serializer)
-      ..add(CorsGrantAccessVfsOK.serializer)
-      ..add(CorsUpdateAccessVfsOK.serializer)
       ..add(CreateProjectInput.serializer)
       ..add(CreateProjectScopedTokenInput.serializer)
       ..add(CreateProjectScopedTokenOutput.serializer)
       ..add(CreateTokenInput.serializer)
-      ..add(DeleteAccessOutput.serializer)
       ..add(GrantAccessInput.serializer)
       ..add(GrantAccessOutput.serializer)
       ..add(InvalidDIDError.serializer)
       ..add(InvalidDIDErrorHttpStatusCodeEnum.serializer)
       ..add(InvalidDIDErrorMessageEnum.serializer)
       ..add(InvalidDIDErrorNameEnum.serializer)
-      ..add(InvalidJwtTokenError.serializer)
-      ..add(InvalidJwtTokenErrorHttpStatusCodeEnum.serializer)
-      ..add(InvalidJwtTokenErrorMessageEnum.serializer)
-      ..add(InvalidJwtTokenErrorNameEnum.serializer)
       ..add(InvalidParameterError.serializer)
       ..add(InvalidParameterErrorHttpStatusCodeEnum.serializer)
       ..add(InvalidParameterErrorMessageEnum.serializer)
@@ -58,13 +50,7 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ProjectList.serializer)
       ..add(ProjectWithPolicyDto.serializer)
       ..add(ProjectWithPolicyList.serializer)
-      ..add(PublicKeyCannotBeResolvedFromDidError.serializer)
-      ..add(PublicKeyCannotBeResolvedFromDidErrorHttpStatusCodeEnum.serializer)
-      ..add(PublicKeyCannotBeResolvedFromDidErrorMessageEnum.serializer)
-      ..add(PublicKeyCannotBeResolvedFromDidErrorNameEnum.serializer)
       ..add(RightsEnum.serializer)
-      ..add(ServiceErrorResponse.serializer)
-      ..add(ServiceErrorResponseDetailsInner.serializer)
       ..add(TokenDto.serializer)
       ..add(TokenList.serializer)
       ..add(TokenPrivateKeyAuthenticationMethodDto.serializer)
@@ -75,12 +61,12 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(
           TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum.serializer)
       ..add(TokenPrivateKeyAuthenticationMethodDtoTypeEnum.serializer)
-      ..add(TypedPrincipalId.serializer)
       ..add(UnauthorizedError.serializer)
       ..add(UnauthorizedErrorHttpStatusCodeEnum.serializer)
       ..add(UnauthorizedErrorMessageEnum.serializer)
       ..add(UnauthorizedErrorNameEnum.serializer)
       ..add(UnexpectedError.serializer)
+      ..add(UnexpectedErrorDetailsInner.serializer)
       ..add(UnexpectedErrorHttpStatusCodeEnum.serializer)
       ..add(UnexpectedErrorMessageEnum.serializer)
       ..add(UnexpectedErrorNameEnum.serializer)
@@ -115,50 +101,6 @@ Serializers _$serializers = (Serializers().toBuilder()
           const FullType(BuiltList, const [const FullType(RightsEnum)]),
           () => ListBuilder<RightsEnum>())
       ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ServiceErrorResponseDetailsInner)]),
-          () => ListBuilder<ServiceErrorResponseDetailsInner>())
-      ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => ListBuilder<String>())
       ..addBuilderFactory(
@@ -173,6 +115,38 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TokenDto)]),
           () => ListBuilder<TokenDto>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(UnexpectedErrorDetailsInner)]),
+          () => ListBuilder<UnexpectedErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(UserDto)]),
           () => ListBuilder<UserDto>()))
