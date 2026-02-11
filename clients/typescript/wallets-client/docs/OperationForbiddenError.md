@@ -2,13 +2,13 @@
 
 ## Properties
 
-| Name               | Type                                                                                     | Description | Notes                             |
-| ------------------ | ---------------------------------------------------------------------------------------- | ----------- | --------------------------------- |
-| **name**           | **string**                                                                               |             | [default to undefined]            |
-| **message**        | **string**                                                                               |             | [default to undefined]            |
-| **httpStatusCode** | **number**                                                                               |             | [default to undefined]            |
-| **traceId**        | **string**                                                                               |             | [default to undefined]            |
-| **details**        | [**Array&lt;ServiceErrorResponseDetailsInner&gt;**](ServiceErrorResponseDetailsInner.md) |             | [optional] [default to undefined] |
+| Name               | Type                                                                       | Description | Notes                             |
+| ------------------ | -------------------------------------------------------------------------- | ----------- | --------------------------------- |
+| **name**           | **string**                                                                 |             | [default to undefined]            |
+| **message**        | **string**                                                                 |             | [default to undefined]            |
+| **httpStatusCode** | **number**                                                                 |             | [default to undefined]            |
+| **traceId**        | **string**                                                                 |             | [default to undefined]            |
+| **details**        | [**Array&lt;NotFoundErrorDetailsInner&gt;**](NotFoundErrorDetailsInner.md) |             | [optional] [default to undefined] |
 
 ## Example
 

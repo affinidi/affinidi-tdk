@@ -11,7 +11,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ConsumerAuthTokenEndpointInputClientAssertionTypeEnum.serializer)
       ..add(ConsumerAuthTokenEndpointInputGrantTypeEnum.serializer)
       ..add(ConsumerAuthTokenEndpointOutput.serializer)
-      ..add(CorsConsumerAuthTokenEndpointOK.serializer)
       ..add(GetAccessOutput.serializer)
       ..add(GrantAccessInput.serializer)
       ..add(GrantAccessOutput.serializer)
@@ -24,10 +23,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(InvalidJwtTokenErrorHttpStatusCodeEnum.serializer)
       ..add(InvalidJwtTokenErrorMessageEnum.serializer)
       ..add(InvalidJwtTokenErrorNameEnum.serializer)
-      ..add(InvalidParameterError.serializer)
-      ..add(InvalidParameterErrorHttpStatusCodeEnum.serializer)
-      ..add(InvalidParameterErrorMessageEnum.serializer)
-      ..add(InvalidParameterErrorNameEnum.serializer)
       ..add(JsonWebKeyDto.serializer)
       ..add(JsonWebKeySetDto.serializer)
       ..add(Permission.serializer)
@@ -42,10 +37,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(UnexpectedErrorNameEnum.serializer)
       ..add(UpdateAccessInput.serializer)
       ..add(UpdateAccessOutput.serializer)
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(InvalidJwtTokenErrorDetailsInner)]),
-          () => ListBuilder<InvalidJwtTokenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidJwtTokenErrorDetailsInner)]),

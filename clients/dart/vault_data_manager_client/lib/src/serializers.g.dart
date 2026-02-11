@@ -9,25 +9,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (Serializers().toBuilder()
       ..add($NodeDto.serializer)
       ..add(AccountDto.serializer)
-      ..add(AwsCredentialExchangeOperationOK.serializer)
       ..add(ConsumerMetadataDto.serializer)
-      ..add(CorsAwsCredentialExchangeOK.serializer)
-      ..add(CorsDeleteAccountOK.serializer)
-      ..add(CorsDeleteNodeOK.serializer)
-      ..add(CorsGetConfigOK.serializer)
-      ..add(CorsGetConfigurationOK.serializer)
-      ..add(CorsGetScannedFileInfoOK.serializer)
-      ..add(CorsGetWellKnownJwksOK.serializer)
-      ..add(CorsInitNodesOK.serializer)
-      ..add(CorsListAccountsOK.serializer)
-      ..add(CorsListNodeChildrenOK.serializer)
-      ..add(CorsListRootNodeChildrenOK.serializer)
-      ..add(CorsListScannedFilesOK.serializer)
-      ..add(CorsMoveNodeOK.serializer)
-      ..add(CorsPermanentlyDeleteNodeOK.serializer)
-      ..add(CorsRestoreNodeFromTrashbinOK.serializer)
-      ..add(CorsStartFileScanOK.serializer)
-      ..add(CorsUpdateProfileDataOK.serializer)
       ..add(CreateAccountInput.serializer)
       ..add(CreateAccountOK.serializer)
       ..add(CreateChildNodeInput.serializer)
@@ -56,10 +38,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(MoveNodeInput.serializer)
       ..add(NodeStatus.serializer)
       ..add(NodeType.serializer)
-      ..add(NotFoundError.serializer)
-      ..add(NotFoundErrorHttpStatusCodeEnum.serializer)
-      ..add(NotFoundErrorMessageEnum.serializer)
-      ..add(NotFoundErrorNameEnum.serializer)
       ..add(QueryProfileDataOK.serializer)
       ..add(RestoreNodeFromTrashbin.serializer)
       ..add(StartFileScanInput.serializer)
@@ -77,10 +55,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(AccountDto)]),
           () => ListBuilder<AccountDto>())
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(InvalidParameterErrorDetailsInner)]),
-          () => ListBuilder<InvalidParameterErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(InvalidParameterErrorDetailsInner)]),

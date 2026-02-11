@@ -14,6 +14,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | [**signCredentialsLdp**](WalletApi.md#signCredentialsLdp)     | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |             |
 | [**signCredentialsSdJwt**](WalletApi.md#signCredentialsSdJwt) | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |             |
 | [**signJwtToken**](WalletApi.md#signJwtToken)                 | **POST** /v1/wallets/{walletId}/sign-jwt                |             |
+| [**signJwtV2**](WalletApi.md#signJwtV2)                       | **POST** /v2/wallets/{walletId}/jwt/sign                | Sign JWT.   |
 | [**signPresentationsLdp**](WalletApi.md#signPresentationsLdp) | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |             |
 | [**updateWallet**](WalletApi.md#updateWallet)                 | **PATCH** /v1/wallets/{walletId}                        |             |
 
@@ -738,6 +739,82 @@ public class Example {
 | Status code | Description     | Response headers |
 | ----------- | --------------- | ---------------- |
 | **200**     | SignJwtTokenOK  | -                |
+| **400**     | BadRequestError | -                |
+| **403**     | ForbiddenError  | -                |
+| **404**     | NotFoundError   | -                |
+
+## signJwtV2
+
+> SignJwtV2OK signJwtV2(walletId, signJwtV2)
+
+Sign JWT.
+
+Sign a JSON Web Token (JWT).
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        SignJwtV2 signJwtV2 = new SignJwtV2(); // SignJwtV2 | SignJwtV2
+        try {
+            SignJwtV2OK result = apiInstance.signJwtV2(walletId, signJwtV2);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#signJwtV2");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name          | Type                          | Description      | Notes |
+| ------------- | ----------------------------- | ---------------- | ----- |
+| **walletId**  | **String**                    | id of the wallet |       |
+| **signJwtV2** | [**SignJwtV2**](SignJwtV2.md) | SignJwtV2        |       |
+
+### Return type
+
+[**SignJwtV2OK**](SignJwtV2OK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | SignJwtOK       | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
