@@ -38,6 +38,8 @@ import com.affinidi.tdk.wallets.client.models.SignCredentialsLdpInputDto;
 import com.affinidi.tdk.wallets.client.models.SignCredentialsLdpResultDto;
 import com.affinidi.tdk.wallets.client.models.SignJwtToken;
 import com.affinidi.tdk.wallets.client.models.SignJwtTokenOK;
+import com.affinidi.tdk.wallets.client.models.SignJwtV2InputDto;
+import com.affinidi.tdk.wallets.client.models.SignJwtV2ResultDto;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpInputDto;
 import com.affinidi.tdk.wallets.client.models.SignPresentationLdpResultDto;
 import com.affinidi.tdk.wallets.client.models.TooManyRequestsError;
@@ -812,6 +814,88 @@ public class WalletApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
 
     TypeReference<SignJwtTokenOK> localVarReturnType = new TypeReference<SignJwtTokenOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * Sign JWT.
+   * Sign a JSON Web Token (JWT).
+   * @param walletId id of the wallet (required)
+   * @param signJwtV2InputDto SignJwtV2 (required)
+   * @return SignJwtV2ResultDto
+   * @throws ApiException if fails to make API call
+   */
+  public SignJwtV2ResultDto signJwtV2(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignJwtV2InputDto signJwtV2InputDto) throws ApiException {
+    return this.signJwtV2(walletId, signJwtV2InputDto, Collections.emptyMap());
+  }
+
+
+  /**
+   * Sign JWT.
+   * Sign a JSON Web Token (JWT).
+   * @param walletId id of the wallet (required)
+   * @param signJwtV2InputDto SignJwtV2 (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return SignJwtV2ResultDto
+   * @throws ApiException if fails to make API call
+   */
+  public SignJwtV2ResultDto signJwtV2(@javax.annotation.Nonnull String walletId, @javax.annotation.Nonnull SignJwtV2InputDto signJwtV2InputDto, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = signJwtV2InputDto;
+    
+    // verify the required parameter 'walletId' is set
+    if (walletId == null) {
+      throw new ApiException(400, "Missing the required parameter 'walletId' when calling signJwtV2");
+    }
+    
+    // verify the required parameter 'signJwtV2InputDto' is set
+    if (signJwtV2InputDto == null) {
+      throw new ApiException(400, "Missing the required parameter 'signJwtV2InputDto' when calling signJwtV2");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/wallets/{walletId}/jwt/sign"
+      .replaceAll("\\{" + "walletId" + "\\}", apiClient.escapeString(apiClient.parameterToString(walletId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ProjectTokenAuth" };
+
+    TypeReference<SignJwtV2ResultDto> localVarReturnType = new TypeReference<SignJwtV2ResultDto>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",

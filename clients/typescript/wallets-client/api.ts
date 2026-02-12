@@ -40,48 +40,6 @@ import {
 } from './base'
 
 /**
- * DTO contains params to authcrypt plain text DIDComm message
- * @export
- * @interface AuthcryptMessageInput
- */
-export interface AuthcryptMessageInput {
-  /**
-   * Unsigned plain text DIDComm message
-   * @type {object}
-   * @memberof AuthcryptMessageInput
-   */
-  plainTextMessage: object
-  /**
-   *
-   * @type {string}
-   * @memberof AuthcryptMessageInput
-   */
-  signatureScheme?: AuthcryptMessageInputSignatureSchemeEnum
-}
-
-export const AuthcryptMessageInputSignatureSchemeEnum = {
-  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
-  EcdsaP256Sha256: 'ecdsa_p256_sha256',
-  Ed25519: 'ed25519',
-} as const
-
-export type AuthcryptMessageInputSignatureSchemeEnum =
-  (typeof AuthcryptMessageInputSignatureSchemeEnum)[keyof typeof AuthcryptMessageInputSignatureSchemeEnum]
-
-/**
- * DTO contains authcrypted message in JSON fromat
- * @export
- * @interface AuthcryptMessageResultDto
- */
-export interface AuthcryptMessageResultDto {
-  /**
-   * Authcrypted message in JSON format
-   * @type {object}
-   * @memberof AuthcryptMessageResultDto
-   */
-  authcryptedMessage: object
-}
-/**
  *
  * @export
  * @interface CreateWalletInput
@@ -235,10 +193,10 @@ export interface EntityNotFoundError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<NotFoundErrorDetailsInner>}
    * @memberof EntityNotFoundError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<NotFoundErrorDetailsInner>
 }
 
 export const EntityNotFoundErrorNameEnum = {
@@ -263,19 +221,6 @@ export type EntityNotFoundErrorHttpStatusCodeEnum =
 /**
  * DTO contains revocation list credential
  * @export
- * @interface GetRevocationCredentialStatusOK
- */
-export interface GetRevocationCredentialStatusOK {
-  /**
-   *
-   * @type {object}
-   * @memberof GetRevocationCredentialStatusOK
-   */
-  revocationListCredential: object
-}
-/**
- * DTO contains revocation list credential
- * @export
  * @interface GetRevocationListCredentialResultDto
  */
 export interface GetRevocationListCredentialResultDto {
@@ -286,64 +231,6 @@ export interface GetRevocationListCredentialResultDto {
    */
   revocationListCredential: object
 }
-/**
- *
- * @export
- * @interface InvalidDidParameterError
- */
-export interface InvalidDidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDidParameterError
-   */
-  name: InvalidDidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDidParameterError
-   */
-  message: InvalidDidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidDidParameterError
-   */
-  httpStatusCode: InvalidDidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDidParameterError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
-   * @memberof InvalidDidParameterError
-   */
-  details?: Array<ServiceErrorResponseDetailsInner>
-}
-
-export const InvalidDidParameterErrorNameEnum = {
-  InvalidDidParameterError: 'InvalidDidParameterError',
-} as const
-
-export type InvalidDidParameterErrorNameEnum =
-  (typeof InvalidDidParameterErrorNameEnum)[keyof typeof InvalidDidParameterErrorNameEnum]
-export const InvalidDidParameterErrorMessageEnum = {
-  GivenDidInFieldToDidIsInvalidUseOnlyResolvableFormOfDid:
-    'Given did in field toDid is invalid. Use only resolvable form of did.',
-} as const
-
-export type InvalidDidParameterErrorMessageEnum =
-  (typeof InvalidDidParameterErrorMessageEnum)[keyof typeof InvalidDidParameterErrorMessageEnum]
-export const InvalidDidParameterErrorHttpStatusCodeEnum = {
-  NUMBER_400: 400,
-} as const
-
-export type InvalidDidParameterErrorHttpStatusCodeEnum =
-  (typeof InvalidDidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidDidParameterErrorHttpStatusCodeEnum]
-
 /**
  *
  * @export
@@ -376,10 +263,10 @@ export interface InvalidParameterError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<NotFoundErrorDetailsInner>}
    * @memberof InvalidParameterError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<NotFoundErrorDetailsInner>
 }
 
 export const InvalidParameterErrorNameEnum = {
@@ -400,63 +287,6 @@ export const InvalidParameterErrorHttpStatusCodeEnum = {
 
 export type InvalidParameterErrorHttpStatusCodeEnum =
   (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
-
-/**
- *
- * @export
- * @interface KeyNotFoundError
- */
-export interface KeyNotFoundError {
-  /**
-   *
-   * @type {string}
-   * @memberof KeyNotFoundError
-   */
-  name: KeyNotFoundErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof KeyNotFoundError
-   */
-  message: KeyNotFoundErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof KeyNotFoundError
-   */
-  httpStatusCode: KeyNotFoundErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof KeyNotFoundError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
-   * @memberof KeyNotFoundError
-   */
-  details?: Array<ServiceErrorResponseDetailsInner>
-}
-
-export const KeyNotFoundErrorNameEnum = {
-  KeyNotFoundError: 'KeyNotFoundError',
-} as const
-
-export type KeyNotFoundErrorNameEnum =
-  (typeof KeyNotFoundErrorNameEnum)[keyof typeof KeyNotFoundErrorNameEnum]
-export const KeyNotFoundErrorMessageEnum = {
-  KeyNotFound: 'Key not found',
-} as const
-
-export type KeyNotFoundErrorMessageEnum =
-  (typeof KeyNotFoundErrorMessageEnum)[keyof typeof KeyNotFoundErrorMessageEnum]
-export const KeyNotFoundErrorHttpStatusCodeEnum = {
-  NUMBER_500: 500,
-} as const
-
-export type KeyNotFoundErrorHttpStatusCodeEnum =
-  (typeof KeyNotFoundErrorHttpStatusCodeEnum)[keyof typeof KeyNotFoundErrorHttpStatusCodeEnum]
 
 /**
  *
@@ -490,10 +320,10 @@ export interface NotFoundError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<NotFoundErrorDetailsInner>}
    * @memberof NotFoundError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<NotFoundErrorDetailsInner>
 }
 
 export const NotFoundErrorNameEnum = {
@@ -515,6 +345,37 @@ export const NotFoundErrorHttpStatusCodeEnum = {
 export type NotFoundErrorHttpStatusCodeEnum =
   (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
+/**
+ *
+ * @export
+ * @interface NotFoundErrorDetailsInner
+ */
+export interface NotFoundErrorDetailsInner {
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  issue: string
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  field?: string
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  value?: string
+  /**
+   *
+   * @type {string}
+   * @memberof NotFoundErrorDetailsInner
+   */
+  location?: string
+}
 /**
  *
  * @export
@@ -547,10 +408,10 @@ export interface OperationForbiddenError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<NotFoundErrorDetailsInner>}
    * @memberof OperationForbiddenError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<NotFoundErrorDetailsInner>
 }
 
 export const OperationForbiddenErrorNameEnum = {
@@ -609,68 +470,6 @@ export interface RevokeCredentialsInput {
    * @memberof RevokeCredentialsInput
    */
   credentialId: string
-}
-/**
- *
- * @export
- * @interface ServiceErrorResponse
- */
-export interface ServiceErrorResponse {
-  /**
-   * unique id for correlating this specific error to logs
-   * @type {string}
-   * @memberof ServiceErrorResponse
-   */
-  debugId: string
-  /**
-   * name of the error
-   * @type {string}
-   * @memberof ServiceErrorResponse
-   */
-  name: string
-  /**
-   * backwards compatible Affinidi error code
-   * @type {string}
-   * @memberof ServiceErrorResponse
-   */
-  code: string
-  /**
-   *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
-   * @memberof ServiceErrorResponse
-   */
-  details?: Array<ServiceErrorResponseDetailsInner>
-}
-/**
- *
- * @export
- * @interface ServiceErrorResponseDetailsInner
- */
-export interface ServiceErrorResponseDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ServiceErrorResponseDetailsInner
-   */
-  location?: string
 }
 /**
  * @type SignCredential400Response
@@ -776,54 +575,6 @@ export interface SignCredentialResultDto {
    * @memberof SignCredentialResultDto
    */
   signedCredential: { [key: string]: any }
-}
-/**
- * DTO contains params to sign credential
- * @export
- * @interface SignCredentialsDm1LdInputDto
- */
-export interface SignCredentialsDm1LdInputDto {
-  /**
-   * Unsigned Credential in Dm1 format
-   * @type {object}
-   * @memberof SignCredentialsDm1LdInputDto
-   */
-  unsignedCredential: object
-  /**
-   *
-   * @type {boolean}
-   * @memberof SignCredentialsDm1LdInputDto
-   */
-  revocable?: boolean
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialsDm1LdInputDto
-   */
-  signatureScheme?: SignCredentialsDm1LdInputDtoSignatureSchemeEnum
-}
-
-export const SignCredentialsDm1LdInputDtoSignatureSchemeEnum = {
-  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
-  EcdsaP256Sha256: 'ecdsa_p256_sha256',
-  Ed25519: 'ed25519',
-} as const
-
-export type SignCredentialsDm1LdInputDtoSignatureSchemeEnum =
-  (typeof SignCredentialsDm1LdInputDtoSignatureSchemeEnum)[keyof typeof SignCredentialsDm1LdInputDtoSignatureSchemeEnum]
-
-/**
- * DTO contains signed credential
- * @export
- * @interface SignCredentialsDm1LdResultDto
- */
-export interface SignCredentialsDm1LdResultDto {
-  /**
-   * Signed credential can be in Dm1Ld format
-   * @type {object}
-   * @memberof SignCredentialsDm1LdResultDto
-   */
-  credential: object
 }
 /**
  * DTO contains params to sign credential
@@ -1024,46 +775,30 @@ export interface SignJwtTokenOK {
   signedJwt?: string
 }
 /**
- * DTO contains params to sign plain text DIDComm message
+ * DTO contains payload of JWT to be signed
  * @export
- * @interface SignMessageInput
+ * @interface SignJwtV2InputDto
  */
-export interface SignMessageInput {
+export interface SignJwtV2InputDto {
   /**
-   * Unsigned plain text DIDComm message
+   *
    * @type {object}
-   * @memberof SignMessageInput
+   * @memberof SignJwtV2InputDto
    */
-  plainTextMessage: object
+  payload: object
+}
+/**
+ *
+ * @export
+ * @interface SignJwtV2ResultDto
+ */
+export interface SignJwtV2ResultDto {
   /**
    *
    * @type {string}
-   * @memberof SignMessageInput
+   * @memberof SignJwtV2ResultDto
    */
-  signatureScheme?: SignMessageInputSignatureSchemeEnum
-}
-
-export const SignMessageInputSignatureSchemeEnum = {
-  EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
-  EcdsaP256Sha256: 'ecdsa_p256_sha256',
-  Ed25519: 'ed25519',
-} as const
-
-export type SignMessageInputSignatureSchemeEnum =
-  (typeof SignMessageInputSignatureSchemeEnum)[keyof typeof SignMessageInputSignatureSchemeEnum]
-
-/**
- * DTO contains signed JSON
- * @export
- * @interface SignMessageResultDto
- */
-export interface SignMessageResultDto {
-  /**
-   * Signed message in JSON format
-   * @type {object}
-   * @memberof SignMessageResultDto
-   */
-  signedMessage: object
+  signedJwt?: string
 }
 /**
  * DTO contains params to sign presentation
@@ -1167,10 +902,10 @@ export interface SigningFailedError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<NotFoundErrorDetailsInner>}
    * @memberof SigningFailedError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<NotFoundErrorDetailsInner>
 }
 
 export const SigningFailedErrorNameEnum = {
@@ -1224,10 +959,10 @@ export interface TooManyRequestsError {
   traceId: string
   /**
    *
-   * @type {Array<ServiceErrorResponseDetailsInner>}
+   * @type {Array<NotFoundErrorDetailsInner>}
    * @memberof TooManyRequestsError
    */
-  details?: Array<ServiceErrorResponseDetailsInner>
+  details?: Array<NotFoundErrorDetailsInner>
 }
 
 export const TooManyRequestsErrorNameEnum = {
@@ -1250,32 +985,6 @@ export const TooManyRequestsErrorHttpStatusCodeEnum = {
 export type TooManyRequestsErrorHttpStatusCodeEnum =
   (typeof TooManyRequestsErrorHttpStatusCodeEnum)[keyof typeof TooManyRequestsErrorHttpStatusCodeEnum]
 
-/**
- * DTO contains params to unpack encrypted DIDComm message
- * @export
- * @interface UnpackMessageInput
- */
-export interface UnpackMessageInput {
-  /**
-   * Encrypted DIDComm message
-   * @type {object}
-   * @memberof UnpackMessageInput
-   */
-  message: object
-}
-/**
- * DTO contains decrypted message in JSON fromat
- * @export
- * @interface UnpackMessageResultDto
- */
-export interface UnpackMessageResultDto {
-  /**
-   * decrypted message in JSON format
-   * @type {object}
-   * @memberof UnpackMessageResultDto
-   */
-  message: object
-}
 /**
  * Update wallet input params
  * @export
@@ -2653,6 +2362,70 @@ export const WalletApiAxiosParamCreator = function (
       }
     },
     /**
+     * Sign a JSON Web Token (JWT).
+     * @summary Sign JWT.
+     * @param {string} walletId id of the wallet
+     * @param {SignJwtV2InputDto} signJwtV2InputDto SignJwtV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signJwtV2: async (
+      walletId: string,
+      signJwtV2InputDto: SignJwtV2InputDto,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('signJwtV2', 'walletId', walletId)
+      // verify required parameter 'signJwtV2InputDto' is not null or undefined
+      assertParamExists('signJwtV2', 'signJwtV2InputDto', signJwtV2InputDto)
+      const localVarPath = `/v2/wallets/{walletId}/jwt/sign`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        signJwtV2InputDto,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * signs presentation with the wallet
      * @param {string} walletId id of the wallet
      * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
@@ -3120,6 +2893,42 @@ export const WalletApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * Sign a JSON Web Token (JWT).
+     * @summary Sign JWT.
+     * @param {string} walletId id of the wallet
+     * @param {SignJwtV2InputDto} signJwtV2InputDto SignJwtV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async signJwtV2(
+      walletId: string,
+      signJwtV2InputDto: SignJwtV2InputDto,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<SignJwtV2ResultDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.signJwtV2(
+        walletId,
+        signJwtV2InputDto,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.signJwtV2']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * signs presentation with the wallet
      * @param {string} walletId id of the wallet
      * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
@@ -3356,6 +3165,23 @@ export const WalletApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * Sign a JSON Web Token (JWT).
+     * @summary Sign JWT.
+     * @param {string} walletId id of the wallet
+     * @param {SignJwtV2InputDto} signJwtV2InputDto SignJwtV2
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    signJwtV2(
+      walletId: string,
+      signJwtV2InputDto: SignJwtV2InputDto,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<SignJwtV2ResultDto> {
+      return localVarFp
+        .signJwtV2(walletId, signJwtV2InputDto, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * signs presentation with the wallet
      * @param {string} walletId id of the wallet
      * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
@@ -3558,6 +3384,25 @@ export class WalletApi extends BaseAPI {
   ) {
     return WalletApiFp(this.configuration)
       .signJwtToken(walletId, signJwtToken, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Sign a JSON Web Token (JWT).
+   * @summary Sign JWT.
+   * @param {string} walletId id of the wallet
+   * @param {SignJwtV2InputDto} signJwtV2InputDto SignJwtV2
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public signJwtV2(
+    walletId: string,
+    signJwtV2InputDto: SignJwtV2InputDto,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .signJwtV2(walletId, signJwtV2InputDto, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
