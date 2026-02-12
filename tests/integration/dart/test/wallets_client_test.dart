@@ -426,5 +426,22 @@ void main() {
       // Verify the revocation call succeeded (200 or 204)
       expect(response.statusCode, anyOf([200, 204]));
     });
+
+    test('sign jwt token v2', () async {
+      final signJwtBuilder = SignJwtV2InputDtoBuilder()
+        ..payload = MapJsonObject({
+          'sub': 'dc9c399b-eb50-4761-a91c-deee13a47054',
+          'iat': DateTime.now().millisecondsSinceEpoch ~/ 1000,
+          'exp':
+              (DateTime.now().add(Duration(hours: 1)).millisecondsSinceEpoch ~/
+                  1000)
+        });
+      final response = await walletApi.signJwtV2(
+          walletId: walletId, signJwtV2InputDto: signJwtBuilder.build());
+
+      expect(response.data, isNotNull);
+      expect(response.data!.signedJwt, isNotNull);
+      expect(response.data!.signedJwt, startsWith('eyJ'));
+    });
   });
 }

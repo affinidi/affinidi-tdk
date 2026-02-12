@@ -386,4 +386,15 @@ public class WalletsTestHelper {
 
         return (Map<String, Object>) getWalletApi().signPresentationsLdp(walletId, input).getPresentation();
     }
+
+    public static String signJwtTokenV2(String walletDid, @javax.annotation.Nonnull String walletId) throws Exception {
+
+        SignJwtV2InputDto input = new SignJwtV2InputDto();
+        input.setPayload(Map.of(
+                "sub", walletDid,
+                "iat", Instant.now().getEpochSecond(),
+                "exp", Instant.now().plusSeconds(5 * 60).getEpochSecond() // 5 minutes from now
+        ));
+        return getWalletApi().signJwtV2(walletId, input).getSignedJwt();
+    }
 }

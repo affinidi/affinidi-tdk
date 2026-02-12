@@ -298,6 +298,15 @@ public class WalletsClientIT {
 
     @Test
     @Order(18)
+    @DisplayName("Sign jwt token v2")
+    void shouldSignJwtTokenV2() throws Exception {
+        String jwt = WalletsTestHelper.signJwtTokenV2(walletDidV2, walletIdV2);
+        assertNotNull(jwt, "Signed JWT should not be null");
+        assertTrue(jwt.startsWith("eyJ"), "JWT should start with 'eyJ'");
+    }
+
+    @Test
+    @Order(19)
     @DisplayName("Fetch wallet by ID")
     void shouldFetchWalletV2() throws Exception {
         WalletDto wallet = walletApi.getWallet(walletIdV2);

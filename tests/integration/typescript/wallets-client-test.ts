@@ -359,4 +359,18 @@ describe('wallets-client v2', function () {
       console.log('Skipping revocation test - no LDP credential available')
     }
   })
+
+  it('Signs JwtToken v2', async () => {
+    const payload = {
+      sub: crypto.randomUUID(),
+      name: 'Test User',
+      iat: Math.floor(Date.now() / 1000),
+      exp: Math.floor((Date.now() + 5 * 60 * 1000) / 1000) // 5 minutes later
+    }
+
+    const { data } = await api.signJwtV2(walletId, { payload })
+    expect(data).to.have.a.property('signedJwt')
+    expect(data.signedJwt).to.be.a('string')
+    expect(data.signedJwt).to.match(/^eyJ/)
+  })
 })

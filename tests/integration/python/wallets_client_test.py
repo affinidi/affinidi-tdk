@@ -23,6 +23,7 @@ from affinidi_tdk_wallets_client import (
     SignCredentialsLdpInputDto,
     SignCredentialsDm2SdJwtInputDto,
     SignPresentationLdpInputDto,
+    SignJwtV2InputDto,
     RevokeCredentialsInput,
 )
 from affinidi_tdk_credential_verification_client import (
@@ -473,6 +474,19 @@ def test_revoke_credential_v2(revocation_api, wallet_v2_resource, signed_credent
         )
     except Exception as e:
         pytest.fail(f"revoke_credentials should not throw an exception: {e}")
+
+def test_sign_jwt_v2(wallet_api, wallet_v2_resource):
+    """V2: Sign JWT."""
+    wallet_id = wallet_v2_resource["wallet_id"]
+
+    input_dto = SignJwtV2InputDto(payload={
+        "sub": str(uuid.uuid4()),
+        "iat": int(time.time()),
+        "exp": int(time.time()) + 5 * 60,  # 5 minutes from now
+    })
+    response = wallet_api.sign_jwt_v2(wallet_id, input_dto)
+    data = json.loads(response.json())
+    assert data.get("signed_jwt"), "Signed JWT is missing"
 
 
 def test_fetch_wallet_by_id_v2(wallet_api, wallet_v2_resource):
