@@ -19,12 +19,6 @@ docs/CisConfigurationWebhookSettingEndpoint.md
 docs/ClaimedCredentialListResponse.md
 docs/ClaimedCredentialResponse.md
 docs/ConfigurationApi.md
-docs/CorsBatchCredentialOK.md
-docs/CorsGenerateCredentialsOK.md
-docs/CorsGetClaimedCredentialsOK.md
-docs/CorsGetCredentialOfferOK.md
-docs/CorsGetIssuanceIdClaimedCredentialOK.md
-docs/CorsGetWellKnownOpenIdCredentialIssuerOK.md
 docs/CreateCredentialInput.md
 docs/CreateIssuanceConfig400Response.md
 docs/CreateIssuanceConfigInput.md
@@ -45,7 +39,6 @@ docs/CredentialSubjectNotValidError.md
 docs/CredentialSupportedObject.md
 docs/CredentialsApi.md
 docs/DefaultApi.md
-docs/DeferredCredentialInput.md
 docs/FlowData.md
 docs/FlowDataStatusListsDetailsInner.md
 docs/GenerateCredentials400Response.md
@@ -69,7 +62,6 @@ docs/NotFoundError.md
 docs/OfferApi.md
 docs/ProjectCredentialConfigExistError.md
 docs/ProjectCredentialConfigNotExistError.md
-docs/RevocationForbiddenError.md
 docs/StartIssuance400Response.md
 docs/StartIssuanceInput.md
 docs/StartIssuanceInputDataInner.md

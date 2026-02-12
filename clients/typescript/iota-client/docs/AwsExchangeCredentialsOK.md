@@ -2,10 +2,10 @@
 
 ## Properties
 
-| Name                   | Type                                                                                                      | Description | Notes                  |
-| ---------------------- | --------------------------------------------------------------------------------------------------------- | ----------- | ---------------------- |
-| **connectionClientId** | **string**                                                                                                |             | [default to undefined] |
-| **credentials**        | [**AwsExchangeCredentialsProjectTokenOKCredentials**](AwsExchangeCredentialsProjectTokenOKCredentials.md) |             | [default to undefined] |
+| Name                   | Type                                                                              | Description | Notes                  |
+| ---------------------- | --------------------------------------------------------------------------------- | ----------- | ---------------------- |
+| **connectionClientId** | **string**                                                                        |             | [default to undefined] |
+| **credentials**        | [**AwsExchangeCredentialsOKCredentials**](AwsExchangeCredentialsOKCredentials.md) |             | [default to undefined] |
 
 ## Example
 
