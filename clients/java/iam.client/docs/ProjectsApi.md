@@ -7,6 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**addPrincipalToProject**](ProjectsApi.md#addPrincipalToProject)           | **POST** /v1/projects/principals                 |             |
 | [**createProject**](ProjectsApi.md#createProject)                           | **POST** /v1/projects                            |             |
 | [**deletePrincipalFromProject**](ProjectsApi.md#deletePrincipalFromProject) | **DELETE** /v1/projects/principals/{principalId} |             |
+| [**getProject**](ProjectsApi.md#getProject)                                 | **GET** /v1/projects/{projectId}                 |             |
 | [**listPrincipalsOfProject**](ProjectsApi.md#listPrincipalsOfProject)       | **GET** /v1/projects/principals                  |             |
 | [**listProject**](ProjectsApi.md#listProject)                               | **GET** /v1/projects                             |             |
 | [**updateProject**](ProjectsApi.md#updateProject)                           | **PATCH** /v1/projects/{projectId}               |             |
@@ -220,6 +221,76 @@ null (empty response body)
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 | **409**     | ConflictError   | -                |
+| **500**     | UnexpectedError | -                |
+
+## getProject
+
+> ProjectDto getProject(projectId)
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.iam.client.ApiClient;
+import com.affinidi.tdk.iam.client.ApiException;
+import com.affinidi.tdk.iam.client.Configuration;
+import com.affinidi.tdk.iam.client.auth.*;
+import com.affinidi.tdk.iam.client.models.*;
+import com.affinidi.tdk.iam.client.apis.ProjectsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/iam");
+
+        // Configure API key authorization: UserTokenAuth
+        ApiKeyAuth UserTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("UserTokenAuth");
+        UserTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //UserTokenAuth.setApiKeyPrefix("Token");
+
+        ProjectsApi apiInstance = new ProjectsApi(defaultClient);
+        String projectId = "projectId_example"; // String | projectId
+        try {
+            ProjectDto result = apiInstance.getProject(projectId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ProjectsApi#getProject");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **projectId** | **String** | projectId   |       |
+
+### Return type
+
+[**ProjectDto**](ProjectDto.md)
+
+### Authorization
+
+[UserTokenAuth](../README.md#UserTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | Ok              | -                |
+| **400**     | BadRequestError | -                |
+| **404**     | NotFoundError   | -                |
 | **500**     | UnexpectedError | -                |
 
 ## listPrincipalsOfProject

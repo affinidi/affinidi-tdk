@@ -2,7 +2,7 @@
 
 ## Properties
 
-| Name                   | Type                                                                                                      | Description | Notes |
-| ---------------------- | --------------------------------------------------------------------------------------------------------- | ----------- | ----- |
-| **connectionClientId** | **String**                                                                                                |             |       |
-| **credentials**        | [**AwsExchangeCredentialsProjectTokenOKCredentials**](AwsExchangeCredentialsProjectTokenOKCredentials.md) |             |       |
+| Name                   | Type                                                                              | Description | Notes |
+| ---------------------- | --------------------------------------------------------------------------------- | ----------- | ----- |
+| **connectionClientId** | **String**                                                                        |             |       |
+| **credentials**        | [**AwsExchangeCredentialsOKCredentials**](AwsExchangeCredentialsOKCredentials.md) |             |       |
