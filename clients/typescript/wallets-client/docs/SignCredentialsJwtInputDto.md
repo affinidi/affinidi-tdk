@@ -4,11 +4,12 @@ DTO contains params to sign credential
 
 ## Properties
 
-| Name                   | Type        | Description                       | Notes                             |
-| ---------------------- | ----------- | --------------------------------- | --------------------------------- |
-| **unsignedCredential** | **object**  | Unsigned Credential in Dm1 format | [default to undefined]            |
-| **revocable**          | **boolean** |                                   | [optional] [default to undefined] |
-| **signatureScheme**    | **string**  |                                   | [optional] [default to undefined] |
+| Name                   | Type        | Description                                                              | Notes                             |
+| ---------------------- | ----------- | ------------------------------------------------------------------------ | --------------------------------- |
+| **unsignedCredential** | **object**  | Unsigned Credential in Dm1 format                                        | [default to undefined]            |
+| **revocable**          | **boolean** |                                                                          | [optional] [default to undefined] |
+| **signatureScheme**    | **string**  |                                                                          | [optional] [default to undefined] |
+| **keyId**              | **string**  | wallet key ID to use for signing (defaults to wallet\&#39;s default key) | [optional] [default to undefined] |
 
 ## Example
 
@@ -19,6 +20,7 @@ const instance: SignCredentialsJwtInputDto = {
   unsignedCredential,
   revocable,
   signatureScheme,
+  keyId,
 }
 ```
 

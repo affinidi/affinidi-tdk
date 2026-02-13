@@ -163,7 +163,7 @@ class _$NotFoundError extends NotFoundError {
   @override
   final String traceId;
   @override
-  final BuiltList<ServiceErrorResponseDetailsInner>? details;
+  final BuiltList<NotFoundErrorDetailsInner>? details;
 
   factory _$NotFoundError([void Function(NotFoundErrorBuilder)? updates]) =>
       (NotFoundErrorBuilder()..update(updates))._build();
@@ -238,10 +238,10 @@ class NotFoundErrorBuilder
   String? get traceId => _$this._traceId;
   set traceId(String? traceId) => _$this._traceId = traceId;
 
-  ListBuilder<ServiceErrorResponseDetailsInner>? _details;
-  ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
-  set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
+  ListBuilder<NotFoundErrorDetailsInner>? _details;
+  ListBuilder<NotFoundErrorDetailsInner> get details =>
+      _$this._details ??= ListBuilder<NotFoundErrorDetailsInner>();
+  set details(ListBuilder<NotFoundErrorDetailsInner>? details) =>
       _$this._details = details;
 
   NotFoundErrorBuilder() {

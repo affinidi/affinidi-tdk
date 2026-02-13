@@ -15,7 +15,8 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.wallets.client.models.WalletDtoKeysInner;
+import com.affinidi.tdk.wallets.client.models.ServiceEndpointDto;
+import com.affinidi.tdk.wallets.client.models.WalletV2DtoKeysInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,6 +43,8 @@ import java.util.StringJoiner;
   WalletV2Dto.JSON_PROPERTY_ARI,
   WalletV2Dto.JSON_PROPERTY_ALGORITHM,
   WalletV2Dto.JSON_PROPERTY_KEYS,
+  WalletV2Dto.JSON_PROPERTY_DEFAULT_KEY_ID,
+  WalletV2Dto.JSON_PROPERTY_SERVICES,
   WalletV2Dto.JSON_PROPERTY_CREATED_AT,
   WalletV2Dto.JSON_PROPERTY_MODIFIED_AT
 })
@@ -77,7 +80,15 @@ public class WalletV2Dto {
 
   public static final String JSON_PROPERTY_KEYS = "keys";
   @javax.annotation.Nullable
-  private List<WalletDtoKeysInner> keys = new ArrayList<>();
+  private List<WalletV2DtoKeysInner> keys = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_DEFAULT_KEY_ID = "defaultKeyId";
+  @javax.annotation.Nullable
+  private String defaultKeyId;
+
+  public static final String JSON_PROPERTY_SERVICES = "services";
+  @javax.annotation.Nullable
+  private List<ServiceEndpointDto> services = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   @javax.annotation.Nullable
@@ -265,13 +276,13 @@ public class WalletV2Dto {
     this.algorithm = algorithm;
   }
 
-  public WalletV2Dto keys(@javax.annotation.Nullable List<WalletDtoKeysInner> keys) {
+  public WalletV2Dto keys(@javax.annotation.Nullable List<WalletV2DtoKeysInner> keys) {
     
     this.keys = keys;
     return this;
   }
 
-  public WalletV2Dto addKeysItem(WalletDtoKeysInner keysItem) {
+  public WalletV2Dto addKeysItem(WalletV2DtoKeysInner keysItem) {
     if (this.keys == null) {
       this.keys = new ArrayList<>();
     }
@@ -287,15 +298,73 @@ public class WalletV2Dto {
   @JsonProperty(JSON_PROPERTY_KEYS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<WalletDtoKeysInner> getKeys() {
+  public List<WalletV2DtoKeysInner> getKeys() {
     return keys;
   }
 
 
   @JsonProperty(JSON_PROPERTY_KEYS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeys(@javax.annotation.Nullable List<WalletDtoKeysInner> keys) {
+  public void setKeys(@javax.annotation.Nullable List<WalletV2DtoKeysInner> keys) {
     this.keys = keys;
+  }
+
+  public WalletV2Dto defaultKeyId(@javax.annotation.Nullable String defaultKeyId) {
+    
+    this.defaultKeyId = defaultKeyId;
+    return this;
+  }
+
+  /**
+   * default key for signing operations when keyId not specified
+   * @return defaultKeyId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_DEFAULT_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getDefaultKeyId() {
+    return defaultKeyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_DEFAULT_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDefaultKeyId(@javax.annotation.Nullable String defaultKeyId) {
+    this.defaultKeyId = defaultKeyId;
+  }
+
+  public WalletV2Dto services(@javax.annotation.Nullable List<ServiceEndpointDto> services) {
+    
+    this.services = services;
+    return this;
+  }
+
+  public WalletV2Dto addServicesItem(ServiceEndpointDto servicesItem) {
+    if (this.services == null) {
+      this.services = new ArrayList<>();
+    }
+    this.services.add(servicesItem);
+    return this;
+  }
+
+  /**
+   * service endpoints in DID document
+   * @return services
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ServiceEndpointDto> getServices() {
+    return services;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setServices(@javax.annotation.Nullable List<ServiceEndpointDto> services) {
+    this.services = services;
   }
 
   public WalletV2Dto createdAt(@javax.annotation.Nullable String createdAt) {
@@ -365,13 +434,15 @@ public class WalletV2Dto {
         Objects.equals(this.ari, walletV2Dto.ari) &&
         Objects.equals(this.algorithm, walletV2Dto.algorithm) &&
         Objects.equals(this.keys, walletV2Dto.keys) &&
+        Objects.equals(this.defaultKeyId, walletV2Dto.defaultKeyId) &&
+        Objects.equals(this.services, walletV2Dto.services) &&
         Objects.equals(this.createdAt, walletV2Dto.createdAt) &&
         Objects.equals(this.modifiedAt, walletV2Dto.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, did, name, description, didDocument, ari, algorithm, keys, createdAt, modifiedAt);
+    return Objects.hash(id, did, name, description, didDocument, ari, algorithm, keys, defaultKeyId, services, createdAt, modifiedAt);
   }
 
   @Override
@@ -386,6 +457,8 @@ public class WalletV2Dto {
     sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
     sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
     sb.append("    keys: ").append(toIndentedString(keys)).append("\n");
+    sb.append("    defaultKeyId: ").append(toIndentedString(defaultKeyId)).append("\n");
+    sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
@@ -510,6 +583,26 @@ public class WalletV2Dto {
       for (int i = 0; i < getKeys().size(); i++) {
         if (getKeys().get(i) != null) {
           joiner.add(getKeys().get(i).toUrlQueryString(String.format("%skeys%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `defaultKeyId` to the URL query string
+    if (getDefaultKeyId() != null) {
+      try {
+        joiner.add(String.format("%sdefaultKeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDefaultKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `services` to the URL query string
+    if (getServices() != null) {
+      for (int i = 0; i < getServices().size(); i++) {
+        if (getServices().get(i) != null) {
+          joiner.add(getServices().get(i).toUrlQueryString(String.format("%sservices%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
