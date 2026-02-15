@@ -13,6 +13,7 @@ part 'update_project_input.g.dart';
 /// Properties:
 /// * [name]
 /// * [description]
+/// * [identityVerificationEnabled] - flag indicates if identity verification is enabled for project
 @BuiltValue()
 abstract class UpdateProjectInput
     implements Built<UpdateProjectInput, UpdateProjectInputBuilder> {
@@ -21,6 +22,10 @@ abstract class UpdateProjectInput
 
   @BuiltValueField(wireName: r'description')
   String? get description;
+
+  /// flag indicates if identity verification is enabled for project
+  @BuiltValueField(wireName: r'identityVerificationEnabled')
+  bool? get identityVerificationEnabled;
 
   UpdateProjectInput._();
 
@@ -62,6 +67,13 @@ class _$UpdateProjectInputSerializer
         specifiedType: const FullType(String),
       );
     }
+    if (object.identityVerificationEnabled != null) {
+      yield r'identityVerificationEnabled';
+      yield serializers.serialize(
+        object.identityVerificationEnabled,
+        specifiedType: const FullType(bool),
+      );
+    }
   }
 
   @override
@@ -100,6 +112,13 @@ class _$UpdateProjectInputSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.description = valueDes;
+          break;
+        case r'identityVerificationEnabled':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.identityVerificationEnabled = valueDes;
           break;
         default:
           unhandled.add(key);

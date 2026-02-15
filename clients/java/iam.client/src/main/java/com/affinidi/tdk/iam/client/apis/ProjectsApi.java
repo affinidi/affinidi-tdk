@@ -279,6 +279,81 @@ public class ProjectsApi extends BaseApi {
   /**
    * 
    * 
+   * @param projectId projectId (required)
+   * @return ProjectDto
+   * @throws ApiException if fails to make API call
+   */
+  public ProjectDto getProject(@javax.annotation.Nonnull String projectId) throws ApiException {
+    return this.getProject(projectId, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * 
+   * @param projectId projectId (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ProjectDto
+   * @throws ApiException if fails to make API call
+   */
+  public ProjectDto getProject(@javax.annotation.Nonnull String projectId, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'projectId' is set
+    if (projectId == null) {
+      throw new ApiException(400, "Missing the required parameter 'projectId' when calling getProject");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/projects/{projectId}"
+      .replaceAll("\\{" + "projectId" + "\\}", apiClient.escapeString(apiClient.parameterToString(projectId)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "UserTokenAuth" };
+
+    TypeReference<ProjectDto> localVarReturnType = new TypeReference<ProjectDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * 
    * @param limit Maximum number of records to fetch in a list (optional, default to 100)
    * @param exclusiveStartKey The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation. (optional)
    * @return UserList

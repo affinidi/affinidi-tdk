@@ -168,7 +168,7 @@ class _$SigningFailedError extends SigningFailedError {
   @override
   final String traceId;
   @override
-  final BuiltList<ServiceErrorResponseDetailsInner>? details;
+  final BuiltList<NotFoundErrorDetailsInner>? details;
 
   factory _$SigningFailedError(
           [void Function(SigningFailedErrorBuilder)? updates]) =>
@@ -248,10 +248,10 @@ class SigningFailedErrorBuilder
   String? get traceId => _$this._traceId;
   set traceId(String? traceId) => _$this._traceId = traceId;
 
-  ListBuilder<ServiceErrorResponseDetailsInner>? _details;
-  ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
-  set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
+  ListBuilder<NotFoundErrorDetailsInner>? _details;
+  ListBuilder<NotFoundErrorDetailsInner> get details =>
+      _$this._details ??= ListBuilder<NotFoundErrorDetailsInner>();
+  set details(ListBuilder<NotFoundErrorDetailsInner>? details) =>
       _$this._details = details;
 
   SigningFailedErrorBuilder() {

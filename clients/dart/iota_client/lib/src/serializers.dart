@@ -17,18 +17,11 @@ import 'package:affinidi_tdk_iota_client/src/model/date.dart';
 import 'package:affinidi_tdk_iota_client/src/model/already_exists_error.dart';
 import 'package:affinidi_tdk_iota_client/src/model/aws_exchange_credentials.dart';
 import 'package:affinidi_tdk_iota_client/src/model/aws_exchange_credentials_ok.dart';
+import 'package:affinidi_tdk_iota_client/src/model/aws_exchange_credentials_ok_credentials.dart';
 import 'package:affinidi_tdk_iota_client/src/model/aws_exchange_credentials_project_token.dart';
-import 'package:affinidi_tdk_iota_client/src/model/aws_exchange_credentials_project_token_ok.dart';
-import 'package:affinidi_tdk_iota_client/src/model/aws_exchange_credentials_project_token_ok_credentials.dart';
 import 'package:affinidi_tdk_iota_client/src/model/callback_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/callback_response_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/consent_dto.dart';
-import 'package:affinidi_tdk_iota_client/src/model/cors_aws_exchange_credentials_ok.dart';
-import 'package:affinidi_tdk_iota_client/src/model/cors_aws_exchange_credentials_project_token_ok.dart';
-import 'package:affinidi_tdk_iota_client/src/model/cors_fetch_iota_vp_response_ok.dart';
-import 'package:affinidi_tdk_iota_client/src/model/cors_initiate_data_sharing_request_ok.dart';
-import 'package:affinidi_tdk_iota_client/src/model/cors_iot_oidc4vpcallback_ok.dart';
-import 'package:affinidi_tdk_iota_client/src/model/cors_iota_exchange_credentials_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/create_dcql_query_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/create_iota_configuration_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/create_pex_query_input.dart';
@@ -51,21 +44,15 @@ import 'package:affinidi_tdk_iota_client/src/model/list_configuration_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/list_dcql_queries_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/list_logged_consents_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/list_pex_queries_ok.dart';
-import 'package:affinidi_tdk_iota_client/src/model/message_publishing_error.dart';
 import 'package:affinidi_tdk_iota_client/src/model/not_found_error.dart';
 import 'package:affinidi_tdk_iota_client/src/model/operation_forbidden_error.dart';
 import 'package:affinidi_tdk_iota_client/src/model/pex_query_dto.dart';
-import 'package:affinidi_tdk_iota_client/src/model/prepare_request.dart';
-import 'package:affinidi_tdk_iota_client/src/model/prepare_request_created.dart';
-import 'package:affinidi_tdk_iota_client/src/model/prepare_request_created_data.dart';
 import 'package:affinidi_tdk_iota_client/src/model/resource_limit_exceeded_error.dart';
 import 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/save_pex_queries_update_input_queries_inner.dart';
 import 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_input.dart';
-import 'package:affinidi_tdk_iota_client/src/model/update_configuration_by_id_ok.dart';
 import 'package:affinidi_tdk_iota_client/src/model/update_dcql_query_input.dart';
 import 'package:affinidi_tdk_iota_client/src/model/update_pex_query_input.dart';
-import 'package:affinidi_tdk_iota_client/src/model/vp_token_validation_error.dart';
 
 part 'serializers.g.dart';
 
@@ -73,18 +60,11 @@ part 'serializers.g.dart';
   AlreadyExistsError,
   AwsExchangeCredentials,
   AwsExchangeCredentialsOK,
+  AwsExchangeCredentialsOKCredentials,
   AwsExchangeCredentialsProjectToken,
-  AwsExchangeCredentialsProjectTokenOK,
-  AwsExchangeCredentialsProjectTokenOKCredentials,
   CallbackInput,
   CallbackResponseOK,
   ConsentDto,
-  CorsAwsExchangeCredentialsOK,
-  CorsAwsExchangeCredentialsProjectTokenOK,
-  CorsFetchIotaVpResponseOK,
-  CorsInitiateDataSharingRequestOK,
-  CorsIotOidc4vpcallbackOK,
-  CorsIotaExchangeCredentialsOK,
   CreateDcqlQueryInput,
   CreateIotaConfigurationInput,
   CreatePexQueryInput,
@@ -107,21 +87,15 @@ part 'serializers.g.dart';
   ListDcqlQueriesOK,
   ListLoggedConsentsOK,
   ListPexQueriesOK,
-  MessagePublishingError,
   NotFoundError,
   OperationForbiddenError,
   PexQueryDto,
-  PrepareRequest,
-  PrepareRequestCreated,
-  PrepareRequestCreatedData,
   ResourceLimitExceededError,
   SavePexQueriesUpdateInput,
   SavePexQueriesUpdateInputQueriesInner,
   UpdateConfigurationByIdInput,
-  UpdateConfigurationByIdOK,
   UpdateDcqlQueryInput,
   UpdatePexQueryInput,
-  VPTokenValidationError,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())

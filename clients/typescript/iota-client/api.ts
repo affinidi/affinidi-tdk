@@ -123,10 +123,29 @@ export interface AwsExchangeCredentialsOK {
   connectionClientId: string
   /**
    *
-   * @type {AwsExchangeCredentialsProjectTokenOKCredentials}
+   * @type {AwsExchangeCredentialsOKCredentials}
    * @memberof AwsExchangeCredentialsOK
    */
-  credentials: AwsExchangeCredentialsProjectTokenOKCredentials
+  credentials: AwsExchangeCredentialsOKCredentials
+}
+/**
+ *
+ * @export
+ * @interface AwsExchangeCredentialsOKCredentials
+ */
+export interface AwsExchangeCredentialsOKCredentials {
+  /**
+   *
+   * @type {string}
+   * @memberof AwsExchangeCredentialsOKCredentials
+   */
+  identityId: string
+  /**
+   *
+   * @type {string}
+   * @memberof AwsExchangeCredentialsOKCredentials
+   */
+  token: string
 }
 /**
  *
@@ -152,44 +171,6 @@ export interface AwsExchangeCredentialsProjectToken {
    * @memberof AwsExchangeCredentialsProjectToken
    */
   did: string
-}
-/**
- *
- * @export
- * @interface AwsExchangeCredentialsProjectTokenOK
- */
-export interface AwsExchangeCredentialsProjectTokenOK {
-  /**
-   *
-   * @type {string}
-   * @memberof AwsExchangeCredentialsProjectTokenOK
-   */
-  connectionClientId: string
-  /**
-   *
-   * @type {AwsExchangeCredentialsProjectTokenOKCredentials}
-   * @memberof AwsExchangeCredentialsProjectTokenOK
-   */
-  credentials: AwsExchangeCredentialsProjectTokenOKCredentials
-}
-/**
- *
- * @export
- * @interface AwsExchangeCredentialsProjectTokenOKCredentials
- */
-export interface AwsExchangeCredentialsProjectTokenOKCredentials {
-  /**
-   *
-   * @type {string}
-   * @memberof AwsExchangeCredentialsProjectTokenOKCredentials
-   */
-  identityId: string
-  /**
-   *
-   * @type {string}
-   * @memberof AwsExchangeCredentialsProjectTokenOKCredentials
-   */
-  token: string
 }
 /**
  *
@@ -334,84 +315,6 @@ export const ConsentDtoStatusEnum = {
 export type ConsentDtoStatusEnum =
   (typeof ConsentDtoStatusEnum)[keyof typeof ConsentDtoStatusEnum]
 
-/**
- *
- * @export
- * @interface CorsAwsExchangeCredentialsOK
- */
-export interface CorsAwsExchangeCredentialsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsAwsExchangeCredentialsOK
-   */
-  corsAwsExchangeCredentialsOk?: string
-}
-/**
- *
- * @export
- * @interface CorsAwsExchangeCredentialsProjectTokenOK
- */
-export interface CorsAwsExchangeCredentialsProjectTokenOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsAwsExchangeCredentialsProjectTokenOK
-   */
-  corsAwsExchangeCredentialsProjectTokenOk?: string
-}
-/**
- *
- * @export
- * @interface CorsFetchIotaVpResponseOK
- */
-export interface CorsFetchIotaVpResponseOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsFetchIotaVpResponseOK
-   */
-  corsFetchIotaVpResponseOk?: string
-}
-/**
- *
- * @export
- * @interface CorsInitiateDataSharingRequestOK
- */
-export interface CorsInitiateDataSharingRequestOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsInitiateDataSharingRequestOK
-   */
-  corsInitiateDataSharingRequestOk?: string
-}
-/**
- *
- * @export
- * @interface CorsIotOidc4vpcallbackOK
- */
-export interface CorsIotOidc4vpcallbackOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsIotOidc4vpcallbackOK
-   */
-  corsIotOidc4vpcallbackOk?: string
-}
-/**
- *
- * @export
- * @interface CorsIotaExchangeCredentialsOK
- */
-export interface CorsIotaExchangeCredentialsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsIotaExchangeCredentialsOK
-   */
-  corsIotaExchangeCredentialsOk?: string
-}
 /**
  *
  * @export
@@ -1129,63 +1032,6 @@ export interface ListPexQueriesOK {
 /**
  *
  * @export
- * @interface MessagePublishingError
- */
-export interface MessagePublishingError {
-  /**
-   *
-   * @type {string}
-   * @memberof MessagePublishingError
-   */
-  name: MessagePublishingErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof MessagePublishingError
-   */
-  message: MessagePublishingErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof MessagePublishingError
-   */
-  httpStatusCode: MessagePublishingErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof MessagePublishingError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof MessagePublishingError
-   */
-  details?: Array<InvalidParameterErrorDetailsInner>
-}
-
-export const MessagePublishingErrorNameEnum = {
-  MessagePublishingError: 'MessagePublishingError',
-} as const
-
-export type MessagePublishingErrorNameEnum =
-  (typeof MessagePublishingErrorNameEnum)[keyof typeof MessagePublishingErrorNameEnum]
-export const MessagePublishingErrorMessageEnum = {
-  NotAbleToPublishMessagesToTopic: 'Not able to publish messages to topic',
-} as const
-
-export type MessagePublishingErrorMessageEnum =
-  (typeof MessagePublishingErrorMessageEnum)[keyof typeof MessagePublishingErrorMessageEnum]
-export const MessagePublishingErrorHttpStatusCodeEnum = {
-  NUMBER_500: 500,
-} as const
-
-export type MessagePublishingErrorHttpStatusCodeEnum =
-  (typeof MessagePublishingErrorHttpStatusCodeEnum)[keyof typeof MessagePublishingErrorHttpStatusCodeEnum]
-
-/**
- *
- * @export
  * @interface NotFoundError
  */
 export interface NotFoundError {
@@ -1339,75 +1185,6 @@ export interface PexQueryDto {
    * @memberof PexQueryDto
    */
   vpDefinition: string
-}
-/**
- *
- * @export
- * @interface PrepareRequest
- */
-export interface PrepareRequest {
-  /**
-   *
-   * @type {string}
-   * @memberof PrepareRequest
-   */
-  connectionClientId: string
-  /**
-   *
-   * @type {string}
-   * @memberof PrepareRequest
-   */
-  queryId: string
-  /**
-   * A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
-   * @type {string}
-   * @memberof PrepareRequest
-   */
-  correlationId: string
-  /**
-   * This is the lifetime of the signed request token during the data-sharing flow.
-   * @type {number}
-   * @memberof PrepareRequest
-   */
-  tokenMaxAge?: number
-  /**
-   *
-   * @type {string}
-   * @memberof PrepareRequest
-   */
-  audience?: string
-}
-/**
- *
- * @export
- * @interface PrepareRequestCreated
- */
-export interface PrepareRequestCreated {
-  /**
-   *
-   * @type {PrepareRequestCreatedData}
-   * @memberof PrepareRequestCreated
-   */
-  data: PrepareRequestCreatedData
-}
-/**
- *
- * @export
- * @interface PrepareRequestCreatedData
- */
-export interface PrepareRequestCreatedData {
-  /**
-   *
-   * @type {string}
-   * @memberof PrepareRequestCreatedData
-   */
-  jwt: string
-  /**
-   * A unique, randomly generated identifier that correlates the request and response in the data-sharing request flow.
-   * @type {string}
-   * @memberof PrepareRequestCreatedData
-   */
-  correlationId: string
 }
 /**
  *
@@ -1590,19 +1367,6 @@ export type UpdateConfigurationByIdInputModeEnum =
 /**
  *
  * @export
- * @interface UpdateConfigurationByIdOK
- */
-export interface UpdateConfigurationByIdOK {
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateConfigurationByIdOK
-   */
-  updateConfigurationByIdOk?: string
-}
-/**
- *
- * @export
  * @interface UpdateDcqlQueryInput
  */
 export interface UpdateDcqlQueryInput {
@@ -1638,62 +1402,6 @@ export interface UpdatePexQueryInput {
    */
   description?: string
 }
-/**
- *
- * @export
- * @interface VPTokenValidationError
- */
-export interface VPTokenValidationError {
-  /**
-   *
-   * @type {string}
-   * @memberof VPTokenValidationError
-   */
-  name: VPTokenValidationErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof VPTokenValidationError
-   */
-  message: VPTokenValidationErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof VPTokenValidationError
-   */
-  httpStatusCode: VPTokenValidationErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof VPTokenValidationError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof VPTokenValidationError
-   */
-  details?: Array<InvalidParameterErrorDetailsInner>
-}
-
-export const VPTokenValidationErrorNameEnum = {
-  VpTokenValidationError: 'VPTokenValidationError',
-} as const
-
-export type VPTokenValidationErrorNameEnum =
-  (typeof VPTokenValidationErrorNameEnum)[keyof typeof VPTokenValidationErrorNameEnum]
-export const VPTokenValidationErrorMessageEnum = {
-  VpTokenValidationEndedWithAnError: 'VP token validation ended with an error',
-} as const
-
-export type VPTokenValidationErrorMessageEnum =
-  (typeof VPTokenValidationErrorMessageEnum)[keyof typeof VPTokenValidationErrorMessageEnum]
-export const VPTokenValidationErrorHttpStatusCodeEnum = {
-  NUMBER_400: 400,
-} as const
-
-export type VPTokenValidationErrorHttpStatusCodeEnum =
-  (typeof VPTokenValidationErrorHttpStatusCodeEnum)[keyof typeof VPTokenValidationErrorHttpStatusCodeEnum]
 
 /**
  * CallbackApi - axios parameter creator

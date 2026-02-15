@@ -176,6 +176,8 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
   final BuiltList<String>? domain;
   @override
   final String? challenge;
+  @override
+  final String? keyId;
 
   factory _$SignPresentationLdpInputDto(
           [void Function(SignPresentationLdpInputDtoBuilder)? updates]) =>
@@ -186,7 +188,8 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
       this.signatureScheme,
       this.signatureSuite,
       this.domain,
-      this.challenge})
+      this.challenge,
+      this.keyId})
       : super._();
   @override
   SignPresentationLdpInputDto rebuild(
@@ -205,7 +208,8 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
         signatureScheme == other.signatureScheme &&
         signatureSuite == other.signatureSuite &&
         domain == other.domain &&
-        challenge == other.challenge;
+        challenge == other.challenge &&
+        keyId == other.keyId;
   }
 
   @override
@@ -216,6 +220,7 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
     _$hash = $jc(_$hash, signatureSuite.hashCode);
     _$hash = $jc(_$hash, domain.hashCode);
     _$hash = $jc(_$hash, challenge.hashCode);
+    _$hash = $jc(_$hash, keyId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -227,7 +232,8 @@ class _$SignPresentationLdpInputDto extends SignPresentationLdpInputDto {
           ..add('signatureScheme', signatureScheme)
           ..add('signatureSuite', signatureSuite)
           ..add('domain', domain)
-          ..add('challenge', challenge))
+          ..add('challenge', challenge)
+          ..add('keyId', keyId))
         .toString();
   }
 }
@@ -265,6 +271,10 @@ class SignPresentationLdpInputDtoBuilder
   String? get challenge => _$this._challenge;
   set challenge(String? challenge) => _$this._challenge = challenge;
 
+  String? _keyId;
+  String? get keyId => _$this._keyId;
+  set keyId(String? keyId) => _$this._keyId = keyId;
+
   SignPresentationLdpInputDtoBuilder() {
     SignPresentationLdpInputDto._defaults(this);
   }
@@ -277,6 +287,7 @@ class SignPresentationLdpInputDtoBuilder
       _signatureSuite = $v.signatureSuite;
       _domain = $v.domain?.toBuilder();
       _challenge = $v.challenge;
+      _keyId = $v.keyId;
       _$v = null;
     }
     return this;
@@ -308,6 +319,7 @@ class SignPresentationLdpInputDtoBuilder
             signatureSuite: signatureSuite,
             domain: _domain?.build(),
             challenge: challenge,
+            keyId: keyId,
           );
     } catch (_) {
       late String _$failedField;

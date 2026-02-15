@@ -3,8 +3,9 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:affinidi_tdk_wallets_client/src/model/wallet_v2_dto_keys_inner.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/wallet_dto_keys_inner.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/service_endpoint_dto.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -22,6 +23,8 @@ part 'wallet_v2_dto.g.dart';
 /// * [ari] - ARI of the wallet
 /// * [algorithm] - algorithm used to generate key for the wallet
 /// * [keys]
+/// * [defaultKeyId] - default key for signing operations when keyId not specified
+/// * [services] - service endpoints in DID document
 /// * [createdAt]
 /// * [modifiedAt]
 @BuiltValue()
@@ -55,7 +58,15 @@ abstract class WalletV2Dto implements Built<WalletV2Dto, WalletV2DtoBuilder> {
   String? get algorithm;
 
   @BuiltValueField(wireName: r'keys')
-  BuiltList<WalletDtoKeysInner>? get keys;
+  BuiltList<WalletV2DtoKeysInner>? get keys;
+
+  /// default key for signing operations when keyId not specified
+  @BuiltValueField(wireName: r'defaultKeyId')
+  String? get defaultKeyId;
+
+  /// service endpoints in DID document
+  @BuiltValueField(wireName: r'services')
+  BuiltList<ServiceEndpointDto>? get services;
 
   @BuiltValueField(wireName: r'createdAt')
   String? get createdAt;
@@ -140,7 +151,22 @@ class _$WalletV2DtoSerializer implements PrimitiveSerializer<WalletV2Dto> {
       yield serializers.serialize(
         object.keys,
         specifiedType:
-            const FullType(BuiltList, [FullType(WalletDtoKeysInner)]),
+            const FullType(BuiltList, [FullType(WalletV2DtoKeysInner)]),
+      );
+    }
+    if (object.defaultKeyId != null) {
+      yield r'defaultKeyId';
+      yield serializers.serialize(
+        object.defaultKeyId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.services != null) {
+      yield r'services';
+      yield serializers.serialize(
+        object.services,
+        specifiedType:
+            const FullType(BuiltList, [FullType(ServiceEndpointDto)]),
       );
     }
     if (object.createdAt != null) {
@@ -235,9 +261,24 @@ class _$WalletV2DtoSerializer implements PrimitiveSerializer<WalletV2Dto> {
           final valueDes = serializers.deserialize(
             value,
             specifiedType:
-                const FullType(BuiltList, [FullType(WalletDtoKeysInner)]),
-          ) as BuiltList<WalletDtoKeysInner>;
+                const FullType(BuiltList, [FullType(WalletV2DtoKeysInner)]),
+          ) as BuiltList<WalletV2DtoKeysInner>;
           result.keys.replace(valueDes);
+          break;
+        case r'defaultKeyId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.defaultKeyId = valueDes;
+          break;
+        case r'services':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(BuiltList, [FullType(ServiceEndpointDto)]),
+          ) as BuiltList<ServiceEndpointDto>;
+          result.services.replace(valueDes);
           break;
         case r'createdAt':
           final valueDes = serializers.deserialize(
