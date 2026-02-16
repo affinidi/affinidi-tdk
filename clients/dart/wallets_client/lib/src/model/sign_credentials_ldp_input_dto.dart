@@ -17,6 +17,7 @@ part 'sign_credentials_ldp_input_dto.g.dart';
 /// * [revocable]
 /// * [signatureScheme]
 /// * [signatureSuite] - W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
+/// * [keyId] - wallet key ID to use for signing (defaults to wallet's default key)
 @BuiltValue()
 abstract class SignCredentialsLdpInputDto
     implements
@@ -36,6 +37,10 @@ abstract class SignCredentialsLdpInputDto
   @BuiltValueField(wireName: r'signatureSuite')
   SignCredentialsLdpInputDtoSignatureSuiteEnum? get signatureSuite;
   // enum signatureSuiteEnum {  ecdsa-jcs-2019,  ecdsa-rdfc-2019,  eddsa-jcs-2022,  eddsa-rdfc-2022,  EcdsaSecp256k1Signature2019,  };
+
+  /// wallet key ID to use for signing (defaults to wallet's default key)
+  @BuiltValueField(wireName: r'keyId')
+  String? get keyId;
 
   SignCredentialsLdpInputDto._();
 
@@ -95,6 +100,13 @@ class _$SignCredentialsLdpInputDtoSerializer
             const FullType(SignCredentialsLdpInputDtoSignatureSuiteEnum),
       );
     }
+    if (object.keyId != null) {
+      yield r'keyId';
+      yield serializers.serialize(
+        object.keyId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -149,6 +161,13 @@ class _$SignCredentialsLdpInputDtoSerializer
                 const FullType(SignCredentialsLdpInputDtoSignatureSuiteEnum),
           ) as SignCredentialsLdpInputDtoSignatureSuiteEnum;
           result.signatureSuite = valueDes;
+          break;
+        case r'keyId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.keyId = valueDes;
           break;
         default:
           unhandled.add(key);
