@@ -31,7 +31,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   UpdateProjectInput.JSON_PROPERTY_NAME,
-  UpdateProjectInput.JSON_PROPERTY_DESCRIPTION
+  UpdateProjectInput.JSON_PROPERTY_DESCRIPTION,
+  UpdateProjectInput.JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class UpdateProjectInput {
@@ -42,6 +43,10 @@ public class UpdateProjectInput {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
   private String description;
+
+  public static final String JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED = "identityVerificationEnabled";
+  @javax.annotation.Nullable
+  private Boolean identityVerificationEnabled;
 
   public UpdateProjectInput() {
   }
@@ -96,6 +101,31 @@ public class UpdateProjectInput {
     this.description = description;
   }
 
+  public UpdateProjectInput identityVerificationEnabled(@javax.annotation.Nullable Boolean identityVerificationEnabled) {
+    
+    this.identityVerificationEnabled = identityVerificationEnabled;
+    return this;
+  }
+
+  /**
+   * flag indicates if identity verification is enabled for project
+   * @return identityVerificationEnabled
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getIdentityVerificationEnabled() {
+    return identityVerificationEnabled;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_IDENTITY_VERIFICATION_ENABLED)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIdentityVerificationEnabled(@javax.annotation.Nullable Boolean identityVerificationEnabled) {
+    this.identityVerificationEnabled = identityVerificationEnabled;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -106,12 +136,13 @@ public class UpdateProjectInput {
     }
     UpdateProjectInput updateProjectInput = (UpdateProjectInput) o;
     return Objects.equals(this.name, updateProjectInput.name) &&
-        Objects.equals(this.description, updateProjectInput.description);
+        Objects.equals(this.description, updateProjectInput.description) &&
+        Objects.equals(this.identityVerificationEnabled, updateProjectInput.identityVerificationEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description);
+    return Objects.hash(name, description, identityVerificationEnabled);
   }
 
   @Override
@@ -120,6 +151,7 @@ public class UpdateProjectInput {
     sb.append("class UpdateProjectInput {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    identityVerificationEnabled: ").append(toIndentedString(identityVerificationEnabled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -181,6 +213,16 @@ public class UpdateProjectInput {
     if (getDescription() != null) {
       try {
         joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `identityVerificationEnabled` to the URL query string
+    if (getIdentityVerificationEnabled() != null) {
+      try {
+        joiner.add(String.format("%sidentityVerificationEnabled%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdentityVerificationEnabled()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

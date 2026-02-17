@@ -21,7 +21,8 @@ import json
 
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist
-from affinidi_tdk_wallets_client.models.wallet_dto_keys_inner import WalletDtoKeysInner
+from affinidi_tdk_wallets_client.models.service_endpoint_dto import ServiceEndpointDto
+from affinidi_tdk_wallets_client.models.wallet_v2_dto_keys_inner import WalletV2DtoKeysInner
 
 class WalletV2Dto(BaseModel):
     """
@@ -34,10 +35,12 @@ class WalletV2Dto(BaseModel):
     did_document: Optional[Dict[str, Any]] = Field(default=None, alias="didDocument", description="did document of the wallet")
     ari: Optional[StrictStr] = Field(default=None, description="ARI of the wallet")
     algorithm: Optional[StrictStr] = Field(default=None, description="algorithm used to generate key for the wallet")
-    keys: Optional[conlist(WalletDtoKeysInner)] = None
+    keys: Optional[conlist(WalletV2DtoKeysInner)] = None
+    default_key_id: Optional[StrictStr] = Field(default=None, alias="defaultKeyId", description="default key for signing operations when keyId not specified")
+    services: Optional[conlist(ServiceEndpointDto)] = Field(default=None, description="service endpoints in DID document")
     created_at: Optional[StrictStr] = Field(default=None, alias="createdAt")
     modified_at: Optional[StrictStr] = Field(default=None, alias="modifiedAt")
-    __properties = ["id", "did", "name", "description", "didDocument", "ari", "algorithm", "keys", "createdAt", "modifiedAt"]
+    __properties = ["id", "did", "name", "description", "didDocument", "ari", "algorithm", "keys", "defaultKeyId", "services", "createdAt", "modifiedAt"]
 
     class Config:
         """Pydantic configuration"""
@@ -70,6 +73,13 @@ class WalletV2Dto(BaseModel):
                 if _item:
                     _items.append(_item.to_dict())
             _dict['keys'] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in services (list)
+        _items = []
+        if self.services:
+            for _item in self.services:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['services'] = _items
         return _dict
 
     @classmethod
@@ -89,7 +99,9 @@ class WalletV2Dto(BaseModel):
             "did_document": obj.get("didDocument"),
             "ari": obj.get("ari"),
             "algorithm": obj.get("algorithm"),
-            "keys": [WalletDtoKeysInner.from_dict(_item) for _item in obj.get("keys")] if obj.get("keys") is not None else None,
+            "keys": [WalletV2DtoKeysInner.from_dict(_item) for _item in obj.get("keys")] if obj.get("keys") is not None else None,
+            "default_key_id": obj.get("defaultKeyId"),
+            "services": [ServiceEndpointDto.from_dict(_item) for _item in obj.get("services")] if obj.get("services") is not None else None,
             "created_at": obj.get("createdAt"),
             "modified_at": obj.get("modifiedAt")
         })

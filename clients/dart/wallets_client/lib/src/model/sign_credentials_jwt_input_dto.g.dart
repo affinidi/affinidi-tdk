@@ -85,13 +85,18 @@ class _$SignCredentialsJwtInputDto extends SignCredentialsJwtInputDto {
   final bool? revocable;
   @override
   final SignCredentialsJwtInputDtoSignatureSchemeEnum? signatureScheme;
+  @override
+  final String? keyId;
 
   factory _$SignCredentialsJwtInputDto(
           [void Function(SignCredentialsJwtInputDtoBuilder)? updates]) =>
       (SignCredentialsJwtInputDtoBuilder()..update(updates))._build();
 
   _$SignCredentialsJwtInputDto._(
-      {required this.unsignedCredential, this.revocable, this.signatureScheme})
+      {required this.unsignedCredential,
+      this.revocable,
+      this.signatureScheme,
+      this.keyId})
       : super._();
   @override
   SignCredentialsJwtInputDto rebuild(
@@ -108,7 +113,8 @@ class _$SignCredentialsJwtInputDto extends SignCredentialsJwtInputDto {
     return other is SignCredentialsJwtInputDto &&
         unsignedCredential == other.unsignedCredential &&
         revocable == other.revocable &&
-        signatureScheme == other.signatureScheme;
+        signatureScheme == other.signatureScheme &&
+        keyId == other.keyId;
   }
 
   @override
@@ -117,6 +123,7 @@ class _$SignCredentialsJwtInputDto extends SignCredentialsJwtInputDto {
     _$hash = $jc(_$hash, unsignedCredential.hashCode);
     _$hash = $jc(_$hash, revocable.hashCode);
     _$hash = $jc(_$hash, signatureScheme.hashCode);
+    _$hash = $jc(_$hash, keyId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -126,7 +133,8 @@ class _$SignCredentialsJwtInputDto extends SignCredentialsJwtInputDto {
     return (newBuiltValueToStringHelper(r'SignCredentialsJwtInputDto')
           ..add('unsignedCredential', unsignedCredential)
           ..add('revocable', revocable)
-          ..add('signatureScheme', signatureScheme))
+          ..add('signatureScheme', signatureScheme)
+          ..add('keyId', keyId))
         .toString();
   }
 }
@@ -152,6 +160,10 @@ class SignCredentialsJwtInputDtoBuilder
           SignCredentialsJwtInputDtoSignatureSchemeEnum? signatureScheme) =>
       _$this._signatureScheme = signatureScheme;
 
+  String? _keyId;
+  String? get keyId => _$this._keyId;
+  set keyId(String? keyId) => _$this._keyId = keyId;
+
   SignCredentialsJwtInputDtoBuilder() {
     SignCredentialsJwtInputDto._defaults(this);
   }
@@ -162,6 +174,7 @@ class SignCredentialsJwtInputDtoBuilder
       _unsignedCredential = $v.unsignedCredential;
       _revocable = $v.revocable;
       _signatureScheme = $v.signatureScheme;
+      _keyId = $v.keyId;
       _$v = null;
     }
     return this;
@@ -189,6 +202,7 @@ class SignCredentialsJwtInputDtoBuilder
               'unsignedCredential'),
           revocable: revocable,
           signatureScheme: signatureScheme,
+          keyId: keyId,
         );
     replace(_$result);
     return _$result;
