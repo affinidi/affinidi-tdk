@@ -11,12 +11,16 @@ class _$UpdateProjectInput extends UpdateProjectInput {
   final String? name;
   @override
   final String? description;
+  @override
+  final bool? identityVerificationEnabled;
 
   factory _$UpdateProjectInput(
           [void Function(UpdateProjectInputBuilder)? updates]) =>
       (UpdateProjectInputBuilder()..update(updates))._build();
 
-  _$UpdateProjectInput._({this.name, this.description}) : super._();
+  _$UpdateProjectInput._(
+      {this.name, this.description, this.identityVerificationEnabled})
+      : super._();
   @override
   UpdateProjectInput rebuild(
           void Function(UpdateProjectInputBuilder) updates) =>
@@ -31,7 +35,8 @@ class _$UpdateProjectInput extends UpdateProjectInput {
     if (identical(other, this)) return true;
     return other is UpdateProjectInput &&
         name == other.name &&
-        description == other.description;
+        description == other.description &&
+        identityVerificationEnabled == other.identityVerificationEnabled;
   }
 
   @override
@@ -39,6 +44,7 @@ class _$UpdateProjectInput extends UpdateProjectInput {
     var _$hash = 0;
     _$hash = $jc(_$hash, name.hashCode);
     _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, identityVerificationEnabled.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -47,7 +53,8 @@ class _$UpdateProjectInput extends UpdateProjectInput {
   String toString() {
     return (newBuiltValueToStringHelper(r'UpdateProjectInput')
           ..add('name', name)
-          ..add('description', description))
+          ..add('description', description)
+          ..add('identityVerificationEnabled', identityVerificationEnabled))
         .toString();
   }
 }
@@ -64,6 +71,11 @@ class UpdateProjectInputBuilder
   String? get description => _$this._description;
   set description(String? description) => _$this._description = description;
 
+  bool? _identityVerificationEnabled;
+  bool? get identityVerificationEnabled => _$this._identityVerificationEnabled;
+  set identityVerificationEnabled(bool? identityVerificationEnabled) =>
+      _$this._identityVerificationEnabled = identityVerificationEnabled;
+
   UpdateProjectInputBuilder() {
     UpdateProjectInput._defaults(this);
   }
@@ -73,6 +85,7 @@ class UpdateProjectInputBuilder
     if ($v != null) {
       _name = $v.name;
       _description = $v.description;
+      _identityVerificationEnabled = $v.identityVerificationEnabled;
       _$v = null;
     }
     return this;
@@ -96,6 +109,7 @@ class UpdateProjectInputBuilder
         _$UpdateProjectInput._(
           name: name,
           description: description,
+          identityVerificationEnabled: identityVerificationEnabled,
         );
     replace(_$result);
     return _$result;

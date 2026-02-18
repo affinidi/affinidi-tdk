@@ -2,13 +2,13 @@
 
 ## Properties
 
-| Name               | Type                                                                                    | Description | Notes      |
-| ------------------ | --------------------------------------------------------------------------------------- | ----------- | ---------- |
-| **name**           | [**NameEnum**](#NameEnum)                                                               |             |            |
-| **message**        | [**MessageEnum**](#MessageEnum)                                                         |             |            |
-| **httpStatusCode** | [**HttpStatusCodeEnum**](#HttpStatusCodeEnum)                                           |             |            |
-| **traceId**        | **String**                                                                              |             |            |
-| **details**        | [**List&lt;ServiceErrorResponseDetailsInner&gt;**](ServiceErrorResponseDetailsInner.md) |             | [optional] |
+| Name               | Type                                                                          | Description | Notes      |
+| ------------------ | ----------------------------------------------------------------------------- | ----------- | ---------- |
+| **name**           | [**NameEnum**](#NameEnum)                                                     |             |            |
+| **message**        | [**MessageEnum**](#MessageEnum)                                               |             |            |
+| **httpStatusCode** | [**HttpStatusCodeEnum**](#HttpStatusCodeEnum)                                 |             |            |
+| **traceId**        | **String**                                                                    |             |            |
+| **details**        | [**List&lt;UnexpectedErrorDetailsInner&gt;**](UnexpectedErrorDetailsInner.md) |             | [optional] |
 
 ## Enum: NameEnum
 
