@@ -9,14 +9,12 @@ docs/AuthzApi.md
 docs/ConsumerAuthApi.md
 docs/ConsumerAuthTokenEndpointInput.md
 docs/ConsumerAuthTokenEndpointOutput.md
-docs/CorsConsumerAuthTokenEndpointOK.md
 docs/GetAccessOutput.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
 docs/InvalidDIDError.md
 docs/InvalidJwtTokenError.md
 docs/InvalidJwtTokenErrorDetailsInner.md
-docs/InvalidParameterError.md
 docs/JsonWebKeyDto.md
 docs/JsonWebKeySetDto.md
 docs/Permission.md

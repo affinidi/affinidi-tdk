@@ -22,7 +22,11 @@ class _$WalletV2Dto extends WalletV2Dto {
   @override
   final String? algorithm;
   @override
-  final BuiltList<WalletDtoKeysInner>? keys;
+  final BuiltList<WalletV2DtoKeysInner>? keys;
+  @override
+  final String? defaultKeyId;
+  @override
+  final BuiltList<ServiceEndpointDto>? services;
   @override
   final String? createdAt;
   @override
@@ -40,6 +44,8 @@ class _$WalletV2Dto extends WalletV2Dto {
       this.ari,
       this.algorithm,
       this.keys,
+      this.defaultKeyId,
+      this.services,
       this.createdAt,
       this.modifiedAt})
       : super._();
@@ -62,6 +68,8 @@ class _$WalletV2Dto extends WalletV2Dto {
         ari == other.ari &&
         algorithm == other.algorithm &&
         keys == other.keys &&
+        defaultKeyId == other.defaultKeyId &&
+        services == other.services &&
         createdAt == other.createdAt &&
         modifiedAt == other.modifiedAt;
   }
@@ -77,6 +85,8 @@ class _$WalletV2Dto extends WalletV2Dto {
     _$hash = $jc(_$hash, ari.hashCode);
     _$hash = $jc(_$hash, algorithm.hashCode);
     _$hash = $jc(_$hash, keys.hashCode);
+    _$hash = $jc(_$hash, defaultKeyId.hashCode);
+    _$hash = $jc(_$hash, services.hashCode);
     _$hash = $jc(_$hash, createdAt.hashCode);
     _$hash = $jc(_$hash, modifiedAt.hashCode);
     _$hash = $jf(_$hash);
@@ -94,6 +104,8 @@ class _$WalletV2Dto extends WalletV2Dto {
           ..add('ari', ari)
           ..add('algorithm', algorithm)
           ..add('keys', keys)
+          ..add('defaultKeyId', defaultKeyId)
+          ..add('services', services)
           ..add('createdAt', createdAt)
           ..add('modifiedAt', modifiedAt))
         .toString();
@@ -131,10 +143,20 @@ class WalletV2DtoBuilder implements Builder<WalletV2Dto, WalletV2DtoBuilder> {
   String? get algorithm => _$this._algorithm;
   set algorithm(String? algorithm) => _$this._algorithm = algorithm;
 
-  ListBuilder<WalletDtoKeysInner>? _keys;
-  ListBuilder<WalletDtoKeysInner> get keys =>
-      _$this._keys ??= ListBuilder<WalletDtoKeysInner>();
-  set keys(ListBuilder<WalletDtoKeysInner>? keys) => _$this._keys = keys;
+  ListBuilder<WalletV2DtoKeysInner>? _keys;
+  ListBuilder<WalletV2DtoKeysInner> get keys =>
+      _$this._keys ??= ListBuilder<WalletV2DtoKeysInner>();
+  set keys(ListBuilder<WalletV2DtoKeysInner>? keys) => _$this._keys = keys;
+
+  String? _defaultKeyId;
+  String? get defaultKeyId => _$this._defaultKeyId;
+  set defaultKeyId(String? defaultKeyId) => _$this._defaultKeyId = defaultKeyId;
+
+  ListBuilder<ServiceEndpointDto>? _services;
+  ListBuilder<ServiceEndpointDto> get services =>
+      _$this._services ??= ListBuilder<ServiceEndpointDto>();
+  set services(ListBuilder<ServiceEndpointDto>? services) =>
+      _$this._services = services;
 
   String? _createdAt;
   String? get createdAt => _$this._createdAt;
@@ -159,6 +181,8 @@ class WalletV2DtoBuilder implements Builder<WalletV2Dto, WalletV2DtoBuilder> {
       _ari = $v.ari;
       _algorithm = $v.algorithm;
       _keys = $v.keys?.toBuilder();
+      _defaultKeyId = $v.defaultKeyId;
+      _services = $v.services?.toBuilder();
       _createdAt = $v.createdAt;
       _modifiedAt = $v.modifiedAt;
       _$v = null;
@@ -192,6 +216,8 @@ class WalletV2DtoBuilder implements Builder<WalletV2Dto, WalletV2DtoBuilder> {
             ari: ari,
             algorithm: algorithm,
             keys: _keys?.build(),
+            defaultKeyId: defaultKeyId,
+            services: _services?.build(),
             createdAt: createdAt,
             modifiedAt: modifiedAt,
           );
@@ -200,6 +226,9 @@ class WalletV2DtoBuilder implements Builder<WalletV2Dto, WalletV2DtoBuilder> {
       try {
         _$failedField = 'keys';
         _keys?.build();
+
+        _$failedField = 'services';
+        _services?.build();
       } catch (e) {
         throw BuiltValueNestedFieldError(
             r'WalletV2Dto', _$failedField, e.toString());

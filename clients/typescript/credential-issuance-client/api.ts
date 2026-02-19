@@ -365,84 +365,6 @@ export interface ClaimedCredentialResponse {
 /**
  *
  * @export
- * @interface CorsBatchCredentialOK
- */
-export interface CorsBatchCredentialOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsBatchCredentialOK
-   */
-  corsBatchCredentialOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGenerateCredentialsOK
- */
-export interface CorsGenerateCredentialsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGenerateCredentialsOK
-   */
-  corsGenerateCredentialsOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetClaimedCredentialsOK
- */
-export interface CorsGetClaimedCredentialsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetClaimedCredentialsOK
-   */
-  corsGetClaimedCredentialsOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetCredentialOfferOK
- */
-export interface CorsGetCredentialOfferOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetCredentialOfferOK
-   */
-  corsGetCredentialOfferOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetIssuanceIdClaimedCredentialOK
- */
-export interface CorsGetIssuanceIdClaimedCredentialOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetIssuanceIdClaimedCredentialOK
-   */
-  corsGetIssuanceIdClaimedCredentialOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetWellKnownOpenIdCredentialIssuerOK
- */
-export interface CorsGetWellKnownOpenIdCredentialIssuerOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetWellKnownOpenIdCredentialIssuerOK
-   */
-  corsGetWellKnownOpenIdCredentialIssuerOk?: string
-}
-/**
- *
- * @export
  * @interface CreateCredentialInput
  */
 export interface CreateCredentialInput {
@@ -980,19 +902,6 @@ export interface CredentialSupportedObject {
    * @memberof CredentialSupportedObject
    */
   metadata?: SupportedCredentialMetadata
-}
-/**
- *
- * @export
- * @interface DeferredCredentialInput
- */
-export interface DeferredCredentialInput {
-  /**
-   * String identifying a Deferred Issuance transaction. This claim is contained in the response if the Credential Issuer was unable to immediately issue the Credential.
-   * @type {string}
-   * @memberof DeferredCredentialInput
-   */
-  transaction_id: string
 }
 /**
  *
@@ -2012,63 +1921,6 @@ export const ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum = {
 
 export type ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum =
   (typeof ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum)[keyof typeof ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum]
-
-/**
- *
- * @export
- * @interface RevocationForbiddenError
- */
-export interface RevocationForbiddenError {
-  /**
-   *
-   * @type {string}
-   * @memberof RevocationForbiddenError
-   */
-  name: RevocationForbiddenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof RevocationForbiddenError
-   */
-  message: RevocationForbiddenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof RevocationForbiddenError
-   */
-  httpStatusCode: RevocationForbiddenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof RevocationForbiddenError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof RevocationForbiddenError
-   */
-  details?: Array<ActionForbiddenErrorDetailsInner>
-}
-
-export const RevocationForbiddenErrorNameEnum = {
-  RevocationForbiddenError: 'RevocationForbiddenError',
-} as const
-
-export type RevocationForbiddenErrorNameEnum =
-  (typeof RevocationForbiddenErrorNameEnum)[keyof typeof RevocationForbiddenErrorNameEnum]
-export const RevocationForbiddenErrorMessageEnum = {
-  RelatedVcHasNotBeenClaimedYet: 'Related VC has not been claimed yet',
-} as const
-
-export type RevocationForbiddenErrorMessageEnum =
-  (typeof RevocationForbiddenErrorMessageEnum)[keyof typeof RevocationForbiddenErrorMessageEnum]
-export const RevocationForbiddenErrorHttpStatusCodeEnum = {
-  NUMBER_400: 400,
-} as const
-
-export type RevocationForbiddenErrorHttpStatusCodeEnum =
-  (typeof RevocationForbiddenErrorHttpStatusCodeEnum)[keyof typeof RevocationForbiddenErrorHttpStatusCodeEnum]
 
 /**
  * @type StartIssuance400Response

@@ -2,13 +2,13 @@
 
 ## Properties
 
-| Name                 | Type                                                                              | Description | Notes      |
-| -------------------- | --------------------------------------------------------------------------------- | ----------- | ---------- |
-| **name**             | **str**                                                                           |             |
-| **message**          | **str**                                                                           |             |
-| **http_status_code** | **float**                                                                         |             |
-| **trace_id**         | **str**                                                                           |             |
-| **details**          | [**List[ServiceErrorResponseDetailsInner]**](ServiceErrorResponseDetailsInner.md) |             | [optional] |
+| Name                 | Type                                                                | Description | Notes      |
+| -------------------- | ------------------------------------------------------------------- | ----------- | ---------- |
+| **name**             | **str**                                                             |             |
+| **message**          | **str**                                                             |             |
+| **http_status_code** | **float**                                                           |             |
+| **trace_id**         | **str**                                                             |             |
+| **details**          | [**List[NotFoundErrorDetailsInner]**](NotFoundErrorDetailsInner.md) |             | [optional] |
 
 ## Example
 
