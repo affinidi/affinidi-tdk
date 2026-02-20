@@ -90,6 +90,8 @@ class _$SignCredentialsDm2SdJwtInputDto
   final JsonObject disclosureFrame;
   @override
   final SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum? signatureScheme;
+  @override
+  final String? keyId;
 
   factory _$SignCredentialsDm2SdJwtInputDto(
           [void Function(SignCredentialsDm2SdJwtInputDtoBuilder)? updates]) =>
@@ -99,7 +101,8 @@ class _$SignCredentialsDm2SdJwtInputDto
       {required this.unsignedCredential,
       this.revocable,
       required this.disclosureFrame,
-      this.signatureScheme})
+      this.signatureScheme,
+      this.keyId})
       : super._();
   @override
   SignCredentialsDm2SdJwtInputDto rebuild(
@@ -117,7 +120,8 @@ class _$SignCredentialsDm2SdJwtInputDto
         unsignedCredential == other.unsignedCredential &&
         revocable == other.revocable &&
         disclosureFrame == other.disclosureFrame &&
-        signatureScheme == other.signatureScheme;
+        signatureScheme == other.signatureScheme &&
+        keyId == other.keyId;
   }
 
   @override
@@ -127,6 +131,7 @@ class _$SignCredentialsDm2SdJwtInputDto
     _$hash = $jc(_$hash, revocable.hashCode);
     _$hash = $jc(_$hash, disclosureFrame.hashCode);
     _$hash = $jc(_$hash, signatureScheme.hashCode);
+    _$hash = $jc(_$hash, keyId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -137,7 +142,8 @@ class _$SignCredentialsDm2SdJwtInputDto
           ..add('unsignedCredential', unsignedCredential)
           ..add('revocable', revocable)
           ..add('disclosureFrame', disclosureFrame)
-          ..add('signatureScheme', signatureScheme))
+          ..add('signatureScheme', signatureScheme)
+          ..add('keyId', keyId))
         .toString();
   }
 }
@@ -170,6 +176,10 @@ class SignCredentialsDm2SdJwtInputDtoBuilder
               signatureScheme) =>
       _$this._signatureScheme = signatureScheme;
 
+  String? _keyId;
+  String? get keyId => _$this._keyId;
+  set keyId(String? keyId) => _$this._keyId = keyId;
+
   SignCredentialsDm2SdJwtInputDtoBuilder() {
     SignCredentialsDm2SdJwtInputDto._defaults(this);
   }
@@ -181,6 +191,7 @@ class SignCredentialsDm2SdJwtInputDtoBuilder
       _revocable = $v.revocable;
       _disclosureFrame = $v.disclosureFrame;
       _signatureScheme = $v.signatureScheme;
+      _keyId = $v.keyId;
       _$v = null;
     }
     return this;
@@ -212,6 +223,7 @@ class SignCredentialsDm2SdJwtInputDtoBuilder
               r'SignCredentialsDm2SdJwtInputDto',
               'disclosureFrame'),
           signatureScheme: signatureScheme,
+          keyId: keyId,
         );
     replace(_$result);
     return _$result;

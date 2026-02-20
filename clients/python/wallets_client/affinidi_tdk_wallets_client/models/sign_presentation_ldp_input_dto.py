@@ -31,7 +31,8 @@ class SignPresentationLdpInputDto(BaseModel):
     signature_suite: Optional[StrictStr] = Field(default=None, alias="signatureSuite", description="W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).")
     domain: Optional[conlist(StrictStr)] = Field(default=None, description="Domain(s) for which the presentation is intended")
     challenge: Optional[StrictStr] = Field(default=None, description="Challenge string")
-    __properties = ["unsignedPresentation", "signatureScheme", "signatureSuite", "domain", "challenge"]
+    key_id: Optional[StrictStr] = Field(default=None, alias="keyId", description="wallet key ID to use for signing (defaults to wallet's default key)")
+    __properties = ["unsignedPresentation", "signatureScheme", "signatureSuite", "domain", "challenge", "keyId"]
 
     @validator('signature_scheme')
     def signature_scheme_validate_enum(cls, value):
@@ -93,7 +94,8 @@ class SignPresentationLdpInputDto(BaseModel):
             "signature_scheme": obj.get("signatureScheme"),
             "signature_suite": obj.get("signatureSuite"),
             "domain": obj.get("domain"),
-            "challenge": obj.get("challenge")
+            "challenge": obj.get("challenge"),
+            "key_id": obj.get("keyId")
         })
         return _obj
 
