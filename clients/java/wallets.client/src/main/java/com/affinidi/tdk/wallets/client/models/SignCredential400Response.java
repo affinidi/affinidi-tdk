@@ -16,7 +16,7 @@ package com.affinidi.tdk.wallets.client.models;
 import java.util.Objects;
 import java.util.Arrays;
 import com.affinidi.tdk.wallets.client.models.InvalidParameterError;
-import com.affinidi.tdk.wallets.client.models.ServiceErrorResponseDetailsInner;
+import com.affinidi.tdk.wallets.client.models.NotFoundErrorDetailsInner;
 import com.affinidi.tdk.wallets.client.models.SigningFailedError;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -162,7 +162,7 @@ public class SignCredential400Response {
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable
-  private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
+  private List<NotFoundErrorDetailsInner> details = new ArrayList<>();
 
   public SignCredential400Response() {
   }
@@ -267,13 +267,13 @@ public class SignCredential400Response {
     this.traceId = traceId;
   }
 
-  public SignCredential400Response details(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public SignCredential400Response details(@javax.annotation.Nullable List<NotFoundErrorDetailsInner> details) {
     
     this.details = details;
     return this;
   }
 
-  public SignCredential400Response addDetailsItem(ServiceErrorResponseDetailsInner detailsItem) {
+  public SignCredential400Response addDetailsItem(NotFoundErrorDetailsInner detailsItem) {
     if (this.details == null) {
       this.details = new ArrayList<>();
     }
@@ -289,14 +289,14 @@ public class SignCredential400Response {
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ServiceErrorResponseDetailsInner> getDetails() {
+  public List<NotFoundErrorDetailsInner> getDetails() {
     return details;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<NotFoundErrorDetailsInner> details) {
     this.details = details;
   }
 
