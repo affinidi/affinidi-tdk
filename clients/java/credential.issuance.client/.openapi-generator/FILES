@@ -17,12 +17,6 @@ docs/CisConfigurationWebhookSettingEndpoint.md
 docs/ClaimedCredentialListResponse.md
 docs/ClaimedCredentialResponse.md
 docs/ConfigurationApi.md
-docs/CorsBatchCredentialOK.md
-docs/CorsGenerateCredentialsOK.md
-docs/CorsGetClaimedCredentialsOK.md
-docs/CorsGetCredentialOfferOK.md
-docs/CorsGetIssuanceIdClaimedCredentialOK.md
-docs/CorsGetWellKnownOpenIdCredentialIssuerOK.md
 docs/CreateCredentialInput.md
 docs/CreateIssuanceConfig400Response.md
 docs/CreateIssuanceConfigInput.md
@@ -43,7 +37,6 @@ docs/CredentialSubjectNotValidError.md
 docs/CredentialSupportedObject.md
 docs/CredentialsApi.md
 docs/DefaultApi.md
-docs/DeferredCredentialInput.md
 docs/FlowData.md
 docs/FlowDataStatusListsDetailsInner.md
 docs/GenerateCredentials400Response.md
@@ -67,7 +60,6 @@ docs/NotFoundError.md
 docs/OfferApi.md
 docs/ProjectCredentialConfigExistError.md
 docs/ProjectCredentialConfigNotExistError.md
-docs/RevocationForbiddenError.md
 docs/StartIssuance400Response.md
 docs/StartIssuanceInput.md
 docs/StartIssuanceInputDataInner.md
@@ -128,12 +120,6 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/models/CisConfiguratio
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CisConfigurationWebhookSettingEndpoint.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ClaimedCredentialListResponse.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ClaimedCredentialResponse.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsBatchCredentialOK.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGenerateCredentialsOK.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetClaimedCredentialsOK.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetCredentialOfferOK.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetIssuanceIdClaimedCredentialOK.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/CorsGetWellKnownOpenIdCredentialIssuerOK.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CreateCredentialInput.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CreateIssuanceConfig400Response.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CreateIssuanceConfigInput.java
@@ -152,7 +138,6 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/models/CredentialRespo
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CredentialResponseImmediateCredential.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CredentialSubjectNotValidError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/CredentialSupportedObject.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/DeferredCredentialInput.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/FlowData.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/FlowDataStatusListsDetailsInner.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/GenerateCredentials400Response.java
@@ -174,7 +159,6 @@ src/main/java/com/affinidi/tdk/credential/issuance/client/models/MissingHolderDi
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/NotFoundError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ProjectCredentialConfigExistError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/ProjectCredentialConfigNotExistError.java
-src/main/java/com/affinidi/tdk/credential/issuance/client/models/RevocationForbiddenError.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuance400Response.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceInput.java
 src/main/java/com/affinidi/tdk/credential/issuance/client/models/StartIssuanceInputDataInner.java

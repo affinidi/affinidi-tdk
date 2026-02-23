@@ -2,13 +2,14 @@
 
 ## Properties
 
-| Name            | Type    | Description                                           | Notes                               |
-| --------------- | ------- | ----------------------------------------------------- | ----------------------------------- |
-| **name**        | **str** | The name of the wallet                                | [optional]                          |
-| **description** | **str** | The description of the wallet                         | [optional]                          |
-| **did_method**  | **str** | Define how DID of your wallet is created and resolved | [optional] [default to 'key']       |
-| **did_web_url** | **str** | URL of the DID. Required if the did method is web     | [optional]                          |
-| **algorithm**   | **str** | algorithm to generate key for the wallet              | [optional] [default to 'secp256k1'] |
+| Name            | Type                                                      | Description                                           | Notes                               |
+| --------------- | --------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------- |
+| **name**        | **str**                                                   | The name of the wallet                                | [optional]                          |
+| **description** | **str**                                                   | The description of the wallet                         | [optional]                          |
+| **did_method**  | **str**                                                   | Define how DID of your wallet is created and resolved | [optional] [default to 'key']       |
+| **did_web_url** | **str**                                                   | URL of the DID. Required if the did method is web     | [optional]                          |
+| **algorithm**   | **str**                                                   | algorithm to generate key for the wallet              | [optional] [default to 'secp256k1'] |
+| **services**    | [**List[ServiceEndpointInput]**](ServiceEndpointInput.md) | Service endpoints to include in DID document          | [optional]                          |
 
 ## Example
 
