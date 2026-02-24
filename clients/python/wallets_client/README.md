@@ -125,35 +125,29 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | _WalletApi_     | [**sign_credentials_ldp**](docs/WalletApi.md#sign_credentials_ldp)                             | **POST** /v2/wallets/{walletId}/credentials/ldp/sign                               |
 | _WalletApi_     | [**sign_credentials_sd_jwt**](docs/WalletApi.md#sign_credentials_sd_jwt)                       | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign                            |
 | _WalletApi_     | [**sign_jwt_token**](docs/WalletApi.md#sign_jwt_token)                                         | **POST** /v1/wallets/{walletId}/sign-jwt                                           |
+| _WalletApi_     | [**sign_jwt_v2**](docs/WalletApi.md#sign_jwt_v2)                                               | **POST** /v2/wallets/{walletId}/jwt/sign                                           | Sign JWT.                          |
 | _WalletApi_     | [**sign_presentations_ldp**](docs/WalletApi.md#sign_presentations_ldp)                         | **POST** /v2/wallets/{walletId}/presentations/ldp/sign                             |
 | _WalletApi_     | [**update_wallet**](docs/WalletApi.md#update_wallet)                                           | **PATCH** /v1/wallets/{walletId}                                                   |
 
 ## Documentation For Models
 
-- [AuthcryptMessageInput](docs/AuthcryptMessageInput.md)
-- [AuthcryptMessageResultDto](docs/AuthcryptMessageResultDto.md)
 - [CreateWalletInput](docs/CreateWalletInput.md)
 - [CreateWalletResponse](docs/CreateWalletResponse.md)
 - [CreateWalletV2Input](docs/CreateWalletV2Input.md)
 - [CreateWalletV2Response](docs/CreateWalletV2Response.md)
 - [EntityNotFoundError](docs/EntityNotFoundError.md)
-- [GetRevocationCredentialStatusOK](docs/GetRevocationCredentialStatusOK.md)
 - [GetRevocationListCredentialResultDto](docs/GetRevocationListCredentialResultDto.md)
-- [InvalidDidParameterError](docs/InvalidDidParameterError.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
-- [KeyNotFoundError](docs/KeyNotFoundError.md)
 - [NotFoundError](docs/NotFoundError.md)
+- [NotFoundErrorDetailsInner](docs/NotFoundErrorDetailsInner.md)
 - [OperationForbiddenError](docs/OperationForbiddenError.md)
 - [RevokeCredentialInput](docs/RevokeCredentialInput.md)
 - [RevokeCredentialsInput](docs/RevokeCredentialsInput.md)
-- [ServiceErrorResponse](docs/ServiceErrorResponse.md)
-- [ServiceErrorResponseDetailsInner](docs/ServiceErrorResponseDetailsInner.md)
+- [ServiceEndpointInput](docs/ServiceEndpointInput.md)
 - [SignCredential400Response](docs/SignCredential400Response.md)
 - [SignCredentialInputDto](docs/SignCredentialInputDto.md)
 - [SignCredentialInputDtoUnsignedCredentialParams](docs/SignCredentialInputDtoUnsignedCredentialParams.md)
 - [SignCredentialResultDto](docs/SignCredentialResultDto.md)
-- [SignCredentialsDm1LdInputDto](docs/SignCredentialsDm1LdInputDto.md)
-- [SignCredentialsDm1LdResultDto](docs/SignCredentialsDm1LdResultDto.md)
 - [SignCredentialsDm2SdJwtInputDto](docs/SignCredentialsDm2SdJwtInputDto.md)
 - [SignCredentialsDm2SdJwtResultDto](docs/SignCredentialsDm2SdJwtResultDto.md)
 - [SignCredentialsJwtInputDto](docs/SignCredentialsJwtInputDto.md)
@@ -162,14 +156,12 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignCredentialsLdpResultDto](docs/SignCredentialsLdpResultDto.md)
 - [SignJwtToken](docs/SignJwtToken.md)
 - [SignJwtTokenOK](docs/SignJwtTokenOK.md)
-- [SignMessageInput](docs/SignMessageInput.md)
-- [SignMessageResultDto](docs/SignMessageResultDto.md)
+- [SignJwtV2InputDto](docs/SignJwtV2InputDto.md)
+- [SignJwtV2ResultDto](docs/SignJwtV2ResultDto.md)
 - [SignPresentationLdpInputDto](docs/SignPresentationLdpInputDto.md)
 - [SignPresentationLdpResultDto](docs/SignPresentationLdpResultDto.md)
 - [SigningFailedError](docs/SigningFailedError.md)
 - [TooManyRequestsError](docs/TooManyRequestsError.md)
-- [UnpackMessageInput](docs/UnpackMessageInput.md)
-- [UnpackMessageResultDto](docs/UnpackMessageResultDto.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)

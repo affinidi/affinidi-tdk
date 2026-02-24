@@ -26,6 +26,7 @@ part 'iota_configuration_dto.g.dart';
 /// * [mode] - Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.
 /// * [redirectUris] - List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.
 /// * [enableIdvProviders] - Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
+/// * [mediatorDid]
 @BuiltValue()
 abstract class IotaConfigurationDto
     implements Built<IotaConfigurationDto, IotaConfigurationDtoBuilder> {
@@ -80,6 +81,9 @@ abstract class IotaConfigurationDto
   /// Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.
   @BuiltValueField(wireName: r'enableIdvProviders')
   bool? get enableIdvProviders;
+
+  @BuiltValueField(wireName: r'mediatorDid')
+  String? get mediatorDid;
 
   IotaConfigurationDto._();
 
@@ -182,6 +186,13 @@ class _$IotaConfigurationDtoSerializer
       yield serializers.serialize(
         object.enableIdvProviders,
         specifiedType: const FullType(bool),
+      );
+    }
+    if (object.mediatorDid != null) {
+      yield r'mediatorDid';
+      yield serializers.serialize(
+        object.mediatorDid,
+        specifiedType: const FullType(String),
       );
     }
   }
@@ -299,6 +310,13 @@ class _$IotaConfigurationDtoSerializer
             specifiedType: const FullType(bool),
           ) as bool;
           result.enableIdvProviders = valueDes;
+          break;
+        case r'mediatorDid':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.mediatorDid = valueDes;
           break;
         default:
           unhandled.add(key);

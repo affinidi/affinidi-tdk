@@ -30,7 +30,8 @@ class SignCredentialsDm2SdJwtInputDto(BaseModel):
     revocable: Optional[StrictBool] = None
     disclosure_frame: Dict[str, Any] = Field(default=..., alias="disclosureFrame")
     signature_scheme: Optional[StrictStr] = Field(default=None, alias="signatureScheme")
-    __properties = ["unsignedCredential", "revocable", "disclosureFrame", "signatureScheme"]
+    key_id: Optional[StrictStr] = Field(default=None, alias="keyId", description="wallet key ID to use for signing (defaults to wallet's default key)")
+    __properties = ["unsignedCredential", "revocable", "disclosureFrame", "signatureScheme", "keyId"]
 
     @validator('signature_scheme')
     def signature_scheme_validate_enum(cls, value):
@@ -81,7 +82,8 @@ class SignCredentialsDm2SdJwtInputDto(BaseModel):
             "unsigned_credential": obj.get("unsignedCredential"),
             "revocable": obj.get("revocable"),
             "disclosure_frame": obj.get("disclosureFrame"),
-            "signature_scheme": obj.get("signatureScheme")
+            "signature_scheme": obj.get("signatureScheme"),
+            "key_id": obj.get("keyId")
         })
         return _obj
 
