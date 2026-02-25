@@ -33,7 +33,8 @@ import java.util.StringJoiner;
   SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL,
   SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_REVOCABLE,
   SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_DISCLOSURE_FRAME,
-  SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_SIGNATURE_SCHEME
+  SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_SIGNATURE_SCHEME,
+  SignCredentialsDm2SdJwtInputDto.JSON_PROPERTY_KEY_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignCredentialsDm2SdJwtInputDto {
@@ -89,6 +90,10 @@ public class SignCredentialsDm2SdJwtInputDto {
   public static final String JSON_PROPERTY_SIGNATURE_SCHEME = "signatureScheme";
   @javax.annotation.Nullable
   private SignatureSchemeEnum signatureScheme;
+
+  public static final String JSON_PROPERTY_KEY_ID = "keyId";
+  @javax.annotation.Nullable
+  private String keyId;
 
   public SignCredentialsDm2SdJwtInputDto() {
   }
@@ -193,6 +198,31 @@ public class SignCredentialsDm2SdJwtInputDto {
     this.signatureScheme = signatureScheme;
   }
 
+  public SignCredentialsDm2SdJwtInputDto keyId(@javax.annotation.Nullable String keyId) {
+    
+    this.keyId = keyId;
+    return this;
+  }
+
+  /**
+   * wallet key ID to use for signing (defaults to wallet&#39;s default key)
+   * @return keyId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getKeyId() {
+    return keyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyId(@javax.annotation.Nullable String keyId) {
+    this.keyId = keyId;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -205,12 +235,13 @@ public class SignCredentialsDm2SdJwtInputDto {
     return Objects.equals(this.unsignedCredential, signCredentialsDm2SdJwtInputDto.unsignedCredential) &&
         Objects.equals(this.revocable, signCredentialsDm2SdJwtInputDto.revocable) &&
         Objects.equals(this.disclosureFrame, signCredentialsDm2SdJwtInputDto.disclosureFrame) &&
-        Objects.equals(this.signatureScheme, signCredentialsDm2SdJwtInputDto.signatureScheme);
+        Objects.equals(this.signatureScheme, signCredentialsDm2SdJwtInputDto.signatureScheme) &&
+        Objects.equals(this.keyId, signCredentialsDm2SdJwtInputDto.keyId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unsignedCredential, revocable, disclosureFrame, signatureScheme);
+    return Objects.hash(unsignedCredential, revocable, disclosureFrame, signatureScheme, keyId);
   }
 
   @Override
@@ -221,6 +252,7 @@ public class SignCredentialsDm2SdJwtInputDto {
     sb.append("    revocable: ").append(toIndentedString(revocable)).append("\n");
     sb.append("    disclosureFrame: ").append(toIndentedString(disclosureFrame)).append("\n");
     sb.append("    signatureScheme: ").append(toIndentedString(signatureScheme)).append("\n");
+    sb.append("    keyId: ").append(toIndentedString(keyId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -302,6 +334,16 @@ public class SignCredentialsDm2SdJwtInputDto {
     if (getSignatureScheme() != null) {
       try {
         joiner.add(String.format("%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `keyId` to the URL query string
+    if (getKeyId() != null) {
+      try {
+        joiner.add(String.format("%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

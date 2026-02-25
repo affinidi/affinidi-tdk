@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:affinidi_tdk_iam_client/src/model/service_error_response_details_inner.dart';
+import 'package:affinidi_tdk_iam_client/src/model/unexpected_error_details_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -39,7 +39,7 @@ abstract class PrincipalCannotBeDeletedError
   String get traceId;
 
   @BuiltValueField(wireName: r'details')
-  BuiltList<ServiceErrorResponseDetailsInner>? get details;
+  BuiltList<UnexpectedErrorDetailsInner>? get details;
 
   PrincipalCannotBeDeletedError._();
 
@@ -96,8 +96,8 @@ class _$PrincipalCannotBeDeletedErrorSerializer
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(
-            BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(UnexpectedErrorDetailsInner)]),
       );
     }
   }
@@ -160,8 +160,8 @@ class _$PrincipalCannotBeDeletedErrorSerializer
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(
-                BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
-          ) as BuiltList<ServiceErrorResponseDetailsInner>;
+                BuiltList, [FullType(UnexpectedErrorDetailsInner)]),
+          ) as BuiltList<UnexpectedErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
         default:

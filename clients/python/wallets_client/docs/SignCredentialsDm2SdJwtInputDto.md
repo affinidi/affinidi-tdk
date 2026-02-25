@@ -4,12 +4,13 @@ DTO contains params to sign credential
 
 ## Properties
 
-| Name                    | Type       | Description                       | Notes      |
-| ----------------------- | ---------- | --------------------------------- | ---------- |
-| **unsigned_credential** | **object** | Unsigned Credential in Dm2 format |
-| **revocable**           | **bool**   |                                   | [optional] |
-| **disclosure_frame**    | **object** |                                   |
-| **signature_scheme**    | **str**    |                                   | [optional] |
+| Name                    | Type       | Description                                                             | Notes      |
+| ----------------------- | ---------- | ----------------------------------------------------------------------- | ---------- |
+| **unsigned_credential** | **object** | Unsigned Credential in Dm2 format                                       |
+| **revocable**           | **bool**   |                                                                         | [optional] |
+| **disclosure_frame**    | **object** |                                                                         |
+| **signature_scheme**    | **str**    |                                                                         | [optional] |
+| **key_id**              | **str**    | wallet key ID to use for signing (defaults to wallet&#39;s default key) | [optional] |
 
 ## Example
 

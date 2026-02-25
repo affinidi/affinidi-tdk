@@ -13,6 +13,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**addPrincipalToProject**](ProjectsApi.md#addprincipaltoproject)           | **POST** /v1/projects/principals                 |
 | [**createProject**](ProjectsApi.md#createproject)                           | **POST** /v1/projects                            |
 | [**deletePrincipalFromProject**](ProjectsApi.md#deleteprincipalfromproject) | **DELETE** /v1/projects/principals/{principalId} |
+| [**getProject**](ProjectsApi.md#getproject)                                 | **GET** /v1/projects/{projectId}                 |
 | [**listPrincipalsOfProject**](ProjectsApi.md#listprincipalsofproject)       | **GET** /v1/projects/principals                  |
 | [**listProject**](ProjectsApi.md#listproject)                               | **GET** /v1/projects                             |
 | [**updateProject**](ProjectsApi.md#updateproject)                           | **PATCH** /v1/projects/{projectId}               |
@@ -144,6 +145,51 @@ void (empty response body)
 ### Authorization
 
 [ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProject**
+
+> ProjectDto getProject(projectId)
+
+### Example
+
+```dart
+import 'package:affinidi_tdk_iam_client/api.dart';
+// TODO Configure API key authorization: UserTokenAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('UserTokenAuth').apiKeyPrefix = 'Bearer';
+
+final api = AffinidiTdkIamClient().getProjectsApi();
+final String projectId = projectId_example; // String | projectId
+
+try {
+    final response = api.getProject(projectId);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling ProjectsApi->getProject: $e\n');
+}
+```
+
+### Parameters
+
+| Name          | Type       | Description | Notes |
+| ------------- | ---------- | ----------- | ----- |
+| **projectId** | **String** | projectId   |
+
+### Return type
+
+[**ProjectDto**](ProjectDto.md)
+
+### Authorization
+
+[UserTokenAuth](../README.md#UserTokenAuth)
 
 ### HTTP request headers
 

@@ -97,6 +97,8 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
   final BuiltList<String>? redirectUris;
   @override
   final bool? enableIdvProviders;
+  @override
+  final String? mediatorDid;
 
   factory _$IotaConfigurationDto(
           [void Function(IotaConfigurationDtoBuilder)? updates]) =>
@@ -115,7 +117,8 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
       required this.clientMetadata,
       this.mode,
       this.redirectUris,
-      this.enableIdvProviders})
+      this.enableIdvProviders,
+      this.mediatorDid})
       : super._();
   @override
   IotaConfigurationDto rebuild(
@@ -142,7 +145,8 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
         clientMetadata == other.clientMetadata &&
         mode == other.mode &&
         redirectUris == other.redirectUris &&
-        enableIdvProviders == other.enableIdvProviders;
+        enableIdvProviders == other.enableIdvProviders &&
+        mediatorDid == other.mediatorDid;
   }
 
   @override
@@ -161,6 +165,7 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
     _$hash = $jc(_$hash, mode.hashCode);
     _$hash = $jc(_$hash, redirectUris.hashCode);
     _$hash = $jc(_$hash, enableIdvProviders.hashCode);
+    _$hash = $jc(_$hash, mediatorDid.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -180,7 +185,8 @@ class _$IotaConfigurationDto extends IotaConfigurationDto {
           ..add('clientMetadata', clientMetadata)
           ..add('mode', mode)
           ..add('redirectUris', redirectUris)
-          ..add('enableIdvProviders', enableIdvProviders))
+          ..add('enableIdvProviders', enableIdvProviders)
+          ..add('mediatorDid', mediatorDid))
         .toString();
   }
 }
@@ -251,6 +257,10 @@ class IotaConfigurationDtoBuilder
   set enableIdvProviders(bool? enableIdvProviders) =>
       _$this._enableIdvProviders = enableIdvProviders;
 
+  String? _mediatorDid;
+  String? get mediatorDid => _$this._mediatorDid;
+  set mediatorDid(String? mediatorDid) => _$this._mediatorDid = mediatorDid;
+
   IotaConfigurationDtoBuilder() {
     IotaConfigurationDto._defaults(this);
   }
@@ -271,6 +281,7 @@ class IotaConfigurationDtoBuilder
       _mode = $v.mode;
       _redirectUris = $v.redirectUris?.toBuilder();
       _enableIdvProviders = $v.enableIdvProviders;
+      _mediatorDid = $v.mediatorDid;
       _$v = null;
     }
     return this;
@@ -319,6 +330,7 @@ class IotaConfigurationDtoBuilder
             mode: mode,
             redirectUris: _redirectUris?.build(),
             enableIdvProviders: enableIdvProviders,
+            mediatorDid: mediatorDid,
           );
     } catch (_) {
       late String _$failedField;
