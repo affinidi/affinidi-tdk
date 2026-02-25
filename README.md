@@ -7,6 +7,15 @@
 
 The Affinidi Trust Development Kit (Affinidi TDK) is a modern interface that allows you to easily manage and integrate [Affinidi Elements](https://docs.affinidi.com/docs/affinidi-elements/) and [Frameworks](https://docs.affinidi.com/frameworks/iota-framework/) into your application. It minimises dependencies and enables developers to integrate seamlessly into the [Affinidi Trust Network (ATN)](https://docs.affinidi.com/docs/).
 
+---
+
+**Repository Note:**
+*The Dart clients, libraries, and packages previously maintained in this repository have been migrated to a dedicated GitHub repository as part of ongoing improvements to Affinidi’s open‑source ecosystem and development workflow.*
+
+*Visit the [Affinidi Trust Development Kit (TDK) for Dart](https://github.com/affinidi/affinidi-tdk-dart) repository for the latest source code, updates, and continued development.*
+
+---
+
 ## How do I use Affinidi TDK?
 
 The Affinidi TDK provides three types of modules:
@@ -73,15 +82,6 @@ Click on the green and yellow boxes to view the source code of each module per l
 ![◯](https://img.shields.io/badge/%E2%97%AF-Supported-2ecc71?labelColor=52a447&style=flat)
 ![◯](https://img.shields.io/badge/%E2%97%AF-Experimental-f9e79f?labelColor=FFEA00&style=flat)
 ![◯](https://img.shields.io/badge/%E2%97%AF-Unsupported-ec7063?labelColor=e74c3c&style=flat)
-
----
-
-**Note:**
-The Dart clients, libraries, and packages previously maintained in this repository have been migrated to a dedicated GitHub repository as part of ongoing improvements to Affinidi’s open‑source ecosystem and development workflow.
-
-Visit the [Affinidi Trust Development Kit (TDK) for Dart](https://github.com/affinidi/affinidi-tdk-dart) repository for the latest source code, updates, and continued development.
-
----
 
 ## Published on
 
