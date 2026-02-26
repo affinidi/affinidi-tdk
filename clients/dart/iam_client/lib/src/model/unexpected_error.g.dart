@@ -161,7 +161,7 @@ class _$UnexpectedError extends UnexpectedError {
   @override
   final String traceId;
   @override
-  final BuiltList<ServiceErrorResponseDetailsInner>? details;
+  final BuiltList<UnexpectedErrorDetailsInner>? details;
 
   factory _$UnexpectedError([void Function(UnexpectedErrorBuilder)? updates]) =>
       (UnexpectedErrorBuilder()..update(updates))._build();
@@ -237,10 +237,10 @@ class UnexpectedErrorBuilder
   String? get traceId => _$this._traceId;
   set traceId(String? traceId) => _$this._traceId = traceId;
 
-  ListBuilder<ServiceErrorResponseDetailsInner>? _details;
-  ListBuilder<ServiceErrorResponseDetailsInner> get details =>
-      _$this._details ??= ListBuilder<ServiceErrorResponseDetailsInner>();
-  set details(ListBuilder<ServiceErrorResponseDetailsInner>? details) =>
+  ListBuilder<UnexpectedErrorDetailsInner>? _details;
+  ListBuilder<UnexpectedErrorDetailsInner> get details =>
+      _$this._details ??= ListBuilder<UnexpectedErrorDetailsInner>();
+  set details(ListBuilder<UnexpectedErrorDetailsInner>? details) =>
       _$this._details = details;
 
   UnexpectedErrorBuilder() {

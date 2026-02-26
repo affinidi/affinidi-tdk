@@ -47,7 +47,8 @@ import java.util.StringJoiner;
   IotaConfigurationDto.JSON_PROPERTY_CLIENT_METADATA,
   IotaConfigurationDto.JSON_PROPERTY_MODE,
   IotaConfigurationDto.JSON_PROPERTY_REDIRECT_URIS,
-  IotaConfigurationDto.JSON_PROPERTY_ENABLE_IDV_PROVIDERS
+  IotaConfigurationDto.JSON_PROPERTY_ENABLE_IDV_PROVIDERS,
+  IotaConfigurationDto.JSON_PROPERTY_MEDIATOR_DID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class IotaConfigurationDto {
@@ -139,6 +140,10 @@ public class IotaConfigurationDto {
   public static final String JSON_PROPERTY_ENABLE_IDV_PROVIDERS = "enableIdvProviders";
   @javax.annotation.Nullable
   private Boolean enableIdvProviders;
+
+  public static final String JSON_PROPERTY_MEDIATOR_DID = "mediatorDid";
+  @javax.annotation.Nullable
+  private String mediatorDid;
 
   public IotaConfigurationDto() {
   }
@@ -476,6 +481,31 @@ public class IotaConfigurationDto {
     this.enableIdvProviders = enableIdvProviders;
   }
 
+  public IotaConfigurationDto mediatorDid(@javax.annotation.Nullable String mediatorDid) {
+    
+    this.mediatorDid = mediatorDid;
+    return this;
+  }
+
+  /**
+   * Get mediatorDid
+   * @return mediatorDid
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MEDIATOR_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getMediatorDid() {
+    return mediatorDid;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MEDIATOR_DID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMediatorDid(@javax.annotation.Nullable String mediatorDid) {
+    this.mediatorDid = mediatorDid;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -497,12 +527,13 @@ public class IotaConfigurationDto {
         Objects.equals(this.clientMetadata, iotaConfigurationDto.clientMetadata) &&
         Objects.equals(this.mode, iotaConfigurationDto.mode) &&
         Objects.equals(this.redirectUris, iotaConfigurationDto.redirectUris) &&
-        Objects.equals(this.enableIdvProviders, iotaConfigurationDto.enableIdvProviders);
+        Objects.equals(this.enableIdvProviders, iotaConfigurationDto.enableIdvProviders) &&
+        Objects.equals(this.mediatorDid, iotaConfigurationDto.mediatorDid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ari, configurationId, name, projectId, walletAri, tokenMaxAge, iotaResponseWebhookURL, enableVerification, enableConsentAuditLog, clientMetadata, mode, redirectUris, enableIdvProviders);
+    return Objects.hash(ari, configurationId, name, projectId, walletAri, tokenMaxAge, iotaResponseWebhookURL, enableVerification, enableConsentAuditLog, clientMetadata, mode, redirectUris, enableIdvProviders, mediatorDid);
   }
 
   @Override
@@ -522,6 +553,7 @@ public class IotaConfigurationDto {
     sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
     sb.append("    redirectUris: ").append(toIndentedString(redirectUris)).append("\n");
     sb.append("    enableIdvProviders: ").append(toIndentedString(enableIdvProviders)).append("\n");
+    sb.append("    mediatorDid: ").append(toIndentedString(mediatorDid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -692,6 +724,16 @@ public class IotaConfigurationDto {
     if (getEnableIdvProviders() != null) {
       try {
         joiner.add(String.format("%senableIdvProviders%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableIdvProviders()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `mediatorDid` to the URL query string
+    if (getMediatorDid() != null) {
+      try {
+        joiner.add(String.format("%smediatorDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMediatorDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
