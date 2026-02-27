@@ -17,6 +17,7 @@ part 'sign_credentials_dm2_sd_jwt_input_dto.g.dart';
 /// * [revocable]
 /// * [disclosureFrame]
 /// * [signatureScheme]
+/// * [keyId] - wallet key ID to use for signing (defaults to wallet's default key)
 @BuiltValue()
 abstract class SignCredentialsDm2SdJwtInputDto
     implements
@@ -35,6 +36,10 @@ abstract class SignCredentialsDm2SdJwtInputDto
   @BuiltValueField(wireName: r'signatureScheme')
   SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum? get signatureScheme;
   // enum signatureSchemeEnum {  ecdsa_secp256k1_sha256,  ecdsa_p256_sha256,  ed25519,  };
+
+  /// wallet key ID to use for signing (defaults to wallet's default key)
+  @BuiltValueField(wireName: r'keyId')
+  String? get keyId;
 
   SignCredentialsDm2SdJwtInputDto._();
 
@@ -91,6 +96,13 @@ class _$SignCredentialsDm2SdJwtInputDtoSerializer
             const FullType(SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum),
       );
     }
+    if (object.keyId != null) {
+      yield r'keyId';
+      yield serializers.serialize(
+        object.keyId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -144,6 +156,13 @@ class _$SignCredentialsDm2SdJwtInputDtoSerializer
                 SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum),
           ) as SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum;
           result.signatureScheme = valueDes;
+          break;
+        case r'keyId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.keyId = valueDes;
           break;
         default:
           unhandled.add(key);
