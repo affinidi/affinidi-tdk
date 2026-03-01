@@ -27,12 +27,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(CisConfigurationWebhookSettingEndpoint.serializer)
       ..add(ClaimedCredentialListResponse.serializer)
       ..add(ClaimedCredentialResponse.serializer)
-      ..add(CorsBatchCredentialOK.serializer)
-      ..add(CorsGenerateCredentialsOK.serializer)
-      ..add(CorsGetClaimedCredentialsOK.serializer)
-      ..add(CorsGetCredentialOfferOK.serializer)
-      ..add(CorsGetIssuanceIdClaimedCredentialOK.serializer)
-      ..add(CorsGetWellKnownOpenIdCredentialIssuerOK.serializer)
       ..add(CreateCredentialInput.serializer)
       ..add(CreateIssuanceConfig400Response.serializer)
       ..add(CreateIssuanceConfigInput.serializer)
@@ -69,7 +63,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(CredentialSubjectNotValidErrorMessageEnum.serializer)
       ..add(CredentialSubjectNotValidErrorNameEnum.serializer)
       ..add(CredentialSupportedObject.serializer)
-      ..add(DeferredCredentialInput.serializer)
       ..add(FlowData.serializer)
       ..add(FlowDataStatusListsDetailsInner.serializer)
       ..add(FlowDataStatusListsDetailsInnerStandardEnum.serializer)
@@ -126,10 +119,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum.serializer)
       ..add(ProjectCredentialConfigNotExistErrorMessageEnum.serializer)
       ..add(ProjectCredentialConfigNotExistErrorNameEnum.serializer)
-      ..add(RevocationForbiddenError.serializer)
-      ..add(RevocationForbiddenErrorHttpStatusCodeEnum.serializer)
-      ..add(RevocationForbiddenErrorMessageEnum.serializer)
-      ..add(RevocationForbiddenErrorNameEnum.serializer)
       ..add(StartIssuance400Response.serializer)
       ..add(StartIssuanceInput.serializer)
       ..add(StartIssuanceInputClaimModeEnum.serializer)
@@ -162,10 +151,6 @@ Serializers _$serializers = (Serializers().toBuilder()
       ..add(
           WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum
               .serializer)
-      ..addBuilderFactory(
-          const FullType(BuiltList,
-              const [const FullType(ActionForbiddenErrorDetailsInner)]),
-          () => ListBuilder<ActionForbiddenErrorDetailsInner>())
       ..addBuilderFactory(
           const FullType(BuiltList,
               const [const FullType(ActionForbiddenErrorDetailsInner)]),
