@@ -10,7 +10,7 @@ class _$AwsExchangeCredentialsOK extends AwsExchangeCredentialsOK {
   @override
   final String connectionClientId;
   @override
-  final AwsExchangeCredentialsProjectTokenOKCredentials credentials;
+  final AwsExchangeCredentialsOKCredentials credentials;
 
   factory _$AwsExchangeCredentialsOK(
           [void Function(AwsExchangeCredentialsOKBuilder)? updates]) =>
@@ -64,13 +64,10 @@ class AwsExchangeCredentialsOKBuilder
   set connectionClientId(String? connectionClientId) =>
       _$this._connectionClientId = connectionClientId;
 
-  AwsExchangeCredentialsProjectTokenOKCredentialsBuilder? _credentials;
-  AwsExchangeCredentialsProjectTokenOKCredentialsBuilder get credentials =>
-      _$this._credentials ??=
-          AwsExchangeCredentialsProjectTokenOKCredentialsBuilder();
-  set credentials(
-          AwsExchangeCredentialsProjectTokenOKCredentialsBuilder?
-              credentials) =>
+  AwsExchangeCredentialsOKCredentialsBuilder? _credentials;
+  AwsExchangeCredentialsOKCredentialsBuilder get credentials =>
+      _$this._credentials ??= AwsExchangeCredentialsOKCredentialsBuilder();
+  set credentials(AwsExchangeCredentialsOKCredentialsBuilder? credentials) =>
       _$this._credentials = credentials;
 
   AwsExchangeCredentialsOKBuilder() {

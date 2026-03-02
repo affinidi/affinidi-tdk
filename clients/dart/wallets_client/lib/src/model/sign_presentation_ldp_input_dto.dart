@@ -18,6 +18,7 @@ part 'sign_presentation_ldp_input_dto.g.dart';
 /// * [signatureSuite] - W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
 /// * [domain] - Domain(s) for which the presentation is intended
 /// * [challenge] - Challenge string
+/// * [keyId] - wallet key ID to use for signing (defaults to wallet's default key)
 @BuiltValue()
 abstract class SignPresentationLdpInputDto
     implements
@@ -42,6 +43,10 @@ abstract class SignPresentationLdpInputDto
   /// Challenge string
   @BuiltValueField(wireName: r'challenge')
   String? get challenge;
+
+  /// wallet key ID to use for signing (defaults to wallet's default key)
+  @BuiltValueField(wireName: r'keyId')
+  String? get keyId;
 
   SignPresentationLdpInputDto._();
 
@@ -108,6 +113,13 @@ class _$SignPresentationLdpInputDtoSerializer
         specifiedType: const FullType(String),
       );
     }
+    if (object.keyId != null) {
+      yield r'keyId';
+      yield serializers.serialize(
+        object.keyId,
+        specifiedType: const FullType(String),
+      );
+    }
   }
 
   @override
@@ -169,6 +181,13 @@ class _$SignPresentationLdpInputDtoSerializer
             specifiedType: const FullType(String),
           ) as String;
           result.challenge = valueDes;
+          break;
+        case r'keyId':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.keyId = valueDes;
           break;
         default:
           unhandled.add(key);

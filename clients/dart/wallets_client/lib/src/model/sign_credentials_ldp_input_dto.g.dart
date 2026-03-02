@@ -174,6 +174,8 @@ class _$SignCredentialsLdpInputDto extends SignCredentialsLdpInputDto {
   final SignCredentialsLdpInputDtoSignatureSchemeEnum? signatureScheme;
   @override
   final SignCredentialsLdpInputDtoSignatureSuiteEnum? signatureSuite;
+  @override
+  final String? keyId;
 
   factory _$SignCredentialsLdpInputDto(
           [void Function(SignCredentialsLdpInputDtoBuilder)? updates]) =>
@@ -183,7 +185,8 @@ class _$SignCredentialsLdpInputDto extends SignCredentialsLdpInputDto {
       {required this.unsignedCredential,
       this.revocable,
       this.signatureScheme,
-      this.signatureSuite})
+      this.signatureSuite,
+      this.keyId})
       : super._();
   @override
   SignCredentialsLdpInputDto rebuild(
@@ -201,7 +204,8 @@ class _$SignCredentialsLdpInputDto extends SignCredentialsLdpInputDto {
         unsignedCredential == other.unsignedCredential &&
         revocable == other.revocable &&
         signatureScheme == other.signatureScheme &&
-        signatureSuite == other.signatureSuite;
+        signatureSuite == other.signatureSuite &&
+        keyId == other.keyId;
   }
 
   @override
@@ -211,6 +215,7 @@ class _$SignCredentialsLdpInputDto extends SignCredentialsLdpInputDto {
     _$hash = $jc(_$hash, revocable.hashCode);
     _$hash = $jc(_$hash, signatureScheme.hashCode);
     _$hash = $jc(_$hash, signatureSuite.hashCode);
+    _$hash = $jc(_$hash, keyId.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -221,7 +226,8 @@ class _$SignCredentialsLdpInputDto extends SignCredentialsLdpInputDto {
           ..add('unsignedCredential', unsignedCredential)
           ..add('revocable', revocable)
           ..add('signatureScheme', signatureScheme)
-          ..add('signatureSuite', signatureSuite))
+          ..add('signatureSuite', signatureSuite)
+          ..add('keyId', keyId))
         .toString();
   }
 }
@@ -254,6 +260,10 @@ class SignCredentialsLdpInputDtoBuilder
           SignCredentialsLdpInputDtoSignatureSuiteEnum? signatureSuite) =>
       _$this._signatureSuite = signatureSuite;
 
+  String? _keyId;
+  String? get keyId => _$this._keyId;
+  set keyId(String? keyId) => _$this._keyId = keyId;
+
   SignCredentialsLdpInputDtoBuilder() {
     SignCredentialsLdpInputDto._defaults(this);
   }
@@ -265,6 +275,7 @@ class SignCredentialsLdpInputDtoBuilder
       _revocable = $v.revocable;
       _signatureScheme = $v.signatureScheme;
       _signatureSuite = $v.signatureSuite;
+      _keyId = $v.keyId;
       _$v = null;
     }
     return this;
@@ -293,6 +304,7 @@ class SignCredentialsLdpInputDtoBuilder
           revocable: revocable,
           signatureScheme: signatureScheme,
           signatureSuite: signatureSuite,
+          keyId: keyId,
         );
     replace(_$result);
     return _$result;

@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/service_endpoint_input.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -17,6 +18,7 @@ part 'create_wallet_v2_input.g.dart';
 /// * [didMethod] - Define how DID of your wallet is created and resolved
 /// * [didWebUrl] - URL of the DID. Required if the did method is web
 /// * [algorithm] - algorithm to generate key for the wallet
+/// * [services] - Service endpoints to include in DID document
 @BuiltValue()
 abstract class CreateWalletV2Input
     implements Built<CreateWalletV2Input, CreateWalletV2InputBuilder> {
@@ -31,7 +33,7 @@ abstract class CreateWalletV2Input
   /// Define how DID of your wallet is created and resolved
   @BuiltValueField(wireName: r'didMethod')
   CreateWalletV2InputDidMethodEnum? get didMethod;
-  // enum didMethodEnum {  key,  web,  peer0,  };
+  // enum didMethodEnum {  key,  web,  peer0,  peer2,  };
 
   /// URL of the DID. Required if the did method is web
   @BuiltValueField(wireName: r'didWebUrl')
@@ -41,6 +43,10 @@ abstract class CreateWalletV2Input
   @BuiltValueField(wireName: r'algorithm')
   CreateWalletV2InputAlgorithmEnum? get algorithm;
   // enum algorithmEnum {  secp256k1,  ed25519,  p256,  };
+
+  /// Service endpoints to include in DID document
+  @BuiltValueField(wireName: r'services')
+  BuiltList<ServiceEndpointInput>? get services;
 
   CreateWalletV2Input._();
 
@@ -108,6 +114,14 @@ class _$CreateWalletV2InputSerializer
         specifiedType: const FullType(CreateWalletV2InputAlgorithmEnum),
       );
     }
+    if (object.services != null) {
+      yield r'services';
+      yield serializers.serialize(
+        object.services,
+        specifiedType:
+            const FullType(BuiltList, [FullType(ServiceEndpointInput)]),
+      );
+    }
   }
 
   @override
@@ -168,6 +182,14 @@ class _$CreateWalletV2InputSerializer
           ) as CreateWalletV2InputAlgorithmEnum;
           result.algorithm = valueDes;
           break;
+        case r'services':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(BuiltList, [FullType(ServiceEndpointInput)]),
+          ) as BuiltList<ServiceEndpointInput>;
+          result.services.replace(valueDes);
+          break;
         default:
           unhandled.add(key);
           unhandled.add(value);
@@ -212,6 +234,11 @@ class CreateWalletV2InputDidMethodEnum extends EnumClass {
   @BuiltValueEnumConst(wireName: r'peer0')
   static const CreateWalletV2InputDidMethodEnum peer0 =
       _$createWalletV2InputDidMethodEnum_peer0;
+
+  /// Define how DID of your wallet is created and resolved
+  @BuiltValueEnumConst(wireName: r'peer2')
+  static const CreateWalletV2InputDidMethodEnum peer2 =
+      _$createWalletV2InputDidMethodEnum_peer2;
 
   static Serializer<CreateWalletV2InputDidMethodEnum> get serializer =>
       _$createWalletV2InputDidMethodEnumSerializer;

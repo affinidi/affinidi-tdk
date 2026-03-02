@@ -7,14 +7,12 @@ doc/AuthzApi.md
 doc/ConsumerAuthApi.md
 doc/ConsumerAuthTokenEndpointInput.md
 doc/ConsumerAuthTokenEndpointOutput.md
-doc/CorsConsumerAuthTokenEndpointOK.md
 doc/GetAccessOutput.md
 doc/GrantAccessInput.md
 doc/GrantAccessOutput.md
 doc/InvalidDIDError.md
 doc/InvalidJwtTokenError.md
 doc/InvalidJwtTokenErrorDetailsInner.md
-doc/InvalidParameterError.md
 doc/JsonWebKeyDto.md
 doc/JsonWebKeySetDto.md
 doc/Permission.md
@@ -38,7 +36,6 @@ lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/consumer_auth_token_endpoint_input.dart
 lib/src/model/consumer_auth_token_endpoint_output.dart
-lib/src/model/cors_consumer_auth_token_endpoint_ok.dart
 lib/src/model/date.dart
 lib/src/model/get_access_output.dart
 lib/src/model/grant_access_input.dart
@@ -46,7 +43,6 @@ lib/src/model/grant_access_output.dart
 lib/src/model/invalid_did_error.dart
 lib/src/model/invalid_jwt_token_error.dart
 lib/src/model/invalid_jwt_token_error_details_inner.dart
-lib/src/model/invalid_parameter_error.dart
 lib/src/model/json_web_key_dto.dart
 lib/src/model/json_web_key_set_dto.dart
 lib/src/model/permission.dart

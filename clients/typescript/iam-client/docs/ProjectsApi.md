@@ -7,6 +7,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 | [**addPrincipalToProject**](#addprincipaltoproject)           | **POST** /v1/projects/principals                 |             |
 | [**createProject**](#createproject)                           | **POST** /v1/projects                            |             |
 | [**deletePrincipalFromProject**](#deleteprincipalfromproject) | **DELETE** /v1/projects/principals/{principalId} |             |
+| [**getProject**](#getproject)                                 | **GET** /v1/projects/{projectId}                 |             |
 | [**listPrincipalsOfProject**](#listprincipalsofproject)       | **GET** /v1/projects/principals                  |             |
 | [**listProject**](#listproject)                               | **GET** /v1/projects                             |             |
 | [**updateProject**](#updateproject)                           | **PATCH** /v1/projects/{projectId}               |             |
@@ -164,6 +165,53 @@ void (empty response body)
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 | **409**     | ConflictError   | -                |
+| **500**     | UnexpectedError | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getProject**
+
+> ProjectDto getProject()
+
+### Example
+
+```typescript
+import { ProjectsApi, Configuration } from '@affinidi-tdk/iam-client'
+
+const configuration = new Configuration()
+const apiInstance = new ProjectsApi(configuration)
+
+let projectId: string //projectId (default to undefined)
+
+const { status, data } = await apiInstance.getProject(projectId)
+```
+
+### Parameters
+
+| Name          | Type         | Description | Notes                 |
+| ------------- | ------------ | ----------- | --------------------- |
+| **projectId** | [**string**] | projectId   | defaults to undefined |
+
+### Return type
+
+**ProjectDto**
+
+### Authorization
+
+[UserTokenAuth](../README.md#UserTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers |
+| ----------- | --------------- | ---------------- |
+| **200**     | Ok              | -                |
+| **400**     | BadRequestError | -                |
+| **404**     | NotFoundError   | -                |
 | **500**     | UnexpectedError | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -16,14 +16,12 @@ export 'package:affinidi_tdk_consumer_iam_client/src/api/well_known_api.dart';
 
 export 'package:affinidi_tdk_consumer_iam_client/src/model/consumer_auth_token_endpoint_input.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/consumer_auth_token_endpoint_output.dart';
-export 'package:affinidi_tdk_consumer_iam_client/src/model/cors_consumer_auth_token_endpoint_ok.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/get_access_output.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/grant_access_input.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/grant_access_output.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_did_error.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_jwt_token_error.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_jwt_token_error_details_inner.dart';
-export 'package:affinidi_tdk_consumer_iam_client/src/model/invalid_parameter_error.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/json_web_key_dto.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/json_web_key_set_dto.dart';
 export 'package:affinidi_tdk_consumer_iam_client/src/model/permission.dart';
