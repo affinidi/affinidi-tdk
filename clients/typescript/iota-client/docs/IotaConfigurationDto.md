@@ -17,6 +17,7 @@
 | **mode**                   | **string**                                                                      | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.                                   | [optional] [default to ModeEnum_Websocket] |
 | **redirectUris**           | **Array&lt;string&gt;**                                                         | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [optional] [default to undefined]          |
 | **enableIdvProviders**     | **boolean**                                                                     | Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.                                | [optional] [default to undefined]          |
+| **mediatorDid**            | **string**                                                                      |                                                                                                                                                  | [optional] [default to undefined]          |
 
 ## Example
 
@@ -37,6 +38,7 @@ const instance: IotaConfigurationDto = {
   mode,
   redirectUris,
   enableIdvProviders,
+  mediatorDid,
 }
 ```
 
