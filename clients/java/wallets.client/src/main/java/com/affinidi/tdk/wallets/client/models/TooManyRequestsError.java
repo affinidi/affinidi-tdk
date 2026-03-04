@@ -15,7 +15,7 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.wallets.client.models.ServiceErrorResponseDetailsInner;
+import com.affinidi.tdk.wallets.client.models.NotFoundErrorDetailsInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -159,7 +159,7 @@ public class TooManyRequestsError {
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable
-  private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
+  private List<NotFoundErrorDetailsInner> details = new ArrayList<>();
 
   public TooManyRequestsError() {
   }
@@ -264,13 +264,13 @@ public class TooManyRequestsError {
     this.traceId = traceId;
   }
 
-  public TooManyRequestsError details(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public TooManyRequestsError details(@javax.annotation.Nullable List<NotFoundErrorDetailsInner> details) {
     
     this.details = details;
     return this;
   }
 
-  public TooManyRequestsError addDetailsItem(ServiceErrorResponseDetailsInner detailsItem) {
+  public TooManyRequestsError addDetailsItem(NotFoundErrorDetailsInner detailsItem) {
     if (this.details == null) {
       this.details = new ArrayList<>();
     }
@@ -286,14 +286,14 @@ public class TooManyRequestsError {
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ServiceErrorResponseDetailsInner> getDetails() {
+  public List<NotFoundErrorDetailsInner> getDetails() {
     return details;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<NotFoundErrorDetailsInner> details) {
     this.details = details;
   }
 

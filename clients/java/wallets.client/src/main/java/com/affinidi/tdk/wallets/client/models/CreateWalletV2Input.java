@@ -15,11 +15,15 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.wallets.client.models.ServiceEndpointInput;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -34,7 +38,8 @@ import java.util.StringJoiner;
   CreateWalletV2Input.JSON_PROPERTY_DESCRIPTION,
   CreateWalletV2Input.JSON_PROPERTY_DID_METHOD,
   CreateWalletV2Input.JSON_PROPERTY_DID_WEB_URL,
-  CreateWalletV2Input.JSON_PROPERTY_ALGORITHM
+  CreateWalletV2Input.JSON_PROPERTY_ALGORITHM,
+  CreateWalletV2Input.JSON_PROPERTY_SERVICES
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class CreateWalletV2Input {
@@ -54,7 +59,9 @@ public class CreateWalletV2Input {
     
     WEB(String.valueOf("web")),
     
-    PEER0(String.valueOf("peer0"));
+    PEER0(String.valueOf("peer0")),
+    
+    PEER2(String.valueOf("peer2"));
 
     private String value;
 
@@ -131,6 +138,10 @@ public class CreateWalletV2Input {
   public static final String JSON_PROPERTY_ALGORITHM = "algorithm";
   @javax.annotation.Nullable
   private AlgorithmEnum algorithm = AlgorithmEnum.SECP256K1;
+
+  public static final String JSON_PROPERTY_SERVICES = "services";
+  @javax.annotation.Nullable
+  private List<ServiceEndpointInput> services = new ArrayList<>();
 
   public CreateWalletV2Input() {
   }
@@ -260,6 +271,39 @@ public class CreateWalletV2Input {
     this.algorithm = algorithm;
   }
 
+  public CreateWalletV2Input services(@javax.annotation.Nullable List<ServiceEndpointInput> services) {
+    
+    this.services = services;
+    return this;
+  }
+
+  public CreateWalletV2Input addServicesItem(ServiceEndpointInput servicesItem) {
+    if (this.services == null) {
+      this.services = new ArrayList<>();
+    }
+    this.services.add(servicesItem);
+    return this;
+  }
+
+  /**
+   * Service endpoints to include in DID document
+   * @return services
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ServiceEndpointInput> getServices() {
+    return services;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setServices(@javax.annotation.Nullable List<ServiceEndpointInput> services) {
+    this.services = services;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -273,12 +317,13 @@ public class CreateWalletV2Input {
         Objects.equals(this.description, createWalletV2Input.description) &&
         Objects.equals(this.didMethod, createWalletV2Input.didMethod) &&
         Objects.equals(this.didWebUrl, createWalletV2Input.didWebUrl) &&
-        Objects.equals(this.algorithm, createWalletV2Input.algorithm);
+        Objects.equals(this.algorithm, createWalletV2Input.algorithm) &&
+        Objects.equals(this.services, createWalletV2Input.services);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, didMethod, didWebUrl, algorithm);
+    return Objects.hash(name, description, didMethod, didWebUrl, algorithm, services);
   }
 
   @Override
@@ -290,6 +335,7 @@ public class CreateWalletV2Input {
     sb.append("    didMethod: ").append(toIndentedString(didMethod)).append("\n");
     sb.append("    didWebUrl: ").append(toIndentedString(didWebUrl)).append("\n");
     sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
+    sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -384,6 +430,16 @@ public class CreateWalletV2Input {
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
+      }
+    }
+
+    // add `services` to the URL query string
+    if (getServices() != null) {
+      for (int i = 0; i < getServices().size(); i++) {
+        if (getServices().get(i) != null) {
+          joiner.add(getServices().get(i).toUrlQueryString(String.format("%sservices%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
       }
     }
 
