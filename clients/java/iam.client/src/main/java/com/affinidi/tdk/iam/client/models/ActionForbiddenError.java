@@ -15,7 +15,7 @@ package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iam.client.models.ServiceErrorResponseDetailsInner;
+import com.affinidi.tdk.iam.client.models.UnexpectedErrorDetailsInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -159,7 +159,7 @@ public class ActionForbiddenError {
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable
-  private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
+  private List<UnexpectedErrorDetailsInner> details = new ArrayList<>();
 
   public ActionForbiddenError() {
   }
@@ -264,13 +264,13 @@ public class ActionForbiddenError {
     this.traceId = traceId;
   }
 
-  public ActionForbiddenError details(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public ActionForbiddenError details(@javax.annotation.Nullable List<UnexpectedErrorDetailsInner> details) {
     
     this.details = details;
     return this;
   }
 
-  public ActionForbiddenError addDetailsItem(ServiceErrorResponseDetailsInner detailsItem) {
+  public ActionForbiddenError addDetailsItem(UnexpectedErrorDetailsInner detailsItem) {
     if (this.details == null) {
       this.details = new ArrayList<>();
     }
@@ -286,14 +286,14 @@ public class ActionForbiddenError {
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ServiceErrorResponseDetailsInner> getDetails() {
+  public List<UnexpectedErrorDetailsInner> getDetails() {
     return details;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<UnexpectedErrorDetailsInner> details) {
     this.details = details;
   }
 

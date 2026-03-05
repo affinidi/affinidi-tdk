@@ -21,7 +21,7 @@ import json
 
 from typing import List, Optional, Union
 from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist, validator
-from affinidi_tdk_iam_client.models.service_error_response_details_inner import ServiceErrorResponseDetailsInner
+from affinidi_tdk_iam_client.models.unexpected_error_details_inner import UnexpectedErrorDetailsInner
 
 class PrincipalDoesNotBelongToProjectError(BaseModel):
     """
@@ -31,7 +31,7 @@ class PrincipalDoesNotBelongToProjectError(BaseModel):
     message: StrictStr = Field(...)
     http_status_code: Union[StrictFloat, StrictInt] = Field(default=..., alias="httpStatusCode")
     trace_id: StrictStr = Field(default=..., alias="traceId")
-    details: Optional[conlist(ServiceErrorResponseDetailsInner)] = None
+    details: Optional[conlist(UnexpectedErrorDetailsInner)] = None
     __properties = ["name", "message", "httpStatusCode", "traceId", "details"]
 
     @validator('name')
@@ -102,7 +102,7 @@ class PrincipalDoesNotBelongToProjectError(BaseModel):
             "message": obj.get("message"),
             "http_status_code": obj.get("httpStatusCode"),
             "trace_id": obj.get("traceId"),
-            "details": [ServiceErrorResponseDetailsInner.from_dict(_item) for _item in obj.get("details")] if obj.get("details") is not None else None
+            "details": [UnexpectedErrorDetailsInner.from_dict(_item) for _item in obj.get("details")] if obj.get("details") is not None else None
         })
         return _obj
 
