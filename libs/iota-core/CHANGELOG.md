@@ -1,3 +1,18 @@
+# [1.25.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.24.0...@affinidi-tdk/iota-core-v1.25.0) (2026-03-05)
+
+
+### Bug Fixes
+
+* vault_edge_provider nx project name aligned ([#898](https://github.com/affinidi/affinidi-tdk/issues/898)) ([1067e4a](https://github.com/affinidi/affinidi-tdk/commit/1067e4a1a3b55e1ab2d5588e09d7e5e12704750b))
+
+
+### Features
+
+* introduce edge profile storage  ([#815](https://github.com/affinidi/affinidi-tdk/issues/815)) ([461a508](https://github.com/affinidi/affinidi-tdk/commit/461a50846baac06d4cd64600ca343026e3e7849a)), closes [#866](https://github.com/affinidi/affinidi-tdk/issues/866) [#868](https://github.com/affinidi/affinidi-tdk/issues/868)
+* release affinidi vault tdk ([#835](https://github.com/affinidi/affinidi-tdk/issues/835)) ([a949f14](https://github.com/affinidi/affinidi-tdk/commit/a949f144a88af0d1eb9e2c4014dd1cee1786052e))
+* remove experimental flag ([#909](https://github.com/affinidi/affinidi-tdk/issues/909)) ([713f114](https://github.com/affinidi/affinidi-tdk/commit/713f114375326b5d2777d910a1a19132c923576e))
+* update all clients ([#1079](https://github.com/affinidi/affinidi-tdk/issues/1079)) ([616d27f](https://github.com/affinidi/affinidi-tdk/commit/616d27fa1fadb24cd75d40b4cf1e4ad2785964b7))
+
 # [1.24.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.23.0...@affinidi-tdk/iota-core-v1.24.0) (2025-06-12)
 
 
