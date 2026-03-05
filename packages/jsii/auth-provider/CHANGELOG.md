@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.34.0...@affinidi-tdk/auth-provider-v1.35.0) (2026-03-05)
+
+
+### Features
+
+* update all clients ([#1079](https://github.com/affinidi/affinidi-tdk/issues/1079)) ([616d27f](https://github.com/affinidi/affinidi-tdk/commit/616d27fa1fadb24cd75d40b4cf1e4ad2785964b7))
+
 # [1.34.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.33.3...@affinidi-tdk/auth-provider-v1.34.0) (2025-10-03)
 
 
