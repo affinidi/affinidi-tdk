@@ -4,7 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:affinidi_tdk_wallets_client/src/model/service_error_response_details_inner.dart';
+import 'package:affinidi_tdk_wallets_client/src/model/not_found_error_details_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -37,7 +37,7 @@ abstract class TooManyRequestsError
   String get traceId;
 
   @BuiltValueField(wireName: r'details')
-  BuiltList<ServiceErrorResponseDetailsInner>? get details;
+  BuiltList<NotFoundErrorDetailsInner>? get details;
 
   TooManyRequestsError._();
 
@@ -92,8 +92,8 @@ class _$TooManyRequestsErrorSerializer
       yield r'details';
       yield serializers.serialize(
         object.details,
-        specifiedType: const FullType(
-            BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
+        specifiedType:
+            const FullType(BuiltList, [FullType(NotFoundErrorDetailsInner)]),
       );
     }
   }
@@ -154,8 +154,8 @@ class _$TooManyRequestsErrorSerializer
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(
-                BuiltList, [FullType(ServiceErrorResponseDetailsInner)]),
-          ) as BuiltList<ServiceErrorResponseDetailsInner>;
+                BuiltList, [FullType(NotFoundErrorDetailsInner)]),
+          ) as BuiltList<NotFoundErrorDetailsInner>;
           result.details.replace(valueDes);
           break;
         default:
