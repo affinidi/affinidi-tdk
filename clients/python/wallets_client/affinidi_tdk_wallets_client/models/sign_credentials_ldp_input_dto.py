@@ -30,7 +30,8 @@ class SignCredentialsLdpInputDto(BaseModel):
     revocable: Optional[StrictBool] = None
     signature_scheme: Optional[StrictStr] = Field(default=None, alias="signatureScheme")
     signature_suite: Optional[StrictStr] = Field(default=None, alias="signatureSuite", description="W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).")
-    __properties = ["unsignedCredential", "revocable", "signatureScheme", "signatureSuite"]
+    key_id: Optional[StrictStr] = Field(default=None, alias="keyId", description="wallet key ID to use for signing (defaults to wallet's default key)")
+    __properties = ["unsignedCredential", "revocable", "signatureScheme", "signatureSuite", "keyId"]
 
     @validator('signature_scheme')
     def signature_scheme_validate_enum(cls, value):
@@ -91,7 +92,8 @@ class SignCredentialsLdpInputDto(BaseModel):
             "unsigned_credential": obj.get("unsignedCredential"),
             "revocable": obj.get("revocable"),
             "signature_scheme": obj.get("signatureScheme"),
-            "signature_suite": obj.get("signatureSuite")
+            "signature_suite": obj.get("signatureSuite"),
+            "key_id": obj.get("keyId")
         })
         return _obj
 

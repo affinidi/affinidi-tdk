@@ -20,7 +20,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, StrictStr, constr, validator
+from pydantic import BaseModel, Field, StrictBool, StrictStr, constr, validator
 
 class UpdateProjectInput(BaseModel):
     """
@@ -28,7 +28,8 @@ class UpdateProjectInput(BaseModel):
     """
     name: Optional[constr(strict=True, max_length=100)] = None
     description: Optional[StrictStr] = None
-    __properties = ["name", "description"]
+    identity_verification_enabled: Optional[StrictBool] = Field(default=None, alias="identityVerificationEnabled", description="flag indicates if identity verification is enabled for project")
+    __properties = ["name", "description", "identityVerificationEnabled"]
 
     @validator('name')
     def name_validate_regular_expression(cls, value):
@@ -77,7 +78,8 @@ class UpdateProjectInput(BaseModel):
 
         _obj = UpdateProjectInput.parse_obj({
             "name": obj.get("name"),
-            "description": obj.get("description")
+            "description": obj.get("description"),
+            "identity_verification_enabled": obj.get("identityVerificationEnabled")
         })
         return _obj
 

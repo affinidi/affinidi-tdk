@@ -2,13 +2,14 @@
 
 ## Properties
 
-| Name            | Type       | Description                                           | Notes                                           |
-| --------------- | ---------- | ----------------------------------------------------- | ----------------------------------------------- |
-| **name**        | **string** | The name of the wallet                                | [optional] [default to undefined]               |
-| **description** | **string** | The description of the wallet                         | [optional] [default to undefined]               |
-| **didMethod**   | **string** | Define how DID of your wallet is created and resolved | [optional] [default to DidMethodEnum_Key]       |
-| **didWebUrl**   | **string** | URL of the DID. Required if the did method is web     | [optional] [default to undefined]               |
-| **algorithm**   | **string** | algorithm to generate key for the wallet              | [optional] [default to AlgorithmEnum_Secp256k1] |
+| Name            | Type                                                             | Description                                           | Notes                                           |
+| --------------- | ---------------------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------- |
+| **name**        | **string**                                                       | The name of the wallet                                | [optional] [default to undefined]               |
+| **description** | **string**                                                       | The description of the wallet                         | [optional] [default to undefined]               |
+| **didMethod**   | **string**                                                       | Define how DID of your wallet is created and resolved | [optional] [default to DidMethodEnum_Key]       |
+| **didWebUrl**   | **string**                                                       | URL of the DID. Required if the did method is web     | [optional] [default to undefined]               |
+| **algorithm**   | **string**                                                       | algorithm to generate key for the wallet              | [optional] [default to AlgorithmEnum_Secp256k1] |
+| **services**    | [**Array&lt;ServiceEndpointInput&gt;**](ServiceEndpointInput.md) | Service endpoints to include in DID document          | [optional] [default to undefined]               |
 
 ## Example
 
@@ -21,6 +22,7 @@ const instance: CreateWalletV2Input = {
   didMethod,
   didWebUrl,
   algorithm,
+  services,
 }
 ```
 

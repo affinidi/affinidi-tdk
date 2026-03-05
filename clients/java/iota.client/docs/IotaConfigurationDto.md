@@ -17,6 +17,7 @@
 | **mode**                   | [**ModeEnum**](#ModeEnum)                                                       | Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.                                   | [optional] |
 | **redirectUris**           | **List&lt;String&gt;**                                                          | List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect. | [optional] |
 | **enableIdvProviders**     | **Boolean**                                                                     | Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.                                | [optional] |
+| **mediatorDid**            | **String**                                                                      |                                                                                                                                                  | [optional] |
 
 ## Enum: ModeEnum
 
