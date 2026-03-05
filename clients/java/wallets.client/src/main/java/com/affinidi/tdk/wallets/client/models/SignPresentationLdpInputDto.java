@@ -37,7 +37,8 @@ import java.util.StringJoiner;
   SignPresentationLdpInputDto.JSON_PROPERTY_SIGNATURE_SCHEME,
   SignPresentationLdpInputDto.JSON_PROPERTY_SIGNATURE_SUITE,
   SignPresentationLdpInputDto.JSON_PROPERTY_DOMAIN,
-  SignPresentationLdpInputDto.JSON_PROPERTY_CHALLENGE
+  SignPresentationLdpInputDto.JSON_PROPERTY_CHALLENGE,
+  SignPresentationLdpInputDto.JSON_PROPERTY_KEY_ID
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class SignPresentationLdpInputDto {
@@ -138,6 +139,10 @@ public class SignPresentationLdpInputDto {
   public static final String JSON_PROPERTY_CHALLENGE = "challenge";
   @javax.annotation.Nullable
   private String challenge;
+
+  public static final String JSON_PROPERTY_KEY_ID = "keyId";
+  @javax.annotation.Nullable
+  private String keyId;
 
   public SignPresentationLdpInputDto() {
   }
@@ -275,6 +280,31 @@ public class SignPresentationLdpInputDto {
     this.challenge = challenge;
   }
 
+  public SignPresentationLdpInputDto keyId(@javax.annotation.Nullable String keyId) {
+    
+    this.keyId = keyId;
+    return this;
+  }
+
+  /**
+   * wallet key ID to use for signing (defaults to wallet&#39;s default key)
+   * @return keyId
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getKeyId() {
+    return keyId;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyId(@javax.annotation.Nullable String keyId) {
+    this.keyId = keyId;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -288,12 +318,13 @@ public class SignPresentationLdpInputDto {
         Objects.equals(this.signatureScheme, signPresentationLdpInputDto.signatureScheme) &&
         Objects.equals(this.signatureSuite, signPresentationLdpInputDto.signatureSuite) &&
         Objects.equals(this.domain, signPresentationLdpInputDto.domain) &&
-        Objects.equals(this.challenge, signPresentationLdpInputDto.challenge);
+        Objects.equals(this.challenge, signPresentationLdpInputDto.challenge) &&
+        Objects.equals(this.keyId, signPresentationLdpInputDto.keyId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(unsignedPresentation, signatureScheme, signatureSuite, domain, challenge);
+    return Objects.hash(unsignedPresentation, signatureScheme, signatureSuite, domain, challenge, keyId);
   }
 
   @Override
@@ -305,6 +336,7 @@ public class SignPresentationLdpInputDto {
     sb.append("    signatureSuite: ").append(toIndentedString(signatureSuite)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
+    sb.append("    keyId: ").append(toIndentedString(keyId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -400,6 +432,16 @@ public class SignPresentationLdpInputDto {
     if (getChallenge() != null) {
       try {
         joiner.add(String.format("%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `keyId` to the URL query string
+    if (getKeyId() != null) {
+      try {
+        joiner.add(String.format("%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
