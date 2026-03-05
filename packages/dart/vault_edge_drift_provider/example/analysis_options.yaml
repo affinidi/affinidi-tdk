@@ -1,6 +1,0 @@
-# Disable linting for the example
-analyzer:
-  exclude:
-    - "**/*.dart"
-  errors:
-    avoid_print: ignore
