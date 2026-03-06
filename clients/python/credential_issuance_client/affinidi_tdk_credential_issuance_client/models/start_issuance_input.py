@@ -29,7 +29,7 @@ class StartIssuanceInput(BaseModel):
     """
     claim_mode: Optional[StrictStr] = Field(default=None, alias="claimMode", description="In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).")
     holder_did: Optional[constr(strict=True)] = Field(default=None, alias="holderDid", description="Holder DID")
-    issuance_id: Optional[StrictStr] = Field(default=None, alias="issuanceId", description="Website's internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.")
+    issuance_id: Optional[constr(strict=True, max_length=500, min_length=1)] = Field(default=None, alias="issuanceId", description="Website's internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.")
     data: conlist(StartIssuanceInputDataInner) = Field(...)
     __properties = ["claimMode", "holderDid", "issuanceId", "data"]
 

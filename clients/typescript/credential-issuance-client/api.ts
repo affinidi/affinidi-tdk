@@ -365,84 +365,6 @@ export interface ClaimedCredentialResponse {
 /**
  *
  * @export
- * @interface CorsBatchCredentialOK
- */
-export interface CorsBatchCredentialOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsBatchCredentialOK
-   */
-  corsBatchCredentialOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGenerateCredentialsOK
- */
-export interface CorsGenerateCredentialsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGenerateCredentialsOK
-   */
-  corsGenerateCredentialsOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetClaimedCredentialsOK
- */
-export interface CorsGetClaimedCredentialsOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetClaimedCredentialsOK
-   */
-  corsGetClaimedCredentialsOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetCredentialOfferOK
- */
-export interface CorsGetCredentialOfferOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetCredentialOfferOK
-   */
-  corsGetCredentialOfferOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetIssuanceIdClaimedCredentialOK
- */
-export interface CorsGetIssuanceIdClaimedCredentialOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetIssuanceIdClaimedCredentialOK
-   */
-  corsGetIssuanceIdClaimedCredentialOk?: string
-}
-/**
- *
- * @export
- * @interface CorsGetWellKnownOpenIdCredentialIssuerOK
- */
-export interface CorsGetWellKnownOpenIdCredentialIssuerOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsGetWellKnownOpenIdCredentialIssuerOK
-   */
-  corsGetWellKnownOpenIdCredentialIssuerOk?: string
-}
-/**
- *
- * @export
  * @interface CreateCredentialInput
  */
 export interface CreateCredentialInput {
@@ -980,19 +902,6 @@ export interface CredentialSupportedObject {
    * @memberof CredentialSupportedObject
    */
   metadata?: SupportedCredentialMetadata
-}
-/**
- *
- * @export
- * @interface DeferredCredentialInput
- */
-export interface DeferredCredentialInput {
-  /**
-   * String identifying a Deferred Issuance transaction. This claim is contained in the response if the Credential Issuer was unable to immediately issue the Credential.
-   * @type {string}
-   * @memberof DeferredCredentialInput
-   */
-  transaction_id: string
 }
 /**
  *
@@ -2012,63 +1921,6 @@ export const ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum = {
 
 export type ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum =
   (typeof ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum)[keyof typeof ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum]
-
-/**
- *
- * @export
- * @interface RevocationForbiddenError
- */
-export interface RevocationForbiddenError {
-  /**
-   *
-   * @type {string}
-   * @memberof RevocationForbiddenError
-   */
-  name: RevocationForbiddenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof RevocationForbiddenError
-   */
-  message: RevocationForbiddenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof RevocationForbiddenError
-   */
-  httpStatusCode: RevocationForbiddenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof RevocationForbiddenError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof RevocationForbiddenError
-   */
-  details?: Array<ActionForbiddenErrorDetailsInner>
-}
-
-export const RevocationForbiddenErrorNameEnum = {
-  RevocationForbiddenError: 'RevocationForbiddenError',
-} as const
-
-export type RevocationForbiddenErrorNameEnum =
-  (typeof RevocationForbiddenErrorNameEnum)[keyof typeof RevocationForbiddenErrorNameEnum]
-export const RevocationForbiddenErrorMessageEnum = {
-  RelatedVcHasNotBeenClaimedYet: 'Related VC has not been claimed yet',
-} as const
-
-export type RevocationForbiddenErrorMessageEnum =
-  (typeof RevocationForbiddenErrorMessageEnum)[keyof typeof RevocationForbiddenErrorMessageEnum]
-export const RevocationForbiddenErrorHttpStatusCodeEnum = {
-  NUMBER_400: 400,
-} as const
-
-export type RevocationForbiddenErrorHttpStatusCodeEnum =
-  (typeof RevocationForbiddenErrorHttpStatusCodeEnum)[keyof typeof RevocationForbiddenErrorHttpStatusCodeEnum]
 
 /**
  * @type StartIssuance400Response
@@ -4054,6 +3906,7 @@ export const DefaultApiAxiosParamCreator = function (
      * @summary List records
      * @param {string} projectId Affinidi project id
      * @param {string} configurationId The id of the issuance configuration
+     * @param {string} [issuanceId] Optional filter to retrieve records for a specific issuance ID
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
      * @param {*} [options] Override http request option.
@@ -4062,6 +3915,7 @@ export const DefaultApiAxiosParamCreator = function (
     listIssuanceDataRecords: async (
       projectId: string,
       configurationId: string,
+      issuanceId?: string,
       limit?: number,
       exclusiveStartKey?: string,
       options: RawAxiosRequestConfig = {},
@@ -4102,6 +3956,10 @@ export const DefaultApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      if (issuanceId !== undefined) {
+        localVarQueryParameter['issuanceId'] = issuanceId
+      }
 
       if (limit !== undefined) {
         localVarQueryParameter['limit'] = limit
@@ -4177,6 +4035,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
      * @summary List records
      * @param {string} projectId Affinidi project id
      * @param {string} configurationId The id of the issuance configuration
+     * @param {string} [issuanceId] Optional filter to retrieve records for a specific issuance ID
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
      * @param {*} [options] Override http request option.
@@ -4185,6 +4044,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
     async listIssuanceDataRecords(
       projectId: string,
       configurationId: string,
+      issuanceId?: string,
       limit?: number,
       exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
@@ -4198,6 +4058,7 @@ export const DefaultApiFp = function (configuration?: Configuration) {
         await localVarAxiosParamCreator.listIssuanceDataRecords(
           projectId,
           configurationId,
+          issuanceId,
           limit,
           exclusiveStartKey,
           options,
@@ -4258,6 +4119,7 @@ export const DefaultApiFactory = function (
      * @summary List records
      * @param {string} projectId Affinidi project id
      * @param {string} configurationId The id of the issuance configuration
+     * @param {string} [issuanceId] Optional filter to retrieve records for a specific issuance ID
      * @param {number} [limit] Maximum number of records to fetch in a list
      * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
      * @param {*} [options] Override http request option.
@@ -4266,6 +4128,7 @@ export const DefaultApiFactory = function (
     listIssuanceDataRecords(
       projectId: string,
       configurationId: string,
+      issuanceId?: string,
       limit?: number,
       exclusiveStartKey?: string,
       options?: RawAxiosRequestConfig,
@@ -4274,6 +4137,7 @@ export const DefaultApiFactory = function (
         .listIssuanceDataRecords(
           projectId,
           configurationId,
+          issuanceId,
           limit,
           exclusiveStartKey,
           options,
@@ -4321,6 +4185,7 @@ export class DefaultApi extends BaseAPI {
    * @summary List records
    * @param {string} projectId Affinidi project id
    * @param {string} configurationId The id of the issuance configuration
+   * @param {string} [issuanceId] Optional filter to retrieve records for a specific issuance ID
    * @param {number} [limit] Maximum number of records to fetch in a list
    * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
    * @param {*} [options] Override http request option.
@@ -4330,6 +4195,7 @@ export class DefaultApi extends BaseAPI {
   public listIssuanceDataRecords(
     projectId: string,
     configurationId: string,
+    issuanceId?: string,
     limit?: number,
     exclusiveStartKey?: string,
     options?: RawAxiosRequestConfig,
@@ -4338,6 +4204,7 @@ export class DefaultApi extends BaseAPI {
       .listIssuanceDataRecords(
         projectId,
         configurationId,
+        issuanceId,
         limit,
         exclusiveStartKey,
         options,

@@ -86,7 +86,7 @@ public class Example {
 
 ## listIssuanceDataRecords
 
-> ListIssuanceRecordResponse listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey)
+> ListIssuanceRecordResponse listIssuanceDataRecords(projectId, configurationId, issuanceId, limit, exclusiveStartKey)
 
 List records
 
@@ -117,10 +117,11 @@ public class Example {
         DefaultApi apiInstance = new DefaultApi(defaultClient);
         String projectId = "projectId_example"; // String | Affinidi project id
         String configurationId = "configurationId_example"; // String | The id of the issuance configuration
+        String issuanceId = "issuanceId_example"; // String | Optional filter to retrieve records for a specific issuance ID
         Integer limit = 10; // Integer | Maximum number of records to fetch in a list
         String exclusiveStartKey = "exclusiveStartKey_example"; // String | exclusiveStartKey for retrieving the next batch of data.
         try {
-            ListIssuanceRecordResponse result = apiInstance.listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey);
+            ListIssuanceRecordResponse result = apiInstance.listIssuanceDataRecords(projectId, configurationId, issuanceId, limit, exclusiveStartKey);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DefaultApi#listIssuanceDataRecords");
@@ -135,12 +136,13 @@ public class Example {
 
 ### Parameters
 
-| Name                  | Type        | Description                                              | Notes                      |
-| --------------------- | ----------- | -------------------------------------------------------- | -------------------------- |
-| **projectId**         | **String**  | Affinidi project id                                      |                            |
-| **configurationId**   | **String**  | The id of the issuance configuration                     |                            |
-| **limit**             | **Integer** | Maximum number of records to fetch in a list             | [optional] [default to 10] |
-| **exclusiveStartKey** | **String**  | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
+| Name                  | Type        | Description                                                    | Notes                      |
+| --------------------- | ----------- | -------------------------------------------------------------- | -------------------------- |
+| **projectId**         | **String**  | Affinidi project id                                            |                            |
+| **configurationId**   | **String**  | The id of the issuance configuration                           |                            |
+| **issuanceId**        | **String**  | Optional filter to retrieve records for a specific issuance ID | [optional]                 |
+| **limit**             | **Integer** | Maximum number of records to fetch in a list                   | [optional] [default to 10] |
+| **exclusiveStartKey** | **String**  | exclusiveStartKey for retrieving the next batch of data.       | [optional]                 |
 
 ### Return type
 
