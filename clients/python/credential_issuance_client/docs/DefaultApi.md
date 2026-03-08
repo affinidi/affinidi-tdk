@@ -110,7 +110,7 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 # **list_issuance_data_records**
 
-> ListIssuanceRecordResponse list_issuance_data_records(project_id, configuration_id, limit=limit, exclusive_start_key=exclusive_start_key)
+> ListIssuanceRecordResponse list_issuance_data_records(project_id, configuration_id, issuance_id=issuance_id, limit=limit, exclusive_start_key=exclusive_start_key)
 
 List records
 
@@ -166,12 +166,13 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
     api_instance = affinidi_tdk_credential_issuance_client.DefaultApi(api_client)
     project_id = 'project_id_example' # str | Affinidi project id
     configuration_id = 'configuration_id_example' # str | The id of the issuance configuration
+    issuance_id = 'issuance_id_example' # str | Optional filter to retrieve records for a specific issuance ID (optional)
     limit = 10 # int | Maximum number of records to fetch in a list (optional) (default to 10)
     exclusive_start_key = 'exclusive_start_key_example' # str | exclusiveStartKey for retrieving the next batch of data. (optional)
 
     try:
         # List records
-        api_response = api_instance.list_issuance_data_records(project_id, configuration_id, limit=limit, exclusive_start_key=exclusive_start_key)
+        api_response = api_instance.list_issuance_data_records(project_id, configuration_id, issuance_id=issuance_id, limit=limit, exclusive_start_key=exclusive_start_key)
         print("The response of DefaultApi->list_issuance_data_records:\n")
         pprint(api_response)
     except Exception as e:
@@ -180,12 +181,13 @@ with affinidi_tdk_credential_issuance_client.ApiClient(configuration) as api_cli
 
 ### Parameters
 
-| Name                    | Type    | Description                                              | Notes                      |
-| ----------------------- | ------- | -------------------------------------------------------- | -------------------------- |
-| **project_id**          | **str** | Affinidi project id                                      |
-| **configuration_id**    | **str** | The id of the issuance configuration                     |
-| **limit**               | **int** | Maximum number of records to fetch in a list             | [optional] [default to 10] |
-| **exclusive_start_key** | **str** | exclusiveStartKey for retrieving the next batch of data. | [optional]                 |
+| Name                    | Type    | Description                                                    | Notes                      |
+| ----------------------- | ------- | -------------------------------------------------------------- | -------------------------- |
+| **project_id**          | **str** | Affinidi project id                                            |
+| **configuration_id**    | **str** | The id of the issuance configuration                           |
+| **issuance_id**         | **str** | Optional filter to retrieve records for a specific issuance ID | [optional]                 |
+| **limit**               | **int** | Maximum number of records to fetch in a list                   | [optional] [default to 10] |
+| **exclusive_start_key** | **str** | exclusiveStartKey for retrieving the next batch of data.       | [optional]                 |
 
 ### Return type
 
