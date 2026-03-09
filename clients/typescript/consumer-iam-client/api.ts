@@ -122,19 +122,6 @@ export interface ConsumerAuthTokenEndpointOutput {
 /**
  *
  * @export
- * @interface CorsConsumerAuthTokenEndpointOK
- */
-export interface CorsConsumerAuthTokenEndpointOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CorsConsumerAuthTokenEndpointOK
-   */
-  corsConsumerAuthTokenEndpointOk?: string
-}
-/**
- *
- * @export
  * @interface GetAccessOutput
  */
 export interface GetAccessOutput {
@@ -322,63 +309,6 @@ export interface InvalidJwtTokenErrorDetailsInner {
    */
   location?: string
 }
-/**
- *
- * @export
- * @interface InvalidParameterError
- */
-export interface InvalidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
-  name: InvalidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
-  message: InvalidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidParameterError
-   */
-  httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
-  traceId: string
-  /**
-   *
-   * @type {Array<InvalidJwtTokenErrorDetailsInner>}
-   * @memberof InvalidParameterError
-   */
-  details?: Array<InvalidJwtTokenErrorDetailsInner>
-}
-
-export const InvalidParameterErrorNameEnum = {
-  InvalidParameterError: 'InvalidParameterError',
-} as const
-
-export type InvalidParameterErrorNameEnum =
-  (typeof InvalidParameterErrorNameEnum)[keyof typeof InvalidParameterErrorNameEnum]
-export const InvalidParameterErrorMessageEnum = {
-  InvalidParameter: 'Invalid parameter',
-} as const
-
-export type InvalidParameterErrorMessageEnum =
-  (typeof InvalidParameterErrorMessageEnum)[keyof typeof InvalidParameterErrorMessageEnum]
-export const InvalidParameterErrorHttpStatusCodeEnum = {
-  NUMBER_400: 400,
-} as const
-
-export type InvalidParameterErrorHttpStatusCodeEnum =
-  (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
-
 /**
  *
  * @export

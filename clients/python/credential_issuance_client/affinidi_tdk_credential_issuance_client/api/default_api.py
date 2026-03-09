@@ -214,20 +214,22 @@ class DefaultApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_issuance_data_records(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], configuration_id : Annotated[StrictStr, Field(..., description="The id of the issuance configuration")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, **kwargs) -> ListIssuanceRecordResponse:  # noqa: E501
+    def list_issuance_data_records(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], configuration_id : Annotated[StrictStr, Field(..., description="The id of the issuance configuration")], issuance_id : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional filter to retrieve records for a specific issuance ID")] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, **kwargs) -> ListIssuanceRecordResponse:  # noqa: E501
         """List records  # noqa: E501
 
         Retrieve a list of issuance data records.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_issuance_data_records(project_id, configuration_id, limit, exclusive_start_key, async_req=True)
+        >>> thread = api.list_issuance_data_records(project_id, configuration_id, issuance_id, limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
         :param project_id: Affinidi project id (required)
         :type project_id: str
         :param configuration_id: The id of the issuance configuration (required)
         :type configuration_id: str
+        :param issuance_id: Optional filter to retrieve records for a specific issuance ID
+        :type issuance_id: str
         :param limit: Maximum number of records to fetch in a list
         :type limit: int
         :param exclusive_start_key: exclusiveStartKey for retrieving the next batch of data.
@@ -247,23 +249,25 @@ class DefaultApi:
         if '_preload_content' in kwargs:
             message = "Error! Please call the list_issuance_data_records_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
             raise ValueError(message)
-        return self.list_issuance_data_records_with_http_info(project_id, configuration_id, limit, exclusive_start_key, **kwargs)  # noqa: E501
+        return self.list_issuance_data_records_with_http_info(project_id, configuration_id, issuance_id, limit, exclusive_start_key, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_issuance_data_records_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], configuration_id : Annotated[StrictStr, Field(..., description="The id of the issuance configuration")], limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_issuance_data_records_with_http_info(self, project_id : Annotated[StrictStr, Field(..., description="Affinidi project id")], configuration_id : Annotated[StrictStr, Field(..., description="The id of the issuance configuration")], issuance_id : Annotated[Optional[constr(strict=True, max_length=500, min_length=1)], Field(description="Optional filter to retrieve records for a specific issuance ID")] = None, limit : Annotated[Optional[conint(strict=True, le=100, ge=1)], Field(description="Maximum number of records to fetch in a list")] = None, exclusive_start_key : Annotated[Optional[constr(strict=True, max_length=3000)], Field(description="exclusiveStartKey for retrieving the next batch of data.")] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """List records  # noqa: E501
 
         Retrieve a list of issuance data records.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.list_issuance_data_records_with_http_info(project_id, configuration_id, limit, exclusive_start_key, async_req=True)
+        >>> thread = api.list_issuance_data_records_with_http_info(project_id, configuration_id, issuance_id, limit, exclusive_start_key, async_req=True)
         >>> result = thread.get()
 
         :param project_id: Affinidi project id (required)
         :type project_id: str
         :param configuration_id: The id of the issuance configuration (required)
         :type configuration_id: str
+        :param issuance_id: Optional filter to retrieve records for a specific issuance ID
+        :type issuance_id: str
         :param limit: Maximum number of records to fetch in a list
         :type limit: int
         :param exclusive_start_key: exclusiveStartKey for retrieving the next batch of data.
@@ -298,6 +302,7 @@ class DefaultApi:
         _all_params = [
             'project_id',
             'configuration_id',
+            'issuance_id',
             'limit',
             'exclusive_start_key'
         ]
@@ -336,6 +341,9 @@ class DefaultApi:
 
         # process the query parameters
         _query_params = []
+        if _params.get('issuance_id') is not None:  # noqa: E501
+            _query_params.append(('issuanceId', _params['issuance_id']))
+
         if _params.get('limit') is not None:  # noqa: E501
             _query_params.append(('limit', _params['limit']))
 
