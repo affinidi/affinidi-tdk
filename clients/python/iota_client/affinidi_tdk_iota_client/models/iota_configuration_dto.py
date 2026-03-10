@@ -20,7 +20,7 @@ import json
 
 
 from typing import List, Optional, Union
-from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, validator
+from pydantic import BaseModel, Field, StrictBool, StrictFloat, StrictInt, StrictStr, conlist, constr, validator
 from affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata import IotaConfigurationDtoClientMetadata
 
 class IotaConfigurationDto(BaseModel):
@@ -40,7 +40,8 @@ class IotaConfigurationDto(BaseModel):
     mode: Optional[StrictStr] = Field(default='websocket', description="Determines whether to handle the data-sharing request using the WebSocket, Redirect or Didcomm messaging flow.")
     redirect_uris: Optional[conlist(StrictStr)] = Field(default=None, alias="redirectUris", description="List of allowed URLs to redirect users, including the response from the request. This is required if the selected data-sharing mode is Redirect.")
     enable_idv_providers: Optional[StrictBool] = Field(default=None, alias="enableIdvProviders", description="Enables identity verification from user with a 3rd-party provider when a verified identity document is not found.")
-    __properties = ["ari", "configurationId", "name", "projectId", "walletAri", "tokenMaxAge", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "clientMetadata", "mode", "redirectUris", "enableIdvProviders"]
+    mediator_did: Optional[constr(strict=True)] = Field(default=None, alias="mediatorDid")
+    __properties = ["ari", "configurationId", "name", "projectId", "walletAri", "tokenMaxAge", "iotaResponseWebhookURL", "enableVerification", "enableConsentAuditLog", "clientMetadata", "mode", "redirectUris", "enableIdvProviders", "mediatorDid"]
 
     @validator('mode')
     def mode_validate_enum(cls, value):
@@ -50,6 +51,16 @@ class IotaConfigurationDto(BaseModel):
 
         if value not in ('redirect', 'websocket', 'didcomm',):
             raise ValueError("must be one of enum values ('redirect', 'websocket', 'didcomm')")
+        return value
+
+    @validator('mediator_did')
+    def mediator_did_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^did:(?:web|webvh):.*$", value):
+            raise ValueError(r"must validate the regular expression /^did:(?:web|webvh):.*$/")
         return value
 
     class Config:
@@ -103,7 +114,8 @@ class IotaConfigurationDto(BaseModel):
             "client_metadata": IotaConfigurationDtoClientMetadata.from_dict(obj.get("clientMetadata")) if obj.get("clientMetadata") is not None else None,
             "mode": obj.get("mode") if obj.get("mode") is not None else 'websocket',
             "redirect_uris": obj.get("redirectUris"),
-            "enable_idv_providers": obj.get("enableIdvProviders")
+            "enable_idv_providers": obj.get("enableIdvProviders"),
+            "mediator_did": obj.get("mediatorDid")
         })
         return _obj
 

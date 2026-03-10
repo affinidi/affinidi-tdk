@@ -19,8 +19,9 @@ import re  # noqa: F401
 import json
 
 
-from typing import Optional
-from pydantic import BaseModel, Field, StrictStr, constr, validator
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictStr, conlist, constr, validator
+from affinidi_tdk_wallets_client.models.service_endpoint_input import ServiceEndpointInput
 
 class CreateWalletV2Input(BaseModel):
     """
@@ -31,7 +32,8 @@ class CreateWalletV2Input(BaseModel):
     did_method: Optional[StrictStr] = Field(default='key', alias="didMethod", description="Define how DID of your wallet is created and resolved")
     did_web_url: Optional[constr(strict=True, max_length=300)] = Field(default=None, alias="didWebUrl", description="URL of the DID. Required if the did method is web")
     algorithm: Optional[StrictStr] = Field(default='secp256k1', description="algorithm to generate key for the wallet")
-    __properties = ["name", "description", "didMethod", "didWebUrl", "algorithm"]
+    services: Optional[conlist(ServiceEndpointInput)] = Field(default=None, description="Service endpoints to include in DID document")
+    __properties = ["name", "description", "didMethod", "didWebUrl", "algorithm", "services"]
 
     @validator('did_method')
     def did_method_validate_enum(cls, value):
@@ -39,8 +41,8 @@ class CreateWalletV2Input(BaseModel):
         if value is None:
             return value
 
-        if value not in ('key', 'web', 'peer0',):
-            raise ValueError("must be one of enum values ('key', 'web', 'peer0')")
+        if value not in ('key', 'web', 'peer0', 'peer2',):
+            raise ValueError("must be one of enum values ('key', 'web', 'peer0', 'peer2')")
         return value
 
     @validator('did_web_url')
@@ -87,6 +89,13 @@ class CreateWalletV2Input(BaseModel):
                           exclude={
                           },
                           exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in services (list)
+        _items = []
+        if self.services:
+            for _item in self.services:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict['services'] = _items
         return _dict
 
     @classmethod
@@ -103,7 +112,8 @@ class CreateWalletV2Input(BaseModel):
             "description": obj.get("description"),
             "did_method": obj.get("didMethod") if obj.get("didMethod") is not None else 'key',
             "did_web_url": obj.get("didWebUrl"),
-            "algorithm": obj.get("algorithm") if obj.get("algorithm") is not None else 'secp256k1'
+            "algorithm": obj.get("algorithm") if obj.get("algorithm") is not None else 'secp256k1',
+            "services": [ServiceEndpointInput.from_dict(_item) for _item in obj.get("services")] if obj.get("services") is not None else None
         })
         return _obj
 

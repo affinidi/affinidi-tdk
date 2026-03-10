@@ -141,13 +141,14 @@ public class DefaultApi extends BaseApi {
    * Retrieve a list of issuance data records.
    * @param projectId Affinidi project id (required)
    * @param configurationId The id of the issuance configuration (required)
+   * @param issuanceId Optional filter to retrieve records for a specific issuance ID (optional)
    * @param limit Maximum number of records to fetch in a list (optional, default to 10)
    * @param exclusiveStartKey exclusiveStartKey for retrieving the next batch of data. (optional)
    * @return ListIssuanceRecordResponse
    * @throws ApiException if fails to make API call
    */
-  public ListIssuanceRecordResponse listIssuanceDataRecords(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
-    return this.listIssuanceDataRecords(projectId, configurationId, limit, exclusiveStartKey, Collections.emptyMap());
+  public ListIssuanceRecordResponse listIssuanceDataRecords(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable String issuanceId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey) throws ApiException {
+    return this.listIssuanceDataRecords(projectId, configurationId, issuanceId, limit, exclusiveStartKey, Collections.emptyMap());
   }
 
 
@@ -156,13 +157,14 @@ public class DefaultApi extends BaseApi {
    * Retrieve a list of issuance data records.
    * @param projectId Affinidi project id (required)
    * @param configurationId The id of the issuance configuration (required)
+   * @param issuanceId Optional filter to retrieve records for a specific issuance ID (optional)
    * @param limit Maximum number of records to fetch in a list (optional, default to 10)
    * @param exclusiveStartKey exclusiveStartKey for retrieving the next batch of data. (optional)
    * @param additionalHeaders additionalHeaders for this call
    * @return ListIssuanceRecordResponse
    * @throws ApiException if fails to make API call
    */
-  public ListIssuanceRecordResponse listIssuanceDataRecords(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
+  public ListIssuanceRecordResponse listIssuanceDataRecords(@javax.annotation.Nonnull String projectId, @javax.annotation.Nonnull String configurationId, @javax.annotation.Nullable String issuanceId, @javax.annotation.Nullable Integer limit, @javax.annotation.Nullable String exclusiveStartKey, Map<String, String> additionalHeaders) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'projectId' is set
@@ -188,6 +190,7 @@ public class DefaultApi extends BaseApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+    localVarQueryParams.addAll(apiClient.parameterToPair("issuanceId", issuanceId));
     localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
     localVarQueryParams.addAll(apiClient.parameterToPair("exclusiveStartKey", exclusiveStartKey));
     
