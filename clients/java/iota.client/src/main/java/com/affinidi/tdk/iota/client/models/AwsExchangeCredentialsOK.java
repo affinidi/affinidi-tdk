@@ -15,7 +15,7 @@ package com.affinidi.tdk.iota.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iota.client.models.AwsExchangeCredentialsProjectTokenOKCredentials;
+import com.affinidi.tdk.iota.client.models.AwsExchangeCredentialsOKCredentials;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,7 +42,7 @@ public class AwsExchangeCredentialsOK {
 
   public static final String JSON_PROPERTY_CREDENTIALS = "credentials";
   @javax.annotation.Nonnull
-  private AwsExchangeCredentialsProjectTokenOKCredentials credentials;
+  private AwsExchangeCredentialsOKCredentials credentials;
 
   public AwsExchangeCredentialsOK() {
   }
@@ -72,7 +72,7 @@ public class AwsExchangeCredentialsOK {
     this.connectionClientId = connectionClientId;
   }
 
-  public AwsExchangeCredentialsOK credentials(@javax.annotation.Nonnull AwsExchangeCredentialsProjectTokenOKCredentials credentials) {
+  public AwsExchangeCredentialsOK credentials(@javax.annotation.Nonnull AwsExchangeCredentialsOKCredentials credentials) {
     
     this.credentials = credentials;
     return this;
@@ -86,14 +86,14 @@ public class AwsExchangeCredentialsOK {
   @JsonProperty(JSON_PROPERTY_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public AwsExchangeCredentialsProjectTokenOKCredentials getCredentials() {
+  public AwsExchangeCredentialsOKCredentials getCredentials() {
     return credentials;
   }
 
 
   @JsonProperty(JSON_PROPERTY_CREDENTIALS)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setCredentials(@javax.annotation.Nonnull AwsExchangeCredentialsProjectTokenOKCredentials credentials) {
+  public void setCredentials(@javax.annotation.Nonnull AwsExchangeCredentialsOKCredentials credentials) {
     this.credentials = credentials;
   }
 

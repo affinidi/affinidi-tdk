@@ -86,12 +86,14 @@ const apiInstance = new DefaultApi(configuration)
 
 let projectId: string //Affinidi project id (default to undefined)
 let configurationId: string //The id of the issuance configuration (default to undefined)
+let issuanceId: string //Optional filter to retrieve records for a specific issuance ID (optional) (default to undefined)
 let limit: number //Maximum number of records to fetch in a list (optional) (default to 10)
 let exclusiveStartKey: string //exclusiveStartKey for retrieving the next batch of data. (optional) (default to undefined)
 
 const { status, data } = await apiInstance.listIssuanceDataRecords(
   projectId,
   configurationId,
+  issuanceId,
   limit,
   exclusiveStartKey,
 )
@@ -99,12 +101,13 @@ const { status, data } = await apiInstance.listIssuanceDataRecords(
 
 ### Parameters
 
-| Name                  | Type         | Description                                              | Notes                            |
-| --------------------- | ------------ | -------------------------------------------------------- | -------------------------------- |
-| **projectId**         | [**string**] | Affinidi project id                                      | defaults to undefined            |
-| **configurationId**   | [**string**] | The id of the issuance configuration                     | defaults to undefined            |
-| **limit**             | [**number**] | Maximum number of records to fetch in a list             | (optional) defaults to 10        |
-| **exclusiveStartKey** | [**string**] | exclusiveStartKey for retrieving the next batch of data. | (optional) defaults to undefined |
+| Name                  | Type         | Description                                                    | Notes                            |
+| --------------------- | ------------ | -------------------------------------------------------------- | -------------------------------- |
+| **projectId**         | [**string**] | Affinidi project id                                            | defaults to undefined            |
+| **configurationId**   | [**string**] | The id of the issuance configuration                           | defaults to undefined            |
+| **issuanceId**        | [**string**] | Optional filter to retrieve records for a specific issuance ID | (optional) defaults to undefined |
+| **limit**             | [**number**] | Maximum number of records to fetch in a list                   | (optional) defaults to 10        |
+| **exclusiveStartKey** | [**string**] | exclusiveStartKey for retrieving the next batch of data.       | (optional) defaults to undefined |
 
 ### Return type
 
