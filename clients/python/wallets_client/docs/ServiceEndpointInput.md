@@ -6,8 +6,8 @@ Input for adding a service endpoint
 
 | Name             | Type    | Description                         | Notes      |
 | ---------------- | ------- | ----------------------------------- | ---------- |
-| **name**         | **str** | Name of the service endpoint        |
-| **description**  | **str** | Description of the service endpoint |
+| **name**         | **str** | Name of the service endpoint        | [optional] |
+| **description**  | **str** | Description of the service endpoint | [optional] |
 | **url**          | **str** | service endpoint URL                | [optional] |
 | **service_type** | **str** | type of service endpoint            | [optional] |
 

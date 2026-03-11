@@ -6,7 +6,7 @@ Input for adding a service endpoint
 
 | Name            | Type       | Description                         | Notes      |
 | --------------- | ---------- | ----------------------------------- | ---------- |
-| **name**        | **String** | Name of the service endpoint        |            |
-| **description** | **String** | Description of the service endpoint |            |
+| **name**        | **String** | Name of the service endpoint        | [optional] |
+| **description** | **String** | Description of the service endpoint | [optional] |
 | **url**         | **String** | service endpoint URL                | [optional] |
 | **serviceType** | **String** | type of service endpoint            | [optional] |

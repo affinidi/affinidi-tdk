@@ -20,17 +20,27 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, constr, validator
 
 class ServiceEndpointInput(BaseModel):
     """
     Input for adding a service endpoint  # noqa: E501
     """
-    name: StrictStr = Field(default=..., description="Name of the service endpoint")
-    description: StrictStr = Field(default=..., description="Description of the service endpoint")
-    url: Optional[StrictStr] = Field(default=None, description="service endpoint URL")
-    service_type: Optional[StrictStr] = Field(default=None, alias="serviceType", description="type of service endpoint")
+    name: Optional[constr(strict=True, max_length=100, min_length=1)] = Field(default=None, description="Name of the service endpoint")
+    description: Optional[constr(strict=True, max_length=500, min_length=1)] = Field(default=None, description="Description of the service endpoint")
+    url: Optional[constr(strict=True, max_length=2048)] = Field(default=None, description="service endpoint URL")
+    service_type: Optional[constr(strict=True, max_length=100)] = Field(default=None, alias="serviceType", description="type of service endpoint")
     __properties = ["name", "description", "url", "serviceType"]
+
+    @validator('url')
+    def url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^https?:\/\/.+", value):
+            raise ValueError(r"must validate the regular expression /^https?:\/\/.+/")
+        return value
 
     class Config:
         """Pydantic configuration"""
