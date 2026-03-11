@@ -38,11 +38,11 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ServiceEndpointInput {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_URL = "url";
@@ -56,7 +56,7 @@ public class ServiceEndpointInput {
   public ServiceEndpointInput() {
   }
 
-  public ServiceEndpointInput name(@javax.annotation.Nonnull String name) {
+  public ServiceEndpointInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
@@ -66,9 +66,9 @@ public class ServiceEndpointInput {
    * Name of the service endpoint
    * @return name
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -76,12 +76,12 @@ public class ServiceEndpointInput {
 
 
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public ServiceEndpointInput description(@javax.annotation.Nonnull String description) {
+  public ServiceEndpointInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
@@ -91,9 +91,9 @@ public class ServiceEndpointInput {
    * Description of the service endpoint
    * @return description
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -101,8 +101,8 @@ public class ServiceEndpointInput {
 
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescription(@javax.annotation.Nonnull String description) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 

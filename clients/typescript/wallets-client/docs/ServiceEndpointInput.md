@@ -6,8 +6,8 @@ Input for adding a service endpoint
 
 | Name            | Type       | Description                         | Notes                             |
 | --------------- | ---------- | ----------------------------------- | --------------------------------- |
-| **name**        | **string** | Name of the service endpoint        | [default to undefined]            |
-| **description** | **string** | Description of the service endpoint | [default to undefined]            |
+| **name**        | **string** | Name of the service endpoint        | [optional] [default to undefined] |
+| **description** | **string** | Description of the service endpoint | [optional] [default to undefined] |
 | **url**         | **string** | service endpoint URL                | [optional] [default to undefined] |
 | **serviceType** | **string** | type of service endpoint            | [optional] [default to undefined] |
 

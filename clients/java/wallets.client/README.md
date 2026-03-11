@@ -151,6 +151,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [OperationForbiddenError](docs/OperationForbiddenError.md)
 - [RevokeCredentialInput](docs/RevokeCredentialInput.md)
 - [RevokeCredentialsInput](docs/RevokeCredentialsInput.md)
+- [ServiceEndpointDto](docs/ServiceEndpointDto.md)
 - [ServiceEndpointInput](docs/ServiceEndpointInput.md)
 - [SignCredential400Response](docs/SignCredential400Response.md)
 - [SignCredentialInputDto](docs/SignCredentialInputDto.md)
