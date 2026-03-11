@@ -15,14 +15,20 @@
 import type { Configuration } from './configuration'
 // Some imports not used depending on template conditions
 // @ts-ignore
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios'
+import type {
+  AxiosPromise,
+  AxiosInstance,
+  AxiosResponse,
+  RawAxiosRequestConfig,
+} from 'axios'
 import globalAxios, { AxiosError } from 'axios'
 import axiosRetry, { IAxiosRetryConfig } from 'axios-retry'
 
 export class SdkError extends Error {
-  private readonly details: undefined
-  private readonly traceId: string
-  private readonly httpStatusCode: number | undefined
+  readonly details: undefined
+  readonly traceId: string
+  readonly httpStatusCode: number | undefined
+  readonly response: AxiosResponse | undefined
 
   constructor(originalError: unknown = {}) {
     const isAxiosError = originalError instanceof AxiosError
@@ -38,6 +44,7 @@ export class SdkError extends Error {
     this.message = originalError.response?.data?.message
     this.traceId = originalError.response?.data?.traceId
     this.httpStatusCode = originalError.response?.status
+    this.response = originalError.response
   }
 }
 

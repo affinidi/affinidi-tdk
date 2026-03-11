@@ -15,7 +15,7 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.wallets.client.models.ServiceErrorResponseDetailsInner;
+import com.affinidi.tdk.wallets.client.models.NotFoundErrorDetailsInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -159,7 +159,7 @@ public class NotFoundError {
 
   public static final String JSON_PROPERTY_DETAILS = "details";
   @javax.annotation.Nullable
-  private List<ServiceErrorResponseDetailsInner> details = new ArrayList<>();
+  private List<NotFoundErrorDetailsInner> details = new ArrayList<>();
 
   public NotFoundError() {
   }
@@ -264,13 +264,13 @@ public class NotFoundError {
     this.traceId = traceId;
   }
 
-  public NotFoundError details(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public NotFoundError details(@javax.annotation.Nullable List<NotFoundErrorDetailsInner> details) {
     
     this.details = details;
     return this;
   }
 
-  public NotFoundError addDetailsItem(ServiceErrorResponseDetailsInner detailsItem) {
+  public NotFoundError addDetailsItem(NotFoundErrorDetailsInner detailsItem) {
     if (this.details == null) {
       this.details = new ArrayList<>();
     }
@@ -286,14 +286,14 @@ public class NotFoundError {
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<ServiceErrorResponseDetailsInner> getDetails() {
+  public List<NotFoundErrorDetailsInner> getDetails() {
     return details;
   }
 
 
   @JsonProperty(JSON_PROPERTY_DETAILS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDetails(@javax.annotation.Nullable List<ServiceErrorResponseDetailsInner> details) {
+  public void setDetails(@javax.annotation.Nullable List<NotFoundErrorDetailsInner> details) {
     this.details = details;
   }
 

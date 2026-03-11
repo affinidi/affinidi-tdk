@@ -13,7 +13,7 @@
  */
 
 export * from './api'
-export { BASE_PATH } from './base'
+export { BASE_PATH, SdkError } from './base'
 export * from './configuration'
 
 // @ts-ignore

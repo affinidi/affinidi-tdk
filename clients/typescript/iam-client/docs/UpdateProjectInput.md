@@ -2,10 +2,11 @@
 
 ## Properties
 
-| Name            | Type       | Description | Notes                             |
-| --------------- | ---------- | ----------- | --------------------------------- |
-| **name**        | **string** |             | [optional] [default to undefined] |
-| **description** | **string** |             | [optional] [default to undefined] |
+| Name                            | Type        | Description                                                    | Notes                             |
+| ------------------------------- | ----------- | -------------------------------------------------------------- | --------------------------------- |
+| **name**                        | **string**  |                                                                | [optional] [default to undefined] |
+| **description**                 | **string**  |                                                                | [optional] [default to undefined] |
+| **identityVerificationEnabled** | **boolean** | flag indicates if identity verification is enabled for project | [optional] [default to undefined] |
 
 ## Example
 
@@ -15,6 +16,7 @@ import { UpdateProjectInput } from '@affinidi-tdk/iam-client'
 const instance: UpdateProjectInput = {
   name,
   description,
+  identityVerificationEnabled,
 }
 ```
 

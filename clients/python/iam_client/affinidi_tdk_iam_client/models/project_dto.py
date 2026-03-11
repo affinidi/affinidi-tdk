@@ -20,7 +20,7 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictStr
 
 class ProjectDto(BaseModel):
     """
@@ -30,9 +30,10 @@ class ProjectDto(BaseModel):
     name: StrictStr = Field(...)
     owner_id: Optional[StrictStr] = Field(default=None, alias="ownerId")
     description: Optional[StrictStr] = None
+    identity_verification_enabled: Optional[StrictBool] = Field(default=False, alias="identityVerificationEnabled", description="flag indicates if identity verification is enabled for project")
     created_at: Optional[StrictStr] = Field(default=None, alias="createdAt", description="creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13")
     updated_at: Optional[StrictStr] = Field(default=None, alias="updatedAt", description="last update date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13")
-    __properties = ["id", "name", "ownerId", "description", "createdAt", "updatedAt"]
+    __properties = ["id", "name", "ownerId", "description", "identityVerificationEnabled", "createdAt", "updatedAt"]
 
     class Config:
         """Pydantic configuration"""
@@ -74,6 +75,7 @@ class ProjectDto(BaseModel):
             "name": obj.get("name"),
             "owner_id": obj.get("ownerId"),
             "description": obj.get("description"),
+            "identity_verification_enabled": obj.get("identityVerificationEnabled") if obj.get("identityVerificationEnabled") is not None else False,
             "created_at": obj.get("createdAt"),
             "updated_at": obj.get("updatedAt")
         })
