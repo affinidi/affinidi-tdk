@@ -23,6 +23,7 @@ affinidi_tdk_wallets_client/models/not_found_error_details_inner.py
 affinidi_tdk_wallets_client/models/operation_forbidden_error.py
 affinidi_tdk_wallets_client/models/revoke_credential_input.py
 affinidi_tdk_wallets_client/models/revoke_credentials_input.py
+affinidi_tdk_wallets_client/models/service_endpoint_dto.py
 affinidi_tdk_wallets_client/models/service_endpoint_input.py
 affinidi_tdk_wallets_client/models/sign_credential400_response.py
 affinidi_tdk_wallets_client/models/sign_credential_input_dto.py
@@ -62,6 +63,7 @@ docs/OperationForbiddenError.md
 docs/RevocationApi.md
 docs/RevokeCredentialInput.md
 docs/RevokeCredentialsInput.md
+docs/ServiceEndpointDto.md
 docs/ServiceEndpointInput.md
 docs/SignCredential400Response.md
 docs/SignCredentialInputDto.md
