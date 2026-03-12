@@ -38,37 +38,76 @@ import java.util.StringJoiner;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class ServiceEndpointInput {
   public static final String JSON_PROPERTY_NAME = "name";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String name;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private String description;
 
   public static final String JSON_PROPERTY_URL = "url";
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String url;
+
+  /**
+   * type of service endpoint
+   */
+  public enum ServiceTypeEnum {
+    DID_COMM_MESSAGING(String.valueOf("DIDCommMessaging")),
+    
+    LINKED_DOMAINS(String.valueOf("LinkedDomains")),
+    
+    IDENTITY_HUB(String.valueOf("IdentityHub")),
+    
+    CREDENTIAL_REGISTRY(String.valueOf("CredentialRegistry"));
+
+    private String value;
+
+    ServiceTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ServiceTypeEnum fromValue(String value) {
+      for (ServiceTypeEnum b : ServiceTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
 
   public static final String JSON_PROPERTY_SERVICE_TYPE = "serviceType";
   @javax.annotation.Nullable
-  private String serviceType;
+  private ServiceTypeEnum serviceType;
 
   public ServiceEndpointInput() {
   }
 
-  public ServiceEndpointInput name(@javax.annotation.Nonnull String name) {
+  public ServiceEndpointInput name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
   }
 
   /**
-   * Name of the service endpoint
+   * Alphanumeric string with common punctuation (max 100 characters)
    * @return name
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
     return name;
@@ -76,24 +115,24 @@ public class ServiceEndpointInput {
 
 
   @JsonProperty(JSON_PROPERTY_NAME)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setName(@javax.annotation.Nonnull String name) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
   }
 
-  public ServiceEndpointInput description(@javax.annotation.Nonnull String description) {
+  public ServiceEndpointInput description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
   }
 
   /**
-   * Description of the service endpoint
+   * Alphanumeric string with common punctuation (max 500 characters)
    * @return description
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
     return description;
@@ -101,24 +140,24 @@ public class ServiceEndpointInput {
 
 
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setDescription(@javax.annotation.Nonnull String description) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public ServiceEndpointInput url(@javax.annotation.Nullable String url) {
+  public ServiceEndpointInput url(@javax.annotation.Nonnull String url) {
     
     this.url = url;
     return this;
   }
 
   /**
-   * service endpoint URL
+   * HTTP or HTTPS URL
    * @return url
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUrl() {
     return url;
@@ -126,12 +165,12 @@ public class ServiceEndpointInput {
 
 
   @JsonProperty(JSON_PROPERTY_URL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setUrl(@javax.annotation.Nullable String url) {
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setUrl(@javax.annotation.Nonnull String url) {
     this.url = url;
   }
 
-  public ServiceEndpointInput serviceType(@javax.annotation.Nullable String serviceType) {
+  public ServiceEndpointInput serviceType(@javax.annotation.Nullable ServiceTypeEnum serviceType) {
     
     this.serviceType = serviceType;
     return this;
@@ -145,14 +184,14 @@ public class ServiceEndpointInput {
   @JsonProperty(JSON_PROPERTY_SERVICE_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getServiceType() {
+  public ServiceTypeEnum getServiceType() {
     return serviceType;
   }
 
 
   @JsonProperty(JSON_PROPERTY_SERVICE_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServiceType(@javax.annotation.Nullable String serviceType) {
+  public void setServiceType(@javax.annotation.Nullable ServiceTypeEnum serviceType) {
     this.serviceType = serviceType;
   }
 

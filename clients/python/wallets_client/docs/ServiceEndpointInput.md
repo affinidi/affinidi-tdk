@@ -4,12 +4,12 @@ Input for adding a service endpoint
 
 ## Properties
 
-| Name             | Type    | Description                         | Notes      |
-| ---------------- | ------- | ----------------------------------- | ---------- |
-| **name**         | **str** | Name of the service endpoint        |
-| **description**  | **str** | Description of the service endpoint |
-| **url**          | **str** | service endpoint URL                | [optional] |
-| **service_type** | **str** | type of service endpoint            | [optional] |
+| Name             | Type    | Description                                                      | Notes      |
+| ---------------- | ------- | ---------------------------------------------------------------- | ---------- |
+| **name**         | **str** | Alphanumeric string with common punctuation (max 100 characters) | [optional] |
+| **description**  | **str** | Alphanumeric string with common punctuation (max 500 characters) | [optional] |
+| **url**          | **str** | HTTP or HTTPS URL                                                |
+| **service_type** | **str** | type of service endpoint                                         | [optional] |
 
 ## Example
 
