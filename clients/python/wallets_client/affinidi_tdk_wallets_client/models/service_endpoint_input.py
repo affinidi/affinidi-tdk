@@ -20,17 +20,54 @@ import json
 
 
 from typing import Optional
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, Field, constr, validator
 
 class ServiceEndpointInput(BaseModel):
     """
     Input for adding a service endpoint  # noqa: E501
     """
-    name: StrictStr = Field(default=..., description="Name of the service endpoint")
-    description: StrictStr = Field(default=..., description="Description of the service endpoint")
-    url: Optional[StrictStr] = Field(default=None, description="service endpoint URL")
-    service_type: Optional[StrictStr] = Field(default=None, alias="serviceType", description="type of service endpoint")
+    name: Optional[constr(strict=True)] = Field(default=None, description="Alphanumeric string with common punctuation (max 100 characters)")
+    description: Optional[constr(strict=True)] = Field(default=None, description="Alphanumeric string with common punctuation (max 500 characters)")
+    url: constr(strict=True, max_length=2048) = Field(default=..., description="HTTP or HTTPS URL")
+    service_type: Optional[constr(strict=True, max_length=100)] = Field(default=None, alias="serviceType", description="type of service endpoint")
     __properties = ["name", "description", "url", "serviceType"]
+
+    @validator('name')
+    def name_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[a-zA-Z0-9][a-zA-Z0-9\s\-_.,:#\'()]{0,99}$", value):
+            raise ValueError(r"must validate the regular expression /^[a-zA-Z0-9][a-zA-Z0-9\s\-_.,:#'()]{0,99}$/")
+        return value
+
+    @validator('description')
+    def description_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if value is None:
+            return value
+
+        if not re.match(r"^[a-zA-Z0-9][a-zA-Z0-9\s\-_.,:#\'()]{0,499}$", value):
+            raise ValueError(r"must validate the regular expression /^[a-zA-Z0-9][a-zA-Z0-9\s\-_.,:#'()]{0,499}$/")
+        return value
+
+    @validator('url')
+    def url_validate_regular_expression(cls, value):
+        """Validates the regular expression"""
+        if not re.match(r"^https?:\/\/[a-zA-Z0-9\-._~:\/?#[\]@!$&\'()*+,;=%]+$", value):
+            raise ValueError(r"must validate the regular expression /^https?:\/\/[a-zA-Z0-9\-._~:\/?#[\]@!$&'()*+,;=%]+$/")
+        return value
+
+    @validator('service_type')
+    def service_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('DIDCommMessaging', 'LinkedDomains', 'IdentityHub', 'CredentialRegistry',):
+            raise ValueError("must be one of enum values ('DIDCommMessaging', 'LinkedDomains', 'IdentityHub', 'CredentialRegistry')")
+        return value
 
     class Config:
         """Pydantic configuration"""
