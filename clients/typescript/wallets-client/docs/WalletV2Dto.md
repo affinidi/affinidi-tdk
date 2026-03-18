@@ -4,18 +4,19 @@ wallet v2 dto
 
 ## Properties
 
-| Name            | Type                                                         | Description                                   | Notes                             |
-| --------------- | ------------------------------------------------------------ | --------------------------------------------- | --------------------------------- |
-| **id**          | **string**                                                   | id of the wallet in uuidV4 format             | [optional] [default to undefined] |
-| **did**         | **string**                                                   | did of the wallet                             | [optional] [default to undefined] |
-| **name**        | **string**                                                   | The name of the wallet                        | [optional] [default to undefined] |
-| **description** | **string**                                                   | The description of the wallet                 | [optional] [default to undefined] |
-| **didDocument** | **object**                                                   | did document of the wallet                    | [optional] [default to undefined] |
-| **ari**         | **string**                                                   | ARI of the wallet                             | [optional] [default to undefined] |
-| **algorithm**   | **string**                                                   | algorithm used to generate key for the wallet | [optional] [default to undefined] |
-| **keys**        | [**Array&lt;WalletDtoKeysInner&gt;**](WalletDtoKeysInner.md) |                                               | [optional] [default to undefined] |
-| **createdAt**   | **string**                                                   |                                               | [optional] [default to undefined] |
-| **modifiedAt**  | **string**                                                   |                                               | [optional] [default to undefined] |
+| Name            | Type                                                         | Description                                           | Notes                             |
+| --------------- | ------------------------------------------------------------ | ----------------------------------------------------- | --------------------------------- |
+| **id**          | **string**                                                   | id of the wallet in uuidV4 format                     | [optional] [default to undefined] |
+| **did**         | **string**                                                   | did of the wallet                                     | [optional] [default to undefined] |
+| **name**        | **string**                                                   | The name of the wallet                                | [optional] [default to undefined] |
+| **description** | **string**                                                   | The description of the wallet                         | [optional] [default to undefined] |
+| **didDocument** | **object**                                                   | did document of the wallet                            | [optional] [default to undefined] |
+| **ari**         | **string**                                                   | ARI of the wallet                                     | [optional] [default to undefined] |
+| **algorithm**   | **string**                                                   | algorithm used to generate key for the wallet         | [optional] [default to undefined] |
+| **keys**        | [**Array&lt;WalletDtoKeysInner&gt;**](WalletDtoKeysInner.md) |                                                       | [optional] [default to undefined] |
+| **services**    | [**Array&lt;ServiceEndpointDto&gt;**](ServiceEndpointDto.md) | list of service endpoints associated with this wallet | [optional] [default to undefined] |
+| **createdAt**   | **string**                                                   |                                                       | [optional] [default to undefined] |
+| **modifiedAt**  | **string**                                                   |                                                       | [optional] [default to undefined] |
 
 ## Example
 
@@ -31,6 +32,7 @@ const instance: WalletV2Dto = {
   ari,
   algorithm,
   keys,
+  services,
   createdAt,
   modifiedAt,
 }

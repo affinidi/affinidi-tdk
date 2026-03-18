@@ -32,7 +32,7 @@ class CreateWalletV2Input(BaseModel):
     did_method: Optional[StrictStr] = Field(default='key', alias="didMethod", description="Define how DID of your wallet is created and resolved")
     did_web_url: Optional[constr(strict=True, max_length=300)] = Field(default=None, alias="didWebUrl", description="URL of the DID. Required if the did method is web")
     algorithm: Optional[StrictStr] = Field(default='secp256k1', description="algorithm to generate key for the wallet")
-    services: Optional[conlist(ServiceEndpointInput)] = Field(default=None, description="Service endpoints to include in DID document")
+    services: Optional[conlist(ServiceEndpointInput, max_items=20)] = Field(default=None, description="Service endpoints to include in DID document")
     __properties = ["name", "description", "didMethod", "didWebUrl", "algorithm", "services"]
 
     @validator('did_method')
