@@ -16,6 +16,7 @@ docs/OperationForbiddenError.md
 docs/RevocationApi.md
 docs/RevokeCredentialInput.md
 docs/RevokeCredentialsInput.md
+docs/ServiceEndpointDto.md
 docs/ServiceEndpointInput.md
 docs/SignCredential400Response.md
 docs/SignCredentialInputDto.md
@@ -80,6 +81,7 @@ src/main/java/com/affinidi/tdk/wallets/client/models/NotFoundErrorDetailsInner.j
 src/main/java/com/affinidi/tdk/wallets/client/models/OperationForbiddenError.java
 src/main/java/com/affinidi/tdk/wallets/client/models/RevokeCredentialInput.java
 src/main/java/com/affinidi/tdk/wallets/client/models/RevokeCredentialsInput.java
+src/main/java/com/affinidi/tdk/wallets/client/models/ServiceEndpointDto.java
 src/main/java/com/affinidi/tdk/wallets/client/models/ServiceEndpointInput.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredential400Response.java
 src/main/java/com/affinidi/tdk/wallets/client/models/SignCredentialInputDto.java
