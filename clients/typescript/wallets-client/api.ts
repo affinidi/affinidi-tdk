@@ -479,36 +479,114 @@ export interface RevokeCredentialsInput {
   credentialId: string
 }
 /**
+ * Service endpoint information
+ * @export
+ * @interface ServiceEndpointDto
+ */
+export interface ServiceEndpointDto {
+  /**
+   * service endpoint ID
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  id?: string
+  /**
+   * name of the service endpoint
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  name?: string
+  /**
+   * description of the service endpoint
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  description?: string
+  /**
+   * service endpoint URL
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  url?: string
+  /**
+   * wallet ARI this endpoint belongs to
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  walletAri?: string
+  /**
+   * project ID
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  projectId?: string
+  /**
+   * when this endpoint was created
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  createdAt?: string
+  /**
+   * when this endpoint was last modified
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  modifiedAt?: string
+  /**
+   * identifier of the user who created the entity
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  createdBy?: string
+  /**
+   * identifier of the user who last updated the entity
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  modifiedBy?: string
+}
+/**
  * Input for adding a service endpoint
  * @export
  * @interface ServiceEndpointInput
  */
 export interface ServiceEndpointInput {
   /**
-   * Name of the service endpoint
+   * Alphanumeric string with common punctuation (max 100 characters)
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  name: string
+  name?: string
   /**
-   * Description of the service endpoint
+   * Alphanumeric string with common punctuation (max 500 characters)
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  description: string
+  description?: string
   /**
-   * service endpoint URL
+   * HTTP or HTTPS URL
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  url?: string
+  url: string
   /**
    * type of service endpoint
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  serviceType?: string
+  serviceType?: ServiceEndpointInputServiceTypeEnum
 }
+
+export const ServiceEndpointInputServiceTypeEnum = {
+  DidCommMessaging: 'DIDCommMessaging',
+  LinkedDomains: 'LinkedDomains',
+  IdentityHub: 'IdentityHub',
+  CredentialRegistry: 'CredentialRegistry',
+} as const
+
+export type ServiceEndpointInputServiceTypeEnum =
+  (typeof ServiceEndpointInputServiceTypeEnum)[keyof typeof ServiceEndpointInputServiceTypeEnum]
+
 /**
  * @type SignCredential400Response
  * @export
@@ -1206,6 +1284,12 @@ export interface WalletV2Dto {
    * @memberof WalletV2Dto
    */
   keys?: Array<WalletDtoKeysInner>
+  /**
+   * list of service endpoints associated with this wallet
+   * @type {Array<ServiceEndpointDto>}
+   * @memberof WalletV2Dto
+   */
+  services?: Array<ServiceEndpointDto>
   /**
    *
    * @type {string}
