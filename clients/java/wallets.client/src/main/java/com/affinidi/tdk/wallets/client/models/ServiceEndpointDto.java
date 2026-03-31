@@ -15,16 +15,11 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.wallets.client.models.ServiceEndpointDto;
-import com.affinidi.tdk.wallets.client.models.WalletDtoKeysInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import java.io.UnsupportedEncodingException;
@@ -32,30 +27,25 @@ import java.net.URLEncoder;
 import java.util.StringJoiner;
 
 /**
- * wallet v2 dto
+ * Service endpoint information
  */
 @JsonPropertyOrder({
-  WalletV2Dto.JSON_PROPERTY_ID,
-  WalletV2Dto.JSON_PROPERTY_DID,
-  WalletV2Dto.JSON_PROPERTY_NAME,
-  WalletV2Dto.JSON_PROPERTY_DESCRIPTION,
-  WalletV2Dto.JSON_PROPERTY_DID_DOCUMENT,
-  WalletV2Dto.JSON_PROPERTY_ARI,
-  WalletV2Dto.JSON_PROPERTY_ALGORITHM,
-  WalletV2Dto.JSON_PROPERTY_KEYS,
-  WalletV2Dto.JSON_PROPERTY_SERVICES,
-  WalletV2Dto.JSON_PROPERTY_CREATED_AT,
-  WalletV2Dto.JSON_PROPERTY_MODIFIED_AT
+  ServiceEndpointDto.JSON_PROPERTY_ID,
+  ServiceEndpointDto.JSON_PROPERTY_NAME,
+  ServiceEndpointDto.JSON_PROPERTY_DESCRIPTION,
+  ServiceEndpointDto.JSON_PROPERTY_URL,
+  ServiceEndpointDto.JSON_PROPERTY_WALLET_ARI,
+  ServiceEndpointDto.JSON_PROPERTY_PROJECT_ID,
+  ServiceEndpointDto.JSON_PROPERTY_CREATED_AT,
+  ServiceEndpointDto.JSON_PROPERTY_MODIFIED_AT,
+  ServiceEndpointDto.JSON_PROPERTY_CREATED_BY,
+  ServiceEndpointDto.JSON_PROPERTY_MODIFIED_BY
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
-public class WalletV2Dto {
+public class ServiceEndpointDto {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
   private String id;
-
-  public static final String JSON_PROPERTY_DID = "did";
-  @javax.annotation.Nullable
-  private String did;
 
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -65,25 +55,17 @@ public class WalletV2Dto {
   @javax.annotation.Nullable
   private String description;
 
-  public static final String JSON_PROPERTY_DID_DOCUMENT = "didDocument";
+  public static final String JSON_PROPERTY_URL = "url";
   @javax.annotation.Nullable
-  private Object didDocument;
+  private String url;
 
-  public static final String JSON_PROPERTY_ARI = "ari";
+  public static final String JSON_PROPERTY_WALLET_ARI = "walletAri";
   @javax.annotation.Nullable
-  private String ari;
+  private String walletAri;
 
-  public static final String JSON_PROPERTY_ALGORITHM = "algorithm";
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nullable
-  private String algorithm;
-
-  public static final String JSON_PROPERTY_KEYS = "keys";
-  @javax.annotation.Nullable
-  private List<WalletDtoKeysInner> keys = new ArrayList<>();
-
-  public static final String JSON_PROPERTY_SERVICES = "services";
-  @javax.annotation.Nullable
-  private List<ServiceEndpointDto> services = new ArrayList<>();
+  private String projectId;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   @javax.annotation.Nullable
@@ -93,17 +75,25 @@ public class WalletV2Dto {
   @javax.annotation.Nullable
   private String modifiedAt;
 
-  public WalletV2Dto() {
+  public static final String JSON_PROPERTY_CREATED_BY = "createdBy";
+  @javax.annotation.Nullable
+  private String createdBy;
+
+  public static final String JSON_PROPERTY_MODIFIED_BY = "modifiedBy";
+  @javax.annotation.Nullable
+  private String modifiedBy;
+
+  public ServiceEndpointDto() {
   }
 
-  public WalletV2Dto id(@javax.annotation.Nullable String id) {
+  public ServiceEndpointDto id(@javax.annotation.Nullable String id) {
     
     this.id = id;
     return this;
   }
 
   /**
-   * id of the wallet in uuidV4 format
+   * service endpoint ID
    * @return id
    */
   @javax.annotation.Nullable
@@ -121,39 +111,14 @@ public class WalletV2Dto {
     this.id = id;
   }
 
-  public WalletV2Dto did(@javax.annotation.Nullable String did) {
-    
-    this.did = did;
-    return this;
-  }
-
-  /**
-   * did of the wallet
-   * @return did
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public String getDid() {
-    return did;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_DID)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDid(@javax.annotation.Nullable String did) {
-    this.did = did;
-  }
-
-  public WalletV2Dto name(@javax.annotation.Nullable String name) {
+  public ServiceEndpointDto name(@javax.annotation.Nullable String name) {
     
     this.name = name;
     return this;
   }
 
   /**
-   * The name of the wallet
+   * name of the service endpoint
    * @return name
    */
   @javax.annotation.Nullable
@@ -171,14 +136,14 @@ public class WalletV2Dto {
     this.name = name;
   }
 
-  public WalletV2Dto description(@javax.annotation.Nullable String description) {
+  public ServiceEndpointDto description(@javax.annotation.Nullable String description) {
     
     this.description = description;
     return this;
   }
 
   /**
-   * The description of the wallet
+   * description of the service endpoint
    * @return description
    */
   @javax.annotation.Nullable
@@ -196,155 +161,89 @@ public class WalletV2Dto {
     this.description = description;
   }
 
-  public WalletV2Dto didDocument(@javax.annotation.Nullable Object didDocument) {
+  public ServiceEndpointDto url(@javax.annotation.Nullable String url) {
     
-    this.didDocument = didDocument;
+    this.url = url;
     return this;
   }
 
   /**
-   * did document of the wallet
-   * @return didDocument
+   * service endpoint URL
+   * @return url
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DID_DOCUMENT)
+  @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getDidDocument() {
-    return didDocument;
+  public String getUrl() {
+    return url;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID_DOCUMENT)
+  @JsonProperty(JSON_PROPERTY_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setDidDocument(@javax.annotation.Nullable Object didDocument) {
-    this.didDocument = didDocument;
+  public void setUrl(@javax.annotation.Nullable String url) {
+    this.url = url;
   }
 
-  public WalletV2Dto ari(@javax.annotation.Nullable String ari) {
+  public ServiceEndpointDto walletAri(@javax.annotation.Nullable String walletAri) {
     
-    this.ari = ari;
+    this.walletAri = walletAri;
     return this;
   }
 
   /**
-   * ARI of the wallet
-   * @return ari
+   * wallet ARI this endpoint belongs to
+   * @return walletAri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(JSON_PROPERTY_WALLET_ARI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getAri() {
-    return ari;
+  public String getWalletAri() {
+    return walletAri;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(JSON_PROPERTY_WALLET_ARI)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAri(@javax.annotation.Nullable String ari) {
-    this.ari = ari;
+  public void setWalletAri(@javax.annotation.Nullable String walletAri) {
+    this.walletAri = walletAri;
   }
 
-  public WalletV2Dto algorithm(@javax.annotation.Nullable String algorithm) {
+  public ServiceEndpointDto projectId(@javax.annotation.Nullable String projectId) {
     
-    this.algorithm = algorithm;
+    this.projectId = projectId;
     return this;
   }
 
   /**
-   * algorithm used to generate key for the wallet
-   * @return algorithm
+   * project ID
+   * @return projectId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getAlgorithm() {
-    return algorithm;
+  public String getProjectId() {
+    return projectId;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setAlgorithm(@javax.annotation.Nullable String algorithm) {
-    this.algorithm = algorithm;
+  public void setProjectId(@javax.annotation.Nullable String projectId) {
+    this.projectId = projectId;
   }
 
-  public WalletV2Dto keys(@javax.annotation.Nullable List<WalletDtoKeysInner> keys) {
-    
-    this.keys = keys;
-    return this;
-  }
-
-  public WalletV2Dto addKeysItem(WalletDtoKeysInner keysItem) {
-    if (this.keys == null) {
-      this.keys = new ArrayList<>();
-    }
-    this.keys.add(keysItem);
-    return this;
-  }
-
-  /**
-   * Get keys
-   * @return keys
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEYS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<WalletDtoKeysInner> getKeys() {
-    return keys;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_KEYS)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setKeys(@javax.annotation.Nullable List<WalletDtoKeysInner> keys) {
-    this.keys = keys;
-  }
-
-  public WalletV2Dto services(@javax.annotation.Nullable List<ServiceEndpointDto> services) {
-    
-    this.services = services;
-    return this;
-  }
-
-  public WalletV2Dto addServicesItem(ServiceEndpointDto servicesItem) {
-    if (this.services == null) {
-      this.services = new ArrayList<>();
-    }
-    this.services.add(servicesItem);
-    return this;
-  }
-
-  /**
-   * list of service endpoints associated with this wallet
-   * @return services
-   */
-  @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SERVICES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public List<ServiceEndpointDto> getServices() {
-    return services;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SERVICES)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setServices(@javax.annotation.Nullable List<ServiceEndpointDto> services) {
-    this.services = services;
-  }
-
-  public WalletV2Dto createdAt(@javax.annotation.Nullable String createdAt) {
+  public ServiceEndpointDto createdAt(@javax.annotation.Nullable String createdAt) {
     
     this.createdAt = createdAt;
     return this;
   }
 
   /**
-   * Get createdAt
+   * when this endpoint was created
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -362,14 +261,14 @@ public class WalletV2Dto {
     this.createdAt = createdAt;
   }
 
-  public WalletV2Dto modifiedAt(@javax.annotation.Nullable String modifiedAt) {
+  public ServiceEndpointDto modifiedAt(@javax.annotation.Nullable String modifiedAt) {
     
     this.modifiedAt = modifiedAt;
     return this;
   }
 
   /**
-   * Get modifiedAt
+   * when this endpoint was last modified
    * @return modifiedAt
    */
   @javax.annotation.Nullable
@@ -387,6 +286,56 @@ public class WalletV2Dto {
     this.modifiedAt = modifiedAt;
   }
 
+  public ServiceEndpointDto createdBy(@javax.annotation.Nullable String createdBy) {
+    
+    this.createdBy = createdBy;
+    return this;
+  }
+
+  /**
+   * identifier of the user who created the entity
+   * @return createdBy
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getCreatedBy() {
+    return createdBy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreatedBy(@javax.annotation.Nullable String createdBy) {
+    this.createdBy = createdBy;
+  }
+
+  public ServiceEndpointDto modifiedBy(@javax.annotation.Nullable String modifiedBy) {
+    
+    this.modifiedBy = modifiedBy;
+    return this;
+  }
+
+  /**
+   * identifier of the user who last updated the entity
+   * @return modifiedBy
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getModifiedBy() {
+    return modifiedBy;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setModifiedBy(@javax.annotation.Nullable String modifiedBy) {
+    this.modifiedBy = modifiedBy;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -395,40 +344,38 @@ public class WalletV2Dto {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WalletV2Dto walletV2Dto = (WalletV2Dto) o;
-    return Objects.equals(this.id, walletV2Dto.id) &&
-        Objects.equals(this.did, walletV2Dto.did) &&
-        Objects.equals(this.name, walletV2Dto.name) &&
-        Objects.equals(this.description, walletV2Dto.description) &&
-        Objects.equals(this.didDocument, walletV2Dto.didDocument) &&
-        Objects.equals(this.ari, walletV2Dto.ari) &&
-        Objects.equals(this.algorithm, walletV2Dto.algorithm) &&
-        Objects.equals(this.keys, walletV2Dto.keys) &&
-        Objects.equals(this.services, walletV2Dto.services) &&
-        Objects.equals(this.createdAt, walletV2Dto.createdAt) &&
-        Objects.equals(this.modifiedAt, walletV2Dto.modifiedAt);
+    ServiceEndpointDto serviceEndpointDto = (ServiceEndpointDto) o;
+    return Objects.equals(this.id, serviceEndpointDto.id) &&
+        Objects.equals(this.name, serviceEndpointDto.name) &&
+        Objects.equals(this.description, serviceEndpointDto.description) &&
+        Objects.equals(this.url, serviceEndpointDto.url) &&
+        Objects.equals(this.walletAri, serviceEndpointDto.walletAri) &&
+        Objects.equals(this.projectId, serviceEndpointDto.projectId) &&
+        Objects.equals(this.createdAt, serviceEndpointDto.createdAt) &&
+        Objects.equals(this.modifiedAt, serviceEndpointDto.modifiedAt) &&
+        Objects.equals(this.createdBy, serviceEndpointDto.createdBy) &&
+        Objects.equals(this.modifiedBy, serviceEndpointDto.modifiedBy);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, did, name, description, didDocument, ari, algorithm, keys, services, createdAt, modifiedAt);
+    return Objects.hash(id, name, description, url, walletAri, projectId, createdAt, modifiedAt, createdBy, modifiedBy);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WalletV2Dto {\n");
+    sb.append("class ServiceEndpointDto {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    did: ").append(toIndentedString(did)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    didDocument: ").append(toIndentedString(didDocument)).append("\n");
-    sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
-    sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
-    sb.append("    keys: ").append(toIndentedString(keys)).append("\n");
-    sb.append("    services: ").append(toIndentedString(services)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    walletAri: ").append(toIndentedString(walletAri)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
+    sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
+    sb.append("    modifiedBy: ").append(toIndentedString(modifiedBy)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -486,16 +433,6 @@ public class WalletV2Dto {
       }
     }
 
-    // add `did` to the URL query string
-    if (getDid() != null) {
-      try {
-        joiner.add(String.format("%sdid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDid()), "UTF-8").replaceAll("\\+", "%20")));
-      } catch (UnsupportedEncodingException e) {
-        // Should never happen, UTF-8 is always supported
-        throw new RuntimeException(e);
-      }
-    }
-
     // add `name` to the URL query string
     if (getName() != null) {
       try {
@@ -516,53 +453,33 @@ public class WalletV2Dto {
       }
     }
 
-    // add `didDocument` to the URL query string
-    if (getDidDocument() != null) {
+    // add `url` to the URL query string
+    if (getUrl() != null) {
       try {
-        joiner.add(String.format("%sdidDocument%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidDocument()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%surl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
     }
 
-    // add `ari` to the URL query string
-    if (getAri() != null) {
+    // add `walletAri` to the URL query string
+    if (getWalletAri() != null) {
       try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%swalletAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWalletAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
       }
     }
 
-    // add `algorithm` to the URL query string
-    if (getAlgorithm() != null) {
+    // add `projectId` to the URL query string
+    if (getProjectId() != null) {
       try {
-        joiner.add(String.format("%salgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
-      }
-    }
-
-    // add `keys` to the URL query string
-    if (getKeys() != null) {
-      for (int i = 0; i < getKeys().size(); i++) {
-        if (getKeys().get(i) != null) {
-          joiner.add(getKeys().get(i).toUrlQueryString(String.format("%skeys%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
-        }
-      }
-    }
-
-    // add `services` to the URL query string
-    if (getServices() != null) {
-      for (int i = 0; i < getServices().size(); i++) {
-        if (getServices().get(i) != null) {
-          joiner.add(getServices().get(i).toUrlQueryString(String.format("%sservices%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
-        }
       }
     }
 
@@ -580,6 +497,26 @@ public class WalletV2Dto {
     if (getModifiedAt() != null) {
       try {
         joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `createdBy` to the URL query string
+    if (getCreatedBy() != null) {
+      try {
+        joiner.add(String.format("%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `modifiedBy` to the URL query string
+    if (getModifiedBy() != null) {
+      try {
+        joiner.add(String.format("%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
