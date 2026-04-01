@@ -18,6 +18,7 @@ docs/OperationForbiddenError.md
 docs/RevocationApi.md
 docs/RevokeCredentialInput.md
 docs/RevokeCredentialsInput.md
+docs/ServiceEndpointDto.md
 docs/ServiceEndpointInput.md
 docs/SignCredential400Response.md
 docs/SignCredentialInputDto.md
