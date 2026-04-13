@@ -112,6 +112,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _AccountsApi_      | [**create_account**](docs/AccountsApi.md#create_account)                      | **POST** /v1/accounts                                 |
 | _AccountsApi_      | [**delete_account**](docs/AccountsApi.md#delete_account)                      | **DELETE** /v1/accounts/{accountIndex}                |
 | _AccountsApi_      | [**list_accounts**](docs/AccountsApi.md#list_accounts)                        | **GET** /v1/accounts                                  |
+| _AccountsApi_      | [**list_profiles**](docs/AccountsApi.md#list_profiles)                        | **GET** /v1/accounts/profiles                         |
 | _AccountsApi_      | [**update_account**](docs/AccountsApi.md#update_account)                      | **PUT** /v1/accounts/{accountIndex}                   |
 | _ConfigurationApi_ | [**get_configuration**](docs/ConfigurationApi.md#get_configuration)           | **GET** /v1/config                                    |
 | _FilesApi_         | [**get_scanned_file_info**](docs/FilesApi.md#get_scanned_file_info)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
@@ -154,6 +155,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
 - [ListAccountsDto](docs/ListAccountsDto.md)
 - [ListNodeChildrenOK](docs/ListNodeChildrenOK.md)
+- [ListProfilesOK](docs/ListProfilesOK.md)
 - [ListRootNodeChildrenOK](docs/ListRootNodeChildrenOK.md)
 - [ListScannedFilesOK](docs/ListScannedFilesOK.md)
 - [ListScannedFilesOKScannedFilesInner](docs/ListScannedFilesOKScannedFilesInner.md)
@@ -162,6 +164,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [NodeDto](docs/NodeDto.md)
 - [NodeStatus](docs/NodeStatus.md)
 - [NodeType](docs/NodeType.md)
+- [PartialProfileNodeDto](docs/PartialProfileNodeDto.md)
 - [QueryProfileDataOK](docs/QueryProfileDataOK.md)
 - [RestoreNodeFromTrashbin](docs/RestoreNodeFromTrashbin.md)
 - [StartFileScanInput](docs/StartFileScanInput.md)
