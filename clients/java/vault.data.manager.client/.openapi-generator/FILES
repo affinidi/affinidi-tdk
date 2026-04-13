@@ -26,6 +26,7 @@ docs/JsonWebKeyDto.md
 docs/JsonWebKeySetDto.md
 docs/ListAccountsDto.md
 docs/ListNodeChildrenOK.md
+docs/ListProfilesOK.md
 docs/ListRootNodeChildrenOK.md
 docs/ListScannedFilesOK.md
 docs/ListScannedFilesOKScannedFilesInner.md
@@ -35,6 +36,7 @@ docs/NodeDto.md
 docs/NodeStatus.md
 docs/NodeType.md
 docs/NodesApi.md
+docs/PartialProfileNodeDto.md
 docs/ProfileDataApi.md
 docs/QueryProfileDataOK.md
 docs/RestoreNodeFromTrashbin.md
@@ -98,6 +100,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/JsonWebKeyDto.ja
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/JsonWebKeySetDto.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/ListAccountsDto.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/ListNodeChildrenOK.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/ListProfilesOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/ListRootNodeChildrenOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/ListScannedFilesOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/ListScannedFilesOKScannedFilesInner.java
@@ -106,6 +109,7 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/MoveNodeInput.ja
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/NodeDto.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/NodeStatus.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/NodeType.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/PartialProfileNodeDto.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/QueryProfileDataOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/RestoreNodeFromTrashbin.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/StartFileScanInput.java
