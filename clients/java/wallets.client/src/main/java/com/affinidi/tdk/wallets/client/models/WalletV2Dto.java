@@ -15,6 +15,7 @@ package com.affinidi.tdk.wallets.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.affinidi.tdk.wallets.client.models.ServiceEndpointDto;
 import com.affinidi.tdk.wallets.client.models.WalletDtoKeysInner;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -42,6 +43,7 @@ import java.util.StringJoiner;
   WalletV2Dto.JSON_PROPERTY_ARI,
   WalletV2Dto.JSON_PROPERTY_ALGORITHM,
   WalletV2Dto.JSON_PROPERTY_KEYS,
+  WalletV2Dto.JSON_PROPERTY_SERVICES,
   WalletV2Dto.JSON_PROPERTY_CREATED_AT,
   WalletV2Dto.JSON_PROPERTY_MODIFIED_AT
 })
@@ -78,6 +80,10 @@ public class WalletV2Dto {
   public static final String JSON_PROPERTY_KEYS = "keys";
   @javax.annotation.Nullable
   private List<WalletDtoKeysInner> keys = new ArrayList<>();
+
+  public static final String JSON_PROPERTY_SERVICES = "services";
+  @javax.annotation.Nullable
+  private List<ServiceEndpointDto> services = new ArrayList<>();
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   @javax.annotation.Nullable
@@ -298,6 +304,39 @@ public class WalletV2Dto {
     this.keys = keys;
   }
 
+  public WalletV2Dto services(@javax.annotation.Nullable List<ServiceEndpointDto> services) {
+    
+    this.services = services;
+    return this;
+  }
+
+  public WalletV2Dto addServicesItem(ServiceEndpointDto servicesItem) {
+    if (this.services == null) {
+      this.services = new ArrayList<>();
+    }
+    this.services.add(servicesItem);
+    return this;
+  }
+
+  /**
+   * list of service endpoints associated with this wallet
+   * @return services
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<ServiceEndpointDto> getServices() {
+    return services;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setServices(@javax.annotation.Nullable List<ServiceEndpointDto> services) {
+    this.services = services;
+  }
+
   public WalletV2Dto createdAt(@javax.annotation.Nullable String createdAt) {
     
     this.createdAt = createdAt;
@@ -365,13 +404,14 @@ public class WalletV2Dto {
         Objects.equals(this.ari, walletV2Dto.ari) &&
         Objects.equals(this.algorithm, walletV2Dto.algorithm) &&
         Objects.equals(this.keys, walletV2Dto.keys) &&
+        Objects.equals(this.services, walletV2Dto.services) &&
         Objects.equals(this.createdAt, walletV2Dto.createdAt) &&
         Objects.equals(this.modifiedAt, walletV2Dto.modifiedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, did, name, description, didDocument, ari, algorithm, keys, createdAt, modifiedAt);
+    return Objects.hash(id, did, name, description, didDocument, ari, algorithm, keys, services, createdAt, modifiedAt);
   }
 
   @Override
@@ -386,6 +426,7 @@ public class WalletV2Dto {
     sb.append("    ari: ").append(toIndentedString(ari)).append("\n");
     sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
     sb.append("    keys: ").append(toIndentedString(keys)).append("\n");
+    sb.append("    services: ").append(toIndentedString(services)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("}");
@@ -510,6 +551,16 @@ public class WalletV2Dto {
       for (int i = 0; i < getKeys().size(); i++) {
         if (getKeys().get(i) != null) {
           joiner.add(getKeys().get(i).toUrlQueryString(String.format("%skeys%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+        }
+      }
+    }
+
+    // add `services` to the URL query string
+    if (getServices() != null) {
+      for (int i = 0; i < getServices().size(); i++) {
+        if (getServices().get(i) != null) {
+          joiner.add(getServices().get(i).toUrlQueryString(String.format("%sservices%s%s", prefix, suffix,
               "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
