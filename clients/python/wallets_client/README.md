@@ -115,11 +115,17 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | _RevocationApi_ | [**get_revocation_list_credential**](docs/RevocationApi.md#get_revocation_list_credential)     | **GET** /v1/wallets/{walletId}/revocation-list/{listId}                            | Return revocation list credential. |
 | _RevocationApi_ | [**revoke_credential**](docs/RevocationApi.md#revoke_credential)                               | **POST** /v1/wallets/{walletId}/revoke                                             | Revoke Credential.                 |
 | _RevocationApi_ | [**revoke_credentials**](docs/RevocationApi.md#revoke_credentials)                             | **POST** /v2/wallets/{walletId}/credentials/revoke                                 | Revoke Credentials.                |
+| _WalletApi_     | [**create_service_endpoint**](docs/WalletApi.md#create_service_endpoint)                       | **POST** /v2/wallets/{walletId}/services                                           |
 | _WalletApi_     | [**create_wallet**](docs/WalletApi.md#create_wallet)                                           | **POST** /v1/wallets                                                               |
+| _WalletApi_     | [**create_wallet_key**](docs/WalletApi.md#create_wallet_key)                                   | **POST** /v2/wallets/{walletId}/keys                                               |
 | _WalletApi_     | [**create_wallet_v2**](docs/WalletApi.md#create_wallet_v2)                                     | **POST** /v2/wallets                                                               |
 | _WalletApi_     | [**delete_wallet**](docs/WalletApi.md#delete_wallet)                                           | **DELETE** /v1/wallets/{walletId}                                                  |
 | _WalletApi_     | [**get_wallet**](docs/WalletApi.md#get_wallet)                                                 | **GET** /v1/wallets/{walletId}                                                     |
+| _WalletApi_     | [**list_service_endpoints**](docs/WalletApi.md#list_service_endpoints)                         | **GET** /v2/wallets/{walletId}/services                                            |
+| _WalletApi_     | [**list_wallet_keys**](docs/WalletApi.md#list_wallet_keys)                                     | **GET** /v2/wallets/{walletId}/keys                                                |
 | _WalletApi_     | [**list_wallets**](docs/WalletApi.md#list_wallets)                                             | **GET** /v1/wallets                                                                |
+| _WalletApi_     | [**remove_service_endpoint**](docs/WalletApi.md#remove_service_endpoint)                       | **DELETE** /v2/wallets/{walletId}/services/{serviceId}                             |
+| _WalletApi_     | [**remove_wallet_key**](docs/WalletApi.md#remove_wallet_key)                                   | **DELETE** /v2/wallets/{walletId}/keys/{keyId}                                     |
 | _WalletApi_     | [**sign_credential**](docs/WalletApi.md#sign_credential)                                       | **POST** /v1/wallets/{walletId}/sign-credential                                    |
 | _WalletApi_     | [**sign_credentials_jwt**](docs/WalletApi.md#sign_credentials_jwt)                             | **POST** /v2/wallets/{walletId}/credentials/jwt/sign                               |
 | _WalletApi_     | [**sign_credentials_ldp**](docs/WalletApi.md#sign_credentials_ldp)                             | **POST** /v2/wallets/{walletId}/credentials/ldp/sign                               |
@@ -127,22 +133,28 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 | _WalletApi_     | [**sign_jwt_token**](docs/WalletApi.md#sign_jwt_token)                                         | **POST** /v1/wallets/{walletId}/sign-jwt                                           |
 | _WalletApi_     | [**sign_jwt_v2**](docs/WalletApi.md#sign_jwt_v2)                                               | **POST** /v2/wallets/{walletId}/jwt/sign                                           | Sign JWT.                          |
 | _WalletApi_     | [**sign_presentations_ldp**](docs/WalletApi.md#sign_presentations_ldp)                         | **POST** /v2/wallets/{walletId}/presentations/ldp/sign                             |
+| _WalletApi_     | [**update_service_endpoint**](docs/WalletApi.md#update_service_endpoint)                       | **PATCH** /v2/wallets/{walletId}/services/{serviceId}                              |
 | _WalletApi_     | [**update_wallet**](docs/WalletApi.md#update_wallet)                                           | **PATCH** /v1/wallets/{walletId}                                                   |
+| _WalletApi_     | [**update_wallet_key**](docs/WalletApi.md#update_wallet_key)                                   | **PATCH** /v2/wallets/{walletId}/keys/{keyId}                                      |
 
 ## Documentation For Models
 
 - [CreateWalletInput](docs/CreateWalletInput.md)
+- [CreateWalletKeyInput](docs/CreateWalletKeyInput.md)
 - [CreateWalletResponse](docs/CreateWalletResponse.md)
 - [CreateWalletV2Input](docs/CreateWalletV2Input.md)
 - [CreateWalletV2Response](docs/CreateWalletV2Response.md)
 - [EntityNotFoundError](docs/EntityNotFoundError.md)
 - [GetRevocationListCredentialResultDto](docs/GetRevocationListCredentialResultDto.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
+- [ListServiceEndpointsOK](docs/ListServiceEndpointsOK.md)
+- [ListWalletKeysOK](docs/ListWalletKeysOK.md)
 - [NotFoundError](docs/NotFoundError.md)
 - [NotFoundErrorDetailsInner](docs/NotFoundErrorDetailsInner.md)
 - [OperationForbiddenError](docs/OperationForbiddenError.md)
 - [RevokeCredentialInput](docs/RevokeCredentialInput.md)
 - [RevokeCredentialsInput](docs/RevokeCredentialsInput.md)
+- [ServiceEndpointDto](docs/ServiceEndpointDto.md)
 - [ServiceEndpointInput](docs/ServiceEndpointInput.md)
 - [SignCredential400Response](docs/SignCredential400Response.md)
 - [SignCredentialInputDto](docs/SignCredentialInputDto.md)
@@ -162,9 +174,14 @@ All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 - [SignPresentationLdpResultDto](docs/SignPresentationLdpResultDto.md)
 - [SigningFailedError](docs/SigningFailedError.md)
 - [TooManyRequestsError](docs/TooManyRequestsError.md)
+- [UpdateServiceEndpointInput](docs/UpdateServiceEndpointInput.md)
 - [UpdateWalletInput](docs/UpdateWalletInput.md)
+- [UpdateWalletKeyInput](docs/UpdateWalletKeyInput.md)
+- [VerificationRelationship](docs/VerificationRelationship.md)
+- [WalletDidType](docs/WalletDidType.md)
 - [WalletDto](docs/WalletDto.md)
 - [WalletDtoKeysInner](docs/WalletDtoKeysInner.md)
+- [WalletKeyDto](docs/WalletKeyDto.md)
 - [WalletV2Dto](docs/WalletV2Dto.md)
 - [WalletsListDto](docs/WalletsListDto.md)
 

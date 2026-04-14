@@ -25,9 +25,14 @@ from pydantic import Field, StrictStr
 from typing import Optional
 
 from affinidi_tdk_wallets_client.models.create_wallet_input import CreateWalletInput
+from affinidi_tdk_wallets_client.models.create_wallet_key_input import CreateWalletKeyInput
 from affinidi_tdk_wallets_client.models.create_wallet_response import CreateWalletResponse
 from affinidi_tdk_wallets_client.models.create_wallet_v2_input import CreateWalletV2Input
 from affinidi_tdk_wallets_client.models.create_wallet_v2_response import CreateWalletV2Response
+from affinidi_tdk_wallets_client.models.list_service_endpoints_ok import ListServiceEndpointsOK
+from affinidi_tdk_wallets_client.models.list_wallet_keys_ok import ListWalletKeysOK
+from affinidi_tdk_wallets_client.models.service_endpoint_dto import ServiceEndpointDto
+from affinidi_tdk_wallets_client.models.service_endpoint_input import ServiceEndpointInput
 from affinidi_tdk_wallets_client.models.sign_credential_input_dto import SignCredentialInputDto
 from affinidi_tdk_wallets_client.models.sign_credential_result_dto import SignCredentialResultDto
 from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_input_dto import SignCredentialsDm2SdJwtInputDto
@@ -42,8 +47,12 @@ from affinidi_tdk_wallets_client.models.sign_jwt_v2_input_dto import SignJwtV2In
 from affinidi_tdk_wallets_client.models.sign_jwt_v2_result_dto import SignJwtV2ResultDto
 from affinidi_tdk_wallets_client.models.sign_presentation_ldp_input_dto import SignPresentationLdpInputDto
 from affinidi_tdk_wallets_client.models.sign_presentation_ldp_result_dto import SignPresentationLdpResultDto
+from affinidi_tdk_wallets_client.models.update_service_endpoint_input import UpdateServiceEndpointInput
 from affinidi_tdk_wallets_client.models.update_wallet_input import UpdateWalletInput
+from affinidi_tdk_wallets_client.models.update_wallet_key_input import UpdateWalletKeyInput
+from affinidi_tdk_wallets_client.models.wallet_did_type import WalletDidType
 from affinidi_tdk_wallets_client.models.wallet_dto import WalletDto
+from affinidi_tdk_wallets_client.models.wallet_key_dto import WalletKeyDto
 from affinidi_tdk_wallets_client.models.wallets_list_dto import WalletsListDto
 
 from affinidi_tdk_wallets_client.api_client import ApiClient
@@ -65,6 +74,161 @@ class WalletApi:
         if api_client is None:
             api_client = ApiClient.get_default()
         self.api_client = api_client
+
+    @validate_arguments
+    def create_service_endpoint(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], service_endpoint_input : Annotated[ServiceEndpointInput, Field(..., description="AddServiceEndpoint")], **kwargs) -> ServiceEndpointDto:  # noqa: E501
+        """create_service_endpoint  # noqa: E501
+
+        Add service endpoint to wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_service_endpoint(wallet_id, service_endpoint_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param service_endpoint_input: AddServiceEndpoint (required)
+        :type service_endpoint_input: ServiceEndpointInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ServiceEndpointDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the create_service_endpoint_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.create_service_endpoint_with_http_info(wallet_id, service_endpoint_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def create_service_endpoint_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], service_endpoint_input : Annotated[ServiceEndpointInput, Field(..., description="AddServiceEndpoint")], **kwargs) -> ApiResponse:  # noqa: E501
+        """create_service_endpoint  # noqa: E501
+
+        Add service endpoint to wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_service_endpoint_with_http_info(wallet_id, service_endpoint_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param service_endpoint_input: AddServiceEndpoint (required)
+        :type service_endpoint_input: ServiceEndpointInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ServiceEndpointDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'service_endpoint_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_service_endpoint" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['service_endpoint_input'] is not None:
+            _body_params = _params['service_endpoint_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '201': "ServiceEndpointDto",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/services', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
     def create_wallet(self, create_wallet_input : Annotated[Optional[CreateWalletInput], Field(description="CreateWallet")] = None, **kwargs) -> CreateWalletResponse:  # noqa: E501
@@ -199,6 +363,161 @@ class WalletApi:
 
         return self.api_client.call_api(
             '/v1/wallets', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def create_wallet_key(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], create_wallet_key_input : Annotated[CreateWalletKeyInput, Field(..., description="CreateWalletKey")], **kwargs) -> WalletKeyDto:  # noqa: E501
+        """create_wallet_key  # noqa: E501
+
+        Add a new key to the wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_wallet_key(wallet_id, create_wallet_key_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param create_wallet_key_input: CreateWalletKey (required)
+        :type create_wallet_key_input: CreateWalletKeyInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: WalletKeyDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the create_wallet_key_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.create_wallet_key_with_http_info(wallet_id, create_wallet_key_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def create_wallet_key_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], create_wallet_key_input : Annotated[CreateWalletKeyInput, Field(..., description="CreateWalletKey")], **kwargs) -> ApiResponse:  # noqa: E501
+        """create_wallet_key  # noqa: E501
+
+        Add a new key to the wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_wallet_key_with_http_info(wallet_id, create_wallet_key_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param create_wallet_key_input: CreateWalletKey (required)
+        :type create_wallet_key_input: CreateWalletKeyInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(WalletKeyDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'create_wallet_key_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_wallet_key" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['create_wallet_key_input'] is not None:
+            _body_params = _params['create_wallet_key_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '201': "WalletKeyDto",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/keys', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -640,7 +959,287 @@ class WalletApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
-    def list_wallets(self, did_type : Optional[StrictStr] = None, **kwargs) -> WalletsListDto:  # noqa: E501
+    def list_service_endpoints(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], **kwargs) -> ListServiceEndpointsOK:  # noqa: E501
+        """list_service_endpoints  # noqa: E501
+
+        List service endpoints in wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_service_endpoints(wallet_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ListServiceEndpointsOK
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the list_service_endpoints_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.list_service_endpoints_with_http_info(wallet_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def list_service_endpoints_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], **kwargs) -> ApiResponse:  # noqa: E501
+        """list_service_endpoints  # noqa: E501
+
+        List service endpoints in wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_service_endpoints_with_http_info(wallet_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ListServiceEndpointsOK, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_service_endpoints" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "ListServiceEndpointsOK",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/services', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def list_wallet_keys(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], **kwargs) -> ListWalletKeysOK:  # noqa: E501
+        """list_wallet_keys  # noqa: E501
+
+        List all keys in the wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_wallet_keys(wallet_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ListWalletKeysOK
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the list_wallet_keys_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.list_wallet_keys_with_http_info(wallet_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def list_wallet_keys_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], **kwargs) -> ApiResponse:  # noqa: E501
+        """list_wallet_keys  # noqa: E501
+
+        List all keys in the wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.list_wallet_keys_with_http_info(wallet_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ListWalletKeysOK, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_wallet_keys" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "ListWalletKeysOK",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/keys', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def list_wallets(self, did_type : Optional[WalletDidType] = None, **kwargs) -> WalletsListDto:  # noqa: E501
         """list_wallets  # noqa: E501
 
         lists all wallets  # noqa: E501
@@ -651,7 +1250,7 @@ class WalletApi:
         >>> result = thread.get()
 
         :param did_type:
-        :type did_type: str
+        :type did_type: WalletDidType
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request.
@@ -670,7 +1269,7 @@ class WalletApi:
         return self.list_wallets_with_http_info(did_type, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def list_wallets_with_http_info(self, did_type : Optional[StrictStr] = None, **kwargs) -> ApiResponse:  # noqa: E501
+    def list_wallets_with_http_info(self, did_type : Optional[WalletDidType] = None, **kwargs) -> ApiResponse:  # noqa: E501
         """list_wallets  # noqa: E501
 
         lists all wallets  # noqa: E501
@@ -681,7 +1280,7 @@ class WalletApi:
         >>> result = thread.get()
 
         :param did_type:
-        :type did_type: str
+        :type did_type: WalletDidType
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -742,7 +1341,7 @@ class WalletApi:
         # process the query parameters
         _query_params = []
         if _params.get('did_type') is not None:  # noqa: E501
-            _query_params.append(('didType', _params['did_type']))
+            _query_params.append(('didType', _params['did_type'].value))
 
         # process the header parameters
         _header_params = dict(_params.get('_headers', {}))
@@ -766,6 +1365,294 @@ class WalletApi:
 
         return self.api_client.call_api(
             '/v1/wallets', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def remove_service_endpoint(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], service_id : Annotated[StrictStr, Field(..., description="id of the service endpoint to remove")], **kwargs) -> None:  # noqa: E501
+        """remove_service_endpoint  # noqa: E501
+
+        Remove service endpoint from wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_service_endpoint(wallet_id, service_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param service_id: id of the service endpoint to remove (required)
+        :type service_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the remove_service_endpoint_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.remove_service_endpoint_with_http_info(wallet_id, service_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def remove_service_endpoint_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], service_id : Annotated[StrictStr, Field(..., description="id of the service endpoint to remove")], **kwargs) -> ApiResponse:  # noqa: E501
+        """remove_service_endpoint  # noqa: E501
+
+        Remove service endpoint from wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_service_endpoint_with_http_info(wallet_id, service_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param service_id: id of the service endpoint to remove (required)
+        :type service_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'service_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method remove_service_endpoint" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+        if _params['service_id'] is not None:
+            _path_params['serviceId'] = _params['service_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/services/{serviceId}', 'DELETE',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def remove_wallet_key(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], key_id : Annotated[StrictStr, Field(..., description="id of the key to remove")], **kwargs) -> None:  # noqa: E501
+        """remove_wallet_key  # noqa: E501
+
+        Remove a key from the wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_wallet_key(wallet_id, key_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param key_id: id of the key to remove (required)
+        :type key_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the remove_wallet_key_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.remove_wallet_key_with_http_info(wallet_id, key_id, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def remove_wallet_key_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], key_id : Annotated[StrictStr, Field(..., description="id of the key to remove")], **kwargs) -> ApiResponse:  # noqa: E501
+        """remove_wallet_key  # noqa: E501
+
+        Remove a key from the wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.remove_wallet_key_with_http_info(wallet_id, key_id, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param key_id: id of the key to remove (required)
+        :type key_id: str
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: None
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'key_id'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method remove_wallet_key" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+        if _params['key_id'] is not None:
+            _path_params['keyId'] = _params['key_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {}
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/keys/{keyId}', 'DELETE',
             _path_params,
             _query_params,
             _header_params,
@@ -1892,6 +2779,169 @@ class WalletApi:
             _request_auth=_params.get('_request_auth'))
 
     @validate_arguments
+    def update_service_endpoint(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], service_id : Annotated[StrictStr, Field(..., description="id of the service endpoint to update")], update_service_endpoint_input : Annotated[UpdateServiceEndpointInput, Field(..., description="UpdateServiceEndpoint")], **kwargs) -> ServiceEndpointDto:  # noqa: E501
+        """update_service_endpoint  # noqa: E501
+
+        Update service endpoint in wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_service_endpoint(wallet_id, service_id, update_service_endpoint_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param service_id: id of the service endpoint to update (required)
+        :type service_id: str
+        :param update_service_endpoint_input: UpdateServiceEndpoint (required)
+        :type update_service_endpoint_input: UpdateServiceEndpointInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: ServiceEndpointDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the update_service_endpoint_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.update_service_endpoint_with_http_info(wallet_id, service_id, update_service_endpoint_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def update_service_endpoint_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], service_id : Annotated[StrictStr, Field(..., description="id of the service endpoint to update")], update_service_endpoint_input : Annotated[UpdateServiceEndpointInput, Field(..., description="UpdateServiceEndpoint")], **kwargs) -> ApiResponse:  # noqa: E501
+        """update_service_endpoint  # noqa: E501
+
+        Update service endpoint in wallet, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_service_endpoint_with_http_info(wallet_id, service_id, update_service_endpoint_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param service_id: id of the service endpoint to update (required)
+        :type service_id: str
+        :param update_service_endpoint_input: UpdateServiceEndpoint (required)
+        :type update_service_endpoint_input: UpdateServiceEndpointInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(ServiceEndpointDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'service_id',
+            'update_service_endpoint_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_service_endpoint" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+        if _params['service_id'] is not None:
+            _path_params['serviceId'] = _params['service_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['update_service_endpoint_input'] is not None:
+            _body_params = _params['update_service_endpoint_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "ServiceEndpointDto",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/services/{serviceId}', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
     def update_wallet(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], update_wallet_input : Annotated[UpdateWalletInput, Field(..., description="UpdateWallet")], **kwargs) -> WalletDto:  # noqa: E501
         """update_wallet  # noqa: E501
 
@@ -2032,6 +3082,170 @@ class WalletApi:
 
         return self.api_client.call_api(
             '/v1/wallets/{walletId}', 'PATCH',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def update_wallet_key(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], key_id : Annotated[StrictStr, Field(..., description="wallet-scoped key identifier to update")], update_wallet_key_input : Annotated[UpdateWalletKeyInput, Field(..., description="UpdateWalletKey")], **kwargs) -> WalletKeyDto:  # noqa: E501
+        """update_wallet_key  # noqa: E501
+
+        Update a wallet key's verification relationships, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_wallet_key(wallet_id, key_id, update_wallet_key_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param key_id: wallet-scoped key identifier to update (required)
+        :type key_id: str
+        :param update_wallet_key_input: UpdateWalletKey (required)
+        :type update_wallet_key_input: UpdateWalletKeyInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: WalletKeyDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the update_wallet_key_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.update_wallet_key_with_http_info(wallet_id, key_id, update_wallet_key_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def update_wallet_key_with_http_info(self, wallet_id : Annotated[StrictStr, Field(..., description="id of the wallet")], key_id : Annotated[StrictStr, Field(..., description="wallet-scoped key identifier to update")], update_wallet_key_input : Annotated[UpdateWalletKeyInput, Field(..., description="UpdateWalletKey")], **kwargs) -> ApiResponse:  # noqa: E501
+        """update_wallet_key  # noqa: E501
+
+        Update a wallet key's verification relationships, this applies to did:web only  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.update_wallet_key_with_http_info(wallet_id, key_id, update_wallet_key_input, async_req=True)
+        >>> result = thread.get()
+
+        :param wallet_id: id of the wallet (required)
+        :type wallet_id: str
+        :param key_id: wallet-scoped key identifier to update (required)
+        :type key_id: str
+        :param update_wallet_key_input: UpdateWalletKey (required)
+        :type update_wallet_key_input: UpdateWalletKeyInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(WalletKeyDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'wallet_id',
+            'key_id',
+            'update_wallet_key_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method update_wallet_key" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['wallet_id'] is not None:
+            _path_params['walletId'] = _params['wallet_id']
+
+        if _params['key_id'] is not None:
+            _path_params['keyId'] = _params['key_id']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['update_wallet_key_input'] is not None:
+            _body_params = _params['update_wallet_key_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ProjectTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "WalletKeyDto",
+            '400': "InvalidParameterError",
+        }
+
+        return self.api_client.call_api(
+            '/v2/wallets/{walletId}/keys/{keyId}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,

@@ -2,21 +2,84 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 
-| Method                                            | HTTP request                                            | Description |
-| ------------------------------------------------- | ------------------------------------------------------- | ----------- |
-| [**createWallet**](#createwallet)                 | **POST** /v1/wallets                                    |             |
-| [**createWalletV2**](#createwalletv2)             | **POST** /v2/wallets                                    |             |
-| [**deleteWallet**](#deletewallet)                 | **DELETE** /v1/wallets/{walletId}                       |             |
-| [**getWallet**](#getwallet)                       | **GET** /v1/wallets/{walletId}                          |             |
-| [**listWallets**](#listwallets)                   | **GET** /v1/wallets                                     |             |
-| [**signCredential**](#signcredential)             | **POST** /v1/wallets/{walletId}/sign-credential         |             |
-| [**signCredentialsJwt**](#signcredentialsjwt)     | **POST** /v2/wallets/{walletId}/credentials/jwt/sign    |             |
-| [**signCredentialsLdp**](#signcredentialsldp)     | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |             |
-| [**signCredentialsSdJwt**](#signcredentialssdjwt) | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |             |
-| [**signJwtToken**](#signjwttoken)                 | **POST** /v1/wallets/{walletId}/sign-jwt                |             |
-| [**signJwtV2**](#signjwtv2)                       | **POST** /v2/wallets/{walletId}/jwt/sign                | Sign JWT.   |
-| [**signPresentationsLdp**](#signpresentationsldp) | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |             |
-| [**updateWallet**](#updatewallet)                 | **PATCH** /v1/wallets/{walletId}                        |             |
+| Method                                              | HTTP request                                            | Description |
+| --------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| [**createServiceEndpoint**](#createserviceendpoint) | **POST** /v2/wallets/{walletId}/services                |             |
+| [**createWallet**](#createwallet)                   | **POST** /v1/wallets                                    |             |
+| [**createWalletKey**](#createwalletkey)             | **POST** /v2/wallets/{walletId}/keys                    |             |
+| [**createWalletV2**](#createwalletv2)               | **POST** /v2/wallets                                    |             |
+| [**deleteWallet**](#deletewallet)                   | **DELETE** /v1/wallets/{walletId}                       |             |
+| [**getWallet**](#getwallet)                         | **GET** /v1/wallets/{walletId}                          |             |
+| [**listServiceEndpoints**](#listserviceendpoints)   | **GET** /v2/wallets/{walletId}/services                 |             |
+| [**listWalletKeys**](#listwalletkeys)               | **GET** /v2/wallets/{walletId}/keys                     |             |
+| [**listWallets**](#listwallets)                     | **GET** /v1/wallets                                     |             |
+| [**removeServiceEndpoint**](#removeserviceendpoint) | **DELETE** /v2/wallets/{walletId}/services/{serviceId}  |             |
+| [**removeWalletKey**](#removewalletkey)             | **DELETE** /v2/wallets/{walletId}/keys/{keyId}          |             |
+| [**signCredential**](#signcredential)               | **POST** /v1/wallets/{walletId}/sign-credential         |             |
+| [**signCredentialsJwt**](#signcredentialsjwt)       | **POST** /v2/wallets/{walletId}/credentials/jwt/sign    |             |
+| [**signCredentialsLdp**](#signcredentialsldp)       | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |             |
+| [**signCredentialsSdJwt**](#signcredentialssdjwt)   | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |             |
+| [**signJwtToken**](#signjwttoken)                   | **POST** /v1/wallets/{walletId}/sign-jwt                |             |
+| [**signJwtV2**](#signjwtv2)                         | **POST** /v2/wallets/{walletId}/jwt/sign                | Sign JWT.   |
+| [**signPresentationsLdp**](#signpresentationsldp)   | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |             |
+| [**updateServiceEndpoint**](#updateserviceendpoint) | **PATCH** /v2/wallets/{walletId}/services/{serviceId}   |             |
+| [**updateWallet**](#updatewallet)                   | **PATCH** /v1/wallets/{walletId}                        |             |
+| [**updateWalletKey**](#updatewalletkey)             | **PATCH** /v2/wallets/{walletId}/keys/{keyId}           |             |
+
+# **createServiceEndpoint**
+
+> ServiceEndpointDto createServiceEndpoint(serviceEndpointInput)
+
+Add service endpoint to wallet, this applies to did:web only
+
+### Example
+
+```typescript
+import {
+  WalletApi,
+  Configuration,
+  ServiceEndpointInput,
+} from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let serviceEndpointInput: ServiceEndpointInput //AddServiceEndpoint
+
+const { status, data } = await apiInstance.createServiceEndpoint(
+  walletId,
+  serviceEndpointInput,
+)
+```
+
+### Parameters
+
+| Name                     | Type                     | Description        | Notes                 |
+| ------------------------ | ------------------------ | ------------------ | --------------------- |
+| **serviceEndpointInput** | **ServiceEndpointInput** | AddServiceEndpoint |                       |
+| **walletId**             | [**string**]             | id of the wallet   | defaults to undefined |
+
+### Return type
+
+**ServiceEndpointDto**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **201**     | Service endpoint added | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **createWallet**
 
@@ -66,6 +129,61 @@ const { status, data } = await apiInstance.createWallet(createWalletInput)
 | ----------- | -------------- | ---------------- |
 | **201**     | Created        | -                |
 | **403**     | ForbiddenError | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createWalletKey**
+
+> WalletKeyDto createWalletKey(createWalletKeyInput)
+
+Add a new key to the wallet, this applies to did:web only
+
+### Example
+
+```typescript
+import {
+  WalletApi,
+  Configuration,
+  CreateWalletKeyInput,
+} from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let createWalletKeyInput: CreateWalletKeyInput //CreateWalletKey
+
+const { status, data } = await apiInstance.createWalletKey(
+  walletId,
+  createWalletKeyInput,
+)
+```
+
+### Parameters
+
+| Name                     | Type                     | Description      | Notes                 |
+| ------------------------ | ------------------------ | ---------------- | --------------------- |
+| **createWalletKeyInput** | **CreateWalletKeyInput** | CreateWalletKey  |                       |
+| **walletId**             | [**string**]             | id of the wallet | defaults to undefined |
+
+### Return type
+
+**WalletKeyDto**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **201**     | Key added successfully | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -215,6 +333,98 @@ const { status, data } = await apiInstance.getWallet(walletId)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **listServiceEndpoints**
+
+> ListServiceEndpointsOK listServiceEndpoints()
+
+List service endpoints in wallet, this applies to did:web only
+
+### Example
+
+```typescript
+import { WalletApi, Configuration } from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+
+const { status, data } = await apiInstance.listServiceEndpoints(walletId)
+```
+
+### Parameters
+
+| Name         | Type         | Description      | Notes                 |
+| ------------ | ------------ | ---------------- | --------------------- |
+| **walletId** | [**string**] | id of the wallet | defaults to undefined |
+
+### Return type
+
+**ListServiceEndpointsOK**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description       | Response headers |
+| ----------- | ----------------- | ---------------- |
+| **200**     | Service endpoints | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **listWalletKeys**
+
+> ListWalletKeysOK listWalletKeys()
+
+List all keys in the wallet, this applies to did:web only
+
+### Example
+
+```typescript
+import { WalletApi, Configuration } from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+
+const { status, data } = await apiInstance.listWalletKeys(walletId)
+```
+
+### Parameters
+
+| Name         | Type         | Description      | Notes                 |
+| ------------ | ------------ | ---------------- | --------------------- |
+| **walletId** | [**string**] | id of the wallet | defaults to undefined |
+
+### Return type
+
+**ListWalletKeysOK**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+| ----------- | ----------- | ---------------- |
+| **200**     | Wallet keys | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **listWallets**
 
 > WalletsListDto listWallets()
@@ -229,16 +439,16 @@ import { WalletApi, Configuration } from '@affinidi-tdk/wallets-client'
 const configuration = new Configuration()
 const apiInstance = new WalletApi(configuration)
 
-let didType: 'WEB' | 'KEY' // (optional) (default to undefined)
+let didType: WalletDidType // (optional) (default to undefined)
 
 const { status, data } = await apiInstance.listWallets(didType)
 ```
 
 ### Parameters
 
-| Name        | Type               | Description                                                     | Notes |
-| ----------- | ------------------ | --------------------------------------------------------------- | ----- | -------------------------------- |
-| **didType** | [\*\*&#39;WEB&#39; | &#39;KEY&#39;**]**Array<&#39;WEB&#39; &#124; &#39;KEY&#39;>\*\* |       | (optional) defaults to undefined |
+| Name        | Type              | Description | Notes                            |
+| ----------- | ----------------- | ----------- | -------------------------------- |
+| **didType** | **WalletDidType** |             | (optional) defaults to undefined |
 
 ### Return type
 
@@ -260,6 +470,106 @@ const { status, data } = await apiInstance.listWallets(didType)
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **removeServiceEndpoint**
+
+> removeServiceEndpoint()
+
+Remove service endpoint from wallet, this applies to did:web only
+
+### Example
+
+```typescript
+import { WalletApi, Configuration } from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let serviceId: string //id of the service endpoint to remove (default to undefined)
+
+const { status, data } = await apiInstance.removeServiceEndpoint(
+  walletId,
+  serviceId,
+)
+```
+
+### Parameters
+
+| Name          | Type         | Description                          | Notes                 |
+| ------------- | ------------ | ------------------------------------ | --------------------- |
+| **walletId**  | [**string**] | id of the wallet                     | defaults to undefined |
+| **serviceId** | [**string**] | id of the service endpoint to remove | defaults to undefined |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **204**     | Service endpoint removed | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **removeWalletKey**
+
+> removeWalletKey()
+
+Remove a key from the wallet, this applies to did:web only
+
+### Example
+
+```typescript
+import { WalletApi, Configuration } from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let keyId: string //id of the key to remove (default to undefined)
+
+const { status, data } = await apiInstance.removeWalletKey(walletId, keyId)
+```
+
+### Parameters
+
+| Name         | Type         | Description             | Notes                 |
+| ------------ | ------------ | ----------------------- | --------------------- |
+| **walletId** | [**string**] | id of the wallet        | defaults to undefined |
+| **keyId**    | [**string**] | id of the key to remove | defaults to undefined |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **204**     | Key removed successfully | -                |
+| **400**     | BadRequestError          | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -670,6 +980,64 @@ const { status, data } = await apiInstance.signPresentationsLdp(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **updateServiceEndpoint**
+
+> ServiceEndpointDto updateServiceEndpoint(updateServiceEndpointInput)
+
+Update service endpoint in wallet, this applies to did:web only
+
+### Example
+
+```typescript
+import {
+  WalletApi,
+  Configuration,
+  UpdateServiceEndpointInput,
+} from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let serviceId: string //id of the service endpoint to update (default to undefined)
+let updateServiceEndpointInput: UpdateServiceEndpointInput //UpdateServiceEndpoint
+
+const { status, data } = await apiInstance.updateServiceEndpoint(
+  walletId,
+  serviceId,
+  updateServiceEndpointInput,
+)
+```
+
+### Parameters
+
+| Name                           | Type                           | Description                          | Notes                 |
+| ------------------------------ | ------------------------------ | ------------------------------------ | --------------------- |
+| **updateServiceEndpointInput** | **UpdateServiceEndpointInput** | UpdateServiceEndpoint                |                       |
+| **walletId**                   | [**string**]                   | id of the wallet                     | defaults to undefined |
+| **serviceId**                  | [**string**]                   | id of the service endpoint to update | defaults to undefined |
+
+### Return type
+
+**ServiceEndpointDto**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **200**     | Service endpoint updated | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateWallet**
 
 > WalletDto updateWallet(updateWalletInput)
@@ -723,5 +1091,64 @@ const { status, data } = await apiInstance.updateWallet(
 | ----------- | --------------- | ---------------- |
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateWalletKey**
+
+> WalletKeyDto updateWalletKey(updateWalletKeyInput)
+
+Update a wallet key\'s verification relationships, this applies to did:web only
+
+### Example
+
+```typescript
+import {
+  WalletApi,
+  Configuration,
+  UpdateWalletKeyInput,
+} from '@affinidi-tdk/wallets-client'
+
+const configuration = new Configuration()
+const apiInstance = new WalletApi(configuration)
+
+let walletId: string //id of the wallet (default to undefined)
+let keyId: string //wallet-scoped key identifier to update (default to undefined)
+let updateWalletKeyInput: UpdateWalletKeyInput //UpdateWalletKey
+
+const { status, data } = await apiInstance.updateWalletKey(
+  walletId,
+  keyId,
+  updateWalletKeyInput,
+)
+```
+
+### Parameters
+
+| Name                     | Type                     | Description                            | Notes                 |
+| ------------------------ | ------------------------ | -------------------------------------- | --------------------- |
+| **updateWalletKeyInput** | **UpdateWalletKeyInput** | UpdateWalletKey                        |                       |
+| **walletId**             | [**string**]             | id of the wallet                       | defaults to undefined |
+| **keyId**                | [**string**]             | wallet-scoped key identifier to update | defaults to undefined |
+
+### Return type
+
+**WalletKeyDto**
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **200**     | Key updated successfully | -                |
+| **400**     | BadRequestError          | -                |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -2,21 +2,100 @@
 
 All URIs are relative to *https://apse1.api.affinidi.io/cwe*
 
-| Method                                                        | HTTP request                                            | Description |
-| ------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
-| [**createWallet**](WalletApi.md#createWallet)                 | **POST** /v1/wallets                                    |             |
-| [**createWalletV2**](WalletApi.md#createWalletV2)             | **POST** /v2/wallets                                    |             |
-| [**deleteWallet**](WalletApi.md#deleteWallet)                 | **DELETE** /v1/wallets/{walletId}                       |             |
-| [**getWallet**](WalletApi.md#getWallet)                       | **GET** /v1/wallets/{walletId}                          |             |
-| [**listWallets**](WalletApi.md#listWallets)                   | **GET** /v1/wallets                                     |             |
-| [**signCredential**](WalletApi.md#signCredential)             | **POST** /v1/wallets/{walletId}/sign-credential         |             |
-| [**signCredentialsJwt**](WalletApi.md#signCredentialsJwt)     | **POST** /v2/wallets/{walletId}/credentials/jwt/sign    |             |
-| [**signCredentialsLdp**](WalletApi.md#signCredentialsLdp)     | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |             |
-| [**signCredentialsSdJwt**](WalletApi.md#signCredentialsSdJwt) | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |             |
-| [**signJwtToken**](WalletApi.md#signJwtToken)                 | **POST** /v1/wallets/{walletId}/sign-jwt                |             |
-| [**signJwtV2**](WalletApi.md#signJwtV2)                       | **POST** /v2/wallets/{walletId}/jwt/sign                | Sign JWT.   |
-| [**signPresentationsLdp**](WalletApi.md#signPresentationsLdp) | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |             |
-| [**updateWallet**](WalletApi.md#updateWallet)                 | **PATCH** /v1/wallets/{walletId}                        |             |
+| Method                                                          | HTTP request                                            | Description |
+| --------------------------------------------------------------- | ------------------------------------------------------- | ----------- |
+| [**createServiceEndpoint**](WalletApi.md#createServiceEndpoint) | **POST** /v2/wallets/{walletId}/services                |             |
+| [**createWallet**](WalletApi.md#createWallet)                   | **POST** /v1/wallets                                    |             |
+| [**createWalletKey**](WalletApi.md#createWalletKey)             | **POST** /v2/wallets/{walletId}/keys                    |             |
+| [**createWalletV2**](WalletApi.md#createWalletV2)               | **POST** /v2/wallets                                    |             |
+| [**deleteWallet**](WalletApi.md#deleteWallet)                   | **DELETE** /v1/wallets/{walletId}                       |             |
+| [**getWallet**](WalletApi.md#getWallet)                         | **GET** /v1/wallets/{walletId}                          |             |
+| [**listServiceEndpoints**](WalletApi.md#listServiceEndpoints)   | **GET** /v2/wallets/{walletId}/services                 |             |
+| [**listWalletKeys**](WalletApi.md#listWalletKeys)               | **GET** /v2/wallets/{walletId}/keys                     |             |
+| [**listWallets**](WalletApi.md#listWallets)                     | **GET** /v1/wallets                                     |             |
+| [**removeServiceEndpoint**](WalletApi.md#removeServiceEndpoint) | **DELETE** /v2/wallets/{walletId}/services/{serviceId}  |             |
+| [**removeWalletKey**](WalletApi.md#removeWalletKey)             | **DELETE** /v2/wallets/{walletId}/keys/{keyId}          |             |
+| [**signCredential**](WalletApi.md#signCredential)               | **POST** /v1/wallets/{walletId}/sign-credential         |             |
+| [**signCredentialsJwt**](WalletApi.md#signCredentialsJwt)       | **POST** /v2/wallets/{walletId}/credentials/jwt/sign    |             |
+| [**signCredentialsLdp**](WalletApi.md#signCredentialsLdp)       | **POST** /v2/wallets/{walletId}/credentials/ldp/sign    |             |
+| [**signCredentialsSdJwt**](WalletApi.md#signCredentialsSdJwt)   | **POST** /v2/wallets/{walletId}/credentials/sd-jwt/sign |             |
+| [**signJwtToken**](WalletApi.md#signJwtToken)                   | **POST** /v1/wallets/{walletId}/sign-jwt                |             |
+| [**signJwtV2**](WalletApi.md#signJwtV2)                         | **POST** /v2/wallets/{walletId}/jwt/sign                | Sign JWT.   |
+| [**signPresentationsLdp**](WalletApi.md#signPresentationsLdp)   | **POST** /v2/wallets/{walletId}/presentations/ldp/sign  |             |
+| [**updateServiceEndpoint**](WalletApi.md#updateServiceEndpoint) | **PATCH** /v2/wallets/{walletId}/services/{serviceId}   |             |
+| [**updateWallet**](WalletApi.md#updateWallet)                   | **PATCH** /v1/wallets/{walletId}                        |             |
+| [**updateWalletKey**](WalletApi.md#updateWalletKey)             | **PATCH** /v2/wallets/{walletId}/keys/{keyId}           |             |
+
+## createServiceEndpoint
+
+> ServiceEndpointDto createServiceEndpoint(walletId, serviceEndpointInput)
+
+Add service endpoint to wallet, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        ServiceEndpointInput serviceEndpointInput = new ServiceEndpointInput(); // ServiceEndpointInput | AddServiceEndpoint
+        try {
+            ServiceEndpointDto result = apiInstance.createServiceEndpoint(walletId, serviceEndpointInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#createServiceEndpoint");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                     | Type                                                | Description        | Notes |
+| ------------------------ | --------------------------------------------------- | ------------------ | ----- |
+| **walletId**             | **String**                                          | id of the wallet   |       |
+| **serviceEndpointInput** | [**ServiceEndpointInput**](ServiceEndpointInput.md) | AddServiceEndpoint |       |
+
+### Return type
+
+[**ServiceEndpointDto**](ServiceEndpointDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **201**     | Service endpoint added | -                |
 
 ## createWallet
 
@@ -87,6 +166,77 @@ public class Example {
 | ----------- | -------------- | ---------------- |
 | **201**     | Created        | -                |
 | **403**     | ForbiddenError | -                |
+
+## createWalletKey
+
+> WalletKeyDto createWalletKey(walletId, createWalletKeyInput)
+
+Add a new key to the wallet, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        CreateWalletKeyInput createWalletKeyInput = new CreateWalletKeyInput(); // CreateWalletKeyInput | CreateWalletKey
+        try {
+            WalletKeyDto result = apiInstance.createWalletKey(walletId, createWalletKeyInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#createWalletKey");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                     | Type                                                | Description      | Notes |
+| ------------------------ | --------------------------------------------------- | ---------------- | ----- |
+| **walletId**             | **String**                                          | id of the wallet |       |
+| **createWalletKeyInput** | [**CreateWalletKeyInput**](CreateWalletKeyInput.md) | CreateWalletKey  |       |
+
+### Return type
+
+[**WalletKeyDto**](WalletKeyDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description            | Response headers |
+| ----------- | ---------------------- | ---------------- |
+| **201**     | Key added successfully | -                |
 
 ## createWalletV2
 
@@ -298,6 +448,144 @@ public class Example {
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 
+## listServiceEndpoints
+
+> ListServiceEndpointsOK listServiceEndpoints(walletId)
+
+List service endpoints in wallet, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        try {
+            ListServiceEndpointsOK result = apiInstance.listServiceEndpoints(walletId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#listServiceEndpoints");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name         | Type       | Description      | Notes |
+| ------------ | ---------- | ---------------- | ----- |
+| **walletId** | **String** | id of the wallet |       |
+
+### Return type
+
+[**ListServiceEndpointsOK**](ListServiceEndpointsOK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description       | Response headers |
+| ----------- | ----------------- | ---------------- |
+| **200**     | Service endpoints | -                |
+
+## listWalletKeys
+
+> ListWalletKeysOK listWalletKeys(walletId)
+
+List all keys in the wallet, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        try {
+            ListWalletKeysOK result = apiInstance.listWalletKeys(walletId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#listWalletKeys");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name         | Type       | Description      | Notes |
+| ------------ | ---------- | ---------------- | ----- |
+| **walletId** | **String** | id of the wallet |       |
+
+### Return type
+
+[**ListWalletKeysOK**](ListWalletKeysOK.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+| ----------- | ----------- | ---------------- |
+| **200**     | Wallet keys | -                |
+
 ## listWallets
 
 > WalletsListDto listWallets(didType)
@@ -327,7 +615,7 @@ public class Example {
         //ProjectTokenAuth.setApiKeyPrefix("Token");
 
         WalletApi apiInstance = new WalletApi(defaultClient);
-        String didType = "WEB"; // String |
+        WalletDidType didType = WalletDidType.fromValue("WEB"); // WalletDidType |
         try {
             WalletsListDto result = apiInstance.listWallets(didType);
             System.out.println(result);
@@ -344,9 +632,9 @@ public class Example {
 
 ### Parameters
 
-| Name        | Type       | Description | Notes                       |
-| ----------- | ---------- | ----------- | --------------------------- |
-| **didType** | **String** |             | [optional] [enum: WEB, KEY] |
+| Name        | Type                     | Description | Notes                       |
+| ----------- | ------------------------ | ----------- | --------------------------- |
+| **didType** | [**WalletDidType**](.md) |             | [optional] [enum: WEB, KEY] |
 
 ### Return type
 
@@ -368,6 +656,147 @@ public class Example {
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
 | **403**     | ForbiddenError  | -                |
+
+## removeServiceEndpoint
+
+> removeServiceEndpoint(walletId, serviceId)
+
+Remove service endpoint from wallet, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        String serviceId = "serviceId_example"; // String | id of the service endpoint to remove
+        try {
+            apiInstance.removeServiceEndpoint(walletId, serviceId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#removeServiceEndpoint");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name          | Type       | Description                          | Notes |
+| ------------- | ---------- | ------------------------------------ | ----- |
+| **walletId**  | **String** | id of the wallet                     |       |
+| **serviceId** | **String** | id of the service endpoint to remove |       |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **204**     | Service endpoint removed | -                |
+
+## removeWalletKey
+
+> removeWalletKey(walletId, keyId)
+
+Remove a key from the wallet, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        String keyId = "keyId_example"; // String | id of the key to remove
+        try {
+            apiInstance.removeWalletKey(walletId, keyId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#removeWalletKey");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name         | Type       | Description             | Notes |
+| ------------ | ---------- | ----------------------- | ----- |
+| **walletId** | **String** | id of the wallet        |       |
+| **keyId**    | **String** | id of the key to remove |       |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **204**     | Key removed successfully | -                |
+| **400**     | BadRequestError          | -                |
 
 ## signCredential
 
@@ -893,6 +1322,79 @@ public class Example {
 | **403**     | ForbiddenError  | -                |
 | **404**     | NotFoundError   | -                |
 
+## updateServiceEndpoint
+
+> ServiceEndpointDto updateServiceEndpoint(walletId, serviceId, updateServiceEndpointInput)
+
+Update service endpoint in wallet, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        String serviceId = "serviceId_example"; // String | id of the service endpoint to update
+        UpdateServiceEndpointInput updateServiceEndpointInput = new UpdateServiceEndpointInput(); // UpdateServiceEndpointInput | UpdateServiceEndpoint
+        try {
+            ServiceEndpointDto result = apiInstance.updateServiceEndpoint(walletId, serviceId, updateServiceEndpointInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#updateServiceEndpoint");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                           | Type                                                            | Description                          | Notes |
+| ------------------------------ | --------------------------------------------------------------- | ------------------------------------ | ----- |
+| **walletId**                   | **String**                                                      | id of the wallet                     |       |
+| **serviceId**                  | **String**                                                      | id of the service endpoint to update |       |
+| **updateServiceEndpointInput** | [**UpdateServiceEndpointInput**](UpdateServiceEndpointInput.md) | UpdateServiceEndpoint                |       |
+
+### Return type
+
+[**ServiceEndpointDto**](ServiceEndpointDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **200**     | Service endpoint updated | -                |
+
 ## updateWallet
 
 > WalletDto updateWallet(walletId, updateWalletInput)
@@ -964,3 +1466,77 @@ public class Example {
 | ----------- | --------------- | ---------------- |
 | **200**     | Ok              | -                |
 | **400**     | BadRequestError | -                |
+
+## updateWalletKey
+
+> WalletKeyDto updateWalletKey(walletId, keyId, updateWalletKeyInput)
+
+Update a wallet key&#39;s verification relationships, this applies to did:web only
+
+### Example
+
+```java
+// Import classes:
+import com.affinidi.tdk.wallets.client.ApiClient;
+import com.affinidi.tdk.wallets.client.ApiException;
+import com.affinidi.tdk.wallets.client.Configuration;
+import com.affinidi.tdk.wallets.client.auth.*;
+import com.affinidi.tdk.wallets.client.models.*;
+import com.affinidi.tdk.wallets.client.apis.WalletApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://apse1.api.affinidi.io/cwe");
+
+        // Configure API key authorization: ProjectTokenAuth
+        ApiKeyAuth ProjectTokenAuth = (ApiKeyAuth) defaultClient.getAuthentication("ProjectTokenAuth");
+        ProjectTokenAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //ProjectTokenAuth.setApiKeyPrefix("Token");
+
+        WalletApi apiInstance = new WalletApi(defaultClient);
+        String walletId = "walletId_example"; // String | id of the wallet
+        String keyId = "keyId_example"; // String | wallet-scoped key identifier to update
+        UpdateWalletKeyInput updateWalletKeyInput = new UpdateWalletKeyInput(); // UpdateWalletKeyInput | UpdateWalletKey
+        try {
+            WalletKeyDto result = apiInstance.updateWalletKey(walletId, keyId, updateWalletKeyInput);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling WalletApi#updateWalletKey");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+| Name                     | Type                                                | Description                            | Notes |
+| ------------------------ | --------------------------------------------------- | -------------------------------------- | ----- |
+| **walletId**             | **String**                                          | id of the wallet                       |       |
+| **keyId**                | **String**                                          | wallet-scoped key identifier to update |       |
+| **updateWalletKeyInput** | [**UpdateWalletKeyInput**](UpdateWalletKeyInput.md) | UpdateWalletKey                        |       |
+
+### Return type
+
+[**WalletKeyDto**](WalletKeyDto.md)
+
+### Authorization
+
+[ProjectTokenAuth](../README.md#ProjectTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description              | Response headers |
+| ----------- | ------------------------ | ---------------- |
+| **200**     | Key updated successfully | -                |
+| **400**     | BadRequestError          | -                |

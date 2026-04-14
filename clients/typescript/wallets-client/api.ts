@@ -81,6 +81,35 @@ export type CreateWalletInputDidMethodEnum =
   (typeof CreateWalletInputDidMethodEnum)[keyof typeof CreateWalletInputDidMethodEnum]
 
 /**
+ * Input for adding a new key to a wallet. Only supported for did:web ATM.
+ * @export
+ * @interface CreateWalletKeyInput
+ */
+export interface CreateWalletKeyInput {
+  /**
+   * cryptographic algorithm for the new key
+   * @type {string}
+   * @memberof CreateWalletKeyInput
+   */
+  keyType: CreateWalletKeyInputKeyTypeEnum
+  /**
+   * verification relationships for the key.
+   * @type {Array<VerificationRelationship>}
+   * @memberof CreateWalletKeyInput
+   */
+  relationships: Array<VerificationRelationship>
+}
+
+export const CreateWalletKeyInputKeyTypeEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+} as const
+
+export type CreateWalletKeyInputKeyTypeEnum =
+  (typeof CreateWalletKeyInputKeyTypeEnum)[keyof typeof CreateWalletKeyInputKeyTypeEnum]
+
+/**
  * wallet dto
  * @export
  * @interface CreateWalletResponse
@@ -296,6 +325,32 @@ export type InvalidParameterErrorHttpStatusCodeEnum =
   (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
 
 /**
+ * Response containing service endpoints
+ * @export
+ * @interface ListServiceEndpointsOK
+ */
+export interface ListServiceEndpointsOK {
+  /**
+   * list of service endpoints
+   * @type {Array<ServiceEndpointDto>}
+   * @memberof ListServiceEndpointsOK
+   */
+  services: Array<ServiceEndpointDto>
+}
+/**
+ * Response containing wallet keys
+ * @export
+ * @interface ListWalletKeysOK
+ */
+export interface ListWalletKeysOK {
+  /**
+   * list of wallet keys
+   * @type {Array<WalletKeyDto>}
+   * @memberof ListWalletKeysOK
+   */
+  keys: Array<WalletKeyDto>
+}
+/**
  *
  * @export
  * @interface NotFoundError
@@ -479,36 +534,114 @@ export interface RevokeCredentialsInput {
   credentialId: string
 }
 /**
+ * Service endpoint information
+ * @export
+ * @interface ServiceEndpointDto
+ */
+export interface ServiceEndpointDto {
+  /**
+   * service endpoint ID
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  id?: string
+  /**
+   * name of the service endpoint
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  name?: string
+  /**
+   * description of the service endpoint
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  description?: string
+  /**
+   * service endpoint URL
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  url?: string
+  /**
+   * wallet ARI this endpoint belongs to
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  walletAri?: string
+  /**
+   * project ID
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  projectId?: string
+  /**
+   * when this endpoint was created
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  createdAt?: string
+  /**
+   * when this endpoint was last modified
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  modifiedAt?: string
+  /**
+   * identifier of the user who created the entity
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  createdBy?: string
+  /**
+   * identifier of the user who last updated the entity
+   * @type {string}
+   * @memberof ServiceEndpointDto
+   */
+  modifiedBy?: string
+}
+/**
  * Input for adding a service endpoint
  * @export
  * @interface ServiceEndpointInput
  */
 export interface ServiceEndpointInput {
   /**
-   * Name of the service endpoint
+   * Alphanumeric string with common punctuation (max 100 characters)
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  name: string
+  name?: string
   /**
-   * Description of the service endpoint
+   * Alphanumeric string with common punctuation (max 500 characters)
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  description: string
+  description?: string
   /**
-   * service endpoint URL
+   * HTTP or HTTPS URL
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  url?: string
+  url: string
   /**
    * type of service endpoint
    * @type {string}
    * @memberof ServiceEndpointInput
    */
-  serviceType?: string
+  serviceType?: ServiceEndpointInputServiceTypeEnum
 }
+
+export const ServiceEndpointInputServiceTypeEnum = {
+  DidCommMessaging: 'DIDCommMessaging',
+  LinkedDomains: 'LinkedDomains',
+  IdentityHub: 'IdentityHub',
+  CredentialRegistry: 'CredentialRegistry',
+} as const
+
+export type ServiceEndpointInputServiceTypeEnum =
+  (typeof ServiceEndpointInputServiceTypeEnum)[keyof typeof ServiceEndpointInputServiceTypeEnum]
+
 /**
  * @type SignCredential400Response
  * @export
@@ -1054,6 +1187,31 @@ export type TooManyRequestsErrorHttpStatusCodeEnum =
   (typeof TooManyRequestsErrorHttpStatusCodeEnum)[keyof typeof TooManyRequestsErrorHttpStatusCodeEnum]
 
 /**
+ * Input for updating a service endpoint
+ * @export
+ * @interface UpdateServiceEndpointInput
+ */
+export interface UpdateServiceEndpointInput {
+  /**
+   * Alphanumeric string with common punctuation (max 100 characters)
+   * @type {string}
+   * @memberof UpdateServiceEndpointInput
+   */
+  name?: string
+  /**
+   * Alphanumeric string with common punctuation (max 500 characters)
+   * @type {string}
+   * @memberof UpdateServiceEndpointInput
+   */
+  description?: string
+  /**
+   * HTTP or HTTPS URL
+   * @type {string}
+   * @memberof UpdateServiceEndpointInput
+   */
+  url?: string
+}
+/**
  * Update wallet input params
  * @export
  * @interface UpdateWalletInput
@@ -1072,6 +1230,49 @@ export interface UpdateWalletInput {
    */
   description?: string
 }
+/**
+ * Input for updating an existing wallet key. Only supported for did:web wallets.
+ * @export
+ * @interface UpdateWalletKeyInput
+ */
+export interface UpdateWalletKeyInput {
+  /**
+   * verification relationships for the key
+   * @type {Array<VerificationRelationship>}
+   * @memberof UpdateWalletKeyInput
+   */
+  relationships?: Array<VerificationRelationship>
+}
+/**
+ * DID document verification relationship
+ * @export
+ * @enum {string}
+ */
+
+export const VerificationRelationship = {
+  Authentication: 'authentication',
+  AssertionMethod: 'assertionMethod',
+  KeyAgreement: 'keyAgreement',
+  CapabilityInvocation: 'capabilityInvocation',
+  CapabilityDelegation: 'capabilityDelegation',
+} as const
+
+export type VerificationRelationship =
+  (typeof VerificationRelationship)[keyof typeof VerificationRelationship]
+
+/**
+ * DID method type for the wallet
+ * @export
+ * @enum {string}
+ */
+
+export const WalletDidType = {
+  Web: 'WEB',
+  Key: 'KEY',
+} as const
+
+export type WalletDidType = (typeof WalletDidType)[keyof typeof WalletDidType]
+
 /**
  * wallet dto
  * @export
@@ -1153,6 +1354,47 @@ export interface WalletDtoKeysInner {
   ari?: string
 }
 /**
+ * Detailed information about a wallet key. Multiple keys are only supported for did:web wallets.
+ * @export
+ * @interface WalletKeyDto
+ */
+export interface WalletKeyDto {
+  /**
+   * wallet-scoped key identifier (e.g., \"key-1\")
+   * @type {string}
+   * @memberof WalletKeyDto
+   */
+  keyId?: string
+  /**
+   * cryptographic algorithm used by this key
+   * @type {string}
+   * @memberof WalletKeyDto
+   */
+  keyType?: WalletKeyDtoKeyTypeEnum
+  /**
+   * ARI identifier for the key (e.g., \"ari:key:...\")
+   * @type {string}
+   * @memberof WalletKeyDto
+   */
+  keyAri?: string
+  /**
+   * verification relationships this key supports
+   * @type {Array<VerificationRelationship>}
+   * @memberof WalletKeyDto
+   */
+  relationships?: Array<VerificationRelationship>
+}
+
+export const WalletKeyDtoKeyTypeEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+} as const
+
+export type WalletKeyDtoKeyTypeEnum =
+  (typeof WalletKeyDtoKeyTypeEnum)[keyof typeof WalletKeyDtoKeyTypeEnum]
+
+/**
  * wallet v2 dto
  * @export
  * @interface WalletV2Dto
@@ -1206,6 +1448,12 @@ export interface WalletV2Dto {
    * @memberof WalletV2Dto
    */
   keys?: Array<WalletDtoKeysInner>
+  /**
+   * list of service endpoints associated with this wallet
+   * @type {Array<ServiceEndpointDto>}
+   * @memberof WalletV2Dto
+   */
+  services?: Array<ServiceEndpointDto>
   /**
    *
    * @type {string}
@@ -1833,6 +2081,73 @@ export const WalletApiAxiosParamCreator = function (
 ) {
   return {
     /**
+     * Add service endpoint to wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {ServiceEndpointInput} serviceEndpointInput AddServiceEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createServiceEndpoint: async (
+      walletId: string,
+      serviceEndpointInput: ServiceEndpointInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('createServiceEndpoint', 'walletId', walletId)
+      // verify required parameter 'serviceEndpointInput' is not null or undefined
+      assertParamExists(
+        'createServiceEndpoint',
+        'serviceEndpointInput',
+        serviceEndpointInput,
+      )
+      const localVarPath = `/v2/wallets/{walletId}/services`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        serviceEndpointInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * creates a wallet
      * @param {CreateWalletInput} [createWalletInput] CreateWallet
      * @param {*} [options] Override http request option.
@@ -1877,6 +2192,73 @@ export const WalletApiAxiosParamCreator = function (
       }
       localVarRequestOptions.data = serializeDataIfNeeded(
         createWalletInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Add a new key to the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {CreateWalletKeyInput} createWalletKeyInput CreateWalletKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWalletKey: async (
+      walletId: string,
+      createWalletKeyInput: CreateWalletKeyInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('createWalletKey', 'walletId', walletId)
+      // verify required parameter 'createWalletKeyInput' is not null or undefined
+      assertParamExists(
+        'createWalletKey',
+        'createWalletKeyInput',
+        createWalletKeyInput,
+      )
+      const localVarPath = `/v2/wallets/{walletId}/keys`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createWalletKeyInput,
         localVarRequestOptions,
         configuration,
       )
@@ -2045,13 +2427,117 @@ export const WalletApiAxiosParamCreator = function (
       }
     },
     /**
+     * List service endpoints in wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listServiceEndpoints: async (
+      walletId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('listServiceEndpoints', 'walletId', walletId)
+      const localVarPath = `/v2/wallets/{walletId}/services`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * List all keys in the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listWalletKeys: async (
+      walletId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('listWalletKeys', 'walletId', walletId)
+      const localVarPath = `/v2/wallets/{walletId}/keys`.replace(
+        `{${'walletId'}}`,
+        encodeURIComponent(String(walletId)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * lists all wallets
-     * @param {ListWalletsDidTypeEnum} [didType]
+     * @param {WalletDidType} [didType]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listWallets: async (
-      didType?: ListWalletsDidTypeEnum,
+      didType?: WalletDidType,
       options: RawAxiosRequestConfig = {},
     ): Promise<RequestArgs> => {
       const localVarPath = `/v1/wallets`
@@ -2080,6 +2566,116 @@ export const WalletApiAxiosParamCreator = function (
       if (didType !== undefined) {
         localVarQueryParameter['didType'] = didType
       }
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Remove service endpoint from wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} serviceId id of the service endpoint to remove
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    removeServiceEndpoint: async (
+      walletId: string,
+      serviceId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('removeServiceEndpoint', 'walletId', walletId)
+      // verify required parameter 'serviceId' is not null or undefined
+      assertParamExists('removeServiceEndpoint', 'serviceId', serviceId)
+      const localVarPath = `/v2/wallets/{walletId}/services/{serviceId}`
+        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
+        .replace(`{${'serviceId'}}`, encodeURIComponent(String(serviceId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * Remove a key from the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} keyId id of the key to remove
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    removeWalletKey: async (
+      walletId: string,
+      keyId: string,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('removeWalletKey', 'walletId', walletId)
+      // verify required parameter 'keyId' is not null or undefined
+      assertParamExists('removeWalletKey', 'keyId', keyId)
+      const localVarPath = `/v2/wallets/{walletId}/keys/{keyId}`
+        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
+        .replace(`{${'keyId'}}`, encodeURIComponent(String(keyId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'DELETE',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2562,6 +3158,76 @@ export const WalletApiAxiosParamCreator = function (
       }
     },
     /**
+     * Update service endpoint in wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} serviceId id of the service endpoint to update
+     * @param {UpdateServiceEndpointInput} updateServiceEndpointInput UpdateServiceEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateServiceEndpoint: async (
+      walletId: string,
+      serviceId: string,
+      updateServiceEndpointInput: UpdateServiceEndpointInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('updateServiceEndpoint', 'walletId', walletId)
+      // verify required parameter 'serviceId' is not null or undefined
+      assertParamExists('updateServiceEndpoint', 'serviceId', serviceId)
+      // verify required parameter 'updateServiceEndpointInput' is not null or undefined
+      assertParamExists(
+        'updateServiceEndpoint',
+        'updateServiceEndpointInput',
+        updateServiceEndpointInput,
+      )
+      const localVarPath = `/v2/wallets/{walletId}/services/{serviceId}`
+        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
+        .replace(`{${'serviceId'}}`, encodeURIComponent(String(serviceId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateServiceEndpointInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * update wallet details using wallet Id.
      * @param {string} walletId id of the wallet
      * @param {UpdateWalletInput} updateWalletInput UpdateWallet
@@ -2624,6 +3290,76 @@ export const WalletApiAxiosParamCreator = function (
         options: localVarRequestOptions,
       }
     },
+    /**
+     * Update a wallet key\'s verification relationships, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} keyId wallet-scoped key identifier to update
+     * @param {UpdateWalletKeyInput} updateWalletKeyInput UpdateWalletKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWalletKey: async (
+      walletId: string,
+      keyId: string,
+      updateWalletKeyInput: UpdateWalletKeyInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'walletId' is not null or undefined
+      assertParamExists('updateWalletKey', 'walletId', walletId)
+      // verify required parameter 'keyId' is not null or undefined
+      assertParamExists('updateWalletKey', 'keyId', keyId)
+      // verify required parameter 'updateWalletKeyInput' is not null or undefined
+      assertParamExists(
+        'updateWalletKey',
+        'updateWalletKeyInput',
+        updateWalletKeyInput,
+      )
+      const localVarPath = `/v2/wallets/{walletId}/keys/{keyId}`
+        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
+        .replace(`{${'keyId'}}`, encodeURIComponent(String(keyId)))
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ProjectTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        updateWalletKeyInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
   }
 }
 
@@ -2634,6 +3370,42 @@ export const WalletApiAxiosParamCreator = function (
 export const WalletApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = WalletApiAxiosParamCreator(configuration)
   return {
+    /**
+     * Add service endpoint to wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {ServiceEndpointInput} serviceEndpointInput AddServiceEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createServiceEndpoint(
+      walletId: string,
+      serviceEndpointInput: ServiceEndpointInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ServiceEndpointDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.createServiceEndpoint(
+          walletId,
+          serviceEndpointInput,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.createServiceEndpoint']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
     /**
      * creates a wallet
      * @param {CreateWalletInput} [createWalletInput] CreateWallet
@@ -2656,6 +3428,38 @@ export const WalletApiFp = function (configuration?: Configuration) {
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['WalletApi.createWallet']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Add a new key to the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {CreateWalletKeyInput} createWalletKeyInput CreateWalletKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createWalletKey(
+      walletId: string,
+      createWalletKeyInput: CreateWalletKeyInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletKeyDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.createWalletKey(
+        walletId,
+        createWalletKeyInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.createWalletKey']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -2757,13 +3561,75 @@ export const WalletApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * List service endpoints in wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listServiceEndpoints(
+      walletId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ListServiceEndpointsOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listServiceEndpoints(walletId, options)
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.listServiceEndpoints']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * List all keys in the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listWalletKeys(
+      walletId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ListWalletKeysOK>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.listWalletKeys(
+        walletId,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.listWalletKeys']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * lists all wallets
-     * @param {ListWalletsDidTypeEnum} [didType]
+     * @param {WalletDidType} [didType]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async listWallets(
-      didType?: ListWalletsDidTypeEnum,
+      didType?: WalletDidType,
       options?: RawAxiosRequestConfig,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletsListDto>
@@ -2775,6 +3641,71 @@ export const WalletApiFp = function (configuration?: Configuration) {
       const localVarOperationServerIndex = configuration?.serverIndex ?? 0
       const localVarOperationServerBasePath =
         operationServerMap['WalletApi.listWallets']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Remove service endpoint from wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} serviceId id of the service endpoint to remove
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async removeServiceEndpoint(
+      walletId: string,
+      serviceId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.removeServiceEndpoint(
+          walletId,
+          serviceId,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.removeServiceEndpoint']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     * Remove a key from the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} keyId id of the key to remove
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async removeWalletKey(
+      walletId: string,
+      keyId: string,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.removeWalletKey(
+        walletId,
+        keyId,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.removeWalletKey']?.[
           localVarOperationServerIndex
         ]?.url
       return (axios, basePath) =>
@@ -3033,6 +3964,45 @@ export const WalletApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * Update service endpoint in wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} serviceId id of the service endpoint to update
+     * @param {UpdateServiceEndpointInput} updateServiceEndpointInput UpdateServiceEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateServiceEndpoint(
+      walletId: string,
+      serviceId: string,
+      updateServiceEndpointInput: UpdateServiceEndpointInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<ServiceEndpointDto>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.updateServiceEndpoint(
+          walletId,
+          serviceId,
+          updateServiceEndpointInput,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.updateServiceEndpoint']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * update wallet details using wallet Id.
      * @param {string} walletId id of the wallet
      * @param {UpdateWalletInput} updateWalletInput UpdateWallet
@@ -3064,6 +4034,41 @@ export const WalletApiFp = function (configuration?: Configuration) {
           configuration,
         )(axios, localVarOperationServerBasePath || basePath)
     },
+    /**
+     * Update a wallet key\'s verification relationships, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} keyId wallet-scoped key identifier to update
+     * @param {UpdateWalletKeyInput} updateWalletKeyInput UpdateWalletKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async updateWalletKey(
+      walletId: string,
+      keyId: string,
+      updateWalletKeyInput: UpdateWalletKeyInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<WalletKeyDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.updateWalletKey(
+        walletId,
+        keyId,
+        updateWalletKeyInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['WalletApi.updateWalletKey']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
   }
 }
 
@@ -3079,6 +4084,22 @@ export const WalletApiFactory = function (
   const localVarFp = WalletApiFp(configuration)
   return {
     /**
+     * Add service endpoint to wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {ServiceEndpointInput} serviceEndpointInput AddServiceEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createServiceEndpoint(
+      walletId: string,
+      serviceEndpointInput: ServiceEndpointInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ServiceEndpointDto> {
+      return localVarFp
+        .createServiceEndpoint(walletId, serviceEndpointInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * creates a wallet
      * @param {CreateWalletInput} [createWalletInput] CreateWallet
      * @param {*} [options] Override http request option.
@@ -3090,6 +4111,22 @@ export const WalletApiFactory = function (
     ): AxiosPromise<CreateWalletResponse> {
       return localVarFp
         .createWallet(createWalletInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Add a new key to the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {CreateWalletKeyInput} createWalletKeyInput CreateWalletKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createWalletKey(
+      walletId: string,
+      createWalletKeyInput: CreateWalletKeyInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<WalletKeyDto> {
+      return localVarFp
+        .createWalletKey(walletId, createWalletKeyInput, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3135,17 +4172,77 @@ export const WalletApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * List service endpoints in wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listServiceEndpoints(
+      walletId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ListServiceEndpointsOK> {
+      return localVarFp
+        .listServiceEndpoints(walletId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * List all keys in the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listWalletKeys(
+      walletId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ListWalletKeysOK> {
+      return localVarFp
+        .listWalletKeys(walletId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * lists all wallets
-     * @param {ListWalletsDidTypeEnum} [didType]
+     * @param {WalletDidType} [didType]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     listWallets(
-      didType?: ListWalletsDidTypeEnum,
+      didType?: WalletDidType,
       options?: RawAxiosRequestConfig,
     ): AxiosPromise<WalletsListDto> {
       return localVarFp
         .listWallets(didType, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Remove service endpoint from wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} serviceId id of the service endpoint to remove
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    removeServiceEndpoint(
+      walletId: string,
+      serviceId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<void> {
+      return localVarFp
+        .removeServiceEndpoint(walletId, serviceId, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Remove a key from the wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} keyId id of the key to remove
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    removeWalletKey(
+      walletId: string,
+      keyId: string,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<void> {
+      return localVarFp
+        .removeWalletKey(walletId, keyId, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -3266,6 +4363,29 @@ export const WalletApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * Update service endpoint in wallet, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} serviceId id of the service endpoint to update
+     * @param {UpdateServiceEndpointInput} updateServiceEndpointInput UpdateServiceEndpoint
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateServiceEndpoint(
+      walletId: string,
+      serviceId: string,
+      updateServiceEndpointInput: UpdateServiceEndpointInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ServiceEndpointDto> {
+      return localVarFp
+        .updateServiceEndpoint(
+          walletId,
+          serviceId,
+          updateServiceEndpointInput,
+          options,
+        )
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * update wallet details using wallet Id.
      * @param {string} walletId id of the wallet
      * @param {UpdateWalletInput} updateWalletInput UpdateWallet
@@ -3281,6 +4401,24 @@ export const WalletApiFactory = function (
         .updateWallet(walletId, updateWalletInput, options)
         .then((request) => request(axios, basePath))
     },
+    /**
+     * Update a wallet key\'s verification relationships, this applies to did:web only
+     * @param {string} walletId id of the wallet
+     * @param {string} keyId wallet-scoped key identifier to update
+     * @param {UpdateWalletKeyInput} updateWalletKeyInput UpdateWalletKey
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    updateWalletKey(
+      walletId: string,
+      keyId: string,
+      updateWalletKeyInput: UpdateWalletKeyInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<WalletKeyDto> {
+      return localVarFp
+        .updateWalletKey(walletId, keyId, updateWalletKeyInput, options)
+        .then((request) => request(axios, basePath))
+    },
   }
 }
 
@@ -3291,6 +4429,24 @@ export const WalletApiFactory = function (
  * @extends {BaseAPI}
  */
 export class WalletApi extends BaseAPI {
+  /**
+   * Add service endpoint to wallet, this applies to did:web only
+   * @param {string} walletId id of the wallet
+   * @param {ServiceEndpointInput} serviceEndpointInput AddServiceEndpoint
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public createServiceEndpoint(
+    walletId: string,
+    serviceEndpointInput: ServiceEndpointInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .createServiceEndpoint(walletId, serviceEndpointInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
   /**
    * creates a wallet
    * @param {CreateWalletInput} [createWalletInput] CreateWallet
@@ -3304,6 +4460,24 @@ export class WalletApi extends BaseAPI {
   ) {
     return WalletApiFp(this.configuration)
       .createWallet(createWalletInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Add a new key to the wallet, this applies to did:web only
+   * @param {string} walletId id of the wallet
+   * @param {CreateWalletKeyInput} createWalletKeyInput CreateWalletKey
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public createWalletKey(
+    walletId: string,
+    createWalletKeyInput: CreateWalletKeyInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .createWalletKey(walletId, createWalletKeyInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3350,18 +4524,80 @@ export class WalletApi extends BaseAPI {
   }
 
   /**
-   * lists all wallets
-   * @param {ListWalletsDidTypeEnum} [didType]
+   * List service endpoints in wallet, this applies to did:web only
+   * @param {string} walletId id of the wallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof WalletApi
    */
-  public listWallets(
-    didType?: ListWalletsDidTypeEnum,
+  public listServiceEndpoints(
+    walletId: string,
     options?: RawAxiosRequestConfig,
   ) {
     return WalletApiFp(this.configuration)
+      .listServiceEndpoints(walletId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * List all keys in the wallet, this applies to did:web only
+   * @param {string} walletId id of the wallet
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public listWalletKeys(walletId: string, options?: RawAxiosRequestConfig) {
+    return WalletApiFp(this.configuration)
+      .listWalletKeys(walletId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * lists all wallets
+   * @param {WalletDidType} [didType]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public listWallets(didType?: WalletDidType, options?: RawAxiosRequestConfig) {
+    return WalletApiFp(this.configuration)
       .listWallets(didType, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Remove service endpoint from wallet, this applies to did:web only
+   * @param {string} walletId id of the wallet
+   * @param {string} serviceId id of the service endpoint to remove
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public removeServiceEndpoint(
+    walletId: string,
+    serviceId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .removeServiceEndpoint(walletId, serviceId, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Remove a key from the wallet, this applies to did:web only
+   * @param {string} walletId id of the wallet
+   * @param {string} keyId id of the key to remove
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public removeWalletKey(
+    walletId: string,
+    keyId: string,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .removeWalletKey(walletId, keyId, options)
       .then((request) => request(this.axios, this.basePath))
   }
 
@@ -3493,6 +4729,31 @@ export class WalletApi extends BaseAPI {
   }
 
   /**
+   * Update service endpoint in wallet, this applies to did:web only
+   * @param {string} walletId id of the wallet
+   * @param {string} serviceId id of the service endpoint to update
+   * @param {UpdateServiceEndpointInput} updateServiceEndpointInput UpdateServiceEndpoint
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public updateServiceEndpoint(
+    walletId: string,
+    serviceId: string,
+    updateServiceEndpointInput: UpdateServiceEndpointInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .updateServiceEndpoint(
+        walletId,
+        serviceId,
+        updateServiceEndpointInput,
+        options,
+      )
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * update wallet details using wallet Id.
    * @param {string} walletId id of the wallet
    * @param {UpdateWalletInput} updateWalletInput UpdateWallet
@@ -3509,14 +4770,24 @@ export class WalletApi extends BaseAPI {
       .updateWallet(walletId, updateWalletInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
-}
 
-/**
- * @export
- */
-export const ListWalletsDidTypeEnum = {
-  Web: 'WEB',
-  Key: 'KEY',
-} as const
-export type ListWalletsDidTypeEnum =
-  (typeof ListWalletsDidTypeEnum)[keyof typeof ListWalletsDidTypeEnum]
+  /**
+   * Update a wallet key\'s verification relationships, this applies to did:web only
+   * @param {string} walletId id of the wallet
+   * @param {string} keyId wallet-scoped key identifier to update
+   * @param {UpdateWalletKeyInput} updateWalletKeyInput UpdateWalletKey
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof WalletApi
+   */
+  public updateWalletKey(
+    walletId: string,
+    keyId: string,
+    updateWalletKeyInput: UpdateWalletKeyInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return WalletApiFp(this.configuration)
+      .updateWalletKey(walletId, keyId, updateWalletKeyInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
