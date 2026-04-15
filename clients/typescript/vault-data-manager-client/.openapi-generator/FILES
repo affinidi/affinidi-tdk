@@ -28,6 +28,7 @@ docs/JsonWebKeyDto.md
 docs/JsonWebKeySetDto.md
 docs/ListAccountsDto.md
 docs/ListNodeChildrenOK.md
+docs/ListProfilesOK.md
 docs/ListRootNodeChildrenOK.md
 docs/ListScannedFilesOK.md
 docs/ListScannedFilesOKScannedFilesInner.md
@@ -37,6 +38,7 @@ docs/NodeDto.md
 docs/NodeStatus.md
 docs/NodeType.md
 docs/NodesApi.md
+docs/PartialProfileNodeDto.md
 docs/ProfileDataApi.md
 docs/QueryProfileDataOK.md
 docs/RestoreNodeFromTrashbin.md

@@ -58,6 +58,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | _AccountsApi_      | [**createAccount**](docs/AccountsApi.md#createaccount)                  | **POST** /v1/accounts                                 |
 | _AccountsApi_      | [**deleteAccount**](docs/AccountsApi.md#deleteaccount)                  | **DELETE** /v1/accounts/{accountIndex}                |
 | _AccountsApi_      | [**listAccounts**](docs/AccountsApi.md#listaccounts)                    | **GET** /v1/accounts                                  |
+| _AccountsApi_      | [**listProfiles**](docs/AccountsApi.md#listprofiles)                    | **GET** /v1/accounts/profiles                         |
 | _AccountsApi_      | [**updateAccount**](docs/AccountsApi.md#updateaccount)                  | **PUT** /v1/accounts/{accountIndex}                   |
 | _ConfigurationApi_ | [**getConfiguration**](docs/ConfigurationApi.md#getconfiguration)       | **GET** /v1/config                                    |
 | _FilesApi_         | [**getScannedFileInfo**](docs/FilesApi.md#getscannedfileinfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
@@ -100,6 +101,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
 - [ListAccountsDto](docs/ListAccountsDto.md)
 - [ListNodeChildrenOK](docs/ListNodeChildrenOK.md)
+- [ListProfilesOK](docs/ListProfilesOK.md)
 - [ListRootNodeChildrenOK](docs/ListRootNodeChildrenOK.md)
 - [ListScannedFilesOK](docs/ListScannedFilesOK.md)
 - [ListScannedFilesOKScannedFilesInner](docs/ListScannedFilesOKScannedFilesInner.md)
@@ -108,6 +110,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [NodeDto](docs/NodeDto.md)
 - [NodeStatus](docs/NodeStatus.md)
 - [NodeType](docs/NodeType.md)
+- [PartialProfileNodeDto](docs/PartialProfileNodeDto.md)
 - [QueryProfileDataOK](docs/QueryProfileDataOK.md)
 - [RestoreNodeFromTrashbin](docs/RestoreNodeFromTrashbin.md)
 - [StartFileScanInput](docs/StartFileScanInput.md)

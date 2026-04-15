@@ -7,6 +7,7 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 | [**createAccount**](#createaccount) | **POST** /v1/accounts                  |             |
 | [**deleteAccount**](#deleteaccount) | **DELETE** /v1/accounts/{accountIndex} |             |
 | [**listAccounts**](#listaccounts)   | **GET** /v1/accounts                   |             |
+| [**listProfiles**](#listprofiles)   | **GET** /v1/accounts/profiles          |             |
 | [**updateAccount**](#updateaccount) | **PUT** /v1/accounts/{accountIndex}    |             |
 
 # **createAccount**
@@ -161,6 +162,52 @@ const { status, data } = await apiInstance.listAccounts(
 | Status code | Description     | Response headers                                                                                                  |
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | ListAccountsOK  | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **listProfiles**
+
+> ListProfilesOK listProfiles()
+
+lists children of the root node with accounts
+
+### Example
+
+```typescript
+import {
+  AccountsApi,
+  Configuration,
+} from '@affinidi-tdk/vault-data-manager-client'
+
+const configuration = new Configuration()
+const apiInstance = new AccountsApi(configuration)
+
+const { status, data } = await apiInstance.listProfiles()
+```
+
+### Parameters
+
+This endpoint does not have any parameters.
+
+### Return type
+
+**ListProfilesOK**
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | ListProfilesOK  | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
