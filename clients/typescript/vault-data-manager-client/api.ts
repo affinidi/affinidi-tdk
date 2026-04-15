@@ -842,6 +842,19 @@ export interface ListNodeChildrenOK {
 /**
  *
  * @export
+ * @interface ListProfilesOK
+ */
+export interface ListProfilesOK {
+  /**
+   *
+   * @type {Array<PartialProfileNodeDto>}
+   * @memberof ListProfilesOK
+   */
+  nodes?: Array<PartialProfileNodeDto>
+}
+/**
+ *
+ * @export
  * @interface ListRootNodeChildrenOK
  */
 export interface ListRootNodeChildrenOK {
@@ -1108,6 +1121,49 @@ export const NodeType = {
 
 export type NodeType = (typeof NodeType)[keyof typeof NodeType]
 
+/**
+ *
+ * @export
+ * @interface PartialProfileNodeDto
+ */
+export interface PartialProfileNodeDto {
+  /**
+   * A unique identifier of the profile node
+   * @type {string}
+   * @memberof PartialProfileNodeDto
+   */
+  id: string
+  /**
+   * display name of the profile node
+   * @type {string}
+   * @memberof PartialProfileNodeDto
+   */
+  name: string
+  /**
+   * Description of the profile node
+   * @type {string}
+   * @memberof PartialProfileNodeDto
+   */
+  description?: string
+  /**
+   * number that is used for profile DID derivation
+   * @type {number}
+   * @memberof PartialProfileNodeDto
+   */
+  accountIndex: number
+  /**
+   * A JSON string format containing metadata of the profile node
+   * @type {string}
+   * @memberof PartialProfileNodeDto
+   */
+  profileMetadata?: string
+  /**
+   * A JSON string format containing metadata of the account
+   * @type {string}
+   * @memberof PartialProfileNodeDto
+   */
+  accountMetadata?: string
+}
 /**
  *
  * @export
@@ -1537,6 +1593,51 @@ export const AccountsApiAxiosParamCreator = function (
       }
     },
     /**
+     * lists children of the root node with accounts
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listProfiles: async (
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/accounts/profiles`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Update account.
      * @param {number} accountIndex
      * @param {UpdateAccountInput} updateAccountInput UpdateAccount
@@ -1713,6 +1814,31 @@ export const AccountsApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * lists children of the root node with accounts
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listProfiles(
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ListProfilesOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listProfiles(options)
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.listProfiles']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Update account.
      * @param {number} accountIndex
      * @param {UpdateAccountInput} updateAccountInput UpdateAccount
@@ -1806,6 +1932,18 @@ export const AccountsApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * lists children of the root node with accounts
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listProfiles(
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ListProfilesOK> {
+      return localVarFp
+        .listProfiles(options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Update account.
      * @param {number} accountIndex
      * @param {UpdateAccountInput} updateAccountInput UpdateAccount
@@ -1875,6 +2013,18 @@ export class AccountsApi extends BaseAPI {
   ) {
     return AccountsApiFp(this.configuration)
       .listAccounts(limit, exclusiveStartKey, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * lists children of the root node with accounts
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public listProfiles(options?: RawAxiosRequestConfig) {
+    return AccountsApiFp(this.configuration)
+      .listProfiles(options)
       .then((request) => request(this.axios, this.basePath))
   }
 

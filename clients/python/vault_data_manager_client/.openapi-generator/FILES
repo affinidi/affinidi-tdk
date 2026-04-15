@@ -35,6 +35,7 @@ affinidi_tdk_vault_data_manager_client/models/json_web_key_dto.py
 affinidi_tdk_vault_data_manager_client/models/json_web_key_set_dto.py
 affinidi_tdk_vault_data_manager_client/models/list_accounts_dto.py
 affinidi_tdk_vault_data_manager_client/models/list_node_children_ok.py
+affinidi_tdk_vault_data_manager_client/models/list_profiles_ok.py
 affinidi_tdk_vault_data_manager_client/models/list_root_node_children_ok.py
 affinidi_tdk_vault_data_manager_client/models/list_scanned_files_ok.py
 affinidi_tdk_vault_data_manager_client/models/list_scanned_files_ok_scanned_files_inner.py
@@ -43,6 +44,7 @@ affinidi_tdk_vault_data_manager_client/models/move_node_input.py
 affinidi_tdk_vault_data_manager_client/models/node_dto.py
 affinidi_tdk_vault_data_manager_client/models/node_status.py
 affinidi_tdk_vault_data_manager_client/models/node_type.py
+affinidi_tdk_vault_data_manager_client/models/partial_profile_node_dto.py
 affinidi_tdk_vault_data_manager_client/models/query_profile_data_ok.py
 affinidi_tdk_vault_data_manager_client/models/restore_node_from_trashbin.py
 affinidi_tdk_vault_data_manager_client/models/start_file_scan_input.py
@@ -78,6 +80,7 @@ docs/JsonWebKeyDto.md
 docs/JsonWebKeySetDto.md
 docs/ListAccountsDto.md
 docs/ListNodeChildrenOK.md
+docs/ListProfilesOK.md
 docs/ListRootNodeChildrenOK.md
 docs/ListScannedFilesOK.md
 docs/ListScannedFilesOKScannedFilesInner.md
@@ -87,6 +90,7 @@ docs/NodeDto.md
 docs/NodeStatus.md
 docs/NodeType.md
 docs/NodesApi.md
+docs/PartialProfileNodeDto.md
 docs/ProfileDataApi.md
 docs/QueryProfileDataOK.md
 docs/RestoreNodeFromTrashbin.md

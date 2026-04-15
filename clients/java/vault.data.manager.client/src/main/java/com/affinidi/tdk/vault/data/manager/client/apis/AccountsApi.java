@@ -25,6 +25,7 @@ import com.affinidi.tdk.vault.data.manager.client.models.CreateAccountOK;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteAccountDto;
 import com.affinidi.tdk.vault.data.manager.client.models.InvalidParameterError;
 import com.affinidi.tdk.vault.data.manager.client.models.ListAccountsDto;
+import com.affinidi.tdk.vault.data.manager.client.models.ListProfilesOK;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountDto;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountInput;
 
@@ -252,6 +253,73 @@ public class AccountsApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
 
     TypeReference<ListAccountsDto> localVarReturnType = new TypeReference<ListAccountsDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * lists children of the root node with accounts
+   * @return ListProfilesOK
+   * @throws ApiException if fails to make API call
+   */
+  public ListProfilesOK listProfiles() throws ApiException {
+    return this.listProfiles(Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * lists children of the root node with accounts
+   * @param additionalHeaders additionalHeaders for this call
+   * @return ListProfilesOK
+   * @throws ApiException if fails to make API call
+   */
+  public ListProfilesOK listProfiles(Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // create path and map variables
+    String localVarPath = "/v1/accounts/profiles";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<ListProfilesOK> localVarReturnType = new TypeReference<ListProfilesOK>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "GET",
