@@ -11,6 +11,8 @@ docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateAccountWithProfileInput.md
+docs/CreateAccountWithProfileOK.md
 docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md

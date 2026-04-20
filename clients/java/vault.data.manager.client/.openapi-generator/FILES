@@ -9,6 +9,8 @@ docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateAccountWithProfileInput.md
+docs/CreateAccountWithProfileOK.md
 docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
@@ -84,6 +86,8 @@ src/main/java/com/affinidi/tdk/vault/data/manager/client/models/AccountDto.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/ConsumerMetadataDto.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountOK.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountWithProfileInput.java
+src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateAccountWithProfileOK.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateChildNodeInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeInput.java
 src/main/java/com/affinidi/tdk/vault/data/manager/client/models/CreateNodeOK.java
