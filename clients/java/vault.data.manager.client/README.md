@@ -115,31 +115,32 @@ public class AccountsApiExample {
 
 All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
-| Class              | Method                                                                  | HTTP request                                          | Description |
-| ------------------ | ----------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
-| _AccountsApi_      | [**createAccount**](docs/AccountsApi.md#createAccount)                  | **POST** /v1/accounts                                 |
-| _AccountsApi_      | [**deleteAccount**](docs/AccountsApi.md#deleteAccount)                  | **DELETE** /v1/accounts/{accountIndex}                |
-| _AccountsApi_      | [**listAccounts**](docs/AccountsApi.md#listAccounts)                    | **GET** /v1/accounts                                  |
-| _AccountsApi_      | [**listProfiles**](docs/AccountsApi.md#listProfiles)                    | **GET** /v1/accounts/profiles                         |
-| _AccountsApi_      | [**updateAccount**](docs/AccountsApi.md#updateAccount)                  | **PUT** /v1/accounts/{accountIndex}                   |
-| _ConfigurationApi_ | [**getConfiguration**](docs/ConfigurationApi.md#getConfiguration)       | **GET** /v1/config                                    |
-| _FilesApi_         | [**getScannedFileInfo**](docs/FilesApi.md#getScannedFileInfo)           | **GET** /v1/scanned-files/{scannedFileJobId}          |
-| _FilesApi_         | [**listScannedFiles**](docs/FilesApi.md#listScannedFiles)               | **GET** /v1/scanned-files/                            |
-| _FilesApi_         | [**startFileScan**](docs/FilesApi.md#startFileScan)                     | **POST** /v1/nodes/{nodeId}/file/scan                 |
-| _NodesApi_         | [**createChildNode**](docs/NodesApi.md#createChildNode)                 | **POST** /v1/nodes/{nodeId}                           |
-| _NodesApi_         | [**createNode**](docs/NodesApi.md#createNode)                           | **POST** /v1/nodes                                    |
-| _NodesApi_         | [**deleteNode**](docs/NodesApi.md#deleteNode)                           | **DELETE** /v1/nodes/{nodeId}                         |
-| _NodesApi_         | [**getDetailedNodeInfo**](docs/NodesApi.md#getDetailedNodeInfo)         | **GET** /v1/nodes/{nodeId}                            |
-| _NodesApi_         | [**initNodes**](docs/NodesApi.md#initNodes)                             | **POST** /v1/nodes/init                               |
-| _NodesApi_         | [**listNodeChildren**](docs/NodesApi.md#listNodeChildren)               | **GET** /v1/nodes/{nodeId}/children                   |
-| _NodesApi_         | [**listRootNodeChildren**](docs/NodesApi.md#listRootNodeChildren)       | **GET** /v1/nodes                                     |
-| _NodesApi_         | [**moveNode**](docs/NodesApi.md#moveNode)                               | **POST** /v1/nodes/{nodeId}/move                      |
-| _NodesApi_         | [**permanentlyDeleteNode**](docs/NodesApi.md#permanentlyDeleteNode)     | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} |
-| _NodesApi_         | [**restoreNodeFromTrashbin**](docs/NodesApi.md#restoreNodeFromTrashbin) | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
-| _NodesApi_         | [**updateNode**](docs/NodesApi.md#updateNode)                           | **PATCH** /v1/nodes/{nodeId}                          |
-| _ProfileDataApi_   | [**queryProfileData**](docs/ProfileDataApi.md#queryProfileData)         | **GET** /v1/nodes/{nodeId}/profile-data               |
-| _ProfileDataApi_   | [**updateProfileData**](docs/ProfileDataApi.md#updateProfileData)       | **PATCH** /v1/nodes/{nodeId}/profile-data             |
-| _WellKnownApi_     | [**getWellKnownJwks**](docs/WellKnownApi.md#getWellKnownJwks)           | **GET** /.well-known/jwks.json                        |
+| Class              | Method                                                                       | HTTP request                                          | Description |
+| ------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------- | ----------- |
+| _AccountsApi_      | [**createAccount**](docs/AccountsApi.md#createAccount)                       | **POST** /v1/accounts                                 |
+| _AccountsApi_      | [**createAccountWithProfile**](docs/AccountsApi.md#createAccountWithProfile) | **POST** /v1/accounts/profiles                        |
+| _AccountsApi_      | [**deleteAccount**](docs/AccountsApi.md#deleteAccount)                       | **DELETE** /v1/accounts/{accountIndex}                |
+| _AccountsApi_      | [**listAccounts**](docs/AccountsApi.md#listAccounts)                         | **GET** /v1/accounts                                  |
+| _AccountsApi_      | [**listProfiles**](docs/AccountsApi.md#listProfiles)                         | **GET** /v1/accounts/profiles                         |
+| _AccountsApi_      | [**updateAccount**](docs/AccountsApi.md#updateAccount)                       | **PUT** /v1/accounts/{accountIndex}                   |
+| _ConfigurationApi_ | [**getConfiguration**](docs/ConfigurationApi.md#getConfiguration)            | **GET** /v1/config                                    |
+| _FilesApi_         | [**getScannedFileInfo**](docs/FilesApi.md#getScannedFileInfo)                | **GET** /v1/scanned-files/{scannedFileJobId}          |
+| _FilesApi_         | [**listScannedFiles**](docs/FilesApi.md#listScannedFiles)                    | **GET** /v1/scanned-files/                            |
+| _FilesApi_         | [**startFileScan**](docs/FilesApi.md#startFileScan)                          | **POST** /v1/nodes/{nodeId}/file/scan                 |
+| _NodesApi_         | [**createChildNode**](docs/NodesApi.md#createChildNode)                      | **POST** /v1/nodes/{nodeId}                           |
+| _NodesApi_         | [**createNode**](docs/NodesApi.md#createNode)                                | **POST** /v1/nodes                                    |
+| _NodesApi_         | [**deleteNode**](docs/NodesApi.md#deleteNode)                                | **DELETE** /v1/nodes/{nodeId}                         |
+| _NodesApi_         | [**getDetailedNodeInfo**](docs/NodesApi.md#getDetailedNodeInfo)              | **GET** /v1/nodes/{nodeId}                            |
+| _NodesApi_         | [**initNodes**](docs/NodesApi.md#initNodes)                                  | **POST** /v1/nodes/init                               |
+| _NodesApi_         | [**listNodeChildren**](docs/NodesApi.md#listNodeChildren)                    | **GET** /v1/nodes/{nodeId}/children                   |
+| _NodesApi_         | [**listRootNodeChildren**](docs/NodesApi.md#listRootNodeChildren)            | **GET** /v1/nodes                                     |
+| _NodesApi_         | [**moveNode**](docs/NodesApi.md#moveNode)                                    | **POST** /v1/nodes/{nodeId}/move                      |
+| _NodesApi_         | [**permanentlyDeleteNode**](docs/NodesApi.md#permanentlyDeleteNode)          | **DELETE** /v1/nodes/{nodeId}/remove/{nodeIdToRemove} |
+| _NodesApi_         | [**restoreNodeFromTrashbin**](docs/NodesApi.md#restoreNodeFromTrashbin)      | **POST** /v1/nodes/{nodeId}/restore/{nodeIdToRestore} |
+| _NodesApi_         | [**updateNode**](docs/NodesApi.md#updateNode)                                | **PATCH** /v1/nodes/{nodeId}                          |
+| _ProfileDataApi_   | [**queryProfileData**](docs/ProfileDataApi.md#queryProfileData)              | **GET** /v1/nodes/{nodeId}/profile-data               |
+| _ProfileDataApi_   | [**updateProfileData**](docs/ProfileDataApi.md#updateProfileData)            | **PATCH** /v1/nodes/{nodeId}/profile-data             |
+| _WellKnownApi_     | [**getWellKnownJwks**](docs/WellKnownApi.md#getWellKnownJwks)                | **GET** /.well-known/jwks.json                        |
 
 ## Documentation for Models
 
@@ -147,6 +148,8 @@ All URIs are relative to *https://api.vault.affinidi.com/vfs*
 - [ConsumerMetadataDto](docs/ConsumerMetadataDto.md)
 - [CreateAccountInput](docs/CreateAccountInput.md)
 - [CreateAccountOK](docs/CreateAccountOK.md)
+- [CreateAccountWithProfileInput](docs/CreateAccountWithProfileInput.md)
+- [CreateAccountWithProfileOK](docs/CreateAccountWithProfileOK.md)
 - [CreateChildNodeInput](docs/CreateChildNodeInput.md)
 - [CreateNodeInput](docs/CreateNodeInput.md)
 - [CreateNodeOK](docs/CreateNodeOK.md)

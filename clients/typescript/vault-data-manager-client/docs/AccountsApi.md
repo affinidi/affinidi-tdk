@@ -2,13 +2,14 @@
 
 All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
-| Method                              | HTTP request                           | Description |
-| ----------------------------------- | -------------------------------------- | ----------- |
-| [**createAccount**](#createaccount) | **POST** /v1/accounts                  |             |
-| [**deleteAccount**](#deleteaccount) | **DELETE** /v1/accounts/{accountIndex} |             |
-| [**listAccounts**](#listaccounts)   | **GET** /v1/accounts                   |             |
-| [**listProfiles**](#listprofiles)   | **GET** /v1/accounts/profiles          |             |
-| [**updateAccount**](#updateaccount) | **PUT** /v1/accounts/{accountIndex}    |             |
+| Method                                                    | HTTP request                           | Description |
+| --------------------------------------------------------- | -------------------------------------- | ----------- |
+| [**createAccount**](#createaccount)                       | **POST** /v1/accounts                  |             |
+| [**createAccountWithProfile**](#createaccountwithprofile) | **POST** /v1/accounts/profiles         |             |
+| [**deleteAccount**](#deleteaccount)                       | **DELETE** /v1/accounts/{accountIndex} |             |
+| [**listAccounts**](#listaccounts)                         | **GET** /v1/accounts                   |             |
+| [**listProfiles**](#listprofiles)                         | **GET** /v1/accounts/profiles          |             |
+| [**updateAccount**](#updateaccount)                       | **PUT** /v1/accounts/{accountIndex}    |             |
 
 # **createAccount**
 
@@ -58,6 +59,59 @@ const { status, data } = await apiInstance.createAccount(createAccountInput)
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | CreateAccountOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **createAccountWithProfile**
+
+> CreateAccountWithProfileOK createAccountWithProfile(createAccountWithProfileInput)
+
+creates account and corresponding profile at the same time
+
+### Example
+
+```typescript
+import {
+  AccountsApi,
+  Configuration,
+  CreateAccountWithProfileInput,
+} from '@affinidi-tdk/vault-data-manager-client'
+
+const configuration = new Configuration()
+const apiInstance = new AccountsApi(configuration)
+
+let createAccountWithProfileInput: CreateAccountWithProfileInput //CreateAccountWithProfile
+
+const { status, data } = await apiInstance.createAccountWithProfile(
+  createAccountWithProfileInput,
+)
+```
+
+### Parameters
+
+| Name                              | Type                              | Description              | Notes |
+| --------------------------------- | --------------------------------- | ------------------------ | ----- |
+| **createAccountWithProfileInput** | **CreateAccountWithProfileInput** | CreateAccountWithProfile |       |
+
+### Return type
+
+**CreateAccountWithProfileOK**
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                | Response headers                                                                                                  |
+| ----------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateAccountWithProfileOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError            | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
