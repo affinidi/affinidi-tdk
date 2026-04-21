@@ -22,10 +22,13 @@ import com.affinidi.tdk.vault.data.manager.client.Pair;
 
 import com.affinidi.tdk.vault.data.manager.client.models.CreateAccountInput;
 import com.affinidi.tdk.vault.data.manager.client.models.CreateAccountOK;
+import com.affinidi.tdk.vault.data.manager.client.models.CreateAccountWithProfileInput;
+import com.affinidi.tdk.vault.data.manager.client.models.CreateAccountWithProfileOK;
 import com.affinidi.tdk.vault.data.manager.client.models.DeleteAccountDto;
 import com.affinidi.tdk.vault.data.manager.client.models.InvalidParameterError;
 import com.affinidi.tdk.vault.data.manager.client.models.ListAccountsDto;
 import com.affinidi.tdk.vault.data.manager.client.models.ListProfilesOK;
+import com.affinidi.tdk.vault.data.manager.client.models.PatchAccountInput;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountDto;
 import com.affinidi.tdk.vault.data.manager.client.models.UpdateAccountInput;
 
@@ -105,6 +108,80 @@ public class AccountsApi extends BaseApi {
     String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
 
     TypeReference<CreateAccountOK> localVarReturnType = new TypeReference<CreateAccountOK>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "POST",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * creates account and corresponding profile at the same time
+   * @param createAccountWithProfileInput CreateAccountWithProfile (required)
+   * @return CreateAccountWithProfileOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateAccountWithProfileOK createAccountWithProfile(@javax.annotation.Nonnull CreateAccountWithProfileInput createAccountWithProfileInput) throws ApiException {
+    return this.createAccountWithProfile(createAccountWithProfileInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * creates account and corresponding profile at the same time
+   * @param createAccountWithProfileInput CreateAccountWithProfile (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return CreateAccountWithProfileOK
+   * @throws ApiException if fails to make API call
+   */
+  public CreateAccountWithProfileOK createAccountWithProfile(@javax.annotation.Nonnull CreateAccountWithProfileInput createAccountWithProfileInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = createAccountWithProfileInput;
+    
+    // verify the required parameter 'createAccountWithProfileInput' is set
+    if (createAccountWithProfileInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'createAccountWithProfileInput' when calling createAccountWithProfile");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/accounts/profiles";
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<CreateAccountWithProfileOK> localVarReturnType = new TypeReference<CreateAccountWithProfileOK>() {};
     return apiClient.invokeAPI(
         localVarPath,
         "POST",
@@ -323,6 +400,88 @@ public class AccountsApi extends BaseApi {
     return apiClient.invokeAPI(
         localVarPath,
         "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarQueryStringJoiner.toString(),
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
+
+  /**
+   * 
+   * Patch account.
+   * @param accountIndex  (required)
+   * @param patchAccountInput PatchAccount (required)
+   * @return UpdateAccountDto
+   * @throws ApiException if fails to make API call
+   */
+  public UpdateAccountDto patchAccount(@javax.annotation.Nonnull Integer accountIndex, @javax.annotation.Nonnull PatchAccountInput patchAccountInput) throws ApiException {
+    return this.patchAccount(accountIndex, patchAccountInput, Collections.emptyMap());
+  }
+
+
+  /**
+   * 
+   * Patch account.
+   * @param accountIndex  (required)
+   * @param patchAccountInput PatchAccount (required)
+   * @param additionalHeaders additionalHeaders for this call
+   * @return UpdateAccountDto
+   * @throws ApiException if fails to make API call
+   */
+  public UpdateAccountDto patchAccount(@javax.annotation.Nonnull Integer accountIndex, @javax.annotation.Nonnull PatchAccountInput patchAccountInput, Map<String, String> additionalHeaders) throws ApiException {
+    Object localVarPostBody = patchAccountInput;
+    
+    // verify the required parameter 'accountIndex' is set
+    if (accountIndex == null) {
+      throw new ApiException(400, "Missing the required parameter 'accountIndex' when calling patchAccount");
+    }
+    
+    // verify the required parameter 'patchAccountInput' is set
+    if (patchAccountInput == null) {
+      throw new ApiException(400, "Missing the required parameter 'patchAccountInput' when calling patchAccount");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v1/accounts/{accountIndex}"
+      .replaceAll("\\{" + "accountIndex" + "\\}", apiClient.escapeString(apiClient.parameterToString(accountIndex)));
+
+    StringJoiner localVarQueryStringJoiner = new StringJoiner("&");
+    String localVarQueryParameterBaseName;
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    
+    localVarHeaderParams.putAll(additionalHeaders);
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "ConsumerTokenAuth" };
+
+    TypeReference<UpdateAccountDto> localVarReturnType = new TypeReference<UpdateAccountDto>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "PATCH",
         localVarQueryParams,
         localVarCollectionQueryParams,
         localVarQueryStringJoiner.toString(),
