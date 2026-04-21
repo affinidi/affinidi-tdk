@@ -239,6 +239,110 @@ export interface CreateAccountOK {
 /**
  *
  * @export
+ * @interface CreateAccountWithProfileInput
+ */
+export interface CreateAccountWithProfileInput {
+  /**
+   * number that is used for profile DID derivation
+   * @type {number}
+   * @memberof CreateAccountWithProfileInput
+   */
+  accountIndex: number
+  /**
+   * DID that is associated with the account number
+   * @type {string}
+   * @memberof CreateAccountWithProfileInput
+   */
+  accountDid: string
+  /**
+   * JWT that proves ownership of profile DID by requester
+   * @type {string}
+   * @memberof CreateAccountWithProfileInput
+   */
+  didProof: string
+  /**
+   * Alias of account
+   * @type {string}
+   * @memberof CreateAccountWithProfileInput
+   */
+  alias?: string
+  /**
+   * Metadata of account
+   * @type {object}
+   * @memberof CreateAccountWithProfileInput
+   */
+  accountMetadata?: object
+  /**
+   * Description of account
+   * @type {string}
+   * @memberof CreateAccountWithProfileInput
+   */
+  accountDescription?: string
+  /**
+   * Name of the profile node
+   * @type {string}
+   * @memberof CreateAccountWithProfileInput
+   */
+  profileName: string
+  /**
+   * Description of the profile node
+   * @type {string}
+   * @memberof CreateAccountWithProfileInput
+   */
+  profileDescription?: string
+  /**
+   * Metadata of the profile
+   * @type {object}
+   * @memberof CreateAccountWithProfileInput
+   */
+  profileMetadata?: object
+  /**
+   *
+   * @type {EdekInfo}
+   * @memberof CreateAccountWithProfileInput
+   */
+  edekInfo: EdekInfo
+  /**
+   * A base64 encoded data encryption key, encrypted using VFS public key
+   * @type {string}
+   * @memberof CreateAccountWithProfileInput
+   */
+  dek: string
+}
+/**
+ *
+ * @export
+ * @interface CreateAccountWithProfileOK
+ */
+export interface CreateAccountWithProfileOK {
+  /**
+   *
+   * @type {number}
+   * @memberof CreateAccountWithProfileOK
+   */
+  accountIndex: number
+  /**
+   * number that is used for profile DID derivation
+   * @type {string}
+   * @memberof CreateAccountWithProfileOK
+   */
+  accountDid: string
+  /**
+   * A unique, randomly generated identifier of created profile
+   * @type {string}
+   * @memberof CreateAccountWithProfileOK
+   */
+  profileId: string
+  /**
+   * Metadata of account
+   * @type {object}
+   * @memberof CreateAccountWithProfileOK
+   */
+  accountMetadata?: object
+}
+/**
+ *
+ * @export
  * @interface CreateChildNodeInput
  */
 export interface CreateChildNodeInput {
@@ -1167,6 +1271,37 @@ export interface PartialProfileNodeDto {
 /**
  *
  * @export
+ * @interface PatchAccountInput
+ */
+export interface PatchAccountInput {
+  /**
+   * JWT that proves ownership of profile DID by requester
+   * @type {string}
+   * @memberof PatchAccountInput
+   */
+  didProof: string
+  /**
+   * A base64 encoded data encryption key, encrypted using VFS public key, required for PATCH operation on account
+   * @type {string}
+   * @memberof PatchAccountInput
+   */
+  encryptedDekek: string
+  /**
+   * A unique identifier of profile, required for PATCH operation on account
+   * @type {string}
+   * @memberof PatchAccountInput
+   */
+  ownerProfileId: string
+  /**
+   * DID that is associated with the profile, required for PATCH operation on account
+   * @type {string}
+   * @memberof PatchAccountInput
+   */
+  ownerProfileDid: string
+}
+/**
+ *
+ * @export
  * @interface QueryProfileDataOK
  */
 export interface QueryProfileDataOK {
@@ -1484,6 +1619,66 @@ export const AccountsApiAxiosParamCreator = function (
       }
     },
     /**
+     * creates account and corresponding profile at the same time
+     * @param {CreateAccountWithProfileInput} createAccountWithProfileInput CreateAccountWithProfile
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAccountWithProfile: async (
+      createAccountWithProfileInput: CreateAccountWithProfileInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'createAccountWithProfileInput' is not null or undefined
+      assertParamExists(
+        'createAccountWithProfile',
+        'createAccountWithProfileInput',
+        createAccountWithProfileInput,
+      )
+      const localVarPath = `/v1/accounts/profiles`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'POST',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        createAccountWithProfileInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Delete account.
      * @param {number} accountIndex
      * @param {*} [options] Override http request option.
@@ -1638,6 +1833,69 @@ export const AccountsApiAxiosParamCreator = function (
       }
     },
     /**
+     * Patch account.
+     * @param {number} accountIndex
+     * @param {PatchAccountInput} patchAccountInput PatchAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchAccount: async (
+      accountIndex: number,
+      patchAccountInput: PatchAccountInput,
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      // verify required parameter 'accountIndex' is not null or undefined
+      assertParamExists('patchAccount', 'accountIndex', accountIndex)
+      // verify required parameter 'patchAccountInput' is not null or undefined
+      assertParamExists('patchAccount', 'patchAccountInput', patchAccountInput)
+      const localVarPath = `/v1/accounts/{accountIndex}`.replace(
+        `{${'accountIndex'}}`,
+        encodeURIComponent(String(accountIndex)),
+      )
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'PATCH',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication ConsumerTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+      localVarRequestOptions.data = serializeDataIfNeeded(
+        patchAccountInput,
+        localVarRequestOptions,
+        configuration,
+      )
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * Update account.
      * @param {number} accountIndex
      * @param {UpdateAccountInput} updateAccountInput UpdateAccount
@@ -1747,6 +2005,39 @@ export const AccountsApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * creates account and corresponding profile at the same time
+     * @param {CreateAccountWithProfileInput} createAccountWithProfileInput CreateAccountWithProfile
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async createAccountWithProfile(
+      createAccountWithProfileInput: CreateAccountWithProfileInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<CreateAccountWithProfileOK>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.createAccountWithProfile(
+          createAccountWithProfileInput,
+          options,
+        )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.createAccountWithProfile']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Delete account.
      * @param {number} accountIndex
      * @param {*} [options] Override http request option.
@@ -1839,6 +2130,41 @@ export const AccountsApiFp = function (configuration?: Configuration) {
         )(axios, localVarOperationServerBasePath || basePath)
     },
     /**
+     * Patch account.
+     * @param {number} accountIndex
+     * @param {PatchAccountInput} patchAccountInput PatchAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async patchAccount(
+      accountIndex: number,
+      patchAccountInput: PatchAccountInput,
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (
+        axios?: AxiosInstance,
+        basePath?: string,
+      ) => AxiosPromise<UpdateAccountDto>
+    > {
+      const localVarAxiosArgs = await localVarAxiosParamCreator.patchAccount(
+        accountIndex,
+        patchAccountInput,
+        options,
+      )
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.patchAccount']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
      * Update account.
      * @param {number} accountIndex
      * @param {UpdateAccountInput} updateAccountInput UpdateAccount
@@ -1902,6 +2228,20 @@ export const AccountsApiFactory = function (
         .then((request) => request(axios, basePath))
     },
     /**
+     * creates account and corresponding profile at the same time
+     * @param {CreateAccountWithProfileInput} createAccountWithProfileInput CreateAccountWithProfile
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    createAccountWithProfile(
+      createAccountWithProfileInput: CreateAccountWithProfileInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<CreateAccountWithProfileOK> {
+      return localVarFp
+        .createAccountWithProfile(createAccountWithProfileInput, options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
      * Delete account.
      * @param {number} accountIndex
      * @param {*} [options] Override http request option.
@@ -1941,6 +2281,22 @@ export const AccountsApiFactory = function (
     ): AxiosPromise<ListProfilesOK> {
       return localVarFp
         .listProfiles(options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     * Patch account.
+     * @param {number} accountIndex
+     * @param {PatchAccountInput} patchAccountInput PatchAccount
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    patchAccount(
+      accountIndex: number,
+      patchAccountInput: PatchAccountInput,
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<UpdateAccountDto> {
+      return localVarFp
+        .patchAccount(accountIndex, patchAccountInput, options)
         .then((request) => request(axios, basePath))
     },
     /**
@@ -1986,6 +2342,22 @@ export class AccountsApi extends BaseAPI {
   }
 
   /**
+   * creates account and corresponding profile at the same time
+   * @param {CreateAccountWithProfileInput} createAccountWithProfileInput CreateAccountWithProfile
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public createAccountWithProfile(
+    createAccountWithProfileInput: CreateAccountWithProfileInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return AccountsApiFp(this.configuration)
+      .createAccountWithProfile(createAccountWithProfileInput, options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
    * Delete account.
    * @param {number} accountIndex
    * @param {*} [options] Override http request option.
@@ -2025,6 +2397,24 @@ export class AccountsApi extends BaseAPI {
   public listProfiles(options?: RawAxiosRequestConfig) {
     return AccountsApiFp(this.configuration)
       .listProfiles(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   * Patch account.
+   * @param {number} accountIndex
+   * @param {PatchAccountInput} patchAccountInput PatchAccount
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public patchAccount(
+    accountIndex: number,
+    patchAccountInput: PatchAccountInput,
+    options?: RawAxiosRequestConfig,
+  ) {
+    return AccountsApiFp(this.configuration)
+      .patchAccount(accountIndex, patchAccountInput, options)
       .then((request) => request(this.axios, this.basePath))
   }
 

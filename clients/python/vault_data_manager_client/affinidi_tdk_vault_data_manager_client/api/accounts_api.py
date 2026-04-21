@@ -26,9 +26,12 @@ from typing import Optional
 
 from affinidi_tdk_vault_data_manager_client.models.create_account_input import CreateAccountInput
 from affinidi_tdk_vault_data_manager_client.models.create_account_ok import CreateAccountOK
+from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_input import CreateAccountWithProfileInput
+from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_ok import CreateAccountWithProfileOK
 from affinidi_tdk_vault_data_manager_client.models.delete_account_dto import DeleteAccountDto
 from affinidi_tdk_vault_data_manager_client.models.list_accounts_dto import ListAccountsDto
 from affinidi_tdk_vault_data_manager_client.models.list_profiles_ok import ListProfilesOK
+from affinidi_tdk_vault_data_manager_client.models.patch_account_input import PatchAccountInput
 from affinidi_tdk_vault_data_manager_client.models.update_account_dto import UpdateAccountDto
 from affinidi_tdk_vault_data_manager_client.models.update_account_input import UpdateAccountInput
 
@@ -185,6 +188,154 @@ class AccountsApi:
 
         return self.api_client.call_api(
             '/v1/accounts', 'POST',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def create_account_with_profile(self, create_account_with_profile_input : Annotated[CreateAccountWithProfileInput, Field(..., description="CreateAccountWithProfile")], **kwargs) -> CreateAccountWithProfileOK:  # noqa: E501
+        """create_account_with_profile  # noqa: E501
+
+        creates account and corresponding profile at the same time  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_account_with_profile(create_account_with_profile_input, async_req=True)
+        >>> result = thread.get()
+
+        :param create_account_with_profile_input: CreateAccountWithProfile (required)
+        :type create_account_with_profile_input: CreateAccountWithProfileInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: CreateAccountWithProfileOK
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the create_account_with_profile_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.create_account_with_profile_with_http_info(create_account_with_profile_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def create_account_with_profile_with_http_info(self, create_account_with_profile_input : Annotated[CreateAccountWithProfileInput, Field(..., description="CreateAccountWithProfile")], **kwargs) -> ApiResponse:  # noqa: E501
+        """create_account_with_profile  # noqa: E501
+
+        creates account and corresponding profile at the same time  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.create_account_with_profile_with_http_info(create_account_with_profile_input, async_req=True)
+        >>> result = thread.get()
+
+        :param create_account_with_profile_input: CreateAccountWithProfile (required)
+        :type create_account_with_profile_input: CreateAccountWithProfileInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(CreateAccountWithProfileOK, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'create_account_with_profile_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_account_with_profile" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['create_account_with_profile_input'] is not None:
+            _body_params = _params['create_account_with_profile_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ConsumerTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "CreateAccountWithProfileOK",
+            '400': "InvalidParameterError",
+        }
+
+        return self.api_client.call_api(
+            '/v1/accounts/profiles', 'POST',
             _path_params,
             _query_params,
             _header_params,
@@ -608,6 +759,162 @@ class AccountsApi:
 
         return self.api_client.call_api(
             '/v1/accounts/profiles', 'GET',
+            _path_params,
+            _query_params,
+            _header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            response_types_map=_response_types_map,
+            auth_settings=_auth_settings,
+            async_req=_params.get('async_req'),
+            _return_http_data_only=_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=_params.get('_preload_content', True),
+            _request_timeout=_params.get('_request_timeout'),
+            collection_formats=_collection_formats,
+            _request_auth=_params.get('_request_auth'))
+
+    @validate_arguments
+    def patch_account(self, account_index : StrictInt, patch_account_input : Annotated[PatchAccountInput, Field(..., description="PatchAccount")], **kwargs) -> UpdateAccountDto:  # noqa: E501
+        """patch_account  # noqa: E501
+
+        Patch account.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.patch_account(account_index, patch_account_input, async_req=True)
+        >>> result = thread.get()
+
+        :param account_index: (required)
+        :type account_index: int
+        :param patch_account_input: PatchAccount (required)
+        :type patch_account_input: PatchAccountInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _request_timeout: timeout setting for this request.
+               If one number provided, it will be total request
+               timeout. It can also be a pair (tuple) of
+               (connection, read) timeouts.
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: UpdateAccountDto
+        """
+        kwargs['_return_http_data_only'] = True
+        if '_preload_content' in kwargs:
+            message = "Error! Please call the patch_account_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"  # noqa: E501
+            raise ValueError(message)
+        return self.patch_account_with_http_info(account_index, patch_account_input, **kwargs)  # noqa: E501
+
+    @validate_arguments
+    def patch_account_with_http_info(self, account_index : StrictInt, patch_account_input : Annotated[PatchAccountInput, Field(..., description="PatchAccount")], **kwargs) -> ApiResponse:  # noqa: E501
+        """patch_account  # noqa: E501
+
+        Patch account.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+
+        >>> thread = api.patch_account_with_http_info(account_index, patch_account_input, async_req=True)
+        >>> result = thread.get()
+
+        :param account_index: (required)
+        :type account_index: int
+        :param patch_account_input: PatchAccount (required)
+        :type patch_account_input: PatchAccountInput
+        :param async_req: Whether to execute the request asynchronously.
+        :type async_req: bool, optional
+        :param _preload_content: if False, the ApiResponse.data will
+                                 be set to none and raw_data will store the
+                                 HTTP response body without reading/decoding.
+                                 Default is True.
+        :type _preload_content: bool, optional
+        :param _return_http_data_only: response data instead of ApiResponse
+                                       object with status code, headers, etc
+        :type _return_http_data_only: bool, optional
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the authentication
+                              in the spec for a single request.
+        :type _request_auth: dict, optional
+        :type _content_type: string, optional: force content-type for the request
+        :return: Returns the result object.
+                 If the method is called asynchronously,
+                 returns the request thread.
+        :rtype: tuple(UpdateAccountDto, status_code(int), headers(HTTPHeaderDict))
+        """
+
+        _params = locals()
+
+        _all_params = [
+            'account_index',
+            'patch_account_input'
+        ]
+        _all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout',
+                '_request_auth',
+                '_content_type',
+                '_headers'
+            ]
+        )
+
+        # validate the arguments
+        for _key, _val in _params['kwargs'].items():
+            if _key not in _all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method patch_account" % _key
+                )
+            _params[_key] = _val
+        del _params['kwargs']
+
+        _collection_formats = {}
+
+        # process the path parameters
+        _path_params = {}
+        if _params['account_index'] is not None:
+            _path_params['accountIndex'] = _params['account_index']
+
+
+        # process the query parameters
+        _query_params = []
+        # process the header parameters
+        _header_params = dict(_params.get('_headers', {}))
+        # process the form parameters
+        _form_params = []
+        _files = {}
+        # process the body parameter
+        _body_params = None
+        if _params['patch_account_input'] is not None:
+            _body_params = _params['patch_account_input']
+
+        # set the HTTP header `Accept`
+        _header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # set the HTTP header `Content-Type`
+        _content_types_list = _params.get('_content_type',
+            self.api_client.select_header_content_type(
+                ['application/json']))
+        if _content_types_list:
+                _header_params['Content-Type'] = _content_types_list
+
+        # authentication setting
+        _auth_settings = ['ConsumerTokenAuth']  # noqa: E501
+
+        _response_types_map = {
+            '200': "UpdateAccountDto",
+            '400': "InvalidParameterError",
+        }
+
+        return self.api_client.call_api(
+            '/v1/accounts/{accountIndex}', 'PATCH',
             _path_params,
             _query_params,
             _header_params,

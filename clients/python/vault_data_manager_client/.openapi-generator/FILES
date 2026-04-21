@@ -19,6 +19,8 @@ affinidi_tdk_vault_data_manager_client/models/account_dto.py
 affinidi_tdk_vault_data_manager_client/models/consumer_metadata_dto.py
 affinidi_tdk_vault_data_manager_client/models/create_account_input.py
 affinidi_tdk_vault_data_manager_client/models/create_account_ok.py
+affinidi_tdk_vault_data_manager_client/models/create_account_with_profile_input.py
+affinidi_tdk_vault_data_manager_client/models/create_account_with_profile_ok.py
 affinidi_tdk_vault_data_manager_client/models/create_child_node_input.py
 affinidi_tdk_vault_data_manager_client/models/create_node_input.py
 affinidi_tdk_vault_data_manager_client/models/create_node_ok.py
@@ -45,6 +47,7 @@ affinidi_tdk_vault_data_manager_client/models/node_dto.py
 affinidi_tdk_vault_data_manager_client/models/node_status.py
 affinidi_tdk_vault_data_manager_client/models/node_type.py
 affinidi_tdk_vault_data_manager_client/models/partial_profile_node_dto.py
+affinidi_tdk_vault_data_manager_client/models/patch_account_input.py
 affinidi_tdk_vault_data_manager_client/models/query_profile_data_ok.py
 affinidi_tdk_vault_data_manager_client/models/restore_node_from_trashbin.py
 affinidi_tdk_vault_data_manager_client/models/start_file_scan_input.py
@@ -63,6 +66,8 @@ docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateAccountWithProfileInput.md
+docs/CreateAccountWithProfileOK.md
 docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
@@ -91,6 +96,7 @@ docs/NodeStatus.md
 docs/NodeType.md
 docs/NodesApi.md
 docs/PartialProfileNodeDto.md
+docs/PatchAccountInput.md
 docs/ProfileDataApi.md
 docs/QueryProfileDataOK.md
 docs/RestoreNodeFromTrashbin.md
