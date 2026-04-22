@@ -2,13 +2,15 @@
 
 All URIs are relative to *https://api.vault.affinidi.com/vfs*
 
-| Method                                              | HTTP request                           | Description |
-| --------------------------------------------------- | -------------------------------------- | ----------- |
-| [**create_account**](AccountsApi.md#create_account) | **POST** /v1/accounts                  |
-| [**delete_account**](AccountsApi.md#delete_account) | **DELETE** /v1/accounts/{accountIndex} |
-| [**list_accounts**](AccountsApi.md#list_accounts)   | **GET** /v1/accounts                   |
-| [**list_profiles**](AccountsApi.md#list_profiles)   | **GET** /v1/accounts/profiles          |
-| [**update_account**](AccountsApi.md#update_account) | **PUT** /v1/accounts/{accountIndex}    |
+| Method                                                                        | HTTP request                           | Description |
+| ----------------------------------------------------------------------------- | -------------------------------------- | ----------- |
+| [**create_account**](AccountsApi.md#create_account)                           | **POST** /v1/accounts                  |
+| [**create_account_with_profile**](AccountsApi.md#create_account_with_profile) | **POST** /v1/accounts/profiles         |
+| [**delete_account**](AccountsApi.md#delete_account)                           | **DELETE** /v1/accounts/{accountIndex} |
+| [**list_accounts**](AccountsApi.md#list_accounts)                             | **GET** /v1/accounts                   |
+| [**list_profiles**](AccountsApi.md#list_profiles)                             | **GET** /v1/accounts/profiles          |
+| [**patch_account**](AccountsApi.md#patch_account)                             | **PATCH** /v1/accounts/{accountIndex}  |
+| [**update_account**](AccountsApi.md#update_account)                           | **PUT** /v1/accounts/{accountIndex}    |
 
 # **create_account**
 
@@ -100,6 +102,99 @@ with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_clie
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | CreateAccountOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_account_with_profile**
+
+> CreateAccountWithProfileOK create_account_with_profile(create_account_with_profile_input)
+
+creates account and corresponding profile at the same time
+
+### Example
+
+- Api Key Authentication (ConsumerTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_vault_data_manager_client
+from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_input import CreateAccountWithProfileInput
+from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_ok import CreateAccountWithProfileOK
+from affinidi_tdk_vault_data_manager_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.vault.affinidi.com/vfs
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_vault_data_manager_client.Configuration(
+    host = "https://api.vault.affinidi.com/vfs"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ConsumerTokenAuth
+configuration.api_key['ConsumerTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ConsumerTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_vault_data_manager_client.AccountsApi(api_client)
+    create_account_with_profile_input = affinidi_tdk_vault_data_manager_client.CreateAccountWithProfileInput() # CreateAccountWithProfileInput | CreateAccountWithProfile
+
+    try:
+        api_response = api_instance.create_account_with_profile(create_account_with_profile_input)
+        print("The response of AccountsApi->create_account_with_profile:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AccountsApi->create_account_with_profile: %s\n" % e)
+```
+
+### Parameters
+
+| Name                                  | Type                                                                  | Description              | Notes |
+| ------------------------------------- | --------------------------------------------------------------------- | ------------------------ | ----- |
+| **create_account_with_profile_input** | [**CreateAccountWithProfileInput**](CreateAccountWithProfileInput.md) | CreateAccountWithProfile |
+
+### Return type
+
+[**CreateAccountWithProfileOK**](CreateAccountWithProfileOK.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                | Response headers                                                                                                  |
+| ----------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | CreateAccountWithProfileOK | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError            | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -374,6 +469,101 @@ This endpoint does not need any parameter.
 | Status code | Description     | Response headers                                                                                                  |
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **200**     | ListProfilesOK  | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+| **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch_account**
+
+> UpdateAccountDto patch_account(account_index, patch_account_input)
+
+Patch account.
+
+### Example
+
+- Api Key Authentication (ConsumerTokenAuth):
+
+```python
+import time
+import os
+import affinidi_tdk_vault_data_manager_client
+from affinidi_tdk_vault_data_manager_client.models.patch_account_input import PatchAccountInput
+from affinidi_tdk_vault_data_manager_client.models.update_account_dto import UpdateAccountDto
+from affinidi_tdk_vault_data_manager_client.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.vault.affinidi.com/vfs
+# See configuration.py for a list of all supported configuration parameters.
+configuration = affinidi_tdk_vault_data_manager_client.Configuration(
+    host = "https://api.vault.affinidi.com/vfs"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ConsumerTokenAuth
+configuration.api_key['ConsumerTokenAuth'] = os.environ["API_KEY"]
+
+# Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
+import affinidi_tdk_auth_provider
+
+stats = {
+  apiGatewayUrl,
+  keyId,
+  passphrase,
+  privateKey,
+  projectId,
+  tokenEndpoint,
+  tokenId,
+}
+authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
+configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ConsumerTokenAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with affinidi_tdk_vault_data_manager_client.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = affinidi_tdk_vault_data_manager_client.AccountsApi(api_client)
+    account_index = 56 # int |
+    patch_account_input = affinidi_tdk_vault_data_manager_client.PatchAccountInput() # PatchAccountInput | PatchAccount
+
+    try:
+        api_response = api_instance.patch_account(account_index, patch_account_input)
+        print("The response of AccountsApi->patch_account:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AccountsApi->patch_account: %s\n" % e)
+```
+
+### Parameters
+
+| Name                    | Type                                          | Description  | Notes |
+| ----------------------- | --------------------------------------------- | ------------ | ----- |
+| **account_index**       | **int**                                       |              |
+| **patch_account_input** | [**PatchAccountInput**](PatchAccountInput.md) | PatchAccount |
+
+### Return type
+
+[**UpdateAccountDto**](UpdateAccountDto.md)
+
+### Authorization
+
+[ConsumerTokenAuth](../README.md#ConsumerTokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description     | Response headers                                                                                                  |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **200**     | PatchAccountOK  | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 | **400**     | BadRequestError | _ Access-Control-Allow-Origin - <br> _ Access-Control-Allow-Methods - <br> \* Access-Control-Allow-Headers - <br> |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

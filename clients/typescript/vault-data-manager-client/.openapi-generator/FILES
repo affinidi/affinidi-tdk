@@ -11,6 +11,8 @@ docs/ConfigurationApi.md
 docs/ConsumerMetadataDto.md
 docs/CreateAccountInput.md
 docs/CreateAccountOK.md
+docs/CreateAccountWithProfileInput.md
+docs/CreateAccountWithProfileOK.md
 docs/CreateChildNodeInput.md
 docs/CreateNodeInput.md
 docs/CreateNodeOK.md
@@ -39,6 +41,7 @@ docs/NodeStatus.md
 docs/NodeType.md
 docs/NodesApi.md
 docs/PartialProfileNodeDto.md
+docs/PatchAccountInput.md
 docs/ProfileDataApi.md
 docs/QueryProfileDataOK.md
 docs/RestoreNodeFromTrashbin.md
