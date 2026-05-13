@@ -2,12 +2,14 @@
 
 ## Properties
 
-| Name        | Type                  | Description | Notes      |
-| ----------- | --------------------- | ----------- | ---------- |
-| **node_id** | **str**               |             |
-| **url**     | **str**               |             | [optional] |
-| **link**    | **str**               |             | [optional] |
-| **fields**  | **Dict[str, object]** |             | [optional] |
+| Name            | Type                  | Description            | Notes      |
+| --------------- | --------------------- | ---------------------- | ---------- |
+| **node_id**     | **str**               |                        |
+| **created_at**  | **str**               | creation date/time     |
+| **modified_at** | **str**               | modification date/time |
+| **url**         | **str**               |                        | [optional] |
+| **link**        | **str**               |                        | [optional] |
+| **fields**      | **Dict[str, object]** |                        | [optional] |
 
 ## Example
 

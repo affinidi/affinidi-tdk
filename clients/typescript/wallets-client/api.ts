@@ -91,7 +91,14 @@ export interface CreateWalletKeyInput {
    * @type {string}
    * @memberof CreateWalletKeyInput
    */
-  keyType: CreateWalletKeyInputKeyTypeEnum
+  algorithm?: CreateWalletKeyInputAlgorithmEnum
+  /**
+   * Deprecated alias of `algorithm`. Accepted for backward compatibility; prefer `algorithm`. If both are sent, `algorithm` takes precedence.
+   * @type {string}
+   * @memberof CreateWalletKeyInput
+   * @deprecated
+   */
+  keyType?: CreateWalletKeyInputKeyTypeEnum
   /**
    * verification relationships for the key.
    * @type {Array<VerificationRelationship>}
@@ -100,6 +107,14 @@ export interface CreateWalletKeyInput {
   relationships: Array<VerificationRelationship>
 }
 
+export const CreateWalletKeyInputAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+} as const
+
+export type CreateWalletKeyInputAlgorithmEnum =
+  (typeof CreateWalletKeyInputAlgorithmEnum)[keyof typeof CreateWalletKeyInputAlgorithmEnum]
 export const CreateWalletKeyInputKeyTypeEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
@@ -1370,6 +1385,13 @@ export interface WalletKeyDto {
    * @type {string}
    * @memberof WalletKeyDto
    */
+  algorithm?: WalletKeyDtoAlgorithmEnum
+  /**
+   * Deprecated alias of `algorithm`. Always equal to `algorithm` and included for backward compatibility.
+   * @type {string}
+   * @memberof WalletKeyDto
+   * @deprecated
+   */
   keyType?: WalletKeyDtoKeyTypeEnum
   /**
    * ARI identifier for the key (e.g., \"ari:key:...\")
@@ -1385,6 +1407,14 @@ export interface WalletKeyDto {
   relationships?: Array<VerificationRelationship>
 }
 
+export const WalletKeyDtoAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+} as const
+
+export type WalletKeyDtoAlgorithmEnum =
+  (typeof WalletKeyDtoAlgorithmEnum)[keyof typeof WalletKeyDtoAlgorithmEnum]
 export const WalletKeyDtoKeyTypeEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
