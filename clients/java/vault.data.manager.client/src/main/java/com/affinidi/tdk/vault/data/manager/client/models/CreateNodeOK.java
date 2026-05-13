@@ -33,6 +33,8 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   CreateNodeOK.JSON_PROPERTY_NODE_ID,
+  CreateNodeOK.JSON_PROPERTY_CREATED_AT,
+  CreateNodeOK.JSON_PROPERTY_MODIFIED_AT,
   CreateNodeOK.JSON_PROPERTY_URL,
   CreateNodeOK.JSON_PROPERTY_LINK,
   CreateNodeOK.JSON_PROPERTY_FIELDS
@@ -42,6 +44,14 @@ public class CreateNodeOK {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
   @javax.annotation.Nonnull
   private String nodeId;
+
+  public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @javax.annotation.Nonnull
+  private String createdAt;
+
+  public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
+  @javax.annotation.Nonnull
+  private String modifiedAt;
 
   public static final String JSON_PROPERTY_URL = "url";
   @javax.annotation.Nullable
@@ -81,6 +91,56 @@ public class CreateNodeOK {
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
+  }
+
+  public CreateNodeOK createdAt(@javax.annotation.Nonnull String createdAt) {
+    
+    this.createdAt = createdAt;
+    return this;
+  }
+
+  /**
+   * creation date/time
+   * @return createdAt
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public CreateNodeOK modifiedAt(@javax.annotation.Nonnull String modifiedAt) {
+    
+    this.modifiedAt = modifiedAt;
+    return this;
+  }
+
+  /**
+   * modification date/time
+   * @return modifiedAt
+   */
+  @javax.annotation.Nonnull
+  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getModifiedAt() {
+    return modifiedAt;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
+    this.modifiedAt = modifiedAt;
   }
 
   public CreateNodeOK url(@javax.annotation.Nullable String url) {
@@ -176,6 +236,8 @@ public class CreateNodeOK {
     }
     CreateNodeOK createNodeOK = (CreateNodeOK) o;
     return Objects.equals(this.nodeId, createNodeOK.nodeId) &&
+        Objects.equals(this.createdAt, createNodeOK.createdAt) &&
+        Objects.equals(this.modifiedAt, createNodeOK.modifiedAt) &&
         Objects.equals(this.url, createNodeOK.url) &&
         Objects.equals(this.link, createNodeOK.link) &&
         Objects.equals(this.fields, createNodeOK.fields);
@@ -183,7 +245,7 @@ public class CreateNodeOK {
 
   @Override
   public int hashCode() {
-    return Objects.hash(nodeId, url, link, fields);
+    return Objects.hash(nodeId, createdAt, modifiedAt, url, link, fields);
   }
 
   @Override
@@ -191,6 +253,8 @@ public class CreateNodeOK {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateNodeOK {\n");
     sb.append("    nodeId: ").append(toIndentedString(nodeId)).append("\n");
+    sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
+    sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
@@ -245,6 +309,26 @@ public class CreateNodeOK {
     if (getNodeId() != null) {
       try {
         joiner.add(String.format("%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `createdAt` to the URL query string
+    if (getCreatedAt() != null) {
+      try {
+        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `modifiedAt` to the URL query string
+    if (getModifiedAt() != null) {
+      try {
+        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
