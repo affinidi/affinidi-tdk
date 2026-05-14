@@ -27,10 +27,12 @@ class CreateNodeOK(BaseModel):
     CreateNodeOK
     """
     node_id: StrictStr = Field(default=..., alias="nodeId")
+    created_at: StrictStr = Field(default=..., alias="createdAt", description="creation date/time")
+    modified_at: StrictStr = Field(default=..., alias="modifiedAt", description="modification date/time")
     url: Optional[StrictStr] = None
     link: Optional[StrictStr] = None
     fields: Optional[Dict[str, Any]] = None
-    __properties = ["nodeId", "url", "link", "fields"]
+    __properties = ["nodeId", "createdAt", "modifiedAt", "url", "link", "fields"]
 
     class Config:
         """Pydantic configuration"""
@@ -69,6 +71,8 @@ class CreateNodeOK(BaseModel):
 
         _obj = CreateNodeOK.parse_obj({
             "node_id": obj.get("nodeId"),
+            "created_at": obj.get("createdAt"),
+            "modified_at": obj.get("modifiedAt"),
             "url": obj.get("url"),
             "link": obj.get("link"),
             "fields": obj.get("fields")
