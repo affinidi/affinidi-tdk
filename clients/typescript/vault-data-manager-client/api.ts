@@ -447,6 +447,18 @@ export interface CreateNodeOK {
    */
   nodeId: string
   /**
+   * creation date/time
+   * @type {string}
+   * @memberof CreateNodeOK
+   */
+  createdAt: string
+  /**
+   * modification date/time
+   * @type {string}
+   * @memberof CreateNodeOK
+   */
+  modifiedAt: string
+  /**
    *
    * @type {string}
    * @memberof CreateNodeOK
