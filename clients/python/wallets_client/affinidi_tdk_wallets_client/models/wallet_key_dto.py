@@ -28,10 +28,21 @@ class WalletKeyDto(BaseModel):
     Detailed information about a wallet key. Multiple keys are only supported for did:web wallets.  # noqa: E501
     """
     key_id: Optional[StrictStr] = Field(default=None, alias="keyId", description="wallet-scoped key identifier (e.g., \"key-1\")")
-    key_type: Optional[StrictStr] = Field(default=None, alias="keyType", description="cryptographic algorithm used by this key")
+    algorithm: Optional[StrictStr] = Field(default=None, description="cryptographic algorithm used by this key")
+    key_type: Optional[StrictStr] = Field(default=None, alias="keyType", description="Deprecated alias of `algorithm`. Always equal to `algorithm` and included for backward compatibility.")
     key_ari: Optional[StrictStr] = Field(default=None, alias="keyAri", description="ARI identifier for the key (e.g., \"ari:key:...\")")
     relationships: Optional[conlist(VerificationRelationship)] = Field(default=None, description="verification relationships this key supports")
-    __properties = ["keyId", "keyType", "keyAri", "relationships"]
+    __properties = ["keyId", "algorithm", "keyType", "keyAri", "relationships"]
+
+    @validator('algorithm')
+    def algorithm_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('secp256k1', 'ed25519', 'p256',):
+            raise ValueError("must be one of enum values ('secp256k1', 'ed25519', 'p256')")
+        return value
 
     @validator('key_type')
     def key_type_validate_enum(cls, value):
@@ -80,6 +91,7 @@ class WalletKeyDto(BaseModel):
 
         _obj = WalletKeyDto.parse_obj({
             "key_id": obj.get("keyId"),
+            "algorithm": obj.get("algorithm"),
             "key_type": obj.get("keyType"),
             "key_ari": obj.get("keyAri"),
             "relationships": obj.get("relationships")
