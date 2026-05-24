@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +43,8 @@ import java.util.StringJoiner;
   WalletDto.JSON_PROPERTY_ARI,
   WalletDto.JSON_PROPERTY_KEYS,
   WalletDto.JSON_PROPERTY_CREATED_AT,
-  WalletDto.JSON_PROPERTY_MODIFIED_AT
+  WalletDto.JSON_PROPERTY_MODIFIED_AT,
+  WalletDto.JSON_PROPERTY_VERSION
 })
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
 public class WalletDto {
@@ -81,6 +83,10 @@ public class WalletDto {
   public static final String JSON_PROPERTY_MODIFIED_AT = "modifiedAt";
   @javax.annotation.Nullable
   private String modifiedAt;
+
+  public static final String JSON_PROPERTY_VERSION = "version";
+  @javax.annotation.Nullable
+  private BigDecimal version;
 
   public WalletDto() {
   }
@@ -318,6 +324,31 @@ public class WalletDto {
     this.modifiedAt = modifiedAt;
   }
 
+  public WalletDto version(@javax.annotation.Nullable BigDecimal version) {
+    
+    this.version = version;
+    return this;
+  }
+
+  /**
+   * The version of the wallet
+   * @return version
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BigDecimal getVersion() {
+    return version;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_VERSION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVersion(@javax.annotation.Nullable BigDecimal version) {
+    this.version = version;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -335,12 +366,13 @@ public class WalletDto {
         Objects.equals(this.ari, walletDto.ari) &&
         Objects.equals(this.keys, walletDto.keys) &&
         Objects.equals(this.createdAt, walletDto.createdAt) &&
-        Objects.equals(this.modifiedAt, walletDto.modifiedAt);
+        Objects.equals(this.modifiedAt, walletDto.modifiedAt) &&
+        Objects.equals(this.version, walletDto.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, did, name, description, didDocument, ari, keys, createdAt, modifiedAt);
+    return Objects.hash(id, did, name, description, didDocument, ari, keys, createdAt, modifiedAt, version);
   }
 
   @Override
@@ -356,6 +388,7 @@ public class WalletDto {
     sb.append("    keys: ").append(toIndentedString(keys)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -487,6 +520,16 @@ public class WalletDto {
     if (getModifiedAt() != null) {
       try {
         joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `version` to the URL query string
+    if (getVersion() != null) {
+      try {
+        joiner.add(String.format("%sversion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
