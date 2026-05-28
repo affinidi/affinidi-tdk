@@ -15,6 +15,7 @@ wallet dto
 | **keys**         | [**List[WalletDtoKeysInner]**](WalletDtoKeysInner.md) |                                   | [optional] |
 | **created_at**   | **str**                                               |                                   | [optional] |
 | **modified_at**  | **str**                                               |                                   | [optional] |
+| **version**      | **float**                                             | The version of the wallet         | [optional] |
 
 ## Example
 
