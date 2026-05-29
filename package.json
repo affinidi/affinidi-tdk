@@ -48,5 +48,10 @@
     "packages/*",
     "clients/typescript/*",
     "tests/integration/typescript/*"
-  ]
+  ],
+  "overrides": {
+    "axios": "^1.16.1",
+    "qs": "^6.15.2",
+    "aws-iot-device-sdk-v2": "^1.26.0"
+  }
 }
