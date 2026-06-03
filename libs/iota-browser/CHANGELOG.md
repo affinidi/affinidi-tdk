@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.24.0...@affinidi-tdk/iota-browser-v1.24.1) (2026-06-03)
+
+
+### Bug Fixes
+
+* update vulnerable dependencies ([#1268](https://github.com/affinidi/affinidi-tdk/issues/1268)) ([ae13b8a](https://github.com/affinidi/affinidi-tdk/commit/ae13b8a2b68b67c8adadb84a546ba8cd192a8bff))
+
 # [1.24.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.23.0...@affinidi-tdk/iota-browser-v1.24.0) (2026-03-05)
 
 
