@@ -1,3 +1,10 @@
+## [1.35.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.35.0...@affinidi-tdk/auth-provider-v1.35.1) (2026-06-03)
+
+
+### Bug Fixes
+
+* update vulnerable dependencies ([#1268](https://github.com/affinidi/affinidi-tdk/issues/1268)) ([ae13b8a](https://github.com/affinidi/affinidi-tdk/commit/ae13b8a2b68b67c8adadb84a546ba8cd192a8bff))
+
 # [1.35.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.34.0...@affinidi-tdk/auth-provider-v1.35.0) (2026-03-05)
 
 
