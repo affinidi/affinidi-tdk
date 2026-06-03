@@ -35,6 +35,7 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   WalletKeyDto.JSON_PROPERTY_KEY_ID,
+  WalletKeyDto.JSON_PROPERTY_ALGORITHM,
   WalletKeyDto.JSON_PROPERTY_KEY_TYPE,
   WalletKeyDto.JSON_PROPERTY_KEY_ARI,
   WalletKeyDto.JSON_PROPERTY_RELATIONSHIPS
@@ -47,6 +48,47 @@ public class WalletKeyDto {
 
   /**
    * cryptographic algorithm used by this key
+   */
+  public enum AlgorithmEnum {
+    SECP256K1(String.valueOf("secp256k1")),
+    
+    ED25519(String.valueOf("ed25519")),
+    
+    P256(String.valueOf("p256"));
+
+    private String value;
+
+    AlgorithmEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static AlgorithmEnum fromValue(String value) {
+      for (AlgorithmEnum b : AlgorithmEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_ALGORITHM = "algorithm";
+  @javax.annotation.Nullable
+  private AlgorithmEnum algorithm;
+
+  /**
+   * Deprecated alias of &#x60;algorithm&#x60;. Always equal to &#x60;algorithm&#x60; and included for backward compatibility.
    */
   public enum KeyTypeEnum {
     SECP256K1(String.valueOf("secp256k1")),
@@ -122,6 +164,31 @@ public class WalletKeyDto {
     this.keyId = keyId;
   }
 
+  public WalletKeyDto algorithm(@javax.annotation.Nullable AlgorithmEnum algorithm) {
+    
+    this.algorithm = algorithm;
+    return this;
+  }
+
+  /**
+   * cryptographic algorithm used by this key
+   * @return algorithm
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public AlgorithmEnum getAlgorithm() {
+    return algorithm;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlgorithm(@javax.annotation.Nullable AlgorithmEnum algorithm) {
+    this.algorithm = algorithm;
+  }
+
   public WalletKeyDto keyType(@javax.annotation.Nullable KeyTypeEnum keyType) {
     
     this.keyType = keyType;
@@ -129,9 +196,11 @@ public class WalletKeyDto {
   }
 
   /**
-   * cryptographic algorithm used by this key
+   * Deprecated alias of &#x60;algorithm&#x60;. Always equal to &#x60;algorithm&#x60; and included for backward compatibility.
    * @return keyType
+   * @deprecated
    */
+  @Deprecated
   @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_KEY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
@@ -215,6 +284,7 @@ public class WalletKeyDto {
     }
     WalletKeyDto walletKeyDto = (WalletKeyDto) o;
     return Objects.equals(this.keyId, walletKeyDto.keyId) &&
+        Objects.equals(this.algorithm, walletKeyDto.algorithm) &&
         Objects.equals(this.keyType, walletKeyDto.keyType) &&
         Objects.equals(this.keyAri, walletKeyDto.keyAri) &&
         Objects.equals(this.relationships, walletKeyDto.relationships);
@@ -222,7 +292,7 @@ public class WalletKeyDto {
 
   @Override
   public int hashCode() {
-    return Objects.hash(keyId, keyType, keyAri, relationships);
+    return Objects.hash(keyId, algorithm, keyType, keyAri, relationships);
   }
 
   @Override
@@ -230,6 +300,7 @@ public class WalletKeyDto {
     StringBuilder sb = new StringBuilder();
     sb.append("class WalletKeyDto {\n");
     sb.append("    keyId: ").append(toIndentedString(keyId)).append("\n");
+    sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
     sb.append("    keyType: ").append(toIndentedString(keyType)).append("\n");
     sb.append("    keyAri: ").append(toIndentedString(keyAri)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
@@ -284,6 +355,16 @@ public class WalletKeyDto {
     if (getKeyId() != null) {
       try {
         joiner.add(String.format("%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `algorithm` to the URL query string
+    if (getAlgorithm() != null) {
+      try {
+        joiner.add(String.format("%salgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
