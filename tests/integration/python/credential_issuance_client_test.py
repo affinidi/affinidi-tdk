@@ -56,7 +56,13 @@ def test_get_issuance_configuration(configuration_api_instance, configuration_re
     assert "id" in data, "Response should contain configuration id"
     assert data.get("id") == config_id, "Configuration ID mismatch"
 
-def test_issuance_flow(issuance_api_instance, offer_api_instance):
+def test_issuance_flow(issuance_api_instance, offer_api_instance, configuration_resource):
+    from helpers.wallets import ensure_config_wallet_exists
+    
+    # Ensure the configuration's wallet exists before starting issuance
+    config_id = configuration_resource["configuration_id"]
+    ensure_config_wallet_exists(config_id)
+    
     # Start issuance
     api_response = issuance_api_instance.start_issuance(project_id, credential_issuance_data)
     data = json.loads(api_response.json())

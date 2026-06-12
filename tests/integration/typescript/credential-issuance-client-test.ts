@@ -16,6 +16,7 @@ import {
   getCisToken,
   credentialIssuanceConfiguration,
   createWallet,
+  ensureConfigWalletExists,
 } from './helpers'
 
 describe('credential-issuance-client', function () {
@@ -80,6 +81,9 @@ describe('credential-issuance-client', function () {
 
   describe('Issuance flow', function () {
     it('Initiates credential issuance', async () => {
+      // Ensure the configuration's wallet exists before starting issuance
+      await ensureConfigWalletExists(configurationId)
+
       const request: StartIssuanceInput = JSON.parse(credentialIssuanceData)
 
       const { data } = await issuanceApi.startIssuance(projectId, request)

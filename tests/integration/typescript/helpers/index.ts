@@ -129,8 +129,25 @@ export const checkWalletsLimitExceeded = async () => {
   if (data.wallets && data.wallets.length > WALLETS_LIMIT_THRESHOLD) {
     console.log('❗️Number of wallets reaching the limit (10). Deleting wallets.')
 
+    // Get protected wallet ID from issuance configuration
+    let protectedWalletId: string | undefined
+    try {
+      const cisConfig = ClientsConfigurationService.getCredentialIssuanceClientConfiguration()
+      const { ConfigurationApi } = await import('@affinidi-tdk/credential-issuance-client')
+      const configApi = new ConfigurationApi(cisConfig)
+      const configList = await configApi.getIssuanceConfigList()
+      if (configList.data?.configurations && configList.data.configurations.length > 0) {
+        protectedWalletId = configList.data.configurations[0].issuerWalletId
+      }
+    } catch (error) {
+      // If we can't get the config, proceed without protection
+    }
+
     for (const wallet of data.wallets) {
-      deleteWallet(wallet.id as string)
+      // Skip deleting the wallet used by the issuance configuration
+      if (wallet.id !== protectedWalletId) {
+        deleteWallet(wallet.id as string)
+      }
     }
   }
 }
@@ -142,6 +159,36 @@ export const deleteWallet = async (walletId: string) => {
 
   const { status } = await api.deleteWallet(walletId)
   expect(status).to.eql(204)
+}
+
+export const getWalletById = async (walletId: string) => {
+  const configuration = ClientsConfigurationService.getWalletsClientConfiguration()
+  const api = new WalletApi(configuration)
+
+  const { data } = await api.getWallet(walletId)
+  return data
+}
+
+export const ensureConfigWalletExists = async (configurationId: string) => {
+  const { ConfigurationApi } = await import('@affinidi-tdk/credential-issuance-client')
+  const cisConfig = ClientsConfigurationService.getCredentialIssuanceClientConfiguration()
+  const configApi = new ConfigurationApi(cisConfig)
+  
+  const config = await configApi.getIssuanceConfigById(configurationId)
+  const issuerWalletId = config.data.issuerWalletId
+  
+  if (issuerWalletId) {
+    try {
+      await getWalletById(issuerWalletId)
+    } catch (error: any) {
+      if (error.status === 404 || error.response?.status === 404) {
+        const newWallet = await createWallet()
+        await configApi.updateIssuanceConfigById(configurationId, { issuerWalletId: newWallet?.id })
+      } else {
+        throw error
+      }
+    }
+  }
 }
 
 export const isCredentialValid = async (credential) => {
