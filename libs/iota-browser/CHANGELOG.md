@@ -1,3 +1,10 @@
+## [1.24.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.24.1...@affinidi-tdk/iota-browser-v1.24.2) (2026-06-18)
+
+
+### Bug Fixes
+
+* npm vulnerabilities ([#1283](https://github.com/affinidi/affinidi-tdk/issues/1283)) ([089ee6d](https://github.com/affinidi/affinidi-tdk/commit/089ee6d6dfbff667211bd23c6a681b14c39c67b8))
+
 ## [1.24.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.24.0...@affinidi-tdk/iota-browser-v1.24.1) (2026-06-03)
 
 
