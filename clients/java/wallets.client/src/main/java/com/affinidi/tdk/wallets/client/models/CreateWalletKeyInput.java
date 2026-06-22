@@ -34,6 +34,7 @@ import java.util.StringJoiner;
  * Input for adding a new key to a wallet. Only supported for did:web ATM.
  */
 @JsonPropertyOrder({
+  CreateWalletKeyInput.JSON_PROPERTY_ALGORITHM,
   CreateWalletKeyInput.JSON_PROPERTY_KEY_TYPE,
   CreateWalletKeyInput.JSON_PROPERTY_RELATIONSHIPS
 })
@@ -41,6 +42,47 @@ import java.util.StringJoiner;
 public class CreateWalletKeyInput {
   /**
    * cryptographic algorithm for the new key
+   */
+  public enum AlgorithmEnum {
+    SECP256K1(String.valueOf("secp256k1")),
+    
+    ED25519(String.valueOf("ed25519")),
+    
+    P256(String.valueOf("p256"));
+
+    private String value;
+
+    AlgorithmEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static AlgorithmEnum fromValue(String value) {
+      for (AlgorithmEnum b : AlgorithmEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_ALGORITHM = "algorithm";
+  @javax.annotation.Nullable
+  private AlgorithmEnum algorithm;
+
+  /**
+   * Deprecated alias of &#x60;algorithm&#x60;. Accepted for backward compatibility; prefer &#x60;algorithm&#x60;. If both are sent, &#x60;algorithm&#x60; takes precedence.
    */
   public enum KeyTypeEnum {
     SECP256K1(String.valueOf("secp256k1")),
@@ -77,7 +119,7 @@ public class CreateWalletKeyInput {
   }
 
   public static final String JSON_PROPERTY_KEY_TYPE = "keyType";
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   private KeyTypeEnum keyType;
 
   public static final String JSON_PROPERTY_RELATIONSHIPS = "relationships";
@@ -87,19 +129,46 @@ public class CreateWalletKeyInput {
   public CreateWalletKeyInput() {
   }
 
-  public CreateWalletKeyInput keyType(@javax.annotation.Nonnull KeyTypeEnum keyType) {
+  public CreateWalletKeyInput algorithm(@javax.annotation.Nullable AlgorithmEnum algorithm) {
+    
+    this.algorithm = algorithm;
+    return this;
+  }
+
+  /**
+   * cryptographic algorithm for the new key
+   * @return algorithm
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public AlgorithmEnum getAlgorithm() {
+    return algorithm;
+  }
+
+
+  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlgorithm(@javax.annotation.Nullable AlgorithmEnum algorithm) {
+    this.algorithm = algorithm;
+  }
+
+  public CreateWalletKeyInput keyType(@javax.annotation.Nullable KeyTypeEnum keyType) {
     
     this.keyType = keyType;
     return this;
   }
 
   /**
-   * cryptographic algorithm for the new key
+   * Deprecated alias of &#x60;algorithm&#x60;. Accepted for backward compatibility; prefer &#x60;algorithm&#x60;. If both are sent, &#x60;algorithm&#x60; takes precedence.
    * @return keyType
+   * @deprecated
    */
-  @javax.annotation.Nonnull
+  @Deprecated
+  @javax.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_KEY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public KeyTypeEnum getKeyType() {
     return keyType;
@@ -107,8 +176,8 @@ public class CreateWalletKeyInput {
 
 
   @JsonProperty(JSON_PROPERTY_KEY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setKeyType(@javax.annotation.Nonnull KeyTypeEnum keyType) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setKeyType(@javax.annotation.Nullable KeyTypeEnum keyType) {
     this.keyType = keyType;
   }
 
@@ -154,19 +223,21 @@ public class CreateWalletKeyInput {
       return false;
     }
     CreateWalletKeyInput createWalletKeyInput = (CreateWalletKeyInput) o;
-    return Objects.equals(this.keyType, createWalletKeyInput.keyType) &&
+    return Objects.equals(this.algorithm, createWalletKeyInput.algorithm) &&
+        Objects.equals(this.keyType, createWalletKeyInput.keyType) &&
         Objects.equals(this.relationships, createWalletKeyInput.relationships);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(keyType, relationships);
+    return Objects.hash(algorithm, keyType, relationships);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CreateWalletKeyInput {\n");
+    sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
     sb.append("    keyType: ").append(toIndentedString(keyType)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
     sb.append("}");
@@ -215,6 +286,16 @@ public class CreateWalletKeyInput {
     }
 
     StringJoiner joiner = new StringJoiner("&");
+
+    // add `algorithm` to the URL query string
+    if (getAlgorithm() != null) {
+      try {
+        joiner.add(String.format("%salgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
 
     // add `keyType` to the URL query string
     if (getKeyType() != null) {
