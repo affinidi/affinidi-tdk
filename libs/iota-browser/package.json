@@ -34,7 +34,8 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "package": "npm pack",
-    "publib-npm": "publib-npm"
+    "publib-npm": "publib-npm",
+    "test": "nx test @affinidi-tdk/iota-browser"
   },
   "dependencies": {
     "@affinidi-tdk/common": "^1.1.1",
@@ -45,7 +46,10 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/uuid": "^9.0.8",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.4",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "esbuild": "^0.24.0",

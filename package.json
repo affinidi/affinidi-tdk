@@ -23,7 +23,6 @@
     "trust"
   ],
   "devDependencies": {
-    "yaml": "^2.7.0",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@nx/eslint": "^19.0.0",
@@ -36,12 +35,14 @@
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@theunderscorer/nx-semantic-release": "^2.12.0",
+    "@types/jest": "^30.0.0",
     "@types/node": "20.12.7",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
     "nx": "^19.0.0",
     "prettier": "^3.2.5",
-    "typescript": "~5.4.5"
+    "typescript": "~5.4.5",
+    "yaml": "^2.7.0"
   },
   "workspaces": [
     "libs/*",

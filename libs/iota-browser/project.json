@@ -23,6 +23,14 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/iota-browser/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
       "dependsOn": ["build"],

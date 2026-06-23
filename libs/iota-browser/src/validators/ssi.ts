@@ -51,7 +51,7 @@ const verifiableCredentialSchema = z
       .passthrough(),
     id: z.string(),
     issuanceDate: z.string(),
-    issuer: z.string(),
+    issuer: z.union([z.string(), z.object({ id: z.string() }).passthrough()]),
     proof: z.any().optional(),
     refreshService: z
       .object({ id: z.string(), type: z.string() })
