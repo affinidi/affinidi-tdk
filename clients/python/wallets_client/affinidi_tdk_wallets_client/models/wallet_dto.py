@@ -19,8 +19,8 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, Dict, List, Optional
-from pydantic import BaseModel, Field, StrictStr, conlist
+from typing import Any, Dict, List, Optional, Union
+from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, conlist
 from affinidi_tdk_wallets_client.models.wallet_dto_keys_inner import WalletDtoKeysInner
 
 class WalletDto(BaseModel):
@@ -36,7 +36,8 @@ class WalletDto(BaseModel):
     keys: Optional[conlist(WalletDtoKeysInner)] = None
     created_at: Optional[StrictStr] = Field(default=None, alias="createdAt")
     modified_at: Optional[StrictStr] = Field(default=None, alias="modifiedAt")
-    __properties = ["id", "did", "name", "description", "didDocument", "ari", "keys", "createdAt", "modifiedAt"]
+    version: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="The version of the wallet")
+    __properties = ["id", "did", "name", "description", "didDocument", "ari", "keys", "createdAt", "modifiedAt", "version"]
 
     class Config:
         """Pydantic configuration"""
@@ -89,7 +90,8 @@ class WalletDto(BaseModel):
             "ari": obj.get("ari"),
             "keys": [WalletDtoKeysInner.from_dict(_item) for _item in obj.get("keys")] if obj.get("keys") is not None else None,
             "created_at": obj.get("createdAt"),
-            "modified_at": obj.get("modifiedAt")
+            "modified_at": obj.get("modifiedAt"),
+            "version": obj.get("version")
         })
         return _obj
 
