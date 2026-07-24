@@ -24,6 +24,10 @@ import {
 
 export class IotaResponse {
   correlationId: string
+  // For PEX this is the single presented VP. For DCQL (OID4VP 1.0 §8.1) the
+  // vp_token may carry multiple presentations (one per credential-query id);
+  // this exposes only the FIRST one for convenience — read [vpToken] for the
+  // complete DCQL structure.
   verifiablePresentation: VerifiablePresentation
   // Raw vp_token string as received. For PEX this is the single VP; for DCQL
   // (OID4VP 1.0 §8.1) it is the JSON object keyed by credential-query id.
@@ -77,11 +81,12 @@ export class ResponseHandler {
 
     const rawSubmission = responseCallback.presentationSubmission
 
-    // DCQL (OID4VP 1.0 §8.1): there is no presentation_submission, and vp_token
-    // is a JSON object keyed by credential-query id whose values are the
+    // DCQL (OID4VP 1.0 §8.1): presentation_submission is absent, and vp_token is
+    // a JSON object keyed by credential-query id whose values are the
     // presentation(s) that satisfy each query. PEX returns a single VP plus a
-    // presentation_submission.
-    if (!rawSubmission) {
+    // presentation_submission. Detect DCQL by the missing field (an empty/
+    // invalid submission string is left to fail in the PEX parsing path below).
+    if (rawSubmission === undefined) {
       let dcqlVpToken: DcqlVpToken
       try {
         dcqlVpToken = dcqlVpTokenSchema.parse(vpJson)
