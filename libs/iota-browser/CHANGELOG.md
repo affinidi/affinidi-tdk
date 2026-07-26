@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.24.2...@affinidi-tdk/iota-browser-v1.25.0) (2026-07-26)
+
+
+### Features
+
+* support DCQL vp_token in Iota response handling ([#1310](https://github.com/affinidi/affinidi-tdk/issues/1310)) ([cf41188](https://github.com/affinidi/affinidi-tdk/commit/cf411881339f614ba52ca3545b862eefa3899b4c))
+
 ## [1.24.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.24.1...@affinidi-tdk/iota-browser-v1.24.2) (2026-06-18)
 
 
