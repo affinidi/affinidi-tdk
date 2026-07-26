@@ -34,7 +34,7 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "package": "npm pack",
-    "publib-npm": "publib-npm"
+    "publish-npm": "publib-npm"
   },
   "dependencies": {
     "@affinidi-tdk/common": "^1.1.1",
