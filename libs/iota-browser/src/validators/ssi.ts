@@ -78,3 +78,14 @@ export const verifiablePresentationSchema = z
 export type VerifiablePresentation = z.infer<
   typeof verifiablePresentationSchema
 >
+
+// DCQL (OID4VP 1.0 §8.1): the vp_token is a JSON object keyed by the
+// credential-query `id`, whose values are the presentation(s) that satisfy each
+// query (a single presentation, or an array when `multiple` is true).
+export const dcqlVpTokenSchema = z.record(
+  z.union([
+    verifiablePresentationSchema,
+    z.array(verifiablePresentationSchema),
+  ]),
+)
+export type DcqlVpToken = z.infer<typeof dcqlVpTokenSchema>

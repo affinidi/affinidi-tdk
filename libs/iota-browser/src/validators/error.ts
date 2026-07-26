@@ -79,9 +79,8 @@ export function newRequestError(event: ErrorEvent): IotaError {
 }
 
 export function throwEventError(event: ErrorEvent): never {
-  let errorEvent: ErrorEvent
   try {
-    errorEvent = errorEventSchema.parse(event)
+    errorEventSchema.parse(event)
   } catch (e) {
     if (e instanceof Error) {
       Logger.debug(e.message)

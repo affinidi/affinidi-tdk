@@ -36,7 +36,9 @@ export type SignedRequestJWT = z.infer<typeof signedRequestJWTSchema>
 export const responseCallbackEventSchema = BaseEvent.extend({
   eventType: z.literal(EventTypes.ResponseCallback),
   vpToken: z.string(),
-  presentationSubmission: z.string(),
+  // Optional: DCQL responses (OID4VP 1.0 §8.1) do not include a
+  // presentation_submission; PEX responses do.
+  presentationSubmission: z.string().optional(),
 })
 export type ResponseCallbackEvent = z.infer<typeof responseCallbackEventSchema>
 
