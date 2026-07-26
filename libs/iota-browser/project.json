@@ -30,14 +30,17 @@
         "changelog": true,
         "github": true,
         "git": true,
-        "npm": true,
+        "npm": false,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
         "branches": ["main"],
         "plugins": [
           [
-            "@semantic-release/npm",
+            "@semantic-release/exec",
             {
-              "npmPublish": true
+              "execCwd": "{projectRoot}",
+              "prepareCmd": "npm version ${nextRelease.version}",
+              "publishCmd": "npm run publish-npm",
+              "verifyConditionsCmd": "npm version"
             }
           ]
         ]
