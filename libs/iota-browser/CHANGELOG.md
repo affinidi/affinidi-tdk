@@ -1,3 +1,11 @@
+## [1.25.3](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.2...@affinidi-tdk/iota-browser-v1.25.3) (2026-07-26)
+
+
+### Bug Fixes
+
+* publish via @semantic-release/npm plugin ([#1313](https://github.com/affinidi/affinidi-tdk/issues/1313)) ([4ebec59](https://github.com/affinidi/affinidi-tdk/commit/4ebec594476ec53d36b7eb662529bbc63d38cd07))
+* roll back publish-script changes ([#1314](https://github.com/affinidi/affinidi-tdk/issues/1314)) ([d934a8c](https://github.com/affinidi/affinidi-tdk/commit/d934a8c9578e949558c2af052ebe534868df4e83))
+
 ## [1.25.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.1...@affinidi-tdk/iota-browser-v1.25.2) (2026-07-26)
 
 
