@@ -1,3 +1,10 @@
+## [1.25.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.1...@affinidi-tdk/iota-browser-v1.25.2) (2026-07-26)
+
+
+### Bug Fixes
+
+* publish script for iota-browser ([#1312](https://github.com/affinidi/affinidi-tdk/issues/1312)) ([77a4dbd](https://github.com/affinidi/affinidi-tdk/commit/77a4dbd81c893620a08567464c9a9e6dc3875e37))
+
 ## [1.25.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.0...@affinidi-tdk/iota-browser-v1.25.1) (2026-07-26)
 
 
