@@ -1,4 +1,4 @@
-## @affinidi/iota-browser
+## @affinidi-tdk/iota-browser
 
 ### Installation
 
@@ -11,4 +11,3 @@ npm install @affinidi-tdk/iota-browser
 Head over to [Affinidi Iota Framework documentation](https://docs.affinidi.com/services/iota-framework) page to better understand how the service works.
 
 For details on how to use this library please head over to [iota-browser documentation](https://docs.affinidi.com/dev-tools/affinidi-tdk/libraries/iota-browser) page.
-
