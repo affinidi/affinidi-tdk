@@ -39,8 +39,9 @@ jobs:
           # npm trusted publishing (OIDC) requires npm CLI >= 11.5.1, which ships with Node 24.
           node-version: 24
           cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@affinidi-tdk'
+          # No registry-url/scope: OIDC mints a short-lived token at publish time, so we don't
+          # want setup-node writing a token-auth .npmrc (which also injects the deprecated
+          # `always-auth` config). Registry defaults to https://registry.npmjs.org.
 
       - name: Set up Python
         uses: actions/setup-python@v3
