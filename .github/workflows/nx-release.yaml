@@ -4,9 +4,22 @@ on:
   push:
     branches:
       - 'main'
+    tags:
+      - '@affinidi-tdk/*-v[0-9]+.[0-9]+.[0-9]+*'
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'nx project name to publish (e.g. @affinidi-tdk/iota-browser)'
+        required: true
+        type: string
+      version:
+        description: 'Version to publish (optional; defaults to package.json version)'
+        required: false
+        type: string
 
 jobs:
   release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/')
     concurrency: release
     runs-on: ubuntu-latest
     environment: main
@@ -77,8 +90,6 @@ jobs:
           gpg-passphrase: MAVEN_GPG_SECRET_KEY_PASSWORD
 
       - run: npm ci
-      - name: Apply dependency patches (@semantic-release/npm scoped-package OIDC fix)
-        run: npx patch-package
       # Generate tag/changelog with semantic release
       # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx affected  -t semantic-release --parallel=false --base=$BASE_SHA --head=HEAD
@@ -95,3 +106,168 @@ jobs:
           TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
           POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
           BASE_SHA: ${{ github.event.before }}
+
+  # Native npm trusted publishing (OIDC).
+  #
+  # The release job above runs semantic-release with `npmPublish: false` for the
+  # @semantic-release/npm packages, so it only creates and pushes version tags
+  # (no npm publish). Pushing those tags (via the app token) triggers this job,
+  # which performs the actual publish using the npm CLI's own OIDC exchange - the
+  # officially supported trusted-publishing path. This runs in the same workflow
+  # file and `environment: main`, so the OIDC claims match the existing npm
+  # trusted-publisher configuration (file: nx-release.yaml, environment: main).
+  publish-npm:
+    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment: main
+    concurrency: publish-${{ github.ref }}
+    permissions:
+      contents: read
+      id-token: write # required for npm trusted publishing (OIDC)
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          # npm trusted publishing (OIDC) requires npm CLI >= 11.5.1, which ships with Node 24.
+          node-version: 24
+          cache: 'npm'
+
+      - name: Resolve package and version
+        id: pkg
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            NAME='${{ inputs.package }}'
+            VERSION='${{ inputs.version }}'
+          else
+            REF="${GITHUB_REF_NAME}" # e.g. @affinidi-tdk/iota-browser-v1.25.3
+            VERSION="${REF##*-v}"
+            NAME="${REF%-v${VERSION}}"
+          fi
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - run: npm ci
+
+      - name: Resolve project root
+        id: root
+        run: |
+          ROOT=$(npx nx show project "${{ steps.pkg.outputs.name }}" --json \
+            | node -e 'let s="";process.stdin.on("data",d=>{s+=d}).on("end",()=>{process.stdout.write(JSON.parse(s).root||"")})')
+          echo "root=$ROOT" >> "$GITHUB_OUTPUT"
+          # @semantic-release/npm packages publish here via `npm publish` (native OIDC):
+          # the 9 pure-npm packages plus the jsii `common` package (npm-only; its
+          # .npmignore excludes dist/, so `nx build` output is all that ships).
+          # iota-core and auth-provider publish via publib in the publish-jsii job.
+          case "$ROOT" in
+            libs/iota-browser|clients/typescript/*|packages/jsii/common) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
+            *) echo "publish=false" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      - name: Set version from tag
+        if: steps.root.outputs.publish == 'true' && steps.pkg.outputs.version != ''
+        working-directory: ${{ steps.root.outputs.root }}
+        run: npm version "${{ steps.pkg.outputs.version }}" --no-git-tag-version --allow-same-version
+
+      - name: Build
+        if: steps.root.outputs.publish == 'true'
+        run: npx nx build "${{ steps.pkg.outputs.name }}"
+
+      - name: Publish to npm (trusted publishing / OIDC)
+        if: steps.root.outputs.publish == 'true'
+        working-directory: ${{ steps.root.outputs.root }}
+        run: npm publish
+
+  # Tag-triggered publishing for the jsii/publib packages (iota-core, auth-provider).
+  #
+  # These publish to BOTH npm and PyPI. semantic-release only creates the version tag
+  # (its @semantic-release/exec no longer runs a publishCmd); this job performs the
+  # actual publish: jsii-pacmak builds dist/js + dist/python, then publib-npm publishes
+  # the npm tarball via native OIDC (NPM_TRUSTED_PUBLISHER) and twine uploads the Python
+  # dist using a short-lived token minted from PyPI's OIDC trusted publishing. Running in
+  # the same workflow file and `environment: main` means both the npm and PyPI trusted-
+  # publisher claims match the existing configuration.
+  publish-jsii:
+    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment: main
+    concurrency: publish-jsii-${{ github.ref }}
+    permissions:
+      contents: read
+      id-token: write # required for npm and PyPI trusted publishing (OIDC)
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          # npm trusted publishing (OIDC) requires npm CLI >= 11.5.1, which ships with Node 24.
+          node-version: 24
+          cache: 'npm'
+
+      - name: Resolve package and version
+        id: pkg
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            NAME='${{ inputs.package }}'
+            VERSION='${{ inputs.version }}'
+          else
+            REF="${GITHUB_REF_NAME}" # e.g. @affinidi-tdk/iota-core-v1.2.3
+            VERSION="${REF##*-v}"
+            NAME="${REF%-v${VERSION}}"
+          fi
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - run: npm ci
+
+      - name: Resolve project root
+        id: root
+        run: |
+          ROOT=$(npx nx show project "${{ steps.pkg.outputs.name }}" --json \
+            | node -e 'let s="";process.stdin.on("data",d=>{s+=d}).on("end",()=>{process.stdout.write(JSON.parse(s).root||"")})')
+          echo "root=$ROOT" >> "$GITHUB_OUTPUT"
+          # Only the publib packages (npm + PyPI) publish here. Everything else is a
+          # no-op so a single tag push can safely trigger both publish jobs.
+          case "$ROOT" in
+            libs/iota-core|packages/jsii/auth-provider) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
+            *) echo "publish=false" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      - name: Set up Python
+        if: steps.root.outputs.publish == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install twine
+        if: steps.root.outputs.publish == 'true'
+        run: pip install twine
+
+      - name: Mint pypi token
+        id: mint
+        if: steps.root.outputs.publish == 'true'
+        uses: tschm/token-mint-action@v1.0.3
+
+      - name: Set version from tag
+        if: steps.root.outputs.publish == 'true' && steps.pkg.outputs.version != ''
+        working-directory: ${{ steps.root.outputs.root }}
+        run: npm version "${{ steps.pkg.outputs.version }}" --no-git-tag-version --allow-same-version
+
+      - name: Package (jsii-pacmak)
+        if: steps.root.outputs.publish == 'true'
+        run: npx nx package "${{ steps.pkg.outputs.name }}"
+
+      - name: Publish to npm + PyPI (trusted publishing / OIDC)
+        if: steps.root.outputs.publish == 'true'
+        working-directory: ${{ steps.root.outputs.root }}
+        run: npm run publish-pypi && npm run publish-npm
+        env:
+          # npm publib uses native OIDC trusted publishing instead of a token.
+          NPM_TRUSTED_PUBLISHER: 'true'
+          TWINE_USERNAME: '__token__'
+          TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
+          POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
