@@ -39,8 +39,6 @@ jobs:
           # npm trusted publishing (OIDC) requires npm CLI >= 11.5.1, which ships with Node 24.
           node-version: 24
           cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
-          scope: '@affinidi-tdk'
 
       - name: Set up Python
         uses: actions/setup-python@v3
