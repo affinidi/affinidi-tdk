@@ -77,6 +77,8 @@ jobs:
           gpg-passphrase: MAVEN_GPG_SECRET_KEY_PASSWORD
 
       - run: npm ci
+      - name: Apply dependency patches (@semantic-release/npm scoped-package OIDC fix)
+        run: npx patch-package
       # Generate tag/changelog with semantic release
       # setting parallel higher than one might cause problems with locking git repo
       - run: npx nx affected  -t semantic-release --parallel=false --base=$BASE_SHA --head=HEAD
