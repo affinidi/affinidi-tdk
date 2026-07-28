@@ -5,6 +5,10 @@
   "scripts": {
     "build": "nx run-many --verbose --target=build",
     "create:sample": "./scripts/create-sample.sh",
+    "tp:list": "node -r @swc-node/register scripts/trusted-publishing/tp.ts list",
+    "tp:check": "node -r @swc-node/register scripts/trusted-publishing/tp.ts check",
+    "tp:normalize": "node -r @swc-node/register scripts/trusted-publishing/tp.ts normalize",
+    "tp:trust": "node -r @swc-node/register scripts/trusted-publishing/tp.ts trust",
     "install-hooks": "pre-commit install -t commit-msg -t pre-commit",
     "postinstall": "[[ -z \"$CI\" ]] && npm run install-hooks || echo 'Skipping postinstall in CI'"
   },
@@ -55,6 +59,7 @@
     "aws-iot-device-sdk-v2": "^1.27.0",
     "form-data": "^4.0.6",
     "uuid": "^14.0.0",
-    "babel-plugin-macros": "^3.1.0"
+    "babel-plugin-macros": "^3.1.0",
+    "@semantic-release/npm": "^13.1.0"
   }
 }

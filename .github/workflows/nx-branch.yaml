@@ -20,9 +20,11 @@ jobs:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: 'npm'
       - run: npm ci
+      - name: Verify npm packages are trusted-publishing ready
+        run: node -r @swc-node/register scripts/trusted-publishing/tp.ts check
       - uses: nrwl/nx-set-shas@v4
       - run: |
           echo "BASE: ${{ env.NX_BASE }}"
