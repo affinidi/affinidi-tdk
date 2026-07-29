@@ -1,3 +1,10 @@
+## [1.35.2](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.35.1...@affinidi-tdk/auth-provider-v1.35.2) (2026-07-29)
+
+
+### Bug Fixes
+
+* **release:** decouple npm & jsii publishing into tag-triggered OIDC jobs ([#1325](https://github.com/affinidi/affinidi-tdk/issues/1325)) ([9454588](https://github.com/affinidi/affinidi-tdk/commit/94545883d253c76cdc4d5e570df07f01cddd2896))
+
 ## [1.35.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.35.0...@affinidi-tdk/auth-provider-v1.35.1) (2026-06-03)
 
 
