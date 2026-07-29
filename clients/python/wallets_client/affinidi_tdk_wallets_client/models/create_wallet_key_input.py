@@ -19,7 +19,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel, Field, StrictStr, conlist, validator
 from affinidi_tdk_wallets_client.models.verification_relationship import VerificationRelationship
 
@@ -27,13 +27,27 @@ class CreateWalletKeyInput(BaseModel):
     """
     Input for adding a new key to a wallet. Only supported for did:web ATM.  # noqa: E501
     """
-    key_type: StrictStr = Field(default=..., alias="keyType", description="cryptographic algorithm for the new key")
+    algorithm: Optional[StrictStr] = Field(default=None, description="cryptographic algorithm for the new key")
+    key_type: Optional[StrictStr] = Field(default=None, alias="keyType", description="Deprecated alias of `algorithm`. Accepted for backward compatibility; prefer `algorithm`. If both are sent, `algorithm` takes precedence.")
     relationships: conlist(VerificationRelationship) = Field(default=..., description="verification relationships for the key.")
-    __properties = ["keyType", "relationships"]
+    __properties = ["algorithm", "keyType", "relationships"]
+
+    @validator('algorithm')
+    def algorithm_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ('secp256k1', 'ed25519', 'p256',):
+            raise ValueError("must be one of enum values ('secp256k1', 'ed25519', 'p256')")
+        return value
 
     @validator('key_type')
     def key_type_validate_enum(cls, value):
         """Validates the enum"""
+        if value is None:
+            return value
+
         if value not in ('secp256k1', 'ed25519', 'p256',):
             raise ValueError("must be one of enum values ('secp256k1', 'ed25519', 'p256')")
         return value
@@ -74,6 +88,7 @@ class CreateWalletKeyInput(BaseModel):
             return CreateWalletKeyInput.parse_obj(obj)
 
         _obj = CreateWalletKeyInput.parse_obj({
+            "algorithm": obj.get("algorithm"),
             "key_type": obj.get("keyType"),
             "relationships": obj.get("relationships")
         })
