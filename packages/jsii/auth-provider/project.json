@@ -49,7 +49,6 @@
             {
               "execCwd": "{projectRoot}",
               "prepareCmd": "npm version ${nextRelease.version}",
-              "publishCmd": "npm run publish-pypi && npm run publish-npm",
               "verifyConditionsCmd": "npm version"
             }
           ]

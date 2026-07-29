@@ -4,17 +4,22 @@ This repo publishes all `@affinidi-tdk/*` npm packages from CI using **npm
 trusted publishing (OIDC)** — no long-lived `NPM_TOKEN`. Publishes use
 short-lived, workflow-scoped credentials and get automatic provenance.
 
-`scripts/trusted-publishing/tp.ts` discovers every npm package published via
-semantic-release and keeps them configured. Because it is discovery-driven,
-**new packages are handled automatically** — just add your package with a
-`semantic-release` target and run the commands below.
+Publishing is **decoupled**: `semantic-release` only creates the version git
+tag, and dedicated **tag-triggered jobs** in `nx-release.yaml` run the actual
+OIDC publish (`publish-npm` for plain-TS clients + the jsii `common` package,
+`publish-jsii` for the publib packages `iota-core` / `auth-provider`).
+
+`scripts/trusted-publishing/tp.ts` discovers every npm package and keeps them
+configured for this flow. Because it is discovery-driven, **new packages are
+handled automatically** — add your package with a `semantic-release` target,
+add its path to the matching publish job guard, and run the commands below.
 
 ## Commands
 
 ```bash
 npm run tp:list        # show all discovered npm packages + classification
-npm run tp:check       # CI guard: fail if any package isn't OIDC-ready
-npm run tp:normalize   # fix plain-TS packages to the OIDC-ready publish config
+npm run tp:check       # CI guard: fail if any package isn't tag-only + covered by a publish job
+npm run tp:normalize   # rewrite packages to the decoupled tag-only publish config
 npm run tp:trust       # register each package as a Trusted Publisher on npmjs.com
 ```
 
@@ -26,18 +31,25 @@ Config is overridable via env: `TP_REPO`, `TP_WORKFLOW`, `TP_ENVIRONMENT`,
 
 ## How it works
 
-- **Plain-TS packages** publish via `@semantic-release/npm`. OIDC support requires
-  `@semantic-release/npm >= 13.1.0`, pinned via an `overrides` entry in the root
-  `package.json` (it stays peer-compatible with the `semantic-release@20`
-  bundled by `@theunderscorer/nx-semantic-release`). `verifyConditions` skips the
-  token check automatically when an OIDC context is present.
-- **jsii packages** publish via `publib`. Setting `NPM_TRUSTED_PUBLISHER=true`
-  in the release workflow makes publib use OIDC instead of `NPM_TOKEN`.
-- The release workflow (`.github/workflows/nx-release.yaml`) runs on Node 24
-  (npm >= 11.5.1, required for OIDC) with `id-token: write`, and no longer
-  passes `NPM_TOKEN`/`NODE_AUTH_TOKEN`.
-- `tp:check` runs on every PR (`nx-branch.yaml`) so a new package that isn't
-  OIDC-ready fails CI.
+`@semantic-release/npm`'s OIDC pre-check rejects our scoped packages before the
+npm CLI ever runs, so instead of publishing inline we split releasing in two:
+
+- **Tagging (release job).** On push to `main`, `semantic-release` runs with
+  `npmPublish: false` (plain-TS + `common`) or with no exec `publishCmd`
+  (`iota-core` / `auth-provider`), so it only creates and pushes the version
+  tag `@affinidi-tdk/<name>-v<version>`.
+- **Publishing (tag-triggered jobs).** Pushing that tag triggers:
+  - `publish-npm` — builds and `npm publish`es the plain-TS clients + the jsii
+    `common` package via the npm CLI's **native OIDC** exchange.
+  - `publish-jsii` — builds with `jsii-pacmak` and publishes `iota-core` /
+    `auth-provider` to **npm** (`publib`, `NPM_TRUSTED_PUBLISHER=true`) and
+    **PyPI** (twine + a short-lived minted token).
+- Both publish jobs run in the same workflow file and `environment: main`, so
+  the npm/PyPI trusted-publisher claims match with no extra configuration.
+- The workflow runs on Node 24 (npm >= 11.5.1, required for OIDC) with
+  `id-token: write` and passes no `NPM_TOKEN`/`NODE_AUTH_TOKEN`.
+- `tp:check` runs on every PR (`nx-branch.yaml`) and fails if a package is not
+  tag-only or isn't covered by a publish job guard.
 
 ## One-time registration (per package, on npmjs.com)
 
@@ -127,7 +139,7 @@ verified an OIDC publish succeeds, then revoke the old `NPM_TOKEN`.
 
 ## Recommended rollout
 
-1. Merge this PR (workflow + config + override).
+1. Merge this PR (workflow + tag-only config).
 2. Run `npm run tp:trust` as an org owner (npm >= 12) to register all packages,
    then `npm logout` to revoke the login token.
 3. Trigger a release and confirm packages publish via OIDC (provenance badge appears).
@@ -138,9 +150,12 @@ verified an OIDC publish succeeds, then revoke the old `NPM_TOKEN`.
 
 1. Add the package with a `semantic-release` target (plain-TS: use the
    `@semantic-release/npm` plugin; jsii: use publib `publish-npm`).
-2. `npm run tp:normalize` (fixes plain-TS config if needed) and commit.
+2. `npm run tp:normalize` to make it tag-only, and add its path to the matching
+   publish job guard in `nx-release.yaml` (`publish-npm`, or `publish-jsii` for
+   publib packages). Commit both.
 3. `npm run tp:trust -- --only @affinidi-tdk/<name>` as an org owner, then
    `npm logout`.
 4. On npmjs.com, set the new package to **"Require 2FA and disallow tokens"**.
 
-CI (`tp:check`) will fail the PR until the package's repo config is OIDC-ready.
+CI (`tp:check`) will fail the PR until the package is tag-only and covered by a
+publish job.
