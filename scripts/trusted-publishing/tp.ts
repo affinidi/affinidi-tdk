@@ -2,18 +2,20 @@
 /**
  * Trusted-publishing automation for all npm packages in this monorepo.
  *
- * Discovers every npm package that is published via semantic-release and lets
- * you keep its publish config OIDC-ready and register it as an npm Trusted
- * Publisher (npmjs.com) - so both existing and NEW packages are handled
- * automatically without hand-editing each project.
+ * Discovers every npm package in the monorepo and keeps it wired for the
+ * decoupled trusted-publishing flow: semantic-release only creates git tags,
+ * and tag-triggered jobs run the actual OIDC publish. Also registers each
+ * package as an npm Trusted Publisher (npmjs.com) so both existing and NEW
+ * packages are handled automatically without hand-editing each project.
  *
  * Subcommands:
  *   list        Show discovered npm packages + classification.
- *   check       CI guard: fail if any npm package is not OIDC-ready
- *               (wrong publish config, or a token still wired in the workflow).
- *   normalize   Rewrite plain-TS packages to the OIDC-ready
- *               @semantic-release/npm flow (idempotent). jsii packages are
- *               left as publib and rely on NPM_TRUSTED_PUBLISHER in CI.
+ *   check       CI guard: fail if any npm package is not tag-only + covered by a
+ *               tag-triggered publish job, or if a token is still wired into the
+ *               workflow.
+ *   normalize   Rewrite packages to the decoupled tag-only flow (idempotent):
+ *               @semantic-release/npm packages get npmPublish:false; jsii/publib
+ *               packages get their exec publishCmd removed.
  *   trust       Register each package as a GitHub Actions Trusted Publisher on
  *               npmjs.com via `npm trust github` (idempotent). Grants the
  *               `publish` permission by default (use --stage for stage-only).
@@ -128,8 +130,10 @@ function findProjectFiles(dir: string, out: string[] = []): string[] {
 
 /**
  * Classify a project as an npm package (or not).
- * npm packages have a sibling package.json AND publish to npm via
- * @semantic-release/npm (plain-TS) or a publib `publish-npm` exec (jsii).
+ * npm packages have a sibling package.json AND are published to npm via
+ * @semantic-release/npm (plain-TS clients + jsii `common`) or a publib
+ * `publish-npm` script (jsii iota-core / auth-provider). Publishing itself is
+ * decoupled to tag-triggered jobs; semantic-release only creates the tag.
  */
 function classify(projectPath: string): NpmPackage | null {
   let project: Project;
@@ -168,10 +172,15 @@ function classify(projectPath: string): NpmPackage | null {
       execPublishCmd = ((pl[1] as any)?.publishCmd as string) || null;
     }
   }
-  const publishesNpm = usesNpmPlugin || (!!execPublishCmd && /publish-npm/.test(execPublishCmd));
+  const isJsii = 'jsii' in pkg || /jsii/.test(pkg.scripts?.build || '');
+  // Publishing is decoupled: semantic-release only tags, and a tag-triggered job
+  // runs the actual npm publish. A project counts as an npm package if it wires
+  // @semantic-release/npm (plain-TS clients + the jsii `common` package) or is a
+  // jsii package that ships a publib `publish-npm` script (iota-core, auth-provider).
+  const hasPublibNpm = isJsii && !!pkg.scripts?.['publish-npm'];
+  const publishesNpm = usesNpmPlugin || hasPublibNpm;
   if (!publishesNpm) return null; // pypi / maven only
 
-  const isJsii = 'jsii' in pkg || /jsii/.test(pkg.scripts?.build || '');
   const method: Method = usesNpmPlugin ? 'semantic-release-npm' : 'publib';
 
   return {
@@ -214,7 +223,7 @@ function cmdList(pkgs: NpmPackage[], flags: Flags): void {
     console.log(JSON.stringify(pkgs.map(({ project, ...rest }) => rest), null, 2));
     return;
   }
-  console.log(`Discovered ${pkgs.length} npm package(s) published via semantic-release:\n`);
+  console.log(`Discovered ${pkgs.length} npm package(s) (tag-only; published by tag-triggered jobs):\n`);
   const w = Math.max(...pkgs.map((p) => p.name.length));
   for (const p of pkgs) {
     const kind = p.isJsii ? 'jsii  ' : 'ts    ';
@@ -231,11 +240,32 @@ function workflowText(): string {
   return readFileSync(WORKFLOW_PATH, 'utf8');
 }
 
+/**
+ * Extract the projectRoot globs that the tag-triggered publish jobs treat as
+ * publishable, from guard lines like:
+ *   libs/iota-browser|clients/typescript/*) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
+ * Returns one anchored RegExp per glob (shell `*` -> `.*`).
+ */
+function publishJobGlobs(wf: string): RegExp[] {
+  const globs: RegExp[] = [];
+  const re = /^[ \t]*([^\s)][^)\n]*)\)\s*echo\s+"publish=true"/gm;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(wf))) {
+    for (const raw of m[1].split('|')) {
+      const g = raw.trim();
+      if (!g || g === '*') continue;
+      const rx = '^' + g.replace(/[.+^${}()[\]\\]/g, '\\$&').replace(/\*/g, '.*') + '$';
+      globs.push(new RegExp(rx));
+    }
+  }
+  return globs;
+}
+
 function cmdCheck(pkgs: NpmPackage[], flags: Flags): void {
   const problems: string[] = [];
   const wf = workflowText();
 
-  // Workflow-level guards (apply to every npm package).
+  // --- Workflow-level guards (apply to every npm package). ---
   if (!/id-token:\s*write/.test(wf)) {
     problems.push(`[workflow] ${CFG.workflow} is missing "id-token: write" (required for OIDC).`);
   }
@@ -244,28 +274,53 @@ function cmdCheck(pkgs: NpmPackage[], flags: Flags): void {
     /^\s*NPM_TOKEN:\s*\$\{\{\s*secrets\.NPM_TOKEN/m.test(wf)
   ) {
     problems.push(
-      `[workflow] ${CFG.workflow} still wires NPM_TOKEN/NODE_AUTH_TOKEN into the release step; remove it to use trusted publishing.`,
+      `[workflow] ${CFG.workflow} still wires NPM_TOKEN/NODE_AUTH_TOKEN into a release step; remove it to use trusted publishing.`,
     );
   }
-  const hasJsii = pkgs.some((p) => p.method === 'publib');
-  if (hasJsii && !/NPM_TRUSTED_PUBLISHER/.test(wf)) {
+  const hasPublib = pkgs.some((p) => p.method === 'publib');
+  if (hasPublib && !/NPM_TRUSTED_PUBLISHER/.test(wf)) {
     problems.push(
       `[workflow] jsii packages use publib but ${CFG.workflow} does not set NPM_TRUSTED_PUBLISHER=true.`,
     );
   }
 
-  // Per-package config guards.
+  // Publishing is decoupled: semantic-release only tags, and tag-triggered jobs
+  // perform the publish. Verify those jobs (and the tag trigger) exist.
+  if (!/^\s*tags:/m.test(wf)) {
+    problems.push(`[workflow] ${CFG.workflow} has no tag trigger; the tag-triggered publish jobs will never run.`);
+  }
+  if (!/^\s{2}publish-npm:/m.test(wf)) {
+    problems.push(`[workflow] ${CFG.workflow} is missing the tag-triggered "publish-npm" job.`);
+  }
+  if (hasPublib && !/^\s{2}publish-jsii:/m.test(wf)) {
+    problems.push(
+      `[workflow] ${CFG.workflow} is missing the tag-triggered "publish-jsii" job (required for publib packages).`,
+    );
+  }
+
+  const coverage = publishJobGlobs(wf);
+
+  // --- Per-package config guards (decoupled / tag-only model). ---
   for (const p of pkgs) {
     if (p.method === 'semantic-release-npm') {
       if (!p.usesNpmPlugin) {
         problems.push(`[${p.name}] missing an explicit @semantic-release/npm plugin.`);
+      } else if (!p.npmPublishDisabled) {
+        problems.push(
+          `[${p.name}] @semantic-release/npm must set npmPublish:false - publishing is decoupled to the tag-triggered publish-npm job.`,
+        );
       }
-      if (p.npmPublishDisabled) {
-        problems.push(`[${p.name}] @semantic-release/npm has npmPublish:false, so nothing is published to npm.`);
-      }
-      if (p.execPublishCmd && /publish-npm/.test(p.execPublishCmd)) {
-        problems.push(`[${p.name}] mixes @semantic-release/npm with a publib exec publish-npm; pick one.`);
-      }
+    }
+    if (p.method === 'publib' && p.execPublishCmd && /publish-npm/.test(p.execPublishCmd)) {
+      problems.push(
+        `[${p.name}] publishes npm inline via an exec publishCmd; it should be tag-only (publib runs in the publish-jsii job).`,
+      );
+    }
+    // Every tag-only package must be covered by a publish job, or its tag is a no-op.
+    if (coverage.length && !coverage.some((rx) => rx.test(p.dir))) {
+      problems.push(
+        `[${p.name}] path "${p.dir}" is not matched by any publish job guard in ${CFG.workflow}; its tag would never publish.`,
+      );
     }
   }
 
@@ -275,7 +330,7 @@ function cmdCheck(pkgs: NpmPackage[], flags: Flags): void {
     console.error(`\u001b[31mTrusted-publishing check failed (${problems.length}):\u001b[0m`);
     for (const pr of problems) console.error(`  - ${pr}`);
   } else {
-    console.log(`\u001b[32mOK\u001b[0m - all ${pkgs.length} npm package(s) are OIDC-ready.`);
+    console.log(`\u001b[32mOK\u001b[0m - all ${pkgs.length} npm package(s) are tag-only and covered by a publish job.`);
   }
   if (problems.length) process.exit(1);
 }
@@ -284,36 +339,46 @@ function cmdCheck(pkgs: NpmPackage[], flags: Flags): void {
 function cmdNormalize(pkgs: NpmPackage[], flags: Flags): void {
   let changed = 0;
   for (const p of pkgs) {
-    if (p.isJsii && p.method === 'publib') continue; // jsii/publib keeps its flow; OIDC via env var
     const sr = p.project.targets!['semantic-release'];
     const opts = (sr.options = sr.options || {});
+    const plugins: SrPlugin[] = Array.isArray(opts.plugins) ? opts.plugins : [];
     let mutated = false;
 
-    // Remove any publib exec that publishes npm (conflicts with the npm plugin).
-    const plugins: SrPlugin[] = Array.isArray(opts.plugins) ? opts.plugins : [];
-    const cleaned = plugins.filter((pl) => {
-      if (Array.isArray(pl) && pl[0] === '@semantic-release/exec') {
-        return !/publish-npm/.test(((pl[1] as any)?.publishCmd as string) || '');
+    if (p.method === 'publib') {
+      // jsii/publib packages are tag-only: strip any exec publishCmd so the
+      // release run only creates the tag (publib runs later in the publish-jsii job).
+      for (const pl of plugins) {
+        if (
+          Array.isArray(pl) &&
+          pl[0] === '@semantic-release/exec' &&
+          (pl[1] as any)?.publishCmd != null
+        ) {
+          delete (pl[1] as any).publishCmd;
+          mutated = true;
+        }
       }
-      return true;
-    });
-    if (cleaned.length !== plugins.length) mutated = true;
-
-    // Ensure an explicit @semantic-release/npm plugin with npmPublish enabled.
-    const npmIdx = cleaned.findIndex((pl) => pluginId(pl) === '@semantic-release/npm');
-    if (npmIdx === -1) {
-      cleaned.push(['@semantic-release/npm', { npmPublish: true }]);
-      mutated = true;
     } else {
-      const entry = cleaned[npmIdx];
-      if (Array.isArray(entry) && (entry[1] as any)?.npmPublish === false) {
-        (entry[1] as any).npmPublish = true;
+      // plain-TS clients + the jsii `common` package: ensure an explicit
+      // @semantic-release/npm plugin with npmPublish:false (tag-only; the actual
+      // publish happens in the tag-triggered publish-npm job).
+      const npmIdx = plugins.findIndex((pl) => pluginId(pl) === '@semantic-release/npm');
+      if (npmIdx === -1) {
+        plugins.push(['@semantic-release/npm', { npmPublish: false }]);
         mutated = true;
+      } else {
+        const entry = plugins[npmIdx];
+        if (Array.isArray(entry)) {
+          if ((entry[1] as any)?.npmPublish !== false) {
+            (entry[1] as any).npmPublish = false;
+            mutated = true;
+          }
+        } else {
+          plugins[npmIdx] = ['@semantic-release/npm', { npmPublish: false }];
+          mutated = true;
+        }
       }
     }
-    opts.plugins = cleaned;
-    // Note: the nx-semantic-release `npm` option is left untouched on purpose -
-    // packages may set it false while configuring the plugin manually.
+    opts.plugins = plugins;
 
     if (mutated) {
       changed++;
@@ -327,7 +392,7 @@ function cmdNormalize(pkgs: NpmPackage[], flags: Flags): void {
   }
   console.log(
     changed === 0
-      ? 'Nothing to normalize - all plain-TS packages already OIDC-ready.'
+      ? 'Nothing to normalize - all packages already tag-only.'
       : `${flags.dryRun ? 'Would normalize' : 'Normalized'} ${changed} package(s).`,
   );
 }
