@@ -1,3 +1,15 @@
+## [1.25.4](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.3...@affinidi-tdk/iota-browser-v1.25.4) (2026-07-29)
+
+
+### Bug Fixes
+
+* docs link in readme ([#1324](https://github.com/affinidi/affinidi-tdk/issues/1324)) ([844c803](https://github.com/affinidi/affinidi-tdk/commit/844c803609145ee1f3b7b3eaac7c2d962b2bde38))
+* iota-browser readme ([#1321](https://github.com/affinidi/affinidi-tdk/issues/1321)) ([81b1498](https://github.com/affinidi/affinidi-tdk/commit/81b14986de59355fa3b98ec6da7680051cfb127d))
+* iota-browser readme minor update ([#1327](https://github.com/affinidi/affinidi-tdk/issues/1327)) ([267ce36](https://github.com/affinidi/affinidi-tdk/commit/267ce36299c8c56e1087ad4d46ab11e642c4db8e))
+* **iota-browser:** publish as plain npm package via @semantic-release/npm ([#1317](https://github.com/affinidi/affinidi-tdk/issues/1317)) ([73d885b](https://github.com/affinidi/affinidi-tdk/commit/73d885b495f79b348c248f9735046abe298ab9b5))
+* **release:** decouple npm & jsii publishing into tag-triggered OIDC jobs ([#1325](https://github.com/affinidi/affinidi-tdk/issues/1325)) ([9454588](https://github.com/affinidi/affinidi-tdk/commit/94545883d253c76cdc4d5e570df07f01cddd2896))
+* update readme ([#1329](https://github.com/affinidi/affinidi-tdk/issues/1329)) ([5103d70](https://github.com/affinidi/affinidi-tdk/commit/5103d7090da2623aea716a2bf7e94a620d4d9d82))
+
 ## [1.25.3](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.2...@affinidi-tdk/iota-browser-v1.25.3) (2026-07-26)
 
 
