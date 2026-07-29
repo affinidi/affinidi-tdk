@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.25.0...@affinidi-tdk/iota-core-v1.25.1) (2026-07-29)
+
+
+### Bug Fixes
+
+* **release:** decouple npm & jsii publishing into tag-triggered OIDC jobs ([#1325](https://github.com/affinidi/affinidi-tdk/issues/1325)) ([9454588](https://github.com/affinidi/affinidi-tdk/commit/94545883d253c76cdc4d5e570df07f01cddd2896))
+
 # [1.25.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.24.0...@affinidi-tdk/iota-core-v1.25.0) (2026-03-05)
 
 
