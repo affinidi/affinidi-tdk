@@ -91,7 +91,14 @@ export interface CreateWalletKeyInput {
    * @type {string}
    * @memberof CreateWalletKeyInput
    */
-  keyType: CreateWalletKeyInputKeyTypeEnum
+  algorithm?: CreateWalletKeyInputAlgorithmEnum
+  /**
+   * Deprecated alias of `algorithm`. Accepted for backward compatibility; prefer `algorithm`. If both are sent, `algorithm` takes precedence.
+   * @type {string}
+   * @memberof CreateWalletKeyInput
+   * @deprecated
+   */
+  keyType?: CreateWalletKeyInputKeyTypeEnum
   /**
    * verification relationships for the key.
    * @type {Array<VerificationRelationship>}
@@ -100,6 +107,15 @@ export interface CreateWalletKeyInput {
   relationships: Array<VerificationRelationship>
 }
 
+export const CreateWalletKeyInputAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+  Mldsa44: 'mldsa44',
+} as const
+
+export type CreateWalletKeyInputAlgorithmEnum =
+  (typeof CreateWalletKeyInputAlgorithmEnum)[keyof typeof CreateWalletKeyInputAlgorithmEnum]
 export const CreateWalletKeyInputKeyTypeEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
@@ -179,6 +195,7 @@ export const CreateWalletV2InputAlgorithmEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
   P256: 'p256',
+  Mldsa44: 'mldsa44',
 } as const
 
 export type CreateWalletV2InputAlgorithmEnum =
@@ -903,6 +920,7 @@ export const SignCredentialsLdpInputDtoSignatureSchemeEnum = {
   EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
   EcdsaP256Sha256: 'ecdsa_p256_sha256',
   Ed25519: 'ed25519',
+  Mldsa44: 'mldsa44',
 } as const
 
 export type SignCredentialsLdpInputDtoSignatureSchemeEnum =
@@ -913,6 +931,8 @@ export const SignCredentialsLdpInputDtoSignatureSuiteEnum = {
   EddsaJcs2022: 'eddsa-jcs-2022',
   EddsaRdfc2022: 'eddsa-rdfc-2022',
   EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+  Mldsa44Jcs2024: 'mldsa44-jcs-2024',
+  Mldsa44Rdfc2024: 'mldsa44-rdfc-2024',
 } as const
 
 export type SignCredentialsLdpInputDtoSignatureSuiteEnum =
@@ -1043,6 +1063,7 @@ export const SignPresentationLdpInputDtoSignatureSchemeEnum = {
   EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
   EcdsaP256Sha256: 'ecdsa_p256_sha256',
   Ed25519: 'ed25519',
+  Mldsa44: 'mldsa44',
 } as const
 
 export type SignPresentationLdpInputDtoSignatureSchemeEnum =
@@ -1053,6 +1074,8 @@ export const SignPresentationLdpInputDtoSignatureSuiteEnum = {
   EddsaJcs2022: 'eddsa-jcs-2022',
   EddsaRdfc2022: 'eddsa-rdfc-2022',
   EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+  Mldsa44Jcs2024: 'mldsa44-jcs-2024',
+  Mldsa44Rdfc2024: 'mldsa44-rdfc-2024',
 } as const
 
 export type SignPresentationLdpInputDtoSignatureSuiteEnum =
@@ -1333,6 +1356,12 @@ export interface WalletDto {
    * @memberof WalletDto
    */
   modifiedAt?: string
+  /**
+   * The version of the wallet
+   * @type {number}
+   * @memberof WalletDto
+   */
+  version?: number
 }
 /**
  *
@@ -1370,6 +1399,13 @@ export interface WalletKeyDto {
    * @type {string}
    * @memberof WalletKeyDto
    */
+  algorithm?: WalletKeyDtoAlgorithmEnum
+  /**
+   * Deprecated alias of `algorithm`. Always equal to `algorithm` and included for backward compatibility.
+   * @type {string}
+   * @memberof WalletKeyDto
+   * @deprecated
+   */
   keyType?: WalletKeyDtoKeyTypeEnum
   /**
    * ARI identifier for the key (e.g., \"ari:key:...\")
@@ -1385,6 +1421,15 @@ export interface WalletKeyDto {
   relationships?: Array<VerificationRelationship>
 }
 
+export const WalletKeyDtoAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+  Mldsa44: 'mldsa44',
+} as const
+
+export type WalletKeyDtoAlgorithmEnum =
+  (typeof WalletKeyDtoAlgorithmEnum)[keyof typeof WalletKeyDtoAlgorithmEnum]
 export const WalletKeyDtoKeyTypeEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
@@ -1466,6 +1511,12 @@ export interface WalletV2Dto {
    * @memberof WalletV2Dto
    */
   modifiedAt?: string
+  /**
+   * The version of the wallet
+   * @type {number}
+   * @memberof WalletV2Dto
+   */
+  version?: number
 }
 /**
  * list of wallets
