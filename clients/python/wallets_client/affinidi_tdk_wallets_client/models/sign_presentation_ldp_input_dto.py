@@ -40,8 +40,8 @@ class SignPresentationLdpInputDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519',):
-            raise ValueError("must be one of enum values ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519')")
+        if value not in ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519', 'mldsa44',):
+            raise ValueError("must be one of enum values ('ecdsa_secp256k1_sha256', 'ecdsa_p256_sha256', 'ed25519', 'mldsa44')")
         return value
 
     @validator('signature_suite')
@@ -50,8 +50,8 @@ class SignPresentationLdpInputDto(BaseModel):
         if value is None:
             return value
 
-        if value not in ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019',):
-            raise ValueError("must be one of enum values ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019')")
+        if value not in ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019', 'mldsa44-jcs-2024', 'mldsa44-rdfc-2024',):
+            raise ValueError("must be one of enum values ('ecdsa-jcs-2019', 'ecdsa-rdfc-2019', 'eddsa-jcs-2022', 'eddsa-rdfc-2022', 'EcdsaSecp256k1Signature2019', 'mldsa44-jcs-2024', 'mldsa44-rdfc-2024')")
         return value
 
     class Config:
