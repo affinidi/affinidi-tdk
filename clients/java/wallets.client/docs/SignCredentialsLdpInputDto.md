@@ -19,6 +19,7 @@ DTO contains params to sign credential
 | ECDSA_SECP256K1_SHA256 | &quot;ecdsa_secp256k1_sha256&quot; |
 | ECDSA_P256_SHA256      | &quot;ecdsa_p256_sha256&quot;      |
 | ED25519                | &quot;ed25519&quot;                |
+| MLDSA44                | &quot;mldsa44&quot;                |
 
 ## Enum: SignatureSuiteEnum
 
@@ -29,3 +30,5 @@ DTO contains params to sign credential
 | EDDSA_JCS_2022                | &quot;eddsa-jcs-2022&quot;              |
 | EDDSA_RDFC_2022               | &quot;eddsa-rdfc-2022&quot;             |
 | ECDSA_SECP256K1_SIGNATURE2019 | &quot;EcdsaSecp256k1Signature2019&quot; |
+| MLDSA44_JCS_2024              | &quot;mldsa44-jcs-2024&quot;            |
+| MLDSA44_RDFC_2024             | &quot;mldsa44-rdfc-2024&quot;           |
