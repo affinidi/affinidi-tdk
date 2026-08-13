@@ -15,6 +15,7 @@ wallet dto
 | **keys**        | [**Array&lt;WalletDtoKeysInner&gt;**](WalletDtoKeysInner.md) |                                   | [optional] [default to undefined] |
 | **createdAt**   | **string**                                                   |                                   | [optional] [default to undefined] |
 | **modifiedAt**  | **string**                                                   |                                   | [optional] [default to undefined] |
+| **version**     | **number**                                                   | The version of the wallet         | [optional] [default to undefined] |
 
 ## Example
 
@@ -31,6 +32,7 @@ const instance: WalletDto = {
   keys,
   createdAt,
   modifiedAt,
+  version,
 }
 ```
 
