@@ -35,7 +35,7 @@
     }
   },
   "engines": {
-    "node": "20.x"
+    "node": ">=20.x"
   },
   "scripts": {
     "build": "jsii -vvv",
@@ -51,9 +51,9 @@
     "@types/jsonwebtoken": "^9.0.3",
     "@types/qs": "^6.9.8",
     "@types/uuid": "^9.0.8",
-    "axios": "^1.16.1",
+    "axios": "^1.18.1",
     "jose": "^5.9.3",
-    "jsonwebtoken": "^9.0.2",
+    "jsonwebtoken": "^9.0.3",
     "qs": "^6.15.2",
     "uuid": "^9.0.1"
   },

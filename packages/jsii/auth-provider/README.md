@@ -20,7 +20,6 @@ affinidi token create-token -n MyNewToken -w -p YOUR-SECRET-PASSPHRASE
 
 This command will return you variables to initialize AuthProvider.
 
-
 ## Install
 
 ### Javascript
