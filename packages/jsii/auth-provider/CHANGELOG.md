@@ -1,3 +1,10 @@
+## [1.35.4](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.35.3...@affinidi-tdk/auth-provider-v1.35.4) (2026-09-07)
+
+
+### Bug Fixes
+
+* publish auth_provider ([#1361](https://github.com/affinidi/affinidi-tdk/issues/1361)) ([87ab8f1](https://github.com/affinidi/affinidi-tdk/commit/87ab8f108f2422e4507dc782c29231a0be1b5d70))
+
 ## [1.35.3](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/auth-provider-v1.35.2...@affinidi-tdk/auth-provider-v1.35.3) (2026-09-04)
 
 
