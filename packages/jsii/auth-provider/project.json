@@ -18,38 +18,27 @@
         "cwd": "{projectRoot}",
         "command": "npm run build"
       },
-      "dependsOn": ["install-node-modules"],
-      "outputs": ["{projectRoot}/.jsii"]
-    },
-    "package": {
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "{projectRoot}",
-        "command": "npm run package"
-      },
-      "dependsOn": ["build"],
-      "outputs": ["{projectRoot}/dist/"]
+      "dependsOn": ["install-node-modules"]
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "semantic-release": {
       "executor": "@theunderscorer/nx-semantic-release:semantic-release",
-      "dependsOn": ["package"],
+      "dependsOn": ["build"],
       "options": {
         "changelog": true,
         "github": true,
         "git": true,
-        "npm": false,
+        "npm": true,
         "repositoryUrl": "git@github.com:affinidi/affinidi-tdk.git",
         "branches": ["main"],
         "plugins": [
           [
-            "@semantic-release/exec",
+            "@semantic-release/npm",
             {
-              "execCwd": "{projectRoot}",
-              "prepareCmd": "npm version ${nextRelease.version}",
-              "verifyConditionsCmd": "npm version"
+              "npmPublish": false,
+              "pkgRoot": "{projectRoot}"
             }
           ]
         ]

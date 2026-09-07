@@ -162,7 +162,7 @@ jobs:
           # .npmignore excludes dist/, so `nx build` output is all that ships).
           # iota-core and auth-provider publish via publib in the publish-jsii job.
           case "$ROOT" in
-            libs/iota-browser|clients/typescript/*|packages/jsii/common) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
+            libs/iota-browser|clients/typescript/*|packages/jsii/common|packages/jsii/auth-provider) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
             *) echo "publish=false" >> "$GITHUB_OUTPUT" ;;
           esac
 
@@ -233,7 +233,7 @@ jobs:
           # Only the publib packages (npm + PyPI) publish here. Everything else is a
           # no-op so a single tag push can safely trigger both publish jobs.
           case "$ROOT" in
-            libs/iota-core|packages/jsii/auth-provider) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
+            libs/iota-core) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
             *) echo "publish=false" >> "$GITHUB_OUTPUT" ;;
           esac
 
