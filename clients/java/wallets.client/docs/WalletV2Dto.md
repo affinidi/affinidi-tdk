@@ -17,3 +17,4 @@ wallet v2 dto
 | **services**    | [**List&lt;ServiceEndpointDto&gt;**](ServiceEndpointDto.md) | list of service endpoints associated with this wallet | [optional] |
 | **createdAt**   | **String**                                                  |                                                       | [optional] |
 | **modifiedAt**  | **String**                                                  |                                                       | [optional] |
+| **version**     | **BigDecimal**                                              | The version of the wallet                             | [optional] |
