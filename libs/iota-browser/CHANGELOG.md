@@ -1,3 +1,10 @@
+## [1.25.5](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.4...@affinidi-tdk/iota-browser-v1.25.5) (2026-09-25)
+
+
+### Bug Fixes
+
+* **iota-browser:** serialize prepareRequest MQTT payload to JSON string ([#1378](https://github.com/affinidi/affinidi-tdk/issues/1378)) ([2f284a6](https://github.com/affinidi/affinidi-tdk/commit/2f284a6ff6514cb7c07e0489616c9e6fd71a911b))
+
 ## [1.25.4](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.3...@affinidi-tdk/iota-browser-v1.25.4) (2026-07-29)
 
 
