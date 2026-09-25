@@ -260,9 +260,11 @@ export class ChannelProvider {
       ...(params.audience ? { audience: params.audience } : {}),
     }
 
+    // Newer aws-crt browser MQTT5 clients only accept string/binary payloads
+    // and no longer JSON-serialize objects, so serialize explicitly.
     const publishPacket: mqtt5.PublishPacket = {
       topicName: topicName,
-      payload: eventPayload,
+      payload: JSON.stringify(eventPayload),
       qos: mqtt5.QoS.AtLeastOnce,
     }
 
