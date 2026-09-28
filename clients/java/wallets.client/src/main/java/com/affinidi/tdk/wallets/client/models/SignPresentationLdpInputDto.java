@@ -54,7 +54,9 @@ public class SignPresentationLdpInputDto {
     
     ECDSA_P256_SHA256(String.valueOf("ecdsa_p256_sha256")),
     
-    ED25519(String.valueOf("ed25519"));
+    ED25519(String.valueOf("ed25519")),
+    
+    MLDSA44(String.valueOf("mldsa44"));
 
     private String value;
 
@@ -99,7 +101,11 @@ public class SignPresentationLdpInputDto {
     
     EDDSA_RDFC_2022(String.valueOf("eddsa-rdfc-2022")),
     
-    ECDSA_SECP256K1_SIGNATURE2019(String.valueOf("EcdsaSecp256k1Signature2019"));
+    ECDSA_SECP256K1_SIGNATURE2019(String.valueOf("EcdsaSecp256k1Signature2019")),
+    
+    MLDSA44_JCS_2024(String.valueOf("mldsa44-jcs-2024")),
+    
+    MLDSA44_RDFC_2024(String.valueOf("mldsa44-rdfc-2024"));
 
     private String value;
 
