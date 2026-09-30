@@ -66,8 +66,8 @@ configuration = affinidi_tdk_iam_client.Configuration(
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
 
-# Configure API key authorization: ConsumerTokenAuth
-configuration.api_key['ConsumerTokenAuth'] = os.environ["API_KEY"]
+# Configure API key authorization: UserTokenAuth
+configuration.api_key['UserTokenAuth'] = os.environ["API_KEY"]
 
 # Configure a hook to auto-refresh API key for your personal access token (PAT), if expired
 import affinidi_tdk_auth_provider
@@ -85,20 +85,20 @@ authProvider = affinidi_tdk_auth_provider.AuthProvider(stats)
 configuration.refresh_api_key_hook = lambda api_client: authProvider.fetch_project_scoped_token()
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ConsumerTokenAuth'] = 'Bearer'
+# configuration.api_key_prefix['UserTokenAuth'] = 'Bearer'
 
 
 # Enter a context with an instance of the API client
 with affinidi_tdk_iam_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = affinidi_tdk_iam_client.AuthzApi(api_client)
-    grantee_did = 'grantee_did_example' # str |
+    api_instance = affinidi_tdk_iam_client.AccountsApi(api_client)
 
     try:
-        # delete access of granteeDid
-        api_instance.delete_access_vfs(grantee_did)
+        api_response = api_instance.list_account_passkeys()
+        print("The response of AccountsApi->list_account_passkeys:\n")
+        pprint(api_response)
     except ApiException as e:
-        print("Exception when calling AuthzApi->delete_access_vfs: %s\n" % e)
+        print("Exception when calling AccountsApi->list_account_passkeys: %s\n" % e)
 
 ```
 
@@ -108,6 +108,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Class             | Method                                                                                   | HTTP request                                     | Description                             |
 | ----------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
+| _AccountsApi_     | [**list_account_passkeys**](docs/AccountsApi.md#list_account_passkeys)                   | **GET** /v1/accounts/passkeys                    |
+| _AccountsApi_     | [**list_account_providers**](docs/AccountsApi.md#list_account_providers)                 | **GET** /v1/accounts/providers                   |
 | _AuthzApi_        | [**delete_access_vfs**](docs/AuthzApi.md#delete_access_vfs)                              | **DELETE** /v1/authz/vfs/access/{granteeDid}     | delete access of granteeDid             |
 | _AuthzApi_        | [**grant_access_vfs**](docs/AuthzApi.md#grant_access_vfs)                                | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
 | _AuthzApi_        | [**update_access_vfs**](docs/AuthzApi.md#update_access_vfs)                              | **PUT** /v1/authz/vfs/access/{granteeDid}        | Update access of granteeDid             |
@@ -154,11 +156,15 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateTokenInput](docs/CreateTokenInput.md)
 - [GrantAccessInput](docs/GrantAccessInput.md)
 - [GrantAccessOutput](docs/GrantAccessOutput.md)
+- [IdentityMappingError](docs/IdentityMappingError.md)
 - [InvalidDIDError](docs/InvalidDIDError.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
 - [JsonWebKeyDto](docs/JsonWebKeyDto.md)
 - [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
+- [MalformedUpstreamResponseError](docs/MalformedUpstreamResponseError.md)
 - [NotFoundError](docs/NotFoundError.md)
+- [PasskeyDto](docs/PasskeyDto.md)
+- [PasskeyList](docs/PasskeyList.md)
 - [PolicyDto](docs/PolicyDto.md)
 - [PolicyStatementDto](docs/PolicyStatementDto.md)
 - [PrincipalCannotBeDeletedError](docs/PrincipalCannotBeDeletedError.md)
@@ -167,6 +173,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [ProjectList](docs/ProjectList.md)
 - [ProjectWithPolicyDto](docs/ProjectWithPolicyDto.md)
 - [ProjectWithPolicyList](docs/ProjectWithPolicyList.md)
+- [ProviderDto](docs/ProviderDto.md)
+- [ProviderList](docs/ProviderList.md)
 - [RightsEnum](docs/RightsEnum.md)
 - [TokenDto](docs/TokenDto.md)
 - [TokenList](docs/TokenList.md)
@@ -182,6 +190,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [UpdateProjectInput](docs/UpdateProjectInput.md)
 - [UpdateTokenInput](docs/UpdateTokenInput.md)
 - [UpdateTokenPrivateKeyAuthenticationMethodDto](docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md)
+- [UpstreamUnavailableError](docs/UpstreamUnavailableError.md)
 - [UserDto](docs/UserDto.md)
 - [UserList](docs/UserList.md)
 - [WhoamiDto](docs/WhoamiDto.md)
