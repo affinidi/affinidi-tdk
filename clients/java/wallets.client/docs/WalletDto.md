@@ -15,3 +15,4 @@ wallet dto
 | **keys**        | [**List&lt;WalletDtoKeysInner&gt;**](WalletDtoKeysInner.md) |                                   | [optional] |
 | **createdAt**   | **String**                                                  |                                   | [optional] |
 | **modifiedAt**  | **String**                                                  |                                   | [optional] |
+| **version**     | **BigDecimal**                                              | The version of the wallet         | [optional] |

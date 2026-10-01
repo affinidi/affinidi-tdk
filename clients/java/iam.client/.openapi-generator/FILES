@@ -3,6 +3,7 @@
 README.md
 build.gradle
 build.sbt
+docs/AccountsApi.md
 docs/ActionForbiddenError.md
 docs/AddUserToProjectInput.md
 docs/AuthzApi.md
@@ -16,11 +17,15 @@ docs/CreateTokenInput.md
 docs/DefaultApi.md
 docs/GrantAccessInput.md
 docs/GrantAccessOutput.md
+docs/IdentityMappingError.md
 docs/InvalidDIDError.md
 docs/InvalidParameterError.md
 docs/JsonWebKeyDto.md
 docs/JsonWebKeySetDto.md
+docs/MalformedUpstreamResponseError.md
 docs/NotFoundError.md
+docs/PasskeyDto.md
+docs/PasskeyList.md
 docs/PoliciesApi.md
 docs/PolicyDto.md
 docs/PolicyStatementDto.md
@@ -31,6 +36,8 @@ docs/ProjectList.md
 docs/ProjectWithPolicyDto.md
 docs/ProjectWithPolicyList.md
 docs/ProjectsApi.md
+docs/ProviderDto.md
+docs/ProviderList.md
 docs/RightsEnum.md
 docs/StsApi.md
 docs/TokenDto.md
@@ -48,6 +55,7 @@ docs/UpdateAccessOutput.md
 docs/UpdateProjectInput.md
 docs/UpdateTokenInput.md
 docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md
+docs/UpstreamUnavailableError.md
 docs/UserDto.md
 docs/UserList.md
 docs/WellKnownApi.md
@@ -73,6 +81,7 @@ src/main/java/com/affinidi/tdk/iam/client/RFC3339JavaTimeModule.java
 src/main/java/com/affinidi/tdk/iam/client/ServerConfiguration.java
 src/main/java/com/affinidi/tdk/iam/client/ServerVariable.java
 src/main/java/com/affinidi/tdk/iam/client/StringUtil.java
+src/main/java/com/affinidi/tdk/iam/client/apis/AccountsApi.java
 src/main/java/com/affinidi/tdk/iam/client/apis/AuthzApi.java
 src/main/java/com/affinidi/tdk/iam/client/apis/ConsumerAuthApi.java
 src/main/java/com/affinidi/tdk/iam/client/apis/DefaultApi.java
@@ -95,11 +104,15 @@ src/main/java/com/affinidi/tdk/iam/client/models/CreateProjectScopedTokenOutput.
 src/main/java/com/affinidi/tdk/iam/client/models/CreateTokenInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/GrantAccessOutput.java
+src/main/java/com/affinidi/tdk/iam/client/models/IdentityMappingError.java
 src/main/java/com/affinidi/tdk/iam/client/models/InvalidDIDError.java
 src/main/java/com/affinidi/tdk/iam/client/models/InvalidParameterError.java
 src/main/java/com/affinidi/tdk/iam/client/models/JsonWebKeyDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/JsonWebKeySetDto.java
+src/main/java/com/affinidi/tdk/iam/client/models/MalformedUpstreamResponseError.java
 src/main/java/com/affinidi/tdk/iam/client/models/NotFoundError.java
+src/main/java/com/affinidi/tdk/iam/client/models/PasskeyDto.java
+src/main/java/com/affinidi/tdk/iam/client/models/PasskeyList.java
 src/main/java/com/affinidi/tdk/iam/client/models/PolicyDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/PolicyStatementDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/PrincipalCannotBeDeletedError.java
@@ -108,6 +121,8 @@ src/main/java/com/affinidi/tdk/iam/client/models/ProjectDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/ProjectList.java
 src/main/java/com/affinidi/tdk/iam/client/models/ProjectWithPolicyDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/ProjectWithPolicyList.java
+src/main/java/com/affinidi/tdk/iam/client/models/ProviderDto.java
+src/main/java/com/affinidi/tdk/iam/client/models/ProviderList.java
 src/main/java/com/affinidi/tdk/iam/client/models/RightsEnum.java
 src/main/java/com/affinidi/tdk/iam/client/models/TokenDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/TokenList.java
@@ -123,6 +138,7 @@ src/main/java/com/affinidi/tdk/iam/client/models/UpdateAccessOutput.java
 src/main/java/com/affinidi/tdk/iam/client/models/UpdateProjectInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/UpdateTokenInput.java
 src/main/java/com/affinidi/tdk/iam/client/models/UpdateTokenPrivateKeyAuthenticationMethodDto.java
+src/main/java/com/affinidi/tdk/iam/client/models/UpstreamUnavailableError.java
 src/main/java/com/affinidi/tdk/iam/client/models/UserDto.java
 src/main/java/com/affinidi/tdk/iam/client/models/UserList.java
 src/main/java/com/affinidi/tdk/iam/client/models/WhoamiDto.java

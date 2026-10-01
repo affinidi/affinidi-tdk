@@ -55,6 +55,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 
 | Class             | Method                                                                             | HTTP request                                     | Description                             |
 | ----------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------ | --------------------------------------- |
+| _AccountsApi_     | [**listAccountPasskeys**](docs/AccountsApi.md#listaccountpasskeys)                 | **GET** /v1/accounts/passkeys                    |
+| _AccountsApi_     | [**listAccountProviders**](docs/AccountsApi.md#listaccountproviders)               | **GET** /v1/accounts/providers                   |
 | _AuthzApi_        | [**deleteAccessVfs**](docs/AuthzApi.md#deleteaccessvfs)                            | **DELETE** /v1/authz/vfs/access/{granteeDid}     | delete access of granteeDid             |
 | _AuthzApi_        | [**grantAccessVfs**](docs/AuthzApi.md#grantaccessvfs)                              | **POST** /v1/authz/vfs/access                    | Grant access to the virtual file system |
 | _AuthzApi_        | [**updateAccessVfs**](docs/AuthzApi.md#updateaccessvfs)                            | **PUT** /v1/authz/vfs/access/{granteeDid}        | Update access of granteeDid             |
@@ -101,11 +103,15 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [CreateTokenInput](docs/CreateTokenInput.md)
 - [GrantAccessInput](docs/GrantAccessInput.md)
 - [GrantAccessOutput](docs/GrantAccessOutput.md)
+- [IdentityMappingError](docs/IdentityMappingError.md)
 - [InvalidDIDError](docs/InvalidDIDError.md)
 - [InvalidParameterError](docs/InvalidParameterError.md)
 - [JsonWebKeyDto](docs/JsonWebKeyDto.md)
 - [JsonWebKeySetDto](docs/JsonWebKeySetDto.md)
+- [MalformedUpstreamResponseError](docs/MalformedUpstreamResponseError.md)
 - [NotFoundError](docs/NotFoundError.md)
+- [PasskeyDto](docs/PasskeyDto.md)
+- [PasskeyList](docs/PasskeyList.md)
 - [PolicyDto](docs/PolicyDto.md)
 - [PolicyStatementDto](docs/PolicyStatementDto.md)
 - [PrincipalCannotBeDeletedError](docs/PrincipalCannotBeDeletedError.md)
@@ -114,6 +120,8 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [ProjectList](docs/ProjectList.md)
 - [ProjectWithPolicyDto](docs/ProjectWithPolicyDto.md)
 - [ProjectWithPolicyList](docs/ProjectWithPolicyList.md)
+- [ProviderDto](docs/ProviderDto.md)
+- [ProviderList](docs/ProviderList.md)
 - [RightsEnum](docs/RightsEnum.md)
 - [TokenDto](docs/TokenDto.md)
 - [TokenList](docs/TokenList.md)
@@ -129,6 +137,7 @@ All URIs are relative to *https://apse1.api.affinidi.io/iam*
 - [UpdateProjectInput](docs/UpdateProjectInput.md)
 - [UpdateTokenInput](docs/UpdateTokenInput.md)
 - [UpdateTokenPrivateKeyAuthenticationMethodDto](docs/UpdateTokenPrivateKeyAuthenticationMethodDto.md)
+- [UpstreamUnavailableError](docs/UpstreamUnavailableError.md)
 - [UserDto](docs/UserDto.md)
 - [UserList](docs/UserList.md)
 - [WhoamiDto](docs/WhoamiDto.md)
