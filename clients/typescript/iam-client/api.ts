@@ -349,6 +349,64 @@ export interface GrantAccessOutput {
 /**
  *
  * @export
+ * @interface IdentityMappingError
+ */
+export interface IdentityMappingError {
+  /**
+   *
+   * @type {string}
+   * @memberof IdentityMappingError
+   */
+  name: IdentityMappingErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof IdentityMappingError
+   */
+  message: IdentityMappingErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof IdentityMappingError
+   */
+  httpStatusCode: IdentityMappingErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof IdentityMappingError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<UnexpectedErrorDetailsInner>}
+   * @memberof IdentityMappingError
+   */
+  details?: Array<UnexpectedErrorDetailsInner>
+}
+
+export const IdentityMappingErrorNameEnum = {
+  IdentityMappingError: 'IdentityMappingError',
+} as const
+
+export type IdentityMappingErrorNameEnum =
+  (typeof IdentityMappingErrorNameEnum)[keyof typeof IdentityMappingErrorNameEnum]
+export const IdentityMappingErrorMessageEnum = {
+  UnableToMapTheAuthenticatedPrincipalToAnIdentity:
+    'Unable to map the authenticated principal to an identity.',
+} as const
+
+export type IdentityMappingErrorMessageEnum =
+  (typeof IdentityMappingErrorMessageEnum)[keyof typeof IdentityMappingErrorMessageEnum]
+export const IdentityMappingErrorHttpStatusCodeEnum = {
+  NUMBER_404: 404,
+} as const
+
+export type IdentityMappingErrorHttpStatusCodeEnum =
+  (typeof IdentityMappingErrorHttpStatusCodeEnum)[keyof typeof IdentityMappingErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface InvalidDIDError
  */
 export interface InvalidDIDError {
@@ -538,6 +596,64 @@ export interface JsonWebKeySetDto {
 /**
  *
  * @export
+ * @interface MalformedUpstreamResponseError
+ */
+export interface MalformedUpstreamResponseError {
+  /**
+   *
+   * @type {string}
+   * @memberof MalformedUpstreamResponseError
+   */
+  name: MalformedUpstreamResponseErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof MalformedUpstreamResponseError
+   */
+  message: MalformedUpstreamResponseErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof MalformedUpstreamResponseError
+   */
+  httpStatusCode: MalformedUpstreamResponseErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof MalformedUpstreamResponseError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<UnexpectedErrorDetailsInner>}
+   * @memberof MalformedUpstreamResponseError
+   */
+  details?: Array<UnexpectedErrorDetailsInner>
+}
+
+export const MalformedUpstreamResponseErrorNameEnum = {
+  MalformedUpstreamResponseError: 'MalformedUpstreamResponseError',
+} as const
+
+export type MalformedUpstreamResponseErrorNameEnum =
+  (typeof MalformedUpstreamResponseErrorNameEnum)[keyof typeof MalformedUpstreamResponseErrorNameEnum]
+export const MalformedUpstreamResponseErrorMessageEnum = {
+  TheUpstreamIdentityServiceReturnedAnUnexpectedResponse:
+    'The upstream identity service returned an unexpected response.',
+} as const
+
+export type MalformedUpstreamResponseErrorMessageEnum =
+  (typeof MalformedUpstreamResponseErrorMessageEnum)[keyof typeof MalformedUpstreamResponseErrorMessageEnum]
+export const MalformedUpstreamResponseErrorHttpStatusCodeEnum = {
+  NUMBER_422: 422,
+} as const
+
+export type MalformedUpstreamResponseErrorHttpStatusCodeEnum =
+  (typeof MalformedUpstreamResponseErrorHttpStatusCodeEnum)[keyof typeof MalformedUpstreamResponseErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface NotFoundError
  */
 export interface NotFoundError {
@@ -592,6 +708,44 @@ export const NotFoundErrorHttpStatusCodeEnum = {
 export type NotFoundErrorHttpStatusCodeEnum =
   (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
+/**
+ *
+ * @export
+ * @interface PasskeyDto
+ */
+export interface PasskeyDto {
+  /**
+   *
+   * @type {string}
+   * @memberof PasskeyDto
+   */
+  id: string
+  /**
+   *
+   * @type {string}
+   * @memberof PasskeyDto
+   */
+  displayName: string
+  /**
+   * creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
+   * @type {string}
+   * @memberof PasskeyDto
+   */
+  createdAt: string
+}
+/**
+ *
+ * @export
+ * @interface PasskeyList
+ */
+export interface PasskeyList {
+  /**
+   *
+   * @type {Array<PasskeyDto>}
+   * @memberof PasskeyList
+   */
+  passkeys: Array<PasskeyDto>
+}
 /**
  *
  * @export
@@ -893,6 +1047,47 @@ export interface ProjectWithPolicyList {
    * @memberof ProjectWithPolicyList
    */
   lastEvaluatedKey?: string
+}
+/**
+ *
+ * @export
+ * @interface ProviderDto
+ */
+export interface ProviderDto {
+  /**
+   *
+   * @type {string}
+   * @memberof ProviderDto
+   */
+  id: string
+  /**
+   *
+   * @type {string}
+   * @memberof ProviderDto
+   */
+  status: ProviderDtoStatusEnum
+}
+
+export const ProviderDtoStatusEnum = {
+  Linked: 'linked',
+  Unlinked: 'unlinked',
+} as const
+
+export type ProviderDtoStatusEnum =
+  (typeof ProviderDtoStatusEnum)[keyof typeof ProviderDtoStatusEnum]
+
+/**
+ *
+ * @export
+ * @interface ProviderList
+ */
+export interface ProviderList {
+  /**
+   *
+   * @type {Array<ProviderDto>}
+   * @memberof ProviderList
+   */
+  providers: Array<ProviderDto>
 }
 /**
  *
@@ -1307,6 +1502,64 @@ export type UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum =
 /**
  *
  * @export
+ * @interface UpstreamUnavailableError
+ */
+export interface UpstreamUnavailableError {
+  /**
+   *
+   * @type {string}
+   * @memberof UpstreamUnavailableError
+   */
+  name: UpstreamUnavailableErrorNameEnum
+  /**
+   *
+   * @type {string}
+   * @memberof UpstreamUnavailableError
+   */
+  message: UpstreamUnavailableErrorMessageEnum
+  /**
+   *
+   * @type {number}
+   * @memberof UpstreamUnavailableError
+   */
+  httpStatusCode: UpstreamUnavailableErrorHttpStatusCodeEnum
+  /**
+   *
+   * @type {string}
+   * @memberof UpstreamUnavailableError
+   */
+  traceId: string
+  /**
+   *
+   * @type {Array<UnexpectedErrorDetailsInner>}
+   * @memberof UpstreamUnavailableError
+   */
+  details?: Array<UnexpectedErrorDetailsInner>
+}
+
+export const UpstreamUnavailableErrorNameEnum = {
+  UpstreamUnavailableError: 'UpstreamUnavailableError',
+} as const
+
+export type UpstreamUnavailableErrorNameEnum =
+  (typeof UpstreamUnavailableErrorNameEnum)[keyof typeof UpstreamUnavailableErrorNameEnum]
+export const UpstreamUnavailableErrorMessageEnum = {
+  TheUpstreamIdentityServiceIsUnavailable:
+    'The upstream identity service is unavailable.',
+} as const
+
+export type UpstreamUnavailableErrorMessageEnum =
+  (typeof UpstreamUnavailableErrorMessageEnum)[keyof typeof UpstreamUnavailableErrorMessageEnum]
+export const UpstreamUnavailableErrorHttpStatusCodeEnum = {
+  NUMBER_424: 424,
+} as const
+
+export type UpstreamUnavailableErrorHttpStatusCodeEnum =
+  (typeof UpstreamUnavailableErrorHttpStatusCodeEnum)[keyof typeof UpstreamUnavailableErrorHttpStatusCodeEnum]
+
+/**
+ *
+ * @export
  * @interface UserDto
  */
 export interface UserDto {
@@ -1354,6 +1607,237 @@ export interface WhoamiDto {
    * @memberof WhoamiDto
    */
   principalType: string
+}
+
+/**
+ * AccountsApi - axios parameter creator
+ * @export
+ */
+export const AccountsApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountPasskeys: async (
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/accounts/passkeys`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountProviders: async (
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/accounts/providers`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * AccountsApi - functional programming interface
+ * @export
+ */
+export const AccountsApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = AccountsApiAxiosParamCreator(configuration)
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listAccountPasskeys(
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PasskeyList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listAccountPasskeys(options)
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.listAccountPasskeys']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listAccountProviders(
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProviderList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listAccountProviders(options)
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.listAccountProviders']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * AccountsApi - factory interface
+ * @export
+ */
+export const AccountsApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = AccountsApiFp(configuration)
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountPasskeys(
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<PasskeyList> {
+      return localVarFp
+        .listAccountPasskeys(options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountProviders(
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ProviderList> {
+      return localVarFp
+        .listAccountProviders(options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * AccountsApi - object-oriented interface
+ * @export
+ * @class AccountsApi
+ * @extends {BaseAPI}
+ */
+export class AccountsApi extends BaseAPI {
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public listAccountPasskeys(options?: RawAxiosRequestConfig) {
+    return AccountsApiFp(this.configuration)
+      .listAccountPasskeys(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AccountsApi
+   */
+  public listAccountProviders(options?: RawAxiosRequestConfig) {
+    return AccountsApiFp(this.configuration)
+      .listAccountProviders(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
 }
 
 /**
