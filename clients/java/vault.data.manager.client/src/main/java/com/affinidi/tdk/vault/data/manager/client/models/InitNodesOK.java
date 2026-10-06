@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   InitNodesOK.JSON_PROPERTY_CONSUMER_METADATA,
   InitNodesOK.JSON_PROPERTY_DEFAULT_PROFILE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class InitNodesOK {
   public static final String JSON_PROPERTY_CONSUMER_METADATA = "consumerMetadata";
   @javax.annotation.Nullable
@@ -59,7 +59,7 @@ public class InitNodesOK {
    * @return consumerMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONSUMER_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMER_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ConsumerMetadataDto getConsumerMetadata() {
@@ -67,7 +67,7 @@ public class InitNodesOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONSUMER_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMER_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConsumerMetadata(@javax.annotation.Nullable ConsumerMetadataDto consumerMetadata) {
     this.consumerMetadata = consumerMetadata;
@@ -84,7 +84,7 @@ public class InitNodesOK {
    * @return defaultProfile
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEFAULT_PROFILE)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT_PROFILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public NodeDto getDefaultProfile() {
@@ -92,11 +92,12 @@ public class InitNodesOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEFAULT_PROFILE)
+  @JsonProperty(value = JSON_PROPERTY_DEFAULT_PROFILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDefaultProfile(@javax.annotation.Nullable NodeDto defaultProfile) {
     this.defaultProfile = defaultProfile;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -131,10 +132,7 @@ public class InitNodesOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**

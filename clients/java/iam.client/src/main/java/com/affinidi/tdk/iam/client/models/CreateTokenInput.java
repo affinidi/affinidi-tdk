@@ -15,7 +15,7 @@ package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDto;
+import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   CreateTokenInput.JSON_PROPERTY_AUTHENTICATION_METHOD,
   CreateTokenInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateTokenInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
@@ -43,7 +43,7 @@ public class CreateTokenInput {
 
   public static final String JSON_PROPERTY_AUTHENTICATION_METHOD = "authenticationMethod";
   @javax.annotation.Nonnull
-  private TokenPrivateKeyAuthenticationMethodDto authenticationMethod;
+  private TokenAuthenticationMethodDto authenticationMethod;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @javax.annotation.Nullable
@@ -63,7 +63,7 @@ public class CreateTokenInput {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -71,13 +71,13 @@ public class CreateTokenInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public CreateTokenInput authenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
+  public CreateTokenInput authenticationMethod(@javax.annotation.Nonnull TokenAuthenticationMethodDto authenticationMethod) {
     
     this.authenticationMethod = authenticationMethod;
     return this;
@@ -88,17 +88,17 @@ public class CreateTokenInput {
    * @return authenticationMethod
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_AUTHENTICATION_METHOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public TokenPrivateKeyAuthenticationMethodDto getAuthenticationMethod() {
+  public TokenAuthenticationMethodDto getAuthenticationMethod() {
     return authenticationMethod;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_AUTHENTICATION_METHOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
+  public void setAuthenticationMethod(@javax.annotation.Nonnull TokenAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
 
@@ -113,7 +113,7 @@ public class CreateTokenInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -121,11 +121,12 @@ public class CreateTokenInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,10 +163,7 @@ public class CreateTokenInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -203,7 +201,7 @@ public class CreateTokenInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -218,7 +216,7 @@ public class CreateTokenInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

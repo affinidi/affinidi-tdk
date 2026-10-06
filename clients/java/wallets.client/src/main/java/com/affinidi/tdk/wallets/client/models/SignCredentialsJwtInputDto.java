@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   SignCredentialsJwtInputDto.JSON_PROPERTY_KEY_ID
 })
 @JsonTypeName("signCredentialsJwtInputDto")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignCredentialsJwtInputDto {
   public static final String JSON_PROPERTY_UNSIGNED_CREDENTIAL = "unsignedCredential";
   @javax.annotation.Nonnull
@@ -105,7 +105,7 @@ public class SignCredentialsJwtInputDto {
    * @return unsignedCredential
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getUnsignedCredential() {
@@ -113,7 +113,7 @@ public class SignCredentialsJwtInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUnsignedCredential(@javax.annotation.Nonnull Object unsignedCredential) {
     this.unsignedCredential = unsignedCredential;
@@ -130,7 +130,7 @@ public class SignCredentialsJwtInputDto {
    * @return revocable
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REVOCABLE)
+  @JsonProperty(value = JSON_PROPERTY_REVOCABLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getRevocable() {
@@ -138,7 +138,7 @@ public class SignCredentialsJwtInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REVOCABLE)
+  @JsonProperty(value = JSON_PROPERTY_REVOCABLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRevocable(@javax.annotation.Nullable Boolean revocable) {
     this.revocable = revocable;
@@ -155,7 +155,7 @@ public class SignCredentialsJwtInputDto {
    * @return signatureScheme
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonProperty(value = JSON_PROPERTY_SIGNATURE_SCHEME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public SignatureSchemeEnum getSignatureScheme() {
@@ -163,7 +163,7 @@ public class SignCredentialsJwtInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonProperty(value = JSON_PROPERTY_SIGNATURE_SCHEME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSignatureScheme(@javax.annotation.Nullable SignatureSchemeEnum signatureScheme) {
     this.signatureScheme = signatureScheme;
@@ -180,7 +180,7 @@ public class SignCredentialsJwtInputDto {
    * @return keyId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getKeyId() {
@@ -188,11 +188,12 @@ public class SignCredentialsJwtInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyId(@javax.annotation.Nullable String keyId) {
     this.keyId = keyId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -231,10 +232,7 @@ public class SignCredentialsJwtInputDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -272,7 +270,7 @@ public class SignCredentialsJwtInputDto {
     // add `unsignedCredential` to the URL query string
     if (getUnsignedCredential() != null) {
       try {
-        joiner.add(String.format("%sunsignedCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUnsignedCredential()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sunsignedCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUnsignedCredential()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -282,7 +280,7 @@ public class SignCredentialsJwtInputDto {
     // add `revocable` to the URL query string
     if (getRevocable() != null) {
       try {
-        joiner.add(String.format("%srevocable%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocable()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srevocable%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocable()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -292,7 +290,7 @@ public class SignCredentialsJwtInputDto {
     // add `signatureScheme` to the URL query string
     if (getSignatureScheme() != null) {
       try {
-        joiner.add(String.format("%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -302,7 +300,7 @@ public class SignCredentialsJwtInputDto {
     // add `keyId` to the URL query string
     if (getKeyId() != null) {
       try {
-        joiner.add(String.format("%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

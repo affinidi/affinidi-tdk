@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   GetScannedFileInfoOK.JSON_PROPERTY_CREATED_AT,
   GetScannedFileInfoOK.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GetScannedFileInfoOK {
   public static final String JSON_PROPERTY_DATA = "data";
   @javax.annotation.Nonnull
@@ -87,7 +87,7 @@ public class GetScannedFileInfoOK {
    * @return data
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getData() {
@@ -95,7 +95,7 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setData(@javax.annotation.Nonnull Object data) {
     this.data = data;
@@ -112,7 +112,7 @@ public class GetScannedFileInfoOK {
    * @return jobId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
+  @JsonProperty(value = JSON_PROPERTY_JOB_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJobId() {
@@ -120,7 +120,7 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
+  @JsonProperty(value = JSON_PROPERTY_JOB_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJobId(@javax.annotation.Nonnull String jobId) {
     this.jobId = jobId;
@@ -137,7 +137,7 @@ public class GetScannedFileInfoOK {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getStatus() {
@@ -145,7 +145,7 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull String status) {
     this.status = status;
@@ -162,7 +162,7 @@ public class GetScannedFileInfoOK {
    * @return profileId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProfileId() {
@@ -170,7 +170,7 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProfileId(@javax.annotation.Nonnull String profileId) {
     this.profileId = profileId;
@@ -187,7 +187,7 @@ public class GetScannedFileInfoOK {
    * @return exclusiveStartKey
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_START_KEY)
+  @JsonProperty(value = JSON_PROPERTY_EXCLUSIVE_START_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getExclusiveStartKey() {
@@ -195,7 +195,7 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXCLUSIVE_START_KEY)
+  @JsonProperty(value = JSON_PROPERTY_EXCLUSIVE_START_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExclusiveStartKey(@javax.annotation.Nullable String exclusiveStartKey) {
     this.exclusiveStartKey = exclusiveStartKey;
@@ -212,7 +212,7 @@ public class GetScannedFileInfoOK {
    * @return nodeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNodeId() {
@@ -220,7 +220,7 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
@@ -237,7 +237,7 @@ public class GetScannedFileInfoOK {
    * @return createdAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedAt() {
@@ -245,7 +245,7 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
@@ -262,7 +262,7 @@ public class GetScannedFileInfoOK {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -270,11 +270,12 @@ public class GetScannedFileInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -321,10 +322,7 @@ public class GetScannedFileInfoOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -362,7 +360,7 @@ public class GetScannedFileInfoOK {
     // add `data` to the URL query string
     if (getData() != null) {
       try {
-        joiner.add(String.format("%sdata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getData()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getData()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -372,7 +370,7 @@ public class GetScannedFileInfoOK {
     // add `jobId` to the URL query string
     if (getJobId() != null) {
       try {
-        joiner.add(String.format("%sjobId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjobId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -382,7 +380,7 @@ public class GetScannedFileInfoOK {
     // add `status` to the URL query string
     if (getStatus() != null) {
       try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -392,7 +390,7 @@ public class GetScannedFileInfoOK {
     // add `profileId` to the URL query string
     if (getProfileId() != null) {
       try {
-        joiner.add(String.format("%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -402,7 +400,7 @@ public class GetScannedFileInfoOK {
     // add `exclusiveStartKey` to the URL query string
     if (getExclusiveStartKey() != null) {
       try {
-        joiner.add(String.format("%sexclusiveStartKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExclusiveStartKey()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexclusiveStartKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExclusiveStartKey()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -412,7 +410,7 @@ public class GetScannedFileInfoOK {
     // add `nodeId` to the URL query string
     if (getNodeId() != null) {
       try {
-        joiner.add(String.format("%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -422,7 +420,7 @@ public class GetScannedFileInfoOK {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -432,7 +430,7 @@ public class GetScannedFileInfoOK {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
