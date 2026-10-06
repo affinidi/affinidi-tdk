@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   CredentialOfferResponse.JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS,
   CredentialOfferResponse.JSON_PROPERTY_GRANTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CredentialOfferResponse {
   public static final String JSON_PROPERTY_CREDENTIAL_ISSUER = "credential_issuer";
   @javax.annotation.Nonnull
@@ -66,7 +66,7 @@ public class CredentialOfferResponse {
    * @return credentialIssuer
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ISSUER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCredentialIssuer() {
@@ -74,7 +74,7 @@ public class CredentialOfferResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ISSUER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialIssuer(@javax.annotation.Nonnull String credentialIssuer) {
     this.credentialIssuer = credentialIssuer;
@@ -99,7 +99,7 @@ public class CredentialOfferResponse {
    * @return credentialConfigurationIds
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getCredentialConfigurationIds() {
@@ -107,7 +107,7 @@ public class CredentialOfferResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_CONFIGURATION_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialConfigurationIds(@javax.annotation.Nonnull List<String> credentialConfigurationIds) {
     this.credentialConfigurationIds = credentialConfigurationIds;
@@ -124,7 +124,7 @@ public class CredentialOfferResponse {
    * @return grants
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GRANTS)
+  @JsonProperty(value = JSON_PROPERTY_GRANTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public CredentialOfferResponseGrants getGrants() {
@@ -132,11 +132,12 @@ public class CredentialOfferResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GRANTS)
+  @JsonProperty(value = JSON_PROPERTY_GRANTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGrants(@javax.annotation.Nonnull CredentialOfferResponseGrants grants) {
     this.grants = grants;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -173,10 +174,7 @@ public class CredentialOfferResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -214,7 +212,7 @@ public class CredentialOfferResponse {
     // add `credential_issuer` to the URL query string
     if (getCredentialIssuer() != null) {
       try {
-        joiner.add(String.format("%scredential_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredential_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -225,8 +223,8 @@ public class CredentialOfferResponse {
     if (getCredentialConfigurationIds() != null) {
       for (int i = 0; i < getCredentialConfigurationIds().size(); i++) {
         try {
-          joiner.add(String.format("%scredential_configuration_ids%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scredential_configuration_ids%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getCredentialConfigurationIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

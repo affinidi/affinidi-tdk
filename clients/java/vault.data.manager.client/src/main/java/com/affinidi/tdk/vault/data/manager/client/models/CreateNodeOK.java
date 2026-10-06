@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   CreateNodeOK.JSON_PROPERTY_LINK,
   CreateNodeOK.JSON_PROPERTY_FIELDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateNodeOK {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
   @javax.annotation.Nonnull
@@ -79,7 +79,7 @@ public class CreateNodeOK {
    * @return nodeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNodeId() {
@@ -87,7 +87,7 @@ public class CreateNodeOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
@@ -104,7 +104,7 @@ public class CreateNodeOK {
    * @return createdAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedAt() {
@@ -112,7 +112,7 @@ public class CreateNodeOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
@@ -129,7 +129,7 @@ public class CreateNodeOK {
    * @return modifiedAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedAt() {
@@ -137,7 +137,7 @@ public class CreateNodeOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
@@ -154,7 +154,7 @@ public class CreateNodeOK {
    * @return url
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUrl() {
@@ -162,7 +162,7 @@ public class CreateNodeOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUrl(@javax.annotation.Nullable String url) {
     this.url = url;
@@ -179,7 +179,7 @@ public class CreateNodeOK {
    * @return link
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLink() {
@@ -187,7 +187,7 @@ public class CreateNodeOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
@@ -212,7 +212,7 @@ public class CreateNodeOK {
    * @return fields
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FIELDS)
+  @JsonProperty(value = JSON_PROPERTY_FIELDS, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getFields() {
@@ -220,11 +220,12 @@ public class CreateNodeOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FIELDS)
+  @JsonProperty(value = JSON_PROPERTY_FIELDS, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setFields(@javax.annotation.Nullable Map<String, Object> fields) {
     this.fields = fields;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -267,10 +268,7 @@ public class CreateNodeOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -308,7 +306,7 @@ public class CreateNodeOK {
     // add `nodeId` to the URL query string
     if (getNodeId() != null) {
       try {
-        joiner.add(String.format("%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -318,7 +316,7 @@ public class CreateNodeOK {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -328,7 +326,7 @@ public class CreateNodeOK {
     // add `modifiedAt` to the URL query string
     if (getModifiedAt() != null) {
       try {
-        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -338,7 +336,7 @@ public class CreateNodeOK {
     // add `url` to the URL query string
     if (getUrl() != null) {
       try {
-        joiner.add(String.format("%surl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%surl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -348,7 +346,7 @@ public class CreateNodeOK {
     // add `link` to the URL query string
     if (getLink() != null) {
       try {
-        joiner.add(String.format("%slink%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLink()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slink%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLink()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -359,8 +357,8 @@ public class CreateNodeOK {
     if (getFields() != null) {
       for (String _key : getFields().keySet()) {
         try {
-          joiner.add(String.format("%sfields%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sfields%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getFields().get(_key), URLEncoder.encode(String.valueOf(getFields().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

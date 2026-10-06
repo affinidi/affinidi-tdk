@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CisConfigurationWebhookSetting.JSON_PROPERTY_ENABLED,
   CisConfigurationWebhookSetting.JSON_PROPERTY_ENDPOINT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CisConfigurationWebhookSetting {
   public static final String JSON_PROPERTY_ENABLED = "enabled";
   @javax.annotation.Nonnull
@@ -58,7 +58,7 @@ public class CisConfigurationWebhookSetting {
    * @return enabled
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getEnabled() {
@@ -66,7 +66,7 @@ public class CisConfigurationWebhookSetting {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENABLED)
+  @JsonProperty(value = JSON_PROPERTY_ENABLED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEnabled(@javax.annotation.Nonnull Boolean enabled) {
     this.enabled = enabled;
@@ -83,7 +83,7 @@ public class CisConfigurationWebhookSetting {
    * @return endpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public CisConfigurationWebhookSettingEndpoint getEndpoint() {
@@ -91,11 +91,12 @@ public class CisConfigurationWebhookSetting {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndpoint(@javax.annotation.Nullable CisConfigurationWebhookSettingEndpoint endpoint) {
     this.endpoint = endpoint;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,10 +131,7 @@ public class CisConfigurationWebhookSetting {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,7 +169,7 @@ public class CisConfigurationWebhookSetting {
     // add `enabled` to the URL query string
     if (getEnabled() != null) {
       try {
-        joiner.add(String.format("%senabled%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnabled()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%senabled%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnabled()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   UpdateTokenInput.JSON_PROPERTY_NAME,
   UpdateTokenInput.JSON_PROPERTY_AUTHENTICATION_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdateTokenInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -58,7 +58,7 @@ public class UpdateTokenInput {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -66,7 +66,7 @@ public class UpdateTokenInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -83,7 +83,7 @@ public class UpdateTokenInput {
    * @return authenticationMethod
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_AUTHENTICATION_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public UpdateTokenPrivateKeyAuthenticationMethodDto getAuthenticationMethod() {
@@ -91,11 +91,12 @@ public class UpdateTokenInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_AUTHENTICATION_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthenticationMethod(@javax.annotation.Nullable UpdateTokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,10 +131,7 @@ public class UpdateTokenInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,7 +169,7 @@ public class UpdateTokenInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

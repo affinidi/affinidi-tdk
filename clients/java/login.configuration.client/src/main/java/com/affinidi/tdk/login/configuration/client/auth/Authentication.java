@@ -18,14 +18,14 @@ import com.affinidi.tdk.login.configuration.client.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public interface Authentication {
-    /**
-     * Apply authentication settings to header and query params.
-     *
-     * @param queryParams List of query parameters
-     * @param headerParams Map of header parameters
-     * @param cookieParams Map of cookie parameters
-     */
-    void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams);
+  /**
+   * Apply authentication settings to header and query params.
+   *
+   * @param queryParams List of query parameters
+   * @param headerParams Map of header parameters
+   * @param cookieParams Map of cookie parameters
+   */
+  void applyToParams(List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams);
 }

@@ -2,14 +2,14 @@
 
 ## Properties
 
-| Name                     | Type                                                                                    | Description                                                 | Notes                  |
-| ------------------------ | --------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------- |
-| **id**                   | **string**                                                                              | Token Id                                                    | [default to undefined] |
-| **ari**                  | **string**                                                                              | Token ARI                                                   | [default to undefined] |
-| **ownerAri**             | **string**                                                                              | The Token owner\&#39;s ARI                                  | [default to undefined] |
-| **name**                 | **string**                                                                              | Owner defined Token display name                            | [default to undefined] |
-| **authenticationMethod** | [**TokenPrivateKeyAuthenticationMethodDto**](TokenPrivateKeyAuthenticationMethodDto.md) |                                                             | [default to undefined] |
-| **scopes**               | **Array&lt;string&gt;**                                                                 | Scopes that will be assigned to the Token on authentication | [default to undefined] |
+| Name                     | Type                                                                | Description                                                 | Notes                  |
+| ------------------------ | ------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------- |
+| **id**                   | **string**                                                          | Token Id                                                    | [default to undefined] |
+| **ari**                  | **string**                                                          | Token ARI                                                   | [default to undefined] |
+| **ownerAri**             | **string**                                                          | The Token owner\&#39;s ARI                                  | [default to undefined] |
+| **name**                 | **string**                                                          | Owner defined Token display name                            | [default to undefined] |
+| **authenticationMethod** | [**TokenAuthenticationMethodDto**](TokenAuthenticationMethodDto.md) |                                                             | [default to undefined] |
+| **scopes**               | **Array&lt;string&gt;**                                             | Scopes that will be assigned to the Token on authentication | [default to undefined] |
 
 ## Example
 

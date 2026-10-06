@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   BatchCredentialInput.JSON_PROPERTY_CREDENTIAL_REQUESTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class BatchCredentialInput {
   public static final String JSON_PROPERTY_CREDENTIAL_REQUESTS = "credential_requests";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class BatchCredentialInput {
    * @return credentialRequests
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_REQUESTS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_REQUESTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<BatchCredentialInputCredentialRequestsInner> getCredentialRequests() {
@@ -72,11 +72,12 @@ public class BatchCredentialInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_REQUESTS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_REQUESTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialRequests(@javax.annotation.Nonnull List<BatchCredentialInputCredentialRequestsInner> credentialRequests) {
     this.credentialRequests = credentialRequests;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class BatchCredentialInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class BatchCredentialInput {
     if (getCredentialRequests() != null) {
       for (int i = 0; i < getCredentialRequests().size(); i++) {
         if (getCredentialRequests().get(i) != null) {
-          joiner.add(getCredentialRequests().get(i).toUrlQueryString(String.format("%scredential_requests%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getCredentialRequests().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%scredential_requests%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

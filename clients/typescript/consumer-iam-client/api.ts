@@ -28,6 +28,7 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
+  replaceWithSerializableTypeIfNeeded,
 } from './common'
 import type { RequestArgs } from './base'
 // @ts-ignore
@@ -39,35 +40,10 @@ import {
   operationServerMap,
 } from './base'
 
-/**
- *
- * @export
- * @interface ConsumerAuthTokenEndpointInput
- */
 export interface ConsumerAuthTokenEndpointInput {
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   grant_type: ConsumerAuthTokenEndpointInputGrantTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   client_assertion_type: ConsumerAuthTokenEndpointInputClientAssertionTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   client_assertion: string
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   client_id: string
 }
 
@@ -88,117 +64,48 @@ export const ConsumerAuthTokenEndpointInputClientAssertionTypeEnum = {
 export type ConsumerAuthTokenEndpointInputClientAssertionTypeEnum =
   (typeof ConsumerAuthTokenEndpointInputClientAssertionTypeEnum)[keyof typeof ConsumerAuthTokenEndpointInputClientAssertionTypeEnum]
 
-/**
- *
- * @export
- * @interface ConsumerAuthTokenEndpointOutput
- */
 export interface ConsumerAuthTokenEndpointOutput {
   /**
    * The access token issued by the authorization server.
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   access_token?: string
   /**
    * The lifetime in seconds of the access token. For example, the value \"3600\" denotes that the access token will expire in one hour from the time the response was generated.
-   * @type {number}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   expires_in?: number
   /**
    * The scope of the access token
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   scope?: string
   /**
    * The type of the token issued
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   token_type?: string
 }
-/**
- *
- * @export
- * @interface GetAccessOutput
- */
 export interface GetAccessOutput {
   /**
    * List of permissions currently granted
-   * @type {Array<Permission>}
-   * @memberof GetAccessOutput
    */
   permissions: Array<Permission>
 }
-/**
- *
- * @export
- * @interface GrantAccessInput
- */
 export interface GrantAccessInput {
   /**
    * List of permissions
-   * @type {Array<Permission>}
-   * @memberof GrantAccessInput
    */
   permissions: Array<Permission>
 }
-/**
- *
- * @export
- * @interface GrantAccessOutput
- */
 export interface GrantAccessOutput {
-  /**
-   *
-   * @type {boolean}
-   * @memberof GrantAccessOutput
-   */
   success: boolean
   /**
    * Unique identifier for the access grant
-   * @type {string}
-   * @memberof GrantAccessOutput
    */
   grantId?: string
 }
-/**
- *
- * @export
- * @interface InvalidDIDError
- */
 export interface InvalidDIDError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDIDError
-   */
   name: InvalidDIDErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDIDError
-   */
   message: InvalidDIDErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidDIDError
-   */
   httpStatusCode: InvalidDIDErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDIDError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidJwtTokenErrorDetailsInner>}
-   * @memberof InvalidDIDError
-   */
   details?: Array<InvalidJwtTokenErrorDetailsInner>
 }
 
@@ -221,41 +128,11 @@ export const InvalidDIDErrorHttpStatusCodeEnum = {
 export type InvalidDIDErrorHttpStatusCodeEnum =
   (typeof InvalidDIDErrorHttpStatusCodeEnum)[keyof typeof InvalidDIDErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidJwtTokenError
- */
 export interface InvalidJwtTokenError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
   name: InvalidJwtTokenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
   message: InvalidJwtTokenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidJwtTokenError
-   */
   httpStatusCode: InvalidJwtTokenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidJwtTokenErrorDetailsInner>}
-   * @memberof InvalidJwtTokenError
-   */
   details?: Array<InvalidJwtTokenErrorDetailsInner>
 }
 
@@ -278,141 +155,31 @@ export const InvalidJwtTokenErrorHttpStatusCodeEnum = {
 export type InvalidJwtTokenErrorHttpStatusCodeEnum =
   (typeof InvalidJwtTokenErrorHttpStatusCodeEnum)[keyof typeof InvalidJwtTokenErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidJwtTokenErrorDetailsInner
- */
 export interface InvalidJwtTokenErrorDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenErrorDetailsInner
-   */
   issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenErrorDetailsInner
-   */
   field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenErrorDetailsInner
-   */
   value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenErrorDetailsInner
-   */
   location?: string
 }
-/**
- *
- * @export
- * @interface JsonWebKeyDto
- */
 export interface JsonWebKeyDto {
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   kid: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   kty: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   n?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   e?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   x?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   y?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   crv?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   alg: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   use: string
 }
-/**
- *
- * @export
- * @interface JsonWebKeySetDto
- */
 export interface JsonWebKeySetDto {
-  /**
-   *
-   * @type {Array<JsonWebKeyDto>}
-   * @memberof JsonWebKeySetDto
-   */
   keys: Array<JsonWebKeyDto>
 }
-/**
- *
- * @export
- * @interface Permission
- */
 export interface Permission {
-  /**
-   *
-   * @type {Array<RightsEnum>}
-   * @memberof Permission
-   */
   rights: Array<RightsEnum>
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof Permission
-   */
   nodeIds: Array<string>
-  /**
-   *
-   * @type {string}
-   * @memberof Permission
-   */
   expiresAt?: string
 }
-/**
- *
- * @export
- * @enum {string}
- */
 
 export const RightsEnum = {
   VfsRead: 'vfs-read',
@@ -421,41 +188,11 @@ export const RightsEnum = {
 
 export type RightsEnum = (typeof RightsEnum)[keyof typeof RightsEnum]
 
-/**
- *
- * @export
- * @interface UnauthorizedError
- */
 export interface UnauthorizedError {
-  /**
-   *
-   * @type {string}
-   * @memberof UnauthorizedError
-   */
   name: UnauthorizedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnauthorizedError
-   */
   message: UnauthorizedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof UnauthorizedError
-   */
   httpStatusCode: UnauthorizedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnauthorizedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidJwtTokenErrorDetailsInner>}
-   * @memberof UnauthorizedError
-   */
   details?: Array<InvalidJwtTokenErrorDetailsInner>
 }
 
@@ -478,41 +215,11 @@ export const UnauthorizedErrorHttpStatusCodeEnum = {
 export type UnauthorizedErrorHttpStatusCodeEnum =
   (typeof UnauthorizedErrorHttpStatusCodeEnum)[keyof typeof UnauthorizedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface UnexpectedError
- */
 export interface UnexpectedError {
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   name: UnexpectedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   message: UnexpectedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof UnexpectedError
-   */
   httpStatusCode: UnexpectedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidJwtTokenErrorDetailsInner>}
-   * @memberof UnexpectedError
-   */
   details?: Array<InvalidJwtTokenErrorDetailsInner>
 }
 
@@ -535,36 +242,18 @@ export const UnexpectedErrorHttpStatusCodeEnum = {
 export type UnexpectedErrorHttpStatusCodeEnum =
   (typeof UnexpectedErrorHttpStatusCodeEnum)[keyof typeof UnexpectedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface UpdateAccessInput
- */
 export interface UpdateAccessInput {
   /**
    * List of permissions
-   * @type {Array<Permission>}
-   * @memberof UpdateAccessInput
    */
   permissions: Array<Permission>
 }
-/**
- *
- * @export
- * @interface UpdateAccessOutput
- */
 export interface UpdateAccessOutput {
-  /**
-   *
-   * @type {boolean}
-   * @memberof UpdateAccessOutput
-   */
   success: boolean
 }
 
 /**
  * AuthzApi - axios parameter creator
- * @export
  */
 export const AuthzApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -584,7 +273,7 @@ export const AuthzApiAxiosParamCreator = function (
       // verify required parameter 'granteeDid' is not null or undefined
       assertParamExists('deleteAccessVfs', 'granteeDid', granteeDid)
       const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
-        `{${'granteeDid'}}`,
+        '{granteeDid}',
         encodeURIComponent(String(granteeDid)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -608,6 +297,8 @@ export const AuthzApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -637,7 +328,7 @@ export const AuthzApiAxiosParamCreator = function (
       // verify required parameter 'granteeDid' is not null or undefined
       assertParamExists('getAccessVfs', 'granteeDid', granteeDid)
       const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
-        `{${'granteeDid'}}`,
+        '{granteeDid}',
         encodeURIComponent(String(granteeDid)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -661,6 +352,8 @@ export const AuthzApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -695,7 +388,7 @@ export const AuthzApiAxiosParamCreator = function (
       // verify required parameter 'grantAccessInput' is not null or undefined
       assertParamExists('grantAccessVfs', 'grantAccessInput', grantAccessInput)
       const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
-        `{${'granteeDid'}}`,
+        '{granteeDid}',
         encodeURIComponent(String(granteeDid)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -721,6 +414,7 @@ export const AuthzApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -763,7 +457,7 @@ export const AuthzApiAxiosParamCreator = function (
         updateAccessInput,
       )
       const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
-        `{${'granteeDid'}}`,
+        '{granteeDid}',
         encodeURIComponent(String(granteeDid)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -789,6 +483,7 @@ export const AuthzApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -814,7 +509,6 @@ export const AuthzApiAxiosParamCreator = function (
 
 /**
  * AuthzApi - functional programming interface
- * @export
  */
 export const AuthzApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = AuthzApiAxiosParamCreator(configuration)
@@ -960,7 +654,6 @@ export const AuthzApiFp = function (configuration?: Configuration) {
 
 /**
  * AuthzApi - factory interface
- * @export
  */
 export const AuthzApiFactory = function (
   configuration?: Configuration,
@@ -1039,9 +732,6 @@ export const AuthzApiFactory = function (
 
 /**
  * AuthzApi - object-oriented interface
- * @export
- * @class AuthzApi
- * @extends {BaseAPI}
  */
 export class AuthzApi extends BaseAPI {
   /**
@@ -1050,7 +740,6 @@ export class AuthzApi extends BaseAPI {
    * @param {string} granteeDid
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AuthzApi
    */
   public deleteAccessVfs(granteeDid: string, options?: RawAxiosRequestConfig) {
     return AuthzApiFp(this.configuration)
@@ -1064,7 +753,6 @@ export class AuthzApi extends BaseAPI {
    * @param {string} granteeDid
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AuthzApi
    */
   public getAccessVfs(granteeDid: string, options?: RawAxiosRequestConfig) {
     return AuthzApiFp(this.configuration)
@@ -1080,7 +768,6 @@ export class AuthzApi extends BaseAPI {
    * @param {*} [options] Override http request option.
    * @deprecated
    * @throws {RequiredError}
-   * @memberof AuthzApi
    */
   public grantAccessVfs(
     granteeDid: string,
@@ -1099,7 +786,6 @@ export class AuthzApi extends BaseAPI {
    * @param {UpdateAccessInput} updateAccessInput update access to virtual file system
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AuthzApi
    */
   public updateAccessVfs(
     granteeDid: string,
@@ -1114,7 +800,6 @@ export class AuthzApi extends BaseAPI {
 
 /**
  * ConsumerAuthApi - axios parameter creator
- * @export
  */
 export const ConsumerAuthApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1154,6 +839,7 @@ export const ConsumerAuthApiAxiosParamCreator = function (
       const localVarQueryParameter = {} as any
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1179,7 +865,6 @@ export const ConsumerAuthApiAxiosParamCreator = function (
 
 /**
  * ConsumerAuthApi - functional programming interface
- * @export
  */
 export const ConsumerAuthApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -1224,7 +909,6 @@ export const ConsumerAuthApiFp = function (configuration?: Configuration) {
 
 /**
  * ConsumerAuthApi - factory interface
- * @export
  */
 export const ConsumerAuthApiFactory = function (
   configuration?: Configuration,
@@ -1253,9 +937,6 @@ export const ConsumerAuthApiFactory = function (
 
 /**
  * ConsumerAuthApi - object-oriented interface
- * @export
- * @class ConsumerAuthApi
- * @extends {BaseAPI}
  */
 export class ConsumerAuthApi extends BaseAPI {
   /**
@@ -1264,7 +945,6 @@ export class ConsumerAuthApi extends BaseAPI {
    * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConsumerAuthApi
    */
   public consumerAuthTokenEndpoint(
     consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
@@ -1278,7 +958,6 @@ export class ConsumerAuthApi extends BaseAPI {
 
 /**
  * WellKnownApi - axios parameter creator
- * @export
  */
 export const WellKnownApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1308,6 +987,8 @@ export const WellKnownApiAxiosParamCreator = function (
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -1327,7 +1008,6 @@ export const WellKnownApiAxiosParamCreator = function (
 
 /**
  * WellKnownApi - functional programming interface
- * @export
  */
 export const WellKnownApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = WellKnownApiAxiosParamCreator(configuration)
@@ -1365,7 +1045,6 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
 
 /**
  * WellKnownApi - factory interface
- * @export
  */
 export const WellKnownApiFactory = function (
   configuration?: Configuration,
@@ -1391,16 +1070,12 @@ export const WellKnownApiFactory = function (
 
 /**
  * WellKnownApi - object-oriented interface
- * @export
- * @class WellKnownApi
- * @extends {BaseAPI}
  */
 export class WellKnownApi extends BaseAPI {
   /**
    *
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WellKnownApi
    */
   public getWellKnownJwks(options?: RawAxiosRequestConfig) {
     return WellKnownApiFp(this.configuration)

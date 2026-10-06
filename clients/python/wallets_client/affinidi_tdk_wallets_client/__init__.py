@@ -17,64 +17,124 @@
 
 __version__ = "1.0.0"
 
+# Define package exports
+__all__ = [
+    "RevocationApi",
+    "WalletApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "CreateWalletInput",
+    "CreateWalletKeyInput",
+    "CreateWalletResponse",
+    "CreateWalletV2Input",
+    "CreateWalletV2Response",
+    "EntityNotFoundError",
+    "GetRevocationListCredentialResultDto",
+    "InvalidParameterError",
+    "ListServiceEndpointsOK",
+    "ListWalletKeysOK",
+    "NotFoundError",
+    "NotFoundErrorDetailsInner",
+    "OperationForbiddenError",
+    "RevokeCredentialInput",
+    "RevokeCredentialsInput",
+    "ServiceEndpointDto",
+    "ServiceEndpointInput",
+    "SignCredential400Response",
+    "SignCredentialInputDto",
+    "SignCredentialInputDtoUnsignedCredentialParams",
+    "SignCredentialResultDto",
+    "SignCredentialsDm2SdJwtInputDto",
+    "SignCredentialsDm2SdJwtResultDto",
+    "SignCredentialsJwtInputDto",
+    "SignCredentialsJwtResultDto",
+    "SignCredentialsLdpInputDto",
+    "SignCredentialsLdpResultDto",
+    "SignJwtToken",
+    "SignJwtTokenOK",
+    "SignJwtV2InputDto",
+    "SignJwtV2ResultDto",
+    "SignPresentationLdpInputDto",
+    "SignPresentationLdpResultDto",
+    "SigningFailedError",
+    "TooManyRequestsError",
+    "UpdateServiceEndpointInput",
+    "UpdateWalletInput",
+    "UpdateWalletKeyInput",
+    "VerificationRelationship",
+    "WalletDidType",
+    "WalletDto",
+    "WalletDtoKeysInner",
+    "WalletKeyDto",
+    "WalletV2Dto",
+    "WalletsListDto",
+]
+
 # import apis into sdk package
-from affinidi_tdk_wallets_client.api.revocation_api import RevocationApi
-from affinidi_tdk_wallets_client.api.wallet_api import WalletApi
+from affinidi_tdk_wallets_client.api.revocation_api import RevocationApi as RevocationApi
+from affinidi_tdk_wallets_client.api.wallet_api import WalletApi as WalletApi
 
 # import ApiClient
-from affinidi_tdk_wallets_client.api_response import ApiResponse
-from affinidi_tdk_wallets_client.api_client import ApiClient
-from affinidi_tdk_wallets_client.configuration import Configuration
-from affinidi_tdk_wallets_client.exceptions import OpenApiException
-from affinidi_tdk_wallets_client.exceptions import ApiTypeError
-from affinidi_tdk_wallets_client.exceptions import ApiValueError
-from affinidi_tdk_wallets_client.exceptions import ApiKeyError
-from affinidi_tdk_wallets_client.exceptions import ApiAttributeError
-from affinidi_tdk_wallets_client.exceptions import ApiException
+from affinidi_tdk_wallets_client.api_response import ApiResponse as ApiResponse
+from affinidi_tdk_wallets_client.api_client import ApiClient as ApiClient
+from affinidi_tdk_wallets_client.configuration import Configuration as Configuration
+from affinidi_tdk_wallets_client.exceptions import OpenApiException as OpenApiException
+from affinidi_tdk_wallets_client.exceptions import ApiTypeError as ApiTypeError
+from affinidi_tdk_wallets_client.exceptions import ApiValueError as ApiValueError
+from affinidi_tdk_wallets_client.exceptions import ApiKeyError as ApiKeyError
+from affinidi_tdk_wallets_client.exceptions import ApiAttributeError as ApiAttributeError
+from affinidi_tdk_wallets_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from affinidi_tdk_wallets_client.models.create_wallet_input import CreateWalletInput
-from affinidi_tdk_wallets_client.models.create_wallet_key_input import CreateWalletKeyInput
-from affinidi_tdk_wallets_client.models.create_wallet_response import CreateWalletResponse
-from affinidi_tdk_wallets_client.models.create_wallet_v2_input import CreateWalletV2Input
-from affinidi_tdk_wallets_client.models.create_wallet_v2_response import CreateWalletV2Response
-from affinidi_tdk_wallets_client.models.entity_not_found_error import EntityNotFoundError
-from affinidi_tdk_wallets_client.models.get_revocation_list_credential_result_dto import GetRevocationListCredentialResultDto
-from affinidi_tdk_wallets_client.models.invalid_parameter_error import InvalidParameterError
-from affinidi_tdk_wallets_client.models.list_service_endpoints_ok import ListServiceEndpointsOK
-from affinidi_tdk_wallets_client.models.list_wallet_keys_ok import ListWalletKeysOK
-from affinidi_tdk_wallets_client.models.not_found_error import NotFoundError
-from affinidi_tdk_wallets_client.models.not_found_error_details_inner import NotFoundErrorDetailsInner
-from affinidi_tdk_wallets_client.models.operation_forbidden_error import OperationForbiddenError
-from affinidi_tdk_wallets_client.models.revoke_credential_input import RevokeCredentialInput
-from affinidi_tdk_wallets_client.models.revoke_credentials_input import RevokeCredentialsInput
-from affinidi_tdk_wallets_client.models.service_endpoint_dto import ServiceEndpointDto
-from affinidi_tdk_wallets_client.models.service_endpoint_input import ServiceEndpointInput
-from affinidi_tdk_wallets_client.models.sign_credential400_response import SignCredential400Response
-from affinidi_tdk_wallets_client.models.sign_credential_input_dto import SignCredentialInputDto
-from affinidi_tdk_wallets_client.models.sign_credential_input_dto_unsigned_credential_params import SignCredentialInputDtoUnsignedCredentialParams
-from affinidi_tdk_wallets_client.models.sign_credential_result_dto import SignCredentialResultDto
-from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_input_dto import SignCredentialsDm2SdJwtInputDto
-from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_result_dto import SignCredentialsDm2SdJwtResultDto
-from affinidi_tdk_wallets_client.models.sign_credentials_jwt_input_dto import SignCredentialsJwtInputDto
-from affinidi_tdk_wallets_client.models.sign_credentials_jwt_result_dto import SignCredentialsJwtResultDto
-from affinidi_tdk_wallets_client.models.sign_credentials_ldp_input_dto import SignCredentialsLdpInputDto
-from affinidi_tdk_wallets_client.models.sign_credentials_ldp_result_dto import SignCredentialsLdpResultDto
-from affinidi_tdk_wallets_client.models.sign_jwt_token import SignJwtToken
-from affinidi_tdk_wallets_client.models.sign_jwt_token_ok import SignJwtTokenOK
-from affinidi_tdk_wallets_client.models.sign_jwt_v2_input_dto import SignJwtV2InputDto
-from affinidi_tdk_wallets_client.models.sign_jwt_v2_result_dto import SignJwtV2ResultDto
-from affinidi_tdk_wallets_client.models.sign_presentation_ldp_input_dto import SignPresentationLdpInputDto
-from affinidi_tdk_wallets_client.models.sign_presentation_ldp_result_dto import SignPresentationLdpResultDto
-from affinidi_tdk_wallets_client.models.signing_failed_error import SigningFailedError
-from affinidi_tdk_wallets_client.models.too_many_requests_error import TooManyRequestsError
-from affinidi_tdk_wallets_client.models.update_service_endpoint_input import UpdateServiceEndpointInput
-from affinidi_tdk_wallets_client.models.update_wallet_input import UpdateWalletInput
-from affinidi_tdk_wallets_client.models.update_wallet_key_input import UpdateWalletKeyInput
-from affinidi_tdk_wallets_client.models.verification_relationship import VerificationRelationship
-from affinidi_tdk_wallets_client.models.wallet_did_type import WalletDidType
-from affinidi_tdk_wallets_client.models.wallet_dto import WalletDto
-from affinidi_tdk_wallets_client.models.wallet_dto_keys_inner import WalletDtoKeysInner
-from affinidi_tdk_wallets_client.models.wallet_key_dto import WalletKeyDto
-from affinidi_tdk_wallets_client.models.wallet_v2_dto import WalletV2Dto
-from affinidi_tdk_wallets_client.models.wallets_list_dto import WalletsListDto
+from affinidi_tdk_wallets_client.models.create_wallet_input import CreateWalletInput as CreateWalletInput
+from affinidi_tdk_wallets_client.models.create_wallet_key_input import CreateWalletKeyInput as CreateWalletKeyInput
+from affinidi_tdk_wallets_client.models.create_wallet_response import CreateWalletResponse as CreateWalletResponse
+from affinidi_tdk_wallets_client.models.create_wallet_v2_input import CreateWalletV2Input as CreateWalletV2Input
+from affinidi_tdk_wallets_client.models.create_wallet_v2_response import CreateWalletV2Response as CreateWalletV2Response
+from affinidi_tdk_wallets_client.models.entity_not_found_error import EntityNotFoundError as EntityNotFoundError
+from affinidi_tdk_wallets_client.models.get_revocation_list_credential_result_dto import GetRevocationListCredentialResultDto as GetRevocationListCredentialResultDto
+from affinidi_tdk_wallets_client.models.invalid_parameter_error import InvalidParameterError as InvalidParameterError
+from affinidi_tdk_wallets_client.models.list_service_endpoints_ok import ListServiceEndpointsOK as ListServiceEndpointsOK
+from affinidi_tdk_wallets_client.models.list_wallet_keys_ok import ListWalletKeysOK as ListWalletKeysOK
+from affinidi_tdk_wallets_client.models.not_found_error import NotFoundError as NotFoundError
+from affinidi_tdk_wallets_client.models.not_found_error_details_inner import NotFoundErrorDetailsInner as NotFoundErrorDetailsInner
+from affinidi_tdk_wallets_client.models.operation_forbidden_error import OperationForbiddenError as OperationForbiddenError
+from affinidi_tdk_wallets_client.models.revoke_credential_input import RevokeCredentialInput as RevokeCredentialInput
+from affinidi_tdk_wallets_client.models.revoke_credentials_input import RevokeCredentialsInput as RevokeCredentialsInput
+from affinidi_tdk_wallets_client.models.service_endpoint_dto import ServiceEndpointDto as ServiceEndpointDto
+from affinidi_tdk_wallets_client.models.service_endpoint_input import ServiceEndpointInput as ServiceEndpointInput
+from affinidi_tdk_wallets_client.models.sign_credential400_response import SignCredential400Response as SignCredential400Response
+from affinidi_tdk_wallets_client.models.sign_credential_input_dto import SignCredentialInputDto as SignCredentialInputDto
+from affinidi_tdk_wallets_client.models.sign_credential_input_dto_unsigned_credential_params import SignCredentialInputDtoUnsignedCredentialParams as SignCredentialInputDtoUnsignedCredentialParams
+from affinidi_tdk_wallets_client.models.sign_credential_result_dto import SignCredentialResultDto as SignCredentialResultDto
+from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_input_dto import SignCredentialsDm2SdJwtInputDto as SignCredentialsDm2SdJwtInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_dm2_sd_jwt_result_dto import SignCredentialsDm2SdJwtResultDto as SignCredentialsDm2SdJwtResultDto
+from affinidi_tdk_wallets_client.models.sign_credentials_jwt_input_dto import SignCredentialsJwtInputDto as SignCredentialsJwtInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_jwt_result_dto import SignCredentialsJwtResultDto as SignCredentialsJwtResultDto
+from affinidi_tdk_wallets_client.models.sign_credentials_ldp_input_dto import SignCredentialsLdpInputDto as SignCredentialsLdpInputDto
+from affinidi_tdk_wallets_client.models.sign_credentials_ldp_result_dto import SignCredentialsLdpResultDto as SignCredentialsLdpResultDto
+from affinidi_tdk_wallets_client.models.sign_jwt_token import SignJwtToken as SignJwtToken
+from affinidi_tdk_wallets_client.models.sign_jwt_token_ok import SignJwtTokenOK as SignJwtTokenOK
+from affinidi_tdk_wallets_client.models.sign_jwt_v2_input_dto import SignJwtV2InputDto as SignJwtV2InputDto
+from affinidi_tdk_wallets_client.models.sign_jwt_v2_result_dto import SignJwtV2ResultDto as SignJwtV2ResultDto
+from affinidi_tdk_wallets_client.models.sign_presentation_ldp_input_dto import SignPresentationLdpInputDto as SignPresentationLdpInputDto
+from affinidi_tdk_wallets_client.models.sign_presentation_ldp_result_dto import SignPresentationLdpResultDto as SignPresentationLdpResultDto
+from affinidi_tdk_wallets_client.models.signing_failed_error import SigningFailedError as SigningFailedError
+from affinidi_tdk_wallets_client.models.too_many_requests_error import TooManyRequestsError as TooManyRequestsError
+from affinidi_tdk_wallets_client.models.update_service_endpoint_input import UpdateServiceEndpointInput as UpdateServiceEndpointInput
+from affinidi_tdk_wallets_client.models.update_wallet_input import UpdateWalletInput as UpdateWalletInput
+from affinidi_tdk_wallets_client.models.update_wallet_key_input import UpdateWalletKeyInput as UpdateWalletKeyInput
+from affinidi_tdk_wallets_client.models.verification_relationship import VerificationRelationship as VerificationRelationship
+from affinidi_tdk_wallets_client.models.wallet_did_type import WalletDidType as WalletDidType
+from affinidi_tdk_wallets_client.models.wallet_dto import WalletDto as WalletDto
+from affinidi_tdk_wallets_client.models.wallet_dto_keys_inner import WalletDtoKeysInner as WalletDtoKeysInner
+from affinidi_tdk_wallets_client.models.wallet_key_dto import WalletKeyDto as WalletKeyDto
+from affinidi_tdk_wallets_client.models.wallet_v2_dto import WalletV2Dto as WalletV2Dto
+from affinidi_tdk_wallets_client.models.wallets_list_dto import WalletsListDto as WalletsListDto

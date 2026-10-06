@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CredentialOfferResponseGrants.JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE
 })
 @JsonTypeName("CredentialOfferResponse_grants")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CredentialOfferResponseGrants {
   public static final String JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE = "urn:ietf:params:oauth:grant-type:pre-authorized_code";
   @javax.annotation.Nonnull
@@ -54,7 +54,7 @@ public class CredentialOfferResponseGrants {
    * @return urnIetfParamsOauthGrantTypePreAuthorizedCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE)
+  @JsonProperty(value = JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode getUrnIetfParamsOauthGrantTypePreAuthorizedCode() {
@@ -62,11 +62,12 @@ public class CredentialOfferResponseGrants {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE)
+  @JsonProperty(value = JSON_PROPERTY_URN_IETF_PARAMS_OAUTH_GRANT_TYPE_PRE_AUTHORIZED_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUrnIetfParamsOauthGrantTypePreAuthorizedCode(@javax.annotation.Nonnull CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode urnIetfParamsOauthGrantTypePreAuthorizedCode) {
     this.urnIetfParamsOauthGrantTypePreAuthorizedCode = urnIetfParamsOauthGrantTypePreAuthorizedCode;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -99,10 +100,7 @@ public class CredentialOfferResponseGrants {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**

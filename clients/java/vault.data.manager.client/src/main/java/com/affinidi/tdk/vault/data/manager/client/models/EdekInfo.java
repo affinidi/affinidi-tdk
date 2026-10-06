@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   EdekInfo.JSON_PROPERTY_EDEK,
   EdekInfo.JSON_PROPERTY_DEKEK_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class EdekInfo {
   public static final String JSON_PROPERTY_EDEK = "edek";
   @javax.annotation.Nonnull
@@ -57,7 +57,7 @@ public class EdekInfo {
    * @return edek
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EDEK)
+  @JsonProperty(value = JSON_PROPERTY_EDEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getEdek() {
@@ -65,7 +65,7 @@ public class EdekInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EDEK)
+  @JsonProperty(value = JSON_PROPERTY_EDEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEdek(@javax.annotation.Nonnull String edek) {
     this.edek = edek;
@@ -82,7 +82,7 @@ public class EdekInfo {
    * @return dekekId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DEKEK_ID)
+  @JsonProperty(value = JSON_PROPERTY_DEKEK_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDekekId() {
@@ -90,11 +90,12 @@ public class EdekInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEKEK_ID)
+  @JsonProperty(value = JSON_PROPERTY_DEKEK_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDekekId(@javax.annotation.Nonnull String dekekId) {
     this.dekekId = dekekId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,10 +130,7 @@ public class EdekInfo {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -170,7 +168,7 @@ public class EdekInfo {
     // add `edek` to the URL query string
     if (getEdek() != null) {
       try {
-        joiner.add(String.format("%sedek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEdek()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sedek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEdek()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class EdekInfo {
     // add `dekekId` to the URL query string
     if (getDekekId() != null) {
       try {
-        joiner.add(String.format("%sdekekId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDekekId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdekekId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDekekId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
