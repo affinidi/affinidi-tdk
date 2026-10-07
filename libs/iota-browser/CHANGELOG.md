@@ -1,3 +1,10 @@
+## [1.25.6](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.5...@affinidi-tdk/iota-browser-v1.25.6) (2026-10-07)
+
+
+### Bug Fixes
+
+* **iota-browser:** accept object issuer in VP response schema ([#1388](https://github.com/affinidi/affinidi-tdk/issues/1388)) ([161f695](https://github.com/affinidi/affinidi-tdk/commit/161f695e474c2758dfac7ff1b646c87eb34da49c))
+
 ## [1.25.5](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-browser-v1.25.4...@affinidi-tdk/iota-browser-v1.25.5) (2026-09-25)
 
 
