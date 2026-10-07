@@ -51,7 +51,9 @@ const verifiableCredentialSchema = z
       .passthrough(),
     id: z.string(),
     issuanceDate: z.string(),
-    issuer: z.string(),
+    // W3C VCDM allows the issuer as a URI or as an object with an id;
+    // credentials signed with the Dart ssi library (e.g. ML-DSA) use the object form
+    issuer: z.union([z.string(), z.object({ id: z.string() }).passthrough()]),
     proof: z.any().optional(),
     refreshService: z
       .object({ id: z.string(), type: z.string() })
