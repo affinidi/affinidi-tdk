@@ -28,6 +28,7 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
+  replaceWithSerializableTypeIfNeeded,
 } from './common'
 import type { RequestArgs } from './base'
 // @ts-ignore
@@ -39,41 +40,11 @@ import {
   operationServerMap,
 } from './base'
 
-/**
- *
- * @export
- * @interface ActionForbiddenError
- */
 export interface ActionForbiddenError {
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   name: ActionForbiddenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   message: ActionForbiddenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof ActionForbiddenError
-   */
   httpStatusCode: ActionForbiddenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof ActionForbiddenError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -99,133 +70,37 @@ export type ActionForbiddenErrorHttpStatusCodeEnum =
 
 /**
  * input used to add a user to a group
- * @export
- * @interface AddUserToGroupInput
  */
 export interface AddUserToGroupInput {
-  /**
-   *
-   * @type {string}
-   * @memberof AddUserToGroupInput
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof AddUserToGroupInput
-   */
   description?: string
   /**
    * Unique identifier of the user
-   * @type {string}
-   * @memberof AddUserToGroupInput
    */
   userId: string
 }
-/**
- *
- * @export
- * @interface BlockedUsers
- */
 export interface BlockedUsers {
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof BlockedUsers
-   */
   userIds: Array<string>
-  /**
-   *
-   * @type {object}
-   * @memberof BlockedUsers
-   */
   pageToken?: object
 }
-/**
- *
- * @export
- * @interface BlockedUsersInput
- */
 export interface BlockedUsersInput {
-  /**
-   *
-   * @type {string}
-   * @memberof BlockedUsersInput
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof BlockedUsersInput
-   */
   description?: string
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof BlockedUsersInput
-   */
   userIds: Array<string>
 }
-/**
- *
- * @export
- * @interface CreateGroupInput
- */
 export interface CreateGroupInput {
   /**
    * name of the group for users, used as an id
-   * @type {string}
-   * @memberof CreateGroupInput
    */
   groupName: string
-  /**
-   *
-   * @type {string}
-   * @memberof CreateGroupInput
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof CreateGroupInput
-   */
   description?: string
 }
-/**
- *
- * @export
- * @interface CreateHydraNetworkError
- */
 export interface CreateHydraNetworkError {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateHydraNetworkError
-   */
   name: CreateHydraNetworkErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CreateHydraNetworkError
-   */
   message: CreateHydraNetworkErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof CreateHydraNetworkError
-   */
   httpStatusCode: CreateHydraNetworkErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CreateHydraNetworkError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof CreateHydraNetworkError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -248,89 +123,49 @@ export const CreateHydraNetworkErrorHttpStatusCodeEnum = {
 export type CreateHydraNetworkErrorHttpStatusCodeEnum =
   (typeof CreateHydraNetworkErrorHttpStatusCodeEnum)[keyof typeof CreateHydraNetworkErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface CreateLoginConfigurationInput
- */
 export interface CreateLoginConfigurationInput {
   /**
    * User defined login configuration name
-   * @type {string}
-   * @memberof CreateLoginConfigurationInput
    */
   name: string
-  /**
-   *
-   * @type {string}
-   * @memberof CreateLoginConfigurationInput
-   */
   description?: string
   /**
    * OAuth 2.0 Redirect URIs
-   * @type {Array<string>}
-   * @memberof CreateLoginConfigurationInput
    */
   redirectUris: Array<string>
   /**
    * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
-   * @type {Array<string>}
-   * @memberof CreateLoginConfigurationInput
    */
   postLogoutRedirectUris?: Array<string>
   /**
    * VP definition in JSON stringify format
-   * @type {string}
-   * @memberof CreateLoginConfigurationInput
    */
   vpDefinition?: string
   /**
    * Presentation Definition
-   * @type {object}
-   * @memberof CreateLoginConfigurationInput
    */
   presentationDefinition?: object
   /**
    * DCQL query in JSON stringify format
-   * @type {object}
-   * @memberof CreateLoginConfigurationInput
    */
   dcqlQuery?: object
   /**
    * Fields name/path mapping between the vp_token and the id_token
-   * @type {Array<IdTokenMappingItem>}
-   * @memberof CreateLoginConfigurationInput
    */
   idTokenMapping?: Array<IdTokenMappingItem>
-  /**
-   *
-   * @type {LoginConfigurationClientMetadataInput}
-   * @memberof CreateLoginConfigurationInput
-   */
   clientMetadata?: LoginConfigurationClientMetadataInput
   /**
    * ID token claims output format. Default is array.
-   * @type {string}
-   * @memberof CreateLoginConfigurationInput
    */
   claimFormat?: CreateLoginConfigurationInputClaimFormatEnum
   /**
    * Interrupts login process if duplications of data fields names will be found
-   * @type {boolean}
-   * @memberof CreateLoginConfigurationInput
    */
   failOnMappingConflict?: boolean
   /**
    * List of groups separated by space
-   * @type {string}
-   * @memberof CreateLoginConfigurationInput
    */
   scope?: string
-  /**
-   *
-   * @type {TokenEndpointAuthMethod}
-   * @memberof CreateLoginConfigurationInput
-   */
   tokenEndpointAuthMethod?: TokenEndpointAuthMethod
 }
 
@@ -342,142 +177,72 @@ export const CreateLoginConfigurationInputClaimFormatEnum = {
 export type CreateLoginConfigurationInputClaimFormatEnum =
   (typeof CreateLoginConfigurationInputClaimFormatEnum)[keyof typeof CreateLoginConfigurationInputClaimFormatEnum]
 
-/**
- *
- * @export
- * @interface CreateLoginConfigurationOutput
- */
 export interface CreateLoginConfigurationOutput {
   /**
    * Configuration ari
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutput
    */
   ari: string
   /**
    * Project id
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutput
    */
   projectId: string
   /**
    * Configuration id
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutput
    */
   configurationId?: string
   /**
    * User defined login configuration name
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutput
    */
   name: string
-  /**
-   *
-   * @type {CreateLoginConfigurationOutputAuth}
-   * @memberof CreateLoginConfigurationOutput
-   */
   auth: CreateLoginConfigurationOutputAuth
   /**
    * OAuth 2.0 Redirect URIs
-   * @type {Array<string>}
-   * @memberof CreateLoginConfigurationOutput
    */
   redirectUris: Array<string>
-  /**
-   *
-   * @type {LoginConfigurationClientMetadataOutput}
-   * @memberof CreateLoginConfigurationOutput
-   */
   clientMetadata: LoginConfigurationClientMetadataOutput
   /**
    * OAuth 2.0 Client Creation Date
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutput
    */
   creationDate: string
   /**
    * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
-   * @type {Array<string>}
-   * @memberof CreateLoginConfigurationOutput
    */
   postLogoutRedirectUris?: Array<string>
 }
 /**
  * OIDC Auth Credentials
- * @export
- * @interface CreateLoginConfigurationOutputAuth
  */
 export interface CreateLoginConfigurationOutputAuth {
   /**
    * OAuth 2.0 Client ID
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutputAuth
    */
   clientId: string
   /**
    * OAuth 2.0 Client Secret
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutputAuth
    */
   clientSecret?: string
   /**
    * OAuth 2.0 Client Scope
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutputAuth
    */
   scope?: string
   /**
    * Issuer URL
-   * @type {string}
-   * @memberof CreateLoginConfigurationOutputAuth
    */
   issuer?: string
 }
 /**
  * @type CreateLoginConfigurations400Response
- * @export
  */
 export type CreateLoginConfigurations400Response =
   | CreateHydraNetworkError
   | CreateProjectNetworkError
   | InvalidParameterError
 
-/**
- *
- * @export
- * @interface CreateProjectNetworkError
- */
 export interface CreateProjectNetworkError {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectNetworkError
-   */
   name: CreateProjectNetworkErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectNetworkError
-   */
   message: CreateProjectNetworkErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof CreateProjectNetworkError
-   */
   httpStatusCode: CreateProjectNetworkErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectNetworkError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof CreateProjectNetworkError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -500,282 +265,132 @@ export const CreateProjectNetworkErrorHttpStatusCodeEnum = {
 export type CreateProjectNetworkErrorHttpStatusCodeEnum =
   (typeof CreateProjectNetworkErrorHttpStatusCodeEnum)[keyof typeof CreateProjectNetworkErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface GetUserInfo
- */
 export interface GetUserInfo {
   /**
    * End-User\'s birthday, represented as an ISO 8601:2004 [ISO8601‑2004] YYYY-MM-DD format.  The year MAY be 0000, indicating that it is omitted. To represent only the year,  YYYY format is allowed. Note that depending on the underlying platform\'s date related  function, providing just year can result in varying month and day, so the implementers  need to take this factor into account to correctly process the dates.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   birthdate?: string
   /**
    * End-User\'s preferred e-mail address. Its value MUST conform to the RFC 5322 [RFC5322]  addr-spec syntax. The RP MUST NOT rely upon this value being unique, as discussed in Section 5.7.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   email?: string
   /**
    * True if the End-User\'s e-mail address has been verified; otherwise false. When this  Claim Value is true, this means that the OP took affirmative steps to ensure that  this e-mail address was controlled by the End-User at the time the verification was  performed. The means by which an e-mail address is verified is context-specific, and  dependent upon the trust framework or contractual agreements within which the parties  are operating.
-   * @type {boolean}
-   * @memberof GetUserInfo
    */
   email_verified?: boolean
   /**
    * Surname(s) or last name(s) of the End-User. Note that in some cultures, people can have  multiple family names or no family name; all can be present, with the names being  separated by space characters.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   family_name?: string
   /**
    * End-User\'s gender. Values defined by this specification are female and male.  Other values MAY be used when neither of the defined values are applicable.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   gender?: string
   /**
    * Given name(s) or first name(s) of the End-User. Note that in some cultures,  people can have multiple given names; all can be present, with the names being  separated by space characters.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   given_name?: string
   /**
    * End-User\'s locale, represented as a BCP47 [RFC5646] language tag. This is  typically an ISO 639-1 Alpha-2 [ISO639‑1] language code in lowercase and an  ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase, separated by a dash.  For example, en-US or fr-CA. As a compatibility note, some implementations have  used an underscore as the separator rather than a dash, for example, en_US;  Relying Parties MAY choose to accept this locale syntax as well.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   locale?: string
   /**
    * Middle name(s) of the End-User. Note that in some cultures, people can have  multiple middle names; all can be present, with the names being separated by  space characters. Also note that in some cultures, middle names are not used.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   middle_name?: string
   /**
    * End-User\'s full name in displayable form including all name parts, possibly  including titles and suffixes, ordered according to the End-User\'s locale and preferences.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   name?: string
   /**
    * Casual name of the End-User that may or may not be the same as the given_name.  For instance, a nickname value of Mike might be returned alongside a given_name value of Michael.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   nickname?: string
   /**
    * End-User\'s preferred telephone number. E.164 [E.164] is RECOMMENDED as the format of this Claim,  for example, +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension,  it is RECOMMENDED that the extension be represented using the RFC 3966 [RFC3966] extension syntax,  for example, +1 (604) 555-1234;ext=5678.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   phone_number?: string
   /**
    * True if the End-User\'s phone number has been verified; otherwise false. When this Claim  Value is true, this means that the OP took affirmative steps to ensure that this phone  number was controlled by the End-User at the time the verification was performed. The means  by which a phone number is verified is context-specific, and dependent upon the trust framework  or contractual agreements within which the parties are operating. When true, the phone_number  Claim MUST be in E.164 format and any extensions MUST be represented in RFC 3966 format.
-   * @type {boolean}
-   * @memberof GetUserInfo
    */
   phone_number_verified?: boolean
   /**
    * URL of the End-User\'s profile picture. This URL MUST refer to an image file (for example, a PNG,  JPEG, or GIF image file), rather than to a Web page containing an image. Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for displaying when describing the  End-User, rather than an arbitrary photo taken by the End-User.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   picture?: string
   /**
    * Non-unique shorthand name by which the End-User wishes to be referred to at the RP, such as  janedoe or j.doe. This value MAY be any valid JSON string including special characters  such as @, /, or whitespace.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   preferred_username?: string
   /**
    * URL of the End-User\'s profile page. The contents of this Web page SHOULD be about the End-User.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   profile?: string
   /**
    * Subject - Identifier for the End-User at the IssuerURL.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   sub?: string
   /**
    * Time the End-User\'s information was last updated. Its value is a JSON number  representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.
-   * @type {number}
-   * @memberof GetUserInfo
    */
   updated_at?: number
   /**
    * URL of the End-User\'s Web page or blog. This Web page SHOULD contain information  published by the End-User or an organization that the End-User is affiliated with.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   website?: string
   /**
    * String from zoneinfo [zoneinfo] time zone database representing the End-User\'s  time zone. For example, Europe/Paris or America/Los_Angeles.
-   * @type {string}
-   * @memberof GetUserInfo
    */
   zoneinfo?: string
 }
-/**
- *
- * @export
- * @interface GroupDto
- */
 export interface GroupDto {
   /**
    * Group ari
-   * @type {string}
-   * @memberof GroupDto
    */
   ari: string
   /**
    * Project id
-   * @type {string}
-   * @memberof GroupDto
    */
   projectId: string
   /**
    * name of the group, identifier within a project
-   * @type {string}
-   * @memberof GroupDto
    */
   groupName: string
   /**
    * Group creation date
-   * @type {string}
-   * @memberof GroupDto
    */
   creationDate: string
 }
-/**
- *
- * @export
- * @interface GroupNames
- */
 export interface GroupNames {
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof GroupNames
-   */
   groupNames: Array<string>
-  /**
-   *
-   * @type {object}
-   * @memberof GroupNames
-   */
   pageToken?: object
 }
-/**
- *
- * @export
- * @interface GroupNamesInput
- */
 export interface GroupNamesInput {
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof GroupNamesInput
-   */
   groupNames: Array<string>
 }
-/**
- *
- * @export
- * @interface GroupUserMappingDto
- */
 export interface GroupUserMappingDto {
   /**
    * Unique identifier of the user
-   * @type {string}
-   * @memberof GroupUserMappingDto
    */
   userId: string
   /**
    * Group to user mapping creation date
-   * @type {string}
-   * @memberof GroupUserMappingDto
    */
   addedAt: string
 }
-/**
- *
- * @export
- * @interface GroupUserMappingsList
- */
 export interface GroupUserMappingsList {
-  /**
-   *
-   * @type {Array<GroupUserMappingDto>}
-   * @memberof GroupUserMappingsList
-   */
   users?: Array<GroupUserMappingDto>
-  /**
-   *
-   * @type {string}
-   * @memberof GroupUserMappingsList
-   */
   lastEvaluatedKey?: string
-  /**
-   *
-   * @type {number}
-   * @memberof GroupUserMappingsList
-   */
   totalUserCount?: number
 }
-/**
- *
- * @export
- * @interface GroupsList
- */
 export interface GroupsList {
-  /**
-   *
-   * @type {Array<GroupDto>}
-   * @memberof GroupsList
-   */
   groups?: Array<GroupDto>
 }
-/**
- *
- * @export
- * @interface GroupsPerUserLimitExceededError
- */
 export interface GroupsPerUserLimitExceededError {
-  /**
-   *
-   * @type {string}
-   * @memberof GroupsPerUserLimitExceededError
-   */
   name: GroupsPerUserLimitExceededErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof GroupsPerUserLimitExceededError
-   */
   message: GroupsPerUserLimitExceededErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof GroupsPerUserLimitExceededError
-   */
   httpStatusCode: GroupsPerUserLimitExceededErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof GroupsPerUserLimitExceededError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof GroupsPerUserLimitExceededError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -798,66 +413,25 @@ export const GroupsPerUserLimitExceededErrorHttpStatusCodeEnum = {
 export type GroupsPerUserLimitExceededErrorHttpStatusCodeEnum =
   (typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum)[keyof typeof GroupsPerUserLimitExceededErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface IdTokenMappingItem
- */
 export interface IdTokenMappingItem {
   /**
    * Name(path) of the corresponding field in the vp_token
-   * @type {string}
-   * @memberof IdTokenMappingItem
    */
   sourceField: string
   /**
    * Name of the corresponding field in the id_token
-   * @type {string}
-   * @memberof IdTokenMappingItem
    */
   idTokenClaim: string
   /**
    * Id of related input descriptor from presentation definition
-   * @type {string}
-   * @memberof IdTokenMappingItem
    */
   inputDescriptorId?: string
 }
-/**
- *
- * @export
- * @interface InvalidGroupsError
- */
 export interface InvalidGroupsError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidGroupsError
-   */
   name: InvalidGroupsErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidGroupsError
-   */
   message: InvalidGroupsErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidGroupsError
-   */
   httpStatusCode: InvalidGroupsErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidGroupsError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof InvalidGroupsError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -880,41 +454,11 @@ export const InvalidGroupsErrorHttpStatusCodeEnum = {
 export type InvalidGroupsErrorHttpStatusCodeEnum =
   (typeof InvalidGroupsErrorHttpStatusCodeEnum)[keyof typeof InvalidGroupsErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidParameterError
- */
 export interface InvalidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   name: InvalidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   message: InvalidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidParameterError
-   */
   httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof InvalidParameterError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -937,367 +481,156 @@ export const InvalidParameterErrorHttpStatusCodeEnum = {
 export type InvalidParameterErrorHttpStatusCodeEnum =
   (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidParameterErrorDetailsInner
- */
 export interface InvalidParameterErrorDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   location?: string
 }
-/**
- *
- * @export
- * @interface JsonWebKey
- */
 export interface JsonWebKey {
   /**
    * The value of the \"keys\" parameter is an array of JSON Web Key (JWK) values.  By default, the order of the JWK values within the array does not imply an  order of preference among them, although applications of JWK Sets can choose  to assign a meaning to the order for their purposes, if desired.
-   * @type {Array<JsonWebKeyKeysInner>}
-   * @memberof JsonWebKey
    */
   keys?: Array<JsonWebKeyKeysInner>
 }
-/**
- *
- * @export
- * @interface JsonWebKeyKeysInner
- */
 export interface JsonWebKeyKeysInner {
   /**
    * The \"alg\" (algorithm) parameter identifies the algorithm intended for use  with the key. The values used should either be registered in the IANA  \"JSON Web Signature and Encryption Algorithms\" registry established  by [JWA] or be a value that contains a Collision- Resistant Name.
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
    */
   alg: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   crv?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   d?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   dp?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   dq?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   e?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   k?: string
   /**
    * The \"kid\" (key ID) parameter is used to match a specific key. This is used,  for instance, to choose among a set of keys within a JWK Set during key  rollover. The structure of the \"kid\" value is unspecified. When \"kid\"  values are used within a JWK Set, different keys within the JWK Set SHOULD  use distinct \"kid\" values. (One example in which different keys might use  the same \"kid\" value is if they have different \"kty\" (key type) values but  are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string.
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
    */
   kid: string
   /**
    * The \"kty\" (key type) parameter identifies the cryptographic algorithm family  used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be  registered in the IANA \"JSON Web Key Types\" registry established by [JWA]  or be a value that contains a Collision- Resistant Name. The \"kty\" value  is a case-sensitive string.
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
    */
   kty: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   n?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   p?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   q?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   qi?: string
   /**
    * Use (\"public key use\") identifies the intended use of the public key. The  \"use\" parameter is employed to indicate whether a public key is used for  encrypting data or verifying the signature on data. Values are commonly  \"sig\" (signature) or \"enc\" (encryption).
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
    */
   use: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   x?: string
   /**
    * The \"x5c\" (X.509 certificate chain) parameter contains a chain of one  or more PKIX certificates [RFC5280]. The certificate chain is represented  as a JSON array of certificate value strings. Each string in the array is  a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the  key value MUST be the first certificate.
-   * @type {Array<string>}
-   * @memberof JsonWebKeyKeysInner
    */
   x5c: Array<string>
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyKeysInner
-   */
   y?: string
 }
-/**
- *
- * @export
- * @interface ListLoginConfigurationOutput
- */
 export interface ListLoginConfigurationOutput {
-  /**
-   *
-   * @type {Array<LoginConfigurationObject>}
-   * @memberof ListLoginConfigurationOutput
-   */
   configurations: Array<LoginConfigurationObject>
-  /**
-   *
-   * @type {string}
-   * @memberof ListLoginConfigurationOutput
-   */
   lastEvaluatedKey?: string
 }
 /**
  * login configuration client metadata
- * @export
- * @interface LoginConfigurationClientMetadataInput
  */
 export interface LoginConfigurationClientMetadataInput {
   /**
    * application name that will be displayed in consent page
-   * @type {string}
-   * @memberof LoginConfigurationClientMetadataInput
    */
   name: string
   /**
    * origin url that will be displayed in consent page
-   * @type {string}
-   * @memberof LoginConfigurationClientMetadataInput
    */
   origin: string
   /**
    * logo url that will be displayed in consent page
-   * @type {string}
-   * @memberof LoginConfigurationClientMetadataInput
    */
   logo: string
 }
 /**
  * login configuration client metadata
- * @export
- * @interface LoginConfigurationClientMetadataOutput
  */
 export interface LoginConfigurationClientMetadataOutput {
   /**
    * application name that will be displayed in consent page
-   * @type {string}
-   * @memberof LoginConfigurationClientMetadataOutput
    */
   name: string
   /**
    * origin url that will be displayed in consent page
-   * @type {string}
-   * @memberof LoginConfigurationClientMetadataOutput
    */
   origin: string
   /**
    * logo url that will be displayed in consent page
-   * @type {string}
-   * @memberof LoginConfigurationClientMetadataOutput
    */
   logo: string
   /**
    * indicates if the developer\'s ownership of the domain has been verified
-   * @type {boolean}
-   * @memberof LoginConfigurationClientMetadataOutput
    */
   domainVerified?: boolean
 }
-/**
- *
- * @export
- * @interface LoginConfigurationObject
- */
 export interface LoginConfigurationObject {
   /**
    * Configuration ari
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   ari: string
   /**
    * Configuration id
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   configurationId?: string
   /**
    * Project id
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   projectId: string
   /**
    * User defined login configuration name
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   name: string
   /**
    * OAuth 2.0 Redirect URIs
-   * @type {Array<string>}
-   * @memberof LoginConfigurationObject
    */
   redirectUris?: Array<string>
   /**
    * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
-   * @type {Array<string>}
-   * @memberof LoginConfigurationObject
    */
   postLogoutRedirectUris?: Array<string>
   /**
    * OAuth 2.0 Client Scope
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   scope?: string
   /**
    * OAuth 2.0 Client ID
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   clientId?: string
   /**
    * OAuth 2.0 Client Creation Date
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   creationDate: string
   /**
    * VP definition in JSON stringify format
-   * @type {string}
-   * @memberof LoginConfigurationObject
    */
   vpDefinition?: string
   /**
    * Presentation Definition
-   * @type {object}
-   * @memberof LoginConfigurationObject
    */
   presentationDefinition?: object
   /**
    * DCQL query
-   * @type {object}
-   * @memberof LoginConfigurationObject
    */
   dcqlQuery?: object
   /**
    * Fields name/path mapping between the vp_token and the id_token
-   * @type {Array<IdTokenMappingItem>}
-   * @memberof LoginConfigurationObject
    */
   idTokenMapping: Array<IdTokenMappingItem>
-  /**
-   *
-   * @type {LoginConfigurationClientMetadataOutput}
-   * @memberof LoginConfigurationObject
-   */
   clientMetadata: LoginConfigurationClientMetadataOutput
-  /**
-   *
-   * @type {TokenEndpointAuthMethod}
-   * @memberof LoginConfigurationObject
-   */
   tokenEndpointAuthMethod: TokenEndpointAuthMethod
 }
 
-/**
- *
- * @export
- * @interface NotFoundError
- */
 export interface NotFoundError {
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   name: NotFoundErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   message: NotFoundErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof NotFoundError
-   */
   httpStatusCode: NotFoundErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof NotFoundError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -1320,78 +653,42 @@ export const NotFoundErrorHttpStatusCodeEnum = {
 export type NotFoundErrorHttpStatusCodeEnum =
   (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface OAuth2Token
- */
 export interface OAuth2Token {
   /**
    * The access token issued by the authorization server.
-   * @type {string}
-   * @memberof OAuth2Token
    */
   access_token?: string
   /**
    * The lifetime in seconds of the access token.  For example, the value \"3600\" denotes that the access  token will expire in one hour from the time the response was generated.
-   * @type {number}
-   * @memberof OAuth2Token
    */
   expires_in?: number
   /**
    * To retrieve a refresh token request the id_token scope.
-   * @type {number}
-   * @memberof OAuth2Token
    */
   id_token?: number
   /**
    * The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request.
-   * @type {string}
-   * @memberof OAuth2Token
    */
   refresh_token?: string
   /**
    * The scope of the access token
-   * @type {string}
-   * @memberof OAuth2Token
    */
   scope?: string
   /**
    * The type of the token issued
-   * @type {string}
-   * @memberof OAuth2Token
    */
   token_type?: string
   /**
    * is used to request issuance of a certain Credential type. This optional field is only applicable in batch credential operations.
-   * @type {Array<OAuth2TokenAuthorizationDetailsInner>}
-   * @memberof OAuth2Token
    */
   authorization_details?: Array<OAuth2TokenAuthorizationDetailsInner>
 }
-/**
- *
- * @export
- * @interface OAuth2TokenAuthorizationDetailsInner
- */
 export interface OAuth2TokenAuthorizationDetailsInner {
   /**
    * String that determines the authorization details type.
-   * @type {string}
-   * @memberof OAuth2TokenAuthorizationDetailsInner
    */
   type: OAuth2TokenAuthorizationDetailsInnerTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof OAuth2TokenAuthorizationDetailsInner
-   */
   credential_configuration_id: string
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof OAuth2TokenAuthorizationDetailsInner
-   */
   credential_identifiers?: Array<string>
 }
 
@@ -1402,278 +699,152 @@ export const OAuth2TokenAuthorizationDetailsInnerTypeEnum = {
 export type OAuth2TokenAuthorizationDetailsInnerTypeEnum =
   (typeof OAuth2TokenAuthorizationDetailsInnerTypeEnum)[keyof typeof OAuth2TokenAuthorizationDetailsInnerTypeEnum]
 
-/**
- *
- * @export
- * @interface OIDCConfig
- */
 export interface OIDCConfig {
   /**
    * OAuth 2.0 Authorization Endpoint URL
-   * @type {string}
-   * @memberof OIDCConfig
    */
   authorization_endpoint: string
   /**
    * OpenID Connect Back-Channel Logout Session Required. Boolean value specifying whether the OP can pass a sid (session ID)  Claim in the Logout Token to identify the RP session with the OP. If  supported, the sid Claim is also included in ID Tokens issued by the OP
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   backchannel_logout_session_supported?: boolean
   /**
    * OpenID Connect Back-Channel Logout Supported. Boolean value specifying whether the OP supports  back-channel logout, with true indicating support.
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   backchannel_logout_supported?: boolean
   /**
    * OpenID Connect Claims Parameter Parameter Supported Boolean value specifying whether the OP supports use  of the claims parameter, with true indicating support.
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   claims_parameter_supported?: boolean
   /**
    * OpenID Connect Supported Claims   JSON array containing a list of the Claim Names of the  Claims that the OpenID Provider MAY be able to supply  values for. Note that for privacy or other reasons,  this might not be an exhaustive list.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   claims_supported?: Array<string>
   /**
    * OAuth 2.0 PKCE Supported Code Challenge Methods JSON array containing a list of Proof Key for Code  Exchange (PKCE) [RFC7636] code challenge methods  supported by this authorization server.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   code_challenge_methods_supported?: Array<string>
   /**
    * OpenID Connect Verifiable Credentials Endpoint Contains the URL of the Verifiable Credentials Endpoint.
-   * @type {string}
-   * @memberof OIDCConfig
    */
   credentials_endpoint_draft_00?: string
   /**
    * OpenID Connect Verifiable Credentials Supported JSON array containing a list of the Verifiable  Credentials supported by this authorization server.
-   * @type {Array<OIDCConfigCredentialsSupportedDraft00Inner>}
-   * @memberof OIDCConfig
    */
   credentials_supported_draft_00?: Array<OIDCConfigCredentialsSupportedDraft00Inner>
   /**
    * OpenID Connect End-Session Endpoint URL at the OP to which an RP can perform  a redirect to request that the End-User be  logged out at the OP.
-   * @type {string}
-   * @memberof OIDCConfig
    */
   end_session_endpoint?: string
   /**
    * OpenID Connect Front-Channel Logout Session Required Boolean value specifying whether the OP can pass iss  (issuer) and sid (session ID) query parameters to identify  the RP session with the OP when the frontchannel_logout_uri  is used. If supported, the sid Claim is also included in ID  Tokens issued by the OP.
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   frontchannel_logout_session_supported?: boolean
   /**
    * OpenID Connect Front-Channel Logout Supported Boolean value specifying whether the OP supports HTTP-based logout, with true indicating support.
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   frontchannel_logout_supported?: boolean
   /**
    * OAuth 2.0 Supported Grant Types JSON array containing a list of the OAuth 2.0 Grant Type values that this OP supports.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   grant_types_supported?: Array<string>
   /**
    * OpenID Connect Default ID Token Signing Algorithms Algorithm used to sign OpenID Connect ID Tokens.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   id_token_signed_response_alg: Array<string>
   /**
    * OpenID Connect Supported ID Token Signing Algorithms JSON array containing a list of the JWS signing algorithms  (alg values) supported by the OP for the ID Token to encode the Claims in a JWT.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   id_token_signing_alg_values_supported: Array<string>
   /**
    * OpenID Connect Issuer URL An URL using the https scheme with no query or fragment component that the OP asserts as its IssuerURL Identifier. If IssuerURL discovery  is supported , this value MUST be identical to the issuer value returned by WebFinger.  This also MUST be identical to the iss Claim value in ID Tokens issued from this IssuerURL.
-   * @type {string}
-   * @memberof OIDCConfig
    */
   issuer: string
   /**
    * OpenID Connect Well-Known JSON Web Keys URL URL of the OP\'s JSON Web Key Set [JWK] document. This contains the signing key(s) the RP  uses to validate signatures from the OP. The JWK Set MAY also contain the Server\'s  encryption key(s), which are used by RPs to encrypt requests to the Server. When both  signing and encryption keys are made available, a use (Key Use) parameter value is REQUIRED  for all keys in the referenced JWK Set to indicate each key\'s intended usage. Although some  algorithms allow the same key to be used for both signatures and encryption, doing so is  NOT RECOMMENDED, as it is less secure. The JWK x5c parameter MAY be used to provide X.509  representations of keys provided. When used, the bare key values MUST still be present and  MUST match those in the certificate.
-   * @type {string}
-   * @memberof OIDCConfig
    */
   jwks_uri: string
   /**
    * OpenID Connect Dynamic Client Registration Endpoint URL
-   * @type {string}
-   * @memberof OIDCConfig
    */
   registration_endpoint?: string
   /**
    * OpenID Connect Supported Request Object Signing Algorithms JSON array containing a list of the JWS signing algorithms (alg values) supported by  the OP for Request Objects, which are described in Section 6.1 of  OpenID Connect Core 1.0 [OpenID.Core]. These algorithms are used both when the  Request Object is passed by value (using the request parameter) and when it is  passed by reference (using the request_uri parameter).
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   request_object_signing_alg_values_supported?: Array<string>
   /**
    * OpenID Connect Request Parameter Supported Boolean value specifying whether the OP supports use of the request parameter, with true indicating support.
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   request_parameter_supported?: boolean
   /**
    * OpenID Connect Request URI Parameter Supported Boolean value specifying whether the OP supports use of the request_uri parameter, with true indicating support.
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   request_uri_parameter_supported?: boolean
   /**
    * OpenID Connect Requires Request URI Registration Boolean value specifying whether the OP requires any request_uri values used to be  pre-registered using the request_uris registration parameter.
-   * @type {boolean}
-   * @memberof OIDCConfig
    */
   require_request_uri_registration?: boolean
   /**
    * OAuth 2.0 Supported Response Modes JSON array containing a list of the OAuth 2.0 response_mode values that this OP supports.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   response_modes_supported?: Array<string>
   /**
    * OAuth 2.0 Supported Response Types JSON array containing a list of the OAuth 2.0 response_type values that this OP supports.  Dynamic OpenID Providers MUST support the code, id_token, and the token id_token Response Type values.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   response_types_supported: Array<string>
   /**
    * OAuth 2.0 Token Revocation URL URL of the authorization server\'s OAuth 2.0 revocation endpoint.
-   * @type {string}
-   * @memberof OIDCConfig
    */
   revocation_endpoint?: string
   /**
    * OAuth 2.0 Supported Scope Values JSON array containing a list of the OAuth 2.0 [RFC6749] scope values that this server supports.  The server MUST support the openid scope value. Servers MAY choose not to advertise  some supported scope values even when this parameter is used
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   scopes_supported?: Array<string>
   /**
    * OpenID Connect Supported Subject Types JSON array containing a list of the Subject Identifier types that this OP supports.  Valid types include pairwise and public.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   subject_types_supported: Array<string>
   /**
    * OAuth 2.0 Token Endpoint URL
-   * @type {string}
-   * @memberof OIDCConfig
    */
   token_endpoint: string
   /**
    * OAuth 2.0 Supported Client Authentication Methods JSON array containing a list of Client Authentication methods supported by this Token Endpoint.  The options are client_secret_post, client_secret_basic, client_secret_jwt,  and private_key_jwt, as described in Section 9 of OpenID Connect Core 1.0
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   token_endpoint_auth_methods_supported?: Array<string>
   /**
    * OpenID Connect Userinfo URL URL of the OP\'s UserInfo Endpoint.
-   * @type {string}
-   * @memberof OIDCConfig
    */
   userinfo_endpoint?: string
   /**
    * OpenID Connect User Userinfo Signing Algorithm Algorithm used to sign OpenID Connect Userinfo Responses.
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   userinfo_signed_response_alg: Array<string>
   /**
    * OpenID Connect Supported Userinfo Signing Algorithm JSON array containing a list of the JWS [JWS] signing algorithms (alg values) [JWA]  supported by the UserInfo Endpoint to encode the Claims in a JWT [JWT].
-   * @type {Array<string>}
-   * @memberof OIDCConfig
    */
   userinfo_signing_alg_values_supported?: Array<string>
 }
-/**
- *
- * @export
- * @interface OIDCConfigCredentialsSupportedDraft00Inner
- */
 export interface OIDCConfigCredentialsSupportedDraft00Inner {
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof OIDCConfigCredentialsSupportedDraft00Inner
-   */
   cryptographic_binding_methods_supported?: Array<string>
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof OIDCConfigCredentialsSupportedDraft00Inner
-   */
   cryptographic_suites_supported?: Array<string>
-  /**
-   *
-   * @type {string}
-   * @memberof OIDCConfigCredentialsSupportedDraft00Inner
-   */
   format?: string
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof OIDCConfigCredentialsSupportedDraft00Inner
-   */
   types?: Array<string>
 }
 /**
  * input used to remove a user from a group
- * @export
- * @interface RemoveUserFromGroupInput
  */
 export interface RemoveUserFromGroupInput {
   /**
    * Unique identifier of the user
-   * @type {string}
-   * @memberof RemoveUserFromGroupInput
    */
   userId: string
 }
-/**
- *
- * @export
- * @interface ResourceCreationError
- */
 export interface ResourceCreationError {
-  /**
-   *
-   * @type {string}
-   * @memberof ResourceCreationError
-   */
   name: ResourceCreationErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ResourceCreationError
-   */
   message: ResourceCreationErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof ResourceCreationError
-   */
   httpStatusCode: ResourceCreationErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ResourceCreationError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof ResourceCreationError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -1698,8 +869,6 @@ export type ResourceCreationErrorHttpStatusCodeEnum =
 
 /**
  * Requested Client Authentication method for the Token Endpoint. The options are: `client_secret_post`: (default) Send client_id and client_secret as application/x-www-form-urlencoded in the HTTP body. `client_secret_basic`: Send client_id and client_secret as application/x-www-form-urlencoded encoded in the HTTP Authorization header. `none`: For public clients (native/mobile apps) which can not have secret.
- * @export
- * @enum {string}
  */
 
 export const TokenEndpointAuthMethod = {
@@ -1711,83 +880,49 @@ export const TokenEndpointAuthMethod = {
 export type TokenEndpointAuthMethod =
   (typeof TokenEndpointAuthMethod)[keyof typeof TokenEndpointAuthMethod]
 
-/**
- *
- * @export
- * @interface UpdateLoginConfigurationInput
- */
 export interface UpdateLoginConfigurationInput {
   /**
    * User defined login configuration name
-   * @type {string}
-   * @memberof UpdateLoginConfigurationInput
    */
   name?: string
   /**
    * OAuth 2.0 Redirect URIs
-   * @type {Array<string>}
-   * @memberof UpdateLoginConfigurationInput
    */
   redirectUris?: Array<string>
   /**
    * Post Logout Redirect URIs, Used to redirect the user\'s browser to a specified URL after the logout process is complete. Must match the domain, port, scheme of at least one of the registered redirect URIs
-   * @type {Array<string>}
-   * @memberof UpdateLoginConfigurationInput
    */
   postLogoutRedirectUris?: Array<string>
   /**
    * OAuth2 client secret
-   * @type {string}
-   * @memberof UpdateLoginConfigurationInput
    */
   clientSecret?: string
   /**
    * VP definition in JSON stringify format
-   * @type {string}
-   * @memberof UpdateLoginConfigurationInput
    */
   vpDefinition?: string
   /**
    * Presentation Definition
-   * @type {object}
-   * @memberof UpdateLoginConfigurationInput
    */
   presentationDefinition?: object
   /**
    * DCQL query in JSON stringify format
-   * @type {object}
-   * @memberof UpdateLoginConfigurationInput
    */
   dcqlQuery?: object
   /**
    * Fields name/path mapping between the vp_token and the id_token
-   * @type {Array<IdTokenMappingItem>}
-   * @memberof UpdateLoginConfigurationInput
    */
   idTokenMapping?: Array<IdTokenMappingItem>
-  /**
-   *
-   * @type {LoginConfigurationClientMetadataInput}
-   * @memberof UpdateLoginConfigurationInput
-   */
   clientMetadata?: LoginConfigurationClientMetadataInput
-  /**
-   *
-   * @type {TokenEndpointAuthMethod}
-   * @memberof UpdateLoginConfigurationInput
-   */
   tokenEndpointAuthMethod?: TokenEndpointAuthMethod
   /**
    * Interrupts login process if duplications of data fields names will be found
-   * @type {boolean}
-   * @memberof UpdateLoginConfigurationInput
    */
   failOnMappingConflict?: boolean
 }
 
 /**
  * AllowListApi - axios parameter creator
- * @export
  */
 export const AllowListApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1827,6 +962,7 @@ export const AllowListApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1881,6 +1017,7 @@ export const AllowListApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1938,6 +1075,8 @@ export const AllowListApiAxiosParamCreator = function (
         localVarQueryParameter['pageToken'] = pageToken
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -1957,7 +1096,6 @@ export const AllowListApiAxiosParamCreator = function (
 
 /**
  * AllowListApi - functional programming interface
- * @export
  */
 export const AllowListApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = AllowListApiAxiosParamCreator(configuration)
@@ -2052,7 +1190,6 @@ export const AllowListApiFp = function (configuration?: Configuration) {
 
 /**
  * AllowListApi - factory interface
- * @export
  */
 export const AllowListApiFactory = function (
   configuration?: Configuration,
@@ -2108,9 +1245,6 @@ export const AllowListApiFactory = function (
 
 /**
  * AllowListApi - object-oriented interface
- * @export
- * @class AllowListApi
- * @extends {BaseAPI}
  */
 export class AllowListApi extends BaseAPI {
   /**
@@ -2118,7 +1252,6 @@ export class AllowListApi extends BaseAPI {
    * @param {GroupNamesInput} [groupNamesInput] List of group names as input
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AllowListApi
    */
   public allowGroups(
     groupNamesInput?: GroupNamesInput,
@@ -2134,7 +1267,6 @@ export class AllowListApi extends BaseAPI {
    * @param {GroupNamesInput} [groupNamesInput] List of group names as input
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AllowListApi
    */
   public disallowGroups(
     groupNamesInput?: GroupNamesInput,
@@ -2150,7 +1282,6 @@ export class AllowListApi extends BaseAPI {
    * @param {string} [pageToken]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AllowListApi
    */
   public listAllowedGroups(
     pageToken?: string,
@@ -2164,7 +1295,6 @@ export class AllowListApi extends BaseAPI {
 
 /**
  * ConfigurationApi - axios parameter creator
- * @export
  */
 export const ConfigurationApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -2205,6 +1335,7 @@ export const ConfigurationApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2243,7 +1374,7 @@ export const ConfigurationApiAxiosParamCreator = function (
         configurationId,
       )
       const localVarPath = `/v1/login/configurations/{configurationId}`.replace(
-        `{${'configurationId'}}`,
+        '{configurationId}',
         encodeURIComponent(String(configurationId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2267,6 +1398,8 @@ export const ConfigurationApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2297,7 +1430,7 @@ export const ConfigurationApiAxiosParamCreator = function (
       assertParamExists('getClientMetadataByClientId', 'clientId', clientId)
       const localVarPath =
         `/v1/login/configurations/metadata/{clientId}`.replace(
-          `{${'clientId'}}`,
+          '{clientId}',
           encodeURIComponent(String(clientId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2314,6 +1447,8 @@ export const ConfigurationApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2347,7 +1482,7 @@ export const ConfigurationApiAxiosParamCreator = function (
         configurationId,
       )
       const localVarPath = `/v1/login/configurations/{configurationId}`.replace(
-        `{${'configurationId'}}`,
+        '{configurationId}',
         encodeURIComponent(String(configurationId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2371,6 +1506,8 @@ export const ConfigurationApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2430,6 +1567,8 @@ export const ConfigurationApiAxiosParamCreator = function (
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -2464,7 +1603,7 @@ export const ConfigurationApiAxiosParamCreator = function (
         configurationId,
       )
       const localVarPath = `/v1/login/configurations/{configurationId}`.replace(
-        `{${'configurationId'}}`,
+        '{configurationId}',
         encodeURIComponent(String(configurationId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2490,6 +1629,7 @@ export const ConfigurationApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2515,7 +1655,6 @@ export const ConfigurationApiAxiosParamCreator = function (
 
 /**
  * ConfigurationApi - functional programming interface
- * @export
  */
 export const ConfigurationApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -2733,7 +1872,6 @@ export const ConfigurationApiFp = function (configuration?: Configuration) {
 
 /**
  * ConfigurationApi - factory interface
- * @export
  */
 export const ConfigurationApiFactory = function (
   configuration?: Configuration,
@@ -2845,9 +1983,6 @@ export const ConfigurationApiFactory = function (
 
 /**
  * ConfigurationApi - object-oriented interface
- * @export
- * @class ConfigurationApi
- * @extends {BaseAPI}
  */
 export class ConfigurationApi extends BaseAPI {
   /**
@@ -2856,7 +1991,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {CreateLoginConfigurationInput} [createLoginConfigurationInput] CreateLoginConfigurations
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public createLoginConfigurations(
     createLoginConfigurationInput?: CreateLoginConfigurationInput,
@@ -2873,7 +2007,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {string} configurationId The id of the login configuration
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public deleteLoginConfigurationsById(
     configurationId: string,
@@ -2890,7 +2023,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {string} clientId OAuth 2.0 Client ID
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public getClientMetadataByClientId(
     clientId: string,
@@ -2907,7 +2039,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {string} configurationId The id of the login configuration
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public getLoginConfigurationsById(
     configurationId: string,
@@ -2925,7 +2056,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public listLoginConfigurations(
     limit?: number,
@@ -2944,7 +2074,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {UpdateLoginConfigurationInput} [updateLoginConfigurationInput] UpdateLoginConfigurationsById
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public updateLoginConfigurationsById(
     configurationId: string,
@@ -2963,7 +2092,6 @@ export class ConfigurationApi extends BaseAPI {
 
 /**
  * DenyListApi - axios parameter creator
- * @export
  */
 export const DenyListApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -3003,6 +2131,7 @@ export const DenyListApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3114,6 +2243,8 @@ export const DenyListApiAxiosParamCreator = function (
         localVarQueryParameter['pageToken'] = pageToken
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3165,6 +2296,8 @@ export const DenyListApiAxiosParamCreator = function (
         localVarQueryParameter['pageToken'] = pageToken
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3213,6 +2346,7 @@ export const DenyListApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3292,7 +2426,6 @@ export const DenyListApiAxiosParamCreator = function (
 
 /**
  * DenyListApi - functional programming interface
- * @export
  */
 export const DenyListApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = DenyListApiAxiosParamCreator(configuration)
@@ -3472,7 +2605,6 @@ export const DenyListApiFp = function (configuration?: Configuration) {
 
 /**
  * DenyListApi - factory interface
- * @export
  */
 export const DenyListApiFactory = function (
   configuration?: Configuration,
@@ -3570,9 +2702,6 @@ export const DenyListApiFactory = function (
 
 /**
  * DenyListApi - object-oriented interface
- * @export
- * @class DenyListApi
- * @extends {BaseAPI}
  */
 export class DenyListApi extends BaseAPI {
   /**
@@ -3580,7 +2709,6 @@ export class DenyListApi extends BaseAPI {
    * @param {GroupNamesInput} [groupNamesInput] List of group names as input
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DenyListApi
    */
   public blockGroups(
     groupNamesInput?: GroupNamesInput,
@@ -3596,7 +2724,6 @@ export class DenyListApi extends BaseAPI {
    * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DenyListApi
    */
   public blockUsers(
     blockedUsersInput?: BlockedUsersInput,
@@ -3612,7 +2739,6 @@ export class DenyListApi extends BaseAPI {
    * @param {string} [pageToken]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DenyListApi
    */
   public listBlockedGroups(
     pageToken?: string,
@@ -3628,7 +2754,6 @@ export class DenyListApi extends BaseAPI {
    * @param {string} [pageToken]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DenyListApi
    */
   public listBlockedUsers(pageToken?: string, options?: RawAxiosRequestConfig) {
     return DenyListApiFp(this.configuration)
@@ -3641,7 +2766,6 @@ export class DenyListApi extends BaseAPI {
    * @param {GroupNamesInput} [groupNamesInput] List of group names as input
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DenyListApi
    */
   public unblockGroups(
     groupNamesInput?: GroupNamesInput,
@@ -3657,7 +2781,6 @@ export class DenyListApi extends BaseAPI {
    * @param {BlockedUsersInput} [blockedUsersInput] List of blocked users as input
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DenyListApi
    */
   public unblockUsers(
     blockedUsersInput?: BlockedUsersInput,
@@ -3671,7 +2794,6 @@ export class DenyListApi extends BaseAPI {
 
 /**
  * GroupApi - axios parameter creator
- * @export
  */
 export const GroupApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -3698,7 +2820,7 @@ export const GroupApiAxiosParamCreator = function (
         addUserToGroupInput,
       )
       const localVarPath = `/v1/groups/{groupName}/users`.replace(
-        `{${'groupName'}}`,
+        '{groupName}',
         encodeURIComponent(String(groupName)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3724,6 +2846,7 @@ export const GroupApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3780,6 +2903,7 @@ export const GroupApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3813,7 +2937,7 @@ export const GroupApiAxiosParamCreator = function (
       // verify required parameter 'groupName' is not null or undefined
       assertParamExists('deleteGroup', 'groupName', groupName)
       const localVarPath = `/v1/groups/{groupName}`.replace(
-        `{${'groupName'}}`,
+        '{groupName}',
         encodeURIComponent(String(groupName)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3837,6 +2961,8 @@ export const GroupApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3865,7 +2991,7 @@ export const GroupApiAxiosParamCreator = function (
       // verify required parameter 'groupName' is not null or undefined
       assertParamExists('getGroupById', 'groupName', groupName)
       const localVarPath = `/v1/groups/{groupName}`.replace(
-        `{${'groupName'}}`,
+        '{groupName}',
         encodeURIComponent(String(groupName)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3889,6 +3015,8 @@ export const GroupApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3923,7 +3051,7 @@ export const GroupApiAxiosParamCreator = function (
       // verify required parameter 'groupName' is not null or undefined
       assertParamExists('listGroupUserMappings', 'groupName', groupName)
       const localVarPath = `/v1/groups/{groupName}/users`.replace(
-        `{${'groupName'}}`,
+        '{groupName}',
         encodeURIComponent(String(groupName)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3959,6 +3087,8 @@ export const GroupApiAxiosParamCreator = function (
       if (sortOrder !== undefined) {
         localVarQueryParameter['sortOrder'] = sortOrder
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4005,6 +3135,8 @@ export const GroupApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -4040,7 +3172,7 @@ export const GroupApiAxiosParamCreator = function (
         removeUserFromGroupInput,
       )
       const localVarPath = `/v1/groups/{groupName}/users`.replace(
-        `{${'groupName'}}`,
+        '{groupName}',
         encodeURIComponent(String(groupName)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4066,6 +3198,7 @@ export const GroupApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4091,7 +3224,6 @@ export const GroupApiAxiosParamCreator = function (
 
 /**
  * GroupApi - functional programming interface
- * @export
  */
 export const GroupApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = GroupApiAxiosParamCreator(configuration)
@@ -4323,7 +3455,6 @@ export const GroupApiFp = function (configuration?: Configuration) {
 
 /**
  * GroupApi - factory interface
- * @export
  */
 export const GroupApiFactory = function (
   configuration?: Configuration,
@@ -4447,9 +3578,6 @@ export const GroupApiFactory = function (
 
 /**
  * GroupApi - object-oriented interface
- * @export
- * @class GroupApi
- * @extends {BaseAPI}
  */
 export class GroupApi extends BaseAPI {
   /**
@@ -4458,7 +3586,6 @@ export class GroupApi extends BaseAPI {
    * @param {AddUserToGroupInput} addUserToGroupInput AddUserToGroup
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof GroupApi
    */
   public addUserToGroup(
     groupName: string,
@@ -4475,7 +3602,6 @@ export class GroupApi extends BaseAPI {
    * @param {CreateGroupInput} createGroupInput CreateGroup
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof GroupApi
    */
   public createGroup(
     createGroupInput: CreateGroupInput,
@@ -4491,7 +3617,6 @@ export class GroupApi extends BaseAPI {
    * @param {string} groupName
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof GroupApi
    */
   public deleteGroup(groupName: string, options?: RawAxiosRequestConfig) {
     return GroupApiFp(this.configuration)
@@ -4504,7 +3629,6 @@ export class GroupApi extends BaseAPI {
    * @param {string} groupName
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof GroupApi
    */
   public getGroupById(groupName: string, options?: RawAxiosRequestConfig) {
     return GroupApiFp(this.configuration)
@@ -4520,7 +3644,6 @@ export class GroupApi extends BaseAPI {
    * @param {ListGroupUserMappingsSortOrderEnum} [sortOrder] sort response in specific order. By default it is in desc order
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof GroupApi
    */
   public listGroupUserMappings(
     groupName: string,
@@ -4544,7 +3667,6 @@ export class GroupApi extends BaseAPI {
    *
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof GroupApi
    */
   public listGroups(options?: RawAxiosRequestConfig) {
     return GroupApiFp(this.configuration)
@@ -4558,7 +3680,6 @@ export class GroupApi extends BaseAPI {
    * @param {RemoveUserFromGroupInput} removeUserFromGroupInput Remove user from group
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof GroupApi
    */
   public removeUserFromGroup(
     groupName: string,
@@ -4571,9 +3692,6 @@ export class GroupApi extends BaseAPI {
   }
 }
 
-/**
- * @export
- */
 export const ListGroupUserMappingsSortOrderEnum = {
   Asc: 'asc',
   Desc: 'desc',
@@ -4583,7 +3701,6 @@ export type ListGroupUserMappingsSortOrderEnum =
 
 /**
  * IdpApi - axios parameter creator
- * @export
  */
 export const IdpApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4607,7 +3724,7 @@ export const IdpApiAxiosParamCreator = function (
         projectId,
       )
       const localVarPath = `/v1/login/project/{projectId}/oauth2/auth`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4658,7 +3775,7 @@ export const IdpApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/login/project/{projectId}/oauth2/revoke`.replace(
-          `{${'projectId'}}`,
+          '{projectId}',
           encodeURIComponent(String(projectId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4709,7 +3826,7 @@ export const IdpApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/login/project/{projectId}/oauth2/sessions/logout`.replace(
-          `{${'projectId'}}`,
+          '{projectId}',
           encodeURIComponent(String(projectId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4759,7 +3876,7 @@ export const IdpApiAxiosParamCreator = function (
         projectId,
       )
       const localVarPath = `/v1/login/project/{projectId}/oauth2/token`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4776,6 +3893,8 @@ export const IdpApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4809,7 +3928,7 @@ export const IdpApiAxiosParamCreator = function (
         projectId,
       )
       const localVarPath = `/v1/login/project/{projectId}/userinfo`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4826,6 +3945,8 @@ export const IdpApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4860,7 +3981,7 @@ export const IdpApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/login/project/{projectId}/.well-known/jwks.json`.replace(
-          `{${'projectId'}}`,
+          '{projectId}',
           encodeURIComponent(String(projectId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4877,6 +3998,8 @@ export const IdpApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4911,7 +4034,7 @@ export const IdpApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/login/project/{projectId}/.well-known/openid-configuration`.replace(
-          `{${'projectId'}}`,
+          '{projectId}',
           encodeURIComponent(String(projectId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4928,6 +4051,8 @@ export const IdpApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4948,7 +4073,6 @@ export const IdpApiAxiosParamCreator = function (
 
 /**
  * IdpApi - functional programming interface
- * @export
  */
 export const IdpApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = IdpApiAxiosParamCreator(configuration)
@@ -5175,7 +4299,6 @@ export const IdpApiFp = function (configuration?: Configuration) {
 
 /**
  * IdpApi - factory interface
- * @export
  */
 export const IdpApiFactory = function (
   configuration?: Configuration,
@@ -5297,9 +4420,6 @@ export const IdpApiFactory = function (
 
 /**
  * IdpApi - object-oriented interface
- * @export
- * @class IdpApi
- * @extends {BaseAPI}
  */
 export class IdpApi extends BaseAPI {
   /**
@@ -5308,7 +4428,6 @@ export class IdpApi extends BaseAPI {
    * @param {string} projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IdpApi
    */
   public v1LoginProjectProjectIdOauth2AuthGet(
     projectId: string,
@@ -5325,7 +4444,6 @@ export class IdpApi extends BaseAPI {
    * @param {string} projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IdpApi
    */
   public v1LoginProjectProjectIdOauth2RevokePost(
     projectId: string,
@@ -5342,7 +4460,6 @@ export class IdpApi extends BaseAPI {
    * @param {string} projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IdpApi
    */
   public v1LoginProjectProjectIdOauth2SessionsLogoutGet(
     projectId: string,
@@ -5359,7 +4476,6 @@ export class IdpApi extends BaseAPI {
    * @param {string} projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IdpApi
    */
   public v1LoginProjectProjectIdOauth2TokenPost(
     projectId: string,
@@ -5376,7 +4492,6 @@ export class IdpApi extends BaseAPI {
    * @param {string} projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IdpApi
    */
   public v1LoginProjectProjectIdUserinfoGet(
     projectId: string,
@@ -5393,7 +4508,6 @@ export class IdpApi extends BaseAPI {
    * @param {string} projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IdpApi
    */
   public v1LoginProjectProjectIdWellKnownJwksJsonGet(
     projectId: string,
@@ -5410,7 +4524,6 @@ export class IdpApi extends BaseAPI {
    * @param {string} projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IdpApi
    */
   public v1LoginProjectProjectIdWellKnownOpenidConfigurationGet(
     projectId: string,

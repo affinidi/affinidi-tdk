@@ -35,11 +35,12 @@ import java.util.StringJoiner;
  */
 @JsonPropertyOrder({
   WalletKeyDto.JSON_PROPERTY_KEY_ID,
+  WalletKeyDto.JSON_PROPERTY_ALGORITHM,
   WalletKeyDto.JSON_PROPERTY_KEY_TYPE,
   WalletKeyDto.JSON_PROPERTY_KEY_ARI,
   WalletKeyDto.JSON_PROPERTY_RELATIONSHIPS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WalletKeyDto {
   public static final String JSON_PROPERTY_KEY_ID = "keyId";
   @javax.annotation.Nullable
@@ -47,6 +48,49 @@ public class WalletKeyDto {
 
   /**
    * cryptographic algorithm used by this key
+   */
+  public enum AlgorithmEnum {
+    SECP256K1(String.valueOf("secp256k1")),
+    
+    ED25519(String.valueOf("ed25519")),
+    
+    P256(String.valueOf("p256")),
+    
+    MLDSA44(String.valueOf("mldsa44"));
+
+    private String value;
+
+    AlgorithmEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static AlgorithmEnum fromValue(String value) {
+      for (AlgorithmEnum b : AlgorithmEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_ALGORITHM = "algorithm";
+  @javax.annotation.Nullable
+  private AlgorithmEnum algorithm;
+
+  /**
+   * Deprecated alias of &#x60;algorithm&#x60;. Always equal to &#x60;algorithm&#x60; and included for backward compatibility.
    */
   public enum KeyTypeEnum {
     SECP256K1(String.valueOf("secp256k1")),
@@ -108,7 +152,7 @@ public class WalletKeyDto {
    * @return keyId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getKeyId() {
@@ -116,10 +160,35 @@ public class WalletKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyId(@javax.annotation.Nullable String keyId) {
     this.keyId = keyId;
+  }
+
+  public WalletKeyDto algorithm(@javax.annotation.Nullable AlgorithmEnum algorithm) {
+    
+    this.algorithm = algorithm;
+    return this;
+  }
+
+  /**
+   * cryptographic algorithm used by this key
+   * @return algorithm
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_ALGORITHM, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public AlgorithmEnum getAlgorithm() {
+    return algorithm;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_ALGORITHM, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setAlgorithm(@javax.annotation.Nullable AlgorithmEnum algorithm) {
+    this.algorithm = algorithm;
   }
 
   public WalletKeyDto keyType(@javax.annotation.Nullable KeyTypeEnum keyType) {
@@ -129,11 +198,13 @@ public class WalletKeyDto {
   }
 
   /**
-   * cryptographic algorithm used by this key
+   * Deprecated alias of &#x60;algorithm&#x60;. Always equal to &#x60;algorithm&#x60; and included for backward compatibility.
    * @return keyType
+   * @deprecated
    */
+  @Deprecated
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_KEY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public KeyTypeEnum getKeyType() {
@@ -141,7 +212,7 @@ public class WalletKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_KEY_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyType(@javax.annotation.Nullable KeyTypeEnum keyType) {
     this.keyType = keyType;
@@ -158,7 +229,7 @@ public class WalletKeyDto {
    * @return keyAri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getKeyAri() {
@@ -166,7 +237,7 @@ public class WalletKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyAri(@javax.annotation.Nullable String keyAri) {
     this.keyAri = keyAri;
@@ -191,7 +262,7 @@ public class WalletKeyDto {
    * @return relationships
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RELATIONSHIPS)
+  @JsonProperty(value = JSON_PROPERTY_RELATIONSHIPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<VerificationRelationship> getRelationships() {
@@ -199,11 +270,12 @@ public class WalletKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RELATIONSHIPS)
+  @JsonProperty(value = JSON_PROPERTY_RELATIONSHIPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRelationships(@javax.annotation.Nullable List<VerificationRelationship> relationships) {
     this.relationships = relationships;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -215,6 +287,7 @@ public class WalletKeyDto {
     }
     WalletKeyDto walletKeyDto = (WalletKeyDto) o;
     return Objects.equals(this.keyId, walletKeyDto.keyId) &&
+        Objects.equals(this.algorithm, walletKeyDto.algorithm) &&
         Objects.equals(this.keyType, walletKeyDto.keyType) &&
         Objects.equals(this.keyAri, walletKeyDto.keyAri) &&
         Objects.equals(this.relationships, walletKeyDto.relationships);
@@ -222,7 +295,7 @@ public class WalletKeyDto {
 
   @Override
   public int hashCode() {
-    return Objects.hash(keyId, keyType, keyAri, relationships);
+    return Objects.hash(keyId, algorithm, keyType, keyAri, relationships);
   }
 
   @Override
@@ -230,6 +303,7 @@ public class WalletKeyDto {
     StringBuilder sb = new StringBuilder();
     sb.append("class WalletKeyDto {\n");
     sb.append("    keyId: ").append(toIndentedString(keyId)).append("\n");
+    sb.append("    algorithm: ").append(toIndentedString(algorithm)).append("\n");
     sb.append("    keyType: ").append(toIndentedString(keyType)).append("\n");
     sb.append("    keyAri: ").append(toIndentedString(keyAri)).append("\n");
     sb.append("    relationships: ").append(toIndentedString(relationships)).append("\n");
@@ -242,10 +316,7 @@ public class WalletKeyDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -283,7 +354,17 @@ public class WalletKeyDto {
     // add `keyId` to the URL query string
     if (getKeyId() != null) {
       try {
-        joiner.add(String.format("%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `algorithm` to the URL query string
+    if (getAlgorithm() != null) {
+      try {
+        joiner.add(String.format(java.util.Locale.ROOT, "%salgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -293,7 +374,7 @@ public class WalletKeyDto {
     // add `keyType` to the URL query string
     if (getKeyType() != null) {
       try {
-        joiner.add(String.format("%skeyType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%skeyType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -303,7 +384,7 @@ public class WalletKeyDto {
     // add `keyAri` to the URL query string
     if (getKeyAri() != null) {
       try {
-        joiner.add(String.format("%skeyAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%skeyAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -315,8 +396,8 @@ public class WalletKeyDto {
       for (int i = 0; i < getRelationships().size(); i++) {
         if (getRelationships().get(i) != null) {
           try {
-            joiner.add(String.format("%srelationships%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+            joiner.add(String.format(java.util.Locale.ROOT, "%srelationships%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
                 URLEncoder.encode(String.valueOf(getRelationships().get(i)), "UTF-8").replaceAll("\\+", "%20")));
           } catch (UnsupportedEncodingException e) {
             // Should never happen, UTF-8 is always supported

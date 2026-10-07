@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   BatchCredentialResponseCredentialResponsesInner.JSON_PROPERTY_CREDENTIAL
 })
 @JsonTypeName("BatchCredentialResponse_credential_responses_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class BatchCredentialResponseCredentialResponsesInner {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
   @javax.annotation.Nullable
@@ -53,7 +53,7 @@ public class BatchCredentialResponseCredentialResponsesInner {
    * @return credential
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getCredential() {
@@ -61,11 +61,12 @@ public class BatchCredentialResponseCredentialResponsesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = false)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredential(@javax.annotation.Nullable Object credential) {
     this.credential = credential;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -98,10 +99,7 @@ public class BatchCredentialResponseCredentialResponsesInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -139,7 +137,7 @@ public class BatchCredentialResponseCredentialResponsesInner {
     // add `credential` to the URL query string
     if (getCredential() != null) {
       try {
-        joiner.add(String.format("%scredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredential()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredential()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

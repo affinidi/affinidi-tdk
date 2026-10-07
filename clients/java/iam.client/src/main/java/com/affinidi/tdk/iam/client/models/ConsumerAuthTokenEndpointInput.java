@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_REDIRECT_URI,
   ConsumerAuthTokenEndpointInput.JSON_PROPERTY_CLIENT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ConsumerAuthTokenEndpointInput {
   /**
    * Gets or Sets grantType
@@ -152,7 +152,7 @@ public class ConsumerAuthTokenEndpointInput {
    * @return grantType
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public GrantTypeEnum getGrantType() {
@@ -160,7 +160,7 @@ public class ConsumerAuthTokenEndpointInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGrantType(@javax.annotation.Nonnull GrantTypeEnum grantType) {
     this.grantType = grantType;
@@ -177,7 +177,7 @@ public class ConsumerAuthTokenEndpointInput {
    * @return clientAssertionType
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ASSERTION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public ClientAssertionTypeEnum getClientAssertionType() {
@@ -185,7 +185,7 @@ public class ConsumerAuthTokenEndpointInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ASSERTION_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setClientAssertionType(@javax.annotation.Nonnull ClientAssertionTypeEnum clientAssertionType) {
     this.clientAssertionType = clientAssertionType;
@@ -202,7 +202,7 @@ public class ConsumerAuthTokenEndpointInput {
    * @return clientAssertion
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ASSERTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getClientAssertion() {
@@ -210,7 +210,7 @@ public class ConsumerAuthTokenEndpointInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_ASSERTION)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ASSERTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setClientAssertion(@javax.annotation.Nonnull String clientAssertion) {
     this.clientAssertion = clientAssertion;
@@ -227,7 +227,7 @@ public class ConsumerAuthTokenEndpointInput {
    * @return code
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonProperty(value = JSON_PROPERTY_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCode() {
@@ -235,7 +235,7 @@ public class ConsumerAuthTokenEndpointInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CODE)
+  @JsonProperty(value = JSON_PROPERTY_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCode(@javax.annotation.Nullable String code) {
     this.code = code;
@@ -252,7 +252,7 @@ public class ConsumerAuthTokenEndpointInput {
    * @return refreshToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRefreshToken() {
@@ -260,7 +260,7 @@ public class ConsumerAuthTokenEndpointInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRefreshToken(@javax.annotation.Nullable String refreshToken) {
     this.refreshToken = refreshToken;
@@ -277,7 +277,7 @@ public class ConsumerAuthTokenEndpointInput {
    * @return redirectUri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRedirectUri() {
@@ -285,7 +285,7 @@ public class ConsumerAuthTokenEndpointInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRedirectUri(@javax.annotation.Nullable String redirectUri) {
     this.redirectUri = redirectUri;
@@ -302,7 +302,7 @@ public class ConsumerAuthTokenEndpointInput {
    * @return clientId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getClientId() {
@@ -310,11 +310,12 @@ public class ConsumerAuthTokenEndpointInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientId(@javax.annotation.Nullable String clientId) {
     this.clientId = clientId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -359,10 +360,7 @@ public class ConsumerAuthTokenEndpointInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -400,7 +398,7 @@ public class ConsumerAuthTokenEndpointInput {
     // add `grant_type` to the URL query string
     if (getGrantType() != null) {
       try {
-        joiner.add(String.format("%sgrant_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGrantType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sgrant_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGrantType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -410,7 +408,7 @@ public class ConsumerAuthTokenEndpointInput {
     // add `client_assertion_type` to the URL query string
     if (getClientAssertionType() != null) {
       try {
-        joiner.add(String.format("%sclient_assertion_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientAssertionType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclient_assertion_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientAssertionType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -420,7 +418,7 @@ public class ConsumerAuthTokenEndpointInput {
     // add `client_assertion` to the URL query string
     if (getClientAssertion() != null) {
       try {
-        joiner.add(String.format("%sclient_assertion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientAssertion()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclient_assertion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientAssertion()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -430,7 +428,7 @@ public class ConsumerAuthTokenEndpointInput {
     // add `code` to the URL query string
     if (getCode() != null) {
       try {
-        joiner.add(String.format("%scode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -440,7 +438,7 @@ public class ConsumerAuthTokenEndpointInput {
     // add `refresh_token` to the URL query string
     if (getRefreshToken() != null) {
       try {
-        joiner.add(String.format("%srefresh_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRefreshToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srefresh_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRefreshToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -450,7 +448,7 @@ public class ConsumerAuthTokenEndpointInput {
     // add `redirect_uri` to the URL query string
     if (getRedirectUri() != null) {
       try {
-        joiner.add(String.format("%sredirect_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sredirect_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -460,7 +458,7 @@ public class ConsumerAuthTokenEndpointInput {
     // add `client_id` to the URL query string
     if (getClientId() != null) {
       try {
-        joiner.add(String.format("%sclient_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclient_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

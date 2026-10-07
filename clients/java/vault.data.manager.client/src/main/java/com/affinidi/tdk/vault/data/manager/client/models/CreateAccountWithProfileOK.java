@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   CreateAccountWithProfileOK.JSON_PROPERTY_PROFILE_ID,
   CreateAccountWithProfileOK.JSON_PROPERTY_ACCOUNT_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateAccountWithProfileOK {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
   @javax.annotation.Nonnull
@@ -68,7 +68,7 @@ public class CreateAccountWithProfileOK {
    * @return accountIndex
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getAccountIndex() {
@@ -76,7 +76,7 @@ public class CreateAccountWithProfileOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     this.accountIndex = accountIndex;
@@ -93,7 +93,7 @@ public class CreateAccountWithProfileOK {
    * @return accountDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAccountDid() {
@@ -101,7 +101,7 @@ public class CreateAccountWithProfileOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountDid(@javax.annotation.Nonnull String accountDid) {
     this.accountDid = accountDid;
@@ -118,7 +118,7 @@ public class CreateAccountWithProfileOK {
    * @return profileId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProfileId() {
@@ -126,7 +126,7 @@ public class CreateAccountWithProfileOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProfileId(@javax.annotation.Nonnull String profileId) {
     this.profileId = profileId;
@@ -143,7 +143,7 @@ public class CreateAccountWithProfileOK {
    * @return accountMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getAccountMetadata() {
@@ -151,11 +151,12 @@ public class CreateAccountWithProfileOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccountMetadata(@javax.annotation.Nullable Object accountMetadata) {
     this.accountMetadata = accountMetadata;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -194,10 +195,7 @@ public class CreateAccountWithProfileOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -235,7 +233,7 @@ public class CreateAccountWithProfileOK {
     // add `accountIndex` to the URL query string
     if (getAccountIndex() != null) {
       try {
-        joiner.add(String.format("%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -245,7 +243,7 @@ public class CreateAccountWithProfileOK {
     // add `accountDid` to the URL query string
     if (getAccountDid() != null) {
       try {
-        joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -255,7 +253,7 @@ public class CreateAccountWithProfileOK {
     // add `profileId` to the URL query string
     if (getProfileId() != null) {
       try {
-        joiner.add(String.format("%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -265,7 +263,7 @@ public class CreateAccountWithProfileOK {
     // add `accountMetadata` to the URL query string
     if (getAccountMetadata() != null) {
       try {
-        joiner.add(String.format("%saccountMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

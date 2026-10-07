@@ -17,6 +17,7 @@ wallet v2 dto
 | **services**    | [**Array&lt;ServiceEndpointDto&gt;**](ServiceEndpointDto.md) | list of service endpoints associated with this wallet | [optional] [default to undefined] |
 | **createdAt**   | **string**                                                   |                                                       | [optional] [default to undefined] |
 | **modifiedAt**  | **string**                                                   |                                                       | [optional] [default to undefined] |
+| **version**     | **number**                                                   | The version of the wallet                             | [optional] [default to undefined] |
 
 ## Example
 
@@ -35,6 +36,7 @@ const instance: WalletV2Dto = {
   services,
   createdAt,
   modifiedAt,
+  version,
 }
 ```
 

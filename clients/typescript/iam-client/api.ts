@@ -28,6 +28,7 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
+  replaceWithSerializableTypeIfNeeded,
 } from './common'
 import type { RequestArgs } from './base'
 // @ts-ignore
@@ -39,41 +40,11 @@ import {
   operationServerMap,
 } from './base'
 
-/**
- *
- * @export
- * @interface ActionForbiddenError
- */
 export interface ActionForbiddenError {
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   name: ActionForbiddenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   message: ActionForbiddenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof ActionForbiddenError
-   */
   httpStatusCode: ActionForbiddenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof ActionForbiddenError
-   */
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -97,72 +68,17 @@ export const ActionForbiddenErrorHttpStatusCodeEnum = {
 export type ActionForbiddenErrorHttpStatusCodeEnum =
   (typeof ActionForbiddenErrorHttpStatusCodeEnum)[keyof typeof ActionForbiddenErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface AddUserToProjectInput
- */
 export interface AddUserToProjectInput {
-  /**
-   *
-   * @type {string}
-   * @memberof AddUserToProjectInput
-   */
   principalId: string
-  /**
-   *
-   * @type {string}
-   * @memberof AddUserToProjectInput
-   */
   principalType: string
 }
-/**
- *
- * @export
- * @interface ConsumerAuthTokenEndpointInput
- */
 export interface ConsumerAuthTokenEndpointInput {
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   grant_type: ConsumerAuthTokenEndpointInputGrantTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   client_assertion_type: ConsumerAuthTokenEndpointInputClientAssertionTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   client_assertion: string
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   code?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   refresh_token?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   redirect_uri?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointInput
-   */
   client_id?: string
 }
 
@@ -183,204 +99,99 @@ export const ConsumerAuthTokenEndpointInputClientAssertionTypeEnum = {
 export type ConsumerAuthTokenEndpointInputClientAssertionTypeEnum =
   (typeof ConsumerAuthTokenEndpointInputClientAssertionTypeEnum)[keyof typeof ConsumerAuthTokenEndpointInputClientAssertionTypeEnum]
 
-/**
- *
- * @export
- * @interface ConsumerAuthTokenEndpointOutput
- */
 export interface ConsumerAuthTokenEndpointOutput {
   /**
    * The access token issued by the authorization server.
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   access_token?: string
   /**
    * The lifetime in seconds of the access token. For example, the value \"3600\" denotes that the access token will expire in one hour from the time the response was generated.
-   * @type {number}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   expires_in?: number
   /**
    * To retrieve a refresh token request the id_token scope.
-   * @type {number}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   id_token?: number
   /**
    * The refresh token, which can be used to obtain new access tokens. To retrieve it add the scope \"offline\" to your access token request.
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   refresh_token?: string
   /**
    * The scope of the access token
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   scope?: string
   /**
    * The type of the token issued
-   * @type {string}
-   * @memberof ConsumerAuthTokenEndpointOutput
    */
   token_type?: string
 }
-/**
- *
- * @export
- * @interface CreateProjectInput
- */
 export interface CreateProjectInput {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectInput
-   */
   name: string
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectInput
-   */
   description?: string
 }
-/**
- *
- * @export
- * @interface CreateProjectScopedTokenInput
- */
 export interface CreateProjectScopedTokenInput {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectScopedTokenInput
-   */
   projectId: string
 }
-/**
- *
- * @export
- * @interface CreateProjectScopedTokenOutput
- */
 export interface CreateProjectScopedTokenOutput {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectScopedTokenOutput
-   */
   accessToken: string
-  /**
-   *
-   * @type {number}
-   * @memberof CreateProjectScopedTokenOutput
-   */
   expiresIn: number
-  /**
-   *
-   * @type {string}
-   * @memberof CreateProjectScopedTokenOutput
-   */
   scope: string
 }
-/**
- *
- * @export
- * @interface CreateTokenInput
- */
 export interface CreateTokenInput {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateTokenInput
-   */
   name: string
-  /**
-   *
-   * @type {TokenPrivateKeyAuthenticationMethodDto}
-   * @memberof CreateTokenInput
-   */
-  authenticationMethod: TokenPrivateKeyAuthenticationMethodDto
-  /**
-   *
-   * @type {string}
-   * @memberof CreateTokenInput
-   */
+  authenticationMethod: TokenAuthenticationMethodDto
   description?: string
 }
-/**
- *
- * @export
- * @interface GrantAccessInput
- */
 export interface GrantAccessInput {
   /**
    * DID of the subject being granted access
-   * @type {string}
-   * @memberof GrantAccessInput
    */
   granteeDid: string
   /**
    * List of rights to grant to the subject
-   * @type {Array<RightsEnum>}
-   * @memberof GrantAccessInput
    */
   rights: Array<RightsEnum>
 }
-/**
- *
- * @export
- * @interface GrantAccessOutput
- */
 export interface GrantAccessOutput {
-  /**
-   *
-   * @type {boolean}
-   * @memberof GrantAccessOutput
-   */
   success: boolean
   /**
    * Unique identifier for the access grant
-   * @type {string}
-   * @memberof GrantAccessOutput
    */
   grantId?: string
 }
-/**
- *
- * @export
- * @interface InvalidDIDError
- */
-export interface InvalidDIDError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDIDError
-   */
-  name: InvalidDIDErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDIDError
-   */
-  message: InvalidDIDErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidDIDError
-   */
-  httpStatusCode: InvalidDIDErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidDIDError
-   */
+export interface IdentityMappingError {
+  name: IdentityMappingErrorNameEnum
+  message: IdentityMappingErrorMessageEnum
+  httpStatusCode: IdentityMappingErrorHttpStatusCodeEnum
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof InvalidDIDError
-   */
+  details?: Array<UnexpectedErrorDetailsInner>
+}
+
+export const IdentityMappingErrorNameEnum = {
+  IdentityMappingError: 'IdentityMappingError',
+} as const
+
+export type IdentityMappingErrorNameEnum =
+  (typeof IdentityMappingErrorNameEnum)[keyof typeof IdentityMappingErrorNameEnum]
+export const IdentityMappingErrorMessageEnum = {
+  UnableToMapTheAuthenticatedPrincipalToAnIdentity:
+    'Unable to map the authenticated principal to an identity.',
+} as const
+
+export type IdentityMappingErrorMessageEnum =
+  (typeof IdentityMappingErrorMessageEnum)[keyof typeof IdentityMappingErrorMessageEnum]
+export const IdentityMappingErrorHttpStatusCodeEnum = {
+  NUMBER_404: 404,
+} as const
+
+export type IdentityMappingErrorHttpStatusCodeEnum =
+  (typeof IdentityMappingErrorHttpStatusCodeEnum)[keyof typeof IdentityMappingErrorHttpStatusCodeEnum]
+
+export interface InvalidDIDError {
+  name: InvalidDIDErrorNameEnum
+  message: InvalidDIDErrorMessageEnum
+  httpStatusCode: InvalidDIDErrorHttpStatusCodeEnum
+  traceId: string
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -404,41 +215,11 @@ export const InvalidDIDErrorHttpStatusCodeEnum = {
 export type InvalidDIDErrorHttpStatusCodeEnum =
   (typeof InvalidDIDErrorHttpStatusCodeEnum)[keyof typeof InvalidDIDErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidParameterError
- */
 export interface InvalidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   name: InvalidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   message: InvalidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidParameterError
-   */
   httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof InvalidParameterError
-   */
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -461,115 +242,53 @@ export const InvalidParameterErrorHttpStatusCodeEnum = {
 export type InvalidParameterErrorHttpStatusCodeEnum =
   (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface JsonWebKeyDto
- */
 export interface JsonWebKeyDto {
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   kid: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   kty: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   n?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   e?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   x?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   y?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   crv?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   alg: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   use: string
 }
-/**
- *
- * @export
- * @interface JsonWebKeySetDto
- */
 export interface JsonWebKeySetDto {
-  /**
-   *
-   * @type {Array<JsonWebKeyDto>}
-   * @memberof JsonWebKeySetDto
-   */
   keys: Array<JsonWebKeyDto>
 }
-/**
- *
- * @export
- * @interface NotFoundError
- */
-export interface NotFoundError {
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
-  name: NotFoundErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
-  message: NotFoundErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof NotFoundError
-   */
-  httpStatusCode: NotFoundErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
+export interface MalformedUpstreamResponseError {
+  name: MalformedUpstreamResponseErrorNameEnum
+  message: MalformedUpstreamResponseErrorMessageEnum
+  httpStatusCode: MalformedUpstreamResponseErrorHttpStatusCodeEnum
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof NotFoundError
-   */
+  details?: Array<UnexpectedErrorDetailsInner>
+}
+
+export const MalformedUpstreamResponseErrorNameEnum = {
+  MalformedUpstreamResponseError: 'MalformedUpstreamResponseError',
+} as const
+
+export type MalformedUpstreamResponseErrorNameEnum =
+  (typeof MalformedUpstreamResponseErrorNameEnum)[keyof typeof MalformedUpstreamResponseErrorNameEnum]
+export const MalformedUpstreamResponseErrorMessageEnum = {
+  TheUpstreamIdentityServiceReturnedAnUnexpectedResponse:
+    'The upstream identity service returned an unexpected response.',
+} as const
+
+export type MalformedUpstreamResponseErrorMessageEnum =
+  (typeof MalformedUpstreamResponseErrorMessageEnum)[keyof typeof MalformedUpstreamResponseErrorMessageEnum]
+export const MalformedUpstreamResponseErrorHttpStatusCodeEnum = {
+  NUMBER_422: 422,
+} as const
+
+export type MalformedUpstreamResponseErrorHttpStatusCodeEnum =
+  (typeof MalformedUpstreamResponseErrorHttpStatusCodeEnum)[keyof typeof MalformedUpstreamResponseErrorHttpStatusCodeEnum]
+
+export interface NotFoundError {
+  name: NotFoundErrorNameEnum
+  message: NotFoundErrorMessageEnum
+  httpStatusCode: NotFoundErrorHttpStatusCodeEnum
+  traceId: string
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -592,115 +311,36 @@ export const NotFoundErrorHttpStatusCodeEnum = {
 export type NotFoundErrorHttpStatusCodeEnum =
   (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface PolicyDto
- */
+export interface PasskeyDto {
+  id: string
+  displayName: string
+  /**
+   * creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
+   */
+  createdAt: string
+}
+export interface PasskeyList {
+  passkeys: Array<PasskeyDto>
+}
 export interface PolicyDto {
-  /**
-   *
-   * @type {string}
-   * @memberof PolicyDto
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof PolicyDto
-   */
   description?: string
-  /**
-   *
-   * @type {string}
-   * @memberof PolicyDto
-   */
   principalId?: string
-  /**
-   *
-   * @type {string}
-   * @memberof PolicyDto
-   */
   projectId?: string
-  /**
-   *
-   * @type {string}
-   * @memberof PolicyDto
-   */
   version: string
-  /**
-   *
-   * @type {Array<PolicyStatementDto>}
-   * @memberof PolicyDto
-   */
   statement: Array<PolicyStatementDto>
 }
-/**
- *
- * @export
- * @interface PolicyStatementDto
- */
 export interface PolicyStatementDto {
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof PolicyStatementDto
-   */
   action: Array<string>
-  /**
-   *
-   * @type {string}
-   * @memberof PolicyStatementDto
-   */
   effect: string
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof PolicyStatementDto
-   */
   principal: Array<string>
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof PolicyStatementDto
-   */
   resource: Array<string>
 }
-/**
- *
- * @export
- * @interface PrincipalCannotBeDeletedError
- */
 export interface PrincipalCannotBeDeletedError {
-  /**
-   *
-   * @type {string}
-   * @memberof PrincipalCannotBeDeletedError
-   */
   name: PrincipalCannotBeDeletedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof PrincipalCannotBeDeletedError
-   */
   message: PrincipalCannotBeDeletedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof PrincipalCannotBeDeletedError
-   */
   httpStatusCode: PrincipalCannotBeDeletedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof PrincipalCannotBeDeletedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof PrincipalCannotBeDeletedError
-   */
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -724,41 +364,11 @@ export const PrincipalCannotBeDeletedErrorHttpStatusCodeEnum = {
 export type PrincipalCannotBeDeletedErrorHttpStatusCodeEnum =
   (typeof PrincipalCannotBeDeletedErrorHttpStatusCodeEnum)[keyof typeof PrincipalCannotBeDeletedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface PrincipalDoesNotBelongToProjectError
- */
 export interface PrincipalDoesNotBelongToProjectError {
-  /**
-   *
-   * @type {string}
-   * @memberof PrincipalDoesNotBelongToProjectError
-   */
   name: PrincipalDoesNotBelongToProjectErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof PrincipalDoesNotBelongToProjectError
-   */
   message: PrincipalDoesNotBelongToProjectErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof PrincipalDoesNotBelongToProjectError
-   */
   httpStatusCode: PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof PrincipalDoesNotBelongToProjectError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof PrincipalDoesNotBelongToProjectError
-   */
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -782,123 +392,53 @@ export const PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum = {
 export type PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum =
   (typeof PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum)[keyof typeof PrincipalDoesNotBelongToProjectErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface ProjectDto
- */
 export interface ProjectDto {
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectDto
-   */
   id: string
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectDto
-   */
   name: string
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectDto
-   */
   ownerId?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectDto
-   */
   description?: string
   /**
    * flag indicates if identity verification is enabled for project
-   * @type {boolean}
-   * @memberof ProjectDto
    */
   identityVerificationEnabled?: boolean
   /**
    * creation date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
-   * @type {string}
-   * @memberof ProjectDto
    */
   createdAt?: string
   /**
    * last update date and time in ISO-8601 format, e.g. 2023-09-20T07:12:13
-   * @type {string}
-   * @memberof ProjectDto
    */
   updatedAt?: string
 }
-/**
- *
- * @export
- * @interface ProjectList
- */
 export interface ProjectList {
-  /**
-   *
-   * @type {Array<ProjectDto>}
-   * @memberof ProjectList
-   */
   projects: Array<ProjectDto>
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectList
-   */
   lastEvaluatedKey?: string
 }
-/**
- *
- * @export
- * @interface ProjectWithPolicyDto
- */
 export interface ProjectWithPolicyDto {
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectWithPolicyDto
-   */
   id: string
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectWithPolicyDto
-   */
   name: string
-  /**
-   *
-   * @type {PolicyDto}
-   * @memberof ProjectWithPolicyDto
-   */
   policy: PolicyDto
 }
-/**
- *
- * @export
- * @interface ProjectWithPolicyList
- */
 export interface ProjectWithPolicyList {
-  /**
-   *
-   * @type {Array<ProjectWithPolicyDto>}
-   * @memberof ProjectWithPolicyList
-   */
   projects: Array<ProjectWithPolicyDto>
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectWithPolicyList
-   */
   lastEvaluatedKey?: string
 }
-/**
- *
- * @export
- * @enum {string}
- */
+export interface ProviderDto {
+  id: string
+  status: ProviderDtoStatusEnum
+}
+
+export const ProviderDtoStatusEnum = {
+  Linked: 'linked',
+  Unlinked: 'unlinked',
+} as const
+
+export type ProviderDtoStatusEnum =
+  (typeof ProviderDtoStatusEnum)[keyof typeof ProviderDtoStatusEnum]
+
+export interface ProviderList {
+  providers: Array<ProviderDto>
+}
 
 export const RightsEnum = {
   VfsRead: 'vfs-read',
@@ -908,90 +448,63 @@ export const RightsEnum = {
 export type RightsEnum = (typeof RightsEnum)[keyof typeof RightsEnum]
 
 /**
- *
- * @export
- * @interface TokenDto
+ * How the Token will be authenticate against our Authorization Server
  */
+export interface TokenAuthenticationMethodDto {
+  type: TokenAuthenticationMethodDtoTypeEnum
+  signingAlgorithm: TokenAuthenticationMethodDtoSigningAlgorithmEnum
+  publicKeyInfo: TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
+}
+
+export const TokenAuthenticationMethodDtoTypeEnum = {
+  PrivateKey: 'PRIVATE_KEY',
+} as const
+
+export type TokenAuthenticationMethodDtoTypeEnum =
+  (typeof TokenAuthenticationMethodDtoTypeEnum)[keyof typeof TokenAuthenticationMethodDtoTypeEnum]
+export const TokenAuthenticationMethodDtoSigningAlgorithmEnum = {
+  Rs256: 'RS256',
+  Rs512: 'RS512',
+  Es256: 'ES256',
+  Es512: 'ES512',
+} as const
+
+export type TokenAuthenticationMethodDtoSigningAlgorithmEnum =
+  (typeof TokenAuthenticationMethodDtoSigningAlgorithmEnum)[keyof typeof TokenAuthenticationMethodDtoSigningAlgorithmEnum]
+
 export interface TokenDto {
   /**
    * Token Id
-   * @type {string}
-   * @memberof TokenDto
    */
   id: string
   /**
    * Token ARI
-   * @type {string}
-   * @memberof TokenDto
    */
   ari: string
   /**
    * The Token owner\'s ARI
-   * @type {string}
-   * @memberof TokenDto
    */
   ownerAri: string
   /**
    * Owner defined Token display name
-   * @type {string}
-   * @memberof TokenDto
    */
   name: string
-  /**
-   *
-   * @type {TokenPrivateKeyAuthenticationMethodDto}
-   * @memberof TokenDto
-   */
-  authenticationMethod: TokenPrivateKeyAuthenticationMethodDto
+  authenticationMethod: TokenAuthenticationMethodDto
   /**
    * Scopes that will be assigned to the Token on authentication
-   * @type {Array<string>}
-   * @memberof TokenDto
    */
   scopes: Array<string>
 }
-/**
- *
- * @export
- * @interface TokenList
- */
 export interface TokenList {
-  /**
-   *
-   * @type {Array<TokenDto>}
-   * @memberof TokenList
-   */
   tokens: Array<TokenDto>
-  /**
-   *
-   * @type {string}
-   * @memberof TokenList
-   */
   lastEvaluatedKey?: string
 }
 /**
  * Private Key JWT Authentication of Client with `private_key_jwt` oAuth Method
- * @export
- * @interface TokenPrivateKeyAuthenticationMethodDto
  */
 export interface TokenPrivateKeyAuthenticationMethodDto {
-  /**
-   *
-   * @type {string}
-   * @memberof TokenPrivateKeyAuthenticationMethodDto
-   */
   type: TokenPrivateKeyAuthenticationMethodDtoTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof TokenPrivateKeyAuthenticationMethodDto
-   */
   signingAlgorithm: TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum
-  /**
-   *
-   * @type {TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo}
-   * @memberof TokenPrivateKeyAuthenticationMethodDto
-   */
   publicKeyInfo: TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
 }
 
@@ -1014,73 +527,22 @@ export type TokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum =
 /**
  * @type TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
  * Corresponding Public Key Info provided either as a URL or a Hardcoded Object
- * @export
  */
 export type TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo =
   | TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
   | TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
 
-/**
- *
- * @export
- * @interface TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
- */
 export interface TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {
-  /**
-   *
-   * @type {JsonWebKeySetDto}
-   * @memberof TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
-   */
   jwks: JsonWebKeySetDto
 }
-/**
- *
- * @export
- * @interface TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
- */
 export interface TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
-  /**
-   *
-   * @type {string}
-   * @memberof TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
-   */
   jwksUri: string
 }
-/**
- *
- * @export
- * @interface UnauthorizedError
- */
 export interface UnauthorizedError {
-  /**
-   *
-   * @type {string}
-   * @memberof UnauthorizedError
-   */
   name: UnauthorizedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnauthorizedError
-   */
   message: UnauthorizedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof UnauthorizedError
-   */
   httpStatusCode: UnauthorizedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnauthorizedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof UnauthorizedError
-   */
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -1103,41 +565,11 @@ export const UnauthorizedErrorHttpStatusCodeEnum = {
 export type UnauthorizedErrorHttpStatusCodeEnum =
   (typeof UnauthorizedErrorHttpStatusCodeEnum)[keyof typeof UnauthorizedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface UnexpectedError
- */
 export interface UnexpectedError {
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   name: UnexpectedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   message: UnexpectedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof UnexpectedError
-   */
   httpStatusCode: UnexpectedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<UnexpectedErrorDetailsInner>}
-   * @memberof UnexpectedError
-   */
   details?: Array<UnexpectedErrorDetailsInner>
 }
 
@@ -1160,130 +592,39 @@ export const UnexpectedErrorHttpStatusCodeEnum = {
 export type UnexpectedErrorHttpStatusCodeEnum =
   (typeof UnexpectedErrorHttpStatusCodeEnum)[keyof typeof UnexpectedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface UnexpectedErrorDetailsInner
- */
 export interface UnexpectedErrorDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedErrorDetailsInner
-   */
   issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedErrorDetailsInner
-   */
   field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedErrorDetailsInner
-   */
   value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedErrorDetailsInner
-   */
   location?: string
 }
-/**
- *
- * @export
- * @interface UpdateAccessInput
- */
 export interface UpdateAccessInput {
   /**
    * List of rights to update access
-   * @type {Array<RightsEnum>}
-   * @memberof UpdateAccessInput
    */
   rights: Array<RightsEnum>
 }
-/**
- *
- * @export
- * @interface UpdateAccessOutput
- */
 export interface UpdateAccessOutput {
-  /**
-   *
-   * @type {boolean}
-   * @memberof UpdateAccessOutput
-   */
   success: boolean
 }
-/**
- *
- * @export
- * @interface UpdateProjectInput
- */
 export interface UpdateProjectInput {
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateProjectInput
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateProjectInput
-   */
   description?: string
   /**
    * flag indicates if identity verification is enabled for project
-   * @type {boolean}
-   * @memberof UpdateProjectInput
    */
   identityVerificationEnabled?: boolean
 }
-/**
- *
- * @export
- * @interface UpdateTokenInput
- */
 export interface UpdateTokenInput {
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateTokenInput
-   */
   name?: string
-  /**
-   *
-   * @type {UpdateTokenPrivateKeyAuthenticationMethodDto}
-   * @memberof UpdateTokenInput
-   */
   authenticationMethod?: UpdateTokenPrivateKeyAuthenticationMethodDto
 }
 /**
  * Private Key JWT Authentication of Client with `private_key_jwt` oAuth Method
- * @export
- * @interface UpdateTokenPrivateKeyAuthenticationMethodDto
  */
 export interface UpdateTokenPrivateKeyAuthenticationMethodDto {
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateTokenPrivateKeyAuthenticationMethodDto
-   */
   type?: UpdateTokenPrivateKeyAuthenticationMethodDtoTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateTokenPrivateKeyAuthenticationMethodDto
-   */
   signingAlgorithm?: UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum
-  /**
-   *
-   * @type {TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo}
-   * @memberof UpdateTokenPrivateKeyAuthenticationMethodDto
-   */
   publicKeyInfo?: TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
 }
 
@@ -1304,61 +645,275 @@ export const UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum =
 export type UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum =
   (typeof UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum)[keyof typeof UpdateTokenPrivateKeyAuthenticationMethodDtoSigningAlgorithmEnum]
 
-/**
- *
- * @export
- * @interface UserDto
- */
+export interface UpstreamUnavailableError {
+  name: UpstreamUnavailableErrorNameEnum
+  message: UpstreamUnavailableErrorMessageEnum
+  httpStatusCode: UpstreamUnavailableErrorHttpStatusCodeEnum
+  traceId: string
+  details?: Array<UnexpectedErrorDetailsInner>
+}
+
+export const UpstreamUnavailableErrorNameEnum = {
+  UpstreamUnavailableError: 'UpstreamUnavailableError',
+} as const
+
+export type UpstreamUnavailableErrorNameEnum =
+  (typeof UpstreamUnavailableErrorNameEnum)[keyof typeof UpstreamUnavailableErrorNameEnum]
+export const UpstreamUnavailableErrorMessageEnum = {
+  TheUpstreamIdentityServiceIsUnavailable:
+    'The upstream identity service is unavailable.',
+} as const
+
+export type UpstreamUnavailableErrorMessageEnum =
+  (typeof UpstreamUnavailableErrorMessageEnum)[keyof typeof UpstreamUnavailableErrorMessageEnum]
+export const UpstreamUnavailableErrorHttpStatusCodeEnum = {
+  NUMBER_424: 424,
+} as const
+
+export type UpstreamUnavailableErrorHttpStatusCodeEnum =
+  (typeof UpstreamUnavailableErrorHttpStatusCodeEnum)[keyof typeof UpstreamUnavailableErrorHttpStatusCodeEnum]
+
 export interface UserDto {
-  /**
-   *
-   * @type {string}
-   * @memberof UserDto
-   */
   principalId: string
 }
-/**
- *
- * @export
- * @interface UserList
- */
 export interface UserList {
-  /**
-   *
-   * @type {Array<UserDto>}
-   * @memberof UserList
-   */
   records: Array<UserDto>
-  /**
-   *
-   * @type {string}
-   * @memberof UserList
-   */
   lastEvaluatedKey?: string
 }
-/**
- *
- * @export
- * @interface WhoamiDto
- */
 export interface WhoamiDto {
-  /**
-   *
-   * @type {string}
-   * @memberof WhoamiDto
-   */
   principalId: string
-  /**
-   *
-   * @type {string}
-   * @memberof WhoamiDto
-   */
   principalType: string
 }
 
 /**
+ * AccountsApi - axios parameter creator
+ */
+export const AccountsApiAxiosParamCreator = function (
+  configuration?: Configuration,
+) {
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountPasskeys: async (
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/accounts/passkeys`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountProviders: async (
+      options: RawAxiosRequestConfig = {},
+    ): Promise<RequestArgs> => {
+      const localVarPath = `/v1/accounts/providers`
+      // use dummy base URL string because the URL constructor only accepts absolute URLs.
+      const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
+      let baseOptions
+      if (configuration) {
+        baseOptions = configuration.baseOptions
+      }
+
+      const localVarRequestOptions = {
+        method: 'GET',
+        ...baseOptions,
+        ...options,
+      }
+      const localVarHeaderParameter = {} as any
+      const localVarQueryParameter = {} as any
+
+      // authentication UserTokenAuth required
+      await setApiKeyToObject(
+        localVarHeaderParameter,
+        'authorization',
+        configuration,
+      )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
+
+      setSearchParams(localVarUrlObj, localVarQueryParameter)
+      let headersFromBaseOptions =
+        baseOptions && baseOptions.headers ? baseOptions.headers : {}
+      localVarRequestOptions.headers = {
+        ...localVarHeaderParameter,
+        ...headersFromBaseOptions,
+        ...options.headers,
+      }
+
+      return {
+        url: toPathString(localVarUrlObj),
+        options: localVarRequestOptions,
+      }
+    },
+  }
+}
+
+/**
+ * AccountsApi - functional programming interface
+ */
+export const AccountsApiFp = function (configuration?: Configuration) {
+  const localVarAxiosParamCreator = AccountsApiAxiosParamCreator(configuration)
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listAccountPasskeys(
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<PasskeyList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listAccountPasskeys(options)
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.listAccountPasskeys']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async listAccountProviders(
+      options?: RawAxiosRequestConfig,
+    ): Promise<
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProviderList>
+    > {
+      const localVarAxiosArgs =
+        await localVarAxiosParamCreator.listAccountProviders(options)
+      const localVarOperationServerIndex = configuration?.serverIndex ?? 0
+      const localVarOperationServerBasePath =
+        operationServerMap['AccountsApi.listAccountProviders']?.[
+          localVarOperationServerIndex
+        ]?.url
+      return (axios, basePath) =>
+        createRequestFunction(
+          localVarAxiosArgs,
+          globalAxios,
+          BASE_PATH,
+          configuration,
+        )(axios, localVarOperationServerBasePath || basePath)
+    },
+  }
+}
+
+/**
+ * AccountsApi - factory interface
+ */
+export const AccountsApiFactory = function (
+  configuration?: Configuration,
+  basePath?: string,
+  axios?: AxiosInstance,
+) {
+  const localVarFp = AccountsApiFp(configuration)
+  return {
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountPasskeys(
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<PasskeyList> {
+      return localVarFp
+        .listAccountPasskeys(options)
+        .then((request) => request(axios, basePath))
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    listAccountProviders(
+      options?: RawAxiosRequestConfig,
+    ): AxiosPromise<ProviderList> {
+      return localVarFp
+        .listAccountProviders(options)
+        .then((request) => request(axios, basePath))
+    },
+  }
+}
+
+/**
+ * AccountsApi - object-oriented interface
+ */
+export class AccountsApi extends BaseAPI {
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   */
+  public listAccountPasskeys(options?: RawAxiosRequestConfig) {
+    return AccountsApiFp(this.configuration)
+      .listAccountPasskeys(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   */
+  public listAccountProviders(options?: RawAxiosRequestConfig) {
+    return AccountsApiFp(this.configuration)
+      .listAccountProviders(options)
+      .then((request) => request(this.axios, this.basePath))
+  }
+}
+
+/**
  * AuthzApi - axios parameter creator
- * @export
  */
 export const AuthzApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1378,7 +933,7 @@ export const AuthzApiAxiosParamCreator = function (
       // verify required parameter 'granteeDid' is not null or undefined
       assertParamExists('deleteAccessVfs', 'granteeDid', granteeDid)
       const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
-        `{${'granteeDid'}}`,
+        '{granteeDid}',
         encodeURIComponent(String(granteeDid)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1402,6 +957,8 @@ export const AuthzApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1454,6 +1011,7 @@ export const AuthzApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1496,7 +1054,7 @@ export const AuthzApiAxiosParamCreator = function (
         updateAccessInput,
       )
       const localVarPath = `/v1/authz/vfs/access/{granteeDid}`.replace(
-        `{${'granteeDid'}}`,
+        '{granteeDid}',
         encodeURIComponent(String(granteeDid)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1522,6 +1080,7 @@ export const AuthzApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1547,7 +1106,6 @@ export const AuthzApiAxiosParamCreator = function (
 
 /**
  * AuthzApi - functional programming interface
- * @export
  */
 export const AuthzApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = AuthzApiAxiosParamCreator(configuration)
@@ -1656,7 +1214,6 @@ export const AuthzApiFp = function (configuration?: Configuration) {
 
 /**
  * AuthzApi - factory interface
- * @export
  */
 export const AuthzApiFactory = function (
   configuration?: Configuration,
@@ -1717,9 +1274,6 @@ export const AuthzApiFactory = function (
 
 /**
  * AuthzApi - object-oriented interface
- * @export
- * @class AuthzApi
- * @extends {BaseAPI}
  */
 export class AuthzApi extends BaseAPI {
   /**
@@ -1728,7 +1282,6 @@ export class AuthzApi extends BaseAPI {
    * @param {string} granteeDid
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AuthzApi
    */
   public deleteAccessVfs(granteeDid: string, options?: RawAxiosRequestConfig) {
     return AuthzApiFp(this.configuration)
@@ -1742,7 +1295,6 @@ export class AuthzApi extends BaseAPI {
    * @param {GrantAccessInput} grantAccessInput Grant access to virtual file system
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AuthzApi
    */
   public grantAccessVfs(
     grantAccessInput: GrantAccessInput,
@@ -1760,7 +1312,6 @@ export class AuthzApi extends BaseAPI {
    * @param {UpdateAccessInput} updateAccessInput update access to virtual file system
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AuthzApi
    */
   public updateAccessVfs(
     granteeDid: string,
@@ -1775,7 +1326,6 @@ export class AuthzApi extends BaseAPI {
 
 /**
  * ConsumerAuthApi - axios parameter creator
- * @export
  */
 export const ConsumerAuthApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1815,6 +1365,7 @@ export const ConsumerAuthApiAxiosParamCreator = function (
       const localVarQueryParameter = {} as any
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1840,7 +1391,6 @@ export const ConsumerAuthApiAxiosParamCreator = function (
 
 /**
  * ConsumerAuthApi - functional programming interface
- * @export
  */
 export const ConsumerAuthApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -1885,7 +1435,6 @@ export const ConsumerAuthApiFp = function (configuration?: Configuration) {
 
 /**
  * ConsumerAuthApi - factory interface
- * @export
  */
 export const ConsumerAuthApiFactory = function (
   configuration?: Configuration,
@@ -1914,9 +1463,6 @@ export const ConsumerAuthApiFactory = function (
 
 /**
  * ConsumerAuthApi - object-oriented interface
- * @export
- * @class ConsumerAuthApi
- * @extends {BaseAPI}
  */
 export class ConsumerAuthApi extends BaseAPI {
   /**
@@ -1925,7 +1471,6 @@ export class ConsumerAuthApi extends BaseAPI {
    * @param {ConsumerAuthTokenEndpointInput} consumerAuthTokenEndpointInput ConsumerAuthTokenEndpoint
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConsumerAuthApi
    */
   public consumerAuthTokenEndpoint(
     consumerAuthTokenEndpointInput: ConsumerAuthTokenEndpointInput,
@@ -1939,7 +1484,6 @@ export class ConsumerAuthApi extends BaseAPI {
 
 /**
  * DefaultApi - axios parameter creator
- * @export
  */
 export const DefaultApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1958,7 +1502,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyDelete', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2003,7 +1547,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyGet', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2048,7 +1592,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyPatch', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2093,7 +1637,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyPost', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2138,7 +1682,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1AuthProxyPut', 'proxy', proxy)
       const localVarPath = `/v1/auth/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2183,7 +1727,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyDelete', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2228,7 +1772,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyGet', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2273,7 +1817,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyPatch', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2318,7 +1862,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyPost', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2363,7 +1907,7 @@ export const DefaultApiAxiosParamCreator = function (
       // verify required parameter 'proxy' is not null or undefined
       assertParamExists('v1IdpProxyPut', 'proxy', proxy)
       const localVarPath = `/v1/idp/{proxy+}`.replace(
-        `{${'proxy'}}`,
+        '{proxy}',
         encodeURIComponent(String(proxy)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2400,7 +1944,6 @@ export const DefaultApiAxiosParamCreator = function (
 
 /**
  * DefaultApi - functional programming interface
- * @export
  */
 export const DefaultApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
@@ -2694,7 +2237,6 @@ export const DefaultApiFp = function (configuration?: Configuration) {
 
 /**
  * DefaultApi - factory interface
- * @export
  */
 export const DefaultApiFactory = function (
   configuration?: Configuration,
@@ -2848,9 +2390,6 @@ export const DefaultApiFactory = function (
 
 /**
  * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
   /**
@@ -2858,7 +2397,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1AuthProxyDelete(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2871,7 +2409,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1AuthProxyGet(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2884,7 +2421,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1AuthProxyPatch(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2897,7 +2433,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1AuthProxyPost(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2910,7 +2445,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1AuthProxyPut(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2923,7 +2457,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1IdpProxyDelete(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2936,7 +2469,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1IdpProxyGet(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2949,7 +2481,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1IdpProxyPatch(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2962,7 +2493,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1IdpProxyPost(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2975,7 +2505,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} proxy
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public v1IdpProxyPut(proxy: string, options?: RawAxiosRequestConfig) {
     return DefaultApiFp(this.configuration)
@@ -2986,7 +2515,6 @@ export class DefaultApi extends BaseAPI {
 
 /**
  * PoliciesApi - axios parameter creator
- * @export
  */
 export const PoliciesApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -3009,7 +2537,7 @@ export const PoliciesApiAxiosParamCreator = function (
       // verify required parameter 'principalType' is not null or undefined
       assertParamExists('getPolicies', 'principalType', principalType)
       const localVarPath = `/v1/policies/principals/{principalId}`.replace(
-        `{${'principalId'}}`,
+        '{principalId}',
         encodeURIComponent(String(principalId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3037,6 +2565,8 @@ export const PoliciesApiAxiosParamCreator = function (
       if (principalType !== undefined) {
         localVarQueryParameter['principalType'] = principalType
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3073,7 +2603,7 @@ export const PoliciesApiAxiosParamCreator = function (
       // verify required parameter 'policyDto' is not null or undefined
       assertParamExists('updatePolicies', 'policyDto', policyDto)
       const localVarPath = `/v1/policies/principals/{principalId}`.replace(
-        `{${'principalId'}}`,
+        '{principalId}',
         encodeURIComponent(String(principalId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3103,6 +2633,7 @@ export const PoliciesApiAxiosParamCreator = function (
       }
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3128,7 +2659,6 @@ export const PoliciesApiAxiosParamCreator = function (
 
 /**
  * PoliciesApi - functional programming interface
- * @export
  */
 export const PoliciesApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = PoliciesApiAxiosParamCreator(configuration)
@@ -3205,7 +2735,6 @@ export const PoliciesApiFp = function (configuration?: Configuration) {
 
 /**
  * PoliciesApi - factory interface
- * @export
  */
 export const PoliciesApiFactory = function (
   configuration?: Configuration,
@@ -3253,9 +2782,6 @@ export const PoliciesApiFactory = function (
 
 /**
  * PoliciesApi - object-oriented interface
- * @export
- * @class PoliciesApi
- * @extends {BaseAPI}
  */
 export class PoliciesApi extends BaseAPI {
   /**
@@ -3264,7 +2790,6 @@ export class PoliciesApi extends BaseAPI {
    * @param {GetPoliciesPrincipalTypeEnum} principalType
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof PoliciesApi
    */
   public getPolicies(
     principalId: string,
@@ -3283,7 +2808,6 @@ export class PoliciesApi extends BaseAPI {
    * @param {PolicyDto} policyDto UpdatePolicies
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof PoliciesApi
    */
   public updatePolicies(
     principalId: string,
@@ -3297,18 +2821,12 @@ export class PoliciesApi extends BaseAPI {
   }
 }
 
-/**
- * @export
- */
 export const GetPoliciesPrincipalTypeEnum = {
   User: 'user',
   Token: 'token',
 } as const
 export type GetPoliciesPrincipalTypeEnum =
   (typeof GetPoliciesPrincipalTypeEnum)[keyof typeof GetPoliciesPrincipalTypeEnum]
-/**
- * @export
- */
 export const UpdatePoliciesPrincipalTypeEnum = {
   User: 'user',
   Token: 'token',
@@ -3318,7 +2836,6 @@ export type UpdatePoliciesPrincipalTypeEnum =
 
 /**
  * ProjectsApi - axios parameter creator
- * @export
  */
 export const ProjectsApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -3364,6 +2881,7 @@ export const ProjectsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3424,6 +2942,7 @@ export const ProjectsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3469,7 +2988,7 @@ export const ProjectsApiAxiosParamCreator = function (
         principalType,
       )
       const localVarPath = `/v1/projects/principals/{principalId}`.replace(
-        `{${'principalId'}}`,
+        '{principalId}',
         encodeURIComponent(String(principalId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3498,6 +3017,8 @@ export const ProjectsApiAxiosParamCreator = function (
         localVarQueryParameter['principalType'] = principalType
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3525,7 +3046,7 @@ export const ProjectsApiAxiosParamCreator = function (
       // verify required parameter 'projectId' is not null or undefined
       assertParamExists('getProject', 'projectId', projectId)
       const localVarPath = `/v1/projects/{projectId}`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3549,6 +3070,8 @@ export const ProjectsApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3607,6 +3130,8 @@ export const ProjectsApiAxiosParamCreator = function (
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3664,6 +3189,8 @@ export const ProjectsApiAxiosParamCreator = function (
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3699,7 +3226,7 @@ export const ProjectsApiAxiosParamCreator = function (
         updateProjectInput,
       )
       const localVarPath = `/v1/projects/{projectId}`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3725,6 +3252,7 @@ export const ProjectsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3750,7 +3278,6 @@ export const ProjectsApiAxiosParamCreator = function (
 
 /**
  * ProjectsApi - functional programming interface
- * @export
  */
 export const ProjectsApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = ProjectsApiAxiosParamCreator(configuration)
@@ -3978,7 +3505,6 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
 
 /**
  * ProjectsApi - factory interface
- * @export
  */
 export const ProjectsApiFactory = function (
   configuration?: Configuration,
@@ -4098,9 +3624,6 @@ export const ProjectsApiFactory = function (
 
 /**
  * ProjectsApi - object-oriented interface
- * @export
- * @class ProjectsApi
- * @extends {BaseAPI}
  */
 export class ProjectsApi extends BaseAPI {
   /**
@@ -4108,7 +3631,6 @@ export class ProjectsApi extends BaseAPI {
    * @param {AddUserToProjectInput} addUserToProjectInput AddPrincipalToProject
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProjectsApi
    */
   public addPrincipalToProject(
     addUserToProjectInput: AddUserToProjectInput,
@@ -4124,7 +3646,6 @@ export class ProjectsApi extends BaseAPI {
    * @param {CreateProjectInput} createProjectInput CreateProject
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProjectsApi
    */
   public createProject(
     createProjectInput: CreateProjectInput,
@@ -4141,7 +3662,6 @@ export class ProjectsApi extends BaseAPI {
    * @param {DeletePrincipalFromProjectPrincipalTypeEnum} principalType type of principal
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProjectsApi
    */
   public deletePrincipalFromProject(
     principalId: string,
@@ -4158,7 +3678,6 @@ export class ProjectsApi extends BaseAPI {
    * @param {string} projectId projectId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProjectsApi
    */
   public getProject(projectId: string, options?: RawAxiosRequestConfig) {
     return ProjectsApiFp(this.configuration)
@@ -4172,7 +3691,6 @@ export class ProjectsApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProjectsApi
    */
   public listPrincipalsOfProject(
     limit?: number,
@@ -4190,7 +3708,6 @@ export class ProjectsApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProjectsApi
    */
   public listProject(
     limit?: number,
@@ -4208,7 +3725,6 @@ export class ProjectsApi extends BaseAPI {
    * @param {UpdateProjectInput} updateProjectInput UpdateProject
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProjectsApi
    */
   public updateProject(
     projectId: string,
@@ -4221,9 +3737,6 @@ export class ProjectsApi extends BaseAPI {
   }
 }
 
-/**
- * @export
- */
 export const DeletePrincipalFromProjectPrincipalTypeEnum = {
   User: 'user',
   Token: 'token',
@@ -4233,7 +3746,6 @@ export type DeletePrincipalFromProjectPrincipalTypeEnum =
 
 /**
  * StsApi - axios parameter creator
- * @export
  */
 export const StsApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4279,6 +3791,7 @@ export const StsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4330,6 +3843,8 @@ export const StsApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -4349,7 +3864,6 @@ export const StsApiAxiosParamCreator = function (
 
 /**
  * StsApi - functional programming interface
- * @export
  */
 export const StsApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = StsApiAxiosParamCreator(configuration)
@@ -4414,7 +3928,6 @@ export const StsApiFp = function (configuration?: Configuration) {
 
 /**
  * StsApi - factory interface
- * @export
  */
 export const StsApiFactory = function (
   configuration?: Configuration,
@@ -4452,9 +3965,6 @@ export const StsApiFactory = function (
 
 /**
  * StsApi - object-oriented interface
- * @export
- * @class StsApi
- * @extends {BaseAPI}
  */
 export class StsApi extends BaseAPI {
   /**
@@ -4462,7 +3972,6 @@ export class StsApi extends BaseAPI {
    * @param {CreateProjectScopedTokenInput} createProjectScopedTokenInput CreateProjectScopedToken
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof StsApi
    */
   public createProjectScopedToken(
     createProjectScopedTokenInput: CreateProjectScopedTokenInput,
@@ -4477,7 +3986,6 @@ export class StsApi extends BaseAPI {
    *
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof StsApi
    */
   public whoami(options?: RawAxiosRequestConfig) {
     return StsApiFp(this.configuration)
@@ -4488,7 +3996,6 @@ export class StsApi extends BaseAPI {
 
 /**
  * TokensApi - axios parameter creator
- * @export
  */
 export const TokensApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4530,6 +4037,7 @@ export const TokensApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4563,7 +4071,7 @@ export const TokensApiAxiosParamCreator = function (
       // verify required parameter 'tokenId' is not null or undefined
       assertParamExists('deleteToken', 'tokenId', tokenId)
       const localVarPath = `/v1/tokens/{tokenId}`.replace(
-        `{${'tokenId'}}`,
+        '{tokenId}',
         encodeURIComponent(String(tokenId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4587,6 +4095,8 @@ export const TokensApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4615,7 +4125,7 @@ export const TokensApiAxiosParamCreator = function (
       // verify required parameter 'tokenId' is not null or undefined
       assertParamExists('getToken', 'tokenId', tokenId)
       const localVarPath = `/v1/tokens/{tokenId}`.replace(
-        `{${'tokenId'}}`,
+        '{tokenId}',
         encodeURIComponent(String(tokenId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4639,6 +4149,8 @@ export const TokensApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4671,7 +4183,7 @@ export const TokensApiAxiosParamCreator = function (
       // verify required parameter 'tokenId' is not null or undefined
       assertParamExists('listProjectsOfToken', 'tokenId', tokenId)
       const localVarPath = `/v1/tokens/{tokenId}/projects`.replace(
-        `{${'tokenId'}}`,
+        '{tokenId}',
         encodeURIComponent(String(tokenId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4703,6 +4215,8 @@ export const TokensApiAxiosParamCreator = function (
       if (exclusiveStartKey !== undefined) {
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4761,6 +4275,8 @@ export const TokensApiAxiosParamCreator = function (
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -4792,7 +4308,7 @@ export const TokensApiAxiosParamCreator = function (
       // verify required parameter 'updateTokenInput' is not null or undefined
       assertParamExists('updateToken', 'updateTokenInput', updateTokenInput)
       const localVarPath = `/v1/tokens/{tokenId}`.replace(
-        `{${'tokenId'}}`,
+        '{tokenId}',
         encodeURIComponent(String(tokenId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4818,6 +4334,7 @@ export const TokensApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4843,7 +4360,6 @@ export const TokensApiAxiosParamCreator = function (
 
 /**
  * TokensApi - functional programming interface
- * @export
  */
 export const TokensApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = TokensApiAxiosParamCreator(configuration)
@@ -5042,7 +4558,6 @@ export const TokensApiFp = function (configuration?: Configuration) {
 
 /**
  * TokensApi - factory interface
- * @export
  */
 export const TokensApiFactory = function (
   configuration?: Configuration,
@@ -5148,9 +4663,6 @@ export const TokensApiFactory = function (
 
 /**
  * TokensApi - object-oriented interface
- * @export
- * @class TokensApi
- * @extends {BaseAPI}
  */
 export class TokensApi extends BaseAPI {
   /**
@@ -5158,7 +4670,6 @@ export class TokensApi extends BaseAPI {
    * @param {CreateTokenInput} createTokenInput CreateToken
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof TokensApi
    */
   public createToken(
     createTokenInput: CreateTokenInput,
@@ -5174,7 +4685,6 @@ export class TokensApi extends BaseAPI {
    * @param {string} tokenId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof TokensApi
    */
   public deleteToken(tokenId: string, options?: RawAxiosRequestConfig) {
     return TokensApiFp(this.configuration)
@@ -5187,7 +4697,6 @@ export class TokensApi extends BaseAPI {
    * @param {string} tokenId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof TokensApi
    */
   public getToken(tokenId: string, options?: RawAxiosRequestConfig) {
     return TokensApiFp(this.configuration)
@@ -5202,7 +4711,6 @@ export class TokensApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof TokensApi
    */
   public listProjectsOfToken(
     tokenId: string,
@@ -5221,7 +4729,6 @@ export class TokensApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof TokensApi
    */
   public listToken(
     limit?: number,
@@ -5239,7 +4746,6 @@ export class TokensApi extends BaseAPI {
    * @param {UpdateTokenInput} updateTokenInput UpdateToken
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof TokensApi
    */
   public updateToken(
     tokenId: string,
@@ -5254,7 +4760,6 @@ export class TokensApi extends BaseAPI {
 
 /**
  * WellKnownApi - axios parameter creator
- * @export
  */
 export const WellKnownApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -5283,6 +4788,8 @@ export const WellKnownApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -5322,6 +4829,8 @@ export const WellKnownApiAxiosParamCreator = function (
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -5341,7 +4850,6 @@ export const WellKnownApiAxiosParamCreator = function (
 
 /**
  * WellKnownApi - functional programming interface
- * @export
  */
 export const WellKnownApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = WellKnownApiAxiosParamCreator(configuration)
@@ -5404,7 +4912,6 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
 
 /**
  * WellKnownApi - factory interface
- * @export
  */
 export const WellKnownApiFactory = function (
   configuration?: Configuration,
@@ -5440,16 +4947,12 @@ export const WellKnownApiFactory = function (
 
 /**
  * WellKnownApi - object-oriented interface
- * @export
- * @class WellKnownApi
- * @extends {BaseAPI}
  */
 export class WellKnownApi extends BaseAPI {
   /**
    *
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WellKnownApi
    */
   public getWellKnownDid(options?: RawAxiosRequestConfig) {
     return WellKnownApiFp(this.configuration)
@@ -5461,7 +4964,6 @@ export class WellKnownApi extends BaseAPI {
    *
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WellKnownApi
    */
   public getWellKnownJwks(options?: RawAxiosRequestConfig) {
     return WellKnownApiFp(this.configuration)
