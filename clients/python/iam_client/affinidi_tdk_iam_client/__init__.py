@@ -17,66 +17,146 @@
 
 __version__ = "1.0.0"
 
+# Define package exports
+__all__ = [
+    "AccountsApi",
+    "AuthzApi",
+    "ConsumerAuthApi",
+    "DefaultApi",
+    "PoliciesApi",
+    "ProjectsApi",
+    "StsApi",
+    "TokensApi",
+    "WellKnownApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "ActionForbiddenError",
+    "AddUserToProjectInput",
+    "ConsumerAuthTokenEndpointInput",
+    "ConsumerAuthTokenEndpointOutput",
+    "CreateProjectInput",
+    "CreateProjectScopedTokenInput",
+    "CreateProjectScopedTokenOutput",
+    "CreateTokenInput",
+    "GrantAccessInput",
+    "GrantAccessOutput",
+    "IdentityMappingError",
+    "InvalidDIDError",
+    "InvalidParameterError",
+    "JsonWebKeyDto",
+    "JsonWebKeySetDto",
+    "MalformedUpstreamResponseError",
+    "NotFoundError",
+    "PasskeyDto",
+    "PasskeyList",
+    "PolicyDto",
+    "PolicyStatementDto",
+    "PrincipalCannotBeDeletedError",
+    "PrincipalDoesNotBelongToProjectError",
+    "ProjectDto",
+    "ProjectList",
+    "ProjectWithPolicyDto",
+    "ProjectWithPolicyList",
+    "ProviderDto",
+    "ProviderList",
+    "RightsEnum",
+    "TokenAuthenticationMethodDto",
+    "TokenDto",
+    "TokenList",
+    "TokenPrivateKeyAuthenticationMethodDto",
+    "TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo",
+    "TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf",
+    "TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1",
+    "UnauthorizedError",
+    "UnexpectedError",
+    "UnexpectedErrorDetailsInner",
+    "UpdateAccessInput",
+    "UpdateAccessOutput",
+    "UpdateProjectInput",
+    "UpdateTokenInput",
+    "UpdateTokenPrivateKeyAuthenticationMethodDto",
+    "UpstreamUnavailableError",
+    "UserDto",
+    "UserList",
+    "WhoamiDto",
+]
+
 # import apis into sdk package
-from affinidi_tdk_iam_client.api.authz_api import AuthzApi
-from affinidi_tdk_iam_client.api.consumer_auth_api import ConsumerAuthApi
-from affinidi_tdk_iam_client.api.default_api import DefaultApi
-from affinidi_tdk_iam_client.api.policies_api import PoliciesApi
-from affinidi_tdk_iam_client.api.projects_api import ProjectsApi
-from affinidi_tdk_iam_client.api.sts_api import StsApi
-from affinidi_tdk_iam_client.api.tokens_api import TokensApi
-from affinidi_tdk_iam_client.api.well_known_api import WellKnownApi
+from affinidi_tdk_iam_client.api.accounts_api import AccountsApi as AccountsApi
+from affinidi_tdk_iam_client.api.authz_api import AuthzApi as AuthzApi
+from affinidi_tdk_iam_client.api.consumer_auth_api import ConsumerAuthApi as ConsumerAuthApi
+from affinidi_tdk_iam_client.api.default_api import DefaultApi as DefaultApi
+from affinidi_tdk_iam_client.api.policies_api import PoliciesApi as PoliciesApi
+from affinidi_tdk_iam_client.api.projects_api import ProjectsApi as ProjectsApi
+from affinidi_tdk_iam_client.api.sts_api import StsApi as StsApi
+from affinidi_tdk_iam_client.api.tokens_api import TokensApi as TokensApi
+from affinidi_tdk_iam_client.api.well_known_api import WellKnownApi as WellKnownApi
 
 # import ApiClient
-from affinidi_tdk_iam_client.api_response import ApiResponse
-from affinidi_tdk_iam_client.api_client import ApiClient
-from affinidi_tdk_iam_client.configuration import Configuration
-from affinidi_tdk_iam_client.exceptions import OpenApiException
-from affinidi_tdk_iam_client.exceptions import ApiTypeError
-from affinidi_tdk_iam_client.exceptions import ApiValueError
-from affinidi_tdk_iam_client.exceptions import ApiKeyError
-from affinidi_tdk_iam_client.exceptions import ApiAttributeError
-from affinidi_tdk_iam_client.exceptions import ApiException
+from affinidi_tdk_iam_client.api_response import ApiResponse as ApiResponse
+from affinidi_tdk_iam_client.api_client import ApiClient as ApiClient
+from affinidi_tdk_iam_client.configuration import Configuration as Configuration
+from affinidi_tdk_iam_client.exceptions import OpenApiException as OpenApiException
+from affinidi_tdk_iam_client.exceptions import ApiTypeError as ApiTypeError
+from affinidi_tdk_iam_client.exceptions import ApiValueError as ApiValueError
+from affinidi_tdk_iam_client.exceptions import ApiKeyError as ApiKeyError
+from affinidi_tdk_iam_client.exceptions import ApiAttributeError as ApiAttributeError
+from affinidi_tdk_iam_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from affinidi_tdk_iam_client.models.action_forbidden_error import ActionForbiddenError
-from affinidi_tdk_iam_client.models.add_user_to_project_input import AddUserToProjectInput
-from affinidi_tdk_iam_client.models.consumer_auth_token_endpoint_input import ConsumerAuthTokenEndpointInput
-from affinidi_tdk_iam_client.models.consumer_auth_token_endpoint_output import ConsumerAuthTokenEndpointOutput
-from affinidi_tdk_iam_client.models.create_project_input import CreateProjectInput
-from affinidi_tdk_iam_client.models.create_project_scoped_token_input import CreateProjectScopedTokenInput
-from affinidi_tdk_iam_client.models.create_project_scoped_token_output import CreateProjectScopedTokenOutput
-from affinidi_tdk_iam_client.models.create_token_input import CreateTokenInput
-from affinidi_tdk_iam_client.models.grant_access_input import GrantAccessInput
-from affinidi_tdk_iam_client.models.grant_access_output import GrantAccessOutput
-from affinidi_tdk_iam_client.models.invalid_did_error import InvalidDIDError
-from affinidi_tdk_iam_client.models.invalid_parameter_error import InvalidParameterError
-from affinidi_tdk_iam_client.models.json_web_key_dto import JsonWebKeyDto
-from affinidi_tdk_iam_client.models.json_web_key_set_dto import JsonWebKeySetDto
-from affinidi_tdk_iam_client.models.not_found_error import NotFoundError
-from affinidi_tdk_iam_client.models.policy_dto import PolicyDto
-from affinidi_tdk_iam_client.models.policy_statement_dto import PolicyStatementDto
-from affinidi_tdk_iam_client.models.principal_cannot_be_deleted_error import PrincipalCannotBeDeletedError
-from affinidi_tdk_iam_client.models.principal_does_not_belong_to_project_error import PrincipalDoesNotBelongToProjectError
-from affinidi_tdk_iam_client.models.project_dto import ProjectDto
-from affinidi_tdk_iam_client.models.project_list import ProjectList
-from affinidi_tdk_iam_client.models.project_with_policy_dto import ProjectWithPolicyDto
-from affinidi_tdk_iam_client.models.project_with_policy_list import ProjectWithPolicyList
-from affinidi_tdk_iam_client.models.rights_enum import RightsEnum
-from affinidi_tdk_iam_client.models.token_dto import TokenDto
-from affinidi_tdk_iam_client.models.token_list import TokenList
-from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto import TokenPrivateKeyAuthenticationMethodDto
-from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto_public_key_info import TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
-from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto_public_key_info_one_of import TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
-from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto_public_key_info_one_of1 import TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
-from affinidi_tdk_iam_client.models.unauthorized_error import UnauthorizedError
-from affinidi_tdk_iam_client.models.unexpected_error import UnexpectedError
-from affinidi_tdk_iam_client.models.unexpected_error_details_inner import UnexpectedErrorDetailsInner
-from affinidi_tdk_iam_client.models.update_access_input import UpdateAccessInput
-from affinidi_tdk_iam_client.models.update_access_output import UpdateAccessOutput
-from affinidi_tdk_iam_client.models.update_project_input import UpdateProjectInput
-from affinidi_tdk_iam_client.models.update_token_input import UpdateTokenInput
-from affinidi_tdk_iam_client.models.update_token_private_key_authentication_method_dto import UpdateTokenPrivateKeyAuthenticationMethodDto
-from affinidi_tdk_iam_client.models.user_dto import UserDto
-from affinidi_tdk_iam_client.models.user_list import UserList
-from affinidi_tdk_iam_client.models.whoami_dto import WhoamiDto
+from affinidi_tdk_iam_client.models.action_forbidden_error import ActionForbiddenError as ActionForbiddenError
+from affinidi_tdk_iam_client.models.add_user_to_project_input import AddUserToProjectInput as AddUserToProjectInput
+from affinidi_tdk_iam_client.models.consumer_auth_token_endpoint_input import ConsumerAuthTokenEndpointInput as ConsumerAuthTokenEndpointInput
+from affinidi_tdk_iam_client.models.consumer_auth_token_endpoint_output import ConsumerAuthTokenEndpointOutput as ConsumerAuthTokenEndpointOutput
+from affinidi_tdk_iam_client.models.create_project_input import CreateProjectInput as CreateProjectInput
+from affinidi_tdk_iam_client.models.create_project_scoped_token_input import CreateProjectScopedTokenInput as CreateProjectScopedTokenInput
+from affinidi_tdk_iam_client.models.create_project_scoped_token_output import CreateProjectScopedTokenOutput as CreateProjectScopedTokenOutput
+from affinidi_tdk_iam_client.models.create_token_input import CreateTokenInput as CreateTokenInput
+from affinidi_tdk_iam_client.models.grant_access_input import GrantAccessInput as GrantAccessInput
+from affinidi_tdk_iam_client.models.grant_access_output import GrantAccessOutput as GrantAccessOutput
+from affinidi_tdk_iam_client.models.identity_mapping_error import IdentityMappingError as IdentityMappingError
+from affinidi_tdk_iam_client.models.invalid_did_error import InvalidDIDError as InvalidDIDError
+from affinidi_tdk_iam_client.models.invalid_parameter_error import InvalidParameterError as InvalidParameterError
+from affinidi_tdk_iam_client.models.json_web_key_dto import JsonWebKeyDto as JsonWebKeyDto
+from affinidi_tdk_iam_client.models.json_web_key_set_dto import JsonWebKeySetDto as JsonWebKeySetDto
+from affinidi_tdk_iam_client.models.malformed_upstream_response_error import MalformedUpstreamResponseError as MalformedUpstreamResponseError
+from affinidi_tdk_iam_client.models.not_found_error import NotFoundError as NotFoundError
+from affinidi_tdk_iam_client.models.passkey_dto import PasskeyDto as PasskeyDto
+from affinidi_tdk_iam_client.models.passkey_list import PasskeyList as PasskeyList
+from affinidi_tdk_iam_client.models.policy_dto import PolicyDto as PolicyDto
+from affinidi_tdk_iam_client.models.policy_statement_dto import PolicyStatementDto as PolicyStatementDto
+from affinidi_tdk_iam_client.models.principal_cannot_be_deleted_error import PrincipalCannotBeDeletedError as PrincipalCannotBeDeletedError
+from affinidi_tdk_iam_client.models.principal_does_not_belong_to_project_error import PrincipalDoesNotBelongToProjectError as PrincipalDoesNotBelongToProjectError
+from affinidi_tdk_iam_client.models.project_dto import ProjectDto as ProjectDto
+from affinidi_tdk_iam_client.models.project_list import ProjectList as ProjectList
+from affinidi_tdk_iam_client.models.project_with_policy_dto import ProjectWithPolicyDto as ProjectWithPolicyDto
+from affinidi_tdk_iam_client.models.project_with_policy_list import ProjectWithPolicyList as ProjectWithPolicyList
+from affinidi_tdk_iam_client.models.provider_dto import ProviderDto as ProviderDto
+from affinidi_tdk_iam_client.models.provider_list import ProviderList as ProviderList
+from affinidi_tdk_iam_client.models.rights_enum import RightsEnum as RightsEnum
+from affinidi_tdk_iam_client.models.token_authentication_method_dto import TokenAuthenticationMethodDto as TokenAuthenticationMethodDto
+from affinidi_tdk_iam_client.models.token_dto import TokenDto as TokenDto
+from affinidi_tdk_iam_client.models.token_list import TokenList as TokenList
+from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto import TokenPrivateKeyAuthenticationMethodDto as TokenPrivateKeyAuthenticationMethodDto
+from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto_public_key_info import TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo as TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo
+from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto_public_key_info_one_of import TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf as TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf
+from affinidi_tdk_iam_client.models.token_private_key_authentication_method_dto_public_key_info_one_of1 import TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 as TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1
+from affinidi_tdk_iam_client.models.unauthorized_error import UnauthorizedError as UnauthorizedError
+from affinidi_tdk_iam_client.models.unexpected_error import UnexpectedError as UnexpectedError
+from affinidi_tdk_iam_client.models.unexpected_error_details_inner import UnexpectedErrorDetailsInner as UnexpectedErrorDetailsInner
+from affinidi_tdk_iam_client.models.update_access_input import UpdateAccessInput as UpdateAccessInput
+from affinidi_tdk_iam_client.models.update_access_output import UpdateAccessOutput as UpdateAccessOutput
+from affinidi_tdk_iam_client.models.update_project_input import UpdateProjectInput as UpdateProjectInput
+from affinidi_tdk_iam_client.models.update_token_input import UpdateTokenInput as UpdateTokenInput
+from affinidi_tdk_iam_client.models.update_token_private_key_authentication_method_dto import UpdateTokenPrivateKeyAuthenticationMethodDto as UpdateTokenPrivateKeyAuthenticationMethodDto
+from affinidi_tdk_iam_client.models.upstream_unavailable_error import UpstreamUnavailableError as UpstreamUnavailableError
+from affinidi_tdk_iam_client.models.user_dto import UserDto as UserDto
+from affinidi_tdk_iam_client.models.user_list import UserList as UserList
+from affinidi_tdk_iam_client.models.whoami_dto import WhoamiDto as WhoamiDto

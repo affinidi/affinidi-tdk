@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   ListScannedFilesOKScannedFilesInner.JSON_PROPERTY_NAME
 })
 @JsonTypeName("ListScannedFilesOK_scannedFiles_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListScannedFilesOKScannedFilesInner {
   public static final String JSON_PROPERTY_JOB_ID = "jobId";
   @javax.annotation.Nonnull
@@ -78,7 +78,7 @@ public class ListScannedFilesOKScannedFilesInner {
    * @return jobId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
+  @JsonProperty(value = JSON_PROPERTY_JOB_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJobId() {
@@ -86,7 +86,7 @@ public class ListScannedFilesOKScannedFilesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
+  @JsonProperty(value = JSON_PROPERTY_JOB_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJobId(@javax.annotation.Nonnull String jobId) {
     this.jobId = jobId;
@@ -103,7 +103,7 @@ public class ListScannedFilesOKScannedFilesInner {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getStatus() {
@@ -111,7 +111,7 @@ public class ListScannedFilesOKScannedFilesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull String status) {
     this.status = status;
@@ -128,7 +128,7 @@ public class ListScannedFilesOKScannedFilesInner {
    * @return profileId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProfileId() {
@@ -136,7 +136,7 @@ public class ListScannedFilesOKScannedFilesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProfileId(@javax.annotation.Nonnull String profileId) {
     this.profileId = profileId;
@@ -153,7 +153,7 @@ public class ListScannedFilesOKScannedFilesInner {
    * @return nodeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNodeId() {
@@ -161,7 +161,7 @@ public class ListScannedFilesOKScannedFilesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
@@ -178,7 +178,7 @@ public class ListScannedFilesOKScannedFilesInner {
    * @return createdAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedAt() {
@@ -186,7 +186,7 @@ public class ListScannedFilesOKScannedFilesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
@@ -203,7 +203,7 @@ public class ListScannedFilesOKScannedFilesInner {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -211,11 +211,12 @@ public class ListScannedFilesOKScannedFilesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -258,10 +259,7 @@ public class ListScannedFilesOKScannedFilesInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -299,7 +297,7 @@ public class ListScannedFilesOKScannedFilesInner {
     // add `jobId` to the URL query string
     if (getJobId() != null) {
       try {
-        joiner.add(String.format("%sjobId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjobId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -309,7 +307,7 @@ public class ListScannedFilesOKScannedFilesInner {
     // add `status` to the URL query string
     if (getStatus() != null) {
       try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -319,7 +317,7 @@ public class ListScannedFilesOKScannedFilesInner {
     // add `profileId` to the URL query string
     if (getProfileId() != null) {
       try {
-        joiner.add(String.format("%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -329,7 +327,7 @@ public class ListScannedFilesOKScannedFilesInner {
     // add `nodeId` to the URL query string
     if (getNodeId() != null) {
       try {
-        joiner.add(String.format("%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -339,7 +337,7 @@ public class ListScannedFilesOKScannedFilesInner {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -349,7 +347,7 @@ public class ListScannedFilesOKScannedFilesInner {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

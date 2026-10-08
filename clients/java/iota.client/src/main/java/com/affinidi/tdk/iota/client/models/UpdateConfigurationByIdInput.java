@@ -47,7 +47,7 @@ import java.util.StringJoiner;
   UpdateConfigurationByIdInput.JSON_PROPERTY_REDIRECT_URIS,
   UpdateConfigurationByIdInput.JSON_PROPERTY_ENABLE_IDV_PROVIDERS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdateConfigurationByIdInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -144,7 +144,7 @@ public class UpdateConfigurationByIdInput {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -152,7 +152,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -169,7 +169,7 @@ public class UpdateConfigurationByIdInput {
    * @return walletAri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WALLET_ARI)
+  @JsonProperty(value = JSON_PROPERTY_WALLET_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getWalletAri() {
@@ -177,7 +177,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WALLET_ARI)
+  @JsonProperty(value = JSON_PROPERTY_WALLET_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWalletAri(@javax.annotation.Nullable String walletAri) {
     this.walletAri = walletAri;
@@ -194,7 +194,7 @@ public class UpdateConfigurationByIdInput {
    * @return iotaResponseWebhookURL
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L)
+  @JsonProperty(value = JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIotaResponseWebhookURL() {
@@ -202,7 +202,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L)
+  @JsonProperty(value = JSON_PROPERTY_IOTA_RESPONSE_WEBHOOK_U_R_L, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIotaResponseWebhookURL(@javax.annotation.Nullable String iotaResponseWebhookURL) {
     this.iotaResponseWebhookURL = iotaResponseWebhookURL;
@@ -219,7 +219,7 @@ public class UpdateConfigurationByIdInput {
    * @return enableVerification
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENABLE_VERIFICATION)
+  @JsonProperty(value = JSON_PROPERTY_ENABLE_VERIFICATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getEnableVerification() {
@@ -227,7 +227,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENABLE_VERIFICATION)
+  @JsonProperty(value = JSON_PROPERTY_ENABLE_VERIFICATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnableVerification(@javax.annotation.Nullable Boolean enableVerification) {
     this.enableVerification = enableVerification;
@@ -244,7 +244,7 @@ public class UpdateConfigurationByIdInput {
    * @return enableConsentAuditLog
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG)
+  @JsonProperty(value = JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getEnableConsentAuditLog() {
@@ -252,7 +252,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG)
+  @JsonProperty(value = JSON_PROPERTY_ENABLE_CONSENT_AUDIT_LOG, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnableConsentAuditLog(@javax.annotation.Nullable Boolean enableConsentAuditLog) {
     this.enableConsentAuditLog = enableConsentAuditLog;
@@ -269,7 +269,7 @@ public class UpdateConfigurationByIdInput {
    * @return tokenMaxAge
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_MAX_AGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getTokenMaxAge() {
@@ -277,7 +277,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_MAX_AGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
@@ -294,7 +294,7 @@ public class UpdateConfigurationByIdInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -302,7 +302,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -319,7 +319,7 @@ public class UpdateConfigurationByIdInput {
    * @return clientMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public IotaConfigurationDtoClientMetadata getClientMetadata() {
@@ -327,7 +327,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientMetadata(@javax.annotation.Nullable IotaConfigurationDtoClientMetadata clientMetadata) {
     this.clientMetadata = clientMetadata;
@@ -344,7 +344,7 @@ public class UpdateConfigurationByIdInput {
    * @return mode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ModeEnum getMode() {
@@ -352,7 +352,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMode(@javax.annotation.Nullable ModeEnum mode) {
     this.mode = mode;
@@ -377,7 +377,7 @@ public class UpdateConfigurationByIdInput {
    * @return redirectUris
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getRedirectUris() {
@@ -385,7 +385,7 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRedirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     this.redirectUris = redirectUris;
@@ -402,7 +402,7 @@ public class UpdateConfigurationByIdInput {
    * @return enableIdvProviders
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ENABLE_IDV_PROVIDERS)
+  @JsonProperty(value = JSON_PROPERTY_ENABLE_IDV_PROVIDERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getEnableIdvProviders() {
@@ -410,11 +410,12 @@ public class UpdateConfigurationByIdInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENABLE_IDV_PROVIDERS)
+  @JsonProperty(value = JSON_PROPERTY_ENABLE_IDV_PROVIDERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEnableIdvProviders(@javax.annotation.Nullable Boolean enableIdvProviders) {
     this.enableIdvProviders = enableIdvProviders;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -467,10 +468,7 @@ public class UpdateConfigurationByIdInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -508,7 +506,7 @@ public class UpdateConfigurationByIdInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -518,7 +516,7 @@ public class UpdateConfigurationByIdInput {
     // add `walletAri` to the URL query string
     if (getWalletAri() != null) {
       try {
-        joiner.add(String.format("%swalletAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWalletAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%swalletAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWalletAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -528,7 +526,7 @@ public class UpdateConfigurationByIdInput {
     // add `iotaResponseWebhookURL` to the URL query string
     if (getIotaResponseWebhookURL() != null) {
       try {
-        joiner.add(String.format("%siotaResponseWebhookURL%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIotaResponseWebhookURL()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%siotaResponseWebhookURL%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIotaResponseWebhookURL()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -538,7 +536,7 @@ public class UpdateConfigurationByIdInput {
     // add `enableVerification` to the URL query string
     if (getEnableVerification() != null) {
       try {
-        joiner.add(String.format("%senableVerification%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableVerification()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%senableVerification%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableVerification()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -548,7 +546,7 @@ public class UpdateConfigurationByIdInput {
     // add `enableConsentAuditLog` to the URL query string
     if (getEnableConsentAuditLog() != null) {
       try {
-        joiner.add(String.format("%senableConsentAuditLog%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableConsentAuditLog()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%senableConsentAuditLog%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableConsentAuditLog()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -558,7 +556,7 @@ public class UpdateConfigurationByIdInput {
     // add `tokenMaxAge` to the URL query string
     if (getTokenMaxAge() != null) {
       try {
-        joiner.add(String.format("%stokenMaxAge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenMaxAge()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stokenMaxAge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenMaxAge()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -568,7 +566,7 @@ public class UpdateConfigurationByIdInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -583,7 +581,7 @@ public class UpdateConfigurationByIdInput {
     // add `mode` to the URL query string
     if (getMode() != null) {
       try {
-        joiner.add(String.format("%smode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -594,8 +592,8 @@ public class UpdateConfigurationByIdInput {
     if (getRedirectUris() != null) {
       for (int i = 0; i < getRedirectUris().size(); i++) {
         try {
-          joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sredirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -607,7 +605,7 @@ public class UpdateConfigurationByIdInput {
     // add `enableIdvProviders` to the URL query string
     if (getEnableIdvProviders() != null) {
       try {
-        joiner.add(String.format("%senableIdvProviders%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableIdvProviders()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%senableIdvProviders%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEnableIdvProviders()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

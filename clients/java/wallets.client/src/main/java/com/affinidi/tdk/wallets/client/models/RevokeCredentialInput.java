@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   RevokeCredentialInput.JSON_PROPERTY_REVOCATION_REASON,
   RevokeCredentialInput.JSON_PROPERTY_CREDENTIAL_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class RevokeCredentialInput {
   public static final String JSON_PROPERTY_REVOCATION_REASON = "revocationReason";
   @javax.annotation.Nullable
@@ -67,14 +67,14 @@ public class RevokeCredentialInput {
         return revocationReason.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_REVOCATION_REASON)
+  @JsonProperty(value = JSON_PROPERTY_REVOCATION_REASON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public JsonNullable<String> getRevocationReason_JsonNullable() {
     return revocationReason;
   }
   
-  @JsonProperty(JSON_PROPERTY_REVOCATION_REASON)
+  @JsonProperty(value = JSON_PROPERTY_REVOCATION_REASON, required = false)
   public void setRevocationReason_JsonNullable(JsonNullable<String> revocationReason) {
     this.revocationReason = revocationReason;
   }
@@ -94,7 +94,7 @@ public class RevokeCredentialInput {
    * @return credentialId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCredentialId() {
@@ -102,11 +102,12 @@ public class RevokeCredentialInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialId(@javax.annotation.Nullable String credentialId) {
     this.credentialId = credentialId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -152,10 +153,7 @@ public class RevokeCredentialInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -193,7 +191,7 @@ public class RevokeCredentialInput {
     // add `revocationReason` to the URL query string
     if (getRevocationReason() != null) {
       try {
-        joiner.add(String.format("%srevocationReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationReason()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srevocationReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationReason()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -203,7 +201,7 @@ public class RevokeCredentialInput {
     // add `credentialId` to the URL query string
     if (getCredentialId() != null) {
       try {
-        joiner.add(String.format("%scredentialId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentialId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

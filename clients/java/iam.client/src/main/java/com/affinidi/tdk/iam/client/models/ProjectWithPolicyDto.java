@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   ProjectWithPolicyDto.JSON_PROPERTY_NAME,
   ProjectWithPolicyDto.JSON_PROPERTY_POLICY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ProjectWithPolicyDto {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nonnull
@@ -63,7 +63,7 @@ public class ProjectWithPolicyDto {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
@@ -71,7 +71,7 @@ public class ProjectWithPolicyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
@@ -88,7 +88,7 @@ public class ProjectWithPolicyDto {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -96,7 +96,7 @@ public class ProjectWithPolicyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -113,7 +113,7 @@ public class ProjectWithPolicyDto {
    * @return policy
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_POLICY)
+  @JsonProperty(value = JSON_PROPERTY_POLICY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public PolicyDto getPolicy() {
@@ -121,11 +121,12 @@ public class ProjectWithPolicyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POLICY)
+  @JsonProperty(value = JSON_PROPERTY_POLICY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPolicy(@javax.annotation.Nonnull PolicyDto policy) {
     this.policy = policy;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,10 +163,7 @@ public class ProjectWithPolicyDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -203,7 +201,7 @@ public class ProjectWithPolicyDto {
     // add `id` to the URL query string
     if (getId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -213,7 +211,7 @@ public class ProjectWithPolicyDto {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -45,7 +45,7 @@ import java.util.StringJoiner;
   CreateLoginConfigurationOutput.JSON_PROPERTY_CREATION_DATE,
   CreateLoginConfigurationOutput.JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateLoginConfigurationOutput {
   public static final String JSON_PROPERTY_ARI = "ari";
   @javax.annotation.Nonnull
@@ -97,7 +97,7 @@ public class CreateLoginConfigurationOutput {
    * @return ari
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAri() {
@@ -105,7 +105,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
@@ -122,7 +122,7 @@ public class CreateLoginConfigurationOutput {
    * @return projectId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProjectId() {
@@ -130,7 +130,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
@@ -147,7 +147,7 @@ public class CreateLoginConfigurationOutput {
    * @return configurationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConfigurationId() {
@@ -155,7 +155,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfigurationId(@javax.annotation.Nullable String configurationId) {
     this.configurationId = configurationId;
@@ -172,7 +172,7 @@ public class CreateLoginConfigurationOutput {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -180,7 +180,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -197,7 +197,7 @@ public class CreateLoginConfigurationOutput {
    * @return auth
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AUTH)
+  @JsonProperty(value = JSON_PROPERTY_AUTH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public CreateLoginConfigurationOutputAuth getAuth() {
@@ -205,7 +205,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AUTH)
+  @JsonProperty(value = JSON_PROPERTY_AUTH, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAuth(@javax.annotation.Nonnull CreateLoginConfigurationOutputAuth auth) {
     this.auth = auth;
@@ -230,7 +230,7 @@ public class CreateLoginConfigurationOutput {
    * @return redirectUris
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getRedirectUris() {
@@ -238,7 +238,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRedirectUris(@javax.annotation.Nonnull List<String> redirectUris) {
     this.redirectUris = redirectUris;
@@ -255,7 +255,7 @@ public class CreateLoginConfigurationOutput {
    * @return clientMetadata
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LoginConfigurationClientMetadataOutput getClientMetadata() {
@@ -263,7 +263,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setClientMetadata(@javax.annotation.Nonnull LoginConfigurationClientMetadataOutput clientMetadata) {
     this.clientMetadata = clientMetadata;
@@ -280,7 +280,7 @@ public class CreateLoginConfigurationOutput {
    * @return creationDate
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreationDate() {
@@ -288,7 +288,7 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreationDate(@javax.annotation.Nonnull String creationDate) {
     this.creationDate = creationDate;
@@ -313,7 +313,7 @@ public class CreateLoginConfigurationOutput {
    * @return postLogoutRedirectUris
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getPostLogoutRedirectUris() {
@@ -321,11 +321,12 @@ public class CreateLoginConfigurationOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPostLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -374,10 +375,7 @@ public class CreateLoginConfigurationOutput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -415,7 +413,7 @@ public class CreateLoginConfigurationOutput {
     // add `ari` to the URL query string
     if (getAri() != null) {
       try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -425,7 +423,7 @@ public class CreateLoginConfigurationOutput {
     // add `projectId` to the URL query string
     if (getProjectId() != null) {
       try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -435,7 +433,7 @@ public class CreateLoginConfigurationOutput {
     // add `configurationId` to the URL query string
     if (getConfigurationId() != null) {
       try {
-        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -445,7 +443,7 @@ public class CreateLoginConfigurationOutput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -461,8 +459,8 @@ public class CreateLoginConfigurationOutput {
     if (getRedirectUris() != null) {
       for (int i = 0; i < getRedirectUris().size(); i++) {
         try {
-          joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sredirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -479,7 +477,7 @@ public class CreateLoginConfigurationOutput {
     // add `creationDate` to the URL query string
     if (getCreationDate() != null) {
       try {
-        joiner.add(String.format("%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -490,8 +488,8 @@ public class CreateLoginConfigurationOutput {
     if (getPostLogoutRedirectUris() != null) {
       for (int i = 0; i < getPostLogoutRedirectUris().size(); i++) {
         try {
-          joiner.add(String.format("%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getPostLogoutRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

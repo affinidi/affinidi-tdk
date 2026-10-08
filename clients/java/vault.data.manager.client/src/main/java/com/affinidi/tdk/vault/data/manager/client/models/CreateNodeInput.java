@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   CreateNodeInput.JSON_PROPERTY_DEK,
   CreateNodeInput.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateNodeInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
@@ -84,7 +84,7 @@ public class CreateNodeInput {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -92,7 +92,7 @@ public class CreateNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -109,7 +109,7 @@ public class CreateNodeInput {
    * @return type
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public NodeType getType() {
@@ -117,7 +117,7 @@ public class CreateNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull NodeType type) {
     this.type = type;
@@ -134,7 +134,7 @@ public class CreateNodeInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -142,7 +142,7 @@ public class CreateNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -159,7 +159,7 @@ public class CreateNodeInput {
    * @return parentNodeId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PARENT_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PARENT_NODE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getParentNodeId() {
@@ -167,7 +167,7 @@ public class CreateNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PARENT_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PARENT_NODE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setParentNodeId(@javax.annotation.Nullable String parentNodeId) {
     this.parentNodeId = parentNodeId;
@@ -184,7 +184,7 @@ public class CreateNodeInput {
    * @return edekInfo
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EDEK_INFO)
+  @JsonProperty(value = JSON_PROPERTY_EDEK_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public EdekInfo getEdekInfo() {
@@ -192,7 +192,7 @@ public class CreateNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EDEK_INFO)
+  @JsonProperty(value = JSON_PROPERTY_EDEK_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEdekInfo(@javax.annotation.Nullable EdekInfo edekInfo) {
     this.edekInfo = edekInfo;
@@ -209,7 +209,7 @@ public class CreateNodeInput {
    * @return dek
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDek() {
@@ -217,7 +217,7 @@ public class CreateNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDek(@javax.annotation.Nullable String dek) {
     this.dek = dek;
@@ -234,7 +234,7 @@ public class CreateNodeInput {
    * @return metadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMetadata() {
@@ -242,11 +242,12 @@ public class CreateNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMetadata(@javax.annotation.Nullable String metadata) {
     this.metadata = metadata;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -291,10 +292,7 @@ public class CreateNodeInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -332,7 +330,7 @@ public class CreateNodeInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -342,7 +340,7 @@ public class CreateNodeInput {
     // add `type` to the URL query string
     if (getType() != null) {
       try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -352,7 +350,7 @@ public class CreateNodeInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -362,7 +360,7 @@ public class CreateNodeInput {
     // add `parentNodeId` to the URL query string
     if (getParentNodeId() != null) {
       try {
-        joiner.add(String.format("%sparentNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getParentNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sparentNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getParentNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -377,7 +375,7 @@ public class CreateNodeInput {
     // add `dek` to the URL query string
     if (getDek() != null) {
       try {
-        joiner.add(String.format("%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -387,7 +385,7 @@ public class CreateNodeInput {
     // add `metadata` to the URL query string
     if (getMetadata() != null) {
       try {
-        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
