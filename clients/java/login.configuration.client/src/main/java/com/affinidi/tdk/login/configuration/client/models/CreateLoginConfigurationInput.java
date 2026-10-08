@@ -50,7 +50,7 @@ import java.util.StringJoiner;
   CreateLoginConfigurationInput.JSON_PROPERTY_SCOPE,
   CreateLoginConfigurationInput.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateLoginConfigurationInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
@@ -153,7 +153,7 @@ public class CreateLoginConfigurationInput {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -161,7 +161,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -178,7 +178,7 @@ public class CreateLoginConfigurationInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -186,7 +186,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -211,7 +211,7 @@ public class CreateLoginConfigurationInput {
    * @return redirectUris
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getRedirectUris() {
@@ -219,7 +219,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRedirectUris(@javax.annotation.Nonnull List<String> redirectUris) {
     this.redirectUris = redirectUris;
@@ -244,7 +244,7 @@ public class CreateLoginConfigurationInput {
    * @return postLogoutRedirectUris
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getPostLogoutRedirectUris() {
@@ -252,7 +252,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPostLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
@@ -269,7 +269,7 @@ public class CreateLoginConfigurationInput {
    * @return vpDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVpDefinition() {
@@ -277,7 +277,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
@@ -294,7 +294,7 @@ public class CreateLoginConfigurationInput {
    * @return presentationDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getPresentationDefinition() {
@@ -302,7 +302,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
@@ -319,7 +319,7 @@ public class CreateLoginConfigurationInput {
    * @return dcqlQuery
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getDcqlQuery() {
@@ -327,7 +327,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDcqlQuery(@javax.annotation.Nullable Object dcqlQuery) {
     this.dcqlQuery = dcqlQuery;
@@ -352,7 +352,7 @@ public class CreateLoginConfigurationInput {
    * @return idTokenMapping
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_MAPPING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<IdTokenMappingItem> getIdTokenMapping() {
@@ -360,7 +360,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_MAPPING, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIdTokenMapping(@javax.annotation.Nullable List<IdTokenMappingItem> idTokenMapping) {
     this.idTokenMapping = idTokenMapping;
@@ -377,7 +377,7 @@ public class CreateLoginConfigurationInput {
    * @return clientMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public LoginConfigurationClientMetadataInput getClientMetadata() {
@@ -385,7 +385,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientMetadata(@javax.annotation.Nullable LoginConfigurationClientMetadataInput clientMetadata) {
     this.clientMetadata = clientMetadata;
@@ -402,7 +402,7 @@ public class CreateLoginConfigurationInput {
    * @return claimFormat
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLAIM_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_CLAIM_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ClaimFormatEnum getClaimFormat() {
@@ -410,7 +410,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLAIM_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_CLAIM_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClaimFormat(@javax.annotation.Nullable ClaimFormatEnum claimFormat) {
     this.claimFormat = claimFormat;
@@ -427,7 +427,7 @@ public class CreateLoginConfigurationInput {
    * @return failOnMappingConflict
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT)
+  @JsonProperty(value = JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getFailOnMappingConflict() {
@@ -435,7 +435,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT)
+  @JsonProperty(value = JSON_PROPERTY_FAIL_ON_MAPPING_CONFLICT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFailOnMappingConflict(@javax.annotation.Nullable Boolean failOnMappingConflict) {
     this.failOnMappingConflict = failOnMappingConflict;
@@ -452,7 +452,7 @@ public class CreateLoginConfigurationInput {
    * @return scope
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getScope() {
@@ -460,7 +460,7 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
@@ -477,7 +477,7 @@ public class CreateLoginConfigurationInput {
    * @return tokenEndpointAuthMethod
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public TokenEndpointAuthMethod getTokenEndpointAuthMethod() {
@@ -485,11 +485,12 @@ public class CreateLoginConfigurationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenEndpointAuthMethod(@javax.annotation.Nullable TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -546,10 +547,7 @@ public class CreateLoginConfigurationInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -587,7 +585,7 @@ public class CreateLoginConfigurationInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -597,7 +595,7 @@ public class CreateLoginConfigurationInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -608,8 +606,8 @@ public class CreateLoginConfigurationInput {
     if (getRedirectUris() != null) {
       for (int i = 0; i < getRedirectUris().size(); i++) {
         try {
-          joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sredirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -622,8 +620,8 @@ public class CreateLoginConfigurationInput {
     if (getPostLogoutRedirectUris() != null) {
       for (int i = 0; i < getPostLogoutRedirectUris().size(); i++) {
         try {
-          joiner.add(String.format("%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getPostLogoutRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -635,7 +633,7 @@ public class CreateLoginConfigurationInput {
     // add `vpDefinition` to the URL query string
     if (getVpDefinition() != null) {
       try {
-        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -645,7 +643,7 @@ public class CreateLoginConfigurationInput {
     // add `presentationDefinition` to the URL query string
     if (getPresentationDefinition() != null) {
       try {
-        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -655,7 +653,7 @@ public class CreateLoginConfigurationInput {
     // add `dcqlQuery` to the URL query string
     if (getDcqlQuery() != null) {
       try {
-        joiner.add(String.format("%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -666,8 +664,8 @@ public class CreateLoginConfigurationInput {
     if (getIdTokenMapping() != null) {
       for (int i = 0; i < getIdTokenMapping().size(); i++) {
         if (getIdTokenMapping().get(i) != null) {
-          joiner.add(getIdTokenMapping().get(i).toUrlQueryString(String.format("%sidTokenMapping%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getIdTokenMapping().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sidTokenMapping%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -680,7 +678,7 @@ public class CreateLoginConfigurationInput {
     // add `claimFormat` to the URL query string
     if (getClaimFormat() != null) {
       try {
-        joiner.add(String.format("%sclaimFormat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimFormat()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclaimFormat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimFormat()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -690,7 +688,7 @@ public class CreateLoginConfigurationInput {
     // add `failOnMappingConflict` to the URL query string
     if (getFailOnMappingConflict() != null) {
       try {
-        joiner.add(String.format("%sfailOnMappingConflict%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFailOnMappingConflict()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfailOnMappingConflict%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFailOnMappingConflict()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -700,7 +698,7 @@ public class CreateLoginConfigurationInput {
     // add `scope` to the URL query string
     if (getScope() != null) {
       try {
-        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -710,7 +708,7 @@ public class CreateLoginConfigurationInput {
     // add `tokenEndpointAuthMethod` to the URL query string
     if (getTokenEndpointAuthMethod() != null) {
       try {
-        joiner.add(String.format("%stokenEndpointAuthMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethod()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stokenEndpointAuthMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethod()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

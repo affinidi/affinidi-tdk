@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListConfigurationOK.JSON_PROPERTY_CONFIGURATIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListConfigurationOK {
   public static final String JSON_PROPERTY_CONFIGURATIONS = "configurations";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class ListConfigurationOK {
    * @return configurations
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFIGURATIONS)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<IotaConfigurationDto> getConfigurations() {
@@ -72,11 +72,12 @@ public class ListConfigurationOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFIGURATIONS)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConfigurations(@javax.annotation.Nonnull List<IotaConfigurationDto> configurations) {
     this.configurations = configurations;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class ListConfigurationOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class ListConfigurationOK {
     if (getConfigurations() != null) {
       for (int i = 0; i < getConfigurations().size(); i++) {
         if (getConfigurations().get(i) != null) {
-          joiner.add(getConfigurations().get(i).toUrlQueryString(String.format("%sconfigurations%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getConfigurations().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sconfigurations%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

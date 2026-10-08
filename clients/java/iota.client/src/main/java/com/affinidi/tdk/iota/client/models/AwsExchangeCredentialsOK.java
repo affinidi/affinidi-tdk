@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   AwsExchangeCredentialsOK.JSON_PROPERTY_CONNECTION_CLIENT_ID,
   AwsExchangeCredentialsOK.JSON_PROPERTY_CREDENTIALS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class AwsExchangeCredentialsOK {
   public static final String JSON_PROPERTY_CONNECTION_CLIENT_ID = "connectionClientId";
   @javax.annotation.Nonnull
@@ -58,7 +58,7 @@ public class AwsExchangeCredentialsOK {
    * @return connectionClientId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONNECTION_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONNECTION_CLIENT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getConnectionClientId() {
@@ -66,7 +66,7 @@ public class AwsExchangeCredentialsOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONNECTION_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONNECTION_CLIENT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConnectionClientId(@javax.annotation.Nonnull String connectionClientId) {
     this.connectionClientId = connectionClientId;
@@ -83,7 +83,7 @@ public class AwsExchangeCredentialsOK {
    * @return credentials
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public AwsExchangeCredentialsOKCredentials getCredentials() {
@@ -91,11 +91,12 @@ public class AwsExchangeCredentialsOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentials(@javax.annotation.Nonnull AwsExchangeCredentialsOKCredentials credentials) {
     this.credentials = credentials;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,10 +131,7 @@ public class AwsExchangeCredentialsOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,7 +169,7 @@ public class AwsExchangeCredentialsOK {
     // add `connectionClientId` to the URL query string
     if (getConnectionClientId() != null) {
       try {
-        joiner.add(String.format("%sconnectionClientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConnectionClientId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconnectionClientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConnectionClientId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -28,6 +28,7 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
+  replaceWithSerializableTypeIfNeeded,
 } from './common'
 import type { RequestArgs } from './base'
 // @ts-ignore
@@ -39,34 +40,21 @@ import {
   operationServerMap,
 } from './base'
 
-/**
- *
- * @export
- * @interface CreateWalletInput
- */
 export interface CreateWalletInput {
   /**
    * The name of the wallet
-   * @type {string}
-   * @memberof CreateWalletInput
    */
   name?: string
   /**
    * The description of the wallet
-   * @type {string}
-   * @memberof CreateWalletInput
    */
   description?: string
   /**
    * Define how DID of your wallet is created and resolved
-   * @type {string}
-   * @memberof CreateWalletInput
    */
   didMethod?: CreateWalletInputDidMethodEnum
   /**
    * URL of the DID. Required if the did method is web
-   * @type {string}
-   * @memberof CreateWalletInput
    */
   didWebUrl?: string
 }
@@ -82,24 +70,32 @@ export type CreateWalletInputDidMethodEnum =
 
 /**
  * Input for adding a new key to a wallet. Only supported for did:web ATM.
- * @export
- * @interface CreateWalletKeyInput
  */
 export interface CreateWalletKeyInput {
   /**
    * cryptographic algorithm for the new key
-   * @type {string}
-   * @memberof CreateWalletKeyInput
    */
-  keyType: CreateWalletKeyInputKeyTypeEnum
+  algorithm?: CreateWalletKeyInputAlgorithmEnum
+  /**
+   * Deprecated alias of `algorithm`. Accepted for backward compatibility; prefer `algorithm`. If both are sent, `algorithm` takes precedence.
+   * @deprecated
+   */
+  keyType?: CreateWalletKeyInputKeyTypeEnum
   /**
    * verification relationships for the key.
-   * @type {Array<VerificationRelationship>}
-   * @memberof CreateWalletKeyInput
    */
   relationships: Array<VerificationRelationship>
 }
 
+export const CreateWalletKeyInputAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+  Mldsa44: 'mldsa44',
+} as const
+
+export type CreateWalletKeyInputAlgorithmEnum =
+  (typeof CreateWalletKeyInputAlgorithmEnum)[keyof typeof CreateWalletKeyInputAlgorithmEnum]
 export const CreateWalletKeyInputKeyTypeEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
@@ -111,57 +107,33 @@ export type CreateWalletKeyInputKeyTypeEnum =
 
 /**
  * wallet dto
- * @export
- * @interface CreateWalletResponse
  */
 export interface CreateWalletResponse {
-  /**
-   *
-   * @type {WalletDto}
-   * @memberof CreateWalletResponse
-   */
   wallet?: WalletDto
 }
-/**
- *
- * @export
- * @interface CreateWalletV2Input
- */
 export interface CreateWalletV2Input {
   /**
    * The name of the wallet
-   * @type {string}
-   * @memberof CreateWalletV2Input
    */
   name?: string
   /**
    * The description of the wallet
-   * @type {string}
-   * @memberof CreateWalletV2Input
    */
   description?: string
   /**
    * Define how DID of your wallet is created and resolved
-   * @type {string}
-   * @memberof CreateWalletV2Input
    */
   didMethod?: CreateWalletV2InputDidMethodEnum
   /**
    * URL of the DID. Required if the did method is web
-   * @type {string}
-   * @memberof CreateWalletV2Input
    */
   didWebUrl?: string
   /**
    * algorithm to generate key for the wallet
-   * @type {string}
-   * @memberof CreateWalletV2Input
    */
   algorithm?: CreateWalletV2InputAlgorithmEnum
   /**
    * Service endpoints to include in DID document
-   * @type {Array<ServiceEndpointInput>}
-   * @memberof CreateWalletV2Input
    */
   services?: Array<ServiceEndpointInput>
 }
@@ -179,6 +151,7 @@ export const CreateWalletV2InputAlgorithmEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
   P256: 'p256',
+  Mldsa44: 'mldsa44',
 } as const
 
 export type CreateWalletV2InputAlgorithmEnum =
@@ -186,52 +159,15 @@ export type CreateWalletV2InputAlgorithmEnum =
 
 /**
  * wallet dto
- * @export
- * @interface CreateWalletV2Response
  */
 export interface CreateWalletV2Response {
-  /**
-   *
-   * @type {WalletV2Dto}
-   * @memberof CreateWalletV2Response
-   */
   wallet?: WalletV2Dto
 }
-/**
- *
- * @export
- * @interface EntityNotFoundError
- */
 export interface EntityNotFoundError {
-  /**
-   *
-   * @type {string}
-   * @memberof EntityNotFoundError
-   */
   name: EntityNotFoundErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof EntityNotFoundError
-   */
   message: EntityNotFoundErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof EntityNotFoundError
-   */
   httpStatusCode: EntityNotFoundErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof EntityNotFoundError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof EntityNotFoundError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -256,52 +192,15 @@ export type EntityNotFoundErrorHttpStatusCodeEnum =
 
 /**
  * DTO contains revocation list credential
- * @export
- * @interface GetRevocationListCredentialResultDto
  */
 export interface GetRevocationListCredentialResultDto {
-  /**
-   *
-   * @type {object}
-   * @memberof GetRevocationListCredentialResultDto
-   */
   revocationListCredential: object
 }
-/**
- *
- * @export
- * @interface InvalidParameterError
- */
 export interface InvalidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   name: InvalidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   message: InvalidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidParameterError
-   */
   httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof InvalidParameterError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -326,65 +225,27 @@ export type InvalidParameterErrorHttpStatusCodeEnum =
 
 /**
  * Response containing service endpoints
- * @export
- * @interface ListServiceEndpointsOK
  */
 export interface ListServiceEndpointsOK {
   /**
    * list of service endpoints
-   * @type {Array<ServiceEndpointDto>}
-   * @memberof ListServiceEndpointsOK
    */
   services: Array<ServiceEndpointDto>
 }
 /**
  * Response containing wallet keys
- * @export
- * @interface ListWalletKeysOK
  */
 export interface ListWalletKeysOK {
   /**
    * list of wallet keys
-   * @type {Array<WalletKeyDto>}
-   * @memberof ListWalletKeysOK
    */
   keys: Array<WalletKeyDto>
 }
-/**
- *
- * @export
- * @interface NotFoundError
- */
 export interface NotFoundError {
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   name: NotFoundErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   message: NotFoundErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof NotFoundError
-   */
   httpStatusCode: NotFoundErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof NotFoundError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -407,72 +268,17 @@ export const NotFoundErrorHttpStatusCodeEnum = {
 export type NotFoundErrorHttpStatusCodeEnum =
   (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface NotFoundErrorDetailsInner
- */
 export interface NotFoundErrorDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   location?: string
 }
-/**
- *
- * @export
- * @interface OperationForbiddenError
- */
 export interface OperationForbiddenError {
-  /**
-   *
-   * @type {string}
-   * @memberof OperationForbiddenError
-   */
   name: OperationForbiddenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof OperationForbiddenError
-   */
   message: OperationForbiddenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof OperationForbiddenError
-   */
   httpStatusCode: OperationForbiddenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof OperationForbiddenError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof OperationForbiddenError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -495,139 +301,77 @@ export const OperationForbiddenErrorHttpStatusCodeEnum = {
 export type OperationForbiddenErrorHttpStatusCodeEnum =
   (typeof OperationForbiddenErrorHttpStatusCodeEnum)[keyof typeof OperationForbiddenErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface RevokeCredentialInput
- */
 export interface RevokeCredentialInput {
-  /**
-   *
-   * @type {string}
-   * @memberof RevokeCredentialInput
-   */
   revocationReason?: string | null
-  /**
-   *
-   * @type {string}
-   * @memberof RevokeCredentialInput
-   */
   credentialId?: string
 }
-/**
- *
- * @export
- * @interface RevokeCredentialsInput
- */
 export interface RevokeCredentialsInput {
-  /**
-   *
-   * @type {string}
-   * @memberof RevokeCredentialsInput
-   */
   revocationReason?: string
-  /**
-   *
-   * @type {string}
-   * @memberof RevokeCredentialsInput
-   */
   credentialId: string
 }
 /**
  * Service endpoint information
- * @export
- * @interface ServiceEndpointDto
  */
 export interface ServiceEndpointDto {
   /**
    * service endpoint ID
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   id?: string
   /**
    * name of the service endpoint
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   name?: string
   /**
    * description of the service endpoint
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   description?: string
   /**
    * service endpoint URL
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   url?: string
   /**
    * wallet ARI this endpoint belongs to
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   walletAri?: string
   /**
    * project ID
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   projectId?: string
   /**
    * when this endpoint was created
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   createdAt?: string
   /**
    * when this endpoint was last modified
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   modifiedAt?: string
   /**
    * identifier of the user who created the entity
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   createdBy?: string
   /**
    * identifier of the user who last updated the entity
-   * @type {string}
-   * @memberof ServiceEndpointDto
    */
   modifiedBy?: string
 }
 /**
  * Input for adding a service endpoint
- * @export
- * @interface ServiceEndpointInput
  */
 export interface ServiceEndpointInput {
   /**
    * Alphanumeric string with common punctuation (max 100 characters)
-   * @type {string}
-   * @memberof ServiceEndpointInput
    */
   name?: string
   /**
    * Alphanumeric string with common punctuation (max 500 characters)
-   * @type {string}
-   * @memberof ServiceEndpointInput
    */
   description?: string
   /**
    * HTTP or HTTPS URL
-   * @type {string}
-   * @memberof ServiceEndpointInput
    */
   url: string
   /**
    * type of service endpoint
-   * @type {string}
-   * @memberof ServiceEndpointInput
    */
   serviceType?: ServiceEndpointInputServiceTypeEnum
 }
@@ -644,7 +388,6 @@ export type ServiceEndpointInputServiceTypeEnum =
 
 /**
  * @type SignCredential400Response
- * @export
  */
 export type SignCredential400Response =
   | InvalidParameterError
@@ -652,33 +395,14 @@ export type SignCredential400Response =
 
 /**
  * DTO contains params to sign credential
- * @export
- * @interface SignCredentialInputDto
  */
 export interface SignCredentialInputDto {
   /**
    * Unsigned Credential. If provided \"unsignedCredentialParams\" is not accepted
-   * @type {object}
-   * @memberof SignCredentialInputDto
    */
   unsignedCredential?: object
-  /**
-   *
-   * @type {boolean}
-   * @memberof SignCredentialInputDto
-   */
   revocable?: boolean
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialInputDto
-   */
   credentialFormat?: SignCredentialInputDtoCredentialFormatEnum
-  /**
-   *
-   * @type {SignCredentialInputDtoUnsignedCredentialParams}
-   * @memberof SignCredentialInputDto
-   */
   unsignedCredentialParams?: SignCredentialInputDtoUnsignedCredentialParams
 }
 
@@ -693,94 +417,34 @@ export type SignCredentialInputDtoCredentialFormatEnum =
 
 /**
  * unsignedCredentialParams. Used to build an unsigned credential before the signing. This param is not accepted when \"unsignedCredential\" is given
- * @export
- * @interface SignCredentialInputDtoUnsignedCredentialParams
  */
 export interface SignCredentialInputDtoUnsignedCredentialParams {
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialInputDtoUnsignedCredentialParams
-   */
   jsonLdContextUrl: string
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialInputDtoUnsignedCredentialParams
-   */
   jsonSchemaUrl: string
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialInputDtoUnsignedCredentialParams
-   */
   typeName: string
-  /**
-   *
-   * @type {{ [key: string]: any; }}
-   * @memberof SignCredentialInputDtoUnsignedCredentialParams
-   */
   credentialSubject: { [key: string]: any }
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialInputDtoUnsignedCredentialParams
-   */
   holderDid: string
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialInputDtoUnsignedCredentialParams
-   */
   expiresAt: string
 }
 /**
  * DTO contains signed credential
- * @export
- * @interface SignCredentialResultDto
  */
 export interface SignCredentialResultDto {
-  /**
-   *
-   * @type {{ [key: string]: any; }}
-   * @memberof SignCredentialResultDto
-   */
   signedCredential: { [key: string]: any }
 }
 /**
  * DTO contains params to sign credential
- * @export
- * @interface SignCredentialsDm2SdJwtInputDto
  */
 export interface SignCredentialsDm2SdJwtInputDto {
   /**
    * Unsigned Credential in Dm2 format
-   * @type {object}
-   * @memberof SignCredentialsDm2SdJwtInputDto
    */
   unsignedCredential: object
-  /**
-   *
-   * @type {boolean}
-   * @memberof SignCredentialsDm2SdJwtInputDto
-   */
   revocable?: boolean
-  /**
-   *
-   * @type {object}
-   * @memberof SignCredentialsDm2SdJwtInputDto
-   */
   disclosureFrame: object
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialsDm2SdJwtInputDto
-   */
   signatureScheme?: SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum
   /**
    * wallet key ID to use for signing (defaults to wallet\'s default key)
-   * @type {string}
-   * @memberof SignCredentialsDm2SdJwtInputDto
    */
   keyId?: string
 }
@@ -796,45 +460,25 @@ export type SignCredentialsDm2SdJwtInputDtoSignatureSchemeEnum =
 
 /**
  * DTO contains signed credential
- * @export
- * @interface SignCredentialsDm2SdJwtResultDto
  */
 export interface SignCredentialsDm2SdJwtResultDto {
   /**
    * Issued selective disclosure SD in jwt format
-   * @type {string}
-   * @memberof SignCredentialsDm2SdJwtResultDto
    */
   credential: string
 }
 /**
  * DTO contains params to sign credential
- * @export
- * @interface SignCredentialsJwtInputDto
  */
 export interface SignCredentialsJwtInputDto {
   /**
    * Unsigned Credential in Dm1 format
-   * @type {object}
-   * @memberof SignCredentialsJwtInputDto
    */
   unsignedCredential: object
-  /**
-   *
-   * @type {boolean}
-   * @memberof SignCredentialsJwtInputDto
-   */
   revocable?: boolean
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialsJwtInputDto
-   */
   signatureScheme?: SignCredentialsJwtInputDtoSignatureSchemeEnum
   /**
    * wallet key ID to use for signing (defaults to wallet\'s default key)
-   * @type {string}
-   * @memberof SignCredentialsJwtInputDto
    */
   keyId?: string
 }
@@ -850,51 +494,29 @@ export type SignCredentialsJwtInputDtoSignatureSchemeEnum =
 
 /**
  * DTO contains signed credential
- * @export
- * @interface SignCredentialsJwtResultDto
  */
 export interface SignCredentialsJwtResultDto {
   /**
    * Signed credential in DM2 jwt format
-   * @type {string}
-   * @memberof SignCredentialsJwtResultDto
    */
   credential: string
 }
 /**
  * DTO contains params to sign credential
- * @export
- * @interface SignCredentialsLdpInputDto
  */
 export interface SignCredentialsLdpInputDto {
   /**
    * Unsigned Credential in Dm2 format
-   * @type {object}
-   * @memberof SignCredentialsLdpInputDto
    */
   unsignedCredential: object
-  /**
-   *
-   * @type {boolean}
-   * @memberof SignCredentialsLdpInputDto
-   */
   revocable?: boolean
-  /**
-   *
-   * @type {string}
-   * @memberof SignCredentialsLdpInputDto
-   */
   signatureScheme?: SignCredentialsLdpInputDtoSignatureSchemeEnum
   /**
    * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
-   * @type {string}
-   * @memberof SignCredentialsLdpInputDto
    */
   signatureSuite?: SignCredentialsLdpInputDtoSignatureSuiteEnum
   /**
    * wallet key ID to use for signing (defaults to wallet\'s default key)
-   * @type {string}
-   * @memberof SignCredentialsLdpInputDto
    */
   keyId?: string
 }
@@ -903,6 +525,7 @@ export const SignCredentialsLdpInputDtoSignatureSchemeEnum = {
   EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
   EcdsaP256Sha256: 'ecdsa_p256_sha256',
   Ed25519: 'ed25519',
+  Mldsa44: 'mldsa44',
 } as const
 
 export type SignCredentialsLdpInputDtoSignatureSchemeEnum =
@@ -913,6 +536,8 @@ export const SignCredentialsLdpInputDtoSignatureSuiteEnum = {
   EddsaJcs2022: 'eddsa-jcs-2022',
   EddsaRdfc2022: 'eddsa-rdfc-2022',
   EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+  Mldsa44Jcs2024: 'mldsa44-jcs-2024',
+  Mldsa44Rdfc2024: 'mldsa44-rdfc-2024',
 } as const
 
 export type SignCredentialsLdpInputDtoSignatureSuiteEnum =
@@ -920,121 +545,59 @@ export type SignCredentialsLdpInputDtoSignatureSuiteEnum =
 
 /**
  * DTO contains signed credential
- * @export
- * @interface SignCredentialsLdpResultDto
  */
 export interface SignCredentialsLdpResultDto {
   /**
    * Signed credential can be in Dm2Ld format
-   * @type {object}
-   * @memberof SignCredentialsLdpResultDto
    */
   credential: object
 }
 /**
  * DTO contains parts of JWT to be signed
- * @export
- * @interface SignJwtToken
  */
 export interface SignJwtToken {
-  /**
-   *
-   * @type {object}
-   * @memberof SignJwtToken
-   */
   header: object
-  /**
-   *
-   * @type {object}
-   * @memberof SignJwtToken
-   */
   payload: object
 }
-/**
- *
- * @export
- * @interface SignJwtTokenOK
- */
 export interface SignJwtTokenOK {
-  /**
-   *
-   * @type {string}
-   * @memberof SignJwtTokenOK
-   */
   signedJwt?: string
 }
 /**
  * DTO contains payload of JWT to be signed
- * @export
- * @interface SignJwtV2InputDto
  */
 export interface SignJwtV2InputDto {
-  /**
-   *
-   * @type {object}
-   * @memberof SignJwtV2InputDto
-   */
   payload: object
   /**
    * wallet key ID to use for signing (defaults to wallet\'s default key)
-   * @type {string}
-   * @memberof SignJwtV2InputDto
    */
   keyId?: string
 }
-/**
- *
- * @export
- * @interface SignJwtV2ResultDto
- */
 export interface SignJwtV2ResultDto {
-  /**
-   *
-   * @type {string}
-   * @memberof SignJwtV2ResultDto
-   */
   signedJwt?: string
 }
 /**
  * DTO contains params to sign presentation
- * @export
- * @interface SignPresentationLdpInputDto
  */
 export interface SignPresentationLdpInputDto {
   /**
    * Unsigned presentation in Dm1 format
-   * @type {object}
-   * @memberof SignPresentationLdpInputDto
    */
   unsignedPresentation: object
-  /**
-   *
-   * @type {string}
-   * @memberof SignPresentationLdpInputDto
-   */
   signatureScheme?: SignPresentationLdpInputDtoSignatureSchemeEnum
   /**
    * W3C signature suite for canonicalization. Defaults to rdfc variants for each algorithm (ecdsa-rdfc-2019 for P256, eddsa-rdfc-2022 for Ed25519, EcdsaSecp256k1Signature2019 for secp256k1).
-   * @type {string}
-   * @memberof SignPresentationLdpInputDto
    */
   signatureSuite?: SignPresentationLdpInputDtoSignatureSuiteEnum
   /**
    * Domain(s) for which the presentation is intended
-   * @type {Array<string>}
-   * @memberof SignPresentationLdpInputDto
    */
   domain?: Array<string>
   /**
    * Challenge string
-   * @type {string}
-   * @memberof SignPresentationLdpInputDto
    */
   challenge?: string
   /**
    * wallet key ID to use for signing (defaults to wallet\'s default key)
-   * @type {string}
-   * @memberof SignPresentationLdpInputDto
    */
   keyId?: string
 }
@@ -1043,6 +606,7 @@ export const SignPresentationLdpInputDtoSignatureSchemeEnum = {
   EcdsaSecp256k1Sha256: 'ecdsa_secp256k1_sha256',
   EcdsaP256Sha256: 'ecdsa_p256_sha256',
   Ed25519: 'ed25519',
+  Mldsa44: 'mldsa44',
 } as const
 
 export type SignPresentationLdpInputDtoSignatureSchemeEnum =
@@ -1053,6 +617,8 @@ export const SignPresentationLdpInputDtoSignatureSuiteEnum = {
   EddsaJcs2022: 'eddsa-jcs-2022',
   EddsaRdfc2022: 'eddsa-rdfc-2022',
   EcdsaSecp256k1Signature2019: 'EcdsaSecp256k1Signature2019',
+  Mldsa44Jcs2024: 'mldsa44-jcs-2024',
+  Mldsa44Rdfc2024: 'mldsa44-rdfc-2024',
 } as const
 
 export type SignPresentationLdpInputDtoSignatureSuiteEnum =
@@ -1060,52 +626,18 @@ export type SignPresentationLdpInputDtoSignatureSuiteEnum =
 
 /**
  * DTO contains signed presentation
- * @export
- * @interface SignPresentationLdpResultDto
  */
 export interface SignPresentationLdpResultDto {
   /**
    * Signed presentation in Dm1Ld format
-   * @type {object}
-   * @memberof SignPresentationLdpResultDto
    */
   presentation: object
 }
-/**
- *
- * @export
- * @interface SigningFailedError
- */
 export interface SigningFailedError {
-  /**
-   *
-   * @type {string}
-   * @memberof SigningFailedError
-   */
   name: SigningFailedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof SigningFailedError
-   */
   message: SigningFailedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof SigningFailedError
-   */
   httpStatusCode: SigningFailedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof SigningFailedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof SigningFailedError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -1128,41 +660,11 @@ export const SigningFailedErrorHttpStatusCodeEnum = {
 export type SigningFailedErrorHttpStatusCodeEnum =
   (typeof SigningFailedErrorHttpStatusCodeEnum)[keyof typeof SigningFailedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface TooManyRequestsError
- */
 export interface TooManyRequestsError {
-  /**
-   *
-   * @type {string}
-   * @memberof TooManyRequestsError
-   */
   name: TooManyRequestsErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof TooManyRequestsError
-   */
   message: TooManyRequestsErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof TooManyRequestsError
-   */
   httpStatusCode: TooManyRequestsErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof TooManyRequestsError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof TooManyRequestsError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -1188,65 +690,45 @@ export type TooManyRequestsErrorHttpStatusCodeEnum =
 
 /**
  * Input for updating a service endpoint
- * @export
- * @interface UpdateServiceEndpointInput
  */
 export interface UpdateServiceEndpointInput {
   /**
    * Alphanumeric string with common punctuation (max 100 characters)
-   * @type {string}
-   * @memberof UpdateServiceEndpointInput
    */
   name?: string
   /**
    * Alphanumeric string with common punctuation (max 500 characters)
-   * @type {string}
-   * @memberof UpdateServiceEndpointInput
    */
   description?: string
   /**
    * HTTP or HTTPS URL
-   * @type {string}
-   * @memberof UpdateServiceEndpointInput
    */
   url?: string
 }
 /**
  * Update wallet input params
- * @export
- * @interface UpdateWalletInput
  */
 export interface UpdateWalletInput {
   /**
    * The name of the wallet
-   * @type {string}
-   * @memberof UpdateWalletInput
    */
   name?: string
   /**
    * The description of the wallet
-   * @type {string}
-   * @memberof UpdateWalletInput
    */
   description?: string
 }
 /**
  * Input for updating an existing wallet key. Only supported for did:web wallets.
- * @export
- * @interface UpdateWalletKeyInput
  */
 export interface UpdateWalletKeyInput {
   /**
    * verification relationships for the key
-   * @type {Array<VerificationRelationship>}
-   * @memberof UpdateWalletKeyInput
    */
   relationships?: Array<VerificationRelationship>
 }
 /**
  * DID document verification relationship
- * @export
- * @enum {string}
  */
 
 export const VerificationRelationship = {
@@ -1262,8 +744,6 @@ export type VerificationRelationship =
 
 /**
  * DID method type for the wallet
- * @export
- * @enum {string}
  */
 
 export const WalletDidType = {
@@ -1275,116 +755,86 @@ export type WalletDidType = (typeof WalletDidType)[keyof typeof WalletDidType]
 
 /**
  * wallet dto
- * @export
- * @interface WalletDto
  */
 export interface WalletDto {
   /**
    * id of the wallet in uuidV4 format
-   * @type {string}
-   * @memberof WalletDto
    */
   id?: string
   /**
    * did of the wallet
-   * @type {string}
-   * @memberof WalletDto
    */
   did?: string
   /**
    * The name of the wallet
-   * @type {string}
-   * @memberof WalletDto
    */
   name?: string
   /**
    * The description of the wallet
-   * @type {string}
-   * @memberof WalletDto
    */
   description?: string
   /**
    * did document of the wallet
-   * @type {object}
-   * @memberof WalletDto
    */
   didDocument?: object
   /**
    * ARI of the wallet
-   * @type {string}
-   * @memberof WalletDto
    */
   ari?: string
-  /**
-   *
-   * @type {Array<WalletDtoKeysInner>}
-   * @memberof WalletDto
-   */
   keys?: Array<WalletDtoKeysInner>
-  /**
-   *
-   * @type {string}
-   * @memberof WalletDto
-   */
   createdAt?: string
-  /**
-   *
-   * @type {string}
-   * @memberof WalletDto
-   */
   modifiedAt?: string
+  /**
+   * The version of the wallet
+   */
+  version?: number
 }
-/**
- *
- * @export
- * @interface WalletDtoKeysInner
- */
 export interface WalletDtoKeysInner {
   /**
    * id of linked key
-   * @type {string}
-   * @memberof WalletDtoKeysInner
    */
   id?: string
   /**
    * ari of linked key
-   * @type {string}
-   * @memberof WalletDtoKeysInner
    */
   ari?: string
 }
 /**
  * Detailed information about a wallet key. Multiple keys are only supported for did:web wallets.
- * @export
- * @interface WalletKeyDto
  */
 export interface WalletKeyDto {
   /**
    * wallet-scoped key identifier (e.g., \"key-1\")
-   * @type {string}
-   * @memberof WalletKeyDto
    */
   keyId?: string
   /**
    * cryptographic algorithm used by this key
-   * @type {string}
-   * @memberof WalletKeyDto
+   */
+  algorithm?: WalletKeyDtoAlgorithmEnum
+  /**
+   * Deprecated alias of `algorithm`. Always equal to `algorithm` and included for backward compatibility.
+   * @deprecated
    */
   keyType?: WalletKeyDtoKeyTypeEnum
   /**
    * ARI identifier for the key (e.g., \"ari:key:...\")
-   * @type {string}
-   * @memberof WalletKeyDto
    */
   keyAri?: string
   /**
    * verification relationships this key supports
-   * @type {Array<VerificationRelationship>}
-   * @memberof WalletKeyDto
    */
   relationships?: Array<VerificationRelationship>
 }
 
+export const WalletKeyDtoAlgorithmEnum = {
+  Secp256k1: 'secp256k1',
+  Ed25519: 'ed25519',
+  P256: 'p256',
+  Mldsa44: 'mldsa44',
+} as const
+
+export type WalletKeyDtoAlgorithmEnum =
+  (typeof WalletKeyDtoAlgorithmEnum)[keyof typeof WalletKeyDtoAlgorithmEnum]
 export const WalletKeyDtoKeyTypeEnum = {
   Secp256k1: 'secp256k1',
   Ed25519: 'ed25519',
@@ -1396,94 +846,57 @@ export type WalletKeyDtoKeyTypeEnum =
 
 /**
  * wallet v2 dto
- * @export
- * @interface WalletV2Dto
  */
 export interface WalletV2Dto {
   /**
    * id of the wallet in uuidV4 format
-   * @type {string}
-   * @memberof WalletV2Dto
    */
   id?: string
   /**
    * did of the wallet
-   * @type {string}
-   * @memberof WalletV2Dto
    */
   did?: string
   /**
    * The name of the wallet
-   * @type {string}
-   * @memberof WalletV2Dto
    */
   name?: string
   /**
    * The description of the wallet
-   * @type {string}
-   * @memberof WalletV2Dto
    */
   description?: string
   /**
    * did document of the wallet
-   * @type {object}
-   * @memberof WalletV2Dto
    */
   didDocument?: object
   /**
    * ARI of the wallet
-   * @type {string}
-   * @memberof WalletV2Dto
    */
   ari?: string
   /**
    * algorithm used to generate key for the wallet
-   * @type {string}
-   * @memberof WalletV2Dto
    */
   algorithm?: string
-  /**
-   *
-   * @type {Array<WalletDtoKeysInner>}
-   * @memberof WalletV2Dto
-   */
   keys?: Array<WalletDtoKeysInner>
   /**
    * list of service endpoints associated with this wallet
-   * @type {Array<ServiceEndpointDto>}
-   * @memberof WalletV2Dto
    */
   services?: Array<ServiceEndpointDto>
-  /**
-   *
-   * @type {string}
-   * @memberof WalletV2Dto
-   */
   createdAt?: string
-  /**
-   *
-   * @type {string}
-   * @memberof WalletV2Dto
-   */
   modifiedAt?: string
+  /**
+   * The version of the wallet
+   */
+  version?: number
 }
 /**
  * list of wallets
- * @export
- * @interface WalletsListDto
  */
 export interface WalletsListDto {
-  /**
-   *
-   * @type {Array<WalletDto>}
-   * @memberof WalletsListDto
-   */
   wallets?: Array<WalletDto>
 }
 
 /**
  * RevocationApi - axios parameter creator
- * @export
  */
 export const RevocationApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1511,9 +924,9 @@ export const RevocationApiAxiosParamCreator = function (
       assertParamExists('getRevocationCredentialStatus', 'statusId', statusId)
       const localVarPath =
         `/v1/projects/{projectId}/wallets/{walletId}/revocation-statuses/{statusId}`
-          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
-          .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
-          .replace(`{${'statusId'}}`, encodeURIComponent(String(statusId)))
+          .replace('{projectId}', encodeURIComponent(String(projectId)))
+          .replace('{walletId}', encodeURIComponent(String(walletId)))
+          .replace('{statusId}', encodeURIComponent(String(statusId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -1535,6 +948,8 @@ export const RevocationApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1569,8 +984,8 @@ export const RevocationApiAxiosParamCreator = function (
       // verify required parameter 'walletId' is not null or undefined
       assertParamExists('getRevocationListCredential', 'walletId', walletId)
       const localVarPath = `/v1/wallets/{walletId}/revocation-list/{listId}`
-        .replace(`{${'listId'}}`, encodeURIComponent(String(listId)))
-        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
+        .replace('{listId}', encodeURIComponent(String(listId)))
+        .replace('{walletId}', encodeURIComponent(String(walletId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -1592,6 +1007,8 @@ export const RevocationApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1629,7 +1046,7 @@ export const RevocationApiAxiosParamCreator = function (
         revokeCredentialInput,
       )
       const localVarPath = `/v1/wallets/{walletId}/revoke`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1655,6 +1072,7 @@ export const RevocationApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1697,7 +1115,7 @@ export const RevocationApiAxiosParamCreator = function (
         revokeCredentialsInput,
       )
       const localVarPath = `/v2/wallets/{walletId}/credentials/revoke`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1723,6 +1141,7 @@ export const RevocationApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1748,7 +1167,6 @@ export const RevocationApiAxiosParamCreator = function (
 
 /**
  * RevocationApi - functional programming interface
- * @export
  */
 export const RevocationApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -1904,7 +1322,6 @@ export const RevocationApiFp = function (configuration?: Configuration) {
 
 /**
  * RevocationApi - factory interface
- * @export
  */
 export const RevocationApiFactory = function (
   configuration?: Configuration,
@@ -1988,9 +1405,6 @@ export const RevocationApiFactory = function (
 
 /**
  * RevocationApi - object-oriented interface
- * @export
- * @class RevocationApi
- * @extends {BaseAPI}
  */
 export class RevocationApi extends BaseAPI {
   /**
@@ -2000,7 +1414,6 @@ export class RevocationApi extends BaseAPI {
    * @param {string} statusId Description for statusId.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof RevocationApi
    */
   public getRevocationCredentialStatus(
     projectId: string,
@@ -2021,7 +1434,6 @@ export class RevocationApi extends BaseAPI {
    * @param {*} [options] Override http request option.
    * @deprecated
    * @throws {RequiredError}
-   * @memberof RevocationApi
    */
   public getRevocationListCredential(
     listId: string,
@@ -2040,7 +1452,6 @@ export class RevocationApi extends BaseAPI {
    * @param {RevokeCredentialInput} revokeCredentialInput RevokeCredential
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof RevocationApi
    */
   public revokeCredential(
     walletId: string,
@@ -2059,7 +1470,6 @@ export class RevocationApi extends BaseAPI {
    * @param {RevokeCredentialsInput} revokeCredentialsInput RevokeCredentials
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof RevocationApi
    */
   public revokeCredentials(
     walletId: string,
@@ -2074,7 +1484,6 @@ export class RevocationApi extends BaseAPI {
 
 /**
  * WalletApi - axios parameter creator
- * @export
  */
 export const WalletApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -2101,7 +1510,7 @@ export const WalletApiAxiosParamCreator = function (
         serviceEndpointInput,
       )
       const localVarPath = `/v2/wallets/{walletId}/services`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2127,6 +1536,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2181,6 +1591,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2222,7 +1633,7 @@ export const WalletApiAxiosParamCreator = function (
         createWalletKeyInput,
       )
       const localVarPath = `/v2/wallets/{walletId}/keys`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2248,6 +1659,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2302,6 +1714,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2335,7 +1748,7 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'walletId' is not null or undefined
       assertParamExists('deleteWallet', 'walletId', walletId)
       const localVarPath = `/v1/wallets/{walletId}`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2387,7 +1800,7 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'walletId' is not null or undefined
       assertParamExists('getWallet', 'walletId', walletId)
       const localVarPath = `/v1/wallets/{walletId}`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2411,6 +1824,8 @@ export const WalletApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2439,7 +1854,7 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'walletId' is not null or undefined
       assertParamExists('listServiceEndpoints', 'walletId', walletId)
       const localVarPath = `/v2/wallets/{walletId}/services`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2463,6 +1878,8 @@ export const WalletApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2491,7 +1908,7 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'walletId' is not null or undefined
       assertParamExists('listWalletKeys', 'walletId', walletId)
       const localVarPath = `/v2/wallets/{walletId}/keys`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2515,6 +1932,8 @@ export const WalletApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2567,6 +1986,8 @@ export const WalletApiAxiosParamCreator = function (
         localVarQueryParameter['didType'] = didType
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -2598,8 +2019,8 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'serviceId' is not null or undefined
       assertParamExists('removeServiceEndpoint', 'serviceId', serviceId)
       const localVarPath = `/v2/wallets/{walletId}/services/{serviceId}`
-        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
-        .replace(`{${'serviceId'}}`, encodeURIComponent(String(serviceId)))
+        .replace('{walletId}', encodeURIComponent(String(walletId)))
+        .replace('{serviceId}', encodeURIComponent(String(serviceId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -2653,8 +2074,8 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'keyId' is not null or undefined
       assertParamExists('removeWalletKey', 'keyId', keyId)
       const localVarPath = `/v2/wallets/{walletId}/keys/{keyId}`
-        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
-        .replace(`{${'keyId'}}`, encodeURIComponent(String(keyId)))
+        .replace('{walletId}', encodeURIComponent(String(walletId)))
+        .replace('{keyId}', encodeURIComponent(String(keyId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -2676,6 +2097,8 @@ export const WalletApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2712,7 +2135,7 @@ export const WalletApiAxiosParamCreator = function (
         signCredentialInputDto,
       )
       const localVarPath = `/v1/wallets/{walletId}/sign-credential`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2738,6 +2161,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2780,7 +2204,7 @@ export const WalletApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v2/wallets/{walletId}/credentials/jwt/sign`.replace(
-          `{${'walletId'}}`,
+          '{walletId}',
           encodeURIComponent(String(walletId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2806,6 +2230,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2848,7 +2273,7 @@ export const WalletApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v2/wallets/{walletId}/credentials/ldp/sign`.replace(
-          `{${'walletId'}}`,
+          '{walletId}',
           encodeURIComponent(String(walletId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2874,6 +2299,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2916,7 +2342,7 @@ export const WalletApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v2/wallets/{walletId}/credentials/sd-jwt/sign`.replace(
-          `{${'walletId'}}`,
+          '{walletId}',
           encodeURIComponent(String(walletId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2942,6 +2368,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2979,7 +2406,7 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'signJwtToken' is not null or undefined
       assertParamExists('signJwtToken', 'signJwtToken', signJwtToken)
       const localVarPath = `/v1/wallets/{walletId}/sign-jwt`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3005,6 +2432,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3043,7 +2471,7 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'signJwtV2InputDto' is not null or undefined
       assertParamExists('signJwtV2', 'signJwtV2InputDto', signJwtV2InputDto)
       const localVarPath = `/v2/wallets/{walletId}/jwt/sign`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3069,6 +2497,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3111,7 +2540,7 @@ export const WalletApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v2/wallets/{walletId}/presentations/ldp/sign`.replace(
-          `{${'walletId'}}`,
+          '{walletId}',
           encodeURIComponent(String(walletId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3137,6 +2566,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3182,8 +2612,8 @@ export const WalletApiAxiosParamCreator = function (
         updateServiceEndpointInput,
       )
       const localVarPath = `/v2/wallets/{walletId}/services/{serviceId}`
-        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
-        .replace(`{${'serviceId'}}`, encodeURIComponent(String(serviceId)))
+        .replace('{walletId}', encodeURIComponent(String(walletId)))
+        .replace('{serviceId}', encodeURIComponent(String(serviceId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -3207,6 +2637,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3244,7 +2675,7 @@ export const WalletApiAxiosParamCreator = function (
       // verify required parameter 'updateWalletInput' is not null or undefined
       assertParamExists('updateWallet', 'updateWalletInput', updateWalletInput)
       const localVarPath = `/v1/wallets/{walletId}`.replace(
-        `{${'walletId'}}`,
+        '{walletId}',
         encodeURIComponent(String(walletId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3270,6 +2701,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3315,8 +2747,8 @@ export const WalletApiAxiosParamCreator = function (
         updateWalletKeyInput,
       )
       const localVarPath = `/v2/wallets/{walletId}/keys/{keyId}`
-        .replace(`{${'walletId'}}`, encodeURIComponent(String(walletId)))
-        .replace(`{${'keyId'}}`, encodeURIComponent(String(keyId)))
+        .replace('{walletId}', encodeURIComponent(String(walletId)))
+        .replace('{keyId}', encodeURIComponent(String(keyId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -3340,6 +2772,7 @@ export const WalletApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3365,7 +2798,6 @@ export const WalletApiAxiosParamCreator = function (
 
 /**
  * WalletApi - functional programming interface
- * @export
  */
 export const WalletApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = WalletApiAxiosParamCreator(configuration)
@@ -4074,7 +3506,6 @@ export const WalletApiFp = function (configuration?: Configuration) {
 
 /**
  * WalletApi - factory interface
- * @export
  */
 export const WalletApiFactory = function (
   configuration?: Configuration,
@@ -4424,9 +3855,6 @@ export const WalletApiFactory = function (
 
 /**
  * WalletApi - object-oriented interface
- * @export
- * @class WalletApi
- * @extends {BaseAPI}
  */
 export class WalletApi extends BaseAPI {
   /**
@@ -4435,7 +3863,6 @@ export class WalletApi extends BaseAPI {
    * @param {ServiceEndpointInput} serviceEndpointInput AddServiceEndpoint
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public createServiceEndpoint(
     walletId: string,
@@ -4452,7 +3879,6 @@ export class WalletApi extends BaseAPI {
    * @param {CreateWalletInput} [createWalletInput] CreateWallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public createWallet(
     createWalletInput?: CreateWalletInput,
@@ -4469,7 +3895,6 @@ export class WalletApi extends BaseAPI {
    * @param {CreateWalletKeyInput} createWalletKeyInput CreateWalletKey
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public createWalletKey(
     walletId: string,
@@ -4486,7 +3911,6 @@ export class WalletApi extends BaseAPI {
    * @param {CreateWalletV2Input} [createWalletV2Input] CreateWallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public createWalletV2(
     createWalletV2Input?: CreateWalletV2Input,
@@ -4502,7 +3926,6 @@ export class WalletApi extends BaseAPI {
    * @param {string} walletId id of the wallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public deleteWallet(walletId: string, options?: RawAxiosRequestConfig) {
     return WalletApiFp(this.configuration)
@@ -4515,7 +3938,6 @@ export class WalletApi extends BaseAPI {
    * @param {string} walletId id of the wallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public getWallet(walletId: string, options?: RawAxiosRequestConfig) {
     return WalletApiFp(this.configuration)
@@ -4528,7 +3950,6 @@ export class WalletApi extends BaseAPI {
    * @param {string} walletId id of the wallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public listServiceEndpoints(
     walletId: string,
@@ -4544,7 +3965,6 @@ export class WalletApi extends BaseAPI {
    * @param {string} walletId id of the wallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public listWalletKeys(walletId: string, options?: RawAxiosRequestConfig) {
     return WalletApiFp(this.configuration)
@@ -4557,7 +3977,6 @@ export class WalletApi extends BaseAPI {
    * @param {WalletDidType} [didType]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public listWallets(didType?: WalletDidType, options?: RawAxiosRequestConfig) {
     return WalletApiFp(this.configuration)
@@ -4571,7 +3990,6 @@ export class WalletApi extends BaseAPI {
    * @param {string} serviceId id of the service endpoint to remove
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public removeServiceEndpoint(
     walletId: string,
@@ -4589,7 +4007,6 @@ export class WalletApi extends BaseAPI {
    * @param {string} keyId id of the key to remove
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public removeWalletKey(
     walletId: string,
@@ -4607,7 +4024,6 @@ export class WalletApi extends BaseAPI {
    * @param {SignCredentialInputDto} signCredentialInputDto SignCredential
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public signCredential(
     walletId: string,
@@ -4625,7 +4041,6 @@ export class WalletApi extends BaseAPI {
    * @param {SignCredentialsJwtInputDto} signCredentialsJwtInputDto signCredentialsJwt
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public signCredentialsJwt(
     walletId: string,
@@ -4643,7 +4058,6 @@ export class WalletApi extends BaseAPI {
    * @param {SignCredentialsLdpInputDto} signCredentialsLdpInputDto signCredentialsLdp
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public signCredentialsLdp(
     walletId: string,
@@ -4661,7 +4075,6 @@ export class WalletApi extends BaseAPI {
    * @param {SignCredentialsDm2SdJwtInputDto} signCredentialsDm2SdJwtInputDto SignCredentialsDm1SdJwt
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public signCredentialsSdJwt(
     walletId: string,
@@ -4679,7 +4092,6 @@ export class WalletApi extends BaseAPI {
    * @param {SignJwtToken} signJwtToken SignJwtToken
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public signJwtToken(
     walletId: string,
@@ -4698,7 +4110,6 @@ export class WalletApi extends BaseAPI {
    * @param {SignJwtV2InputDto} signJwtV2InputDto SignJwtV2
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public signJwtV2(
     walletId: string,
@@ -4716,7 +4127,6 @@ export class WalletApi extends BaseAPI {
    * @param {SignPresentationLdpInputDto} signPresentationLdpInputDto signPresentationLdp
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public signPresentationsLdp(
     walletId: string,
@@ -4735,7 +4145,6 @@ export class WalletApi extends BaseAPI {
    * @param {UpdateServiceEndpointInput} updateServiceEndpointInput UpdateServiceEndpoint
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public updateServiceEndpoint(
     walletId: string,
@@ -4759,7 +4168,6 @@ export class WalletApi extends BaseAPI {
    * @param {UpdateWalletInput} updateWalletInput UpdateWallet
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public updateWallet(
     walletId: string,
@@ -4778,7 +4186,6 @@ export class WalletApi extends BaseAPI {
    * @param {UpdateWalletKeyInput} updateWalletKeyInput UpdateWalletKey
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WalletApi
    */
   public updateWalletKey(
     walletId: string,

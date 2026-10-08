@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   GrantAccessInput.JSON_PROPERTY_PERMISSIONS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GrantAccessInput {
   public static final String JSON_PROPERTY_PERMISSIONS = "permissions";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class GrantAccessInput {
    * @return permissions
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PERMISSIONS)
+  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Permission> getPermissions() {
@@ -72,11 +72,12 @@ public class GrantAccessInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PERMISSIONS)
+  @JsonProperty(value = JSON_PROPERTY_PERMISSIONS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPermissions(@javax.annotation.Nonnull List<Permission> permissions) {
     this.permissions = permissions;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class GrantAccessInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class GrantAccessInput {
     if (getPermissions() != null) {
       for (int i = 0; i < getPermissions().size(); i++) {
         if (getPermissions().get(i) != null) {
-          joiner.add(getPermissions().get(i).toUrlQueryString(String.format("%spermissions%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getPermissions().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%spermissions%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

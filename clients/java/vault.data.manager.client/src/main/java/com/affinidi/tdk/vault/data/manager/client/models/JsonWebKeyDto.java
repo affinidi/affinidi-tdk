@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   JsonWebKeyDto.JSON_PROPERTY_ALG,
   JsonWebKeyDto.JSON_PROPERTY_USE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class JsonWebKeyDto {
   public static final String JSON_PROPERTY_KID = "kid";
   @javax.annotation.Nonnull
@@ -92,7 +92,7 @@ public class JsonWebKeyDto {
    * @return kid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_KID)
+  @JsonProperty(value = JSON_PROPERTY_KID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getKid() {
@@ -100,7 +100,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KID)
+  @JsonProperty(value = JSON_PROPERTY_KID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setKid(@javax.annotation.Nonnull String kid) {
     this.kid = kid;
@@ -117,7 +117,7 @@ public class JsonWebKeyDto {
    * @return kty
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_KTY)
+  @JsonProperty(value = JSON_PROPERTY_KTY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getKty() {
@@ -125,7 +125,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KTY)
+  @JsonProperty(value = JSON_PROPERTY_KTY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setKty(@javax.annotation.Nonnull String kty) {
     this.kty = kty;
@@ -142,7 +142,7 @@ public class JsonWebKeyDto {
    * @return n
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_N)
+  @JsonProperty(value = JSON_PROPERTY_N, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getN() {
@@ -150,7 +150,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_N)
+  @JsonProperty(value = JSON_PROPERTY_N, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setN(@javax.annotation.Nullable String n) {
     this.n = n;
@@ -167,7 +167,7 @@ public class JsonWebKeyDto {
    * @return e
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_E)
+  @JsonProperty(value = JSON_PROPERTY_E, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getE() {
@@ -175,7 +175,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_E)
+  @JsonProperty(value = JSON_PROPERTY_E, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setE(@javax.annotation.Nullable String e) {
     this.e = e;
@@ -192,7 +192,7 @@ public class JsonWebKeyDto {
    * @return x
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_X)
+  @JsonProperty(value = JSON_PROPERTY_X, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getX() {
@@ -200,7 +200,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_X)
+  @JsonProperty(value = JSON_PROPERTY_X, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setX(@javax.annotation.Nullable String x) {
     this.x = x;
@@ -217,7 +217,7 @@ public class JsonWebKeyDto {
    * @return y
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonProperty(value = JSON_PROPERTY_Y, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getY() {
@@ -225,7 +225,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_Y)
+  @JsonProperty(value = JSON_PROPERTY_Y, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setY(@javax.annotation.Nullable String y) {
     this.y = y;
@@ -242,7 +242,7 @@ public class JsonWebKeyDto {
    * @return crv
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CRV)
+  @JsonProperty(value = JSON_PROPERTY_CRV, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCrv() {
@@ -250,7 +250,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CRV)
+  @JsonProperty(value = JSON_PROPERTY_CRV, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCrv(@javax.annotation.Nullable String crv) {
     this.crv = crv;
@@ -267,7 +267,7 @@ public class JsonWebKeyDto {
    * @return alg
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ALG)
+  @JsonProperty(value = JSON_PROPERTY_ALG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAlg() {
@@ -275,7 +275,7 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALG)
+  @JsonProperty(value = JSON_PROPERTY_ALG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAlg(@javax.annotation.Nonnull String alg) {
     this.alg = alg;
@@ -292,7 +292,7 @@ public class JsonWebKeyDto {
    * @return use
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USE)
+  @JsonProperty(value = JSON_PROPERTY_USE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUse() {
@@ -300,11 +300,12 @@ public class JsonWebKeyDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USE)
+  @JsonProperty(value = JSON_PROPERTY_USE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUse(@javax.annotation.Nonnull String use) {
     this.use = use;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -353,10 +354,7 @@ public class JsonWebKeyDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -394,7 +392,7 @@ public class JsonWebKeyDto {
     // add `kid` to the URL query string
     if (getKid() != null) {
       try {
-        joiner.add(String.format("%skid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%skid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -404,7 +402,7 @@ public class JsonWebKeyDto {
     // add `kty` to the URL query string
     if (getKty() != null) {
       try {
-        joiner.add(String.format("%skty%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKty()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%skty%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKty()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -414,7 +412,7 @@ public class JsonWebKeyDto {
     // add `n` to the URL query string
     if (getN() != null) {
       try {
-        joiner.add(String.format("%sn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getN()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getN()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -424,7 +422,7 @@ public class JsonWebKeyDto {
     // add `e` to the URL query string
     if (getE() != null) {
       try {
-        joiner.add(String.format("%se%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getE()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%se%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getE()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -434,7 +432,7 @@ public class JsonWebKeyDto {
     // add `x` to the URL query string
     if (getX() != null) {
       try {
-        joiner.add(String.format("%sx%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getX()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sx%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getX()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -444,7 +442,7 @@ public class JsonWebKeyDto {
     // add `y` to the URL query string
     if (getY() != null) {
       try {
-        joiner.add(String.format("%sy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getY()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getY()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -454,7 +452,7 @@ public class JsonWebKeyDto {
     // add `crv` to the URL query string
     if (getCrv() != null) {
       try {
-        joiner.add(String.format("%scrv%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCrv()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scrv%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCrv()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -464,7 +462,7 @@ public class JsonWebKeyDto {
     // add `alg` to the URL query string
     if (getAlg() != null) {
       try {
-        joiner.add(String.format("%salg%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlg()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%salg%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlg()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -474,7 +472,7 @@ public class JsonWebKeyDto {
     // add `use` to the URL query string
     if (getUse() != null) {
       try {
-        joiner.add(String.format("%suse%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUse()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%suse%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUse()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

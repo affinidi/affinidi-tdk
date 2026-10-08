@@ -52,7 +52,7 @@ import java.util.StringJoiner;
   LoginConfigurationObject.JSON_PROPERTY_CLIENT_METADATA,
   LoginConfigurationObject.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class LoginConfigurationObject {
   public static final String JSON_PROPERTY_ARI = "ari";
   @javax.annotation.Nonnull
@@ -128,7 +128,7 @@ public class LoginConfigurationObject {
    * @return ari
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAri() {
@@ -136,7 +136,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
@@ -153,7 +153,7 @@ public class LoginConfigurationObject {
    * @return configurationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConfigurationId() {
@@ -161,7 +161,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfigurationId(@javax.annotation.Nullable String configurationId) {
     this.configurationId = configurationId;
@@ -178,7 +178,7 @@ public class LoginConfigurationObject {
    * @return projectId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProjectId() {
@@ -186,7 +186,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
@@ -203,7 +203,7 @@ public class LoginConfigurationObject {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -211,7 +211,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -236,7 +236,7 @@ public class LoginConfigurationObject {
    * @return redirectUris
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getRedirectUris() {
@@ -244,7 +244,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRedirectUris(@javax.annotation.Nullable List<String> redirectUris) {
     this.redirectUris = redirectUris;
@@ -269,7 +269,7 @@ public class LoginConfigurationObject {
    * @return postLogoutRedirectUris
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getPostLogoutRedirectUris() {
@@ -277,7 +277,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS)
+  @JsonProperty(value = JSON_PROPERTY_POST_LOGOUT_REDIRECT_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPostLogoutRedirectUris(@javax.annotation.Nullable List<String> postLogoutRedirectUris) {
     this.postLogoutRedirectUris = postLogoutRedirectUris;
@@ -294,7 +294,7 @@ public class LoginConfigurationObject {
    * @return scope
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getScope() {
@@ -302,7 +302,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
@@ -319,7 +319,7 @@ public class LoginConfigurationObject {
    * @return clientId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getClientId() {
@@ -327,7 +327,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientId(@javax.annotation.Nullable String clientId) {
     this.clientId = clientId;
@@ -344,7 +344,7 @@ public class LoginConfigurationObject {
    * @return creationDate
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreationDate() {
@@ -352,7 +352,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreationDate(@javax.annotation.Nonnull String creationDate) {
     this.creationDate = creationDate;
@@ -369,7 +369,7 @@ public class LoginConfigurationObject {
    * @return vpDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVpDefinition() {
@@ -377,7 +377,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
@@ -394,7 +394,7 @@ public class LoginConfigurationObject {
    * @return presentationDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getPresentationDefinition() {
@@ -402,7 +402,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
@@ -419,7 +419,7 @@ public class LoginConfigurationObject {
    * @return dcqlQuery
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getDcqlQuery() {
@@ -427,7 +427,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDcqlQuery(@javax.annotation.Nullable Object dcqlQuery) {
     this.dcqlQuery = dcqlQuery;
@@ -452,7 +452,7 @@ public class LoginConfigurationObject {
    * @return idTokenMapping
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_MAPPING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<IdTokenMappingItem> getIdTokenMapping() {
@@ -460,7 +460,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_MAPPING)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_MAPPING, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIdTokenMapping(@javax.annotation.Nonnull List<IdTokenMappingItem> idTokenMapping) {
     this.idTokenMapping = idTokenMapping;
@@ -477,7 +477,7 @@ public class LoginConfigurationObject {
    * @return clientMetadata
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LoginConfigurationClientMetadataOutput getClientMetadata() {
@@ -485,7 +485,7 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_METADATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setClientMetadata(@javax.annotation.Nonnull LoginConfigurationClientMetadataOutput clientMetadata) {
     this.clientMetadata = clientMetadata;
@@ -502,7 +502,7 @@ public class LoginConfigurationObject {
    * @return tokenEndpointAuthMethod
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public TokenEndpointAuthMethod getTokenEndpointAuthMethod() {
@@ -510,11 +510,12 @@ public class LoginConfigurationObject {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTokenEndpointAuthMethod(@javax.annotation.Nonnull TokenEndpointAuthMethod tokenEndpointAuthMethod) {
     this.tokenEndpointAuthMethod = tokenEndpointAuthMethod;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -575,10 +576,7 @@ public class LoginConfigurationObject {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -616,7 +614,7 @@ public class LoginConfigurationObject {
     // add `ari` to the URL query string
     if (getAri() != null) {
       try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -626,7 +624,7 @@ public class LoginConfigurationObject {
     // add `configurationId` to the URL query string
     if (getConfigurationId() != null) {
       try {
-        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -636,7 +634,7 @@ public class LoginConfigurationObject {
     // add `projectId` to the URL query string
     if (getProjectId() != null) {
       try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -646,7 +644,7 @@ public class LoginConfigurationObject {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -657,8 +655,8 @@ public class LoginConfigurationObject {
     if (getRedirectUris() != null) {
       for (int i = 0; i < getRedirectUris().size(); i++) {
         try {
-          joiner.add(String.format("%sredirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sredirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -671,8 +669,8 @@ public class LoginConfigurationObject {
     if (getPostLogoutRedirectUris() != null) {
       for (int i = 0; i < getPostLogoutRedirectUris().size(); i++) {
         try {
-          joiner.add(String.format("%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%spostLogoutRedirectUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getPostLogoutRedirectUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -684,7 +682,7 @@ public class LoginConfigurationObject {
     // add `scope` to the URL query string
     if (getScope() != null) {
       try {
-        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -694,7 +692,7 @@ public class LoginConfigurationObject {
     // add `clientId` to the URL query string
     if (getClientId() != null) {
       try {
-        joiner.add(String.format("%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -704,7 +702,7 @@ public class LoginConfigurationObject {
     // add `creationDate` to the URL query string
     if (getCreationDate() != null) {
       try {
-        joiner.add(String.format("%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -714,7 +712,7 @@ public class LoginConfigurationObject {
     // add `vpDefinition` to the URL query string
     if (getVpDefinition() != null) {
       try {
-        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -724,7 +722,7 @@ public class LoginConfigurationObject {
     // add `presentationDefinition` to the URL query string
     if (getPresentationDefinition() != null) {
       try {
-        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -734,7 +732,7 @@ public class LoginConfigurationObject {
     // add `dcqlQuery` to the URL query string
     if (getDcqlQuery() != null) {
       try {
-        joiner.add(String.format("%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -745,8 +743,8 @@ public class LoginConfigurationObject {
     if (getIdTokenMapping() != null) {
       for (int i = 0; i < getIdTokenMapping().size(); i++) {
         if (getIdTokenMapping().get(i) != null) {
-          joiner.add(getIdTokenMapping().get(i).toUrlQueryString(String.format("%sidTokenMapping%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getIdTokenMapping().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sidTokenMapping%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -759,7 +757,7 @@ public class LoginConfigurationObject {
     // add `tokenEndpointAuthMethod` to the URL query string
     if (getTokenEndpointAuthMethod() != null) {
       try {
-        joiner.add(String.format("%stokenEndpointAuthMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethod()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stokenEndpointAuthMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethod()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

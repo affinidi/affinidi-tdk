@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UpdateWalletKeyInput.JSON_PROPERTY_RELATIONSHIPS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdateWalletKeyInput {
   public static final String JSON_PROPERTY_RELATIONSHIPS = "relationships";
   @javax.annotation.Nullable
@@ -64,7 +64,7 @@ public class UpdateWalletKeyInput {
    * @return relationships
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RELATIONSHIPS)
+  @JsonProperty(value = JSON_PROPERTY_RELATIONSHIPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<VerificationRelationship> getRelationships() {
@@ -72,11 +72,12 @@ public class UpdateWalletKeyInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RELATIONSHIPS)
+  @JsonProperty(value = JSON_PROPERTY_RELATIONSHIPS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRelationships(@javax.annotation.Nullable List<VerificationRelationship> relationships) {
     this.relationships = relationships;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class UpdateWalletKeyInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -152,8 +150,8 @@ public class UpdateWalletKeyInput {
       for (int i = 0; i < getRelationships().size(); i++) {
         if (getRelationships().get(i) != null) {
           try {
-            joiner.add(String.format("%srelationships%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+            joiner.add(String.format(java.util.Locale.ROOT, "%srelationships%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
                 URLEncoder.encode(String.valueOf(getRelationships().get(i)), "UTF-8").replaceAll("\\+", "%20")));
           } catch (UnsupportedEncodingException e) {
             // Should never happen, UTF-8 is always supported

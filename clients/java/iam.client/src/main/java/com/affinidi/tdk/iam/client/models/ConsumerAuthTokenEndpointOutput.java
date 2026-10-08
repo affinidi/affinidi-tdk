@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ConsumerAuthTokenEndpointOutput.JSON_PROPERTY_SCOPE,
   ConsumerAuthTokenEndpointOutput.JSON_PROPERTY_TOKEN_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ConsumerAuthTokenEndpointOutput {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "access_token";
   @javax.annotation.Nullable
@@ -77,7 +77,7 @@ public class ConsumerAuthTokenEndpointOutput {
    * @return accessToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAccessToken() {
@@ -85,7 +85,7 @@ public class ConsumerAuthTokenEndpointOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccessToken(@javax.annotation.Nullable String accessToken) {
     this.accessToken = accessToken;
@@ -102,7 +102,7 @@ public class ConsumerAuthTokenEndpointOutput {
    * @return expiresIn
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_IN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getExpiresIn() {
@@ -110,7 +110,7 @@ public class ConsumerAuthTokenEndpointOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_IN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExpiresIn(@javax.annotation.Nullable Long expiresIn) {
     this.expiresIn = expiresIn;
@@ -127,7 +127,7 @@ public class ConsumerAuthTokenEndpointOutput {
    * @return idToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Long getIdToken() {
@@ -135,7 +135,7 @@ public class ConsumerAuthTokenEndpointOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIdToken(@javax.annotation.Nullable Long idToken) {
     this.idToken = idToken;
@@ -152,7 +152,7 @@ public class ConsumerAuthTokenEndpointOutput {
    * @return refreshToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRefreshToken() {
@@ -160,7 +160,7 @@ public class ConsumerAuthTokenEndpointOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REFRESH_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_REFRESH_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRefreshToken(@javax.annotation.Nullable String refreshToken) {
     this.refreshToken = refreshToken;
@@ -177,7 +177,7 @@ public class ConsumerAuthTokenEndpointOutput {
    * @return scope
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getScope() {
@@ -185,7 +185,7 @@ public class ConsumerAuthTokenEndpointOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
@@ -202,7 +202,7 @@ public class ConsumerAuthTokenEndpointOutput {
    * @return tokenType
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTokenType() {
@@ -210,11 +210,12 @@ public class ConsumerAuthTokenEndpointOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenType(@javax.annotation.Nullable String tokenType) {
     this.tokenType = tokenType;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -257,10 +258,7 @@ public class ConsumerAuthTokenEndpointOutput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -298,7 +296,7 @@ public class ConsumerAuthTokenEndpointOutput {
     // add `access_token` to the URL query string
     if (getAccessToken() != null) {
       try {
-        joiner.add(String.format("%saccess_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccess_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -308,7 +306,7 @@ public class ConsumerAuthTokenEndpointOutput {
     // add `expires_in` to the URL query string
     if (getExpiresIn() != null) {
       try {
-        joiner.add(String.format("%sexpires_in%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexpires_in%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -318,7 +316,7 @@ public class ConsumerAuthTokenEndpointOutput {
     // add `id_token` to the URL query string
     if (getIdToken() != null) {
       try {
-        joiner.add(String.format("%sid_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -328,7 +326,7 @@ public class ConsumerAuthTokenEndpointOutput {
     // add `refresh_token` to the URL query string
     if (getRefreshToken() != null) {
       try {
-        joiner.add(String.format("%srefresh_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRefreshToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srefresh_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRefreshToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -338,7 +336,7 @@ public class ConsumerAuthTokenEndpointOutput {
     // add `scope` to the URL query string
     if (getScope() != null) {
       try {
-        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -348,7 +346,7 @@ public class ConsumerAuthTokenEndpointOutput {
     // add `token_type` to the URL query string
     if (getTokenType() != null) {
       try {
-        joiner.add(String.format("%stoken_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stoken_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

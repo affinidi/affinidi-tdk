@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignCredentialsDm2SdJwtResultDto.JSON_PROPERTY_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignCredentialsDm2SdJwtResultDto {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
   @javax.annotation.Nonnull
@@ -52,7 +52,7 @@ public class SignCredentialsDm2SdJwtResultDto {
    * @return credential
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCredential() {
@@ -60,11 +60,12 @@ public class SignCredentialsDm2SdJwtResultDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredential(@javax.annotation.Nonnull String credential) {
     this.credential = credential;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class SignCredentialsDm2SdJwtResultDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class SignCredentialsDm2SdJwtResultDto {
     // add `credential` to the URL query string
     if (getCredential() != null) {
       try {
-        joiner.add(String.format("%scredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredential()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredential()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

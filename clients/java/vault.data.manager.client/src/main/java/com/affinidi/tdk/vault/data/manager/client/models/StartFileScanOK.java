@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   StartFileScanOK.JSON_PROPERTY_JOB_ID,
   StartFileScanOK.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class StartFileScanOK {
   public static final String JSON_PROPERTY_JOB_ID = "jobId";
   @javax.annotation.Nonnull
@@ -94,7 +94,7 @@ public class StartFileScanOK {
    * @return jobId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
+  @JsonProperty(value = JSON_PROPERTY_JOB_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJobId() {
@@ -102,7 +102,7 @@ public class StartFileScanOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JOB_ID)
+  @JsonProperty(value = JSON_PROPERTY_JOB_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJobId(@javax.annotation.Nonnull String jobId) {
     this.jobId = jobId;
@@ -119,7 +119,7 @@ public class StartFileScanOK {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public StatusEnum getStatus() {
@@ -127,11 +127,12 @@ public class StartFileScanOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -166,10 +167,7 @@ public class StartFileScanOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -207,7 +205,7 @@ public class StartFileScanOK {
     // add `jobId` to the URL query string
     if (getJobId() != null) {
       try {
-        joiner.add(String.format("%sjobId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjobId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJobId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -217,7 +215,7 @@ public class StartFileScanOK {
     // add `status` to the URL query string
     if (getStatus() != null) {
       try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   StartIssuanceInputDataInnerMetaData.JSON_PROPERTY_EXPIRATION_DATE
 })
 @JsonTypeName("StartIssuanceInput_data_inner_metaData")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class StartIssuanceInputDataInnerMetaData {
   public static final String JSON_PROPERTY_EXPIRATION_DATE = "expirationDate";
   @javax.annotation.Nonnull
@@ -54,7 +54,7 @@ public class StartIssuanceInputDataInnerMetaData {
    * @return expirationDate
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public OffsetDateTime getExpirationDate() {
@@ -62,11 +62,12 @@ public class StartIssuanceInputDataInnerMetaData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXPIRATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpirationDate(@javax.annotation.Nonnull OffsetDateTime expirationDate) {
     this.expirationDate = expirationDate;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -99,10 +100,7 @@ public class StartIssuanceInputDataInnerMetaData {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -140,7 +138,7 @@ public class StartIssuanceInputDataInnerMetaData {
     // add `expirationDate` to the URL query string
     if (getExpirationDate() != null) {
       try {
-        joiner.add(String.format("%sexpirationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpirationDate()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexpirationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpirationDate()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

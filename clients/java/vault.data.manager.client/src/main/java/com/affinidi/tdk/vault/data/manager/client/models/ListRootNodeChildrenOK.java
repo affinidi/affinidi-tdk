@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListRootNodeChildrenOK.JSON_PROPERTY_NODES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListRootNodeChildrenOK {
   public static final String JSON_PROPERTY_NODES = "nodes";
   @javax.annotation.Nullable
@@ -64,7 +64,7 @@ public class ListRootNodeChildrenOK {
    * @return nodes
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NODES)
+  @JsonProperty(value = JSON_PROPERTY_NODES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<NodeDto> getNodes() {
@@ -72,11 +72,12 @@ public class ListRootNodeChildrenOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODES)
+  @JsonProperty(value = JSON_PROPERTY_NODES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNodes(@javax.annotation.Nullable List<NodeDto> nodes) {
     this.nodes = nodes;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class ListRootNodeChildrenOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class ListRootNodeChildrenOK {
     if (getNodes() != null) {
       for (int i = 0; i < getNodes().size(); i++) {
         if (getNodes().get(i) != null) {
-          joiner.add(getNodes().get(i).toUrlQueryString(String.format("%snodes%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getNodes().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%snodes%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
