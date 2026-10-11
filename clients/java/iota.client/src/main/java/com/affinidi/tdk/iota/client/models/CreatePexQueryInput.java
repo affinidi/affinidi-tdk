@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CreatePexQueryInput.JSON_PROPERTY_VP_DEFINITION,
   CreatePexQueryInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreatePexQueryInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
@@ -62,7 +62,7 @@ public class CreatePexQueryInput {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -70,7 +70,7 @@ public class CreatePexQueryInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -87,7 +87,7 @@ public class CreatePexQueryInput {
    * @return vpDefinition
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getVpDefinition() {
@@ -95,7 +95,7 @@ public class CreatePexQueryInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setVpDefinition(@javax.annotation.Nonnull String vpDefinition) {
     this.vpDefinition = vpDefinition;
@@ -112,7 +112,7 @@ public class CreatePexQueryInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -120,11 +120,12 @@ public class CreatePexQueryInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -161,10 +162,7 @@ public class CreatePexQueryInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -202,7 +200,7 @@ public class CreatePexQueryInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -212,7 +210,7 @@ public class CreatePexQueryInput {
     // add `vpDefinition` to the URL query string
     if (getVpDefinition() != null) {
       try {
-        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -222,7 +220,7 @@ public class CreatePexQueryInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
