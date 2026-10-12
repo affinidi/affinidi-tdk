@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   WalletDtoKeysInner.JSON_PROPERTY_ARI
 })
 @JsonTypeName("WalletDto_keys_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WalletDtoKeysInner {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
@@ -58,7 +58,7 @@ public class WalletDtoKeysInner {
    * @return id
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
@@ -66,7 +66,7 @@ public class WalletDtoKeysInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
@@ -83,7 +83,7 @@ public class WalletDtoKeysInner {
    * @return ari
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAri() {
@@ -91,11 +91,12 @@ public class WalletDtoKeysInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAri(@javax.annotation.Nullable String ari) {
     this.ari = ari;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,10 +131,7 @@ public class WalletDtoKeysInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,7 +169,7 @@ public class WalletDtoKeysInner {
     // add `id` to the URL query string
     if (getId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -181,7 +179,7 @@ public class WalletDtoKeysInner {
     // add `ari` to the URL query string
     if (getAri() != null) {
       try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

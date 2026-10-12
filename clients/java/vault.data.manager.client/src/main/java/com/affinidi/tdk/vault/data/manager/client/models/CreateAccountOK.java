@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   CreateAccountOK.JSON_PROPERTY_ACCOUNT_DID,
   CreateAccountOK.JSON_PROPERTY_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateAccountOK {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
   @javax.annotation.Nonnull
@@ -63,7 +63,7 @@ public class CreateAccountOK {
    * @return accountIndex
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getAccountIndex() {
@@ -71,7 +71,7 @@ public class CreateAccountOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     this.accountIndex = accountIndex;
@@ -88,7 +88,7 @@ public class CreateAccountOK {
    * @return accountDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAccountDid() {
@@ -96,7 +96,7 @@ public class CreateAccountOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountDid(@javax.annotation.Nonnull String accountDid) {
     this.accountDid = accountDid;
@@ -113,7 +113,7 @@ public class CreateAccountOK {
    * @return metadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getMetadata() {
@@ -121,11 +121,12 @@ public class CreateAccountOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMetadata(@javax.annotation.Nullable Object metadata) {
     this.metadata = metadata;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,10 +163,7 @@ public class CreateAccountOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -203,7 +201,7 @@ public class CreateAccountOK {
     // add `accountIndex` to the URL query string
     if (getAccountIndex() != null) {
       try {
-        joiner.add(String.format("%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -213,7 +211,7 @@ public class CreateAccountOK {
     // add `accountDid` to the URL query string
     if (getAccountDid() != null) {
       try {
-        joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -223,7 +221,7 @@ public class CreateAccountOK {
     // add `metadata` to the URL query string
     if (getMetadata() != null) {
       try {
-        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

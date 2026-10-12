@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   FetchIOTAVPResponseOK.JSON_PROPERTY_PRESENTATION_SUBMISSION,
   FetchIOTAVPResponseOK.JSON_PROPERTY_VP_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class FetchIOTAVPResponseOK {
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   @javax.annotation.Nullable
@@ -62,7 +62,7 @@ public class FetchIOTAVPResponseOK {
    * @return correlationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCorrelationId() {
@@ -70,7 +70,7 @@ public class FetchIOTAVPResponseOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCorrelationId(@javax.annotation.Nullable String correlationId) {
     this.correlationId = correlationId;
@@ -87,7 +87,7 @@ public class FetchIOTAVPResponseOK {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPresentationSubmission() {
@@ -95,7 +95,7 @@ public class FetchIOTAVPResponseOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(@javax.annotation.Nullable String presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
@@ -112,7 +112,7 @@ public class FetchIOTAVPResponseOK {
    * @return vpToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_VP_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVpToken() {
@@ -120,11 +120,12 @@ public class FetchIOTAVPResponseOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_VP_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpToken(@javax.annotation.Nullable String vpToken) {
     this.vpToken = vpToken;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -161,10 +162,7 @@ public class FetchIOTAVPResponseOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -202,7 +200,7 @@ public class FetchIOTAVPResponseOK {
     // add `correlationId` to the URL query string
     if (getCorrelationId() != null) {
       try {
-        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -212,7 +210,7 @@ public class FetchIOTAVPResponseOK {
     // add `presentation_submission` to the URL query string
     if (getPresentationSubmission() != null) {
       try {
-        joiner.add(String.format("%spresentation_submission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentation_submission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -222,7 +220,7 @@ public class FetchIOTAVPResponseOK {
     // add `vp_token` to the URL query string
     if (getVpToken() != null) {
       try {
-        joiner.add(String.format("%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

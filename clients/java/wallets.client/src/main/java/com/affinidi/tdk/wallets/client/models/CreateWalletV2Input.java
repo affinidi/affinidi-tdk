@@ -41,7 +41,7 @@ import java.util.StringJoiner;
   CreateWalletV2Input.JSON_PROPERTY_ALGORITHM,
   CreateWalletV2Input.JSON_PROPERTY_SERVICES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateWalletV2Input {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -106,7 +106,9 @@ public class CreateWalletV2Input {
     
     ED25519(String.valueOf("ed25519")),
     
-    P256(String.valueOf("p256"));
+    P256(String.valueOf("p256")),
+    
+    MLDSA44(String.valueOf("mldsa44"));
 
     private String value;
 
@@ -157,7 +159,7 @@ public class CreateWalletV2Input {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -165,7 +167,7 @@ public class CreateWalletV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -182,7 +184,7 @@ public class CreateWalletV2Input {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -190,7 +192,7 @@ public class CreateWalletV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -207,7 +209,7 @@ public class CreateWalletV2Input {
    * @return didMethod
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DID_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_DID_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public DidMethodEnum getDidMethod() {
@@ -215,7 +217,7 @@ public class CreateWalletV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_DID_METHOD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDidMethod(@javax.annotation.Nullable DidMethodEnum didMethod) {
     this.didMethod = didMethod;
@@ -232,7 +234,7 @@ public class CreateWalletV2Input {
    * @return didWebUrl
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DID_WEB_URL)
+  @JsonProperty(value = JSON_PROPERTY_DID_WEB_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDidWebUrl() {
@@ -240,7 +242,7 @@ public class CreateWalletV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID_WEB_URL)
+  @JsonProperty(value = JSON_PROPERTY_DID_WEB_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDidWebUrl(@javax.annotation.Nullable String didWebUrl) {
     this.didWebUrl = didWebUrl;
@@ -257,7 +259,7 @@ public class CreateWalletV2Input {
    * @return algorithm
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonProperty(value = JSON_PROPERTY_ALGORITHM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public AlgorithmEnum getAlgorithm() {
@@ -265,7 +267,7 @@ public class CreateWalletV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALGORITHM)
+  @JsonProperty(value = JSON_PROPERTY_ALGORITHM, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAlgorithm(@javax.annotation.Nullable AlgorithmEnum algorithm) {
     this.algorithm = algorithm;
@@ -290,7 +292,7 @@ public class CreateWalletV2Input {
    * @return services
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonProperty(value = JSON_PROPERTY_SERVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ServiceEndpointInput> getServices() {
@@ -298,11 +300,12 @@ public class CreateWalletV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonProperty(value = JSON_PROPERTY_SERVICES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setServices(@javax.annotation.Nullable List<ServiceEndpointInput> services) {
     this.services = services;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -345,10 +348,7 @@ public class CreateWalletV2Input {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -386,7 +386,7 @@ public class CreateWalletV2Input {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -396,7 +396,7 @@ public class CreateWalletV2Input {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -406,7 +406,7 @@ public class CreateWalletV2Input {
     // add `didMethod` to the URL query string
     if (getDidMethod() != null) {
       try {
-        joiner.add(String.format("%sdidMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidMethod()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdidMethod%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidMethod()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -416,7 +416,7 @@ public class CreateWalletV2Input {
     // add `didWebUrl` to the URL query string
     if (getDidWebUrl() != null) {
       try {
-        joiner.add(String.format("%sdidWebUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidWebUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdidWebUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidWebUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -426,7 +426,7 @@ public class CreateWalletV2Input {
     // add `algorithm` to the URL query string
     if (getAlgorithm() != null) {
       try {
-        joiner.add(String.format("%salgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%salgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -437,8 +437,8 @@ public class CreateWalletV2Input {
     if (getServices() != null) {
       for (int i = 0; i < getServices().size(); i++) {
         if (getServices().get(i) != null) {
-          joiner.add(getServices().get(i).toUrlQueryString(String.format("%sservices%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getServices().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sservices%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
