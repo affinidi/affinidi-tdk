@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CallbackResponseOK.JSON_PROPERTY_RESPONSE_CODE,
   CallbackResponseOK.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CallbackResponseOK {
   public static final String JSON_PROPERTY_REDIRECT_URI = "redirect_uri";
   @javax.annotation.Nullable
@@ -62,7 +62,7 @@ public class CallbackResponseOK {
    * @return redirectUri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRedirectUri() {
@@ -70,7 +70,7 @@ public class CallbackResponseOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRedirectUri(@javax.annotation.Nullable String redirectUri) {
     this.redirectUri = redirectUri;
@@ -87,7 +87,7 @@ public class CallbackResponseOK {
    * @return responseCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getResponseCode() {
@@ -95,7 +95,7 @@ public class CallbackResponseOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResponseCode(@javax.annotation.Nullable String responseCode) {
     this.responseCode = responseCode;
@@ -112,7 +112,7 @@ public class CallbackResponseOK {
    * @return message
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getMessage() {
@@ -120,11 +120,12 @@ public class CallbackResponseOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMessage(@javax.annotation.Nonnull String message) {
     this.message = message;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -161,10 +162,7 @@ public class CallbackResponseOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -202,7 +200,7 @@ public class CallbackResponseOK {
     // add `redirect_uri` to the URL query string
     if (getRedirectUri() != null) {
       try {
-        joiner.add(String.format("%sredirect_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sredirect_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -212,7 +210,7 @@ public class CallbackResponseOK {
     // add `response_code` to the URL query string
     if (getResponseCode() != null) {
       try {
-        joiner.add(String.format("%sresponse_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sresponse_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -222,7 +220,7 @@ public class CallbackResponseOK {
     // add `message` to the URL query string
     if (getMessage() != null) {
       try {
-        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

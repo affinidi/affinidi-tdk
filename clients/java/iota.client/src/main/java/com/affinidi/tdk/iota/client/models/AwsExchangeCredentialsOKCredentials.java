@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   AwsExchangeCredentialsOKCredentials.JSON_PROPERTY_TOKEN
 })
 @JsonTypeName("AwsExchangeCredentialsOK_credentials")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class AwsExchangeCredentialsOKCredentials {
   public static final String JSON_PROPERTY_IDENTITY_ID = "identityId";
   @javax.annotation.Nonnull
@@ -58,7 +58,7 @@ public class AwsExchangeCredentialsOKCredentials {
    * @return identityId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_IDENTITY_ID)
+  @JsonProperty(value = JSON_PROPERTY_IDENTITY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getIdentityId() {
@@ -66,7 +66,7 @@ public class AwsExchangeCredentialsOKCredentials {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IDENTITY_ID)
+  @JsonProperty(value = JSON_PROPERTY_IDENTITY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIdentityId(@javax.annotation.Nonnull String identityId) {
     this.identityId = identityId;
@@ -83,7 +83,7 @@ public class AwsExchangeCredentialsOKCredentials {
    * @return token
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getToken() {
@@ -91,11 +91,12 @@ public class AwsExchangeCredentialsOKCredentials {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setToken(@javax.annotation.Nonnull String token) {
     this.token = token;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,10 +131,7 @@ public class AwsExchangeCredentialsOKCredentials {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,7 +169,7 @@ public class AwsExchangeCredentialsOKCredentials {
     // add `identityId` to the URL query string
     if (getIdentityId() != null) {
       try {
-        joiner.add(String.format("%sidentityId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdentityId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sidentityId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdentityId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -181,7 +179,7 @@ public class AwsExchangeCredentialsOKCredentials {
     // add `token` to the URL query string
     if (getToken() != null) {
       try {
-        joiner.add(String.format("%stoken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stoken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
