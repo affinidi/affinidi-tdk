@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   StartIssuanceInput.JSON_PROPERTY_ISSUANCE_ID,
   StartIssuanceInput.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class StartIssuanceInput {
   /**
    * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
@@ -108,7 +108,7 @@ public class StartIssuanceInput {
    * @return claimMode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
+  @JsonProperty(value = JSON_PROPERTY_CLAIM_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ClaimModeEnum getClaimMode() {
@@ -116,7 +116,7 @@ public class StartIssuanceInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLAIM_MODE)
+  @JsonProperty(value = JSON_PROPERTY_CLAIM_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClaimMode(@javax.annotation.Nullable ClaimModeEnum claimMode) {
     this.claimMode = claimMode;
@@ -133,7 +133,7 @@ public class StartIssuanceInput {
    * @return holderDid
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonProperty(value = JSON_PROPERTY_HOLDER_DID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getHolderDid() {
@@ -141,7 +141,7 @@ public class StartIssuanceInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonProperty(value = JSON_PROPERTY_HOLDER_DID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHolderDid(@javax.annotation.Nullable String holderDid) {
     this.holderDid = holderDid;
@@ -158,7 +158,7 @@ public class StartIssuanceInput {
    * @return issuanceId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIssuanceId() {
@@ -166,7 +166,7 @@ public class StartIssuanceInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuanceId(@javax.annotation.Nullable String issuanceId) {
     this.issuanceId = issuanceId;
@@ -191,7 +191,7 @@ public class StartIssuanceInput {
    * @return data
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<StartIssuanceInputDataInner> getData() {
@@ -199,11 +199,12 @@ public class StartIssuanceInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setData(@javax.annotation.Nonnull List<StartIssuanceInputDataInner> data) {
     this.data = data;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -242,10 +243,7 @@ public class StartIssuanceInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -283,7 +281,7 @@ public class StartIssuanceInput {
     // add `claimMode` to the URL query string
     if (getClaimMode() != null) {
       try {
-        joiner.add(String.format("%sclaimMode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimMode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclaimMode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimMode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -293,7 +291,7 @@ public class StartIssuanceInput {
     // add `holderDid` to the URL query string
     if (getHolderDid() != null) {
       try {
-        joiner.add(String.format("%sholderDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sholderDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -303,7 +301,7 @@ public class StartIssuanceInput {
     // add `issuanceId` to the URL query string
     if (getIssuanceId() != null) {
       try {
-        joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -314,8 +312,8 @@ public class StartIssuanceInput {
     if (getData() != null) {
       for (int i = 0; i < getData().size(); i++) {
         if (getData().get(i) != null) {
-          joiner.add(getData().get(i).toUrlQueryString(String.format("%sdata%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getData().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sdata%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
