@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   Permission.JSON_PROPERTY_NODE_IDS,
   Permission.JSON_PROPERTY_EXPIRES_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class Permission {
   public static final String JSON_PROPERTY_RIGHTS = "rights";
   @javax.annotation.Nonnull
@@ -75,7 +75,7 @@ public class Permission {
    * @return rights
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RIGHTS)
+  @JsonProperty(value = JSON_PROPERTY_RIGHTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<RightsEnum> getRights() {
@@ -83,7 +83,7 @@ public class Permission {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RIGHTS)
+  @JsonProperty(value = JSON_PROPERTY_RIGHTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRights(@javax.annotation.Nonnull List<RightsEnum> rights) {
     this.rights = rights;
@@ -108,7 +108,7 @@ public class Permission {
    * @return nodeIds
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NODE_IDS)
+  @JsonProperty(value = JSON_PROPERTY_NODE_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getNodeIds() {
@@ -116,7 +116,7 @@ public class Permission {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODE_IDS)
+  @JsonProperty(value = JSON_PROPERTY_NODE_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNodeIds(@javax.annotation.Nonnull List<String> nodeIds) {
     this.nodeIds = nodeIds;
@@ -133,7 +133,7 @@ public class Permission {
    * @return expiresAt
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public OffsetDateTime getExpiresAt() {
@@ -141,11 +141,12 @@ public class Permission {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExpiresAt(@javax.annotation.Nullable OffsetDateTime expiresAt) {
     this.expiresAt = expiresAt;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -182,10 +183,7 @@ public class Permission {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -225,8 +223,8 @@ public class Permission {
       for (int i = 0; i < getRights().size(); i++) {
         if (getRights().get(i) != null) {
           try {
-            joiner.add(String.format("%srights%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+            joiner.add(String.format(java.util.Locale.ROOT, "%srights%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
                 URLEncoder.encode(String.valueOf(getRights().get(i)), "UTF-8").replaceAll("\\+", "%20")));
           } catch (UnsupportedEncodingException e) {
             // Should never happen, UTF-8 is always supported
@@ -240,8 +238,8 @@ public class Permission {
     if (getNodeIds() != null) {
       for (int i = 0; i < getNodeIds().size(); i++) {
         try {
-          joiner.add(String.format("%snodeIds%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%snodeIds%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getNodeIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -253,7 +251,7 @@ public class Permission {
     // add `expiresAt` to the URL query string
     if (getExpiresAt() != null) {
       try {
-        joiner.add(String.format("%sexpiresAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexpiresAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

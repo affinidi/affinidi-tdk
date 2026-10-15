@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   VerifyCredentialOutput.JSON_PROPERTY_ERRORS,
   VerifyCredentialOutput.JSON_PROPERTY_IS_VALID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class VerifyCredentialOutput {
   public static final String JSON_PROPERTY_ERRORS = "errors";
   @javax.annotation.Nonnull
@@ -68,7 +68,7 @@ public class VerifyCredentialOutput {
    * @return errors
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ERRORS)
+  @JsonProperty(value = JSON_PROPERTY_ERRORS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getErrors() {
@@ -76,7 +76,7 @@ public class VerifyCredentialOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERRORS)
+  @JsonProperty(value = JSON_PROPERTY_ERRORS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setErrors(@javax.annotation.Nonnull List<String> errors) {
     this.errors = errors;
@@ -93,7 +93,7 @@ public class VerifyCredentialOutput {
    * @return isValid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_IS_VALID)
+  @JsonProperty(value = JSON_PROPERTY_IS_VALID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getIsValid() {
@@ -101,11 +101,12 @@ public class VerifyCredentialOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IS_VALID)
+  @JsonProperty(value = JSON_PROPERTY_IS_VALID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIsValid(@javax.annotation.Nonnull Boolean isValid) {
     this.isValid = isValid;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,10 +141,7 @@ public class VerifyCredentialOutput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -182,8 +180,8 @@ public class VerifyCredentialOutput {
     if (getErrors() != null) {
       for (int i = 0; i < getErrors().size(); i++) {
         try {
-          joiner.add(String.format("%serrors%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%serrors%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getErrors().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -195,7 +193,7 @@ public class VerifyCredentialOutput {
     // add `isValid` to the URL query string
     if (getIsValid() != null) {
       try {
-        joiner.add(String.format("%sisValid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIsValid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sisValid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIsValid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

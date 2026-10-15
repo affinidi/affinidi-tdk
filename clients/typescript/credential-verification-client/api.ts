@@ -28,6 +28,7 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
+  replaceWithSerializableTypeIfNeeded,
 } from './common'
 import type { RequestArgs } from './base'
 // @ts-ignore
@@ -39,41 +40,11 @@ import {
   operationServerMap,
 } from './base'
 
-/**
- *
- * @export
- * @interface InvalidParameterError
- */
 export interface InvalidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   name: InvalidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   message: InvalidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidParameterError
-   */
   httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof InvalidParameterError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -96,41 +67,11 @@ export const InvalidParameterErrorHttpStatusCodeEnum = {
 export type InvalidParameterErrorHttpStatusCodeEnum =
   (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface NotFoundError
- */
 export interface NotFoundError {
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   name: NotFoundErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   message: NotFoundErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof NotFoundError
-   */
   httpStatusCode: NotFoundErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<NotFoundErrorDetailsInner>}
-   * @memberof NotFoundError
-   */
   details?: Array<NotFoundErrorDetailsInner>
 }
 
@@ -153,216 +94,110 @@ export const NotFoundErrorHttpStatusCodeEnum = {
 export type NotFoundErrorHttpStatusCodeEnum =
   (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface NotFoundErrorDetailsInner
- */
 export interface NotFoundErrorDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundErrorDetailsInner
-   */
   location?: string
 }
 /**
  * Request model of /verify-vcs
- * @export
- * @interface VerifyCredentialInput
  */
 export interface VerifyCredentialInput {
   /**
    * List of VCs
-   * @type {Array<object>}
-   * @memberof VerifyCredentialInput
    */
   verifiableCredentials: Array<object>
   /**
    * Dynamic model
-   * @type {{ [key: string]: any; }}
-   * @memberof VerifyCredentialInput
    */
   issuerDidDocument?: { [key: string]: any }
 }
 /**
  * Response model of /verify-vcs
- * @export
- * @interface VerifyCredentialOutput
  */
 export interface VerifyCredentialOutput {
   /**
    * Errors of the VCs failed verification
-   * @type {Array<string>}
-   * @memberof VerifyCredentialOutput
    */
   errors: Array<string>
   /**
    * Verification result
-   * @type {boolean}
-   * @memberof VerifyCredentialOutput
    */
   isValid: boolean
 }
 /**
  * Request model of /v2/verify-vcs
- * @export
- * @interface VerifyCredentialV2Input
  */
 export interface VerifyCredentialV2Input {
   /**
    * List of JWT VC strings
-   * @type {Array<string>}
-   * @memberof VerifyCredentialV2Input
    */
   jwtVcs?: Array<string>
   /**
    * List of LDP VC objects
-   * @type {Array<{ [key: string]: any; }>}
-   * @memberof VerifyCredentialV2Input
    */
   ldpVcs?: Array<{ [key: string]: any }>
 }
 /**
  * Request model of /verify-vp
- * @export
- * @interface VerifyPresentationInput
  */
 export interface VerifyPresentationInput {
-  /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationInput
-   */
   verifiablePresentation?: object
-  /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationInput
-   */
   signedPresentation?: object
-  /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationInput
-   */
   presentationDefinition?: object
-  /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationInput
-   */
   presentationSubmission?: object
-  /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationInput
-   */
   dcqlQuery?: object
-  /**
-   *
-   * @type {string}
-   * @memberof VerifyPresentationInput
-   */
   challenge?: string
 }
 /**
  * Response model of /verify-vp
- * @export
- * @interface VerifyPresentationOutput
  */
 export interface VerifyPresentationOutput {
   /**
    * Error of the verification
-   * @type {Array<string>}
-   * @memberof VerifyPresentationOutput
    */
   errors: Array<string>
   /**
    * Verification result
-   * @type {boolean}
-   * @memberof VerifyPresentationOutput
    */
   isValid: boolean
 }
 /**
  * Request model of /v2/verify-vp
- * @export
- * @interface VerifyPresentationV2Input
  */
 export interface VerifyPresentationV2Input {
-  /**
-   *
-   * @type {object}
-   * @memberof VerifyPresentationV2Input
-   */
   verifiablePresentation?: object
-  /**
-   *
-   * @type {VerifyPresentationV2InputPexQuery}
-   * @memberof VerifyPresentationV2Input
-   */
   pexQuery?: VerifyPresentationV2InputPexQuery
   /**
    * DCQL (Digital Credentials Query Language) Query used to verify that the credentials in the Verifiable Presentation match the specified query requirements. Currently supports only ldp_vc format credentials. Developers should implement additional business rule validation on top of the verification results returned by this service.
-   * @type {{ [key: string]: any; }}
-   * @memberof VerifyPresentationV2Input
    */
   dcqlQuery?: { [key: string]: any }
   /**
    * Optional challenge string for domain/challenge verification
-   * @type {string}
-   * @memberof VerifyPresentationV2Input
    */
   challenge?: string
   /**
    * Optional domain for verification. Array of domain strings as per W3C VP standard
-   * @type {Array<string>}
-   * @memberof VerifyPresentationV2Input
    */
   domain?: Array<string>
 }
 /**
  * Presentation Exchange Query containing presentation definition and submission
- * @export
- * @interface VerifyPresentationV2InputPexQuery
  */
 export interface VerifyPresentationV2InputPexQuery {
   /**
    * Presentation definition for the verification request
-   * @type {object}
-   * @memberof VerifyPresentationV2InputPexQuery
    */
   presentationDefinition?: object
   /**
    * Presentation submission for the verification request
-   * @type {object}
-   * @memberof VerifyPresentationV2InputPexQuery
    */
   presentationSubmission?: object
 }
 
 /**
  * DefaultApi - axios parameter creator
- * @export
  */
 export const DefaultApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -409,6 +244,7 @@ export const DefaultApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -470,6 +306,7 @@ export const DefaultApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -531,6 +368,7 @@ export const DefaultApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -592,6 +430,7 @@ export const DefaultApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -617,7 +456,6 @@ export const DefaultApiAxiosParamCreator = function (
 
 /**
  * DefaultApi - functional programming interface
- * @export
  */
 export const DefaultApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
@@ -763,7 +601,6 @@ export const DefaultApiFp = function (configuration?: Configuration) {
 
 /**
  * DefaultApi - factory interface
- * @export
  */
 export const DefaultApiFactory = function (
   configuration?: Configuration,
@@ -837,9 +674,6 @@ export const DefaultApiFactory = function (
 
 /**
  * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
   /**
@@ -848,7 +682,6 @@ export class DefaultApi extends BaseAPI {
    * @param {VerifyCredentialInput} verifyCredentialInput VerifyCredentials
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public verifyCredentials(
     verifyCredentialInput: VerifyCredentialInput,
@@ -865,7 +698,6 @@ export class DefaultApi extends BaseAPI {
    * @param {VerifyCredentialV2Input} verifyCredentialV2Input Request body for verifying VCs with separate JWT and LDP arrays
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public verifyCredentialsV2(
     verifyCredentialV2Input: VerifyCredentialV2Input,
@@ -882,7 +714,6 @@ export class DefaultApi extends BaseAPI {
    * @param {VerifyPresentationInput} verifyPresentationInput VerifyPresentation
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public verifyPresentation(
     verifyPresentationInput: VerifyPresentationInput,
@@ -899,7 +730,6 @@ export class DefaultApi extends BaseAPI {
    * @param {VerifyPresentationV2Input} verifyPresentationV2Input VerifyPresentationV2
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public verifyPresentationV2(
     verifyPresentationV2Input: VerifyPresentationV2Input,

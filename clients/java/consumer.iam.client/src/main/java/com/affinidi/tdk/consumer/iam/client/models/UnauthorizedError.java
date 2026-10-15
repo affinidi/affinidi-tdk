@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   UnauthorizedError.JSON_PROPERTY_TRACE_ID,
   UnauthorizedError.JSON_PROPERTY_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UnauthorizedError {
   /**
    * Gets or Sets name
@@ -175,7 +175,7 @@ public class UnauthorizedError {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public NameEnum getName() {
@@ -183,7 +183,7 @@ public class UnauthorizedError {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull NameEnum name) {
     this.name = name;
@@ -200,7 +200,7 @@ public class UnauthorizedError {
    * @return message
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public MessageEnum getMessage() {
@@ -208,7 +208,7 @@ public class UnauthorizedError {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MESSAGE)
+  @JsonProperty(value = JSON_PROPERTY_MESSAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMessage(@javax.annotation.Nonnull MessageEnum message) {
     this.message = message;
@@ -225,7 +225,7 @@ public class UnauthorizedError {
    * @return httpStatusCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonProperty(value = JSON_PROPERTY_HTTP_STATUS_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public HttpStatusCodeEnum getHttpStatusCode() {
@@ -233,7 +233,7 @@ public class UnauthorizedError {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HTTP_STATUS_CODE)
+  @JsonProperty(value = JSON_PROPERTY_HTTP_STATUS_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHttpStatusCode(@javax.annotation.Nonnull HttpStatusCodeEnum httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
@@ -250,7 +250,7 @@ public class UnauthorizedError {
    * @return traceId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRACE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTraceId() {
@@ -258,7 +258,7 @@ public class UnauthorizedError {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRACE_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRACE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTraceId(@javax.annotation.Nonnull String traceId) {
     this.traceId = traceId;
@@ -283,7 +283,7 @@ public class UnauthorizedError {
    * @return details
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<InvalidJwtTokenErrorDetailsInner> getDetails() {
@@ -291,11 +291,12 @@ public class UnauthorizedError {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DETAILS)
+  @JsonProperty(value = JSON_PROPERTY_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDetails(@javax.annotation.Nullable List<InvalidJwtTokenErrorDetailsInner> details) {
     this.details = details;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -336,10 +337,7 @@ public class UnauthorizedError {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -377,7 +375,7 @@ public class UnauthorizedError {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -387,7 +385,7 @@ public class UnauthorizedError {
     // add `message` to the URL query string
     if (getMessage() != null) {
       try {
-        joiner.add(String.format("%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smessage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMessage()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -397,7 +395,7 @@ public class UnauthorizedError {
     // add `httpStatusCode` to the URL query string
     if (getHttpStatusCode() != null) {
       try {
-        joiner.add(String.format("%shttpStatusCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHttpStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%shttpStatusCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHttpStatusCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -407,7 +405,7 @@ public class UnauthorizedError {
     // add `traceId` to the URL query string
     if (getTraceId() != null) {
       try {
-        joiner.add(String.format("%straceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTraceId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%straceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTraceId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -418,8 +416,8 @@ public class UnauthorizedError {
     if (getDetails() != null) {
       for (int i = 0; i < getDetails().size(); i++) {
         if (getDetails().get(i) != null) {
-          joiner.add(getDetails().get(i).toUrlQueryString(String.format("%sdetails%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getDetails().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sdetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
