@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   TokenPrivateKeyAuthenticationMethodDto.JSON_PROPERTY_SIGNING_ALGORITHM,
   TokenPrivateKeyAuthenticationMethodDto.JSON_PROPERTY_PUBLIC_KEY_INFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class TokenPrivateKeyAuthenticationMethodDto {
   /**
    * Gets or Sets type
@@ -135,7 +135,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
    * @return type
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public TypeEnum getType() {
@@ -143,7 +143,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull TypeEnum type) {
     this.type = type;
@@ -160,7 +160,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
    * @return signingAlgorithm
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
+  @JsonProperty(value = JSON_PROPERTY_SIGNING_ALGORITHM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public SigningAlgorithmEnum getSigningAlgorithm() {
@@ -168,7 +168,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIGNING_ALGORITHM)
+  @JsonProperty(value = JSON_PROPERTY_SIGNING_ALGORITHM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSigningAlgorithm(@javax.annotation.Nonnull SigningAlgorithmEnum signingAlgorithm) {
     this.signingAlgorithm = signingAlgorithm;
@@ -185,7 +185,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
    * @return publicKeyInfo
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC_KEY_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo getPublicKeyInfo() {
@@ -193,11 +193,12 @@ public class TokenPrivateKeyAuthenticationMethodDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PUBLIC_KEY_INFO)
+  @JsonProperty(value = JSON_PROPERTY_PUBLIC_KEY_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPublicKeyInfo(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo publicKeyInfo) {
     this.publicKeyInfo = publicKeyInfo;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -234,10 +235,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -275,7 +273,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
     // add `type` to the URL query string
     if (getType() != null) {
       try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -285,7 +283,7 @@ public class TokenPrivateKeyAuthenticationMethodDto {
     // add `signingAlgorithm` to the URL query string
     if (getSigningAlgorithm() != null) {
       try {
-        joiner.add(String.format("%ssigningAlgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSigningAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssigningAlgorithm%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSigningAlgorithm()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

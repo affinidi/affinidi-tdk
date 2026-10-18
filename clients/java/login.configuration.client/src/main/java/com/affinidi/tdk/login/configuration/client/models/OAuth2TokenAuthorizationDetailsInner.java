@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   OAuth2TokenAuthorizationDetailsInner.JSON_PROPERTY_CREDENTIAL_IDENTIFIERS
 })
 @JsonTypeName("OAuth2Token_authorization_details_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class OAuth2TokenAuthorizationDetailsInner {
   /**
    * String that determines the authorization details type. 
@@ -99,7 +99,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
    * @return type
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public TypeEnum getType() {
@@ -107,7 +107,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull TypeEnum type) {
     this.type = type;
@@ -124,7 +124,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
    * @return credentialConfigurationId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCredentialConfigurationId() {
@@ -132,7 +132,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialConfigurationId(@javax.annotation.Nonnull String credentialConfigurationId) {
     this.credentialConfigurationId = credentialConfigurationId;
@@ -157,7 +157,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
    * @return credentialIdentifiers
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIERS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_IDENTIFIERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getCredentialIdentifiers() {
@@ -165,11 +165,12 @@ public class OAuth2TokenAuthorizationDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIERS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_IDENTIFIERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialIdentifiers(@javax.annotation.Nullable List<String> credentialIdentifiers) {
     this.credentialIdentifiers = credentialIdentifiers;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -206,10 +207,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -247,7 +245,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
     // add `type` to the URL query string
     if (getType() != null) {
       try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -257,7 +255,7 @@ public class OAuth2TokenAuthorizationDetailsInner {
     // add `credential_configuration_id` to the URL query string
     if (getCredentialConfigurationId() != null) {
       try {
-        joiner.add(String.format("%scredential_configuration_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredential_configuration_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -268,8 +266,8 @@ public class OAuth2TokenAuthorizationDetailsInner {
     if (getCredentialIdentifiers() != null) {
       for (int i = 0; i < getCredentialIdentifiers().size(); i++) {
         try {
-          joiner.add(String.format("%scredential_identifiers%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scredential_identifiers%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getCredentialIdentifiers().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
