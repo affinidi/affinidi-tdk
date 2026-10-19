@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode.JSON_PROPERTY_DESCRIPTION
 })
 @JsonTypeName("CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code_tx_code")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode {
   public static final String JSON_PROPERTY_LENGTH = "length";
   @javax.annotation.Nullable
@@ -64,7 +64,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
    * @return length
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LENGTH)
+  @JsonProperty(value = JSON_PROPERTY_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getLength() {
@@ -72,7 +72,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LENGTH)
+  @JsonProperty(value = JSON_PROPERTY_LENGTH, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLength(@javax.annotation.Nullable BigDecimal length) {
     this.length = length;
@@ -89,7 +89,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
    * @return inputMode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INPUT_MODE)
+  @JsonProperty(value = JSON_PROPERTY_INPUT_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getInputMode() {
@@ -97,7 +97,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INPUT_MODE)
+  @JsonProperty(value = JSON_PROPERTY_INPUT_MODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setInputMode(@javax.annotation.Nullable String inputMode) {
     this.inputMode = inputMode;
@@ -114,7 +114,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -122,11 +122,12 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -163,10 +164,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -204,7 +202,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
     // add `length` to the URL query string
     if (getLength() != null) {
       try {
-        joiner.add(String.format("%slength%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLength()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slength%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLength()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -214,7 +212,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
     // add `input_mode` to the URL query string
     if (getInputMode() != null) {
       try {
-        joiner.add(String.format("%sinput_mode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getInputMode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sinput_mode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getInputMode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -224,7 +222,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

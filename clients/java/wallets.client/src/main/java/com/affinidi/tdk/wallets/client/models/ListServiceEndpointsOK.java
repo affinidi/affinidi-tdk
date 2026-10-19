@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListServiceEndpointsOK.JSON_PROPERTY_SERVICES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListServiceEndpointsOK {
   public static final String JSON_PROPERTY_SERVICES = "services";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class ListServiceEndpointsOK {
    * @return services
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonProperty(value = JSON_PROPERTY_SERVICES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<ServiceEndpointDto> getServices() {
@@ -72,11 +72,12 @@ public class ListServiceEndpointsOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SERVICES)
+  @JsonProperty(value = JSON_PROPERTY_SERVICES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setServices(@javax.annotation.Nonnull List<ServiceEndpointDto> services) {
     this.services = services;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class ListServiceEndpointsOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class ListServiceEndpointsOK {
     if (getServices() != null) {
       for (int i = 0; i < getServices().size(); i++) {
         if (getServices().get(i) != null) {
-          joiner.add(getServices().get(i).toUrlQueryString(String.format("%sservices%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getServices().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sservices%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

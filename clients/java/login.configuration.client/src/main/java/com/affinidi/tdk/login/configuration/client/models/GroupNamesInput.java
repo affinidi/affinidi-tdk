@@ -35,7 +35,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   GroupNamesInput.JSON_PROPERTY_GROUP_NAMES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GroupNamesInput {
   public static final String JSON_PROPERTY_GROUP_NAMES = "groupNames";
   @javax.annotation.Nonnull
@@ -63,7 +63,7 @@ public class GroupNamesInput {
    * @return groupNames
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
+  @JsonProperty(value = JSON_PROPERTY_GROUP_NAMES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getGroupNames() {
@@ -71,11 +71,12 @@ public class GroupNamesInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GROUP_NAMES)
+  @JsonProperty(value = JSON_PROPERTY_GROUP_NAMES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGroupNames(@javax.annotation.Nonnull List<String> groupNames) {
     this.groupNames = groupNames;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -108,10 +109,7 @@ public class GroupNamesInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -150,8 +148,8 @@ public class GroupNamesInput {
     if (getGroupNames() != null) {
       for (int i = 0; i < getGroupNames().size(); i++) {
         try {
-          joiner.add(String.format("%sgroupNames%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sgroupNames%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getGroupNames().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
