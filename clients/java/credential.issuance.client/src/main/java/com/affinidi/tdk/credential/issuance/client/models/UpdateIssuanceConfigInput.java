@@ -49,7 +49,7 @@ import java.util.StringJoiner;
   UpdateIssuanceConfigInput.JSON_PROPERTY_RETURN_URIS,
   UpdateIssuanceConfigInput.JSON_PROPERTY_WEBHOOK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdateIssuanceConfigInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -142,7 +142,7 @@ public class UpdateIssuanceConfigInput {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -150,7 +150,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -167,7 +167,7 @@ public class UpdateIssuanceConfigInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -175,7 +175,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -192,7 +192,7 @@ public class UpdateIssuanceConfigInput {
    * @return issuerWalletId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_WALLET_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIssuerWalletId() {
@@ -200,7 +200,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUER_WALLET_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_WALLET_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerWalletId(@javax.annotation.Nullable String issuerWalletId) {
     this.issuerWalletId = issuerWalletId;
@@ -219,7 +219,7 @@ public class UpdateIssuanceConfigInput {
    * @return credentialOfferDuration
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_OFFER_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getCredentialOfferDuration() {
@@ -227,7 +227,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_DURATION)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_OFFER_DURATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialOfferDuration(@javax.annotation.Nullable BigDecimal credentialOfferDuration) {
     this.credentialOfferDuration = credentialOfferDuration;
@@ -244,7 +244,7 @@ public class UpdateIssuanceConfigInput {
    * @return format
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public FormatEnum getFormat() {
@@ -252,7 +252,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFormat(@javax.annotation.Nullable FormatEnum format) {
     this.format = format;
@@ -269,7 +269,7 @@ public class UpdateIssuanceConfigInput {
    * @return issuerUri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIssuerUri() {
@@ -277,7 +277,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUER_URI)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerUri(@javax.annotation.Nullable String issuerUri) {
     this.issuerUri = issuerUri;
@@ -302,7 +302,7 @@ public class UpdateIssuanceConfigInput {
    * @return credentialSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<CredentialSupportedObject> getCredentialSupported() {
@@ -310,7 +310,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialSupported(@javax.annotation.Nullable List<CredentialSupportedObject> credentialSupported) {
     this.credentialSupported = credentialSupported;
@@ -335,7 +335,7 @@ public class UpdateIssuanceConfigInput {
    * @return issuerMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_METADATA, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getIssuerMetadata() {
@@ -343,7 +343,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUER_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_METADATA, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerMetadata(@javax.annotation.Nullable Map<String, Object> issuerMetadata) {
     this.issuerMetadata = issuerMetadata;
@@ -368,7 +368,7 @@ public class UpdateIssuanceConfigInput {
    * @return returnUris
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+  @JsonProperty(value = JSON_PROPERTY_RETURN_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getReturnUris() {
@@ -376,7 +376,7 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+  @JsonProperty(value = JSON_PROPERTY_RETURN_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setReturnUris(@javax.annotation.Nullable List<String> returnUris) {
     this.returnUris = returnUris;
@@ -393,7 +393,7 @@ public class UpdateIssuanceConfigInput {
    * @return webhook
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WEBHOOK)
+  @JsonProperty(value = JSON_PROPERTY_WEBHOOK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public CisConfigurationWebhookSetting getWebhook() {
@@ -401,11 +401,12 @@ public class UpdateIssuanceConfigInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WEBHOOK)
+  @JsonProperty(value = JSON_PROPERTY_WEBHOOK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWebhook(@javax.annotation.Nullable CisConfigurationWebhookSetting webhook) {
     this.webhook = webhook;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -456,10 +457,7 @@ public class UpdateIssuanceConfigInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -497,7 +495,7 @@ public class UpdateIssuanceConfigInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -507,7 +505,7 @@ public class UpdateIssuanceConfigInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -517,7 +515,7 @@ public class UpdateIssuanceConfigInput {
     // add `issuerWalletId` to the URL query string
     if (getIssuerWalletId() != null) {
       try {
-        joiner.add(String.format("%sissuerWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuerWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerWalletId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -527,7 +525,7 @@ public class UpdateIssuanceConfigInput {
     // add `credentialOfferDuration` to the URL query string
     if (getCredentialOfferDuration() != null) {
       try {
-        joiner.add(String.format("%scredentialOfferDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferDuration()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentialOfferDuration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferDuration()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -537,7 +535,7 @@ public class UpdateIssuanceConfigInput {
     // add `format` to the URL query string
     if (getFormat() != null) {
       try {
-        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -547,7 +545,7 @@ public class UpdateIssuanceConfigInput {
     // add `issuerUri` to the URL query string
     if (getIssuerUri() != null) {
       try {
-        joiner.add(String.format("%sissuerUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuerUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuerUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -558,8 +556,8 @@ public class UpdateIssuanceConfigInput {
     if (getCredentialSupported() != null) {
       for (int i = 0; i < getCredentialSupported().size(); i++) {
         if (getCredentialSupported().get(i) != null) {
-          joiner.add(getCredentialSupported().get(i).toUrlQueryString(String.format("%scredentialSupported%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getCredentialSupported().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%scredentialSupported%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -568,8 +566,8 @@ public class UpdateIssuanceConfigInput {
     if (getIssuerMetadata() != null) {
       for (String _key : getIssuerMetadata().keySet()) {
         try {
-          joiner.add(String.format("%sissuerMetadata%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sissuerMetadata%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getIssuerMetadata().get(_key), URLEncoder.encode(String.valueOf(getIssuerMetadata().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -582,8 +580,8 @@ public class UpdateIssuanceConfigInput {
     if (getReturnUris() != null) {
       for (int i = 0; i < getReturnUris().size(); i++) {
         try {
-          joiner.add(String.format("%sreturnUris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sreturnUris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getReturnUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
