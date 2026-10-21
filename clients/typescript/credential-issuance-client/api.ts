@@ -28,6 +28,7 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
+  replaceWithSerializableTypeIfNeeded,
 } from './common'
 import type { RequestArgs } from './base'
 // @ts-ignore
@@ -39,41 +40,11 @@ import {
   operationServerMap,
 } from './base'
 
-/**
- *
- * @export
- * @interface ActionForbiddenError
- */
 export interface ActionForbiddenError {
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   name: ActionForbiddenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   message: ActionForbiddenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof ActionForbiddenError
-   */
   httpStatusCode: ActionForbiddenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof ActionForbiddenError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -97,132 +68,51 @@ export const ActionForbiddenErrorHttpStatusCodeEnum = {
 export type ActionForbiddenErrorHttpStatusCodeEnum =
   (typeof ActionForbiddenErrorHttpStatusCodeEnum)[keyof typeof ActionForbiddenErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface ActionForbiddenErrorDetailsInner
- */
 export interface ActionForbiddenErrorDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenErrorDetailsInner
-   */
   issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenErrorDetailsInner
-   */
   field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenErrorDetailsInner
-   */
   value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof ActionForbiddenErrorDetailsInner
-   */
   location?: string
 }
-/**
- *
- * @export
- * @interface BatchCredentialInput
- */
 export interface BatchCredentialInput {
   /**
    * Array that contains Credential Request objects.
-   * @type {Array<BatchCredentialInputCredentialRequestsInner>}
-   * @memberof BatchCredentialInput
    */
   credential_requests: Array<BatchCredentialInputCredentialRequestsInner>
 }
-/**
- *
- * @export
- * @interface BatchCredentialInputCredentialRequestsInner
- */
 export interface BatchCredentialInputCredentialRequestsInner {
   /**
    * It is a String that identifies a Credential that is being requested to be issued.
-   * @type {string}
-   * @memberof BatchCredentialInputCredentialRequestsInner
    */
   credential_identifier?: string
-  /**
-   *
-   * @type {CredentialProof}
-   * @memberof BatchCredentialInputCredentialRequestsInner
-   */
   proof: CredentialProof
 }
-/**
- *
- * @export
- * @interface BatchCredentialResponse
- */
 export interface BatchCredentialResponse {
-  /**
-   *
-   * @type {Array<BatchCredentialResponseCredentialResponsesInner>}
-   * @memberof BatchCredentialResponse
-   */
   credential_responses: Array<BatchCredentialResponseCredentialResponsesInner>
-  /**
-   *
-   * @type {string}
-   * @memberof BatchCredentialResponse
-   */
   c_nonce?: string
   /**
    * Expiration time in seconds
-   * @type {number}
-   * @memberof BatchCredentialResponse
    */
   c_nonce_expires_in?: number
 }
-/**
- *
- * @export
- * @interface BatchCredentialResponseCredentialResponsesInner
- */
 export interface BatchCredentialResponseCredentialResponsesInner {
   /**
    * Issued Credential, It can be a string or an object, depending on the Credential format. default format  is `ldp_vc`.
-   * @type {any}
-   * @memberof BatchCredentialResponseCredentialResponsesInner
    */
   credential: any
 }
 /**
  * @type ChangeCredentialStatus400Response
- * @export
  */
 export type ChangeCredentialStatus400Response =
   | ChangeStatusForbiddenError
   | InvalidParameterError
 
-/**
- *
- * @export
- * @interface ChangeCredentialStatusInput
- */
 export interface ChangeCredentialStatusInput {
   /**
    * reason for revocation
-   * @type {string}
-   * @memberof ChangeCredentialStatusInput
    */
   changeReason?: ChangeCredentialStatusInputChangeReasonEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ChangeCredentialStatusInput
-   */
   issuanceRecordId?: string
 }
 
@@ -234,41 +124,11 @@ export const ChangeCredentialStatusInputChangeReasonEnum = {
 export type ChangeCredentialStatusInputChangeReasonEnum =
   (typeof ChangeCredentialStatusInputChangeReasonEnum)[keyof typeof ChangeCredentialStatusInputChangeReasonEnum]
 
-/**
- *
- * @export
- * @interface ChangeStatusForbiddenError
- */
 export interface ChangeStatusForbiddenError {
-  /**
-   *
-   * @type {string}
-   * @memberof ChangeStatusForbiddenError
-   */
   name: ChangeStatusForbiddenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ChangeStatusForbiddenError
-   */
   message: ChangeStatusForbiddenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof ChangeStatusForbiddenError
-   */
   httpStatusCode: ChangeStatusForbiddenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ChangeStatusForbiddenError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof ChangeStatusForbiddenError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -293,162 +153,86 @@ export type ChangeStatusForbiddenErrorHttpStatusCodeEnum =
 
 /**
  * Webhook setting to notify developers for claimed VC
- * @export
- * @interface CisConfigurationWebhookSetting
  */
 export interface CisConfigurationWebhookSetting {
   /**
    * flag to enabled or disabled the webhook
-   * @type {boolean}
-   * @memberof CisConfigurationWebhookSetting
    */
   enabled: boolean
-  /**
-   *
-   * @type {CisConfigurationWebhookSettingEndpoint}
-   * @memberof CisConfigurationWebhookSetting
-   */
   endpoint?: CisConfigurationWebhookSettingEndpoint
 }
-/**
- *
- * @export
- * @interface CisConfigurationWebhookSettingEndpoint
- */
 export interface CisConfigurationWebhookSettingEndpoint {
   /**
    * url endpoint where notification will be sent with issuanceId after user has claimed the VC related to issuanceId
-   * @type {string}
-   * @memberof CisConfigurationWebhookSettingEndpoint
    */
   url?: string
 }
 /**
  * List of claimed credential
- * @export
- * @interface ClaimedCredentialListResponse
  */
 export interface ClaimedCredentialListResponse {
   /**
    * list of credentials
-   * @type {Array<{ [key: string]: any; }>}
-   * @memberof ClaimedCredentialListResponse
    */
   credentials?: Array<{ [key: string]: any }>
   /**
    * for pagination to fetch next set of records
-   * @type {string}
-   * @memberof ClaimedCredentialListResponse
    */
   lastEvaluatedKey?: string
 }
 /**
  * Response for getting the claimed VC
- * @export
- * @interface ClaimedCredentialResponse
  */
 export interface ClaimedCredentialResponse {
   /**
    * claimed credential for a single issuance
-   * @type {{ [key: string]: any; }}
-   * @memberof ClaimedCredentialResponse
    * @deprecated
    */
   credential?: { [key: string]: any }
   /**
    * claimed credentials for batch issuances
-   * @type {Array<{ [key: string]: any; }>}
-   * @memberof ClaimedCredentialResponse
    */
   credentials?: Array<{ [key: string]: any }>
 }
-/**
- *
- * @export
- * @interface CreateCredentialInput
- */
 export interface CreateCredentialInput {
   /**
    * It is a String that identifies a Credential that is being requested to be issued.
-   * @type {string}
-   * @memberof CreateCredentialInput
    */
   credential_identifier?: string
-  /**
-   *
-   * @type {CredentialProof}
-   * @memberof CreateCredentialInput
-   */
   proof: CredentialProof
 }
 /**
  * @type CreateIssuanceConfig400Response
- * @export
  */
 export type CreateIssuanceConfig400Response =
   | InvalidIssuerWalletError
   | ProjectCredentialConfigExistError
   | ProjectCredentialConfigNotExistError
 
-/**
- *
- * @export
- * @interface CreateIssuanceConfigInput
- */
 export interface CreateIssuanceConfigInput {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateIssuanceConfigInput
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof CreateIssuanceConfigInput
-   */
   description?: string
   /**
    * Issuer Wallet id
-   * @type {string}
-   * @memberof CreateIssuanceConfigInput
    */
   issuerWalletId: string
   /**
    * credential offer duration in second
-   * @type {number}
-   * @memberof CreateIssuanceConfigInput
    */
   credentialOfferDuration?: number
   /**
    * String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
-   * @type {string}
-   * @memberof CreateIssuanceConfigInput
    */
   format?: CreateIssuanceConfigInputFormatEnum
-  /**
-   *
-   * @type {Array<CredentialSupportedObject>}
-   * @memberof CreateIssuanceConfigInput
-   */
   credentialSupported: Array<CredentialSupportedObject>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
-   * @type {{ [key: string]: any; }}
-   * @memberof CreateIssuanceConfigInput
    */
   issuerMetadata?: { [key: string]: any }
   /**
    * List of allowed URIs to be returned to after issuance
-   * @type {Array<string>}
-   * @memberof CreateIssuanceConfigInput
    */
   returnUris?: Array<string>
-  /**
-   *
-   * @type {CisConfigurationWebhookSetting}
-   * @memberof CreateIssuanceConfigInput
-   */
   webhook?: CisConfigurationWebhookSetting
 }
 
@@ -461,41 +245,11 @@ export const CreateIssuanceConfigInputFormatEnum = {
 export type CreateIssuanceConfigInputFormatEnum =
   (typeof CreateIssuanceConfigInputFormatEnum)[keyof typeof CreateIssuanceConfigInputFormatEnum]
 
-/**
- *
- * @export
- * @interface CredentialIssuanceIdExistError
- */
 export interface CredentialIssuanceIdExistError {
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialIssuanceIdExistError
-   */
   name: CredentialIssuanceIdExistErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialIssuanceIdExistError
-   */
   message: CredentialIssuanceIdExistErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof CredentialIssuanceIdExistError
-   */
   httpStatusCode: CredentialIssuanceIdExistErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialIssuanceIdExistError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof CredentialIssuanceIdExistError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -519,41 +273,11 @@ export const CredentialIssuanceIdExistErrorHttpStatusCodeEnum = {
 export type CredentialIssuanceIdExistErrorHttpStatusCodeEnum =
   (typeof CredentialIssuanceIdExistErrorHttpStatusCodeEnum)[keyof typeof CredentialIssuanceIdExistErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface CredentialOfferClaimedError
- */
 export interface CredentialOfferClaimedError {
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialOfferClaimedError
-   */
   name: CredentialOfferClaimedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialOfferClaimedError
-   */
   message: CredentialOfferClaimedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof CredentialOfferClaimedError
-   */
   httpStatusCode: CredentialOfferClaimedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialOfferClaimedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof CredentialOfferClaimedError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -576,41 +300,11 @@ export const CredentialOfferClaimedErrorHttpStatusCodeEnum = {
 export type CredentialOfferClaimedErrorHttpStatusCodeEnum =
   (typeof CredentialOfferClaimedErrorHttpStatusCodeEnum)[keyof typeof CredentialOfferClaimedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface CredentialOfferExpiredError
- */
 export interface CredentialOfferExpiredError {
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialOfferExpiredError
-   */
   name: CredentialOfferExpiredErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialOfferExpiredError
-   */
   message: CredentialOfferExpiredErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof CredentialOfferExpiredError
-   */
   httpStatusCode: CredentialOfferExpiredErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialOfferExpiredError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof CredentialOfferExpiredError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -633,105 +327,58 @@ export const CredentialOfferExpiredErrorHttpStatusCodeEnum = {
 export type CredentialOfferExpiredErrorHttpStatusCodeEnum =
   (typeof CredentialOfferExpiredErrorHttpStatusCodeEnum)[keyof typeof CredentialOfferExpiredErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface CredentialOfferResponse
- */
 export interface CredentialOfferResponse {
   /**
    * The URL of the Credential Issuer
-   * @type {string}
-   * @memberof CredentialOfferResponse
    */
   credential_issuer: string
   /**
    * Array of unique strings that each identify one of the keys in the name/value pairs stored in the credentialSupported
-   * @type {Array<string>}
-   * @memberof CredentialOfferResponse
    */
   credential_configuration_ids: Array<string>
-  /**
-   *
-   * @type {CredentialOfferResponseGrants}
-   * @memberof CredentialOfferResponse
-   */
   grants: CredentialOfferResponseGrants
 }
 /**
  * Object indicating to the Wallet the Grant Types the Credential Issuer\'s Authorization Server is prepared to process for this Credential Offer.
- * @export
- * @interface CredentialOfferResponseGrants
  */
 export interface CredentialOfferResponseGrants {
-  /**
-   *
-   * @type {CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode}
-   * @memberof CredentialOfferResponseGrants
-   */
   'urn:ietf:params:oauth:grant-type:pre-authorized_code': CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
 }
 /**
  * Grant type for `pre-authorized_code` flow
- * @export
- * @interface CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
  */
 export interface CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode {
   /**
    * pre authorized code to be exchanged with jwt token
-   * @type {string}
-   * @memberof CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
    */
   'pre-authorized_code': string
-  /**
-   *
-   * @type {CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode}
-   * @memberof CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode
-   */
   tx_code?: CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
 }
 /**
  * Object specifying whether the Authorization Server expects presentation of a Transaction Code by the End-User along with the Token Request in a Pre-Authorized Code Flow
- * @export
- * @interface CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
  */
 export interface CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode {
   /**
    * Integer specifying the length of the Transaction Code
-   * @type {number}
-   * @memberof CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
    */
   length?: number
   /**
    * String specifying the input character set. Possible values are numeric (only digits) and text (any characters).
-   * @type {string}
-   * @memberof CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
    */
   input_mode?: string
   /**
    * String containing guidance for the Holder of the Wallet on how to obtain the Transaction Code
-   * @type {string}
-   * @memberof CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode
    */
   description?: string
 }
 /**
  * Object containing the proof of possession of the cryptographic key material the issued Credential would be bound to.
- * @export
- * @interface CredentialProof
  */
 export interface CredentialProof {
   /**
    * String denoting the key proof type.
-   * @type {string}
-   * @memberof CredentialProof
    */
   proof_type: CredentialProofProofTypeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialProof
-   */
   jwt: string
 }
 
@@ -744,111 +391,50 @@ export type CredentialProofProofTypeEnum =
 
 /**
  * @type CredentialResponse
- * @export
  */
 export type CredentialResponse =
   | CredentialResponseDeferred
   | CredentialResponseImmediate
 
-/**
- *
- * @export
- * @interface CredentialResponseDeferred
- */
 export interface CredentialResponseDeferred {
   /**
    * String identifying a Deferred Issuance transaction. This claim is contained in the response if the Credential Issuer was unable to immediately issue the Credential.
-   * @type {string}
-   * @memberof CredentialResponseDeferred
    */
   transaction_id: string
   /**
    * String containing a nonce to be used when creating a proof of possession of the key proof
-   * @type {string}
-   * @memberof CredentialResponseDeferred
    */
   c_nonce: string
   /**
    * Lifetime in seconds of the c_nonce
-   * @type {number}
-   * @memberof CredentialResponseDeferred
    */
   c_nonce_expires_in: number
 }
-/**
- *
- * @export
- * @interface CredentialResponseImmediate
- */
 export interface CredentialResponseImmediate {
-  /**
-   *
-   * @type {CredentialResponseImmediateCredential}
-   * @memberof CredentialResponseImmediate
-   */
   credential: CredentialResponseImmediateCredential
   /**
    * String containing a nonce to be used when creating a proof of possession of the key proof
-   * @type {string}
-   * @memberof CredentialResponseImmediate
    */
   c_nonce: string
-  /**
-   *
-   * @type {CredentialResponseImmediateCNonceExpiresIn}
-   * @memberof CredentialResponseImmediate
-   */
   c_nonce_expires_in: CredentialResponseImmediateCNonceExpiresIn
 }
 /**
  * @type CredentialResponseImmediateCNonceExpiresIn
- * @export
  */
 export type CredentialResponseImmediateCNonceExpiresIn = number | string
 
 /**
  * @type CredentialResponseImmediateCredential
- * @export
  */
 export type CredentialResponseImmediateCredential =
   | string
   | { [key: string]: any }
 
-/**
- *
- * @export
- * @interface CredentialSubjectNotValidError
- */
 export interface CredentialSubjectNotValidError {
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialSubjectNotValidError
-   */
   name: CredentialSubjectNotValidErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialSubjectNotValidError
-   */
   message: CredentialSubjectNotValidErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof CredentialSubjectNotValidError
-   */
   httpStatusCode: CredentialSubjectNotValidErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof CredentialSubjectNotValidError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof CredentialSubjectNotValidError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -872,180 +458,86 @@ export const CredentialSubjectNotValidErrorHttpStatusCodeEnum = {
 export type CredentialSubjectNotValidErrorHttpStatusCodeEnum =
   (typeof CredentialSubjectNotValidErrorHttpStatusCodeEnum)[keyof typeof CredentialSubjectNotValidErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface CredentialSupportedObject
- */
 export interface CredentialSupportedObject {
   /**
    * It is a String that identifies a Credential that is being requested to be issued.
-   * @type {string}
-   * @memberof CredentialSupportedObject
    */
   credentialTypeId: string
   /**
    * credential jsonLdContextUrl
-   * @type {string}
-   * @memberof CredentialSupportedObject
    */
   jsonSchemaUrl: string
   /**
    * credential jsonSchemaUrl
-   * @type {string}
-   * @memberof CredentialSupportedObject
    */
   jsonLdContextUrl: string
-  /**
-   *
-   * @type {SupportedCredentialMetadata}
-   * @memberof CredentialSupportedObject
-   */
   metadata?: SupportedCredentialMetadata
 }
-/**
- *
- * @export
- * @interface FlowData
- */
 export interface FlowData {
   /**
    * [GEN] ISO 8601 string of the creation date/time the entity
-   * @type {string}
-   * @memberof FlowData
    */
   createdAt: string
   /**
    * [GEN] ISO 8601 string of the modification date/time the entity
-   * @type {string}
-   * @memberof FlowData
    */
   modifiedAt: string
-  /**
-   *
-   * @type {string}
-   * @memberof FlowData
-   */
   id: string
-  /**
-   *
-   * @type {string}
-   * @memberof FlowData
-   */
   projectId?: string
-  /**
-   *
-   * @type {string}
-   * @memberof FlowData
-   */
   flowId: string
-  /**
-   *
-   * @type {string}
-   * @memberof FlowData
-   */
   credentialTypeId: string
-  /**
-   *
-   * @type {string}
-   * @memberof FlowData
-   */
   jsonLdContextUrl: string
-  /**
-   *
-   * @type {string}
-   * @memberof FlowData
-   */
   jsonSchemaUrl: string
   /**
    * Id of configuration, used to issue VC.
-   * @type {string}
-   * @memberof FlowData
    */
   configurationId?: string
   /**
    * when credential was issued to the holder (holder invoked generateCredentials endpoint)
-   * @type {string}
-   * @memberof FlowData
    */
   issuedAt?: string
   /**
    * Id of wallet, used to issue VC.
-   * @type {string}
-   * @memberof FlowData
    */
   walletId?: string
   /**
    * Id of configuration with which VC was issued. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{configurationId}\"
-   * @type {string}
-   * @memberof FlowData
    */
   projectIdConfigurationId?: string
   /**
    * Id of wallet which issued VC. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{walletId}\"
-   * @type {string}
-   * @memberof FlowData
    */
   projectIdConfigurationIdWalletId?: string
   /**
    * VC.type value. To use as an index, it is grouped together with projectId, as \"{projectIdConfigurationId}#{credentialType}\"
-   * @type {string}
-   * @memberof FlowData
    */
   projectIdConfigurationIdCredentialType?: string
-  /**
-   *
-   * @type {Array<FlowDataStatusListsDetailsInner>}
-   * @memberof FlowData
-   */
   statusListsDetails?: Array<FlowDataStatusListsDetailsInner>
 }
-/**
- *
- * @export
- * @interface FlowDataStatusListsDetailsInner
- */
 export interface FlowDataStatusListsDetailsInner {
   /**
    * Purpose of status list to which credential is added
-   * @type {string}
-   * @memberof FlowDataStatusListsDetailsInner
    */
   statusListPurpose: FlowDataStatusListsDetailsInnerStatusListPurposeEnum
   /**
    * id of status list
-   * @type {string}
-   * @memberof FlowDataStatusListsDetailsInner
    */
   statusListId: string
   /**
    * as usual it is a number, but all standards use a string
-   * @type {string}
-   * @memberof FlowDataStatusListsDetailsInner
    */
   statusListIndex: string
-  /**
-   *
-   * @type {string}
-   * @memberof FlowDataStatusListsDetailsInner
-   */
   standard: FlowDataStatusListsDetailsInnerStandardEnum
   /**
    * indicates status is true or not. Default false.
-   * @type {boolean}
-   * @memberof FlowDataStatusListsDetailsInner
    */
   isActive: boolean
   /**
    * text reasoning why the status is true (if true). Optional.
-   * @type {string}
-   * @memberof FlowDataStatusListsDetailsInner
    */
   statusActivationReason?: string
   /**
    * ISO 8601 string of the modification date/time the status. Optional.
-   * @type {string}
-   * @memberof FlowDataStatusListsDetailsInner
    */
   statusActivatedAt?: string
 }
@@ -1065,7 +557,6 @@ export type FlowDataStatusListsDetailsInnerStandardEnum =
 
 /**
  * @type GenerateCredentials400Response
- * @export
  */
 export type GenerateCredentials400Response =
   | InvalidCredentialRequestError
@@ -1073,7 +564,6 @@ export type GenerateCredentials400Response =
 
 /**
  * @type GetCredentialOffer400Response
- * @export
  */
 export type GetCredentialOffer400Response =
   | CredentialOfferClaimedError
@@ -1082,41 +572,11 @@ export type GetCredentialOffer400Response =
   | ProjectCredentialConfigNotExistError
   | VcClaimedError
 
-/**
- *
- * @export
- * @interface InvalidCredentialRequestError
- */
 export interface InvalidCredentialRequestError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidCredentialRequestError
-   */
   name: InvalidCredentialRequestErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidCredentialRequestError
-   */
   message: InvalidCredentialRequestErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidCredentialRequestError
-   */
   httpStatusCode: InvalidCredentialRequestErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidCredentialRequestError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof InvalidCredentialRequestError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1139,41 +599,11 @@ export const InvalidCredentialRequestErrorHttpStatusCodeEnum = {
 export type InvalidCredentialRequestErrorHttpStatusCodeEnum =
   (typeof InvalidCredentialRequestErrorHttpStatusCodeEnum)[keyof typeof InvalidCredentialRequestErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidCredentialTypeError
- */
 export interface InvalidCredentialTypeError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidCredentialTypeError
-   */
   name: InvalidCredentialTypeErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidCredentialTypeError
-   */
   message: InvalidCredentialTypeErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidCredentialTypeError
-   */
   httpStatusCode: InvalidCredentialTypeErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidCredentialTypeError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof InvalidCredentialTypeError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1197,41 +627,11 @@ export const InvalidCredentialTypeErrorHttpStatusCodeEnum = {
 export type InvalidCredentialTypeErrorHttpStatusCodeEnum =
   (typeof InvalidCredentialTypeErrorHttpStatusCodeEnum)[keyof typeof InvalidCredentialTypeErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidIssuerWalletError
- */
 export interface InvalidIssuerWalletError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidIssuerWalletError
-   */
   name: InvalidIssuerWalletErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidIssuerWalletError
-   */
   message: InvalidIssuerWalletErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidIssuerWalletError
-   */
   httpStatusCode: InvalidIssuerWalletErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidIssuerWalletError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof InvalidIssuerWalletError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1254,41 +654,11 @@ export const InvalidIssuerWalletErrorHttpStatusCodeEnum = {
 export type InvalidIssuerWalletErrorHttpStatusCodeEnum =
   (typeof InvalidIssuerWalletErrorHttpStatusCodeEnum)[keyof typeof InvalidIssuerWalletErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidJwtTokenError
- */
 export interface InvalidJwtTokenError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
   name: InvalidJwtTokenErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
   message: InvalidJwtTokenErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidJwtTokenError
-   */
   httpStatusCode: InvalidJwtTokenErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidJwtTokenError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof InvalidJwtTokenError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1311,41 +681,11 @@ export const InvalidJwtTokenErrorHttpStatusCodeEnum = {
 export type InvalidJwtTokenErrorHttpStatusCodeEnum =
   (typeof InvalidJwtTokenErrorHttpStatusCodeEnum)[keyof typeof InvalidJwtTokenErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidParameterError
- */
 export interface InvalidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   name: InvalidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   message: InvalidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidParameterError
-   */
   httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof InvalidParameterError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1368,41 +708,11 @@ export const InvalidParameterErrorHttpStatusCodeEnum = {
 export type InvalidParameterErrorHttpStatusCodeEnum =
   (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidProofError
- */
 export interface InvalidProofError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidProofError
-   */
   name: InvalidProofErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidProofError
-   */
   message: InvalidProofErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidProofError
-   */
   httpStatusCode: InvalidProofErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidProofError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof InvalidProofError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1426,95 +736,44 @@ export const InvalidProofErrorHttpStatusCodeEnum = {
 export type InvalidProofErrorHttpStatusCodeEnum =
   (typeof InvalidProofErrorHttpStatusCodeEnum)[keyof typeof InvalidProofErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface IssuanceConfigDto
- */
 export interface IssuanceConfigDto {
-  /**
-   *
-   * @type {string}
-   * @memberof IssuanceConfigDto
-   */
   id?: string
-  /**
-   *
-   * @type {string}
-   * @memberof IssuanceConfigDto
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof IssuanceConfigDto
-   */
   description?: string
   /**
    * Issuer DID
-   * @type {string}
-   * @memberof IssuanceConfigDto
    */
   issuerDid?: string
   /**
    * Issuer Wallet id
-   * @type {string}
-   * @memberof IssuanceConfigDto
    */
   issuerWalletId?: string
   /**
    * credential offer duration in second
-   * @type {number}
-   * @memberof IssuanceConfigDto
    */
   credentialOfferDuration?: number
   /**
    * c_nonce duration in second
-   * @type {number}
-   * @memberof IssuanceConfigDto
    */
   cNonceDuration?: number
   /**
    * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
-   * @type {string}
-   * @memberof IssuanceConfigDto
    */
   format?: IssuanceConfigDtoFormatEnum
   /**
    * Issuer URI
-   * @type {string}
-   * @memberof IssuanceConfigDto
    */
   issuerUri?: string
-  /**
-   *
-   * @type {Array<CredentialSupportedObject>}
-   * @memberof IssuanceConfigDto
-   */
   credentialSupported?: Array<CredentialSupportedObject>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
-   * @type {{ [key: string]: any; }}
-   * @memberof IssuanceConfigDto
    */
   issuerMetadata?: { [key: string]: any }
-  /**
-   *
-   * @type {number}
-   * @memberof IssuanceConfigDto
-   */
   version?: number
   /**
    * List of allowed URIs to be returned to after issuance
-   * @type {Array<string>}
-   * @memberof IssuanceConfigDto
    */
   returnUris?: Array<string>
-  /**
-   *
-   * @type {CisConfigurationWebhookSetting}
-   * @memberof IssuanceConfigDto
-   */
   webhook?: CisConfigurationWebhookSetting
 }
 
@@ -1527,84 +786,40 @@ export const IssuanceConfigDtoFormatEnum = {
 export type IssuanceConfigDtoFormatEnum =
   (typeof IssuanceConfigDtoFormatEnum)[keyof typeof IssuanceConfigDtoFormatEnum]
 
-/**
- *
- * @export
- * @interface IssuanceConfigListResponse
- */
 export interface IssuanceConfigListResponse {
-  /**
-   *
-   * @type {Array<IssuanceConfigMiniDto>}
-   * @memberof IssuanceConfigListResponse
-   */
   configurations: Array<IssuanceConfigMiniDto>
 }
-/**
- *
- * @export
- * @interface IssuanceConfigMiniDto
- */
 export interface IssuanceConfigMiniDto {
-  /**
-   *
-   * @type {string}
-   * @memberof IssuanceConfigMiniDto
-   */
   id: string
-  /**
-   *
-   * @type {string}
-   * @memberof IssuanceConfigMiniDto
-   */
   name?: string
   /**
    * Issuer DID
-   * @type {string}
-   * @memberof IssuanceConfigMiniDto
    */
   issuerDid?: string
   /**
    * Issuer Wallet id
-   * @type {string}
-   * @memberof IssuanceConfigMiniDto
    */
   issuerWalletId?: string
   /**
    * credential offer duration in second
-   * @type {number}
-   * @memberof IssuanceConfigMiniDto
    */
   credentialOfferDuration?: number
   /**
    * c_nonce duration in second
-   * @type {number}
-   * @memberof IssuanceConfigMiniDto
    */
   cNonceDuration?: number
   /**
    * String identifying the format of this Credential, i.e., jwt_vc_json-ld or ldp_vc. Depending on the format value, the object contains further elements defining the type
-   * @type {string}
-   * @memberof IssuanceConfigMiniDto
    */
   format?: IssuanceConfigMiniDtoFormatEnum
   /**
    * Issuer URI
-   * @type {string}
-   * @memberof IssuanceConfigMiniDto
    */
   issuerUri?: string
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
-   * @type {{ [key: string]: any; }}
-   * @memberof IssuanceConfigMiniDto
    */
   issuerMetadata?: { [key: string]: any }
-  /**
-   *
-   * @type {number}
-   * @memberof IssuanceConfigMiniDto
-   */
   version?: number
 }
 
@@ -1617,22 +832,13 @@ export const IssuanceConfigMiniDtoFormatEnum = {
 export type IssuanceConfigMiniDtoFormatEnum =
   (typeof IssuanceConfigMiniDtoFormatEnum)[keyof typeof IssuanceConfigMiniDtoFormatEnum]
 
-/**
- *
- * @export
- * @interface IssuanceStateResponse
- */
 export interface IssuanceStateResponse {
   /**
    * Website\'s internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
-   * @type {string}
-   * @memberof IssuanceStateResponse
    */
   issuanceId: string
   /**
    * String describing the status of the issuance
-   * @type {string}
-   * @memberof IssuanceStateResponse
    */
   status: IssuanceStateResponseStatusEnum
 }
@@ -1649,84 +855,28 @@ export type IssuanceStateResponseStatusEnum =
 
 /**
  * list of issuance data records
- * @export
- * @interface ListIssuanceRecordResponse
  */
 export interface ListIssuanceRecordResponse {
-  /**
-   *
-   * @type {Array<FlowData>}
-   * @memberof ListIssuanceRecordResponse
-   */
   flowData?: Array<FlowData>
-  /**
-   *
-   * @type {string}
-   * @memberof ListIssuanceRecordResponse
-   */
   lastEvaluatedKey?: string
 }
-/**
- *
- * @export
- * @interface ListIssuanceResponse
- */
 export interface ListIssuanceResponse {
   /**
    * The list of all issuances for the Project
-   * @type {Array<ListIssuanceResponseIssuancesInner>}
-   * @memberof ListIssuanceResponse
    */
   issuances: Array<ListIssuanceResponseIssuancesInner>
 }
-/**
- *
- * @export
- * @interface ListIssuanceResponseIssuancesInner
- */
 export interface ListIssuanceResponseIssuancesInner {
   /**
    * issuance id
-   * @type {string}
-   * @memberof ListIssuanceResponseIssuancesInner
    */
   id: string
 }
-/**
- *
- * @export
- * @interface MissingHolderDidError
- */
 export interface MissingHolderDidError {
-  /**
-   *
-   * @type {string}
-   * @memberof MissingHolderDidError
-   */
   name: MissingHolderDidErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof MissingHolderDidError
-   */
   message: MissingHolderDidErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof MissingHolderDidError
-   */
   httpStatusCode: MissingHolderDidErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof MissingHolderDidError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof MissingHolderDidError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1749,41 +899,11 @@ export const MissingHolderDidErrorHttpStatusCodeEnum = {
 export type MissingHolderDidErrorHttpStatusCodeEnum =
   (typeof MissingHolderDidErrorHttpStatusCodeEnum)[keyof typeof MissingHolderDidErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface NotFoundError
- */
 export interface NotFoundError {
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   name: NotFoundErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   message: NotFoundErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof NotFoundError
-   */
   httpStatusCode: NotFoundErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof NotFoundError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof NotFoundError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1806,41 +926,11 @@ export const NotFoundErrorHttpStatusCodeEnum = {
 export type NotFoundErrorHttpStatusCodeEnum =
   (typeof NotFoundErrorHttpStatusCodeEnum)[keyof typeof NotFoundErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface ProjectCredentialConfigExistError
- */
 export interface ProjectCredentialConfigExistError {
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectCredentialConfigExistError
-   */
   name: ProjectCredentialConfigExistErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectCredentialConfigExistError
-   */
   message: ProjectCredentialConfigExistErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof ProjectCredentialConfigExistError
-   */
   httpStatusCode: ProjectCredentialConfigExistErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectCredentialConfigExistError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof ProjectCredentialConfigExistError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1864,41 +954,11 @@ export const ProjectCredentialConfigExistErrorHttpStatusCodeEnum = {
 export type ProjectCredentialConfigExistErrorHttpStatusCodeEnum =
   (typeof ProjectCredentialConfigExistErrorHttpStatusCodeEnum)[keyof typeof ProjectCredentialConfigExistErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface ProjectCredentialConfigNotExistError
- */
 export interface ProjectCredentialConfigNotExistError {
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectCredentialConfigNotExistError
-   */
   name: ProjectCredentialConfigNotExistErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectCredentialConfigNotExistError
-   */
   message: ProjectCredentialConfigNotExistErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof ProjectCredentialConfigNotExistError
-   */
   httpStatusCode: ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof ProjectCredentialConfigNotExistError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof ProjectCredentialConfigNotExistError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -1924,7 +984,6 @@ export type ProjectCredentialConfigNotExistErrorHttpStatusCodeEnum =
 
 /**
  * @type StartIssuance400Response
- * @export
  */
 export type StartIssuance400Response =
   | CredentialIssuanceIdExistError
@@ -1934,35 +993,19 @@ export type StartIssuance400Response =
   | MissingHolderDidError
   | ProjectCredentialConfigNotExistError
 
-/**
- *
- * @export
- * @interface StartIssuanceInput
- */
 export interface StartIssuanceInput {
   /**
    * In TX_CODE claim mode, additional transaction code will be generated and the Authorization Server expects presentation of the transaction Code by the end-user. If FIXED_HOLDER claim mode is defined, holderDid must be present and service will not generate additional transaction code (NORMAL claimMode is deprecated).
-   * @type {string}
-   * @memberof StartIssuanceInput
    */
   claimMode?: StartIssuanceInputClaimModeEnum
   /**
    * Holder DID
-   * @type {string}
-   * @memberof StartIssuanceInput
    */
   holderDid?: string
   /**
    * Website\'s internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
-   * @type {string}
-   * @memberof StartIssuanceInput
    */
   issuanceId?: string
-  /**
-   *
-   * @type {Array<StartIssuanceInputDataInner>}
-   * @memberof StartIssuanceInput
-   */
   data: Array<StartIssuanceInputDataInner>
 }
 
@@ -1977,65 +1020,33 @@ export type StartIssuanceInputClaimModeEnum =
 
 /**
  * Data to be included in issued credential
- * @export
- * @interface StartIssuanceInputDataInner
  */
 export interface StartIssuanceInputDataInner {
   /**
    * It is a String that identifies a Credential that is being requested to be issued.
-   * @type {string}
-   * @memberof StartIssuanceInputDataInner
    */
   credentialTypeId: string
   /**
    * Object of data to be included in the issued credential ,should  match the credential type
-   * @type {{ [key: string]: any; }}
-   * @memberof StartIssuanceInputDataInner
    */
   credentialData: { [key: string]: any }
   /**
    * Types of status lists to which the credential should be added once issued. If not provided or empty, the credential is not added to any of the status lists.
-   * @type {Array<StartIssuanceInputDataInnerStatusListDetailsInner>}
-   * @memberof StartIssuanceInputDataInner
    */
   statusListDetails?: Array<StartIssuanceInputDataInnerStatusListDetailsInner>
-  /**
-   *
-   * @type {StartIssuanceInputDataInnerMetaData}
-   * @memberof StartIssuanceInputDataInner
-   */
   metaData?: StartIssuanceInputDataInnerMetaData
 }
 /**
  * Object of metadata to be included in the additionalProperties related to vc
- * @export
- * @interface StartIssuanceInputDataInnerMetaData
  */
 export interface StartIssuanceInputDataInnerMetaData {
   /**
    * Date and time when the credential will expire
-   * @type {string}
-   * @memberof StartIssuanceInputDataInnerMetaData
    */
   expirationDate: string
 }
-/**
- *
- * @export
- * @interface StartIssuanceInputDataInnerStatusListDetailsInner
- */
 export interface StartIssuanceInputDataInnerStatusListDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof StartIssuanceInputDataInnerStatusListDetailsInner
-   */
   purpose: StartIssuanceInputDataInnerStatusListDetailsInnerPurposeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof StartIssuanceInputDataInnerStatusListDetailsInner
-   */
   standard: StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum
 }
 
@@ -2052,171 +1063,66 @@ export const StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum = {
 export type StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum =
   (typeof StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum)[keyof typeof StartIssuanceInputDataInnerStatusListDetailsInnerStandardEnum]
 
-/**
- *
- * @export
- * @interface StartIssuanceResponse
- */
 export interface StartIssuanceResponse {
   /**
    * URL where wallet can view offer details
-   * @type {string}
-   * @memberof StartIssuanceResponse
    */
   credentialOfferUri: string
   /**
    * One time transaction code generated by CIS
-   * @type {string}
-   * @memberof StartIssuanceResponse
    */
   txCode?: string
   /**
    * Website\'s internal identifier. Website may use to get info about the status of issuance flow. If it is not provided, CIS will generate one.
-   * @type {string}
-   * @memberof StartIssuanceResponse
    */
   issuanceId: string
   /**
    * Expire time in seconds
-   * @type {number}
-   * @memberof StartIssuanceResponse
    */
   expiresIn: number
 }
-/**
- *
- * @export
- * @interface SupportedCredentialMetadata
- */
 export interface SupportedCredentialMetadata {
-  /**
-   *
-   * @type {Array<SupportedCredentialMetadataDisplayInner>}
-   * @memberof SupportedCredentialMetadata
-   */
   display?: Array<SupportedCredentialMetadataDisplayInner>
 }
-/**
- *
- * @export
- * @interface SupportedCredentialMetadataDisplayInner
- */
 export interface SupportedCredentialMetadataDisplayInner {
-  /**
-   *
-   * @type {string}
-   * @memberof SupportedCredentialMetadataDisplayInner
-   */
   name: string
-  /**
-   *
-   * @type {string}
-   * @memberof SupportedCredentialMetadataDisplayInner
-   */
   locale?: string
-  /**
-   *
-   * @type {SupportedCredentialMetadataItemLogo}
-   * @memberof SupportedCredentialMetadataDisplayInner
-   */
   logo?: SupportedCredentialMetadataItemLogo
-  /**
-   *
-   * @type {string}
-   * @memberof SupportedCredentialMetadataDisplayInner
-   */
   backgroundColor?: string
-  /**
-   *
-   * @type {string}
-   * @memberof SupportedCredentialMetadataDisplayInner
-   */
   textColor?: string
 }
-/**
- *
- * @export
- * @interface SupportedCredentialMetadataItemLogo
- */
 export interface SupportedCredentialMetadataItemLogo {
-  /**
-   *
-   * @type {string}
-   * @memberof SupportedCredentialMetadataItemLogo
-   */
   url: string
-  /**
-   *
-   * @type {string}
-   * @memberof SupportedCredentialMetadataItemLogo
-   */
   altText?: string
 }
-/**
- *
- * @export
- * @interface UpdateIssuanceConfigInput
- */
 export interface UpdateIssuanceConfigInput {
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateIssuanceConfigInput
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof UpdateIssuanceConfigInput
-   */
   description?: string
   /**
    * Issuer Wallet id
-   * @type {string}
-   * @memberof UpdateIssuanceConfigInput
    */
   issuerWalletId?: string
   /**
    * credential offer duration in second
-   * @type {number}
-   * @memberof UpdateIssuanceConfigInput
    */
   credentialOfferDuration?: number
   /**
    * String identifying the format of this Credential, i.e., ldp_vc. Depending on the format value, the object contains further elements defining the type
-   * @type {string}
-   * @memberof UpdateIssuanceConfigInput
    */
   format?: UpdateIssuanceConfigInputFormatEnum
   /**
    * Issuer URI
-   * @type {string}
-   * @memberof UpdateIssuanceConfigInput
    */
   issuerUri?: string
-  /**
-   *
-   * @type {Array<CredentialSupportedObject>}
-   * @memberof UpdateIssuanceConfigInput
-   */
   credentialSupported?: Array<CredentialSupportedObject>
   /**
    * Issuer public information wallet may want to show to user during consent confirmation
-   * @type {{ [key: string]: any; }}
-   * @memberof UpdateIssuanceConfigInput
    */
   issuerMetadata?: { [key: string]: any }
   /**
    * List of allowed URIs to be returned to after issuance
-   * @type {Array<string>}
-   * @memberof UpdateIssuanceConfigInput
    */
   returnUris?: Array<string>
-  /**
-   *
-   * @type {CisConfigurationWebhookSetting}
-   * @memberof UpdateIssuanceConfigInput
-   */
   webhook?: CisConfigurationWebhookSetting
 }
 
@@ -2229,41 +1135,11 @@ export const UpdateIssuanceConfigInputFormatEnum = {
 export type UpdateIssuanceConfigInputFormatEnum =
   (typeof UpdateIssuanceConfigInputFormatEnum)[keyof typeof UpdateIssuanceConfigInputFormatEnum]
 
-/**
- *
- * @export
- * @interface VcClaimedError
- */
 export interface VcClaimedError {
-  /**
-   *
-   * @type {string}
-   * @memberof VcClaimedError
-   */
   name: VcClaimedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof VcClaimedError
-   */
   message: VcClaimedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof VcClaimedError
-   */
   httpStatusCode: VcClaimedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof VcClaimedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<ActionForbiddenErrorDetailsInner>}
-   * @memberof VcClaimedError
-   */
   details?: Array<ActionForbiddenErrorDetailsInner>
 }
 
@@ -2287,95 +1163,20 @@ export const VcClaimedErrorHttpStatusCodeEnum = {
 export type VcClaimedErrorHttpStatusCodeEnum =
   (typeof VcClaimedErrorHttpStatusCodeEnum)[keyof typeof VcClaimedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface WellKnownOpenIdCredentialIssuerResponse
- */
 export interface WellKnownOpenIdCredentialIssuerResponse {
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   authorization_endpoint?: string
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   credential_endpoint?: string
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   credential_issuer?: string
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   batch_credential_endpoint?: string
-  /**
-   *
-   * @type {Array<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   credentials_supported?: Array<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner>
-  /**
-   *
-   * @type {Array<object>}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   credential_configurations_supported?: Array<object>
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   deferred_credential_endpoint?: string
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   grant_types_supported?: Array<WellKnownOpenIdCredentialIssuerResponseGrantTypesSupportedEnum>
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   jwks_uri?: string
-  /**
-   *
-   * @type {WellKnownOpenIdCredentialIssuerResponseDisplay}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   display?: WellKnownOpenIdCredentialIssuerResponseDisplay
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   scopes_supported?: Array<WellKnownOpenIdCredentialIssuerResponseScopesSupportedEnum>
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   token_endpoint?: string
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   token_endpoint_auth_methods_supported?: Array<WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum>
-  /**
-   *
-   * @type {Array<string>}
-   * @memberof WellKnownOpenIdCredentialIssuerResponse
-   */
   return_uris?: Array<string>
 }
 
@@ -2403,79 +1204,32 @@ export const WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupp
 export type WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum =
   (typeof WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum)[keyof typeof WellKnownOpenIdCredentialIssuerResponseTokenEndpointAuthMethodsSupportedEnum]
 
-/**
- *
- * @export
- * @interface WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
- */
 export interface WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
   /**
    * It is a String that identifies a Credential that is being requested to be issued.
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
    */
   credentialTypeId: string
   /**
    * credential jsonLdContextUrl
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
    */
   jsonSchemaUrl: string
   /**
    * credential jsonSchemaUrl
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner
    */
   jsonLdContextUrl: string
 }
-/**
- *
- * @export
- * @interface WellKnownOpenIdCredentialIssuerResponseDisplay
- */
 export interface WellKnownOpenIdCredentialIssuerResponseDisplay {
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplay
-   */
   name?: string
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplay
-   */
   locale?: string
-  /**
-   *
-   * @type {WellKnownOpenIdCredentialIssuerResponseDisplayLogo}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplay
-   */
   logo?: WellKnownOpenIdCredentialIssuerResponseDisplayLogo
 }
-/**
- *
- * @export
- * @interface WellKnownOpenIdCredentialIssuerResponseDisplayLogo
- */
 export interface WellKnownOpenIdCredentialIssuerResponseDisplayLogo {
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplayLogo
-   */
   uri: string
-  /**
-   *
-   * @type {string}
-   * @memberof WellKnownOpenIdCredentialIssuerResponseDisplayLogo
-   */
   alt_text?: string
 }
 
 /**
  * ConfigurationApi - axios parameter creator
- * @export
  */
 export const ConfigurationApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -2521,6 +1275,7 @@ export const ConfigurationApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2558,7 +1313,7 @@ export const ConfigurationApiAxiosParamCreator = function (
         configurationId,
       )
       const localVarPath = `/v1/configurations/{configurationId}`.replace(
-        `{${'configurationId'}}`,
+        '{configurationId}',
         encodeURIComponent(String(configurationId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2582,6 +1337,8 @@ export const ConfigurationApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2614,7 +1371,7 @@ export const ConfigurationApiAxiosParamCreator = function (
         configurationId,
       )
       const localVarPath = `/v1/configurations/{configurationId}`.replace(
-        `{${'configurationId'}}`,
+        '{configurationId}',
         encodeURIComponent(String(configurationId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2638,6 +1395,8 @@ export const ConfigurationApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2684,6 +1443,8 @@ export const ConfigurationApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -2723,7 +1484,7 @@ export const ConfigurationApiAxiosParamCreator = function (
         updateIssuanceConfigInput,
       )
       const localVarPath = `/v1/configurations/{configurationId}`.replace(
-        `{${'configurationId'}}`,
+        '{configurationId}',
         encodeURIComponent(String(configurationId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2749,6 +1510,7 @@ export const ConfigurationApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2774,7 +1536,6 @@ export const ConfigurationApiAxiosParamCreator = function (
 
 /**
  * ConfigurationApi - functional programming interface
- * @export
  */
 export const ConfigurationApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -2945,7 +1706,6 @@ export const ConfigurationApiFp = function (configuration?: Configuration) {
 
 /**
  * ConfigurationApi - factory interface
- * @export
  */
 export const ConfigurationApiFactory = function (
   configuration?: Configuration,
@@ -3033,9 +1793,6 @@ export const ConfigurationApiFactory = function (
 
 /**
  * ConfigurationApi - object-oriented interface
- * @export
- * @class ConfigurationApi
- * @extends {BaseAPI}
  */
 export class ConfigurationApi extends BaseAPI {
   /**
@@ -3043,7 +1800,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {CreateIssuanceConfigInput} createIssuanceConfigInput Request body of create configuration
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public createIssuanceConfig(
     createIssuanceConfigInput: CreateIssuanceConfigInput,
@@ -3059,7 +1815,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {string} configurationId The id of the issuance configuration
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public deleteIssuanceConfigById(
     configurationId: string,
@@ -3075,7 +1830,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {string} configurationId The id of the issuance configuration
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public getIssuanceConfigById(
     configurationId: string,
@@ -3090,7 +1844,6 @@ export class ConfigurationApi extends BaseAPI {
    * Get issuance configuration for my selected project
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public getIssuanceConfigList(options?: RawAxiosRequestConfig) {
     return ConfigurationApiFp(this.configuration)
@@ -3104,7 +1857,6 @@ export class ConfigurationApi extends BaseAPI {
    * @param {UpdateIssuanceConfigInput} updateIssuanceConfigInput Request body of update configuration
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public updateIssuanceConfigById(
     configurationId: string,
@@ -3123,7 +1875,6 @@ export class ConfigurationApi extends BaseAPI {
 
 /**
  * CredentialsApi - axios parameter creator
- * @export
  */
 export const CredentialsApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -3151,7 +1902,7 @@ export const CredentialsApiAxiosParamCreator = function (
         batchCredentialInput,
       )
       const localVarPath = `/v1/{projectId}/batch_credential`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3174,6 +1925,7 @@ export const CredentialsApiAxiosParamCreator = function (
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3215,7 +1967,7 @@ export const CredentialsApiAxiosParamCreator = function (
         createCredentialInput,
       )
       const localVarPath = `/v1/{projectId}/credential`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3238,6 +1990,7 @@ export const CredentialsApiAxiosParamCreator = function (
       await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3295,9 +2048,9 @@ export const CredentialsApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/{projectId}/configurations/{configurationId}/credentials`
-          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace('{projectId}', encodeURIComponent(String(projectId)))
           .replace(
-            `{${'configurationId'}}`,
+            '{configurationId}',
             encodeURIComponent(String(configurationId)),
           )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3337,6 +2090,8 @@ export const CredentialsApiAxiosParamCreator = function (
       if (limit !== undefined) {
         localVarQueryParameter['limit'] = limit
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3387,12 +2142,12 @@ export const CredentialsApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/{projectId}/configurations/{configurationId}/issuances/{issuanceId}/credentials`
-          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace('{projectId}', encodeURIComponent(String(projectId)))
           .replace(
-            `{${'configurationId'}}`,
+            '{configurationId}',
             encodeURIComponent(String(configurationId)),
           )
-          .replace(`{${'issuanceId'}}`, encodeURIComponent(String(issuanceId)))
+          .replace('{issuanceId}', encodeURIComponent(String(issuanceId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -3415,6 +2170,8 @@ export const CredentialsApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3434,7 +2191,6 @@ export const CredentialsApiAxiosParamCreator = function (
 
 /**
  * CredentialsApi - functional programming interface
- * @export
  */
 export const CredentialsApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -3606,7 +2362,6 @@ export const CredentialsApiFp = function (configuration?: Configuration) {
 
 /**
  * CredentialsApi - factory interface
- * @export
  */
 export const CredentialsApiFactory = function (
   configuration?: Configuration,
@@ -3710,9 +2465,6 @@ export const CredentialsApiFactory = function (
 
 /**
  * CredentialsApi - object-oriented interface
- * @export
- * @class CredentialsApi
- * @extends {BaseAPI}
  */
 export class CredentialsApi extends BaseAPI {
   /**
@@ -3722,7 +2474,6 @@ export class CredentialsApi extends BaseAPI {
    * @param {BatchCredentialInput} batchCredentialInput Request body for batch credential
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof CredentialsApi
    */
   public batchCredential(
     projectId: string,
@@ -3740,7 +2491,6 @@ export class CredentialsApi extends BaseAPI {
    * @param {CreateCredentialInput} createCredentialInput Request body to issue credentials
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof CredentialsApi
    */
   public generateCredentials(
     projectId: string,
@@ -3763,7 +2513,6 @@ export class CredentialsApi extends BaseAPI {
    * @param {number} [limit]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof CredentialsApi
    */
   public getClaimedCredentials(
     projectId: string,
@@ -3795,7 +2544,6 @@ export class CredentialsApi extends BaseAPI {
    * @param {string} issuanceId issuance id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof CredentialsApi
    */
   public getIssuanceIdClaimedCredential(
     projectId: string,
@@ -3816,7 +2564,6 @@ export class CredentialsApi extends BaseAPI {
 
 /**
  * DefaultApi - axios parameter creator
- * @export
  */
 export const DefaultApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -3853,9 +2600,9 @@ export const DefaultApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/{projectId}/configurations/{configurationId}/issuance/change-status`
-          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace('{projectId}', encodeURIComponent(String(projectId)))
           .replace(
-            `{${'configurationId'}}`,
+            '{configurationId}',
             encodeURIComponent(String(configurationId)),
           )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3881,6 +2628,7 @@ export const DefaultApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3930,9 +2678,9 @@ export const DefaultApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/{projectId}/configurations/{configurationId}/issuance/issuance-data-records`
-          .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+          .replace('{projectId}', encodeURIComponent(String(projectId)))
           .replace(
-            `{${'configurationId'}}`,
+            '{configurationId}',
             encodeURIComponent(String(configurationId)),
           )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3969,6 +2717,8 @@ export const DefaultApiAxiosParamCreator = function (
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3988,7 +2738,6 @@ export const DefaultApiAxiosParamCreator = function (
 
 /**
  * DefaultApi - functional programming interface
- * @export
  */
 export const DefaultApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
@@ -4081,7 +2830,6 @@ export const DefaultApiFp = function (configuration?: Configuration) {
 
 /**
  * DefaultApi - factory interface
- * @export
  */
 export const DefaultApiFactory = function (
   configuration?: Configuration,
@@ -4149,9 +2897,6 @@ export const DefaultApiFactory = function (
 
 /**
  * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
   /**
@@ -4162,7 +2907,6 @@ export class DefaultApi extends BaseAPI {
    * @param {ChangeCredentialStatusInput} changeCredentialStatusInput Request body for changing credential status
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public changeCredentialStatus(
     projectId: string,
@@ -4190,7 +2934,6 @@ export class DefaultApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof DefaultApi
    */
   public listIssuanceDataRecords(
     projectId: string,
@@ -4215,7 +2958,6 @@ export class DefaultApi extends BaseAPI {
 
 /**
  * IssuanceApi - axios parameter creator
- * @export
  */
 export const IssuanceApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4238,8 +2980,8 @@ export const IssuanceApiAxiosParamCreator = function (
       // verify required parameter 'projectId' is not null or undefined
       assertParamExists('issuanceState', 'projectId', projectId)
       const localVarPath = `/v1/{projectId}/issuance/state/{issuanceId}`
-        .replace(`{${'issuanceId'}}`, encodeURIComponent(String(issuanceId)))
-        .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
+        .replace('{issuanceId}', encodeURIComponent(String(issuanceId)))
+        .replace('{projectId}', encodeURIComponent(String(projectId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -4261,6 +3003,8 @@ export const IssuanceApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4297,7 +3041,7 @@ export const IssuanceApiAxiosParamCreator = function (
         startIssuanceInput,
       )
       const localVarPath = `/v1/{projectId}/credential/issue`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4323,6 +3067,7 @@ export const IssuanceApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4356,7 +3101,7 @@ export const IssuanceApiAxiosParamCreator = function (
       // verify required parameter 'projectId' is not null or undefined
       assertParamExists('listIssuance', 'projectId', projectId)
       const localVarPath = `/v1/{projectId}/issuance`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4380,6 +3125,8 @@ export const IssuanceApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4416,7 +3163,7 @@ export const IssuanceApiAxiosParamCreator = function (
         startIssuanceInput,
       )
       const localVarPath = `/v1/{projectId}/issuance/start`.replace(
-        `{${'projectId'}}`,
+        '{projectId}',
         encodeURIComponent(String(projectId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4442,6 +3189,7 @@ export const IssuanceApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4467,7 +3215,6 @@ export const IssuanceApiAxiosParamCreator = function (
 
 /**
  * IssuanceApi - functional programming interface
- * @export
  */
 export const IssuanceApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = IssuanceApiAxiosParamCreator(configuration)
@@ -4615,7 +3362,6 @@ export const IssuanceApiFp = function (configuration?: Configuration) {
 
 /**
  * IssuanceApi - factory interface
- * @export
  */
 export const IssuanceApiFactory = function (
   configuration?: Configuration,
@@ -4691,9 +3437,6 @@ export const IssuanceApiFactory = function (
 
 /**
  * IssuanceApi - object-oriented interface
- * @export
- * @class IssuanceApi
- * @extends {BaseAPI}
  */
 export class IssuanceApi extends BaseAPI {
   /**
@@ -4702,7 +3445,6 @@ export class IssuanceApi extends BaseAPI {
    * @param {string} projectId Affinidi project id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IssuanceApi
    */
   public issuanceState(
     issuanceId: string,
@@ -4720,7 +3462,6 @@ export class IssuanceApi extends BaseAPI {
    * @param {StartIssuanceInput} startIssuanceInput Request body to start issuance
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IssuanceApi
    */
   public issueCredentials(
     projectId: string,
@@ -4737,7 +3478,6 @@ export class IssuanceApi extends BaseAPI {
    * @param {string} projectId Affinidi project id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IssuanceApi
    */
   public listIssuance(projectId: string, options?: RawAxiosRequestConfig) {
     return IssuanceApiFp(this.configuration)
@@ -4751,7 +3491,6 @@ export class IssuanceApi extends BaseAPI {
    * @param {StartIssuanceInput} startIssuanceInput Request body to start issuance
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof IssuanceApi
    */
   public startIssuance(
     projectId: string,
@@ -4766,7 +3505,6 @@ export class IssuanceApi extends BaseAPI {
 
 /**
  * OfferApi - axios parameter creator
- * @export
  */
 export const OfferApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4789,8 +3527,8 @@ export const OfferApiAxiosParamCreator = function (
       // verify required parameter 'issuanceId' is not null or undefined
       assertParamExists('getCredentialOffer', 'issuanceId', issuanceId)
       const localVarPath = `/v1/{projectId}/offers/{issuanceId}`
-        .replace(`{${'projectId'}}`, encodeURIComponent(String(projectId)))
-        .replace(`{${'issuanceId'}}`, encodeURIComponent(String(issuanceId)))
+        .replace('{projectId}', encodeURIComponent(String(projectId)))
+        .replace('{issuanceId}', encodeURIComponent(String(issuanceId)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -4805,6 +3543,8 @@ export const OfferApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4825,7 +3565,6 @@ export const OfferApiAxiosParamCreator = function (
 
 /**
  * OfferApi - functional programming interface
- * @export
  */
 export const OfferApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = OfferApiAxiosParamCreator(configuration)
@@ -4871,7 +3610,6 @@ export const OfferApiFp = function (configuration?: Configuration) {
 
 /**
  * OfferApi - factory interface
- * @export
  */
 export const OfferApiFactory = function (
   configuration?: Configuration,
@@ -4901,9 +3639,6 @@ export const OfferApiFactory = function (
 
 /**
  * OfferApi - object-oriented interface
- * @export
- * @class OfferApi
- * @extends {BaseAPI}
  */
 export class OfferApi extends BaseAPI {
   /**
@@ -4912,7 +3647,6 @@ export class OfferApi extends BaseAPI {
    * @param {string} issuanceId issuanceId from credential_offer_uri
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof OfferApi
    */
   public getCredentialOffer(
     projectId: string,
@@ -4927,7 +3661,6 @@ export class OfferApi extends BaseAPI {
 
 /**
  * WellKnownApi - axios parameter creator
- * @export
  */
 export const WellKnownApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4951,7 +3684,7 @@ export const WellKnownApiAxiosParamCreator = function (
       )
       const localVarPath =
         `/v1/{projectId}/.well-known/openid-credential-issuer`.replace(
-          `{${'projectId'}}`,
+          '{projectId}',
           encodeURIComponent(String(projectId)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4968,6 +3701,8 @@ export const WellKnownApiAxiosParamCreator = function (
       }
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4988,7 +3723,6 @@ export const WellKnownApiAxiosParamCreator = function (
 
 /**
  * WellKnownApi - functional programming interface
- * @export
  */
 export const WellKnownApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = WellKnownApiAxiosParamCreator(configuration)
@@ -5031,7 +3765,6 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
 
 /**
  * WellKnownApi - factory interface
- * @export
  */
 export const WellKnownApiFactory = function (
   configuration?: Configuration,
@@ -5059,9 +3792,6 @@ export const WellKnownApiFactory = function (
 
 /**
  * WellKnownApi - object-oriented interface
- * @export
- * @class WellKnownApi
- * @extends {BaseAPI}
  */
 export class WellKnownApi extends BaseAPI {
   /**
@@ -5069,7 +3799,6 @@ export class WellKnownApi extends BaseAPI {
    * @param {string} projectId Affinidi project id
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WellKnownApi
    */
   public getWellKnownOpenIdCredentialIssuer(
     projectId: string,

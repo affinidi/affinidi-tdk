@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   UpdateAccessInput.JSON_PROPERTY_RIGHTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdateAccessInput {
   public static final String JSON_PROPERTY_RIGHTS = "rights";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class UpdateAccessInput {
    * @return rights
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RIGHTS)
+  @JsonProperty(value = JSON_PROPERTY_RIGHTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<RightsEnum> getRights() {
@@ -72,11 +72,12 @@ public class UpdateAccessInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RIGHTS)
+  @JsonProperty(value = JSON_PROPERTY_RIGHTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRights(@javax.annotation.Nonnull List<RightsEnum> rights) {
     this.rights = rights;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class UpdateAccessInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -152,8 +150,8 @@ public class UpdateAccessInput {
       for (int i = 0; i < getRights().size(); i++) {
         if (getRights().get(i) != null) {
           try {
-            joiner.add(String.format("%srights%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+            joiner.add(String.format(java.util.Locale.ROOT, "%srights%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
                 URLEncoder.encode(String.valueOf(getRights().get(i)), "UTF-8").replaceAll("\\+", "%20")));
           } catch (UnsupportedEncodingException e) {
             // Should never happen, UTF-8 is always supported
