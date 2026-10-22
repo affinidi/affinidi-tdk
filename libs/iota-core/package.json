@@ -25,6 +25,9 @@
   "typings": "index.d.ts",
   "sideEffects": false,
   "homepage": "https://github.com/affinidi/affinidi-tdk#readme",
+  "engines": {
+    "node": ">=22.23.4"
+  },
   "jsii": {
     "outdir": "dist",
     "versionFormat": "short",
