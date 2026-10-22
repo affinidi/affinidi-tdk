@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   GetRevocationListCredentialResultDto.JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GetRevocationListCredentialResultDto {
   public static final String JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL = "revocationListCredential";
   @javax.annotation.Nonnull
@@ -52,7 +52,7 @@ public class GetRevocationListCredentialResultDto {
    * @return revocationListCredential
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getRevocationListCredential() {
@@ -60,11 +60,12 @@ public class GetRevocationListCredentialResultDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_REVOCATION_LIST_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRevocationListCredential(@javax.annotation.Nonnull Object revocationListCredential) {
     this.revocationListCredential = revocationListCredential;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class GetRevocationListCredentialResultDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class GetRevocationListCredentialResultDto {
     // add `revocationListCredential` to the URL query string
     if (getRevocationListCredential() != null) {
       try {
-        joiner.add(String.format("%srevocationListCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationListCredential()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srevocationListCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationListCredential()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
