@@ -2,11 +2,11 @@
 
 ## Properties
 
-| Name                     | Type                                                                                    | Description | Notes                             |
-| ------------------------ | --------------------------------------------------------------------------------------- | ----------- | --------------------------------- |
-| **name**                 | **string**                                                                              |             | [default to undefined]            |
-| **authenticationMethod** | [**TokenPrivateKeyAuthenticationMethodDto**](TokenPrivateKeyAuthenticationMethodDto.md) |             | [default to undefined]            |
-| **description**          | **string**                                                                              |             | [optional] [default to undefined] |
+| Name                     | Type                                                                | Description | Notes                             |
+| ------------------------ | ------------------------------------------------------------------- | ----------- | --------------------------------- |
+| **name**                 | **string**                                                          |             | [default to undefined]            |
+| **authenticationMethod** | [**TokenAuthenticationMethodDto**](TokenAuthenticationMethodDto.md) |             | [default to undefined]            |
+| **description**          | **string**                                                          |             | [optional] [default to undefined] |
 
 ## Example
 
