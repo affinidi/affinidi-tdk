@@ -20,7 +20,7 @@ jobs:
           ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: '^24.22.1'
           cache: 'npm'
       - run: npm ci
       - name: Verify npm packages are trusted-publishing ready

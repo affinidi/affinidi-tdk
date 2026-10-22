@@ -20,6 +20,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # The jsii-based TDK packages run their bundled JS on the runner's Node.
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '^24.22.1'
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
