@@ -24,6 +24,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
+          # Resolve the newest 24.x instead of the runner's cached one, so security releases are picked up.
+          check-latest: true
           cache: 'npm'
 
       - name: Install dependencies
