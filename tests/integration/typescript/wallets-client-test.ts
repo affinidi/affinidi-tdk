@@ -37,14 +37,13 @@ describe('wallets-client', function () {
   })
 
   after(async function () {
-    {
-      const { status } = await api.deleteWallet(walletId)
-      expect(status).to.equal(204)
-    }
-
-    if (walletIdDidWeb) {
-      const { status } = await api.deleteWallet(walletIdDidWeb)
-      expect(status).to.equal(204)
+    // Delete each wallet even if another delete fails, so none are left behind
+    const results = await Promise.allSettled(
+      [walletId, walletIdDidWeb].filter(Boolean).map((id) => api.deleteWallet(id)),
+    )
+    for (const result of results) {
+      expect(result.status).to.equal('fulfilled')
+      expect((result as PromiseFulfilledResult<any>).value.status).to.equal(204)
     }
   })
 
@@ -61,6 +60,11 @@ describe('wallets-client', function () {
     expect(status).to.equal(201)
     expect(data).to.have.a.property('wallet')
     walletIdDidWeb = data.wallet.id
+
+    // Not used by other tests, so delete it now instead of holding a wallet slot
+    const { status: deleteStatus } = await api.deleteWallet(walletIdDidWeb)
+    expect(deleteStatus).to.equal(204)
+    walletIdDidWeb = undefined
   })
 
   it('Signs Credential', async () => {

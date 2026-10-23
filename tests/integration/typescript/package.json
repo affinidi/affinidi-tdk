@@ -4,7 +4,7 @@
   "description": "TDK testing",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require tsx --timeout 20000 '*.ts'"
+    "test": "mocha --require tsx --require ./helpers/root-hooks.ts --timeout 20000 '*.ts'"
   },
   "author": "Affinidi",
   "license": "ISC",
