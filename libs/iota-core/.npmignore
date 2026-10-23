@@ -10,9 +10,7 @@ coverage
 Thumbs.db
 
 
-# Exclude jsii outdir
+# Exclude jsii build artifacts.
 dist
-
-# Include .jsii and .jsii.gz
-!.jsii
-!.jsii.gz
+.jsii
+.jsii.gz
