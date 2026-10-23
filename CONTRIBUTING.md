@@ -12,7 +12,7 @@ Libraries and packages are created once using Typescript and then automatically 
 
 ### Requirements
 
-- [Node.js v18 or higher](https://nodejs.org)
+- [Node.js](https://nodejs.org) 22 (22.23.4 or later), 24 (24.22.1 or later), or 26.12.1 and later
 - [pre-commit](https://pre-commit.com/#install)
 - [gitleaks](https://github.com/gitleaks/gitleaks)
 - [commitizen](https://github.com/commitizen-tools/commitizen)

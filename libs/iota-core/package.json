@@ -25,6 +25,9 @@
   "typings": "index.d.ts",
   "sideEffects": false,
   "homepage": "https://github.com/affinidi/affinidi-tdk#readme",
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.12.1"
+  },
   "jsii": {
     "outdir": "dist",
     "versionFormat": "short",
@@ -45,7 +48,7 @@
     "publish-pypi": "twine upload --verbose --skip-existing dist/python/*"
   },
   "dependencies": {
-    "@affinidi-tdk/common": "^1.21.0",
+    "@affinidi-tdk/common": "^1.25.0 || ^2.0.0",
     "@affinidi-tdk/iota-client": "^1.14.0",
     "@aws-sdk/client-cognito-identity": "^3.590.0"
   },
