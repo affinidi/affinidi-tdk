@@ -29,6 +29,9 @@
   ],
   "sideEffects": false,
   "homepage": "https://github.com/affinidi/affinidi-tdk#readme",
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.12.1"
+  },
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --ext .ts",
