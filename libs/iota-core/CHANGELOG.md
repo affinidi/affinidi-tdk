@@ -1,3 +1,18 @@
+# [2.0.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.25.1...@affinidi-tdk/iota-core-v2.0.0) (2026-10-23)
+
+
+### Features
+
+* require Node 22.23.4 across TypeScript packages ([#1403](https://github.com/affinidi/affinidi-tdk/issues/1403)) ([bb87dd1](https://github.com/affinidi/affinidi-tdk/commit/bb87dd1cd7543c3c2f114e7acfb2945b7d1d2bdc))
+
+
+### BREAKING CHANGES
+
+* @affinidi-tdk/*-client, @affinidi-tdk/common,
+@affinidi-tdk/auth-provider, @affinidi-tdk/iota-core and
+@affinidi-tdk/iota-browser require Node ^22.23.4 || ^24.22.1 ||
+>=26.12.1.
+
 ## [1.25.1](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/iota-core-v1.25.0...@affinidi-tdk/iota-core-v1.25.1) (2026-07-29)
 
 
