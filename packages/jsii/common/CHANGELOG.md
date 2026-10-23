@@ -1,3 +1,24 @@
+# [2.0.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.26.0...@affinidi-tdk/common-v2.0.0) (2026-10-23)
+
+
+### Bug Fixes
+
+* **release:** decouple npm & jsii publishing into tag-triggered OIDC jobs ([#1325](https://github.com/affinidi/affinidi-tdk/issues/1325)) ([9454588](https://github.com/affinidi/affinidi-tdk/commit/94545883d253c76cdc4d5e570df07f01cddd2896))
+
+
+### Features
+
+* require Node 22.23.4 across TypeScript packages ([#1403](https://github.com/affinidi/affinidi-tdk/issues/1403)) ([bb87dd1](https://github.com/affinidi/affinidi-tdk/commit/bb87dd1cd7543c3c2f114e7acfb2945b7d1d2bdc))
+* update all clients ([#1079](https://github.com/affinidi/affinidi-tdk/issues/1079)) ([616d27f](https://github.com/affinidi/affinidi-tdk/commit/616d27fa1fadb24cd75d40b4cf1e4ad2785964b7))
+
+
+### BREAKING CHANGES
+
+* @affinidi-tdk/*-client, @affinidi-tdk/common,
+@affinidi-tdk/auth-provider, @affinidi-tdk/iota-core and
+@affinidi-tdk/iota-browser require Node ^22.23.4 || ^24.22.1 ||
+>=26.12.1.
+
 # [1.26.0](https://github.com/affinidi/affinidi-tdk/compare/@affinidi-tdk/common-v1.25.1...@affinidi-tdk/common-v1.26.0) (2025-10-03)
 
 
