@@ -125,6 +125,7 @@ export const checkWalletsLimitExceeded = async () => {
   const { data } = await api.listWallets()
   expect(data).to.have.a.property('wallets')
   expect(data.wallets).to.be.an('array')
+  console.log(`Wallets listed in project: ${data.wallets?.length}`)
 
   if (data.wallets && data.wallets.length > WALLETS_LIMIT_THRESHOLD) {
     console.log('❗️Number of wallets reaching the limit (10). Deleting wallets.')

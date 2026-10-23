@@ -72,8 +72,20 @@ describe('credential-issuance-client', function () {
     })
 
     it('Updates issuance configuration', async () => {
+      const { data: current } = await configurationApi.getIssuanceConfigById(configurationId)
+      console.log(
+        'Supported credential types before update:',
+        current.credentialSupported?.map((credential) => credential.credentialTypeId),
+      )
+
+      // Keep the shared configuration in sync with the fixture so issuance doesn't fail
+      // on credential types that were removed from it
       const description = 'UpdatedDescription'
-      const { data } = await configurationApi.updateIssuanceConfigById(configurationId, { description })
+      const { credentialSupported } = JSON.parse(credentialIssuanceConfiguration)
+      const { data } = await configurationApi.updateIssuanceConfigById(configurationId, {
+        description,
+        credentialSupported,
+      })
       expect(data).to.have.a.property('description')
       expect(data.description).to.eql(description)
     })

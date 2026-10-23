@@ -236,11 +236,13 @@ def test_validates_wallet_setup_v2(wallet_v2_resource):
 def test_create_did_web_wallet_v2(wallet_api):
     """V2: Create did:web wallet v2."""
     wallet = create_wallet_v2("web")
-    assert wallet, "Expected WEB-based wallet to be created"
-    assert wallet["id"], "Expected non-null WEB wallet ID"
-    
-    # Cleanup
-    delete_wallet(wallet["id"])
+    try:
+        assert wallet, "Expected WEB-based wallet to be created"
+        assert wallet["id"], "Expected non-null WEB wallet ID"
+    finally:
+        # Cleanup
+        if wallet and wallet.get("id"):
+            delete_wallet(wallet["id"])
 
 
 def test_sign_and_validate_jwt_credential_v2(wallet_api, verification_api, wallet_v2_resource):

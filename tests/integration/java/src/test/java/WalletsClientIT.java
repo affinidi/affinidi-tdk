@@ -75,10 +75,17 @@ public class WalletsClientIT {
 
     @AfterAll
     void tearDown() throws Exception {
-        if (walletId != null) walletApi.deleteWallet(walletId);
-        if (walletIdDidWeb != null) walletApi.deleteWallet(walletIdDidWeb);
-        if (walletIdV2 != null) walletApi.deleteWallet(walletIdV2);
-        if (walletIdDidWebV2 != null) walletApi.deleteWallet(walletIdDidWebV2);
+        // Delete each wallet even if another delete fails, so none are left behind
+        Exception failure = null;
+        for (String id : new String[] { walletId, walletIdDidWeb, walletIdV2, walletIdDidWebV2 }) {
+            if (id == null) continue;
+            try {
+                walletApi.deleteWallet(id);
+            } catch (Exception e) {
+                if (failure == null) failure = e;
+            }
+        }
+        if (failure != null) throw failure;
     }
 
     @Test

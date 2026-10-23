@@ -37,14 +37,13 @@ describe('wallets-client', function () {
   })
 
   after(async function () {
-    {
-      const { status } = await api.deleteWallet(walletId)
-      expect(status).to.equal(204)
-    }
-
-    if (walletIdDidWeb) {
-      const { status } = await api.deleteWallet(walletIdDidWeb)
-      expect(status).to.equal(204)
+    // Delete each wallet even if another delete fails, so none are left behind
+    const results = await Promise.allSettled(
+      [walletId, walletIdDidWeb].filter(Boolean).map((id) => api.deleteWallet(id)),
+    )
+    for (const result of results) {
+      expect(result.status).to.equal('fulfilled')
+      expect((result as PromiseFulfilledResult<any>).value.status).to.equal(204)
     }
   })
 
