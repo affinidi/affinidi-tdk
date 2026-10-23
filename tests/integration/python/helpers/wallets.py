@@ -80,8 +80,6 @@ def check_wallets_limit_exceeded():
         api_instance = WalletApi(api_client)
         response = api_instance.list_wallets()
         wallets = json.loads(response.json())['wallets']
-        if len(wallets) >= 10:
-            raise ValueError("❗️Max wallets limit exceeded (10). Delete unused wallets and try again.")
 
         # Threshold check with protected wallet logic
         if len(wallets) > 7:

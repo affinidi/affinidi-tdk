@@ -107,7 +107,7 @@ export {
 }
 
 export const createWallet = async () => {
-  checkWalletsLimitExceeded()
+  await checkWalletsLimitExceeded()
 
   const configuration = ClientsConfigurationService.getWalletsClientConfiguration()
   const api = new WalletApi(configuration)
@@ -143,12 +143,12 @@ export const checkWalletsLimitExceeded = async () => {
       // If we can't get the config, proceed without protection
     }
 
-    for (const wallet of data.wallets) {
-      // Skip deleting the wallet used by the issuance configuration
-      if (wallet.id !== protectedWalletId) {
-        deleteWallet(wallet.id as string)
-      }
-    }
+    // Skip deleting the wallet used by the issuance configuration
+    await Promise.all(
+      data.wallets
+        .filter((wallet) => wallet.id !== protectedWalletId)
+        .map((wallet) => deleteWallet(wallet.id as string)),
+    )
   }
 }
 

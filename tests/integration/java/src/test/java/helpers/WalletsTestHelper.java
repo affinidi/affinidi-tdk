@@ -91,6 +91,39 @@ public class WalletsTestHelper {
     }
 
     /**
+     * Gets the issuer wallet ID of the project's issuance configuration.
+     *
+     * @return issuer wallet ID, or null if there is no configuration or it can't be read
+     */
+    private static String getIssuanceConfigWalletId() {
+        try {
+            com.affinidi.tdk.credential.issuance.client.ApiClient client =
+                com.affinidi.tdk.credential.issuance.client.Configuration.getDefaultApiClient();
+
+            if (!Env.isProd()) {
+                String apiGatewayUrl = EnvironmentUtil.getApiGatewayUrlForEnvironment(Env.getEnvName());
+                String basePath = TestUtils.replaceBaseDomain(client.getBasePath(), apiGatewayUrl);
+                client.setBasePath(basePath);
+            }
+
+            com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth auth =
+                (com.affinidi.tdk.credential.issuance.client.auth.ApiKeyAuth) client.getAuthentication("ProjectTokenAuth");
+            auth.setApiKeySupplier(AuthUtils.createTokenSupplier());
+
+            var configurations = new com.affinidi.tdk.credential.issuance.client.apis.ConfigurationApi(client)
+                .getIssuanceConfigList()
+                .getConfigurations();
+
+            if (configurations != null && !configurations.isEmpty()) {
+                return configurations.get(0).getIssuerWalletId();
+            }
+        } catch (Exception e) {
+            // If we can't get the config, proceed without protection
+        }
+        return null;
+    }
+
+    /**
      * Ensures the wallet limit (10) has not been exceeded.
      *
      * @throws Exception if wallet limit is exceeded
@@ -100,9 +133,13 @@ public class WalletsTestHelper {
 
         if (wallets != null && wallets.size() > WALLETS_LIMIT_THRESHOLD) {
             System.out.println("❗️Number of wallets reaching the limit (10). Deleting wallets.");
+            String protectedWalletId = getIssuanceConfigWalletId();
             for (WalletDto wallet : wallets) {
                 String id = wallet.getId();
-                deleteWallet(id);
+                // Skip deleting the wallet used by the issuance configuration
+                if (!id.equals(protectedWalletId)) {
+                    deleteWallet(id);
+                }
             }
         }
     }
