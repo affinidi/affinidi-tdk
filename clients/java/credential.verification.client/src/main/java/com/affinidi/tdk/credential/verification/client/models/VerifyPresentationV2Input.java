@@ -42,7 +42,7 @@ import java.util.StringJoiner;
   VerifyPresentationV2Input.JSON_PROPERTY_CHALLENGE,
   VerifyPresentationV2Input.JSON_PROPERTY_DOMAIN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class VerifyPresentationV2Input {
   public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
   @javax.annotation.Nullable
@@ -78,7 +78,7 @@ public class VerifyPresentationV2Input {
    * @return verifiablePresentation
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_VERIFIABLE_PRESENTATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getVerifiablePresentation() {
@@ -86,7 +86,7 @@ public class VerifyPresentationV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_VERIFIABLE_PRESENTATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVerifiablePresentation(@javax.annotation.Nullable Object verifiablePresentation) {
     this.verifiablePresentation = verifiablePresentation;
@@ -103,7 +103,7 @@ public class VerifyPresentationV2Input {
    * @return pexQuery
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PEX_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_PEX_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public VerifyPresentationV2InputPexQuery getPexQuery() {
@@ -111,7 +111,7 @@ public class VerifyPresentationV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PEX_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_PEX_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPexQuery(@javax.annotation.Nullable VerifyPresentationV2InputPexQuery pexQuery) {
     this.pexQuery = pexQuery;
@@ -136,7 +136,7 @@ public class VerifyPresentationV2Input {
    * @return dcqlQuery
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getDcqlQuery() {
@@ -144,7 +144,7 @@ public class VerifyPresentationV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setDcqlQuery(@javax.annotation.Nullable Map<String, Object> dcqlQuery) {
     this.dcqlQuery = dcqlQuery;
@@ -161,7 +161,7 @@ public class VerifyPresentationV2Input {
    * @return challenge
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonProperty(value = JSON_PROPERTY_CHALLENGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getChallenge() {
@@ -169,7 +169,7 @@ public class VerifyPresentationV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonProperty(value = JSON_PROPERTY_CHALLENGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChallenge(@javax.annotation.Nullable String challenge) {
     this.challenge = challenge;
@@ -194,7 +194,7 @@ public class VerifyPresentationV2Input {
    * @return domain
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DOMAIN)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getDomain() {
@@ -202,11 +202,12 @@ public class VerifyPresentationV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DOMAIN)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDomain(@javax.annotation.Nullable List<String> domain) {
     this.domain = domain;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -247,10 +248,7 @@ public class VerifyPresentationV2Input {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -288,7 +286,7 @@ public class VerifyPresentationV2Input {
     // add `verifiablePresentation` to the URL query string
     if (getVerifiablePresentation() != null) {
       try {
-        joiner.add(String.format("%sverifiablePresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerifiablePresentation()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sverifiablePresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerifiablePresentation()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -304,8 +302,8 @@ public class VerifyPresentationV2Input {
     if (getDcqlQuery() != null) {
       for (String _key : getDcqlQuery().keySet()) {
         try {
-          joiner.add(String.format("%sdcqlQuery%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sdcqlQuery%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getDcqlQuery().get(_key), URLEncoder.encode(String.valueOf(getDcqlQuery().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -317,7 +315,7 @@ public class VerifyPresentationV2Input {
     // add `challenge` to the URL query string
     if (getChallenge() != null) {
       try {
-        joiner.add(String.format("%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -328,8 +326,8 @@ public class VerifyPresentationV2Input {
     if (getDomain() != null) {
       for (int i = 0; i < getDomain().size(); i++) {
         try {
-          joiner.add(String.format("%sdomain%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sdomain%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getDomain().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

@@ -28,6 +28,7 @@ import {
   serializeDataIfNeeded,
   toPathString,
   createRequestFunction,
+  replaceWithSerializableTypeIfNeeded,
 } from './common'
 import type { RequestArgs } from './base'
 // @ts-ignore
@@ -39,757 +40,345 @@ import {
   operationServerMap,
 } from './base'
 
-/**
- *
- * @export
- * @interface AccountDto
- */
 export interface AccountDto {
   /**
    * number that is used for profile DID derivation
-   * @type {number}
-   * @memberof AccountDto
    */
   accountIndex: number
   /**
    * Profile DID that is associated with the account number
-   * @type {string}
-   * @memberof AccountDto
    */
   accountDid: string
   /**
    * Alias of account
-   * @type {string}
-   * @memberof AccountDto
    */
   alias?: string
   /**
    * Metadata of account
-   * @type {object}
-   * @memberof AccountDto
    */
   metadata?: object
   /**
    * Description of account
-   * @type {string}
-   * @memberof AccountDto
    */
   description?: string
 }
-/**
- *
- * @export
- * @interface ConsumerMetadataDto
- */
 export interface ConsumerMetadataDto {
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerMetadataDto
-   */
   nodeId: string
-  /**
-   *
-   * @type {NodeStatus}
-   * @memberof ConsumerMetadataDto
-   */
   status: NodeStatus
-  /**
-   *
-   * @type {number}
-   * @memberof ConsumerMetadataDto
-   */
   fileCount?: number
-  /**
-   *
-   * @type {number}
-   * @memberof ConsumerMetadataDto
-   */
   folderCount?: number
-  /**
-   *
-   * @type {number}
-   * @memberof ConsumerMetadataDto
-   */
   profileCount?: number
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerMetadataDto
-   */
   name: string
-  /**
-   *
-   * @type {string}
-   * @memberof ConsumerMetadataDto
-   */
   consumerId: string
   /**
    * creation date/time
-   * @type {string}
-   * @memberof ConsumerMetadataDto
    */
   createdAt: string
   /**
    * modification date/time
-   * @type {string}
-   * @memberof ConsumerMetadataDto
    */
   modifiedAt: string
   /**
    * Identifier of the user who created
-   * @type {string}
-   * @memberof ConsumerMetadataDto
    */
   createdBy: string
   /**
    * Identifier of the user who last updated
-   * @type {string}
-   * @memberof ConsumerMetadataDto
    */
   modifiedBy: string
   /**
    * Description of the node
-   * @type {string}
-   * @memberof ConsumerMetadataDto
    */
   description?: string
-  /**
-   *
-   * @type {NodeType}
-   * @memberof ConsumerMetadataDto
-   */
   type: NodeType
   /**
    * Tracks the amount of bytes used by the stored data.
-   * @type {number}
-   * @memberof ConsumerMetadataDto
    */
   consumedFileStorage: number
 }
 
-/**
- *
- * @export
- * @interface CreateAccountInput
- */
 export interface CreateAccountInput {
   /**
    * number that is used for profile DID derivation
-   * @type {number}
-   * @memberof CreateAccountInput
    */
   accountIndex: number
   /**
    * DID that is associated with the account number
-   * @type {string}
-   * @memberof CreateAccountInput
    */
   accountDid: string
   /**
    * JWT that proves ownership of profile DID by requester
-   * @type {string}
-   * @memberof CreateAccountInput
    */
   didProof: string
   /**
    * Alias of account
-   * @type {string}
-   * @memberof CreateAccountInput
    */
   alias?: string
   /**
    * Metadata of account
-   * @type {object}
-   * @memberof CreateAccountInput
    */
   metadata?: object
   /**
    * Description of account
-   * @type {string}
-   * @memberof CreateAccountInput
    */
   description?: string
 }
-/**
- *
- * @export
- * @interface CreateAccountOK
- */
 export interface CreateAccountOK {
-  /**
-   *
-   * @type {number}
-   * @memberof CreateAccountOK
-   */
   accountIndex: number
-  /**
-   *
-   * @type {string}
-   * @memberof CreateAccountOK
-   */
   accountDid: string
-  /**
-   *
-   * @type {object}
-   * @memberof CreateAccountOK
-   */
   metadata?: object
 }
-/**
- *
- * @export
- * @interface CreateAccountWithProfileInput
- */
 export interface CreateAccountWithProfileInput {
   /**
    * number that is used for profile DID derivation
-   * @type {number}
-   * @memberof CreateAccountWithProfileInput
    */
   accountIndex: number
   /**
    * DID that is associated with the account number
-   * @type {string}
-   * @memberof CreateAccountWithProfileInput
    */
   accountDid: string
   /**
    * JWT that proves ownership of profile DID by requester
-   * @type {string}
-   * @memberof CreateAccountWithProfileInput
    */
   didProof: string
   /**
    * Alias of account
-   * @type {string}
-   * @memberof CreateAccountWithProfileInput
    */
   alias?: string
   /**
    * Metadata of account
-   * @type {object}
-   * @memberof CreateAccountWithProfileInput
    */
   accountMetadata?: object
   /**
    * Description of account
-   * @type {string}
-   * @memberof CreateAccountWithProfileInput
    */
   accountDescription?: string
   /**
    * Name of the profile node
-   * @type {string}
-   * @memberof CreateAccountWithProfileInput
    */
   profileName: string
   /**
    * Description of the profile node
-   * @type {string}
-   * @memberof CreateAccountWithProfileInput
    */
   profileDescription?: string
   /**
    * Metadata of the profile
-   * @type {object}
-   * @memberof CreateAccountWithProfileInput
    */
   profileMetadata?: object
-  /**
-   *
-   * @type {EdekInfo}
-   * @memberof CreateAccountWithProfileInput
-   */
   edekInfo: EdekInfo
   /**
    * A base64 encoded data encryption key, encrypted using VFS public key
-   * @type {string}
-   * @memberof CreateAccountWithProfileInput
    */
   dek: string
 }
-/**
- *
- * @export
- * @interface CreateAccountWithProfileOK
- */
 export interface CreateAccountWithProfileOK {
-  /**
-   *
-   * @type {number}
-   * @memberof CreateAccountWithProfileOK
-   */
   accountIndex: number
   /**
    * number that is used for profile DID derivation
-   * @type {string}
-   * @memberof CreateAccountWithProfileOK
    */
   accountDid: string
   /**
    * A unique, randomly generated identifier of created profile
-   * @type {string}
-   * @memberof CreateAccountWithProfileOK
    */
   profileId: string
   /**
    * Metadata of account
-   * @type {object}
-   * @memberof CreateAccountWithProfileOK
    */
   accountMetadata?: object
 }
-/**
- *
- * @export
- * @interface CreateChildNodeInput
- */
 export interface CreateChildNodeInput {
   /**
    * Name of the item
-   * @type {string}
-   * @memberof CreateChildNodeInput
    */
   name: string
-  /**
-   *
-   * @type {NodeType}
-   * @memberof CreateChildNodeInput
-   */
   type: NodeType
   /**
    * description of profile if creating a new profile
-   * @type {string}
-   * @memberof CreateChildNodeInput
    */
   description?: string
-  /**
-   *
-   * @type {EdekInfo}
-   * @memberof CreateChildNodeInput
-   */
   edekInfo?: EdekInfo
   /**
    * A base64 encoded data encryption key, encrypted using VFS public key, required for node types [FILE, PROFILE]
-   * @type {string}
-   * @memberof CreateChildNodeInput
    */
   dek?: string
   /**
    * metadata of the node in stringified json format
-   * @type {string}
-   * @memberof CreateChildNodeInput
    */
   metadata?: string
 }
 
-/**
- *
- * @export
- * @interface CreateNodeInput
- */
 export interface CreateNodeInput {
   /**
    * Name of the item
-   * @type {string}
-   * @memberof CreateNodeInput
    */
   name: string
-  /**
-   *
-   * @type {NodeType}
-   * @memberof CreateNodeInput
-   */
   type: NodeType
   /**
    * description of profile if creating a new profile
-   * @type {string}
-   * @memberof CreateNodeInput
    */
   description?: string
   /**
    * parent node id, if not provided then root element is used
-   * @type {string}
-   * @memberof CreateNodeInput
    */
   parentNodeId?: string
-  /**
-   *
-   * @type {EdekInfo}
-   * @memberof CreateNodeInput
-   */
   edekInfo?: EdekInfo
   /**
    * A base64 encoded data encryption key, encrypted using VFS public key, required for node types [FILE, PROFILE]
-   * @type {string}
-   * @memberof CreateNodeInput
    */
   dek?: string
   /**
    * metadata of the node in stringified json format
-   * @type {string}
-   * @memberof CreateNodeInput
    */
   metadata?: string
 }
 
-/**
- *
- * @export
- * @interface CreateNodeOK
- */
 export interface CreateNodeOK {
-  /**
-   *
-   * @type {string}
-   * @memberof CreateNodeOK
-   */
   nodeId: string
   /**
    * creation date/time
-   * @type {string}
-   * @memberof CreateNodeOK
    */
   createdAt: string
   /**
    * modification date/time
-   * @type {string}
-   * @memberof CreateNodeOK
    */
   modifiedAt: string
-  /**
-   *
-   * @type {string}
-   * @memberof CreateNodeOK
-   */
   url?: string
-  /**
-   *
-   * @type {string}
-   * @memberof CreateNodeOK
-   */
   link?: string
-  /**
-   *
-   * @type {{ [key: string]: any; }}
-   * @memberof CreateNodeOK
-   */
   fields?: { [key: string]: any }
 }
-/**
- *
- * @export
- * @interface DeleteAccountDto
- */
 export interface DeleteAccountDto {
-  /**
-   *
-   * @type {number}
-   * @memberof DeleteAccountDto
-   */
   accountIndex?: number
 }
-/**
- *
- * @export
- * @interface DeleteNodeDto
- */
 export interface DeleteNodeDto {
-  /**
-   *
-   * @type {string}
-   * @memberof DeleteNodeDto
-   */
   newNodeId?: string
 }
 /**
  * A base64 encoded data encryption key, encrypted with consumer DEKEK, required for node types [FILE, PROFILE]
- * @export
- * @interface EdekInfo
  */
 export interface EdekInfo {
-  /**
-   *
-   * @type {string}
-   * @memberof EdekInfo
-   */
   edek: string
-  /**
-   *
-   * @type {string}
-   * @memberof EdekInfo
-   */
   dekekId: string
 }
-/**
- *
- * @export
- * @interface GetConfigOK
- */
 export interface GetConfigOK {
-  /**
-   *
-   * @type {string}
-   * @memberof GetConfigOK
-   */
   profileName: string
-  /**
-   *
-   * @type {number}
-   * @memberof GetConfigOK
-   */
   maximumProfiles: number
 }
-/**
- *
- * @export
- * @interface GetDetailedNodeInfoOK
- */
 export interface GetDetailedNodeInfoOK {
   /**
    * A unique identifier of current node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   nodeId: string
-  /**
-   *
-   * @type {NodeStatus}
-   * @memberof GetDetailedNodeInfoOK
-   */
   status: NodeStatus
   /**
    * number of files in current node
-   * @type {number}
-   * @memberof GetDetailedNodeInfoOK
    */
   fileCount?: number
   /**
    * number of profiles in current node
-   * @type {number}
-   * @memberof GetDetailedNodeInfoOK
    */
   profileCount?: number
   /**
    * number of folders in current node
-   * @type {number}
-   * @memberof GetDetailedNodeInfoOK
    */
   folderCount?: number
   /**
    * number of vcCount in current node
-   * @type {number}
-   * @memberof GetDetailedNodeInfoOK
    */
   vcCount?: number
   /**
    * display name of current node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   name: string
   /**
    * unique identifier for consumer
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   consumerId: string
   /**
    * parent node path
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   parentNodeId: string
   /**
    * A unique identifier of profile, under which current node is created
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   profileId: string
   /**
    * creation date/time of the node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   createdAt: string
   /**
    * modification date/time of the node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   modifiedAt: string
   /**
    * Identifier of the user who created the node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   createdBy: string
   /**
    * Identifier of the user who last updated the node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   modifiedBy: string
   /**
    * Description of the node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   description?: string
-  /**
-   *
-   * @type {NodeType}
-   * @memberof GetDetailedNodeInfoOK
-   */
   type: NodeType
   /**
    * id of the file, used for FILE node only
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   link?: string
   /**
    * name of the schema, used for PROFILE node only
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   schema?: string
   /**
    * amount of bytes used by the stored data, used for ROOT_ELEMENT only for now
-   * @type {number}
-   * @memberof GetDetailedNodeInfoOK
    */
   consumedFileStorage?: number
-  /**
-   *
-   * @type {EdekInfo}
-   * @memberof GetDetailedNodeInfoOK
-   */
   edekInfo?: EdekInfo
   /**
    * A JSON string format containing metadata of the node
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
    */
   metadata?: string
-  /**
-   *
-   * @type {string}
-   * @memberof GetDetailedNodeInfoOK
-   */
   getUrl?: string
 }
 
-/**
- *
- * @export
- * @interface GetScannedFileInfoOK
- */
 export interface GetScannedFileInfoOK {
-  /**
-   *
-   * @type {object}
-   * @memberof GetScannedFileInfoOK
-   */
   data: object
   /**
    * A unique, randomly generated idetifier
-   * @type {string}
-   * @memberof GetScannedFileInfoOK
    */
   jobId: string
   /**
    * Status of the file scanning once initiated
-   * @type {string}
-   * @memberof GetScannedFileInfoOK
    */
   status: string
   /**
    * A unique, randomly generated identifier
-   * @type {string}
-   * @memberof GetScannedFileInfoOK
    */
   profileId: string
   /**
    * The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
-   * @type {string}
-   * @memberof GetScannedFileInfoOK
    */
   exclusiveStartKey?: string
   /**
    * A unique, randomly generated identifier
-   * @type {string}
-   * @memberof GetScannedFileInfoOK
    */
   nodeId: string
-  /**
-   *
-   * @type {string}
-   * @memberof GetScannedFileInfoOK
-   */
   createdAt: string
-  /**
-   *
-   * @type {string}
-   * @memberof GetScannedFileInfoOK
-   */
   name: string
 }
-/**
- *
- * @export
- * @interface InitNodesOK
- */
 export interface InitNodesOK {
-  /**
-   *
-   * @type {ConsumerMetadataDto}
-   * @memberof InitNodesOK
-   */
   consumerMetadata?: ConsumerMetadataDto
-  /**
-   *
-   * @type {NodeDto}
-   * @memberof InitNodesOK
-   */
   defaultProfile?: NodeDto
 }
 /**
  * Some of the parameters are invalid
- * @export
- * @interface InvalidParameterError
  */
 export interface InvalidParameterError {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   name: InvalidParameterErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   message: InvalidParameterErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof InvalidParameterError
-   */
   httpStatusCode: InvalidParameterErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof InvalidParameterError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -812,401 +401,153 @@ export const InvalidParameterErrorHttpStatusCodeEnum = {
 export type InvalidParameterErrorHttpStatusCodeEnum =
   (typeof InvalidParameterErrorHttpStatusCodeEnum)[keyof typeof InvalidParameterErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface InvalidParameterErrorDetailsInner
- */
 export interface InvalidParameterErrorDetailsInner {
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   issue: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   field?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   value?: string
-  /**
-   *
-   * @type {string}
-   * @memberof InvalidParameterErrorDetailsInner
-   */
   location?: string
 }
-/**
- *
- * @export
- * @interface JsonWebKeyDto
- */
 export interface JsonWebKeyDto {
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   kid: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   kty: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   n?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   e?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   x?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   y?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   crv?: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   alg: string
-  /**
-   *
-   * @type {string}
-   * @memberof JsonWebKeyDto
-   */
   use: string
 }
-/**
- *
- * @export
- * @interface JsonWebKeySetDto
- */
 export interface JsonWebKeySetDto {
-  /**
-   *
-   * @type {Array<JsonWebKeyDto>}
-   * @memberof JsonWebKeySetDto
-   */
   keys: Array<JsonWebKeyDto>
 }
-/**
- *
- * @export
- * @interface ListAccountsDto
- */
 export interface ListAccountsDto {
-  /**
-   *
-   * @type {Array<AccountDto>}
-   * @memberof ListAccountsDto
-   */
   records: Array<AccountDto>
-  /**
-   *
-   * @type {string}
-   * @memberof ListAccountsDto
-   */
   lastEvaluatedKey?: string
 }
-/**
- *
- * @export
- * @interface ListNodeChildrenOK
- */
 export interface ListNodeChildrenOK {
-  /**
-   *
-   * @type {Array<NodeDto>}
-   * @memberof ListNodeChildrenOK
-   */
   nodes?: Array<NodeDto>
-  /**
-   *
-   * @type {string}
-   * @memberof ListNodeChildrenOK
-   */
   lastEvaluatedKey?: string
 }
-/**
- *
- * @export
- * @interface ListProfilesOK
- */
 export interface ListProfilesOK {
-  /**
-   *
-   * @type {Array<PartialProfileNodeDto>}
-   * @memberof ListProfilesOK
-   */
   nodes?: Array<PartialProfileNodeDto>
 }
-/**
- *
- * @export
- * @interface ListRootNodeChildrenOK
- */
 export interface ListRootNodeChildrenOK {
-  /**
-   *
-   * @type {Array<NodeDto>}
-   * @memberof ListRootNodeChildrenOK
-   */
   nodes?: Array<NodeDto>
 }
-/**
- *
- * @export
- * @interface ListScannedFilesOK
- */
 export interface ListScannedFilesOK {
-  /**
-   *
-   * @type {Array<ListScannedFilesOKScannedFilesInner>}
-   * @memberof ListScannedFilesOK
-   */
   scannedFiles: Array<ListScannedFilesOKScannedFilesInner>
 }
-/**
- *
- * @export
- * @interface ListScannedFilesOKScannedFilesInner
- */
 export interface ListScannedFilesOKScannedFilesInner {
   /**
    * A unique, randomly generated identifier
-   * @type {string}
-   * @memberof ListScannedFilesOKScannedFilesInner
    */
   jobId: string
   /**
    * The Status of the listed files
-   * @type {string}
-   * @memberof ListScannedFilesOKScannedFilesInner
    */
   status: string
   /**
    * A unique, randomly generated identifier
-   * @type {string}
-   * @memberof ListScannedFilesOKScannedFilesInner
    */
   profileId: string
-  /**
-   *
-   * @type {string}
-   * @memberof ListScannedFilesOKScannedFilesInner
-   */
   nodeId: string
-  /**
-   *
-   * @type {string}
-   * @memberof ListScannedFilesOKScannedFilesInner
-   */
   createdAt: string
-  /**
-   *
-   * @type {string}
-   * @memberof ListScannedFilesOKScannedFilesInner
-   */
   name: string
 }
-/**
- *
- * @export
- * @interface MoveNodeDto
- */
 export interface MoveNodeDto {
-  /**
-   *
-   * @type {string}
-   * @memberof MoveNodeDto
-   */
   newNodeId?: string
 }
-/**
- *
- * @export
- * @interface MoveNodeInput
- */
 export interface MoveNodeInput {
   /**
    * Parent to which current node should be moved
-   * @type {string}
-   * @memberof MoveNodeInput
    */
   destinationNodeId: string
   /**
    * automatically update the name of Node if target Node has children with the same name. If not provided, name won\'t be updated automatically
-   * @type {boolean}
-   * @memberof MoveNodeInput
    */
   resolveNameConflictsAutomatically?: boolean
 }
-/**
- *
- * @export
- * @interface NodeDto
- */
 export interface NodeDto {
   /**
    * A unique identifier of current node
-   * @type {string}
-   * @memberof NodeDto
    */
   nodeId: string
-  /**
-   *
-   * @type {NodeStatus}
-   * @memberof NodeDto
-   */
   status: NodeStatus
   /**
    * number of files in current node
-   * @type {number}
-   * @memberof NodeDto
    */
   fileCount?: number
   /**
    * number of profiles in current node
-   * @type {number}
-   * @memberof NodeDto
    */
   profileCount?: number
   /**
    * number of folders in current node
-   * @type {number}
-   * @memberof NodeDto
    */
   folderCount?: number
   /**
    * number of vcCount in current node
-   * @type {number}
-   * @memberof NodeDto
    */
   vcCount?: number
   /**
    * display name of current node
-   * @type {string}
-   * @memberof NodeDto
    */
   name: string
   /**
    * unique identifier for consumer
-   * @type {string}
-   * @memberof NodeDto
    */
   consumerId: string
   /**
    * parent node path
-   * @type {string}
-   * @memberof NodeDto
    */
   parentNodeId: string
   /**
    * A unique identifier of profile, under which current node is created
-   * @type {string}
-   * @memberof NodeDto
    */
   profileId: string
   /**
    * creation date/time of the node
-   * @type {string}
-   * @memberof NodeDto
    */
   createdAt: string
   /**
    * modification date/time of the node
-   * @type {string}
-   * @memberof NodeDto
    */
   modifiedAt: string
   /**
    * Identifier of the user who created the node
-   * @type {string}
-   * @memberof NodeDto
    */
   createdBy: string
   /**
    * Identifier of the user who last updated the node
-   * @type {string}
-   * @memberof NodeDto
    */
   modifiedBy: string
   /**
    * Description of the node
-   * @type {string}
-   * @memberof NodeDto
    */
   description?: string
-  /**
-   *
-   * @type {NodeType}
-   * @memberof NodeDto
-   */
   type: NodeType
   /**
    * id of the file, used for FILE node only
-   * @type {string}
-   * @memberof NodeDto
    */
   link?: string
   /**
    * name of the schema, used for PROFILE node only
-   * @type {string}
-   * @memberof NodeDto
    */
   schema?: string
   /**
    * amount of bytes used by the stored data, used for ROOT_ELEMENT only for now
-   * @type {number}
-   * @memberof NodeDto
    */
   consumedFileStorage?: number
-  /**
-   *
-   * @type {EdekInfo}
-   * @memberof NodeDto
-   */
   edekInfo?: EdekInfo
   /**
    * A JSON string format containing metadata of the node
-   * @type {string}
-   * @memberof NodeDto
    */
   metadata?: string
 }
 
 /**
  * status of current node. INITIALIZED status is used for PROFILE/FILE node that was just created, before file was uploaded in s3 CREATED status is used, when the file for node is uploaded in s3. HIDDEN and DELETED statuses are used for deletion of Nodes
- * @export
- * @enum {string}
  */
 
 export const NodeStatus = {
@@ -1221,8 +562,6 @@ export type NodeStatus = (typeof NodeStatus)[keyof typeof NodeStatus]
 
 /**
  * type of the Node
- * @export
- * @enum {string}
  */
 
 export const NodeType = {
@@ -1237,136 +576,67 @@ export const NodeType = {
 
 export type NodeType = (typeof NodeType)[keyof typeof NodeType]
 
-/**
- *
- * @export
- * @interface PartialProfileNodeDto
- */
 export interface PartialProfileNodeDto {
   /**
    * A unique identifier of the profile node
-   * @type {string}
-   * @memberof PartialProfileNodeDto
    */
   id: string
   /**
    * display name of the profile node
-   * @type {string}
-   * @memberof PartialProfileNodeDto
    */
   name: string
   /**
    * Description of the profile node
-   * @type {string}
-   * @memberof PartialProfileNodeDto
    */
   description?: string
   /**
    * number that is used for profile DID derivation
-   * @type {number}
-   * @memberof PartialProfileNodeDto
    */
   accountIndex: number
   /**
    * A JSON string format containing metadata of the profile node
-   * @type {string}
-   * @memberof PartialProfileNodeDto
    */
   profileMetadata?: string
   /**
    * A JSON string format containing metadata of the account
-   * @type {string}
-   * @memberof PartialProfileNodeDto
    */
   accountMetadata?: string
 }
-/**
- *
- * @export
- * @interface PatchAccountInput
- */
 export interface PatchAccountInput {
   /**
    * JWT that proves ownership of profile DID by requester
-   * @type {string}
-   * @memberof PatchAccountInput
    */
   didProof: string
   /**
    * A base64 encoded data encryption key, encrypted using VFS public key, required for PATCH operation on account
-   * @type {string}
-   * @memberof PatchAccountInput
    */
   encryptedDekek: string
   /**
    * A unique identifier of profile, required for PATCH operation on account
-   * @type {string}
-   * @memberof PatchAccountInput
    */
   ownerProfileId: string
   /**
    * DID that is associated with the profile, required for PATCH operation on account
-   * @type {string}
-   * @memberof PatchAccountInput
    */
   ownerProfileDid: string
 }
-/**
- *
- * @export
- * @interface QueryProfileDataOK
- */
 export interface QueryProfileDataOK {
-  /**
-   *
-   * @type {object}
-   * @memberof QueryProfileDataOK
-   */
   data?: object
 }
-/**
- *
- * @export
- * @interface RestoreNodeFromTrashbin
- */
 export interface RestoreNodeFromTrashbin {
   /**
    * The base64 encoded nodeId of the profile which is base64 encoded, to which node will be restored
-   * @type {string}
-   * @memberof RestoreNodeFromTrashbin
    */
   restoreToProfileId?: string
 }
-/**
- *
- * @export
- * @interface StartFileScanInput
- */
 export interface StartFileScanInput {
   /**
    * A base64 encoded data encryption key, encrypted using VFS public key. This is important as this is used when starting document scan and also while uploading the file to s3
-   * @type {string}
-   * @memberof StartFileScanInput
    */
   dek: string
 }
-/**
- *
- * @export
- * @interface StartFileScanOK
- */
 export interface StartFileScanOK {
-  /**
-   *
-   * @type {string}
-   * @memberof StartFileScanOK
-   */
   jobId: string
-  /**
-   *
-   * @type {string}
-   * @memberof StartFileScanOK
-   */
   status: StartFileScanOKStatusEnum
 }
 
@@ -1379,41 +649,11 @@ export const StartFileScanOKStatusEnum = {
 export type StartFileScanOKStatusEnum =
   (typeof StartFileScanOKStatusEnum)[keyof typeof StartFileScanOKStatusEnum]
 
-/**
- *
- * @export
- * @interface UnexpectedError
- */
 export interface UnexpectedError {
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   name: UnexpectedErrorNameEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   message: UnexpectedErrorMessageEnum
-  /**
-   *
-   * @type {number}
-   * @memberof UnexpectedError
-   */
   httpStatusCode: UnexpectedErrorHttpStatusCodeEnum
-  /**
-   *
-   * @type {string}
-   * @memberof UnexpectedError
-   */
   traceId: string
-  /**
-   *
-   * @type {Array<InvalidParameterErrorDetailsInner>}
-   * @memberof UnexpectedError
-   */
   details?: Array<InvalidParameterErrorDetailsInner>
 }
 
@@ -1436,135 +676,67 @@ export const UnexpectedErrorHttpStatusCodeEnum = {
 export type UnexpectedErrorHttpStatusCodeEnum =
   (typeof UnexpectedErrorHttpStatusCodeEnum)[keyof typeof UnexpectedErrorHttpStatusCodeEnum]
 
-/**
- *
- * @export
- * @interface UpdateAccountDto
- */
 export interface UpdateAccountDto {
-  /**
-   *
-   * @type {number}
-   * @memberof UpdateAccountDto
-   */
   accountIndex: number
   /**
    * Profile DID that is associated with the account number
-   * @type {string}
-   * @memberof UpdateAccountDto
    */
   accountDid: string
-  /**
-   *
-   * @type {object}
-   * @memberof UpdateAccountDto
-   */
   metadata?: object
 }
-/**
- *
- * @export
- * @interface UpdateAccountInput
- */
 export interface UpdateAccountInput {
   /**
    * Name of the account
-   * @type {string}
-   * @memberof UpdateAccountInput
    */
   name?: string
   /**
    * Description of the account
-   * @type {string}
-   * @memberof UpdateAccountInput
    */
   description?: string
   /**
    * Alias of the account
-   * @type {string}
-   * @memberof UpdateAccountInput
    */
   alias?: string
   /**
    * JWT that proves ownership of profile DID by requester
-   * @type {string}
-   * @memberof UpdateAccountInput
    */
   didProof: string
   /**
    * Description of metadata
-   * @type {object}
-   * @memberof UpdateAccountInput
    */
   metadata?: object
   /**
    * DID that is associated with the account number
-   * @type {string}
-   * @memberof UpdateAccountInput
    */
   accountDid: string
 }
-/**
- *
- * @export
- * @interface UpdateNodeInput
- */
 export interface UpdateNodeInput {
   /**
    * Name of the node
-   * @type {string}
-   * @memberof UpdateNodeInput
    */
   name?: string
   /**
    * Description of the node
-   * @type {string}
-   * @memberof UpdateNodeInput
    */
   description?: string
   /**
    * metadata of the node in stringified json format
-   * @type {string}
-   * @memberof UpdateNodeInput
    */
   metadata?: string
 }
-/**
- *
- * @export
- * @interface UpdateProfileDataInput
- */
 export interface UpdateProfileDataInput {
   /**
    * A base64 encoded data encryption key, encrypted using VFS public key. This is used to get profile data from s3
-   * @type {string}
-   * @memberof UpdateProfileDataInput
    */
   dek: string
-  /**
-   *
-   * @type {object}
-   * @memberof UpdateProfileDataInput
-   */
   data: object
 }
-/**
- *
- * @export
- * @interface UpdateProfileDataOK
- */
 export interface UpdateProfileDataOK {
-  /**
-   *
-   * @type {object}
-   * @memberof UpdateProfileDataOK
-   */
   data?: object
 }
 
 /**
  * AccountsApi - axios parameter creator
- * @export
  */
 export const AccountsApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -1610,6 +782,7 @@ export const AccountsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1670,6 +843,7 @@ export const AccountsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1703,7 +877,7 @@ export const AccountsApiAxiosParamCreator = function (
       // verify required parameter 'accountIndex' is not null or undefined
       assertParamExists('deleteAccount', 'accountIndex', accountIndex)
       const localVarPath = `/v1/accounts/{accountIndex}`.replace(
-        `{${'accountIndex'}}`,
+        '{accountIndex}',
         encodeURIComponent(String(accountIndex)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1727,6 +901,8 @@ export const AccountsApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1785,6 +961,8 @@ export const AccountsApiAxiosParamCreator = function (
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -1830,6 +1008,8 @@ export const AccountsApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -1861,7 +1041,7 @@ export const AccountsApiAxiosParamCreator = function (
       // verify required parameter 'patchAccountInput' is not null or undefined
       assertParamExists('patchAccount', 'patchAccountInput', patchAccountInput)
       const localVarPath = `/v1/accounts/{accountIndex}`.replace(
-        `{${'accountIndex'}}`,
+        '{accountIndex}',
         encodeURIComponent(String(accountIndex)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1887,6 +1067,7 @@ export const AccountsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1928,7 +1109,7 @@ export const AccountsApiAxiosParamCreator = function (
         updateAccountInput,
       )
       const localVarPath = `/v1/accounts/{accountIndex}`.replace(
-        `{${'accountIndex'}}`,
+        '{accountIndex}',
         encodeURIComponent(String(accountIndex)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1954,6 +1135,7 @@ export const AccountsApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -1979,7 +1161,6 @@ export const AccountsApiAxiosParamCreator = function (
 
 /**
  * AccountsApi - functional programming interface
- * @export
  */
 export const AccountsApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = AccountsApiAxiosParamCreator(configuration)
@@ -2216,7 +1397,6 @@ export const AccountsApiFp = function (configuration?: Configuration) {
 
 /**
  * AccountsApi - factory interface
- * @export
  */
 export const AccountsApiFactory = function (
   configuration?: Configuration,
@@ -2332,9 +1512,6 @@ export const AccountsApiFactory = function (
 
 /**
  * AccountsApi - object-oriented interface
- * @export
- * @class AccountsApi
- * @extends {BaseAPI}
  */
 export class AccountsApi extends BaseAPI {
   /**
@@ -2342,7 +1519,6 @@ export class AccountsApi extends BaseAPI {
    * @param {CreateAccountInput} createAccountInput CreateAccount
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AccountsApi
    */
   public createAccount(
     createAccountInput: CreateAccountInput,
@@ -2358,7 +1534,6 @@ export class AccountsApi extends BaseAPI {
    * @param {CreateAccountWithProfileInput} createAccountWithProfileInput CreateAccountWithProfile
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AccountsApi
    */
   public createAccountWithProfile(
     createAccountWithProfileInput: CreateAccountWithProfileInput,
@@ -2374,7 +1549,6 @@ export class AccountsApi extends BaseAPI {
    * @param {number} accountIndex
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AccountsApi
    */
   public deleteAccount(accountIndex: number, options?: RawAxiosRequestConfig) {
     return AccountsApiFp(this.configuration)
@@ -2388,7 +1562,6 @@ export class AccountsApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AccountsApi
    */
   public listAccounts(
     limit?: number,
@@ -2404,7 +1577,6 @@ export class AccountsApi extends BaseAPI {
    * lists children of the root node with accounts
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AccountsApi
    */
   public listProfiles(options?: RawAxiosRequestConfig) {
     return AccountsApiFp(this.configuration)
@@ -2418,7 +1590,6 @@ export class AccountsApi extends BaseAPI {
    * @param {PatchAccountInput} patchAccountInput PatchAccount
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AccountsApi
    */
   public patchAccount(
     accountIndex: number,
@@ -2436,7 +1607,6 @@ export class AccountsApi extends BaseAPI {
    * @param {UpdateAccountInput} updateAccountInput UpdateAccount
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof AccountsApi
    */
   public updateAccount(
     accountIndex: number,
@@ -2451,7 +1621,6 @@ export class AccountsApi extends BaseAPI {
 
 /**
  * ConfigurationApi - axios parameter creator
- * @export
  */
 export const ConfigurationApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -2488,6 +1657,8 @@ export const ConfigurationApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -2507,7 +1678,6 @@ export const ConfigurationApiAxiosParamCreator = function (
 
 /**
  * ConfigurationApi - functional programming interface
- * @export
  */
 export const ConfigurationApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -2543,7 +1713,6 @@ export const ConfigurationApiFp = function (configuration?: Configuration) {
 
 /**
  * ConfigurationApi - factory interface
- * @export
  */
 export const ConfigurationApiFactory = function (
   configuration?: Configuration,
@@ -2569,16 +1738,12 @@ export const ConfigurationApiFactory = function (
 
 /**
  * ConfigurationApi - object-oriented interface
- * @export
- * @class ConfigurationApi
- * @extends {BaseAPI}
  */
 export class ConfigurationApi extends BaseAPI {
   /**
    * Retrieves the user profile name and the maximum number of profiles, with default values set to \'default\' and 1, respectively.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ConfigurationApi
    */
   public getConfiguration(options?: RawAxiosRequestConfig) {
     return ConfigurationApiFp(this.configuration)
@@ -2589,7 +1754,6 @@ export class ConfigurationApi extends BaseAPI {
 
 /**
  * FilesApi - axios parameter creator
- * @export
  */
 export const FilesApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -2614,7 +1778,7 @@ export const FilesApiAxiosParamCreator = function (
         scannedFileJobId,
       )
       const localVarPath = `/v1/scanned-files/{scannedFileJobId}`.replace(
-        `{${'scannedFileJobId'}}`,
+        '{scannedFileJobId}',
         encodeURIComponent(String(scannedFileJobId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2642,6 +1806,8 @@ export const FilesApiAxiosParamCreator = function (
       if (exclusiveStartKey !== undefined) {
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2688,6 +1854,8 @@ export const FilesApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -2723,7 +1891,7 @@ export const FilesApiAxiosParamCreator = function (
         startFileScanInput,
       )
       const localVarPath = `/v1/nodes/{nodeId}/file/scan`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2749,6 +1917,7 @@ export const FilesApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -2774,7 +1943,6 @@ export const FilesApiAxiosParamCreator = function (
 
 /**
  * FilesApi - functional programming interface
- * @export
  */
 export const FilesApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = FilesApiAxiosParamCreator(configuration)
@@ -2883,7 +2051,6 @@ export const FilesApiFp = function (configuration?: Configuration) {
 
 /**
  * FilesApi - factory interface
- * @export
  */
 export const FilesApiFactory = function (
   configuration?: Configuration,
@@ -2941,9 +2108,6 @@ export const FilesApiFactory = function (
 
 /**
  * FilesApi - object-oriented interface
- * @export
- * @class FilesApi
- * @extends {BaseAPI}
  */
 export class FilesApi extends BaseAPI {
   /**
@@ -2952,7 +2116,6 @@ export class FilesApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] The base64url encoded key of the first item that this operation will evaluate (it is not returned). Use the value that was returned in the previous operation.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof FilesApi
    */
   public getScannedFileInfo(
     scannedFileJobId: string,
@@ -2968,7 +2131,6 @@ export class FilesApi extends BaseAPI {
    * List all the the scanned files with all the details, e.g. status and jobId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof FilesApi
    */
   public listScannedFiles(options?: RawAxiosRequestConfig) {
     return FilesApiFp(this.configuration)
@@ -2982,7 +2144,6 @@ export class FilesApi extends BaseAPI {
    * @param {StartFileScanInput} startFileScanInput StartFileScan
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof FilesApi
    */
   public startFileScan(
     nodeId: string,
@@ -2997,7 +2158,6 @@ export class FilesApi extends BaseAPI {
 
 /**
  * NodesApi - axios parameter creator
- * @export
  */
 export const NodesApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -3024,7 +2184,7 @@ export const NodesApiAxiosParamCreator = function (
         createChildNodeInput,
       )
       const localVarPath = `/v1/nodes/{nodeId}`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3050,6 +2210,7 @@ export const NodesApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3106,6 +2267,7 @@ export const NodesApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3139,7 +2301,7 @@ export const NodesApiAxiosParamCreator = function (
       // verify required parameter 'nodeId' is not null or undefined
       assertParamExists('deleteNode', 'nodeId', nodeId)
       const localVarPath = `/v1/nodes/{nodeId}`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3163,6 +2325,8 @@ export const NodesApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3193,7 +2357,7 @@ export const NodesApiAxiosParamCreator = function (
       // verify required parameter 'nodeId' is not null or undefined
       assertParamExists('getDetailedNodeInfo', 'nodeId', nodeId)
       const localVarPath = `/v1/nodes/{nodeId}`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3221,6 +2385,8 @@ export const NodesApiAxiosParamCreator = function (
       if (dek !== undefined) {
         localVarQueryParameter['dek'] = dek
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3268,6 +2434,8 @@ export const NodesApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3299,7 +2467,7 @@ export const NodesApiAxiosParamCreator = function (
       // verify required parameter 'nodeId' is not null or undefined
       assertParamExists('listNodeChildren', 'nodeId', nodeId)
       const localVarPath = `/v1/nodes/{nodeId}/children`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3331,6 +2499,8 @@ export const NodesApiAxiosParamCreator = function (
       if (exclusiveStartKey !== undefined) {
         localVarQueryParameter['exclusiveStartKey'] = exclusiveStartKey
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3377,6 +2547,8 @@ export const NodesApiAxiosParamCreator = function (
         configuration,
       )
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -3408,7 +2580,7 @@ export const NodesApiAxiosParamCreator = function (
       // verify required parameter 'moveNodeInput' is not null or undefined
       assertParamExists('moveNode', 'moveNodeInput', moveNodeInput)
       const localVarPath = `/v1/nodes/{nodeId}/move`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3434,6 +2606,7 @@ export const NodesApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3475,11 +2648,8 @@ export const NodesApiAxiosParamCreator = function (
         nodeIdToRemove,
       )
       const localVarPath = `/v1/nodes/{nodeId}/remove/{nodeIdToRemove}`
-        .replace(`{${'nodeId'}}`, encodeURIComponent(String(nodeId)))
-        .replace(
-          `{${'nodeIdToRemove'}}`,
-          encodeURIComponent(String(nodeIdToRemove)),
-        )
+        .replace('{nodeId}', encodeURIComponent(String(nodeId)))
+        .replace('{nodeIdToRemove}', encodeURIComponent(String(nodeIdToRemove)))
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL)
       let baseOptions
@@ -3501,6 +2671,8 @@ export const NodesApiAxiosParamCreator = function (
         'authorization',
         configuration,
       )
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3545,9 +2717,9 @@ export const NodesApiAxiosParamCreator = function (
         restoreNodeFromTrashbin,
       )
       const localVarPath = `/v1/nodes/{nodeId}/restore/{nodeIdToRestore}`
-        .replace(`{${'nodeId'}}`, encodeURIComponent(String(nodeId)))
+        .replace('{nodeId}', encodeURIComponent(String(nodeId)))
         .replace(
-          `{${'nodeIdToRestore'}}`,
+          '{nodeIdToRestore}',
           encodeURIComponent(String(nodeIdToRestore)),
         )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3573,6 +2745,7 @@ export const NodesApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3610,7 +2783,7 @@ export const NodesApiAxiosParamCreator = function (
       // verify required parameter 'updateNodeInput' is not null or undefined
       assertParamExists('updateNode', 'updateNodeInput', updateNodeInput)
       const localVarPath = `/v1/nodes/{nodeId}`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3636,6 +2809,7 @@ export const NodesApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -3661,7 +2835,6 @@ export const NodesApiAxiosParamCreator = function (
 
 /**
  * NodesApi - functional programming interface
- * @export
  */
 export const NodesApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = NodesApiAxiosParamCreator(configuration)
@@ -4021,7 +3194,6 @@ export const NodesApiFp = function (configuration?: Configuration) {
 
 /**
  * NodesApi - factory interface
- * @export
  */
 export const NodesApiFactory = function (
   configuration?: Configuration,
@@ -4207,9 +3379,6 @@ export const NodesApiFactory = function (
 
 /**
  * NodesApi - object-oriented interface
- * @export
- * @class NodesApi
- * @extends {BaseAPI}
  */
 export class NodesApi extends BaseAPI {
   /**
@@ -4218,7 +3387,6 @@ export class NodesApi extends BaseAPI {
    * @param {CreateChildNodeInput} createChildNodeInput CreateChildNode
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public createChildNode(
     nodeId: string,
@@ -4235,7 +3403,6 @@ export class NodesApi extends BaseAPI {
    * @param {CreateNodeInput} createNodeInput CreateNode
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public createNode(
     createNodeInput: CreateNodeInput,
@@ -4251,7 +3418,6 @@ export class NodesApi extends BaseAPI {
    * @param {string} nodeId
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public deleteNode(nodeId: string, options?: RawAxiosRequestConfig) {
     return NodesApiFp(this.configuration)
@@ -4265,7 +3431,6 @@ export class NodesApi extends BaseAPI {
    * @param {string} [dek] A base64url encoded data encryption key, encrypted using VFS public key. getUrl will not be returned if dek is not provided
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public getDetailedNodeInfo(
     nodeId: string,
@@ -4282,7 +3447,6 @@ export class NodesApi extends BaseAPI {
    * @param {*} [options] Override http request option.
    * @deprecated
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public initNodes(options?: RawAxiosRequestConfig) {
     return NodesApiFp(this.configuration)
@@ -4297,7 +3461,6 @@ export class NodesApi extends BaseAPI {
    * @param {string} [exclusiveStartKey] exclusiveStartKey for retrieving the next batch of data.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public listNodeChildren(
     nodeId: string,
@@ -4314,7 +3477,6 @@ export class NodesApi extends BaseAPI {
    * lists children of the root node for the consumer
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public listRootNodeChildren(options?: RawAxiosRequestConfig) {
     return NodesApiFp(this.configuration)
@@ -4328,7 +3490,6 @@ export class NodesApi extends BaseAPI {
    * @param {MoveNodeInput} moveNodeInput MoveNode
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public moveNode(
     nodeId: string,
@@ -4346,7 +3507,6 @@ export class NodesApi extends BaseAPI {
    * @param {string} nodeIdToRemove nodeId of the node to be deleted from TRASH_BIN
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public permanentlyDeleteNode(
     nodeId: string,
@@ -4365,7 +3525,6 @@ export class NodesApi extends BaseAPI {
    * @param {RestoreNodeFromTrashbin} restoreNodeFromTrashbin RestoreNodeFromTrashbin
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public restoreNodeFromTrashbin(
     nodeId: string,
@@ -4389,7 +3548,6 @@ export class NodesApi extends BaseAPI {
    * @param {UpdateNodeInput} updateNodeInput UpdateNodeInput
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof NodesApi
    */
   public updateNode(
     nodeId: string,
@@ -4404,7 +3562,6 @@ export class NodesApi extends BaseAPI {
 
 /**
  * ProfileDataApi - axios parameter creator
- * @export
  */
 export const ProfileDataApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4429,7 +3586,7 @@ export const ProfileDataApiAxiosParamCreator = function (
       // verify required parameter 'dek' is not null or undefined
       assertParamExists('queryProfileData', 'dek', dek)
       const localVarPath = `/v1/nodes/{nodeId}/profile-data`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4461,6 +3618,8 @@ export const ProfileDataApiAxiosParamCreator = function (
       if (dek !== undefined) {
         localVarQueryParameter['dek'] = dek
       }
+
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4497,7 +3656,7 @@ export const ProfileDataApiAxiosParamCreator = function (
         updateProfileDataInput,
       )
       const localVarPath = `/v1/nodes/{nodeId}/profile-data`.replace(
-        `{${'nodeId'}}`,
+        '{nodeId}',
         encodeURIComponent(String(nodeId)),
       )
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -4523,6 +3682,7 @@ export const ProfileDataApiAxiosParamCreator = function (
       )
 
       localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarHeaderParameter['Accept'] = 'application/json'
 
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
@@ -4548,7 +3708,6 @@ export const ProfileDataApiAxiosParamCreator = function (
 
 /**
  * ProfileDataApi - functional programming interface
- * @export
  */
 export const ProfileDataApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator =
@@ -4634,7 +3793,6 @@ export const ProfileDataApiFp = function (configuration?: Configuration) {
 
 /**
  * ProfileDataApi - factory interface
- * @export
  */
 export const ProfileDataApiFactory = function (
   configuration?: Configuration,
@@ -4682,9 +3840,6 @@ export const ProfileDataApiFactory = function (
 
 /**
  * ProfileDataApi - object-oriented interface
- * @export
- * @class ProfileDataApi
- * @extends {BaseAPI}
  */
 export class ProfileDataApi extends BaseAPI {
   /**
@@ -4694,7 +3849,6 @@ export class ProfileDataApi extends BaseAPI {
    * @param {string} [query] data query, TBD maybe encode it with base64 to make it url friendly?
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProfileDataApi
    */
   public queryProfileData(
     nodeId: string,
@@ -4713,7 +3867,6 @@ export class ProfileDataApi extends BaseAPI {
    * @param {UpdateProfileDataInput} updateProfileDataInput Updates the schema with the given data
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof ProfileDataApi
    */
   public updateProfileData(
     nodeId: string,
@@ -4728,7 +3881,6 @@ export class ProfileDataApi extends BaseAPI {
 
 /**
  * WellKnownApi - axios parameter creator
- * @export
  */
 export const WellKnownApiAxiosParamCreator = function (
   configuration?: Configuration,
@@ -4758,6 +3910,8 @@ export const WellKnownApiAxiosParamCreator = function (
       const localVarHeaderParameter = {} as any
       const localVarQueryParameter = {} as any
 
+      localVarHeaderParameter['Accept'] = 'application/json'
+
       setSearchParams(localVarUrlObj, localVarQueryParameter)
       let headersFromBaseOptions =
         baseOptions && baseOptions.headers ? baseOptions.headers : {}
@@ -4777,7 +3931,6 @@ export const WellKnownApiAxiosParamCreator = function (
 
 /**
  * WellKnownApi - functional programming interface
- * @export
  */
 export const WellKnownApiFp = function (configuration?: Configuration) {
   const localVarAxiosParamCreator = WellKnownApiAxiosParamCreator(configuration)
@@ -4815,7 +3968,6 @@ export const WellKnownApiFp = function (configuration?: Configuration) {
 
 /**
  * WellKnownApi - factory interface
- * @export
  */
 export const WellKnownApiFactory = function (
   configuration?: Configuration,
@@ -4841,16 +3993,12 @@ export const WellKnownApiFactory = function (
 
 /**
  * WellKnownApi - object-oriented interface
- * @export
- * @class WellKnownApi
- * @extends {BaseAPI}
  */
 export class WellKnownApi extends BaseAPI {
   /**
    *
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
-   * @memberof WellKnownApi
    */
   public getWellKnownJwks(options?: RawAxiosRequestConfig) {
     return WellKnownApiFp(this.configuration)

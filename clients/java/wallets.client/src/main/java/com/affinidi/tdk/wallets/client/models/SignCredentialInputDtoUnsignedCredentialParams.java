@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   SignCredentialInputDtoUnsignedCredentialParams.JSON_PROPERTY_EXPIRES_AT
 })
 @JsonTypeName("SignCredentialInputDto_unsignedCredentialParams")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignCredentialInputDtoUnsignedCredentialParams {
   public static final String JSON_PROPERTY_JSON_LD_CONTEXT_URL = "jsonLdContextUrl";
   @javax.annotation.Nonnull
@@ -80,7 +80,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return jsonLdContextUrl
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_LD_CONTEXT_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJsonLdContextUrl() {
@@ -88,7 +88,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_LD_CONTEXT_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
@@ -105,7 +105,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return jsonSchemaUrl
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_SCHEMA_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJsonSchemaUrl() {
@@ -113,7 +113,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_SCHEMA_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
@@ -130,7 +130,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return typeName
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TYPE_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTypeName() {
@@ -138,7 +138,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE_NAME)
+  @JsonProperty(value = JSON_PROPERTY_TYPE_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTypeName(@javax.annotation.Nonnull String typeName) {
     this.typeName = typeName;
@@ -160,7 +160,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return credentialSubject
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_SUBJECT, required = true)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
   public Map<String, Object> getCredentialSubject() {
@@ -168,7 +168,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_SUBJECT)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_SUBJECT, required = true)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
   public void setCredentialSubject(@javax.annotation.Nonnull Map<String, Object> credentialSubject) {
     this.credentialSubject = credentialSubject;
@@ -185,7 +185,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return holderDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonProperty(value = JSON_PROPERTY_HOLDER_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getHolderDid() {
@@ -193,7 +193,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HOLDER_DID)
+  @JsonProperty(value = JSON_PROPERTY_HOLDER_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHolderDid(@javax.annotation.Nonnull String holderDid) {
     this.holderDid = holderDid;
@@ -210,7 +210,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * @return expiresAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getExpiresAt() {
@@ -218,11 +218,12 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXPIRES_AT)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiresAt(@javax.annotation.Nonnull String expiresAt) {
     this.expiresAt = expiresAt;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -265,10 +266,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -306,7 +304,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
     // add `jsonLdContextUrl` to the URL query string
     if (getJsonLdContextUrl() != null) {
       try {
-        joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -316,7 +314,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
     // add `jsonSchemaUrl` to the URL query string
     if (getJsonSchemaUrl() != null) {
       try {
-        joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -326,7 +324,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
     // add `typeName` to the URL query string
     if (getTypeName() != null) {
       try {
-        joiner.add(String.format("%stypeName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTypeName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stypeName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTypeName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -337,8 +335,8 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
     if (getCredentialSubject() != null) {
       for (String _key : getCredentialSubject().keySet()) {
         try {
-          joiner.add(String.format("%scredentialSubject%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scredentialSubject%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getCredentialSubject().get(_key), URLEncoder.encode(String.valueOf(getCredentialSubject().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -350,7 +348,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
     // add `holderDid` to the URL query string
     if (getHolderDid() != null) {
       try {
-        joiner.add(String.format("%sholderDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sholderDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHolderDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -360,7 +358,7 @@ public class SignCredentialInputDtoUnsignedCredentialParams {
     // add `expiresAt` to the URL query string
     if (getExpiresAt() != null) {
       try {
-        joiner.add(String.format("%sexpiresAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexpiresAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
