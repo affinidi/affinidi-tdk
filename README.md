@@ -30,7 +30,7 @@ To use the Affinidi TDK, you must have the recommended version of the supported 
 
 | TypeScript           | Python             | Dart             | PHP             | Java             |
 |----------------------|----------------------|----------------------|----------------------|----------------------|
-| ![NodeJS](https://img.shields.io/badge/NodeJS-%E2%89%A5%2018.0-52a447?labelColor=555555&style=flat-square) | ![Python](https://img.shields.io/badge/Python-%E2%89%A5%203.7-52a447?labelColor=555555&style=flat-square) | ![Dart](https://img.shields.io/badge/Dart-%E2%89%A5%203.6-52a447?labelColor=555555&style=flat-square) | ![PHP](https://img.shields.io/badge/PHP-%E2%89%A5%207.4-52a447?labelColor=555555&style=flat-square) | ![Java](https://img.shields.io/badge/Java-%E2%89%A5%201.8-52a447?labelColor=555555&style=flat-square) |
+| ![NodeJS](https://img.shields.io/badge/NodeJS-%E2%89%A5%2022.23.4-52a447?labelColor=555555&style=flat-square) | ![Python](https://img.shields.io/badge/Python-%E2%89%A5%203.7-52a447?labelColor=555555&style=flat-square) | ![Dart](https://img.shields.io/badge/Dart-%E2%89%A5%203.6-52a447?labelColor=555555&style=flat-square) | ![PHP](https://img.shields.io/badge/PHP-%E2%89%A5%207.4-52a447?labelColor=555555&style=flat-square) | ![Java](https://img.shields.io/badge/Java-%E2%89%A5%201.8-52a447?labelColor=555555&style=flat-square) |
 
 
 ## Available modules

@@ -4,8 +4,8 @@
 
 Ensure you have the following installed:
 
-- **Node.js v20.x or later**
-  > 💡 Node.js v20 is supported, but the LTS (Long Term Support) version is recommended for better stability and performance.
+- **Node.js 22 (22.23.4 or later), 24 (24.22.1 or later), or 26.12.1 and later**
+  > 💡 Earlier releases lack the October 2026 security fix and are rejected by `engines`. The LTS (Long Term Support) version is recommended for better stability and performance.
   > For details on current LTS version check [Node.js releases page](https://nodejs.org/en/about/previous-releases).
 - **npm v11.6.0+** (Node.js package manager)
 
