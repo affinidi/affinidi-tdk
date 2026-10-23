@@ -60,6 +60,11 @@ describe('wallets-client', function () {
     expect(status).to.equal(201)
     expect(data).to.have.a.property('wallet')
     walletIdDidWeb = data.wallet.id
+
+    // Not used by other tests, so delete it now instead of holding a wallet slot
+    const { status: deleteStatus } = await api.deleteWallet(walletIdDidWeb)
+    expect(deleteStatus).to.equal(204)
+    walletIdDidWeb = undefined
   })
 
   it('Signs Credential', async () => {

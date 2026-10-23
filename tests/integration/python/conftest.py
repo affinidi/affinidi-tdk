@@ -1,7 +1,8 @@
 import pytest
 from helpers.wallets import create_wallet, delete_wallet, check_wallets_limit_exceeded
 
-@pytest.fixture(scope="session")
+# Module scope so each test file deletes its wallet when it finishes
+@pytest.fixture(scope="module")
 def wallet_resource():
     check_wallets_limit_exceeded()
 

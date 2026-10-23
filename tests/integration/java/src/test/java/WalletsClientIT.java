@@ -66,11 +66,7 @@ public class WalletsClientIT {
         walletId = created.getId();
         walletDid = created.getDid();
 
-        // Create V2 wallet
-        WalletV2Dto createdV2 = WalletsTestHelper.createWalletV2(CreateWalletV2Input.DidMethodEnum.KEY);
-        assertNotNull(createdV2, "Expected v2 did:key wallet to be created");
-        walletIdV2 = createdV2.getId();
-        walletDidV2 = createdV2.getDid();
+        // V2 wallet is created when the V2 tests start, see shouldValidateWalletSetupV2
     }
 
     @AfterAll
@@ -97,6 +93,10 @@ public class WalletsClientIT {
 
         walletIdDidWeb = created.getId();
         assertNotNull(walletIdDidWeb, "Expected non-null WEB wallet ID");
+
+        // Not used by other tests, so delete it now instead of holding a wallet slot
+        walletApi.deleteWallet(walletIdDidWeb);
+        walletIdDidWeb = null;
     }
 
     @Test
@@ -212,6 +212,17 @@ public class WalletsClientIT {
     @Order(10)
     @DisplayName("Validates V2 wallet setup")
     void shouldValidateWalletSetupV2() throws Exception {
+        // V1 tests are done, so delete their wallet before the V2 one is created
+        if (walletId != null) {
+            walletApi.deleteWallet(walletId);
+            walletId = null;
+        }
+
+        WalletV2Dto createdV2 = WalletsTestHelper.createWalletV2(CreateWalletV2Input.DidMethodEnum.KEY);
+        assertNotNull(createdV2, "Expected v2 did:key wallet to be created");
+        walletIdV2 = createdV2.getId();
+        walletDidV2 = createdV2.getDid();
+
         assertNotNull(walletIdV2, "Wallet ID should not be null");
         assertNotNull(walletDidV2, "Wallet DID should not be null");
         assertTrue(walletDidV2.startsWith("did:key:"), "DID should start with 'did:key:'");
@@ -225,6 +236,10 @@ public class WalletsClientIT {
         assertNotNull(created, "Expected WEB-based wallet to be created");
         walletIdDidWebV2 = created.getId();
         assertNotNull(walletIdDidWebV2, "Expected non-null WEB wallet ID");
+
+        // Not used by other tests, so delete it now instead of holding a wallet slot
+        walletApi.deleteWallet(walletIdDidWebV2);
+        walletIdDidWebV2 = null;
     }
 
     @Test
