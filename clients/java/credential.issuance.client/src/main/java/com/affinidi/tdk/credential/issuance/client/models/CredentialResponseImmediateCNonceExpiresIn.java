@@ -29,10 +29,11 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
 })
 @JsonTypeName("CredentialResponseImmediate_c_nonce_expires_in")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CredentialResponseImmediateCNonceExpiresIn {
   public CredentialResponseImmediateCNonceExpiresIn() {
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -63,10 +64,7 @@ public class CredentialResponseImmediateCNonceExpiresIn {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**

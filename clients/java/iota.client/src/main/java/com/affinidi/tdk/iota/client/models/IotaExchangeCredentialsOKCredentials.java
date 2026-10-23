@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   IotaExchangeCredentialsOKCredentials.JSON_PROPERTY_EXPIRATION
 })
 @JsonTypeName("IotaExchangeCredentialsOK_credentials")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class IotaExchangeCredentialsOKCredentials {
   public static final String JSON_PROPERTY_ACCESS_KEY_ID = "accessKeyId";
   @javax.annotation.Nonnull
@@ -68,7 +68,7 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return accessKeyId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_KEY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAccessKeyId() {
@@ -76,7 +76,7 @@ public class IotaExchangeCredentialsOKCredentials {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCESS_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_KEY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccessKeyId(@javax.annotation.Nonnull String accessKeyId) {
     this.accessKeyId = accessKeyId;
@@ -93,7 +93,7 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return secretKey
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+  @JsonProperty(value = JSON_PROPERTY_SECRET_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getSecretKey() {
@@ -101,7 +101,7 @@ public class IotaExchangeCredentialsOKCredentials {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SECRET_KEY)
+  @JsonProperty(value = JSON_PROPERTY_SECRET_KEY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSecretKey(@javax.annotation.Nonnull String secretKey) {
     this.secretKey = secretKey;
@@ -118,7 +118,7 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return sessionToken
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_SESSION_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getSessionToken() {
@@ -126,7 +126,7 @@ public class IotaExchangeCredentialsOKCredentials {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SESSION_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_SESSION_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSessionToken(@javax.annotation.Nonnull String sessionToken) {
     this.sessionToken = sessionToken;
@@ -143,7 +143,7 @@ public class IotaExchangeCredentialsOKCredentials {
    * @return expiration
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXPIRATION)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getExpiration() {
@@ -151,11 +151,12 @@ public class IotaExchangeCredentialsOKCredentials {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXPIRATION)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiration(@javax.annotation.Nonnull String expiration) {
     this.expiration = expiration;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -194,10 +195,7 @@ public class IotaExchangeCredentialsOKCredentials {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -235,7 +233,7 @@ public class IotaExchangeCredentialsOKCredentials {
     // add `accessKeyId` to the URL query string
     if (getAccessKeyId() != null) {
       try {
-        joiner.add(String.format("%saccessKeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccessKeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessKeyId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -245,7 +243,7 @@ public class IotaExchangeCredentialsOKCredentials {
     // add `secretKey` to the URL query string
     if (getSecretKey() != null) {
       try {
-        joiner.add(String.format("%ssecretKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSecretKey()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssecretKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSecretKey()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -255,7 +253,7 @@ public class IotaExchangeCredentialsOKCredentials {
     // add `sessionToken` to the URL query string
     if (getSessionToken() != null) {
       try {
-        joiner.add(String.format("%ssessionToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssessionToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -265,7 +263,7 @@ public class IotaExchangeCredentialsOKCredentials {
     // add `expiration` to the URL query string
     if (getExpiration() != null) {
       try {
-        joiner.add(String.format("%sexpiration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiration()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexpiration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiration()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
