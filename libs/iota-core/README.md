@@ -2,18 +2,8 @@
 
 ## Install
 
-### Javascript
-
 ```bash
 npm install @affinidi-tdk/iota-core
-```
-
-### Python
-
-run inside [python virtual env](https://docs.python.org/3/library/venv.html)
-
-```bash
-pip install affinidi_tdk_iota_core
 ```
 
 ## Usage

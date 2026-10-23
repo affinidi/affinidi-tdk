@@ -97,8 +97,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           # npm auth is via OIDC trusted publishing (id-token: write above); no NPM_TOKEN needed.
-          # publib (jsii packages) needs this flag to use trusted publishing instead of a token.
-          NPM_TRUSTED_PUBLISHER: 'true'
           MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
           MAVEN_GPG_SECRET_KEY_PASSWORD: ${{ secrets.MAVEN_GPG_SECRET_KEY_PASSWORD }}
@@ -158,11 +156,10 @@ jobs:
             | node -e 'let s="";process.stdin.on("data",d=>{s+=d}).on("end",()=>{process.stdout.write(JSON.parse(s).root||"")})')
           echo "root=$ROOT" >> "$GITHUB_OUTPUT"
           # @semantic-release/npm packages publish here via `npm publish` (native OIDC):
-          # the 9 pure-npm packages plus the jsii `common` package (npm-only; its
+          # the pure-npm packages plus the jsii `common` package (npm-only; its
           # .npmignore excludes dist/, so `nx build` output is all that ships).
-          # iota-core and auth-provider publish via publib in the publish-jsii job.
           case "$ROOT" in
-            libs/iota-browser|clients/typescript/*|packages/jsii/common|packages/jsii/auth-provider) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
+            libs/iota-browser|libs/iota-core|clients/typescript/*|packages/jsii/common|packages/jsii/auth-provider) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
             *) echo "publish=false" >> "$GITHUB_OUTPUT" ;;
           esac
 
@@ -179,95 +176,3 @@ jobs:
         if: steps.root.outputs.publish == 'true'
         working-directory: ${{ steps.root.outputs.root }}
         run: npm publish
-
-  # Tag-triggered publishing for the jsii/publib packages (iota-core, auth-provider).
-  #
-  # These publish to BOTH npm and PyPI. semantic-release only creates the version tag
-  # (its @semantic-release/exec no longer runs a publishCmd); this job performs the
-  # actual publish: jsii-pacmak builds dist/js + dist/python, then publib-npm publishes
-  # the npm tarball via native OIDC (NPM_TRUSTED_PUBLISHER) and twine uploads the Python
-  # dist using a short-lived token minted from PyPI's OIDC trusted publishing. Running in
-  # the same workflow file and `environment: main` means both the npm and PyPI trusted-
-  # publisher claims match the existing configuration.
-  publish-jsii:
-    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-    environment: main
-    concurrency: publish-jsii-${{ github.ref }}
-    permissions:
-      contents: read
-      id-token: write # required for npm and PyPI trusted publishing (OIDC)
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v4
-        with:
-          # npm trusted publishing (OIDC) requires npm CLI >= 11.5.1, which ships with Node 24.
-          node-version: '^24.22.1'
-          cache: 'npm'
-
-      - name: Resolve package and version
-        id: pkg
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            NAME='${{ inputs.package }}'
-            VERSION='${{ inputs.version }}'
-          else
-            REF="${GITHUB_REF_NAME}" # e.g. @affinidi-tdk/iota-core-v1.2.3
-            VERSION="${REF##*-v}"
-            NAME="${REF%-v${VERSION}}"
-          fi
-          echo "name=$NAME" >> "$GITHUB_OUTPUT"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-
-      - run: npm ci
-
-      - name: Resolve project root
-        id: root
-        run: |
-          ROOT=$(npx nx show project "${{ steps.pkg.outputs.name }}" --json \
-            | node -e 'let s="";process.stdin.on("data",d=>{s+=d}).on("end",()=>{process.stdout.write(JSON.parse(s).root||"")})')
-          echo "root=$ROOT" >> "$GITHUB_OUTPUT"
-          # Only the publib packages (npm + PyPI) publish here. Everything else is a
-          # no-op so a single tag push can safely trigger both publish jobs.
-          case "$ROOT" in
-            libs/iota-core) echo "publish=true" >> "$GITHUB_OUTPUT" ;;
-            *) echo "publish=false" >> "$GITHUB_OUTPUT" ;;
-          esac
-
-      - name: Set up Python
-        if: steps.root.outputs.publish == 'true'
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install twine
-        if: steps.root.outputs.publish == 'true'
-        run: pip install twine
-
-      - name: Mint pypi token
-        id: mint
-        if: steps.root.outputs.publish == 'true'
-        uses: tschm/token-mint-action@v1.0.3
-
-      - name: Set version from tag
-        if: steps.root.outputs.publish == 'true' && steps.pkg.outputs.version != ''
-        working-directory: ${{ steps.root.outputs.root }}
-        run: npm version "${{ steps.pkg.outputs.version }}" --no-git-tag-version --allow-same-version
-
-      - name: Package (jsii-pacmak)
-        if: steps.root.outputs.publish == 'true'
-        run: npx nx package "${{ steps.pkg.outputs.name }}"
-
-      - name: Publish to npm + PyPI (trusted publishing / OIDC)
-        if: steps.root.outputs.publish == 'true'
-        working-directory: ${{ steps.root.outputs.root }}
-        run: npm run publish-pypi && npm run publish-npm
-        env:
-          # npm publib uses native OIDC trusted publishing instead of a token.
-          NPM_TRUSTED_PUBLISHER: 'true'
-          TWINE_USERNAME: '__token__'
-          TWINE_PASSWORD: ${{ steps.mint.outputs.api-token }}
-          POETRY_PYPI_TOKEN_PYPI: ${{ steps.mint.outputs.api-token }}
