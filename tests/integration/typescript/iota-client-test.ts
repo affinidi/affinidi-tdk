@@ -58,14 +58,17 @@ describe('iota-client', function () {
   })
 
   after(async function () {
-    await deleteWallet(walletId)
+    // Skip resources that weren't created, e.g. when the "before all" hook failed
+    if (walletId) {
+      await deleteWallet(walletId)
+    }
 
-    {
+    if (configurationId) {
       const { status } = await configurationsApi.deleteIotaConfigurationById(configurationId)
       expect(status).to.equal(204)
     }
 
-    {
+    if (configurationId && queryId) {
       const { status } = await pexQueryApi.deletePexQueryById(configurationId, queryId)
       expect(status).to.equal(204)
     }
