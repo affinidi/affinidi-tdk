@@ -21,6 +21,7 @@ import com.affinidi.tdk.common.EnvironmentUtil;
  */
 public class WalletsTestHelper {
     private static final int WALLETS_LIMIT_THRESHOLD = 7;
+    private static boolean walletsCleared = false;
 
     private static WalletApi getWalletApi() {
         ApiClient client = Configuration.getDefaultApiClient();
@@ -129,10 +130,27 @@ public class WalletsTestHelper {
      * @throws Exception if wallet limit is exceeded
      */
     public static void checkWalletsLimitExceeded() throws Exception {
+        clearWalletsOnce();
+        checkWalletsLimitExceeded(WALLETS_LIMIT_THRESHOLD);
+    }
+
+    /**
+     * Deletes all wallets except the issuance configuration's one, once per run,
+     * so the run starts with free wallet slots.
+     *
+     * @throws Exception if listing or deleting wallets fails
+     */
+    private static synchronized void clearWalletsOnce() throws Exception {
+        if (walletsCleared) return;
+        walletsCleared = true;
+        checkWalletsLimitExceeded(0);
+    }
+
+    private static void checkWalletsLimitExceeded(int threshold) throws Exception {
         List<WalletDto> wallets = getWalletApi().listWallets(null).getWallets();
 
-        if (wallets != null && wallets.size() > WALLETS_LIMIT_THRESHOLD) {
-            System.out.println("❗️Number of wallets reaching the limit (10). Deleting wallets.");
+        if (wallets != null && wallets.size() > threshold) {
+            System.out.println("❗️Deleting wallets.");
             String protectedWalletId = getIssuanceConfigWalletId();
             for (WalletDto wallet : wallets) {
                 String id = wallet.getId();

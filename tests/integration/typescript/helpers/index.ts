@@ -118,7 +118,10 @@ export const createWallet = async () => {
   return data.wallet
 }
 
-export const checkWalletsLimitExceeded = async () => {
+// Deletes all wallets except the issuance configuration's one, so a run starts with free wallet slots
+export const clearWallets = () => checkWalletsLimitExceeded(0)
+
+export const checkWalletsLimitExceeded = async (threshold = WALLETS_LIMIT_THRESHOLD) => {
   const configuration = ClientsConfigurationService.getWalletsClientConfiguration()
   const api = new WalletApi(configuration)
 
@@ -127,8 +130,8 @@ export const checkWalletsLimitExceeded = async () => {
   expect(data.wallets).to.be.an('array')
   console.log(`Wallets listed in project: ${data.wallets?.length}`)
 
-  if (data.wallets && data.wallets.length > WALLETS_LIMIT_THRESHOLD) {
-    console.log('❗️Number of wallets reaching the limit (10). Deleting wallets.')
+  if (data.wallets && data.wallets.length > threshold) {
+    console.log('❗️Deleting wallets.')
 
     // Get protected wallet ID from issuance configuration
     let protectedWalletId: string | undefined

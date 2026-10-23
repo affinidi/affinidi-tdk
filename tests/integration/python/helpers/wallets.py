@@ -74,7 +74,11 @@ def ensure_config_wallet_exists(config_id):
                 update_input = {"issuer_wallet_id": new_wallet["id"]}
                 config_api.update_issuance_config_by_id(config_id, update_input)
 
-def check_wallets_limit_exceeded():
+def clear_wallets():
+    """Delete all wallets except the issuance configuration's one, so a run starts with free wallet slots."""
+    check_wallets_limit_exceeded(threshold=0)
+
+def check_wallets_limit_exceeded(threshold=7):
     config = get_client_configuration(Configuration)
     with ApiClient(config) as api_client:
         api_instance = WalletApi(api_client)
@@ -82,7 +86,7 @@ def check_wallets_limit_exceeded():
         wallets = json.loads(response.json())['wallets']
 
         # Threshold check with protected wallet logic
-        if len(wallets) > 7:
+        if len(wallets) > threshold:
             # Get protected wallet ID from issuance configuration
             protected_wallet_id = None
             try:
@@ -96,7 +100,7 @@ def check_wallets_limit_exceeded():
             except:
                 pass  # Proceed without protection if config unavailable
 
-            print("❗️Number of wallets reaching the limit (10). Deleting wallets.")
+            print("❗️Deleting wallets.")
             for wallet in wallets:
                 # Skip deleting the wallet used by the issuance configuration
                 if wallet['id'] != protected_wallet_id:

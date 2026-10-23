@@ -1,5 +1,10 @@
 import pytest
-from helpers.wallets import create_wallet, delete_wallet, check_wallets_limit_exceeded
+from helpers.wallets import create_wallet, delete_wallet, check_wallets_limit_exceeded, clear_wallets
+
+@pytest.fixture(scope="session", autouse=True)
+def clear_existing_wallets():
+    """Delete leftover wallets once before any test runs."""
+    clear_wallets()
 
 # Module scope so each test file deletes its wallet when it finishes
 @pytest.fixture(scope="module")
