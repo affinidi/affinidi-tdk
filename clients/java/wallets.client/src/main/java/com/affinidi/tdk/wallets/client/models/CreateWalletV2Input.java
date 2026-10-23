@@ -106,7 +106,9 @@ public class CreateWalletV2Input {
     
     ED25519(String.valueOf("ed25519")),
     
-    P256(String.valueOf("p256"));
+    P256(String.valueOf("p256")),
+    
+    MLDSA44(String.valueOf("mldsa44"));
 
     private String value;
 

@@ -4,10 +4,11 @@ Input for adding a new key to a wallet. Only supported for did:web ATM.
 
 ## Properties
 
-| Name              | Type                                                              | Description                             | Notes |
-| ----------------- | ----------------------------------------------------------------- | --------------------------------------- | ----- |
-| **key_type**      | **str**                                                           | cryptographic algorithm for the new key |
-| **relationships** | [**List[VerificationRelationship]**](VerificationRelationship.md) | verification relationships for the key. |
+| Name              | Type                                                              | Description                                                                                                                                                             | Notes      |
+| ----------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| **algorithm**     | **str**                                                           | cryptographic algorithm for the new key                                                                                                                                 | [optional] |
+| **key_type**      | **str**                                                           | Deprecated alias of &#x60;algorithm&#x60;. Accepted for backward compatibility; prefer &#x60;algorithm&#x60;. If both are sent, &#x60;algorithm&#x60; takes precedence. | [optional] |
+| **relationships** | [**List[VerificationRelationship]**](VerificationRelationship.md) | verification relationships for the key.                                                                                                                                 |
 
 ## Example
 
