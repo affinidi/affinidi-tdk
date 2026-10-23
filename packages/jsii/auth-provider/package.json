@@ -39,7 +39,7 @@
     "lint:fix": "eslint . --ext .ts --fix"
   },
   "dependencies": {
-    "@affinidi-tdk/common": "^1.0.0",
+    "@affinidi-tdk/common": "^1.25.0 || ^2.0.0",
     "@types/jsonwebtoken": "^9.0.3",
     "@types/qs": "^6.9.8",
     "@types/uuid": "^9.0.8",

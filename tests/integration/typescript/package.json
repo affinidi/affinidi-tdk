@@ -10,7 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "@affinidi-tdk/auth-provider": "^1.33.1",
-    "@affinidi-tdk/common": "^1.25.1",
+    "@affinidi-tdk/common": "^1.25.0 || ^2.0.0",
     "@affinidi-tdk/credential-issuance-client": "../../../clients/typescript/credential-issuance-client",
     "@affinidi-tdk/credential-verification-client": "../../../clients/typescript/credential-verification-client",
     "@affinidi-tdk/iam-client": "../../../clients/typescript/iam-client",
