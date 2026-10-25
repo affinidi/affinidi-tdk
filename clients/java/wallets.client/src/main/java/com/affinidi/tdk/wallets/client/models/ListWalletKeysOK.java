@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListWalletKeysOK.JSON_PROPERTY_KEYS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListWalletKeysOK {
   public static final String JSON_PROPERTY_KEYS = "keys";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class ListWalletKeysOK {
    * @return keys
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_KEYS)
+  @JsonProperty(value = JSON_PROPERTY_KEYS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<WalletKeyDto> getKeys() {
@@ -72,11 +72,12 @@ public class ListWalletKeysOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEYS)
+  @JsonProperty(value = JSON_PROPERTY_KEYS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setKeys(@javax.annotation.Nonnull List<WalletKeyDto> keys) {
     this.keys = keys;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class ListWalletKeysOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class ListWalletKeysOK {
     if (getKeys() != null) {
       for (int i = 0; i < getKeys().size(); i++) {
         if (getKeys().get(i) != null) {
-          joiner.add(getKeys().get(i).toUrlQueryString(String.format("%skeys%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getKeys().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%skeys%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

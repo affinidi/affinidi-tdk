@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   ChangeCredentialStatusInput.JSON_PROPERTY_CHANGE_REASON,
   ChangeCredentialStatusInput.JSON_PROPERTY_ISSUANCE_RECORD_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ChangeCredentialStatusInput {
   /**
    * reason for revocation
@@ -92,7 +92,7 @@ public class ChangeCredentialStatusInput {
    * @return changeReason
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
+  @JsonProperty(value = JSON_PROPERTY_CHANGE_REASON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public ChangeReasonEnum getChangeReason() {
@@ -100,7 +100,7 @@ public class ChangeCredentialStatusInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CHANGE_REASON)
+  @JsonProperty(value = JSON_PROPERTY_CHANGE_REASON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChangeReason(@javax.annotation.Nullable ChangeReasonEnum changeReason) {
     this.changeReason = changeReason;
@@ -117,7 +117,7 @@ public class ChangeCredentialStatusInput {
    * @return issuanceRecordId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_RECORD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIssuanceRecordId() {
@@ -125,11 +125,12 @@ public class ChangeCredentialStatusInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_RECORD_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_RECORD_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuanceRecordId(@javax.annotation.Nullable String issuanceRecordId) {
     this.issuanceRecordId = issuanceRecordId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -164,10 +165,7 @@ public class ChangeCredentialStatusInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -205,7 +203,7 @@ public class ChangeCredentialStatusInput {
     // add `changeReason` to the URL query string
     if (getChangeReason() != null) {
       try {
-        joiner.add(String.format("%schangeReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChangeReason()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%schangeReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChangeReason()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -215,7 +213,7 @@ public class ChangeCredentialStatusInput {
     // add `issuanceRecordId` to the URL query string
     if (getIssuanceRecordId() != null) {
       try {
-        joiner.add(String.format("%sissuanceRecordId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceRecordId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuanceRecordId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceRecordId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
