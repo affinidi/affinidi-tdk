@@ -44,7 +44,7 @@ import java.util.StringJoiner;
   CreateAccountWithProfileInput.JSON_PROPERTY_EDEK_INFO,
   CreateAccountWithProfileInput.JSON_PROPERTY_DEK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateAccountWithProfileInput {
   public static final String JSON_PROPERTY_ACCOUNT_INDEX = "accountIndex";
   @javax.annotation.Nonnull
@@ -104,7 +104,7 @@ public class CreateAccountWithProfileInput {
    * @return accountIndex
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getAccountIndex() {
@@ -112,7 +112,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     this.accountIndex = accountIndex;
@@ -129,7 +129,7 @@ public class CreateAccountWithProfileInput {
    * @return accountDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAccountDid() {
@@ -137,7 +137,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountDid(@javax.annotation.Nonnull String accountDid) {
     this.accountDid = accountDid;
@@ -154,7 +154,7 @@ public class CreateAccountWithProfileInput {
    * @return didProof
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DID_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_DID_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDidProof() {
@@ -162,7 +162,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_DID_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDidProof(@javax.annotation.Nonnull String didProof) {
     this.didProof = didProof;
@@ -179,7 +179,7 @@ public class CreateAccountWithProfileInput {
    * @return alias
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonProperty(value = JSON_PROPERTY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAlias() {
@@ -187,7 +187,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonProperty(value = JSON_PROPERTY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAlias(@javax.annotation.Nullable String alias) {
     this.alias = alias;
@@ -204,7 +204,7 @@ public class CreateAccountWithProfileInput {
    * @return accountMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getAccountMetadata() {
@@ -212,7 +212,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccountMetadata(@javax.annotation.Nullable Object accountMetadata) {
     this.accountMetadata = accountMetadata;
@@ -229,7 +229,7 @@ public class CreateAccountWithProfileInput {
    * @return accountDescription
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAccountDescription() {
@@ -237,7 +237,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccountDescription(@javax.annotation.Nullable String accountDescription) {
     this.accountDescription = accountDescription;
@@ -254,7 +254,7 @@ public class CreateAccountWithProfileInput {
    * @return profileName
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_NAME)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProfileName() {
@@ -262,7 +262,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_NAME)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProfileName(@javax.annotation.Nonnull String profileName) {
     this.profileName = profileName;
@@ -279,7 +279,7 @@ public class CreateAccountWithProfileInput {
    * @return profileDescription
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROFILE_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProfileDescription() {
@@ -287,7 +287,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProfileDescription(@javax.annotation.Nullable String profileDescription) {
     this.profileDescription = profileDescription;
@@ -304,7 +304,7 @@ public class CreateAccountWithProfileInput {
    * @return profileMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROFILE_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getProfileMetadata() {
@@ -312,7 +312,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProfileMetadata(@javax.annotation.Nullable Object profileMetadata) {
     this.profileMetadata = profileMetadata;
@@ -329,7 +329,7 @@ public class CreateAccountWithProfileInput {
    * @return edekInfo
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EDEK_INFO)
+  @JsonProperty(value = JSON_PROPERTY_EDEK_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public EdekInfo getEdekInfo() {
@@ -337,7 +337,7 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EDEK_INFO)
+  @JsonProperty(value = JSON_PROPERTY_EDEK_INFO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEdekInfo(@javax.annotation.Nonnull EdekInfo edekInfo) {
     this.edekInfo = edekInfo;
@@ -354,7 +354,7 @@ public class CreateAccountWithProfileInput {
    * @return dek
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDek() {
@@ -362,11 +362,12 @@ public class CreateAccountWithProfileInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDek(@javax.annotation.Nonnull String dek) {
     this.dek = dek;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -419,10 +420,7 @@ public class CreateAccountWithProfileInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -460,7 +458,7 @@ public class CreateAccountWithProfileInput {
     // add `accountIndex` to the URL query string
     if (getAccountIndex() != null) {
       try {
-        joiner.add(String.format("%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -470,7 +468,7 @@ public class CreateAccountWithProfileInput {
     // add `accountDid` to the URL query string
     if (getAccountDid() != null) {
       try {
-        joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -480,7 +478,7 @@ public class CreateAccountWithProfileInput {
     // add `didProof` to the URL query string
     if (getDidProof() != null) {
       try {
-        joiner.add(String.format("%sdidProof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidProof()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdidProof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidProof()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -490,7 +488,7 @@ public class CreateAccountWithProfileInput {
     // add `alias` to the URL query string
     if (getAlias() != null) {
       try {
-        joiner.add(String.format("%salias%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlias()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%salias%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlias()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -500,7 +498,7 @@ public class CreateAccountWithProfileInput {
     // add `accountMetadata` to the URL query string
     if (getAccountMetadata() != null) {
       try {
-        joiner.add(String.format("%saccountMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -510,7 +508,7 @@ public class CreateAccountWithProfileInput {
     // add `accountDescription` to the URL query string
     if (getAccountDescription() != null) {
       try {
-        joiner.add(String.format("%saccountDescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountDescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -520,7 +518,7 @@ public class CreateAccountWithProfileInput {
     // add `profileName` to the URL query string
     if (getProfileName() != null) {
       try {
-        joiner.add(String.format("%sprofileName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -530,7 +528,7 @@ public class CreateAccountWithProfileInput {
     // add `profileDescription` to the URL query string
     if (getProfileDescription() != null) {
       try {
-        joiner.add(String.format("%sprofileDescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileDescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -540,7 +538,7 @@ public class CreateAccountWithProfileInput {
     // add `profileMetadata` to the URL query string
     if (getProfileMetadata() != null) {
       try {
-        joiner.add(String.format("%sprofileMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -555,7 +553,7 @@ public class CreateAccountWithProfileInput {
     // add `dek` to the URL query string
     if (getDek() != null) {
       try {
-        joiner.add(String.format("%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   IotaExchangeCredentials.JSON_PROPERTY_ASSERTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class IotaExchangeCredentials {
   public static final String JSON_PROPERTY_ASSERTION = "assertion";
   @javax.annotation.Nonnull
@@ -52,7 +52,7 @@ public class IotaExchangeCredentials {
    * @return assertion
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ASSERTION)
+  @JsonProperty(value = JSON_PROPERTY_ASSERTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAssertion() {
@@ -60,11 +60,12 @@ public class IotaExchangeCredentials {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ASSERTION)
+  @JsonProperty(value = JSON_PROPERTY_ASSERTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAssertion(@javax.annotation.Nonnull String assertion) {
     this.assertion = assertion;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class IotaExchangeCredentials {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class IotaExchangeCredentials {
     // add `assertion` to the URL query string
     if (getAssertion() != null) {
       try {
-        joiner.add(String.format("%sassertion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAssertion()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sassertion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAssertion()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
