@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   StartIssuanceInputDataInnerStatusListDetailsInner.JSON_PROPERTY_STANDARD
 })
 @JsonTypeName("StartIssuanceInput_data_inner_statusListDetails_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class StartIssuanceInputDataInnerStatusListDetailsInner {
   /**
    * Gets or Sets purpose
@@ -124,7 +124,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
    * @return purpose
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonProperty(value = JSON_PROPERTY_PURPOSE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public PurposeEnum getPurpose() {
@@ -132,7 +132,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PURPOSE)
+  @JsonProperty(value = JSON_PROPERTY_PURPOSE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPurpose(@javax.annotation.Nonnull PurposeEnum purpose) {
     this.purpose = purpose;
@@ -149,7 +149,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
    * @return standard
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonProperty(value = JSON_PROPERTY_STANDARD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public StandardEnum getStandard() {
@@ -157,11 +157,12 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonProperty(value = JSON_PROPERTY_STANDARD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStandard(@javax.annotation.Nonnull StandardEnum standard) {
     this.standard = standard;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -196,10 +197,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -237,7 +235,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
     // add `purpose` to the URL query string
     if (getPurpose() != null) {
       try {
-        joiner.add(String.format("%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPurpose()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -247,7 +245,7 @@ public class StartIssuanceInputDataInnerStatusListDetailsInner {
     // add `standard` to the URL query string
     if (getStandard() != null) {
       try {
-        joiner.add(String.format("%sstandard%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStandard()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstandard%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStandard()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
