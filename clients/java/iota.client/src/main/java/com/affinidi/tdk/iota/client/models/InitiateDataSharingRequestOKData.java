@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   InitiateDataSharingRequestOKData.JSON_PROPERTY_TRANSACTION_ID
 })
 @JsonTypeName("InitiateDataSharingRequestOK_data")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class InitiateDataSharingRequestOKData {
   public static final String JSON_PROPERTY_JWT = "jwt";
   @javax.annotation.Nonnull
@@ -63,7 +63,7 @@ public class InitiateDataSharingRequestOKData {
    * @return jwt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonProperty(value = JSON_PROPERTY_JWT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJwt() {
@@ -71,7 +71,7 @@ public class InitiateDataSharingRequestOKData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonProperty(value = JSON_PROPERTY_JWT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJwt(@javax.annotation.Nonnull String jwt) {
     this.jwt = jwt;
@@ -88,7 +88,7 @@ public class InitiateDataSharingRequestOKData {
    * @return correlationId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCorrelationId() {
@@ -96,7 +96,7 @@ public class InitiateDataSharingRequestOKData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
@@ -113,7 +113,7 @@ public class InitiateDataSharingRequestOKData {
    * @return transactionId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRANSACTION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTransactionId() {
@@ -121,11 +121,12 @@ public class InitiateDataSharingRequestOKData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRANSACTION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTransactionId(@javax.annotation.Nonnull String transactionId) {
     this.transactionId = transactionId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,10 +163,7 @@ public class InitiateDataSharingRequestOKData {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -203,7 +201,7 @@ public class InitiateDataSharingRequestOKData {
     // add `jwt` to the URL query string
     if (getJwt() != null) {
       try {
-        joiner.add(String.format("%sjwt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjwt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -213,7 +211,7 @@ public class InitiateDataSharingRequestOKData {
     // add `correlationId` to the URL query string
     if (getCorrelationId() != null) {
       try {
-        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -223,7 +221,7 @@ public class InitiateDataSharingRequestOKData {
     // add `transactionId` to the URL query string
     if (getTransactionId() != null) {
       try {
-        joiner.add(String.format("%stransactionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stransactionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

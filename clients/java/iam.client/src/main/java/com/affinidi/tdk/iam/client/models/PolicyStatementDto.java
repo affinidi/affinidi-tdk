@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   PolicyStatementDto.JSON_PROPERTY_PRINCIPAL,
   PolicyStatementDto.JSON_PROPERTY_RESOURCE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class PolicyStatementDto {
   public static final String JSON_PROPERTY_ACTION = "action";
   @javax.annotation.Nonnull
@@ -78,7 +78,7 @@ public class PolicyStatementDto {
    * @return action
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACTION)
+  @JsonProperty(value = JSON_PROPERTY_ACTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getAction() {
@@ -86,7 +86,7 @@ public class PolicyStatementDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACTION)
+  @JsonProperty(value = JSON_PROPERTY_ACTION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAction(@javax.annotation.Nonnull List<String> action) {
     this.action = action;
@@ -103,7 +103,7 @@ public class PolicyStatementDto {
    * @return effect
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EFFECT)
+  @JsonProperty(value = JSON_PROPERTY_EFFECT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getEffect() {
@@ -111,7 +111,7 @@ public class PolicyStatementDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EFFECT)
+  @JsonProperty(value = JSON_PROPERTY_EFFECT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEffect(@javax.annotation.Nonnull String effect) {
     this.effect = effect;
@@ -136,7 +136,7 @@ public class PolicyStatementDto {
    * @return principal
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL)
+  @JsonProperty(value = JSON_PROPERTY_PRINCIPAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getPrincipal() {
@@ -144,7 +144,7 @@ public class PolicyStatementDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL)
+  @JsonProperty(value = JSON_PROPERTY_PRINCIPAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPrincipal(@javax.annotation.Nonnull List<String> principal) {
     this.principal = principal;
@@ -169,7 +169,7 @@ public class PolicyStatementDto {
    * @return resource
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RESOURCE)
+  @JsonProperty(value = JSON_PROPERTY_RESOURCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getResource() {
@@ -177,11 +177,12 @@ public class PolicyStatementDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESOURCE)
+  @JsonProperty(value = JSON_PROPERTY_RESOURCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResource(@javax.annotation.Nonnull List<String> resource) {
     this.resource = resource;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -220,10 +221,7 @@ public class PolicyStatementDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -262,8 +260,8 @@ public class PolicyStatementDto {
     if (getAction() != null) {
       for (int i = 0; i < getAction().size(); i++) {
         try {
-          joiner.add(String.format("%saction%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%saction%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getAction().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -275,7 +273,7 @@ public class PolicyStatementDto {
     // add `effect` to the URL query string
     if (getEffect() != null) {
       try {
-        joiner.add(String.format("%seffect%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEffect()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%seffect%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEffect()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -286,8 +284,8 @@ public class PolicyStatementDto {
     if (getPrincipal() != null) {
       for (int i = 0; i < getPrincipal().size(); i++) {
         try {
-          joiner.add(String.format("%sprincipal%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sprincipal%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getPrincipal().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -300,8 +298,8 @@ public class PolicyStatementDto {
     if (getResource() != null) {
       for (int i = 0; i < getResource().size(); i++) {
         try {
-          joiner.add(String.format("%sresource%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sresource%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getResource().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

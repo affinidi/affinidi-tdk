@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_LOGO,
   LoginConfigurationClientMetadataOutput.JSON_PROPERTY_DOMAIN_VERIFIED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class LoginConfigurationClientMetadataOutput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
@@ -67,7 +67,7 @@ public class LoginConfigurationClientMetadataOutput {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -75,7 +75,7 @@ public class LoginConfigurationClientMetadataOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -92,7 +92,7 @@ public class LoginConfigurationClientMetadataOutput {
    * @return origin
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ORIGIN)
+  @JsonProperty(value = JSON_PROPERTY_ORIGIN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getOrigin() {
@@ -100,7 +100,7 @@ public class LoginConfigurationClientMetadataOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ORIGIN)
+  @JsonProperty(value = JSON_PROPERTY_ORIGIN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setOrigin(@javax.annotation.Nonnull String origin) {
     this.origin = origin;
@@ -117,7 +117,7 @@ public class LoginConfigurationClientMetadataOutput {
    * @return logo
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_LOGO)
+  @JsonProperty(value = JSON_PROPERTY_LOGO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLogo() {
@@ -125,7 +125,7 @@ public class LoginConfigurationClientMetadataOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOGO)
+  @JsonProperty(value = JSON_PROPERTY_LOGO, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLogo(@javax.annotation.Nonnull String logo) {
     this.logo = logo;
@@ -142,7 +142,7 @@ public class LoginConfigurationClientMetadataOutput {
    * @return domainVerified
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DOMAIN_VERIFIED)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_VERIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getDomainVerified() {
@@ -150,11 +150,12 @@ public class LoginConfigurationClientMetadataOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DOMAIN_VERIFIED)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN_VERIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDomainVerified(@javax.annotation.Nullable Boolean domainVerified) {
     this.domainVerified = domainVerified;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,10 +194,7 @@ public class LoginConfigurationClientMetadataOutput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -234,7 +232,7 @@ public class LoginConfigurationClientMetadataOutput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -244,7 +242,7 @@ public class LoginConfigurationClientMetadataOutput {
     // add `origin` to the URL query string
     if (getOrigin() != null) {
       try {
-        joiner.add(String.format("%sorigin%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrigin()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sorigin%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOrigin()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -254,7 +252,7 @@ public class LoginConfigurationClientMetadataOutput {
     // add `logo` to the URL query string
     if (getLogo() != null) {
       try {
-        joiner.add(String.format("%slogo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLogo()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slogo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLogo()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -264,7 +262,7 @@ public class LoginConfigurationClientMetadataOutput {
     // add `domainVerified` to the URL query string
     if (getDomainVerified() != null) {
       try {
-        joiner.add(String.format("%sdomainVerified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDomainVerified()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdomainVerified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDomainVerified()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
