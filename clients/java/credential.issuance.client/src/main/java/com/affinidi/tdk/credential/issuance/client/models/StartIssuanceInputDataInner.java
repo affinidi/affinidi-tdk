@@ -43,7 +43,7 @@ import java.util.StringJoiner;
   StartIssuanceInputDataInner.JSON_PROPERTY_META_DATA
 })
 @JsonTypeName("StartIssuanceInput_data_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class StartIssuanceInputDataInner {
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
   @javax.annotation.Nonnull
@@ -75,7 +75,7 @@ public class StartIssuanceInputDataInner {
    * @return credentialTypeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_TYPE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCredentialTypeId() {
@@ -83,7 +83,7 @@ public class StartIssuanceInputDataInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_TYPE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
@@ -105,7 +105,7 @@ public class StartIssuanceInputDataInner {
    * @return credentialData
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_DATA)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_DATA, required = true)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
   public Map<String, Object> getCredentialData() {
@@ -113,7 +113,7 @@ public class StartIssuanceInputDataInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_DATA)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_DATA, required = true)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
   public void setCredentialData(@javax.annotation.Nonnull Map<String, Object> credentialData) {
     this.credentialData = credentialData;
@@ -138,7 +138,7 @@ public class StartIssuanceInputDataInner {
    * @return statusListDetails
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_DETAILS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<StartIssuanceInputDataInnerStatusListDetailsInner> getStatusListDetails() {
@@ -146,7 +146,7 @@ public class StartIssuanceInputDataInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_DETAILS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusListDetails(@javax.annotation.Nullable List<StartIssuanceInputDataInnerStatusListDetailsInner> statusListDetails) {
     this.statusListDetails = statusListDetails;
@@ -163,7 +163,7 @@ public class StartIssuanceInputDataInner {
    * @return metaData
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_META_DATA)
+  @JsonProperty(value = JSON_PROPERTY_META_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public StartIssuanceInputDataInnerMetaData getMetaData() {
@@ -171,11 +171,12 @@ public class StartIssuanceInputDataInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_META_DATA)
+  @JsonProperty(value = JSON_PROPERTY_META_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMetaData(@javax.annotation.Nullable StartIssuanceInputDataInnerMetaData metaData) {
     this.metaData = metaData;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -214,10 +215,7 @@ public class StartIssuanceInputDataInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -255,7 +253,7 @@ public class StartIssuanceInputDataInner {
     // add `credentialTypeId` to the URL query string
     if (getCredentialTypeId() != null) {
       try {
-        joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -266,8 +264,8 @@ public class StartIssuanceInputDataInner {
     if (getCredentialData() != null) {
       for (String _key : getCredentialData().keySet()) {
         try {
-          joiner.add(String.format("%scredentialData%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scredentialData%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getCredentialData().get(_key), URLEncoder.encode(String.valueOf(getCredentialData().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -280,8 +278,8 @@ public class StartIssuanceInputDataInner {
     if (getStatusListDetails() != null) {
       for (int i = 0; i < getStatusListDetails().size(); i++) {
         if (getStatusListDetails().get(i) != null) {
-          joiner.add(getStatusListDetails().get(i).toUrlQueryString(String.format("%sstatusListDetails%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getStatusListDetails().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sstatusListDetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

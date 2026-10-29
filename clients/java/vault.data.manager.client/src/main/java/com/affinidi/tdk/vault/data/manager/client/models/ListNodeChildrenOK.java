@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ListNodeChildrenOK.JSON_PROPERTY_NODES,
   ListNodeChildrenOK.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListNodeChildrenOK {
   public static final String JSON_PROPERTY_NODES = "nodes";
   @javax.annotation.Nullable
@@ -69,7 +69,7 @@ public class ListNodeChildrenOK {
    * @return nodes
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NODES)
+  @JsonProperty(value = JSON_PROPERTY_NODES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<NodeDto> getNodes() {
@@ -77,7 +77,7 @@ public class ListNodeChildrenOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODES)
+  @JsonProperty(value = JSON_PROPERTY_NODES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNodes(@javax.annotation.Nullable List<NodeDto> nodes) {
     this.nodes = nodes;
@@ -94,7 +94,7 @@ public class ListNodeChildrenOK {
    * @return lastEvaluatedKey
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastEvaluatedKey() {
@@ -102,11 +102,12 @@ public class ListNodeChildrenOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,10 +142,7 @@ public class ListNodeChildrenOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -183,8 +181,8 @@ public class ListNodeChildrenOK {
     if (getNodes() != null) {
       for (int i = 0; i < getNodes().size(); i++) {
         if (getNodes().get(i) != null) {
-          joiner.add(getNodes().get(i).toUrlQueryString(String.format("%snodes%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getNodes().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%snodes%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -192,7 +190,7 @@ public class ListNodeChildrenOK {
     // add `lastEvaluatedKey` to the URL query string
     if (getLastEvaluatedKey() != null) {
       try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
