@@ -35,7 +35,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   DeletePexQueriesInput.JSON_PROPERTY_QUERY_IDS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class DeletePexQueriesInput {
   public static final String JSON_PROPERTY_QUERY_IDS = "queryIds";
   @javax.annotation.Nonnull
@@ -63,7 +63,7 @@ public class DeletePexQueriesInput {
    * @return queryIds
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_QUERY_IDS)
+  @JsonProperty(value = JSON_PROPERTY_QUERY_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getQueryIds() {
@@ -71,11 +71,12 @@ public class DeletePexQueriesInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_QUERY_IDS)
+  @JsonProperty(value = JSON_PROPERTY_QUERY_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setQueryIds(@javax.annotation.Nonnull List<String> queryIds) {
     this.queryIds = queryIds;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -108,10 +109,7 @@ public class DeletePexQueriesInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -150,8 +148,8 @@ public class DeletePexQueriesInput {
     if (getQueryIds() != null) {
       for (int i = 0; i < getQueryIds().size(); i++) {
         try {
-          joiner.add(String.format("%squeryIds%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%squeryIds%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getQueryIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

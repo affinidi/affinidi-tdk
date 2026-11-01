@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   SignJwtToken.JSON_PROPERTY_HEADER,
   SignJwtToken.JSON_PROPERTY_PAYLOAD
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignJwtToken {
   public static final String JSON_PROPERTY_HEADER = "header";
   @javax.annotation.Nonnull
@@ -57,7 +57,7 @@ public class SignJwtToken {
    * @return header
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_HEADER)
+  @JsonProperty(value = JSON_PROPERTY_HEADER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getHeader() {
@@ -65,7 +65,7 @@ public class SignJwtToken {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_HEADER)
+  @JsonProperty(value = JSON_PROPERTY_HEADER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setHeader(@javax.annotation.Nonnull Object header) {
     this.header = header;
@@ -82,7 +82,7 @@ public class SignJwtToken {
    * @return payload
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PAYLOAD)
+  @JsonProperty(value = JSON_PROPERTY_PAYLOAD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getPayload() {
@@ -90,11 +90,12 @@ public class SignJwtToken {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PAYLOAD)
+  @JsonProperty(value = JSON_PROPERTY_PAYLOAD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPayload(@javax.annotation.Nonnull Object payload) {
     this.payload = payload;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,10 +130,7 @@ public class SignJwtToken {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -170,7 +168,7 @@ public class SignJwtToken {
     // add `header` to the URL query string
     if (getHeader() != null) {
       try {
-        joiner.add(String.format("%sheader%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHeader()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sheader%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getHeader()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class SignJwtToken {
     // add `payload` to the URL query string
     if (getPayload() != null) {
       try {
-        joiner.add(String.format("%spayload%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPayload()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spayload%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPayload()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

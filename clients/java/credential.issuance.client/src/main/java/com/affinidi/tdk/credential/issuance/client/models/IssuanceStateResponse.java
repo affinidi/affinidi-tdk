@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   IssuanceStateResponse.JSON_PROPERTY_ISSUANCE_ID,
   IssuanceStateResponse.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class IssuanceStateResponse {
   public static final String JSON_PROPERTY_ISSUANCE_ID = "issuanceId";
   @javax.annotation.Nonnull
@@ -96,7 +96,7 @@ public class IssuanceStateResponse {
    * @return issuanceId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getIssuanceId() {
@@ -104,7 +104,7 @@ public class IssuanceStateResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssuanceId(@javax.annotation.Nonnull String issuanceId) {
     this.issuanceId = issuanceId;
@@ -121,7 +121,7 @@ public class IssuanceStateResponse {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public StatusEnum getStatus() {
@@ -129,11 +129,12 @@ public class IssuanceStateResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -168,10 +169,7 @@ public class IssuanceStateResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -209,7 +207,7 @@ public class IssuanceStateResponse {
     // add `issuanceId` to the URL query string
     if (getIssuanceId() != null) {
       try {
-        joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -219,7 +217,7 @@ public class IssuanceStateResponse {
     // add `status` to the URL query string
     if (getStatus() != null) {
       try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

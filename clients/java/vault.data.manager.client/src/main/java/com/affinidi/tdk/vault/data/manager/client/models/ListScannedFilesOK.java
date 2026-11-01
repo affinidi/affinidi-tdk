@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListScannedFilesOK.JSON_PROPERTY_SCANNED_FILES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListScannedFilesOK {
   public static final String JSON_PROPERTY_SCANNED_FILES = "scannedFiles";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class ListScannedFilesOK {
    * @return scannedFiles
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCANNED_FILES)
+  @JsonProperty(value = JSON_PROPERTY_SCANNED_FILES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<ListScannedFilesOKScannedFilesInner> getScannedFiles() {
@@ -72,11 +72,12 @@ public class ListScannedFilesOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCANNED_FILES)
+  @JsonProperty(value = JSON_PROPERTY_SCANNED_FILES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScannedFiles(@javax.annotation.Nonnull List<ListScannedFilesOKScannedFilesInner> scannedFiles) {
     this.scannedFiles = scannedFiles;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class ListScannedFilesOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class ListScannedFilesOK {
     if (getScannedFiles() != null) {
       for (int i = 0; i < getScannedFiles().size(); i++) {
         if (getScannedFiles().get(i) != null) {
-          joiner.add(getScannedFiles().get(i).toUrlQueryString(String.format("%sscannedFiles%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getScannedFiles().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sscannedFiles%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
