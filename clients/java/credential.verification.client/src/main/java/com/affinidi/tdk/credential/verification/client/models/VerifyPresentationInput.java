@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   VerifyPresentationInput.JSON_PROPERTY_DCQL_QUERY,
   VerifyPresentationInput.JSON_PROPERTY_CHALLENGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class VerifyPresentationInput {
   public static final String JSON_PROPERTY_VERIFIABLE_PRESENTATION = "verifiablePresentation";
   @javax.annotation.Nullable
@@ -77,7 +77,7 @@ public class VerifyPresentationInput {
    * @return verifiablePresentation
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_VERIFIABLE_PRESENTATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getVerifiablePresentation() {
@@ -85,7 +85,7 @@ public class VerifyPresentationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_VERIFIABLE_PRESENTATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVerifiablePresentation(@javax.annotation.Nullable Object verifiablePresentation) {
     this.verifiablePresentation = verifiablePresentation;
@@ -102,7 +102,7 @@ public class VerifyPresentationInput {
    * @return signedPresentation
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_SIGNED_PRESENTATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getSignedPresentation() {
@@ -110,7 +110,7 @@ public class VerifyPresentationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIGNED_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_SIGNED_PRESENTATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSignedPresentation(@javax.annotation.Nullable Object signedPresentation) {
     this.signedPresentation = signedPresentation;
@@ -127,7 +127,7 @@ public class VerifyPresentationInput {
    * @return presentationDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getPresentationDefinition() {
@@ -135,7 +135,7 @@ public class VerifyPresentationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
@@ -152,7 +152,7 @@ public class VerifyPresentationInput {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getPresentationSubmission() {
@@ -160,7 +160,7 @@ public class VerifyPresentationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(@javax.annotation.Nullable Object presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
@@ -177,7 +177,7 @@ public class VerifyPresentationInput {
    * @return dcqlQuery
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getDcqlQuery() {
@@ -185,7 +185,7 @@ public class VerifyPresentationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DCQL_QUERY)
+  @JsonProperty(value = JSON_PROPERTY_DCQL_QUERY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDcqlQuery(@javax.annotation.Nullable Object dcqlQuery) {
     this.dcqlQuery = dcqlQuery;
@@ -202,7 +202,7 @@ public class VerifyPresentationInput {
    * @return challenge
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonProperty(value = JSON_PROPERTY_CHALLENGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getChallenge() {
@@ -210,11 +210,12 @@ public class VerifyPresentationInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonProperty(value = JSON_PROPERTY_CHALLENGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChallenge(@javax.annotation.Nullable String challenge) {
     this.challenge = challenge;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -257,10 +258,7 @@ public class VerifyPresentationInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -298,7 +296,7 @@ public class VerifyPresentationInput {
     // add `verifiablePresentation` to the URL query string
     if (getVerifiablePresentation() != null) {
       try {
-        joiner.add(String.format("%sverifiablePresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerifiablePresentation()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sverifiablePresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVerifiablePresentation()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -308,7 +306,7 @@ public class VerifyPresentationInput {
     // add `signedPresentation` to the URL query string
     if (getSignedPresentation() != null) {
       try {
-        joiner.add(String.format("%ssignedPresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignedPresentation()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssignedPresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignedPresentation()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -318,7 +316,7 @@ public class VerifyPresentationInput {
     // add `presentationDefinition` to the URL query string
     if (getPresentationDefinition() != null) {
       try {
-        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -328,7 +326,7 @@ public class VerifyPresentationInput {
     // add `presentationSubmission` to the URL query string
     if (getPresentationSubmission() != null) {
       try {
-        joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -338,7 +336,7 @@ public class VerifyPresentationInput {
     // add `dcqlQuery` to the URL query string
     if (getDcqlQuery() != null) {
       try {
-        joiner.add(String.format("%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdcqlQuery%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDcqlQuery()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -348,7 +346,7 @@ public class VerifyPresentationInput {
     // add `challenge` to the URL query string
     if (getChallenge() != null) {
       try {
-        joiner.add(String.format("%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

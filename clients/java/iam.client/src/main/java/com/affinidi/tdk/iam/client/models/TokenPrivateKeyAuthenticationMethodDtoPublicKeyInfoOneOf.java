@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf.JSON_PROPERTY_JWKS
 })
 @JsonTypeName("TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {
   public static final String JSON_PROPERTY_JWKS = "jwks";
   @javax.annotation.Nonnull
@@ -54,7 +54,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {
    * @return jwks
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS)
+  @JsonProperty(value = JSON_PROPERTY_JWKS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public JsonWebKeySetDto getJwks() {
@@ -62,11 +62,12 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWKS)
+  @JsonProperty(value = JSON_PROPERTY_JWKS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJwks(@javax.annotation.Nonnull JsonWebKeySetDto jwks) {
     this.jwks = jwks;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -99,10 +100,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**

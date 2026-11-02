@@ -50,7 +50,7 @@ import java.util.StringJoiner;
   GetUserInfo.JSON_PROPERTY_WEBSITE,
   GetUserInfo.JSON_PROPERTY_ZONEINFO
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GetUserInfo {
   public static final String JSON_PROPERTY_BIRTHDATE = "birthdate";
   @javax.annotation.Nullable
@@ -142,7 +142,7 @@ public class GetUserInfo {
    * @return birthdate
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BIRTHDATE)
+  @JsonProperty(value = JSON_PROPERTY_BIRTHDATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBirthdate() {
@@ -150,7 +150,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BIRTHDATE)
+  @JsonProperty(value = JSON_PROPERTY_BIRTHDATE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBirthdate(@javax.annotation.Nullable String birthdate) {
     this.birthdate = birthdate;
@@ -167,7 +167,7 @@ public class GetUserInfo {
    * @return email
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EMAIL)
+  @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEmail() {
@@ -175,7 +175,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EMAIL)
+  @JsonProperty(value = JSON_PROPERTY_EMAIL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEmail(@javax.annotation.Nullable String email) {
     this.email = email;
@@ -192,7 +192,7 @@ public class GetUserInfo {
    * @return emailVerified
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EMAIL_VERIFIED)
+  @JsonProperty(value = JSON_PROPERTY_EMAIL_VERIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getEmailVerified() {
@@ -200,7 +200,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EMAIL_VERIFIED)
+  @JsonProperty(value = JSON_PROPERTY_EMAIL_VERIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEmailVerified(@javax.annotation.Nullable Boolean emailVerified) {
     this.emailVerified = emailVerified;
@@ -217,7 +217,7 @@ public class GetUserInfo {
    * @return familyName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_FAMILY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFamilyName() {
@@ -225,7 +225,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FAMILY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_FAMILY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFamilyName(@javax.annotation.Nullable String familyName) {
     this.familyName = familyName;
@@ -242,7 +242,7 @@ public class GetUserInfo {
    * @return gender
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GENDER)
+  @JsonProperty(value = JSON_PROPERTY_GENDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGender() {
@@ -250,7 +250,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GENDER)
+  @JsonProperty(value = JSON_PROPERTY_GENDER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGender(@javax.annotation.Nullable String gender) {
     this.gender = gender;
@@ -267,7 +267,7 @@ public class GetUserInfo {
    * @return givenName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
+  @JsonProperty(value = JSON_PROPERTY_GIVEN_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGivenName() {
@@ -275,7 +275,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
+  @JsonProperty(value = JSON_PROPERTY_GIVEN_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGivenName(@javax.annotation.Nullable String givenName) {
     this.givenName = givenName;
@@ -292,7 +292,7 @@ public class GetUserInfo {
    * @return locale
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonProperty(value = JSON_PROPERTY_LOCALE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLocale() {
@@ -300,7 +300,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonProperty(value = JSON_PROPERTY_LOCALE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLocale(@javax.annotation.Nullable String locale) {
     this.locale = locale;
@@ -317,7 +317,7 @@ public class GetUserInfo {
    * @return middleName
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonProperty(value = JSON_PROPERTY_MIDDLE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMiddleName() {
@@ -325,7 +325,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MIDDLE_NAME)
+  @JsonProperty(value = JSON_PROPERTY_MIDDLE_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMiddleName(@javax.annotation.Nullable String middleName) {
     this.middleName = middleName;
@@ -342,7 +342,7 @@ public class GetUserInfo {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -350,7 +350,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -367,7 +367,7 @@ public class GetUserInfo {
    * @return nickname
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NICKNAME)
+  @JsonProperty(value = JSON_PROPERTY_NICKNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNickname() {
@@ -375,7 +375,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NICKNAME)
+  @JsonProperty(value = JSON_PROPERTY_NICKNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNickname(@javax.annotation.Nullable String nickname) {
     this.nickname = nickname;
@@ -392,7 +392,7 @@ public class GetUserInfo {
    * @return phoneNumber
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
+  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPhoneNumber() {
@@ -400,7 +400,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER)
+  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPhoneNumber(@javax.annotation.Nullable String phoneNumber) {
     this.phoneNumber = phoneNumber;
@@ -417,7 +417,7 @@ public class GetUserInfo {
    * @return phoneNumberVerified
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER_VERIFIED)
+  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER_VERIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getPhoneNumberVerified() {
@@ -425,7 +425,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PHONE_NUMBER_VERIFIED)
+  @JsonProperty(value = JSON_PROPERTY_PHONE_NUMBER_VERIFIED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPhoneNumberVerified(@javax.annotation.Nullable Boolean phoneNumberVerified) {
     this.phoneNumberVerified = phoneNumberVerified;
@@ -442,7 +442,7 @@ public class GetUserInfo {
    * @return picture
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PICTURE)
+  @JsonProperty(value = JSON_PROPERTY_PICTURE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPicture() {
@@ -450,7 +450,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PICTURE)
+  @JsonProperty(value = JSON_PROPERTY_PICTURE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPicture(@javax.annotation.Nullable String picture) {
     this.picture = picture;
@@ -467,7 +467,7 @@ public class GetUserInfo {
    * @return preferredUsername
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PREFERRED_USERNAME)
+  @JsonProperty(value = JSON_PROPERTY_PREFERRED_USERNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPreferredUsername() {
@@ -475,7 +475,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PREFERRED_USERNAME)
+  @JsonProperty(value = JSON_PROPERTY_PREFERRED_USERNAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPreferredUsername(@javax.annotation.Nullable String preferredUsername) {
     this.preferredUsername = preferredUsername;
@@ -492,7 +492,7 @@ public class GetUserInfo {
    * @return profile
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROFILE)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProfile() {
@@ -500,7 +500,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProfile(@javax.annotation.Nullable String profile) {
     this.profile = profile;
@@ -517,7 +517,7 @@ public class GetUserInfo {
    * @return sub
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SUB)
+  @JsonProperty(value = JSON_PROPERTY_SUB, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSub() {
@@ -525,7 +525,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SUB)
+  @JsonProperty(value = JSON_PROPERTY_SUB, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSub(@javax.annotation.Nullable String sub) {
     this.sub = sub;
@@ -542,7 +542,7 @@ public class GetUserInfo {
    * @return updatedAt
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_UPDATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_UPDATED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Integer getUpdatedAt() {
@@ -550,7 +550,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UPDATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_UPDATED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUpdatedAt(@javax.annotation.Nullable Integer updatedAt) {
     this.updatedAt = updatedAt;
@@ -567,7 +567,7 @@ public class GetUserInfo {
    * @return website
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WEBSITE)
+  @JsonProperty(value = JSON_PROPERTY_WEBSITE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getWebsite() {
@@ -575,7 +575,7 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WEBSITE)
+  @JsonProperty(value = JSON_PROPERTY_WEBSITE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWebsite(@javax.annotation.Nullable String website) {
     this.website = website;
@@ -592,7 +592,7 @@ public class GetUserInfo {
    * @return zoneinfo
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ZONEINFO)
+  @JsonProperty(value = JSON_PROPERTY_ZONEINFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getZoneinfo() {
@@ -600,11 +600,12 @@ public class GetUserInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ZONEINFO)
+  @JsonProperty(value = JSON_PROPERTY_ZONEINFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setZoneinfo(@javax.annotation.Nullable String zoneinfo) {
     this.zoneinfo = zoneinfo;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -673,10 +674,7 @@ public class GetUserInfo {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -714,7 +712,7 @@ public class GetUserInfo {
     // add `birthdate` to the URL query string
     if (getBirthdate() != null) {
       try {
-        joiner.add(String.format("%sbirthdate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBirthdate()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sbirthdate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBirthdate()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -724,7 +722,7 @@ public class GetUserInfo {
     // add `email` to the URL query string
     if (getEmail() != null) {
       try {
-        joiner.add(String.format("%semail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmail()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%semail%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmail()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -734,7 +732,7 @@ public class GetUserInfo {
     // add `email_verified` to the URL query string
     if (getEmailVerified() != null) {
       try {
-        joiner.add(String.format("%semail_verified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmailVerified()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%semail_verified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEmailVerified()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -744,7 +742,7 @@ public class GetUserInfo {
     // add `family_name` to the URL query string
     if (getFamilyName() != null) {
       try {
-        joiner.add(String.format("%sfamily_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFamilyName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfamily_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFamilyName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -754,7 +752,7 @@ public class GetUserInfo {
     // add `gender` to the URL query string
     if (getGender() != null) {
       try {
-        joiner.add(String.format("%sgender%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGender()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sgender%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGender()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -764,7 +762,7 @@ public class GetUserInfo {
     // add `given_name` to the URL query string
     if (getGivenName() != null) {
       try {
-        joiner.add(String.format("%sgiven_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGivenName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sgiven_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGivenName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -774,7 +772,7 @@ public class GetUserInfo {
     // add `locale` to the URL query string
     if (getLocale() != null) {
       try {
-        joiner.add(String.format("%slocale%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocale()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slocale%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocale()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -784,7 +782,7 @@ public class GetUserInfo {
     // add `middle_name` to the URL query string
     if (getMiddleName() != null) {
       try {
-        joiner.add(String.format("%smiddle_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMiddleName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smiddle_name%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMiddleName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -794,7 +792,7 @@ public class GetUserInfo {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -804,7 +802,7 @@ public class GetUserInfo {
     // add `nickname` to the URL query string
     if (getNickname() != null) {
       try {
-        joiner.add(String.format("%snickname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNickname()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snickname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNickname()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -814,7 +812,7 @@ public class GetUserInfo {
     // add `phone_number` to the URL query string
     if (getPhoneNumber() != null) {
       try {
-        joiner.add(String.format("%sphone_number%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPhoneNumber()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sphone_number%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPhoneNumber()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -824,7 +822,7 @@ public class GetUserInfo {
     // add `phone_number_verified` to the URL query string
     if (getPhoneNumberVerified() != null) {
       try {
-        joiner.add(String.format("%sphone_number_verified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPhoneNumberVerified()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sphone_number_verified%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPhoneNumberVerified()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -834,7 +832,7 @@ public class GetUserInfo {
     // add `picture` to the URL query string
     if (getPicture() != null) {
       try {
-        joiner.add(String.format("%spicture%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPicture()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spicture%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPicture()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -844,7 +842,7 @@ public class GetUserInfo {
     // add `preferred_username` to the URL query string
     if (getPreferredUsername() != null) {
       try {
-        joiner.add(String.format("%spreferred_username%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPreferredUsername()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spreferred_username%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPreferredUsername()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -854,7 +852,7 @@ public class GetUserInfo {
     // add `profile` to the URL query string
     if (getProfile() != null) {
       try {
-        joiner.add(String.format("%sprofile%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfile()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofile%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfile()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -864,7 +862,7 @@ public class GetUserInfo {
     // add `sub` to the URL query string
     if (getSub() != null) {
       try {
-        joiner.add(String.format("%ssub%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSub()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssub%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSub()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -874,7 +872,7 @@ public class GetUserInfo {
     // add `updated_at` to the URL query string
     if (getUpdatedAt() != null) {
       try {
-        joiner.add(String.format("%supdated_at%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUpdatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%supdated_at%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUpdatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -884,7 +882,7 @@ public class GetUserInfo {
     // add `website` to the URL query string
     if (getWebsite() != null) {
       try {
-        joiner.add(String.format("%swebsite%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWebsite()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%swebsite%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWebsite()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -894,7 +892,7 @@ public class GetUserInfo {
     // add `zoneinfo` to the URL query string
     if (getZoneinfo() != null) {
       try {
-        joiner.add(String.format("%szoneinfo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getZoneinfo()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%szoneinfo%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getZoneinfo()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

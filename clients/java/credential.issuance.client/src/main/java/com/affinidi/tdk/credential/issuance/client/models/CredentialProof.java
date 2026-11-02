@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   CredentialProof.JSON_PROPERTY_PROOF_TYPE,
   CredentialProof.JSON_PROPERTY_JWT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CredentialProof {
   /**
    * String denoting the key proof type.
@@ -90,7 +90,7 @@ public class CredentialProof {
    * @return proofType
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PROOF_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public ProofTypeEnum getProofType() {
@@ -98,7 +98,7 @@ public class CredentialProof {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROOF_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PROOF_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProofType(@javax.annotation.Nonnull ProofTypeEnum proofType) {
     this.proofType = proofType;
@@ -115,7 +115,7 @@ public class CredentialProof {
    * @return jwt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonProperty(value = JSON_PROPERTY_JWT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJwt() {
@@ -123,11 +123,12 @@ public class CredentialProof {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWT)
+  @JsonProperty(value = JSON_PROPERTY_JWT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJwt(@javax.annotation.Nonnull String jwt) {
     this.jwt = jwt;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,10 +163,7 @@ public class CredentialProof {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -203,7 +201,7 @@ public class CredentialProof {
     // add `proof_type` to the URL query string
     if (getProofType() != null) {
       try {
-        joiner.add(String.format("%sproof_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProofType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sproof_type%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProofType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -213,7 +211,7 @@ public class CredentialProof {
     // add `jwt` to the URL query string
     if (getJwt() != null) {
       try {
-        joiner.add(String.format("%sjwt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjwt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
