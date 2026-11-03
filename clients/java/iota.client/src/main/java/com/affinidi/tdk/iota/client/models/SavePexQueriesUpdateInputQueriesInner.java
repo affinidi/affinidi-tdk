@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   SavePexQueriesUpdateInputQueriesInner.JSON_PROPERTY_DESCRIPTION
 })
 @JsonTypeName("SavePexQueriesUpdateInput_queries_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SavePexQueriesUpdateInputQueriesInner {
   public static final String JSON_PROPERTY_QUERY_ID = "queryId";
   @javax.annotation.Nonnull
@@ -63,7 +63,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
    * @return queryId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonProperty(value = JSON_PROPERTY_QUERY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getQueryId() {
@@ -71,7 +71,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonProperty(value = JSON_PROPERTY_QUERY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setQueryId(@javax.annotation.Nonnull String queryId) {
     this.queryId = queryId;
@@ -88,7 +88,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
    * @return vpDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVpDefinition() {
@@ -96,7 +96,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
@@ -113,7 +113,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -121,11 +121,12 @@ public class SavePexQueriesUpdateInputQueriesInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,10 +163,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -203,7 +201,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
     // add `queryId` to the URL query string
     if (getQueryId() != null) {
       try {
-        joiner.add(String.format("%squeryId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%squeryId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -213,7 +211,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
     // add `vpDefinition` to the URL query string
     if (getVpDefinition() != null) {
       try {
-        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -223,7 +221,7 @@ public class SavePexQueriesUpdateInputQueriesInner {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

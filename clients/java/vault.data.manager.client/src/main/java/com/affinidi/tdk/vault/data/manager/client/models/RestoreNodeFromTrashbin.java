@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   RestoreNodeFromTrashbin.JSON_PROPERTY_RESTORE_TO_PROFILE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class RestoreNodeFromTrashbin {
   public static final String JSON_PROPERTY_RESTORE_TO_PROFILE_ID = "restoreToProfileId";
   @javax.annotation.Nullable
@@ -52,7 +52,7 @@ public class RestoreNodeFromTrashbin {
    * @return restoreToProfileId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESTORE_TO_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_RESTORE_TO_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRestoreToProfileId() {
@@ -60,11 +60,12 @@ public class RestoreNodeFromTrashbin {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESTORE_TO_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_RESTORE_TO_PROFILE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRestoreToProfileId(@javax.annotation.Nullable String restoreToProfileId) {
     this.restoreToProfileId = restoreToProfileId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class RestoreNodeFromTrashbin {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class RestoreNodeFromTrashbin {
     // add `restoreToProfileId` to the URL query string
     if (getRestoreToProfileId() != null) {
       try {
-        joiner.add(String.format("%srestoreToProfileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRestoreToProfileId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srestoreToProfileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRestoreToProfileId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

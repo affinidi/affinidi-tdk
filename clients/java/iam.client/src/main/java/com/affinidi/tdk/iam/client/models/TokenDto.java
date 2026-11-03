@@ -15,7 +15,7 @@ package com.affinidi.tdk.iam.client.models;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.affinidi.tdk.iam.client.models.TokenPrivateKeyAuthenticationMethodDto;
+import com.affinidi.tdk.iam.client.models.TokenAuthenticationMethodDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -42,7 +42,7 @@ import java.util.StringJoiner;
   TokenDto.JSON_PROPERTY_AUTHENTICATION_METHOD,
   TokenDto.JSON_PROPERTY_SCOPES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class TokenDto {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nonnull
@@ -62,7 +62,7 @@ public class TokenDto {
 
   public static final String JSON_PROPERTY_AUTHENTICATION_METHOD = "authenticationMethod";
   @javax.annotation.Nonnull
-  private TokenPrivateKeyAuthenticationMethodDto authenticationMethod;
+  private TokenAuthenticationMethodDto authenticationMethod;
 
   public static final String JSON_PROPERTY_SCOPES = "scopes";
   @javax.annotation.Nonnull
@@ -82,7 +82,7 @@ public class TokenDto {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public UUID getId() {
@@ -90,7 +90,7 @@ public class TokenDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(@javax.annotation.Nonnull UUID id) {
     this.id = id;
@@ -107,7 +107,7 @@ public class TokenDto {
    * @return ari
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAri() {
@@ -115,7 +115,7 @@ public class TokenDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
@@ -132,7 +132,7 @@ public class TokenDto {
    * @return ownerAri
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_OWNER_ARI)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getOwnerAri() {
@@ -140,7 +140,7 @@ public class TokenDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_OWNER_ARI)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setOwnerAri(@javax.annotation.Nonnull String ownerAri) {
     this.ownerAri = ownerAri;
@@ -157,7 +157,7 @@ public class TokenDto {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -165,13 +165,13 @@ public class TokenDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 
-  public TokenDto authenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
+  public TokenDto authenticationMethod(@javax.annotation.Nonnull TokenAuthenticationMethodDto authenticationMethod) {
     
     this.authenticationMethod = authenticationMethod;
     return this;
@@ -182,17 +182,17 @@ public class TokenDto {
    * @return authenticationMethod
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_AUTHENTICATION_METHOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public TokenPrivateKeyAuthenticationMethodDto getAuthenticationMethod() {
+  public TokenAuthenticationMethodDto getAuthenticationMethod() {
     return authenticationMethod;
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AUTHENTICATION_METHOD)
+  @JsonProperty(value = JSON_PROPERTY_AUTHENTICATION_METHOD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setAuthenticationMethod(@javax.annotation.Nonnull TokenPrivateKeyAuthenticationMethodDto authenticationMethod) {
+  public void setAuthenticationMethod(@javax.annotation.Nonnull TokenAuthenticationMethodDto authenticationMethod) {
     this.authenticationMethod = authenticationMethod;
   }
 
@@ -215,7 +215,7 @@ public class TokenDto {
    * @return scopes
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCOPES)
+  @JsonProperty(value = JSON_PROPERTY_SCOPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getScopes() {
@@ -223,11 +223,12 @@ public class TokenDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPES)
+  @JsonProperty(value = JSON_PROPERTY_SCOPES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScopes(@javax.annotation.Nonnull List<String> scopes) {
     this.scopes = scopes;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -270,10 +271,7 @@ public class TokenDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -311,7 +309,7 @@ public class TokenDto {
     // add `id` to the URL query string
     if (getId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -321,7 +319,7 @@ public class TokenDto {
     // add `ari` to the URL query string
     if (getAri() != null) {
       try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -331,7 +329,7 @@ public class TokenDto {
     // add `ownerAri` to the URL query string
     if (getOwnerAri() != null) {
       try {
-        joiner.add(String.format("%sownerAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOwnerAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sownerAri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOwnerAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -341,7 +339,7 @@ public class TokenDto {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -357,8 +355,8 @@ public class TokenDto {
     if (getScopes() != null) {
       for (int i = 0; i < getScopes().size(); i++) {
         try {
-          joiner.add(String.format("%sscopes%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sscopes%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getScopes().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

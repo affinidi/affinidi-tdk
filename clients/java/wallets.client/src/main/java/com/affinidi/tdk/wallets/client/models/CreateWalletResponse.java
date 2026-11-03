@@ -33,7 +33,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   CreateWalletResponse.JSON_PROPERTY_WALLET
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateWalletResponse {
   public static final String JSON_PROPERTY_WALLET = "wallet";
   @javax.annotation.Nullable
@@ -53,7 +53,7 @@ public class CreateWalletResponse {
    * @return wallet
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WALLET)
+  @JsonProperty(value = JSON_PROPERTY_WALLET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public WalletDto getWallet() {
@@ -61,11 +61,12 @@ public class CreateWalletResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WALLET)
+  @JsonProperty(value = JSON_PROPERTY_WALLET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWallet(@javax.annotation.Nullable WalletDto wallet) {
     this.wallet = wallet;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -98,10 +99,7 @@ public class CreateWalletResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**

@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   IdTokenMappingItem.JSON_PROPERTY_ID_TOKEN_CLAIM,
   IdTokenMappingItem.JSON_PROPERTY_INPUT_DESCRIPTOR_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class IdTokenMappingItem {
   public static final String JSON_PROPERTY_SOURCE_FIELD = "sourceField";
   @javax.annotation.Nonnull
@@ -62,7 +62,7 @@ public class IdTokenMappingItem {
    * @return sourceField
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SOURCE_FIELD)
+  @JsonProperty(value = JSON_PROPERTY_SOURCE_FIELD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getSourceField() {
@@ -70,7 +70,7 @@ public class IdTokenMappingItem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SOURCE_FIELD)
+  @JsonProperty(value = JSON_PROPERTY_SOURCE_FIELD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSourceField(@javax.annotation.Nonnull String sourceField) {
     this.sourceField = sourceField;
@@ -87,7 +87,7 @@ public class IdTokenMappingItem {
    * @return idTokenClaim
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_CLAIM)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_CLAIM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getIdTokenClaim() {
@@ -95,7 +95,7 @@ public class IdTokenMappingItem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_CLAIM)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_CLAIM, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIdTokenClaim(@javax.annotation.Nonnull String idTokenClaim) {
     this.idTokenClaim = idTokenClaim;
@@ -112,7 +112,7 @@ public class IdTokenMappingItem {
    * @return inputDescriptorId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTOR_ID)
+  @JsonProperty(value = JSON_PROPERTY_INPUT_DESCRIPTOR_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getInputDescriptorId() {
@@ -120,11 +120,12 @@ public class IdTokenMappingItem {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_INPUT_DESCRIPTOR_ID)
+  @JsonProperty(value = JSON_PROPERTY_INPUT_DESCRIPTOR_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setInputDescriptorId(@javax.annotation.Nullable String inputDescriptorId) {
     this.inputDescriptorId = inputDescriptorId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -161,10 +162,7 @@ public class IdTokenMappingItem {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -202,7 +200,7 @@ public class IdTokenMappingItem {
     // add `sourceField` to the URL query string
     if (getSourceField() != null) {
       try {
-        joiner.add(String.format("%ssourceField%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSourceField()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssourceField%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSourceField()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -212,7 +210,7 @@ public class IdTokenMappingItem {
     // add `idTokenClaim` to the URL query string
     if (getIdTokenClaim() != null) {
       try {
-        joiner.add(String.format("%sidTokenClaim%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdTokenClaim()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sidTokenClaim%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIdTokenClaim()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -222,7 +220,7 @@ public class IdTokenMappingItem {
     // add `inputDescriptorId` to the URL query string
     if (getInputDescriptorId() != null) {
       try {
-        joiner.add(String.format("%sinputDescriptorId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getInputDescriptorId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sinputDescriptorId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getInputDescriptorId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
