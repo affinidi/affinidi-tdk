@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   GrantAccessInput.JSON_PROPERTY_GRANTEE_DID,
   GrantAccessInput.JSON_PROPERTY_RIGHTS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GrantAccessInput {
   public static final String JSON_PROPERTY_GRANTEE_DID = "granteeDid";
   @javax.annotation.Nonnull
@@ -61,7 +61,7 @@ public class GrantAccessInput {
    * @return granteeDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GRANTEE_DID)
+  @JsonProperty(value = JSON_PROPERTY_GRANTEE_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getGranteeDid() {
@@ -69,7 +69,7 @@ public class GrantAccessInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GRANTEE_DID)
+  @JsonProperty(value = JSON_PROPERTY_GRANTEE_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGranteeDid(@javax.annotation.Nonnull String granteeDid) {
     this.granteeDid = granteeDid;
@@ -94,7 +94,7 @@ public class GrantAccessInput {
    * @return rights
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RIGHTS)
+  @JsonProperty(value = JSON_PROPERTY_RIGHTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<RightsEnum> getRights() {
@@ -102,11 +102,12 @@ public class GrantAccessInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RIGHTS)
+  @JsonProperty(value = JSON_PROPERTY_RIGHTS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRights(@javax.annotation.Nonnull List<RightsEnum> rights) {
     this.rights = rights;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,10 +142,7 @@ public class GrantAccessInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -182,7 +180,7 @@ public class GrantAccessInput {
     // add `granteeDid` to the URL query string
     if (getGranteeDid() != null) {
       try {
-        joiner.add(String.format("%sgranteeDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGranteeDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sgranteeDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGranteeDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -194,8 +192,8 @@ public class GrantAccessInput {
       for (int i = 0; i < getRights().size(); i++) {
         if (getRights().get(i) != null) {
           try {
-            joiner.add(String.format("%srights%s%s=%s", prefix, suffix,
-                "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+            joiner.add(String.format(java.util.Locale.ROOT, "%srights%s%s=%s", prefix, suffix,
+                "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
                 URLEncoder.encode(String.valueOf(getRights().get(i)), "UTF-8").replaceAll("\\+", "%20")));
           } catch (UnsupportedEncodingException e) {
             // Should never happen, UTF-8 is always supported

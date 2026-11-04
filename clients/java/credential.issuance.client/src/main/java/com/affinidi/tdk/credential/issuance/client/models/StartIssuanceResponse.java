@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   StartIssuanceResponse.JSON_PROPERTY_ISSUANCE_ID,
   StartIssuanceResponse.JSON_PROPERTY_EXPIRES_IN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class StartIssuanceResponse {
   public static final String JSON_PROPERTY_CREDENTIAL_OFFER_URI = "credentialOfferUri";
   @javax.annotation.Nonnull
@@ -68,7 +68,7 @@ public class StartIssuanceResponse {
    * @return credentialOfferUri
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_URI)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_OFFER_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCredentialOfferUri() {
@@ -76,7 +76,7 @@ public class StartIssuanceResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_OFFER_URI)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_OFFER_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialOfferUri(@javax.annotation.Nonnull String credentialOfferUri) {
     this.credentialOfferUri = credentialOfferUri;
@@ -93,7 +93,7 @@ public class StartIssuanceResponse {
    * @return txCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TX_CODE)
+  @JsonProperty(value = JSON_PROPERTY_TX_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTxCode() {
@@ -101,7 +101,7 @@ public class StartIssuanceResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TX_CODE)
+  @JsonProperty(value = JSON_PROPERTY_TX_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTxCode(@javax.annotation.Nullable String txCode) {
     this.txCode = txCode;
@@ -118,7 +118,7 @@ public class StartIssuanceResponse {
    * @return issuanceId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getIssuanceId() {
@@ -126,7 +126,7 @@ public class StartIssuanceResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUANCE_ID)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssuanceId(@javax.annotation.Nonnull String issuanceId) {
     this.issuanceId = issuanceId;
@@ -143,7 +143,7 @@ public class StartIssuanceResponse {
    * @return expiresIn
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_IN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getExpiresIn() {
@@ -151,11 +151,12 @@ public class StartIssuanceResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_IN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiresIn(@javax.annotation.Nonnull BigDecimal expiresIn) {
     this.expiresIn = expiresIn;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -194,10 +195,7 @@ public class StartIssuanceResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -235,7 +233,7 @@ public class StartIssuanceResponse {
     // add `credentialOfferUri` to the URL query string
     if (getCredentialOfferUri() != null) {
       try {
-        joiner.add(String.format("%scredentialOfferUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentialOfferUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialOfferUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -245,7 +243,7 @@ public class StartIssuanceResponse {
     // add `txCode` to the URL query string
     if (getTxCode() != null) {
       try {
-        joiner.add(String.format("%stxCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTxCode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stxCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTxCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -255,7 +253,7 @@ public class StartIssuanceResponse {
     // add `issuanceId` to the URL query string
     if (getIssuanceId() != null) {
       try {
-        joiner.add(String.format("%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuanceId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuanceId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -265,7 +263,7 @@ public class StartIssuanceResponse {
     // add `expiresIn` to the URL query string
     if (getExpiresIn() != null) {
       try {
-        joiner.add(String.format("%sexpiresIn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexpiresIn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

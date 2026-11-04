@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   StartFileScanInput.JSON_PROPERTY_DEK
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class StartFileScanInput {
   public static final String JSON_PROPERTY_DEK = "dek";
   @javax.annotation.Nonnull
@@ -52,7 +52,7 @@ public class StartFileScanInput {
    * @return dek
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDek() {
@@ -60,11 +60,12 @@ public class StartFileScanInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDek(@javax.annotation.Nonnull String dek) {
     this.dek = dek;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class StartFileScanInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class StartFileScanInput {
     // add `dek` to the URL query string
     if (getDek() != null) {
       try {
-        joiner.add(String.format("%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

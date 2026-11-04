@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -42,9 +43,10 @@ import java.util.StringJoiner;
   WalletDto.JSON_PROPERTY_ARI,
   WalletDto.JSON_PROPERTY_KEYS,
   WalletDto.JSON_PROPERTY_CREATED_AT,
-  WalletDto.JSON_PROPERTY_MODIFIED_AT
+  WalletDto.JSON_PROPERTY_MODIFIED_AT,
+  WalletDto.JSON_PROPERTY_VERSION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WalletDto {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nullable
@@ -82,6 +84,10 @@ public class WalletDto {
   @javax.annotation.Nullable
   private String modifiedAt;
 
+  public static final String JSON_PROPERTY_VERSION = "version";
+  @javax.annotation.Nullable
+  private BigDecimal version;
+
   public WalletDto() {
   }
 
@@ -96,7 +102,7 @@ public class WalletDto {
    * @return id
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
@@ -104,7 +110,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(@javax.annotation.Nullable String id) {
     this.id = id;
@@ -121,7 +127,7 @@ public class WalletDto {
    * @return did
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonProperty(value = JSON_PROPERTY_DID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDid() {
@@ -129,7 +135,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonProperty(value = JSON_PROPERTY_DID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDid(@javax.annotation.Nullable String did) {
     this.did = did;
@@ -146,7 +152,7 @@ public class WalletDto {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -154,7 +160,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -171,7 +177,7 @@ public class WalletDto {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -179,7 +185,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -196,7 +202,7 @@ public class WalletDto {
    * @return didDocument
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DID_DOCUMENT)
+  @JsonProperty(value = JSON_PROPERTY_DID_DOCUMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getDidDocument() {
@@ -204,7 +210,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID_DOCUMENT)
+  @JsonProperty(value = JSON_PROPERTY_DID_DOCUMENT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDidDocument(@javax.annotation.Nullable Object didDocument) {
     this.didDocument = didDocument;
@@ -221,7 +227,7 @@ public class WalletDto {
    * @return ari
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAri() {
@@ -229,7 +235,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAri(@javax.annotation.Nullable String ari) {
     this.ari = ari;
@@ -254,7 +260,7 @@ public class WalletDto {
    * @return keys
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEYS)
+  @JsonProperty(value = JSON_PROPERTY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<WalletDtoKeysInner> getKeys() {
@@ -262,7 +268,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEYS)
+  @JsonProperty(value = JSON_PROPERTY_KEYS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeys(@javax.annotation.Nullable List<WalletDtoKeysInner> keys) {
     this.keys = keys;
@@ -279,7 +285,7 @@ public class WalletDto {
    * @return createdAt
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCreatedAt() {
@@ -287,7 +293,7 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCreatedAt(@javax.annotation.Nullable String createdAt) {
     this.createdAt = createdAt;
@@ -304,7 +310,7 @@ public class WalletDto {
    * @return modifiedAt
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getModifiedAt() {
@@ -312,11 +318,37 @@ public class WalletDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setModifiedAt(@javax.annotation.Nullable String modifiedAt) {
     this.modifiedAt = modifiedAt;
   }
+
+  public WalletDto version(@javax.annotation.Nullable BigDecimal version) {
+    
+    this.version = version;
+    return this;
+  }
+
+  /**
+   * The version of the wallet
+   * @return version
+   */
+  @javax.annotation.Nullable
+  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public BigDecimal getVersion() {
+    return version;
+  }
+
+
+  @JsonProperty(value = JSON_PROPERTY_VERSION, required = false)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setVersion(@javax.annotation.Nullable BigDecimal version) {
+    this.version = version;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -335,12 +367,13 @@ public class WalletDto {
         Objects.equals(this.ari, walletDto.ari) &&
         Objects.equals(this.keys, walletDto.keys) &&
         Objects.equals(this.createdAt, walletDto.createdAt) &&
-        Objects.equals(this.modifiedAt, walletDto.modifiedAt);
+        Objects.equals(this.modifiedAt, walletDto.modifiedAt) &&
+        Objects.equals(this.version, walletDto.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, did, name, description, didDocument, ari, keys, createdAt, modifiedAt);
+    return Objects.hash(id, did, name, description, didDocument, ari, keys, createdAt, modifiedAt, version);
   }
 
   @Override
@@ -356,6 +389,7 @@ public class WalletDto {
     sb.append("    keys: ").append(toIndentedString(keys)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
     sb.append("    modifiedAt: ").append(toIndentedString(modifiedAt)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -365,10 +399,7 @@ public class WalletDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -406,7 +437,7 @@ public class WalletDto {
     // add `id` to the URL query string
     if (getId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -416,7 +447,7 @@ public class WalletDto {
     // add `did` to the URL query string
     if (getDid() != null) {
       try {
-        joiner.add(String.format("%sdid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -426,7 +457,7 @@ public class WalletDto {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -436,7 +467,7 @@ public class WalletDto {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -446,7 +477,7 @@ public class WalletDto {
     // add `didDocument` to the URL query string
     if (getDidDocument() != null) {
       try {
-        joiner.add(String.format("%sdidDocument%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidDocument()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdidDocument%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidDocument()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -456,7 +487,7 @@ public class WalletDto {
     // add `ari` to the URL query string
     if (getAri() != null) {
       try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -467,8 +498,8 @@ public class WalletDto {
     if (getKeys() != null) {
       for (int i = 0; i < getKeys().size(); i++) {
         if (getKeys().get(i) != null) {
-          joiner.add(getKeys().get(i).toUrlQueryString(String.format("%skeys%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getKeys().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%skeys%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -476,7 +507,7 @@ public class WalletDto {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -486,7 +517,17 @@ public class WalletDto {
     // add `modifiedAt` to the URL query string
     if (getModifiedAt() != null) {
       try {
-        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+      } catch (UnsupportedEncodingException e) {
+        // Should never happen, UTF-8 is always supported
+        throw new RuntimeException(e);
+      }
+    }
+
+    // add `version` to the URL query string
+    if (getVersion() != null) {
+      try {
+        joiner.add(String.format(java.util.Locale.ROOT, "%sversion%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVersion()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

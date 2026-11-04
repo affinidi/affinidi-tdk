@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   NotFoundErrorDetailsInner.JSON_PROPERTY_LOCATION
 })
 @JsonTypeName("NotFoundError_details_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class NotFoundErrorDetailsInner {
   public static final String JSON_PROPERTY_ISSUE = "issue";
   @javax.annotation.Nonnull
@@ -68,7 +68,7 @@ public class NotFoundErrorDetailsInner {
    * @return issue
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUE)
+  @JsonProperty(value = JSON_PROPERTY_ISSUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getIssue() {
@@ -76,7 +76,7 @@ public class NotFoundErrorDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUE)
+  @JsonProperty(value = JSON_PROPERTY_ISSUE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssue(@javax.annotation.Nonnull String issue) {
     this.issue = issue;
@@ -93,7 +93,7 @@ public class NotFoundErrorDetailsInner {
    * @return field
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FIELD)
+  @JsonProperty(value = JSON_PROPERTY_FIELD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getField() {
@@ -101,7 +101,7 @@ public class NotFoundErrorDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FIELD)
+  @JsonProperty(value = JSON_PROPERTY_FIELD, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setField(@javax.annotation.Nullable String field) {
     this.field = field;
@@ -118,7 +118,7 @@ public class NotFoundErrorDetailsInner {
    * @return value
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getValue() {
@@ -126,7 +126,7 @@ public class NotFoundErrorDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonProperty(value = JSON_PROPERTY_VALUE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setValue(@javax.annotation.Nullable String value) {
     this.value = value;
@@ -143,7 +143,7 @@ public class NotFoundErrorDetailsInner {
    * @return location
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOCATION)
+  @JsonProperty(value = JSON_PROPERTY_LOCATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLocation() {
@@ -151,11 +151,12 @@ public class NotFoundErrorDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCATION)
+  @JsonProperty(value = JSON_PROPERTY_LOCATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLocation(@javax.annotation.Nullable String location) {
     this.location = location;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -194,10 +195,7 @@ public class NotFoundErrorDetailsInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -235,7 +233,7 @@ public class NotFoundErrorDetailsInner {
     // add `issue` to the URL query string
     if (getIssue() != null) {
       try {
-        joiner.add(String.format("%sissue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssue()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssue()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -245,7 +243,7 @@ public class NotFoundErrorDetailsInner {
     // add `field` to the URL query string
     if (getField() != null) {
       try {
-        joiner.add(String.format("%sfield%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getField()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfield%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getField()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -255,7 +253,7 @@ public class NotFoundErrorDetailsInner {
     // add `value` to the URL query string
     if (getValue() != null) {
       try {
-        joiner.add(String.format("%svalue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getValue()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svalue%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getValue()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -265,7 +263,7 @@ public class NotFoundErrorDetailsInner {
     // add `location` to the URL query string
     if (getLocation() != null) {
       try {
-        joiner.add(String.format("%slocation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocation()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slocation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocation()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
