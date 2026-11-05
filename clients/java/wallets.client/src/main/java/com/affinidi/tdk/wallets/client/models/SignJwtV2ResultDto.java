@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignJwtV2ResultDto.JSON_PROPERTY_SIGNED_JWT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignJwtV2ResultDto {
   public static final String JSON_PROPERTY_SIGNED_JWT = "signedJwt";
   @javax.annotation.Nullable
@@ -52,7 +52,7 @@ public class SignJwtV2ResultDto {
    * @return signedJwt
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIGNED_JWT)
+  @JsonProperty(value = JSON_PROPERTY_SIGNED_JWT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSignedJwt() {
@@ -60,11 +60,12 @@ public class SignJwtV2ResultDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIGNED_JWT)
+  @JsonProperty(value = JSON_PROPERTY_SIGNED_JWT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSignedJwt(@javax.annotation.Nullable String signedJwt) {
     this.signedJwt = signedJwt;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class SignJwtV2ResultDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class SignJwtV2ResultDto {
     // add `signedJwt` to the URL query string
     if (getSignedJwt() != null) {
       try {
-        joiner.add(String.format("%ssignedJwt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignedJwt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssignedJwt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignedJwt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

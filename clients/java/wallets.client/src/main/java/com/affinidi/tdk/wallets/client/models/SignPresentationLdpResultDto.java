@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignPresentationLdpResultDto.JSON_PROPERTY_PRESENTATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignPresentationLdpResultDto {
   public static final String JSON_PROPERTY_PRESENTATION = "presentation";
   @javax.annotation.Nonnull
@@ -52,7 +52,7 @@ public class SignPresentationLdpResultDto {
    * @return presentation
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getPresentation() {
@@ -60,11 +60,12 @@ public class SignPresentationLdpResultDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPresentation(@javax.annotation.Nonnull Object presentation) {
     this.presentation = presentation;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class SignPresentationLdpResultDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class SignPresentationLdpResultDto {
     // add `presentation` to the URL query string
     if (getPresentation() != null) {
       try {
-        joiner.add(String.format("%spresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentation()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentation()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

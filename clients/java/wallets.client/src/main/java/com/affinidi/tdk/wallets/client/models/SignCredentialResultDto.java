@@ -34,7 +34,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SignCredentialResultDto.JSON_PROPERTY_SIGNED_CREDENTIAL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignCredentialResultDto {
   public static final String JSON_PROPERTY_SIGNED_CREDENTIAL = "signedCredential";
   @javax.annotation.Nonnull
@@ -59,7 +59,7 @@ public class SignCredentialResultDto {
    * @return signedCredential
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_SIGNED_CREDENTIAL, required = true)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
 
   public Map<String, Object> getSignedCredential() {
@@ -67,11 +67,12 @@ public class SignCredentialResultDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIGNED_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_SIGNED_CREDENTIAL, required = true)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.ALWAYS)
   public void setSignedCredential(@javax.annotation.Nonnull Map<String, Object> signedCredential) {
     this.signedCredential = signedCredential;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -104,10 +105,7 @@ public class SignCredentialResultDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -146,8 +144,8 @@ public class SignCredentialResultDto {
     if (getSignedCredential() != null) {
       for (String _key : getSignedCredential().keySet()) {
         try {
-          joiner.add(String.format("%ssignedCredential%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%ssignedCredential%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getSignedCredential().get(_key), URLEncoder.encode(String.valueOf(getSignedCredential().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

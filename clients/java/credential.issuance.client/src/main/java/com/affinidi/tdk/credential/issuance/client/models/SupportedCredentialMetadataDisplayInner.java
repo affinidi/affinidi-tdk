@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   SupportedCredentialMetadataDisplayInner.JSON_PROPERTY_TEXT_COLOR
 })
 @JsonTypeName("SupportedCredentialMetadata_display_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SupportedCredentialMetadataDisplayInner {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nonnull
@@ -74,7 +74,7 @@ public class SupportedCredentialMetadataDisplayInner {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -82,7 +82,7 @@ public class SupportedCredentialMetadataDisplayInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -99,7 +99,7 @@ public class SupportedCredentialMetadataDisplayInner {
    * @return locale
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonProperty(value = JSON_PROPERTY_LOCALE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLocale() {
@@ -107,7 +107,7 @@ public class SupportedCredentialMetadataDisplayInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonProperty(value = JSON_PROPERTY_LOCALE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLocale(@javax.annotation.Nullable String locale) {
     this.locale = locale;
@@ -124,7 +124,7 @@ public class SupportedCredentialMetadataDisplayInner {
    * @return logo
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOGO)
+  @JsonProperty(value = JSON_PROPERTY_LOGO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public SupportedCredentialMetadataItemLogo getLogo() {
@@ -132,7 +132,7 @@ public class SupportedCredentialMetadataDisplayInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOGO)
+  @JsonProperty(value = JSON_PROPERTY_LOGO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLogo(@javax.annotation.Nullable SupportedCredentialMetadataItemLogo logo) {
     this.logo = logo;
@@ -149,7 +149,7 @@ public class SupportedCredentialMetadataDisplayInner {
    * @return backgroundColor
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BACKGROUND_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_BACKGROUND_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBackgroundColor() {
@@ -157,7 +157,7 @@ public class SupportedCredentialMetadataDisplayInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BACKGROUND_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_BACKGROUND_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBackgroundColor(@javax.annotation.Nullable String backgroundColor) {
     this.backgroundColor = backgroundColor;
@@ -174,7 +174,7 @@ public class SupportedCredentialMetadataDisplayInner {
    * @return textColor
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TEXT_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_TEXT_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTextColor() {
@@ -182,11 +182,12 @@ public class SupportedCredentialMetadataDisplayInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TEXT_COLOR)
+  @JsonProperty(value = JSON_PROPERTY_TEXT_COLOR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTextColor(@javax.annotation.Nullable String textColor) {
     this.textColor = textColor;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -227,10 +228,7 @@ public class SupportedCredentialMetadataDisplayInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -268,7 +266,7 @@ public class SupportedCredentialMetadataDisplayInner {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -278,7 +276,7 @@ public class SupportedCredentialMetadataDisplayInner {
     // add `locale` to the URL query string
     if (getLocale() != null) {
       try {
-        joiner.add(String.format("%slocale%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocale()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slocale%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocale()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -293,7 +291,7 @@ public class SupportedCredentialMetadataDisplayInner {
     // add `backgroundColor` to the URL query string
     if (getBackgroundColor() != null) {
       try {
-        joiner.add(String.format("%sbackgroundColor%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackgroundColor()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sbackgroundColor%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackgroundColor()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -303,7 +301,7 @@ public class SupportedCredentialMetadataDisplayInner {
     // add `textColor` to the URL query string
     if (getTextColor() != null) {
       try {
-        joiner.add(String.format("%stextColor%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTextColor()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stextColor%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTextColor()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
