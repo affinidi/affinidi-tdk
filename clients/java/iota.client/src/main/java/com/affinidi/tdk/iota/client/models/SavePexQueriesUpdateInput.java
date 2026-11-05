@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SavePexQueriesUpdateInput.JSON_PROPERTY_QUERIES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SavePexQueriesUpdateInput {
   public static final String JSON_PROPERTY_QUERIES = "queries";
   @javax.annotation.Nullable
@@ -64,7 +64,7 @@ public class SavePexQueriesUpdateInput {
    * @return queries
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_QUERIES)
+  @JsonProperty(value = JSON_PROPERTY_QUERIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<SavePexQueriesUpdateInputQueriesInner> getQueries() {
@@ -72,11 +72,12 @@ public class SavePexQueriesUpdateInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_QUERIES)
+  @JsonProperty(value = JSON_PROPERTY_QUERIES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setQueries(@javax.annotation.Nullable List<SavePexQueriesUpdateInputQueriesInner> queries) {
     this.queries = queries;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class SavePexQueriesUpdateInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class SavePexQueriesUpdateInput {
     if (getQueries() != null) {
       for (int i = 0; i < getQueries().size(); i++) {
         if (getQueries().get(i) != null) {
-          joiner.add(getQueries().get(i).toUrlQueryString(String.format("%squeries%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getQueries().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%squeries%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
