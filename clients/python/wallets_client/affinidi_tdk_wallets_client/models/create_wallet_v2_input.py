@@ -61,8 +61,8 @@ class CreateWalletV2Input(BaseModel):
         if value is None:
             return value
 
-        if value not in ('secp256k1', 'ed25519', 'p256',):
-            raise ValueError("must be one of enum values ('secp256k1', 'ed25519', 'p256')")
+        if value not in ('secp256k1', 'ed25519', 'p256', 'mldsa44',):
+            raise ValueError("must be one of enum values ('secp256k1', 'ed25519', 'p256', 'mldsa44')")
         return value
 
     class Config:

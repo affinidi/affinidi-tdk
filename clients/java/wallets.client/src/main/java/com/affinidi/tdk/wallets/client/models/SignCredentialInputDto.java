@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   SignCredentialInputDto.JSON_PROPERTY_CREDENTIAL_FORMAT,
   SignCredentialInputDto.JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignCredentialInputDto {
   public static final String JSON_PROPERTY_UNSIGNED_CREDENTIAL = "unsignedCredential";
   @javax.annotation.Nullable
@@ -105,7 +105,7 @@ public class SignCredentialInputDto {
    * @return unsignedCredential
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_CREDENTIAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getUnsignedCredential() {
@@ -113,7 +113,7 @@ public class SignCredentialInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_CREDENTIAL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUnsignedCredential(@javax.annotation.Nullable Object unsignedCredential) {
     this.unsignedCredential = unsignedCredential;
@@ -130,7 +130,7 @@ public class SignCredentialInputDto {
    * @return revocable
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REVOCABLE)
+  @JsonProperty(value = JSON_PROPERTY_REVOCABLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getRevocable() {
@@ -138,7 +138,7 @@ public class SignCredentialInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REVOCABLE)
+  @JsonProperty(value = JSON_PROPERTY_REVOCABLE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRevocable(@javax.annotation.Nullable Boolean revocable) {
     this.revocable = revocable;
@@ -155,7 +155,7 @@ public class SignCredentialInputDto {
    * @return credentialFormat
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public CredentialFormatEnum getCredentialFormat() {
@@ -163,7 +163,7 @@ public class SignCredentialInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialFormat(@javax.annotation.Nullable CredentialFormatEnum credentialFormat) {
     this.credentialFormat = credentialFormat;
@@ -180,7 +180,7 @@ public class SignCredentialInputDto {
    * @return unsignedCredentialParams
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public SignCredentialInputDtoUnsignedCredentialParams getUnsignedCredentialParams() {
@@ -188,11 +188,12 @@ public class SignCredentialInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_CREDENTIAL_PARAMS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUnsignedCredentialParams(@javax.annotation.Nullable SignCredentialInputDtoUnsignedCredentialParams unsignedCredentialParams) {
     this.unsignedCredentialParams = unsignedCredentialParams;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -231,10 +232,7 @@ public class SignCredentialInputDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -272,7 +270,7 @@ public class SignCredentialInputDto {
     // add `unsignedCredential` to the URL query string
     if (getUnsignedCredential() != null) {
       try {
-        joiner.add(String.format("%sunsignedCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUnsignedCredential()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sunsignedCredential%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUnsignedCredential()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -282,7 +280,7 @@ public class SignCredentialInputDto {
     // add `revocable` to the URL query string
     if (getRevocable() != null) {
       try {
-        joiner.add(String.format("%srevocable%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocable()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srevocable%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocable()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -292,7 +290,7 @@ public class SignCredentialInputDto {
     // add `credentialFormat` to the URL query string
     if (getCredentialFormat() != null) {
       try {
-        joiner.add(String.format("%scredentialFormat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialFormat()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentialFormat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialFormat()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

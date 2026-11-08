@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   UpdatePexQueryInput.JSON_PROPERTY_VP_DEFINITION,
   UpdatePexQueryInput.JSON_PROPERTY_DESCRIPTION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdatePexQueryInput {
   public static final String JSON_PROPERTY_VP_DEFINITION = "vpDefinition";
   @javax.annotation.Nullable
@@ -57,7 +57,7 @@ public class UpdatePexQueryInput {
    * @return vpDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVpDefinition() {
@@ -65,7 +65,7 @@ public class UpdatePexQueryInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VP_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_VP_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpDefinition(@javax.annotation.Nullable String vpDefinition) {
     this.vpDefinition = vpDefinition;
@@ -82,7 +82,7 @@ public class UpdatePexQueryInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -90,11 +90,12 @@ public class UpdatePexQueryInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,10 +130,7 @@ public class UpdatePexQueryInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -170,7 +168,7 @@ public class UpdatePexQueryInput {
     // add `vpDefinition` to the URL query string
     if (getVpDefinition() != null) {
       try {
-        joiner.add(String.format("%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svpDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class UpdatePexQueryInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

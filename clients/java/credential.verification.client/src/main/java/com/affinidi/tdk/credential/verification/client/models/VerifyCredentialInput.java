@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   VerifyCredentialInput.JSON_PROPERTY_VERIFIABLE_CREDENTIALS,
   VerifyCredentialInput.JSON_PROPERTY_ISSUER_DID_DOCUMENT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class VerifyCredentialInput {
   public static final String JSON_PROPERTY_VERIFIABLE_CREDENTIALS = "verifiableCredentials";
   @javax.annotation.Nonnull
@@ -70,7 +70,7 @@ public class VerifyCredentialInput {
    * @return verifiableCredentials
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
+  @JsonProperty(value = JSON_PROPERTY_VERIFIABLE_CREDENTIALS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Object> getVerifiableCredentials() {
@@ -78,7 +78,7 @@ public class VerifyCredentialInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VERIFIABLE_CREDENTIALS)
+  @JsonProperty(value = JSON_PROPERTY_VERIFIABLE_CREDENTIALS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setVerifiableCredentials(@javax.annotation.Nonnull List<Object> verifiableCredentials) {
     this.verifiableCredentials = verifiableCredentials;
@@ -103,7 +103,7 @@ public class VerifyCredentialInput {
    * @return issuerDidDocument
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_DID_DOCUMENT, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getIssuerDidDocument() {
@@ -111,11 +111,12 @@ public class VerifyCredentialInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUER_DID_DOCUMENT)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER_DID_DOCUMENT, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuerDidDocument(@javax.annotation.Nullable Map<String, Object> issuerDidDocument) {
     this.issuerDidDocument = issuerDidDocument;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -150,10 +151,7 @@ public class VerifyCredentialInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -192,8 +190,8 @@ public class VerifyCredentialInput {
     if (getVerifiableCredentials() != null) {
       for (int i = 0; i < getVerifiableCredentials().size(); i++) {
         try {
-          joiner.add(String.format("%sverifiableCredentials%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sverifiableCredentials%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getVerifiableCredentials().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -206,8 +204,8 @@ public class VerifyCredentialInput {
     if (getIssuerDidDocument() != null) {
       for (String _key : getIssuerDidDocument().keySet()) {
         try {
-          joiner.add(String.format("%sissuerDidDocument%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sissuerDidDocument%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getIssuerDidDocument().get(_key), URLEncoder.encode(String.valueOf(getIssuerDidDocument().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
