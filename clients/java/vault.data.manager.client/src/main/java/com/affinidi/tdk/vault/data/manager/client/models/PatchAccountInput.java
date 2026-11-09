@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   PatchAccountInput.JSON_PROPERTY_OWNER_PROFILE_ID,
   PatchAccountInput.JSON_PROPERTY_OWNER_PROFILE_DID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class PatchAccountInput {
   public static final String JSON_PROPERTY_DID_PROOF = "didProof";
   @javax.annotation.Nonnull
@@ -67,7 +67,7 @@ public class PatchAccountInput {
    * @return didProof
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DID_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_DID_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDidProof() {
@@ -75,7 +75,7 @@ public class PatchAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_DID_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDidProof(@javax.annotation.Nonnull String didProof) {
     this.didProof = didProof;
@@ -92,7 +92,7 @@ public class PatchAccountInput {
    * @return encryptedDekek
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ENCRYPTED_DEKEK)
+  @JsonProperty(value = JSON_PROPERTY_ENCRYPTED_DEKEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getEncryptedDekek() {
@@ -100,7 +100,7 @@ public class PatchAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ENCRYPTED_DEKEK)
+  @JsonProperty(value = JSON_PROPERTY_ENCRYPTED_DEKEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEncryptedDekek(@javax.annotation.Nonnull String encryptedDekek) {
     this.encryptedDekek = encryptedDekek;
@@ -117,7 +117,7 @@ public class PatchAccountInput {
    * @return ownerProfileId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_OWNER_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getOwnerProfileId() {
@@ -125,7 +125,7 @@ public class PatchAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_OWNER_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setOwnerProfileId(@javax.annotation.Nonnull String ownerProfileId) {
     this.ownerProfileId = ownerProfileId;
@@ -142,7 +142,7 @@ public class PatchAccountInput {
    * @return ownerProfileDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_OWNER_PROFILE_DID)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_PROFILE_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getOwnerProfileDid() {
@@ -150,11 +150,12 @@ public class PatchAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_OWNER_PROFILE_DID)
+  @JsonProperty(value = JSON_PROPERTY_OWNER_PROFILE_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setOwnerProfileDid(@javax.annotation.Nonnull String ownerProfileDid) {
     this.ownerProfileDid = ownerProfileDid;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,10 +194,7 @@ public class PatchAccountInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -234,7 +232,7 @@ public class PatchAccountInput {
     // add `didProof` to the URL query string
     if (getDidProof() != null) {
       try {
-        joiner.add(String.format("%sdidProof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidProof()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdidProof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidProof()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -244,7 +242,7 @@ public class PatchAccountInput {
     // add `encryptedDekek` to the URL query string
     if (getEncryptedDekek() != null) {
       try {
-        joiner.add(String.format("%sencryptedDekek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEncryptedDekek()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sencryptedDekek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEncryptedDekek()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -254,7 +252,7 @@ public class PatchAccountInput {
     // add `ownerProfileId` to the URL query string
     if (getOwnerProfileId() != null) {
       try {
-        joiner.add(String.format("%sownerProfileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOwnerProfileId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sownerProfileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOwnerProfileId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -264,7 +262,7 @@ public class PatchAccountInput {
     // add `ownerProfileDid` to the URL query string
     if (getOwnerProfileDid() != null) {
       try {
-        joiner.add(String.format("%sownerProfileDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOwnerProfileDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sownerProfileDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOwnerProfileDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

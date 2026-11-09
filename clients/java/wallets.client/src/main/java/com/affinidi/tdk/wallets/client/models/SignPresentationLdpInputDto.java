@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   SignPresentationLdpInputDto.JSON_PROPERTY_CHALLENGE,
   SignPresentationLdpInputDto.JSON_PROPERTY_KEY_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SignPresentationLdpInputDto {
   public static final String JSON_PROPERTY_UNSIGNED_PRESENTATION = "unsignedPresentation";
   @javax.annotation.Nonnull
@@ -54,7 +54,9 @@ public class SignPresentationLdpInputDto {
     
     ECDSA_P256_SHA256(String.valueOf("ecdsa_p256_sha256")),
     
-    ED25519(String.valueOf("ed25519"));
+    ED25519(String.valueOf("ed25519")),
+    
+    MLDSA44(String.valueOf("mldsa44"));
 
     private String value;
 
@@ -99,7 +101,11 @@ public class SignPresentationLdpInputDto {
     
     EDDSA_RDFC_2022(String.valueOf("eddsa-rdfc-2022")),
     
-    ECDSA_SECP256K1_SIGNATURE2019(String.valueOf("EcdsaSecp256k1Signature2019"));
+    ECDSA_SECP256K1_SIGNATURE2019(String.valueOf("EcdsaSecp256k1Signature2019")),
+    
+    MLDSA44_JCS_2024(String.valueOf("mldsa44-jcs-2024")),
+    
+    MLDSA44_RDFC_2024(String.valueOf("mldsa44-rdfc-2024"));
 
     private String value;
 
@@ -158,7 +164,7 @@ public class SignPresentationLdpInputDto {
    * @return unsignedPresentation
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_PRESENTATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getUnsignedPresentation() {
@@ -166,7 +172,7 @@ public class SignPresentationLdpInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_UNSIGNED_PRESENTATION)
+  @JsonProperty(value = JSON_PROPERTY_UNSIGNED_PRESENTATION, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUnsignedPresentation(@javax.annotation.Nonnull Object unsignedPresentation) {
     this.unsignedPresentation = unsignedPresentation;
@@ -183,7 +189,7 @@ public class SignPresentationLdpInputDto {
    * @return signatureScheme
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonProperty(value = JSON_PROPERTY_SIGNATURE_SCHEME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public SignatureSchemeEnum getSignatureScheme() {
@@ -191,7 +197,7 @@ public class SignPresentationLdpInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIGNATURE_SCHEME)
+  @JsonProperty(value = JSON_PROPERTY_SIGNATURE_SCHEME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSignatureScheme(@javax.annotation.Nullable SignatureSchemeEnum signatureScheme) {
     this.signatureScheme = signatureScheme;
@@ -208,7 +214,7 @@ public class SignPresentationLdpInputDto {
    * @return signatureSuite
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIGNATURE_SUITE)
+  @JsonProperty(value = JSON_PROPERTY_SIGNATURE_SUITE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public SignatureSuiteEnum getSignatureSuite() {
@@ -216,7 +222,7 @@ public class SignPresentationLdpInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SIGNATURE_SUITE)
+  @JsonProperty(value = JSON_PROPERTY_SIGNATURE_SUITE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSignatureSuite(@javax.annotation.Nullable SignatureSuiteEnum signatureSuite) {
     this.signatureSuite = signatureSuite;
@@ -241,7 +247,7 @@ public class SignPresentationLdpInputDto {
    * @return domain
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DOMAIN)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getDomain() {
@@ -249,7 +255,7 @@ public class SignPresentationLdpInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DOMAIN)
+  @JsonProperty(value = JSON_PROPERTY_DOMAIN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDomain(@javax.annotation.Nullable List<String> domain) {
     this.domain = domain;
@@ -266,7 +272,7 @@ public class SignPresentationLdpInputDto {
    * @return challenge
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonProperty(value = JSON_PROPERTY_CHALLENGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getChallenge() {
@@ -274,7 +280,7 @@ public class SignPresentationLdpInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CHALLENGE)
+  @JsonProperty(value = JSON_PROPERTY_CHALLENGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setChallenge(@javax.annotation.Nullable String challenge) {
     this.challenge = challenge;
@@ -291,7 +297,7 @@ public class SignPresentationLdpInputDto {
    * @return keyId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getKeyId() {
@@ -299,11 +305,12 @@ public class SignPresentationLdpInputDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_KEY_ID)
+  @JsonProperty(value = JSON_PROPERTY_KEY_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setKeyId(@javax.annotation.Nullable String keyId) {
     this.keyId = keyId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -346,10 +353,7 @@ public class SignPresentationLdpInputDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -387,7 +391,7 @@ public class SignPresentationLdpInputDto {
     // add `unsignedPresentation` to the URL query string
     if (getUnsignedPresentation() != null) {
       try {
-        joiner.add(String.format("%sunsignedPresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUnsignedPresentation()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sunsignedPresentation%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUnsignedPresentation()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -397,7 +401,7 @@ public class SignPresentationLdpInputDto {
     // add `signatureScheme` to the URL query string
     if (getSignatureScheme() != null) {
       try {
-        joiner.add(String.format("%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssignatureScheme%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureScheme()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -407,7 +411,7 @@ public class SignPresentationLdpInputDto {
     // add `signatureSuite` to the URL query string
     if (getSignatureSuite() != null) {
       try {
-        joiner.add(String.format("%ssignatureSuite%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureSuite()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssignatureSuite%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSignatureSuite()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -418,8 +422,8 @@ public class SignPresentationLdpInputDto {
     if (getDomain() != null) {
       for (int i = 0; i < getDomain().size(); i++) {
         try {
-          joiner.add(String.format("%sdomain%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sdomain%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getDomain().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -431,7 +435,7 @@ public class SignPresentationLdpInputDto {
     // add `challenge` to the URL query string
     if (getChallenge() != null) {
       try {
-        joiner.add(String.format("%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%schallenge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getChallenge()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -441,7 +445,7 @@ public class SignPresentationLdpInputDto {
     // add `keyId` to the URL query string
     if (getKeyId() != null) {
       try {
-        joiner.add(String.format("%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%skeyId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getKeyId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   GroupDto.JSON_PROPERTY_GROUP_NAME,
   GroupDto.JSON_PROPERTY_CREATION_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GroupDto {
   public static final String JSON_PROPERTY_ARI = "ari";
   @javax.annotation.Nonnull
@@ -67,7 +67,7 @@ public class GroupDto {
    * @return ari
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAri() {
@@ -75,7 +75,7 @@ public class GroupDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ARI)
+  @JsonProperty(value = JSON_PROPERTY_ARI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAri(@javax.annotation.Nonnull String ari) {
     this.ari = ari;
@@ -92,7 +92,7 @@ public class GroupDto {
    * @return projectId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProjectId() {
@@ -100,7 +100,7 @@ public class GroupDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
@@ -117,7 +117,7 @@ public class GroupDto {
    * @return groupName
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+  @JsonProperty(value = JSON_PROPERTY_GROUP_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getGroupName() {
@@ -125,7 +125,7 @@ public class GroupDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GROUP_NAME)
+  @JsonProperty(value = JSON_PROPERTY_GROUP_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setGroupName(@javax.annotation.Nonnull String groupName) {
     this.groupName = groupName;
@@ -142,7 +142,7 @@ public class GroupDto {
    * @return creationDate
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreationDate() {
@@ -150,11 +150,12 @@ public class GroupDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATION_DATE)
+  @JsonProperty(value = JSON_PROPERTY_CREATION_DATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreationDate(@javax.annotation.Nonnull String creationDate) {
     this.creationDate = creationDate;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,10 +194,7 @@ public class GroupDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -234,7 +232,7 @@ public class GroupDto {
     // add `ari` to the URL query string
     if (getAri() != null) {
       try {
-        joiner.add(String.format("%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sari%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -244,7 +242,7 @@ public class GroupDto {
     // add `projectId` to the URL query string
     if (getProjectId() != null) {
       try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -254,7 +252,7 @@ public class GroupDto {
     // add `groupName` to the URL query string
     if (getGroupName() != null) {
       try {
-        joiner.add(String.format("%sgroupName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGroupName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sgroupName%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGroupName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -264,7 +262,7 @@ public class GroupDto {
     // add `creationDate` to the URL query string
     if (getCreationDate() != null) {
       try {
-        joiner.add(String.format("%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screationDate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreationDate()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
