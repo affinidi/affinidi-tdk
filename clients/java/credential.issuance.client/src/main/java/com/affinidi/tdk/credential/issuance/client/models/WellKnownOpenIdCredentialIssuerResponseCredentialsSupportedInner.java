@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner.JSON_PROPERTY_JSON_LD_CONTEXT_URL
 })
 @JsonTypeName("WellKnownOpenIdCredentialIssuerResponse_credentials_supported_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
   public static final String JSON_PROPERTY_CREDENTIAL_TYPE_ID = "credentialTypeId";
   @javax.annotation.Nonnull
@@ -63,7 +63,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
    * @return credentialTypeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_TYPE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCredentialTypeId() {
@@ -71,7 +71,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_TYPE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
@@ -88,7 +88,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
    * @return jsonSchemaUrl
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_SCHEMA_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJsonSchemaUrl() {
@@ -96,7 +96,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_SCHEMA_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
@@ -113,7 +113,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
    * @return jsonLdContextUrl
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_LD_CONTEXT_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJsonLdContextUrl() {
@@ -121,11 +121,12 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_LD_CONTEXT_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -162,10 +163,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -203,7 +201,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
     // add `credentialTypeId` to the URL query string
     if (getCredentialTypeId() != null) {
       try {
-        joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -213,7 +211,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
     // add `jsonSchemaUrl` to the URL query string
     if (getJsonSchemaUrl() != null) {
       try {
-        joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -223,7 +221,7 @@ public class WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner {
     // add `jsonLdContextUrl` to the URL query string
     if (getJsonLdContextUrl() != null) {
       try {
-        joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

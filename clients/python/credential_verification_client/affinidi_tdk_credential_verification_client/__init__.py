@@ -17,28 +17,52 @@
 
 __version__ = "1.0.0"
 
+# Define package exports
+__all__ = [
+    "DefaultApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "InvalidParameterError",
+    "NotFoundError",
+    "NotFoundErrorDetailsInner",
+    "VerifyCredentialInput",
+    "VerifyCredentialOutput",
+    "VerifyCredentialV2Input",
+    "VerifyPresentationInput",
+    "VerifyPresentationOutput",
+    "VerifyPresentationV2Input",
+    "VerifyPresentationV2InputPexQuery",
+]
+
 # import apis into sdk package
-from affinidi_tdk_credential_verification_client.api.default_api import DefaultApi
+from affinidi_tdk_credential_verification_client.api.default_api import DefaultApi as DefaultApi
 
 # import ApiClient
-from affinidi_tdk_credential_verification_client.api_response import ApiResponse
-from affinidi_tdk_credential_verification_client.api_client import ApiClient
-from affinidi_tdk_credential_verification_client.configuration import Configuration
-from affinidi_tdk_credential_verification_client.exceptions import OpenApiException
-from affinidi_tdk_credential_verification_client.exceptions import ApiTypeError
-from affinidi_tdk_credential_verification_client.exceptions import ApiValueError
-from affinidi_tdk_credential_verification_client.exceptions import ApiKeyError
-from affinidi_tdk_credential_verification_client.exceptions import ApiAttributeError
-from affinidi_tdk_credential_verification_client.exceptions import ApiException
+from affinidi_tdk_credential_verification_client.api_response import ApiResponse as ApiResponse
+from affinidi_tdk_credential_verification_client.api_client import ApiClient as ApiClient
+from affinidi_tdk_credential_verification_client.configuration import Configuration as Configuration
+from affinidi_tdk_credential_verification_client.exceptions import OpenApiException as OpenApiException
+from affinidi_tdk_credential_verification_client.exceptions import ApiTypeError as ApiTypeError
+from affinidi_tdk_credential_verification_client.exceptions import ApiValueError as ApiValueError
+from affinidi_tdk_credential_verification_client.exceptions import ApiKeyError as ApiKeyError
+from affinidi_tdk_credential_verification_client.exceptions import ApiAttributeError as ApiAttributeError
+from affinidi_tdk_credential_verification_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from affinidi_tdk_credential_verification_client.models.invalid_parameter_error import InvalidParameterError
-from affinidi_tdk_credential_verification_client.models.not_found_error import NotFoundError
-from affinidi_tdk_credential_verification_client.models.not_found_error_details_inner import NotFoundErrorDetailsInner
-from affinidi_tdk_credential_verification_client.models.verify_credential_input import VerifyCredentialInput
-from affinidi_tdk_credential_verification_client.models.verify_credential_output import VerifyCredentialOutput
-from affinidi_tdk_credential_verification_client.models.verify_credential_v2_input import VerifyCredentialV2Input
-from affinidi_tdk_credential_verification_client.models.verify_presentation_input import VerifyPresentationInput
-from affinidi_tdk_credential_verification_client.models.verify_presentation_output import VerifyPresentationOutput
-from affinidi_tdk_credential_verification_client.models.verify_presentation_v2_input import VerifyPresentationV2Input
-from affinidi_tdk_credential_verification_client.models.verify_presentation_v2_input_pex_query import VerifyPresentationV2InputPexQuery
+from affinidi_tdk_credential_verification_client.models.invalid_parameter_error import InvalidParameterError as InvalidParameterError
+from affinidi_tdk_credential_verification_client.models.not_found_error import NotFoundError as NotFoundError
+from affinidi_tdk_credential_verification_client.models.not_found_error_details_inner import NotFoundErrorDetailsInner as NotFoundErrorDetailsInner
+from affinidi_tdk_credential_verification_client.models.verify_credential_input import VerifyCredentialInput as VerifyCredentialInput
+from affinidi_tdk_credential_verification_client.models.verify_credential_output import VerifyCredentialOutput as VerifyCredentialOutput
+from affinidi_tdk_credential_verification_client.models.verify_credential_v2_input import VerifyCredentialV2Input as VerifyCredentialV2Input
+from affinidi_tdk_credential_verification_client.models.verify_presentation_input import VerifyPresentationInput as VerifyPresentationInput
+from affinidi_tdk_credential_verification_client.models.verify_presentation_output import VerifyPresentationOutput as VerifyPresentationOutput
+from affinidi_tdk_credential_verification_client.models.verify_presentation_v2_input import VerifyPresentationV2Input as VerifyPresentationV2Input
+from affinidi_tdk_credential_verification_client.models.verify_presentation_v2_input_pex_query import VerifyPresentationV2InputPexQuery as VerifyPresentationV2InputPexQuery
