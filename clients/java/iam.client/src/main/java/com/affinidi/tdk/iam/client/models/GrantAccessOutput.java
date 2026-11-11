@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   GrantAccessOutput.JSON_PROPERTY_SUCCESS,
   GrantAccessOutput.JSON_PROPERTY_GRANT_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GrantAccessOutput {
   public static final String JSON_PROPERTY_SUCCESS = "success";
   @javax.annotation.Nonnull
@@ -58,7 +58,7 @@ public class GrantAccessOutput {
    * @return success
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SUCCESS)
+  @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getSuccess() {
@@ -66,7 +66,7 @@ public class GrantAccessOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SUCCESS)
+  @JsonProperty(value = JSON_PROPERTY_SUCCESS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSuccess(@javax.annotation.Nonnull Boolean success) {
     this.success = success;
@@ -83,7 +83,7 @@ public class GrantAccessOutput {
    * @return grantId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GRANT_ID)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public UUID getGrantId() {
@@ -91,11 +91,12 @@ public class GrantAccessOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GRANT_ID)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrantId(@javax.annotation.Nullable UUID grantId) {
     this.grantId = grantId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,10 +131,7 @@ public class GrantAccessOutput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,7 +169,7 @@ public class GrantAccessOutput {
     // add `success` to the URL query string
     if (getSuccess() != null) {
       try {
-        joiner.add(String.format("%ssuccess%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSuccess()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssuccess%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSuccess()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -181,7 +179,7 @@ public class GrantAccessOutput {
     // add `grantId` to the URL query string
     if (getGrantId() != null) {
       try {
-        joiner.add(String.format("%sgrantId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGrantId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sgrantId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGrantId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

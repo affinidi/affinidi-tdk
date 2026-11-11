@@ -50,7 +50,7 @@ import java.util.StringJoiner;
   FlowData.JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE,
   FlowData.JSON_PROPERTY_STATUS_LISTS_DETAILS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class FlowData {
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
   @javax.annotation.Nonnull
@@ -126,7 +126,7 @@ public class FlowData {
    * @return createdAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedAt() {
@@ -134,7 +134,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
@@ -151,7 +151,7 @@ public class FlowData {
    * @return modifiedAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedAt() {
@@ -159,7 +159,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
@@ -176,7 +176,7 @@ public class FlowData {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
@@ -184,7 +184,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
@@ -201,7 +201,7 @@ public class FlowData {
    * @return projectId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectId() {
@@ -209,7 +209,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectId(@javax.annotation.Nullable String projectId) {
     this.projectId = projectId;
@@ -226,7 +226,7 @@ public class FlowData {
    * @return flowId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_FLOW_ID)
+  @JsonProperty(value = JSON_PROPERTY_FLOW_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getFlowId() {
@@ -234,7 +234,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FLOW_ID)
+  @JsonProperty(value = JSON_PROPERTY_FLOW_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setFlowId(@javax.annotation.Nonnull String flowId) {
     this.flowId = flowId;
@@ -251,7 +251,7 @@ public class FlowData {
    * @return credentialTypeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_TYPE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCredentialTypeId() {
@@ -259,7 +259,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_TYPE_ID)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_TYPE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredentialTypeId(@javax.annotation.Nonnull String credentialTypeId) {
     this.credentialTypeId = credentialTypeId;
@@ -276,7 +276,7 @@ public class FlowData {
    * @return jsonLdContextUrl
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_LD_CONTEXT_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJsonLdContextUrl() {
@@ -284,7 +284,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JSON_LD_CONTEXT_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_LD_CONTEXT_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonLdContextUrl(@javax.annotation.Nonnull String jsonLdContextUrl) {
     this.jsonLdContextUrl = jsonLdContextUrl;
@@ -301,7 +301,7 @@ public class FlowData {
    * @return jsonSchemaUrl
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_SCHEMA_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJsonSchemaUrl() {
@@ -309,7 +309,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JSON_SCHEMA_URL)
+  @JsonProperty(value = JSON_PROPERTY_JSON_SCHEMA_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJsonSchemaUrl(@javax.annotation.Nonnull String jsonSchemaUrl) {
     this.jsonSchemaUrl = jsonSchemaUrl;
@@ -326,7 +326,7 @@ public class FlowData {
    * @return configurationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getConfigurationId() {
@@ -334,7 +334,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConfigurationId(@javax.annotation.Nullable String configurationId) {
     this.configurationId = configurationId;
@@ -351,7 +351,7 @@ public class FlowData {
    * @return issuedAt
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUED_AT)
+  @JsonProperty(value = JSON_PROPERTY_ISSUED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIssuedAt() {
@@ -359,7 +359,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUED_AT)
+  @JsonProperty(value = JSON_PROPERTY_ISSUED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuedAt(@javax.annotation.Nullable String issuedAt) {
     this.issuedAt = issuedAt;
@@ -376,7 +376,7 @@ public class FlowData {
    * @return walletId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WALLET_ID)
+  @JsonProperty(value = JSON_PROPERTY_WALLET_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getWalletId() {
@@ -384,7 +384,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WALLET_ID)
+  @JsonProperty(value = JSON_PROPERTY_WALLET_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWalletId(@javax.annotation.Nullable String walletId) {
     this.walletId = walletId;
@@ -401,7 +401,7 @@ public class FlowData {
    * @return projectIdConfigurationId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectIdConfigurationId() {
@@ -409,7 +409,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectIdConfigurationId(@javax.annotation.Nullable String projectIdConfigurationId) {
     this.projectIdConfigurationId = projectIdConfigurationId;
@@ -426,7 +426,7 @@ public class FlowData {
    * @return projectIdConfigurationIdWalletId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectIdConfigurationIdWalletId() {
@@ -434,7 +434,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_WALLET_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectIdConfigurationIdWalletId(@javax.annotation.Nullable String projectIdConfigurationIdWalletId) {
     this.projectIdConfigurationIdWalletId = projectIdConfigurationIdWalletId;
@@ -451,7 +451,7 @@ public class FlowData {
    * @return projectIdConfigurationIdCredentialType
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProjectIdConfigurationIdCredentialType() {
@@ -459,7 +459,7 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID_CONFIGURATION_ID_CREDENTIAL_TYPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProjectIdConfigurationIdCredentialType(@javax.annotation.Nullable String projectIdConfigurationIdCredentialType) {
     this.projectIdConfigurationIdCredentialType = projectIdConfigurationIdCredentialType;
@@ -484,7 +484,7 @@ public class FlowData {
    * @return statusListsDetails
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATUS_LISTS_DETAILS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LISTS_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<FlowDataStatusListsDetailsInner> getStatusListsDetails() {
@@ -492,11 +492,12 @@ public class FlowData {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS_LISTS_DETAILS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LISTS_DETAILS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusListsDetails(@javax.annotation.Nullable List<FlowDataStatusListsDetailsInner> statusListsDetails) {
     this.statusListsDetails = statusListsDetails;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -557,10 +558,7 @@ public class FlowData {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -598,7 +596,7 @@ public class FlowData {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -608,7 +606,7 @@ public class FlowData {
     // add `modifiedAt` to the URL query string
     if (getModifiedAt() != null) {
       try {
-        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -618,7 +616,7 @@ public class FlowData {
     // add `id` to the URL query string
     if (getId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -628,7 +626,7 @@ public class FlowData {
     // add `projectId` to the URL query string
     if (getProjectId() != null) {
       try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -638,7 +636,7 @@ public class FlowData {
     // add `flowId` to the URL query string
     if (getFlowId() != null) {
       try {
-        joiner.add(String.format("%sflowId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFlowId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sflowId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFlowId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -648,7 +646,7 @@ public class FlowData {
     // add `credentialTypeId` to the URL query string
     if (getCredentialTypeId() != null) {
       try {
-        joiner.add(String.format("%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentialTypeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialTypeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -658,7 +656,7 @@ public class FlowData {
     // add `jsonLdContextUrl` to the URL query string
     if (getJsonLdContextUrl() != null) {
       try {
-        joiner.add(String.format("%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjsonLdContextUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonLdContextUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -668,7 +666,7 @@ public class FlowData {
     // add `jsonSchemaUrl` to the URL query string
     if (getJsonSchemaUrl() != null) {
       try {
-        joiner.add(String.format("%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjsonSchemaUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJsonSchemaUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -678,7 +676,7 @@ public class FlowData {
     // add `configurationId` to the URL query string
     if (getConfigurationId() != null) {
       try {
-        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -688,7 +686,7 @@ public class FlowData {
     // add `issuedAt` to the URL query string
     if (getIssuedAt() != null) {
       try {
-        joiner.add(String.format("%sissuedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -698,7 +696,7 @@ public class FlowData {
     // add `walletId` to the URL query string
     if (getWalletId() != null) {
       try {
-        joiner.add(String.format("%swalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%swalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getWalletId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -708,7 +706,7 @@ public class FlowData {
     // add `projectIdConfigurationId` to the URL query string
     if (getProjectIdConfigurationId() != null) {
       try {
-        joiner.add(String.format("%sprojectIdConfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectIdConfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -718,7 +716,7 @@ public class FlowData {
     // add `projectIdConfigurationIdWalletId` to the URL query string
     if (getProjectIdConfigurationIdWalletId() != null) {
       try {
-        joiner.add(String.format("%sprojectIdConfigurationIdWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationIdWalletId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectIdConfigurationIdWalletId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationIdWalletId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -728,7 +726,7 @@ public class FlowData {
     // add `projectIdConfigurationIdCredentialType` to the URL query string
     if (getProjectIdConfigurationIdCredentialType() != null) {
       try {
-        joiner.add(String.format("%sprojectIdConfigurationIdCredentialType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationIdCredentialType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectIdConfigurationIdCredentialType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectIdConfigurationIdCredentialType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -739,8 +737,8 @@ public class FlowData {
     if (getStatusListsDetails() != null) {
       for (int i = 0; i < getStatusListsDetails().size(); i++) {
         if (getStatusListsDetails().get(i) != null) {
-          joiner.add(getStatusListsDetails().get(i).toUrlQueryString(String.format("%sstatusListsDetails%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getStatusListsDetails().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sstatusListsDetails%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
