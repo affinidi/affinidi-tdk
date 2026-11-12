@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   ConsentDto.JSON_PROPERTY_CREATED_AT,
   ConsentDto.JSON_PROPERTY_CREATED_BY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ConsentDto {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
   @javax.annotation.Nonnull
@@ -125,7 +125,7 @@ public class ConsentDto {
    * @return projectId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProjectId() {
@@ -133,7 +133,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROJECT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProjectId(@javax.annotation.Nonnull String projectId) {
     this.projectId = projectId;
@@ -150,7 +150,7 @@ public class ConsentDto {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
@@ -158,7 +158,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
@@ -175,7 +175,7 @@ public class ConsentDto {
    * @return userId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUserId() {
@@ -183,7 +183,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonProperty(value = JSON_PROPERTY_USER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUserId(@javax.annotation.Nonnull String userId) {
     this.userId = userId;
@@ -200,7 +200,7 @@ public class ConsentDto {
    * @return vcType
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_VC_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_VC_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getVcType() {
@@ -208,7 +208,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VC_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_VC_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setVcType(@javax.annotation.Nonnull String vcType) {
     this.vcType = vcType;
@@ -225,7 +225,7 @@ public class ConsentDto {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public StatusEnum getStatus() {
@@ -233,7 +233,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
@@ -250,7 +250,7 @@ public class ConsentDto {
    * @return modifiedAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedAt() {
@@ -258,7 +258,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
@@ -275,7 +275,7 @@ public class ConsentDto {
    * @return modifiedBy
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedBy() {
@@ -283,7 +283,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     this.modifiedBy = modifiedBy;
@@ -300,7 +300,7 @@ public class ConsentDto {
    * @return createdAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedAt() {
@@ -308,7 +308,7 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
@@ -325,7 +325,7 @@ public class ConsentDto {
    * @return createdBy
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedBy() {
@@ -333,11 +333,12 @@ public class ConsentDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedBy(@javax.annotation.Nonnull String createdBy) {
     this.createdBy = createdBy;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -386,10 +387,7 @@ public class ConsentDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -427,7 +425,7 @@ public class ConsentDto {
     // add `projectId` to the URL query string
     if (getProjectId() != null) {
       try {
-        joiner.add(String.format("%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprojectId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProjectId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -437,7 +435,7 @@ public class ConsentDto {
     // add `id` to the URL query string
     if (getId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -447,7 +445,7 @@ public class ConsentDto {
     // add `userId` to the URL query string
     if (getUserId() != null) {
       try {
-        joiner.add(String.format("%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%suserId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -457,7 +455,7 @@ public class ConsentDto {
     // add `vcType` to the URL query string
     if (getVcType() != null) {
       try {
-        joiner.add(String.format("%svcType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVcType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svcType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVcType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -467,7 +465,7 @@ public class ConsentDto {
     // add `status` to the URL query string
     if (getStatus() != null) {
       try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -477,7 +475,7 @@ public class ConsentDto {
     // add `modifiedAt` to the URL query string
     if (getModifiedAt() != null) {
       try {
-        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -487,7 +485,7 @@ public class ConsentDto {
     // add `modifiedBy` to the URL query string
     if (getModifiedBy() != null) {
       try {
-        joiner.add(String.format("%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -497,7 +495,7 @@ public class ConsentDto {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -507,7 +505,7 @@ public class ConsentDto {
     // add `createdBy` to the URL query string
     if (getCreatedBy() != null) {
       try {
-        joiner.add(String.format("%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

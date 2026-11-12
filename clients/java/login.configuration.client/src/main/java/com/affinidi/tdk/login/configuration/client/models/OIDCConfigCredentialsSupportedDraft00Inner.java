@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   OIDCConfigCredentialsSupportedDraft00Inner.JSON_PROPERTY_TYPES
 })
 @JsonTypeName("OIDCConfig_credentials_supported_draft_00_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class OIDCConfigCredentialsSupportedDraft00Inner {
   public static final String JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED = "cryptographic_binding_methods_supported";
   @javax.annotation.Nullable
@@ -79,7 +79,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return cryptographicBindingMethodsSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getCryptographicBindingMethodsSupported() {
@@ -87,7 +87,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CRYPTOGRAPHIC_BINDING_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCryptographicBindingMethodsSupported(@javax.annotation.Nullable List<String> cryptographicBindingMethodsSupported) {
     this.cryptographicBindingMethodsSupported = cryptographicBindingMethodsSupported;
@@ -112,7 +112,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return cryptographicSuitesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getCryptographicSuitesSupported() {
@@ -120,7 +120,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CRYPTOGRAPHIC_SUITES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCryptographicSuitesSupported(@javax.annotation.Nullable List<String> cryptographicSuitesSupported) {
     this.cryptographicSuitesSupported = cryptographicSuitesSupported;
@@ -137,7 +137,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return format
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getFormat() {
@@ -145,7 +145,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FORMAT)
+  @JsonProperty(value = JSON_PROPERTY_FORMAT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFormat(@javax.annotation.Nullable String format) {
     this.format = format;
@@ -170,7 +170,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * @return types
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TYPES)
+  @JsonProperty(value = JSON_PROPERTY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getTypes() {
@@ -178,11 +178,12 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPES)
+  @JsonProperty(value = JSON_PROPERTY_TYPES, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTypes(@javax.annotation.Nullable List<String> types) {
     this.types = types;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -221,10 +222,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -263,8 +261,8 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
     if (getCryptographicBindingMethodsSupported() != null) {
       for (int i = 0; i < getCryptographicBindingMethodsSupported().size(); i++) {
         try {
-          joiner.add(String.format("%scryptographic_binding_methods_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scryptographic_binding_methods_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getCryptographicBindingMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -277,8 +275,8 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
     if (getCryptographicSuitesSupported() != null) {
       for (int i = 0; i < getCryptographicSuitesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%scryptographic_suites_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scryptographic_suites_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getCryptographicSuitesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -290,7 +288,7 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
     // add `format` to the URL query string
     if (getFormat() != null) {
       try {
-        joiner.add(String.format("%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sformat%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFormat()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -301,8 +299,8 @@ public class OIDCConfigCredentialsSupportedDraft00Inner {
     if (getTypes() != null) {
       for (int i = 0; i < getTypes().size(); i++) {
         try {
-          joiner.add(String.format("%stypes%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%stypes%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getTypes().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
