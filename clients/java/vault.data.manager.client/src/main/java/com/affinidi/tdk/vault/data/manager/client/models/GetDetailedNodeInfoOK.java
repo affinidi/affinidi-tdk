@@ -57,7 +57,7 @@ import java.util.StringJoiner;
   GetDetailedNodeInfoOK.JSON_PROPERTY_METADATA,
   GetDetailedNodeInfoOK.JSON_PROPERTY_GET_URL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GetDetailedNodeInfoOK {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
   @javax.annotation.Nonnull
@@ -161,7 +161,7 @@ public class GetDetailedNodeInfoOK {
    * @return nodeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNodeId() {
@@ -169,7 +169,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
@@ -186,7 +186,7 @@ public class GetDetailedNodeInfoOK {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public NodeStatus getStatus() {
@@ -194,7 +194,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull NodeStatus status) {
     this.status = status;
@@ -211,7 +211,7 @@ public class GetDetailedNodeInfoOK {
    * @return fileCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getFileCount() {
@@ -219,7 +219,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFileCount(@javax.annotation.Nullable BigDecimal fileCount) {
     this.fileCount = fileCount;
@@ -236,7 +236,7 @@ public class GetDetailedNodeInfoOK {
    * @return profileCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROFILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getProfileCount() {
@@ -244,7 +244,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProfileCount(@javax.annotation.Nullable BigDecimal profileCount) {
     this.profileCount = profileCount;
@@ -261,7 +261,7 @@ public class GetDetailedNodeInfoOK {
    * @return folderCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FOLDER_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FOLDER_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getFolderCount() {
@@ -269,7 +269,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FOLDER_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FOLDER_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFolderCount(@javax.annotation.Nullable BigDecimal folderCount) {
     this.folderCount = folderCount;
@@ -286,7 +286,7 @@ public class GetDetailedNodeInfoOK {
    * @return vcCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VC_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_VC_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getVcCount() {
@@ -294,7 +294,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VC_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_VC_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVcCount(@javax.annotation.Nullable BigDecimal vcCount) {
     this.vcCount = vcCount;
@@ -311,7 +311,7 @@ public class GetDetailedNodeInfoOK {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -319,7 +319,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -336,7 +336,7 @@ public class GetDetailedNodeInfoOK {
    * @return consumerId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONSUMER_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getConsumerId() {
@@ -344,7 +344,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONSUMER_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConsumerId(@javax.annotation.Nonnull String consumerId) {
     this.consumerId = consumerId;
@@ -361,7 +361,7 @@ public class GetDetailedNodeInfoOK {
    * @return parentNodeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PARENT_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PARENT_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getParentNodeId() {
@@ -369,7 +369,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PARENT_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PARENT_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setParentNodeId(@javax.annotation.Nonnull String parentNodeId) {
     this.parentNodeId = parentNodeId;
@@ -386,7 +386,7 @@ public class GetDetailedNodeInfoOK {
    * @return profileId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getProfileId() {
@@ -394,7 +394,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_ID)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProfileId(@javax.annotation.Nonnull String profileId) {
     this.profileId = profileId;
@@ -411,7 +411,7 @@ public class GetDetailedNodeInfoOK {
    * @return createdAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedAt() {
@@ -419,7 +419,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
@@ -436,7 +436,7 @@ public class GetDetailedNodeInfoOK {
    * @return modifiedAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedAt() {
@@ -444,7 +444,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
@@ -461,7 +461,7 @@ public class GetDetailedNodeInfoOK {
    * @return createdBy
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedBy() {
@@ -469,7 +469,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedBy(@javax.annotation.Nonnull String createdBy) {
     this.createdBy = createdBy;
@@ -486,7 +486,7 @@ public class GetDetailedNodeInfoOK {
    * @return modifiedBy
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedBy() {
@@ -494,7 +494,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     this.modifiedBy = modifiedBy;
@@ -511,7 +511,7 @@ public class GetDetailedNodeInfoOK {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -519,7 +519,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -536,7 +536,7 @@ public class GetDetailedNodeInfoOK {
    * @return type
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public NodeType getType() {
@@ -544,7 +544,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull NodeType type) {
     this.type = type;
@@ -561,7 +561,7 @@ public class GetDetailedNodeInfoOK {
    * @return link
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLink() {
@@ -569,7 +569,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LINK)
+  @JsonProperty(value = JSON_PROPERTY_LINK, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
@@ -586,7 +586,7 @@ public class GetDetailedNodeInfoOK {
    * @return schema
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCHEMA)
+  @JsonProperty(value = JSON_PROPERTY_SCHEMA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSchema() {
@@ -594,7 +594,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCHEMA)
+  @JsonProperty(value = JSON_PROPERTY_SCHEMA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSchema(@javax.annotation.Nullable String schema) {
     this.schema = schema;
@@ -611,7 +611,7 @@ public class GetDetailedNodeInfoOK {
    * @return consumedFileStorage
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CONSUMED_FILE_STORAGE)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMED_FILE_STORAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getConsumedFileStorage() {
@@ -619,7 +619,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONSUMED_FILE_STORAGE)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMED_FILE_STORAGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setConsumedFileStorage(@javax.annotation.Nullable BigDecimal consumedFileStorage) {
     this.consumedFileStorage = consumedFileStorage;
@@ -636,7 +636,7 @@ public class GetDetailedNodeInfoOK {
    * @return edekInfo
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_EDEK_INFO)
+  @JsonProperty(value = JSON_PROPERTY_EDEK_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public EdekInfo getEdekInfo() {
@@ -644,7 +644,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EDEK_INFO)
+  @JsonProperty(value = JSON_PROPERTY_EDEK_INFO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEdekInfo(@javax.annotation.Nullable EdekInfo edekInfo) {
     this.edekInfo = edekInfo;
@@ -661,7 +661,7 @@ public class GetDetailedNodeInfoOK {
    * @return metadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMetadata() {
@@ -669,7 +669,7 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMetadata(@javax.annotation.Nullable String metadata) {
     this.metadata = metadata;
@@ -686,7 +686,7 @@ public class GetDetailedNodeInfoOK {
    * @return getUrl
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GET_URL)
+  @JsonProperty(value = JSON_PROPERTY_GET_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getGetUrl() {
@@ -694,11 +694,12 @@ public class GetDetailedNodeInfoOK {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GET_URL)
+  @JsonProperty(value = JSON_PROPERTY_GET_URL, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGetUrl(@javax.annotation.Nullable String getUrl) {
     this.getUrl = getUrl;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -773,10 +774,7 @@ public class GetDetailedNodeInfoOK {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -814,7 +812,7 @@ public class GetDetailedNodeInfoOK {
     // add `nodeId` to the URL query string
     if (getNodeId() != null) {
       try {
-        joiner.add(String.format("%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -824,7 +822,7 @@ public class GetDetailedNodeInfoOK {
     // add `status` to the URL query string
     if (getStatus() != null) {
       try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -834,7 +832,7 @@ public class GetDetailedNodeInfoOK {
     // add `fileCount` to the URL query string
     if (getFileCount() != null) {
       try {
-        joiner.add(String.format("%sfileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFileCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFileCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -844,7 +842,7 @@ public class GetDetailedNodeInfoOK {
     // add `profileCount` to the URL query string
     if (getProfileCount() != null) {
       try {
-        joiner.add(String.format("%sprofileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -854,7 +852,7 @@ public class GetDetailedNodeInfoOK {
     // add `folderCount` to the URL query string
     if (getFolderCount() != null) {
       try {
-        joiner.add(String.format("%sfolderCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFolderCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfolderCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFolderCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -864,7 +862,7 @@ public class GetDetailedNodeInfoOK {
     // add `vcCount` to the URL query string
     if (getVcCount() != null) {
       try {
-        joiner.add(String.format("%svcCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVcCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svcCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVcCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -874,7 +872,7 @@ public class GetDetailedNodeInfoOK {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -884,7 +882,7 @@ public class GetDetailedNodeInfoOK {
     // add `consumerId` to the URL query string
     if (getConsumerId() != null) {
       try {
-        joiner.add(String.format("%sconsumerId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumerId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconsumerId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumerId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -894,7 +892,7 @@ public class GetDetailedNodeInfoOK {
     // add `parentNodeId` to the URL query string
     if (getParentNodeId() != null) {
       try {
-        joiner.add(String.format("%sparentNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getParentNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sparentNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getParentNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -904,7 +902,7 @@ public class GetDetailedNodeInfoOK {
     // add `profileId` to the URL query string
     if (getProfileId() != null) {
       try {
-        joiner.add(String.format("%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -914,7 +912,7 @@ public class GetDetailedNodeInfoOK {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -924,7 +922,7 @@ public class GetDetailedNodeInfoOK {
     // add `modifiedAt` to the URL query string
     if (getModifiedAt() != null) {
       try {
-        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -934,7 +932,7 @@ public class GetDetailedNodeInfoOK {
     // add `createdBy` to the URL query string
     if (getCreatedBy() != null) {
       try {
-        joiner.add(String.format("%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -944,7 +942,7 @@ public class GetDetailedNodeInfoOK {
     // add `modifiedBy` to the URL query string
     if (getModifiedBy() != null) {
       try {
-        joiner.add(String.format("%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -954,7 +952,7 @@ public class GetDetailedNodeInfoOK {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -964,7 +962,7 @@ public class GetDetailedNodeInfoOK {
     // add `type` to the URL query string
     if (getType() != null) {
       try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -974,7 +972,7 @@ public class GetDetailedNodeInfoOK {
     // add `link` to the URL query string
     if (getLink() != null) {
       try {
-        joiner.add(String.format("%slink%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLink()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slink%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLink()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -984,7 +982,7 @@ public class GetDetailedNodeInfoOK {
     // add `schema` to the URL query string
     if (getSchema() != null) {
       try {
-        joiner.add(String.format("%sschema%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSchema()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sschema%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSchema()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -994,7 +992,7 @@ public class GetDetailedNodeInfoOK {
     // add `consumedFileStorage` to the URL query string
     if (getConsumedFileStorage() != null) {
       try {
-        joiner.add(String.format("%sconsumedFileStorage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumedFileStorage()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconsumedFileStorage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumedFileStorage()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1009,7 +1007,7 @@ public class GetDetailedNodeInfoOK {
     // add `metadata` to the URL query string
     if (getMetadata() != null) {
       try {
-        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1019,7 +1017,7 @@ public class GetDetailedNodeInfoOK {
     // add `getUrl` to the URL query string
     if (getGetUrl() != null) {
       try {
-        joiner.add(String.format("%sgetUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGetUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sgetUrl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getGetUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

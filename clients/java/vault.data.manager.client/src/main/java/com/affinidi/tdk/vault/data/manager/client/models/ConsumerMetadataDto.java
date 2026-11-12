@@ -48,7 +48,7 @@ import java.util.StringJoiner;
   ConsumerMetadataDto.JSON_PROPERTY_TYPE,
   ConsumerMetadataDto.JSON_PROPERTY_CONSUMED_FILE_STORAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ConsumerMetadataDto {
   public static final String JSON_PROPERTY_NODE_ID = "nodeId";
   @javax.annotation.Nonnull
@@ -120,7 +120,7 @@ public class ConsumerMetadataDto {
    * @return nodeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNodeId() {
@@ -128,7 +128,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNodeId(@javax.annotation.Nonnull String nodeId) {
     this.nodeId = nodeId;
@@ -145,7 +145,7 @@ public class ConsumerMetadataDto {
    * @return status
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public NodeStatus getStatus() {
@@ -153,7 +153,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS)
+  @JsonProperty(value = JSON_PROPERTY_STATUS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatus(@javax.annotation.Nonnull NodeStatus status) {
     this.status = status;
@@ -170,7 +170,7 @@ public class ConsumerMetadataDto {
    * @return fileCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getFileCount() {
@@ -178,7 +178,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFileCount(@javax.annotation.Nullable BigDecimal fileCount) {
     this.fileCount = fileCount;
@@ -195,7 +195,7 @@ public class ConsumerMetadataDto {
    * @return folderCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FOLDER_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FOLDER_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getFolderCount() {
@@ -203,7 +203,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FOLDER_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_FOLDER_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFolderCount(@javax.annotation.Nullable BigDecimal folderCount) {
     this.folderCount = folderCount;
@@ -220,7 +220,7 @@ public class ConsumerMetadataDto {
    * @return profileCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROFILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getProfileCount() {
@@ -228,7 +228,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProfileCount(@javax.annotation.Nullable BigDecimal profileCount) {
     this.profileCount = profileCount;
@@ -245,7 +245,7 @@ public class ConsumerMetadataDto {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -253,7 +253,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -270,7 +270,7 @@ public class ConsumerMetadataDto {
    * @return consumerId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONSUMER_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getConsumerId() {
@@ -278,7 +278,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONSUMER_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMER_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConsumerId(@javax.annotation.Nonnull String consumerId) {
     this.consumerId = consumerId;
@@ -295,7 +295,7 @@ public class ConsumerMetadataDto {
    * @return createdAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedAt() {
@@ -303,7 +303,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedAt(@javax.annotation.Nonnull String createdAt) {
     this.createdAt = createdAt;
@@ -320,7 +320,7 @@ public class ConsumerMetadataDto {
    * @return modifiedAt
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedAt() {
@@ -328,7 +328,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_AT)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_AT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedAt(@javax.annotation.Nonnull String modifiedAt) {
     this.modifiedAt = modifiedAt;
@@ -345,7 +345,7 @@ public class ConsumerMetadataDto {
    * @return createdBy
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCreatedBy() {
@@ -353,7 +353,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREATED_BY)
+  @JsonProperty(value = JSON_PROPERTY_CREATED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCreatedBy(@javax.annotation.Nonnull String createdBy) {
     this.createdBy = createdBy;
@@ -370,7 +370,7 @@ public class ConsumerMetadataDto {
    * @return modifiedBy
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getModifiedBy() {
@@ -378,7 +378,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODIFIED_BY)
+  @JsonProperty(value = JSON_PROPERTY_MODIFIED_BY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setModifiedBy(@javax.annotation.Nonnull String modifiedBy) {
     this.modifiedBy = modifiedBy;
@@ -395,7 +395,7 @@ public class ConsumerMetadataDto {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -403,7 +403,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -420,7 +420,7 @@ public class ConsumerMetadataDto {
    * @return type
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public NodeType getType() {
@@ -428,7 +428,7 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(@javax.annotation.Nonnull NodeType type) {
     this.type = type;
@@ -445,7 +445,7 @@ public class ConsumerMetadataDto {
    * @return consumedFileStorage
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONSUMED_FILE_STORAGE)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMED_FILE_STORAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getConsumedFileStorage() {
@@ -453,11 +453,12 @@ public class ConsumerMetadataDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONSUMED_FILE_STORAGE)
+  @JsonProperty(value = JSON_PROPERTY_CONSUMED_FILE_STORAGE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConsumedFileStorage(@javax.annotation.Nonnull BigDecimal consumedFileStorage) {
     this.consumedFileStorage = consumedFileStorage;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -516,10 +517,7 @@ public class ConsumerMetadataDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -557,7 +555,7 @@ public class ConsumerMetadataDto {
     // add `nodeId` to the URL query string
     if (getNodeId() != null) {
       try {
-        joiner.add(String.format("%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -567,7 +565,7 @@ public class ConsumerMetadataDto {
     // add `status` to the URL query string
     if (getStatus() != null) {
       try {
-        joiner.add(String.format("%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatus%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatus()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -577,7 +575,7 @@ public class ConsumerMetadataDto {
     // add `fileCount` to the URL query string
     if (getFileCount() != null) {
       try {
-        joiner.add(String.format("%sfileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFileCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFileCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -587,7 +585,7 @@ public class ConsumerMetadataDto {
     // add `folderCount` to the URL query string
     if (getFolderCount() != null) {
       try {
-        joiner.add(String.format("%sfolderCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFolderCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfolderCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFolderCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -597,7 +595,7 @@ public class ConsumerMetadataDto {
     // add `profileCount` to the URL query string
     if (getProfileCount() != null) {
       try {
-        joiner.add(String.format("%sprofileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -607,7 +605,7 @@ public class ConsumerMetadataDto {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -617,7 +615,7 @@ public class ConsumerMetadataDto {
     // add `consumerId` to the URL query string
     if (getConsumerId() != null) {
       try {
-        joiner.add(String.format("%sconsumerId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumerId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconsumerId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumerId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -627,7 +625,7 @@ public class ConsumerMetadataDto {
     // add `createdAt` to the URL query string
     if (getCreatedAt() != null) {
       try {
-        joiner.add(String.format("%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -637,7 +635,7 @@ public class ConsumerMetadataDto {
     // add `modifiedAt` to the URL query string
     if (getModifiedAt() != null) {
       try {
-        joiner.add(String.format("%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -647,7 +645,7 @@ public class ConsumerMetadataDto {
     // add `createdBy` to the URL query string
     if (getCreatedBy() != null) {
       try {
-        joiner.add(String.format("%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%screatedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCreatedBy()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -657,7 +655,7 @@ public class ConsumerMetadataDto {
     // add `modifiedBy` to the URL query string
     if (getModifiedBy() != null) {
       try {
-        joiner.add(String.format("%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smodifiedBy%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getModifiedBy()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -667,7 +665,7 @@ public class ConsumerMetadataDto {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -677,7 +675,7 @@ public class ConsumerMetadataDto {
     // add `type` to the URL query string
     if (getType() != null) {
       try {
-        joiner.add(String.format("%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stype%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -687,7 +685,7 @@ public class ConsumerMetadataDto {
     // add `consumedFileStorage` to the URL query string
     if (getConsumedFileStorage() != null) {
       try {
-        joiner.add(String.format("%sconsumedFileStorage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumedFileStorage()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconsumedFileStorage%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConsumedFileStorage()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
