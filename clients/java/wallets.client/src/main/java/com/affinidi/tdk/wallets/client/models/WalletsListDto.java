@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   WalletsListDto.JSON_PROPERTY_WALLETS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WalletsListDto {
   public static final String JSON_PROPERTY_WALLETS = "wallets";
   @javax.annotation.Nullable
@@ -64,7 +64,7 @@ public class WalletsListDto {
    * @return wallets
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_WALLETS)
+  @JsonProperty(value = JSON_PROPERTY_WALLETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<WalletDto> getWallets() {
@@ -72,11 +72,12 @@ public class WalletsListDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_WALLETS)
+  @JsonProperty(value = JSON_PROPERTY_WALLETS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setWallets(@javax.annotation.Nullable List<WalletDto> wallets) {
     this.wallets = wallets;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class WalletsListDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class WalletsListDto {
     if (getWallets() != null) {
       for (int i = 0; i < getWallets().size(); i++) {
         if (getWallets().get(i) != null) {
-          joiner.add(getWallets().get(i).toUrlQueryString(String.format("%swallets%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getWallets().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%swallets%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

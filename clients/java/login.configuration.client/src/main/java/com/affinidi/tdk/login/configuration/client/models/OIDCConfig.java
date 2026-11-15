@@ -66,7 +66,7 @@ import java.util.StringJoiner;
   OIDCConfig.JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG,
   OIDCConfig.JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class OIDCConfig {
   public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
   @javax.annotation.Nonnull
@@ -206,7 +206,7 @@ public class OIDCConfig {
    * @return authorizationEndpoint
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_AUTHORIZATION_ENDPOINT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAuthorizationEndpoint() {
@@ -214,7 +214,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_AUTHORIZATION_ENDPOINT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAuthorizationEndpoint(@javax.annotation.Nonnull String authorizationEndpoint) {
     this.authorizationEndpoint = authorizationEndpoint;
@@ -231,7 +231,7 @@ public class OIDCConfig {
    * @return backchannelLogoutSessionSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getBackchannelLogoutSessionSupported() {
@@ -239,7 +239,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_BACKCHANNEL_LOGOUT_SESSION_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBackchannelLogoutSessionSupported(@javax.annotation.Nullable Boolean backchannelLogoutSessionSupported) {
     this.backchannelLogoutSessionSupported = backchannelLogoutSessionSupported;
@@ -256,7 +256,7 @@ public class OIDCConfig {
    * @return backchannelLogoutSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getBackchannelLogoutSupported() {
@@ -264,7 +264,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_BACKCHANNEL_LOGOUT_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBackchannelLogoutSupported(@javax.annotation.Nullable Boolean backchannelLogoutSupported) {
     this.backchannelLogoutSupported = backchannelLogoutSupported;
@@ -281,7 +281,7 @@ public class OIDCConfig {
    * @return claimsParameterSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getClaimsParameterSupported() {
@@ -289,7 +289,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CLAIMS_PARAMETER_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClaimsParameterSupported(@javax.annotation.Nullable Boolean claimsParameterSupported) {
     this.claimsParameterSupported = claimsParameterSupported;
@@ -314,7 +314,7 @@ public class OIDCConfig {
    * @return claimsSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLAIMS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CLAIMS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getClaimsSupported() {
@@ -322,7 +322,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLAIMS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CLAIMS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClaimsSupported(@javax.annotation.Nullable List<String> claimsSupported) {
     this.claimsSupported = claimsSupported;
@@ -347,7 +347,7 @@ public class OIDCConfig {
    * @return codeChallengeMethodsSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getCodeChallengeMethodsSupported() {
@@ -355,7 +355,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CODE_CHALLENGE_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCodeChallengeMethodsSupported(@javax.annotation.Nullable List<String> codeChallengeMethodsSupported) {
     this.codeChallengeMethodsSupported = codeChallengeMethodsSupported;
@@ -372,7 +372,7 @@ public class OIDCConfig {
    * @return credentialsEndpointDraft00
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCredentialsEndpointDraft00() {
@@ -380,7 +380,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_ENDPOINT_DRAFT00, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialsEndpointDraft00(@javax.annotation.Nullable String credentialsEndpointDraft00) {
     this.credentialsEndpointDraft00 = credentialsEndpointDraft00;
@@ -405,7 +405,7 @@ public class OIDCConfig {
    * @return credentialsSupportedDraft00
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<OIDCConfigCredentialsSupportedDraft00Inner> getCredentialsSupportedDraft00() {
@@ -413,7 +413,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_SUPPORTED_DRAFT00, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialsSupportedDraft00(@javax.annotation.Nullable List<OIDCConfigCredentialsSupportedDraft00Inner> credentialsSupportedDraft00) {
     this.credentialsSupportedDraft00 = credentialsSupportedDraft00;
@@ -430,7 +430,7 @@ public class OIDCConfig {
    * @return endSessionEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_END_SESSION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_END_SESSION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEndSessionEndpoint() {
@@ -438,7 +438,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_END_SESSION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_END_SESSION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEndSessionEndpoint(@javax.annotation.Nullable String endSessionEndpoint) {
     this.endSessionEndpoint = endSessionEndpoint;
@@ -455,7 +455,7 @@ public class OIDCConfig {
    * @return frontchannelLogoutSessionSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getFrontchannelLogoutSessionSupported() {
@@ -463,7 +463,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SESSION_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFrontchannelLogoutSessionSupported(@javax.annotation.Nullable Boolean frontchannelLogoutSessionSupported) {
     this.frontchannelLogoutSessionSupported = frontchannelLogoutSessionSupported;
@@ -480,7 +480,7 @@ public class OIDCConfig {
    * @return frontchannelLogoutSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getFrontchannelLogoutSupported() {
@@ -488,7 +488,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_FRONTCHANNEL_LOGOUT_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFrontchannelLogoutSupported(@javax.annotation.Nullable Boolean frontchannelLogoutSupported) {
     this.frontchannelLogoutSupported = frontchannelLogoutSupported;
@@ -513,7 +513,7 @@ public class OIDCConfig {
    * @return grantTypesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_TYPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getGrantTypesSupported() {
@@ -521,7 +521,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_TYPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrantTypesSupported(@javax.annotation.Nullable List<String> grantTypesSupported) {
     this.grantTypesSupported = grantTypesSupported;
@@ -546,7 +546,7 @@ public class OIDCConfig {
    * @return idTokenSignedResponseAlg
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getIdTokenSignedResponseAlg() {
@@ -554,7 +554,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_SIGNED_RESPONSE_ALG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIdTokenSignedResponseAlg(@javax.annotation.Nonnull List<String> idTokenSignedResponseAlg) {
     this.idTokenSignedResponseAlg = idTokenSignedResponseAlg;
@@ -579,7 +579,7 @@ public class OIDCConfig {
    * @return idTokenSigningAlgValuesSupported
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getIdTokenSigningAlgValuesSupported() {
@@ -587,7 +587,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_ID_TOKEN_SIGNING_ALG_VALUES_SUPPORTED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIdTokenSigningAlgValuesSupported(@javax.annotation.Nonnull List<String> idTokenSigningAlgValuesSupported) {
     this.idTokenSigningAlgValuesSupported = idTokenSigningAlgValuesSupported;
@@ -604,7 +604,7 @@ public class OIDCConfig {
    * @return issuer
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getIssuer() {
@@ -612,7 +612,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssuer(@javax.annotation.Nonnull String issuer) {
     this.issuer = issuer;
@@ -629,7 +629,7 @@ public class OIDCConfig {
    * @return jwksUri
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJwksUri() {
@@ -637,7 +637,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJwksUri(@javax.annotation.Nonnull String jwksUri) {
     this.jwksUri = jwksUri;
@@ -654,7 +654,7 @@ public class OIDCConfig {
    * @return registrationEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REGISTRATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_REGISTRATION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRegistrationEndpoint() {
@@ -662,7 +662,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REGISTRATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_REGISTRATION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegistrationEndpoint(@javax.annotation.Nullable String registrationEndpoint) {
     this.registrationEndpoint = registrationEndpoint;
@@ -687,7 +687,7 @@ public class OIDCConfig {
    * @return requestObjectSigningAlgValuesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getRequestObjectSigningAlgValuesSupported() {
@@ -695,7 +695,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_OBJECT_SIGNING_ALG_VALUES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRequestObjectSigningAlgValuesSupported(@javax.annotation.Nullable List<String> requestObjectSigningAlgValuesSupported) {
     this.requestObjectSigningAlgValuesSupported = requestObjectSigningAlgValuesSupported;
@@ -712,7 +712,7 @@ public class OIDCConfig {
    * @return requestParameterSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getRequestParameterSupported() {
@@ -720,7 +720,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_PARAMETER_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRequestParameterSupported(@javax.annotation.Nullable Boolean requestParameterSupported) {
     this.requestParameterSupported = requestParameterSupported;
@@ -737,7 +737,7 @@ public class OIDCConfig {
    * @return requestUriParameterSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getRequestUriParameterSupported() {
@@ -745,7 +745,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_REQUEST_URI_PARAMETER_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRequestUriParameterSupported(@javax.annotation.Nullable Boolean requestUriParameterSupported) {
     this.requestUriParameterSupported = requestUriParameterSupported;
@@ -762,7 +762,7 @@ public class OIDCConfig {
    * @return requireRequestUriRegistration
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION)
+  @JsonProperty(value = JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getRequireRequestUriRegistration() {
@@ -770,7 +770,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION)
+  @JsonProperty(value = JSON_PROPERTY_REQUIRE_REQUEST_URI_REGISTRATION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRequireRequestUriRegistration(@javax.annotation.Nullable Boolean requireRequestUriRegistration) {
     this.requireRequestUriRegistration = requireRequestUriRegistration;
@@ -795,7 +795,7 @@ public class OIDCConfig {
    * @return responseModesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESPONSE_MODES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_MODES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getResponseModesSupported() {
@@ -803,7 +803,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESPONSE_MODES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_MODES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResponseModesSupported(@javax.annotation.Nullable List<String> responseModesSupported) {
     this.responseModesSupported = responseModesSupported;
@@ -828,7 +828,7 @@ public class OIDCConfig {
    * @return responseTypesSupported
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getResponseTypesSupported() {
@@ -836,7 +836,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_TYPES_SUPPORTED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResponseTypesSupported(@javax.annotation.Nonnull List<String> responseTypesSupported) {
     this.responseTypesSupported = responseTypesSupported;
@@ -853,7 +853,7 @@ public class OIDCConfig {
    * @return revocationEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_REVOCATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_REVOCATION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRevocationEndpoint() {
@@ -861,7 +861,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REVOCATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_REVOCATION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRevocationEndpoint(@javax.annotation.Nullable String revocationEndpoint) {
     this.revocationEndpoint = revocationEndpoint;
@@ -886,7 +886,7 @@ public class OIDCConfig {
    * @return scopesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_SCOPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getScopesSupported() {
@@ -894,7 +894,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_SCOPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScopesSupported(@javax.annotation.Nullable List<String> scopesSupported) {
     this.scopesSupported = scopesSupported;
@@ -919,7 +919,7 @@ public class OIDCConfig {
    * @return subjectTypesSupported
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getSubjectTypesSupported() {
@@ -927,7 +927,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_SUBJECT_TYPES_SUPPORTED, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSubjectTypesSupported(@javax.annotation.Nonnull List<String> subjectTypesSupported) {
     this.subjectTypesSupported = subjectTypesSupported;
@@ -944,7 +944,7 @@ public class OIDCConfig {
    * @return tokenEndpoint
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTokenEndpoint() {
@@ -952,7 +952,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTokenEndpoint(@javax.annotation.Nonnull String tokenEndpoint) {
     this.tokenEndpoint = tokenEndpoint;
@@ -977,7 +977,7 @@ public class OIDCConfig {
    * @return tokenEndpointAuthMethodsSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getTokenEndpointAuthMethodsSupported() {
@@ -985,7 +985,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenEndpointAuthMethodsSupported(@javax.annotation.Nullable List<String> tokenEndpointAuthMethodsSupported) {
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
@@ -1002,7 +1002,7 @@ public class OIDCConfig {
    * @return userinfoEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERINFO_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_USERINFO_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserinfoEndpoint() {
@@ -1010,7 +1010,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USERINFO_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_USERINFO_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUserinfoEndpoint(@javax.annotation.Nullable String userinfoEndpoint) {
     this.userinfoEndpoint = userinfoEndpoint;
@@ -1035,7 +1035,7 @@ public class OIDCConfig {
    * @return userinfoSignedResponseAlg
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG)
+  @JsonProperty(value = JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getUserinfoSignedResponseAlg() {
@@ -1043,7 +1043,7 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG)
+  @JsonProperty(value = JSON_PROPERTY_USERINFO_SIGNED_RESPONSE_ALG, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUserinfoSignedResponseAlg(@javax.annotation.Nonnull List<String> userinfoSignedResponseAlg) {
     this.userinfoSignedResponseAlg = userinfoSignedResponseAlg;
@@ -1068,7 +1068,7 @@ public class OIDCConfig {
    * @return userinfoSigningAlgValuesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getUserinfoSigningAlgValuesSupported() {
@@ -1076,11 +1076,12 @@ public class OIDCConfig {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_USERINFO_SIGNING_ALG_VALUES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUserinfoSigningAlgValuesSupported(@javax.annotation.Nullable List<String> userinfoSigningAlgValuesSupported) {
     this.userinfoSigningAlgValuesSupported = userinfoSigningAlgValuesSupported;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -1173,10 +1174,7 @@ public class OIDCConfig {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -1214,7 +1212,7 @@ public class OIDCConfig {
     // add `authorization_endpoint` to the URL query string
     if (getAuthorizationEndpoint() != null) {
       try {
-        joiner.add(String.format("%sauthorization_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthorizationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sauthorization_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthorizationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1224,7 +1222,7 @@ public class OIDCConfig {
     // add `backchannel_logout_session_supported` to the URL query string
     if (getBackchannelLogoutSessionSupported() != null) {
       try {
-        joiner.add(String.format("%sbackchannel_logout_session_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackchannelLogoutSessionSupported()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sbackchannel_logout_session_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackchannelLogoutSessionSupported()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1234,7 +1232,7 @@ public class OIDCConfig {
     // add `backchannel_logout_supported` to the URL query string
     if (getBackchannelLogoutSupported() != null) {
       try {
-        joiner.add(String.format("%sbackchannel_logout_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sbackchannel_logout_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBackchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1244,7 +1242,7 @@ public class OIDCConfig {
     // add `claims_parameter_supported` to the URL query string
     if (getClaimsParameterSupported() != null) {
       try {
-        joiner.add(String.format("%sclaims_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimsParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclaims_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClaimsParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1255,8 +1253,8 @@ public class OIDCConfig {
     if (getClaimsSupported() != null) {
       for (int i = 0; i < getClaimsSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sclaims_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sclaims_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getClaimsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1269,8 +1267,8 @@ public class OIDCConfig {
     if (getCodeChallengeMethodsSupported() != null) {
       for (int i = 0; i < getCodeChallengeMethodsSupported().size(); i++) {
         try {
-          joiner.add(String.format("%scode_challenge_methods_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scode_challenge_methods_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getCodeChallengeMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1282,7 +1280,7 @@ public class OIDCConfig {
     // add `credentials_endpoint_draft_00` to the URL query string
     if (getCredentialsEndpointDraft00() != null) {
       try {
-        joiner.add(String.format("%scredentials_endpoint_draft_00%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialsEndpointDraft00()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredentials_endpoint_draft_00%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialsEndpointDraft00()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1293,8 +1291,8 @@ public class OIDCConfig {
     if (getCredentialsSupportedDraft00() != null) {
       for (int i = 0; i < getCredentialsSupportedDraft00().size(); i++) {
         if (getCredentialsSupportedDraft00().get(i) != null) {
-          joiner.add(getCredentialsSupportedDraft00().get(i).toUrlQueryString(String.format("%scredentials_supported_draft_00%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getCredentialsSupportedDraft00().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%scredentials_supported_draft_00%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -1302,7 +1300,7 @@ public class OIDCConfig {
     // add `end_session_endpoint` to the URL query string
     if (getEndSessionEndpoint() != null) {
       try {
-        joiner.add(String.format("%send_session_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEndSessionEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%send_session_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getEndSessionEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1312,7 +1310,7 @@ public class OIDCConfig {
     // add `frontchannel_logout_session_supported` to the URL query string
     if (getFrontchannelLogoutSessionSupported() != null) {
       try {
-        joiner.add(String.format("%sfrontchannel_logout_session_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrontchannelLogoutSessionSupported()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfrontchannel_logout_session_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrontchannelLogoutSessionSupported()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1322,7 +1320,7 @@ public class OIDCConfig {
     // add `frontchannel_logout_supported` to the URL query string
     if (getFrontchannelLogoutSupported() != null) {
       try {
-        joiner.add(String.format("%sfrontchannel_logout_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrontchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sfrontchannel_logout_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getFrontchannelLogoutSupported()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1333,8 +1331,8 @@ public class OIDCConfig {
     if (getGrantTypesSupported() != null) {
       for (int i = 0; i < getGrantTypesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sgrant_types_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sgrant_types_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getGrantTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1347,8 +1345,8 @@ public class OIDCConfig {
     if (getIdTokenSignedResponseAlg() != null) {
       for (int i = 0; i < getIdTokenSignedResponseAlg().size(); i++) {
         try {
-          joiner.add(String.format("%sid_token_signed_response_alg%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sid_token_signed_response_alg%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getIdTokenSignedResponseAlg().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1361,8 +1359,8 @@ public class OIDCConfig {
     if (getIdTokenSigningAlgValuesSupported() != null) {
       for (int i = 0; i < getIdTokenSigningAlgValuesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sid_token_signing_alg_values_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sid_token_signing_alg_values_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getIdTokenSigningAlgValuesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1374,7 +1372,7 @@ public class OIDCConfig {
     // add `issuer` to the URL query string
     if (getIssuer() != null) {
       try {
-        joiner.add(String.format("%sissuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1384,7 +1382,7 @@ public class OIDCConfig {
     // add `jwks_uri` to the URL query string
     if (getJwksUri() != null) {
       try {
-        joiner.add(String.format("%sjwks_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjwks_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1394,7 +1392,7 @@ public class OIDCConfig {
     // add `registration_endpoint` to the URL query string
     if (getRegistrationEndpoint() != null) {
       try {
-        joiner.add(String.format("%sregistration_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRegistrationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sregistration_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRegistrationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1405,8 +1403,8 @@ public class OIDCConfig {
     if (getRequestObjectSigningAlgValuesSupported() != null) {
       for (int i = 0; i < getRequestObjectSigningAlgValuesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%srequest_object_signing_alg_values_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%srequest_object_signing_alg_values_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getRequestObjectSigningAlgValuesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1418,7 +1416,7 @@ public class OIDCConfig {
     // add `request_parameter_supported` to the URL query string
     if (getRequestParameterSupported() != null) {
       try {
-        joiner.add(String.format("%srequest_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequestParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srequest_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequestParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1428,7 +1426,7 @@ public class OIDCConfig {
     // add `request_uri_parameter_supported` to the URL query string
     if (getRequestUriParameterSupported() != null) {
       try {
-        joiner.add(String.format("%srequest_uri_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequestUriParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srequest_uri_parameter_supported%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequestUriParameterSupported()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1438,7 +1436,7 @@ public class OIDCConfig {
     // add `require_request_uri_registration` to the URL query string
     if (getRequireRequestUriRegistration() != null) {
       try {
-        joiner.add(String.format("%srequire_request_uri_registration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequireRequestUriRegistration()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srequire_request_uri_registration%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRequireRequestUriRegistration()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1449,8 +1447,8 @@ public class OIDCConfig {
     if (getResponseModesSupported() != null) {
       for (int i = 0; i < getResponseModesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sresponse_modes_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sresponse_modes_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getResponseModesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1463,8 +1461,8 @@ public class OIDCConfig {
     if (getResponseTypesSupported() != null) {
       for (int i = 0; i < getResponseTypesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sresponse_types_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sresponse_types_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getResponseTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1476,7 +1474,7 @@ public class OIDCConfig {
     // add `revocation_endpoint` to the URL query string
     if (getRevocationEndpoint() != null) {
       try {
-        joiner.add(String.format("%srevocation_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%srevocation_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRevocationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1487,8 +1485,8 @@ public class OIDCConfig {
     if (getScopesSupported() != null) {
       for (int i = 0; i < getScopesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sscopes_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sscopes_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getScopesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1501,8 +1499,8 @@ public class OIDCConfig {
     if (getSubjectTypesSupported() != null) {
       for (int i = 0; i < getSubjectTypesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%ssubject_types_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%ssubject_types_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getSubjectTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1514,7 +1512,7 @@ public class OIDCConfig {
     // add `token_endpoint` to the URL query string
     if (getTokenEndpoint() != null) {
       try {
-        joiner.add(String.format("%stoken_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stoken_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1525,8 +1523,8 @@ public class OIDCConfig {
     if (getTokenEndpointAuthMethodsSupported() != null) {
       for (int i = 0; i < getTokenEndpointAuthMethodsSupported().size(); i++) {
         try {
-          joiner.add(String.format("%stoken_endpoint_auth_methods_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%stoken_endpoint_auth_methods_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1538,7 +1536,7 @@ public class OIDCConfig {
     // add `userinfo_endpoint` to the URL query string
     if (getUserinfoEndpoint() != null) {
       try {
-        joiner.add(String.format("%suserinfo_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserinfoEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%suserinfo_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserinfoEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -1549,8 +1547,8 @@ public class OIDCConfig {
     if (getUserinfoSignedResponseAlg() != null) {
       for (int i = 0; i < getUserinfoSignedResponseAlg().size(); i++) {
         try {
-          joiner.add(String.format("%suserinfo_signed_response_alg%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%suserinfo_signed_response_alg%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getUserinfoSignedResponseAlg().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -1563,8 +1561,8 @@ public class OIDCConfig {
     if (getUserinfoSigningAlgValuesSupported() != null) {
       for (int i = 0; i < getUserinfoSigningAlgValuesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%suserinfo_signing_alg_values_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%suserinfo_signing_alg_values_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getUserinfoSigningAlgValuesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

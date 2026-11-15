@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponseDisplay.JSON_PROPERTY_LOGO
 })
 @JsonTypeName("WellKnownOpenIdCredentialIssuerResponse_display")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WellKnownOpenIdCredentialIssuerResponseDisplay {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -64,7 +64,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -72,7 +72,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -89,7 +89,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
    * @return locale
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonProperty(value = JSON_PROPERTY_LOCALE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLocale() {
@@ -97,7 +97,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOCALE)
+  @JsonProperty(value = JSON_PROPERTY_LOCALE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLocale(@javax.annotation.Nullable String locale) {
     this.locale = locale;
@@ -114,7 +114,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
    * @return logo
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LOGO)
+  @JsonProperty(value = JSON_PROPERTY_LOGO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public WellKnownOpenIdCredentialIssuerResponseDisplayLogo getLogo() {
@@ -122,11 +122,12 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LOGO)
+  @JsonProperty(value = JSON_PROPERTY_LOGO, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLogo(@javax.annotation.Nullable WellKnownOpenIdCredentialIssuerResponseDisplayLogo logo) {
     this.logo = logo;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -163,10 +164,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -204,7 +202,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -214,7 +212,7 @@ public class WellKnownOpenIdCredentialIssuerResponseDisplay {
     // add `locale` to the URL query string
     if (getLocale() != null) {
       try {
-        joiner.add(String.format("%slocale%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocale()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slocale%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLocale()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
