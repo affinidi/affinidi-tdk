@@ -17,36 +17,68 @@
 
 __version__ = "1.0.0"
 
+# Define package exports
+__all__ = [
+    "AuthzApi",
+    "ConsumerAuthApi",
+    "WellKnownApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "ConsumerAuthTokenEndpointInput",
+    "ConsumerAuthTokenEndpointOutput",
+    "GetAccessOutput",
+    "GrantAccessInput",
+    "GrantAccessOutput",
+    "InvalidDIDError",
+    "InvalidJwtTokenError",
+    "InvalidJwtTokenErrorDetailsInner",
+    "JsonWebKeyDto",
+    "JsonWebKeySetDto",
+    "Permission",
+    "RightsEnum",
+    "UnauthorizedError",
+    "UnexpectedError",
+    "UpdateAccessInput",
+    "UpdateAccessOutput",
+]
+
 # import apis into sdk package
-from affinidi_tdk_consumer_iam_client.api.authz_api import AuthzApi
-from affinidi_tdk_consumer_iam_client.api.consumer_auth_api import ConsumerAuthApi
-from affinidi_tdk_consumer_iam_client.api.well_known_api import WellKnownApi
+from affinidi_tdk_consumer_iam_client.api.authz_api import AuthzApi as AuthzApi
+from affinidi_tdk_consumer_iam_client.api.consumer_auth_api import ConsumerAuthApi as ConsumerAuthApi
+from affinidi_tdk_consumer_iam_client.api.well_known_api import WellKnownApi as WellKnownApi
 
 # import ApiClient
-from affinidi_tdk_consumer_iam_client.api_response import ApiResponse
-from affinidi_tdk_consumer_iam_client.api_client import ApiClient
-from affinidi_tdk_consumer_iam_client.configuration import Configuration
-from affinidi_tdk_consumer_iam_client.exceptions import OpenApiException
-from affinidi_tdk_consumer_iam_client.exceptions import ApiTypeError
-from affinidi_tdk_consumer_iam_client.exceptions import ApiValueError
-from affinidi_tdk_consumer_iam_client.exceptions import ApiKeyError
-from affinidi_tdk_consumer_iam_client.exceptions import ApiAttributeError
-from affinidi_tdk_consumer_iam_client.exceptions import ApiException
+from affinidi_tdk_consumer_iam_client.api_response import ApiResponse as ApiResponse
+from affinidi_tdk_consumer_iam_client.api_client import ApiClient as ApiClient
+from affinidi_tdk_consumer_iam_client.configuration import Configuration as Configuration
+from affinidi_tdk_consumer_iam_client.exceptions import OpenApiException as OpenApiException
+from affinidi_tdk_consumer_iam_client.exceptions import ApiTypeError as ApiTypeError
+from affinidi_tdk_consumer_iam_client.exceptions import ApiValueError as ApiValueError
+from affinidi_tdk_consumer_iam_client.exceptions import ApiKeyError as ApiKeyError
+from affinidi_tdk_consumer_iam_client.exceptions import ApiAttributeError as ApiAttributeError
+from affinidi_tdk_consumer_iam_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from affinidi_tdk_consumer_iam_client.models.consumer_auth_token_endpoint_input import ConsumerAuthTokenEndpointInput
-from affinidi_tdk_consumer_iam_client.models.consumer_auth_token_endpoint_output import ConsumerAuthTokenEndpointOutput
-from affinidi_tdk_consumer_iam_client.models.get_access_output import GetAccessOutput
-from affinidi_tdk_consumer_iam_client.models.grant_access_input import GrantAccessInput
-from affinidi_tdk_consumer_iam_client.models.grant_access_output import GrantAccessOutput
-from affinidi_tdk_consumer_iam_client.models.invalid_did_error import InvalidDIDError
-from affinidi_tdk_consumer_iam_client.models.invalid_jwt_token_error import InvalidJwtTokenError
-from affinidi_tdk_consumer_iam_client.models.invalid_jwt_token_error_details_inner import InvalidJwtTokenErrorDetailsInner
-from affinidi_tdk_consumer_iam_client.models.json_web_key_dto import JsonWebKeyDto
-from affinidi_tdk_consumer_iam_client.models.json_web_key_set_dto import JsonWebKeySetDto
-from affinidi_tdk_consumer_iam_client.models.permission import Permission
-from affinidi_tdk_consumer_iam_client.models.rights_enum import RightsEnum
-from affinidi_tdk_consumer_iam_client.models.unauthorized_error import UnauthorizedError
-from affinidi_tdk_consumer_iam_client.models.unexpected_error import UnexpectedError
-from affinidi_tdk_consumer_iam_client.models.update_access_input import UpdateAccessInput
-from affinidi_tdk_consumer_iam_client.models.update_access_output import UpdateAccessOutput
+from affinidi_tdk_consumer_iam_client.models.consumer_auth_token_endpoint_input import ConsumerAuthTokenEndpointInput as ConsumerAuthTokenEndpointInput
+from affinidi_tdk_consumer_iam_client.models.consumer_auth_token_endpoint_output import ConsumerAuthTokenEndpointOutput as ConsumerAuthTokenEndpointOutput
+from affinidi_tdk_consumer_iam_client.models.get_access_output import GetAccessOutput as GetAccessOutput
+from affinidi_tdk_consumer_iam_client.models.grant_access_input import GrantAccessInput as GrantAccessInput
+from affinidi_tdk_consumer_iam_client.models.grant_access_output import GrantAccessOutput as GrantAccessOutput
+from affinidi_tdk_consumer_iam_client.models.invalid_did_error import InvalidDIDError as InvalidDIDError
+from affinidi_tdk_consumer_iam_client.models.invalid_jwt_token_error import InvalidJwtTokenError as InvalidJwtTokenError
+from affinidi_tdk_consumer_iam_client.models.invalid_jwt_token_error_details_inner import InvalidJwtTokenErrorDetailsInner as InvalidJwtTokenErrorDetailsInner
+from affinidi_tdk_consumer_iam_client.models.json_web_key_dto import JsonWebKeyDto as JsonWebKeyDto
+from affinidi_tdk_consumer_iam_client.models.json_web_key_set_dto import JsonWebKeySetDto as JsonWebKeySetDto
+from affinidi_tdk_consumer_iam_client.models.permission import Permission as Permission
+from affinidi_tdk_consumer_iam_client.models.rights_enum import RightsEnum as RightsEnum
+from affinidi_tdk_consumer_iam_client.models.unauthorized_error import UnauthorizedError as UnauthorizedError
+from affinidi_tdk_consumer_iam_client.models.unexpected_error import UnexpectedError as UnexpectedError
+from affinidi_tdk_consumer_iam_client.models.update_access_input import UpdateAccessInput as UpdateAccessInput
+from affinidi_tdk_consumer_iam_client.models.update_access_output import UpdateAccessOutput as UpdateAccessOutput

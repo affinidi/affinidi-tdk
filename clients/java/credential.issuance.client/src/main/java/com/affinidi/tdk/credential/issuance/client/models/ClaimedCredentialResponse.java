@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   ClaimedCredentialResponse.JSON_PROPERTY_CREDENTIAL,
   ClaimedCredentialResponse.JSON_PROPERTY_CREDENTIALS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ClaimedCredentialResponse {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
   @javax.annotation.Nullable
@@ -72,7 +72,7 @@ public class ClaimedCredentialResponse {
    */
   @Deprecated
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getCredential() {
@@ -80,7 +80,7 @@ public class ClaimedCredentialResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = false)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredential(@javax.annotation.Nullable Map<String, Object> credential) {
     this.credential = credential;
@@ -105,7 +105,7 @@ public class ClaimedCredentialResponse {
    * @return credentials
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getCredentials() {
@@ -113,11 +113,12 @@ public class ClaimedCredentialResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentials(@javax.annotation.Nullable List<Map<String, Object>> credentials) {
     this.credentials = credentials;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -152,10 +153,7 @@ public class ClaimedCredentialResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -194,8 +192,8 @@ public class ClaimedCredentialResponse {
     if (getCredential() != null) {
       for (String _key : getCredential().keySet()) {
         try {
-          joiner.add(String.format("%scredential%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, _key, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scredential%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, _key, containerSuffix),
               getCredential().get(_key), URLEncoder.encode(String.valueOf(getCredential().get(_key)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -208,8 +206,8 @@ public class ClaimedCredentialResponse {
     if (getCredentials() != null) {
       for (int i = 0; i < getCredentials().size(); i++) {
         try {
-          joiner.add(String.format("%scredentials%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scredentials%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getCredentials().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported

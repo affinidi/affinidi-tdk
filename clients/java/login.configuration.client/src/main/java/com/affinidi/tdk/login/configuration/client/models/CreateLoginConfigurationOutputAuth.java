@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   CreateLoginConfigurationOutputAuth.JSON_PROPERTY_ISSUER
 })
 @JsonTypeName("CreateLoginConfigurationOutput_auth")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateLoginConfigurationOutputAuth {
   public static final String JSON_PROPERTY_CLIENT_ID = "clientId";
   @javax.annotation.Nonnull
@@ -68,7 +68,7 @@ public class CreateLoginConfigurationOutputAuth {
    * @return clientId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getClientId() {
@@ -76,7 +76,7 @@ public class CreateLoginConfigurationOutputAuth {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_ID)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setClientId(@javax.annotation.Nonnull String clientId) {
     this.clientId = clientId;
@@ -93,7 +93,7 @@ public class CreateLoginConfigurationOutputAuth {
    * @return clientSecret
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_SECRET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getClientSecret() {
@@ -101,7 +101,7 @@ public class CreateLoginConfigurationOutputAuth {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CLIENT_SECRET)
+  @JsonProperty(value = JSON_PROPERTY_CLIENT_SECRET, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setClientSecret(@javax.annotation.Nullable String clientSecret) {
     this.clientSecret = clientSecret;
@@ -118,7 +118,7 @@ public class CreateLoginConfigurationOutputAuth {
    * @return scope
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getScope() {
@@ -126,7 +126,7 @@ public class CreateLoginConfigurationOutputAuth {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScope(@javax.annotation.Nullable String scope) {
     this.scope = scope;
@@ -143,7 +143,7 @@ public class CreateLoginConfigurationOutputAuth {
    * @return issuer
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getIssuer() {
@@ -151,11 +151,12 @@ public class CreateLoginConfigurationOutputAuth {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_ISSUER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setIssuer(@javax.annotation.Nullable String issuer) {
     this.issuer = issuer;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -194,10 +195,7 @@ public class CreateLoginConfigurationOutputAuth {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -235,7 +233,7 @@ public class CreateLoginConfigurationOutputAuth {
     // add `clientId` to the URL query string
     if (getClientId() != null) {
       try {
-        joiner.add(String.format("%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclientId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -245,7 +243,7 @@ public class CreateLoginConfigurationOutputAuth {
     // add `clientSecret` to the URL query string
     if (getClientSecret() != null) {
       try {
-        joiner.add(String.format("%sclientSecret%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientSecret()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sclientSecret%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getClientSecret()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -255,7 +253,7 @@ public class CreateLoginConfigurationOutputAuth {
     // add `scope` to the URL query string
     if (getScope() != null) {
       try {
-        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -265,7 +263,7 @@ public class CreateLoginConfigurationOutputAuth {
     // add `issuer` to the URL query string
     if (getIssuer() != null) {
       try {
-        joiner.add(String.format("%sissuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sissuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIssuer()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

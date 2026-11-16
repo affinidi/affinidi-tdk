@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   UpdateAccountInput.JSON_PROPERTY_METADATA,
   UpdateAccountInput.JSON_PROPERTY_ACCOUNT_DID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdateAccountInput {
   public static final String JSON_PROPERTY_NAME = "name";
   @javax.annotation.Nullable
@@ -77,7 +77,7 @@ public class UpdateAccountInput {
    * @return name
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getName() {
@@ -85,7 +85,7 @@ public class UpdateAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setName(@javax.annotation.Nullable String name) {
     this.name = name;
@@ -102,7 +102,7 @@ public class UpdateAccountInput {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -110,7 +110,7 @@ public class UpdateAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -127,7 +127,7 @@ public class UpdateAccountInput {
    * @return alias
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonProperty(value = JSON_PROPERTY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAlias() {
@@ -135,7 +135,7 @@ public class UpdateAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALIAS)
+  @JsonProperty(value = JSON_PROPERTY_ALIAS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAlias(@javax.annotation.Nullable String alias) {
     this.alias = alias;
@@ -152,7 +152,7 @@ public class UpdateAccountInput {
    * @return didProof
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DID_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_DID_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDidProof() {
@@ -160,7 +160,7 @@ public class UpdateAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_DID_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDidProof(@javax.annotation.Nonnull String didProof) {
     this.didProof = didProof;
@@ -177,7 +177,7 @@ public class UpdateAccountInput {
    * @return metadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getMetadata() {
@@ -185,7 +185,7 @@ public class UpdateAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMetadata(@javax.annotation.Nullable Object metadata) {
     this.metadata = metadata;
@@ -202,7 +202,7 @@ public class UpdateAccountInput {
    * @return accountDid
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAccountDid() {
@@ -210,11 +210,12 @@ public class UpdateAccountInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_DID)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountDid(@javax.annotation.Nonnull String accountDid) {
     this.accountDid = accountDid;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -257,10 +258,7 @@ public class UpdateAccountInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -298,7 +296,7 @@ public class UpdateAccountInput {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -308,7 +306,7 @@ public class UpdateAccountInput {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -318,7 +316,7 @@ public class UpdateAccountInput {
     // add `alias` to the URL query string
     if (getAlias() != null) {
       try {
-        joiner.add(String.format("%salias%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlias()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%salias%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAlias()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -328,7 +326,7 @@ public class UpdateAccountInput {
     // add `didProof` to the URL query string
     if (getDidProof() != null) {
       try {
-        joiner.add(String.format("%sdidProof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidProof()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdidProof%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDidProof()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -338,7 +336,7 @@ public class UpdateAccountInput {
     // add `metadata` to the URL query string
     if (getMetadata() != null) {
       try {
-        joiner.add(String.format("%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -348,7 +346,7 @@ public class UpdateAccountInput {
     // add `accountDid` to the URL query string
     if (getAccountDid() != null) {
       try {
-        joiner.add(String.format("%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode.JSON_PROPERTY_TX_CODE
 })
 @JsonTypeName("CredentialOfferResponse_grants_urn_ietf_params_oauth_grant_type_pre_authorized_code")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCode {
   public static final String JSON_PROPERTY_PRE_AUTHORIZED_CODE = "pre-authorized_code";
   @javax.annotation.Nonnull
@@ -59,7 +59,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
    * @return preAuthorizedCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRE_AUTHORIZED_CODE)
+  @JsonProperty(value = JSON_PROPERTY_PRE_AUTHORIZED_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPreAuthorizedCode() {
@@ -67,7 +67,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRE_AUTHORIZED_CODE)
+  @JsonProperty(value = JSON_PROPERTY_PRE_AUTHORIZED_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPreAuthorizedCode(@javax.annotation.Nonnull String preAuthorizedCode) {
     this.preAuthorizedCode = preAuthorizedCode;
@@ -84,7 +84,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
    * @return txCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TX_CODE)
+  @JsonProperty(value = JSON_PROPERTY_TX_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode getTxCode() {
@@ -92,11 +92,12 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TX_CODE)
+  @JsonProperty(value = JSON_PROPERTY_TX_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTxCode(@javax.annotation.Nullable CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthorizedCodeTxCode txCode) {
     this.txCode = txCode;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -131,10 +132,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -172,7 +170,7 @@ public class CredentialOfferResponseGrantsUrnIetfParamsOauthGrantTypePreAuthoriz
     // add `pre-authorized_code` to the URL query string
     if (getPreAuthorizedCode() != null) {
       try {
-        joiner.add(String.format("%spre-authorized_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPreAuthorizedCode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spre-authorized_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPreAuthorizedCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

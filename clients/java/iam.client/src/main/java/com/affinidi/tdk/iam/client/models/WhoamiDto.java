@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   WhoamiDto.JSON_PROPERTY_PRINCIPAL_ID,
   WhoamiDto.JSON_PROPERTY_PRINCIPAL_TYPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WhoamiDto {
   public static final String JSON_PROPERTY_PRINCIPAL_ID = "principalId";
   @javax.annotation.Nonnull
@@ -57,7 +57,7 @@ public class WhoamiDto {
    * @return principalId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+  @JsonProperty(value = JSON_PROPERTY_PRINCIPAL_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPrincipalId() {
@@ -65,7 +65,7 @@ public class WhoamiDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_ID)
+  @JsonProperty(value = JSON_PROPERTY_PRINCIPAL_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPrincipalId(@javax.annotation.Nonnull String principalId) {
     this.principalId = principalId;
@@ -82,7 +82,7 @@ public class WhoamiDto {
    * @return principalType
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PRINCIPAL_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getPrincipalType() {
@@ -90,11 +90,12 @@ public class WhoamiDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRINCIPAL_TYPE)
+  @JsonProperty(value = JSON_PROPERTY_PRINCIPAL_TYPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setPrincipalType(@javax.annotation.Nonnull String principalType) {
     this.principalType = principalType;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,10 +130,7 @@ public class WhoamiDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -170,7 +168,7 @@ public class WhoamiDto {
     // add `principalId` to the URL query string
     if (getPrincipalId() != null) {
       try {
-        joiner.add(String.format("%sprincipalId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprincipalId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class WhoamiDto {
     // add `principalType` to the URL query string
     if (getPrincipalType() != null) {
       try {
-        joiner.add(String.format("%sprincipalType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalType()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprincipalType%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPrincipalType()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
