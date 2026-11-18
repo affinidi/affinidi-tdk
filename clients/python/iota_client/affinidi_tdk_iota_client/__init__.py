@@ -17,62 +17,120 @@
 
 __version__ = "1.0.0"
 
+# Define package exports
+__all__ = [
+    "CallbackApi",
+    "ConfigurationsApi",
+    "DcqlQueryApi",
+    "DefaultApi",
+    "IotaApi",
+    "PexQueryApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "AlreadyExistsError",
+    "AwsExchangeCredentials",
+    "AwsExchangeCredentialsOK",
+    "AwsExchangeCredentialsOKCredentials",
+    "AwsExchangeCredentialsProjectToken",
+    "CallbackInput",
+    "CallbackResponseOK",
+    "ConsentDto",
+    "CreateDcqlQueryInput",
+    "CreateIotaConfigurationInput",
+    "CreatePexQueryInput",
+    "DcqlQueryDto",
+    "DeletePexQueriesInput",
+    "FetchIOTAVPResponseInput",
+    "FetchIOTAVPResponseOK",
+    "GetIotaConfigurationMetaDataOK",
+    "InitiateDataSharingRequestInput",
+    "InitiateDataSharingRequestOK",
+    "InitiateDataSharingRequestOKData",
+    "InvalidParameterError",
+    "InvalidParameterErrorDetailsInner",
+    "IotaConfigurationDto",
+    "IotaConfigurationDtoClientMetadata",
+    "IotaExchangeCredentials",
+    "IotaExchangeCredentialsOK",
+    "IotaExchangeCredentialsOKCredentials",
+    "ListConfigurationOK",
+    "ListDcqlQueriesOK",
+    "ListLoggedConsentsOK",
+    "ListPexQueriesOK",
+    "NotFoundError",
+    "OperationForbiddenError",
+    "PexQueryDto",
+    "ResourceLimitExceededError",
+    "SavePexQueriesUpdateInput",
+    "SavePexQueriesUpdateInputQueriesInner",
+    "UpdateConfigurationByIdInput",
+    "UpdateDcqlQueryInput",
+    "UpdatePexQueryInput",
+]
+
 # import apis into sdk package
-from affinidi_tdk_iota_client.api.callback_api import CallbackApi
-from affinidi_tdk_iota_client.api.configurations_api import ConfigurationsApi
-from affinidi_tdk_iota_client.api.dcql_query_api import DcqlQueryApi
-from affinidi_tdk_iota_client.api.default_api import DefaultApi
-from affinidi_tdk_iota_client.api.iota_api import IotaApi
-from affinidi_tdk_iota_client.api.pex_query_api import PexQueryApi
+from affinidi_tdk_iota_client.api.callback_api import CallbackApi as CallbackApi
+from affinidi_tdk_iota_client.api.configurations_api import ConfigurationsApi as ConfigurationsApi
+from affinidi_tdk_iota_client.api.dcql_query_api import DcqlQueryApi as DcqlQueryApi
+from affinidi_tdk_iota_client.api.default_api import DefaultApi as DefaultApi
+from affinidi_tdk_iota_client.api.iota_api import IotaApi as IotaApi
+from affinidi_tdk_iota_client.api.pex_query_api import PexQueryApi as PexQueryApi
 
 # import ApiClient
-from affinidi_tdk_iota_client.api_response import ApiResponse
-from affinidi_tdk_iota_client.api_client import ApiClient
-from affinidi_tdk_iota_client.configuration import Configuration
-from affinidi_tdk_iota_client.exceptions import OpenApiException
-from affinidi_tdk_iota_client.exceptions import ApiTypeError
-from affinidi_tdk_iota_client.exceptions import ApiValueError
-from affinidi_tdk_iota_client.exceptions import ApiKeyError
-from affinidi_tdk_iota_client.exceptions import ApiAttributeError
-from affinidi_tdk_iota_client.exceptions import ApiException
+from affinidi_tdk_iota_client.api_response import ApiResponse as ApiResponse
+from affinidi_tdk_iota_client.api_client import ApiClient as ApiClient
+from affinidi_tdk_iota_client.configuration import Configuration as Configuration
+from affinidi_tdk_iota_client.exceptions import OpenApiException as OpenApiException
+from affinidi_tdk_iota_client.exceptions import ApiTypeError as ApiTypeError
+from affinidi_tdk_iota_client.exceptions import ApiValueError as ApiValueError
+from affinidi_tdk_iota_client.exceptions import ApiKeyError as ApiKeyError
+from affinidi_tdk_iota_client.exceptions import ApiAttributeError as ApiAttributeError
+from affinidi_tdk_iota_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from affinidi_tdk_iota_client.models.already_exists_error import AlreadyExistsError
-from affinidi_tdk_iota_client.models.aws_exchange_credentials import AwsExchangeCredentials
-from affinidi_tdk_iota_client.models.aws_exchange_credentials_ok import AwsExchangeCredentialsOK
-from affinidi_tdk_iota_client.models.aws_exchange_credentials_ok_credentials import AwsExchangeCredentialsOKCredentials
-from affinidi_tdk_iota_client.models.aws_exchange_credentials_project_token import AwsExchangeCredentialsProjectToken
-from affinidi_tdk_iota_client.models.callback_input import CallbackInput
-from affinidi_tdk_iota_client.models.callback_response_ok import CallbackResponseOK
-from affinidi_tdk_iota_client.models.consent_dto import ConsentDto
-from affinidi_tdk_iota_client.models.create_dcql_query_input import CreateDcqlQueryInput
-from affinidi_tdk_iota_client.models.create_iota_configuration_input import CreateIotaConfigurationInput
-from affinidi_tdk_iota_client.models.create_pex_query_input import CreatePexQueryInput
-from affinidi_tdk_iota_client.models.dcql_query_dto import DcqlQueryDto
-from affinidi_tdk_iota_client.models.delete_pex_queries_input import DeletePexQueriesInput
-from affinidi_tdk_iota_client.models.fetch_iotavp_response_input import FetchIOTAVPResponseInput
-from affinidi_tdk_iota_client.models.fetch_iotavp_response_ok import FetchIOTAVPResponseOK
-from affinidi_tdk_iota_client.models.get_iota_configuration_meta_data_ok import GetIotaConfigurationMetaDataOK
-from affinidi_tdk_iota_client.models.initiate_data_sharing_request_input import InitiateDataSharingRequestInput
-from affinidi_tdk_iota_client.models.initiate_data_sharing_request_ok import InitiateDataSharingRequestOK
-from affinidi_tdk_iota_client.models.initiate_data_sharing_request_ok_data import InitiateDataSharingRequestOKData
-from affinidi_tdk_iota_client.models.invalid_parameter_error import InvalidParameterError
-from affinidi_tdk_iota_client.models.invalid_parameter_error_details_inner import InvalidParameterErrorDetailsInner
-from affinidi_tdk_iota_client.models.iota_configuration_dto import IotaConfigurationDto
-from affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata import IotaConfigurationDtoClientMetadata
-from affinidi_tdk_iota_client.models.iota_exchange_credentials import IotaExchangeCredentials
-from affinidi_tdk_iota_client.models.iota_exchange_credentials_ok import IotaExchangeCredentialsOK
-from affinidi_tdk_iota_client.models.iota_exchange_credentials_ok_credentials import IotaExchangeCredentialsOKCredentials
-from affinidi_tdk_iota_client.models.list_configuration_ok import ListConfigurationOK
-from affinidi_tdk_iota_client.models.list_dcql_queries_ok import ListDcqlQueriesOK
-from affinidi_tdk_iota_client.models.list_logged_consents_ok import ListLoggedConsentsOK
-from affinidi_tdk_iota_client.models.list_pex_queries_ok import ListPexQueriesOK
-from affinidi_tdk_iota_client.models.not_found_error import NotFoundError
-from affinidi_tdk_iota_client.models.operation_forbidden_error import OperationForbiddenError
-from affinidi_tdk_iota_client.models.pex_query_dto import PexQueryDto
-from affinidi_tdk_iota_client.models.resource_limit_exceeded_error import ResourceLimitExceededError
-from affinidi_tdk_iota_client.models.save_pex_queries_update_input import SavePexQueriesUpdateInput
-from affinidi_tdk_iota_client.models.save_pex_queries_update_input_queries_inner import SavePexQueriesUpdateInputQueriesInner
-from affinidi_tdk_iota_client.models.update_configuration_by_id_input import UpdateConfigurationByIdInput
-from affinidi_tdk_iota_client.models.update_dcql_query_input import UpdateDcqlQueryInput
-from affinidi_tdk_iota_client.models.update_pex_query_input import UpdatePexQueryInput
+from affinidi_tdk_iota_client.models.already_exists_error import AlreadyExistsError as AlreadyExistsError
+from affinidi_tdk_iota_client.models.aws_exchange_credentials import AwsExchangeCredentials as AwsExchangeCredentials
+from affinidi_tdk_iota_client.models.aws_exchange_credentials_ok import AwsExchangeCredentialsOK as AwsExchangeCredentialsOK
+from affinidi_tdk_iota_client.models.aws_exchange_credentials_ok_credentials import AwsExchangeCredentialsOKCredentials as AwsExchangeCredentialsOKCredentials
+from affinidi_tdk_iota_client.models.aws_exchange_credentials_project_token import AwsExchangeCredentialsProjectToken as AwsExchangeCredentialsProjectToken
+from affinidi_tdk_iota_client.models.callback_input import CallbackInput as CallbackInput
+from affinidi_tdk_iota_client.models.callback_response_ok import CallbackResponseOK as CallbackResponseOK
+from affinidi_tdk_iota_client.models.consent_dto import ConsentDto as ConsentDto
+from affinidi_tdk_iota_client.models.create_dcql_query_input import CreateDcqlQueryInput as CreateDcqlQueryInput
+from affinidi_tdk_iota_client.models.create_iota_configuration_input import CreateIotaConfigurationInput as CreateIotaConfigurationInput
+from affinidi_tdk_iota_client.models.create_pex_query_input import CreatePexQueryInput as CreatePexQueryInput
+from affinidi_tdk_iota_client.models.dcql_query_dto import DcqlQueryDto as DcqlQueryDto
+from affinidi_tdk_iota_client.models.delete_pex_queries_input import DeletePexQueriesInput as DeletePexQueriesInput
+from affinidi_tdk_iota_client.models.fetch_iotavp_response_input import FetchIOTAVPResponseInput as FetchIOTAVPResponseInput
+from affinidi_tdk_iota_client.models.fetch_iotavp_response_ok import FetchIOTAVPResponseOK as FetchIOTAVPResponseOK
+from affinidi_tdk_iota_client.models.get_iota_configuration_meta_data_ok import GetIotaConfigurationMetaDataOK as GetIotaConfigurationMetaDataOK
+from affinidi_tdk_iota_client.models.initiate_data_sharing_request_input import InitiateDataSharingRequestInput as InitiateDataSharingRequestInput
+from affinidi_tdk_iota_client.models.initiate_data_sharing_request_ok import InitiateDataSharingRequestOK as InitiateDataSharingRequestOK
+from affinidi_tdk_iota_client.models.initiate_data_sharing_request_ok_data import InitiateDataSharingRequestOKData as InitiateDataSharingRequestOKData
+from affinidi_tdk_iota_client.models.invalid_parameter_error import InvalidParameterError as InvalidParameterError
+from affinidi_tdk_iota_client.models.invalid_parameter_error_details_inner import InvalidParameterErrorDetailsInner as InvalidParameterErrorDetailsInner
+from affinidi_tdk_iota_client.models.iota_configuration_dto import IotaConfigurationDto as IotaConfigurationDto
+from affinidi_tdk_iota_client.models.iota_configuration_dto_client_metadata import IotaConfigurationDtoClientMetadata as IotaConfigurationDtoClientMetadata
+from affinidi_tdk_iota_client.models.iota_exchange_credentials import IotaExchangeCredentials as IotaExchangeCredentials
+from affinidi_tdk_iota_client.models.iota_exchange_credentials_ok import IotaExchangeCredentialsOK as IotaExchangeCredentialsOK
+from affinidi_tdk_iota_client.models.iota_exchange_credentials_ok_credentials import IotaExchangeCredentialsOKCredentials as IotaExchangeCredentialsOKCredentials
+from affinidi_tdk_iota_client.models.list_configuration_ok import ListConfigurationOK as ListConfigurationOK
+from affinidi_tdk_iota_client.models.list_dcql_queries_ok import ListDcqlQueriesOK as ListDcqlQueriesOK
+from affinidi_tdk_iota_client.models.list_logged_consents_ok import ListLoggedConsentsOK as ListLoggedConsentsOK
+from affinidi_tdk_iota_client.models.list_pex_queries_ok import ListPexQueriesOK as ListPexQueriesOK
+from affinidi_tdk_iota_client.models.not_found_error import NotFoundError as NotFoundError
+from affinidi_tdk_iota_client.models.operation_forbidden_error import OperationForbiddenError as OperationForbiddenError
+from affinidi_tdk_iota_client.models.pex_query_dto import PexQueryDto as PexQueryDto
+from affinidi_tdk_iota_client.models.resource_limit_exceeded_error import ResourceLimitExceededError as ResourceLimitExceededError
+from affinidi_tdk_iota_client.models.save_pex_queries_update_input import SavePexQueriesUpdateInput as SavePexQueriesUpdateInput
+from affinidi_tdk_iota_client.models.save_pex_queries_update_input_queries_inner import SavePexQueriesUpdateInputQueriesInner as SavePexQueriesUpdateInputQueriesInner
+from affinidi_tdk_iota_client.models.update_configuration_by_id_input import UpdateConfigurationByIdInput as UpdateConfigurationByIdInput
+from affinidi_tdk_iota_client.models.update_dcql_query_input import UpdateDcqlQueryInput as UpdateDcqlQueryInput
+from affinidi_tdk_iota_client.models.update_pex_query_input import UpdatePexQueryInput as UpdatePexQueryInput

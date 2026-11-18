@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   VerifyCredentialV2Input.JSON_PROPERTY_JWT_VCS,
   VerifyCredentialV2Input.JSON_PROPERTY_LDP_VCS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class VerifyCredentialV2Input {
   public static final String JSON_PROPERTY_JWT_VCS = "jwtVcs";
   @javax.annotation.Nullable
@@ -69,7 +69,7 @@ public class VerifyCredentialV2Input {
    * @return jwtVcs
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_JWT_VCS)
+  @JsonProperty(value = JSON_PROPERTY_JWT_VCS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getJwtVcs() {
@@ -77,7 +77,7 @@ public class VerifyCredentialV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWT_VCS)
+  @JsonProperty(value = JSON_PROPERTY_JWT_VCS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setJwtVcs(@javax.annotation.Nullable List<String> jwtVcs) {
     this.jwtVcs = jwtVcs;
@@ -102,7 +102,7 @@ public class VerifyCredentialV2Input {
    * @return ldpVcs
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LDP_VCS)
+  @JsonProperty(value = JSON_PROPERTY_LDP_VCS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Map<String, Object>> getLdpVcs() {
@@ -110,11 +110,12 @@ public class VerifyCredentialV2Input {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LDP_VCS)
+  @JsonProperty(value = JSON_PROPERTY_LDP_VCS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLdpVcs(@javax.annotation.Nullable List<Map<String, Object>> ldpVcs) {
     this.ldpVcs = ldpVcs;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -149,10 +150,7 @@ public class VerifyCredentialV2Input {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -191,8 +189,8 @@ public class VerifyCredentialV2Input {
     if (getJwtVcs() != null) {
       for (int i = 0; i < getJwtVcs().size(); i++) {
         try {
-          joiner.add(String.format("%sjwtVcs%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sjwtVcs%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getJwtVcs().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -205,8 +203,8 @@ public class VerifyCredentialV2Input {
     if (getLdpVcs() != null) {
       for (int i = 0; i < getLdpVcs().size(); i++) {
         try {
-          joiner.add(String.format("%sldpVcs%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sldpVcs%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getLdpVcs().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
