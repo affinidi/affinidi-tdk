@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   VerifyPresentationV2InputPexQuery.JSON_PROPERTY_PRESENTATION_SUBMISSION
 })
 @JsonTypeName("VerifyPresentationV2Input_pexQuery")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class VerifyPresentationV2InputPexQuery {
   public static final String JSON_PROPERTY_PRESENTATION_DEFINITION = "presentationDefinition";
   @javax.annotation.Nullable
@@ -58,7 +58,7 @@ public class VerifyPresentationV2InputPexQuery {
    * @return presentationDefinition
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getPresentationDefinition() {
@@ -66,7 +66,7 @@ public class VerifyPresentationV2InputPexQuery {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_DEFINITION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_DEFINITION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationDefinition(@javax.annotation.Nullable Object presentationDefinition) {
     this.presentationDefinition = presentationDefinition;
@@ -83,7 +83,7 @@ public class VerifyPresentationV2InputPexQuery {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getPresentationSubmission() {
@@ -91,11 +91,12 @@ public class VerifyPresentationV2InputPexQuery {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(@javax.annotation.Nullable Object presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -130,10 +131,7 @@ public class VerifyPresentationV2InputPexQuery {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -171,7 +169,7 @@ public class VerifyPresentationV2InputPexQuery {
     // add `presentationDefinition` to the URL query string
     if (getPresentationDefinition() != null) {
       try {
-        joiner.add(String.format("%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentationDefinition%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationDefinition()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -181,7 +179,7 @@ public class VerifyPresentationV2InputPexQuery {
     // add `presentationSubmission` to the URL query string
     if (getPresentationSubmission() != null) {
       try {
-        joiner.add(String.format("%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentationSubmission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

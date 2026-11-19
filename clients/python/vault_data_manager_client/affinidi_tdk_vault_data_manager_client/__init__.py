@@ -17,66 +17,128 @@
 
 __version__ = "1.0.0"
 
+# Define package exports
+__all__ = [
+    "AccountsApi",
+    "ConfigurationApi",
+    "FilesApi",
+    "NodesApi",
+    "ProfileDataApi",
+    "WellKnownApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "AccountDto",
+    "ConsumerMetadataDto",
+    "CreateAccountInput",
+    "CreateAccountOK",
+    "CreateAccountWithProfileInput",
+    "CreateAccountWithProfileOK",
+    "CreateChildNodeInput",
+    "CreateNodeInput",
+    "CreateNodeOK",
+    "DeleteAccountDto",
+    "DeleteNodeDto",
+    "EdekInfo",
+    "GetConfigOK",
+    "GetDetailedNodeInfoOK",
+    "GetScannedFileInfoOK",
+    "InitNodesOK",
+    "InvalidParameterError",
+    "InvalidParameterErrorDetailsInner",
+    "JsonWebKeyDto",
+    "JsonWebKeySetDto",
+    "ListAccountsDto",
+    "ListNodeChildrenOK",
+    "ListProfilesOK",
+    "ListRootNodeChildrenOK",
+    "ListScannedFilesOK",
+    "ListScannedFilesOKScannedFilesInner",
+    "MoveNodeDto",
+    "MoveNodeInput",
+    "NodeDto",
+    "NodeStatus",
+    "NodeType",
+    "PartialProfileNodeDto",
+    "PatchAccountInput",
+    "QueryProfileDataOK",
+    "RestoreNodeFromTrashbin",
+    "StartFileScanInput",
+    "StartFileScanOK",
+    "UnexpectedError",
+    "UpdateAccountDto",
+    "UpdateAccountInput",
+    "UpdateNodeInput",
+    "UpdateProfileDataInput",
+    "UpdateProfileDataOK",
+]
+
 # import apis into sdk package
-from affinidi_tdk_vault_data_manager_client.api.accounts_api import AccountsApi
-from affinidi_tdk_vault_data_manager_client.api.configuration_api import ConfigurationApi
-from affinidi_tdk_vault_data_manager_client.api.files_api import FilesApi
-from affinidi_tdk_vault_data_manager_client.api.nodes_api import NodesApi
-from affinidi_tdk_vault_data_manager_client.api.profile_data_api import ProfileDataApi
-from affinidi_tdk_vault_data_manager_client.api.well_known_api import WellKnownApi
+from affinidi_tdk_vault_data_manager_client.api.accounts_api import AccountsApi as AccountsApi
+from affinidi_tdk_vault_data_manager_client.api.configuration_api import ConfigurationApi as ConfigurationApi
+from affinidi_tdk_vault_data_manager_client.api.files_api import FilesApi as FilesApi
+from affinidi_tdk_vault_data_manager_client.api.nodes_api import NodesApi as NodesApi
+from affinidi_tdk_vault_data_manager_client.api.profile_data_api import ProfileDataApi as ProfileDataApi
+from affinidi_tdk_vault_data_manager_client.api.well_known_api import WellKnownApi as WellKnownApi
 
 # import ApiClient
-from affinidi_tdk_vault_data_manager_client.api_response import ApiResponse
-from affinidi_tdk_vault_data_manager_client.api_client import ApiClient
-from affinidi_tdk_vault_data_manager_client.configuration import Configuration
-from affinidi_tdk_vault_data_manager_client.exceptions import OpenApiException
-from affinidi_tdk_vault_data_manager_client.exceptions import ApiTypeError
-from affinidi_tdk_vault_data_manager_client.exceptions import ApiValueError
-from affinidi_tdk_vault_data_manager_client.exceptions import ApiKeyError
-from affinidi_tdk_vault_data_manager_client.exceptions import ApiAttributeError
-from affinidi_tdk_vault_data_manager_client.exceptions import ApiException
+from affinidi_tdk_vault_data_manager_client.api_response import ApiResponse as ApiResponse
+from affinidi_tdk_vault_data_manager_client.api_client import ApiClient as ApiClient
+from affinidi_tdk_vault_data_manager_client.configuration import Configuration as Configuration
+from affinidi_tdk_vault_data_manager_client.exceptions import OpenApiException as OpenApiException
+from affinidi_tdk_vault_data_manager_client.exceptions import ApiTypeError as ApiTypeError
+from affinidi_tdk_vault_data_manager_client.exceptions import ApiValueError as ApiValueError
+from affinidi_tdk_vault_data_manager_client.exceptions import ApiKeyError as ApiKeyError
+from affinidi_tdk_vault_data_manager_client.exceptions import ApiAttributeError as ApiAttributeError
+from affinidi_tdk_vault_data_manager_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from affinidi_tdk_vault_data_manager_client.models.account_dto import AccountDto
-from affinidi_tdk_vault_data_manager_client.models.consumer_metadata_dto import ConsumerMetadataDto
-from affinidi_tdk_vault_data_manager_client.models.create_account_input import CreateAccountInput
-from affinidi_tdk_vault_data_manager_client.models.create_account_ok import CreateAccountOK
-from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_input import CreateAccountWithProfileInput
-from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_ok import CreateAccountWithProfileOK
-from affinidi_tdk_vault_data_manager_client.models.create_child_node_input import CreateChildNodeInput
-from affinidi_tdk_vault_data_manager_client.models.create_node_input import CreateNodeInput
-from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK
-from affinidi_tdk_vault_data_manager_client.models.delete_account_dto import DeleteAccountDto
-from affinidi_tdk_vault_data_manager_client.models.delete_node_dto import DeleteNodeDto
-from affinidi_tdk_vault_data_manager_client.models.edek_info import EdekInfo
-from affinidi_tdk_vault_data_manager_client.models.get_config_ok import GetConfigOK
-from affinidi_tdk_vault_data_manager_client.models.get_detailed_node_info_ok import GetDetailedNodeInfoOK
-from affinidi_tdk_vault_data_manager_client.models.get_scanned_file_info_ok import GetScannedFileInfoOK
-from affinidi_tdk_vault_data_manager_client.models.init_nodes_ok import InitNodesOK
-from affinidi_tdk_vault_data_manager_client.models.invalid_parameter_error import InvalidParameterError
-from affinidi_tdk_vault_data_manager_client.models.invalid_parameter_error_details_inner import InvalidParameterErrorDetailsInner
-from affinidi_tdk_vault_data_manager_client.models.json_web_key_dto import JsonWebKeyDto
-from affinidi_tdk_vault_data_manager_client.models.json_web_key_set_dto import JsonWebKeySetDto
-from affinidi_tdk_vault_data_manager_client.models.list_accounts_dto import ListAccountsDto
-from affinidi_tdk_vault_data_manager_client.models.list_node_children_ok import ListNodeChildrenOK
-from affinidi_tdk_vault_data_manager_client.models.list_profiles_ok import ListProfilesOK
-from affinidi_tdk_vault_data_manager_client.models.list_root_node_children_ok import ListRootNodeChildrenOK
-from affinidi_tdk_vault_data_manager_client.models.list_scanned_files_ok import ListScannedFilesOK
-from affinidi_tdk_vault_data_manager_client.models.list_scanned_files_ok_scanned_files_inner import ListScannedFilesOKScannedFilesInner
-from affinidi_tdk_vault_data_manager_client.models.move_node_dto import MoveNodeDto
-from affinidi_tdk_vault_data_manager_client.models.move_node_input import MoveNodeInput
-from affinidi_tdk_vault_data_manager_client.models.node_dto import NodeDto
-from affinidi_tdk_vault_data_manager_client.models.node_status import NodeStatus
-from affinidi_tdk_vault_data_manager_client.models.node_type import NodeType
-from affinidi_tdk_vault_data_manager_client.models.partial_profile_node_dto import PartialProfileNodeDto
-from affinidi_tdk_vault_data_manager_client.models.patch_account_input import PatchAccountInput
-from affinidi_tdk_vault_data_manager_client.models.query_profile_data_ok import QueryProfileDataOK
-from affinidi_tdk_vault_data_manager_client.models.restore_node_from_trashbin import RestoreNodeFromTrashbin
-from affinidi_tdk_vault_data_manager_client.models.start_file_scan_input import StartFileScanInput
-from affinidi_tdk_vault_data_manager_client.models.start_file_scan_ok import StartFileScanOK
-from affinidi_tdk_vault_data_manager_client.models.unexpected_error import UnexpectedError
-from affinidi_tdk_vault_data_manager_client.models.update_account_dto import UpdateAccountDto
-from affinidi_tdk_vault_data_manager_client.models.update_account_input import UpdateAccountInput
-from affinidi_tdk_vault_data_manager_client.models.update_node_input import UpdateNodeInput
-from affinidi_tdk_vault_data_manager_client.models.update_profile_data_input import UpdateProfileDataInput
-from affinidi_tdk_vault_data_manager_client.models.update_profile_data_ok import UpdateProfileDataOK
+from affinidi_tdk_vault_data_manager_client.models.account_dto import AccountDto as AccountDto
+from affinidi_tdk_vault_data_manager_client.models.consumer_metadata_dto import ConsumerMetadataDto as ConsumerMetadataDto
+from affinidi_tdk_vault_data_manager_client.models.create_account_input import CreateAccountInput as CreateAccountInput
+from affinidi_tdk_vault_data_manager_client.models.create_account_ok import CreateAccountOK as CreateAccountOK
+from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_input import CreateAccountWithProfileInput as CreateAccountWithProfileInput
+from affinidi_tdk_vault_data_manager_client.models.create_account_with_profile_ok import CreateAccountWithProfileOK as CreateAccountWithProfileOK
+from affinidi_tdk_vault_data_manager_client.models.create_child_node_input import CreateChildNodeInput as CreateChildNodeInput
+from affinidi_tdk_vault_data_manager_client.models.create_node_input import CreateNodeInput as CreateNodeInput
+from affinidi_tdk_vault_data_manager_client.models.create_node_ok import CreateNodeOK as CreateNodeOK
+from affinidi_tdk_vault_data_manager_client.models.delete_account_dto import DeleteAccountDto as DeleteAccountDto
+from affinidi_tdk_vault_data_manager_client.models.delete_node_dto import DeleteNodeDto as DeleteNodeDto
+from affinidi_tdk_vault_data_manager_client.models.edek_info import EdekInfo as EdekInfo
+from affinidi_tdk_vault_data_manager_client.models.get_config_ok import GetConfigOK as GetConfigOK
+from affinidi_tdk_vault_data_manager_client.models.get_detailed_node_info_ok import GetDetailedNodeInfoOK as GetDetailedNodeInfoOK
+from affinidi_tdk_vault_data_manager_client.models.get_scanned_file_info_ok import GetScannedFileInfoOK as GetScannedFileInfoOK
+from affinidi_tdk_vault_data_manager_client.models.init_nodes_ok import InitNodesOK as InitNodesOK
+from affinidi_tdk_vault_data_manager_client.models.invalid_parameter_error import InvalidParameterError as InvalidParameterError
+from affinidi_tdk_vault_data_manager_client.models.invalid_parameter_error_details_inner import InvalidParameterErrorDetailsInner as InvalidParameterErrorDetailsInner
+from affinidi_tdk_vault_data_manager_client.models.json_web_key_dto import JsonWebKeyDto as JsonWebKeyDto
+from affinidi_tdk_vault_data_manager_client.models.json_web_key_set_dto import JsonWebKeySetDto as JsonWebKeySetDto
+from affinidi_tdk_vault_data_manager_client.models.list_accounts_dto import ListAccountsDto as ListAccountsDto
+from affinidi_tdk_vault_data_manager_client.models.list_node_children_ok import ListNodeChildrenOK as ListNodeChildrenOK
+from affinidi_tdk_vault_data_manager_client.models.list_profiles_ok import ListProfilesOK as ListProfilesOK
+from affinidi_tdk_vault_data_manager_client.models.list_root_node_children_ok import ListRootNodeChildrenOK as ListRootNodeChildrenOK
+from affinidi_tdk_vault_data_manager_client.models.list_scanned_files_ok import ListScannedFilesOK as ListScannedFilesOK
+from affinidi_tdk_vault_data_manager_client.models.list_scanned_files_ok_scanned_files_inner import ListScannedFilesOKScannedFilesInner as ListScannedFilesOKScannedFilesInner
+from affinidi_tdk_vault_data_manager_client.models.move_node_dto import MoveNodeDto as MoveNodeDto
+from affinidi_tdk_vault_data_manager_client.models.move_node_input import MoveNodeInput as MoveNodeInput
+from affinidi_tdk_vault_data_manager_client.models.node_dto import NodeDto as NodeDto
+from affinidi_tdk_vault_data_manager_client.models.node_status import NodeStatus as NodeStatus
+from affinidi_tdk_vault_data_manager_client.models.node_type import NodeType as NodeType
+from affinidi_tdk_vault_data_manager_client.models.partial_profile_node_dto import PartialProfileNodeDto as PartialProfileNodeDto
+from affinidi_tdk_vault_data_manager_client.models.patch_account_input import PatchAccountInput as PatchAccountInput
+from affinidi_tdk_vault_data_manager_client.models.query_profile_data_ok import QueryProfileDataOK as QueryProfileDataOK
+from affinidi_tdk_vault_data_manager_client.models.restore_node_from_trashbin import RestoreNodeFromTrashbin as RestoreNodeFromTrashbin
+from affinidi_tdk_vault_data_manager_client.models.start_file_scan_input import StartFileScanInput as StartFileScanInput
+from affinidi_tdk_vault_data_manager_client.models.start_file_scan_ok import StartFileScanOK as StartFileScanOK
+from affinidi_tdk_vault_data_manager_client.models.unexpected_error import UnexpectedError as UnexpectedError
+from affinidi_tdk_vault_data_manager_client.models.update_account_dto import UpdateAccountDto as UpdateAccountDto
+from affinidi_tdk_vault_data_manager_client.models.update_account_input import UpdateAccountInput as UpdateAccountInput
+from affinidi_tdk_vault_data_manager_client.models.update_node_input import UpdateNodeInput as UpdateNodeInput
+from affinidi_tdk_vault_data_manager_client.models.update_profile_data_input import UpdateProfileDataInput as UpdateProfileDataInput
+from affinidi_tdk_vault_data_manager_client.models.update_profile_data_ok import UpdateProfileDataOK as UpdateProfileDataOK

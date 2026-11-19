@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   CredentialResponse.JSON_PROPERTY_C_NONCE_EXPIRES_IN,
   CredentialResponse.JSON_PROPERTY_TRANSACTION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CredentialResponse {
   public static final String JSON_PROPERTY_CREDENTIAL = "credential";
   @javax.annotation.Nonnull
@@ -71,7 +71,7 @@ public class CredentialResponse {
    * @return credential
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public CredentialResponseImmediateCredential getCredential() {
@@ -79,7 +79,7 @@ public class CredentialResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCredential(@javax.annotation.Nonnull CredentialResponseImmediateCredential credential) {
     this.credential = credential;
@@ -96,7 +96,7 @@ public class CredentialResponse {
    * @return cNonce
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonProperty(value = JSON_PROPERTY_C_NONCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getcNonce() {
@@ -104,7 +104,7 @@ public class CredentialResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_C_NONCE)
+  @JsonProperty(value = JSON_PROPERTY_C_NONCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcNonce(@javax.annotation.Nonnull String cNonce) {
     this.cNonce = cNonce;
@@ -121,7 +121,7 @@ public class CredentialResponse {
    * @return cNonceExpiresIn
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_C_NONCE_EXPIRES_IN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getcNonceExpiresIn() {
@@ -129,7 +129,7 @@ public class CredentialResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_C_NONCE_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_C_NONCE_EXPIRES_IN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setcNonceExpiresIn(@javax.annotation.Nonnull BigDecimal cNonceExpiresIn) {
     this.cNonceExpiresIn = cNonceExpiresIn;
@@ -146,7 +146,7 @@ public class CredentialResponse {
    * @return transactionId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRANSACTION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTransactionId() {
@@ -154,11 +154,12 @@ public class CredentialResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRANSACTION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTransactionId(@javax.annotation.Nonnull String transactionId) {
     this.transactionId = transactionId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -197,10 +198,7 @@ public class CredentialResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -243,7 +241,7 @@ public class CredentialResponse {
     // add `c_nonce` to the URL query string
     if (getcNonce() != null) {
       try {
-        joiner.add(String.format("%sc_nonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonce()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sc_nonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonce()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -253,7 +251,7 @@ public class CredentialResponse {
     // add `c_nonce_expires_in` to the URL query string
     if (getcNonceExpiresIn() != null) {
       try {
-        joiner.add(String.format("%sc_nonce_expires_in%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonceExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sc_nonce_expires_in%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getcNonceExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -263,7 +261,7 @@ public class CredentialResponse {
     // add `transaction_id` to the URL query string
     if (getTransactionId() != null) {
       try {
-        joiner.add(String.format("%stransaction_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stransaction_id%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
