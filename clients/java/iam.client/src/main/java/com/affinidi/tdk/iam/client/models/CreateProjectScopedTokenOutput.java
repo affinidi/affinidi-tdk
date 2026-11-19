@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   CreateProjectScopedTokenOutput.JSON_PROPERTY_EXPIRES_IN,
   CreateProjectScopedTokenOutput.JSON_PROPERTY_SCOPE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CreateProjectScopedTokenOutput {
   public static final String JSON_PROPERTY_ACCESS_TOKEN = "accessToken";
   @javax.annotation.Nonnull
@@ -62,7 +62,7 @@ public class CreateProjectScopedTokenOutput {
    * @return accessToken
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getAccessToken() {
@@ -70,7 +70,7 @@ public class CreateProjectScopedTokenOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCESS_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_ACCESS_TOKEN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccessToken(@javax.annotation.Nonnull String accessToken) {
     this.accessToken = accessToken;
@@ -87,7 +87,7 @@ public class CreateProjectScopedTokenOutput {
    * @return expiresIn
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_IN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Integer getExpiresIn() {
@@ -95,7 +95,7 @@ public class CreateProjectScopedTokenOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_EXPIRES_IN)
+  @JsonProperty(value = JSON_PROPERTY_EXPIRES_IN, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setExpiresIn(@javax.annotation.Nonnull Integer expiresIn) {
     this.expiresIn = expiresIn;
@@ -112,7 +112,7 @@ public class CreateProjectScopedTokenOutput {
    * @return scope
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getScope() {
@@ -120,11 +120,12 @@ public class CreateProjectScopedTokenOutput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPE)
+  @JsonProperty(value = JSON_PROPERTY_SCOPE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setScope(@javax.annotation.Nonnull String scope) {
     this.scope = scope;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -161,10 +162,7 @@ public class CreateProjectScopedTokenOutput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -202,7 +200,7 @@ public class CreateProjectScopedTokenOutput {
     // add `accessToken` to the URL query string
     if (getAccessToken() != null) {
       try {
-        joiner.add(String.format("%saccessToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccessToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccessToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -212,7 +210,7 @@ public class CreateProjectScopedTokenOutput {
     // add `expiresIn` to the URL query string
     if (getExpiresIn() != null) {
       try {
-        joiner.add(String.format("%sexpiresIn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sexpiresIn%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getExpiresIn()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -222,7 +220,7 @@ public class CreateProjectScopedTokenOutput {
     // add `scope` to the URL query string
     if (getScope() != null) {
       try {
-        joiner.add(String.format("%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sscope%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getScope()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

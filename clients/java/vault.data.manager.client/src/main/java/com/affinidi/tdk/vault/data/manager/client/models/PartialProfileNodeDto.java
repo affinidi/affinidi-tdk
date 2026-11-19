@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   PartialProfileNodeDto.JSON_PROPERTY_PROFILE_METADATA,
   PartialProfileNodeDto.JSON_PROPERTY_ACCOUNT_METADATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class PartialProfileNodeDto {
   public static final String JSON_PROPERTY_ID = "id";
   @javax.annotation.Nonnull
@@ -78,7 +78,7 @@ public class PartialProfileNodeDto {
    * @return id
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
@@ -86,7 +86,7 @@ public class PartialProfileNodeDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonProperty(value = JSON_PROPERTY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
@@ -103,7 +103,7 @@ public class PartialProfileNodeDto {
    * @return name
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getName() {
@@ -111,7 +111,7 @@ public class PartialProfileNodeDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NAME)
+  @JsonProperty(value = JSON_PROPERTY_NAME, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -128,7 +128,7 @@ public class PartialProfileNodeDto {
    * @return description
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDescription() {
@@ -136,7 +136,7 @@ public class PartialProfileNodeDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDescription(@javax.annotation.Nullable String description) {
     this.description = description;
@@ -153,7 +153,7 @@ public class PartialProfileNodeDto {
    * @return accountIndex
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public BigDecimal getAccountIndex() {
@@ -161,7 +161,7 @@ public class PartialProfileNodeDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setAccountIndex(@javax.annotation.Nonnull BigDecimal accountIndex) {
     this.accountIndex = accountIndex;
@@ -178,7 +178,7 @@ public class PartialProfileNodeDto {
    * @return profileMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PROFILE_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getProfileMetadata() {
@@ -186,7 +186,7 @@ public class PartialProfileNodeDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROFILE_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_PROFILE_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setProfileMetadata(@javax.annotation.Nullable String profileMetadata) {
     this.profileMetadata = profileMetadata;
@@ -203,7 +203,7 @@ public class PartialProfileNodeDto {
    * @return accountMetadata
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAccountMetadata() {
@@ -211,11 +211,12 @@ public class PartialProfileNodeDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ACCOUNT_METADATA)
+  @JsonProperty(value = JSON_PROPERTY_ACCOUNT_METADATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAccountMetadata(@javax.annotation.Nullable String accountMetadata) {
     this.accountMetadata = accountMetadata;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -258,10 +259,7 @@ public class PartialProfileNodeDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -299,7 +297,7 @@ public class PartialProfileNodeDto {
     // add `id` to the URL query string
     if (getId() != null) {
       try {
-        joiner.add(String.format("%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -309,7 +307,7 @@ public class PartialProfileNodeDto {
     // add `name` to the URL query string
     if (getName() != null) {
       try {
-        joiner.add(String.format("%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sname%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getName()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -319,7 +317,7 @@ public class PartialProfileNodeDto {
     // add `description` to the URL query string
     if (getDescription() != null) {
       try {
-        joiner.add(String.format("%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdescription%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -329,7 +327,7 @@ public class PartialProfileNodeDto {
     // add `accountIndex` to the URL query string
     if (getAccountIndex() != null) {
       try {
-        joiner.add(String.format("%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountIndex()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -339,7 +337,7 @@ public class PartialProfileNodeDto {
     // add `profileMetadata` to the URL query string
     if (getProfileMetadata() != null) {
       try {
-        joiner.add(String.format("%sprofileMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sprofileMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getProfileMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -349,7 +347,7 @@ public class PartialProfileNodeDto {
     // add `accountMetadata` to the URL query string
     if (getAccountMetadata() != null) {
       try {
-        joiner.add(String.format("%saccountMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountMetadata()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saccountMetadata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAccountMetadata()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   ListIssuanceRecordResponse.JSON_PROPERTY_FLOW_DATA,
   ListIssuanceRecordResponse.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListIssuanceRecordResponse {
   public static final String JSON_PROPERTY_FLOW_DATA = "flowData";
   @javax.annotation.Nullable
@@ -69,7 +69,7 @@ public class ListIssuanceRecordResponse {
    * @return flowData
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_FLOW_DATA)
+  @JsonProperty(value = JSON_PROPERTY_FLOW_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<FlowData> getFlowData() {
@@ -77,7 +77,7 @@ public class ListIssuanceRecordResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_FLOW_DATA)
+  @JsonProperty(value = JSON_PROPERTY_FLOW_DATA, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setFlowData(@javax.annotation.Nullable List<FlowData> flowData) {
     this.flowData = flowData;
@@ -94,7 +94,7 @@ public class ListIssuanceRecordResponse {
    * @return lastEvaluatedKey
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastEvaluatedKey() {
@@ -102,11 +102,12 @@ public class ListIssuanceRecordResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,10 +142,7 @@ public class ListIssuanceRecordResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -183,8 +181,8 @@ public class ListIssuanceRecordResponse {
     if (getFlowData() != null) {
       for (int i = 0; i < getFlowData().size(); i++) {
         if (getFlowData().get(i) != null) {
-          joiner.add(getFlowData().get(i).toUrlQueryString(String.format("%sflowData%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getFlowData().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sflowData%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -192,7 +190,7 @@ public class ListIssuanceRecordResponse {
     // add `lastEvaluatedKey` to the URL query string
     if (getLastEvaluatedKey() != null) {
       try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

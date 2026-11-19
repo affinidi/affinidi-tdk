@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   ListIssuanceResponse.JSON_PROPERTY_ISSUANCES
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class ListIssuanceResponse {
   public static final String JSON_PROPERTY_ISSUANCES = "issuances";
   @javax.annotation.Nonnull
@@ -64,7 +64,7 @@ public class ListIssuanceResponse {
    * @return issuances
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_ISSUANCES)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<ListIssuanceResponseIssuancesInner> getIssuances() {
@@ -72,11 +72,12 @@ public class ListIssuanceResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ISSUANCES)
+  @JsonProperty(value = JSON_PROPERTY_ISSUANCES, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIssuances(@javax.annotation.Nonnull List<ListIssuanceResponseIssuancesInner> issuances) {
     this.issuances = issuances;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class ListIssuanceResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class ListIssuanceResponse {
     if (getIssuances() != null) {
       for (int i = 0; i < getIssuances().size(); i++) {
         if (getIssuances().get(i) != null) {
-          joiner.add(getIssuances().get(i).toUrlQueryString(String.format("%sissuances%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getIssuances().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sissuances%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
