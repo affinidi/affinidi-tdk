@@ -40,7 +40,7 @@ import java.util.StringJoiner;
   InitiateDataSharingRequestInput.JSON_PROPERTY_USER_DID,
   InitiateDataSharingRequestInput.JSON_PROPERTY_MODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class InitiateDataSharingRequestInput {
   public static final String JSON_PROPERTY_QUERY_ID = "queryId";
   @javax.annotation.Nonnull
@@ -125,7 +125,7 @@ public class InitiateDataSharingRequestInput {
    * @return queryId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonProperty(value = JSON_PROPERTY_QUERY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getQueryId() {
@@ -133,7 +133,7 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_QUERY_ID)
+  @JsonProperty(value = JSON_PROPERTY_QUERY_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setQueryId(@javax.annotation.Nonnull String queryId) {
     this.queryId = queryId;
@@ -150,7 +150,7 @@ public class InitiateDataSharingRequestInput {
    * @return correlationId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCorrelationId() {
@@ -158,7 +158,7 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
@@ -175,7 +175,7 @@ public class InitiateDataSharingRequestInput {
    * @return tokenMaxAge
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_MAX_AGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getTokenMaxAge() {
@@ -183,7 +183,7 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_MAX_AGE)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_MAX_AGE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenMaxAge(@javax.annotation.Nullable BigDecimal tokenMaxAge) {
     this.tokenMaxAge = tokenMaxAge;
@@ -200,7 +200,7 @@ public class InitiateDataSharingRequestInput {
    * @return nonce
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_NONCE)
+  @JsonProperty(value = JSON_PROPERTY_NONCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getNonce() {
@@ -208,7 +208,7 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NONCE)
+  @JsonProperty(value = JSON_PROPERTY_NONCE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setNonce(@javax.annotation.Nonnull String nonce) {
     this.nonce = nonce;
@@ -225,7 +225,7 @@ public class InitiateDataSharingRequestInput {
    * @return redirectUri
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getRedirectUri() {
@@ -233,7 +233,7 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_REDIRECT_URI)
+  @JsonProperty(value = JSON_PROPERTY_REDIRECT_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setRedirectUri(@javax.annotation.Nonnull String redirectUri) {
     this.redirectUri = redirectUri;
@@ -250,7 +250,7 @@ public class InitiateDataSharingRequestInput {
    * @return configurationId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getConfigurationId() {
@@ -258,7 +258,7 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConfigurationId(@javax.annotation.Nonnull String configurationId) {
     this.configurationId = configurationId;
@@ -275,7 +275,7 @@ public class InitiateDataSharingRequestInput {
    * @return userDid
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USER_DID)
+  @JsonProperty(value = JSON_PROPERTY_USER_DID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getUserDid() {
@@ -283,7 +283,7 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USER_DID)
+  @JsonProperty(value = JSON_PROPERTY_USER_DID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUserDid(@javax.annotation.Nullable String userDid) {
     this.userDid = userDid;
@@ -300,7 +300,7 @@ public class InitiateDataSharingRequestInput {
    * @return mode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public ModeEnum getMode() {
@@ -308,11 +308,12 @@ public class InitiateDataSharingRequestInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_MODE)
+  @JsonProperty(value = JSON_PROPERTY_MODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setMode(@javax.annotation.Nonnull ModeEnum mode) {
     this.mode = mode;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -359,10 +360,7 @@ public class InitiateDataSharingRequestInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -400,7 +398,7 @@ public class InitiateDataSharingRequestInput {
     // add `queryId` to the URL query string
     if (getQueryId() != null) {
       try {
-        joiner.add(String.format("%squeryId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%squeryId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getQueryId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -410,7 +408,7 @@ public class InitiateDataSharingRequestInput {
     // add `correlationId` to the URL query string
     if (getCorrelationId() != null) {
       try {
-        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -420,7 +418,7 @@ public class InitiateDataSharingRequestInput {
     // add `tokenMaxAge` to the URL query string
     if (getTokenMaxAge() != null) {
       try {
-        joiner.add(String.format("%stokenMaxAge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenMaxAge()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stokenMaxAge%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenMaxAge()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -430,7 +428,7 @@ public class InitiateDataSharingRequestInput {
     // add `nonce` to the URL query string
     if (getNonce() != null) {
       try {
-        joiner.add(String.format("%snonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snonce%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNonce()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -440,7 +438,7 @@ public class InitiateDataSharingRequestInput {
     // add `redirectUri` to the URL query string
     if (getRedirectUri() != null) {
       try {
-        joiner.add(String.format("%sredirectUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sredirectUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getRedirectUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -450,7 +448,7 @@ public class InitiateDataSharingRequestInput {
     // add `configurationId` to the URL query string
     if (getConfigurationId() != null) {
       try {
-        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -460,7 +458,7 @@ public class InitiateDataSharingRequestInput {
     // add `userDid` to the URL query string
     if (getUserDid() != null) {
       try {
-        joiner.add(String.format("%suserDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%suserDid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUserDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -470,7 +468,7 @@ public class InitiateDataSharingRequestInput {
     // add `mode` to the URL query string
     if (getMode() != null) {
       try {
-        joiner.add(String.format("%smode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%smode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getMode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

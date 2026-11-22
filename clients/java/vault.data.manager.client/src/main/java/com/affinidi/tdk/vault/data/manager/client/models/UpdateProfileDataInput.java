@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   UpdateProfileDataInput.JSON_PROPERTY_DEK,
   UpdateProfileDataInput.JSON_PROPERTY_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class UpdateProfileDataInput {
   public static final String JSON_PROPERTY_DEK = "dek";
   @javax.annotation.Nonnull
@@ -57,7 +57,7 @@ public class UpdateProfileDataInput {
    * @return dek
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDek() {
@@ -65,7 +65,7 @@ public class UpdateProfileDataInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEK)
+  @JsonProperty(value = JSON_PROPERTY_DEK, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDek(@javax.annotation.Nonnull String dek) {
     this.dek = dek;
@@ -82,7 +82,7 @@ public class UpdateProfileDataInput {
    * @return data
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Object getData() {
@@ -90,11 +90,12 @@ public class UpdateProfileDataInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DATA)
+  @JsonProperty(value = JSON_PROPERTY_DATA, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setData(@javax.annotation.Nonnull Object data) {
     this.data = data;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,10 +130,7 @@ public class UpdateProfileDataInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -170,7 +168,7 @@ public class UpdateProfileDataInput {
     // add `dek` to the URL query string
     if (getDek() != null) {
       try {
-        joiner.add(String.format("%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdek%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDek()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class UpdateProfileDataInput {
     // add `data` to the URL query string
     if (getData() != null) {
       try {
-        joiner.add(String.format("%sdata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getData()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdata%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getData()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

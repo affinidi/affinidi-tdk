@@ -36,7 +36,7 @@ import java.util.StringJoiner;
   BlockedUsers.JSON_PROPERTY_USER_IDS,
   BlockedUsers.JSON_PROPERTY_PAGE_TOKEN
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class BlockedUsers {
   public static final String JSON_PROPERTY_USER_IDS = "userIds";
   @javax.annotation.Nonnull
@@ -68,7 +68,7 @@ public class BlockedUsers {
    * @return userIds
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_USER_IDS)
+  @JsonProperty(value = JSON_PROPERTY_USER_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<String> getUserIds() {
@@ -76,7 +76,7 @@ public class BlockedUsers {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USER_IDS)
+  @JsonProperty(value = JSON_PROPERTY_USER_IDS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUserIds(@javax.annotation.Nonnull List<String> userIds) {
     this.userIds = userIds;
@@ -93,7 +93,7 @@ public class BlockedUsers {
    * @return pageToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_PAGE_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getPageToken() {
@@ -101,11 +101,12 @@ public class BlockedUsers {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PAGE_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_PAGE_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPageToken(@javax.annotation.Nullable Object pageToken) {
     this.pageToken = pageToken;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -140,10 +141,7 @@ public class BlockedUsers {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -182,8 +180,8 @@ public class BlockedUsers {
     if (getUserIds() != null) {
       for (int i = 0; i < getUserIds().size(); i++) {
         try {
-          joiner.add(String.format("%suserIds%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%suserIds%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getUserIds().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -195,7 +193,7 @@ public class BlockedUsers {
     // add `pageToken` to the URL query string
     if (getPageToken() != null) {
       try {
-        joiner.add(String.format("%spageToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPageToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spageToken%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPageToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
