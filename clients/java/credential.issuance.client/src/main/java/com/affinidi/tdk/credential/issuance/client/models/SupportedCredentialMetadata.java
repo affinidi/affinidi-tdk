@@ -36,7 +36,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   SupportedCredentialMetadata.JSON_PROPERTY_DISPLAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SupportedCredentialMetadata {
   public static final String JSON_PROPERTY_DISPLAY = "display";
   @javax.annotation.Nullable
@@ -64,7 +64,7 @@ public class SupportedCredentialMetadata {
    * @return display
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISPLAY)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<SupportedCredentialMetadataDisplayInner> getDisplay() {
@@ -72,11 +72,12 @@ public class SupportedCredentialMetadata {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDisplay(@javax.annotation.Nullable List<SupportedCredentialMetadataDisplayInner> display) {
     this.display = display;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -109,10 +110,7 @@ public class SupportedCredentialMetadata {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -151,8 +149,8 @@ public class SupportedCredentialMetadata {
     if (getDisplay() != null) {
       for (int i = 0; i < getDisplay().size(); i++) {
         if (getDisplay().get(i) != null) {
-          joiner.add(getDisplay().get(i).toUrlQueryString(String.format("%sdisplay%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getDisplay().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%sdisplay%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }

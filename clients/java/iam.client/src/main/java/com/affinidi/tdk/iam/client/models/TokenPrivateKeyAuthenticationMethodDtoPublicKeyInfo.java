@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo.JSON_PROPERTY_JWKS_URI
 })
 @JsonTypeName("TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
   public static final String JSON_PROPERTY_JWKS = "jwks";
   @javax.annotation.Nonnull
@@ -61,7 +61,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
    * @return jwks
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS)
+  @JsonProperty(value = JSON_PROPERTY_JWKS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public JsonWebKeySetDto getJwks() {
@@ -69,7 +69,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWKS)
+  @JsonProperty(value = JSON_PROPERTY_JWKS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJwks(@javax.annotation.Nonnull JsonWebKeySetDto jwks) {
     this.jwks = jwks;
@@ -86,7 +86,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
    * @return jwksUri
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJwksUri() {
@@ -94,11 +94,12 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJwksUri(@javax.annotation.Nonnull String jwksUri) {
     this.jwksUri = jwksUri;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -133,10 +134,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -179,7 +177,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfo {
     // add `jwksUri` to the URL query string
     if (getJwksUri() != null) {
       try {
-        joiner.add(String.format("%sjwksUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjwksUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
