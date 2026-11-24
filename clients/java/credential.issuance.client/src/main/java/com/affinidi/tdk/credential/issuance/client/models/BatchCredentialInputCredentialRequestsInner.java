@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   BatchCredentialInputCredentialRequestsInner.JSON_PROPERTY_PROOF
 })
 @JsonTypeName("BatchCredentialInput_credential_requests_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class BatchCredentialInputCredentialRequestsInner {
   public static final String JSON_PROPERTY_CREDENTIAL_IDENTIFIER = "credential_identifier";
   @javax.annotation.Nullable
@@ -59,7 +59,7 @@ public class BatchCredentialInputCredentialRequestsInner {
    * @return credentialIdentifier
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIER)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_IDENTIFIER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCredentialIdentifier() {
@@ -67,7 +67,7 @@ public class BatchCredentialInputCredentialRequestsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_IDENTIFIER)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_IDENTIFIER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialIdentifier(@javax.annotation.Nullable String credentialIdentifier) {
     this.credentialIdentifier = credentialIdentifier;
@@ -84,7 +84,7 @@ public class BatchCredentialInputCredentialRequestsInner {
    * @return proof
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public CredentialProof getProof() {
@@ -92,11 +92,12 @@ public class BatchCredentialInputCredentialRequestsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PROOF)
+  @JsonProperty(value = JSON_PROPERTY_PROOF, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setProof(@javax.annotation.Nonnull CredentialProof proof) {
     this.proof = proof;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -131,10 +132,7 @@ public class BatchCredentialInputCredentialRequestsInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -172,7 +170,7 @@ public class BatchCredentialInputCredentialRequestsInner {
     // add `credential_identifier` to the URL query string
     if (getCredentialIdentifier() != null) {
       try {
-        joiner.add(String.format("%scredential_identifier%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIdentifier()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredential_identifier%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIdentifier()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

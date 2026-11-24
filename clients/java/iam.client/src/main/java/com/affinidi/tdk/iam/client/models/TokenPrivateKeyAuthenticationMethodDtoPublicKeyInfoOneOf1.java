@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1.JSON_PROPERTY_JWKS_URI
 })
 @JsonTypeName("TokenPrivateKeyAuthenticationMethodDto_publicKeyInfo_oneOf_1")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
   public static final String JSON_PROPERTY_JWKS_URI = "jwksUri";
   @javax.annotation.Nonnull
@@ -53,7 +53,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
    * @return jwksUri
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getJwksUri() {
@@ -61,11 +61,12 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setJwksUri(@javax.annotation.Nonnull String jwksUri) {
     this.jwksUri = jwksUri;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -98,10 +99,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -139,7 +137,7 @@ public class TokenPrivateKeyAuthenticationMethodDtoPublicKeyInfoOneOf1 {
     // add `jwksUri` to the URL query string
     if (getJwksUri() != null) {
       try {
-        joiner.add(String.format("%sjwksUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjwksUri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

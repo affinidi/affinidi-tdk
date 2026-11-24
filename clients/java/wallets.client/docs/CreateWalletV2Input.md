@@ -27,3 +27,4 @@
 | SECP256K1 | &quot;secp256k1&quot; |
 | ED25519   | &quot;ed25519&quot;   |
 | P256      | &quot;p256&quot;      |
+| MLDSA44   | &quot;mldsa44&quot;   |

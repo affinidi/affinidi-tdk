@@ -4,7 +4,7 @@ This generator creates TypeScript/JavaScript client that utilizes [axios](https:
 
 Environment
 
-- Node.js
+- Node.js v22.23.4 or later, v24.22.1 or later or v26.12.1 or later
 - Webpack
 - Browserify
 

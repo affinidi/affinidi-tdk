@@ -35,7 +35,7 @@ import java.util.StringJoiner;
   FetchIOTAVPResponseInput.JSON_PROPERTY_RESPONSE_CODE,
   FetchIOTAVPResponseInput.JSON_PROPERTY_CONFIGURATION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class FetchIOTAVPResponseInput {
   public static final String JSON_PROPERTY_CORRELATION_ID = "correlationId";
   @javax.annotation.Nonnull
@@ -67,7 +67,7 @@ public class FetchIOTAVPResponseInput {
    * @return correlationId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getCorrelationId() {
@@ -75,7 +75,7 @@ public class FetchIOTAVPResponseInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CORRELATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CORRELATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setCorrelationId(@javax.annotation.Nonnull String correlationId) {
     this.correlationId = correlationId;
@@ -92,7 +92,7 @@ public class FetchIOTAVPResponseInput {
    * @return transactionId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRANSACTION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getTransactionId() {
@@ -100,7 +100,7 @@ public class FetchIOTAVPResponseInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TRANSACTION_ID)
+  @JsonProperty(value = JSON_PROPERTY_TRANSACTION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTransactionId(@javax.annotation.Nonnull String transactionId) {
     this.transactionId = transactionId;
@@ -117,7 +117,7 @@ public class FetchIOTAVPResponseInput {
    * @return responseCode
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getResponseCode() {
@@ -125,7 +125,7 @@ public class FetchIOTAVPResponseInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_CODE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setResponseCode(@javax.annotation.Nonnull String responseCode) {
     this.responseCode = responseCode;
@@ -142,7 +142,7 @@ public class FetchIOTAVPResponseInput {
    * @return configurationId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getConfigurationId() {
@@ -150,11 +150,12 @@ public class FetchIOTAVPResponseInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConfigurationId(@javax.annotation.Nonnull String configurationId) {
     this.configurationId = configurationId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -193,10 +194,7 @@ public class FetchIOTAVPResponseInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -234,7 +232,7 @@ public class FetchIOTAVPResponseInput {
     // add `correlationId` to the URL query string
     if (getCorrelationId() != null) {
       try {
-        joiner.add(String.format("%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scorrelationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCorrelationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -244,7 +242,7 @@ public class FetchIOTAVPResponseInput {
     // add `transactionId` to the URL query string
     if (getTransactionId() != null) {
       try {
-        joiner.add(String.format("%stransactionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stransactionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTransactionId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -254,7 +252,7 @@ public class FetchIOTAVPResponseInput {
     // add `responseCode` to the URL query string
     if (getResponseCode() != null) {
       try {
-        joiner.add(String.format("%sresponseCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sresponseCode%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -264,7 +262,7 @@ public class FetchIOTAVPResponseInput {
     // add `configurationId` to the URL query string
     if (getConfigurationId() != null) {
       try {
-        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

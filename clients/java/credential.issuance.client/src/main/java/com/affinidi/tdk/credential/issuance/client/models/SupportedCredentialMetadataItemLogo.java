@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   SupportedCredentialMetadataItemLogo.JSON_PROPERTY_URL,
   SupportedCredentialMetadataItemLogo.JSON_PROPERTY_ALT_TEXT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class SupportedCredentialMetadataItemLogo {
   public static final String JSON_PROPERTY_URL = "url";
   @javax.annotation.Nonnull
@@ -57,7 +57,7 @@ public class SupportedCredentialMetadataItemLogo {
    * @return url
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getUrl() {
@@ -65,7 +65,7 @@ public class SupportedCredentialMetadataItemLogo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_URL)
+  @JsonProperty(value = JSON_PROPERTY_URL, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setUrl(@javax.annotation.Nonnull String url) {
     this.url = url;
@@ -82,7 +82,7 @@ public class SupportedCredentialMetadataItemLogo {
    * @return altText
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ALT_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_ALT_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAltText() {
@@ -90,11 +90,12 @@ public class SupportedCredentialMetadataItemLogo {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ALT_TEXT)
+  @JsonProperty(value = JSON_PROPERTY_ALT_TEXT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAltText(@javax.annotation.Nullable String altText) {
     this.altText = altText;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,10 +130,7 @@ public class SupportedCredentialMetadataItemLogo {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -170,7 +168,7 @@ public class SupportedCredentialMetadataItemLogo {
     // add `url` to the URL query string
     if (getUrl() != null) {
       try {
-        joiner.add(String.format("%surl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUrl()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%surl%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getUrl()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class SupportedCredentialMetadataItemLogo {
     // add `altText` to the URL query string
     if (getAltText() != null) {
       try {
-        joiner.add(String.format("%saltText%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAltText()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%saltText%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAltText()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
