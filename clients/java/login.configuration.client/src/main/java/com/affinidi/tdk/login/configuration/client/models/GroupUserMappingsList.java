@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   GroupUserMappingsList.JSON_PROPERTY_LAST_EVALUATED_KEY,
   GroupUserMappingsList.JSON_PROPERTY_TOTAL_USER_COUNT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class GroupUserMappingsList {
   public static final String JSON_PROPERTY_USERS = "users";
   @javax.annotation.Nullable
@@ -75,7 +75,7 @@ public class GroupUserMappingsList {
    * @return users
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_USERS)
+  @JsonProperty(value = JSON_PROPERTY_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<GroupUserMappingDto> getUsers() {
@@ -83,7 +83,7 @@ public class GroupUserMappingsList {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_USERS)
+  @JsonProperty(value = JSON_PROPERTY_USERS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setUsers(@javax.annotation.Nullable List<GroupUserMappingDto> users) {
     this.users = users;
@@ -100,7 +100,7 @@ public class GroupUserMappingsList {
    * @return lastEvaluatedKey
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastEvaluatedKey() {
@@ -108,7 +108,7 @@ public class GroupUserMappingsList {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
@@ -125,7 +125,7 @@ public class GroupUserMappingsList {
    * @return totalUserCount
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_USER_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public BigDecimal getTotalUserCount() {
@@ -133,11 +133,12 @@ public class GroupUserMappingsList {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOTAL_USER_COUNT)
+  @JsonProperty(value = JSON_PROPERTY_TOTAL_USER_COUNT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTotalUserCount(@javax.annotation.Nullable BigDecimal totalUserCount) {
     this.totalUserCount = totalUserCount;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -174,10 +175,7 @@ public class GroupUserMappingsList {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -216,8 +214,8 @@ public class GroupUserMappingsList {
     if (getUsers() != null) {
       for (int i = 0; i < getUsers().size(); i++) {
         if (getUsers().get(i) != null) {
-          joiner.add(getUsers().get(i).toUrlQueryString(String.format("%susers%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getUsers().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%susers%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -225,7 +223,7 @@ public class GroupUserMappingsList {
     // add `lastEvaluatedKey` to the URL query string
     if (getLastEvaluatedKey() != null) {
       try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -235,7 +233,7 @@ public class GroupUserMappingsList {
     // add `totalUserCount` to the URL query string
     if (getTotalUserCount() != null) {
       try {
-        joiner.add(String.format("%stotalUserCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTotalUserCount()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stotalUserCount%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTotalUserCount()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

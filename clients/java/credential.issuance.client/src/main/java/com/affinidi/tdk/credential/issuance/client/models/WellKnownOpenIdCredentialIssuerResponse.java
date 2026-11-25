@@ -50,7 +50,7 @@ import java.util.StringJoiner;
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED,
   WellKnownOpenIdCredentialIssuerResponse.JSON_PROPERTY_RETURN_URIS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class WellKnownOpenIdCredentialIssuerResponse {
   public static final String JSON_PROPERTY_AUTHORIZATION_ENDPOINT = "authorization_endpoint";
   @javax.annotation.Nullable
@@ -227,7 +227,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return authorizationEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_AUTHORIZATION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getAuthorizationEndpoint() {
@@ -235,7 +235,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_AUTHORIZATION_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_AUTHORIZATION_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAuthorizationEndpoint(@javax.annotation.Nullable String authorizationEndpoint) {
     this.authorizationEndpoint = authorizationEndpoint;
@@ -252,7 +252,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return credentialEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCredentialEndpoint() {
@@ -260,7 +260,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialEndpoint(@javax.annotation.Nullable String credentialEndpoint) {
     this.credentialEndpoint = credentialEndpoint;
@@ -277,7 +277,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return credentialIssuer
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ISSUER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getCredentialIssuer() {
@@ -285,7 +285,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_ISSUER)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_ISSUER, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialIssuer(@javax.annotation.Nullable String credentialIssuer) {
     this.credentialIssuer = credentialIssuer;
@@ -302,7 +302,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return batchCredentialEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getBatchCredentialEndpoint() {
@@ -310,7 +310,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_BATCH_CREDENTIAL_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setBatchCredentialEndpoint(@javax.annotation.Nullable String batchCredentialEndpoint) {
     this.batchCredentialEndpoint = batchCredentialEndpoint;
@@ -335,7 +335,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return credentialsSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> getCredentialsSupported() {
@@ -343,7 +343,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIALS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIALS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialsSupported(@javax.annotation.Nullable List<WellKnownOpenIdCredentialIssuerResponseCredentialsSupportedInner> credentialsSupported) {
     this.credentialsSupported = credentialsSupported;
@@ -368,7 +368,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return credentialConfigurationsSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATIONS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_CONFIGURATIONS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getCredentialConfigurationsSupported() {
@@ -376,7 +376,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CREDENTIAL_CONFIGURATIONS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_CREDENTIAL_CONFIGURATIONS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCredentialConfigurationsSupported(@javax.annotation.Nullable List<Object> credentialConfigurationsSupported) {
     this.credentialConfigurationsSupported = credentialConfigurationsSupported;
@@ -393,7 +393,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return deferredCredentialEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getDeferredCredentialEndpoint() {
@@ -401,7 +401,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_DEFERRED_CREDENTIAL_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDeferredCredentialEndpoint(@javax.annotation.Nullable String deferredCredentialEndpoint) {
     this.deferredCredentialEndpoint = deferredCredentialEndpoint;
@@ -426,7 +426,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return grantTypesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_TYPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<GrantTypesSupportedEnum> getGrantTypesSupported() {
@@ -434,7 +434,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_GRANT_TYPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_GRANT_TYPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrantTypesSupported(@javax.annotation.Nullable List<GrantTypesSupportedEnum> grantTypesSupported) {
     this.grantTypesSupported = grantTypesSupported;
@@ -451,7 +451,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return jwksUri
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getJwksUri() {
@@ -459,7 +459,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_JWKS_URI)
+  @JsonProperty(value = JSON_PROPERTY_JWKS_URI, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setJwksUri(@javax.annotation.Nullable String jwksUri) {
     this.jwksUri = jwksUri;
@@ -476,7 +476,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return display
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_DISPLAY)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public WellKnownOpenIdCredentialIssuerResponseDisplay getDisplay() {
@@ -484,7 +484,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DISPLAY)
+  @JsonProperty(value = JSON_PROPERTY_DISPLAY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDisplay(@javax.annotation.Nullable WellKnownOpenIdCredentialIssuerResponseDisplay display) {
     this.display = display;
@@ -509,7 +509,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return scopesSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_SCOPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ScopesSupportedEnum> getScopesSupported() {
@@ -517,7 +517,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SCOPES_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_SCOPES_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setScopesSupported(@javax.annotation.Nullable List<ScopesSupportedEnum> scopesSupported) {
     this.scopesSupported = scopesSupported;
@@ -534,7 +534,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return tokenEndpoint
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTokenEndpoint() {
@@ -542,7 +542,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenEndpoint(@javax.annotation.Nullable String tokenEndpoint) {
     this.tokenEndpoint = tokenEndpoint;
@@ -567,7 +567,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return tokenEndpointAuthMethodsSupported
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<TokenEndpointAuthMethodsSupportedEnum> getTokenEndpointAuthMethodsSupported() {
@@ -575,7 +575,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED)
+  @JsonProperty(value = JSON_PROPERTY_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTokenEndpointAuthMethodsSupported(@javax.annotation.Nullable List<TokenEndpointAuthMethodsSupportedEnum> tokenEndpointAuthMethodsSupported) {
     this.tokenEndpointAuthMethodsSupported = tokenEndpointAuthMethodsSupported;
@@ -600,7 +600,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * @return returnUris
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+  @JsonProperty(value = JSON_PROPERTY_RETURN_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getReturnUris() {
@@ -608,11 +608,12 @@ public class WellKnownOpenIdCredentialIssuerResponse {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RETURN_URIS)
+  @JsonProperty(value = JSON_PROPERTY_RETURN_URIS, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setReturnUris(@javax.annotation.Nullable List<String> returnUris) {
     this.returnUris = returnUris;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -671,10 +672,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -712,7 +710,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     // add `authorization_endpoint` to the URL query string
     if (getAuthorizationEndpoint() != null) {
       try {
-        joiner.add(String.format("%sauthorization_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthorizationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sauthorization_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getAuthorizationEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -722,7 +720,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     // add `credential_endpoint` to the URL query string
     if (getCredentialEndpoint() != null) {
       try {
-        joiner.add(String.format("%scredential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -732,7 +730,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     // add `credential_issuer` to the URL query string
     if (getCredentialIssuer() != null) {
       try {
-        joiner.add(String.format("%scredential_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%scredential_issuer%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getCredentialIssuer()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -742,7 +740,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     // add `batch_credential_endpoint` to the URL query string
     if (getBatchCredentialEndpoint() != null) {
       try {
-        joiner.add(String.format("%sbatch_credential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBatchCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sbatch_credential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getBatchCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -753,8 +751,8 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     if (getCredentialsSupported() != null) {
       for (int i = 0; i < getCredentialsSupported().size(); i++) {
         if (getCredentialsSupported().get(i) != null) {
-          joiner.add(getCredentialsSupported().get(i).toUrlQueryString(String.format("%scredentials_supported%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getCredentialsSupported().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%scredentials_supported%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -763,8 +761,8 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     if (getCredentialConfigurationsSupported() != null) {
       for (int i = 0; i < getCredentialConfigurationsSupported().size(); i++) {
         try {
-          joiner.add(String.format("%scredential_configurations_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%scredential_configurations_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getCredentialConfigurationsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -776,7 +774,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     // add `deferred_credential_endpoint` to the URL query string
     if (getDeferredCredentialEndpoint() != null) {
       try {
-        joiner.add(String.format("%sdeferred_credential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDeferredCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdeferred_credential_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDeferredCredentialEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -787,8 +785,8 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     if (getGrantTypesSupported() != null) {
       for (int i = 0; i < getGrantTypesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sgrant_types_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sgrant_types_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getGrantTypesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -800,7 +798,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     // add `jwks_uri` to the URL query string
     if (getJwksUri() != null) {
       try {
-        joiner.add(String.format("%sjwks_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sjwks_uri%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getJwksUri()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -816,8 +814,8 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     if (getScopesSupported() != null) {
       for (int i = 0; i < getScopesSupported().size(); i++) {
         try {
-          joiner.add(String.format("%sscopes_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sscopes_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getScopesSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -829,7 +827,7 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     // add `token_endpoint` to the URL query string
     if (getTokenEndpoint() != null) {
       try {
-        joiner.add(String.format("%stoken_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%stoken_endpoint%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getTokenEndpoint()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -840,8 +838,8 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     if (getTokenEndpointAuthMethodsSupported() != null) {
       for (int i = 0; i < getTokenEndpointAuthMethodsSupported().size(); i++) {
         try {
-          joiner.add(String.format("%stoken_endpoint_auth_methods_supported%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%stoken_endpoint_auth_methods_supported%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getTokenEndpointAuthMethodsSupported().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
@@ -854,8 +852,8 @@ public class WellKnownOpenIdCredentialIssuerResponse {
     if (getReturnUris() != null) {
       for (int i = 0; i < getReturnUris().size(); i++) {
         try {
-          joiner.add(String.format("%sreturn_uris%s%s=%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix),
+          joiner.add(String.format(java.util.Locale.ROOT, "%sreturn_uris%s%s=%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix),
               URLEncoder.encode(String.valueOf(getReturnUris().get(i)), "UTF-8").replaceAll("\\+", "%20")));
         } catch (UnsupportedEncodingException e) {
           // Should never happen, UTF-8 is always supported
