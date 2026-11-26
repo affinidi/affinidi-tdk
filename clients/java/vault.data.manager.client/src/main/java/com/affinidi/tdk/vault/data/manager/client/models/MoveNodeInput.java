@@ -33,7 +33,7 @@ import java.util.StringJoiner;
   MoveNodeInput.JSON_PROPERTY_DESTINATION_NODE_ID,
   MoveNodeInput.JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class MoveNodeInput {
   public static final String JSON_PROPERTY_DESTINATION_NODE_ID = "destinationNodeId";
   @javax.annotation.Nonnull
@@ -57,7 +57,7 @@ public class MoveNodeInput {
    * @return destinationNodeId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DESTINATION_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_DESTINATION_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDestinationNodeId() {
@@ -65,7 +65,7 @@ public class MoveNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DESTINATION_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_DESTINATION_NODE_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDestinationNodeId(@javax.annotation.Nonnull String destinationNodeId) {
     this.destinationNodeId = destinationNodeId;
@@ -82,7 +82,7 @@ public class MoveNodeInput {
    * @return resolveNameConflictsAutomatically
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY)
+  @JsonProperty(value = JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getResolveNameConflictsAutomatically() {
@@ -90,11 +90,12 @@ public class MoveNodeInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY)
+  @JsonProperty(value = JSON_PROPERTY_RESOLVE_NAME_CONFLICTS_AUTOMATICALLY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResolveNameConflictsAutomatically(@javax.annotation.Nullable Boolean resolveNameConflictsAutomatically) {
     this.resolveNameConflictsAutomatically = resolveNameConflictsAutomatically;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -129,10 +130,7 @@ public class MoveNodeInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -170,7 +168,7 @@ public class MoveNodeInput {
     // add `destinationNodeId` to the URL query string
     if (getDestinationNodeId() != null) {
       try {
-        joiner.add(String.format("%sdestinationNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDestinationNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdestinationNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDestinationNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -180,7 +178,7 @@ public class MoveNodeInput {
     // add `resolveNameConflictsAutomatically` to the URL query string
     if (getResolveNameConflictsAutomatically() != null) {
       try {
-        joiner.add(String.format("%sresolveNameConflictsAutomatically%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResolveNameConflictsAutomatically()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sresolveNameConflictsAutomatically%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResolveNameConflictsAutomatically()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

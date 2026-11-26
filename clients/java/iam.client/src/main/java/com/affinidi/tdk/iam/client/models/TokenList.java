@@ -37,7 +37,7 @@ import java.util.StringJoiner;
   TokenList.JSON_PROPERTY_TOKENS,
   TokenList.JSON_PROPERTY_LAST_EVALUATED_KEY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class TokenList {
   public static final String JSON_PROPERTY_TOKENS = "tokens";
   @javax.annotation.Nonnull
@@ -69,7 +69,7 @@ public class TokenList {
    * @return tokens
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_TOKENS)
+  @JsonProperty(value = JSON_PROPERTY_TOKENS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<TokenDto> getTokens() {
@@ -77,7 +77,7 @@ public class TokenList {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_TOKENS)
+  @JsonProperty(value = JSON_PROPERTY_TOKENS, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTokens(@javax.annotation.Nonnull List<TokenDto> tokens) {
     this.tokens = tokens;
@@ -94,7 +94,7 @@ public class TokenList {
    * @return lastEvaluatedKey
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLastEvaluatedKey() {
@@ -102,11 +102,12 @@ public class TokenList {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_LAST_EVALUATED_KEY)
+  @JsonProperty(value = JSON_PROPERTY_LAST_EVALUATED_KEY, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLastEvaluatedKey(@javax.annotation.Nullable String lastEvaluatedKey) {
     this.lastEvaluatedKey = lastEvaluatedKey;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -141,10 +142,7 @@ public class TokenList {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -183,8 +181,8 @@ public class TokenList {
     if (getTokens() != null) {
       for (int i = 0; i < getTokens().size(); i++) {
         if (getTokens().get(i) != null) {
-          joiner.add(getTokens().get(i).toUrlQueryString(String.format("%stokens%s%s", prefix, suffix,
-              "".equals(suffix) ? "" : String.format("%s%d%s", containerPrefix, i, containerSuffix))));
+          joiner.add(getTokens().get(i).toUrlQueryString(String.format(java.util.Locale.ROOT, "%stokens%s%s", prefix, suffix,
+              "".equals(suffix) ? "" : String.format(java.util.Locale.ROOT, "%s%d%s", containerPrefix, i, containerSuffix))));
         }
       }
     }
@@ -192,7 +190,7 @@ public class TokenList {
     // add `lastEvaluatedKey` to the URL query string
     if (getLastEvaluatedKey() != null) {
       try {
-        joiner.add(String.format("%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%slastEvaluatedKey%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getLastEvaluatedKey()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

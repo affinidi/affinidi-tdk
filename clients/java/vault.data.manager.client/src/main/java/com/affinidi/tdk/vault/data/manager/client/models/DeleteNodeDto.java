@@ -32,7 +32,7 @@ import java.util.StringJoiner;
 @JsonPropertyOrder({
   DeleteNodeDto.JSON_PROPERTY_NEW_NODE_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class DeleteNodeDto {
   public static final String JSON_PROPERTY_NEW_NODE_ID = "newNodeId";
   @javax.annotation.Nullable
@@ -52,7 +52,7 @@ public class DeleteNodeDto {
    * @return newNodeId
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_NEW_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NEW_NODE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getNewNodeId() {
@@ -60,11 +60,12 @@ public class DeleteNodeDto {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_NEW_NODE_ID)
+  @JsonProperty(value = JSON_PROPERTY_NEW_NODE_ID, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNewNodeId(@javax.annotation.Nullable String newNodeId) {
     this.newNodeId = newNodeId;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -97,10 +98,7 @@ public class DeleteNodeDto {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -138,7 +136,7 @@ public class DeleteNodeDto {
     // add `newNodeId` to the URL query string
     if (getNewNodeId() != null) {
       try {
-        joiner.add(String.format("%snewNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNewNodeId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%snewNodeId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getNewNodeId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

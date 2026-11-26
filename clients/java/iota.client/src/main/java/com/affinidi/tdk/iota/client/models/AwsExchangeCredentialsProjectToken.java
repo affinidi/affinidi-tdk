@@ -34,7 +34,7 @@ import java.util.StringJoiner;
   AwsExchangeCredentialsProjectToken.JSON_PROPERTY_CONFIGURATION_ID,
   AwsExchangeCredentialsProjectToken.JSON_PROPERTY_DID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class AwsExchangeCredentialsProjectToken {
   public static final String JSON_PROPERTY_SESSION_ID = "sessionId";
   @javax.annotation.Nonnull
@@ -62,7 +62,7 @@ public class AwsExchangeCredentialsProjectToken {
    * @return sessionId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonProperty(value = JSON_PROPERTY_SESSION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getSessionId() {
@@ -70,7 +70,7 @@ public class AwsExchangeCredentialsProjectToken {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_SESSION_ID)
+  @JsonProperty(value = JSON_PROPERTY_SESSION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSessionId(@javax.annotation.Nonnull String sessionId) {
     this.sessionId = sessionId;
@@ -87,7 +87,7 @@ public class AwsExchangeCredentialsProjectToken {
    * @return configurationId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getConfigurationId() {
@@ -95,7 +95,7 @@ public class AwsExchangeCredentialsProjectToken {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_CONFIGURATION_ID)
+  @JsonProperty(value = JSON_PROPERTY_CONFIGURATION_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setConfigurationId(@javax.annotation.Nonnull String configurationId) {
     this.configurationId = configurationId;
@@ -112,7 +112,7 @@ public class AwsExchangeCredentialsProjectToken {
    * @return did
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonProperty(value = JSON_PROPERTY_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getDid() {
@@ -120,11 +120,12 @@ public class AwsExchangeCredentialsProjectToken {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_DID)
+  @JsonProperty(value = JSON_PROPERTY_DID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setDid(@javax.annotation.Nonnull String did) {
     this.did = did;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -161,10 +162,7 @@ public class AwsExchangeCredentialsProjectToken {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -202,7 +200,7 @@ public class AwsExchangeCredentialsProjectToken {
     // add `sessionId` to the URL query string
     if (getSessionId() != null) {
       try {
-        joiner.add(String.format("%ssessionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%ssessionId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getSessionId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -212,7 +210,7 @@ public class AwsExchangeCredentialsProjectToken {
     // add `configurationId` to the URL query string
     if (getConfigurationId() != null) {
       try {
-        joiner.add(String.format("%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sconfigurationId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getConfigurationId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -222,7 +220,7 @@ public class AwsExchangeCredentialsProjectToken {
     // add `did` to the URL query string
     if (getDid() != null) {
       try {
-        joiner.add(String.format("%sdid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDid()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sdid%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getDid()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
