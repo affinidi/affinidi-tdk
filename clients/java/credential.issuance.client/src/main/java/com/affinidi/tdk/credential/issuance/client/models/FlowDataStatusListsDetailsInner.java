@@ -39,7 +39,7 @@ import java.util.StringJoiner;
   FlowDataStatusListsDetailsInner.JSON_PROPERTY_STATUS_ACTIVATED_AT
 })
 @JsonTypeName("FlowData_statusListsDetails_inner")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class FlowDataStatusListsDetailsInner {
   /**
    * Purpose of status list to which credential is added
@@ -149,7 +149,7 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusListPurpose
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_PURPOSE)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_PURPOSE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public StatusListPurposeEnum getStatusListPurpose() {
@@ -157,7 +157,7 @@ public class FlowDataStatusListsDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_PURPOSE)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_PURPOSE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatusListPurpose(@javax.annotation.Nonnull StatusListPurposeEnum statusListPurpose) {
     this.statusListPurpose = statusListPurpose;
@@ -174,7 +174,7 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusListId
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_ID)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getStatusListId() {
@@ -182,7 +182,7 @@ public class FlowDataStatusListsDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_ID)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_ID, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatusListId(@javax.annotation.Nonnull String statusListId) {
     this.statusListId = statusListId;
@@ -199,7 +199,7 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusListIndex
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getStatusListIndex() {
@@ -207,7 +207,7 @@ public class FlowDataStatusListsDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS_LIST_INDEX)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_LIST_INDEX, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStatusListIndex(@javax.annotation.Nonnull String statusListIndex) {
     this.statusListIndex = statusListIndex;
@@ -224,7 +224,7 @@ public class FlowDataStatusListsDetailsInner {
    * @return standard
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonProperty(value = JSON_PROPERTY_STANDARD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public StandardEnum getStandard() {
@@ -232,7 +232,7 @@ public class FlowDataStatusListsDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STANDARD)
+  @JsonProperty(value = JSON_PROPERTY_STANDARD, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setStandard(@javax.annotation.Nonnull StandardEnum standard) {
     this.standard = standard;
@@ -249,7 +249,7 @@ public class FlowDataStatusListsDetailsInner {
    * @return isActive
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_IS_ACTIVE)
+  @JsonProperty(value = JSON_PROPERTY_IS_ACTIVE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Boolean getIsActive() {
@@ -257,7 +257,7 @@ public class FlowDataStatusListsDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_IS_ACTIVE)
+  @JsonProperty(value = JSON_PROPERTY_IS_ACTIVE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setIsActive(@javax.annotation.Nonnull Boolean isActive) {
     this.isActive = isActive;
@@ -274,7 +274,7 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusActivationReason
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATION_REASON)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_ACTIVATION_REASON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStatusActivationReason() {
@@ -282,7 +282,7 @@ public class FlowDataStatusListsDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATION_REASON)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_ACTIVATION_REASON, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusActivationReason(@javax.annotation.Nullable String statusActivationReason) {
     this.statusActivationReason = statusActivationReason;
@@ -299,7 +299,7 @@ public class FlowDataStatusListsDetailsInner {
    * @return statusActivatedAt
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_ACTIVATED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getStatusActivatedAt() {
@@ -307,11 +307,12 @@ public class FlowDataStatusListsDetailsInner {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATUS_ACTIVATED_AT)
+  @JsonProperty(value = JSON_PROPERTY_STATUS_ACTIVATED_AT, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setStatusActivatedAt(@javax.annotation.Nullable String statusActivatedAt) {
     this.statusActivatedAt = statusActivatedAt;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -356,10 +357,7 @@ public class FlowDataStatusListsDetailsInner {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -397,7 +395,7 @@ public class FlowDataStatusListsDetailsInner {
     // add `statusListPurpose` to the URL query string
     if (getStatusListPurpose() != null) {
       try {
-        joiner.add(String.format("%sstatusListPurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListPurpose()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatusListPurpose%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListPurpose()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -407,7 +405,7 @@ public class FlowDataStatusListsDetailsInner {
     // add `statusListId` to the URL query string
     if (getStatusListId() != null) {
       try {
-        joiner.add(String.format("%sstatusListId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListId()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatusListId%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListId()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -417,7 +415,7 @@ public class FlowDataStatusListsDetailsInner {
     // add `statusListIndex` to the URL query string
     if (getStatusListIndex() != null) {
       try {
-        joiner.add(String.format("%sstatusListIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListIndex()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatusListIndex%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusListIndex()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -427,7 +425,7 @@ public class FlowDataStatusListsDetailsInner {
     // add `standard` to the URL query string
     if (getStandard() != null) {
       try {
-        joiner.add(String.format("%sstandard%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStandard()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstandard%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStandard()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -437,7 +435,7 @@ public class FlowDataStatusListsDetailsInner {
     // add `isActive` to the URL query string
     if (getIsActive() != null) {
       try {
-        joiner.add(String.format("%sisActive%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIsActive()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sisActive%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getIsActive()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -447,7 +445,7 @@ public class FlowDataStatusListsDetailsInner {
     // add `statusActivationReason` to the URL query string
     if (getStatusActivationReason() != null) {
       try {
-        joiner.add(String.format("%sstatusActivationReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusActivationReason()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatusActivationReason%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusActivationReason()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -457,7 +455,7 @@ public class FlowDataStatusListsDetailsInner {
     // add `statusActivatedAt` to the URL query string
     if (getStatusActivatedAt() != null) {
       try {
-        joiner.add(String.format("%sstatusActivatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusActivatedAt()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstatusActivatedAt%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getStatusActivatedAt()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);

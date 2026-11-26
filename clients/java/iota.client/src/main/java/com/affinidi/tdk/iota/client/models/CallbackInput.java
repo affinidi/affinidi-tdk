@@ -38,7 +38,7 @@ import java.util.StringJoiner;
   CallbackInput.JSON_PROPERTY_ERROR_DESCRIPTION,
   CallbackInput.JSON_PROPERTY_ONBOARDED
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.13.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class CallbackInput {
   public static final String JSON_PROPERTY_STATE = "state";
   @javax.annotation.Nonnull
@@ -82,7 +82,7 @@ public class CallbackInput {
    * @return state
    */
   @javax.annotation.Nonnull
-  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonProperty(value = JSON_PROPERTY_STATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getState() {
@@ -90,7 +90,7 @@ public class CallbackInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_STATE)
+  @JsonProperty(value = JSON_PROPERTY_STATE, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setState(@javax.annotation.Nonnull String state) {
     this.state = state;
@@ -107,7 +107,7 @@ public class CallbackInput {
    * @return presentationSubmission
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPresentationSubmission() {
@@ -115,7 +115,7 @@ public class CallbackInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_PRESENTATION_SUBMISSION)
+  @JsonProperty(value = JSON_PROPERTY_PRESENTATION_SUBMISSION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPresentationSubmission(@javax.annotation.Nullable String presentationSubmission) {
     this.presentationSubmission = presentationSubmission;
@@ -132,7 +132,7 @@ public class CallbackInput {
    * @return vpToken
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_VP_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getVpToken() {
@@ -140,7 +140,7 @@ public class CallbackInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_VP_TOKEN)
+  @JsonProperty(value = JSON_PROPERTY_VP_TOKEN, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVpToken(@javax.annotation.Nullable String vpToken) {
     this.vpToken = vpToken;
@@ -157,7 +157,7 @@ public class CallbackInput {
    * @return responseCode
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getResponseCode() {
@@ -165,7 +165,7 @@ public class CallbackInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_RESPONSE_CODE)
+  @JsonProperty(value = JSON_PROPERTY_RESPONSE_CODE, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResponseCode(@javax.annotation.Nullable String responseCode) {
     this.responseCode = responseCode;
@@ -182,7 +182,7 @@ public class CallbackInput {
    * @return error
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getError() {
@@ -190,7 +190,7 @@ public class CallbackInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR)
+  @JsonProperty(value = JSON_PROPERTY_ERROR, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setError(@javax.annotation.Nullable String error) {
     this.error = error;
@@ -207,7 +207,7 @@ public class CallbackInput {
    * @return errorDescription
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_ERROR_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getErrorDescription() {
@@ -215,7 +215,7 @@ public class CallbackInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ERROR_DESCRIPTION)
+  @JsonProperty(value = JSON_PROPERTY_ERROR_DESCRIPTION, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setErrorDescription(@javax.annotation.Nullable String errorDescription) {
     this.errorDescription = errorDescription;
@@ -232,7 +232,7 @@ public class CallbackInput {
    * @return onboarded
    */
   @javax.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_ONBOARDED)
+  @JsonProperty(value = JSON_PROPERTY_ONBOARDED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Boolean getOnboarded() {
@@ -240,11 +240,12 @@ public class CallbackInput {
   }
 
 
-  @JsonProperty(JSON_PROPERTY_ONBOARDED)
+  @JsonProperty(value = JSON_PROPERTY_ONBOARDED, required = false)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setOnboarded(@javax.annotation.Nullable Boolean onboarded) {
     this.onboarded = onboarded;
   }
+
 
   @Override
   public boolean equals(Object o) {
@@ -289,10 +290,7 @@ public class CallbackInput {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
   /**
@@ -330,7 +328,7 @@ public class CallbackInput {
     // add `state` to the URL query string
     if (getState() != null) {
       try {
-        joiner.add(String.format("%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sstate%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getState()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -340,7 +338,7 @@ public class CallbackInput {
     // add `presentation_submission` to the URL query string
     if (getPresentationSubmission() != null) {
       try {
-        joiner.add(String.format("%spresentation_submission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%spresentation_submission%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getPresentationSubmission()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -350,7 +348,7 @@ public class CallbackInput {
     // add `vp_token` to the URL query string
     if (getVpToken() != null) {
       try {
-        joiner.add(String.format("%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%svp_token%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getVpToken()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -360,7 +358,7 @@ public class CallbackInput {
     // add `response_code` to the URL query string
     if (getResponseCode() != null) {
       try {
-        joiner.add(String.format("%sresponse_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sresponse_code%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getResponseCode()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -370,7 +368,7 @@ public class CallbackInput {
     // add `error` to the URL query string
     if (getError() != null) {
       try {
-        joiner.add(String.format("%serror%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getError()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%serror%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getError()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -380,7 +378,7 @@ public class CallbackInput {
     // add `error_description` to the URL query string
     if (getErrorDescription() != null) {
       try {
-        joiner.add(String.format("%serror_description%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorDescription()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%serror_description%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getErrorDescription()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
@@ -390,7 +388,7 @@ public class CallbackInput {
     // add `onboarded` to the URL query string
     if (getOnboarded() != null) {
       try {
-        joiner.add(String.format("%sonboarded%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOnboarded()), "UTF-8").replaceAll("\\+", "%20")));
+        joiner.add(String.format(java.util.Locale.ROOT, "%sonboarded%s=%s", prefix, suffix, URLEncoder.encode(String.valueOf(getOnboarded()), "UTF-8").replaceAll("\\+", "%20")));
       } catch (UnsupportedEncodingException e) {
         // Should never happen, UTF-8 is always supported
         throw new RuntimeException(e);
